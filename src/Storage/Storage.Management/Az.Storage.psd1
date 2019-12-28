@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.5'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.6'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Storage.dll', 
@@ -150,7 +150,8 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Remove-AzStorageAccountManagementPolicy', 
                'New-AzStorageAccountManagementPolicyFilter', 
                'New-AzStorageAccountManagementPolicyRule', 
-               'Add-AzStorageAccountManagementPolicyAction', 
+               'Add-AzStorageAccountManagementPolicyAction',
+               'Invoke-AzStorageAccountFailover', 
                'Update-AzStorageBlobServiceProperty', 
                'Get-AzStorageBlobServiceProperty', 
                'Enable-AzStorageBlobDeleteRetentionPolicy', 
@@ -158,7 +159,11 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Revoke-AzStorageAccountUserDelegationKeys', 
                'Get-AzStorageFileHandle', 'Close-AzStorageFileHandle', 
                'New-AzRmStorageShare', 'Remove-AzRmStorageShare', 
-               'Get-AzRmStorageShare', 'Update-AzRmStorageShare'
+               'Get-AzRmStorageShare', 'Update-AzRmStorageShare',
+               'Get-AzDataLakeGen2ChildItem', 'Get-AzDataLakeGen2Item',
+               'New-AzDataLakeGen2Item', 'Move-AzDataLakeGen2Item',
+               'Remove-AzDataLakeGen2Item', 'Update-AzDataLakeGen2Item',
+               'New-AzDataLakeGen2ItemAclObject', 'Get-AzDataLakeGen2ItemContent'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -166,7 +171,11 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzStorageContainerAcl', 'Start-CopyAzureStorageBlob', 
                'Stop-CopyAzureStorageBlob', 'Enable-AzStorageSoftDelete', 
-               'Disable-AzStorageSoftDelete'
+               'Disable-AzStorageSoftDelete','Enable-AzureStorageStaticWebsite',
+               'Disable-AzureStorageStaticWebsite','Invoke-AzureRmStorageAccountFailover',
+               'Get-AzureRmStorageAccountManagementPolicy','Set-AzureRmStorageAccountManagementPolicy',
+               'Remove-AzureRmStorageAccountManagementPolicy', 'New-AzDatalakeGen2FileSystem',
+               'Remove-AzDatalakeGen2FileSystem', 'Get-AzDatalakeGen2FileSystem'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -211,7 +220,7 @@ PrivateData = @{
 	- Set-AzStorageContainerAcl'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

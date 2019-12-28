@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
 {
     internal class HelpMessageTrigger
     {
-        internal const string NameHelpMessage = "Name of the Trigger";
+        internal const string NameHelpMessage = "Name of the trigger";
         internal const string ObjectName = "Trigger";
 
         // Sinkinfo is currently a VM ROLE in the system
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
             "Pass this switch parameter to configure PeriodicTimerEvent Trigger";
 
         internal const string PeriodicTimerEventScheduleHelpMessage =
-            "Periodic frequency at which timer event needs to be raised. Supports daily, hourly, minutes, and seconds";
+            "Periodic frequency at which timer event needs to be raised. Specify a schedule in either days (between 1 and 365) , hours (between 1 and 23), or minutes (between 1 and 59).";
 
         internal const string PeriodicTimerEventStartTimeHelpMessage =
             "The time of the day that results in a valid trigger. " +

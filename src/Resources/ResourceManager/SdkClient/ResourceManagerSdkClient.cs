@@ -17,16 +17,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Management.Automation;
 using System.Net;
-using System.Runtime.Serialization.Formatters;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
@@ -35,14 +39,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
-using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
-using System.Management.Automation;
-using Microsoft.Rest;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -1718,6 +1715,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 var resourceType = provider.ResourceTypes
                                            .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
                                            .FirstOrDefault();
+                if (resourceType == null)
+                {
+                    string topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceTypeWithProvider(resourceIdentifier.ResourceType);
+                    resourceType = provider.ResourceTypes
+                                               .Where(t => string.Equals(t.ResourceType, topLevelResourceType, StringComparison.OrdinalIgnoreCase))
+                                               .FirstOrDefault();
+                }
                 if (resourceType != null)
                 {
                     apiVersion = resourceType.ApiVersions.Contains(apiVersion) ? apiVersion : resourceType.ApiVersions.FirstOrDefault();

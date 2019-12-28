@@ -12,19 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.StorageSync;
 using System;
 
 namespace Microsoft.Azure.Commands.StorageSync.Interfaces
 {
+
     /// <summary>
     /// Interface IStorageSyncClientWrapper
     /// </summary>
     public interface IStorageSyncClientWrapper
     {
+
         /// <summary>
         /// Gets or sets the active directory client.
         /// </summary>
@@ -48,6 +52,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// </summary>
         /// <value>The authorization management client.</value>
         IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource management client.
+        /// </summary>
+        /// <value>The resource management client.</value>
+        IResourceManagementClient ResourceManagementClient { get; set; }
+
         /// <summary>
         /// Gets or sets the verbose logger.
         /// </summary>
@@ -73,6 +84,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// <param name="resourceId">The resource identifier.</param>
         /// <returns>RoleAssignment.</returns>
         RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal,string resourceId);
+
+        /// <summary>
+        /// This function will invoke the registration and continue operation with a success function call.
+        /// </summary>
+        /// <param name="currentSubscriptionId">Current SubscriptionId in Azure Context</param>
+        /// <param name="resourceProviderNamespace">Resource provider name</param>
+        /// <param name="subscription">subscription</param>
+        /// <returns>true if request was successfully made. else false</returns>
+        bool TryRegisterProvider(string currentSubscriptionId, string resourceProviderNamespace, string subscription);
 
         /// <summary>
         /// Gets the afs agent installer path.
