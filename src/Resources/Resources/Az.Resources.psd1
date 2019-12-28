@@ -127,10 +127,16 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Remove-AzManagedApplication', 'Get-AzManagementGroup', 
                'New-AzManagementGroup', 'Update-AzManagementGroup', 
                'Remove-AzManagementGroup', 'New-AzManagementGroupSubscription', 
-               'Remove-AzManagementGroupSubscription', 'New-AzDeployment', 
-               'Get-AzDeployment', 'Test-AzDeployment', 'Remove-AzDeployment', 
-               'Stop-AzDeployment', 'Save-AzDeploymentTemplate', 
-               'Get-AzDeploymentOperation', 'Get-AzPolicyAlias', 'Remove-AzTag', 
+               'Remove-AzManagementGroupSubscription', 
+               'New-AzDeployment', 'Get-AzDeployment', 'Test-AzDeployment', 'Remove-AzDeployment', 
+               'Stop-AzDeployment', 'Save-AzDeploymentTemplate', 'Get-AzDeploymentOperation', 
+               'Get-AzManagementGroupDeployment', 'Test-AzManagementGroupDeployment', 'New-AzManagementGroupDeployment', 
+               'Get-AzManagementGroupDeploymentOperation', 'Save-AzManagementGroupDeploymentTemplate', 
+               'Stop-AzManagementGroupDeployment', 'Remove-AzManagementGroupDeployment', 
+			   'Get-AzTenantDeployment', 'Test-AzTenantDeployment', 'New-AzTenantDeployment', 
+               'Get-AzTenantDeploymentOperation', 'Save-AzTenantDeploymentTemplate', 
+               'Stop-AzTenantDeployment', 'Remove-AzTenantDeployment', 
+               'Get-AzPolicyAlias', 'Remove-AzTag', 
                'Get-AzTag', 'New-AzTag', 'Get-AzDenyAssignment'
 
 # Variables to export from this module
@@ -141,7 +147,10 @@ AliasesToExport = 'Get-AzResourceProviderAction',
                'Get-AzADServicePrincipalCredential', 
                'New-AzADServicePrincipalCredential', 
                'Remove-AzADServicePrincipalCredential', 'Set-AzADApplication', 
-               'Set-AzADServicePrincipal', 'Set-AzADUser'
+               'Set-AzADServicePrincipal', 'Set-AzADUser', 
+			   'New-AzSubscriptionDeployment', 'Get-AzSubscriptionDeployment', 'Test-AzSubscriptionDeployment', 
+               'Remove-AzSubscriptionDeployment', 'Stop-AzSubscriptionDeployment', 
+               'Save-AzSubscriptionDeploymentTemplate', 'Get-AzSubscriptionDeploymentOperation' 
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

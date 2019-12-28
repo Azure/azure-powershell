@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             return deployment;
         }
 
-        public static PSDeployment ToPSDeployment(this DeploymentExtended result)
+        public static PSDeployment ToPSDeployment(this DeploymentExtended result, string managementGroupId = null, string resourceGroupName = null)
         {
             PSDeployment deployment = new PSDeployment();
 
             if (result != null)
             {
-                deployment = CreatePSDeployment(result.Name, result.Location, result.Properties);
+                deployment = CreatePSDeployment(result, managementGroupId, resourceGroupName);
             }
 
             return deployment;
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
         }
 
 
-        public static PSResourceManagerError ToPSResourceManagerError(this ResourceManagementErrorWithDetails error)
+        public static PSResourceManagerError ToPSResourceManagerError(this ErrorResponse error)
         {
             PSResourceManagerError rmError = new PSResourceManagerError
             {
@@ -201,16 +201,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
         }
 
         private static PSDeployment CreatePSDeployment(
-            string name,
-            string location,
-            DeploymentPropertiesExtended properties)
+            DeploymentExtended deployment,
+            string managementGroupId,
+            string resourceGroup)
         {
             PSDeployment deploymentObject = new PSDeployment();
 
-            deploymentObject.DeploymentName = name;
-            deploymentObject.Location = location;
+            deploymentObject.Id = deployment.Id;
+            deploymentObject.DeploymentName = deployment.Name;
+            deploymentObject.Location = deployment.Location;
+            deploymentObject.ManagementGroupId = managementGroupId;
+            deploymentObject.ResourceGroupName = resourceGroup;
 
-            SetDeploymentProperties(deploymentObject, properties);
+            SetDeploymentProperties(deploymentObject, deployment.Properties);
 
             return deploymentObject;
         }

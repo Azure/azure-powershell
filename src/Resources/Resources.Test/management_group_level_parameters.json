@@ -1,0 +1,18 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "targetMG": {
+      "value": "ps_test_management_group_deployment"
+    },
+    "nestedsubId": {
+      "value": "fb3a3d6b-44c8-44f5-88c9-b20917c9b96b"
+    },
+    "nestedRG": {
+      "value": "ps_test_management_group_deployment"
+    },
+    "storageAccountName": {
+      "value": "armbuilddemo1821"
+    }
+  }
+}
