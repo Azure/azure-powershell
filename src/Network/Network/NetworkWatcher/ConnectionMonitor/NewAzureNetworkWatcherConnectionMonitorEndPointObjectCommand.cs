@@ -67,20 +67,23 @@ namespace Microsoft.Azure.Commands.Network
             Validate();
             string EndpointName = null;
 
-            if (!string.IsNullOrEmpty(this.ResourceId))
+            if (string.IsNullOrEmpty(this.Name))
             {
-                string[] SplittedName = ResourceId.Split('/');
-                // Name is in the form resourceName(ResourceGroupName)
-                EndpointName = SplittedName[9] + "(" + SplittedName[5]+ ")";
-            }
-            else if (!string.IsNullOrEmpty(this.Address))
-            {
-                EndpointName = this.Address;
+                if (!string.IsNullOrEmpty(this.ResourceId))
+                {
+                    string[] SplittedName = ResourceId.Split('/');
+                    // Name is in the form resourceName(ResourceGroupName)
+                    EndpointName = SplittedName[8] + "(" + SplittedName[4] + ")";
+                }
+                else if (!string.IsNullOrEmpty(this.Address))
+                {
+                    EndpointName = this.Address;
+                }
             }
 
             PSNetworkWatcherConnectionMonitorEndpointObject endPoint = new PSNetworkWatcherConnectionMonitorEndpointObject()
             {
-                Name = EndpointName,
+                Name = string.IsNullOrEmpty(this.Name)? EndpointName : this.Name,
                 ResourceId = this.ResourceId,
                 Address = this.Address,
                 Filter = new PSConnectionMonitorEndpointFilter()
@@ -107,14 +110,14 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
-            if (string.IsNullOrEmpty(this.ResourceId) && string.IsNullOrEmpty(this.Address) && string.IsNullOrEmpty(this.FilterType) && (!this.FilterAddress.Any()))
+            if (string.IsNullOrEmpty(this.ResourceId) && string.IsNullOrEmpty(this.Address) && string.IsNullOrEmpty(this.FilterType) && this.FilterAddress == null)
             {
                 throw new ArgumentException("No Parameter is provided");
             }
 
             if (string.IsNullOrEmpty(this.ResourceId) && string.IsNullOrEmpty(this.Address))
             {
-                throw new ArgumentException("ResourceId and Address can not be both empty");
+                throw new ArgumentException("ResourceId or Address can not be both empty");
             }
         
             if (!string.IsNullOrEmpty(ResourceId))
