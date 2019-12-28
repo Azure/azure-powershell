@@ -142,7 +142,13 @@
     <value>Deployment '{0}' doesn't exist under resource group '{1}'</value>
   </data>
   <data name="DeploymentDoesntExistAtSubscriptionScope" xml:space="preserve">
-    <value>Deployment '{0}' doesn't exist in subscription.</value>
+    <value>Deployment '{0}' doesn't exist in the current subscription.</value>
+  </data>
+  <data name="DeploymentDoesntExistAtManagementGroupScope" xml:space="preserve">
+    <value>Deployment '{0}' doesn't exist at management group '{1}'.</value>
+  </data>
+  <data name="DeploymentDoesntExistAtTenantScope" xml:space="preserve">
+    <value>Deployment '{0}' doesn't exist in the current tenant.</value>
   </data>
   <data name="DeploymentWithNameNotFound" xml:space="preserve">
     <value>Cannot find a deployment with name '{0}'.</value>
@@ -360,6 +366,9 @@
   <data name="InvalidRollbackParameters" xml:space="preserve">
     <value>The paramater -RollbackToLastDeployment and -RollBackDeploymentName can't be defined at the same time.</value>
   </data>
+  <data name="InvalidDeploymentMode" xml:space="preserve">
+    <value>The 'Complete' mode is not supported for a deployment at the current scope. Please use 'Incremental' mode instead.</value>
+  </data>
   <data name="CheckingDeploymentStatus" xml:space="preserve">
     <value>Checking deployment status in {0} seconds</value>
   </data>
@@ -396,8 +405,17 @@
   <data name="NoRunningDeployments" xml:space="preserve">
     <value>There are no running deployments under resource group '{0}'</value>
   </data>
+  <data name="NoRunningDeploymentsAtTenantScope" xml:space="preserve">
+    <value>There is no running deployment called '{0}' at the current tenant scope.</value>
+  </data>
+  <data name="NoRunningDeploymentsAtManagementGroup" xml:space="preserve">
+    <value>There is no running deployment called '{0}' at management group '{1}'.</value>
+  </data>
   <data name="NoRunningDeploymentsAtSubscriptionScope" xml:space="preserve">
-    <value>There are no running deployment called '{0}' at the current subscription scope.</value>
+    <value>There is no running deployment called '{0}' at the current subscription scope.</value>
+  </data>
+  <data name="NoRunningDeploymentsAtResourceGroup" xml:space="preserve">
+    <value>There is no running deployment called '{0}' at resource group '{1}'.</value>
   </data>
   <data name="UpdatedResourceGroup" xml:space="preserve">
     <value>Updated resource group '{0}' in location '{1}'</value>

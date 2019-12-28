@@ -20,6 +20,8 @@ using Moq;
 using Xunit;
 using Xunit.Abstractions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
@@ -52,14 +54,25 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
         public void StopsActiveDeployment()
         {
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-            resourcesClientMock.Setup(f => f.CancelDeployment(resourceGroupName, deploymentName));
+            resourcesClientMock.Setup(f => f.CancelDeployment(
+                new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup)
+                {
+                    ResourceGroupName = resourceGroupName,
+                    DeploymentName = deploymentName
+                }));
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = deploymentName;
 
             cmdlet.ExecuteCmdlet();
 
-            resourcesClientMock.Verify(f => f.CancelDeployment(resourceGroupName, deploymentName), Times.Once());
+            resourcesClientMock.Verify(f => f.CancelDeployment(
+                new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup)
+                {
+                    ResourceGroupName = resourceGroupName,
+                    DeploymentName = deploymentName
+                }),
+                Times.Once());
         }
     }
 }

@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
         public void RemoveDeployment()
         {
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-            resourcesClientMock.Setup(f => f.DeleteDeployment(resourceGroupName, deploymentName));
+            resourcesClientMock.Setup(f => f.DeleteDeploymentAtResourceGroup(resourceGroupName, deploymentName));
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = deploymentName;
 
             cmdlet.ExecuteCmdlet();
 
-            resourcesClientMock.Verify(f => f.DeleteDeployment(resourceGroupName, deploymentName), Times.Once());
+            resourcesClientMock.Verify(f => f.DeleteDeploymentAtResourceGroup(resourceGroupName, deploymentName), Times.Once());
         }
     }
 }

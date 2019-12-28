@@ -12,21 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     /// <summary>
     /// Validate a template to see whether it's using the right syntax, resource providers, resource types, etc.
     /// </summary>
-    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceManagerError))]
+    [Cmdlet("Test", AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceManagerError))]
     public class TestAzureResourceGroupDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
@@ -59,8 +60,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
             {
+                ScopeType = DeploymentScopeType.ResourceGroup,
                 DeploymentName = DeploymentName ?? Guid.NewGuid().ToString(),
                 ResourceGroupName = ResourceGroupName,
+                DeploymentMode = Mode,
                 TemplateFile = TemplateUri ?? this.ResolvePath(TemplateFile),
                 TemplateObject = TemplateObject,
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
@@ -74,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     : null
             };
 
-            WriteObject(ResourceManagerSdkClient.ValidateDeployment(parameters, Mode));
+            WriteObject(ResourceManagerSdkClient.ValidateDeployment(parameters));
         }
     }
 }
