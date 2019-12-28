@@ -281,7 +281,7 @@ function Test-ServiceUnit
 
 	Validate-ServiceUnit $updatedServiceUnit $resourceGroupName $location $serviceTopology.Name $service.Name $serviceUnitName $resourceGroupName $getResponse.DeploymentMode $getResponse.TemplateArtifactSourceRelativePath $getResponse.ParametersArtifactSourceRelativePath
 
-	# Test List Services
+	# Test List Service Units
 	$serviceUnits = Get-AzDeploymentManagerServiceUnit  `
 		-ResourceGroupName $resourceGroupName  `
 		-ServiceTopologyName $serviceTopology.Name `
@@ -428,6 +428,12 @@ function Test-HealthCheckStep
 	$step = New-AzDeploymentManagerStep -Name $step2Name -ResourceGroupName $resourceGroupName -Location $location -HealthCheckProperties $getResponse.StepProperties
 	Validate-RestHealthCheckStep $step $step2Name $location $resourceGroupName $getResponse.StepProperties
 
+	# Test list steps
+	$steps = Get-AzDeploymentManagerStep -ResourceGroupName $resourceGroupName
+	Assert-True { $steps.Count -ge 2 }
+	$selectedStep = $steps | Where-Object {$_.Name -eq $stepName}
+	Assert-NotNull $selectedStep "Created step not returned in list"
+
 	# Test Remove-Step 
 	Remove-AzDeploymentManagerStep -ResourceGroupName $resourceGroupName -Name $stepName
 	Remove-AzDeploymentManagerStep -ResourceGroupName $resourceGroupName -Name $step2Name
@@ -536,6 +542,12 @@ function Test-Rollout
 
 	$restartRollout = Restart-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName -Name $failedRolloutName -SkipSucceeded
 	Validate-Rollout $restartRollout $resourceGroupName $location $failedRolloutName @('Running') $serviceTopology $artifactSource $true 1
+
+	# Test list rollouts
+	$rollouts = Get-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName
+	Assert-True { $rollouts.Count -ge 2 }
+	$selectedRollout = $rollouts | Where-Object {$_.Name -eq $rolloutName}
+	Assert-NotNull $selectedRollout "Created rollout not returned in list"
 
 	Remove-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName -Name $rolloutName
 	$getResponse = Get-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName  -Name $rolloutName
