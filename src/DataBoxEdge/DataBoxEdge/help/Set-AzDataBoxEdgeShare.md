@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzDataBoxEdgeShare
 
 ## SYNOPSIS
-Updates the share for a device.
+Update the share 
 
 ## SYNTAX
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeviceName
-Device Name
+{{ Fill DeviceName Description }}
 
 ```yaml
 Type: System.String
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Resource Name
+Get Share with Resource name as Name
 
 ```yaml
 Type: System.String
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Share will be created under this ResourceGroupName
 
 ```yaml
 Type: System.String
@@ -249,9 +249,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare
+### None
 
 ## OUTPUTS
 

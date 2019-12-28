@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataBoxEdgeDevice
 
 ## SYNOPSIS
-Gets the information on available Data Box Edge devices.
+Get the available devices
 
 ## SYNTAX
 
@@ -78,40 +78,25 @@ Get-AzDataBoxEdgeDevice [-ResourceGroupName] <String> [-Name] <String> [-Alert]
 ```
 
 ## DESCRIPTION
-The **Get-AzDataBoxEdgeDevice** cmdlet gets the information about the available Data Box Edge Devices. You can specify the Name of the device along with the Resource Group Name to get the information on a specific device. 
+The **Get-AzDataBoxEdgeDevice** cmdlet gets information about Devices.
+If you specify the Name of the Device along with the resource group name, this cmdlet gets information about that specific Device
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\>Get-AzDataBoxEdgeDevice
-Name               ResourceGroupName  Model   Location
-----               -----------------  -----   --------
-deviceNameOne      resourceGroupName1 Edge    eastus
-deviceNameTwo      resourceGroupName2 Edge    westus
-deviceNameThree    resourceGroupName3 Gateway eastus
-```
-
-### Example 2
-```powershell
-PS C:\>Get-AzDataBoxEdgeDevice -ResourceId /subscriptions/subscriptionId/resourcegroups/resourceGroupName/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/deviceName
-Name            ResourceGroupName    Model   Location
-----            -----------------    -----   --------
-deviceName      resourceGroupName    Edge    eastus
-```
-
-### Example 3
-```powershell
-PS C:\>Get-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -DeviceName deviceName
-Name            ResourceGroupName    Model   Location
-----            -----------------    -----   --------
-deviceName      resourceGroupName    Edge    eastus
+Name               ResourceGroupName DeviceType        Location
+----               ----------------- ----------        --------
+device-name-1      DataBoxEdgeDevice resource-grp-1    eastus
+device-name-2      DataBoxEdgeDevice resource-grp-2    westus
+device-name-3      DataBoxEdgeDevice resource-grp-3    eastus
 ```
 
 ## PARAMETERS
 
 ### -Alert
-Fetch the alerts on the data box edge/gateway device
+Fetch the alerts for the data box edge/gateway device
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -141,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExtendedInfo
-Gets additional information for the specified Data Box Edge/Data Box Gateway device
+Resource Group Name
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -156,7 +141,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Resource Group Name
+Device Name
+
 
 ```yaml
 Type: System.String
@@ -171,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkSetting
-Gets the network settings of the specified Data Box Edge/Data Box Gateway device
+Resource Group Name
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -186,7 +172,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Device Resource Group Name
+
 
 ```yaml
 Type: System.String
@@ -213,7 +200,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Azure ResourceId
+Azure Resource Id 
 
 ```yaml
 Type: System.String
@@ -228,7 +215,7 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateSummary
-Gets information about the availability of updates based on the last scan of the device. It also gets information about any ongoing download or install jobs on the device.
+Resource Group Name
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -252,14 +239,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice
-
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeNetworkAdapter
-
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDeviceExtendedInfo
-
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUpdateSummary
-
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeAlert
 
 ## NOTES
 

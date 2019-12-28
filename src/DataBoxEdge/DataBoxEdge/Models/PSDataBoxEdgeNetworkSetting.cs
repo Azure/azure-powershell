@@ -1,9 +1,10 @@
-﻿using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using NetworkSettings = Microsoft.Azure.Management.DataBoxEdge.Models.NetworkSettings;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using Microsoft.Azure.Commands.DataBoxEdge.Common;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+using NetworkSettings = Microsoft.Azure.Management.EdgeGateway.Models.NetworkSettings;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
 {
@@ -15,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 3, GroupByThis = false)]
         public string ResourceGroupName { get; set; }
 
-        [Ps1Xml(Label = "Adapter Name", Target = ViewControl.Table, Position = 1)]
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 1)]
         public string Name;
 
         public IList<PSDataBoxEdgeNetworkAdapter> NetworkAdapters { get; }

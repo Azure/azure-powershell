@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataBoxEdgeOrder
 
 ## SYNOPSIS
-Get the order details for a device
+Get the order details for the device
 
 ## SYNTAX
 
@@ -30,16 +30,16 @@ Get-AzDataBoxEdgeOrder -ResourceId <String> [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-The **Get-AzDataBoxEdgeOrder** cmdlet gets the order details for a Data Box Edge device. 
+This command **Get-AzDataBoxEdgeOrder** will get the order details, tracking info, order status for the device name.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDataBoxEdgeOrder -ResourceGroupName resourceGroupName -DeviceName deviceName
+PS C:\> Get-AzDataBoxEdgeOrder -ResourceGroupName rgname -DeviceName device-name
 DeviceName  ResourceGroupName Status    UpdatedDatetime
 ----------  ----------------- ------    ---------------
-deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM
+device-name rgname            Untracked 01-Jan-01 12:00:00 AM
 ```
 
 ## PARAMETERS
@@ -70,7 +70,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -85,7 +85,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -100,7 +100,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -115,7 +115,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -124,13 +124,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice
-
-### System.String
+### None
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder
+
+### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrderStatus
+
+### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrderTrackingInfo
 
 ## NOTES
 

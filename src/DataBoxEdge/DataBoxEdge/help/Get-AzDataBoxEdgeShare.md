@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataBoxEdgeShare
 
 ## SYNOPSIS
-Gets the available shares for a device.
+Gets the creted shares for this device
 
 ## SYNTAX
 
@@ -36,19 +36,19 @@ Get-AzDataBoxEdgeShare [[-Name] <String>] [-DefaultProfile <IAzureContextContain
 ```
 
 ## DESCRIPTION
-The **Get-AzDataBoxEdgeShare** cmdlet gets the available shares for a Data Box Edge device. If Name is provided this will get the share by Name.
+The **Get-AzDataBoxEdgeShare** get the shares for the device. If Name is provided this will get the share by Name.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDataBoxEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName
+PS C:\> Get-AzDataBoxEdgeShare -ResourceGroupName resource-group-name -DeviceName device-name
 Name       Type       DataPolicy       DataFormat       ResourceGroupName     StorageAccountName
 ---------- ---------- ---------------- ---------------- --------------------- -------------------
-share-1    SMB        Cloud            PageBlob         resourceGroupName     storageAccountName
-share-2    SMB        Cloud            PageBlob         resourceGroupName     storageAccountName
-share-3    SMB        Cloud            PageBlob         resourceGroupName     storageAccountName
-share-4    SMB        Cloud            PageBlob         resourceGroupName     storageAccountName
+share-1    SMB        Cloud            PageBlob         resource-group-name   storage-account-name
+share-2    SMB        Cloud            PageBlob         resource-group-name   storage-account-name
+share-3    SMB        Cloud            PageBlob         resource-group-name   storage-account-name
+share-4    SMB        Cloud            PageBlob         resource-group-name   storage-account-name
 ```
 
 ## PARAMETERS
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Resource Name
+Name of the share
 
 ```yaml
 Type: System.String
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Resource group name
 
 ```yaml
 Type: System.String
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Azure ResourceId
+{{ Fill ResourceId Description }}
 
 ```yaml
 Type: System.String
@@ -160,11 +160,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare
+### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser
 
 ## NOTES
 

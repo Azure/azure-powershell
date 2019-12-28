@@ -16,13 +16,12 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.DataBoxEdge;
+using Microsoft.Azure.Management.EdgeGateway;
 using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Utils;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser;
-using ResourceModel = Microsoft.Azure.Management.DataBoxEdge.Models.User;
+using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.User;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
 {
@@ -87,15 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
             return this.EncryptionKey.ConvertToString();
         }
 
-        private ResourceModel GetResource()
-        {
-            return this.DataBoxEdgeManagementClient.Users.Get(
-                this.DeviceName,
-                this.Name,
-                this.ResourceGroupName);
-        }
-
-        private ResourceModel UpdateUser(ResourceModel user)
+        private PSResourceModel SetResourceModel()
         {
             var password = this.Password.ConvertToString();
             PasswordUtility.ValidateUserPasswordPattern(nameof(this.Password), password);
@@ -107,17 +98,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
                     password,
                     this.GetKeyForEncryption()
                 );
-            user.EncryptedPassword = encryptedSecret;
-            return this.DataBoxEdgeManagementClient.Users.CreateOrUpdate(
-                this.DeviceName,
-                this.Name,
-                user,
-                this.ResourceGroupName);
-        }
 
-        private PSResourceModel SetResource()
-        {
-            return new PSDataBoxEdgeUser(UpdateUser(GetResource()));
+            return new PSResourceModel(
+                UsersOperationsExtensions.CreateOrUpdate(
+                    this.DataBoxEdgeManagementClient.Users,
+                    this.DeviceName,
+                    this.Name,
+                    this.ResourceGroupName,
+                    encryptedSecret
+                ));
         }
 
         public override void ExecuteCmdlet()
@@ -141,9 +130,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
                 string.Format("Updating '{0}' in device '{1}' with name '{2}'.",
                     HelpMessageUsers.ObjectName, this.DeviceName, this.Name)))
             {
-                var results = new List<PSDataBoxEdgeUser>()
+                var results = new List<PSResourceModel>()
                 {
-                    SetResource()
+                    SetResourceModel()
                 };
 
                 WriteObject(results, true);

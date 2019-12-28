@@ -8,36 +8,28 @@ schema: 2.0.0
 # New-AzDataBoxEdgeUser
 
 ## SYNOPSIS
-Creates a new user for the device.
+Creates a new user for the device
 
 ## SYNTAX
 
 ```
 New-AzDataBoxEdgeUser [-ResourceGroupName] <String> [-DeviceName] <String> [-Name] <String>
  -Password <SecureString> -EncryptionKey <SecureString> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [[-Type] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzDataBoxEdgeUser** cmdlet creates a new user for the Data Box Edge device. Creation of only users of type `Share` is supported.
+The **New-AzDataBoxEdgeUser** is used to create a new user for the device
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
+PS C:\> New-AzDataBoxEdgeUser -ResourceGroupName resource-group-name -DeviceName device-name -Name username
  -Password password-secured-string -EncryptionKey encryption-key
-User name   Type  ResourceGroupName DeviceName
----------   ----  ----------------- ----------
-username    Share resourceGroupName deviceName
-```
-
-```powershell
-PS C:\> New-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
- -Password password-secured-string -EncryptionKey encryption-key -Type Share
-User name   Type  ResourceGroupName DeviceName
----------   ----  ----------------- ----------
-username    Share resourceGroupName deviceName
+Name      ResourceGroupName
+-------- -----------------
+usename   resource-group-name
 ```
 
 ## PARAMETERS
@@ -73,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeviceName
-Device Name
+name of the device
 
 ```yaml
 Type: System.String
@@ -118,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -Password
-Password, provide as a secure string
+Password in secure string
 
 ```yaml
 Type: System.Security.SecureString
@@ -133,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group
 
 ```yaml
 Type: System.String
@@ -142,21 +134,6 @@ Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-Select UserType
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

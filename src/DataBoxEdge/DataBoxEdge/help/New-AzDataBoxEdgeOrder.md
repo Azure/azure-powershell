@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataBoxEdgeOrder
 
 ## SYNOPSIS
-Creates a new order for a device.
+Create a new order for the device
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzDataBoxEdgeOrder [-ResourceGroupName] <String> [-DeviceName] <String> -Con
 ```
 
 ## DESCRIPTION
-The **New-AzDataBoxEdgeOrder** cmdlet creates a new order for a Data Box Edge device. A Data Box Edge device resource needs to be created first before creating an order. You can specify details like contact person, company name, email, address etc. as parameters for creating the order.�
+This **New-AzDataBoxEdgeOrder** will create new order for the provided order details
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ The **New-AzDataBoxEdgeOrder** cmdlet creates a new order for a Data Box Edge de
 PS C:\> New-AzDataBoxEdgeOrder -ResourceGroupName rg-name -DeviceName device-name -ContactPerson "John Mcclane" -CompanyName Microsoft -Phone 8004269400 -Email john@microsoft.com -AddressLine1  "Microsoft Corporation" -PostalCode 98052 -City Redmond -State WA -Country USA
 DeviceName  ResourceGroupName Status    UpdatedDatetime
 ----------  ----------------- ------    ---------------
-deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM
+device-name rgname            Untracked 01-Jan-01 12:00:00 AM
 ```
 
 ## PARAMETERS
@@ -180,12 +180,12 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Email
-List of Emails to receive updates, Accepts max of 10 emails
+List of Emails to receive updates
 
 ```yaml
 Type: System.String[]
@@ -240,7 +240,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -275,7 +275,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -294,7 +295,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 

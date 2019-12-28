@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataBoxEdgeBandwidthSchedule
 
 ## SYNOPSIS
-Gets the information about the Bandwidth schedules
+Gets the information about Bandwidth schedules
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Get-AzDataBoxEdgeBandwidthSchedule [[-Name] <String>] [-DefaultProfile <IAzureCo
 ```
 
 ## DESCRIPTION
-The **Get-AzDataBoxEdgeBandwidthSchedule** cmdlet gets the information about the Bandwidth Schedules. You can specify the Name of a Schedule along with the Resource Group name and Device name to get the information about a specific Bandwidth schedule
+The **Get-AzDataBoxEdgeBandwidthSchedule** cmdlet gets information about Bandwidth Schedules. If you specify the Name of the Schedule along with the resource group name and Device name, this cmdlet gets information about that specific Bandwidth schedule
 
 ## EXAMPLES
 
@@ -47,8 +47,8 @@ PS C:\>Get-AzDataBoxEdgeBandwidthSchedule -ResourceGroupname resource-group-name
 
 Name              DaysOfWeek         RateInMbps StartTime StopTime
 ----              ----------         ---------- --------- --------
-schedule-name     Sunday,Saturday    unlimited  13:00:00  14:00:00
-Schedule-1        Tuesday,Friday     unlimited  00:00:00  23:59:00
+schedule-name     Sunday,Saturday    0          13:00:00  14:00:00
+Schedule-1        Tuesday,Friday     0          00:00:00  23:59:00
 Schedule-2        Thursday           50         00:01:00  05:00:00
 ```
 
@@ -58,7 +58,7 @@ PS C:\>Get-AzDataBoxEdgeBandwidthSchedule -ResourceGroupname resource-group-name
 
 Name              DaysOfWeek      RateInMbps StartTime StopTime
 ----              ----------      ---------- --------- --------
-Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00
+Schedule-1        Sunday,Saturday 0          13:00:00  14:00:00
 ```
 
 ## PARAMETERS
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeviceName
-Device Name
+The name of the device
 
 ```yaml
 Type: System.String
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Resource Name
+BandwidthSchedule Name
 
 ```yaml
 Type: System.String
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+BandwidthSchedule ResourceGroupName
 
 ```yaml
 Type: System.String
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Azure ResourceId
+ResourceId of the Azure Resource
 
 ```yaml
 Type: System.String
@@ -170,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice
+### None
 
 ## OUTPUTS
 

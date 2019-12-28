@@ -1,6 +1,7 @@
-﻿using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+﻿using Microsoft.Azure.Commands.DataBoxEdge.Common;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using StorageAccountCredential = Microsoft.Azure.Management.DataBoxEdge.Models.StorageAccountCredential;
+using StorageAccountCredential = Microsoft.Azure.Management.EdgeGateway.Models.StorageAccountCredential;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
 {
@@ -8,6 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
     {
         [Ps1Xml(Label = "SslStatus", Target = ViewControl.Table,
             ScriptBlock = "$_.storageAccountCredential.SslStatus")]
+        
         public StorageAccountCredential StorageAccountCredential;
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table)]

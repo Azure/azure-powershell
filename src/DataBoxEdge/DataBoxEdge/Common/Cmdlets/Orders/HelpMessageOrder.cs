@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
         internal const string ContactPerson = "Name of the contact person";
         internal const string CompanyName = "Name of the company";
         internal const string Phone = "Phone number of the contact person";
-        internal const string Email = "List of Emails to receive updates, Accepts max of 10 emails";
+        internal const string Email = "List of Emails to receive updates";
 
         // Constants for Shipping Address
         internal const string AddressLine1 = "Address first line";

@@ -41,10 +41,16 @@ function Test-CreateRole
 	$rgname = Get-DeviceResourceGroupName
 	$dfname = Get-DeviceName
 	$name = Get-RoleName
-	$deviceConnSec = Get-DeviceConnectionString
-	$iotDeviceConnSec = Get-IotDeviceConnectionString
-	$encryptionKey = Get-EncryptionKey 
-	
+
+	$deviceConnectionString = Get-DeviceConnectionString
+	$deviceConnSec = ConvertTo-SecureString $deviceConnectionString -AsPlainText -Force
+
+	$iotDeviceConnectionString = Get-IotDeviceConnectionString
+	$iotDeviceConnSec = ConvertTo-SecureString $iotDeviceConnectionString -AsPlainText -Force
+
+	$encryptionKeyString = Get-EncryptionKey 
+	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
+
 	$enabled = "Enabled"
 	$platform = "Windows"
 	# Test
@@ -68,10 +74,17 @@ function Test-RemoveRole
 	$rgname = Get-DeviceResourceGroupName
 	$dfname = Get-DeviceName
 	$name = Get-RoleName
-	$deviceConnSec = Get-DeviceConnectionString
-	$iotDeviceConnSec = Get-IotDeviceConnectionString
-	$encryptionKey = Get-EncryptionKey 
+
 	
+	$deviceConnectionString = Get-DeviceConnectionString
+	$deviceConnSec = ConvertTo-SecureString $deviceConnectionString -AsPlainText -Force
+
+	$iotDeviceConnectionString = Get-IotDeviceConnectionString
+	$iotDeviceConnSec = ConvertTo-SecureString $iotDeviceConnectionString -AsPlainText -Force
+
+	$encryptionKeyString = Get-EncryptionKey 
+	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
+
 	$enabled = "Enabled"
 	$platform = "Windows"
 	# Test

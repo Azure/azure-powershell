@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataBoxEdgeRole
 
 ## SYNOPSIS
-Creates a new Role for a device
+Creates a new Iot Role for the device
 
 ## SYNTAX
 
@@ -30,19 +30,19 @@ New-AzDataBoxEdgeRole [-ResourceGroupName] <String> [-DeviceName] <String> [-Nam
 ```
 
 ## DESCRIPTION
-The **New-AzDataBoxEdgeRole** cmdlet creates a new Role for a Data Box Edge device.
+The Command **New-AzDataBoxEdgeRole** will create a new Iot Role for Edge device and Iot device
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDataBoxEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name iotrole -DeviceProperties
- -IotDeviceId iotDeviceId -IotDeviceAccessKey iotAccessKey -IotEdgeDeviceId iotEdgeDeviceId -IotEdgeDeviceAccessKey iotEdgeDeviceAccessKey
- -IotHostHub "ehub.azure-devices.net" -EncryptionKey @SecureString -Platform Linux -RoleStatus Enabled
+PS C:\> New-AzDataBoxEdgeRole -ResourceGroupName resource-group-name -DeviceName device-name -Name iot-role-name -DeviceProperties
+ -IotDeviceId iot-device-id -IotDeviceAccessKey iot-device-access-key -IotEdgeDeviceId iot-edge-device-id -IotEdgeDeviceAccessKey iot-edge-device-access-key
+ -IotHostHub iot-host-hub-url -EncryptionKey encryption-key -Platform windows -RoleStatus Enabled
 
-Name    IoTHostHub             Platform Status  IotEdgeDeviceId   IotDeviceId  ResourceGroupName
-----    ----------             -------- ------  ---------------   -----------  -----------------
-iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  resourceGroupName
+Name 
+-----------
+iot-role-name
 ```
 
 ## PARAMETERS
@@ -258,7 +258,7 @@ Accept wildcard characters: False
 ```
 
 ### -Platform
-Provide the Platform, for ex: Linux
+Provide the Platform, for ex: windows
 
 ```yaml
 Type: System.String
@@ -341,7 +341,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole
+### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential
 
 ## NOTES
 

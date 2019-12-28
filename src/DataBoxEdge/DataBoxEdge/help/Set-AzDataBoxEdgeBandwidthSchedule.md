@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzDataBoxEdgeBandwidthSchedule
 
 ## SYNOPSIS
-Updates a Bandwidth Schedule.
+Update a Bandwidth Schedule for the device
 
 ## SYNTAX
 
@@ -76,24 +76,24 @@ Set-AzDataBoxEdgeBandwidthSchedule [-ResourceGroupName] <String> [-DeviceName] <
 ```
 
 ## DESCRIPTION
-The **Set-AzDataBoxEdgeBandwidthSchedule** cmdlet updates a Bandwidth schedule for a Data Box Edge device.
+This **Set-AzDataBoxEdgeBandwidthSchedule** will help in updating Bandwidth schedule's configuration for a device.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzDataBoxEdgeBandwidthSchedule  -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule -UnlimitedBandwidth
+PS C:\> New-AzDataBoxEdgeBandwidthSchedule  -ResourceGroupName resource-group-name -DeviceName device-name -Name bandwidth-schedule -UnlimitedBandwidth
 Name                DaysOfWeek                    RateInMbps StartTime StopTime
 ----                ----------                    ---------- --------- --------
-bandwidthSchedule  Sunday, Tuesday, Saturday      Unlimited  11:00:00  12:00:00
+bandwidth-schedule  Sunday, Tuesday, Saturday     0          11:00:00  12:00:00
 ```
 
 ### Example 2
 ```powershell
-PS C:\> New-AzDataBoxEdgeBandwidthSchedule -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule -StopTime 21:00
+PS C:\> New-AzDataBoxEdgeBandwidthSchedule -ResourceGroupName resource-group-name -DeviceName device-name -Name bandwidth-schedule -StopTime 21:00
 Name                DaysOfWeek                    RateInMbps StartTime StopTime
 ----                ----------                    ---------- --------- --------
-bandwidthSchedule  Sunday, Tuesday, Saturday      Unlimited  11:00:00  21:00:00
+bandwidth-schedule  Sunday, Tuesday, Saturday     0          11:00:00  21:00:00
 ```
 
 ## PARAMETERS
@@ -264,7 +264,7 @@ Accept wildcard characters: False
 ```
 
 ### -UnlimitedBandwidth
-Will Set Unlimited Bandwidth
+Set Unlimited Bandwidth
 
 ```yaml
 Type: System.Boolean

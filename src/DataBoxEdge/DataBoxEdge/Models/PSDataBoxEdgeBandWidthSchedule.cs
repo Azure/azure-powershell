@@ -1,22 +1,17 @@
-﻿using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+﻿using System;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using System;
-using BandwidthSchedule = Microsoft.Azure.Management.DataBoxEdge.Models.BandwidthSchedule;
+using BandwidthSchedule = Microsoft.Azure.Management.EdgeGateway.Models.BandwidthSchedule;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
 {
     public class PSDataBoxEdgeBandWidthSchedule
     {
         [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.bandwidthSchedule.Name", Position = 0)]
+        [Ps1Xml(Label = "RateInMbps", Target = ViewControl.Table, ScriptBlock = "$_.bandwidthSchedule.RateInMbps")]
         [Ps1Xml(Label = "StartTime", Target = ViewControl.Table, ScriptBlock = "$_.bandwidthSchedule.Start")]
         [Ps1Xml(Label = "StopTime", Target = ViewControl.Table, ScriptBlock = "$_.bandwidthSchedule.Stop")]
         public BandwidthSchedule BandwidthSchedule;
-
-        [Ps1Xml(Label = "RateInMbps", Target = ViewControl.Table,
-            Position = 1)]
-        public string RateInMbpsDisplay => this.BandwidthSchedule.RateInMbps == 0
-            ? "Unlimited"
-            : BandwidthSchedule.RateInMbps.ToString();
 
 
         [Ps1Xml(Label = "DaysOfWeek", Target = ViewControl.Table)]

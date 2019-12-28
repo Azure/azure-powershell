@@ -8,8 +8,7 @@ schema: 2.0.0
 # Get-AzDataBoxEdgeTrigger
 
 ## SYNOPSIS
-Get the Triggers configured on a device
- 
+Get the Triggers configured on the device
 
 ## SYNTAX
 
@@ -37,17 +36,17 @@ Get-AzDataBoxEdgeTrigger [[-Name] <String>] [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-The **Get-AzDataBoxEdgeTriger** cmdlet gets the triggers for a device. You can specify the name as a parameter in the cmdlet to fetch the details of a specific  specific Triggers
- 
+The **Get-AzDataBoxEdgeTriger** will List the triggers for a device. 
+If you specify the Name of the Trigger along with the resource group name and Device name, this cmdlet gets information about that specific Triggers
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDataBoxEdgeTrigger -ResourceGroupName resourceGroupName -DeviceName deviceName
+PS C:\> Get-AzDataBoxEdgeTrigger -ResourceGroupName resource-group-name -DeviceName device-name
 Name                  Kind               
 ----                  ----               
-triggerName          PeriodicTimerEvent
+trigger-name          PeriodicTimerEvent
 ```
 
 ## PARAMETERS

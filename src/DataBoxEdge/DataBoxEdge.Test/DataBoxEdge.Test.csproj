@@ -7,7 +7,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.DataBoxEdge" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.EdgeGateway" Version="0.8.1-preview" />
   </ItemGroup>
 
 </Project>

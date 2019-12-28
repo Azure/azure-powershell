@@ -40,11 +40,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
         internal const string DataFormatHelpMessage = "Set Data Format ex: PageBlob, BlobBlob";
         internal const string ObjectName = "Share";
 
-        internal const string ContainerName =
-            "Container name (Based on the data format specified, this represents " +
-            "the name of Azure Files/Pageblob/Block blob)";
+        internal const string LocalShareException =
+            "StorageAccountCredential cannot be empty while creating Cloud Share. " +
+            "\nIf you are trying to create local share please use switch parameter -";
 
-        internal const string RefreshDataHelpMessage = "Refresh Share Metadata with the data from the cloud";
+        internal const string BothUseException =
+            "StorageAccountCredential cannot be empty while creating Cloud Share. " +
+            "\nIf you are trying to create local share please use switch parameter -";
+
+        internal const string ContainerName =
+            "If provided, will use the same container name in the storage account, " +
+            "if container is not present it will create a new one";
+
 
     }
 }

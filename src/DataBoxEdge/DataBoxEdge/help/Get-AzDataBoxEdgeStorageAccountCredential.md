@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataBoxEdgeStorageAccountCredential
 
 ## SYNOPSIS
-Gets the storage account credentials corresponding to the storage account on the device.
+Get the Storage Account credential corresponding to device and storage account
 
 ## SYNTAX
 
@@ -37,16 +37,17 @@ Get-AzDataBoxEdgeStorageAccountCredential [[-Name] <String>] [-DefaultProfile <I
 ```
 
 ## DESCRIPTION
-The **Get-AzDataBoxEdgeStorageAccountCredential** cmdlet gets the storage account credentials for the corresponding storage account on the Data Box Edge device. You can specify Name, Resource Group Name and Device Name parameters to get information about a specific storage account credential.
+The **Get-AzDataBoxEdgeStirageAccountCredential** will get the StprageAccountCredentail details. 
+If you specify the Name of the StorageAccountCredential along with the resource group name and Device name, this cmdlet gets information about that specific Storage Account Credential
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>  Get-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName
-Name                          StorageAccount          SslStatus  ResourceGroupName
------------------------------ ---------------------- ---------- ---------------------
-storageAccountCredentialName  StorageAccountName     Enabled    resourceGroupName
+PS C:\>  Get-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resource-group-name -DeviceName device-name
+Name                             StorageAccount          SslStatus  ResourceGroupName
+-------------------------------- ---------------------- ---------- ---------------------
+storage-account-credential-name  storage-account-name    Enabled    resource-group-name
 ```
 
 ## PARAMETERS
@@ -67,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeviceName
-Device Name
+Name of the device
 
 ```yaml
 Type: System.String
@@ -97,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the storage account to be used
+Name of the storage account credential
 
 ```yaml
 Type: System.String
@@ -124,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Resource group name
 
 ```yaml
 Type: System.String
@@ -158,11 +159,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential
+### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSStorageAccountCredential
 
 ## NOTES
 

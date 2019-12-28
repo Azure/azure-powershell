@@ -16,11 +16,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.DataBoxEdge;
+using Microsoft.Azure.Management.EdgeGateway;
 using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.DataBoxEdge.Models.DataBoxEdgeDevice;
+using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.DataBoxEdgeDevice;
 using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
 
 
@@ -36,8 +36,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
         (new[] {GetExtendedInfoParameterSet, GetExtendedInfoByResourceIdParameterSet}))]
     [OutputType(typeof(PSDataBoxEdgeUpdateSummary), ParameterSetName =
         (new[] {GetSummaryUpdateByResourceIdParameterSet, GetSummaryUpdateParameterSet}))]
-    [OutputType(typeof(PSDataBoxEdgeAlert), ParameterSetName =
-        (new[] {GetAlertParameterSet, GetAlertByResourceIdParameterSet}))]
     public class DataBoxEdgeDeviceGetCmdletBase : AzureDataBoxEdgeCmdletBase
     {
         private const string ListByParameterSet = "ListByParameterSet";
@@ -126,19 +124,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetExtendedInfoParameterSet,
-            HelpMessage = HelpMessageDevice.ExtendedInfoHelpMessage)]
+            HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetExtendedInfoByResourceIdParameterSet,
-            HelpMessage = HelpMessageDevice.ExtendedInfoHelpMessage)]
+            HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter ExtendedInfo { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetNetworkSettingParameterSet,
-            HelpMessage = HelpMessageDevice.NetworkSettingHelpMessage)]
+            HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetNetworkSettingByResourceIdParameterSet,
-            HelpMessage = HelpMessageDevice.NetworkSettingHelpMessage)]
+            HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter NetworkSetting { get; set; }
 
@@ -153,10 +151,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetSummaryUpdateParameterSet,
-            HelpMessage = HelpMessageDevice.UpdateSummaryHelpMessage)]
+            HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetSummaryUpdateByResourceIdParameterSet,
-            HelpMessage = HelpMessageDevice.UpdateSummaryHelpMessage)]
+            HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter UpdateSummary { get; set; }
 

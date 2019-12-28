@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.DataBoxEdge.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.EdgeGateway.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -75,29 +75,25 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzDataBoxEdgeJob', 'Get-AzDataBoxEdgeDevice', 'Invoke-AzDataBoxEdgeDevice',
-               'New-AzDataBoxEdgeDevice', 'Remove-AzDataBoxEdgeDevice', 
-               'Get-AzDataBoxEdgeUser', 'New-AzDataBoxEdgeUser', 
-               'Set-AzDataBoxEdgeUser', 'Remove-AzDataBoxEdgeUser', 
+CmdletsToExport = 'Get-AzDataBoxEdgeJob', 'Get-AzDataBoxEdgeDevice', 
+               'Invoke-AzDataBoxEdgeDevice', 'New-AzDataBoxEdgeDevice', 
+               'Remove-AzDataBoxEdgeDevice', 'Get-AzDataBoxEdgeUser', 
+               'New-AzDataBoxEdgeUser', 'Set-AzDataBoxEdgeUser', 
+               'Remove-AzDataBoxEdgeUser', 
                'Get-AzDataBoxEdgeStorageAccountCredential', 
                'New-AzDataBoxEdgeStorageAccountCredential', 
-			   'Set-AzDataBoxEdgeStorageAccountCredential', 
                'Remove-AzDataBoxEdgeStorageAccountCredential', 
                'Get-AzDataBoxEdgeShare', 'New-AzDataBoxEdgeShare', 
                'Set-AzDataBoxEdgeShare', 'Remove-AzDataBoxEdgeShare', 
-			   'Invoke-AzDataBoxEdgeShare',
                'Get-AzDataBoxEdgeBandwidthSchedule', 
                'Set-AzDataBoxEdgeBandwidthSchedule', 
                'New-AzDataBoxEdgeBandwidthSchedule', 
-               'Remove-AzDataBoxEdgeBandwidthSchedule', 'Get-AzDataBoxEdgeRole', 'Set-AzDataBoxEdgeRole', 
-               'New-AzDataBoxEdgeRole', 'Remove-AzDataBoxEdgeRole',
-			   'Get-AzDataBoxEdgeTrigger', 'New-AzDataBoxEdgeTrigger', 
-			   'Remove-AzDataBoxEdgeTrigger',
-			   'Get-AzDataBoxEdgeOrder', 'New-AzDataBoxEdgeOrder', 'Remove-AzDataBoxEdgeOrder',
-			   'Get-AzDataBoxEdgeStorageAccount', 'New-AzDataBoxEdgeStorageAccount', 'Remove-AzDataBoxEdgeStorageAccount',
-			   'Get-AzDataBoxEdgeStorageContainer', 'New-AzDataBoxEdgeStorageContainer', 'Remove-AzDataBoxEdgeStorageContainer',
-			   'Invoke-AzDataBoxEdgeStorageContainer'
-
+               'Remove-AzDataBoxEdgeBandwidthSchedule', 'Get-AzDataBoxEdgeRole', 
+               'Set-AzDataBoxEdgeRole', 'New-AzDataBoxEdgeRole', 
+               'Remove-AzDataBoxEdgeRole', 'Get-AzDataBoxEdgeTrigger', 
+               'New-AzDataBoxEdgeTrigger', 'Remove-AzDataBoxEdgeTrigger', 
+               'Get-AzDataBoxEdgeOrder', 'New-AzDataBoxEdgeOrder', 
+               'Remove-AzDataBoxEdgeOrder'
 
 # Variables to export from this module
 # VariablesToExport = @()

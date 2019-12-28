@@ -1,15 +1,15 @@
-﻿using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+﻿using System;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using System;
-using System.Collections.Generic;
-using DataBoxEdgeDevice = Microsoft.Azure.Management.DataBoxEdge.Models.DataBoxEdgeDevice;
+using Microsoft.Azure.Commands.DataBoxEdge.Common;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+using DataBoxEdgeDevice = Microsoft.Azure.Management.EdgeGateway.Models.DataBoxEdgeDevice;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
 {
     public class PSDataBoxEdgeDevice
     {
-        [Ps1Xml(Label = "Model", Target = ViewControl.Table,
-            ScriptBlock = "$_.dataBoxEdgeDevice.Sku.Name", Position = 2)]
+        [Ps1Xml(Label = "DeviceType", Target = ViewControl.Table,
+            ScriptBlock = "$_.dataBoxEdgeDevice.DeviceType", Position = 2)]
         [Ps1Xml(Label = "Location", Target = ViewControl.Table,
             ScriptBlock = "$_.dataBoxEdgeDevice.Location", Position = 4)]
         public DataBoxEdgeDevice DataBoxEdgeDevice;
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
             var dataBoxEdgeResourceIdentifier = new DataBoxEdgeResourceIdentifier(dataBoxEdgeDevice.Id);
             this.ResourceGroupName = dataBoxEdgeResourceIdentifier.ResourceGroupName;
             this.Name = dataBoxEdgeResourceIdentifier.Name;
-            
+
         }
     }
 }

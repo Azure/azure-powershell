@@ -16,9 +16,9 @@ using System;
 using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.DataBoxEdge;
+using Microsoft.Azure.Management.EdgeGateway;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.DataBoxEdge.Models.BandwidthSchedule;
+using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.BandwidthSchedule;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidth
 {

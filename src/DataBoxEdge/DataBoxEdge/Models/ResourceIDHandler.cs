@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge
 {
     public class ResourceIdHandler : ResourceIdentifier
     {

@@ -40,8 +40,9 @@ function Test-CreateStorageAccountCredential
 	$rgname = Get-DeviceResourceGroupName
 	$dfname = Get-DeviceName
 	$staname = Get-StorageAccountCredentialName
-	$encryptionKey = Get-EncryptionKey 
-	
+	$encryptionKeyString = Get-EncryptionKey 
+	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
+
 	$storageAccountType = 'GeneralPurposeStorage'
 	$storageAccountSkuName = 'Standard_LRS'
 	$storageAccountLocation = 'WestUS'
@@ -71,8 +72,9 @@ function Test-RemoveStorageAccountCredential
 {	
 	 $rgname = Get-DeviceResourceGroupName
 	$dfname = Get-DeviceName
-	$staname = Get-StorageAccountCredentialName 
-	$encryptionKey = Get-EncryptionKey
+	$staname = Get-StorageAccountCredentialName
+	$encryptionKeyString = Get-EncryptionKey 
+	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
 
 	$storageAccountType = 'GeneralPurposeStorage'
 	$storageAccountSkuName = 'Standard_LRS'

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataBoxEdgeShare
 
 ## SYNOPSIS
-Creates a new share on the device.
+Creates a new share in the device
 
 ## SYNTAX
 
@@ -43,17 +43,17 @@ New-AzDataBoxEdgeShare [-ResourceGroupName] <String> [-DeviceName] <String> [-Na
 ```
 
 ## DESCRIPTION
-The **New-AzDataBoxEdgeShare** cmdlet creates a new share on the Data Box Edge device.
+The command New-AzDataBoxEdgeShare is used to create a new share in the device
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzDataBoxEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name share-1 -SMB
--StorageAccountCredentialName storageCredentialName -DataFormat PageBlob
+PS C:\> New-AzDataBoxEdgeShare -ResourceGroupName resource-group-name -DeviceName device-name -Name share-1 -SMB
+-StorageAccountCredentialName storage-credential-name -DataFormat PageBlob
 Name       Type       DataPolicy       DataFormat       ResourceGroupName     StorageAccountName
 ---------- ---------- ---------------- ---------------- --------------------- -------------------
-share-1    SMB        Cloud            PageBlob         resourceGroupName     storageAccountName
+share-1    SMB        Cloud            PageBlob         resource-group-name   storage-account-name
 ```
 
 ## PARAMETERS
@@ -68,7 +68,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -ContainerName
-Container name (Based on the data format specified, this represents the name of Azure Files/Pageblob/Block blob)
+If provided, will use the same container name in the storage account, if container is not present it will create a new one
 
 ```yaml
 Type: System.String
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeviceName
-Device Name
+Name of the device
 
 ```yaml
 Type: System.String
@@ -159,12 +159,12 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Resource Name
+Creates a share with Name with Share Access protocol as NFS and
 
 ```yaml
 Type: System.String
@@ -174,7 +174,7 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -188,13 +188,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Share will be created under this ResourceGroupName
 
 ```yaml
 Type: System.String
@@ -204,7 +204,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -218,7 +218,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -263,13 +263,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -278,7 +279,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -288,12 +289,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
+### None
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare
-
 ## NOTES
 
 ## RELATED LINKS

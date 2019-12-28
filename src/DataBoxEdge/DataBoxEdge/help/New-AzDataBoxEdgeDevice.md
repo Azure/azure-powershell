@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataBoxEdgeDevice
 
 ## SYNOPSIS
-Configures a new Data Box Edge device
+Configures a new device
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzDataBoxEdgeDevice [-ResourceGroupName] <String> [-Name] <String> -Location
 ```
 
 ## DESCRIPTION
-The **New-AzDataBoxEdgeDevice** cmdlet configures a new Data Box Edge device
+This **New-AzDataBoxEdgeDevice** will configure a device.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -Location eastus -Sku Edge
-Name            ResourceGroupName    Model   Location
-----            -----------------    -----   --------
-deviceName      resourceGroupName    Edge    eastus
+PS C:\> New-AzDataBoxEdgeDevice -ResourceGroupName resource-goup-name -Name device-name -Location eastus -Sku Edge
+Name        ResourceGroupName     DeviceType        Location
+----        -----------------    ----------        --------
+device-name resource-group-name   DataBoxEdgeDevice eastus
 ```
 
 ## PARAMETERS
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Available Skus are Edge, Gateway
+Sku of the device
 
 ```yaml
 Type: System.String
@@ -138,7 +138,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

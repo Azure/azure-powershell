@@ -19,8 +19,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common
         internal const string Sac = AzurePrefix + ServiceName + "StorageAccountCredential";
         internal const string Role = AzurePrefix + ServiceName + "Role";
         internal const string Share = AzurePrefix + ServiceName + "Share";
-        internal const string EdgeStorageAccount = AzurePrefix + ServiceName + "StorageAccount";
-        internal const string EdgeStorageContainer = AzurePrefix + ServiceName + "StorageContainer";
         internal const string Trigger = AzurePrefix + ServiceName + "Trigger";
         internal const string BandwidthSchedule = AzurePrefix + ServiceName + "BandwidthSchedule";
         internal const string Test = AzurePrefix + ServiceName + "Test";

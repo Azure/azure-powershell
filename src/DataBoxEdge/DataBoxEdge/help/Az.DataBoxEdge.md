@@ -12,120 +12,92 @@ Module to create a device and perform operations on DataBoxEdge devices
 
 ## Az.DataBoxEdge Cmdlets
 ### [Get-AzDataBoxEdgeBandwidthSchedule](Get-AzDataBoxEdgeBandwidthSchedule.md)
-Gets the information about the Bandwidth schedules
+Gets the information about Bandwidth schedules
 
 ### [Get-AzDataBoxEdgeDevice](Get-AzDataBoxEdgeDevice.md)
-Gets the information on available Data Box Edge devices.
+Get the available devices
 
 ### [Get-AzDataBoxEdgeJob](Get-AzDataBoxEdgeJob.md)
-Gets the jobs scheduled on a device.
+Get job by Name
 
 ### [Get-AzDataBoxEdgeOrder](Get-AzDataBoxEdgeOrder.md)
-Get the order details for a device
+Get the order details for the device
 
 ### [Get-AzDataBoxEdgeRole](Get-AzDataBoxEdgeRole.md)
-Fetches the available roles for a device.
+Fetch the available roles for a device
 
 ### [Get-AzDataBoxEdgeShare](Get-AzDataBoxEdgeShare.md)
-Gets the available shares for a device.
-
-### [Get-AzDataBoxEdgeStorageAccount](Get-AzDataBoxEdgeStorageAccount.md)
-Gets the Edge Storage accounts on the device.
+Gets the creted shares for this device
 
 ### [Get-AzDataBoxEdgeStorageAccountCredential](Get-AzDataBoxEdgeStorageAccountCredential.md)
-Gets the storage account credentials corresponding to the storage account on the device.
-
-### [Get-AzDataBoxEdgeStorageContainer](Get-AzDataBoxEdgeStorageContainer.md)
-Gets the containers for an Edge Storage account on a device.
+Get the Storage Account credential corresponding to device and storage account
 
 ### [Get-AzDataBoxEdgeTrigger](Get-AzDataBoxEdgeTrigger.md)
-Get the Triggers configured on a device
- 
+Get the Triggers configured on the device
 
 ### [Get-AzDataBoxEdgeUser](Get-AzDataBoxEdgeUser.md)
-Gets the configured users for a device.
+Get the created users  for this device
 
 ### [Invoke-AzDataBoxEdgeDevice](Invoke-AzDataBoxEdgeDevice.md)
-Invokes specific actions on the device.
-
-### [Invoke-AzDataBoxEdgeShare](Invoke-AzDataBoxEdgeShare.md)
-Invokes specific actions on a share.
-
-### [Invoke-AzDataBoxEdgeStorageContainer](Invoke-AzDataBoxEdgeStorageContainer.md)
-Invokes specific actions on a storage container
+Invoke specific actions on the device
 
 ### [New-AzDataBoxEdgeBandwidthSchedule](New-AzDataBoxEdgeBandwidthSchedule.md)
-Creates a new Bandwidth schedule
+Create a new Bandwidth schedule
 
 ### [New-AzDataBoxEdgeDevice](New-AzDataBoxEdgeDevice.md)
-Configures a new Data Box Edge device
+Configures a new device
 
 ### [New-AzDataBoxEdgeOrder](New-AzDataBoxEdgeOrder.md)
-Creates a new order for a device.
+Create a new order for the device
 
 ### [New-AzDataBoxEdgeRole](New-AzDataBoxEdgeRole.md)
-Creates a new Role for a device
+Creates a new Iot Role for the device
 
 ### [New-AzDataBoxEdgeShare](New-AzDataBoxEdgeShare.md)
-Creates a new share on the device.
-
-### [New-AzDataBoxEdgeStorageAccount](New-AzDataBoxEdgeStorageAccount.md)
-Creates a new Edge Storage account in the device.
+Creates a new share in the device
 
 ### [New-AzDataBoxEdgeStorageAccountCredential](New-AzDataBoxEdgeStorageAccountCredential.md)
-Creates new credentials for an edge storage account on the device.
-
-### [New-AzDataBoxEdgeStorageContainer](New-AzDataBoxEdgeStorageContainer.md)
-Creates a new storage container in the Edge Storage account on the device.
+Create new storage account credential object
 
 ### [New-AzDataBoxEdgeTrigger](New-AzDataBoxEdgeTrigger.md)
-Configures a trigger on the device.
+To Configure Triggers 
 
 ### [New-AzDataBoxEdgeUser](New-AzDataBoxEdgeUser.md)
-Creates a new user for the device.
+Creates a new user for the device
 
 ### [Remove-AzDataBoxEdgeBandwidthSchedule](Remove-AzDataBoxEdgeBandwidthSchedule.md)
-Removes a Bandwidth Schedule.
+Removes a Bandwidth Schedule
 
 ### [Remove-AzDataBoxEdgeDevice](Remove-AzDataBoxEdgeDevice.md)
-Removes a Data Box Edge device.
+Remove a device
 
 ### [Remove-AzDataBoxEdgeOrder](Remove-AzDataBoxEdgeOrder.md)
-Removes the order for a device.
+Remove the Order for a data box
 
 ### [Remove-AzDataBoxEdgeRole](Remove-AzDataBoxEdgeRole.md)
-Removes the associated IoT role for a device.
+Removes the assosciated Role for the device
 
-### [Remove-AzDataBoxEdgeShare](Remove-AzDataBoxEdgeShare.md)
-Removes a share from the device.
-
-### [Remove-AzDataBoxEdgeStorageAccount](Remove-AzDataBoxEdgeStorageAccount.md)
-Removes the Edge Storage account for a device.
+### [Remove-AzDataBoxEdgeRole](Remove-AzDataBoxEdgeRole.md)
+Removes the assosciated Role for the device
 
 ### [Remove-AzDataBoxEdgeStorageAccountCredential](Remove-AzDataBoxEdgeStorageAccountCredential.md)
-Removes a storage account credential for a device.
-
-### [Remove-AzDataBoxEdgeStorageContainer](Remove-AzDataBoxEdgeStorageContainer.md)
-Removes a storage container for the Edge Storage account on a device.
+Removes a storage account credentail object for the device
 
 ### [Remove-AzDataBoxEdgeTrigger](Remove-AzDataBoxEdgeTrigger.md)
-Removes an existing trigger on the device.
+Removes the trigger
 
 ### [Remove-AzDataBoxEdgeUser](Remove-AzDataBoxEdgeUser.md)
-Removes a user on a device.
+Removes the user
 
 ### [Set-AzDataBoxEdgeBandwidthSchedule](Set-AzDataBoxEdgeBandwidthSchedule.md)
-Updates a Bandwidth Schedule.
+Update a Bandwidth Schedule for the device
 
 ### [Set-AzDataBoxEdgeRole](Set-AzDataBoxEdgeRole.md)
-Updates a Role for a device
+Update the Role
 
 ### [Set-AzDataBoxEdgeShare](Set-AzDataBoxEdgeShare.md)
-Updates the share for a device.
-
-### [Set-AzDataBoxEdgeStorageAccountCredential](Set-AzDataBoxEdgeStorageAccountCredential.md)
-Sets the storage account credential for a device.
+Update the share 
 
 ### [Set-AzDataBoxEdgeUser](Set-AzDataBoxEdgeUser.md)
-Sets a new password for a user on the device.
+Set the new password for the user
 

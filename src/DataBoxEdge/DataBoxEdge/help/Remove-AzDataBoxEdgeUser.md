@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDataBoxEdgeUser
 
 ## SYNOPSIS
-Removes a user on a device.
+Removes the user
 
 ## SYNTAX
 
@@ -31,13 +31,13 @@ Remove-AzDataBoxEdgeUser [-InputObject] <PSDataBoxEdgeUser> [-AsJob] [-DefaultPr
 ```
 
 ## DESCRIPTION
-The **Remove-AzDataBoxEdgeUser** cmdlet removes a user on the Data Box Edge device. Creation of only users of type `Share` is supported.
+This **Remove-AzDataBoxEdgeUser** will remove the User for the device.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
+PS C:\> Remove-AzDataBoxEdgeUser ResourceGroupName resource-group-name -DeviceName device-name -Name username
 ```
 
 ## PARAMETERS
