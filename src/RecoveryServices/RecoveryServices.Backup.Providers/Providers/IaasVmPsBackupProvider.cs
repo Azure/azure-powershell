@@ -74,6 +74,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string azureVMCloudServiceName = (string)ProviderData[ItemParams.AzureVMCloudServiceName];
             string azureVMResourceGroupName = (string)ProviderData[ItemParams.AzureVMResourceGroupName];
             string parameterSetName = (string)ProviderData[ItemParams.ParameterSetName];
+            string[] inclusionDisksList = (string[])ProviderData[ItemParams.InclusionDisksList];
+            string[] exclusionDisksList = (string[])ProviderData[ItemParams.ExclusionDisksList];
+            SwitchParameter resetDiskExclusionSetting = (SwitchParameter)ProviderData[ItemParams.ResetExclusionSettings];
 
             PolicyBase policy = (PolicyBase)ProviderData[ItemParams.Policy];
 
@@ -152,6 +155,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             properties.PolicyId = policy.Id;
             properties.SourceResourceId = sourceResourceId;
+
+            if(resetDiskExclusionSetting.IsPresent)
+            {
+                properties.ExtendedInfo
+            }
 
             ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
             {
