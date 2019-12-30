@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix an error in help document of `Remove-AzTag`.
 
 ## Version 1.9.0
 * Update references in .psd1 to use relative path
