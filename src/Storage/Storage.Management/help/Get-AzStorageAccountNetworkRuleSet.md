@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureRmStorageAccountNetworkRuleSet
+# Get-AzStorageAccountNetworkRuleSet
 
 ## SYNOPSIS
 Get the NetWorkRule property of a Storage account
@@ -13,18 +13,18 @@ Get the NetWorkRule property of a Storage account
 ## SYNTAX
 
 ```
-Get-AzureRmStorageAccountNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String>
+Get-AzStorageAccountNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmStorageAccountNetworkRuleSet** cmdlet gets the NetworkRule property of a Storage account
+The **Get-AzStorageAccountNetworkRuleSet** cmdlet gets the NetworkRule property of a Storage account
 
 ## EXAMPLES
 
 ### Example 1: Get NetworkRule property of a specified Storage account
 ```
-PS C:\> Get-AzureRmStorageAccountNetworkRuleSet  -ResourceGroupName "rg1" -AccountName "mystorageaccount"
+PS C:\> Get-AzStorageAccountNetworkRuleSet  -ResourceGroupName "rg1" -AccountName "mystorageaccount"
 ```
 
 This command gets NetworkRule property of a specified Storage account

@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/re
 schema: 2.0.0
 ---
 
-# Remove-AzureRmStorageAccount
+# Remove-AzStorageAccount
 
 ## SYNOPSIS
 Removes a Storage account from Azure.
@@ -14,18 +14,18 @@ Removes a Storage account from Azure.
 ## SYNTAX
 
 ```
-Remove-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-AsJob]
+Remove-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmStorageAccount** cmdlet removes a Storage account from Azure.
+The **Remove-AzStorageAccount** cmdlet removes a Storage account from Azure.
 
 ## EXAMPLES
 
 ### Example 1: Remove a Storage account
 ```
-PS C:\>Remove-AzureRmStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
+PS C:\>Remove-AzStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
 ```
 
 This command removes the specified Storage account.
@@ -151,10 +151,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmStorageAccount](./Get-AzureRmStorageAccount.md)
+[Get-AzStorageAccount](./Get-AzStorageAccount.md)
 
-[New-AzureRmStorageAccount](./New-AzureRmStorageAccount.md)
+[New-AzStorageAccount](./New-AzStorageAccount.md)
 
-[Set-AzureRmStorageAccount](./Set-AzureRmStorageAccount.md)
+[Set-AzStorageAccount](./Set-AzStorageAccount.md)
 
 

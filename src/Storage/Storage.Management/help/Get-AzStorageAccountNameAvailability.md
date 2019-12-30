@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureRmStorageAccountNameAvailability
+# Get-AzStorageAccountNameAvailability
 
 ## SYNOPSIS
 Checks the availability of a Storage account name.
@@ -14,18 +14,18 @@ Checks the availability of a Storage account name.
 ## SYNTAX
 
 ```
-Get-AzureRmStorageAccountNameAvailability [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzStorageAccountNameAvailability [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmStorageAccountNameAvailability** cmdlet checks whether the name of an Azure Storage account is valid and available to use.
+The **Get-AzStorageAccountNameAvailability** cmdlet checks whether the name of an Azure Storage account is valid and available to use.
 
 ## EXAMPLES
 
 ### Example 1: Check availability of a Storage account name
 ```
-PS C:\>Get-AzureRmStorageAccountNameAvailability -Name 'contosostorage03'
+PS C:\>Get-AzStorageAccountNameAvailability -Name 'contosostorage03'
 ```
 
 This command checks the availability of the name ContosoStorage03.
@@ -77,6 +77,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure Storage Manager Cmdlets](./AzureRM.Storage.md)
+[Azure Storage Manager Cmdlets](./Az.Storage.md)
 
 

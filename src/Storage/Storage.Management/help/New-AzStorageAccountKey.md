@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ne
 schema: 2.0.0
 ---
 
-# New-AzureRmStorageAccountKey
+# New-AzStorageAccountKey
 
 ## SYNOPSIS
 Regenerates a storage key for an Azure Storage account.
@@ -14,18 +14,18 @@ Regenerates a storage key for an Azure Storage account.
 ## SYNTAX
 
 ```
-New-AzureRmStorageAccountKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
+New-AzStorageAccountKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmStorageAccountKey** cmdlet regenerates a storage key for an Azure Storage account.
+The **New-AzStorageAccountKey** cmdlet regenerates a storage key for an Azure Storage account.
 
 ## EXAMPLES
 
 ### Example 1: Regenerate a storage key
 ```
-PS C:\>New-AzureRmStorageKey -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyName "key1"
+PS C:\>New-AzStorageKey -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyName "key1"
 ```
 
 This command regenerates a storage key for the specified Storage account.
@@ -111,4 +111,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmStorageAccountKey](./Get-AzureRmStorageAccountKey.md)
+[Get-AzStorageAccountKey](./Get-AzStorageAccountKey.md)

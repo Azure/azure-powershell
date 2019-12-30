@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/se
 schema: 2.0.0
 ---
 
-# Set-AzureRmCurrentStorageAccount
+# Set-AzCurrentStorageAccount
 
 ## SYNOPSIS
 Modifies the current Storage account of the specified subscription.
@@ -15,25 +15,25 @@ Modifies the current Storage account of the specified subscription.
 
 ### UsingResourceGroupAndNameParameterSet (Default)
 ```
-Set-AzureRmCurrentStorageAccount -ResourceGroupName <String> -Name <String>
+Set-AzCurrentStorageAccount -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### UsingStorageContext
 ```
-Set-AzureRmCurrentStorageAccount -Context <IStorageContext> [-DefaultProfile <IAzureContextContainer>]
+Set-AzCurrentStorageAccount -Context <IStorageContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmCurrentStorageAccount** cmdlet modifies the current Azure Storage account of the specified Azure subscription in Azure PowerShell.
+The **Set-AzCurrentStorageAccount** cmdlet modifies the current Azure Storage account of the specified Azure subscription in Azure PowerShell.
 The current Storage account is used as the default when you access Storage without specifying a Storage account name.
 
 ## EXAMPLES
 
 ### Example 1: Set the current Storage account
 ```
-PS C:\>Set-AzureRmCurrentStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
+PS C:\>Set-AzCurrentStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
 ```
 
 This command sets the default Storage account for the specified subscription.
@@ -118,6 +118,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmStorageAccount](./Set-AzureRmStorageAccount.md)
+[Set-AzStorageAccount](./Set-AzStorageAccount.md)
 
 
