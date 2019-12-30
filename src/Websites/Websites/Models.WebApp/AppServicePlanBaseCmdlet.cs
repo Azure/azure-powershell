@@ -39,16 +39,15 @@ namespace Microsoft.Azure.Commands.WebApps
 
         [Parameter(ParameterSetName = ParameterSet2Name, Position = 0, Mandatory = true, HelpMessage = "The app service plan object", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public PSAppServicePlan AppServicePlan { get; set; }
+        public AppServicePlan AppServicePlan { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (string.Equals(ParameterSetName, ParameterSet2Name, StringComparison.OrdinalIgnoreCase))
             {
                 string rg, name;
-                var psAppservicePlan = new PSAppServicePlan(AppServicePlan);
 
-                CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(psAppservicePlan.Id, out rg, out name);
+                CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(AppServicePlan.Id, out rg, out name);
 
                 ResourceGroupName = rg;
                 Name = name;

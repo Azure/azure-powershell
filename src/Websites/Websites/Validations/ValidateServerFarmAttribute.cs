@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
             ValidateSku(serverFarm.Sku);
         }
 
-        private static void ValidateSku(SkuDescription sku)
+        private void ValidateSku(SkuDescription sku)
         {
             if (sku == null)
             {

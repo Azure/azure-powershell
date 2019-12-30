@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(ParameterSetName = ParameterSet3Name, Position = 0, Mandatory = true, HelpMessage = "The web app object.", ValueFromPipeline = true)]
         [Parameter(ParameterSetName = ParameterSet4Name, Position = 0, Mandatory = true, HelpMessage = "The web app object.", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public PSSite WebApp { get; set; }
+        public Site WebApp { get; set; }
 
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The name of the host name.")]
         [ValidateNotNullOrEmpty]
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             }
 
             string thumbPrint = null;
-            var webapp = new PSSite(WebsitesClient.GetWebApp(resourceGroupName, webAppName, slot));
+            var webapp = WebsitesClient.GetWebApp(resourceGroupName, webAppName, slot);
 
             switch (ParameterSetName)
             {
@@ -125,12 +125,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         webapp.Location,
                         pfxBlob: certificateBytes,
                         password: CertificatePassword,
-                        hostingEnvironmentProfile: webapp.HostingEnvironmentProfile ?? null,
-                                                        serverFarmId: webapp.ServerFarmId);
+                        hostingEnvironmentProfile: (webapp.HostingEnvironmentProfile != null) ?
+                                                        webapp.HostingEnvironmentProfile :
+                                                        null);
 
+                    var certificateResourceGroup = CmdletHelpers.GetResourceGroupFromResourceId(webapp.ServerFarmId);
                     try
                     {
-                        WebsitesClient.CreateCertificate(resourceGroupName, certificateName, certificate);
+                        WebsitesClient.CreateCertificate(certificateResourceGroup, certificateName, certificate);
                     }
                     catch (CloudException e)
                     {

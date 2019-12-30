@@ -39,9 +39,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         [Parameter(Mandatory = false, HelpMessage = "Recover the web app's configuration in addition to files.", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter RecoverConfiguration { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Use to recover a snapshot from a scale unit that is offline.")]
-        public SwitchParameter UseDisasterRecovery { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Allows the original web app to be overwritten without displaying a warning.", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter Force { get; set; }
 
@@ -51,24 +48,23 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            var sourceApp = ResourcesClient.GetAppResource(InputObject.Name, InputObject.Slot);
-            SnapshotRecoverySource source = new SnapshotRecoverySource()
+            Site targetApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot);
+            SnapshotRecoveryTarget target = new SnapshotRecoveryTarget()
             {
-                Location = sourceApp.Location,
-                Id = sourceApp.Id
+                Location = targetApp.Location,
+                Id = targetApp.Id
             };
-            SnapshotRestoreRequest recoveryReq = new SnapshotRestoreRequest()
+            SnapshotRecoveryRequest recoveryReq = new SnapshotRecoveryRequest()
             {
                 Overwrite = true,
                 SnapshotTime = this.InputObject.SnapshotTime.ToString("o"),
                 RecoverConfiguration = this.RecoverConfiguration,
                 IgnoreConflictingHostNames = true,
-                RecoverySource = source,
-                UseDRSecondary = UseDisasterRecovery
+                RecoveryTarget = target
             };
-            Action recoverAction = () => WebsitesClient.RestoreSnapshot(ResourceGroupName, Name, Slot, recoveryReq);
+            Action recoverAction = () => WebsitesClient.RecoverSite(InputObject.ResourceGroupName, InputObject.Name, InputObject.Slot, recoveryReq);
             ConfirmAction(this.Force.IsPresent, "Web app contents will be overwritten with the contents of the snapshot.",
-                "The snapshot has been restored.", Name, recoverAction);
+                "The snapshot has been restored.", InputObject.Name, recoverAction);
         }
     }
 }

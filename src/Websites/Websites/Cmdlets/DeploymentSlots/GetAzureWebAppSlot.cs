@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         [Parameter(ParameterSetName = ParameterSet2Name, Position = 0, Mandatory = true, HelpMessage = "The web app object", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public PSSite WebApp { get; set; }
+        public Site WebApp { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -69,17 +69,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
             if (string.IsNullOrWhiteSpace(Slot))
             {
-                var output = WebsitesClient.ListWebApps(ResourceGroupName, Name);
-                var slots = new List<PSSite>();
-                foreach(var slot in output)
-                {
-                    slots.Add(new PSSite(slot));
-                }
-                WriteObject(slots, true);
+                WriteObject(WebsitesClient.ListWebApps(ResourceGroupName, Name), true);
             }
             else
             {
-                WriteObject(new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot)));
+                WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
             }
         }
     }

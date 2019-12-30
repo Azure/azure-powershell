@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: BBC85035-DCF7-44FA-A747-A1563A55B820
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebappbackuplist
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/get-Azwebappbackuplist
 schema: 2.0.0
 ---
 
@@ -20,7 +20,7 @@ Get-AzWebAppBackupList [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <
 
 ### FromWebApp
 ```
-Get-AzWebAppBackupList [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzWebAppBackupList [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,9 +41,9 @@ This command returns a backup list pertaining to WebApp WebAppStandard associate
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -56,9 +56,9 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -71,9 +71,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -86,9 +86,9 @@ Accept wildcard characters: False
 Slot name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -101,9 +101,9 @@ Accept wildcard characters: False
 Piped WebApp
 
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
+Type: Site
 Parameter Sets: FromWebApp
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -117,14 +117,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
+### Site
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup
+### Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup[]
 
 ## NOTES
 
 ## RELATED LINKS
+

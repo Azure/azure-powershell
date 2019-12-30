@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: EE3D2BA0-32E7-4A37-BCAF-F0E8FAAC43CE
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebappsslbinding
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/get-Azwebappsslbinding
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ Get-AzWebAppSSLBinding [[-Name] <String>] [-ResourceGroupName] <String> [-WebApp
 
 ### S2
 ```
-Get-AzWebAppSSLBinding [[-Name] <String>] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+Get-AzWebAppSSLBinding [[-Name] <String>] [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -48,6 +48,7 @@ PS C:\> Get-AzWebAppSSLBinding -WebApp $WebApp
 The commands in this example also get the SSL bindings for the Web App ContosoWebApp; in this case, however, an object reference is used instead of the Web App name and the name of the associated resource group.
 This object reference is created by the first command in the example, which uses **Get-AzWebApp** to create an object reference to the Web App named ContosoWebApp.
 That object reference is stored in a variable named $WebApp.
+
 This variable, and the **Get-AzWebAppSSLBinding** cmdlet, are then used by the second command to get the SSL bindings.
 
 ## PARAMETERS
@@ -56,9 +57,9 @@ This variable, and the **Get-AzWebAppSSLBinding** cmdlet, are then used by the s
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -71,9 +72,9 @@ Accept wildcard characters: False
 Specifies the name of the SSL binding.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 3
@@ -84,12 +85,13 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the certificate is assigned to.
+
 You cannot use the *ResourceGroupName* parameter and the *WebApp* parameter in the same command.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -103,9 +105,9 @@ Specifies a Web App deployment slot.
 To get a deployment slot, use the Get-AzWebAppSlot cmdlet.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -119,9 +121,9 @@ Specifies a Web App.
 To get a Web App, use the Get-AzWebApp cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
+Type: Site
 Parameter Sets: S2
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -132,12 +134,13 @@ Accept wildcard characters: False
 
 ### -WebAppName
 Specifies the name of the Web App that this cmdlet gets SSL bindings from.
+
 You cannot use the *WebAppName* parameter and the *WebApp* parameter in the same command.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -151,11 +154,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
+### Site
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
-
-### Microsoft.Azure.Management.WebSites.Models.HostNameSslState
 
 ## NOTES
 

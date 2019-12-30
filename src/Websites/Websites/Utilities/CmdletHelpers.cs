@@ -1,8 +1,4 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.WebApps.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+﻿using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.WebSites.Models;
@@ -58,112 +54,36 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         private const string ApplicationServiceEnvironmentResourceIdFormat =
             "/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/{2}/{3}";
 
-        public const string DocerRegistryServerUrl = "DOCKER_REGISTRY_SERVER_URL";
-        public const string DocerRegistryServerUserName = "DOCKER_REGISTRY_SERVER_USERNAME";
-        public const string DocerRegistryServerPassword = "DOCKER_REGISTRY_SERVER_PASSWORD";
-        public const string DockerEnableCI = "DOCKER_ENABLE_CI";
-        public const string DockerImagePrefix = "DOCKER|";
-
         public static Dictionary<string, string> ConvertToStringDictionary(this Hashtable hashtable)
         {
-            return hashtable?.Cast<DictionaryEntry>()
+            return hashtable == null ? null : hashtable.Cast<DictionaryEntry>()
                 .ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal);
         }
 
         public static Dictionary<string, ConnStringValueTypePair> ConvertToConnectionStringDictionary(this Hashtable hashtable)
         {
-            return hashtable?.Cast<DictionaryEntry>()
-                .ToDictionary(
-                    kvp => kvp.Key.ToString(), kvp =>
-                    {
-                        var typeValuePair = new Hashtable((Hashtable)kvp.Value, StringComparer.OrdinalIgnoreCase);
-                        var type = (ConnectionStringType)Enum.Parse(typeof(ConnectionStringType), typeValuePair["Type"].ToString(), true);
-                        return new ConnStringValueTypePair
-                        {
-                            Type = type,
-                            Value = typeValuePair["Value"].ToString()
-                        };
-                    });
-        }
-
-        public static AzureStoragePropertyDictionaryResource ConvertToAzureStorageAccountPathPropertyDictionary(this Hashtable hashtable)
-        {
-            if (hashtable == null)
-                return null;
-            AzureStoragePropertyDictionaryResource result = new AzureStoragePropertyDictionaryResource();
-            result.Properties = hashtable.Cast<DictionaryEntry>()
+            return hashtable == null ? null : hashtable.Cast<DictionaryEntry>()
                 .ToDictionary(
                 kvp => kvp.Key.ToString(), kvp =>
                 {
                     var typeValuePair = new Hashtable((Hashtable)kvp.Value, StringComparer.OrdinalIgnoreCase);
-                    return new AzureStorageInfoValue
+                    var type = (ConnectionStringType)Enum.Parse(typeof(ConnectionStringType), typeValuePair["Type"].ToString(), true);
+                    return new ConnStringValueTypePair
                     {
-                        AccessKey = typeValuePair["AccessKey"].ToString(),
-                        AccountName = typeValuePair["AccountName"].ToString(),
-                        MountPath = typeValuePair["MountPath"].ToString(),
-                        ShareName = typeValuePair["ShareName"].ToString(),
-                        Type = (AzureStorageType)Enum.Parse(typeof(AzureStorageType), typeValuePair["Type"].ToString(), true)
+                        Type = type,
+                        Value = typeValuePair["Value"].ToString()
                     };
                 });
-
-            return result;
         }
-
-        public static AzureStoragePropertyDictionaryResource ConvertToAzureStorageAccountPathPropertyDictionary(this WebAppAzureStoragePath[] webAppAzureStorageProperties)
-        {
-            if (webAppAzureStorageProperties == null)
-                return null;
-            AzureStoragePropertyDictionaryResource result = new AzureStoragePropertyDictionaryResource();
-            result.Properties = new Dictionary<string, AzureStorageInfoValue>();
-            foreach (var item in webAppAzureStorageProperties)
-            {
-                result.Properties.Add(
-                    new KeyValuePair<string, AzureStorageInfoValue>(
-                        item.Name,
-                        new AzureStorageInfoValue(
-                            item.Type,
-                            item.AccountName,
-                            item.ShareName,
-                            item.AccessKey,
-                            item.MountPath)));
-            }
-
-            return result;
-        }
-
-        public static WebAppAzureStoragePath[] ConvertToWebAppAzureStorageArray(this IDictionary<string, AzureStorageInfoValue> webAppAzureStorageDictionary)
-        {
-            if (webAppAzureStorageDictionary == null)
-                return null;
-            List<WebAppAzureStoragePath> result = new List<WebAppAzureStoragePath>();
-            foreach (var item in webAppAzureStorageDictionary)
-            {
-                var azureStoragePath = new WebAppAzureStoragePath()
-                {
-                    Name = item.Key,
-                    AccessKey = item.Value.AccessKey,
-                    AccountName = item.Value.AccountName,
-                    ShareName = item.Value.ShareName,
-                    MountPath = item.Value.MountPath,
-                    Type = item.Value.Type
-                };
-
-                result.Add(azureStoragePath);
-            }
-
-            return result.ToArray();
-        }
-
 
         internal static bool ShouldUseDeploymentSlot(string webSiteName, string slotName, out string qualifiedSiteName)
         {
-            var result = false;
+            bool result = false;
             qualifiedSiteName = webSiteName;
-            // TODO: Remove IfDef
-#if NETSTANDARD
-            const string siteNamePattern = "{0}/{1}";
+#if !NETSTANDARD
+            var siteNamePattern = "{0}({1})";
 #else
-            const string siteNamePattern = "{0}({1})";
+            var siteNamePattern = "{0}/{1}";
 #endif
             if (!string.IsNullOrEmpty(slotName) && !string.Equals(slotName, "Production", StringComparison.OrdinalIgnoreCase))
             {
@@ -186,7 +106,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         internal static string BuildMetricFilter(DateTime? startTime, DateTime? endTime, string timeGrain, IReadOnlyList<string> metricNames)
         {
-            const string dateTimeFormat = "yyyy-MM-ddTHH:mm:ssZ";
+            var dateTimeFormat = "yyyy-MM-ddTHH:mm:ssZ";
             var filter = "";
             if (metricNames != null && metricNames.Count > 0)
             {
@@ -278,11 +198,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 sku = "P" + workerSize + "V2";
                 return sku;
             }
-            else if (string.Equals("PremiumContainer", tier, StringComparison.OrdinalIgnoreCase))
-            {
-                sku = "PC" + (workerSize + 1);
-                return sku;
-            }
             else
             {
                 sku = string.Empty + tier[0];
@@ -302,11 +217,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             else if (string.Equals("PremiumV2", tier, StringComparison.OrdinalIgnoreCase))
             {
                 sku = "P" + WorkerSizes[workerSize] + "V2";
-                return sku;
-            }
-            else if (string.Equals("PremiumContainer", tier, StringComparison.OrdinalIgnoreCase))
-            {
-                sku = "PC" + (WorkerSizes[workerSize] + 1);
                 return sku;
             }
             else
@@ -396,11 +306,15 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         internal static Certificate[] GetCertificates(ResourceClient resourceClient, WebsitesClient websitesClient, string resourceGroupName, string thumbPrint)
         {
-            var certificateResources = resourceClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
+            var certificateResources = resourceClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
             {
-                ResourceGroup = resourceGroupName,
                 ResourceType = "Microsoft.Web/Certificates"
             }).ToArray();
+
+            if (!string.IsNullOrEmpty(resourceGroupName))
+            {
+                certificateResources = certificateResources.Where(c => string.Equals(c.ResourceGroupName, resourceGroupName, StringComparison.OrdinalIgnoreCase)).ToArray();
+            }
 
             var certificates =
                 certificateResources.Select(
@@ -417,7 +331,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         internal static SiteConfigResource ConvertToSiteConfigResource(this SiteConfig config)
         {
-            return new SiteConfigResource
+            return new SiteConfigResource()
             {
                 AlwaysOn = config.AlwaysOn,
                 ApiDefinition = config.ApiDefinition,
@@ -435,9 +349,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 HandlerMappings = config.HandlerMappings,
                 HttpLoggingEnabled = config.HttpLoggingEnabled,
                 IpSecurityRestrictions = config.IpSecurityRestrictions,
-                ScmIpSecurityRestrictions = config.ScmIpSecurityRestrictions,
-                ScmIpSecurityRestrictionsUseMain = config.ScmIpSecurityRestrictionsUseMain,
-                Http20Enabled = config.Http20Enabled,
                 JavaContainer = config.JavaContainer,
                 JavaContainerVersion = config.JavaContainerVersion,
                 JavaVersion = config.JavaVersion,
@@ -464,17 +375,12 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 VirtualApplications = config.VirtualApplications,
                 VnetName = config.VnetName,
                 WebSocketsEnabled = config.WebSocketsEnabled,
-                WindowsFxVersion = config.WindowsFxVersion,
-                ManagedServiceIdentityId = config.ManagedServiceIdentityId,
-                MinTlsVersion = config.MinTlsVersion,
-                FtpsState = config.FtpsState,
-                ReservedInstanceCount = config.ReservedInstanceCount
             };
         }
 
         internal static SiteConfig ConvertToSiteConfig(this SiteConfigResource config)
         {
-            return new SiteConfig
+            return new SiteConfig()
             {
                 AlwaysOn = config.AlwaysOn,
                 ApiDefinition = config.ApiDefinition,
@@ -518,78 +424,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 VirtualApplications = config.VirtualApplications,
                 VnetName = config.VnetName,
                 WebSocketsEnabled = config.WebSocketsEnabled,
-                WindowsFxVersion = config.WindowsFxVersion,
-                ReservedInstanceCount = config.ReservedInstanceCount,
-                ManagedServiceIdentityId = config.ManagedServiceIdentityId,
-                MinTlsVersion = config.MinTlsVersion,
-                FtpsState = config.FtpsState,
-                ScmIpSecurityRestrictions = config.ScmIpSecurityRestrictions,
-                ScmIpSecurityRestrictionsUseMain = config.ScmIpSecurityRestrictionsUseMain,
-                Http20Enabled = config.Http20Enabled
             };
-        }
-
-        internal static string ValidateSubnet(string subnet, string virtualNetworkName, string resourceGroupName, string subscriptionId)
-        {
-            //Resource Id Format: "subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}"
-            ResourceIdentifier subnetResourceId = null;
-            if (subnet.ToLowerInvariant().Contains("/subnets/"))
-            {
-                try
-                {
-                    subnetResourceId = new ResourceIdentifier(subnet);
-                }
-                catch (ArgumentException ae)
-                {
-                    throw new ArgumentException("Subnet ResourceId is invalid.", ae);
-                }
-            }
-            else
-            {
-                subnetResourceId = new ResourceIdentifier();
-                subnetResourceId.Subscription = subscriptionId;
-                subnetResourceId.ResourceGroupName = resourceGroupName;
-                subnetResourceId.ResourceType = "Microsoft.Network/virtualNetworks/subnets";
-                subnetResourceId.ParentResource = $"virtualNetworks/{virtualNetworkName}";
-                subnetResourceId.ResourceName = subnet;
-            }
-            return subnetResourceId.ToString();
-        }
-
-        internal static void VerifySubnetDelegation(IAzureContext context, string subnet)
-        {
-            var subnetResourceId = new ResourceIdentifier(subnet);
-            var resourceGroupName = subnetResourceId.ResourceGroupName;
-            var virtualNetworkName = subnetResourceId.ParentResource.Substring(subnetResourceId.ParentResource.IndexOf('/') + 1);
-            var subnetName = subnetResourceId.ResourceName;
-
-            var networkClient = AzureSession.Instance.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            Subnet subnetObj = networkClient.Subnets.Get(resourceGroupName, virtualNetworkName, subnetName);
-            var serviceEndpointServiceName = "Microsoft.Web";
-            var serviceEndpointLocations = new List<string>() { "*" };
-            if (subnetObj.ServiceEndpoints == null)
-            {
-                subnetObj.ServiceEndpoints = new List<ServiceEndpointPropertiesFormat>();                
-                subnetObj.ServiceEndpoints.Add(new ServiceEndpointPropertiesFormat(serviceEndpointServiceName, serviceEndpointLocations));
-                networkClient.Subnets.CreateOrUpdate(resourceGroupName, virtualNetworkName, subnetName, subnetObj);
-            }
-            else
-            {
-                bool serviceEndpointExists = false;
-                foreach (var serviceEndpoint in subnetObj.ServiceEndpoints)
-                {
-                    if (serviceEndpoint.Service == serviceEndpointServiceName)
-                    {
-                        serviceEndpointExists = true;
-                        break;
-                    }
-                }
-                if (!serviceEndpointExists)
-                {
-                    subnetObj.ServiceEndpoints.Add(new ServiceEndpointPropertiesFormat(serviceEndpointServiceName, serviceEndpointLocations));
-                    networkClient.Subnets.CreateOrUpdate(resourceGroupName, virtualNetworkName, subnetName, subnetObj);
-                }
-            }            
         }
     }
 }

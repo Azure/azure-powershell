@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: A87ED954-9C09-4329-A005-ABFF36C45E6E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebapp
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/get-Azwebapp
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ Get-AzWebApp [[-ResourceGroupName] <String>] [[-Name] <String>] [-DefaultProfile
 
 ### S2
 ```
-Get-AzWebApp [-AppServicePlan] <PSAppServicePlan> [-DefaultProfile <IAzureContextContainer>]
+Get-AzWebApp [-AppServicePlan] <AppServicePlan> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -48,9 +48,9 @@ This command gets the Web App named ContosoSite that belongs to the resource gro
 App Service Plan object
 
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan
+Type: AppServicePlan
 Parameter Sets: S2
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -63,9 +63,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -78,9 +78,9 @@ Accept wildcard characters: False
 Location
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S3
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -93,9 +93,9 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
@@ -108,9 +108,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 0
@@ -128,7 +128,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
+### Microsoft.Azure.Management.WebSites.Models.Site
 
 ## NOTES
 

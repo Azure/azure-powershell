@@ -75,39 +75,34 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzAppServicePlan', 'Set-AzAppServicePlan', 
-               'New-AzAppServicePlan', 'Remove-AzAppServicePlan', 'Get-AzWebAppSlot', 
-               'Get-AzWebAppSlotConfigName', 'Get-AzWebAppSlotMetric', 
+               'New-AzAppServicePlan', 'Remove-AzAppServicePlan', 
+               'Get-AzWebAppSlot', 'Get-AzWebAppSlotConfigName', 
+               'Get-AzWebAppSlotMetrics', 
                'Get-AzWebAppSlotPublishingProfile', 'New-AzWebAppSlot', 
-               'Remove-AzWebAppSlot', 'Reset-AzWebAppSlotPublishingProfile', 
+               'Remove-AzWebAppSlot', 
+               'Reset-AzWebAppSlotPublishingProfile', 
                'Restart-AzWebAppSlot', 'Set-AzWebAppSlot', 
                'Set-AzWebAppSlotConfigName', 'Start-AzWebAppSlot', 
                'Stop-AzWebAppSlot', 'Switch-AzWebAppSlot', 
-               'New-AzWebAppDatabaseBackupSetting', 'Restore-AzWebAppBackup', 
-               'Get-AzAppServicePlanMetric', 'Get-AzWebAppCertificate', 
-               'Get-AzWebAppSSLBinding', 'New-AzWebAppSSLBinding', 
-               'Remove-AzWebAppSSLBinding', 'Edit-AzWebAppBackupConfiguration', 
-               'Get-AzWebAppBackup', 'Get-AzWebAppBackupConfiguration', 
-               'Get-AzWebAppBackupList', 'Get-AzWebAppMetric', 
-               'Get-AzWebAppPublishingProfile', 'Get-AzWebApp', 'New-AzWebAppBackup', 
-               'Remove-AzWebApp', 'New-AzWebApp', 'Remove-AzWebAppBackup', 
-               'Reset-AzWebAppPublishingProfile', 'Restart-AzWebApp', 'Set-AzWebApp', 
-               'Start-AzWebApp', 'Stop-AzWebApp', 'Get-AzWebAppSnapshot', 
-               'Restore-AzWebAppSnapshot', 'Get-AzDeletedWebApp', 
-               'Restore-AzDeletedWebApp', 
-               'Get-AzWebAppContainerContinuousDeploymentUrl', 
-               'Enter-AzWebAppContainerPSSession', 
-               'New-AzWebAppContainerPSSession', 'New-AzWebAppAzureStoragePath', 
-               'Publish-AzWebApp', 'Get-AzWebAppAccessRestrictionConfig', 
-               'Add-AzWebAppAccessRestrictionRule', 
-               'Remove-AzWebAppAccessRestrictionRule', 
-               'Update-AzWebAppAccessRestrictionConfig'
+               'New-AzWebAppDatabaseBackupSetting', 
+               'Restore-AzWebAppBackup', 'Get-AzAppServicePlanMetrics', 
+               'Get-AzWebAppCertificate', 'Get-AzWebAppSSLBinding', 
+               'New-AzWebAppSSLBinding', 'Remove-AzWebAppSSLBinding', 
+               'Edit-AzWebAppBackupConfiguration', 'Get-AzWebAppBackup', 
+               'Get-AzWebAppBackupConfiguration', 
+               'Get-AzWebAppBackupList', 'Get-AzWebAppMetrics', 
+               'Get-AzWebAppPublishingProfile', 'Get-AzWebApp', 
+               'New-AzWebAppBackup', 'Remove-AzWebApp', 
+               'New-AzWebApp', 'Remove-AzWebAppBackup', 
+               'Reset-AzWebAppPublishingProfile', 'Restart-AzWebApp', 
+               'Set-AzWebApp', 'Start-AzWebApp', 'Stop-AzWebApp', 
+               'Get-AzWebAppSnapshot', 'Restore-AzWebAppSnapshot'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Swap-AzWebAppSlot', 'Get-AzWebAppSlotMetrics', 
-               'Get-AzAppServicePlanMetrics', 'Get-AzWebAppMetrics'
+AliasesToExport = 'Swap-AzWebAppSlot'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

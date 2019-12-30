@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you Start an Azure Web app
     /// </summary>
-    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp"), OutputType(typeof(PSSite))]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp")]
     public class StartAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             WebsitesClient.StartWebApp(ResourceGroupName, Name, null);
-            WriteObject(new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null)));
+            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
         }
     }
 }

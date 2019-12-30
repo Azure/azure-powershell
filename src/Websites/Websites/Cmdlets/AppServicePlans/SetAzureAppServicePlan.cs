@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
     /// <summary>
     /// this commandlet will let you set Azure App Service Plan using ARM APIs
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServicePlan"), OutputType(typeof(PSAppServicePlan))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServicePlan"), OutputType(typeof(AppServicePlan))]
     public class SetAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the admin web app")]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
             switch (ParameterSetName)
             {
                 case ParameterSet1Name:
-                    AppServicePlan = new PSAppServicePlan(WebsitesClient.GetAppServicePlan(ResourceGroupName, Name));
+                    AppServicePlan = WebsitesClient.GetAppServicePlan(ResourceGroupName, Name);
                     AppServicePlan.Sku.Tier = string.IsNullOrWhiteSpace(Tier) ? AppServicePlan.Sku.Tier : Tier;
                     AppServicePlan.Sku.Capacity = NumberofWorkers > 0 ? NumberofWorkers : AppServicePlan.Sku.Capacity;
                     int workerSizeAsNumber = 0;
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
             AppServicePlan.Sku.Size = AppServicePlan.Sku.Name;
             AppServicePlan.Sku.Family = AppServicePlan.Sku.Name.Substring(0, 1);
 
-            WriteObject(new PSAppServicePlan(WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, AppServicePlan)), true);
+            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, AppServicePlan.Location, AdminSiteName, AppServicePlan.Sku, null, null, AppServicePlan.PerSiteScaling), true);
         }
     }
 }
