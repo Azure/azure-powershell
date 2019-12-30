@@ -44,6 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
             HelpMessage = Constants.InputObjectHelpMessage
         )]
         [ValidateNotNull]
+        [Alias("DeviceObject")]
         public PSResourceModel InputObject { get; set; }
 
         [Parameter(Mandatory = true, 
