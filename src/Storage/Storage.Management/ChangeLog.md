@@ -20,6 +20,8 @@
 ## Upcoming Release
 * Add breaking change warning message for DefaultAction Value change in a future release
     - Update-AzStorageAccountNetworkRuleSet
+* Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats 
+    - Get-AzureRMStorageAccount
 
 ## Version 1.10.0
 * Update references in .psd1 to use relative path
