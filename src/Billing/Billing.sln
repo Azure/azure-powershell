@@ -6,15 +6,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Billing", "Billing\Billing.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Billing.Test", "Billing.Test\Billing.Test.csproj", "{9A685061-0EF3-4963-AC60-88610F6D309E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumption", "Consumption\Consumption.csproj", "{91E87DBE-3946-4A11-B8DD-84C6FC60181E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsageAggregates", "UsageAggregates\UsageAggregates.csproj", "{EE4A7A8F-D8BB-420C-A135-10CCF6FAEA54}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumption.Test", "Consumption.Test\Consumption.Test.csproj", "{6F8F77FD-4505-40DE-8CF4-E6C4C8509210}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsageAggregates.Test", "UsageAggregates.Test\UsageAggregates.Test.csproj", "{87F7A1CA-3292-4DD8-904F-0685DBC6CDB5}"
 EndProject
