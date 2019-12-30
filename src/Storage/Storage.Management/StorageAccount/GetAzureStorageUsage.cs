@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
         [LocationCompleter("Microsoft.Storage/storageAccounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

@@ -52,10 +52,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
             this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet);
             this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled;
-            this.FailoverInProgress = storageAccount.FailoverInProgress;
             this.LargeFileSharesState = storageAccount.LargeFileSharesState;
             this.AzureFilesIdentityBasedAuth = storageAccount.AzureFilesIdentityBasedAuthentication is null ? null : new PSAzureFilesIdentityBasedAuthentication(storageAccount.AzureFilesIdentityBasedAuthentication);
-            this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
@@ -90,7 +88,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public Endpoints PrimaryEndpoints { get; set; }
 
-        [Ps1Xml(Label = "PrimaryLocation", Target = ViewControl.Table, Position = 2)]
         public string PrimaryLocation { get; set; }
 
         [Ps1Xml(Label = "ProvisioningState", Target = ViewControl.Table, Position = 7)]
@@ -115,11 +112,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public string LargeFileSharesState { get; set; }
 
-        public bool? FailoverInProgress { get; set; }
-
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
-
-        public PSGeoReplicationStats GeoReplicationStats { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {

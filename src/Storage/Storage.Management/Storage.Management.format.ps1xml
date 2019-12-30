@@ -18,7 +18,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>PrimaryLocation</Label>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
@@ -62,7 +62,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>PrimaryLocation</PropertyName>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
@@ -126,62 +126,6 @@
           </ListEntry>
         </ListEntries>
       </ListControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSContainer</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSContainer</TypeName>
-      </ViewSelectedBy>
-      <GroupBy>
-        <ScriptBlock>$_.ResourceGroupName + ", StorageAccountName: " + $_.StorageAccountName</ScriptBlock>
-        <Label>ResourceGroupName</Label>
-      </GroupBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PublicAccess</Label>
-            <Alignment>Left</Alignment>
-            <Width>20</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModified</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>HasLegalHold</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>HasImmutabilityPolicy</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <ScriptBlock>$_.Name</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.PublicAccess</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.LastModifiedTime.ToUniversalTime().ToString("u")</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.HasLegalHold</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.HasImmutabilityPolicy</ScriptBlock>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
     </View>
     <View>
       <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSManagementPolicy</Name>
@@ -304,10 +248,6 @@
             <Alignment>Left</Alignment>
             <Label>DeleteRetentionPolicy.Days</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>ChangeFeed.Enabled</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -331,10 +271,6 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <ScriptBlock>$_.DeleteRetentionPolicy.Days</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <ScriptBlock>$_.ChangeFeed.Enabled</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

@@ -21,8 +21,8 @@ Get-AzStorageAccount [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureCon
 
 ### AccountNameParameterSet
 ```
-Get-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-IncludeGeoReplicationStats]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,21 +60,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncludeGeoReplicationStats
-Get the GeoReplicationStats of the Storage account.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AccountNameParameterSet
-Aliases:
 
 Required: False
 Position: Named
