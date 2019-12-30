@@ -156,10 +156,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             properties.PolicyId = policy.Id;
             properties.SourceResourceId = sourceResourceId;
 
-            if(resetDiskExclusionSetting.IsPresent)
+            ExtendedProperties extendedProperties = null;
+            if (resetDiskExclusionSetting.IsPresent)
             {
-                properties.ExtendedInfo
+                extendedProperties = new ExtendedProperties();
+                extendedProperties.DiskExclusionProperties = null;
             }
+            else
+            {
+                if(inclusionDisksList != null)
+                {
+                    IList<int?> inclusionList = Array.ConvertAll(inclusionDisksList, s => int.Parse(s)).OfType<int?>().ToList();
+                    DiskExclusionProperties diskExclusionProperties = new DiskExclusionProperties(inclusionList, true);
+                    extendedProperties = new ExtendedProperties();
+                    extendedProperties.DiskExclusionProperties = diskExclusionProperties;
+                }
+                else if(exclusionDisksList != null)
+                {
+                    IList<int?> exclusionList = Array.ConvertAll(exclusionDisksList, s => int.Parse(s)).OfType<int?>().ToList();
+                    DiskExclusionProperties diskExclusionProperties = new DiskExclusionProperties(exclusionList, false);
+                    extendedProperties = new ExtendedProperties();
+                    extendedProperties.DiskExclusionProperties = diskExclusionProperties;
+                }
+            }
+
+            properties.ExtendedProperties = extendedProperties;
 
             ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
             {
@@ -335,6 +356,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData.ContainsKey(RestoreVMBackupItemParams.TargetResourceGroupName) ?
                 ProviderData[RestoreVMBackupItemParams.TargetResourceGroupName].ToString() : null;
             bool osaOption = (bool)ProviderData[RestoreVMBackupItemParams.OsaOption];
+            string[] restoreDiskList = (string[])ProviderData[RestoreVMBackupItemParams.RestoreDiskList];
+            SwitchParameter restoreOnlyOSDisk = (SwitchParameter)ProviderData[RestoreVMBackupItemParams.RestoreOnlyOSDisk];
+
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
 
@@ -356,6 +380,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteWarning(Resources.UnManagedBackupVmWarning);
             }
 
+            IList<int?> restoreDiskLUNS;
+            if(restoreOnlyOSDisk.IsPresent)
+            {
+                restoreDiskLUNS = new List<int?>();
+            }
+            else if(restoreDiskList != null)
+            {
+                restoreDiskLUNS = Array.ConvertAll(restoreDiskList, s => int.Parse(s)).OfType<int?>().ToList();
+            }
+            else
+            {
+                restoreDiskLUNS = null;
+            }
+
             IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
             {
                 CreateNewCloudService = false,
@@ -368,6 +406,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     "/subscriptions/" + ServiceClientAdapter.SubscriptionId + "/resourceGroups/" + targetResourceGroupName :
                     null,
                 OriginalStorageAccountOption = useOsa,
+                RestoreDiskLunList = restoreDiskLUNS
             };
 
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();

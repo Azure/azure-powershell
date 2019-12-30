@@ -140,6 +140,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreVM.OsaOption)]
         public SwitchParameter UseOriginalStorageAccount { get; set; }
 
+
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
+            HelpMessage = "")]
+        public SwitchParameter RestoreOnlyOSDisk { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
+            HelpMessage = "")]
+        public string[] RestoreDiskList { get; set; }
+
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -162,6 +172,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreFSBackupItemParams.TargetFileShareName, TargetFileShareName);
                 providerParameters.Add(RestoreFSBackupItemParams.TargetFolder, TargetFolder);
                 providerParameters.Add(RestoreWLBackupItemParams.WLRecoveryConfig, WLRecoveryConfig);
+                providerParameters.Add(RestoreVMBackupItemParams.RestoreDiskList, RestoreDiskList);
+                providerParameters.Add(RestoreVMBackupItemParams.RestoreOnlyOSDisk, RestoreOnlyOSDisk);
+
 
                 if (StorageAccountName != null)
                 {
