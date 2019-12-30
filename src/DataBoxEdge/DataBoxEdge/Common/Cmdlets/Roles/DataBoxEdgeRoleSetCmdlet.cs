@@ -62,7 +62,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
         public string DeviceName { get; set; }
 
         [Parameter(Mandatory = true,
-            ParameterSetName = SetByNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessageRoles.Name,
             Position = 2
