@@ -49,6 +49,8 @@ In this directory, run AutoRest:
 ### General settings
 > Values
 ``` yaml
+require:
+  - $(this-folder)/../readme.azure.md
 azure: true
 powershell: true
 branch: ps-preview
@@ -80,20 +82,35 @@ profile:
 > Directives
 ``` yaml
 directive:
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/ListRegenerateApiKeys$/, "RegenerateApiKeys")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/locationName/, "location")
   - where:
       subject: Operation
     hide: true
-  # Change the parameter from 'LocationName' to 'Location'
   - where:
-      parameter-name: LocationName
+      subject: LocationConsortium
     set:
-      parameter-name: Location
-  # Should use verb 'Invoke' for the two RegenateApiKey related APIs
+      subject: Consortium
   - where:
-      subject: (.*)RegenerateApiKey$
+      subject: BlockchainMemberOperationResult
+    remove: true
+  # Should use verb 'New' for the two RegenateApiKey related APIs
+  - where:
+      subject: BlockchainMemberRegenerateApiKey
       verb: Get
     set:
-      verb: Invoke
+      verb: New
+      subject: BlockchainMemberApiKey
+  - where:
+      subject: TransactionNodeRegenerateApiKey
+      verb: Get
+    set:
+      verb: New
+      subject: TransactionNodeApiKey
   # Drop the un-flattened parameter-set for Post/New/Set/Update related cmdlets.
   - where:
       subject: (.*)RegenerateApiKey$
@@ -105,13 +122,26 @@ directive:
     remove: true
   - where:
       verb: New
-      variant: ^Create$|^CreateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Regenerate$|^RegenerateViaIdentity$
     remove: true
   - where:
       verb: Test
-      variant: ^Check$|^CheckViaIdentity$
+      variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
-
+  # Hide these two cmdlets, because we need to customize a version with password secured.
+  - where:
+      verb: New|Update
+      subject: BlockchainMember
+    hide: true
+  - where:
+      verb: New|Update
+      subject: TransactionNode
+    hide: true
+  - where:
+      parameter-name: SubscriptionId
+    set:
+      default:
+        script: '(Get-AzContext).Subscription.Id'
 ```
 
 ``` yaml

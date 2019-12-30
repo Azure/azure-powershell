@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Lists the consortium members for a blockchain member.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzBlockchainMemberConsortiumMember -BlockchainMemberName dolauli001 -ResourceGroupName testgroup
 
-{{ Add output here }}
+DateModified          DisplayName JoinDate              Name       Role  Status SubscriptionId
+------------          ----------- --------              ----       ----  ------ --------------
+11/19/2019 5:14:41 AM dolauli001  11/19/2019 5:01:20 AM dolauli001 ADMIN Ready  c9cbd920-c00c-427c-852b-8aaf38badaeb
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command lists the consortium members for a blockchain member.
 
