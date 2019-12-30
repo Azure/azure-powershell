@@ -2,6 +2,7 @@
 **/*
 
 # Include the build.
+!artifacts/*
 !artifacts/Release/**/*
 !artifacts/Debug/**/*
 !tools/InstallationTests/NetcoreTests/**/*
