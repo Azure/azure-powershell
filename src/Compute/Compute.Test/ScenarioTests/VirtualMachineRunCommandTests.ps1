@@ -26,13 +26,13 @@ function Test-VirtualMachineGetRunCommand
 
     $commandId = "RunPowerShellScript"
 
-    $result = Get-AzureRmVMRunCommandDocument -Location $loc -CommandId $commandId
+    $result = Get-AzVMRunCommandDocument -Location $loc -CommandId $commandId
 
     Assert-AreEqual $commandId $result.Id
     Assert-AreEqual "Windows" $result.OsType
     $result_output = $result | Out-String
 
-    $result = Get-AzureRmVMRunCommandDocument -Location $loc
+    $result = Get-AzVMRunCommandDocument -Location $loc
 
     Assert-True {$result.Count -gt 0}
     $result_output = $result | Out-String
@@ -53,29 +53,29 @@ function Test-VirtualMachineSetRunCommand
         # Common
         $loc = Get-ComputeVMLocation;
         $loc = $loc.Replace(" ", "")
-        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
 
         # NRP
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -89,30 +89,30 @@ function Test-VirtualMachineSetRunCommand
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize `
-             | Add-AzureRmVMNetworkInterface -Id $nicId -Primary `
-             | Set-AzureRmVMOSDisk -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage `
-             | Set-AzureRmVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize `
+             | Add-AzVMNetworkInterface -Id $nicId -Primary `
+             | Set-AzVMOSDisk -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage `
+             | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $imgRef | Set-AzureRmVMSourceImage -VM $p | New-AzureRmVM -ResourceGroupName $rgname -Location $loc;
+        $imgRef | Set-AzVMSourceImage -VM $p | New-AzVM -ResourceGroupName $rgname -Location $loc;
 
         # Get VM
-        $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
 
-        $vm = Get-AzureRmVM -ResourceGroupName $rgname
+        $vm = Get-AzVM -ResourceGroupName $rgname
         $commandId = "RunPowerShellScript"
 
         $param = @{"first" = "var1";"second" = "var2"};
 
         $path = 'ScenarioTests\test.ps1';
         
-        $result = Invoke-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -CommandId $commandId -ScriptPath $path -Parameter $param;
+        $result = Invoke-AzVMRunCommand -ResourceGroupName $rgname -Name $vmname -CommandId $commandId -ScriptPath $path -Parameter $param;
         Assert-AreEqual "Succeeded" $result.Status
 
         # Remove All VMs
-        Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -Force;
-        $vms = Get-AzureRmVM -ResourceGroupName $rgname;
+        Get-AzVM -ResourceGroupName $rgname | Remove-AzVM -Force;
+        $vms = Get-AzVM -ResourceGroupName $rgname;
         Assert-AreEqual $vms $null; 
     }
     finally

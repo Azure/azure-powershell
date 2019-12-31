@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsData.Export, "AzLogAnalyticThrottledRequests", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Export, "AzLogAnalyticThrottledRequest", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSLogAnalyticsOperationResult))]
     public partial class ExportAzureRmLogAnalyticThrottledRequests : ComputeAutomationBaseCmdlet
     {

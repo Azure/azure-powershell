@@ -29,7 +29,7 @@ function Test-SimpleNewVm
 		[string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-		$x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel
+		$x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel
 
         Assert-AreEqual $vmname $x.Name;        
     }
@@ -59,8 +59,8 @@ function Test-SimpleNewVmWithAvailabilitySet
 		[string]$domainNameLabel = "$vmname-$rgname".tolower();
 
         # Common
-		$r = New-AzureRmResourceGroup -Name $rgname -Location "eastus"
-		$a = New-AzureRmAvailabilitySet `
+		$r = New-AzResourceGroup -Name $rgname -Location "eastus"
+		$a = New-AzAvailabilitySet `
 			-ResourceGroupName $rgname `
 			-Name $asname `
 			-Location "eastus" `
@@ -68,7 +68,7 @@ function Test-SimpleNewVmWithAvailabilitySet
 			-PlatformUpdateDomainCount 2 `
 			-PlatformFaultDomainCount 2
 
-		$x = New-AzureRmVM `
+		$x = New-AzVM `
 			-ResourceGroupName $rgname `
 			-Name $vmname `
 			-Credential $cred `
@@ -102,8 +102,8 @@ function Test-SimpleNewVmWithDefaultDomainName
 		[string] $vmname = "ps9301"
 
         # Common
-		$r = New-AzureRmResourceGroup -Name $rgname -Location "eastus"
-		$x = New-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Credential $cred
+		$r = New-AzResourceGroup -Name $rgname -Location "eastus"
+		$x = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred
 
 		Assert-AreEqual $vmname $x.Name
 		$fqdn = $x.FullyQualifiedDomainName
@@ -138,14 +138,14 @@ function Test-SimpleNewVmWithDefaultDomainName2
 		[string] $vmname = "vm"
 
         # Common
-		$x = New-AzureRmVM `
+		$x = New-AzVM `
 			-ResourceGroupName $rgname `
 			-Name $vmname `
 			-Credential $cred `
 			-ImageName "ubuntults"
 
 		# second VM
-		$x2 = New-AzureRmVM `
+		$x2 = New-AzVM `
 			-ResourceGroupName $rgname2 `
 			-Name $vmname `
 			-Credential $cred `
@@ -177,8 +177,8 @@ function Test-SimpleNewVmWithAvailabilitySet2
 		[string]$asname = "myAvailabilitySet"
 
         # Common
-		$r = New-AzureRmResourceGroup -Name $rgname -Location "eastus"
-		$a = New-AzureRmAvailabilitySet `
+		$r = New-AzResourceGroup -Name $rgname -Location "eastus"
+		$a = New-AzAvailabilitySet `
 			-ResourceGroupName $rgname `
 			-Name $asname `
 			-Location "eastus" `
@@ -186,7 +186,7 @@ function Test-SimpleNewVmWithAvailabilitySet2
 			-PlatformUpdateDomainCount 2 `
 			-PlatformFaultDomainCount 2
 
-		$x = New-AzureRmVM `
+		$x = New-AzVM `
 			-ResourceGroupName $rgname `
 			-Name $vmname `
 			-Credential $cred `
@@ -226,8 +226,8 @@ function Test-SimpleNewVmImageName
 		[string]$domainNameLabel = "$vmname-$vmname".tolower()
 
         # Common
-		$r = New-AzureRmResourceGroup -Name $rgname -Location "eastus"
-		$x = New-AzureRmVM `
+		$r = New-AzResourceGroup -Name $rgname -Location "eastus"
+		$x = New-AzVM `
 			-Name $vmname `
 			-ResourceGroupName $rgname `
 			-Credential $cred `
@@ -261,7 +261,7 @@ function Test-SimpleNewVmImageNameMicrosoftSqlUbuntu
 		[string]$domainNameLabel = "xsd3490285".tolower()
 
         # Common
-		$x = New-AzureRmVM `
+		$x = New-AzVM `
 			-Name $vmname `
 			-Credential $cred `
 			-DomainNameLabel $domainNameLabel `

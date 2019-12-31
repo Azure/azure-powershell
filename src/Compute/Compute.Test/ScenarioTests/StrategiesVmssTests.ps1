@@ -29,7 +29,7 @@ function Test-SimpleNewVmss
 		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
         # Common
-        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel
+        $x = New-AzVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel
 
         Assert-AreEqual $vmssname $x.Name;
         Assert-AreEqual $vmssname $x.ResourceGroupName;
@@ -65,7 +65,7 @@ function Test-SimpleNewVmssImageName
 		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
         # Common
-        $x = New-AzureRmVmss `
+        $x = New-AzVmss `
 			-Name $vmssname `
 			-Credential $cred `
 			-DomainNameLabel $domainNameLabel `
@@ -100,7 +100,7 @@ function Test-SimpleNewVmssWithoutDomainName
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 
         # Common
-        $x = New-AzureRmVmss -Name $vmssname -Credential $cred
+        $x = New-AzVmss -Name $vmssname -Credential $cred
 
         Assert-AreEqual $vmssname $x.Name;
         Assert-AreEqual $vmssname $x.ResourceGroupName;

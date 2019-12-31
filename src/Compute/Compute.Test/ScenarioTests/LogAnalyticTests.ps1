@@ -23,7 +23,7 @@ function Test-ExportLogAnalyticThrottledRequestsNegative
     $to = Get-Date -Year 2018 -Month 2 -Day 28 -Hour 9;
     $sasuri = 'https://fakestore.blob.core.windows.net/mylogs/fakesas';
     Assert-ThrowsContains { `
-        $result = Export-AzureRmLogAnalyticThrottledRequests -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -GroupByThrottlePolicy -GroupByResourceName;} `
+        $result = Export-AzLogAnalyticThrottledRequests -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -GroupByThrottlePolicy -GroupByResourceName;} `
         "the given SAS URI";
 }
 
@@ -39,7 +39,7 @@ function Test-ExportLogAnalyticRequestRateByIntervalNegative
     $sasuri = 'https://fakestore.blob.core.windows.net/mylogs/fakesas';
     $interval = "FiveMins";
     Assert-ThrowsContains { `
-        $result = Export-AzureRmLogAnalyticRequestRateByInterval -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -IntervalLength $interval -GroupByThrottlePolicy -GroupByOperationName;} `
+        $result = Export-AzLogAnalyticRequestRateByInterval -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -IntervalLength $interval -GroupByThrottlePolicy -GroupByOperationName;} `
         "the given SAS URI";
 }
 
@@ -56,9 +56,9 @@ function Test-ExportLogAnalytics
     $container = "test";
     $sastoken = '?fakesas'
 
-    New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-    New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-    $key = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
+    New-AzResourceGroup -Name $rgname -Location $loc -Force;
+    New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+    $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
     $context = New-AzureStorageContext -StorageAccountName $stoname -StorageAccountKey $key.Key1;
 
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
@@ -73,13 +73,13 @@ function Test-ExportLogAnalytics
         $to = Get-Date -Year 2018 -Month 2 -Day 28 -Hour 9;
         $sasuri = "https://$stoname.blob.core.windows.net/$container$sastoken";
         $interval = "FiveMins";
-        $result = Export-AzureRmLogAnalyticRequestRateByInterval -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -IntervalLength $interval -GroupByThrottlePolicy -GroupByOperationName -GroupByResourceName;
+        $result = Export-AzLogAnalyticRequestRateByInterval -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -IntervalLength $interval -GroupByThrottlePolicy -GroupByOperationName -GroupByResourceName;
         Assert-AreEqual "Succeeded" $result.Status;
         $output = $result | Out-String;
         Assert-True { $output.Contains(".csv"); }
         Assert-True { $output.Contains("RequestRateByInterval"); }
 
-        $result = Export-AzureRmLogAnalyticThrottledRequests -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -GroupByThrottlePolicy -GroupByOperationName -GroupByResourceName;
+        $result = Export-AzLogAnalyticThrottledRequests -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -GroupByThrottlePolicy -GroupByOperationName -GroupByResourceName;
         Assert-AreEqual "Succeeded" $result.Status;
         $output = $result | Out-String;
         Assert-True { $output.Contains(".csv"); }
