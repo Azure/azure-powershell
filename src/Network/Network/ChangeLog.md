@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Upgrade dependancy of Microsoft.Azure.Management.Sql from 1.3.6-preivew to 1.3.7-preivew
 
 ## Version 2.2.0
 * Update references in .psd1 to use relative path
