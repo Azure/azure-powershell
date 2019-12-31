@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: 939320CB-2595-4150-AFDD-500CEA78559C
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvm
@@ -21,30 +21,19 @@ Set-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Generalized] [-AsJob]
 
 ### RedeployResourceGroupNameParameterSetName
 ```
-Set-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Redeploy] [-AsJob] [-NoWait]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ReapplyResourceGroupNameParameterSetName
-```
-Set-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Reapply] [-AsJob] [-NoWait]
+Set-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Redeploy] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GeneralizeIdParameterSetName
 ```
-Set-AzVM [-Id] <String> [-Generalized] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzVM [-Id] <String> [-Name] <String> [-Generalized] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RedeployIdParameterSetName
 ```
-Set-AzVM [-Id] <String> [-Redeploy] [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ReapplyIdParameterSetName
-```
-Set-AzVM [-Id] <String> [-Reapply] [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
+Set-AzVM [-Id] <String> [-Name] <String> [-Redeploy] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -67,9 +56,9 @@ This command marks the virtual machine named VirtualMachine07 as generalized.
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -82,9 +71,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -97,9 +86,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet marks a virtual machine as generalized.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: GeneralizeResourceGroupNameParameterSetName, GeneralizeIdParameterSetName
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -112,9 +101,9 @@ Accept wildcard characters: False
 Specifies the Resource ID of the virtual machine.
 
 ```yaml
-Type: System.String
-Parameter Sets: GeneralizeIdParameterSetName, RedeployIdParameterSetName, ReapplyIdParameterSetName
-Aliases:
+Type: String
+Parameter Sets: GeneralizeIdParameterSetName, RedeployIdParameterSetName
+Aliases: 
 
 Required: True
 Position: 0
@@ -127,9 +116,9 @@ Accept wildcard characters: False
 Specifies the name of the virtual machine on which this cmdlet operates.
 
 ```yaml
-Type: System.String
-Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGroupNameParameterSetName, ReapplyResourceGroupNameParameterSetName
-Aliases:
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: True
 Position: 1
@@ -138,44 +127,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RedeployResourceGroupNameParameterSetName, ReapplyResourceGroupNameParameterSetName, RedeployIdParameterSetName, ReapplyIdParameterSetName
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Reapply
-To reapply virtual machine.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ReapplyResourceGroupNameParameterSetName, ReapplyIdParameterSetName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Redeploy
 Indicates that this cmdlet manually redeploys the virtual machine to a different Azure host to fix any problems.
+
 If you redeploy a virtual machine, it restarts, which results in the loss of ephemeral drive data.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: RedeployResourceGroupNameParameterSetName, RedeployIdParameterSetName
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -188,9 +148,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: System.String
-Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGroupNameParameterSetName, ReapplyResourceGroupNameParameterSetName
-Aliases:
+Type: String
+Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGroupNameParameterSetName
+Aliases: 
 
 Required: True
 Position: 0
@@ -200,17 +160,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Compute.Models.PSComputeLongRunningOperation
-
-### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 

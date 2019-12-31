@@ -25,7 +25,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMChefExtension", SupportsShouldProcess = true)]
+    [Cmdlet(
+        VerbsCommon.Remove, ProfileNouns.VirtualMachineChefExtension, SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureRmVMChefExtension : VirtualMachineExtensionBaseCmdlet
     {
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -51,7 +52,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -61,7 +61,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Extension Name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         public string Name
         {
             get
@@ -85,9 +84,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             ParameterSetName = WindowsParameterSetName,
             HelpMessage = "Set extension for Windows.")]
         public SwitchParameter Windows { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
-        public SwitchParameter NoWait { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -126,24 +122,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                         }
                     }
 
-                    if (NoWait.IsPresent)
-                    {
-                        var op = this.VirtualMachineExtensionClient.BeginDeleteWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VMName,
-                            this.Name).GetAwaiter().GetResult();
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                        WriteObject(result);
-                    }
-                    else
-                    {
-                        var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VMName,
-                            this.Name).GetAwaiter().GetResult();
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                        WriteObject(result);
-                    }
+                    var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name).GetAwaiter().GetResult();
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
                 });
         }
     }

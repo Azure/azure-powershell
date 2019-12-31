@@ -30,12 +30,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AvailabilitySet");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAvailabilitySetVM()
-        {
-            TestRunner.RunTestScript("Test-AvailabilitySetVM");
-        }
     }
 }

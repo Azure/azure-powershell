@@ -14,7 +14,7 @@ Creates a SKU for an application gateway.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewaySku -Name <String> -Tier <String> [-Capacity <Int32>]
+New-AzApplicationGatewaySku -Name <String> -Tier <String> -Capacity <Int32>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -36,11 +36,11 @@ This command creates a SKU named Standard_Small for an Azure application gateway
 Specifies the number of instances of an application gateway.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -51,9 +51,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -64,20 +64,20 @@ Accept wildcard characters: False
 
 ### -Name
 Specifies the name of the SKU.
+
 The acceptable values for this parameter are:
+
 - Standard_Small
 - Standard_Medium
 - Standard_Large
 - WAF_Medium
 - WAF_Large
-- Standard_v2
-- WAF_v2
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
-Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large, Standard_v2, WAF_v2
+Aliases: 
+Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large
 
 Required: True
 Position: Named
@@ -89,16 +89,15 @@ Accept wildcard characters: False
 ### -Tier
 Specifies the tier of the SKU.
 The acceptable values for this parameter are:
+
 - Standard
 - WAF
-- Standard_v2
-- WAF_v2
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
-Accepted values: Standard, WAF, Standard_v2, WAF_v2
+Aliases: 
+Accepted values: Standard, WAF
 
 Required: True
 Position: Named
@@ -112,7 +111,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 

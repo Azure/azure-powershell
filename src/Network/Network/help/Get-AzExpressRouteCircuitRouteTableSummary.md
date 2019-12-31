@@ -15,7 +15,7 @@ Gets a route table summary of an ExpressRoute circuit.
 
 ```
 Get-AzExpressRouteCircuitRouteTableSummary -ResourceGroupName <String> -ExpressRouteCircuitName <String>
- -PeeringType <String> -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
+ [-PeeringType <String>] -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -38,9 +38,9 @@ Get-AzExpressRouteCircuitRouteTableSummary -ResourceGroupName $RG -ExpressRouteC
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -53,9 +53,9 @@ Accept wildcard characters: False
 The acceptable values for this parameter are: `Primary` or `Secondary`
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.DevicePathEnum
+Type: DevicePathEnum
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Primary, Secondary
 
 Required: True
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The name of the ExpressRoute circuit being examined.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: Name, ResourceName
 
@@ -85,12 +85,12 @@ The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePubli
 `MicrosoftPeering`
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,9 +101,9 @@ Accept wildcard characters: False
 The name of the resource group containing the ExpressRoute circuit.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -113,11 +113,9 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### System.String
 
 ## OUTPUTS
 

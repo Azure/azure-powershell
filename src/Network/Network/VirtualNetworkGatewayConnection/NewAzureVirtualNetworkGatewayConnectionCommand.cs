@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,13 +19,14 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnection", SupportsShouldProcess = true,DefaultParameterSetName = "SetByResource"),OutputType(typeof(PSVirtualNetworkGatewayConnection))]
+    [Cmdlet(VerbsCommon.New, "AzVirtualNetworkGatewayConnection", SupportsShouldProcess = true,
+        DefaultParameterSetName = "SetByResource"),
+        OutputType(typeof(PSVirtualNetworkGatewayConnection))]
     public class NewAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -130,7 +131,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
+            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
         
         [Parameter(
@@ -142,35 +143,15 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of IPSec policies.")]
-        public PSIpsecPolicy[] IpsecPolicies { get; set; }
-
-        [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             HelpMessage = "A list of traffic selector policies.")]
-        public PSTrafficSelectorPolicy[] TrafficSelectorPolicy { get; set; }
-
-        [Parameter(
-        Mandatory = false,
-        HelpMessage = "Gateway connection protocol:IKEv1/IKEv2")]
-        [ValidateSet(
-            MNM.VirtualNetworkGatewayConnectionProtocol.IKEv1,
-            MNM.VirtualNetworkGatewayConnectionProtocol.IKEv2,
-            IgnoreCase = true)]
-        public string ConnectionProtocol { get; set; }
+        public List<PSIpsecPolicy> IpsecPolicies { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Whether to use accelerated virtual network access by bypassing gateway")]
-        public SwitchParameter ExpressRouteGatewayBypass { get; set; }
-
         public override void Execute()
         {
             base.Execute();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsVirtualNetworkGatewayConnectionPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
@@ -199,13 +180,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.SharedKey = this.SharedKey;
             vnetGatewayConnection.EnableBgp = this.EnableBgp;
             vnetGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors;
-            vnetGatewayConnection.ExpressRouteGatewayBypass = this.ExpressRouteGatewayBypass.IsPresent;
 
-            if (!string.IsNullOrWhiteSpace(this.ConnectionProtocol))
-            {
-                vnetGatewayConnection.ConnectionProtocol = this.ConnectionProtocol;
-            }
-            
             if (!string.IsNullOrEmpty(this.AuthorizationKey))
             {
                 vnetGatewayConnection.AuthorizationKey = this.AuthorizationKey;
@@ -224,15 +199,10 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGatewayConnection.Peer = new PSResourceId();
                 vnetGatewayConnection.Peer.Id = this.PeerId;
             }
-
+            
             if (this.IpsecPolicies != null)
             {
-                vnetGatewayConnection.IpsecPolicies = this.IpsecPolicies?.ToList();
-            }
-
-            if (this.TrafficSelectorPolicy != null)
-            {
-                vnetGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
+                vnetGatewayConnection.IpsecPolicies = this.IpsecPolicies;
             }
 
             // Map to the sdk object

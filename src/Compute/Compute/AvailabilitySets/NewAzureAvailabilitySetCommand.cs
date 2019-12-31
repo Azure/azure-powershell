@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Linq;
-using System.Management.Automation;
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilitySet")]
+    [Cmdlet(VerbsCommon.New, ProfileNouns.AvailabilitySet)]
     [OutputType(typeof(PSAvailabilitySet))]
     public class NewAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -76,14 +75,9 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Id of ProximityPlacementGroup")]
-        public string ProximityPlacementGroupId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Key-value pairs in the form of a hash table."
-            )]
-        public Hashtable Tag { get; set; }
+            HelpMessage = "Managed Availability Set")]
+        [Obsolete("This parameter is obsolete.  Please use Sku parameter instead.", false)]
+        public SwitchParameter Managed { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -98,22 +92,16 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Location = this.Location,
                     PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
-                    PlatformFaultDomainCount = this.PlatformFaultDomainCount,
-                    Tags = Tag == null ? null : Tag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value)
+                    PlatformFaultDomainCount = this.PlatformFaultDomainCount
                 };
 
-                if (this.IsParameterBound(c => c.Sku))
+                if (!string.IsNullOrEmpty(this.Sku))
                 {
                     avSetParams.Sku = new Sku();
                     if (!string.IsNullOrEmpty(this.Sku))
                     {
                         avSetParams.Sku.Name = this.Sku;
                     }
-                }
-
-                if (this.IsParameterBound(c => c.ProximityPlacementGroupId))
-                {
-                    avSetParams.ProximityPlacementGroup = new SubResource(this.ProximityPlacementGroupId);
                 }
 
                 var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(

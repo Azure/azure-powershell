@@ -18,7 +18,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
 
     /// <summary>
     /// Represents private/protected settings. Serialized representation of this object stored as an encrypted string on the VM.
-    /// Part of the protocol between Set-AzVMDscExtension cmdlet and DSC Extension handler.
+    /// Part of the protocol between Set-AzureVMDscExtension cmdlet and DSC Extension handler.
     /// </summary>
     public class DscExtensionPrivateSettings
     {

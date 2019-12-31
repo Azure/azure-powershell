@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             HelpMessage = "Allowed ranges of healthy status codes. Default range of healthy status codes is 200 - 399")]
         [ValidateNotNullOrEmpty]
-        public string[] StatusCode { get; set; }
+        public List<string> StatusCode { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             return new PSApplicationGatewayProbeHealthResponseMatch()
             {
                 Body = this.Body,
-                StatusCodes = this.StatusCode?.ToList()
+                StatusCodes = this.StatusCode
             };
         }
     }

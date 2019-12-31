@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.Network
 
     using AutoMapper;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BgpServiceCommunity"), OutputType(typeof(PSBgpServiceCommunity))]
-    public class GetAzureBgpServiceCommunityCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzBgpServiceCommunity"), OutputType(typeof(PSBgpServiceCommunity))]
+    public class GetAzureBgpServiceCommunityCommand: NetworkBaseCmdlet
     {
         public override void Execute()
         {

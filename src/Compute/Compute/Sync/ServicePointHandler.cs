@@ -33,7 +33,9 @@ namespace Microsoft.WindowsAzure.Commands.Sync
 
         private static IWebProxy GetWebProxy()
         {
-            return WebRequest.DefaultWebProxy;
+            Type webRequestType = typeof(WebRequest);
+            PropertyInfo propertyInfo = webRequestType.GetProperty("InternalDefaultWebProxy", BindingFlags.Static | BindingFlags.NonPublic);
+            return (IWebProxy)propertyInfo.GetValue(null, null);
         }
 
         public void Dispose()

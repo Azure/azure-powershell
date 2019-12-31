@@ -13,7 +13,8 @@ Creates a route filter.
 ## SYNTAX
 
 ```
-New-AzRouteFilter -Name <String> -ResourceGroupName <String> -Location <String> [-Rule <PSRouteFilterRule[]>]
+New-AzRouteFilter -Name <String> -ResourceGroupName <String> -Location <String>
+ [-Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRouteFilterRule]>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -24,11 +25,12 @@ The New-AzRouteFilter cmdlet creates an Azure route filter.
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
+```
+PS C:\> {{ Add example code here }}
 ```
 
-The command creates a new route filter.
+ 
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -36,9 +38,9 @@ The command creates a new route filter.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -51,9 +53,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -66,9 +68,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet creates a route table even if a route filter that has the same name already exists.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -81,9 +83,9 @@ Accept wildcard characters: False
 Specifies the Azure region in which this cmdlet creates a route filter.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -96,7 +98,7 @@ Accept wildcard characters: False
 Specifies a name for the route filter.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -111,9 +113,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group in which this cmdlet creates a route filter.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -126,9 +128,9 @@ Accept wildcard characters: False
 Specifies an array of Route Filter Rule objects to associate with the route filter.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRouteFilterRule[]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRouteFilterRule]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -139,12 +141,13 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
+
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -157,7 +160,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -172,7 +175,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -188,12 +191,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.Network.Models.PSRouteFilterRule[]
-
-### System.Collections.Hashtable
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
@@ -205,16 +202,8 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [Get-AzRouteFilter](./Get-AzRouteFilter.md)
 
+[New-AzRouteFilterRuleConfig](./New-AzRouteFilterRuleConfig.md)
+
 [Remove-AzRouteFilter](./Remove-AzRouteFilter.md)
 
 [Set-AzRouteFilter](./Set-AzRouteFilter.md)
-
-[Add-AzRouteFilterRuleConfig](./Add-AzRouteFilterRuleConfig.md)
-
-[Get-AzRouteFilterRuleConfig](./Get-AzRouteFilterRuleConfig.md)
-
-[New-AzRouteFilterRuleConfig](./New-AzRouteFilterRuleConfig.md)
-
-[Remove-AzRouteFilterRuleConfig](./Remove-AzRouteFilterRuleConfig.md)
-
-[Set-AzRouteFilterRuleConfig](./Set-AzRouteFilterRuleConfig.md)

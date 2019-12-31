@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using AutoMapper;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute.Models;
 using System.IO;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Save", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMImage", DefaultParameterSetName = ResourceGroupNameParameterSet)]
+    [Cmdlet(VerbsData.Save, ProfileNouns.VirtualMachineImage, DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
     public class SaveAzureVMImageCommand : VirtualMachineActionBaseCmdlet
     {
@@ -30,10 +29,8 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = true,
            Position = 1,
-           ParameterSetName = ResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -74,13 +71,6 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (!string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(Name))
-                {
-                    ResourceIdentifier parsedId = new ResourceIdentifier(Id);
-                    this.ResourceGroupName = parsedId.ResourceGroupName;
-                    this.Name = parsedId.ResourceName;
-                }
-
                 var parameters = new VirtualMachineCaptureParameters
                 {
                     DestinationContainerName = DestinationContainerName,
@@ -94,11 +84,10 @@ namespace Microsoft.Azure.Commands.Compute
                     parameters).GetAwaiter().GetResult();
 
                 var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
-                result.StartTime = this.StartTime;
-                result.EndTime = DateTime.Now;
+
                 if (!string.IsNullOrWhiteSpace(this.Path))
                 {
-                    File.WriteAllText(ResolveUserPath(this.Path), op.Body.Resources[0].ToString());
+                    File.WriteAllText(this.Path, op.Body.Output.ToString());
                 }
                 WriteObject(result);
             });

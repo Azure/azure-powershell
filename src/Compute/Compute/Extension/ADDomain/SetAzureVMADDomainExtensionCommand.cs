@@ -22,7 +22,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMADDomainExtension",SupportsShouldProcess = true)]
+    [Cmdlet(
+        VerbsCommon.Set,
+        ProfileNouns.VirtualMachineADDomainExtension,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMADDomainExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
@@ -115,30 +118,17 @@ namespace Microsoft.Azure.Commands.Compute
                         ProtectedSettings = privateSettings
                     };
 
-                    if (NoWait.IsPresent)
-                    {
-                        var op = this.VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VMName,
-                            this.Name ?? VirtualMachineADDomainExtensionContext.ExtensionDefaultName,
-                            parameters).GetAwaiter().GetResult();
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name ?? VirtualMachineADDomainExtensionContext.ExtensionDefaultName,
+                        parameters).GetAwaiter().GetResult();
 
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                        WriteObject(result);
-                    }
-                    else
-                    {
-                        var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VMName,
-                            this.Name ?? VirtualMachineADDomainExtensionContext.ExtensionDefaultName,
-                            parameters).GetAwaiter().GetResult();
-
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                        WriteObject(result);
-                    }
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
                 });
             }
         }
     }
 }
+

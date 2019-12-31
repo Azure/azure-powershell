@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     /// <summary>
     /// This class represents the extension context of AzureDiskEncryption VM Scale Set extension. 
-    /// This is returned as an output of Get-AzVmssDiskEncryptionStatus cmdlet
+    /// This is returned as an output of Get-AzureRmVmssDiskEncryptionStatus cmdlet
     /// </summary>
     public class AzureVmssDiskEncryptionExtensionContext : PSVirtualMachineScaleSetExtension
     {

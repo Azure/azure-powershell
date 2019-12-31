@@ -16,38 +16,27 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSVirtualNetworkGateway : PSTopLevelResource
     {
         public List<PSVirtualNetworkGatewayIpConfiguration> IpConfigurations { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
         public string GatewayType { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
         public string VpnType { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
         public bool EnableBgp { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
         public bool ActiveActive { get; set; }
 
         public PSResourceId GatewayDefaultSite { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
-        [Ps1Xml(Label = "Sku Name", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name")]
         public PSVirtualNetworkGatewaySku Sku { get; set; }
 
         public PSVpnClientConfiguration VpnClientConfiguration { get; set; }
 
         public PSBgpSettings BgpSettings { get; set; }
-
-        public PSAddressSpace CustomRoutes { get; set; }
-
-        public string VpnGatewayGeneration { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText
@@ -77,12 +66,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string BgpSettingsText
         {
             get { return JsonConvert.SerializeObject(BgpSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string CustomRoutesText
-        {
-            get { return JsonConvert.SerializeObject(CustomRoutes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

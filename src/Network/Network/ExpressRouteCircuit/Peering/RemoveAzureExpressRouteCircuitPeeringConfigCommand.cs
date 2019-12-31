@@ -16,14 +16,16 @@ using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSExpressRouteCircuit), DeprecatedOutputProperties = new[] { "AllowGlobalReach" })]
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet(VerbsCommon.Remove, "AzExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSExpressRouteCircuit))]
     public class RemoveAzureExpressRouteCircuitPeeringConfigCommand : NetworkBaseCmdlet
     {
+        public const string IPv4 = "IPv4";
+        public const string IPv6 = "IPv6";
+        public const string All = "All";
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "The name of the Peering")]
@@ -57,8 +59,8 @@ namespace Microsoft.Azure.Commands.Network
                 // For example if the peering has only IPv4 properties set and the user tries to remove IPv6 address family peering, we can ignore the remove operation
                 bool validateAddressFamilyPresent = true;
 
-                if ((this.PeerAddressType == IPv4 && peering.PeeringType == MNM.ExpressRoutePeeringType.MicrosoftPeering && peering.MicrosoftPeeringConfig == null) ||
-                    (this.PeerAddressType == IPv6 && peering.PeeringType == MNM.ExpressRoutePeeringType.MicrosoftPeering && (peering.Ipv6PeeringConfig == null || peering.Ipv6PeeringConfig.MicrosoftPeeringConfig == null)))
+                if ((this.PeerAddressType == IPv4 && peering.PeeringType == MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering && peering.MicrosoftPeeringConfig == null) ||
+                    (this.PeerAddressType == IPv6 && peering.PeeringType == MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering && (peering.Ipv6PeeringConfig == null || peering.Ipv6PeeringConfig.MicrosoftPeeringConfig == null)))
                 {
                     validateAddressFamilyPresent = false;
                 }

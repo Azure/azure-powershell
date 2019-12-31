@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayUrlPathMapConfig"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Remove, "AzApplicationGatewayUrlPathMapConfig"), OutputType(typeof(PSApplicationGateway))]
     public class RemoveAzureApplicationGatewayUrlPathMapConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

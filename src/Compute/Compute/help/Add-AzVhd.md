@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: D08DAA8B-B7BF-4167-AB16-F2723985A0B7
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvhd
@@ -64,9 +64,9 @@ This command adds a .vhd file to a storage account and specifies the SAS URI.
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -80,7 +80,7 @@ Specifies the URI to a base image blob in Azure Blob Storage.
 An SAS can be specified as the value for this parameter.
 
 ```yaml
-Type: System.Uri
+Type: Uri
 Parameter Sets: (All)
 Aliases: bs
 
@@ -95,9 +95,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -111,7 +111,7 @@ Specifies the URI of a blob in Blob Storage.
 The parameter supports SAS URI, although patching scenarios destination cannot be an SAS URI.
 
 ```yaml
-Type: System.Uri
+Type: Uri
 Parameter Sets: (All)
 Aliases: dst
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Specifies the path of the local .vhd file.
 
 ```yaml
-Type: System.IO.FileInfo
+Type: FileInfo
 Parameter Sets: (All)
 Aliases: lf
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 Specifies the number of uploader threads to be used when uploading the .vhd file.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases: th
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet overwrites an existing blob in the specified destination URI, if one exists.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: o
 
@@ -171,9 +171,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 0
@@ -183,19 +183,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### System.Uri
-
-### System.IO.FileInfo
-
-### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
-### System.Management.Automation.SwitchParameter
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

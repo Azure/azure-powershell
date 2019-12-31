@@ -29,6 +29,7 @@ adds a new authorization to a circuit and, at the same time, generates the corre
 authorization key. These keys can be viewed at any time by running the
 Get-AzExpressRouteCircuitAuthorization cmdlet and, as needed, can then be copied and forwarded
 to the appropriate network owner.
+
 Note that, after running **Add-AzExpressRouteCircuitAuthorization**, you must call the
 Set-AzExpressRouteCircuit cmdlet to activate the key. If you do not call
 **Set-AzExpressRouteCircuit** the authorization will be added to the circuit but will not be
@@ -46,6 +47,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $Circuit
 The commands in this example add a new authorization to an existing ExpressRoute circuit. The first
 command uses **Get-AzExpressRouteCircuit** to create an object reference to a circuit named
 ContosoCircuit. That object reference is stored in a variable named $Circuit.
+
 In the second command, the **Add-AzExpressRouteCircuitAuthorization** cmdlet is used to add a
 new authorization (ContosoCircuitAuthorization) to the ExpressRoute circuit. This command adds the
 authorization but does not activate that authorization. Activating an authorization requires the
@@ -57,9 +59,9 @@ authorization but does not activate that authorization. Activating an authorizat
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -72,9 +74,9 @@ Accept wildcard characters: False
 Specifies the ExpressRoute circuit that this cmdlet adds the authorization to.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -87,9 +89,9 @@ Accept wildcard characters: False
 Specifies the name of the circuit authorization to be added.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -103,11 +105,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+### PSExpressRouteCircuit
+**Add-AzExpressRouteCircuitAuthorization** accepts pipelined instances of the
+**Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit** object.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+### PSExpressRouteCircuit
+**Add-AzExpressRouteCircuitAuthorization** modifies instances of the
+**Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit** object.
 
 ## NOTES
 

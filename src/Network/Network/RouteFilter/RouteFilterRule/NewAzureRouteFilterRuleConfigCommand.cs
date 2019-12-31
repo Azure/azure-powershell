@@ -15,15 +15,15 @@
 namespace Microsoft.Azure.Commands.Network
 {
     using System.Management.Automation;
-    using System.Linq;
+
     using Microsoft.Azure.Commands.Network.Models;
 
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteFilterRuleConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteFilterRule))]
+    [Cmdlet(VerbsCommon.New, "AzRouteFilterRuleConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteFilterRule))]
     public class NewAzureRouteFilterRuleConfigCommand : AzureRouteFilterRuleConfigBase
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
+            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
         public override void Execute()
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
                    rule.Name = this.Name;
                    rule.Access = this.Access;
                    rule.RouteFilterRuleType = this.RouteFilterRuleType;
-                   rule.Communities = this.CommunityList?.ToList();
+                   rule.Communities = this.CommunityList;
 
                    WriteObject(rule);
                });

@@ -22,11 +22,11 @@ using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMChefExtension", SupportsShouldProcess = true)]
+    [Cmdlet(
+        VerbsCommon.Set, ProfileNouns.VirtualMachineChefExtension, SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMChefExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -67,7 +67,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -126,7 +125,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                           "Allowed options: 'none', 'service' and 'task'" +
                           "none - Currently prevents the chef-client service from being configured as a service." +
                           "service - Configures the chef-client to run automatically in the background as a service." +
-                          "task - Configures the chef-client to run automatically in the background as a scheduled task.")]
+                          "task - Configures the chef-client to run automatically in the background as a secheduled task.")]
         [ValidateSet("none", "service", "task", IgnoreCase = true)]
         public string Daemon { get; set; }
 
@@ -214,7 +213,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         public string Name
         {
             get
@@ -244,9 +242,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             }
         }
 
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
-        public SwitchParameter NoWait { get; set; }
-
         private Hashtable PublicConfiguration
         {
             get
@@ -261,7 +256,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                     bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
                     bool IsJsonAttributeEmpty = string.IsNullOrEmpty(this.JsonAttribute);
                     bool IsChefDaemonIntervalEmpty = string.IsNullOrEmpty(this.ChefDaemonInterval);
-                    bool IsBootstrapVersionEmpty = string.IsNullOrEmpty(this.BootstrapVersion);
                     string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
                     bool IsDaemonEmpty = string.IsNullOrEmpty(this.Daemon);
 
@@ -313,10 +307,7 @@ validation_client_name 	'{1}'
                     }
 
                     var hashTable = new Hashtable();
-                    if (!IsBootstrapVersionEmpty)
-                    {
-                        hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
-                    }
+                    hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
                     hashTable.Add(ClientRbTemplate, ClientConfig);
 
                     if (!IsRunListEmpty)
@@ -326,14 +317,12 @@ validation_client_name 	'{1}'
 
                     if (!IsBootstrapOptionsEmpty)
                     {
-                        JObject bootstrap_option_json = JObject.Parse(this.BootstrapOptions);
-                        hashTable.Add(BootStrapOptionsTemplate, bootstrap_option_json);
+                        hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
                     }
 
                     if (!IsJsonAttributeEmpty)
                     {
-                        JObject json_attribute_json = JObject.Parse(this.JsonAttribute);
-                        hashTable.Add(JsonAttributeTemplate, json_attribute_json);
+                        hashTable.Add(JsonAttributeTemplate, JsonAttribute);
                     }
 
                     if (!IsChefDaemonIntervalEmpty)
@@ -345,7 +334,6 @@ validation_client_name 	'{1}'
                     {
                         hashTable.Add(DaemonTemplate, this.Daemon);
                     }
-
 
                     this.publicConfiguration = hashTable;
                 }
@@ -390,28 +378,14 @@ validation_client_name 	'{1}'
                         AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion
                     };
 
-                    if (NoWait.IsPresent)
-                    {
-                        var op = this.VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VMName,
-                            this.Name,
-                            parameters).GetAwaiter().GetResult();
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name,
+                        parameters).GetAwaiter().GetResult();
 
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                        WriteObject(result);
-                    }
-                    else
-                    {
-                        var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VMName,
-                            this.Name,
-                            parameters).GetAwaiter().GetResult();
-
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                        WriteObject(result);
-                    }
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
                 });
         }
 

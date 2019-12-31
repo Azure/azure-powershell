@@ -48,13 +48,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NetworkSecurityGroup-MultiValuedRules");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestNetworkSecurityRuleArgumentValidation()
-        {
-            TestRunner.RunTestScript("Test-NetworkSecurityRule-ArgumentValidation");
-        }
     }
 }

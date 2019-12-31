@@ -12,63 +12,39 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
+using AutoMapper;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Compute;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = ResourceGroupNameParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSComputeLongRunningOperation), typeof(PSAzureOperationResponse))]
+    [Cmdlet(VerbsLifecycle.Start, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet, SupportsShouldProcess = true)]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class StartAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
            Position = 1,
-           ParameterSetName = ResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
-        public SwitchParameter NoWait { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(Name, VerbsLifecycle.Start))
             {
                 base.ExecuteCmdlet();
+
                 ExecuteClientAction(() =>
                 {
-                    if (ParameterSetName.Equals(IdParameterSet) && string.IsNullOrEmpty(Name))
-                    {
-                        ResourceIdentifier parsedId = new ResourceIdentifier(Id);
-                        this.ResourceGroupName = parsedId.ResourceGroupName;
-                        this.Name = parsedId.ResourceName;
-                    }
-
-                    if (NoWait.IsPresent)
-                    {
-                        var op = this.VirtualMachineClient.BeginStartWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.Name).GetAwaiter().GetResult();
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                        WriteObject(result);
-                    }
-                    else
-                    {
-                        var op = this.VirtualMachineClient.StartWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.Name).GetAwaiter().GetResult();
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
-                        result.StartTime = this.StartTime;
-                        result.EndTime = DateTime.Now;
-                        WriteObject(result);
-                    }
+                    var op = this.VirtualMachineClient.StartWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.Name).GetAwaiter().GetResult();
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                    WriteObject(result);
                 });
             }
         }

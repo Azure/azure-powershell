@@ -41,7 +41,9 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $Circuit
 This example removes a circuit authorization from an ExpressRoute circuit. The first command uses
 the **Get-AzExpressRouteCircuit** cmdlet to create an object reference to an ExpressRoute
 circuit named ContosoCircuit and stores the result in the variable named $Circuit.
+
 The second command marks the circuit authorization ContosoCircuitAuthorization for removal.
+
 The third command uses the Set-AzExpressRouteCircuit cmdlet to confirm the removal of the
 ExpressRoute circuit stored in the $Circuit variable.
 
@@ -51,9 +53,9 @@ ExpressRoute circuit stored in the $Circuit variable.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -66,9 +68,9 @@ Accept wildcard characters: False
 Specifies the ExpressRouteCircuit object that this cmdlet removes.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -81,9 +83,9 @@ Accept wildcard characters: False
 Specifies the name of the circuit authorization that this cmdlet removes.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -97,11 +99,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+### PSExpressRouteCircuit
+This cmdlet accepts pipelined instances of the
+**Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit** object.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+### PSExpressRouteCircuit
+This cmdlet modifies existing instances of the
+**Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit** object.
 
 ## NOTES
 

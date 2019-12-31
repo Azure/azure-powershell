@@ -19,7 +19,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAuthenticationCertificate"),OutputType(typeof(PSApplicationGatewayAuthenticationCertificate))]
+    [Cmdlet(VerbsCommon.Get, "AzApplicationGatewayAuthenticationCertificate"),
+        OutputType(typeof(PSApplicationGatewayAuthenticationCertificate), typeof(IEnumerable<PSApplicationGatewayAuthenticationCertificate>))]
     public class GetAzureApplicationGatewayAuthenticationCertificateCommand : NetworkBaseCmdlet
     {
         [Parameter(

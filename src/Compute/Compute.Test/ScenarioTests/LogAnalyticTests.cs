@@ -24,21 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExportLogAnalyticThrottledRequestsNegative()
-        {
-            TestRunner.RunTestScript("Test-ExportLogAnalyticThrottledRequestsNegative");
-        }
-
-		[Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExportLogAnalyticRequestRateByIntervalNegative()
-        {
-            TestRunner.RunTestScript("Test-ExportLogAnalyticRequestRateByIntervalNegative");
-        }
-
-        [Fact(Skip = "BUG: LogAnalytics does not work.")]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestExportLogAnalytics()

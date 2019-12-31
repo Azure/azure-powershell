@@ -12,19 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
     /// Add an Additional Unattend Content Object to VM
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAdditionalUnattendContent"),OutputType(typeof(PSVirtualMachine))]
+    [Cmdlet(
+        VerbsCommon.Add,
+        ProfileNouns.AdditionalUnattendContent),
+    OutputType(
+        typeof(PSVirtualMachine))]
     public class NewAzureAdditionalUnattendContentCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private const ComponentNames defaultComponentName = ComponentNames.MicrosoftWindowsShellSetup;
@@ -66,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else if (this.VM.OSProfile.WindowsConfiguration == null && this.VM.OSProfile.LinuxConfiguration != null)
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.LinuxConfigurationSpecified);
+                throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
 
             if (this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent == null)

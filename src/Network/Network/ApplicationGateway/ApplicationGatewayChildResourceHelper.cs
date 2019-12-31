@@ -14,12 +14,27 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System;
-using System.Collections;
 
 namespace Microsoft.Azure.Commands.Network
 {
     public static class ApplicationGatewayChildResourceHelper
     {
+        public static string GetResourceId(
+            string subscriptionId,
+            string resourceGroupName,
+            string applicationGatewayName,
+            string resource,
+            string resourceName)
+        {
+            return string.Format(
+                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayChildResourceId,
+                subscriptionId,
+                resourceGroupName,
+                applicationGatewayName,
+                resource,
+                resourceName);
+        }
+
         public static string GetResourceNotSetId(string subscriptionId, string resource, string resourceName)
         {
             return string.Format(
@@ -51,48 +66,249 @@ namespace Microsoft.Azure.Commands.Network
             return id.Replace(orignalString, string.Format("/{0}/", resourceValue));
         }
 
-        private static bool IsResourceReference(Type t)
+        public static void NormalizeChildResourcesId(PSApplicationGateway applicationGateway)
         {
-            return t.Equals(typeof(PSResourceId)) || t.IsSubclassOf(typeof(PSResourceId));
-        }
-
-        public static void NormalizeChildIds(object inputItem, string rgname, string name)
-        {
-            foreach (var item in inputItem.GetType().GetProperties())
+            // Normalize GatewayIpConfiguration
+            if (applicationGateway.GatewayIPConfigurations != null)
             {
-                var value = item.GetValue(inputItem);
-                if (value != null && value.ToString() != "null")
+                foreach (var gatewayIpConfig in applicationGateway.GatewayIPConfigurations)
                 {
-                    var valueType = value.GetType();
-                    if (item.Name == "Id")
+                    gatewayIpConfig.Id = string.Empty;
+                }
+            }
+
+            // Normalize SslCertificates
+            if (applicationGateway.SslCertificates != null)
+            {
+                foreach (var sslCertificate in applicationGateway.SslCertificates)
+                {
+                    sslCertificate.Id = string.Empty;
+                }
+            }
+
+            // Normalize AuthenticationCertificates
+            if (applicationGateway.AuthenticationCertificates != null)
+            {
+                foreach (var authCertificate in applicationGateway.AuthenticationCertificates)
+                {
+                    authCertificate.Id = string.Empty;
+                }
+            }
+
+            // Normalize FrontendIpConfiguration
+            if (applicationGateway.FrontendIPConfigurations != null)
+            {
+                foreach (var frontendIpConfiguration in applicationGateway.FrontendIPConfigurations)
+                {
+                    frontendIpConfiguration.Id = string.Empty;
+                }
+            }
+
+            // Normalize FrontendPort
+            if (applicationGateway.FrontendPorts != null)
+            {
+                foreach (var frontendPort in applicationGateway.FrontendPorts)
+                {
+                    frontendPort.Id = string.Empty;
+                }
+            }
+
+            // Normalize BackendAddressPool
+            if (applicationGateway.BackendAddressPools != null)
+            {
+                foreach (var backendAddressPool in applicationGateway.BackendAddressPools)
+                {
+                    backendAddressPool.Id = string.Empty;
+                }
+            }
+
+            // Normalize Probe
+            if (applicationGateway.Probes != null)
+            {
+                foreach (var probe in applicationGateway.Probes)
+                {
+                    probe.Id = string.Empty;
+                }
+            }
+
+            // Normalize BackendHttpSettings
+            if (applicationGateway.BackendHttpSettingsCollection != null)
+            {
+                foreach (var backendHttpSettings in applicationGateway.BackendHttpSettingsCollection)
+                {
+                    backendHttpSettings.Id = string.Empty;
+
+                    if (null != backendHttpSettings.Probe)
                     {
-                        string outValue = value.ToString().Replace(
-                            "/resourceGroups/" + Microsoft.Azure.Commands.Network.Properties.Resources.ResourceGroupNotSet,
-                            "/resourceGroups/" + rgname);
-
-                        outValue = outValue.Replace(
-                            "/applicationGateways/" + Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayNameNotSet,
-                            "/applicationGateways/" + name);
-
-                        item.SetValue(inputItem, outValue);
+                        backendHttpSettings.Probe.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    backendHttpSettings.Probe.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
                     }
-                    else if (value is IList)
+                    if (null != backendHttpSettings.AuthenticationCertificates)
                     {
-                        if (IsResourceReference(valueType.GetGenericArguments()[0]))
+                        foreach (var authCert in backendHttpSettings.AuthenticationCertificates)
                         {
-                            foreach (var listItem in (IList)value)
-                            {
-                                NormalizeChildIds(listItem, rgname, name);
-                            }
+                            authCert.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    authCert.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
                         }
                     }
-                    else if (IsResourceReference(valueType))
+                }
+            }
+
+            // Normalize HttpListener
+            if (applicationGateway.HttpListeners != null)
+            {
+                foreach (var httpListener in applicationGateway.HttpListeners)
+                {
+                    httpListener.Id = string.Empty;
+
+                    httpListener.FrontendPort.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                httpListener.FrontendPort.Id,
+                                                applicationGateway.ResourceGroupName,
+                                                applicationGateway.Name);
+
+                    if (null != httpListener.FrontendIpConfiguration)
                     {
-                        NormalizeChildIds(value, rgname, name);
+                        httpListener.FrontendIpConfiguration.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                        httpListener.FrontendIpConfiguration.Id,
+                                                                        applicationGateway.ResourceGroupName,
+                                                                        applicationGateway.Name);
+                    }
+
+                    if (null != httpListener.SslCertificate)
+                    {
+                        httpListener.SslCertificate.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                        httpListener.SslCertificate.Id,
+                                                                        applicationGateway.ResourceGroupName,
+                                                                        applicationGateway.Name);
+                    }
+                }
+            }
+
+            // Normalize UrlPathMap
+            if (applicationGateway.UrlPathMaps != null)
+            {
+                foreach (var urlPathMap in applicationGateway.UrlPathMaps)
+                {
+                    urlPathMap.Id = string.Empty;
+
+                    if (null != urlPathMap.DefaultBackendAddressPool)
+                    {
+                        urlPathMap.DefaultBackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    urlPathMap.DefaultBackendAddressPool.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
+                    }
+                    if (null != urlPathMap.DefaultBackendHttpSettings)
+                    {
+                        urlPathMap.DefaultBackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    urlPathMap.DefaultBackendHttpSettings.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
+                    }
+                    if (null != urlPathMap.DefaultRedirectConfiguration)
+                    {
+
+                        urlPathMap.DefaultRedirectConfiguration.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                        urlPathMap.DefaultRedirectConfiguration.Id,
+                                                        applicationGateway.ResourceGroupName,
+                                                        applicationGateway.Name);
+                    }
+
+                    foreach (var pathRule in urlPathMap.PathRules)
+                    {
+                        if (null != pathRule.BackendAddressPool)
+                        {
+                            pathRule.BackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                      pathRule.BackendAddressPool.Id,
+                                      applicationGateway.ResourceGroupName,
+                                      applicationGateway.Name);
+                        }
+
+                        if (null != pathRule.BackendHttpSettings)
+                        {
+                            pathRule.BackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                        pathRule.BackendHttpSettings.Id,
+                                                        applicationGateway.ResourceGroupName,
+                                                        applicationGateway.Name);
+                        }
+
+                        if (null != pathRule.RedirectConfiguration)
+                        {
+                            pathRule.RedirectConfiguration.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                        pathRule.RedirectConfiguration.Id,
+                                                        applicationGateway.ResourceGroupName,
+                                                        applicationGateway.Name);
+                        }
+                    }
+                }
+            }
+
+            // Normalize RequestRoutingRule
+            if (applicationGateway.RequestRoutingRules != null)
+            {
+                foreach (var requestRoutingRule in applicationGateway.RequestRoutingRules)
+                {
+                    requestRoutingRule.Id = string.Empty;
+
+                    requestRoutingRule.HttpListener.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                    requestRoutingRule.HttpListener.Id,
+                                                                    applicationGateway.ResourceGroupName,
+                                                                    applicationGateway.Name);
+
+                    if (null != requestRoutingRule.BackendAddressPool)
+                    {
+                        requestRoutingRule.BackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                        requestRoutingRule.BackendAddressPool.Id,
+                                                                        applicationGateway.ResourceGroupName,
+                                                                        applicationGateway.Name);
+                    }
+
+                    if (null != requestRoutingRule.BackendHttpSettings)
+                    {
+                        requestRoutingRule.BackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                    requestRoutingRule.BackendHttpSettings.Id,
+                                                                    applicationGateway.ResourceGroupName,
+                                                                    applicationGateway.Name);
+                    }
+
+                    if (null != requestRoutingRule.UrlPathMap)
+                    {
+                        requestRoutingRule.UrlPathMap.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                    requestRoutingRule.UrlPathMap.Id,
+                                                                    applicationGateway.ResourceGroupName,
+                                                                    applicationGateway.Name);
+                    }
+
+                    if (null != requestRoutingRule.RedirectConfiguration)
+                    {
+                        requestRoutingRule.RedirectConfiguration.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                    requestRoutingRule.RedirectConfiguration.Id,
+                                                                    applicationGateway.ResourceGroupName,
+                                                                    applicationGateway.Name);
+                    }
+                }
+
+                // Normalize RedirectConfiguration
+                if (applicationGateway.RedirectConfigurations != null)
+                {
+                    foreach (var redirectConfiguration in applicationGateway.RedirectConfigurations)
+                    {
+                        redirectConfiguration.Id = string.Empty;
+
+                        if (null != redirectConfiguration.TargetListener)
+                        {
+                            redirectConfiguration.TargetListener.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                        redirectConfiguration.TargetListener.Id,
+                                                                        applicationGateway.ResourceGroupName,
+                                                                        applicationGateway.Name);
+                        }
                     }
                 }
             }
         }
-
     }
 }

@@ -12,19 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDataDisk"),OutputType(typeof(PSVirtualMachine))]
+    [Cmdlet(
+        VerbsCommon.Set,
+        ProfileNouns.DataDisk),
+    OutputType(
+        typeof(PSVirtualMachine))]
     public class SetAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private const string NameParameterSet = "ChangeWithName";
@@ -78,14 +80,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
-        public string StorageAccountType { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = HelpMessages.VMDiskEncryptionSetId)]
-        [ValidateNotNullOrEmpty]
-        public string DiskEncryptionSetId { get; set; }
+        public StorageAccountTypes? StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -133,22 +128,6 @@ namespace Microsoft.Azure.Commands.Compute
                     else
                     {
                         dataDisk.ManagedDisk.StorageAccountType = this.StorageAccountType;
-                    }
-                }
-                if (this.IsParameterBound(c => c.DiskEncryptionSetId))
-                {
-                    if (dataDisk.ManagedDisk == null)
-                    {
-                        ThrowTerminatingError
-                            (new ErrorRecord(
-                                new InvalidOperationException(Properties.Resources.NotManagedDisk),
-                                string.Empty,
-                                ErrorCategory.InvalidData,
-                                null));
-                    }
-                    else
-                    {
-                        dataDisk.ManagedDisk.DiskEncryptionSet = new DiskEncryptionSetParameters(this.DiskEncryptionSetId);
                     }
                 }
 

@@ -82,20 +82,6 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ExpressRouteRouteFilters");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
-        public void TestExpressRouteCircuitConnectionCRUD()
-        {
-            TestRunner.RunTestScript("Test-ExpressRouteCircuitConnectionCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
-        public void TestExpressRouteCircuitPeeringWithRouteFilter()
-        {
-            TestRunner.RunTestScript("Test-ExpressRouteCircuitPeeringWithRouteFilter");
-        }
-	}
+        
+    }
 }

@@ -16,12 +16,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSNetworkInterfaceIPConfiguration : PSIPConfiguration
     {
         [JsonProperty(Order = 2)]
-        [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateIpAddressVersion { get; set; }
 
         [JsonProperty(Order = 2)]
@@ -31,7 +29,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSInboundNatRule> LoadBalancerInboundNatRules { get; set; }
 
         [JsonProperty(Order = 2)]
-        [Ps1Xml(Target = ViewControl.Table)]
         public bool Primary { get; set; }
 
         [JsonProperty(Order = 2)]
@@ -39,12 +36,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 2)]
         public List<PSApplicationSecurityGroup> ApplicationSecurityGroups { get; set; }
-
-        [JsonProperty(Order = 2)]
-        public List<PSVirtualNetworkTap> VirtualNetworkTaps { get; set; }
-
-        [JsonProperty(Order = 2)]
-        public PSIpConfigurationConnectivityInformation PrivateLinkConnectionProperties { get; set; }
 
         [JsonIgnore]
         public string LoadBalancerBackendAddressPoolsText
@@ -68,18 +59,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ApplicationSecurityGroupsText
         {
             get { return JsonConvert.SerializeObject(ApplicationSecurityGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string VirtualNetworkTapsText
-        {
-            get { return JsonConvert.SerializeObject(VirtualNetworkTaps, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string PrivateLinkConnectionPropertiesText
-        {
-            get { return JsonConvert.SerializeObject(PrivateLinkConnectionProperties, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public bool ShouldSerializeLoadBalancerBackendAddressPools()

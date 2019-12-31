@@ -77,56 +77,56 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
             HelpMessage = "LoadBalancerBackendAddressPoolId")]
-        public string[] LoadBalancerBackendAddressPoolId { get; set; }
+        public List<string> LoadBalancerBackendAddressPoolId { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResource",
             HelpMessage = "LoadBalancerBackendAddressPools")]
-        public PSBackendAddressPool[] LoadBalancerBackendAddressPool { get; set; }
+        public List<PSBackendAddressPool> LoadBalancerBackendAddressPool { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
             HelpMessage = "LoadBalancerInboundNatRuleId")]
-        public string[] LoadBalancerInboundNatRuleId { get; set; }
+        public List<string> LoadBalancerInboundNatRuleId { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResource",
             HelpMessage = "LoadBalancerInboundNatRule")]
-        public PSInboundNatRule[] LoadBalancerInboundNatRule { get; set; }
+        public List<PSInboundNatRule> LoadBalancerInboundNatRule { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
             HelpMessage = "ApplicationGatewayBackendAddressPoolId")]
-        public string[] ApplicationGatewayBackendAddressPoolId { get; set; }
+        public List<string> ApplicationGatewayBackendAddressPoolId { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResource",
             HelpMessage = "ApplicationGatewayBackendAddressPools")]
-        public PSApplicationGatewayBackendAddressPool[] ApplicationGatewayBackendAddressPool { get; set; }
+        public List<PSApplicationGatewayBackendAddressPool> ApplicationGatewayBackendAddressPool { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
             HelpMessage = "Specifies a collection of application security group references to which this network interface IP configuration belongs.")]
-        public string[] ApplicationSecurityGroupId { get; set; }
+        public List<string> ApplicationSecurityGroupId { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResource",
             HelpMessage = "Specifies a collection of application security group references to which this network interface IP configuration belongs.")]
-        public PSApplicationSecurityGroup[] ApplicationSecurityGroup { get; set; }
+        public List<PSApplicationSecurityGroup> ApplicationSecurityGroup { get; set; }
 
         public override void Execute()
         {        

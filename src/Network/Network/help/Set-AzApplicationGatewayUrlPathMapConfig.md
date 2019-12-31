@@ -13,37 +13,22 @@ Sets configuration for an array of URL path mappings to a backend server pool.
 
 ## SYNTAX
 
-### BackendSetByResource (Default)
+### SetByResourceId
 ```
 Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- -PathRules <PSApplicationGatewayPathRule[]>
- -DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>
- -DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>
- [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
+ [-DefaultBackendAddressPoolId <String>] [-DefaultBackendHttpSettingsId <String>]
+ [-DefaultRedirectConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### BackendSetByResourceId
+### SetByResource
 ```
 Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- -PathRules <PSApplicationGatewayPathRule[]> -DefaultBackendAddressPoolId <String>
- -DefaultBackendHttpSettingsId <String> [-DefaultRewriteRuleSetId <String>]
+ -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
+ [-DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>]
+ [-DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
+ [-DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### RedirectSetByResource
-```
-Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- -PathRules <PSApplicationGatewayPathRule[]> [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
- -DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### RedirectSetByResourceId
-```
-Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- -PathRules <PSApplicationGatewayPathRule[]> [-DefaultRewriteRuleSetId <String>]
- -DefaultRedirectConfigurationId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,16 +36,10 @@ The **Set-AzApplicationGatewayUrlPathMapConfig** cmdlet sets configuration for a
 
 ## EXAMPLES
 
-### Example 1: Update an URL path mapping
-```
-PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
-PS C:\> $appgw = Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name "map01"
-PS C:\> $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+### 1:
 ```
 
-The first command gets the application gateway named appGwName and stores the result in the $appgw variable.
-The second command updates the URL path mapping named map01 in the application gateway.
-The third command updates the application gateway.
+```
 
 ## PARAMETERS
 
@@ -68,9 +47,9 @@ The third command updates the application gateway.
 Specifies the application gateway to which this cmdlet sets a URL path map configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -83,11 +62,11 @@ Accept wildcard characters: False
 Specifies the default backend address pool to route in case none of the rules specified in the *pathRules* parameter match.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool
-Parameter Sets: BackendSetByResource
-Aliases:
+Type: PSApplicationGatewayBackendAddressPool
+Parameter Sets: SetByResource
+Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -98,11 +77,11 @@ Accept wildcard characters: False
 Specifies the default backend address pool ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: BackendSetByResourceId
-Aliases:
+Type: String
+Parameter Sets: SetByResourceId
+Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -113,11 +92,11 @@ Accept wildcard characters: False
 Specifies the default backend HTTP settings to use in case none of the rules specified in the *pathRules* parameter match.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings
-Parameter Sets: BackendSetByResource
-Aliases:
+Type: PSApplicationGatewayBackendHttpSettings
+Parameter Sets: SetByResource
+Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -128,11 +107,11 @@ Accept wildcard characters: False
 Specifies the default backend HTTP settings ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: BackendSetByResourceId
-Aliases:
+Type: String
+Parameter Sets: SetByResourceId
+Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -143,9 +122,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -158,11 +137,11 @@ Accept wildcard characters: False
 Application gateway default RedirectConfiguration
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration
-Parameter Sets: RedirectSetByResource
-Aliases:
+Type: PSApplicationGatewayRedirectConfiguration
+Parameter Sets: SetByResource
+Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -173,39 +152,9 @@ Accept wildcard characters: False
 ID of the application gateway default RedirectConfiguration
 
 ```yaml
-Type: System.String
-Parameter Sets: RedirectSetByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultRewriteRuleSet
-Application gateway default rewrite rule set
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleSet
-Parameter Sets: BackendSetByResource, RedirectSetByResource
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultRewriteRuleSetId
-ID of the application gateway default rewrite rule set
-
-```yaml
-Type: System.String
-Parameter Sets: BackendSetByResourceId, RedirectSetByResourceId
-Aliases:
+Type: String
+Parameter Sets: SetByResourceId
+Aliases: 
 
 Required: False
 Position: Named
@@ -218,9 +167,9 @@ Accept wildcard characters: False
 Specifies the URL path map name in which this cmdlet sets configuration for.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -234,9 +183,9 @@ Specifies a list of path rules.
 Note that the path rules are order sensitive, they are applied in order they are specified.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule[]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -250,7 +199,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+### PSApplicationGateway
+Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
 
 ## OUTPUTS
 

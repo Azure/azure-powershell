@@ -25,14 +25,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestWithValidVhdDiskFile()
-        {
-            TestRunner.RunTestScript("Test-NewAzureRmVhdVMWithValidDiskFile");
-        }
-
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWithInvalidVhdDiskFile()
         {

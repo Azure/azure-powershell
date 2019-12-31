@@ -20,7 +20,6 @@ using System.Linq;
 using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
-using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -48,36 +47,26 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string adminPassword,
             string vmSize,
             int instanceCount,
-            VirtualMachineScaleSetIdentity identity,
-            bool singlePlacementGroup,
             UpgradeMode? upgradeMode,
             IEnumerable<int> dataDisks,
-            IList<string> zones,
-            bool ultraSSDEnabled,
-            Func<IEngine, SubResource> proximityPlacementGroup,
-            string priority,
-            string evictionPolicy,
-            double? maxPrice,
-            string[] scaleInPolicy,
-            bool doNotRunExtensionsOnOverprovisionedVMs)
+            IList<string> zones)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
                 createModel: engine => new VirtualMachineScaleSet()
                 {
                     Zones = zones,
+
                     UpgradePolicy = new UpgradePolicy
                     {
                         Mode = upgradeMode ?? UpgradeMode.Manual
                     },
+
                     Sku = new Azure.Management.Compute.Models.Sku()
                     {
                         Capacity = instanceCount,
                         Name = vmSize,
                     },
-                    Identity = identity,
-                    SinglePlacementGroup = singlePlacementGroup,
-                    AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
                         OsProfile = new VirtualMachineScaleSetOSProfile
@@ -120,17 +109,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                     NetworkSecurityGroup = engine.GetReference(networkSecurityGroup)
                                 }
                             }
-                        },
-                        Priority = priority,
-                        EvictionPolicy = evictionPolicy,
-                        BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
-                    },
-                    ProximityPlacementGroup = proximityPlacementGroup(engine),
-                    ScaleInPolicy = (scaleInPolicy == null) ? null : new ScaleInPolicy
-                    {
-                        Rules = scaleInPolicy
-                    },
-                    DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null
+                        }
+                    }
                 });
     }
 }

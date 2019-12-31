@@ -20,10 +20,10 @@ function Test-VirtualNetworkAvailableEndpointServicesList
 {
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
     $location = Get-ProviderLocation $resourceTypeParent
-
+    $location = $location -replace " ",""
     try
     {
-        $results = Get-AzVirtualNetworkAvailableEndpointService -Location $location;
+        $results = Get-AzureRmVirtualNetworkAvailableEndpointService -Location $location;
         Assert-NotNull $results;
     }
     finally

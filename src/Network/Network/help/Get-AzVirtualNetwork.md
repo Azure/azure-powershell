@@ -15,8 +15,8 @@ Gets a virtual network in a resource group.
 
 ### NoExpand
 ```
-Get-AzVirtualNetwork [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzVirtualNetwork [-Name <String>] [-ResourceGroupName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Expand
@@ -33,56 +33,9 @@ The **Get-AzVirtualNetwork** cmdlet gets one or more virtual networks n a resour
 ### 1: Retrieve a virtual network
 ```
 Get-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup
-
-Name                   : MyVirtualNetwork1
-ResourceGroupName      : TestResourceGroup
-Location               : eastus
-Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup
-                         /providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork1
-Etag                   : W/"00000000-0000-0000-0000-000000000000"
-ResourceGuid           : 00000000-0000-0000-0000-000000000000
-ProvisioningState      : Succeeded
-Tags                   :
-AddressSpace           : {
-                           "AddressPrefixes": [
-                             "xx.x.x.x/x"
-                           ]
-                         }
-DhcpOptions            : {}
-Subnets                : []
-VirtualNetworkPeerings : []
-EnableDdosProtection   : false
-DdosProtectionPlan     : null
 ```
 
 This command gets the virtual network named MyVirtualNetwork in the resource group TestResourceGroup
-
-### 2: List virtual networks using filter
-```
-Get-AzVirtualNetwork -Name MyVirtualNetwork*
-
-Name                   : MyVirtualNetwork1
-ResourceGroupName      : TestResourceGroup
-Location               : eastus
-Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup
-                         /providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork1
-Etag                   : W/"00000000-0000-0000-0000-000000000000"
-ResourceGuid           : 00000000-0000-0000-0000-000000000000
-ProvisioningState      : Succeeded
-Tags                   :
-AddressSpace           : {
-                           "AddressPrefixes": [
-                             "xx.x.x.x/x"
-                           ]
-                         }
-DhcpOptions            : {}
-Subnets                : []
-VirtualNetworkPeerings : []
-EnableDdosProtection   : false
-DdosProtectionPlan     : null
-```
-
-This command gets all virtual networks that start with "MyVirtualNetwork".
 
 ## PARAMETERS
 
@@ -90,9 +43,9 @@ This command gets all virtual networks that start with "MyVirtualNetwork".
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -103,9 +56,9 @@ Accept wildcard characters: False
 
 ### -ExpandResource
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Expand
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -118,7 +71,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual network that this cmdlet gets.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -126,11 +79,11 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -138,42 +91,40 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
 Specifies the name of the resource group that virtual network belongs to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: NoExpand
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Expand
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### System.String
 
 ## OUTPUTS
 

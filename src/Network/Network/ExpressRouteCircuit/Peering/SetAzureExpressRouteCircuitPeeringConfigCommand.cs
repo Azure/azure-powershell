@@ -13,15 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSExpressRouteCircuit), DeprecatedOutputProperties = new[] { "AllowGlobalReach" })]
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitPeeringConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet(VerbsCommon.Set, "AzExpressRouteCircuitPeeringConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCircuit))]
     public class SetAzureExpressRouteCircuitPeeringConfigCommand : AzureExpressRouteCircuitPeeringConfigBase
     {
         [Parameter(
@@ -47,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Peering with the specified name does not exist");
             }
 
-            if (string.Equals(ParameterSetName, ParamSetByRouteFilter))
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (this.RouteFilter != null)
                 {
@@ -67,12 +65,25 @@ namespace Microsoft.Azure.Commands.Network
 
             if(PeerAddressType == IPv6)
             {
-                this.SetIpv6PeeringParameters(peering);
+                peering.Ipv6PeeringConfig = new PSIpv6PeeringConfig();
+                peering.Ipv6PeeringConfig.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
+                peering.Ipv6PeeringConfig.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
+                if (!string.IsNullOrEmpty(this.RouteFilterId))
+                {
+                    peering.Ipv6PeeringConfig.RouteFilter = new PSRouteFilter();
+                    peering.Ipv6PeeringConfig.RouteFilter.Id = this.RouteFilterId;
+                }
             }
             else
             {
                 // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
-                this.SetIpv4PeeringParameters(peering);
+                peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
+                peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
+                if (!string.IsNullOrEmpty(this.RouteFilterId))
+                {
+                    peering.RouteFilter = new PSRouteFilter();
+                    peering.RouteFilter.Id = this.RouteFilterId;
+                }
             }
 
             this.ConstructMicrosoftConfig(peering);

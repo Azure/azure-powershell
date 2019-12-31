@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,21 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGateway", DefaultParameterSetName = "IdentityByUserAssignedIdentityId", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.New, "AzApplicationGateway", SupportsShouldProcess = true), 
+        OutputType(typeof(PSApplicationGateway))]
     public class NewAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -71,85 +70,73 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of IPConfiguration (subnet)")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayIPConfiguration[] GatewayIPConfigurations { get; set; }
+        public List<PSApplicationGatewayIPConfiguration> GatewayIPConfigurations { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of ssl certificates")]
-        public PSApplicationGatewaySslCertificate[] SslCertificates { get; set; }
+        public List<PSApplicationGatewaySslCertificate> SslCertificates { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of authentication certificates")]
-        public PSApplicationGatewayAuthenticationCertificate[] AuthenticationCertificates { get; set; }
-
-        [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of trusted root certificates")]
-        public PSApplicationGatewayTrustedRootCertificate[] TrustedRootCertificate { get; set; }
+        public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of frontend IP config")]
-        public PSApplicationGatewayFrontendIPConfiguration[] FrontendIPConfigurations { get; set; }
+        public List<PSApplicationGatewayFrontendIPConfiguration> FrontendIPConfigurations { get; set; }
 
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of frontend port")]
-        public PSApplicationGatewayFrontendPort[] FrontendPorts { get; set; }
+        public List<PSApplicationGatewayFrontendPort> FrontendPorts { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of probe")]
-        public PSApplicationGatewayProbe[] Probes { get; set; }
+        public List<PSApplicationGatewayProbe> Probes { get; set; }
 
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of backend address pool")]
-        public PSApplicationGatewayBackendAddressPool[] BackendAddressPools { get; set; }
+        public List<PSApplicationGatewayBackendAddressPool> BackendAddressPools { get; set; }
 
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of backend http settings")]
-        public PSApplicationGatewayBackendHttpSettings[] BackendHttpSettingsCollection { get; set; }
+        public List<PSApplicationGatewayBackendHttpSettings> BackendHttpSettingsCollection { get; set; }
 
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of http listener")]
-        public PSApplicationGatewayHttpListener[] HttpListeners { get; set; }
+        public List<PSApplicationGatewayHttpListener> HttpListeners { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of UrlPathMap")]
-        public PSApplicationGatewayUrlPathMap[] UrlPathMaps { get; set; }
+        public List<PSApplicationGatewayUrlPathMap> UrlPathMaps { get; set; }
 
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of request routing rule")]
-        public PSApplicationGatewayRequestRoutingRule[] RequestRoutingRules { get; set; }
-
-        [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of RewriteRuleSet")]
-        public PSApplicationGatewayRewriteRuleSet[] RewriteRuleSet { get; set; }
+        public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of redirect configuration")]
-        public PSApplicationGatewayRedirectConfiguration[] RedirectConfigurations { get; set; }
+        public List<PSApplicationGatewayRedirectConfiguration> RedirectConfigurations { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -158,84 +145,24 @@ namespace Microsoft.Azure.Commands.Network
         public virtual PSApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; set; }
 
         [Parameter(
-            ParameterSetName = "SetByResourceId",
-            HelpMessage = "FirewallPolicyId")]
-        public string FirewallPolicyId { get; set; }
-
-        [Parameter(
-            ParameterSetName = "SetByResource",
-            HelpMessage = "FirewallPolicy")]
-        public PSApplicationGatewayWebApplicationFirewallPolicy FirewallPolicy { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Autoscale Configuration")]
-        public virtual PSApplicationGatewayAutoscaleConfiguration AutoscaleConfiguration { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = " Whether HTTP2 is enabled.")]
-        public SwitchParameter EnableHttp2 { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = " Whether FIPS is enabled.")]
-        public SwitchParameter EnableFIPS { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "A list of availability zones denoting where the application gateway needs to come from.")]
-        public string[] Zone { get; set; }
-
-        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
-        [CmdletParameterBreakingChange("UserAssignedIdentityId", ReplaceMentCmdletParameterName = "Identity")]
-        [Parameter(
-            ParameterSetName = "IdentityByUserAssignedIdentityId",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "ResourceId of the user assigned identity to be assigned to Application Gateway.")]
-        [ValidateNotNullOrEmpty]
-        [Alias("UserAssignedIdentity")]
-        public string UserAssignedIdentityId { get; set; }
-
-        [Parameter(
-            ParameterSetName = "IdentityByIdentityObject",
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Application Gateway Identity to be assigned to Application Gateway.")]
-        [ValidateNotNullOrEmpty]
-        public PSManagedServiceIdentity Identity { get; set; }
-
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
+            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Customer error of an application gateway")]
-        [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayCustomError[] CustomErrorConfiguration { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
-            {
-                if (this.FirewallPolicy != null)
-                {
-                    this.FirewallPolicyId = this.FirewallPolicy.Id;
-                }
-            }
-
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsApplicationGatewayPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
@@ -266,72 +193,62 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.GatewayIPConfigurations != null)
             {
-                applicationGateway.GatewayIPConfigurations = this.GatewayIPConfigurations?.ToList();
+                applicationGateway.GatewayIPConfigurations = this.GatewayIPConfigurations;
             }
 
             if (this.SslCertificates != null)
             {
-                applicationGateway.SslCertificates = this.SslCertificates?.ToList();
+                applicationGateway.SslCertificates = this.SslCertificates;
             }
 
             if (this.AuthenticationCertificates != null)
             {
-                applicationGateway.AuthenticationCertificates = this.AuthenticationCertificates?.ToList();
-            }
-
-            if (this.TrustedRootCertificate != null)
-            {
-                applicationGateway.TrustedRootCertificates =this.TrustedRootCertificate?.ToList();
+                applicationGateway.AuthenticationCertificates = this.AuthenticationCertificates;
             }
 
             if (this.FrontendIPConfigurations != null)
             {
-                applicationGateway.FrontendIPConfigurations = this.FrontendIPConfigurations?.ToList();
+                applicationGateway.FrontendIPConfigurations = this.FrontendIPConfigurations;
             }
 
             if (this.FrontendPorts != null)
             {
-                applicationGateway.FrontendPorts = this.FrontendPorts?.ToList();
+                applicationGateway.FrontendPorts = this.FrontendPorts;
             }
 
             if (this.Probes != null)
             {
-                applicationGateway.Probes = this.Probes?.ToList();
+                applicationGateway.Probes = this.Probes;
             }
 
             if (this.BackendAddressPools != null)
             {
-                applicationGateway.BackendAddressPools = this.BackendAddressPools?.ToList();
+                applicationGateway.BackendAddressPools = this.BackendAddressPools;
             }
 
             if (this.BackendHttpSettingsCollection != null)
             {
-                applicationGateway.BackendHttpSettingsCollection = this.BackendHttpSettingsCollection?.ToList();
+                applicationGateway.BackendHttpSettingsCollection = this.BackendHttpSettingsCollection;
             }
 
             if (this.HttpListeners != null)
             {
-                applicationGateway.HttpListeners = this.HttpListeners?.ToList();
+                applicationGateway.HttpListeners = this.HttpListeners;
             }
 
             if (this.UrlPathMaps != null)
             {
-                applicationGateway.UrlPathMaps = this.UrlPathMaps?.ToList();
+                applicationGateway.UrlPathMaps = this.UrlPathMaps;
             }
 
             if (this.RequestRoutingRules != null)
             {
-                applicationGateway.RequestRoutingRules = this.RequestRoutingRules?.ToList();
-            }
-
-            if (this.RewriteRuleSet != null)
-            {
-                applicationGateway.RewriteRuleSets = this.RewriteRuleSet?.ToList();
+                applicationGateway.RequestRoutingRules = this.RequestRoutingRules;
             }
 
             if (this.RedirectConfigurations != null)
             {
-                applicationGateway.RedirectConfigurations = this.RedirectConfigurations?.ToList();
+                applicationGateway.RedirectConfigurations = this.RedirectConfigurations;
             }
 
             if (this.WebApplicationFirewallConfiguration != null)
@@ -339,55 +256,8 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.WebApplicationFirewallConfiguration = this.WebApplicationFirewallConfiguration;
             }
 
-            if (!string.IsNullOrEmpty(this.FirewallPolicyId))
-            {
-                applicationGateway.FirewallPolicy = new PSResourceId();
-                applicationGateway.FirewallPolicy.Id = this.FirewallPolicyId;
-            }
-
-            if (this.AutoscaleConfiguration != null)
-            {
-                applicationGateway.AutoscaleConfiguration = this.AutoscaleConfiguration;
-            }
-
-            if (this.EnableHttp2.IsPresent)
-            {
-                applicationGateway.EnableHttp2 = true;
-            }
-
-            if (this.EnableFIPS.IsPresent)
-            {
-                applicationGateway.EnableFips = true;
-            }
-
-            if (this.Zone != null)
-            {
-                applicationGateway.Zones = this.Zone?.ToList();
-            }
-
-            if (this.UserAssignedIdentityId != null)
-            {
-                applicationGateway.Identity = new PSManagedServiceIdentity
-                {
-                    Type = MNM.ResourceIdentityType.UserAssigned,
-                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
-                    {
-                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
-                    }
-                };
-            }
-            else if (this.Identity != null)
-            {
-                applicationGateway.Identity = this.Identity;
-            }
-
-            if (this.CustomErrorConfiguration != null)
-            {
-                applicationGateway.CustomErrorConfigurations = this.CustomErrorConfiguration?.ToList();
-            }
-
             // Normalize the IDs
-            ApplicationGatewayChildResourceHelper.NormalizeChildIds(applicationGateway, this.ResourceGroupName, this.Name);
+            ApplicationGatewayChildResourceHelper.NormalizeChildResourcesId(applicationGateway);
 
             // Map to the sdk object
             var appGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ApplicationGateway>(applicationGateway);

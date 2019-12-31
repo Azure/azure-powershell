@@ -22,7 +22,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMImage")]
+    [Cmdlet(VerbsCommon.Get,
+        ProfileNouns.VirtualMachineImage)]
     [OutputType(typeof(PSVirtualMachineImage),
         ParameterSetName = new[] { ListVMImageParamSetName })]
     [OutputType(typeof(PSVirtualMachineImageDetail),
@@ -78,7 +79,6 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             ValueFromPipelineByPropertyName = true),
         ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string Version { get; set; }
 
         public override void ExecuteCmdlet()
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
+                if (this.ParameterSetName.Equals(ListVMImageParamSetName))
                 {
                     var filter = new ODataQuery<VirtualMachineImageResource>(this.FilterExpression);
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Compute
                                      FilterExpression = this.FilterExpression
                                  };
 
-                    WriteObject(SubResourceWildcardFilter(Version, images), true);
+                    WriteObject(images, true);
                 }
                 else
                 {
@@ -137,8 +137,6 @@ namespace Microsoft.Azure.Commands.Compute
                         OSDiskImage = response.Body.OsDiskImage,
                         DataDiskImages = response.Body.DataDiskImages,
                         PurchasePlan = response.Body.Plan,
-                        AutomaticOSUpgradeProperties = response.Body.AutomaticOSUpgradeProperties,
-                        HyperVGeneration = response.Body.HyperVGeneration
                     };
 
                     WriteObject(image);

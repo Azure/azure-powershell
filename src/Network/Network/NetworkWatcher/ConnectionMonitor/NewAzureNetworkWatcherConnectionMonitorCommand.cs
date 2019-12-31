@@ -26,7 +26,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"),OutputType(typeof(PSConnectionMonitorResult))]
+    [Cmdlet(VerbsCommon.New, "AzNetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"),
+        OutputType(typeof(PSConnectionMonitorResult))]
     public class NewAzureNetworkWatcherConnectionMonitorCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
@@ -39,14 +40,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
-        [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
         [ResourceGroupCompleter]
@@ -55,28 +57,31 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the network watcher.",
             ParameterSetName = "SetByLocation")]
-        [LocationCompleter("Microsoft.Network/networkWatchers/connectionMonitors")]
+        [LocationCompleterAttribute]
         [ValidateNotNull]
         public string Location { get; set; }
 
         [Alias("ConnectionMonitorName")]
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The connection monitor name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The ID of the connection monitor source.")]
         [ValidateNotNullOrEmpty]
         public string SourceResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Monitoring interval in seconds. Default value is 60 seconds.")]
+            HelpMessage = "Monitoring interval in seconds.")]
         [ValidateNotNullOrEmpty]
         public int? MonitoringIntervalInSeconds { get; set; }
 
@@ -108,9 +113,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Configure connection monitor, but do not start it")]
+            HelpMessage = "Auto start.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter ConfigureOnly { get; set; }
+        public bool? AutoStart { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -125,25 +130,30 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        public string resourceGroupName = string.Empty;
+        public string networkWatcherName = string.Empty;
+
         public override void Execute()
         {
             base.Execute();
-
-            string resourceGroupName = this.ResourceGroupName;
-            string networkWatcherName = this.NetworkWatcherName;
 
             if (ParameterSetName.Contains("SetByResource"))
             {
                 resourceGroupName = this.NetworkWatcher.ResourceGroupName;
                 networkWatcherName = this.NetworkWatcher.Name;
             }
-            else if (ParameterSetName.Contains("SetByLocation"))
+            else if (ParameterSetName.Contains("SetByName"))
+            {
+                resourceGroupName = this.ResourceGroupName;
+                networkWatcherName = this.NetworkWatcherName;
+            }
+            else
             {
                 var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
 
                 if (networkWatcher == null)
                 {
-                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
+                    throw new ArgumentException("There is no network watcher in the specified location");
                 }
 
                 resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
@@ -159,13 +169,13 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name,
                 () =>
                 {
-                    var connectionMonitor = CreateConnectionMonitor(resourceGroupName, networkWatcherName);
+                    var connectionMonitor = CreateConnectionMonitor();
                     WriteObject(connectionMonitor);
                 },
                 () => present);
         }
 
-        private PSConnectionMonitorResult CreateConnectionMonitor(string resourceGroupName, string networkWatcherName)
+        private PSConnectionMonitorResult CreateConnectionMonitor()
         {
             MNM.ConnectionMonitor parameters = new MNM.ConnectionMonitor
             {
@@ -183,9 +193,9 @@ namespace Microsoft.Azure.Commands.Network
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
             };
 
-            if (this.ConfigureOnly)
+            if (this.AutoStart != null)
             {
-                parameters.AutoStart = false;
+                parameters.AutoStart = this.AutoStart;
             }
 
             if (this.MonitoringIntervalInSeconds != null)
@@ -202,7 +212,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (ParameterSetName.Contains("SetByName"))
             {
-                MNM.NetworkWatcher networkWatcher = this.NetworkClient.NetworkManagementClient.NetworkWatchers.Get(this.ResourceGroupName, this.NetworkWatcherName);
+                NetworkWatcher networkWatcher = this.NetworkClient.NetworkManagementClient.NetworkWatchers.Get(this.ResourceGroupName, this.NetworkWatcherName);
                 parameters.Location = networkWatcher.Location;
             }
             else

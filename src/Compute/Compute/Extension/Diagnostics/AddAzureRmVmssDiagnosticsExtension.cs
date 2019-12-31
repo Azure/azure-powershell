@@ -12,22 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssDiagnosticsExtension",SupportsShouldProcess = true)]
-    [OutputType(typeof(PSVirtualMachineScaleSet))]
+    [Cmdlet(
+        VerbsCommon.Add,
+        ProfileNouns.VirtualMachineScaleSetDiagnosticsExtension,
+        SupportsShouldProcess = true)]
+    [OutputType(typeof(VirtualMachineScaleSet))]
     public class AddAzureRmVmssDiagnosticsExtension : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private string extensionName = DiagnosticsExtensionConstants.ExtensionDefaultName;
@@ -39,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
+        public VirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -120,19 +122,19 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
                 }
 
                 // ExtensionProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new PSVirtualMachineScaleSetExtensionProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtensionProfile();
                 }
 
                 // Extensions
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<PSVirtualMachineScaleSetExtension>();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension>();
                 }
 
                 bool shouldContinue = true;
@@ -162,7 +164,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
                     // Parse configs, and auto fill incomplete parts
                     Tuple<Hashtable, Hashtable> settings = DiagnosticsHelper.GetConfigurationsFromFiles(this.SettingFilePath, this.ProtectedSettingFilePath, this.VirtualMachineScaleSet.Id, this, storageClient);
 
-                    var newDiagnosticsExtension = new PSVirtualMachineScaleSetExtension();
+                    var newDiagnosticsExtension = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension();
 
                     newDiagnosticsExtension.Name = this.Name;
                     newDiagnosticsExtension.Publisher = DiagnosticsExtensionConstants.ExtensionPublisher;
@@ -175,7 +177,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
                 }
             }
 
-            WriteObject(ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet>(this.VirtualMachineScaleSet));
+            WriteObject(this.VirtualMachineScaleSet);
         }
     }
 }

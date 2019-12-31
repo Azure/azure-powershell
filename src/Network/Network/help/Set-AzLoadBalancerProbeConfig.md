@@ -9,18 +9,18 @@ schema: 2.0.0
 # Set-AzLoadBalancerProbeConfig
 
 ## SYNOPSIS
-Updates a probe configuration for a load balancer.
+Sets the goal state for a probe configuration.
 
 ## SYNTAX
 
 ```
-Set-AzLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>] -Port <Int32>
- -IntervalInSeconds <Int32> -ProbeCount <Int32> [-RequestPath <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzLoadBalancerProbeConfig -Name <String> -LoadBalancer <PSLoadBalancer> [-RequestPath <String>]
+ [-Protocol <String>] -Port <Int32> -IntervalInSeconds <Int32> -ProbeCount <Int32>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzLoadBalancerProbeConfig** cmdlet updates a probe configuration for a load balancer.
+The **Set-AzLoadBalancerProbeConfig** cmdlet sets the goal state for a probe configuration.
 
 ## EXAMPLES
 
@@ -32,7 +32,9 @@ PS C:\> $slb | Set-AzLoadBalancerProbeConfig -Name "NewProbe" -Port 80 -Interval
 ```
 
 The first command gets the loadbalancer named MyLoadBalancer, and then stores it in the $slb variable.
+
 The second command uses the pipeline operator to pass the load balancer in $slb to Add-AzLoadBalancerProbeConfig, which adds a new probe configuration to it.
+
 The third command passes the load balancer to **Set-AzLoadBalancerProbeConfig**, which sets the new configuration.
 Note that it is necessary to specify several of the same parameters that were specified in the previous command because they are required by the current cmdlet.
 
@@ -42,9 +44,9 @@ Note that it is necessary to specify several of the same parameters that were sp
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -57,30 +59,30 @@ Accept wildcard characters: False
 Specifies the interval, in seconds, between probes to each instance of the load-balanced service.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -LoadBalancer
 Specifies a load balancer.
-This cmdlet updates a probe configuration for the load balancer that this parameter specifies.
+This cmdlet sets the goal state for a probe configuration for the load balancer that this parameter specifies.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Type: PSLoadBalancer
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -88,9 +90,9 @@ Accept wildcard characters: False
 Specifies the name of the probe configuration that this cmdlet sets.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -103,14 +105,14 @@ Accept wildcard characters: False
 Specifies the port on which probes should connect to a load-balanced service.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -118,14 +120,14 @@ Accept wildcard characters: False
 Specifies the number of per-instance consecutive failures for an instance to be considered unhealthy.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -134,39 +136,10 @@ Specifies the protocol to use for the probing.
 The acceptable values for this parameter are: Tcp or Http.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RequestPath
-Specifies the path in the load-balanced service to probe to determine health.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Aliases: 
+Accepted values: Tcp, Http
 
 Required: False
 Position: Named
@@ -175,13 +148,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+### -RequestPath
+Specifies the path in the load-balanced service to probe to determine health.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: wi
+Aliases: 
 
 Required: False
 Position: Named
@@ -195,11 +168,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-
-### System.String
-
-### System.Int32
+### PSLoadBalancer
+Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
 
 ## OUTPUTS
 

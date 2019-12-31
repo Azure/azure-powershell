@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Get, "AzApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
     public class GetAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -30,9 +30,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/applicationGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -41,13 +39,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (ShouldGetByName(ResourceGroupName, Name))
+            if (!string.IsNullOrEmpty(this.Name))
             {
                 var applicationGateway = this.GetApplicationGateway(this.ResourceGroupName, this.Name);
 
@@ -56,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<ApplicationGateway> appGatewayPage;
-                if (ShouldListByResourceGroup(ResourceGroupName, Name))
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
                     appGatewayPage = this.ApplicationGatewayClient.List(this.ResourceGroupName);
                 }
@@ -77,8 +74,9 @@ namespace Microsoft.Azure.Commands.Network
                     psApplicationGateways.Add(psAppGw);
                 }
 
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psApplicationGateways), true);
+                WriteObject(psApplicationGateways, true);
             }
         }
     }
 }
+

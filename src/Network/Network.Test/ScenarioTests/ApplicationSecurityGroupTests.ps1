@@ -27,10 +27,10 @@ function Test-ApplicationSecurityGroupCRUD
     try
     {
         # Create the resource group
-        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
 
         # Create the application security group
-        $job = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName -Location $rgLocation -AsJob
+        $job = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName -Location $rgLocation -AsJob
 		$job | Wait-Job
 		$asgNew = $job | Receive-Job
 
@@ -40,23 +40,14 @@ function Test-ApplicationSecurityGroupCRUD
         Assert-NotNull $asgNew.Etag
 
         # Get the application security group
-        $asgGet = Get-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName
+        $asgGet = Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName
         Assert-AreEqual $rgName $asgGet.ResourceGroupName
         Assert-AreEqual $asgName $asgGet.Name
         Assert-NotNull $asgGet.Location
         Assert-NotNull $asgGet.Etag
 
-        $asgGet = Get-AzApplicationSecurityGroup -ResourceGroupName "*"
-        Assert-True { $asgGet.Count -ge 0 }
-
-        $asgGet = Get-AzApplicationSecurityGroup -Name "*"
-        Assert-True { $asgGet.Count -ge 0 }
-
-        $asgGet = Get-AzApplicationSecurityGroup -ResourceGroupName "*" -Name "*"
-        Assert-True { $asgGet.Count -ge 0 }
-
         # Remove the application security group
-        $asgDelete = Remove-AzApplicationSecurityGroup -Name $asgName -ResourceGroupName $rgName -PassThru -Force
+        $asgDelete = Remove-AzureRmApplicationSecurityGroup -Name $asgName -ResourceGroupName $rgName -PassThru -Force
         Assert-AreEqual $true $asgDelete
     }
     finally
@@ -85,15 +76,15 @@ function Test-ApplicationSecurityGroupCollections
     try
     {
         # Create the resource groups
-        $resourceGroup1 = New-AzResourceGroup -Name $rgName1 -Location $location -Tags @{ testtag = "ASG tag" }
-        $resourceGroup2 = New-AzResourceGroup -Name $rgName2 -Location $location -Tags @{ testtag = "ASG tag" }
+        $resourceGroup1 = New-AzureRmResourceGroup -Name $rgName1 -Location $location -Tags @{ testtag = "ASG tag" }
+        $resourceGroup2 = New-AzureRmResourceGroup -Name $rgName2 -Location $location -Tags @{ testtag = "ASG tag" }
 
         # Create ASGs in each resource group
-        $asg1 = New-AzApplicationSecurityGroup -Name $asgName1 -ResourceGroupName $rgName1 -Location $rgLocation
-        $asg2 = New-AzApplicationSecurityGroup -Name $asgName2 -ResourceGroupName $rgName2 -Location $rgLocation
+        $asg1 = New-AzureRmApplicationSecurityGroup -Name $asgName1 -ResourceGroupName $rgName1 -Location $rgLocation
+        $asg2 = New-AzureRmApplicationSecurityGroup -Name $asgName2 -ResourceGroupName $rgName2 -Location $rgLocation
 
         # Get the ASG in the first resource group by using the collections API
-        $listRg = Get-AzApplicationSecurityGroup -ResourceGroupName $rgName1
+        $listRg = Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName1
         Assert-AreEqual 1 @($listRg).Count
         Assert-AreEqual $listRg[0].ResourceGroupName $asg1.ResourceGroupName
         Assert-AreEqual $listRg[0].Name $asg1.Name
@@ -101,7 +92,7 @@ function Test-ApplicationSecurityGroupCollections
         Assert-AreEqual $listRg[0].Etag $asg1.Etag
 
         # Get all ths ASGs in the subscription
-        $listSub = Get-AzApplicationSecurityGroup
+        $listSub = Get-AzureRmApplicationSecurityGroup
 
         $asg1FromList = @($listSub) | Where-Object Name -eq $asgName1 | Where-Object ResourceGroupName -eq $rgName1
         Assert-AreEqual $asg1.ResourceGroupName $asg1FromList.ResourceGroupName
@@ -143,31 +134,31 @@ function Test-ApplicationSecurityGroupInNewSecurityRule
     try
     {
         # Create the resource group
-        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
 
         # Create the application security group
-        $asg = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName -Location $rgLocation
+        $asg = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName -Location $rgLocation
 
         # Create security rule
         $securityRules = @()
 
         if ($useIds)
         {
-            $securityRules += New-AzNetworkSecurityRuleConfig -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroupId $asg.Id -DestinationApplicationSecurityGroupId $asg.Id -Access Allow -Priority 100 -Direction Inbound
-            $securityRules += New-AzNetworkSecurityRuleConfig -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroupId $asg.Id -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
-            $securityRules += New-AzNetworkSecurityRuleConfig -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationApplicationSecurityGroupId $asg.Id -Access Allow -Priority 103 -Direction Inbound
-            $securityRules += New-AzNetworkSecurityRuleConfig -Name $securityRuleNames[3] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 104 -Direction Inbound
+            $securityRules += New-AzureRmNetworkSecurityRuleConfig -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroupId $asg.Id -DestinationApplicationSecurityGroupId $asg.Id -Access Allow -Priority 100 -Direction Inbound
+            $securityRules += New-AzureRmNetworkSecurityRuleConfig -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroupId $asg.Id -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
+            $securityRules += New-AzureRmNetworkSecurityRuleConfig -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationApplicationSecurityGroupId $asg.Id -Access Allow -Priority 103 -Direction Inbound
+            $securityRules += New-AzureRmNetworkSecurityRuleConfig -Name $securityRuleNames[3] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 104 -Direction Inbound
         }
         else
         {
-            $securityRules += New-AzNetworkSecurityRuleConfig -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroup $asg -DestinationApplicationSecurityGroup $asg -Access Allow -Priority 100 -Direction Inbound
-            $securityRules += New-AzNetworkSecurityRuleConfig -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroup $asg -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
-            $securityRules += New-AzNetworkSecurityRuleConfig -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationApplicationSecurityGroup $asg -Access Allow -Priority 103 -Direction Inbound
-            $securityRules += New-AzNetworkSecurityRuleConfig -Name $securityRuleNames[3] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 104 -Direction Inbound
+            $securityRules += New-AzureRmNetworkSecurityRuleConfig -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroup $asg -DestinationApplicationSecurityGroup $asg -Access Allow -Priority 100 -Direction Inbound
+            $securityRules += New-AzureRmNetworkSecurityRuleConfig -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroup $asg -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
+            $securityRules += New-AzureRmNetworkSecurityRuleConfig -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationApplicationSecurityGroup $asg -Access Allow -Priority 103 -Direction Inbound
+            $securityRules += New-AzureRmNetworkSecurityRuleConfig -Name $securityRuleNames[3] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 104 -Direction Inbound
         }
 
         # Create the network security group
-        $nsg = New-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName -Location $location -SecurityRule $securityRules
+        $nsg = New-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName -Location $location -SecurityRule $securityRules
 
         #verification
         Assert-AreEqual $rgName $nsg.ResourceGroupName
@@ -227,30 +218,30 @@ function Test-ApplicationSecurityGroupInAddedSecurityRule
     try
     {
         # Create the resource group
-        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
 
         # Create the application security group
-        $asg = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName -Location $rgLocation
+        $asg = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName -Location $rgLocation
 
         # Create the network security group
-        $nsg = New-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName -Location $location
+        $nsg = New-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName -Location $location
 
         if ($useIds)
         {
-            Add-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroupId $asg.Id -DestinationApplicationSecurityGroupId $asg.Id -Access Allow -Priority 100 -Direction Inbound
-            Add-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroupId $asg.Id -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
-            Add-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationApplicationSecurityGroupId $asg.Id -Access Allow -Priority 103 -Direction Inbound
-            Add-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[3] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 104 -Direction Inbound
+            Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroupId $asg.Id -DestinationApplicationSecurityGroupId $asg.Id -Access Allow -Priority 100 -Direction Inbound
+            Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroupId $asg.Id -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
+            Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationApplicationSecurityGroupId $asg.Id -Access Allow -Priority 103 -Direction Inbound
+            Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[3] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 104 -Direction Inbound
         }
         else
         {
-            Add-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroup $asg -DestinationApplicationSecurityGroup $asg -Access Allow -Priority 100 -Direction Inbound
-            Add-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroup $asg -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
-            Add-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationApplicationSecurityGroup $asg -Access Allow -Priority 103 -Direction Inbound
-            Add-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[3] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 104 -Direction Inbound
+            Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroup $asg -DestinationApplicationSecurityGroup $asg -Access Allow -Priority 100 -Direction Inbound
+            Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroup $asg -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
+            Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationApplicationSecurityGroup $asg -Access Allow -Priority 103 -Direction Inbound
+            Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[3] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 104 -Direction Inbound
         }
 
-        $securityRules = Get-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
+        $securityRules = Get-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
 
         #verification
         Assert-AreEqual 4 @($securityRules).Count
@@ -305,31 +296,31 @@ function Test-ApplicationSecurityGroupInSetSecurityRule
 
     try
     {
-        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
 
-        $asg = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName -Location $rgLocation
+        $asg = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName -Location $rgLocation
 
         $securityRules = @()
-        $securityRules += New-AzNetworkSecurityRuleConfig -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 100 -Direction Inbound
-        $securityRules += New-AzNetworkSecurityRuleConfig -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
-        $securityRules += New-AzNetworkSecurityRuleConfig -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 103 -Direction Inbound
+        $securityRules += New-AzureRmNetworkSecurityRuleConfig -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 100 -Direction Inbound
+        $securityRules += New-AzureRmNetworkSecurityRuleConfig -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
+        $securityRules += New-AzureRmNetworkSecurityRuleConfig -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 103 -Direction Inbound
         
-        $nsg = New-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName -Location $location -SecurityRule $securityRules
+        $nsg = New-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName -Location $location -SecurityRule $securityRules
 
         if ($useIds)
         {
-            Set-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroupId $asg.Id -DestinationApplicationSecurityGroupId $asg.Id -Access Allow -Priority 100 -Direction Inbound
-            Set-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroupId $asg.Id -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
-            Set-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationApplicationSecurityGroupId $asg.Id -Access Allow -Priority 103 -Direction Inbound
+            Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroupId $asg.Id -DestinationApplicationSecurityGroupId $asg.Id -Access Allow -Priority 100 -Direction Inbound
+            Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroupId $asg.Id -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
+            Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationApplicationSecurityGroupId $asg.Id -Access Allow -Priority 103 -Direction Inbound
         }
         else
         {
-            Set-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg  -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroup $asg -DestinationApplicationSecurityGroup $asg -Access Allow -Priority 100 -Direction Inbound
-            Set-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg  -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroup $asg -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
-            Set-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg  -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationApplicationSecurityGroup $asg -Access Allow -Priority 103 -Direction Inbound
+            Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg  -Name $securityRuleNames[0] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroup $asg -DestinationApplicationSecurityGroup $asg -Access Allow -Priority 100 -Direction Inbound
+            Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg  -Name $securityRuleNames[1] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceApplicationSecurityGroup $asg -DestinationAddressPrefix * -Access Allow -Priority 102 -Direction Inbound
+            Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg  -Name $securityRuleNames[2] -Description "description" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationApplicationSecurityGroup $asg -Access Allow -Priority 103 -Direction Inbound
         }
 
-        $securityRules = Get-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
+        $securityRules = Get-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
 
         $securityRule = @($securityRules) | Where-Object Name -eq $securityRuleNames[0]
         Assert-Null $securityRule.SourceAddressPrefix
@@ -378,21 +369,21 @@ function Test-ApplicationSecurityGroupInNewNetworkInterface
 
     try
     {
-        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
 
-        $asg1 = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName1 -Location $rgLocation
-        $asg2 = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName2 -Location $rgLocation
-        $asg3 = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName3 -Location $rgLocation
+        $asg1 = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName1 -Location $rgLocation
+        $asg2 = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName2 -Location $rgLocation
+        $asg3 = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName3 -Location $rgLocation
 
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-        $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1
 
         Assert-AreEqual 1 @($nic.IpConfigurations.ApplicationSecurityGroups).Count
         Assert-AreEqual $asg1.Id @($nic.IpConfigurations.ApplicationSecurityGroups)[0].Id
 
-        $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg2, $asg3) -Force
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg2, $asg3) -Force
 
         Assert-AreEqual 2 @($nic.IpConfigurations.ApplicationSecurityGroups).Count
         Assert-AreEqual $true (@($nic.IpConfigurations.ApplicationSecurityGroups.Id) -contains $asg2.Id)
@@ -431,26 +422,26 @@ function Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig
 
     try
     {
-        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
 
-        $asg1 = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName1 -Location $rgLocation
-        $asg2 = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName2 -Location $rgLocation
+        $asg1 = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName1 -Location $rgLocation
+        $asg2 = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName2 -Location $rgLocation
 
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         if ($useIds)
         {
-            $ipConfig1 = New-AzNetworkInterfaceIpConfig -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id -Primary
-            $ipConfig2 = New-AzNetworkInterfaceIpConfig -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id
+            $ipConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id -Primary
+            $ipConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id
         }
         else
         {
-            $ipConfig1 = New-AzNetworkInterfaceIpConfig -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1 -Primary
-            $ipConfig2 = New-AzNetworkInterfaceIpConfig -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1
+            $ipConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1 -Primary
+            $ipConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1
         }
 
-        $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -IpConfiguration @($ipConfig1, $ipConfig2)
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -IpConfiguration @($ipConfig1, $ipConfig2)
 
         Assert-AreEqual 1 @($nic.IpConfigurations[0].ApplicationSecurityGroups).Count
         Assert-AreEqual $asg1.Id @($nic.IpConfigurations[0].ApplicationSecurityGroups).Id
@@ -460,16 +451,16 @@ function Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig
 
         if ($useIds)
         {
-            $ipConfig1 = New-AzNetworkInterfaceIpConfig -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId ($asg1.Id, $asg2.Id) -Primary
-            $ipConfig2 = New-AzNetworkInterfaceIpConfig -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId ($asg1.Id, $asg2.Id)
+            $ipConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId ($asg1.Id, $asg2.Id) -Primary
+            $ipConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId ($asg1.Id, $asg2.Id)
         }
         else
         {
-            $ipConfig1 = New-AzNetworkInterfaceIpConfig -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup ($asg1, $asg2) -Primary
-            $ipConfig2 = New-AzNetworkInterfaceIpConfig -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup ($asg1, $asg2)
+            $ipConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup ($asg1, $asg2) -Primary
+            $ipConfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup ($asg1, $asg2)
         }
 
-        $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -IpConfiguration @($ipConfig1, $ipConfig2) -Force
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -IpConfiguration @($ipConfig1, $ipConfig2) -Force
 
         Assert-AreEqual 2 @($nic.IpConfigurations[0].ApplicationSecurityGroups).Count
         Assert-AreEqual $true (@($nic.IpConfigurations[0].ApplicationSecurityGroups).Id -contains $asg1.Id)
@@ -512,30 +503,30 @@ function Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig
 
     try
     {
-        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
 
-        $asg1 = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName1 -Location $rgLocation
-        $asg2 = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName2 -Location $rgLocation
+        $asg1 = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName1 -Location $rgLocation
+        $asg2 = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName2 -Location $rgLocation
 
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-        $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location  -Subnet $vnet.Subnets[0]
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location  -Subnet $vnet.Subnets[0]
 
         if ($useIds)
         {
-            $ipconfigSet = Set-AzNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id -Primary
-            $ipConfig1 = Add-AzNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id  | Set-AzNetworkInterface
-            $ipConfig2 = Add-AzNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id  | Set-AzNetworkInterface
+            $ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id -Primary
+            $ipConfig1 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id  | Set-AzureRmNetworkInterface
+            $ipConfig2 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId $asg1.Id  | Set-AzureRmNetworkInterface
         }
         else
         {
-            $ipconfigSet = Set-AzNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1 -Primary
-            $ipConfig1 = Add-AzNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1  | Set-AzNetworkInterface
-            $ipConfig2 = Add-AzNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1  | Set-AzNetworkInterface
+            $ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1 -Primary
+            $ipConfig1 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1  | Set-AzureRmNetworkInterface
+            $ipConfig2 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1  | Set-AzureRmNetworkInterface
         }
 
-        $nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName
+        $nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName
 
         Assert-AreEqual 3 @($nic.IpConfigurations).Count
 
@@ -547,22 +538,22 @@ function Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig
         Assert-AreEqual $asg1.Id @($nic.IpConfigurations[1].ApplicationSecurityGroups).Id
         Assert-AreEqual $asg1.Id @($nic.IpConfigurations[2].ApplicationSecurityGroups).Id
 
-        $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location  -Subnet $vnet.Subnets[0] -Force
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location  -Subnet $vnet.Subnets[0] -Force
 
         if ($useIds)
         {
-            $ipconfigSet = Set-AzNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId @($asg1.Id, $asg2.Id) -Primary
-            $ipConfig1 = Add-AzNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId @($asg1.Id, $asg2.Id) | Set-AzNetworkInterface
-            $ipConfig2 = Add-AzNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId @($asg1.Id, $asg2.Id) | Set-AzNetworkInterface
+            $ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId @($asg1.Id, $asg2.Id) -Primary
+            $ipConfig1 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId @($asg1.Id, $asg2.Id) | Set-AzureRmNetworkInterface
+            $ipConfig2 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -SubnetId $vnet.Subnets[0].Id -ApplicationSecurityGroupId @($asg1.Id, $asg2.Id) | Set-AzureRmNetworkInterface
         }
         else
         {
-            $ipconfigSet = Set-AzNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg1, $asg2) -Primary
-            $ipConfig1 = Add-AzNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg1, $asg2) | Set-AzNetworkInterface
-            $ipConfig2 = Add-AzNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg1, $asg2) | Set-AzNetworkInterface
+            $ipconfigSet = Set-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg1, $asg2) -Primary
+            $ipConfig1 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName1 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg1, $asg2) | Set-AzureRmNetworkInterface
+            $ipConfig2 = Add-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic -Name $ipConfigName2 -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup @($asg1, $asg2) | Set-AzureRmNetworkInterface
         }
 
-        $nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName
+        $nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName
 
         Assert-AreEqual 3 @($nic.IpConfigurations).Count
 

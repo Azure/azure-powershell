@@ -18,13 +18,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
+    [Cmdlet(VerbsCommon.Set, "AzLocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
     public class SetAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
     {
         [Parameter(
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the local network to be changed.")]
         [ValidateNotNullOrEmpty]
-        public string[] AddressPrefix { get; set; }
+        public List<string> AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -70,9 +69,9 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            if (this.AddressPrefix != null && this.AddressPrefix.Length > 0)
+            if (this.AddressPrefix != null && this.AddressPrefix.Count > 0)
             {
-                this.LocalNetworkGateway.LocalNetworkAddressSpace.AddressPrefixes = this.AddressPrefix?.ToList();
+                this.LocalNetworkGateway.LocalNetworkAddressSpace.AddressPrefixes = this.AddressPrefix;
             }
 
             if ((this.Asn > 0 || !string.IsNullOrEmpty(this.BgpPeeringAddress) || this.PeerWeight > 0) && this.LocalNetworkGateway.BgpSettings == null)

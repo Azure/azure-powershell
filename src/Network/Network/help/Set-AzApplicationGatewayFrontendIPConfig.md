@@ -29,9 +29,12 @@ Set-AzApplicationGatewayFrontendIPConfig -ApplicationGateway <PSApplicationGatew
 
 ## DESCRIPTION
 The **Set-AzApplicationGatewayFrontendIPConfig** cmdlet updates a front-end IP configuration.
+
 An application gateway supports two types of front-end IP addresses: 
+
 - Public IP addresses
 - Private IP addresses for which the configuration uses Internal Load Balancing (ILB)
+
 An application gateway can have at most one public IP address and one private IP address.
 A public IP address and a private IP address should be added separately as front-end IP addresses.
 
@@ -45,33 +48,41 @@ PS C:\> $AppGw = Set-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $A
 ```
 
 The first command creates a public IP address object and stores it in the $PublicIp variable.
+
 The second command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01, and stores it in the $AppGw variable.
+
 The third command updates the front-end IP configuration named FrontEndIp01, for the gateway in $AppGw, using the address stored in $PublicIp.
 
 ### Example 2: Set a static private IP as the front-end IP of an application gateway
 ```
-PS C:\>$VNet = Get-AzVirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01"
+PS C:\>$VNet = Get-AzvirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $Subnet = Get-AzVirtualNetworkSubnetConfig -Name "Subnet01" -VirtualNetwork $VNet
 PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $AppGw = Set-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $AppGw -Name "FrontendIP02" -Subnet $Subnet -PrivateIPAddress 10.0.1.1
 ```
 
 The first command gets a virtual network named VNet01 that belongs to the resource group named ResourceGroup01, and stores it in the $VNet variable.
+
 The second command gets a subnet configuration named Subnet01 using $VNet from the first command and stores it in the $Subnet variable.
+
 The third command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01, and stores it in the $AppGw variable.
+
 The fourth command adds a front-end IP configuration named FrontendIP02 using $Subnet from the second command and the private IP address 10.0.1.1.
 
 ### Example 3: Set a dynamic private IP as the front-end IP of an application gateway
 ```
-PS C:\>$VNet = Get-AzVirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01"
+PS C:\>$VNet = Get-AzvirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $Subnet = Get-AzVirtualNetworkSubnetConfig -Name "Subnet01" -VirtualNetwork $VNet
 PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $AppGw = Set-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $AppGw -Name "FrontendIP02" -Subnet $Subnet
 ```
 
 The first command gets a virtual network named VNet01 that belongs to the resource group named ResourceGroup01, and stores it in the $VNet variable.
+
 The second command gets a subnet configuration named Subnet01 using $VNet from the first command and stores it in the $Subnet variable.
+
 The third command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01, and stores it in the $AppGw variable.
+
 The fourth command adds a front-end IP configuration named FrontendIP02 using $Subnet from the second command.
 
 ## PARAMETERS
@@ -80,9 +91,9 @@ The fourth command adds a front-end IP configuration named FrontendIP02 using $S
 Specifies an application gateway object in which to modify the front-end IP configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -95,9 +106,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -110,9 +121,9 @@ Accept wildcard characters: False
 Specifies the name of the front-end IP configuration that this cmdlet modifies.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -126,9 +137,9 @@ Specifies the private IP address.
 If specified, this IP is statically allocated from the subnet.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -141,9 +152,9 @@ Accept wildcard characters: False
 Specifies the public IP address.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
+Type: PSPublicIpAddress
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -156,9 +167,9 @@ Accept wildcard characters: False
 Specifies the ID of the public IP address.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -174,9 +185,9 @@ If the *PrivateIPAddress* address is specified, it should belong to this subnet.
 If *PrivateIPAddress* is not specified, one of the IP addresses from this subnet is dynamically picked up as the front-end IP address of the application gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
+Type: PSSubnet
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -192,9 +203,9 @@ If the *PrivateIPAddress* parameter is specified, it should belong to this subne
 If *PrivateIPAddress* is not specified, one of the IP addresses from this subnet is dynamically picked up as the front-end IP address of the application gateway.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -208,7 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+### System.String
 
 ## OUTPUTS
 

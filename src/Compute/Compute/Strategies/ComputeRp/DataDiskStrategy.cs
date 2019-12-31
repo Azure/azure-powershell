@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
         static IList<T> CreateDataDisks<T>(
             IEnumerable<int> imageDataDiskLuns,
             IEnumerable<int> dataDiskSizes,
-            Func<string, int, int?, T> createDataDisk)
+            Func<DiskCreateOptionTypes, int, int?, T> createDataDisk)
         {
             if (dataDiskSizes == null)
             {

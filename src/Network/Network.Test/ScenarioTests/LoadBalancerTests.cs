@@ -224,13 +224,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-LoadBalancerZones");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
-        public void TestCreateSubresourcesOnEmptyLoadBalancer()
-        {
-            TestRunner.RunTestScript("Test-CreateSubresourcesOnEmptyLoadBalancer");
-        }
     }
 }

@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkInterfaceIpConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNetworkInterfaceIPConfiguration))]
+    [Cmdlet(VerbsCommon.New, "AzNetworkInterfaceIpConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNetworkInterfaceIPConfiguration))]
     public class NewAzureNetworkInterfaceIpConfigCommand : AzureNetworkInterfaceIpConfigBase
     {
         [Parameter(
@@ -46,44 +46,38 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.LoadBalancerBackendAddressPool != null)
                 {
-                    var poolIds = new List<string>();
+                    this.LoadBalancerBackendAddressPoolId = new List<string>();
                     foreach (var bepool in this.LoadBalancerBackendAddressPool)
                     {
-                        poolIds.Add(bepool.Id);
+                        this.LoadBalancerBackendAddressPoolId.Add(bepool.Id);
                     }
-                    this.LoadBalancerBackendAddressPoolId = poolIds.ToArray();
                 }
 
                 if (this.LoadBalancerInboundNatRule != null)
                 {
-
-                    var lbNatIds = new List<string>();
+                    this.LoadBalancerInboundNatRuleId = new List<string>();
                     foreach (var natRule in this.LoadBalancerInboundNatRule)
                     {
-                        lbNatIds.Add(natRule.Id);
+                        this.LoadBalancerInboundNatRuleId.Add(natRule.Id);
                     }
-                    LoadBalancerInboundNatRuleId = lbNatIds.ToArray();
                 }
 
                 if (this.ApplicationGatewayBackendAddressPool != null)
                 {
-
-                    var appGwPoolIds = new List<string>();
+                    this.ApplicationGatewayBackendAddressPoolId = new List<string>();
                     foreach (var appgwBepool in this.ApplicationGatewayBackendAddressPool)
                     {
-                        appGwPoolIds.Add(appgwBepool.Id);
+                        this.ApplicationGatewayBackendAddressPoolId.Add(appgwBepool.Id);
                     }
-                    ApplicationGatewayBackendAddressPoolId = appGwPoolIds.ToArray();
                 }
 
                 if (this.ApplicationSecurityGroup != null)
                 {
-                    var groupIds = new List<string>();
+                    this.ApplicationSecurityGroupId = new List<string>();
                     foreach (var asg in this.ApplicationSecurityGroup)
                     {
-                        groupIds.Add(asg.Id);
+                        this.ApplicationSecurityGroupId.Add(asg.Id);
                     }
-                    ApplicationSecurityGroupId = groupIds.ToArray();
                 }
             }
 

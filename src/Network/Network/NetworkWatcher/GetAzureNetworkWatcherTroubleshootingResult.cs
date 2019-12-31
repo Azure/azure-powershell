@@ -17,14 +17,13 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherTroubleshootingResult", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSTroubleshootingResult))]
+    [Cmdlet(VerbsCommon.Get, "AzNetworkWatcherTroubleshootingResult", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSViewNsgRules))]
 
     public class GetAzureNetworkWatcherTroubleshootingResult : NetworkWatcherBaseCmdlet
     {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
-        [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
@@ -57,14 +55,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Location of the network watcher.",
-            ParameterSetName = "SetByLocation")]
-        [LocationCompleter("Microsoft.Network/networkWatchers")]
-        [ValidateNotNull]
-        public string Location { get; set; }
-
-        [Parameter(
-            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The target resource ID.")]
         [ValidateNotNullOrEmpty]
@@ -76,21 +66,8 @@ namespace Microsoft.Azure.Commands.Network
             MNM.QueryTroubleshootingParameters parameters = new MNM.QueryTroubleshootingParameters();
             parameters.TargetResourceId = this.TargetResourceId;
 
-            PSTroubleshootingResult troubleshoot = new PSTroubleshootingResult();
-            if (string.Equals(this.ParameterSetName, "SetByLocation", StringComparison.OrdinalIgnoreCase))
-            {
-                var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
-
-                if (networkWatcher == null)
-                {
-                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
-                }
-
-                this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
-                this.NetworkWatcherName = networkWatcher.Name;
-                troubleshoot = GetTroubleshooting(this.ResourceGroupName, this.NetworkWatcherName, parameters);
-            }
-            else if (ParameterSetName.Contains("SetByResource"))
+            PSTroubleshootResult troubleshoot = new PSTroubleshootResult();
+            if (ParameterSetName.Contains("SetByResource"))
             {
                 troubleshoot = GetTroubleshooting(this.NetworkWatcher.ResourceGroupName, this.NetworkWatcher.Name, parameters);
             }
@@ -101,11 +78,11 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(troubleshoot);
         }
 
-        public PSTroubleshootingResult GetTroubleshooting(string resourceGroupName, string name, MNM.QueryTroubleshootingParameters parameters)
+        public PSTroubleshootResult GetTroubleshooting(string resourceGroupName, string name, MNM.QueryTroubleshootingParameters parameters)
         {
             MNM.TroubleshootingResult troubleshoot = this.NetworkWatcherClient.GetTroubleshootingResult(resourceGroupName, name, parameters);
 
-            PSTroubleshootingResult psTroubleshoot = NetworkResourceManagerProfile.Mapper.Map<PSTroubleshootingResult>(troubleshoot);
+            PSTroubleshootResult psTroubleshoot = NetworkResourceManagerProfile.Mapper.Map<PSTroubleshootResult>(troubleshoot);
             return psTroubleshoot;
         }
     }

@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpAddress", DefaultParameterSetName = "NoExpandStandAloneIp"), OutputType(typeof(PSPublicIpAddress))]
+    [Cmdlet(VerbsCommon.Get, "AzPublicIpAddress", DefaultParameterSetName = "NoExpandStandAloneIp"), OutputType(typeof(PSPublicIpAddress))]
     public class GetAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -47,9 +47,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
            ParameterSetName = "ExpandScaleSetIp")]
-        [ResourceNameCompleter("Microsoft.Network/publicIPAddresses", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -74,7 +72,6 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "ExpandScaleSetIp")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -145,7 +142,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            if (ShouldGetByName(ResourceGroupName, Name))
+            if (!string.IsNullOrEmpty(this.Name))
             {
                 PSPublicIpAddress publicIp;
                 if (ParameterSetName.Contains("ScaleSetIp"))
@@ -166,7 +163,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<PublicIPAddress> publicipPage;
-                if (ShouldListByResourceGroup(ResourceGroupName, Name))
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
                     if (ParameterSetName.Contains("ScaleSetIp"))
                     {
@@ -226,7 +223,7 @@ namespace Microsoft.Azure.Commands.Network
                     psPublicIps.Add(psPublicIp);
                 }
 
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psPublicIps), true);
+                WriteObject(psPublicIps, true);
             }
         }
     }

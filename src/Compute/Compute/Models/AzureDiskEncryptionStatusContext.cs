@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         DecryptionInProgress,
         EncryptionInProgress,
         VMRestartPending,
-        Unknown,
-        NoDiskFound
+        Unknown
     }
 
     class AzureDiskEncryptionStatusContext

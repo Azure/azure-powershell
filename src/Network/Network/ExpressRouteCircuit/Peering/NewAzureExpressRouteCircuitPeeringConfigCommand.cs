@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Network
     using System;
     using System.Linq;
 
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitPeeringConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSPeering))]
+    [Cmdlet(VerbsCommon.New, "AzExpressRouteCircuitPeeringConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSPeering))]
     public class NewAzureExpressRouteCircuitPeeringConfigCommand : AzureExpressRouteCircuitPeeringConfigBase
     {
         [Parameter(
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (string.Equals(ParameterSetName, ParamSetByRouteFilter))
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (this.RouteFilter != null)
                 {
@@ -55,12 +55,25 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.PeerAddressType == IPv6)
             {
-                this.SetIpv6PeeringParameters(peering);
+                peering.Ipv6PeeringConfig = new PSIpv6PeeringConfig();
+                peering.Ipv6PeeringConfig.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
+                peering.Ipv6PeeringConfig.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
+                if (!string.IsNullOrEmpty(this.RouteFilterId))
+                {
+                    peering.Ipv6PeeringConfig.RouteFilter = new PSRouteFilter();
+                    peering.Ipv6PeeringConfig.RouteFilter.Id = this.RouteFilterId;
+                }
             }
             else
             {
                 // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
-                this.SetIpv4PeeringParameters(peering);
+                peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
+                peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
+                if (!string.IsNullOrEmpty(this.RouteFilterId))
+                {
+                    peering.RouteFilter = new PSRouteFilter();
+                    peering.RouteFilter.Id = this.RouteFilterId;
+                }
             }
 
             this.ConstructMicrosoftConfig(peering);

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: 3CE367B1-7685-4046-8E9C-CE680B5AE03F
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmsshpublickey
@@ -19,7 +19,7 @@ Add-AzVMSshPublicKey [-VM] <PSVirtualMachine> [[-KeyData] <String>] [[-Path] <St
 ```
 
 ## DESCRIPTION
-The **Add-AzVMSshPublicKey** cmdlet adds the public keys that you can use to connect to a Linux virtual machine over Secure Shell (SSH).
+The **Add-AzVMSshPublicKey** cmdlet adds the public keys that you can use to connect to a virtual machine over Secure Shell (SSH).
 
 ## EXAMPLES
 
@@ -31,6 +31,7 @@ PS C:\> $VirtualMachine = Add-AzVMSshPublicKey -VM $VirtualMachine -KeyData "MII
 
 The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzVM** cmdlet.
 The command stores the virtual machine in the $VirtualMachine variable.
+
 The second command adds the public key to the location on VirtualMachine07 that the Path parameter specifies.
 
 ## PARAMETERS
@@ -39,9 +40,9 @@ The second command adds the public key to the location on VirtualMachine07 that 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -52,12 +53,12 @@ Accept wildcard characters: False
 
 ### -KeyData
 Specifies a base 64 encoding of a public key.
-You can connect to a Linux virtual machine by using SSH or by using the key that this parameter specifies.
+You can connect to a virtual machine by using SSH or by using the key that this parameter specifies.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
@@ -71,9 +72,9 @@ Specifies the full path of a file, on the virtual machine, where this cmdlet sto
 If the file already exists, this cmdlet appends the key to the file.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -88,7 +89,7 @@ To obtain a virtual machine object, use the [Get-AzVM](./Get-AzVM.md) cmdlet.
 You can use the [New-AzVMConfig](./New-AzVMConfig.md) cmdlet to create a virtual machine object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Type: PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 
@@ -100,13 +101,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
-
-### System.String
+### PSVirtualMachine
+Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
 
 ## OUTPUTS
 

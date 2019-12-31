@@ -9,35 +9,38 @@ schema: 2.0.0
 # Set-AzVirtualNetwork
 
 ## SYNOPSIS
-Updates a virtual network.
+Sets the goal state for a virtual network.
 
 ## SYNTAX
 
 ```
-Set-AzVirtualNetwork -VirtualNetwork <PSVirtualNetwork> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Set-AzVirtualNetwork -VirtualNetwork <PSVirtualNetwork> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzVirtualNetwork** cmdlet updates a virtual network.
+The **Set-AzVirtualNetwork** cmdlet sets the goal state for an Azure virtual network.
 
 ## EXAMPLES
 
 ### 1: Creates a virtual network and removes one of its subnets
 ```
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
-    $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" ## Create resource group
-$backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.0.2.0/24" ## Create backend subnet
+    $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+
+$backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.0.2.0/24"
 
 $virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName 
-    TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet ## Create virtual network
+    TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet
 
-Remove-AzVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork $virtualNetwork ## Remove subnet from in memory representation of virtual network
+Remove-AzVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork $virtualNetwork
 
-$virtualNetwork | Set-AzVirtualNetwork ## Remove subnet from virtual network
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
-This example creates a virtual network called TestResourceGroup with two subnets: frontendSubnet and backendSubnet. Then it removes backendSubnet subnet from the in-memory representation of the virtual network. The Set-AzVirtualNetwork cmdlet is then used to write the modified virtual network state on the service side. When the Set-AzVirtualNetwork cmdlet is executed, the backendSubnet is removed.
+This example creates a virtual network with two subnets. Then it removes one subnet from 
+    the in-memory representation of the virtual network. The Set-AzVirtualNetwork cmdlet 
+    is then used to write the modified virtual network state on the service side.
 
 ## PARAMETERS
 
@@ -45,9 +48,9 @@ This example creates a virtual network called TestResourceGroup with two subnets
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -60,9 +63,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -72,12 +75,12 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetwork
-Specifies a virtual network object representing the state to which the virtual network should be set.
+Specifies a **VirtualNetwork** object that represents the goal state.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+Type: PSVirtualNetwork
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -91,7 +94,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+### PSVirtualNetwork
+Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
 
 ## OUTPUTS
 

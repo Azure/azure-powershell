@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSNetworkSecurityGroup : PSTopLevelResource
     {
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         
         public List<PSSubnet> Subnets { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]

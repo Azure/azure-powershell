@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnection"), OutputType(typeof(PSVirtualNetworkGatewayConnection))]
+    [Cmdlet(VerbsCommon.Get, "AzVirtualNetworkGatewayConnection"), OutputType(typeof(PSVirtualNetworkGatewayConnection))]
     public class GetAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -29,9 +29,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/connections", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -40,19 +38,18 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            if (ShouldGetByName(ResourceGroupName, Name))
+            if (!string.IsNullOrEmpty(this.Name))
             {
                 var vnetGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
 
                 WriteObject(vnetGatewayConnection);
             }
-            else if (ShouldListByResourceGroup(ResourceGroupName, Name))
+            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
                 var connectionPage = this.VirtualNetworkGatewayConnectionClient.List(this.ResourceGroupName);
 
@@ -67,8 +64,9 @@ namespace Microsoft.Azure.Commands.Network
                     psVnetGatewayConnections.Add(psVnetGatewayConnection);
                 }
 
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psVnetGatewayConnections), true);
+                WriteObject(psVnetGatewayConnections, true);
             }
         }
     }
 }
+

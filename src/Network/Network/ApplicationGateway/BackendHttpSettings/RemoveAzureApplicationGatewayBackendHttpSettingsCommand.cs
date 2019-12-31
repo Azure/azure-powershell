@@ -13,15 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [GenericBreakingChange("Remove-AzApplicationGatewayBackendHttpSettings alias will be removed in an upcoming breaking change release", "2.0.0")]
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayBackendHttpSetting"), OutputType(typeof(PSApplicationGateway))]
-    [Alias("Remove-AzApplicationGatewayBackendHttpSettings")]
+    [Cmdlet(VerbsCommon.Remove, "AzApplicationGatewayBackendHttpSettings"), OutputType(typeof(PSApplicationGateway))]
     public class RemoveAzureApplicationGatewayBackendHttpSettingsCommand : NetworkBaseCmdlet
     {
         [Parameter(

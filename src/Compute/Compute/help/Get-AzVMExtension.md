@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: 842652D4-0F1C-4D0D-AB55-0D43D3C5D82A
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmextension
@@ -14,7 +14,7 @@ Gets properties of Virtual Machine Extensions installed on a virtual machine.
 ## SYNTAX
 
 ```
-Get-AzVMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
+Get-AzVMExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Status]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -28,24 +28,6 @@ To get only the instance view of an extension, specify the Status parameter.
 ### Example 1: Get properties of an extension
 ```
 PS C:\> Get-AzVMExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine22" -Name "CustomScriptExtension"
-
-ResourceGroupName       : ResourceGroup11
-VMName                  : VirtualMachine22
-Name                    : CustomScriptExtension
-Location                : eastus
-Etag                    : null
-Publisher               : Microsoft.Azure.Extensions
-ExtensionType           : CustomScript
-TypeHandlerVersion      : 2.0
-Id                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup11
-                          /providers/Microsoft.Compute/virtualMachines/VirtualMachine22/extensions/CustomScriptExtension
-PublicSettings          : {}
-ProtectedSettings       :
-ProvisioningState       : Succeeded
-Statuses                :
-SubStatuses             :
-AutoUpgradeMinorVersion : True
-ForceUpdateTag          :
 ```
 
 This command gets properties for the extension named CustomScriptExtension on the virtual machine named VirtualMachine22 in the resource group ResourceGroup11.
@@ -53,52 +35,9 @@ This command gets properties for the extension named CustomScriptExtension on th
 ### Example 2: Get instance view of an extension
 ```
 PS C:\> Get-AzVMExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine22" -Name "CustomScriptExtension" -Status
-
-ResourceGroupName       : ResourceGroup11
-VMName                  : VirtualMachine22
-Name                    : CustomScriptExtension
-Location                : eastus
-Etag                    : null
-Publisher               : Microsoft.Azure.Extensions
-ExtensionType           : CustomScript
-TypeHandlerVersion      : 2.0
-Id                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup11
-                          /providers/Microsoft.Compute/virtualMachines/VirtualMachine22/extensions/CustomScriptExtension
-PublicSettings          : {}
-ProtectedSettings       :
-ProvisioningState       : Succeeded
-Statuses                : {Microsoft.Azure.Management.Compute.Models.InstanceViewStatus}
-SubStatuses             :
-AutoUpgradeMinorVersion : True
-ForceUpdateTag          :
 ```
 
 This command gets the instance view for the extension named CustomScriptExtension on the virtual machine named VirtualMachine22 in the resource group ResourceGroup11.
-
-### Example 3: Get all extensions installed on a VM
-```
-PS C:\> Get-AzVMExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine22"
-
-ResourceGroupName       : ResourceGroup11
-VMName                  : VirtualMachine22
-Name                    : CustomScriptExtension
-Location                : eastus
-Etag                    : null
-Publisher               : Microsoft.Azure.Extensions
-ExtensionType           : CustomScript
-TypeHandlerVersion      : 2.0
-Id                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup11
-                          /providers/Microsoft.Compute/virtualMachines/VirtualMachine22/extensions/CustomScriptExtension
-PublicSettings          : {}
-ProtectedSettings       :
-ProvisioningState       : Succeeded
-Statuses                :
-SubStatuses             :
-AutoUpgradeMinorVersion : True
-ForceUpdateTag          :
-```
-
-This command gets the list of extensions installed on the virtual machine named VirtualMachine22 in the resource group ResourceGroup11.
 
 ## PARAMETERS
 
@@ -106,9 +45,9 @@ This command gets the list of extensions installed on the virtual machine named 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -122,11 +61,11 @@ Specifies the name of an extension.
 This cmdlet gets properties for the extension that this parameter specifies.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
-Required: False
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -137,9 +76,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -152,9 +91,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets only the instance view of an extension.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 3
@@ -168,7 +107,7 @@ Specifies the name of a virtual machine.
 This cmdlet gets properties of an extension from the virtual machine that this parameter specifies.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -180,13 +119,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### System.Management.Automation.SwitchParameter
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

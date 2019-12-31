@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class DiagnosticsExtensionTests : ComputeTestRunner
     {
-        private static readonly string configDirPath = Path.Combine(Path.GetDirectoryName(Uri.UnescapeDataString(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath)), "ConfigFiles");
+        private static string configDirPath = Path.Combine(Path.GetDirectoryName(Uri.UnescapeDataString(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath)), "ConfigFiles");
 
         private static string GetConfigFilePath(string filename)
         {
@@ -76,13 +76,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestDiagnosticsConfigBuilderMismatchAccountNames()
         {
             string pubJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPublicConfigWithStorageType.json");
-            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPrivateConfigWithWrongName.json");
+            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionprivateConfigWithWrongName.json");
 
             var exception = Record.Exception(() => DiagnosticsHelper.GetConfigurationsFromFiles(pubJsonConfigPath, privJsonConfigPath, "a-resouce-id", null, null));
             Assert.IsType<ArgumentException>(exception);
 
 
-            string[] configs = {
+            string[] configs = new[] {
                 GetConfigFilePath("DiagnosticsExtensionConfigWithWrongName.json"),
                 GetConfigFilePath("DiagnosticsExtensionConfigWithWrongName.xml")
             };
@@ -99,13 +99,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestDiagnosticsConfigBuilderWithSasToken()
         {
             string pubJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPublicConfigWithStorageType.json");
-            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPrivateConfigWithSasToken.json");
+            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionprivateConfigWithSasToken.json");
 
             string sasTokenValue = "This-is-a-sas-token";
             var result = DiagnosticsHelper.GetConfigurationsFromFiles(pubJsonConfigPath, privJsonConfigPath, "a-resource-id", null, null);
             Assert.Equal(sasTokenValue, result.Item2["storageAccountSasToken"] as string);
 
-            string[] configs = {
+            string[] configs = new[] {
                 GetConfigFilePath("DiagnosticsExtensionConfigWithSasToken.json"),
                 GetConfigFilePath("DiagnosticsExtensionConfigWithSasToken.xml")
             };
@@ -124,14 +124,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestDiagnosticsConfigBuilderWithStorageType()
         {
             string pubJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPublicConfigWithStorageType.json");
-            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPrivateConfigWithSasToken.json");
+            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionprivateConfigWithSasToken.json");
 
             string storageTypeValue = "TableAndBlob";
 
             var result = DiagnosticsHelper.GetConfigurationsFromFiles(pubJsonConfigPath, privJsonConfigPath, "a-resource-id", null, null);
             Assert.Equal(storageTypeValue, result.Item1["StorageType"] as string);
 
-            string[] configs = {
+            string[] configs = new[] {
                 GetConfigFilePath("DiagnosticsExtensionConfigWithStorageType.json"),
                 GetConfigFilePath("DiagnosticsExtensionConfigWithStorageType.xml")
             };

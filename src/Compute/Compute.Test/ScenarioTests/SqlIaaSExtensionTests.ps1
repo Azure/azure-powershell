@@ -1,7 +1,7 @@
 ﻿<#
 .SYNOPSIS
-	1) Installs the SqlIaaS extension by calling Set-AzVMSqlServerExtension cmdlet on a VM.
-	2) Calls Get-AzVMSqlServerExtension cmdlet to check the status of the extension installation.
+	1) Installs the SqlIaaS extension by calling Set-AzureRmVMSqlServerExtension cmdlet on a VM.
+	2) Calls Get-AzureRmVMSqlServerExtension cmdlet to check the status of the extension installation.
 	3) Verifies settings are correct given input
 	4) Update extension values
 	5) Verify changes
@@ -19,94 +19,105 @@ function Test-SetAzureRmVMSqlServerAKVExtension
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
 
-    # Common
-    New-AzResourceGroup -Name $rgname -Location $loc -Force;
+    try
+    {
+        # Common
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
-    # VM Profile & Hardware
-    $vmsize = 'Standard_A2';
-    $vmname = 'vm' + $rgname;
-    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
-    Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+        # VM Profile & Hardware
+        $vmsize = 'Standard_A2';
+        $vmname = 'vm' + $rgname;
+        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
-    # NRP
-    $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-    $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-    $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-    $subnetId = $vnet.Subnets[0].Id;
-    $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-    $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
-    $pubipId = $pubip.Id;
-    $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-    $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
-    $nicId = $nic.Id;
+        # NRP
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
 
-    $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
-    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+        $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
-    # Storage Account
-    $stoname = 'sto' + $rgname;
-    $stotype = 'Standard_GRS';
-    New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-    Retry-IfException { $global:stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        # Storage Account
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
 
-    $osDiskName = 'osDisk';
-    $osDiskCaching = 'ReadWrite';
-    $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
-    $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
+        $osDiskName = 'osDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
 
-    $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
-    $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
 
-    # OS & Image
-    $user = "localadmin";
-    $password = $PLACEHOLDER;
-    $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
-    $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-    $computerName = 'test';
-    $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+        # OS & Image
+        $user = "localadmin";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-    $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-    $p = Set-AzVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP2-WS2012R2 -Skus Enterprise -Version "latest"
+        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP2-WS2012R2 -Skus Enterprise -Version "latest"
 
-    # Virtual Machine
-    New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        # Virtual Machine
+        New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
-    #Do actual changes and work here
+        #Do actual changes and work here
 
-    $extensionName = "SqlIaaSExtension";
+        $extensionName = "SqlIaaSExtension";
 
-    # 1) Installs the SqlIaaS extension by calling Set-AzVMSqlServerExtension cmdlet on a VM.
+        # 1) Installs the SqlIaaS extension by calling Set-AzureRmVMSqlServerExtension cmdlet on a VM.
 
-    $securepfxpwd = ConvertTo-SecureString –String "Amu6y/RzJcc7JBzdAdRVv6mk=" –AsPlainText –Force;
-    $aps_akv = New-AzVMSqlServerKeyVaultCredentialConfig -ResourceGroupName $rgname -Enable -CredentialName "CredentialTesting" -AzureKeyVaultUrl "https://Testkeyvault.vault.azure.net/" -ServicePrincipalName "0326921f-bf005595337c" -ServicePrincipalSecret $securepfxpwd;
-    Set-AzVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose; 
+        $securepfxpwd = ConvertTo-SecureString –String "Amu6y/RzJcc7JBzdAdRVv6mk=" –AsPlainText –Force;
+        $aps_akv = New-AzureRmVMSqlServerKeyVaultCredentialConfig -ResourceGroupName $rgname -Enable -CredentialName "CredentialTesting" -AzureKeyVaultUrl "https://Testkeyvault.vault.azure.net/" -ServicePrincipalName "0326921f-bf005595337c" -ServicePrincipalSecret $securepfxpwd;
+        Set-AzureRmVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose; 
 
-    # 2) Calls Get-AzVMSqlServerExtension cmdlet to check the status of the extension installation.
-    $extension = Get-AzVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
+        # 2) Calls Get-AzureRmVMSqlServerExtension cmdlet to check the status of the extension installation.
+        $extension = Get-AzureRmVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
 
-    # 3) Verifies settings are correct given input
+        # 3) Verifies settings are correct given input
 
-    Assert-AreEqual $extension.KeyVaultCredentialSettings.Credentials.Count 1;
-	Assert-AreEqual $extension.KeyVaultCredentialSettings.Credentials[0].CredentialName "CredentialTesting"
+        Assert-AreEqual $extension.KeyVaultCredentialSettings.Credentials.Count 1;
+		Assert-AreEqual $extension.KeyVaultCredentialSettings.Credentials[0].CredentialName "CredentialTesting"
 
-    # 4) Update extension values
+        # 4) Update extension values
 
-    $aps_akv = New-AzVMSqlServerKeyVaultCredentialConfig -ResourceGroupName $rgname -Enable -CredentialName "CredentialTest" -AzureKeyVaultUrl "https://Testkeyvault.vault.azure.net/" -ServicePrincipalName "0326921f-82af-4ab3-9d46-bf005595337c" -ServicePrincipalSecret $securepfxpwd;
-    Set-AzVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose; 
+        $aps_akv = New-AzureRmVMSqlServerKeyVaultCredentialConfig -ResourceGroupName $rgname -Enable -CredentialName "CredentialTest" -AzureKeyVaultUrl "https://Testkeyvault.vault.azure.net/" -ServicePrincipalName "0326921f-82af-4ab3-9d46-bf005595337c" -ServicePrincipalSecret $securepfxpwd;
+        Set-AzureRmVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose; 
 
-    # 5) Verify changes
-    $extension = Get-AzVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
+        # 5) Verify changes
+        $extension = Get-AzureRmVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
 		
-    Assert-AreEqual $extension.KeyVaultCredentialSettings.Credentials.Count 2;
-	Assert-AreEqual $extension.KeyVaultCredentialSettings.Credentials[1].CredentialName "CredentialTest"
+        Assert-AreEqual $extension.KeyVaultCredentialSettings.Credentials.Count 2;
+		Assert-AreEqual $extension.KeyVaultCredentialSettings.Credentials[1].CredentialName "CredentialTest"
 
-    # 6) Test with correct Name and Version
+        # 6) Test with correct Name and Version
 
-    Set-AzVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv  -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.2"
+        Set-AzureRmVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv  -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.2"
 
-    # 7) Test with correct Name and incorrect Version
-    Set-AzVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv  -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.*"
+        # 7) Test with correct Name and incorrect Version
+        Set-AzureRmVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv  -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.*"
+    }
+    finally
+    {
+        # Cleanup
+        if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
+        {
+             #Remove-AzureRmResourceGroup -Name $rgname -Force;
+        }
+    }
 }
 
 function Test-SetAzureRmVMSqlServerExtension
@@ -117,100 +128,110 @@ function Test-SetAzureRmVMSqlServerExtension
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
 
-    # Common
-    New-AzResourceGroup -Name $rgname -Location $loc -Force;
+    try
+    {
+        # Common
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
-    # VM Profile & Hardware
-    $vmsize = 'Standard_A2';
-    $vmname = 'vm' + $rgname;
-    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
-    Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+        # VM Profile & Hardware
+        $vmsize = 'Standard_A2';
+        $vmname = 'vm' + $rgname;
+        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
-    # NRP
-    $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-    $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-    $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-    $subnetId = $vnet.Subnets[0].Id;
-    $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-    $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
-    $pubipId = $pubip.Id;
-    $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-    $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
-    $nicId = $nic.Id;
+        # NRP
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
 
-    $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
-    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+        $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
-    # Storage Account
-    $stoname = 'sto' + $rgname;
-    $stotype = 'Standard_GRS';
-    New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-    Retry-IfException { $global:stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        # Storage Account
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
 
-    $osDiskName = 'osDisk';
-    $osDiskCaching = 'ReadWrite';
-    $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
-    $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
+        $osDiskName = 'osDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
 
-    $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
-    $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
 
-    # OS & Image
-    $user = "localadmin";
-    $password = $PLACEHOLDER;
-    $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
-    $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-    $computerName = 'test';
-    $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+        # OS & Image
+        $user = "localadmin";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-    $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-    $p = Set-AzVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP2-WS2012R2 -Skus Enterprise -Version "latest"
+        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP2-WS2012R2 -Skus Enterprise -Version "latest"
 
-    # Virtual Machine
-    New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        # Virtual Machine
+        New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
-    #Do actual changes and work here
+        #Do actual changes and work here
 
-    $extensionName = "SqlIaaSExtension";
+        $extensionName = "SqlIaaSExtension";
 
-    # 1) Installs the SqlIaaS extension by calling Set-AzVMSqlServerExtension cmdlet on a VM, with auto patching and auto backup settings.
-    $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
-	$storageBlobUrl = "https://$stoname.blob.core.windows.net";
-	$storageKey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
-	$storageKeyAsSecureString = ConvertTo-SecureString -String $storageKey -AsPlainText -Force;
-	$abs = New-AzVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 5 -ResourceGroupName $rgname -StorageUri $storageBlobUrl -StorageKey $storageKeyAsSecureString
-    Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
+        # 1) Installs the SqlIaaS extension by calling Set-AzureRmVMSqlServerExtension cmdlet on a VM, with auto patching and auto backup settings.
+        $aps = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
+		$storageBlobUrl = "https://$stoname.blob.core.windows.net";
+		$storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
+		$storageKeyAsSecureString = ConvertTo-SecureString -String $storageKey -AsPlainText -Force;
+		$abs = New-AzureRmVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 5 -ResourceGroupName $rgname -StorageUri $storageBlobUrl -StorageKey $storageKeyAsSecureString
+        Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
 
-    # 2) Calls Get-AzVMSqlServerExtension cmdlet to check the status of the extension installation.
-    $extension = Get-AzVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
+        # 2) Calls Get-AzureRmVMSqlServerExtension cmdlet to check the status of the extension installation.
+        $extension = Get-AzureRmVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
 
-    # 3) Verifies settings are correct given input
-    Assert-AreEqual $extension.AutoPatchingSettings.DayOfWeek "Thursday"
-    Assert-AreEqual $extension.AutoPatchingSettings.MaintenanceWindowStartingHour 20
-    Assert-AreEqual $extension.AutoPatchingSettings.MaintenanceWindowDuration 120
-    Assert-AreEqual $extension.AutoPatchingSettings.PatchCategory "Important"
+        # 3) Verifies settings are correct given input
+        Assert-AreEqual $extension.AutoPatchingSettings.DayOfWeek "Thursday"
+        Assert-AreEqual $extension.AutoPatchingSettings.MaintenanceWindowStartingHour 20
+        Assert-AreEqual $extension.AutoPatchingSettings.MaintenanceWindowDuration 120
+        Assert-AreEqual $extension.AutoPatchingSettings.PatchCategory "Important"
 
-	Assert-AreEqual $extension.AutoBackupSettings.RetentionPeriod 5
-    Assert-AreEqual $extension.AutoBackupSettings.Enable $true
+		Assert-AreEqual $extension.AutoBackupSettings.RetentionPeriod 5
+        Assert-AreEqual $extension.AutoBackupSettings.Enable $true
 
-    # 4) Update extension values
-    $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Monday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
-    $abs = New-AzVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 10 -ResourceGroupName $rgname -StorageUri $storageBlobUrl -StorageKey $storageKeyAsSecureString
-	Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs  -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
+        # 4) Update extension values
+        $aps = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Monday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
+        $abs = New-AzureRmVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 10 -ResourceGroupName $rgname -StorageUri $storageBlobUrl -StorageKey $storageKeyAsSecureString
+		Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs  -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
 
-    # 5) Verify changes
+        # 5) Verify changes
 
-    $extension = Get-AzVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
-    Assert-AreEqual $extension.AutoPatchingSettings.DayOfWeek "Monday"
-	Assert-AreEqual $extension.AutoBackupSettings.RetentionPeriod 10
+        $extension = Get-AzureRmVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
+        Assert-AreEqual $extension.AutoPatchingSettings.DayOfWeek "Monday"
+		Assert-AreEqual $extension.AutoBackupSettings.RetentionPeriod 10
 
-    # 6) Test with correct Name and Version
-    Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.2"
+        # 6) Test with correct Name and Version
+        Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.2"
 
-    # 7) Test with correct Name and incorrect Version
-    Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.*"
-
+        # 7) Test with correct Name and incorrect Version
+        Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.*"
+    }
+    finally
+    {
+        # Cleanup
+        if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
+        {
+            #Remove-AzureRmResourceGroup -Name $rgname -Force;
+        }
+    }
 }
 
 # Test setting up VM with Sql Server 2016 image. (Includes testing for AutoBackup V2) 
@@ -221,109 +242,120 @@ function Test-SetAzureRmVMSqlServerExtensionWith2016Image
     # Setup
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
-   
-   # Common
-    New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-    # VM Profile & Hardware
-    $vmsize = 'Standard_A2';
-    $vmname = 'vm' + $rgname;
-    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
-    Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+    try
+    {
+        # Common
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
-    # NRP
-    $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-    $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-    $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-    $subnetId = $vnet.Subnets[0].Id;
-    $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-    $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
-    $pubipId = $pubip.Id;
-    $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-    $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
-    $nicId = $nic.Id;
+        # VM Profile & Hardware
+        $vmsize = 'Standard_A2';
+        $vmname = 'vm' + $rgname;
+        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
-    $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
-    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+        # NRP
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
 
-    # Storage Account
-    $stoname = 'sto' + $rgname;
-    $stotype = 'Standard_GRS';
-    New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-    Retry-IfException { $global:stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
-    $osDiskName = 'osDisk';
-    $osDiskCaching = 'ReadWrite';
-    $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
-    $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
+        # Storage Account
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
 
-    $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
-    $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $osDiskName = 'osDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
 
-    # OS & Image
-    $user = "localadmin";
-    $password = $PLACEHOLDER;
-    $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
-    $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-    $computerName = 'test';
-    $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+        $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
 
-    $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-    $p = Set-AzVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2016-WS2012R2 -Skus Enterprise -Version "latest"
+        # OS & Image
+        $user = "localadmin";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-    # Virtual Machine
-    New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2016-WS2012R2 -Skus Enterprise -Version "latest"
 
-    #Do actual changes and work here
+        # Virtual Machine
+        New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
-    $extensionName = "Microsoft.SqlServer.Management.SqlIaaSAgent";
+        #Do actual changes and work here
 
-    # 1) Installs the SqlIaaS extension by calling Set-AzVMSqlServerExtension cmdlet on a VM, with auto patching and auto backup settings.
-    $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
-	$storageBlobUrl = "https://$stoname.blob.core.windows.net";
-	$storageKey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
-	$storageKeyAsSecureString = ConvertTo-SecureString -String $storageKey -AsPlainText -Force;
-	$abs = New-AzVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 5 -ResourceGroupName $rgname -StorageUri $storageBlobUrl -StorageKey $storageKeyAsSecureString `
-		-BackupScheduleType Manual -BackupSystemDbs -FullBackupStartHour 10 -FullBackupWindowInHours 5 -FullBackupFrequency Daily -LogBackupFrequencyInMinutes 30
-    Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
+        $extensionName = "Microsoft.SqlServer.Management.SqlIaaSAgent";
 
-    # 2) Calls Get-AzVMSqlServerExtension cmdlet to check the status of the extension installation.
-    $extension = Get-AzVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
+        # 1) Installs the SqlIaaS extension by calling Set-AzureRmVMSqlServerExtension cmdlet on a VM, with auto patching and auto backup settings.
+        $aps = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
+		$storageBlobUrl = "https://$stoname.blob.core.windows.net";
+		$storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
+		$storageKeyAsSecureString = ConvertTo-SecureString -String $storageKey -AsPlainText -Force;
+		$abs = New-AzureRmVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 5 -ResourceGroupName $rgname -StorageUri $storageBlobUrl -StorageKey $storageKeyAsSecureString `
+			-BackupScheduleType Manual -BackupSystemDbs -FullBackupStartHour 10 -FullBackupWindowInHours 5 -FullBackupFrequency Daily -LogBackupFrequencyInMinutes 30
+        Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
 
-    # 3) Verifies settings are correct given input
-    Assert-AreEqual $extension.AutoPatchingSettings.DayOfWeek "Thursday"
-    Assert-AreEqual $extension.AutoPatchingSettings.MaintenanceWindowStartingHour 20
-    Assert-AreEqual $extension.AutoPatchingSettings.MaintenanceWindowDuration 120
-    Assert-AreEqual $extension.AutoPatchingSettings.PatchCategory "Important"
+        # 2) Calls Get-AzureRmVMSqlServerExtension cmdlet to check the status of the extension installation.
+        $extension = Get-AzureRmVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
 
-	Assert-AreEqual $extension.AutoBackupSettings.RetentionPeriod 5
-    Assert-AreEqual $extension.AutoBackupSettings.Enable $true
-    Assert-AreEqual $extension.AutoBackupSettings.BackupScheduleType "Manual"
-    Assert-AreEqual $extension.AutoBackupSettings.FullBackupFrequency "Daily"
-    Assert-AreEqual $extension.AutoBackupSettings.BackupSystemDbs $true
-    Assert-AreEqual $extension.AutoBackupSettings.FullBackupStartTime 10
-    Assert-AreEqual $extension.AutoBackupSettings.FullBackupWindowHours 5
-    Assert-AreEqual $extension.AutoBackupSettings.LogBackupFrequency 30
+        # 3) Verifies settings are correct given input
+        Assert-AreEqual $extension.AutoPatchingSettings.DayOfWeek "Thursday"
+        Assert-AreEqual $extension.AutoPatchingSettings.MaintenanceWindowStartingHour 20
+        Assert-AreEqual $extension.AutoPatchingSettings.MaintenanceWindowDuration 120
+        Assert-AreEqual $extension.AutoPatchingSettings.PatchCategory "Important"
 
-    # 4) Update extension values
-    $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Monday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
-    $abs = New-AzVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 10 -ResourceGroupName $rgname -StorageUri $storageBlobUrl `
-			-StorageKey $storageKeyAsSecureString -BackupScheduleType Automated
-	Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
+		Assert-AreEqual $extension.AutoBackupSettings.RetentionPeriod 5
+        Assert-AreEqual $extension.AutoBackupSettings.Enable $true
+        Assert-AreEqual $extension.AutoBackupSettings.BackupScheduleType "Manual"
+        Assert-AreEqual $extension.AutoBackupSettings.FullBackupFrequency "Daily"
+        Assert-AreEqual $extension.AutoBackupSettings.BackupSystemDbs $true
+        Assert-AreEqual $extension.AutoBackupSettings.FullBackupStartTime 10
+        Assert-AreEqual $extension.AutoBackupSettings.FullBackupWindowHours 5
+        Assert-AreEqual $extension.AutoBackupSettings.LogBackupFrequency 30
 
-    # 5) Verify changes
-    $extension = Get-AzVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
-    Assert-AreEqual $extension.AutoPatchingSettings.DayOfWeek "Monday"
-	Assert-AreEqual $extension.AutoBackupSettings.RetentionPeriod 10
-    Assert-AreEqual $extension.AutoBackupSettings.Enable $true
-    Assert-AreEqual $extension.AutoBackupSettings.BackupScheduleType "Automated"
+        # 4) Update extension values
+        $aps = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Monday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
+        $abs = New-AzureRmVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 10 -ResourceGroupName $rgname -StorageUri $storageBlobUrl `
+				-StorageKey $storageKeyAsSecureString -BackupScheduleType Automated
+		Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
 
-    # 6) Test with correct Name and Version
-    Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.2"
+        # 5) Verify changes
+        $extension = Get-AzureRmVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
+        Assert-AreEqual $extension.AutoPatchingSettings.DayOfWeek "Monday"
+		Assert-AreEqual $extension.AutoBackupSettings.RetentionPeriod 10
+        Assert-AreEqual $extension.AutoBackupSettings.Enable $true
+        Assert-AreEqual $extension.AutoBackupSettings.BackupScheduleType "Automated"
 
-    # 7) Test with correct Name and incorrect Version
-    Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.*"
+        # 6) Test with correct Name and Version
+        Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.2"
+
+        # 7) Test with correct Name and incorrect Version
+        Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.*"
+    }
+    finally
+    {
+        # Cleanup
+        if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
+        {
+            #Remove-AzureRmResourceGroup -Name $rgname -Force;
+        }
+    }
 }
 
 #helper methods for ARM
@@ -333,7 +365,7 @@ function Get-DefaultResourceGroupLocation
     {
         $namespace = "Microsoft.Resources"
         $type = "resourceGroups"
-        $location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+        $location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
 
         if ($location -eq $null)
         {

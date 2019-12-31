@@ -25,7 +25,12 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Helper cmdlet to construct instance of SQL Credential AKV based settings class
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSqlServerKeyVaultCredentialConfig",SupportsShouldProcess = true),OutputType(typeof(KeyVaultCredentialSettings))]
+    [Cmdlet(
+         VerbsCommon.New,
+         ProfileNouns.VirtualMachineSqlServerKeyVaultCredentialConfig,
+         SupportsShouldProcess = true),
+     OutputType(
+         typeof(KeyVaultCredentialSettings))]
     public class NewAzureVMSqlServerKeyVaultCredentialConfigCommand : PSCmdlet
     {
         [Parameter(
@@ -33,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

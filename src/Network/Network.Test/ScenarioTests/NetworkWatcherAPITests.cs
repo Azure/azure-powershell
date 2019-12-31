@@ -65,8 +65,8 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-PacketCapture");
         }
 
-        [Fact]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Fact(Skip = "Rerecord tests")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestTroubleshoot()
         {
@@ -74,15 +74,14 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestFlowLog()
         {
             TestRunner.RunTestScript("Test-FlowLog");
         }
 
-        [Fact(Skip = "This test only applies to desktop")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestConnectivityCheck()
@@ -98,7 +97,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ReachabilityReport");
         }
 
-        [Fact(Skip = "API is no longer available to customers")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestProvidersList()
@@ -112,14 +111,6 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestConnectionMonitor()
         {
             TestRunner.RunTestScript("Test-ConnectionMonitor");
-        }
-
-        [Fact(Skip = "Server returns empty array")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
-        public void TestNetworkConfigurationDiagnostic()
-        {
-            TestRunner.RunTestScript("Test-NetworkConfigurationDiagnostic");
         }
     }
 }

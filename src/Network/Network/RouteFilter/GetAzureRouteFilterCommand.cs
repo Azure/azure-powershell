@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Rest.Azure;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteFilter"), OutputType(typeof(PSRouteFilter))]
-    public class GetAzureRouteFilterCommand : RouteFilterBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzRouteFilter"), OutputType(typeof(PSRouteFilter))]
+    public class GetAzureRouteFilterCommand: RouteFilterBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -37,9 +37,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
            ParameterSetName = "Expand")]
-        [ResourceNameCompleter("Microsoft.Network/routeFilters", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(
@@ -54,7 +52,6 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "Expand")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -68,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            if (ShouldGetByName(ResourceGroupName, Name))
+            if (!string.IsNullOrEmpty(this.Name))
             {
                 var routeFilter = this.GetRouteFilter(this.ResourceGroupName, this.Name, this.ExpandResource);
 
@@ -77,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<RouteFilter> routeFilterPage;
-                if (ShouldListByResourceGroup(ResourceGroupName, Name))
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
                     routeFilterPage = this.RouteFilterClient.ListByResourceGroup(this.ResourceGroupName);
                 }
@@ -98,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
                     psRouteFilters.Add(psRouteFilter);
                 }
 
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psRouteFilters), true);                
+                WriteObject(psRouteFilters, true);                
             }
         }
     }

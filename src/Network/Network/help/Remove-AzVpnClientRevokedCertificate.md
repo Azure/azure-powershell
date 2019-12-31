@@ -40,9 +40,9 @@ In order to remove a client-revocation certificate, you must specify both the ce
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -53,12 +53,13 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the virtual network gateway is assigned to.
+
 Resource groups categorize items to help simplify inventory management and general Azure administration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -69,14 +70,17 @@ Accept wildcard characters: False
 
 ### -Thumbprint
 Specifies the unique identifier of the certificate being removed.
+
 You can return thumbprint information for your certificates by using a Windows PowerShell command similar to this:
+
 `Get-ChildItem -Path "Cert:\LocalMachine\Root"`
+
 The preceding command returns information for all the Local Computer certificates found in the Root certificate store.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -89,9 +93,9 @@ Accept wildcard characters: False
 Specifies the name of the virtual network gateway that the certificate is assigned to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -104,7 +108,7 @@ Accept wildcard characters: False
 Specifies the name of the VPN client certificate being removed.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -120,11 +124,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
-
-### System.Boolean
 
 ## NOTES
 

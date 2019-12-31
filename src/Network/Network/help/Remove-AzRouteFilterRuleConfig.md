@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzRouteFilterRuleConfig
 
 ## SYNOPSIS
-Removes a route filter rule from a route filter.
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
@@ -18,18 +18,16 @@ Remove-AzRouteFilterRuleConfig -Name <String> -RouteFilter <PSRouteFilter> [-For
 ```
 
 ## DESCRIPTION
-The **Remove-AzRouteFilterRuleConfig** cmdlet removes a route filter rule from a route filter.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> $rf = Get-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Remove-AzRouteFilterRuleConfig -RouteFilter $rf -Name "Rule01"
+```
+PS C:\> {{ Add example code here }}
 ```
 
-The first command gets a route filter named RouteFilter01 that belongs to the resource group named ResourceGroup01 and stores it in the $rf variable.
-The second command removes the route filter rule named Rule01 from the route filter stored in $rf.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -37,9 +35,9 @@ The second command removes the route filter rule named Rule01 from the route fil
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -49,12 +47,12 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Do not ask for confirmation if you want to overwrite a resource
+Do not ask for confirmation if you want to overrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -67,9 +65,9 @@ Accept wildcard characters: False
 The name of the route filter rule
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -82,9 +80,9 @@ Accept wildcard characters: False
 The RouteFilter
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRouteFilter
+Type: PSRouteFilter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -97,7 +95,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -112,7 +110,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -138,18 +136,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzRouteFilterRuleConfig](./Add-AzRouteFilterRuleConfig.md)
-
-[Get-AzRouteFilterRuleConfig](./Get-AzRouteFilterRuleConfig.md)
-
-[New-AzRouteFilterRuleConfig](./New-AzRouteFilterRuleConfig.md)
-
-[Set-AzRouteFilterRuleConfig](./Set-AzRouteFilterRuleConfig.md)
-
-[Get-AzRouteFilter](./Get-AzRouteFilter.md)
-
-[New-AzRouteFilter](./New-AzRouteFilter.md)
-
-[Remove-AzRouteFilter](./Remove-AzRouteFilter.md)
-
-[Set-AzRouteFilter](./Set-AzRouteFilter.md)

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network
 
     using Microsoft.Azure.Commands.Network.Models;
 
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteFilterRuleConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteFilterRule))]
+    [Cmdlet(VerbsCommon.Remove, "AzRouteFilterRuleConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteFilterRule))]
     public class RemoveAzureRouteFilterRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to delete a resource")]
+            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
         public override void Execute()
@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Commands.Network
             // Verify if the route exists in the RouteTable
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.RemovingResource, this.RouteFilter.Name),
-                Properties.Resources.RemoveResourceMessage,
+                string.Format(Properties.Resources.OverwritingResource, this.RouteFilter.Name),
+                Properties.Resources.CreatingResourceMessage,
                 this.RouteFilter.Name,
                 () =>
                 {

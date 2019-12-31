@@ -16,10 +16,8 @@ Creates a WAF configuration for an application gateway.
 ```
 New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled <Boolean> -FirewallMode <String>
  [-RuleSetType <String>] [-RuleSetVersion <String>]
- [-DisabledRuleGroup <PSApplicationGatewayFirewallDisabledRuleGroup[]>] [-RequestBodyCheck <Boolean>]
- [-MaxRequestBodySizeInKb <Int32>] [-FileUploadLimitInMb <Int32>]
- [-Exclusion <PSApplicationGatewayFirewallExclusion[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DisabledRuleGroups <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,9 +42,9 @@ The last command then creates a WAF configuration with firewall rules disabled a
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -55,13 +53,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisabledRuleGroup
+### -DisabledRuleGroups
 The disabled rule groups.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup[]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]
 Parameter Sets: (All)
-Aliases: DisabledRuleGroups
+Aliases: 
 
 Required: False
 Position: Named
@@ -74,41 +72,11 @@ Accept wildcard characters: False
 Indicates whether the WAF is enabled.
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Exclusion
-The exclusion lists.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallExclusion[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FileUploadLimitInMb
-Max file upload limit in MB.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -118,13 +86,14 @@ Accept wildcard characters: False
 ### -FirewallMode
 Specifies the web application firewall mode.
 The acceptable values for this parameter are:
+
 - Detection
 - Prevention
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Detection, Prevention
 
 Required: True
@@ -134,45 +103,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxRequestBodySizeInKb
-Max request body size in KB.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequestBodyCheck
-Whether request body is checked or not.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RuleSetType
 The type of the web application firewall rule set. 
 The acceptable values for this parameter are: 
+
 - OWASP
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: OWASP
 
 Required: False
@@ -184,11 +124,16 @@ Accept wildcard characters: False
 
 ### -RuleSetVersion
 The version of the rule set type.
+The acceptable values for this parameter are: 
+
+- 3.0
+- 2.2.9
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
+Accepted values: 3.0, 2.2.9
 
 Required: False
 Position: Named
@@ -201,7 +146,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -216,7 +161,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -231,8 +176,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### None
 
 ## OUTPUTS
 

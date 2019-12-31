@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: 91B2DE2F-442D-4428-8A6F-9C2CEC181CA7
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmsourceimage
@@ -37,10 +37,12 @@ PS C:\> $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Sta
 PS C:\> Set-AzVMSourceImage -VM $VirtualMachine -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2012-R2-Datacenter" -Version "latest"
 ```
 
-The first command gets the availability set named AvailabilitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
+The first command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
+
 The second command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
 The virtual machine belongs to the availability set stored in $AvailabilitySet.
+
 The final command sets values for publisher name, offer, SKU, and version.
 The **Get-AzVMImagePublisher**, **Get-AzVMImageOffer**, **Get-AzVMImageSku**, and **Get-AzVMImage** cmdlets can discover these settings.
 
@@ -50,9 +52,9 @@ The **Get-AzVMImagePublisher**, **Get-AzVMImageOffer**, **Get-AzVMImageSku**, an
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -65,9 +67,9 @@ Accept wildcard characters: False
 Specifies the ID.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ImageReferenceIdParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -81,9 +83,9 @@ Specifies the type of VMImage offer.
 To obtain an image offer, use the Get-AzVMImageOffer cmdlet.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ImageReferenceSkuParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: 2
@@ -97,9 +99,9 @@ Specifies the name of a publisher of a VMImage.
 To obtain a publisher, use the Get-AzVMImagePublisher cmdlet.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ImageReferenceSkuParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -113,9 +115,9 @@ Specifies a VMImage SKU.
 To obtain SKUs, use the Get-AzVMImageSku cmdlet.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ImageReferenceSkuParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: 3
@@ -129,9 +131,9 @@ Specifies a version of a VMImage.
 To use the latest version, specify a value of latest instead of a particular version.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ImageReferenceSkuParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: 4
@@ -144,7 +146,7 @@ Accept wildcard characters: False
 Specifies the local virtual machine object to configure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Type: PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 
@@ -156,13 +158,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
-
-### System.String
+### PSVirtualMachine
+Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
 
 ## OUTPUTS
 

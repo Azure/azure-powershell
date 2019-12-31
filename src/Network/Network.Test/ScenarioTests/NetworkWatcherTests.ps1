@@ -14,30 +14,6 @@
 
 <#
 .SYNOPSIS
-Deployment of new Network Watcher.
-#>
-function DeleteIfExistsNetworkWatcher($location)
-{
-	# Get Network Watcher
-	$nwlist = Get-AzNetworkWatcher
-	foreach ($i in $nwlist)
-	{
-		if($i.Location -eq "$location") 
-		{
-			$nw=$i
-		}
-	}
-
-	# Delete Network Watcher if existing nw
-	if ($nw) 
-	{
-		$job = Remove-AzNetworkWatcher -NetworkWatcher $nw -AsJob
-		$job | Wait-Job
-	}
-}
-
-<#
-.SYNOPSIS
 Tests creating new simple public networkinterface.
 #>
 function Test-NetworkWatcherCRUD
@@ -45,50 +21,40 @@ function Test-NetworkWatcherCRUD
     # Setup
     $rgname = Get-ResourceGroupName
     $nwName = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
+    $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $location = Get-ProviderLocation $resourceTypeParent "westcentralus"
+    $location = "westcentralus"
     
     try 
     {
-        $resourceGroup = New-AzResourceGroup -Name $rgname -Location  $rglocation -Tags @{ testtag = "testval" }
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
         
-		DeleteIfExistsNetworkWatcher -location $location
-
         # Create the Network Watcher
         $tags = @{"key1" = "value1"; "key2" = "value2"}
-        $nw = New-AzNetworkWatcher -Name $nwName -ResourceGroupName $rgname -Location $location -Tag $tags
+        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $rgname -Location $location -Tag $tags
 
         Assert-AreEqual $nw.Name $nwName
         Assert-AreEqual "Succeeded" $nw.ProvisioningState
-		
+
         # Get Network Watcher
-        $getNW = Get-AzNetworkWatcher -ResourceGroupName $rgname -Name $nwName
-		
+        $getNW = Get-AzureRmNetworkWatcher -ResourceGroupName $rgname -Name $nwName
+
         Assert-AreEqual $getNW.Name $nwName		
         Assert-AreEqual "Succeeded" $nw.ProvisioningState
-		
+
         # List Network Watchers
-        $listNWByRg = Get-AzNetworkWatcher -ResourceGroupName $rgname
-        $listNW = Get-AzNetworkWatcher
-		
+        $listNWByRg = Get-AzureRmNetworkWatcher -ResourceGroupName $rgname
+        $listNW = Get-AzureRmNetworkWatcher
+
         Assert-AreEqual 1 @($listNWByRg).Count
 
-        $listNW = Get-AzNetworkWatcher -ResourceGroupName "*"
-        Assert-True { $listNW.Count -ge 0 }
-
-        $listNW = Get-AzNetworkWatcher -Name "*"
-        Assert-True { $listNW.Count -ge 0 }
-
-        $listNW = Get-AzNetworkWatcher -ResourceGroupName "*" -Name "*"
-        Assert-True { $listNW.Count -ge 0 }
-		
         # Delete Network Watcher
-        $job = Remove-AzNetworkWatcher -ResourceGroupName $rgname -name $nwName -AsJob
-        $job | Wait-Job
-        $delete = $job | Receive-Job
-		
-        $list = Get-AzNetworkWatcher -ResourceGroupName $rgname
+        $job = Remove-AzureRmNetworkWatcher -ResourceGroupName $rgname -name $nwName -AsJob
+		$job | Wait-Job
+		$delete = $job | Receive-Job
+
+        $list = Get-AzureRmNetworkWatcher -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
     finally

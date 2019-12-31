@@ -35,15 +35,6 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestPublicIpAddressCRUDPublicIPPrefix()
-        {
-            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-PublicIPPrefix");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDNoDomainNameLabel()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-NoDomainNameLabel");
@@ -119,14 +110,6 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestPublicIpAddressZones()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressZones");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestPublicIpAddressCRUDIdleTimeout()
-        {
-            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-IdleTimeout");
         }
     }
 }

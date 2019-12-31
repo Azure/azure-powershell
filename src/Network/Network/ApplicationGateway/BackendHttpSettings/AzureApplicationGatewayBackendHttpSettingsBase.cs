@@ -76,13 +76,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Application gateway Authentication Certificates")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayAuthenticationCertificate[] AuthenticationCertificates { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Application gateway Trusted Root Certificates")]
-        [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayTrustedRootCertificate[] TrustedRootCertificate { get; set; }
+        public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -99,6 +93,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Cookie name to use for the affinity cookie")]
         [ValidateNotNullOrEmpty]
         public string AffinityCookieName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag if probe should be enabled.")]
+        [Obsolete("Parameter is ignored and will be removed in a future release")]
+        public SwitchParameter ProbeEnabled { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -122,7 +122,6 @@ namespace Microsoft.Azure.Commands.Network
             backendHttpSettings.Port = this.Port;
             backendHttpSettings.Protocol = this.Protocol;
             backendHttpSettings.CookieBasedAffinity = this.CookieBasedAffinity;
-
             if (0 == this.RequestTimeout)
             {
                 backendHttpSettings.RequestTimeout = 30;
@@ -131,19 +130,16 @@ namespace Microsoft.Azure.Commands.Network
             {
                 backendHttpSettings.RequestTimeout = this.RequestTimeout;
             }
-
             if(this.ConnectionDraining != null)
             {
                 backendHttpSettings.ConnectionDraining = this.ConnectionDraining;
             }
-
             if (!string.IsNullOrEmpty(this.ProbeId))
             {
                 backendHttpSettings.Probe = new PSResourceId();
                 backendHttpSettings.Probe.Id = this.ProbeId;
             }
-
-            if (this.AuthenticationCertificates != null && this.AuthenticationCertificates.Length > 0)
+            if (this.AuthenticationCertificates != null && this.AuthenticationCertificates.Count > 0)
             {
                 backendHttpSettings.AuthenticationCertificates = new List<PSResourceId>();
                 foreach (var authcert in this.AuthenticationCertificates)
@@ -155,35 +151,18 @@ namespace Microsoft.Azure.Commands.Network
                         });
                 }
             }
-
-            if (this.TrustedRootCertificate != null && this.TrustedRootCertificate.Length > 0)
-            {
-                backendHttpSettings.TrustedRootCertificates = new List<PSResourceId>();
-                foreach (var trustedRootCert in this.TrustedRootCertificate)
-                {
-                    backendHttpSettings.TrustedRootCertificates.Add(
-                        new PSResourceId()
-                        {
-                            Id = trustedRootCert.Id
-                        });
-                }
-            }
-
             if(this.PickHostNameFromBackendAddress.IsPresent)
             {
                 backendHttpSettings.PickHostNameFromBackendAddress = true;
             }
-
             if(this.HostName != null)
             {
                 backendHttpSettings.HostName = this.HostName;
             }
-
             if (this.AffinityCookieName != null)
             {
                 backendHttpSettings.AffinityCookieName = this.AffinityCookieName;
             }
-
             if (this.Path != null)
             {
                 backendHttpSettings.Path = this.Path;

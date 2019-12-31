@@ -114,21 +114,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceWithAcceleratedNetworking");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestNetworkInterfaceTapConfigurationCRUD()
-        {
-            TestRunner.RunTestScript(string.Format("Test-NetworkInterfaceTapConfigurationCRUD"));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestNetworkInterfaceVmss()
-        {
-            TestRunner.RunTestScript("Test-NetworkInterfaceVmss");
-        }
     }
 }

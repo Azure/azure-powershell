@@ -14,12 +14,11 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSubnet))]
+    [Cmdlet(VerbsCommon.New, "AzVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSubnet))]
     public class NewAzureVirtualNetworkSubnetConfigCommand : AzureVirtualNetworkSubnetConfigBase
     {
         [Parameter(
@@ -43,16 +42,11 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.RouteTableId = this.RouteTable.Id;
                 }
-
-                if (this.InputObject != null)
-                {
-                    this.ResourceId = this.InputObject.Id;
-                }
             }
 
             var subnet = new PSSubnet();
             subnet.Name = this.Name;
-            subnet.AddressPrefix = this.AddressPrefix?.ToList();
+            subnet.AddressPrefix = this.AddressPrefix;
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
@@ -66,12 +60,6 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.RouteTable.Id = this.RouteTableId;
             }
 
-            if (!string.IsNullOrEmpty(this.ResourceId))
-            {
-                subnet.NatGateway = new PSNatGateway();
-                subnet.NatGateway.Id = this.ResourceId;
-            }
-
             if (this.ServiceEndpoint != null)
             {
                 subnet.ServiceEndpoints = new List<PSServiceEndpoint>();
@@ -83,18 +71,6 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            if (this.ServiceEndpointPolicy != null)
-            {
-                subnet.ServiceEndpointPolicies = this.ServiceEndpointPolicy?.ToList();
-            }
-
-            if (this.Delegation != null)
-            {
-                subnet.Delegations = this.Delegation?.ToList();
-            }
-
-            subnet.PrivateEndpointNetworkPolicies = this.PrivateEndpointNetworkPoliciesFlag ?? "Enabled";
-            subnet.PrivateLinkServiceNetworkPolicies = this.PrivateLinkServiceNetworkPoliciesFlag ?? "Enabled";
 
             WriteObject(subnet);
         }

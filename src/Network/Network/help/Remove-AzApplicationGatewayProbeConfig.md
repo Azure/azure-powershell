@@ -35,9 +35,9 @@ This command removes the health probe named Probe04 from the application gateway
 Specifies the application gateway to which this cmdlet removes a probe.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -50,9 +50,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -65,9 +65,9 @@ Accept wildcard characters: False
 Specifies the name of the probe for which this cmdlet removes.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -81,7 +81,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+### PSApplicationGateway
+Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
 
 ## OUTPUTS
 
@@ -93,11 +94,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove a probe from an existing application gateway](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#remove-a-probe-from-an-existing-application-gateway)
 
-[Add-AzApplicationGatewayProbeConfig](./Add-AzApplicationGatewayProbeConfig.md)
+[Add-AzApplicationGatewayProbeConfig]()
 
-[Get-AzApplicationGatewayProbeConfig](./Get-AzApplicationGatewayProbeConfig.md)
+[Get-AzApplicationGatewayProbeConfig]()
 
-[New-AzApplicationGatewayProbeConfig](./New-AzApplicationGatewayProbeConfig.md)
+[New-AzApplicationGatewayProbeConfig]()
 
-[Set-AzApplicationGatewayProbeConfig](./Set-AzApplicationGatewayProbeConfig.md)
+[Set-AzApplicationGatewayProbeConfig]()
 

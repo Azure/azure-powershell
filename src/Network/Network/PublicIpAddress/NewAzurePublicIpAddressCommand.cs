@@ -1,4 +1,4 @@
-﻿
+
 
 // ----------------------------------------------------------------------------------
 //
@@ -21,13 +21,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpAddress", SupportsShouldProcess = true),OutputType(typeof(PSPublicIpAddress))]
+    [Cmdlet(VerbsCommon.New, "AzPublicIpAddress", SupportsShouldProcess = true),
+        OutputType(typeof(PSPublicIpAddress))]
     public class NewAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -96,18 +96,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "IpTag List.")]
-        public PSPublicIpTag[] IpTag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The PublicIpPrefix to use for Public IP address")]
-        public PSPublicIpPrefix PublicIpPrefix { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Reverse FQDN.")]
         public string ReverseFqdn { get; set; }
 
@@ -121,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
             ValueFromPipelineByPropertyName = true)]
-            public string[] Zone { get; set; }
+            public List<string> Zone { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -131,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
+            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -140,6 +128,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsPublicIpAddressPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
@@ -161,8 +150,7 @@ namespace Microsoft.Azure.Commands.Network
             publicIp.Location = this.Location;
             publicIp.PublicIpAllocationMethod = this.AllocationMethod;
             publicIp.PublicIpAddressVersion = this.IpAddressVersion;
-            publicIp.Zones = this.Zone?.ToList();
-            publicIp.PublicIpPrefix = this.PublicIpPrefix;
+            publicIp.Zones = this.Zone;
 
             if (!string.IsNullOrEmpty(this.Sku))
             {
@@ -182,11 +170,6 @@ namespace Microsoft.Azure.Commands.Network
                 publicIp.DnsSettings.ReverseFqdn = this.ReverseFqdn;
             }
 
-            if (this.IpTag != null && this.IpTag.Length > 0)
-            {
-                publicIp.IpTags = this.IpTag?.ToList();
-            }
-
             var publicIpModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PublicIPAddress>(publicIp);
 
             publicIpModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
@@ -199,3 +182,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

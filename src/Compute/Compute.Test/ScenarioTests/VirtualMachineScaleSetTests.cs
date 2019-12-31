@@ -54,23 +54,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetReimageTempDisk()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetReimageTempDisk");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetLB()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetLB");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetNextLink()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetNextLink");
         }
 
         [Fact]
@@ -120,48 +106,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineScaleSetWriteAcceleratorUpdate()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetWriteAcceleratorUpdate");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetForceUDWalk()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetForceUDWalk");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetRedeploy()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetRedeploy");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetVMUpdate()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetVMUpdate");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetAutoRollback()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAutoRollback");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetScaleInPolicy()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetScaleInPolicy");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetAutoRepair()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAutoRepair");
         }
     }
 }

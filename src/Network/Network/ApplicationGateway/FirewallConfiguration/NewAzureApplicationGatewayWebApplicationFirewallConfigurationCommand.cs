@@ -14,11 +14,11 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayWebApplicationFirewallConfiguration", SupportsShouldProcess = true),OutputType(typeof(PSApplicationGatewayWebApplicationFirewallConfiguration))]
+    [Cmdlet(VerbsCommon.New, "AzApplicationGatewayWebApplicationFirewallConfiguration", SupportsShouldProcess = true),
+        OutputType(typeof(PSApplicationGatewayWebApplicationFirewallConfiguration))]
     public class NewAzureApplicationGatewayWebApplicationFirewallConfigurationCommand : AzureApplicationGatewayWebApplicationFirewallConfigurationBase
     {
         public override void ExecuteCmdlet()
@@ -33,11 +33,7 @@ namespace Microsoft.Azure.Commands.Network
                     FirewallMode = this.FirewallMode,
                     RuleSetType = this.RuleSetType,
                     RuleSetVersion = this.RuleSetVersion,
-                    DisabledRuleGroups = this.DisabledRuleGroup?.ToList(),
-                    RequestBodyCheck = this.RequestBodyCheck,
-                    MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb,
-                    FileUploadLimitInMb = this.FileUploadLimitInMb,
-                    Exclusions = this.Exclusion?.ToList()
+                    DisabledRuleGroups = this.DisabledRuleGroups
                 };
 
                 WriteObject(firewallConfiguration);

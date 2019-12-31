@@ -14,9 +14,11 @@ Modifies the SSL policy of an application gateway.
 ## SYNTAX
 
 ```
-Set-AzApplicationGatewaySslPolicy -ApplicationGateway <PSApplicationGateway> [-DisabledSslProtocols <String[]>]
- [-PolicyType <String>] [-PolicyName <String>] [-CipherSuite <String[]>] [-MinProtocolVersion <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzApplicationGatewaySslPolicy -ApplicationGateway <PSApplicationGateway>
+ [-DisabledSslProtocols <System.Collections.Generic.List`1[System.String]>] [-PolicyType <String>]
+ [-PolicyName <String>] [-CipherSuite <System.Collections.Generic.List`1[System.String]>]
+ [-MinProtocolVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +33,7 @@ PS C:\> $AppGw = Set-AzApplicationGatewaySslPolicy -ApplicationGateway $getgw -P
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.
+
 This second command modifies the ssl policy to a policy type Predefined and policy name AppGwSslPolicy20170401.
 
 ## PARAMETERS
@@ -39,9 +42,9 @@ This second command modifies the ssl policy to a policy type Predefined and poli
 Specifies the application gateway of the SSL policy that this cmdlet modifies.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -54,9 +57,9 @@ Accept wildcard characters: False
 Ssl cipher suites to be enabled in the specified order to application gateway
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -69,9 +72,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -83,14 +86,15 @@ Accept wildcard characters: False
 ### -DisabledSslProtocols
 Specifies which protocols are disabled.
 The acceptable values for this parameter are:
+
 - TLSv1_0 
 - TLSv1_1 
 - TLSv1_2
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: TLSv1_0, TLSv1_1, TLSv1_2
 
 Required: False
@@ -104,9 +108,9 @@ Accept wildcard characters: False
 Minimum version of Ssl protocol to be supported on application gateway
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: TLSv1_0, TLSv1_1, TLSv1_2
 
 Required: False
@@ -120,9 +124,9 @@ Accept wildcard characters: False
 Name of Ssl predefined policy
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -135,9 +139,9 @@ Accept wildcard characters: False
 Type of Ssl Policy
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Predefined, Custom
 
 Required: False
@@ -151,7 +155,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -167,7 +171,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -183,7 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+### System.String
 
 ## OUTPUTS
 

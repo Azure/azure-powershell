@@ -12,20 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Network.Common;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
     /// Setup the network interface.
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMNetworkInterface",DefaultParameterSetName = NicIdParamSetName),OutputType(typeof(PSVirtualMachine))]
+    [Cmdlet(
+        VerbsCommon.Add,
+        ProfileNouns.NetworkInterface,
+        DefaultParameterSetName = NicIdParamSetName),
+    OutputType(
+        typeof(PSVirtualMachine))]
     public class AddAzureVMNetworkInterfaceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string NicIdParamSetName = "GetNicFromNicId";

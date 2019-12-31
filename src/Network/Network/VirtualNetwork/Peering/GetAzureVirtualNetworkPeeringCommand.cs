@@ -20,14 +20,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkPeering"), OutputType(typeof(PSVirtualNetworkPeering))]
+    [Cmdlet(VerbsCommon.Get, "AzVirtualNetworkPeering"), OutputType(typeof(PSVirtualNetworkPeering))]
     public class GetAzureVirtualNetworkPeeringCommand : VirtualNetworkPeeringBase
     {
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The virtual network name.")]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworks", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 
@@ -43,15 +42,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network peering name.")]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworks/virtualNetworkPeerings", "ResourceGroupName", "VirtualNetworkName")]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            if (ShouldGetByName(ResourceGroupName, Name))
+            if (!string.IsNullOrEmpty(this.Name))
             {
                 var vnet = this.GetVirtualNetworkPeering(this.ResourceGroupName, this.VirtualNetworkName, this.Name);
 
@@ -70,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
                     psVnetPeerings.Add(psVnetPeering);
                 }
 
-                WriteObject(SubResourceWildcardFilter(Name, psVnetPeerings), true);
+                WriteObject(psVnetPeerings, true);
             }
         }
     }

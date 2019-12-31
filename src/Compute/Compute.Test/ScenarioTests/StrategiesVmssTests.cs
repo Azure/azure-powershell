@@ -12,11 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
-using System.Reflection;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
@@ -29,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmss()
         {
             TestRunner.RunTestScript("Test-SimpleNewVmss");
@@ -37,98 +35,18 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmssFromSIGImage()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmssFromSIGImage");
-        }
-
-        [Fact(Skip = "Test failed while re-recording.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmssWithUltraSSD()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmssWithUltraSSD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmssLbErrorScenario()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmssLbErrorScenario");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmssWithSystemAssignedIdentity()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmssWithSystemAssignedIdentity");
-        }
-
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.RunType, Category.CoreOnly)]
         public void TestSimpleNewVmssImageName()
         {
             TestRunner.RunTestScript("Test-SimpleNewVmssImageName");
         }
 
-        [Fact(Skip = "Unknown issue/update, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        public void TestSimpleNewVmssWithSystemAssignedUserAssignedIdentity()
-        {
-            /**
-             * To record this test run these commands first :
-             * New-AzResourceGroup -Name UAITG123456 -Location 'Central US'
-             * New-AzUserAssignedIdentity -ResourceGroupName  UAITG123456 -NameUAITG123456Identity
-             * 
-             * Now get the identity :
-             * 
-             * Get-AzUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
-             * Nore down the Id and use it in the PS code
-             * */
-            TestRunner.RunTestScript("Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity");
-       }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmssWithoutDomainName()
         {
-            var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
-            var oldCreate = create.GetValue(null);
-
-            string GetUnigueId() => HttpMockServer.GetAssetGuid("domainName").ToString();
-            create.SetValue(null, (Func<string>) GetUnigueId);
-            TestRunner.RunTestScript("Test-SimpleNewVmssWithoutDomainName");
-            create.SetValue(null, oldCreate);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmssPpg()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmssPpg");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmssBilling()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmssBilling");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmssScaleInPolicy()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmssScaleInPolicy");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SimpleNewVmssSkipExtOverprovision()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmssSkipExtOverprovision");
+            StrategiesVirtualMachineTests.TestDomainName(
+                "Test-SimpleNewVmssWithoutDomainName",
+                () => HttpMockServer.GetAssetGuid("domainName").ToString());
         }
     }
 }

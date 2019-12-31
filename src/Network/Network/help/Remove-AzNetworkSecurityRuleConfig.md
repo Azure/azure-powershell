@@ -28,13 +28,13 @@ The **Remove-AzNetworkSecurityRuleConfig** cmdlet removes a network security rul
 PS C:\>$rule1 = New-AzNetworkSecurityRuleConfig -Name "rdp-rule" -Description "Allow RDP" -Access "Allow" -Protocol "Tcp" -Direction "Inbound" -Priority 100 -SourceAddressPrefix "Internet" -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
 PS C:\> $nsg = New-AzNetworkSecurityGroup -ResourceGroupName "TestRG" -Location "westus" -Name "NSG-FrontEnd" -SecurityRules $rule1
 PS C:\> Remove-AzNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecurityGroup $nsg
-PS C:\> $nsg | Set-AzNetworkSecurityGroup
 ```
 
 The first command creates a network security rule configuration named rdp-rule, and then stores it in the $rule1 variable.
+
 The second command creates a network security group using the rule in $rule1, and then stores the network security group in the $nsg variable.
+
 The third command removes the network security rule configuration named rdp-rule from the network security group in $nsg.
-The forth command saves the change.
 
 ## PARAMETERS
 
@@ -42,9 +42,9 @@ The forth command saves the change.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -57,9 +57,9 @@ Accept wildcard characters: False
 Specifies the name of the network security rule configuration that this cmdlet removes.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -73,9 +73,9 @@ Specifies a **NetworkSecurityGroup** object.
 This object contains the network security rule configuration to remove.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
+Type: PSNetworkSecurityGroup
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -89,7 +89,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
+### PSNetworkSecurityGroup
+Parameter 'NetworkSecurityGroup' accepts value of type 'PSNetworkSecurityGroup' from the pipeline
 
 ## OUTPUTS
 

@@ -39,24 +39,24 @@ function Test-DiagnosticsExtensionBasic
         # This is the storage name defined in config file
         $storagename = 'stoinconfig' + $rgname
         $storagetype = 'Standard_GRS'
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype
 
         # If diagnostics extension already exist, remove it
-        $extension = Get-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+        $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
         if ($extension) {
-            Remove-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
-            $extension = Get-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+            Remove-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+            $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
             Assert-Null $extension
         }
 
-        $configTemplate = Join-Path $ConfigFilesPath "DiagnosticsExtensionConfig.xml";
-        $configFilePath = Join-Path $ConfigFilesPath "config-$rgname.xml";
+        $configTemplate = "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml";
+        $configFilePath = "$TestOutputRoot\ConfigFiles\config-$rgname.xml";
 
         New-WADConfigFromTemplate $configTemplate $configFilePath $storagename;
 
         # Test Set and Get command. It should use the storage account defined in configuration file
-        Set-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath $configFilePath
-        $extension = Get-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath $configFilePath
+        $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
 
         Assert-NotNull $extension
         Assert-AreEqual $extension.Publisher 'Microsoft.Azure.Diagnostics'
@@ -66,8 +66,8 @@ function Test-DiagnosticsExtensionBasic
         Assert-AreEqual $settings.storageAccount $storagename
 
         # Test Remove command.
-        Remove-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
-        $extension = Get-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+        Remove-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+        $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
         Assert-Null $extension
     }
     finally
@@ -101,18 +101,18 @@ function Test-DiagnosticsExtensionSepcifyStorageAccountName
         # This storage name will be used in command line directly when set diagnostics extension
         $storagename = 'stoincmd' + $rgname
         $storagetype = 'Standard_GRS'
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype
 
         # If diagnostics extension already exist, remove it
-        $extension = Get-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+        $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
         if ($extension) {
-            Remove-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
-            $extension = Get-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+            Remove-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+            $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
             Assert-Null $extension
         }
 
-        Set-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath (Join-Path $ConfigFilesPath "DiagnosticsExtensionConfig.xml") -StorageAccountName $storagename
-        $extension = Get-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml" -StorageAccountName $storagename
+        $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
 
         Assert-NotNull $extension
         Assert-AreEqual $extension.Publisher 'Microsoft.Azure.Diagnostics'
@@ -144,17 +144,17 @@ function Test-DiagnosticsExtensionCantListSepcifyStorageAccountKey
         $vmname = $vm.Name
 
         # If diagnostics extension already exist, remove it
-        $extension = Get-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+        $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
         if ($extension) {
-            Remove-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
-            $extension = Get-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+            Remove-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+            $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
             Assert-Null $extension
         }
 
         # Get a random storage account name, which we can't list the key
         $storagename = 'notexiststorage'
         Assert-ThrowsContains `
-            { Set-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath (Join-Path $ConfigFilesPath "DiagnosticsExtensionConfig.xml") -StorageAccountName $storagename } `
+            { Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml" -StorageAccountName $storagename } `
             'Storage account key'
     }
     finally
@@ -180,18 +180,18 @@ function Test-DiagnosticsExtensionSupportJsonConfig
         $vmname = $vm.Name
         $storagename = $vmname + "storage"
         $storagetype = 'Standard_GRS'
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype
 
         # If diagnostics extension already exist, remove it
-        $extension = Get-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+        $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
         if ($extension) {
-            Remove-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
-            $extension = Get-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+            Remove-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+            $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
             Assert-Null $extension
         }
 
-        Set-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath (Join-Path $ConfigFilesPath "DiagnosticsExtensionConfig.json") -StorageAccountName $storagename
-        $extension = Get-AzVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.json" -StorageAccountName $storagename
+        $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
 
         Assert-NotNull $extension
         $settings = $extension.PublicSettings | ConvertFrom-Json
@@ -216,20 +216,20 @@ function Test-VmssDiagnosticsExtension
     try
     {
         # Common
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
         # Create VMSS
 
         # SRP
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         # NRP
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
 
         # New VMSS Parameters
@@ -237,7 +237,7 @@ function Test-VmssDiagnosticsExtension
         $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 
         $adminUsername = 'Foo12';
-        $adminPassword = Get-PasswordForVM;
+        $adminPassword = "BaR@123" + $rgname;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
@@ -249,28 +249,28 @@ function Test-VmssDiagnosticsExtension
         # This storage name will be used in command line directly when set diagnostics extension
         $storagename = 'stoinconfig' + $rgname;
         $storagetype = 'Standard_GRS';
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype;
 
-        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg `
-            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-            | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg `
+            | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
             -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer;
 
         # Full parameter test
         $version = '1.5';
-        $publicSettingTemplate = Join-Path $ConfigFilesPath "DiagnosticsExtensionPublicConfig.json";
-        $privateSettingTemplate = Join-Path $ConfigFilesPath "DiagnosticsExtensionPrivateConfig.json";
+        $publicSettingTemplate = "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionPublicConfig.json";
+        $privateSettingTemplate = "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionPrivateConfig.json";
 
-        $publicSettingFilePath = Join-Path $ConfigFilesPath "publicconfig-$rgname.json";
-        $privateSettingFilePath = Join-Path $ConfigFilesPath "privateconfig-$rgname.json";
+        $publicSettingFilePath = "$TestOutputRoot\ConfigFiles\publicconfig-$rgname.json";
+        $privateSettingFilePath = "$TestOutputRoot\ConfigFiles\privateconfig-$rgname.json";
 
         New-WADConfigFromTemplate $publicSettingTemplate $publicSettingFilePath $storagename
         New-WADConfigFromTemplate $privateSettingTemplate $privateSettingFilePath $storagename
 
-        $vmss = Add-AzVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname -SettingFilePath $publicSettingFilePath `
+        $vmss = Add-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname -SettingFilePath $publicSettingFilePath `
             -ProtectedSettingFilePath $privateSettingFilePath -TypeHandlerVersion $version -AutoUpgradeMinorVersion $false -Force;
 
         $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
@@ -287,15 +287,15 @@ function Test-VmssDiagnosticsExtension
         Assert-AreNotEqual '' $storageAccountKey;
 
         # Remove without specifying extension name, diagnostic extension is expected to be removed.
-        $vmss = Remove-AzVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss;
+        $vmss = Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss;
         $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
 
         Assert-Null $vmssDiagExtensions;
 
-        $vmss = $vmss | Add-AzVmssDiagnosticsExtension -Name $extname -SettingFilePath $publicSettingFilePath `
-            | New-AzVmss -ResourceGroupName $rgname -Name $vmssName;
+        $vmss = $vmss | Add-AzureRmVmssDiagnosticsExtension -Name $extname -SettingFilePath $publicSettingFilePath `
+            | New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName;
 
-        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $vmss = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
         $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
         Assert-AreEqual 1 $vmssDiagExtensions.Count;
@@ -306,13 +306,10 @@ function Test-VmssDiagnosticsExtension
         $settings = $vmssDiagExtension.Settings;
         Assert-AreEqual $storagename $settings.storageAccount.Value;
 
-        $vmss = Remove-AzVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname;
-        $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
-        Assert-Null $vmssDiagExtensions;
+        Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname;
+        Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
-        Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
-
-        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $vmss = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
 
         Assert-Null $vmssDiagExtensions;

@@ -21,18 +21,17 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilitySet")]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.AvailabilitySet)]
     [OutputType(typeof(PSAvailabilitySet))]
     public class GetAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         [Parameter(
-           Mandatory = false,
+           Mandatory = true,
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName", "AvailabilitySetName")]
@@ -40,9 +39,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The availability set name.")]
-        [ResourceNameCompleter("Microsoft.Compute/availabilitySets", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
@@ -51,33 +48,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (ShouldListBySubscription(ResourceGroupName, Name))
-                {
-                    var result = this.AvailabilitySetClient.ListBySubscriptionWithHttpMessagesAsync("virtualMachines/$ref").GetAwaiter().GetResult();
-                    var psResultList = new List<PSAvailabilitySet>();
-                    foreach (var item in result.Body)
-                    {
-                        var psItem = ComputeAutoMapperProfile.Mapper.Map<PSAvailabilitySet>(result);
-                        psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
-                        psResultList.Add(psItem);
-                    }
-
-                    var nextPageLink = result.Body.NextPageLink;
-                    while (!string.IsNullOrEmpty(nextPageLink))
-                    {
-                        var pageResult = this.AvailabilitySetClient.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink).GetAwaiter().GetResult();
-                        foreach (var pageItem in pageResult.Body)
-                        {
-                            var psItem = ComputeAutoMapperProfile.Mapper.Map<PSAvailabilitySet>(pageResult);
-                            psItem = ComputeAutoMapperProfile.Mapper.Map(pageItem, psItem);
-                            psResultList.Add(psItem);
-                        }
-                        nextPageLink = pageResult.Body.NextPageLink;
-                    }
-
-                    WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psResultList), true);
-                }
-                else if (ShouldListByResourceGroup(ResourceGroupName, Name))
+                if (string.IsNullOrEmpty(this.Name))
                 {
                     var result = this.AvailabilitySetClient.ListWithHttpMessagesAsync(this.ResourceGroupName).GetAwaiter().GetResult();
 
@@ -89,20 +60,7 @@ namespace Microsoft.Azure.Commands.Compute
                         psResultList.Add(psItem);
                     }
 
-                    var nextPageLink = result.Body.NextPageLink;
-                    while (!string.IsNullOrEmpty(nextPageLink))
-                    {
-                        var pageResult = this.AvailabilitySetClient.ListNextWithHttpMessagesAsync(nextPageLink).GetAwaiter().GetResult();
-                        foreach (var pageItem in pageResult.Body)
-                        {
-                            var psItem = ComputeAutoMapperProfile.Mapper.Map<PSAvailabilitySet>(pageResult);
-                            psItem = ComputeAutoMapperProfile.Mapper.Map(pageItem, psItem);
-                            psResultList.Add(psItem);
-                        }
-                        nextPageLink = pageResult.Body.NextPageLink;
-                    }
-
-                    WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psResultList), true);
+                    WriteObject(psResultList, true);
                 }
                 else
                 {

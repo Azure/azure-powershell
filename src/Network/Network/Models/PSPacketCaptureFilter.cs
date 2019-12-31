@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -21,23 +20,18 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSPacketCaptureFilter
     {
         [JsonProperty(Order = 2)]
-        [Ps1Xml(Target = ViewControl.Table)]
         public string Protocol { get; set; }
 
         [JsonProperty(Order = 2)]
-        [Ps1Xml(Target = ViewControl.Table)]
         public string RemoteIPAddress { get; set; }
 
         [JsonProperty(Order = 2)]
-        [Ps1Xml(Target = ViewControl.Table)]
         public string LocalIPAddress { get; set; }
 
         [JsonProperty(Order = 2)]
-        [Ps1Xml(Target = ViewControl.Table)]
         public string LocalPort { get; set; }
 
         [JsonProperty(Order = 2)]
-        [Ps1Xml(Target = ViewControl.Table)]
         public string RemotePort { get; set; }
     }
 }

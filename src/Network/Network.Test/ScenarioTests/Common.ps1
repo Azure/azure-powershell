@@ -18,9 +18,7 @@ Gets valid resource group name
 #>
 function Get-ResourceGroupName
 {
-    param([string] $prefix = [string]::Empty)
-
-	return getAssetName $prefix
+    return getAssetName
 }
 
 <#
@@ -29,9 +27,7 @@ Gets valid resource name
 #>
 function Get-ResourceName
 {
-    param([string] $prefix = [string]::Empty)
-
-    return getAssetName $prefix
+    return getAssetName
 }
 
 <#
@@ -57,27 +53,37 @@ function Get-NetworkTestMode {
 .SYNOPSIS
 Gets the default location for a provider
 #>
-function Get-ProviderLocation($provider, $preferredLocation = "West Central US", $useCanonical = $null)
+function Get-ProviderLocation($provider)
 {
-    # This env variable should be used only for live testing
-    if($env:AZURE_NRP_TEST_LOCATION -and $env:AZURE_NRP_TEST_LOCATION -match "^[a-z0-9\s]+$")
-    {
-        return $env:AZURE_NRP_TEST_LOCATION;
-    }
-    if($null -eq $useCanonical)
-    {
-        $useCanonical = -not $preferredLocation.Contains(" ");
-    }
-    if($useCanonical)
-    {
-        $preferredLocation = Normalize-Location $preferredLocation;
-    }
-    if($provider.Contains("/"))
-    {
-        $providerNamespace, $resourceType = $provider.Split("/");
-        return Get-Location $providerNamespace $resourceType $preferredLocation -UseCanonical:$($useCanonical);
-    }
-    return $preferredLocation;
+	if ((Get-NetworkTestMode) -ne 'Playback')
+	{
+		$namespace = $provider.Split("/")[0]  
+		if($provider.Contains("/"))  
+		{  
+			$type = $provider.Substring($namespace.Length + 1)  
+			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+			if ($location -eq $null) 
+			{  
+				return "West US"  
+			} 
+            else 
+			{  
+			if($location.Locations[0] -eq "West US")
+			{ 
+				return $location.Locations[1]
+			}
+			else
+			{
+				return $location.Locations[0]
+				}
+			}  
+		}
+		
+		return "West US"
+	}
+
+	return "WestUS"
 }
 
 <#
@@ -87,7 +93,7 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
     if ((Get-NetworkTestMode) -ne 'Playback') {
-        Remove-AzResourceGroup -Name $rgname -Force
+        Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }
 

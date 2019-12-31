@@ -12,19 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
     /// Add an Ssh Public Key object to VM
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSshPublicKey"),OutputType(typeof(PSVirtualMachine))]
+    [Cmdlet(
+        VerbsCommon.Add,
+        ProfileNouns.SshPublicKey),
+    OutputType(
+        typeof(PSVirtualMachine))]
     public class NewAzureSshPublicKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]
@@ -53,6 +57,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+
             if (this.VM.OSProfile == null)
             {
                 this.VM.OSProfile = new OSProfile();
@@ -64,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else if (this.VM.OSProfile.WindowsConfiguration != null && this.VM.OSProfile.LinuxConfiguration == null)
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.WindowsConfigurationSpecified);
+                throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
 
             if (this.VM.OSProfile.LinuxConfiguration.Ssh == null)

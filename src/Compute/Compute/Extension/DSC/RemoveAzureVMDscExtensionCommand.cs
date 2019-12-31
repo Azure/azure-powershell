@@ -15,7 +15,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
     /// <summary>
     /// This cmdlet removes DSC extension handler from a VM in a resource group
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDscExtension",SupportsShouldProcess = true)]
+    [Cmdlet(
+        VerbsCommon.Remove,
+        ProfileNouns.VirtualMachineDscExtension,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -24,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The name of the resource group.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -33,22 +36,17 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the virtual machine.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
         [Parameter(
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzVMDscExtension cmdlet sets this name to  " +
-            "'Microsoft.Powershell.DSC', which is the same value used by Get-AzVMDscExtension. Specify this parameter only if you changed " +
+            HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzureRmVMDscExtension cmdlet sets this name to  " +
+            "'Microsoft.Powershell.DSC', which is the same value used by Get-AzureRmVMDscExtension. Specify this parameter only if you changed " +
             "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
-        public SwitchParameter NoWait { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -63,42 +61,32 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             {
                 //Add retry logic due to CRP service restart known issue CRP bug: 3564713
                 var count = 1;
-                Rest.Azure.AzureOperationResponse op = null;
+                AzureOperationResponse<MC.OperationStatusResponse> op = null;
 
-                if (NoWait.IsPresent)
+                while (true)
                 {
-                    op = VirtualMachineExtensionClient.BeginDeleteWithHttpMessagesAsync(
+                    try
+                    {
+                        op = VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
                             ResourceGroupName,
                             VMName,
                             Name).GetAwaiter().GetResult();
-                }
-                else
-                {
-                    while (true)
+                        break;
+                    }
+                    catch (Rest.Azure.CloudException ex)
                     {
-                        try
-                        {
-                            op = VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
-                                ResourceGroupName,
-                                VMName,
-                                Name).GetAwaiter().GetResult();
-                            break;
-                        }
-                        catch (Rest.Azure.CloudException ex)
-                        {
-                            var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(ex.Response.Content);
+                        var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(ex.Response.Content);
 
-                            if ("Failed".Equals(errorReturned.Status)
-                                && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
+                        if ("Failed".Equals(errorReturned.Status)
+                            && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
+                        {
+                            count++;
+                            if (count <= 2)
                             {
-                                count++;
-                                if (count <= 2)
-                                {
-                                    continue;
-                                }
+                                continue;
                             }
-                            ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
                         }
+                        ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
                     }
                 }
 

@@ -31,7 +31,7 @@ An IP configuration contains the subnet in which an application gateway is deplo
 
 ## EXAMPLES
 
-### Example 1: Update an IP configuration for an application gateway
+### Example 1: Set the goal state of an IP configuration
 ```
 PS C:\>$VNet = Get-AzVirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $Subnet = Get-AzVirtualNetworkSubnetConfig -Name "Subnet01" -VirtualNetwork $VNet 
@@ -40,8 +40,11 @@ PS C:\> $AppGw = Set-AzApplicationGatewayIPConfiguration -ApplicationGateway $Ap
 ```
 
 The first command gets the virtual network named VNet01 that belongs to the resource group named ResourceGroup01 and stores it in the $VNet variable.
+
 The second command gets the subnet configuration named Subnet01 using $VNet and stores it in the $Subnet variable.
+
 The third command gets an application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.
+
 The forth command sets the IP configuration of the application gateway stored in $AppGw to the subnet configuration stored in $Subnet.
 
 ## PARAMETERS
@@ -50,9 +53,9 @@ The forth command sets the IP configuration of the application gateway stored in
 Specifies an application gateway object with which this cmdlet associates an IP configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -65,9 +68,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -80,9 +83,9 @@ Accept wildcard characters: False
 Specifies the name of the IP configuration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -96,9 +99,9 @@ Specifies the subnet.
 This is the subnet in which the application gateway is deployed.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
+Type: PSSubnet
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -112,9 +115,9 @@ Specifies the subnet ID.
 This is the subnet in which the application gateway is deployed.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -128,7 +131,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+### System.String
 
 ## OUTPUTS
 

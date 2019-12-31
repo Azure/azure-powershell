@@ -42,9 +42,15 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetConnectionMonitor(resourceGroupName, name, connectionMonitorName);
             }
-            catch (MNM.ErrorResponseException exception) when (exception.Response != null && exception.Response.StatusCode == HttpStatusCode.NotFound)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
-                return false;
+                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    // Resource is not present
+                    return false;
+                }
+
+                throw;
             }
 
             return true;

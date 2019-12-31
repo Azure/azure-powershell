@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = ResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -37,9 +37,8 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ParameterSetName = IdParameterSet,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The ID of the virtual machine.")]
+           HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
-        [ResourceIdCompleter("Microsoft.Compute/virtualMachines")]
         public string Id { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

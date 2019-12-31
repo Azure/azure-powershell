@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azimage
 schema: 2.0.0
@@ -25,17 +25,6 @@ The **Get-AzImage** cmdlet gets the properties of an image.
 ### Example 1
 ```
 PS C:\> Get-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01'
-
-ResourceGroupName    : ResourceGroup01
-SourceVirtualMachine : Microsoft.Azure.Management.Compute.Models.SubResource
-StorageProfile       : Microsoft.Azure.Management.Compute.Models.ImageStorageProfile
-ProvisioningState    : Succeeded
-Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/prov
-                       iders/Microsoft.Compute/images/Image01
-Name                 : Image01
-Type                 : Microsoft.Compute/images
-Location             : eastus2
-Tags                 : {}
 ```
 
 This command gets the properties of the image named 'Image01' in the resource group 'ResourceGroup01'.
@@ -43,28 +32,6 @@ This command gets the properties of the image named 'Image01' in the resource gr
 ### Example 2
 ```
 PS C:\> Get-AzImage -ResourceGroupName 'ResourceGroup01'
-
-ResourceGroupName    : ResourceGroup01
-SourceVirtualMachine : Microsoft.Azure.Management.Compute.Models.SubResource
-StorageProfile       : Microsoft.Azure.Management.Compute.Models.ImageStorageProfile
-ProvisioningState    : Succeeded
-Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/prov
-                       iders/Microsoft.Compute/images/Image01
-Name                 : Image01
-Type                 : Microsoft.Compute/images
-Location             : eastus2
-Tags                 : {}
-
-ResourceGroupName    : ResourceGroup01
-SourceVirtualMachine : Microsoft.Azure.Management.Compute.Models.SubResource
-StorageProfile       : Microsoft.Azure.Management.Compute.Models.ImageStorageProfile
-ProvisioningState    : Succeeded
-Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/prov
-                       iders/Microsoft.Compute/images/Image02
-Name                 : Image02
-Type                 : Microsoft.Compute/images
-Location             : eastus2
-Tags                 : {}
 ```
 
 This command gets the properties of all images in the resource group 'ResourceGroup01'.
@@ -72,82 +39,9 @@ This command gets the properties of all images in the resource group 'ResourceGr
 ### Example 3
 ```
 PS C:\> Get-AzImage
-
-ResourceGroupName    : ResourceGroup01
-SourceVirtualMachine : Microsoft.Azure.Management.Compute.Models.SubResource
-StorageProfile       : Microsoft.Azure.Management.Compute.Models.ImageStorageProfile
-ProvisioningState    : Succeeded
-Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/prov
-                       iders/Microsoft.Compute/images/Image01
-Name                 : Image01
-Type                 : Microsoft.Compute/images
-Location             : eastus2
-Tags                 : {}
-
-ResourceGroupName    : ResourceGroup01
-SourceVirtualMachine : Microsoft.Azure.Management.Compute.Models.SubResource
-StorageProfile       : Microsoft.Azure.Management.Compute.Models.ImageStorageProfile
-ProvisioningState    : Succeeded
-Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/prov
-                       iders/Microsoft.Compute/images/Image02
-Name                 : Image02
-Type                 : Microsoft.Compute/images
-Location             : eastus2
-Tags                 : {}
-
-ResourceGroupName    : ResourceGroup02
-SourceVirtualMachine : Microsoft.Azure.Management.Compute.Models.SubResource
-StorageProfile       : Microsoft.Azure.Management.Compute.Models.ImageStorageProfile
-ProvisioningState    : Succeeded
-Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup02/prov
-                       iders/Microsoft.Compute/images/Image03
-Name                 : Image03
-Type                 : Microsoft.Compute/images
-Location             : eastus2
-Tags                 : {}
 ```
 
 This command gets the properties of all images under the subscription.
-
-### Example 4
-```
-PS C:\> Get-AzImage -Name "Image*"
-
-ResourceGroupName    : ResourceGroup01
-SourceVirtualMachine : Microsoft.Azure.Management.Compute.Models.SubResource
-StorageProfile       : Microsoft.Azure.Management.Compute.Models.ImageStorageProfile
-ProvisioningState    : Succeeded
-Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/prov
-                       iders/Microsoft.Compute/images/Image01
-Name                 : Image01
-Type                 : Microsoft.Compute/images
-Location             : eastus2
-Tags                 : {}
-
-ResourceGroupName    : ResourceGroup01
-SourceVirtualMachine : Microsoft.Azure.Management.Compute.Models.SubResource
-StorageProfile       : Microsoft.Azure.Management.Compute.Models.ImageStorageProfile
-ProvisioningState    : Succeeded
-Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/prov
-                       iders/Microsoft.Compute/images/Image02
-Name                 : Image02
-Type                 : Microsoft.Compute/images
-Location             : eastus2
-Tags                 : {}
-
-ResourceGroupName    : ResourceGroup02
-SourceVirtualMachine : Microsoft.Azure.Management.Compute.Models.SubResource
-StorageProfile       : Microsoft.Azure.Management.Compute.Models.ImageStorageProfile
-ProvisioningState    : Succeeded
-Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup02/prov
-                       iders/Microsoft.Compute/images/Image03
-Name                 : Image03
-Type                 : Microsoft.Compute/images
-Location             : eastus2
-Tags                 : {}
-```
-
-This command gets the properties of all images under the subscription that start with "Image".
 
 ## PARAMETERS
 
@@ -155,9 +49,9 @@ This command gets the properties of all images under the subscription that start
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -170,12 +64,12 @@ Accept wildcard characters: False
 Specifies the expand expression query.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -185,34 +79,34 @@ Accept wildcard characters: False
 Specifies the name of an image.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: Name
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
 Specifies the name of a resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -225,3 +119,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

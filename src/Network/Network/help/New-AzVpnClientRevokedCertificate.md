@@ -21,12 +21,15 @@ New-AzVpnClientRevokedCertificate -Name <String> -Thumbprint <String>
 ## DESCRIPTION
 The **New-AzVpnClientRevokedCertificate** cmdlet creates a new virtual private network (VPN) client-revocation certificate for use on a virtual network gateway.
 Client-revocation certificates prevent client computers from using the specified certificate for authentication.
+
 This cmdlet creates a stand-alone certificate that is not assigned to a virtual gateway.
 Instead, the certificate created by **New-AzVpnClientRevokedCertificate** is used in conjunction with the New-AzVirtualNetworkGateway cmdlet when it creates a new gateway.
 For instance, suppose you create a new certificate and store it in a variable named $Certificate.
 You can then use that certificate object when you create a new virtual gateway.
 For instance,
+
 `New-AzVirtualNetworkGateway -Name "ContosoVirtualGateway" -ResourceGroupName "ContosoResourceGroup" -Location "West US" -GatewayType "VPN" -IpConfigurations $Ipconfig  -VPNType "RouteBased" -VpnClientRevokedCertificates $Certificate`
+
 For more information, see the documentation for the New-AzVirtualNetworkGateway cmdlet.
 
 ## EXAMPLES
@@ -45,9 +48,9 @@ This variable can then be used by the **New-AzVirtualNetworkGateway** cmdlet to 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -60,9 +63,9 @@ Accept wildcard characters: False
 Specifies a unique name for the new client-revocation certificate.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -73,14 +76,17 @@ Accept wildcard characters: False
 
 ### -Thumbprint
 Specifies the unique identifier of the certificate being added.
+
 You can return thumbprint information for your certificates by using a Windows PowerShell command similar to this:
+
 `Get-ChildItem -Path Cert:\LocalMachine\Root`
+
 The preceding command returns information for all the Local Computer certificates found in the Root certificate store.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -94,11 +100,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+###  
+This cmdlet does not accept pipelined input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate
+###  
+This cmdlet creates new instances of the **Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate** object.
 
 ## NOTES
 

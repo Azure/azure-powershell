@@ -18,7 +18,7 @@ Tests ExpressRouteServiceProviderList.
 #>
 function Test-ExpressRouteServiceProviderList
 {
-    $providers = Get-AzExpressRouteServiceProvider
+    $providers = Get-AzureRmExpressRouteServiceProvider
     Assert-NotNull $providers
 	Assert-AreNotEqual 0 @($providers).Count
 	Assert-NotNull $providers[0].Name

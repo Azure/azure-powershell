@@ -78,6 +78,20 @@ namespace Microsoft.Azure.Commands.Network
             redirectConfiguration.Name = this.Name;
             redirectConfiguration.RedirectType = this.RedirectType;
 
+            if (this.TargetUrl != null
+                && this.TargetListenerID != null
+                && this.TargetListener != null)
+            {
+                throw new ArgumentException("Please either specify a target url or a target listener.");
+            }
+
+            if (this.TargetUrl != null
+                && (this.TargetListenerID != null
+                || this.TargetListener != null))
+            {
+                throw new ArgumentException("Both target url or target listener can not be specified.");
+            }
+
             redirectConfiguration.TargetUrl = this.TargetUrl;
             if (this.IncludePath != null)
             {
@@ -88,15 +102,12 @@ namespace Microsoft.Azure.Commands.Network
                 redirectConfiguration.IncludeQueryString = this.IncludeQueryString;
             }
 
-            if (this.TargetListener != null)
-            {
-                this.TargetListenerID = this.TargetListener.Id;
-            }
+
             
             if (!string.IsNullOrEmpty(this.TargetListenerID))
             {
                 redirectConfiguration.TargetListener = new PSResourceId();
-                redirectConfiguration.TargetListener.Id = this.TargetListenerID;
+                redirectConfiguration.TargetListener.Id = this.TargetListener.Id;
             }
 
             redirectConfiguration.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

@@ -20,7 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
 {
     /// <summary>
     /// Represents public settings. Serialized representation of this object stored as a plain text string on the VM.
-    /// Part of the protocol between Set-AzVMDscExtension cmdlet and DSC Extension handler.
+    /// Part of the protocol between Set-AzureVMDscExtension cmdlet and DSC Extension handler.
     /// </summary>
     public class DscExtensionPublicSettings
     {

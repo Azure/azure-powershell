@@ -25,106 +25,10 @@ operate on ExpressRoute circuits.
 
 ## EXAMPLES
 
-### Example 1: Get the ExpressRoute circuit
+### Example 1: Get the ExpressRoute circuit to be deleted
 ```
-Get-AzExpressRouteCircuit -ResourceGroupName testrg -Name test
-
-Name                             : test
-ResourceGroupName                : testrg
-Location                         : southcentralus
-Id                               : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/pro
-                                   viders/Microsoft.Network/expressRouteCircuits/test
-Etag                             : W/"00000000-0000-0000-0000-000000000000"
-ProvisioningState                : Succeeded
-Sku                              : {
-                                     "Name": "Standard_UnlimitedData",
-                                     "Tier": "Standard",
-                                     "Family": "UnlimitedData"
-                                   }
-CircuitProvisioningState         : Enabled
-ServiceProviderProvisioningState : NotProvisioned
-ServiceProviderNotes             :
-ServiceProviderProperties        : {
-                                     "ServiceProviderName": "AT&T",
-                                     "PeeringLocation": "Silicon Valley",
-                                     "BandwidthInMbps": 50
-                                   }
-ExpressRoutePort                 : null
-BandwidthInGbps                  :
-Stag                             :
-ServiceKey                       : 00000000-0000-0000-0000-000000000000
-Peerings                         : []
-Authorizations                   : []
-AllowClassicOperations           : False
-GatewayManagerEtag               :
+Get-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg | Remove-AzExpressRouteCircuit
 ```
-
-Get a specific ExpressRoute circuit with Name "testrg" and ResourceGroupName "test"
-
-### Example 2: List the ExpressRoute circuits using filtering
-```
-Get-AzExpressRouteCircuit -Name test*
-
-Name                             : test1
-ResourceGroupName                : testrg
-Location                         : southcentralus
-Id                               : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/pro
-                                   viders/Microsoft.Network/expressRouteCircuits/test1
-Etag                             : W/"00000000-0000-0000-0000-000000000000"
-ProvisioningState                : Succeeded
-Sku                              : {
-                                     "Name": "Standard_UnlimitedData",
-                                     "Tier": "Standard",
-                                     "Family": "UnlimitedData"
-                                   }
-CircuitProvisioningState         : Enabled
-ServiceProviderProvisioningState : NotProvisioned
-ServiceProviderNotes             :
-ServiceProviderProperties        : {
-                                     "ServiceProviderName": "AT&T",
-                                     "PeeringLocation": "Silicon Valley",
-                                     "BandwidthInMbps": 50
-                                   }
-ExpressRoutePort                 : null
-BandwidthInGbps                  :
-Stag                             :
-ServiceKey                       : 00000000-0000-0000-0000-000000000000
-Peerings                         : []
-Authorizations                   : []
-AllowClassicOperations           : False
-GatewayManagerEtag               :
-
-Name                             : test2
-ResourceGroupName                : testrg
-Location                         : southcentralus
-Id                               : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/pro
-                                   viders/Microsoft.Network/expressRouteCircuits/test2
-Etag                             : W/"00000000-0000-0000-0000-000000000000"
-ProvisioningState                : Succeeded
-Sku                              : {
-                                     "Name": "Standard_UnlimitedData",
-                                     "Tier": "Standard",
-                                     "Family": "UnlimitedData"
-                                   }
-CircuitProvisioningState         : Enabled
-ServiceProviderProvisioningState : NotProvisioned
-ServiceProviderNotes             :
-ServiceProviderProperties        : {
-                                     "ServiceProviderName": "AT&T",
-                                     "PeeringLocation": "Silicon Valley",
-                                     "BandwidthInMbps": 50
-                                   }
-ExpressRoutePort                 : null
-BandwidthInGbps                  :
-Stag                             :
-ServiceKey                       : 00000000-0000-0000-0000-000000000000
-Peerings                         : []
-Authorizations                   : []
-AllowClassicOperations           : False
-GatewayManagerEtag               :
-```
-
-Get all ExpressRoute circuits whose name starts with "test".
 
 ## PARAMETERS
 
@@ -132,9 +36,9 @@ Get all ExpressRoute circuits whose name starts with "test".
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -147,7 +51,7 @@ Accept wildcard characters: False
 The name of the ExpressRoute circuit.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -155,30 +59,28 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
 The name of the resource group that contains the ExpressRoute circuit.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### System.String
 
 ## OUTPUTS
 

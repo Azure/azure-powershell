@@ -40,20 +40,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineCustomScriptExtension()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtension");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineCustomScriptExtensionPiping()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionPiping");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtensionWrongStorage()
         {
             TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionWrongStorage");
@@ -61,23 +47,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineCustomScriptExtensionSecureExecution()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionSecureExecution");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtensionFileUri()
         {
             TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionFileUri");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineCustomScriptExtensionLinuxVM()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionLinuxVM");
         }
 
         [Fact]
@@ -92,46 +64,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestAzureDiskEncryptionExtension()
         {
             TestRunner.RunTestScript("Test-AzureDiskEncryptionExtension");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureDiskEncryptionExtensionSinglePass()
-        {
-            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionSinglePass");
-        }
-
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-#endif
-        public void TestAzureDiskEncryptionExtensionSinglePassRemove()
-        {
-            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionSinglePassRemove");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureDiskEncryptionExtensionSinglePassDisableAndRemove()
-        {
-            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureDiskEncryptionExtensionNonDefaultParams()
-        {
-            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionNonDefaultParams");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureDiskEncryptionLnxManagedDisk()
-        {
-            TestRunner.RunTestScript("Test-AzureDiskEncryptionLnxManagedDisk");
         }
 
         [Fact]

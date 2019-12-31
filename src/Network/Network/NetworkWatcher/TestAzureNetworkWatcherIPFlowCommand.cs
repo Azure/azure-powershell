@@ -16,14 +16,13 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherIPFlow", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSIPFlowVerifyResult))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzNetworkWatcherIPFlow", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSIPFlowVerifyResult))]
 
     public class TestAzureNetworkWatcherIPFlowCommand : NetworkWatcherBaseCmdlet
     {
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
-        [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
@@ -53,14 +51,6 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Location of the network watcher.",
-            ParameterSetName = "SetByLocation")]
-        [LocationCompleter("Microsoft.Network/networkWatchers")]
-        [ValidateNotNull]
-        public string Location { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -135,20 +125,7 @@ namespace Microsoft.Azure.Commands.Network
             flowParameters.TargetResourceId = this.TargetVirtualMachineId;
 
             MNM.VerificationIPFlowResult ipFlowVerify = new MNM.VerificationIPFlowResult();
-            if (string.Equals(this.ParameterSetName, "SetByLocation", StringComparison.OrdinalIgnoreCase))
-            {
-                var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
-
-                if (networkWatcher == null)
-                {
-                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
-                }
-
-                this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
-                this.NetworkWatcherName = networkWatcher.Name;
-                ipFlowVerify = this.NetworkWatcherClient.VerifyIPFlow(this.ResourceGroupName, this.NetworkWatcherName, flowParameters);
-            }
-            if (string.Equals(this.ParameterSetName, "SetByResource", StringComparison.OrdinalIgnoreCase))
+            if (ParameterSetName.Contains("SetByResource"))
             {
                 ipFlowVerify = this.NetworkWatcherClient.VerifyIPFlow(this.NetworkWatcher.ResourceGroupName, this.NetworkWatcher.Name, flowParameters);
             }

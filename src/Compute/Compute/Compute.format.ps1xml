@@ -256,10 +256,6 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>HyperVGeneration</Label>
-                <PropertyName>HyperVGeneration</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>OSDiskImage</Label>
                 <PropertyName>OSDiskImageText</PropertyName>
               </ListItem>
