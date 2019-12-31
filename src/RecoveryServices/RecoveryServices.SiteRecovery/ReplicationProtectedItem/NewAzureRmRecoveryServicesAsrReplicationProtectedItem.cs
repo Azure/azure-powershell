@@ -343,6 +343,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string DiskType { get; set; }
 
         /// <summary>
+        /// Gets or sets the DiskEncryptionSet ARM ID.
+        /// </summary>
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskType)]
+        [Parameter(ParameterSetName = VMwareToAzureParameterSet)]
+        public string DiskEncryptionSetId { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
@@ -473,7 +480,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 TargetAzureVmName = string.IsNullOrEmpty(this.RecoveryVmName)
                                             ? this.ProtectableItem.FriendlyName
                                             : this.RecoveryVmName,
-                EnableRdpOnTargetOption = Constants.NeverEnableRDPOnTargetOption
+                EnableRdpOnTargetOption = Constants.NeverEnableRDPOnTargetOption,
+                DiskEncryptionSetId = this.DiskEncryptionSetId
             };
 
             if (this.IsParameterBound(c => c.InMageAzureV2DiskInput))
@@ -483,7 +491,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     {
                         DiskId = p.DiskId,
                         DiskType = p.DiskType,
-                        LogStorageAccountId = p.LogStorageAccountId
+                        LogStorageAccountId = p.LogStorageAccountId,
+                        DiskEncryptionSetId = p.DiskEncryptionSetId
                     }).ToList();
                 providerSettings.DisksToInclude = inmageAzureV2DiskInput;
             }
@@ -783,6 +792,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
                             RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
                             RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
+                            RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId,
                             DiskEncryptionInfo =
                                 Utilities.A2AEncryptionDetails(
                                     disk.DiskEncryptionSecretUrl,

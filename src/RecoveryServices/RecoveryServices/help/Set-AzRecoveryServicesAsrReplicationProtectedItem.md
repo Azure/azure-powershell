@@ -21,9 +21,11 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-RecoveryBootDiagStorageAccountId <String>]
  [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
- [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>] [-RecoveryPublicIPAddressId <String>]
- [-RecoveryNetworkSecurityGroupId <String>] [-RecoveryLBBackendAddressPoolId <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>]
+ [-DiskIdToDiskEncryptionSetMap <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
+ [-RecoveryPublicIPAddressId <String>] [-RecoveryNetworkSecurityGroupId <String>]
+ [-RecoveryLBBackendAddressPoolId <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,6 +132,21 @@ Specifies the disk encryption secret key vault ID(Azure disk encryption) to be u
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskIdToDiskEncryptionSetMap
+The dictionary of disk resource Id to disk encryption set ARM Id.
+
+```yaml
+Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
 Parameter Sets: (All)
 Aliases:
 

@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.5'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.6'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Storage.dll', 
@@ -150,12 +150,12 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Remove-AzStorageAccountManagementPolicy', 
                'New-AzStorageAccountManagementPolicyFilter', 
                'New-AzStorageAccountManagementPolicyRule', 
-               'Add-AzStorageAccountManagementPolicyAction', 
+               'Add-AzStorageAccountManagementPolicyAction',
                'Update-AzStorageBlobServiceProperty', 
                'Get-AzStorageBlobServiceProperty', 
                'Enable-AzStorageBlobDeleteRetentionPolicy', 
                'Disable-AzStorageBlobDeleteRetentionPolicy', 
-               'Revoke-AzStorageAccountUserDelegationKeys', 
+               'Revoke-AzStorageAccountUserDelegationKeys',
                'Get-AzStorageFileHandle', 'Close-AzStorageFileHandle', 
                'New-AzRmStorageShare', 'Remove-AzRmStorageShare', 
                'Get-AzRmStorageShare', 'Update-AzRmStorageShare'
@@ -211,7 +211,7 @@ PrivateData = @{
 	- Set-AzStorageContainerAcl'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

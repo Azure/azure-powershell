@@ -352,13 +352,13 @@ function Test-StorageBlobServiceProperties
 
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
-
-		# Update and Get Blob Service Properties
+		
+		# Update and Get Blob Service Properties: DefaultServiceVersion
 		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -DefaultServiceVersion 2018-03-28 
 		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
 		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
-
+		
 		# Enable and Disable Blob Delete Retention Policy
 		$policy = Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 3
 		Assert-AreEqual $true $policy.Enabled
