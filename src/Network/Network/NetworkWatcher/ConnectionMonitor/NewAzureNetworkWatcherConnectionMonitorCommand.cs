@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -221,8 +222,16 @@ namespace Microsoft.Azure.Commands.Network
             // Parse the TestGroup to parameters
             if (this.TestGroup != null)
             {
+                // Parse each input test group
                 foreach (PSNetworkWatcherConnectionMonitorTestGroupObject TestGroup in this.TestGroup)
                 {
+                    // With start by add Test Group
+                    ConnectionMonitorTestGroup TestGrp = new ConnectionMonitorTestGroup()
+                    {
+                        Name = TestGroup.Name,
+                        Disable = TestGroup.Disable
+                    };
+
                     // Add source Endpoint
                     foreach (PSNetworkWatcherConnectionMonitorEndpointObject SrcEndpoint in TestGroup.Sources)
                         {
@@ -261,7 +270,15 @@ namespace Microsoft.Azure.Commands.Network
                             }
 
                             parameters.Endpoints.Add(SourceEndpoint);
-                        }
+
+                            // Add it to the output
+                            if (TestGrp.Sources == null)
+                            {
+                                TestGrp.Sources = new List<string>();
+                            }
+
+                            TestGrp.Sources.Add(SourceEndpoint.Name);
+                    }
 
                     // Add destination Endpoint
                     foreach (PSNetworkWatcherConnectionMonitorEndpointObject DstEndpoint in TestGroup.Destinations)
@@ -301,12 +318,19 @@ namespace Microsoft.Azure.Commands.Network
                             }
 
                             parameters.Endpoints.Add(DestinationEndpoint);
-                        }
+
+                            //Add it to the output
+                            if (TestGrp.Destinations == null)
+                            {
+                                TestGrp.Destinations = new List<string>();
+                            }
+                            TestGrp.Destinations.Add(DestinationEndpoint.Name);
+                    }
 
                     // Add test configuration
+                    uint TestConfigCounter = 1;
                     foreach (PSNetworkWatcherConnectionMonitorTestConfigurationObject TestConfig in TestGroup.TestConfigurations)
                         {
-                            uint TestConfigCounter = 1;
                             ConnectionMonitorTestConfiguration TestConfiguration = new ConnectionMonitorTestConfiguration()
                             {
                                 Name = string.IsNullOrEmpty(TestConfig.Name) ? "TestConfig" + TestConfigCounter.ToString() : TestConfig.Name,
@@ -381,72 +405,45 @@ namespace Microsoft.Azure.Commands.Network
                             }
 
                             parameters.TestConfigurations.Add(TestConfiguration);
-                        }
 
-                    // Add Test Group
-                    ConnectionMonitorTestGroup SdkTestGroup = new ConnectionMonitorTestGroup()
-                    {
-                        Name = TestGroup.Name,
-                        Disable = TestGroup.Disable
-                    };
-
-                    foreach (PSNetworkWatcherConnectionMonitorTestConfigurationObject TestConfiguration in TestGroup.TestConfigurations)
-                        {
-                            if (SdkTestGroup.TestConfigurations == null)
+                            // Add it to the ouput
+                            if (TestGrp.TestConfigurations == null)
                             {
-                                SdkTestGroup.TestConfigurations = new List<string>();
+                                TestGrp.TestConfigurations = new List<string>();
                             }
+                            TestGrp.TestConfigurations.Add(TestConfiguration.Name);
+                    }
 
-                            SdkTestGroup.TestConfigurations.Add(TestConfiguration.Name);
-                        };
-
-                    foreach (PSNetworkWatcherConnectionMonitorEndpointObject Source in TestGroup.Sources)
-                        {
-                            if (SdkTestGroup.Sources == null)
-                            {
-                                SdkTestGroup.Sources = new List<string>();
-                            }
-
-                            SdkTestGroup.Sources.Add(Source.Name);
-                        };
-
-                    foreach (PSNetworkWatcherConnectionMonitorEndpointObject Destination in TestGroup.Destinations)
-                        {
-                            if (SdkTestGroup.Destinations == null)
-                            {
-                                SdkTestGroup.Destinations = new List<string>();
-
-                            }
-                            SdkTestGroup.Destinations.Add(Destination.Name);
-                        };
 
                     if (parameters.TestGroups == null)
                     {
-                        parameters.TestGroups  = new List<ConnectionMonitorTestGroup>();
+                        parameters.TestGroups = new List<ConnectionMonitorTestGroup>();
                     }
 
-                    parameters.TestGroups.Add(SdkTestGroup);
+                    parameters.TestGroups.Add(TestGrp);
                 }
             }
 
             // Add this.Output to parameters
             if (this.Output != null)
             {
-                foreach (PSNetworkWatcherConnectionMonitorOutputObject CMOutput in this.Output)
+                foreach (PSNetworkWatcherConnectionMonitorOutputObject Output in this.Output)
                 {
+                    ConnectionMonitorOutput CMOutput = new ConnectionMonitorOutput()
+                    {
+                        Type = Output.Type,
+                        WorkspaceSettings = new ConnectionMonitorWorkspaceSettings()
+                        {
+                            WorkspaceResourceId = Output.WorkspaceSettings.WorkspaceResourceId
+                        },
+                    };
+
                     if (parameters.Outputs == null)
                     {
                         parameters.Outputs = new List<ConnectionMonitorOutput>();
                     }
 
-                    parameters.Outputs.Add(new ConnectionMonitorOutput()
-                    {
-                        Type = CMOutput.Type,
-                        WorkspaceSettings = new ConnectionMonitorWorkspaceSettings()
-                        {
-                            WorkspaceResourceId = CMOutput.WorkspaceSettings.WorkspaceResourceId
-                        },
-                    });
+                    parameters.Outputs.Add(CMOutput);
                 }
             }
 
@@ -460,11 +457,6 @@ namespace Microsoft.Azure.Commands.Network
                 parameters.MonitoringIntervalInSeconds = this.MonitoringIntervalInSeconds;
             }
 
-            if (!string.IsNullOrEmpty(Notes))
-            {
-                parameters.Notes = this.Notes;
-            }
-
             PSConnectionMonitorResult getConnectionMonitor = new PSConnectionMonitorResult();
 
             // Execute the CreateOrUpdate Connection monitor call
@@ -474,25 +466,29 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (ParameterSetName.Contains("SetByName"))
             {
-                MNM.NetworkWatcher networkWatcher = this.NetworkClient.NetworkManagementClient.NetworkWatchers.Get(this.ResourceGroupName, this.NetworkWatcherName);
-                parameters.Location = networkWatcher.Location;
+                //MNM.NetworkWatcher networkWatcher = this.NetworkClient.NetworkManagementClient.NetworkWatchers.Get(this.ResourceGroupName, this.NetworkWatcherName);
+                //parameters.Location = networkWatcher.Location;
             }
             else
             {
                 parameters.Location = this.Location;
             }
 
-            if (connectionMonitorV2)
-            {
-                this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, this.Name, parameters);
-            }
-            else
-            {
-                this.ConnectionMonitors.CreateOrUpdateV1(resourceGroupName, networkWatcherName, this.Name, parameters);
-            }
+            //if (connectionMonitorV2)
+            //{
+            //    this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, this.Name, parameters);
+            //}
+            //else
+            //{
+            //    this.ConnectionMonitors.CreateOrUpdateV1(resourceGroupName, networkWatcherName, this.Name, parameters);
+            //}
 
-            getConnectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, this.Name, connectionMonitorV2);
-            
+            //getConnectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, this.Name, connectionMonitorV2);
+
+            string str = JsonConvert.SerializeObject(parameters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+
+            WriteObject(str);
+
             return getConnectionMonitor;
         }
 
@@ -509,7 +505,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (PSNetworkWatcherConnectionMonitorTestGroupObject TestGroup in this.TestGroup)
                 {
                     // validate mandatory parameters
-                    if (string.IsNullOrEmpty(TestGroup.Name) || TestGroup.Sources == null || TestGroup.Destinations == null)
+                    if (string.IsNullOrEmpty(TestGroup.Name) || TestGroup.TestConfigurations == null || TestGroup.Sources == null || TestGroup.Destinations == null)
                     {
                         throw new ArgumentException("Test group is missing one or more mandatory parameter");
                     }
@@ -518,6 +514,7 @@ namespace Microsoft.Azure.Commands.Network
                     List<PSNetworkWatcherConnectionMonitorEndpointObject> Endpoints = TestGroup.Sources;
                     Endpoints.Concat(TestGroup.Destinations);
 
+                    //validate end point
                     foreach (PSNetworkWatcherConnectionMonitorEndpointObject Endpoint in Endpoints)
                     {
                         if (string.IsNullOrEmpty(Endpoint.ResourceId) && string.IsNullOrEmpty(Endpoint.Address) && Endpoint.Filter == null)
@@ -542,21 +539,28 @@ namespace Microsoft.Azure.Commands.Network
                             }
                         }
 
-                        if (Endpoint.Filter.Type != null && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
+                        if (!string.IsNullOrEmpty(Endpoint.Filter.Type) && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
                         {
                             throw new ArgumentException("Only FilterType Include is supported");
                         }
-                        else if (Endpoint.Filter.Type != null && Endpoint.Filter.Items == null)
+                        else if (!string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items == null)
                         {
                             throw new ArgumentException("Endpoint FilterType defined without FilterAddress");
                         }
-                        else if (Endpoint.Filter.Type != null && Endpoint.Filter.Items[0] != null && Endpoint.Filter.Items[0].Type != null && String.Compare(Endpoint.Filter.Items[0].Type, "AgentAddress", true) != 0)
+                        else if (!string.IsNullOrEmpty(Endpoint.Filter.Type))
                         {
-                            throw new ArgumentException("Endpoint Filter Items Type is not AgentAddress");
-                        }
-                        else if (Endpoint.Filter.Type != null && Endpoint.Filter.Items[0] != null && Endpoint.Filter.Items[0].Type != null && string.IsNullOrEmpty(Endpoint.Filter.Items[0].Address))
-                        {
-                            throw new ArgumentException("Endpoint Filter Items Address is empty");
+                            foreach (PSConnectionMonitorEndpointFilterItem Item in Endpoint.Filter.Items)
+                            {
+                                if (!string.IsNullOrEmpty(Item.Type) && String.Compare(Item.Type, "AgentAddress", true) != 0)
+                                {
+                                    throw new ArgumentException("Endpoint Filter Items Type is not AgentAddress");
+                                }
+
+                                if (string.IsNullOrEmpty(Item.Address))
+                                {
+                                    throw new ArgumentException("Endpoint Filter Items Address is empty");
+                                }
+                            }
                         }
 
                         // Endpoint name is optional so if it is not provided, fill it out
@@ -579,15 +583,16 @@ namespace Microsoft.Azure.Commands.Network
                             Endpoint.Name = EndpointName;
                         }
                     }
-
+                    
+                    //validate test configuration
                     foreach (PSNetworkWatcherConnectionMonitorTestConfigurationObject TestConfiguration in TestGroup.TestConfigurations)
                     {
-                        if (TestGroup.TestConfigurations.Count(x => x.Name == TestConfiguration.Name) > 2)
+                        // validate test configuration
+                        if (string.IsNullOrEmpty(TestConfiguration.Protocol))
                         {
-                            throw new ArgumentException("Test configuration name is not unique");
+                            throw new ArgumentException("Protocol in test configuration is not provided.");
                         }
 
-                        // validate test configuration
                         if (TestConfiguration.HttpConfiguration == null && TestConfiguration.TcpConfiguration ==  null && TestConfiguration.IcmpConfiguration == null)
                         {
                             throw new ArgumentException("Protocol configuration is not provided.");
@@ -597,6 +602,12 @@ namespace Microsoft.Azure.Commands.Network
                             String.Compare(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv6, true) != 0)
                         {
                             throw new ArgumentException("IP version is undefined.");
+                        }
+
+                        //test configuration names must be unique
+                        if (!string.IsNullOrEmpty(TestConfiguration.Name) && TestGroup.TestConfigurations.Count(x => x.Name == TestConfiguration.Name) > 2)
+                        {
+                            throw new ArgumentException("Test configuration name is not unique");
                         }
                     }
                 }

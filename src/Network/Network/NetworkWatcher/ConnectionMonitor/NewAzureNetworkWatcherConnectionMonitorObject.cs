@@ -79,7 +79,8 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = this.ResourceGroupName,
                 Name = this.Name,
                 TestGroup = this.TestGroup,
-                Output = this.Output
+                Output = this.Output,
+                Notes = Notes
             };
 
             WriteObject(CMObject);

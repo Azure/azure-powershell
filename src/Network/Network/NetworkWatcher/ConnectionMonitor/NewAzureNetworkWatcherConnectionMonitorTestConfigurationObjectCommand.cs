@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Commands.Network
 
             PSNetworkWatcherConnectionMonitorTestConfigurationObject testConfiguration = new PSNetworkWatcherConnectionMonitorTestConfigurationObject()
             {
-                //can be empty
+                // can be empty
                 // if empty, will be set in New/Set-ConnectionMonitorCommand
-                // Name 
+                Name = this.Name,
                 TestFrequencySec = this.TestFrequencySec,
                 PreferredIPVersion = this.PreferredIPVersion,
                 SuccessThreshold = new PSConnectionMonitorSuccessThreshold()
@@ -88,14 +88,17 @@ namespace Microsoft.Azure.Commands.Network
            if (this.ProtocolConfiguration.GetType() == typeof(PSConnectionMonitorTcpConfiguration))
             {
                 testConfiguration.TcpConfiguration = (PSConnectionMonitorTcpConfiguration)this.ProtocolConfiguration;
+                testConfiguration.Protocol = "TCP";
             }
             else if (this.ProtocolConfiguration.GetType() == typeof(PSConnectionMonitorHttpConfiguration))
             {
                 testConfiguration.HttpConfiguration = (PSConnectionMonitorHttpConfiguration)this.ProtocolConfiguration;
+                testConfiguration.Protocol = "HTTP";
             }
             else
             {
                 testConfiguration.IcmpConfiguration = (PSConnectionMonitorIcmpConfiguration)this.ProtocolConfiguration;
+                testConfiguration.Protocol = "ICMP";
             }
 
             WriteObject(testConfiguration);
