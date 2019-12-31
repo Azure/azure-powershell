@@ -17,6 +17,7 @@
               <Name>Location</Name>
               <Name>PartnerResourceGroupName</Name>
               <Name>PartnerServerName</Name>
+              <Name>PartnerDatabaseName</Name>
               <Name>PartnerRole</Name>
               <Name>PartnerLocation</Name>
               <Name>AllowConnections</Name>
