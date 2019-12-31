@@ -20,36 +20,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public PSAzureFilesIdentityBasedAuthentication(AzureFilesIdentityBasedAuthentication auth)
         {
-            if (auth != null)
-            {
-                this.DirectoryServiceOptions = auth.DirectoryServiceOptions;
-                this.ActiveDirectoryProperties = auth.ActiveDirectoryProperties != null ? new PSActiveDirectoryProperties(auth.ActiveDirectoryProperties) : null;
-            }
+            this.DirectoryServiceOptions = auth != null ? auth.DirectoryServiceOptions : null;
         }
-        // Gets or sets indicates the directory service used. Possible values include: 'None','AADDS', 'AD'
+        // Gets or sets indicates the directory service used. Possible values include: 'None','AADDS'
         public string DirectoryServiceOptions { get; set; }
-        public PSActiveDirectoryProperties ActiveDirectoryProperties { get; set; }
-    }
-
-    public class PSActiveDirectoryProperties
-    {
-        public PSActiveDirectoryProperties(ActiveDirectoryProperties properties)
-        {
-            if (properties != null)
-            {
-                this.DomainName = properties.DomainName;
-                this.NetBiosDomainName = properties.NetBiosDomainName;
-                this.ForestName = properties.ForestName;
-                this.DomainGuid = properties.DomainGuid;
-                this.DomainSid = properties.DomainSid;
-                this.AzureStorageSid = properties.AzureStorageSid;
-            }
-        }
-        public string DomainName { get; set; }
-        public string NetBiosDomainName { get; set; }
-        public string ForestName { get; set; }
-        public string DomainGuid { get; set; }
-        public string DomainSid { get; set; }
-        public string AzureStorageSid { get; set; }
     }
 }

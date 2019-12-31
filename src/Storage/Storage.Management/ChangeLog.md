@@ -20,6 +20,8 @@
 ## Upcoming Release
 * Add breaking change warning message for DefaultAction Value change in a future release
     - Update-AzStorageAccountNetworkRuleSet
+* Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats 
+    - Get-AzureRMStorageAccount
 
 ## Version 1.10.0
 * Update references in .psd1 to use relative path
@@ -37,17 +39,6 @@
 * Fix the issue that Set-AzStorageContainerAcl can clean up the stored Access Policy
 	- Set-AzStorageContainerAcl
 
-## Version 1.9.1
-* Support DataLake Gen2 
-    -  New-AzDataLakeGen2Item
-    -  Get-AzDataLakeGen2Item
-    -  Get-AzDataLakeGen2ChildItem
-    -  Move-AzDataLakeGen2Item
-    -  New-AzDataLakeGen2ItemAclObject
-    -  Update-AzDataLakeGen2Item
-    -  Get-AzDataLakeGen2ItemContent
-    -  Remove-AzDataLakeGen2Item
-
 ## Version 1.9.0
 * Support enable Large File share when create or update Storage account
     -  New-AzStorageAccount
@@ -55,25 +46,6 @@
 * When close/get File handle, skip check the input path is File directory or File, to avoid failure with object in DeletePending status
     -  Get-AzStorageFileHandle
     -  Close-AzStorageFileHandle
-
-## Version 1.8.2
-* Fix issue in enabled Azure Files Active Directory Domain Service Authentication, on a new Storage account which has never enable it.
-
-## Version 1.8.1
-* Support enable Large File share when create or update Storage account
-    -  New-AzStorageAccount
-    -  Set-AzStorageAccount
-* When close/get File handle, skip check the input path is File directory or File, to avoid failure with object in DeletePending status
-    -  Get-AzStorageFileHandle
-    -  Close-AzStorageFileHandle
-* Support enable/disable Changefeed on Blob Service of a Storage account
-    -  Update-AzStorageBlobServiceProperty
-* Support create or update Storage account with Azure Files Active Directory Domain Service Authentication
-    -  New-AzStorageAccount
-    -  Set-AzStorageAccount
-* Support New or List Kerberos keys of Storage account
-    -  New-AzStorageAccountKey
-    -  Get-AzStorageAccountKey
 
 ## Version 1.8.0
 * Upgrade Storage Client Library to 11.1.0
@@ -125,18 +97,6 @@
 * Clarified description of blob immutability cmdlet
     -  Remove-AzRmStorageContainerImmutabilityPolicy
 
-## Version 1.3.2
-* Support new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
-    - New-AzStorageAccount
-    - Set-AzStorageAccount
-
-## Version 1.3.1
-* Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
-    - New-AzStorageContainerSASToken
-    - New-AzStorageBlobSASToken
-* Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
-    - Revoke-AzStorageAccountUserDelegationKeys
-
 ## Version 1.3.0
 * Upgrade to Storage Client Library 10.0.1 (the namespace of all objects from this SDK change from "Microsoft.WindowsAzure.Storage.*" to "Microsoft.Azure.Storage.*")
 * Upgrade to Microsoft.Azure.Management.Storage 11.0.0, to support new API version 2019-04-01.
@@ -146,10 +106,6 @@
     - New-AzStorageAccount
     - Get-AzStorageAccount
     - Set-AzStorageAccount
-
-## Version 1.2.1
-* Add a sub property "CanFailover" to Storage Account cmdlet output type PSStorageAccount.GeoReplicationStats
-    - New/Get/Set-AzureRMStorageAccount
 
 ## Version 1.2.0
 * Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account
@@ -181,12 +137,6 @@
 * Support Kind BlockBlobStorage when create Storage account
        - New-AzStorageAccount
 
-## Version 1.1.1
-* Support failover Storage account
-    - Invoke-AzureRmStorageAccountFailover
-* Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats
-    - Get-AzureRMStorageAccount
-    
 ## Version 1.0.2
 * Update incorrect online help URLs
 * Give detail error message when get/set classic Logging/Metric on Premium Storage Account, since Premium Storage Account not supoort classic Logging/Metric.

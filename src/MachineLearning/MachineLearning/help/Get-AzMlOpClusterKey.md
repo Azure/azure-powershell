@@ -8,6 +8,8 @@ schema: 2.0.0
 # Get-AzMlOpClusterKey
 
 ## SYNOPSIS
+**Important: This cmdlet is deprecated.**
+
 Gets the access keys associated with an operationalization cluster.
 
 ## SYNTAX
