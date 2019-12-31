@@ -60,6 +60,12 @@
     -  Close-AzStorageFileHandle
 * Support enable/disable Changefeed on Blob Service of a Storage account
     -  Update-AzStorageBlobServiceProperty
+* Support create or update Storage account with Azure Files Active Directory Domain Service Authentication
+    -  New-AzStorageAccount
+    -  Set-AzStorageAccount
+* Support New or List Kerberos keys of Storage account
+    -  New-AzStorageAccountKey
+    -  Get-AzStorageAccountKey
 
 ## Version 1.8.0
 * Upgrade Storage Client Library to 11.1.0
