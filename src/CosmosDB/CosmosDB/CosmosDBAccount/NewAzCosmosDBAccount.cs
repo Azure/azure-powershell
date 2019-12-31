@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.IpRangeFilterHelpMessage)]
         public string[] IpRangeFilter { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.LocationHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
         public string[] Location { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.LocationObjectHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.LocationObjectHelpMessage)]
         public PSLocation[] LocationObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.MaxStalenessIntervalInSecondsHelpMessage)]

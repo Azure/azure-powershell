@@ -29,8 +29,8 @@ PS C:\> New-AzCosmosDBLocationObject -LocationName {locationName} -FailoverPrior
 LocationName     FailoverPriority IsZoneRedundant
 ------------     ---------------- ---------------
 {locationName}                 2           False
-
 ```
+
 ## PARAMETERS
 
 ### -DefaultProfile
