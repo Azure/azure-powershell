@@ -24,6 +24,7 @@ function Test-AccountRelatedCmdlets
 
   $cosmosDBAccountName = "cosmosdb67127712"
 
+  #use an existing account with the following information for Account Update Operations
   $cosmosDBExistingAccountName = "dbaccount27" 
   $existingResourceGroupName = "CosmosDBResourceGroup27"
 
@@ -80,6 +81,7 @@ function Test-AccountRelatedCmdletsUsingRid
   $FailoverPolicy = "UK West", "East US", "UK South", "South India"
   $locationlist2 = "UK South"
 
+  #use an existing account with the following properties
   $cosmosDBExistingAccountName = "dbaccount27" 
   $existingResourceGroupName = "CosmosDBResourceGroup27"
 
@@ -127,6 +129,7 @@ function Test-AccountRelatedCmdletsUsingRid
 
 function Test-AccountRelatedCmdletsUsingObject
 {
+  #use an existing account with the following properties
   $cosmosDBExistingAccountName = "dbaccount27" 
   $existingResourceGroupName = "CosmosDBResourceGroup27"
 

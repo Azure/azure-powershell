@@ -18,16 +18,23 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlUniqueKey"), OutputType(typeof(PSSqlUniqueKey))]
-    public class NewAzCosmosDBSqlUniqueKey : AzureCosmosDBCmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBLocationObject"), OutputType(typeof(PSLocation))]
+    public class NewAzCosmosDBLocationObject : AzureCosmosDBCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.UniqueKeyPathHelpMessage)]
-        public string[] Path { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = Constants.LocationNameHelpMessage)]
+        public string LocationName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.FailoverPriorityHelpMessage)]
+        public int? FailoverPriority { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.IsZoneRedundantHelpMessage)]
+        public bool? IsZoneRedundant { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PSSqlUniqueKey uniqueKey = new PSSqlUniqueKey(Path);
-            WriteObject(uniqueKey);
+            PSLocation location = new PSLocation(LocationName, FailoverPriority, IsZoneRedundant);
+            WriteObject(location);
+
             return;
         }
     }

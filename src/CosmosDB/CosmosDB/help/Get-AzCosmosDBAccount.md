@@ -14,7 +14,7 @@ Get CosmosDB Account.
 
 ### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDBAccount [-ResourceGroupName <String>] -Name <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzCosmosDBAccount -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -59,7 +59,7 @@ Get CosmosDB database account with name databaseAccountName in ResourceGroup res
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -74,22 +74,7 @@ Accept wildcard characters: False
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Name of resource group.
-
-```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -100,11 +85,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Name of resource group.
+
+```yaml
+Type: String
+Parameter Sets: ByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 ResourceId of the resource.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 

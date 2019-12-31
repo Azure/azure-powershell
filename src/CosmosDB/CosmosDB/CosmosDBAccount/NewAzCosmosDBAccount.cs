@@ -55,6 +55,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, HelpMessage = Constants.LocationHelpMessage)]
         public string[] Location { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = Constants.LocationObjectHelpMessage)]
+        public PSLocation[] LocationObject { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.MaxStalenessIntervalInSecondsHelpMessage)]
         public int? MaxStalenessIntervalInSeconds { get; set; }
 
@@ -66,6 +69,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, HelpMessage = Constants.VirtualNetworkRuleHelpMessage)]
         public string[] VirtualNetworkRule { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.VirtualNetworkRuleObjectHelpMessage)]
+        public PSVirtualNetworkRule[] VirtualNetworkRuleObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ApiKindHelpMessage)]
         [PSArgumentCompleter("GlobalDocumentDB", "MongoDB", "Others")]
@@ -136,6 +142,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     }
 
                     failoverPriority++;
+                }
+            }
+            else if(LocationObject != null && LocationObject.Length > 0)
+            {
+                if(writeLocation != null)
+                {
+                    WriteError(new ErrorRecord(new PSArgumentException("Cannot accept Location and LocationObject simultaneously as parameters"), string.Empty, ErrorCategory.CloseError, null));
+                    return;
+                }
+
+                foreach(PSLocation psLocation in LocationObject)
+                {
+                    LocationCollection.Add(PSLocation.ConvertPSLocationToLocation(psLocation));
                 }
             }
             else

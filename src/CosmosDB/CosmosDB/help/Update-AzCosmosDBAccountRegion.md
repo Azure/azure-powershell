@@ -14,19 +14,19 @@ Update Regions of a CosmosDB Account.
 
 ### ByNameParameterSet (Default)
 ```
-Update-AzCosmosDBAccountRegion [-ResourceGroupName <String>] [-Name <String>] -Location <String[]> [-AsJob]
+Update-AzCosmosDBAccountRegion -ResourceGroupName <String> -Name <String> -Location <String[]> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Update-AzCosmosDBAccountRegion -Location <String[]> [-ResourceId <String>] [-AsJob]
+Update-AzCosmosDBAccountRegion -Location <String[]> -ResourceId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzCosmosDBAccountRegion -Location <String[]> [-InputObject <PSDatabaseAccount>] [-AsJob]
+Update-AzCosmosDBAccountRegion -Location <String[]> -InputObject <PSDatabaseAccount> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -68,9 +68,24 @@ Type                          : Microsoft.DocumentDB/databaseAccounts
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -83,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -98,11 +113,11 @@ Accept wildcard characters: False
 ResourceId of the resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccount
+Type: PSDatabaseAccount
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -113,7 +128,7 @@ Accept wildcard characters: False
 Name of the location to be added.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -128,11 +143,11 @@ Accept wildcard characters: False
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -143,11 +158,11 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -158,26 +173,11 @@ Accept wildcard characters: False
 ResourceId of the resource.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -189,7 +189,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

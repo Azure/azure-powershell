@@ -12,15 +12,21 @@ Regenerate a given CosmosDB Account Key.
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
+### ByNameParameterSet (Default)
 ```
-New-AzCosmosDBAccountKey [-ResourceGroupName <String>] [-Name <String>] [-KeyKind <String>] [-AsJob]
+New-AzCosmosDBAccountKey -ResourceGroupName <String> -Name <String> [-KeyKind <String>] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetByResourceIdParameterSet
+### ByResourceIdParameterSet
 ```
-New-AzCosmosDBAccountKey [-KeyKind <String>] [-ResourceId <String>] [-AsJob]
+New-AzCosmosDBAccountKey [-KeyKind <String>] -ResourceId <String> [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByObjectParameterSet
+```
+New-AzCosmosDBAccountKey [-KeyKind <String>] -InputObject <PSDatabaseAccount> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,19 +38,34 @@ Create a new CosmosDB Account in the given ResourceGroup.
 ### Example 1
 ```powershell
 PS C:\> New-AzCosmosDBAccountKey -ResourceGroupName rg -Name dbname
-
 ```
 
 New keys are generated for Account with account name dbname in ResourceGroup rg.
+
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -57,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,12 +89,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+CosmosDB Account object
+
+```yaml
+Type: PSDatabaseAccount
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -KeyKind
 The access key to regenerate.
 Accepted values: primary, primaryReadonly, secondary, secondaryReadonly
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,8 +124,23 @@ Accept wildcard characters: False
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
+Type: String
+Parameter Sets: ByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+To be set to true if the user wants to receive an output. The output is true if the operation was successful and an error is thrown if not.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -103,11 +154,11 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
+Type: String
+Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -118,26 +169,11 @@ Accept wildcard characters: False
 ResourceId of the resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByResourceIdParameterSet
+Type: String
+Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -149,7 +185,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

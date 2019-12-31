@@ -12,12 +12,18 @@ Deletes the CosmosDB Sql UserDefinedFunction.
 
 ## SYNTAX
 
+### ByNameParameterSet
 ```
-Remove-AzCosmosDBSqlUserDefinedFunction [-ResourceGroupName <String>] [-AccountName <String>]
- [-DatabaseName <String>] [-ContainerName <String>] [-Name <String>] [-AsJob] [-PassThru]
+Remove-AzCosmosDBSqlUserDefinedFunction -ResourceGroupName <String> -AccountName <String>
+ -DatabaseName <String> -ContainerName <String> -Name <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByObjectParameterSet
+```
+Remove-AzCosmosDBSqlUserDefinedFunction -InputObject <PSSqlUserDefinedFunctionGetResults> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
 
 ## DESCRIPTION
 The **Remove-AzCosmosDBSqlUserDefinedFunction** cmdlet deletes the CosmosDB Sql UserDefinedFunction corresponding to the given ResourceGroupName, AccountName and DatabaseName.
@@ -26,33 +32,33 @@ The **Remove-AzCosmosDBSqlUserDefinedFunction** cmdlet deletes the CosmosDB Sql 
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCosmosDBSqlUserDefinedFunction -ResourceGroupName {resourceGroupName} -AccountName {accountName} -DatabaseName {databaseName} -ContainerName {containerName} -Name {userDefinedFunctionName} 
-
+PS C:\> Remove-AzCosmosDBSqlUserDefinedFunction -ResourceGroupName {resourceGroupName} -AccountName {accountName} -DatabaseName {databaseName} -ContainerName {containerName} -Name {userDefinedFunctionName}
 ```
+
 ## PARAMETERS
 
 ### -AccountName
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AsJob
-Run cmdlet in the background
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
 Required: False
 Position: Named
@@ -65,11 +71,11 @@ Accept wildcard characters: False
 Container name.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -80,11 +86,11 @@ Accept wildcard characters: False
 Database name.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -95,7 +101,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -106,15 +112,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Sql User Defined Function Object
+
+```yaml
+Type: PSSqlUserDefinedFunctionGetResults
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 User Defined Function Name.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -126,7 +147,7 @@ To be set to true if the user wants to receive an output.
 The output is true if the operation was successful and an error is thrown if not.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -141,26 +162,11 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -172,7 +178,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

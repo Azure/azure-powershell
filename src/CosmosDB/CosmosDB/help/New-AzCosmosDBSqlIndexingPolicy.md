@@ -13,8 +13,8 @@ Creates a new CosmosDB Sql IndexingPolicy object.
 ## SYNTAX
 
 ```
-New-AzCosmosDBSqlIndexingPolicy [-IncludedPath <String[]>] [-ExcludedPath <String[]>] [-Automatic <Boolean>]
- [-IndexingMode <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzCosmosDBSqlIndexingPolicy -IncludedPath <String[]> -ExcludedPath <String[]> [-Automatic <Boolean>]
+ -IndexingMode <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,6 @@ PS C:\> New-AzCosmosDBSqlIndexingPolicy -IncludedPath {includedPath1},{includedP
 Automatic IndexingMode IncludedPaths                                    ExcludedPaths
 --------- ------------ -------------                                    -------------
           k            {includedPath1, includedPath2, includedPath3}    {excludedPath1}
-
 ```
 
 ## PARAMETERS
@@ -38,7 +37,7 @@ Automatic IndexingMode IncludedPaths                                    Excluded
 Bool to indicate if the indexing policy is automatic
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -53,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,11 +67,11 @@ Accept wildcard characters: False
 Array of strings containing excludedPath(Specifies a path within a JSON document to be excluded in the Azure Cosmos DB service.)  elements.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -83,11 +82,11 @@ Accept wildcard characters: False
 Array of strings containing includedPath (Specifies a path within a JSON document to be included in the Azure Cosmos DB service.) elements.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -99,11 +98,11 @@ indicates the indexing mode.
 Possible values include: 'Consistent', 'Lazy', 'None'
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

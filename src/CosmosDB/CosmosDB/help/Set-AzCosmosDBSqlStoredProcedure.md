@@ -2,7 +2,6 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
 online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/set-azcosmosdbsqlstoredprocedure
-
 schema: 2.0.0
 ---
 
@@ -15,15 +14,15 @@ Creates a new or updates an existing CosmosDB Sql StoredProcedure.
 
 ### ByNameParameterSet (Default)
 ```
-Set-AzCosmosDBSqlStoredProcedure [-ResourceGroupName <String>] [-AccountName <String>] [-DatabaseName <String>]
- [-ContainerName <String>] [-Name <String>] [-Body <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzCosmosDBSqlStoredProcedure -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
+ -ContainerName <String> -Name <String> -Body <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Set-AzCosmosDBSqlStoredProcedure [-Name <String>] [-Body <String>] [-InputObject <PSSqlContainerGetResults>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzCosmosDBSqlStoredProcedure -Name <String> -Body <String> -InputObject <PSSqlContainerGetResults>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +41,6 @@ Body                           :
 _rid                           :
 _ts                            :
 _etag                          :
-
 ```
 
 ## PARAMETERS
@@ -51,26 +49,11 @@ _etag                          :
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -81,9 +64,24 @@ Accept wildcard characters: False
 The body of the Stored Procedure.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -96,11 +94,11 @@ Accept wildcard characters: False
 Container name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -111,11 +109,11 @@ Accept wildcard characters: False
 Database name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -126,7 +124,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -141,11 +139,11 @@ Accept wildcard characters: False
 Sql Container object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetResults
+Type: PSSqlContainerGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,11 +154,11 @@ Accept wildcard characters: False
 Stored Prcodecure Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -171,9 +169,24 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

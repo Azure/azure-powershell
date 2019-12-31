@@ -12,10 +12,16 @@ Gets the CosmosDB Sql StoredProcedure.
 
 ## SYNTAX
 
+### ByNameParameterSet
 ```
-Get-AzCosmosDBSqlStoredProcedure [-ResourceGroupName <String>] [-AccountName <String>] [-DatabaseName <String>]
- [-ContainerName <String>] [-Name <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzCosmosDBSqlStoredProcedure -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
+ -ContainerName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByParentObjectParameterSet
+```
+Get-AzCosmosDBSqlStoredProcedure [-Name <String>] -InputObject <PSSqlContainerGetResults>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +40,6 @@ Body                           :
 _rid                           :
 _ts                            :
 _etag                          :
-
 ```
 
 ## PARAMETERS
@@ -43,26 +48,11 @@ _etag                          :
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -73,11 +63,11 @@ Accept wildcard characters: False
 Container name.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -88,11 +78,11 @@ Accept wildcard characters: False
 Database name.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -103,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -114,11 +104,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Sql Container object.
+
+```yaml
+Type: PSSqlContainerGetResults
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Stored Prcodecure Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,11 +138,11 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

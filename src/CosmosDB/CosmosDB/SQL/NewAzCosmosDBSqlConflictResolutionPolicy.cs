@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlConflictResolutionPolicy", SupportsShouldProcess = true), OutputType(typeof(PSSqlConflictResolutionPolicy))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlConflictResolutionPolicy"), OutputType(typeof(PSSqlConflictResolutionPolicy))]
     public class NewAzCosmosDBSqlConflictResolutionPolicy : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.ConflictResolutionPolicyTypeHelpMessage)]

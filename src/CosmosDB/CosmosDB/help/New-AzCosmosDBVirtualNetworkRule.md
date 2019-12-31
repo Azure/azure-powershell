@@ -1,52 +1,35 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbsqlconflictresolutionpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbvirtualnetworkrule
 schema: 2.0.0
 ---
 
-# New-AzCosmosDBSqlConflictResolutionPolicy
+# New-AzCosmosDBVirtualNetworkRule
 
 ## SYNOPSIS
-Creates a new CosmosDB Sql ConflictResolutionPolicy object.
+Create a new CosmosDB VirtualNetworkRule Object(PSVirtualNetworkRule).
 
 ## SYNTAX
 
 ```
-New-AzCosmosDBSqlConflictResolutionPolicy -Type <String> [-Path <String>]
- [-ConflictResolutionProcedure <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzCosmosDBVirtualNetworkRule -Id <String> [-IgnoreMissingVNetServiceEndpoint <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzCosmosDBSqlConflictResolutionPolicy** cmdlet creates a new object of type PSSqlConflictResolutionPolicy.
+Create a new CosmosDB VirtualNetworkRule Object(PSVirtualNetworkRule).
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBSqlConflictResolutionPolicy -Type {type} -Path {path} -ConflictResolutionProcedure {conflictResolutionProcedure}
-
-Type   Path  ConflictResolutionProcedure
-----   ----  -------------------
-{type} {path} {conflictResolutionProcedure}
+PS C:\> New-AzCosmosDBVirtualNetworkRule -Id {id} -IgnoreMissingVNetServiceEndpoint 0
+Id  IgnoreMissingVNetServiceEndpoint
+--   --------------------------------
+{id}                            False
 ```
-
 ## PARAMETERS
-
-### -ConflictResolutionProcedure
-To be provided when the type is custom.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -63,23 +46,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Path
-To be provided when the type is LastWriterWins.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-Can have the values: LastWriterWins, Custom, Manual.
+### -Id
+Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
 
 ```yaml
 Type: String
@@ -87,6 +55,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IgnoreMissingVNetServiceEndpoint
+Boolean to indicate if to create firewall rule before the virtual network has vnet service endpoint enabled.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -102,7 +85,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlConflictResolutionPolicy
+### Microsoft.Azure.Commands.CosmosDB.Models.PSVirtualNetworkRule
 
 ## NOTES
 

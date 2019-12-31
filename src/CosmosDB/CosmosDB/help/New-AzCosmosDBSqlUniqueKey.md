@@ -28,7 +28,6 @@ PS C:\> New-AzCosmosDBSqlUniqueKey -Path {path}
 Path
 ----
 {path}
-
 ```
 
 ## PARAMETERS
@@ -37,7 +36,7 @@ Path
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -52,7 +51,7 @@ Accept wildcard characters: False
 Array of string of path values
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 

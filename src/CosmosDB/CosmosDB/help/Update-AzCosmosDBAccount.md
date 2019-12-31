@@ -14,31 +14,28 @@ Update a CosmosDB account attributes.
 
 ### ByNameParameterSet (Default)
 ```
-Update-AzCosmosDBAccount [-ResourceGroupName <String>] [-Name <String>] [-DefaultConsistencyLevel <String>]
+Update-AzCosmosDBAccount -ResourceGroupName <String> -Name <String> [-DefaultConsistencyLevel <String>]
  [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWriteLocations <Boolean>]
  [-EnableVirtualNetwork <Boolean>] [-IpRangeFilter <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
- [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
- [-DisableKeyBasedMetadataWriteAccess] [-Cors <PSCorsRule[]>] [-AsJob]
+ [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Update-AzCosmosDBAccount [-ResourceId <String>] [-DefaultConsistencyLevel <String>]
+Update-AzCosmosDBAccount -ResourceId <String> [-DefaultConsistencyLevel <String>]
  [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWriteLocations <Boolean>]
  [-EnableVirtualNetwork <Boolean>] [-IpRangeFilter <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
- [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
- [-DisableKeyBasedMetadataWriteAccess] [-Cors <PSCorsRule[]>] [-AsJob]
+ [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzCosmosDBAccount [-InputObject <PSDatabaseAccount>] [-DefaultConsistencyLevel <String>]
+Update-AzCosmosDBAccount -InputObject <PSDatabaseAccount> [-DefaultConsistencyLevel <String>]
  [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWriteLocations <Boolean>]
  [-EnableVirtualNetwork <Boolean>] [-IpRangeFilter <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
- [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
- [-DisableKeyBasedMetadataWriteAccess] [-Cors <PSCorsRule[]>] [-AsJob]
+ [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -73,13 +70,14 @@ Type                          : Microsoft.DocumentDB/databaseAccounts
 ```
 
 Updated DefaultConsistencyLevel to "Strong", Enabled AutomaticFailover, Enabled MultipleWriteLocations and Enabled VirtualNetwork for CosmosDB Account with name accountName. 
+
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -90,18 +88,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Cors
-Hashtable with key values being : AllowedOrigins, AllowedMethods, AllowedHeaders, ExposedHeaders, MaxAgeInSeconds
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSCorsRule[]
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -110,7 +108,7 @@ Default consistency level of the Cosmos DB database account.
 Accepted values: BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,24 +123,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisableKeyBasedMetadataWriteAccess
-SwitchParameter to disable key based metadata write access
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -157,7 +140,7 @@ Automatic failover will result in a new write region for the account and is chos
 Accepted values: false, true
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +156,7 @@ Enable Multiple Write Locations.
 Accepted values: false, true
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -189,7 +172,7 @@ Enables virtual network on the Cosmos DB database account.
 Accepted values: false, true
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -204,11 +187,11 @@ Accept wildcard characters: False
 CosmosDB Account object
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccount
+Type: PSDatabaseAccount
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -220,7 +203,7 @@ Firewall support.
 Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -236,7 +219,7 @@ When used with Bounded Staleness consistency, this value represents the time amo
 Accepted range for this value is 5-86400.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -252,7 +235,7 @@ When used with Bounded Staleness consistency, this value represents the number o
 Accepted range for this value is 1 - 2,147,483,647.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -267,11 +250,11 @@ Accept wildcard characters: False
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -282,11 +265,11 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -297,11 +280,11 @@ Accept wildcard characters: False
 ResourceId of the resource.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -313,7 +296,7 @@ Hashtable of tags as key-value pairs.
 Use empty string to clear existing tag.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -328,24 +311,9 @@ Accept wildcard characters: False
 Array of string values of ACL's for virtual network.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -359,7 +327,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

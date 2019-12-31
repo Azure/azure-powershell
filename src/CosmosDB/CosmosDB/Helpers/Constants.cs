@@ -37,7 +37,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string MaxStalenessPrefixHelpMessage = "When used with Bounded Staleness consistency, this value represents the number of stale requests tolerated. Accepted range for this value is 1 - 2,147,483,647. ";
         public const string TagHelpMessage = "Hashtable of tags as key-value pairs. Use empty string to clear existing tag.";
         public const string LocationHelpMessage = "Add a location to the Cosmos DB database account. Array of strings, ordered by failover priority.";
+        public const string LocationObjectHelpMessage = "Add a location to the Cosmos DB database account. Array of PSLocation objects.";
+        public const string LocationNameHelpMessage = "Name of the Location in string.";
+        public const string FailoverPriorityHelpMessage = "Failover priority of the location.";
+        public const string IsZoneRedundantHelpMessage = "Boolean to indicate whether or not this region is an AvailabilityZone.";
         public const string VirtualNetworkRuleHelpMessage = "Array of string values of ACL's for virtual network.";
+        public const string VirtualNetworkRuleObjectHelpMessage = "Array of PSVirtualNetworkRuleObjects for virtual network.";
+        public const string VirtualNetworkRuleIdHelpMessage = "Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}";
+        public const string IgnoreMissingVNetServiceEndpointHelpMessage = "Boolean to indicate if to create firewall rule before the virtual network has vnet service endpoint enabled.";
         public const string ApiKindHelpMessage = "The type of Cosmos DB database account to create. Accepted values: GlobalDocumentDB, Sql, MongoDB, Gremlin, Table, Cassandra. Default value: GlobalDocumentDB ";
         public const string AccountKeyTypeHelpMessage = "Value from: {ConnectionStrings, Keys, ReadOnlyKeys}. Default is Keys.";
         

@@ -14,14 +14,20 @@ Get Keys{"ConnectionKeys", "PrimaryReadOnly" or "Keys"} for the given CosmosDB A
 
 ### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDBAccountKey [-ResourceGroupName <String>] [-Name <String>] [-Type <String>]
+Get-AzCosmosDBAccountKey -ResourceGroupName <String> -Name <String> [-Type <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzCosmosDBAccountKey [-Type <String>] [-ResourceId <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzCosmosDBAccountKey [-Type <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+```
+
+### ByObjectParameterSet
+```
+Get-AzCosmosDBAccountKey [-Type <String>] -InputObject <PSDatabaseAccount>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +53,7 @@ Lists the keys for CosmosDB Account. The Key Type can be value from : Connection
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -58,15 +64,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+CosmosDB Account object
+
+```yaml
+Type: PSDatabaseAccount
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -77,11 +98,11 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -92,11 +113,11 @@ Accept wildcard characters: False
 ResourceId of the resource.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -108,7 +129,7 @@ Value from: {ConnectionStrings, Keys, ReadOnlyKeys}.
 Default is Keys.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

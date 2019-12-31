@@ -56,7 +56,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             IDictionary<string, string> options = new Dictionary<string, string>();
-
             if (Throughput != null)
             {
                 options.Add("Throughput", Throughput.ToString());
