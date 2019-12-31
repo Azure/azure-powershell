@@ -55,12 +55,10 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
           
         [Parameter(
              Mandatory = false,
-             ValueFromPipeline = true,
              HelpMessage = "The port.",
              ParameterSetName = "TCP")]
         [Parameter(
              Mandatory = false,
-             ValueFromPipeline = true,
              HelpMessage = "The port.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
@@ -68,12 +66,10 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
 
         [Parameter(
              Mandatory = false,
-             ValueFromPipeline = true,
              HelpMessage = "Disable traceRoute.",
              ParameterSetName = "TCP")]
         [Parameter(
              Mandatory = false,
-             ValueFromPipeline = true,
              HelpMessage = "Disable traceRoute.",
              ParameterSetName = "ICMP")]
         [ValidateNotNullOrEmpty]
@@ -81,7 +77,6 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
 
         [Parameter(
              Mandatory = false,
-             ValueFromPipeline = true,
              HelpMessage = "The method.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
@@ -89,7 +84,6 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
 
         [Parameter(
              Mandatory = false,
-             ValueFromPipeline = true,
              HelpMessage = "The path.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
@@ -97,7 +91,6 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
 
         [Parameter(
              Mandatory = false,
-             ValueFromPipeline = true,
              HelpMessage = "The request header.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
@@ -105,7 +98,6 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
 
         [Parameter(
              Mandatory = false,
-             ValueFromPipeline = true,
              HelpMessage = "The list of valid status code range.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
@@ -113,7 +105,6 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
 
         [Parameter(
              Mandatory = false,
-             ValueFromPipeline = true,
              HelpMessage = "Whether to prefer HTTPS or not.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
