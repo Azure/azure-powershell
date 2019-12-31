@@ -28,15 +28,28 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? AutoStart { get; set; }
 
+        public List<PSNetworkWatcherConnectionMonitorEndpointObject> Endpoints { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorTestConfigurationObject> TestConfigurations { get; set; }
         public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
-
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
-
+        public string Notes { get; set; }
         public Hashtable Tag { get; set; }
 
         public string TagsTable
         {
             get { return ResourcesExtensions.ConstructTagsTable(Tag); }
+        }
+
+        [JsonIgnore]
+        public string EndpointsText
+        {
+            get { return JsonConvert.SerializeObject(this.Endpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string TestConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(this.TestConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
