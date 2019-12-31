@@ -70,6 +70,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.VirtualNetworkRuleHelpMessage)]
         public string[] VirtualNetworkRule { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.VirtualNetworkRuleObjectHelpMessage)]
+        public PSVirtualNetworkRule[] VirtualNetworkRuleObject { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
@@ -141,14 +144,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountUpdateParameters.Tags = tags;
             }
 
-            if (VirtualNetworkRule != null && VirtualNetworkRule.Length > 0)
+            if ( ( VirtualNetworkRule != null && VirtualNetworkRule.Length > 0) ||
+                (VirtualNetworkRuleObject != null && VirtualNetworkRuleObject.Length > 0))
             {
                 Collection<VirtualNetworkRule> virtualNetworkRule = new Collection<VirtualNetworkRule>();
 
                 foreach (string id in VirtualNetworkRule)
                 {
-                    VirtualNetworkRule vNetRule = new VirtualNetworkRule(id: id);
-                    virtualNetworkRule.Add(vNetRule);
+                    virtualNetworkRule.Add(new VirtualNetworkRule(id:id));
+                }
+
+                foreach (PSVirtualNetworkRule psVirtualNetworkRule in VirtualNetworkRuleObject)
+                {
+                    virtualNetworkRule.Add(PSVirtualNetworkRule.ConvertPSVirtualNetworkRuleToVirtualNetworkRule(psVirtualNetworkRule));
                 }
 
                 databaseAccountUpdateParameters.VirtualNetworkRules = virtualNetworkRule;

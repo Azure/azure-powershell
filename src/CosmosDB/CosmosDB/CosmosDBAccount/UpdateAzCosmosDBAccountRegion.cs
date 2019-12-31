@@ -34,8 +34,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.AccountUpdateLocationHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.AccountUpdateLocationHelpMessage)]
         public string[] Location { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.LocationObjectHelpMessage)]
+        public PSLocation[] LocationObject { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
         public string ResourceId { get; set; }
@@ -65,10 +68,24 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             List<Location> locations = new List<Location>();
-            foreach(string location in Location)
+
+            if( (Location != null && Location.Length > 0) ||
+                (LocationObject != null && LocationObject.Length > 0))
             {
-                Location l = new Location(location);
-                locations.Add(l);
+                foreach (string location in Location)
+                {
+                    locations.Add(new Location(location));
+                }
+
+                foreach (PSLocation psLocation in LocationObject)
+                {
+                    locations.Add(PSLocation.ConvertPSLocationToLocation(psLocation));
+                }
+            }
+            else
+            {
+                WriteError(new ErrorRecord(new PSArgumentException("Cannot Add Region if no location is provided."), string.Empty, ErrorCategory.CloseError, null));
+                return;
             }
 
             DatabaseAccountUpdateParameters createUpdateParameters = new DatabaseAccountUpdateParameters(locations:locations);

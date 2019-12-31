@@ -152,14 +152,20 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     return;
                 }
 
-                foreach(PSLocation psLocation in LocationObject)
+                foreach (PSLocation psLocation in LocationObject)
                 {
                     LocationCollection.Add(PSLocation.ConvertPSLocationToLocation(psLocation));
+                    if (psLocation.FailoverPriority == 0)
+                    {
+                        writeLocation = psLocation.LocationName;
+                    }
                 }
             }
-            else
+
+            if(string.IsNullOrEmpty(writeLocation))
             {
-                writeLocation = "East US";
+                WriteError(new ErrorRecord(new PSArgumentException("Cannot create Account without a Write Location."), string.Empty, ErrorCategory.CloseError, null));
+                return;
             }
 
             Dictionary<string, string> tags = new Dictionary<string, string>();
@@ -172,12 +178,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             Collection<VirtualNetworkRule> virtualNetworkRule = new Collection<VirtualNetworkRule>();
-            if(VirtualNetworkRule != null && VirtualNetworkRule.Length > 0)
+            if ((VirtualNetworkRule != null && VirtualNetworkRule.Length > 0) ||
+                (VirtualNetworkRuleObject != null && VirtualNetworkRuleObject.Length > 0))
             {
-                foreach(string id in VirtualNetworkRule)
+
+                foreach (string id in VirtualNetworkRule)
                 {
-                    VirtualNetworkRule vNetRule = new VirtualNetworkRule(id: id);
-                    virtualNetworkRule.Add(vNetRule);
+                    virtualNetworkRule.Add(new VirtualNetworkRule(id: id));
+                }
+
+                foreach (PSVirtualNetworkRule psVirtualNetworkRule in VirtualNetworkRuleObject)
+                {
+                    virtualNetworkRule.Add(PSVirtualNetworkRule.ConvertPSVirtualNetworkRuleToVirtualNetworkRule(psVirtualNetworkRule));
                 }
             }
 
