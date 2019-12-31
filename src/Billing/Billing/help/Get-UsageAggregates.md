@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.UsageAggregates.dll-Help.xml
 Module Name: Az.Billing
 ms.assetid: 52B3ECCB-80E5-4E16-954A-B83D0BDC7E22
@@ -48,7 +48,6 @@ Type: Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity
 Parameter Sets: (All)
 Aliases:
 Accepted values: Daily, Hourly
-
 Required: False
 Position: Named
 Default value: None
@@ -67,7 +66,6 @@ We recommend that you follow the next link in the response to page though the da
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
 Required: False
 Position: Named
 Default value: None
@@ -82,7 +80,6 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
 Required: False
 Position: Named
 Default value: None
@@ -101,7 +98,6 @@ The resource usage data is the useful pivot for analyzing the data.
 Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
-
 Required: True
 Position: Named
 Default value: None
@@ -116,7 +112,6 @@ Specifies the reported start time for when resource usage was recorded in the Az
 Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
-
 Required: True
 Position: Named
 Default value: None
@@ -135,7 +130,6 @@ However, when the value is $False, all the data for the same **subscriptionId**,
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
-
 Required: False
 Position: Named
 Default value: None
