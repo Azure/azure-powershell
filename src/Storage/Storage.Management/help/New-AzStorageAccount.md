@@ -219,6 +219,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableLargeFileShare
+Indicates whether or not the storage account can support large file shares with more than 5 TiB capacity. 
+Once the account is enabled, the feature cannot be disabled. 
+Currently only supported for LRS and ZRS replication types, hence account conversions to geo-redundant accounts would not be possible. 
+Learn more in https://go.microsoft.com/fwlink/?linkid=2086047
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Kind
 Specifies the kind of Storage account that this cmdlet creates.
 The acceptable values for this parameter are:
@@ -311,12 +329,14 @@ The acceptable values for this parameter are:
 - Standard_RAGRS. Read access geo-redundant storage.
 - Premium_LRS. Premium locally-redundant storage.
 - Premium_ZRS. Premium zone-redundant storage.
+- Standard_GZRS - Geo-redundant zone-redundant storage.
+- Standard_RAGZRS - Read access geo-redundant zone-redundant storage.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountType, AccountType, Type
-Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS, Premium_ZRS
+Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS, Premium_ZRS, Standard_GZRS, Standard_RAGZRS
 
 Required: True
 Position: 2

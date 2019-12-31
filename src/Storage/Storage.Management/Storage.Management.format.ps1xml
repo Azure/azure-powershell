@@ -304,6 +304,10 @@
             <Alignment>Left</Alignment>
             <Label>DeleteRetentionPolicy.Days</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ChangeFeed.Enabled</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -327,6 +331,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <ScriptBlock>$_.DeleteRetentionPolicy.Days</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.ChangeFeed.Enabled</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

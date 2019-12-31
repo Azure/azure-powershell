@@ -110,14 +110,14 @@ This first command gets NetworkRuleSet property from a Storage account, and the 
 
 ### Example 9: Upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account
 ```
-PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -UpgradeToStorageV2
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -UpgradeToStorageV2 
 ```
 
 The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
 
 ### Example 10: Update a Storage account by enable Azure Files AAD DS Authentication.
 ```
-PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true 
 ```
 
 The command update a Storage account by enable Azure Files AAD DS Authentication.
@@ -382,6 +382,8 @@ The acceptable values for this parameter are:
 - Standard_GRS - Geo-redundant storage.
 - Standard_RAGRS - Read access geo-redundant storage.
 - Premium_LRS - Premium locally-redundant storage.
+- Standard_GZRS - Geo-redundant zone-redundant storage.
+- Standard_RAGZRS - Read access geo-redundant zone-redundant storage.
 You cannot change Standard_ZRS and Premium_LRS types to other account types.
 You cannot change other account types to Standard_ZRS or Premium_LRS.
 
@@ -389,7 +391,7 @@ You cannot change other account types to Standard_ZRS or Premium_LRS.
 Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountType, AccountType, Type
-Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS
+Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS, Standard_GZRS, Standard_RAGZRS
 
 Required: False
 Position: Named
