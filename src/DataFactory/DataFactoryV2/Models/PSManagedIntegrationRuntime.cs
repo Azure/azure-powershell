@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Management.DataFactory.Models;
 
@@ -58,6 +59,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
         public string VNetId => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.VNetId;
 
         public string Subnet => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.Subnet;
+
+        public string[] PublicIPs => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.PublicIPs == null ? null : new List<string>(ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.PublicIPs).ToArray();
 
         public string State => ManagedIntegrationRuntime.State;
 

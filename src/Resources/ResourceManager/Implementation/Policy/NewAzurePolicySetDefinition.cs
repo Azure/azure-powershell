@@ -85,6 +85,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Guid? SubscriptionId { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy definition groups parameter of the new policy set definition
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicySetDefinitionGroupDefinitionHelp)]
+        [ValidateNotNullOrEmpty]
+        public string GroupDefinition { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -140,9 +147,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     Description = this.Description ?? null,
                     DisplayName = this.DisplayName ?? null,
-                    PolicyDefinitions = JArray.Parse(this.GetObjectFromParameter(this.PolicyDefinition).ToString()),
-                    Metadata = this.Metadata == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Metadata).ToString()),
-                    Parameters = this.Parameter == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Parameter).ToString())
+                    PolicyDefinitions = this.GetArrayFromParameter(this.PolicyDefinition, nameof(this.PolicyDefinition)),
+                    Metadata = this.Metadata == null ? null : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)),
+                    Parameters = this.Parameter == null ? null : this.GetObjectFromParameter(this.Parameter, nameof(this.Parameter)),
+                    PolicyDefinitionGroups = this.GroupDefinition == null ? null : this.GetArrayFromParameter(this.GroupDefinition, nameof(this.GroupDefinition))
                 }
             };
 

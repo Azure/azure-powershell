@@ -159,6 +159,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             if (parameters.VirtualMachineConfiguration != null)
             {
+                Utils.Utils.VirtualMachineConfigurationSyncCollections(parameters.VirtualMachineConfiguration);
                 pool.VirtualMachineConfiguration = parameters.VirtualMachineConfiguration.omObject;
             }
 

@@ -409,4 +409,10 @@ Are you sure you want to continue?</value>
   <data name="LinksSwitchMissing" xml:space="preserve">
     <value>LinkedDataFactoryName parameter is working together with '-Links' switch parameter.</value>
   </data>
+  <data name="IntegrationRuntimeVNetNotProvided" xml:space="preserve">
+    <value>Please provide a VNet resource ID and subnet name to bring static public IP addresses for your Azure-SSIS Integration Runtime.</value>
+  </data>
+  <data name="InvalidPublicIPCount" xml:space="preserve">
+    <value>Please provide two static public IP addresses for your Azure-SSIS Integration Runtime.</value>
+  </data>
 </root>

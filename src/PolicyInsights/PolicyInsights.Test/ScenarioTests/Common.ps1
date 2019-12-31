@@ -27,7 +27,7 @@ Gets test resource group group name
 #>
 function Get-TestResourceGroupName
 {
-   "jilimpolicytest2"
+   "cleanupservice"
 }
 
 <#
@@ -36,7 +36,7 @@ Gets test resource id
 #>
 function Get-TestResourceId
 {
-   "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/govintpolicyrp/providers/microsoft.network/trafficmanagerprofiles/gov-int-policy-rp"
+   "/subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8/resourcegroups/cleanupservice/providers/Microsoft.KeyVault/vaults/kv12-cleanupservice"
 }
 
 <#
@@ -45,7 +45,7 @@ Gets test policy set definition name
 #>
 function Get-TestPolicySetDefinitionName
 {
-   "875cf75e-49c3-47f8-ab8d-89ba3d2311a0"
+   "716ef2c9-4404-4673-8609-f984d58c417d"
 }
 
 <#
@@ -54,7 +54,7 @@ Gets test policy definition name
 #>
 function Get-TestPolicyDefinitionName
 {
-   "24813039-7534-408a-9842-eb99f45721b1"
+   "policy2"
 }
 
 <#
@@ -63,7 +63,7 @@ Gets test policy assignment name
 #>
 function Get-TestPolicyAssignmentName
 {
-   "f54e881207924ca8b2e39f6a"
+   "SecurityCenterBuiltIn"
 }
 
 <#
@@ -72,7 +72,7 @@ Gets test resource group group name for resource group level policy assignment (
 #>
 function Get-TestResourceGroupNameForPolicyAssignmentEvents
 {
-   "jilimpolicytest2"
+   "cleanupservice"
 }
 
 <#
@@ -81,7 +81,16 @@ Gets test policy assignment name (resource group level) (for event tests)
 #>
 function Get-TestPolicyAssignmentNameResourceGroupLevelEvents
 {
-   "e9860612d8ec4a469f59af06"
+   "568e500984414fbe8a4f10d0"
+}
+
+<#
+.SYNOPSIS
+Gets test policy definition name for events
+#>
+function Get-TestPolicyDefinitionNameForEvents
+{
+   "d994a92a-7669-4735-9950-bdcc326f32e4"
 }
 
 <#
@@ -90,7 +99,7 @@ Gets test resource group group name for resource group level policy assignment (
 #>
 function Get-TestResourceGroupNameForPolicyAssignmentStates
 {
-   "jilimpolicytest2"
+   "cleanupservice"
 }
 
 <#
@@ -99,7 +108,7 @@ Gets test policy assignment name (resource group level) (for state tests)
 #>
 function Get-TestPolicyAssignmentNameResourceGroupLevelStates
 {
-   "e9860612d8ec4a469f59af06"
+   "147b065f2a0f409ca31325c7"
 }
 
 <#
@@ -108,7 +117,7 @@ Gets test query interval start
 #>
 function Get-TestQueryIntervalStart
 {
-   "2019-01-20 00:00:00Z"
+   "2019-12-01 00:00:00Z"
 }
 
 <#
@@ -117,7 +126,7 @@ Gets test query interval end
 #>
 function Get-TestQueryIntervalEnd
 {
-   "2019-04-15 00:00:00Z"
+   "2019-12-06 00:00:00Z"
 }
 
 <#
@@ -126,7 +135,7 @@ Gets the policy assignment used in remediation tests at subscription level and b
 #>
 function Get-TestRemediationSubscriptionPolicyAssignmentId
 {
-   "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
+   "/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.Authorization/policyAssignments/fcddeb6113ec43798567dce2"
 }
 
 <#
@@ -135,7 +144,7 @@ Gets the policy assignment used in remediation tests at management group scope
 #>
 function Get-TestRemediationMgPolicyAssignmentId
 {
-   "/providers/Microsoft.Management/managementGroups/PolicyUIMG/providers/Microsoft.Authorization/policyAssignments/326b090398a649e3858e3f23"
+   "/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/d80d743b97874fd3bfd1d539"
 }
 
 <#
@@ -249,8 +258,10 @@ function Validate-PolicyStateSummary
       Assert-NotNullOrEmpty $policyAssignmentSummary.PolicyAssignmentId
 
       Assert-NotNull $policyAssignmentSummary.Results
-      Assert-NotNull $policyAssignmentSummary.Results.NonCompliantResources
-      Assert-NotNull $policyAssignmentSummary.Results.NonCompliantPolicies
+      Validate-SummaryResults -results:$policyAssignmentSummary.Results -nonCompliantPoliciesAssertNull:$false
+	  Assert-NotNull $policyAssignmentSummary.PolicyDefinitions
+	  Assert-NotNull $policyAssignmentSummary.PolicyGroups
+	  Assert-True { $policyAssignmentSummary.PolicyGroups.Count -gt 0 }
 
       Assert-NotNull $policyAssignmentSummary.PolicyDefinitions
       if ($policyAssignmentSummary.PolicyDefinitions.Count -gt 0)
@@ -260,16 +271,40 @@ function Validate-PolicyStateSummary
 		  Foreach($policyDefinitionSummary in $policyAssignmentSummary.PolicyDefinitions)
 		  {
 			 Assert-NotNull $policyDefinitionSummary
-
 			 Assert-NotNullOrEmpty $policyDefinitionSummary.PolicyDefinitionId
 			 Assert-NotNullOrEmpty $policyDefinitionSummary.Effect
 
+			 Assert-NotNull $policyDefinitionSummary.PolicyDefinitionGroupNames
 			 Assert-NotNull $policyDefinitionSummary.Results
-			 Assert-NotNull $policyDefinitionSummary.Results.NonCompliantResources
-			 Assert-Null $policyDefinitionSummary.Results.NonCompliantPolicies
+			 Validate-SummaryResults -results:$policyDefinitionSummary.Results
 		  }
 	  }
    }
+}
+
+<#
+.SYNOPSIS
+Validates a summary results
+#>
+function Validate-SummaryResults
+{
+   param([Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults] $results,
+   [switch]$nonCompliantPoliciesAssertNull = $true
+   )
+   
+   Assert-NotNull $results.NonCompliantResources
+   if($nonCompliantPoliciesAssertNull)
+   {
+      Assert-Null $results.NonCompliantPolicies
+   }
+   else
+   {
+      Assert-NotNull $results.NonCompliantPolicies
+   }
+   Assert-NotNull $results.ResourceDetails
+   Assert-NotNull $results.PolicyDetails
+   Assert-True { $results.PolicyDetails.Count -gt 0 }
+   Assert-NotNull $results.PolicyGroupDetails
 }
 
 <#
@@ -307,6 +342,32 @@ function Validate-RemediationDeployment
    Assert-True { $deployment.RemediatedResourceId -like "/subscriptions/*/providers/*" }
    Assert-NotNullOrEmpty $deployment.Status
    Assert-NotNullOrEmpty $deployment.ResourceLocation
+}
+
+<#
+.SYNOPSIS
+Validates a policy metadata resource
+#>
+function Validate-PolicyMetadata
+{
+   param([Microsoft.Azure.Commands.PolicyInsights.Models.PSPolicyMetadata]$policyMetadata,
+   [switch]$validateExtendedProperties = $false)
+
+   Assert-NotNull $policyMetadata
+
+   Assert-NotNull $policyMetadata.Name
+   Assert-AreEqual "Microsoft.PolicyInsights/policyMetadata" $policyMetadata.Type
+   Assert-True { $policyMetadata.Id -like "/providers/Microsoft.PolicyInsights/policyMetadata/" + $policyMetadata.Name }
+
+   Assert-NotNull $policyMetadata.Owner
+   Assert-NotNull $policyMetadata.Title
+   Assert-NotNull $policyMetadata.Category
+   Assert-NotNull $policyMetadata.MetadataId
+   if($validateExtendedProperties)
+   {
+      Assert-NotNull $policyMetadata.Requirements
+      Assert-NotNull $policyMetadata.Description
+   }
 }
 
 <#

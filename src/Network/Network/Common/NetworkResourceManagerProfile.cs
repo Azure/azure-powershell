@@ -1182,6 +1182,7 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         { "ThreatIntel.Whitelist.FQDNs", src.ThreatIntelWhitelist?.FQDNs?.Aggregate((result, item) => result + "," + item) },
                         { "ThreatIntel.Whitelist.IpAddresses", src.ThreatIntelWhitelist?.IpAddresses?.Aggregate((result, item) => result + "," + item) },
+                        { "Network.SNAT.PrivateRanges", src.PrivateRange?.Aggregate((result, item) => result + "," + item) }
                     }.Where(kvp => kvp.Value != null).ToDictionary(key => key.Key, val => val.Value);   // TODO: remove after backend code is refactored
                 });
                 cfg.CreateMap<CNM.PSAzureFirewallSku, MNM.AzureFirewallSku>();
@@ -1212,6 +1213,14 @@ namespace Microsoft.Azure.Commands.Network
                     try
                     {
                         dest.ThreatIntelWhitelist.IpAddresses = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("ThreatIntel.Whitelist.IpAddresses", StringComparison.OrdinalIgnoreCase)).Value?.Split(',').Select(str => str.Trim()).ToArray();
+                    }
+                    catch (PSArgumentException)
+                    {
+                        dest.ThreatIntelWhitelist.IpAddresses = null;
+                    }
+                    try
+                    {
+                        dest.PrivateRange = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.SNAT.PrivateRanges", StringComparison.OrdinalIgnoreCase)).Value?.Split(',').Select(str => str.Trim()).ToArray();
                     }
                     catch (PSArgumentException)
                     {

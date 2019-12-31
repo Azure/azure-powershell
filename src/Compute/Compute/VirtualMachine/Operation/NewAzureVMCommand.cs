@@ -225,19 +225,20 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public SwitchParameter EnableUltraSSD { get; set; }
 
+        [Alias("ProximityPlacementGroup")]
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
-        public string ProximityPlacementGroup { get; set; }
+        public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string HostId { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
-            HelpMessage = "The priority for the virtual machine.  Only supported values are 'Regular', 'Low' and 'Spot'.")]
+            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
-            HelpMessage = "The priority for the virtual machine.  Only supported values are 'Regular', 'Low' and 'Spot'.")]
-        [PSArgumentCompleter("Regular", "Low", "Spot")]
+            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+        [PSArgumentCompleter("Regular", "Spot")]
         public string Priority { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
@@ -360,7 +361,7 @@ namespace Microsoft.Azure.Commands.Compute
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                     _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
 
-                var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroup);
+                var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
                 var availabilitySet = _cmdlet.AvailabilitySetName == null
                     ? null

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.5
+* Update references in .psd1 to use relative path
+
 ## Version 1.3.4
 
 * Fixed New-AzureAutomationSoftwareUpdateConfiguration cmdlet for Linux reboot setting parameter. 

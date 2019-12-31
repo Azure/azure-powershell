@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.9
+* Update references in .psd1 to use relative path
+
+## Version 0.2.8
 * Bug Fix: File/folder names should be platform agnostic for Export/Import cmdlets
 
 ## Version 0.2.7
