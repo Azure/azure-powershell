@@ -83,12 +83,5 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(_logger, $"Test-Common -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
         }
-
-        [Fact]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        public void TestDatalakeGen2()
-        {
-            TestController.NewInstance.RunPsTest(_logger, $"Test-DatalakeGen2 -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
-        }
     }
 }

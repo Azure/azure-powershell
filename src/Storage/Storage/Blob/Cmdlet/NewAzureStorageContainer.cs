@@ -27,7 +27,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// create a new azure container
     /// </summary>
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainer"),OutputType(typeof(AzureStorageContainer))]
-    [Alias("New-" + Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DatalakeGen2FileSystem")]
     public class NewAzureStorageContainerCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Container")]

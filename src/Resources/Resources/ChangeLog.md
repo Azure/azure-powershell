@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix an error in help document of `Remove-AzTag`.
+
+## Version 1.9.0
+* Update references in .psd1 to use relative path
 * Fix an issue where template deployment fails to read a template parameter if its name conflicts with some built-in parameter name.
+* Updated policy cmdlets to use new api version 2019-09-01 that introduces grouping support within policy set definitions.
+* Fix the bug that the output of some sub-resource is empty when using `Get-AzResource`.
 
 ## Version 1.8.0
 - Updated policy cmdlets to use new api version 2019-06-01 that has new EnforcementMode property in policy assignment.

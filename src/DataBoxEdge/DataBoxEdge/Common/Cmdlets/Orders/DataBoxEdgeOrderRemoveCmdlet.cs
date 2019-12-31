@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.DataBoxEdge;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder;
@@ -44,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
             HelpMessage = Constants.InputObjectHelpMessage
         )]
         [ValidateNotNull]
-        public PSResourceModel DeviceObject { get; set; }
+        [Alias("DeviceObject")]
+        public PSResourceModel InputObject { get; set; }
 
         [Parameter(Mandatory = true, 
             ParameterSetName = DeleteByNameParameterSet,
@@ -89,10 +90,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
                 this.DeviceName = resourceIdentifier.DeviceName;
             }
 
-            if (this.IsParameterBound(c => c.DeviceObject))
+            if (this.IsParameterBound(c => c.InputObject))
             {
-                this.ResourceGroupName = this.DeviceObject.ResourceGroupName;
-                this.DeviceName = this.DeviceObject.DeviceName;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.DeviceName = this.InputObject.DeviceName;
             }
 
             if (this.ShouldProcess(this.DeviceName,

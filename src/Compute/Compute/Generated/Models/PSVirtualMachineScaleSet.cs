@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public Plan Plan { get; set; }
         public UpgradePolicy UpgradePolicy { get; set; }
         public AutomaticRepairsPolicy AutomaticRepairsPolicy { get; set; }
-        public VirtualMachineScaleSetVMProfile VirtualMachineProfile { get; set; }
         public string ProvisioningState { get; set; }
         public bool? Overprovision { get; set; }
         public bool? DoNotRunExtensionsOnOverprovisionedVMs { get; set; }

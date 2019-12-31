@@ -108,7 +108,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
                         PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
                         RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
-                        RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType
+                        RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
+                        RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId
                     });
                 }
                 else

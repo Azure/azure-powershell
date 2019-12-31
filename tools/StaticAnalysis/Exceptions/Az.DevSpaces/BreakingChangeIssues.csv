@@ -1,2 +1,1 @@
 "AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.WindowsAzure.Commands.Storage.dll","Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet.NewAzureStorageContext","New-AzureStorageContext","0","1060","The parameter set 'AccountNameAndKey' for cmdlet 'New-AzureStorageContext' is no longer the default parameter set.","Change the default parameter for cmdlet 'New-AzureStorageContext' back to 'AccountNameAndKey'."

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataBoxEdgeRole
 
 ## SYNOPSIS
-Fetch the available roles for a device
+Fetches the available roles for a device.
 
 ## SYNTAX
 
@@ -36,17 +36,17 @@ Get-AzDataBoxEdgeRole [[-Name] <String>] [-DefaultProfile <IAzureContextContaine
 ```
 
 ## DESCRIPTION
-This **Get-AzDataBoxEdgeRole** fetches the available IOT role by Name or lists the IOT roles available for the  device
+The **Get-AzDataBoxEdgeRole** cmdlet fetches the available IoT roles for a Data Box Edge device. You can mention the Name parameter to get the details of a specific IoT role.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDataBoxEdgeRole -ResourceGroupName resource-group-name -DeviceName device-name
+PS C:\> Get-AzDataBoxEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName
 
-Name    IotEdgeDeviceId IotDeviceId            IotEdgeDeviceId                ResourceGroupName
-----    --------------- -----------            ---------------                -----------------
-IotRole dbedge-edge     dbedge-storagegateway iothub-dbedge.azure-devices.net dbedge-rg
+Name    IoTHostHub             Platform Status  IotEdgeDeviceId   IotDeviceId  ResourceGroupName
+----    ----------             -------- ------  ---------------   -----------  -----------------
+iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    resourceGroupName
 ```
 
 ## PARAMETERS
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeviceName
-Name of the device
+Device Name
 
 ```yaml
 Type: System.String
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Role
+Resource Name
 
 ```yaml
 Type: System.String
@@ -124,8 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name 
-
+Resource Group Name
 
 ```yaml
 Type: System.String
@@ -159,11 +158,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSStorageAccountCredential
+### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole
 
 ## NOTES
 

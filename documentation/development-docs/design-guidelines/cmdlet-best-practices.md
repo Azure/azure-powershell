@@ -6,7 +6,7 @@ The following are naming conventions to keep in mind when coming up with a name 
 
 #### Verb-Noun Format
 
-Cmdlet names should follow the _Verb-Noun_ format, where the verb is from the [list of approved PowerShell verbs](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/approved-verbs-for-windows-powershell-commands), and the noun is a specific noun describing a resource within your service.
+Cmdlet names should follow the _Verb-Noun_ format, where the verb is from the [list of approved PowerShell verbs](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/approved-verbs-for-windows-powershell-commands), and the noun is a specific noun describing a resource within your service.
 
 #### Noun Prefix
 
