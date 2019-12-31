@@ -12,16 +12,15 @@ Gets the CosmosDB Sql Container.
 
 ## SYNTAX
 
-### ByNameParameterSet
+### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDBSqlContainer [-ResourceGroupName <String>] [-Name <String>] [-Detailed]
- [-DefaultProfile <IAzureContextContainer>] [-AccountName <String>] [-DatabaseName <String>]
- [<CommonParameters>]
+Get-AzCosmosDBSqlContainer -ResourceGroupName <String> [-Name <String>] [-Detailed]
+ [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String> [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBSqlContainer [-InputObject <PSSqlDatabaseGetResults>] [-Detailed]
+Get-AzCosmosDBSqlContainer [-Name <String>] -InputObject <PSSqlDatabaseGetResults> [-Detailed]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -45,7 +44,6 @@ ConflictResolutionPolicy :
 _rid                     :
 _ts                      :
 _etag                    :
-
 ```
 
 ## PARAMETERS
@@ -54,11 +52,11 @@ _etag                    :
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -69,11 +67,11 @@ Accept wildcard characters: False
 Database name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -84,7 +82,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -99,7 +97,7 @@ Accept wildcard characters: False
 If provided then, the cmdlet returns the container with the throughput value.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -114,11 +112,11 @@ Accept wildcard characters: False
 Sql Database object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
+Type: PSSqlDatabaseGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -129,8 +127,8 @@ Accept wildcard characters: False
 Container name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByNameParameterSet
+Type: String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -144,11 +142,11 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

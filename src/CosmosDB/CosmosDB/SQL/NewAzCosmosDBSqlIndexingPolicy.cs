@@ -19,7 +19,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlIndexingPolicy", SupportsShouldProcess = true), OutputType(typeof(PSSqlIndexingPolicy))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlIndexingPolicy"), OutputType(typeof(PSSqlIndexingPolicy))]
     public class NewAzCosmosDBSqlIndexingPolicy : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.IndexingPolicyIncludedPathHelpMessage)]

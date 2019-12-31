@@ -12,15 +12,15 @@ Gets the throughput settings corresponding to a CosmosDB Sql Database.
 
 ## SYNTAX
 
-### ByNameParameterSet
+### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDBSqlDatabaseThroughput [-ResourceGroupName <String>] [-AccountName <String>] [-Name <String>]
+Get-AzCosmosDBSqlDatabaseThroughput -ResourceGroupName <String> -AccountName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByObjectParameterSet
+### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBSqlDatabaseThroughput [-InputObject <PSDatabaseAccount>]
+Get-AzCosmosDBSqlDatabaseThroughput -Name <String> -InputObject <PSDatabaseAccount>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -38,7 +38,6 @@ Id                  : {throughputId}
 Throughput          : 0
 MinimumThroughput   :
 OfferReplacePending :
-
 ```
 
 ## PARAMETERS
@@ -47,11 +46,11 @@ OfferReplacePending :
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -62,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -77,11 +76,11 @@ Accept wildcard characters: False
 CosmosDB Account object
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccount
-Parameter Sets: ByObjectParameterSet
+Type: PSDatabaseAccount
+Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -92,11 +91,11 @@ Accept wildcard characters: False
 Database name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByNameParameterSet
+Type: String
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,11 +106,11 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -18,16 +18,24 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlUniqueKey"), OutputType(typeof(PSSqlUniqueKey))]
-    public class NewAzCosmosDBSqlUniqueKey : AzureCosmosDBCmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBVirtualNetworkRule"), OutputType(typeof(PSVirtualNetworkRule))]
+    public class NewAzCosmosDBVirtualNetworkRule : AzureCosmosDBCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.UniqueKeyPathHelpMessage)]
-        public string[] Path { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = Constants.VirtualNetworkRuleIdHelpMessage)]
+        public string Id { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.IgnoreMissingVNetServiceEndpointHelpMessage)]
+        public bool? IgnoreMissingVNetServiceEndpoint { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PSSqlUniqueKey uniqueKey = new PSSqlUniqueKey(Path);
-            WriteObject(uniqueKey);
+            PSVirtualNetworkRule virtualNetworkRule = new PSVirtualNetworkRule
+            {
+                Id = Id,
+                IgnoreMissingVNetServiceEndpoint = IgnoreMissingVNetServiceEndpoint
+            };
+
+            WriteObject(virtualNetworkRule);
             return;
         }
     }

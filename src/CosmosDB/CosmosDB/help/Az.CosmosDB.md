@@ -86,6 +86,12 @@ Create a new CosmosDB Account.
 ### [New-AzCosmosDBAccountKey](New-AzCosmosDBAccountKey.md)
 Regenerate a given CosmosDB Account Key.
 
+### [New-AzCosmosDBLocationObject](New-AzCosmosDBLocationObject.md)
+Create a new CosmosDB Location Object(PSLocation).
+
+### [New-AzCosmosDBVirtualNetworkRule](New-AzCosmosDBVirtualNetworkRule.md)
+Create a new CosmosDB VirtualNetworkRule Object(PSVirtualNetworkRule).
+
 ### [Remove-AzCosmosDBAccount](Remove-AzCosmosDBAccount.md)
 Remove a CosmosDB Account
 

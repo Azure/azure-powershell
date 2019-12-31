@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             if (ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
             {
-                if (!string.IsNullOrEmpty(Name))
+                if (string.IsNullOrEmpty(Name))
                 { 
                     IEnumerable<DatabaseAccountGetResults>  DatabaseAccounts = CosmosDBManagementClient.DatabaseAccounts.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).GetAwaiter().GetResult().Body;
                     foreach (DatabaseAccountGetResults DatabaseAccount in DatabaseAccounts)
