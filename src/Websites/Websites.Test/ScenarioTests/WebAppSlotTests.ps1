@@ -415,7 +415,7 @@ function Test-SetWebAppSlot
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	$numberOfWorkers = 2
-
+	$ftpsState= "AllAllowed"
 	try
 	{
 		#Setup
@@ -452,6 +452,7 @@ function Test-SetWebAppSlot
 		# Set config properties
 		$slot.SiteConfig.HttpLoggingEnabled = $true
 		$slot.SiteConfig.RequestTracingEnabled = $true
+		$slot.SiteConfig.FtpsState  = $ftpsState
 
 		$slot = $slot | Set-AzWebAppSlot
 
@@ -460,6 +461,7 @@ function Test-SetWebAppSlot
 		Assert-AreEqual $serverFarm2.Id $slot.ServerFarmId
 		Assert-AreEqual $true $slot.SiteConfig.HttpLoggingEnabled
 		Assert-AreEqual $true $slot.SiteConfig.RequestTracingEnabled
+		Assert-AreEqual $ftpsState $slot.SiteConfig.FtpsState
 
 		# set app settings and connection strings
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}

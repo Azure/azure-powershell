@@ -1073,6 +1073,7 @@ function Test-SetWebApp
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	$capacity = 2
+	$ftpsState="AllAllowed"
 
 	try
 	{
@@ -1106,6 +1107,7 @@ function Test-SetWebApp
 		# Set config properties
 		$webapp.SiteConfig.HttpLoggingEnabled = $true
 		$webapp.SiteConfig.RequestTracingEnabled = $true
+		$webapp.SiteConfig.FtpsState  = $ftpsState
 
 		# Set site properties
 		$webApp = $webApp | Set-AzWebApp
@@ -1117,6 +1119,7 @@ function Test-SetWebApp
 		Assert-AreEqual $serverFarm2.Id $webApp.ServerFarmId
 		Assert-AreEqual $true $webApp.SiteConfig.HttpLoggingEnabled
 		Assert-AreEqual $true $webApp.SiteConfig.RequestTracingEnabled
+		Assert-AreEqual $ftpsState $webApp.SiteConfig.FtpsState
 
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}
