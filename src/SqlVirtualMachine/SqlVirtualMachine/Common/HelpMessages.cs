@@ -51,6 +51,11 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         public const string SkuSqlVMGroup = "SQL virtual machine group edition type.";
         public const string SqlVMGroupResourceId = "SQL virtual machine group resource id.";
         public const string InputObjectSqlVMGroup = "SQL virtual machine object.";
+        
+        // Help messages relative to sql virtual machine group cmdlets
+        public const string NameAvailabilityGroupListener = "Availability Group Listener name.";
+        public const string AvailabilityGroupListenerResourceId = "Availability Group Listener Resource Id";
+
         // Upsert
         public const string ClusterOperatorAccountSqlVMGroup = "Name used for operating cluster.";
         public const string SqlServiceAccountSqlVMGroup = "Name under which SQL service will run on all participating SQL virtual machines in the cluster.";
