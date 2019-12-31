@@ -37,5 +37,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets create firewall rule before the virtual network has vnet service
         //     endpoint enabled.
         public bool? IgnoreMissingVNetServiceEndpoint { get; set; }
+
+        static public VirtualNetworkRule ConvertPSVirtualNetworkRuleToVirtualNetworkRule(PSVirtualNetworkRule psVirtualNetworkRule)
+        {
+            return new VirtualNetworkRule
+            {
+                Id = psVirtualNetworkRule.Id,
+                IgnoreMissingVNetServiceEndpoint = psVirtualNetworkRule.IgnoreMissingVNetServiceEndpoint
+            };
+        }
     }
 }
