@@ -1486,55 +1486,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
-        /// Cancels the active deployment in a resource group.
-        /// </summary>
-        /// <param name="resourceGroupName">The resource group name</param>
-        /// <param name="deploymentName">Deployment name</param>
-        public virtual void CancelResourceGroupDeployment(string resourceGroupName, string deploymentName)
-        {
-            FilterDeploymentOptions options = new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup)
-            {
-                DeploymentName = deploymentName,
-                ResourceGroupName = resourceGroupName
-            };
-
-            if (string.IsNullOrEmpty(deploymentName))
-            {
-                options.ExcludedProvisioningStates = new List<string>
-                {
-                    ProvisioningState.Failed.ToString(),
-                    ProvisioningState.Succeeded.ToString()
-                };
-            }
-
-            List<PSResourceGroupDeployment> deployments = FilterResourceGroupDeployments(options);
-
-            if (deployments.Count == 0)
-            {
-                if (string.IsNullOrEmpty(deploymentName))
-                {
-                    throw new ArgumentException(string.Format(ProjectResources.NoDeploymentToCancel, deploymentName));
-                }
-                else
-                {
-                    throw new ArgumentException(string.Format(ProjectResources.NoRunningDeployments, resourceGroupName));
-                }
-            }
-            else if (deployments.Count == 1)
-            {
-                ResourceManagementClient.Deployments.Cancel(resourceGroupName, deployments.First().DeploymentName);
-            }
-            else
-            {
-                throw new ArgumentException(ProjectResources.MultipleRunningDeployment);
-            }
-        }
-
-        /// <summary>
         /// Cancels the active deployment.
         /// </summary>
         /// <param name="options">The deployment filter options</param>
-        public void CancelDeployment(FilterDeploymentOptions options)
+        public virtual void CancelDeployment(FilterDeploymentOptions options)
         {
             if (string.IsNullOrEmpty(options.DeploymentName))
             {
