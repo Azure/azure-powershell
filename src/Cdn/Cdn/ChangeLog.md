@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.4.2
 * Display error response deatil in New-AzCdnEndpoint cmdlet
 
 ## Version 1.4.1

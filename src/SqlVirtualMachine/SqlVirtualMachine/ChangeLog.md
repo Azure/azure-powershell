@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.2
 * Add DR as a new valid License type
 
 ## Version 1.0.1

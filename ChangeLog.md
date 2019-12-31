@@ -1,3 +1,86 @@
+## 3.3.0 - January 2020
+#### Az.Accounts
+* Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix
+
+#### Az.Cdn
+* Display error response deatil in New-AzCdnEndpoint cmdlet
+
+#### Az.Compute
+* Fix Set-AzVMCustomScriptExtension cmdlet for a VM with managed OD disk which does not have OS profile.
+
+#### Az.ContainerInstance
+* Fixed parameter names used by example of New-AzContainerGroup
+
+#### Az.DataBoxEdge
+* Added cmdlet 'Get-AzDataBoxEdgeStorageContainer'
+  - Get the Edge Stroage Container
+* Added cmdlet 'New-AzDataBoxEdgeStorageContainer'
+  - Create new Edge Stroage Container
+* Added cmdlet 'Remove-AzDataBoxEdgeStorageContainer'
+  - Remove the Edge Stroage Container
+* Added cmdlet 'Invoke-AzDataBoxEdgeStorageContainer'
+  - Invoke action to refresh data on Edge Stroage Container
+* Added cmdlet 'Get-AzDataBoxEdgeStorageAccount'
+  - Get the Edge Stroage Account
+* Added cmdlet 'New-AzDataBoxEdgeStorageAccount'
+  - Create new Edge Stroage Account
+* Added cmdlet 'Remove-AzDataBoxEdgeStorageAccount'
+  - Remove the Edge Stroage Account
+* Invoke cmdlet 'Invoke-AzDataBoxEdgeShare'
+  - Invoke action to refresh data on share
+* Added cmdlet 'Set-AzDataBoxEdgeStorageAccountCredential'
+  - Set the az databoxedge storage account credential
+
+#### Az.DataFactory
+* Add AutoUpdateETA, LatestVersion, PushedVersion, TaskQueueId and VersionStatus properties for Get-AzDataFactoryV2IntegrationRuntime cmd
+* Update ADF .Net SDK version to 4.6.0
+* Add parameter 'PublicIPs' for 'Set-AzureRmDataFactoryV2IntegrationRuntime' cmd 
+to enable create Azure-SSIS IR with static public IP addresses.
+
+#### Az.DevTestLabs
+* Remove the broken link in Get-AzDtlAllowedVMSizesPolicy.md
+
+#### Az.EventHub
+* Fix for issue 10634 : Fix the null Object reference for remove eventhubnamespace
+
+#### Az.HDInsight
+* Fix Invoke-AzHDInsightHiveJob.md error.
+
+#### Az.MachineLearning
+* Removed below cmdlets because MachineLearningCompute is not available any longer
+  - Get-AzMlOpCluster
+  - Get-AzMlOpClusterKey
+  - New-AzMlOpCluster
+  - Remove-AzMlOpCluster
+  - Set-AzMlOpCluster
+  - Test-AzMlOpClusterSystemServicesUpdateAvailability
+  - Update-AzMlOpClusterSystemService
+
+#### Az.Network
+* Upgrade dependancy of Microsoft.Azure.Management.Sql from 1.36-preivew to 1.37-preivew
+
+#### Az.RecoveryServices
+* Azure Site Recovery change support for managed disk vms encrypted at rest with customer managed leys for Azure to Azure provider.
+* Azure Site Recovery support to input disk encryption Set Id as optional input at enabling protection for Vmware to Azure.
+* Azure Site Recovery support to input disk encryption Set Id as optional input at disk level to enable protection for Vmware to Azure.
+* Azure Site Recovery support to update replication protected item with disk encryption set Map for HyperV to Azure.
+
+#### Az.Resources
+* Fix an error in help document of 'Remove-AzTag'.
+
+#### Az.Sql
+* Fix vulnerability assessment set baseline cmdlets functionality to work on master db for azure database and limit it on managed instance system databases.
+* Fix an error when creating SQL instance failover group
+
+#### Az.SqlVirtualMachine
+* Add DR as a new valid License type
+
+#### Az.Storage
+* Add breaking change warning message for DefaultAction Value change in a future release
+    - Update-AzStorageAccountNetworkRuleSet
+* Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats 
+    - Get-AzureRMStorageAccount
+
 ## 3.2.0 - December 2019
 
 ### General
