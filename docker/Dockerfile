@@ -8,17 +8,16 @@ ARG MODULE=Az
 ARG SETTINGS=AzureRmContextSettings.json
 ARG AZURE=/root/.Azure
 
-LABEL maintainer="Microsoft" \
-      org.label-schema.schema-version="1.0" \
-      org.label-schema.vendor="Microsoft" \
-      org.label-schema.name="Azure Powershell" \
-      org.label-schema.version="TODO" \
-      org.label-schema.license="MIT" \
-      org.label-schema.description="TODO" \
-      org.label-schema.url="TODO" \
+LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
+      readme.md="TODO" \
+      description="This Dockerfile will install the latest release of Azure PowerShell." \
       org.label-schema.usage="TODO" \
-      org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.vcs-url="https://github.com/Azure/azure-powershell.git" \
+      org.label-schema.url="TODO" \
+      org.label-schema.vcs-url="TODO" \
+      org.label-schema.name="azure-powershell" \
+      org.label-schema.vendor="Azure PowerShell" \
+      org.label-schema.version="TODO" \
+      org.label-schema.schema-version="1.0" \
       org.label-schema.docker.cmd="TODO"
 
 # install azure-powershell from built artifacts
