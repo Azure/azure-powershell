@@ -358,17 +358,7 @@ function Test-StorageBlobServiceProperties
 		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
 		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
-
-		# Update and Get Blob Service Properties: ChangeFeed
-		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableChangeFeed $true
-		Assert-AreEqual $true $property.ChangeFeed.Enabled
-		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
-		Assert-AreEqual $true $property.ChangeFeed.Enabled
-		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableChangeFeed $false
-		Assert-AreEqual $false $property.ChangeFeed.Enabled
-		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
-		Assert-AreEqual $false $property.ChangeFeed.Enabled
-
+		
 		# Enable and Disable Blob Delete Retention Policy
 		$policy = Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 3
 		Assert-AreEqual $true $policy.Enabled

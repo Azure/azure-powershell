@@ -13,26 +13,12 @@ Creates a Storage account.
 
 ## SYNTAX
 
-### AzureActiveDirectoryDomainServicesForFile (Default)
 ```
 New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
  [-EnableHierarchicalNamespace <Boolean>] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>]
  [-EnableLargeFileShare] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ActiveDirectoryDomainServicesForFile
-```
-New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
- [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
- [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-EnableHierarchicalNamespace <Boolean>] [-EnableLargeFileShare]
- [-EnableActiveDirectoryDomainServicesForFile <Boolean>] [-ActiveDirectoryDomainName <String>]
- [-ActiveDirectoryNetBiosDomainName <String>] [-ActiveDirectoryForestName <String>]
- [-ActiveDirectoryDomainGuid <String>] [-ActiveDirectoryDomainSid <String>]
- [-ActiveDirectoryAzureStorageSid <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,20 +71,7 @@ This command creates a Storage account with Hierarchical Namespace enabled.
 PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryDomainServicesForFile $true -EnableLargeFileShare
 ```
 
-This command creates a Storage account with Azure Files AAD DS Authentication, and enable large file share.
-
-### Example 7: Create a Storage account with enable Files Active Directory Domain Service Authentication.
-```
-PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableActiveDirectoryDomainServicesForFile $true `
-        -ActiveDirectoryDomainName "mydomain.com" `
-        -ActiveDirectoryNetBiosDomainName "mydomain.com" `
-        -ActiveDirectoryForestName "mydomain.com" `
-        -ActiveDirectoryDomainGuid "12345678-1234-1234-1234-123456789012" `
-        -ActiveDirectoryDomainSid "S-1-5-21-1234567890-1234567890-1234567890" `
-        -ActiveDirectoryAzureStorageSid "S-1-5-21-1234567890-1234567890-1234567890-1234"
-```
-
-This command creates a Storage account withenable Files Active Directory Domain Service Authentication.
+This command creates a Storage account with Azure Files AAD DS Authentication, and enable large file share..
 
 ## PARAMETERS
 
@@ -114,96 +87,6 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Hot, Cool
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActiveDirectoryAzureStorageSid
-Specifies the security identifier (SID) for Azure Storage. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
-
-```yaml
-Type: System.String
-Parameter Sets: ActiveDirectoryDomainServicesForFile
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActiveDirectoryDomainGuid
-Specifies the domain GUID. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
-
-```yaml
-Type: System.String
-Parameter Sets: ActiveDirectoryDomainServicesForFile
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActiveDirectoryDomainName
-Specifies the primary domain that the AD DNS server is authoritative for. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
-
-```yaml
-Type: System.String
-Parameter Sets: ActiveDirectoryDomainServicesForFile
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActiveDirectoryDomainSid
-Specifies the security identifier (SID). This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
-
-```yaml
-Type: System.String
-Parameter Sets: ActiveDirectoryDomainServicesForFile
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActiveDirectoryForestName
-Specifies the Active Directory forest to get. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
-
-```yaml
-Type: System.String
-Parameter Sets: ActiveDirectoryDomainServicesForFile
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActiveDirectoryNetBiosDomainName
-Specifies the NetBIOS domain name. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
-
-```yaml
-Type: System.String
-Parameter Sets: ActiveDirectoryDomainServicesForFile
-Aliases:
 
 Required: False
 Position: Named
@@ -273,27 +156,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableActiveDirectoryDomainServicesForFile
-Enable Azure Files Active Directory Domain Service Authentication for the storage account.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: ActiveDirectoryDomainServicesForFile
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnableAzureActiveDirectoryDomainServicesForFile
 Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: AzureActiveDirectoryDomainServicesForFile
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -323,24 +191,6 @@ Indicates whether or not the Storage account only enables HTTPS traffic.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableLargeFileShare
-Indicates whether or not the storage account can support large file shares with more than 5 TiB capacity. 
-Once the account is enabled, the feature cannot be disabled. 
-Currently only supported for LRS and ZRS replication types, hence account conversions to geo-redundant accounts would not be possible. 
-Learn more in https://go.microsoft.com/fwlink/?linkid=2086047
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -461,14 +311,12 @@ The acceptable values for this parameter are:
 - Standard_RAGRS. Read access geo-redundant storage.
 - Premium_LRS. Premium locally-redundant storage.
 - Premium_ZRS. Premium zone-redundant storage.
-- Standard_GZRS - Geo-redundant zone-redundant storage.
-- Standard_RAGZRS - Read access geo-redundant zone-redundant storage.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountType, AccountType, Type
-Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS, Premium_ZRS, Standard_GZRS, Standard_RAGZRS
+Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS, Premium_ZRS
 
 Required: True
 Position: 2

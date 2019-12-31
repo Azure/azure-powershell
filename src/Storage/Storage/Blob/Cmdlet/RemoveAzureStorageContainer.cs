@@ -27,7 +27,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// remove specified azure container
     /// </summary>
     [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainer", SupportsShouldProcess = true),OutputType(typeof(Boolean))]
-    [Alias("Remove-" + Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DatalakeGen2FileSystem")]
     public class RemoveAzureStorageContainerCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Container")]
