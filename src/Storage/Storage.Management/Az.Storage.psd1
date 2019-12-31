@@ -151,15 +151,19 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'New-AzStorageAccountManagementPolicyFilter', 
                'New-AzStorageAccountManagementPolicyRule', 
                'Add-AzStorageAccountManagementPolicyAction',
-			   'Invoke-AzStorageAccountFailover', 
+               'Invoke-AzStorageAccountFailover', 
                'Update-AzStorageBlobServiceProperty', 
                'Get-AzStorageBlobServiceProperty', 
                'Enable-AzStorageBlobDeleteRetentionPolicy', 
                'Disable-AzStorageBlobDeleteRetentionPolicy', 
-               'Revoke-AzStorageAccountUserDelegationKeys',
+               'Revoke-AzStorageAccountUserDelegationKeys', 
                'Get-AzStorageFileHandle', 'Close-AzStorageFileHandle', 
                'New-AzRmStorageShare', 'Remove-AzRmStorageShare', 
-               'Get-AzRmStorageShare', 'Update-AzRmStorageShare'
+               'Get-AzRmStorageShare', 'Update-AzRmStorageShare',
+               'Get-AzDataLakeGen2ChildItem', 'Get-AzDataLakeGen2Item',
+               'New-AzDataLakeGen2Item', 'Move-AzDataLakeGen2Item',
+               'Remove-AzDataLakeGen2Item', 'Update-AzDataLakeGen2Item',
+               'New-AzDataLakeGen2ItemAclObject', 'Get-AzDataLakeGen2ItemContent'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -168,9 +172,9 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
 AliasesToExport = 'Get-AzStorageContainerAcl', 'Start-CopyAzureStorageBlob', 
                'Stop-CopyAzureStorageBlob', 'Enable-AzStorageSoftDelete', 
                'Disable-AzStorageSoftDelete','Enable-AzureStorageStaticWebsite',
-			   'Disable-AzureStorageStaticWebsite','Invoke-AzureRmStorageAccountFailover',
-			   'Get-AzureRmStorageAccountManagementPolicy','Set-AzureRmStorageAccountManagementPolicy',
-               'Remove-AzureRmStorageAccountManagementPolicy'
+               'Disable-AzureStorageStaticWebsite','Invoke-AzureRmStorageAccountFailover',
+               'Get-AzureRmStorageAccountManagementPolicy','Set-AzureRmStorageAccountManagementPolicy',
+               'Remove-AzureRmStorageAccountManagementPolicy', 'New-AzDatalakeGen2FileSystem',
                'Remove-AzDatalakeGen2FileSystem', 'Get-AzDatalakeGen2FileSystem'
 
 # DSC resources to export from this module
