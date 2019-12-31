@@ -1310,29 +1310,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CancelsActiveDeployment()
         {
-            DeploymentExtended actualParameters = new DeploymentExtended();
-
-            var listResult = new List<DeploymentExtended>()
+            var result = new AzureOperationResponse<DeploymentExtended>()
             {
-                new DeploymentExtended(
-                    name: deploymentName + 1,
-                    properties: new DeploymentPropertiesExtended(
-                        mode: DeploymentMode.Incremental,
-                        templateLink: new TemplateLink()
-                        {
-                            Uri = "http://microsoft1.com"
-                        },
-                        provisioningState: "Succeeded")),
-                new DeploymentExtended(
-                    name: deploymentName + 2,
-                    properties: new DeploymentPropertiesExtended(
-                        mode: DeploymentMode.Incremental,
-                        templateLink: new TemplateLink()
-                        {
-                            Uri = "http://microsoft1.com"
-                        },
-                        provisioningState: "Failed")),
-                new DeploymentExtended(
+                Body = new DeploymentExtended(
                     name: deploymentName + 3,
                     properties: new DeploymentPropertiesExtended(
                         mode: DeploymentMode.Incremental,
@@ -1342,22 +1322,17 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         },
                         provisioningState: "Running"))
             };
-            var pagableResult = new Page<DeploymentExtended>();
-            pagableResult.SetItemValue<DeploymentExtended>(listResult);
-            var result = new AzureOperationResponse<IPage<DeploymentExtended>>()
-            {
-                Body = pagableResult
-            };
-            deploymentsMock.Setup(f => f.ListByResourceGroupWithHttpMessagesAsync(
+
+            deploymentsMock.Setup(f => f.GetWithHttpMessagesAsync(
                 resourceGroupName,
-                null,
+                deploymentName + 3,
                 null,
                 It.IsAny<CancellationToken>()))
                 .Returns(Task.Factory.StartNew(() => result));
 
             deploymentsMock.Setup(f => f.CancelWithHttpMessagesAsync(
                 resourceGroupName,
-                It.IsIn(new[] { deploymentName + 1, deploymentName + 2, deploymentName + 3 }),
+                deploymentName + 3,
                 null,
                 It.IsAny<CancellationToken>()))
                 .Returns(Task.Factory.StartNew(() => new Rest.Azure.AzureOperationResponse()));
@@ -1365,7 +1340,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             resourcesClient.CancelDeployment(
                 new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup)
                 {
-                    ResourceGroupName = resourceGroupName
+                    ResourceGroupName = resourceGroupName,
+                    DeploymentName = deploymentName + 3
                 });
 
             deploymentsMock.Verify(f => f.CancelWithHttpMessagesAsync(resourceGroupName, deploymentName + 3, null, new CancellationToken()), Times.Once());
