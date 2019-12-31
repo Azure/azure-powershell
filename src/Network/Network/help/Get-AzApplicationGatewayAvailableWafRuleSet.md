@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayavailablewafrulesets
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-AzApplicationGatewayAvailableWafRuleSet
 schema: 2.0.0
 ---
 
-# Get-AzApplicationGatewayAvailableWafRuleSets
+# Get-AzApplicationGatewayAvailableWafRuleSet
 
 ## SYNOPSIS
 Gets all available web application firewall rule sets.
@@ -13,18 +13,18 @@ Gets all available web application firewall rule sets.
 ## SYNTAX
 
 ```
-Get-AzApplicationGatewayAvailableWafRuleSets [-DefaultProfile <IAzureContextContainer>]
+Get-AzApplicationGatewayAvailableWafRuleSet [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzApplicationGatewayAvailableWafRuleSets** cmdlet gets all available web application firewall rule sets.
+The **Get-AzApplicationGatewayAvailableWafRuleSet** cmdlet gets all available web application firewall rule sets.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>$availableRuleSets = Get-AzApplicationGatewayAvailableWafRuleSets
+PS C:\>$availableRuleSets = Get-AzApplicationGatewayAvailableWafRuleSet
 ```
 
 This commands returns all the available web application firewall rule sets.
@@ -58,7 +58,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableWafRuleSetsResult
 
 ## NOTES
-**List-AzApplicationGatewayAvailableWafRuleSets** is an alias for the **Get-AzApplicationGatewayAvailableWafRuleSets** cmdlet.
+**List-AzApplicationGatewayAvailableWafRuleSet** is an alias for the **Get-AzApplicationGatewayAvailableWafRuleSet** cmdlet.
 
 ## RELATED LINKS
 

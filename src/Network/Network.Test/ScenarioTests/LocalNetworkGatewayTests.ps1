@@ -28,13 +28,13 @@ function Test-LocalNetworkGatewayCRUD
     try 
      {
       # Create the resource group
-      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }             
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }             
 
       # Create & Get LocalNetworkGateway      
-      $job = New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.4 -AsJob
+      $job = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.4 -AsJob
       $job | Wait-Job
 	  $actual = $job | Receive-Job
-	  $expected = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname
+	  $expected = Get-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "192.168.3.4" $expected.GatewayIpAddress
@@ -42,7 +42,7 @@ function Test-LocalNetworkGatewayCRUD
       $expected.Location = $location
 
       # List LocalNetworkGateways
-      $list = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname
+      $list = Get-AzLocalNetworkGateway -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $list[0].Name $actual.Name	
@@ -50,35 +50,35 @@ function Test-LocalNetworkGatewayCRUD
       Assert-AreEqual "192.168.3.4" $list[0].GatewayIpAddress
       
       # Set/Update LocalNetworkGateway
-      $job = Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $expected -AddressPrefix "200.168.0.0/16" -AsJob
+      $job = Set-AzLocalNetworkGateway -LocalNetworkGateway $expected -AddressPrefix "200.168.0.0/16" -AsJob
 	  $job | Wait-Job
 	  $actual = $job | Receive-Job
-      $expected = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
+      $expected = Get-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
       Assert-AreEqual "200.168.0.0/16" $expected.LocalNetworkAddressSpace.AddressPrefixes[0]
 
-	  # Add BGP settings using Set-AzureRmLocalNetworkGateway
+	  # Add BGP settings using Set-AzLocalNetworkGateway
 	  $asn = 1234
 	  $bgpPeeringAddress = "1.2.3.4"
 	  $peerWeight = 15
-	  $actual = Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $expected -Asn $asn -BgpPeeringAddress $bgpPeeringAddress -PeerWeight $peerWeight
-      $expected = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
+	  $actual = Set-AzLocalNetworkGateway -LocalNetworkGateway $expected -Asn $asn -BgpPeeringAddress $bgpPeeringAddress -PeerWeight $peerWeight
+      $expected = Get-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
       Assert-AreEqual $asn $expected.BgpSettings.Asn
 	  Assert-AreEqual $bgpPeeringAddress $expected.BgpSettings.BgpPeeringAddress
 	  Assert-AreEqual $peerWeight $expected.BgpSettings.PeerWeight
 
 	  # Update BGP settings
 	  $asn = 1337
-	  $actual = Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $expected -Asn $asn
-      $expected = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
+	  $actual = Set-AzLocalNetworkGateway -LocalNetworkGateway $expected -Asn $asn
+      $expected = Get-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
       Assert-AreEqual $asn $expected.BgpSettings.Asn
 
       # Delete LocalNetworkGateway
-      $job = Remove-AzureRmLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
+      $job = Remove-AzLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
 	  $job | Wait-Job
 	  $delete = $job | Receive-Job
       Assert-AreEqual true $delete
       
-      $list = Get-AzureRmLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName
+      $list = Get-AzLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
      }
      finally

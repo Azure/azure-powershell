@@ -23,9 +23,9 @@ using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzApplicationGatewayAvailableSslOptions"), 
+    [Cmdlet(VerbsCommon.Get, "AzApplicationGatewayAvailableSslOption"), 
         OutputType(typeof(PSApplicationGatewayAvailableSslOptions))]
-    [Alias("List-AzureRmApplicationGatewayAvailableSslOptions")]
+    [Alias("List-AzApplicationGatewayAvailableSslOption")]
     public class GetAzureApplicationGatewayAvailableSslOptions : ApplicationGatewayBaseCmdlet
     {
         public override void ExecuteCmdlet()

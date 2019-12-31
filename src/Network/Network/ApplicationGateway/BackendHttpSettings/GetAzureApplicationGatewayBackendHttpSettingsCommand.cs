@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzApplicationGatewayBackendHttpSettings"),
+    [Cmdlet(VerbsCommon.Get, "AzApplicationGatewayBackendHttpSetting"),
         OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
     public class GetAzureApplicationGatewayBackendHttpSettings : NetworkBaseCmdlet
     {

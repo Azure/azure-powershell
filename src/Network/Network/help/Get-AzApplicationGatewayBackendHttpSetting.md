@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewaybackendhttpsettings
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-AzApplicationGatewayBackendHttpSetting
 schema: 2.0.0
 ---
 
-# Get-AzApplicationGatewayBackendHttpSettings
+# Get-AzApplicationGatewayBackendHttpSetting
 
 ## SYNOPSIS
 Gets the back-end HTTP settings of an application gateway.
@@ -13,19 +13,19 @@ Gets the back-end HTTP settings of an application gateway.
 ## SYNTAX
 
 ```
-Get-AzApplicationGatewayBackendHttpSettings [-Name <String>] -ApplicationGateway <PSApplicationGateway>
+Get-AzApplicationGatewayBackendHttpSetting [-Name <String>] -ApplicationGateway <PSApplicationGateway>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzApplicationGatewayBackendHttpSettings cmdlet gets the back-end HTTP settings of an application gateway.
+The Get-AzApplicationGatewayBackendHttpSetting cmdlet gets the back-end HTTP settings of an application gateway.
 
 ## EXAMPLES
 
 ### Example 1: Get back-end HTTP settings by name
 ```
 PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $Settings  = Get-AzApplicationGatewayBackendHttpSettings -Name "Settings01" -ApplicationGateway $AppGw
+PS C:\> $Settings  = Get-AzApplicationGatewayBackendHttpSetting -Name "Settings01" -ApplicationGateway $AppGw
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01, and stores it in the $AppGw variable.The second command gets the HTTP settings named Settings01 for $AppGw and stores the settings in the $Settings variable.
@@ -33,7 +33,7 @@ The first command gets the application gateway named ApplicationGateway01 in the
 ### Example 2: Get a collection of back-end HTTP settings
 ```
 PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $SettingsList  = Get-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $AppGw
+PS C:\> $SettingsList  = Get-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $AppGw
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01, and stores it in the $AppGw variable.The second command gets the collection of HTTP settings for $AppGw and stores the settings in the $SettingsList variable.
@@ -100,11 +100,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzApplicationGatewayBackendHttpSettings]()
+[Add-AzApplicationGatewayBackendHttpSetting]()
 
-[New-AzApplicationGatewayBackendHttpSettings]()
+[New-AzApplicationGatewayBackendHttpSetting]()
 
-[Remove-AzApplicationGatewayBackendHttpSettings]()
+[Remove-AzApplicationGatewayBackendHttpSetting]()
 
-[Set-AzApplicationGatewayBackendHttpSettings]()
+[Set-AzApplicationGatewayBackendHttpSetting]()
 

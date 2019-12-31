@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azapplicationgatewaybackendhttpsettings
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-AzApplicationGatewayBackendHttpSetting
 schema: 2.0.0
 ---
 
-# Remove-AzApplicationGatewayBackendHttpSettings
+# Remove-AzApplicationGatewayBackendHttpSetting
 
 ## SYNOPSIS
 Removes back-end HTTP settings from an application gateway.
@@ -13,19 +13,19 @@ Removes back-end HTTP settings from an application gateway.
 ## SYNTAX
 
 ```
-Remove-AzApplicationGatewayBackendHttpSettings -Name <String> -ApplicationGateway <PSApplicationGateway>
+Remove-AzApplicationGatewayBackendHttpSetting -Name <String> -ApplicationGateway <PSApplicationGateway>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzApplicationGatewayBackendHttpSettings cmdlet removes back-end Hypertext Transfer Protocol (HTTP) settings from an Azure application gateway.
+The Remove-AzApplicationGatewayBackendHttpSetting cmdlet removes back-end Hypertext Transfer Protocol (HTTP) settings from an Azure application gateway.
 
 ## EXAMPLES
 
 ### Example 1: Remove back-end HTTP settings from an application gateway
 ```
 PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Remove-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $AppGw -Name "BackEndSetting02"
+PS C:\> Remove-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $AppGw -Name "BackEndSetting02"
 ```
 
 The first command gets an application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.
@@ -94,11 +94,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzApplicationGatewayBackendHttpSettings]()
+[Add-AzApplicationGatewayBackendHttpSetting]()
 
-[New-AzApplicationGatewayBackendHttpSettings]()
+[New-AzApplicationGatewayBackendHttpSetting]()
 
-[Get-AzApplicationGatewayBackendHttpSettings]()
+[Get-AzApplicationGatewayBackendHttpSetting]()
 
-[Set-AzApplicationGatewayBackendHttpSettings]()
+[Set-AzApplicationGatewayBackendHttpSetting]()
 

@@ -2,11 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: CFE184E2-6DEF-4E92-A9C3-E82F29BB4FB8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecircuitstats
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-AzExpressRouteCircuitStat
 schema: 2.0.0
 ---
 
-# Get-AzExpressRouteCircuitStats
+# Get-AzExpressRouteCircuitStat
 
 ## SYNOPSIS
 Gets usage statistics of an ExpressRoute circuit.
@@ -14,12 +14,12 @@ Gets usage statistics of an ExpressRoute circuit.
 ## SYNTAX
 
 ```
-Get-AzExpressRouteCircuitStats -ResourceGroupName <String> -ExpressRouteCircuitName <String>
+Get-AzExpressRouteCircuitStat -ResourceGroupName <String> -ExpressRouteCircuitName <String>
  [-PeeringType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzExpressRouteCircuitStats** cmdlet retrieves traffic statistics for an ExpressRoute
+The **Get-AzExpressRouteCircuitStat** cmdlet retrieves traffic statistics for an ExpressRoute
 circuit. The statistics include the number of bytes sent and received over both the primary and
 secondary routes.
 
@@ -27,7 +27,7 @@ secondary routes.
 
 ### Example 1: Display the traffic statistics for an ExpressRoute peer
 ```
-Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
+Get-AzExpressRouteCircuitStat -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
 ```
 
 ## PARAMETERS

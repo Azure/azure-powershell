@@ -23,7 +23,7 @@ function Test-VirtualNetworkAvailableEndpointServicesList
     $location = $location -replace " ",""
     try
     {
-        $results = Get-AzureRmVirtualNetworkAvailableEndpointService -Location $location;
+        $results = Get-AzVirtualNetworkAvailableEndpointService -Location $location;
         Assert-NotNull $results;
     }
     finally

@@ -1,20 +1,20 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azapplicationgatewaybackendhttpsettings
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-AzApplicationGatewayBackendHttpSetting
 schema: 2.0.0
 ---
 
-# Set-AzApplicationGatewayBackendHttpSettings
+# New-AzApplicationGatewayBackendHttpSetting
 
 ## SYNOPSIS
-Updates back-end HTTP settings for an application gateway.
+Creates back-end HTTP settings for an application gateway.
 
 ## SYNTAX
 
 ```
-Set-AzApplicationGatewayBackendHttpSettings -ApplicationGateway <PSApplicationGateway> -Name <String>
- -Port <Int32> -Protocol <String> -CookieBasedAffinity <String> [-RequestTimeout <Int32>]
+New-AzApplicationGatewayBackendHttpSetting -Name <String> -Port <Int32> -Protocol <String>
+ -CookieBasedAffinity <String> [-RequestTimeout <Int32>]
  [-ConnectionDraining <PSApplicationGatewayConnectionDraining>] [-ProbeId <String>]
  [-Probe <PSApplicationGatewayProbe>]
  [-AuthenticationCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]>]
@@ -23,20 +23,18 @@ Set-AzApplicationGatewayBackendHttpSettings -ApplicationGateway <PSApplicationGa
 ```
 
 ## DESCRIPTION
-The Set-AzApplicationGatewayBackendHttpSettings cmdlet updates the back-end Hypertext Transfer Protocol (HTTP) settings for an Azure application gateway.
+The New-AzApplicationGatewayBackendHttpSetting cmdlet creates back-end HTTP settings for an application gateway.
 Back-end HTTP settings are applied to all back-end servers in a pool.
 
 ## EXAMPLES
 
-### Example 1: Update the back-end HTTP settings for an application gateway
+### Example 1: Create back-end HTTP settings
 ```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $AppGw = Set-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $AppGw -Name "Setting02" -Port 88 -Protocol "Http" -CookieBasedAffinity "Disabled"
+PS C:\>$Setting = New-AzApplicationGatewayBackendHttpSetting -Name "Setting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-The first command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.
-
-The second command updates the HTTP settings of the application gateway in the $AppGw variable to use port 88, the HTTP protocol and enables cookie-based affinity.
+This command creates back-end HTTP settings named Setting01 on port 80, using the HTTP protocol, with cookie-based affinity disabled.
+The settings are stored in the $Setting variable.
 
 ## PARAMETERS
 
@@ -52,21 +50,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ApplicationGateway
-Specifies an application gateway object with which this cmdlet associates back-end HTTP settings.
-
-```yaml
-Type: PSApplicationGateway
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -101,8 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -CookieBasedAffinity
-Specifies whether cookie-based affinity should be enabled or disabled for the backend server pool.
-The acceptable values for this parameter are: Disabled or Enabled.
+Specifies whether cookie-based affinity should be enabled or disabled for the back-end server pool.
 
 ```yaml
 Type: String
@@ -148,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the back-end HTTP settings object.
+Specifies the name of the back-end HTTP settings that this cmdlet creates.
 
 ```yaml
 Type: String
@@ -194,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -Port
-Specifies the port to use for each server in the back-end server pool.
+Specifies the port of the back-end server pool.
 
 ```yaml
 Type: Int32
@@ -209,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -Probe
-Specifies a probe to associate with the back-end HTTP settings.
+Specifies a probe to associate with the back-end server pool.
 
 ```yaml
 Type: PSApplicationGatewayProbe
@@ -239,7 +221,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProbeId
-Specifies the ID of the probe to associate with the back-end HTTP settings.
+Specifies the ID of the probe to associate with the back-end server pool.
 
 ```yaml
 Type: String
@@ -254,9 +236,8 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Specifies the protocol to use for communication between the application gateway and back-end servers.
+Specifies the protocol to use for communication between the application gateway and the back-end servers.
 The acceptable values for this parameter are: Http and Https.
-This parameter is case-sensitive.
 
 ```yaml
 Type: String
@@ -295,17 +276,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Add-AzApplicationGatewayBackendHttpSettings]()
+[Add-AzApplicationGatewayBackendHttpSetting]()
 
-[Get-AzApplicationGatewayBackendHttpSettings]()
+[Get-AzApplicationGatewayBackendHttpSetting]()
 
-[New-AzApplicationGatewayBackendHttpSettings]()
+[Remove-AzApplicationGatewayBackendHttpSetting]()
 
-[Remove-AzApplicationGatewayBackendHttpSettings]()
+[Set-AzApplicationGatewayBackendHttpSetting]()
 
