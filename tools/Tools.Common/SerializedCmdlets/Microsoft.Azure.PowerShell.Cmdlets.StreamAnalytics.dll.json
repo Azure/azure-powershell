@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
               "Name": "System.String",
@@ -297,7 +297,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
               "Name": "System.String",
@@ -622,7 +622,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
               "Name": "System.String",
@@ -1459,7 +1459,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
               "Name": "System.String",
@@ -1742,7 +1742,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
               "Name": "System.String",
@@ -2579,7 +2579,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.StreamingJob",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2979,7 +2979,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.StreamingJob",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3976,7 +3976,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.Output",
               "Name": "System.String",
@@ -4259,7 +4259,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.Output",
               "Name": "System.String",
@@ -5096,7 +5096,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuota",
               "CurrentCount": "System.Int32",
@@ -5295,7 +5295,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.Transformation",
               "Name": "System.String",
@@ -5578,7 +5578,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.Transformation",
               "Name": "System.String",

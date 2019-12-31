@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.2
+* Update references in .psd1 to use relative path
 * Fix issue #10602, where **New-AzBatchPool** did not properly send `VirtualMachineConfiguration.ContainerConfiguration` or `VirtualMachineConfiguration.DataDisks` to the server.
 
 ## Version 2.0.1

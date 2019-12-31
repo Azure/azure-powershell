@@ -98,6 +98,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Guid? SubscriptionId { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy definition groups parameter of the new policy set definition
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionGroupDefinitionHelp)]
+        [ValidateNotNullOrEmpty]
+        public string GroupDefinition { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -138,8 +145,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
 
-            var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : GetObjectFromParameter(this.Metadata).ToString();
-            var parameterJson = string.IsNullOrEmpty(this.Parameter) ? resource.Properties["parameters"]?.ToString() : GetObjectFromParameter(this.Parameter).ToString();
+            var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)).ToString();
+            var parameterJson = string.IsNullOrEmpty(this.Parameter) ? resource.Properties["parameters"]?.ToString() : this.GetObjectFromParameter(this.Parameter, nameof(this.Parameter)).ToString();
+            var groupsJson = string.IsNullOrEmpty(this.GroupDefinition) ? resource.Properties["policyDefinitionGroups"]?.ToString() : this.GetArrayFromParameter(this.GroupDefinition, nameof(this.GroupDefinition)).ToString();
 
             var policySetDefinitionObject = new PolicySetDefinition
             {
@@ -148,25 +156,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     Description = this.Description ?? resource.Properties["description"]?.ToString(),
                     DisplayName = this.DisplayName ?? resource.Properties["displayName"]?.ToString(),
-                    PolicyDefinitions = string.IsNullOrEmpty(this.PolicyDefinition) ? JArray.Parse(resource.Properties["policyDefinitions"].ToString()) : GetPolicyDefinitionsObject(),
+                    PolicyDefinitions = string.IsNullOrEmpty(this.PolicyDefinition) ? resource.Properties["policyDefinitions"] as JArray : this.GetArrayFromParameter(this.PolicyDefinition, nameof(this.PolicyDefinition)),
                     Metadata = string.IsNullOrEmpty(metaDataJson) ?  null : JObject.Parse(metaDataJson),
-                    Parameters = string.IsNullOrEmpty(parameterJson) ? null : JObject.Parse(parameterJson)
+                    Parameters = string.IsNullOrEmpty(parameterJson) ? null : JObject.Parse(parameterJson),
+                    PolicyDefinitionGroups = string.IsNullOrEmpty(groupsJson) ? null : JArray.Parse(groupsJson)
                 }
             };
 
             return policySetDefinitionObject.ToJToken();
-        }
-
-        /// <summary>
-        /// Gets the policy definitions object
-        /// </summary>
-        private JArray GetPolicyDefinitionsObject()
-        {
-            string policyFilePath = this.TryResolvePath(this.PolicyDefinition);
-
-            return File.Exists(policyFilePath)
-                ? JArray.Parse(FileUtilities.DataStore.ReadFileAsText(policyFilePath))
-                : JArray.Parse(this.PolicyDefinition);
         }
 
         /// <summary>

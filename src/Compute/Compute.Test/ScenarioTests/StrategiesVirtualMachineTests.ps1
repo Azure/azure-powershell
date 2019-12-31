@@ -558,7 +558,7 @@ function Test-SimpleNewVmPpgId
             -ResourceGroupName $rgname `
             -Name $ppgname `
             -Location "eastus"
-        $vm = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroup $ppg.Id
+        $vm = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroupId $ppg.Id
 
         Assert-AreEqual $vm.ProximityPlacementGroup.Id $ppg.Id
     }
