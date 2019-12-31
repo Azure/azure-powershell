@@ -20,6 +20,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.8.2
+* Spelling fix in the docs.
+
 ## Version 0.8.1
 * Update references in .psd1 to use relative path
 
