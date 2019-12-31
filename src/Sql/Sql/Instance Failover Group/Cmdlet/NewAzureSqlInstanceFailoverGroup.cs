@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             object parameterValue;
 
             int? gracePeriod = null;
-            if (!FailoverPolicy.Equals("Manual"))
+            if (!FailoverPolicy.Equals("Manual", StringComparison.OrdinalIgnoreCase))
             {
                 gracePeriod = (MyInvocation.BoundParameters.TryGetValue("GracePeriodWithDataLossHours", out parameterValue) ? (int)parameterValue : 1);
             }                     
