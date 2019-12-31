@@ -167,6 +167,15 @@ namespace Microsoft.Azure.Commands.Profile
            HelpMessage = "The resource identifier of the Azure Analysis Services resource.")]
         public string AzureAnalysisServicesEndpointResourceId { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Dns suffix of Azure Attestation service.")]
+        public string AzureAttestationServiceEndpointSuffix { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier of the Azure Attestation service that is the recipient of the requested token.")]
+        public string AzureAttestationServiceEndpointResourceId { get; set; }
+
+
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
@@ -316,6 +325,10 @@ namespace Microsoft.Azure.Commands.Profile
                                    nameof(AzureAnalysisServicesEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId,
                                    nameof(AzureAnalysisServicesEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix,
+                                    nameof(AzureAttestationServiceEndpointSuffix));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId,
+                                    nameof(AzureAttestationServiceEndpointResourceId));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });

@@ -18,12 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add breaking change warning message for DefaultAction Value change in a future release
+    - Update-AzStorageAccountNetworkRuleSet
+* Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats 
+    - Get-AzureRMStorageAccount
+
+## Version 1.10.0
+* Update references in .psd1 to use relative path
 * Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
     - New-AzStorageContainerSASToken
     - New-AzStorageBlobSASToken
 * Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
     - Revoke-AzStorageAccountUserDelegationKeys
-* Upgrade to Microsoft.Azure.Management.Storage 14.1.0, to support new API version 2019-06-01.
+* Upgrade to Microsoft.Azure.Management.Storage 14.2.0, to support new API version 2019-06-01.
+* Support Share QuotaGiB more than 5120 in Management plane File Share cmdlets, and add parameter alias "Quota" to parameter "QuotaGiB" 
+	- New-AzRmStorageShare
+	- Update-AzRmStorageShare
+* Add parameter alias "QuotaGiB" to parameter "Quota"
+	- Set-AzStorageShareQuota
+* Fix the issue that Set-AzStorageContainerAcl can clean up the stored Access Policy
+	- Set-AzStorageContainerAcl
 
 ## Version 1.9.0
 * Support enable Large File share when create or update Storage account

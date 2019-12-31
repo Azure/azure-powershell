@@ -14,9 +14,9 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.DataBoxEdge;
 using Microsoft.Rest.Azure;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Alert;
+using ResourceModel = Microsoft.Azure.Management.DataBoxEdge.Models.Alert;
 using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeAlert;
 using PSTopLevelResourceObject = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
 

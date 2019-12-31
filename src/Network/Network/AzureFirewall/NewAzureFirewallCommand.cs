@@ -142,6 +142,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The private IP ranges to which traffic won't be SNAT'ed"
+        )]
+        public string[] PrivateRange { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -262,6 +268,7 @@ namespace Microsoft.Azure.Commands.Network
                     NetworkRuleCollections = this.NetworkRuleCollection?.ToList(),
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
+                    PrivateRange = this.PrivateRange,
                     Sku = sku
                 };
 
