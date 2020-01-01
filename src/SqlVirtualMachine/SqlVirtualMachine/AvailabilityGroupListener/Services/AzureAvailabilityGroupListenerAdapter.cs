@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
         /// <param name="resourceGroupName">The resource group the Availability Group Listener is in</param>
         /// <param name="groupName">The name of the group</param>
         /// <param name="agListenerName">The name of the Availability Listener Group to be deleted</param>
-        public void RemoveSqlVirtualMachine(string resourceGroupName, string groupName, string agListenerName)
+        public void RemoveAvailabilityGroupListener(string resourceGroupName, string groupName, string agListenerName)
         {
             Communicator.Delete(resourceGroupName, groupName, agListenerName);
         }

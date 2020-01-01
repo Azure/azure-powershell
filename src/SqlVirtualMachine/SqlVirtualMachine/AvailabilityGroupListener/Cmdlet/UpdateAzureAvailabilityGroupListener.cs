@@ -27,30 +27,30 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     /// This class implements the Update-AzSqlVMGroup cmdlet. It allows to update the information relative to an Azure Sql Virtual Machine
     /// Group and return to the user an AzureSqlVMGroupModel object corresponding to the instance updated.
     /// </summary>
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", DefaultParameterSetName = ParameterSet.Name, SupportsShouldProcess = true)]
-    [OutputType(typeof(AzureSqlVMGroupModel))]
-    public class UpdateAzureSqlVMGroup : AzureSqlVMGroupUpsertCmdletBase
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilityGroupListener", DefaultParameterSetName = ParameterSet.Name, SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureAvailabilityGroupListenerModel))]
+    public class UpdateAzureAvailabilityGroupListener : AzureAvailabilityGroupListenerUpsertCmdletBase
     {
         /// <summary>
-        /// Sql virtual machine group to be updated
+        /// Availability Group Listener to be updated
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ParameterSet.InputObject,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = HelpMessages.InputObjectSqlVMGroup)]
-        [Alias("SqlVMGroup")]
-        public AzureSqlVMGroupModel InputObject { get; set; }
+            HelpMessage = HelpMessages.InputObjectAvailabilityGroupListener)]
+        [Alias("AvailabilityGroupListener")]
+        public AzureAvailabilityGroupListenerModel InputObject { get; set; }
 
         /// <summary>
-        /// Resource id of the sql virtual machine group that will be updated
+        /// Resource id of the Availability Group Listener that will be updated
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ParameterSet.ResourceId,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = HelpMessages.SqlVMGroupResourceId)]
-        [Alias("SqlVMGroupId")]
+            HelpMessage = HelpMessages.AvailabilityGroupListenerResourceId)]
+        [Alias("AvailabilityGroupListenerId")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -70,11 +70,13 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             if (ParameterSetName == ParameterSet.ResourceId)
             {
                 Name = GetResourceNameFromId(ResourceId);
+                GroupName = GetSqlVmGroupNameFromId(ResourceId);
                 ResourceGroupName = GetResourceGroupNameFromId(ResourceId);
             }
             if (ParameterSetName == ParameterSet.InputObject)
             {
                 Name = InputObject.Name;
+                GroupName = InputObject.AvailabilityGroupName;
                 ResourceGroupName = InputObject.ResourceGroupName;
             }
         }
@@ -82,23 +84,23 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Get the entity to update
         /// </summary>
-        /// <returns>The sql virtual machine group that will be updated</returns>
-        protected override IEnumerable<AzureSqlVMGroupModel> GetEntity()
+        /// <returns>The AvailabilityGroupListener that will be updated</returns>
+        protected override IEnumerable<AzureAvailabilityGroupListenerModel> GetEntity()
         {
-            return new List<AzureSqlVMGroupModel>() { ModelAdapter.GetSqlVirtualMachineGroup(ResourceGroupName, Name) };
+            return new List<AzureAvailabilityGroupListenerModel>() { ModelAdapter.GetAvailabilityGroupListener(ResourceGroupName, GroupName, Name) };
         }
 
         /// <summary>
-        /// Apply user input to the retrieved sql virtual machine group
+        /// Apply user input to the retrieved Availability Group Listener
         /// </summary>
-        /// <param name="model">The sql virtual machine group that will be updated<param>
+        /// <param name="model">The Availability Group Listener that will be updated<param>
         /// <returns>The model to send to the update</returns>
-        protected override IEnumerable<AzureSqlVMGroupModel> ApplyUserInputToModel(IEnumerable<AzureSqlVMGroupModel> model)
+        protected override IEnumerable<AzureAvailabilityGroupListenerModel> ApplyUserInputToModel(IEnumerable<AzureAvailabilityGroupListenerModel> model)
         {
-            List<AzureSqlVMGroupModel> updateData = new List<AzureSqlVMGroupModel>();
-            AzureSqlVMGroupModel group = model.FirstOrDefault();
+            List<AzureAvailabilityGroupListenerModel> updateData = new List<AzureAvailabilityGroupListenerModel>();
+            AzureAvailabilityGroupListenerModel group = model.FirstOrDefault();
 
-            group.WsfcDomainProfile = updateWsfcDomainProfile(group.WsfcDomainProfile);
+            //group.WsfcDomainProfile = updateWsfcDomainProfile(group.WsfcDomainProfile);
 
             if(Tag != null)
             {
@@ -124,15 +126,15 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         }
 
         /// <summary>
-        /// Updates the sql virtual machine group
+        /// Updates the Availability Group Listener
         /// </summary>
-        /// <param name="entity">The sql virtual machine group being updated</param>
-        /// <returns>The sql virtual machine group that was updated</returns>
-        protected override IEnumerable<AzureSqlVMGroupModel> PersistChanges(IEnumerable<AzureSqlVMGroupModel> entity)
+        /// <param name="entity">The Availability Group Listener being updated</param>
+        /// <returns>The Availability Group Listener that was updated</returns>
+        protected override IEnumerable<AzureAvailabilityGroupListenerModel> PersistChanges(IEnumerable<AzureAvailabilityGroupListenerModel> entity)
         {
-            return new List<AzureSqlVMGroupModel>()
+            return new List<AzureAvailabilityGroupListenerModel>()
             {
-                ModelAdapter.UpsertSqlVirtualMachineGroup(entity.First())
+                ModelAdapter.UpsertAvailabilityGroupListener(entity.First())
             };
         }
     }
