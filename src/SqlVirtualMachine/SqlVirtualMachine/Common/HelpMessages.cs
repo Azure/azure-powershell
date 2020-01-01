@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         // Help messages relative to sql virtual machine group cmdlets
         public const string NameAvailabilityGroupListener = "Availability Group Listener name.";
         public const string AvailabilityGroupListenerResourceId = "Availability Group Listener Resource Id";
+        public const string InputObjectAvailabilityGroupListener = "Availability Group Listener object.";
 
         // Upsert
         public const string ClusterOperatorAccountSqlVMGroup = "Name used for operating cluster.";

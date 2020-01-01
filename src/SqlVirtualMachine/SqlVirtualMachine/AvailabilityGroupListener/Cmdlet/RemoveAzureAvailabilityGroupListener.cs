@@ -24,31 +24,31 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     /// This class implements the Remove-AzSqlVMGroup cmdlet.  It will delete the Azure Sql virtual machine group instance corresponding to 
     /// the parameter given as input and it will return an AzureSqlVMGroupModel object containing the information of the deleted group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", DefaultParameterSetName = ParameterSet.ParameterList, SupportsShouldProcess = true)]
-    [OutputType(typeof(AzureSqlVMGroupModel))]
-    public class RemoveAzureSqlVMGroup : AzureSqlVMGroupCmdletBase
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilityGroupListener", DefaultParameterSetName = ParameterSet.ParameterList, SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureAvailabilityGroupListenerModel))]
+    public class RemoveAzureAvailabilityGroupListener : AzureAvailabilityGroupListenerCmdletBase
     {
         /// <summary>
-        /// Sql virtual machine group resource to be removed
+        /// AvailabilityGroupListener resource to be removed
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ParameterSet.InputObject,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = HelpMessages.InputObjectSqlVMGroup)]
-        [Alias("SqlVMGroup")]
+            HelpMessage = HelpMessages.InputObjectAvailabilityGroupListener)]
+        [Alias("AvailabilityGroupListener")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlVMGroupModel InputObject { get; set; }
+        public AzureAvailabilityGroupListenerModel InputObject { get; set; }
 
         /// <summary>
-        /// Resource id of the sql virtual machine group that will be removed
+        /// Resource id of the Availability Group Listener that will be removed
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ParameterSet.ResourceId,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = HelpMessages.SqlVMGroupResourceId)]
-        [Alias("SqlVMGroupId")]
+            HelpMessage = HelpMessages.AvailabilityGroupListenerResourceId)]
+        [Alias("AvailabilityGroupListenerId")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -76,11 +76,13 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             if(ParameterSetName == ParameterSet.InputObject)
             {
                 Name = InputObject.Name;
+                GroupName = InputObject.AvailabilityGroupName;
                 ResourceGroupName = InputObject.ResourceGroupName;
             }
             else if (ParameterSetName == ParameterSet.ResourceId)
             {
                 Name = GetResourceNameFromId(ResourceId);
+                GroupName = GetSqlVmGroupNameFromId(ResourceId);
                 ResourceGroupName = GetResourceGroupNameFromId(ResourceId);
             }
         }
@@ -88,11 +90,11 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Get the entity to delete
         /// </summary>
-        /// <returns>The sql virtual machine group that will be deleted</returns>
-        protected override IEnumerable<AzureSqlVMGroupModel> GetEntity()
+        /// <returns>The Availability Group Listener that will be deleted</returns>
+        protected override IEnumerable<AzureAvailabilityGroupListenerModel> GetEntity()
         {
-            return new List<AzureSqlVMGroupModel>() {
-                ModelAdapter.GetSqlVirtualMachineGroup(ResourceGroupName, Name)
+            return new List<AzureAvailabilityGroupListenerModel>() {
+                ModelAdapter.GetAvailabilityGroupListener(ResourceGroupName, GroupName, Name)
             };
         }
 
@@ -101,19 +103,19 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// </summary>
         /// <param name="model">The input model</param>
         /// <returns></returns>
-        protected override IEnumerable<AzureSqlVMGroupModel> ApplyUserInputToModel(IEnumerable<AzureSqlVMGroupModel> model)
+        protected override IEnumerable<AzureAvailabilityGroupListenerModel> ApplyUserInputToModel(IEnumerable<AzureAvailabilityGroupListenerModel> model)
         {
             return model;
         }
 
         /// <summary>
-        /// Deletes the sql virtual machine group
+        /// Deletes the Availability Group Listener
         /// </summary>
-        /// <param name="entity">The sql virtual machine group being deleted</param>
-        /// <returns>The sql virtual machine group that was deleted</returns>
-        protected override IEnumerable<AzureSqlVMGroupModel> PersistChanges(IEnumerable<AzureSqlVMGroupModel> entity)
+        /// <param name="entity">The Availability Group Listener being deleted</param>
+        /// <returns>The Availability Group Listener that was deleted</returns>
+        protected override IEnumerable<AzureAvailabilityGroupListenerModel> PersistChanges(IEnumerable<AzureAvailabilityGroupListenerModel> entity)
         {
-            ModelAdapter.RemoveSqlVirtualMachine(ResourceGroupName, Name);
+            ModelAdapter.RemoveAvailabilityGroupListener(ResourceGroupName, GroupName, Name);
             return entity;
         }
     }

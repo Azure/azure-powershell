@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         protected override IEnumerable<AzureAvailabilityGroupListenerModel> GetEntity()
         {
             ICollection<AzureAvailabilityGroupListenerModel> results = null;
-            if(ShouldGetByName(ResourceGroupName, GroupName, Name))
+            if(ShouldGetByName(ResourceGroupName, Name)) //need to change this
             {
                 results = new List<AzureAvailabilityGroupListenerModel>();
                 results.Add(ModelAdapter.GetAvailabilityGroupListener(ResourceGroupName, GroupName, Name));
