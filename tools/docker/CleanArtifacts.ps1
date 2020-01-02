@@ -20,6 +20,7 @@ $count = 0;
 try {
     foreach ($artifact in (Get-ChildItem -Path $Docker -Filter "*.nupkg").FullName) {
         $count+=1;
+        Write-Output "remove $artifact from $Docker"
         Remove-Item $artifact
     }
 } catch {

@@ -23,6 +23,7 @@ $count = 0;
 try {
     foreach ($artifact in (Get-ChildItem -Path $Artifacts -Filter "*.nupkg").FullName) {
         $count+=1;
+        Write-Output "temporarily copy $artifact to $Docker"
         Copy-Item -Path $artifact -Destination $Docker
     }
 } catch {

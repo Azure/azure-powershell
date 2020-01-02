@@ -63,6 +63,10 @@
     <OnPremiseBuild Condition="!Exists($(OnPremiseBuildTasks))">false</OnPremiseBuild>
     <!-- CISignRepo is an environment variable that points to ci-signing repo clone -->
     <CISignRepoPath>$(CISignRepo)</CISignRepoPath>
+
+    <!-- Docker related -->
+    <DockerRoot>$(RepoRoot)/docker</DockerRoot>
+    <DockerTools>$(RepoTools)/docker</DockerTools>
   </PropertyGroup>
 
   <!-- Tasks -->
@@ -238,10 +242,10 @@
   </Target>
 
   <Target Name="BuildImage" AfterTargets="Publish">
-    <!--TODO: integrate with docker image building-->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/docker/GetArtifacts.ps1 -Artifacts $(RepoArtifacts) -Docker $(RepoRoot)/docker &quot;" />
-    <Exec Command="docker build -t azure-powershell $(RepoRoot)/docker" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/docker/CleanArtifacts.ps1 -Docker $(RepoRoot)/docker &quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/GetArtifacts.ps1 -Artifacts $(RepoArtifacts) -Docker $(DockerRoot) &quot;" />
+    <Exec Command="docker build -t azure-powershell $(DockerRoot)" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/CleanArtifacts.ps1 -Docker $(DockerRoot) &quot;" />
+    <!-- TODO: push to image repository -->
   </Target>
 
   <Target Name="Test">
