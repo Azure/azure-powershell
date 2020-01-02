@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Azure Storage to mount inside a Web App for Container. Use New-AzWebAppAzureStoragePath to create it")]
         public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
 
-        [Parameter(HelpMessage = "By default FTP is all allowed")]
+        [Parameter(HelpMessage = "Set the Ftps state value for an app. Default value is 'AllAllowed'")]
         [ValidateSet("AllAllowed", "Disabled", "FtpsOnly")]
         public string FtpsState { get; set; }
 
@@ -162,7 +162,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                                 parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
                             AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
                             NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers,
-                            FtpsState = parameters.Contains("FtpsState") ? FtpsState : null
+                            FtpsState = parameters.Contains("FtpsState") ? FtpsState : "AllAllowed"
+                            
                         };
                     }
 
