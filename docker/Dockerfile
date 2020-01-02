@@ -22,7 +22,7 @@ LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
       org.label-schema.schema-version="1.0" \
       org.label-schema.vcs-ref=${VCS_REF} \
       org.label-schema.docker.cmd="docker run --rm ${IMAGE_NAME} pwsh -c '$PSVERSIONTABLE'" \
-      org.label-schema.docker.cmd.devel="docker run --rm ${IMAGE_NAME}" \
+      org.label-schema.docker.cmd.devel="docker run -it --rm -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat ${IMAGE_NAME} pwsh -c Get-AzContext" \
       org.label-schema.docker.cmd.test="currently not available" \
       org.label-schema.docker.cmd.help="docker run --rm ${IMAGE_NAME} pwsh -c Get-Help"
 
