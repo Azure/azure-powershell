@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/re
 schema: 2.0.0
 ---
 
-# Remove-AzureStorageTableStoredAccessPolicy
+# Remove-AzStorageTableStoredAccessPolicy
 
 ## SYNOPSIS
 Removes a stored access policy from an Azure storage table.
@@ -14,19 +14,19 @@ Removes a stored access policy from an Azure storage table.
 ## SYNTAX
 
 ```
-Remove-AzureStorageTableStoredAccessPolicy [-Table] <String> [-Policy] <String> [-PassThru]
+Remove-AzStorageTableStoredAccessPolicy [-Table] <String> [-Policy] <String> [-PassThru]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureStorageTableStoredAccessPolicy** cmdlet removes a stored access policy from an Azure storage table.
+The **Remove-AzStorageTableStoredAccessPolicy** cmdlet removes a stored access policy from an Azure storage table.
 
 ## EXAMPLES
 
 ### Example 1: Remove a stored access policy from a storage table
 ```
-PS C:\>Remove-AzureStorageTableStoredAccessPolicy -Table "MyTable" -Policy "Policy05"
+PS C:\>Remove-AzStorageTableStoredAccessPolicy -Table "MyTable" -Policy "Policy05"
 ```
 
 This command removes policy named Policy05 from storage table named MyTable.
@@ -35,7 +35,7 @@ This command removes policy named Policy05 from storage table named MyTable.
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -158,10 +158,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageTableStoredAccessPolicy](./Get-AzureStorageTableStoredAccessPolicy.md)
+[Get-AzStorageTableStoredAccessPolicy](./Get-AzStorageTableStoredAccessPolicy.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
-[New-AzureStorageTableStoredAccessPolicy](./New-AzureStorageTableStoredAccessPolicy.md)
+[New-AzStorageTableStoredAccessPolicy](./New-AzStorageTableStoredAccessPolicy.md)
 
-[Set-AzureStorageTableStoredAccessPolicy](./Set-AzureStorageTableStoredAccessPolicy.md)
+[Set-AzStorageTableStoredAccessPolicy](./Set-AzStorageTableStoredAccessPolicy.md)

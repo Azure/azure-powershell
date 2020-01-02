@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ne
 schema: 2.0.0
 ---
 
-# New-AzureStorageDirectory
+# New-AzStorageDirectory
 
 ## SYNOPSIS
 Creates a directory.
@@ -15,44 +15,44 @@ Creates a directory.
 
 ### ShareName (Default)
 ```
-New-AzureStorageDirectory [-ShareName] <String> [-Path] <String> [-Context <IStorageContext>]
+New-AzStorageDirectory [-ShareName] <String> [-Path] <String> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### Share
 ```
-New-AzureStorageDirectory [-Share] <CloudFileShare> [-Path] <String> [-ServerTimeoutPerRequest <Int32>]
+New-AzStorageDirectory [-Share] <CloudFileShare> [-Path] <String> [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
 ### Directory
 ```
-New-AzureStorageDirectory [-Directory] <CloudFileDirectory> [-Path] <String> [-ServerTimeoutPerRequest <Int32>]
+New-AzStorageDirectory [-Directory] <CloudFileDirectory> [-Path] <String> [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureStorageDirectory** cmdlet creates a directory.
+The **New-AzStorageDirectory** cmdlet creates a directory.
 This cmdlet returns a **CloudFileDirectory** object.
 
 ## EXAMPLES
 
 ### Example 1: Create a folder in a file share
 ```
-PS C:\>New-AzureStorageDirectory -ShareName "ContosoShare06" -Path "ContosoWorkingFolder"
+PS C:\>New-AzStorageDirectory -ShareName "ContosoShare06" -Path "ContosoWorkingFolder"
 ```
 
 This command creates a folder named ContosoWorkingFolder in the file share named ContosoShare06.
 
 ### Example 2: Create a folder in a file share specified in a file share object
 ```
-PS C:\>Get-AzureStorageShare -Name "ContosoShare06" | New-AzureStorageDirectory -Path "ContosoWorkingFolder"
+PS C:\>Get-AzStorageShare -Name "ContosoShare06" | New-AzStorageDirectory -Path "ContosoWorkingFolder"
 ```
 
-This command uses the **Get-AzureStorageShare** cmdlet to get the file share named ContosoShare06, and then passes it to the current cmdlet by using the pipeline operator.
+This command uses the **Get-AzStorageShare** cmdlet to get the file share named ContosoShare06, and then passes it to the current cmdlet by using the pipeline operator.
 The current cmdlet creates the folder named ContosoWorkingFolder in ContosoShare06.
 
 ## PARAMETERS
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
+To obtain a storage context, use the [New-AzStorageContext](./New-AzStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -127,8 +127,8 @@ Accept wildcard characters: False
 ### -Directory
 Specifies a folder as a **CloudFileDirectory** object.
 This cmdlet creates the folder in the location that this parameter specifies.
-To obtain a directory, use the New-AzureStorageDirectory cmdlet.
-You can also use the Get-AzureStorageFile cmdlet to obtain a directory.
+To obtain a directory, use the New-AzStorageDirectory cmdlet.
+You can also use the Get-AzStorageFile cmdlet to obtain a directory.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 ### -Share
 Specifies a **CloudFileShare** object.
 This cmdlet creates a folder in the file share that this parameter specifies.
-To obtain a **CloudFileShare** object, use the Get-AzureStorageShare cmdlet.
+To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
 This object contains the storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
@@ -231,12 +231,12 @@ Parameters: Directory (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureStorageFile](./Get-AzureStorageFile.md)
+[Get-AzStorageFile](./Get-AzStorageFile.md)
 
-[Get-AzureStorageShare](./Get-AzureStorageShare.md)
+[Get-AzStorageShare](./Get-AzStorageShare.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
-[New-AzureStorageDirectory](./New-AzureStorageDirectory.md)
+[New-AzStorageDirectory](./New-AzStorageDirectory.md)
 
-[Remove-AzureStorageDirectory](./Remove-AzureStorageDirectory.md)
+[Remove-AzStorageDirectory](./Remove-AzStorageDirectory.md)

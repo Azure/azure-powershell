@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/se
 schema: 2.0.0
 ---
 
-# Set-AzureStorageContainerStoredAccessPolicy
+# Set-AzStorageContainerStoredAccessPolicy
 
 ## SYNOPSIS
 Sets a stored access policy for an Azure storage container.
@@ -14,7 +14,7 @@ Sets a stored access policy for an Azure storage container.
 ## SYNTAX
 
 ```
-Set-AzureStorageContainerStoredAccessPolicy [-Container] <String> [-Policy] <String> [-Permission <String>]
+Set-AzStorageContainerStoredAccessPolicy [-Container] <String> [-Policy] <String> [-Permission <String>]
  [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-NoStartTime] [-NoExpiryTime] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
@@ -22,13 +22,13 @@ Set-AzureStorageContainerStoredAccessPolicy [-Container] <String> [-Policy] <Str
 ```
 
 ## DESCRIPTION
-The **Set-AzureStorageContainerStoredAccessPolicy** cmdlet sets a stored access policy for an Azure storage container.
+The **Set-AzStorageContainerStoredAccessPolicy** cmdlet sets a stored access policy for an Azure storage container.
 
 ## EXAMPLES
 
 ### Example 1: Set a stored access policy in a storage container with full permission
 ```
-PS C:\>Set-AzureStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy06" -Permission rwdl
+PS C:\>Set-AzStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy06" -Permission rwdl
 ```
 
 This command sets an access policy named Policy06 for storage container named MyContainer.
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -272,10 +272,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageContainerStoredAccessPolicy](./Get-AzureStorageContainerStoredAccessPolicy.md)
+[Get-AzStorageContainerStoredAccessPolicy](./Get-AzStorageContainerStoredAccessPolicy.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
-[New-AzureStorageContainerStoredAccessPolicy](./New-AzureStorageContainerStoredAccessPolicy.md)
+[New-AzStorageContainerStoredAccessPolicy](./New-AzStorageContainerStoredAccessPolicy.md)
 
-[Remove-AzureStorageContainerStoredAccessPolicy](./Remove-AzureStorageContainerStoredAccessPolicy.md)
+[Remove-AzStorageContainerStoredAccessPolicy](./Remove-AzStorageContainerStoredAccessPolicy.md)

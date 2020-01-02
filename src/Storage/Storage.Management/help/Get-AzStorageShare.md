@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageShare
+# Get-AzStorageShare
 
 ## SYNOPSIS
 Gets a list of file shares.
@@ -15,49 +15,49 @@ Gets a list of file shares.
 
 ### MatchingPrefix (Default)
 ```
-Get-AzureStorageShare [[-Prefix] <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+Get-AzStorageShare [[-Prefix] <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
 ### Specific
 ```
-Get-AzureStorageShare [-Name] <String> [[-SnapshotTime] <DateTimeOffset>] [-Context <IStorageContext>]
+Get-AzStorageShare [-Name] <String> [[-SnapshotTime] <DateTimeOffset>] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageShare** cmdlet gets a list of file shares for a storage account.
+The **Get-AzStorageShare** cmdlet gets a list of file shares for a storage account.
 
 ## EXAMPLES
 
 ### Example 1: Get a file share
 ```
-PS C:\>Get-AzureStorageShare -Name "ContosoShare06"
+PS C:\>Get-AzStorageShare -Name "ContosoShare06"
 ```
 
 This command gets the file share named ContosoShare06.
 
 ### Example 2: Get all file shares that begin with a string
 ```
-PS C:\>Get-AzureStorageShare -Prefix "Contoso"
+PS C:\>Get-AzStorageShare -Prefix "Contoso"
 ```
 
 This command gets all file shares that have names that begin with Contoso.
 
 ### Example 3: Get all file shares in a specified context
 ```
-PS C:\>$Context = New-AzureStorageContext -Local
-PS C:\> Get-AzureStorageShare -Context $Context
+PS C:\>$Context = New-AzStorageContext -Local
+PS C:\> Get-AzStorageShare -Context $Context
 ```
 
-The first command uses the **New-AzureStorageContext** cmdlet to create a context by using the *Local* parameter, and then stores that context object in the $Context variable.
+The first command uses the **New-AzStorageContext** cmdlet to create a context by using the *Local* parameter, and then stores that context object in the $Context variable.
 The second command gets the file shares for the context object stored in $Context.
 
 ### Example 4: Get a file share snapshot with specific share name and SnapshotTime
 ```
-PS C:\>Get-AzureStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
+PS C:\>Get-AzStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
 ```
 
 This command gets a file share snapshot with specific share name and SnapshotTime.
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure Storage context.
-To obtain a context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
+To obtain a context, use the [New-AzStorageContext](./New-AzStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -208,6 +208,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureStorageShare](./New-AzureStorageShare.md)
+[New-AzStorageShare](./New-AzStorageShare.md)
 
-[Remove-AzureStorageShare](./Remove-AzureStorageShare.md)
+[Remove-AzStorageShare](./Remove-AzStorageShare.md)

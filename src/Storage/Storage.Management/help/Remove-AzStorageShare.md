@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/re
 schema: 2.0.0
 ---
 
-# Remove-AzureStorageShare
+# Remove-AzStorageShare
 
 ## SYNOPSIS
 Deletes a file share.
@@ -15,7 +15,7 @@ Deletes a file share.
 
 ### ShareName (Default)
 ```
-Remove-AzureStorageShare [-Name] <String> [-IncludeAllSnapshot] [-Force] [-PassThru]
+Remove-AzStorageShare [-Name] <String> [-IncludeAllSnapshot] [-Force] [-PassThru]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,27 +23,27 @@ Remove-AzureStorageShare [-Name] <String> [-IncludeAllSnapshot] [-Force] [-PassT
 
 ### Share
 ```
-Remove-AzureStorageShare [-Share] <CloudFileShare> [-IncludeAllSnapshot] [-Force] [-PassThru]
+Remove-AzStorageShare [-Share] <CloudFileShare> [-IncludeAllSnapshot] [-Force] [-PassThru]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureStorageShare** cmdlet deletes a file share.
+The **Remove-AzStorageShare** cmdlet deletes a file share.
 
 ## EXAMPLES
 
 ### Example 1: Remove a file share
 ```
-PS C:\>Remove-AzureStorageShare -Name "ContosoShare06"
+PS C:\>Remove-AzStorageShare -Name "ContosoShare06"
 ```
 
 This command removes the file share named ContosoShare06.
 
 ### Example 2: Remove a file share and all its snapshots
 ```
-PS C:\>Remove-AzureStorageShare -Name "ContosoShare06" -IncludeAllSnapshot
+PS C:\>Remove-AzStorageShare -Name "ContosoShare06" -IncludeAllSnapshot
 ```
 
 This command removes the file share named ContosoShare06 and all its snapshots.
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
+To obtain a storage context, use the [New-AzStorageContext](./New-AzStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -197,7 +197,7 @@ Accept wildcard characters: False
 ### -Share
 Specifies a **CloudFileShare** object.
 This cmdlet removes the object that this parameter specifies.
-To obtain a **CloudFileShare** object, use the Get-AzureStorageShare cmdlet.
+To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
 This object contains the storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
@@ -264,8 +264,8 @@ Parameters: Share (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureStorageShare](./Get-AzureStorageShare.md)
+[Get-AzStorageShare](./Get-AzStorageShare.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
-[New-AzureStorageShare](./New-AzureStorageShare.md)
+[New-AzStorageShare](./New-AzStorageShare.md)

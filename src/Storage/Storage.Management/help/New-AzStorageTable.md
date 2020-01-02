@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ne
 schema: 2.0.0
 ---
 
-# New-AzureStorageTable
+# New-AzStorageTable
 
 ## SYNOPSIS
 Creates a storage table.
@@ -14,25 +14,25 @@ Creates a storage table.
 ## SYNTAX
 
 ```
-New-AzureStorageTable [-Name] <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+New-AzStorageTable [-Name] <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureStorageTable** cmdlet creates a storage table associated with the storage account in Azure.
+The **New-AzStorageTable** cmdlet creates a storage table associated with the storage account in Azure.
 
 ## EXAMPLES
 
 ### Example 1: Create an azure storage table
 ```
-PS C:\>New-AzureStorageTable -Name "tableabc"
+PS C:\>New-AzStorageTable -Name "tableabc"
 ```
 
 This command creates a storage table with a name of tableabc.
 
 ### Example 2: Create multiple azure storage tables
 ```
-PS C:\>"table1 table2 table3".split() | New-AzureStorageTable
+PS C:\>"table1 table2 table3".split() | New-AzStorageTable
 ```
 
 This command creates multiple tables.
@@ -42,7 +42,7 @@ It uses the **Split** method of the .NET **String** class and then passes the na
 
 ### -Context
 Specifies the storage context.
-To create it, you can use the New-AzureStorageContext cmdlet.
+To create it, you can use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -103,8 +103,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageTable](./Get-AzureStorageTable.md)
+[Get-AzStorageTable](./Get-AzStorageTable.md)
 
-[Remove-AzureStorageTable](./Remove-AzureStorageTable.md)
+[Remove-AzStorageTable](./Remove-AzStorageTable.md)
 
 

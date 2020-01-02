@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/se
 schema: 2.0.0
 ---
 
-# Set-AzureStorageFileContent
+# Set-AzStorageFileContent
 
 ## SYNOPSIS
 Uploads the contents of a file.
@@ -15,7 +15,7 @@ Uploads the contents of a file.
 
 ### ShareName (Default)
 ```
-Set-AzureStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <String>] [-PassThru] [-Force]
+Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <String>] [-PassThru] [-Force]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,7 +23,7 @@ Set-AzureStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <S
 
 ### Share
 ```
-Set-AzureStorageFileContent [-Share] <CloudFileShare> [-Source] <String> [[-Path] <String>] [-PassThru]
+Set-AzStorageFileContent [-Share] <CloudFileShare> [-Source] <String> [[-Path] <String>] [-PassThru]
  [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -31,20 +31,20 @@ Set-AzureStorageFileContent [-Share] <CloudFileShare> [-Source] <String> [[-Path
 
 ### Directory
 ```
-Set-AzureStorageFileContent [-Directory] <CloudFileDirectory> [-Source] <String> [[-Path] <String>] [-PassThru]
+Set-AzStorageFileContent [-Directory] <CloudFileDirectory> [-Source] <String> [[-Path] <String>] [-PassThru]
  [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureStorageFileContent** cmdlet uploads the contents of a file to a file on a specified share.
+The **Set-AzStorageFileContent** cmdlet uploads the contents of a file to a file on a specified share.
 
 ## EXAMPLES
 
 ### Example 1: Upload a file in the current folder
 ```
-PS C:\>Set-AzureStorageFileContent -ShareName "ContosoShare06" -Source "DataFile37" -Path "ContosoWorkingFolder/CurrentDataFile"
+PS C:\>Set-AzStorageFileContent -ShareName "ContosoShare06" -Source "DataFile37" -Path "ContosoWorkingFolder/CurrentDataFile"
 ```
 
 This command uploads a file that is named DataFile37 in the current folder as a file that is named CurrentDataFile in the folder named ContosoWorkingFolder.
@@ -52,16 +52,16 @@ This command uploads a file that is named DataFile37 in the current folder as a 
 ### Example 2: Upload all the files in the current folder
 ```
 PS C:\>$CurrentFolder = (Get-Item .).FullName
-PS C:\> $Container = Get-AzureStorageShare -Name "ContosoShare06"
+PS C:\> $Container = Get-AzStorageShare -Name "ContosoShare06"
 PS C:\> Get-ChildItem -Recurse | Where-Object { $_.GetType().Name -eq "FileInfo"} | ForEach-Object {
     $path=$_.FullName.Substring($Currentfolder.Length+1).Replace("\","/")
-    Set-AzureStorageFileContent -Share $Container -Source $_.FullName -Path $path -Force
+    Set-AzStorageFileContent -Share $Container -Source $_.FullName -Path $path -Force
 }
 ```
 
 This example uses several common Windows PowerShell cmdlets and the current cmdlet to upload all files from the current folder to the root folder of container ContosoShare06.
 The first command gets the name of the current folder and stores it in the $CurrentFolder variable.
-The second command uses the **Get-AzureStorageShare** cmdlet to get the file share named ContosoShare06, and then stores it in the $Container variable.
+The second command uses the **Get-AzStorageShare** cmdlet to get the file share named ContosoShare06, and then stores it in the $Container variable.
 The final command gets the contents of the current folder and passes each one to the Where-Object cmdlet by using the pipeline operator.
 That cmdlet filters out objects that are not files, and then passes the files to the ForEach-Object cmdlet.
 That cmdlet runs a script block for each file that creates the appropriate path for it and then uses the current cmdlet to upload the file.
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
+To obtain a storage context, use the [New-AzStorageContext](./New-AzStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -140,8 +140,8 @@ Accept wildcard characters: False
 ### -Directory
 Specifies a folder as a **CloudFileDirectory** object.
 This cmdlet uploads the file to the folder that this parameter specifies.
-To obtain a directory, use the New-AzureStorageDirectory cmdlet.
-You can also use the Get-AzureStorageFile cmdlet to obtain a directory.
+To obtain a directory, use the New-AzStorageDirectory cmdlet.
+You can also use the Get-AzStorageFile cmdlet to obtain a directory.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
@@ -224,7 +224,7 @@ Accept wildcard characters: False
 ### -Share
 Specifies a **CloudFileShare** object.
 This cmdlet uploads to a file in the file share this parameter specifies.
-To obtain a **CloudFileShare** object, use the Get-AzureStorageShare cmdlet.
+To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
 This object contains the storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
@@ -326,8 +326,8 @@ Parameters: Directory (ByValue)
 
 ## RELATED LINKS
 
-[Remove-AzureStorageDirectory](./Remove-AzureStorageDirectory.md)
+[Remove-AzStorageDirectory](./Remove-AzStorageDirectory.md)
 
-[New-AzureStorageDirectory](./New-AzureStorageDirectory.md)
+[New-AzStorageDirectory](./New-AzStorageDirectory.md)
 
-[Get-AzureStorageFileContent](./Get-AzureStorageFileContent.md)
+[Get-AzStorageFileContent](./Get-AzStorageFileContent.md)

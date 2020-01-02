@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageFile
+# Get-AzStorageFile
 
 ## SYNOPSIS
 Lists directories and files for a path.
@@ -15,27 +15,27 @@ Lists directories and files for a path.
 
 ### ShareName (Default)
 ```
-Get-AzureStorageFile [-ShareName] <String> [[-Path] <String>] [-Context <IStorageContext>]
+Get-AzStorageFile [-ShareName] <String> [[-Path] <String>] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### Share
 ```
-Get-AzureStorageFile [-Share] <CloudFileShare> [[-Path] <String>] [-ServerTimeoutPerRequest <Int32>]
+Get-AzStorageFile [-Share] <CloudFileShare> [[-Path] <String>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
 ### Directory
 ```
-Get-AzureStorageFile [-Directory] <CloudFileDirectory> [[-Path] <String>] [-ServerTimeoutPerRequest <Int32>]
+Get-AzStorageFile [-Directory] <CloudFileDirectory> [[-Path] <String>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageFile** cmdlet lists directories and files for the share or directory that you specify.
+The **Get-AzStorageFile** cmdlet lists directories and files for the share or directory that you specify.
 Specify the *Path* parameter to get an instance of a directory or file in the specified path.
 This cmdlet returns **AzureStorageFile** and **AzureStorageDirectory** objects.
 You can use the **IsDirectory** property to distinguish between folders and files.
@@ -44,7 +44,7 @@ You can use the **IsDirectory** property to distinguish between folders and file
 
 ### Example 1: List directories in a share
 ```
-PS C:\>Get-AzureStorageFile -ShareName "ContosoShare06" | where {$_.GetType().Name -eq "CloudFileDirectory"}
+PS C:\>Get-AzStorageFile -ShareName "ContosoShare06" | where {$_.GetType().Name -eq "CloudFileDirectory"}
 ```
 
 This command lists only the directories in the share ContosoShare06.
@@ -52,11 +52,11 @@ It first retrieves both files and directories, passes them to the **where** oper
 
 ### Example 2: List a File Directory
 ```
-PS C:\> Get-AzureStorageFile -ShareName "ContosoShare06" -Path "ContosoWorkingFolder" | Get-AzureStorageFile
+PS C:\> Get-AzStorageFile -ShareName "ContosoShare06" -Path "ContosoWorkingFolder" | Get-AzStorageFile
 ```
 
 This command lists the files and folders in the directory ContosoWorkingFolder under the share ContosoShare06.
-It first gets the directory instance, and then pipelines it to the **Get-AzureStorageFile** cmdlet to list the directory.
+It first gets the directory instance, and then pipelines it to the **Get-AzStorageFile** cmdlet to list the directory.
 
 ## PARAMETERS
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure Storage context.
-To obtain a Storage context, use the New-AzureStorageContext cmdlet.
+To obtain a Storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -130,8 +130,8 @@ Accept wildcard characters: False
 ### -Directory
 Specifies a folder as a **CloudFileDirectory** object.
 This cmdlet gets the folder that this parameter specifies.
-To obtain a directory, use the New-AzureStorageDirectory cmdlet.
-You can also use the **Get-AzureStorageFile** cmdlet to obtain a directory.
+To obtain a directory, use the New-AzStorageDirectory cmdlet.
+You can also use the **Get-AzStorageFile** cmdlet to obtain a directory.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
@@ -147,8 +147,8 @@ Accept wildcard characters: False
 
 ### -Path
 Specifies the path of a folder.
-If you omit the *Path* parameter, **Get-AzureStorageFile** lists the directories and files in the specified file share or directory.
-If you include the *Path* parameter, **Get-AzureStorageFile** returns an instance of a directory or file in the specified path.
+If you omit the *Path* parameter, **Get-AzStorageFile** lists the directories and files in the specified file share or directory.
+If you include the *Path* parameter, **Get-AzStorageFile** returns an instance of a directory or file in the specified path.
 
 ```yaml
 Type: System.String
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 ### -Share
 Specifies a **CloudFileShare** object.
 This cmdlet gets a file or directory from the file share that this parameter specifies.
-To obtain a **CloudFileShare** object, use the Get-AzureStorageShare cmdlet.
+To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
 This object contains the Storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
@@ -234,14 +234,14 @@ Parameters: Directory (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureStorageFileContent](./Get-AzureStorageFileContent.md)
+[Get-AzStorageFileContent](./Get-AzStorageFileContent.md)
 
-[New-AzureStorageDirectory](./New-AzureStorageDirectory.md)
+[New-AzStorageDirectory](./New-AzStorageDirectory.md)
 
-[Remove-AzureStorageDirectory](./Remove-AzureStorageDirectory.md)
+[Remove-AzStorageDirectory](./Remove-AzStorageDirectory.md)
 
-[Remove-AzureStorageFile](./Remove-AzureStorageFile.md)
+[Remove-AzStorageFile](./Remove-AzStorageFile.md)
 
-[Set-AzureStorageFileContent](./Set-AzureStorageFileContent.md)
+[Set-AzStorageFileContent](./Set-AzStorageFileContent.md)
 
 

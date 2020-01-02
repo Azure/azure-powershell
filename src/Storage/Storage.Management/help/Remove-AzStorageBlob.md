@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/re
 schema: 2.0.0
 ---
 
-# Remove-AzureStorageBlob
+# Remove-AzStorageBlob
 
 ## SYNOPSIS
 Removes the specified storage blob.
@@ -15,7 +15,7 @@ Removes the specified storage blob.
 
 ### NamePipeline (Default)
 ```
-Remove-AzureStorageBlob [-Blob] <String> [-Container] <String> [-DeleteSnapshot] [-Force] [-PassThru]
+Remove-AzStorageBlob [-Blob] <String> [-Container] <String> [-DeleteSnapshot] [-Force] [-PassThru]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,7 +23,7 @@ Remove-AzureStorageBlob [-Blob] <String> [-Container] <String> [-DeleteSnapshot]
 
 ### BlobPipeline
 ```
-Remove-AzureStorageBlob -CloudBlob <CloudBlob> [-DeleteSnapshot] [-Force] [-PassThru]
+Remove-AzStorageBlob -CloudBlob <CloudBlob> [-DeleteSnapshot] [-Force] [-PassThru]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -31,34 +31,34 @@ Remove-AzureStorageBlob -CloudBlob <CloudBlob> [-DeleteSnapshot] [-Force] [-Pass
 
 ### ContainerPipeline
 ```
-Remove-AzureStorageBlob -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-DeleteSnapshot] [-Force]
+Remove-AzStorageBlob -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-DeleteSnapshot] [-Force]
  [-PassThru] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureStorageBlob** cmdlet removes the specified blob from a storage account in Azure.
+The **Remove-AzStorageBlob** cmdlet removes the specified blob from a storage account in Azure.
 
 ## EXAMPLES
 
 ### Example 1: Remove a storage blob by name
 ```
-PS C:\>Remove-AzureStorageBlob -Container "ContainerName" -Blob "BlobName"
+PS C:\>Remove-AzStorageBlob -Container "ContainerName" -Blob "BlobName"
 ```
 
 This command removes a blob identified by its name.
 
 ### Example 2: Remove a storage blob using the pipeline
 ```
-PS C:\>Get-AzureStorageBlob -Container "ContainerName" -Blob "BlobName" | Remove-AzureStorageBlob
+PS C:\>Get-AzStorageBlob -Container "ContainerName" -Blob "BlobName" | Remove-AzStorageBlob
 ```
 
 This command uses the pipeline.
 
 ### Example 3: Remove storage blobs using the pipeline
 ```
-PS C:\>Get-AzureStorageContainer -Container container* | Remove-AzureStorageBlob -Blob "BlobName"
+PS C:\>Get-AzStorageContainer -Container container* | Remove-AzStorageBlob -Blob "BlobName"
 ```
 
 This command uses the asterisk (*) wildcard character and the pipeline to retrieve the blob or blobs and then removes them.
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 
 ### -CloudBlob
 Specifies a cloud blob.
-To obtain a **CloudBlob** object, use the Get-AzureStorageBlob cmdlet.
+To obtain a **CloudBlob** object, use the Get-AzStorageBlob cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAz.Storage.Blob.CloudBlob
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 
 ### -CloudBlobContainer
 Specifies a **CloudBlobContainer** object from the Azure Storage Client library.
-You can use the Get-AzureStorageContainer cmdlet to get it.
+You can use the Get-AzStorageContainer cmdlet to get it.
 
 ```yaml
 Type: Microsoft.WindowsAz.Storage.Blob.CloudBlobContainer
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies the Azure storage context.
-You can use the New-AzureStorageContext cmdlet to create it.
+You can use the New-AzStorageContext cmdlet to create it.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -308,8 +308,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageBlob](./Get-AzureStorageBlob.md)
+[Get-AzStorageBlob](./Get-AzStorageBlob.md)
 
-[Get-AzureStorageBlobContent](./Get-AzureStorageBlobContent.md)
+[Get-AzStorageBlobContent](./Get-AzStorageBlobContent.md)
 
-[Set-AzureStorageBlobContent](./Set-AzureStorageBlobContent.md)
+[Set-AzStorageBlobContent](./Set-AzStorageBlobContent.md)

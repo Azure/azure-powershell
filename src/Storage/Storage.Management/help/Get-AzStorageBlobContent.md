@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageBlobContent
+# Get-AzStorageBlobContent
 
 ## SYNOPSIS
 Downloads a storage blob.
@@ -15,7 +15,7 @@ Downloads a storage blob.
 
 ### ReceiveManual (Default)
 ```
-Get-AzureStorageBlobContent [-Blob] <String> [-Container] <String> [-Destination <String>] [-CheckMd5] [-Force]
+Get-AzStorageBlobContent [-Blob] <String> [-Container] <String> [-Destination <String>] [-CheckMd5] [-Force]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,7 +23,7 @@ Get-AzureStorageBlobContent [-Blob] <String> [-Container] <String> [-Destination
 
 ### BlobPipeline
 ```
-Get-AzureStorageBlobContent -CloudBlob <CloudBlob> [-Destination <String>] [-CheckMd5] [-Force]
+Get-AzStorageBlobContent -CloudBlob <CloudBlob> [-Destination <String>] [-CheckMd5] [-Force]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -31,35 +31,35 @@ Get-AzureStorageBlobContent -CloudBlob <CloudBlob> [-Destination <String>] [-Che
 
 ### ContainerPipeline
 ```
-Get-AzureStorageBlobContent -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-Destination <String>]
+Get-AzStorageBlobContent -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-Destination <String>]
  [-CheckMd5] [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageBlobContent** cmdlet downloads the specified storage blob.
+The **Get-AzStorageBlobContent** cmdlet downloads the specified storage blob.
 If the blob name is not valid for the local computer, this cmdlet automatically resolves it if it is possible.
 
 ## EXAMPLES
 
 ### Example 1: Download blob content by name
 ```
-PS C:\>Get-AzureStorageBlobContent -Container "ContainerName" -Blob "Blob" -Destination "C:\test\"
+PS C:\>Get-AzStorageBlobContent -Container "ContainerName" -Blob "Blob" -Destination "C:\test\"
 ```
 
 This command downloads a blob by name.
 
 ### Example 2: Download blob content using the pipeline
 ```
-PS C:\>Get-AzureStorageBlob -Container containername -Blob blobname | Get-AzureStorageBlobContent
+PS C:\>Get-AzStorageBlob -Container containername -Blob blobname | Get-AzStorageBlobContent
 ```
 
 This command uses the pipeline to find and download blob content.
 
 ### Example 3: Download blob content using the pipeline and a wildcard character
 ```
-PS C:\>Get-AzureStorageContainer container* | Get-AzureStorageBlobContent -Blob "cbox.exe" -Destination "C:\test"
+PS C:\>Get-AzStorageContainer container* | Get-AzStorageBlobContent -Blob "cbox.exe" -Destination "C:\test"
 ```
 
 This example uses the asterisk wildcard character and the pipeline to find and download blob content.
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 
 ### -CloudBlob
 Specifies a cloud blob.
-To obtain a **CloudBlob** object, use the Get-AzureStorageBlob cmdlet.
+To obtain a **CloudBlob** object, use the Get-AzStorageBlob cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAz.Storage.Blob.CloudBlob
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 
 ### -CloudBlobContainer
 Specifies a **CloudBlobContainer** object from the Azure storage client library.
-You can create it or use the Get-AzureStorageContainer cmdlet.
+You can create it or use the Get-AzStorageContainer cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAz.Storage.Blob.CloudBlobContainer
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies the Azure storage account from which you want to download blob content.
-You can use the New-AzureStorageContext cmdlet to create a storage context.
+You can use the New-AzStorageContext cmdlet to create a storage context.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -308,8 +308,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureStorageBlobContent](./Set-AzureStorageBlobContent.md)
+[Set-AzStorageBlobContent](./Set-AzStorageBlobContent.md)
 
-[Get-AzureStorageBlob](./Get-AzureStorageBlob.md)
+[Get-AzStorageBlob](./Get-AzStorageBlob.md)
 
-[Remove-AzureStorageBlob](./Remove-AzureStorageBlob.md)
+[Remove-AzStorageBlob](./Remove-AzStorageBlob.md)

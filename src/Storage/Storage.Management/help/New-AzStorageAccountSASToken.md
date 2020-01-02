@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ne
 schema: 2.0.0
 ---
 
-# New-AzureStorageAccountSASToken
+# New-AzStorageAccountSASToken
 
 ## SYNOPSIS
 Creates an account-level SAS token.
@@ -14,28 +14,28 @@ Creates an account-level SAS token.
 ## SYNTAX
 
 ```
-New-AzureStorageAccountSASToken -Service <SharedAccessAccountServices>
+New-AzStorageAccountSASToken -Service <SharedAccessAccountServices>
  -ResourceType <SharedAccessAccountResourceTypes> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureStorageSASToken** cmdlet creates an account-level shared access signature (SAS) token for an Azure Storage account.
+The **New-AzStorageSASToken** cmdlet creates an account-level shared access signature (SAS) token for an Azure Storage account.
 You can use the SAS token to delegate permissions for multiple services, or to delegate permissions for services not available with an object-level SAS token.
 
 ## EXAMPLES
 
 ### Example 1: Create an account-level SAS token with full permission
 ```
-PS C:\> New-AzureStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup"
+PS C:\> New-AzStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup"
 ```
 
 This command creates an account-level SAS token with full permission.
 
 ### Example 2: Create an account-level SAS token for a range of IP addresses
 ```
-PS C:\> New-AzureStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -IPAddressOrRange 168.1.5.60-168.1.5.70
+PS C:\> New-AzStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -IPAddressOrRange 168.1.5.60-168.1.5.70
 ```
 
 This command creates an account-level SAS token for HTTPS-only requests from the specified range of IP addresses.
@@ -44,7 +44,7 @@ This command creates an account-level SAS token for HTTPS-only requests from the
 
 ### -Context
 Specifies the Azure storage context.
-You can use the New-AzureStorageContext cmdlet to get an **AzureStorageContext** object.
+You can use the New-AzStorageContext cmdlet to get an **AzureStorageContext** object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -216,16 +216,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureStorageBlobSASToken](./New-AzureStorageBlobSASToken.md)
+[New-AzStorageBlobSASToken](./New-AzStorageBlobSASToken.md)
 
-[New-AzureStorageContainerSASToken](./New-AzureStorageContainerSASToken.md)
+[New-AzStorageContainerSASToken](./New-AzStorageContainerSASToken.md)
 
-[New-AzureStorageFileSASToken](./New-AzureStorageFileSASToken.md)
+[New-AzStorageFileSASToken](./New-AzStorageFileSASToken.md)
 
-[New-AzureStorageQueueSASToken](./New-AzureStorageQueueSASToken.md)
+[New-AzStorageQueueSASToken](./New-AzStorageQueueSASToken.md)
 
-[New-AzureStorageShareSASToken](./New-AzureStorageShareSASToken.md)
+[New-AzStorageShareSASToken](./New-AzStorageShareSASToken.md)
 
-[New-AzureStorageTableSASToken](./New-AzureStorageTableSASToken.md)
+[New-AzStorageTableSASToken](./New-AzStorageTableSASToken.md)
 
 

@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/se
 schema: 2.0.0
 ---
 
-# Set-AzureStorageServiceMetricsProperty
+# Set-AzStorageServiceMetricsProperty
 
 ## SYNOPSIS
 Modifies metrics properties for the Azure Storage service.
@@ -14,19 +14,19 @@ Modifies metrics properties for the Azure Storage service.
 ## SYNTAX
 
 ```
-Set-AzureStorageServiceMetricsProperty [-ServiceType] <StorageServiceType> [-MetricsType] <ServiceMetricsType>
+Set-AzStorageServiceMetricsProperty [-ServiceType] <StorageServiceType> [-MetricsType] <ServiceMetricsType>
  [-Version <Double>] [-RetentionDays <Int32>] [-MetricsLevel <MetricsLevel>] [-PassThru]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureStorageServiceMetricsProperty** cmdlet modifies metrics properties for the Azure Storage service.
+The **Set-AzStorageServiceMetricsProperty** cmdlet modifies metrics properties for the Azure Storage service.
 
 ## EXAMPLES
 
 ### Example 1: Modify metrics properties for the Blob service
 ```
-C:\PS>Set-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour -MetricsLevel Service -PassThru -RetentionDays 10 -Version 1.0
+C:\PS>Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour -MetricsLevel Service -PassThru -RetentionDays 10 -Version 1.0
 ```
 
 This command modifies version 1.0 metrics for blob storage to a level of Service.
@@ -37,7 +37,7 @@ Because this command specifies the *PassThru* parameter, the command displays th
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -189,8 +189,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageServiceMetricsProperty](./Get-AzureStorageServiceMetricsProperty.md)
+[Get-AzStorageServiceMetricsProperty](./Get-AzStorageServiceMetricsProperty.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
 

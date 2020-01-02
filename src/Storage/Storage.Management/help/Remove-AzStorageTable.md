@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/re
 schema: 2.0.0
 ---
 
-# Remove-AzureStorageTable
+# Remove-AzStorageTable
 
 ## SYNOPSIS
 Removes a storage table.
@@ -14,25 +14,25 @@ Removes a storage table.
 ## SYNTAX
 
 ```
-Remove-AzureStorageTable [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>]
+Remove-AzStorageTable [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureStorageTable** cmdlet removes one or more storage tables from a storage account in Azure.
+The **Remove-AzStorageTable** cmdlet removes one or more storage tables from a storage account in Azure.
 
 ## EXAMPLES
 
 ### Example 1: Remove a table
 ```
-PS C:\>Remove-AzureStorageTable -Name "TableABC"
+PS C:\>Remove-AzStorageTable -Name "TableABC"
 ```
 
 This command removes a table.
 
 ### Example 2: Remove several tables
 ```
-PS C:\>Get-AzureStorageTable table* | Remove-AzureStorageTable
+PS C:\>Get-AzStorageTable table* | Remove-AzStorageTable
 ```
 
 This example uses a wildcard character with the *Name* parameter to get all tables that match the pattern table and then passes the result on the pipeline to remove the tables.
@@ -41,7 +41,7 @@ This example uses a wildcard character with the *Name* parameter to get all tabl
 
 ### -Context
 Specifies the Azure storage context.
-You can create it by using the New-AzureStorageContext cmdlet.
+You can create it by using the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -164,4 +164,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageTable](./Get-AzureStorageTable.md)
+[Get-AzStorageTable](./Get-AzStorageTable.md)

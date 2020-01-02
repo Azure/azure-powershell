@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/en
 schema: 2.0.0
 ---
 
-# Enable-AzureStorageDeleteRetentionPolicy
+# Enable-AzStorageDeleteRetentionPolicy
 
 ## SYNOPSIS
 Enable delete retention policy  for the Azure Storage Blob service.
@@ -13,18 +13,18 @@ Enable delete retention policy  for the Azure Storage Blob service.
 ## SYNTAX
 
 ```
-Enable-AzureStorageDeleteRetentionPolicy [-RetentionDays] <Int32> [-PassThru] [-Context <IStorageContext>]
+Enable-AzStorageDeleteRetentionPolicy [-RetentionDays] <Int32> [-PassThru] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzureStorageDeleteRetentionPolicy** cmdlet enables delete retention policy for the Azure Storage Blob service.
+The **Enable-AzStorageDeleteRetentionPolicy** cmdlet enables delete retention policy for the Azure Storage Blob service.
 
 ## EXAMPLES
 
 ### Example 1: Enable delete retention policy for the Blob service
 ```
-C:\PS>Enable-AzureStorageDeleteRetentionPolicy -RetentionDays 3
+C:\PS>Enable-AzStorageDeleteRetentionPolicy -RetentionDays 3
 ```
 
 This command enables delete retention policy for the Blob service, and set deleted blob retention days to 3.

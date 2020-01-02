@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/se
 schema: 2.0.0
 ---
 
-# Set-AzureStorageBlobContent
+# Set-AzStorageBlobContent
 
 ## SYNOPSIS
 Uploads a local file to an Azure Storage blob.
@@ -15,7 +15,7 @@ Uploads a local file to an Azure Storage blob.
 
 ### SendManual (Default)
 ```
-Set-AzureStorageBlobContent [-File] <String> [-Container] <String> [-Blob <String>] [-BlobType <String>]
+Set-AzStorageBlobContent [-File] <String> [-Container] <String> [-Blob <String>] [-BlobType <String>]
  [-Properties <Hashtable>] [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
@@ -24,7 +24,7 @@ Set-AzureStorageBlobContent [-File] <String> [-Container] <String> [-Blob <Strin
 
 ### ContainerPipeline
 ```
-Set-AzureStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContainer <CloudBlobContainer>
+Set-AzStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContainer <CloudBlobContainer>
  [-BlobType <String>] [-Properties <Hashtable>] [-Metadata <Hashtable>]
  [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
@@ -34,7 +34,7 @@ Set-AzureStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContaine
 
 ### BlobPipeline
 ```
-Set-AzureStorageBlobContent [-File] <String> -CloudBlob <CloudBlob> [-BlobType <String>]
+Set-AzStorageBlobContent [-File] <String> -CloudBlob <CloudBlob> [-BlobType <String>]
  [-Properties <Hashtable>] [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
@@ -42,31 +42,31 @@ Set-AzureStorageBlobContent [-File] <String> -CloudBlob <CloudBlob> [-BlobType <
 ```
 
 ## DESCRIPTION
-The **Set-AzureStorageBlobContent** cmdlet uploads a local file to an Azure Storage blob.
+The **Set-AzStorageBlobContent** cmdlet uploads a local file to an Azure Storage blob.
 
 ## EXAMPLES
 
 ### Example 1: Upload a named file
 ```
-PS C:\>Set-AzureStorageBlobContent -Container "ContosoUpload" -File ".\PlanningData" -Blob "Planning2015"
+PS C:\>Set-AzStorageBlobContent -Container "ContosoUpload" -File ".\PlanningData" -Blob "Planning2015"
 ```
 
 This command uploads the file that is named PlanningData to a blob named Planning2015.
 
 ### Example 2: Upload all files under the current folder
 ```
-PS C:\>Get-ChildItem -File -Recurse | Set-AzureStorageBlobContent -Container "ContosoUploads"
+PS C:\>Get-ChildItem -File -Recurse | Set-AzStorageBlobContent -Container "ContosoUploads"
 ```
 
 This command uses the core Windows PowerShell cmdlet Get-ChildItem to get all the files in the current folder and in subfolders, and then passes them to the current cmdlet by using the pipeline operator.
-The **Set-AzureStorageBlobContent** cmdlet uploads the files to the container named ContosoUploads.
+The **Set-AzStorageBlobContent** cmdlet uploads the files to the container named ContosoUploads.
 
 ### Example 3: Overwrite an existing blob
 ```
-PS C:\>Get-AzureStorageBlob -Container "ContosoUploads" -Blob "Planning2015" | Set-AzureStorageBlobContent -File "ContosoPlanning"
+PS C:\>Get-AzStorageBlob -Container "ContosoUploads" -Blob "Planning2015" | Set-AzStorageBlobContent -File "ContosoPlanning"
 ```
 
-This command gets the blob named Planning2015 in the ContosoUploads container by using the Get-AzureStorageBlob cmdlet, and then passes that blob to the current cmdlet.
+This command gets the blob named Planning2015 in the ContosoUploads container by using the Get-AzStorageBlob cmdlet, and then passes that blob to the current cmdlet.
 The command uploads the file that is named ContosoPlanning as Planning2015.
 This command does not specify the *Force* parameter.
 The command prompts you for confirmation.
@@ -74,16 +74,16 @@ If you confirm the command, the cmdlet overwrites the existing blob.
 
 ### Example 4: Upload a file to a container by using the pipeline
 ```
-PS C:\>Get-AzureStorageContainer -Container "ContosoUpload*" | Set-AzureStorageBlobContent -File "ContosoPlanning" -Blob "Planning2015"
+PS C:\>Get-AzStorageContainer -Container "ContosoUpload*" | Set-AzStorageBlobContent -File "ContosoPlanning" -Blob "Planning2015"
 ```
 
-This command gets the container that starts with the string ContosoUpload by using the **Get-AzureStorageContainer** cmdlet, and then passes that blob to the current cmdlet.
+This command gets the container that starts with the string ContosoUpload by using the **Get-AzStorageContainer** cmdlet, and then passes that blob to the current cmdlet.
 The command uploads the file that is named ContosoPlanning as Planning2015.
 
 ### Example 5: Upload a file to page blob with metadata and PremiumPageBlobTier as P10
 ```
 PS C:\>$Metadata = @{"key" = "value"; "name" = "test"}
-PS C:\> Set-AzureStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Metadata $Metadata -BlobType Page -PremiumPageBlobTier P10
+PS C:\> Set-AzStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Metadata $Metadata -BlobType Page -PremiumPageBlobTier P10
 ```
 
 The first command creates a hash table that contains metadata for a blob, and stores that hash table in the $Metadata variable.
@@ -92,7 +92,7 @@ The blob includes the metadata stored in $Metadata, and has PremiumPageBlobTier 
 
 ### Example 6: Upload a file to blob with specified blob properties
 ```
-PS C:\> Set-AzureStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Properties @{"ContentType" = "image/jpeg"; "ContentMD5" = "i727sP7HigloQDsqadNLHw=="}
+PS C:\> Set-AzStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Properties @{"ContentType" = "image/jpeg"; "ContentMD5" = "i727sP7HigloQDsqadNLHw=="}
 ```
 
 This command  uploads the file that is named ContosoPlanning to the container named ContosoUploads with specified blob properties.
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 
 ### -CloudBlob
 Specifies a **CloudBlob** object.
-To obtain a **CloudBlob** object, use the Get-AzureStorageBlob cmdlet.
+To obtain a **CloudBlob** object, use the Get-AzStorageBlob cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAz.Storage.Blob.CloudBlob
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 ### -CloudBlobContainer
 Specifies a **CloudBlobContainer** object from the Azure Storage Client library.
 This cmdlet uploads content to a blob in the container that this parameter specifies.
-To obtain a **CloudBlobContainer** object, use the Get-AzureStorageContainer cmdlet.
+To obtain a **CloudBlobContainer** object, use the Get-AzStorageContainer cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAz.Storage.Blob.CloudBlobContainer
@@ -222,7 +222,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -408,8 +408,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageBlobContent](./Get-AzureStorageBlobContent.md)
+[Get-AzStorageBlobContent](./Get-AzStorageBlobContent.md)
 
-[Get-AzureStorageBlob](./Get-AzureStorageBlob.md)
+[Get-AzStorageBlob](./Get-AzStorageBlob.md)
 
-[Remove-AzureStorageBlob](./Remove-AzureStorageBlob.md)
+[Remove-AzStorageBlob](./Remove-AzStorageBlob.md)

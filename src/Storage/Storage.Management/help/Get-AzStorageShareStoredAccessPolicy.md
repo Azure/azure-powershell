@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageShareStoredAccessPolicy
+# Get-AzStorageShareStoredAccessPolicy
 
 ## SYNOPSIS
 Gets stored access policies for a Storage share.
@@ -14,27 +14,27 @@ Gets stored access policies for a Storage share.
 ## SYNTAX
 
 ```
-Get-AzureStorageShareStoredAccessPolicy [-ShareName] <String> [[-Policy] <String>] [-Context <IStorageContext>]
+Get-AzStorageShareStoredAccessPolicy [-ShareName] <String> [[-Policy] <String>] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageShareStoredAccessPolicy** cmdlet gets stored access policies for an Azure Storage share.
+The **Get-AzStorageShareStoredAccessPolicy** cmdlet gets stored access policies for an Azure Storage share.
 To get a particular policy, specify it by name.
 
 ## EXAMPLES
 
 ### Example 1: Get a stored access policy in a share
 ```
-PS C:\>Get-AzureStorageShareStoredAccessPolicy -ShareName "ContosoShare" -Policy "GeneralPolicy"
+PS C:\>Get-AzStorageShareStoredAccessPolicy -ShareName "ContosoShare" -Policy "GeneralPolicy"
 ```
 
 This command gets a stored access policy named GeneralPolicy in ContosoShare.
 
 ### Example 2: Get all the stored access policies in share
 ```
-PS C:\>Get-AzureStorageShareStoredAccessPolicy -ShareName "ContosoShare"
+PS C:\>Get-AzStorageShareStoredAccessPolicy -ShareName "ContosoShare"
 ```
 
 This command gets all stored access policies in ContosoShare.
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure Storage context.
-To obtain a context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
+To obtain a context, use the [New-AzStorageContext](./New-AzStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -170,10 +170,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
-[New-AzureStorageShareStoredAccessPolicy](./New-AzureStorageShareStoredAccessPolicy.md)
+[New-AzStorageShareStoredAccessPolicy](./New-AzStorageShareStoredAccessPolicy.md)
 
-[Remove-AzureStorageShareStoredAccessPolicy](./Remove-AzureStorageShareStoredAccessPolicy.md)
+[Remove-AzStorageShareStoredAccessPolicy](./Remove-AzStorageShareStoredAccessPolicy.md)
 
-[Set-AzureStorageShareStoredAccessPolicy](./Set-AzureStorageShareStoredAccessPolicy.md)
+[Set-AzStorageShareStoredAccessPolicy](./Set-AzStorageShareStoredAccessPolicy.md)

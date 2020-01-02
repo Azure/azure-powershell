@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/re
 schema: 2.0.0
 ---
 
-# Remove-AzureStorageContainer
+# Remove-AzStorageContainer
 
 ## SYNOPSIS
 Removes the specified storage container.
@@ -14,20 +14,20 @@ Removes the specified storage container.
 ## SYNTAX
 
 ```
-Remove-AzureStorageContainer [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>]
+Remove-AzStorageContainer [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureStorageContainer** cmdlet removes the specified storage container in Azure.
+The **Remove-AzStorageContainer** cmdlet removes the specified storage container in Azure.
 
 ## EXAMPLES
 
 ### Example 1: Remove a container
 ```
-PS C:\>Remove-AzureStorageContainer -Name "MyTestContainer"
+PS C:\>Remove-AzStorageContainer -Name "MyTestContainer"
 ```
 
 This example removes a container named MyTestContainer.
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies a context for the container you want to remove.
-You can use the New-AzureStorageContext cmdlet to create it.
+You can use the New-AzStorageContext cmdlet to create it.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -211,6 +211,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageContainer](./Get-AzureStorageContainer.md)
+[Get-AzStorageContainer](./Get-AzStorageContainer.md)
 
-[New-AzureStorageContainer](./New-AzureStorageContainer.md)
+[New-AzStorageContainer](./New-AzStorageContainer.md)

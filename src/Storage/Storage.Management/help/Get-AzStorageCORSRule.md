@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageCORSRule
+# Get-AzStorageCORSRule
 
 ## SYNOPSIS
 Gets CORS rules for a Storage service type.
@@ -14,19 +14,19 @@ Gets CORS rules for a Storage service type.
 ## SYNTAX
 
 ```
-Get-AzureStorageCORSRule [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
+Get-AzStorageCORSRule [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageCORSRule** cmdlet gets Cross-Origin Resource Sharing (CORS) rules for an Azure Storage service type.
+The **Get-AzStorageCORSRule** cmdlet gets Cross-Origin Resource Sharing (CORS) rules for an Azure Storage service type.
 
 ## EXAMPLES
 
 ### Example 1: Get CORS rules of blob service
 ```
-PS C:\>Get-AzureStorageCORSRule -ServiceType Blob
+PS C:\>Get-AzStorageCORSRule -ServiceType Blob
 ```
 
 This command gets the CORS rules for the Blob service type.
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure Storage context.
-To obtain a context, use the New-AzureStorageContext cmdlet.
+To obtain a context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -151,8 +151,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureStorageCORSRule](./Remove-AzureStorageCORSRule.md)
+[Remove-AzStorageCORSRule](./Remove-AzStorageCORSRule.md)
 
-[Set-AzureStorageCORSRule](./Set-AzureStorageCORSRule.md)
+[Set-AzStorageCORSRule](./Set-AzStorageCORSRule.md)
 
 

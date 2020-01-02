@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageServiceProperty
+# Get-AzStorageServiceProperty
 
 ## SYNOPSIS
 Gets properties for Azure Storage services.
@@ -13,18 +13,18 @@ Gets properties for Azure Storage services.
 ## SYNTAX
 
 ```
-Get-AzureStorageServiceProperty [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
+Get-AzStorageServiceProperty [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageServiceProperty** cmdlet gets the properties for Azure Storage services.
+The **Get-AzStorageServiceProperty** cmdlet gets the properties for Azure Storage services.
 
 ## EXAMPLES
 
 ### Example 1: Get  Azure Storage services property of the Blob service
 ```
-C:\PS>Get-AzureStorageServiceProperty -ServiceType Blob
+C:\PS>Get-AzStorageServiceProperty -ServiceType Blob
 
 Logging.Version                     : 1.0
 Logging.LoggingOperations           : None
@@ -47,7 +47,7 @@ This command gets DefaultServiceVersion property of the Blob service.
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext

@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ne
 schema: 2.0.0
 ---
 
-# New-AzureStorageShare
+# New-AzStorageShare
 
 ## SYNOPSIS
 Creates a file share.
@@ -14,19 +14,19 @@ Creates a file share.
 ## SYNTAX
 
 ```
-New-AzureStorageShare [-Name] <String> [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+New-AzStorageShare [-Name] <String> [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureStorageShare** cmdlet creates a file share.
+The **New-AzStorageShare** cmdlet creates a file share.
 
 ## EXAMPLES
 
 ### Example 1: Create a file share
 ```
-PS C:\>New-AzureStorageShare -Name "ContosoShare06"
+PS C:\>New-AzStorageShare -Name "ContosoShare06"
 ```
 
 This command creates a file share named ContosoShare06.
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
+To obtain a storage context, use the [New-AzStorageContext](./New-AzStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -148,8 +148,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageShare](./Get-AzureStorageShare.md)
+[Get-AzStorageShare](./Get-AzStorageShare.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
-[Remove-AzureStorageShare](./Remove-AzureStorageShare.md)
+[Remove-AzStorageShare](./Remove-AzStorageShare.md)

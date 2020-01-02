@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/re
 schema: 2.0.0
 ---
 
-# Remove-AzureStorageFile
+# Remove-AzStorageFile
 
 ## SYNOPSIS
 Deletes a file.
@@ -15,7 +15,7 @@ Deletes a file.
 
 ### ShareName (Default)
 ```
-Remove-AzureStorageFile [-ShareName] <String> [-Path] <String> [-PassThru] [-Context <IStorageContext>]
+Remove-AzStorageFile [-ShareName] <String> [-Path] <String> [-PassThru] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,7 +23,7 @@ Remove-AzureStorageFile [-ShareName] <String> [-Path] <String> [-PassThru] [-Con
 
 ### Share
 ```
-Remove-AzureStorageFile [-Share] <CloudFileShare> [-Path] <String> [-PassThru]
+Remove-AzStorageFile [-Share] <CloudFileShare> [-Path] <String> [-PassThru]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -31,7 +31,7 @@ Remove-AzureStorageFile [-Share] <CloudFileShare> [-Path] <String> [-PassThru]
 
 ### Directory
 ```
-Remove-AzureStorageFile [-Directory] <CloudFileDirectory> [-Path] <String> [-PassThru]
+Remove-AzStorageFile [-Directory] <CloudFileDirectory> [-Path] <String> [-PassThru]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -39,29 +39,29 @@ Remove-AzureStorageFile [-Directory] <CloudFileDirectory> [-Path] <String> [-Pas
 
 ### File
 ```
-Remove-AzureStorageFile [-File] <CloudFile> [-PassThru] [-ServerTimeoutPerRequest <Int32>]
+Remove-AzStorageFile [-File] <CloudFile> [-PassThru] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureStorageFile** cmdlet deletes a file.
+The **Remove-AzStorageFile** cmdlet deletes a file.
 
 ## EXAMPLES
 
 ### Example 1: Delete a file from a file share
 ```
-PS C:\>Remove-AzureStorageFile -ShareName "ContosoShare06" -Path "ContosoFile22"
+PS C:\>Remove-AzStorageFile -ShareName "ContosoShare06" -Path "ContosoFile22"
 ```
 
 This command deletes the file that is named ContosoFile22 from the file share named ContosoShare06.
 
 ### Example 2: Get a file from a file share by using a file share object
 ```
-PS C:\>Get-AzureStorageShare -Name "ContosoShare06" | Remove-AzureStorageFile -Path "ContosoFile22"
+PS C:\>Get-AzStorageShare -Name "ContosoShare06" | Remove-AzStorageFile -Path "ContosoFile22"
 ```
 
-This command uses the **Get-AzureStorageShare** cmdlet to get the file share named ContosoShare06, and then passes that object to the current cmdlet by using the pipeline operator.
+This command uses the **Get-AzStorageShare** cmdlet to get the file share named ContosoShare06, and then passes that object to the current cmdlet by using the pipeline operator.
 The current command deletes the file that is named ContosoFile22 from ContosoShare06.
 
 ## PARAMETERS
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
+To obtain a storage context, use the [New-AzStorageContext](./New-AzStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 ### -File
 Specifies a file as a **CloudFile** object.
 This cmdlet removes the file that this parameter specifies.
-To obtain a **CloudFile** object, use the Get-AzureStorageFile cmdlet.
+To obtain a **CloudFile** object, use the Get-AzStorageFile cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFile
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 ### -Share
 Specifies a **CloudFileShare** object.
 This cmdlet removes the file in the share this parameter specifies.
-To obtain a **CloudFileShare** object, use the Get-AzureStorageShare cmdlet.
+To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
 This object contains the storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
@@ -303,8 +303,8 @@ Parameters: File (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureStorageFile](./Get-AzureStorageFile.md)
+[Get-AzStorageFile](./Get-AzStorageFile.md)
 
-[Get-AzureStorageShare](./Get-AzureStorageShare.md)
+[Get-AzStorageShare](./Get-AzStorageShare.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)

@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/se
 schema: 2.0.0
 ---
 
-# Set-AzureStorageShareQuota
+# Set-AzStorageShareQuota
 
 ## SYNOPSIS
 Sets the storage capacity for a share.
@@ -15,26 +15,26 @@ Sets the storage capacity for a share.
 
 ### ShareName
 ```
-Set-AzureStorageShareQuota [-ShareName] <String> [-Quota] <Int32> [-Context <IStorageContext>]
+Set-AzStorageShareQuota [-ShareName] <String> [-Quota] <Int32> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### Share
 ```
-Set-AzureStorageShareQuota [-Share] <CloudFileShare> [-Quota] <Int32> [-ServerTimeoutPerRequest <Int32>]
+Set-AzStorageShareQuota [-Share] <CloudFileShare> [-Quota] <Int32> [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureStorageShareQuota** cmdlet sets the storage capacity for a specified share.
+The **Set-AzStorageShareQuota** cmdlet sets the storage capacity for a specified share.
 
 ## EXAMPLES
 
 ### Example 1: Set the storage capacity of a share
 ```
-PS C:\>Set-AzureStorageShareQuota -ShareName "ContosoShare01" -Quota 1024
+PS C:\>Set-AzStorageShareQuota -ShareName "ContosoShare01" -Quota 1024
 ```
 
 This command sets the storage capacity for a share named ContosoShare01 to 1024 GB.
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
+To obtain a storage context, use the [New-AzStorageContext](./New-AzStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 
 ### -Share
 Specifies a **CloudFileShare** object to represent the share for which this cmdlets sets a quota.
-To obtain a **CloudFileShare** object, use the Get-AzureStorageShare cmdlet.
+To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAz.Storage.File.CloudFileShare
@@ -190,8 +190,8 @@ Parameters: Share (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureStorageFileContent](./Get-AzureStorageFileContent.md)
+[Get-AzStorageFileContent](./Get-AzStorageFileContent.md)
 
-[Get-AzureStorageShare](./Get-AzureStorageShare.md)
+[Get-AzStorageShare](./Get-AzStorageShare.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)

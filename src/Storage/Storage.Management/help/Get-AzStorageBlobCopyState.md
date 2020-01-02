@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageBlobCopyState
+# Get-AzStorageBlobCopyState
 
 ## SYNOPSIS
 Gets the copy status of an Azure Storage blob.
@@ -15,52 +15,52 @@ Gets the copy status of an Azure Storage blob.
 
 ### NamePipeline (Default)
 ```
-Get-AzureStorageBlobCopyState [-Blob] <String> [-Container] <String> [-WaitForComplete]
+Get-AzStorageBlobCopyState [-Blob] <String> [-Container] <String> [-WaitForComplete]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### BlobPipeline
 ```
-Get-AzureStorageBlobCopyState -CloudBlob <CloudBlob> [-WaitForComplete] [-Context <IStorageContext>]
+Get-AzStorageBlobCopyState -CloudBlob <CloudBlob> [-WaitForComplete] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### ContainerPipeline
 ```
-Get-AzureStorageBlobCopyState -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-WaitForComplete]
+Get-AzStorageBlobCopyState -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-WaitForComplete]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageBlobCopyState** cmdlet gets the copy status of an Azure Storage blob.
+The **Get-AzStorageBlobCopyState** cmdlet gets the copy status of an Azure Storage blob.
 
 ## EXAMPLES
 
 ### Example 1: Get the copy status of a blob
 ```
-C:\PS>Get-AzureStorageBlobCopyState -Blob "ContosoPlanning2015" -Container "ContosoUploads"
+C:\PS>Get-AzStorageBlobCopyState -Blob "ContosoPlanning2015" -Container "ContosoUploads"
 ```
 
 This command gets the copy status of the blob named ContosoPlanning2015 in the container ContosoUploads.
 
 ### Example 2: Get the copy status for of a blob by using the pipeline
 ```
-C:\PS>Get-AzureStorageBlob -Blob "ContosoPlanning2015" -Container "ContosoUploads" | Get-AzureStorageBlobCopyState
+C:\PS>Get-AzStorageBlob -Blob "ContosoPlanning2015" -Container "ContosoUploads" | Get-AzStorageBlobCopyState
 ```
 
-This command gets the blob named ContosoPlanning2015 in the container named ContosoUploads by using the **Get-AzureStorageBlob** cmdlet, and then passes the result to the current cmdlet by using the pipeline operator.
-The **Get-AzureStorageBlobCopyState** cmdlet gets the copy status for that blob.
+This command gets the blob named ContosoPlanning2015 in the container named ContosoUploads by using the **Get-AzStorageBlob** cmdlet, and then passes the result to the current cmdlet by using the pipeline operator.
+The **Get-AzStorageBlobCopyState** cmdlet gets the copy status for that blob.
 
 ### Example 3: Get the copy status for a blob in a container by using the pipeline
 ```
-C:\PS>Get-AzureStorageContainer -Name "ContosoUploads" | Get-AzureStorageBlobCopyState -Blob "ContosoPlanning2015"
+C:\PS>Get-AzStorageContainer -Name "ContosoUploads" | Get-AzStorageBlobCopyState -Blob "ContosoPlanning2015"
 ```
 
-This command gets the container named by using the **Get-AzureStorageBlob** cmdlet, and then passes the result to the current cmdlet.
-The **Get-AzureStorageContainer** cmdlet gets the copy status for the blob named ContosoPlanning2015 in that container.
+This command gets the container named by using the **Get-AzStorageBlob** cmdlet, and then passes the result to the current cmdlet.
+The **Get-AzStorageContainer** cmdlet gets the copy status for the blob named ContosoPlanning2015 in that container.
 
 ## PARAMETERS
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 
 ### -CloudBlob
 Specifies a **CloudBlob** object from Azure Storage Client library.
-To obtain a **CloudBlob** object, use the Get-AzureStorageBlob cmdlet.
+To obtain a **CloudBlob** object, use the Get-AzStorageBlob cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAz.Storage.Blob.CloudBlob
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ### -CloudBlobContainer
 Specifies a **CloudBlobContainer** object from the Azure Storage Client library.
 This cmdlet gets the copy status of a blob in the container that this parameter specifies.
-To obtain a **CloudBlobContainer** object, use the Get-AzureStorageContainer cmdlet.
+To obtain a **CloudBlobContainer** object, use the Get-AzStorageContainer cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAz.Storage.Blob.CloudBlobContainer
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -247,8 +247,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Start-AzureStorageBlobCopy](./Start-AzureStorageBlobCopy.md)
+[Start-AzStorageBlobCopy](./Start-AzStorageBlobCopy.md)
 
-[Stop-AzureStorageBlobCopy](./Stop-AzureStorageBlobCopy.md)
+[Stop-AzStorageBlobCopy](./Stop-AzStorageBlobCopy.md)
 
 

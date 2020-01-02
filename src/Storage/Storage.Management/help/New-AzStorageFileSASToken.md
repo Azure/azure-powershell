@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ne
 schema: 2.0.0
 ---
 
-# New-AzureStorageFileSASToken
+# New-AzStorageFileSASToken
 
 ## SYNOPSIS
 Generates a shared access signature token for a Storage file.
@@ -15,7 +15,7 @@ Generates a shared access signature token for a Storage file.
 
 ### NameSasPermission
 ```
-New-AzureStorageFileSASToken [-ShareName] <String> [-Path] <String> [-Permission <String>]
+New-AzStorageFileSASToken [-ShareName] <String> [-Path] <String> [-Permission <String>]
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
  [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -23,7 +23,7 @@ New-AzureStorageFileSASToken [-ShareName] <String> [-Path] <String> [-Permission
 
 ### NameSasPolicy
 ```
-New-AzureStorageFileSASToken [-ShareName] <String> [-Path] <String> -Policy <String>
+New-AzStorageFileSASToken [-ShareName] <String> [-Path] <String> -Policy <String>
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
  [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -31,26 +31,26 @@ New-AzureStorageFileSASToken [-ShareName] <String> [-Path] <String> -Policy <Str
 
 ### FileSasPermission
 ```
-New-AzureStorageFileSASToken -File <CloudFile> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
+New-AzStorageFileSASToken -File <CloudFile> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FileSasPolicy
 ```
-New-AzureStorageFileSASToken -File <CloudFile> -Policy <String> [-Protocol <SharedAccessProtocol>]
+New-AzStorageFileSASToken -File <CloudFile> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureStorageFileSASToken** cmdlet generates a shared access signature token for an Azure Storage file.
+The **New-AzStorageFileSASToken** cmdlet generates a shared access signature token for an Azure Storage file.
 
 ## EXAMPLES
 
 ### Example 1: Generate a shared access signature token that has full file permissions
 ```
-PS C:\> New-AzureStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" -Permission "rwd"
+PS C:\> New-AzStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" -Permission "rwd"
 ```
 
 This command generates a shared access signature token that has full permissions for the file that is named FilePath.
@@ -59,7 +59,7 @@ This command generates a shared access signature token that has full permissions
 ```
 PS C:\> $StartTime = Get-Date
 PS C:\> $EndTime = $StartTime.AddHours(2.0)
-PS C:\> New-AzureStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" -Permission "rwd" -StartTime $StartTime -ExpiryTime $EndTime
+PS C:\> New-AzStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" -Permission "rwd" -StartTime $StartTime -ExpiryTime $EndTime
 ```
 
 The first command creates a **DateTime** object by using the Get-Date cmdlet.
@@ -74,7 +74,7 @@ The token remains valid until time stored in $EndTime.
 
 ### -Context
 Specifies an Azure Storage context.
-To obtain a context, use the New-AzureStorageContext cmdlet.
+To obtain a context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 
 ### -File
 Specifies a **CloudFile** object.
-You can create a cloud file or obtain one by using the Get-AzureStorageFile cmdlet.
+You can create a cloud file or obtain one by using the Get-AzStorageFile cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAz.Storage.File.CloudFile
@@ -281,6 +281,6 @@ Parameters: Context (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
-[New-AzureStorageShareSASToken](./New-AzureStorageShareSASToken.md)
+[New-AzStorageShareSASToken](./New-AzStorageShareSASToken.md)

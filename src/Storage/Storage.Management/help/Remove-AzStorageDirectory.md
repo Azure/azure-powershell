@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/re
 schema: 2.0.0
 ---
 
-# Remove-AzureStorageDirectory
+# Remove-AzStorageDirectory
 
 ## SYNOPSIS
 Deletes a directory.
@@ -15,7 +15,7 @@ Deletes a directory.
 
 ### ShareName (Default)
 ```
-Remove-AzureStorageDirectory [-ShareName] <String> [-Path] <String> [-PassThru] [-Context <IStorageContext>]
+Remove-AzStorageDirectory [-ShareName] <String> [-Path] <String> [-PassThru] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,7 +23,7 @@ Remove-AzureStorageDirectory [-ShareName] <String> [-Path] <String> [-PassThru] 
 
 ### Share
 ```
-Remove-AzureStorageDirectory [-Share] <CloudFileShare> [-Path] <String> [-PassThru]
+Remove-AzStorageDirectory [-Share] <CloudFileShare> [-Path] <String> [-PassThru]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -31,20 +31,20 @@ Remove-AzureStorageDirectory [-Share] <CloudFileShare> [-Path] <String> [-PassTh
 
 ### Directory
 ```
-Remove-AzureStorageDirectory [-Directory] <CloudFileDirectory> [[-Path] <String>] [-PassThru]
+Remove-AzStorageDirectory [-Directory] <CloudFileDirectory> [[-Path] <String>] [-PassThru]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureStorageDirectory** cmdlet deletes a directory.
+The **Remove-AzStorageDirectory** cmdlet deletes a directory.
 
 ## EXAMPLES
 
 ### Example 1: Delete a folder
 ```
-PS C:\>Remove-AzureStorageDirectory -ShareName "ContosoShare06" -Path "ContosoWorkingFolder"
+PS C:\>Remove-AzStorageDirectory -ShareName "ContosoShare06" -Path "ContosoWorkingFolder"
 ```
 
 This command deletes the folder named ContosoWorkingFolder from the file share named ContosoShare06.
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
+To obtain a storage context, use the [New-AzStorageContext](./New-AzStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -121,8 +121,8 @@ Accept wildcard characters: False
 ### -Directory
 Specifies a folder as a **CloudFileDirectory** object.
 This cmdlet removes the folder that this parameter specifies.
-To obtain a directory, use the New-AzureStorageDirectory cmdlet.
-You can also use the **Get-AzureStorageFile** cmdlet to obtain a directory.
+To obtain a directory, use the New-AzStorageDirectory cmdlet.
+You can also use the **Get-AzStorageFile** cmdlet to obtain a directory.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
@@ -200,7 +200,7 @@ Accept wildcard characters: False
 ### -Share
 Specifies a **CloudFileShare** object.
 This cmdlet removes a folder under the file share that this parameter specifies.
-To obtain a **CloudFileShare** object, use the Get-AzureStorageShare cmdlet.
+To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
 This object contains the storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
@@ -286,8 +286,8 @@ Parameters: Directory (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureStorageShare](./Get-AzureStorageShare.md)
+[Get-AzStorageShare](./Get-AzStorageShare.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
-[New-AzureStorageDirectory](./New-AzureStorageDirectory.md)
+[New-AzStorageDirectory](./New-AzStorageDirectory.md)

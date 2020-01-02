@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageBlob
+# Get-AzStorageBlob
 
 ## SYNOPSIS
 Lists blobs in a container.
@@ -15,7 +15,7 @@ Lists blobs in a container.
 
 ### BlobName (Default)
 ```
-Get-AzureStorageBlob [[-Blob] <String>] [-Container] <String> [-IncludeDeleted] [-MaxCount <Int32>]
+Get-AzStorageBlob [[-Blob] <String>] [-Container] <String> [-IncludeDeleted] [-MaxCount <Int32>]
  [-ContinuationToken <BlobContinuationToken>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
@@ -23,27 +23,27 @@ Get-AzureStorageBlob [[-Blob] <String>] [-Container] <String> [-IncludeDeleted] 
 
 ### BlobPrefix
 ```
-Get-AzureStorageBlob [-Prefix <String>] [-Container] <String> [-IncludeDeleted] [-MaxCount <Int32>]
+Get-AzStorageBlob [-Prefix <String>] [-Container] <String> [-IncludeDeleted] [-MaxCount <Int32>]
  [-ContinuationToken <BlobContinuationToken>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageBlob** cmdlet lists blobs in the specified container in an Azure storage account.
+The **Get-AzStorageBlob** cmdlet lists blobs in the specified container in an Azure storage account.
 
 ## EXAMPLES
 
 ### Example 1: Get a blob by blob name
 ```
-PS C:\>Get-AzureStorageBlob -Container "ContainerName" -Blob blob*
+PS C:\>Get-AzStorageBlob -Container "ContainerName" -Blob blob*
 ```
 
 This command uses a blob name and wildcard to get a blob.
 
 ### Example 2: Get blobs in a container by using the pipeline
 ```
-PS C:\>Get-AzureStorageContainer -Name container* | Get-AzureStorageBlob -IncludeDeleted
+PS C:\>Get-AzStorageContainer -Name container* | Get-AzStorageBlob -IncludeDeleted
 
    Container Uri: https://storageaccountname.blob.core.windows.net/container1
 
@@ -58,7 +58,7 @@ This command uses the pipeline to get all blobs (include blobs in Deleted status
 
 ### Example 3: Get blobs by name prefix
 ```
-PS C:\>Get-AzureStorageBlob -Container "ContainerName" -Prefix "blob"
+PS C:\>Get-AzStorageBlob -Container "ContainerName" -Prefix "blob"
 ```
 
 This command uses a name prefix to get blobs.
@@ -71,7 +71,7 @@ PS C:\> $Total = 0
 PS C:\> $Token = $Null
 PS C:\> do
  {
-     $Blobs = Get-AzureStorageBlob -Container $ContainerName -MaxCount $MaxReturn  -ContinuationToken $Token
+     $Blobs = Get-AzStorageBlob -Container $ContainerName -MaxCount $MaxReturn  -ContinuationToken $Token
      $Total += $Blobs.Count
      if($Blobs.Length -le 0) { Break;}
      $Token = $Blobs[$blobs.Count -1].ContinuationToken;
@@ -82,7 +82,7 @@ PS C:\> Echo "Total $Total blobs in container $ContainerName"
 
 This example uses the *MaxCount* and *ContinuationToken* parameters to list Azure Storage blobs in multiple batches.
 The first four commands assign values to variables to use in the example.
-The fifth command specifies a **Do-While** statement that uses the **Get-AzureStorageBlob** cmdlet to get blobs.
+The fifth command specifies a **Do-While** statement that uses the **Get-AzStorageBlob** cmdlet to get blobs.
 The statement includes the continuation token stored in the $Token variable.
 $Token changes value as the loop runs.
 For more information, type `Get-Help About_Do`.
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies the Azure storage account from which you want to get a list of blobs.
-You can use the New-AzureStorageContext cmdlet to create a storage context.
+You can use the New-AzStorageContext cmdlet to create a storage context.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -286,10 +286,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageBlobContent](./Get-AzureStorageBlobContent.md)
+[Get-AzStorageBlobContent](./Get-AzStorageBlobContent.md)
 
-[Remove-AzureStorageBlob](./Remove-AzureStorageBlob.md)
+[Remove-AzStorageBlob](./Remove-AzStorageBlob.md)
 
-[Set-AzureStorageBlobContent](./Set-AzureStorageBlobContent.md)
+[Set-AzStorageBlobContent](./Set-AzStorageBlobContent.md)
 
 

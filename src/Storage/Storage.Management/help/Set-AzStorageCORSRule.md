@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/se
 schema: 2.0.0
 ---
 
-# Set-AzureStorageCORSRule
+# Set-AzStorageCORSRule
 
 ## SYNOPSIS
 Sets the CORS rules for a type of Storage service.
@@ -14,16 +14,16 @@ Sets the CORS rules for a type of Storage service.
 ## SYNTAX
 
 ```
-Set-AzureStorageCORSRule [-ServiceType] <StorageServiceType> -CorsRules <PSCorsRule[]> [-PassThru]
+Set-AzStorageCORSRule [-ServiceType] <StorageServiceType> -CorsRules <PSCorsRule[]> [-PassThru]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureStorageCORSRule** cmdlet sets the Cross-Origin Resource Sharing (CORS) rules for a type of Azure Storage service.
+The **Set-AzStorageCORSRule** cmdlet sets the Cross-Origin Resource Sharing (CORS) rules for a type of Azure Storage service.
 The types of storage services for this cmdlet are Blob, Table, Queue, and File.
 This cmdlet overwrites the existing rules.
-To see the current rules, use the Get-AzureStorageCORSRule cmdlet.
+To see the current rules, use the Get-AzStorageCORSRule cmdlet.
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ PS C:\>$CorsRules = (@{
     AllowedHeaders=@("x-ms-meta-target*","x-ms-meta-customheader");
     MaxAgeInSeconds=30;
     AllowedMethods=@("Put")})
-PS C:\> Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
+PS C:\> Set-AzStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
 ```
 
 The first command assigns an array of rules to the $CorsRules variable.
@@ -49,13 +49,13 @@ The second command assigns the rules in $CorsRules to the Blob service type.
 
 ### Example 2: Change properties of a CORS rule for blob service
 ```
-PS C:\>$CorsRules = Get-AzureStorageCORSRule -ServiceType Blob
+PS C:\>$CorsRules = Get-AzStorageCORSRule -ServiceType Blob
 PS C:\> $CorsRules[0].AllowedHeaders = @("x-ms-blob-content-type", "x-ms-blob-content-disposition")
 PS C:\> $CorsRules[0].AllowedMethods = @("Get", "Connect", "Merge")
-PS C:\> Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
+PS C:\> Set-AzStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
 ```
 
-The first command gets the current CORS rules for the Blob type by using the **Get-AzureStorageCORSRule** cmdlet.
+The first command gets the current CORS rules for the Blob type by using the **Get-AzStorageCORSRule** cmdlet.
 The command stores the rules in the $CorsRules array variable.
 The second and third commands modify the first rule in $CorsRules.
 The final command assigns the rules in $CorsRules to the Blob service type.
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure Storage context.
-To obtain a context, use the New-AzureStorageContext cmdlet.
+To obtain a context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 
 ### -CorsRules
 Specifies an array of CORS rules.
-You can retrieve the existing rules using the Get-AzureStorageCORSRule cmdlet.
+You can retrieve the existing rules using the Get-AzStorageCORSRule cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule[]
@@ -213,10 +213,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageCORSRule](./Get-AzureStorageCORSRule.md)
+[Get-AzStorageCORSRule](./Get-AzStorageCORSRule.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
-[Remove-AzureStorageCORSRule](./Remove-AzureStorageCORSRule.md)
+[Remove-AzStorageCORSRule](./Remove-AzStorageCORSRule.md)
 
 

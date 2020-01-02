@@ -42,7 +42,7 @@ This command sets the default Storage account for the specified subscription.
 
 ### -Context
 Specifies an **AzureStorageContext** object for the current Storage account.
-To obtain a storage context object, use the New-AzureStorageContext cmdlet.
+To obtain a storage context object, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext

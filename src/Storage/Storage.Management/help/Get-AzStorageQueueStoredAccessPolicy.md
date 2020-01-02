@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageQueueStoredAccessPolicy
+# Get-AzStorageQueueStoredAccessPolicy
 
 ## SYNOPSIS
 Gets the stored access policy or policies for an Azure storage queue.
@@ -14,25 +14,25 @@ Gets the stored access policy or policies for an Azure storage queue.
 ## SYNTAX
 
 ```
-Get-AzureStorageQueueStoredAccessPolicy [-Queue] <String> [[-Policy] <String>] [-Context <IStorageContext>]
+Get-AzStorageQueueStoredAccessPolicy [-Queue] <String> [[-Policy] <String>] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageQueueStoredAccessPolicy** cmdlet lists the stored access policy or policies for an Azure storage queue.
+The **Get-AzStorageQueueStoredAccessPolicy** cmdlet lists the stored access policy or policies for an Azure storage queue.
 
 ## EXAMPLES
 
 ### Example 1: Get a stored access policy in the queue
 ```
-PS C:\>Get-AzureStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy12"
+PS C:\>Get-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy12"
 ```
 
 This command gets the access policy named Policy12 in the storage queue named MyQueue.
 
 ### Example 2: Get all stored access policies in the queue
 ```
-PS C:\>Get-AzureStorageQueueStoredAccessPolicy -Queue "MyQueue"
+PS C:\>Get-AzStorageQueueStoredAccessPolicy -Queue "MyQueue"
 ```
 
 This command gets all stored access policies in the queue named MyQueue.
@@ -41,7 +41,7 @@ This command gets all stored access policies in the queue named MyQueue.
 
 ### -Context
 Specifies the Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -117,12 +117,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureStorageQueueStoredAccessPolicy](./New-AzureStorageQueueStoredAccessPolicy.md)
+[New-AzStorageQueueStoredAccessPolicy](./New-AzStorageQueueStoredAccessPolicy.md)
 
-[Remove-AzureStorageQueueStoredAccessPolicy](./Remove-AzureStorageQueueStoredAccessPolicy.md)
+[Remove-AzStorageQueueStoredAccessPolicy](./Remove-AzStorageQueueStoredAccessPolicy.md)
 
-[Set-AzureStorageQueueStoredAccessPolicy](./Set-AzureStorageQueueStoredAccessPolicy.md)
+[Set-AzStorageQueueStoredAccessPolicy](./Set-AzStorageQueueStoredAccessPolicy.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
 

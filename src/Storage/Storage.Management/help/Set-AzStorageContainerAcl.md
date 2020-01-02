@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/se
 schema: 2.0.0
 ---
 
-# Set-AzureStorageContainerAcl
+# Set-AzStorageContainerAcl
 
 ## SYNOPSIS
 Sets the public access permission to a storage container.
@@ -14,26 +14,26 @@ Sets the public access permission to a storage container.
 ## SYNTAX
 
 ```
-Set-AzureStorageContainerAcl [-Name] <String> [-Permission] <BlobContainerPublicAccessType> [-PassThru]
+Set-AzStorageContainerAcl [-Name] <String> [-Permission] <BlobContainerPublicAccessType> [-PassThru]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureStorageContainerAcl** cmdlet sets the public access permission to the specified storage container in Azure.
+The **Set-AzStorageContainerAcl** cmdlet sets the public access permission to the specified storage container in Azure.
 
 ## EXAMPLES
 
 ### Example 1: Set azure storage container ACL by name
 ```
-PS C:\>Set-AzureStorageContainerAcl -Container "Container01" -Permission Off -PassThru
+PS C:\>Set-AzStorageContainerAcl -Container "Container01" -Permission Off -PassThru
 ```
 
 This command creates a container that has no public access.
 
 ### Example 2: Set azure storage container ACL by using the pipeline
 ```
-PS C:\>Get-AzureStorageContainer container* | Set-AzureStorageContainerAcl -Permission Blob -PassThru
+PS C:\>Get-AzStorageContainer container* | Set-AzStorageContainerAcl -Permission Blob -PassThru
 ```
 
 This command gets all storage containers whose name starts with container and then passes the result on the pipeline to set the permission for them all to Blob access.
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies the Azure storage context.
-You can create it by using the New-AzureStorageContext cmdlet.
+You can create it by using the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -200,10 +200,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageContainer](./Get-AzureStorageContainer.md)
+[Get-AzStorageContainer](./Get-AzStorageContainer.md)
 
-[New-AzureStorageContainer](./New-AzureStorageContainer.md)
+[New-AzStorageContainer](./New-AzStorageContainer.md)
 
-[Remove-AzureStorageContainer](./Remove-AzureStorageContainer.md)
+[Remove-AzStorageContainer](./Remove-AzStorageContainer.md)
 
 

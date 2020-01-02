@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageTable
+# Get-AzStorageTable
 
 ## SYNOPSIS
 Lists the storage tables.
@@ -15,38 +15,38 @@ Lists the storage tables.
 
 ### TableName (Default)
 ```
-Get-AzureStorageTable [[-Name] <String>] [-Context <IStorageContext>]
+Get-AzStorageTable [[-Name] <String>] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### TablePrefix
 ```
-Get-AzureStorageTable -Prefix <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzStorageTable -Prefix <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageTable** cmdlet lists the storage tables associated with the storage account in Azure.
+The **Get-AzStorageTable** cmdlet lists the storage tables associated with the storage account in Azure.
 
 ## EXAMPLES
 
 ### Example 1: List all Azure Storage tables
 ```
-PS C:\>Get-AzureStorageTable
+PS C:\>Get-AzStorageTable
 ```
 
 This command gets all storage tables for a Storage account.
 
 ### Example 2: List Azure Storage tables using a wildcard character
 ```
-PS C:\>Get-AzureStorageTable -Name table*
+PS C:\>Get-AzStorageTable -Name table*
 ```
 
 This command uses a wildcard character to get storage tables whose name starts with table.
 
 ### Example 3: List Azure Storage tables using table name prefix
 ```
-PS C:\>Get-AzureStorageTable -Prefix "table"
+PS C:\>Get-AzStorageTable -Prefix "table"
 ```
 
 This command uses the *Prefix* parameter to get storage tables whose name starts with table.
@@ -55,7 +55,7 @@ This command uses the *Prefix* parameter to get storage tables whose name starts
 
 ### -Context
 Specifies the storage context.
-To create it, you can use the New-AzureStorageContext cmdlet.
+To create it, you can use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -134,8 +134,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureStorageTable](./New-AzureStorageTable.md)
+[New-AzStorageTable](./New-AzStorageTable.md)
 
-[Remove-AzureStorageTable](./Remove-AzureStorageTable.md)
+[Remove-AzStorageTable](./Remove-AzStorageTable.md)
 
 

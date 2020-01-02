@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageFileContent
+# Get-AzStorageFileContent
 
 ## SYNOPSIS
 Downloads the contents of a file.
@@ -15,7 +15,7 @@ Downloads the contents of a file.
 
 ### ShareName (Default)
 ```
-Get-AzureStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
+Get-AzStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
  [-PassThru] [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -23,7 +23,7 @@ Get-AzureStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destinatio
 
 ### Share
 ```
-Get-AzureStorageFileContent [-Share] <CloudFileShare> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
+Get-AzStorageFileContent [-Share] <CloudFileShare> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
  [-PassThru] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -31,7 +31,7 @@ Get-AzureStorageFileContent [-Share] <CloudFileShare> [-Path] <String> [[-Destin
 
 ### Directory
 ```
-Get-AzureStorageFileContent [-Directory] <CloudFileDirectory> [-Path] <String> [[-Destination] <String>]
+Get-AzStorageFileContent [-Directory] <CloudFileDirectory> [-Path] <String> [[-Destination] <String>]
  [-CheckMd5] [-PassThru] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -39,28 +39,28 @@ Get-AzureStorageFileContent [-Directory] <CloudFileDirectory> [-Path] <String> [
 
 ### File
 ```
-Get-AzureStorageFileContent [-File] <CloudFile> [[-Destination] <String>] [-CheckMd5] [-PassThru] [-Force]
+Get-AzStorageFileContent [-File] <CloudFile> [[-Destination] <String>] [-CheckMd5] [-PassThru] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageFileContent** cmdlet downloads the contents of a file, and then saves it to a destination that you specify.
+The **Get-AzStorageFileContent** cmdlet downloads the contents of a file, and then saves it to a destination that you specify.
 This cmdlet does not return the contents of the file.
 
 ## EXAMPLES
 
 ### Example 1: Download a file from a folder
 ```
-PS C:\>Get-AzureStorageFileContent -ShareName "ContosoShare06" -Path "ContosoWorkingFolder/CurrentDataFile"
+PS C:\>Get-AzStorageFileContent -ShareName "ContosoShare06" -Path "ContosoWorkingFolder/CurrentDataFile"
 ```
 
 This command downloads a file that is named CurrentDataFile in the folder ContosoWorkingFolder from the file share ContosoShare06 to current folder.
 
 ### Example 2: Downloads the files under sample file share
 ```
-PS C:\>Get-AzureStorageFile -ShareName sample | ? {$_.GetType().Name -eq "CloudFile"} | Get-AzureStorageFileContent
+PS C:\>Get-AzStorageFile -ShareName sample | ? {$_.GetType().Name -eq "CloudFile"} | Get-AzStorageFileContent
 ```
 
 This example downloads the files under sample file share
@@ -177,8 +177,8 @@ Accept wildcard characters: False
 ### -Directory
 Specifies a folder as a **CloudFileDirectory** object.
 This cmdlet gets content for a file in the folder that this parameter specifies.
-To obtain a directory, use the New-AzureStorageDirectory cmdlet.
-You can also use the Get-AzureStorageFile cmdlet to obtain a directory.
+To obtain a directory, use the New-AzStorageDirectory cmdlet.
+You can also use the Get-AzStorageFile cmdlet to obtain a directory.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 ### -File
 Specifies a file as a **CloudFile** object.
 This cmdlet gets the file that this parameter specifies.
-To obtain a **CloudFile** object, use the Get-AzureStorageFile cmdlet.
+To obtain a **CloudFile** object, use the Get-AzStorageFile cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFile
@@ -283,7 +283,7 @@ Accept wildcard characters: False
 ### -Share
 Specifies a **CloudFileShare** object.
 This cmdlet downloads the contents of the file in the share this parameter specifies.
-To obtain a **CloudFileShare** object, use the Get-AzureStorageShare cmdlet.
+To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
 This object contains the storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
@@ -370,8 +370,8 @@ Parameters: File (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureStorageFile](./Get-AzureStorageFile.md)
+[Get-AzStorageFile](./Get-AzStorageFile.md)
 
-[Set-AzureStorageFileContent](./Set-AzureStorageFileContent.md)
+[Set-AzStorageFileContent](./Set-AzStorageFileContent.md)
 
 

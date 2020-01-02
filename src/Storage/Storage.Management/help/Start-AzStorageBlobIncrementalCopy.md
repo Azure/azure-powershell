@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/st
 schema: 2.0.0
 ---
 
-# Start-AzureStorageBlobIncrementalCopy
+# Start-AzStorageBlobIncrementalCopy
 
 ## SYNOPSIS
 Start an Incremental copy operation from a Page blob snapshot to the specified destination Page blob.
@@ -14,7 +14,7 @@ Start an Incremental copy operation from a Page blob snapshot to the specified d
 
 ### ContainerInstance (Default)
 ```
-Start-AzureStorageBlobIncrementalCopy -CloudBlobContainer <CloudBlobContainer> -SrcBlob <String>
+Start-AzStorageBlobIncrementalCopy -CloudBlobContainer <CloudBlobContainer> -SrcBlob <String>
  -SrcBlobSnapshotTime <DateTimeOffset> -DestContainer <String> [-DestBlob <String>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
@@ -23,7 +23,7 @@ Start-AzureStorageBlobIncrementalCopy -CloudBlobContainer <CloudBlobContainer> -
 
 ### BlobInstance
 ```
-Start-AzureStorageBlobIncrementalCopy -CloudBlob <CloudPageBlob> -DestContainer <String> [-DestBlob <String>]
+Start-AzStorageBlobIncrementalCopy -CloudBlob <CloudPageBlob> -DestContainer <String> [-DestBlob <String>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -31,7 +31,7 @@ Start-AzureStorageBlobIncrementalCopy -CloudBlob <CloudPageBlob> -DestContainer 
 
 ### BlobInstanceToBlobInstance
 ```
-Start-AzureStorageBlobIncrementalCopy -CloudBlob <CloudPageBlob> -DestCloudBlob <CloudPageBlob>
+Start-AzStorageBlobIncrementalCopy -CloudBlob <CloudPageBlob> -DestCloudBlob <CloudPageBlob>
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -39,7 +39,7 @@ Start-AzureStorageBlobIncrementalCopy -CloudBlob <CloudPageBlob> -DestCloudBlob 
 
 ### ContainerName
 ```
-Start-AzureStorageBlobIncrementalCopy -SrcBlob <String> -SrcContainer <String>
+Start-AzStorageBlobIncrementalCopy -SrcBlob <String> -SrcContainer <String>
  -SrcBlobSnapshotTime <DateTimeOffset> -DestContainer <String> [-DestBlob <String>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
@@ -48,7 +48,7 @@ Start-AzureStorageBlobIncrementalCopy -SrcBlob <String> -SrcContainer <String>
 
 ### UriPipeline
 ```
-Start-AzureStorageBlobIncrementalCopy -AbsoluteUri <String> -DestContainer <String> -DestBlob <String>
+Start-AzStorageBlobIncrementalCopy -AbsoluteUri <String> -DestContainer <String> -DestBlob <String>
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -62,29 +62,29 @@ See more details of the feature in https://docs.microsoft.com/en-us/rest/api/sto
 
 ### Example 1: Start Incremental Copy Operation by blob name and snapshot time
 ```
-PS C:\>Start-AzureStorageBlobIncrementalCopy -SrcContainer container1 -SrcBlob blob1 -SrcBlobSnapshotTime "04/07/2017 09:55:36.1190229 AM +00:00" -DestContainer container2 -DestBlob blob2
+PS C:\>Start-AzStorageBlobIncrementalCopy -SrcContainer container1 -SrcBlob blob1 -SrcBlobSnapshotTime "04/07/2017 09:55:36.1190229 AM +00:00" -DestContainer container2 -DestBlob blob2
 ```
 
 This command start Incremental Copy Operation by blob name and snapshot time
 
 ### Example 2: Start Incremental copy operation using source uri
 ```
-PS C:\>Start-AzureStorageBlobIncrementalCopy -AbsoluteUri "http://www.somesite.com/somefile?snapshot=2017-04-07T10:05:40.2126635Z" -DestContainer container -DestBlob blob -DestContext $context
+PS C:\>Start-AzStorageBlobIncrementalCopy -AbsoluteUri "http://www.somesite.com/somefile?snapshot=2017-04-07T10:05:40.2126635Z" -DestContainer container -DestBlob blob -DestContext $context
 ```
 
 This command start Incremental Copy Operation using source uri
 
 ### Example 3:  Start Incremental copy operation using container pipeline from GetAzureStorageContainer
 ```
-PS C:\>Get-AzureStorageContainer -Container container1 | Start-AzureStorageBlobIncrementalCopy -SrcBlob blob  -SrcBlobSnapshotTime "04/07/2017 09:55:36.1190229 AM +00:00" -DestContainer container2
+PS C:\>Get-AzStorageContainer -Container container1 | Start-AzStorageBlobIncrementalCopy -SrcBlob blob  -SrcBlobSnapshotTime "04/07/2017 09:55:36.1190229 AM +00:00" -DestContainer container2
 ```
 
 This command start Incremental Copy Operation using container pipeline from GetAzureStorageContainer
 
 ### Example 4:  start Incremental copy operation from CloudPageBlob object to destination blob with blob name
 ```
-PS C:\>$srcBlobSnapshot = Get-AzureStorageBlob -Container container1 -prefix blob1| ?{$_.ICloudBlob.IsSnapshot})[0]
-PS C:\>Start-AzureStorageBlobIncrementalCopy -CloudBlob $srcBlobSnapshot.ICloudBlob -DestContainer container2 -DestBlob blob2
+PS C:\>$srcBlobSnapshot = Get-AzStorageBlob -Container container1 -prefix blob1| ?{$_.ICloudBlob.IsSnapshot})[0]
+PS C:\>Start-AzStorageBlobIncrementalCopy -CloudBlob $srcBlobSnapshot.ICloudBlob -DestContainer container2 -DestBlob blob2
 ```
 
 This command start Incremental Copy Operation from CloudPageBlob object to destination blob with blob name
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -CloudBlob
-CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.
+CloudBlob object from Azure Storage Client library. You can create it or use Get-AzStorageBlob cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAz.Storage.Blob.CloudPageBlob
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -CloudBlobContainer
-CloudBlobContainer object from Azure Storage Client library. You can create it or use Get-AzureStorageContainer cmdlet.
+CloudBlobContainer object from Azure Storage Client library. You can create it or use Get-AzStorageContainer cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAz.Storage.Blob.CloudBlobContainer
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Source Azure Storage Context. You can create it by New-AzureStorageContext cmdlet.
+Source Azure Storage Context. You can create it by New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -267,7 +267,7 @@ Accept wildcard characters: False
 ```
 
 ### -DestContext
-Destination Azure Storage Context. You can create it by New-AzureStorageContext cmdlet.
+Destination Azure Storage Context. You can create it by New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext

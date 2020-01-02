@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageFileCopyState
+# Get-AzStorageFileCopyState
 
 ## SYNOPSIS
 Gets the state of a copy operation.
@@ -15,26 +15,26 @@ Gets the state of a copy operation.
 
 ### ShareName
 ```
-Get-AzureStorageFileCopyState [-ShareName] <String> [-FilePath] <String> [-WaitForComplete]
+Get-AzStorageFileCopyState [-ShareName] <String> [-FilePath] <String> [-WaitForComplete]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### File
 ```
-Get-AzureStorageFileCopyState [-File] <CloudFile> [-WaitForComplete] [-ServerTimeoutPerRequest <Int32>]
+Get-AzStorageFileCopyState [-File] <CloudFile> [-WaitForComplete] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageFileCopyState** cmdlet gets the state of an Azure Storage file copy operation.
+The **Get-AzStorageFileCopyState** cmdlet gets the state of an Azure Storage file copy operation.
 
 ## EXAMPLES
 
 ### Example 1: Get the copy state by file name
 ```
-PS C:\>Get-AzureStorageFileCopyState -ShareName "ContosoShare" -FilePath "ContosoFile"
+PS C:\>Get-AzStorageFileCopyState -ShareName "ContosoShare" -FilePath "ContosoFile"
 ```
 
 This command gets the state of the copy operation for a file that has the specified name.
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure Storage context.
-To obtain a context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
+To obtain a context, use the [New-AzStorageContext](./New-AzStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 
 ### -File
 Specifies a **CloudFile** object.
-You can create a cloud file or obtain one by using the Get-AzureStorageFile cmdlet.
+You can create a cloud file or obtain one by using the Get-AzStorageFile cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFile
@@ -203,10 +203,10 @@ Parameters: File (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureStorageFile](./Get-AzureStorageFile.md)
+[Get-AzStorageFile](./Get-AzStorageFile.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
-[Start-AzureStorageFileCopy](./Start-AzureStorageFileCopy.md)
+[Start-AzStorageFileCopy](./Start-AzStorageFileCopy.md)
 
-[Stop-AzureStorageFileCopy](./Stop-AzureStorageFileCopy.md)
+[Stop-AzStorageFileCopy](./Stop-AzStorageFileCopy.md)

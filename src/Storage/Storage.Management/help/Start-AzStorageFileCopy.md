@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/st
 schema: 2.0.0
 ---
 
-# Start-AzureStorageFileCopy
+# Start-AzStorageFileCopy
 
 ## SYNOPSIS
 Starts to copy a source file.
@@ -15,7 +15,7 @@ Starts to copy a source file.
 
 ### ContainerName
 ```
-Start-AzureStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestShareName <String>
+Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestShareName <String>
  -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
@@ -24,7 +24,7 @@ Start-AzureStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -Des
 
 ### ContainerInstance
 ```
-Start-AzureStorageFileCopy -SrcBlobName <String> -SrcContainer <CloudBlobContainer> -DestShareName <String>
+Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainer <CloudBlobContainer> -DestShareName <String>
  -DestFilePath <String> [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -32,7 +32,7 @@ Start-AzureStorageFileCopy -SrcBlobName <String> -SrcContainer <CloudBlobContain
 
 ### BlobInstanceFilePath
 ```
-Start-AzureStorageFileCopy -SrcBlob <CloudBlob> -DestShareName <String> -DestFilePath <String>
+Start-AzStorageFileCopy -SrcBlob <CloudBlob> -DestShareName <String> -DestFilePath <String>
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -40,7 +40,7 @@ Start-AzureStorageFileCopy -SrcBlob <CloudBlob> -DestShareName <String> -DestFil
 
 ### BlobInstanceFileInstance
 ```
-Start-AzureStorageFileCopy -SrcBlob <CloudBlob> -DestFile <CloudFile> [-Force]
+Start-AzStorageFileCopy -SrcBlob <CloudBlob> -DestFile <CloudFile> [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -48,7 +48,7 @@ Start-AzureStorageFileCopy -SrcBlob <CloudBlob> -DestFile <CloudFile> [-Force]
 
 ### ShareName
 ```
-Start-AzureStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestShareName <String>
+Start-AzStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestShareName <String>
  -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
@@ -57,7 +57,7 @@ Start-AzureStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestSha
 
 ### ShareInstance
 ```
-Start-AzureStorageFileCopy -SrcFilePath <String> -SrcShare <CloudFileShare> -DestShareName <String>
+Start-AzStorageFileCopy -SrcFilePath <String> -SrcShare <CloudFileShare> -DestShareName <String>
  -DestFilePath <String> [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -65,7 +65,7 @@ Start-AzureStorageFileCopy -SrcFilePath <String> -SrcShare <CloudFileShare> -Des
 
 ### FileInstanceToFilePath
 ```
-Start-AzureStorageFileCopy -SrcFile <CloudFile> -DestShareName <String> -DestFilePath <String>
+Start-AzStorageFileCopy -SrcFile <CloudFile> -DestShareName <String> -DestFilePath <String>
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -73,7 +73,7 @@ Start-AzureStorageFileCopy -SrcFile <CloudFile> -DestShareName <String> -DestFil
 
 ### FileInstanceToFileInstance
 ```
-Start-AzureStorageFileCopy -SrcFile <CloudFile> -DestFile <CloudFile> [-Force]
+Start-AzStorageFileCopy -SrcFile <CloudFile> -DestFile <CloudFile> [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -81,7 +81,7 @@ Start-AzureStorageFileCopy -SrcFile <CloudFile> -DestFile <CloudFile> [-Force]
 
 ### UriToFilePath
 ```
-Start-AzureStorageFileCopy -AbsoluteUri <String> -DestShareName <String> -DestFilePath <String>
+Start-AzStorageFileCopy -AbsoluteUri <String> -DestShareName <String> -DestFilePath <String>
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -89,20 +89,20 @@ Start-AzureStorageFileCopy -AbsoluteUri <String> -DestShareName <String> -DestFi
 
 ### UriToFileInstance
 ```
-Start-AzureStorageFileCopy -AbsoluteUri <String> -DestFile <CloudFile> [-Force]
+Start-AzStorageFileCopy -AbsoluteUri <String> -DestFile <CloudFile> [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzureStorageFileCopy** cmdlet starts to copy a source file to a destination file.
+The **Start-AzStorageFileCopy** cmdlet starts to copy a source file to a destination file.
 
 ## EXAMPLES
 
 ### Example 1: Start copy operation from file to file by using share name and file name
 ```
-PS C:\>Start-AzureStorageFileCopy -SrcShareName "ContosoShare01" -SrcFilePath "FilePath01" -DestShareName "ContosoShare02" -DestFilePath "FilePath02"
+PS C:\>Start-AzStorageFileCopy -SrcShareName "ContosoShare01" -SrcFilePath "FilePath01" -DestShareName "ContosoShare02" -DestFilePath "FilePath02"
 ```
 
 This command starts a copy operation from file to file.
@@ -110,7 +110,7 @@ The command specifies share name and file name
 
 ### Example 2: Start copy operation from blob to file by using container name and blob name
 ```
-PS C:\>Start-AzureStorageFileCopy -SrcContainerName "ContosoContainer01" -SrcBlobName "ContosoBlob01" -DestShareName "ContosoShare" -DestFilePath "FilePath02"
+PS C:\>Start-AzStorageFileCopy -SrcContainerName "ContosoContainer01" -SrcBlobName "ContosoBlob01" -DestShareName "ContosoShare" -DestFilePath "FilePath02"
 ```
 
 This command starts a copy operation from blob to file.
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies an Azure Storage context.
-To obtain a context, use the New-AzureStorageContext cmdlet.
+To obtain a context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 
 ### -DestContext
 Specifies the Azure Storage context of the destination.
-To obtain a context, use **New-AzureStorageContext**.
+To obtain a context, use **New-AzStorageContext**.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -219,7 +219,7 @@ Accept wildcard characters: False
 
 ### -DestFile
 Specifies a **CloudFile** object.
-You can create a cloud file or obtain one by using the Get-AzureStorageFile cmdlet.
+You can create a cloud file or obtain one by using the Get-AzStorageFile cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFile
@@ -295,7 +295,7 @@ Accept wildcard characters: False
 
 ### -SrcBlob
 Specifies a **CloudBlob** object.
-You can create a cloud blob or obtain one by using the Get-AzureStorageBlob cmdlet.
+You can create a cloud blob or obtain one by using the Get-AzStorageBlob cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlob
@@ -326,7 +326,7 @@ Accept wildcard characters: False
 
 ### -SrcContainer
 Specifies a cloud blob container object.
-You can create cloud blob container object or use the Get-AzureStorageContainer cmdlet.
+You can create cloud blob container object or use the Get-AzStorageContainer cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
@@ -357,7 +357,7 @@ Accept wildcard characters: False
 
 ### -SrcFile
 Specifies a **CloudFile** object.
-You can create a cloud file or obtain one by using **Get-AzureStorageFile**.
+You can create a cloud file or obtain one by using **Get-AzStorageFile**.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFile
@@ -388,7 +388,7 @@ Accept wildcard characters: False
 
 ### -SrcShare
 Specifies a cloud file share object.
-You can create a cloud file share or obtain one by using the Get-AzureStorageShare cmdlet.
+You can create a cloud file share or obtain one by using the Get-AzStorageShare cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
@@ -468,14 +468,14 @@ Parameters: SrcFile (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureStorageBlob](./Get-AzureStorageBlob.md)
+[Get-AzStorageBlob](./Get-AzStorageBlob.md)
 
-[Get-AzureStorageContainer](./Get-AzureStorageContainer.md)
+[Get-AzStorageContainer](./Get-AzStorageContainer.md)
 
-[Get-AzureStorageFile](./Get-AzureStorageFile.md)
+[Get-AzStorageFile](./Get-AzStorageFile.md)
 
-[Get-AzureStorageShare](./Get-AzureStorageShare.md)
+[Get-AzStorageShare](./Get-AzStorageShare.md)
 
-[Get-AzureStorageFileCopyState](./Get-AzureStorageFileCopyState.md)
+[Get-AzStorageFileCopyState](./Get-AzStorageFileCopyState.md)
 
-[Stop-AzureStorageFileCopy](./Stop-AzureStorageFileCopy.md)
+[Stop-AzStorageFileCopy](./Stop-AzStorageFileCopy.md)

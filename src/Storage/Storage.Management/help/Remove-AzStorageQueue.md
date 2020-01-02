@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/re
 schema: 2.0.0
 ---
 
-# Remove-AzureStorageQueue
+# Remove-AzStorageQueue
 
 ## SYNOPSIS
 Removes a storage queue.
@@ -14,25 +14,25 @@ Removes a storage queue.
 ## SYNTAX
 
 ```
-Remove-AzureStorageQueue [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>]
+Remove-AzStorageQueue [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureStorageQueue** cmdlet removes a storage queue.
+The **Remove-AzStorageQueue** cmdlet removes a storage queue.
 
 ## EXAMPLES
 
 ### Example 1: Remove a storage queue by name
 ```
-PS C:\>Remove-AzureStorageQueue "ContosoQueue01"
+PS C:\>Remove-AzStorageQueue "ContosoQueue01"
 ```
 
 This command removes a queue named ContosoQueue01.
 
 ### Example 2: Remove multiple storage queues
 ```
-PS C:\>Get-AzureStorageQueue "Contoso*" | Remove-AzureStorageQueue
+PS C:\>Get-AzStorageQueue "Contoso*" | Remove-AzStorageQueue
 ```
 
 This command removes all queues with names that start with Contoso.
@@ -41,7 +41,7 @@ This command removes all queues with names that start with Contoso.
 
 ### -Context
 Specifies the Azure storage context.
-To obtain the storage context, the New-AzureStorageContext cmdlet.
+To obtain the storage context, the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -164,6 +164,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageQueue](./Get-AzureStorageQueue.md)
+[Get-AzStorageQueue](./Get-AzStorageQueue.md)
 
-[New-AzureStorageQueue](./New-AzureStorageQueue.md)
+[New-AzStorageQueue](./New-AzStorageQueue.md)

@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/se
 schema: 2.0.0
 ---
 
-# Set-AzureStorageServiceLoggingProperty
+# Set-AzStorageServiceLoggingProperty
 
 ## SYNOPSIS
 Modifies logging for Azure Storage services.
@@ -14,19 +14,19 @@ Modifies logging for Azure Storage services.
 ## SYNTAX
 
 ```
-Set-AzureStorageServiceLoggingProperty [-ServiceType] <StorageServiceType> [-Version <Double>]
+Set-AzStorageServiceLoggingProperty [-ServiceType] <StorageServiceType> [-Version <Double>]
  [-RetentionDays <Int32>] [-LoggingOperations <LoggingOperations[]>] [-PassThru] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureStorageServiceLoggingProperty** cmdlet modifies logging for Azure Storage services.
+The **Set-AzStorageServiceLoggingProperty** cmdlet modifies logging for Azure Storage services.
 
 ## EXAMPLES
 
 ### Example 1: Modify logging properties for the Blob service
 ```
-C:\PS>Set-AzureStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write -PassThru -RetentionDays 10 -Version 1.0
+C:\PS>Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write -PassThru -RetentionDays 10 -Version 1.0
 ```
 
 This command modifies version 1.0 logging for blob storage to include read and write operations.
@@ -37,7 +37,7 @@ Because this command specifies the *PassThru* parameter, the command displays th
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -174,8 +174,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageServiceLoggingProperty](./Get-AzureStorageServiceLoggingProperty.md)
+[Get-AzStorageServiceLoggingProperty](./Get-AzStorageServiceLoggingProperty.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
 

@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/up
 schema: 2.0.0
 ---
 
-# Update-AzureStorageServiceProperty
+# Update-AzStorageServiceProperty
 
 ## SYNOPSIS
 Modifies the properties for the Azure Storage service.
@@ -13,19 +13,19 @@ Modifies the properties for the Azure Storage service.
 ## SYNTAX
 
 ```
-Update-AzureStorageServiceProperty [-ServiceType] <StorageServiceType> [-DefaultServiceVersion <String>]
+Update-AzStorageServiceProperty [-ServiceType] <StorageServiceType> [-DefaultServiceVersion <String>]
  [-PassThru] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureStorageServiceProperty** cmdlet modifies the properties for the Azure Storage service.
+The **Update-AzStorageServiceProperty** cmdlet modifies the properties for the Azure Storage service.
 
 ## EXAMPLES
 
 ### Example 1: Set Blob Service DefaultServiceVersion to 2017-04-17
 ```
-C:\PS>Update-AzureStorageServiceProperty -ServiceType Blob -DefaultServiceVersion 2017-04-17
+C:\PS>Update-AzStorageServiceProperty -ServiceType Blob -DefaultServiceVersion 2017-04-17
 ```
 
 This command Set the DefaultServiceVersion of Blob Service to 2017-04-17
@@ -34,7 +34,7 @@ This command Set the DefaultServiceVersion of Blob Service to 2017-04-17
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext

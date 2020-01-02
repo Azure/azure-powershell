@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ne
 schema: 2.0.0
 ---
 
-# New-AzureStorageContainerSASToken
+# New-AzStorageContainerSASToken
 
 ## SYNOPSIS
 Generates an SAS token for an Azure storage container.
@@ -15,40 +15,40 @@ Generates an SAS token for an Azure storage container.
 
 ### SasPolicy
 ```
-New-AzureStorageContainerSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
+New-AzStorageContainerSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
-New-AzureStorageContainerSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
+New-AzStorageContainerSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureStorageContainerSASToken** cmdlet generates a Shared Access Signature (SAS) token for an Azure storage container.
+The **New-AzStorageContainerSASToken** cmdlet generates a Shared Access Signature (SAS) token for an Azure storage container.
 
 ## EXAMPLES
 
 ### Example 1: Generate a container SAS token with full container permission
 ```
-PS C:\>New-AzureStorageContainerSASToken -Name "Test" -Permission rwdl
+PS C:\>New-AzStorageContainerSASToken -Name "Test" -Permission rwdl
 ```
 
 This example generates a container SAS token with full container permission.
 
 ### Example 2: Generate multiple container SAS token by pipeline
 ```
-PS C:\>Get-AzureStorageContainer -Container test* | New-AzureStorageContainerSASToken -Permission rwdl
+PS C:\>Get-AzStorageContainer -Container test* | New-AzStorageContainerSASToken -Permission rwdl
 ```
 
 This example generates multiple container SAS tokens by using the pipeline.
 
 ### Example 3: Generate container SAS token with shared access policy
 ```
-PS C:\>New-AzureStorageContainerSASToken -Name "Test" -Policy "PolicyName"
+PS C:\>New-AzStorageContainerSASToken -Name "Test" -Policy "PolicyName"
 ```
 
 This example generates a container SAS token with shared access policy.
@@ -57,7 +57,7 @@ This example generates a container SAS token with shared access policy.
 
 ### -Context
 Specifies an Azure storage context.
-You can create it by using the New-AzureStorageContext cmdlet.
+You can create it by using the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -232,4 +232,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureStorageBlobSASToken](./New-AzureStorageBlobSASToken.md)
+[New-AzStorageBlobSASToken](./New-AzStorageBlobSASToken.md)

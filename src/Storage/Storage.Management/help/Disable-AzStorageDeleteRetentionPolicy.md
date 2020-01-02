@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/di
 schema: 2.0.0
 ---
 
-# Disable-AzureStorageDeleteRetentionPolicy
+# Disable-AzStorageDeleteRetentionPolicy
 
 ## SYNOPSIS
 Disable delete retention policy  for the Azure Storage Blob service.
@@ -13,18 +13,18 @@ Disable delete retention policy  for the Azure Storage Blob service.
 ## SYNTAX
 
 ```
-Disable-AzureStorageDeleteRetentionPolicy [-PassThru] [-Context <IStorageContext>]
+Disable-AzStorageDeleteRetentionPolicy [-PassThru] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzureStorageDeleteRetentionPolicy** cmdlet disables delete retention policy for the Azure Storage Blob service.
+The **Disable-AzStorageDeleteRetentionPolicy** cmdlet disables delete retention policy for the Azure Storage Blob service.
 
 ## EXAMPLES
 
 ### Example 1: Disable delete retention policy for the Blob service
 ```
-C:\PS>Disable-AzureStorageDeleteRetentionPolicy
+C:\PS>Disable-AzStorageDeleteRetentionPolicy
 ```
 
 This command disables delete retention policy for the Blob service.

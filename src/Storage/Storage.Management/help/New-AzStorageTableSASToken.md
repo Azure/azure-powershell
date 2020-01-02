@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ne
 schema: 2.0.0
 ---
 
-# New-AzureStorageTableSASToken
+# New-AzStorageTableSASToken
 
 ## SYNOPSIS
 Generates an SAS token for an Azure Storage table.
@@ -15,7 +15,7 @@ Generates an SAS token for an Azure Storage table.
 
 ### SasPolicy
 ```
-New-AzureStorageTableSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
+New-AzStorageTableSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-StartPartitionKey <String>] [-StartRowKey <String>] [-EndPartitionKey <String>] [-EndRowKey <String>]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -23,20 +23,20 @@ New-AzureStorageTableSASToken [-Name] <String> -Policy <String> [-Protocol <Shar
 
 ### SasPermission
 ```
-New-AzureStorageTableSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
+New-AzStorageTableSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-StartPartitionKey <String>] [-StartRowKey <String>] [-EndPartitionKey <String>] [-EndRowKey <String>]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureStorageTableSASToken** cmdlet generates a Shared Access Signature (SAS) token for an Azure Storage table.
+The **New-AzStorageTableSASToken** cmdlet generates a Shared Access Signature (SAS) token for an Azure Storage table.
 
 ## EXAMPLES
 
 ### Example 1: Generate an SAS token that has full permissions for a table
 ```
-C:\PS>New-AzureStorageTableSASToken -Name "ContosoResources" -Permission "raud"
+C:\PS>New-AzStorageTableSASToken -Name "ContosoResources" -Permission "raud"
 ```
 
 This command generates an SAS token with full permissions for the table named ContosoResources.
@@ -44,7 +44,7 @@ That token is for read, add, update, and delete permissions.
 
 ### Example 2: Generate an SAS token for a range of partitions
 ```
-C:\PS>New-AzureStorageTableSASToken -Name "ContosoResources" -Permission "raud" -StartPartitionKey "a" -EndPartitionKey "b"
+C:\PS>New-AzStorageTableSASToken -Name "ContosoResources" -Permission "raud" -StartPartitionKey "a" -EndPartitionKey "b"
 ```
 
 This command generates and SAS token with full permissions for the table named ContosoResources.
@@ -52,7 +52,7 @@ The command limits the token to the range that the *StartPartitionKey* and *EndP
 
 ### Example 3: Generate an SAS token that has a stored access policy for a table
 ```
-C:\PS>New-AzureStorageTableSASToken -Name "ContosoResources" -Policy "ClientPolicy01"
+C:\PS>New-AzStorageTableSASToken -Name "ContosoResources" -Policy "ClientPolicy01"
 ```
 
 This command generates an SAS token for the table named ContosoResources.
@@ -62,7 +62,7 @@ The command specifies the stored access policy named ClientPolicy01.
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -296,4 +296,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)

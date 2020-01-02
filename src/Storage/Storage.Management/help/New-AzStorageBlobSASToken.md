@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ne
 schema: 2.0.0
 ---
 
-# New-AzureStorageBlobSASToken
+# New-AzStorageBlobSASToken
 
 ## SYNOPSIS
 Generates a SAS token for an Azure storage blob.
@@ -15,7 +15,7 @@ Generates a SAS token for an Azure storage blob.
 
 ### BlobNameWithPermission (Default)
 ```
-New-AzureStorageBlobSASToken [-Container] <String> [-Blob] <String> [-Permission <String>]
+New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> [-Permission <String>]
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
  [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -23,34 +23,34 @@ New-AzureStorageBlobSASToken [-Container] <String> [-Blob] <String> [-Permission
 
 ### BlobPipelineWithPolicy
 ```
-New-AzureStorageBlobSASToken -CloudBlob <CloudBlob> -Policy <String> [-Protocol <SharedAccessProtocol>]
+New-AzStorageBlobSASToken -CloudBlob <CloudBlob> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BlobPipelineWithPermission
 ```
-New-AzureStorageBlobSASToken -CloudBlob <CloudBlob> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
+New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BlobNameWithPolicy
 ```
-New-AzureStorageBlobSASToken [-Container] <String> [-Blob] <String> -Policy <String>
+New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> -Policy <String>
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
  [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureStorageBlobSASToken** cmdlet generates a Shared Access Signature (SAS) token for an Azure storage blob.
+The **New-AzStorageBlobSASToken** cmdlet generates a Shared Access Signature (SAS) token for an Azure storage blob.
 
 ## EXAMPLES
 
 ### Example 1: Generate a blob SAS token with full blob permission
 ```
-PS C:\>New-AzureStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd
+PS C:\>New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd
 ```
 
 This example generates a blob SAS token with full blob permission.
@@ -59,7 +59,7 @@ This example generates a blob SAS token with full blob permission.
 ```
 PS C:\> $StartTime = Get-Date
 PS C:\> $EndTime = $startTime.AddHours(2.0)
-PS C:\> New-AzureStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime
+PS C:\> New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime
 ```
 
 This example generates a blob SAS token with life time.
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 
 ### -CloudBlob
 Specifies the **CloudBlob** object.
-To obtain a **CloudBlob** object, use the [Get-AzureStorageBlob](./Get-AzureStorageBlob.md) cmdlet.
+To obtain a **CloudBlob** object, use the [Get-AzStorageBlob](./Get-AzStorageBlob.md) cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAz.Storage.Blob.CloudBlob
@@ -271,6 +271,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageBlob](./Get-AzureStorageBlob.md)
+[Get-AzStorageBlob](./Get-AzStorageBlob.md)
 
-[New-AzureStorageContainerSASToken](./New-AzureStorageContainerSASToken.md)
+[New-AzStorageContainerSASToken](./New-AzStorageContainerSASToken.md)

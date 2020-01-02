@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageTableStoredAccessPolicy
+# Get-AzStorageTableStoredAccessPolicy
 
 ## SYNOPSIS
 Gets the stored access policy or policies for an Azure storage table.
@@ -14,25 +14,25 @@ Gets the stored access policy or policies for an Azure storage table.
 ## SYNTAX
 
 ```
-Get-AzureStorageTableStoredAccessPolicy [-Table] <String> [[-Policy] <String>] [-Context <IStorageContext>]
+Get-AzStorageTableStoredAccessPolicy [-Table] <String> [[-Policy] <String>] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageTableStoredAccessPolicy** cmdlet lists the stored access policy or policies for an Azure storage table.
+The **Get-AzStorageTableStoredAccessPolicy** cmdlet lists the stored access policy or policies for an Azure storage table.
 
 ## EXAMPLES
 
 ### Example 1: Get a stored access policy in a storage table
 ```
-PS C:\>Get-AzureStorageTableStoredAccessPolicy -Table "Table02" -Policy "Policy50"
+PS C:\>Get-AzStorageTableStoredAccessPolicy -Table "Table02" -Policy "Policy50"
 ```
 
 This command gets the access policy named Policy50 in the storage table named Table02.
 
 ### Example 2: Get all stored access policies in a storage table
 ```
-PS C:\>Get-AzureStorageTableStoredAccessPolicy -Table "Table02"
+PS C:\>Get-AzStorageTableStoredAccessPolicy -Table "Table02"
 ```
 
 This command gets all access policies in the table named Table02.
@@ -41,7 +41,7 @@ This command gets all access policies in the table named Table02.
 
 ### -Context
 Specifies the Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -117,12 +117,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureStorageTableStoredAccessPolicy](./New-AzureStorageTableStoredAccessPolicy.md)
+[New-AzStorageTableStoredAccessPolicy](./New-AzStorageTableStoredAccessPolicy.md)
 
-[Remove-AzureStorageTableStoredAccessPolicy](./Remove-AzureStorageTableStoredAccessPolicy.md)
+[Remove-AzStorageTableStoredAccessPolicy](./Remove-AzStorageTableStoredAccessPolicy.md)
 
-[Set-AzureStorageTableStoredAccessPolicy](./Set-AzureStorageTableStoredAccessPolicy.md)
+[Set-AzStorageTableStoredAccessPolicy](./Set-AzStorageTableStoredAccessPolicy.md)
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
 

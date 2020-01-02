@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ge
 schema: 2.0.0
 ---
 
-# Get-AzureStorageQueue
+# Get-AzStorageQueue
 
 ## SYNOPSIS
 Lists storage queues.
@@ -15,38 +15,38 @@ Lists storage queues.
 
 ### QueueName (Default)
 ```
-Get-AzureStorageQueue [[-Name] <String>] [-Context <IStorageContext>]
+Get-AzStorageQueue [[-Name] <String>] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### QueuePrefix
 ```
-Get-AzureStorageQueue -Prefix <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzStorageQueue -Prefix <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageQueue** cmdlet lists storage queues associated with an Azure Storage account.
+The **Get-AzStorageQueue** cmdlet lists storage queues associated with an Azure Storage account.
 
 ## EXAMPLES
 
 ### Example 1: List all Azure Storage queues
 ```
-PS C:\>Get-AzureStorageQueue
+PS C:\>Get-AzStorageQueue
 ```
 
 This command gets a list of all storage queues for the current Storage account.
 
 ### Example 2: List Azure Storage queues using a wildcard character
 ```
-PS C:\>Get-AzureStorageQueue -Name queue*
+PS C:\>Get-AzStorageQueue -Name queue*
 ```
 
 This command uses a wildcard character to get a list of storage queues whose name starts with queue.
 
 ### Example 3: List Azure Storage queues using queue name prefix
 ```
-PS C:\>Get-AzureStorageQueue -Prefix "queue"
+PS C:\>Get-AzStorageQueue -Prefix "queue"
 ```
 
 This example uses the *Prefix* parameter to get a list of storage queues whose name starts with queue.
@@ -55,7 +55,7 @@ This example uses the *Prefix* parameter to get a list of storage queues whose n
 
 ### -Context
 Specifies the Azure storage context.
-You can create it by using the **New-AzureStorageContext** cmdlet.
+You can create it by using the **New-AzStorageContext** cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -133,8 +133,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureStorageQueue](./New-AzureStorageQueue.md)
+[New-AzStorageQueue](./New-AzStorageQueue.md)
 
-[Remove-AzureStorageQueue](./Remove-AzureStorageQueue.md)
+[Remove-AzStorageQueue](./Remove-AzStorageQueue.md)
 
 

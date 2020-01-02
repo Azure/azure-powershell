@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/re
 schema: 2.0.0
 ---
 
-# Remove-AzureStorageCORSRule
+# Remove-AzStorageCORSRule
 
 ## SYNOPSIS
 Removes CORS for a Storage service.
@@ -14,13 +14,13 @@ Removes CORS for a Storage service.
 ## SYNTAX
 
 ```
-Remove-AzureStorageCORSRule [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
+Remove-AzStorageCORSRule [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureStorageCORSRule** cmdlet removes Cross-Origin Resource Sharing (CORS) for an Azure Storage service.
+The **Remove-AzStorageCORSRule** cmdlet removes Cross-Origin Resource Sharing (CORS) for an Azure Storage service.
 This cmdlet deletes all CORS rules in a Storage service type.
 The types of storage services for this cmdlet are Blob, Table, Queue, and File.
 
@@ -28,7 +28,7 @@ The types of storage services for this cmdlet are Blob, Table, Queue, and File.
 
 ### Example 1: Remove CORS rules for the blob service
 ```
-PS C:\>Remove-AzureStorageCORSRule -ServiceType Blob
+PS C:\>Remove-AzStorageCORSRule -ServiceType Blob
 ```
 
 This command removes CORS rules for the Blob service type.
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies the Azure storage context.
-To obtain the storage context, the New-AzureStorageContext cmdlet.
+To obtain the storage context, the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -153,8 +153,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageCORSRule](./Get-AzureStorageCORSRule.md)
+[Get-AzStorageCORSRule](./Get-AzStorageCORSRule.md)
 
-[Set-AzureStorageCORSRule](./Set-AzureStorageCORSRule.md)
+[Set-AzStorageCORSRule](./Set-AzStorageCORSRule.md)
 
 

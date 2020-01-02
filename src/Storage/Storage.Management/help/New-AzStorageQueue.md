@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/ne
 schema: 2.0.0
 ---
 
-# New-AzureStorageQueue
+# New-AzStorageQueue
 
 ## SYNOPSIS
 Creates a storage queue.
@@ -14,25 +14,25 @@ Creates a storage queue.
 ## SYNTAX
 
 ```
-New-AzureStorageQueue [-Name] <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+New-AzStorageQueue [-Name] <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureStorageQueue** cmdlet creates a storage queue in Azure.
+The **New-AzStorageQueue** cmdlet creates a storage queue in Azure.
 
 ## EXAMPLES
 
 ### Example 1: Create an Azure storage queue
 ```
-PS C:\>New-AzureStorageQueue -Name "queueabc"
+PS C:\>New-AzStorageQueue -Name "queueabc"
 ```
 
 This example creates a storage queue named queueabc.
 
 ### Example 2: Create multiple azure storage queues
 ```
-PS C:\>"queue1 queue2 queue3".split() | New-AzureStorageQueue
+PS C:\>"queue1 queue2 queue3".split() | New-AzStorageQueue
 ```
 
 This example creates multiple storage queues.
@@ -42,7 +42,7 @@ It uses the Split method of the .NET String class and then passes the names on t
 
 ### -Context
 Specifies the Azure storage context.
-You can create it by using the New-AzureStorageContext cmdlet.
+You can create it by using the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -103,8 +103,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageQueue](./Get-AzureStorageQueue.md)
+[Get-AzStorageQueue](./Get-AzStorageQueue.md)
 
-[Remove-AzureStorageQueue](./Remove-AzureStorageQueue.md)
+[Remove-AzStorageQueue](./Remove-AzStorageQueue.md)
 
 
