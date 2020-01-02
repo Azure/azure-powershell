@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             ParameterSetName = IpGroupParameterSetNames.ByName,
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
@@ -59,10 +59,6 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            if (!this.IsIpGroupsPresent(this.ResourceGroupName, this.Name))
-            {
-                throw new System.ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.Name));
-            }
 
             base.ExecuteCmdlet();
 
@@ -70,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 var resourceInfo = new ResourceIdentifier(ResourceId);
                 ResourceGroupName = resourceInfo.ResourceGroupName;
-                Name = resourceInfo.ResourceName;
+                Name = resourceInfo.ResourceName; 
             }
 
             if (ShouldGetByName(ResourceGroupName, Name))

@@ -21,6 +21,7 @@ using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -61,6 +62,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
 
+        public const string ChangeDesc = "The DefaultAction value will change in a future release from: Allow = 1, Deny = 0, to: Allow = 0, Deny = 1.";
+        [CmdletParameterBreakingChange("DefaultAction", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Storage Account NetworkRule DefaultAction.")]

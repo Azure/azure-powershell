@@ -248,6 +248,21 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
             Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimePublicIP)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimePublicIP)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimePublicIP)]
+        [ValidateNotNull]
+        public string[] PublicIPs { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeSetupScriptContainerSasUri)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceId,
@@ -711,6 +726,27 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             Resources.IntegrationRuntimeInvalidVnet),
                         "Type");
                 }
+            }
+
+            if (PublicIPs != null)
+            {
+                if (string.IsNullOrWhiteSpace(VNetId))
+                {
+                    throw new PSArgumentException(string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.IntegrationRuntimeVNetNotProvided),
+                        "VNetId");
+                }
+
+                if (PublicIPs.Length != 2)
+                {
+                    throw new PSArgumentException(string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.InvalidPublicIPCount),
+                        "PublicIPs");
+                }
+
+                integrationRuntime.ComputeProperties.VNetProperties.PublicIPs = PublicIPs;
             }
 
             if (!string.IsNullOrWhiteSpace(LicenseType))

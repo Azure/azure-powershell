@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.6
+* Update references in .psd1 to use relative path
+
 ## Version 1.2.5
 * Update documentation of Get-AzDataLakeStoreDeletedItem and Restore-AzDataLakeStoreDeletedItem
 

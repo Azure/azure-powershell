@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.4
+* Update references in .psd1 to use relative path
+
 * Includes some additional volume properties associated with upcoming replication operations
 
 ## Version 0.1.3

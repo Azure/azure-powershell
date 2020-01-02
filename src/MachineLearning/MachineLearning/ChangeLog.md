@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed below cmdlets because MachineLearningCompute is not available any longer
+  - Get-AzMlOpCluster
+  - Get-AzMlOpClusterKey
+  - New-AzMlOpCluster
+  - Remove-AzMlOpCluster
+  - Set-AzMlOpCluster
+  - Test-AzMlOpClusterSystemServicesUpdateAvailability
+  - Update-AzMlOpClusterSystemService
+
+
+## Version 1.1.2
+* Update references in .psd1 to use relative path
 
 ## Version 1.1.1
 * Fixed miscellaneous typos across module

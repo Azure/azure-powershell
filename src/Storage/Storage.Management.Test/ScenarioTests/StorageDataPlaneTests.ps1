@@ -175,6 +175,19 @@ function Test-Blob
         # Create Container for blob
         New-AzStorageContainer $containerName -Context $storageContext
 
+		# verify set container ACL and Stored Access Policy
+		$accessPolicyName = "policy1"
+		New-AzStorageContainerStoredAccessPolicy -Name $containerName -Context $storageContext -Policy $accessPolicyName -Permission rw
+		$accessPolicy = Get-AzStorageContainerStoredAccessPolicy -Name $containerName -Context $storageContext
+		Assert-AreNotEqual $null $accessPolicy
+        Assert-AreEqual $accessPolicyName $accessPolicy.Policy
+		Set-AzStorageContainerAcl -Name $containerName -Context $storageContext -Permission Blob
+		$accessPolicy = Get-AzStorageContainerStoredAccessPolicy -Name $containerName -Context $storageContext
+		Assert-AreNotEqual $null $accessPolicy
+        Assert-AreEqual $accessPolicyName $accessPolicy.Policy
+		$container = Get-AzStorageContainer -Name $containerName -Context $storageContext
+        Assert-AreEqual 'Blob' $container.Permission.PublicAccess
+
         # Upload local file to Azure Storage Blob.
         $t = Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName1 -StandardBlobTier $StandardBlobTier -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext -asjob
         $t | wait-job
@@ -708,7 +721,7 @@ function Test-DatalakeGen2
         $ContentMD5 = "i727sP7HigloQDsqadNLHw=="
 
         # Create FileSystem (actually a container)
-        New-AzStorageContainer $filesystemName -Context $storageContext
+        New-AzDatalakeGen2FileSystem $filesystemName -Context $storageContext
 
 		# Create folders
 		$dir1 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Directory -Permission rwxrwxrwx -Umask ---rwx---  -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
@@ -809,6 +822,9 @@ function Test-DatalakeGen2
 
         # Clean Storage Account
         Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $filesystemName | Remove-AzDataLakeGen2Item -Force
+
+        # remove File system (actually a container)
+        Remove-AzDatalakeGen2FileSystem $filesystemName -Context $storageContext
 
     }
     finally

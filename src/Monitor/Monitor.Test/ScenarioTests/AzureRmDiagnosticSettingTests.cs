@@ -70,5 +70,19 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         {
             TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSetting-TimegrainsOnly");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureRmDiagnosticSettingEventHub()
+        {
+            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSetting-EventHub");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureRmDiagnosticSettingLogAnalytics()
+        {
+            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSetting-LogAnalytics");
+        }
     }
 }

@@ -20,6 +20,27 @@
 
 
 ## Upcoming Release
+* Added cmdlet `Get-AzDataBoxEdgeStorageContainer`
+  - Get the Edge Stroage Container
+* Added cmdlet `New-AzDataBoxEdgeStorageContainer`
+  - Create new Edge Stroage Container
+* Added cmdlet `Remove-AzDataBoxEdgeStorageContainer`
+  - Remove the Edge Stroage Container
+* Added cmdlet `Invoke-AzDataBoxEdgeStorageContainer`
+  - Invoke action to refresh data on Edge Stroage Container
+* Added cmdlet `Get-AzDataBoxEdgeStorageAccount`
+  - Get the Edge Stroage Account
+* Added cmdlet `New-AzDataBoxEdgeStorageAccount`
+  - Create new Edge Stroage Account
+* Added cmdlet `Remove-AzDataBoxEdgeStorageAccount`
+  - Remove the Edge Stroage Account
+* Invoke cmdlet `Invoke-AzDataBoxEdgeShare`
+  - Invoke action to refresh data on share
+* Added cmdlet `Set-AzDataBoxEdgeStorageAccountCredential`
+  - Set the az databoxedge storage account credential
+
+## Version 1.0.1
+* Update references in .psd1 to use relative path
 
 ## Version 1.0.0
 * Added cmdlet `Get-AzDataBoxEdgeOrder`

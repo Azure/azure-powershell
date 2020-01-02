@@ -19,12 +19,12 @@ using System.Management.Automation;
 using System.Net;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.Management.DataBoxEdge;
+using Microsoft.Azure.Management.DataBoxEdge.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Share;
+using ResourceModel = Microsoft.Azure.Management.DataBoxEdge.Models.Share;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 {
@@ -62,7 +62,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
             Position = 2)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
 
         [Parameter(Mandatory = true,
             ParameterSetName = CloudShareNfsParameterSet,
