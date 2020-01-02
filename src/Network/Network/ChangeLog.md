@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 2.2.1
 * Upgrade dependancy of Microsoft.Azure.Management.Sql from 1.36-preivew to 1.37-preivew
 
 ## Version 2.2.0

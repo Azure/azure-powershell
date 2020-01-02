@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.2
 * Fix Invoke-AzHDInsightHiveJob.md error.
 
 ## Version 3.0.1

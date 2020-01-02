@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.9.1
 * Fix an error in help document of `Remove-AzTag`.
 
 ## Version 1.9.0
