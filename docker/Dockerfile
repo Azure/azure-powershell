@@ -1,12 +1,11 @@
 FROM mcr.microsoft.com/powershell
 
-ARG CONFIG=Release
 ARG ARTIFACTS=/tmp/artifacts/
 ARG ARTIFACT=*.nupkg
 ARG TEMPREPO=tmp
 ARG MODULE=Az
 ARG CONFIG=config
-ARG SETTINGS=AzureRmContextSettings.json
+ARG AZURERM_CONTEXT_SETTINGS=AzureRmContextSettings.json
 ARG AZURE=/root/.Azure
 ARG VCS_REF="none"
 ARG VERSION=3.3.0
@@ -35,6 +34,6 @@ RUN pwsh -Command Get-Module -ListAvailable
 RUN pwsh -Command Unregister-PSRepository -Name ${TEMPREPO}
 
 # create AzureRmContextSettings.json before it was generated
-COPY ${CONFIG}/${SETTINGS} ${AZURE}/${SETTINGS}
+COPY ${CONFIG}/${AZURERM_CONTEXT_SETTINGS} ${AZURE}/${AZURERM_CONTEXT_SETTINGS}
 
 CMD [ "pwsh" ]
