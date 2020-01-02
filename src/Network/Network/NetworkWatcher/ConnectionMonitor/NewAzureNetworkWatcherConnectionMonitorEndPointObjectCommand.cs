@@ -132,14 +132,23 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            if (this.FilterType != null && String.Compare(this.FilterType, "Include", true) != 0)
+            if (!string.IsNullOrEmpty(this.FilterType) && String.Compare(this.FilterType, "Include", true) != 0)
             {
                 throw new ArgumentException("Only FilterType Include is supported");
             }
-            else if (this.FilterType != null && this.FilterAddress == null)
+            else if (!string.IsNullOrEmpty(this.FilterType) && this.FilterAddress == null)
             {
                 throw new ArgumentException("FilterType defined without FilterAddress");
             }
+            else if (!string.IsNullOrEmpty(this.FilterType) && !this.FilterAddress.Any())
+            {
+                throw new ArgumentException("FilterAddress is empty");
+            }
+            else if (string.IsNullOrEmpty(this.FilterType) && this.FilterAddress != null)
+            {
+                throw new ArgumentException("FilterAddress defined without FilterType");
+            }
+
             return true;
         }
     }

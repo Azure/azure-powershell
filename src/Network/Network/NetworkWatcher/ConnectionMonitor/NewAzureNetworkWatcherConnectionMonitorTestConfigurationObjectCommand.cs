@@ -50,13 +50,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The percentage of failed check.")]
         [ValidateNotNullOrEmpty]
-        public Int32 SuccessThresholdChecksFailedPercent { get; set; }
+        public Int32? SuccessThresholdChecksFailedPercent { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The round trip time in millisecond.")]
         [ValidateNotNullOrEmpty]
-        public Int32 SuccessThresholdRoundTripTimeMs { get; set; }
+        public Int32? SuccessThresholdRoundTripTimeMs { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -111,6 +111,11 @@ namespace Microsoft.Azure.Commands.Network
                 this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorIcmpConfiguration))
             {
                 throw new ArgumentException("Protocol configuration is not supported.");
+            }
+
+            if (this.TestFrequencySec == 0)
+            {
+                throw new ArgumentException("Test frequency can not be zero.");
             }
 
             if (this.PreferredIPVersion != null & String.Compare(this.PreferredIPVersion, NetworkBaseCmdlet.IPv4, true) != 0 &&

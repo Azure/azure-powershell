@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
         public SwitchParameter IcmpProtocol { get; set; }
           
         [Parameter(
-             Mandatory = false,
+             Mandatory = true,
              HelpMessage = "The port.",
              ParameterSetName = "TCP")]
         [Parameter(
@@ -158,7 +158,11 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
         public bool Validate()
         {
             if (TcpProtocol.IsPresent)
-            {                
+            {
+                if (this.Port == 0)
+                {
+                    throw new ArgumentException("Port can not be zero for TCP configuration");
+                }
             }
             else if (HttpProtocol.IsPresent)
             {
