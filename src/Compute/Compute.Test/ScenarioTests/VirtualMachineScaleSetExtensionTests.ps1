@@ -25,7 +25,7 @@ function Test-VirtualMachineScaleSetDiskEncryptionExtension
         $rgname = "hyleevmssdetest2";
         $vmssName = 'vmss' + $rgname;
         $aadClientSecret = $PLACEHOLDER
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         $aadAppName = "detestaadapp";
 
@@ -34,7 +34,7 @@ function Test-VirtualMachineScaleSetDiskEncryptionExtension
         $kekName = "dstestkek";
 
         # Check if AAD app was already created
-        $SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
+        $SvcPrincipals = (Get-AzADServicePrincipal -SearchString $aadAppName);
         if(-not $SvcPrincipals)
         {
              # Create a new AD application if not created before
@@ -42,10 +42,10 @@ function Test-VirtualMachineScaleSetDiskEncryptionExtension
              $defaultHomePage = 'http://contoso.com';
              $now = [System.DateTime]::Now;
              $oneYearFromNow = $now.AddYears(1);
-             $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
+             $ADApp = New-AzADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
              Assert-NotNull $ADApp;
-             $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $ADApp.ApplicationId;
-             $SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
+             $servicePrincipal = New-AzADServicePrincipal -ApplicationId $ADApp.ApplicationId;
+             $SvcPrincipals = (Get-AzADServicePrincipal -SearchString $aadAppName);
              # Was AAD app created?
              Assert-NotNull $SvcPrincipals;
              $aadClientID = $servicePrincipal.ApplicationId;
@@ -58,13 +58,13 @@ function Test-VirtualMachineScaleSetDiskEncryptionExtension
         }
 
         # Create new KeyVault
-        $keyVault = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $loc -Sku standard;
-        $keyVault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname
+        $keyVault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $loc -Sku standard;
+        $keyVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname
 
         # Set enabledForDiskEncryption
-        Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
+        Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
         # Set permissions to AAD app to write secrets and keys
-        Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ServicePrincipalName $aadClientID -PermissionsToKeys all -PermissionsToSecrets all 
+        Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ServicePrincipalName $aadClientID -PermissionsToKeys all -PermissionsToSecrets all 
         # Create a key in KeyVault to use as Kek
         $kek = Add-AzureKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software"
 
@@ -75,13 +75,13 @@ function Test-VirtualMachineScaleSetDiskEncryptionExtension
         # SRP
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         # NRP
-        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
 
         # New VMSS Parameters
@@ -90,31 +90,31 @@ function Test-VirtualMachineScaleSetDiskEncryptionExtension
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
 
-        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1' -UpgradePolicyMode 'automatic' `
-         | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-         | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-         | Set-AzureRmVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1' -UpgradePolicyMode 'automatic' `
+         | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+         | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+         | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
          -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
          -ImageReferencePublisher $imgRef.PublisherName;
 
-        $result = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         # Get
-        $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $vmssResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
         # Get Instance View
-        $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
+        $vmssInstanceViewResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
 
-        Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $rgname -VMScaleSetName $vmssName `
+        Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgname -VMScaleSetName $vmssName `
                                             -AadClientID $aadClientID -AadClientSecret $aadClientSecret `
                                             -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId `
                                             -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -Force
 
-        $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $result = Get-AzVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $result_string = $result | Out-String;
 
-        $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $result = Get-AzVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $result_string = $result | Out-String;
 
     }
@@ -137,35 +137,35 @@ function Test-DisableVirtualMachineScaleSetDiskEncryption
         $loc = 'westcentralus';
         $rgname = "hyleevmssdetest2"
         $vmssName = 'vmss' + $rgname;
-		New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
-        $result = Get-AzureRmVmssDiskEncryption;
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $result = Get-AzVmssDiskEncryption;
         $result_string = $result | Out-String;
 
-        $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname;
+        $result = Get-AzVmssDiskEncryption -ResourceGroupName $rgname;
         $result_string = $result | Out-String;
 
-        $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $result = Get-AzVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $result_string = $result | Out-String;
 
-        $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $result = Get-AzVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $result_string = $result | Out-String;
 
-        $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 2;
+        $result = Get-AzVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 2;
         $result_string = $result | Out-String;
 
-        $result = Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
+        $result = Disable-AzVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
         $result_string = $result | Out-String;
 
-        $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname;
+        $result = Get-AzVmssDiskEncryption -ResourceGroupName $rgname;
         $result_string = $result | Out-String;
 
-        $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $result = Get-AzVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $result_string = $result | Out-String;
 
-        $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $result = Get-AzVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $result_string = $result | Out-String;
 
-        $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 2;
+        $result = Get-AzVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 2;
         $result_string = $result | Out-String;
     }
     finally
@@ -187,8 +187,8 @@ function Test-DisableVirtualMachineScaleSetDiskEncryption2
         $loc = 'westcentralus';
         $rgname = "hyleevmssdetest2"
         $vmssName = 'vmss' + $rgname;
-		New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
-        $result = Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $result = Disable-AzVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force;
         $result_string = $result | Out-String;
     }
     finally
@@ -211,18 +211,18 @@ function Test-GetVirtualMachineScaleSetDiskEncryptionStatus
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # SRP
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         # NRP
-        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
 
         # New VMSS Parameters
@@ -243,37 +243,37 @@ function Test-GetVirtualMachineScaleSetDiskEncryptionStatus
 
         $extname2 = 'csetest2';
 
-        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' `
-            | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-            | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-            | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
             -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
-            | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true;
+            | Add-AzVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true;
 
-        $result = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         Assert-AreEqual $loc.Replace(" ", "") $result.Location;
         Assert-AreEqual 2 $result.sku.capacity;
         Assert-AreEqual 'standard_a0' $result.sku.name;
         Assert-AreEqual 'manual' $result.upgradepolicy.mode;
 
-        $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $vmssResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
-        $vmssInstanceViewResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
+        $vmssInstanceViewResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
         $output = $vmssInstanceViewResult | Out-String;
 
-        $result = Get-AzureRmVmssDiskEncryptionStatus -ResourceGroupName $rgname;
+        $result = Get-AzVmssDiskEncryptionStatus -ResourceGroupName $rgname;
         $output = $result | Out-String;
 
-        $result = Get-AzureRmVmssDiskEncryptionStatus -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $result = Get-AzVmssDiskEncryptionStatus -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $output = $result | Out-String;
 
-        $result = Get-AzureRmVmssVMDiskEncryptionStatus -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $result = Get-AzVmssVMDiskEncryptionStatus -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $output = $result | Out-String;
 
-        $result = Get-AzureRmVmssVMDiskEncryptionStatus -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId "1";
+        $result = Get-AzVmssVMDiskEncryptionStatus -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId "1";
         $output = $result | Out-String;
     }
     finally
@@ -292,35 +292,35 @@ function Test-GetVirtualMachineScaleSetDiskEncryptionDataDisk
 {
     $rgname = "hyleevmssdetest2";
     $vmssName = "vmsshyleevmssdetest3";
-    $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname;
+    $result = Get-AzVmssDiskEncryption -ResourceGroupName $rgname;
     $output = $result | Out-String;
 
-    $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+    $result = Get-AzVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
     $output = $result | Out-String;
 
-    $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+    $result = Get-AzVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
     Assert-AreEqual "Encrypted" $result[0].DataVolumesEncrypted;
     $output = $result | Out-String;
 
-    $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId "1";
+    $result = Get-AzVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId "1";
     Assert-AreEqual "Encrypted" $result.DataVolumesEncrypted;
     $output = $result | Out-String;
 
-    $job = Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force -AsJob;
+    $job = Disable-AzVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force -AsJob;
     $result = $job | Wait-Job;
     Assert-AreEqual "Completed" $result.State;
 
-    $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname;
+    $result = Get-AzVmssDiskEncryption -ResourceGroupName $rgname;
     $output = $result | Out-String;
 
-    $result = Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+    $result = Get-AzVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
     $output = $result | Out-String;
 
-    $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+    $result = Get-AzVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
     Assert-AreEqual "NotEncrypted" $result[0].DataVolumesEncrypted;
     $output = $result | Out-String;
 
-    $result = Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId "1";
+    $result = Get-AzVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId "1";
     Assert-AreEqual "NotEncrypted" $result.DataVolumesEncrypted;
     $output = $result | Out-String;
 }

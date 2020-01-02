@@ -104,35 +104,35 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     Write-Host $vmname
 
     # Common
-    $g = New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+    $g = New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
-    $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
     Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
     # NRP
-    $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-    $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-    $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+    $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+    $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+    $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
     $subnetId = $vnet.Subnets[0].Id;
-    $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-    $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+    $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+    $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
     $pubipId = $pubip.Id;
-    $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-    $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+    $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+    $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
     $nicId = $nic.Id;
 
-    $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
+    $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
     # Storage Account (SA)
     $stoname = 'sto' + $rgname;
     $stotype = 'Standard_GRS';
-    $sa = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-    Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-    $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+    $sa = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+    Retry-IfException { $global:stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+    $stokey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
 
     $osDiskName = 'osDisk';
     $osDiskCaching = 'ReadWrite';
@@ -141,12 +141,12 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
     $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-    $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+    $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
-    $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
+    $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+    $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+    $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+    $p = Remove-AzVMDataDisk -VM $p -Name 'testDataDisk3';
 
     Assert-AreEqual $p.StorageProfile.OsDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OsDisk.Name $osDiskName;
@@ -169,10 +169,10 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     $computerName = 'test';
     $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-    $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+    $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
 
     $imgRef = Get-DefaultCRPWindowsImageOffline;
-    $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
+    $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -185,16 +185,16 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
     # Virtual Machine
-    $v = New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+    $v = New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
-    $vm = Get-AzureRmVM -ResourceGroupName $rgname -VMName $vmname
+    $vm = Get-AzVM -ResourceGroupName $rgname -VMName $vmname
     return $vm
 }
 
 # Cleans the created resource group
 function Clean-ResourceGroup($rgname)
 {
-    Remove-AzureRmResourceGroup -Name $rgname -Force;
+    Remove-AzResourceGroup -Name $rgname -Force;
 }
 
 # Get Compute Test Tag
@@ -281,7 +281,7 @@ function Get-DefaultVMSize
 {
     param([string] $location = "westus")
 
-    $vmSizes = Get-AzureRmVMSize -Location $location | where { $_.NumberOfCores -ge 4 -and $_.MaxDataDiskCount -ge 8 };
+    $vmSizes = Get-AzVMSize -Location $location | where { $_.NumberOfCores -ge 4 -and $_.MaxDataDiskCount -ge 8 };
 
     foreach ($sz in $vmSizes)
     {
@@ -303,7 +303,7 @@ function Get-DefaultRDFEImage
 {
     param([string] $loca = "East Asia", [string] $query = '*Windows*Data*Center*')
 
-    $d = (Azure\Get-AzureRmVMImage | where {$_.ImageName -like $query -and ($_.Location -like "*;$loca;*" -or $_.Location -like "$loca;*" -or $_.Location -like "*;$loca" -or $_.Location -eq "$loca")});
+    $d = (Azure\Get-AzVMImage | where {$_.ImageName -like $query -and ($_.Location -like "*;$loca;*" -or $_.Location -like "$loca;*" -or $_.Location -like "*;$loca" -or $_.Location -eq "$loca")});
 
     if ($d -eq $null)
     {
@@ -332,7 +332,7 @@ function Get-DefaultCRPImage
 {
     param([string] $loc = "westus", [string] $query = '*Microsoft*Windows*Server*')
 
-    $result = (Get-AzureRmVMImagePublisher -Location $loc) | select -ExpandProperty PublisherName | where { $_ -like $query };
+    $result = (Get-AzVMImagePublisher -Location $loc) | select -ExpandProperty PublisherName | where { $_ -like $query };
     if ($result.Count -eq 1)
     {
         $defaultPublisher = $result;
@@ -342,7 +342,7 @@ function Get-DefaultCRPImage
         $defaultPublisher = $result[0];
     }
 
-    $result = (Get-AzureRmVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*WindowsServer*' -and -not ($_ -like '*HUB')  };
+    $result = (Get-AzVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*WindowsServer*' -and -not ($_ -like '*HUB')  };
     if ($result.Count -eq 1)
     {
         $defaultOffer = $result;
@@ -352,7 +352,7 @@ function Get-DefaultCRPImage
         $defaultOffer = $result[0];
     }
 
-    $result = (Get-AzureRmVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer) | select -ExpandProperty Skus;
+    $result = (Get-AzVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer) | select -ExpandProperty Skus;
     if ($result.Count -eq 1)
     {
         $defaultSku = $result;
@@ -362,7 +362,7 @@ function Get-DefaultCRPImage
         $defaultSku = $result[0];
     }
 
-    $result = (Get-AzureRmVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku) | select -ExpandProperty Version;
+    $result = (Get-AzVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku) | select -ExpandProperty Version;
     if ($result.Count -eq 1)
     {
         $defaultVersion = $result;
@@ -372,7 +372,7 @@ function Get-DefaultCRPImage
         $defaultVersion = $result[0];
     }
     
-    $vmimg = Get-AzureRmVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
+    $vmimg = Get-AzVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
 
     return $vmimg;
 }
@@ -411,7 +411,7 @@ function Get-MarketplaceImage
 {
     param([string] $location = "westus", [string] $pubFilter = '*', [string] $offerFilter = '*')
 
-    $imgs = Get-AzureRmVMImagePublisher -Location $location | where { $_.PublisherName -like $pubFilter } | Get-AzureRmVMImageOffer | where { $_.Offer -like $offerFilter } | Get-AzureRmVMImageSku | Get-AzureRmVMImage | Get-AzureRmVMImage | where { $_.PurchasePlan -ne $null };
+    $imgs = Get-AzVMImagePublisher -Location $location | where { $_.PublisherName -like $pubFilter } | Get-AzVMImageOffer | where { $_.Offer -like $offerFilter } | Get-AzVMImageSku | Get-AzVMImage | Get-AzVMImage | where { $_.PurchasePlan -ne $null };
 
     return $imgs;
 }
@@ -428,7 +428,7 @@ function Get-DefaultVMConfig
     $vmsize = Get-DefaultVMSize $location;
     $vmname = Get-RandomItemName 'crptestps';
 
-    $vm = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+    $vm = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
 
     return $vm;
 }
@@ -489,7 +489,7 @@ function Get-ResourceProviderLocation
     if($provider.Contains("/"))
     {
         $type = $provider.Substring($namespace.Length + 1);
-        $location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type};
+        $location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type};
   
         if ($location -eq $null)
         {
@@ -552,7 +552,7 @@ function Get-SubscriptionIdFromResourceGroup
 {
       param ([string] $rgname)
 
-      $rg = Get-AzureRmResourceGroup -ResourceGroupName $rgname;
+      $rg = Get-AzResourceGroup -ResourceGroupName $rgname;
 
       $rgid = $rg.ResourceId;
 

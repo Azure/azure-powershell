@@ -161,6 +161,6 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[Set-AzVMBootDiagnostics](./Set-AzVMBootDiagnostics.md)
+[Set-AzVMBootDiagnostic](./Set-AzVMBootDiagnostic.md)
 
 

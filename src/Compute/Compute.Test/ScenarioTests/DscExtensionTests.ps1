@@ -1,10 +1,10 @@
 ﻿<#
 .SYNOPSIS
-End to end DSC test that tests Get-AzureRmVMDscExtension cmdlet. It does the following:
-	1) Publishes a configuration to the default storage account using Publish-AzureRmVMDscConfiguration cmdlet
-	2) Installs the extension by calling Set-AzureRmVMDscExtension cmdlet on a VM.
-	3) Calls Get-AzureRmVMDscExtensionStatus cmdlet to check the status of the extension installation.
-	4) Calls Get-AzureRmVMDscExtension cmdlet to get extension details post installation.
+End to end DSC test that tests Get-AzVMDscExtension cmdlet. It does the following:
+	1) Publishes a configuration to the default storage account using Publish-AzVMDscConfiguration cmdlet
+	2) Installs the extension by calling Set-AzVMDscExtension cmdlet on a VM.
+	3) Calls Get-AzVMDscExtensionStatus cmdlet to check the status of the extension installation.
+	4) Calls Get-AzVMDscExtension cmdlet to get extension details post installation.
 #>
 function Test-GetAzureRmVMDscExtension
 {
@@ -17,43 +17,43 @@ function Test-GetAzureRmVMDscExtension
     try
     {
         # Common
-        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Storage Account 
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
         $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
         $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
         
-        $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
-		$p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+		$p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
         
 		# OS & Image
         $user = "localadmin";
@@ -63,11 +63,11 @@ function Test-GetAzureRmVMDscExtension
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+        $p = Set-AzVMSourceImage -VM $p -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
         
         # Virtual Machine
-        New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Test DSC Extension
         $version = '2.19';
@@ -75,12 +75,12 @@ function Test-GetAzureRmVMDscExtension
 		# Publish DSC Configuration
 		#TODO: Find a way to mock calls with storage
 		#$configPath = '.\ScenarioTests\DummyConfig.ps1'
-		#Publish-AzureRmVMDscConfiguration -ConfigurationPath $configPath -ResourceGroupName $rgname -StorageAccountName $stoname -Force -Verbose
+		#Publish-AzVMDscConfiguration -ConfigurationPath $configPath -ResourceGroupName $rgname -StorageAccountName $stoname -Force -Verbose
 
 		#Install DSC Extension handler
-		Set-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname -ArchiveBlobName $null -ArchiveStorageAccountName $stoname -Version $version -Force -Location $loc
+		Set-AzVMDscExtension -ResourceGroupName $rgname -VMName $vmname -ArchiveBlobName $null -ArchiveStorageAccountName $stoname -Version $version -Force -Location $loc
 
-        $extension = Get-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname 
+        $extension = Get-AzVMDscExtension -ResourceGroupName $rgname -VMName $vmname 
 		Assert-NotNull $extension
 		Assert-AreEqual $extension.ResourceGroupName $rgname
 		Assert-AreEqual $extension.Name "Microsoft.Powershell.DSC"
@@ -89,7 +89,7 @@ function Test-GetAzureRmVMDscExtension
 		Assert-AreEqual $extension.TypeHandlerVersion $version
 		Assert-NotNull $extension.ProvisioningState
 
-		$status = Get-AzureRmVMDscExtensionStatus -ResourceGroupName $rgname -VMName $vmname 
+		$status = Get-AzVMDscExtensionStatus -ResourceGroupName $rgname -VMName $vmname 
 		Assert-NotNull $status
 		Assert-AreEqual $status.ResourceGroupName $rgname
 		Assert-AreEqual $status.VmName $vmname 
@@ -98,14 +98,14 @@ function Test-GetAzureRmVMDscExtension
 		Assert-NotNull $status.Timestamp 
 		
         # Remove Extension
-        Remove-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname
+        Remove-AzVMDscExtension -ResourceGroupName $rgname -VMName $vmname
     }
     finally
     {
 		# Cleanup
-		if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
+		if(Get-AzResourceGroup -Name $rgname -Location $loc)
 		{
-			#Remove-AzureRmResourceGroup -Name $rgname -Force;
+			#Remove-AzResourceGroup -Name $rgname -Force;
 		}
     }
 }
@@ -117,7 +117,7 @@ function Get-DefaultResourceGroupLocation
 	{
 		$namespace = "Microsoft.Resources" 
 		$type = "resourceGroups" 
-		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+		$location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
   
 		if ($location -eq $null) 
 		{  

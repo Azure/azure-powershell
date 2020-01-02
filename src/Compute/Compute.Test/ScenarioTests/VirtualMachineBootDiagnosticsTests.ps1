@@ -27,32 +27,32 @@ function Test-VirtualMachineBootDiagnostics
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Adding the same Nic but not set it Primary
-        $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId -Primary;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId -Primary;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
@@ -60,8 +60,8 @@ function Test-VirtualMachineBootDiagnostics
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -69,9 +69,9 @@ function Test-VirtualMachineBootDiagnostics
         $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
 
-        $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
-        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -94,10 +94,10 @@ function Test-VirtualMachineBootDiagnostics
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -109,10 +109,10 @@ function Test-VirtualMachineBootDiagnostics
         Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
         # Create Windows Virtual Machine
-        New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
-        $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
@@ -131,28 +131,28 @@ function Test-VirtualMachineBootDiagnostics
 
         Wait-Seconds 600;
         $localpath = (Get-Item -Path ".\" -Verbose).FullName
-        Get-AzureRmVMBootDiagnosticsData -Windows -ResourceGroupName $rgname -Name $vmname -LocalPath $localpath;
+        Get-AzVMBootDiagnosticsData -Windows -ResourceGroupName $rgname -Name $vmname -LocalPath $localpath;
 
         # Remove VM
-        Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force;
+        Remove-AzVM -Name $vmname -ResourceGroupName $rgname -Force;
 
         # Create a Linux VM with boot diagnostics
         $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
         $osDiskName = 'linuxOsDisk';
 
-        $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
-        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
-        $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
         $imgRef = Get-DefaultCRPLinuxImageOffline;
-        $p = Set-AzureRMVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred
-        $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
+        $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         # Create Linux Virtual Machine
-        New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
-        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
@@ -171,7 +171,7 @@ function Test-VirtualMachineBootDiagnostics
 
         Wait-Seconds 600;
 
-        $bddata = Get-AzureRmVMBootDiagnosticsData -Linux -ResourceGroupName $rgname -Name $vmname | Out-String;
+        $bddata = Get-AzVMBootDiagnosticsData -Linux -ResourceGroupName $rgname -Name $vmname | Out-String;
 
         Write-Output("BootDiagnosticsData:");
         Write-Output($bddata);
@@ -196,32 +196,32 @@ function Test-VirtualMachineBootDiagnosticsPremium
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_DS1';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
-        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureRMNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRMNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Adding the same Nic but not set it Primary
-        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId -Primary;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId -Primary;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
@@ -229,14 +229,14 @@ function Test-VirtualMachineBootDiagnosticsPremium
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Premium_LRS';
-        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'None';
         $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
 
-        $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -250,10 +250,10 @@ function Test-VirtualMachineBootDiagnosticsPremium
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = Set-AzureRMVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -265,10 +265,10 @@ function Test-VirtualMachineBootDiagnosticsPremium
         Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
         # Virtual Machine
-        New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
-        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
@@ -307,40 +307,40 @@ function Test-LinuxVirtualMachineBootDiagnostics
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
-        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureRMNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRMNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
         $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
-        $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -356,8 +356,8 @@ function Test-LinuxVirtualMachineBootDiagnostics
 
         $imgRef = Get-DefaultCRPLinuxImageOffline;
 
-        $p = Set-AzureRMVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred
-        $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
+        $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -369,10 +369,10 @@ function Test-LinuxVirtualMachineBootDiagnostics
         Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
         # Virtual Machine
-        New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
-        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
@@ -390,7 +390,7 @@ function Test-LinuxVirtualMachineBootDiagnostics
         Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
 
         # Remove
-        Remove-AzureRMVM -Name $vmname -ResourceGroupName $rgname -Force;
+        Remove-AzVM -Name $vmname -ResourceGroupName $rgname -Force;
     }
     finally
     {
@@ -401,7 +401,7 @@ function Test-LinuxVirtualMachineBootDiagnostics
 
 <#
 .SYNOPSIS
-Test Virtual Machine Boot Diagnostics with Set-AzureRMVMBootDiagnostics
+Test Virtual Machine Boot Diagnostics with Set-AzVMBootDiagnostic
 #>
 function Test-VirtualMachineBootDiagnosticsSet
 {
@@ -412,32 +412,32 @@ function Test-VirtualMachineBootDiagnosticsSet
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
-        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureRMNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRMNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Adding the same Nic but not set it Primary
-        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId -Primary;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId -Primary;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
@@ -445,19 +445,19 @@ function Test-VirtualMachineBootDiagnosticsSet
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         $stoname2 = $stoname + 'add';
         $stotype2 = 'Standard_GRS';
-        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -Type $stotype2;
-        $stoaccount2 = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname2;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -Type $stotype2;
+        $stoaccount2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
         $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
 
-        $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -471,10 +471,10 @@ function Test-VirtualMachineBootDiagnosticsSet
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = Set-AzureRMVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -485,13 +485,13 @@ function Test-VirtualMachineBootDiagnosticsSet
         Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
         Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
-        $p = Set-AzureRMVMBootDiagnostics -VM $p -Enable -ResourceGroupName $rgname -StorageAccountName $stoname2;
+        $p = Set-AzVMBootDiagnostic -VM $p -Enable -ResourceGroupName $rgname -StorageAccountName $stoname2;
 
         # Create Virtual Machine
-        New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
-        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
@@ -509,10 +509,10 @@ function Test-VirtualMachineBootDiagnosticsSet
         Assert-AreEqual $stoaccount2.PrimaryEndpoints.Blob   $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
 
         # Update Virtual Machine
-        $vm1 | Set-AzureRMVMBootDiagnostics -Disable | Update-AzureRMVM
+        $vm1 | Set-AzVMBootDiagnostic -Disable | Update-AzVM
 
         # Get VM
-        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;

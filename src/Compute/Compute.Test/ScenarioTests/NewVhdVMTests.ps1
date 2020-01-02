@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test New-AzureRmVhdVM with a valid disk file
+Test New-AzVhdVM with a valid disk file
 #>
 function Test-NewAzureRmVhdVMWithValidDiskFile
 {
@@ -28,13 +28,13 @@ function Test-NewAzureRmVhdVMWithValidDiskFile
         [string]$loc = Get-ComputeVMLocation;
         $loc = $loc.Replace(' ', '');
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # Create a new VM using the tiny VHD file
         [string]$file = ".\VhdFiles\tiny.vhd";
         $vmname = $rgname + 'vm';
         [string]$domainNameLabel = "$vmname-$rgname".tolower();
-		$vm = New-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Location $loc -DiskFile $file -OpenPorts 1234 -DomainNameLabel $domainNameLabel;
+		$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Location $loc -DiskFile $file -OpenPorts 1234 -DomainNameLabel $domainNameLabel;
         Assert-AreEqual $vm.Name $vmname;
         Assert-AreEqual $vm.Location $loc;
         Assert-Null $vm.OSProfile $null;
@@ -43,7 +43,7 @@ function Test-NewAzureRmVhdVMWithValidDiskFile
         # Check the dependent disk resource
         $stoname = $vmname;
         $diskname = $vmname;
-        $disk = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Import $disk.CreationData.CreateOption;
         Assert-AreEqual "https://${stoname}.blob.core.windows.net/${rgname}/${diskname}.vhd" $disk.CreationData.SourceUri;
@@ -57,7 +57,7 @@ function Test-NewAzureRmVhdVMWithValidDiskFile
 
 <#
 .SYNOPSIS
-Test New-AzureRmVhdVM with an invalid disk file
+Test New-AzVhdVM with an invalid disk file
 #>
 function Test-NewAzureRmVhdVMWithInvalidDiskFile
 {
@@ -74,7 +74,7 @@ function Test-NewAzureRmVhdVMWithInvalidDiskFile
         [string]$loc = Get-ComputeVMLocation;
         $loc = $loc.Replace(' ', '');
       
-        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # Try to create a VM using the VHD file
         $expectedException = $false;
@@ -82,7 +82,7 @@ function Test-NewAzureRmVhdVMWithInvalidDiskFile
         try
         {
 			[string]$domainNameLabel = "$rgname-$rgname".tolower();
-            $st = New-AzureRmVM -ResourceGroupName $rgname -Name $rgname -Location $loc -Linux -DiskFile $file1 -OpenPorts 1234 -DomainNameLabel $domainNameLabel;
+            $st = New-AzVM -ResourceGroupName $rgname -Name $rgname -Location $loc -Linux -DiskFile $file1 -OpenPorts 1234 -DomainNameLabel $domainNameLabel;
         }
         catch
         {
@@ -94,7 +94,7 @@ function Test-NewAzureRmVhdVMWithInvalidDiskFile
         
         if (-not $expectedException)
         {
-            throw "Expected exception from calling New-AzureRmVM was not caught: '$expectedErrorMessage'.";
+            throw "Expected exception from calling New-AzVM was not caught: '$expectedErrorMessage'.";
         }
     }
     finally

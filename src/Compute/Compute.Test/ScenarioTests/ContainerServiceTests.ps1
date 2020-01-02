@@ -25,7 +25,7 @@ function Test-ContainerService
     {
         # Common
         $loc = 'australiasoutheast';
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         $csName = 'cs' + $rgname;
         $masterDnsPrefixName = 'master' + $rgname;
@@ -57,23 +57,23 @@ function Test-ContainerService
             "oe6IQTw7zJF7xuBIzTYwjOCM197GKW7xc4GU4JZIN+faZ7njl/fxfUNdlqvgZUUn" +
             "kfdrzU3PZPl0w9NuncgEje/PZ+YtZvIsnH7MLSPeIGNQwW6V2kc8";
 
-        $job = New-AzureRmContainerServiceConfig -Location $loc -OrchestratorType $orchestratorType `
+        $job = New-AzContainerServiceConfig -Location $loc -OrchestratorType $orchestratorType `
             -MasterDnsPrefix $masterDnsPrefixName -AdminUsername $adminUserName -SshPublicKey $sshPublicKey `
-        | Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName -VmSize $vmSize -DnsPrefix $agentPoolDnsPrefixName -Count 1 `
-        | New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName -AsJob;
+        | Add-AzContainerServiceAgentPoolProfile -Name $agentPoolProfileName -VmSize $vmSize -DnsPrefix $agentPoolDnsPrefixName -Count 1 `
+        | New-AzContainerService -ResourceGroupName $rgname -Name $csName -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
         $container = $job | Receive-Job
 
-        $cs = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
+        $cs = Get-AzContainerService -ResourceGroupName $rgname -Name $csName;
         $output = $cs | Out-String;
         Assert-True { $output.Contains("AgentPoolProfiles") };
 
-        $cslist = Get-AzureRmContainerService -ResourceGroupName $rgname;
+        $cslist = Get-AzContainerService -ResourceGroupName $rgname;
         $output = $cslist | Out-String;
         Assert-False { $output.Contains("AgentPoolProfiles") };
 
-        $job = Remove-AzureRmContainerService -ResourceGroupName $rgname -Name $csName -Force -AsJob;
+        $job = Remove-AzContainerService -ResourceGroupName $rgname -Name $csName -Force -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
         $st = $job | Receive-Job
@@ -98,7 +98,7 @@ function Test-ContainerServiceUpdate
     {
         # Common
         $loc = 'australiasoutheast';
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         $csName = 'cs' + $rgname;
         $masterDnsPrefixName = 'master' + $rgname;
@@ -130,29 +130,29 @@ function Test-ContainerServiceUpdate
             "oe6IQTw7zJF7xuBIzTYwjOCM197GKW7xc4GU4JZIN+faZ7njl/fxfUNdlqvgZUUn" +
             "kfdrzU3PZPl0w9NuncgEje/PZ+YtZvIsnH7MLSPeIGNQwW6V2kc8";
 
-        $container = New-AzureRmContainerServiceConfig -Location $loc `
+        $container = New-AzContainerServiceConfig -Location $loc `
             -OrchestratorType $orchestratorType `
             -MasterDnsPrefix $masterDnsPrefixName `
             -MasterCount 1 `
             -AdminUsername $adminUserName `
             -SshPublicKey $sshPublicKey `
-        | Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
+        | Add-AzContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
             -VmSize $vmSize `
             -DnsPrefix $agentPoolDnsPrefixName `
             -Count 1 `
-        | New-AzureRmContainerService -ResourceGroupName $rgname -Name $csName;
+        | New-AzContainerService -ResourceGroupName $rgname -Name $csName;
 
-        $job = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName `
-        | Remove-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
-        | Add-AzureRmContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
+        $job = Get-AzContainerService -ResourceGroupName $rgname -Name $csName `
+        | Remove-AzContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
+        | Add-AzContainerServiceAgentPoolProfile -Name $agentPoolProfileName `
             -VmSize $vmSize `
             -DnsPrefix $agentPoolDnsPrefixName `
             -Count 2 `
-        | Update-AzureRmContainerService -AsJob;
+        | Update-AzContainerService -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
 
-        $st = Get-AzureRmContainerService -ResourceGroupName $rgname -Name $csName | Remove-AzureRmContainerService -Force;
+        $st = Get-AzContainerService -ResourceGroupName $rgname -Name $csName | Remove-AzContainerService -Force;
     }
     finally
     {

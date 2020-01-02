@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/se
 schema: 2.0.0
 ---
 
-# Set-AzVMBootDiagnostics
+# Set-AzVMBootDiagnostic
 
 ## SYNOPSIS
 Modifies boot diagnostics properties of a virtual machine.
@@ -15,25 +15,25 @@ Modifies boot diagnostics properties of a virtual machine.
 
 ### EnableBootDiagnostics
 ```
-Set-AzVMBootDiagnostics [-VM] <PSVirtualMachine> [-Enable] [-ResourceGroupName] <String>
+Set-AzVMBootDiagnostic [-VM] <PSVirtualMachine> [-Enable] [-ResourceGroupName] <String>
  [[-StorageAccountName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DisableBootDiagnostics
 ```
-Set-AzVMBootDiagnostics [-VM] <PSVirtualMachine> [-Disable] [-DefaultProfile <IAzureContextContainer>]
+Set-AzVMBootDiagnostic [-VM] <PSVirtualMachine> [-Disable] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzVMBootDiagnostics** cmdlet modifies boot diagnostics properties of a virtual machine.
+The **Set-AzVMBootDiagnostic** cmdlet modifies boot diagnostics properties of a virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Enable boot diagnostics
 ```
 PS C:\> $VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07"
-PS C:\> Set-AzVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "ResourceGroup11" -StorageAccountName "DiagnosticStorage"
+PS C:\> Set-AzVMBootDiagnostic -VM $VM -Enable -ResourceGroupName "ResourceGroup11" -StorageAccountName "DiagnosticStorage"
 ```
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzVM**.

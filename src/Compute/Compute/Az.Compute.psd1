@@ -169,7 +169,7 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'Disable-AzVmssDiskEncryption', 
                'Get-AzVmssDiskEncryption', 'Get-AzVmssVMDiskEncryption', 
                'Export-AzLogAnalyticRequestRateByInterval', 
-               'Export-AzLogAnalyticThrottledRequests'
+               'Export-AzLogAnalyticThrottledRequest'
 
 # Variables to export from this module
 # VariablesToExport = @()
