@@ -8,7 +8,6 @@ using System.Management.Automation;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Tools.Common.Helpers;
-using Tools.Common.Issues;
 using Tools.Common.Loaders;
 using Tools.Common.Loggers;
 using Tools.Common.Models;
@@ -256,7 +255,6 @@ namespace VersionController.Models
         /// <returns>Version enum representing the version bump to be applied.</returns>
         public Version GetVersionBumpUsingSerialized(bool serialize = true)
         {
-            Console.WriteLine("Comparing the cmdlet assumblies with metadata from JSON file...");
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var outputDirectories = _fileHelper.OutputDirectories;
@@ -313,14 +311,6 @@ namespace VersionController.Models
                     CheckBreakingChangesInModules(oldModuleMetadata, newModuleMetadata, issueLogger);
                     if (issueLogger.Records.Any())
                     {
-                        var currentColor = Console.ForegroundColor;
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"Detected below {issueLogger.Records.Count} breack change(s):");
-                        foreach (IReportRecord record in issueLogger.Records)
-                        {
-                            Console.WriteLine(((BreakingChangeIssue)record).Target + " " + record.ProblemId + " " + record.Description);
-                        }
-                        Console.ForegroundColor = currentColor;
                         tempVersionBump = Version.MAJOR;
                     }
                     else if (!oldModuleMetadata.Equals(newModuleMetadata))
@@ -359,7 +349,6 @@ namespace VersionController.Models
         /// <returns>Version enum representing the version bump to be applied.</returns>
         public Version GetVersionBumpUsingGallery()
         {
-            Console.WriteLine("Comparing the cmdlet assumblies with seemblies in the saved gallery folder...");
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var outputDirectories = _fileHelper.OutputDirectories;

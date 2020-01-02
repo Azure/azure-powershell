@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Aks
         /// Cluster name
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = IdParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Id of a managed Kubernetes cluster")]
@@ -61,6 +62,7 @@ namespace Microsoft.Azure.Commands.Aks
         /// Cluster name
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = NameParameterSet,
             Position = 1,
             HelpMessage = "Name of your managed Kubernetes cluster")]
         [ValidateNotNullOrEmpty]
