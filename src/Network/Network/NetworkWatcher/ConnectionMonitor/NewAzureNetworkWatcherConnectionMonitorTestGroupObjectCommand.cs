@@ -83,20 +83,129 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException("Test configuration is undefined.");
             }
-
-            if (!this.Source.Any())
+            else
             {
-                throw new ArgumentException("Source endpoint is undefined.");
+                //validate test configuration
+                foreach (PSNetworkWatcherConnectionMonitorTestConfigurationObject TestConfiguration in this.TestConfiguration)
+                {
+                    // validate test configuration
+                    if (string.IsNullOrEmpty(TestConfiguration.Protocol))
+                    {
+                        throw new ArgumentException("Protocol in test configuration is not provided.");
+                    }
+
+                    if (TestConfiguration.HttpConfiguration == null && TestConfiguration.TcpConfiguration == null && TestConfiguration.IcmpConfiguration == null)
+                    {
+                        throw new ArgumentException("Protocol configuration is not provided.");
+                    }
+                    else if (TestConfiguration.TcpConfiguration != null)
+                    {
+                        if (TestConfiguration.TcpConfiguration.Port == 0)
+                        {
+                            throw new ArgumentException("Port can not be zero for TCP configuration");
+                        }
+                    }
+
+                    if (TestConfiguration.PreferredIPVersion != null & String.Compare(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv4, true) != 0 &&
+                        String.Compare(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv6, true) != 0)
+                    {
+                        throw new ArgumentException("IP version is undefined.");
+                    }
+
+                    //test configuration names must be unique
+                    if (!string.IsNullOrEmpty(TestConfiguration.Name) && this.TestConfiguration.Count(x => x.Name == TestConfiguration.Name) > 2)
+                    {
+                        throw new ArgumentException("Test configuration name is not unique");
+                    }
+                }
             }
 
-            if (!this.Destination.Any())
+            if (!this.Source.Any() || !this.Destination.Any())
             {
-                throw new ArgumentException("Destination endpoint is undefined.");
+                throw new ArgumentException("Source or destination endpoint is undefined.");
             }
-
-            if (this.Source.Count() != this.Destination.Count())
+            else
             {
-                throw new ArgumentException("Source endpoints are not the same number as destination endpoints.");
+                // validate Source and Destination Endpoints
+                List<PSNetworkWatcherConnectionMonitorEndpointObject> Endpoints = this.Source;
+                Endpoints.Concat(this.Destination);
+
+                foreach (PSNetworkWatcherConnectionMonitorEndpointObject Endpoint in Endpoints)
+                {
+                    if (string.IsNullOrEmpty(Endpoint.ResourceId) && string.IsNullOrEmpty(Endpoint.Address) && Endpoint.Filter == null)
+                    {
+                        throw new ArgumentException("No Endpoint parameter is provided");
+                    }
+
+                    if (string.IsNullOrEmpty(Endpoint.ResourceId) && string.IsNullOrEmpty(Endpoint.Address))
+                    {
+                        throw new ArgumentException("Endpoint ResourceId and Address can not be both empty");
+                    }
+
+                    if (!string.IsNullOrEmpty(Endpoint.ResourceId))
+                    {
+                        string[] SplittedName = Endpoint.ResourceId.Split('/');
+
+                        // Resource ID must be in this format
+                        // "resourceId": "/subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/iraVmTest2"
+                        if (SplittedName.Count() < 9)
+                        {
+                            throw new ArgumentException("Endpoint ResourceId is not in the correct format");
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(Endpoint.Filter.Type) && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
+                    {
+                        throw new ArgumentException("Only FilterType Include is supported");
+                    }
+                    else if (!string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items == null)
+                    {
+                        throw new ArgumentException("Endpoint FilterType defined without FilterAddress");
+                    }
+                    else if (!string.IsNullOrEmpty(Endpoint.Filter.Type) && !Endpoint.Filter.Items.Any())
+                    {
+                        throw new ArgumentException("Endpoint FilterAddress is empty");
+                    }
+                    else if (string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items != null)
+                    {
+                        throw new ArgumentException("FilterAddress defined without FilterType");
+                    }
+                    else if (!string.IsNullOrEmpty(Endpoint.Filter.Type))
+                    {
+                        foreach (PSConnectionMonitorEndpointFilterItem Item in Endpoint.Filter.Items)
+                        {
+                            if (!string.IsNullOrEmpty(Item.Type) && String.Compare(Item.Type, "AgentAddress", true) != 0)
+                            {
+                                throw new ArgumentException("Endpoint Filter Items Type is not AgentAddress");
+                            }
+
+                            if (string.IsNullOrEmpty(Item.Address))
+                            {
+                                throw new ArgumentException("Endpoint Filter Items Address is empty");
+                            }
+                        }
+                    }
+
+                    // Endpoint name is optional so if it is not provided, fill it out
+                    if (string.IsNullOrEmpty(Endpoint.Name))
+                    {
+                        string EndpointName = null;
+
+                        if (!string.IsNullOrEmpty(Endpoint.ResourceId))
+                        {
+                            string[] SplittedName = Endpoint.ResourceId.Split('/');
+                            // Name is in the form resourceName(ResourceGroupName)
+                            EndpointName = SplittedName[8] + "(" + SplittedName[4] + ")";
+                        }
+                        else if (!string.IsNullOrEmpty(Endpoint.Address))
+                        {
+                            EndpointName = Endpoint.Address;
+                        }
+
+                        // assign the new name to the endpoint name
+                        Endpoint.Name = EndpointName;
+                    }
+                }
             }
 
             return true;

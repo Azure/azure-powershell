@@ -467,8 +467,8 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (ParameterSetName.Contains("SetByName"))
             {
-                MNM.NetworkWatcher networkWatcher = this.NetworkClient.NetworkManagementClient.NetworkWatchers.Get(this.ResourceGroupName, this.NetworkWatcherName);
-                parameters.Location = networkWatcher.Location;
+               MNM.NetworkWatcher networkWatcher = this.NetworkClient.NetworkManagementClient.NetworkWatchers.Get(this.ResourceGroupName, this.NetworkWatcherName);
+               parameters.Location = networkWatcher.Location;
             }
             else
             {
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Validate Test Group
-            if (this.TestGroup != null)
+            if (this.TestGroup != null && this.TestGroup.Any())
             {
                 foreach (PSNetworkWatcherConnectionMonitorTestGroupObject TestGroup in this.TestGroup)
                 {
@@ -549,6 +549,14 @@ namespace Microsoft.Azure.Commands.Network
                             else if (!string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items == null)
                             {
                                 throw new ArgumentException("Endpoint FilterType defined without FilterAddress");
+                            }
+                            else if (!string.IsNullOrEmpty(Endpoint.Filter.Type) && !Endpoint.Filter.Items.Any())
+                            {
+                                throw new ArgumentException("Endpoint FilterAddress is empty");
+                            }
+                            else if (string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items != null)
+                            {
+                                throw new ArgumentException("FilterAddress defined without FilterType");
                             }
                             else if (!string.IsNullOrEmpty(Endpoint.Filter.Type))
                             {
@@ -607,6 +615,13 @@ namespace Microsoft.Azure.Commands.Network
                             {
                                 throw new ArgumentException("Protocol configuration is not provided.");
                             }
+                            else if (TestConfiguration.TcpConfiguration != null)
+                            {
+                                if (TestConfiguration.TcpConfiguration.Port == 0)
+                                {
+                                    throw new ArgumentException("Port can not be zero for TCP configuration");
+                                }
+                            }
 
                             if (TestConfiguration.PreferredIPVersion != null & String.Compare(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv4, true) != 0 &&
                                 String.Compare(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv6, true) != 0)
@@ -627,9 +642,13 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 }
             }
+            else if(this.TestGroup != null &&  !this.TestGroup.Any())
+            {
+                throw new ArgumentException("TestGroup is empty");
+            }
 
             // validate output
-            if (this.Output != null)
+            if (this.Output != null && this.Output.Any())
             {
                 foreach (PSNetworkWatcherConnectionMonitorOutputObject Output in this.Output)
                 {
@@ -642,6 +661,10 @@ namespace Microsoft.Azure.Commands.Network
                         throw new ArgumentException("Output WorkspaceResourceId parameter is empty");
                     }
                 }
+            }
+            else if (this.Output != null && !this.Output.Any())
+            {
+                throw new ArgumentException("Output is empty");
             }
 
             return true;
