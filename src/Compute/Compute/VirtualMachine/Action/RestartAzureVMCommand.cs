@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = RestartResourceGroupNameParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSComputeLongRunningOperation), typeof(PSAzureOperationResponse))]
+    [Cmdlet(VerbsLifecycle.Restart, ProfileNouns.VirtualMachine, DefaultParameterSetName = RestartResourceGroupNameParameterSet, SupportsShouldProcess = true)]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class RestartAzureVMCommand : VirtualMachineBaseCmdlet
     {
         protected const string RestartResourceGroupNameParameterSet = "RestartResourceGroupNameParameterSetName";
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = PerformMaintenanceResourceGroupNameParameterSet,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -58,23 +57,14 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
-        [ResourceIdCompleter("Microsoft.Compute/virtualMachines")]
         public string Id { get; set; }
 
 
         [Parameter(
            Mandatory = true,
            Position = 1,
-           ParameterSetName = RestartResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
-        [Parameter(
-           Mandatory = true,
-           Position = 1,
-           ParameterSetName = PerformMaintenanceResourceGroupNameParameterSet,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The virtual machine name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -96,77 +86,38 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
-        public SwitchParameter NoWait { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(Name, VerbsLifecycle.Restart))
             {
                 base.ExecuteCmdlet();
 
-                if (!string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(Name))
-                {
-                    ResourceIdentifier parsedId = new ResourceIdentifier(Id);
-                    this.Name = parsedId.ResourceName;
-                }
-
                 if (this.ParameterSetName.Equals(RestartIdParameterSet) || this.ParameterSetName.Equals(PerformMaintenanceIdParameterSet))
                 {
                     this.ResourceGroupName = GetResourceGroupNameFromId(this.Id);
                 }
 
-                if (NoWait.IsPresent)
+                if (this.PerformMaintenance.IsPresent)
                 {
-                    if (this.PerformMaintenance.IsPresent)
+                    ExecuteClientAction(() =>
                     {
-                        ExecuteClientAction(() =>
-                        {
-                            var op = this.VirtualMachineClient.BeginPerformMaintenanceWithHttpMessagesAsync(
-                                this.ResourceGroupName,
-                                this.Name).GetAwaiter().GetResult();
-                            var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                            WriteObject(result);
-                        });
-                    }
-                    else
-                    {
-                        ExecuteClientAction(() =>
-                        {
-                            var op = this.VirtualMachineClient.BeginRestartWithHttpMessagesAsync(
-                                this.ResourceGroupName,
-                                this.Name).GetAwaiter().GetResult();
-                            var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                            WriteObject(result);
-                        });
-                    }
+                        var op = this.VirtualMachineClient.PerformMaintenanceWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.Name).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                        WriteObject(result);
+                    });
                 }
                 else
                 {
-                    if (this.PerformMaintenance.IsPresent)
+                    ExecuteClientAction(() =>
                     {
-                        ExecuteClientAction(() =>
-                        {
-                            var op = this.VirtualMachineClient.PerformMaintenanceWithHttpMessagesAsync(
-                                this.ResourceGroupName,
-                                this.Name).GetAwaiter().GetResult();
-                            var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
-                            WriteObject(result);
-                        });
-                    }
-                    else
-                    {
-                        ExecuteClientAction(() =>
-                        {
-                            var op = this.VirtualMachineClient.RestartWithHttpMessagesAsync(
-                                this.ResourceGroupName,
-                                this.Name).GetAwaiter().GetResult();
-                            var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
-                            result.StartTime = this.StartTime;
-                            result.EndTime = DateTime.Now;
-                            WriteObject(result);
-                        });
-                    }
+                        var op = this.VirtualMachineClient.RestartWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.Name).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                        WriteObject(result);
+                    });
                 }
             }
         }

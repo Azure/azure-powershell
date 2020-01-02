@@ -20,7 +20,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAccessExtension",SupportsShouldProcess = true)]
+    [Cmdlet(
+        VerbsCommon.Remove,
+        ProfileNouns.VirtualMachineAccessExtension,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -29,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -39,7 +42,6 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -49,16 +51,12 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(HelpMessage = "To force the removal.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
-        public SwitchParameter NoWait { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -70,22 +68,11 @@ namespace Microsoft.Azure.Commands.Compute
                     && (this.Force.IsPresent
                     || this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption)))
                 {
-                    if (NoWait.IsPresent)
-                    {
-                        var op = this.VirtualMachineExtensionClient.BeginDeleteWithHttpMessagesAsync(this.ResourceGroupName,
-                            this.VMName,
-                            this.Name).GetAwaiter().GetResult();
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                        WriteObject(result);
-                    }
-                    else
-                    {
-                        var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(this.ResourceGroupName,
-                            this.VMName,
-                            this.Name).GetAwaiter().GetResult();
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                        WriteObject(result);
-                    }
+                    var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(this.ResourceGroupName,
+                        this.VMName,
+                        this.Name).GetAwaiter().GetResult();
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
                 }
             });
         }

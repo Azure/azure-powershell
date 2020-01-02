@@ -65,13 +65,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RouteHopTypeTest");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestRouteWithDisableBgpRoutePropagation()
-        {
-            TestRunner.RunTestScript("Test-RouteTableWithDisableBgpRoutePropagation");
-        }
     }
 }

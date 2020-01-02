@@ -28,18 +28,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
-            TestRunner.RunTestScript("Test-VirtualMachine $null");
+            TestRunner.RunTestScript(@"Test-VirtualMachine $null");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachine_Managed()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachine $null $true");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestVirtualMachinePiping()
         {
             TestRunner.RunTestScript("Test-VirtualMachinePiping");
@@ -87,8 +81,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualMachineSizeAndUsage");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestVirtualMachineCapture()
         {
             TestRunner.RunTestScript("Test-VirtualMachineCapture");
@@ -159,13 +154,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineListWithPaging()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineListWithPaging");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithDifferentStorageResource()
         {
             TestRunner.RunTestScript("Test-VirtualMachineWithDifferentStorageResource");
@@ -185,9 +173,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualMachineWithEmptyAuc");
         }
 
-        [Fact(Skip = "Unknown issue/update, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestVirtualMachineWithBYOL()
         {
             TestRunner.RunTestScript("Test-VirtualMachineWithBYOL");
@@ -198,13 +186,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineRedeploy()
         {
             TestRunner.RunTestScript("Test-VirtualMachineRedeploy");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineReapply()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineReapply");
         }
 
         [Fact]
@@ -247,41 +228,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineWriteAcceleratorUpdate()
         {
             TestRunner.RunTestScript("Test-VirtualMachineWriteAcceleratorUpdate");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineManagedDisk()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineManagedDisk");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineReimage()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineReimage");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineStop()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineStop");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineRemoteDesktop()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineRemoteDesktop");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestLowPriorityVirtualMachine()
-        {
-            TestRunner.RunTestScript("Test-LowPriorityVirtualMachine");
         }
     }
 }

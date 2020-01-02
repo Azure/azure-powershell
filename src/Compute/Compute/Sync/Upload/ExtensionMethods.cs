@@ -26,18 +26,19 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
     public static class CloudPageBlobExtensions
     {
         public static IEnumerable<IListBlobItem> ListContainerBlobs(
-            this CloudBlobContainer container,
-            bool useFlatBlobListing,
+            this CloudBlobContainer container, 
+            bool useFlatBlobListing, 
             BlobListingDetails details,
             BlobRequestOptions options)
         {
             BlobContinuationToken continuationToken = null;
             string prefix = null;
-            const int maxBlobsPerRequest = 10;
-            var blobs = new List<IListBlobItem>();
+            int maxBlobsPerRequest = 10;
+            List<IListBlobItem> blobs = new List<IListBlobItem>();
             do
             {
-                var listingResult = container.ListBlobsSegmentedAsync(prefix, useFlatBlobListing, details, maxBlobsPerRequest, continuationToken, options, null)
+                var listingResult = container.ListBlobsSegmentedAsync(
+                                prefix, useFlatBlobListing, details, maxBlobsPerRequest, continuationToken, options, null)
                      .ConfigureAwait(false)
                     .GetAwaiter().GetResult();
                 continuationToken = listingResult.ContinuationToken;
@@ -64,26 +65,34 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
         public static LocalMetaData GetUploadMetaData(this CloudPageBlob blob)
         {
-            return blob.Metadata.Keys.Contains(LocalMetaData.MetaDataKey)
-                ? SerializationUtil.GetObjectFromSerializedString<LocalMetaData>(blob.Metadata[LocalMetaData.MetaDataKey])
-                : null;
+            if (blob.Metadata.Keys.Contains(LocalMetaData.MetaDataKey))
+            {
+                return SerializationUtil.GetObjectFromSerializedString<LocalMetaData>(blob.Metadata[LocalMetaData.MetaDataKey]);
+            }
+            return null;
         }
 
         public static byte[] GetBlobMd5Hash(this CloudPageBlob blob)
         {
             blob.FetchAttributesAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-            return String.IsNullOrEmpty(blob.Properties.ContentMD5)
-                ? null
-                : Convert.FromBase64String(blob.Properties.ContentMD5);
+            if (String.IsNullOrEmpty(blob.Properties.ContentMD5))
+            {
+                return null;
+            }
+
+            return Convert.FromBase64String(blob.Properties.ContentMD5);
         }
 
         public static byte[] GetBlobMd5Hash(this CloudPageBlob blob, BlobRequestOptions requestOptions)
         {
             blob.FetchAttributesAsync(new AccessCondition(), requestOptions, operationContext: null)
                 .ConfigureAwait(false).GetAwaiter().GetResult();
-            return String.IsNullOrEmpty(blob.Properties.ContentMD5)
-                ? null
-                : Convert.FromBase64String(blob.Properties.ContentMD5);
+            if (String.IsNullOrEmpty(blob.Properties.ContentMD5))
+            {
+                return null;
+            }
+
+            return Convert.FromBase64String(blob.Properties.ContentMD5);
         }
 
         public static void SetBlobMd5Hash(this CloudPageBlob blob, byte[] md5Hash)
@@ -171,6 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         public static VhdFilePath GetFilePathBy(this VhdFile vhdFile, Guid uniqueId)
         {
             VhdFilePath result = null;
+            string baseVhdPath = String.Empty;
             var newBlocksOwners = new List<Guid> { Guid.Empty };
 
             var current = vhdFile;
@@ -187,7 +197,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
             if (result == null)
             {
-                var message = String.Format("There is no parent VHD file with with the id '{0}'", uniqueId);
+                string message = String.Format("There is no parent VHD file with with the id '{0}'", uniqueId);
                 throw new InvalidOperationException(message);
             }
 
@@ -227,12 +237,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
             var message = new StringBuilder();
             message.AppendLine("StorageException details");
-// TODO: Remove IfDef
-#if NETSTANDARD
-            message.Append("Error.Code:").AppendLine(storageException.RequestInformation.ErrorCode);
-#else
             message.Append("Error.Code:").AppendLine(storageException.RequestInformation.ExtendedErrorInformation.ErrorCode);
-#endif
             message.Append("ErrorMessage:").AppendLine(storageException.RequestInformation.ExtendedErrorInformation.ErrorMessage);
             foreach (var key in storageException.RequestInformation.ExtendedErrorInformation.AdditionalDetails.Keys)
             {

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azdisk
 schema: 2.0.0
@@ -13,8 +13,8 @@ Gets the properties of a Managed disk.
 ## SYNTAX
 
 ```
-Get-AzDisk [[-ResourceGroupName] <String>] [[-DiskName] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzDisk [[-ResourceGroupName] <String>] [[-DiskName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,25 +25,6 @@ The **Get-AzDisk** cmdlet gets the properties of a Managed disk.
 ### Example 1
 ```
 PS C:\> Get-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01'
-
-ResourceGroupName  : ResourceGroup01
-ManagedBy          :
-Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
-Zones              :
-TimeCreated        : 6/29/2018 4:26:27 PM
-OsType             : Windows
-CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
-DiskSizeGB         : 127
-EncryptionSettings :
-ProvisioningState  : Succeeded
-DiskIOPSReadWrite  : 500
-DiskMBpsReadWrite  : 100
-Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compu
-                     te/disks/Disk01
-Name               : Disk01
-Type               : Microsoft.Compute/disks
-Location           : westus2
-Tags               : {}
 ```
 
 This command gets the properties of the disk named 'Disk01' in the resource group 'ResourceGroup01'.
@@ -51,44 +32,6 @@ This command gets the properties of the disk named 'Disk01' in the resource grou
 ### Example 2
 ```
 PS C:\> Get-AzDisk -ResourceGroupName 'ResourceGroup01'
-
-ResourceGroupName  : ResourceGroup01
-ManagedBy          :
-Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
-Zones              :
-TimeCreated        : 6/29/2018 4:26:27 PM
-OsType             : Windows
-CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
-DiskSizeGB         : 127
-EncryptionSettings :
-ProvisioningState  : Succeeded
-DiskIOPSReadWrite  : 500
-DiskMBpsReadWrite  : 100
-Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compu
-                     te/disks/win1_OsDisk_1
-Name               : win1_OsDisk_1
-Type               : Microsoft.Compute/disks
-Location           : westus2
-Tags               : {}
-
-ResourceGroupName  : ResourceGroup01
-ManagedBy          :
-Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
-Zones              :
-TimeCreated        : 6/29/2018 4:27:27 PM
-OsType             : Windows
-CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
-DiskSizeGB         : 127
-EncryptionSettings :
-ProvisioningState  : Succeeded
-DiskIOPSReadWrite  : 500
-DiskMBpsReadWrite  : 100
-Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compu
-                     te/disks/win1_OsDisk_2
-Name               : win1_OsDisk_2
-Type               : Microsoft.Compute/disks
-Location           : westus2
-Tags               : {}
 ```
 
 This command gets the properties of all disks in the resource group 'ResourceGroup01'.
@@ -96,92 +39,9 @@ This command gets the properties of all disks in the resource group 'ResourceGro
 ### Example 3
 ```
 PS C:\> Get-AzDisk
-
-ResourceGroupName  : ResourceGroup01
-ManagedBy          :
-Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
-Zones              :
-TimeCreated        : 6/29/2018 4:26:27 PM
-OsType             : Windows
-CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
-DiskSizeGB         : 127
-EncryptionSettings :
-ProvisioningState  : Succeeded
-DiskIOPSReadWrite  : 500
-DiskMBpsReadWrite  : 100
-Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compu
-                     te/disks/win1_OsDisk_1
-Name               : win1_OsDisk_1
-Type               : Microsoft.Compute/disks
-Location           : westus2
-Tags               : {}
-
-ResourceGroupName  : ResourceGroup02
-ManagedBy          :
-Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
-Zones              :
-TimeCreated        : 6/29/2018 4:27:27 PM
-OsType             : Windows
-CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
-DiskSizeGB         : 127
-EncryptionSettings :
-ProvisioningState  : Succeeded
-DiskIOPSReadWrite  : 500
-DiskMBpsReadWrite  : 100
-Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup02/providers/Microsoft.Compu
-                     te/disks/win1_OsDisk_2
-Name               : win1_OsDisk_2
-Type               : Microsoft.Compute/disks
-Location           : westus2
-Tags               : {}
 ```
 
 This command gets the properties of all disks under the subscription.
-
-### Example 4
-```
-PS C:\> Get-AzDisk -Name win_OsDisk*
-
-ResourceGroupName  : ResourceGroup01
-ManagedBy          :
-Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
-Zones              :
-TimeCreated        : 6/29/2018 4:26:27 PM
-OsType             : Windows
-CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
-DiskSizeGB         : 127
-EncryptionSettings :
-ProvisioningState  : Succeeded
-DiskIOPSReadWrite  : 500
-DiskMBpsReadWrite  : 100
-Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Compu
-                     te/disks/win1_OsDisk_1
-Name               : win1_OsDisk_1
-Type               : Microsoft.Compute/disks
-Location           : westus2
-Tags               : {}
-
-ResourceGroupName  : ResourceGroup02
-ManagedBy          :
-Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
-Zones              :
-TimeCreated        : 6/29/2018 4:27:27 PM
-OsType             : Windows
-CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
-DiskSizeGB         : 127
-EncryptionSettings :
-ProvisioningState  : Succeeded
-DiskIOPSReadWrite  : 500
-DiskMBpsReadWrite  : 100
-Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup02/providers/Microsoft.Compu
-                     te/disks/win1_OsDisk_2
-Name               : win1_OsDisk_2
-Type               : Microsoft.Compute/disks
-Location           : westus2
-Tags               : {}
-```
-
-This command gets the properties of all disks under the subscription name starting with win1_OsDisk.
 
 ## PARAMETERS
 
@@ -189,9 +49,9 @@ This command gets the properties of all disks under the subscription name starti
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -204,34 +64,34 @@ Accept wildcard characters: False
 Specifies the name of a disk.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: Name
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
 Specifies the name of a resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -244,3 +104,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -25,14 +25,14 @@ function Test-AddVhd
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
-        $storageKey = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        $storageKey = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
         $vhdContainerName = 'vhds';
 
         $path = (get-item -path ".\").FullName;
@@ -48,7 +48,7 @@ function Test-AddVhd
               $vhdDestUri = [System.String]::Format("{0}{1}/{2}{3}.vhd", $stoaccount.PrimaryEndpoints.Blob, $vhdContainerName, $vhdName, $rgname);
               Write-Output ("Start Uploading... : " + $testItem.vhdName);
 
-              $vhdUploadContext = Add-AzVhd -ResourceGroupName $rgname -Destination $vhdDestUri -LocalFilePath $vhdLocalPath -NumberOfUploaderThreads 1;
+              $vhdUploadContext = Add-AzureRmVhd -ResourceGroupName $rgname -Destination $vhdDestUri -LocalFilePath $vhdLocalPath -NumberOfUploaderThreads 1;
               Wait-Seconds 5;
               Write-Output ("Destination Uri :" + $vhdUploadContext.DestinationUri);
               Write-Output ("Local File :" + $vhdUploadContext.LocalFilePath.FullName);
@@ -66,13 +66,13 @@ function Test-AddVhd
 
               $vhdDownloadPath = $vhdLocalPath + "-download.vhd";
 
-              $vhdDownloadContext = Save-AzVhd -ResourceGroupName $rgname -SourceUri $vhdDestUri -LocalFilePath $vhdDownloadPath;
+              $vhdDownloadContext = Save-AzureRmVhd -ResourceGroupName $rgname -SourceUri $vhdDestUri -LocalFilePath $vhdDownloadPath;
               Write-Output ("Source :" +$vhdDownloadContext.Source);
               Write-Output ("LocalFilePath :" +$vhdDownloadContext.LocalFilePath);
               Assert-AreEqual $vhdDestUri $vhdDownloadContext.Source;
               Assert-AreEqual $vhdDownloadPath $vhdDownloadContext.LocalFilePath;
 
-              $vhdDownloadContext = Save-AzVhd -ResourceGroupName $rgname -SourceUri $vhdDestUri -LocalFilePath $vhdDownloadPath -Overwrite;
+              $vhdDownloadContext = Save-AzureRmVhd -ResourceGroupName $rgname -SourceUri $vhdDestUri -LocalFilePath $vhdDownloadPath -Overwrite;
               Assert-AreEqual $vhdDestUri $vhdDownloadContext.Source;
               Assert-AreEqual $vhdDownloadPath $vhdDownloadContext.LocalFilePath;
         }

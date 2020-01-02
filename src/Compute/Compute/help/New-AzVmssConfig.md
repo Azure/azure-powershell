@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: CE32F620-8DB2-4004-8012-F1C4AA235B60
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmssconfig
@@ -15,61 +15,48 @@ Creates a VMSS configuration object.
 
 ### DefaultParameterSet (Default)
 ```
-New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>] [[-SkuName] <String>]
- [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
+New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>]
+ [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
  [[-OsProfile] <VirtualMachineScaleSetOSProfile>] [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
  [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
- [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SkipExtensionsOnOverprovisionedVMs]
- [-SinglePlacementGroup <Boolean>] [-ZoneBalance] [-PlatformFaultDomainCount <Int32>] [-Zone <String[]>]
+ [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-Zone <String[]>]
  [-PlanName <String>] [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-RollingUpgradePolicy <RollingUpgradePolicy>] [-EnableAutomaticRepair] [-AutomaticRepairGracePeriod <String>]
- [-AutomaticRepairMaxInstanceRepairsPercent <Int32>] [-AutoOSUpgrade] [-DisableAutoRollback <Boolean>]
- [-EnableUltraSSD] [-HealthProbeId <String>] [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>]
- [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-TerminateScheduledEvents]
- [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-ProximityPlacementGroupId <String>]
- [-ScaleInPolicy <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RollingUpgradePolicy <RollingUpgradePolicy>] [-AutoOSUpgrade] [-HealthProbeId <String>]
+ [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-Priority <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
 ```
-New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>] [[-SkuName] <String>]
- [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
+New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>]
+ [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
  [[-OsProfile] <VirtualMachineScaleSetOSProfile>] [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
  [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
- [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SkipExtensionsOnOverprovisionedVMs]
- [-SinglePlacementGroup <Boolean>] [-ZoneBalance] [-PlatformFaultDomainCount <Int32>] [-Zone <String[]>]
+ [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-Zone <String[]>]
  [-PlanName <String>] [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-RollingUpgradePolicy <RollingUpgradePolicy>] [-EnableAutomaticRepair] [-AutomaticRepairGracePeriod <String>]
- [-AutomaticRepairMaxInstanceRepairsPercent <Int32>] [-AutoOSUpgrade] [-DisableAutoRollback <Boolean>]
- [-EnableUltraSSD] [-HealthProbeId <String>] [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>]
- [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-TerminateScheduledEvents]
- [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-ProximityPlacementGroupId <String>]
- [-ScaleInPolicy <String[]>] -IdentityType <ResourceIdentityType> [-IdentityId <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RollingUpgradePolicy <RollingUpgradePolicy>] [-AutoOSUpgrade] [-HealthProbeId <String>]
+ [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-Priority <String>]
+ -IdentityType <ResourceIdentityType> [-IdentityId <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AssignIdentityParameterSet
 ```
-New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>] [[-SkuName] <String>]
- [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
+New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>]
+ [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
  [[-OsProfile] <VirtualMachineScaleSetOSProfile>] [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
  [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
- [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SkipExtensionsOnOverprovisionedVMs]
- [-SinglePlacementGroup <Boolean>] [-ZoneBalance] [-PlatformFaultDomainCount <Int32>] [-Zone <String[]>]
+ [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-Zone <String[]>]
  [-PlanName <String>] [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-RollingUpgradePolicy <RollingUpgradePolicy>] [-EnableAutomaticRepair] [-AutomaticRepairGracePeriod <String>]
- [-AutomaticRepairMaxInstanceRepairsPercent <Int32>] [-AutoOSUpgrade] [-DisableAutoRollback <Boolean>]
- [-EnableUltraSSD] [-HealthProbeId <String>] [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>]
- [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-TerminateScheduledEvents]
- [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-ProximityPlacementGroupId <String>]
- [-ScaleInPolicy <String[]>] [-AssignIdentity] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RollingUpgradePolicy <RollingUpgradePolicy>] [-AutoOSUpgrade] [-HealthProbeId <String>]
+ [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-Priority <String>] [-AssignIdentity]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzVmssConfig** cmdlet creates a configurable local Virtual Manager Scale Set (VMSS)
 object. Other cmdlets are needed to configure the VMSS object. These cmdlets are:
+
 - Set-AzVmssOsProfile
 - Set-AzVmssStorageProfile
 - Add-AzVmssNetworkInterfaceConfiguration
@@ -102,9 +89,9 @@ uses the VMSS configuration object created in the first command.
 Specify the system assigned identity for the virtual machine scale set.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: AssignIdentityParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -113,43 +100,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutomaticRepairGracePeriod
-The amount of time for which automatic repairs are suspended due to a state change on VM. The grace time starts after the state change has completed. This helps avoid premature or accidental repairs. The time duration should be specified in ISO 8601 format. The default value is 5 minutes (PT5M).
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AutomaticRepairMaxInstanceRepairsPercent
-The percentage (capacity of scaleset) of virtual machines that will be simultaneously repaired. The default value is 20%.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -AutoOSUpgrade
 Sets whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -162,9 +119,9 @@ Accept wildcard characters: False
 Specifies the virtual machine scale set boot diagnostics profile.
 
 ```yaml
-Type: Microsoft.Azure.Management.Compute.Models.BootDiagnostics
+Type: BootDiagnostics
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -177,75 +134,14 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisableAutoRollback
-Disable Auto Rollback for Auto OS Upgrade Policy
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableAutomaticRepair
-Enables automatic repairs on the virtual machine scale set.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EnableUltraSSD
-Enables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the virtual machine scale set.
-Managed disks with storage account type UltraSSD_LRS can be added to a VMSS only if this property is enabled.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EvictionPolicy
-Specifies the eviction policy for the virtual machines in the scale set.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -254,9 +150,9 @@ Specifies the extension information object for the VMSS. You can use the
 **Add-AzVmssExtension** cmdlet to add this object.
 
 ```yaml
-Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension[]
+Type: VirtualMachineScaleSetExtension[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 10
@@ -270,9 +166,9 @@ Specifies the ID of a load balancer probe used to determine the health of an ins
 HealthProbeId is in the form of '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -286,9 +182,9 @@ Specifies the list of user identities associated with the virtual machine scale 
 The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: ExplicitIdentityParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -302,15 +198,16 @@ Specifies the type of identity used for the virtual machine scale set.
 The type 'SystemAssignedUserAssigned' includes both an implicitly created identity and a set of user assigned identities.
 The type 'None' will remove any identities from the virtual machine scale set.
 The acceptable values for this parameter are:
+
 - SystemAssigned
 - UserAssigned
 - SystemAssignedUserAssigned
 - None
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.ResourceIdentityType]
+Type: ResourceIdentityType
 Parameter Sets: ExplicitIdentityParameterSet
-Aliases:
+Aliases: 
 Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
 
 Required: True
@@ -324,9 +221,9 @@ Accept wildcard characters: False
 Specify the license type, which is for bringing your own license scenario.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -339,27 +236,12 @@ Accept wildcard characters: False
 Specifies the Azure location where the VMSS is created.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MaxPrice
-Specifies the maximum price you are willing to pay for a low priority VM/VMSS. This price is in US Dollars. This price will be compared with the current low priority price for the VM size. Also, the prices are compared at the time of create/update of low priority VM/VMSS and the operation will only succeed if the maxPrice is greater than the current low priority price. The maxPrice will also be used for evicting a low priority VM/VMSS if the current low priority price goes beyond the maxPrice after creation of VM/VMSS. Possible values are: any decimal value greater than zero. Example: 0.01538.  -1 indicates that the low priority VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you.
-
-```yaml
-Type: System.Double
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -370,9 +252,9 @@ Specifies the network profile object that contains the networking properties for
 You can use the **Add-AzVmssNetworkInterfaceConfiguration** cmdlet to add this object.
 
 ```yaml
-Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkConfiguration[]
+Type: VirtualMachineScaleSetNetworkConfiguration[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 9
@@ -386,9 +268,9 @@ Specifies the operating system profile object that contains the operating system
 You can use the **Set-AzVmssOsProfile** cmdlet to set this object.
 
 ```yaml
-Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSProfile
+Type: VirtualMachineScaleSetOSProfile
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 7
@@ -401,9 +283,9 @@ Accept wildcard characters: False
 Indicates whether the cmdlet overprovisions the VMSS.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 0
@@ -416,9 +298,9 @@ Accept wildcard characters: False
 Specifies the plan name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -431,9 +313,9 @@ Accept wildcard characters: False
 Specifies the plan product.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -446,9 +328,9 @@ Accept wildcard characters: False
 Specifies the plan promotion code.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -461,24 +343,9 @@ Accept wildcard characters: False
 Specifies the plan publisher.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PlatformFaultDomainCount
-Fault Domain count for each placement group.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -488,30 +355,12 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machien in the scale set.  Only supported values are 'Regular', 'Spot' and 'Low'.
-'Regular' is for regular virtual machine.
-'Spot' is for spot virtual machine.
-'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
+Specifies the priority for the virtual machines in the scale set.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProximityPlacementGroupId
-The resource id of the Proximity Placement Group to use with this scale set.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -524,24 +373,9 @@ Accept wildcard characters: False
 Specifies the rolling upgrade policy.
 
 ```yaml
-Type: Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy
+Type: RollingUpgradePolicy
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ScaleInPolicy
-The rules to be followed when scaling-in a virtual machine scale set.  Possible values are: 'Default', 'OldestVM' and 'NewestVM'.  'Default' when a virtual machine scale set is scaled in, the scale set will first be balanced across zones if it is a zonal scale set.  Then, it will be balanced across Fault Domains as far as possible.  Within each Fault Domain, the virtual machines chosen for removal will be the newest ones that are not protected from scale-in.  'OldestVM' when a virtual machine scale set is being scaled-in, the oldest virtual machines that are not protected from scale-in will be chosen for removal.  For zonal virtual machine scale sets, the scale set will first be balanced across zones.  Within each zone, the oldest virtual machines that are not protected will be chosen for removal.  'NewestVM' when a virtual machine scale set is being scaled-in, the newest virtual machines that are not protected from scale-in will be chosen for removal.  For zonal virtual machine scale sets, the scale set will first be balanced across zones.  Within each zone, the newest virtual machines that are not protected will be chosen for removal.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -554,9 +388,9 @@ Accept wildcard characters: False
 Specifies the single placement group.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -565,28 +399,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SkipExtensionsOnOverprovisionedVMs
-Specifies that the extensions do not run on the extra overprovisioned VMs.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SkuCapacity
 Specifies the number of instances in the VMSS.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 5
@@ -599,7 +418,7 @@ Accept wildcard characters: False
 Specifies the size of all the instances of VMSS.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: AccountType
 
@@ -612,13 +431,14 @@ Accept wildcard characters: False
 
 ### -SkuTier
 Specifies the tier of VMSS. The acceptable values for this parameter are:
+
 - Standard
 - Basic
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 4
@@ -632,9 +452,9 @@ Specifies the storage profile object that contains the disk properties for the V
 You can use the **Set-AzVmssStorageProfile** cmdlet to set this object.
 
 ```yaml
-Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetStorageProfile
+Type: VirtualMachineScaleSetStorageProfile
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 8
@@ -645,12 +465,13 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
+
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -659,46 +480,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TerminateScheduledEventNotBeforeTimeoutInMinutes
-Configurable length of time (in minutes) a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out).
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TerminateScheduledEvents
-Enable the Terminate Scheduled events
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -UpgradePolicyMode
 Specified the mode of an upgrade to virtual machines in the scale set.
+
 The acceptable values for this parameter are:
+
 - Automatic
 - Manual
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.UpgradeMode]
+Type: UpgradeMode
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Automatic, Manual, Rolling
 
 Required: False
@@ -712,9 +505,9 @@ Accept wildcard characters: False
 Specifies the zone list for the virtual machine scale set.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -723,26 +516,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ZoneBalance
-Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -757,7 +535,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -769,37 +547,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
-### System.String
-
-### System.Collections.Hashtable
-
-### System.Int32
-
-### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.UpgradeMode, Microsoft.Azure.Management.Compute, Version=23.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-
-### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSProfile
-
-### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetStorageProfile
-
-### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkConfiguration[]
-
-### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension[]
-
-### System.String[]
-
-### Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy
-
-### System.Management.Automation.SwitchParameter
-
-### Microsoft.Azure.Management.Compute.Models.BootDiagnostics
-
-### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.ResourceIdentityType, Microsoft.Azure.Management.Compute, Version=23.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

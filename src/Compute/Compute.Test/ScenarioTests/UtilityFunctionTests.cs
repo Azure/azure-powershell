@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLocationStringExtension()
         {
-            string[] locations = {
+            string[] locations = new string[]
+            {
                 "West US",
                 "eastus",
                 "East Asia 2"

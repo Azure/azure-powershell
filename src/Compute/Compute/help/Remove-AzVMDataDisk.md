@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: D5943E9F-E4E6-4A1F-A144-44691CF32FC8
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmdatadisk
@@ -32,7 +32,9 @@ PS C:\> Update-AzVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 
 The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzVM** cmdlet.
 The command stores the virtual machine in the $VirtualMachine variable.
+
 The second command removes the data disk named Disk3 from the virtual machine stored in $VirtualMachine.
+
 The final command updates the state of the virtual machine stored in $VirtualMachine in ResourceGroup11.
 
 ## PARAMETERS
@@ -41,7 +43,7 @@ The final command updates the state of the virtual machine stored in $VirtualMac
 Specifies the names of one or more data disks that this cmdlet removes.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases: Name
 
@@ -56,9 +58,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -72,7 +74,7 @@ Specifies the local virtual machine object from which to remove a data disk.
 To obtain a virtual machine object, use the Get-AzVM cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Type: PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 
@@ -85,9 +87,8 @@ Accept wildcard characters: False
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
-
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -100,9 +101,8 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -114,11 +114,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+### PSVirtualMachine
+Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
 
 ## OUTPUTS
 

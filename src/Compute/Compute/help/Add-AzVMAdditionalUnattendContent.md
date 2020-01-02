@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: 50B64FFE-8277-4DAA-805A-271123B35355
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmadditionalunattendcontent
@@ -34,16 +34,21 @@ PS C:\> $AucContent = "<UserAccounts><AdministratorPassword><Value>" + "Password
 PS C:\> $VirtualMachine = Add-AzVMAdditionalUnattendContent -VM $VirtualMachine -Content $AucContent -SettingName "AutoLogon"
 ```
 
-The first command gets the availability set named AvailabilitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
+The first command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
+
 The second command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
 The virtual machine belongs to the availability set stored in $AvailabilitySet.
+
 The third command creates a credential object by using the Get-Credential cmdlet, and then stores the result in the $Credential variable.
 The command prompts you for a user name and password.
 For more information, type `Get-Help Get-Credential`.
+
 The fourth command uses the **Set-AzVMOperatingSystem** cmdlet to configure the virtual machine stored in $VirtualMachine.
+
 The fifth command assigns content to the $AucContent variable.
 The content includes a password.
+
 The final command adds the content stored in $AucContent to the unattend.xml file.
 
 ## PARAMETERS
@@ -54,9 +59,9 @@ This cmdlet adds the content to the unattend.xml file.
 The XML content must be less than 4 KB and must include the root element for the setting or feature that this cmdlet inserts.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
@@ -69,9 +74,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -83,13 +88,14 @@ Accept wildcard characters: False
 ### -SettingName
 Specifies the name of the setting to which the content applies.
 The acceptable values for this parameter are:
+
 - FirstLogonCommands
 - AutoLogon
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.SettingNames]
+Type: SettingNames
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: AutoLogon, FirstLogonCommands
 
 Required: False
@@ -105,7 +111,7 @@ To obtain a virtual machine object, use the [Get-AzVM](./Get-AzVM.md) cmdlet.
 Create a virtual machine object by using the [New-AzVMConfig](./New-AzVMConfig.md) cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Type: PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 
@@ -117,15 +123,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
-
-### System.String
-
-### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.SettingNames, Microsoft.Azure.Management.Compute, Version=23.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### PSVirtualMachine
+Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
 
 ## OUTPUTS
 

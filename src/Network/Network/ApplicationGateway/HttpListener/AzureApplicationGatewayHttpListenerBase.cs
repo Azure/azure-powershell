@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -59,16 +57,6 @@ namespace Microsoft.Azure.Commands.Network
         public string SslCertificateId { get; set; }
 
         [Parameter(
-           ParameterSetName = "SetByResourceId",
-           HelpMessage = "FirewallPolicyId")]
-        public string FirewallPolicyId { get; set; }
-
-        [Parameter(
-            ParameterSetName = "SetByResource",
-            HelpMessage = "FirewallPolicy")]
-        public PSApplicationGatewayWebApplicationFirewallPolicy FirewallPolicy { get; set; }
-
-        [Parameter(
                 ParameterSetName = "SetByResource",
                 HelpMessage = "Application gateway SslCertificate")]
         [ValidateNotNullOrEmpty]
@@ -92,11 +80,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Protocol { get; set; }
 
-        [Parameter(
-                HelpMessage = "Customer error of an application gateway")]
-        [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayCustomError[] CustomErrorConfiguration { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -107,20 +90,13 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.FrontendIPConfigurationId = this.FrontendIPConfiguration.Id;
                 }
-
                 if (FrontendPort != null)
                 {
                     this.FrontendPortId = this.FrontendPort.Id;
                 }
-
                 if (SslCertificate != null)
                 {
                     this.SslCertificateId = this.SslCertificate.Id;
-                }
-
-                if (FirewallPolicy != null)
-                {
-                    this.FirewallPolicyId = this.FirewallPolicy.Id;
                 }
             }
         }
@@ -132,18 +108,13 @@ namespace Microsoft.Azure.Commands.Network
             httpListener.Protocol = this.Protocol;
             httpListener.HostName = this.HostName;
 
-            if (string.Equals(this.RequireServerNameIndication, "true", StringComparison.OrdinalIgnoreCase))
+            if(string.Equals(this.RequireServerNameIndication,"true", StringComparison.OrdinalIgnoreCase))
             {
                 httpListener.RequireServerNameIndication = true;
             }
-            else if (string.Equals(this.RequireServerNameIndication, "false", StringComparison.OrdinalIgnoreCase))
+            else if(string.Equals(this.RequireServerNameIndication, "false", StringComparison.OrdinalIgnoreCase))
             {
                 httpListener.RequireServerNameIndication = false;
-            }
-            else if (string.Equals(this.Protocol, "https", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(this.HostName))
-            {
-                // Set default as true to be at parity with portal.
-                httpListener.RequireServerNameIndication = true;
             }
 
             if (!string.IsNullOrEmpty(this.FrontendIPConfigurationId))
@@ -157,22 +128,10 @@ namespace Microsoft.Azure.Commands.Network
                 httpListener.FrontendPort = new PSResourceId();
                 httpListener.FrontendPort.Id = this.FrontendPortId;
             }
-
             if (!string.IsNullOrEmpty(this.SslCertificateId))
             {
                 httpListener.SslCertificate = new PSResourceId();
                 httpListener.SslCertificate.Id = this.SslCertificateId;
-            }
-
-            if (!string.IsNullOrEmpty(this.FirewallPolicyId))
-            {
-                httpListener.FirewallPolicy = new PSResourceId();
-                httpListener.FirewallPolicy.Id = this.FirewallPolicyId;
-            }
-
-            if (this.CustomErrorConfiguration != null)
-            {
-                httpListener.CustomErrorConfigurations = this.CustomErrorConfiguration?.ToList();
             }
 
             httpListener.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

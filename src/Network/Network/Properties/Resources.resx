@@ -134,9 +134,6 @@
   <data name="VirtualNetworkGatewayIpConfigName" xml:space="preserve">
     <value>virtualNetworkGatewayIpConfiguration</value>
   </data>
-  <data name="VirtualNetworkGatewayName" xml:space="preserve">
-    <value>virtualNetworkGatewayName</value>
-  </data>
   <data name="LoadBalancerInBoundNatRuleName" xml:space="preserve">
     <value>inboundNatRules</value>
   </data>
@@ -150,7 +147,7 @@
     <value>loadBalancingRules</value>
   </data>
   <data name="OverwritingResource" xml:space="preserve">
-    <value>Are you sure you want to overwrite resource '{0}'</value>
+    <value>Are you sure you want to overwriteresource '{0}'</value>
   </data>
   <data name="UltraPerformaceGatewayWarning" xml:space="preserve">
     <value>Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds.</value>
@@ -171,7 +168,7 @@
     <value>ResourceGroupNotSet</value>
   </data>
   <data name="ResourceNotFound" xml:space="preserve">
-    <value>Resource '{0}' not found</value>
+    <value>Resource : {0}, not found</value>
   </data>
   <data name="SetByResource" xml:space="preserve">
     <value>SetByResource</value>
@@ -263,172 +260,5 @@
   </data>
   <data name="ApplicationGatewayRedirectConfigurationName" xml:space="preserve">
     <value>redirectConfigurations</value>
-  </data>
-  <data name="NetworkProfileNameNotSet" xml:space="preserve">
-    <value>NetworkProfileNameNotSet</value>
-  </data>
-  <data name="ContainerNetworkInterfaceConfigurationNameNotSet" xml:space="preserve">
-    <value>ContainerNetworkInterfaceConfigurationNameNotSet</value>
-  </data>
-  <data name="HubVnetConnectionNotFound" xml:space="preserve">
-    <value>The hub virtual network connection to modify could not be found.</value>
-  </data>
-  <data name="InvalidIPAddress" xml:space="preserve">
-    <value>The IpAddress specified is invalid.</value>
-  </data>
-  <data name="ParentVirtualHubNotFound" xml:space="preserve">
-    <value>The parent virtual hub mentioned could not be found.</value>
-  </data>
-  <data name="ParentVpnGatewayDuplicateConnection" xml:space="preserve">
-    <value>The parent VpnGateway already contains a connection with this name. If you wish to change the properties of the connection, please use the SET operation instead.</value>
-  </data>
-  <data name="ParentVpnGatewayNotFound" xml:space="preserve">
-    <value>The parent VpnGateway for this connection cannot be found.</value>
-  </data>
-  <data name="ParentExpressRouteGatewayNotFound" xml:space="preserve">
-    <value>The parent ExpressRouteGateway for this connection cannot be found.</value>
-  </data>
-  <data name="RemovingVirtualHubWarning" xml:space="preserve">
-    <value>Removing a VirtualHub will also remove all HubVirtualNetworkExpressRouteConnections associated with it. Are you sure you want to remove resource '{0}'</value>
-  </data>
-  <data name="RemovingVpnGatewayWarning" xml:space="preserve">
-    <value>Removing a VpnGateway will also remove all VpnExpressRouteConnections associated with it. Are you sure you want to remove resource '{0}'</value>
-  </data>
-  <data name="RemovingP2SVpnGatewayWarning" xml:space="preserve">
-    <value>Removing a P2SVpnGateway will also remove all P2SConnectionConfigurations associated with it. Are you sure you want to remove resource '{0}'</value>
-  </data>  
-  <data name="RemovingExpressRouteGatewayWarning" xml:space="preserve">
-    <value>Removing an ExpressRouteGateway will also remove all ExpressRouteExpressRouteConnections associated with it. Are you sure you want to remove resource '{0}'</value>
-  </data>
-  <data name="ResouceGroupNameMustBeSpecified" xml:space="preserve">
-    <value>ResourceGroupName must be specified if ResourceName is specified.</value>
-  </data>
-  <data name="VirtualHubRequiredForVpnGateway" xml:space="preserve">
-    <value>A valid VirtualHub reference is required to create a VpnGateway.</value>
-  </data>
-  <data name="VirtualHubRequiredForExpressRouteGateway" xml:space="preserve">
-    <value>A valid VirtualHub reference is required to create an ExpressRouteGateway.</value>
-  </data>
-  <data name="VirtualNetworkReferenceRequiredToCreateHubVnetConnection" xml:space="preserve">
-    <value>A remote virtual network reference is required to create a HubVirtualNetworkConnection.</value>
-  </data>
-  <data name="VirtualWanNotFound" xml:space="preserve">
-    <value>The referenced VirtualWan could not be found.</value>
-  </data>
-  <data name="VirtualWanReferenceNeededForVirtualHub" xml:space="preserve">
-    <value>A valid VirtualWan reference is required to create a VirtualHub.</value>
-  </data>
-  <data name="VirtualWanRequiredForVpnSiteConfiguration" xml:space="preserve">
-    <value>A valid Virtual WAN is required to generate a vpnSites configuration.</value>
-  </data>
-  <data name="VpnConnectionNotFound" xml:space="preserve">
-    <value>The VpnConnection could not be found.</value>
-  </data>
-  <data name="VpnGatewayNotFound" xml:space="preserve">
-    <value>The VpnGateway to modify could not be found</value>
-  </data>
-  <data name="P2SVpnGatewayNotFound" xml:space="preserve">
-    <value>The P2SVpnGateway to modify could not be found</value>
-  </data>  
-  <data name="VpnSiteListRequiredForVpnSiteConfiguration" xml:space="preserve">
-    <value>A list of connected VpnSites is required to generate a vpnSites configuration.</value>
-  </data>
-  <data name="VpnSiteNotFound" xml:space="preserve">
-    <value>The VpnSite could not be found.</value>
-  </data>
-  <data name="VpnSiteRequiredForVpnConnection" xml:space="preserve">
-    <value>A valid VpnSite is required to create a VpnConnection</value>
-  </data>
-  <data name="VpnServerConfigurationRequiredForP2SVpnGateway" xml:space="preserve">
-    <value>A valid VpnServerConfiguration is required to create a P2SVpnGateway</value>
-  </data>  
-  <data name="VpnServerConfigurationNotFound" xml:space="preserve">
-    <value>The VpnServerConfiguration could not be found.</value>
-  </data>  
-  <data name="ChildResourceAlreadyPresentInResourceGroup" xml:space="preserve">
-    <value>A resource with the same name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead.</value>
-  </data>
-  <data name="CreatingLongRunningOperationMessage" xml:space="preserve">
-    <value>Creating resource with ResourceGroupName {0}, ResourceName {1}.</value>
-  </data>
-  <data name="ResourceAlreadyPresentInResourceGroup" xml:space="preserve">
-    <value>A resource with the same name {0} and same type already exists in ResourceGroup {1}. If you wish to modify this resource please use the Update operation instead.</value>
-  </data>
-  <data name="VirtualHubToUpdateNotFound" xml:space="preserve">
-    <value>The VirtualHub to update could not be found.</value>
-  </data>
-  <data name="VpnGatewayRequiredToCreateVpnConnection" xml:space="preserve">
-    <value>A valid VpnGateway reference is required to create a VpnConnection.</value>
-  </data>
-  <data name="ExpressRouteGatewayRequiredToCreateExpressRouteConnection" xml:space="preserve">
-    <value>A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection.</value>
-  </data>
-  <data name="UpdatingLongRunningOperationMessage" xml:space="preserve">
-    <value>Updating resource with ResourceGroupName {0}, ResourceName {1}.</value>
-  </data>
-  <data name="ApplicationGatewayTrustedRootCertificateName" xml:space="preserve">
-    <value>trustedRootCertificates</value>
-  </data>
-  <data name="InvalidAutoScaleConfiguration" xml:space="preserve">
-    <value>Min {0} cannot be greater than Max {1}.</value>
-  </data>
-  <data name="ExpressRouteGatewayNotFound" xml:space="preserve">
-    <value>The ExpressRouteGateway to modify could not be found</value>
-  </data>
-  <data name="ExpressRouteConnectionNotFound" xml:space="preserve">
-    <value>The ExpressRouteConnection {0} could not be found.</value>
-  </data>
-  <data name="ConnectivityDestinationIsMustNotBeTheSameAsSource" xml:space="preserve">
-    <value>Connectivity check destination resource id must not be the same as source: {0}</value>
-  </data>
-  <data name="ConnectivityMissingDestinationPort" xml:space="preserve">
-    <value>Connectivity check missing destination port</value>
-  </data>
-  <data name="ConnectivityMissingDestinationResourceIdOrAddress" xml:space="preserve">
-    <value>Connectivity check missing destination resource id or address</value>
-  </data>
-  <data name="NoNetworkWatcherInLocation" xml:space="preserve">
-    <value>There is no network watcher in location {0}</value>
-  </data>
-  <data name="ApplicationGatewayRewriteRuleSetName" xml:space="preserve">
-    <value>rewriteRuleSets</value>
-  </data>
-  <data name="VirtualNetworkGatewayNoRevokedCertificate" xml:space="preserve">
-    <value>No revoked certificates found on VirtualNetworkGateway {0}</value>
-    <comment>Message for missing certificates</comment>
-  </data>
-  <data name="VirtualNetworkGatewayNoRootCertificate" xml:space="preserve">
-    <value>No root certificates found on VirtualNetworkGateway {0}</value>
-    <comment>Message for missing certificates</comment>
-  </data>
-  <data name="ApplicationGatewayFirewallPolicy" xml:space="preserve">
-    <value>firewallPolicy</value>
-  </data>
-  <data name="InvalidIPv4IPPrefixLength" xml:space="preserve">
-    <value>Cannot validate argument on parameter PrefixLength: {0}. Supply an argument that is greater than or equal to 21 and less than or equal to 31 and then try the command again</value>
-  </data>
-  <data name="InvalidIPv6IPPrefixLength" xml:space="preserve">
-    <value>Cannot validate argument on parameter PrefixLength: {0}. Supply an argument that is greater than or equal to 117 and less than or equal to 127 and then try the command again</value>
-  </data>
-  <data name="InvalidResourceId" xml:space="preserve">
-    <value>Provided ResourceId isn't in the right format or doesn't refer to the right resource type ({0})</value>
-  </data>
-  <data name="VpnSiteLinkRequiredForVpnSiteLinkConnection" xml:space="preserve">
-    <value>A valid VpnSiteLink attached to a VpnSite is required to create a VpnSiteLinkConnection</value>
-  </data>
-  <data name="VpnConnectionPropertyIsDeprecated" xml:space="preserve">
-    <value>Update request for VpnConnection contains deprecated property. Please use corresponding VpnSiteLinkConnection property instead.</value>
-  </data>
-  <data name="VpnSitePropertyIsDeprecated" xml:space="preserve">
-    <value>Update request for VpnSite contains deprecated property. Please use corresponding VpnSiteLink property instead.</value>
-  </data>
-  <data name="RouteTableNotFound" xml:space="preserve">
-    <value>The virtual hub route table to modify could not be found</value>
-  </data>
-  <data name="VirtualGatewayRequiredForVirtualRouter" xml:space="preserve">
-    <value>A valid VirtualNetworkGateway is required to create Virtual Router</value>
-  </data>
-  <data name="RemoveVirtualRouterWarning" xml:space="preserve">
-    <value>Removing a VirtualRouter will also remove all peerings associated with it. Are you sure you want to remove resource '{0}'</value>
   </data>
 </root>

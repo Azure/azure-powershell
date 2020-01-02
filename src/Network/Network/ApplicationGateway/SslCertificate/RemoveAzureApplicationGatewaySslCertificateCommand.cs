@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Remove, "AzApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGateway))]
     public class RemoveAzureApplicationGatewaySslCertificateCommand : NetworkBaseCmdlet
     {
         [Parameter(

@@ -16,11 +16,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSIPAddressAvailabilityResult
     {
-        [Ps1Xml(Target = ViewControl.Table)]
         public bool Available { get; set; }
 
         public List<string> AvailableIPAddresses { get; set; }

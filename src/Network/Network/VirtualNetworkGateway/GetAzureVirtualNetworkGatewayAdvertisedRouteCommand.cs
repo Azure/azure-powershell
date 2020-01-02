@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayAdvertisedRoute"), OutputType(typeof(PSGatewayRoute))]
+    [Cmdlet(VerbsCommon.Get, "AzVirtualNetworkGatewayAdvertisedRoute"), OutputType(typeof(PSGatewayRoute[]))]
     public class GetVirtualNetworkGatewayAdvertisedRouteCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Virtual network gateway name")]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworkGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string VirtualNetworkGatewayName { get; set; }
 

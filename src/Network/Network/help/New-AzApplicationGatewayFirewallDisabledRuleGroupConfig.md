@@ -13,8 +13,9 @@ Creates a new disabled rule group configuration.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName <String> [-Rules <Int32[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName <String>
+ [-Rules <System.Collections.Generic.List`1[System.Int32]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,9 +36,9 @@ The command creates a new disabled rule group configuration for the rule group n
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -50,9 +51,9 @@ Accept wildcard characters: False
 The name of the rule group that will be disabled.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -66,9 +67,9 @@ The list of rules that will be disabled.
 If null, all rules of the rule group will be disabled.
 
 ```yaml
-Type: System.Int32[]
+Type: System.Collections.Generic.List`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

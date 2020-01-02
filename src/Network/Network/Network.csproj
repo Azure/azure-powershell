@@ -11,9 +11,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Bastion\**" />
+    <EmbeddedResource Remove="Bastion\**" />
+    <None Remove="Bastion\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.17.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.36.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="16.1.0-preview" />
+    <!-- <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.36.0-preview" /> -->
   </ItemGroup>
 
   <ItemGroup>
@@ -33,10 +39,6 @@
   
   <ItemGroup>
     <None Update="AzureRmNetworkStartup.ps1" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Bastion\" />
   </ItemGroup>
 
 </Project>

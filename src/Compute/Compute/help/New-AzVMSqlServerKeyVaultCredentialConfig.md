@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: B30C2BDD-6DA9-47B5-88FE-3AD43E15A072
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmsqlserverkeyvaultcredentialconfig
@@ -14,9 +14,9 @@ Creates a configuration object for SQL server key vault credential on a virtual 
 ## SYNTAX
 
 ```
-New-AzVMSqlServerKeyVaultCredentialConfig [-ResourceGroupName] <String> [-Enable] [-CredentialName <String>]
- [-AzureKeyVaultUrl <String>] [-ServicePrincipalName <String>] [-ServicePrincipalSecret <SecureString>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzVMSqlServerKeyVaultCredentialConfig [-ResourceGroupName] <String> [-Enable]
+ [-CredentialName <String>] [-AzureKeyVaultUrl <String>] [-ServicePrincipalName <String>]
+ [-ServicePrincipalSecret <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,12 +26,10 @@ New-AzVMSqlServerKeyVaultCredentialConfig [-ResourceGroupName] <String> [-Enable
 ## PARAMETERS
 
 ### -AzureKeyVaultUrl
-Azure Key Vault service URL
-
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -42,9 +40,9 @@ Accept wildcard characters: False
 
 ### -CredentialName
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -55,9 +53,9 @@ Accept wildcard characters: False
 
 ### -Enable
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -68,9 +66,9 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -81,9 +79,9 @@ Accept wildcard characters: False
 
 ### -ServicePrincipalName
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -94,9 +92,9 @@ Accept wildcard characters: False
 
 ### -ServicePrincipalSecret
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -109,7 +107,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -122,10 +120,11 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
+
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -137,15 +136,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### System.Management.Automation.SwitchParameter
-
-### System.Security.SecureString
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
@@ -154,3 +150,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

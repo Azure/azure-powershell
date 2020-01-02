@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Microsoft.Azure.Management.Internal.Network.Common;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSNetworkInterface : PSTopLevelResource, INetworkInterfaceReference
     {
@@ -25,29 +24,18 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSNetworkInterfaceIPConfiguration> IpConfigurations { get; set; }
 
-        public List<PSNetworkInterfaceTapConfiguration> TapConfigurations { get; set; }
-
         public PSNetworkInterfaceDnsSettings DnsSettings { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
         public string MacAddress { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
         public bool? Primary { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableAcceleratedNetworking {get; set;}
 
-        [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableIPForwarding { get; set; }
-
-        public List<string> HostedWorkloads { get; set; }
 
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 
-        public PSResourceId PrivateEndpoint { get; set; }
-
-        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
@@ -63,12 +51,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string TapConfigurationsText
-        {
-            get { return JsonConvert.SerializeObject(TapConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
         public string DnsSettingsText
         {
             get { return JsonConvert.SerializeObject(this.DnsSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
@@ -80,23 +62,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(NetworkSecurityGroup, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
-        [JsonIgnore]
-        public string PrivateEndpointText
-        {
-            get { return JsonConvert.SerializeObject(PrivateEndpoint, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
         public bool ShouldSerializeIpConfigurations()
-        {
-            return !string.IsNullOrEmpty(this.Name);
-        }
-
-        public bool ShouldSerializeTapConfigurations()
-        {
-            return !string.IsNullOrEmpty(this.Name);
-        }
-
-        public bool ShouldSerializeHostedWorkloads()
         {
             return !string.IsNullOrEmpty(this.Name);
         }

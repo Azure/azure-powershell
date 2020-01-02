@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilitySet", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, ProfileNouns.AvailabilitySet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The availability set name.")]
-        [ResourceNameCompleter("Microsoft.Compute/availabilitySets", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

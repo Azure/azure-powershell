@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.Compute.Extension.AEM;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using Newtonsoft.Json;
@@ -35,7 +34,9 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAEMExtension")]
+    [Cmdlet(
+        "Test",
+        ProfileNouns.VirtualMachineAEMExtension)]
     [OutputType(typeof(AEMTestResult))]
     public class TestAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
     {
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Position = 0,
                 ValueFromPipelineByPropertyName = true,
                 HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -56,7 +57,6 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Mandatory = false,
                 Position = 3,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "Time that should be waited for the Storage Metrics or Diagnostics data to be available in minutes. Default is 15 minutes")]
+                HelpMessage = "Time that should be waited for the Strorage Metrics or Diagnostics data to be available in minutes. Default is 15 minutes")]
         public int WaitTimeInMinutes { get; set; }
 
         [Parameter(
@@ -91,8 +91,7 @@ namespace Microsoft.Azure.Commands.Compute
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
                 this.CommandRuntime.Host.UI,
                 AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
-                this.DefaultContext.Subscription, 
-                this.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
+                this.DefaultContext.Subscription);
 
             this._Helper.WriteVerbose("Starting TestAzureRmVMAEMExtension");
 
@@ -106,20 +105,20 @@ namespace Microsoft.Azure.Commands.Compute
                 //#################################################
                 //# Check if VM exists
                 //#################################################
-                this._Helper.WriteHost("VM Existence check for {0} ...", false, this.VMName);
+                this._Helper.WriteHost("VM Existance check for {0} ...", false, this.VMName);
                 var selectedVM = this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
                 var selectedVMStatus = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, this.VMName).Body.InstanceView;
 
 
                 if (selectedVM == null)
                 {
-                    rootResult.PartialResults.Add(new AEMTestResult("VM Existence check for {0}", false, this.VMName));
+                    rootResult.PartialResults.Add(new AEMTestResult("VM Existance check for {0}", false, this.VMName));
                     this._Helper.WriteHost("NOT OK ", ConsoleColor.Red);
                     return;
                 }
                 else
                 {
-                    rootResult.PartialResults.Add(new AEMTestResult("VM Existence check for {0}", true, this.VMName));
+                    rootResult.PartialResults.Add(new AEMTestResult("VM Existance check for {0}", true, this.VMName));
                     this._Helper.WriteHost("OK ", ConsoleColor.Green);
 
                 }
@@ -304,7 +303,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
 
                     var vmSize = selectedVM.HardwareProfile.VmSize;
-                    this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Size", "vmsize", sapmonPublicConfig, vmSize.ToString(), aemConfigResult);
+                    this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Size", "vmsize", sapmonPublicConfig, vmSize, aemConfigResult);
                     this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Memory", "vm.memory.isovercommitted", sapmonPublicConfig, 0, aemConfigResult);
                     this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM CPU", "vm.cpu.isovercommitted", sapmonPublicConfig, 0, aemConfigResult);
                     this._Helper.MonitoringPropertyExists("Azure Enhanced Monitoring Extension for SAP public configuration check: Script Version", "script.version", sapmonPublicConfig, aemConfigResult);
@@ -361,9 +360,8 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                        var resId = new ResourceIdentifier(osdisk.ManagedDisk.Id);
-
-                        var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
+                        var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id),
+                            this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id));
                         if (osDiskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                         {
                             var sla = this._Helper.GetDiskSLA(osDiskMD.DiskSizeGB, null);
@@ -389,9 +387,8 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         if (disk.ManagedDisk != null)
                         {
-                            var resId = new ResourceIdentifier(disk.ManagedDisk.Id);
-
-                            var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
+                            var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(disk.ManagedDisk.Id),
+                                this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id));
 
                             if (diskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                             {
@@ -400,12 +397,6 @@ namespace Microsoft.Azure.Commands.Compute
                                 this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " Type", "disk.type." + diskNumber, sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_PREMIUM_MD, aemConfigResult);
                                 this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA IOPS", "disk.sla.throughput." + diskNumber, sapmonPublicConfig, sla.TP, aemConfigResult);
                                 this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA Throughput", "disk.sla.iops." + diskNumber, sapmonPublicConfig, sla.IOPS, aemConfigResult);
-                            }
-                            else if (diskMD.Sku.Name == StorageAccountTypes.UltraSSDLRS)
-                            {
-                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " Type", "disk.type." + diskNumber, sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_PREMIUM_MD, aemConfigResult);
-                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA IOPS", "disk.sla.throughput." + diskNumber, sapmonPublicConfig, diskMD.DiskMBpsReadWrite, aemConfigResult);
-                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA Throughput", "disk.sla.iops." + diskNumber, sapmonPublicConfig, diskMD.DiskIOPSReadWrite, aemConfigResult);
                             }
                             else
                             {

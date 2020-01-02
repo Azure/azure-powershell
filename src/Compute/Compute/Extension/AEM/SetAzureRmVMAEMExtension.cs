@@ -22,7 +22,6 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -35,11 +34,12 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAEMExtension")]
+    [Cmdlet(
+        VerbsCommon.Set,
+        ProfileNouns.VirtualMachineAEMExtension)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
     {
-        private string _StorageEndpoint;
         private AEMHelper _Helper = null;
 
         [Parameter(
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Position = 0,
                 ValueFromPipelineByPropertyName = true,
                 HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -57,9 +57,14 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
+
+        [Parameter(
+                Mandatory = false,
+                ValueFromPipelineByPropertyName = false,
+                HelpMessage = "Deprecated - Windows Azure Diagnostics is now disabled by default")]
+        public SwitchParameter DisableWAD { get; set; }
 
         [Parameter(
                 Mandatory = false,
@@ -88,27 +93,24 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Disables the settings for table content")]
         public SwitchParameter SkipStorage { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
-        public SwitchParameter NoWait { get; set; }
-
         public SetAzureRmVMAEMExtension()
         {
         }
 
         public override void ExecuteCmdlet()
         {
-            this._StorageEndpoint = this.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
-                this.CommandRuntime.Host.UI, 
-                AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
-                    DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager), 
-                this.DefaultContext.Subscription,
-                this._StorageEndpoint);
+                this.CommandRuntime.Host.UI, AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager), this.DefaultContext.Subscription);
 
             base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
+                if (this.DisableWAD)
+                {
+                    this._Helper.WriteWarning("The parameter DisableWAD is deprecated. Windows Azure Diagnostics is disabled by default.");
+                }
+
                 this._Helper.WriteVerbose("Retrieving VM...");
 
                 var selectedVM = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
@@ -210,15 +212,14 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var resId = new ResourceIdentifier(osdisk.ManagedDisk.Id);
-
-                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
+                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id), 
+                        this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id));
                     if (osDiskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                     {
-                        WriteVerbose("OS Disk is a Premium Managed Disk - adding SLAs for OS disk");
+                        WriteVerbose("OS Disk Storage Account is a premium account - adding SLAs for OS disk");
                         var sla = this._Helper.GetDiskSLA(osDiskMD.DiskSizeGB, null);
                         var caching = osdisk.Caching;
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = resId.ResourceName });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id) });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.throughput", Value = sla.TP });
@@ -236,9 +237,8 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     if (disk.ManagedDisk != null)
                     {
-                        var resId = new ResourceIdentifier(disk.ManagedDisk.Id);
-
-                        var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
+                        var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(disk.ManagedDisk.Id),
+                            this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id));
 
                         if (diskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                         {
@@ -246,25 +246,12 @@ namespace Microsoft.Azure.Commands.Compute
                             var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
                             var cachingMD = disk.Caching;
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = resId.ResourceName });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id) });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = cachingMD });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = sla.TP });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = sla.IOPS });
                             this._Helper.WriteVerbose("Done - Data Disk {0} is a Premium Managed Disk - adding SLAs for disk", diskNumber.ToString());
-                        }
-                        else if (diskMD.Sku.Name == StorageAccountTypes.UltraSSDLRS)
-                        {
-                            this._Helper.WriteVerbose("Data Disk {0} is an UltraSSD Disk - adding SLAs for disk", diskNumber.ToString());
-                            var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
-                            var cachingMD = disk.Caching;
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = resId.ResourceName });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = cachingMD });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_ULTRA_MD });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = diskMD.DiskMBpsReadWrite });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = diskMD.DiskIOPSReadWrite });
-                            this._Helper.WriteVerbose("Done - Data Disk {0} is an UltraSSD Disk - adding SLAs for disk", diskNumber.ToString());
                         }
                         else
                         {
@@ -406,50 +393,25 @@ namespace Microsoft.Azure.Commands.Compute
 
                 Version aemVersion = this._Helper.GetExtensionVersion(selectedVM, selectedVMStatus, OSType, AEMExtensionConstants.AEMExtensionType[OSType], AEMExtensionConstants.AEMExtensionPublisher[OSType]);
 
-                if (NoWait.IsPresent)
-                {
-                    var op = this.VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
-                        this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
-                        new VirtualMachineExtension()
-                        {
-                            Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
-                            VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
-                            TypeHandlerVersion = aemVersion.ToString(2),
-                            Settings = jsonPublicConfig,
-                            ProtectedSettings = jsonPrivateConfig,
-                            Location = selectedVM.Location,
-                            AutoUpgradeMinorVersion = true,
-                            ForceUpdateTag = DateTime.Now.Ticks.ToString()
-                        }).GetAwaiter().GetResult();
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
+                    new VirtualMachineExtension()
+                    {
+                        Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
+                        VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
+                        TypeHandlerVersion = aemVersion.ToString(2),
+                        Settings = jsonPublicConfig,
+                        ProtectedSettings = jsonPrivateConfig,
+                        Location = selectedVM.Location,
+                        AutoUpgradeMinorVersion = true,
+                        ForceUpdateTag = DateTime.Now.Ticks.ToString()
+                    }).GetAwaiter().GetResult();
 
-                    this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
-                    this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
+                this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
+                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzureRmVMAEMExtension commandlet.");
 
-                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                    WriteObject(result);
-                }
-                else
-                {
-                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                        this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
-                        new VirtualMachineExtension()
-                        {
-                            Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
-                            VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
-                            TypeHandlerVersion = aemVersion.ToString(2),
-                            Settings = jsonPublicConfig,
-                            ProtectedSettings = jsonPrivateConfig,
-                            Location = selectedVM.Location,
-                            AutoUpgradeMinorVersion = true,
-                            ForceUpdateTag = DateTime.Now.Ticks.ToString()
-                        }).GetAwaiter().GetResult();
-
-                    this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
-                    this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
-
-                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                    WriteObject(result);
-                }
+                var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                WriteObject(result);
             });
         }
 
@@ -572,7 +534,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var key = this._Helper.GetAzureStorageKeyFromCache(storageAccountName);
             var credentials = new StorageCredentials(storageAccountName, key);
-            var cloudStorageAccount = new CloudStorageAccount(credentials,  this._StorageEndpoint, true);
+            var cloudStorageAccount = new CloudStorageAccount(credentials, true);
 
             cloudStorageAccount.CreateCloudBlobClient().SetServicePropertiesAsync(props)
                                                        .ConfigureAwait(false).GetAwaiter().GetResult();

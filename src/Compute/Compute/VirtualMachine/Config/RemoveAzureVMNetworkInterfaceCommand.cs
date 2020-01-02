@@ -12,18 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
     /// Setup the network interface.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMNetworkInterface",SupportsShouldProcess = true),OutputType(typeof(PSVirtualMachine))]
+    [Cmdlet(
+        VerbsCommon.Remove,
+        ProfileNouns.NetworkInterface,
+        SupportsShouldProcess = true),
+    OutputType(
+        typeof(PSVirtualMachine))]
     public class RemoveAzureVMNetworkInterfaceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]

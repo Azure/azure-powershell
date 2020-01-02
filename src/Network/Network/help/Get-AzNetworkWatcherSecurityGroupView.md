@@ -24,18 +24,12 @@ Get-AzNetworkWatcherSecurityGroupView -NetworkWatcherName <String> -ResourceGrou
  -TargetVirtualMachineId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### SetByLocation
-```
-Get-AzNetworkWatcherSecurityGroupView -Location <String> -TargetVirtualMachineId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The Get-AzNetworkWatcherSecurityGroupView enables you to view the configured and effective network security group rules applied on a VM.
 
 ## EXAMPLES
 
-### Example 1: Make a Security Group View call on a VM
+### --- Example 1: Make a Security Group View call on a VM ---
 ```
 $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
@@ -52,9 +46,9 @@ Then we make a Security Group View call on the specified VM.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -67,26 +61,11 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Location of the network watcher.
-
-```yaml
-Type: System.String
-Parameter Sets: SetByLocation
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -97,9 +76,9 @@ Accept wildcard characters: False
 The network watcher resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
+Type: PSNetworkWatcher
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -112,7 +91,7 @@ Accept wildcard characters: False
 The name of network watcher.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByName
 Aliases: Name
 
@@ -127,9 +106,9 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByName
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -142,9 +121,9 @@ Accept wildcard characters: False
 The target VM Id
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -154,17 +133,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-
-### System.String
+System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSSecurityGroupViewResult
+### Microsoft.Azure.Commands.Network.Models.PSViewNsgRules
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher, flow, ip 
@@ -177,9 +155,9 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [Remove-AzNetworkWatcher](./Remove-AzNetworkWatcher.md)
 
-[Get-AzNetworkWatcherNextHop](./Get-AzNetworkWatcherNextHop.md)
+[Test-AzNetworkWatcherIPFlow](./Test-AzNetworkWatcherIPFlow.md)
 
-[Get-AzNetworkWatcherSecurityGroupView](./Get-AzNetworkWatcherSecurityGroupView.md)
+[Get-AzNetworkWatcherNextHop](./Get-AzNetworkWatcherNextHop.md)
 
 [Get-AzNetworkWatcherTopology](./Get-AzNetworkWatcherTopology.md)
 
@@ -195,32 +173,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [Stop-AzNetworkWatcherPacketCapture](./Stop-AzNetworkWatcherPacketCapture.md)
 
-[New-AzNetworkWatcherProtocolConfiguration](./New-AzNetworkWatcherProtocolConfiguration.md)
-
-[Test-AzNetworkWatcherIPFlow](./Test-AzNetworkWatcherIPFlow.md)
-
-[Test-AzNetworkWatcherConnectivity](./Test-AzNetworkWatcherConnectivity.md)
-
-[Stop-AzNetworkWatcherConnectionMonitor](./Stop-AzNetworkWatcherConnectionMonitor.md)
-
-[Start-AzNetworkWatcherConnectionMonitor](./Start-AzNetworkWatcherConnectionMonitor.md)
-
-[Set-AzNetworkWatcherConnectionMonitor](./Set-AzNetworkWatcherConnectionMonitor.md)
-
-[Set-AzNetworkWatcherConfigFlowLog](./Set-AzNetworkWatcherConfigFlowLog.md)
-
-[Remove-AzNetworkWatcherConnectionMonitor](./Remove-AzNetworkWatcherConnectionMonitor.md)
-
-[New-AzNetworkWatcherConnectionMonitor](./New-AzNetworkWatcherConnectionMonitor.md)
-
-[Get-AzNetworkWatcherTroubleshootingResult](./Get-AzNetworkWatcherTroubleshootingResult.md)
-
-[Get-AzNetworkWatcherReachabilityReport](./Get-AzNetworkWatcherReachabilityReport.md)
-
-[Get-AzNetworkWatcherReachabilityProvidersList](./Get-AzNetworkWatcherReachabilityProvidersList.md)
-
-[Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
-
-[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport)
-
-[Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor)

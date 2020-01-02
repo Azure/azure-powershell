@@ -16,12 +16,10 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System.Collections.Generic;
 using System.Net;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -41,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetPacketCapture(resourceGroupName, name, packetCaptureName);
             }
-            catch (MNM.ErrorResponseException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -61,37 +59,6 @@ namespace Microsoft.Azure.Commands.Network
             PSPacketCaptureResult psPacketCapture = NetworkResourceManagerProfile.Mapper.Map<PSPacketCaptureResult>(packetCapture);
 
             return psPacketCapture;
-        }
-
-        public PSNetworkWatcher ToPsNetworkWatcher(MNM.NetworkWatcher networkWatcher)
-        {
-            var psNetworkWatcher = NetworkResourceManagerProfile.Mapper.Map<PSNetworkWatcher>(networkWatcher);
-            psNetworkWatcher.Tag =
-                TagsConversionHelper.CreateTagHashtable(networkWatcher.Tags);
-
-            return psNetworkWatcher;
-        }
-
-        public PSNetworkWatcher GetNetworkWatcherByLocation(string location)
-        {
-            var nwList = this.NetworkClient.NetworkManagementClient.NetworkWatchers.ListAll();
-            foreach (var nw in nwList)
-            {
-                if (nw.Location == location)
-                {
-                    PSNetworkWatcher psNetworkWatcher = ToPsNetworkWatcher(nw);
-                    psNetworkWatcher.ResourceGroupName = this.GetResourceGroupNameFromResourceId(nw.Id);
-                    return psNetworkWatcher;
-                }
-            }
-
-            return null;
-        }
-
-        public string GetResourceGroupNameFromResourceId(string resourceId)
-        {
-            ResourceIdentifier resourceInfo = new ResourceIdentifier(resourceId);
-            return resourceInfo.ResourceGroupName;
         }
     }
 }

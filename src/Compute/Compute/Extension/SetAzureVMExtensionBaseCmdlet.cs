@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -75,8 +73,5 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Force re-run even if extension configuration has not changed")]
         [ValidateNotNullOrEmpty]
         public string ForceRerun { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
-        public SwitchParameter NoWait { get; set; }
     }
 }

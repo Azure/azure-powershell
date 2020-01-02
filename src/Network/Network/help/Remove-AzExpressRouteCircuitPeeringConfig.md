@@ -37,9 +37,9 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -52,9 +52,9 @@ Accept wildcard characters: False
 The ExpressRoute circuit containing the peering configuration to be removed.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -67,9 +67,9 @@ Accept wildcard characters: False
 The name of the peering configuration to be removed.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -82,9 +82,9 @@ Accept wildcard characters: False
 The Address family of the peering
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: IPv4, IPv6, All
 
 Required: False
@@ -99,7 +99,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+### PSExpressRouteCircuit
+Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' from the pipeline
 
 ## OUTPUTS
 

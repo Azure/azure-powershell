@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: 7C3CF963-6F1A-444C-B90C-C1D24F89204D
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/stop-azvm
@@ -15,13 +15,13 @@ Stops an Azure virtual machine.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Stop-AzVM [-Name] <String> [-Force] [-StayProvisioned] [-NoWait] [-SkipShutdown] [-ResourceGroupName] <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzVM [-Name] <String> [-Force] [-StayProvisioned] [-ResourceGroupName] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Stop-AzVM [-Force] [-StayProvisioned] [-NoWait] [-SkipShutdown] [-Id] <String> [-AsJob]
+Stop-AzVM [-Name] <String> [-Force] [-StayProvisioned] [-Id] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,9 +43,9 @@ This command stops the virtual machine named VirtualMachine07 in ResourceGroup11
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -58,9 +58,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -73,9 +73,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -85,12 +85,12 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The ID of the virtual machine.
+The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: IdParameterSetName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -103,9 +103,9 @@ Accept wildcard characters: False
 The virtual machine name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceGroupNameParameterSetName
-Aliases:
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: True
 Position: 1
@@ -114,28 +114,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceGroupNameParameterSetName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -144,29 +129,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SkipShutdown
-To request non-graceful VM shutdown when keeping the VM provisioned.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -StayProvisioned
 The cmdlet stops all the virtual machines within the VMSS but does not deallocate them. The account
 is charged for the stopped virtual machines.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -179,7 +149,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -194,7 +164,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -206,17 +176,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Compute.Models.PSComputeLongRunningOperation
-
-### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 

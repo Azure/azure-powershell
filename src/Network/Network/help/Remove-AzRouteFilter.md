@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzRouteFilter
 
 ## SYNOPSIS
-Removes a route filter.
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ Remove-AzRouteFilter -Name <String> -ResourceGroupName <String> [-Force] [-PassT
 ```
 
 ## DESCRIPTION
-The **Remove-AzRouteFilter** cmdlet removes a route filter.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> Remove-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
+```
+PS C:\> {{ Add example code here }}
 ```
 
-The command removes the route filter named RouteFilter01 in the resource group named ResourceGroup01.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -35,9 +35,9 @@ The command removes the route filter named RouteFilter01 in the resource group n
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -50,9 +50,9 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -77,12 +77,12 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns an object representing the item with which you are working.
+{{Fill PassThru Description}}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -95,9 +95,9 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -126,7 +126,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -146,24 +146,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### System.Object
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzRouteFilter](./Get-AzRouteFilter.md)
-
-[New-AzRouteFilter](./New-AzRouteFilter.md)
-
-[Set-AzRouteFilter](./Set-AzRouteFilter.md)
-
-[Add-AzRouteFilterRuleConfig](./Add-AzRouteFilterRuleConfig.md)
-
-[Get-AzRouteFilterRuleConfig](./Get-AzRouteFilterRuleConfig.md)
-
-[New-AzRouteFilterRuleConfig](./New-AzRouteFilterRuleConfig.md)
-
-[Remove-AzRouteFilterRuleConfig](./Remove-AzRouteFilterRuleConfig.md)
-
-[Set-AzRouteFilterRuleConfig](./Set-AzRouteFilterRuleConfig.md)

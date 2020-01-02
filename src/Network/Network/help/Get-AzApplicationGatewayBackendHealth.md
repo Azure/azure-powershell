@@ -14,8 +14,8 @@ Gets application gateway backend health.
 ## SYNTAX
 
 ```
-Get-AzApplicationGatewayBackendHealth -Name <String> -ResourceGroupName <String> [-ExpandResource <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzApplicationGatewayBackendHealth -Name <String> -ResourceGroupName <String>
+ [-ExpandResource <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,14 +23,14 @@ The Get-AzApplicationGatewayBackendHealth cmdlet gets application gateway backen
 
 ## EXAMPLES
 
-### Example 1: Gets backend health without expanded resources.
+### --------------------------  Example 1: Gets backend health without expanded resources.  --------------------------
 ```
 PS C:\>$BackendHealth = Get-AzApplicationGatewayBackendHealth -Name ApplicationGateway01 -ResourceGroupName ResourceGroup01
 ```
 
 This command gets the backend health of application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $BackendHealth variable.
 
-### Example 2: Gets backend health with expanded resources.
+### --------------------------  Example 1: Gets backend health with expanded resources.  --------------------------
 ```
 PS C:\>$BackendHealth = Get-AzApplicationGatewayBackendHealth -Name ApplicationGateway01 -ResourceGroupName ResourceGroup01 -ExpandResource "backendhealth/applicationgatewayresource"
 ```
@@ -43,9 +43,9 @@ This command gets the backend health (with expanded resources) of application ga
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -58,9 +58,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -71,9 +71,9 @@ Accept wildcard characters: False
 
 ### -ExpandResource
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 Specifies the name of the application gateway that this cmdlet gets.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -101,9 +101,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the application gateway.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

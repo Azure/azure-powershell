@@ -82,18 +82,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
                 ParameterSetName = "SetByResourceId",
-                HelpMessage = "ID of the application gateway RewriteRuleSet")]
-        [ValidateNotNullOrEmpty]
-        public string RewriteRuleSetId { get; set; }
-
-        [Parameter(
-                ParameterSetName = "SetByResource",
-                HelpMessage = "Application gateway RewriteRuleSet")]
-        [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayRewriteRuleSet RewriteRuleSet { get; set; }
-
-        [Parameter(
-                ParameterSetName = "SetByResourceId",
                 HelpMessage = "ID of the application gateway RedirectConfiguration")]
         [ValidateNotNullOrEmpty]
         public string RedirectConfigurationId { get; set; }
@@ -125,10 +113,6 @@ namespace Microsoft.Azure.Commands.Network
                 if (UrlPathMap != null)
                 {
                     this.UrlPathMapId = this.UrlPathMap.Id;
-                }
-                if (RewriteRuleSet != null)
-                {
-                    this.RewriteRuleSetId = this.RewriteRuleSet.Id;
                 }
                 if (RedirectConfiguration != null)
                 {
@@ -163,11 +147,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 requestRoutingRule.UrlPathMap = new PSResourceId();
                 requestRoutingRule.UrlPathMap.Id = this.UrlPathMapId;
-            }
-            if (!string.IsNullOrEmpty(this.RewriteRuleSetId))
-            {
-                requestRoutingRule.RewriteRuleSet = new PSResourceId();
-                requestRoutingRule.RewriteRuleSet.Id = this.RewriteRuleSetId;
             }
             if (!string.IsNullOrEmpty(this.RedirectConfigurationId))
             {

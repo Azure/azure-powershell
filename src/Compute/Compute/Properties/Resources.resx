@@ -142,7 +142,7 @@
     <value>The RDP file cannot be generated because the network interface of the virtual machine does not reference an InboundNatRule of a public load balancer.</value>
   </data>
   <data name="VirtualMachineReferencesInternalNetworkInterface" xml:space="preserve">
-    <value>The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboundNatRule of the load balancer.</value>
+    <value>The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboungNatRule of the load balancer.</value>
   </data>
   <data name="VirtualMachineRemovalCaption" xml:space="preserve">
     <value>Virtual machine removal operation</value>
@@ -242,7 +242,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <comment>{0} = minimal required PS version, {1} = current PS version</comment>
   </data>
   <data name="AzureVMDscDefaultStorageCredentialsNotFound" xml:space="preserve">
-    <value>Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using "Set-AzSubscription", or set the "AZURE_STORAGE_CONNECTION_STRING" environment variable.</value>
+    <value>Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using "Set-AzureRmSubscription", or set the "AZURE_STORAGE_CONNECTION_STRING" environment variable.</value>
   </data>
   <data name="PublishVMDscExtensionRequiredModulesVerbose" xml:space="preserve">
     <value>List of required modules: [{0}].</value>
@@ -354,7 +354,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <value>Found existing page blob. Resuming upload...</value>
   </data>
   <data name="PSSyncOutputEventsRetryingAfterANetworkDisruption" xml:space="preserve">
-    <value>Network disruption occurred, retrying.</value>
+    <value>Network disruption occured, retrying.</value>
   </data>
   <data name="PSSyncOutputEventsUploadFailedWithException" xml:space="preserve">
     <value>Upload failed with exceptions:</value>
@@ -363,10 +363,10 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <value>Uploading</value>
   </data>
   <data name="StorageCredentialsFactoryCurrentSubscriptionNotSet" xml:space="preserve">
-    <value>No current subscription has been designated. Use Select-AzSubscription -Current &lt;subscriptionName&gt; to set the current subscription.</value>
+    <value>No current subscription has been designated. Use Select-AzureRmSubscription -Current &lt;subscriptionName&gt; to set the current subscription.</value>
   </data>
   <data name="DataDiskNotAssignedForVM" xml:space="preserve">
-    <value>A data disk, {0}, is not currently assigned for this VM. Use Add-AzVMDataDisk to add it.</value>
+    <value>A data disk, {0}, is not currently assigned for this VM. Use Add-AzureRmVMDataDisk to add it.</value>
   </data>
   <data name="AzureVMSqlServerWrongConfigFormat" xml:space="preserve">
     <value>Cannot deserialize sql configuration substatus message from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
@@ -447,7 +447,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Storage account name for boot diagnostics is not given.</value>
   </data>
   <data name="CreatingStorageAccountForBootDiagnostics" xml:space="preserve">
-    <value>Since there is no standard storage account in the same region as the VM, new standard storage account, {0}, is created for boot diagnostics.</value>
+    <value>Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics.</value>
     <comment>{0} = new standard storage account name</comment>
   </data>
   <data name="ErrorDuringCreatingStorageAccountForBootDiagnostics" xml:space="preserve">
@@ -593,17 +593,5 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="ComputeNoImageFound" xml:space="preserve">
     <value>Can't find the image '{0}'.</value>
     <comment>{0} = image name</comment>
-  </data>
-  <data name="NoSubscriptionInContext" xml:space="preserve">
-    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login.</value>
-  </data>
-  <data name="EnableDiskEncryptionMissingSkipVmBackup" xml:space="preserve">
-    <value>-skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks. For more information, see https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux. </value>
-  </data>
-  <data name="LinuxConfigurationSpecified" xml:space="preserve">
-    <value>Linux configuration is already specified.  This cmdlet requires a Windows configuration.</value>
-  </data>
-  <data name="WindowsConfigurationSpecified" xml:space="preserve">
-    <value>Windows configuration is already specified.  This cmdlet requires a Linux configuration.</value>
   </data>
 </root>

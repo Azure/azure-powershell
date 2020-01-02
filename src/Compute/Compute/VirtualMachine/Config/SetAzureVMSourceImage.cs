@@ -12,13 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSourceImage", DefaultParameterSetName = ImageReferenceSkuParameterSet),OutputType(typeof(PSVirtualMachine))]
+    [Cmdlet(VerbsCommon.Set, ProfileNouns.SourceImage, DefaultParameterSetName = ImageReferenceSkuParameterSet),
+    OutputType(typeof(PSVirtualMachine))]
     public class SetAzureVMSourceImageCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string ImageReferenceSkuParameterSet = "ImageReferenceSkuParameterSet";

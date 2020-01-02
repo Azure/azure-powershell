@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: 1BECAC91-BB43-46EB-B2C9-C965C6FBC831
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmconfig
@@ -15,27 +15,23 @@ Creates a configurable virtual machine object.
 
 ### DefaultParameterSet (Default)
 ```
-New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
- [-Zone <String[]>] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
- [-MaxPrice <Double>] [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>] [-EnableUltraSSD]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>]
+ [[-LicenseType] <String>] [-Zone <String[]>] [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
 ```
-New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
- [-IdentityType] <ResourceIdentityType> [-IdentityId <String[]>] [-Zone <String[]>]
- [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>] [-MaxPrice <Double>]
- [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>] [-EnableUltraSSD]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>]
+ [[-LicenseType] <String>] [-IdentityType] <ResourceIdentityType> [-IdentityId <String[]>] [-Zone <String[]>]
+ [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AssignIdentityParameterSet
 ```
-New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
- [-AssignIdentity] [-Zone <String[]>] [-ProximityPlacementGroupId <String>] [-HostId <String>]
- [-VmssId <String>] [-MaxPrice <Double>] [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>]
- [-EnableUltraSSD] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>]
+ [[-LicenseType] <String>] [-AssignIdentity] [-Zone <String[]>] [-Tags <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,7 +46,8 @@ PS C:\> $AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGro
 PS C:\> $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
 ```
 
-The first command gets the availability set named AvailabilitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
+The first command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
+
 The second command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
 The virtual machine belongs to the availability set stored in $AvailabilitySet.
@@ -61,9 +58,9 @@ The virtual machine belongs to the availability set stored in $AvailabilitySet.
 Specify the system assigned identity for the virtual machine.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: AssignIdentityParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -78,9 +75,9 @@ To obtain an availability set object, use the Get-AzAvailabilitySet cmdlet.
 The availability set object contains an ID property.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -93,9 +90,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -104,61 +101,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableUltraSSD
-Enables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM.
-Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine only if this property is enabled.
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EvictionPolicy
-The eviction policy for the low priority virtual machine.  Only supported value is 'Deallocate'.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -HostId
-The Id of Host
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -IdentityId
 Specifies the list of user identities associated with the virtual machine scale set.
 The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: ExplicitIdentityParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -171,9 +121,9 @@ Accept wildcard characters: False
 The identity of the virtual machine, if configured.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.ResourceIdentityType]
+Type: ResourceIdentityType
 Parameter Sets: ExplicitIdentityParameterSet
-Aliases:
+Aliases: 
 Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
 
 Required: True
@@ -187,9 +137,9 @@ Accept wildcard characters: False
 The license type, which is for bringing your own license scenario.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 3
@@ -198,59 +148,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxPrice
-Specifies the maximum price you are willing to pay for a low priority VM/VMSS. This price is in US Dollars. This price will be compared with the current low priority price for the VM size. Also, the prices are compared at the time of create/update of low priority VM/VMSS and the operation will only succeed if the maxPrice is greater than the current low priority price. The maxPrice will also be used for evicting a low priority VM/VMSS if the current low priority price goes beyond the maxPrice after creation of VM/VMSS. Possible values are: any decimal value greater than zero. Example: 0.01538.  -1 indicates that the low priority VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you.
-
-```yaml
-Type: System.Double
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Priority
-The priority for the virtual machine.  Only supported values are 'Regular', 'Spot' and 'Low'.
-'Regular' is for regular virtual machine.
-'Spot' is for spot virtual machine.
-'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProximityPlacementGroupId
-The resource id of the Proximity Placement Group to use with this virtual machine.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Tags
 The tags attached to the resource.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -265,7 +167,7 @@ Accept wildcard characters: False
 Specifies a name for the virtual machine.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, Name
 
@@ -280,9 +182,9 @@ Accept wildcard characters: False
 Specifies the size for the virtual machine.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -291,28 +193,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VmssId
-The Id of virtual machine scale set
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Zone
-Specifies the availability zone list for the virtual machine. The allowed values depend on the capabilities of the region. Allowed values will normally be 1,2,3.
+Specifies the zone list for the virtual machine.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -322,17 +209,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### System.String[]
-
-### System.Collections.Hashtable
-
-### System.Management.Automation.SwitchParameter
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMExtensionImageType")]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageType)]
     [OutputType(typeof(PSVirtualMachineExtensionImageType))]
     public class GetAzureVMExtensionImageTypeCommand : VirtualMachineExtensionImageBaseCmdlet
     {

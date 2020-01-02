@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkSecurityRuleConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNetworkSecurityGroup))]
+    [Cmdlet(VerbsCommon.Add, "AzNetworkSecurityRuleConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class AddAzureNetworkSecurityRuleConfigCommand : AzureNetworkSecurityRuleConfigBase
     {
         [Parameter(
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
         {
 
             base.Execute();
-            // Verify if the security rule exists in the NetworkSecurityGroup
+            // Verify if the subnet exists in the NetworkSecurityGroup
             var rule = this.NetworkSecurityGroup.SecurityRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (rule != null)
@@ -46,22 +46,22 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Rule with the specified name already exists");
             }
 
-            if ((this.SourceAddressPrefix != null) && (this.SourceAddressPrefix.Length > 0) && (this.SourceApplicationSecurityGroup != null) && (this.SourceApplicationSecurityGroup.Length > 0))
+            if ((this.SourceAddressPrefix != null) && (this.SourceAddressPrefix.Count > 0) && (this.SourceApplicationSecurityGroup != null) && (this.SourceApplicationSecurityGroup.Count > 0))
             {
                 throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroup)} cannot be used simultaneously.");
             }
 
-            if ((this.SourceAddressPrefix != null) && (this.SourceAddressPrefix.Length > 0) && (this.SourceApplicationSecurityGroupId != null) && (this.SourceApplicationSecurityGroupId.Length > 0))
+            if ((this.SourceAddressPrefix != null) && (this.SourceAddressPrefix.Count > 0) && (this.SourceApplicationSecurityGroupId != null) && (this.SourceApplicationSecurityGroupId.Count > 0))
             {
                 throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroupId)} cannot be used simultaneously.");
             }
 
-            if ((this.DestinationAddressPrefix != null) && (this.DestinationAddressPrefix.Length > 0) && (this.DestinationApplicationSecurityGroup != null) && (this.DestinationApplicationSecurityGroup.Length > 0))
+            if ((this.DestinationAddressPrefix != null) && (this.DestinationAddressPrefix.Count > 0) && (this.DestinationApplicationSecurityGroup != null) && (this.DestinationApplicationSecurityGroup.Count > 0))
             {
                 throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroup)} cannot be used simultaneously.");
             }
 
-            if ((this.DestinationAddressPrefix != null) && (this.DestinationAddressPrefix.Length > 0) && (this.DestinationApplicationSecurityGroupId != null) && (this.DestinationApplicationSecurityGroupId.Length > 0))
+            if ((this.DestinationAddressPrefix != null) && (this.DestinationAddressPrefix.Count > 0) && (this.DestinationApplicationSecurityGroupId != null) && (this.DestinationApplicationSecurityGroupId.Count > 0))
             {
                 throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroupId)} cannot be used simultaneously.");
             }

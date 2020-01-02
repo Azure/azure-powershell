@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Add, "AzApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayIPConfigurationCommand : AzureApplicationGatewayIPConfigurationBase
     {
         [Parameter(

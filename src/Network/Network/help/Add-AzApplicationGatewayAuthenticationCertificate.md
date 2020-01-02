@@ -14,8 +14,9 @@ Adds an authentication certificate to an application gateway.
 ## SYNTAX
 
 ```
-Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway <PSApplicationGateway> -Name <String>
- -CertificateFile <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway <PSApplicationGateway>
+ -Name <String> -CertificateFile <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,16 +24,10 @@ The **Add-AzApplicationGatewayAuthenticationCertificate** cmdlet adds an authent
 
 ## EXAMPLES
 
-### Example 1: Add authentication certificate to an application gateway
-```
-PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
-PS C:\> $appgw = Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name "cert01" -CertificateFile "C:\cert.cer"
-PS C:\> $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+### 1:
 ```
 
-The first command gets an application gateway named appGwName and stores it in $appgw variable.
-The second command adds authentication certificate named cert01 to the application gateway.
-The third command updates the application gateway.
+```
 
 ## PARAMETERS
 
@@ -40,9 +35,9 @@ The third command updates the application gateway.
 Specifies the name of application gateway for which this cmdlet adds an authentication certificate.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -55,9 +50,9 @@ Accept wildcard characters: False
 Specifies the path of the authentication certificate that this cmdlet adds.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -70,9 +65,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -85,9 +80,9 @@ Accept wildcard characters: False
 Specifies the name of a certificate that this cmdlet adds to the application gateway.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -100,7 +95,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -116,7 +111,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -132,7 +127,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+### System.String
 
 ## OUTPUTS
 

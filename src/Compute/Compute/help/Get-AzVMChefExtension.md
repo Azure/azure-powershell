@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: F41953F1-9515-4081-8624-6A1494DA4BB2
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmchefextension
@@ -15,22 +15,22 @@ Gets information about a Chef extension.
 
 ### Linux
 ```
-Get-AzVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status] [-Linux]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
+ [-Linux] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Windows
 ```
-Get-AzVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status] [-Windows]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
+ [-Windows] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzVMChefExtension** cmdlet gets information about a Chef extension installed on a virtual machine.
+The **Get-AzureVMChefExtension** cmdlet gets information about a Chef extension installed on a virtual machine.
 
 ## EXAMPLES
 
-### Example 1: Get the details of Chef extension for a Windows virtual machine
+### Example 1: Get the details of Chef extension for a Windows virtual machine-
 ```
 PS C:\> Get-AzVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -Windows
 ```
@@ -50,9 +50,9 @@ This command gets the Chef extension from a Linux virtual machine named LinuxVM0
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -65,9 +65,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet works on a Linux virtual machine.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Linux
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 Specifies the name of the Chef extension.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
@@ -95,9 +95,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the virtual machine.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -110,9 +110,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets only the instance view of the Chef extension.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 3
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 Specifies the name of a virtual machine.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -140,9 +140,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet is for a Windows virtual machine.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Windows
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -152,13 +152,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### System.Management.Automation.SwitchParameter
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

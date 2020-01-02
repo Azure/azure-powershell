@@ -12,16 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssDiagnosticsExtension",SupportsShouldProcess = true)]
-    [OutputType(typeof(PSVirtualMachineScaleSet))]
+    [Cmdlet(
+        VerbsCommon.Remove,
+        ProfileNouns.VirtualMachineScaleSetDiagnosticsExtension,
+        SupportsShouldProcess = true
+        )]
+    [OutputType(typeof(VirtualMachineScaleSet))]
     public class RemoveAzureRmVmssDiagnosticsExtension : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -29,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
+        public VirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Alias("ExtensionName")]
         [Parameter(
@@ -67,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute
                             this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = null;
                         }
 
-                        WriteObject(ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet>(this.VirtualMachineScaleSet));
+                        WriteObject(this.VirtualMachineScaleSet);
                         return;
                     }
                 }
@@ -75,7 +79,7 @@ namespace Microsoft.Azure.Commands.Compute
                 WriteWarning(Properties.Resources.DiagnosticsExtensionNotFoundForVMSS);
             }
 
-            WriteObject(ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet>(this.VirtualMachineScaleSet));
+            WriteObject(this.VirtualMachineScaleSet);
         }
     }
 }

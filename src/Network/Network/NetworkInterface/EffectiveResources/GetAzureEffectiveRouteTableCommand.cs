@@ -21,14 +21,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EffectiveRouteTable"), OutputType(typeof(PSEffectiveRoute))]
+    [Cmdlet(VerbsCommon.Get, "AzEffectiveRouteTable"), OutputType(typeof(PSEffectiveRoute))]
     public class GetAzureEffectiveRouteTableCommand : NetworkInterfaceBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network interface name.")]
-        [ResourceNameCompleter("Microsoft.Network/networkInterfaces", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkInterfaceName { get; set; }
 

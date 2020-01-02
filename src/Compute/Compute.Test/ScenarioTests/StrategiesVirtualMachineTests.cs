@@ -13,9 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Moq;
 using System;
+using System.Diagnostics;
 using System.Reflection;
 using Xunit;
 
@@ -29,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVm()
         {
             TestRunner.RunTestScript("Test-SimpleNewVm");
@@ -37,94 +41,56 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmFromSIGImage()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmFromSIGImage");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmWithUltraSSD()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmWithUltraSSD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmWithAccelNet()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmWithAccelNet");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewVmWin10()
-        {
-            TestRunner.RunTestScript("Test-NewVmWin10");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmWithSystemAssignedIdentity()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmSystemAssignedIdentity");
-        }
-
-        [Fact(Skip = "Unknown issue/update, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        public void TestSimpleNewVmWithSystemAssignedAndUserAssignedIdentity()
-        {
-            /**
-             * To record this test run these commands first :
-             * New-AzResourceGroup -Name UAITG123456 -Location 'Central US'
-             * New-AzUserAssignedIdentity -ResourceGroupName  UAITG123456 -Name UAITG123456Identity
-             * 
-             * Now get the identity :
-             * 
-             * Get-AzUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
-             * Nore down the Id and use it in the PS code
-             * */
-            TestRunner.RunTestScript("Test-SimpleNewVmUserAssignedIdentitySystemAssignedIdentity");
-        }
-
-        [Fact] 
-        [Trait(Category.AcceptanceType, Category.CheckIn)] 
         public void TestSimpleNewVmWithAvailabilitySet()
         {
             TestRunner.RunTestScript("Test-SimpleNewVmWithAvailabilitySet");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmWithAvailabilitySet2()
         {
             TestRunner.RunTestScript("Test-SimpleNewVmWithAvailabilitySet2");
+        }
+
+        internal static void TestDomainName(string psTest, Func<string> getUniqueId)
+        {
+            //var callingClassType = TestUtilities.GetCallingClass(2);
+            //var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1); //1 or 2??
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
+
+            var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
+            var oldCreate = create.GetValue(null);
+
+            ComputeTestController.NewInstance.RunPsTestWorkflow(
+                () => new[] { psTest },
+                // initializer
+                //_ => create.SetValue(null, getUniqueId),
+                // cleanup 
+                () => create.SetValue(null, oldCreate),
+                callingClassType,
+                mockName);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmWithDefaultDomainName()
         {
-            var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
-            var oldCreate = create.GetValue(null);
-
-            string GetUnigueId() => HttpMockServer.GetAssetGuid("domainName").ToString();
-            create.SetValue(null, (Func<string>) GetUnigueId);
-            TestRunner.RunTestScript("Test-SimpleNewVmWithDefaultDomainName");
-            create.SetValue(null, oldCreate);
+            TestDomainName(
+                "Test-SimpleNewVmWithDefaultDomainName",
+                () => HttpMockServer.GetAssetGuid("domainName").ToString());
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmWithDefaultDomainName2()
         {
-            var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
-            var oldCreate = create.GetValue(null);
-
             var i = 0;
             var result = new Guid();
-            string GetUnigueId() { 
+            TestDomainName("Test-SimpleNewVmWithDefaultDomainName2", () =>
+            { 
                 switch (i)
                 {
                     case 1:
@@ -135,53 +101,21 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 }
                 ++i;
                 return result.ToString();
-            };
-
-            create.SetValue(null, (Func<string>) GetUnigueId);
-            TestRunner.RunTestScript("Test-SimpleNewVmWithDefaultDomainName2");
-            create.SetValue(null, oldCreate);
+            });
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmImageName()
         {
             TestRunner.RunTestScript("Test-SimpleNewVmImageName");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmImageNameMicrosoftSqlUbuntu()
         {
             TestRunner.RunTestScript("Test-SimpleNewVmImageNameMicrosoftSqlUbuntu");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmPpg()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmPpg");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmPpgId()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmPpgId");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleNewVmBilling()
-        {
-            TestRunner.RunTestScript("Test-SimpleNewVmBilling");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSimpleGalleryCrossTenant()
-        {
-            TestRunner.RunTestScript("Test-SimpleGalleryCrossTenant");
         }
     }
 }

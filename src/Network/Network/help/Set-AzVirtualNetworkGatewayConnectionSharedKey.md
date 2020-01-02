@@ -23,14 +23,9 @@ The **Set-AzVirtualNetworkGatewayConnectionSharedKey** cmdlet configures the sha
 
 ## EXAMPLES
 
-### Example 1:
+### 1:
 ```
-PS C:\Users\alzam> Set-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName VPNGatewayV3 -Name VNet1toVNet2 -Value abcd1234
 
-Confirm
-Are you sure you want to overwrite resource 'VNet1toVNet2'
-[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
-abcd1234
 ```
 
 ## PARAMETERS
@@ -39,9 +34,9 @@ abcd1234
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -54,9 +49,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -69,7 +64,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual network gateway shared key.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -84,9 +79,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that the virtual network gateway belongs to
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -99,9 +94,9 @@ Accept wildcard characters: False
 Specifies the value of the shared key.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -114,7 +109,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -130,7 +125,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -146,8 +141,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
 ### System.String
@@ -159,3 +152,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVirtualNetworkGatewayConnectionSharedKey](./Get-AzVirtualNetworkGatewayConnectionSharedKey.md)
 
 [Reset-AzVirtualNetworkGatewayConnectionSharedKey](./Reset-AzVirtualNetworkGatewayConnectionSharedKey.md)
+
+

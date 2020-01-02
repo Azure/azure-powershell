@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(Mandatory = true, HelpMessage = "The list of community value that route filter will filter on")]
         [ValidateNotNull]
-        public virtual string[] CommunityList { get; set; }
+        public virtual List<string> CommunityList { get; set; }
 
         public IRouteFilterRulesOperations RouteFilterRuleClient
         {

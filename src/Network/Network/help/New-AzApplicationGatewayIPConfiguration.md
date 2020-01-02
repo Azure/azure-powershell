@@ -33,13 +33,15 @@ The IP configuration contains the subnet in which application gateway is deploye
 
 ### Example 1: Create an IP configuration for an application gateway.
 ```
-PS C:\>$VNet = Get-AzVirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01"
+PS C:\>$VNet = Get-AzvirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $Subnet = Get-AzVirtualNetworkSubnetConfig -Name "Subnet01" -VirtualNetwork $VNet 
 PS C:\ $GatewayIpConfig = New-AzApplicationGatewayIPConfiguration -Name "AppGwSubnet01" -Subnet $Subnet
 ```
 
 The first command gets a virtual network named VNet01 that belongs to the resource group named ResourceGroup01.
+
 The second command gets the subnet configuration for the subnet that the virtual network in the previous command belongs to, and stores it in the $Subnet variable.
+
 The third command creates the IP configuration using $Subnet.
 
 ## PARAMETERS
@@ -48,9 +50,9 @@ The third command creates the IP configuration using $Subnet.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -63,9 +65,9 @@ Accept wildcard characters: False
 Specifies the name of the IP configuration to create.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -79,9 +81,9 @@ Specifies the subnet object.
 This is the subnet in which the application gateway is deployed.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
+Type: PSSubnet
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -95,9 +97,9 @@ Specifies the subnet ID.
 This is the subnet in which the application gateway would be deployed.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -111,7 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 

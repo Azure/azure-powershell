@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayProbeConfig"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Remove, "AzApplicationGatewayProbeConfig"), OutputType(typeof(PSApplicationGateway))]
     public class RemoveAzureApplicationGatewayProbeConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

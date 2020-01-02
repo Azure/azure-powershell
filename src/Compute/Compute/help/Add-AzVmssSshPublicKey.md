@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: 9C216103-EB77-468E-8684-F5E5400B73A7
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmsssshpublickey
@@ -30,6 +30,7 @@ PS C:\> Add-AzVmssSshPublicKey -VirtualMachineScaleSet $VMSS -KeyData "MIIDszCCA
 ```
 
 This example adds an SSH public key to the VMSS.
+
 The first command uses the **New-AzVmssConfig** cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS.
 The second command adds an SSH key with the specified key data and stores the key at the specified path on the virtual machine.
 
@@ -39,9 +40,9 @@ The second command adds an SSH key with the specified key data and stores the ke
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -54,9 +55,9 @@ Accept wildcard characters: False
 Specifies a SSH RSA public key data.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -70,9 +71,9 @@ Specifies the full path of a file, on the virtual machine, where this cmdlet sto
 If the file already exists, this cmdlet appends the key to the file.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
@@ -86,9 +87,9 @@ Specifies the VMSS object.
 You can use the [New-AzVmssConfig](./New-AzVmssConfig.md) cmdlet to create the object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -101,7 +102,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -116,7 +117,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -128,17 +129,17 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
-
-### System.String
+### VirtualMachineScaleSet
+Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+###  
+This cmdlet does not generate any output.
 
 ## NOTES
 

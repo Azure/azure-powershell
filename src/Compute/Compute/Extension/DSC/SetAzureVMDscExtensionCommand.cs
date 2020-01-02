@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
@@ -19,7 +19,11 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDscExtension",SupportsShouldProcess = true,DefaultParameterSetName = AzureBlobDscExtensionParamSet)]
+    [Cmdlet(
+        VerbsCommon.Set,
+        ProfileNouns.VirtualMachineDscExtension,
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = AzureBlobDscExtensionParamSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -30,7 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
            Position = 2,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The name of the resource group that contains the virtual machine.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -39,7 +43,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the virtual machine where dsc extension handler would be installed.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -51,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
         /// <summary>
         /// The name of the configuration archive that was previously uploaded by 
-        /// Publish-AzVMDSCConfiguration. This parameter must specify only the name 
+        /// Publish-AzureRmVMDSCConfiguration. This parameter must specify only the name 
         /// of the file, without any path.
         /// A null value or empty string indicate that the VM extension should install DSC,
         /// but not start any configuration
@@ -62,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Position = 5,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureBlobDscExtensionParamSet,
-            HelpMessage = "The name of the configuration file that was previously uploaded by Publish-AzVMDSCConfiguration")]
+            HelpMessage = "The name of the configuration file that was previously uploaded by Publish-AzureRmVMDSCConfiguration")]
         [AllowEmptyString]
         [AllowNull]
         public string ArchiveBlobName { get; set; }
@@ -146,7 +149,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public string ConfigurationData { get; set; }
 
         /// <summary>
-        /// The specific version of the DSC extension that Set-AzVMDSCExtension will 
+        /// The specific version of the DSC extension that Set-AzureRmVMDSCExtension will 
         /// apply the settings to. 
         /// </summary>
         [Alias("HandlerVersion")]
@@ -154,13 +157,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The version of the DSC extension that Set-AzVMDSCExtension will apply the settings to. " +
+            HelpMessage = "The version of the DSC extension that Set-AzureRmVMDSCExtension will apply the settings to. " +
                           "Allowed format N.N")]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
 
         /// <summary>
-        /// By default Set-AzVMDscExtension will not overwrite any existing blobs. Use -Force to overwrite them.
+        /// By default Set-AzureRmVMDscExtension will not overwrite any existing blobs. Use -Force to overwrite them.
         /// </summary>
         [Parameter(
             HelpMessage = "Use this parameter to overwrite any existing blobs")]
@@ -220,9 +223,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateSet("Enable", "Disable")]
         [AllowNull]
         public string DataCollection { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
-        public SwitchParameter NoWait { get; set; }
 
         //Private Variables
         private const string VersionRegexExpr = @"^(([0-9])\.)\d+$";
@@ -371,45 +371,34 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             var count = 1;
             Rest.Azure.AzureOperationResponse<VirtualMachineExtension> op = null;
 
-            if (NoWait.IsPresent)
+            while (true)
             {
-                op = VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
+                try
+                {
+                    op = VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                         ResourceGroupName,
                         VMName,
                         Name ?? DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName,
                         parameters).GetAwaiter().GetResult();
-            }
-            else
-            {
-                while (true)
+
+                    break;
+                }
+                catch (Rest.Azure.CloudException ex)
                 {
-                    try
-                    {
-                        op = VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                            ResourceGroupName,
-                            VMName,
-                            Name ?? DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName,
-                            parameters).GetAwaiter().GetResult();
+                    var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(
+                        ex.Response.Content);
 
-                        break;
-                    }
-                    catch (Rest.Azure.CloudException ex)
+                    if ("Failed".Equals(errorReturned.Status)
+                        && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
                     {
-                        var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(
-                            ex.Response.Content);
-
-                        if ("Failed".Equals(errorReturned.Status)
-                            && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
+                        count++;
+                        if (count <= 2)
                         {
-                            count++;
-                            if (count <= 2)
-                            {
-                                continue;
-                            }
+                            continue;
                         }
-
-                        ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
                     }
+
+                    ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
                 }
             }
 
@@ -518,3 +507,4 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         }
     }
 }
+

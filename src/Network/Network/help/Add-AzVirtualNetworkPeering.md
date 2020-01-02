@@ -14,9 +14,9 @@ Creates a peering between two virtual networks.
 ## SYNTAX
 
 ```
-Add-AzVirtualNetworkPeering -Name <String> -VirtualNetwork <PSVirtualNetwork> -RemoteVirtualNetworkId <String>
- [-BlockVirtualNetworkAccess] [-AllowForwardedTraffic] [-AllowGatewayTransit] [-UseRemoteGateways] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Add-AzVirtualNetworkPeering -Name <String> -VirtualNetwork <PSVirtualNetwork>
+ -RemoteVirtualNetworkId <String> [-BlockVirtualNetworkAccess] [-AllowForwardedTraffic] [-AllowGatewayTransit]
+ [-UseRemoteGateways] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ $vnet1 = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet1' -Addres
 $vnet2 = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet2' -AddressPrefix '10.1.0.0/16' -Location $location
 
 # Peer VNet1 to VNet2.
-Add-AzVirtualNetworkPeering -Name 'myVnet1ToMyVnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
+Add-AzVirtualNetworkPeering -Name myVnet1ToMyVnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
 
 # Peer VNet2 to VNet1.
 Add-AzVirtualNetworkPeering -Name 'myVnet2ToMyVnet1' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
@@ -60,10 +60,10 @@ New-AzResourceGroup -Name $rgName  -Location westcentralus
 $vnet1 = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet1' -AddressPrefix '10.0.0.0/16' -Location westcentralus
 
 # Create virtual network 2.
-$vnet2 = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet2' -AddressPrefix '10.1.0.0/16' -Location canadacentral
+$vnet2 = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet2' -AddressPrefix '10.1.0.0/16' -Location candacentral
 
 # Peer VNet1 to VNet2.
-Add-AzVirtualNetworkPeering -Name 'myVnet1ToMyVnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
+Add-AzVirtualNetworkPeering -Name myVnet1ToMyVnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
 
 # Peer VNet2 to VNet1.
 Add-AzVirtualNetworkPeering -Name 'myVnet2ToMyVnet1' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
@@ -77,9 +77,9 @@ Here 'myVnet1' in US West Central is peered with 'myVnet2' in Canada Central.
 Indicates that this cmdlet allows the forwarded traffic from the virtual machines in the remote virtual network.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -92,9 +92,9 @@ Accept wildcard characters: False
 Flag to allow gatewayLinks be used in remote virtual network's link to this virtual network
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: AlloowGatewayTransit
 
 Required: False
 Position: Named
@@ -107,9 +107,9 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -122,9 +122,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet blocks the virtual machines in the linked virtual network space to access all the virtual machines in local virtual network space.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -137,9 +137,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -152,9 +152,9 @@ Accept wildcard characters: False
 Specifies the name of the virtual network peering.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -167,9 +167,9 @@ Accept wildcard characters: False
 Specifies the ID of the remote virtual network.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -182,9 +182,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet allows remote gateways on this virtual network.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -197,9 +197,9 @@ Accept wildcard characters: False
 Specifies the parent virtual network.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+Type: PSVirtualNetwork
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -213,9 +213,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+### String
+Parameter 'RemoteVirtualNetworkId' accepts value of type 'String' from the pipeline
 
-### System.String
+### PSVirtualNetwork
+Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
 
 ## OUTPUTS
 
@@ -232,3 +234,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVirtualNetworkPeering](./Remove-AzVirtualNetworkPeering.md)
 
 [Set-AzVirtualNetworkPeering](./Set-AzVirtualNetworkPeering.md)
+
+

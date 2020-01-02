@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: 9BE2E42C-594B-4B67-866C-BBA3B84AA5FD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmssadditionalunattendcontent
@@ -38,9 +38,9 @@ Specifies the name of the component to configure with the added content.
 The only allowable value is Microsoft-Windows-Shell-Setup.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.ComponentNames]
+Type: ComponentNames
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: MicrosoftWindowsShellSetup
 
 Required: False
@@ -54,9 +54,9 @@ Accept wildcard characters: False
 Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 4
@@ -69,9 +69,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -85,9 +85,9 @@ Specifies the name of the pass that the content applies to.
 The only allowable value is oobeSystem.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.PassNames]
+Type: PassNames
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: OobeSystem
 
 Required: False
@@ -100,13 +100,14 @@ Accept wildcard characters: False
 ### -SettingName
 Specifies the name of the setting to which the content applies.
 The acceptable values for this parameter are::
+
 - FirstLogonCommands
 - AutoLogon
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.SettingNames]
+Type: SettingNames
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: AutoLogon, FirstLogonCommands
 
 Required: False
@@ -121,9 +122,9 @@ Specify the virtual machine **Scale Set** object.
 You can use the [New-AzVmssConfig](./New-AzVmssConfig.md) cmdlet to create the object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -136,7 +137,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -151,7 +152,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -163,19 +164,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
-
-### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.PassNames, Microsoft.Azure.Management.Compute, Version=23.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-
-### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.ComponentNames, Microsoft.Azure.Management.Compute, Version=23.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-
-### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.SettingNames, Microsoft.Azure.Management.Compute, Version=23.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-
-### System.String
+### VirtualMachineScaleSet
+Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
 
 ## OUTPUTS
 

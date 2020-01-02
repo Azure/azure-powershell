@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMExtensionImage")]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImage)]
     [OutputType(typeof(PSVirtualMachineExtensionImage))]
     [OutputType(typeof(PSVirtualMachineExtensionImageDetails))]
     public class GetAzureVMExtensionImageCommand : VirtualMachineExtensionImageBaseCmdlet
@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Compute
         public string FilterExpression { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        [SupportsWildcards]
         public string Version { get; set; }
 
         public override void ExecuteCmdlet()
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (string.IsNullOrEmpty(this.Version) || WildcardPattern.ContainsWildcardCharacters(this.Version))
+                if (string.IsNullOrEmpty(this.Version))
                 {
                     var filter = new ODataQuery<VirtualMachineExtensionImage>(this.FilterExpression);
 
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute
                                      FilterExpression = this.FilterExpression
                                  };
 
-                    WriteObject(SubResourceWildcardFilter(Version, images), true);
+                    WriteObject(images, true);
                 }
                 else
                 {

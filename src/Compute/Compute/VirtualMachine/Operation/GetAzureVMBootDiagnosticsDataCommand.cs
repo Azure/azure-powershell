@@ -12,13 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using System.IO;
-using System.Management.Automation;
-using System.Text;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -26,10 +22,15 @@ using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System;
+using System.Globalization;
+using System.IO;
+using System.Management.Automation;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMBootDiagnosticsData", DefaultParameterSetName = WindowsParamSet)]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.BootDiagnosticsData, DefaultParameterSetName = WindowsParamSet)]
     [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
     public class GetAzureVMBootDiagnosticsDataCommand : VirtualMachineBaseCmdlet
     {
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = true,
            Position = 0,
            ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -49,7 +50,6 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -86,11 +86,6 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                LocalPath = ResolveUserPath(LocalPath);
-                if (!LocalPath.EndsWith(Path.DirectorySeparatorChar.ToString()))
-                {
-                    LocalPath = LocalPath + Path.DirectorySeparatorChar;
-                }
                 var result = this.VirtualMachineClient.GetWithInstanceView(this.ResourceGroupName, this.Name);
                 if (result == null || result.Body == null)
                 {

@@ -15,28 +15,22 @@ Lists all available internet service providers for a specified Azure region.
 ### SetByName (Default)
 ```
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName <String> -ResourceGroupName <String>
- [-Location <String[]>] [-Country <String>] [-State <String>] [-City <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Location <System.Collections.Generic.List`1[System.String]>] [-Country <String>] [-State <String>]
+ [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
-Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcher <PSNetworkWatcher> [-Location <String[]>]
- [-Country <String>] [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### SetByLocation
-```
-Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherLocation <String> [-Location <String[]>]
- [-Country <String>] [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcher <PSNetworkWatcher>
+ [-Location <System.Collections.Generic.List`1[System.String]>] [-Country <String>] [-State <String>]
+ [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-Get-AzNetworkWatcherReachabilityProvidersList -ResourceId <String> [-Location <String[]>] [-Country <String>]
- [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkWatcherReachabilityProvidersList -ResourceId <String>
+ [-Location <System.Collections.Generic.List`1[System.String]>] [-Country <String>] [-State <String>]
+ [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,9 +74,9 @@ Lists all available providers in Seattle, WA for Azure Data Center in West US.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -95,9 +89,9 @@ Accept wildcard characters: False
 The name of the city.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -110,9 +104,9 @@ Accept wildcard characters: False
 The name of the country.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -125,9 +119,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -140,9 +134,9 @@ Accept wildcard characters: False
 Optional Azure regions to scope the query to.
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -155,9 +149,9 @@ Accept wildcard characters: False
 The network watcher resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
+Type: PSNetworkWatcher
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -166,26 +160,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NetworkWatcherLocation
-Location of the network watcher.
-
-```yaml
-Type: System.String
-Parameter Sets: SetByLocation
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NetworkWatcherName
 The name of network watcher.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByName
 Aliases: ResourceName, Name
 
@@ -200,9 +179,9 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByName
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -215,9 +194,9 @@ Accept wildcard characters: False
 The Id of network watcher resource.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -230,9 +209,9 @@ Accept wildcard characters: False
 The name of the state.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -242,13 +221,13 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-
-### System.String
+System.String
+System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
@@ -265,7 +244,7 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [Remove-AzNetworkWatcher](./Remove-AzNetworkWatcher.md)
 
-[Get-AzNetworkWatcherNextHop](./Get-AzNetworkWatcherNextHop.md)
+[Test-AzNetworkWatcherIPFlow](./Test-AzNetworkWatcherIPFlow.md)
 
 [Get-AzNetworkWatcherSecurityGroupView](./Get-AzNetworkWatcherSecurityGroupView.md)
 
@@ -282,33 +261,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 [Remove-AzNetworkWatcherPacketCapture](./Remove-AzNetworkWatcherPacketCapture.md)
 
 [Stop-AzNetworkWatcherPacketCapture](./Stop-AzNetworkWatcherPacketCapture.md)
-
-[New-AzNetworkWatcherProtocolConfiguration](./New-AzNetworkWatcherProtocolConfiguration.md)
-
-[Test-AzNetworkWatcherIPFlow](./Test-AzNetworkWatcherIPFlow.md)
-
-[Test-AzNetworkWatcherConnectivity](./Test-AzNetworkWatcherConnectivity.md)
-
-[Stop-AzNetworkWatcherConnectionMonitor](./Stop-AzNetworkWatcherConnectionMonitor.md)
-
-[Start-AzNetworkWatcherConnectionMonitor](./Start-AzNetworkWatcherConnectionMonitor.md)
-
-[Set-AzNetworkWatcherConnectionMonitor](./Set-AzNetworkWatcherConnectionMonitor.md)
-
-[Set-AzNetworkWatcherConfigFlowLog](./Set-AzNetworkWatcherConfigFlowLog.md)
-
-[Remove-AzNetworkWatcherConnectionMonitor](./Remove-AzNetworkWatcherConnectionMonitor.md)
-
-[New-AzNetworkWatcherConnectionMonitor](./New-AzNetworkWatcherConnectionMonitor.md)
-
-[Get-AzNetworkWatcherTroubleshootingResult](./Get-AzNetworkWatcherTroubleshootingResult.md)
-
-[Get-AzNetworkWatcherReachabilityReport](./Get-AzNetworkWatcherReachabilityReport.md)
-
-[Get-AzNetworkWatcherReachabilityProvidersList](./Get-AzNetworkWatcherReachabilityProvidersList.md)
-
-[Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
-
-[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport)
-
-[Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor)

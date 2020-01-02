@@ -24,19 +24,21 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSqlServerExtension")]
+    [Cmdlet(
+        VerbsCommon.Set,
+        ProfileNouns.VirtualMachineSqlServerExtension)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         /// <summary>
-        /// The specific version of the SqlServer extension that Set-AzVMSqlServerExtension will
+        /// The specific version of the SqlServer extension that Set-AzureRmVMSqlServerExtension will
         /// apply the settings to.
         /// </summary>
         [Alias("HandlerVersion")]
         [Parameter(
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The version of the SqlServer extension that Set-AzVMSqlServerExtension will apply the settings to. " +
+            HelpMessage = "The version of the SqlServer extension that Set-AzureRmVMSqlServerExtension will apply the settings to. " +
                           "Allowed format N.N")]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
@@ -46,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 2,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -55,7 +57,6 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the virtual machine where Sql Server extension handler would be installed.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -63,7 +64,6 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             Position = 4,
             HelpMessage = "Name of the ARM resource that represents the extension. This is defaulted to 'Microsoft.SqlServer.Management.SqlIaaSAgent'.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

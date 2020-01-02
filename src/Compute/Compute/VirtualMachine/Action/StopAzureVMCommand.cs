@@ -12,29 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
+using MCM = Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = ResourceGroupNameParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSComputeLongRunningOperation), typeof(PSAzureOperationResponse))]
+    [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet, 
+        SupportsShouldProcess = true)]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class StopAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
            Position = 1,
-           ParameterSetName = ResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -50,14 +49,6 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter StayProvisioned { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
-        public SwitchParameter NoWait { get; set; }
-        
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "To request non-graceful VM shutdown when keeping the VM provisioned.")]
-        public SwitchParameter SkipShutdown { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -67,53 +58,25 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.ShouldProcess(Name, VerbsLifecycle.Stop) 
                     && (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption)))
                 {
-                    if (ParameterSetName.Equals(IdParameterSet) && string.IsNullOrEmpty(Name))
+                    Action<Func<string, string, Dictionary<string, List<string>>, CancellationToken, Task<Rest.Azure.AzureOperationResponse<MCM.OperationStatusResponse>>>> call = f =>
                     {
-                        ResourceIdentifier parsedId = new ResourceIdentifier(Id);
-                        this.ResourceGroupName = parsedId.ResourceGroupName;
-                        this.Name = parsedId.ResourceName;
-                    }
+                        var op = f(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                        WriteObject(result);
+                    };
 
-                    Rest.Azure.AzureOperationResponse op;
-                    if (this.StayProvisioned) 
+                    if (this.StayProvisioned)
                     {
-                        bool? skipShutdown = this.SkipShutdown.IsPresent ? (bool?)true : null;
-                        if (NoWait.IsPresent)
-                        {
-                            op = this.VirtualMachineClient.BeginPowerOffWithHttpMessagesAsync(this.ResourceGroupName, this.Name, skipShutdown, null, CancellationToken.None).GetAwaiter().GetResult();
-                        }
-                        else 
-                        {
-                            op = this.VirtualMachineClient.PowerOffWithHttpMessagesAsync(this.ResourceGroupName, this.Name, skipShutdown, null, CancellationToken.None).GetAwaiter().GetResult();
-                        }
+                        call(this.VirtualMachineClient.PowerOffWithHttpMessagesAsync);
                     }
                     else
                     {
-                        if (NoWait.IsPresent)
-                        {
-                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
-                        }
-                        else
-                        {
-                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
-                        }
-
-                    }
-                    if (NoWait.IsPresent) {
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                        WriteObject(result);
-                    }
-                    else 
-                    {
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
-                        result.StartTime = this.StartTime;
-                        result.EndTime = DateTime.Now;
-                        WriteObject(result);
+                        call(this.VirtualMachineClient.DeallocateWithHttpMessagesAsync);
                     }
                 }
                 else
                 {
-                    WriteDebugWithTimestamp("[Stop-AzVMJob]: ShouldMethod returned false");
+                    WriteDebugWithTimestamp("[Stop-AureRmVMJob]: ShouldMethod returned false");
                 }
             });
         }

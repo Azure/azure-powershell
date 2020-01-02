@@ -17,9 +17,7 @@ Creates an HTTP listener for an application gateway.
 ```
 New-AzApplicationGatewayHttpListener -Name <String> [-FrontendIPConfigurationId <String>]
  [-FrontendPortId <String>] [-SslCertificateId <String>] [-HostName <String>]
- [-RequireServerNameIndication <String>] -Protocol <String>
- [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
- [-FirewallPolicyId <String>]
+ [-RequireServerNameIndication <String>] -Protocol <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -28,10 +26,8 @@ New-AzApplicationGatewayHttpListener -Name <String> [-FrontendIPConfigurationId 
 New-AzApplicationGatewayHttpListener -Name <String>
  [-FrontendIPConfiguration <PSApplicationGatewayFrontendIPConfiguration>]
  [-FrontendPort <PSApplicationGatewayFrontendPort>] [-SslCertificate <PSApplicationGatewaySslCertificate>]
- [-FirewallPolicy <PSApplicationGatewayWebApplicationFirewallPolicy>]
  [-HostName <String>] [-RequireServerNameIndication <String>] -Protocol <String>
- [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,37 +50,15 @@ PS C:\>$Listener = New-AzApplicationGatewayHttpListener -Name "Listener01" -Prot
 This command creates an HTTP listener that uses SSL offload and provides the SSL certificate in the $SSLCert01 variable.
 The command stores the result in the variable named $Listener.
 
-### Example 3: Create an HTTP listener with firewall-policy
-```
-PS C:\>$Listener = New-AzApplicationGatewayHttpListener -Name "Listener01" -Protocol "Http" -FrontendIpConfiguration $FIp01 -FrontendPort $FP01 -FirewallPolicy $firewallPolicy
-```
-
-This command creates an HTTP listener named Listener01, FirewallPolicy as $firewallPolicy and stores the result in the variable named $Listener.
-
 ## PARAMETERS
-
-### -CustomErrorConfiguration
-Customer error of an application gateway
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -97,9 +71,9 @@ Accept wildcard characters: False
 Specifies front-end IP configuration object for the HTTP listener.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendIPConfiguration
+Type: PSApplicationGatewayFrontendIPConfiguration
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -112,9 +86,9 @@ Accept wildcard characters: False
 Specifies the ID of the front-end IP configuration for the HTTP listener.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -127,9 +101,9 @@ Accept wildcard characters: False
 Specifies the front-end port for the HTTP listener.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendPort
+Type: PSApplicationGatewayFrontendPort
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -142,9 +116,9 @@ Accept wildcard characters: False
 Specifies the ID of the front-end port object for the HTTP listener.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -157,9 +131,9 @@ Accept wildcard characters: False
 Specifies the host name of the application gateway HTTP listener.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -172,9 +146,9 @@ Accept wildcard characters: False
 Specifies the name of the HTTP listener that this cmdlet creates.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -187,9 +161,9 @@ Accept wildcard characters: False
 Specifies the protocol that the HTTP listener uses.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Http, Https
 
 Required: True
@@ -201,25 +175,25 @@ Accept wildcard characters: False
 
 ### -RequireServerNameIndication
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: true, false
 
 Required: False
 Position: Named
-Default value: true
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SslCertificate
-Specifies the SSL certificate object for the HTTP listener.
+Specifies the SSL certificate object for  the HTTP listener.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslCertificate
+Type: PSApplicationGatewaySslCertificate
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -232,46 +206,9 @@ Accept wildcard characters: False
 Specifies the ID of the SSL certificate for the HTTP listener.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FirewallPolicy
-Specifies the object reference to a top-level firewall policy. 
-The object reference can be created by using New-AzApplicationGatewayWebApplicationFirewallPolicy cmdlet.
-$firewallPolicy = New-AzApplicationGatewayFirewallPolicy -Name "wafPolicy1" -ResourceGroup "rgName"
-A firewall policy created using the above commandlet can be referred at a path-rule level. 
-he above command would create a default policy settings and managed rules.
-Instead of the default values, users can specify PolicySettings, ManagedRules by using New-AzApplicationGatewayFirewallPolicySettings and New-AzApplicationGatewayFirewallPolicyManagedRules respectively.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallPolicy
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FirewallPolicyId
-Specifies the ID of an existing top-level web application firewall resource.
-Firewall policy IDs can be returned by using the Get-AzApplicationGatewayWebApplicationFirewallPolicy cmdlet. 
-After we have the ID you can use *FirewallPolicyId* parameter instead of *FirewallPolicy* parameter.
-For instance:
--FirewallPolicyId  “/subscriptions/<subscription-id>/resourceGroups/<resource-group-id>/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/<firewallPolicyName>”
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallPolicy
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -285,11 +222,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener
+### Microsoft.Azure.Commands.Network.Models.PSHttpListener
 
 ## NOTES
 

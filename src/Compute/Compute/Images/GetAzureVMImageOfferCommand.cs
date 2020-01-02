@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMImageOffer")]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageOffer)]
     [OutputType(typeof(PSVirtualMachineImageOffer))]
     public class GetAzureVMImageOfferCommand : VirtualMachineImageBaseCmdlet
     {

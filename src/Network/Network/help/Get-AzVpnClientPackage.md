@@ -40,9 +40,9 @@ To get information about the x86 client packages, set the value of the *Processo
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -56,9 +56,9 @@ Specifies the type of CPU architecture that the client package is designed for.
 Valid values are Amd64 and X86.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Amd64, X86
 
 Required: True
@@ -70,12 +70,13 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the virtual network gateway is assigned to.
+
 Resource groups categorize items to help simplify inventory management and general Azure administration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -88,9 +89,9 @@ Accept wildcard characters: False
 Specifies the name of the virtual network gateway where the client package information is stored.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -100,15 +101,20 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### String
+Parameter 'ResourceGroupName' accepts value of type 'String' from the pipeline
+
+### String
+Parameter 'VirtualNetworkGatewayName' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 
-### System.String
+###  
+**Get-AzVpnClientPackage** returns instances of the System.String object.
 
 ## NOTES
 

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: 43D01A97-75B9-46CE-B007-26FE6A97C31C
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/update-azcontainerservice
@@ -31,10 +31,13 @@ PS C:\> Get-AzContainerService -ResourceGroupName "ResourceGroup17" -Name "CSRes
 
 This command gets the container service named CSResourceGroup17 by using the Get-AzContainerService cmdlet.
 The command passes that object to the Remove-AzContainerServiceAgentPoolProfile cmdlet by using the pipeline operator.
+
 **Remove-AzContainerServiceAgentPoolProfile** removes the profile named AgentPool01.
 The command passes the result to the Add-AzContainerServiceAgentPoolProfile cmdlet.
+
 **Add-AzContainerServiceAgentPoolProfile** adds a profile that has the name AgentPool01, and has the specified properties.
 The command passes the result to the current cmdlet.
+
 The current cmdlet updates the container service to reflect the changes that were made in this command.
 
 ## PARAMETERS
@@ -43,9 +46,9 @@ The current cmdlet updates the container service to reflect the changes that wer
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -58,12 +61,12 @@ Accept wildcard characters: False
 Specifies a local **ContainerService** object that contains changes.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService
+Type: PSContainerService
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -73,9 +76,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -88,12 +91,12 @@ Accept wildcard characters: False
 Specifies the name of the container service that this cmdlet updates.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -103,12 +106,12 @@ Accept wildcard characters: False
 Specifies the resource group of the container service that this cmdlet updates.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -118,7 +121,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -131,10 +134,11 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
+
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -146,13 +150,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService
+### ContainerService
+Parameter 'ContainerService' accepts value of type 'ContainerService' from the pipeline
 
 ## OUTPUTS
 

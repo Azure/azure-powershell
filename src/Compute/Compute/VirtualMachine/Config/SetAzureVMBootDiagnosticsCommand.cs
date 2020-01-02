@@ -12,20 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using System;
+using System.Globalization;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMBootDiagnostic"),OutputType(typeof(PSVirtualMachine))]
+    [Cmdlet(
+        VerbsCommon.Set,
+        ProfileNouns.BootDiagnostics),
+    OutputType(
+        typeof(PSVirtualMachine))]
     public class SetAzureVMBootDiagnosticsCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private const string EnableParameterSet = "EnableBootDiagnostics";
@@ -61,7 +66,7 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = EnableParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMBootDiagnosticsResourceGroupName)]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

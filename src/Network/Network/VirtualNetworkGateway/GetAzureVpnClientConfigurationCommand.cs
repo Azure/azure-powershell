@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnClientConfiguration", SupportsShouldProcess = true), OutputType(typeof(MNM.PSVpnProfile))]
+    [Cmdlet(VerbsCommon.Get, "AzVpnClientConfiguration", SupportsShouldProcess = true), OutputType(typeof(MNM.PSVpnProfile))]
     public class GetAzureVpnClientConfigurationCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworkGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 

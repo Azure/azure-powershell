@@ -18,13 +18,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayIpConfig", SupportsShouldProcess = true), OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet(VerbsCommon.Remove, "AzVirtualNetworkGatewayIpConfig", SupportsShouldProcess = true), OutputType(typeof(PSVirtualNetworkGateway))]
     public class RemoveAzureVirtualNetworkGatewayIpConfigCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzVirtualNetworkGateway")]
+            HelpMessage = "The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzureRmVirtualNetworkGateway")]
         [ValidateNotNull]
         public PSVirtualNetworkGateway VirtualNetworkGateway { get; set; }
 

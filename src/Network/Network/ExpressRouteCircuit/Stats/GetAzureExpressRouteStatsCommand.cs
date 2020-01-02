@@ -17,13 +17,10 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network		
 {
-    [GenericBreakingChange("Get-AzExpressRouteCircuitStats alias will be removed in an upcoming breaking change release", "2.0.0")]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitStat"), OutputType(typeof(PSExpressRouteCircuitStats))]
-    [Alias("Get-AzExpressRouteCircuitStats")]
+    [Cmdlet(VerbsCommon.Get, "AzExpressRouteCircuitStat"), OutputType(typeof(PSExpressRouteCircuitStats))]
     public class GetAzureExpressRouteCircuitStatsCommand : NetworkBaseCmdlet		
     {	
         [Parameter(		
@@ -38,8 +35,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(		
             Mandatory = true,		
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Name of ExpressRoute Circuit")]
-        [ResourceNameCompleter("Microsoft.Network/expressRouteCircuits", "ResourceGroupName")]
+            HelpMessage = "The Name of ExpressRoute Circuit")]		
         [ValidateNotNullOrEmpty]		
         public string ExpressRouteCircuitName { get; set; }		
 		
@@ -47,9 +43,9 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,		
             HelpMessage = "The PeeringType")]		
         [ValidateSet(		
-           MNM.ExpressRoutePeeringType.AzurePrivatePeering,		
-           MNM.ExpressRoutePeeringType.AzurePublicPeering,		
-           MNM.ExpressRoutePeeringType.MicrosoftPeering,		
+           MNM.ExpressRouteCircuitPeeringType.AzurePrivatePeering,		
+           MNM.ExpressRouteCircuitPeeringType.AzurePublicPeering,		
+           MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering,		
            IgnoreCase = true)]		
         public string PeeringType { get; set; }		
 		

@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
                 HelpMessage = "IP addresses of application gateway backend servers")]
         [ValidateNotNullOrEmpty]
-        public string[] BackendIPAddresses { get; set; }
+        public List<string> BackendIPAddresses { get; set; }
 
         [Parameter(
                HelpMessage = "FQDNs of application gateway backend servers")]
         [ValidateNotNullOrEmpty]
-        public string[] BackendFqdns { get; set; }
+        public List<string> BackendFqdns { get; set; }
 
         public PSApplicationGatewayBackendAddressPool NewObject()
         {
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException("At most one of BackendIPAddresses and BackendFqdns can be specified.");
             }
-            else if (BackendIPAddresses != null && BackendIPAddresses.Length > 0)
+            else if (BackendIPAddresses != null && BackendIPAddresses.Count > 0)
             {
                 backendAddressPool.BackendAddresses = new System.Collections.Generic.List<PSApplicationGatewayBackendAddress>();
                 foreach (string ip in this.BackendIPAddresses)
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
                     backendAddressPool.BackendAddresses.Add(backendAddress);
                 }
             }
-            else if (BackendFqdns != null && BackendFqdns.Length > 0)
+            else if (BackendFqdns != null && BackendFqdns.Count > 0)
             {
                 backendAddressPool.BackendAddresses = new System.Collections.Generic.List<PSApplicationGatewayBackendAddress>();
                 foreach (string fqdn in this.BackendFqdns)

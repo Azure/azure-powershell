@@ -38,14 +38,14 @@ $ErrorActionPreference = “Stop”;
 ########################################################################################################################
 
     #Write-Host 'Please log into Azure now' -foregroundcolor Green;
-    #Connect-AzAccount -ErrorAction "Stop" 1> $null;
+    #Connect-AzureRmAccount -ErrorAction "Stop" 1> $null;
 
     if($subscriptionId)
     {
-        Select-AzSubscription -SubscriptionId $subscriptionId;
+        Select-AzureRmSubscription -SubscriptionId $subscriptionId;
     }
 
-    $vmssDiskEncryptionFeature = Get-AzProviderFeature  -FeatureName "UnifiedDiskEncryption" -ProviderNamespace "Microsoft.Compute";
+    $vmssDiskEncryptionFeature = Get-AzureRmProviderFeature  -FeatureName "UnifiedDiskEncryption" -ProviderNamespace "Microsoft.Compute";
     if($vmssDiskEncryptionFeature -and $vmssDiskEncryptionFeature.RegistrationState -eq 'Registered')
     {
         Write-Host "AzureDiskEncryption-VMSS feature is enabled for subscription :  $subscriptionId";
@@ -54,8 +54,8 @@ $ErrorActionPreference = “Stop”;
     {
         Write-Host "Enabling UnifiedDiskEncryption AzureDiskEncryption-VMSS feature for subscription :  ($subscriptionId)";
         #Opt-in to AzureDiskEncryption VMSS preview
-        Register-AzProviderFeature -FeatureName "UnifiedDiskEncryption" -ProviderNamespace "Microsoft.Compute";
-        $vmssDiskEncryptionFeature = Get-AzProviderFeature  -FeatureName "UnifiedDiskEncryption" -ProviderNamespace "Microsoft.Compute";
+        Register-AzureRmProviderFeature -FeatureName "UnifiedDiskEncryption" -ProviderNamespace "Microsoft.Compute";
+        $vmssDiskEncryptionFeature = Get-AzureRmProviderFeature  -FeatureName "UnifiedDiskEncryption" -ProviderNamespace "Microsoft.Compute";
         for($i = 1; i<6; i++)
         {
             if($vmssDiskEncryptionFeature -and $vmssDiskEncryptionFeature.RegistrationState -eq 'Registered')
@@ -82,7 +82,7 @@ $ErrorActionPreference = “Stop”;
     #Check if given ResourceGroup exists
     Try
     {
-        $resGroup = Get-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue;
+        $resGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue;
     }
     Catch [System.ArgumentException]
     {
@@ -94,14 +94,14 @@ $ErrorActionPreference = “Stop”;
     if (-not $resGroup)
     {
         Write-Host "Creating new resource group:  ($resourceGroupName)";
-        $resGroup = New-AzResourceGroup -Name $resourceGroupName -Location $location;
+        $resGroup = New-AzureRmResourceGroup -Name $resourceGroupName -Location $location;
         Write-Host "Created a new resource group named $resourceGroupName to place keyVault";
     }
     
     #Check if given KeyVault exists
     Try
     {
-        $keyVault = Get-AzKeyVault -VaultName $keyVaultName -ErrorAction SilentlyContinue;
+        $keyVault = Get-AzureRmKeyVault -VaultName $keyVaultName -ErrorAction SilentlyContinue;
     }
     Catch [System.ArgumentException]
     {
@@ -113,12 +113,12 @@ $ErrorActionPreference = “Stop”;
     if (-not $keyVault)
     {
         Write-Host "Creating new key vault:  ($keyVaultName)";
-        $keyVault = New-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -Sku Standard -Location $location;
+        $keyVault = New-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -Sku Standard -Location $location;
         Write-Host "Created a new KeyVault named $keyVaultName to store encryption keys";
     }
 
     #Set EnabledForDiskEncryption accesspolicy on KeyVault for AzureDiskEncrypiton to perform set secret, get secret, wrap key and unwrap key operations
-    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption;
+    Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption;
     
     $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
 	$keyVaultResourceId = $keyVault.ResourceId;
@@ -131,7 +131,7 @@ $ErrorActionPreference = “Stop”;
         #Check if given KeyEncryptionKey exists
         Try
         {
-            $kek = Get-AzKeyVaultKey -VaultName $keyVaultName -Name $keyEncryptionKeyName -ErrorAction SilentlyContinue;
+            $kek = Get-AzureKeyVaultKey -VaultName $keyVaultName -Name $keyEncryptionKeyName -ErrorAction SilentlyContinue;
         }
         Catch [Microsoft.Azure.KeyVault.KeyVaultClientException]
         {
@@ -142,7 +142,7 @@ $ErrorActionPreference = “Stop”;
         if(-not $kek)
         {
             Write-Host "Creating new key encryption key named:$keyEncryptionKeyName in Key Vault: $keyVaultName";
-            $kek = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyEncryptionKeyName -Destination Software -ErrorAction SilentlyContinue;
+            $kek = Add-AzureKeyVaultKey -VaultName $keyVaultName -Name $keyEncryptionKeyName -Destination Software -ErrorAction SilentlyContinue;
             Write-Host "Created  key encryption key named:$keyEncryptionKeyName in Key Vault: $keyVaultName";
         }
 
@@ -164,7 +164,7 @@ $ErrorActionPreference = “Stop”;
         if($keyEncryptionKeyName)
         { 
             #ExtensionName parameter is required until PROD extension is rolled out       
-            Set-AzVmssDiskEncryptionExtension -ResourceGroupName $resourceGroupName `
+            Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $resourceGroupName `
                                                    -VMScaleSetName $VmssName `
                                                    -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl `
                                                    -DiskEncryptionKeyVaultId $keyVaultResourceId `
@@ -174,7 +174,7 @@ $ErrorActionPreference = “Stop”;
         }
         else
         {
-            Set-AzVmssDiskEncryptionExtension -ResourceGroupName $resourceGroupName `
+            Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $resourceGroupName `
                                                    -VMScaleSetName $VmssName `
                                                    -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl `
                                                    -DiskEncryptionKeyVaultId $keyVaultResourceId `
@@ -182,13 +182,13 @@ $ErrorActionPreference = “Stop”;
         }
 
         #If the upgrade policy is manual, Update VMSS instances to enable encryption on them
-        $vmss = Get-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName;
+        $vmss = Get-AzureRmVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName;
         if($vmss.UpgradePolicy.Mode -eq 'Manual')
         {
             #Deploy AzureDiskEncryption extension updates to all instances
-            Update-AzVmssInstance -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName -InstanceId "*";
+            Update-AzureRmVmssInstance -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName -InstanceId "*";
         }
 
         #show encryption status of VMSS instances
-        Get-AzVmssVmDiskEncryption -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName | fc;
+        Get-AzureRmVmssVmDiskEncryption -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName | fc;
     }

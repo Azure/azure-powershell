@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -13,9 +13,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
     /// <summary>
     /// Uploads a Desired State Configuration script to Azure blob storage, which 
     /// later can be applied to Azure Virtual Machines using the 
-    /// Set-AzVMDscExtension cmdlet.
+    /// Set-AzureRmVMDscExtension cmdlet.
     /// </summary>
-    [Cmdlet("Publish", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDscConfiguration",SupportsShouldProcess = true,DefaultParameterSetName = UploadArchiveParameterSetName),OutputType(typeof(String))]
+    [Cmdlet(
+        VerbsData.Publish,
+        ProfileNouns.VirtualMachineDscConfiguration,
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = UploadArchiveParameterSetName),
+    OutputType(
+         typeof(String))]
     public class PublishAzureVMDscConfigurationCommand : DscExtensionPublishCmdletCommonBase
     {
         private const string CreateArchiveParameterSetName = "CreateArchive";
@@ -27,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             ParameterSetName = UploadArchiveParameterSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group that contains the storage account.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -70,7 +76,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
         /// <summary>
         /// Path to a local ZIP file to write the configuration archive to.
-        /// When using this parameter, Publish-AzVMDscConfiguration creates a
+        /// When using this parameter, Publish-AzureRmVMDscConfiguration creates a
         /// local ZIP archive instead of uploading it to blob storage..
         /// </summary>
         [Alias("ConfigurationArchivePath")]
@@ -93,10 +99,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public string StorageEndpointSuffix { get; set; }
 
         /// <summary>
-        /// By default Publish-AzVMDscConfiguration will not overwrite any existing blobs. 
+        /// By default Publish-AzureRmVMDscConfiguration will not overwrite any existing blobs. 
         /// Use -Force to overwrite them.
         /// </summary>
-        [Parameter(HelpMessage = "By default Publish-AzVMDscConfiguration will not overwrite any existing blobs")]
+        [Parameter(HelpMessage = "By default Publish-AzureRmVMDscConfiguration will not overwrite any existing blobs")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -114,7 +120,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Path to a .psd1 file that specifies the data for the Configuration. This is added to the configuration " +
                           "archive and then passed to the configuration function. It gets overwritten by the configuration data path " +
-                          "provided through the Set-AzVMDscExtension cmdlet")]
+                          "provided through the Set-AzureRmVMDscExtension cmdlet")]
         [ValidateNotNullOrEmpty]
         public string ConfigurationDataPath { get; set; }
 
@@ -200,3 +206,4 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         }
     }
 }
+

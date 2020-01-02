@@ -17,7 +17,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayProbeHealthResponseMatch"), OutputType(typeof(PSApplicationGatewayProbeHealthResponseMatch))]
+    [Cmdlet(VerbsCommon.New, "AzApplicationGatewayProbeHealthResponseMatch"), 
+        OutputType(typeof(PSApplicationGatewayProbeHealthResponseMatch))]
     public class NewAzureApplicationGatewayProbeHealthResponseMatchCommand : AzureApplicationGatewayProbeHealthResponseMatchBase
     {
         public override void ExecuteCmdlet()

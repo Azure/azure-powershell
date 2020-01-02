@@ -36,14 +36,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             string name,
             NestedResourceConfig<Subnet, VirtualNetwork> subnet,
             ResourceConfig<PublicIPAddress> publicIPAddress,
-            ResourceConfig<NetworkSecurityGroup> networkSecurityGroup = null,
-            bool enableAcceleratedNetworking = false)
+            ResourceConfig<NetworkSecurityGroup> networkSecurityGroup = null)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
                 createModel: engine => new NetworkInterface
                 {
-                    EnableAcceleratedNetworking = enableAcceleratedNetworking,
                     IpConfigurations = new []
                     {
                         new NetworkInterfaceIPConfiguration

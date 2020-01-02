@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: 13ED884A-6224-4BD4-9F12-F896932F7842
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmdiagnosticsextension
@@ -17,7 +17,7 @@ Configures the Azure diagnostics extension on a virtual machine.
 Set-AzVMDiagnosticsExtension [-ResourceGroupName] <String> [-VMName] <String>
  [-DiagnosticsConfigurationPath] <String> [[-StorageAccountName] <String>] [[-StorageAccountKey] <String>]
  [[-StorageAccountEndpoint] <String>] [[-StorageContext] <IStorageContext>] [[-Location] <String>]
- [[-Name] <String>] [[-TypeHandlerVersion] <String>] [[-AutoUpgradeMinorVersion] <Boolean>] [-NoWait]
+ [[-Name] <String>] [[-TypeHandlerVersion] <String>] [[-AutoUpgradeMinorVersion] <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -58,9 +58,9 @@ If the diagnostics storage account is in a different subscription than the virtu
 Indicates whether this cmdlet allows the Azure guest agent to automatically update the extension to a newer minor version.
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 10
@@ -73,9 +73,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -88,9 +88,9 @@ Accept wildcard characters: False
 Specifies the path of the configuration file.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 2
@@ -103,9 +103,9 @@ Accept wildcard characters: False
 Specifies the location of the virtual machine.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 7
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Specifies the name of an extension.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
@@ -129,28 +129,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -163,9 +148,9 @@ Accept wildcard characters: False
 Specifies the storage account endpoint.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 5
@@ -178,9 +163,9 @@ Accept wildcard characters: False
 Specifies the storage account key.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 4
@@ -193,9 +178,9 @@ Accept wildcard characters: False
 Specifies the storage account name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 3
@@ -208,9 +193,9 @@ Accept wildcard characters: False
 Specifies the Azure storage context.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 6
@@ -224,7 +209,7 @@ Specifies the version of the extension to use for this virtual machine.
 To obtain the version, run the Get-AzVMExtensionImage cmdlet with a value of Microsoft.Compute for the *PublisherName* parameter and VMAccessAgent for the *Type* parameter.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: HandlerVersion, Version
 
@@ -239,7 +224,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual machine on which this cmdlet operates.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -251,15 +236,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-
-### System.Boolean
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

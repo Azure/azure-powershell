@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
+    [Cmdlet(VerbsCommon.Get, "AzNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class GetAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -36,9 +36,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
            ParameterSetName = "Expand")]
-        [ResourceNameCompleter("Microsoft.Network/networkSecurityGroups", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -53,7 +51,6 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "Expand")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -67,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            if (ShouldGetByName(ResourceGroupName, Name))
+            if (!string.IsNullOrEmpty(this.Name))
             {
                 var nsg = this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name, this.ExpandResource);
 
@@ -76,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<NetworkSecurityGroup> nsgPage;
-                if (ShouldListByResourceGroup(ResourceGroupName, Name))
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
                     nsgPage = this.NetworkSecurityGroupClient.List(this.ResourceGroupName);
                 }
@@ -97,7 +94,7 @@ namespace Microsoft.Azure.Commands.Network
                     psNsgs.Add(psNsg);
                 }
 
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psNsgs), true);
+                WriteObject(psNsgs, true);
             }
         }
     }

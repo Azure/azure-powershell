@@ -54,8 +54,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public OSDiskImage OSDiskImage { get; set; }
 
-        public string HyperVGeneration { get; set; }
-
         [JsonIgnore]
         public string OSDiskImageText
         {
@@ -77,7 +75,5 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get { return JsonConvert.SerializeObject(DataDiskImages, Formatting.Indented); }
         }
-
-        public AutomaticOSUpgradeProperties AutomaticOSUpgradeProperties { get; set; }
     }
 }

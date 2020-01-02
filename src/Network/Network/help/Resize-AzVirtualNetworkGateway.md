@@ -21,8 +21,9 @@ Resize-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> 
 ## DESCRIPTION
 The **Resize-AzVirtualNetworkGateway** cmdlet enables you to change the stock-keeping unit (SKU) for a virtual network gateway.
 SKUs determine the capabilities of a gateway, including such things as throughput and the maximum number of IP tunnels that are allowed.
-Azure supports Basic, Standard, High-Performance, VpnGw1, VpnGw2, VpnGw3, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ SKUs (sometimes referred to as Small, Medium, and Large SKUs).
+Azure supports Basic, Standard, High-Performance, VpnGw1, VpnGw2 and VpnGw3 SKUs (sometimes referred to as Small, Medium, and Large SKUs).
 For detailed information about the capabilities of each SKU type, see https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-about-vpngateways/.
+
 Keep in mind that SKUs differ in pricing as well as capabilities.
 For more information, see https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/.
 
@@ -35,7 +36,9 @@ PS C:\> Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -GatewayS
 ```
 
 This example changes the size of a virtual network gateway named ContosoVirtualGateway.
+
 The first command creates an object reference to ContosoVirtualGateway; this object reference is stored in a variable named $Gateway.
+
 The second command then uses the **Resize-AzVirtualNetworkGateway** cmdlet to set the *GatewaySku* property to Basic.
 
 ## PARAMETERS
@@ -44,9 +47,9 @@ The second command then uses the **Resize-AzVirtualNetworkGateway** cmdlet to se
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -58,24 +61,19 @@ Accept wildcard characters: False
 ### -GatewaySku
 Specifies the new type of gateway SKU.
 The acceptable values for this parameter are:
+
 - Basic
 - Standard
 - High Performance
 - VpnGw1
 - VpnGw2
 - VpnGw3
-- VpnGw1AZ 
-- VpnGw2AZ 
-- VpnGw3AZ 
-- ErGw1AZ 
-- ErGw2AZ 
-- ErGw3AZ 
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
-Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ
+Aliases: 
+Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3
 
 Required: True
 Position: Named
@@ -89,9 +87,9 @@ Specifies an object reference to the virtual network gateway to be resized.
 You can create this object reference by using the Get-AzVirtualNetworkGateway and specifying the name of the gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Type: PSVirtualNetworkGateway
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -105,29 +103,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
-
-### System.String
+###  
+This cmdlet accepts pipelined instances of the **Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway** object.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+###  
+This cmdlet modifies existing instances of the **Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway** object.
 
 ## NOTES
-You cannot resize from Basic/Standard/HighPerformance SKUs to the new VpnGw1/VpnGw2/VpnGw3 SKUs. Further resize is not allowed from/to VpnGw1AZ/VpnGw2AZ/VpnGw3AZ or ErGw1AZ/ErGw2AZ/ErGw3AZ. Resize is allowed only within the SKU 'series' e.g VpnGw1AZ can be resized to/from VpnGw2AZ/VpnGw3AZ and ErGw1AZ can be resized to/from ErGw2AZ/ErGw3AZ. See https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways for instructions.
+You cannot resize from Basic/Standard/HighPerformance SKUs to the new VpnGw1/VpnGw2/VpnGw3 SKUs. See https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways for instructions.
 
 ## RELATED LINKS
 
-[Get-AzVirtualNetworkGateway](./Get-AzVirtualNetworkGateway.md)
-
-[New-AzVirtualNetworkGateway](./New-AzVirtualNetworkGateway.md)
-
-[Remove-AzVirtualNetworkGateway](./Remove-AzVirtualNetworkGateway.md)
-
-[Reset-AzVirtualNetworkGateway](./Reset-AzVirtualNetworkGateway.md)
-
-[Set-AzVirtualNetworkGateway](./Set-AzVirtualNetworkGateway.md)
-
 [Get-AzVpnClientPackage](./Get-AzVpnClientPackage.md)
 
+[Get-AzVirtualNetworkGateway](./Get-AzVirtualNetworkGateway.md)
+
 [Set-AzVirtualNetworkGatewayVpnClientConfig](./Set-AzVirtualNetworkGatewayVpnClientConfig.md)
+
+

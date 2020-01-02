@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewaySslPolicy"), OutputType(typeof(PSApplicationGatewaySslPolicy))]
+    [Cmdlet(VerbsCommon.Get, "AzApplicationGatewaySslPolicy"), OutputType(typeof(PSApplicationGatewaySslPolicy))]
     public class GetAzureApplicationGatewaySslPolicyCommand : NetworkBaseCmdlet
     {
         [Parameter(

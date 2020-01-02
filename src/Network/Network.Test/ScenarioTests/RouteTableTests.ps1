@@ -50,16 +50,7 @@ function Test-EmptyRouteTable
         Assert-AreEqual $list[0].ResourceGroupName $getRT.ResourceGroupName
         Assert-AreEqual $list[0].Name $getRT.Name
         Assert-AreEqual $list[0].Etag $getRT.Etag
-        Assert-AreEqual @($list[0].Routes).Count @($getRT.Routes).Count     
-		
-        $list = Get-AzRouteTable -ResourceGroupName "*"
-        Assert-True { $list.Count -ge 0 }
-
-        $list = Get-AzRouteTable -Name "*"
-        Assert-True { $list.Count -ge 0 }
-
-        $list = Get-AzRouteTable -ResourceGroupName "*" -Name "*"
-        Assert-True { $list.Count -ge 0 }
+        Assert-AreEqual @($list[0].Routes).Count @($getRT.Routes).Count              
 
         # Delete NetworkSecurityGroup
         $job = Remove-AzRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force -AsJob
@@ -203,7 +194,7 @@ function Test-RouteTableSubnetRef
 		# create vnet and subnet associated to a Routetable
 		# Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -RouteTable $getRT
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet
+        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet
 		
 		# Verify RouteTable reference in subnet
 		Assert-AreEqual $vnet.Subnets[0].RouteTable.Id $getRT.Id
@@ -377,60 +368,6 @@ function Test-RouteHopTypeTest
 		Assert-AreEqual $getRT.Routes[3].NextHopType "None"
 		
 		# Delete RouteTable
-        $delete = Remove-AzRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force
-        Assert-AreEqual true $delete
-        
-        $list = Get-AzRouteTable -ResourceGroupName $rgname
-        Assert-AreEqual 0 @($list).Count
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Tests RouteTableWithDisableBgpRoutePropagation.
-#>
-function Test-RouteTableWithDisableBgpRoutePropagation
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $routeTableName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/routeTables"
-    $location = Get-ProviderLocation $resourceTypeParent
-    
-    try 
-    {
-        # Create the resource group
-        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
-        
-        # Create RouteTable
-        $rt = New-AzRouteTable -name $routeTableName -DisableBgpRoutePropagation -ResourceGroupName $rgname -Location $location
-
-        # Get RouteTable
-        $getRT = Get-AzRouteTable -name $routeTableName -ResourceGroupName $rgName
-        
-        #verification
-        Assert-AreEqual $rgName $getRT.ResourceGroupName
-        Assert-AreEqual $routeTableName $getRT.Name
-		Assert-AreEqual true $getRt.DisableBGProutepropagation
-        Assert-NotNull $getRT.Etag
-        Assert-AreEqual 0 @($getRT.Routes).Count        
-
-        # list
-        $list = Get-AzRouteTable -ResourceGroupName $rgname
-        Assert-AreEqual 1 @($list).Count
-        Assert-AreEqual $list[0].ResourceGroupName $getRT.ResourceGroupName
-        Assert-AreEqual $list[0].Name $getRT.Name
-        Assert-AreEqual $list[0].DisableBGProutepropagation $getRT.DisableBGProutepropagation
-        Assert-AreEqual $list[0].Etag $getRT.Etag
-        Assert-AreEqual @($list[0].Routes).Count @($getRT.Routes).Count
-		
-        # Delete RouteTable
         $delete = Remove-AzRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force
         Assert-AreEqual true $delete
         

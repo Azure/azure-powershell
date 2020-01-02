@@ -24,7 +24,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcher", SupportsShouldProcess = true),OutputType(typeof(PSNetworkWatcher))]
+    [Cmdlet(VerbsCommon.New, "AzNetworkWatcher", SupportsShouldProcess = true),
+        OutputType(typeof(PSNetworkWatcher))]
     public class NewAzureNetworkWatcherCommand : NetworkWatcherBaseCmdlet
     {
         [Alias("ResourceName")]

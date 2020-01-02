@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSPeeringConfig
     {
@@ -27,19 +26,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> AdvertisedCommunities { get; set; }
 
         [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
         public string AdvertisedPublicPrefixesState { get; set; }
 
         [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
         public int CustomerASN { get; set; }
 
         [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
         public int LegacyMode { get; set; }
 
         [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
         public string RoutingRegistryName { get; set; }
 
         [JsonIgnore]

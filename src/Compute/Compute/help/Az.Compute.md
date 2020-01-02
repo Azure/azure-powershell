@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Compute
 Module Guid: 0a83c907-1ffb-4d87-a492-c65ac7d7ed37
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.compute
+Download Help Link: 
 Help Version: 3.5.0.0
 Locale: en-US
 ---
@@ -15,7 +15,7 @@ This topic displays the help topics for the Azure Compute Cmdlets.
 Adds a container service agent pool profile.
 
 ### [Add-AzImageDataDisk](Add-AzImageDataDisk.md)
-Adds a data disk to an image object.
+Adds a data disk to an image obejct.
 
 ### [Add-AzVhd](Add-AzVhd.md)
 Uploads a virtual hard disk from an on-premises virtual machine to a blob in a cloud storage account in Azure.
@@ -56,9 +56,6 @@ Adds a secret to a VMSS.
 ### [Add-AzVmssSshPublicKey](Add-AzVmssSshPublicKey.md)
 Adds SSH public keys to the VMSS.
 
-### [Add-AzVmssVMDataDisk](Add-AzVmssVMDataDisk.md)
-Adds a data disk to a Vmss VM.
-
 ### [Add-AzVmssWinRMListener](Add-AzVmssWinRMListener.md)
 Adds a WinRM listener to the VMSS.
 
@@ -74,7 +71,7 @@ Disables disk encryption on a VM scale set.
 ### [Export-AzLogAnalyticRequestRateByInterval](Export-AzLogAnalyticRequestRateByInterval.md)
 Export logs that show Api requests made by this subscription in the given time window to show throttling activities.
 
-### [Export-AzLogAnalyticThrottledRequest](Export-AzLogAnalyticThrottledRequest.md)
+### [Export-AzLogAnalyticThrottledRequests](Export-AzLogAnalyticThrottledRequests.md)
 Export logs that show total throttled Api requests for this subscription in the given time window.
 
 ### [Get-AzAvailabilitySet](Get-AzAvailabilitySet.md)
@@ -89,29 +86,8 @@ Gets a container service.
 ### [Get-AzDisk](Get-AzDisk.md)
 Gets the properties of a Managed disk.
 
-### [Get-AzDiskEncryptionSet](Get-AzDiskEncryptionSet.md)
-Get or list disk encryption sets.
-
-### [Get-AzGallery](Get-AzGallery.md)
-Get or list galleries.
-
-### [Get-AzGalleryImageDefinition](Get-AzGalleryImageDefinition.md)
-Get or list gallery image definitions.
-
-### [Get-AzGalleryImageVersion](Get-AzGalleryImageVersion.md)
-Get or list gallery image versions.
-
-### [Get-AzHost](Get-AzHost.md)
-Get or list hosts.
-
-### [Get-AzHostGroup](Get-AzHostGroup.md)
-Get or list hosts.
-
 ### [Get-AzImage](Get-AzImage.md)
 Gets the properties of an image.
-
-### [Get-AzProximityPlacementGroup](Get-AzProximityPlacementGroup.md)
-Get or list Proximity Placement Group resource(s).
 
 ### [Get-AzRemoteDesktopFile](Get-AzRemoteDesktopFile.md)
 Gets an .rdp file.
@@ -174,7 +150,7 @@ Gets the VMImage publishers.
 Gets VMImage SKUs.
 
 ### [Get-AzVMRunCommandDocument](Get-AzVMRunCommandDocument.md)
-Get a run command document.
+Get run command document.
 
 ### [Get-AzVMSize](Get-AzVMSize.md)
 Gets available virtual machine sizes.
@@ -209,14 +185,8 @@ Grants an access to a disk.
 ### [Grant-AzSnapshotAccess](Grant-AzSnapshotAccess.md)
 Grants an access to a snapshot.
 
-### [Invoke-AzVMReimage](Invoke-AzVMReimage.md)
-Reimage an Azure virtual machine.
-
 ### [Invoke-AzVMRunCommand](Invoke-AzVMRunCommand.md)
-Run a command on the VM.
-
-### [Invoke-AzVmssVMRunCommand](Invoke-AzVmssVMRunCommand.md)
-Run command on the Virtual Machine Scale Set VM.
+Run command on the VM.
 
 ### [New-AzAvailabilitySet](New-AzAvailabilitySet.md)
 Creates an Azure availability set.
@@ -233,38 +203,14 @@ Creates a managed disk.
 ### [New-AzDiskConfig](New-AzDiskConfig.md)
 Creates a configurable disk object.
 
-### [New-AzDiskEncryptionSet](New-AzDiskEncryptionSet.md)
-Creates a disk encryption key.
-
-### [New-AzDiskEncryptionSetConfig](New-AzDiskEncryptionSetConfig.md)
-Creates a configurable disk encryption set object.
-
 ### [New-AzDiskUpdateConfig](New-AzDiskUpdateConfig.md)
 Creates a configurable disk update object.
 
-### [New-AzGallery](New-AzGallery.md)
-Create a gallery.
-
-### [New-AzGalleryImageDefinition](New-AzGalleryImageDefinition.md)
-Create a gallery image definition.
-
-### [New-AzGalleryImageVersion](New-AzGalleryImageVersion.md)
-Create a gallery image version.
-
-### [New-AzHost](New-AzHost.md)
-Creates a  host.
-
-### [New-AzHostGroup](New-AzHostGroup.md)
-Creates a host group.
-
 ### [New-AzImage](New-AzImage.md)
-Creates an image.
+Creats an image.
 
 ### [New-AzImageConfig](New-AzImageConfig.md)
 Creates a configurable image object.
-
-### [New-AzProximityPlacementGroup](New-AzProximityPlacementGroup.md)
-Create Proximity Placement Group resource.
 
 ### [New-AzSnapshot](New-AzSnapshot.md)
 Creates a snapshot.
@@ -280,9 +226,6 @@ Creates a virtual machine.
 
 ### [New-AzVMConfig](New-AzVMConfig.md)
 Creates a configurable virtual machine object.
-
-### [New-AzVMDataDisk](New-AzVMDataDisk.md)
-Creates a local data disk object for a virtual machine or a Vmss VM.
 
 ### [New-AzVMSqlServerAutoBackupConfig](New-AzVMSqlServerAutoBackupConfig.md)
 Creates a configuration object for SQL Server automatic backup.
@@ -302,9 +245,6 @@ Creates a VMSS configuration object.
 ### [New-AzVmssIpConfig](New-AzVmssIpConfig.md)
 Creates an IP configuration for a network interface of a VMSS.
 
-### [New-AzVmssIpTagConfig](New-AzVmssIpTagConfig.md)
-Creates an IP Tag object for a network interface of a VMSS.
-
 ### [New-AzVmssVaultCertificateConfig](New-AzVmssVaultCertificateConfig.md)
 Creates a Key Vault certificate configuration.
 
@@ -323,32 +263,11 @@ Removes an agent pool profile from a container service.
 ### [Remove-AzDisk](Remove-AzDisk.md)
 Removes a disk.
 
-### [Remove-AzDiskEncryptionSet](Remove-AzDiskEncryptionSet.md)
-Removes a disk encryption set.
-
-### [Remove-AzGallery](Remove-AzGallery.md)
-Delete a gallery.
-
-### [Remove-AzGalleryImageDefinition](Remove-AzGalleryImageDefinition.md)
-Delete a gallery image definition.
-
-### [Remove-AzGalleryImageVersion](Remove-AzGalleryImageVersion.md)
-Delete a gallery image version.
-
-### [Remove-AzHost](Remove-AzHost.md)
-Removes a host.
-
-### [Remove-AzHostGroup](Remove-AzHostGroup.md)
-Removes a host group.
-
 ### [Remove-AzImage](Remove-AzImage.md)
 Removes an image.
 
 ### [Remove-AzImageDataDisk](Remove-AzImageDataDisk.md)
 Removes a data disk from an image object.
-
-### [Remove-AzProximityPlacementGroup](Remove-AzProximityPlacementGroup.md)
-Delete Proximity Placement Group resource.
 
 ### [Remove-AzSnapshot](Remove-AzSnapshot.md)
 Removes a snapshot.
@@ -410,12 +329,6 @@ Removes an extension from the VMSS.
 ### [Remove-AzVmssNetworkInterfaceConfiguration](Remove-AzVmssNetworkInterfaceConfiguration.md)
 Removes a network interface configuration from a VMSS.
 
-### [Remove-AzVmssVMDataDisk](Remove-AzVmssVMDataDisk.md)
-Removes a data disk from a virtual machine scale set VM
-
-### [Repair-AzVmssServiceFabricUpdateDomain](Repair-AzVmssServiceFabricUpdateDomain.md)
-Manual platform update domain walk to update virtual machines in a service fabric virtual machine scale set.
-
 ### [Restart-AzVM](Restart-AzVM.md)
 Restarts an Azure virtual machine.
 
@@ -444,7 +357,7 @@ Sets the image reference properties on a disk object.
 Sets the key encryption key properties on a disk object.
 
 ### [Set-AzDiskUpdateDiskEncryptionKey](Set-AzDiskUpdateDiskEncryptionKey.md)
-Sets the disk encryption key properties on a disk update object.
+Sets the disk encryption key properties on on a disk update object.
 
 ### [Set-AzDiskUpdateKeyEncryptionKey](Set-AzDiskUpdateKeyEncryptionKey.md)
 Sets the key encryption key properties on a disk update object.
@@ -485,7 +398,7 @@ Sets the backup extension properties on a virtual machine.
 ### [Set-AzVMBginfoExtension](Set-AzVMBginfoExtension.md)
 Adds the BGInfo extension to a virtual machine.
 
-### [Set-AzVMBootDiagnostic](Set-AzVMBootDiagnostic.md)
+### [Set-AzVMBootDiagnostics](Set-AzVMBootDiagnostics.md)
 Modifies boot diagnostics properties of a virtual machine.
 
 ### [Set-AzVMChefExtension](Set-AzVMChefExtension.md)
@@ -575,15 +488,6 @@ Updates the state of a container service.
 ### [Update-AzDisk](Update-AzDisk.md)
 Updates a disk.
 
-### [Update-AzGallery](Update-AzGallery.md)
-Update a gallery.
-
-### [Update-AzGalleryImageDefinition](Update-AzGalleryImageDefinition.md)
-Update a gallery image definition.
-
-### [Update-AzGalleryImageVersion](Update-AzGalleryImageVersion.md)
-Update a gallery image version.
-
 ### [Update-AzImage](Update-AzImage.md)
 Updates an image.
 
@@ -598,7 +502,4 @@ Updates the state of a VMSS.
 
 ### [Update-AzVmssInstance](Update-AzVmssInstance.md)
 Starts a manual upgrade of the VMSS instance.
-
-### [Update-AzVmssVM](Update-AzVmssVM.md)
-Updates the state of a Vmss VM.
 

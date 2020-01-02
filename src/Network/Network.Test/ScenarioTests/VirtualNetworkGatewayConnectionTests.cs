@@ -25,7 +25,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionCRUD()
@@ -33,7 +33,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionSharedKeyCRUD()
@@ -49,7 +49,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionWithBgpCRUD()
@@ -79,22 +79,6 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestVirtualNetworkGatewayVpnDeviceConfigurationScripts()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
-        public void TestVirtualNetworkGatewayConnectionPacketCapture()
-        {
-            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionPacketCapture");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
-        public void TestVirtualNetworkGatewayConnectionWithTrafficSelectorCRUD()
-        {
-            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionWithTrafficSelector");
         }
     }
 }

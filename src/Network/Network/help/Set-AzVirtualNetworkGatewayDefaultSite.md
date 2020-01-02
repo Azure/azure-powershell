@@ -34,10 +34,13 @@ PS C:\> Set-AzVirtualNetworkGatewayDefaultSite -GatewayDefaultSite $LocalGateway
 ```
 
 This example assigns a default site to a virtual network gateway named ContosoVirtualGateway.
+
 The first command creates an object reference to a local gateway named ContosoLocalGateway.
 This object reference that is stored in the variable named $LocalGateway represents the gateway to be configured as the default site
+
 .
 The second command then creates an object reference to the virtual network gateway and stores the result in the variable named $VirtualGateway.
+
 The third command uses the **Set-AzVirtualNetworkGatewayDefaultSite** cmdlet to assign the default site to ContosoVirtualGateway.
 
 ## PARAMETERS
@@ -46,9 +49,9 @@ The third command uses the **Set-AzVirtualNetworkGatewayDefaultSite** cmdlet to 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -62,9 +65,9 @@ Specifies an object reference to the local network gateway to be assigned as the
 You can use the Get-AzLocalNetworkGateway cmdlet to create an object reference to a local gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
+Type: PSLocalNetworkGateway
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -76,12 +79,13 @@ Accept wildcard characters: False
 ### -VirtualNetworkGateway
 Specifies an object reference to the virtual network gateway where the default site will be assigned.
 You can create an object reference to a virtual network gateway by using the **Get-AzVirtualNetworkGateway** and specifying the name of the gateway.
+
 The variable $VirtualGateway can then be used as the parameter value for the *VirtualNetworkGateway* parameter:
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Type: PSVirtualNetworkGateway
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -95,13 +99,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
-
-### Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
+###  
+This cmdlet accepts pipelined instances of the **Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway** object.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+###  
+This cmdlet modifies existing instances of the **Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway** object.
 
 ## NOTES
 

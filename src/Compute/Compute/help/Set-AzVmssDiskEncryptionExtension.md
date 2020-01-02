@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmssdiskencryptionextension
 schema: 2.0.0
@@ -22,9 +22,9 @@ Set-AzVmssDiskEncryptionExtension [-ResourceGroupName] <String> [-VMScaleSetName
 ```
 
 ## DESCRIPTION
-The **Set-AzVmssDiskEncryptionExtension** cmdlet enables encryption on a VM scale set. This cmdlet enables encryption by installing the disk encryption extension on the VM scale set.
-
-For Linux virtual machines, the *VolumeType* parameter must be present and must be set to "Data"
+The **Set-AzVmssDiskEncryptionExtension** cmdlet enables encryption on a VM scale set.
+This cmdlet enables encryption by installing the disk encryption extension on the VM scale set.
+If no *Name* parameter is specified, an extension with the default name AzureDiskEncryption for virtual machines that run the Windows operating system or AzureDiskEncryptionForLinux for Linux virtual machines are installed.
 
 ## EXAMPLES
 
@@ -36,27 +36,10 @@ $VaultName= "MyKeyVault"
 $KeyVault = Get-AzKeyVault -VaultName $VaultName -ResourceGroupName $RGName
 $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
 $KeyVaultResourceId = $KeyVault.ResourceId
-
 PS C:\> Set-AzVmssDiskEncryptionExtension -ResourceGroupName $RGName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
 ```
 
-This command enables encryption on all disks of all Windows VMs in a VM scale set.
-
-### Example 2
-```
-$RGName = "MyResourceGroup"
-$VmssName = "MyTestVmss"
-$VaultName= "MyKeyVault"
-$KeyVault = Get-AzKeyVault -VaultName $VaultName -ResourceGroupName $RGName
-$DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
-$KeyVaultResourceId = $KeyVault.ResourceId
-$VolumeType = "Data"
-
-PS C:\> Set-AzVmssDiskEncryptionExtension -ResourceGroupName $RGName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
- -VolumeType $volumeType
-```
-
-This command enables encryption on the data disks of all Linux VMs in a VM scale set.
+This command enables encryption on all disks of all VMs in the VM scale set.
 
 ## PARAMETERS
 
@@ -64,9 +47,9 @@ This command enables encryption on the data disks of all Linux VMs in a VM scale
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -79,9 +62,9 @@ Accept wildcard characters: False
 Disable auto-upgrade of minor version
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -94,9 +77,9 @@ Accept wildcard characters: False
 ResourceID of the KeyVault where generated encryption key will be placed to
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 3
@@ -109,9 +92,9 @@ Accept wildcard characters: False
 URL of the KeyVault where generated encryption key will be placed to
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 2
@@ -125,9 +108,9 @@ The extension name.
 If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -140,9 +123,9 @@ Accept wildcard characters: False
 To force enabling encryption on the virtual machine scale set.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -155,9 +138,9 @@ Accept wildcard characters: False
 Generate a tag for force update.  This should be given to perform repeated encryption operations on the same VM.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -170,9 +153,9 @@ Accept wildcard characters: False
 KeyEncryption Algorithm used to encrypt the volume encryption key
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: RSA-OAEP, RSA1_5
 
 Required: False
@@ -186,9 +169,9 @@ Accept wildcard characters: False
 Versioned KeyVault URL of the KeyEncryptionKey used to encrypt the disk encryption key
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -201,9 +184,9 @@ Accept wildcard characters: False
 ResourceID of the KeyVault containing the KeyEncryptionKey used to encrypt the disk encryption key
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -217,9 +200,9 @@ The passphrase specified in parameters.
 This parameter only works for Linux VM.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -232,9 +215,9 @@ Accept wildcard characters: False
 The resource group name to which the VM Scale Set belongs to
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -247,7 +230,7 @@ Accept wildcard characters: False
 The type handler version.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: HandlerVersion, Version
 
@@ -262,7 +245,7 @@ Accept wildcard characters: False
 Name of the virtual machine scale set
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -274,17 +257,12 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
-Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. 
-
-Linux: The **VolumeType** parameter must be present and must be set to Data. 
-
-Windows: The **VolumeType** parameter, if present, must be set to either All or OS. If the **VolumeType** parameter is omitted it defaults to "All".
-
+Type of the volume (OS or Data) to perform encryption operation
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: OS, Data, All
 
 Required: False
@@ -298,7 +276,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -314,7 +292,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -326,13 +304,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
-### System.Management.Automation.SwitchParameter
+System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
@@ -341,3 +318,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

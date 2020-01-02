@@ -29,7 +29,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAEMExtension")]
+    [Cmdlet(
+        VerbsCommon.Remove,
+        ProfileNouns.VirtualMachineAEMExtension)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
     {
@@ -40,7 +42,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Position = 0,
                 ValueFromPipelineByPropertyName = true,
                 HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -50,7 +52,6 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -60,7 +61,6 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the ARM resource that represents the extension.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -71,16 +71,12 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Operating System Type of the virtual machines. Possible values: Windows | Linux")]
         public string OSType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
-        public SwitchParameter NoWait { get; set; }
-
         public override void ExecuteCmdlet()
         {
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
                 this.CommandRuntime.Host.UI,
                 AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
-                this.DefaultContext.Subscription, 
-                this.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
+                this.DefaultContext.Subscription);
 
             base.ExecuteCmdlet();
 
@@ -118,17 +114,9 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
 
-                if (NoWait.IsPresent)
-                {
-                    var op = this.VirtualMachineExtensionClient.BeginDeleteWithHttpMessagesAsync(this.ResourceGroupName, this.VMName, this.Name).GetAwaiter().GetResult();
-                    WriteObject(ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op));
-                }
-                else
-                {
-                    var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.VMName, this.Name).GetAwaiter().GetResult();
-                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                    WriteObject(result);
-                }
+                var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.VMName, this.Name).GetAwaiter().GetResult();
+                var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                WriteObject(result);
             });
         }
     }

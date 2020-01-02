@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -21,11 +20,9 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSRetentionPolicyParameters
     {
         [JsonProperty(Order = 2)]
-        [Ps1Xml(Target = ViewControl.Table)]
         public int? Days { get; set; }
 
         [JsonProperty(Order = 2)]
-        [Ps1Xml(Target = ViewControl.Table)]
         public bool? Enabled { get; set; }
     }
 }

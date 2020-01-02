@@ -16,11 +16,10 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMExtension")]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtension)]
     [OutputType(typeof(PSVirtualMachineExtension))]
     public class GetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -39,17 +38,15 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
         [Alias("ExtensionName")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -66,32 +63,16 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (!string.IsNullOrEmpty(Name))
+                if (Status.IsPresent)
                 {
-                    if (Status.IsPresent)
-                    {
-                        var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
-                        WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
-                    }
-                    else
-                    {
-                        var result = this.VirtualMachineExtensionClient.GetWithHttpMessagesAsync(this.ResourceGroupName,
-                            this.VMName, this.Name).GetAwaiter().GetResult();
-                        WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
-                    }
+                    var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
+                    WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
                 }
                 else
                 {
-                    if (Status.IsPresent)
-                    {
-                        var result = this.VirtualMachineExtensionClient.ListWithInstanceView(this.ResourceGroupName, this.VMName).Body.Value;
-                        WriteObject(result.ToList().Select(t => t.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName)), true);
-                    }
-                    else
-                    {
-                        var result = this.VirtualMachineExtensionClient.ListWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter().GetResult().Body.Value;
-                        WriteObject(result.ToList().Select(t => t.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName)), true);
-                    }
+                    var result = this.VirtualMachineExtensionClient.GetWithHttpMessagesAsync(this.ResourceGroupName,
+                        this.VMName, this.Name).GetAwaiter().GetResult();
+                    WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
                 }
             });
         }

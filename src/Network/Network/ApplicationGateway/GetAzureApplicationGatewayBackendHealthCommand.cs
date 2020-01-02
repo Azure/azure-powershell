@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayBackendHealth"), OutputType(typeof(PSApplicationGatewayBackendHealth))]
+    [Cmdlet(VerbsCommon.Get, "AzApplicationGatewayBackendHealth"), OutputType(typeof(PSApplicationGatewayBackendHealth))]
     public class GetAzureApplicationGatewayBackendHealthCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/applicationGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
@@ -62,3 +61,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

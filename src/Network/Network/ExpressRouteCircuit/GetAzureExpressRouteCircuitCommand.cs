@@ -19,12 +19,10 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSExpressRouteCircuit), DeprecatedOutputProperties = new[] { "AllowGlobalReach" })]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet(VerbsCommon.Get, "AzExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
     public class GetAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -32,9 +30,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/expressRouteCircuits", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -43,13 +39,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            if (ShouldGetByName(ResourceGroupName, Name))
+            if (!string.IsNullOrEmpty(this.Name))
             {
                 var circuit = this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name);
 
@@ -58,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<ExpressRouteCircuit> circuitPage;
-                if (ShouldListByResourceGroup(ResourceGroupName, Name))
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
                     circuitPage = this.ExpressRouteCircuitClient.List(this.ResourceGroupName);
                 }
@@ -78,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
                     psCircuits.Add(psVnet);
                 }
 
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psCircuits), true);
+                WriteObject(psCircuits, true);
             }
         }
     }

@@ -9,7 +9,6 @@ schema: 2.0.0
 # Remove-AzVirtualNetworkGatewayIpConfig
 
 ## SYNOPSIS
-Removes an IP Configuration from a Virtual Network Gateway
 
 ## SYNTAX
 
@@ -19,56 +18,12 @@ Remove-AzVirtualNetworkGatewayIpConfig -VirtualNetworkGateway <PSVirtualNetworkG
 ```
 
 ## DESCRIPTION
-Removes an IP Configuration from a Virtual Network Gateway
 
 ## EXAMPLES
 
-### Example 1:
+### 1:
 ```
-Remove-AzVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gateway -Name ActiveActive
-
-Name                   : myGateway
-ResourceGroupName      : myRG
-Location               : eastus
-Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft
-                         .Network/virtualNetworkGateways/VNet8GW
-Etag                   : W/"00000000-0000-0000-0000-000000000000"
-ResourceGuid           : 00000000-0000-0000-0000-000000000000
-ProvisioningState      : Succeeded
-Tags                   :
-IpConfigurations       : [
-                           {
-                             "PrivateIpAllocationMethod": "Dynamic",
-                             "Subnet": {
-                               "Id": "/subscriptions/800000000-0000-0000-0000-000000000000/resourceGroups/myRG/provid
-                         ers/Microsoft.Network/virtualNetworks/VNet8/subnets/GatewaySubnet"
-                             },
-                             "PublicIpAddress": {
-                               "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/provid
-                         ers/Microsoft.Network/publicIPAddresses/VNet8GWIP"
-                             },
-                             "Name": "gwipconfig1",
-                             "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
-                             "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/provider
-                         s/Microsoft.Network/virtualNetworkGateways/VNet8GW/ipConfigurations/gwipconfig1"
-                           }
-                         ]
-GatewayType            : Vpn
-VpnType                : RouteBased
-EnableBgp              : False
-ActiveActive           : True
-GatewayDefaultSite     : null
-Sku                    : {
-                           "Capacity": 2,
-                           "Name": "VpnGw1",
-                           "Tier": "VpnGw1"
-                         }
-VpnClientConfiguration : null
-BgpSettings            : {
-                           "Asn": 65515,
-                           "BgpPeeringAddress": "192.0.2.4,192.0.2.5",
-                           "PeerWeight": 0
-                         }
+PS C:\>
 ```
 
 ## PARAMETERS
@@ -77,9 +32,9 @@ BgpSettings            : {
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -90,9 +45,9 @@ Accept wildcard characters: False
 
 ### -Name
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -103,9 +58,9 @@ Accept wildcard characters: False
 
 ### -VirtualNetworkGateway
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Type: PSVirtualNetworkGateway
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -118,7 +73,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -134,7 +89,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -150,7 +105,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+### PSVirtualNetworkGateway
+Parameter 'VirtualNetworkGateway' accepts value of type 'PSVirtualNetworkGateway' from the pipeline
 
 ## OUTPUTS
 
@@ -160,6 +116,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzVirtualNetworkGatewayIpConfig](./Add-AzVirtualNetworkGatewayIpConfig.md)
-
-[New-AzVirtualNetworkGatewayIpConfig](./New-AzVirtualNetworkGatewayIpConfig.md)

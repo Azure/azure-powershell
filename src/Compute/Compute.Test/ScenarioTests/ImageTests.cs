@@ -28,14 +28,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestImage()
         {
-            TestRunner.RunTestScript("Test-Image $null");
+            TestRunner.RunTestScript(@"Test-Image $null");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestImageCapture()
         {
-            TestRunner.RunTestScript("Test-ImageCapture $null");
+            TestRunner.RunTestScript(@"Test-ImageCapture $null");
         }
     }
 }

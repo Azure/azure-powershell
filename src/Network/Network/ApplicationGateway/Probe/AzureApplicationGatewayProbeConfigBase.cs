@@ -76,12 +76,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
            Mandatory = false,
-           HelpMessage = "Port that is used for probing the backend server")]
-        [ValidateRange(1, 65535)]
-        public int Port { get; set; }
-
-        [Parameter(
-           Mandatory = false,
            HelpMessage = "Body that must be contained in the health response. Default value is empty")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayProbeHealthResponseMatch Match { get; set; }
@@ -102,10 +96,6 @@ namespace Microsoft.Azure.Commands.Network
             }
             probe.MinServers = this.MinServers;
             probe.Match = this.Match;
-            if (this.Port != 0)
-            {
-                probe.Port = this.Port;
-            }
 
             probe.Id =
                 ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayPathRuleConfig"), OutputType(typeof(PSApplicationGatewayPathRule))]
+    [Cmdlet(VerbsCommon.New, "AzApplicationGatewayPathRuleConfig"), OutputType(typeof(PSApplicationGatewayPathRule))]
     public class NewAzureApplicationGatewayPathRuleConfigCommand : AzureApplicationGatewayPathRuleConfigBase
     {
         public override void ExecuteCmdlet()

@@ -29,7 +29,11 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssDiskEncryptionExtension", SupportsShouldProcess = true, DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet)]
+    [Cmdlet(
+        VerbsCommon.Set,
+        ProfileNouns.AzureVmssDiskEncryptionExtension,
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet)]
     [OutputType(typeof(PSVirtualMachineScaleSetExtension))]
     public class SetAzureVmssDiskEncryptionExtensionCommand : VirtualMachineScaleSetExtensionBaseCmdlet
     {
@@ -38,7 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name to which the VM Scale Set belongs to")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -48,7 +52,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the virtual machine scale set")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMScaleSetName { get; set; }
 
@@ -116,7 +119,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets/extensions", "ResourceGroupName", "VMScaleSetName")]
         [ValidateNotNullOrEmpty]
         public string ExtensionName { get; set; }
 
@@ -143,15 +145,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyVaultUrlKey, DiskEncryptionKeyVaultUrl ?? string.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyEncryptionKeyUrlKey, KeyEncryptionKeyUrl ?? string.Empty);
-            publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyVaultResourceIdKey, DiskEncryptionKeyVaultId ?? string.Empty);
-            publicSettings.Add(AzureDiskEncryptionExtensionConstants.kekVaultResourceIdKey, KeyEncryptionKeyVaultId ?? string.Empty);
+			publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyVaultResourceIdKey, DiskEncryptionKeyVaultId ?? string.Empty);
+			publicSettings.Add(AzureDiskEncryptionExtensionConstants.kekVaultResourceIdKey, KeyEncryptionKeyVaultId ?? string.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.volumeTypeKey, VolumeType ?? string.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.encryptionOperationKey, AzureDiskEncryptionExtensionConstants.enableEncryptionOperation);
 
             string keyEncryptAlgorithm = string.Empty;
             if (!string.IsNullOrEmpty(this.KeyEncryptionKeyUrl))
             {
-                if (!string.IsNullOrEmpty(KeyEncryptionAlgorithm))
+                if(!string.IsNullOrEmpty(KeyEncryptionAlgorithm))
                 {
                     keyEncryptAlgorithm = KeyEncryptionAlgorithm;
                 }
@@ -180,7 +182,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         {
             Hashtable SettingString = GetExtensionPublicSettings();
             Hashtable ProtectedSettingString = GetExtensionProtectedSettings();
-
+            
             VirtualMachineScaleSetExtension vmssExtensionParameters = null;
 
             if (OperatingSystemTypes.Windows.Equals(this.CurrentOSType))
@@ -190,7 +192,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 {
                     Name = this.ExtensionName,
                     Publisher = AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
-                    Type1 = AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultName,
+                    Type = AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultName,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultVersion,
                     Settings = SettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent,
@@ -203,9 +205,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 this.ExtensionName = this.ExtensionName ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 vmssExtensionParameters = new VirtualMachineScaleSetExtension
                 {
-                    Name = this.ExtensionName,
+					Name = this.ExtensionName,
                     Publisher = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
-                    Type1 = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName,
+                    Type = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
                     Settings = SettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent,
@@ -303,7 +305,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     var thisVmss = this.VirtualMachineScaleSetClient.Get(this.ResourceGroupName, this.VMScaleSetName);
 
-                    Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models.Vault returnedKeyVault = null;
+                    Commands.Common.KeyVault.Version2016_10_1.Models.Vault returnedKeyVault = null;
                     try
                     {
                         returnedKeyVault = keyVaultManagementFactory.Vaults.Get(rg, kv);

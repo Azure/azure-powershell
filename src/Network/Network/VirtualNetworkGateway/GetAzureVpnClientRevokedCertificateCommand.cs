@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnClientRevokedCertificate"), OutputType(typeof(PSVpnClientRevokedCertificate))]
+    [Cmdlet(VerbsCommon.Get, "AzVpnClientRevokedCertificate"), OutputType(typeof(PSVpnClientRevokedCertificate))]
     public class GetAzureVpnClientRevokedCertificates : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network gateway name.")]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworkGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string VirtualNetworkGatewayName { get; set; }
 
@@ -50,17 +49,13 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             var vnetGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.VirtualNetworkGatewayName);
-            if (vnetGateway.VpnClientConfiguration == null)
-            {
-                throw new ArgumentException(string.Format(Properties.Resources.VirtualNetworkGatewayNoRevokedCertificate, VirtualNetworkGatewayName));
-            }
 
             if (!string.IsNullOrEmpty(this.VpnClientRevokedCertificateName))
             {
                 PSVpnClientRevokedCertificate clientRevokedCertificate = vnetGateway.VpnClientConfiguration.VpnClientRevokedCertificates.Find(cert => cert.Name.Equals(VpnClientRevokedCertificateName));
                 if (clientRevokedCertificate == null)
                 {
-                    throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, VpnClientRevokedCertificateName));
+                    throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
                 }
                 else
                 {
@@ -74,3 +69,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -43,38 +43,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
                Mandatory = false,
                HelpMessage = "The version of the rule set type.")]
+        [ValidateSet("3.0", "2.2.9")]
         public string RuleSetVersion { get; set; }
 
         [Parameter(
                Mandatory = false,
                HelpMessage = "The disabled rule groups.")]
-        [Alias(DisabledRuleGroupsAlias)]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFirewallDisabledRuleGroup[] DisabledRuleGroup { get; set; }
-
-        [Parameter(
-               Mandatory = false,
-               HelpMessage = "Whether request body is checked or not.")]
-        [ValidateNotNullOrEmpty]
-        public bool RequestBodyCheck { get; set; }
-
-        [Parameter(
-               Mandatory = false,
-               HelpMessage = "Max request body size in KB.")]
-        [ValidateNotNullOrEmpty]
-        public int MaxRequestBodySizeInKb { get; set; }
-
-        [Parameter(
-               Mandatory = false,
-               HelpMessage = "Max file upload limit in MB.")]
-        [ValidateNotNullOrEmpty]
-        public int FileUploadLimitInMb { get; set; }
-
-        [Parameter(
-               Mandatory = false,
-               HelpMessage = "The exclusion lists.")]
-        [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFirewallExclusion[] Exclusion { get; set; }
+        public List<PSApplicationGatewayFirewallDisabledRuleGroup> DisabledRuleGroups { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -87,18 +63,6 @@ namespace Microsoft.Azure.Commands.Network
             if (!this.MyInvocation.BoundParameters.ContainsKey("RuleSetVersion"))
             {
                 this.RuleSetVersion = "3.0";
-            }
-            if (!this.MyInvocation.BoundParameters.ContainsKey("RequestBodyCheck"))
-            {
-                this.RequestBodyCheck = true;
-            }
-            if (!this.MyInvocation.BoundParameters.ContainsKey("MaxRequestBodySizeInKb"))
-            {
-                this.MaxRequestBodySizeInKb = 128;
-            }
-            if (!this.MyInvocation.BoundParameters.ContainsKey("FileUploadLimitInMb"))
-            {
-                this.FileUploadLimitInMb = 100;
             }
         }
     }

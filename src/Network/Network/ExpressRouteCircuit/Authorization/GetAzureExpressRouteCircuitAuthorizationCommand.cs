@@ -13,14 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSExpressRouteCircuit), DeprecatedOutputProperties = new[] { "AllowGlobalReach" })]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitAuthorization"), OutputType(typeof(PSExpressRouteCircuitAuthorization))]
+    [Cmdlet(VerbsCommon.Get, "AzExpressRouteCircuitAuthorization"), OutputType(typeof(PSExpressRouteCircuitAuthorization))]
     public class GetAzureExpressRouteCircuitAuthorizationCommand : NetworkBaseCmdlet
     {
         [Parameter(

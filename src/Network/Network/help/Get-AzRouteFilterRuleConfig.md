@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRouteFilterRuleConfig
 
 ## SYNOPSIS
-Gets a route filter rule in a route filter.
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
@@ -18,20 +18,16 @@ Get-AzRouteFilterRuleConfig [-Name <String>] -RouteFilter <PSRouteFilter>
 ```
 
 ## DESCRIPTION
-The **Get-AzRouteFilterRuleConfig** cmdlet gets a route filter rule or a list of route filter rules in a route filter.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> $rf = Get-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
-PS C:\> Get-AzRouteFilterRuleConfig -RouteFilter $rf -Name "Rule01"
-PS C:\> Get-AzRouteFilterRuleConfig -RouteFilter $rf
+```
+PS C:\> {{ Add example code here }}
 ```
 
-The first command gets the route filter named MyRouteFilter, and then stores it in the variable $rf.
-The second command gets the route filter rule named Rule01 associated with that route filter.
-The third command gets a list of route filter rules associated with that route filter.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -39,9 +35,9 @@ The third command gets a list of route filter rules associated with that route f
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -54,9 +50,9 @@ Accept wildcard characters: False
 The name of the route filter rule
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -69,9 +65,9 @@ Accept wildcard characters: False
 The RouteFilter
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRouteFilter
+Type: PSRouteFilter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -81,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -95,18 +91,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzRouteFilterRuleConfig](./Add-AzRouteFilterRuleConfig.md)
-
-[New-AzRouteFilterRuleConfig](./New-AzRouteFilterRuleConfig.md)
-
-[Remove-AzRouteFilterRuleConfig](./Remove-AzRouteFilterRuleConfig.md)
-
-[Set-AzRouteFilterRuleConfig](./Set-AzRouteFilterRuleConfig.md)
-
-[Get-AzRouteFilter](./Get-AzRouteFilter.md)
-
-[New-AzRouteFilter](./New-AzRouteFilter.md)
-
-[Remove-AzRouteFilter](./Remove-AzRouteFilter.md)
-
-[Set-AzRouteFilter](./Set-AzRouteFilter.md)

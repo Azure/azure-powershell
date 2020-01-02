@@ -14,8 +14,8 @@ Creates a front-end port for an application gateway.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFrontendPort -Name <String> -Port <Int32> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzApplicationGatewayFrontendPort -Name <String> -Port <Int32>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,9 +36,9 @@ This command creates a front-end port named FrontEndPort01 on port 80 and stores
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -51,9 +51,9 @@ Accept wildcard characters: False
 Specifies the name of the front-end port that this cmdlet creates.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -66,9 +66,9 @@ Accept wildcard characters: False
 Specifies the port number of the front-end port.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -82,7 +82,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 

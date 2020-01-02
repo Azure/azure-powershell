@@ -33,30 +33,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDisableVirtualMachineScaleSetDiskEncryption()
-        {
-            TestRunner.RunTestScript("Test-DisableVirtualMachineScaleSetDiskEncryption");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDisableVirtualMachineScaleSetDiskEncryption2()
-        {
-            TestRunner.RunTestScript("Test-DisableVirtualMachineScaleSetDiskEncryption2");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVirtualMachineScaleSetDiskEncryptionStatus()
         {
             TestRunner.RunTestScript("Test-GetVirtualMachineScaleSetDiskEncryptionStatus");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetVirtualMachineScaleSetDiskEncryptionDataDisk()
-        {
-            TestRunner.RunTestScript("Test-GetVirtualMachineScaleSetDiskEncryptionDataDisk");
         }
     }
 }

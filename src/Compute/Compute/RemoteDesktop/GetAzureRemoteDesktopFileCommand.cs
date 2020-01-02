@@ -24,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RemoteDesktopFile"), OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.RemoteDesktopFile)]
     public class GetAzureRemoteDesktopFileCommand : VirtualMachineRemoteDesktopBaseCmdlet
     {
         [Parameter(
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -106,7 +105,7 @@ namespace Microsoft.Azure.Commands.Compute
                     // Get PublicIPAddress resource if present
                     address = this.GetAddressFromPublicIPResource(nic.IpConfigurations.First().PublicIPAddress.Id);
                 }
-                else if (nic.IpConfigurations.First().LoadBalancerInboundNatRules !=  null && nic.IpConfigurations.First().LoadBalancerInboundNatRules.Any())
+                else if (nic.IpConfigurations.First().LoadBalancerInboundNatRules.Any())
                 {
                     address = string.Empty;
 

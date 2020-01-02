@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnClientRootCertificate"), OutputType(typeof(PSVpnClientRootCertificate))]
+    [Cmdlet(VerbsCommon.Add, "AzVpnClientRootCertificate"), OutputType(typeof(PSVpnClientRootCertificate))]
     public class AddAzureVpnClientRootCertificateCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network gateway name.")]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworkGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string VirtualNetworkGatewayName { get; set; }
 
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             if (!this.IsVirtualNetworkGatewayPresent(ResourceGroupName, VirtualNetworkGatewayName))
             {
-                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, VirtualNetworkGatewayName));
+                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
             var vnetGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.VirtualNetworkGatewayName);

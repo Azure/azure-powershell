@@ -46,15 +46,6 @@ function Test-ApplicationSecurityGroupCRUD
         Assert-NotNull $asgGet.Location
         Assert-NotNull $asgGet.Etag
 
-        $asgGet = Get-AzApplicationSecurityGroup -ResourceGroupName "*"
-        Assert-True { $asgGet.Count -ge 0 }
-
-        $asgGet = Get-AzApplicationSecurityGroup -Name "*"
-        Assert-True { $asgGet.Count -ge 0 }
-
-        $asgGet = Get-AzApplicationSecurityGroup -ResourceGroupName "*" -Name "*"
-        Assert-True { $asgGet.Count -ge 0 }
-
         # Remove the application security group
         $asgDelete = Remove-AzApplicationSecurityGroup -Name $asgName -ResourceGroupName $rgName -PassThru -Force
         Assert-AreEqual $true $asgDelete
@@ -385,7 +376,7 @@ function Test-ApplicationSecurityGroupInNewNetworkInterface
         $asg3 = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName3 -Location $rgLocation
 
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1
 
@@ -437,7 +428,7 @@ function Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig
         $asg2 = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName2 -Location $rgLocation
 
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         if ($useIds)
         {
@@ -518,7 +509,7 @@ function Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig
         $asg2 = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName2 -Location $rgLocation
 
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location  -Subnet $vnet.Subnets[0]
 

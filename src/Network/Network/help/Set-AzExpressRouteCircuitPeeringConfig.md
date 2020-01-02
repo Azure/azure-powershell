@@ -16,31 +16,34 @@ Saves a modified ExpressRoute peering configuration.
 ### SetByResource (Default)
 ```
 Set-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
- -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
- -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
- [-MicrosoftConfigAdvertisedPublicPrefixes <String[]>] [-MicrosoftConfigCustomerAsn <Int32>]
- [-MicrosoftConfigRoutingRegistryName <String>] [-PeerAddressType <String>] [-LegacyMode <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -PeeringType <String> -PeerASN <Int32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
+ -VlanId <Int32> [-SharedKey <String>]
+ [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
+ [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
+ [-PeerAddressType <String>] [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### MicrosoftPeeringConfigRoutFilterId
 ```
 Set-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
- -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
- -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
- [-MicrosoftConfigAdvertisedPublicPrefixes <String[]>] [-MicrosoftConfigCustomerAsn <Int32>]
- [-MicrosoftConfigRoutingRegistryName <String>] -RouteFilterId <String> [-PeerAddressType <String>]
- [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -PeeringType <String> -PeerASN <Int32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
+ -VlanId <Int32> [-SharedKey <String>]
+ [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
+ [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>] -RouteFilterId <String>
+ [-PeerAddressType <String>] [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### MicrosoftPeeringConfigRoutFilter
 ```
 Set-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
- -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
- -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
- [-MicrosoftConfigAdvertisedPublicPrefixes <String[]>] [-MicrosoftConfigCustomerAsn <Int32>]
- [-MicrosoftConfigRoutingRegistryName <String>] -RouteFilter <PSRouteFilter> [-PeerAddressType <String>]
- [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -PeeringType <String> -PeerASN <Int32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
+ -VlanId <Int32> [-SharedKey <String>]
+ [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
+ [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
+ -RouteFilter <PSRouteFilter> [-PeerAddressType <String>] [-LegacyMode <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,9 +74,9 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -86,9 +89,9 @@ Accept wildcard characters: False
 The ExpressRoute circuit object containing the peering configuration to be modified.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -101,9 +104,9 @@ Accept wildcard characters: False
 The legacy mode of the Peering
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -119,9 +122,9 @@ separated list if you plan to send a set of prefixes. These prefixes must be reg
 a Routing Registry Name (RIR / IRR).
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -135,9 +138,9 @@ If you are advertising prefixes that are not registered to the peering AS number
 the AS number to which they are registered.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -150,9 +153,9 @@ Accept wildcard characters: False
 The Routing Registry Name (RIR / IRR) to which the AS number and prefixes are registered.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -165,9 +168,9 @@ Accept wildcard characters: False
 The name of the peering configuration to be modified.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -180,9 +183,9 @@ Accept wildcard characters: False
 PeerAddressType
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: IPv4, IPv6
 
 Required: False
@@ -197,9 +200,9 @@ The AS number of your ExpressRoute circuit. This must be a Public ASN when the P
 AzurePublicPeering.
 
 ```yaml
-Type: System.UInt32
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -213,9 +216,9 @@ The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePubli
 `MicrosoftPeering`
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
 
 Required: True
@@ -231,9 +234,9 @@ be a /30 CIDR subnet. The first odd-numbered address in this subnet should be as
 router interface. Azure will configure the next even-numbered address to the Azure router interface.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -246,9 +249,9 @@ Accept wildcard characters: False
 This is an existing RouteFilter object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRouteFilter
+Type: PSRouteFilter
 Parameter Sets: MicrosoftPeeringConfigRoutFilter
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -261,9 +264,9 @@ Accept wildcard characters: False
 This is the resource Id of an existing RouteFilter object.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: MicrosoftPeeringConfigRoutFilterId
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -278,9 +281,9 @@ be a /30 CIDR subnet. The first odd-numbered address in this subnet should be as
 router interface. Azure will configure the next even-numbered address to the Azure router interface.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -293,9 +296,9 @@ Accept wildcard characters: False
 This is an optional MD5 hash used as a pre-shared key for the peering configuration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -308,9 +311,9 @@ Accept wildcard characters: False
 This is the Id number of the VLAN assigned for this peering.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -324,13 +327,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
-
-### System.String
-
-### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
-
-### System.Boolean
+### PSExpressRouteCircuit
+Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' from the pipeline
 
 ## OUTPUTS
 

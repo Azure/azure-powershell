@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
+    [Cmdlet(VerbsCommon.Get, "AzLocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
     public class GetAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -29,9 +29,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/localNetworkGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -40,19 +38,18 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            if (ShouldGetByName(ResourceGroupName, Name))
+            if (!string.IsNullOrEmpty(this.Name))
             {
                 var localnetGateway = this.GetLocalNetworkGateway(this.ResourceGroupName, this.Name);
 
                 WriteObject(localnetGateway);
             }
-            else if (ShouldListByResourceGroup(ResourceGroupName, Name))
+            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
                 var localnetGatewayPage = this.LocalNetworkGatewayClient.List(this.ResourceGroupName);
 
@@ -67,8 +64,9 @@ namespace Microsoft.Azure.Commands.Network
                     psLocalnetGateways.Add(psLocalnetGateway);
                 }
 
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psLocalnetGateways), true);
+                WriteObject(psLocalnetGateways, true);
             }
         }
     }
 }
+

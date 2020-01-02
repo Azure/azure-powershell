@@ -13,14 +13,11 @@
 // limitations under the License.
 //
 
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
-
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewayAuthenticationCertificate : PSChildResource
     {
         public string Data { get; set; }
-        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
     }

@@ -20,12 +20,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
     public class AEMExtensionTests : ComputeTestRunner
     {
         public AEMExtensionTests(Xunit.Abstractions.ITestOutputHelper output)
-            : base(output)
+        : base(output)
         {
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestAEMExtensionBasicWindowsWAD()
         {
             TestRunner.RunTestScript("Test-AEMExtensionBasicWindowsWAD");
@@ -40,72 +41,23 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionBasicLinuxWAD()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionBasicLinuxWAD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionBasicLinux()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionBasicLinux");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedWindowsWAD()
         {
             TestRunner.RunTestScript("Test-AEMExtensionAdvancedWindowsWAD");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestAEMExtensionAdvancedWindows()
         {
             TestRunner.RunTestScript("Test-AEMExtensionAdvancedWindows");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionAdvancedLinuxWAD()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionAdvancedLinuxWAD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionAdvancedLinux()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionAdvancedLinux");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestAEMExtensionAdvancedWindowsMD()
         {
             TestRunner.RunTestScript("Test-AEMExtensionAdvancedWindowsMD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionAdvancedLinuxMD()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionAdvancedLinuxMD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionAdvancedLinuxMD_ESeries()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionAdvancedLinuxMD_E");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAEMExtensionAdvancedLinuxMD_DSeries()
-        {
-            TestRunner.RunTestScript("Test-AEMExtensionAdvancedLinuxMD_D");
         }
     }
 }

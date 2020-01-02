@@ -19,11 +19,10 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
+    [Cmdlet(VerbsCommon.Get, "AzVirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
     public class GetAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -37,9 +36,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
            ParameterSetName = "Expand")]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworks", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -54,7 +51,6 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "Expand")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -69,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
         {
 
             base.Execute();
-            if (ShouldGetByName(ResourceGroupName, Name))
+            if (!string.IsNullOrEmpty(this.Name))
             {
                 var vnet = this.GetVirtualNetwork(this.ResourceGroupName, this.Name, this.ExpandResource);
 
@@ -77,8 +73,8 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                IPage<Microsoft.Azure.Management.Network.Models.VirtualNetwork> vnetPage;
-                if (ShouldListByResourceGroup(ResourceGroupName, Name))
+                IPage<VirtualNetwork> vnetPage;
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
                     vnetPage = this.VirtualNetworkClient.List(this.ResourceGroupName);
                 }
@@ -88,7 +84,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Get all resources by polling on next page link
-                var vnetList = ListNextLink<Microsoft.Azure.Management.Network.Models.VirtualNetwork>.GetAllResourcesByPollingNextLink(vnetPage, this.VirtualNetworkClient.ListNext);
+                var vnetList = ListNextLink<VirtualNetwork>.GetAllResourcesByPollingNextLink(vnetPage, this.VirtualNetworkClient.ListNext);
 
                 var psVnets = new List<PSVirtualNetwork>();
                 foreach (var virtualNetwork in vnetList)
@@ -98,7 +94,7 @@ namespace Microsoft.Azure.Commands.Network
                     psVnets.Add(psVnet);
                 }
 
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psVnets), true);
+                WriteObject(psVnets, true);
             }
         }
     }

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
                HelpMessage = "List of SSL protocols to be disabled")]
         [ValidateSet("TLSv1_0", "TLSv1_1", "TLSv1_2", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string[] DisabledSslProtocols { get; set; }
+        public List<string> DisabledSslProtocols { get; set; }
 
         [Parameter(
                HelpMessage = "Type of Ssl Policy")]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
                HelpMessage = "Ssl cipher suites to be enabled in the specified order to application gateway")]
         [ValidateNotNullOrEmpty]
-        public string[] CipherSuite { get; set; }
+        public List<string> CipherSuite { get; set; }
 
         [Parameter(
                HelpMessage = "Minimum version of Ssl protocol to be supported on application gateway")]

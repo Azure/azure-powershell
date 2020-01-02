@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayRequestRoutingRule"), OutputType(typeof(PSApplicationGatewayRequestRoutingRule))]
+    [Cmdlet(VerbsCommon.Remove, "AzApplicationGatewayRequestRoutingRule"), OutputType(typeof(PSApplicationGatewayRequestRoutingRule))]
     public class RemoveAzureApplicationGatewayRequestRoutingRuleCommand : NetworkBaseCmdlet
     {
         [Parameter(

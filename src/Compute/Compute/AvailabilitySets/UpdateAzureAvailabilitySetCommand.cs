@@ -12,21 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Linq;
-using System.Management.Automation;
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilitySet", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, ProfileNouns.AvailabilitySet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSAvailabilitySet))]
     public class UpdateAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         private const string SkuParameterSetName = "SkuParameterSet";
+        private const string ManagedParamterSetName = "ManagedParamterSet";
 
         [Alias("VMProfile")]
         [Parameter(
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.Compute
         public PSAvailabilitySet AvailabilitySet { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             Position = 1,
             ParameterSetName = SkuParameterSetName,
             ValueFromPipelineByPropertyName = false,
@@ -46,15 +45,11 @@ namespace Microsoft.Azure.Commands.Compute
         public string Sku { get; set; }
 
         [Parameter(
-            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public string ProximityPlacementGroupId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Key-value pairs in the form of a hash table."
-            )]
-        public Hashtable Tag { get; set; }
+            Mandatory = true,
+            ParameterSetName = ManagedParamterSetName,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Managed Availability Set")]
+        public SwitchParameter Managed { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -71,13 +66,23 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         Location = this.AvailabilitySet.Location,
                         PlatformUpdateDomainCount = this.AvailabilitySet.PlatformUpdateDomainCount,
-                        PlatformFaultDomainCount = this.AvailabilitySet.PlatformFaultDomainCount,
-                        Tags = Tag == null ? null : Tag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value),
-                        Sku = new Sku(this.IsParameterBound(c => c.Sku) ? this.Sku : this.AvailabilitySet.Sku, null, null),
-                        ProximityPlacementGroup = this.IsParameterBound(c => c.ProximityPlacementGroupId) 
-                                                ? new SubResource(this.ProximityPlacementGroupId)
-                                                : this.AvailabilitySet.ProximityPlacementGroup
+                        PlatformFaultDomainCount = this.AvailabilitySet.PlatformFaultDomainCount
                     };
+
+                    if (this.ParameterSetName.Equals(ManagedParamterSetName))
+                    {
+                        avSetParams.Sku = new Sku
+                        {
+                            Name = "Aligned"
+                        };
+                    }
+                    else
+                    {
+                        avSetParams.Sku = new Sku
+                        {
+                            Name = this.Sku
+                        };
+                    }
 
                     var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.AvailabilitySet.ResourceGroupName,

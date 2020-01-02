@@ -12,18 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMConfig",DefaultParameterSetName = "DefaultParameterSet"),OutputType(typeof(PSVirtualMachine))]
+    [Cmdlet(
+        VerbsCommon.New,
+        ProfileNouns.VirtualMachineConfig,
+        DefaultParameterSetName = "DefaultParameterSet"),
+    OutputType(
+        typeof(PSVirtualMachine))]
     public class NewAzureVMConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("ResourceName", "Name")]
@@ -83,47 +86,10 @@ namespace Microsoft.Azure.Commands.Compute
         public string [] Zone { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Id of ProximityPlacementGroup")]
-        public string ProximityPlacementGroupId { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Id of Host")]
-        public string HostId { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Id of virtual machine scale set")]
-        public string VmssId { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The max price of the billing of a low priority virtual machine.")]
-        public double MaxPrice { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The eviction policy for the low priority virtual machine.  Only supported value is 'Deallocate'.")]
-        [PSArgumentCompleter("Deallocate")]
-        public string EvictionPolicy { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
-        [PSArgumentCompleter("Regular", "Spot")]
-        public string Priority { get; set; }
-
-        [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
 		[Alias("Tag")]
 		public Hashtable Tags { get; set; }
-
-        [Parameter(
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true)]
-        public SwitchParameter EnableUltraSSD { get; set; }
 
         protected override bool IsUsageMetricEnabled
         {
@@ -143,59 +109,20 @@ namespace Microsoft.Azure.Commands.Compute
                 Identity = this.AssignIdentity.IsPresent ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned) : null,
                 Tags = this.Tags != null ? this.Tags.ToDictionary() : null,
                 Zones = this.Zone,
-                EvictionPolicy = this.EvictionPolicy,
-                Priority = this.Priority
             };
 
-            if (this.IsParameterBound(c => c.IdentityType))
+            if (this.IdentityType != null)
             {
                 vm.Identity = new VirtualMachineIdentity(null, null, this.IdentityType);
-            }
-
-            if (this.IsParameterBound(c => c.IdentityId))
-            {
-                if (vm.Identity == null)
+                if (this.IdentityId != null)
                 {
-                    vm.Identity = new VirtualMachineIdentity();
-                }
-
-                vm.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>();
-
-                foreach (var id in this.IdentityId)
-                {
-                    vm.Identity.UserAssignedIdentities.Add(id, new VirtualMachineIdentityUserAssignedIdentitiesValue());
+                    vm.Identity.IdentityIds = this.IdentityId;
                 }
             }
-
             if (!string.IsNullOrEmpty(this.VMSize))
             {
                 vm.HardwareProfile = new HardwareProfile();
                 vm.HardwareProfile.VmSize = this.VMSize;
-            }
-
-            if (this.EnableUltraSSD.IsPresent)
-            {
-                vm.AdditionalCapabilities = new AdditionalCapabilities(true);
-            }
-
-            if (this.IsParameterBound(c => c.ProximityPlacementGroupId))
-            {
-                vm.ProximityPlacementGroup = new SubResource(this.ProximityPlacementGroupId);
-            }
-
-            if (this.IsParameterBound(c => c.HostId))
-            {
-                vm.Host = new SubResource(this.HostId);
-            }
-
-            if (this.IsParameterBound(c => c.VmssId))
-            {
-                vm.VirtualMachineScaleSet = new SubResource(this.VmssId);
-            }
-
-            if (this.IsParameterBound(c => c.MaxPrice))
-            {
-                vm.BillingProfile = new BillingProfile(this.MaxPrice);
             }
 
             WriteObject(vm);

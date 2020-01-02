@@ -13,8 +13,9 @@ Removes the connection draining configuration of a back-end HTTP settings object
 ## SYNTAX
 
 ```
-Remove-AzApplicationGatewayConnectionDraining -BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzApplicationGatewayConnectionDraining
+ -BackendHttpSettings <PSApplicationGatewayBackendHttpSettings> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +26,7 @@ The **Remove-AzApplicationGatewayConnectionDraining** cmdlet removes the connect
 ### Example 1
 ```
 PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $Settings  = Get-AzApplicationGatewayBackendHttpSettings -Name "Settings01" -ApplicationGateway $AppGw
+PS C:\> $Settings  = Get-AzApplicationGatewayBackendHttpSetting -Name "Settings01" -ApplicationGateway $AppGw
 PS C:\> Remove-AzApplicationGatewayConnectionDraining -BackendHttpSettings $Settings
 ```
 
@@ -39,9 +40,9 @@ The last command removes the connection draining configuration of the back-end H
 The backend http settings
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings
+Type: PSApplicationGatewayBackendHttpSettings
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -54,9 +55,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -82,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzApplicationGateway](./Get-AzApplicationGateway.md)
 
-[Get-AzApplicationGatewayBackendHttpSettings](./Get-AzApplicationGatewayBackendHttpSettings.md)
+[Get-AzApplicationGatewayBackendHttpSetting](./Get-AzApplicationGatewayBackendHttpSetting.md)
 
 [Get-AzApplicationGatewayConnectionDraining](./Get-AzApplicationGatewayConnectionDraining.md)
 

@@ -20,7 +20,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Set, "AzApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewaySslCertificateCommand : AzureApplicationGatewaySslCertificateBase
     {
         [Parameter(

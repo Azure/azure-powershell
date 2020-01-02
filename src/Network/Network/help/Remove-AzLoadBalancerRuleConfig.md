@@ -14,8 +14,8 @@ Removes a rule configuration for a load balancer.
 ## SYNTAX
 
 ```
-Remove-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzLoadBalancerRuleConfig [-Name <String>] -LoadBalancer <PSLoadBalancer>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,7 @@ PS C:> Remove-AzLoadBalancerRuleConfig -Name "MyLBruleName" -LoadBalancer $loadb
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the $loadbalancer variable.
+
 The second command removes the rule configuration named MyLBruleName from the load balancer in $loadbalancer.
 
 ## PARAMETERS
@@ -38,9 +39,9 @@ The second command removes the rule configuration named MyLBruleName from the lo
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -53,14 +54,14 @@ Accept wildcard characters: False
 Specifies the **LoadBalancer** object that contains the rule configuration that this cmdlet removes.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Type: PSLoadBalancer
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -68,39 +69,9 @@ Accept wildcard characters: False
 Specifies the name of the load balancer rule configuration that this cmdlet removes.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Aliases: 
 
 Required: False
 Position: Named
@@ -114,7 +85,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+### PSLoadBalancer
+Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
 
 ## OUTPUTS
 

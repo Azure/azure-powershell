@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnClientConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSVpnProfile))]
+    [Cmdlet(VerbsCommon.New, "AzVpnClientConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSVpnProfile))]
     public class NewAzureVpnClientConfigurationCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
         public string ProcessorArchitecture { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Authentication Method")]
         [ValidateSet(
@@ -74,12 +74,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of client root certificate paths")]
-        public string[] ClientRootCertificateFileList { get; set; }
+        public List<string> ClientRootCertificateFileList { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            string shouldProcessMessage = string.Format("Execute AzureRmVpnClientConfiguration for ResourceGroupName {0} VirtualNetworkGateway {1}", ResourceGroupName, Name);
+            string shouldProcessMessage = string.Format("Execute AzureRmVpnClientConfiguration for ResourceGroupName {0} VirtualNetworkGateway {1}", Name, ResourceGroupName);
             if (ShouldProcess(shouldProcessMessage, VerbsCommon.New))
             {
                 PSVpnClientParameters vpnClientParams = new PSVpnClientParameters();

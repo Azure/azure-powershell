@@ -13,15 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSExpressRouteCircuit), DeprecatedOutputProperties = new[] { "AllowGlobalReach" })]
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitPeeringConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet(VerbsCommon.Add, "AzExpressRouteCircuitPeeringConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCircuit))]
     public class AddAzureExpressRouteCircuitPeeringConfigCommand : AzureExpressRouteCircuitPeeringConfigBase
     {
         [Parameter(
@@ -48,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
 
-            if (string.Equals(ParameterSetName, ParamSetByRouteFilter))
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (this.RouteFilter != null)
                 {
@@ -60,6 +58,8 @@ namespace Microsoft.Azure.Commands.Network
 
             peering.Name = this.Name;
             peering.PeeringType = this.PeeringType;
+            peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
+            peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
             peering.PeerASN = this.PeerASN;
             peering.VlanId = this.VlanId;
 
@@ -69,17 +69,13 @@ namespace Microsoft.Azure.Commands.Network
                 peering.SharedKey = this.SharedKey;
             }
 
-            if (this.PeerAddressType == IPv6)
-            {
-                this.SetIpv6PeeringParameters(peering);
-            }
-            else
-            {
-                // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
-                this.SetIpv4PeeringParameters(peering);
-            }
-
             this.ConstructMicrosoftConfig(peering);
+
+            if (!string.IsNullOrEmpty(this.RouteFilterId))
+            {
+                peering.RouteFilter = new PSRouteFilter();
+                peering.RouteFilter.Id = this.RouteFilterId;
+            }
 
             this.ExpressRouteCircuit.Peerings.Add(peering);
 

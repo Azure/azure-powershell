@@ -12,94 +12,29 @@ Configures flow logging for a target resource.
 
 ## SYNTAX
 
-### SetFlowlogByResourceWithoutTA (Default)
+### SetByResource (Default)
 ```
 Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher <PSNetworkWatcher> -TargetResourceId <String>
  -EnableFlowLog <Boolean> -StorageAccountId <String> [-EnableRetention <Boolean>] [-RetentionInDays <Int32>]
- [-FormatType <String>] [-FormatVersion <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetFlowlogByResourceWithTAByResource
-```
-Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher <PSNetworkWatcher> -TargetResourceId <String>
- -EnableFlowLog <Boolean> -StorageAccountId <String> [-EnableRetention <Boolean>] [-RetentionInDays <Int32>]
- [-FormatType <String>] [-FormatVersion <Int32>] [-AsJob] [-EnableTrafficAnalytics]
- -Workspace <IOperationalInsightWorkspace> [-TrafficAnalyticsInterval <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SetFlowlogByResourceWithTAByDetails
-```
-Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher <PSNetworkWatcher> -TargetResourceId <String>
- -EnableFlowLog <Boolean> -StorageAccountId <String> [-EnableRetention <Boolean>] [-RetentionInDays <Int32>]
- [-FormatType <String>] [-FormatVersion <Int32>] [-AsJob] [-EnableTrafficAnalytics]
- -WorkspaceResourceId <String> -WorkspaceGUID <String> -WorkspaceLocation <String>
- [-TrafficAnalyticsInterval <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### SetFlowlogByNameWithTAByResource
+### SetByName
 ```
 Set-AzNetworkWatcherConfigFlowLog -NetworkWatcherName <String> -ResourceGroupName <String>
  -TargetResourceId <String> -EnableFlowLog <Boolean> -StorageAccountId <String> [-EnableRetention <Boolean>]
- [-RetentionInDays <Int32>] [-FormatType <String>] [-FormatVersion <Int32>] [-AsJob] [-EnableTrafficAnalytics]
- -Workspace <IOperationalInsightWorkspace> [-TrafficAnalyticsInterval <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SetFlowlogByNameWithTAByDetails
-```
-Set-AzNetworkWatcherConfigFlowLog -NetworkWatcherName <String> -ResourceGroupName <String>
- -TargetResourceId <String> -EnableFlowLog <Boolean> -StorageAccountId <String> [-EnableRetention <Boolean>]
- [-RetentionInDays <Int32>] [-FormatType <String>] [-FormatVersion <Int32>] [-AsJob] [-EnableTrafficAnalytics]
- -WorkspaceResourceId <String> -WorkspaceGUID <String> -WorkspaceLocation <String>
- [-TrafficAnalyticsInterval <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### SetFlowlogByNameWithoutTA
-```
-Set-AzNetworkWatcherConfigFlowLog -NetworkWatcherName <String> -ResourceGroupName <String>
- -TargetResourceId <String> -EnableFlowLog <Boolean> -StorageAccountId <String> [-EnableRetention <Boolean>]
- [-RetentionInDays <Int32>] [-FormatType <String>] [-FormatVersion <Int32>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SetFlowlogByLocationWithTAByResource
-```
-Set-AzNetworkWatcherConfigFlowLog -Location <String> -TargetResourceId <String> -EnableFlowLog <Boolean>
- -StorageAccountId <String> [-EnableRetention <Boolean>] [-RetentionInDays <Int32>] [-FormatType <String>]
- [-FormatVersion <Int32>] [-AsJob] [-EnableTrafficAnalytics] -Workspace <IOperationalInsightWorkspace>
- [-TrafficAnalyticsInterval <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### SetFlowlogByLocationWithTAByDetails
-```
-Set-AzNetworkWatcherConfigFlowLog -Location <String> -TargetResourceId <String> -EnableFlowLog <Boolean>
- -StorageAccountId <String> [-EnableRetention <Boolean>] [-RetentionInDays <Int32>] [-FormatType <String>]
- [-FormatVersion <Int32>] [-AsJob] [-EnableTrafficAnalytics] -WorkspaceResourceId <String>
- -WorkspaceGUID <String> -WorkspaceLocation <String> [-TrafficAnalyticsInterval <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SetFlowlogByLocationWithoutTA
-```
-Set-AzNetworkWatcherConfigFlowLog -Location <String> -TargetResourceId <String> -EnableFlowLog <Boolean>
- -StorageAccountId <String> [-EnableRetention <Boolean>] [-RetentionInDays <Int32>] [-FormatType <String>]
- [-FormatVersion <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-RetentionInDays <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Set-AzNetworkWatcherConfigFlowLog configures flow logging for a target resource. 
-Properties to configure include: whether or not flow logging is enabled for the resource provided, the configured storage account to send logs, the flow logging format, and the retention policy for the logs. 
+Properties to configure include: whether or not flow logging is enabled for the resource provided, the configured storage account to send logs, and the retention policy for the logs. 
 Currently Network Security Groups are supported for flow logging. 
 
 ## EXAMPLES
 
-### Example 1: Configure Flow Logging for a Specified NSG
+### --- Example 1: Configure Flow Logging for a Specified NSG ---
 ```
 PS C:\> $NW = Get-AzNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
 PS C:\> $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName NSGRG -Name appNSG
@@ -115,71 +50,9 @@ RetentionPolicy  : {
                      "Days": 0,
                      "Enabled": false
                    }
-Format           : {
-                     "Type ": "Json",
-                     "Version": 1
-                   }
 ```
 
-In this example we configure flow logging status for a Network Security Group. In the response, we see the specified NSG has flow logging enabled, default format, and no retention policy set.
-
-### Example 2: Configure Flow Logging for a Specified NSG and set the version of flow logging to 2.
-```
-PS C:\> $NW = Get-AzNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
-PS C:\> $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName NSGRG -Name appNSG
-PS C:\> $storageId = "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123"
-
-
-PS C:\> Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -EnableFlowLog $true -StorageAccountId $storageID -FormatVersion 2
-
-TargetResourceId : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Network/networkSecurityGroups/appNSG
-StorageId        : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123
-Enabled          : True
-RetentionPolicy  : {
-                     "Days": 0,
-                     "Enabled": false
-                   }
-Format           : {
-                     "Type ": "Json",
-                     "Version": 2
-                   }
-```
-
-In this example, we configure flow logging on a Network Security Group (NSG) with version 2 logs specified. In the response, we see the specified NSG has flow logging enabled, the format is set, and there is no retention policy configured. If the region does not support version you specified, Network Watcher will write the default supported version in the region.
-
-### Example 3: Configure Flow Logging and Traffic Analytics for a Specified NSG
-```
-PS C:\> $NW = Get-AzNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
-PS C:\> $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName NSGRG -Name appNSG
-PS C:\> $storageId = "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123"
-PS C:\> $workspace = Get-AzOperationalInsightsWorkspace -Name WorkspaceName -ResourceGroupName WorkspaceRg
-
-
-PS C:\> Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -EnableFlowLog $true -StorageAccountId $storageID -EnableTrafficAnalytics -Workspace $workspace -TrafficAnalyticsInterval 60
-
-TargetResourceId : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Network/networkSecurityGroups/appNSG
-StorageId        : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123
-Enabled          : True
-RetentionPolicy  : {
-                     "Days": 0,
-                     "Enabled": false
-                   }
-Format           : {
-                     "Type ": "Json",
-                     "Version": 1
-                   }
-FlowAnalyticsConfiguration : {
-            "networkWatcherFlowAnalyticsConfiguration": {
-              "enabled": true,
-              "workspaceId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
-              "workspaceRegion": "WorkspaceLocation",
-              "workspaceResourceId": "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourcegroups/WorkspaceRg/providers/microsoft.operationalinsights/workspaces/WorkspaceName",
-			  "TrafficAnalyticsInterval": 60
-            }
-          }
-```
-
-In this example we configure flow logging status and Traffic Analytics for a Network Security Group. In the response, we see the specified NSG has flow logging and Traffic Analytics enabled, default format, and no retention policy set.
+In this example we configure flow logging status for a Network Security Group. In the response, we see the specified NSG has flow logging enabled, and no retention policy set.
 
 ## PARAMETERS
 
@@ -187,9 +60,9 @@ In this example we configure flow logging status and Traffic Analytics for a Net
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -202,9 +75,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -217,9 +90,9 @@ Accept wildcard characters: False
 Flag to enable/disable flow logging.
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -232,71 +105,11 @@ Accept wildcard characters: False
 Flag to enable/disable retention.
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EnableTrafficAnalytics
-Flag to enable/disable retention.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetFlowlogByResourceWithTAByResource, SetFlowlogByResourceWithTAByDetails, SetFlowlogByNameWithTAByResource, SetFlowlogByNameWithTAByDetails, SetFlowlogByLocationWithTAByResource, SetFlowlogByLocationWithTAByDetails
-Aliases: EnableTA
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FormatType
-Type of flow log format.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -FormatVersion
-Version of flow log format.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Location
-Location of the network watcher.
-
-```yaml
-Type: System.String
-Parameter Sets: SetFlowlogByLocationWithTAByResource, SetFlowlogByLocationWithTAByDetails, SetFlowlogByLocationWithoutTA
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -307,9 +120,9 @@ Accept wildcard characters: False
 The network watcher resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-Parameter Sets: SetFlowlogByResourceWithoutTA, SetFlowlogByResourceWithTAByResource, SetFlowlogByResourceWithTAByDetails
-Aliases:
+Type: PSNetworkWatcher
+Parameter Sets: SetByResource
+Aliases: 
 
 Required: True
 Position: Named
@@ -322,8 +135,8 @@ Accept wildcard characters: False
 The name of network watcher.
 
 ```yaml
-Type: System.String
-Parameter Sets: SetFlowlogByNameWithTAByResource, SetFlowlogByNameWithTAByDetails, SetFlowlogByNameWithoutTA
+Type: String
+Parameter Sets: SetByName
 Aliases: Name
 
 Required: True
@@ -337,9 +150,9 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: System.String
-Parameter Sets: SetFlowlogByNameWithTAByResource, SetFlowlogByNameWithTAByDetails, SetFlowlogByNameWithoutTA
-Aliases:
+Type: String
+Parameter Sets: SetByName
+Aliases: 
 
 Required: True
 Position: Named
@@ -352,9 +165,9 @@ Accept wildcard characters: False
 Number of days to retain flow log records.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -367,9 +180,9 @@ Accept wildcard characters: False
 ID of the storage account which is used to store the flow log.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -382,96 +195,9 @@ Accept wildcard characters: False
 The target resource ID.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TrafficAnalyticsInterval
-Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.
-
-```yaml
-Type: System.Int32
-Parameter Sets: SetFlowlogByResourceWithTAByResource, SetFlowlogByResourceWithTAByDetails, SetFlowlogByNameWithTAByResource, SetFlowlogByNameWithTAByDetails, SetFlowlogByLocationWithTAByResource, SetFlowlogByLocationWithTAByDetails
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Workspace
-The WS object which is used to store the traffic analytics data.
-
-```yaml
-Type: Microsoft.Azure.Management.Internal.Network.Common.IOperationalInsightWorkspace
-Parameter Sets: SetFlowlogByResourceWithTAByResource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: Microsoft.Azure.Management.Internal.Network.Common.IOperationalInsightWorkspace
-Parameter Sets: SetFlowlogByNameWithTAByResource, SetFlowlogByLocationWithTAByResource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -WorkspaceGUID
-GUID of the WS which is used to store the traffic analytics data.
-
-```yaml
-Type: System.String
-Parameter Sets: SetFlowlogByResourceWithTAByDetails, SetFlowlogByNameWithTAByDetails, SetFlowlogByLocationWithTAByDetails
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -WorkspaceLocation
-Azure Region of the WS which is used to store the traffic analytics data.
-
-```yaml
-Type: System.String
-Parameter Sets: SetFlowlogByResourceWithTAByDetails, SetFlowlogByNameWithTAByDetails, SetFlowlogByLocationWithTAByDetails
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -WorkspaceResourceId
-Subscription of the WS which is used to store the traffic analytics data.
-
-```yaml
-Type: System.String
-Parameter Sets: SetFlowlogByResourceWithTAByDetails, SetFlowlogByNameWithTAByDetails, SetFlowlogByLocationWithTAByDetails
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -484,7 +210,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -499,7 +225,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -516,16 +242,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-
-### System.String
-
-### System.Boolean
-
-### System.Int32
-
-### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
-### Microsoft.Azure.Management.Internal.Network.Common.IOperationalInsightWorkspace
+System.String
+System.Boolean
+System.Int32
 
 ## OUTPUTS
 
@@ -536,19 +255,13 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 ## RELATED LINKS
 
+[Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
+
 [New-AzNetworkWatcher](./New-AzNetworkWatcher.md)
 
 [Get-AzNetworkWatcher](./Get-AzNetworkWatcher.md)
 
 [Remove-AzNetworkWatcher](./Remove-AzNetworkWatcher.md)
-
-[Get-AzNetworkWatcherNextHop](./Get-AzNetworkWatcherNextHop.md)
-
-[Get-AzNetworkWatcherSecurityGroupView](./Get-AzNetworkWatcherSecurityGroupView.md)
-
-[Get-AzNetworkWatcherTopology](./Get-AzNetworkWatcherTopology.md)
-
-[Start-AzNetworkWatcherResourceTroubleshooting](./Start-AzNetworkWatcherResourceTroubleshooting.md)
 
 [New-AzNetworkWatcherPacketCapture](./New-AzNetworkWatcherPacketCapture.md)
 
@@ -560,32 +273,14 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [Stop-AzNetworkWatcherPacketCapture](./Stop-AzNetworkWatcherPacketCapture.md)
 
-[New-AzNetworkWatcherProtocolConfiguration](./New-AzNetworkWatcherProtocolConfiguration.md)
-
 [Test-AzNetworkWatcherIPFlow](./Test-AzNetworkWatcherIPFlow.md)
 
-[Test-AzNetworkWatcherConnectivity](./Test-AzNetworkWatcherConnectivity.md)
+[Get-AzNetworkWatcherNextHop](./Get-AzNetworkWatcherNextHop.md)
 
-[Stop-AzNetworkWatcherConnectionMonitor](./Stop-AzNetworkWatcherConnectionMonitor.md)
+[Get-AzNetworkWatcherSecurityGroupView](./Get-AzNetworkWatcherSecurityGroupView.md)
 
-[Start-AzNetworkWatcherConnectionMonitor](./Start-AzNetworkWatcherConnectionMonitor.md)
+[Get-AzNetworkWatcherTopology](./Get-AzNetworkWatcherTopology.md)
 
-[Set-AzNetworkWatcherConnectionMonitor](./Set-AzNetworkWatcherConnectionMonitor.md)
-
-[Set-AzNetworkWatcherConfigFlowLog](./Set-AzNetworkWatcherConfigFlowLog.md)
-
-[Remove-AzNetworkWatcherConnectionMonitor](./Remove-AzNetworkWatcherConnectionMonitor.md)
-
-[New-AzNetworkWatcherConnectionMonitor](./New-AzNetworkWatcherConnectionMonitor.md)
+[Start-AzNetworkWatcherResourceTroubleshooting](./Start-AzNetworkWatcherResourceTroubleshooting.md)
 
 [Get-AzNetworkWatcherTroubleshootingResult](./Get-AzNetworkWatcherTroubleshootingResult.md)
-
-[Get-AzNetworkWatcherReachabilityReport](./Get-AzNetworkWatcherReachabilityReport.md)
-
-[Get-AzNetworkWatcherReachabilityProvidersList](./Get-AzNetworkWatcherReachabilityProvidersList.md)
-
-[Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
-
-[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport)
-
-[Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor)

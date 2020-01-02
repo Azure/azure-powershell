@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmruncommanddocument
 schema: 2.0.0
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVMRunCommandDocument
 
 ## SYNOPSIS
-Get a run command document.
+Get run command document.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzVMRunCommandDocument [-Location] <String> [[-CommandId] <String>]
 ```
 
 ## DESCRIPTION
-Get a run command document.
+Get run command document.
 
 ## EXAMPLES
 
@@ -28,6 +28,9 @@ PS C:\> Get-AzVMRunCommandDocument -Location 'westus' -CommandId 'RunPowerShellS
 ```
 
 Gets a specific run command document for 'RunPowerShellScript' in 'westus'.
+
+
+Get-AzVMRunCommandDocument -Location $loc
 
 ### Example 2
 ```
@@ -39,15 +42,15 @@ Lists all available run commands in 'westus'.
 ## PARAMETERS
 
 ### -CommandId
-The command ID.
+The command id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -57,9 +60,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -69,22 +72,22 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location upon which run commands are queried.
+The location upon which run commands is queried.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -97,3 +100,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

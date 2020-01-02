@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnClientRootCertificate"), OutputType(typeof(PSVpnClientRootCertificate))]
+    [Cmdlet(VerbsCommon.Get, "AzVpnClientRootCertificate"), OutputType(typeof(PSVpnClientRootCertificate))]
     public class GetAzureVpnClientRootCertificates : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network gateway name.")]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworkGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string VirtualNetworkGatewayName { get; set; }
 
@@ -50,17 +49,13 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             var vnetGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.VirtualNetworkGatewayName);
-            if (vnetGateway.VpnClientConfiguration == null)
-            {
-                throw new ArgumentException(string.Format(Properties.Resources.VirtualNetworkGatewayNoRootCertificate, VirtualNetworkGatewayName));
-            }
 
             if (!string.IsNullOrEmpty(this.VpnClientRootCertificateName))
             {
                 PSVpnClientRootCertificate rootCertificate = vnetGateway.VpnClientConfiguration.VpnClientRootCertificates.Find(cert => cert.Name.Equals(VpnClientRootCertificateName));
                 if (rootCertificate == null)
                 {
-                    throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, VpnClientRootCertificateName));
+                    throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
                 }
                 else
                 {
@@ -74,3 +69,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

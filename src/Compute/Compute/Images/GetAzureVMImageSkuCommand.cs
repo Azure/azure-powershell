@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMImageSku")]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageSku)]
     [OutputType(typeof(PSVirtualMachineImageSku))]
     public class GetAzureVMImageSkuCommand : VirtualMachineImageBaseCmdlet
     {

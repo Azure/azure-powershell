@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LocalNetworkGateway", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzLocalNetworkGateway", SupportsShouldProcess = true)]
     public class RemoveAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/localNetworkGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 

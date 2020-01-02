@@ -16,15 +16,16 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM",SupportsShouldProcess = true,DefaultParameterSetName = ResourceGroupNameParameterSet)]
+    [Cmdlet(VerbsData.Update,
+        ProfileNouns.VirtualMachine,
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class UpdateAzureVMCommand : VirtualMachineBaseCmdlet
     {
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = ExplicitIdentityParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -61,7 +62,6 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = IdParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceIdCompleter("Microsoft.Compute/virtualMachines")]
         public string Id { get; set; }
 
         [Alias("VMProfile")]
@@ -70,6 +70,8 @@ namespace Microsoft.Azure.Commands.Compute
         public PSVirtualMachine VM { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false)]
+        //[Obsolete("Update-AzureRmVm: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        //[Alias("Tags")]
         public Hashtable Tag { get; set; }
 
         [Parameter(
@@ -97,26 +99,8 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = false)]
         public bool OsDiskWriteAccelerator { get; set; }
 
-        [Parameter(
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true)]
-        public bool UltraSSDEnabled { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The max price of the billing of a low priority virtual machine")]
-        public double MaxPrice { get; set; }
-
-        [Parameter(
-            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public string ProximityPlacementGroupId { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
-        public SwitchParameter NoWait { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -138,48 +122,21 @@ namespace Microsoft.Azure.Commands.Compute
                         StorageProfile = this.VM.StorageProfile,
                         NetworkProfile = this.VM.NetworkProfile,
                         OsProfile = this.VM.OSProfile,
-                        BillingProfile = this.VM.BillingProfile,
                         Plan = this.VM.Plan,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.VM.Location,
                         LicenseType = this.VM.LicenseType,
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
-                        Identity = this.AssignIdentity.IsPresent 
-                                   ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned, null)
-                                   : ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
-                        Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null,
-                        ProximityPlacementGroup = this.IsParameterBound(c => c.ProximityPlacementGroupId)
-                                                ? new SubResource(this.ProximityPlacementGroupId)
-                                                : this.VM.ProximityPlacementGroup,
-                        Host = this.VM.Host,
-                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
-                        AdditionalCapabilities = this.VM.AdditionalCapabilities,
-                        EvictionPolicy = this.VM.EvictionPolicy,
-                        Priority = this.VM.Priority
+                        Identity = this.AssignIdentity.IsPresent ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned) : this.VM.Identity,
+                        Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null
                     };
 
-                    if (this.IsParameterBound(c => c.IdentityType))
+                    if (this.IdentityType != null)
                     {
-                        parameters.Identity = new VirtualMachineIdentity(null, null, this.IdentityType, null);
+                        parameters.Identity = new VirtualMachineIdentity(null, null, this.IdentityType);
                     }
 
-                    if (this.IsParameterBound(c => c.IdentityId))
-                    {
-                        if (parameters.Identity == null)
-                        {
-                            parameters.Identity = new VirtualMachineIdentity();
-
-                        }
-
-                        parameters.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>();
-
-                        foreach (var id in this.IdentityId)
-                        {
-                            parameters.Identity.UserAssignedIdentities.Add(id, new VirtualMachineIdentityUserAssignedIdentitiesValue());
-                        }
-                    }
-
-                    if (this.IsParameterBound(c => c.OsDiskWriteAccelerator))
+                    if (this.MyInvocation.BoundParameters.ContainsKey("OsDiskWriteAccelerator"))
                     {
                         if (parameters.StorageProfile == null)
                         {
@@ -192,42 +149,20 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.OsDiskWriteAccelerator;
                     }
 
-                    if (this.IsParameterBound(c => c.UltraSSDEnabled))
+                    if (this.IdentityId != null)
                     {
-                        if (parameters.AdditionalCapabilities == null)
+                        if (parameters.Identity != null)
                         {
-                            parameters.AdditionalCapabilities = new AdditionalCapabilities();
+                            parameters.Identity.IdentityIds = this.IdentityId;
                         }
-                        parameters.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
                     }
 
-                    if (this.IsParameterBound(c => c.MaxPrice))
-                    {
-                        if (parameters.BillingProfile == null)
-                        {
-                            parameters.BillingProfile = new BillingProfile();
-                        }
-                        parameters.BillingProfile.MaxPrice = this.MaxPrice;
-                    }
-
-                    if (NoWait.IsPresent)
-                    {
-                        var op = this.VirtualMachineClient.BeginCreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VM.Name,
-                            parameters).GetAwaiter().GetResult();
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                        WriteObject(result);
-                    }
-                    else
-                    {
-                        var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VM.Name,
-                            parameters).GetAwaiter().GetResult();
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                        WriteObject(result);
-                    }
+                    var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VM.Name,
+                        parameters).GetAwaiter().GetResult();
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
                 });
             }
         }

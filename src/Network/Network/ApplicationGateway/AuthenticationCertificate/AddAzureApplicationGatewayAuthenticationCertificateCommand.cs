@@ -19,7 +19,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Add, "AzApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), 
+        OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayAuthenticationCertificateCommand : AzureApplicationGatewayAuthenticationCertificateBase
     {
         [Parameter(

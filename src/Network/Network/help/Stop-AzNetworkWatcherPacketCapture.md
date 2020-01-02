@@ -14,8 +14,8 @@ Stops a running packet capture session
 
 ### SetByResource (Default)
 ```
-Stop-AzNetworkWatcherPacketCapture -NetworkWatcher <PSNetworkWatcher> -PacketCaptureName <String> [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzNetworkWatcherPacketCapture -NetworkWatcher <PSNetworkWatcher> -PacketCaptureName <String>
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByName
@@ -25,18 +25,12 @@ Stop-AzNetworkWatcherPacketCapture -NetworkWatcherName <String> -ResourceGroupNa
  [-Confirm] [<CommonParameters>]
 ```
 
-### SetByLocation
-```
-Stop-AzNetworkWatcherPacketCapture -Location <String> -PacketCaptureName <String> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The Stop-AzNetworkWatcherPacketCapture stops a running packet capture session. After the session is stopped, the packet capture file is uploaded to storage and/or saved locally on the VM depending on its configuration.
 
 ## EXAMPLES
 
-### Example 1: Stop a packet capture session
+### --- Example 1: Stop a packet capture session ---
 ```
 Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
@@ -49,9 +43,9 @@ In this example we stop a running packet capture session named "PacketCaptureTes
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -64,26 +58,11 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Location of the network watcher.
-
-```yaml
-Type: System.String
-Parameter Sets: SetByLocation
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -94,9 +73,9 @@ Accept wildcard characters: False
 The network watcher resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
+Type: PSNetworkWatcher
 Parameter Sets: SetByResource
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -109,7 +88,7 @@ Accept wildcard characters: False
 The name of network watcher.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByName
 Aliases: Name
 
@@ -124,9 +103,9 @@ Accept wildcard characters: False
 The packet capture name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -136,12 +115,12 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns an object representing the item with which you are working.
+{{Fill PassThru Description}}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -154,9 +133,9 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByName
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -169,7 +148,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -185,7 +164,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -202,8 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-
-### System.String
+System.String
 
 ## OUTPUTS
 
@@ -237,33 +215,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 [Get-AzNetworkWatcherTopology](./Get-AzNetworkWatcherTopology.md)
 
 [Start-AzNetworkWatcherResourceTroubleshooting](./Start-AzNetworkWatcherResourceTroubleshooting.md)
-
-[Get-AzNetworkWatcherTroubleshootingResult](./Get-AzNetworkWatcherTroubleshootingResult.md)
-
-[Stop-AzNetworkWatcherPacketCapture](./Stop-AzNetworkWatcherPacketCapture.md)
-
-[New-AzNetworkWatcherProtocolConfiguration](./New-AzNetworkWatcherProtocolConfiguration.md)
-
-[Test-AzNetworkWatcherConnectivity](./Test-AzNetworkWatcherConnectivity.md)
-
-[Stop-AzNetworkWatcherConnectionMonitor](./Stop-AzNetworkWatcherConnectionMonitor.md)
-
-[Start-AzNetworkWatcherConnectionMonitor](./Start-AzNetworkWatcherConnectionMonitor.md)
-
-[Set-AzNetworkWatcherConnectionMonitor](./Set-AzNetworkWatcherConnectionMonitor.md)
-
-[Set-AzNetworkWatcherConfigFlowLog](./Set-AzNetworkWatcherConfigFlowLog.md)
-
-[Remove-AzNetworkWatcherConnectionMonitor](./Remove-AzNetworkWatcherConnectionMonitor.md)
-
-[New-AzNetworkWatcherConnectionMonitor](./New-AzNetworkWatcherConnectionMonitor.md)
-
-[Get-AzNetworkWatcherReachabilityReport](./Get-AzNetworkWatcherReachabilityReport.md)
-
-[Get-AzNetworkWatcherReachabilityProvidersList](./Get-AzNetworkWatcherReachabilityProvidersList.md)
-
-[Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
-
-[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport)
-
-[Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor)

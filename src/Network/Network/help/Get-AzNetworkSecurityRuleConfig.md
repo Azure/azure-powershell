@@ -14,8 +14,8 @@ Get a network security rule configuration for a network security group.
 ## SYNTAX
 
 ```
-Get-AzNetworkSecurityRuleConfig [-Name <String>] -NetworkSecurityGroup <PSNetworkSecurityGroup> [-DefaultRules]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkSecurityRuleConfig [-Name <String>] -NetworkSecurityGroup <PSNetworkSecurityGroup>
+ [-DefaultRules] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ The **Get-AzNetworkSecurityRuleConfig** cmdlet gets a network security rule conf
 
 ### 1: Retrieving a network security rule config
 ```
-Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 
+Get-AzNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
     | Get-AzNetworkSecurityRuleConfig -Name AllowInternetOutBound -DefaultRules
 ```
 
@@ -33,7 +33,7 @@ This command retrieves the default rule named "AllowInternetOutBound" from Azure
 
 ### 2: Retrieving a network security rule config using only the name
 ```
-Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 
+Get-AzNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
     | Get-AzNetworkSecurityRuleConfig -Name "rdp-rule"
 ```
 
@@ -45,9 +45,9 @@ This command retrieves user defined rule named "rdp-rule" from Azure network sec
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -60,9 +60,9 @@ Accept wildcard characters: False
 Indicates whether this cmdlet gets a user-created rule configuration or a default rule configuration.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -75,9 +75,9 @@ Accept wildcard characters: False
 Specifies the name of the network security rule configuration to get.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -90,9 +90,9 @@ Accept wildcard characters: False
 Specifies a **NetworkSecurityGroup** object that contains the network security rule configuration to get.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
+Type: PSNetworkSecurityGroup
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -102,11 +102,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
+### PSNetworkSecurityGroup
+Parameter 'NetworkSecurityGroup' accepts value of type 'PSNetworkSecurityGroup' from the pipeline
 
 ## OUTPUTS
 

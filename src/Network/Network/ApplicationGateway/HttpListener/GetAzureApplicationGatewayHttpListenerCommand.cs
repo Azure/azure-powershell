@@ -19,7 +19,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayHttpListener"),OutputType(typeof(PSApplicationGatewayHttpListener))]
+    [Cmdlet(VerbsCommon.Get, "AzApplicationGatewayHttpListener"),
+        OutputType(typeof(PSApplicationGatewayHttpListener), typeof(IEnumerable<PSApplicationGatewayHttpListener>))]
     public class GetAzureApplicationGatewayHttpListenerCommand : NetworkBaseCmdlet
     {
         [Parameter(

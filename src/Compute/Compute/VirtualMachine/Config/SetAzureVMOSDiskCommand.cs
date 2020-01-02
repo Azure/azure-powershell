@@ -12,18 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMOSDisk",DefaultParameterSetName = DefaultParamSet),OutputType(typeof(PSVirtualMachine))]
-    public class SetAzureVMOSDiskCommand : ComputeClientBaseCmdlet
+    [Cmdlet(
+        VerbsCommon.Set,
+        ProfileNouns.OSDisk,
+        DefaultParameterSetName = DefaultParamSet),
+    OutputType(
+        typeof(PSVirtualMachine))]
+    public class SetAzureVMOSDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string DefaultParamSet = "DefaultParamSet";
         protected const string WindowsParamSet = "WindowsParamSet";
@@ -72,7 +75,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             Position = 5,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
-        public string CreateOption { get; set; }
+        public DiskCreateOptionTypes CreateOption { get; set; }
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
@@ -158,24 +161,12 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
-        public string StorageAccountType { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = HelpMessages.VMDiskEncryptionSetId)]
-        [ValidateNotNullOrEmpty]
-        public string DiskEncryptionSetId { get; set; }
+        public StorageAccountTypes? StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false)]
         public SwitchParameter WriteAccelerator { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string DiffDiskSetting { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -226,7 +217,7 @@ namespace Microsoft.Azure.Commands.Compute
                 };
             }
 
-            if (this.IsParameterBound(c => c.CreateOption))
+            if (this.MyInvocation.BoundParameters.ContainsKey("CreateOption"))
             {
                 this.VM.StorageProfile.OsDisk.CreateOption = this.CreateOption;
             }
@@ -256,18 +247,18 @@ namespace Microsoft.Azure.Commands.Compute
                 };
             }
 
-            this.VM.StorageProfile.OsDisk.ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.DiskEncryptionSetId, this.StorageAccountType, this.VM.StorageProfile.OsDisk.ManagedDisk);
+            if (!string.IsNullOrEmpty(this.ManagedDiskId) || this.StorageAccountType != null)
+            {
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk = new ManagedDiskParameters();
+                }
+
+                this.VM.StorageProfile.OsDisk.ManagedDisk.Id = this.ManagedDiskId ?? this.VM.StorageProfile.OsDisk.ManagedDisk.Id;
+                this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType = this.StorageAccountType ?? this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
+            }
 
             this.VM.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
-
-            if (this.IsParameterBound(c => c.DiffDiskSetting))
-            {
-                if (this.VM.StorageProfile.OsDisk.DiffDiskSettings == null)
-                {
-                    this.VM.StorageProfile.OsDisk.DiffDiskSettings = new DiffDiskSettings();
-                }
-                this.VM.StorageProfile.OsDisk.DiffDiskSettings.Option = this.DiffDiskSetting;
-            }
 
             WriteObject(this.VM);
         }

@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMUsage")]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineUsage)]
     [OutputType(typeof(PSUsage))]
     public class GetAzureVMUsageCommand : VirtualMachineUsageBaseCmdlet
     {

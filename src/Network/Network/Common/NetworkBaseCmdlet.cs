@@ -15,7 +15,7 @@
 using System;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Network.Common;
-using System.Collections.Generic;
+
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -23,11 +23,6 @@ namespace Microsoft.Azure.Commands.Network
     {
 
         private NetworkClient _networkClient;
-
-        public const string IPv4 = "IPv4";
-        public const string IPv6 = "IPv6";
-        public const string All = "All";
-        public const string DisabledRuleGroupsAlias = "DisabledRuleGroups";
 
         public NetworkClient NetworkClient
         {
@@ -57,16 +52,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new NetworkCloudException(ex);
             }
-            catch (Microsoft.Azure.Management.Network.Models.ErrorException ex)
-            {
-                Rest.Azure.CloudException rex = NetworkResourceManagerProfile.Mapper.Map<Rest.Azure.CloudException>(ex);
-                throw new NetworkCloudException(rex);
-            }
-            catch (Microsoft.Azure.Management.Network.Models.ErrorResponseException ex)
-            {
-                Rest.Azure.CloudException rex = NetworkResourceManagerProfile.Mapper.Map<Rest.Azure.CloudException>(ex);
-                throw new NetworkCloudException(rex);
-            }
         }
         public virtual void Execute()
         {
@@ -80,40 +65,6 @@ namespace Microsoft.Azure.Commands.Network
             var endIndex = resourceId.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
 
             return resourceId.Substring(startIndex, endIndex - startIndex);
-        }
-
-        public static bool IsResourcePresent(Action fn)
-        {
-            try
-            {
-                fn();
-            }
-            catch (Rest.Azure.CloudException exception)
-            {
-                if (exception.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    return false;
-                }
-                throw;
-            }
-            catch (Microsoft.Azure.Management.Network.Models.ErrorException exception)
-            {
-                if (exception.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    return false;
-                }
-                throw;
-            }
-            catch (Microsoft.Azure.Management.Network.Models.ErrorResponseException exception)
-            {
-                if (exception.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    return false;
-                }
-                throw;
-            }
-
-            return true;
         }
     }
 }

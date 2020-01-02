@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnection", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzVirtualNetworkGatewayConnection", SupportsShouldProcess = true)]
     public class RemoveAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/connections", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 

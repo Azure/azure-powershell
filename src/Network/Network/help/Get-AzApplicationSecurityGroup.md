@@ -25,30 +25,6 @@ The **Get-AzApplicationSecurityGroup** cmdlet gets an application security group
 ### Example 1: Retrieve all application security groups.
 ```
 PS C:\> Get-AzApplicationSecurityGroup
-
-ProvisioningState : Succeeded
-ResourceGroupName : MyResourceGroup
-Location          : southcentralus
-ResourceGuid      :
-Type              : Microsoft.Network/applicationSecurityGroups
-Tag               : {}
-TagsTable         :
-Name              : MyApplicationSecurityGroup1
-Etag              : W/"00000000-0000-0000-0000-000000000000"
-Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
-                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup1
-
-ProvisioningState : Succeeded
-ResourceGroupName : MyResourceGroup
-Location          : southcentralus
-ResourceGuid      :
-Type              : Microsoft.Network/applicationSecurityGroups
-Tag               : {}
-TagsTable         :
-Name              : MyApplicationSecurityGroup2
-Etag              : W/"00000000-0000-0000-0000-000000000000"
-Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
-                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup2
 ```
 
 The command above returns the all application security groups in the subscription.
@@ -56,83 +32,16 @@ The command above returns the all application security groups in the subscriptio
 ### Example 2: Retrieve application security groups in a resource group.
 ```
 PS C:\> Get-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup
-
-ProvisioningState : Succeeded
-ResourceGroupName : MyResourceGroup
-Location          : southcentralus
-ResourceGuid      :
-Type              : Microsoft.Network/applicationSecurityGroups
-Tag               : {}
-TagsTable         :
-Name              : MyApplicationSecurityGroup1
-Etag              : W/"00000000-0000-0000-0000-000000000000"
-Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
-                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup1
-
-ProvisioningState : Succeeded
-ResourceGroupName : MyResourceGroup
-Location          : southcentralus
-ResourceGuid      :
-Type              : Microsoft.Network/applicationSecurityGroups
-Tag               : {}
-TagsTable         :
-Name              : MyApplicationSecurityGroup2
-Etag              : W/"00000000-0000-0000-0000-000000000000"
-Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
-                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup2
 ```
 
 The command above returns all application security groups that belong to the resource group MyResourceGroup.
 
 ### Example 3: Retrieve a specific application security group.
 ```
-PS C:\> Get-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name MyApplicationSecurityGroup1
-
-ProvisioningState : Succeeded
-ResourceGroupName : MyResourceGroup
-Location          : southcentralus
-ResourceGuid      :
-Type              : Microsoft.Network/applicationSecurityGroups
-Tag               : {}
-TagsTable         :
-Name              : MyApplicationSecurityGroup1
-Etag              : W/"00000000-0000-0000-0000-000000000000"
-Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
-                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup1
+PS C:\> Get-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name MyApplicationSecurityGroup
 ```
 
 The command above returns the application security group MyApplicationSecurityGroup under the resource group MyResourceGroup.
-
-### Example 4: Retrieve application security groups using filtering.
-```
-PS C:\> Get-AzApplicationSecurityGroup -Name MyApplicationSecurityGroup*
-
-ProvisioningState : Succeeded
-ResourceGroupName : MyResourceGroup
-Location          : southcentralus
-ResourceGuid      :
-Type              : Microsoft.Network/applicationSecurityGroups
-Tag               : {}
-TagsTable         :
-Name              : MyApplicationSecurityGroup1
-Etag              : W/"00000000-0000-0000-0000-000000000000"
-Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
-                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup1
-
-ProvisioningState : Succeeded
-ResourceGroupName : MyResourceGroup
-Location          : southcentralus
-ResourceGuid      :
-Type              : Microsoft.Network/applicationSecurityGroups
-Tag               : {}
-TagsTable         :
-Name              : MyApplicationSecurityGroup2
-Etag              : W/"00000000-0000-0000-0000-000000000000"
-Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsof
-                    t.Network/applicationSecurityGroups/MyApplicationSecurityGroup2
-```
-
-The command above returns all application security groups that start with "MyApplicationSecurityGroup".
 
 ## PARAMETERS
 
@@ -140,9 +49,9 @@ The command above returns all application security groups that start with "MyApp
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -155,7 +64,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -163,26 +72,26 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

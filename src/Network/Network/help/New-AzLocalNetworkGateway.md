@@ -15,13 +15,14 @@ Creates a Local Network Gateway
 
 ```
 New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
- [-GatewayIpAddress <String>] [-AddressPrefix <String[]>] [-Asn <UInt32>] [-BgpPeeringAddress <String>]
- [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-GatewayIpAddress <String>] [-AddressPrefix <System.Collections.Generic.List`1[System.String]>]
+ [-Asn <UInt32>] [-BgpPeeringAddress <String>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Local Network Gateway is the object representing your VPN device On-Premises.
+
 The **New-AzLocalNetworkGateway** cmdlet creates the object representing your on-prem gateway
 based on the Name, Resource Group Name, Location, and IP Address of the gateway, as well as the
 Address Prefix of the On-Premises network which will be connecting to Azure.
@@ -41,9 +42,9 @@ Creates the object of the Local Network Gateway with the name "myLocalGW" within
 
 ### -AddressPrefix
 ```yaml
-Type: System.String[]
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -56,9 +57,9 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -69,9 +70,9 @@ Accept wildcard characters: False
 
 ### -Asn
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -82,9 +83,9 @@ Accept wildcard characters: False
 
 ### -BgpPeeringAddress
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -97,9 +98,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -112,9 +113,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -125,9 +126,9 @@ Accept wildcard characters: False
 
 ### -GatewayIpAddress
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -138,9 +139,9 @@ Accept wildcard characters: False
 
 ### -Location
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -151,7 +152,7 @@ Accept wildcard characters: False
 
 ### -Name
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -164,9 +165,9 @@ Accept wildcard characters: False
 
 ### -PeerWeight
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -179,9 +180,9 @@ Accept wildcard characters: False
 Specifies the resource group that the local network gateway belongs to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -192,12 +193,13 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
+
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -210,7 +212,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -226,7 +228,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -241,16 +243,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### System.String
-
-### System.String[]
-
-### System.UInt32
-
-### System.Int32
-
-### System.Collections.Hashtable
 
 ## OUTPUTS
 

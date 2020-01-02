@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: FB9ACBA2-081E-4876-A21A-F5BA11CBEDA2
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/publish-azvmdscconfiguration
@@ -75,9 +75,9 @@ Specifies the path of a file or a directory to include in the configuration arch
 It gets downloaded to the virtual machine together with the configuration.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -92,9 +92,9 @@ This is added to the configuration archive and then passed to the configuration 
 It gets overwritten by the configuration data path provided through the Set-AzVMDscExtension cmdlet
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -108,9 +108,9 @@ Specifies the path of a file that contains one or more configurations.
 The file can be a Windows PowerShell script (.ps1) file or a Windows PowerShell module (.psm1) file.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -123,9 +123,9 @@ Accept wildcard characters: False
 Specifies the name of the Azure storage container the configuration is uploaded to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: UploadArchive
-Aliases:
+Aliases: 
 
 Required: False
 Position: 4
@@ -138,9 +138,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -153,9 +153,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -169,7 +169,7 @@ Specifies the path of a local .zip file to write the configuration archive to.
 When this parameter is used, the configuration script is not uploaded to Azure blob storage.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: CreateArchive
 Aliases: ConfigurationArchivePath
 
@@ -184,9 +184,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the storage account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: UploadArchive
-Aliases:
+Aliases: 
 
 Required: True
 Position: 2
@@ -199,9 +199,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet excludes DSC resource dependencies from the configuration archive.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -214,9 +214,9 @@ Accept wildcard characters: False
 Specifies the Azure storage account name that is used to upload the configuration script to the container specified by the *ContainerName* parameter.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: UploadArchive
-Aliases:
+Aliases: 
 
 Required: True
 Position: 3
@@ -229,9 +229,9 @@ Accept wildcard characters: False
 Specifies the suffix for the storage end point.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: UploadArchive
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -244,7 +244,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -257,10 +257,11 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
+
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -272,13 +273,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### System.String[]
+### String
+Parameter 'ConfigurationPath' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 

@@ -11,8 +11,59 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+/*#if !NETSTANDARD
+using Microsoft.Azure.Management.Storage.Models;
+namespace Microsoft.Azure.Commands.Compute
+{
+    public static class StorageExtensions
+    {
+        public static AccountType? Sku(this StorageAccount account)
+        {
+            return account.AccountType;
+        }
 
+        public static string SkuName(this StorageAccount account)
+        {
+            return account.AccountType.Value.ToString();
+        }
 
+        public static bool IsPremiumLrs(this StorageAccount account)
+        {
+            return account.AccountType.Value == AccountType.PremiumLRS;
+        }
+
+        public static void SetAsStandardGRS(this StorageAccountCreateParameters createParams)
+        {
+            createParams.AccountType = AccountType.StandardGRS;
+        }
+
+        public static string GetFirstAvailableKey(this StorageAccountKeys listKeyResult)
+        {
+            return !string.IsNullOrEmpty(listKeyResult.Key1) ? listKeyResult.Key1 : listKeyResult.Key2;
+        }
+
+        public static string GetKey1(this StorageAccountKeys listKeyResult)
+        {
+            return listKeyResult.Key1;
+        }
+
+        public static string GetKey2(this StorageAccountKeys listKeyResult)
+        {
+            return listKeyResult.Key2;
+        }
+    }    
+}
+#else*/
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Newtonsoft.Json;
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -41,17 +92,19 @@ namespace Microsoft.Azure.Commands.Compute
 
         public static string GetFirstAvailableKey(this StorageAccountListKeysResult listKeyResult)
         {
-            return listKeyResult.Keys[0].Value;
+            return listKeyResult.Keys.ElementAt(0).Value;
         }
 
         public static string GetKey1(this StorageAccountListKeysResult listKeyResult)
         {
-            return listKeyResult.Keys[0].Value;
+            return listKeyResult.Keys.ElementAt(0).Value;
         }
 
         public static string GetKey2(this StorageAccountListKeysResult listKeyResult)
         {
-            return listKeyResult.Keys[1].Value;
+            return listKeyResult.Keys.ElementAt(1).Value;
         }
     }
 }
+
+//#endif

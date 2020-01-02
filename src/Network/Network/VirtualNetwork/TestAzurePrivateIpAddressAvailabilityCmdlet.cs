@@ -17,11 +17,10 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateIPAddressAvailability"), OutputType(typeof(PSIPAddressAvailabilityResult))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzPrivateIPAddressAvailability"), OutputType(typeof(PSIPAddressAvailabilityResult))]
     public class TestAzurePrivateIPAddressAvailabilityCmdlet : VirtualNetworkBaseCmdlet
     {
         [Parameter(
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = false,
             ParameterSetName = "TestByResourceId",
             HelpMessage = "The virtualNetwork name")]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworks", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 

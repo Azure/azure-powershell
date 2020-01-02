@@ -20,21 +20,21 @@ namespace Microsoft.Azure.Commands.Network
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewaySslPredefinedPolicy"), OutputType(typeof(PSApplicationGatewaySslPredefinedPolicy))]
-    [Alias("List-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewaySslPredefinedPolicy")]
+    [Cmdlet(VerbsCommon.Get, "AzApplicationGatewaySslPredefinedPolicy"), 
+        OutputType(typeof(PSApplicationGatewaySslPredefinedPolicy), typeof(IEnumerable<PSApplicationGatewaySslPredefinedPolicy>))]
+    [Alias("List-AzureRmApplicationGatewaySslPredefinedPolicy")]
     public class GetAzureApplicationGatewaySslPredefinedPolicy : ApplicationGatewayBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
             HelpMessage = "Name of the ssl predefined policy")]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (this.Name != null && !WildcardPattern.ContainsWildcardCharacters(Name))
+            if (this.Name != null)
             {
                 var policy = this.ApplicationGatewayClient.GetSslPredefinedPolicy(this.Name);
                 var psPolicy = NetworkResourceManagerProfile.Mapper.Map<PSApplicationGatewaySslPredefinedPolicy>(policy);
@@ -49,8 +49,9 @@ namespace Microsoft.Azure.Commands.Network
                     psPolicies.Add(NetworkResourceManagerProfile.Mapper.Map<PSApplicationGatewaySslPredefinedPolicy>(policy));
                 }
 
-                WriteObject(TopLevelWildcardFilter(null, Name, psPolicies), true);
+                WriteObject(psPolicies, true);
             }
         }
     }
 }
+
