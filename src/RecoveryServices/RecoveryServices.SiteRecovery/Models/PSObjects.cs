@@ -947,6 +947,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.RecoveryNetworkSecurityGroupId = vMNicDetails.RecoveryNetworkSecurityGroupId;
             this.RecoveryLBBackendAddressPoolId =
                 vMNicDetails.RecoveryLBBackendAddressPoolIds?.ToList() ?? new List<string>();
+            this.TfoVMNetworkId = vMNicDetails.TfoVMNetworkId;
+            this.TfoVMSubnetName = vMNicDetails.TfoVMSubnetName;
+            this.TfoNetworkSecurityGroupId = vMNicDetails.TfoNetworkSecurityGroupId;
+            this.TfoIPConfigs = vMNicDetails.TfoIPConfigs?.ToList() ?? new List<IPConfig>();
         }
 
         //
@@ -1028,6 +1032,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the target backend address pools for the NIC.
         /// </summary>
         public List<string> RecoveryLBBackendAddressPoolId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets test failover network Id.
+        /// </summary>
+        public string TfoVMNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets test failover subnet name.
+        /// </summary>
+        public string TfoVMSubnetName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the id of the NSG associated with the test failover NIC.
+        /// </summary>
+        public string TfoNetworkSecurityGroupId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the IP configuration details for test failover NIC.
+        /// </summary>
+        public List<IPConfig> TfoIPConfigs { get; set; }
     }
 
     /// <summary>
@@ -1422,8 +1446,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var a2aProviderSpecificDetails = (A2AReplicationDetails)rpi.Properties.ProviderSpecificDetails;
 
                 this.RecoveryAzureVMName = a2aProviderSpecificDetails.RecoveryAzureVMName;
+                this.TfoAzureVMName = a2aProviderSpecificDetails.TfoAzureVMName;
                 this.RecoveryAzureVMSize = a2aProviderSpecificDetails.RecoveryAzureVMSize;
                 this.SelectedRecoveryAzureNetworkId = a2aProviderSpecificDetails.SelectedRecoveryAzureNetworkId;
+                this.SelectedTfoAzureNetworkId = a2aProviderSpecificDetails.SelectedTfoAzureNetworkId;
                 this.ProtectionState = a2aProviderSpecificDetails.VmProtectionState;
                 this.ProtectionStateDescription = a2aProviderSpecificDetails.VmProtectionStateDescription;
                 this.ProviderSpecificDetails = new ASRAzureToAzureSpecificRPIDetails(a2aProviderSpecificDetails);
@@ -1610,6 +1636,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets type of the Protection entity.
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        ///     Gets or sets name of the test failover virtual machine.
+        /// </summary>
+        public string TfoAzureVMName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Id of the test failover virtual network.
+        /// </summary>
+        public string SelectedTfoAzureNetworkId { get; set; }
     }
 
     /// <summary>
@@ -2522,6 +2558,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.KekKeyVaultArmId = disk.KekKeyVaultArmId;
             this.KeyIdentifier = disk.KeyIdentifier;
             this.RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId;
+            this.FailoverDiskName = disk.FailoverDiskName;
+            this.TfoDiskName = disk.TfoDiskName;
         }
 
         /// <summary>
@@ -2657,6 +2695,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the data pending at source virtual machine in MB.
         /// </summary>
         public double? DataPendingAtSourceAgentInMB { get; set; }
+
+        /// <summary>
+        /// Gets or sets the failover disk name. 
+        /// </summary>
+        public string FailoverDiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test failover disk name. 
+        /// </summary>
+        public string TfoDiskName { get; set; }
     }
 
     /// <summary>
