@@ -5,20 +5,27 @@ ARG ARTIFACTS=/tmp/artifacts/
 ARG ARTIFACT=*.nupkg
 ARG TEMPREPO=tmp
 ARG MODULE=Az
+ARG CONFIG=config
 ARG SETTINGS=AzureRmContextSettings.json
 ARG AZURE=/root/.Azure
+ARG VCS_REF="none"
+ARG VERSION=3.3.0
 
 LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
       readme.md="TODO" \
       description="This Dockerfile will install the latest release of Azure PowerShell." \
       org.label-schema.usage="TODO" \
-      org.label-schema.url="TODO" \
-      org.label-schema.vcs-url="TODO" \
-      org.label-schema.name="azure-powershell" \
+      org.label-schema.url="TODO:same as readme.md" \
+      org.label-schema.vcs-url="https://github.com/Azure/azure-powershell" \
+      org.label-schema.name="azure powershell" \
       org.label-schema.vendor="Azure PowerShell" \
-      org.label-schema.version="TODO" \
+      org.label-schema.version=${VERSION} \
       org.label-schema.schema-version="1.0" \
-      org.label-schema.docker.cmd="TODO"
+      org.label-schema.vcs-ref=${VCS_REF} \
+      org.label-schema.docker.cmd="docker run --rm ${IMAGE_NAME} pwsh -c '$PSVERSIONTABLE'" \
+      org.label-schema.docker.cmd.devel="docker run --rm ${IMAGE_NAME}" \
+      org.label-schema.docker.cmd.test="currently not available" \
+      org.label-schema.docker.cmd.help="docker run --rm ${IMAGE_NAME} pwsh -c Get-Help"
 
 # install azure-powershell from built artifacts
 COPY ${ARTIFACT} ${ARTIFACTS}
@@ -28,6 +35,6 @@ RUN pwsh -Command Get-Module -ListAvailable
 RUN pwsh -Command Unregister-PSRepository -Name ${TEMPREPO}
 
 # create AzureRmContextSettings.json before it was generated
-COPY ${SETTINGS} ${AZURE}/${SETTINGS}
+COPY ${CONFIG}/${SETTINGS} ${AZURE}/${SETTINGS}
 
 CMD [ "pwsh" ]
