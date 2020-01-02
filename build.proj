@@ -237,6 +237,13 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot;" />
   </Target>
 
+  <Target Name="BuildImage" AfterTargets="Publish">
+    <!--TODO: integrate with docker image building-->
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/docker/GetArtifacts.ps1 -Artifacts $(RepoArtifacts) -Docker $(RepoRoot)/docker &quot;" />
+    <Exec Command="docker build -t azure-powershell $(RepoRoot)/docker" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/docker/CleanArtifacts.ps1 -Docker $(RepoRoot)/docker &quot;" />
+  </Target>
+
   <Target Name="Test">
     <Message Importance="high" Text="Running check in tests..." />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
