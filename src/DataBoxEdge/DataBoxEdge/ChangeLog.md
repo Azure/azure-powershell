@@ -20,6 +20,8 @@
 
 
 ## Upcoming Release
+
+## Version 1.1.0
 * Added cmdlet `Get-AzDataBoxEdgeStorageContainer`
   - Get the Edge Stroage Container
 * Added cmdlet `New-AzDataBoxEdgeStorageContainer`
