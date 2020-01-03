@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Fix vulnerability assessment set baseline cmdlets functionality to work on master db for azure database and limit it on managed instance system databases.
 * Fix an error when creating SQL instance failover group
+* Added PartnerDatabaseName parameter to New-AzSqlDatabaseSecondary cmdlet.
 
 ## Version 2.1.1
 * Update references in .psd1 to use relative path
