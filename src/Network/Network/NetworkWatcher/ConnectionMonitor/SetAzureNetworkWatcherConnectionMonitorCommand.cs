@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
         HelpMessage = "The ID of the connection monitor source.")]
         [ValidateNotNullOrEmpty]
         public string SourceResourceId { get; set; }
@@ -213,7 +213,8 @@ namespace Microsoft.Azure.Commands.Network
                 resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
                 networkWatcherName = networkWatcher.Name;
             }
-            else if (TestGroup.Any() && Output.Any())
+
+            if (TestGroup != null && TestGroup.Any())
             {
                 connectionMonitorV2 = true;
             }
@@ -251,7 +252,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 parameters.Notes = this.Notes;
             }
-
 
             // Parse the TestGroup to parameters
             // Parse the TestGroup to parameters
@@ -511,6 +511,8 @@ namespace Microsoft.Azure.Commands.Network
 
             if (connectionMonitorV2)
             {
+                // CMv2 does not accept Source.ResourceId
+                parameters.Source.ResourceId = "";
                 this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, connectionMonitorName, parameters);
             }
             else
@@ -522,13 +524,18 @@ namespace Microsoft.Azure.Commands.Network
 
             return getConnectionMonitor;
         }
+
         public bool Validate()
         {
-            if (ParameterSetName.Contains("SetByResource") || ParameterSetName.Contains("SetByLocation") && (TestGroup != null || Output != null))
+            if (!string.IsNullOrEmpty(this.SourceResourceId) && TestGroup != null )
             {
-                throw new ArgumentException("Either connection monitor V1 or V2 can be specified");
+                throw new ArgumentException("SourceResourceId can not be defined with either TestGroup or Output. Either connection monitor V1 or V2 can be specified");
             }
 
+            if (string.IsNullOrEmpty(this.SourceResourceId) && TestGroup == null)
+            {
+                throw new ArgumentException("SourceResourceId is not defined");
+            }
 
             // Validate Test Group
             if (this.TestGroup != null && this.TestGroup.Any())

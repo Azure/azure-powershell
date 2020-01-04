@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-              Mandatory = true,
+              Mandatory = false,
               HelpMessage = "The ID of the connection monitor source.")]
         [ValidateNotNullOrEmpty]
         public string SourceResourceId { get; set; }
@@ -177,7 +177,8 @@ namespace Microsoft.Azure.Commands.Network
                 resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
                 networkWatcherName = networkWatcher.Name;
             }
-            else if (TestGroup != null && Output != null )
+
+            if (TestGroup != null && TestGroup.Any())
             {
                 connectionMonitorV2 = true;
             }
@@ -475,8 +476,15 @@ namespace Microsoft.Azure.Commands.Network
                 parameters.Location = this.Location;
             }
 
-            if (connectionMonitorV2)
+           if (connectionMonitorV2)
             {
+                // CMv2 does not accept Source.ResourceId
+                parameters.Source.ResourceId = "";
+
+                // This is only used for testing
+                // string str = JsonConvert.SerializeObject(parameters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                // WriteObject(str);
+
                 this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, this.Name, parameters);
             }
             else
@@ -486,18 +494,20 @@ namespace Microsoft.Azure.Commands.Network
 
             getConnectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, this.Name, connectionMonitorV2);
 
-            // This is only used for testing
-            // string str = JsonConvert.SerializeObject(parameters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
-            // WriteObject(str);
-
             return getConnectionMonitor;
         }
 
         public bool Validate()
         {
-            if (ParameterSetName.Contains("SetByResource") || ParameterSetName.Contains("SetByLocation") && (TestGroup != null || Output != null ))
+
+            if (!string.IsNullOrEmpty(this.SourceResourceId) && TestGroup != null)
             {
-                throw new ArgumentException("Either connection monitor V1 or V2 can be specified");
+                throw new ArgumentException("SourceResourceId can not be defined with either TestGroup or Output. Either connection monitor V1 or V2 can be specified");
+            }
+
+           if (string.IsNullOrEmpty(this.SourceResourceId) && TestGroup == null)
+            {
+                throw new ArgumentException("SourceResourceId is not defined");
             }
 
             // Validate Test Group
@@ -666,7 +676,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException("Output is empty");
             }
-
             return true;
         }
     }
