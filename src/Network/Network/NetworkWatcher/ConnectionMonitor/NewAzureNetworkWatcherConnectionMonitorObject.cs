@@ -129,19 +129,19 @@ namespace Microsoft.Azure.Commands.Network
                                 }
                             }
 
-                            if (Endpoint.Filter.Type != null && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
+                            if (Endpoint.Filter != null && Endpoint.Filter.Type != null && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
                             {
                                 throw new ArgumentException("Only FilterType Include is supported");
                             }
-                            else if (Endpoint.Filter.Type != null && Endpoint.Filter.Items == null)
+                            else if (Endpoint.Filter != null && Endpoint.Filter.Type != null && Endpoint.Filter.Items == null)
                             {
                                 throw new ArgumentException("Endpoint FilterType defined without FilterAddress");
                             }
-                            else if (Endpoint.Filter.Type != null && Endpoint.Filter.Items[0] != null && Endpoint.Filter.Items[0].Type != null && String.Compare(Endpoint.Filter.Items[0].Type, "AgentAddress", true) != 0)
+                            else if (Endpoint.Filter != null && Endpoint.Filter.Type != null && Endpoint.Filter.Items[0] != null && Endpoint.Filter.Items[0].Type != null && String.Compare(Endpoint.Filter.Items[0].Type, "AgentAddress", true) != 0)
                             {
                                 throw new ArgumentException("Endpoint Filter Items Type is not AgentAddress");
                             }
-                            else if (Endpoint.Filter.Type != null && Endpoint.Filter.Items[0] != null && Endpoint.Filter.Items[0].Type != null && string.IsNullOrEmpty(Endpoint.Filter.Items[0].Address))
+                            else if (Endpoint.Filter != null && Endpoint.Filter.Type != null && Endpoint.Filter.Items[0] != null && Endpoint.Filter.Items[0].Type != null && string.IsNullOrEmpty(Endpoint.Filter.Items[0].Address))
                             {
                                 throw new ArgumentException("Endpoint Filter Items Address is empty");
                             }

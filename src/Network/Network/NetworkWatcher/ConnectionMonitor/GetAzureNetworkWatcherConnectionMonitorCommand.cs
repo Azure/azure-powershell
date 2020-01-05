@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Network
             if (ShouldGetByName(resourceGroupName, connectionMonitorName))
             {
                 PSConnectionMonitorResult connectionMonitor = new PSConnectionMonitorResult();
-                connectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorName);
+                connectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorName, true);
 
                 WriteObject(connectionMonitor);
             }
@@ -145,13 +145,29 @@ namespace Microsoft.Azure.Commands.Network
                     if (String.Compare(ConnectionMonitorResult.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
                     {
                         //convert V2 to V1
-                        ConnectionMonitorResult.Source.ResourceId = ConnectionMonitorResult.TestGroup[0]?.Sources[0]?.ResourceId;
-                        // getConnectionMonitor.Source.Port
+                        if (ConnectionMonitorResult.Source == null)
+                        {
+                            ConnectionMonitorResult.Source = new PSConnectionMonitorSource()
+                            {
+                                ResourceId = ConnectionMonitorResult.TestGroup?[0]?.Sources?[0]?.ResourceId
+                                // Port
+                            };
+                        }
 
-                        ConnectionMonitorResult.Destination.ResourceId = ConnectionMonitorResult.TestGroup[0]?.Destinations[0]?.ResourceId;
-                        ConnectionMonitorResult.Destination.Address = ConnectionMonitorResult.TestGroup[0]?.Destinations[0]?.Address;
-                        ConnectionMonitorResult.Destination.Port = ConnectionMonitorResult.TestConfiguration[0]?.TcpConfiguration?.Port ?? default(int);
-                        ConnectionMonitorResult.MonitoringIntervalInSeconds = ConnectionMonitorResult.TestConfiguration[0]?.TestFrequencySec;
+                        if (ConnectionMonitorResult.Destination == null)
+                        {
+                            ConnectionMonitorResult.Destination = new PSConnectionMonitorDestination()
+                            {
+                                ResourceId = ConnectionMonitorResult.TestGroup?[0]?.Destinations?[0]?.ResourceId,
+                                Address = ConnectionMonitorResult.TestGroup?[0]?.Destinations?[0]?.Address,
+                                Port = ConnectionMonitorResult.TestConfiguration?[0]?.TcpConfiguration?.Port ?? default(int)
+                            };
+                        }
+
+                        if (ConnectionMonitorResult.MonitoringIntervalInSeconds != null)
+                         {
+                            ConnectionMonitorResult.MonitoringIntervalInSeconds = ConnectionMonitorResult.TestConfiguration[0]?.TestFrequencySec;
+                         }
                         
                         // These parameters do not need mapping 
                         // ConnectionMonitorResult.AutoStart = false;

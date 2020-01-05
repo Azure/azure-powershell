@@ -201,18 +201,7 @@ namespace Microsoft.Azure.Commands.Network
         private PSConnectionMonitorResult CreateConnectionMonitor(string resourceGroupName, string networkWatcherName, bool connectionMonitorV2 = false)
         {
             MNM.ConnectionMonitor parameters = new MNM.ConnectionMonitor
-             {
-                Source = new MNM.ConnectionMonitorSource
-                {
-                    ResourceId = this.SourceResourceId,
-                    Port = this.SourcePort
-                },
-                Destination = new MNM.ConnectionMonitorDestination
-                {
-                    ResourceId = this.DestinationResourceId,
-                    Address = this.DestinationAddress,
-                    Port = this.DestinationPort
-                },
+            {
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
             };
 
@@ -242,15 +231,16 @@ namespace Microsoft.Azure.Commands.Network
                                 Name = SrcEndpoint.Name,
                                 ResourceId = SrcEndpoint.ResourceId,
                                 Address = SrcEndpoint.Address,
-                                Filter = new ConnectionMonitorEndpointFilter()
-                                {
-                                    Type = SrcEndpoint.Filter?.Type
-                                }
                             };
 
                             // Add ConnectionMonitorEndpointFilterItem
                             if (SrcEndpoint.Filter?.Items != null)
                             {
+                                SourceEndpoint.Filter = new ConnectionMonitorEndpointFilter()
+                                {
+                                    Type = SrcEndpoint.Filter.Type
+                                };
+
                                 foreach (PSConnectionMonitorEndpointFilterItem Items in SrcEndpoint.Filter.Items)
                                 {
                                     if (SourceEndpoint.Filter.Items == null)
@@ -290,15 +280,16 @@ namespace Microsoft.Azure.Commands.Network
                                 Name = DstEndpoint.Name,
                                 ResourceId = DstEndpoint.ResourceId,
                                 Address = DstEndpoint.Address,
-                                Filter = new ConnectionMonitorEndpointFilter()
-                                {
-                                    Type = DstEndpoint.Filter?.Type
-                                }
                             };
 
                             // Add ConnectionMonitorEndpointFilterItem
                             if (DstEndpoint.Filter?.Items != null)
                             {
+                                DestinationEndpoint.Filter = new ConnectionMonitorEndpointFilter()
+                                {
+                                    Type = DstEndpoint.Filter.Type
+                                };
+
                                 foreach (PSConnectionMonitorEndpointFilterItem Items in DstEndpoint.Filter.Items)
                                 {
                                     if (DestinationEndpoint.Filter.Items == null)
@@ -478,17 +469,26 @@ namespace Microsoft.Azure.Commands.Network
 
            if (connectionMonitorV2)
             {
-                // CMv2 does not accept Source.ResourceId
-                parameters.Source.ResourceId = "";
-
                 // This is only used for testing
-                // string str = JsonConvert.SerializeObject(parameters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
-                // WriteObject(str);
+                string str = JsonConvert.SerializeObject(parameters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                 WriteObject(str);
 
                 this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, this.Name, parameters);
             }
             else
             {
+                parameters.Source = new MNM.ConnectionMonitorSource
+                {
+                    ResourceId = this.SourceResourceId,
+                    Port = this.SourcePort
+                };
+                parameters.Destination = new MNM.ConnectionMonitorDestination
+                {
+                    ResourceId = this.DestinationResourceId,
+                    Address = this.DestinationAddress,
+                    Port = this.DestinationPort
+                };
+
                 this.ConnectionMonitors.CreateOrUpdateV1(resourceGroupName, networkWatcherName, this.Name, parameters);
             }
 
@@ -552,23 +552,23 @@ namespace Microsoft.Azure.Commands.Network
                                 }
                             }
 
-                            if (!string.IsNullOrEmpty(Endpoint.Filter.Type) && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
+                            if (Endpoint.Filter !=null && !string.IsNullOrEmpty(Endpoint.Filter.Type) && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
                             {
                                 throw new ArgumentException("Only FilterType Include is supported");
                             }
-                            else if (!string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items == null)
+                            else if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items == null)
                             {
                                 throw new ArgumentException("Endpoint FilterType defined without FilterAddress");
                             }
-                            else if (!string.IsNullOrEmpty(Endpoint.Filter.Type) && !Endpoint.Filter.Items.Any())
+                            else if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type) && !Endpoint.Filter.Items.Any())
                             {
                                 throw new ArgumentException("Endpoint FilterAddress is empty");
                             }
-                            else if (string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items != null)
+                            else if (Endpoint.Filter != null && string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items != null)
                             {
                                 throw new ArgumentException("FilterAddress defined without FilterType");
                             }
-                            else if (!string.IsNullOrEmpty(Endpoint.Filter.Type))
+                            else if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type))
                             {
                                 foreach (PSConnectionMonitorEndpointFilterItem Item in Endpoint.Filter.Items)
                                 {
