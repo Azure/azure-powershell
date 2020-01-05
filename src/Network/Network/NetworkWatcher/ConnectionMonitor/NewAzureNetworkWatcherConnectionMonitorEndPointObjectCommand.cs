@@ -86,14 +86,15 @@ namespace Microsoft.Azure.Commands.Network
                 Name = string.IsNullOrEmpty(this.Name)? EndpointName : this.Name,
                 ResourceId = this.ResourceId,
                 Address = this.Address,
-                Filter = new PSConnectionMonitorEndpointFilter()
-                {
-                    Type = this.FilterType
-                },
             };
 
-            if (this.FilterAddress != null)
+            if (this.FilterType != null && this.FilterAddress != null)
             {
+                endPoint.Filter = new PSConnectionMonitorEndpointFilter()
+                {
+                    Type = this.FilterType
+                };
+
                 endPoint.Filter.Items = new List<PSConnectionMonitorEndpointFilterItem>();
                 foreach (string Address in FilterAddress)
                 {

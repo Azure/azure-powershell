@@ -154,23 +154,23 @@ namespace Microsoft.Azure.Commands.Network
                         }
                     }
 
-                    if (!string.IsNullOrEmpty(Endpoint.Filter.Type) && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
+                    if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type) && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
                     {
                         throw new ArgumentException("Only FilterType Include is supported");
                     }
-                    else if (!string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items == null)
+                    else if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items == null)
                     {
                         throw new ArgumentException("Endpoint FilterType defined without FilterAddress");
                     }
-                    else if (!string.IsNullOrEmpty(Endpoint.Filter.Type) && !Endpoint.Filter.Items.Any())
+                    else if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type) && !Endpoint.Filter.Items.Any())
                     {
                         throw new ArgumentException("Endpoint FilterAddress is empty");
                     }
-                    else if (string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items != null)
+                    else if (Endpoint.Filter != null && string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items != null)
                     {
                         throw new ArgumentException("FilterAddress defined without FilterType");
                     }
-                    else if (!string.IsNullOrEmpty(Endpoint.Filter.Type))
+                    else if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type))
                     {
                         foreach (PSConnectionMonitorEndpointFilterItem Item in Endpoint.Filter.Items)
                         {
