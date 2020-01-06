@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
@@ -48,21 +48,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaClassicAdminsWithScope()
+        public void RaPropertiesValidation()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RaClassicAdminsWithScope");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaDeletedPrincipals()
-        {
-            TestRunner.RunTestScript("Test-RaDeletedPrincipals");
-        }
-
-        [Fact(Skip = "Test fails during parallelization. Test uses RoleDefinitionNames statically.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaPropertiesValidation() {
             TestRunner.RunTestScript("Test-RaPropertiesValidation");
         }
 
@@ -105,6 +92,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaValidateInputParameters()
         {
+            var instance = ResourcesController.NewInstance;
             TestRunner.RunTestScript("Test-RaValidateInputParameters Get-AzureRmRoleAssignment");
             TestRunner.RunTestScript("Test-RaValidateInputParameters New-AzureRmRoleAssignment");
             TestRunner.RunTestScript("Test-RaValidateInputParameters Remove-AzureRmRoleAssignment");
@@ -119,30 +107,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaById()
-        {
-            TestRunner.RunTestScript("Test-RaById");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeletionByScope()
         {
             TestRunner.RunTestScript("Test-RaDeletionByScope");
         }
 
-        [Fact(Skip = "Need AD team to re-record")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeletionByScopeAtRootScope()
         {
             TestRunner.RunTestScript("Test-RaDeletionByScopeAtRootScope");
-        }
-
-        [Fact(Skip = "Need AD team to re-record")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaDelegation()
-        {
-            TestRunner.RunTestScript("Test-RaDelegation");
         }
 
         [Fact]
@@ -152,22 +126,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RaByUpn");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaGetByScope()
-        {
-            TestRunner.RunTestScript("Test-RaGetByScope");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaGetByUPNWithExpandPrincipalGroups()
-        {
-            TestRunner.RunTestScript("Test-RaGetByUPNWithExpandPrincipalGroups");
-        }
-
         [Fact(Skip = "Fix the flaky test and token error and then re-record the test. Token from admin user is being used even when trying to use newly created user.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaUserPermissions()
         {
             User newUser = null;
@@ -214,8 +173,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                                             .List()
                                             .First();
 
-                    // Wait to allow newly created object changes to propagate
-                    TestMockSupport.Delay(20000);
+                        // Wait to allow newly created object changes to propagate
+                        TestMockSupport.Delay(20000);
 
                         return new[]
                         {
@@ -239,8 +198,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     // scriptBuilder
                     () =>
                     {
-                    // Wait to allow for the role assignment to propagate
-                    TestMockSupport.Delay(20000);
+                        // Wait to allow for the role assignment to propagate
+                        TestMockSupport.Delay(20000);
 
                         return new[]
                         {
@@ -264,7 +223,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     null,
                     // initialize
                     null,
-                    // cleanup
+                    // cleanup 
                     () =>
                     {
                         if (newUser != null)

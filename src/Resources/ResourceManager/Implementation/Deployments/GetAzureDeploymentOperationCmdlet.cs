@@ -16,12 +16,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     /// <summary>
     /// Gets the deployment operation.
     /// </summary>
-    [CmdletDeprecation(ReplacementCmdletName = "Get-AzSubscriptionDeploymentOperation")]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentOperation", DefaultParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSDeploymentOperation))]
     public class GetAzureDeploymentOperationCmdlet : ResourceManagerCmdletBase
     {

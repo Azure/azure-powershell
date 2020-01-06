@@ -35,10 +35,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if(DefaultContext.Subscription == null)
-            {
-                throw new PSInvalidOperationException(Resources.NoSubscriptionsUnderCurrentDirectory);
-            }
             var allLocations = this.SubscriptionSdkClient.ListLocations(DefaultContext.Subscription.Id.ToString());
             var providers = this.ResourceManagerSdkClient.ListResourceProviders(providerName: null, listAvailable: true);
             var providerLocations = ConstructResourceProviderLocations(allLocations, providers);

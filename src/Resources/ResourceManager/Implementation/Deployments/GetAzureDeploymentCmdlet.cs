@@ -15,14 +15,12 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     /// <summary>
     /// Get deployments.
     /// </summary>
-    [CmdletDeprecation(ReplacementCmdletName = "Get-AzSubscriptionDeployment")]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Deployment", DefaultParameterSetName = GetAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSDeployment))]
     public class GetAzureDeploymentCmdlet : ResourceManagerCmdletBase
     {

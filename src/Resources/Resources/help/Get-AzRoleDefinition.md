@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 7740AC3B-F643-4F8D-8DC5-ACBF59323BD8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azroledefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azroledefinition
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Lists all Azure RBAC roles that are available for assignment.
 
 ## SYNTAX
 
-### RoleDefinitionNameParameterSet (Default)
+### RoleDefinitionNameParameterSet
 ```
 Get-AzRoleDefinition [[-Name] <String>] [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -72,9 +72,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -136,6 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Scope (ByValue)
 
 ### System.Guid
 
@@ -146,7 +147,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
+Keywords: azure, Az, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
 

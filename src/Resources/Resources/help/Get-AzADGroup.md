@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 85DDA491-7A7D-4217-B0E3-72CDC3787889
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadgroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azadgroup
 schema: 2.0.0
 ---
 
@@ -21,8 +21,8 @@ Get-AzADGroup [-ObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>] [-In
 
 ### SearchStringParameterSet
 ```
-Get-AzADGroup -DisplayNameStartsWith <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroup -DisplayNameStartsWith <String> [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
@@ -33,8 +33,8 @@ Get-AzADGroup -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [
 
 ### ObjectIdParameterSet
 ```
-Get-AzADGroup -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>]
- [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroup -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,9 +79,9 @@ Lists all AD groups whose display name begins with 'Joe'.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -120,6 +120,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -First
+The maximum number of objects to return.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeTotalCount
+Reports the number of objects in the data set. Currently, this parameter does nothing.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 Object id of the group.
 
@@ -147,38 +177,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IncludeTotalCount
-Reports the number of objects in the data set. Currently, this parameter does nothing.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Skip
 Ignores the first N objects and then gets the remaining objects.
-
-```yaml
-Type: System.UInt64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -First
-The maximum number of objects to return.
 
 ```yaml
 Type: System.UInt64
@@ -203,7 +203,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
 
 ## NOTES
 

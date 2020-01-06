@@ -17,16 +17,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
     /// <summary>
     /// The policy definition mode.
     /// </summary>
-    public class PolicyDefinitionMode
+    public enum PolicyDefinitionMode
     {
         /// <summary>
-        /// The indexed policy definition mode. Limits evaluation to resource types that support tags and location.
+        /// The policy definition mode is indexed.
         /// </summary>
-        public const string Indexed = "Indexed";
+        Indexed,
 
         /// <summary>
-        /// The all policy definition mode. Evaluates all resource types.
+        /// The policy definition mode is all.
         /// </summary>
-        public const string All = "All";
+        All
     }
 }

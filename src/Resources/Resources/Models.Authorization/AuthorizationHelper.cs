@@ -12,14 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Text.RegularExpressions;
-
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
     public class AuthorizationHelper
     {
-        private static Regex subscriptionRegex = new Regex("/subscriptions/([^/]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-
         public static string ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(string scope, string Id)
         {
             if (string.IsNullOrEmpty(scope) || string.IsNullOrEmpty(Id))
@@ -48,18 +44,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
 
             return string.Concat("/subscriptions/", subscriptionId);
-        }
-
-        public static string GetResourceSubscription(string id)
-        {
-            var match = subscriptionRegex.Match(id);
-
-            if (match.Success != true)
-            {
-                return null;
-            }
-
-            return match.Groups[1].Value;
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azmanagementgroup/
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-Azmanagementgroup/
 schema: 2.0.0
 ---
 
@@ -20,8 +20,9 @@ New-AzManagementGroup [-GroupName] <String> [-DisplayName <String>] [-ParentId <
 
 ### ParentGroupObject
 ```
-New-AzManagementGroup [-GroupName] <String> [-DisplayName <String>] [-DefaultProfile <IAzureContextContainer>]
- -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzManagementGroup [-GroupName] <String> [-DisplayName <String>]
+ [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,9 +105,9 @@ ParentDisplayName : TestGroupParent
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named

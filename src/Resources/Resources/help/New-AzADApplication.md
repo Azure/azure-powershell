@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: F58FD77E-2946-44B1-B410-6E983FC20E21
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-Azadapplication
 schema: 2.0.0
 ---
 
@@ -49,13 +49,7 @@ New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage 
 ```
 
 ## DESCRIPTION
-Creates a new azure active directory application. Below are the permissions needed to create an application:
-
-- Azure Active Directory Graph
-  - Application.ReadWrite.OwnedBy
-- Microsoft Graph
-  - Directory.AccessAsUser.All
-  - Directory.ReadWrite.All
+Creates a new azure active directory application.
 
 ## EXAMPLES
 
@@ -114,9 +108,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -191,7 +185,7 @@ Accept wildcard characters: False
 The list of certificate credentials associated with the application.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADKeyCredential[]
 Parameter Sets: ApplicationWithKeyCredentialParameterSet
 Aliases:
 
@@ -221,7 +215,7 @@ Accept wildcard characters: False
 The list of password credentials associated with the application.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADPasswordCredential[]
 Parameter Sets: ApplicationWithPasswordCredentialParameterSet
 Aliases:
 
@@ -306,9 +300,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Boolean
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADPasswordCredential[]
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADKeyCredential[]
 
 ### System.Security.SecureString
 
@@ -316,10 +310,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
+Keywords: azure, Az, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
 

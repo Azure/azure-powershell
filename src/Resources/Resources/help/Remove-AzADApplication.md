@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: C791C593-F7D5-4961-97F9-E4909813FFE7
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-Azadapplication
 schema: 2.0.0
 ---
 
@@ -15,20 +15,20 @@ Deletes the azure active directory application.
 
 ### ObjectIdParameterSet (Default)
 ```
-Remove-AzADApplication -ObjectId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzADApplication -ObjectId <Guid> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
-Remove-AzADApplication -ApplicationId <Guid> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADApplication -ApplicationId <Guid> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationDisplayNameParameterSet
 ```
-Remove-AzADApplication -DisplayName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADApplication -DisplayName <String> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -87,9 +87,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 The object representing the application to remove.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 The object id of the application to delete.
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases:
 
@@ -209,18 +209,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### System.Guid
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+### System.String
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
 ### System.Boolean
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
+Keywords: azure, Az, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
 

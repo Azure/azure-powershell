@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azmanagementgroup/
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azmanagementgroup/
 schema: 2.0.0
 ---
 
@@ -19,8 +19,8 @@ Get-AzManagementGroup [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Con
 
 ### GetOperation
 ```
-Get-AzManagementGroup [-GroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-Expand] [-Recurse]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzManagementGroup [-GroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-Expand]
+ [-Recurse] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +89,7 @@ Children    :
 
 With the `Expand` flag, one can navigate through the `Children` array and get details for each child. For example, `Children[0]` will give details for the group with display name `TestGroup1DisplayName`.
 
-### Example 4: Get specific Management Group and all levels of hierarchy
+### Example 4: Get specific Management Group and all levels of hiearchy
 ```
 PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
 PS C:\> $response
@@ -129,9 +129,9 @@ Children    :
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named

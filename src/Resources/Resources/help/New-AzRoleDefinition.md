@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 8300B143-E322-419E-BC98-DBA56DD90A59
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azroledefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-Azroledefinition
 schema: 2.0.0
 ---
 
@@ -24,7 +24,8 @@ New-AzRoleDefinition [-InputFile] <String> [-DefaultProfile <IAzureContextContai
 
 ### RoleDefinitionParameterSet
 ```
-New-AzRoleDefinition [-Role] <PSRoleDefinition> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzRoleDefinition [-Role] <PSRoleDefinition> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +50,7 @@ The input role definition MAY contain the following properties:
 1) NotActions: the set of operations that must be excluded from the Actions to determine the effective actions for the custom role.
 If there is a specific operation that you do not wish to grant access to in a custom role, it is convenient to use NotActions to exclude it, rather than specifying all operations other than that specific operation in Actions.
 2) DataActions: the set of data operations to which the custom role grants access.
-3) NotDataActions: the set of operations that must be excluded from the DataActions to determine the effective data actions for the custom role.
+3) NotDataActions: the set of operations that must be excluded from the DataActions to determine the effective dataactions for the custom role.
 If there is a specific data operation that you do not wish to grant access to in a custom role, it is convenient to use NotDataActions to exclude it, rather than specifying all operations other than that specific operation in Actions.
 NOTE: If a user is assigned a role that specifies an operation in NotActions and also assigned another role grants access to the same operation - the user will be able to perform that operation.
 NotActions is not a deny rule - it is simply a convenient way to create a set of allowed operations when specific operations need to be excluded.
@@ -115,9 +116,9 @@ PS C:\> New-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -168,7 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
+Keywords: azure, Az, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
 

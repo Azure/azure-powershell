@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithDisplayName, HelpMessage = "The servicePrincipal object id.")]
         [ValidateNotNullOrEmpty]
         [Alias("ServicePrincipalObjectId")]
-        public string ObjectId { get; set; }
+        public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpApplicationIdWithDisplayName, HelpMessage = "The service principal application id.")]
         [ValidateNotNullOrEmpty]
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         ADObjectFilterOptions options = new ADObjectFilterOptions()
                         {
                             SPN = ServicePrincipalName,
-                            Id = ObjectId
+                            Id = ObjectId.ToString()
                         };
 
                         result = ActiveDirectoryClient.FilterServicePrincipals(options);
@@ -109,15 +110,15 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     PasswordCredentials = PasswordCredential
                 };
 
-                if (ShouldProcess(target: sp.Id, action: string.Format("Updating properties on application associated with a service principal with object id '{0}'", sp.Id)))
+                if (ShouldProcess(target: sp.Id.ToString(), action: string.Format("Updating properties on application associated with a service principal with object id '{0}'", sp.Id)))
                 {
                     ActiveDirectoryClient.UpdateApplication(applicationObjectId, parameters);
-                    WriteObject(ActiveDirectoryClient.FilterServicePrincipals(new ADObjectFilterOptions() { Id = applicationObjectId }).FirstOrDefault());
+                    WriteObject(ActiveDirectoryClient.FilterServicePrincipals(new ADObjectFilterOptions() { Id = applicationObjectId.ToString() }).FirstOrDefault());
                 }
             });
         }
 
-        private string GetObjectIdFromApplicationId(string applicationId)
+        private Guid GetObjectIdFromApplicationId(string applicationId)
         {
             var odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == applicationId);
             var app = ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter).SingleOrDefault();

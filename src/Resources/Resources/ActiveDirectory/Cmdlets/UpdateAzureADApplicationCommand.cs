@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
-        public string ObjectId { get; set; }
+        public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithUpdateParams, HelpMessage = "The application id.")]
         [ValidateNotNullOrEmpty]
@@ -105,7 +106,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     AvailableToOtherTenants = AvailableToOtherTenants
                 };
 
-                if (ShouldProcess(target: ObjectId, action: string.Format("Updating an application with object id '{0}'", ObjectId)))
+                if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Updating an application with object id '{0}'", ObjectId)))
                 {
                     ActiveDirectoryClient.UpdateApplication(ObjectId, parameters);
                     WriteObject(ActiveDirectoryClient.GetApplication(ObjectId));

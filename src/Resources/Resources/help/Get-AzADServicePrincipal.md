@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 4DC26C26-6162-4A15-BFCB-4D2B6B52DD81
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadserviceprincipal
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azadserviceprincipal
 schema: 2.0.0
 ---
 
@@ -27,20 +27,20 @@ Get-AzADServicePrincipal -DisplayNameBeginsWith <String> [-DefaultProfile <IAzur
 
 ### DisplayNameParameterSet
 ```
-Get-AzADServicePrincipal -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADServicePrincipal -DisplayName <String> [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
-Get-AzADServicePrincipal -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+Get-AzADServicePrincipal -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
  [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
-Get-AzADServicePrincipal -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADServicePrincipal -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ApplicationObjectParameterSet
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 The application object whose service principal is being retrieved.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameter Sets: ApplicationObjectParameterSet
 Aliases:
 
@@ -136,9 +136,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -177,11 +177,41 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -First
+The maximum number of objects to return.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeTotalCount
+Reports the number of objects in the data set. Currently, this parameter does nothing.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 Object id of the service principal.
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases:
 
@@ -207,38 +237,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IncludeTotalCount
-Reports the number of objects in the data set. Currently, this parameter does nothing.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Skip
 Ignores the first N objects and then gets the remaining objects.
-
-```yaml
-Type: System.UInt64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -First
-The maximum number of objects to return.
 
 ```yaml
 Type: System.UInt64
@@ -261,11 +261,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Guid
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: ApplicationObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
 
 ## NOTES
 

@@ -16,7 +16,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
@@ -25,7 +24,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates a new deployment.
     /// </summary>
-    [CmdletDeprecation(ReplacementCmdletName = "New-AzSubscriptionDeployment")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Deployment", SupportsShouldProcess = true,
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSDeployment))]
     public class NewAzureDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
@@ -56,7 +54,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 DeploymentName = Name,
                 DeploymentMode = DeploymentMode.Incremental,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
-                TemplateObject = TemplateObject,
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri,
                 DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)

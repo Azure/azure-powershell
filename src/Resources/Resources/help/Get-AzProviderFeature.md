@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 2970E81E-A788-4829-B1FF-B522A91DE4B1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azproviderfeature
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azproviderfeature
 schema: 2.0.0
 ---
 
@@ -15,8 +15,8 @@ Gets information about Azure provider features.
 
 ### ListAvailableParameterSet (Default)
 ```
-Get-AzProviderFeature [-ProviderNamespace <String>] [-ListAvailable] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzProviderFeature [-ProviderNamespace <String>] [-ListAvailable]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetFeature
@@ -50,9 +50,9 @@ This command gets information for the feature named AllowPreReleaseRegions for t
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -123,11 +123,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
-
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature
 
 ## NOTES
 

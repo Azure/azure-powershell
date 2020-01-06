@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 488229AF-FD6D-4E1B-B3DA-E57CA781D91E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azroleassignment
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azroleassignment
 schema: 2.0.0
 ---
 
@@ -23,32 +23,32 @@ Get-AzRoleAssignment [-RoleDefinitionName <String>] [-IncludeClassicAdministrato
 
 ### ObjectIdParameterSet
 ```
-Get-AzRoleAssignment -ObjectId <String> [-RoleDefinitionName <String>] [-ExpandPrincipalGroups]
+Get-AzRoleAssignment -ObjectId <Guid> [-RoleDefinitionName <String>] [-ExpandPrincipalGroups]
  [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithObjectIdParameterSet
 ```
-Get-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> [-RoleDefinitionName <String>]
+Get-AzRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> [-RoleDefinitionName <String>]
  [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithObjectIdParameterSet
 ```
-Get-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> -ResourceName <String>
+Get-AzRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> -ResourceName <String>
  -ResourceType <String> [-ParentResource <String>] [-RoleDefinitionName <String>]
  [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ScopeWithObjectIdParameterSet
 ```
-Get-AzRoleAssignment -ObjectId <String> [-RoleDefinitionName <String>] -Scope <String>
+Get-AzRoleAssignment -ObjectId <Guid> [-RoleDefinitionName <String>] -Scope <String>
  [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleIdWithScopeAndObjectIdParameterSet
 ```
-Get-AzRoleAssignment [-ObjectId <String>] -RoleDefinitionId <Guid> [-Scope <String>]
+Get-AzRoleAssignment [-ObjectId <Guid>] -RoleDefinitionId <Guid> [-Scope <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -79,8 +79,9 @@ Get-AzRoleAssignment -SignInName <String> [-RoleDefinitionName <String>] [-Expan
 
 ### ResourceGroupWithSPNParameterSet
 ```
-Get-AzRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String> [-RoleDefinitionName <String>]
- [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRoleAssignment -ServicePrincipalName <String> -ResourceGroupName <String>
+ [-RoleDefinitionName <String>] [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceWithSPNParameterSet
@@ -104,8 +105,8 @@ Get-AzRoleAssignment -ServicePrincipalName <String> [-RoleDefinitionName <String
 
 ### ResourceGroupParameterSet
 ```
-Get-AzRoleAssignment -ResourceGroupName <String> [-RoleDefinitionName <String>] [-IncludeClassicAdministrators]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRoleAssignment -ResourceGroupName <String> [-RoleDefinitionName <String>]
+ [-IncludeClassicAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceParameterSet
@@ -182,9 +183,9 @@ Gets role assignments at the 'site1' website scope.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -229,7 +230,7 @@ The Azure AD ObjectId of the User, Group or Service Principal.
 Filters all assignments that are made to the specified principal.
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet
 Aliases: Id, PrincipalId
 
@@ -241,7 +242,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
 Aliases: Id, PrincipalId
 
@@ -421,16 +422,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### System.Guid
+
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
+Keywords: azure, Az, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
 

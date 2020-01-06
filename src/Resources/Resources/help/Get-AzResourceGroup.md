@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 5B17A241-BF36-48A6-BC29-4C32C08F5F94
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresourcegroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azresourcegroup
 schema: 2.0.0
 ---
 
@@ -15,13 +15,13 @@ Gets resource groups.
 
 ### GetByResourceGroupName (Default)
 ```
-Get-AzResourceGroup [[-Name] <String>] [[-Location] <String>] [-Tag <Hashtable>] [-ApiVersion <String>] [-Pre]
+Get-AzResourceGroup [-Name <String>] [-Location <String>] [-Tag <Hashtable>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceGroupId
 ```
-Get-AzResourceGroup [[-Location] <String>] [-Id <String>] [-ApiVersion <String>] [-Pre]
+Get-AzResourceGroup [-Location <String>] [-Id <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -66,13 +66,6 @@ PS C:\> Get-AzResourceGroup -Location westus2 |
 PS C:\> Get-AzResourceGroup | Where ResourceGroupName -like WebServer*
 ```
 
-### Example 6: Get a resource group by name
-```
-PS C:\> Get-AzResourceGroup -Name "EngineerBlog*"
-```
-
-This command gets the Azure resource group in your subscription that start with "EngineerBlog".
-
 ## PARAMETERS
 
 ### -ApiVersion
@@ -95,9 +88,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -131,7 +124,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -146,10 +139,10 @@ Parameter Sets: GetByResourceGroupName
 Aliases: ResourceGroupName
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -Pre
@@ -183,17 +176,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### System.Collections.Hashtable
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup
+### Microsoft.Azure.Commands.ResourceManagement.PSResourceGroup
 
 ## NOTES
 

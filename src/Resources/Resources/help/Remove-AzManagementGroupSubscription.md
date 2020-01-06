@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azmanagementgroupsubscription/
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-Azmanagementgroupsubscription/
 schema: 2.0.0
 ---
 
@@ -33,9 +33,9 @@ PS C:\> Remove-AzManagementGroupSubscription -GroupName "TestGroup" -Subscriptio
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription Id of the subscription associated with the management
+Subscription Id of the subscription associated witht the management
 
 ```yaml
 Type: System.Guid

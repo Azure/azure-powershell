@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: A00160B9-831F-4A20-8D9D-9E89BC4F5C91
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azresource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-Azresource
 schema: 2.0.0
 ---
 
@@ -135,9 +135,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -448,17 +448,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource
-
-### System.String
-
-### System.Management.Automation.PSObject
-
-### System.Collections.Hashtable
+### None
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.Commands.ResourceManager.Models.PSResource
 
 ## NOTES
 

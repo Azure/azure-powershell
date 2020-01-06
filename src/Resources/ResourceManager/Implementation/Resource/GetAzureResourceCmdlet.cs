@@ -62,7 +62,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = ByTagNameValueParameterSet, Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
@@ -79,7 +78,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = ByTagNameValueParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = ByResourceIdParameterSet, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ODataQuery { get; set; }
 
@@ -90,7 +88,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = ByTagNameValueParameterSet, Mandatory = false)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = true)]
@@ -173,16 +170,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var odataQuery = new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(expression);
             var result = Enumerable.Empty<PSResource>();
-            if (!ShouldListBySubscription(ResourceGroupName, Name))
+            if (!string.IsNullOrEmpty(this.ResourceGroupName) && !this.ResourceGroupName.Contains('*'))
             {
                 result = this.ResourceManagerSdkClient.ListByResourceGroup(this.ResourceGroupName, odataQuery);
             }
             else
             {
                 result = this.ResourceManagerSdkClient.ListResources(odataQuery);
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    result = FilterResourceGroupByWildcard(result);
+                }
             }
 
-            result = TopLevelWildcardFilter(ResourceGroupName, Name, result);
+            if (!string.IsNullOrEmpty(this.Name))
+            {
+                result = FilterResourceByWildcard(result);
+            }
 
             if (!string.IsNullOrEmpty(this.TagName) && !string.IsNullOrEmpty(this.TagValue))
             {
@@ -237,6 +241,58 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             return !string.IsNullOrEmpty(parameter) && (parameter.StartsWith("*") || parameter.EndsWith("*"));
         }
 
+        private IEnumerable<PSResource> FilterResourceGroupByWildcard(IEnumerable<PSResource> result)
+        {
+            if (this.ResourceGroupName.StartsWith("*"))
+            {
+                this.ResourceGroupName = this.ResourceGroupName.TrimStart('*');
+                if (this.ResourceGroupName.EndsWith("*"))
+                {
+                    this.ResourceGroupName = this.ResourceGroupName.TrimEnd('*');
+                    result = result.Where(r => r.ResourceGroupName.IndexOf(this.ResourceGroupName, StringComparison.OrdinalIgnoreCase) >= 0);
+                }
+                else
+                {
+                    result = result.Where(r => r.ResourceGroupName.EndsWith(this.ResourceGroupName, StringComparison.OrdinalIgnoreCase));
+                }
+            }
+            else if (this.ResourceGroupName.EndsWith("*"))
+            {
+                this.ResourceGroupName = this.ResourceGroupName.TrimEnd('*');
+                result = result.Where(r => r.ResourceGroupName.StartsWith(this.ResourceGroupName, StringComparison.OrdinalIgnoreCase));
+            }
+
+            return result;
+        }
+
+        private IEnumerable<PSResource> FilterResourceByWildcard(IEnumerable<PSResource> result)
+        {
+            if (this.Name.StartsWith("*"))
+            {
+                this.Name = this.Name.TrimStart('*');
+                if (this.Name.EndsWith("*"))
+                {
+                    this.Name = this.Name.TrimEnd('*');
+                    result = result.Where(r => r.Name.IndexOf(this.Name, StringComparison.OrdinalIgnoreCase) >= 0);
+                }
+                else
+                {
+                    result = result.Where(r => r.Name.EndsWith(this.Name, StringComparison.OrdinalIgnoreCase));
+                }
+            }
+            else if (this.Name.EndsWith("*"))
+            {
+                this.Name = this.Name.TrimEnd('*');
+                result = result.Where(r => r.Name.StartsWith(this.Name, StringComparison.OrdinalIgnoreCase));
+            }
+            else
+            {
+                result = result.Where(r => string.Equals(r.Name, this.Name, StringComparison.OrdinalIgnoreCase));
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
@@ -266,7 +322,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                 items = this.GetPopulatedResource(batch).Result;
                             }
 
-                            var powerShellObjects = items.SelectArray(genericResource => new PSResource(genericResource));
+                            var powerShellObjects = items.SelectArray(genericResource => genericResource.ToPsObject());
+
                             this.WriteObject(sendToPipeline: powerShellObjects, enumerateCollection: true);
                         }
                     }

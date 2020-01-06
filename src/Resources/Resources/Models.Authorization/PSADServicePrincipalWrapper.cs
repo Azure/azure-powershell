@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             if (sp != null)
             {
+                AdfsId = sp.AdfsId;
                 ApplicationId = sp.ApplicationId;
                 DisplayName = sp.DisplayName;
                 Id = sp.Id;

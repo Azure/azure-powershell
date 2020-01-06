@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -31,22 +32,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public string MailNickname { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description for the group.")]
-        public string Description { get; set; }
- 
         public override void ExecuteCmdlet()
         {
             var groupCreateParams = new GroupCreateParameters()
             {
                 DisplayName = DisplayName,
-                MailNickname = MailNickname,
-                AdditionalProperties = new System.Collections.Generic.Dictionary<string, object>()
+                MailNickname = MailNickname
             };
-      
-            if (!string.IsNullOrEmpty(Description))
-            {
-                groupCreateParams.AdditionalProperties.Add("description", Description);
-            }
 
             ExecutionBlock(() =>
             {

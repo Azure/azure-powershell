@@ -38,16 +38,11 @@ Retrieves a list of credentials associated with a service principal.
 ### [Get-AzADUser](Get-AzADUser.md)
 Filters active directory users.
 
-### [Get-AzDenyAssignment](Get-AzDenyAssignment.md)
-Lists Azure RBAC deny assignments at the specified scope.
-By default it lists all deny assignments in the selected Azure subscription.
-Use respective parameters to list deny assignments to a specific user, or to list deny assignments on a specific resource group or resource.
-
 ### [Get-AzDeployment](Get-AzDeployment.md)
-Get deployment
+Gets a deployment at subscription scope.
 
 ### [Get-AzDeploymentOperation](Get-AzDeploymentOperation.md)
-Get deployment operation
+Gets the deployment operations for a deployment at subscription scope.
 
 ### [Get-AzLocation](Get-AzLocation.md)
 Gets all locations and the supported resource providers for each location.
@@ -60,11 +55,6 @@ Gets managed application definitions
 
 ### [Get-AzManagementGroup](Get-AzManagementGroup.md)
 Gets Management Group(s)
-
-### [Get-AzPolicyAlias](Get-AzPolicyAlias.md)
-Get-AzPolicyAlias retrieves and outputs Azure provider resource types that have aliases defined and match the
-given parameter values. If no parameters are provided, all provider resource types that contain an alias will be output.
-The -ListAvailable switch modifies this behavior by listing all matching resource types including those without aliases.
 
 ### [Get-AzPolicyAssignment](Get-AzPolicyAssignment.md)
 Gets policy assignments.
@@ -107,9 +97,6 @@ Use respective parameters to list assignments to a specific user, or to list ass
 ### [Get-AzRoleDefinition](Get-AzRoleDefinition.md)
 Lists all Azure RBAC roles that are available for assignment.
 
-### [Get-AzTag](Get-AzTag.md)
-Gets predefined Azure tags.
-
 ### [Invoke-AzResourceAction](Invoke-AzResourceAction.md)
 Invokes an action on a resource.
 
@@ -135,7 +122,7 @@ Adds a credential to an existing service principal.
 Creates a new active directory user.
 
 ### [New-AzDeployment](New-AzDeployment.md)
-Create a deployment
+Creates a new deployment at subscription scope.
 
 ### [New-AzManagedApplication](New-AzManagedApplication.md)
 Creates an Azure managed application.
@@ -180,9 +167,6 @@ First, use the Get-AzRoleDefinition command to generate a baseline role definiti
 Then, modify its properties as required.
 Finally, use this command to create a custom role using role definition.
 
-### [New-AzTag](New-AzTag.md)
-Creates a predefined Azure tag or adds values to an existing tag.
-
 ### [Register-AzProviderFeature](Register-AzProviderFeature.md)
 Registers an Azure provider feature in your account.
 
@@ -211,7 +195,7 @@ Removes a credential from a service principal.
 Deletes an active directory user.
 
 ### [Remove-AzDeployment](Remove-AzDeployment.md)
-Removes a deployment and any associated operations
+Removes a deployment at subscription scope.
 
 ### [Remove-AzManagedApplication](Remove-AzManagedApplication.md)
 Removes a managed application
@@ -254,11 +238,8 @@ Deletes a custom role in Azure RBAC.
 The role to be deleted is specified using the Id property of the role.
 Delete will fail if there are existing role assignments made to the custom role.
 
-### [Remove-AzTag](Remove-AzTag.md)
-Deletes predefined Azure tags or values.
-
 ### [Save-AzDeploymentTemplate](Save-AzDeploymentTemplate.md)
-Saves a deployment template to a file.
+Gets the template for a deployment at subscription scope.
 
 ### [Save-AzResourceGroupDeploymentTemplate](Save-AzResourceGroupDeploymentTemplate.md)
 Saves a resource group deployment template to a file.
@@ -295,13 +276,13 @@ Then, modify the properties that you wish to change.
 Finally, save the role definition using this command.
 
 ### [Stop-AzDeployment](Stop-AzDeployment.md)
-Cancel a running deployment
+Cancels a running deployment at subscription scope.
 
 ### [Stop-AzResourceGroupDeployment](Stop-AzResourceGroupDeployment.md)
 Cancels a resource group deployment.
 
 ### [Test-AzDeployment](Test-AzDeployment.md)
-Validates a deployment.
+Validates a deployment template and parameters at subscription scope.
 
 ### [Test-AzResourceGroupDeployment](Test-AzResourceGroupDeployment.md)
 Validates a resource group deployment.

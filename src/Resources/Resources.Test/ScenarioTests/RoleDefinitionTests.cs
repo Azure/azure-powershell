@@ -32,24 +32,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RoleDefinitionCreateTests");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Unknown issue for .NET Core: Investigation needed")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
-#endif
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RoleDefinitionDataActionsCreateTests()
-        {
-            TestRunner.RunTestScript("Test-RoleDefinitionDataActionsCreateTests");
-        }
-
-#if NETSTANDARD
-        [Fact(Skip = "Unknown issue for .NET Core: Investigation needed")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdNegativeScenarios()
         {
@@ -63,11 +46,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RDPositiveScenarios");
         }
 
-        [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDUpdate()
         {
-            //ResourcesController.NewInstance.RunPsTest("Test-RDUpdate");
             TestRunner.RunTestScript("Test-RDUpdate");
         }
 
@@ -78,13 +60,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RDCreateFromFile");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RDFilter()
-        {
-            TestRunner.RunTestScript("Test-RDFilter");
-        }
-
         [Fact(Skip = "Unskip after service side change")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDRemoveScenario()
@@ -92,26 +67,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RDRemove");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Unknown issue for .NET Core: Investigation needed")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
-#endif
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RDGetCustomRoles()
-        {
-            TestRunner.RunTestScript("Test-RDGetCustomRoles");
-        }
-
-        [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RDDataActionsNegativeTestCases()
-        {
-            TestRunner.RunTestScript("Test-RDDataActionsNegativeTestCases");
-        }
-
-        [Fact]
+        [Fact(Skip = "Unskip after service side change")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDGetScenario()
         {
@@ -122,6 +78,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdValidateInputParameters()
         {
+            var instance = ResourcesController.NewInstance;
             TestRunner.RunTestScript("Test-RdValidateInputParameters Get-AzureRmRoleDefinition");
             TestRunner.RunTestScript("Test-RdValidateInputParameters Remove-AzureRmRoleDefinition");
             TestRunner.RunTestScript("Test-RdValidateInputParameters2 New-AzureRmRoleDefinition");

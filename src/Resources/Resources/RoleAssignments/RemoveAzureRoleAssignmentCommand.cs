@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "The user or group object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "The user or group object id.")]
-        [ValidateNotNullOrEmpty]
         [Alias("Id", "PrincipalId")]
+        [ValidateNotNullOrEmpty]
         public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = DefaultProfile.DefaultContext.Subscription.Id
+                    Subscription = DefaultProfile.DefaultContext.Subscription.Id.ToString()
                 },
                 ExcludeAssignmentsForDeletedPrincipals = false,
                 // we should never expand principal groups in the Delete scenario
@@ -195,12 +195,12 @@ namespace Microsoft.Azure.Commands.Resources
             AuthorizationClient.ValidateScope(options.Scope, true);
 
             ConfirmAction(
-                string.Format(ProjectResources.RemovingRoleAssignment, ObjectId, Scope, RoleDefinitionName),
-                ObjectId,
+                ProjectResources.RemovingRoleAssignment,
+                string.Empty,
                 () =>
                 {
                     roleAssignments = PoliciesClient.RemoveRoleAssignment(options,
-                        DefaultProfile.DefaultContext.Subscription.Id);
+                        DefaultProfile.DefaultContext.Subscription.Id.ToString());
                     if (PassThru)
                     {
                         WriteObject(roleAssignments, enumerateCollection: true);

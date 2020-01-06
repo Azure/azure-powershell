@@ -41,13 +41,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private Mock<IResourceManagementClient> resourceManagementClientMock;
 
-        private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleTemplateFile.json");
+        private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
-        private string invalidTemplateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/invalidTemplateFile.json");
+        private string invalidTemplateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\invalidTemplateFile.json");
 
-        private string templateParameterFileSchema1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleTemplateParameterFile.json");
+        private string templateParameterFileSchema1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateParameterFile.json");
 
-        private string templateParameterFileSchema2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleTemplateParameterFileSchema2.json");
+        private string templateParameterFileSchema2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateParameterFileSchema2.json");
 
         public GalleryTemplatesClientTests(ITestOutputHelper output)
         {
@@ -97,6 +97,39 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             string[] parameters = { "Name", "Location", "Mode" };
             string[] parameterSetNames = { "__AllParameterSets" };
             string key = "Name";
+            TemplateFileParameterV1 value = new TemplateFileParameterV1()
+            {
+                AllowedValues = new List<object>() { "Mode1", "Mode2", "Mode3" },
+                MaxLength = "5",
+                MinLength = "1",
+                Type = "bool"
+            };
+            KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
+
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
+
+            Assert.Equal(key + "FromTemplate", dynamicParameter.Name);
+            Assert.Equal(value.DefaultValue, dynamicParameter.Value);
+            Assert.Equal(typeof(bool), dynamicParameter.ParameterType);
+            Assert.Equal(2, dynamicParameter.Attributes.Count);
+
+            ParameterAttribute parameterAttribute = (ParameterAttribute)dynamicParameter.Attributes[0];
+            Assert.True(parameterAttribute.Mandatory);
+            Assert.True(parameterAttribute.ValueFromPipelineByPropertyName);
+            Assert.Equal(parameterSetNames[0], parameterAttribute.ParameterSetName);
+
+            ValidateLengthAttribute validateLengthAttribute = (ValidateLengthAttribute)dynamicParameter.Attributes[1];
+            Assert.Equal(int.Parse(value.MinLength), validateLengthAttribute.MinLength);
+            Assert.Equal(int.Parse(value.MaxLength), validateLengthAttribute.MaxLength);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ResolvesDuplicatedDynamicParameterNameSubstring()
+        {
+            string[] parameters = { "Username", "Location", "Mode" };
+            string[] parameterSetNames = { "__AllParameterSets" };
+            string key = "user";
             TemplateFileParameterV1 value = new TemplateFileParameterV1()
             {
                 AllowedValues = new List<object>() { "Mode1", "Mode2", "Mode3" },
@@ -346,7 +379,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             Assert.Equal("bool", result["bool"].Name);
             Assert.Equal(typeof(bool), result["bool"].ParameterType);
-            Assert.True(result["bool"].Value as bool?);
+            Assert.Equal(true, result["bool"].Value);
 
             Assert.Equal("object", result["object"].Name);
             Assert.Equal(typeof(Hashtable), result["object"].ParameterType);
@@ -388,7 +421,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             Assert.Equal("bool", result["bool"].Name);
             Assert.Equal(typeof(bool), result["bool"].ParameterType);
-            Assert.True(result["bool"].Value as bool?);
+            Assert.Equal(true, result["bool"].Value);
 
             Assert.Equal("object", result["object"].Name);
             Assert.Equal(typeof(Hashtable), result["object"].ParameterType);
@@ -471,9 +504,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             TestExecutionHelpers.RetryAction(() =>
             {
                 Dictionary<string, TemplateFileParameterV1> result =
-                    TemplateUtility.ParseTemplateParameterFileContents(@"Resources/WebSite.param.dev.json".AsAbsoluteLocation());
-                Assert.True(result["isWorker"].Value as bool?);
-                Assert.Equal((System.Int64) 1, result["numberOfWorker"].Value);
+                    TemplateUtility.ParseTemplateParameterFileContents(@"Resources\WebSite.param.dev.json".AsAbsoluteLocation());
+                Assert.Equal(true, result["isWorker"].Value);
+                Assert.Equal((System.Int64)1, result["numberOfWorker"].Value);
             });
         }
     }

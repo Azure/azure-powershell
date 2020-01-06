@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 0C8C07CA-6720-452F-A952-48C76EBF3BBD
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadserviceprincipal
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-Azadserviceprincipal
 schema: 2.0.0
 ---
 
@@ -15,8 +15,8 @@ Deletes the azure active directory service principal.
 
 ### ObjectIdParameterSet (Default)
 ```
-Remove-AzADServicePrincipal -ObjectId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADServicePrincipal -ObjectId <Guid> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 The application object whose service principal is being removed.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameter Sets: ApplicationObjectParameterSet
 Aliases:
 
@@ -130,9 +130,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -175,7 +175,7 @@ Accept wildcard characters: False
 The service principal object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 The object id of the service principal to delete.
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases: PrincipalId, Id
 
@@ -267,20 +267,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### System.Guid
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
+### System.String
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+Parameters: InputObject (ByValue)
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: ApplicationObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
+Keywords: azure, Az, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
 

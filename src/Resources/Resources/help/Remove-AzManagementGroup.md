@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azmanagementgroup/
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-Azmanagementgroup/
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Removes a Management Group
 
 ### GroupOperations (Default)
 ```
-Remove-AzManagementGroup [-GroupName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzManagementGroup [-GroupName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupObject
@@ -45,9 +45,9 @@ PS C:\> Get-Remove-AzManagementGroup -GroupName "TestGroup" | Remove-AzManagemen
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -138,6 +138,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

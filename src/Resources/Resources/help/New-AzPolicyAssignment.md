@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: BA40BD11-8167-48D7-AC71-72B2FD9924F2
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azpolicyassignment
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-Azpolicyassignment
 schema: 2.0.0
 ---
 
@@ -17,44 +17,45 @@ Creates a policy assignment.
 ```
 New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>] [-Metadata <String>]
- [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-AssignIdentity] [-Location <String>]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Sku <Hashtable>] [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### PolicyParameterObjectParameterSet
 ```
 New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
- -PolicyParameterObject <Hashtable> [-Metadata <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
- [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -PolicyParameterObject <Hashtable> [-Metadata <String>] [-Sku <Hashtable>] [-AssignIdentity]
+ [-Location <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### PolicyParameterStringParameterSet
 ```
 New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
- -PolicyParameter <String> [-Metadata <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
- [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -PolicyParameter <String> [-Metadata <String>] [-Sku <Hashtable>] [-AssignIdentity] [-Location <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### PolicySetParameterObjectParameterSet
 ```
 New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
- -PolicyParameterObject <Hashtable> [-Metadata <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
- [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -PolicyParameterObject <Hashtable> [-Metadata <String>] [-Sku <Hashtable>] [-AssignIdentity]
+ [-Location <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### PolicySetParameterStringParameterSet
 ```
 New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
- -PolicyParameter <String> [-Metadata <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
- [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -PolicyParameter <String> [-Metadata <String>] [-Sku <Hashtable>] [-AssignIdentity] [-Location <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,18 +64,7 @@ Specify a policy and scope.
 
 ## EXAMPLES
 
-### Example 1: Policy assignment at subscription level
-```
-PS C:\> $Subscription = Get-AzSubscription -SubscriptionName 'Subscription01'
-PS C:\> $Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
-PS C:\> New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -Scope "/subscriptions/$($Subscription.Id)"
-```
-
-The first command gets a subscription named Subscription01 by using the Get-AzSubscription cmdlet and stores it in the $Subscription variable.
-The second command gets the policy definition named VirtualMachinePolicy by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
-The final command assigns the policy in $Policy at the level of the subscription identified by the subscription scope string.
-
-### Example 2: Policy assignment at resource group level
+### Example 1: Policy assignment at resource group level
 ```
 PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 PS C:\> $Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
@@ -85,7 +75,7 @@ The first command gets a resource group named ResourceGroup11 by using the Get-A
 The second command gets the policy definition named VirtualMachinePolicy by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
 The final command assigns the policy in $Policy at the level of the resource group identified by the **ResourceId** property of $ResourceGroup.
 
-### Example 3: Policy assignment at resource group level with policy parameter object
+### Example 2: Policy assignment at resource group level with policy parameter object
 ```
 PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 PS C:\> $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
@@ -103,7 +93,7 @@ The commands store that object in the $AllowedLocations variable.
 The final command assigns the policy in $Policy at the level of a resource group using the policy parameter object in $AllowedLocations.
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 
-### Example 4: Policy assignment at resource group level with policy parameter file
+### Example 3: Policy assignment at resource group level with policy parameter file
 Create a file called _AllowedLocations.json_ in the local working directory with the following content.
 
 ```
@@ -128,28 +118,16 @@ The first command gets a resource group named ResourceGroup11 by using the Get-A
 The second command gets the built-in policy definition for allowed locations by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
 The final command assigns the policy in $Policy at the resource group identified by the **ResourceId** property of $ResourceGroup using the policy parameter file AllowedLocations.json from the local working directory.
 
-### Example 5: Policy assignment with a managed identity
+### Example 4: Policy assignment with a managed identity
 ```
 PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 PS C:\> $Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
-PS C:\> New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -Location 'eastus' -AssignIdentity
+PS C:\> New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -Location 'eastus' -AssignIdentity 
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
 The second command gets the policy definition named VirtualMachinePolicy by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
 The final command assigns the policy in $Policy to the resource group. A managed identity is automatically created and assigned to the policy assignment.
-
-### Example 6: Policy assignment with an enforcement mode property
-```
-PS C:\> $Subscription = Get-AzSubscription -SubscriptionName 'Subscription01'
-PS C:\> $Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
-PS C:\> New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -Scope "/subscriptions/$($Subscription.Id)" -EnforcementMode DoNotEnforce
-```
-
-The first command gets a subscription named Subscription01 by using the Get-AzSubscription cmdlet and stores it in the $Subscription variable.
-The second command gets the policy definition named VirtualMachinePolicy by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
-The final command assigns the policy in $Policy at the level of the subscription identified by the subscription scope string. 
-The assignment is set with an EnforcementMode value of _DoNotEnforce_ i.e. the policy effect is not enforced during resource creation or update.
 
 ## PARAMETERS
 
@@ -188,9 +166,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -229,19 +207,40 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnforcementMode
-The enforcement mode for policy assignment. Currently, valid values are Default, DoNotEnforce.
+### -InformationAction
+Specifies how this cmdlet responds to an information event.
+The acceptable values for this parameter are:
+- Continue
+- Ignore
+- Inquire
+- SilentlyContinue
+- Stop
+- Suspend
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyAssignmentEnforcementMode]
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
-Aliases:
-Accepted values: Default, DoNotEnforce
+Aliases: infa
 
 Required: False
 Position: Named
-Default value: Default
-Accept pipeline input: True (ByPropertyName)
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InformationVariable
+Specifies an information variable.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: iv
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -445,20 +444,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Sku
+A hash table which represents SKU properties. Defaults to the Free SKU with the values: `@{Name = 'A0'; Tier = 'Free'}`. To use the Standard SKU, use the values: `@{Name = 'A1'; Tier = 'Standard'}`.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases: SkuObject
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### System.String[]
-
-### System.Management.Automation.PSObject
-
 ## OUTPUTS
-
-### System.Management.Automation.PSObject
 
 ## NOTES
 

@@ -19,8 +19,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
@@ -53,6 +53,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public IResourceManagementClient ResourceManagementClient { get; set; }
 
         public IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
+        // TODO: Remove IfDef code
+#if !NETSTANDARD
+        public GalleryTemplatesClient GalleryTemplatesClient { get; set; }
+#endif
 
         public Action<string> VerboseLogger { get; set; }
 
@@ -67,6 +71,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public ResourcesClient(IAzureContext context)
             : this(
                 AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+                // TODO: Remove IfDef code
+#if !NETSTANDARD
+                new GalleryTemplatesClient(context),
+#endif
                 AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
@@ -76,11 +84,20 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// Creates new ResourcesClient instance
         /// </summary>
         /// <param name="resourceManagementClient">The IResourceManagementClient instance</param>
+        /// <param name="galleryTemplatesClient">The IGalleryClient instance</param>
         /// <param name="authorizationManagementClient">The management client instance</param>
         public ResourcesClient(
             IResourceManagementClient resourceManagementClient,
+            // TODO: Remove IfDef code
+#if !NETSTANDARD
+            GalleryTemplatesClient galleryTemplatesClient,
+#endif
             IAuthorizationManagementClient authorizationManagementClient)
         {
+            // TODO: Remove IfDef code
+#if !NETSTANDARD
+            GalleryTemplatesClient = galleryTemplatesClient;
+#endif
             AuthorizationManagementClient = authorizationManagementClient;
             this.ResourceManagementClient = resourceManagementClient;
         }
@@ -317,9 +334,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         }
 
         public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace) =>
-            this.AuthorizationManagementClient.ProviderOperationsMetadata.Get(providerNamespace);
+            this.AuthorizationManagementClient.ProviderOperationsMetadata.Get(providerNamespace, "2015-07-01");
 
         public IPage<ProviderOperationsMetadata> ListProviderOperationsMetadata() =>
-            this.AuthorizationManagementClient.ProviderOperationsMetadata.List();
+            this.AuthorizationManagementClient.ProviderOperationsMetadata.List("2015-07-01");
     }
 }

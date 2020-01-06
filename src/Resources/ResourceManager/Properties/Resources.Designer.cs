@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -448,24 +448,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The provided value for parameter &apos;{0}&apos; is not a valid JSON array.
-        /// </summary>
-        internal static string JsonArrayExpected {
-            get {
-                return ResourceManager.GetString("JsonArrayExpected", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The provided value for parameter &apos;{0}&apos; is not a valid JSON object.
-        /// </summary>
-        internal static string JsonObjectExpected {
-            get {
-                return ResourceManager.GetString("JsonObjectExpected", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Moving resource(s) ....
         /// </summary>
         internal static string MoveResourcesMessage {
@@ -588,15 +570,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string NoRunningDeploymentsAtSubscriptionScope {
             get {
                 return ResourceManager.GetString("NoRunningDeploymentsAtSubscriptionScope", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No subscriptions can be found under current directory. Please login again using Connect-AzAccount..
-        /// </summary>
-        internal static string NoSubscriptionsUnderCurrentDirectory {
-            get {
-                return ResourceManager.GetString("NoSubscriptionsUnderCurrentDirectory", resourceCulture);
             }
         }
         
@@ -997,7 +970,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzResourceGroupDeploymentOperation.
+        ///   Looks up a localized string similar to The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation.
         /// </summary>
         internal static string WarnOnDeploymentDebugSetting {
             get {
