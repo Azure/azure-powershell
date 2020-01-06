@@ -144,4 +144,3 @@ function Test-NewContainer{
         Assert-AreEqual $pc.Name $primaryContainerName
 
 }
-}
