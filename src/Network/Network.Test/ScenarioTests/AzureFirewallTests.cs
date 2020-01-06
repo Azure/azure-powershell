@@ -57,5 +57,29 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallAllocateAndDeallocate");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallVirtualHubCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallVirtualHubCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallThreatIntelWhitelistCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallThreatIntelWhitelistCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPrivateRangeCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPrivateRangeCRUD");
+        }
     }
 }

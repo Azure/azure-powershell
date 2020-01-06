@@ -99,14 +99,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     throw new ArgumentException(string.Format(Resources.ComputeInvalidImageName, imageName));
                 }
 
-                if (compute.SubscriptionId != resourceId.SubscriptionId)
-                {
-                    throw new ArgumentException(Resources.ComputeMismatchSubscription);
-                }
-
                 if (resourceId.ResourceType.Provider == "galleries")
                 {
-                    return await compute.GetGalleryImageAndOsTypeAsync(resourceId.ResourceGroupName, imageName);
+                    var compute2 = client.GetClient<ComputeManagementClient>();
+                    compute2.SubscriptionId = resourceId.SubscriptionId;
+                    return await compute2.GetGalleryImageAndOsTypeAsync(resourceId.ResourceGroupName, imageName);
                 }
                 else
                 {

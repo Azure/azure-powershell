@@ -16,10 +16,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.DataBoxEdge;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.BandwidthSchedule;
+using ResourceModel = Microsoft.Azure.Management.DataBoxEdge.Models.BandwidthSchedule;
 using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule;
 using PSTopLevelResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
 
@@ -64,6 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidt
             HelpMessage = Constants.NameHelpMessage
         )]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("bandwidthSchedules", nameof(ResourceGroupName), nameof(DeviceName))]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,

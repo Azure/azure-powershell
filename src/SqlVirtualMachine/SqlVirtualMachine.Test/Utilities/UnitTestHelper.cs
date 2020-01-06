@@ -28,7 +28,13 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
             object[] cmdletAttributes = cmdlet.GetCustomAttributes(typeof(CmdletAttribute), true);
             Assert.Single(cmdletAttributes);
             CmdletAttribute attribute = (CmdletAttribute)cmdletAttributes[0];
-            Assert.Equal(confirmImpact, attribute.ConfirmImpact);
+            if(attribute.SupportsShouldProcess)
+            {
+                Assert.Equal(confirmImpact, attribute.ConfirmImpact);
+            }else
+            {
+                Assert.Equal(ConfirmImpact.None, attribute.ConfirmImpact);
+            }
         }
 
         public static void CheckCmdletModifiesData(Type cmdlet, bool supportsShouldProcess)

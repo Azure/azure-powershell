@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
@@ -97,6 +98,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
         public override void ExecuteCmdlet()
         {
+            IDictionary<string, string> tagPairs = null;
+
+            if (Tag != null)
+            {
+                tagPairs = new Dictionary<string, string>();
+
+                foreach (string key in Tag.Keys)
+                {
+                    tagPairs.Add(key, Tag[key].ToString());
+                }
+            }
+
             if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;
@@ -109,7 +122,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 ServiceLevel = ServiceLevel,
                 Size = PoolSize,
                 Location = Location,
-                Tags = Tag
+                Tags = tagPairs
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

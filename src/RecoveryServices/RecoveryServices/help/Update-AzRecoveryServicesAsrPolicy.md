@@ -78,14 +78,14 @@ Starts the update replication policy operation using the specified parameters an
 
 ### Example 2
 ```
-PS C:\> Update-AzRecoveryServicesAsrPolicy -AzToAzure -InputObject $Policy -ReplicationFrequencyInSeconds 900
+PS C:\> Update-AzRecoveryServicesAsrPolicy -AzureToAzure -InputObject $Policy -ReplicationFrequencyInSeconds 900
 ```
 
 Starts the update azure to azure replication policy operation using the specified parameters and returns the ASR job used to track the operation.
 
 ### Example 3
 ```
-PS C:\> $currentJob = Update-AzRecoveryServicesAsrPolicy -AzToAzure -InputObject $Policy -RecoveryPointRetentionInHours 20
+PS C:\> $currentJob = Update-AzRecoveryServicesAsrPolicy -AzureToAzure -InputObject $Policy -RecoveryPointRetentionInHours 20
 ```
 
 Starts the update azure to azure replication policy using the specified parameters and returns the ASR job used to track the operation.

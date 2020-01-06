@@ -12,45 +12,11 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+
 <#
 .SYNOPSIS
 Gets valid resource group name
 #>
-
-
-
-function Get-DeviceConnectionString 
-{
-	return "";
-}
-
-
-function Get-IotDeviceConnectionString 
-{
-	return "";
-}
-
-<#
-.SYNOPSIS
-Returns EncryptionKey
-#>
-function Get-EncryptionKey
-{
-	return "";
-}
-
-<#
-.SYNOPSIS
-Returns Userpassword used for password
-#>
-function Get-Userpassword
-{
-	return "";
-}
-
-
-
-
 function Get-DeviceResourceGroupName
 {
 	return "psrgpfortest"
@@ -62,8 +28,64 @@ Gets valid resource name
 #>
 function Get-DeviceName
 {
-	return "psdataboxedgedevice"
+	return "psddataboxedgecan"
 }
+
+<#
+.SYNOPSIS
+Gets valid resource name
+#>
+function Get-VaultName
+{
+	return "azpsdbe"
+}
+
+
+<#
+.SYNOPSIS
+Gets valid Device Connection String
+#>
+
+function Get-DeviceConnectionString 
+{
+	$vaultName = Get-VaultName
+	$val = Get-AzKeyVaultSecret -VaultName $vaultName -Name "DeviceConnectionString"
+	return $val.SecretValue
+}
+
+<#
+.SYNOPSIS
+Gets valid IOT Device Connection String
+#>
+function Get-IotDeviceConnectionString 
+{
+	$vaultName = Get-VaultName
+	$val = Get-AzKeyVaultSecret -VaultName $vaultName -Name "IotDeviceConnectionString"
+	return $val.SecretValue
+}
+
+<#
+.SYNOPSIS
+Returns Userpassword used for password
+Gets valid resource group name
+ #>
+function Get-Userpassword
+{
+	$vaultName = Get-VaultName
+	$val = Get-AzKeyVaultSecret -VaultName $vaultName -Name "UserPassword"
+	return $val.SecretValue
+}
+
+<#
+.SYNOPSIS
+Returns standard EncryptionKey
+#>
+function Get-EncryptionKey
+{
+	$val = "faked"
+	return ConvertTo-SecureString $val -AsPlainText -Force
+}
+
 
 
 function Get-StringHash([String] $String,$HashName = "MD5")
@@ -76,19 +98,17 @@ function Get-StringHash([String] $String,$HashName = "MD5")
 
 <#
 .SYNOPSIS
-Helper script to generate EncryptionKey
+Returns EncryptionKey
 #>
 function Get-EncryptionKeyForDevice($resourceGroupName, $deviceName)
 {
 
 	$sp = Get-AzADServicePrincipal -ApplicationId "2368d027-f996-4edb-bf48-928f98f2ab8c"
-	$e = Get-AzDataBoxEdgeDevice -ResourceGroupName $resourceGroupName -DeviceName $deviceName -ExtendedInfo
+	$e = Get-AzDataBoxEdgeDevice -ResourceGroupName $resourceGroupName -Name $deviceName -ExtendedInfo
 	$k = $sp.Id+$e.ResourceKey
+	echo $k
 	return Get-StringHash $k "SHA512"
 }
-
-
-
 
 <#
 .SYNOPSIS
@@ -132,4 +152,5 @@ function SleepInRecordMode ([int]$SleepIntervalInSec)
 		Wait-Seconds $SleepIntervalInSec 
 	}
 }
+
 
