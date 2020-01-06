@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             SiteConfig siteConfig = null;
             Site site = null;
             string location = null;
-            IDictionary<string, string> tags = null;
+            IDictionary<string, string> tags = null; 
             switch (ParameterSetName)
             {
                 case ParameterSet1Name:
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                                 parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
                             AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
                             NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers,
-                            FtpsState = parameters.Contains("FtpsState") ? FtpsState : "AllAllowed"
+                            FtpsState = parameters.Contains("FtpsState") ? FtpsState : WebApp.SiteConfig.FtpsState
                         };
                     }
 

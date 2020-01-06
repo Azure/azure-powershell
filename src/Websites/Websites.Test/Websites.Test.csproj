@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Websites</PsModuleName>
@@ -21,10 +21,6 @@
     <None Update="ScenarioTests\Resources\nodejs-sample.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AccessRestrictionTests\" />
   </ItemGroup>
 
 </Project>

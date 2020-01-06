@@ -162,11 +162,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                                 parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
                             AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
                             NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers,
-                            FtpsState = parameters.Contains("FtpsState") ? FtpsState : "AllAllowed"
-                            
+                            FtpsState = parameters.Contains("FtpsState") ? FtpsState : WebApp.SiteConfig.FtpsState
+
                         };
                     }
-
                     Hashtable appSettings = AppSettings ?? new Hashtable();
 
                     if (siteConfig == null)
