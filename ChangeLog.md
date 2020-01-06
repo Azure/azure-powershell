@@ -3,7 +3,7 @@
 * Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix
 
 #### Az.Cdn
-* Display error response deatil in New-AzCdnEndpoint cmdlet
+* Display error response detail in New-AzCdnEndpoint cmdlet
 
 #### Az.Compute
 * Fix Set-AzVMCustomScriptExtension cmdlet for a VM with managed OD disk which does not have OS profile.
@@ -13,19 +13,19 @@
 
 #### Az.DataBoxEdge
 * Added cmdlet 'Get-AzDataBoxEdgeStorageContainer'
-  - Get the Edge Stroage Container
+  - Get the Edge Storage Container
 * Added cmdlet 'New-AzDataBoxEdgeStorageContainer'
-  - Create new Edge Stroage Container
+  - Create new Edge Storage Container
 * Added cmdlet 'Remove-AzDataBoxEdgeStorageContainer'
-  - Remove the Edge Stroage Container
+  - Remove the Edge Storage Container
 * Added cmdlet 'Invoke-AzDataBoxEdgeStorageContainer'
-  - Invoke action to refresh data on Edge Stroage Container
+  - Invoke action to refresh data on Edge Storage Container
 * Added cmdlet 'Get-AzDataBoxEdgeStorageAccount'
-  - Get the Edge Stroage Account
+  - Get the Edge Storage Account
 * Added cmdlet 'New-AzDataBoxEdgeStorageAccount'
-  - Create new Edge Stroage Account
+  - Create new Edge Storage Account
 * Added cmdlet 'Remove-AzDataBoxEdgeStorageAccount'
-  - Remove the Edge Stroage Account
+  - Remove the Edge Storage Account
 * Invoke cmdlet 'Invoke-AzDataBoxEdgeShare'
   - Invoke action to refresh data on share
 * Added cmdlet 'Set-AzDataBoxEdgeStorageAccountCredential'
@@ -57,7 +57,7 @@ to enable create Azure-SSIS IR with static public IP addresses.
   - Update-AzMlOpClusterSystemService
 
 #### Az.Network
-* Upgrade dependancy of Microsoft.Azure.Management.Sql from 1.36-preivew to 1.37-preivew
+* Upgrade dependency of Microsoft.Azure.Management.Sql from 1.36-preview to 1.37-preview
 
 #### Az.RecoveryServices
 * Azure Site Recovery change support for managed disk vms encrypted at rest with customer managed leys for Azure to Azure provider.
