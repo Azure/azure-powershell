@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.4.0
 * Azure Site Recovery change support for managed disk vms encrypted at rest with customer managed leys for Azure to Azure provider.
 
 * Azure Site Recovery support to input disk encryption Set Id as optional input at enabling protection for Vmware to Azure.
