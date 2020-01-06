@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "WsfcDomainProfile": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainProfile",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -459,7 +459,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "WsfcDomainProfile": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainProfile",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -1604,7 +1604,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "WsfcDomainProfile": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainProfile",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -1671,7 +1671,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "WsfcDomainProfile": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainProfile",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -1870,7 +1870,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
                   "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "WsfcDomainProfile": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainProfile",
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -2395,7 +2395,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "WsfcDomainProfile": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainProfile",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -2462,7 +2462,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "WsfcDomainProfile": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainProfile",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -2805,7 +2805,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
                   "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "WsfcDomainProfile": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainProfile",
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -4094,7 +4094,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
               "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -4548,7 +4548,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
               "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -4660,7 +4660,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
               "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -5210,7 +5210,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
                   "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
                     "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -5480,7 +5480,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
               "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -5594,7 +5594,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
               "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -5906,7 +5906,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
                   "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
                     "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -6294,7 +6294,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
               "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -6498,7 +6498,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
               "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -6938,7 +6938,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
                   "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
                     "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -7301,7 +7301,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
                   "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
                     "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -7549,7 +7549,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
               "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -7967,7 +7967,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
               "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -8041,7 +8041,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
               "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -8114,7 +8114,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
             "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "WsfcDomainProfile": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainProfile",
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -8271,7 +8271,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
                   "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SqlVirtualMachineGroup": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
                     "WsfcDomainCredentials": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainCredentials",
@@ -8350,7 +8350,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
                   "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "WsfcDomainProfile": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainProfile",
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -8976,7 +8976,7 @@
     "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel": {
       "Namespace": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model",
       "Name": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "WsfcDomainProfile": "Microsoft.Azure.Management.SqlVirtualMachine.Models.WsfcDomainProfile",
         "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
