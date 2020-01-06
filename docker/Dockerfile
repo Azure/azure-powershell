@@ -28,10 +28,11 @@ LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
 
 # install azure-powershell from built artifacts
 COPY ${ARTIFACT} ${ARTIFACTS}
-RUN pwsh -Command Register-PSRepository -Name ${TEMPREPO} -SourceLocation ${ARTIFACTS} -PublishLocation $ARTIFACTS -InstallationPolicy Trusted -PackageManagementProvider NuGet
-RUN pwsh -Command Install-Module -Name ${MODULE} -Repository ${TEMPREPO}
-RUN pwsh -Command Get-Module -ListAvailable
-RUN pwsh -Command Unregister-PSRepository -Name ${TEMPREPO}
+RUN pwsh -Command Register-PSRepository -Name ${TEMPREPO} -SourceLocation ${ARTIFACTS} -PublishLocation $ARTIFACTS -InstallationPolicy Trusted -PackageManagementProvider NuGet && \
+    pwsh -Command Install-Module -Name ${MODULE} -Repository ${TEMPREPO} && \
+    pwsh -Command Get-Module -ListAvailable && \
+    pwsh -Command Unregister-PSRepository -Name ${TEMPREPO} && \
+    pwsh -Command Remove-Item ${ARTIFACTS} -Recurse
 
 # create AzureRmContextSettings.json before it was generated
 COPY ${CONFIG}/${AZURERM_CONTEXT_SETTINGS} ${AZURE}/${AZURERM_CONTEXT_SETTINGS}
