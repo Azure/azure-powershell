@@ -22,6 +22,8 @@ Get-AzDataLakeStoreDeletedItem [-Account] <String> [-Filter] <String> [-Count <I
 The **Get-AzDataLakeStoreDeletedItem** cmdlet searches the deleted files or folders in Data Lake Store which match the given filter.
 It displays the following attributes of the deleted items - OriginalPath, TrashDirPath, Type, CreationTime.
 This could be a long running operation as it may have to search through millions of files in trash and could be run as a job.
+ Caution: Undeleting files is a best effort operation. There are no guarantees that a file can be restored once it is deleted. The use of this API is enabled via whitelisting. 
+ If your ADL account is not whitelisted, then using this api will throw Not implemented exception. For further information and assistance please contact Microsoft support.
 
 ## EXAMPLES
 

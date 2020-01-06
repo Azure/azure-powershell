@@ -29,6 +29,8 @@ Restore-AzDataLakeStoreDeletedItem [-Account] <String> [-DeletedItem] <DataLakeS
 
 ## DESCRIPTION
 The **Restore-AzDataLakeStoreDeletedItem** cmdlet restores a deleted file or folder in Data Lake Store. Requires the path of deleted item in trash returned by Get-AzDataLakeStoreDeletedItem.
+Caution: Undeleting files is a best effort operation. There are no guarantees that a file can be restored once it is deleted. The use of this API is enabled via whitelisting. 
+If your ADL account is not whitelisted, then using this api will throw Not implemented exception. For further information and assistance please contact Microsoft support.
 
 ## EXAMPLES
 

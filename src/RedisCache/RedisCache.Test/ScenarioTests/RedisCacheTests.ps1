@@ -7,7 +7,7 @@ function Test-RedisCache
     # Setup
     $resourceGroupName = "PowerShellTest-1"
     $cacheName = "redisteam001"
-    $location = "West US"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
 
     # Create resource group
     New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -44,7 +44,7 @@ function Test-RedisCache
     }
 
     # Updating Cache
-    $cacheUpdated = Set-AzRedisCache -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} -EnableNonSslPort $true
+    $cacheUpdated = Set-AzRedisCache -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} -EnableNonSslPort $true -MinimumTlsVersion 1.2
 
     Assert-AreEqual $cacheName $cacheUpdated.Name
     Assert-AreEqual 6379 $cacheUpdated.Port
@@ -52,6 +52,7 @@ function Test-RedisCache
     Assert-AreEqual "succeeded" $cacheUpdated.ProvisioningState
     Assert-AreEqual "allkeys-lru" $cacheUpdated.RedisConfiguration.Item("maxmemory-policy")
     Assert-True  { $cacheUpdated.EnableNonSslPort }
+	Assert-AreEqual "1.2" $cacheUpdated.MinimumTlsVersion
 
     Assert-NotNull $cacheUpdated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheUpdated.SecondaryKey "SecondaryKey do not exists"
@@ -117,7 +118,7 @@ function Test-SetNonExistingRedisCacheTest
     # Setup
     $resourceGroupName = "PowerShellTestNonExisting"
     $cacheName = "nonexistingrediscache"
-    $location = "West US"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
 
     # Creating Cache
     Assert-Throws {Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} }
@@ -132,13 +133,13 @@ function Test-RedisCachePipeline
     # Setup
     $resourceGroupName = "PowerShellTest-2"
     $cacheName = "redisteam002"
-    $location = "West US"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
 
     # Create resource group
     New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
-    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 1GB -Sku Standard -EnableNonSslPort $true
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 1GB -Sku Standard -EnableNonSslPort $true -MinimumTlsVersion 1.2
 
     Assert-AreEqual $cacheName $cacheCreated.Name
     Assert-AreEqual $location $cacheCreated.Location
@@ -151,6 +152,7 @@ function Test-RedisCachePipeline
     Assert-AreEqual "1GB" $cacheCreated.Size
     Assert-AreEqual "Standard" $cacheCreated.Sku
     Assert-True { $cacheCreated.EnableNonSslPort }
+	Assert-AreEqual "1.2" $cacheCreated.MinimumTlsVersion
 
     Assert-NotNull $cacheCreated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheCreated.SecondaryKey "SecondaryKey do not exists"
@@ -182,6 +184,7 @@ function Test-RedisCachePipeline
     Assert-AreEqual "Standard" $cacheUpdatedPiped.Sku
     Assert-AreEqual "allkeys-random"  $cacheUpdatedPiped.RedisConfiguration.Item("maxmemory-policy")
     Assert-False  { $cacheUpdatedPiped.EnableNonSslPort }
+	Assert-AreEqual "1.2" $cacheUpdatedPiped.MinimumTlsVersion
 
     # Get cache keys
     $cacheKeysBeforeUpdate = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Get-AzRedisCacheKey
@@ -209,7 +212,7 @@ function Test-RedisCacheClustering
     # Setup
     $resourceGroupName = "PowerShellTest-3"
     $cacheName = "redisteam003"
-    $location = "West US"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
 
     # Create resource group
     New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -325,7 +328,7 @@ function Test-RedisCachePatchSchedules
     # Setup
     $resourceGroupName = "PowerShellTest-4"
     $cacheName = "redisteam004"
-    $location = "West US"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
 
     ############################# Initial Creation #############################
     # Create resource group
@@ -480,7 +483,7 @@ function Test-ImportExportReboot
     # Setup
     $resourceGroupName = "PowerShellTest-5"
     $cacheName = "redisteam005"
-    $location = "West US"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
     $storageName = "redisteam005s"
     $storageContainerName = "exportimport"
     $prefix = "sunny"
@@ -546,7 +549,7 @@ function Test-DiagnosticOperations
     # Setup
     $resourceGroupName = "PowerShellTest-6"
     $cacheName = "redisteam006"
-    $location = "West US"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
     $storageName = "redisteam006s"
 
     ############################# Initial Creation #############################
@@ -601,8 +604,8 @@ function Test-GeoReplication
     $resourceGroupName = "PowerShellTest-7"
     $cacheName1 = "redisteam0071"
     $cacheName2 = "redisteam0072"
-    $location1 = "West US"
-    $location2 = "East US"
+    $location1 = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
+    $location2 = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "East US"
 
     ############################# Initial Creation #############################
     # Create resource group
@@ -707,7 +710,7 @@ function Test-FirewallRule
     # Setup
     $resourceGroupName = "PowerShellTest-8"
     $cacheName = "redisteam008"
-    $location = "West US"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
     $rule1 = "ruleone"
     $rule1StartIp = "10.0.0.0"
     $rule1EndIp = "10.0.0.32"
@@ -819,7 +822,7 @@ function Test-Zones
     # Setup
     $resourceGroupName = "PowerShellTest-9"
     $cacheName = "redisteam009"
-    $location = "East US 2"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "East US"
 
     # Create resource group
     New-AzResourceGroup -Name $resourceGroupName -Location $location

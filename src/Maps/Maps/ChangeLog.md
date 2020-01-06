@@ -19,5 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 0.7.2
+* Update references in .psd1 to use relative path
+
 ## Version 0.7.1
 * Added support for `S1` SKU

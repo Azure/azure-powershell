@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.2
+* Update references in .psd1 to use relative path
+
+## Version 1.0.1
+* Updated PrivateDns .net sdk to version 1.0.0
+
+## Version 1.0.0
+* 1.0.0 version released
+
 ## Version 0.1.3
 * Added support for linking cross-tenant Vnets to Private DNS Zones
 

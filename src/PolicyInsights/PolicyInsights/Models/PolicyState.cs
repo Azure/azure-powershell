@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Policy state record.
@@ -172,6 +173,11 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
         public PolicyEvaluationDetails PolicyEvaluationDetails { get; }
 
         /// <summary>
+        /// Gets policy definition group names.
+        /// </summary>
+        public IList<string> PolicyDefinitionGroupNames { get; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="PolicyState" /> class.
         /// </summary>
         /// <param name="policyState">Policy state.</param>
@@ -216,6 +222,8 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
             {
                 this.PolicyEvaluationDetails = new PolicyEvaluationDetails(policyState.PolicyEvaluationDetails);
             }
+            
+            this.PolicyDefinitionGroupNames = policyState.PolicyDefinitionGroupNames?.ToList();
         }
     }
 }

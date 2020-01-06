@@ -177,6 +177,7 @@ namespace Tools.Common.Loggers
                 WriteError("{0} Errors", logger.FileName);
                 WriteError(errorText.ToString());
                 WriteError("");
+                Console.WriteLine("{0}:\n{1}", logger.FileName, errorText);
             }
 
             if (hasErrors)

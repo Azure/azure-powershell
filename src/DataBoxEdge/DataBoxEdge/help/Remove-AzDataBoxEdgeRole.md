@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDataBoxEdgeRole
 
 ## SYNOPSIS
-Removes the assosciated Role for the device
+Removes the associated IoT role for a device.
 
 ## SYNTAX
 
@@ -31,13 +31,13 @@ Remove-AzDataBoxEdgeRole -InputObject <PSDataBoxEdgeRole> [-AsJob] [-DefaultProf
 ```
 
 ## DESCRIPTION
-This **Remove-AzDataBoxEdgeEdgeRole** will remove the assosciated Role for the device.
+The **Remove-AzDataBoxEdgeRole** cmdlet removes the associated IoT role for a Data Box Edge device.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeRole ResourceGroupName resource-group-name -DeviceName device-name -Name role-name
+PS C:\> Remove-AzDataBoxEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name roleName
 ```
 
 ## PARAMETERS

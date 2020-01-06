@@ -14,16 +14,17 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
-    using Policy;
     using System;
     using System.Collections;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;    
+    using Newtonsoft.Json.Linq;
+    using Policy;
 
     /// <summary>
     /// Creates a policy assignment.
@@ -109,6 +110,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Metadata { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy assignment enforcement mode.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentEnforcementModeHelp)]        
+        [ValidateNotNullOrEmpty]
+        public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
+
+        /// <summary>
         /// Gets or sets a flag indicating whether a system assigned identity should be added to the policy assignment.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentAssignIdentityHelp)]
@@ -192,7 +200,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Description = this.Description ?? null,
                     Scope = this.Scope,
                     NotScopes = this.NotScope ?? null,
-                    Metadata = this.Metadata == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Metadata).ToString()),
+                    Metadata = this.Metadata == null ? null : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)),
+                    EnforcementMode = EnforcementMode ?? PolicyAssignmentEnforcementMode.Default,
                     Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject)
                 }
             };

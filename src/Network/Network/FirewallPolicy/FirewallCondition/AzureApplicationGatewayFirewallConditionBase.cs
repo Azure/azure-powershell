@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "Describes operator to be matched.")]
-        [ValidateSet("IPMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "Regex", IgnoreCase = true)]
+        [ValidateSet("IPMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "Regex", "GeoMatch", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Operator { get; set; }
 

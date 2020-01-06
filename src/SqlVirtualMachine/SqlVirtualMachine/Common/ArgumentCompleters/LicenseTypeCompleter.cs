@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters
     {
         public LicenseTypeCompleterAttribute() : base(
                 "PAYG",
-                "AHUB"
+                "AHUB",
+                "DR"
             )
         {}
     }
