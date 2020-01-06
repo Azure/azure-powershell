@@ -951,6 +951,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.TfoVMSubnetName = vMNicDetails.TfoVMSubnetName;
             this.TfoNetworkSecurityGroupId = vMNicDetails.TfoNetworkSecurityGroupId;
             this.TfoIPConfigs = vMNicDetails.TfoIPConfigs?.ToList() ?? new List<IPConfig>();
+            this.EnableAcceleratedNetworkingOnTfo = vMNicDetails.EnableAcceleratedNetworkingOnTfo;
         }
 
         //
@@ -1052,6 +1053,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the IP configuration details for test failover NIC.
         /// </summary>
         public List<IPConfig> TfoIPConfigs { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets whether accelerated networking is enabled on test failover NIC.
+        public bool? EnableAcceleratedNetworkingOnTfo { get; set; }
     }
 
     /// <summary>
@@ -2317,22 +2323,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    ///     Partial details of a NIC of a VM.
+    ///     Partial ASR details of a NIC.
     /// </summary>
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    public class VMNic
+    public class ASRVMNicConfig
     {
         /// <summary>
         ///     Gets or sets ID of the NIC.
         /// </summary>
         [DataMember]
         public string NicId { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the static IP address of the replica NIC.
-        /// </summary>
-        [DataMember]
-        public string RecoveryNicStaticIPAddress { get; set; }
 
         /// <summary>
         ///     Gets or sets Id of the recovery VM Network.
@@ -2347,16 +2347,52 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryVMSubnetName { get; set; }
 
         /// <summary>
-        ///     Gets or sets Name of the VM network.
+        ///     Gets or sets the id of the NSG associated with the recovery NIC.
         /// </summary>
         [DataMember]
-        public string VMNetworkName { get; set; }
+        public string RecoveryNetworkSecurityGroupId { get; set; }
 
         /// <summary>
-        ///     Gets or sets Name of the VM subnet.
+        ///     Gets or sets the IP configuration details for the recovery NIC.
         /// </summary>
         [DataMember]
-        public string VMSubnetName { get; set; }
+        public List<IPConfig> RecoveryIPConfigs { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether the recovery NIC has accelerated networking enabled.
+        /// </summary>
+        [DataMember]
+        public bool EnableAcceleratedNetworkingOnRecovery { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Id of the test failover VM Network.
+        /// </summary>
+        [DataMember]
+        public string TfoVMNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name of the test failover VM subnet.
+        /// </summary>
+        [DataMember]
+        public string TfoVMSubnetName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the id of the NSG associated with the test failover NIC.
+        /// </summary>
+        [DataMember]
+        public string TfoNetworkSecurityGroupId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the IP configuration details for the test failover NIC.
+        /// </summary>
+        [DataMember]
+        public List<IPConfig> TfoIPConfigs { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether the test failover NIC has accelerated networking enabled.
+        /// </summary>
+        [DataMember]
+        public bool EnableAcceleratedNetworkingOnTfo { get; set; }
     }
 
     /// <summary>
@@ -2486,6 +2522,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets KeyEncryptionVaultId.
         /// </summary>
         public string KeyEncryptionVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the failover disk name.
+        /// </summary>
+        public string FailoverDiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test failover disk name.
+        /// </summary>
+        public string TfoDiskName { get; set; }
     }
 
     /// <summary>
