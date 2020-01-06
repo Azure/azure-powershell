@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add ColocationStatus parameter to Get-AzProximityPlacementGroup cmdlet.
 
 ## Version 3.3.0
 * Fix Set-AzVMCustomScriptExtension cmdlet for a VM with managed OD disk which does not have OS profile.
