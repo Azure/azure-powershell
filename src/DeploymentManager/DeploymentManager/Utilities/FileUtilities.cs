@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Utilities
 
             if (!File.Exists(propertiesFileFullPath))
             {
-                throw new FileNotFoundException(Messages.HealthCheckPropertiesFileNotFound, propertiesFilePath);
+                throw new FileNotFoundException(
+                    string.Format(Messages.HealthCheckPropertiesFileNotFound, propertiesFilePath));
             }
 
             return File.ReadAllText(propertiesFileFullPath);
