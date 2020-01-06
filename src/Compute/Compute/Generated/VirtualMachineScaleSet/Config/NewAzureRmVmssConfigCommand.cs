@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             UpgradePolicy vUpgradePolicy = null;
 
             // AutomaticRepairsPolicy
-            AutomaticRepairsPolicy vAutomaticRepairsPolicy = null;
+            PSAutomaticRepairsPolicy vAutomaticRepairsPolicy = null;
 
             // VirtualMachineProfile
             PSVirtualMachineScaleSetVMProfile vVirtualMachineProfile = null;
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (vAutomaticRepairsPolicy == null)
             {
-                vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                vAutomaticRepairsPolicy = new PSAutomaticRepairsPolicy();
             }
             vAutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair.IsPresent;
 
@@ -386,18 +386,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vAutomaticRepairsPolicy == null)
                 {
-                    vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                    vAutomaticRepairsPolicy = new PSAutomaticRepairsPolicy();
                 }
                 vAutomaticRepairsPolicy.GracePeriod = this.AutomaticRepairGracePeriod;
-            }
-
-            if (this.IsParameterBound(c => c.AutomaticRepairMaxInstanceRepairsPercent))
-            {
-                if (vAutomaticRepairsPolicy == null)
-                {
-                    vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
-                }
-                vAutomaticRepairsPolicy.MaxInstanceRepairsPercent = this.AutomaticRepairMaxInstanceRepairsPercent;
             }
 
             if (this.IsParameterBound(c => c.DisableAutoRollback))
