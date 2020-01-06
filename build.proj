@@ -245,7 +245,6 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/GetArtifacts.ps1 -Artifacts $(RepoArtifacts) -Docker $(DockerRoot) &quot;" />
     <Exec Command="docker build -t azure-powershell $(DockerRoot)" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/CleanArtifacts.ps1 -Docker $(DockerRoot) &quot;" />
-    <!-- TODO: push to image repository -->
   </Target>
 
   <Target Name="Test">
