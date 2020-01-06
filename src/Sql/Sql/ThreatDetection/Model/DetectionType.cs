@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
 {
     /// <summary>
-    /// The possible disable alert types
+    /// The possible disable alert types.
     /// </summary> 
     public static class DetectionType
     {
