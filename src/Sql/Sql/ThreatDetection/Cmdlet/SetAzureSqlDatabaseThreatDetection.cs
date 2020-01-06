@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         public string NotificationRecipientsEmails { get; set; }
 
         /// <summary>
-        /// Gets or sets the whether to email administrators
+        /// Gets or sets the whether to email administrators.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines whether to email administrators")]
         [ValidateNotNullOrEmpty]
