@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.8.0'
+ModuleVersion = '0.10.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -54,18 +54,18 @@ DotNetFrameworkVersion = '4.7.2'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.4'; }, 
-               @{ModuleName = 'Az.Billing'; RequiredVersion = '0.8.0'; }, 
-               @{ModuleName = 'Az.Compute'; RequiredVersion = '0.8.0'; }, 
-               @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.0.1'; }, 
-               @{ModuleName = 'Az.Dns'; RequiredVersion = '0.8.0'; }, 
-               @{ModuleName = 'Az.EventHub'; RequiredVersion = '1.4.1'; }, 
+               @{ModuleName = 'Az.Billing'; RequiredVersion = '0.10.0'; }, 
+               @{ModuleName = 'Az.Compute'; RequiredVersion = '0.10.0'; }, 
+               @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.1.0'; }, 
+               @{ModuleName = 'Az.Dns'; RequiredVersion = '0.10.0'; }, 
+               @{ModuleName = 'Az.EventHub'; RequiredVersion = '1.4.3'; }, 
                @{ModuleName = 'Az.IotHub'; RequiredVersion = '2.0.1'; }, 
-               @{ModuleName = 'Az.KeyVault'; RequiredVersion = '0.8.0'; }, 
-               @{ModuleName = 'Az.Monitor'; RequiredVersion = '1.4.0'; }, 
-               @{ModuleName = 'Az.Network'; RequiredVersion = '0.8.0'; }, 
-               @{ModuleName = 'Az.Resources'; RequiredVersion = '0.8.0'; }, 
-               @{ModuleName = 'Az.Storage'; RequiredVersion = '0.8.0'; }, 
-               @{ModuleName = 'Az.Websites'; RequiredVersion = '0.8.0'; })
+               @{ModuleName = 'Az.KeyVault'; RequiredVersion = '0.10.0'; }, 
+               @{ModuleName = 'Az.Monitor'; RequiredVersion = '1.5.0'; }, 
+               @{ModuleName = 'Az.Network'; RequiredVersion = '0.10.0'; }, 
+               @{ModuleName = 'Az.Resources'; RequiredVersion = '0.10.0'; }, 
+               @{ModuleName = 'Az.Storage'; RequiredVersion = '0.10.0'; }, 
+               @{ModuleName = 'Az.Websites'; RequiredVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
