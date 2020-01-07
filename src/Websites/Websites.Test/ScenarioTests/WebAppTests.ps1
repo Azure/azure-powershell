@@ -1073,7 +1073,7 @@ function Test-SetWebApp
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	$capacity = 2
-	$ftpsState="AllAllowed"
+	$ftpsState="Disabled"
 
 	try
 	{
@@ -1093,7 +1093,7 @@ function Test-SetWebApp
 		Assert-NotNull $webApp.SiteConfig.phpVersion
 		
 		# Change service plan & set site properties
-		$job = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -AsJob
+		$job = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -AsJob
 		$job | Wait-Job
 		$webApp = $job | Receive-Job
 
@@ -1102,6 +1102,14 @@ function Test-SetWebApp
 		# Assert
 		Assert-AreEqual $webAppName $webApp.Name
 		Assert-AreEqual $serverFarm2.Id $webApp.ServerFarmId
+		#Assert-AreEqual $true $webApp.HttpsOnly
+
+		#Set HttpsOnly property
+		$webApp = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -HttpsOnly $true
+
+		Write-Debug "DEBUG: Changed HttpsOnly property to true" 
+
+		# Assert
 		Assert-AreEqual $true $webApp.HttpsOnly
 
 		# Set config properties

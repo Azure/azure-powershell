@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Set-AzWebApp - The parameter FtpsState has been added
+
 ## Version 1.5.1
 * Update references in .psd1 to use relative path
 

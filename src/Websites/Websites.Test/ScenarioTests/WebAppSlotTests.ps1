@@ -415,7 +415,8 @@ function Test-SetWebAppSlot
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	$numberOfWorkers = 2
-	$ftpsState= "AllAllowed"
+	$ftpsState= "Disabled"
+
 	try
 	{
 		#Setup
@@ -440,14 +441,22 @@ function Test-SetWebAppSlot
         Assert-Null $webApp.Identity
 		
 		# Change service plan & set properties
-		$job = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName2 -HttpsOnly $true -AsJob
+		$job = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $PlanName2 -AsJob
 		$job | Wait-Job
 		$slot = $job | Receive-Job
 
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot.Name
 		Assert-AreEqual $serverFarm2.Id $slot.ServerFarmId
-        Assert-AreEqual $true $slot.HttpsOnly
+        #Assert-AreEqual $true $slot.HttpsOnly
+
+		#Set HttpsOnly property
+		$webApp = Set-AzWebApp -ResourceGroupName $rgname -Name $appname -HttpsOnly $true
+
+		Write-Debug "DEBUG: Changed HttpsOnly property to true" 
+
+		# Assert
+		Assert-AreEqual $true $webApp.HttpsOnly
 
 		# Set config properties
 		$slot.SiteConfig.HttpLoggingEnabled = $true
