@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <remarks>
     /// The cmdlet returns the path of the newly created backup file.
     /// </remarks>
-    [Cmdlet( VerbsData.Backup, "AzureKeyVaultSecret",
+    [Cmdlet( VerbsData.Backup, "AzKeyVaultSecret",
         SupportsShouldProcess = true,
         DefaultParameterSetName = BySecretNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri )]

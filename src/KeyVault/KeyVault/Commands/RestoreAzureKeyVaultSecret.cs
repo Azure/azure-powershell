@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Restores the backup secret into a vault 
     /// </summary>
-    [Cmdlet( VerbsData.Restore, "AzureKeyVaultSecret",
+    [Cmdlet( VerbsData.Restore, "AzKeyVaultSecret",
         SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri )]
     [OutputType( typeof( Secret ) )]

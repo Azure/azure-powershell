@@ -21,7 +21,7 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureKeyVaultSecret",        
+    [Cmdlet(VerbsCommon.Get, "AzKeyVaultSecret",        
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(List<SecretIdentityItem>), typeof(Secret), typeof(List<DeletedSecretIdentityItem>), typeof(DeletedSecret))]

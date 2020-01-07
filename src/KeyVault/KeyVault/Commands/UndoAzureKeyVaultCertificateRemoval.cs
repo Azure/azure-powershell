@@ -18,7 +18,7 @@ using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsCommon.Undo, "AzureKeyVaultCertificateRemoval",
+    [Cmdlet( VerbsCommon.Undo, "AzKeyVaultCertificateRemoval",
     SupportsShouldProcess = true,
     HelpUri = Constants.KeyVaultHelpUri )]
     [OutputType( typeof( CertificateBundle ) )]

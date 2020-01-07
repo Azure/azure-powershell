@@ -19,7 +19,7 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureKeyVaultKey",
+    [Cmdlet(VerbsCommon.Remove, "AzKeyVaultKey",
         SupportsShouldProcess = true,
          ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]

@@ -19,7 +19,7 @@ using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultCertificateAttribute",
+    [Cmdlet(VerbsCommon.Set, "AzKeyVaultCertificateAttribute",
         SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyVaultCertificate))]
