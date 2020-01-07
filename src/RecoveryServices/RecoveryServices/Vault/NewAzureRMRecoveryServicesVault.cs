@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string Location { get; set; }
 
         [Parameter(Mandatory = false)]
+        [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
         #endregion
