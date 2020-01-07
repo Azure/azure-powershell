@@ -9,12 +9,13 @@ ARG AZURERM_CONTEXT_SETTINGS=AzureRmContextSettings.json
 ARG AZURE=/root/.Azure
 ARG VCS_REF="none"
 ARG VERSION=3.3.0
+ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell
 
 LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
-      readme.md="TODO" \
+      readme.md="https://github.com/Azure/azure-powershell/blob/master/docker/README.md" \
       description="This Dockerfile will install the latest release of Azure PowerShell." \
       org.label-schema.usage="TODO: official doc" \
-      org.label-schema.url="TODO:same as readme.md" \
+      org.label-schema.url="https://github.com/Azure/azure-powershell/blob/master/docker/README.md" \
       org.label-schema.vcs-url="https://github.com/Azure/azure-powershell" \
       org.label-schema.name="azure powershell" \
       org.label-schema.vendor="Azure PowerShell" \
