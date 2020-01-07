@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// </summary>
     [CmdletDeprecation(ReplacementCmdletName = "Get-AzMetric")]
     [GenericBreakingChange("Get-AzAppServicePlanMetrics alias will be removed in an upcoming breaking change release", "2.0.0")]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServicePlanMetric")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServicePlanMetrics")]
     [OutputType(typeof(ResourceMetric))]
     [Alias("Get-AzAppServicePlanMetrics")]
     public class GetAzureAppServicePlanMetricsCmdlet : AppServicePlanBaseCmdlet
