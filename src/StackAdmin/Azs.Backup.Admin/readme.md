@@ -50,13 +50,125 @@ require:
   - $(this-folder)/../readme.azurestack.md
   - $(repo)/specification/azsadmin/resource-manager/backup/readme.azsautogen.md
   - $(repo)/specification/azsadmin/resource-manager/backup/readme.md
+```
 
 ### File Renames 
+``` yaml
 module-name: Azs.Backup.Admin 
 csproj: Azs.Backup.Admin.csproj 
 psd1: Azs.Backup.Admin.psd1 
 psm1: Azs.Backup.Admin.psm1
+```
+
+### Parameter default values
+``` yaml
+directive:
+    # Default to Format-List for the Backup and BackupLocation model as there are many important fields
+  - where:
+      model-name: Backup
+    set:
+      suppress-format: true
+  - where:
+      model-name: BackupLocation
+    set:
+      suppress-format: true
+
+    # Rename model property names
+    # Remove "ExternalStoreDefault" from properties InfoStatus, InfoCreatedDateTime, InfoEncryptionCertThumbprint, etc.
+  - where:
+      model-name: BackupLocation
+      property-name: ^ExternalStoreDefault(.+)
+    set:
+      property-name: $1
+  - where:
+      model-name: BackupLocation
+      property-name: BackupFrequencyInHour
+    set:
+      property-name: BackupFrequencyInHours
+  - where:
+      model-name: BackupLocation
+      property-name: BackupRetentionPeriodInDay
+    set:
+      property-name: BackupRetentionPeriodInDays
+    # Remove "Info" from properties ExternalStoreDefaultPath, ExternalStoreDefaultUserName, ExternalStoreDefaultPassword, etc.
+  - where:
+      model-name: Backup
+      property-name: ^Info(.+)
+    set:
+      property-name: $1
+
+    # Default value for ResourceGroupName
+  - where:
+      parameter-name: ResourceGroupName
+    set:
+      default:
+        script: '"system.$((Get-AzLocation)[0].Name)"'
+
+    # Rename parameter Backup to Name
+  - where:
+      subject: Backup
+      parameter-name: Backup
+    set:
+      parameter-name: Name
+
+    # Rename Get/Set-AzsBackupLocation to Get/Set-AzsBackupConfiguration
+  - where:
+      subject: BackupLocation
+    set:
+      subject: BackupConfiguration
+
+    # Rename cmdlet parameter names in Set-AzsBackupConfiguration
+    # Remove "ExternalStoreDefault" from parameters ExternalStoreDefaultPath, ExternalStoreDefaultUserName, ExternalStoreDefaultPassword, etc.
+  - where:
+      verb: Set
+      subject: BackupConfiguration
+      parameter-name: ^ExternalStoreDefault(.+)
+    set:
+      parameter-name: $1
+  - where:
+      verb: Set
+      subject: BackupConfiguration
+      parameter-name: BackupFrequencyInHour
+    set:
+      parameter-name: BackupFrequencyInHours
+  - where:
+      verb: Set
+      subject: BackupConfiguration
+      parameter-name: BackupRetentionPeriodInDay
+    set:
+      parameter-name: BackupRetentionPeriodInDays
+
+    # Hide the auto-generated Set-AzsBackupConfiguration and expose it through customized one
+  - where:
+      verb: Set
+      subject: BackupConfiguration
+    hide: true
+
+    # Hide the auto-generated Restore-AzsBackup and expose it through customized one
+  - where:
+      verb: Restore
+      subject: Backup
+    hide: true
+
+    # Hide the auto-generated Get-AzsBackup and expose it through customized one
+  - where:
+      verb: Get
+      subject: Backup
+    hide: true
+
+    # Rename New-AzsBackupLocationBackup to Start-AzsBackup
+  - where:
+      verb: New
+      subject: BackupLocationBackup
+    set:
+      verb: Start
+      subject: Backup
+
+    # Hide the auto-generated Start-AzsBackup and expose it through customized one
+  - where:
+      verb: Start
+      subject: Backup
+    hide: true
 
 subject-prefix: ''
 module-version: 0.0.1
-```

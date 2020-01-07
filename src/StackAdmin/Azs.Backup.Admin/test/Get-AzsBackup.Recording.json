@@ -1,0 +1,362 @@
+{
+  "Get-AzsBackup+[NoContext]+TestListBackups+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups?api-version=2018-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups?api-version=2018-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "87" ],
+        "x-ms-client-request-id": [ "d4dc15ff-a68f-4482-af20-c7f4d6f393b8" ],
+        "CommandName": [ "Azs.Backup.Admin.internal\\Get-AzsBackup" ],
+        "FullCommandName": [ "Get-AzsBackup_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "35931655-eb40-409b-a1f5-96cdd2165e3e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14856" ],
+        "x-ms-request-id": [ "35931655-eb40-409b-a1f5-96cdd2165e3e" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080001Z:35931655-eb40-409b-a1f5-96cdd2165e3e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:00:01 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv+/+QaaRS0GIR38BE5NqJHgIQaAMqa05lHFaX3xriewUdv0sn6e/mgdZAVAmzI+msosGNV4+RvNQc0ACvKzS4DM00sVvRcQf9mgtd91zfdpJC6swpHiUkvTZA4mw2CxenY6rk7iEEpnuFh2YOITic" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5808" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"name\":\"redmond/0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-19T10:23:58.8247346Z\",\"timeTakenToCreate\":\"PT1H21M55.3941027S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}},{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"name\":\"redmond/46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-18T10:22:33.6176481Z\",\"timeTakenToCreate\":\"PT1H20M30.2244002S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}},{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"name\":\"redmond/e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-18T22:24:18.3660294Z\",\"timeTakenToCreate\":\"PT1H22M14.8981583S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}}],\"nextLink\":null}"
+    }
+  },
+  "Get-AzsBackup+[NoContext]+TestGetBackup+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups?api-version=2018-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups?api-version=2018-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "90" ],
+        "x-ms-client-request-id": [ "b5fa34b0-a5bf-4408-a62b-40c96e3d44ed" ],
+        "CommandName": [ "Azs.Backup.Admin.internal\\Get-AzsBackup" ],
+        "FullCommandName": [ "Get-AzsBackup_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "de420041-da93-4e0b-958d-cabf2db57129" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14853" ],
+        "x-ms-request-id": [ "de420041-da93-4e0b-958d-cabf2db57129" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080002Z:de420041-da93-4e0b-958d-cabf2db57129" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:00:02 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvo/R5rEjXmW4R8UI4GAkZoWBf18LN20MaK9H97TVSY6qcCtyR9MwoQzap8qNXWOwlDTzTweLAH8JzycdT05lJU5VIt59VaDoqv6av5hO/e/7ZuTy1oY29EaCR2FfDJjv4XhEodsEVN5DzIzkcANtI" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5808" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"name\":\"redmond/0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-19T10:23:58.8247346Z\",\"timeTakenToCreate\":\"PT1H21M55.3941027S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}},{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"name\":\"redmond/46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-18T10:22:33.6176481Z\",\"timeTakenToCreate\":\"PT1H20M30.2244002S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}},{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"name\":\"redmond/e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-18T22:24:18.3660294Z\",\"timeTakenToCreate\":\"PT1H22M14.8981583S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}}],\"nextLink\":null}"
+    }
+  },
+  "Get-AzsBackup+[NoContext]+TestGetBackup+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/0b86cfdc-88aa-4ec5-8eb0-d78248f780df?api-version=2018-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/0b86cfdc-88aa-4ec5-8eb0-d78248f780df?api-version=2018-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "93" ],
+        "x-ms-client-request-id": [ "71cff5a2-233b-4ed1-843b-88f92dcaccdb" ],
+        "CommandName": [ "Azs.Backup.Admin.internal\\Get-AzsBackup" ],
+        "FullCommandName": [ "Get-AzsBackup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "295819fe-6510-44c6-933b-fe969ae607bd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14850" ],
+        "x-ms-request-id": [ "295819fe-6510-44c6-933b-fe969ae607bd" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080003Z:295819fe-6510-44c6-933b-fe969ae607bd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:00:03 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvZh7RC914Ax3LkpMrhjmjfaIaORd5ZTZKxTOfoowFh2aLBPN6D3on1yGar3F30w0IWhtQLFunsEadpF4VDWiTmn4AcpG/0Ietla+kUs3AqDWhjcs33B0QMnjnmHVgRa7lXEwJaY4KGYrAuGOumjJD" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1926" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"name\":\"redmond/0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-19T10:23:58.8247346Z\",\"timeTakenToCreate\":\"PT1H21M55.3941027S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}}"
+    }
+  },
+  "Get-AzsBackup+[NoContext]+TestGetBackup+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/46a72e4b-a888-4ac8-93f6-62cfc678407f?api-version=2018-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/46a72e4b-a888-4ac8-93f6-62cfc678407f?api-version=2018-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "96" ],
+        "x-ms-client-request-id": [ "240735eb-f7bd-46d7-8bbb-57e0d94684f6" ],
+        "CommandName": [ "Azs.Backup.Admin.internal\\Get-AzsBackup" ],
+        "FullCommandName": [ "Get-AzsBackup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "ead49cd3-1fe5-4e04-a51b-561ed25da0a7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14847" ],
+        "x-ms-request-id": [ "ead49cd3-1fe5-4e04-a51b-561ed25da0a7" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080004Z:ead49cd3-1fe5-4e04-a51b-561ed25da0a7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:00:04 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvFLY6JogHEZKGm+H7p8Fnfi7SaCo4F23fsfP7VsCyhSKujGLZrugcY44njJy6jcbcxNhtZXgurFQbGQXuxyRZEemKAlZEAElox3TE9qA7H0YkvNfSdODDkoZt4q4W9tjvaJACFe102qyeEpbMr65z" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1926" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"name\":\"redmond/46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-18T10:22:33.6176481Z\",\"timeTakenToCreate\":\"PT1H20M30.2244002S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}}"
+    }
+  },
+  "Get-AzsBackup+[NoContext]+TestGetBackup+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/e43d4400-0205-4b39-86d3-e08ea837e6a4?api-version=2018-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/e43d4400-0205-4b39-86d3-e08ea837e6a4?api-version=2018-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "99" ],
+        "x-ms-client-request-id": [ "af6ae904-5f96-4ba8-b75b-372dd2ee3904" ],
+        "CommandName": [ "Azs.Backup.Admin.internal\\Get-AzsBackup" ],
+        "FullCommandName": [ "Get-AzsBackup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "1ca5cc6a-33e9-494d-95ad-289fee16307a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14844" ],
+        "x-ms-request-id": [ "1ca5cc6a-33e9-494d-95ad-289fee16307a" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080005Z:1ca5cc6a-33e9-494d-95ad-289fee16307a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:00:05 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvHPsYYOAIjx2wi6sQ+fMsb95iNUnSA/h57EiujIY5E14VwN+eO7T+0AYtYOy5EXXcz7ghXPO/WMpevPejFM0J7ABhjZmECsiyb5t7fUDqCJYjDpqBF+5UpWLZ/MwGmmT6pCQ9fLsHuv67eAN0lJxM" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1926" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"name\":\"redmond/e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-18T22:24:18.3660294Z\",\"timeTakenToCreate\":\"PT1H22M14.8981583S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}}"
+    }
+  },
+  "Get-AzsBackup+[NoContext]+TestGetBackupViaIdentity+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups?api-version=2018-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups?api-version=2018-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "102" ],
+        "x-ms-client-request-id": [ "98726860-4ba1-4258-b992-056441245e86" ],
+        "CommandName": [ "Azs.Backup.Admin.internal\\Get-AzsBackup" ],
+        "FullCommandName": [ "Get-AzsBackup_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "fb4dfc3a-736c-4f26-aefd-e8d4e582b11c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14841" ],
+        "x-ms-request-id": [ "fb4dfc3a-736c-4f26-aefd-e8d4e582b11c" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080006Z:fb4dfc3a-736c-4f26-aefd-e8d4e582b11c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:00:06 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRveu4BlUuyGtinE3SdDtedj25kznHZddOS9fQVmk/mCgnFGFQ1Bkjk3XfPbIjTDTc7zqWM5Spcsp+15cbibLFWrkgOe8/qZSydu4Inde6vFDsOGjfOMkkl2YGnTOBj0IGca+2KU9laW5qgxXVaEy8q" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5808" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"name\":\"redmond/0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-19T10:23:58.8247346Z\",\"timeTakenToCreate\":\"PT1H21M55.3941027S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}},{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"name\":\"redmond/46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-18T10:22:33.6176481Z\",\"timeTakenToCreate\":\"PT1H20M30.2244002S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}},{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"name\":\"redmond/e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-18T22:24:18.3660294Z\",\"timeTakenToCreate\":\"PT1H22M14.8981583S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}}],\"nextLink\":null}"
+    }
+  },
+  "Get-AzsBackup+[NoContext]+TestGetBackupViaIdentity+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/0b86cfdc-88aa-4ec5-8eb0-d78248f780df?api-version=2018-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/0b86cfdc-88aa-4ec5-8eb0-d78248f780df?api-version=2018-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "103" ],
+        "x-ms-client-request-id": [ "fb15ea08-319d-405c-8643-b799709fb838" ],
+        "CommandName": [ "Azs.Backup.Admin.internal\\Get-AzsBackup" ],
+        "FullCommandName": [ "Get-AzsBackup_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "90d3d63c-9cd1-44ab-b644-3f7ed257b8b5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14840" ],
+        "x-ms-request-id": [ "90d3d63c-9cd1-44ab-b644-3f7ed257b8b5" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080007Z:90d3d63c-9cd1-44ab-b644-3f7ed257b8b5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:00:06 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv0sOXXUF61ufNuJutkQpCxkDCTHKpixfDgxrDrsMamAUiGROr5ac/p4fd8yOF9jJBTC9/BZOv/UiwOVAIrfbOtmRahzmCDcgFE792Jl2gharozUoIqCzTly94omZf2qqN/ozNv/fGmX4F5NvYPFkK" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1926" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"name\":\"redmond/0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"0b86cfdc-88aa-4ec5-8eb0-d78248f780df\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-19T10:23:58.8247346Z\",\"timeTakenToCreate\":\"PT1H21M55.3941027S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}}"
+    }
+  },
+  "Get-AzsBackup+[NoContext]+TestGetBackupViaIdentity+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/46a72e4b-a888-4ac8-93f6-62cfc678407f?api-version=2018-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/46a72e4b-a888-4ac8-93f6-62cfc678407f?api-version=2018-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "104" ],
+        "x-ms-client-request-id": [ "b61845d0-a41e-46da-b2ce-8fae9bf5c318" ],
+        "CommandName": [ "Azs.Backup.Admin.internal\\Get-AzsBackup" ],
+        "FullCommandName": [ "Get-AzsBackup_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "4f04a01e-bfc7-43a4-8342-6ae7ae845201" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14839" ],
+        "x-ms-request-id": [ "4f04a01e-bfc7-43a4-8342-6ae7ae845201" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080008Z:4f04a01e-bfc7-43a4-8342-6ae7ae845201" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:00:08 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvJVd0lcD7EtGesNECTwOLDf//1msA3e71G8VWNaL2TSjGwMzpdFzikZdFFMyYPgj6iMQQJvkJrZZHpf4Hpd2MNNrqElyd++56ZJ9jljY08xAA4y/c/+vUNsFkYszEAJEeuh070EXcCY88sQFW+p2b" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1926" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"name\":\"redmond/46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"46a72e4b-a888-4ac8-93f6-62cfc678407f\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-18T10:22:33.6176481Z\",\"timeTakenToCreate\":\"PT1H20M30.2244002S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}}"
+    }
+  },
+  "Get-AzsBackup+[NoContext]+TestGetBackupViaIdentity+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/e43d4400-0205-4b39-86d3-e08ea837e6a4?api-version=2018-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/e43d4400-0205-4b39-86d3-e08ea837e6a4?api-version=2018-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "105" ],
+        "x-ms-client-request-id": [ "7e021771-8a4a-4742-af3a-9c51668b6559" ],
+        "CommandName": [ "Azs.Backup.Admin.internal\\Get-AzsBackup" ],
+        "FullCommandName": [ "Get-AzsBackup_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "abb12797-21a1-4490-9fdc-231c3b0ec870" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14838" ],
+        "x-ms-request-id": [ "abb12797-21a1-4490-9fdc-231c3b0ec870" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080009Z:abb12797-21a1-4490-9fdc-231c3b0ec870" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:00:08 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvIPKvV6eEjI/qU+k7cqxSecNHoCcGTt7tzjTgQ/ZSoItc3SMrafrIvScfqwEaiq92y/DCANh8STEjBJ51rLXELlmaOuLYojynFy9y68/+hg8NiIjw0KZYp8AVdEU4QiaqgqPmVRXZuU2hoOTL0CDA" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1926" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond/backups/e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"name\":\"redmond/e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"type\":\"Microsoft.Backup.Admin/backupLocations/backups\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"backupInfo\":{\"backupDataVersion\":\"1.0.1\",\"backupId\":\"e43d4400-0205-4b39-86d3-e08ea837e6a4\",\"roleStatus\":[{\"roleName\":\"Domain\",\"status\":\"Succeeded\"},{\"roleName\":\"AzureStackBitlocker\",\"status\":\"Succeeded\"},{\"roleName\":\"NRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SRP\",\"status\":\"Succeeded\"},{\"roleName\":\"CRP\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultInternalDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultControlPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultDataPlane\",\"status\":\"Succeeded\"},{\"roleName\":\"KeyVaultNamingService\",\"status\":\"Succeeded\"},{\"roleName\":\"Cluster\",\"status\":\"Succeeded\"},{\"roleName\":\"WAS\",\"status\":\"Succeeded\"},{\"roleName\":\"ECE\",\"status\":\"Succeeded\"},{\"roleName\":\"CA\",\"status\":\"Succeeded\"},{\"roleName\":\"ACS\",\"status\":\"Succeeded\"},{\"roleName\":\"NC\",\"status\":\"Succeeded\"},{\"roleName\":\"DeploymentProvider\",\"status\":\"Succeeded\"},{\"roleName\":\"ACSSettingsService\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeController\",\"status\":\"Succeeded\"},{\"roleName\":\"IBC\",\"status\":\"Succeeded\"},{\"roleName\":\"CPI\",\"status\":\"Succeeded\"},{\"roleName\":\"DiskRP\",\"status\":\"Succeeded\"},{\"roleName\":\"SupportBridgeRP\",\"status\":\"Succeeded\"}],\"status\":\"Succeeded\",\"createdDateTime\":\"2019-12-18T22:24:18.3660294Z\",\"timeTakenToCreate\":\"PT1H22M14.8981583S\",\"stampVersion\":\"1.1912.0.8\",\"oemVersion\":\"2.1.1907.1\",\"deploymentID\":\"13be6e26-a6dd-4f13-ba4e-9b8265c18cd1\",\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"completelyUploaded\":true,\"isAutomaticBackup\":true,\"isCloudRecoveryReady\":true}}}"
+    }
+  }
+}
