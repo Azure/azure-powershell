@@ -30,36 +30,6 @@ namespace Common.Authentication.Test
 {
     public class AzureSessionTests
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void InitializerCreatesTokenCacheFile()
-        {
-            AzureSessionInitializer.InitializeAzureSession();
-            IAzureSession oldSession = null;
-            try
-            {
-                oldSession = AzureSession.Instance;
-            }
-            catch { }
-            try
-            {
-                var store = new MemoryDataStore();
-                var path = Path.Combine(AzureSession.Instance.ARMProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
-                var settings = new ContextAutosaveSettings {Mode=ContextSaveMode.CurrentUser };
-                var content = JsonConvert.SerializeObject(settings);
-                store.VirtualStore[path] = content;
-                AzureSessionInitializer.CreateOrReplaceSession(store);
-                var session = AzureSession.Instance;
-                var tokenCacheFile = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
-                Assert.True(store.FileExists(tokenCacheFile));
-
-            }
-            finally
-            {
-                AzureSession.Initialize(() => oldSession, true);
-            }
-        }
-
 #if !NETSTANDARD
         [Fact]
 #else

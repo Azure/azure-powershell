@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             bool result = false;
             environment = null;
-            if (HasEnvironment(name))
+            if (name != null && HasEnvironment(name))
             {
                 environment = EnvironmentTable[name];
                 result = true;
@@ -673,7 +673,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         private void RefreshContextsFromCache()
         {
             var authenticationClientFactory = new SharedTokenCacheClientFactory();
-            var accounts = authenticationClientFactory.ListAccounts();
+            string authority = null;
+            if (TryGetEnvironment(AzureSession.Instance.GetProperty(AzureSession.Property.Environment), out IAzureEnvironment sessionEnvironment))
+            {
+                authority = $"{sessionEnvironment.ActiveDirectoryAuthority}organizations";
+            }
+            var accounts = authenticationClientFactory.ListAccounts(authority);
             if (!accounts.Any())
             {
                 if (!Contexts.Any(c => c.Key != "Default" && c.Value.Account.Type == AzureAccount.AccountType.User))
@@ -737,7 +742,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     }
 
                     WriteWarning(string.Format(Resources.CreatingContextsWarning, account.Username));
-                    var environment = AzureEnvironment.PublicEnvironments
+                    var environment = sessionEnvironment ?? AzureEnvironment.PublicEnvironments
                                         .Where(env => env.Value.ActiveDirectoryAuthority.Contains(account.Environment))
                                         .Select(env => env.Value)
                                         .FirstOrDefault();
@@ -747,12 +752,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                         Type = AzureAccount.AccountType.User
                     };
 
-                    var tokens = authenticationClientFactory.GetTenantTokensForAccount(account, WriteWarning);
+                    var tokens = authenticationClientFactory.GetTenantTokensForAccount(account, environment, WriteWarning);
                     foreach (var token in tokens)
                     {
                         var azureTenant = new AzureTenant() { Id = token.TenantId };
                         azureAccount.SetOrAppendProperty(AzureAccount.Property.Tenants, token.TenantId);
-                        var subscriptions = authenticationClientFactory.GetSubscriptionsFromTenantToken(account, token, WriteWarning);
+                        var subscriptions = authenticationClientFactory.GetSubscriptionsFromTenantToken(account, environment, token, WriteWarning);
                         if (!subscriptions.Any())
                         {
                             subscriptions.Add(null);

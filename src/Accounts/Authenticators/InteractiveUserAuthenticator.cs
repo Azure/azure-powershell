@@ -32,6 +32,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     /// </summary>
     public class InteractiveUserAuthenticator : DelegatingAuthenticator
     {
+        // possible ports for adfs: [8405, 8408)
+        // worked with stack team to pre-configure this in their deployment
+        private const int AdfsPortStart = 8405;
+        private const int AdfsPortEnd = 8408;
+        // possible ports for aad: [8400, 9000)
+        private const int AadPortStart = 8400;
+        private const int AadPortEnd = 9000;
+
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var interactiveParameters = parameters as InteractiveParameters;
@@ -39,28 +47,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var authenticationClientFactory = interactiveParameters.AuthenticationClientFactory;
             IPublicClientApplication publicClient = null;
             var resource = interactiveParameters.Environment.GetEndpoint(interactiveParameters.ResourceId);
-            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, resource) };
-            TcpListener listener = null;
-            var replyUrl = string.Empty;
-            var port = 8399;
+            var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
+
             try
             {
-                while (++port < 9000)
-                {
-                    try
-                    {
-                        listener = new TcpListener(IPAddress.Loopback, port);
-                        listener.Start();
-                        replyUrl = string.Format("http://localhost:{0}", port);
-                        listener.Stop();
-                        break;
-                    }
-                    catch (Exception ex)
-                    {
-                        interactiveParameters.PromptAction(string.Format("Port {0} is taken with exception '{1}'; trying to connect to the next port.", port, ex.Message));
-                        listener?.Stop();
-                    }
-                }
+                var replyUrl = GetReplyUrl(onPremise, interactiveParameters);
 
                 if (!string.IsNullOrEmpty(replyUrl))
                 {
@@ -84,6 +75,39 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             }
 
             return null;
+        }
+
+        private string GetReplyUrl(bool onPremise, InteractiveParameters interactiveParameters)
+        {
+            return string.Format("http://localhost:{0}", GetReplyUrlPort(onPremise, interactiveParameters));
+        }
+
+        private int GetReplyUrlPort(bool onPremise, InteractiveParameters interactiveParameters)
+        {
+            int portStart = onPremise ? AdfsPortStart : AadPortStart;
+            int portEnd = onPremise ? AdfsPortEnd : AadPortEnd;
+
+            int port = portStart;
+            TcpListener listener = null;
+
+            do
+            {
+                try
+                {
+                    listener = new TcpListener(IPAddress.Loopback, port);
+                    listener.Start();
+                    listener.Stop();
+                    return port;
+                }
+                catch (Exception ex)
+                {
+                    interactiveParameters.PromptAction(string.Format("Port {0} is taken with exception '{1}'; trying to connect to the next port.", port, ex.Message));
+                    listener?.Stop();
+                }
+            }
+            while (++port < portEnd);
+
+            throw new Exception("Cannot find an open port.");
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)

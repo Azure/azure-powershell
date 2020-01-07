@@ -178,6 +178,11 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
+        /// <summary>
+        /// This cmdlet should work even if there isn't a default context
+        /// </summary>
+        protected override bool RequireDefaultContext => false;
+
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
@@ -191,13 +196,19 @@ namespace Microsoft.Azure.Commands.Profile
                 }
             }
 
+            // save the target environment so it can be read to get the correct accounts from token cache
+            AzureSession.Instance.SetProperty(AzureSession.Property.Environment, Environment);
+
             _writeWarningEvent -= WriteWarningSender;
             _writeWarningEvent += WriteWarningSender;
+            // store the original write warning handler, register a thread safe one
+            AzureSession.Instance.TryGetComponent(WriteWarningKey, out _originalWriteWarning);
             AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteWarningKey);
-            AzureSession.Instance.RegisterComponent("WriteWarning", () => _writeWarningEvent);
+            AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _writeWarningEvent);
         }
 
         private event EventHandler<StreamEventArgs> _writeWarningEvent;
+        private event EventHandler<StreamEventArgs> _originalWriteWarning;
 
         private void WriteWarningSender(object sender, StreamEventArgs args)
         {
@@ -340,10 +351,10 @@ namespace Microsoft.Azure.Commands.Profile
 
                 SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
                {
-                   bool? skipContextPopulationList = null;
-                   if (this.IsParameterBound(c => c.SkipContextPopulation))
+                   bool? shouldPopulateContextList = null;
+                   if (!this.IsParameterBound(c => c.SkipContextPopulation))
                    {
-                       skipContextPopulationList = false;
+                       shouldPopulateContextList = true;
                    }
 
                    profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
@@ -355,9 +366,9 @@ namespace Microsoft.Azure.Commands.Profile
                         subscriptionName,
                         password,
                         SkipValidation,
-                        WriteWarning,
+                        WriteWarningEvent,
                         name,
-                        skipContextPopulationList));
+                        shouldPopulateContextList));
                    task.Start();
                    while (!task.IsCompleted)
                    {
@@ -380,6 +391,15 @@ namespace Microsoft.Azure.Commands.Profile
             while (_tasks.TryDequeue(out task))
             {
                 task.RunSynchronously();
+            }
+        }
+
+        private void WriteWarningEvent(string message)
+        {
+            EventHandler<StreamEventArgs> writeWarningEvent;
+            if (AzureSession.Instance.TryGetComponent(WriteWarningKey, out writeWarningEvent))
+            {
+                writeWarningEvent(this, new StreamEventArgs() { Message = message });
             }
         }
 
@@ -467,6 +487,14 @@ namespace Microsoft.Azure.Commands.Profile
                 // This will throw exception for tests, ignore.
             }
 #endif
+        }
+
+        protected override void EndProcessing()
+        {
+            base.EndProcessing();
+            // unregister the thread-safe write warning, because it won't work out of this cmdlet
+            AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteWarningKey);
+            AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _originalWriteWarning);
         }
     }
 }

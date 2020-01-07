@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var onPremise = silentParameters.Environment.OnPremise;
             var authenticationClientFactory = silentParameters.AuthenticationClientFactory;
             var resource = silentParameters.Environment.GetEndpoint(silentParameters.ResourceId);
-            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, resource) };
+            var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = AuthenticationHelpers.PowerShellClientId;
             var authority = onPremise ?
                                 silentParameters.Environment.ActiveDirectoryAuthority :

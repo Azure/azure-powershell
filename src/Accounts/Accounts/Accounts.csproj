@@ -22,7 +22,9 @@
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Principal.Windows.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.ServiceModel.Primitives.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.Identity.Client\NetFx\Microsoft.Identity.Client.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.Identity.Client.Extensions.Msal\NetFx\Microsoft.Identity.Client.Extensions.Msal.dll" />
     <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.Identity.Client\NetCore\Microsoft.Identity.Client.dll" />
+    <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.Identity.Client.Extensions.Msal\NetCore\Microsoft.Identity.Client.Extensions.Msal.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
   </ItemGroup>
@@ -47,13 +49,13 @@
   <ItemGroup>
     <EmbeddedResource Include="AzureRmAlias\Mappings.json" />
   </ItemGroup>
-   
+
   <ItemGroup>
     <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
-    <ProjectReference Include="..\Authenticators\Authenticators.csproj" />  
+    <ProjectReference Include="..\Authenticators\Authenticators.csproj" />
   </ItemGroup>
-   
+
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -61,14 +63,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-   
+
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-   
+
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -76,7 +78,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-   
+
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

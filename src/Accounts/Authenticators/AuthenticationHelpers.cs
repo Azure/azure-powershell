@@ -21,7 +21,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             PowerShellRedirectUri = "urn:ietf:wg:oauth:2.0:oob",
             EnableEbdMagicCookie = "site_id=501358&display=popup",
             UserImpersonationScope = "{0}/user_impersonation",
-            DefaultScope = "{0}/.default";
+            DefaultScope = "{0}/.default",
+            AdfsScope = "{0}/openid";
 
         /// <summary>
         /// Get the authority string given a tenant and environment
@@ -53,5 +54,16 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             }
         }
 
+        /// <summary>
+        /// Get the scopes array for a given resource
+        /// </summary>
+        /// <param name="onPremise">determines which scope to use</param>
+        /// <param name="resource">which resource will be requested</param>
+        /// <returns></returns>
+        internal static string[] GetScope(bool onPremise, string resource)
+        {
+            var scopeTemplate = onPremise ? AdfsScope : DefaultScope;
+            return new string[] { string.Format(scopeTemplate, resource) };
+        }
     }
 }

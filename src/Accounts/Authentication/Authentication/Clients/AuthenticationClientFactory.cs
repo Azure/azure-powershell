@@ -151,15 +151,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
             return true;
         }
 
-        public IEnumerable<IAccount> ListAccounts()
+        public IEnumerable<IAccount> ListAccounts(string authority = null)
         {
-            TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Calling GetAccountsAsync"));
-            return CreatePublicClient()
+            TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Calling GetAccountsAsync on {0}", authority ?? "AzureCloud"));
+            
+            return CreatePublicClient(authority: authority)
                     .GetAccountsAsync()
                     .ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
-        public List<IAccessToken> GetTenantTokensForAccount(IAccount account, Action<string> promptAction)
+        public List<IAccessToken> GetTenantTokensForAccount(IAccount account, IAzureEnvironment environment, Action<string> promptAction)
         {
             TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Attempting to acquire tenant tokens for account '{0}'.", account.Username));
             List<IAccessToken> result = new List<IAccessToken>();
@@ -168,10 +169,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
                 Id = account.Username,
                 Type = AzureAccount.AccountType.User
             };
-            var environment = AzureEnvironment.PublicEnvironments
-                                .Where(e => e.Value.ActiveDirectoryAuthority.Contains(account.Environment))
-                                .Select(e => e.Value)
-                                .FirstOrDefault();
             var commonToken = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, CommonTenant, null, null, promptAction);
             IEnumerable<string> tenants = Enumerable.Empty<string>();
             using (SubscriptionClient subscriptionClient = GetSubscriptionClient(commonToken, environment))
@@ -192,13 +189,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
                 catch
                 {
                     promptAction($"Unable to acquire token for tenant '{tenant}'.");
-                }
+                } 
             }
 
             return result;
         }
 
-        public List<IAzureSubscription> GetSubscriptionsFromTenantToken(IAccount account, IAccessToken token, Action<string> promptAction)
+        public List<IAzureSubscription> GetSubscriptionsFromTenantToken(IAccount account, IAzureEnvironment environment, IAccessToken token, Action<string> promptAction)
         {
             TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Attempting to acquire subscriptions in tenant '{0}' for account '{1}'.", token.TenantId, account.Username));
             List<IAzureSubscription> result = new List<IAzureSubscription>();
@@ -207,10 +204,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
                 Id = account.Username,
                 Type = AzureAccount.AccountType.User
             };
-            var environment = AzureEnvironment.PublicEnvironments
-                                .Where(e => e.Value.ActiveDirectoryAuthority.Contains(account.Environment))
-                                .Select(e => e.Value)
-                                .FirstOrDefault();
             using (SubscriptionClient subscriptionClient = GetSubscriptionClient(token, environment))
             {
                 var subscriptions = (subscriptionClient.ListAllSubscriptions().ToList() ?? new List<Subscription>())
@@ -232,7 +225,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
             return result;
         }
 
-        private SubscriptionClient GetSubscriptionClient(IAccessToken token, AzureEnvironment environment)
+        private SubscriptionClient GetSubscriptionClient(IAccessToken token, IAzureEnvironment environment)
         {
             return AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
