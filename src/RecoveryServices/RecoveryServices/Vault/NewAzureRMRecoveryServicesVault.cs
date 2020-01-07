@@ -69,13 +69,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     Vault vaultCreateArgs = new Vault();
 
-                    IDictionary<string, string>  vaultTags = new Dictionary<string, string>();
-                    foreach(string key in Tag.Keys)
+                    if (Tag != null)
                     {
-                        vaultTags.Add(key, Tag[key].ToString());
-                    }
+                        IDictionary<string, string> vaultTags = new Dictionary<string, string>();
+                        foreach (string key in Tag.Keys)
+                        {
+                            vaultTags.Add(key, Tag[key].ToString());
+                        }
 
-                    vaultCreateArgs.Tags = vaultTags;
+                        vaultCreateArgs.Tags = vaultTags;
+                    }
                     vaultCreateArgs.Location = this.Location;
                     vaultCreateArgs.Properties = new VaultProperties();
                     vaultCreateArgs.Sku = new Sku();
