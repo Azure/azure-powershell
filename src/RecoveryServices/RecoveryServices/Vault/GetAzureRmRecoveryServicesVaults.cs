@@ -158,23 +158,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     if (Tag != null)
                     {
-                        //bool hasTags = false;
                         foreach (string key in Tag.Keys)
                         {
                             if (vault.Tags.ContainsKey(key) && vault.Tags[key] == (string)Tag[key])
                             {
-                                this.WriteObject("vault " + vault.Name + " contains tag " + key);
-                                //hasTags = true;
                                 filteredVaults.Add(vault);
                                 continue;
                             }
                         }
-                        /*
-                        if (!hasTags)
-                        {
-                            vaults.RemoveAt(i);
-                        }
-                        */
                     }
                 }
             }
