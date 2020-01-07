@@ -819,7 +819,11 @@
               "IsManagedDisk": "System.Boolean",
               "VhdUri": "System.String",
               "LogStorageAccountId": "System.String",
-              "RecoveryAzureStorageAccountId": "System.String"
+              "RecoveryAzureStorageAccountId": "System.String",
+              "DiskEncryptionVaultId": "System.String",
+              "DiskEncryptionSecretUrl": "System.String",
+              "KeyEncryptionKeyUrl": "System.String",
+              "KeyEncryptionVaultId": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1017,6 +1021,96 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "RecoveryDiskEncryptionSetId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "DiskEncryptionVaultId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "DiskEncryptionSecretUrl",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "KeyEncryptionKeyUrl",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "KeyEncryptionVaultId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzContext",
@@ -1202,6 +1296,126 @@
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RecoveryDiskEncryptionSetId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DiskEncryptionVaultId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DiskEncryptionSecretUrl",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "KeyEncryptionKeyUrl",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "KeyEncryptionVaultId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -1430,7 +1644,8 @@
             "Properties": {
               "DiskId": "System.String",
               "LogStorageAccountId": "System.String",
-              "DiskType": "System.String"
+              "DiskType": "System.String",
+              "DiskEncryptionSetId": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1528,6 +1743,24 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "DiskEncryptionSetId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "DefaultProfile",
@@ -1635,6 +1868,30 @@
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DiskEncryptionSetId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -28464,6 +28721,24 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "DiskEncryptionSetId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzContext",
@@ -28918,6 +29193,30 @@
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DiskEncryptionSetId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -29509,6 +29808,30 @@
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DiskEncryptionSetId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
               "Position": -2147483648,
@@ -33197,6 +33520,27 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "DiskIdToDiskEncryptionSetMap",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+            "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.String",
+              "System.String"
+            ],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "RecoveryPublicIPAddressId",
           "AliasList": [],
           "Type": {
@@ -33872,6 +34216,33 @@
                   "True",
                   "False"
                 ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DiskIdToDiskEncryptionSetMap",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                  "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.String",
+                    "System.String"
+                  ],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
@@ -48772,7 +49143,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
               "Name": "System.String",
@@ -48879,7 +49250,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
                     "Name": "System.String",
@@ -52964,8 +53335,9 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.AsrVirtualHardDisk, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Volumes": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.AsrVolume]",
-        "Name": "System.String",
-        "Id": "System.String"
+        "Capacity": "System.Int64",
+        "Id": "System.String",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -53666,7 +54038,11 @@
         "IsManagedDisk": "System.Boolean",
         "VhdUri": "System.String",
         "LogStorageAccountId": "System.String",
-        "RecoveryAzureStorageAccountId": "System.String"
+        "RecoveryAzureStorageAccountId": "System.String",
+        "DiskEncryptionVaultId": "System.String",
+        "DiskEncryptionSecretUrl": "System.String",
+        "KeyEncryptionKeyUrl": "System.String",
+        "KeyEncryptionVaultId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -53712,7 +54088,8 @@
       "Properties": {
         "DiskId": "System.String",
         "LogStorageAccountId": "System.String",
-        "DiskType": "System.String"
+        "DiskType": "System.String",
+        "DiskEncryptionSetId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -53894,7 +54271,7 @@
     "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
       "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ProvisioningState": "System.String"
       },

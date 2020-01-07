@@ -51,20 +51,20 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private static string PackageDirectoryFromCommon { get; } = GetConfigDirectory();
 
         public static string PackageDirectory { get; }  = GetConfigDirectory();
-        public static string StackDirectory { get; }  = GetConfigDirectory();
+        public static string StackDirectory { get; }  = GetConfigDirectory("Stack");
 
         public static string RmDirectory { get; }  = GetRMModuleDirectory();
-        public static string StackRmDirectory { get; }  = GetRMModuleDirectory();
+        public static string StackRmDirectory { get; }  = GetRMModuleDirectory("Stack");
 
         public static string StorageDirectory { get; } = GetStorageDirectory();
-        public static string StackStorageDirectory { get; } = GetStorageDirectory();
+        public static string StackStorageDirectory { get; } = GetStorageDirectory("Stack");
 
         protected List<string> modules;
 
         public XunitTracingInterceptor TracingInterceptor { get; set; }
         public EnvironmentSetupHelper()
         {
-            var module = GetModuleManifest(RmDirectory, "Az.Accounts");
+            var module = GetModuleManifest(RmDirectory, "AzureRM.Accounts");
             if (string.IsNullOrWhiteSpace(module))
             {
                 throw new InvalidOperationException("Could not find Accounts module");
@@ -72,40 +72,40 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             LogIfNotNull($"Accounts Module path: {module}");
             RMProfileModule = module;
-            module = GetModuleManifest(RmDirectory, "Az.Resources");
+            module = GetModuleManifest(RmDirectory, "AzureRM.Resources");
             LogIfNotNull($"Resources Module path: {module}");
             RMResourceModule = module;
-            module = GetModuleManifest(RmDirectory, "Az.Insights");
+            module = GetModuleManifest(RmDirectory, "AzureRM.Insights");
             LogIfNotNull($"Insights Module path: {module}");
             RMInsightsModule = module;
-            module = GetModuleManifest(RmDirectory, "Az.Storage");
+            module = GetModuleManifest(RmDirectory, "AzureRM.Storage");
             LogIfNotNull($"Storage Management Module path: {module}");
             RMStorageModule = module;
-            module = GetModuleManifest(StorageDirectory, "Az.Storage");
+            module = GetModuleManifest(StorageDirectory, "Azure.Storage");
             LogIfNotNull($"Storage Data Plane Module path: {module}");
             RMStorageDataPlaneModule = module;
-            module = GetModuleManifest(RmDirectory, "Az.OperationalInsights");
+            module = GetModuleManifest(RmDirectory, "AzureRM.OperationalInsights");
             LogIfNotNull($"Storage Data Plane Module path: {module}");
             RMOperationalInsightsModule = module;
-            module = GetModuleManifest(RmDirectory, "Az.Network");
+            module = GetModuleManifest(RmDirectory, "AzureRM.Network");
             LogIfNotNull($"Network Module path: {module}");
             RMNetworkModule = module;
-            module = GetModuleManifest(RmDirectory, "Az.EventHub");
+            module = GetModuleManifest(RmDirectory, "AzureRM.EventHub");
             LogIfNotNull($"EventHub Module path: {module}");
             RMEventHubModule = module;
-            module = GetModuleManifest(RmDirectory, "Az.Monitor");
+            module = GetModuleManifest(RmDirectory, "AzureRM.Monitor");
             LogIfNotNull($"Monitor Module path: {module}");
             RMMonitorModule = module;
-            module = GetModuleManifest(StackRmDirectory, "Az.Accounts");
+            module = GetModuleManifest(StackRmDirectory, "AzureRM.Accounts");
             LogIfNotNull($"Stack Accounts Module path: {module}");
             StackRMProfileModule = module;
-            module = GetModuleManifest(StackRmDirectory, "Az.Resources");
+            module = GetModuleManifest(StackRmDirectory, "AzureRM.Resources");
             LogIfNotNull($"Stack Resources Module path: {module}");
             StackRMResourceModule = module;
-            module = GetModuleManifest(StackRmDirectory, "Az.Storage");
+            module = GetModuleManifest(StackRmDirectory, "AzureRM.Storage");
             LogIfNotNull($"Stack Storage Management Plane Module path: {module}");
             StackRMStorageModule = module;
-            module = GetModuleManifest(StackStorageDirectory, "Az.Storage");
+            module = GetModuleManifest(StackStorageDirectory, "Azure.Storage");
             LogIfNotNull($"Stack Storage Data Plane Module path: {module}");
             StackRMStorageDataPlaneModule = module;
             module = GetModuleManifest(RmDirectory, "Az.KeyVault");
@@ -487,9 +487,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             if (mode == AzureModule.AzureProfile)
             {
                 this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectory, @"Az.Accounts\Az.Accounts.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectory, @"Az.Resources\Az.Resources.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectory, @"Az.Resources\Az.Tags.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"AzureRM.Accounts\AzureRM.Accounts.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
@@ -507,9 +507,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             if (mode == AzureModule.AzureProfile)
             {
                 this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ServiceManagement\Azure\Azure.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"Az.Accounts\Az.Accounts.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"Az.Resources\Az.Resources.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"Az.Resources\Az.Tags.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureRM.Accounts\AzureRM.Accounts.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
@@ -517,9 +517,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
             else if (mode == AzureModule.AzureResourceManager)
             {
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"Az.Accounts\Az.Accounts.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"Az.Resources\Az.Resources.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"Az.Resources\Az.Tags.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureRM.Accounts\AzureRM.Accounts.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else
             {
