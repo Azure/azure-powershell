@@ -23,24 +23,24 @@ namespace Microsoft.Azure.Commands.KeyVault
     public static class CmdletNoun
     {
         // certificates
-        public const string AzureKeyVaultCertificate = "AzureKeyVaultCertificate";
-        public const string AzureKeyVaultCertificatePolicy = "AzureKeyVaultCertificatePolicy";
-        public const string AzureKeyVaultCertificateContact = "AzureKeyVaultCertificateContact";
-        public const string AzureKeyVaultCertificateIssuer = "AzureKeyVaultCertificateIssuer";
-        public const string AzureKeyVaultCertificateOrganizationDetails = "AzureKeyVaultCertificateOrganizationDetails";
-        public const string AzureKeyVaultCertificateAdministratorDetails = "AzureKeyVaultCertificateAdministratorDetails";
-        public const string AzureKeyVaultCertificateOperation = "AzureKeyVaultCertificateOperation";
+        public const string AzureKeyVaultCertificate = "AzKeyVaultCertificate";
+        public const string AzureKeyVaultCertificatePolicy = "AzKeyVaultCertificatePolicy";
+        public const string AzureKeyVaultCertificateContact = "AzKeyVaultCertificateContact";
+        public const string AzureKeyVaultCertificateIssuer = "AzKeyVaultCertificateIssuer";
+        public const string AzureKeyVaultCertificateOrganizationDetails = "AzKeyVaultCertificateOrganizationDetails";
+        public const string AzureKeyVaultCertificateAdministratorDetails = "AzKeyVaultCertificateAdministratorDetails";
+        public const string AzureKeyVaultCertificateOperation = "AzKeyVaultCertificateOperation";
 
         // managed storage accounts
-        public const string AzureKeyVaultManagedStorageAccount = "AzureKeyVaultManagedStorageAccount";
-        public const string AzureKeyVaultManagedStorageAccountKey = "AzureKeyVaultManagedStorageAccountKey";
-        public const string AzureKeyVaultManagedStorageSasDefinition = "AzureKeyVaultManagedStorageSasDefinition";
-        public const string AzureKeyVaultManagedStorageAccountSasParameters = "AzureKeyVaultManagedStorageAccountSasParameters";
-        public const string AzureKeyVaultManagedStorageBlobSasParameters = "AzureKeyVaultManagedStorageBlobSasParameters";
-        public const string AzureKeyVaultManagedStorageContainerSasParameters = "AzureKeyVaultManagedStorageContainerSasParameters";
-        public const string AzureKeyVaultManagedStorageFileSasParameters = "AzureKeyVaultManagedStorageFileSasParameters";
-        public const string AzureKeyVaultManagedStorageQueueSasParameters = "AzureKeyVaultManagedStorageQueueSasParameters";
-        public const string AzureKeyVaultManagedStorageShareSasParameters = "AzureKeyVaultManagedStorageShareSasParameters";
-        public const string AzureKeyVaultManagedStorageTableSasParameters = "AzureKeyVaultManagedStorageTableSasParameters";
+        public const string AzureKeyVaultManagedStorageAccount = "AzKeyVaultManagedStorageAccount";
+        public const string AzureKeyVaultManagedStorageAccountKey = "AzKeyVaultManagedStorageAccountKey";
+        public const string AzureKeyVaultManagedStorageSasDefinition = "AzKeyVaultManagedStorageSasDefinition";
+        public const string AzureKeyVaultManagedStorageAccountSasParameters = "AzKeyVaultManagedStorageAccountSasParameters";
+        public const string AzureKeyVaultManagedStorageBlobSasParameters = "AzKeyVaultManagedStorageBlobSasParameters";
+        public const string AzureKeyVaultManagedStorageContainerSasParameters = "AzKeyVaultManagedStorageContainerSasParameters";
+        public const string AzureKeyVaultManagedStorageFileSasParameters = "AzKeyVaultManagedStorageFileSasParameters";
+        public const string AzureKeyVaultManagedStorageQueueSasParameters = "AzKeyVaultManagedStorageQueueSasParameters";
+        public const string AzureKeyVaultManagedStorageShareSasParameters = "AzKeyVaultManagedStorageShareSasParameters";
+        public const string AzureKeyVaultManagedStorageTableSasParameters = "AzKeyVaultManagedStorageTableSasParameters";
     }
 }

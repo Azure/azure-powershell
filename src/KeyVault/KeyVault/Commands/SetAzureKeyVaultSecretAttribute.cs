@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecretAttribute",
+    [Cmdlet(VerbsCommon.Set, "AzKeyVaultSecretAttribute",
         SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(Secret))]

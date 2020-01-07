@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Undo, "AzureKeyVaultKeyRemoval",
+    [Cmdlet(VerbsCommon.Undo, "AzKeyVaultKeyRemoval",
     SupportsShouldProcess = true,
     HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
