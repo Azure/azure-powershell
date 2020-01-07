@@ -31,8 +31,8 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("4fc77441-aa7b-4539-9e0c-e716797751a5")]
 
-[assembly: AssemblyVersion("0.8.0")]
-[assembly: AssemblyFileVersion("0.8.0")]
+[assembly: AssemblyVersion("0.10.0")]
+[assembly: AssemblyFileVersion("0.10.0")]
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.Automation.Test")]
 #endif

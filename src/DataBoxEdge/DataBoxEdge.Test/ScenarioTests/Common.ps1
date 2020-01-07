@@ -15,45 +15,6 @@
 
 <#
 .SYNOPSIS
-Gets valid Device Connection String
-#>
-
-function Get-DeviceConnectionString 
-{
-	return "";
-}
-
-<#
-.SYNOPSIS
-Gets valid IOT Device Connection String
-#>
-function Get-IotDeviceConnectionString 
-{
-	return "";
-}
-
-<#
-.SYNOPSIS
-Returns Userpassword used for password
-Gets valid resource group name
- #>
-function Get-Userpassword
-{
-	return "";
-}
-
-<#
-.SYNOPSIS
-Returns standard EncryptionKey
-#>
-function Get-EncryptionKey
-{
-	$encryptionKey = ConvertTo-SecureString -String ""
-	return $encryptionKey 
-}
-
-<#
-.SYNOPSIS
 Gets valid resource group name
 #>
 function Get-DeviceResourceGroupName
@@ -67,8 +28,64 @@ Gets valid resource name
 #>
 function Get-DeviceName
 {
-	return "psdataboxedgedevice"
+	return "psddataboxedgecan"
 }
+
+<#
+.SYNOPSIS
+Gets valid resource name
+#>
+function Get-VaultName
+{
+	return "azpsdbe"
+}
+
+
+<#
+.SYNOPSIS
+Gets valid Device Connection String
+#>
+
+function Get-DeviceConnectionString 
+{
+	$vaultName = Get-VaultName
+	$val = Get-AzKeyVaultSecret -VaultName $vaultName -Name "DeviceConnectionString"
+	return $val.SecretValue
+}
+
+<#
+.SYNOPSIS
+Gets valid IOT Device Connection String
+#>
+function Get-IotDeviceConnectionString 
+{
+	$vaultName = Get-VaultName
+	$val = Get-AzKeyVaultSecret -VaultName $vaultName -Name "IotDeviceConnectionString"
+	return $val.SecretValue
+}
+
+<#
+.SYNOPSIS
+Returns Userpassword used for password
+Gets valid resource group name
+ #>
+function Get-Userpassword
+{
+	$vaultName = Get-VaultName
+	$val = Get-AzKeyVaultSecret -VaultName $vaultName -Name "UserPassword"
+	return $val.SecretValue
+}
+
+<#
+.SYNOPSIS
+Returns standard EncryptionKey
+#>
+function Get-EncryptionKey
+{
+	$val = "faked"
+	return ConvertTo-SecureString $val -AsPlainText -Force
+}
+
 
 
 function Get-StringHash([String] $String,$HashName = "MD5")
