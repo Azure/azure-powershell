@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSInboundEndpoint(enumerator.Current));
                     }
-                    this.inboundEndpoints = list.AsReadOnly();
+                    this.inboundEndpoints = list;
                 }
                 return this.inboundEndpoints;
             }

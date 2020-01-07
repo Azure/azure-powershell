@@ -136,6 +136,71 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove data flow &apos;{0}&apos; in data factory &apos;{1}&apos;?.
+        /// </summary>
+        internal static string DataFlowConfirmationMessage {
+            get {
+                return ResourceManager.GetString("DataFlowConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating data flow &apos;{0}&apos; in data factory &apos;{1}&apos;..
+        /// </summary>
+        internal static string DataFlowCreating {
+            get {
+                return ResourceManager.GetString("DataFlowCreating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to stop data flow debug session &apos;{0}&apos; in data factory &apos;{1}&apos;?.
+        /// </summary>
+        internal static string DataFlowDebugSessionConfirmationMessage {
+            get {
+                return ResourceManager.GetString("DataFlowDebugSessionConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping data flow debug session &apos;{0}&apos; in data factory &apos;{1}&apos;..
+        /// </summary>
+        internal static string DataFlowDebugSessionRemoving {
+            get {
+                return ResourceManager.GetString("DataFlowDebugSessionRemoving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A data flow with the name {0} in the data factory {1} already exists. 
+        ///Continuing execution will overwrite the exisiting one. 
+        ///Are you sure you want to continue?.
+        /// </summary>
+        internal static string DataFlowExists {
+            get {
+                return ResourceManager.GetString("DataFlowExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data flow &apos;{0}&apos; does not exist in data factory &apos;{1}&apos;..
+        /// </summary>
+        internal static string DataFlowNotFound {
+            get {
+                return ResourceManager.GetString("DataFlowNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing data flow &apos;{0}&apos; in data factory &apos;{1}&apos;..
+        /// </summary>
+        internal static string DataFlowRemoving {
+            get {
+                return ResourceManager.GetString("DataFlowRemoving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove dataset &apos;{0}&apos; in data factory &apos;{1}&apos;?.
         /// </summary>
         internal static string DatasetConfirmationMessage {
@@ -516,6 +581,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VNetId and Subnet should be provided when creating new integration runtime with public IP addresses..
+        /// </summary>
+        internal static string IntegrationRuntimeVNetNotProvided {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeVNetNotProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The value for pramater &apos;Type&apos; is different with existing integration runtime with name {0}..
         /// </summary>
         internal static string IntegrationRuntimeWrongType {
@@ -566,6 +640,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         internal static string InvalidLinkedDataFactoryName {
             get {
                 return ResourceManager.GetString("InvalidLinkedDataFactoryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid number of public IP addresses are provided: &apos;{0}&apos;. Please provide 2 public IP addresses for your SSIS Integration Runtime..
+        /// </summary>
+        internal static string InvalidPublicIPCount {
+            get {
+                return ResourceManager.GetString("InvalidPublicIPCount", resourceCulture);
             }
         }
         

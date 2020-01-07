@@ -14,7 +14,7 @@
 
 function Test-AzureVMGetItems
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try
@@ -121,7 +121,7 @@ function Test-AzureVMGetItems
 
 function Test-AzureVMProtection
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try
@@ -184,7 +184,7 @@ function Test-AzureVMProtection
 
 function Test-AzureVMGetRPs
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try
@@ -249,7 +249,7 @@ function Test-AzureVMGetRPs
 
 function Test-AzureVMFullRestore
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 	$targetResourceGroupName = Create-ResourceGroup $location 1
 
@@ -303,7 +303,7 @@ function Test-AzureVMFullRestore
 
 function Test-AzureUnmanagedVMFullRestore
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 	
 	try
@@ -333,7 +333,7 @@ function Test-AzureUnmanagedVMFullRestore
 
 function Test-AzureVMRPMountScript
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try
@@ -369,14 +369,14 @@ function Test-AzureVMRPMountScript
 
 function Test-AzureVMBackup
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try
 	{
 		# Setup
-		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$vm = Create-VM $resourceGroupName $location
 		$item = Enable-Protection $vault $vm
 		
 		# Trigger backup and wait for completion
@@ -395,7 +395,7 @@ function Test-AzureVMBackup
 
 function Test-AzureVMSetVaultContext
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try
@@ -432,6 +432,85 @@ function Test-AzureVMSetVaultContext
 			-Item $item `
 			-RemoveRecoveryPoints `
 			-Force;
+	}
+	finally
+	{
+		# Cleanup
+		Cleanup-ResourceGroup $resourceGroupName
+	}
+}
+
+function Test-AzureVMSoftDelete
+{
+	$location = "southeastasia"
+	$resourceGroupName = Create-ResourceGroup $location
+
+	try
+	{	
+		#Setup
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$vm = Create-VM $resourceGroupName $location
+		
+		Set-AzRecoveryServicesVaultContext -Vault $vault
+		
+		$item = Enable-Protection $vault $vm
+		$backupJob = Backup-Item $vault $item
+		
+		#SoftDelete
+		
+		Disable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Item $item `
+			-RemoveRecoveryPoints `
+			-Force;
+
+		#Check if the item is in a softdeleted state
+
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType "AzureVM" `
+			-FriendlyName $vm.Name;
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "AzureVM";
+
+		#rehydrate the softdeleted item
+
+		Undo-AzRecoveryServicesBackupItemDeletion `
+			-VaultId $vault.ID `
+			-Item $item;
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "AzureVM";
+
+		#check if item is in a rehydrated state
+		Assert-True { $item.ProtectionState -eq "ProtectionStopped" }
+
+	}
+	finally
+	{
+		#write cleanup for softdeleted state
+	}
+}
+
+function Test-AzureVMSetVaultProperty
+{
+	$location = "southeastasia"
+	$resourceGroupName = Create-ResourceGroup $location
+	try
+	{
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$VaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+
+		Assert-True { $VaultProperty.SoftDeleteFeatureState -eq "Enabled" }
+
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+		$VaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $VaultProperty.SoftDeleteFeatureState -eq "Disabled" }
 	}
 	finally
 	{

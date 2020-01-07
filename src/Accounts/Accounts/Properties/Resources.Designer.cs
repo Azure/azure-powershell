@@ -538,6 +538,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The context is invalid. Please login using Connect-AzAccount..
+        /// </summary>
+        internal static string InvalidAzureContext {
+            get {
+                return ResourceManager.GetString("InvalidAzureContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Endpoint provided is invalid. Please check the value and retry again with the correct value..
         /// </summary>
         internal static string InvalidEndpointProvided {

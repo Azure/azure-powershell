@@ -159,7 +159,7 @@ function Test-CustomDomainGetRemoveWithStoppedEndpoint
 .SYNOPSIS
 Enable Https for custom domain with running endpoint
 #>
-function Test-CustomDomainEnableHttpsWithRunningEndpoint
+function Test-VerizonCustomDomainEnableHttpsWithRunningEndpoint
 {
   # Hard-coding host and endpoint names due to requirement for DNS CNAME
     $endpointName = "testVerizonEP"
@@ -202,6 +202,86 @@ function Test-CustomDomainEnableHttpsWithRunningEndpoint
     Assert-ThrowsContains { $customDomain | Enable-AzCdnCustomDomainHttps } "BadRequest"
 
     Assert-ThrowsContains {  $customDomain | Disable-AzCdnCustomDomainHttps } "BadRequest"
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Enable Https for custom domain with running endpoint
+#>
+function Test-AkamaiCustomDomainEnableHttpsWithRunningEndpoint
+{
+  # Hard-coding host and endpoint names due to requirement for DNS CNAME
+    $endpointName = "testAkamaiEP"
+    $hostName = "testAkamai.dustydog.us"
+
+    $customDomainName = getAssetName
+
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceLocation = "EastUS"
+    $profileSku = "Standard_Akamai"
+    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+    $profile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tag $tags
+
+    $originName = getAssetName
+    $originHostName = "www.microsoft.com"
+    $endpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
+    $validateResult = Test-AzCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName $hostName
+    Assert-True{$validateResult.CustomDomainValidated}
+
+    $customDomain = New-AzCdnCustomDomain -HostName $hostName -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    Assert-AreEqual $customDomainName $customDomain.Name
+    Assert-AreEqual $hostName $customDomain.HostName
+
+    $enabled = $customDomain | Enable-AzCdnCustomDomainHttps -PassThru
+    Assert-True{$enabled}
+
+    $customDomain = Get-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabling"
+
+    Assert-ThrowsContains { $customDomain | Enable-AzCdnCustomDomainHttps } "BadRequest"
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Enable Https for custom domain with running endpoint
+#>
+function Test-MicrosoftCustomDomainEnableHttpsWithRunningEndpoint
+{
+  # Hard-coding host and endpoint names due to requirement for DNS CNAME
+    $endpointName = "testMicrosoftEP"
+    $hostName = "testMicrosoft.dustydog.us"
+
+    $customDomainName = getAssetName
+
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceLocation = "EastUS"
+    $profileSku = "Standard_Microsoft"
+    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+    $profile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tag $tags
+
+    $originName = getAssetName
+    $originHostName = "www.microsoft.com"
+    $endpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
+    $validateResult = Test-AzCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName $hostName
+    Assert-True{$validateResult.CustomDomainValidated}
+
+    $customDomain = New-AzCdnCustomDomain -HostName $hostName -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    Assert-AreEqual $customDomainName $customDomain.Name
+    Assert-AreEqual $hostName $customDomain.HostName
+
+    $enabled = $customDomain | Enable-AzCdnCustomDomainHttps -PassThru
+    Assert-True{$enabled}
+
+    $customDomain = Get-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabling"
+
+    Assert-ThrowsContains { $customDomain | Enable-AzCdnCustomDomainHttps } "BadRequest"
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

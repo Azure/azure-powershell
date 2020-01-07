@@ -207,6 +207,12 @@
   <data name="RemoveAzureSqlServerActiveDirectoryAdministratorWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Server Active Directory Administrator on server '{0}'?</value>
   </data>
+  <data name="RemoveAzureSqlInstanceActiveDirectoryAdministratorDescription" xml:space="preserve">
+    <value>Removing Azure Sql Instance Active Directory Administrator on instance '{0}'.</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceActiveDirectoryAdministratorWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Instance Active Directory Administrator on instance '{0}'?</value>
+  </data>
   <data name="RemoveAzureSqlServerDescription" xml:space="preserve">
     <value>Permanently removing Azure Sql Database Server '{0}'.</value>
   </data>
@@ -411,8 +417,8 @@
   <data name="ServerAdvancedThreatProtectionIsNotDefined" xml:space="preserve">
     <value>Server Advanced Threat Protection is not defined. Please run Enable-AzSqlServerAdvancedThreatProtection first.</value>
   </data>
-  <data name="RunSetVulnerabilityAssemenSettings" xml:space="preserve">
-    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSettings first.</value>
+  <data name="RunSetVulnerabilityAssessmentSettings" xml:space="preserve">
+    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSetting first.</value>
   </data>
   <data name="InvalidBlobStorageSasUri" xml:space="preserve">
     <value>Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX."</value>
@@ -429,8 +435,8 @@
   <data name="RetrievingStorageAccountKeysFailed" xml:space="preserve">
     <value>Failed retrieving keys of storage '{0}'.</value>
   </data>
-  <data name="VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase" xml:space="preserve">
-    <value>Vulnerability Assessment operation is not available on master database. Skipping...</value>
+  <data name="VulnerabilityAssessmentOperationIsNotAvailableOnManagedInstanceSystemDatabase" xml:space="preserve">
+    <value>Vulnerability Assessment operation is not available on managed instance system database. Skipping...</value>
   </data>
   <data name="KeyIdNotFoundForAzureKeyVaultEncryptionProtectorError" xml:space="preserve">
     <value>KeyId parameter is required for encryption protector type AzureKeyVault</value>
@@ -570,5 +576,8 @@
   <data name="AzureElasticJobExecutionNotExists" xml:space="preserve">
     <value>Job execution '{0}' does not exist in job '{1}'</value>
     <comment>Elastic Jobs</comment>
+  </data>
+  <data name="VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase" xml:space="preserve">
+    <value>Vulnerability Assessment operation is not available on master database. Skipping...</value>
   </data>
 </root>

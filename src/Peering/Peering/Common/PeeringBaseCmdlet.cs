@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The peering service prefix client
         /// </summary>
-        public IPeeringServicePrefixesOperations PeeringServicePrefixesClient => this.PeeringManagementClient.PeeringServicePrefixes;
+        public IPrefixesOperations PeeringServicePrefixesClient => this.PeeringManagementClient.Prefixes;
 
         /// <summary>
         /// the peering service prefix client extended operations.
@@ -547,8 +547,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 throw new PSArgumentNullException(string.Format(Resources.Error_ConnectionIdentifierNull));
             }
-            if (connection.BgpSession == null)
-                throw new PSArgumentNullException(string.Format(Resources.Error_NullSession));
             return this.ValidBandwidth(connection.BandwidthInMbps);
         }
 

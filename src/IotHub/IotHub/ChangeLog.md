@@ -19,6 +19,37 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.1
+* Update references in .psd1 to use relative path
+
+## Version 2.0.0
+
+* Breaking changes:
+    - The cmdlet 'Add-AzIotHubEventHubConsumerGroup' no longer supports the parameter 'EventHubEndpointName' and no alias was found for the original parameter name.
+    - The parameter set '__AllParameterSets' for cmdlet 'Add-AzIotHubEventHubConsumerGroup' has been removed.
+    - The cmdlet 'Get-AzIotHubEventHubConsumerGroup' no longer supports the parameter 'EventHubEndpointName' and no alias was found for the original parameter name.
+    - The parameter set '__AllParameterSets' for cmdlet 'Get-AzIotHubEventHubConsumerGroup' has been removed.
+    - The property 'OperationsMonitoringProperties' of type 'Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties' has been removed.
+    - The property 'OperationsMonitoringProperties' of type 'Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties' has been removed.
+    - The cmdlet 'New-AzIotHubExportDevice' no longer supports the alias 'New-AzIotHubExportDevices'.
+    - The cmdlet 'New-AzIotHubImportDevice' no longer supports the alias 'New-AzIotHubImportDevices'.
+    - The cmdlet 'Remove-AzIotHubEventHubConsumerGroup' no longer supports the parameter 'EventHubEndpointName' and no alias was found for the original parameter name.
+    - The parameter set '__AllParameterSets' for cmdlet 'Remove-AzIotHubEventHubConsumerGroup' has been removed.
+    - The cmdlet 'Set-AzIotHub' no longer supports the parameter 'OperationsMonitoringProperties' and no alias was found for the original parameter name.
+    - The parameter set 'UpdateOperationsMonitoringProperties' for cmdlet 'Set-AzIotHub' has been removed.
+
+## Version 1.3.1
+* Add new routing source: DigitalTwinChangeEvents
+* Minor bug fix: Get-AzIothub not returning subscriptionId 
+
+## Version 1.3.0
+* Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.
+* Add support to manage message enrichment for an IotHub. New cmdlets are:
+	- Add-AzIotHubMessageEnrichment
+	- Get-AzIotHubMessageEnrichment
+	- Remove-AzIotHubMessageEnrichment
+	- Set-AzIotHubMessageEnrichment
+
 ## Version 1.2.1
 * Fixed miscellaneous typos across module
 

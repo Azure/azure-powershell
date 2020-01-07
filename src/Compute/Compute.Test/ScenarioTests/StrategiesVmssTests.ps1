@@ -63,10 +63,10 @@ Test Simple Paremeter Set for New Vm
 function Test-SimpleNewVmssFromSIGImage
 {
     #This test needs to be run form the following subscription in record mode :
-	# 9e223dbe-3399-4e19-88eb-0975f02ac87f
-	#The vm needs to be created in the one of the following regions :
-	# "South Central US", "East US 2" and "Central US"
-	#To see more information on the steps to create a new SIG image go here: https://aka.ms/AA37jbt
+    # 9e223dbe-3399-4e19-88eb-0975f02ac87f
+    #The vm needs to be created in the one of the following regions :
+    # "South Central US", "East US 2" and "Central US"
+    #To see more information on the steps to create a new SIG image go here: https://aka.ms/AA37jbt
     # Setup
     $vmssname = Get-ResourceName
 
@@ -124,9 +124,9 @@ function Test-SimpleNewVmssWithUltraSSD
         [string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
         # Common
-		#As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
-		#Use the follwing command to figure out the one to use 
-		#Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
+        #As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
+        #Use the follwing command to figure out the one to use 
+        #Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
         $x = New-AzVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName -Location "east us 2" -EnableUltraSSD -Zone 3 -VmSize "Standard_D2s_v3"
 
         Assert-AreEqual $vmssname $x.Name;
@@ -394,7 +394,7 @@ function Test-SimpleNewVmssPpg
             -ResourceGroupName $rgname `
             -Name $ppgname `
             -Location "eastus"
-        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName -ProximityPlacementGroup $ppgname
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName -ProximityPlacementGroupId $ppgname
 
         Assert-AreEqual $vmss.ProximityPlacementGroup.Id $ppg.Id
     }
@@ -402,5 +402,100 @@ function Test-SimpleNewVmssPpg
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vmss with eviction policy, priority, and max price.
+#>
+function Test-SimpleNewVmssBilling
+{
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+
+        # Common
+        $x = New-AzVmss -Name $vmssname -Location "westus2" -Credential $cred -DomainNameLabel $domainNameLabel `
+                        -EvictionPolicy 'Deallocate' -Priority 'Low' -MaxPrice 0.2;
+    }
+    catch
+    {
+        Assert-True { $Error[0].ToString().Contains("OS provisioning failure"); }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vmss with ScaleInPolicy.
+#>
+function Test-SimpleNewVmssScaleInPolicy
+{
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+
+        # Common
+        New-AzVmss -Name $vmssname -Location "westus2" -Credential $cred -DomainNameLabel $domainNameLabel `
+                   -ScaleInPolicy 'Default';
+        $vm = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Assert-AreEqual "Default" $vm.ScaleInPolicy.Rules;
+    }
+    catch
+    {
+        Assert-True { $Error[0].ToString().Contains("OS provisioning failure"); }
+        $vm = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Assert-AreEqual "Default" $vm.ScaleInPolicy.Rules;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vmss with SkipExtensionsOnOverprovisionedVMs.
+#>
+function Test-SimpleNewVmssSkipExtOverprovision
+{
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+
+        # Common
+        New-AzVmss -Name $vmssname -Location "westus2" -Credential $cred -DomainNameLabel $domainNameLabel `
+                   -SkipExtensionsOnOverprovisionedVMs;
+        $vmss = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Assert-True { $vmss.DoNotRunExtensionsOnOverprovisionedVMs };
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
     }
 }

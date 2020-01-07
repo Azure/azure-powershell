@@ -29,7 +29,7 @@
     <!-- General -->
     <Configuration Condition="'$(Configuration)' != 'Release'">Debug</Configuration>
     <Scope Condition="$(Scope) == ''">All</Scope>
-    <TestFramework Condition="'$(TestFramework)' == ''">netcoreapp2.1</TestFramework>
+    <TestFramework Condition="'$(TestFramework)' == ''">netcoreapp2.2</TestFramework>
 
     <!-- Flags -->
     <CodeSign Condition ="'$(CodeSign)' == ''">false</CodeSign>

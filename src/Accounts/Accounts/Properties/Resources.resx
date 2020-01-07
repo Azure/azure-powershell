@@ -489,4 +489,7 @@
   <data name="RemovingDefaultEnvironmentsNotSupported" xml:space="preserve">
     <value>Removing public environment is not supported.</value>
   </data>
+  <data name="InvalidAzureContext" xml:space="preserve">
+    <value>The context is invalid. Please login using Connect-AzAccount.</value>
+  </data>
 </root>

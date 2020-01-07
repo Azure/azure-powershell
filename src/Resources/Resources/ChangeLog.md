@@ -19,12 +19,42 @@
 -->
 ## Upcoming Release
 
+## Version 1.9.1
+* Fix an error in help document of `Remove-AzTag`.
+
+## Version 1.9.0
+* Update references in .psd1 to use relative path
+* Fix an issue where template deployment fails to read a template parameter if its name conflicts with some built-in parameter name.
+* Updated policy cmdlets to use new api version 2019-09-01 that introduces grouping support within policy set definitions.
+* Fix the bug that the output of some sub-resource is empty when using `Get-AzResource`.
+
+## Version 1.8.0
+- Updated policy cmdlets to use new api version 2019-06-01 that has new EnforcementMode property in policy assignment.
+- Updated create policy definition help example
+- Fix bug Remove-AZADServicePrincipal -ServicePrincipalName, throw null reference when service principal name not found.
+- Fix bug New-AZADServicePrincipal, throw null reference when tenant doesn't have any subscription.
+- Change New-AzAdServicePrincipal to add credentials only to associated application.
+
+## Version 1.7.1
+* Update dependency assembly Microsoft.Extensions.Caching.Memory from 1.1.1 to 2.2
+
+## Version 1.7.0
+* Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
+
 ## Version 1.6.2
 * Add support for new api version 2019-05-10 for Microsoft.Resource
     - Add support for `copy.count = 0` for variables, resources and properties
     - Resources with `condition = false` or `copy.count = 0` will be deleted in complete mode
 * Fixed miscellaneous typos across module
 * Add an example of assigning policy at subscription level to help doc
+* Added breaking change notice about new required parameter `-ScopeType` in the `AzDeployment` cmdlets
+    - `Get-AzDeployment`
+    - `Get-AzDeploymentOperation`
+    - `New-AzDeployment`
+    - `Remove-AzDeployment`
+    - `Save-AzDeploymentTemplate`
+    - `Stop-AzDeployment`
+    - `Test-AzDeployment`
 
 ## Version 1.6.1
 - Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation

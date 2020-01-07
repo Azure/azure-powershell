@@ -75,6 +75,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCustomScriptExtensionLinuxVM()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionLinuxVM");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCustomScriptExtensionManagedDisk()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionManagedDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineAccessExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineAccessExtension");
@@ -111,6 +125,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestAzureDiskEncryptionExtensionSinglePassDisableAndRemove()
         {
             TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionExtensionNonDefaultParams()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionNonDefaultParams");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionLnxManagedDisk()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionLnxManagedDisk");
         }
 
         [Fact]

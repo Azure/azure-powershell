@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.1
+* Fix a few issues concerning authentication
+
 ## Version 2.0.0-preview
 * Update to using Microsoft Authentication Library (MSAL)
     - Enable interactive login support for cross-platform by default
@@ -30,6 +33,24 @@
     - `Connect-AzAccount` adds an account to the token cache if not already there
     - `Remove-AzAccount` removes the account from the token cache and deletes all contexts containing the account
     - `Clear-AzContext` removes all accounts from the token cache and deletes all contexts
+
+## Version 1.7.0
+* Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix
+
+## Version 1.6.6
+* Add client-side telemetry info for Az 4.0 preview
+
+## Version 1.6.5
+* Update references in .psd1 to use relative path
+* Set correct UserAgent for client-side telemetry for Az 4.0 preview
+* Display user friendly error message when context is null in Az 4.0
+* Add endpoints for attestation service
+
+## Version 1.6.4
+* Add a deprecation message for `Resolve-Error` alias.
+
+## Version 1.6.3
+* Update telemetry and url rewriting for generated modules, fix windows unit tests.
 
 ## Version 1.6.2
 * Fixed miscellaneous typos across module

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 Cors = this.Cors is null ? null : this.Cors.ParseCorsRules(),
                 DefaultServiceVersion = this.DefaultServiceVersion,
-                DeleteRetentionPolicy = this.DeleteRetentionPolicy is null ? null : this.DeleteRetentionPolicy.ParseDeleteRetentionPolicy()
+                DeleteRetentionPolicy = this.DeleteRetentionPolicy is null ? null : this.DeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
             };
         }
 
@@ -79,9 +79,38 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             }
             else //child resource Id(e.g.BlobServiceProperties ResourceId)
             {
+                // Storage Account name will be the first parent resource, This works for all cmdlets reference this function, e.g.:
+                // Blob Service: "storageAccounts/[AccountName]/blobServices/default"
+                // Blob Container: "storageAccounts/[AccountName]/blobServices/default/containers/[ContainerName]"
+                // File Share: "storageAccounts/[AccountName]/fileServices/default/shares/[ShareName]"
                 var parentResource = resource.ParentResource.Split(new[] { '/' });
-                return parentResource[parentResource.Length - 1];
+                return parentResource[1];
             }
+        }
+    }
+
+    /// <summary>
+    /// Wrapper of SDK type ChangeFeed
+    /// </summary>
+    public class PSChangeFeed
+    {
+        public bool? Enabled { get; set; }
+
+        public PSChangeFeed()
+        {
+        }
+
+        public PSChangeFeed(ChangeFeed changeFeed)
+        {
+            this.Enabled = changeFeed.Enabled;
+        }
+
+        public ChangeFeed ParseChangeFeed()
+        {
+            return new ChangeFeed
+            {
+                Enabled = this.Enabled
+            };
         }
     }
 

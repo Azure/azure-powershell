@@ -294,6 +294,9 @@
   <data name="RemovingVpnGatewayWarning" xml:space="preserve">
     <value>Removing a VpnGateway will also remove all VpnExpressRouteConnections associated with it. Are you sure you want to remove resource '{0}'</value>
   </data>
+  <data name="RemovingP2SVpnGatewayWarning" xml:space="preserve">
+    <value>Removing a P2SVpnGateway will also remove all P2SConnectionConfigurations associated with it. Are you sure you want to remove resource '{0}'</value>
+  </data>  
   <data name="RemovingExpressRouteGatewayWarning" xml:space="preserve">
     <value>Removing an ExpressRouteGateway will also remove all ExpressRouteExpressRouteConnections associated with it. Are you sure you want to remove resource '{0}'</value>
   </data>
@@ -324,6 +327,9 @@
   <data name="VpnGatewayNotFound" xml:space="preserve">
     <value>The VpnGateway to modify could not be found</value>
   </data>
+  <data name="P2SVpnGatewayNotFound" xml:space="preserve">
+    <value>The P2SVpnGateway to modify could not be found</value>
+  </data>  
   <data name="VpnSiteListRequiredForVpnSiteConfiguration" xml:space="preserve">
     <value>A list of connected VpnSites is required to generate a vpnSites configuration.</value>
   </data>
@@ -333,6 +339,12 @@
   <data name="VpnSiteRequiredForVpnConnection" xml:space="preserve">
     <value>A valid VpnSite is required to create a VpnConnection</value>
   </data>
+  <data name="VpnServerConfigurationRequiredForP2SVpnGateway" xml:space="preserve">
+    <value>A valid VpnServerConfiguration is required to create a P2SVpnGateway</value>
+  </data>  
+  <data name="VpnServerConfigurationNotFound" xml:space="preserve">
+    <value>The VpnServerConfiguration could not be found.</value>
+  </data>  
   <data name="ChildResourceAlreadyPresentInResourceGroup" xml:space="preserve">
     <value>A resource with the same name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead.</value>
   </data>
@@ -400,5 +412,23 @@
   </data>
   <data name="InvalidResourceId" xml:space="preserve">
     <value>Provided ResourceId isn't in the right format or doesn't refer to the right resource type ({0})</value>
+  </data>
+  <data name="VpnSiteLinkRequiredForVpnSiteLinkConnection" xml:space="preserve">
+    <value>A valid VpnSiteLink attached to a VpnSite is required to create a VpnSiteLinkConnection</value>
+  </data>
+  <data name="VpnConnectionPropertyIsDeprecated" xml:space="preserve">
+    <value>Update request for VpnConnection contains deprecated property. Please use corresponding VpnSiteLinkConnection property instead.</value>
+  </data>
+  <data name="VpnSitePropertyIsDeprecated" xml:space="preserve">
+    <value>Update request for VpnSite contains deprecated property. Please use corresponding VpnSiteLink property instead.</value>
+  </data>
+  <data name="RouteTableNotFound" xml:space="preserve">
+    <value>The virtual hub route table to modify could not be found</value>
+  </data>
+  <data name="VirtualGatewayRequiredForVirtualRouter" xml:space="preserve">
+    <value>A valid VirtualNetworkGateway is required to create Virtual Router</value>
+  </data>
+  <data name="RemoveVirtualRouterWarning" xml:space="preserve">
+    <value>Removing a VirtualRouter will also remove all peerings associated with it. Are you sure you want to remove resource '{0}'</value>
   </data>
 </root>

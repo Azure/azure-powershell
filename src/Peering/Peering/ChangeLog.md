@@ -18,8 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.7
+* Update references in .psd1 to use relative path
+
+## Version 0.1.6
+* Fixed bug in Peering location 
+* Added tests to direct connection
+
+## Version 0.1.5
+* Added Peering Service events
+* Removed UseForPeeringService at the Peering level
+* Updated to SDK 1.0.1-preview
+* Supports API Version 2019-09-01-preview
+
+## Version 0.1.4
 * Added Peering Service Operations
 * Updated Documentation
+* Updated to SDK 1.0.0-preview
+* Supports API Version 2019-08-01-preview
 
 ## Version 0.1.3
 * Bug fix in set connection for exchange that caused CDIR notation
@@ -27,7 +44,7 @@
 * Added tests for set Exchange operations
 * Bug fix in set connection
 * Added Connection Identifier to Connection object.
-* Updated to SDK 0.10.0-review
+* Updated to SDK 0.10.0-preview
 * Supports api-version 06-01-2019-preview for Microsoft.Peering
 * Fixed miscellaneous typos across module
 

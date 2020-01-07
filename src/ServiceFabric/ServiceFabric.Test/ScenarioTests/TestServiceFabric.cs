@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             ServiceFabricCmdletBase.RunningTest = true;
             ServiceFabricCmdletBase.NewCreatedKeyVaultWaitTimeInSec = 0;
             //change the thumbprint in the common.ps1 file as well
-            ServiceFabricCmdletBase.TestThumbprint = "C20BE98DB1592F7505E24AD92DE072649D691987";
+            ServiceFabricCmdletBase.TestThumbprint = "910AC565E683987971F34531A824284E3B936040";
             ServiceFabricCmdletBase.TestCommonNameCACert = "azurermsfcntest.southcentralus.cloudapp.azure.com";
             ServiceFabricCmdletBase.TestCommonNameAppCert = "AzureRMSFTestCertApp";
-            ServiceFabricCmdletBase.TestThumbprintAppCert = "656AD4B7774A1EAC0AE6C7561B0B2A05154B16B2";
+            ServiceFabricCmdletBase.TestThumbprintAppCert = "EE28AF31B2741B52311A00F78DFF4F46240BB4F8";
             ServiceFabricCmdletBase.TestAppCert = false;
         }
 
@@ -165,22 +165,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         public void TestRemoveAzureRmServiceFabricNodeType()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmServiceFabricNodeType");
-        }
-
-        [Fact, TestPriority(0)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddAzureRmServiceFabricApplicationCertificate()
-        {
-            ServiceFabricCmdletBase.TestAppCert = true;
-            TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricApplicationCertificate");
-        }
-
-        [Fact, TestPriority(0)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddAzureRmServiceFabricApplicationCertificateRollback()
-        {
-            ServiceFabricCmdletBase.TestAppCert = true;
-            TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricApplicationCertificateRollback");
         }
 
         [Fact, TestPriority(0)]

@@ -19,6 +19,39 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.2
+* Fix Invoke-AzHDInsightHiveJob.md error.
+
+## Version 3.0.1
+* Update references in .psd1 to use relative path
+
+## Version 3.0.0
+* Fixed the bug that customer will get "Not a valid Base-64 string" error when using Get-AzHDInsightCluster to get the cluster with ADLSGen1 storage.
+* Add a parameter named "ApplicationId" to three cmdlets Add-AzHDInsightClusterIdentity, New-AzHDInsightClusterConfig and New-AzHDInsightCluster so that customer can provide the service principal application id for accessing Azure Data Lake.
+* Changed Microsoft.Azure.Management.HDInsight from 2.1.0 to 5.1.0
+* Removed five cmdlets:
+    - Get-AzHDInsightOMS
+    - Enable-AzHDInsightOMS
+    - Disable-AzHDInsightOMS
+    - Grant-AzHDInsightRdpServicesAccess
+    - Revoke-AzHDInsightRdpServicesAccess
+* Added three cmdlets:
+    - Get-AzHDInsightMonitoring to replace Get-AzHDInsightOMS.
+    - Enable-AzHDInsightMonitoring to replace Enable-AzHDInsightOMS.
+    - Disable-AzHDInsightMonitoring to replace Disable-AzHDInsightOMS.
+* Fixed cmdlet Get-AzHDInsightProperties to support get capabilities information from a specific location.
+* Removed parameter sets("Spark1", "Spark2") from Add-AzHDInsightConfigValue.
+* Add examples to the help documents of cmdlet Add-AzHDInsightSecurityProfile.
+* Changed output type of the following cmdlets:
+*  - Changed the output type of Get-AzHDInsightProperties from  CapabilitiesResponse to AzureHDInsightCapabilities.
+*  - Changed the output type of Remove-AzHDInsightCluster from ClusterGetResponse to bool.
+*  - Changed the output type of Set-AzHDInsightGatewaySettings HttpConnectivitySettings to GatewaySettings.
+* Added some scenario test cases.
+* Remove some alias: 'Add-AzHDInsightConfigValues', 'Get-AzHDInsightProperties'.
+
+## Version 2.0.2
+* Call out breaking changes
+
 ## Version 2.0.1
 * Fixed miscellaneous typos across module
 

@@ -710,6 +710,8 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 			$messageDNS = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client cannot process the request because the server name cannot be resolved"
 			$messageUnavailable = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client sent a request to an HTTP server and got a response saying the requested HTTP URL was not available."
 			$messagePsVersionNotSupported = "Remote Powershell sessions into Windows Containers on App Service from this version of PowerShell is not supported.";
+			$messageMIResulFailed = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : MI_RESULT_FAILED";
+			$messageWSManNotInstalled = "This parameter set requires WSMan, and no supported WSMan client library was found. WSMan is either not installed or unavailable for this system";
 
 			# One possible warning message in Playback mode.
 			$messageWSMANNotConfigured = "Your current WSMAN Trusted Hosts settings will prevent you from connecting to your Container Web App";
@@ -717,14 +719,18 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 			$resultError = ($Error[0] -like "*$($messageDNS)*") -or 
 				($Error[0] -like "*$($messageUnavailable)*") -or 
 				($Error[0] -like "*$($messageWSMANNotConfigured)*") -or
-				($Error[0] -like "*$($messagePsVersionNotSupported)*")
-			
+				($Error[0] -like "*$($messagePsVersionNotSupported)*") -or
+				($Error[0] -like "*$($messageMIResulFailed)*") -or
+				($Error[0] -like "*$($messageWSManNotInstalled)*")
+				
 			$resultWarning = ($wv[0] -like "*$($messageWSMANNotConfigured)*")
 
 			Write-Debug "Expected error message 1: $messageDNS"
 			Write-Debug "Expected error message 2: $messageUnavailable"
 			Write-Debug "Expected error message 3: $messagePsVersionNotSupported"
-			
+			Write-Debug "Expected error message 4: $messageMIResulFailed"
+			Write-Debug "Expected error message 5: $messageWSManNotInstalled"
+
 			Write-Debug "Expected Warning message 1: $messageWSMANNotConfigured"
 
 
@@ -1355,8 +1361,10 @@ Tests Tags are not overridden when calling Set-AzWebApp commandlet
 function Test-TagsNotRemovedBySetWebApp
 {
 	$rgname = "lketmtestantps10"
-	$appname = "lketmtestantps10" # this is an existing app with existing tags
+	$appname = "tagstestantps10" # this is an existing app with existing tags
 	$slot = "testslot"
+	$aspName = "tagstestAspantps10"
+	$aspToMove = "tagstestAsp2antps10"
 
 	$getApp =  Get-AzWebApp -ResourceGroupName $rgname -Name $appname
 	$getSlot = Get-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot
@@ -1377,9 +1385,16 @@ function Test-TagsNotRemovedBySetWebApp
 	$webapp =  Set-AzWebApp  -WebApp $getApp
 	Assert-notNull $webApp.Tags
 
-	$webapp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan "lke-asp2-antps10"
+	$webapp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan $aspToMove
+	# verify that App has been successfully moved to the new ASP
+	$asp = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $aspToMove
+	Assert-AreEqual $webApp.ServerFarmId $asp.id
+	# verify tags are not removed after ASP move
 	Assert-notNull $webApp.Tags
+
 	# Move it back to the original ASP
-	$webApp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan "lke-asp-antps10"
+	$webApp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan $aspName
+	$asp = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $aspName
+	Assert-AreEqual $webApp.ServerFarmId $asp.id
 	Assert-notNull $webApp.Tags
 }
