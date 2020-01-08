@@ -243,7 +243,7 @@
 
   <Target Name="BuildImage">
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/GetArtifacts.ps1 -Artifacts $(RepoArtifacts) -Docker $(DockerRoot) &quot;" />
-    <Exec Command="docker build -t mcr.microsoft.com/azure-powershell $(DockerRoot)" />
+    <Exec Command="docker build -t azureps.azurecr.io/public/azure-powershell $(DockerRoot)" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/CleanArtifacts.ps1 -Docker $(DockerRoot) &quot;" />
   </Target>
 
