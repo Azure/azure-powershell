@@ -1,51 +1,40 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azdeployment
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzDeployment
+# Get-AzTenantDeployment
 
 ## SYNOPSIS
-Get deployment
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### GetByDeploymentName (Default)
 ```
-Get-AzDeployment [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzTenantDeployment [[-Name] <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByDeploymentId
 ```
-Get-AzDeployment -Id <String> [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+Get-AzTenantDeployment -Id <String> [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzDeployment** cmdlet gets the deployments at the current subscription scope.
-Specify the *Name* or *Id* parameter to filter the results.
-By default, **Get-AzDeployment** gets all deployments at the current subscription scope.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Get all deployments at subscription scope
-```
-PS C:\>Get-AzDeployment
-```
-
-This command gets all deployments at the current subscription scope.
-
-### Example 2: Get a deployment by name
-```
-PS C:\>Get-AzDeployment -Name "DeployRoles01"
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command gets the DeployRoles01 deployment at the current subscription scope.
-You can assign a name to a deployment when you create it by using the **New-AzDeployment** cmdlets.
-If you do not assign a name, the cmdlets provide a default name based on the template that is used to create the deployment.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -54,7 +43,7 @@ When set, indicates the version of the resource provider API to use.
 If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -82,10 +71,10 @@ Accept wildcard characters: False
 
 ### -Id
 The fully qualified resource Id of the deployment.
-example: /subscriptions/{subId}/providers/Microsoft.Resources/deployments/{deploymentName}
+example: /providers/Microsoft.Resources/deployments/{deploymentName}
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByDeploymentId
 Aliases: DeploymentId, ResourceId
 
@@ -100,12 +89,12 @@ Accept wildcard characters: False
 The name of deployment.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByDeploymentName
 Aliases: DeploymentName
 
 Required: False
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -115,7 +104,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
