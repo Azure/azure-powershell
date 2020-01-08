@@ -972,7 +972,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
     }
   },
   ""Context"": {
-    ""TokenCache"": ""AgAAAAAAAAA="",
+    ""TokenCache"": null,
     ""Account"": {
       ""Id"": ""me@contoso.com"",
       ""Type"": 1,
@@ -1002,11 +1002,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
     }
   }
 }";
-            var expectedArray = new byte[] { 2, 0, 0, 0, 0, 0, 0, 0 };
-#if NETSTANDARD
-            contents = contents.Replace("AgAAAAAAAAA=", "AwAAAAAAAAA=");
-            expectedArray = new byte[] { 3, 0, 0, 0, 0, 0, 0, 0 };
-#endif
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ARMProfileFile);
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
@@ -1018,7 +1013,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("testCloud", profile.DefaultContext.Environment.Name);
             Assert.Equal("me@contoso.com", profile.DefaultContext.Account.Id);
             Assert.Equal(AzureAccount.AccountType.User, profile.DefaultContext.Account.Type);
-            Assert.Equal(expectedArray, profile.DefaultContext.TokenCache.CacheData);
+            Assert.Null(profile.DefaultContext.TokenCache.CacheData); // token cache is handled by MSAL extensions lib, we don't possess it anymore
             Assert.Equal(path, profile.ProfilePath);
         }
 

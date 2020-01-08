@@ -219,6 +219,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ClearContextSetsDefaultContextName()
         {
+            AuthenticationClientFactory factory = new InMemoryTokenCacheClientFactory();
+            AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
             var getCmdlet = new GetAzureRMContextCommand();
             var profile = CreateMultipleContextProfile();
             var defaultContextName = profile.DefaultContextKey;
@@ -639,6 +641,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ClearContextNoLogin()
         {
+            AuthenticationClientFactory factory = new InMemoryTokenCacheClientFactory();
+            AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
             var cmdlet = new ClearAzureRmContext();
             var profile = new AzureRmProfile();
             cmdlet.CommandRuntime = commandRuntimeMock;

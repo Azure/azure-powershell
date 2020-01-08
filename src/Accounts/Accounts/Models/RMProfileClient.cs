@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             bool skipValidation,
             Action<string> promptAction,
             string name = null,
-            bool? shouldPopulateContextList = null)
+            bool shouldPopulateContextList = true)
         {
             IAzureSubscription newSubscription = null;
             IAzureTenant newTenant = null;
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             var populateContextList = true;
             try
             {
-                populateContextList = shouldPopulateContextList ?? _profile.DefaultContext?.Account == null;
+                populateContextList = shouldPopulateContextList && _profile.DefaultContext?.Account == null;
             }
             catch (PSInvalidOperationException) { }
 

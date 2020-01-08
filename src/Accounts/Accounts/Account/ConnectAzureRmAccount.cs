@@ -351,10 +351,10 @@ namespace Microsoft.Azure.Commands.Profile
 
                 SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
                {
-                   bool? shouldPopulateContextList = null;
-                   if (!this.IsParameterBound(c => c.SkipContextPopulation))
+                   bool shouldPopulateContextList = true;
+                   if (this.IsParameterBound(c => c.SkipContextPopulation))
                    {
-                       shouldPopulateContextList = true;
+                       shouldPopulateContextList = false;
                    }
 
                    profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
