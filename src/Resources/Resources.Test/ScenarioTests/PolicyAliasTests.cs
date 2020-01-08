@@ -451,14 +451,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
             var pageResponse = new Page<Provider>();
             pageResponse.SetItemValue(providerList);
-            var response = new AzureOperationResponse<IPage<Provider>>
+            using (var response = new AzureOperationResponse<IPage<Provider>> { Body = pageResponse })
             {
-                Body = pageResponse
+                this.providerOperationsMock
+                    .Setup(p => p.ListAtTenantScopeWithHttpMessagesAsync(It.IsAny<int?>(), It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+                    .Returns(() => Task.FromResult(response));
             };
-
-            this.providerOperationsMock
-                .Setup(p => p.ListWithHttpMessagesAsync(It.IsAny<int?>(), It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
-                .Returns(() => Task.FromResult(response));
         }
 
         private void AssertResult(object resultObject, IEnumerable<Provider> expectedProvidersEnumerable, int expectedRecords)
@@ -537,7 +535,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var apiVersionMatch = this.cmdlet.ApiVersionMatch;
             var listAvailable = this.cmdlet.ListAvailable;
 
-            Func<string, string, bool> isMatch = (s1, s2) => s1.IndexOf(s2, StringComparison.OrdinalIgnoreCase) >= 0;
+            bool isMatch(string s1, string s2) => s1.IndexOf(s2, StringComparison.OrdinalIgnoreCase) >= 0;
 
             int count = 0;
             foreach (var expectedProvider in expectedProviders.Where(p => string.IsNullOrEmpty(namespaceMatch) || isMatch(p.NamespaceProperty, namespaceMatch)))
