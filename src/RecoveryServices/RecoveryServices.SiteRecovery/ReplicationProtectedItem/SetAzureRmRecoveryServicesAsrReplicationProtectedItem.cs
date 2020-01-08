@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
 
                 // Both primary & recovery inputs should be present
-                if (this.ASRVMNics == null &&
+                if (this.ASRVMNicConfiguration == null &&
                     (string.IsNullOrEmpty(this.UpdateNic) ^
                     string.IsNullOrEmpty(this.RecoveryNetworkId)))
                 {
@@ -302,14 +302,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     return;
                 }
 
-                if (this.ASRVMNics != null &&
+                if (this.ASRVMNicConfiguration != null &&
                     !(provider is A2AReplicationDetails))
                 {
                     this.WriteWarning(Resources.UnsupportedReplicationProvidedForASRVMNicConfig);
                     return;
                 }
 
-                if (this.ASRVMNics != null &&
+                if (this.ASRVMNicConfiguration != null &&
                     !string.IsNullOrEmpty(this.UpdateNic))
                 {
                     this.WriteWarning(Resources.ASRVMNicsAndUpdateNicNotAllowed);
@@ -569,14 +569,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         TfoAzureVMName = this.TfoAzureVMName
                     };
 
-                    if (this.ASRVMNics != null && this.ASRVMNics.Count() > 0)
+                    if (this.ASRVMNicConfiguration != null &&
+                        this.ASRVMNicConfiguration.Count() > 0)
                     {
                         var recoveryNetworkIds = new HashSet<string>();
                         var tfoNetworkIds = new HashSet<string>();
 
-                        this.ASRVMNics.ForEach(
+                        this.ASRVMNicConfiguration.ForEach(
                             nic => recoveryNetworkIds.Add(nic.RecoveryVMNetworkId));
-                        this.ASRVMNics.ForEach(nic => tfoNetworkIds.Add(nic.TfoVMNetworkId));
+                        this.ASRVMNicConfiguration.ForEach(
+                            nic => tfoNetworkIds.Add(nic.TfoVMNetworkId));
 
                         if (recoveryNetworkIds.Count() > 1)
                         {
@@ -672,11 +674,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 // If VM NICs list provided along with UpdateNic then only the NICs list is
                 // honored.
-                if (this.ASRVMNics != null && this.ASRVMNics.Count() > 0)
+                if (this.ASRVMNicConfiguration != null && this.ASRVMNicConfiguration.Count() > 0)
                 {
                     var vmNicIds = vmNicList.Select(nic => nic.NicId);
 
-                    foreach (var nic in this.ASRVMNics)
+                    foreach (var nic in this.ASRVMNicConfiguration)
                     {
                         if (!vmNicIds.Contains(nic.NicId, StringComparer.OrdinalIgnoreCase))
                         {
