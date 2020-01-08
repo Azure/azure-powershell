@@ -12,6 +12,7 @@ Sets recovery properties such as target network and virtual machine size for the
 
 ## SYNTAX
 
+### ByObject (Default)
 ```
 Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationProtectedItem> [-Name <String>]
  [-Size <String>] [-UpdateNic <String>] [-RecoveryNetworkId <String>] [-PrimaryNic <String>]
@@ -26,6 +27,23 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-RecoveryPublicIPAddressId <String>] [-RecoveryNetworkSecurityGroupId <String>]
  [-RecoveryLBBackendAddressPoolId <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### AzureToAzureManagedDisk
+```
+Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationProtectedItem> [-Name <String>]
+ [-Size <String>] [-UpdateNic <String>] [-RecoveryNetworkId <String>] [-PrimaryNic <String>]
+ [-RecoveryCloudServiceId <String>] [-RecoveryNicSubnetName <String>] [-RecoveryNicStaticIPAddress <String>]
+ [-NicSelectionType <String>] [-RecoveryResourceGroupId <String>] [-LicenseType <String>]
+ [-RecoveryAvailabilitySet <String>] [-EnableAcceleratedNetworkingOnRecovery]
+ [-RecoveryBootDiagStorageAccountId <String>]
+ [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
+ [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
+ [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>]
+ [-DiskIdToDiskEncryptionSetMap <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
+ [-RecoveryPublicIPAddressId <String>] [-RecoveryNetworkSecurityGroupId <String>]
+ [-RecoveryLBBackendAddressPoolId <String[]>] [-TfoAzureVMName <String>] [-ASRVMNics <ASRVMNicConfig[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,6 +98,21 @@ PS C:\> $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -In
 Start the update operation for the specified encrypted replication protected item to use supplied encryption details for failover VM.
 
 ## PARAMETERS
+
+### -ASRVMNics
+Specifies the test failover and failover NIC configuration details.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMNicConfig[]
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AzureToAzureUpdateReplicationConfiguration
 Specifies the disk configuration to udpated for managed disk Vm (Azure to Azure DR scenrio).
@@ -447,6 +480,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TfoAzureVMName
+Specifies the name of the test failover VM.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UpdateNic
 Specifies the NIC of the virtual machine for which this cmdlet sets the recovery network property needs to udpated.
 
@@ -509,7 +557,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
