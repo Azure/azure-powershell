@@ -51,26 +51,89 @@ require:
   - $(repo)/specification/azsadmin/resource-manager/fabric/readme.md
 
 input-file:
+  # (TODO) Add Compute and Network swagger files
   - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/FileShare.json
   - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/ScaleUnit.json
   - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2018-10-01/StorageSubSystem.json
   - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2019-05-01/Drive.json
   - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2019-05-01/Volume.json
+```
 
 ### File Renames 
+``` yaml
 module-name: Azs.Fabric.Admin 
 csproj: Azs.Fabric.Admin.csproj 
 psd1: Azs.Fabric.Admin.psd1 
 psm1: Azs.Fabric.Admin.psm1
-
-subject-prefix: ''
-module-version: 0.0.1
+```
 
 ### Parameter default values
+``` yaml
 directive:
   - where:
       parameter-name: ResourceGroupName
     set:
       default:
         script: -join("System.",(Get-AzLocation)[0].Name)
+
+  # Rename Get-AzsFileShare to Get-AzsInfrastructureShare
+  - where:
+      subject: FileShare
+    set:
+      subject: InfrastructureShare
+
+  # Rename cmdlet parameter name in InfrastructureShare
+  - where:
+      subject: InfrastructureShare
+      parameter-name: FileShare
+    set:
+      parameter-name: Name
+
+  # Rename cmdlet parameter name in StorageSubSystem
+  - where:
+      subject: StorageSubSystem
+      parameter-name: StorageSubSystem
+    set:
+      parameter-name: Name
+
+  # Rename cmdlet parameter name in Drive
+  - where:
+      subject: Drive
+      parameter-name: Drive
+    set:
+      parameter-name: Name
+
+  # Rename cmdlet parameter name in Volume
+  - where:
+      subject: Volume
+      parameter-name: Volume
+    set:
+      parameter-name: Name
+
+  # Hide the auto-generated Get-AzsInfrastructureShare and expose it through customized one
+  - where:
+      verb: Get
+      subject: InfrastructureShare
+    hide: true
+
+  # Hide the auto-generated Get-AzsStorageSubSystem and expose it through customized one
+  - where:
+      verb: Get
+      subject: StorageSubSystem
+    hide: true
+
+  # Hide the auto-generated Get-AzsDrive and expose it through customized one
+  - where:
+      verb: Get
+      subject: Drive
+    hide: true
+
+  # Hide the auto-generated Get-AzsVolume and expose it through customized one
+  - where:
+      verb: Get
+      subject: Volume
+    hide: true
+
+subject-prefix: ''
+module-version: 0.0.1
 ```
