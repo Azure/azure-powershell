@@ -7,7 +7,7 @@ $global:templateFileName = "Storage.Template.json"
 $global:parametersCopyFileName = "Storage.Copy.Parameters.json"
 $global:templateCopyFileName = "Storage.Copy.Template.json"
 
-$global:restHealthCheckPropertiesFilePath = "ScenarioTests\RestHealthCheckProperties.json"
+$global:restHealthCheckPropertiesFilePath = "ScenarioTests/RestHealthCheckProperties.json" # using forward slash to make this platform-agnostic for tests run during merge validations.
 
 $global:parametersArtifactSourceRelativePath = "ScenarioTests\ArtifactRoot\" + $global:parametersFileName
 $global:templateArtifactSourceRelativePath = "ScenarioTests\ArtifactRoot\" + $global:templateFileName
