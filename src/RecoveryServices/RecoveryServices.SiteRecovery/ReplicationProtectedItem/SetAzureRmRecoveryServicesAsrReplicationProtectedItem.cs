@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter]
         [ValidateNotNull]
-        public ASRVMNicConfig[] ASRVMNics { get; set; }
+        public ASRVMNicConfig[] ASRVMNicConfiguration { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.

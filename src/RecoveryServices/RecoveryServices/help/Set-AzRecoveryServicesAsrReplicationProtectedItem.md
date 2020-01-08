@@ -42,7 +42,7 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>]
  [-DiskIdToDiskEncryptionSetMap <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  [-RecoveryPublicIPAddressId <String>] [-RecoveryNetworkSecurityGroupId <String>]
- [-RecoveryLBBackendAddressPoolId <String[]>] [-TfoAzureVMName <String>] [-ASRVMNics <ASRVMNicConfig[]>]
+ [-RecoveryLBBackendAddressPoolId <String[]>] [-TfoAzureVMName <String>] [-ASRVMNicConfiguration <ASRVMNicConfig[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -99,7 +99,7 @@ Start the update operation for the specified encrypted replication protected ite
 
 ## PARAMETERS
 
-### -ASRVMNics
+### -ASRVMNicConfiguration
 Specifies the test failover and failover NIC configuration details.
 
 ```yaml
