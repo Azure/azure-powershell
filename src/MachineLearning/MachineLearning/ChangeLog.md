@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.3
 * Removed below cmdlets because MachineLearningCompute is not available any longer
   - Get-AzMlOpCluster
   - Get-AzMlOpClusterKey

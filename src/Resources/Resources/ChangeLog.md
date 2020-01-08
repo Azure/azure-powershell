@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 1.9.1
+* Fix an error in help document of `Remove-AzTag`.
+* Fix for aliases missing from output of Get-AzPolicyAlias
+* Update resource client to new version that retrieves providers and aliases at tenant level
+* Update Get-AzPolicyAlias to retrieve aliases at tenant level
+* Update -Policy parameter of New-AzPolicyDefinition and Set-AzPolicyDefinition to allow full policy object
+
 ## Version 1.9.0
 * Update references in .psd1 to use relative path
 * Fix an issue where template deployment fails to read a template parameter if its name conflicts with some built-in parameter name.
