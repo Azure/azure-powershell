@@ -1,47 +1,46 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/save-azdeploymenttemplate
+online version:
 schema: 2.0.0
 ---
 
-# Save-AzDeploymentTemplate
+# Stop-AzTenantDeployment
 
 ## SYNOPSIS
-Saves a deployment template to a file.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### SaveByDeploymentName (Default)
+### StopByDeploymentName (Default)
 ```
-Save-AzDeploymentTemplate -DeploymentName <String> [-Path <String>] [-Force] [-ApiVersion <String>] [-Pre]
+Stop-AzTenantDeployment [-Name] <String> [-PassThru] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SaveByDeploymentObject
+### StopByDeploymentId
 ```
-Save-AzDeploymentTemplate -DeploymentObject <PSDeployment> [-Path <String>] [-Force] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzTenantDeployment -Id <String> [-PassThru] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StopByInputObject
+```
+Stop-AzTenantDeployment -InputObject <PSDeployment> [-PassThru] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Save-AzDeploymentTemplate**  cmdlet saves a deployment template to a JSON file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Save-AzDeploymentTemplate -DeploymentName "TestDeployment"
+PS C:\> {{ Add example code here }}
 ```
 
-This command gets the deployment template from TestDeployment and saves it as a JSON file in the current directory.
-
-### Example 2: Get a deployment and save its template
-```
-PS C:\>Get-AzDeployment -Name "RolesDeployment" | Save-AzDeploymentTemplate
-```
-
-This command gets the deployment "RolesDeployment" at the current subscription scope and saves its template.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -50,7 +49,7 @@ When set, indicates the version of the resource provider API to use.
 If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -76,13 +75,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeploymentName
-The deployment name.
+### -Id
+The fully qualified resource Id of the deployment.
+example: /providers/Microsoft.Resources/deployments/{deploymentName}
 
 ```yaml
-Type: System.String
-Parameter Sets: SaveByDeploymentName
-Aliases: Name
+Type: String
+Parameter Sets: StopByDeploymentId
+Aliases: DeploymentId, ResourceId
 
 Required: True
 Position: Named
@@ -91,12 +91,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeploymentObject
+### -InputObject
 The deployment object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment
-Parameter Sets: SaveByDeploymentObject
+Type: PSDeployment
+Parameter Sets: StopByInputObject
 Aliases:
 
 Required: True
@@ -106,26 +106,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Force
-Do not ask for confirmation.
+### -Name
+The name of the deployment.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
+Type: String
+Parameter Sets: StopByDeploymentName
+Aliases: DeploymentName
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Path
-The output path of the template file.
+### -PassThru
+{{ Fill PassThru Description }}
 
 ```yaml
-Type: System.String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -171,7 +171,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -191,7 +191,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSTemplatePath
+### System.Boolean
 
 ## NOTES
 
