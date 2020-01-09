@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Make -Scope optional in *-AzPolicyAssignment cmdlets
 
 ## Version 1.9.1
 * Fix an error in help document of `Remove-AzTag`.
