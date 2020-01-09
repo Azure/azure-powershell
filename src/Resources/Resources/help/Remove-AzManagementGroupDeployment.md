@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzManagementGroupDeployment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a deployment at a management group and any associated operations
 
 ## SYNTAX
 
@@ -32,16 +32,23 @@ Remove-AzManagementGroupDeployment -InputObject <PSDeployment> [-AsJob] [-PassTh
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzManagementGroupDeployment** cmdlet removes an Azure deployment at a management group and any associated operations.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Remove a deployment with a given name
+```
+PS C:\>Remove-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "RolesDeployment"
 ```
 
-{{ Add example description here }}
+This command removes the deployment "RolesDeployment" at the management group "myMG".
+
+### Example 2: Get a deployment and remove it
+```
+PS C:\>Get-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "RolesDeployment" | Remove-AzManagementGroupDeployment
+```
+
+This command gets the deployment "RolesDeployment" at the management group "myMG" and removes it.
 
 ## PARAMETERS
 

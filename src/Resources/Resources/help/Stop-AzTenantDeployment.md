@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzTenantDeployment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Cancel a running deployment at tenant scope
 
 ## SYNTAX
 
@@ -31,16 +31,26 @@ Stop-AzTenantDeployment -InputObject <PSDeployment> [-PassThru] [-ApiVersion <St
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Stop-AzTenantDeployment** cmdlet cancels a deployment that has started but not completed at the current tenant scope.
+To stop a deployment, the deployment must have an incomplete provisioning state, such as Provisioning, and not a completed state, such as Provisioned or Failed.
+
+To create a deployment at tenant scope, use the New-AzTenantDeployment cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+```
+PS C:\>Stop-AzTenantDeployment -Name "deployment01"
 ```
 
-{{ Add example description here }}
+This command cancels a running deployment "deployment01" at the current tenant scope.
+
+### Example 2
+```
+PS C:\>Get-AzTenantDeployment -Name "deployment01" | Stop-AzTenantDeployment
+```
+
+This command gets the deployment "deployment01" at the current tenant scope and cancels it. 
 
 ## PARAMETERS
 

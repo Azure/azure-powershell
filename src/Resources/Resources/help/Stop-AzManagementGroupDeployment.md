@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzManagementGroupDeployment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Cancel a running deployment at a management group
 
 ## SYNTAX
 
@@ -32,16 +32,26 @@ Stop-AzManagementGroupDeployment -InputObject <PSDeployment> [-PassThru] [-ApiVe
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Stop-AzManagementGroupDeployment** cmdlet cancels a deployment that has started but not completed at a management group.
+To stop a deployment, the deployment must have an incomplete provisioning state, such as Provisioning, and not a completed state, such as Provisioned or Failed.
+
+To create a deployment at a management group, use the New-AzManagementGroupDeployment cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+```
+PS C:\>Stop-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "deployment01"
 ```
 
-{{ Add example description here }}
+This command cancels a running deployment "deployment01" at the management group "myMG".
+
+### Example 2
+```
+PS C:\>Get-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "deployment01" | Stop-AzManagementGroupDeployment
+```
+
+This command gets the deployment "deployment01" at the management group "myMG" and cancels it. 
 
 ## PARAMETERS
 

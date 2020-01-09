@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzManagementGroupDeploymentOperation
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get deployment operation for management group deployment
 
 ## SYNTAX
 
@@ -26,16 +26,24 @@ Get-AzManagementGroupDeploymentOperation -DeploymentObject <PSDeployment> [-ApiV
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzManagementGroupDeploymentOperation** cmdlet lists all the operations that were part of a management group deployment to help you identify and give more information about the exact operations that failed for a particular deployment.
+This is the same information provided in the deployment details on the portal.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get deployment operations given a deployment name
+```
+PS C:\>Get-AzManagementGroupDeploymentOperation -ManagementGroupId myMG -DeploymentName Deploy01
 ```
 
-{{ Add example description here }}
+Gets deployment operations with name "Deploy01" at the management group "myMG".
+
+### Example 2: Get a deployment and get its deployment operations
+```
+PS C:\>Get-AzManagementGroupDeployment -ManagementGroupId myMG -Name Deploy01 | Get-AzManagementGroupDeploymentOperation
+```
+
+This command gets the deployment "Deploy01" at the management group "myMG" and get its deployment operations.
 
 ## PARAMETERS
 

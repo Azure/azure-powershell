@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzTenantDeploymentOperation
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get deployment operation for deployment at tenant scope
 
 ## SYNTAX
 
@@ -25,16 +25,23 @@ Get-AzTenantDeploymentOperation -DeploymentObject <PSDeployment> [-ApiVersion <S
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzTenantDeploymentOperation** cmdlet lists all the operations that were part of deployment at the current tenant scope to help you identify and give more information about the exact operations that failed for a particular deployment.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get deployment operations given a deployment name
+```
+PS C:\>Get-AzTenantDeploymentOperation -DeploymentName Deploy01
 ```
 
-{{ Add example description here }}
+Gets deployment operations with name "Deploy01" at the current tenant scope.
+
+### Example 2: Get a deployment and get its deployment operations
+```
+PS C:\>Get-AzTenantDeployment -Name Deploy01 | Get-AzTenantDeploymentOperation
+```
+
+This command gets the deployment "Deploy01" at the current tenant scope and get its deployment operations.
 
 ## PARAMETERS
 

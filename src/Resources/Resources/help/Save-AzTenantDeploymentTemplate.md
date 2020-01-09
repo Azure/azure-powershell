@@ -8,7 +8,7 @@ schema: 2.0.0
 # Save-AzTenantDeploymentTemplate
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Saves a deployment template to a file.
 
 ## SYNTAX
 
@@ -26,16 +26,23 @@ Save-AzTenantDeploymentTemplate -DeploymentObject <PSDeployment> [-Path <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Save-AzTenantDeploymentTemplate**  cmdlet saves a deployment template to a JSON file for a deployment at tenant scope.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Save-AzTenantDeploymentTemplate -DeploymentName "TestDeployment"
 ```
 
-{{ Add example description here }}
+This command gets the deployment template from TestDeployment and saves it as a JSON file in the current directory.
+
+### Example 2: Get a deployment and save its template
+```
+PS C:\>Get-AzTenantDeploymentTemplate -Name "RolesDeployment" | Save-AzTenantDeploymentTemplate
+```
+
+This command gets the deployment "RolesDeployment" at the current tenant scope and saves its template.
 
 ## PARAMETERS
 
