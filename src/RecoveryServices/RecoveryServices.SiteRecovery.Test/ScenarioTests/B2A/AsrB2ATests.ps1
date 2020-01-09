@@ -773,3 +773,28 @@ function Test-SiteRecoveryNewModelE2ETest
     $Policy = Get-AzRecoveryServicesAsrPolicy | Where-Object {$_.Name -eq $PolicyName}
     Assert-Null($Policy)
 }
+
+<#
+.SYNOPSIS
+Site Recovery Update RPI with DiskIdToDiskEncryptionSetMap
+#>
+function Test-UpdateRPIWithDiskEncryptionSetMap
+{
+    param([string] $vaultSettingsFilePath)
+
+    # Import Azure RecoveryServices Vault Settings File
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $PrimaryFabricName = "HyperVSite"    
+    $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+    $pc =  Get-ASRProtectionContainer -Fabric $fabric
+    $policyName ="b2apolicy"
+    $policy = Get-AzRecoveryServicesAsrPolicy -Name $policyName
+    $VMFriendlyName ="b2a-vm1"
+    $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $VMFriendlyName
+    $diskId="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Compute/diskEncryptionSets/cmkdesccy"
+    $diskEncryptionSetMap = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
+    $diskEncryptionSetMap.Add($rpi.ProviderSpecificDetails.AzureVMDiskDetails[0].DiskId, $diskId)
+    Set-AsrReplicationProtectedItem -InputObject $rpi -DiskIdToDiskEncryptionSetMap $diskEncryptionSetMap
+    $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $VMFriendlyName
+    Assert-NotNull($rpi.ProviderSpecificDetails.AzureVMDiskDetails[0].DiskEncryptionSetId)
+}

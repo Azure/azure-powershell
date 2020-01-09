@@ -119,5 +119,19 @@ namespace RecoveryServices.SiteRecovery.Test
                 this.VaultSettingsFilePath +
                 "\"");
         }
+
+        [Fact]
+        [Trait(
+            Category.AcceptanceType,
+            Category.CheckIn)]
+        public void TestUpdateRPIWithDES()
+        {
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "Test-UpdateRPIWithDiskEncryptionSetMap -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
     }
 }
