@@ -25,6 +25,7 @@ Set-AzWebApp [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[]>] [[-Ne
  [-EnableContainerContinuousDeployment <Boolean>] [-HostNames <String[]>] [-NumberOfWorkers <Int32>] [-AsJob]
  [-AssignIdentity <Boolean>] [-HttpsOnly <Boolean>] [-AzureStoragePath <WebAppAzureStoragePath[]>]
  [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-FtpsState] <String>]
 ```
 
 ### S2
@@ -348,6 +349,21 @@ Type: System.String
 Parameter Sets: S1
 Aliases:
 Accepted values: Classic, Integrated
+
+Required: False
+Position: 12
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -FtpsState
+Ftps State Name
+
+```yaml
+Type: System.String
+Parameter Sets: S1
+Aliases:
+Accepted values: AllAllowed, Disabled, FtpsOnly
 
 Required: False
 Position: 12

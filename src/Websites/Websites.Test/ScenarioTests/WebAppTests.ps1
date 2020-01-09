@@ -1073,6 +1073,7 @@ function Test-SetWebApp
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	$capacity = 2
+	$ftpsState="FtpsOnly"
 
 	try
 	{
@@ -1092,7 +1093,7 @@ function Test-SetWebApp
 		Assert-NotNull $webApp.SiteConfig.phpVersion
 		
 		# Change service plan & set site properties
-		$job = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -AsJob
+		$job = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -AsJob
 		$job | Wait-Job
 		$webApp = $job | Receive-Job
 
@@ -1101,11 +1102,20 @@ function Test-SetWebApp
 		# Assert
 		Assert-AreEqual $webAppName $webApp.Name
 		Assert-AreEqual $serverFarm2.Id $webApp.ServerFarmId
+		#Assert-AreEqual $true $webApp.HttpsOnly
+
+		#Set HttpsOnly property
+		$webApp = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -HttpsOnly $true
+
+		Write-Debug "DEBUG: Changed HttpsOnly property to true" 
+
+		# Assert
 		Assert-AreEqual $true $webApp.HttpsOnly
 
 		# Set config properties
 		$webapp.SiteConfig.HttpLoggingEnabled = $true
 		$webapp.SiteConfig.RequestTracingEnabled = $true
+		$webapp.SiteConfig.FtpsState  = $ftpsState
 
 		# Set site properties
 		$webApp = $webApp | Set-AzWebApp
@@ -1117,6 +1127,7 @@ function Test-SetWebApp
 		Assert-AreEqual $serverFarm2.Id $webApp.ServerFarmId
 		Assert-AreEqual $true $webApp.SiteConfig.HttpLoggingEnabled
 		Assert-AreEqual $true $webApp.SiteConfig.RequestTracingEnabled
+		Assert-AreEqual $ftpsState $webApp.SiteConfig.FtpsState
 
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}
