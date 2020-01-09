@@ -1314,15 +1314,15 @@ function Test-NewAzureStorageAccountQueueTableEncrytionKeyType
         Write-Output ("Resource Group created")
 		
 		# new account
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -EncryptionKeyTypeForTable Service -EncryptionKeyTypeForQueue Service
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -EncryptionKeyTypeForTable Account -EncryptionKeyTypeForQueue Account
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
-        Assert-AreEqual "Account" $sto.Encryption.Services.Blob.KeyType
-        Assert-AreEqual "Account" $sto.Encryption.Services.File.KeyType
+        Assert-AreEqual "Account" $sto.Encryption.Services.Queue.KeyType
+        Assert-AreEqual "Account" $sto.Encryption.Services.Table.KeyType
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
