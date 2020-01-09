@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Make -Scope optional in *-AzPolicyAssignment cmdlets
+* Make -Scope optional in *-AzPolicyAssignment cmdlets with default to context subscription
 
 ## Version 1.9.1
 * Fix an error in help document of `Remove-AzTag`.
