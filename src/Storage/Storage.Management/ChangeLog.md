@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.11.1
 * Support set Table/Queue Encyrption Keytype in Create Storage Account
     - New-AzRmStorageAccount
 * Fix DataLake Gen2 Output AzureDataLakeGen2Item.Permissions display format
