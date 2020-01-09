@@ -249,7 +249,7 @@ function Test-PolicyDefinitionMode
     Assert-NotNull($actual.Properties.Metadata)
     Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
     Assert-AreEqual 'Microsoft.DataCatalog.Data' $actual.Properties.Mode
-    Assert-AreEqual 'Microsoft.DataCatalog.Data' $expected.Properties.Mode 
+    Assert-AreEqual 'Microsoft.DataCatalog.Data' $expected.Properties.Mode
 
     # clean up
     $remove = Remove-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -Force
@@ -277,6 +277,81 @@ function Test-PolicyDefinitionWithUri
     $remove = Remove-AzPolicyDefinition -Name $policyName -Force
     Assert-AreEqual True $remove
 
+}
+
+<#
+.SYNOPSIS
+Tests Policy definition with full policy definition object
+#>
+function Test-PolicyDefinitionWithFullObject
+{
+    # setup
+    $policyName = Get-ResourceName
+
+    # make a policy definition using the full policy object (from a file), get it back and validate
+    $actual = New-AzPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinitionObject.json"
+    $expected = Get-AzPolicyDefinition -Name $policyName
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
+    Assert-NotNull($actual.Properties.PolicyRule)
+    Assert-AreEqual $expected.Properties.Mode $actual.Properties.Mode
+
+    # delete it
+    $remove = Remove-AzPolicyDefinition -Name $policyName -Force
+    Assert-AreEqual True $remove
+
+    # verify that description, displayname, mode, metadata, and parameters correctly overload what's in the object
+    $actual = New-AzPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinitionObject.json" -DisplayName testDisplay -Description $description -Mode Indexed -Metadata $metadata -Parameter "$TestOutputRoot\SamplePolicyDefinitionParameters.json"
+    $expected = Get-AzPolicyDefinition -Name $policyName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.DisplayName testDisplay
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-AreEqual $expected.Properties.Description $description
+    Assert-AreEqual $expected.Properties.Mode $actual.Properties.Mode
+    Assert-AreEqual $expected.Properties.Mode Indexed
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-NotNull($expected.Properties.Metadata)
+    Assert-AreEqual $expected.Properties.Metadata.$metadataName $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-NotNull($actual.Properties.Parameters)
+    Assert-NotNull($expected.Properties.Parameters)
+    Assert-NotNull($expected.Properties.Parameters.listOfAllowedLocations)
+    Assert-AreEqual "array" $expected.Properties.Parameters.listOfAllowedLocations.type
+    Assert-AreEqual "location" $expected.Properties.Parameters.listOfAllowedLocations.metadata.strongType
+    Assert-NotNull($expected.Properties.Parameters.effectParam)
+    Assert-AreEqual "deny" $expected.Properties.Parameters.effectParam.defaultValue
+    Assert-AreEqual "string" $expected.Properties.Parameters.effectParam.type
+
+    # delete it
+    $remove = Remove-AzPolicyDefinition -Name $policyName -Force
+    Assert-AreEqual True $remove
+
+    # now create a basic policy, update with Set-AzPolicyDefinition using full object, and validate
+    New-AzPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json"
+    $actual = Set-AzPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinitionObject.json"
+    $expected = Get-AzPolicyDefinition -Name $policyName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.DisplayName 'Fake Test policy'
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-AreEqual $expected.Properties.Description 'Sample fake test policy for unit tests.'
+    Assert-AreEqual $expected.Properties.Mode $actual.Properties.Mode
+    Assert-AreEqual $expected.Properties.Mode All
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-NotNull($expected.Properties.Metadata)
+    Assert-AreEqual $expected.Properties.Metadata.category $actual.Properties.Metadata.category
+    Assert-AreEqual $expected.Properties.Metadata.category 'Unit Test'
+    Assert-NotNull($actual.Properties.Parameters)
+    Assert-NotNull($expected.Properties.Parameters)
+    Assert-NotNull($expected.Properties.Parameters.listOfAllowedLocations)
+    Assert-AreEqual "array" $expected.Properties.Parameters.listOfAllowedLocations.type
+    Assert-AreEqual "location" $expected.Properties.Parameters.listOfAllowedLocations.metadata.strongType
+    Assert-NotNull($expected.Properties.Parameters.effectParam)
+    Assert-AreEqual "deny" $expected.Properties.Parameters.effectParam.defaultValue
+    Assert-AreEqual "string" $expected.Properties.Parameters.effectParam.type
+
+    # clean up
+    $remove = Remove-AzPolicyDefinition -Name $policyName -Force
+    Assert-AreEqual True $remove
 }
 
 <#
@@ -445,8 +520,8 @@ function Test-PolicyAssignmentEnforcementMode
     Assert-AreEqual $expected.Location $actual.Location
 
     # get it back by id and validate
-    $actualById = Get-AzPolicyAssignment -Id $actual.ResourceId    
-    Assert-AreEqual $actual.Properties.EnforcementMode $actualById.Properties.EnforcementMode    
+    $actualById = Get-AzPolicyAssignment -Id $actual.ResourceId
+    Assert-AreEqual $actual.Properties.EnforcementMode $actualById.Properties.EnforcementMode
 
 	# update the policy assignment, validate enforcement mode is updated correctly with Default enum value.
     $setResult = Set-AzPolicyAssignment -Id $actualById.ResourceId -DisplayName "testDisplay" -EnforcementMode Default
@@ -456,7 +531,7 @@ function Test-PolicyAssignmentEnforcementMode
     # update the policy assignment, validate enforcement mode is updated correctly with 'Default' enum as string value.
     $setResult = Set-AzPolicyAssignment -Id $actualById.ResourceId -DisplayName "testDisplay" -EnforcementMode $enforcementModeDefault
     Assert-AreEqual "testDisplay" $setResult.Properties.DisplayName
-    Assert-AreEqual $enforcementModeDefault $setResult.Properties.EnforcementMode	
+    Assert-AreEqual $enforcementModeDefault $setResult.Properties.EnforcementMode
 
     # make another policy assignment without an enforcementMode, validate default mode is set
     $withoutEnforcementMode = New-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description
@@ -472,7 +547,7 @@ function Test-PolicyAssignmentEnforcementMode
 
     # verify enforcement mode is returned in collection GET
     $list = Get-AzPolicyAssignment -Scope $rg.ResourceId | ?{ $_.Name -in @('testPA', 'test2') }
-    Assert-AreEqual 2 @($list.Properties.EnforcementMode | Select -Unique).Count    
+    Assert-AreEqual 2 @($list.Properties.EnforcementMode | Select -Unique).Count
 
     # clean up
     $remove = Remove-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
@@ -853,7 +928,7 @@ function Test-PolicyDefinitionCRUDAtManagementGroup
 
     # update the same policy definition, get it back and validate the new properties
     $actual = Set-AzPolicyDefinition -Name $policyName -ManagementGroupName $managementGroup -DisplayName testDisplay -Description $updatedDescription -Policy ".\SamplePolicyDefinition.json" -Metadata $metadata
-    $expected = Get-AzPolicyDefinition -Name $policyName -ManagementGroupName $managementGroup 
+    $expected = Get-AzPolicyDefinition -Name $policyName -ManagementGroupName $managementGroup
     Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
     Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
     Assert-NotNull($actual.Properties.Metadata)
@@ -884,7 +959,7 @@ function Test-PolicyDefinitionCRUDAtSubscription
 
     # make a policy definition, get it back and validate
     $expected = New-AzPolicyDefinition -Name $policyName -SubscriptionId $subscriptionId -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Mode Indexed -Description $description
-    $actual = Get-AzPolicyDefinition -Name $policyName -SubscriptionId $subscriptionId 
+    $actual = Get-AzPolicyDefinition -Name $policyName -SubscriptionId $subscriptionId
     Assert-NotNull $actual
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
@@ -1041,7 +1116,7 @@ except for:
     that prompt for user input.
  2. If there is a test of a parameter combination that expects a parameter set error,
     then no similar tests with additional parameters are necessary, since a given set of
-    parameters that fail to resolve to a parameter set can never be resolved by adding 
+    parameters that fail to resolve to a parameter set can never be resolved by adding
     additional parameters.
  3. Combinations involving parameters that are not part of any parameter set are also omitted,
     not because they are entirely unworthy of separate tests, but simply as a design decision
