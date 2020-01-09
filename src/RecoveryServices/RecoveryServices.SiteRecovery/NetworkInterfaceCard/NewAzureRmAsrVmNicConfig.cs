@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             Utilities.GetMemberName(() => this.RecoveryLBBackendAddressPoolId)))
                     {
                         this.RecoveryLBBackendAddressPoolId =
-                            vmNic.RecoveryLBBackendAddressPoolId.ToArray();
+                            vmNic.RecoveryLBBackendAddressPoolId?.ToArray();
                     }
 
                     if (!this.MyInvocation.BoundParameters.ContainsKey(
@@ -324,14 +324,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             Utilities.GetMemberName(() => this.TfoPublicIPAddressId)))
                     {
                         this.TfoPublicIPAddressId =
-                            vmNic.TfoIPConfigs?.FirstOrDefault()?.PublicIpAddressId;
+                            vmNic.TfoIPConfigs?.FirstOrDefault()?.PublicIpAddressId ?? string.Empty;
                     }
 
                     if (!this.MyInvocation.BoundParameters.ContainsKey(
                             Utilities.GetMemberName(() => this.TfoLBBackendAddressPoolId)))
                     {
                         this.TfoLBBackendAddressPoolId =
-                            vmNic.TfoIPConfigs?.FirstOrDefault()?.LBBackendAddressPoolIds.ToArray();
+                            vmNic.TfoIPConfigs?.FirstOrDefault()?.LBBackendAddressPoolIds?.ToArray();
                     }
 
                     nicConfig = new ASRVMNicConfig
@@ -350,7 +350,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                     StaticIPAddress = this.RecoveryNicStaticIPAddress,
                                     PublicIpAddressId = this.RecoveryPublicIPAddressId,
                                     LBBackendAddressPoolIds =
-                                        this.RecoveryLBBackendAddressPoolId.ToList()
+                                        this.RecoveryLBBackendAddressPoolId?.ToList() ??
+                                        new List<string>()
                                 }
                             },
 
@@ -366,7 +367,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                     StaticIPAddress = this.TfoNicStaticIPAddress,
                                     PublicIpAddressId = this.TfoPublicIPAddressId,
                                     LBBackendAddressPoolIds =
-                                        this.TfoLBBackendAddressPoolId.ToList()
+                                        this.TfoLBBackendAddressPoolId?.ToList() ??
+                                        new List<string>()
                                 }
                             }
                     };
