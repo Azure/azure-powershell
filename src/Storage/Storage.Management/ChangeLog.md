@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Show RequestId when StorageException don't have ExtendedErrorInformation
 
 ## Version 1.11.0
 * Add breaking change warning message for DefaultAction Value change in a future release
