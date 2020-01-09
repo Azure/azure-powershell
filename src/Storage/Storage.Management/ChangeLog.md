@@ -21,8 +21,14 @@
 * Fix DataLake Gen2 Output AzureDataLakeGen2Item.Permissions display format
     -  Get-AzDataLakeGen2Item
     -  Get-AzDataLakeGen2ChildItem
+* Show RequestId when StorageException don't have ExtendedErrorInformation
+* Fix the Example 6 of cmdlet Start-AzStorageBlobCopy
+
+## Version 1.11.0
 * Add breaking change warning message for DefaultAction Value change in a future release
     - Update-AzStorageAccountNetworkRuleSet
+* Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats 
+    - Get-AzureRMStorageAccount
 
 ## Version 1.10.0
 * Update references in .psd1 to use relative path

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <PsModuleName>SqlVirtualMachine</PsModuleName>
   </PropertyGroup>
-  
+
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
 
   <PropertyGroup>
@@ -20,5 +20,5 @@
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="13.1.0" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="2.2.0-preview" />
   </ItemGroup>
-  
+
 </Project>
