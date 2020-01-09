@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.11.1
 * Fix DataLake Gen2 Output AzureDataLakeGen2Item.Permissions display format
     -  Get-AzDataLakeGen2Item
     -  Get-AzDataLakeGen2ChildItem
