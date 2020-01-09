@@ -260,6 +260,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Set the Encryption KeyType for Table. -Account, Table will be encrypted with account-scoped encryption key. -Service, Table will always be encrypted with Service-Managed keys. The default value is Service.")]
+        [ValidateSet(StorageModels.KeyType.Service, 
+            StorageModels.KeyType.Account, 
+            IgnoreCase = true)]
+        public string EncryptionKeyTypeForTable { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Set the Encryption KeyType for Queue. -Account, Queue will be encrypted with account-scoped encryption key. -Service, Queue will always be encrypted with Service-Managed keys. The default value is Service.")]
+        [ValidateSet(StorageModels.KeyType.Service,
+            StorageModels.KeyType.Account,
+            IgnoreCase = true)]
+        public string EncryptionKeyTypeForQueue { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -355,6 +367,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if(this.EnableLargeFileShare.IsPresent)
             {
                 createParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
+            }
+            if(this.EncryptionKeyTypeForQueue != null || this.EncryptionKeyTypeForTable != null)
+            {
+                createParameters.Encryption = new Encryption();
+                createParameters.Encryption.KeySource = KeySource.MicrosoftStorage;
+                createParameters.Encryption.Services = new EncryptionServices();
+                if (this.EncryptionKeyTypeForQueue != null)
+                {
+                    createParameters.Encryption.Services.Queue = new EncryptionService(keyType: this.EncryptionKeyTypeForQueue);
+                }
+                if (this.EncryptionKeyTypeForTable != null)
+                {
+                    createParameters.Encryption.Services.Table = new EncryptionService(keyType: this.EncryptionKeyTypeForTable);
+                }
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
