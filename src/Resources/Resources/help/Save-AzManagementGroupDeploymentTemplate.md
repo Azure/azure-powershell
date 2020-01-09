@@ -8,7 +8,7 @@ schema: 2.0.0
 # Save-AzManagementGroupDeploymentTemplate
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Saves a deployment template to a file.
 
 ## SYNTAX
 
@@ -27,16 +27,23 @@ Save-AzManagementGroupDeploymentTemplate -DeploymentObject <PSDeployment> [-Path
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Save-AzManagementGroupDeploymentTemplate**  cmdlet saves a deployment template to a JSON file for a deployment at a management group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Save-AzManagementGroupDeploymentTemplate -ManagementGroupId "myMG" -DeploymentName "TestDeployment"
 ```
 
-{{ Add example description here }}
+This command gets the deployment template from TestDeployment and saves it as a JSON file in the current directory.
+
+### Example 2: Get a deployment and save its template
+```
+PS C:\>Get-AzManagementGroupDeploymentTemplate -ManagementGroupId "myMG" -Name "RolesDeployment" | Save-AzManagementGroupDeploymentTemplate
+```
+
+This command gets the deployment "RolesDeployment" at the management group "myMG" and saves its template.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzTenantDeployment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Validates a deployment at tenant scope.
 
 ## SYNTAX
 
@@ -94,16 +94,25 @@ Test-AzTenantDeployment -Location <String> -TemplateUri <String> [-SkipTemplateP
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Test-AzTenantDeployment** cmdlet determines whether a deployment template and its parameter values are valid at the current tenant scope.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Test deployment with a custom template and parameter file
+```
+PS C:\> Test-AzTenantDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\OrgSetup.json" -TemplateParameterFile "D:\Azure\Templates\OrgParms.json"
 ```
 
-{{ Add example description here }}
+This command tests a deployment at the current tenant scope using the given template file and parameters file.
+
+### Example 2: Test deployment with a custom template object and parameter file
+```
+PS C:\> $TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\OrgSetup.json")
+PS C:\> $TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
+PS C:\> Test-AzTenantDeployment -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json"
+```
+
+This command tests a deployment at the current tenant scope using the an in-memory hashtable created from the given template file and a parameter file.
 
 ## PARAMETERS
 

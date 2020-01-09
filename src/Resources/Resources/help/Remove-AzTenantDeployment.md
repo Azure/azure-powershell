@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzTenantDeployment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a deployment at tenant scope and any associated operations
 
 ## SYNTAX
 
@@ -31,16 +31,23 @@ Remove-AzTenantDeployment -InputObject <PSDeployment> [-AsJob] [-PassThru] [-Api
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzTenantDeployment** cmdlet removes an Azure deployment at the current tenant scope and any associated operations.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Remove a deployment with a given name
+```
+PS C:\>Remove-AzTenantDeployment -Name "RolesDeployment"
 ```
 
-{{ Add example description here }}
+This command removes the deployment "RolesDeployment" at the current tenant scope.
+
+### Example 2: Get a deployment and remove it
+```
+PS C:\>Get-AzTenantDeployment -Name "RolesDeployment" | Remove-AzTenantDeployment
+```
+
+This command gets the deployment "RolesDeployment" at the current tenant scope and removes it.
 
 ## PARAMETERS
 

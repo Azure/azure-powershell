@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzTenantDeployment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get deployment at tenant scope
 
 ## SYNTAX
 
@@ -25,16 +25,34 @@ Get-AzTenantDeployment -Id <String> [-ApiVersion <String>] [-Pre] [-DefaultProfi
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzTenantDeployment** cmdlet gets the deployments at the tenant scope.
+Specify the *Name* or *Id* parameter to filter the results.
+By default, **Get-AzTenantDeployment** gets all deployments at the tenant scope.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get all deployments at the tenant scope
+```
+PS C:\>Get-AzTenantDeployment
 ```
 
-{{ Add example description here }}
+This command gets all deployments at the current tenant scope.
+
+### Example 2: Get a deployment by name
+```
+PS C:\>Get-AzDeployment -Name "Deploy01"
+```
+
+This command gets the "Deploy01" deployment at the current tenant scope.
+You can assign a name to a deployment when you create it by using the **New-AzTenantDeployment** cmdlets.
+If you do not assign a name, the cmdlets provide a default name based on the template that is used to create the deployment.
+
+### Example 3: Get a deployment by ID
+```
+PS C:\>Get-AzDeployment -Id "/providers/Microsoft.Resources/deployments/Deploy01"
+```
+
+This command gets the "Deploy01" deployment at the tenant scope.
 
 ## PARAMETERS
 
