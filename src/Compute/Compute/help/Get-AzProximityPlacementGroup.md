@@ -14,14 +14,14 @@ Get or list Proximity Placement Group resource(s).
 
 ### DefaultParameter (Default)
 ```
-Get-AzProximityPlacementGroup [[-ResourceGroupName] <String>] [[-Name] <String>]
+Get-AzProximityPlacementGroup [[-ResourceGroupName] <String>] [[-Name] <String>] [-ColocationStatus]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
-Get-AzProximityPlacementGroup [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzProximityPlacementGroup [-ColocationStatus] [-ResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,6 +73,21 @@ rg1                          ppg2     centralus Standard
 This command list all proximity placement groups under the subscription.
 
 ## PARAMETERS
+
+### -ColocationStatus
+Shows the colocation status of a resource in the proximity placement group.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

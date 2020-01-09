@@ -28,28 +28,41 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
     public partial class PSProximityPlacementGroup
     {
-        // Gets or sets the property of 'ResourceGroupName'
-        public string ResourceGroupName
+        public IList<SubResource> VirtualMachines
         {
             get
             {
-                if (string.IsNullOrEmpty(Id)) return null;
-                Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
-                Match m = r.Match(Id);
-                return m.Success ? m.Groups["rgname"].Value : null;
+                var result = new List<SubResource>();
+                foreach (var v in this.VirtualMachinesColocationStatus)
+                {
+                    result.Add(new SubResource(v.Id));
+                }
+                return result;
             }
         }
-
-        public string ProximityPlacementGroupType { get; set; }
-        public IList<SubResourceWithColocationStatus> VirtualMachinesColocationStatus { get; set; }
-        public IList<SubResourceWithColocationStatus> VirtualMachineScaleSetsColocationStatus { get; set; }
-        public IList<SubResourceWithColocationStatus> AvailabilitySetsColocationStatus { get; set; }
-        public InstanceViewStatus ColocationStatus { get; set; }
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public string Location { get; set; }
-        public IDictionary<string, string> Tags { get; set; }
-
+        public IList<SubResource> VirtualMachineScaleSets
+        {
+            get
+            {
+                var result = new List<SubResource>();
+                foreach (var v in this.VirtualMachineScaleSetsColocationStatus)
+                {
+                    result.Add(new SubResource(v.Id));
+                }
+                return result;
+            }
+        }
+        public IList<SubResource> AvailabilitySets
+        {
+            get
+            {
+                var result = new List<SubResource>();
+                foreach (var v in this.AvailabilitySetsColocationStatus)
+                {
+                    result.Add(new SubResource(v.Id));
+                }
+                return result;
+            }
+        }
     }
 }

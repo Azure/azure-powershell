@@ -139,8 +139,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSImage, FROM.Image>();
                 cfg.CreateMap<FROM.LogAnalyticsOperationResult, TO.PSLogAnalyticsOperationResult>();
                 cfg.CreateMap<TO.PSLogAnalyticsOperationResult, FROM.LogAnalyticsOperationResult>();
-                cfg.CreateMap<FROM.ProximityPlacementGroup, TO.PSProximityPlacementGroup>();
-                cfg.CreateMap<TO.PSProximityPlacementGroup, FROM.ProximityPlacementGroup>();
+                cfg.CreateMap<FROM.ProximityPlacementGroup, TO.PSProximityPlacementGroup>()
+                    .ForMember(c => c.AvailabilitySetsColocationStatus, o => o.MapFrom(r => r.AvailabilitySets))
+                    .ForMember(c => c.VirtualMachinesColocationStatus, o => o.MapFrom(r => r.VirtualMachines))
+                    .ForMember(c => c.VirtualMachineScaleSetsColocationStatus, o => o.MapFrom(r => r.VirtualMachineScaleSets));
+                cfg.CreateMap<TO.PSProximityPlacementGroup, FROM.ProximityPlacementGroup>()
+                    .ForMember(c => c.AvailabilitySets, o => o.MapFrom(r => r.AvailabilitySetsColocationStatus))
+                    .ForMember(c => c.VirtualMachines, o => o.MapFrom(r => r.VirtualMachinesColocationStatus))
+                    .ForMember(c => c.VirtualMachineScaleSets, o => o.MapFrom(r => r.VirtualMachineScaleSetsColocationStatus));
                 cfg.CreateMap<FROM.ResourceSku, TO.PSResourceSku>();
                 cfg.CreateMap<TO.PSResourceSku, FROM.ResourceSku>();
                 cfg.CreateMap<FROM.Snapshot, TO.PSSnapshot>();
@@ -180,6 +186,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 
                 cfg.CreateMap<FROM.VirtualMachineScaleSetVMProfile, TO.PSVirtualMachineScaleSetVMProfile>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVMProfile, FROM.VirtualMachineScaleSetVMProfile>();
+                cfg.CreateMap<FROM.AutomaticRepairsPolicy, TO.PSAutomaticRepairsPolicy>();
+                cfg.CreateMap<TO.PSAutomaticRepairsPolicy, FROM.AutomaticRepairsPolicy>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetExtensionProfile, TO.PSVirtualMachineScaleSetExtensionProfile>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetExtensionProfile, FROM.VirtualMachineScaleSetExtensionProfile>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetExtension, TO.PSVirtualMachineScaleSetExtension>()
