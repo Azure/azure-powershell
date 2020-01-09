@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-//#define SERIALIZE
+#define SERIALIZE
 
 using Newtonsoft.Json;
 using System;
