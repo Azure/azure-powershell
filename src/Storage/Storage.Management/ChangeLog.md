@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Show RequestId when StorageException don't have ExtendedErrorInformation
+* Fix the Example 6 of cmdlet Start-AzStorageBlobCopy
 
 ## Version 1.11.0
 * Add breaking change warning message for DefaultAction Value change in a future release
