@@ -1,0 +1,901 @@
+namespace Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001
+{
+    using static Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Extensions;
+
+    public partial class ExpressRouteCircuitPeeringPropertiesFormat :
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormat,
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal
+    {
+
+        /// <summary>The communities of bgp peering. Specified for microsoft peering</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string[] AdvertisedCommunity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfigInternal)MicrosoftPeeringConfig).AdvertisedCommunity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfigInternal)MicrosoftPeeringConfig).AdvertisedCommunity = value; }
+
+        /// <summary>The reference of AdvertisedPublicPrefixes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string[] AdvertisedPublicPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfigInternal)MicrosoftPeeringConfig).AdvertisedPublicPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfigInternal)MicrosoftPeeringConfig).AdvertisedPublicPrefix = value; }
+
+        /// <summary>
+        /// AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured',
+        /// and 'ValidationNeeded'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState? AdvertisedPublicPrefixesState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfigInternal)MicrosoftPeeringConfig).AdvertisedPublicPrefixesState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfigInternal)MicrosoftPeeringConfig).AdvertisedPublicPrefixesState = value; }
+
+        /// <summary>Backing field for <see cref="AzureAsn" /> property.</summary>
+        private int? _azureAsn;
+
+        /// <summary>The Azure ASN.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        public int? AzureAsn { get => this._azureAsn; set => this._azureAsn = value; }
+
+        /// <summary>The CustomerASN of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public int? CustomerAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfigInternal)MicrosoftPeeringConfig).CustomerAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfigInternal)MicrosoftPeeringConfig).CustomerAsn = value; }
+
+        /// <summary>Gets a unique read-only string that changes whenever the resource is updated.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Etag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterInternal)RouteFilter).Etag; }
+
+        /// <summary>Backing field for <see cref="GatewayManagerEtag" /> property.</summary>
+        private string _gatewayManagerEtag;
+
+        /// <summary>The GatewayManager Etag.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        public string GatewayManagerEtag { get => this._gatewayManagerEtag; set => this._gatewayManagerEtag = value; }
+
+        /// <summary>Resource ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)RouteFilter).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)RouteFilter).Id = value; }
+
+        /// <summary>Backing field for <see cref="Ipv6PeeringConfig" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfig _ipv6PeeringConfig;
+
+        /// <summary>The IPv6 peering configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfig Ipv6PeeringConfig { get => (this._ipv6PeeringConfig = this._ipv6PeeringConfig ?? new Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.Ipv6ExpressRouteCircuitPeeringConfig()); set => this._ipv6PeeringConfig = value; }
+
+        /// <summary>The communities of bgp peering. Specified for microsoft peering</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string[] Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfigAdvertisedCommunity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfigAdvertisedCommunity = value; }
+
+        /// <summary>The reference of AdvertisedPublicPrefixes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string[] Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfigAdvertisedPublicPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfigAdvertisedPublicPrefix = value; }
+
+        /// <summary>
+        /// AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured',
+        /// and 'ValidationNeeded'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState? Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfigAdvertisedPublicPrefixesState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfigAdvertisedPublicPrefixesState = value; }
+
+        /// <summary>The CustomerASN of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public int? Ipv6PeeringConfigMicrosoftPeeringConfigCustomerAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfigCustomerAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfigCustomerAsn = value; }
+
+        /// <summary>The legacy mode of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public int? Ipv6PeeringConfigMicrosoftPeeringConfigLegacyMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfigLegacyMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfigLegacyMode = value; }
+
+        /// <summary>The RoutingRegistryName of the configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Ipv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfigRoutingRegistryName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfigRoutingRegistryName = value; }
+
+        /// <summary>The primary address prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Ipv6PeeringConfigPrimaryPeerAddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).PrimaryPeerAddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).PrimaryPeerAddressPrefix = value; }
+
+        /// <summary>Gets a unique read-only string that changes whenever the resource is updated.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Ipv6PeeringConfigRouteFilterEtag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterEtag; }
+
+        /// <summary>Resource ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Ipv6PeeringConfigRouteFilterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterId = value; }
+
+        /// <summary>Resource location.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Ipv6PeeringConfigRouteFilterLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterLocation = value; }
+
+        /// <summary>Resource name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Ipv6PeeringConfigRouteFilterName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterName; }
+
+        /// <summary>A collection of references to express route circuit peerings.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeering[] Ipv6PeeringConfigRouteFilterPropertiesPeering { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).Peering; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).Peering = value; }
+
+        /// <summary>
+        /// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Ipv6PeeringConfigRouteFilterPropertiesProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).ProvisioningState; }
+
+        /// <summary>Collection of RouteFilterRules contained within a route filter.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterRule[] Ipv6PeeringConfigRouteFilterPropertiesRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).Rule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).Rule = value; }
+
+        /// <summary>Resource tags.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags Ipv6PeeringConfigRouteFilterTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterTag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterTag = value; }
+
+        /// <summary>Resource type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Ipv6PeeringConfigRouteFilterType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterType; }
+
+        /// <summary>The secondary address prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Ipv6PeeringConfigSecondaryPeerAddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).SecondaryPeerAddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).SecondaryPeerAddressPrefix = value; }
+
+        /// <summary>The state of peering. Possible values are: 'Disabled' and 'Enabled'</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringState? Ipv6PeeringConfigState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).State; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).State = value; }
+
+        /// <summary>Backing field for <see cref="LastModifiedBy" /> property.</summary>
+        private string _lastModifiedBy;
+
+        /// <summary>Gets whether the provider or the customer last modified the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        public string LastModifiedBy { get => this._lastModifiedBy; set => this._lastModifiedBy = value; }
+
+        /// <summary>The legacy mode of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public int? LegacyMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfigInternal)MicrosoftPeeringConfig).LegacyMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfigInternal)MicrosoftPeeringConfig).LegacyMode = value; }
+
+        /// <summary>Resource location.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)RouteFilter).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)RouteFilter).Location = value; }
+
+        /// <summary>Internal Acessors for Etag</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.Etag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterInternal)RouteFilter).Etag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterInternal)RouteFilter).Etag = value; }
+
+        /// <summary>Internal Acessors for Ipv6PeeringConfig</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfig Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.Ipv6PeeringConfig { get => (this._ipv6PeeringConfig = this._ipv6PeeringConfig ?? new Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.Ipv6ExpressRouteCircuitPeeringConfig()); set { {_ipv6PeeringConfig = value;} } }
+
+        /// <summary>Internal Acessors for Ipv6PeeringConfigMicrosoftPeeringConfig</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfig Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.Ipv6PeeringConfigMicrosoftPeeringConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).MicrosoftPeeringConfig = value; }
+
+        /// <summary>Internal Acessors for Ipv6PeeringConfigRouteFilter</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilter Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.Ipv6PeeringConfigRouteFilter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilter = value; }
+
+        /// <summary>Internal Acessors for Ipv6PeeringConfigRouteFilterEtag</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.Ipv6PeeringConfigRouteFilterEtag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterEtag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterEtag = value; }
+
+        /// <summary>Internal Acessors for Ipv6PeeringConfigRouteFilterName</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.Ipv6PeeringConfigRouteFilterName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterName = value; }
+
+        /// <summary>Internal Acessors for Ipv6PeeringConfigRouteFilterPropertiesProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.Ipv6PeeringConfigRouteFilterPropertiesProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).ProvisioningState = value; }
+
+        /// <summary>Internal Acessors for Ipv6PeeringConfigRouteFilterProperty</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterPropertiesFormat Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.Ipv6PeeringConfigRouteFilterProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterProperty = value; }
+
+        /// <summary>Internal Acessors for Ipv6PeeringConfigRouteFilterType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.Ipv6PeeringConfigRouteFilterType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfigInternal)Ipv6PeeringConfig).RouteFilterType = value; }
+
+        /// <summary>Internal Acessors for MicrosoftPeeringConfig</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfig Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.MicrosoftPeeringConfig { get => (this._microsoftPeeringConfig = this._microsoftPeeringConfig ?? new Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ExpressRouteCircuitPeeringConfig()); set { {_microsoftPeeringConfig = value;} } }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)RouteFilter).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)RouteFilter).Name = value; }
+
+        /// <summary>Internal Acessors for Property</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterPropertiesFormat Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.Property { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterInternal)RouteFilter).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterInternal)RouteFilter).Property = value; }
+
+        /// <summary>Internal Acessors for RouteFilter</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilter Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.RouteFilter { get => (this._routeFilter = this._routeFilter ?? new Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.RouteFilter()); set { {_routeFilter = value;} } }
+
+        /// <summary>Internal Acessors for RouteFilterPropertiesProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.RouteFilterPropertiesProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterInternal)RouteFilter).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterInternal)RouteFilter).ProvisioningState = value; }
+
+        /// <summary>Internal Acessors for Stat</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitStats Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.Stat { get => (this._stat = this._stat ?? new Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ExpressRouteCircuitStats()); set { {_stat = value;} } }
+
+        /// <summary>Internal Acessors for Type</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringPropertiesFormatInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)RouteFilter).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)RouteFilter).Type = value; }
+
+        /// <summary>Backing field for <see cref="MicrosoftPeeringConfig" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfig _microsoftPeeringConfig;
+
+        /// <summary>The Microsoft peering configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfig MicrosoftPeeringConfig { get => (this._microsoftPeeringConfig = this._microsoftPeeringConfig ?? new Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ExpressRouteCircuitPeeringConfig()); set => this._microsoftPeeringConfig = value; }
+
+        /// <summary>Resource name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)RouteFilter).Name; }
+
+        /// <summary>Backing field for <see cref="PeerAsn" /> property.</summary>
+        private long? _peerAsn;
+
+        /// <summary>The peer ASN.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        public long? PeerAsn { get => this._peerAsn; set => this._peerAsn = value; }
+
+        /// <summary>Backing field for <see cref="PeeringType" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringType? _peeringType;
+
+        /// <summary>
+        /// The PeeringType. Possible values are: 'AzurePublicPeering', 'AzurePrivatePeering', and 'MicrosoftPeering'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringType? PeeringType { get => this._peeringType; set => this._peeringType = value; }
+
+        /// <summary>Backing field for <see cref="PrimaryAzurePort" /> property.</summary>
+        private string _primaryAzurePort;
+
+        /// <summary>The primary port.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        public string PrimaryAzurePort { get => this._primaryAzurePort; set => this._primaryAzurePort = value; }
+
+        /// <summary>Backing field for <see cref="PrimaryPeerAddressPrefix" /> property.</summary>
+        private string _primaryPeerAddressPrefix;
+
+        /// <summary>The primary address prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        public string PrimaryPeerAddressPrefix { get => this._primaryPeerAddressPrefix; set => this._primaryPeerAddressPrefix = value; }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
+
+        /// <summary>
+        /// Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; set => this._provisioningState = value; }
+
+        /// <summary>Backing field for <see cref="RouteFilter" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilter _routeFilter;
+
+        /// <summary>The reference of the RouteFilter resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilter RouteFilter { get => (this._routeFilter = this._routeFilter ?? new Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.RouteFilter()); set => this._routeFilter = value; }
+
+        /// <summary>A collection of references to express route circuit peerings.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeering[] RouteFilterPropertiesPeering { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterInternal)RouteFilter).Peering; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterInternal)RouteFilter).Peering = value; }
+
+        /// <summary>
+        /// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string RouteFilterPropertiesProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterInternal)RouteFilter).ProvisioningState; }
+
+        /// <summary>Collection of RouteFilterRules contained within a route filter.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterRule[] RouteFilterPropertiesRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterInternal)RouteFilter).Rule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterInternal)RouteFilter).Rule = value; }
+
+        /// <summary>The RoutingRegistryName of the configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string RoutingRegistryName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfigInternal)MicrosoftPeeringConfig).RoutingRegistryName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfigInternal)MicrosoftPeeringConfig).RoutingRegistryName = value; }
+
+        /// <summary>Backing field for <see cref="SecondaryAzurePort" /> property.</summary>
+        private string _secondaryAzurePort;
+
+        /// <summary>The secondary port.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        public string SecondaryAzurePort { get => this._secondaryAzurePort; set => this._secondaryAzurePort = value; }
+
+        /// <summary>Backing field for <see cref="SecondaryPeerAddressPrefix" /> property.</summary>
+        private string _secondaryPeerAddressPrefix;
+
+        /// <summary>The secondary address prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        public string SecondaryPeerAddressPrefix { get => this._secondaryPeerAddressPrefix; set => this._secondaryPeerAddressPrefix = value; }
+
+        /// <summary>Backing field for <see cref="SharedKey" /> property.</summary>
+        private string _sharedKey;
+
+        /// <summary>The shared key.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        public string SharedKey { get => this._sharedKey; set => this._sharedKey = value; }
+
+        /// <summary>Backing field for <see cref="Stat" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitStats _stat;
+
+        /// <summary>Gets peering stats.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitStats Stat { get => (this._stat = this._stat ?? new Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ExpressRouteCircuitStats()); set => this._stat = value; }
+
+        /// <summary>Gets BytesIn of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public long? StatPrimarybytesIn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitStatsInternal)Stat).PrimarybytesIn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitStatsInternal)Stat).PrimarybytesIn = value; }
+
+        /// <summary>Gets BytesOut of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public long? StatPrimarybytesOut { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitStatsInternal)Stat).PrimarybytesOut; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitStatsInternal)Stat).PrimarybytesOut = value; }
+
+        /// <summary>Gets BytesIn of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public long? StatSecondarybytesIn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitStatsInternal)Stat).SecondarybytesIn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitStatsInternal)Stat).SecondarybytesIn = value; }
+
+        /// <summary>Gets BytesOut of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public long? StatSecondarybytesOut { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitStatsInternal)Stat).SecondarybytesOut; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitStatsInternal)Stat).SecondarybytesOut = value; }
+
+        /// <summary>Backing field for <see cref="State" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringState? _state;
+
+        /// <summary>The state of peering. Possible values are: 'Disabled' and 'Enabled'</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringState? State { get => this._state; set => this._state = value; }
+
+        /// <summary>Resource tags.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)RouteFilter).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)RouteFilter).Tag = value; }
+
+        /// <summary>Resource type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Inlined)]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)RouteFilter).Type; }
+
+        /// <summary>Backing field for <see cref="VlanId" /> property.</summary>
+        private int? _vlanId;
+
+        /// <summary>The VLAN ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Origin(Microsoft.Azure.PowerShell.Cmdlets.Network.PropertyOrigin.Owned)]
+        public int? VlanId { get => this._vlanId; set => this._vlanId = value; }
+
+        /// <summary>
+        /// Creates an new <see cref="ExpressRouteCircuitPeeringPropertiesFormat" /> instance.
+        /// </summary>
+        public ExpressRouteCircuitPeeringPropertiesFormat()
+        {
+
+        }
+    }
+    public partial interface IExpressRouteCircuitPeeringPropertiesFormat :
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IJsonSerializable
+    {
+        /// <summary>The communities of bgp peering. Specified for microsoft peering</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The communities of bgp peering. Specified for microsoft peering",
+        SerializedName = @"advertisedCommunities",
+        PossibleTypes = new [] { typeof(string) })]
+        string[] AdvertisedCommunity { get; set; }
+        /// <summary>The reference of AdvertisedPublicPrefixes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The reference of AdvertisedPublicPrefixes.",
+        SerializedName = @"advertisedPublicPrefixes",
+        PossibleTypes = new [] { typeof(string) })]
+        string[] AdvertisedPublicPrefix { get; set; }
+        /// <summary>
+        /// AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured',
+        /// and 'ValidationNeeded'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.",
+        SerializedName = @"advertisedPublicPrefixesState",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState? AdvertisedPublicPrefixesState { get; set; }
+        /// <summary>The Azure ASN.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Azure ASN.",
+        SerializedName = @"azureASN",
+        PossibleTypes = new [] { typeof(int) })]
+        int? AzureAsn { get; set; }
+        /// <summary>The CustomerASN of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The CustomerASN of the peering.",
+        SerializedName = @"customerASN",
+        PossibleTypes = new [] { typeof(int) })]
+        int? CustomerAsn { get; set; }
+        /// <summary>Gets a unique read-only string that changes whenever the resource is updated.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Gets a unique read-only string that changes whenever the resource is updated.",
+        SerializedName = @"etag",
+        PossibleTypes = new [] { typeof(string) })]
+        string Etag { get;  }
+        /// <summary>The GatewayManager Etag.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The GatewayManager Etag.",
+        SerializedName = @"gatewayManagerEtag",
+        PossibleTypes = new [] { typeof(string) })]
+        string GatewayManagerEtag { get; set; }
+        /// <summary>Resource ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        string Id { get; set; }
+        /// <summary>The communities of bgp peering. Specified for microsoft peering</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The communities of bgp peering. Specified for microsoft peering",
+        SerializedName = @"advertisedCommunities",
+        PossibleTypes = new [] { typeof(string) })]
+        string[] Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity { get; set; }
+        /// <summary>The reference of AdvertisedPublicPrefixes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The reference of AdvertisedPublicPrefixes.",
+        SerializedName = @"advertisedPublicPrefixes",
+        PossibleTypes = new [] { typeof(string) })]
+        string[] Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix { get; set; }
+        /// <summary>
+        /// AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured',
+        /// and 'ValidationNeeded'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.",
+        SerializedName = @"advertisedPublicPrefixesState",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState? Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState { get; set; }
+        /// <summary>The CustomerASN of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The CustomerASN of the peering.",
+        SerializedName = @"customerASN",
+        PossibleTypes = new [] { typeof(int) })]
+        int? Ipv6PeeringConfigMicrosoftPeeringConfigCustomerAsn { get; set; }
+        /// <summary>The legacy mode of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The legacy mode of the peering.",
+        SerializedName = @"legacyMode",
+        PossibleTypes = new [] { typeof(int) })]
+        int? Ipv6PeeringConfigMicrosoftPeeringConfigLegacyMode { get; set; }
+        /// <summary>The RoutingRegistryName of the configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The RoutingRegistryName of the configuration.",
+        SerializedName = @"routingRegistryName",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName { get; set; }
+        /// <summary>The primary address prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The primary address prefix.",
+        SerializedName = @"primaryPeerAddressPrefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6PeeringConfigPrimaryPeerAddressPrefix { get; set; }
+        /// <summary>Gets a unique read-only string that changes whenever the resource is updated.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Gets a unique read-only string that changes whenever the resource is updated.",
+        SerializedName = @"etag",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6PeeringConfigRouteFilterEtag { get;  }
+        /// <summary>Resource ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6PeeringConfigRouteFilterId { get; set; }
+        /// <summary>Resource location.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource location.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6PeeringConfigRouteFilterLocation { get; set; }
+        /// <summary>Resource name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Resource name.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6PeeringConfigRouteFilterName { get;  }
+        /// <summary>A collection of references to express route circuit peerings.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A collection of references to express route circuit peerings.",
+        SerializedName = @"peerings",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeering) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeering[] Ipv6PeeringConfigRouteFilterPropertiesPeering { get; set; }
+        /// <summary>
+        /// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6PeeringConfigRouteFilterPropertiesProvisioningState { get;  }
+        /// <summary>Collection of RouteFilterRules contained within a route filter.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Collection of RouteFilterRules contained within a route filter.",
+        SerializedName = @"rules",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterRule) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterRule[] Ipv6PeeringConfigRouteFilterPropertiesRule { get; set; }
+        /// <summary>Resource tags.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource tags.",
+        SerializedName = @"tags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags Ipv6PeeringConfigRouteFilterTag { get; set; }
+        /// <summary>Resource type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Resource type.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6PeeringConfigRouteFilterType { get;  }
+        /// <summary>The secondary address prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The secondary address prefix.",
+        SerializedName = @"secondaryPeerAddressPrefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6PeeringConfigSecondaryPeerAddressPrefix { get; set; }
+        /// <summary>The state of peering. Possible values are: 'Disabled' and 'Enabled'</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The state of peering. Possible values are: 'Disabled' and 'Enabled'",
+        SerializedName = @"state",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringState) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringState? Ipv6PeeringConfigState { get; set; }
+        /// <summary>Gets whether the provider or the customer last modified the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Gets whether the provider or the customer last modified the peering.",
+        SerializedName = @"lastModifiedBy",
+        PossibleTypes = new [] { typeof(string) })]
+        string LastModifiedBy { get; set; }
+        /// <summary>The legacy mode of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The legacy mode of the peering.",
+        SerializedName = @"legacyMode",
+        PossibleTypes = new [] { typeof(int) })]
+        int? LegacyMode { get; set; }
+        /// <summary>Resource location.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource location.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
+        /// <summary>Resource name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Resource name.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        string Name { get;  }
+        /// <summary>The peer ASN.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The peer ASN.",
+        SerializedName = @"peerASN",
+        PossibleTypes = new [] { typeof(long) })]
+        long? PeerAsn { get; set; }
+        /// <summary>
+        /// The PeeringType. Possible values are: 'AzurePublicPeering', 'AzurePrivatePeering', and 'MicrosoftPeering'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The PeeringType. Possible values are: 'AzurePublicPeering', 'AzurePrivatePeering', and 'MicrosoftPeering'.",
+        SerializedName = @"peeringType",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringType) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringType? PeeringType { get; set; }
+        /// <summary>The primary port.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The primary port.",
+        SerializedName = @"primaryAzurePort",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrimaryAzurePort { get; set; }
+        /// <summary>The primary address prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The primary address prefix.",
+        SerializedName = @"primaryPeerAddressPrefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrimaryPeerAddressPrefix { get; set; }
+        /// <summary>
+        /// Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProvisioningState { get; set; }
+        /// <summary>A collection of references to express route circuit peerings.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A collection of references to express route circuit peerings.",
+        SerializedName = @"peerings",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeering) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeering[] RouteFilterPropertiesPeering { get; set; }
+        /// <summary>
+        /// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        string RouteFilterPropertiesProvisioningState { get;  }
+        /// <summary>Collection of RouteFilterRules contained within a route filter.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Collection of RouteFilterRules contained within a route filter.",
+        SerializedName = @"rules",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterRule) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterRule[] RouteFilterPropertiesRule { get; set; }
+        /// <summary>The RoutingRegistryName of the configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The RoutingRegistryName of the configuration.",
+        SerializedName = @"routingRegistryName",
+        PossibleTypes = new [] { typeof(string) })]
+        string RoutingRegistryName { get; set; }
+        /// <summary>The secondary port.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The secondary port.",
+        SerializedName = @"secondaryAzurePort",
+        PossibleTypes = new [] { typeof(string) })]
+        string SecondaryAzurePort { get; set; }
+        /// <summary>The secondary address prefix.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The secondary address prefix.",
+        SerializedName = @"secondaryPeerAddressPrefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string SecondaryPeerAddressPrefix { get; set; }
+        /// <summary>The shared key.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The shared key.",
+        SerializedName = @"sharedKey",
+        PossibleTypes = new [] { typeof(string) })]
+        string SharedKey { get; set; }
+        /// <summary>Gets BytesIn of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Gets BytesIn of the peering.",
+        SerializedName = @"primarybytesIn",
+        PossibleTypes = new [] { typeof(long) })]
+        long? StatPrimarybytesIn { get; set; }
+        /// <summary>Gets BytesOut of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Gets BytesOut of the peering.",
+        SerializedName = @"primarybytesOut",
+        PossibleTypes = new [] { typeof(long) })]
+        long? StatPrimarybytesOut { get; set; }
+        /// <summary>Gets BytesIn of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Gets BytesIn of the peering.",
+        SerializedName = @"secondarybytesIn",
+        PossibleTypes = new [] { typeof(long) })]
+        long? StatSecondarybytesIn { get; set; }
+        /// <summary>Gets BytesOut of the peering.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Gets BytesOut of the peering.",
+        SerializedName = @"secondarybytesOut",
+        PossibleTypes = new [] { typeof(long) })]
+        long? StatSecondarybytesOut { get; set; }
+        /// <summary>The state of peering. Possible values are: 'Disabled' and 'Enabled'</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The state of peering. Possible values are: 'Disabled' and 'Enabled'",
+        SerializedName = @"state",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringState) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringState? State { get; set; }
+        /// <summary>Resource tags.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource tags.",
+        SerializedName = @"tags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags Tag { get; set; }
+        /// <summary>Resource type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Resource type.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        string Type { get;  }
+        /// <summary>The VLAN ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The VLAN ID.",
+        SerializedName = @"vlanId",
+        PossibleTypes = new [] { typeof(int) })]
+        int? VlanId { get; set; }
+
+    }
+    internal partial interface IExpressRouteCircuitPeeringPropertiesFormatInternal
+
+    {
+        /// <summary>The communities of bgp peering. Specified for microsoft peering</summary>
+        string[] AdvertisedCommunity { get; set; }
+        /// <summary>The reference of AdvertisedPublicPrefixes.</summary>
+        string[] AdvertisedPublicPrefix { get; set; }
+        /// <summary>
+        /// AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured',
+        /// and 'ValidationNeeded'.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState? AdvertisedPublicPrefixesState { get; set; }
+        /// <summary>The Azure ASN.</summary>
+        int? AzureAsn { get; set; }
+        /// <summary>The CustomerASN of the peering.</summary>
+        int? CustomerAsn { get; set; }
+        /// <summary>Gets a unique read-only string that changes whenever the resource is updated.</summary>
+        string Etag { get; set; }
+        /// <summary>The GatewayManager Etag.</summary>
+        string GatewayManagerEtag { get; set; }
+        /// <summary>Resource ID.</summary>
+        string Id { get; set; }
+        /// <summary>The IPv6 peering configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpv6ExpressRouteCircuitPeeringConfig Ipv6PeeringConfig { get; set; }
+        /// <summary>The Microsoft peering configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfig Ipv6PeeringConfigMicrosoftPeeringConfig { get; set; }
+        /// <summary>The communities of bgp peering. Specified for microsoft peering</summary>
+        string[] Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity { get; set; }
+        /// <summary>The reference of AdvertisedPublicPrefixes.</summary>
+        string[] Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix { get; set; }
+        /// <summary>
+        /// AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured',
+        /// and 'ValidationNeeded'.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState? Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState { get; set; }
+        /// <summary>The CustomerASN of the peering.</summary>
+        int? Ipv6PeeringConfigMicrosoftPeeringConfigCustomerAsn { get; set; }
+        /// <summary>The legacy mode of the peering.</summary>
+        int? Ipv6PeeringConfigMicrosoftPeeringConfigLegacyMode { get; set; }
+        /// <summary>The RoutingRegistryName of the configuration.</summary>
+        string Ipv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName { get; set; }
+        /// <summary>The primary address prefix.</summary>
+        string Ipv6PeeringConfigPrimaryPeerAddressPrefix { get; set; }
+        /// <summary>The reference of the RouteFilter resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilter Ipv6PeeringConfigRouteFilter { get; set; }
+        /// <summary>Gets a unique read-only string that changes whenever the resource is updated.</summary>
+        string Ipv6PeeringConfigRouteFilterEtag { get; set; }
+        /// <summary>Resource ID.</summary>
+        string Ipv6PeeringConfigRouteFilterId { get; set; }
+        /// <summary>Resource location.</summary>
+        string Ipv6PeeringConfigRouteFilterLocation { get; set; }
+        /// <summary>Resource name.</summary>
+        string Ipv6PeeringConfigRouteFilterName { get; set; }
+        /// <summary>A collection of references to express route circuit peerings.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeering[] Ipv6PeeringConfigRouteFilterPropertiesPeering { get; set; }
+        /// <summary>
+        /// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
+        /// </summary>
+        string Ipv6PeeringConfigRouteFilterPropertiesProvisioningState { get; set; }
+        /// <summary>Collection of RouteFilterRules contained within a route filter.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterRule[] Ipv6PeeringConfigRouteFilterPropertiesRule { get; set; }
+        /// <summary>Route Filter Resource</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterPropertiesFormat Ipv6PeeringConfigRouteFilterProperty { get; set; }
+        /// <summary>Resource tags.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags Ipv6PeeringConfigRouteFilterTag { get; set; }
+        /// <summary>Resource type.</summary>
+        string Ipv6PeeringConfigRouteFilterType { get; set; }
+        /// <summary>The secondary address prefix.</summary>
+        string Ipv6PeeringConfigSecondaryPeerAddressPrefix { get; set; }
+        /// <summary>The state of peering. Possible values are: 'Disabled' and 'Enabled'</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringState? Ipv6PeeringConfigState { get; set; }
+        /// <summary>Gets whether the provider or the customer last modified the peering.</summary>
+        string LastModifiedBy { get; set; }
+        /// <summary>The legacy mode of the peering.</summary>
+        int? LegacyMode { get; set; }
+        /// <summary>Resource location.</summary>
+        string Location { get; set; }
+        /// <summary>The Microsoft peering configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeeringConfig MicrosoftPeeringConfig { get; set; }
+        /// <summary>Resource name.</summary>
+        string Name { get; set; }
+        /// <summary>The peer ASN.</summary>
+        long? PeerAsn { get; set; }
+        /// <summary>
+        /// The PeeringType. Possible values are: 'AzurePublicPeering', 'AzurePrivatePeering', and 'MicrosoftPeering'.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringType? PeeringType { get; set; }
+        /// <summary>The primary port.</summary>
+        string PrimaryAzurePort { get; set; }
+        /// <summary>The primary address prefix.</summary>
+        string PrimaryPeerAddressPrefix { get; set; }
+        /// <summary>Route Filter Resource</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterPropertiesFormat Property { get; set; }
+        /// <summary>
+        /// Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        /// </summary>
+        string ProvisioningState { get; set; }
+        /// <summary>The reference of the RouteFilter resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilter RouteFilter { get; set; }
+        /// <summary>A collection of references to express route circuit peerings.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitPeering[] RouteFilterPropertiesPeering { get; set; }
+        /// <summary>
+        /// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
+        /// </summary>
+        string RouteFilterPropertiesProvisioningState { get; set; }
+        /// <summary>Collection of RouteFilterRules contained within a route filter.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteFilterRule[] RouteFilterPropertiesRule { get; set; }
+        /// <summary>The RoutingRegistryName of the configuration.</summary>
+        string RoutingRegistryName { get; set; }
+        /// <summary>The secondary port.</summary>
+        string SecondaryAzurePort { get; set; }
+        /// <summary>The secondary address prefix.</summary>
+        string SecondaryPeerAddressPrefix { get; set; }
+        /// <summary>The shared key.</summary>
+        string SharedKey { get; set; }
+        /// <summary>Gets peering stats.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitStats Stat { get; set; }
+        /// <summary>Gets BytesIn of the peering.</summary>
+        long? StatPrimarybytesIn { get; set; }
+        /// <summary>Gets BytesOut of the peering.</summary>
+        long? StatPrimarybytesOut { get; set; }
+        /// <summary>Gets BytesIn of the peering.</summary>
+        long? StatSecondarybytesIn { get; set; }
+        /// <summary>Gets BytesOut of the peering.</summary>
+        long? StatSecondarybytesOut { get; set; }
+        /// <summary>The state of peering. Possible values are: 'Disabled' and 'Enabled'</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringState? State { get; set; }
+        /// <summary>Resource tags.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags Tag { get; set; }
+        /// <summary>Resource type.</summary>
+        string Type { get; set; }
+        /// <summary>The VLAN ID.</summary>
+        int? VlanId { get; set; }
+
+    }
+}

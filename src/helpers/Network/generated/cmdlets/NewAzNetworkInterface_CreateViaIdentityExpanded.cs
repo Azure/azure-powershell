@@ -1,0 +1,806 @@
+namespace Microsoft.Azure.PowerShell.Cmdlets.Network.Cmdlets
+{
+    using static Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Extensions;
+
+    /// <summary>Creates or updates a network interface.</summary>
+    /// <remarks>
+    /// [OpenAPI] NetworkInterfaces_CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}"
+    /// [METADATA]
+    /// path: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}'
+    /// apiVersions:
+    /// - '2019-02-01'
+    /// filename:
+    /// - 'mem:///980?oai3.shaken.json'
+    /// originalLocations:
+    /// - >-
+    /// https://github.com/Azure/azure-rest-api-specs/blob/resource-hybrid-profile-fix/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/networkInterface.json#/paths/~1subscriptions~1{subscriptionId}~1resourceGroups~1{resourceGroupName}~1providers~1Microsoft.Network~1networkInterfaces~1{networkInterfaceName}
+    /// profiles:
+    /// latest-2019-04-30: '2019-02-01'
+    /// [DETAILS]
+    /// verb: New
+    /// subjectPrefix:
+    /// subject: NetworkInterface
+    /// variant: CreateViaIdentityExpanded
+    /// </remarks>
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNetworkInterface_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Description(@"Creates or updates a network interface.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Profile("latest-2019-04-30")]
+    public partial class NewAzNetworkInterface_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
+        Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener
+    {
+        /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
+        private string __correlationId = System.Guid.NewGuid().ToString();
+
+        /// <summary>A copy of the Invocation Info (necessary to allow asJob to clone this cmdlet)</summary>
+        private global::System.Management.Automation.InvocationInfo __invocationInfo;
+
+        /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
+        private string __processRecordId;
+
+        /// <summary>
+        /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
+        /// </summary>
+        private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>
+        /// If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from
+        /// all NICs that are part of the Availability Set. This property is what is configured on each of those VMs.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs.",
+        SerializedName = @"appliedDnsServers",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] AppliedDnsServer { get => ParametersBody.AppliedDnsServer ?? null /* arrayOf */; set => ParametersBody.AppliedDnsServer = value; }
+
+        /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
+
+        /// <summary>Wait for .NET debugger to attach</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>The reference to the client API class.</summary>
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Network Client => Microsoft.Azure.PowerShell.Cmdlets.Network.Module.Instance.ClientAPI;
+
+        /// <summary>
+        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.ValidateNotNull]
+        [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Azure)]
+        public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>The default security rules of network security group.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The default security rules of network security group.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The default security rules of network security group.",
+        SerializedName = @"defaultSecurityRules",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule[] DefaultSecurityRule { get => ParametersBody.DefaultSecurityRule ?? null /* arrayOf */; set => ParametersBody.DefaultSecurityRule = value; }
+
+        /// <summary>
+        /// List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS'
+        /// value cannot be combined with other IPs, it must be the only value in dnsServers collection.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.",
+        SerializedName = @"dnsServers",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] DnsServer { get => ParametersBody.DnsServer ?? null /* arrayOf */; set => ParametersBody.DnsServer = value; }
+
+        /// <summary>If the network interface is accelerated networking enabled.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If the network interface is accelerated networking enabled.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If the network interface is accelerated networking enabled.",
+        SerializedName = @"enableAcceleratedNetworking",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter EnableAcceleratedNetworking { get => ParametersBody.EnableAcceleratedNetworking ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.EnableAcceleratedNetworking = value; }
+
+        /// <summary>Indicates whether IP forwarding is enabled on this network interface.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates whether IP forwarding is enabled on this network interface.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicates whether IP forwarding is enabled on this network interface.",
+        SerializedName = @"enableIPForwarding",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter EnableIPForwarding { get => ParametersBody.EnableIPForwarding ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.EnableIPForwarding = value; }
+
+        /// <summary>A unique identifier of the service being referenced by the interface endpoint.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A unique identifier of the service being referenced by the interface endpoint.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A unique identifier of the service being referenced by the interface endpoint.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        public string EndpointServiceId { get => ParametersBody.EndpointServiceId ?? null; set => ParametersBody.EndpointServiceId = value; }
+
+        /// <summary>A unique read-only string that changes whenever the resource is updated.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A unique read-only string that changes whenever the resource is updated.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A unique read-only string that changes whenever the resource is updated.",
+        SerializedName = @"etag",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Etag { get => ParametersBody.Etag ?? null; set => ParametersBody.Etag = value; }
+
+        /// <summary>
+        /// A first-party service's FQDN that is mapped to the private IP allocated via this interface endpoint.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A first-party service's FQDN that is mapped to the private IP allocated via this interface endpoint.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A first-party service's FQDN that is mapped to the private IP allocated via this interface endpoint.",
+        SerializedName = @"fqdn",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Fqdn { get => ParametersBody.Fqdn ?? null; set => ParametersBody.Fqdn = value; }
+
+        /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
+        [global::System.Management.Automation.ValidateNotNull]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Runtime)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.SendAsyncStep[] HttpPipelineAppend { get; set; }
+
+        /// <summary>SendAsync Pipeline Steps to be prepended to the front of the pipeline</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be prepended to the front of the pipeline")]
+        [global::System.Management.Automation.ValidateNotNull]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Runtime)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
+
+        /// <summary>A list of IPConfigurations of the network interface.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A list of IPConfigurations of the network interface.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A list of IPConfigurations of the network interface.",
+        SerializedName = @"ipConfigurations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceIPConfiguration) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceIPConfiguration[] IPConfiguration { get => ParametersBody.IPConfiguration ?? null /* arrayOf */; set => ParametersBody.IPConfiguration = value; }
+
+        /// <summary>Resource ID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Id { get => ParametersBody.Id ?? null; set => ParametersBody.Id = value; }
+
+        /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity _inputObject;
+
+        /// <summary>Identity Parameter</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Path)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity InputObject { get => this._inputObject; set => this._inputObject = value; }
+
+        /// <summary>Gets a unique read-only string that changes whenever the resource is updated.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets a unique read-only string that changes whenever the resource is updated.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Gets a unique read-only string that changes whenever the resource is updated.",
+        SerializedName = @"etag",
+        PossibleTypes = new [] { typeof(string) })]
+        public string InterfaceEndpointEtag { get => ParametersBody.InterfaceEndpointEtag ?? null; set => ParametersBody.InterfaceEndpointEtag = value; }
+
+        /// <summary>Resource ID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        public string InterfaceEndpointId { get => ParametersBody.InterfaceEndpointId ?? null; set => ParametersBody.InterfaceEndpointId = value; }
+
+        /// <summary>Resource location.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource location.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        public string InterfaceEndpointLocation { get => ParametersBody.InterfaceEndpointLocation ?? null; set => ParametersBody.InterfaceEndpointLocation = value; }
+
+        /// <summary>Resource tags.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource tags.",
+        SerializedName = @"tags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags InterfaceEndpointTag { get => ParametersBody.InterfaceEndpointTag ?? null /* object */; set => ParametersBody.InterfaceEndpointTag = value; }
+
+        /// <summary>
+        /// Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.",
+        SerializedName = @"internalDnsNameLabel",
+        PossibleTypes = new [] { typeof(string) })]
+        public string InternalDnsNameLabel { get => ParametersBody.InternalDnsNameLabel ?? null; set => ParametersBody.InternalDnsNameLabel = value; }
+
+        /// <summary>
+        /// Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can
+        /// be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.",
+        SerializedName = @"internalDomainNameSuffix",
+        PossibleTypes = new [] { typeof(string) })]
+        public string InternalDomainNameSuffix { get => ParametersBody.InternalDomainNameSuffix ?? null; set => ParametersBody.InternalDomainNameSuffix = value; }
+
+        /// <summary>
+        /// Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Fully qualified DNS name supporting internal communications between VMs in the same virtual network.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Fully qualified DNS name supporting internal communications between VMs in the same virtual network.",
+        SerializedName = @"internalFqdn",
+        PossibleTypes = new [] { typeof(string) })]
+        public string InternalFqdn { get => ParametersBody.InternalFqdn ?? null; set => ParametersBody.InternalFqdn = value; }
+
+        /// <summary>Accessor for our copy of the InvocationInfo.</summary>
+        public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
+
+        /// <summary>Resource location.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource location.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Location { get => ParametersBody.Location ?? null; set => ParametersBody.Location = value; }
+
+        /// <summary>The MAC address of the network interface.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The MAC address of the network interface.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The MAC address of the network interface.",
+        SerializedName = @"macAddress",
+        PossibleTypes = new [] { typeof(string) })]
+        public string MacAddress { get => ParametersBody.MacAddress ?? null; set => ParametersBody.MacAddress = value; }
+
+        /// <summary>
+        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// </summary>
+        global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
+
+        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>
+        /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
+        /// asynchronously.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
+
+        /// <summary>A unique read-only string that changes whenever the resource is updated.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A unique read-only string that changes whenever the resource is updated.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A unique read-only string that changes whenever the resource is updated.",
+        SerializedName = @"etag",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("NetworkSecurityGroupEtag")]
+        public string NsgEtag { get => ParametersBody.NsgEtag ?? null; set => ParametersBody.NsgEtag = value; }
+
+        /// <summary>Resource ID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("NetworkSecurityGroupId")]
+        public string NsgId { get => ParametersBody.NsgId ?? null; set => ParametersBody.NsgId = value; }
+
+        /// <summary>Resource location.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource location.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("NetworkSecurityGroupLocation")]
+        public string NsgLocation { get => ParametersBody.NsgLocation ?? null; set => ParametersBody.NsgLocation = value; }
+
+        /// <summary>
+        /// The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("NetworkSecurityGroupProvisioningState")]
+        public string NsgProvisioningState { get => ParametersBody.NsgProvisioningState ?? null; set => ParametersBody.NsgProvisioningState = value; }
+
+        /// <summary>The resource GUID property of the network security group resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource GUID property of the network security group resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The resource GUID property of the network security group resource.",
+        SerializedName = @"resourceGuid",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("NetworkSecurityGroupResourceGuid")]
+        public string NsgResourceGuid { get => ParametersBody.NsgResourceGuid ?? null; set => ParametersBody.NsgResourceGuid = value; }
+
+        /// <summary>Resource tags.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource tags.",
+        SerializedName = @"tags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags) })]
+        [global::System.Management.Automation.Alias("NetworkSecurityGroupTag")]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags NsgTag { get => ParametersBody.NsgTag ?? null /* object */; set => ParametersBody.NsgTag = value; }
+
+        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.NetworkInterface();
+
+        /// <summary>A network interface in a resource group.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
+
+        /// <summary>
+        /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.HttpPipeline" /> that the remote call will use.
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>Gets whether this is a primary network interface on a virtual machine.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets whether this is a primary network interface on a virtual machine.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Gets whether this is a primary network interface on a virtual machine.",
+        SerializedName = @"primary",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter Primary { get => ParametersBody.Primary ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.Primary = value; }
+
+        /// <summary>
+        /// The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ProvisioningState { get => ParametersBody.ProvisioningState ?? null; set => ParametersBody.ProvisioningState = value; }
+
+        /// <summary>The URI for the proxy server to use</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Runtime)]
+        public global::System.Uri Proxy { get; set; }
+
+        /// <summary>Credentials for a proxy server to use for the remote call</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Credentials for a proxy server to use for the remote call")]
+        [global::System.Management.Automation.ValidateNotNull]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.PSCredential ProxyCredential { get; set; }
+
+        /// <summary>Use the default credentials for the proxy</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>The resource GUID property of the network interface resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource GUID property of the network interface resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The resource GUID property of the network interface resource.",
+        SerializedName = @"resourceGuid",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ResourceGuid { get => ParametersBody.ResourceGuid ?? null; set => ParametersBody.ResourceGuid = value; }
+
+        /// <summary>A collection of security rules of the network security group.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A collection of security rules of the network security group.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A collection of security rules of the network security group.",
+        SerializedName = @"securityRules",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule[] SecurityRule { get => ParametersBody.SecurityRule ?? null /* arrayOf */; set => ParametersBody.SecurityRule = value; }
+
+        /// <summary>The ID of the subnet from which the private IP will be allocated.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ID of the subnet from which the private IP will be allocated.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ID of the subnet from which the private IP will be allocated.",
+        SerializedName = @"subnet",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISubnet) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISubnet Subnet { get => ParametersBody.Subnet ?? null /* object */; set => ParametersBody.Subnet = value; }
+
+        /// <summary>Resource tags.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource tags.",
+        SerializedName = @"tags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags Tag { get => ParametersBody.Tag ?? null /* object */; set => ParametersBody.Tag = value; }
+
+        /// <summary>A list of TapConfigurations of the network interface.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A list of TapConfigurations of the network interface.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A list of TapConfigurations of the network interface.",
+        SerializedName = @"tapConfigurations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceTapConfiguration) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceTapConfiguration[] TapConfiguration { get => ParametersBody.TapConfiguration ?? null /* arrayOf */; set => ParametersBody.TapConfiguration = value; }
+
+        /// <summary>Resource ID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Network.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Network.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("VirtualMachineId")]
+        public string VMId { get => ParametersBody.VirtualMachineId ?? null; set => ParametersBody.VirtualMachineId = value; }
+
+        /// <summary>
+        /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
+        /// on that response. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface"
+        /// /> from the remote call</param>
+        /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
+        /// immediately (set to true to skip further processing )</param>
+
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+
+        /// <summary>
+        /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
+            if (Break)
+            {
+                Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.AttachDebugger.Break();
+            }
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.CmdletBeginProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+        }
+
+        /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
+        /// <returns>a duplicate instance of NewAzNetworkInterface_CreateViaIdentityExpanded</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Cmdlets.NewAzNetworkInterface_CreateViaIdentityExpanded Clone()
+        {
+            var clone = new NewAzNetworkInterface_CreateViaIdentityExpanded();
+            clone.__correlationId = this.__correlationId;
+            clone.__processRecordId = this.__processRecordId;
+            clone.DefaultProfile = this.DefaultProfile;
+            clone.InvocationInformation = this.InvocationInformation;
+            clone.Proxy = this.Proxy;
+            clone.Pipeline = this.Pipeline;
+            clone.AsJob = this.AsJob;
+            clone.Break = this.Break;
+            clone.ProxyCredential = this.ProxyCredential;
+            clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
+            clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
+            clone.HttpPipelineAppend = this.HttpPipelineAppend;
+            clone.ParametersBody = this.ParametersBody;
+            return clone;
+        }
+
+        /// <summary>Performs clean-up after the command execution</summary>
+        protected override void EndProcessing()
+        {
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+        }
+
+        /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
+        /// <param name="id">The message id</param>
+        /// <param name="token">The message cancellation token. When this call is cancelled, this should be <c>true</c></param>
+        /// <param name="messageData">Detailed message data for the message event.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the message is completed.
+        /// </returns>
+         async global::System.Threading.Tasks.Task Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener.Signal(string id, global::System.Threading.CancellationToken token, global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.EventData> messageData)
+        {
+            using( NoSynchronizationContext )
+            {
+                if (token.IsCancellationRequested)
+                {
+                    return ;
+                }
+
+                switch ( id )
+                {
+                    case Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.Verbose:
+                    {
+                        WriteVerbose($"{(messageData().Message ?? global::System.String.Empty)}");
+                        return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.Warning:
+                    {
+                        WriteWarning($"{(messageData().Message ?? global::System.String.Empty)}");
+                        return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.Information:
+                    {
+                        // When an operation supports asjob, Information messages must go thru verbose.
+                        WriteVerbose($"INFORMATION: {(messageData().Message ?? global::System.String.Empty)}");
+                        return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.Debug:
+                    {
+                        WriteDebug($"{(messageData().Message ?? global::System.String.Empty)}");
+                        return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.Error:
+                    {
+                        WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
+                        return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.DelayBeforePolling:
+                    {
+                        if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
+                        {
+                            var data = messageData();
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
+                                var location = response.GetFirstHeader(@"Location");
+                                var uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? response.RequestMessage.RequestUri.AbsoluteUri : location : asyncOperation;
+                                WriteObject(new Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.PowerShell.AsyncOperationResponse { Target = uri });
+                                // do nothing more.
+                                data.Cancel();
+                                return;
+                            }
+                        }
+                        break;
+                    }
+                }
+                await Microsoft.Azure.PowerShell.Cmdlets.Network.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                if (token.IsCancellationRequested)
+                {
+                    return ;
+                }
+                WriteDebug($"{id}: {(messageData().Message ?? global::System.String.Empty)}");
+            }
+        }
+
+        /// <summary>
+        /// Intializes a new instance of the <see cref="NewAzNetworkInterface_CreateViaIdentityExpanded" /> cmdlet class.
+        /// </summary>
+        public NewAzNetworkInterface_CreateViaIdentityExpanded()
+        {
+
+        }
+
+        /// <summary>Performs execution of the command.</summary>
+        protected override void ProcessRecord()
+        {
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.CmdletProcessRecordStart).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            __processRecordId = System.Guid.NewGuid().ToString();
+            try
+            {
+                // work
+                if (ShouldProcess($"Call remote 'NetworkInterfacesCreateOrUpdate' operation"))
+                {
+                    if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
+                    {
+                        var instance = this.Clone();
+                        var job = new Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.PowerShell.AsyncJob(instance, this.MyInvocation.Line, this.MyInvocation.MyCommand.Name, this._cancellationTokenSource.Token, this._cancellationTokenSource.Cancel);
+                        JobRepository.Add(job);
+                        var task = instance.ProcessRecordAsync();
+                        job.Monitor(task);
+                        WriteObject(job);
+                    }
+                    else
+                    {
+                        using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Token) )
+                        {
+                            asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Token);
+                        }
+                    }
+                }
+            }
+            catch (global::System.AggregateException aggregateException)
+            {
+                // unroll the inner exceptions to get the root cause
+                foreach( var innerException in aggregateException.Flatten().InnerExceptions )
+                {
+                    ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.CmdletException, $"{innerException.GetType().Name} - {innerException.Message} : {innerException.StackTrace}").Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                    // Write exception out to error channel.
+                    WriteError( new global::System.Management.Automation.ErrorRecord(innerException,string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null) );
+                }
+            }
+            catch (global::System.Exception exception) when ((exception as System.Management.Automation.PipelineStoppedException)== null || (exception as System.Management.Automation.PipelineStoppedException).InnerException != null)
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.CmdletException, $"{exception.GetType().Name} - {exception.Message} : {exception.StackTrace}").Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                // Write exception out to error channel.
+                WriteError( new global::System.Management.Automation.ErrorRecord(exception,string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null) );
+            }
+            finally
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.CmdletProcessRecordEnd).Wait();
+            }
+        }
+
+        /// <summary>Performs execution of the command, working asynchronously if required.</summary>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
+        /// </returns>
+        protected async global::System.Threading.Tasks.Task ProcessRecordAsync()
+        {
+            using( NoSynchronizationContext )
+            {
+                await ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                await ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Network.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId);
+                if (null != HttpPipelinePrepend)
+                {
+                    Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
+                }
+                if (null != HttpPipelineAppend)
+                {
+                    Pipeline.Append((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelineAppend) ?? HttpPipelineAppend);
+                }
+                // get the client instance
+                try
+                {
+                    await ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                    if (InputObject?.Id != null)
+                    {
+                        await this.Client.NetworkInterfacesCreateOrUpdateViaIdentity(InputObject.Id, ParametersBody, onOk, this, Pipeline);
+                    }
+                    else
+                    {
+                        // try to call with PATH parameters from Input Object
+                        if (null == InputObject.ResourceGroupName)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        if (null == InputObject.NetworkInterfaceName)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.NetworkInterfaceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        if (null == InputObject.SubscriptionId)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        await this.Client.NetworkInterfacesCreateOrUpdate(InputObject.ResourceGroupName ?? null, InputObject.NetworkInterfaceName ?? null, InputObject.SubscriptionId ?? null, ParametersBody, onOk, this, Pipeline);
+                    }
+                    await ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                }
+                catch (Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.UndeclaredResponseException urexception)
+                {
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=ParametersBody})
+                    {
+                      ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
+                    });
+                }
+                finally
+                {
+                    await ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Events.CmdletProcessRecordAsyncEnd);
+                }
+            }
+        }
+
+        /// <summary>Interrupts currently running code within the command.</summary>
+        protected override void StopProcessing()
+        {
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.IEventListener)this).Cancel();
+            base.StopProcessing();
+        }
+
+        /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface"
+        /// /> from the remote call</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
+        /// </returns>
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface> response)
+        {
+            using( NoSynchronizationContext )
+            {
+                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
+                overrideOnOk(responseMessage, response, ref _returnNow);
+                // if overrideOnOk has returned true, then return right away.
+                if ((null != _returnNow && await _returnNow))
+                {
+                    return ;
+                }
+                // onOk - response for 200 / application/json
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface
+                WriteObject((await response));
+            }
+        }
+    }
+}

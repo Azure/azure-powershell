@@ -1,0 +1,201 @@
+namespace Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001
+{
+    using Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.PowerShell;
+
+    /// <summary>A network interface in a resource group.</summary>
+    [System.ComponentModel.TypeConverter(typeof(NetworkInterfaceTypeConverter))]
+    public partial class NetworkInterface
+    {
+
+        /// <summary>
+        /// <c>AfterDeserializeDictionary</c> will be called after the deserialization has finished, allowing customization of the
+        /// object before it is returned. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+
+        partial void AfterDeserializeDictionary(global::System.Collections.IDictionary content);
+
+        /// <summary>
+        /// <c>AfterDeserializePSObject</c> will be called after the deserialization has finished, allowing customization of the object
+        /// before it is returned. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+
+        partial void AfterDeserializePSObject(global::System.Management.Automation.PSObject content);
+
+        /// <summary>
+        /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
+        /// of the object before it is deserialized.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// Implement this method in a partial class to enable this behavior.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        /// <param name="returnNow">Determines if the rest of the serialization should be processed, or if the method should return
+        /// instantly.</param>
+
+        partial void BeforeDeserializeDictionary(global::System.Collections.IDictionary content, ref bool returnNow);
+
+        /// <summary>
+        /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
+        /// of the object before it is deserialized.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// Implement this method in a partial class to enable this behavior.
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+        /// <param name="returnNow">Determines if the rest of the serialization should be processed, or if the method should return
+        /// instantly.</param>
+
+        partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkInterface"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        {
+            return new NetworkInterface(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkInterface"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        {
+            return new NetworkInterface(content);
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="NetworkInterface" />, deserializing the content from a json string.
+        /// </summary>
+        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
+        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode.Parse(jsonText));
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkInterface"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal NetworkInterface(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfacePropertiesFormat) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkInterfacePropertiesFormatTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Etag = (string) content.GetValueForProperty("Etag",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Etag, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Name, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Type, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Id, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Location, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ResourceTagsTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).MacAddress = (string) content.GetValueForProperty("MacAddress",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).MacAddress, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).DnsSetting = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceDnsSettings) content.GetValueForProperty("DnsSetting",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).DnsSetting, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkInterfaceDnsSettingsTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).EnableAcceleratedNetworking = (bool?) content.GetValueForProperty("EnableAcceleratedNetworking",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).EnableAcceleratedNetworking, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).EnableIPForwarding = (bool?) content.GetValueForProperty("EnableIPForwarding",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).EnableIPForwarding, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).IPConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceIPConfiguration[]) content.GetValueForProperty("IPConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).IPConfiguration, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceIPConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkInterfaceIPConfigurationTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).VirtualMachine = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubResource) content.GetValueForProperty("VirtualMachine",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).VirtualMachine, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.SubResourceTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Primary = (bool?) content.GetValueForProperty("Primary",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Primary, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).ResourceGuid = (string) content.GetValueForProperty("ResourceGuid",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).ResourceGuid, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgEtag = (string) content.GetValueForProperty("NsgEtag",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgEtag, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Nsg = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroup) content.GetValueForProperty("Nsg",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Nsg, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkSecurityGroupTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgTag = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags) content.GetValueForProperty("NsgTag",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgTag, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ResourceTagsTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).InternalDnsNameLabel = (string) content.GetValueForProperty("InternalDnsNameLabel",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).InternalDnsNameLabel, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).InternalDomainNameSuffix = (string) content.GetValueForProperty("InternalDomainNameSuffix",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).InternalDomainNameSuffix, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).InternalFqdn = (string) content.GetValueForProperty("InternalFqdn",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).InternalFqdn, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgName = (string) content.GetValueForProperty("NsgName",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgType = (string) content.GetValueForProperty("NsgType",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgId = (string) content.GetValueForProperty("NsgId",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgLocation = (string) content.GetValueForProperty("NsgLocation",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgLocation, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).DnsServer = (string[]) content.GetValueForProperty("DnsServer",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).DnsServer, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgProperty = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroupPropertiesFormat) content.GetValueForProperty("NsgProperty",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgProperty, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkSecurityGroupPropertiesFormatTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).AppliedDnsServer = (string[]) content.GetValueForProperty("AppliedDnsServer",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).AppliedDnsServer, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).VirtualMachineId = (string) content.GetValueForProperty("VirtualMachineId",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).VirtualMachineId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).DefaultSecurityRule = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]) content.GetValueForProperty("DefaultSecurityRule",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).DefaultSecurityRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.SecurityRuleTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgAdditionalNetworkInterface = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface[]) content.GetValueForProperty("NsgAdditionalNetworkInterface",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgAdditionalNetworkInterface, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface>(__y, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkInterfaceTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgProvisioningState = (string) content.GetValueForProperty("NsgProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgProvisioningState, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgResourceGuid = (string) content.GetValueForProperty("NsgResourceGuid",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgResourceGuid, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).SecurityRule = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]) content.GetValueForProperty("SecurityRule",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).SecurityRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.SecurityRuleTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Subnet = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubnet[]) content.GetValueForProperty("Subnet",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Subnet, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubnet>(__y, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.SubnetTypeConverter.ConvertFrom));
+            AfterDeserializeDictionary(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkInterface"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+        internal NetworkInterface(global::System.Management.Automation.PSObject content)
+        {
+            bool returnNow = false;
+            BeforeDeserializePSObject(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfacePropertiesFormat) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkInterfacePropertiesFormatTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Etag = (string) content.GetValueForProperty("Etag",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Etag, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Name, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Type, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Id, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Location, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ResourceTagsTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).MacAddress = (string) content.GetValueForProperty("MacAddress",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).MacAddress, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).DnsSetting = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceDnsSettings) content.GetValueForProperty("DnsSetting",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).DnsSetting, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkInterfaceDnsSettingsTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).EnableAcceleratedNetworking = (bool?) content.GetValueForProperty("EnableAcceleratedNetworking",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).EnableAcceleratedNetworking, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).EnableIPForwarding = (bool?) content.GetValueForProperty("EnableIPForwarding",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).EnableIPForwarding, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).IPConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceIPConfiguration[]) content.GetValueForProperty("IPConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).IPConfiguration, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceIPConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkInterfaceIPConfigurationTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).VirtualMachine = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubResource) content.GetValueForProperty("VirtualMachine",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).VirtualMachine, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.SubResourceTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Primary = (bool?) content.GetValueForProperty("Primary",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Primary, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).ResourceGuid = (string) content.GetValueForProperty("ResourceGuid",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).ResourceGuid, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgEtag = (string) content.GetValueForProperty("NsgEtag",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgEtag, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Nsg = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroup) content.GetValueForProperty("Nsg",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Nsg, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkSecurityGroupTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgTag = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags) content.GetValueForProperty("NsgTag",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgTag, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ResourceTagsTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).InternalDnsNameLabel = (string) content.GetValueForProperty("InternalDnsNameLabel",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).InternalDnsNameLabel, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).InternalDomainNameSuffix = (string) content.GetValueForProperty("InternalDomainNameSuffix",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).InternalDomainNameSuffix, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).InternalFqdn = (string) content.GetValueForProperty("InternalFqdn",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).InternalFqdn, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgName = (string) content.GetValueForProperty("NsgName",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgType = (string) content.GetValueForProperty("NsgType",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgId = (string) content.GetValueForProperty("NsgId",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgLocation = (string) content.GetValueForProperty("NsgLocation",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgLocation, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).DnsServer = (string[]) content.GetValueForProperty("DnsServer",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).DnsServer, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgProperty = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroupPropertiesFormat) content.GetValueForProperty("NsgProperty",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgProperty, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkSecurityGroupPropertiesFormatTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).AppliedDnsServer = (string[]) content.GetValueForProperty("AppliedDnsServer",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).AppliedDnsServer, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).VirtualMachineId = (string) content.GetValueForProperty("VirtualMachineId",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).VirtualMachineId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).DefaultSecurityRule = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]) content.GetValueForProperty("DefaultSecurityRule",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).DefaultSecurityRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.SecurityRuleTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgAdditionalNetworkInterface = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface[]) content.GetValueForProperty("NsgAdditionalNetworkInterface",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgAdditionalNetworkInterface, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface>(__y, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.NetworkInterfaceTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgProvisioningState = (string) content.GetValueForProperty("NsgProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgProvisioningState, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgResourceGuid = (string) content.GetValueForProperty("NsgResourceGuid",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).NsgResourceGuid, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).SecurityRule = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]) content.GetValueForProperty("SecurityRule",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).SecurityRule, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.SecurityRuleTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Subnet = (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubnet[]) content.GetValueForProperty("Subnet",((Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterfaceInternal)this).Subnet, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubnet>(__y, Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.SubnetTypeConverter.ConvertFrom));
+            AfterDeserializePSObject(content);
+        }
+
+        /// <summary>Serializes this instance to a json string.</summary>
+
+        /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
+        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.SerializationMode.IncludeAll)?.ToString();
+    }
+    /// A network interface in a resource group.
+    [System.ComponentModel.TypeConverter(typeof(NetworkInterfaceTypeConverter))]
+    public partial interface INetworkInterface
+
+    {
+
+    }
+}

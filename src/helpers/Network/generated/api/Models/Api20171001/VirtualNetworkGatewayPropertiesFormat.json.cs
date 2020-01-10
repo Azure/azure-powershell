@@ -1,0 +1,133 @@
+namespace Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001
+{
+    using static Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Extensions;
+
+    /// <summary>VirtualNetworkGateway properties</summary>
+    public partial class VirtualNetworkGatewayPropertiesFormat
+    {
+
+        /// <summary>
+        /// <c>AfterFromJson</c> will be called after the json deserialization has finished, allowing customization of the object
+        /// before it is returned. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="json">The JsonNode that should be deserialized into this object.</param>
+
+        partial void AfterFromJson(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject json);
+
+        /// <summary>
+        /// <c>AfterToJson</c> will be called after the json erialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject"
+        /// /> before it is returned. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="container">The JSON container that the serialization result will be placed in.</param>
+
+        partial void AfterToJson(ref Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject container);
+
+        /// <summary>
+        /// <c>BeforeFromJson</c> will be called before the json deserialization has commenced, allowing complete customization of
+        /// the object before it is deserialized.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// Implement this method in a partial class to enable this behavior.
+        /// </summary>
+        /// <param name="json">The JsonNode that should be deserialized into this object.</param>
+        /// <param name="returnNow">Determines if the rest of the deserialization should be processed, or if the method should return
+        /// instantly.</param>
+
+        partial void BeforeFromJson(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject json, ref bool returnNow);
+
+        /// <summary>
+        /// <c>BeforeToJson</c> will be called before the json serialization has commenced, allowing complete customization of the
+        /// object before it is serialized.
+        /// If you wish to disable the default serialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// Implement this method in a partial class to enable this behavior.
+        /// </summary>
+        /// <param name="container">The JSON container that the serialization result will be placed in.</param>
+        /// <param name="returnNow">Determines if the rest of the serialization should be processed, or if the method should return
+        /// instantly.</param>
+
+        partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject container, ref bool returnNow);
+
+        /// <summary>
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGatewayPropertiesFormat.
+        /// </summary>
+        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode" /> to deserialize from.</param>
+        /// <returns>
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGatewayPropertiesFormat.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGatewayPropertiesFormat FromJson(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode node)
+        {
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject json ? new VirtualNetworkGatewayPropertiesFormat(json) : null;
+        }
+
+        /// <summary>
+        /// Serializes this instance of <see cref="VirtualNetworkGatewayPropertiesFormat" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode"
+        /// />.
+        /// </summary>
+        /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
+        /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// a serialized instance of <see cref="VirtualNetworkGatewayPropertiesFormat" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode" />.
+        /// </returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.SerializationMode serializationMode)
+        {
+            container = container ?? new Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject();
+
+            bool returnNow = false;
+            BeforeToJson(ref container, ref returnNow);
+            if (returnNow)
+            {
+                return container;
+            }
+            AddIf( null != this._bgpSetting ? (Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode) this._bgpSetting.ToJson(null,serializationMode) : null, "bgpSettings" ,container.Add );
+            AddIf( null != this._gatewayDefaultSite ? (Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode) this._gatewayDefaultSite.ToJson(null,serializationMode) : null, "gatewayDefaultSite" ,container.Add );
+            AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
+            AddIf( null != this._vpnClientConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode) this._vpnClientConfiguration.ToJson(null,serializationMode) : null, "vpnClientConfiguration" ,container.Add );
+            AddIf( null != this._active ? (Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonBoolean((bool)this._active) : null, "activeActive" ,container.Add );
+            AddIf( null != this._enableBgp ? (Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonBoolean((bool)this._enableBgp) : null, "enableBgp" ,container.Add );
+            AddIf( null != (((object)this._gatewayType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonString(this._gatewayType.ToString()) : null, "gatewayType" ,container.Add );
+            if (null != this._iPConfiguration)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.XNodeArray();
+                foreach( var __x in this._iPConfiguration )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("ipConfigurations",__w);
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            }
+            AddIf( null != (((object)this._resourceGuid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonString(this._resourceGuid.ToString()) : null, "resourceGuid" ,container.Add );
+            AddIf( null != (((object)this._vpnType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonString(this._vpnType.ToString()) : null, "vpnType" ,container.Add );
+            AfterToJson(ref container);
+            return container;
+        }
+
+        /// <summary>
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject into a new instance of <see cref="VirtualNetworkGatewayPropertiesFormat" />.
+        /// </summary>
+        /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject instance to deserialize from.</param>
+        internal VirtualNetworkGatewayPropertiesFormat(Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject json)
+        {
+            bool returnNow = false;
+            BeforeFromJson(json, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            {_bgpSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject>("bgpSettings"), out var __jsonBgpSettings) ? Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.BgpSettings.FromJson(__jsonBgpSettings) : BgpSetting;}
+            {_gatewayDefaultSite = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject>("gatewayDefaultSite"), out var __jsonGatewayDefaultSite) ? Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.SubResource.FromJson(__jsonGatewayDefaultSite) : GatewayDefaultSite;}
+            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.VirtualNetworkGatewaySku.FromJson(__jsonSku) : Sku;}
+            {_vpnClientConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonObject>("vpnClientConfiguration"), out var __jsonVpnClientConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.VpnClientConfiguration.FromJson(__jsonVpnClientConfiguration) : VpnClientConfiguration;}
+            {_active = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonBoolean>("activeActive"), out var __jsonActive) ? (bool?)__jsonActive : Active;}
+            {_enableBgp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonBoolean>("enableBgp"), out var __jsonEnableBgp) ? (bool?)__jsonEnableBgp : EnableBgp;}
+            {_gatewayType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonString>("gatewayType"), out var __jsonGatewayType) ? (string)__jsonGatewayType : (string)GatewayType;}
+            {_iPConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonArray>("ipConfigurations"), out var __jsonIPConfigurations) ? If( __jsonIPConfigurations as Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGatewayIPConfiguration[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGatewayIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.VirtualNetworkGatewayIPConfiguration.FromJson(__u) )) ))() : null : IPConfiguration;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
+            {_resourceGuid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonString>("resourceGuid"), out var __jsonResourceGuid) ? (string)__jsonResourceGuid : (string)ResourceGuid;}
+            {_vpnType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Json.JsonString>("vpnType"), out var __jsonVpnType) ? (string)__jsonVpnType : (string)VpnType;}
+            AfterFromJson(json);
+        }
+    }
+}
