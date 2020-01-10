@@ -12,10 +12,10 @@ ARG VERSION=3.3.0
 ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell
 
 LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
-      readme.md="https://github.com/Azure/azure-powershell/blob/master/docker/README.md" \
+      readme.md="http://aka.ms/azpsdockerreadme" \
       description="This Dockerfile will install the latest release of Azure PowerShell." \
-      org.label-schema.usage="TODO: official doc" \
-      org.label-schema.url="https://github.com/Azure/azure-powershell/blob/master/docker/README.md" \
+      org.label-schema.usage="http://aka.ms/azpsdocker" \
+      org.label-schema.url="http://aka.ms/azpsdockerreadme" \
       org.label-schema.vcs-url="https://github.com/Azure/azure-powershell" \
       org.label-schema.name="azure powershell" \
       org.label-schema.vendor="Azure PowerShell" \
@@ -23,7 +23,7 @@ LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
       org.label-schema.schema-version="1.0" \
       org.label-schema.vcs-ref=${VCS_REF} \
       org.label-schema.docker.cmd="docker run --rm ${IMAGE_NAME} pwsh -c '\$PSVERSIONTABLE'" \
-      org.label-schema.docker.cmd.devel="docker run -it --rm -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat ${IMAGE_NAME} pwsh -c Get-AzContext" \
+      org.label-schema.docker.cmd.devel="docker run -it --rm -e 'DebugPreference=Continue' ${IMAGE_NAME} pwsh" \
       org.label-schema.docker.cmd.test="currently not available" \
       org.label-schema.docker.cmd.help="docker run --rm ${IMAGE_NAME} pwsh -c Get-Help"
 
