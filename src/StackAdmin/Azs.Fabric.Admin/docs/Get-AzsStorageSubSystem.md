@@ -36,12 +36,19 @@ Return the requested storage subsystem.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1:
 ```powershell
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/azs.fabric.admin/get-azsstoragesubsystem
+PS C:\> Get-AzsStorageSubSystem -ScaleUnit s-cluster
 ```
 
+Get all storage subsystems from a scale unit.
 
+### Example 2:
+```powershell
+PS C:\> Get-AzsStorageSubSystem -ScaleUnit s-cluster -Name s-cluster.DomainFQDN
+```
+
+Get a storage subsystem given a scale unit and name.
 
 ## PARAMETERS
 

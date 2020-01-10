@@ -37,12 +37,19 @@ Return the requested a storage volume.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1:
 ```powershell
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/azs.fabric.admin/get-azsvolume
+PS C:\> Get-AzsVolume -ScaleUnit s-cluster -StorageSubSystem s-cluster.DomainFQDN
 ```
 
+Get a list of all storage volumes at a given location.
 
+### Example 2:
+```powershell
+PS C:\> Get-AzsVolume -ScaleUnit s-cluster -StorageSubSystem s-cluster.DomainFQDN -Name ee594cf5-cf54-46b4-a641-139553307195
+```
+
+Get a storage volume by name at a given location.
 
 ## PARAMETERS
 

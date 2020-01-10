@@ -1,18 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzsStorageSubSystem -ScaleUnit s-cluster
 ```
 
-{{ Add description here }}
+Get all storage subsystems from a scale unit.
 
-### Example 2: {{ Add title here }}
+### Example 2:
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzsStorageSubSystem -ScaleUnit s-cluster -Name s-cluster.DomainFQDN
 ```
 
-{{ Add description here }}
+Get a storage subsystem given a scale unit and name.
 

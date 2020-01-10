@@ -1,18 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzsInfrastructureShare
 ```
 
-{{ Add description here }}
+Returns a list of all file shares.
 
-### Example 2: {{ Add title here }}
+### Example 2:
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzsInfrastructureShare -Name SU1_ObjStore_1
 ```
 
-{{ Add description here }}
-
+Returns a file share based on name.
