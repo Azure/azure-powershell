@@ -14,8 +14,8 @@
 
   <ItemGroup>
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
-    <PackageReference Include="WindowsAzure.Storage" Version="9.2" />
-    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.1" />
+    <PackageReference Include="WindowsAzure.Storage.Hybrid_2019_03_01" Version="9.2" />
+    <PackageReference Include="Microsoft.Azure.Storage.DataMovement.Hybrid_2019_03_01" Version="0.7.1" />
     <!--<PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="0.10.1-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
     <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.1.0" />
