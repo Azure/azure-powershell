@@ -82,6 +82,45 @@ directive:
     set:
       subject: InfrastructureShare
 
+  # Rename model property names for StorageSubSystem to match spec
+  - where:
+      model-name: StorageSubSystem
+      property-name: TotalCapacityGb
+    set:
+      property-name: TotalCapacityGB
+
+  - where:
+      model-name: StorageSubSystem
+      property-name: RemainingCapacityGb
+    set:
+      property-name: RemainingCapacityGB
+  
+  # Rename model property names for Drive to match spec
+  - where:
+      model-name: Drive
+      property-name: CapacityGb
+    set:
+      property-name: CapacityGB
+
+  # Rename model property names for Volume to match spec
+  - where:
+      model-name: Volume
+      property-name: TotalCapacityGb
+    set:
+      property-name: TotalCapacityGB
+
+  - where:
+      model-name: Volume
+      property-name: RemainingCapacityGb
+    set:
+      property-name: RemainingCapacityGB
+
+  - where:
+      model-name: Volume
+      property-name: Label
+    set:
+      property-name: VolumeLabel
+
   # Rename cmdlet parameter name in InfrastructureShare
   - where:
       subject: InfrastructureShare

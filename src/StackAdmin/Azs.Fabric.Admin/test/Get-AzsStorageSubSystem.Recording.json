@@ -1,0 +1,521 @@
+{
+  "Get-AzsStorageSubSystem+[NoContext]+TestListStorageSubSystems+$GET+https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits?api-version=2016-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "121" ],
+        "x-ms-client-request-id": [ "adf9b418-8056-4db9-ad46-038e794dcba5" ],
+        "CommandName": [ "Get-AzsScaleUnit" ],
+        "FullCommandName": [ "Get-AzsScaleUnit_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "47bfcaa0-df51-44da-aedd-4dcd82c8d17f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14859" ],
+        "x-ms-request-id": [ "47bfcaa0-df51-44da-aedd-4dcd82c8d17f" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200110T093149Z:47bfcaa0-df51-44da-aedd-4dcd82c8d17f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Fri, 10 Jan 2020 09:31:49 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv6JXixjgSKVeq5WpiTKuTdqyf8hk+PQtizflyUipcXu5WFUJjlmM3HQlR1J+5MaVVavelGxYOcWmqN6H3LFEZ3stIDPBqalOgN606MfZUy884ZMPNYTfQSi9JiBqiutbSrpoD0IEgppocfrEI5VVC" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1151" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster\",\"name\":\"redmond/s-cluster\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnits\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitType\":\"HyperConverged\",\"logicalFaultDomain\":0,\"nodes\":[\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U17\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U19\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U21\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U23\"],\"state\":\"Running\",\"totalCapacity\":{\"memoryGB\":2297.84766,\"cores\":256},\"isMultiNode\":true}}]}"
+    }
+  },
+  "Get-AzsStorageSubSystem+[NoContext]+TestListStorageSubSystems+$GET+https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems?api-version=2018-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems?api-version=2018-10-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "122" ],
+        "x-ms-client-request-id": [ "27099fd2-99de-41c4-b9e1-db7bd77af034" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsStorageSubSystem" ],
+        "FullCommandName": [ "Get-AzsStorageSubSystem_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "3b8bb682-c69a-4641-a4e2-9c75d8b485d1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14858" ],
+        "x-ms-request-id": [ "3b8bb682-c69a-4641-a4e2-9c75d8b485d1" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200110T093149Z:3b8bb682-c69a-4641-a4e2-9c75d8b485d1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Fri, 10 Jan 2020 09:31:49 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRva6R3bMeVFZgJZnXsw5dxPaHOthi8zIcZ/ExM5tqtMm0eT82Kk4f5vaxhv+4/nTYk3/bkOSGy3ScDtjZ7bCK+9U9e1JmXKryPyyBaATuohiMb4SjhH688lvVVXw8yL6VVV63dO8SkUFNJNIQ9tQGC" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "563" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"name\":\"redmond/s-cluster/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnits/storageSubSystems\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"totalCapacityGB\":88381,\"remainingCapacityGB\":86194,\"healthStatus\":\"Healthy\",\"operationalStatus\":\"OK\",\"rebalanceStatus\":\"\"}}]}"
+    }
+  },
+  "Get-AzsStorageSubSystem+[NoContext]+TestGetStorageSubSystem+$GET+https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits?api-version=2016-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "123" ],
+        "x-ms-client-request-id": [ "84e67d7b-1675-4978-990e-df20f315ed2b" ],
+        "CommandName": [ "Get-AzsScaleUnit" ],
+        "FullCommandName": [ "Get-AzsScaleUnit_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "058c876c-e86a-4214-b572-bcb80a5d6f0b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14857" ],
+        "x-ms-request-id": [ "058c876c-e86a-4214-b572-bcb80a5d6f0b" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200110T093149Z:058c876c-e86a-4214-b572-bcb80a5d6f0b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Fri, 10 Jan 2020 09:31:49 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvKUOZcr7tHlF6Iv8ecRvBGjZz9VDQlUKwyXMFcCA6Ry+6IJLbxvO18Xsbv0hxeU0JgPxhOrPFKr5BH0vTNRG+UbTcL7TIiA0LLbnRA+QXpHNfaBs4q5NlKg19fZQioWeUPc2EBqCBVO9vEIMxzf+I" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1151" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster\",\"name\":\"redmond/s-cluster\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnits\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitType\":\"HyperConverged\",\"logicalFaultDomain\":0,\"nodes\":[\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U17\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U19\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U21\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U23\"],\"state\":\"Running\",\"totalCapacity\":{\"memoryGB\":2297.84766,\"cores\":256},\"isMultiNode\":true}}]}"
+    }
+  },
+  "Get-AzsStorageSubSystem+[NoContext]+TestGetStorageSubSystem+$GET+https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems?api-version=2018-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems?api-version=2018-10-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "124" ],
+        "x-ms-client-request-id": [ "318f12f5-028f-4a30-ba22-ba4853abcc11" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsStorageSubSystem" ],
+        "FullCommandName": [ "Get-AzsStorageSubSystem_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "b118d182-d3e4-40bb-aea1-537b680c6643" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14856" ],
+        "x-ms-request-id": [ "b118d182-d3e4-40bb-aea1-537b680c6643" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200110T093150Z:b118d182-d3e4-40bb-aea1-537b680c6643" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Fri, 10 Jan 2020 09:31:49 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvN3A7MJVa553zfcPm3Zwsj2sF+Dvi3aTgKeEVnH6be0xejWapwimEK6AU4SWf5YY5ukFugByMh7UlKK9BuygeZ7TKr5PjGlVmLGj+WbiY9tETh1vTeIhTIFugXVSzkSsjOOSUKMdS3q4iWxoowMIu" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "563" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"name\":\"redmond/s-cluster/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnits/storageSubSystems\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"totalCapacityGB\":88381,\"remainingCapacityGB\":86194,\"healthStatus\":\"Healthy\",\"operationalStatus\":\"OK\",\"rebalanceStatus\":\"\"}}]}"
+    }
+  },
+  "Get-AzsStorageSubSystem+[NoContext]+TestGetStorageSubSystem+$GET+https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/s-cluster.s31r1803.masd.stbtest.microsoft.com?api-version=2018-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/s-cluster.s31r1803.masd.stbtest.microsoft.com?api-version=2018-10-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "125" ],
+        "x-ms-client-request-id": [ "a731ee1d-d42d-4383-abd4-d350477122ea" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsStorageSubSystem" ],
+        "FullCommandName": [ "Get-AzsStorageSubSystem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "6869d438-07ff-4ead-88b2-75c8111d0dc3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14855" ],
+        "x-ms-request-id": [ "6869d438-07ff-4ead-88b2-75c8111d0dc3" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200110T093150Z:6869d438-07ff-4ead-88b2-75c8111d0dc3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Fri, 10 Jan 2020 09:31:49 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv+DxAo8KXZmPuqpU9aPWw5F34rQvONOiAYzpDX02e5Z5EXxBj8wlWlsbf9huOa5o59PrxupeAoGHH4AWF194/vJmczttSy7Lexj7Cp9Cx2S1NfxBwZPOMCVZQxdIm25LFls+yolkgpBJ796UzHvYf" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "551" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"name\":\"redmond/s-cluster/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnits/storageSubSystems\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"totalCapacityGB\":88381,\"remainingCapacityGB\":86194,\"healthStatus\":\"Healthy\",\"operationalStatus\":\"OK\",\"rebalanceStatus\":\"\"}}"
+    }
+  },
+  "Get-AzsStorageSubSystem+[NoContext]+TestGetAllStorageSubSystems+$GET+https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits?api-version=2016-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "126" ],
+        "x-ms-client-request-id": [ "030c4955-49d1-4a45-84df-91d1a7ff8251" ],
+        "CommandName": [ "Get-AzsScaleUnit" ],
+        "FullCommandName": [ "Get-AzsScaleUnit_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "9689aeca-7ba1-40ee-af9e-665179cc480e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14854" ],
+        "x-ms-request-id": [ "9689aeca-7ba1-40ee-af9e-665179cc480e" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200110T093150Z:9689aeca-7ba1-40ee-af9e-665179cc480e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Fri, 10 Jan 2020 09:31:50 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv6BshiYZFYDI/Qac9zQrGOyYIW43ZmM9PMDDn6nLkAsYh9XaJWQV6JYuvtPlbwJeHqVJQwCS3lGK0g/s/Rea83Dgm7h8yccstkjqTP27Vy6eJbugWdnS4ll+Z/au/1d3prDRaoBF85CjXSo31GFgs" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1151" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster\",\"name\":\"redmond/s-cluster\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnits\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitType\":\"HyperConverged\",\"logicalFaultDomain\":0,\"nodes\":[\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U17\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U19\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U21\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U23\"],\"state\":\"Running\",\"totalCapacity\":{\"memoryGB\":2297.84766,\"cores\":256},\"isMultiNode\":true}}]}"
+    }
+  },
+  "Get-AzsStorageSubSystem+[NoContext]+TestGetAllStorageSubSystems+$GET+https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems?api-version=2018-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems?api-version=2018-10-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "127" ],
+        "x-ms-client-request-id": [ "cb3417cb-b97c-4929-8af9-75c1bc4bec71" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsStorageSubSystem" ],
+        "FullCommandName": [ "Get-AzsStorageSubSystem_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "7299620c-7eb6-43a4-8eaf-cebb60ee9eb9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14853" ],
+        "x-ms-request-id": [ "7299620c-7eb6-43a4-8eaf-cebb60ee9eb9" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200110T093150Z:7299620c-7eb6-43a4-8eaf-cebb60ee9eb9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Fri, 10 Jan 2020 09:31:50 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvluiMBxZX+1N3Lg8ohGPhSnngBZ52YGmxS90xMvK2v4OZh6tF0jGJW7llfPBkrByMcHyvHZEncj26TC2j3XqR8b9y4NczcBBe1f8lJ1bNk+SsRS2kTGabS4mRkSAfVwu39AiI1P48BVc8KEInHOlN" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "563" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"name\":\"redmond/s-cluster/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnits/storageSubSystems\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"totalCapacityGB\":88381,\"remainingCapacityGB\":86194,\"healthStatus\":\"Healthy\",\"operationalStatus\":\"OK\",\"rebalanceStatus\":\"\"}}]}"
+    }
+  },
+  "Get-AzsStorageSubSystem+[NoContext]+TestGetAllStorageSubSystems+$GET+https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/s-cluster.s31r1803.masd.stbtest.microsoft.com?api-version=2018-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/s-cluster.s31r1803.masd.stbtest.microsoft.com?api-version=2018-10-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "128" ],
+        "x-ms-client-request-id": [ "664bb842-6b5a-49c6-b395-41d96b09447a" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsStorageSubSystem" ],
+        "FullCommandName": [ "Get-AzsStorageSubSystem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "216c04ca-8fc3-4d38-a010-f4de836c6599" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14852" ],
+        "x-ms-request-id": [ "216c04ca-8fc3-4d38-a010-f4de836c6599" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200110T093150Z:216c04ca-8fc3-4d38-a010-f4de836c6599" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Fri, 10 Jan 2020 09:31:50 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvN9t+dRIMsGMZpc51jk7RKqoszGpvXPrGNUM6TeKzTyXvdeW7md10qVY+aXBLNOk3vvi4YPwbaFu9VauTBDfIGiHk+jD5jTCUpYUwOV5VcSleEHAj1VlbExyQ6W8sQ8cdR2AZKrZ5UsfSlIIJ/C5j" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "551" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"name\":\"redmond/s-cluster/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnits/storageSubSystems\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"totalCapacityGB\":88381,\"remainingCapacityGB\":86194,\"healthStatus\":\"Healthy\",\"operationalStatus\":\"OK\",\"rebalanceStatus\":\"\"}}"
+    }
+  },
+  "Get-AzsStorageSubSystem+[NoContext]+TestGetInvaildStorageSubSystem+$GET+https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits?api-version=2016-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "129" ],
+        "x-ms-client-request-id": [ "69034ccd-332a-4604-bedb-04f0f786231a" ],
+        "CommandName": [ "Get-AzsScaleUnit" ],
+        "FullCommandName": [ "Get-AzsScaleUnit_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "f1c69bda-3b82-4eec-9a87-9497f6651257" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14851" ],
+        "x-ms-request-id": [ "f1c69bda-3b82-4eec-9a87-9497f6651257" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200110T093150Z:f1c69bda-3b82-4eec-9a87-9497f6651257" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Fri, 10 Jan 2020 09:31:50 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvsk+L6x31QM1OIT8nsr+n2DieeV1ywWvZw1FVPv0DhOPZqfxmgloGHd6K5JfvKJ4kGfuRzS0PfojdVwJI9rgR4vEYZ7cwBsS8jBG4JL0mbbxWI8Cq8V6iDPnVL1QyOdL3ZwrTStJPg+HIWmQ87Imq" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1151" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster\",\"name\":\"redmond/s-cluster\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnits\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitType\":\"HyperConverged\",\"logicalFaultDomain\":0,\"nodes\":[\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U17\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U19\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U21\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U23\"],\"state\":\"Running\",\"totalCapacity\":{\"memoryGB\":2297.84766,\"cores\":256},\"isMultiNode\":true}}]}"
+    }
+  },
+  "Get-AzsStorageSubSystem+[NoContext]+TestGetInvaildStorageSubSystem+$GET+https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/invaildstoragesubsystemname?api-version=2018-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/invaildstoragesubsystemname?api-version=2018-10-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "130" ],
+        "x-ms-client-request-id": [ "7e371240-21e5-4780-b271-879c2644a956" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsStorageSubSystem" ],
+        "FullCommandName": [ "Get-AzsStorageSubSystem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "22fbd219-f44e-4952-9daf-2414d2605beb" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14850" ],
+        "x-ms-request-id": [ "22fbd219-f44e-4952-9daf-2414d2605beb" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200110T093151Z:22fbd219-f44e-4952-9daf-2414d2605beb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Fri, 10 Jan 2020 09:31:50 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv+2Z3rKkJIDmtys0sa7o0402eNIuc/tPGdXN5ky/Kp+dSGTgSNvmrwQfmXrIRulK0+2iiujjzU86RmWX67i+yIkx0Y7A7KolpKL5PdEejnKdAnIXnj/XEvhkYSon+Sn+B8rmQpqj6aMdt3Kq7cUoh" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "0" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Get-AzsStorageSubSystem+[NoContext]+TestGetStorageSubSystemByInputObject+$GET+https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits?api-version=2016-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "131" ],
+        "x-ms-client-request-id": [ "54b8ca81-b93d-4abc-a7e8-80b226047b9b" ],
+        "CommandName": [ "Get-AzsScaleUnit" ],
+        "FullCommandName": [ "Get-AzsScaleUnit_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "8271f72e-9169-4a2b-b400-0faa58bc7938" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14849" ],
+        "x-ms-request-id": [ "8271f72e-9169-4a2b-b400-0faa58bc7938" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200110T093151Z:8271f72e-9169-4a2b-b400-0faa58bc7938" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Fri, 10 Jan 2020 09:31:50 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvJw8Gieqxzgnjxec3+HKSwt6LKFEEOQ4Da6NkafWP5C/y0+sQXFkjspZViNXHi4D8ypeNt0emxSwwfY6V+MFzPyYQL+H6qsCqomaHmZwNd1p9utGC1z8XC/ORHiudJJ9m8+irsr4pg7QVqjqvsGq2" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1151" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster\",\"name\":\"redmond/s-cluster\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnits\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitType\":\"HyperConverged\",\"logicalFaultDomain\":0,\"nodes\":[\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U17\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U19\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U21\",\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/system.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1S31R18U23\"],\"state\":\"Running\",\"totalCapacity\":{\"memoryGB\":2297.84766,\"cores\":256},\"isMultiNode\":true}}]}"
+    }
+  },
+  "Get-AzsStorageSubSystem+[NoContext]+TestGetStorageSubSystemByInputObject+$GET+https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems?api-version=2018-10-01\u0026$top=1+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems?api-version=2018-10-01\u0026$top=1",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "132" ],
+        "x-ms-client-request-id": [ "53113cc5-6a1f-49e9-8c06-1b5b4a073ffb" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsStorageSubSystem" ],
+        "FullCommandName": [ "Get-AzsStorageSubSystem_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "c06de801-55b9-4596-8579-8ad35251e18b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14848" ],
+        "x-ms-request-id": [ "c06de801-55b9-4596-8579-8ad35251e18b" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200110T093151Z:c06de801-55b9-4596-8579-8ad35251e18b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Fri, 10 Jan 2020 09:31:51 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvoaESbjqBwPrzUZFoZVxah1AMBShFmqXRQSo7xGheTeWYQM+6kv52JL1BT+wm3bESbihQkz8Swbsx0q1VxMky8S3CaXWgOqfojKUN9a3RhKQLmwaj2Cs1r59TTqj79Vw1i351axOKLjRUp/UnXdVn" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "563" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"name\":\"redmond/s-cluster/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnits/storageSubSystems\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"totalCapacityGB\":88381,\"remainingCapacityGB\":86194,\"healthStatus\":\"Healthy\",\"operationalStatus\":\"OK\",\"rebalanceStatus\":\"\"}}]}"
+    }
+  },
+  "Get-AzsStorageSubSystem+[NoContext]+TestGetStorageSubSystemByInputObject+$GET+https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/s-cluster.s31r1803.masd.stbtest.microsoft.com?api-version=2018-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-s31r1803.masd.stbtest.microsoft.com/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/s-cluster.s31r1803.masd.stbtest.microsoft.com?api-version=2018-10-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "133" ],
+        "x-ms-client-request-id": [ "665a929a-7507-46ed-9774-16cff0b7bcdc" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsStorageSubSystem" ],
+        "FullCommandName": [ "Get-AzsStorageSubSystem_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "51fd3243-1f9c-47a2-b048-30376aa912d9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14847" ],
+        "x-ms-request-id": [ "51fd3243-1f9c-47a2-b048-30376aa912d9" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200110T093151Z:51fd3243-1f9c-47a2-b048-30376aa912d9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Fri, 10 Jan 2020 09:31:51 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvSi1ABZFEuB5hZ2l/XkDhxAAOm67Oeljqad/StyOUPZiGCCZfXb8QHRlrF3wjMmGI83Xe3bwzl5UZHmgZz+PNvAkRD5nkCp9yEVE/PQpFhePZT+A5ZygqiHDKs2dE9O31QXeAlCGCbrMzPg/9lDRZ" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "551" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/aa04d0d0-ac79-474e-9024-37d08a235e0e/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnits/s-cluster/storageSubSystems/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"name\":\"redmond/s-cluster/s-cluster.s31r1803.masd.stbtest.microsoft.com\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnits/storageSubSystems\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"totalCapacityGB\":88381,\"remainingCapacityGB\":86194,\"healthStatus\":\"Healthy\",\"operationalStatus\":\"OK\",\"rebalanceStatus\":\"\"}}"
+    }
+  }
+}
