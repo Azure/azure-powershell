@@ -46,7 +46,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var onPremise = interactiveParameters.Environment.OnPremise;
             var authenticationClientFactory = interactiveParameters.AuthenticationClientFactory;
             IPublicClientApplication publicClient = null;
-            var resource = interactiveParameters.Environment.GetEndpoint(interactiveParameters.ResourceId);
+            var resource = interactiveParameters.Environment.GetEndpoint(interactiveParameters.ResourceId) ?? interactiveParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
 
             try

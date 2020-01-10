@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var spParameters = parameters as ServicePrincipalParameters;
             var onPremise = spParameters.Environment.OnPremise;
             var authenticationClientFactory = spParameters.AuthenticationClientFactory;
-            var resource = spParameters.Environment.GetEndpoint(spParameters.ResourceId);
+            var resource = spParameters.Environment.GetEndpoint(spParameters.ResourceId) ?? spParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = spParameters.ApplicationId;
             var authority = onPremise ?

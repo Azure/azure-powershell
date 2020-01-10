@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             var authenticationClientFactory = parameters.AuthenticationClientFactory;
             var onPremise = parameters.Environment.OnPremise;
-            var resource = parameters.Environment.GetEndpoint(parameters.ResourceId);
+            var resource = parameters.Environment.GetEndpoint(parameters.ResourceId) ?? parameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = AuthenticationHelpers.PowerShellClientId;
             var authority = onPremise ?

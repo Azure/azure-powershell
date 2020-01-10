@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var upParameters = parameters as UsernamePasswordParameters;
             var onPremise = upParameters.Environment.OnPremise;
             var authenticationClientFactory = upParameters.AuthenticationClientFactory;
-            var resource = upParameters.Environment.GetEndpoint(upParameters.ResourceId);
+            var resource = upParameters.Environment.GetEndpoint(upParameters.ResourceId) ?? upParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = AuthenticationHelpers.PowerShellClientId;
             var authority = onPremise ?
