@@ -19,6 +19,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Update-AzDiskEncryptionSet cmdlet
+* Add EncryptionType and DiskEncryptionSetId parameters to the following cmdlets:
+    - New-AzDiskUpdateConfig, New-AzSnapshotUpdateConfig
 * Add ColocationStatus parameter to Get-AzProximityPlacementGroup cmdlet.
 
 ## Version 3.3.0
