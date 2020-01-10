@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
             "Name": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregationGetResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregationGetResponse, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregationGetResponse, Microsoft.Azure.Commerce.UsageAggregates, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "UsageAggregations": "System.Collections.Generic.IList`1[Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation]",
               "StatusCode": "System.Net.HttpStatusCode",
@@ -107,7 +107,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
             "Name": "Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity, Microsoft.Azure.Commerce.UsageAggregates, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -333,7 +333,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
                   "Name": "Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity, Microsoft.Azure.Commerce.UsageAggregates, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -672,7 +672,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation, Microsoft.Azure.Commerce.UsageAggregates, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -684,7 +684,7 @@
     "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation": {
       "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
       "Name": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation, Microsoft.Azure.Commerce.UsageAggregates, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Properties": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageSample",
         "Id": "System.String",
@@ -731,7 +731,7 @@
     "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageSample": {
       "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
       "Name": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageSample",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageSample, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageSample, Microsoft.Azure.Commerce.UsageAggregates, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "InfoFields": "Microsoft.Azure.Commerce.UsageAggregates.Models.InfoField",
         "UsageEndTime": "System.DateTime",
@@ -785,7 +785,7 @@
     "Microsoft.Azure.Commerce.UsageAggregates.Models.InfoField": {
       "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
       "Name": "Microsoft.Azure.Commerce.UsageAggregates.Models.InfoField",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.InfoField, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.InfoField, Microsoft.Azure.Commerce.UsageAggregates, Version=0.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Project": "System.String"
       },
