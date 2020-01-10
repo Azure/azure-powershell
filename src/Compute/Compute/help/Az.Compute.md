@@ -234,7 +234,7 @@ Creates a managed disk.
 Creates a configurable disk object.
 
 ### [New-AzDiskEncryptionSet](New-AzDiskEncryptionSet.md)
-Creates a disk encryption key.
+Creates a disk encryption set.
 
 ### [New-AzDiskEncryptionSetConfig](New-AzDiskEncryptionSetConfig.md)
 Creates a configurable disk encryption set object.
@@ -574,6 +574,9 @@ Updates the state of a container service.
 
 ### [Update-AzDisk](Update-AzDisk.md)
 Updates a disk.
+
+### [Update-AzDiskEncryptionSet](Update-AzDiskEncryptionSet.md)
+Updates a disk encryption set.
 
 ### [Update-AzGallery](Update-AzGallery.md)
 Update a gallery.

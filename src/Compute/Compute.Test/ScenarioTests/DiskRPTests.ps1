@@ -34,10 +34,13 @@ function Test-Disk
         $access = 'Read';
 
         # Config create test
-        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 500 -SkuName UltraSSD_LRS -OsType Windows -CreateOption Empty -DiskMBpsReadWrite 8 -DiskIOPSReadWrite 500;
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 500 -SkuName UltraSSD_LRS -OsType Windows -CreateOption Empty `
+                                       -DiskMBpsReadWrite 8 -DiskIOPSReadWrite 500 -EncryptionType "EncryptionAtRestWithCustomerKey" -DiskEncryptionSetId $encSetId;
         Assert-AreEqual "UltraSSD_LRS" $diskconfig.Sku.Name;
         Assert-AreEqual 500 $diskconfig.DiskIOPSReadWrite;
         Assert-AreEqual 8 $diskconfig.DiskMBpsReadWrite;
+        Assert-AreEqual $encSetId $diskconfig.Encryption.DiskEncryptionSetId;
+        Assert-AreEqual "EncryptionAtRestWithCustomerKey" $diskconfig.Encryption.Type;
 
         $diskconfig = New-AzDiskConfig -Location $loc -Zone "1" -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty `
                                        -EncryptionSettingsEnabled $true -HyperVGeneration "V1";
@@ -159,10 +162,14 @@ function Test-Disk
         Verify-PSOperationStatusResponse $st;
 
         # Config update test
-        $updateconfig = New-AzDiskUpdateConfig -DiskSizeGB 10 -AccountType UltraSSD_LRS -OsType Windows -DiskMBpsReadWrite 8 -DiskIOPSReadWrite 500;
+        $encSetId = "fakeid";
+        $updateconfig = New-AzDiskUpdateConfig -DiskSizeGB 10 -AccountType UltraSSD_LRS -OsType Windows -DiskMBpsReadWrite 8 -DiskIOPSReadWrite 500 `
+                                               -EncryptionType "EncryptionAtRestWithCustomerKey" -DiskEncryptionSetId $encSetId;
         Assert-AreEqual "UltraSSD_LRS" $updateconfig.Sku.Name;
         Assert-AreEqual 500 $updateconfig.DiskIOPSReadWrite;
-        Assert-AreEqual 8 $updateconfig.DiskMBpsReadWrite
+        Assert-AreEqual 8 $updateconfig.DiskMBpsReadWrite;
+        Assert-AreEqual $encSetId $updateconfig.Encryption.DiskEncryptionSetId;
+        Assert-AreEqual "EncryptionAtRestWithCustomerKey" $updateconfig.Encryption.Type;
 
         $updateconfig = New-AzDiskUpdateConfig -DiskSizeGB 10 -AccountType Premium_LRS -OsType Windows;
         $job = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig -AsJob;
@@ -204,6 +211,12 @@ function Test-Snapshot
         $access = 'Read';
 
         # Config and create test
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 500 -SkuName UltraSSD_LRS -OsType Windows -CreateOption Empty `
+                                               -EncryptionType "EncryptionAtRestWithCustomerKey" -DiskEncryptionSetId $encSetId;
+        Assert-AreEqual "UltraSSD_LRS" $snapshotconfig.Sku.Name;
+        Assert-AreEqual $encSetId $snapshotconfig.Encryption.DiskEncryptionSetId;
+        Assert-AreEqual "EncryptionAtRestWithCustomerKey" $snapshotconfig.Encryption.Type;
+
         $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty `
                                                -EncryptionSettingsEnabled $true  -HyperVGeneration "V2";
 
@@ -315,6 +328,11 @@ function Test-Snapshot
         Verify-PSOperationStatusResponse $st;
 
         # Config update test
+        $encSetId = "fakeid";
+        $updateconfig = New-AzSnapshotUpdateConfig -EncryptionType "EncryptionAtRestWithCustomerKey" -DiskEncryptionSetId $encSetId;
+        Assert-AreEqual $encSetId $updateconfig.Encryption.DiskEncryptionSetId;
+        Assert-AreEqual "EncryptionAtRestWithCustomerKey" $updateconfig.Encryption.Type;
+
         $updateconfig = New-AzSnapshotUpdateConfig -DiskSizeGB 10 -AccountType Premium_LRS -OsType Windows;
         $job = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $updateconfig -AsJob;
         $result = $job | Wait-Job;
@@ -799,10 +817,20 @@ function Test-DiskEncryptionSet
 {
     # Setup
     $loc = "westcentralus";
-    $rgname = "pstest";
+    $rgname = "psenctest";
     $encryptionName = "enc" + $rgname;
-    $vaultName = 'kv' + $rgname;
-    $kekName = 'kek' + $rgname;
+
+    $vaultName1 = 'kv1' + $rgname ;
+    $kekName1 = 'kek1' + $rgname;
+    $secretname1 = 'mysecret1';
+    $secretdata1 = 'mysecretvalue1';
+    $securestring1 = ConvertTo-SecureString $secretdata1 -Force -AsPlainText;
+
+    $vaultName2 = 'kv2' + $rgname ;
+    $kekName2 = 'kek1' + $rgname;
+    $secretname2 = 'mysecret2';
+    $secretdata2 = 'mysecretvalue2';
+    $securestring2 = ConvertTo-SecureString $secretdata1 -Force -AsPlainText;
 
     try
     {
@@ -810,19 +838,28 @@ function Test-DiskEncryptionSet
         # Note: In order to record this test, you need to run the following commands to create KeyValut key and KeyVault secret in a separate Powershell window.
         #
         #New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        #$vault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $loc -Sku Standard;
+        #$vault1 = New-AzKeyVault -VaultName $vaultName1 -ResourceGroupName $rgname -Location $loc -Sku Standard;
+        #$vault2 = New-AzKeyVault -VaultName $vaultName2 -ResourceGroupName $rgname -Location $loc -Sku Standard;
+        #$mocksourcevault1 = $vault1.ResourceId;
+        #$mocksourcevault2 = $vault2.ResourceId;
         #$userPrincipalName = (Get-AzContext).Account.Id;
-        #Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
-        #Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -ServicePrincipalName $userPrincipalName -PermissionsToKeys decrypt,encrypt,unwrapKey,wrapKey,verify,sign,get,list,update,create,import,delete,backup,restore,recover,purge;
-        #$kek = Add-AzKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software";
-        #$secret = Set-AzKeyVaultSecret -VaultName $vaultName -Name $secretname -SecretValue $securestring;
-        #$mockkey = $kek.Id
+        #Set-AzKeyVaultAccessPolicy -VaultName $vaultName1 -ResourceGroupName $rgname -EnabledForDiskEncryption;
+        #Set-AzKeyVaultAccessPolicy -VaultName $vaultName2 -ResourceGroupName $rgname -EnabledForDiskEncryption;
+        #$kek1 = Add-AzKeyVaultKey -VaultName $vaultName1 -Name $kekName1 -Destination "Software";
+        #$kek2 = Add-AzKeyVaultKey -VaultName $vaultName2 -Name $kekName2 -Destination "Software";
+        #$secret1 = Set-AzKeyVaultSecret -VaultName $vaultName1 -Name $secretname1 -SecretValue $securestring1;
+        #$secret2 = Set-AzKeyVaultSecret -VaultName $vaultName2 -Name $secretname2 -SecretValue $securestring2;
+        #$mockkey1 = $kek1.Id
+        #$mockkey2 = $kek2.Id
 
         $subId = Get-SubscriptionIdFromResourceGroup $rgname;
-        $mockkey = "https://kvpstest.vault.azure.net:443/keys/kekpstest/bf109281146949a9b3ae234db1728493";
-        $mocksourcevault = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName;
+        $mockkey1 = "https://kv1psenctest.vault.azure.net:443/keys/kek1psenctest/21571e3773bb4e6495c2d314a3f5de8b";
+        $mockkey2 = "https://kv2psenctest.vault.azure.net:443/keys/kek1psenctest/d4bae3704edb4d4da592360a756cd278";
 
-        New-AzDiskEncryptionSetConfig -Location $loc -KeyUrl $mockkey -SourceVaultId $mocksourcevault -IdentityType "SystemAssigned" `
+        $mocksourcevault1 = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName1;
+        $mocksourcevault2 = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName2;
+
+        New-AzDiskEncryptionSetConfig -Location $loc -KeyUrl $mockkey1 -SourceVaultId $mocksourcevault1 -IdentityType "SystemAssigned" `
         | New-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName;
 
         $encSet = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName;
@@ -831,14 +868,42 @@ function Test-DiskEncryptionSet
         Assert-AreEqual "SystemAssigned" $encSet.Identity.Type;
         Assert-NotNull $encSet.Identity.PrincipalId;
         Assert-NotNull $encSet.Identity.TenantId;
-        Assert-AreEqual $mockkey $encSet.ActiveKey.KeyUrl;
-        Assert-AreEqual $mocksourcevault $encSet.ActiveKey.SourceVault.Id;
+        Assert-AreEqual $mockkey1 $encSet.ActiveKey.KeyUrl;
+        Assert-AreEqual $mocksourcevault1 $encSet.ActiveKey.SourceVault.Id;
+        Assert-AreEqual 0 $encSet.Tags.Count;
 
         $encSets = Get-AzDiskEncryptionSet -ResourceGroupName $rgname;
         Assert-True {$encSets.Count -ge 1};
 
         $encSets = Get-AzDiskEncryptionSet;
         Assert-True {$encSets.Count -ge 1};
+
+        $tags = @{test1 = "testval1"; test2 = "testval2" };
+        Assert-ThrowsContains { `
+            Update-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName -KeyUrl $mockkey2 -SourceVaultId $mocksourcevault2 -Tag $tags; } `
+            "Key rotation in disk encryption set is not supported in this version."
+
+        Update-AzDiskEncryptionSet -ResourceId $encSet.Id -Tag $tags;
+
+        $encSet = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName;
+        Assert-AreEqual 2 $encSet.Tags.Count;
+        Assert-AreEqual "testval1" $encSet.Tags.test1;
+        Assert-AreEqual "testval2" $encSet.Tags.test2;
+
+        $tags = @{test1 = "testval2"; test2 = "testval1" };
+        $encSet | Update-AzDiskEncryptionSet -KeyUrl $mockkey1 -SourceVaultId $mocksourcevault1 -Tag $tags;
+
+        $encSet = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName;
+        Assert-AreEqual $encryptionName $encSet.Name;
+        Assert-AreEqual $loc $encSet.Location;
+        Assert-AreEqual "SystemAssigned" $encSet.Identity.Type;
+        Assert-NotNull $encSet.Identity.PrincipalId;
+        Assert-NotNull $encSet.Identity.TenantId;
+        Assert-AreEqual $mockkey1 $encSet.ActiveKey.KeyUrl;
+        Assert-AreEqual $mocksourcevault1 $encSet.ActiveKey.SourceVault.Id;
+        Assert-AreEqual 2 $encSet.Tags.Count;
+        Assert-AreEqual "testval2" $encSet.Tags.test1;
+        Assert-AreEqual "testval1" $encSet.Tags.test2;
     }
     finally
     {
