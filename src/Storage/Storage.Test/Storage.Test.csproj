@@ -13,8 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WindowsAzure.Storage" Version="9.2.0" />
-    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.1" />
+    <PackageReference Include="WindowsAzure.Storage.Hybrid_2019_03_01" Version="9.2.0" />
+    <PackageReference Include="Microsoft.Azure.Storage.DataMovement.Hybrid_2019_03_01" Version="0.7.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
   </ItemGroup>
