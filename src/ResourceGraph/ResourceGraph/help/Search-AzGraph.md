@@ -20,6 +20,11 @@ Search-AzGraph [-Query] <String> [-Subscription <String[]>] [-First <Int32>] [-S
 ## DESCRIPTION
 Learn more about the query syntax here: https://aka.ms/resource-graph/learntoquery
 
+> [!IMPORTANT]
+> The query result must **project** the **id** field in order for pagination to work. If it's missing from
+> the query, the response won't include the necessary internal **$skipToken**.
+> See [Paging Results](https://docs.microsoft.com/en-us/azure/governance/resource-graph/concepts/work-with-data#paging-results) for more information.
+
 ## EXAMPLES
 
 ### Example 1
@@ -168,3 +173,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+* https://docs.microsoft.com/en-us/azure/governance/resource-graph/concepts/work-with-data#paging-results
