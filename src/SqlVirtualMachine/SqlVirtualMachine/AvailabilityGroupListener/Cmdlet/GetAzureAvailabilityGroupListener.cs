@@ -22,10 +22,10 @@ using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
-    /// This class implements the Get-AzSqlVMGroup cmdlet. It will retrieve the information relative to one or more Availability Group Listener on Azure.
+    /// This class implements the Get-AzAvailabilityGroupListener cmdlet. It will retrieve the information relative to one or more Availability Group Listener on Azure.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilityGroupListener", DefaultParameterSetName = ParameterSet.ResourceGroupOnly)]
-    [OutputType(typeof(AzureSqlVMGroupModel))]
+    [OutputType(typeof(AzureAvailabilityGroupListenerModel))]
     public class GetAzureAvailabilityGroupListener : AzureAvailabilityGroupListenerCmdletBase
     {
         /// <summary>
@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             ParameterSetName = ParameterSet.Name,
             Position = 1,
             HelpMessage = HelpMessages.NameSqlVMGroup)]
-        [Alias("GroupName")]
         public new string GroupName { get; set; }
 
         /// <summary>

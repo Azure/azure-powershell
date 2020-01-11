@@ -24,8 +24,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
-    /// This class implements the Update-AzSqlVMGroup cmdlet. It allows to update the information relative to an Azure Sql Virtual Machine
-    /// Group and return to the user an AzureSqlVMGroupModel object corresponding to the instance updated.
+    /// This class implements the Update-AzAvailabilityGroupListener cmdlet. It allows to update the information relative to an Azure Sql Virtual Machine
+    /// Group and return to the user an AzureAvailabilityGroupListenerModel object corresponding to the instance updated.
     /// </summary>
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilityGroupListener", DefaultParameterSetName = ParameterSet.Name, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureAvailabilityGroupListenerModel))]
