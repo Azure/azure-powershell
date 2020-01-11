@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             }
 
             throw new PSArgumentException(
-                string.Format("An Availability Group Listener with name {0} in resource group {1} already exists. If you want to modify an existing SqlVMGroup you can use" +
+                string.Format("An Availability Group Listener with name {0} in resource group {1} already exists. If you want to modify an existing Availability Group Listener you can use" +
                 " Update-AzAvailabilityGroupListener command.", Name, ResourceGroupName),
                 "AvailabilityGroupListener");
         }
