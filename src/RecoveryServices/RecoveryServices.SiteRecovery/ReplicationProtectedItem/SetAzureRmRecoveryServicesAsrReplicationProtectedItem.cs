@@ -576,9 +576,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         var tfoNetworkIds = new HashSet<string>();
 
                         this.ASRVMNicConfiguration.ForEach(
-                            nic => recoveryNetworkIds.Add(nic.RecoveryVMNetworkId));
+                            nic =>
+                            {
+                                if (!string.IsNullOrEmpty(nic.RecoveryVMNetworkId))
+                                {
+                                    recoveryNetworkIds.Add(nic.RecoveryVMNetworkId);
+                                }
+                            });
                         this.ASRVMNicConfiguration.ForEach(
-                            nic => tfoNetworkIds.Add(nic.TfoVMNetworkId));
+                            nic =>
+                            {
+                                if (!string.IsNullOrEmpty(nic.TfoVMNetworkId))
+                                {
+                                    tfoNetworkIds.Add(nic.TfoVMNetworkId);
+                                }
+                            });
 
                         if (recoveryNetworkIds.Count() > 1)
                         {

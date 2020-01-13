@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = false,
             HelpMessage = "Specifies whether accelerated networking is enabled on recovery NIC.")]
         [ValidateNotNullOrEmpty]
-        public bool EnableAcceleratedNetworkingOnRecovery { get; set; }
+        public SwitchParameter EnableAcceleratedNetworkingOnRecovery { get; set; }
 
         /// <summary>
         ///     Gets or sets the static IP address that should be assigned to primary NIC on recovery.
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = false,
             HelpMessage = "Specifies whether accelerated networking is enabled on test failover NIC.")]
         [ValidateNotNullOrEmpty]
-        public bool EnableAcceleratedNetworkingOnTfo { get; set; }
+        public SwitchParameter EnableAcceleratedNetworkingOnTfo { get; set; }
 
         /// <summary>
         ///     Gets or sets the static IP address that should be assigned to test failover NIC.
