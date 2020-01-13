@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Properties;
@@ -124,9 +123,13 @@ namespace Microsoft.Azure.Commands.Profile.Common
                     {
                         ProtectedProfileProvider.InitializeResourceManagerProfile();
                     }
-                    catch(Exception e)
+                    catch (SystemException e)
                     {
-                        WriteDebugWithTimestamp(e.Message);
+                        if (!(e is IOException) && !(e is UnauthorizedAccessException))
+                        {
+                            throw e;
+                        }
+                        WriteInitializationWarnings(e.Message);
                         ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
                     }
                 }
@@ -205,38 +208,6 @@ namespace Microsoft.Azure.Commands.Profile.Common
             }
 
             return result;
-        }
-
-        protected void DisableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
-        {
-            var store = session.DataStore;
-            string tokenPath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
-            result = new ContextAutosaveSettings
-            {
-                Mode = ContextSaveMode.Process
-            };
-
-            session.ARMContextSaveMode = ContextSaveMode.Process;
-            var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
-            if (memoryCache == null)
-            {
-                var diskCache = session.TokenCache as ProtectedFileTokenCache;
-                memoryCache = new AuthenticationStoreTokenCache(new AzureTokenCache());
-                if (diskCache != null && diskCache.Count > 0)
-                {
-                    memoryCache.Deserialize(diskCache.Serialize());
-                }
-
-                session.TokenCache = memoryCache;
-            }
-
-            if (writeAutoSaveFile)
-            {
-                FileUtilities.DataStore = session.DataStore;
-                FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
-                string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
-                session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
-            }
         }
     }
 }
