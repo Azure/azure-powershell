@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
             Mandatory = false,
             HelpMessage = "Specifies the IP address of the recovery NIC.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string RecoveryNicStaticIPAddress { get; set; }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
             Mandatory = false,
             HelpMessage = "Specifies the IP address of the test failover NIC.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string TfoNicStaticIPAddress { get; set; }
 
         /// <summary>
