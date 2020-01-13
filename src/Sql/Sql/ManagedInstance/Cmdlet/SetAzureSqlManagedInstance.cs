@@ -30,7 +30,7 @@ using System;
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
     /// <summary>
-    /// Defines the Set-AzSqlInstance cmdlet
+    /// Defines the Set-AzSqlInstance cmdlet.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
         DefaultParameterSetName = SetByNameAndResourceGroupParameterSet,
