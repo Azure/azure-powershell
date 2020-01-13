@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support set Table/Queue Encyrption Keytype in Create Storage Account
+    - New-AzRmStorageAccount
 * Show RequestId when StorageException don't have ExtendedErrorInformation
 * Fix the Example 6 of cmdlet Start-AzStorageBlobCopy
 
