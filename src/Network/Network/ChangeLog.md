@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 * Change `Start-AzVirtualNetworkGatewayConnectionPacketCapture.md` and `Start-AzVirtualnetworkGatewayPacketCapture.md` FilterData option examples.
+* Added support for Url Confiugration in Rewrite Rules Action Set in the Application Gateway
+    - New cmdlets added:
+        - New-AzApplicationGatewayRewriteRuleUrlConfiguration
+    - Cmdlets updated with optional parameter - UrlConfiguration
+        - New-AzApplicationGatewayRewriteRuleActionSet
 
 ## Version 2.0.0
 * Change all cmdlets for PrivateEndpointConnection to support generic service provider.
