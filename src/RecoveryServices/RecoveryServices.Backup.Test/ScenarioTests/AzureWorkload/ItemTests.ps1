@@ -16,7 +16,7 @@ $containerName = "psbvtsqlvm"
 $resourceGroupName = "pstestwlRG1bca8"
 $vaultName = "pstestwlRSV1bca8"
 $resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pscloudtestrg/providers/Microsoft.Compute/virtualMachines/psbvtsqlvm"
-$resourceIdForFileDB = "/subscriptions/f879818f-5b29-4a43-8961-34169783144f/resourceGroups/psbvtrg/providers/Microsoft.Compute/virtualMachines/psbvtsqlvm"
+$resourceIdForFileDB = $resourceId
 $policyName = "HourlyLogBackup"
 $instanceName = "sqlinstance;mssqlserver"
 
