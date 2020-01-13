@@ -52,13 +52,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         protected const string PointInTimeDeletedDatabasesCrossInstanceRestoreFromNameAndResourceGroupParameterSet =
             "PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters";
 
-        private const string GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet = 
+        private const string GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet =
             "GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameter";
 
-        private const string GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet = 
+        private const string GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet =
             "GeoRestoreFromGeoBackupSetNameFromResourceIdParameter";
 
-        private const string GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet = 
+        private const string GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet =
             "GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter";
 
         /// <summary>
@@ -116,6 +116,28 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public SwitchParameter FromGeoBackup { get; set; }
 
         /// <summary>
+        /// Gets or sets the source subscription id.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = PointInTimeSameInstanceRestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = false,
+            HelpMessage = "Source subscription id.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossInstanceRestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = false,
+            HelpMessage = "Source subscription id.")]
+        [Parameter(
+            ParameterSetName = PointInTimeDeletedDatabasesSameInstanceRestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = false,
+            HelpMessage = "Source subscription id.")]
+        [Parameter(
+            ParameterSetName = PointInTimeDeletedDatabasesCrossInstanceRestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = false,
+            HelpMessage = "Source subscription id.")]
+        [Alias("SourceSubscriptionId")]
+        public Guid SubscriptionId { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
         [Parameter(ParameterSetName = PointInTimeSameInstanceRestoreFromNameAndResourceGroupParameterSet,
@@ -139,6 +161,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Position = 0,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
+        [Alias("SourceResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
@@ -166,6 +189,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Position = 1,
             HelpMessage = "The name of the instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
+        [Alias("SourceInstanceName")]
         [ValidateNotNullOrEmpty]
         public override string InstanceName { get; set; }
 
@@ -192,7 +216,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             Position = 2,
             HelpMessage = "The instance database name to restore.")]
-        [Alias("InstanceDatabaseName")]
+        [Alias("InstanceDatabaseName", "SourceInstanceDatabaseName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -376,16 +400,29 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 RestorePointInTime = PointInTime,
             };
 
+            if (SubscriptionId == Guid.Empty)
+            {
+                SubscriptionId = Guid.Parse(ModelAdapter.Context.Subscription.Id);
+            }
+
             switch (ParameterSetName)
             {
                 case PointInTimeDeletedDatabasesCrossInstanceRestoreFromNameAndResourceGroupParameterSet:
                 case PointInTimeDeletedDatabasesSameInstanceRestoreFromNameAndResourceGroupParameterSet:
-                    model.RestorableDroppedDatabaseId = ModelAdapter.GetDeletedManagedDatabaseResourceId(this.ResourceGroupName, this.InstanceName, this.Name + "," + this.DeletionDate.ToFileTimeUtc());
+                    model.RestorableDroppedDatabaseId = "/subscriptions/" + SubscriptionId +
+                        "/resourceGroups/" + ResourceGroupName +
+                        "/providers/Microsoft.Sql/managedInstances/" + InstanceName +
+                        "/restorableDroppedDatabases/" + this.Name + "," + this.DeletionDate.ToFileTimeUtc();
                     break;
+
                 case PointInTimeCrossInstanceRestoreFromNameAndResourceGroupParameterSet:
                 case PointInTimeSameInstanceRestoreFromNameAndResourceGroupParameterSet:
-                    model.SourceDatabaseId = ModelAdapter.GetManagedDatabaseResourceId(this.ResourceGroupName, this.InstanceName, this.Name);
+                    model.SourceDatabaseId = "/subscriptions/" + SubscriptionId +
+                        "/resourceGroups/" + ResourceGroupName +
+                        "/providers/Microsoft.Sql/managedInstances/" + InstanceName +
+                        "/databases/" + Name;
                     break;
+
                 case PointInTimeSameInstanceRestoreFromInputObjectParameterSet:
                 case PointInTimeCrossInstanceRestoreFromInputObjectParameterSet:
                     ResourceGroupName = InputObject.ResourceGroupName;
@@ -400,6 +437,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                     }
 
                     break;
+
                 case PointInTimeSameInstanceRestoreFromResourceIdParameterSet:
                 case PointInTimeCrossInstanceRestoreFromResourceIdParameterSet:
                     var resourceInfo = new ResourceIdentifier(ResourceId);
@@ -415,6 +453,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                     }
 
                     break;
+
                 case GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet:
                     ResourceGroupName = GeoBackupObject.ResourceGroupName;
                     InstanceName = GeoBackupObject.ManagedInstanceName;
@@ -422,17 +461,22 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                     model.CreateMode = "Recovery";
                     model.RestorePointInTime = null;
                     break;
+
                 case GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet:
-                    model.RecoverableDatabaseId = "/subscriptions/" + ModelAdapter.Context.Subscription.Id + "/resourceGroups/" + ResourceGroupName + "/providers/Microsoft.Sql/managedInstances/"
-                    + InstanceName + "/recoverableDatabases/" + Name;
+                    model.RecoverableDatabaseId = "/subscriptions/" + SubscriptionId +
+                        "/resourceGroups/" + ResourceGroupName +
+                        "/providers/Microsoft.Sql/managedInstances/" + InstanceName +
+                        "/recoverableDatabases/" + Name;
                     model.CreateMode = "Recovery";
                     model.RestorePointInTime = null;
                     break;
+
                 case GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet:
                     model.CreateMode = "Recovery";
                     model.RecoverableDatabaseId = ResourceId;
                     model.RestorePointInTime = null;
                     break;
+
                 default:
                     throw new ArgumentException("No ParameterSet name");
             }

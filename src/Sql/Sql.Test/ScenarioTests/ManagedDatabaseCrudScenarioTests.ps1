@@ -193,6 +193,7 @@ function Test-RemoveManagedDatabase
 function Test-RestoreManagedDatabase
 {
 	# Setup
+	$sub = (Get-AzContext).Subscription.Id
 	$rg = Create-ResourceGroupForTest
 	$rg2 = Create-ResourceGroupForTest
 	$vnetName = "cl_initial"
@@ -230,7 +231,7 @@ function Test-RestoreManagedDatabase
 		Assert-AreEqual $restoredDb.ManagedInstanceName $managedInstance.ManagedInstanceName
 
 		# restore managed database to the another instance, different resource group and managed instance
-		$restoredDb2 = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -PointInTime $pointInTime -TargetInstanceDatabaseName $targetManagedDatabaseName -TargetInstanceName $managedInstance2.ManagedInstanceName -TargetResourceGroupName $rg2.ResourceGroupName
+		$restoredDb2 = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup -SubscriptionId $sub -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -PointInTime $pointInTime -TargetInstanceDatabaseName $targetManagedDatabaseName -TargetInstanceName $managedInstance2.ManagedInstanceName -TargetResourceGroupName $rg2.ResourceGroupName
 		Assert-NotNull $restoredDb2
 		Assert-AreEqual $restoredDb2.Name $targetManagedDatabaseName
 		Assert-AreEqual $restoredDb2.ResourceGroupName $rg2.ResourceGroupName
@@ -250,6 +251,7 @@ function Test-RestoreManagedDatabase
 function Test-RestoreDeletedManagedDatabase
 {
 	# Setup
+	$sub = (Get-AzContext).Subscription.Id
 	$rg = Create-ResourceGroupForTest
 	$rg2 = Create-ResourceGroupForTest
 	$vnetName = "cl_initial"
@@ -296,7 +298,7 @@ function Test-RestoreDeletedManagedDatabase
 		Assert-AreEqual $restoredDb1.ManagedInstanceName $managedInstance.ManagedInstanceName
 
 		# restore managed database to the another instance, different resource group and managed instance
-		$restoredDb2 = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -DeletionDate $deletedDatabases[0].DeletionDate -PointInTime $deletedDatabases[0].EarliestRestorePoint -TargetInstanceDatabaseName $targetManagedDatabaseName2 -TargetInstanceName $managedInstance2.ManagedInstanceName -TargetResourceGroupName $rg2.ResourceGroupName
+		$restoredDb2 = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup -SubscriptionId $sub -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -DeletionDate $deletedDatabases[0].DeletionDate -PointInTime $deletedDatabases[0].EarliestRestorePoint -TargetInstanceDatabaseName $targetManagedDatabaseName2 -TargetInstanceName $managedInstance2.ManagedInstanceName -TargetResourceGroupName $rg2.ResourceGroupName
 		Assert-NotNull $restoredDb2
 		Assert-AreEqual $restoredDb2.Name $targetManagedDatabaseName2
 		Assert-AreEqual $restoredDb2.ResourceGroupName $rg2.ResourceGroupName
