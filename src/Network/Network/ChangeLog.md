@@ -21,7 +21,12 @@
 ## Upcoming Release
 * Update references in .psd1 to use relative path
 * Support for IpGroups in AzureFirewall Application,Nat & Network Rules.
-
+* Added support for Url Confiugration in Rewrite Rules Action Set in the Application Gateway
+    - New cmdlets added:
+        - New-AzApplicationGatewayRewriteRuleUrlConfiguration
+    - Cmdlets updated with optional parameter - UrlConfiguration
+        - New-AzApplicationGatewayRewriteRuleActionSet
+		
 ## Version 2.1.0
 * Change `Start-AzVirtualNetworkGatewayConnectionPacketCapture.md` and `Start-AzVirtualnetworkGatewayPacketCapture.md` FilterData option examples.
 * Add `PrivateRange` parameter to `AzureFirewall`
