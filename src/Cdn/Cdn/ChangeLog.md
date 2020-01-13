@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 
+## Version 1.4.2
+* Display error response deatil in New-AzCdnEndpoint cmdlet
+
+## Version 1.4.1
+* Update references in .psd1 to use relative path
+
 ## Version 1.4.0
 * Introduced UrlRewriteAction and CacheKeyQueryStringAction to RulesEngine.
 * Fixed several bugs like missing "Selector" Input in New-AzDeliveryRuleCondition cmdlet.

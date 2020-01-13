@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.1
+* Update references in .psd1 to use relative path
+
 ## Version 1.5.0
 * Set-AzWebApp updating ASP of an app was failing
 

@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
         }
 
 
-        public static PSResourceManagerError ToPSResourceManagerError(this ResourceManagementErrorWithDetails error)
+        public static PSResourceManagerError ToPSResourceManagerError(this ErrorResponse error)
         {
             PSResourceManagerError rmError = new PSResourceManagerError
             {

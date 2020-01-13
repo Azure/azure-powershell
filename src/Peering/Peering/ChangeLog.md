@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.7
+* Update references in .psd1 to use relative path
+
 ## Version 0.1.6
 * Fixed bug in Peering location 
 * Added tests to direct connection

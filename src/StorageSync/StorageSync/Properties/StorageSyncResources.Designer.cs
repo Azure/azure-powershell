@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class StorageSyncResources {
@@ -196,6 +196,33 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The given storage account subscription {0} is in other subscription than the current azure context subscription {1}. We will try to inform Azure File Sync about the storage account subscription..
+        /// </summary>
+        internal static string NewCloudEndpointCrossSubscriptionWarningFormat {
+            get {
+                return ResourceManager.GetString("NewCloudEndpointCrossSubscriptionWarningFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given storage account tenant {0} does not match with current azure tenant. We do not support cloud endpoint creation with storage account pointing to any other tenant than itself. Please try this operation again with correct tenant..
+        /// </summary>
+        internal static string NewCloudEndpointCrossTenantErrorFormat {
+            get {
+                return ResourceManager.GetString("NewCloudEndpointCrossTenantErrorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given subscription {0} was unable to registered to Azure File Sync..
+        /// </summary>
+        internal static string NewCloudEndpointUnableToRegisterErrorFormat {
+            get {
+                return ResourceManager.GetString("NewCloudEndpointUnableToRegisterErrorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new Server Endpoint.
         /// </summary>
         internal static string NewServerEndpointActionMessage {
@@ -322,7 +349,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Starting rollover certificate for ServerId: {serverId}.
+        ///   Looks up a localized string similar to Starting rollover certificate for ServerId: {0}.
         /// </summary>
         internal static string ResetCertificateMessageFormat1 {
             get {

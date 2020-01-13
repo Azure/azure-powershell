@@ -97,6 +97,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     }
                     msg += extendErrorInfo;
                 }
+                else
+                {
+                    String errorInfo = String.Format(
+                        "\nErrorCode: {0}\nErrorMessage: {1}\nRequestId: {2}\nTime: {3}",
+                        e.RequestInformation.ErrorCode,
+                        e.RequestInformation.HttpStatusMessage,
+                        e.RequestInformation.ServiceRequestID,
+                        e.RequestInformation.RequestDate);
+                    msg += errorInfo;
+                }
                 e = new StorageException(e.RequestInformation, msg, e);
             }
             return e;

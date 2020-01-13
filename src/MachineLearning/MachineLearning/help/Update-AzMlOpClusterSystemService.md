@@ -8,6 +8,8 @@ schema: 2.0.0
 # Update-AzMlOpClusterSystemService
 
 ## SYNOPSIS
+**Important: This cmdlet is deprecated.**
+
 Starts an update on the operationalization cluster's system services.
 
 ## SYNTAX

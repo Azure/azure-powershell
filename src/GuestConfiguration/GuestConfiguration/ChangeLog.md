@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.10.7
+* Update references in .psd1 to use relative path
+
 ## Version 0.10.6
 * Fixed the inconsistency of compliance status reporting when Policy is non-compliant due to parameter updates scenario.
 * Quering data from PolicyInsights RP to get the updated compliance status.  

@@ -1,3 +1,145 @@
+## 3.3.0 - January 2020
+#### Az.Accounts
+* Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix
+
+#### Az.Cdn
+* Display error response detail in New-AzCdnEndpoint cmdlet
+
+#### Az.Compute
+* Fix Set-AzVMCustomScriptExtension cmdlet for a VM with managed OD disk which does not have OS profile.
+
+#### Az.ContainerInstance
+* Fixed parameter names used by example of New-AzContainerGroup
+
+#### Az.DataBoxEdge
+* Added cmdlet 'Get-AzDataBoxEdgeStorageContainer'
+  - Get the Edge Storage Container
+* Added cmdlet 'New-AzDataBoxEdgeStorageContainer'
+  - Create new Edge Storage Container
+* Added cmdlet 'Remove-AzDataBoxEdgeStorageContainer'
+  - Remove the Edge Storage Container
+* Added cmdlet 'Invoke-AzDataBoxEdgeStorageContainer'
+  - Invoke action to refresh data on Edge Storage Container
+* Added cmdlet 'Get-AzDataBoxEdgeStorageAccount'
+  - Get the Edge Storage Account
+* Added cmdlet 'New-AzDataBoxEdgeStorageAccount'
+  - Create new Edge Storage Account
+* Added cmdlet 'Remove-AzDataBoxEdgeStorageAccount'
+  - Remove the Edge Storage Account
+* Invoke cmdlet 'Invoke-AzDataBoxEdgeShare'
+  - Invoke action to refresh data on share
+* Added cmdlet 'Set-AzDataBoxEdgeStorageAccountCredential'
+  - Set the az databoxedge storage account credential
+
+#### Az.DataFactory
+* Add AutoUpdateETA, LatestVersion, PushedVersion, TaskQueueId and VersionStatus properties for Get-AzDataFactoryV2IntegrationRuntime cmd
+* Update ADF .Net SDK version to 4.6.0
+* Add parameter 'PublicIPs' for 'Set-AzureRmDataFactoryV2IntegrationRuntime' cmd 
+to enable create Azure-SSIS IR with static public IP addresses.
+
+#### Az.DevTestLabs
+* Remove the broken link in Get-AzDtlAllowedVMSizesPolicy.md
+
+#### Az.EventHub
+* Fix for issue 10634 : Fix the null Object reference for remove eventhubnamespace
+
+#### Az.HDInsight
+* Fix Invoke-AzHDInsightHiveJob.md error.
+
+#### Az.MachineLearning
+* Removed below cmdlets because MachineLearningCompute is not available any longer
+  - Get-AzMlOpCluster
+  - Get-AzMlOpClusterKey
+  - New-AzMlOpCluster
+  - Remove-AzMlOpCluster
+  - Set-AzMlOpCluster
+  - Test-AzMlOpClusterSystemServicesUpdateAvailability
+  - Update-AzMlOpClusterSystemService
+
+#### Az.Network
+* Upgrade dependency of Microsoft.Azure.Management.Sql from 1.36-preview to 1.37-preview
+
+#### Az.RecoveryServices
+* Azure Site Recovery change support for managed disk vms encrypted at rest with customer managed leys for Azure to Azure provider.
+* Azure Site Recovery support to input disk encryption Set Id as optional input at enabling protection for Vmware to Azure.
+* Azure Site Recovery support to input disk encryption Set Id as optional input at disk level to enable protection for Vmware to Azure.
+* Azure Site Recovery support to update replication protected item with disk encryption set Map for HyperV to Azure.
+
+#### Az.Resources
+* Fix an error in help document of 'Remove-AzTag'.
+
+#### Az.Sql
+* Fix vulnerability assessment set baseline cmdlets functionality to work on master db for azure database and limit it on managed instance system databases.
+* Fix an error when creating SQL instance failover group
+
+#### Az.SqlVirtualMachine
+* Add DR as a new valid License type
+
+#### Az.Storage
+* Add breaking change warning message for DefaultAction Value change in a future release
+    - Update-AzStorageAccountNetworkRuleSet
+* Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats 
+    - Get-AzureRMStorageAccount
+
+## 3.2.0 - December 2019
+
+### General
+* Update references in .psd1 to use relative path for all modules
+
+#### Az.Accounts
+* Set correct UserAgent for client-side telemetry for Az 4.0 preview
+* Display user friendly error message when context is null in Az 4.0 preview
+
+#### Az.Batch
+* Fix issue #10602, where **New-AzBatchPool** did not properly send 'VirtualMachineConfiguration.ContainerConfiguration' or 'VirtualMachineConfiguration.DataDisks' to the server.
+
+#### Az.DataFactory
+* Update ADF .Net SDK version to 4.5.0
+
+#### Az.FrontDoor
+* Added WAF managed rules exclusion support
+* Add SocketAddr to auto-complete
+
+#### Az.HealthcareApis
+* Exception Handling
+
+#### Az.KeyVault
+* Fixed error accessing value that is potentially not set
+* Elliptic Curve Cryptography Certificate Managment
+    - Added support to specify the Curve for Certificate Policies
+
+#### Az.Monitor
+* Adding optional argument to the Add Diagnostic Settings command. A switch argument that if present indicates that the export to Log Analytics must be to a fixed schema (a.k.a. dedicated, data type)
+
+#### Az.Network
+* Support for IpGroups in AzureFirewall Application,Nat & Network Rules.
+
+#### Az.RecoveryServices
+* Added SoftDelete feature for VM and added tests for softdelete
+* Azure Site Recovery support for Azure Disk Encryption One Pass for Azure to Azure.
+
+#### Az.Resources
+* Fix an issue where template deployment fails to read a template parameter if its name conflicts with some built-in parameter name.
+* Updated policy cmdlets to use new api version 2019-09-01 that introduces grouping support within policy set definitions.
+
+#### Az.Sql
+* Upgraded storage creation in Vulnerability Assessment auto enablement to StorageV2
+
+#### Az.Storage
+* Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
+    - New-AzStorageContainerSASToken
+    - New-AzStorageBlobSASToken
+* Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
+    - Revoke-AzStorageAccountUserDelegationKeys
+* Upgrade to Microsoft.Azure.Management.Storage 14.2.0, to support new API version 2019-06-01.
+* Support Share QuotaGiB more than 5120 in Management plane File Share cmdlets, and add parameter alias 'Quota' to parameter 'QuotaGiB' 
+	- New-AzRmStorageShare
+	- Update-AzRmStorageShare
+* Add parameter alias 'QuotaGiB' to parameter 'Quota'
+	- Set-AzStorageShareQuota
+* Fix the issue that Set-AzStorageContainerAcl can clean up the stored Access Policy
+	- Set-AzStorageContainerAcl
+
 ## 3.1.0 - November 2019
 ### Highlights since the last major release
 * Az.DataBoxEdge 1.0.0 released

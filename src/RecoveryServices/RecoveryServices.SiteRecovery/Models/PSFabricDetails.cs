@@ -576,6 +576,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.TargetDiskLocation = hyperVReplicaAzureVmDiskDetails.TargetDiskLocation;
             this.TargetDiskName = hyperVReplicaAzureVmDiskDetails.TargetDiskName;
             this.LunId = hyperVReplicaAzureVmDiskDetails.LunId;
+            this.DiskId = hyperVReplicaAzureVmDiskDetails.DiskId;
+            this.DiskEncryptionSetId = hyperVReplicaAzureVmDiskDetails.DiskEncryptionSetId;
         }
 
         /// <summary>
@@ -587,6 +589,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///    Gets or sets the VHD id.
         /// </summary>
         public string VhdId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the disk id.
+        /// </summary>
+        public string DiskId { get; set; }
 
         /// <summary>
         ///    Gets or sets VHD name.
@@ -612,6 +619,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets ordinal\LunId of the disk for the Azure VM.
         /// </summary>
         public string LunId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the DiskEncryptionSet ARM ID.
+        /// </summary>
+        public string DiskEncryptionSetId { get; set; }
+
+
+
     }
 
     /// <summary>
@@ -1195,6 +1210,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.LastRpoCalculatedTime = details.LastRpoCalculatedTime;
             this.RpoInSeconds = details.RpoInSeconds;
             this.IsReplicationAgentUpdateRequired = details.IsReplicationAgentUpdateRequired;
+            this.VmEncryptionType = details.VmEncryptionType;
+            this.InitialPrimaryFabricLocation = details.InitialPrimaryFabricLocation;
+            this.InitialRecoveryFabricLocation = details.InitialRecoveryFabricLocation;
+            this.LifecycleId = details.LifecycleId;
 
             if (details.LastHeartbeat != null)
             {
@@ -1346,9 +1365,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public bool? IsReplicationAgentUpdateRequired;
 
+        /// <summary>
+        /// Gets or sets the VM encryption type.
+        /// </summary>
+        public string VmEncryptionType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial primary fabric location.
+        /// </summary>
+        public string InitialPrimaryFabricLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial recovery fabric location.
+        /// </summary>
+        public string InitialRecoveryFabricLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the only constant ID throught out the enable disable cycle.
+        /// (with multiple switch protections in the middle) - Recovery Plans refer this ID.
+        /// </summary>
+        public string LifecycleId { get; set; }
+
         // check do we need to expoxed these 2 (TODO)
         // public string RecoveryFabricObjectId;  //how it is different from parent RecoveryFabricId
-        // public string LifecycleId;
         // public string managementId;
     }
 
