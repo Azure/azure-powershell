@@ -20,6 +20,7 @@
 -->
 ## Upcoming Release
 * Fix Set-AzVMCustomScriptExtension cmdlet for a VM with managed OD disk which does not have OS profile.
+* Updated the example of `Set-AzVMAccessExtension` to use version 2.4 instead of 2.0
 
 ## Version 3.2.0
 * Add ProximityPlacementGroupId parameter to the following cmdlets:
