@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell
+FROM mcr.microsoft.com/powershell:ubuntu-18.04
 
 ARG ARTIFACTS=/tmp/artifacts/
 ARG ARTIFACT=*.nupkg
