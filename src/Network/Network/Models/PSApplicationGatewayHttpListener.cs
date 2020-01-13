@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Protocol { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string HostName { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public List<string> HostNames { get; set; }
         public PSResourceId SslCertificate { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public bool RequireServerNameIndication { get; set; }

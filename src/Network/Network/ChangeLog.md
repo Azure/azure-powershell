@@ -81,6 +81,10 @@
     - Cmdlets updated with optional parameters:
         - New-AzApplicationGatewayHttpListener : added parameter FirewallPolicy, FirewallPolicyId
         - New-AzApplicationGatewayPathRuleConfig : added parameter FirewallPolicy, FirewallPolicyId
+* Added support for perListener HostNames
+    - Cmdlets updated with optional parameters:
+        - New-AzApplicationGatewayHttpListener : added parameter HostNames
+        - Add-AzApplicationGatewayHttpListener : added parameter HostNames
 * Fix required subnet with name AzureBastionSubnet in `PSBastion` can be case insensitive
 * Support for Destination FQDNs in Network Rules and Translated FQDN in NAT Rules for Azure Firewall
 * Add support for top level resource RouteTables of IpGroup
