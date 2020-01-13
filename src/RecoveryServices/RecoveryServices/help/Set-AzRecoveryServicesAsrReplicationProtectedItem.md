@@ -12,7 +12,6 @@ Sets recovery properties such as target network and virtual machine size for the
 
 ## SYNTAX
 
-### ByObject (Default)
 ```
 Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationProtectedItem> [-Name <String>]
  [-Size <String>] [-UpdateNic <String>] [-RecoveryNetworkId <String>] [-PrimaryNic <String>]
@@ -25,25 +24,9 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>]
  [-DiskIdToDiskEncryptionSetMap <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  [-RecoveryPublicIPAddressId <String>] [-RecoveryNetworkSecurityGroupId <String>]
- [-RecoveryLBBackendAddressPoolId <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-RecoveryLBBackendAddressPoolId <String[]>] [-TfoAzureVMName <String>]
+ [-ASRVMNicConfiguration <ASRVMNicConfig[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### AzureToAzureManagedDisk
-```
-Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationProtectedItem> [-Name <String>]
- [-Size <String>] [-UpdateNic <String>] [-RecoveryNetworkId <String>] [-PrimaryNic <String>]
- [-RecoveryCloudServiceId <String>] [-RecoveryNicSubnetName <String>] [-RecoveryNicStaticIPAddress <String>]
- [-NicSelectionType <String>] [-RecoveryResourceGroupId <String>] [-LicenseType <String>]
- [-RecoveryAvailabilitySet <String>] [-EnableAcceleratedNetworkingOnRecovery]
- [-RecoveryBootDiagStorageAccountId <String>]
- [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
- [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
- [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>]
- [-DiskIdToDiskEncryptionSetMap <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-RecoveryPublicIPAddressId <String>] [-RecoveryNetworkSecurityGroupId <String>]
- [-RecoveryLBBackendAddressPoolId <String[]>] [-TfoAzureVMName <String>] [-ASRVMNicConfiguration <ASRVMNicConfig[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +87,7 @@ Specifies the test failover and failover NIC configuration details.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMNicConfig[]
-Parameter Sets: AzureToAzureManagedDisk
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -485,7 +468,7 @@ Specifies the name of the test failover VM.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureToAzureManagedDisk
+Parameter Sets: (All)
 Aliases:
 
 Required: False
