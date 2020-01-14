@@ -14,9 +14,9 @@ Restores an Azure SQL Managed Instance database.
 
 ### PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters (Default)
 ```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceGroupName] <String> [-InstanceName] <String>
- [-Name] <String> -PointInTime <DateTime> -TargetInstanceDatabaseName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <Guid>] [-ResourceGroupName] <String>
+ [-InstanceName] <String> [-Name] <String> -PointInTime <DateTime> -TargetInstanceDatabaseName <String>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PointInTimeSameInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
@@ -35,10 +35,10 @@ Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -P
 
 ### PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters
 ```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceGroupName] <String> [-InstanceName] <String>
- [-Name] <String> -PointInTime <DateTime> -TargetInstanceDatabaseName <String> -TargetInstanceName <String>
- -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <Guid>] [-ResourceGroupName] <String>
+ [-InstanceName] <String> [-Name] <String> -PointInTime <DateTime> -TargetInstanceDatabaseName <String>
+ -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
@@ -58,16 +58,17 @@ Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -P
 
 ### PointInTimeDeletedDatabasesSameInstanceRestoreInstanceDatabaseFromInputParameters
 ```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceGroupName] <String> [-InstanceName] <String>
- [-Name] <String> [-DeletionDate] <DateTime> -PointInTime <DateTime> -TargetInstanceDatabaseName <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <Guid>] [-ResourceGroupName] <String>
+ [-InstanceName] <String> [-Name] <String> [-DeletionDate] <DateTime> -PointInTime <DateTime>
+ -TargetInstanceDatabaseName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters
 ```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceGroupName] <String> [-InstanceName] <String>
- [-Name] <String> [-DeletionDate] <DateTime> -PointInTime <DateTime> -TargetInstanceDatabaseName <String>
- -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
+Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <Guid>] [-ResourceGroupName] <String>
+ [-InstanceName] <String> [-Name] <String> [-DeletionDate] <DateTime> -PointInTime <DateTime>
+ -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -253,7 +254,7 @@ The instance name.
 ```yaml
 Type: System.String
 Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter
-Aliases:
+Aliases: SourceInstanceName
 
 Required: True
 Position: 1
@@ -268,7 +269,7 @@ The instance database name to restore.
 ```yaml
 Type: System.String
 Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter
-Aliases: InstanceDatabaseName
+Aliases: InstanceDatabaseName, SourceInstanceDatabaseName
 
 Required: True
 Position: 2
@@ -298,7 +299,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter
-Aliases:
+Aliases: SourceResourceGroupName
 
 Required: True
 Position: 0
@@ -331,6 +332,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Source subscription id.
+
+```yaml
+Type: System.Guid
+Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters
+Aliases: SourceSubscriptionId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
