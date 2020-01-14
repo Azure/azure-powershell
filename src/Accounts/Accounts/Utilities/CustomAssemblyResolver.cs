@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Profile.Utilities
 {
-    internal static class CustomAssemblyResolver
+    public static class CustomAssemblyResolver
     {
         public static void Initialize()
         {
