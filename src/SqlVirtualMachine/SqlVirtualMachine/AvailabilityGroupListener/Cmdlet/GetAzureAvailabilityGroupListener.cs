@@ -35,10 +35,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             ParameterSetName = ParameterSet.Name,
             Position = 0,
             HelpMessage = HelpMessages.ResourceGroupSqlVMGroup)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ParameterSet.ResourceGroupOnly,
-            Position = 0,
-            HelpMessage = HelpMessages.ResourceGroupSqlVM)]
         [ResourceGroupCompleter]
         public new virtual string ResourceGroupName { get; set; }
 
@@ -54,11 +50,14 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Name of the Availability Group Listener
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ParameterSet.Name,
+            Position = 2,
+            HelpMessage = HelpMessages.NameAvailabilityGroupListener)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ParameterSet.SqlVMGroupObject,
             Position = 1,
             HelpMessage = HelpMessages.NameAvailabilityGroupListener)]
-        [Alias("AvailabilityGroupListener")]
         public new string Name { get; set; }
 
         /// <summary>
@@ -69,8 +68,19 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = HelpMessages.AvailabilityGroupListenerResourceId)]
-        [Alias("AvailabilityGroupListenerId")]
         public string ResourceId { get; set; }
+
+        /// <summary>
+        /// SqlVmGroup Object of the AG Listener
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParameterSet.SqlVMGroupObject,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = HelpMessages.SqlVMGroupObjectHelpMessage)]
+        [Alias("TopLevelResourceObject")]
+        public AzureSqlVMGroupModel SqlVMGroupObject { get; set; }
 
         /// <summary>
         /// Parse the parameters provided as input in order to obtain the name of the resource group and the Availability Group Listener

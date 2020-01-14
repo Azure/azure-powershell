@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 
@@ -29,6 +30,38 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     public class RemoveAzureAvailabilityGroupListener : AzureAvailabilityGroupListenerCmdletBase
     {
         /// <summary>
+        /// Resource group name of the sql virtual machine group, overrided from the base class in order to not be mandatory
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSet.Name,
+            Position = 0,
+            HelpMessage = HelpMessages.ResourceGroupSqlVMGroup)]
+        [ResourceGroupCompleter]
+        public new virtual string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Name of the sql virtual machine group
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSet.Name,
+            Position = 1,
+            HelpMessage = HelpMessages.NameSqlVMGroup)]
+        public new string GroupName { get; set; }
+
+        /// <summary>
+        /// Name of the Availability Group Listener
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSet.Name,
+            Position = 2,
+            HelpMessage = HelpMessages.NameAvailabilityGroupListener)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSet.SqlVMGroupObject,
+            Position = 1,
+            HelpMessage = HelpMessages.NameAvailabilityGroupListener)]
+        public new string Name { get; set; }
+
+        /// <summary>
         /// AvailabilityGroupListener resource to be removed
         /// </summary>
         [Parameter(Mandatory = true,
@@ -36,7 +69,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             Position = 0,
             ValueFromPipeline = true,
             HelpMessage = HelpMessages.InputObjectAvailabilityGroupListener)]
-        [Alias("AvailabilityGroupListener")]
         [ValidateNotNullOrEmpty]
         public AzureAvailabilityGroupListenerModel InputObject { get; set; }
 
@@ -48,9 +80,20 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = HelpMessages.AvailabilityGroupListenerResourceId)]
-        [Alias("AvailabilityGroupListenerId")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        /// <summary>
+        /// SqlVmGroup Object of the AG Listener
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParameterSet.SqlVMGroupObject,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = HelpMessages.SqlVMGroupObjectHelpMessage)]
+        [Alias("TopLevelResourceObject")]
+        public AzureSqlVMGroupModel SqlVMGroupObject { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
