@@ -283,6 +283,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId:
                         environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, propertyValue);
                         break;
+                    case AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointSuffix:
+                        environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointSuffix, propertyValue);
+                        break;
+                    case AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointResourceId:
+                        environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointResourceId, propertyValue);
+                        break;
                 }
             }
         }
@@ -321,6 +327,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 case AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix:
                 case AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId:
                     resource = AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId;
+                    break;
+                case AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointSuffix:
+                case AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointResourceId:
+                    resource = AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointResourceId;
                     break;
                 default:
                     resource = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
