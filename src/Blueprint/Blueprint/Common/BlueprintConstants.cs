@@ -109,6 +109,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string ExportOutputFile = "Path to a file on disk where to export the Blueprint definition in JSON format.";
             public const string ForceHelpMessage = "When set to true, execution will not ask for a confirmation.";
             public const string ImportInputPath = "Path to a Blueprint JSON file on disk.";
+            public const string ImportIncludeSubFolders = "If sub folders should be included.";
             public const string ChangeNotes = "Notes to describe the contents of this blueprint version.";
         }
     }

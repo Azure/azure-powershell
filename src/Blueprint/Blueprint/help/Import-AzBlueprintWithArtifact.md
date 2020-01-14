@@ -61,6 +61,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncludeSubFolders
+When set to true, artifact in the subfolders will be included.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputPath
 Path to a Blueprint JSON file on disk.
 
