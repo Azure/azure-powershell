@@ -452,7 +452,7 @@ function Api-ImportExportWsdlTest {
 
         $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $wsdlApiId2
         Assert-NotNull $apiSchemas
-        Assert-AreEqual 4 $apiSchemas.CountSet
+        Assert-AreEqual 4 $apiSchemas.Count
         Assert-AreEqual XsdSchema $apiSchemas[0].SchemaDocumentContentType
         Assert-AreEqual $wsdlApiId2 $apiSchemas[0].ApiId
 
