@@ -15,7 +15,7 @@ param(
     [Parameter(Mandatory = $false, Position = 1)]
     [string]$Artifacts,
 
-    [Parameter(Mandatory = $false, Position = 5)]
+    [Parameter(Mandatory = $false, Position = 2)]
     [string]$Docker
 )
 
