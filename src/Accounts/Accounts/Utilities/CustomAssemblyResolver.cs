@@ -11,6 +11,9 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
         }
 
+        /// <summary>
+        /// When the resolution of an assembly fails, if it's Newtonsoft.Json 9, redirect to 10
+        /// </summary>
         public static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
             try
