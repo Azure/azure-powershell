@@ -19,7 +19,13 @@
 --->
 
 ## Upcoming Release
-
+*  Add Support for IPv6 in ExpressRouteCircuitConnectionConfig (Global Reach)
+    - Added Cmdlet
+        - Set-AzExpressRouteCircuitConnectionConfig 
+            - allows setting of all the existing property including the IPv6CircuitConnectionProperties
+    -Updated Cmdlet
+        - Add-AzExpressRouteCircuitConnectionConfig 
+            - Added another optional parameter AddressPrefixType to specify the address family of address prefix
 ## Version 2.2.0
 * Update references in .psd1 to use relative path
 * Support for IpGroups in AzureFirewall Application,Nat & Network Rules.
