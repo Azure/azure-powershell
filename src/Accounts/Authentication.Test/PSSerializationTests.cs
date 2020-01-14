@@ -23,6 +23,7 @@ using System.Globalization;
 using System.Management.Automation;
 using Xunit;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Common.Authentication.Test
 {
@@ -32,6 +33,7 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertFullProfilet()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             var context = GetDefaultContext();
             var prof = new PSAzureProfile();
             prof.Context = new PSAzureContext(context);
@@ -46,6 +48,7 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertProfileNullComponent()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             var context = GetDefaultContext();
             context.Subscription = null;
             var prof = new PSAzureProfile();
@@ -61,6 +64,7 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertProfieWithCustomEnvironment()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             IAzureContext context = new AzureContext(new AzureSubscription(), new AzureAccount(), new AzureEnvironment(), new AzureTenant(), new byte[0]);
             var testContext = new PSAzureContext(context);
             var testEnvironment = new PSAzureEnvironment(AzureEnvironment.PublicEnvironments["AzureCloud"]);
@@ -89,6 +93,7 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConConvertEmptyProfile()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             ConvertAndTestProfile(new PSAzureProfile(), (profile) =>
             {
                 AssertStandardEnvironments(profile);
@@ -100,6 +105,7 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertFullContext()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             var context = GetDefaultContext();
             ConvertAndTestProfile(context, (profile) =>
             {
@@ -112,6 +118,7 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertContextNullComponent()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             var context = GetDefaultContext();
             context.Subscription = null;
             ConvertAndTestProfile(context, (profile) =>
@@ -125,6 +132,7 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertMinimalContext()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             IAzureContext context = new AzureContext(new AzureSubscription(), new AzureAccount(), new AzureEnvironment(), new AzureTenant(), new byte[0]);
             ConvertAndTestProfile(new PSAzureContext(context), (profile) =>
             {
@@ -138,6 +146,7 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertEmptyContext()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             ConvertAndTestProfile(new PSAzureContext(), (profile) =>
             {
                 AssertStandardEnvironments(profile);
