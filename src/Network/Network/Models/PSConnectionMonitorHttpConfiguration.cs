@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int? Port { get; set; }
         public string Method { get; set; }
         public string Path { get; set; }
-        public Dictionary<string, string> RequestHeaders { get; set; }
+        public List<PSHTTPHeader> RequestHeaders { get; set; }
         public List<string> ValidStatusCodeRanges { get; set; }
         public bool? PreferHTTPS { get; set; }
 

@@ -53,30 +53,14 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSNetworkWatcherConnectionMonitorEndpointObject> Endpoints { get; set; }
 
-        public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroups { get; set; }
 
-        public List<PSNetworkWatcherConnectionMonitorTestConfigurationObject> TestConfiguration { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorTestConfigurationObject> TestConfigurations { get; set; }
 
-        public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs { get; set; }
 
         public string ConnectionMonitorType { get; set; }
 
-        [JsonIgnore]
-        public string SourceText
-        {
-            get { return JsonConvert.SerializeObject(this.Source, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string DestinationText
-        {
-            get { return JsonConvert.SerializeObject(this.Destination, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string TagsText
-        {
-            get { return JsonConvert.SerializeObject(this.Tags, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
+        public string Notes { get; set; }
     }
 }

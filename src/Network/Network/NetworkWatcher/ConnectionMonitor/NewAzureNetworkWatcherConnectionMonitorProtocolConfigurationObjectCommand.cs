@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
              HelpMessage = "The request header.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
-        public Dictionary<string, string> RequestHeader { get; set; }
+        public List<PSHTTPHeader> RequestHeader { get; set; }
 
         [Parameter(
              Mandatory = false,
