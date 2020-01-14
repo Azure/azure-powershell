@@ -37,20 +37,88 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     public class NewAzureAvailabilityGroupListener : AzureAvailabilityGroupListenerUpsertCmdletBase
     {
         /// <summary>
+        /// SqlVmGroup Object of the AG Listener
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParameterSet.SqlVMGroupObject,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = HelpMessages.SqlVMGroupObjectHelpMessage)]
+        [Alias("TopLevelResourceObject")]
+        public AzureSqlVMGroupModel SqlVMGroupObject { get; set; }
+
+        /// <summary>
+        /// Name of the Availability Group
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = HelpMessages.AvailabilityGroupNameHelpMessage)]
+        public string AvailabilityGroupName { get; private set; }
+
+        /// <summary>
+        /// Port Number of the Availability Group Listner
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.PortHelpMessage)]
+        public int? Port { get; private set; }
+
+        /// <summary>
+        /// Load Balancer Resource Id
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = HelpMessages.LoadBalancerResourceIdHelpMessage)]
+        public string LoadBalancerResourceId { get; private set; }
+
+        /// <summary>
+        /// Private Ip Address
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = HelpMessages.PrivateIpAddressHelpMessage)]
+        public string IpAddress { get; private set; }
+
+        /// <summary>
+        /// Private Ip Address
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = HelpMessages.SubnetIdHelpMessage)]
+        public string SubnetId { get; private set; }
+
+        /// <summary>
+        /// Probe Port
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = HelpMessages.ProbePortHelpMessage)]
+        public int? ProbePort { get; private set; }
+
+        /// <summary>
+        /// Public Ip Address of the AG Listener
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.PublicIpAddressResourceIdHelpMessage)]
+        public string PublicIpAddressResourceId { get; private set; }
+
+        /// <summary>
+        /// List of Virtual Machines
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = HelpMessages.SqlVirtualMachineInstancesHelpMessage)]
+        public IList<string> SqlVirtualMachineInstances { get; private set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(
             Mandatory = false,
             HelpMessage = HelpMessages.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
-        public string AvailabilityGroupName { get; private set; }
-        public int? Port { get; private set; }
-        public bool? CreateDefaultAvailabilityGroupIfNotExist { get; private set; }
-        public string LoadBalanceResourceId { get; private set; }
-        public PrivateIPAddress PrivateIpAddress { get; private set; }
-        public int? ProbePort { get; private set; }
-        public string PublicIpAddressResourceId { get; private set; }
-        public IList<string> SqlVirtualMachineInstances { get; private set; }
 
         /// <summary>
         /// Check to see if Availability Group Listener with the same name already exists in this resource group.
@@ -81,10 +149,15 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         protected override IEnumerable<AzureAvailabilityGroupListenerModel> ApplyUserInputToModel(IEnumerable<AzureAvailabilityGroupListenerModel> model)
         {
             List<AzureAvailabilityGroupListenerModel> newEntity = new List<AzureAvailabilityGroupListenerModel>();
+            var privateIpAddress = new PrivateIPAddress()
+            {
+                IpAddress = this.IpAddress,
+                SubnetResourceId = this.SubnetId
+            };
             var loadBalancerConfiguration = new LoadBalancerConfiguration()
             {
-                LoadBalancerResourceId = this.LoadBalanceResourceId,
-                PrivateIpAddress = this.PrivateIpAddress,
+                LoadBalancerResourceId = this.LoadBalancerResourceId,
+                PrivateIpAddress = privateIpAddress,
                 ProbePort = this.ProbePort,
                 PublicIpAddressResourceId = this.PublicIpAddressResourceId,
                 SqlVirtualMachineInstances = this.SqlVirtualMachineInstances
@@ -97,7 +170,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
                 AvailabilityGroupName = this.AvailabilityGroupName,
                 Name = this.Name,
                 Port = this.Port,
-                CreateDefaultAvailabilityGroupIfNotExist = this.CreateDefaultAvailabilityGroupIfNotExist,
                 LoadBalancerConfigurations = loadBalancerConfigurations,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true)
             });

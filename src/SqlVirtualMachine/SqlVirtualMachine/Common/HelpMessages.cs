@@ -52,10 +52,20 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         public const string SqlVMGroupResourceId = "SQL virtual machine group resource id.";
         public const string InputObjectSqlVMGroup = "SQL virtual machine object.";
         
-        // Help messages relative to sql virtual machine group cmdlets
+        // Help messages relative to Availability Group Listener
         public const string NameAvailabilityGroupListener = "Availability Group Listener name.";
         public const string AvailabilityGroupListenerResourceId = "Availability Group Listener Resource Id";
         public const string InputObjectAvailabilityGroupListener = "Availability Group Listener object.";
+        public const string AvailabilityGroupNameHelpMessage = "Availability Group name.";
+        public const string PortHelpMessage = "Port number of AG Listener";
+        public const string CreateDefaultAvailabilityGroupIfNotExistHelpMessage = "Do you want to create a new Availability Group if specified group is not present";
+        public const string LoadBalancerResourceIdHelpMessage = "Load Balancer Id";
+        public const string PrivateIpAddressHelpMessage = "Private Ip Address";
+        public const string SubnetIdHelpMessage = "Subnet Resource Id";
+        public const string ProbePortHelpMessage = "Probe Port of the AG Listener";
+        public const string PublicIpAddressResourceIdHelpMessage = "Public Ip Address Resource Id";
+        public const string SqlVirtualMachineInstancesHelpMessage = "List of Sql VMs";
+        public const string SqlVMGroupObjectHelpMessage = "SQL virtual machine Group object.";
 
         // Upsert
         public const string ClusterOperatorAccountSqlVMGroup = "Name used for operating cluster.";
