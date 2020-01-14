@@ -115,7 +115,7 @@ function Api-CrudTest {
 
         Assert-AreEqual $newApiId $newApi.ApiId
         Assert-AreEqual $newApiName $newApi.Name
-        Assert-AreEqual $newApiDescription.Description
+        Assert-AreEqual $newApiDescription $newApi.Description
         Assert-AreEqual $newApiServiceUrl $newApi.ServiceUrl
         Assert-AreEqual $newApiPath $newApi.Path
         Assert-AreEqual 1 $newApi.Protocols.Length
@@ -124,6 +124,16 @@ function Api-CrudTest {
         Assert-Null $newApi.AuthorizationScope
         Assert-AreEqual $subscriptionKeyParametersHeader $newApi.SubscriptionKeyHeaderName
         Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName
+                
+        $updatedApiServiceUrl = "http://newechoapi.cloudapp.net/updateapi"
+        $updatedApi = Set-AzApiManagementApi -Context $context -ApiId $newApiId -ServiceUrl $updatedApiServiceUrl -PassThru
+        Assert-AreEqual $newApiId $updatedApi.ApiId
+        Assert-AreEqual $newApiName $updatedApi.Name
+        Assert-AreEqual $newApiDescription $updatedApi.Description
+        Assert-AreEqual $updatedApiServiceUrl $updatedApi.ServiceUrl
+        Assert-AreEqual $newApiPath $updatedApi.Path
+        Assert-AreEqual 1 $updatedApi.Protocols.Length
+        Assert-AreEqual https $updatedApi.Protocols[0]
 
         $product = Get-AzApiManagementProduct -Context $context | Select-Object -First 1
         Add-AzApiManagementApiToProduct -Context $context -ApiId $newApiId -ProductId $product.ProductId
@@ -442,7 +452,7 @@ function Api-ImportExportWsdlTest {
 
         $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $wsdlApiId2
         Assert-NotNull $apiSchemas
-        Assert-AreEqual 4 $apiSchemas.Count
+        Assert-AreEqual 4 $apiSchemas.CountSet
         Assert-AreEqual XsdSchema $apiSchemas[0].SchemaDocumentContentType
         Assert-AreEqual $wsdlApiId2 $apiSchemas[0].ApiId
 
