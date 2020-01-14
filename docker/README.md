@@ -1,12 +1,17 @@
 # Docker
 
-This Dockerfile enable running Azure-PowerShell in a container for each Linux distribution we support.
 
+## Overview
+This Dockerfile enable running Azure-PowerShell in a container for OS we support.
+
+
+## Configuration
 This requires Docker 17.05 or newer.
 It also expects you to be able to run Docker without `sudo`.
 Please follow [Docker's official instructions][install] to install `docker` correctly.
 
 [install]: https://docs.docker.com/engine/installation/
+
 
 ## Release
 
@@ -15,6 +20,7 @@ The release containers derive from the [Powershell image][powershell image], and
 [powershell image]: https://hub.docker.com/_/microsoft-powershell
 
 TODO: link to azure-powershell release page
+
 
 ## Examples
 
@@ -61,6 +67,7 @@ $ docker images
 docker rmi mcr.microsoft.com/azureps/azure-powershell
 ```
 
+
 ## Developing and Contributing
 
 Please see the [Contribution Guide][] for general information about how to develop and contribute.
@@ -71,11 +78,14 @@ If you do not see your problem captured, please file a [new issue][] and follow 
 [Contribution Guide]: https://github.com/Azure/azure-powershell/blob/master/CONTRIBUTING.md
 [GitHub issues]: https://github.com/Azure/azure-powershell/issues
 [new issue]:https://github.com/Azure/azure-powershell/issues/new
+
+
 ## Legal and Licensing
 
 Azure-PowerShell is licensed under the [MIT license][].
 
 [MIT license]: https://github.com/Azure/azure-powershell/blob/master/LICENSE.txt
+
 
 ## [Code of Conduct][conduct-md]
 
