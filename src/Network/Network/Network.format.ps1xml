@@ -205,11 +205,11 @@
               </ListItem>
               <ListItem>
                 <Label>Source</Label>
-                <PropertyName>SourceText</PropertyName>
+                <PropertyName>Source</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Destination</Label>
-                <PropertyName>DestinationText</PropertyName>
+                <PropertyName>Destination</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>MonitoringIntervalInSeconds</Label>
@@ -236,8 +236,28 @@
                 <PropertyName>Type</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Tags</Label>
-                <PropertyName>TagsText</PropertyName>
+                <Label>Endpoints</Label>
+                <PropertyName>Endpoints</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TestGroups</Label>
+                <PropertyName>TestGroups</PropertyName>
+              </ListItem>            
+              <ListItem>
+                <Label>TestConfigurations</Label>
+                <PropertyName>TestConfigurations</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Outputs</Label>
+                <PropertyName>Outputs</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ConnectionMonitorType</Label>
+                <PropertyName>ConnectionMonitorType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Notes</Label>
+                <PropertyName>Notes</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

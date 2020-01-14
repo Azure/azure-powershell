@@ -124,7 +124,14 @@ namespace Microsoft.Azure.Commands.Network
             if (ShouldGetByName(resourceGroupName, connectionMonitorName))
             {
                 PSConnectionMonitorResult connectionMonitor = new PSConnectionMonitorResult();
+
+                // Always call Get with the new Rest API version (i.e. the one for CMv2)
                 connectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorName, true);
+
+                if (String.Compare(connectionMonitor.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
+                {
+                    ConvertConnectionMonitorResultV2toV1(connectionMonitor);
+                }
 
                 WriteObject(connectionMonitor);
             }
@@ -135,7 +142,8 @@ namespace Microsoft.Azure.Commands.Network
 
                 foreach (var cm in connectionMonitorList)
                 {
-                    PSConnectionMonitorResult psConnectionMonitor = NetworkResourceManagerProfile.Mapper.Map<PSConnectionMonitorResult>(cm);
+                    //PSConnectionMonitorResult psConnectionMonitor = NetworkResourceManagerProfile.Mapper.Map<PSConnectionMonitorResult>(cm);
+                    PSConnectionMonitorResult psConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResult(cm);
                     psConnectionMonitorList.Add(psConnectionMonitor);
                 }
 
@@ -144,35 +152,7 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     if (String.Compare(ConnectionMonitorResult.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
                     {
-                        //convert V2 to V1
-                        if (ConnectionMonitorResult.Source == null)
-                        {
-                            ConnectionMonitorResult.Source = new PSConnectionMonitorSource()
-                            {
-                                ResourceId = ConnectionMonitorResult.TestGroup?[0]?.Sources?[0]?.ResourceId
-                                // Port
-                            };
-                        }
-
-                        if (ConnectionMonitorResult.Destination == null)
-                        {
-                            ConnectionMonitorResult.Destination = new PSConnectionMonitorDestination()
-                            {
-                                ResourceId = ConnectionMonitorResult.TestGroup?[0]?.Destinations?[0]?.ResourceId,
-                                Address = ConnectionMonitorResult.TestGroup?[0]?.Destinations?[0]?.Address,
-                                Port = ConnectionMonitorResult.TestConfiguration?[0]?.TcpConfiguration?.Port ?? default(int)
-                            };
-                        }
-
-                        if (ConnectionMonitorResult.MonitoringIntervalInSeconds != null)
-                         {
-                            ConnectionMonitorResult.MonitoringIntervalInSeconds = ConnectionMonitorResult.TestConfiguration[0]?.TestFrequencySec;
-                         }
-                        
-                        // These parameters do not need mapping 
-                        // ConnectionMonitorResult.AutoStart = false;
-                        // getConnectionMonitor.StartTime
-                        // getConnectionMonitor.MonitoringStatus
+                        ConvertConnectionMonitorResultV2toV1(ConnectionMonitorResult);
                     }
                 }
 
