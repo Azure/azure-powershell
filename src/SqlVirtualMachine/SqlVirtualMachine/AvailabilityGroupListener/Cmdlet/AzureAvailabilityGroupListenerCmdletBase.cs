@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             ParameterSetName = ParameterSet.Name,
             Position = 1,
             HelpMessage = HelpMessages.NameSqlVMGroup)]
-        [Alias("GroupName")]
+        [Alias("TopLevelResourceName")]
         public string GroupName { get; set; }
 
         /// <summary>
@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             ParameterSetName = ParameterSet.Name,
             Position = 2,
             HelpMessage = HelpMessages.NameAvailabilityGroupListener)]
-        [Alias("AvailabilityGroupListenerName")]
         public string Name { get; set; }
 
         /// <summary>
