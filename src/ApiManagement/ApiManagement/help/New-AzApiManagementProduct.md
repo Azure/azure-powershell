@@ -177,7 +177,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionsLimit
 Specifies the maximum number of simultaneous subscriptions.
-The default value is 1.
+The default value is None.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
