@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
@@ -27,10 +28,42 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     /// This class implements the Update-AzAvailabilityGroupListener cmdlet. It allows to update the information relative to an Azure Sql Virtual Machine
     /// Group and return to the user an AzureAvailabilityGroupListenerModel object corresponding to the instance updated.
     /// </summary>
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilityGroupListener", DefaultParameterSetName = ParameterSet.Name, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilityGroupListener", DefaultParameterSetName = ParameterSet.Name, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureAvailabilityGroupListenerModel))]
-    public class UpdateAzureAvailabilityGroupListener : AzureAvailabilityGroupListenerUpsertCmdletBase
+    public class SetAzureAvailabilityGroupListener : AzureAvailabilityGroupListenerUpsertCmdletBase
     {
+        /// <summary>
+        /// Resource group name of the sql virtual machine group, overrided from the base class in order to not be mandatory
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSet.Name,
+            Position = 0,
+            HelpMessage = HelpMessages.ResourceGroupSqlVMGroup)]
+        [ResourceGroupCompleter]
+        public new virtual string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Name of the sql virtual machine group
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSet.Name,
+            Position = 1,
+            HelpMessage = HelpMessages.NameSqlVMGroup)]
+        public new string GroupName { get; set; }
+
+        /// <summary>
+        /// Name of the Availability Group Listener
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSet.Name,
+            Position = 2,
+            HelpMessage = HelpMessages.NameAvailabilityGroupListener)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSet.SqlVMGroupObject,
+            Position = 1,
+            HelpMessage = HelpMessages.NameAvailabilityGroupListener)]
+        public new string Name { get; set; }
+
         /// <summary>
         /// Availability Group Listener to be updated
         /// </summary>
@@ -39,7 +72,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             ValueFromPipeline = true,
             Position = 0,
             HelpMessage = HelpMessages.InputObjectAvailabilityGroupListener)]
-        [Alias("AvailabilityGroupListener")]
         public AzureAvailabilityGroupListenerModel InputObject { get; set; }
 
         /// <summary>
