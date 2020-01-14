@@ -15,7 +15,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Services;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 using Microsoft.Azure.Management.SqlVirtualMachine.Models;
@@ -56,13 +55,12 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
         /// <returns>The updated Availability Group Listener model</returns>
         public AzureAvailabilityGroupListenerModel UpsertAvailabilityGroupListener(AzureAvailabilityGroupListenerModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.AvailabilityGroupName, model.Name, 
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.GroupName, model.Name, 
                 new AvailabilityGroupListener()
                 {
                     AvailabilityGroupName = model.AvailabilityGroupName,
                     LoadBalancerConfigurations = model.LoadBalancerConfigurations,
-                    Port = model.Port,
-                    CreateDefaultAvailabilityGroupIfNotExist = model.CreateDefaultAvailabilityGroupIfNotExist
+                    Port = model.Port
                 });
             return CreateAvailabilityGroupListenerModelFromResponse(resp);
         }
@@ -116,14 +114,14 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
             // Extract the resource group name from the ID.
             string[] segments = resp.Id.Split('/');
 
-            AzureAvailabilityGroupListenerModel model = new AzureAvailabilityGroupListenerModel(segments[4])
+            AzureAvailabilityGroupListenerModel model = new AzureAvailabilityGroupListenerModel(segments[4], segments[8])
             {
                 Name = resp.Name,
                 AvailabilityGroupName = resp.AvailabilityGroupName,
                 Port = resp.Port,
                 LoadBalancerConfigurations = resp.LoadBalancerConfigurations,
-                CreateDefaultAvailabilityGroupIfNotExist = resp.CreateDefaultAvailabilityGroupIfNotExist,
-                ResourceId = resp.Id
+                ResourceId = resp.Id,
+                ProvisioningState = resp.ProvisioningState
             };
             return model;
         }

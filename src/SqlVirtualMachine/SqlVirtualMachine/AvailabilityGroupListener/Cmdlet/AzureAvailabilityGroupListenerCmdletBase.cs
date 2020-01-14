@@ -28,24 +28,36 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     public abstract class AzureAvailabilityGroupListenerCmdletBase : AzureSqlVirtualMachineCmdletBase<IEnumerable<AzureAvailabilityGroupListenerModel>, AzureAvailabilityGroupListenerAdapter>
     {
         /// <summary>
-        /// Resource group name of the Availability Group Listener
+        /// Resource group name of the AG listener
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ParameterSet.Name,
             Position = 0,
-            HelpMessage = "The name of the resource group.")]
+            HelpMessage = HelpMessages.ResourceGroupAvailabilityGroupListener)]
         [ResourceGroupCompleter]
-        public virtual string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Name of the Group Name
+        /// Name of the sql virtual machine group
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ParameterSet.Name,
             Position = 1,
             HelpMessage = HelpMessages.NameSqlVMGroup)]
-        [Alias("TopLevelResourceName")]
-        public string GroupName { get; set; }
+        [Alias("GroupName")]
+        [ResourceNameCompleter("Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups", nameof(ResourceGroupName))]
+        public string SqlVMGroupName { get; set; }
+
+        /// <summary>
+        /// SqlVmGroup Object of the AG Listener
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParameterSet.SqlVMGroupObject,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = HelpMessages.SqlVMGroupObjectHelpMessage)]
+        public AzureSqlVMGroupModel SqlVMGroupObject { get; set; }
 
         /// <summary>
         /// Name of the Availability Group Listener
@@ -54,6 +66,11 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             ParameterSetName = ParameterSet.Name,
             Position = 2,
             HelpMessage = HelpMessages.NameAvailabilityGroupListener)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSet.SqlVMGroupObject,
+            Position = 1,
+            HelpMessage = HelpMessages.NameAvailabilityGroupListener)]
+        [ResourceNameCompleter("Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListeners", nameof(ResourceGroupName), nameof(SqlVMGroupName))]
         public string Name { get; set; }
 
         /// <summary>

@@ -51,8 +51,9 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         public const string SkuSqlVMGroup = "SQL virtual machine group edition type.";
         public const string SqlVMGroupResourceId = "SQL virtual machine group resource id.";
         public const string InputObjectSqlVMGroup = "SQL virtual machine object.";
-        
+
         // Help messages relative to Availability Group Listener
+        public const string ResourceGroupAvailabilityGroupListener = "The name of the resource group.";
         public const string NameAvailabilityGroupListener = "Availability Group Listener name.";
         public const string AvailabilityGroupListenerResourceId = "Availability Group Listener Resource Id";
         public const string InputObjectAvailabilityGroupListener = "Availability Group Listener object.";
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         public const string SubnetIdHelpMessage = "Subnet Resource Id";
         public const string ProbePortHelpMessage = "Probe Port of the AG Listener";
         public const string PublicIpAddressResourceIdHelpMessage = "Public Ip Address Resource Id";
-        public const string SqlVirtualMachineInstancesHelpMessage = "List of Sql VMs";
+        public const string SqlVirtualMachineIDsHelpMessage = "List of Sql VM Resource IDs";
         public const string SqlVMGroupObjectHelpMessage = "SQL virtual machine Group object.";
 
         // Upsert

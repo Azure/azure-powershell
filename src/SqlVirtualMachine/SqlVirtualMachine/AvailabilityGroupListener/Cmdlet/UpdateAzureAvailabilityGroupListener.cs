@@ -15,12 +15,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 using Microsoft.Azure.Management.SqlVirtualMachine.Models;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
@@ -28,42 +25,10 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     /// This class implements the Update-AzAvailabilityGroupListener cmdlet. It allows to update the information relative to an Azure Sql Virtual Machine
     /// Group and return to the user an AzureAvailabilityGroupListenerModel object corresponding to the instance updated.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilityGroupListener", DefaultParameterSetName = ParameterSet.Name, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilityGroupListener", DefaultParameterSetName = ParameterSet.Name, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureAvailabilityGroupListenerModel))]
-    public class SetAzureAvailabilityGroupListener : AzureAvailabilityGroupListenerUpsertCmdletBase
+    public class UpdateAzureAvailabilityGroupListener : AzureAvailabilityGroupListenerUpsertCmdletBase
     {
-        /// <summary>
-        /// Resource group name of the sql virtual machine group, overrided from the base class in order to not be mandatory
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = ParameterSet.Name,
-            Position = 0,
-            HelpMessage = HelpMessages.ResourceGroupSqlVMGroup)]
-        [ResourceGroupCompleter]
-        public new virtual string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Name of the sql virtual machine group
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = ParameterSet.Name,
-            Position = 1,
-            HelpMessage = HelpMessages.NameSqlVMGroup)]
-        public new string GroupName { get; set; }
-
-        /// <summary>
-        /// Name of the Availability Group Listener
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = ParameterSet.Name,
-            Position = 2,
-            HelpMessage = HelpMessages.NameAvailabilityGroupListener)]
-        [Parameter(Mandatory = true,
-            ParameterSetName = ParameterSet.SqlVMGroupObject,
-            Position = 1,
-            HelpMessage = HelpMessages.NameAvailabilityGroupListener)]
-        public new string Name { get; set; }
-
         /// <summary>
         /// Availability Group Listener to be updated
         /// </summary>
@@ -87,6 +52,14 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         public string ResourceId { get; set; }
 
         /// <summary>
+        /// List of Virtual Machines
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.SqlVirtualMachineIDsHelpMessage)]
+        public new string[] SqlVirtualMachineId { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(
@@ -102,14 +75,19 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             if (ParameterSetName == ParameterSet.ResourceId)
             {
                 Name = GetResourceNameFromId(ResourceId);
-                GroupName = GetSqlVmGroupNameFromId(ResourceId);
+                SqlVMGroupName = GetSqlVmGroupNameFromId(ResourceId);
                 ResourceGroupName = GetResourceGroupNameFromId(ResourceId);
             }
-            if (ParameterSetName == ParameterSet.InputObject)
+            else if (ParameterSetName == ParameterSet.InputObject)
             {
                 Name = InputObject.Name;
-                GroupName = InputObject.AvailabilityGroupName;
+                SqlVMGroupName = InputObject.GroupName;
                 ResourceGroupName = InputObject.ResourceGroupName;
+            }
+            else if (ParameterSetName == ParameterSet.SqlVMGroupObject)
+            {
+                SqlVMGroupName = SqlVMGroupObject.Name;
+                ResourceGroupName = SqlVMGroupObject.ResourceGroupName;
             }
         }
 
@@ -119,7 +97,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <returns>The AvailabilityGroupListener that will be updated</returns>
         protected override IEnumerable<AzureAvailabilityGroupListenerModel> GetEntity()
         {
-            return new List<AzureAvailabilityGroupListenerModel>() { ModelAdapter.GetAvailabilityGroupListener(ResourceGroupName, GroupName, Name) };
+            return new List<AzureAvailabilityGroupListenerModel>() { ModelAdapter.GetAvailabilityGroupListener(ResourceGroupName, SqlVMGroupName, Name) };
         }
 
         /// <summary>
@@ -130,31 +108,12 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         protected override IEnumerable<AzureAvailabilityGroupListenerModel> ApplyUserInputToModel(IEnumerable<AzureAvailabilityGroupListenerModel> model)
         {
             List<AzureAvailabilityGroupListenerModel> updateData = new List<AzureAvailabilityGroupListenerModel>();
-            AzureAvailabilityGroupListenerModel group = model.FirstOrDefault();
+            AzureAvailabilityGroupListenerModel agListener = model.FirstOrDefault();
+            var loadBalancerConfiguration = agListener.LoadBalancerConfigurations.FirstOrDefault();
+            loadBalancerConfiguration.SqlVirtualMachineInstances = this.SqlVirtualMachineId;
 
-            //group.WsfcDomainProfile = updateWsfcDomainProfile(group.WsfcDomainProfile);
-
-            if(Tag != null)
-            {
-                group.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-            }
-            
-            updateData.Add(group);
+            updateData.Add(agListener);
             return updateData;
-        }
-        private WsfcDomainProfile updateWsfcDomainProfile(WsfcDomainProfile profile)
-        {
-            profile.ClusterBootstrapAccount = ClusterBootstrapAccount   ?? profile.ClusterBootstrapAccount;
-            profile.ClusterOperatorAccount  = ClusterOperatorAccount    ?? profile.ClusterOperatorAccount;
-            profile.SqlServiceAccount       = SqlServiceAccount         ?? profile.SqlServiceAccount;
-            profile.DomainFqdn              = DomainFqdn                ?? profile.DomainFqdn;
-            profile.StorageAccountUrl       = StorageAccountUrl         ?? profile.StorageAccountUrl;
-            profile.FileShareWitnessPath    = FileShareWitnessPath      ?? profile.FileShareWitnessPath;
-            profile.OuPath                  = OuPath                    ?? profile.OuPath;
-
-            profile.StorageAccountPrimaryKey = StorageAccountPrimaryKey != null ? ConversionUtilities.SecureStringToString(StorageAccountPrimaryKey) : profile.StorageAccountPrimaryKey;
-
-            return profile;
         }
 
         /// <summary>
