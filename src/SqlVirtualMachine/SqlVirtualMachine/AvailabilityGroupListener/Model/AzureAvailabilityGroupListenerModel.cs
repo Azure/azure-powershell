@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
 using Microsoft.Azure.Management.SqlVirtualMachine.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System.Collections.Generic;
@@ -25,9 +24,10 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
     /// </summary>
     public class AzureAvailabilityGroupListenerModel
     {
-        public AzureAvailabilityGroupListenerModel(string resourceGroupName)
+        public AzureAvailabilityGroupListenerModel(string resourceGroupName, string groupName)
         {
             this.ResourceGroupName = resourceGroupName;
+            this.GroupName = groupName;
         }
 
         /// <summary>
@@ -37,15 +37,16 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
         public string ResourceGroupName { get; }
 
         /// <summary>
+        /// Gets or sets the name of the SQL VM Group the Availability Group Listener is in
+        /// </summary>
+        [Ps1Xml(Label = "GroupName", Target = ViewControl.Table, Position = 2)]
+        public string GroupName { get; }
+
+        /// <summary>
         /// Gets or sets the name of the Availability Group Listener
         /// </summary>
         [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the associated Tags.
-        /// </summary>
-        public Dictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of the Availability Group Listener
@@ -66,11 +67,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
         /// List of load balancer configurations for an availability group listener.
         /// </summary>
         public IList<LoadBalancerConfiguration> LoadBalancerConfigurations { get; set; }
-
-        /// <summary>
-        /// Create a default availability group if it does not exist.
-        /// </summary>
-        public bool? CreateDefaultAvailabilityGroupIfNotExist { get; set; }
 
         /// <summary>
         /// Listener port.

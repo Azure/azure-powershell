@@ -13,75 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
-using System.Collections;
 using System.Management.Automation;
-using System.Security;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     public abstract class AzureAvailabilityGroupListenerUpsertCmdletBase : AzureAvailabilityGroupListenerCmdletBase
     {
         /// <summary>
-        /// Name used for operating cluster
+        /// List of Virtual Machines
         /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = HelpMessages.ClusterOperatorAccountSqlVMGroup)]
-        public virtual string ClusterOperatorAccount { get; set; }
-
-        /// <summary>
-        /// Name under which SQL service will run on all participating SQL virtual machines in the cluster
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = HelpMessages.SqlServiceAccountSqlVMGroup)]
-        public virtual string SqlServiceAccount { get; set; }
-
-        /// <summary>
-        /// Fully qualified ARM resource id of the witness storage account
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = HelpMessages.StorageAccountPrimaryKeySqlVMGroup)]
-        public virtual string StorageAccountUrl { get; set; }
-
-        /// <summary>
-        /// Primary key of the witness storage account
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = HelpMessages.StorageAccountPrimaryKeySqlVMGroup)]
-        public virtual SecureString StorageAccountPrimaryKey { get; set; }
-
-        /// <summary>
-        /// Fully qualified name of the domain
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = HelpMessages.DomainFqdnSqlVMGroup)]
-        public virtual string DomainFqdn { get; set; }
-
-        /// <summary>
-        /// Organizational Unit path in which the nodes and cluster will be present.
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = HelpMessages.OuPathSqlVMGroup)]
-        public virtual string OuPath { get; set; }
-
-        /// <summary>
-        /// Optional path for fileshare witness
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = HelpMessages.FileShareWitnessPathSqlVMGroup)]
-        public virtual string FileShareWitnessPath { get; set; }
-
-        /// <summary>
-        /// Name used for creating cluster
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = HelpMessages.ClusterBootstrapAccountSqlVMGroup)]
-        public virtual string ClusterBootstrapAccount { get; set; }
-
-        /// <summary>
-        /// Tags will be associated to the sql virtual machine group
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = HelpMessages.TagSqlVMGroup)]
-        public virtual Hashtable Tag { get; set; }
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = HelpMessages.SqlVirtualMachineIDsHelpMessage)]
+        public string[] SqlVirtualMachineId { get; set; }
     }
 }

@@ -12,19 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Management.Automation;
-using System.Security;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
-using Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 using Microsoft.Azure.Management.SqlVirtualMachine.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
@@ -32,22 +27,10 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     /// This class implements the New-AzAvailabilityGroupListener cmdlet. It creates a new instance of an Azure Availability Group Listener and returns its information 
     /// to the powershell user as a AzureAvailabilityGroupListenerModel object.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilityGroupListener", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilityGroupListener", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.Name)]
     [OutputType(typeof(AzureAvailabilityGroupListenerModel))]
     public class NewAzureAvailabilityGroupListener : AzureAvailabilityGroupListenerUpsertCmdletBase
     {
-        /// <summary>
-        /// SqlVmGroup Object of the AG Listener
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ParameterSet.SqlVMGroupObject,
-            Position = 0,
-            ValueFromPipeline = true,
-            HelpMessage = HelpMessages.SqlVMGroupObjectHelpMessage)]
-        [Alias("TopLevelResourceObject")]
-        public AzureSqlVMGroupModel SqlVMGroupObject { get; set; }
-
         /// <summary>
         /// Name of the Availability Group
         /// </summary>
@@ -62,7 +45,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         [Parameter(
             Mandatory = false,
             HelpMessage = HelpMessages.PortHelpMessage)]
-        public int? Port { get; private set; }
+        public int? Port { get; private set; } = 1433;
 
         /// <summary>
         /// Load Balancer Resource Id
@@ -105,20 +88,24 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         public string PublicIpAddressResourceId { get; private set; }
 
         /// <summary>
-        /// List of Virtual Machines
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = HelpMessages.SqlVirtualMachineInstancesHelpMessage)]
-        public IList<string> SqlVirtualMachineInstances { get; private set; }
-
-        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(
             Mandatory = false,
             HelpMessage = HelpMessages.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Parse the parameters provided as input in order to obtain the name of the resource group and the Availability Group Listener
+        /// </summary>
+        protected override void ParseInput()
+        {
+            if (ParameterSetName == ParameterSet.SqlVMGroupObject)
+            {
+                ResourceGroupName = SqlVMGroupObject.ResourceGroupName;
+                SqlVMGroupName = SqlVMGroupObject.Name;
+            }
+        }
 
         /// <summary>
         /// Check to see if Availability Group Listener with the same name already exists in this resource group.
@@ -128,7 +115,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         {
             try
             {
-                ModelAdapter.GetAvailabilityGroupListener(this.ResourceGroupName, this.GroupName, this.Name);
+                ModelAdapter.GetAvailabilityGroupListener(this.ResourceGroupName, this.SqlVMGroupName, this.Name);
             }
             catch (CloudException)
             {
@@ -160,18 +147,17 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
                 PrivateIpAddress = privateIpAddress,
                 ProbePort = this.ProbePort,
                 PublicIpAddressResourceId = this.PublicIpAddressResourceId,
-                SqlVirtualMachineInstances = this.SqlVirtualMachineInstances
+                SqlVirtualMachineInstances = this.SqlVirtualMachineId
             };
             var loadBalancerConfigurations = new List<LoadBalancerConfiguration>();
             loadBalancerConfigurations.Add(loadBalancerConfiguration);
 
-            newEntity.Add(new AzureAvailabilityGroupListenerModel(ResourceGroupName)
+            newEntity.Add(new AzureAvailabilityGroupListenerModel(ResourceGroupName, SqlVMGroupName)
             {
                 AvailabilityGroupName = this.AvailabilityGroupName,
                 Name = this.Name,
                 Port = this.Port,
-                LoadBalancerConfigurations = loadBalancerConfigurations,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true)
+                LoadBalancerConfigurations = loadBalancerConfigurations
             });
             return newEntity;
         }
