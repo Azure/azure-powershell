@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
+* Fixed typo in New-AzureRmVpnSite command that was preventing resource id completer from completing a parameter.
 
 ## Version 2.2.1
 * Upgrade dependancy of Microsoft.Azure.Management.Sql from 1.36-preivew to 1.37-preivew
