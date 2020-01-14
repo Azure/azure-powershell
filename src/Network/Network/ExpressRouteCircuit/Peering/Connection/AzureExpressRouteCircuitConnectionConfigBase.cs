@@ -48,6 +48,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "AddressPrefixType")]
+        [ValidateSet(
+           IPv4,
+           IPv6,
+           IgnoreCase = true)]
+        public string AddressPrefixType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Authorization Key to peer to circuit in another subscription")]
         [ValidateNotNullOrEmpty]
         public string AuthorizationKey { get; set; }
