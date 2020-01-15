@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
                     helper.GetRMModulePath("AzureRM.Network.psd1"),
                     helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     helper.GetRMModulePath("AzureRM.Storage.psd1"),
+                    helper.GetRMModulePath("AzureRM.Sql.psd1"),
                     helper.GetRMModulePath("AzureRM.ContainerInstance.psd1"),
                     helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
                     helper.GetRMModulePath("AzureRM.ManagedServiceIdentity.psd1"),
