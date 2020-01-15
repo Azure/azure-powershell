@@ -326,7 +326,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-The SKU name for the instance e.g. 'BC_Gen4'.
+The SKU name for the instance e.g. 'BC_Gen5'.
 
 ```yaml
 Type: System.String
