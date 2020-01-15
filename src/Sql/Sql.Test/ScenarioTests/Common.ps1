@@ -158,7 +158,7 @@ function Create-InstanceTestEnvironmentWithParams ($params, $location)
 {
 	Create-BasicManagedTestEnvironmentWithParams $params $location
 
-	New-AzureRmStorageAccount -StorageAccountName $params.storageAccount -ResourceGroupName $params.rgname -Location $location -Type Standard_GRS
+	New-AzStorageAccount -StorageAccountName $params.storageAccount -ResourceGroupName $params.rgname -Location $location -Type Standard_GRS
 }
 
 <#
