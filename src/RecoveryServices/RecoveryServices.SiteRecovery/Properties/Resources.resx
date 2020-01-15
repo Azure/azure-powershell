@@ -474,4 +474,37 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   <data name="NetworkingResourcesInDRNotSupportedForClassicVms" xml:space="preserve">
     <value>Classic virtual machines are not supported for network security group, public IP address and load balancer related enhancements.</value>
   </data>
+  <data name="ASRVMNicsAndUpdateNicNotAllowed" xml:space="preserve">
+    <value>ASRVMNics and UpdateNic cannot be used together. Use UpdateNic to update a single NIC or ASRVMNics to update multiple Nics together.</value>
+  </data>
+  <data name="NicNotFoundInVM" xml:space="preserve">
+    <value>Nic "{0}" not found in VM.</value>
+  </data>
+  <data name="RecoveryNetworkIdConflictInASRVMNics" xml:space="preserve">
+    <value>Different recovery virtual network Ids present in ASRVMNics.</value>
+  </data>
+  <data name="RecoveryNetworkInformationMismatch" xml:space="preserve">
+    <value>The recovery virtual network information in ASRVMNics and RecoveryNetworkId parameters do not match.</value>
+  </data>
+  <data name="RecoveryNetworkInformationMissing" xml:space="preserve">
+    <value>Recovery virtual network Id missing.</value>
+  </data>
+  <data name="RecoverySubnetInformationMissing" xml:space="preserve">
+    <value>Recovery subnet name missing.</value>
+  </data>
+  <data name="TfoNetworkIdConflictInASRVMNics" xml:space="preserve">
+    <value>Different test failover virtual network Ids present in ASRVMNics.</value>
+  </data>
+  <data name="TfoNetworkInformationMissing" xml:space="preserve">
+    <value>Test failover virtual network Id missing.</value>
+  </data>
+  <data name="TfoSubnetInformationMissing" xml:space="preserve">
+    <value>Test failover subnet name missing.</value>
+  </data>
+  <data name="UnsupportedReplicationProvidedForASRVMNicConfig" xml:space="preserve">
+    <value>Unsupported replication provider for ASR VM Nic Config.</value>
+  </data>
+  <data name="UnsupportedReplicationProvidedForNetworkingResources" xml:space="preserve">
+    <value>Unsupported replication provider for network security group, public IP address, and/or backend address pool related updates.</value>
+  </data>
 </root>
