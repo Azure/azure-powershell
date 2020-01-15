@@ -217,6 +217,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string[] RecoveryLBBackendAddressPoolId { get; set; }
 
         /// <summary>
+        ///     Gets or sets the name of the test failover VM.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string TfoAzureVMName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the test failover and failover NIC configuration details.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNull]
+        public ASRVMNicConfig[] ASRVMNicConfiguration { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
@@ -268,8 +282,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
 
                 // Both primary & recovery inputs should be present
-                if (string.IsNullOrEmpty(this.UpdateNic) ^
-                    string.IsNullOrEmpty(this.RecoveryNetworkId))
+                if (this.ASRVMNicConfiguration == null &&
+                    (string.IsNullOrEmpty(this.UpdateNic) ^
+                    string.IsNullOrEmpty(this.RecoveryNetworkId)))
                 {
                     this.WriteWarning(Resources.NetworkArgumentsMissingForUpdateVmProperties);
                     return;
@@ -282,7 +297,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryLBBackendAddressPoolId.Length > 0) &&
                     !(provider is A2AReplicationDetails))
                 {
-                    this.WriteWarning(Resources.NetworkingResourcesInDRNotSupportedForClassicVms);
+                    this.WriteWarning(
+                        Resources.UnsupportedReplicationProvidedForNetworkingResources);
+                    return;
+                }
+
+                if (this.ASRVMNicConfiguration != null &&
+                    !(provider is A2AReplicationDetails))
+                {
+                    this.WriteWarning(Resources.UnsupportedReplicationProvidedForASRVMNicConfig);
+                    return;
+                }
+
+                if (this.ASRVMNicConfiguration != null &&
+                    !string.IsNullOrEmpty(this.UpdateNic))
+                {
+                    this.WriteWarning(Resources.ASRVMNicsAndUpdateNicNotAllowed);
                     return;
                 }
 
@@ -296,6 +326,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var availabilitySetId = this.RecoveryAvailabilitySet;
                 var primaryNic = this.PrimaryNic;
                 var diskIdToDiskEncryptionMap = this.DiskIdToDiskEncryptionSetMap;
+                var tfoNetworkId = string.Empty;
                 var vMNicInputDetailsList = new List<VMNicInputDetails>();
                 var providerSpecificInput = new UpdateReplicationProtectedItemProviderInput();
 
@@ -484,6 +515,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         this.RecoveryBootDiagStorageAccountId = providerSpecificDetails.RecoveryBootDiagStorageAccountId;
                     }
 
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.TfoAzureVMName)))
+                    {
+                        this.TfoAzureVMName = providerSpecificDetails.TfoAzureVMName;
+                    }
+
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.Name)))
+                    {
+                        vmName = providerSpecificDetails.RecoveryAzureVMName;
+                    }
+
                     List<A2AVmManagedDiskUpdateDetails> managedDiskUpdateDetails = null;
 
                     // ManagedDisk case
@@ -496,7 +539,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                 new A2AVmManagedDiskUpdateDetails(
                                     managedDisk.DiskId,
                                     managedDisk.RecoveryTargetDiskAccountType,
-                                    managedDisk.RecoveryReplicaDiskAccountType));
+                                    managedDisk.RecoveryReplicaDiskAccountType,
+                                    failoverDiskName: managedDisk.FailoverDiskName,
+                                    tfoDiskName: managedDisk.TfoDiskName));
                         }
                     }
                     else if (this.AzureToAzureUpdateReplicationConfiguration != null && this.AzureToAzureUpdateReplicationConfiguration[0].IsManagedDisk)
@@ -508,7 +553,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                 new A2AVmManagedDiskUpdateDetails(
                                     managedDisk.DiskId,
                                     managedDisk.RecoveryTargetDiskAccountType,
-                                    managedDisk.RecoveryReplicaDiskAccountType));
+                                    managedDisk.RecoveryReplicaDiskAccountType,
+                                    failoverDiskName: managedDisk.FailoverDiskName,
+                                    tfoDiskName: managedDisk.TfoDiskName));
                         }
                     }
 
@@ -518,8 +565,66 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                         RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId,
                         ManagedDiskUpdateDetails = managedDiskUpdateDetails,
-                        DiskEncryptionInfo = this.A2AEncryptionDetails(provider)
+                        DiskEncryptionInfo = this.A2AEncryptionDetails(provider),
+                        TfoAzureVMName = this.TfoAzureVMName
                     };
+
+                    if (this.ASRVMNicConfiguration != null &&
+                        this.ASRVMNicConfiguration.Count() > 0)
+                    {
+                        var recoveryNetworkIds = new HashSet<string>();
+                        var tfoNetworkIds = new HashSet<string>();
+
+                        this.ASRVMNicConfiguration.ForEach(
+                            nic =>
+                            {
+                                if (!string.IsNullOrEmpty(nic.RecoveryVMNetworkId))
+                                {
+                                    recoveryNetworkIds.Add(nic.RecoveryVMNetworkId);
+                                }
+                            });
+                        this.ASRVMNicConfiguration.ForEach(
+                            nic =>
+                            {
+                                if (!string.IsNullOrEmpty(nic.TfoVMNetworkId))
+                                {
+                                    tfoNetworkIds.Add(nic.TfoVMNetworkId);
+                                }
+                            });
+
+                        if (recoveryNetworkIds.Count() > 1)
+                        {
+                            this.WriteWarning(Resources.RecoveryNetworkIdConflictInASRVMNics);
+                            return;
+                        }
+
+                        if (tfoNetworkIds.Count() > 1)
+                        {
+                            this.WriteWarning(Resources.TfoNetworkIdConflictInASRVMNics);
+                            return;
+                        }
+
+                        if (!string.IsNullOrEmpty(this.RecoveryNetworkId) &&
+                            !string.IsNullOrEmpty(recoveryNetworkIds.FirstOrDefault()) &&
+                            !this.RecoveryNetworkId.Equals(
+                                recoveryNetworkIds.First(), StringComparison.OrdinalIgnoreCase))
+                        {
+                            this.WriteWarning(Resources.RecoveryNetworkInformationMismatch);
+                            return;
+                        }
+
+                        if (!string.IsNullOrEmpty(recoveryNetworkIds.FirstOrDefault()))
+                        {
+                            vmRecoveryNetworkId = recoveryNetworkIds.First();
+                        }
+
+                        tfoNetworkId = tfoNetworkIds.FirstOrDefault();
+                    }
+
+                    if (string.IsNullOrEmpty(tfoNetworkId))
+                    {
+                        tfoNetworkId = providerSpecificDetails.SelectedTfoAzureNetworkId;
+                    }
 
                     vMNicInputDetailsList = getNicListToUpdate(providerSpecificDetails.VmNics);
                 }
@@ -530,6 +635,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RecoveryAzureVMName = vmName,
                         RecoveryAzureVMSize = vmSize,
                         SelectedRecoveryAzureNetworkId = vmRecoveryNetworkId,
+                        SelectedTfoAzureNetworkId = tfoNetworkId,
                         SelectedSourceNicId = primaryNic,
                         VmNics = vMNicInputDetailsList,
                         LicenseType =
@@ -578,6 +684,52 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (vmNicList != null)
             {
+                // If VM NICs list provided along with UpdateNic then only the NICs list is
+                // honored.
+                if (this.ASRVMNicConfiguration != null && this.ASRVMNicConfiguration.Count() > 0)
+                {
+                    var vmNicIds = vmNicList.Select(nic => nic.NicId);
+
+                    foreach (var nic in this.ASRVMNicConfiguration)
+                    {
+                        if (!vmNicIds.Contains(nic.NicId, StringComparer.OrdinalIgnoreCase))
+                        {
+                            throw new PSInvalidOperationException(
+                                Resources.NicNotFoundInVMForUpdateVmProperties);
+                        }
+
+                        var vMNicInputDetails = new VMNicInputDetails();
+
+                        vMNicInputDetails.NicId = nic.NicId;
+                        vMNicInputDetails.RecoveryVMSubnetName = nic.RecoveryVMSubnetName;
+                        vMNicInputDetails.EnableAcceleratedNetworkingOnRecovery =
+                            nic.EnableAcceleratedNetworkingOnRecovery;
+                        vMNicInputDetails.RecoveryNetworkSecurityGroupId =
+                            nic.RecoveryNetworkSecurityGroupId;
+                        vMNicInputDetails.ReplicaNicStaticIPAddress =
+                            nic.RecoveryIPConfigs?.FirstOrDefault()?.StaticIPAddress;
+                        vMNicInputDetails.RecoveryPublicIpAddressId =
+                            nic.RecoveryIPConfigs?.FirstOrDefault()?.PublicIpAddressId;
+                        vMNicInputDetails.RecoveryLBBackendAddressPoolIds =
+                            nic.RecoveryIPConfigs?.FirstOrDefault()?.LBBackendAddressPoolIds;
+
+                        vMNicInputDetails.TfoVMSubnetName = nic.TfoVMSubnetName;
+                        vMNicInputDetails.EnableAcceleratedNetworkingOnTfo =
+                            nic.EnableAcceleratedNetworkingOnTfo;
+                        vMNicInputDetails.TfoNetworkSecurityGroupId =
+                            nic.TfoNetworkSecurityGroupId;
+                        vMNicInputDetails.TfoIPConfigs = nic.TfoIPConfigs;
+
+                        vMNicInputDetails.SelectionType =
+                            string.IsNullOrEmpty(this.NicSelectionType)
+                                ? Constants.SelectedByUser : this.NicSelectionType;
+
+                        vMNicInputDetailsList.Add(vMNicInputDetails);
+                    }
+
+                    return vMNicInputDetailsList;
+                }
+
                 foreach (var nDetails in vmNicList)
                 {
                     var vMNicInputDetails = new VMNicInputDetails();
