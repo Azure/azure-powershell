@@ -75,5 +75,19 @@ namespace RecoveryServices.SiteRecovery.Test
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewContainer");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2ARemoveReplicationProtectedItemDisk()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-RemoveReplicationProtectedItemDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewA2AManagedDiskReplicationConfigWithCmk()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewA2AManagedDiskReplicationConfigurationWithCmk");
+        }
     }
 }
