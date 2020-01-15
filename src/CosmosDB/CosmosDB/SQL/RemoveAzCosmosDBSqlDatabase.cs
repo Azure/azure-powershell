@@ -52,21 +52,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Name, "Deleting CosmosDB Sql Database"))
             {
-                try
-                {
-                    CosmosDBManagementClient.SqlResources.DeleteSqlDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult();
+                CosmosDBManagementClient.SqlResources.DeleteSqlDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult();
 
-                    if (PassThru)
-                        WriteObject(bool.TrueString);
-                }
-                catch (Exception exception)
-                {
-                    if (PassThru)
-                    {
-                        // Write exception out to error channel.
-                        WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.CloseError, null));
-                    }
-                }
+                if (PassThru)
+                    WriteObject(true);
             }
 
             return;

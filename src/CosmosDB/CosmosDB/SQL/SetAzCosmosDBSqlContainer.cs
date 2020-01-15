@@ -15,11 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Text;
-using System.Linq;
 using Microsoft.Azure.Commands.CosmosDB.Models;
-using System.Reflection;
-using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -81,9 +77,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             List<string> Paths = new List<string>();
-
-            foreach (string path in PartitionKeyPath)
-                Paths.Add(path);
+            if (PartitionKeyPath != null && PartitionKeyPath.Length != 0)
+            {
+                foreach (string path in PartitionKeyPath)
+                    Paths.Add(path);
+            }
+            else
+            {
+                WriteWarning("Parameter PartitionKeyPath requires atleast one valid value.");
+                return;
+            }
 
             SqlContainerResource sqlContainerResource = new SqlContainerResource
             {
@@ -141,7 +144,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 foreach (string path in IndexingPolicy.IncludedPaths)
                     includedPaths.Add(new IncludedPath(path: path));
 
-                foreach (string path in IndexingPolicy.IncludedPaths)
+                foreach (string path in IndexingPolicy.ExcludedPaths)
                     excludedPaths.Add(new ExcludedPath(path: path));
 
                 IndexingPolicy indexingPolicy = new IndexingPolicy

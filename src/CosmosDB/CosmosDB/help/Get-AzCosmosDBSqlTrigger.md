@@ -44,8 +44,6 @@ _ts                    :
 _etag                  :
 ```
 
-{{ Add example description here }}
-
 ## PARAMETERS
 
 ### -AccountName

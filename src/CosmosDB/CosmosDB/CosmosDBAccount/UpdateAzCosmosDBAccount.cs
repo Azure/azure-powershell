@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
             
                 DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountUpdateParameters).GetAwaiter().GetResult().Body;
-                WriteObject(cosmosDBAccount);
+                WriteObject(new PSDatabaseAccount(cosmosDBAccount));
             }
 
             return;

@@ -62,8 +62,6 @@ Name                          : dbname
 Type                          : Microsoft.DocumentDB/databaseAccounts
 ```
 
-{{ Add example description here }}
-
 ## PARAMETERS
 
 ### -AsJob
