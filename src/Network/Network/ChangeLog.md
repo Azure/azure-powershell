@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
 
 ## Version 2.2.1
 * Upgrade dependancy of Microsoft.Azure.Management.Sql from 1.36-preivew to 1.37-preivew

@@ -1,0 +1,50 @@
+{
+  "attributes": {
+    "healthChecks": [
+      {
+        "name": "RestHealthQuery1",
+        "request": {
+          "authentication": {
+            "in": "Query",
+            "name": "Code",
+            "type": "ApiKey",
+            "value": "AuthValue=="
+          },
+          "method": "Get",
+          "uri": "https://clientvalidations.deploymentmanager.net/applications/healthcheck1/healthstatus"
+        },
+        "response": {
+          "regex": {
+            "matchQuantifier": "All",
+            "matches": ["resthc1", "healthy"]
+          },
+          "successStatusCodes": ["OK"]
+        }
+      },
+      {
+        "name": "RestHealthQuery2",
+        "request": {
+          "authentication": {
+            "in": "Header",
+            "name": "x-functions-key",
+            "type": "ApiKey",
+            "value": "AuthValue=="
+          },
+          "method": "Get",
+          "uri": "https://clientvalidations.deploymentmanager.net/applications/healthcheck2/healthStatus"
+        },
+        "response": {
+          "regex": {
+            "matchQuantifier": "All",
+            "matches": ["resthc1", "healthy"]
+          },
+          "successStatusCodes": ["OK"]
+        }
+      }
+    ],
+    "healthyStateDuration": "PT60M",
+    "maxElasticDuration": "PT20M",
+    "waitDuration": "PT10M",
+    "type": "REST"
+  }
+}
