@@ -580,9 +580,6 @@
   <data name="VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase" xml:space="preserve">
     <value>Vulnerability Assessment operation is not available on master database. Skipping...</value>
   </data>
-  <data name="NotPossibleToSwitchBackToGen4" xml:space="preserve">
-    <value>It is not possible to switch back to Gen4 compute generation as this hardware is being deprecated.</value>
-  </data>
   <data name="DoYouWantToProceed" xml:space="preserve">
     <value>Do you want to proceed?</value>
   </data>
@@ -591,15 +588,6 @@
   </data>
   <data name="CannotChangeHardwareFamily" xml:space="preserve">
     <value>You cannot change hardware family.</value>
-  </data>
-  <data name="InstancePoolInstanceCannotChangeHardwareFamily" xml:space="preserve">
-    <value>Instance '{0}' is placed inside the instance pool '{1}', therefore it inherits Edition, ComputeGeneration and SKU from it. Please remove these parameters and execute command again.</value>
-  </data>
-  <data name="HardwareFamilyDifferentInSkuAndComputeGeneration" xml:space="preserve">
-    <value>Provided ComputeGeneration parameter '{0}' has different value than provided SkuName '{1}'. Please align these parameters or use one of them and execute command again.</value>
-  </data>
-  <data name="EditionDifferentInSkuAndEdition" xml:space="preserve">
-    <value>Provided edition parameter '{0}' has different value than provided SkuName '{1}'. Please align these parameters or use one of them and execute command again.</value>
   </data>
   <data name="InvalidManagedInstanceSkuName" xml:space="preserve">
     <value>Provided SkuName '{0}' is invalid '{1}'. Please enter a valid SkuName value and execute command again.</value>

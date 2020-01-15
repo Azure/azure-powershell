@@ -42,5 +42,33 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
                 "BC",
                 AzureSqlManagedInstanceAdapter.GetInstanceSkuPrefix("BusinessCritical"));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetHardwareGenerationFromSkuName()
+        {
+            Assert.Equal(
+                "Gen4",
+                AzureSqlManagedInstanceAdapter.GetHardwareGenerationFromSkuName("GP_Gen4"));
+            Assert.Equal(
+                "Gen5",
+                AzureSqlManagedInstanceAdapter.GetHardwareGenerationFromSkuName("GP_Gen5"));
+            Assert.Equal(
+                "Gen4",
+                AzureSqlManagedInstanceAdapter.GetHardwareGenerationFromSkuName("BC_Gen4"));
+            Assert.Equal(
+                "Gen5",
+                AzureSqlManagedInstanceAdapter.GetHardwareGenerationFromSkuName("BC_Gen5"));
+            Assert.Equal(
+                "Gen5_Gen5",
+                AzureSqlManagedInstanceAdapter.GetHardwareGenerationFromSkuName("BC_Gen5_Gen5"));
+            Assert.Equal(
+                "",
+                AzureSqlManagedInstanceAdapter.GetHardwareGenerationFromSkuName("BC_"));
+            Assert.Null(AzureSqlManagedInstanceAdapter.GetHardwareGenerationFromSkuName("GPGen5"));
+            Assert.Null(AzureSqlManagedInstanceAdapter.GetHardwareGenerationFromSkuName("GPGen5"));
+            Assert.Null(AzureSqlManagedInstanceAdapter.GetHardwareGenerationFromSkuName(""));
+            Assert.Null(AzureSqlManagedInstanceAdapter.GetHardwareGenerationFromSkuName(null));
+        }
     }
 }

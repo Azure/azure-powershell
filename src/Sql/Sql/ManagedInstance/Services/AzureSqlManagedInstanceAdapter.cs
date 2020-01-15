@@ -229,5 +229,27 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
 
             return SqlSkuUtils.GetVcoreSkuPrefix(tier) ?? "Unknown";
         }
+
+        /// <summary>
+        /// Get hardware family from SKU name.
+        /// </summary>
+        /// <returns>The model to send to the update</returns>
+        public static string GetHardwareGenerationFromSkuName(string skuName)
+        {
+            if (string.IsNullOrWhiteSpace(skuName))
+            {
+                return null;
+            }
+
+            string hardwareFamily = null;
+
+            int underscoreIndex = skuName.IndexOf('_');
+            if (underscoreIndex >= 0)
+            {
+                hardwareFamily = skuName.Substring(underscoreIndex + 1);
+            }
+
+            return hardwareFamily;
+        }
     }
 }

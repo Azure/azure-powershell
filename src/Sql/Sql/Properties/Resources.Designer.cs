@@ -349,15 +349,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provided edition parameter &apos;{0}&apos; has different value than provided SkuName &apos;{1}&apos;. Please align these parameters or use one of them and execute command again..
-        /// </summary>
-        internal static string EditionDifferentInSkuAndEdition {
-            get {
-                return ResourceManager.GetString("EditionDifferentInSkuAndEdition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Azure Sql Database Elastic Pool name cannot be specified for this operation.
         /// </summary>
         internal static string ElasticPoolDatabaseActivityCancelNotSupported {
@@ -489,24 +480,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string FailoverGroupRemoveDatabaseNotExists {
             get {
                 return ResourceManager.GetString("FailoverGroupRemoveDatabaseNotExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Provided ComputeGeneration parameter &apos;{0}&apos; has different value than provided SkuName &apos;{1}&apos;. Please align these parameters or use one of them and execute command again..
-        /// </summary>
-        internal static string HardwareFamilyDifferentInSkuAndComputeGeneration {
-            get {
-                return ResourceManager.GetString("HardwareFamilyDifferentInSkuAndComputeGeneration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Instance &apos;{0}&apos; is placed inside the instance pool &apos;{1}&apos;, therefore it inherits Edition, ComputeGeneration and SKU from it. Please remove these parameters and execute command again..
-        /// </summary>
-        internal static string InstancePoolInstanceCannotChangeHardwareFamily {
-            get {
-                return ResourceManager.GetString("InstancePoolInstanceCannotChangeHardwareFamily", resourceCulture);
             }
         }
         
@@ -669,15 +642,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string NoStorageAccountWhenConfiguringThreatDetectionPolicy {
             get {
                 return ResourceManager.GetString("NoStorageAccountWhenConfiguringThreatDetectionPolicy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to It is not possible to switch back to Gen4 compute generation as this hardware is being deprecated..
-        /// </summary>
-        internal static string NotPossibleToSwitchBackToGen4 {
-            get {
-                return ResourceManager.GetString("NotPossibleToSwitchBackToGen4", resourceCulture);
             }
         }
         
