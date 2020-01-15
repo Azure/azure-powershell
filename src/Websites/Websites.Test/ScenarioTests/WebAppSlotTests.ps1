@@ -438,9 +438,10 @@ function Test-SetWebAppSlot
 		Assert-AreEqual $appWithSlotName $slot.Name
 		Assert-AreEqual $serverFarm1.Id $slot.ServerFarmId
         Assert-Null $webApp.Identity
+		Assert-AreEqual "AllAllowed" $slot.SiteConfig.FtpsState
 		
-		# Change service plan & set properties
-		$job = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName2 -HttpsOnly $true -AsJob
+		# Change service plan & set site and SiteConfig properties
+		$job = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName2 -HttpsOnly $true -AlwaysOn $true -AsJob
 		$job | Wait-Job
 		$slot = $job | Receive-Job
 
@@ -448,10 +449,13 @@ function Test-SetWebAppSlot
 		Assert-AreEqual $appWithSlotName $slot.Name
 		Assert-AreEqual $serverFarm2.Id $slot.ServerFarmId
         Assert-AreEqual $true $slot.HttpsOnly
+		Assert-AreEqual $true $slot.SiteConfig.AlwaysOn
 
 		# Set config properties
 		$slot.SiteConfig.HttpLoggingEnabled = $true
 		$slot.SiteConfig.RequestTracingEnabled = $true
+		$slot.SiteConfig.FtpsState = "FtpsOnly"
+		$slot.SiteConfig.MinTlsVersion = "1.0"
 
 		$slot = $slot | Set-AzWebAppSlot
 
@@ -460,16 +464,19 @@ function Test-SetWebAppSlot
 		Assert-AreEqual $serverFarm2.Id $slot.ServerFarmId
 		Assert-AreEqual $true $slot.SiteConfig.HttpLoggingEnabled
 		Assert-AreEqual $true $slot.SiteConfig.RequestTracingEnabled
+		Assert-AreEqual "FtpsOnly" $slot.SiteConfig.FtpsState
+		Assert-AreEqual "1.0" $slot.SiteConfig.MinTlsVersion
 
 		# set app settings and connection strings
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}
 
-		$slot = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -AssignIdentity $true
+		$slot = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -AssignIdentity $true -MinTlsVersion "1.2"
 
         # Assert
         Assert-NotNull  $slot.Identity
         Assert-AreEqual ($appSettings.Keys.Count) $slot.SiteConfig.AppSettings.Count
+		Assert-AreEqual "1.0" $slot.SiteConfig.MinTlsVersion
 
         $slot = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -ConnectionStrings $connectionStrings -numberofworkers $numberOfWorkers
 
@@ -853,13 +860,13 @@ function Test-SetAzureStorageWebAppHyperVSlot
 	$azureStorageAccountName1 = "myaccountname.file.core.windows.net"
 	$azureStorageAccountShareName1 = "myremoteshare"
 	$azureStorageAccountAccessKey1 = "AnAccessKey"
-	$azureStorageAccountMountPath1 = "C:\mymountpath"
+	$azureStorageAccountMountPath1 = "\mymountpath"
 	$azureStorageAccountCustomId2 = "mystorageaccount2"
 	$azureStorageAccountType2 = "AzureFiles"
 	$azureStorageAccountName2 = "myaccountname2.file.core.windows.net"
 	$azureStorageAccountShareName2 = "myremoteshare2"
 	$azureStorageAccountAccessKey2 = "AnAccessKey2"
-	$azureStorageAccountMountPath2 = "C:\mymountpath2"
+	$azureStorageAccountMountPath2 = "\mymountpath2"
 
 	try
 	{
