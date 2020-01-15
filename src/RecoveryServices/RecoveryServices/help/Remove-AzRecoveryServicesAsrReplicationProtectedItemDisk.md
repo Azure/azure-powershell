@@ -45,6 +45,14 @@ PS C:\> Remove-AzRecoveryServicesAsrReplicationProtectedItemDisk -ReplicationPro
 
 Start the operation to remove specified disk from protection VM for Managed disk.
 
+### Example 3
+```
+PS C:\>  $currentJob = Remove-AzRecoveryServicesAsrReplicationProtectedItemDisk -ReplicationProtectedItem $rpi -DiskId $diskId
+PS C:\>  Get-AzRecoveryServicesAsrJob -name $currentJob.id
+```
+
+Starts the operation to remove the specified disk and returns the ASR job used to track the remove protected disk operation.
+
 ## PARAMETERS
 
 ### -Confirm
