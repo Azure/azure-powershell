@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             // We try to get the database.  Since this is a create secondary database operation, we don't want the secondary database to already exist
             try
             {
-                ModelAdapter.GetDatabase(this.PartnerResourceGroupName, this.PartnerServerName, this.DatabaseName);
+                ModelAdapter.GetDatabase(this.PartnerResourceGroupName, this.PartnerServerName, string.IsNullOrEmpty(this.PartnerDatabaseName) ? this.DatabaseName : this.PartnerDatabaseName);
             }
             catch (CloudException ex)
             {
