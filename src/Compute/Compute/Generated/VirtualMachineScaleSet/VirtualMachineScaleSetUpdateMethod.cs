@@ -350,19 +350,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy.GracePeriod = this.AutomaticRepairGracePeriod;
             }
 
-            if (this.IsParameterBound(c => c.AutomaticRepairMaxInstanceRepairsPercent))
-            {
-                if (this.VirtualMachineScaleSetUpdate == null)
-                {
-                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
-                }
-                if (this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
-                }
-                this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy.MaxInstanceRepairsPercent = this.AutomaticRepairMaxInstanceRepairsPercent;
-            }
-
             if (this.IsParameterBound(c => c.BootDiagnosticsEnabled))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -1138,18 +1125,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.VirtualMachineScaleSet.AutomaticRepairsPolicy == null)
                 {
-                    this.VirtualMachineScaleSet.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                    this.VirtualMachineScaleSet.AutomaticRepairsPolicy = new PSAutomaticRepairsPolicy();
                 }
                 this.VirtualMachineScaleSet.AutomaticRepairsPolicy.GracePeriod = this.AutomaticRepairGracePeriod;
-            }
-
-            if (this.IsParameterBound(c => c.AutomaticRepairMaxInstanceRepairsPercent))
-            {
-                if (this.VirtualMachineScaleSet.AutomaticRepairsPolicy == null)
-                {
-                    this.VirtualMachineScaleSet.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
-                }
-                this.VirtualMachineScaleSet.AutomaticRepairsPolicy.MaxInstanceRepairsPercent = this.AutomaticRepairMaxInstanceRepairsPercent;
             }
 
             if (this.IsParameterBound(c => c.BootDiagnosticsEnabled))
@@ -1233,7 +1211,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.VirtualMachineScaleSet.AutomaticRepairsPolicy == null)
                 {
-                    this.VirtualMachineScaleSet.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                    this.VirtualMachineScaleSet.AutomaticRepairsPolicy = new PSAutomaticRepairsPolicy();
                 }
                 this.VirtualMachineScaleSet.AutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair;
             }

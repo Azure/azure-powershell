@@ -7,6 +7,8 @@ $global:templateFileName = "Storage.Template.json"
 $global:parametersCopyFileName = "Storage.Copy.Parameters.json"
 $global:templateCopyFileName = "Storage.Copy.Template.json"
 
+$global:restHealthCheckPropertiesFilePath = Join-Path "ScenarioTests" "RestHealthCheckProperties.json" # using forward slash to make this platform-agnostic for tests run during merge validations.
+
 $global:parametersArtifactSourceRelativePath = "ScenarioTests\ArtifactRoot\" + $global:parametersFileName
 $global:templateArtifactSourceRelativePath = "ScenarioTests\ArtifactRoot\" + $global:templateFileName
 $global:invalidParametersArtifactSourceRelativePath = "ScenarioTests\ArtifactRoot\" + $global:invalidParametersFileName
@@ -44,7 +46,14 @@ function Test-EndToEndFunctionalTests
 	# Test all service topology and rollout operation
 	Test-ServiceTopology $resourceGroupName $location $artifactSource $updatedArtifactSourceName $storageAccountName $subscriptionId
 
+	# Test List Artifact Sources
+	$artifactSources = Get-AzDeploymentManagerArtifactSource -ResourceGroupName $resourceGroupName
+	Assert-True { $artifactSources.Count -ge 2 }
+	$selectedArtifactSource = $artifactSources | Where-Object {$_.Name -eq $artifactSourceName}
+	Assert-NotNull $selectedArtifactSource "Created artifact source not returned in list"
+
 	Remove-AzDeploymentManagerArtifactSource -ResourceGroupName $resourceGroupName -Name $artifactSourceName
+	Remove-AzDeploymentManagerArtifactSource -ResourceGroupName $resourceGroupName -Name $updatedArtifactSourceName
 
 	$getArtifactSource = $null
 	try
@@ -89,8 +98,19 @@ function Test-ServiceTopology
 	$updatedServiceTopology = Set-AzDeploymentManagerServiceTopology $getResponse
 	Validate-Topology $updatedServiceTopology $resourceGroupName $location $serviceTopologyName $updatedArtifactSource.Id
 
+	# Test List ServiceTopologies
+	$serviceTopology2Name = $resourceGroupName + "ServiceTopology2"
+	$serviceTopology2 = New-AzDeploymentManagerServiceTopology -ResourceGroupName $resourceGroupName -Location $location -Name $serviceTopology2Name -ArtifactSourceId $artifactSource.Id
+
+	$serviceTopologies = Get-AzDeploymentManagerServiceTopology -ResourceGroupName $resourceGroupName
+	Assert-True { $serviceTopologies.Count -ge 2 }
+	$selectedTopology = $serviceTopologies | Where-Object {$_.Name -eq $serviceTopologyName}
+	Assert-NotNull $selectedTopology "Created topology not returned in list"
+	Validate-Topology $selectedTopology $resourceGroupName $location $serviceTopologyName $updatedArtifactSource.Id
+
 	# Test Remove-ServiceTopology 
 	Remove-AzDeploymentManagerServiceTopology -ResourceGroupName $resourceGroupName -Name $serviceTopologyName
+	Remove-AzDeploymentManagerServiceTopology -ResourceGroupName $resourceGroupName -Name $serviceTopology2Name
 	$getResponse = $null
 	try
 	{
@@ -151,8 +171,19 @@ function Test-Service
 
 	Validate-Service $updatedService $resourceGroupName $location $serviceTopologyName $serviceName $targetLocation $getResponse.TargetSubscriptionId
 
+	# Test List Services
+	$service2Name = $resourceGroupName + "Service2"
+	$service2 = New-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -Location $location -Name $service2Name -ServiceTopologyObject $serviceTopology -TargetLocation $targetLocation -TargetSubscriptionId $subscriptionId
+
+	$services = Get-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -ServiceTopologyName $serviceTopology.Name
+	Assert-True { $services.Count -ge 2 }
+	$selectedService = $services | Where-Object {$_.Name -eq $service2Name }
+	Assert-NotNull $selectedService "Created service not returned in list"
+	Validate-Service $selectedService $resourceGroupName $location $serviceTopologyName $service2Name $targetLocation $subscriptionId
+
 	# Test Remove-Service
 	Remove-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -Name $serviceName -ServiceTopologyName $serviceTopology.Name
+	Remove-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -Name $service2Name -ServiceTopologyName $serviceTopology.Name
 
 	$getResponse = $null
 
@@ -250,6 +281,16 @@ function Test-ServiceUnit
 
 	Validate-ServiceUnit $updatedServiceUnit $resourceGroupName $location $serviceTopology.Name $service.Name $serviceUnitName $resourceGroupName $getResponse.DeploymentMode $getResponse.TemplateArtifactSourceRelativePath $getResponse.ParametersArtifactSourceRelativePath
 
+	# Test List Service Units
+	$serviceUnits = Get-AzDeploymentManagerServiceUnit  `
+		-ResourceGroupName $resourceGroupName  `
+		-ServiceTopologyName $serviceTopology.Name `
+		-ServiceName $serviceName 
+	Assert-True { $serviceUnits.Count -ge 2 }
+	$selectedServiceUnit = $serviceUnits | Where-Object {$_.Name -eq $serviceUnitName}
+	Assert-NotNull $selectedServiceUnit "Created service unit not returned in list"
+	Validate-ServiceUnit $selectedServiceUnit $resourceGroupName $location $serviceTopology.Name $service.Name $serviceUnitName $resourceGroupName $getResponse.DeploymentMode $getResponse.TemplateArtifactSourceRelativePath $getResponse.ParametersArtifactSourceRelativePath
+
 	# Test Remove-ServiceUnit
 	Remove-AzDeploymentManagerServiceUnit -ResourceGroupName $resourceGroupName -ServiceTopologyName $serviceTopology.Name -ServiceName $service.Name -Name $serviceUnitName
 
@@ -323,6 +364,9 @@ function Test-Steps
 	$updatedStep = Set-AzDeploymentManagerStep $getResponse
 	Validate-Step $updatedStep $stepName $location $resourceGroupName $updatedDuration
 
+	# Test Health Check step
+	Test-HealthCheckStep $resourceGroupName $location
+
 	# Test Remove-Step 
 	Remove-AzDeploymentManagerStep -ResourceGroupName $resourceGroupName -Name $stepName
 	$getResponse = $null
@@ -354,6 +398,93 @@ function Validate-Step
 		Assert-AreEqual $resourceGroupName $step.ResourceGroupName
 		Assert-AreEqual $stepName  $step.Name
 		Assert-AreEqual $duration  $step.StepProperties.Duration
+}
+
+function Test-HealthCheckStep
+{
+    param
+    (
+    $resourceGroupName,
+    $location)
+
+	$stepName = "RestHealthCheckStep"
+	$updatedHealthyStateDuration = "PT60M"
+
+	$healthCheckStepProperties = Get-Content -Raw -Path $global:restHealthCheckPropertiesFilePath | ConvertFrom-Json
+	$step = New-AzDeploymentManagerStep -Name $stepName -ResourceGroupName $resourceGroupName -Location $location -HealthCheckPropertiesFile $global:restHealthCheckPropertiesFilePath
+	Validate-RestHealthCheckStep $step $stepName $location $resourceGroupName $healthCheckStepProperties
+
+	$getResponse = Get-AzDeploymentManagerStep -ResourceGroupName $resourceGroupName -Name $stepName
+	Validate-RestHealthCheckStep $getResponse $stepName $location $resourceGroupName $healthCheckStepProperties
+
+	# Test Set-Step
+	$getResponse.StepProperties.Attributes.HealthyStateDuration = $updatedHealthyStateDuration
+
+	$updatedStep = Set-AzDeploymentManagerStep $getResponse
+	Validate-RestHealthCheckStep $updatedStep $stepName $location $resourceGroupName $getResponse.StepProperties
+
+	# Test creating step with healthcheck properties
+	$step2Name = "RestHealthCheckStep2"
+	$step = New-AzDeploymentManagerStep -Name $step2Name -ResourceGroupName $resourceGroupName -Location $location -HealthCheckProperties $getResponse.StepProperties
+	Validate-RestHealthCheckStep $step $step2Name $location $resourceGroupName $getResponse.StepProperties
+
+	# Test list steps
+	$steps = Get-AzDeploymentManagerStep -ResourceGroupName $resourceGroupName
+	Assert-True { $steps.Count -ge 2 }
+	$selectedStep = $steps | Where-Object {$_.Name -eq $stepName}
+	Assert-NotNull $selectedStep "Created step not returned in list"
+
+	# Test Remove-Step 
+	Remove-AzDeploymentManagerStep -ResourceGroupName $resourceGroupName -Name $stepName
+	Remove-AzDeploymentManagerStep -ResourceGroupName $resourceGroupName -Name $step2Name
+	$getResponse = $null
+
+	try
+	{
+		$getResponse = Get-AzDeploymentManagerStep -ResourceGroupName $resourceGroupName -Name $stepName
+	}
+	catch 
+	{
+		$errorString = $_.Exception.Message
+		Assert-True { $errorString.Contains("was not found") }
+	}
+
+	Assert-Null $getResponse
+}
+
+function Validate-RestHealthCheckStep
+{
+    param
+    (
+    $step,
+    $stepName,
+    $location,
+	$resourceGroupName,
+	$healthCheckStepProperties)
+
+		Assert-NotNull $step "Created step is null"
+		Assert-AreEqual $resourceGroupName $step.ResourceGroupName
+		Assert-AreEqual $stepName  $step.Name
+
+		Assert-NotNull $step.StepProperties "Step properties is null in the created health check step"
+		Assert-NotNull $step.StepProperties.Attributes "Attributes in the StepProperties are null in the created health check step"
+		Assert-AreEqual $step.StepProperties.Attributes.WaitDuration $healthCheckStepProperties.Attributes.WaitDuration
+		Assert-AreEqual $step.StepProperties.Attributes.MaxElasticDuration $healthCheckStepProperties.Attributes.MaxElasticDuration
+		Assert-AreEqual $step.StepProperties.Attributes.HealthyStateDuration $healthCheckStepProperties.Attributes.HealthyStateDuration
+
+		Assert-AreEqual $step.StepProperties.Attributes.HealthChecks.Count $healthCheckStepProperties.Attributes.HealthChecks.Count
+
+		$refHealthCheck = $healthCheckStepProperties.Attributes.HealthChecks[0]
+		$selectedHealthCheck = $step.StepProperties.Attributes.HealthChecks | Where-Object {$_.Name -eq $refHealthCheck.Name}
+		Assert-NotNull $selectedHealthCheck "Rest Health check isn't found in the step properties"
+
+		Assert-AreEqual $refHealthCheck.Request.Method $selectedHealthCheck.Request.Method
+		Assert-AreEqual $refHealthCheck.Request.Uri $selectedHealthCheck.Request.Uri
+		Assert-AreEqual $refHealthCheck.Request.Authentication.Name $selectedHealthCheck.Request.Authentication.Name
+		Assert-AreEqual $refHealthCheck.Request.Authentication.InProperty $selectedHealthCheck.Request.Authentication.InProperty
+		Assert-AreEqual $refHealthCheck.Request.Authentication.Value $selectedHealthCheck.Request.Authentication.Value
+
+		Assert-AreEqual $refHealthCheck.Response.Regex.MatchQuantifier $selectedHealthCheck.Response.Regex.MatchQuantifier
 }
 
 function Test-Rollout
@@ -411,6 +542,12 @@ function Test-Rollout
 
 	$restartRollout = Restart-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName -Name $failedRolloutName -SkipSucceeded
 	Validate-Rollout $restartRollout $resourceGroupName $location $failedRolloutName @('Running') $serviceTopology $artifactSource $true 1
+
+	# Test list rollouts
+	$rollouts = Get-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName
+	Assert-True { $rollouts.Count -ge 2 }
+	$selectedRollout = $rollouts | Where-Object {$_.Name -eq $rolloutName}
+	Assert-NotNull $selectedRollout "Created rollout not returned in list"
 
 	Remove-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName -Name $rolloutName
 	$getResponse = Get-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName  -Name $rolloutName

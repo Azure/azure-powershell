@@ -61,17 +61,17 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Position = 2,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the service.")]
         [Parameter(
             Position = 2,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetService.ByServiceTopologyObjectParameterSet,
             HelpMessage = "The name of the service.")]
         [Parameter(
             Position = 2,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetService.ByServiceTopologyResourceIdParamSet,
             HelpMessage = "The name of the service.")]
         [ValidateNotNullOrEmpty]
@@ -115,15 +115,24 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public override void ExecuteCmdlet()
         {
             this.ResolveParams();
-            var psServiceResource = new PSServiceResource()
-            {
-                ResourceGroupName = this.ResourceGroupName,
-                ServiceTopologyName = this.ServiceTopologyName,
-                Name = this.Name
-            };
 
-            psServiceResource = this.DeploymentManagerClient.GetService(psServiceResource);
-            this.WriteObject(psServiceResource);
+            if (!string.IsNullOrWhiteSpace(this.Name))
+            {
+                var psServiceResource = new PSServiceResource()
+                {
+                    ResourceGroupName = this.ResourceGroupName,
+                    ServiceTopologyName = this.ServiceTopologyName,
+                    Name = this.Name
+                };
+
+                psServiceResource = this.DeploymentManagerClient.GetService(psServiceResource);
+                this.WriteObject(psServiceResource);
+            }
+            else
+            {
+                var psServiceResources = this.DeploymentManagerClient.ListServices(this.ResourceGroupName, this.ServiceTopologyName);
+                this.WriteObject(psServiceResources, enumerateCollection: true);
+            }
         }
 
         private void ResolveParams()
