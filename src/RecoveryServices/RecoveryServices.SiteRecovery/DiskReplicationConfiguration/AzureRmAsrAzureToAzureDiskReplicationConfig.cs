@@ -133,6 +133,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateNotNullOrEmpty]
         public string KeyEncryptionVaultId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the failover disk name.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string FailoverDiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test failover disk name.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string TfoDiskName { get; set; }
+
         #endregion Parameters
 
         /// <summary>
@@ -172,7 +186,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             DiskEncryptionVaultId = this.DiskEncryptionVaultId,
                             KeyEncryptionKeyUrl = this.KeyEncryptionKeyUrl,
                             KeyEncryptionVaultId = this.KeyEncryptionVaultId,
-                            RecoveryDiskEncryptionSetId = this.RecoveryDiskEncryptionSetId
+                            RecoveryDiskEncryptionSetId = this.RecoveryDiskEncryptionSetId,
+                            FailoverDiskName = this.FailoverDiskName,
+                            TfoDiskName = this.TfoDiskName
                         };
                         break;
                 }
