@@ -40,6 +40,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public ConcurrentQueue<string> DebugMessages { get; private set; }
 
+        protected static ConcurrentQueue<string> InitializationWarnings { get; set; } = new ConcurrentQueue<string>();
+
         private RecordingTracingInterceptor _httpTracingInterceptor;
         private object lockObject = new object();
         private AzurePSDataCollectionProfile _cachedProfile = null;
@@ -341,6 +343,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void BeginProcessing()
         {
+            FlushInitializationWarnings();
             SessionState = base.SessionState;
             var profile = _dataCollectionProfile;
             //TODO: Inject from CI server
@@ -539,6 +542,20 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             while (DebugMessages.TryDequeue(out message))
             {
                 base.WriteDebug(message);
+            }
+        }
+
+        public void WriteInitializationWarnings(string message)
+        {
+            InitializationWarnings.Enqueue(message);
+        }
+
+        protected void FlushInitializationWarnings()
+        {
+            string message;
+            while (InitializationWarnings.TryDequeue(out message))
+            {
+                base.WriteWarning(message);
             }
         }
 
