@@ -193,30 +193,30 @@ function Test-RemoveReplicationProtectedItemDisk{
         $recoveryFabricName = getRecoveryFabric
         $RecoveryReplicaDiskAccountType = "Premium_LRS"
         $RecoveryTargetDiskAccountType = "Premium_LRS"
-		$policyName = getPrimaryPolicy
-		$mappingName = getPrimaryContainerMapping
-		$primaryNetMapping = getPrimaryNetworkMapping
+	$policyName = getPrimaryPolicy
+	$mappingName = getPrimaryContainerMapping
+	$primaryNetMapping = getPrimaryNetworkMapping
 
 	#create recovery side resources
-		$recRgName = getRecoveryResourceGroupName
-		New-AzResourceGroup -name $recRgName -location $recoveryLocation -force
+	$recRgName = getRecoveryResourceGroupName
+	New-AzResourceGroup -name $recRgName -location $recoveryLocation -force
         [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-		$RecoveryAzureNetworkId = createRecoveryNetworkId 
-		$index =$RecoveryAzureNetworkId.IndexOf("/providers/")
-		$recRg =$RecoveryAzureNetworkId.Substring(0,$index)
+	$RecoveryAzureNetworkId = createRecoveryNetworkId 
+	$index =$RecoveryAzureNetworkId.IndexOf("/providers/")
+	$recRg =$RecoveryAzureNetworkId.Substring(0,$index)
 
-	#create primary
-		$vmName = getAzureVmName
-		$v2VmId = createAzureVm
-	    $logStg = createCacheStorageAccount
-		$vm = get-azVm -ResourceGroupName $vmName -Name $vmName
-		$vhdid =$vm.StorageProfile.OSDisk.ManagedDisk.Id
-		$index =$v2VmId.IndexOf("/providers/")
-		$Rg =$v2VmId.Substring(0,$index)
-		$PrimaryAzureNetworkId = $Rg + "/providers/Microsoft.Network/virtualNetworks/" + $vmName
+    #create primary
+	$vmName = getAzureVmName
+	$v2VmId = createAzureVm
+	$logStg = createCacheStorageAccount
+	$vm = get-azVm -ResourceGroupName $vmName -Name $vmName
+	$vhdid =$vm.StorageProfile.OSDisk.ManagedDisk.Id
+	$index =$v2VmId.IndexOf("/providers/")
+	$Rg =$v2VmId.Substring(0,$index)
+	$PrimaryAzureNetworkId = $Rg + "/providers/Microsoft.Network/virtualNetworks/" + $vmName
 
-	# vault Creation
-	    New-AzResourceGroup -name $vaultRg -location $vaultRgLocation -force
+    # vault Creation
+	New-AzResourceGroup -name $vaultRg -location $vaultRgLocation -force
         [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
         New-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
         [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
@@ -249,39 +249,39 @@ function Test-RemoveReplicationProtectedItemDisk{
         Assert-NotNull($rc)
 
     #create policy and mapping
-		$job = New-AzRecoveryServicesAsrPolicy -Name $policyName  -RecoveryPointRetentionInHours 12  -AzureToAzure 
-		WaitForJobCompletion -JobId $job.Name
-		$policy = Get-AzRecoveryServicesAsrPolicy  -Name $policyName
-		$job = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -Policy $policy -PrimaryProtectionContainer $pc -RecoveryProtectionContainer $rc
-		WaitForJobCompletion -JobId $job.Name
-		$mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -ProtectionContainer $pc 
+	$job = New-AzRecoveryServicesAsrPolicy -Name $policyName  -RecoveryPointRetentionInHours 12  -AzureToAzure 
+	WaitForJobCompletion -JobId $job.Name
+	$policy = Get-AzRecoveryServicesAsrPolicy  -Name $policyName
+	$job = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -Policy $policy -PrimaryProtectionContainer $pc -RecoveryProtectionContainer $rc
+	WaitForJobCompletion -JobId $job.Name
+	$mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -ProtectionContainer $pc 
 		
-	#network mapping
-		$job = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name $primaryNetMapping -PrimaryFabric $pf -PrimaryAzureNetworkId $PrimaryAzureNetworkId -RecoveryFabric $rf -RecoveryAzureNetworkId $RecoveryAzureNetworkId
+    #network mapping
+	$job = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name $primaryNetMapping -PrimaryFabric $pf -PrimaryAzureNetworkId $PrimaryAzureNetworkId -RecoveryFabric $rf -RecoveryAzureNetworkId $RecoveryAzureNetworkId
         WaitForJobCompletion -JobId $job.Name
         
-	#enable Replication
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
+     #enable Replication
+        $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
          -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
-    $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $v2VmId -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v
+    	$enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $v2VmId -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v
         WaitForJobCompletion -JobId $enableDRjob.Name
-		WaitForIRCompletion -affectedObjectId $enableDRjob.TargetObjectId
+	WaitForIRCompletion -affectedObjectId $enableDRjob.TargetObjectId
 
-	#add diskId
-		$pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
-		Assert-NotNull($pe)
+    #add diskId
+	$pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
+	Assert-NotNull($pe)
 
-	#create disk and attach
-	    $diskName = getAzureDataDiskName
-		$newDiskConfig = New-AzDiskConfig -Location $vm.Location  -CreateOption Empty -DiskSizeGB 20
-		$newDisk = New-AzDisk -ResourceGroupName $vm.ResourceGroupName -DiskName $diskName -Disk $newDiskConfig
-		$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $newDisk.Id -Lun 6
-		Update-azVm -ResourceGroupName $vmName -VM $vm
+    #create disk and attach
+        $diskName = getAzureDataDiskName
+	$newDiskConfig = New-AzDiskConfig -Location $vm.Location  -CreateOption Empty -DiskSizeGB 20
+	$newDisk = New-AzDisk -ResourceGroupName $vm.ResourceGroupName -DiskName $diskName -Disk $newDiskConfig
+	$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $newDisk.Id -Lun 6
+	Update-azVm -ResourceGroupName $vmName -VM $vm
 
-	#wait for the add-disk health warning to appear	
+    #wait for the add-disk health warning to appear	
         Write-Host $("Waiting for Add-Disk health warning...") -ForegroundColor Yellow
-		$HealthQueryWaitTimeInSeconds = 10
+	$HealthQueryWaitTimeInSeconds = 10
         do
         {
             $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
@@ -295,27 +295,27 @@ function Test-RemoveReplicationProtectedItemDisk{
             }
         }While($healthError -eq $null)
 
-	 #add disks
-	    $storageAccountName = "cachedisk1"
-	    $storageAccount = New-AzStorageAccount -ResourceGroupName $vmName -Location $primaryLocation  -Name $storageAccountName -Type 'Standard_LRS'
-		$disk2=	New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -DiskId $newDisk.Id -LogStorageAccountId   $storageAccount.Id -ManagedDisk  -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryResourceGroupId $pe.ProviderSpecificDetails.A2ADiskDetails[0].RecoveryResourceGroupId -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+     #add disks
+	$storageAccountName = "cachedisk1"
+	$storageAccount = New-AzStorageAccount -ResourceGroupName $vmName -Location $primaryLocation  -Name $storageAccountName -Type 'Standard_LRS'
+	$disk2=	New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -DiskId $newDisk.Id -LogStorageAccountId   $storageAccount.Id -ManagedDisk  -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryResourceGroupId $pe.ProviderSpecificDetails.A2ADiskDetails[0].RecoveryResourceGroupId -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
         $addDRjob = Add-AzRecoveryServicesAsrReplicationProtectedItemDisk -ReplicationProtectedItem $pe -AzureToAzureDiskReplicationConfiguration $disk2
-		WaitForJobCompletion -JobId $addDRjob.Name
+	WaitForJobCompletion -JobId $addDRjob.Name
 		
-	 #get disk to deattach
-	    Remove-AzStorageAccount -ResourceGroupName $vmName -Name $storageAccountName
-		WaitForAddDisksIRCompletion -affectedObjectId $addDRjob.TargetObjectId -JobQueryWaitTimeInSeconds 10 -IsExpectedToPass $false
-		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    #get disk to deattach
+	Remove-AzStorageAccount -ResourceGroupName $vmName -Name $storageAccountName
+	WaitForAddDisksIRCompletion -affectedObjectId $addDRjob.TargetObjectId -JobQueryWaitTimeInSeconds 10 -IsExpectedToPass $false
+	[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
          
-		$pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
-		$removeDisk =$pe.ProviderSpecificDetails.A2ADiskDetails | where-object {$_.AllowedDiskLevelOperations.Count -ne 0}
+	$pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
+	$removeDisk =$pe.ProviderSpecificDetails.A2ADiskDetails | where-object {$_.AllowedDiskLevelOperations.Count -ne 0}
 
-		Assert-NotNull($removeDisk)
-		$vm = get-azVm -ResourceGroupName $vmName -Name $vmName
-		$removeDiskObj = $vm.StorageProfile.DataDisks | Where-Object {$_.Name -eq $removeDisk.DiskName}
-		$removeDRjob = Remove-AzRecoveryServicesAsrReplicationProtectedItemDisk -ReplicationProtectedItem $pe -DiskId $removeDiskObj.ManagedDisk.Id
-		WaitForJobCompletion -JobId $removeDRjob.Name
+	Assert-NotNull($removeDisk)
+	$vm = get-azVm -ResourceGroupName $vmName -Name $vmName
+	$removeDiskObj = $vm.StorageProfile.DataDisks | Where-Object {$_.Name -eq $removeDisk.DiskName}
+	$removeDRjob = Remove-AzRecoveryServicesAsrReplicationProtectedItemDisk -ReplicationProtectedItem $pe -DiskId $removeDiskObj.ManagedDisk.Id
+	WaitForJobCompletion -JobId $removeDRjob.Name
 
-		$pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
-		Assert-NotNull($pe)
+	$pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
+	Assert-NotNull($pe)
 }
