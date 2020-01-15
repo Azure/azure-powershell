@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell:ubuntu-18.04
+FROM mcr.microsoft.com/powershell:centos-7
 
 ARG ARTIFACTS=/tmp/artifacts/
 ARG ARTIFACT=*.nupkg
@@ -8,8 +8,8 @@ ARG CONFIG=config
 ARG AZURERM_CONTEXT_SETTINGS=AzureRmContextSettings.json
 ARG AZURE=/root/.Azure
 ARG VCS_REF="none"
-ARG VERSION=3.3.0
-ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell
+ARG VERSION=
+ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell:${VERSION}-centos-7
 
 LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
       readme.md="http://aka.ms/azpsdockerreadme" \

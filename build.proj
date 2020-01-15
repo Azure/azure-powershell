@@ -67,6 +67,7 @@
     <!-- Docker related -->
     <DockerRoot>$(RepoRoot)/docker</DockerRoot>
     <DockerTools>$(RepoTools)/docker</DockerTools>
+    <DockerImageName Condition="'$(DockerImageName)' == ''">azure-powershell</DockerImageName>
   </PropertyGroup>
 
   <!-- Tasks -->
@@ -243,7 +244,7 @@
 
   <Target Name="BuildImage">
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/GetArtifacts.ps1 -Artifacts $(RepoArtifacts) -Docker $(DockerRoot) &quot;" />
-    <Exec Command="docker build -t azure-powershell $(DockerRoot)" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/BuildImages.ps1 -DOCKER $(DockerRoot) -IMAGENAME $(DockerImageName) &quot;" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/CleanArtifacts.ps1 -Docker $(DockerRoot) &quot;" />
   </Target>
 
