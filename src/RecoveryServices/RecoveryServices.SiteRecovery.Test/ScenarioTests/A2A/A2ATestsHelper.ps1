@@ -16,7 +16,7 @@
 ########################## Site Recovery Tests #############################
 
 ##Default Value ##
-$seed = "98"
+$seed = "88"
 function getVaultName{
     return "A2APowershellTest" + $seed;
 }
@@ -53,14 +53,12 @@ function getRecoveryFabric{
 
 }
 
-function getAzureVm{
-    param([string]$primaryLocation)
-    
-        $VMLocalAdminUser = "adminUser"
-        $VMLocalAdminSecurePassword = "password"
-        $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
-        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
-        New-AzVM -Name MyVm -Credential $Credential -location getPrimaryLocation
+function getAzureVmName{
+    return  "a2aVM"+$seed
+}
+
+function getAzureDataDiskName{
+    return  "a2aDataDisk"+$seed
 }
 
 function getPrimaryPolicy{
@@ -99,23 +97,76 @@ function getRecoveryNetworkMapping{
 }
 
 function getPrimaryNetworkId{
-    param([string] $location , [string] $resourceGroup)
+}
 
+function getRecoveryNetworkName{
+   return "A2ARecoveryNetwork"+ $seed;
+}
+
+function getCacheStorageAccountName{
+     return "cache"+ $seed;
+}
+
+function getRecoveryResourceGroupName{
+       return "recRG"+ $seed;
+}
+
+function createAzureVm{
+    param([string]$primaryLocation)
     
+        $VMLocalAdminUser = "adminUser"
+        $VMLocalAdminSecurePassword = "NewPassword@1"
+		$VMLocation = getPrimaryLocation
+		$VMName = getAzureVmName
+		$domain = "domain"+ $seed
+        $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
+        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain
+		return $vm.Id
 }
 
-function getRecoveryNetworkId{
+function createRecoveryNetworkId{
     param([string] $location , [string] $resourceGroup)
 
-    $primaryNetworkName = "recoveryNetwork"+ $location + $seed;
+	$NetworkName = getRecoveryNetworkName
+	$NetworkLocation = getRecoveryLocation
+	$ResourceGroupName = getRecoveryResourceGroupName
+	$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
     $virtualNetwork = New-AzVirtualNetwork `
-          -ResourceGroupName $resourceGroup `
-          -Location $location `
-          -Name $primaryNetworkName `
-          -AddressPrefix 10.0.0.0/16
-    $virtualNetwork.id
+          -ResourceGroupName $ResourceGroupName `
+          -Location $NetworkLocation `
+          -Name $NetworkName `
+          -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet
+    return $virtualNetwork.Id
 }
 
+function createCacheStorageAccount{
+    param([string] $location , [string] $resourceGroup)
+
+	$StorageAccountName = getCacheStorageAccountName
+	$cacheLocation = getPrimaryLocation
+	$storageRes = getAzureVmName
+    $storageAccount = New-AzStorageAccount `
+          -ResourceGroupName $storageRes `
+          -Location $cacheLocation `
+          -Name $StorageAccountName `
+          -Type 'Standard_LRS'
+    return $storageAccount.Id
+}
+
+function createRecoveryResourceGroup{
+    param([string] $location)
+
+	$ResourceGroupName = getRecoveryResourceGroupName
+	$ResourceLocation = getRecoveryLocation
+    $ResourceGroup = New-AzResourceGroup `
+          -Name $ResourceGroupName `
+          -Location $ResourceLocation  -force
+	[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    $ResourceGroup = Get-AzResourceGroup `
+          -Name $ResourceGroupName 
+	return $ResourceGroup.ResourceId
+}
 
 ##
 
@@ -131,7 +182,8 @@ function WaitForJobCompletion
     param(
         [string] $JobId,
         [int] $JobQueryWaitTimeInSeconds = 20,
-        [string] $Message = "NA"
+        [string] $Message = "NA",
+		[bool] $IsExpectedToPass = $true
         )
         $isJobLeftForProcessing = $true;
         do
@@ -156,10 +208,13 @@ function WaitForJobCompletion
                 [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
             }else
             {
-                if( !(($job.State -eq "Succeeded") -or ($job.State -eq "CompletedWithInformation")))
-                {
-                    throw "Job " + $JobId + "failed."
-                }
+			    if($IsExpectedToPass)
+				{
+					if( !(($job.State -eq "Succeeded") -or ($job.State -eq "CompletedWithInformation")))
+					{
+						throw "Job " + $JobId + "failed."
+					}
+				}
             }
         }While($isJobLeftForProcessing)
 }
@@ -197,4 +252,40 @@ Function WaitForIRCompletion
         Write-Host $("Finalize IR jobs:") -ForegroundColor Green
         $IRjobs
         WaitForJobCompletion -JobId $IRjobs[0].Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds -Message $("Finalize IR in Progress...")
+}
+
+<#
+.SYNOPSIS
+Wait for Add disks IR job completion
+Usage:
+    WaitForAddDisksIRCompletion -$affectedObjectId $VM
+    WaitForAddDisksIRCompletion -$affectedObjectId $VM -$JobQueryWaitTimeInSeconds 10
+#>
+Function WaitForAddDisksIRCompletion
+{ 
+    param(
+        [PSObject] $affectedObjectId,
+        [int] $JobQueryWaitTimeInSeconds = 10,
+		[bool] $IsExpectedToPass = $true
+        )
+        $isProcessingLeft = $true
+        $IRjobs = $null
+
+        Write-Host $("Add-Disk IR in Progress...") -ForegroundColor Yellow
+        do
+        {
+            $IRjobs = Get-AzRecoveryServicesAsrJob -TargetObjectId $affectedObjectId | Sort-Object StartTime -Descending | select -First 2 | Where-Object{$_.JobType -eq "AddDisksIrCompletion"}
+            $isProcessingLeft = ($IRjobs -eq $null -or $IRjobs.Count -ne 1)
+
+            if($isProcessingLeft)
+            {
+                Write-Host $("Add disk IR in Progress...") -ForegroundColor Yellow
+                Write-Host $("Waiting for: " + $JobQueryWaitTimeInSeconds.ToString + " Seconds") -ForegroundColor Yellow
+                [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
+            }
+        }While($isProcessingLeft)
+
+        Write-Host $("Finalize Add disk IR jobs:") -ForegroundColor Green
+        $IRjobs
+        WaitForJobCompletion -JobId $IRjobs[0].Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds -Message $("Finalize IR in Progress...") -IsExpectedToPass $IsExpectedToPass
 }
