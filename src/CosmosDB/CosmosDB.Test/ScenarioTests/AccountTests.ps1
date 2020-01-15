@@ -14,7 +14,7 @@
 
 function Test-AccountRelatedCmdlets
 {
-  $rgName = "CosmosDBResourceGroup1"
+  $rgName = "CosmosDBResourceGroup2"
   $location = "East US"
   $locationlist = "East US", "West US"
   $locationlist2 = "East US", "UK South", "UK West", "South India"
@@ -22,7 +22,7 @@ function Test-AccountRelatedCmdlets
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
 
-  $cosmosDBAccountName = "cosmosdb67127712"
+  $cosmosDBAccountName = "cosmosdb670"
 
   #use an existing account with the following information for Account Update Operations
   $cosmosDBExistingAccountName = "dbaccount27" 
@@ -36,7 +36,7 @@ function Test-AccountRelatedCmdlets
     {
        $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
     } while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
-
+  
   Assert-AreEqual $cosmosDBAccountName $cosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $cosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
   Assert-AreEqual 10 $cosmosDBAccount.ConsistencyPolicy.MaxIntervalInSeconds
@@ -69,8 +69,8 @@ function Test-AccountRelatedCmdlets
   $cosmosDBAccountReadOnlyKeys = Get-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname -Type "ReadOnlyKeys"
   Assert-NotNull $cosmosDBAccountReadOnlyKeys
 
-  $IsKeyRegenerated = New-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname -KeyKind "primary" -PassThru
-  Assert-AreEqual $IsKeyRegenerated true
+  $RegeneratedKey = New-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname -KeyKind "primary"
+  Assert-NotNull $RegeneratedKey 
 
   $IsAccountDeleted = Remove-AzCosmosDBAccount -Name $cosmosDBAccountName -ResourceGroupName $rgName -PassThru
   Assert-AreEqual $IsAccountDeleted true
@@ -123,8 +123,8 @@ function Test-AccountRelatedCmdletsUsingRid
   $cosmosDBAccountReadOnlyKeys = Get-AzCosmosDBAccountKey -ResourceId $cosmosDBAccount.Id -Type "ReadOnlyKeys"
   Assert-NotNull $cosmosDBAccountReadOnlyKeys
 
-  $IsKeyRegenerated = New-AzCosmosDBAccountKey -ResourceId $cosmosDBAccount.Id -KeyKind "primary" -PassThru
-  Assert-AreEqual $IsKeyRegenerated true
+  $RegeneratedKey = New-AzCosmosDBAccountKey -ResourceId $cosmosDBAccount.Id -KeyKind "secondaryReadonly"
+  Assert-NotNull $RegeneratedKey
 }
 
 function Test-AccountRelatedCmdletsUsingObject
@@ -161,8 +161,8 @@ function Test-AccountRelatedCmdletsUsingObject
   $cosmosDBAccountReadOnlyKeys = Get-AzCosmosDBAccountKey -InputObject $cosmosDBAccount -Type "ReadOnlyKeys"
   Assert-NotNull $cosmosDBAccountReadOnlyKeys
 
-  $IsKeyRegenerated = New-AzCosmosDBAccountKey -InputObject $cosmosDBAccount -KeyKind "primary" -PassThru
-  Assert-AreEqual $IsKeyRegenerated true
+  $RegeneratedKey = New-AzCosmosDBAccountKey -InputObject $cosmosDBAccount -KeyKind "primaryReadonly" 
+  Assert-NotNull $RegeneratedKey
 
   $IsAccountDeleted = Remove-AzCosmosDBAccount -InputObject $cosmosDBAccount -PassThru
   Assert-AreEqual $IsAccountDeleted true

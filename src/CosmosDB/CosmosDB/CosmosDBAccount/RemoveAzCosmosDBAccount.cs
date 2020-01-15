@@ -63,20 +63,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Name, "Removing Database Account"))
             {
-                try
-                {
-                    CosmosDBManagementClient.DatabaseAccounts.DeleteWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult();
-                    if (PassThru)
-                        WriteObject(true);
-                }
-                catch (Exception exception)
-                {
-                    if (PassThru)
-                    {
-                        // Write exception out to error channel.
-                        WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.CloseError, null));
-                    }
-                }
+                CosmosDBManagementClient.DatabaseAccounts.DeleteWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult();
+
+                if (PassThru)
+                    WriteObject(true);
             }
 
             return;

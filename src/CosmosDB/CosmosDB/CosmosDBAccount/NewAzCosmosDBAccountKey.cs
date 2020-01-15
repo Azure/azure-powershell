@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
@@ -22,7 +23,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountKey", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(void), typeof(bool))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountKey", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(string))]
     public class NewAzCosmosDBAccountKey : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -45,9 +46,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
-        public SwitchParameter PassThru { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (!ParameterSetName.Equals(NameParameterSet))
@@ -65,24 +63,38 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 Name = resourceIdentifier.ResourceName;
             }
+
             if (ShouldProcess(KeyKind, string.Format("Regenerating key for Database Account:", Name)))
             {
-                try
+                CosmosDBManagementClient.DatabaseAccounts.RegenerateKeyWithHttpMessagesAsync(ResourceGroupName, Name, new DatabaseAccountRegenerateKeyParameters{ KeyKind = KeyKind }).GetAwaiter().GetResult();
+
+                DatabaseAccountListKeysResult response = CosmosDBManagementClient.DatabaseAccounts.ListKeysWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
+                PSDatabaseAccountListKeys databaseAccountListKeys = new PSDatabaseAccountListKeys(response);
+
+                switch (KeyKind)
                 {
-                    CosmosDBManagementClient.DatabaseAccounts.RegenerateKeyWithHttpMessagesAsync(ResourceGroupName, Name, new DatabaseAccountRegenerateKeyParameters{ KeyKind = KeyKind }).GetAwaiter().GetResult();
-                    if(PassThru)
-                    {
-                        WriteObject(true);
-                    }
+                    case "primary":
+                        WriteObject(databaseAccountListKeys.Keys["PrimaryMasterKey"]);
+                        break;
+
+                    case "primaryReadonly":
+                        WriteObject(databaseAccountListKeys.Keys["PrimaryReadonlyMasterKey"]);
+                        break;
+
+                    case "secondary":
+                        WriteObject(databaseAccountListKeys.Keys["SecondaryMasterKey"]);
+                        break;
+
+                    case "secondaryReadonly":
+                        WriteObject(databaseAccountListKeys.Keys["SecondaryReadonlyMasterKey"]);
+                        break;
+
+                    default:
+                        WriteWarning("Invalid value for KeyKind.");
+                        break;
                 }
-                catch (Exception exception)
-                {
-                    if (PassThru)
-                    {
-                        // Write exception out to error channel.
-                        WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.CloseError, null));
-                    }
-                }
+
+                return;
             }
         }
     }

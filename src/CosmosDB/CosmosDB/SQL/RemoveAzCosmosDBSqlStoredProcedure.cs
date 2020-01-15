@@ -51,21 +51,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Name, "Deleting CosmosDB Sql Stored Procedure"))
             {
-                try
-                {
-                    CosmosDBManagementClient.SqlResources.DeleteSqlStoredProcedureWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, ContainerName, Name).GetAwaiter().GetResult();
+                CosmosDBManagementClient.SqlResources.DeleteSqlStoredProcedureWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, ContainerName, Name).GetAwaiter().GetResult();
 
-                    if (PassThru)
-                        WriteObject(true);
-                }
-                catch (Exception exception)
-                {
-                    if (PassThru)
-                    {
-                        // Write exception out to error channel.
-                        WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.CloseError, null));
-                    }
-                }
+                if (PassThru)
+                    WriteObject(true);
             }
 
             return;
