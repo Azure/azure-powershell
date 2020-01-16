@@ -110,12 +110,38 @@ function getCacheStorageAccountName{
 function getRecoveryResourceGroupName{
        return "recRG"+ $seed;
 }
+function Get-RandomSuffix(
+	[int] $size = 8)
+{
+	$variableName = "NamingSuffix"
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Record)
+	{
+		if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables.ContainsKey($variableName))
+		{
+			$suffix = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables[$variableName]
+		}
+		else
+		{
+			$suffix = @((New-Guid).Guid)
+
+			[Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables[$variableName] = $suffix
+		}
+	}
+	else
+	{
+		$suffix = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables[$variableName]
+	}
+
+	return $suffix.Substring(0, $size)
+}
 
 function createAzureVm{
     param([string]$primaryLocation)
     
         $VMLocalAdminUser = "adminUser"
-        $VMLocalAdminSecurePassword = "NewPassword@1"
+		$PasswordString = $(Get-RandomSuffix 12)
+		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
+        $VMLocalAdminSecurePassword = $Password
 		$VMLocation = getPrimaryLocation
 		$VMName = getAzureVmName
 		$domain = "domain"+ $seed
