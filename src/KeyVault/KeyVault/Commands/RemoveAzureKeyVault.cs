@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies the name of the key vault to remove.")]
         [ResourceNameCompleter("Microsoft.KeyVault/vaults", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [Alias("Name")]
         public string VaultName { get; set; }
 
         /// <summary>

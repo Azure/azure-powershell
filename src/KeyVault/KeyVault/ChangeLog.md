@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Name alias to VaultName attribute to make Remove-AzureKeyVault consistent with New-AzureKeyVault.
 
 ## Version 1.4.0
 * Update references in .psd1 to use relative path
