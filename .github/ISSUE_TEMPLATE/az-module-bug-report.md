@@ -29,7 +29,8 @@ assignees: ''
 
 ## Environment data
 
-<!-- Please run $PSVersionTable and paste the output in the below code block -->
+<!-- Please run $PSVersionTable and paste the output in the below code block
+     If running the Docker container image, indicate the tag of the image used and the version of Docker engine-->
 
 ```
 
