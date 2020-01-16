@@ -2333,7 +2333,7 @@ This case tests the per-listener HostNames feature.
 #>
 function Test-ApplicationGatewayWithListenerHostNames
 {
-	param
+		param
 	(
 		$basedir = "./"
 	)
@@ -2355,6 +2355,7 @@ function Test-ApplicationGatewayWithListenerHostNames
 	$fipconfigName = Get-ResourceName
 	$listener01Name = Get-ResourceName
 	$listener02Name = Get-ResourceName
+	$listener03Name = Get-ResourceName
 
 	$poolName = Get-ResourceName
 	$poolName02 = Get-ResourceName
@@ -2452,8 +2453,9 @@ function Test-ApplicationGatewayWithListenerHostNames
 		# Add to test Remove
 		Add-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw -Name $poolSetting02Name -Port 1234 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 42 -HostName test -Path /test -AffinityCookieName test
 		$fipconfig = Get-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName
-		Add-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp02 -HostNames "www.contoso.*" -RequireServerNameIndication true -SslCertificate $sslCert
+		Add-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp02 -HostNames "TestHostName" -SslCertificate $sslCert
 		$listener02 = Get-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name
+		Add-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener03Name -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp02 -HostName TestName -SslCertificate $sslCert
 		$urlPathMap = Get-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name $urlPathMapName
 		Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType PathBasedRouting -HttpListener $listener02 -UrlPathMap $urlPathMap
 
@@ -2471,7 +2473,7 @@ function Test-ApplicationGatewayWithListenerHostNames
 		Assert-NotNull $appgw.HttpListeners[0].CustomErrorConfigurations
 		Assert-NotNull $appgw.TrustedRootCertificates
 		Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 2
-		Assert-AreEqual $appgw.HttpListeners.Count 2
+		Assert-AreEqual $appgw.HttpListeners.Count 3
 		Assert-AreEqual $appgw.RequestRoutingRules.Count 2
 
 		# Get
@@ -2527,13 +2529,14 @@ function Test-ApplicationGatewayWithListenerHostNames
 		Remove-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName
 		Remove-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw -Name $poolSetting02Name
 		Remove-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule02Name
+		Remove-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name
 
 		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 
 		Assert-Null $appgw.TrustedRootCertificates
 		Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 1
 		Assert-AreEqual $appgw.RequestRoutingRules.Count 1
-		Assert-AreEqual $appgw.HttpListeners.Count 1
+		Assert-AreEqual $appgw.HttpListeners.Count 2
 	}
 	finally
 	{
