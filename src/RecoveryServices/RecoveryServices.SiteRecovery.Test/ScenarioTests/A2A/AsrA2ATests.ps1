@@ -60,29 +60,6 @@ function Test-NewA2AManagedDiskReplicationConfiguration
 }
 
 <#
-.SYNOPSIS
-    NewA2AManagedDiskReplicationConfigurationWithCmk creation test.
-#>
-function Test-NewA2AManagedDiskReplicationConfigurationWithCmk
-{
-    $logStorageAccountId = "fdd"
-    $DiskId = "diskId"
-    $RecoveryResourceGroupId = "3"
-    $RecoveryReplicaDiskAccountType = "Premium_LRS"
-    $RecoveryTargetDiskAccountType = "Premium_LRS"
-	$RecoveryDiskEncryptionSetId ="des"
-
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStorageAccountId `
-         -DiskId "diskId" -RecoveryResourceGroupId  $RecoveryResourceGroupId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
-         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType -RecoveryDiskEncryptionSetId $RecoveryDiskEncryptionSetId
-
-     Assert-True { $v.LogStorageAccountId -eq $LogStorageAccountId }
-     Assert-True { $v.DiskId -eq $DiskId  }
-     Assert-True { $v.RecoveryResourceGroupId -eq $RecoveryResourceGroupId }
-	 Assert-True { $v.RecoveryDiskEncryptionSetId -eq $RecoveryDiskEncryptionSetId }
-}
-
-<#
 .SYNOPSIS 
     Test GetAsrFabric new parametersets
 #>
