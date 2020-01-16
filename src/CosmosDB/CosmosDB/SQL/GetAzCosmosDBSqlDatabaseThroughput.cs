@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public PSDatabaseAccount InputObject { get; set; }
 
         public override void ExecuteCmdlet()
