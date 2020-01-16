@@ -78,7 +78,7 @@ function Test-AzConfigurationAssignment
         #Assert-ConfigurationAssignment $configurationAssignmentCreated $retrievedConfigurationAssignmentList[0]
 
         Remove-AzConfigurationAssignment -ResourceGroupName smdtest$location -ResourceParentType hostGroups -ResourceParentName smddhg$location -ResourceType hosts -ResourceName smddh$location -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -Force
-		
+
 		Remove-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -Force
     }
     finally
@@ -113,10 +113,10 @@ function Test-AzMaintenanceUpdate
         Assert-AreEqual $configurationAssignmentCreated.MaintenanceConfigurationId $maintenanceConfigurationCreated.Id
 
         $retrievedMaintenanceUpdateList = Get-AzMaintenanceUpdate -ResourceGroupName smdtest$location -ResourceParentType hostGroups -ResourceParentName smddhg$location -ResourceType hosts -ResourceName smddh$location -ProviderName Microsoft.Compute
-		#Assert-NotNull $retrievedMaintenanceUpdateList
+		Assert-NotNull $retrievedMaintenanceUpdateList
 
         Remove-AzConfigurationAssignment -ResourceGroupName smdtest$location -ResourceParentType hostGroups -ResourceParentName smddhg$location -ResourceType hosts -ResourceName smddh$location -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -Force
-		
+
 		Remove-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -Force
     }
     finally
