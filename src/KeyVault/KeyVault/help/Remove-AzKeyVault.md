@@ -15,13 +15,13 @@ Deletes a key vault.
 
 ### ByAvailableVault (Default)
 ```
-Remove-AzKeyVault [-Name] <String> [[-ResourceGroupName] <String>] [[-Location] <String>] [-Force]
+Remove-AzKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [[-Location] <String>] [-Force]
  [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByDeletedVault
 ```
-Remove-AzKeyVault [-Name] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
+Remove-AzKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 
 ### Example 1: Remove a key vault
 ```powershell
-PS C:\> Remove-AzKeyVault -Name "Contoso03Vault" -PassThru
+PS C:\> Remove-AzKeyVault -VaultName "Contoso03Vault" -PassThru
 
 True
 ```
@@ -231,7 +231,7 @@ Specifies the name of the key vault to remove.
 ```yaml
 Type: System.String
 Parameter Sets: ByAvailableVault, ByDeletedVault
-Aliases:
+Aliases: Name
 
 Required: True
 Position: 0
@@ -273,7 +273,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
