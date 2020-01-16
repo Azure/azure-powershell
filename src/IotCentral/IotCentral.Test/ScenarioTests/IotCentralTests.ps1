@@ -29,7 +29,7 @@ function Test-IotCentralAppLifecycleManagement{
 	$rname = Get-ResourceName
 	$subdomain = ($rname) + "subdomain"
 	$location = Get-Location "Microsoft.IoTCentral" "IotApps"
-	$sku = "S1"
+	$sku = "ST2"
 	$displayName = "Custom IoT Central App DisplayName"
 	$tagKey = "key1"
 	$tagValue = "value1"
@@ -55,6 +55,7 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $actual.Tag.Item($tagkey) $tagvalue
 		Assert-AreEqual 1 @($list).Count
 		Assert-AreEqual $actual.Name $list[0].Name
+		Assert-AreEqual $actual.Sku.Name $sku
 
 		# Get App
 		$rname1 = $rname
