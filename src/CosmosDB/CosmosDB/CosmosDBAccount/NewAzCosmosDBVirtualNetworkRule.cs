@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
     public class NewAzCosmosDBVirtualNetworkRule : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.VirtualNetworkRuleIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IgnoreMissingVNetServiceEndpointHelpMessage)]
