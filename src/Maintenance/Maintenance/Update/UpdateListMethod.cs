@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.Maintenance
                     MaintenanceAutomationAutoMapperProfile.Mapper.Map<Update, PSUpdate>(update, psUpdate);
                     psObject.Add(psUpdate);
                 }
+
+                WriteObject(psObject);
             });
         }
 
