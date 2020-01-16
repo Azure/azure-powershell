@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
     public class NewAzCosmosDBSqlConflictResolutionPolicy : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.ConflictResolutionPolicyTypeHelpMessage)]
+        [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("LastWriterWins", "Custom", "Manual")]
         public string Type { get; set; }
 
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string Path { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyStoredProcedureNameHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string ConflictResolutionProcedure { get; set; }
 
         public override void ExecuteCmdlet()

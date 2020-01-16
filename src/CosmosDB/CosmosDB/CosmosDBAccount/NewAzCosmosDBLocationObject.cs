@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
     public class NewAzCosmosDBLocationObject : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.LocationNameHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string LocationName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.FailoverPriorityHelpMessage)]

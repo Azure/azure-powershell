@@ -29,9 +29,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
     { 
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AccountUpdateLocationHelpMessage)]
@@ -41,9 +43,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public PSLocation[] LocationObject { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
+        [ValidateNotNull]
         public PSDatabaseAccount InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
@@ -84,19 +88,21 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             else
             {
-                WriteError(new ErrorRecord(new PSArgumentException("Cannot Add Region if no location is provided."), string.Empty, ErrorCategory.CloseError, null));
+                WriteWarning("Cannot Add Region if no location is provided.");
                 return;
             }
 
             DatabaseAccountUpdateParameters createUpdateParameters = new DatabaseAccountUpdateParameters(locations:locations);
             
-            CosmosDBManagementClient.DatabaseAccounts.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, createUpdateParameters).GetAwaiter().GetResult();
-            
             if (ShouldProcess(Name, "Updating Database Account Region"))
             {
+                CosmosDBManagementClient.DatabaseAccounts.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, createUpdateParameters).GetAwaiter().GetResult();
+
                 DatabaseAccountGetResults databaseAccount = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
                 WriteObject(new PSDatabaseAccount(databaseAccount));
             }
+
+            return;
         }
     }
 }

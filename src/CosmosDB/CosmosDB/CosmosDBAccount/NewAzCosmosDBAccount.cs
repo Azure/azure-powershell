@@ -20,7 +20,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Management.CosmosDB;
 using Microsoft.Azure.Management.CosmosDB.Models;
 
@@ -31,9 +30,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.DefaultConsistencyLevelHelpMessage)]
@@ -50,12 +51,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public SwitchParameter EnableVirtualNetwork { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IpRangeFilterHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string[] IpRangeFilter { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string[] Location { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.LocationObjectHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public PSLocation[] LocationObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.MaxStalenessIntervalInSecondsHelpMessage)]
@@ -65,12 +69,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public int? MaxStalenessPrefix { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.TagHelpMessage)]
+        [ValidateNotNull]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.VirtualNetworkRuleHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string[] VirtualNetworkRule { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.VirtualNetworkRuleObjectHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public PSVirtualNetworkRule[] VirtualNetworkRuleObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ApiKindHelpMessage)]
@@ -218,7 +225,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSDatabaseAccount(cosmosDBAccount));
             }
-                
+
+            return;
         }
     }
 }

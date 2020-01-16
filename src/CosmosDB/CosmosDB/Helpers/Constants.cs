@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string AccountFailoverPolicyHelpMessage = "Array of strings having region names, ordered by failover priority. E.g eastus, westus";
         public const string AccountObjectHelpMessage = "CosmosDB Account object";
         public const string AccountUpdateLocationHelpMessage = "Name of the location to be added.";
-        public const string DefaultConsistencyLevelHelpMessage = "Default consistency level of the Cosmos DB database account. Accepted values: BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong";
+        public const string DefaultConsistencyLevelHelpMessage = "Default consistency level of the Cosmos DB database account. Accepted values: BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong. Default is Session.";
         public const string EnableAutomaticFailoverHelpMessage = "Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result" +
                " in a new write region for the account and is chosen based on the failover priorities configured for the account. Accepted values: false, true ";
         public const string EnableMultipleWriteLocationsHelpMessage = "Enable Multiple Write Locations. Accepted values: false, true ";
@@ -82,8 +82,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string StoredProcedureBodyHelpMessage = "The body of the Stored Procedure.";
         public const string UserDefinedFunctionBodyHelpMessage = "The body of the User Defined Function.";
         public const string TriggerBodyHelpMessage = "The body of the Trigger.";
-        public const string TriggerOperationHelpMessage = "The operation the trigger is associated with. Possible values include: 'All', 'Create', 'Update', 'Delete', 'Replace' ";
-        public const string TriggerTypeHelpMessage = "Type of the Trigger. Possible values include: 'Pre', 'Post'";
+        public const string TriggerOperationHelpMessage = "The operation the trigger is associated with. Possible values include: 'All', 'Create', 'Update', 'Delete', 'Replace'. If the value is not provided, then it defaults to 'All'.";
+        public const string TriggerTypeHelpMessage = "Type of the Trigger. Possible values include: 'Pre', 'Post'. If the value is not provided, then it defaults to 'Pre'.";
         public const string SqlUserDefinedFunctionObjectHelpMessage = "Sql User Defined Function Object";
         public const string SqlTriggerObjectHelpMessage = "Sql trigger Object";
         public const string SqlStoredProcedureObjectHelpMessage = "Sql Stored Procedure Object";
