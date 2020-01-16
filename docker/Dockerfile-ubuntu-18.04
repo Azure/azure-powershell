@@ -8,12 +8,14 @@ ARG CONFIG=config
 ARG AZURERM_CONTEXT_SETTINGS=AzureRmContextSettings.json
 ARG AZURE=/root/.Azure
 ARG VCS_REF="none"
+ARG Build_Date=
 ARG VERSION=
 ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell:${VERSION}-ubuntu-18.04
 
 LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
       readme.md="http://aka.ms/azpsdockerreadme" \
       description="This Dockerfile will install the latest release of Azure PowerShell." \
+      org.label-schema.build-date=${Build_Date} \
       org.label-schema.usage="http://aka.ms/azpsdocker" \
       org.label-schema.url="http://aka.ms/azpsdockerreadme" \
       org.label-schema.vcs-url="https://github.com/Azure/azure-powershell" \
