@@ -14,8 +14,15 @@ Gets a list of Recovery Services vaults.
 
 ## SYNTAX
 
+### ByTagNameValueParameterSet
 ```
-Get-AzRecoveryServicesVault [-ResourceGroupName <String>] [-Name <String>]
+Get-AzRecoveryServicesVault [[-ResourceGroupName] <String>] [[-Name] <String>] [-TagName <String>]
+ [-TagValue <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTagObjectParameterSet
+```
+Get-AzRecoveryServicesVault [[-ResourceGroupName] <String>] [[-Name] <String>] -Tag <Hashtable>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -77,7 +84,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -93,6 +100,54 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+
+Specifies the Tags to query for
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: ByTagObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TagName
+
+Specifies the Key of the Tag to query for
+
+```yaml
+Type: System.String
+Parameter Sets: ByTagNameValueParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TagValue
+
+Specifies the Value of the Tag to query for
+
+```yaml
+Type: System.String
+Parameter Sets: ByTagNameValueParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -100,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
