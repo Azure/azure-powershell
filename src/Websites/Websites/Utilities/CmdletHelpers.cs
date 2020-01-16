@@ -29,7 +29,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 "WebSocketsEnabled",
                 "Use32BitWorkerProcess",
                 "AutoSwapSlotName",
-                "NumberOfWorkers"
+                "NumberOfWorkers",
+                "AlwaysOn",
+                "MinTlsVersion",
+                "FtpsState"
             };
 
         public static HashSet<string> SiteParameters = new HashSet<string>

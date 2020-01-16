@@ -341,8 +341,17 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             StringBuilder sb = new StringBuilder();
             if (error != null)
             {
+                var message = error.Message;
+                if (!string.IsNullOrWhiteSpace(message))
+                {
+                    message = message.Replace("\n", "`n");
+                    message = message.Replace("\\n", "`n");
+                    message = message.Replace("\r", "`r");
+                    message = message.Replace("\\r", "`r");
+                }
+
                 sb.AppendFormatWithLeftIndentAndNewLineIfNotNull(indentFactor, "Code", error.Code);
-                sb.AppendFormatWithLeftIndentAndNewLineIfNotNull(indentFactor, "Message", error.Message);
+                sb.AppendFormatWithLeftIndentAndNewLineIfNotNull(indentFactor, "Message", message);
                 sb.AppendFormatWithLeftIndentAndNewLineIfNotNull(indentFactor, "Target", error.Target);
             }
 

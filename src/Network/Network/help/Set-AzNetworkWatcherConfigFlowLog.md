@@ -181,6 +181,41 @@ FlowAnalyticsConfiguration : {
 
 In this example we configure flow logging status and Traffic Analytics for a Network Security Group. In the response, we see the specified NSG has flow logging and Traffic Analytics enabled, default format, and no retention policy set.
 
+### Example 4: Disable Traffic Analytics for a Specified NSG with Flow Logging and Traffic Analytics configured
+```
+PS C:\> $NW = Get-AzNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
+PS C:\> $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName NSGRG -Name appNSG
+PS C:\> $storageId = "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123"
+PS C:\> $workspace = Get-AzOperationalInsightsWorkspace -Name WorkspaceName -ResourceGroupName WorkspaceRg
+PS C:\> Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -EnableFlowLog $true -StorageAccountId $storageID -EnableTrafficAnalytics -Workspace $workspace -TrafficAnalyticsInterval 60
+
+
+PS C:\> Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -EnableFlowLog $true -StorageAccountId $storageID -EnableTrafficAnalytics:$false -Workspace $workspace
+
+TargetResourceId : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Network/networkSecurityGroups/appNSG
+StorageId        : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123
+Enabled          : True
+RetentionPolicy  : {
+                     "Days": 0,
+                     "Enabled": false
+                   }
+Format           : {
+                     "Type ": "Json",
+                     "Version": 1
+                   }
+FlowAnalyticsConfiguration : {
+            "networkWatcherFlowAnalyticsConfiguration": {
+              "enabled": false,
+              "workspaceId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+              "workspaceRegion": "WorkspaceLocation",
+              "workspaceResourceId": "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourcegroups/WorkspaceRg/providers/microsoft.operationalinsights/workspaces/WorkspaceName",
+	      "TrafficAnalyticsInterval": 60
+            }
+          }
+```
+
+In this example we disable Traffic Analytics for a Network Security Group which has flow logging and Traffic Analytics configured earlier. In the response, we see the specified NSG has flow logging enabled but Traffic Analytics disabled.
+
 ## PARAMETERS
 
 ### -AsJob

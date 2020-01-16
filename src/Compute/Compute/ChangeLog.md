@@ -19,10 +19,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Update-AzDiskEncryptionSet cmdlet
+* Add EncryptionType and DiskEncryptionSetId parameters to the following cmdlets:
+    - New-AzDiskUpdateConfig, New-AzSnapshotUpdateConfig
 * Add ColocationStatus parameter to Get-AzProximityPlacementGroup cmdlet.
 
 ## Version 3.3.0
 * Fix Set-AzVMCustomScriptExtension cmdlet for a VM with managed OD disk which does not have OS profile.
+* Updated the example of `Set-AzVMAccessExtension` to use version 2.4 instead of 2.0
 
 ## Version 3.2.0
 * Add ProximityPlacementGroupId parameter to the following cmdlets:
