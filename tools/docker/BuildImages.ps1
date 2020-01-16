@@ -16,17 +16,16 @@ param(
     [string]$DOCKER,
 
     [Parameter(Mandatory = $true)]
-    [string]$IMAGENAME
+    [string]$DockerImageName
 )
 
-##TODO:read version from file
-$version = 12345
+$version = (Get-Content "$DOCKER/config/release.props" | Select-String "az.version").ToString().Split("=")[1]
 
 try {
     foreach ($dockerfile in (Get-ChildItem -Path $DOCKER -Filter "Dockerfile-*").FullName) {
         $os = $dockerfile.split("Dockerfile-")[1]
         Write-Output $os
-        docker build -t $IMAGENAME':'$version"-"$os -f $dockerfile $DOCKER
+        docker build --build-arg VERSION=$version -t $DockerImageName':'$version"-"$os -f $dockerfile $DOCKER
     }
 } catch {
     $Errors = $_
