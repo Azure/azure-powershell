@@ -2,11 +2,11 @@
 
 
 ## Overview
-This Dockerfile enable running Azure-PowerShell in a container for OS we support.
-
+These Dockerfiles enable executing Azure-PowerShell cmdlets in a container for the supported OS.
 
 ## Configuration
-This requires Docker 17.05 or newer.
+This image requires Docker 17.05 or newer.
+
 It also expects you to be able to run Docker without `sudo`.
 Please follow [Docker's official instructions][install] to install `docker` correctly.
 
@@ -15,35 +15,38 @@ Please follow [Docker's official instructions][install] to install `docker` corr
 
 ## Release
 
-The release containers derive from the [Powershell image][powershell image], and then install the Az package.
+The release containers derive from the [Powershell image][powershell image], and then install the current Az package.
 
 [powershell image]: https://hub.docker.com/_/microsoft-powershell
 
-TODO: link to azure-powershell release page
-
+Azure PowerShell [release notes](https://docs.microsoft.com/en-us/powershell/azure/release-notes-azureps)
 
 ## Examples
 
-### Download/Update image
+### Download/Update the azure-powershell image
 
 ```sh
-docker pull mcr.microsoft.com/azureps/azure-powershell
+docker pull mcr.microsoft.com/azure-powershell
 ```
 
 ### Run azure-powershell container 
 
-To run azure-powerShell from using a container in an interactive mode:
+- To run azure-powershell using a container in an interactive mode:
 
 ```sh
 $ docker run -it mcr.microsoft.com/azureps/azure-powershell pwsh 
 ```
-To run azure-powerShell from using a container in an interactive mode using host authentication, 
-you need to make sure "~/.Azure" is existed (which is the default location) and you might need to grant docker to access this location:
+
+- To run azure-powershell from using a container in an interactive mode using host authentication: 
+
+    1- Make sure that `$HOME/.Azure` is present on the host (default location) 
+    2- You may need to grant access this location for the docker process.
 
 ```sh
 $ docker run -it -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat mcr.microsoft.com/azureps/azure-powershell pwsh 
 ```
-To check host authentication:
+
+Verify the host authentication:
 
 ```sh
 docker run -it --rm -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat mcr.microsoft.com/azureps/azure-powershell pwsh -c Get-AzContext
@@ -51,7 +54,7 @@ docker run -it --rm -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.
 
 ### Building image
 
-In your local copy of azure-powershell repo, run:
+Clone the azure-powershell repo, and in your local copy run the following commands:
 
 ```sh
 $ dotnet msbuild /t:Build /p:Configuration=Release
@@ -67,7 +70,6 @@ $ docker images
 docker rmi mcr.microsoft.com/azureps/azure-powershell
 ```
 
-
 ## Developing and Contributing
 
 Please see the [Contribution Guide][] for general information about how to develop and contribute.
@@ -77,7 +79,7 @@ If you do not see your problem captured, please file a [new issue][] and follow 
 
 [Contribution Guide]: https://github.com/Azure/azure-powershell/blob/master/CONTRIBUTING.md
 [GitHub issues]: https://github.com/Azure/azure-powershell/issues
-[new issue]:https://github.com/Azure/azure-powershell/issues/new
+[new issue]:https://aka.ms/azpsissue
 
 
 ## Legal and Licensing
@@ -86,6 +88,10 @@ Azure-PowerShell is licensed under the [MIT license][].
 
 [MIT license]: https://github.com/Azure/azure-powershell/blob/master/LICENSE.txt
 
+
+PowerShell is licensed under the [MIT license][].
+
+[MIT license]: https://github.com/PowerShell/PowerShell/tree/master/LICENSE.txt
 
 ## [Code of Conduct][conduct-md]
 
