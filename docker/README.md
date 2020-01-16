@@ -7,7 +7,7 @@ These Dockerfiles enable executing Azure-PowerShell cmdlets in a container for t
 ## Configuration
 This image requires Docker 17.05 or newer.
 
-It also expects you to be able to run Docker without `sudo`.
+It is also expected that you are able to run Docker without `sudo`.
 Please follow [Docker's official instructions][install] to install `docker` correctly.
 
 [install]: https://docs.docker.com/engine/installation/
