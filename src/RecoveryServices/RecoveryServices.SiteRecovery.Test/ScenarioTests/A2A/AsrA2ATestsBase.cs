@@ -76,7 +76,10 @@ namespace RecoveryServices.SiteRecovery.Test
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null}
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Compute", null},
+                {"Microsoft.Storage", null},
+                {"Microsoft.Network", null}
             };
 
             var providersToIgnore = new Dictionary<string, string>

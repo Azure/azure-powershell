@@ -151,7 +151,7 @@ function Test-NewContainer{
 #>
 
 function Test-RemoveReplicationProtectedItemDisk{
-   param([string] $seed ='100')
+   param([string] $seed ='101')
         $primaryPolicyName = getPrimaryPolicy
         $recoveryPolicyName = getRecoveryPolicy
         
