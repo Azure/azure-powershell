@@ -20,9 +20,10 @@
 
 ## Upcoming Release
 * New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
+* Corrected Get-AzNetworkSecurityGroup examples to show examples for NSG's instead of network interfaces
 
 ## Version 2.2.1
-* Upgrade dependancy of Microsoft.Azure.Management.Sql from 1.36-preivew to 1.37-preivew
+* Upgrade dependancy of Microsoft.Azure.Management.Sql from 1.36-preview to 1.37-preview
 
 ## Version 2.2.0
 * Update references in .psd1 to use relative path
