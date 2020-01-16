@@ -154,6 +154,19 @@ function Update-ChangeLog
     ($Content + $ChangeLogContent) | Set-Content -Path $ChangeLogFile.FullName -Encoding UTF8
 }
 
+function Update-Image-Releases
+{
+    Param(
+        [Parameter(Mandatory = $true)]
+        [string]$ReleaseProps,
+        [Parameter(Mandatory = $true)]
+        [string]$AzVersion
+    )
+
+    $content = Get-Content $ReleaseProps
+    $content -Replace "az.version=\d+\.\d+\.\d+", "az.version=$AzVersion" | Set-Content $ReleaseProps
+}
+
 function Get-ExistSerializedCmdletJsonFile
 {
     return $(ls "$PSScriptRoot\Tools.Common\SerializedCmdlets").Name
@@ -287,5 +300,6 @@ switch ($PSCmdlet.ParameterSetName)
 
         Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
         Update-ChangeLog -Content $changeLog -RootPath $rootPath
+        Update-Image-Releases -ReleaseProps "$rootPath\docker\config\release.props" -AzVersion $newVersion
     }
 }
