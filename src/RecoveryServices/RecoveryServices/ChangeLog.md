@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Site Recovery support for removing a replicated disk.
 * Azure Backup added support for adding tags while creating a Recovery Services Vault.
 
 ## Version 2.4.0
