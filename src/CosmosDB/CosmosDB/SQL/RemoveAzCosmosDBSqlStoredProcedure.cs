@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public PSSqlStoredProcedureGetResults InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
