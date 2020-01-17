@@ -18,6 +18,7 @@
         - Additional information about change #1
         
 ## Upcoming Release
+* Small change to the documentation for New-AzScheduledQueryRuleLogMetricTrigger
 
 ## Version 1.5.0
 * Update references in .psd1 to use relative path
