@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -FrequencyInMinutes
-The alert frequency
+The alert frequency. Must be a value between 5 and 1440.
 
 ```yaml
 Type: System.Int32
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -TimeWindowInMinutes
-The alert time window
+The alert time window. Must be a value between 5 and 2880.
 
 ```yaml
 Type: System.Int32
