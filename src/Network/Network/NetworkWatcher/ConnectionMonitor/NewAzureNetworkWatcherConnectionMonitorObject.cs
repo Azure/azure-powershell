@@ -77,11 +77,23 @@ namespace Microsoft.Azure.Commands.Network
             {
                 NetworkWatcherName = this.NetworkWatcherName,
                 ResourceGroupName = this.ResourceGroupName,
-                Name = this.Name,
-                TestGroup = this.TestGroup,
-                Output = this.Output,
-                Notes = Notes
+                Name = this.Name
             };
+
+            if (this.TestGroup != null)
+            {
+                CMObject.TestGroup = this.TestGroup;
+            }
+
+            if (this.Output != null)
+            {
+                CMObject.Output = this.Output;
+            }
+
+            if (this.Notes != null)
+            {
+                CMObject.Notes = this.Notes;
+            }
 
             WriteObject(CMObject);
         }

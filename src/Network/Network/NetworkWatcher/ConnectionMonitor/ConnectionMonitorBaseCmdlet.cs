@@ -60,13 +60,20 @@ namespace Microsoft.Azure.Commands.Network
             {
                 connectionMonitor = this.ConnectionMonitors.Get(resourceGroupName, name, connectionMonitorName);
 
-                psConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResult(connectionMonitor);
+                if (String.Compare(connectionMonitor.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
+                {
+                    psConnectionMonitor = ConvertConnectionMonitorResultToPSConnectionMonitorResultV1(connectionMonitor);
+                }
+                else
+                {
+                    psConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResultV2(connectionMonitor);
+                }
             }
             else
             {
                 connectionMonitor = this.ConnectionMonitors.GetV1(resourceGroupName, name, connectionMonitorName);
 
-                psConnectionMonitor = NetworkResourceManagerProfile.Mapper.Map<PSConnectionMonitorResult>(connectionMonitor);
+                psConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResultV1(connectionMonitor);
             }
 
             return psConnectionMonitor;
@@ -103,9 +110,9 @@ namespace Microsoft.Azure.Commands.Network
             return null;
         }
 
-        public PSConnectionMonitorResult MapConnectionMonitorResultToPSConnectionMonitorResult(ConnectionMonitorResult ConnectionMonitor)
+        public PSConnectionMonitorResultV2 MapConnectionMonitorResultToPSConnectionMonitorResultV2(ConnectionMonitorResult ConnectionMonitor)
         {
-            PSConnectionMonitorResult psConnectionMonitor = new PSConnectionMonitorResult()
+            PSConnectionMonitorResultV2 psConnectionMonitor = new PSConnectionMonitorResultV2()
             {
                 Name = ConnectionMonitor.Name,
                 Id = ConnectionMonitor.Id,
@@ -113,15 +120,10 @@ namespace Microsoft.Azure.Commands.Network
                 ProvisioningState = ConnectionMonitor.ProvisioningState,
                 Type = ConnectionMonitor.Type,
                 Location = ConnectionMonitor.Location,
-                AutoStart = ConnectionMonitor.AutoStart,
-                MonitoringIntervalInSeconds = ConnectionMonitor.MonitoringIntervalInSeconds,
                 StartTime = ConnectionMonitor.StartTime,
-                MonitoringStatus = ConnectionMonitor.MonitoringStatus,
                 Tags = NetworkResourceManagerProfile.Mapper.Map<Dictionary<string, string>>(ConnectionMonitor.Tags),
                 ConnectionMonitorType = ConnectionMonitor.ConnectionMonitorType,
                 Notes = ConnectionMonitor.Notes,
-                Source = NetworkResourceManagerProfile.Mapper.Map<PSConnectionMonitorSource>(ConnectionMonitor.Source),
-                Destination = NetworkResourceManagerProfile.Mapper.Map<PSConnectionMonitorDestination>(ConnectionMonitor.Destination),
 
                 TestConfigurations = NetworkResourceManagerProfile.Mapper.Map<List<PSNetworkWatcherConnectionMonitorTestConfigurationObject>>(ConnectionMonitor.TestConfigurations),
                 Endpoints = NetworkResourceManagerProfile.Mapper.Map<List<PSNetworkWatcherConnectionMonitorEndpointObject>>(ConnectionMonitor.Endpoints),
@@ -194,6 +196,29 @@ namespace Microsoft.Azure.Commands.Network
                     psConnectionMonitor.TestGroups.Add(TestGroupObject);
                 }
             }
+
+            return psConnectionMonitor;
+        }
+
+        public PSConnectionMonitorResultV1 MapConnectionMonitorResultToPSConnectionMonitorResultV1(ConnectionMonitorResult ConnectionMonitor)
+        {
+            PSConnectionMonitorResultV1 psConnectionMonitor = new PSConnectionMonitorResultV1()
+            {
+                Name = ConnectionMonitor.Name,
+                Id = ConnectionMonitor.Id,
+                Etag = ConnectionMonitor.Etag,
+                ProvisioningState = ConnectionMonitor.ProvisioningState,
+                Type = ConnectionMonitor.Type,
+                Location = ConnectionMonitor.Location,
+                AutoStart = ConnectionMonitor.AutoStart,
+                MonitoringIntervalInSeconds = ConnectionMonitor.MonitoringIntervalInSeconds,
+                StartTime = ConnectionMonitor.StartTime,
+                MonitoringStatus = ConnectionMonitor.MonitoringStatus,
+                Tags = NetworkResourceManagerProfile.Mapper.Map<Dictionary<string, string>>(ConnectionMonitor.Tags),
+                ConnectionMonitorType = ConnectionMonitor.ConnectionMonitorType,
+                Source = NetworkResourceManagerProfile.Mapper.Map<PSConnectionMonitorSource>(ConnectionMonitor.Source),
+                Destination = NetworkResourceManagerProfile.Mapper.Map<PSConnectionMonitorDestination>(ConnectionMonitor.Destination),
+            };
 
             return psConnectionMonitor;
         }
@@ -645,31 +670,50 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-    public bool ConvertConnectionMonitorResultV2toV1(PSConnectionMonitorResult ConnectionMonitorResult)
+    public PSConnectionMonitorResultV1 ConvertConnectionMonitorResultToPSConnectionMonitorResultV1(ConnectionMonitorResult ConnectionMonitorResult)
         {
-            //convert V2 to V1
-            if (ConnectionMonitorResult.Source == null)
+            PSConnectionMonitorResultV2 PSConnectionMonitorResultV2 = MapConnectionMonitorResultToPSConnectionMonitorResultV2(ConnectionMonitorResult);
+
+            PSConnectionMonitorResultV1 ConnectionMonitorResultV1 = new PSConnectionMonitorResultV1()
             {
-                ConnectionMonitorResult.Source = new PSConnectionMonitorSource()
+                Name = ConnectionMonitorResult.Name,
+                Id = ConnectionMonitorResult.Id,
+                Etag = ConnectionMonitorResult.Etag,
+                ProvisioningState = ConnectionMonitorResult.ProvisioningState,
+                Type = ConnectionMonitorResult.Type,
+                Location = ConnectionMonitorResult.Location,
+                AutoStart = ConnectionMonitorResult.AutoStart,
+                MonitoringIntervalInSeconds = ConnectionMonitorResult.MonitoringIntervalInSeconds,
+                StartTime = ConnectionMonitorResult.StartTime,
+                MonitoringStatus = ConnectionMonitorResult.MonitoringStatus,
+                Tags = NetworkResourceManagerProfile.Mapper.Map<Dictionary<string, string>>(ConnectionMonitorResult.Tags),
+                ConnectionMonitorType = ConnectionMonitorResult.ConnectionMonitorType,
+                //Source 
+                //Destination
+            };
+
+            if (ConnectionMonitorResultV1.Source == null)
+            {
+                ConnectionMonitorResultV1.Source = new PSConnectionMonitorSource()
                 {
-                    ResourceId = ConnectionMonitorResult.TestGroups?[0]?.Sources?[0]?.ResourceId
+                    ResourceId = PSConnectionMonitorResultV2.TestGroups?[0]?.Sources?[0]?.ResourceId
                     // Port
                 };
             }
 
-            if (ConnectionMonitorResult.Destination == null)
+            if (ConnectionMonitorResultV1.Destination == null)
             {
-                ConnectionMonitorResult.Destination = new PSConnectionMonitorDestination()
+                ConnectionMonitorResultV1.Destination = new PSConnectionMonitorDestination()
                 {
-                    ResourceId = ConnectionMonitorResult.TestGroups?[0]?.Destinations?[0]?.ResourceId,
-                    Address = ConnectionMonitorResult.TestGroups?[0]?.Destinations?[0]?.Address,
-                    Port = ConnectionMonitorResult.TestConfigurations?[0]?.TcpConfiguration?.Port ?? default(int)
+                    ResourceId = PSConnectionMonitorResultV2.TestGroups?[0]?.Destinations?[0]?.ResourceId,
+                    Address = PSConnectionMonitorResultV2.TestGroups?[0]?.Destinations?[0]?.Address,
+                    Port = PSConnectionMonitorResultV2.TestConfigurations?[0]?.TcpConfiguration?.Port ?? default(int)
                 };
             }
 
-            if (ConnectionMonitorResult.MonitoringIntervalInSeconds != null)
+            if (ConnectionMonitorResultV1.MonitoringIntervalInSeconds != null)
             {
-                ConnectionMonitorResult.MonitoringIntervalInSeconds = ConnectionMonitorResult.TestConfigurations?[0]?.TestFrequencySec;
+                ConnectionMonitorResultV1.MonitoringIntervalInSeconds = ConnectionMonitorResult.TestConfigurations?[0]?.TestFrequencySec;
             }
 
             // These parameters do not need mapping 
@@ -677,7 +721,7 @@ namespace Microsoft.Azure.Commands.Network
             // getConnectionMonitor.StartTime
             // getConnectionMonitor.MonitoringStatus
 
-            return true;
+            return ConnectionMonitorResultV1;
         }
     }
 }
