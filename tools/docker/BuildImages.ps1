@@ -25,8 +25,9 @@ try {
     foreach ($dockerfile in (Get-ChildItem -Path $DOCKER -Filter "Dockerfile-*").FullName) {
         $os = $dockerfile.split("Dockerfile-")[1]
         Write-Output $os
-        docker build --build-arg VERSION=$version --build-arg BUILD_DATE="date -u +'%Y-%m-%dT%H:%M:%SZ'" \
-                     -t $DockerImageName':'$version"-"$os -f $dockerfile $DOCKER
+        docker build --build-arg VERSION=$version `
+                     --build-arg BUILD_DATE="date -u +'%Y-%m-%dT%H:%M:%SZ'" `
+                     --tag $DockerImageName':'$version"-"$os -f $dockerfile $DOCKER
     }
 } catch {
     $Errors = $_
