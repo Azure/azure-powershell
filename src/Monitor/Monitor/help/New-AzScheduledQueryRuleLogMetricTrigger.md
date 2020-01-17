@@ -77,7 +77,9 @@ Accept wildcard characters: False
 ```
 
 ### -Threshold
-The metric threshold value
+The metric threshold value: Consecutive, Total.
+* Consecutive - Based on metric measurement.
+* Total - Based on number of results.
 
 ```yaml
 Type: System.Double
@@ -92,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -ThresholdOperator
-The metric threshold operator : GreaterThan, LessThan, Equal
+The metric threshold operator : GreaterThan, LessThan, Equal.
 
 ```yaml
 Type: System.String
