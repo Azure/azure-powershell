@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 Tags = sdkProfile.Tags.ToHashTableTags(),
                 Location = sdkProfile.Location,
                 ResourceState = (PSProfileResourceState)Enum.Parse(typeof(PSProfileResourceState), sdkProfile.ResourceState),
-
+                
                 // Entity specific properties
                 Sku = sdkProfile.Sku.ToPsSku()
             };
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 ProbePath = sdkEndpoint.ProbePath,
                 GeoFilters = sdkEndpoint.GeoFilters.Select(ToPsGeoFilter).ToList(),
                 DeliveryPolicy = sdkEndpoint.DeliveryPolicy?.ToPsDeliveryPolicy(),
-                LinkedWafPolicyResourceId = sdkEndpoint.WebApplicationFirewallPolicyLink.Id,
+                LinkedWafPolicyResourceId = sdkEndpoint.WebApplicationFirewallPolicyLink?.Id,
             };
         }
 
@@ -902,6 +902,9 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
         {
             return new PSPolicy
             {
+                Name = policy.Name,
+                Id = policy.Id,
+                Location = policy.Location,
                 Sku = policy.Sku.ToPsSku(),
                 Etag = policy.Etag,
                 ResourceState = (PSPolicyResourceState)Enum.Parse(typeof(PSPolicyResourceState), policy.ResourceState),
@@ -913,7 +916,10 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 RateLimitRules = policy.RateLimitRules?.Rules.Select(r => r.ToPsRateLimitRule()).ToList(),
                 CustomRules = policy.CustomRules?.Rules.Select(r => r.ToPsCustomRule()).ToList(),
                 ManagedRules = policy.ManagedRules?.ManagedRuleSets.Select(r => r.ToPsManagedRuleSet()).ToList(),
-                LinkedEndpointIds = policy.CdnEndpointLinks?.Select(e => e.Id).ToList(),
+                LinkedEndpointIds = policy.EndpointLinks?.Select(e => e.Id).ToList(),
+                ProvisioningState = (PSProvisioningState)Enum.Parse(typeof(PSProvisioningState), policy.ProvisioningState),
+                Tags = policy.Tags.ToHashTableTags(),
+                Type = policy.Type,
             };
         }
 
@@ -921,6 +927,11 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
         {
             return new PSRateLimitRule
             {
+                Name = rateLimitRule.Name,
+                EnabledState = (PSCustomRuleEnabledState)Enum.Parse(typeof(PSCustomRuleEnabledState), rateLimitRule.EnabledState),
+                Priority = rateLimitRule.Priority,
+                MatchConditions = rateLimitRule.MatchConditions.Select(mc => mc.ToPsMatchCondition()).ToList(),
+                Action = (PSActionType)Enum.Parse(typeof(PSActionType), rateLimitRule.Action),
                 RateLimitThreshold = rateLimitRule.RateLimitThreshold,
                 RateLimitDurationInMinutes = rateLimitRule.RateLimitDurationInMinutes,
             };
@@ -946,8 +957,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 Selector = matchCondition.Selector,
                 Operator = (PSOperator)Enum.Parse(typeof(PSOperator), matchCondition.OperatorProperty),
                 NegateCondition = matchCondition.NegateCondition ?? false,
-                MatchValue = matchCondition.MatchValue?.ToList(),
-                Transform = matchCondition.Transforms?.Select(t => (PSTransform)Enum.Parse(typeof(PSTransform), t)).ToList(),
+                MatchValues = matchCondition.MatchValue?.ToList(),
+                Transforms = matchCondition.Transforms?.Select(t => (PSTransform)Enum.Parse(typeof(PSTransform), t)).ToList(),
             };
         }
 
@@ -984,10 +995,14 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
         {
             return new PSManagedRuleSetDefinition
             {
-                Sku = ruleset.Sku.ToPsSku(),
+                Name = ruleset.Name,
+                Id = ruleset.Id,
+                ProvisioningState = (PSProvisioningState)Enum.Parse(typeof(PSProvisioningState), ruleset.ProvisioningState),
+                Type = ruleset.Type,
+                Sku = ruleset.Sku?.ToPsSku(),
                 RuleSetType = ruleset.RuleSetType,
                 RuleSetVersion = ruleset.RuleSetVersion,
-                RuleGroups = ruleset.RuleGroups.Select(rg => rg.ToPsManagedRuleGroupDefinition()).ToList(),
+                RuleGroups = ruleset.RuleGroups?.Select(rg => rg.ToPsManagedRuleGroupDefinition()).ToList(),
             };
         }
 
@@ -1056,8 +1071,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
         {
             return new SdkMatchCondition
             {
-                MatchValue = matchCondition.MatchValue?.ToList(),
-                Transforms = matchCondition.Transform?.Select(t => t.ToString()).ToList(),
+                MatchValue = matchCondition.MatchValues?.ToList(),
+                Transforms = matchCondition.Transforms?.Select(t => t.ToString()).ToList(),
                 MatchVariable = matchCondition.MatchVariable.ToString(),
                 NegateCondition = matchCondition.NegateCondition,
                 OperatorProperty = matchCondition.Operator.ToString(),

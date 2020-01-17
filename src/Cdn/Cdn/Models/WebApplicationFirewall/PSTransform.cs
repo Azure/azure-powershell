@@ -16,9 +16,11 @@ namespace Microsoft.Azure.Commands.Cdn.Models.WebApplicationFirewall
 {
     public enum PSTransform
     {
-        Allow,
-        Block,
-        Log,
-        Redirect
+        Lowercase,
+        Uppercase,
+        Trim,
+        UrlDecode,
+        UrlEncode,
+        RemoveNulls
     }
 }

@@ -47,20 +47,6 @@ namespace Microsoft.Azure.Commands.Cdn.WebApplicationFirewall
         public string PolicyName { get; set; }
 
         /// <summary>
-        /// The location in which to create the profile.
-        /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The location in which to create the CDN WAF policy.")]
-        [LocationCompleter("Microsoft.Cdn/CdnWebApplicationFirewallPolicies")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// The pricing sku name of the profile.
-        /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The pricing sku name of the CDN WAF policy. Valid values are StandardVerizon, StandardAkamai, Standard_Microsoft and PremiumVerizon.")]
-        public PSSkuName Sku { get; set; }
-
-        /// <summary>
         /// The resource group name of the profile.
         /// </summary>
         [Parameter(ParameterSetName = FieldsParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the Azure CDN profile will be created in.")]
@@ -112,7 +98,7 @@ namespace Microsoft.Azure.Commands.Cdn.WebApplicationFirewall
                 PolicyName = parsed.PolicyName;
             }
 
-            if (!(new Regex("^[A-Za-z]*[A-Za-z0-9]$").IsMatch(PolicyName)))
+            if (!(new Regex("^[A-Za-z][A-Za-z0-9]*$").IsMatch(PolicyName)))
             {
                 throw new PSArgumentException(Resources.Error_PolicyNameInvalid);
             }
@@ -146,8 +132,8 @@ namespace Microsoft.Azure.Commands.Cdn.WebApplicationFirewall
                 ResourceGroupName,
                 PolicyName,
                 new Management.Cdn.Models.CdnWebApplicationFirewallPolicy(
-                    Location,
-                    new SdkSku(Sku.ToString()),
+                    location: "Global",
+                    sku: new SdkSku(SkuName.StandardMicrosoft),
                     id: null,
                     name: null,
                     type: null,
@@ -162,7 +148,8 @@ namespace Microsoft.Azure.Commands.Cdn.WebApplicationFirewall
                     customRules: new CustomRuleList(sdkCustomRules),
                     managedRules: new ManagedRuleSetList(sdkManagedRuleSets)));
 
-            WriteObject(cdnPolicy.ToPsPolicy());
+            var result = cdnPolicy.ToPsPolicy();
+            WriteObject(result);
         }
     }
 }

@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Commands.Cdn.Models.WebApplicationFirewall
         /// <summary>
         /// List of possible values to match.
         /// </summary>
-        public ICollection<string> MatchValue { get; set; }
+        public ICollection<string> MatchValues { get; set; }
 
         /// <summary>
         /// List of transforms to apply before matching.
         /// </summary>
-        public ICollection<PSTransform> Transform { get; set; }
+        public ICollection<PSTransform> Transforms { get; set; }
     }
 }

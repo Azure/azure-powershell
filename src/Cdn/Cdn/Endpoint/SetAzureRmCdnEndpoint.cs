@@ -14,6 +14,7 @@
 
 using System;
 using System.Linq;
+using System.Net;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.Cdn.Helpers;
@@ -32,11 +33,28 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNull]
         public PSEndpoint CdnEndpoint { get; set; }
 
+        private Management.Cdn.Models.Endpoint existing;
+
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(MyInvocation.InvocationName,
-                CdnEndpoint.Name,
-                SetEndpoint);
+            try
+            {
+                existing = CdnManagementClient.Endpoints.Get(CdnEndpoint.ResourceGroupName, CdnEndpoint.ProfileName, CdnEndpoint.Name);
+                ConfirmAction(MyInvocation.InvocationName,
+                    CdnEndpoint.Name,
+                    SetEndpoint);
+            }
+            catch (Management.Cdn.Models.ErrorResponseException e)
+            {
+                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    throw new PSArgumentException(string.Format(Resources.Error_NonExistingEndpoint, CdnEndpoint.Name, CdnEndpoint.ProfileName, CdnEndpoint.ResourceGroupName));
+                }
+                else {
+                    throw e;
+                }
+
+            }
         }
 
         private void SetEndpoint()
@@ -45,24 +63,28 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             var profileName = CdnEndpoint.ProfileName;
             try
             {
-                var endpoint = CdnManagementClient.Endpoints.Update(
+                // Create uses PUT method for request, which is actually a create-or-update operation and is required for the .Net SDK to allow setting WebApplicationFirewallPolicyLink to null.
+                var endpoint = CdnManagementClient.Endpoints.Create(
                     resourceGroupName,
                     profileName,
                     CdnEndpoint.Name,
-                    new EndpointUpdateParameters(
-                        CdnEndpoint.Tags.ToDictionaryTags(),
-                        CdnEndpoint.OriginHostHeader,
-                        CdnEndpoint.OriginPath,
-                        CdnEndpoint.ContentTypesToCompress.ToList(),
-                        CdnEndpoint.IsCompressionEnabled,
-                        CdnEndpoint.IsHttpAllowed,
-                        CdnEndpoint.IsHttpsAllowed,
-                        (QueryStringCachingBehavior)Enum.Parse(typeof(QueryStringCachingBehavior), CdnEndpoint.QueryStringCachingBehavior.ToString()),
-                        CdnEndpoint.OptimizationType,
-                        CdnEndpoint.ProbePath,
-                        CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
-                        CdnEndpoint.DeliveryPolicy?.ToSdkDeliveryPolicy(),
-                        webApplicationFirewallPolicyLink: new EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink(CdnEndpoint.LinkedWafPolicyResourceId)));
+                    new Management.Cdn.Models.Endpoint {
+                        Location = existing.Location,
+                        Tags = CdnEndpoint.Tags.ToDictionaryTags(),
+                        OriginHostHeader = CdnEndpoint.OriginHostHeader,
+                        OriginPath = CdnEndpoint.OriginPath,
+                        Origins = existing.Origins,
+                        ContentTypesToCompress = CdnEndpoint.ContentTypesToCompress.ToList(),
+                        IsCompressionEnabled = CdnEndpoint.IsCompressionEnabled,
+                        IsHttpAllowed = CdnEndpoint.IsHttpAllowed,
+                        IsHttpsAllowed = CdnEndpoint.IsHttpsAllowed,
+                        QueryStringCachingBehavior = (QueryStringCachingBehavior)Enum.Parse(typeof(QueryStringCachingBehavior), CdnEndpoint.QueryStringCachingBehavior.ToString()),
+                        OptimizationType = CdnEndpoint.OptimizationType,
+                        ProbePath = CdnEndpoint.ProbePath,
+                        GeoFilters = CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
+                        DeliveryPolicy = CdnEndpoint.DeliveryPolicy?.ToSdkDeliveryPolicy(),
+                        WebApplicationFirewallPolicyLink = String.IsNullOrEmpty(CdnEndpoint.LinkedWafPolicyResourceId) ? null : new EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink(CdnEndpoint.LinkedWafPolicyResourceId)
+                    });
 
                 WriteVerbose(Resources.Success);
                 WriteObject(endpoint.ToPsEndpoint());

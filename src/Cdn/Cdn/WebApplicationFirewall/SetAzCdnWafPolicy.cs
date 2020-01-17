@@ -47,20 +47,6 @@ namespace Microsoft.Azure.Commands.Cdn.WebApplicationFirewall
         public string PolicyName { get; set; }
 
         /// <summary>
-        /// The location in which to create the profile.
-        /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The location in which to create the CDN WAF policy.")]
-        [LocationCompleter("Microsoft.Cdn/CdnWebApplicationFirewallPolicies")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// The pricing sku name of the policy.
-        /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The pricing sku name of the CDN WAF policy. Valid values are StandardVerizon, StandardAkamai, Standard_Microsoft and PremiumVerizon.")]
-        public PSSkuName Sku { get; set; }
-
-        /// <summary>
         /// The resource group name of the policy.
         /// </summary>
         [Parameter(ParameterSetName = FieldsParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the CDN WAF Policy will be created in.")]
@@ -131,8 +117,8 @@ namespace Microsoft.Azure.Commands.Cdn.WebApplicationFirewall
             }
 
             // Overwrite policy object with any arguments that were set.
-            wafPolicy.Location = Location.ToString();
-            wafPolicy.Sku = new Management.Cdn.Models.Sku(Sku.ToString());
+            wafPolicy.Location = "Global";
+            wafPolicy.Sku = new Sku(PSSkuName.Standard_Microsoft.ToString());
             if (Tag != null)
             {
                 wafPolicy.Tags = Tag.ToDictionaryTags();
@@ -175,7 +161,8 @@ namespace Microsoft.Azure.Commands.Cdn.WebApplicationFirewall
                 () =>
                 {
                     wafPolicy = CdnManagementClient.Policies.CreateOrUpdate(ResourceGroupName, PolicyName, wafPolicy);
-                    WriteObject(wafPolicy.ToPsPolicy());
+                    var result = wafPolicy.ToPsPolicy();
+                    WriteObject(result);
                 });
         }
     }

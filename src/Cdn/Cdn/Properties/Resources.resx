@@ -165,6 +165,9 @@
   <data name="Error_NonExistingCustomDomain" xml:space="preserve">
     <value>Custom domain with name '{0}' in the endpoint '{1}',profile '{2}', resource group '{3}' does not exist.</value>
   </data>
+  <data name="Error_NonExistingEndpoint" xml:space="preserve">
+    <value>Endpoint with name '{0}' in the profile '{1}' and resource group '{2}' does not exist.</value>
+  </data>
   <data name="Error_PolicyNameInvalid" xml:space="preserve">
     <value>Policy name must start with a letter and contain only numbers and letters</value>
   </data>
@@ -175,7 +178,7 @@
     <value>The resource group name is not specified. Specify the resource group or do not specify profile name.</value>
   </data>
   <data name="Error_WafPolicyNotFound" xml:space="preserve">
-    <value>CDN WAF policy with name '{0}' in the resource group '{1}' does not exist.</value>
+    <value>CDN WAF policy with name '{0}' in the resource group '{1}' was not found.</value>
   </data>
   <data name="Error_WafPolicyResourceIdInvalid" xml:space="preserve">
     <value>The CDN WAF policy ResourceId is not valid.</value>

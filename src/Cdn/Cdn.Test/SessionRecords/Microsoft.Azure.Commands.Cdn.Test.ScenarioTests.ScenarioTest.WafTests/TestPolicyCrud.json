@@ -1,0 +1,1006 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourcegroups/ps1738?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL3Jlc291cmNlZ3JvdXBzL3BzMTczOD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "290174c1-341c-40dd-89cd-293e001e2090"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "9a652b08-9bb1-4c63-b999-cfc90f0f1882"
+        ],
+        "x-ms-correlation-request-id": [
+          "9a652b08-9bb1-4c63-b999-cfc90f0f1882"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003048Z:9a652b08-9bb1-4c63-b999-cfc90f0f1882"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:30:48 GMT"
+        ],
+        "Content-Length": [
+          "165"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourceGroups/ps1738\",\r\n  \"name\": \"ps1738\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourceGroups/ps1738/providers/Microsoft.Cdn/CdnWebApplicationFirewallPolicies/ps9066?api-version=2019-06-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL3Jlc291cmNlR3JvdXBzL3BzMTczOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNkbi9DZG5XZWJBcHBsaWNhdGlvbkZpcmV3YWxsUG9saWNpZXMvcHM5MDY2P2FwaS12ZXJzaW9uPTIwMTktMDYtMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9596e2b6-245c-41a0-a8c9-e1070c7ff930"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/5.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "770d208f-9e75-415c-bc48-e214ffdf2046"
+        ],
+        "x-ms-correlation-request-id": [
+          "770d208f-9e75-415c-bc48-e214ffdf2046"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003049Z:770d208f-9e75-415c-bc48-e214ffdf2046"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:30:48 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "164"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Cdn/CdnWebApplicationFirewallPolicies/ps9066' under resource group 'ps1738' was not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourceGroups/ps1738/providers/Microsoft.Cdn/CdnWebApplicationFirewallPolicies/ps9066?api-version=2019-06-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL3Jlc291cmNlR3JvdXBzL3BzMTczOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNkbi9DZG5XZWJBcHBsaWNhdGlvbkZpcmV3YWxsUG9saWNpZXMvcHM5MDY2P2FwaS12ZXJzaW9uPTIwMTktMDYtMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "57977890-0342-4b32-b9ed-dc1e377d7981"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/5.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "0d4340b4-912a-4685-967d-438c4225be53"
+        ],
+        "x-ms-client-request-id": [
+          "57977890-0342-4b32-b9ed-dc1e377d7981"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "05b652c6-156a-476d-92c7-075347c3709b"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003056Z:05b652c6-156a-476d-92c7-075347c3709b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:30:55 GMT"
+        ],
+        "Content-Length": [
+          "852"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps9066\",\r\n  \"id\": \"/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourcegroups/ps1738/providers/Microsoft.Cdn/cdnwebapplicationfirewallpolicies/ps9066\",\r\n  \"type\": \"Microsoft.Cdn/cdnwebapplicationfirewallpolicies\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\",\r\n    \"tag2\": \"value2\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_Microsoft\"\r\n  },\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"defaultRedirectUrl\": \"http://example.com\",\r\n      \"defaultCustomBlockResponseStatusCode\": null,\r\n      \"defaultCustomBlockResponseBody\": null\r\n    },\r\n    \"rateLimitRules\": {\r\n      \"rules\": []\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": []\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": []\r\n    },\r\n    \"endpointLinks\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourceGroups/ps1738/providers/Microsoft.Cdn/CdnWebApplicationFirewallPolicies/ps9066?api-version=2019-06-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL3Jlc291cmNlR3JvdXBzL3BzMTczOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNkbi9DZG5XZWJBcHBsaWNhdGlvbkZpcmV3YWxsUG9saWNpZXMvcHM5MDY2P2FwaS12ZXJzaW9uPTIwMTktMDYtMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e4719c80-0de9-4d43-a3b0-4206133efe43"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/5.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b079d81a-0287-4698-bd87-f060f092e208"
+        ],
+        "x-ms-client-request-id": [
+          "e4719c80-0de9-4d43-a3b0-4206133efe43"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14996"
+        ],
+        "x-ms-correlation-request-id": [
+          "8bab5a69-1952-4e1a-9e1d-d79f231e7322"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003059Z:8bab5a69-1952-4e1a-9e1d-d79f231e7322"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:30:59 GMT"
+        ],
+        "Content-Length": [
+          "2358"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps9066\",\r\n  \"id\": \"/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourcegroups/ps1738/providers/Microsoft.Cdn/cdnwebapplicationfirewallpolicies/ps9066\",\r\n  \"type\": \"Microsoft.Cdn/cdnwebapplicationfirewallpolicies\",\r\n  \"tags\": {},\r\n  \"location\": \"Global\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_Microsoft\"\r\n  },\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"defaultRedirectUrl\": \"http://example.com\",\r\n      \"defaultCustomBlockResponseStatusCode\": null,\r\n      \"defaultCustomBlockResponseBody\": null\r\n    },\r\n    \"rateLimitRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"TestRateLimitRule\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 1,\r\n          \"rateLimitDurationInMinutes\": 5,\r\n          \"rateLimitThreshold\": 30,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"Content-Length\",\r\n              \"operator\": \"LessThan\",\r\n              \"negateCondition\": true,\r\n              \"matchValue\": [\r\n                \"1025\"\r\n              ],\r\n              \"transforms\": []\r\n            }\r\n          ],\r\n          \"action\": \"Block\"\r\n        }\r\n      ]\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"TestCustomRule\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 2,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"Content-Length\",\r\n              \"operator\": \"LessThan\",\r\n              \"negateCondition\": true,\r\n              \"matchValue\": [\r\n                \"1025\"\r\n              ],\r\n              \"transforms\": []\r\n            },\r\n            {\r\n              \"matchVariable\": \"RequestUri\",\r\n              \"selector\": null,\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"../\"\r\n              ],\r\n              \"transforms\": [\r\n                \"UrlDecode\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Redirect\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"PROTOCOL-ATTACK\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"921110\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Redirect\"\r\n                }\r\n              ]\r\n            },\r\n            {\r\n              \"ruleGroupName\": \"LFI\",\r\n              \"rules\": []\r\n            }\r\n          ],\r\n          \"anomalyScore\": 0\r\n        }\r\n      ]\r\n    },\r\n    \"endpointLinks\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourceGroups/ps1738/providers/Microsoft.Cdn/CdnWebApplicationFirewallPolicies/ps9066?api-version=2019-06-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL3Jlc291cmNlR3JvdXBzL3BzMTczOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNkbi9DZG5XZWJBcHBsaWNhdGlvbkZpcmV3YWxsUG9saWNpZXMvcHM5MDY2P2FwaS12ZXJzaW9uPTIwMTktMDYtMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f8df7adf-4721-4368-a422-604becd67496"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/5.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "25d40b3e-55cc-480b-a679-6efb8dc88860"
+        ],
+        "x-ms-client-request-id": [
+          "f8df7adf-4721-4368-a422-604becd67496"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "36a44a27-1908-4dd3-bd74-8930f945375b"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003100Z:36a44a27-1908-4dd3-bd74-8930f945375b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:30:59 GMT"
+        ],
+        "Content-Length": [
+          "2358"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps9066\",\r\n  \"id\": \"/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourcegroups/ps1738/providers/Microsoft.Cdn/cdnwebapplicationfirewallpolicies/ps9066\",\r\n  \"type\": \"Microsoft.Cdn/cdnwebapplicationfirewallpolicies\",\r\n  \"tags\": {},\r\n  \"location\": \"Global\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_Microsoft\"\r\n  },\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"defaultRedirectUrl\": \"http://example.com\",\r\n      \"defaultCustomBlockResponseStatusCode\": null,\r\n      \"defaultCustomBlockResponseBody\": null\r\n    },\r\n    \"rateLimitRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"TestRateLimitRule\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 1,\r\n          \"rateLimitDurationInMinutes\": 5,\r\n          \"rateLimitThreshold\": 30,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"Content-Length\",\r\n              \"operator\": \"LessThan\",\r\n              \"negateCondition\": true,\r\n              \"matchValue\": [\r\n                \"1025\"\r\n              ],\r\n              \"transforms\": []\r\n            }\r\n          ],\r\n          \"action\": \"Block\"\r\n        }\r\n      ]\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"TestCustomRule\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 2,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"Content-Length\",\r\n              \"operator\": \"LessThan\",\r\n              \"negateCondition\": true,\r\n              \"matchValue\": [\r\n                \"1025\"\r\n              ],\r\n              \"transforms\": []\r\n            },\r\n            {\r\n              \"matchVariable\": \"RequestUri\",\r\n              \"selector\": null,\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"../\"\r\n              ],\r\n              \"transforms\": [\r\n                \"UrlDecode\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Redirect\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"PROTOCOL-ATTACK\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"921110\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Redirect\"\r\n                }\r\n              ]\r\n            },\r\n            {\r\n              \"ruleGroupName\": \"LFI\",\r\n              \"rules\": []\r\n            }\r\n          ],\r\n          \"anomalyScore\": 0\r\n        }\r\n      ]\r\n    },\r\n    \"endpointLinks\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourceGroups/ps1738/providers/Microsoft.Cdn/CdnWebApplicationFirewallPolicies/ps9066?api-version=2019-06-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL3Jlc291cmNlR3JvdXBzL3BzMTczOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNkbi9DZG5XZWJBcHBsaWNhdGlvbkZpcmV3YWxsUG9saWNpZXMvcHM5MDY2P2FwaS12ZXJzaW9uPTIwMTktMDYtMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ddcea695-3c2b-4977-bd26-4b808642f249"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/5.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "196ab4d0-4629-4666-a94e-30e843ab3df8"
+        ],
+        "x-ms-correlation-request-id": [
+          "196ab4d0-4629-4666-a94e-30e843ab3df8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003103Z:196ab4d0-4629-4666-a94e-30e843ab3df8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:31:03 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "164"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Cdn/CdnWebApplicationFirewallPolicies/ps9066' under resource group 'ps1738' was not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourceGroups/ps1738/providers/Microsoft.Cdn/CdnWebApplicationFirewallPolicies/ps9066?api-version=2019-06-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL3Jlc291cmNlR3JvdXBzL3BzMTczOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNkbi9DZG5XZWJBcHBsaWNhdGlvbkZpcmV3YWxsUG9saWNpZXMvcHM5MDY2P2FwaS12ZXJzaW9uPTIwMTktMDYtMTUtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"defaultRedirectUrl\": \"http://example.com\"\r\n    },\r\n    \"rateLimitRules\": {},\r\n    \"customRules\": {},\r\n    \"managedRules\": {}\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_Microsoft\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\",\r\n    \"tag2\": \"value2\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bd6dfdc8-cd53-4c49-9c32-c19263d8b9cf"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/5.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "390"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "3ffad5db-0bab-4e3c-9524-000bb128cc1a"
+        ],
+        "x-ms-client-request-id": [
+          "bd6dfdc8-cd53-4c49-9c32-c19263d8b9cf"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "b81d5a97-8c0d-4d0a-b620-a40eb01bce0e"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003055Z:b81d5a97-8c0d-4d0a-b620-a40eb01bce0e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:30:54 GMT"
+        ],
+        "Content-Length": [
+          "852"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps9066\",\r\n  \"id\": \"/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourcegroups/ps1738/providers/Microsoft.Cdn/cdnwebapplicationfirewallpolicies/ps9066\",\r\n  \"type\": \"Microsoft.Cdn/cdnwebapplicationfirewallpolicies\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\",\r\n    \"tag2\": \"value2\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_Microsoft\"\r\n  },\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"defaultRedirectUrl\": \"http://example.com\",\r\n      \"defaultCustomBlockResponseStatusCode\": null,\r\n      \"defaultCustomBlockResponseBody\": null\r\n    },\r\n    \"rateLimitRules\": {\r\n      \"rules\": []\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": []\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": []\r\n    },\r\n    \"endpointLinks\": []\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourceGroups/ps1738/providers/Microsoft.Cdn/CdnWebApplicationFirewallPolicies/ps9066?api-version=2019-06-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL3Jlc291cmNlR3JvdXBzL3BzMTczOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNkbi9DZG5XZWJBcHBsaWNhdGlvbkZpcmV3YWxsUG9saWNpZXMvcHM5MDY2P2FwaS12ZXJzaW9uPTIwMTktMDYtMTUtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"defaultRedirectUrl\": \"http://example.com\"\r\n    },\r\n    \"rateLimitRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"rateLimitThreshold\": 30,\r\n          \"rateLimitDurationInMinutes\": 5,\r\n          \"name\": \"TestRateLimitRule\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 1,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"Content-Length\",\r\n              \"operator\": \"LessThan\",\r\n              \"negateCondition\": true,\r\n              \"matchValue\": [\r\n                \"1025\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Block\"\r\n        }\r\n      ]\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"TestCustomRule\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 2,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"Content-Length\",\r\n              \"operator\": \"LessThan\",\r\n              \"negateCondition\": true,\r\n              \"matchValue\": [\r\n                \"1025\"\r\n              ]\r\n            },\r\n            {\r\n              \"matchVariable\": \"RequestUri\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"../\"\r\n              ],\r\n              \"transforms\": [\r\n                \"UrlDecode\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Redirect\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"PROTOCOL-ATTACK\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"921110\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Redirect\"\r\n                }\r\n              ]\r\n            },\r\n            {\r\n              \"ruleGroupName\": \"LFI\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_Microsoft\"\r\n  },\r\n  \"location\": \"Global\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5d3b235f-e67d-4399-84b4-e833d3cc5824"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/5.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "2217"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "306f1e77-f578-40a4-b34a-66352e147931"
+        ],
+        "x-ms-client-request-id": [
+          "5d3b235f-e67d-4399-84b4-e833d3cc5824"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "a7e53bfe-8d62-462e-8d2d-b7be9bcf04ad"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003058Z:a7e53bfe-8d62-462e-8d2d-b7be9bcf04ad"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:30:58 GMT"
+        ],
+        "Content-Length": [
+          "2358"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps9066\",\r\n  \"id\": \"/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourcegroups/ps1738/providers/Microsoft.Cdn/cdnwebapplicationfirewallpolicies/ps9066\",\r\n  \"type\": \"Microsoft.Cdn/cdnwebapplicationfirewallpolicies\",\r\n  \"tags\": {},\r\n  \"location\": \"Global\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_Microsoft\"\r\n  },\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"defaultRedirectUrl\": \"http://example.com\",\r\n      \"defaultCustomBlockResponseStatusCode\": null,\r\n      \"defaultCustomBlockResponseBody\": null\r\n    },\r\n    \"rateLimitRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"TestRateLimitRule\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 1,\r\n          \"rateLimitDurationInMinutes\": 5,\r\n          \"rateLimitThreshold\": 30,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"Content-Length\",\r\n              \"operator\": \"LessThan\",\r\n              \"negateCondition\": true,\r\n              \"matchValue\": [\r\n                \"1025\"\r\n              ],\r\n              \"transforms\": []\r\n            }\r\n          ],\r\n          \"action\": \"Block\"\r\n        }\r\n      ]\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"TestCustomRule\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 2,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"Content-Length\",\r\n              \"operator\": \"LessThan\",\r\n              \"negateCondition\": true,\r\n              \"matchValue\": [\r\n                \"1025\"\r\n              ],\r\n              \"transforms\": []\r\n            },\r\n            {\r\n              \"matchVariable\": \"RequestUri\",\r\n              \"selector\": null,\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"../\"\r\n              ],\r\n              \"transforms\": [\r\n                \"UrlDecode\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Redirect\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"PROTOCOL-ATTACK\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"921110\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Redirect\"\r\n                }\r\n              ]\r\n            },\r\n            {\r\n              \"ruleGroupName\": \"LFI\",\r\n              \"rules\": []\r\n            }\r\n          ],\r\n          \"anomalyScore\": 0\r\n        }\r\n      ]\r\n    },\r\n    \"endpointLinks\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/providers/Microsoft.Cdn/CdnWebApplicationFirewallManagedRuleSets?api-version=2019-06-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL0NkbldlYkFwcGxpY2F0aW9uRmlyZXdhbGxNYW5hZ2VkUnVsZVNldHM/YXBpLXZlcnNpb249MjAxOS0wNi0xNS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2f174818-15e1-4275-a5fd-ca409cdeb3fc"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/5.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c37a2850-e521-41b6-b4a4-de4a25bbe1b0"
+        ],
+        "x-ms-client-request-id": [
+          "2f174818-15e1-4275-a5fd-ca409cdeb3fc"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-correlation-request-id": [
+          "38cd1d98-1686-4ccb-831e-ef299dc42875"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003056Z:38cd1d98-1686-4ccb-831e-ef299dc42875"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:30:55 GMT"
+        ],
+        "Content-Length": [
+          "14963"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"DefaultRuleSet_1.0\",\r\n      \"id\": \"/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/providers/Microsoft.Cdn/cdnwebapplicationfirewallmanagedrulesets/DefaultRuleSet_1.0\",\r\n      \"type\": \"Microsoft.Cdn/cdnwebapplicationfirewallmanagedrulesets\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"ruleSetType\": \"DefaultRuleSet\",\r\n        \"ruleSetVersion\": \"1.0\",\r\n        \"ruleGroups\": [\r\n          {\r\n            \"ruleGroupName\": \"PROTOCOL-ATTACK\",\r\n            \"description\": \"Protocol attack\",\r\n            \"rules\": [\r\n              {\r\n                \"ruleId\": \"921110\",\r\n                \"description\": \"HTTP Request Smuggling Attack\"\r\n              },\r\n              {\r\n                \"ruleId\": \"921120\",\r\n                \"description\": \"HTTP Response Splitting Attack\"\r\n              },\r\n              {\r\n                \"ruleId\": \"921130\",\r\n                \"description\": \"HTTP Response Splitting Attack\"\r\n              },\r\n              {\r\n                \"ruleId\": \"921140\",\r\n                \"description\": \"HTTP Header Injection Attack via headers\"\r\n              },\r\n              {\r\n                \"ruleId\": \"921150\",\r\n                \"description\": \"HTTP Header Injection Attack via payload (CR/LF detected)\"\r\n              },\r\n              {\r\n                \"ruleId\": \"921160\",\r\n                \"description\": \"HTTP Header Injection Attack via payload (CR/LF and header-name detected)\"\r\n              },\r\n              {\r\n                \"ruleId\": \"921151\",\r\n                \"description\": \"HTTP Header Injection Attack via payload (CR/LF detected)\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"ruleGroupName\": \"LFI\",\r\n            \"description\": \"Local file inclusion\",\r\n            \"rules\": [\r\n              {\r\n                \"ruleId\": \"930100\",\r\n                \"description\": \"Path Traversal Attack (/../)\"\r\n              },\r\n              {\r\n                \"ruleId\": \"930110\",\r\n                \"description\": \"Path Traversal Attack (/../)\"\r\n              },\r\n              {\r\n                \"ruleId\": \"930120\",\r\n                \"description\": \"OS File Access Attempt\"\r\n              },\r\n              {\r\n                \"ruleId\": \"930130\",\r\n                \"description\": \"Restricted File Access Attempt\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"ruleGroupName\": \"RFI\",\r\n            \"description\": \"Remote file inclusion\",\r\n            \"rules\": [\r\n              {\r\n                \"ruleId\": \"931100\",\r\n                \"description\": \"Possible Remote File Inclusion (RFI) Attack: URL Parameter using IP Address\"\r\n              },\r\n              {\r\n                \"ruleId\": \"931110\",\r\n                \"description\": \"Possible Remote File Inclusion (RFI) Attack: Common RFI Vulnerable Parameter Name used w/URL Payload\"\r\n              },\r\n              {\r\n                \"ruleId\": \"931120\",\r\n                \"description\": \"Possible Remote File Inclusion (RFI) Attack: URL Payload Used w/Trailing Question Mark Character (?)\"\r\n              },\r\n              {\r\n                \"ruleId\": \"931130\",\r\n                \"description\": \"Possible Remote File Inclusion (RFI) Attack: Off-Domain Reference/Link\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"ruleGroupName\": \"RCE\",\r\n            \"description\": \"Remote Command Execution attacks\",\r\n            \"rules\": [\r\n              {\r\n                \"ruleId\": \"932100\",\r\n                \"description\": \"Remote Command Execution: Unix Command Injection\"\r\n              },\r\n              {\r\n                \"ruleId\": \"932105\",\r\n                \"description\": \"Remote Command Execution: Unix Command Injection\"\r\n              },\r\n              {\r\n                \"ruleId\": \"932110\",\r\n                \"description\": \"Remote Command Execution: Windows Command Injection\"\r\n              },\r\n              {\r\n                \"ruleId\": \"932115\",\r\n                \"description\": \"Remote Command Execution: Windows Command Injection\"\r\n              },\r\n              {\r\n                \"ruleId\": \"932120\",\r\n                \"description\": \"Remote Command Execution: Windows PowerShell Command Found\"\r\n              },\r\n              {\r\n                \"ruleId\": \"932130\",\r\n                \"description\": \"Remote Command Execution: Unix Shell Expression Found\"\r\n              },\r\n              {\r\n                \"ruleId\": \"932140\",\r\n                \"description\": \"Remote Command Execution: Windows FOR/IF Command Found\"\r\n              },\r\n              {\r\n                \"ruleId\": \"932150\",\r\n                \"description\": \"Remote Command Execution: Direct Unix Command Execution\"\r\n              },\r\n              {\r\n                \"ruleId\": \"932160\",\r\n                \"description\": \"Remote Command Execution: Unix Shell Code Found\"\r\n              },\r\n              {\r\n                \"ruleId\": \"932170\",\r\n                \"description\": \"Remote Command Execution: Shellshock (CVE-2014-6271)\"\r\n              },\r\n              {\r\n                \"ruleId\": \"932171\",\r\n                \"description\": \"Remote Command Execution: Shellshock (CVE-2014-6271)\"\r\n              },\r\n              {\r\n                \"ruleId\": \"932180\",\r\n                \"description\": \"Restricted File Upload Attempt\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"ruleGroupName\": \"PHP\",\r\n            \"description\": \"PHP attacks\",\r\n            \"rules\": [\r\n              {\r\n                \"ruleId\": \"933100\",\r\n                \"description\": \"PHP Injection Attack: PHP Open Tag Found\"\r\n              },\r\n              {\r\n                \"ruleId\": \"933110\",\r\n                \"description\": \"PHP Injection Attack: PHP Script File Upload Found\"\r\n              },\r\n              {\r\n                \"ruleId\": \"933120\",\r\n                \"description\": \"PHP Injection Attack: Configuration Directive Found\"\r\n              },\r\n              {\r\n                \"ruleId\": \"933130\",\r\n                \"description\": \"PHP Injection Attack: Variables Found\"\r\n              },\r\n              {\r\n                \"ruleId\": \"933140\",\r\n                \"description\": \"PHP Injection Attack: I/O Stream Found\"\r\n              },\r\n              {\r\n                \"ruleId\": \"933150\",\r\n                \"description\": \"PHP Injection Attack: High-Risk PHP Function Name Found\"\r\n              },\r\n              {\r\n                \"ruleId\": \"933151\",\r\n                \"description\": \"PHP Injection Attack: Medium-Risk PHP Function Name Found\"\r\n              },\r\n              {\r\n                \"ruleId\": \"933160\",\r\n                \"description\": \"PHP Injection Attack: High-Risk PHP Function Call Found\"\r\n              },\r\n              {\r\n                \"ruleId\": \"933170\",\r\n                \"description\": \"PHP Injection Attack: Serialized Object Injection\"\r\n              },\r\n              {\r\n                \"ruleId\": \"933180\",\r\n                \"description\": \"PHP Injection Attack: Variable Function Call Found\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"ruleGroupName\": \"XSS\",\r\n            \"description\": \"Cross-site scripting\",\r\n            \"rules\": [\r\n              {\r\n                \"ruleId\": \"941100\",\r\n                \"description\": \"XSS Attack Detected via libinjection\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941101\",\r\n                \"description\": \"XSS Attack Detected via libinjection\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941110\",\r\n                \"description\": \"XSS Filter - Category 1: Script Tag Vector\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941120\",\r\n                \"description\": \"XSS Filter - Category 2: Event Handler Vector\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941130\",\r\n                \"description\": \"XSS Filter - Category 3: Attribute Vector\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941140\",\r\n                \"description\": \"XSS Filter - Category 4: Javascript URI Vector\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941150\",\r\n                \"description\": \"XSS Filter - Category 5: Disallowed HTML Attributes\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941160\",\r\n                \"description\": \"NoScript XSS InjectionChecker: HTML Injection\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941170\",\r\n                \"description\": \"NoScript XSS InjectionChecker: Attribute Injection\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941180\",\r\n                \"description\": \"Node-Validator Blacklist Keywords\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941190\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941200\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941210\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941220\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941230\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941240\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941250\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941260\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941270\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941280\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941290\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941300\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941310\",\r\n                \"description\": \"US-ASCII Malformed Encoding XSS Filter - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941320\",\r\n                \"description\": \"Possible XSS Attack Detected - HTML Tag Handler\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941330\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941340\",\r\n                \"description\": \"IE XSS Filters - Attack Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"941350\",\r\n                \"description\": \"UTF-7 Encoding IE XSS - Attack Detected.\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"ruleGroupName\": \"SQLI\",\r\n            \"description\": \"SQL injection\",\r\n            \"rules\": [\r\n              {\r\n                \"ruleId\": \"942100\",\r\n                \"description\": \"SQL Injection Attack Detected via libinjection\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942110\",\r\n                \"description\": \"SQL Injection Attack: Common Injection Testing Detected\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942120\",\r\n                \"description\": \"SQL Injection Attack: SQL Operator Detected\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942140\",\r\n                \"description\": \"SQL Injection Attack: Common DB Names Detected\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942150\",\r\n                \"description\": \"SQL Injection Attack\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942160\",\r\n                \"description\": \"Detects blind sqli tests using sleep() or benchmark().\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942170\",\r\n                \"description\": \"Detects SQL benchmark and sleep injection attempts including conditional queries\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942180\",\r\n                \"description\": \"Detects basic SQL authentication bypass attempts 1/3\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942190\",\r\n                \"description\": \"Detects MSSQL code execution and information gathering attempts\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942200\",\r\n                \"description\": \"Detects MySQL comment-/space-obfuscated injections and backtick termination\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942210\",\r\n                \"description\": \"Detects chained SQL injection attempts 1/2\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942220\",\r\n                \"description\": \"Looking for integer overflow attacks, these are taken from skipfish, except 3.0.00738585072007e-308 is the \\\"magic number\\\" crash\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942230\",\r\n                \"description\": \"Detects conditional SQL injection attempts\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942240\",\r\n                \"description\": \"Detects MySQL charset switch and MSSQL DoS attempts\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942250\",\r\n                \"description\": \"Detects MATCH AGAINST, MERGE and EXECUTE IMMEDIATE injections\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942260\",\r\n                \"description\": \"Detects basic SQL authentication bypass attempts 2/3\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942270\",\r\n                \"description\": \"Looking for basic sql injection. Common attack string for mysql, oracle and others.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942280\",\r\n                \"description\": \"Detects Postgres pg_sleep injection, waitfor delay attacks and database shutdown attempts\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942290\",\r\n                \"description\": \"Finds basic MongoDB SQL injection attempts\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942300\",\r\n                \"description\": \"Detects MySQL comments, conditions and ch(a)r injections\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942310\",\r\n                \"description\": \"Detects chained SQL injection attempts 2/2\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942320\",\r\n                \"description\": \"Detects MySQL and PostgreSQL stored procedure/function injections\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942330\",\r\n                \"description\": \"Detects classic SQL injection probings 1/3\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942340\",\r\n                \"description\": \"Detects basic SQL authentication bypass attempts 3/3\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942350\",\r\n                \"description\": \"Detects MySQL UDF injection and other data/structure manipulation attempts\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942360\",\r\n                \"description\": \"Detects concatenated basic SQL injection and SQLLFI attempts\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942361\",\r\n                \"description\": \"Detects basic SQL injection based on keyword alter or union\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942370\",\r\n                \"description\": \"Detects classic SQL injection probings 2/3\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942380\",\r\n                \"description\": \"SQL Injection Attack\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942390\",\r\n                \"description\": \"SQL Injection Attack\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942400\",\r\n                \"description\": \"SQL Injection Attack\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942410\",\r\n                \"description\": \"SQL Injection Attack\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942430\",\r\n                \"description\": \"Restricted SQL Character Anomaly Detection (args): # of special characters exceeded (12)\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942440\",\r\n                \"description\": \"SQL Comment Sequence Detected.\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942450\",\r\n                \"description\": \"SQL Hex Encoding Identified\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942470\",\r\n                \"description\": \"SQL Injection Attack\"\r\n              },\r\n              {\r\n                \"ruleId\": \"942480\",\r\n                \"description\": \"SQL Injection Attack\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"ruleGroupName\": \"FIX\",\r\n            \"description\": \"Session Fixation attacks\",\r\n            \"rules\": [\r\n              {\r\n                \"ruleId\": \"943100\",\r\n                \"description\": \"Possible Session Fixation Attack: Setting Cookie Values in HTML\"\r\n              },\r\n              {\r\n                \"ruleId\": \"943110\",\r\n                \"description\": \"Possible Session Fixation Attack: SessionID Parameter Name with Off-Domain Referer\"\r\n              },\r\n              {\r\n                \"ruleId\": \"943120\",\r\n                \"description\": \"Possible Session Fixation Attack: SessionID Parameter Name with No Referer\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"ruleGroupName\": \"JAVA\",\r\n            \"description\": \"Java attacks\",\r\n            \"rules\": [\r\n              {\r\n                \"ruleId\": \"944100\",\r\n                \"description\": \"Remote Command Execution: Suspicious Java class detected\"\r\n              },\r\n              {\r\n                \"ruleId\": \"944110\",\r\n                \"description\": \"Remote Command Execution: Java process spawn (CVE-2017-9805)\"\r\n              },\r\n              {\r\n                \"ruleId\": \"944120\",\r\n                \"description\": \"Remote Command Execution: Java serialization (CVE-2015-5842)\"\r\n              },\r\n              {\r\n                \"ruleId\": \"944130\",\r\n                \"description\": \"Suspicious Java class detected\"\r\n              },\r\n              {\r\n                \"ruleId\": \"944200\",\r\n                \"description\": \"Magic bytes Detected, probable java serialization in use\"\r\n              },\r\n              {\r\n                \"ruleId\": \"944210\",\r\n                \"description\": \"Magic bytes Detected Base64 Encoded, probable java serialization in use\"\r\n              },\r\n              {\r\n                \"ruleId\": \"944240\",\r\n                \"description\": \"Remote Command Execution: Java serialization (CVE-2015-5842)\"\r\n              },\r\n              {\r\n                \"ruleId\": \"944250\",\r\n                \"description\": \"Remote Command Execution: Suspicious Java method detected\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourceGroups/ps1738/providers/Microsoft.Cdn/CdnWebApplicationFirewallPolicies/ps9066?api-version=2019-06-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL3Jlc291cmNlR3JvdXBzL3BzMTczOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNkbi9DZG5XZWJBcHBsaWNhdGlvbkZpcmV3YWxsUG9saWNpZXMvcHM5MDY2P2FwaS12ZXJzaW9uPTIwMTktMDYtMTUtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "af7b71a5-b65e-4655-9ece-2721462a8ef7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/5.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "189e7366-0921-46ab-97cc-05661ba4e2cf"
+        ],
+        "x-ms-client-request-id": [
+          "af7b71a5-b65e-4655-9ece-2721462a8ef7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "caf828d7-0a4f-49d4-8755-4b895bce966e"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003103Z:caf828d7-0a4f-49d4-8755-4b895bce966e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:31:03 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/resourcegroups/ps1738?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL3Jlc291cmNlZ3JvdXBzL3BzMTczOD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5f86fbd-6fee-4a01-b9db-e05f8beb6866"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MzgtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "e07351f0-c3ec-4019-946b-b654fcabe468"
+        ],
+        "x-ms-correlation-request-id": [
+          "e07351f0-c3ec-4019-946b-b654fcabe468"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003105Z:e07351f0-c3ec-4019-946b-b654fcabe468"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:31:05 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MzgtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpFM016Z3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MzgtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "83fb940f-2a70-4067-8db2-ad9f1f636ae7"
+        ],
+        "x-ms-correlation-request-id": [
+          "83fb940f-2a70-4067-8db2-ad9f1f636ae7"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003121Z:83fb940f-2a70-4067-8db2-ad9f1f636ae7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:31:21 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MzgtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpFM016Z3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MzgtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "98d7a7f1-67a2-4a3a-900a-1347da383549"
+        ],
+        "x-ms-correlation-request-id": [
+          "98d7a7f1-67a2-4a3a-900a-1347da383549"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003136Z:98d7a7f1-67a2-4a3a-900a-1347da383549"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:31:36 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MzgtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpFM016Z3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-request-id": [
+          "3b7f9c0d-a5b6-4fe5-8353-ff2aae243302"
+        ],
+        "x-ms-correlation-request-id": [
+          "3b7f9c0d-a5b6-4fe5-8353-ff2aae243302"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003151Z:3b7f9c0d-a5b6-4fe5-8353-ff2aae243302"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:31:51 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7d475758-01b4-4c2b-b341-acfbb7d9244e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MzgtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2Q0NzU3NTgtMDFiNC00YzJiLWIzNDEtYWNmYmI3ZDkyNDRlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpFM016Z3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19541.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14996"
+        ],
+        "x-ms-request-id": [
+          "8d0c2362-a4e7-49da-9158-7f7a523a45c2"
+        ],
+        "x-ms-correlation-request-id": [
+          "8d0c2362-a4e7-49da-9158-7f7a523a45c2"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200117T003152Z:8d0c2362-a4e7-49da-9158-7f7a523a45c2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 17 Jan 2020 00:31:52 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-PolicyCrud": [
+      "ps1738",
+      "ps9066"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "7d475758-01b4-4c2b-b341-acfbb7d9244e"
+  }
+}

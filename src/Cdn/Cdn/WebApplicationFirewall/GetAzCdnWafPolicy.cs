@@ -77,9 +77,9 @@ namespace Microsoft.Azure.Commands.Cdn.WebApplicationFirewall
             try
             {
                 // Get by Policy Name.
-                var profile = CdnManagementClient.Profiles.Get(ResourceGroupName, PolicyName);
+                var policy = CdnManagementClient.Policies.Get(ResourceGroupName, PolicyName);
                 WriteVerbose(Resources.Success);
-                WriteObject(profile.ToPsProfile());
+                WriteObject(policy.ToPsPolicy());
             }
             catch(ErrorResponseException ex)
             {

@@ -205,6 +205,15 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Endpoint with name &apos;{0}&apos; in the profile &apos;{1}&apos; and resource group &apos;{2}&apos; does not exist..
+        /// </summary>
+        internal static string Error_NonExistingEndpoint {
+            get {
+                return ResourceManager.GetString("Error_NonExistingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Policy name must start with a letter and contain only numbers and letters.
         /// </summary>
         internal static string Error_PolicyNameInvalid {
@@ -232,7 +241,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CDN WAF policy with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
+        ///   Looks up a localized string similar to CDN WAF policy with name &apos;{0}&apos; in the resource group &apos;{1}&apos; was not found..
         /// </summary>
         internal static string Error_WafPolicyNotFound {
             get {

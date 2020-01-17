@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 
+* Add support for CDN WAF
+    - Add *-AzCdnWaf* cmdlets
+    - Add WebApplicationFirewallPolicyLink to Endpoints
+* Add MinTlsVersion for CDN custom domains
+* Use PUT semantics instead of PATCH for Set-AzCdnEndpoint
+
 ## Version 1.4.2
 * Display error response detail in New-AzCdnEndpoint cmdlet
 

@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.Cdn.WebApplicationFirewall
                 Selector = Selector,
                 Operator = Operator,
                 NegateCondition = NegateCondition.ToBool(),
-                MatchValue = MatchValue,
-                Transform = Transform,
+                MatchValues = MatchValue,
+                Transforms = Transform,
             });
         }
     }

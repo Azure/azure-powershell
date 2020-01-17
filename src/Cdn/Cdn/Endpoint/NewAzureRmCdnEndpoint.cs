@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                     GeoFilters = GeoFilters?.Select(g => g.ToSdkGeoFilter()).ToList(),
                     DeliveryPolicy = DeliveryPolicy?.ToSdkDeliveryPolicy(),
                     Tags = Tag.ToDictionaryTags(),
-                    WebApplicationFirewallPolicyLink = new EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink(LinkedWafPolicyResourceId),
+                    WebApplicationFirewallPolicyLink = String.IsNullOrEmpty(LinkedWafPolicyResourceId) ? null : new EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink(LinkedWafPolicyResourceId),
                 });
 
                 WriteVerbose(Resources.Success);
