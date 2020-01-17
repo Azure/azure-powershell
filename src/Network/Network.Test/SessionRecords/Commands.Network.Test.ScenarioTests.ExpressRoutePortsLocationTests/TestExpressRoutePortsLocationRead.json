@@ -7,16 +7,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f6f6dce3-36d0-49f6-a40f-254e6d65796f"
+          "24d282a2-9f65-44f5-afaa-6b559b69041d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.04",
+          "FxVersion/4.6.28325.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.18.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f1518480-7a62-4910-9cad-33a9be8e1595"
+          "fc702e63-9f37-4942-a339-68ed1109a9de"
         ],
         "x-ms-correlation-request-id": [
-          "374162da-d492-4adc-98e5-1354fa6df0ad"
+          "d0da8160-78b2-43ff-8fed-c374b9e2cbf5"
         ],
         "x-ms-arm-service-request-id": [
-          "0fdf996c-753c-419f-87dd-aa7b39998da0"
+          "430d5f68-8d09-496b-be34-4c9e3745f90f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,16 +43,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20200115T130814Z:374162da-d492-4adc-98e5-1354fa6df0ad"
+          "GERMANYWESTCENTRAL:20200117T112918Z:d0da8160-78b2-43ff-8fed-c374b9e2cbf5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 15 Jan 2020 13:08:13 GMT"
+          "Fri, 17 Jan 2020 11:29:18 GMT"
         ],
         "Content-Length": [
           "11557"
@@ -74,16 +74,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4811f8dc-31be-4050-9063-9f6bfe4f3ac0"
+          "dcbdcf5c-859e-46f8-9ceb-1e15ecc0a80b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.04",
+          "FxVersion/4.6.28325.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.18.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -94,13 +94,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9b94a99a-54de-4720-b19e-2d20984bd74d"
+          "5fceeac7-1218-4d97-91d7-5bd37f6165c0"
         ],
         "x-ms-correlation-request-id": [
-          "5742e491-7932-463e-871c-7cb909ee48fd"
+          "1a0e3027-8b39-4fdb-bb7b-c740240e3606"
         ],
         "x-ms-arm-service-request-id": [
-          "25ea4262-71b7-40a0-80d8-c08c19004fbd"
+          "738de64b-c9d2-4f37-a75b-6821b4255769"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -110,16 +110,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11999"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20200115T130815Z:5742e491-7932-463e-871c-7cb909ee48fd"
+          "GERMANYWESTCENTRAL:20200117T112920Z:1a0e3027-8b39-4fdb-bb7b-c740240e3606"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 15 Jan 2020 13:08:14 GMT"
+          "Fri, 17 Jan 2020 11:29:20 GMT"
         ],
         "Content-Length": [
           "372"
