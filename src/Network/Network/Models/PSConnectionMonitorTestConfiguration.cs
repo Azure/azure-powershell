@@ -17,6 +17,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSConnectionMonitorHttpConfiguration HttpConfiguration { get; set; }
         public PSConnectionMonitorTcpConfiguration TcpConfiguration { get; set; }
         public PSConnectionMonitorIcmpConfiguration IcmpConfiguration { get; set; }
+
+        [JsonProperty(Order = 1)]
         public PSConnectionMonitorSuccessThreshold SuccessThreshold { get; set; }
 
         [JsonIgnore]

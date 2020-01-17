@@ -31,6 +31,21 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string Location { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public DateTime? StartTime { get; set; }
+
+        public Dictionary<string, string> Tags { get; set; }
+
+        public string ConnectionMonitorType { get; set; }
+
+        public string TagsText
+        {
+            get { return JsonConvert.SerializeObject(this.Tags, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+    }
+
+    public class PSConnectionMonitorResultV1 : PSConnectionMonitorResult
+    {
         [JsonProperty(Order = 1)]
         public PSConnectionMonitorSource Source { get; set; }
 
@@ -44,13 +59,23 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int? MonitoringIntervalInSeconds { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public DateTime? StartTime { get; set; }
-
-        [Ps1Xml(Target = ViewControl.Table)]
         public string MonitoringStatus { get; set; }
 
-        public Dictionary<string, string> Tags { get; set; }
+        [JsonIgnore]
+        public string SourceText
+        {
+            get { return JsonConvert.SerializeObject(this.Source, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
+        [JsonIgnore]
+        public string DestinationText
+        {
+            get { return JsonConvert.SerializeObject(this.Destination, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+    }
+
+    public class PSConnectionMonitorResultV2 : PSConnectionMonitorResult
+    {
         public List<PSNetworkWatcherConnectionMonitorEndpointObject> Endpoints { get; set; }
 
         public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroups { get; set; }
@@ -59,8 +84,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs { get; set; }
 
-        public string ConnectionMonitorType { get; set; }
-
         public string Notes { get; set; }
     }
+
 }

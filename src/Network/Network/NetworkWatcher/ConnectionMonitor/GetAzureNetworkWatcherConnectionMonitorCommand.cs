@@ -25,7 +25,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitor", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResult))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitor", DefaultParameterSetName = "SetByName"),
+                                                                        OutputType(typeof(PSConnectionMonitorResultV1)),
+                                                                        OutputType(typeof(PSConnectionMonitorResultV2))]
+
     public class GetAzureNetworkWatcherConnectionMonitorCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
@@ -123,15 +126,8 @@ namespace Microsoft.Azure.Commands.Network
 
             if (ShouldGetByName(resourceGroupName, connectionMonitorName))
             {
-                PSConnectionMonitorResult connectionMonitor = new PSConnectionMonitorResult();
-
                 // Always call Get with the new Rest API version (i.e. the one for CMv2)
-                connectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorName, true);
-
-                if (String.Compare(connectionMonitor.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
-                {
-                    ConvertConnectionMonitorResultV2toV1(connectionMonitor);
-                }
+                var connectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorName, true);
 
                 WriteObject(connectionMonitor);
             }
@@ -142,18 +138,16 @@ namespace Microsoft.Azure.Commands.Network
 
                 foreach (var cm in connectionMonitorList)
                 {
-                    //PSConnectionMonitorResult psConnectionMonitor = NetworkResourceManagerProfile.Mapper.Map<PSConnectionMonitorResult>(cm);
-                    PSConnectionMonitorResult psConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResult(cm);
-                    psConnectionMonitorList.Add(psConnectionMonitor);
-                }
-
-                // This is manual conversion from V2 to V1
-                foreach (PSConnectionMonitorResult ConnectionMonitorResult in psConnectionMonitorList)
-                {
-                    if (String.Compare(ConnectionMonitorResult.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
+                    PSConnectionMonitorResult psConnectionMonitor = null;
+                    if (String.Compare(cm.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
                     {
-                        ConvertConnectionMonitorResultV2toV1(ConnectionMonitorResult);
+                        psConnectionMonitor = ConvertConnectionMonitorResultToPSConnectionMonitorResultV1(cm);
                     }
+                    else
+                    {
+                        psConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResultV2(cm);
+                    }
+                    psConnectionMonitorList.Add(psConnectionMonitor);
                 }
 
                 WriteObject(SubResourceWildcardFilter(Name, psConnectionMonitorList), true);

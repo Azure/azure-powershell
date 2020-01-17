@@ -28,7 +28,9 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"),OutputType(typeof(PSConnectionMonitorResult))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"),
+                                                                         OutputType(typeof(PSConnectionMonitorResultV1)),
+                                                                        OutputType(typeof(PSConnectionMonitorResultV2))]
     public class NewAzureNetworkWatcherConnectionMonitorCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
@@ -115,21 +117,24 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of test group.")]
-        [ValidateNotNullOrEmpty]
+        //TODO
+        //[ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The connection monitor output.")]
-        [ValidateNotNullOrEmpty]
+        //TODO
+        //[ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Notes associated with connection monitor.")]
-        [ValidateNotNullOrEmpty]
+        //TODO
+        //[ValidateNotNullOrEmpty]
         public string Notes { get; set; }
 
         [Parameter(
@@ -241,10 +246,9 @@ namespace Microsoft.Azure.Commands.Network
 
            if (connectionMonitorV2)
             {
-                // This is only used for testing
-                string str = JsonConvert.SerializeObject(parameters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
-                WriteObject(str);
-
+                // This is only used for testing. Do not remove
+                // string str = JsonConvert.SerializeObject(parameters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                // WriteObject(str);
                 this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, this.Name, parameters);
             }
             else
