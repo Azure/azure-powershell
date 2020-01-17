@@ -34,7 +34,7 @@ docker pull mcr.microsoft.com/azure-powershell
 - To run azure-powershell using a container in an interactive mode:
 
 ```sh
-$ docker run -it mcr.microsoft.com/azureps/azure-powershell pwsh 
+$ docker run -it mcr.microsoft.com/azure-powershell pwsh 
 ```
 
 - To run azure-powershell from using a container in an interactive mode using host authentication: 
@@ -43,13 +43,13 @@ $ docker run -it mcr.microsoft.com/azureps/azure-powershell pwsh
     2- You may need to grant access this location for the docker process.
 
 ```sh
-$ docker run -it -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat mcr.microsoft.com/azureps/azure-powershell pwsh 
+$ docker run -it -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat mcr.microsoft.com/azure-powershell pwsh 
 ```
 
 Verify the host authentication:
 
 ```sh
-docker run -it --rm -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat mcr.microsoft.com/azureps/azure-powershell pwsh -c Get-AzContext
+docker run -it --rm -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat mcr.microsoft.com/azure-powershell pwsh -c Get-AzContext
 ```
 
 ### Building image
@@ -59,15 +59,14 @@ Clone the azure-powershell repo, and in your local copy run the following comman
 ```sh
 $ dotnet msbuild /t:Build /p:Configuration=Release
 $ dotnet msbuild /t:publish /p:Configuration=Release /p:NuGetKey=1234
-$ dotnet msbuild /t:BuildImage
-$ docker tag azure-powershell mcr.microsoft.com/azureps/azure-powershell
+$ dotnet msbuild /t:BuildImage /p:DockerImageName=mcr.microsoft.com/azure-powershell
 $ docker images
 ```
 
 ### Remove image
 
 ```sh
-docker rmi mcr.microsoft.com/azureps/azure-powershell
+docker rmi mcr.microsoft.com/azure-powershell
 ```
 
 ## Developing and Contributing
