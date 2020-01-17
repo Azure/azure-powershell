@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzScheduledQueryRuleLogMetricTrigger
 
 ## SYNOPSIS
-Creates an object of type Log Metric Trigger
+Creates an object of type Log Metric Trigger.
 
 ## SYNTAX
 
@@ -47,7 +47,8 @@ Accept wildcard characters: False
 ```
 
 ### -MetricColumn
-Column on which metric value is being aggregated
+Column on which metric value is being aggregated.
+The input is not validated. It will first be validated when New-AzScheduledQueryRule is eventually called.
 
 ```yaml
 Type: System.String
@@ -62,7 +63,8 @@ Accept wildcard characters: False
 ```
 
 ### -MetricTriggerType
-The metric trigger type
+The metric trigger type.
+The input is not validated. It will first be validated when New-AzScheduledQueryRule is eventually called.
 
 ```yaml
 Type: System.String
@@ -78,8 +80,7 @@ Accept wildcard characters: False
 
 ### -Threshold
 The metric threshold value: Consecutive, Total.
-* Consecutive - Based on metric measurement.
-* Total - Based on number of results.
+The input is not validated. It will first be validated when New-AzScheduledQueryRule is eventually called.
 
 ```yaml
 Type: System.Double
@@ -95,6 +96,7 @@ Accept wildcard characters: False
 
 ### -ThresholdOperator
 The metric threshold operator : GreaterThan, LessThan, Equal.
+The input is not validated. It will first be validated when New-AzScheduledQueryRule is eventually called.
 
 ```yaml
 Type: System.String
