@@ -107,6 +107,7 @@ In this example, the Public IP Address "azFwPublicIp1" as detached from the Fire
 $mgmtPip = Get-AzPublicIpAddress -Name "managementPublicIp1" -ResourceGroupName "rg"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName "rg" -Name anotherVNetName
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.SetManagementIpConfiguration($vnet, $mgmtPip)
 
 $azFw | Set-AzFirewall
 ```
