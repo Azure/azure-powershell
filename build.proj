@@ -242,7 +242,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot;" />
   </Target>
 
-  <Target Name="BuildImage">
+  <Target Name="BuildImages">
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/GetArtifacts.ps1 -Artifacts $(RepoArtifacts) -Docker $(DockerRoot) &quot;" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/BuildImages.ps1 -DOCKER $(DockerRoot) -DockerImageName $(DockerImageName) &quot;" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/CleanArtifacts.ps1 -Docker $(DockerRoot) &quot;" />
