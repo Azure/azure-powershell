@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Limit the number of VM status to 100 to avoid throttling when Get-AzVM -Status is performed without VM name.
 * Add Update-AzDiskEncryptionSet cmdlet
 * Add EncryptionType and DiskEncryptionSetId parameters to the following cmdlets:
     - New-AzDiskUpdateConfig, New-AzSnapshotUpdateConfig
