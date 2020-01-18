@@ -1098,10 +1098,8 @@ function Test-NetworkConfigurationDiagnostic
     $cmTcpConfig.DisableTraceRoute = $true
 
     $SrcEndpointFilterItem =New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject -Type $cmFilterItemType  -Address  $cmFilterItemIPAddress
-    $SrcEndpointFilter = New-AzNetworkWatcherConnectionMonitorEndpointFilterObject -Type "Include" -Items $SrcEndpointFilterItem
 
     $DstEndpointFilterItem =New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject -Type $cmFilterItemType  -Address  $cmFilterItemIPAddress
-    $DstEndpointFilter = New-AzNetworkWatcherConnectionMonitorEndpointFilterObject -Type "Include" -Items $DstEndpointFilterItem
     
     #invoke connection monitors
     $SourceEndpointObject = New-AzNetworkWatcherConnectionMonitorEndPointObject -Name SrcTest -ResourceId SrcResourceId\23423 -Address  $srcIPAddress -FilterType Include -FilterItem $SrcEndpointFilterItem
