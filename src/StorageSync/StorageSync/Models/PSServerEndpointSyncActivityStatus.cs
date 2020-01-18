@@ -17,29 +17,39 @@ using System;
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
     /// <summary>
-    /// Class PSSyncSessionStatus.
+    /// Class PSSyncProgressStatus.
     /// </summary>
-    public class PSSyncSessionStatus
+    public class PSServerEndpointSyncActivityStatus
     {
         /// <summary>
-        /// Gets or sets the last sync result.
+        /// Gets or sets the timestamp.
         /// </summary>
-        /// <value>The last sync result.</value>
-        public int? LastSyncResult { get; set; }
+        /// <value>The progress timestamp.</value>
+        public DateTime? Timestamp { get; set; }
         /// <summary>
-        /// Gets or sets the last sync timestamp.
+        /// Gets or sets the per item error count.
         /// </summary>
-        /// <value>The last sync timestamp.</value>
-        public DateTime? LastSyncTimestamp { get; set; }
+        /// <value>The per item error count.</value>
+        public long? PerItemErrorCount { get; set; }
         /// <summary>
-        /// Gets or sets the last sync success timestamp.
+        /// Gets or sets the applied item count.
         /// </summary>
-        /// <value>The last sync success timestamp.</value>
-        public DateTime? LastSyncSuccessTimestamp { get; set; }
+        /// <value>The applied item count.</value>
+        public long? AppliedItemCount { get; set; }
         /// <summary>
-        /// Gets or sets the last sync per item error count.
+        /// Gets or sets the total item count.
         /// </summary>
-        /// <value>The last sync per item error count.</value>
-        public long? LastSyncPerItemErrorCount { get; set; }
+        /// <value>The total item count.</value>
+        public long? TotalItemCount { get; set; }
+        /// <summary>
+        /// Gets or sets the applied bytes.
+        /// </summary>
+        /// <value>The applied bytes.</value>
+        public long? AppliedBytes { get; set; }
+        /// <summary>
+        /// Gets or sets the total bytes.
+        /// </summary>
+        /// <value>The total bytes.</value>
+        public long? TotalBytes { get; set; }
     }
 }

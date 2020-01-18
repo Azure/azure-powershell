@@ -17,39 +17,29 @@ using System;
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
     /// <summary>
-    /// Class PSSyncProgressStatus.
+    /// Class PSServerEndpointSyncSessionStatus.
     /// </summary>
-    public class PSSyncActivityStatus
+    public class PSServerEndpointSyncSessionStatus
     {
         /// <summary>
-        /// Gets or sets the timestamp.
+        /// Gets or sets the last sync result.
         /// </summary>
-        /// <value>The progress timestamp.</value>
-        public DateTime? Timestamp { get; set; }
+        /// <value>The last sync result.</value>
+        public int? LastSyncResult { get; set; }
         /// <summary>
-        /// Gets or sets the per item error count.
+        /// Gets or sets the last sync timestamp.
         /// </summary>
-        /// <value>The per item error count.</value>
-        public long? PerItemErrorCount { get; set; }
+        /// <value>The last sync timestamp.</value>
+        public DateTime? LastSyncTimestamp { get; set; }
         /// <summary>
-        /// Gets or sets the applied item count.
+        /// Gets or sets the last sync success timestamp.
         /// </summary>
-        /// <value>The applied item count.</value>
-        public long? AppliedItemCount { get; set; }
+        /// <value>The last sync success timestamp.</value>
+        public DateTime? LastSyncSuccessTimestamp { get; set; }
         /// <summary>
-        /// Gets or sets the total item count.
+        /// Gets or sets the last sync per item error count.
         /// </summary>
-        /// <value>The total item count.</value>
-        public long? TotalItemCount { get; set; }
-        /// <summary>
-        /// Gets or sets the applied bytes.
-        /// </summary>
-        /// <value>The applied bytes.</value>
-        public long? AppliedBytes { get; set; }
-        /// <summary>
-        /// Gets or sets the total bytes.
-        /// </summary>
-        /// <value>The total bytes.</value>
-        public long? TotalBytes { get; set; }
+        /// <value>The last sync per item error count.</value>
+        public long? LastSyncPerItemErrorCount { get; set; }
     }
 }
