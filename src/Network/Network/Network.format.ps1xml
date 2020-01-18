@@ -437,7 +437,7 @@
               </ListItem>
               <ListItem>
                 <Label>Filter</Label>
-                <PropertyName>Filter</PropertyName>
+                <PropertyName>FilterText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -459,7 +459,7 @@
               </ListItem>
               <ListItem>
                 <Label>Items</Label>
-                <PropertyName>Items</PropertyName>
+                <PropertyName>ItemsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -511,11 +511,11 @@
               </ListItem>
               <ListItem>
                 <Label>TestGroup</Label>
-                <PropertyName>TestGroup</PropertyName>
+                <PropertyName>TestGroupText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Output</Label>
-                <PropertyName>Output</PropertyName>
+                <PropertyName>OutputText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Notes</Label>
@@ -541,7 +541,7 @@
               </ListItem>
               <ListItem>
                 <Label>WorkspaceSettings</Label>
-                <PropertyName>WorkspaceSettings</PropertyName>
+                <PropertyName>WorkspaceSettingsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -611,11 +611,11 @@
               </ListItem>
               <ListItem>
                 <Label>RequestHeaders</Label>
-                <PropertyName>RequestHeaders</PropertyName>
+                <PropertyName>RequestHeadersText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ValidStatusCodeRanges</Label>
-                <PropertyName>ValidStatusCodeRanges</PropertyName>
+                <PropertyName>ValidStatusCodeRangesText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>PreferHTTPS</Label>
@@ -691,9 +691,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorTestGroupObject</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorTestGroup</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>

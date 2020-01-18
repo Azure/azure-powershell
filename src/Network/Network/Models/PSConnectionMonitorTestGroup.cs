@@ -12,8 +12,14 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Name { get; set; }
         public bool? Disable { get; set; }
+
+        [Ps1Xml(Target = ViewControl.List)]
         public List<PSNetworkWatcherConnectionMonitorTestConfigurationObject> TestConfigurations { get; set; }
+
+        [Ps1Xml(Target = ViewControl.List)]
         public List<PSNetworkWatcherConnectionMonitorEndpointObject> Sources { get; set; }
+
+        [Ps1Xml(Target = ViewControl.List)]
         public List<PSNetworkWatcherConnectionMonitorEndpointObject> Destinations { get; set; }
 
         [JsonIgnore]

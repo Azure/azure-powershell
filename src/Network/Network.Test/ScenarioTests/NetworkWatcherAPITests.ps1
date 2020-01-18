@@ -1097,14 +1097,20 @@ function Test-NetworkConfigurationDiagnostic
     $cmTcpConfig.Port = $port
     $cmTcpConfig.DisableTraceRoute = $true
 
+    $SrcEndpointFilterItem =New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject -Type $cmFilterItemType  -Address  $cmFilterItemIPAddress
+    $SrcEndpointFilter = New-AzNetworkWatcherConnectionMonitorEndpointFilterObject -Type "Include" -Items $SrcEndpointFilterItem
+
+    $DstEndpointFilterItem =New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject -Type $cmFilterItemType  -Address  $cmFilterItemIPAddress
+    $DstEndpointFilter = New-AzNetworkWatcherConnectionMonitorEndpointFilterObject -Type "Include" -Items $DstEndpointFilterItem
+    
     #invoke connection monitors
-    $SourceEndpointObject = New-AzNetworkWatcherConnectionMonitorEndPointObject -Name SrcTest -ResourceId SrcResourceId\23423 -Address  $srcIPAddress -FilterType Include -FilterAddress $cmFilterItemIPAddress
+    $SourceEndpointObject = New-AzNetworkWatcherConnectionMonitorEndPointObject -Name SrcTest -ResourceId SrcResourceId\23423 -Address  $srcIPAddress -FilterType Include -FilterItem $SrcEndpointFilterItem
     Assert-NotNull $SourceEndpointObject
     Assert-AreEqual $SourceEndpointObject.Address  $srcIPAddress
     Assert-AreEqual $SourceEndpointObject.Filter.Items[0].Type $cmFilterItemType
     Assert-AreEqual $SourceEndpointObject.Filter.Items[0].Address $cmFilterItemIPAddress 
 
-    $DestinationEndpointObject = New-AzNetworkWatcherConnectionMonitorEndPointObject -Name DstTest -ResourceId DestResourceId\2342 -Address $destIPAddress -FilterType Include -FilterAddress $cmFilterItemIPAddress
+    $DestinationEndpointObject = New-AzNetworkWatcherConnectionMonitorEndPointObject -Name DstTest -ResourceId DestResourceId\2342 -Address $destIPAddress -FilterType Include -FilterItem $DstEndpointFilterItem
     Assert-NotNull $DestinationEndpointObject
     Assert-AreEqual $DestinationEndpointObject.Address $destIPAddress
     Assert-AreEqual $DestinationEndpointObject.Filter.Items[0].Type $cmFilterItemType
