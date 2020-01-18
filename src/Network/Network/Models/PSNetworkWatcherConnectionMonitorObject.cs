@@ -13,7 +13,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string NetworkWatcherName { get; set; }
         public string ResourceGroupName { get; set; }
         public string Name { get; set; }
+
+        [Ps1Xml(Target = ViewControl.List)]
         public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
+
+        [Ps1Xml(Target = ViewControl.List)]
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
         public string Notes { get; set; }
 

@@ -13,7 +13,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int? Port { get; set; }
         public string Method { get; set; }
         public string Path { get; set; }
+
+        [Ps1Xml(Target = ViewControl.List)]
         public List<PSHTTPHeader> RequestHeaders { get; set; }
+
+        [Ps1Xml(Target = ViewControl.List)]
         public List<string> ValidStatusCodeRanges { get; set; }
         public bool? PreferHTTPS { get; set; }
 
@@ -21,6 +25,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RequestHeadersText
         {
             get { return JsonConvert.SerializeObject(this.RequestHeaders, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ValidStatusCodeRangesText
+        {
+            get { return JsonConvert.SerializeObject(this.ValidStatusCodeRanges, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

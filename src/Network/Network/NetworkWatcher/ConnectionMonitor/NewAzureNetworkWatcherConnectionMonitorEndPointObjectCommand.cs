@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The connection monitor filter addresses.")]
         [ValidateNotNullOrEmpty]
-        public List<string> FilterAddress { get; set; }
+        public List<PSConnectionMonitorEndpointFilterItem> FilterItem { get; set; }
 
         public override void Execute()
         {
@@ -88,22 +88,14 @@ namespace Microsoft.Azure.Commands.Network
                 Address = this.Address,
             };
 
-            if (this.FilterType != null && this.FilterAddress != null)
+            if (this.FilterType != null && this.FilterItem != null)
             {
                 endPoint.Filter = new PSConnectionMonitorEndpointFilter()
                 {
                     Type = this.FilterType
                 };
 
-                endPoint.Filter.Items = new List<PSConnectionMonitorEndpointFilterItem>();
-                foreach (string Address in FilterAddress)
-                {
-                    endPoint.Filter.Items.Add(new PSConnectionMonitorEndpointFilterItem()
-                    {
-                        Type = "AgentAddress",
-                        Address = Address
-                    });
-                };
+                endPoint.Filter.Items = new List<PSConnectionMonitorEndpointFilterItem>(FilterItem);
             }
 
             WriteObject(endPoint);
@@ -111,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
-            if (string.IsNullOrEmpty(this.ResourceId) && string.IsNullOrEmpty(this.Address) && string.IsNullOrEmpty(this.FilterType) && this.FilterAddress == null)
+            if (string.IsNullOrEmpty(this.ResourceId) && string.IsNullOrEmpty(this.Address) && string.IsNullOrEmpty(this.FilterType) && this.FilterItem == null)
             {
                 throw new ArgumentException("No Parameter is provided");
             }
@@ -120,7 +112,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException("ResourceId or Address can not be both empty");
             }
-        
+
+            if (!string.IsNullOrEmpty(this.ResourceId) && !string.IsNullOrEmpty(this.Address))
+            {
+                throw new ArgumentException("Either resourceId or address can be only defined");
+            }
+
             if (!string.IsNullOrEmpty(ResourceId))
             {
                 string[] SplittedName = ResourceId.Split('/');
@@ -137,17 +134,17 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException("Only FilterType Include is supported");
             }
-            else if (!string.IsNullOrEmpty(this.FilterType) && this.FilterAddress == null)
+            else if (!string.IsNullOrEmpty(this.FilterType) && this.FilterItem == null)
             {
-                throw new ArgumentException("FilterType defined without FilterAddress");
+                throw new ArgumentException("FilterType defined without filter item ");
             }
-            else if (!string.IsNullOrEmpty(this.FilterType) && !this.FilterAddress.Any())
+            else if (!string.IsNullOrEmpty(this.FilterType) && !this.FilterItem.Any())
             {
-                throw new ArgumentException("FilterAddress is empty");
+                throw new ArgumentException("Filter item list is empty");
             }
-            else if (string.IsNullOrEmpty(this.FilterType) && this.FilterAddress != null)
+            else if (string.IsNullOrEmpty(this.FilterType) && this.FilterItem != null)
             {
-                throw new ArgumentException("FilterAddress defined without FilterType");
+                throw new ArgumentException("Filter item list defined without FilterType");
             }
 
             return true;
