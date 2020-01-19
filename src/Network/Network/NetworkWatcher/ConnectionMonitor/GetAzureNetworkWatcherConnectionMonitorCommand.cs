@@ -128,7 +128,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 // Always call Get with the new Rest API version (i.e. the one for CMv2)
                 var connectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorName, true);
-
                 WriteObject(connectionMonitor);
             }
             else

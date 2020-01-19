@@ -214,7 +214,10 @@ namespace Microsoft.Azure.Commands.Network
                 parameters.Notes = this.Notes;
             }
 
-            UpdateConnectionMonitorV2Parameters(this.TestGroup, this.Output, parameters);
+            if (connectionMonitorV2 == true)
+            {
+                UpdateConnectionMonitorV2Parameters(this.TestGroup, this.Output, parameters);
+            }
 
             if (this.ConfigureOnly)
             {
@@ -245,9 +248,9 @@ namespace Microsoft.Azure.Commands.Network
 
            if (connectionMonitorV2)
             {
-                // This is only used for testing. Do not remove
-                 string str = JsonConvert.SerializeObject(parameters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
-                 WriteObject(str);
+               // This is only used for testing. Do not remove
+               //  string str = JsonConvert.SerializeObject(parameters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+               //  WriteObject(str);
                 this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, this.Name, parameters);
                 getConnectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, this.Name, connectionMonitorV2);
             }
@@ -275,7 +278,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
-            return ValidateConnectionMonitorV2Parameters(this.SourceResourceId, this.DestinationResourceId, this.DestinationAddress, 
+            return ValidateConnectionMonitorV2Parameters(this.SourceResourceId, this.DestinationResourceId, 
+                null, this.DestinationAddress, 
                 this.MonitoringIntervalInSeconds, this.TestGroup, this.Output);
         }
     }

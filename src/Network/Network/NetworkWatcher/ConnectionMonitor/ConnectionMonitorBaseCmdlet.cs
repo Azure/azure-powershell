@@ -60,8 +60,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 connectionMonitor = this.ConnectionMonitors.Get(resourceGroupName, name, connectionMonitorName);
 
-                WriteObject("Dispaly");
-
                 if (String.Compare(connectionMonitor.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
                 {
                     psConnectionMonitor = ConvertConnectionMonitorResultToPSConnectionMonitorResultV1(connectionMonitor);
@@ -70,8 +68,6 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     psConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResultV2(connectionMonitor);
                 }
-
-                WriteObject(psConnectionMonitor);
             }
             else
             {
@@ -267,7 +263,7 @@ namespace Microsoft.Azure.Commands.Network
             return null;
         }
 
-    public bool ValidateConnectionMonitorV2Parameters(string SourceResourceId, string DestinationResourceId, string DestinationAddress, int? MonitoringIntervalInSeconds, List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroups, List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs)
+    public bool ValidateConnectionMonitorV2Parameters(string SourceResourceId, string DestinationResourceId, PSConnectionMonitorResult InputObject, string DestinationAddress, int? MonitoringIntervalInSeconds, List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroups, List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs)
         {
             if ((!string.IsNullOrEmpty(SourceResourceId) || 
                  !string.IsNullOrEmpty(DestinationResourceId)||
@@ -277,9 +273,9 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Connection moniotr V1 can not be defined with either TestGroup. Either connection monitor V1 or V2 can be specified");
             }
 
-            if (string.IsNullOrEmpty(SourceResourceId) && TestGroups == null)
+            if (string.IsNullOrEmpty(SourceResourceId) && InputObject == null && TestGroups == null)
             {
-                throw new ArgumentException("SourceResourceId is not defined");
+                throw new ArgumentException("Either SourceResourceId or InputObject or TestGroups is to be ddefined");
             }
 
             // Validate Test Group
