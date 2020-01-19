@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Network
                     }
                     else
                     {
-                        PSConnectionMonitorResultV2 psConnectionMonitorV2 = MapConnectionMonitorResultToPSConnectionMonitorResultV2(cm);
+                        psConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResultV2(cm);
                     }
                     psConnectionMonitorList.Add(psConnectionMonitor);
                 }
