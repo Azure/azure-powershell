@@ -88,11 +88,11 @@ namespace Microsoft.Azure.Commands.Network
                 Address = this.Address,
             };
 
-            if (this.FilterType != null && this.FilterItem != null)
+            if (this.FilterItem != null)
             {
                 endPoint.Filter = new PSConnectionMonitorEndpointFilter()
                 {
-                    Type = this.FilterType
+                    Type = this.FilterType == null ? "Include" : this.FilterType
                 };
 
                 endPoint.Filter.Items = new List<PSConnectionMonitorEndpointFilterItem>(FilterItem);
@@ -141,10 +141,6 @@ namespace Microsoft.Azure.Commands.Network
             else if (!string.IsNullOrEmpty(this.FilterType) && !this.FilterItem.Any())
             {
                 throw new ArgumentException("Filter item list is empty");
-            }
-            else if (string.IsNullOrEmpty(this.FilterType) && this.FilterItem != null)
-            {
-                throw new ArgumentException("Filter item list defined without FilterType");
             }
 
             return true;

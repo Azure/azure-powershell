@@ -292,10 +292,10 @@ namespace Microsoft.Azure.Commands.Network
                     Port = this.DestinationPort
                 };
 
-                this.ConnectionMonitors.CreateOrUpdateV1(resourceGroupName, networkWatcherName, connectionMonitorName, parameters);
-            }
+                ConnectionMonitorResult connectionMonitorResult = this.ConnectionMonitors.CreateOrUpdateV1(resourceGroupName, networkWatcherName, this.Name, parameters).Result;
 
-            getConnectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorName, connectionMonitorV2);
+                getConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResultV1(connectionMonitorResult);
+            }
 
             return getConnectionMonitor;
         }

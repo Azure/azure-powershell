@@ -60,6 +60,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 connectionMonitor = this.ConnectionMonitors.Get(resourceGroupName, name, connectionMonitorName);
 
+                WriteObject("Dispaly");
+
                 if (String.Compare(connectionMonitor.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
                 {
                     psConnectionMonitor = ConvertConnectionMonitorResultToPSConnectionMonitorResultV1(connectionMonitor);
@@ -68,6 +70,8 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     psConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResultV2(connectionMonitor);
                 }
+
+                WriteObject(psConnectionMonitor);
             }
             else
             {
@@ -121,7 +125,7 @@ namespace Microsoft.Azure.Commands.Network
                 Type = ConnectionMonitor.Type,
                 Location = ConnectionMonitor.Location,
                 StartTime = ConnectionMonitor.StartTime,
-                Tags = NetworkResourceManagerProfile.Mapper.Map<Dictionary<string, string>>(ConnectionMonitor.Tags),
+                Tags = new Dictionary<string, string>(),
                 ConnectionMonitorType = ConnectionMonitor.ConnectionMonitorType,
                 Notes = ConnectionMonitor.Notes,
 
@@ -129,6 +133,14 @@ namespace Microsoft.Azure.Commands.Network
                 Endpoints = NetworkResourceManagerProfile.Mapper.Map<List<PSNetworkWatcherConnectionMonitorEndpointObject>>(ConnectionMonitor.Endpoints),
                 Outputs = NetworkResourceManagerProfile.Mapper.Map<List<PSNetworkWatcherConnectionMonitorOutputObject>>(ConnectionMonitor.Outputs),
             };
+
+            if (ConnectionMonitor.Tags != null)
+            {
+                foreach (KeyValuePair<string, string> KeyValue in ConnectionMonitor.Tags)
+                {
+                    psConnectionMonitor.Tags.Add(KeyValue.Key, KeyValue.Value);
+                }
+            }
 
             if (ConnectionMonitor.TestGroups != null)
             {
@@ -321,19 +333,10 @@ namespace Microsoft.Azure.Commands.Network
                             {
                                 throw new ArgumentException("Endpoint FilterAddress is empty");
                             }
-                            else if (Endpoint.Filter != null && string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items != null)
-                            {
-                                throw new ArgumentException("FilterAddress defined without FilterType");
-                            }
-                            else if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type))
+                            else if (Endpoint.Filter != null && Endpoint.Filter.Items != null && Endpoint.Filter.Items.Any())
                             {
                                 foreach (PSConnectionMonitorEndpointFilterItem Item in Endpoint.Filter.Items)
                                 {
-                                    if (!string.IsNullOrEmpty(Item.Type) && String.Compare(Item.Type, "AgentAddress", true) != 0)
-                                    {
-                                        throw new ArgumentException("Endpoint Filter Items Type is not AgentAddress");
-                                    }
-
                                     if (string.IsNullOrEmpty(Item.Address))
                                     {
                                         throw new ArgumentException("Endpoint Filter Items Address is empty");
@@ -466,7 +469,7 @@ namespace Microsoft.Azure.Commands.Network
                         {
                             SourceEndpoint.Filter = new ConnectionMonitorEndpointFilter()
                             {
-                                Type = SrcEndpoint.Filter.Type
+                                Type = string.IsNullOrEmpty(SrcEndpoint.Filter.Type) ? "Include" : SrcEndpoint.Filter.Type
                             };
 
                             foreach (PSConnectionMonitorEndpointFilterItem Items in SrcEndpoint.Filter.Items)
@@ -478,7 +481,7 @@ namespace Microsoft.Azure.Commands.Network
 
                                 SourceEndpoint.Filter.Items.Add(new ConnectionMonitorEndpointFilterItem()
                                 {
-                                    Type = Items.Type,
+                                    Type = string.IsNullOrEmpty(Items.Type) ? "AgnetAddress" : Items.Type,
                                     Address = Items.Address
                                 });
                             }
@@ -489,7 +492,10 @@ namespace Microsoft.Azure.Commands.Network
                             parameters.Endpoints = new List<ConnectionMonitorEndpoint>();
                         }
 
-                        parameters.Endpoints.Add(SourceEndpoint);
+                        if (parameters.Endpoints.Count(x => x.Name == SourceEndpoint.Name) == 0)
+                        {
+                            parameters.Endpoints.Add(SourceEndpoint);
+                        }
 
                         // Add it to the output
                         if (TestGrp.Sources == null)
@@ -515,7 +521,7 @@ namespace Microsoft.Azure.Commands.Network
                         {
                             DestinationEndpoint.Filter = new ConnectionMonitorEndpointFilter()
                             {
-                                Type = DstEndpoint.Filter.Type
+                                Type = string.IsNullOrEmpty(DstEndpoint.Filter.Type) ? "Include" : DstEndpoint.Filter.Type
                             };
 
                             foreach (PSConnectionMonitorEndpointFilterItem Items in DstEndpoint.Filter.Items)
@@ -527,7 +533,7 @@ namespace Microsoft.Azure.Commands.Network
 
                                 DestinationEndpoint.Filter.Items.Add(new ConnectionMonitorEndpointFilterItem()
                                 {
-                                    Type = Items.Type,
+                                    Type = string.IsNullOrEmpty(Items.Type)? "AgentAddress" : Items.Type,
                                     Address = Items.Address
                                 });
                             }
@@ -538,7 +544,10 @@ namespace Microsoft.Azure.Commands.Network
                             parameters.Endpoints = new List<ConnectionMonitorEndpoint>();
                         }
 
-                        parameters.Endpoints.Add(DestinationEndpoint);
+                        if (parameters.Endpoints.Count(x => x.Name == DestinationEndpoint.Name) == 0)
+                        {
+                            parameters.Endpoints.Add(DestinationEndpoint);
+                        }
 
                         //Add it to the output
                         if (TestGrp.Destinations == null)
@@ -625,7 +634,10 @@ namespace Microsoft.Azure.Commands.Network
                             parameters.TestConfigurations = new List<ConnectionMonitorTestConfiguration>();
                         }
 
-                        parameters.TestConfigurations.Add(TestConfiguration);
+                        if (parameters.TestConfigurations.Count(x => x.Name == TestConfiguration.Name) == 0)
+                        {
+                            parameters.TestConfigurations.Add(TestConfiguration);
+                        }
 
                         // Add it to the ouput
                         if (TestGrp.TestConfigurations == null)
@@ -634,7 +646,6 @@ namespace Microsoft.Azure.Commands.Network
                         }
                         TestGrp.TestConfigurations.Add(TestConfiguration.Name);
                     }
-
 
                     if (parameters.TestGroups == null)
                     {
@@ -686,11 +697,19 @@ namespace Microsoft.Azure.Commands.Network
                 MonitoringIntervalInSeconds = ConnectionMonitorResult.MonitoringIntervalInSeconds,
                 StartTime = ConnectionMonitorResult.StartTime,
                 MonitoringStatus = ConnectionMonitorResult.MonitoringStatus,
-                Tags = NetworkResourceManagerProfile.Mapper.Map<Dictionary<string, string>>(ConnectionMonitorResult.Tags),
                 ConnectionMonitorType = ConnectionMonitorResult.ConnectionMonitorType,
+                Tags = new Dictionary<string, string>()
                 //Source 
                 //Destination
             };
+
+            if (ConnectionMonitorResult.Tags != null)
+            {
+                foreach (KeyValuePair<string, string> KeyValue in ConnectionMonitorResult.Tags)
+                {
+                    ConnectionMonitorResultV1.Tags.Add(KeyValue.Key, KeyValue.Value);
+                }
+            }
 
             if (ConnectionMonitorResultV1.Source == null)
             {
@@ -709,11 +728,6 @@ namespace Microsoft.Azure.Commands.Network
                     Address = PSConnectionMonitorResultV2.TestGroups?[0]?.Destinations?[0]?.Address,
                     Port = PSConnectionMonitorResultV2.TestConfigurations?[0]?.TcpConfiguration?.Port ?? default(int)
                 };
-            }
-
-            if (ConnectionMonitorResultV1.MonitoringIntervalInSeconds != null)
-            {
-                ConnectionMonitorResultV1.MonitoringIntervalInSeconds = ConnectionMonitorResult.TestConfigurations?[0]?.TestFrequencySec;
             }
 
             // These parameters do not need mapping 

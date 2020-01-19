@@ -247,9 +247,10 @@ namespace Microsoft.Azure.Commands.Network
            if (connectionMonitorV2)
             {
                 // This is only used for testing. Do not remove
-                // string str = JsonConvert.SerializeObject(parameters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
-                // WriteObject(str);
+                 string str = JsonConvert.SerializeObject(parameters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                 WriteObject(str);
                 this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, this.Name, parameters);
+                getConnectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, this.Name, connectionMonitorV2);
             }
             else
             {
@@ -265,10 +266,10 @@ namespace Microsoft.Azure.Commands.Network
                     Port = this.DestinationPort
                 };
 
-                this.ConnectionMonitors.CreateOrUpdateV1(resourceGroupName, networkWatcherName, this.Name, parameters);
-            }
+                ConnectionMonitorResult connectionMonitorResult = this.ConnectionMonitors.CreateOrUpdateV1(resourceGroupName, networkWatcherName, this.Name, parameters).Result;
 
-            getConnectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, this.Name, connectionMonitorV2);
+                getConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResultV1(connectionMonitorResult);
+            }
 
             return getConnectionMonitor;
         }

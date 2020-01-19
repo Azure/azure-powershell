@@ -166,19 +166,10 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         throw new ArgumentException("Endpoint FilterAddress is empty");
                     }
-                    else if (Endpoint.Filter != null && string.IsNullOrEmpty(Endpoint.Filter.Type) && Endpoint.Filter.Items != null)
-                    {
-                        throw new ArgumentException("FilterAddress defined without FilterType");
-                    }
                     else if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type))
                     {
                         foreach (PSConnectionMonitorEndpointFilterItem Item in Endpoint.Filter.Items)
                         {
-                            if (!string.IsNullOrEmpty(Item.Type) && String.Compare(Item.Type, "AgentAddress", true) != 0)
-                            {
-                                throw new ArgumentException("Endpoint Filter Items Type is not AgentAddress");
-                            }
-
                             if (string.IsNullOrEmpty(Item.Address))
                             {
                                 throw new ArgumentException("Endpoint Filter Items Address is empty");
