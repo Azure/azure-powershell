@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Connection monitor object.",
             ParameterSetName = "SetByInputObject")]
         [ValidateNotNull]
-        public PSConnectionMonitorResult InputObject { get; set; }
+        public PSConnectionMonitorResultV1 InputObject { get; set; }
 
         [Alias("ConnectionMonitorName")]
         [Parameter(
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 ConnectionMonitorDetails connectionMonitorDetails = new ConnectionMonitorDetails();
                 connectionMonitorDetails = this.GetConnectionMonitorDetails(this.InputObject.Id);
-
+               
                 connectionMonitorName = connectionMonitorDetails.ConnectionMonitorName;
                 resourceGroupName = connectionMonitorDetails.ResourceGroupName;
                 networkWatcherName = connectionMonitorDetails.NetworkWatcherName;
@@ -245,7 +245,10 @@ namespace Microsoft.Azure.Commands.Network
                 parameters.Notes = this.Notes;
             }
 
-            UpdateConnectionMonitorV2Parameters(this.TestGroup, this.Output, parameters);
+            if (connectionMonitorV2 == true)
+            {
+                UpdateConnectionMonitorV2Parameters(this.TestGroup, this.Output, parameters);
+            }
 
             if (this.ConfigureOnly)
             {
@@ -289,7 +292,7 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     ResourceId = this.DestinationResourceId,
                     Address = this.DestinationAddress,
-                    Port = this.DestinationPort
+                    Port = this.DestinationPort,
                 };
 
                 ConnectionMonitorResult connectionMonitorResult = this.ConnectionMonitors.CreateOrUpdateV1(resourceGroupName, networkWatcherName, this.Name, parameters).Result;
@@ -302,7 +305,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
-            return ValidateConnectionMonitorV2Parameters(this.SourceResourceId, this.DestinationResourceId, this.DestinationAddress,
+            return ValidateConnectionMonitorV2Parameters(this.SourceResourceId, this.DestinationResourceId, 
+                this.InputObject, this.DestinationAddress,
                 this.MonitoringIntervalInSeconds, this.TestGroup, this.Output);
         }
     }
