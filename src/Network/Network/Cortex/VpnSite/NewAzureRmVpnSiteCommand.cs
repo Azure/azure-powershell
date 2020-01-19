@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnSiteLinkObject,
             HelpMessage = "The ResourceId VirtualWan this VpnSite needs to be connected to.")]
-        [ResourceIdCompleter("Microsot.Network/virtualWans")]
+        [ResourceIdCompleter("Microsoft.Network/virtualWans")]
         public string VirtualWanId { get; set; }
 
         [Parameter(Mandatory = true,
