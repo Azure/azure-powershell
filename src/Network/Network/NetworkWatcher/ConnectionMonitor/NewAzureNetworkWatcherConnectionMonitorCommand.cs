@@ -117,8 +117,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of test group.")]
-        //TODO
-        //[ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
 
         [Parameter(
@@ -276,7 +275,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
-            return ValidateConnectionMonitorV2Parameters(this.SourceResourceId, this.TestGroup, this.Output);
+            return ValidateConnectionMonitorV2Parameters(this.SourceResourceId, this.DestinationResourceId, this.DestinationAddress, 
+                this.MonitoringIntervalInSeconds, this.TestGroup, this.Output);
         }
     }
 }
