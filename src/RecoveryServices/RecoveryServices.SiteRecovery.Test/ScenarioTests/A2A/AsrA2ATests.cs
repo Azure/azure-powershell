@@ -54,6 +54,13 @@ namespace RecoveryServices.SiteRecovery.Test
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewA2AManagedDiskReplicationConfiguration");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewA2AManagedDiskReplicationConfigWithCmk()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewA2AManagedDiskReplicationConfigurationWithCmk");
+        }
+
 #if NETSTANDARD
         [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
 #else
