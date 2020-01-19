@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkwatcherconnectionmonitor
+online version:
 schema: 2.0.0
 ---
 
@@ -41,10 +41,10 @@ The Get-AzNetworkWatcherConnectionMonitor cmdlet returns the connection monitor 
 
 ## EXAMPLES
 
-### Example 1: Get connection monitor by name in the specified location
-```
+### Example 1
+```powershell
 PS C:\> Get-AzNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm
-
+```
 
 Name                        : cm
 Id                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGro
@@ -71,43 +71,6 @@ Type                        : Microsoft.Network/networkWatchers/connectionMonito
 Tags                        : {
                                 "key1": "value1"
                               }
-```
-
-In this example we get connection monitor by name in the specified location.
-
-### Example 2: Get connection monitors using filtering
-```
-PS C:\> Get-AzNetworkWatcherConnectionMonitor -ResourceGroupName NetworkWatcherRG -NetworkWatcherName NetworkWatcher_centraluseuap -Name cm*
-
-
-Name                        : cm
-Id                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGro
-                              ups/NetworkWatcherRG/providers/Microsoft.Network/networkWatcher
-                              s/NetworkWatcher_centraluseuap/connectionMonitors/cm
-Etag                        : W/"40961b58-e379-4204-a47b-0c477739b095"
-ProvisioningState           : Succeeded
-Source                      : {
-                                "ResourceId": "/subscriptions/96e68903-0a56-4819-9987-8d08ad6
-                              a1f99/resourceGroups/VarunRgCentralUSEUAP/providers/Microsoft.C
-                              ompute/virtualMachines/irinavm",
-                                "Port": 0
-                              }
-Destination                 : {
-                                "Address": "google.com",
-                                "Port": 80
-                              }
-MonitoringIntervalInSeconds : 60
-AutoStart                   : True
-StartTime                   : 1/12/2018 7:19:28 PM
-MonitoringStatus            : Stopped
-Location                    : centraluseuap
-Type                        : Microsoft.Network/networkWatchers/connectionMonitors
-Tags                        : {
-                                "key1": "value1"
-                              }
-```
-
-In this example we get all connection monitors in NetworkWatcher_centraluseuap that start with "cm"
 
 ## PARAMETERS
 
@@ -153,7 +116,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -NetworkWatcher
@@ -202,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource ID of the connection monitor.
+Resource ID.
 
 ```yaml
 Type: System.String
@@ -227,63 +190,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
+### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResultV1
+
+### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResultV2
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, connectivity, management, manager, network, networking, network watcher, connection monitor
 
 ## RELATED LINKS
-
-[New-AzNetworkWatcher](./New-AzNetworkWatcher.md)
-
-[Get-AzNetworkWatcher](./Get-AzNetworkWatcher.md)
-
-[Remove-AzNetworkWatcher](./Remove-AzNetworkWatcher.md)
-
-[Get-AzNetworkWatcherNextHop](./Get-AzNetworkWatcherNextHop.md)
-
-[Get-AzNetworkWatcherSecurityGroupView](./Get-AzNetworkWatcherSecurityGroupView.md)
-
-[Get-AzNetworkWatcherTopology](./Get-AzNetworkWatcherTopology.md)
-
-[Get-AzNetworkWatcherTroubleshootingResult](./Get-AzNetworkWatcherTroubleshootingResult.md)
-
-[New-AzNetworkWatcherPacketCapture](./New-AzNetworkWatcherPacketCapture.md)
-
-[New-AzPacketCaptureFilterConfig](./New-AzPacketCaptureFilterConfig.md)
-
-[Get-AzNetworkWatcherPacketCapture](./Get-AzNetworkWatcherPacketCapture.md)
-
-[Remove-AzNetworkWatcherPacketCapture](./Remove-AzNetworkWatcherPacketCapture.md)
-
-[Stop-AzNetworkWatcherPacketCapture](./Stop-AzNetworkWatcherPacketCapture.md)
-
-[Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor.md)
-
-[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport.md)
-
-[Remove-AzNetworkWatcherConnectionMonitor](./Remove-AzNetworkWatcherConnectionMonitor.md)
-
-[Set-AzNetworkWatcherConnectionMonitor](./Set-AzNetworkWatcherConnectionMonitor.md)
-
-[Stop-AzNetworkWatcherConnectionMonitor](./Stop-AzNetworkWatcherConnectionMonitor.md)
-
-[New-AzNetworkWatcherConnectionMonitor](./New-AzNetworkWatcherConnectionMonitor.md)
-
-[New-AzNetworkWatcherProtocolConfiguration](./New-AzNetworkWatcherProtocolConfiguration.md)
-
-[Test-AzNetworkWatcherIPFlow](./Test-AzNetworkWatcherIPFlow.md)
-
-[Test-AzNetworkWatcherConnectivity](./Test-AzNetworkWatcherConnectivity.md)
-
-[Start-AzNetworkWatcherResourceTroubleshooting](./Start-AzNetworkWatcherResourceTroubleshooting.md)
-
-[Start-AzNetworkWatcherConnectionMonitor](./Start-AzNetworkWatcherConnectionMonitor.md)
-
-[Set-AzNetworkWatcherConfigFlowLog](./Set-AzNetworkWatcherConfigFlowLog.md)
-
-[Get-AzNetworkWatcherReachabilityReport](./Get-AzNetworkWatcherReachabilityReport.md)
-
-[Get-AzNetworkWatcherReachabilityProvidersList](./Get-AzNetworkWatcherReachabilityProvidersList.md)
-
-[Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
