@@ -145,13 +145,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The connection monitor output.")]
-        [ValidateNotNullOrEmpty]
+        //[ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Notes associated with connection monitor.")]
-        [ValidateNotNullOrEmpty]
+        //[ValidateNotNullOrEmpty]
         public string Notes { get; set; }
 
         [Parameter(
@@ -302,7 +302,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
-            return ValidateConnectionMonitorV2Parameters(this.SourceResourceId, this.TestGroup, this.Output);
+            return ValidateConnectionMonitorV2Parameters(this.SourceResourceId, this.DestinationResourceId, this.DestinationAddress,
+                this.MonitoringIntervalInSeconds, this.TestGroup, this.Output);
         }
     }
 }

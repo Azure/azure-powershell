@@ -267,11 +267,14 @@ namespace Microsoft.Azure.Commands.Network
             return null;
         }
 
-    public bool ValidateConnectionMonitorV2Parameters(string SourceResourceId, List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroups, List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs)
+    public bool ValidateConnectionMonitorV2Parameters(string SourceResourceId, string DestinationResourceId, string DestinationAddress, int? MonitoringIntervalInSeconds, List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroups, List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs)
         {
-            if (!string.IsNullOrEmpty(SourceResourceId) && TestGroups != null)
+            if ((!string.IsNullOrEmpty(SourceResourceId) || 
+                 !string.IsNullOrEmpty(DestinationResourceId)||
+                 !string.IsNullOrEmpty(DestinationAddress)|
+                    MonitoringIntervalInSeconds != null) && TestGroups != null)
             {
-                throw new ArgumentException("SourceResourceId can not be defined with either TestGroup or Output. Either connection monitor V1 or V2 can be specified");
+                throw new ArgumentException("Connection moniotr V1 can not be defined with either TestGroup. Either connection monitor V1 or V2 can be specified");
             }
 
             if (string.IsNullOrEmpty(SourceResourceId) && TestGroups == null)
