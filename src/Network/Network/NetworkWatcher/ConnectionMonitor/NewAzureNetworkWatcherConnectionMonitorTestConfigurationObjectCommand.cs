@@ -70,11 +70,11 @@ namespace Microsoft.Azure.Commands.Network
 
             Validate();
 
+            uint TestConfigCounter = 1;
+
             PSNetworkWatcherConnectionMonitorTestConfigurationObject testConfiguration = new PSNetworkWatcherConnectionMonitorTestConfigurationObject()
             {
-                // can be empty
-                // if empty, will be set in New/Set-ConnectionMonitorCommand
-                Name = this.Name,
+                Name = string.IsNullOrEmpty(this.Name) ? "TestConfig" + TestConfigCounter.ToString() : this.Name,
                 TestFrequencySec = this.TestFrequencySec,
                 PreferredIPVersion = this.PreferredIPVersion,
                 SuccessThreshold = new PSConnectionMonitorSuccessThreshold()

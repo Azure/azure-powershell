@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
     public class NewAzureNetworkWatcherConnectionMonitorEndpointFilterItemObjectCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The connection monitor filter item type.")]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
 
             PSConnectionMonitorEndpointFilterItem EndpointFilterItem = new PSConnectionMonitorEndpointFilterItem()
             {
-                Type = this.Type,
+                Type = this.Type == null ? "AgentAddress" : this.Type,
                 Address = this.Address
             };
 
