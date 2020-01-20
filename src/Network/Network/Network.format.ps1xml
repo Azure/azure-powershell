@@ -285,6 +285,10 @@
                 <Label>Type</Label>
                 <PropertyName>Type</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -341,7 +345,11 @@
               </ListItem>
               <ListItem>
                 <Label>Outputs</Label>
-                <PropertyName>Outputs</PropertyName>
+                <PropertyName>OutputsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Notes</Label>
@@ -498,12 +506,20 @@
           <ListEntry>
             <ListItems>
               <ListItem>
+                <Label>NetworkWatcher</Label>
+                <PropertyName>NetworkWatcherText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>NetworkWatcherName</Label>
                 <PropertyName>NetworkWatcherName</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ResourceGroupName</Label>
                 <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Name</Label>

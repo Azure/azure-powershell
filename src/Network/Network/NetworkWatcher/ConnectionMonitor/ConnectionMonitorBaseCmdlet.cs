@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Commands.Network
                 Type = ConnectionMonitorResult.Type,
                 Location = ConnectionMonitorResult.Location,
                 AutoStart = ConnectionMonitorResult.AutoStart,
-                MonitoringIntervalInSeconds = ConnectionMonitorResult.MonitoringIntervalInSeconds,
+                //MonitoringIntervalInSeconds = ConnectionMonitorResult.MonitoringIntervalInSeconds,
                 StartTime = ConnectionMonitorResult.StartTime,
                 MonitoringStatus = ConnectionMonitorResult.MonitoringStatus,
                 ConnectionMonitorType = ConnectionMonitorResult.ConnectionMonitorType,
@@ -701,6 +701,11 @@ namespace Microsoft.Azure.Commands.Network
                 //Source 
                 //Destination
             };
+
+            if (ConnectionMonitorResult.TestConfigurations?[0]?.TestFrequencySec != null)
+            {
+                ConnectionMonitorResultV1.MonitoringIntervalInSeconds = ConnectionMonitorResult.TestConfigurations?[0]?.TestFrequencySec;
+            }
 
             if (ConnectionMonitorResult.Tags != null)
             {

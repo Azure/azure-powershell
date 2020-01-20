@@ -147,8 +147,7 @@ namespace Microsoft.Azure.Commands.Network
                         psConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResultV2(cm);
                     }
                     psConnectionMonitorList.Add(psConnectionMonitor);
-                }
-
+                }            
                 WriteObject(SubResourceWildcardFilter(Name, psConnectionMonitorList), true);
             }
         }

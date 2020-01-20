@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
     public class NetworkWatcherConnectionMonitorTestConfigurationObjectCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The test configuration name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -70,11 +70,10 @@ namespace Microsoft.Azure.Commands.Network
 
             Validate();
 
-            uint TestConfigCounter = 1;
-
             PSNetworkWatcherConnectionMonitorTestConfigurationObject testConfiguration = new PSNetworkWatcherConnectionMonitorTestConfigurationObject()
             {
-                Name = string.IsNullOrEmpty(this.Name) ? "TestConfig" + TestConfigCounter.ToString() : this.Name,
+                // Name can not be empty.
+                //Name 
                 TestFrequencySec = this.TestFrequencySec,
                 PreferredIPVersion = this.PreferredIPVersion,
                 SuccessThreshold = new PSConnectionMonitorSuccessThreshold()
