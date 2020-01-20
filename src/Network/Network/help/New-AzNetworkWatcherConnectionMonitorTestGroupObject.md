@@ -44,16 +44,11 @@ TestFrequencySec      : 40
 Protocol              : TCP
 PreferredIPVersion    : IPv4
 HttpConfiguration     :
-TcpConfiguration      : Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorTcpConfiguration
-IcmpConfiguration     :
-SuccessThreshold      : Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorSuccessThreshold
-HttpConfigurationText : null
 TcpConfigurationText  : {
                           "Port": 80,
                           "DisableTraceRoute": false
                         }
-IcmpConfigurationText : null
-SuccessThresholdText  : {
+SuccessThreshold      : {
                           "ChecksFailedPercent": 10,
                           "RoundTripTimeMs": 10
                         }
@@ -61,10 +56,7 @@ SuccessThresholdText  : {
 
 Name                   : MyTcpTestGroup
 Disable                : False
-TestConfigurations     : {MyTcpTestConfig}
-Sources                : {iraVmTestSrc1(MyResourceGroup)}
-Destinations           : {iraVmTestDst1(MyResourceGroup)}
-TestConfigurationsText : [
+TestConfigurations     : [
                            {
                              "Name": "MyTcpTestConfig",
                              "TestFrequencySec": 40,
@@ -80,10 +72,10 @@ TestConfigurationsText : [
                              }
                            }
                          ]
-SourcesText            : [
+Sources                : [
                            {
                              "Name": "iraVmTestSrc1(MyResourceGroup)",
-                             "ResourceId": "/subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/iraVmTestSrc1",
+                             "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/iraVmTestSrc1",
                              "Filter": {
                                "Type": "Include",
                                "Items": [
@@ -95,10 +87,10 @@ SourcesText            : [
                              }
                            }
                          ]
-DestinationsText       : [
+Destinations           : [
                            {
                              "Name": "iraVmTestDst1(MyResourceGroup)",
-                             "ResourceId": "/subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/iraVmTestDst1",
+                             "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/iraVmTestDst1",
                              "Filter": {
                                "Type": "Include",
                                "Items": [

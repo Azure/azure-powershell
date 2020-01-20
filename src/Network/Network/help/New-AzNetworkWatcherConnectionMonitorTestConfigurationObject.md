@@ -36,16 +36,11 @@ TestFrequencySec      : 40
 Protocol              : TCP
 PreferredIPVersion    : IPv4
 HttpConfiguration     :
-TcpConfiguration      : Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorTcpConfiguration
-IcmpConfiguration     :
-SuccessThreshold      : Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorSuccessThreshold
-HttpConfigurationText : null
-TcpConfigurationText  : {
+TcpConfiguration      : {
                           "Port": 80,
                           "DisableTraceRoute": false
                         }
-IcmpConfigurationText : null
-SuccessThresholdText  : {
+SuccessThreshold      : {
                           "ChecksFailedPercent": 10,
                           "RoundTripTimeMs": 10
                         }

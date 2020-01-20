@@ -683,7 +683,7 @@
               </ListItem>
               <ListItem>
                 <Label>SuccessThreshold</Label>
-                <PropertyName>SuccessThreshold</PropertyName>
+                <PropertyName>SuccessThresholdText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
