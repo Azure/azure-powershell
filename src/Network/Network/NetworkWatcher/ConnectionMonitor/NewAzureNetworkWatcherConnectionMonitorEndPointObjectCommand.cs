@@ -95,7 +95,19 @@ namespace Microsoft.Azure.Commands.Network
                     Type = this.FilterType == null ? "Include" : this.FilterType
                 };
 
-                endPoint.Filter.Items = new List<PSConnectionMonitorEndpointFilterItem>(FilterItem);
+                foreach (PSConnectionMonitorEndpointFilterItem Item in this.FilterItem)
+                {
+                    if (endPoint.Filter.Items == null)
+                    {
+                        endPoint.Filter.Items = new List<PSConnectionMonitorEndpointFilterItem>();
+                    }
+
+                    endPoint.Filter.Items.Add(new PSConnectionMonitorEndpointFilterItem()
+                    {
+                        Type = string.IsNullOrEmpty(Item.Type) ? "AgentAddress" : Item.Type,
+                        Address = Item.Address
+                    });
+                }
             }
 
             WriteObject(endPoint);
@@ -115,7 +127,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrEmpty(this.ResourceId) && !string.IsNullOrEmpty(this.Address))
             {
-                throw new ArgumentException("Either resourceId or address can be only defined");
+                throw new ArgumentException("Endpoint in connection monitor should have either ResourceId or Address. These parameters should not be specified together.");
             }
 
             if (!string.IsNullOrEmpty(ResourceId))

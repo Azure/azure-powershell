@@ -31,17 +31,36 @@ namespace Microsoft.Azure.Commands.Network
     public class AzureNetworkWatcherConnectionMonitorObjectCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
+             Mandatory = true,
+             HelpMessage = "The network watcher resource.",
+             ParameterSetName = "SetByResource")]
+        [ValidateNotNull]
+        public PSNetworkWatcher NetworkWatcher { get; set; }
+
+        [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of network watcher.")]
+            HelpMessage = "The name of network watcher.",
+            ParameterSetName = "SetByName")]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the network watcher resource group.")]
+            HelpMessage = "The name of the network watcher resource group.",
+            ParameterSetName = "SetByName")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Location of the network watcher.",
+            ParameterSetName = "SetByLocation")]
+        [LocationCompleter("Microsoft.Network/networkWatchers/connectionMonitors")]
+        [ValidateNotNull]
+        public string Location { get; set; }
+  
         [Alias("ConnectionMonitorName")]
         [Parameter(
             Mandatory = true,
@@ -80,6 +99,25 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name
             };
 
+
+            if (ParameterSetName.Contains("SetByResource"))
+            {
+                CMObject.NetworkWatcherName = this.NetworkWatcher.Name;
+                CMObject.ResourceGroupName = this.NetworkWatcher.ResourceGroupName;
+            }
+            else if (ParameterSetName.Contains("SetByLocation"))
+            {
+                var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
+
+                if (networkWatcher == null)
+                {
+                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
+                }
+
+                CMObject.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
+                CMObject.NetworkWatcherName = networkWatcher.Name;
+            }
+
             if (this.TestGroup != null)
             {
                 CMObject.TestGroup = this.TestGroup;
@@ -106,7 +144,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (PSNetworkWatcherConnectionMonitorTestGroupObject TestGroup in this.TestGroup)
                 {
                     // validate mandatory parameters
-                    if (string.IsNullOrEmpty(TestGroup.Name) || TestGroup.Sources == null || TestGroup.Destinations == null)
+                    if (string.IsNullOrEmpty(TestGroup.Name) || TestGroup.Sources == null || TestGroup.Destinations == null || TestGroup.TestConfigurations == null)
                     {
                         throw new ArgumentException("Test group is missing one or more mandatory parameter");
                     }
@@ -141,22 +179,48 @@ namespace Microsoft.Azure.Commands.Network
                                 }
                             }
 
-                            if (Endpoint.Filter != null && Endpoint.Filter.Type != null && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
+                            if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type) && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
                             {
                                 throw new ArgumentException("Only FilterType Include is supported");
                             }
-                            else if (Endpoint.Filter != null && Endpoint.Filter.Type != null && Endpoint.Filter.Items == null)
+                            else if (Endpoint.Filter != null && Endpoint.Filter.Items == null)
                             {
-                                throw new ArgumentException("Endpoint FilterType defined without FilterAddress");
+                                throw new ArgumentException("Endpoint FilterType defined without FilterItem");
                             }
-                            else if (Endpoint.Filter != null && Endpoint.Filter.Type != null && Endpoint.Filter.Items[0] != null && Endpoint.Filter.Items[0].Type != null && String.Compare(Endpoint.Filter.Items[0].Type, "AgentAddress", true) != 0)
+                            else if (Endpoint.Filter != null && !Endpoint.Filter.Items.Any())
                             {
-                                throw new ArgumentException("Endpoint Filter Items Type is not AgentAddress");
+                                throw new ArgumentException("Filter item list is empty");
                             }
-                            else if (Endpoint.Filter != null && Endpoint.Filter.Type != null && Endpoint.Filter.Items[0] != null && Endpoint.Filter.Items[0].Type != null && string.IsNullOrEmpty(Endpoint.Filter.Items[0].Address))
+                            else if (Endpoint.Filter != null && Endpoint.Filter.Items.Any())
                             {
-                                throw new ArgumentException("Endpoint Filter Items Address is empty");
+                                foreach (PSConnectionMonitorEndpointFilterItem Item in Endpoint.Filter.Items)
+                                {
+                                    if (!string.IsNullOrEmpty(Item.Type) && String.Compare(Item.Type, "AgentAddress", true) != 0)
+                                    {
+                                        throw new ArgumentException("Endpoint Filter Items Type is not AgentAddress");
+                                    }
+
+                                    if (string.IsNullOrEmpty(Item.Address))
+                                    {
+                                        throw new ArgumentException("Endpoint Filter Items Address is empty");
+                                    }
+                                }
                             }
+
+                            //Auto fill Filter Type and Filter Item Type
+                            if (Endpoint.Filter != null && Endpoint.Filter.Items != null && Endpoint.Filter.Items.Any())
+                            {
+                                Endpoint.Filter.Type = string.IsNullOrEmpty(Endpoint.Filter.Type) ? "Include" : Endpoint.Filter.Type;
+
+                                foreach (PSConnectionMonitorEndpointFilterItem Item in Endpoint.Filter.Items)
+                                {
+                                    if (string.IsNullOrEmpty(Item.Type))
+                                    {
+                                        Item.Type = "AgentAddress";
+                                    }
+                                }
+                            }
+
 
                             // Endpoint name is optional so if it is not provided, fill it out
                             if (string.IsNullOrEmpty(Endpoint.Name))
@@ -186,8 +250,14 @@ namespace Microsoft.Azure.Commands.Network
 
                     if (TestGroup.TestConfigurations.Any())
                     {
+                        uint TestConfigCounter = 1;
                         foreach (PSNetworkWatcherConnectionMonitorTestConfigurationObject TestConfiguration in TestGroup.TestConfigurations)
                         {
+                            if (string.IsNullOrEmpty(TestConfiguration.Name))
+                            {
+                                TestConfiguration.Name = "TestConfig" + TestConfigCounter.ToString();
+                            }
+
                             if (!string.IsNullOrEmpty(TestConfiguration.Name) && TestGroup.TestConfigurations.Count(x => x.Name == TestConfiguration.Name) > 2)
                             {
                                 throw new ArgumentException("Test configuration name is not unique");

@@ -84,6 +84,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs { get; set; }
 
+        public string OutputsText
+        {
+            get { return JsonConvert.SerializeObject(this.Outputs, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
         public string Notes { get; set; }
     }
 
