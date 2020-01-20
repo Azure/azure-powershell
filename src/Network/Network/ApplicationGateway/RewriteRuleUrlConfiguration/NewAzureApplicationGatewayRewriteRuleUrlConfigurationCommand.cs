@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.Network.Models;
     using System.Management.Automation;
 
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayRewriteRuleUrlConfiguration"), OutputType(typeof(PSApplicationGatewayUrlConfiguration))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayRewriteRuleUrlConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGatewayUrlConfiguration))]
     public class NewAzureApplicationGatewayRewriteRuleUrlConfigurationCommand : AzureApplicationGatewayRewriteRuleUrlConfigurationBase
     {
         public override void ExecuteCmdlet()
