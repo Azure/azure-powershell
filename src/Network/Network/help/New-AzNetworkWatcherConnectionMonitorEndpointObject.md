@@ -32,10 +32,9 @@ PS C:\>$SourceEndpointObject1 = New-AzNetworkWatcherConnectionMonitorEndPointObj
 ```
 
 Name       : iraVmTestSrc1(MyResourceGroup)
-ResourceId : /subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/iraVmTestSrc1
+ResourceId : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/iraVmTestSrc1
 Address    :
-Filter     : Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorEndpointFilter
-FilterText : {
+Filter     : {
                "Type": "Include",
                "Items": [
                  {

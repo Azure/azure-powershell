@@ -27,16 +27,13 @@ The New-AzNetworkWatcherConnectionMonitorObject cmdlet creates a connection moni
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkWatcherConnectionMonitorObject -NetworkWatcherName NetworkWatcher_centraluseuap -ResourceGroupName NetworkWatcherRG  -Name MyCMv2 -TestGroup   $TcpTestGroup -Notes "This is my notes for CMv2"
+PS C:\> New-AzNetworkWatcherConnectionMonitorObject -NetworkWatcherName NetworkWatcher_centraluseuap -ResourceGroupName NetworkWatcherRG  -Name MyCMv321Object -TestGroup   $TcpTestGroup -Notes "This is my  note for CMv2"
 ```
 
 NetworkWatcherName : NetworkWatcher_centraluseuap
 ResourceGroupName  : NetworkWatcherRG
-Name               : MyCMv2
-TestGroup          : {MyTcpTestGroup}
-Output             :
-Notes              : This is my notes for CMv2
-TestGroupText      : [
+Name               : MyCMv321Object
+TestGroup          : [
                        {
                          "Name": "MyTcpTestGroup",
                          "Disable": false,
@@ -58,37 +55,23 @@ TestGroupText      : [
                          ],
                          "Sources": [
                            {
-                             "Name": "iraVmTestSrc1(MyResourceGroup)",
-                             "ResourceId": "/subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/iraVmTestSrc1",
-                             "Filter": {
-                               "Type": "Include",
-                               "Items": [
-                                 {
-                                   "Type": "AgentAddress",
-                                   "Address": "10.127.0.1"
-                                 }
-                               ]
-                             }
+                             "Name": "MySrc1Test",
+                             "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyCanaryFlowLog/provide
+                     rs/Microsoft.Compute/virtualMachines/CanaryVM0"
                            }
                          ],
                          "Destinations": [
                            {
-                             "Name": "iraVmTestDst1(MyResourceGroup)",
-                             "ResourceId": "/subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/iraVmTestDst1",
-                             "Filter": {
-                               "Type": "Include",
-                               "Items": [
-                                 {
-                                   "Type": "AgentAddress",
-                                   "Address": "10.50.0.1"
-                                 }
-                               ]
-                             }
+                             "Name": "MyDst1Test",
+                             "Address": "bing.com"
                            }
                          ]
                        }
                      ]
-OutputText         : null
+Output             : null
+Notes              : This is my  note for CMv2
+        
+   
 
 ## PARAMETERS
 
