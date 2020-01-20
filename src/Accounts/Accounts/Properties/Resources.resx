@@ -468,4 +468,7 @@
   <data name="InvalidAzureContext" xml:space="preserve">
     <value>The context is invalid. Please login using Connect-AzAccount.</value>
   </data>
+  <data name="ProfileFileNotAccessible" xml:space="preserve">
+    <value>Fail to access profile file and will try to use process ContextAutosaveSetting mode. Detailed error: '{0}'</value>
+  </data>
 </root>

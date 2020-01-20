@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
                         {
                             throw e;
                         }
-                        WriteInitializationWarnings(e.Message);
+                        WriteInitializationWarnings(string.Format(Resources.ProfileFileNotAccessible, e.Message));
                         ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
                     }
                 }
