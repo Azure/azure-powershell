@@ -1,3 +1,65 @@
+## 3.4.0 - February 2020
+#### Az.Accounts
+* Disable context auto saving when AzureRmContext.json not available
+* Update the reference to Azure Powershell Common to 1.3.5-preview
+
+#### Az.ApiManagement
+* **Get-AzApiManagementApiSchema** Fixed getting Open-Api Schema associated with an API
+    https://github.com/Azure/azure-powershell/issues/10626
+* **New-AzApiManagementProduct*** and **Set-AzApiManagementProduct**
+  - Fix documentation for https://github.com/Azure/azure-powershell/issues/10472
+* **Set-AzApiManagementApi**
+    Added example to show how to update the ServiceUrl using the cmdlet
+
+#### Az.Compute
+* Limit the number of VM status to 100 to avoid throttling when Get-AzVM -Status is performed without VM name.
+* Add Update-AzDiskEncryptionSet cmdlet
+* Add EncryptionType and DiskEncryptionSetId parameters to the following cmdlets:
+    - New-AzDiskUpdateConfig, New-AzSnapshotUpdateConfig
+* Add ColocationStatus parameter to Get-AzProximityPlacementGroup cmdlet.
+
+#### Az.DataFactory
+* Update ADF .Net SDK version to 4.7.0
+
+#### Az.DeploymentManager
+* Adds LIST operations for resources
+* Adds capability for performing operations on Health Check steps
+
+#### Az.HDInsight
+* Fix document error of New-AzHDInsightCluster.
+
+#### Az.KeyVault
+* Add Name alias to VaultName attribute to make Remove-AzureKeyVault consistent with New-AzureKeyVault.
+
+#### Az.Network
+* New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
+* Corrected Get-AzNetworkSecurityGroup examples to show examples for NSG's instead of network interfaces.
+* Fixed typo in New-AzureRmVpnSite command that was preventing resource id completer from completing a parameter.
+
+#### Az.PolicyInsights
+* Support evaluating compliance prior to determining what resource to remediate
+    - Add '-ResourceDiscoverMode' parameter to Start-AzPolicyRemediation
+* Add Get-AzPolicyMetadata cmdlet for getting policy metadata resources
+* Updated Get-AzPolicyState and Get-AzPolicyStateSummary for API version 2019-10-01
+
+#### Az.RecoveryServices
+* Azure Site Recovery support for removing a replicated disk.
+* Azure Backup added support for adding tags while creating a Recovery Services Vault.
+
+#### Az.Resources
+* Make -Scope optional in *-AzPolicyAssignment cmdlets with default to context subscription
+* Add examples of creating ADServicePrincipal with password and key credential
+
+#### Az.Storage
+* Support set Table/Queue Encyrption Keytype in Create Storage Account
+    - New-AzRmStorageAccount
+* Show RequestId when StorageException don't have ExtendedErrorInformation
+* Fix the Example 6 of cmdlet Start-AzStorageBlobCopy
+
+#### Az.Websites
+* Set-AzWebapp and Set-AzWebappSlot supports AlwaysOn, MinTls and FtpsState properties
+* Fixing issue where setting HttpsOnly along with changing AppservicePlan at the same time using the single Set-AzWebApp Command, was resetting HttpsOnly to default value
+
 ## 3.3.0 - January 2020
 #### Az.Accounts
 * Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix
