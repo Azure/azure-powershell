@@ -1,21 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2041?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMDQxP2FwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1638?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxNjM4P2FwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"path\": \"openapifromFile\",\r\n    \"value\": \"openapi: 3.0.1\\r\\nservers:\\r\\n  - url: 'https://developer.uspto.gov/ds-api'\\r\\ninfo:\\r\\n  description: >-\\r\\n    The Data Set API (DSAPI) allows the public users to discover and search\\r\\n    USPTO exported data sets. This is a generic API that allows USPTO users to\\r\\n    make any CSV based data files searchable through API. With the help of GET\\r\\n    call, it returns the list of data fields that are searchable. With the help\\r\\n    of POST call, data can be fetched based on the filters on the field names.\\r\\n    Please note that POST call is used to search the actual data. The reason for\\r\\n    the POST call is that it allows users to specify any complex search criteria\\r\\n    without worry about the GET size limitations as well as encoding of the\\r\\n    input parameters.\\r\\n  version: 1.0.0\\r\\n  title: USPTO Data Set API\\r\\n  contact:\\r\\n    name: Open Data Portal\\r\\n    url: 'https://developer.uspto.gov'\\r\\n    email: developer@uspto.gov\\r\\ntags:\\r\\n  - name: metadata\\r\\n    description: Find out about the data sets\\r\\n  - name: search\\r\\n    description: Search a data set\\r\\npaths:\\r\\n  /:\\r\\n    get:\\r\\n      tags:\\r\\n        - metadata\\r\\n      operationId: list-data-sets\\r\\n      summary: List available data sets\\r\\n      responses:\\r\\n        '200':\\r\\n          description: Returns a list of data sets\\r\\n          content:\\r\\n            application/json:\\r\\n              schema:\\r\\n                $ref: '#/components/schemas/dataSetList'\\r\\n              example:\\r\\n                {\\r\\n                  \\\"total\\\": 2,\\r\\n                  \\\"apis\\\": [\\r\\n                    {\\r\\n                      \\\"apiKey\\\": \\\"oa_citations\\\",\\r\\n                      \\\"apiVersionNumber\\\": \\\"v1\\\",\\r\\n                      \\\"apiUrl\\\": \\\"https://developer.uspto.gov/ds-api/oa_citations/v1/fields\\\",\\r\\n                      \\\"apiDocumentationUrl\\\": \\\"https://developer.uspto.gov/ds-api-docs/index.html?url=https://developer.uspto.gov/ds-api/swagger/docs/oa_citations.json\\\"\\r\\n                    },\\r\\n                    {\\r\\n                      \\\"apiKey\\\": \\\"cancer_moonshot\\\",\\r\\n                      \\\"apiVersionNumber\\\": \\\"v1\\\",\\r\\n                      \\\"apiUrl\\\": \\\"https://developer.uspto.gov/ds-api/cancer_moonshot/v1/fields\\\",\\r\\n                      \\\"apiDocumentationUrl\\\": \\\"https://developer.uspto.gov/ds-api-docs/index.html?url=https://developer.uspto.gov/ds-api/swagger/docs/cancer_moonshot.json\\\"\\r\\n                    }\\r\\n                  ]\\r\\n                }\\r\\n  /{dataset}/{version}/fields:\\r\\n    get:\\r\\n      tags:\\r\\n        - metadata\\r\\n      summary: >-\\r\\n        Provides the general information about the API and the list of fields\\r\\n        that can be used to query the dataset.\\r\\n      description: >-\\r\\n        This GET API returns the list of all the searchable field names that are\\r\\n        in the oa_citations. Please see the 'fields' attribute which returns an\\r\\n        array of field names. Each field or a combination of fields can be\\r\\n        searched using the syntax options shown below.\\r\\n      operationId: list-searchable-fields\\r\\n      parameters:\\r\\n        - name: dataset\\r\\n          in: path\\r\\n          description: 'Name of the dataset.'\\r\\n          required: true\\r\\n          example: \\\"oa_citations\\\"\\r\\n          schema:\\r\\n            type: string\\r\\n        - name: version\\r\\n          in: path\\r\\n          description: Version of the dataset.\\r\\n          required: true\\r\\n          example: \\\"v1\\\"\\r\\n          schema:\\r\\n            type: string\\r\\n      responses:\\r\\n        '200':\\r\\n          description: >-\\r\\n            The dataset API for the given version is found and it is accessible\\r\\n            to consume.\\r\\n          content:\\r\\n            application/json:\\r\\n              schema:\\r\\n                type: string\\r\\n        '404':\\r\\n          description: >-\\r\\n            The combination of dataset name and version is not found in the\\r\\n            system or it is not published yet to be consumed by public.\\r\\n          content:\\r\\n            application/json:\\r\\n              schema:\\r\\n                type: string\\r\\n  /{dataset}/{version}/records:\\r\\n    post:\\r\\n      tags:\\r\\n        - search\\r\\n      summary: >-\\r\\n        Provides search capability for the data set with the given search\\r\\n        criteria.\\r\\n      description: >-\\r\\n        This API is based on Solr/Lucense Search. The data is indexed using\\r\\n        SOLR. This GET API returns the list of all the searchable field names\\r\\n        that are in the Solr Index. Please see the 'fields' attribute which\\r\\n        returns an array of field names. Each field or a combination of fields\\r\\n        can be searched using the Solr/Lucene Syntax. Please refer\\r\\n        https://lucene.apache.org/core/3_6_2/queryparsersyntax.html#Overview for\\r\\n        the query syntax. List of field names that are searchable can be\\r\\n        determined using above GET api.\\r\\n      operationId: perform-search\\r\\n      parameters:\\r\\n        - name: version\\r\\n          in: path\\r\\n          description: Version of the dataset.\\r\\n          required: true\\r\\n          schema:\\r\\n            type: string\\r\\n            default: v1\\r\\n        - name: dataset\\r\\n          in: path\\r\\n          description: 'Name of the dataset. In this case, the default value is oa_citations'\\r\\n          required: true\\r\\n          schema:\\r\\n            type: string\\r\\n            default: oa_citations\\r\\n      responses:\\r\\n        '200':\\r\\n          description: successful operation\\r\\n          content:\\r\\n            application/json:\\r\\n              schema:\\r\\n                type: array\\r\\n                items:\\r\\n                  type: object\\r\\n                  additionalProperties:\\r\\n                    type: object\\r\\n        '404':\\r\\n          description: No matching record found for the given criteria.\\r\\n      requestBody:\\r\\n        content:\\r\\n          application/x-www-form-urlencoded:\\r\\n            schema:\\r\\n              type: object\\r\\n              properties:\\r\\n                criteria:\\r\\n                  description: >-\\r\\n                    Uses Lucene Query Syntax in the format of\\r\\n                    propertyName:value, propertyName:[num1 TO num2] and date\\r\\n                    range format: propertyName:[yyyyMMdd TO yyyyMMdd]. In the\\r\\n                    response please see the 'docs' element which has the list of\\r\\n                    record objects. Each record structure would consist of all\\r\\n                    the fields and their corresponding values.\\r\\n                  type: string\\r\\n                  default: '*:*'\\r\\n                start:\\r\\n                  description: Starting record number. Default value is 0.\\r\\n                  type: integer\\r\\n                  default: 0\\r\\n                rows:\\r\\n                  description: >-\\r\\n                    Specify number of rows to be returned. If you run the search\\r\\n                    with default values, in the response you will see 'numFound'\\r\\n                    attribute which will tell the number of records available in\\r\\n                    the dataset.\\r\\n                  type: integer\\r\\n                  default: 100\\r\\n              required:\\r\\n                - criteria\\r\\ncomponents:\\r\\n  schemas:\\r\\n    dataSetList:\\r\\n      type: object\\r\\n      properties:\\r\\n        total:\\r\\n          type: integer\\r\\n        apis:\\r\\n          type: array\\r\\n          items:\\r\\n            type: object\\r\\n            properties:\\r\\n              apiKey:\\r\\n                type: string\\r\\n                description: To be used as a dataset parameter value\\r\\n              apiVersionNumber:\\r\\n                type: string\\r\\n                description: To be used as a version parameter value\\r\\n              apiUrl:\\r\\n                type: string\\r\\n                format: uriref\\r\\n                description: \\\"The URL describing the dataset's fields\\\"\\r\\n              apiDocumentationUrl:\\r\\n                type: string\\r\\n                format: uriref\\r\\n                description: A URL to the API console for each API\",\r\n    \"format\": \"openapi+json\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "26a25aad-159e-4db6-99a6-0e687686f0ed"
+          "2b417c6d-bd9d-4df0-97cb-48d5754aa948"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ],
         "Content-Type": [
@@ -33,13 +33,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2041?api-version=2019-01-01&asyncId=5d9279c4787c9527240ff13f&asyncCode=201"
+          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1638?api-version=2019-01-01&asyncId=5e1e25d9787c9503c06a54ef&asyncCode=201"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "56b4350e-6240-4378-98a0-0d8523ad862c"
+          "b404cfa9-8eb1-450c-9d01-7dd881918104"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -48,16 +48,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "3c2821fb-f894-4517-a6aa-f58f2a536bcb"
+          "53465c2e-4df4-4ed1-b147-1ae3b71ab02b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190930T215516Z:3c2821fb-f894-4517-a6aa-f58f2a536bcb"
+          "WESTUS:20200114T203433Z:53465c2e-4df4-4ed1-b147-1ae3b71ab02b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 30 Sep 2019 21:55:16 GMT"
+          "Tue, 14 Jan 2020 20:34:32 GMT"
         ],
         "Expires": [
           "-1"
@@ -70,15 +70,15 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2041?api-version=2019-01-01&asyncId=5d9279c4787c9527240ff13f&asyncCode=201",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMDQxP2FwaS12ZXJzaW9uPTIwMTktMDEtMDEmYXN5bmNJZD01ZDkyNzljNDc4N2M5NTI3MjQwZmYxM2YmYXN5bmNDb2RlPTIwMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1638?api-version=2019-01-01&asyncId=5e1e25d9787c9503c06a54ef&asyncCode=201",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxNjM4P2FwaS12ZXJzaW9uPTIwMTktMDEtMDEmYXN5bmNJZD01ZTFlMjVkOTc4N2M5NTAzYzA2YTU0ZWYmYXN5bmNDb2RlPTIwMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
@@ -90,13 +90,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAJeI=\""
+          "\"AAAAAAAAM9c=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "17586cbe-bb45-4371-81fa-bf5cae06f8b6"
+          "bc329d2f-8960-449b-9be2-e5b49c5cd48d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -105,16 +105,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "66d77e37-7c20-40c7-b5ea-310269efdd4e"
+          "32bcb151-3a14-465a-9380-53c227b23c37"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190930T215547Z:66d77e37-7c20-40c7-b5ea-310269efdd4e"
+          "WESTUS:20200114T203504Z:32bcb151-3a14-465a-9380-53c227b23c37"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 30 Sep 2019 21:55:46 GMT"
+          "Tue, 14 Jan 2020 20:35:03 GMT"
         ],
         "Content-Length": [
           "1346"
@@ -126,25 +126,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2041\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps2041\",\r\n  \"properties\": {\r\n    \"displayName\": \"USPTO Data Set API\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"The Data Set API (DSAPI) allows the public users to discover and search USPTO exported data sets. This is a generic API that allows USPTO users to make any CSV based data files searchable through API. With the help of GET call, it returns the list of data fields that are searchable. With the help of POST call, data can be fetched based on the filters on the field names. Please note that POST call is used to search the actual data. The reason for the POST call is that it allows users to specify any complex search criteria without worry about the GET size limitations as well as encoding of the input parameters.\",\r\n    \"serviceUrl\": \"https://developer.uspto.gov/ds-api\",\r\n    \"path\": \"openapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1638\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps1638\",\r\n  \"properties\": {\r\n    \"displayName\": \"USPTO Data Set API\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"The Data Set API (DSAPI) allows the public users to discover and search USPTO exported data sets. This is a generic API that allows USPTO users to make any CSV based data files searchable through API. With the help of GET call, it returns the list of data fields that are searchable. With the help of POST call, data can be fetched based on the filters on the field names. Please note that POST call is used to search the actual data. The reason for the POST call is that it allows users to specify any complex search criteria without worry about the GET size limitations as well as encoding of the input parameters.\",\r\n    \"serviceUrl\": \"https://developer.uspto.gov/ds-api\",\r\n    \"path\": \"openapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2041?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMDQxP2FwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1638?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxNjM4P2FwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "de827cda-6552-4902-983d-c9c03ce77a83"
+          "92e1825e-e0c1-45af-9416-50ea59ff3c2c"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
@@ -156,13 +156,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAJeI=\""
+          "\"AAAAAAAAM9c=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "6643a01f-0e98-4df9-a9ad-651b5f3f789b"
+          "b55309d3-17f8-476b-8856-3632a2c47663"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -171,16 +171,16 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "fb974e7d-1977-4182-949c-b50fbcfd45e0"
+          "cd32e97f-197c-4d79-9003-da22d1eb9240"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190930T215547Z:fb974e7d-1977-4182-949c-b50fbcfd45e0"
+          "WESTUS:20200114T203504Z:cd32e97f-197c-4d79-9003-da22d1eb9240"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 30 Sep 2019 21:55:46 GMT"
+          "Tue, 14 Jan 2020 20:35:04 GMT"
         ],
         "Content-Length": [
           "1346"
@@ -192,25 +192,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2041\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps2041\",\r\n  \"properties\": {\r\n    \"displayName\": \"USPTO Data Set API\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"The Data Set API (DSAPI) allows the public users to discover and search USPTO exported data sets. This is a generic API that allows USPTO users to make any CSV based data files searchable through API. With the help of GET call, it returns the list of data fields that are searchable. With the help of POST call, data can be fetched based on the filters on the field names. Please note that POST call is used to search the actual data. The reason for the POST call is that it allows users to specify any complex search criteria without worry about the GET size limitations as well as encoding of the input parameters.\",\r\n    \"serviceUrl\": \"https://developer.uspto.gov/ds-api\",\r\n    \"path\": \"openapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1638\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps1638\",\r\n  \"properties\": {\r\n    \"displayName\": \"USPTO Data Set API\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"The Data Set API (DSAPI) allows the public users to discover and search USPTO exported data sets. This is a generic API that allows USPTO users to make any CSV based data files searchable through API. With the help of GET call, it returns the list of data fields that are searchable. With the help of POST call, data can be fetched based on the filters on the field names. Please note that POST call is used to search the actual data. The reason for the POST call is that it allows users to specify any complex search criteria without worry about the GET size limitations as well as encoding of the input parameters.\",\r\n    \"serviceUrl\": \"https://developer.uspto.gov/ds-api\",\r\n    \"path\": \"openapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1205?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMjA1P2FwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7056?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM3MDU2P2FwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"path\": \"openapifromUrl\",\r\n    \"value\": \"https://raw.githubusercontent.com/OAI/OpenAPI-Specification/OpenAPI.next/examples/v3.0/petstore.yaml\",\r\n    \"format\": \"openapi-link\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2d3e2001-334e-4c6e-bfea-289ca5d514ca"
+          "dac13eea-50af-4a76-a51f-6c35fd853050"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ],
         "Content-Type": [
@@ -228,13 +228,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1205?api-version=2019-01-01&asyncId=5d9279e3787c9527240ff144&asyncCode=201"
+          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7056?api-version=2019-01-01&asyncId=5e1e25f8787c9503c06a54f4&asyncCode=201"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "4e41379f-a1f4-4ba4-b75b-70b228b40129"
+          "92ddfdbb-96a6-488a-8a7f-552da2ae072c"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -243,16 +243,16 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "2bcbb81f-8fa7-4b51-a3c9-7bb248c05a55"
+          "90b110de-5b7c-4541-b2e0-79333a0ab738"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190930T215548Z:2bcbb81f-8fa7-4b51-a3c9-7bb248c05a55"
+          "WESTUS:20200114T203504Z:90b110de-5b7c-4541-b2e0-79333a0ab738"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 30 Sep 2019 21:55:47 GMT"
+          "Tue, 14 Jan 2020 20:35:04 GMT"
         ],
         "Expires": [
           "-1"
@@ -265,15 +265,15 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1205?api-version=2019-01-01&asyncId=5d9279e3787c9527240ff144&asyncCode=201",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMjA1P2FwaS12ZXJzaW9uPTIwMTktMDEtMDEmYXN5bmNJZD01ZDkyNzllMzc4N2M5NTI3MjQwZmYxNDQmYXN5bmNDb2RlPTIwMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7056?api-version=2019-01-01&asyncId=5e1e25f8787c9503c06a54f4&asyncCode=201",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM3MDU2P2FwaS12ZXJzaW9uPTIwMTktMDEtMDEmYXN5bmNJZD01ZTFlMjVmODc4N2M5NTAzYzA2YTU0ZjQmYXN5bmNDb2RlPTIwMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
@@ -285,13 +285,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAJfI=\""
+          "\"AAAAAAAAM+c=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "cac9554d-3e0b-4b98-9c99-e8f5cf890b0b"
+          "842a1ee4-6997-466e-a489-976830c1fde2"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -300,16 +300,16 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "e13be865-b8b8-43bd-96ec-af3e3eda5cfb"
+          "464284da-360a-417d-bb33-02fdd67bb54a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190930T215618Z:e13be865-b8b8-43bd-96ec-af3e3eda5cfb"
+          "WESTUS:20200114T203535Z:464284da-360a-417d-bb33-02fdd67bb54a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 30 Sep 2019 21:56:17 GMT"
+          "Tue, 14 Jan 2020 20:35:34 GMT"
         ],
         "Content-Length": [
           "724"
@@ -321,25 +321,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1205\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps1205\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": null,\r\n    \"serviceUrl\": \"http://petstore.swagger.io/v1\",\r\n    \"path\": \"openapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7056\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps7056\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": null,\r\n    \"serviceUrl\": \"http://petstore.swagger.io/v1\",\r\n    \"path\": \"openapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1205?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMjA1P2FwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7056?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM3MDU2P2FwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "06bcbca2-c47b-4b1d-9fcd-347aa6a8e958"
+          "94419e56-62d7-461c-9e17-dfcc598fbfaa"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
@@ -351,13 +351,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAJfI=\""
+          "\"AAAAAAAAM+c=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "afee9ff3-7b0b-44a4-a8ce-27c7c2f41915"
+          "c13070bc-55cc-4adb-a5dc-8e6964da8711"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -366,16 +366,16 @@
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "0d5db21c-1be5-4de8-84cc-c98bb6676967"
+          "39aa4dc8-7a07-4935-b5ab-be4c5a87fddc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190930T215618Z:0d5db21c-1be5-4de8-84cc-c98bb6676967"
+          "WESTUS:20200114T203535Z:39aa4dc8-7a07-4935-b5ab-be4c5a87fddc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 30 Sep 2019 21:56:17 GMT"
+          "Tue, 14 Jan 2020 20:35:34 GMT"
         ],
         "Content-Length": [
           "724"
@@ -387,17 +387,80 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1205\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps1205\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": null,\r\n    \"serviceUrl\": \"http://petstore.swagger.io/v1\",\r\n    \"path\": \"openapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7056\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps7056\",\r\n  \"properties\": {\r\n    \"displayName\": \"Swagger Petstore\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": null,\r\n    \"serviceUrl\": \"http://petstore.swagger.io/v1\",\r\n    \"path\": \"openapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1205%3Brev%3D1?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMjA1JTNCcmV2JTNEMT9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1638/schemas?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxNjM4L3NjaGVtYXM/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0913f2c7-f9f9-4d02-b7b5-2500eb8249a0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "e12ac43d-60ec-4f40-b3b2-055ab890d2ba"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "65e82ddc-1667-448a-9f9d-c0602924ecf2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200114T203538Z:65e82ddc-1667-448a-9f9d-c0602924ecf2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 14 Jan 2020 20:35:37 GMT"
+        ],
+        "Content-Length": [
+          "3819"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1638/schemas/5e1e25d9787c9503c06a54ee\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/schemas\",\r\n      \"name\": \"5e1e25d9787c9503c06a54ee\",\r\n      \"properties\": {\r\n        \"contentType\": \"application/vnd.oai.openapi.components+json\",\r\n        \"document\": {\r\n          \"components\": {\r\n            \"schemas\": {\r\n              \"dataSetList\": {\r\n                \"type\": \"object\",\r\n                \"properties\": {\r\n                  \"total\": {\r\n                    \"type\": \"integer\"\r\n                  },\r\n                  \"apis\": {\r\n                    \"type\": \"array\",\r\n                    \"items\": {\r\n                      \"type\": \"object\",\r\n                      \"properties\": {\r\n                        \"apiKey\": {\r\n                          \"type\": \"string\",\r\n                          \"description\": \"To be used as a dataset parameter value\"\r\n                        },\r\n                        \"apiVersionNumber\": {\r\n                          \"type\": \"string\",\r\n                          \"description\": \"To be used as a version parameter value\"\r\n                        },\r\n                        \"apiUrl\": {\r\n                          \"type\": \"string\",\r\n                          \"description\": \"The URL describing the dataset's fields\",\r\n                          \"format\": \"uriref\"\r\n                        },\r\n                        \"apiDocumentationUrl\": {\r\n                          \"type\": \"string\",\r\n                          \"description\": \"A URL to the API console for each API\",\r\n                          \"format\": \"uriref\"\r\n                        }\r\n                      }\r\n                    }\r\n                  }\r\n                }\r\n              },\r\n              \"-dataset--version-FieldsGet200ApplicationJsonResponse\": {\r\n                \"type\": \"string\"\r\n              },\r\n              \"-dataset--version-FieldsGet404ApplicationJsonResponse\": {\r\n                \"type\": \"string\"\r\n              },\r\n              \"-dataset--version-RecordsPostRequest\": {\r\n                \"required\": [\r\n                  \"criteria\"\r\n                ],\r\n                \"type\": \"object\",\r\n                \"properties\": {\r\n                  \"criteria\": {\r\n                    \"type\": \"string\",\r\n                    \"description\": \"Uses Lucene Query Syntax in the format of propertyName:value, propertyName:[num1 TO num2] and date range format: propertyName:[yyyyMMdd TO yyyyMMdd]. In the response please see the 'docs' element which has the list of record objects. Each record structure would consist of all the fields and their corresponding values.\",\r\n                    \"default\": \"*:*\"\r\n                  },\r\n                  \"start\": {\r\n                    \"type\": \"integer\",\r\n                    \"description\": \"Starting record number. Default value is 0.\",\r\n                    \"default\": 0\r\n                  },\r\n                  \"rows\": {\r\n                    \"type\": \"integer\",\r\n                    \"description\": \"Specify number of rows to be returned. If you run the search with default values, in the response you will see 'numFound' attribute which will tell the number of records available in the dataset.\",\r\n                    \"default\": 100\r\n                  }\r\n                }\r\n              },\r\n              \"-dataset--version-RecordsPost200ApplicationJsonResponse\": {\r\n                \"type\": \"array\",\r\n                \"items\": {\r\n                  \"type\": \"object\",\r\n                  \"additionalProperties\": {\r\n                    \"type\": \"object\"\r\n                  }\r\n                }\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7056%3Brev%3D1?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM3MDU2JTNCcmV2JTNEMT9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Open api via Apim\",\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"http\",\r\n    \"apiRevision\": \"1\",\r\n    \"apiVersion\": \"\",\r\n    \"isCurrent\": true,\r\n    \"displayName\": \"apimPetstore\",\r\n    \"serviceUrl\": \"http://petstore.swagger.io/v1\",\r\n    \"path\": \"openapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4cb88451-a4bc-445f-b5a4-218f6b0e66e6"
+          "0da1e8e5-d2ef-49d6-8c95-65b9b53c1a43"
         ],
         "If-Match": [
           "*"
@@ -406,9 +469,9 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ],
         "Content-Type": [
@@ -426,13 +489,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAJgE=\""
+          "\"AAAAAAAAM/c=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a864caa3-d626-42b0-b4e0-ed352d3d8399"
+          "16d3b79f-8f8e-4fe2-b1fa-1be4173340fd"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -441,16 +504,16 @@
           "1197"
         ],
         "x-ms-correlation-request-id": [
-          "e0642daf-c2be-42dd-9066-a947c0ec74bd"
+          "3e53dc08-d4eb-408e-9bae-d0dad7347cb9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190930T215619Z:e0642daf-c2be-42dd-9066-a947c0ec74bd"
+          "WESTUS:20200114T203546Z:3e53dc08-d4eb-408e-9bae-d0dad7347cb9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 30 Sep 2019 21:56:19 GMT"
+          "Tue, 14 Jan 2020 20:35:45 GMT"
         ],
         "Content-Length": [
           "758"
@@ -462,17 +525,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1205\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps1205\",\r\n  \"properties\": {\r\n    \"displayName\": \"apimPetstore\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"Open api via Apim\",\r\n    \"serviceUrl\": \"http://petstore.swagger.io/v1\",\r\n    \"path\": \"openapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true,\r\n    \"apiVersion\": \"\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7056\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps7056\",\r\n  \"properties\": {\r\n    \"displayName\": \"apimPetstore\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"Open api via Apim\",\r\n    \"serviceUrl\": \"http://petstore.swagger.io/v1\",\r\n    \"path\": \"openapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true,\r\n    \"apiVersion\": \"\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2041?deleteRevisions=true&api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyMDQxP2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1638?deleteRevisions=true&api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxNjM4P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9077322f-2164-4243-9d77-835cc3886d14"
+          "776ccac4-ec1e-4c82-8d2d-1d092b156224"
         ],
         "If-Match": [
           "*"
@@ -481,9 +544,9 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
@@ -498,7 +561,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a946b0ae-7bfb-4229-8bb3-b01a2726553e"
+          "c4fdeba7-c500-4e49-ac8c-f08cfae5f0ae"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -507,16 +570,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "bd86e389-460f-4728-abe8-a47c88039c96"
+          "630ab47c-fb82-406f-8209-e1b63d81932a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190930T215620Z:bd86e389-460f-4728-abe8-a47c88039c96"
+          "WESTUS:20200114T203546Z:630ab47c-fb82-406f-8209-e1b63d81932a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 30 Sep 2019 21:56:20 GMT"
+          "Tue, 14 Jan 2020 20:35:45 GMT"
         ],
         "Expires": [
           "-1"
@@ -529,13 +592,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1205?deleteRevisions=true&api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMjA1P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7056?deleteRevisions=true&api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM3MDU2P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "35767ef0-fd34-45af-b91f-51e6d73ac31c"
+          "1a86d4bb-d864-4bc1-b56b-10919871aadb"
         ],
         "If-Match": [
           "*"
@@ -544,9 +607,9 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.01",
+          "FxVersion/4.6.28207.04",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
@@ -561,7 +624,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9b550095-c959-4a7b-972e-b22ed9a2ed83"
+          "86ef0541-45ea-4666-8e37-c9097d5056d7"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -570,16 +633,16 @@
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "6581c617-04c0-418e-ae80-b7ab6f515cf5"
+          "37a57d16-f2e5-46d4-98a9-5bcce3dc6934"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190930T215620Z:6581c617-04c0-418e-ae80-b7ab6f515cf5"
+          "WESTUS:20200114T203546Z:37a57d16-f2e5-46d4-98a9-5bcce3dc6934"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 30 Sep 2019 21:56:20 GMT"
+          "Tue, 14 Jan 2020 20:35:46 GMT"
         ],
         "Expires": [
           "-1"
@@ -594,8 +657,8 @@
   ],
   "Names": {
     "": [
-      "ps2041",
-      "ps1205"
+      "ps1638",
+      "ps7056"
     ]
   },
   "Variables": {
