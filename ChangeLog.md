@@ -51,7 +51,7 @@
 * Add examples of creating ADServicePrincipal with password and key credential
 
 #### Az.Storage
-* Support set Table/Queue Encyrption Keytype in Create Storage Account
+* Support set Table/Queue Encryption Keytype in Create Storage Account
     - New-AzRmStorageAccount
 * Show RequestId when StorageException don't have ExtendedErrorInformation
 * Fix the Example 6 of cmdlet Start-AzStorageBlobCopy
