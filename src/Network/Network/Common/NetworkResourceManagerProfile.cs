@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSConnectionMonitorSource, MNM.ConnectionMonitorSource>();
                 cfg.CreateMap<CNM.PSConnectionMonitorDestination, MNM.ConnectionMonitorDestination>();
                 cfg.CreateMap<CNM.PSConnectionMonitorParameters, MNM.ConnectionMonitorParameters>();
-                cfg.CreateMap<CNM.PSConnectionMonitorResult, MNM.ConnectionMonitorResult>();
+                //cfg.CreateMap<CNM.PSConnectionMonitorResult, MNM.ConnectionMonitorResult>();
                 cfg.CreateMap<CNM.PSConnectionMonitorQueryResult, MNM.ConnectionMonitorQueryResult>();
                 cfg.CreateMap<CNM.PSConnectionStateSnapshot, MNM.ConnectionStateSnapshot>();
                 cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorEndpointObject, MNM.ConnectionMonitorEndpoint>();
