@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -1289,6 +1289,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         internal static string VirtualMachineStoppingConfirmation {
             get {
                 return ResourceManager.GetString("VirtualMachineStoppingConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are more than {0} VMs in the result.  Only the statuses of 100 VMs are shown to avoid throttling.  To get the actual status of each VM, please provide a VM name with -Status parameter..
+        /// </summary>
+        internal static string VirtualMachineTooManyVMsWithStatusParameter {
+            get {
+                return ResourceManager.GetString("VirtualMachineTooManyVMsWithStatusParameter", resourceCulture);
             }
         }
         
