@@ -14,14 +14,15 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using System;
 using System.Management.Automation;
+using System.IO;
 using System.Security;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Profile.Common;
@@ -387,7 +388,11 @@ namespace Microsoft.Azure.Commands.Profile
                     autoSaveEnabled = localAutosave;
                 }
 
-                InitializeProfileProvider(autoSaveEnabled);
+                if(!InitializeProfileProvider(autoSaveEnabled))
+                {
+                    DisableAutosave(AzureSession.Instance);
+                }
+
                 IServicePrincipalKeyStore keyStore =
 // TODO: Remove IfDef
 #if NETSTANDARD
@@ -403,6 +408,23 @@ namespace Microsoft.Azure.Commands.Profile
                 // This will throw exception for tests, ignore.
             }
 #endif
+        }
+
+        private void DisableAutosave(IAzureSession session)
+        {
+            session.ARMContextSaveMode = ContextSaveMode.Process;
+            var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
+            if (memoryCache == null)
+            {
+                var diskCache = session.TokenCache as ProtectedFileTokenCache;
+                memoryCache = new AuthenticationStoreTokenCache(new AzureTokenCache());
+                if (diskCache != null && diskCache.Count > 0)
+                {
+                    memoryCache.Deserialize(diskCache.Serialize());
+                }
+
+                session.TokenCache = memoryCache;
+            }
         }
     }
 }
