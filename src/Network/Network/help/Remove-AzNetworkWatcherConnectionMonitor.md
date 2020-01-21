@@ -39,7 +39,7 @@ Remove-AzNetworkWatcherConnectionMonitor -ResourceId <String> [-PassThru] [-AsJo
 
 ### SetByInputObject
 ```
-Remove-AzNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResult> [-PassThru] [-AsJob]
+Remove-AzNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResultV1> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 Connection monitor object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
+Type: Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResultV1
 Parameter Sets: SetByInputObject
 Aliases:
 
@@ -247,7 +247,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
+### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResultV1
 
 ## OUTPUTS
 
