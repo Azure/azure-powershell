@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 2.2.2
 * New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
 * Corrected Get-AzNetworkSecurityGroup examples to show examples for NSG's instead of network interfaces.
 * Fixed typo in New-AzureRmVpnSite command that was preventing resource id completer from completing a parameter.
