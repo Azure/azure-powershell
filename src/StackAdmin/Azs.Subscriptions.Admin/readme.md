@@ -120,7 +120,7 @@ directive:
       verb: Test
       subject: SubscriptionMoveSubscription
     set:
-      subject: MoveSubscription
+      subject: MoveUserSubscription
   - where:
       verb: Test
       subject: SubscriptionNameAvailability
@@ -149,10 +149,10 @@ directive:
     remove: True
 ## rename parameters
   - where:
-      subject: DelegatedProviderOffer
+      subject: DelegatedProviderManagedOffer
       parameter-name: DelegatedProviderSubscriptionId
     set:
-      parameter-name: DelegatedProviderId
+      alias: DelegatedProviderId
   - where:
       parameter-name: DelegatedProvider
     set:
@@ -167,6 +167,12 @@ directive:
       parameter-name: Tenant
     set:
       parameter-name: Name
+  - where:
+      subject: Location
+      parameter-name: Location
+    set:
+      parameter-name: Name
+      alias: Location
   - where:
       subject: (.*)OfferDelegation$
       parameter-name: OfferDelegationName
@@ -217,7 +223,7 @@ directive:
       parameter-name: State
     set:
       default:
-        script: 'Private'
+        script: Echo "Private"
   - where:
       parameter-name: AddonPlans
     set:
@@ -238,4 +244,29 @@ directive:
       verb: New
       variant: ^CreateViaIdentity(.*)
     remove: true
+## hide autorest generated cmdlet to use the custom one
+  - where:
+      verb: New
+      subject: AcquiredPlan
+    hide: true
+  - where:
+      verb: New
+      subject: Offer
+    hide: true
+  - where:
+      verb: New
+      subject: Plan
+    hide: true
+  - where:
+      verb: Set
+      subject: Offer
+    hide: true
+  - where:
+      verb: Set
+      subject: Plan
+    hide: true
+  - where:
+      verb: Set
+      subject: UserSubscription
+    hide: true
 ```
