@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -37,12 +38,17 @@ namespace Microsoft.Azure.Commands.Compute
         public PSAvailabilitySet AvailabilitySet { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
             ParameterSetName = SkuParameterSetName,
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "The Name of Sku")]
         public string Sku { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -67,7 +73,10 @@ namespace Microsoft.Azure.Commands.Compute
                         PlatformUpdateDomainCount = this.AvailabilitySet.PlatformUpdateDomainCount,
                         PlatformFaultDomainCount = this.AvailabilitySet.PlatformFaultDomainCount,
                         Tags = Tag == null ? null : Tag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value),
-                        Sku = new Sku(this.Sku, null, null)
+                        Sku = new Sku(this.IsParameterBound(c => c.Sku) ? this.Sku : this.AvailabilitySet.Sku, null, null),
+                        ProximityPlacementGroup = this.IsParameterBound(c => c.ProximityPlacementGroupId) 
+                                                ? new SubResource(this.ProximityPlacementGroupId)
+                                                : this.AvailabilitySet.ProximityPlacementGroup
                     };
 
                     var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(

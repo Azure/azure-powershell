@@ -14,6 +14,9 @@
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Models
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Policy definition summary.
     /// </summary>
@@ -28,6 +31,11 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
         /// Gets policy definition reference ID.
         /// </summary>
         public string PolicyDefinitionReferenceId { get; set; }
+
+        /// <summary>
+        /// Gets policy definition group names.
+        /// </summary>
+        public IList<string> PolicyDefinitionGroupNames { get; set; }
 
         /// <summary>
         /// Gets policy effect, i.e. policy definition action.
@@ -52,6 +60,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
 
             this.PolicyDefinitionId = policyDefinitionSummary.PolicyDefinitionId;
             this.PolicyDefinitionReferenceId = policyDefinitionSummary.PolicyDefinitionReferenceId;
+            this.PolicyDefinitionGroupNames = policyDefinitionSummary.PolicyDefinitionGroupNames.ToList();
             this.Effect = policyDefinitionSummary.Effect;
             this.Results = new SummaryResults(policyDefinitionSummary.Results);
         }

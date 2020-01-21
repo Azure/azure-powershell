@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
-{    
-    public class PSFrontDoor: PSTrackedResource
+{
+    public class PSFrontDoor : PSTrackedResource
     {
         public string FriendlyName { get; set; }
 
@@ -26,12 +24,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public List<PSBackendPool> BackendPools { get; set; }
 
+        public PSBackendPoolsSetting BackendPoolsSetting { get; set; }
+
         public PSEnforceCertificateNameCheck? EnforceCertificateNameCheck { get; set; }
 
         public List<PSHealthProbeSetting> HealthProbeSettings { get; set; }
 
         public List<PSLoadBalancingSetting> LoadBalancingSettings { get; set; }
-        
+
         public List<PSFrontendEndpoint> FrontendEndpoints { get; set; }
 
         public PSEnabledState? EnabledState { get; set; }

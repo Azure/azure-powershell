@@ -61,6 +61,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string PolicyParameterIdStringParameterSet = "PolicyParameterIdStringParameterSet";
 
         /// <summary>
+        /// The policy type OData filter format
+        /// </summary>
+        protected const string PolicyTypeFilterFormat = "$filter=PolicyType eq '{0}'";
+
+        /// <summary>
         /// Converts the resource object to specified resource type object.
         /// </summary>
         /// <param name="resourceType">The resource type of the objects to create</param>
@@ -121,19 +126,66 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Gets the JToken object from parameter
+        /// Gets a JObject from a parameter value
         /// </summary>
-        protected JToken GetObjectFromParameter(string parameter)
+        /// <param name="parameter">The parameter value.</param>
+        /// <param name="parameterName">The name of the parameter.</param>
+        /// <returns></returns>
+        protected JObject GetObjectFromParameter(string parameter, string parameterName)
+        {
+            var result = this.GetTokenFromParameter(parameter) as JObject;
+            if (result == null)
+            {
+                throw new PSArgumentException(string.Format(ProjectResources.JsonObjectExpected, parameterName), parameterName);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Gets a JArray from a parameter value
+        /// </summary>
+        /// <param name="parameter">The parameter value.</param>
+        /// <param name="parameterName">The name of the parameter.</param>
+        /// <returns></returns>
+        protected JArray GetArrayFromParameter(string parameter, string parameterName)
+        {
+            var result = this.GetTokenFromParameter(parameter) as JArray;
+            if (result == null)
+            {
+                throw new PSArgumentException(string.Format(ProjectResources.JsonArrayExpected, parameterName), parameterName);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Gets the resource Id from the supplied PowerShell parameters.
+        /// </summary>
+        protected string MakePolicyAssignmentId(string scope, string resourceName)
+        {
+            return ResourceIdUtility.GetResourceId(
+                resourceId: scope ?? $"/{Constants.Subscriptions}/{DefaultContext.Subscription.Id}",
+                extensionResourceType: Constants.MicrosoftAuthorizationPolicyAssignmentType,
+                extensionResourceName: resourceName);
+        }
+
+        /// <summary>
+        /// Gets the JToken from parameter
+        /// </summary>
+        /// <param name="parameter">The parameter to be parsed.</param>
+        private JToken GetTokenFromParameter(string parameter)
         {
             Uri outUri = null;
+
             if (Uri.TryCreate(parameter, UriKind.Absolute, out outUri))
             {
-                if(outUri.Scheme == Uri.UriSchemeFile)
+                if (outUri.Scheme == Uri.UriSchemeFile)
                 {
                     string filePath = this.TryResolvePath(parameter);
-                    if(File.Exists(filePath))
+                    if (File.Exists(filePath))
                     {
-                        return JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(filePath));
+                        return JToken.Parse(FileUtilities.DataStore.ReadFileAsText(filePath));
                     }
                     else
                     {
@@ -151,11 +203,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 else
                 {
                     string contents = GeneralUtilities.DownloadFile(outUri.AbsoluteUri);
-                    if(string.IsNullOrEmpty(contents))
+                    if (string.IsNullOrEmpty(contents))
                     {
                         throw new PSInvalidOperationException(string.Format(ProjectResources.InvalidUriContent, parameter));
                     }
-                    return JToken.FromObject(contents);
+
+                    return JToken.Parse(contents);
                 }
             }
 
@@ -163,19 +216,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             string path = this.TryResolvePath(parameter);
 
             return File.Exists(path)
-                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(path))
-                : JToken.FromObject(parameter);
-        }
-
-        /// <summary>
-        /// Gets the resource Id from the supplied PowerShell parameters.
-        /// </summary>
-        protected string MakePolicyAssignmentId(string scope, string resourceName)
-        {
-            return ResourceIdUtility.GetResourceId(
-                resourceId: scope,
-                extensionResourceType: Constants.MicrosoftAuthorizationPolicyAssignmentType,
-                extensionResourceName: resourceName);
+                ? JToken.Parse(FileUtilities.DataStore.ReadFileAsText(path))
+                : JToken.Parse(parameter);
         }
 
         /// <summary>

@@ -89,6 +89,14 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string PartnerServerName { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the secondary.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the secondary database to create.")]
+        [ValidateNotNullOrEmpty]
+        public string PartnerDatabaseName { get; set; }
+
+        /// <summary>
         /// Gets or sets the read intent of the secondary (ReadOnly is not yet supported).
         /// </summary>
         [Parameter(Mandatory = false,
@@ -187,6 +195,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 DatabaseName = this.DatabaseName,
                 PartnerResourceGroupName = this.PartnerResourceGroupName,
                 PartnerServerName = this.PartnerServerName,
+                PartnerDatabaseName = string.IsNullOrWhiteSpace(this.PartnerDatabaseName) ? this.DatabaseName : this.PartnerDatabaseName,
                 SecondaryElasticPoolName = this.SecondaryElasticPoolName,
                 AllowConnections = this.AllowConnections,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),

@@ -21,9 +21,12 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-RecoveryBootDiagStorageAccountId <String>]
  [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
- [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>] [-RecoveryPublicIPAddressId <String>]
- [-RecoveryNetworkSecurityGroupId <String>] [-RecoveryLBBackendAddressPoolId <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>]
+ [-DiskIdToDiskEncryptionSetMap <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
+ [-RecoveryPublicIPAddressId <String>] [-RecoveryNetworkSecurityGroupId <String>]
+ [-RecoveryLBBackendAddressPoolId <String[]>] [-TfoAzureVMName <String>]
+ [-ASRVMNicConfiguration <ASRVMNicConfig[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +82,21 @@ Start the update operation for the specified encrypted replication protected ite
 
 ## PARAMETERS
 
+### -ASRVMNicConfiguration
+Specifies the test failover and failover NIC configuration details.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMNicConfig[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AzureToAzureUpdateReplicationConfiguration
 Specifies the disk configuration to udpated for managed disk Vm (Azure to Azure DR scenrio).
 
@@ -130,6 +148,21 @@ Specifies the disk encryption secret key vault ID(Azure disk encryption) to be u
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskIdToDiskEncryptionSetMap
+The dictionary of disk resource Id to disk encryption set ARM Id.
+
+```yaml
+Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -430,6 +463,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TfoAzureVMName
+Specifies the name of the test failover VM.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UpdateNic
 Specifies the NIC of the virtual machine for which this cmdlet sets the recovery network property needs to udpated.
 
@@ -492,7 +540,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

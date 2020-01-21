@@ -78,18 +78,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
                 throw new ArgumentException(String.Format(Resources.InvalidContainerName, name));
             }
 
-            BlobContainerPermissions permissions = new BlobContainerPermissions();
-            permissions.PublicAccess = accessLevel;
-
             BlobRequestOptions requestOptions = RequestOptions;
             AccessCondition accessCondition = null;
 
             CloudBlobContainer container = localChannel.GetContainerReference(name);
 
-            if (!await localChannel.DoesContainerExistAsync(container, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false))
+            // Get container permission and set the public access as input
+            BlobContainerPermissions permissions;
+            try
+            {
+                permissions = localChannel.GetContainerPermissions(container);
+            }
+            catch (StorageException e) when (e.IsNotFoundException())
             {
                 throw new ResourceNotFoundException(String.Format(Resources.ContainerNotFound, name));
             }
+            permissions.PublicAccess = accessLevel;
 
             await localChannel.SetContainerPermissionsAsync(container, permissions, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
 

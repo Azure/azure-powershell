@@ -115,7 +115,7 @@ See the quota limitation in https://docs.microsoft.com/en-us/azure/azure-subscri
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: QuotaGiB
 
 Required: True
 Position: 1

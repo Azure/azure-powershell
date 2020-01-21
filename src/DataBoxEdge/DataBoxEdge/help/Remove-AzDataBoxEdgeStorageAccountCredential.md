@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDataBoxEdgeStorageAccountCredential
 
 ## SYNOPSIS
-Removes a storage account credentail object for the device
+Removes a storage account credential for a device.
 
 ## SYNTAX
 
@@ -32,13 +32,13 @@ Remove-AzDataBoxEdgeStorageAccountCredential [-InputObject] <PSDataBoxEdgeStorag
 ```
 
 ## DESCRIPTION
-This **Remove-AzDataBoxEdgeBandwidthStorageAccountCredential** will remove the Storage Account Credential for the device.
+The **Remove-AzDataBoxEdgeStorageAccountCredential** cmdlet removes the storage account credential for a Data Box Edge device.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeStorageAccountCredential ResourceGroupName resource-group-name -DeviceName device-name -Name storage-account-credential-name
+PS C:\> Remove-AzDataBoxEdgeStorageAccountCredential ResourceGroupName resourceGroupName -DeviceName deviceName -Name storageAccountCredentialName
 ```
 
 ## PARAMETERS
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Resource Name
+Name of the storage account to be used
 
 ```yaml
 Type: System.String
@@ -204,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential
+### System.Boolean
 
 ## NOTES
 
