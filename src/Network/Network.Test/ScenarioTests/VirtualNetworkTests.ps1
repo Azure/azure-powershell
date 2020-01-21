@@ -222,19 +222,19 @@ function Test-bgpCommunitiesCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
         # Create q virtual network with a BGP community
-        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -BgpCommunity 12076:61234
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -BgpCommunity 12076:30000
 
         # Get the virtual network and verify that the community is set to the expected value
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual "12076:61234" $vnet.BgpCommunities.VirtualNetworkCommunity
+        Assert-AreEqual "12076:30000" $vnet.BgpCommunities.VirtualNetworkCommunity
 
         # Update the virtual network with a different BGP community
-        $vnet.BgpCommunities.VirtualNetworkCommunity = "12076:64321"
+        $vnet.BgpCommunities.VirtualNetworkCommunity = "12076:30001"
         $vnet | Set-AzVirtualNetwork
 
         # Get the virtual network and verify that the community is set to the new value
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual "12076:64321" $vnet.BgpCommunities.VirtualNetworkCommunity
+        Assert-AreEqual "12076:30001" $vnet.BgpCommunities.VirtualNetworkCommunity
     }
     finally
     {
