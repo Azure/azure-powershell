@@ -162,6 +162,9 @@
   <data name="InvalidResourceGroupName" xml:space="preserve">
     <value>ResourceGroupName should not contain '/'. Name should be the plain, short name of the resource group, e.g. 'myResourceGroup'. (Not an Azure resource identifier.)</value>
   </data>
+  <data name="InvalidSize" xml:space="preserve">
+    <value>Invalid Size. Example for valid values: For Standard or Basic Sku: (C0, C1, C2, C3, C4, C5, C6), for Premium Sku: (P1, P2, P3, P4, P5)</value>
+  </data>
   <data name="PatchScheduleNotFound" xml:space="preserve">
     <value>There are no patch schedules found for redis cache '{0}'.</value>
   </data>

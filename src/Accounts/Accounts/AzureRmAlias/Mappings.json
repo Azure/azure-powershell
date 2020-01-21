@@ -1911,7 +1911,9 @@
     "Merge-AzReservation": "Merge-AzureRmReservation",
     "Split-AzReservation": "Split-AzureRmReservation",
     "Get-AzReservationOrderId": "Get-AzureRmReservationOrderId",
-    "Get-AzReservationCatalog": "Get-AzureRmReservationCatalog"
+    "Get-AzReservationCatalog": "Get-AzureRmReservationCatalog",
+    "Get-AzReservationQuote": "Get-AzureRmReservationQuote",
+    "New-AzReservation": "New-AzureRmReservation"
   },
   "Az.ResourceGraph": {
     "Search-AzGraph": "Search-AzureRmGraph"

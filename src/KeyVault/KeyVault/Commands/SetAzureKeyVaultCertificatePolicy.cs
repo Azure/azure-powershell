@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -222,8 +223,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key type
         /// </summary>
         [Parameter(Mandatory = false,
-                   HelpMessage = "Specifies the key type of the key backing the certificate.")]
-        [ValidateSet(Constants.RSA, Constants.RSAHSM)]
+                   HelpMessage = "Specifies the key type of the key backing the certificate. Default is RSA.")]
+        [ValidateSet(Constants.RSA, Constants.RSAHSM, Constants.EC, Constants.ECHSM)]
         public string KeyType { get; set; }
 
         /// <summary>
@@ -231,9 +232,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the key size of the certificate.")]
-        [ValidateSet("2048", "3072", "4096")]
-        public int KeySize { get; set; } = 2048;
+                   HelpMessage = "Specifies the key size of the certificate. Default is 2048.")]
+        [ValidateSet("2048", "3072", "4096", "256", "384", "521")]
+        public int KeySize { get; set; }
 
         /// <summary>
         /// KeyNotExportable
@@ -255,6 +256,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(HelpMessage = "This cmdlet does not return an object by default. If this switch is specified, it returns the policy object.")]
         public SwitchParameter PassThru { get; set; }
+
+        /// <summary>
+        /// Elliptic Curve Name of the key
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies the elliptic curve name of the key of the ECC certificate.")]
+        [ValidateSet(Constants.P256, Constants.P384, Constants.P521, Constants.P256K, Constants.SECP256K1)]
+        public string Curve { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
@@ -267,51 +277,30 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     case ExpandedRenewNumberParameterSet:
                     case ExpandedRenewPercentageParameterSet:
-
-                        // Validate input parameters
-                        ValidateSubjectName();
-                        ValidateDnsNames();
-                        ValidateEkus();
-
-                        List<string> convertedKeyUsage = null;
-                        if (KeyUsage != null)
-                        {
-                            convertedKeyUsage = new List<string>();
-                            foreach (var key in KeyUsage)
-                            {
-                                convertedKeyUsage.Add(key.ToString());
-                            }
-                        }
-
-                        policy = new PSKeyVaultCertificatePolicy
-                        {
-                            DnsNames = DnsName,
-                            KeyUsage = convertedKeyUsage,
-                            Ekus = Ekus,
-                            Enabled = !Disabled.IsPresent,
-                            IssuerName = IssuerName,
-                            CertificateType = CertificateType,
-                            RenewAtNumberOfDaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry,
-                            RenewAtPercentageLifetime = RenewAtPercentageLifetime,
-                            EmailAtNumberOfDaysBeforeExpiry = EmailAtNumberOfDaysBeforeExpiry,
-                            EmailAtPercentageLifetime = EmailAtPercentageLifetime,
-                            SecretContentType = SecretContentType,
-                            SubjectName = SubjectName,
-                            ValidityInMonths = ValidityInMonths,
-                            Kty = KeyType,
-                            KeySize = KeySize,
-                            Exportable = KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null,
-                            CertificateTransparency = CertificateTransparency ?? (bool?)null
-                        };
-
-                        if (MyInvocation.BoundParameters.ContainsKey("ReuseKeyOnRenewal"))
-                        {
-                            policy.ReuseKeyOnRenewal = ReuseKeyOnRenewal;
-                        }
-
+                        policy = new PSKeyVaultCertificatePolicy(
+                            DnsName,
+                            (KeyUsage == null || !KeyUsage.Any()) ? null : KeyUsage.Select(keyUsage => keyUsage.ToString()).ToList<string>(),
+                            Ekus,
+                            !Disabled.IsPresent,
+                            IssuerName,
+                            CertificateType,
+                            RenewAtNumberOfDaysBeforeExpiry,
+                            RenewAtPercentageLifetime,
+                            EmailAtNumberOfDaysBeforeExpiry,
+                            EmailAtPercentageLifetime,
+                            ReuseKeyOnRenewal,
+                            SecretContentType,
+                            SubjectName,
+                            ValidityInMonths,
+                            KeyType,
+                            KeySize,
+                            Curve,
+                            KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null,
+                            CertificateTransparency ?? (bool?)null);
                         break;
 
                     case ByValueParameterSet:
+                        InputObject.Validate();
                         policy = InputObject;
                         break;
                 }
@@ -321,49 +310,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                 if (PassThru.IsPresent)
                 {
                     this.WriteObject(resultantPolicy);
-                }
-            }
-        }
-
-        private void ValidateEkus()
-        {
-            if (Ekus != null)
-            {
-                foreach (var eku in Ekus)
-                {
-                    if (string.IsNullOrWhiteSpace(eku))
-                    {
-                        throw new ArgumentException("One of the EKUs provided is empty.");
-                    }
-                }
-            }
-        }
-
-        private void ValidateDnsNames()
-        {
-            if (DnsName != null)
-            {
-                foreach (var dnsName in DnsName)
-                {
-                    if (string.IsNullOrWhiteSpace(dnsName))
-                    {
-                        throw new ArgumentException("One of the DNS names provided is empty.");
-                    }
-                }
-            }
-        }
-
-        private void ValidateSubjectName()
-        {
-            if (SubjectName != null)
-            {
-                try
-                {
-                    new X500DistinguishedName(SubjectName);
-                }
-                catch (CryptographicException e)
-                {
-                    throw new ArgumentException("The subject name provided is not a valid X500 name.", e);
                 }
             }
         }

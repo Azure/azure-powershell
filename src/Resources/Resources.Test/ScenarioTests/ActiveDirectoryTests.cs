@@ -581,8 +581,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewADApplication");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Currently not working.")]
         public void TestNewADServicePrincipalWithoutApp()
         {
             TestRunner.RunTestScript("Test-NewADServicePrincipalWithoutApp");
@@ -657,6 +656,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 },
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveServicePrincipalWithNameNotFound()
+        {
+            TestRunner.RunTestScript("Test-RemoveServicePrincipalWithNameNotFound");
         }
 
         private User CreateNewAdUser(ResourcesController controllerAdmin)

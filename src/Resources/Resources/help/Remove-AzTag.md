@@ -34,7 +34,7 @@ You can define and apply tags in a single step, but predefined tags let you esta
 PS C:\>Remove-AzTag -Name "Department"
 ```
 
-This command deletes the predefined tag named Department and all of its resources.
+This command deletes the predefined tag named Department and all of its values.
 If the tag has been applied to any resources or resource groups, the command fails.
 
 ### Example 2: Delete a value from a predefined tag

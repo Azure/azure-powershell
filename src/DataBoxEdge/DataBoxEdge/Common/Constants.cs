@@ -10,14 +10,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common
         internal const string AzurePrefix = "Az";
         internal const string ServiceName = "DataBoxEdge";
 
-
         //Device Comands
         internal const string Device = AzurePrefix + ServiceName + "Device";
+        internal const string Alert = AzurePrefix + ServiceName + "Alert";
+        internal const string Order = AzurePrefix + ServiceName + "Order";
         internal const string Action = AzurePrefix + ServiceName + "Device" + "Action";
         internal const string User = AzurePrefix + ServiceName + "User";
         internal const string Sac = AzurePrefix + ServiceName + "StorageAccountCredential";
         internal const string Role = AzurePrefix + ServiceName + "Role";
         internal const string Share = AzurePrefix + ServiceName + "Share";
+        internal const string EdgeStorageAccount = AzurePrefix + ServiceName + "StorageAccount";
+        internal const string EdgeStorageContainer = AzurePrefix + ServiceName + "StorageContainer";
+        internal const string Trigger = AzurePrefix + ServiceName + "Trigger";
         internal const string BandwidthSchedule = AzurePrefix + ServiceName + "BandwidthSchedule";
         internal const string Test = AzurePrefix + ServiceName + "Test";
         internal const string ResourceAlreadyExists = " already exists with name ";

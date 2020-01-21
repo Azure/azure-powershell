@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix document error of New-AzHDInsightCluster.
+
+## Version 3.0.2
+* Fix Invoke-AzHDInsightHiveJob.md error.
+
+## Version 3.0.1
+* Update references in .psd1 to use relative path
 
 ## Version 3.0.0
 * Fixed the bug that customer will get "Not a valid Base-64 string" error when using Get-AzHDInsightCluster to get the cluster with ADLSGen1 storage.

@@ -28,10 +28,14 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ProximityPlacementGroup", DefaultParameterSetName = "DefaultParameter")]
+    [CmdletOutputBreakingChangeAttribute(typeof(PSProximityPlacementGroup),
+        "AvailabilitySetsColocationStatus, VirtualMachinesColocationStatus and VirtualMachineScaleSetsColocationStatus properties will be removed "
+        + "when the types of AvailabilitySets, VirtualMachines and VirtualMachineScaleSets are changed from SubResource to SubResourceWithColocationStatus.")]
     [OutputType(typeof(PSProximityPlacementGroup))]
     public partial class GetAzureRmProximityPlacementGroup : ComputeAutomationBaseCmdlet
     {
@@ -53,10 +57,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         proximityPlacementGroupName = this.Name;
                         break;
                 }
+                string includeColocationStatus = this.ColocationStatus.IsPresent.ToString().ToLowerInvariant();
 
                 if (ShouldGetByName(resourceGroupName, proximityPlacementGroupName))
                 {
-                    var result = ProximityPlacementGroupsClient.Get(resourceGroupName, proximityPlacementGroupName);
+                    var result = ProximityPlacementGroupsClient.Get(resourceGroupName, proximityPlacementGroupName, includeColocationStatus);
                     var psObject = new PSProximityPlacementGroup();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<ProximityPlacementGroup, PSProximityPlacementGroup>(result, psObject);
                     WriteObject(psObject);
@@ -122,6 +127,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [ResourceNameCompleter("Microsoft.Compute/proximityPlacementGroups", "ResourceGroupName")]
         [SupportsWildcards]
         public string Name { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter ColocationStatus { get; set; }
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",

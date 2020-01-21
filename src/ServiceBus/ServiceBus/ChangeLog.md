@@ -20,6 +20,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.1
+* Update references in .psd1 to use relative path
+
 ## Version 1.4.0
 * Fixed miscellaneous typos across module
 * Fix for issue #9658 : Typo VirtualNetworkRule parameter in Set-AzServiceBusNetworkRuleSet

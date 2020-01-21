@@ -12,25 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Helpers;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.FrontDoor.Properties;
-using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
     /// Defines the Enable-AzCustomDomainHttps cmdlet.
     /// </summary>
-    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorCustomDomainHttps", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet),  OutputType(typeof(PSFrontendEndpoint))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorCustomDomainHttps", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSFrontendEndpoint))]
     public class EnableAzureRmFrontDoorCustomDomainHttps : AzureFrontDoorCmdletBase
     {
         /// <summary>
@@ -99,6 +96,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = true, ParameterSetName = ObjectWithVaultParameterSet, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX")]
         public string SecretVersion { get; set; }
 
+        /// <summary>
+        /// The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The minimum TLS version required from the clients to establish an SSL handshake with Front Door.")]
+        [PSArgumentCompleter("1.0", "1.2")]
+        public string MinimumTlsVersion { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -137,14 +141,21 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     customHttpsConfiguration.SecretVersion = SecretVersion;
                 }
 
-                customHttpsConfiguration.ProtocolType = PSProtocolType.ServerNameIndication.ToString();
-                
+                if (this.IsParameterBound(c => c.MinimumTlsVersion))
+                {
+                    customHttpsConfiguration.MinimumTlsVersion = MinimumTlsVersion;
+                }
+                else
+                {
+                    customHttpsConfiguration.MinimumTlsVersion = "1.2";
+                }
+
                 if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.EnableCustomDomainHttpsWarning, FrontendEndpointName)))
                 {
                     FrontDoorManagementClient.FrontendEndpoints.BeginEnableHttps(ResourceGroupName, FrontDoorName, FrontendEndpointName, customHttpsConfiguration);
 
                     var frontDoorEndPoint = FrontDoorManagementClient.FrontendEndpoints.Get(ResourceGroupName, FrontDoorName, FrontendEndpointName);
-                    WriteObject(frontDoorEndPoint.ToPSFrontendEndpoints());   
+                    WriteObject(frontDoorEndPoint.ToPSFrontendEndpoints());
                 }
             }
             catch (Microsoft.Azure.Management.FrontDoor.Models.ErrorResponseException e)

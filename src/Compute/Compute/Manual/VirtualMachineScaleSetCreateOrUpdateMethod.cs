@@ -130,12 +130,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage ="Use this to create the Scale set in a single placement group, default is multiple groups")]
         public SwitchParameter SinglePlacementGroup;
 
+        [Alias("ProximityPlacementGroup")]
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string ProximityPlacementGroup { get; set; }
+        public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
-            HelpMessage = "The priority for the virtual machine scale set.  Only supported values are 'Regular' and 'Low'.")]
-        [PSArgumentCompleter("Regular", "Low")]
+            HelpMessage = "The priority for the virtual machine in the scale set. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+        [PSArgumentCompleter("Regular", "Spot")]
         public string Priority { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
@@ -161,6 +162,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         + "Within each zone, the newest virtual machines that are not protected will be chosen for removal.")]
         [PSArgumentCompleter("Default", "OldestVM", "NewestVM")]
         public string[] ScaleInPolicy { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "When Overprovision is enabled, extensions are launched only on the requested number of VMs which are finally kept. "
+                        + "This property will hence ensure that the extensions do not run on the extra overprovisioned VMs.")]
+        public SwitchParameter SkipExtensionsOnOverprovisionedVMs { get; set; }
 
         const int FirstPortRangeStart = 50000;
 
@@ -274,7 +280,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.VMScaleSetName,
                         _cmdlet.NatBackendPort.Concat(_cmdlet.BackendPort).ToList());
 
-                var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroup);
+                var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
                 return resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _cmdlet.VMScaleSetName,
@@ -299,7 +305,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     priority: _cmdlet.Priority,
                     evictionPolicy: _cmdlet.EvictionPolicy,
                     maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                    scaleInPolicy: _cmdlet.ScaleInPolicy
+                    scaleInPolicy: _cmdlet.ScaleInPolicy,
+                    doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent
                     );
             }
         }

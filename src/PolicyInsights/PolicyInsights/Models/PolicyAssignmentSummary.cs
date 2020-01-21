@@ -44,6 +44,11 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
         public IList<PolicyDefinitionSummary> PolicyDefinitions { get; }
 
         /// <summary>
+        /// Gets or sets policy definition group summary.
+        /// </summary>
+        public IList<PolicyGroupSummary> PolicyGroups { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="PolicyAssignmentSummary" /> class.
         /// </summary>
         /// <param name="policyAssignmentSummary">Policy assignment summary.</param>
@@ -56,8 +61,9 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
 
             this.PolicyAssignmentId = policyAssignmentSummary.PolicyAssignmentId;
             this.PolicySetDefinitionId = policyAssignmentSummary.PolicySetDefinitionId;
-            this.PolicyDefinitions = policyAssignmentSummary.PolicyDefinitions.Select(policyDefinitionSummary => new PolicyDefinitionSummary(policyDefinitionSummary)).ToList();
             this.Results = new SummaryResults(policyAssignmentSummary.Results);
+            this.PolicyDefinitions = policyAssignmentSummary.PolicyDefinitions.Select(policyDefinitionSummary => new PolicyDefinitionSummary(policyDefinitionSummary)).ToList();
+            this.PolicyGroups = policyAssignmentSummary.PolicyGroups.Select(policyGroup => new PolicyGroupSummary(policyGroup)).ToList();
         }
     }
 }

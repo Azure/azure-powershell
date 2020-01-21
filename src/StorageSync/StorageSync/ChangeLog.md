@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.2
+* Update references in .psd1 to use relative path
+
 ## Version 1.2.1
 
 * Fix Issue 9810 in Reset-AzStorageSyncServerCertificate.

@@ -38,7 +38,6 @@ The third command disables Backup protection for the item in $PI\[0\] and puts t
 The fourth command the new item which is in a softdeleted state.
 The last command rehydrates the softdeleted VM.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile

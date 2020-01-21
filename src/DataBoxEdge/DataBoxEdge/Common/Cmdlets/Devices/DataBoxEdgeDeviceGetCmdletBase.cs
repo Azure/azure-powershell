@@ -16,11 +16,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.DataBoxEdge;
 using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.DataBoxEdgeDevice;
+using ResourceModel = Microsoft.Azure.Management.DataBoxEdge.Models.DataBoxEdgeDevice;
 using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
 
 
@@ -36,17 +36,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
         (new[] {GetExtendedInfoParameterSet, GetExtendedInfoByResourceIdParameterSet}))]
     [OutputType(typeof(PSDataBoxEdgeUpdateSummary), ParameterSetName =
         (new[] {GetSummaryUpdateByResourceIdParameterSet, GetSummaryUpdateParameterSet}))]
+    [OutputType(typeof(PSDataBoxEdgeAlert), ParameterSetName =
+        (new[] {GetAlertParameterSet, GetAlertByResourceIdParameterSet}))]
     public class DataBoxEdgeDeviceGetCmdletBase : AzureDataBoxEdgeCmdletBase
     {
         private const string ListByParameterSet = "ListByParameterSet";
         private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
         private const string GetByNameParameterSet = "GetByNameParameterSet";
+
         private const string GetExtendedInfoParameterSet = "GetExtendedInfoParameterSet";
         private const string GetNetworkSettingParameterSet = "GetNetworkSettingParameterSet";
         private const string GetSummaryUpdateParameterSet = "GetSummaryUpdateParameterSet";
+        private const string GetAlertParameterSet = "GetAlertParameterSet";
+
         private const string GetExtendedInfoByResourceIdParameterSet = "GetExtendedInfoByResourceIdParameterSet";
         private const string GetNetworkSettingByResourceIdParameterSet = "GetNetworkSettingByResourceIdParameterSet";
         private const string GetSummaryUpdateByResourceIdParameterSet = "GetSummaryUpdateByResourceIdParameterSet";
+        private const string GetAlertByResourceIdParameterSet = "GetAlertByResourceIdParameterSet";
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByResourceIdParameterSet,
@@ -59,6 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
             HelpMessage = Constants.ResourceIdHelpMessage)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetSummaryUpdateByResourceIdParameterSet,
+            HelpMessage = Constants.ResourceIdHelpMessage)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetAlertByResourceIdParameterSet,
             HelpMessage = Constants.ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -83,6 +92,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
             ParameterSetName = GetExtendedInfoParameterSet,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetAlertParameterSet,
+            HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            Position = 0)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
@@ -103,25 +116,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
             ParameterSetName = GetExtendedInfoParameterSet,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 1)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetAlertParameterSet,
+            HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            Position = 1)]
         [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetExtendedInfoParameterSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage)]
+            HelpMessage = HelpMessageDevice.ExtendedInfoHelpMessage)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetExtendedInfoByResourceIdParameterSet,
+            HelpMessage = HelpMessageDevice.ExtendedInfoHelpMessage)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter ExtendedInfo { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetNetworkSettingParameterSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage)]
+            HelpMessage = HelpMessageDevice.NetworkSettingHelpMessage)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetNetworkSettingByResourceIdParameterSet,
+            HelpMessage = HelpMessageDevice.NetworkSettingHelpMessage)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter NetworkSetting { get; set; }
 
         [Parameter(Mandatory = true,
+            ParameterSetName = GetAlertParameterSet,
+            HelpMessage = HelpMessageDevice.AlertHelpMessage)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetAlertByResourceIdParameterSet,
+            HelpMessage = HelpMessageDevice.AlertHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter Alert { get; set; }
+
+        [Parameter(Mandatory = true,
             ParameterSetName = GetSummaryUpdateParameterSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage)]
+            HelpMessage = HelpMessageDevice.UpdateSummaryHelpMessage)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetSummaryUpdateByResourceIdParameterSet,
+            HelpMessage = HelpMessageDevice.UpdateSummaryHelpMessage)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter UpdateSummary { get; set; }
 
@@ -215,6 +250,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
                 this.ResourceGroupName));
         }
 
+
+        private List<PSDataBoxEdgeAlert> GetAlert()
+        {
+            var alerts = new DataBoxEdgeAlert(this.DataBoxEdgeManagementClient, this.ResourceGroupName, this.Name)
+                .Get();
+            return alerts;
+        }
+
         public override void ExecuteCmdlet()
         {
             var results = new List<PSResourceModel>();
@@ -238,6 +281,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
             {
                 var info = GetUpdatedSummary();
                 WriteObject(info, enumerateCollection: true);
+            }
+            else if (this.Alert.IsPresent)
+            {
+                WriteObject(GetAlert(), enumerateCollection: true);
             }
             else
             {

@@ -8,6 +8,8 @@ schema: 2.0.0
 # Get-AzMlOpCluster
 
 ## SYNOPSIS
+**Important: This cmdlet is deprecated.**
+
 Gets an operationalization cluster object.
 
 ## SYNTAX

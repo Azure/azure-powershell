@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             StaticIP = cache.StaticIP;
             TenantSettings = cache.TenantSettings;
             ShardCount = cache.ShardCount;
+            MinimumTlsVersion = cache.MinimumTlsVersion;
             Tag = cache.Tags;
             Zone = cache.Zones;
         }
@@ -96,6 +97,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public IDictionary<string, string> TenantSettings { get; protected set; }
 
         public int? ShardCount { get; protected set; }
+
+        public string MinimumTlsVersion { get; protected set; }
 
         public string SubnetId { get; protected set; }
 
