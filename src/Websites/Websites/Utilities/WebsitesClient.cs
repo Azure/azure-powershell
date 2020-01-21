@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             var webApp = WrappedWebsitesClient.WebApps().Get(resourceGroupName, webAppName);
             var currentHostNames = webApp.HostNames;
-
+            int successCount = 0;
             // Add new hostnames
             foreach (var hostName in hostNames)
             {
@@ -145,6 +145,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                             {
                                 SiteName = webAppName,
                             });
+                        successCount++;
                     }
                 }
                 catch (Exception e)
@@ -153,19 +154,22 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 }
             }
 
-            // Delete removed hostnames
-            foreach (var hostName in currentHostNames)
+            // 10422- Delete removed hostnames only when atleast one hostname is added from above
+            if (successCount > 0)
             {
-                try
+                foreach (var hostName in currentHostNames)
                 {
-                    if (!hostNames.Contains(hostName, StringComparer.OrdinalIgnoreCase))
+                    try
                     {
-                        WrappedWebsitesClient.WebApps().DeleteHostNameBinding(resourceGroupName, webAppName, hostName);
+                        if (!hostNames.Contains(hostName, StringComparer.OrdinalIgnoreCase))
+                        {
+                            WrappedWebsitesClient.WebApps().DeleteHostNameBinding(resourceGroupName, webAppName, hostName);
+                        }
                     }
-                }
-                catch (Exception e)
-                {
-                    WriteWarning("Could not remove custom hostname '{0}'. Details: {1}", hostName, e.ToString());
+                    catch (Exception e)
+                    {
+                        WriteWarning("Could not remove custom hostname '{0}'. Details: {1}", hostName, e.ToString());
+                    }
                 }
             }
         }
