@@ -56,6 +56,14 @@ PS C:\>Set-AzApiManagementApi -InputObject $api -PassThru
 ```
 This example adds an API to an existing API Version Set
 
+### Example 3 Change the Backend ServiceUrl where the API is pointing to
+```powershell
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>$updatedApiServiceUrl = "http://newechoapi.cloudapp.net/updateapi"
+PS C:\>$updatedApi = Set-AzApiManagementApi -Context $ApiMgmtContext -ApiId $echoApiId -ServiceUrl $updatedApiServiceUrl
+```
+This example updates the ServiceUrl the `echo-api` is pointing to.
+
 ## PARAMETERS
 
 ### -ApiId
