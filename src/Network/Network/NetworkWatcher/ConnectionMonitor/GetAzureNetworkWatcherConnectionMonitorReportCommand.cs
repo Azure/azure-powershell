@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Connection monitor object.",
             ParameterSetName = "SetByInputObject")]
         [ValidateNotNull]
-        public PSConnectionMonitorResult InputObject { get; set; }
+        public PSConnectionMonitorResultV1 InputObject { get; set; }
 
         [Alias("ConnectionMonitorName")]
         [Parameter(
