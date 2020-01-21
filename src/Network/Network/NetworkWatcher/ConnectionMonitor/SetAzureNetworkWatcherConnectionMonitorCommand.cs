@@ -230,7 +230,15 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var connectionMonitor = UpdateConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorV2);
-            WriteObject(connectionMonitor);
+
+            if (connectionMonitorV2 == true)
+            {
+                WriteObject(((PSConnectionMonitorResultV2)connectionMonitor));
+            }
+            else
+            {
+                WriteObject(((PSConnectionMonitorResultV1)connectionMonitor));
+            }
         }
 
         private PSConnectionMonitorResult UpdateConnectionMonitor(string resourceGroupName, string networkWatcherName, bool connectionMonitorV2 = false)
@@ -280,6 +288,8 @@ namespace Microsoft.Azure.Commands.Network
             if (connectionMonitorV2)
             {
                 this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, connectionMonitorName, parameters);
+
+                getConnectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorName, connectionMonitorV2);
             }
             else
             {

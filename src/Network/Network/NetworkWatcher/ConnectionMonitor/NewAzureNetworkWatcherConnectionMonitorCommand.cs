@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"),
                                                                          OutputType(typeof(PSConnectionMonitorResultV1)),
-                                                                        OutputType(typeof(PSConnectionMonitorResultV2))]
+                                                                         OutputType(typeof(PSConnectionMonitorResultV2))]
     public class NewAzureNetworkWatcherConnectionMonitorCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
@@ -269,11 +269,10 @@ namespace Microsoft.Azure.Commands.Network
                 };
 
                 ConnectionMonitorResult connectionMonitorResult = this.ConnectionMonitors.CreateOrUpdateV1(resourceGroupName, networkWatcherName, this.Name, parameters).Result;
-
                 getConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResultV1(connectionMonitorResult);
             }
 
-            return getConnectionMonitor;
+            return (getConnectionMonitor);
         }
 
         public bool Validate()
