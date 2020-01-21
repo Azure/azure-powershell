@@ -99,11 +99,16 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name
             };
 
-
             if (ParameterSetName.Contains("SetByResource"))
             {
                 CMObject.NetworkWatcherName = this.NetworkWatcher.Name;
                 CMObject.ResourceGroupName = this.NetworkWatcher.ResourceGroupName;
+                CMObject.Location = this.NetworkWatcher.Location;
+            }
+            else if (ParameterSetName.Contains("SetByName"))
+            {
+                MNM.NetworkWatcher networkWatcher = this.NetworkClient.NetworkManagementClient.NetworkWatchers.Get(this.ResourceGroupName, this.NetworkWatcherName);
+                CMObject.Location = networkWatcher.Location;
             }
             else if (ParameterSetName.Contains("SetByLocation"))
             {
@@ -116,6 +121,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 CMObject.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
                 CMObject.NetworkWatcherName = networkWatcher.Name;
+                CMObject.Location = this.Location;
             }
 
             if (this.TestGroup != null)
