@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.Network
             return null;
         }
 
-    public bool ValidateConnectionMonitorV2Parameters(string SourceResourceId, string DestinationResourceId, PSConnectionMonitorResultV1 InputObject, string DestinationAddress, int? MonitoringIntervalInSeconds, List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroups, List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs)
+    public bool ValidateConnectionMonitorV2Parameters(string SourceResourceId, string DestinationResourceId, PSConnectionMonitorResult InputObject, string DestinationAddress, int? MonitoringIntervalInSeconds, List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroups, List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs)
         {
             if ((!string.IsNullOrEmpty(SourceResourceId) || 
                  !string.IsNullOrEmpty(DestinationResourceId)||
