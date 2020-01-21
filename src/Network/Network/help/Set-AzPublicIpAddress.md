@@ -41,7 +41,24 @@ PS C:\> Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
     updated object, and modifies the allocation method to 'Static'. A public IP address gets 
     allocated immediately.
 
-### 2: Change DNS domain label of a public IP address
+### 2: Add DNS domain label of a public IP address
+```
+PS C:\> $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+
+PS C:\> $publicIp.DnsSettings = @{"DomainNameLabel" = "newdnsprefix"}
+    
+PS C:\> Set-AzPublicIpAddress -PublicIpAddress $publicIp
+
+PS C:\> $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+```
+
+First command gets the public IP address resource with name $publicIPName in the resource 
+    group $rgName.
+    Second command sets the DomainNameLabel property to the required dns prefix.
+    Set-AzPublicIPAddress command updates the public IP address resource with the 
+    updated object. DomainNameLabel & Fqdn are modified as expected.
+    
+### 3: Change DNS domain label of a public IP address
 ```
 PS C:\> $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 

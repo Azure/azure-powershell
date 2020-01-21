@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
 {
     public class FrontDoorTests
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
+        private readonly ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
 
         public FrontDoorTests(Xunit.Abstractions.ITestOutputHelper output)
         {
@@ -33,6 +33,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
         public void TestFrontDoorCrud()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrud");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFrontDoorCrudDefaults()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudDefaults");
         }
 
         [Fact]

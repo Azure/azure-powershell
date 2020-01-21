@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Alias("Quota")]
         [Parameter(Mandatory = false,
             HelpMessage = "Share Quota in Gibibyte.")]
         public int QuotaGiB

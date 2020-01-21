@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDataBoxEdgeDevice
 
 ## SYNOPSIS
-Remove a device
+Removes a Data Box Edge device.
 
 ## SYNTAX
 
@@ -31,13 +31,16 @@ Remove-AzDataBoxEdgeDevice -InputObject <PSDataBoxEdgeDevice> [-AsJob]
 ```
 
 ## DESCRIPTION
-This **Remove-AzDataBoxEdgeDevice** will remove the device.
+The **Remove-AzDataBoxEdgeDevice** cmdlet removes the configuration for a Data Box Edge device.
+Note that the device can only be deleted after you have placed the order and before the device is prepared by Microsoft for shipment.
+
+Refer the documentation on Deleting the resource before using this [cmdlet](https://docs.microsoft.com/en-us/azure/databox-online/data-box-edge-return-device#delete-the-resource)
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeDevice ResourceGroupName resource-group-name -Name device-name
+PS C:\> Remove-AzDataBoxEdgeDevice ResourceGroupName resourceGroupName -Name deviceName
 ```
 
 ## PARAMETERS
@@ -163,8 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

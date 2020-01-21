@@ -65,6 +65,10 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
         [ValidateNotNullOrEmpty]
         public string[] LocationFilter { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceDiscoveryMode)]
+        [ValidateSet("ExistingNonCompliant", "ReEvaluateCompliance")]
+        public string ResourceDiscoveryMode { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -81,7 +85,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
             var rootScope = this.GetRootScope(scope: this.Scope, resourceId: this.ResourceId, managementGroupId: this.ManagementGroupName, resourceGroupName: this.ResourceGroupName);
             var remediationName = this.GetRemediationName(name: this.Name, resourceId: this.ResourceId);
 
-            var remediation = new Remediation(policyAssignmentId: this.PolicyAssignmentId, policyDefinitionReferenceId: this.PolicyDefinitionReferenceId);
+            var remediation = new Remediation(policyAssignmentId: this.PolicyAssignmentId, policyDefinitionReferenceId: this.PolicyDefinitionReferenceId, resourceDiscoveryMode: this.ResourceDiscoveryMode);
             if (this.LocationFilter != null)
             {
                 remediation.Filters = new RemediationFilters(this.LocationFilter);

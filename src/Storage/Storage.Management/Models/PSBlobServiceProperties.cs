@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 Cors = this.Cors is null ? null : this.Cors.ParseCorsRules(),
                 DefaultServiceVersion = this.DefaultServiceVersion,
-                DeleteRetentionPolicy = this.DeleteRetentionPolicy is null ? null : this.DeleteRetentionPolicy.ParseDeleteRetentionPolicy()
+                DeleteRetentionPolicy = this.DeleteRetentionPolicy is null ? null : this.DeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
             };
         }
 
@@ -86,6 +86,31 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 var parentResource = resource.ParentResource.Split(new[] { '/' });
                 return parentResource[1];
             }
+        }
+    }
+
+    /// <summary>
+    /// Wrapper of SDK type ChangeFeed
+    /// </summary>
+    public class PSChangeFeed
+    {
+        public bool? Enabled { get; set; }
+
+        public PSChangeFeed()
+        {
+        }
+
+        public PSChangeFeed(ChangeFeed changeFeed)
+        {
+            this.Enabled = changeFeed.Enabled;
+        }
+
+        public ChangeFeed ParseChangeFeed()
+        {
+            return new ChangeFeed
+            {
+                Enabled = this.Enabled
+            };
         }
     }
 

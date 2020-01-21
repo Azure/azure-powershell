@@ -80,7 +80,7 @@ function Test-AzureFirewallCRUD {
     $networkRule1Protocol3 = "ICMP"
     $networkRule1DestinationPort1 = "90"
 
-	# AzureFirewallNetworkRule 2
+    # AzureFirewallNetworkRule 2
     $networkRule2Name = "networkRule2"
     $networkRule2Desc = "desc2"
     $networkRule2SourceAddress1 = "10.0.0.0"
@@ -107,7 +107,7 @@ function Test-AzureFirewallCRUD {
     $natRule1TranslatedAddress = "10.1.2.3"
     $natRule1TranslatedPort = "91"
 
-	# AzureFirewallNatRule 2
+    # AzureFirewallNatRule 2
     $natRule2Name = "natRule2"
     $natRule2Desc = "desc2"
     $natRule2SourceAddress1 = "10.0.0.0"
@@ -1172,7 +1172,7 @@ function Test-AzureFirewallThreatIntelWhitelistCRUD {
     $publicIpName = Get-ResourceName
 
     $threatIntelWhitelist1 = New-AzFirewallThreatIntelWhitelist -FQDN @("*.microsoft.com", "microsoft.com") -IpAddress @("8.8.8.8", "1.1.1.1")
-    $threatIntelWhitelist2 = New-AzFirewallThreatIntelWhitelist -IpAddress @("  2.2.2.2  ","  3.3.3.3  ") -FQDN @("  bing.com  ",  "yammer.com  ")
+    $threatIntelWhitelist2 = New-AzFirewallThreatIntelWhitelist -IpAddress @("  2.2.2.2  ", "  3.3.3.3  ") -FQDN @("  bing.com  ", "yammer.com  ")
 
     try {
         # Create the resource group
@@ -1199,6 +1199,53 @@ function Test-AzureFirewallThreatIntelWhitelistCRUD {
         $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
         Assert-AreEqualArray $threatIntelWhitelist2.FQDNs $getAzureFirewall.ThreatIntelWhitelist.FQDNs
         Assert-AreEqualArray $threatIntelWhitelist2.IpAddresses $getAzureFirewall.ThreatIntelWhitelist.IpAddresses
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall PrivateRange
+#>
+function Test-AzureFirewallPrivateRangeCRUD {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+
+    $privateRange1 = @("IANAPrivateRanges", "0.0.0.0/0", "66.92.0.0/16")
+    $privateRange2 = @("3.3.0.0/24", "98.0.0.0/8")
+    
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create public ip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -PrivateRange $privateRange1
+
+        # Verify
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqualArray $privateRange1 $getAzureFirewall.PrivateRange
+
+        # Modify
+        $azureFirewall.PrivateRange = $privateRange2
+        Set-AzFirewall -AzureFirewall $azureFirewall
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqualArray $privateRange2 $getAzureFirewall.PrivateRange
     }
     finally {
         # Cleanup

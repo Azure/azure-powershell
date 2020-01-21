@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.FrontDoor.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -45,13 +46,20 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Disabled state")]
         public SwitchParameter Disabled { get; set; }
 
+        /// <summary>
+        /// Exclusions
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Exclusions")]
+        public PSManagedRuleExclusion[] Exclusion { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var managedRuleOverride = new PSAzureManagedRuleOverride
             {
                 RuleId = RuleId,
                 Action = this.IsParameterBound(c => c.Action) ? Action : null,
-                EnabledState = (this.IsParameterBound(c => c.Disabled) && Disabled.IsPresent) ? PSEnabledState.Disabled : PSEnabledState.Enabled
+                EnabledState = (this.IsParameterBound(c => c.Disabled) && Disabled.IsPresent) ? PSEnabledState.Disabled : PSEnabledState.Enabled,
+                Exclusions = Exclusion?.ToList()
             };
             WriteObject(managedRuleOverride);
         }

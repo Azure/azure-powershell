@@ -18,6 +18,8 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -28,19 +30,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [OutputType(typeof(ARSVault))]
     public class GetAzureRmRecoveryServicesVaults : RecoveryServicesCmdletBase
     {
+
+        public const string ByTagObjectParameterSet = "ByTagObjectParameterSet";
+        public const string ByTagNameValueParameterSet = "ByTagNameValueParameterSet";
+        public const string ByNameVaultResourceGroupParameterSet = "ByNameVaultResourceGroupParameterSet";
+
         #region Parameters
         /// <summary>
         /// Gets or sets Resource Group name.
         /// </summary>
-        [Parameter]
+        [Parameter(Position = 1)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets Resource Name.
         /// </summary>
-        [Parameter]
+        [Parameter(Position = 2)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// TagName Filter for a Recovery Services Vault.
+        /// </summary>
+        [Parameter(ParameterSetName = ByTagNameValueParameterSet, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string TagName { get; set; }
+
+        /// <summary>
+        /// TagValue Filter for a Recovery Services Vault.
+        /// </summary>
+        [Parameter(ParameterSetName = ByTagNameValueParameterSet, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string TagValue { get; set; }
+
+        /// <summary>
+        /// TagValue Filter for a Recovery Services Vault.
+        /// </summary>
+        [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag { get; set; }
+
         #endregion Parameters
 
         /// <summary>
@@ -56,7 +85,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 }
                 else
                 {
-                    this.GetVaultsUnderResourceGroup(this.ResourceGroupName);
+                    if(string.IsNullOrEmpty(this.Name))
+                    {
+                        this.GetVaultsUnderResourceGroup(this.ResourceGroupName);
+                    }
+                    else
+                    {
+                        // ignore tag filters
+                        Vault vault = RecoveryServicesClient.GetVault(this.ResourceGroupName, this.Name);
+                        this.WriteObject(new ARSVault(vault));
+                    }
                 }
             }
             catch (Exception exception)
@@ -101,13 +139,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vaults">List of Vaults</param>
         private void WriteVaults(IList<Vault> vaults)
         {
+            IList<Vault> filteredVaults = new List<Vault>();
+            // Do a tag filter here
+            for(int i = 0; i < vaults.Count; i++)
+            {
+                Vault vault = vaults[i];
+                if(this.ParameterSetName == ByTagNameValueParameterSet)
+                {
+                    bool tagNameFilter = TagName == null || vault.Tags.ContainsKey(TagName);
+                    bool tagValueFilter = TagValue == null || vault.Tags.Values.Contains(TagValue);
+
+                    if((tagNameFilter && tagValueFilter))
+                    {
+                        filteredVaults.Add(vault);
+                    }
+                }
+                if(this.ParameterSetName == ByTagObjectParameterSet)
+                {
+                    if (Tag != null)
+                    {
+                        foreach (string key in Tag.Keys)
+                        {
+                            if (vault.Tags.ContainsKey(key) && vault.Tags[key] == (string)Tag[key])
+                            {
+                                filteredVaults.Add(vault);
+                                continue;
+                            }
+                        }
+                    }
+                }
+            }
             if (string.IsNullOrEmpty(this.Name))
             {
-                this.WriteObject(vaults.Select(v => new ARSVault(v)), true);
+                this.WriteObject(filteredVaults.Select(v => new ARSVault(v)), true);
             }
             else
             {
-                foreach (Vault vault in vaults)
+                foreach (Vault vault in filteredVaults)
                 {
                     if (0 == string.Compare(this.Name, vault.Name, true))
                     {

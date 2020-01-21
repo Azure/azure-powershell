@@ -50,13 +50,41 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     GalleryImageVersion galleryImageVersion = new GalleryImageVersion();
 
                     galleryImageVersion.Location = this.Location;
-                    galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
-                    galleryImageVersion.StorageProfile.Source = new GalleryArtifactVersionSource();
-                    galleryImageVersion.StorageProfile.Source.Id = this.SourceImageId;
+
+                    if (this.IsParameterBound(c => c.SourceImageId))
+                    {
+                        if (galleryImageVersion.StorageProfile == null)
+                        {
+                            galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
+                        }
+                        if (galleryImageVersion.StorageProfile.Source == null)
+                        {
+                            galleryImageVersion.StorageProfile.Source = new GalleryArtifactVersionSource();
+                        }
+                        galleryImageVersion.StorageProfile.Source.Id = this.SourceImageId;
+                    }
 
                     if (this.IsParameterBound(c => c.Tag))
                     {
                         galleryImageVersion.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                    }
+
+                    if (this.IsParameterBound(c => c.DataDiskImage))
+                    {
+                        if (galleryImageVersion.StorageProfile == null)
+                        {
+                            galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
+                        }
+                        galleryImageVersion.StorageProfile.DataDiskImages = this.DataDiskImage;
+                    }
+
+                    if (this.IsParameterBound(c => c.OSDiskImage))
+                    {
+                        if (galleryImageVersion.StorageProfile == null)
+                        {
+                            galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
+                        }
+                        galleryImageVersion.StorageProfile.OsDiskImage = this.OSDiskImage;
                     }
 
                     if (this.IsParameterBound(c => c.ReplicaCount))
@@ -156,24 +184,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Location { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true)]
-        public string SourceImageId { get; set; }
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public GalleryDataDiskImage [] DataDiskImage { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public int ReplicaCount { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public SwitchParameter PublishingProfileExcludeFromLatest { get; set; }
+        public GalleryOSDiskImage OSDiskImage { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -183,8 +201,28 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter PublishingProfileExcludeFromLatest { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public int ReplicaCount { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public string SourceImageId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("Standard_LRS", "Standard_ZRS")]
         public string StorageAccountType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -347,12 +385,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public int ReplicaCount { get; set; }
+        public DateTime PublishingProfileEndOfLifeDate { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -362,7 +395,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public DateTime PublishingProfileEndOfLifeDate { get; set; }
+        public int ReplicaCount { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,

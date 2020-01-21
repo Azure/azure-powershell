@@ -248,6 +248,21 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
             Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimePublicIP)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimePublicIP)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimePublicIP)]
+        [ValidateNotNull]
+        public string[] PublicIPs { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeSetupScriptContainerSasUri)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceId,
@@ -278,6 +293,21 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             IntegrationRuntimeEdition.Enterprise,
             IgnoreCase = true)]
         public string Edition { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeExpressCustomSetup)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeExpressCustomSetup)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeExpressCustomSetup)]
+        [ValidateNotNullOrEmpty]
+        public System.Collections.ArrayList ExpressCustomSetup { get; set; }
 
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
@@ -698,6 +728,27 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 }
             }
 
+            if (PublicIPs != null)
+            {
+                if (string.IsNullOrWhiteSpace(VNetId))
+                {
+                    throw new PSArgumentException(string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.IntegrationRuntimeVNetNotProvided),
+                        "VNetId");
+                }
+
+                if (PublicIPs.Length != 2)
+                {
+                    throw new PSArgumentException(string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.InvalidPublicIPCount),
+                        "PublicIPs");
+                }
+
+                integrationRuntime.ComputeProperties.VNetProperties.PublicIPs = PublicIPs;
+            }
+
             if (!string.IsNullOrWhiteSpace(LicenseType))
             {
                 if (integrationRuntime.SsisProperties == null)
@@ -722,6 +773,20 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     BlobContainerUri = index >= 0 ? SetupScriptContainerSasUri.Substring(0, index) : SetupScriptContainerSasUri,
                     SasToken = index >= 0 ? new SecureString(SetupScriptContainerSasUri.Substring(index)) : null
                 };
+            }
+
+            if (ExpressCustomSetup != null && ExpressCustomSetup.ToArray().Length > 0)
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+                System.Collections.Generic.IList<CustomSetupBase> setups = new System.Collections.Generic.List<CustomSetupBase>();
+                foreach (CustomSetupBase setup in ExpressCustomSetup)
+                {
+                    setups.Add(setup);
+                }
+                integrationRuntime.SsisProperties.ExpressCustomSetupProperties = setups;
             }
 
             if (!string.IsNullOrEmpty(DataProxyIntegrationRuntimeName))

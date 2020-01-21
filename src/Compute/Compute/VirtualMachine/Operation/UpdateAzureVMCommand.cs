@@ -107,6 +107,11 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The max price of the billing of a low priority virtual machine")]
         public double MaxPrice { get; set; }
 
+        [Parameter(
+            Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string ProximityPlacementGroupId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -143,7 +148,9 @@ namespace Microsoft.Azure.Commands.Compute
                                    ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned, null)
                                    : ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null,
-                        ProximityPlacementGroup = this.VM.ProximityPlacementGroup,
+                        ProximityPlacementGroup = this.IsParameterBound(c => c.ProximityPlacementGroupId)
+                                                ? new SubResource(this.ProximityPlacementGroupId)
+                                                : this.VM.ProximityPlacementGroup,
                         Host = this.VM.Host,
                         VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
                         AdditionalCapabilities = this.VM.AdditionalCapabilities,

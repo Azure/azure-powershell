@@ -16,10 +16,6 @@
     <None Remove="Models\NewFolder\**" />
   </ItemGroup>
 
-  <ItemGroup>
-      <PackageReference Include="Microsoft.Azure.Management.EdgeGateway" Version="0.8.1-preview" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <Compile Update="Resources\Resource.Designer.cs">
@@ -39,11 +35,12 @@
 
 
   <ItemGroup>
+    <Folder Include="help\" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <Folder Include="help\" />
+    <PackageReference Include="Microsoft.Azure.Management.DataBoxEdge" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
