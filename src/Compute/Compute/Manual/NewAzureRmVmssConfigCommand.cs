@@ -19,8 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = true,
             ParameterSetName = "AssignIdentityParameterSet")]
+        [CmdletParameterBreakingChange("AssignIdentity", ChangeDescription = "'IdentityType' parameter with 'SystemAssigned' value will be used instead of 'AssignIdentity'")]
         public SwitchParameter AssignIdentity { get; set; }
     }
 }

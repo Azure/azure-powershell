@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
@@ -477,7 +477,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
@@ -1432,7 +1432,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
@@ -1752,7 +1752,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
                   "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
@@ -2149,7 +2149,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
@@ -2510,7 +2510,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
@@ -3513,7 +3513,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
                   "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
@@ -3890,7 +3890,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3902,7 +3902,7 @@
     "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry": {
       "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
       "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ObjectId": "System.String"
       },
@@ -3997,7 +3997,7 @@
     "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService": {
       "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
       "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",

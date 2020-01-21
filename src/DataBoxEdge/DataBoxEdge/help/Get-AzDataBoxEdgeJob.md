@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataBoxEdgeJob
 
 ## SYNOPSIS
-Get job by Name
+Gets the jobs scheduled on a device.
 
 ## SYNTAX
 
@@ -30,16 +30,16 @@ Get-AzDataBoxEdgeJob [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
 ```
 
 ## DESCRIPTION
-This **Get-AzDataBoxEdgeJob** gets the active jobs for a device
+The **Get-AzDataBoxEdgeJob** cmdlet gets the active jobs on a Data Box Edge device. You can mention the Name parameter to get details of a specific job.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDataBoxEdgeJob -ResourceGroupName resource-group-name -DeviceName device-name -Name 1f2d8f1b-9104-49c3-b780-76db9abe7bd1
+PS C:\> Get-AzDataBoxEdgeJob -ResourceGroupName resourceGroupName -DeviceName deviceName -Name 1f2d8f1b-9104-49c3-b780-76db9abe7bd1
 Name                                   Device-Name    status
 ------------------                     -------------  -------
-1f2d8f1b-9104-49c3-b780-76db9abe7bd1   device-name    Scheduled
+1f2d8f1b-9104-49c3-b780-76db9abe7bd1   deviceName    Scheduled
 ```
 
 ## PARAMETERS
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeviceName
-Name of the device 
+Name of the device
 
 ```yaml
 Type: System.String
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the job
+Name of the Job, Generally a GUID
 
 ```yaml
 Type: System.String
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name of the Job
+Resource Group Name
 
 ```yaml
 Type: System.String
@@ -139,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice
 
 ## OUTPUTS
 

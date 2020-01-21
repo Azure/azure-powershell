@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Update references in .psd1 to use relative path
+
 ## Version 1.1.0
 * Fix typo in Remove-AzContainerRegistryReplication for Replication parameter
     - More information here https://github.com/Azure/azure-powershell/issues/9633

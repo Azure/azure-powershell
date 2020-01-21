@@ -47,6 +47,38 @@ function Test-CreateAttestation
 	}
 }
 
+function Test-CreateAttestationWithPolicySigningCertificate
+{
+	$unknownRGName = getAssetName
+	$attestationName = getAssetName
+	$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
+	$PemDir = Join-Path $TestOutputRoot "PemFiles"
+        $file= Join-Path $PemDir "policySigningCerts.pem"
+
+	try
+	{
+	    $rgName = Create-ResourceGroup
+		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -PolicySigningCertificateFile $file
+		
+		Assert-NotNull attestationCreated
+		Assert-AreEqual $attestationName $attestationCreated.Name
+		Assert-NotNull attestationCreated.AttesUri
+		Assert-NotNull attestationCreated.Id
+		Assert-NotNull attestationCreated.Status
+		
+		# Test throws for existing attestation
+		Assert-Throws { New-AzAttestation -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $attestationPolicy}
+
+		# Test throws for resourcegroup nonexistent
+		Assert-Throws { New-AzAttestation -Name $attestationName -ResourceGroupName $unknownRGName -AttestationPolicy $attestationPolicy}
+	}
+
+	finally
+	{
+		Clean-ResourceGroup $rgName.ResourceGroupName
+	}
+}
+
 <#
 .SYNOPSIS
 Test Get-AzAttestation

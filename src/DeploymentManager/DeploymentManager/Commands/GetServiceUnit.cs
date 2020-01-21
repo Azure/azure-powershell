@@ -92,27 +92,27 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Position = 3,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 2,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByServiceObjectParameterSet,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 2,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByServiceResourceIdParamSet,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 3,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 3,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
             HelpMessage = "The name of the service unit.")]
         [ValidateNotNullOrEmpty]
@@ -180,8 +180,19 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 Name = this.Name
             };
 
-            var serviceUnitResource = this.DeploymentManagerClient.GetServiceUnit(psServiceUnitResource);
-            this.WriteObject(serviceUnitResource);
+            if (!string.IsNullOrWhiteSpace(this.Name))
+            {
+                var serviceUnitResource = this.DeploymentManagerClient.GetServiceUnit(psServiceUnitResource);
+                this.WriteObject(serviceUnitResource);
+            }
+            else
+            {
+                var serviceUnitResources = this.DeploymentManagerClient.ListServiceUnits(
+                    resourceGroupName: this.ResourceGroupName,
+                    serviceTopologyName: this.ServiceTopologyName,
+                    serviceName: this.ServiceName);
+                this.WriteObject(serviceUnitResources, enumerateCollection: true);
+            }
         }
 
         private void ResolveParameters()

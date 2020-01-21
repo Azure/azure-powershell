@@ -455,8 +455,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 var testTenant = new AzureTenant() { Id = Guid.NewGuid().ToString() };
                 if (!string.IsNullOrEmpty(currentEnvironment.Tenant))
                 {
-                    Guid tenant;
-                    if (Guid.TryParse(currentEnvironment.Tenant, out tenant))
+                    if (Guid.TryParse(currentEnvironment.Tenant, out Guid tenant))
                     {
                         testTenant.Id = currentEnvironment.Tenant;
                     }

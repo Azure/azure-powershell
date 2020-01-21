@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
             }
             // StorageProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 // StorageProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)

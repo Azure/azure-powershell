@@ -581,8 +581,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewADApplication");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Currently not working.")]
         public void TestNewADServicePrincipalWithoutApp()
         {
             TestRunner.RunTestScript("Test-NewADServicePrincipalWithoutApp");

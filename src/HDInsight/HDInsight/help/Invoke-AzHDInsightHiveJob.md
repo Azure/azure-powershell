@@ -50,7 +50,7 @@ PS C:\> Use-AzHDInsightCluster `
 
 PS C:\> Invoke-AzHDInsightHiveJob -StatusFolder $statusFolder `
             -Query $query `
-            -DefaultContainer $storageAccountContainer `
+            -DefaultContainer $storageContainer `
             -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
             -DefaultStorageAccountKey $storageAccountKey
 ```

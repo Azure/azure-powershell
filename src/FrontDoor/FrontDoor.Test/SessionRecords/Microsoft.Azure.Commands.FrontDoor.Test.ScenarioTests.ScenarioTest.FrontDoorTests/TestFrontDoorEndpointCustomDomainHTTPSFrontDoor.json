@@ -7,16 +7,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2bc072ab-5ea1-4553-a5ee-7d822bbf62fa"
+          "1d8dd266-35be-4285-b251-8467243b11cd"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.18"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
         ]
       },
       "ResponseHeaders": {
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-request-id": [
-          "2cf2df0b-840f-438e-8fb3-c6983f1321a6"
+          "1148ba71-d927-4c05-9d55-33c0d9135e25"
         ],
         "x-ms-correlation-request-id": [
-          "2cf2df0b-840f-438e-8fb3-c6983f1321a6"
+          "1148ba71-d927-4c05-9d55-33c0d9135e25"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T223045Z:2cf2df0b-840f-438e-8fb3-c6983f1321a6"
+          "WESTUS:20191021T231735Z:1148ba71-d927-4c05-9d55-33c0d9135e25"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:30:45 GMT"
+          "Mon, 21 Oct 2019 23:17:34 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -54,29 +54,29 @@
           "-1"
         ],
         "Content-Length": [
-          "7478"
+          "8844"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/providers/Microsoft.Resources\",\r\n  \"namespace\": \"Microsoft.Resources\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"tenants\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"notifyResourceJobs\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-02-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"tags\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkPolicyCompliance\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkresourcename\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/operationresults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourcegroups/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagnames\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagNames/tagValues\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments/operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"links\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-01-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/providers/Microsoft.Resources\",\r\n  \"namespace\": \"Microsoft.Resources\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"tenants\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationresults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"notifyResourceJobs\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"tags\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"checkPolicyCompliance\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkresourcename\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/operationresults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourcegroups/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagnames\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagNames/tagValues\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments/operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"links\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-01-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlZ3JvdXBzL3BzMzc2Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlZ3JvdXBzL3BzNTE3Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "043ed449-44e1-40ce-a924-f196667a7f02"
+          "9a7b1dd8-88ab-40ba-bbed-7a9f60cbe7c8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.18"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -96,13 +96,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "7df13fe5-bb65-4ec3-8be8-1556297c671f"
+          "70fa8143-98e1-4ad0-b253-d51640c9e126"
         ],
         "x-ms-correlation-request-id": [
-          "7df13fe5-bb65-4ec3-8be8-1556297c671f"
+          "70fa8143-98e1-4ad0-b253-d51640c9e126"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T223047Z:7df13fe5-bb65-4ec3-8be8-1556297c671f"
+          "WESTUS:20191021T231736Z:70fa8143-98e1-4ad0-b253-d51640c9e126"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:30:46 GMT"
+          "Mon, 21 Oct 2019 23:17:35 GMT"
         ],
         "Content-Length": [
           "165"
@@ -123,26 +123,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767\",\r\n  \"name\": \"ps3767\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177\",\r\n  \"name\": \"ps5177\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycz9hcGktdmVyc2lvbj0yMDE5LTA0LTAx",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycz9hcGktdmVyc2lvbj0yMDE5LTA1LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e60eaa1d-6dce-4edd-bb54-41e5fcfd1d76"
+          "cff46758-5deb-4a14-b041-40be57861dc0"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -153,10 +153,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "766406ac-2c0c-4822-9644-e21f477ca4b3"
+          "19f74fe7-e51b-4355-a4be-ceebe47ce6b4"
         ],
         "x-ms-client-request-id": [
-          "e60eaa1d-6dce-4edd-bb54-41e5fcfd1d76"
+          "cff46758-5deb-4a14-b041-40be57861dc0"
         ],
         "OData-Version": [
           "4.0"
@@ -177,16 +177,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "b0a79ef7-f25e-4729-a8db-d1fb4264613f"
+          "13017a0e-8cc6-44a0-9bbb-59666123de93"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T223048Z:b0a79ef7-f25e-4729-a8db-d1fb4264613f"
+          "WESTUS:20191021T231737Z:13017a0e-8cc6-44a0-9bbb-59666123de93"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:30:48 GMT"
+          "Mon, 21 Oct 2019 23:17:37 GMT"
         ],
         "Content-Length": [
           "28"
@@ -202,28 +202,28 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyP2FwaS12ZXJzaW9uPTIwMTktMDQtMDE=",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"friendlyName\": \"test-powershell-030620190342\",\r\n    \"routingRules\": [\r\n      {\r\n        \"properties\": {\r\n          \"frontendEndpoints\": [\r\n            {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/FrontendEndpoints/frontendEndpoint1\"\r\n            }\r\n          ],\r\n          \"acceptedProtocols\": [\r\n            \"Http\",\r\n            \"Https\"\r\n          ],\r\n          \"patternsToMatch\": [\r\n            \"/*\"\r\n          ],\r\n          \"enabledState\": \"Enabled\",\r\n          \"routeConfiguration\": {\r\n            \"@odata.type\": \"#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration\",\r\n            \"forwardingProtocol\": \"MatchRequest\",\r\n            \"backendPool\": {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/BackendPools/backendPool1\"\r\n            }\r\n          }\r\n        },\r\n        \"name\": \"routingrule1\"\r\n      }\r\n    ],\r\n    \"loadBalancingSettings\": [\r\n      {\r\n        \"properties\": {\r\n          \"sampleSize\": 4,\r\n          \"successfulSamplesRequired\": 2,\r\n          \"additionalLatencyMilliseconds\": 0\r\n        },\r\n        \"name\": \"loadbalancingsetting1\"\r\n      }\r\n    ],\r\n    \"healthProbeSettings\": [\r\n      {\r\n        \"properties\": {\r\n          \"path\": \"/\",\r\n          \"protocol\": \"Http\",\r\n          \"intervalInSeconds\": 30\r\n        },\r\n        \"name\": \"healthProbeSetting1\"\r\n      }\r\n    ],\r\n    \"backendPools\": [\r\n      {\r\n        \"properties\": {\r\n          \"backends\": [\r\n            {\r\n              \"address\": \"contoso1.azurewebsites.net\",\r\n              \"httpPort\": 80,\r\n              \"httpsPort\": 443,\r\n              \"enabledState\": \"Enabled\",\r\n              \"priority\": 1,\r\n              \"weight\": 50,\r\n              \"backendHostHeader\": \"contoso1.azurewebsites.net\"\r\n            }\r\n          ],\r\n          \"loadBalancingSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/LoadBalancingSettings/loadBalancingSetting1\"\r\n          },\r\n          \"healthProbeSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\"\r\n          }\r\n        },\r\n        \"name\": \"backendpool1\"\r\n      }\r\n    ],\r\n    \"frontendEndpoints\": [\r\n      {\r\n        \"properties\": {\r\n          \"hostName\": \"test-powershell-030620190342.azurefd.net\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0\r\n        },\r\n        \"name\": \"frontendendpoint1\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"hostName\": \"test2d6635a8a3.powershell-custom.azfdtest.xyz\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0\r\n        },\r\n        \"name\": \"frontendendpoint2\"\r\n      }\r\n    ],\r\n    \"backendPoolsSettings\": {\r\n      \"enforceCertificateNameCheck\": \"Enabled\"\r\n    },\r\n    \"enabledState\": \"Enabled\"\r\n  },\r\n  \"location\": \"global\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\",\r\n    \"tag2\": \"value2\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"friendlyName\": \"test-powershell-030620190342\",\r\n    \"routingRules\": [\r\n      {\r\n        \"properties\": {\r\n          \"frontendEndpoints\": [\r\n            {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/FrontendEndpoints/frontendEndpoint1\"\r\n            }\r\n          ],\r\n          \"acceptedProtocols\": [\r\n            \"Http\",\r\n            \"Https\"\r\n          ],\r\n          \"patternsToMatch\": [\r\n            \"/*\"\r\n          ],\r\n          \"enabledState\": \"Enabled\",\r\n          \"routeConfiguration\": {\r\n            \"@odata.type\": \"#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration\",\r\n            \"forwardingProtocol\": \"MatchRequest\",\r\n            \"backendPool\": {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/BackendPools/backendPool1\"\r\n            }\r\n          }\r\n        },\r\n        \"name\": \"routingrule1\"\r\n      }\r\n    ],\r\n    \"loadBalancingSettings\": [\r\n      {\r\n        \"properties\": {\r\n          \"sampleSize\": 4,\r\n          \"successfulSamplesRequired\": 2,\r\n          \"additionalLatencyMilliseconds\": 0\r\n        },\r\n        \"name\": \"loadbalancingsetting1\"\r\n      }\r\n    ],\r\n    \"healthProbeSettings\": [\r\n      {\r\n        \"properties\": {\r\n          \"path\": \"/\",\r\n          \"protocol\": \"Http\",\r\n          \"intervalInSeconds\": 30,\r\n          \"healthProbeMethod\": \"HEAD\",\r\n          \"enabledState\": \"Enabled\"\r\n        },\r\n        \"name\": \"healthProbeSetting1\"\r\n      }\r\n    ],\r\n    \"backendPools\": [\r\n      {\r\n        \"properties\": {\r\n          \"backends\": [\r\n            {\r\n              \"address\": \"contoso1.azurewebsites.net\",\r\n              \"httpPort\": 80,\r\n              \"httpsPort\": 443,\r\n              \"enabledState\": \"Enabled\",\r\n              \"priority\": 1,\r\n              \"weight\": 50,\r\n              \"backendHostHeader\": \"contoso1.azurewebsites.net\"\r\n            }\r\n          ],\r\n          \"loadBalancingSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/LoadBalancingSettings/loadBalancingSetting1\"\r\n          },\r\n          \"healthProbeSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\"\r\n          }\r\n        },\r\n        \"name\": \"backendpool1\"\r\n      }\r\n    ],\r\n    \"frontendEndpoints\": [\r\n      {\r\n        \"properties\": {\r\n          \"hostName\": \"test-powershell-030620190342.azurefd.net\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0\r\n        },\r\n        \"name\": \"frontendendpoint1\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0\r\n        },\r\n        \"name\": \"frontendendpoint2\"\r\n      }\r\n    ],\r\n    \"enabledState\": \"Enabled\"\r\n  },\r\n  \"location\": \"global\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\",\r\n    \"tag2\": \"value2\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8b3f645c-2f3a-4ae2-9130-7266efe207b5"
+          "dfcc68e8-509f-423f-b1df-1bb6f3634ced"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "3321"
+          "3312"
         ]
       },
       "ResponseHeaders": {
@@ -237,13 +237,13 @@
           "10"
         ],
         "x-ms-request-id": [
-          "ebcf392a-606f-49a6-92c9-1a59dbdc69ca"
+          "d3bb9a12-e61e-4c75-a7b8-ae1fef10d2be"
         ],
         "x-ms-client-request-id": [
-          "8b3f645c-2f3a-4ae2-9130-7266efe207b5"
+          "dfcc68e8-509f-423f-b1df-1bb6f3634ced"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdooroperationresults/3e1856c0-1e1c-4610-8bd8-0129149cf9b6?api-version=2019-04-01"
+          "https://management.azure.com/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdooroperationresults/ce6a6223-0cbe-4fd1-8c45-545f36e80263?api-version=2019-05-01"
         ],
         "OData-Version": [
           "4.0"
@@ -264,19 +264,19 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "a4a5ba55-c363-4137-a90e-3eb500e91b8b"
+          "de144ea0-3c9f-4a4f-8256-a66950b8b441"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T223050Z:a4a5ba55-c363-4137-a90e-3eb500e91b8b"
+          "WESTUS:20191021T231741Z:de144ea0-3c9f-4a4f-8256-a66950b8b441"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:30:50 GMT"
+          "Mon, 21 Oct 2019 23:17:41 GMT"
         ],
         "Content-Length": [
-          "5109"
+          "5189"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal"
@@ -285,20 +285,20 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"test-powershell-030620190342\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdoors/test-powershell-030620190342\",\r\n  \"type\": \"Microsoft.Network/frontdoors\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\",\r\n    \"tag2\": \"value2\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"resourceState\": \"Creating\",\r\n    \"backendPools\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/BackendPools/backendpool1\",\r\n        \"name\": \"backendpool1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/BackendPools\",\r\n        \"properties\": {\r\n          \"backends\": [\r\n            {\r\n              \"address\": \"contoso1.azurewebsites.net\",\r\n              \"httpPort\": 80,\r\n              \"httpsPort\": 443,\r\n              \"priority\": 1,\r\n              \"weight\": 50,\r\n              \"backendHostHeader\": \"contoso1.azurewebsites.net\",\r\n              \"enabledState\": \"Enabled\"\r\n            }\r\n          ],\r\n          \"healthProbeSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\"\r\n          },\r\n          \"loadBalancingSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/LoadBalancingSettings/loadBalancingSetting1\"\r\n          },\r\n          \"resourceState\": \"Creating\"\r\n        }\r\n      }\r\n    ],\r\n    \"healthProbeSettings\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\",\r\n        \"name\": \"healthProbeSetting1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/HealthProbeSettings\",\r\n        \"properties\": {\r\n          \"intervalInSeconds\": 30,\r\n          \"path\": \"/\",\r\n          \"protocol\": \"Http\",\r\n          \"resourceState\": \"Creating\"\r\n        }\r\n      }\r\n    ],\r\n    \"frontendEndpoints\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/FrontendEndpoints/frontendendpoint1\",\r\n        \"name\": \"frontendendpoint1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/FrontendEndpoints\",\r\n        \"properties\": {\r\n          \"hostName\": \"test-powershell-030620190342.azurefd.net\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0,\r\n          \"webApplicationFirewallPolicyLink\": null,\r\n          \"customHttpsProvisioningState\": null,\r\n          \"customHttpsProvisioningSubstate\": null,\r\n          \"customHttpsConfiguration\": null,\r\n          \"resourceState\": \"Creating\"\r\n        }\r\n      },\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/FrontendEndpoints/frontendendpoint2\",\r\n        \"name\": \"frontendendpoint2\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/FrontendEndpoints\",\r\n        \"properties\": {\r\n          \"hostName\": \"test2d6635a8a3.powershell-custom.azfdtest.xyz\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0,\r\n          \"webApplicationFirewallPolicyLink\": null,\r\n          \"customHttpsProvisioningState\": null,\r\n          \"customHttpsProvisioningSubstate\": null,\r\n          \"customHttpsConfiguration\": null,\r\n          \"resourceState\": \"Creating\"\r\n        }\r\n      }\r\n    ],\r\n    \"loadBalancingSettings\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/LoadBalancingSettings/loadbalancingsetting1\",\r\n        \"name\": \"loadbalancingsetting1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/LoadBalancingSettings\",\r\n        \"properties\": {\r\n          \"additionalLatencyMilliseconds\": 0,\r\n          \"sampleSize\": 4,\r\n          \"successfulSamplesRequired\": 2,\r\n          \"resourceState\": \"Creating\"\r\n        }\r\n      }\r\n    ],\r\n    \"routingRules\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/RoutingRules/routingrule1\",\r\n        \"name\": \"routingrule1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/RoutingRules\",\r\n        \"properties\": {\r\n          \"frontendEndpoints\": [\r\n            {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/FrontendEndpoints/frontendEndpoint1\"\r\n            }\r\n          ],\r\n          \"acceptedProtocols\": [\r\n            \"Http\",\r\n            \"Https\"\r\n          ],\r\n          \"patternsToMatch\": [\r\n            \"/*\"\r\n          ],\r\n          \"enabledState\": \"Enabled\",\r\n          \"resourceState\": \"Creating\",\r\n          \"routeConfiguration\": {\r\n            \"@odata.type\": \"#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration\",\r\n            \"customForwardingPath\": null,\r\n            \"forwardingProtocol\": \"MatchRequest\",\r\n            \"cacheConfiguration\": null,\r\n            \"backendPool\": {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/BackendPools/backendPool1\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"backendPoolsSettings\": {\r\n      \"enforceCertificateNameCheck\": \"Enabled\"\r\n    },\r\n    \"enabledState\": \"Enabled\",\r\n    \"cName\": \"test-powershell-030620190342.azurefd.net\",\r\n    \"friendlyName\": \"test-powershell-030620190342\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"test-powershell-030620190342\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342\",\r\n  \"type\": \"Microsoft.Network/frontdoors\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\",\r\n    \"tag2\": \"value2\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"resourceState\": \"Creating\",\r\n    \"backendPools\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/BackendPools/backendpool1\",\r\n        \"name\": \"backendpool1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/BackendPools\",\r\n        \"properties\": {\r\n          \"backends\": [\r\n            {\r\n              \"address\": \"contoso1.azurewebsites.net\",\r\n              \"httpPort\": 80,\r\n              \"httpsPort\": 443,\r\n              \"priority\": 1,\r\n              \"weight\": 50,\r\n              \"backendHostHeader\": \"contoso1.azurewebsites.net\",\r\n              \"enabledState\": \"Enabled\"\r\n            }\r\n          ],\r\n          \"healthProbeSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\"\r\n          },\r\n          \"loadBalancingSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/LoadBalancingSettings/loadBalancingSetting1\"\r\n          },\r\n          \"resourceState\": \"Creating\"\r\n        }\r\n      }\r\n    ],\r\n    \"healthProbeSettings\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\",\r\n        \"name\": \"healthProbeSetting1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/HealthProbeSettings\",\r\n        \"properties\": {\r\n          \"intervalInSeconds\": 30,\r\n          \"path\": \"/\",\r\n          \"protocol\": \"Http\",\r\n          \"resourceState\": \"Creating\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"healthProbeMethod\": \"Head\"\r\n        }\r\n      }\r\n    ],\r\n    \"frontendEndpoints\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/FrontendEndpoints/frontendendpoint1\",\r\n        \"name\": \"frontendendpoint1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/FrontendEndpoints\",\r\n        \"properties\": {\r\n          \"hostName\": \"test-powershell-030620190342.azurefd.net\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0,\r\n          \"webApplicationFirewallPolicyLink\": null,\r\n          \"customHttpsProvisioningState\": null,\r\n          \"customHttpsProvisioningSubstate\": null,\r\n          \"customHttpsConfiguration\": null,\r\n          \"resourceState\": \"Creating\"\r\n        }\r\n      },\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/FrontendEndpoints/frontendendpoint2\",\r\n        \"name\": \"frontendendpoint2\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/FrontendEndpoints\",\r\n        \"properties\": {\r\n          \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0,\r\n          \"webApplicationFirewallPolicyLink\": null,\r\n          \"customHttpsProvisioningState\": null,\r\n          \"customHttpsProvisioningSubstate\": null,\r\n          \"customHttpsConfiguration\": null,\r\n          \"resourceState\": \"Creating\"\r\n        }\r\n      }\r\n    ],\r\n    \"loadBalancingSettings\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/LoadBalancingSettings/loadbalancingsetting1\",\r\n        \"name\": \"loadbalancingsetting1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/LoadBalancingSettings\",\r\n        \"properties\": {\r\n          \"additionalLatencyMilliseconds\": 0,\r\n          \"sampleSize\": 4,\r\n          \"successfulSamplesRequired\": 2,\r\n          \"resourceState\": \"Creating\"\r\n        }\r\n      }\r\n    ],\r\n    \"routingRules\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/RoutingRules/routingrule1\",\r\n        \"name\": \"routingrule1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/RoutingRules\",\r\n        \"properties\": {\r\n          \"frontendEndpoints\": [\r\n            {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/FrontendEndpoints/frontendEndpoint1\"\r\n            }\r\n          ],\r\n          \"acceptedProtocols\": [\r\n            \"Http\",\r\n            \"Https\"\r\n          ],\r\n          \"patternsToMatch\": [\r\n            \"/*\"\r\n          ],\r\n          \"enabledState\": \"Enabled\",\r\n          \"resourceState\": \"Creating\",\r\n          \"routeConfiguration\": {\r\n            \"@odata.type\": \"#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration\",\r\n            \"customForwardingPath\": null,\r\n            \"forwardingProtocol\": \"MatchRequest\",\r\n            \"cacheConfiguration\": null,\r\n            \"backendPool\": {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/BackendPools/backendPool1\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"backendPoolsSettings\": {\r\n      \"enforceCertificateNameCheck\": \"Enabled\",\r\n      \"sendRecvTimeoutSeconds\": 30\r\n    },\r\n    \"enabledState\": \"Enabled\",\r\n    \"cName\": \"test-powershell-030620190342.azurefd.net\",\r\n    \"friendlyName\": \"test-powershell-030620190342\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdooroperationresults/3e1856c0-1e1c-4610-8bd8-0129149cf9b6?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlZ3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnRkb29yb3BlcmF0aW9ucmVzdWx0cy8zZTE4NTZjMC0xZTFjLTQ2MTAtOGJkOC0wMTI5MTQ5Y2Y5YjY/YXBpLXZlcnNpb249MjAxOS0wNC0wMQ==",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdooroperationresults/ce6a6223-0cbe-4fd1-8c45-545f36e80263?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlZ3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnRkb29yb3BlcmF0aW9ucmVzdWx0cy9jZTZhNjIyMy0wY2JlLTRmZDEtOGM0NS01NDVmMzZlODAyNjM/YXBpLXZlcnNpb249MjAxOS0wNS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -309,10 +309,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "cce7a849-376a-421f-a55a-9ba1d235d5e9"
+          "70fc85d6-7cb1-44ad-9769-f03bac86d318"
         ],
         "x-ms-client-request-id": [
-          "9dbf0d45-d720-4639-8c9a-55e8205ef054"
+          "980c6715-1561-43cd-bfe6-99aa957ffc71"
         ],
         "OData-Version": [
           "4.0"
@@ -333,19 +333,19 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "7f391a50-9d02-426b-a10e-ea90e16656e9"
+          "d6a0a3ee-ebe3-4568-be65-b2fb54bc6e14"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T223101Z:7f391a50-9d02-426b-a10e-ea90e16656e9"
+          "WESTUS:20191021T231752Z:d6a0a3ee-ebe3-4568-be65-b2fb54bc6e14"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:31:01 GMT"
+          "Mon, 21 Oct 2019 23:17:51 GMT"
         ],
         "Content-Length": [
-          "50"
+          "78"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -354,20 +354,20 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"InProgress\",\r\n  \"error\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"status\": \"InProgress\",\r\n  \"error\": {\r\n    \"code\": \"None\",\r\n    \"message\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdooroperationresults/3e1856c0-1e1c-4610-8bd8-0129149cf9b6?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlZ3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnRkb29yb3BlcmF0aW9ucmVzdWx0cy8zZTE4NTZjMC0xZTFjLTQ2MTAtOGJkOC0wMTI5MTQ5Y2Y5YjY/YXBpLXZlcnNpb249MjAxOS0wNC0wMQ==",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdooroperationresults/ce6a6223-0cbe-4fd1-8c45-545f36e80263?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlZ3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnRkb29yb3BlcmF0aW9ucmVzdWx0cy9jZTZhNjIyMy0wY2JlLTRmZDEtOGM0NS01NDVmMzZlODAyNjM/YXBpLXZlcnNpb249MjAxOS0wNS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -378,10 +378,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b55da7db-1724-4a5f-93ac-43239c415476"
+          "f4984279-ba96-43bc-b2ba-deb66c9274e2"
         ],
         "x-ms-client-request-id": [
-          "4f18c31d-cd14-4b94-9160-0dba044ba4f7"
+          "fd724ca8-23d6-46cd-9c0d-14875acb2ecd"
         ],
         "OData-Version": [
           "4.0"
@@ -402,19 +402,19 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "29349100-822d-4831-96e1-1ee91ef7e0dc"
+          "b35bfa24-f116-480c-9b1d-20c4d85aebe2"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T223111Z:29349100-822d-4831-96e1-1ee91ef7e0dc"
+          "WESTUS:20191021T231802Z:b35bfa24-f116-480c-9b1d-20c4d85aebe2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:31:10 GMT"
+          "Mon, 21 Oct 2019 23:18:02 GMT"
         ],
         "Content-Length": [
-          "49"
+          "77"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -423,20 +423,20 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"error\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"error\": {\r\n    \"code\": \"None\",\r\n    \"message\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyP2FwaS12ZXJzaW9uPTIwMTktMDQtMDE=",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -447,10 +447,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "031643f4-02d3-4d3a-8d76-564a35cf3d20"
+          "7b0cdd4a-c3cd-4a24-a219-f335c9ad7a7e"
         ],
         "x-ms-client-request-id": [
-          "e784f60e-c4d3-4953-8938-4cbcda4287f0"
+          "81fdad35-3ffd-4f5f-98e8-dace2c999b05"
         ],
         "OData-Version": [
           "4.0"
@@ -471,19 +471,19 @@
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "2a2cff49-492c-4d76-ad12-abbd59ca5a48"
+          "7e5a3135-656b-4f0d-9ebf-6c087f26a95b"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T223112Z:2a2cff49-492c-4d76-ad12-abbd59ca5a48"
+          "WESTUS:20191021T231802Z:7e5a3135-656b-4f0d-9ebf-6c087f26a95b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:31:11 GMT"
+          "Mon, 21 Oct 2019 23:18:02 GMT"
         ],
         "Content-Length": [
-          "5103"
+          "5183"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -492,26 +492,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"test-powershell-030620190342\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdoors/test-powershell-030620190342\",\r\n  \"type\": \"Microsoft.Network/frontdoors\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\",\r\n    \"tag2\": \"value2\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"backendPools\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/BackendPools/backendpool1\",\r\n        \"name\": \"backendpool1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/BackendPools\",\r\n        \"properties\": {\r\n          \"backends\": [\r\n            {\r\n              \"address\": \"contoso1.azurewebsites.net\",\r\n              \"httpPort\": 80,\r\n              \"httpsPort\": 443,\r\n              \"priority\": 1,\r\n              \"weight\": 50,\r\n              \"backendHostHeader\": \"contoso1.azurewebsites.net\",\r\n              \"enabledState\": \"Enabled\"\r\n            }\r\n          ],\r\n          \"healthProbeSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\"\r\n          },\r\n          \"loadBalancingSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/LoadBalancingSettings/loadBalancingSetting1\"\r\n          },\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"healthProbeSettings\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\",\r\n        \"name\": \"healthProbeSetting1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/HealthProbeSettings\",\r\n        \"properties\": {\r\n          \"intervalInSeconds\": 30,\r\n          \"path\": \"/\",\r\n          \"protocol\": \"Http\",\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"frontendEndpoints\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/FrontendEndpoints/frontendendpoint1\",\r\n        \"name\": \"frontendendpoint1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/FrontendEndpoints\",\r\n        \"properties\": {\r\n          \"hostName\": \"test-powershell-030620190342.azurefd.net\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0,\r\n          \"webApplicationFirewallPolicyLink\": null,\r\n          \"customHttpsProvisioningState\": null,\r\n          \"customHttpsProvisioningSubstate\": null,\r\n          \"customHttpsConfiguration\": null,\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      },\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/FrontendEndpoints/frontendendpoint2\",\r\n        \"name\": \"frontendendpoint2\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/FrontendEndpoints\",\r\n        \"properties\": {\r\n          \"hostName\": \"test2d6635a8a3.powershell-custom.azfdtest.xyz\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0,\r\n          \"webApplicationFirewallPolicyLink\": null,\r\n          \"customHttpsProvisioningState\": null,\r\n          \"customHttpsProvisioningSubstate\": null,\r\n          \"customHttpsConfiguration\": null,\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"loadBalancingSettings\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/LoadBalancingSettings/loadbalancingsetting1\",\r\n        \"name\": \"loadbalancingsetting1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/LoadBalancingSettings\",\r\n        \"properties\": {\r\n          \"additionalLatencyMilliseconds\": 0,\r\n          \"sampleSize\": 4,\r\n          \"successfulSamplesRequired\": 2,\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"routingRules\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/RoutingRules/routingrule1\",\r\n        \"name\": \"routingrule1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/RoutingRules\",\r\n        \"properties\": {\r\n          \"frontendEndpoints\": [\r\n            {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/FrontendEndpoints/frontendEndpoint1\"\r\n            }\r\n          ],\r\n          \"acceptedProtocols\": [\r\n            \"Http\",\r\n            \"Https\"\r\n          ],\r\n          \"patternsToMatch\": [\r\n            \"/*\"\r\n          ],\r\n          \"enabledState\": \"Enabled\",\r\n          \"resourceState\": \"Enabled\",\r\n          \"routeConfiguration\": {\r\n            \"@odata.type\": \"#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration\",\r\n            \"customForwardingPath\": null,\r\n            \"forwardingProtocol\": \"MatchRequest\",\r\n            \"cacheConfiguration\": null,\r\n            \"backendPool\": {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/BackendPools/backendPool1\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"backendPoolsSettings\": {\r\n      \"enforceCertificateNameCheck\": \"Enabled\"\r\n    },\r\n    \"enabledState\": \"Enabled\",\r\n    \"cName\": \"test-powershell-030620190342.azurefd.net\",\r\n    \"friendlyName\": \"test-powershell-030620190342\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"test-powershell-030620190342\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342\",\r\n  \"type\": \"Microsoft.Network/frontdoors\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\",\r\n    \"tag2\": \"value2\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"backendPools\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/BackendPools/backendpool1\",\r\n        \"name\": \"backendpool1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/BackendPools\",\r\n        \"properties\": {\r\n          \"backends\": [\r\n            {\r\n              \"address\": \"contoso1.azurewebsites.net\",\r\n              \"httpPort\": 80,\r\n              \"httpsPort\": 443,\r\n              \"priority\": 1,\r\n              \"weight\": 50,\r\n              \"backendHostHeader\": \"contoso1.azurewebsites.net\",\r\n              \"enabledState\": \"Enabled\"\r\n            }\r\n          ],\r\n          \"healthProbeSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\"\r\n          },\r\n          \"loadBalancingSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/LoadBalancingSettings/loadBalancingSetting1\"\r\n          },\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"healthProbeSettings\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\",\r\n        \"name\": \"healthProbeSetting1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/HealthProbeSettings\",\r\n        \"properties\": {\r\n          \"intervalInSeconds\": 30,\r\n          \"path\": \"/\",\r\n          \"protocol\": \"Http\",\r\n          \"resourceState\": \"Enabled\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"healthProbeMethod\": \"Head\"\r\n        }\r\n      }\r\n    ],\r\n    \"frontendEndpoints\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/FrontendEndpoints/frontendendpoint1\",\r\n        \"name\": \"frontendendpoint1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/FrontendEndpoints\",\r\n        \"properties\": {\r\n          \"hostName\": \"test-powershell-030620190342.azurefd.net\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0,\r\n          \"webApplicationFirewallPolicyLink\": null,\r\n          \"customHttpsProvisioningState\": null,\r\n          \"customHttpsProvisioningSubstate\": null,\r\n          \"customHttpsConfiguration\": null,\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      },\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/FrontendEndpoints/frontendendpoint2\",\r\n        \"name\": \"frontendendpoint2\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/FrontendEndpoints\",\r\n        \"properties\": {\r\n          \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0,\r\n          \"webApplicationFirewallPolicyLink\": null,\r\n          \"customHttpsProvisioningState\": null,\r\n          \"customHttpsProvisioningSubstate\": null,\r\n          \"customHttpsConfiguration\": null,\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"loadBalancingSettings\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/LoadBalancingSettings/loadbalancingsetting1\",\r\n        \"name\": \"loadbalancingsetting1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/LoadBalancingSettings\",\r\n        \"properties\": {\r\n          \"additionalLatencyMilliseconds\": 0,\r\n          \"sampleSize\": 4,\r\n          \"successfulSamplesRequired\": 2,\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"routingRules\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/RoutingRules/routingrule1\",\r\n        \"name\": \"routingrule1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/RoutingRules\",\r\n        \"properties\": {\r\n          \"frontendEndpoints\": [\r\n            {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/FrontendEndpoints/frontendEndpoint1\"\r\n            }\r\n          ],\r\n          \"acceptedProtocols\": [\r\n            \"Http\",\r\n            \"Https\"\r\n          ],\r\n          \"patternsToMatch\": [\r\n            \"/*\"\r\n          ],\r\n          \"enabledState\": \"Enabled\",\r\n          \"resourceState\": \"Enabled\",\r\n          \"routeConfiguration\": {\r\n            \"@odata.type\": \"#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration\",\r\n            \"customForwardingPath\": null,\r\n            \"forwardingProtocol\": \"MatchRequest\",\r\n            \"cacheConfiguration\": null,\r\n            \"backendPool\": {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/BackendPools/backendPool1\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"backendPoolsSettings\": {\r\n      \"enforceCertificateNameCheck\": \"Enabled\",\r\n      \"sendRecvTimeoutSeconds\": 30\r\n    },\r\n    \"enabledState\": \"Enabled\",\r\n    \"cName\": \"test-powershell-030620190342.azurefd.net\",\r\n    \"friendlyName\": \"test-powershell-030620190342\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyP2FwaS12ZXJzaW9uPTIwMTktMDQtMDE=",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2b444bf2-16ad-46bf-becc-bb5c7f9896a6"
+          "129fecdc-3379-4768-a46a-1de7c859d94f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -522,10 +522,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c9cdfa00-a482-47e1-932f-9506da309cfb"
+          "a5ec7289-0acc-4975-ac32-df9c8bbaa86f"
         ],
         "x-ms-client-request-id": [
-          "2b444bf2-16ad-46bf-becc-bb5c7f9896a6"
+          "129fecdc-3379-4768-a46a-1de7c859d94f"
         ],
         "OData-Version": [
           "4.0"
@@ -546,19 +546,19 @@
           "11995"
         ],
         "x-ms-correlation-request-id": [
-          "459a6936-8aed-44e8-99b5-188bbb93310d"
+          "ea3658a3-085e-43d0-be12-63f7960eccd5"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T223112Z:459a6936-8aed-44e8-99b5-188bbb93310d"
+          "WESTUS:20191021T231803Z:ea3658a3-085e-43d0-be12-63f7960eccd5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:31:11 GMT"
+          "Mon, 21 Oct 2019 23:18:02 GMT"
         ],
         "Content-Length": [
-          "5103"
+          "5183"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -567,32 +567,32 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"test-powershell-030620190342\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdoors/test-powershell-030620190342\",\r\n  \"type\": \"Microsoft.Network/frontdoors\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\",\r\n    \"tag2\": \"value2\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"backendPools\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/BackendPools/backendpool1\",\r\n        \"name\": \"backendpool1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/BackendPools\",\r\n        \"properties\": {\r\n          \"backends\": [\r\n            {\r\n              \"address\": \"contoso1.azurewebsites.net\",\r\n              \"httpPort\": 80,\r\n              \"httpsPort\": 443,\r\n              \"priority\": 1,\r\n              \"weight\": 50,\r\n              \"backendHostHeader\": \"contoso1.azurewebsites.net\",\r\n              \"enabledState\": \"Enabled\"\r\n            }\r\n          ],\r\n          \"healthProbeSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\"\r\n          },\r\n          \"loadBalancingSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/LoadBalancingSettings/loadBalancingSetting1\"\r\n          },\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"healthProbeSettings\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\",\r\n        \"name\": \"healthProbeSetting1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/HealthProbeSettings\",\r\n        \"properties\": {\r\n          \"intervalInSeconds\": 30,\r\n          \"path\": \"/\",\r\n          \"protocol\": \"Http\",\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"frontendEndpoints\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/FrontendEndpoints/frontendendpoint1\",\r\n        \"name\": \"frontendendpoint1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/FrontendEndpoints\",\r\n        \"properties\": {\r\n          \"hostName\": \"test-powershell-030620190342.azurefd.net\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0,\r\n          \"webApplicationFirewallPolicyLink\": null,\r\n          \"customHttpsProvisioningState\": null,\r\n          \"customHttpsProvisioningSubstate\": null,\r\n          \"customHttpsConfiguration\": null,\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      },\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/FrontendEndpoints/frontendendpoint2\",\r\n        \"name\": \"frontendendpoint2\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/FrontendEndpoints\",\r\n        \"properties\": {\r\n          \"hostName\": \"test2d6635a8a3.powershell-custom.azfdtest.xyz\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0,\r\n          \"webApplicationFirewallPolicyLink\": null,\r\n          \"customHttpsProvisioningState\": null,\r\n          \"customHttpsProvisioningSubstate\": null,\r\n          \"customHttpsConfiguration\": null,\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"loadBalancingSettings\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/LoadBalancingSettings/loadbalancingsetting1\",\r\n        \"name\": \"loadbalancingsetting1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/LoadBalancingSettings\",\r\n        \"properties\": {\r\n          \"additionalLatencyMilliseconds\": 0,\r\n          \"sampleSize\": 4,\r\n          \"successfulSamplesRequired\": 2,\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"routingRules\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/RoutingRules/routingrule1\",\r\n        \"name\": \"routingrule1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/RoutingRules\",\r\n        \"properties\": {\r\n          \"frontendEndpoints\": [\r\n            {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/FrontendEndpoints/frontendEndpoint1\"\r\n            }\r\n          ],\r\n          \"acceptedProtocols\": [\r\n            \"Http\",\r\n            \"Https\"\r\n          ],\r\n          \"patternsToMatch\": [\r\n            \"/*\"\r\n          ],\r\n          \"enabledState\": \"Enabled\",\r\n          \"resourceState\": \"Enabled\",\r\n          \"routeConfiguration\": {\r\n            \"@odata.type\": \"#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration\",\r\n            \"customForwardingPath\": null,\r\n            \"forwardingProtocol\": \"MatchRequest\",\r\n            \"cacheConfiguration\": null,\r\n            \"backendPool\": {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/BackendPools/backendPool1\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"backendPoolsSettings\": {\r\n      \"enforceCertificateNameCheck\": \"Enabled\"\r\n    },\r\n    \"enabledState\": \"Enabled\",\r\n    \"cName\": \"test-powershell-030620190342.azurefd.net\",\r\n    \"friendlyName\": \"test-powershell-030620190342\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"test-powershell-030620190342\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342\",\r\n  \"type\": \"Microsoft.Network/frontdoors\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\",\r\n    \"tag2\": \"value2\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"backendPools\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/BackendPools/backendpool1\",\r\n        \"name\": \"backendpool1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/BackendPools\",\r\n        \"properties\": {\r\n          \"backends\": [\r\n            {\r\n              \"address\": \"contoso1.azurewebsites.net\",\r\n              \"httpPort\": 80,\r\n              \"httpsPort\": 443,\r\n              \"priority\": 1,\r\n              \"weight\": 50,\r\n              \"backendHostHeader\": \"contoso1.azurewebsites.net\",\r\n              \"enabledState\": \"Enabled\"\r\n            }\r\n          ],\r\n          \"healthProbeSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\"\r\n          },\r\n          \"loadBalancingSettings\": {\r\n            \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/LoadBalancingSettings/loadBalancingSetting1\"\r\n          },\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"healthProbeSettings\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/HealthProbeSettings/healthProbeSetting1\",\r\n        \"name\": \"healthProbeSetting1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/HealthProbeSettings\",\r\n        \"properties\": {\r\n          \"intervalInSeconds\": 30,\r\n          \"path\": \"/\",\r\n          \"protocol\": \"Http\",\r\n          \"resourceState\": \"Enabled\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"healthProbeMethod\": \"Head\"\r\n        }\r\n      }\r\n    ],\r\n    \"frontendEndpoints\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/FrontendEndpoints/frontendendpoint1\",\r\n        \"name\": \"frontendendpoint1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/FrontendEndpoints\",\r\n        \"properties\": {\r\n          \"hostName\": \"test-powershell-030620190342.azurefd.net\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0,\r\n          \"webApplicationFirewallPolicyLink\": null,\r\n          \"customHttpsProvisioningState\": null,\r\n          \"customHttpsProvisioningSubstate\": null,\r\n          \"customHttpsConfiguration\": null,\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      },\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/FrontendEndpoints/frontendendpoint2\",\r\n        \"name\": \"frontendendpoint2\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/FrontendEndpoints\",\r\n        \"properties\": {\r\n          \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n          \"sessionAffinityEnabledState\": \"Disabled\",\r\n          \"sessionAffinityTtlSeconds\": 0,\r\n          \"webApplicationFirewallPolicyLink\": null,\r\n          \"customHttpsProvisioningState\": null,\r\n          \"customHttpsProvisioningSubstate\": null,\r\n          \"customHttpsConfiguration\": null,\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"loadBalancingSettings\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/LoadBalancingSettings/loadbalancingsetting1\",\r\n        \"name\": \"loadbalancingsetting1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/LoadBalancingSettings\",\r\n        \"properties\": {\r\n          \"additionalLatencyMilliseconds\": 0,\r\n          \"sampleSize\": 4,\r\n          \"successfulSamplesRequired\": 2,\r\n          \"resourceState\": \"Enabled\"\r\n        }\r\n      }\r\n    ],\r\n    \"routingRules\": [\r\n      {\r\n        \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/Frontdoors/test-powershell-030620190342/RoutingRules/routingrule1\",\r\n        \"name\": \"routingrule1\",\r\n        \"type\": \"Microsoft.Network/Frontdoors/RoutingRules\",\r\n        \"properties\": {\r\n          \"frontendEndpoints\": [\r\n            {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/FrontendEndpoints/frontendEndpoint1\"\r\n            }\r\n          ],\r\n          \"acceptedProtocols\": [\r\n            \"Http\",\r\n            \"Https\"\r\n          ],\r\n          \"patternsToMatch\": [\r\n            \"/*\"\r\n          ],\r\n          \"enabledState\": \"Enabled\",\r\n          \"resourceState\": \"Enabled\",\r\n          \"routeConfiguration\": {\r\n            \"@odata.type\": \"#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration\",\r\n            \"customForwardingPath\": null,\r\n            \"forwardingProtocol\": \"MatchRequest\",\r\n            \"cacheConfiguration\": null,\r\n            \"backendPool\": {\r\n              \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/BackendPools/backendPool1\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"backendPoolsSettings\": {\r\n      \"enforceCertificateNameCheck\": \"Enabled\",\r\n      \"sendRecvTimeoutSeconds\": 30\r\n    },\r\n    \"enabledState\": \"Enabled\",\r\n    \"cName\": \"test-powershell-030620190342.azurefd.net\",\r\n    \"friendlyName\": \"test-powershell-030620190342\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2/enableHttps?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyL2VuYWJsZUh0dHBzP2FwaS12ZXJzaW9uPTIwMTktMDQtMDE=",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2/enableHttps?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyL2VuYWJsZUh0dHBzP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"certificateSource\": \"FrontDoor\",\r\n  \"protocolType\": \"ServerNameIndication\",\r\n  \"frontDoorCertificateSourceParameters\": {\r\n    \"certificateType\": \"Dedicated\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"certificateSource\": \"FrontDoor\",\r\n  \"minimumTlsVersion\": \"1.2\",\r\n  \"frontDoorCertificateSourceParameters\": {\r\n    \"certificateType\": \"Dedicated\"\r\n  },\r\n  \"protocolType\": \"ServerNameIndication\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "489bf29d-8fcd-4c39-965b-6b31ee805f10"
+          "81d302ad-ecae-4527-9b1a-e99f5949050a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "170"
+          "201"
         ]
       },
       "ResponseHeaders": {
@@ -603,19 +603,19 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdooroperationresults/6d3ac7a3-ff81-4c00-bb0a-7d37e2de9e69/frontdoorresults/test-powershell-030620190342?api-version=2019-04-01"
+          "https://management.azure.com/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdooroperationresults/2793d8e6-1d41-4110-9926-0e7c6b3e42ce/frontdoorresults/test-powershell-030620190342?api-version=2019-05-01"
         ],
         "Retry-After": [
           "120"
         ],
         "x-ms-request-id": [
-          "4c75f963-29f2-43bf-a468-653284384b30"
+          "606945aa-913e-497f-81ad-a9ac6f408acc"
         ],
         "x-ms-client-request-id": [
-          "489bf29d-8fcd-4c39-965b-6b31ee805f10"
+          "81d302ad-ecae-4527-9b1a-e99f5949050a"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdooroperationresults/6d3ac7a3-ff81-4c00-bb0a-7d37e2de9e69?api-version=2019-04-01"
+          "https://management.azure.com/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdooroperationresults/2793d8e6-1d41-4110-9926-0e7c6b3e42ce?api-version=2019-05-01"
         ],
         "OData-Version": [
           "4.0"
@@ -636,19 +636,19 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "6cc8273d-46ac-4db7-9c35-097b44675f98"
+          "5855a993-8e81-4e52-926b-d7769361874f"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T223113Z:6cc8273d-46ac-4db7-9c35-097b44675f98"
+          "WESTUS:20191021T231804Z:5855a993-8e81-4e52-926b-d7769361874f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:31:12 GMT"
+          "Mon, 21 Oct 2019 23:18:03 GMT"
         ],
         "Content-Length": [
-          "559"
+          "673"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal"
@@ -657,26 +657,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"hostName\": \"test2d6635a8a3.powershell-custom.azfdtest.xyz\",\r\n  \"sessionAffinityEnabledState\": \"Disabled\",\r\n  \"sessionAffinityTtlSeconds\": 0,\r\n  \"webApplicationFirewallPolicyLink\": null,\r\n  \"customHttpsProvisioningState\": \"Enabling\",\r\n  \"customHttpsProvisioningSubstate\": \"SubmittingDomainControlValidationRequest\",\r\n  \"customHttpsConfiguration\": {\r\n    \"protocolType\": \"ServerNameIndication\",\r\n    \"frontdoorCertificateSourceParameters\": {\r\n      \"certificateType\": \"Dedicated\"\r\n    },\r\n    \"keyvaultCertificateSourceParameters\": null,\r\n    \"certificateSource\": \"FrontDoor\"\r\n  },\r\n  \"resourceState\": \"Enabled\"\r\n}",
+      "ResponseBody": "{\r\n  \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n  \"sessionAffinityEnabledState\": \"Disabled\",\r\n  \"sessionAffinityTtlSeconds\": 0,\r\n  \"webApplicationFirewallPolicyLink\": null,\r\n  \"customHttpsProvisioningState\": \"Enabling\",\r\n  \"customHttpsProvisioningSubstate\": \"SubmittingDomainControlValidationRequest\",\r\n  \"customHttpsConfiguration\": {\r\n    \"protocolType\": \"ServerNameIndication\",\r\n    \"frontDoorCertificateSourceParameters\": {\r\n      \"certificateType\": \"Dedicated\"\r\n    },\r\n    \"keyVaultCertificateSourceParameters\": {\r\n      \"vault\": {\r\n        \"id\": null\r\n      },\r\n      \"secretName\": null,\r\n      \"secretVersion\": null\r\n    },\r\n    \"certificateSource\": \"FrontDoor\",\r\n    \"minimumTlsVersion\": \"1.2\"\r\n  },\r\n  \"resourceState\": \"Enabled\"\r\n}",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDQtMDE=",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "50dbf392-189f-4745-9b05-f857b2dc7c0a"
+          "a78742f6-174f-487c-91dd-6c031c1bde53"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -687,10 +687,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ca1ecccf-4076-46ee-9ed0-66a3939e3526"
+          "cc42e5ee-c25f-4d3f-95c0-6be5839dd0d0"
         ],
         "x-ms-client-request-id": [
-          "50dbf392-189f-4745-9b05-f857b2dc7c0a"
+          "a78742f6-174f-487c-91dd-6c031c1bde53"
         ],
         "OData-Version": [
           "4.0"
@@ -711,19 +711,19 @@
           "11994"
         ],
         "x-ms-correlation-request-id": [
-          "42cd74ad-108c-485c-9901-55b1d2c1d85d"
+          "3276d155-980b-4045-be44-d5c32fc4e5d9"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T223113Z:42cd74ad-108c-485c-9901-55b1d2c1d85d"
+          "WESTUS:20191021T231804Z:3276d155-980b-4045-be44-d5c32fc4e5d9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:31:12 GMT"
+          "Mon, 21 Oct 2019 23:18:04 GMT"
         ],
         "Content-Length": [
-          "860"
+          "982"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -732,26 +732,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"test2d6635a8a3.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"SubmittingDomainControlValidationRequest\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontdoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyvaultCertificateSourceParameters\": null,\r\n      \"certificateSource\": \"FrontDoor\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"SubmittingDomainControlValidationRequest\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDQtMDE=",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ae4b645f-d505-4c62-b046-a12bcc1aaa47"
+          "aa1178f0-e531-43e4-8e96-4f59689275b8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -762,85 +762,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "45e7e4e7-f054-46d0-ade6-5be376994da3"
+          "3002d4fd-5f97-4f2a-9d9c-d2bc7105c7f3"
         ],
         "x-ms-client-request-id": [
-          "ae4b645f-d505-4c62-b046-a12bcc1aaa47"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-correlation-request-id": [
-          "084877a3-c310-4427-9889-09681f938dd7"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T224114Z:084877a3-c310-4427-9889-09681f938dd7"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Wed, 03 Apr 2019 22:41:14 GMT"
-        ],
-        "Content-Length": [
-          "838"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"test2d6635a8a3.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabled\",\r\n    \"customHttpsProvisioningSubstate\": \"CertificateDeployed\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontdoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyvaultCertificateSourceParameters\": null,\r\n      \"certificateSource\": \"FrontDoor\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDQtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "29957102-6d54-4b50-92bc-a78ed2c95612"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27317.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "1f6b0c30-f85c-4729-bd22-05607f85f2c1"
-        ],
-        "x-ms-client-request-id": [
-          "29957102-6d54-4b50-92bc-a78ed2c95612"
+          "aa1178f0-e531-43e4-8e96-4f59689275b8"
         ],
         "OData-Version": [
           "4.0"
@@ -861,19 +786,19 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "d48113ab-ddd1-4488-9960-b61324a91f1c"
+          "5d5020ce-ce30-45a6-9ecf-100a0b6c309a"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T224115Z:d48113ab-ddd1-4488-9960-b61324a91f1c"
+          "WESTUS:20191021T232805Z:5d5020ce-ce30-45a6-9ecf-100a0b6c309a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:41:14 GMT"
+          "Mon, 21 Oct 2019 23:28:05 GMT"
         ],
         "Content-Length": [
-          "838"
+          "987"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -882,26 +807,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"test2d6635a8a3.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabled\",\r\n    \"customHttpsProvisioningSubstate\": \"CertificateDeployed\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontdoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyvaultCertificateSourceParameters\": null,\r\n      \"certificateSource\": \"FrontDoor\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"PendingDomainControlValidationRequestApproval\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDQtMDE=",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "82cb8479-85bd-4fe7-a2cc-d1754e0c57dc"
+          "76b4c17d-07b9-4662-88a5-4f04b913c090"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -912,10 +837,910 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "09bad11b-d194-466b-9b9d-87aac84ccbf9"
+          "b37f327a-9b97-4a28-8aea-277213ba8c97"
         ],
         "x-ms-client-request-id": [
-          "82cb8479-85bd-4fe7-a2cc-d1754e0c57dc"
+          "76b4c17d-07b9-4662-88a5-4f04b913c090"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "1d554686-7610-4046-b23c-ba47c87f2a7a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191021T233806Z:1d554686-7610-4046-b23c-ba47c87f2a7a"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 21 Oct 2019 23:38:06 GMT"
+        ],
+        "Content-Length": [
+          "987"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"PendingDomainControlValidationRequestApproval\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "93d6409c-1941-4c97-a187-a469756fd857"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ada33376-e13b-4070-a909-123c5ab68962"
+        ],
+        "x-ms-client-request-id": [
+          "93d6409c-1941-4c97-a187-a469756fd857"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "2510a496-d6b7-4e62-b275-ae97d68afa01"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191021T234807Z:2510a496-d6b7-4e62-b275-ae97d68afa01"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 21 Oct 2019 23:48:07 GMT"
+        ],
+        "Content-Length": [
+          "987"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"PendingDomainControlValidationRequestApproval\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0aeae046-4ceb-48ce-93da-e0259e2576fc"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "62301290-db24-4ea4-86ae-49644c33c18e"
+        ],
+        "x-ms-client-request-id": [
+          "0aeae046-4ceb-48ce-93da-e0259e2576fc"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "a64de833-3503-480e-bba2-035a754d4f7d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191021T235807Z:a64de833-3503-480e-bba2-035a754d4f7d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 21 Oct 2019 23:58:07 GMT"
+        ],
+        "Content-Length": [
+          "987"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"PendingDomainControlValidationRequestApproval\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "095fe380-b165-4901-b952-2738ac65cfba"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d4e7ab59-3aba-47d2-b22e-aedd22144e07"
+        ],
+        "x-ms-client-request-id": [
+          "095fe380-b165-4901-b952-2738ac65cfba"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "badc2897-8abd-4626-8ea2-0e3fd234ab9c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191022T000808Z:badc2897-8abd-4626-8ea2-0e3fd234ab9c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 22 Oct 2019 00:08:08 GMT"
+        ],
+        "Content-Length": [
+          "987"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"PendingDomainControlValidationRequestApproval\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fadb03d2-e0ce-4729-b5a8-3d2fdb1ba29a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4a3e23be-e987-4432-ba73-4b1f8161e20f"
+        ],
+        "x-ms-client-request-id": [
+          "fadb03d2-e0ce-4729-b5a8-3d2fdb1ba29a"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "ea4600c6-05c1-4c42-8ddc-6d39abd4d5b8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191022T001810Z:ea4600c6-05c1-4c42-8ddc-6d39abd4d5b8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 22 Oct 2019 00:18:09 GMT"
+        ],
+        "Content-Length": [
+          "987"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"PendingDomainControlValidationRequestApproval\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "afa31c38-1b13-46ca-988c-8a3667b09e2b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "9a15c7c6-754d-4051-acb6-7c2e8f00ba17"
+        ],
+        "x-ms-client-request-id": [
+          "afa31c38-1b13-46ca-988c-8a3667b09e2b"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "f4c4cb48-59a0-4a95-91e9-865dbe8fc6b9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191022T002810Z:f4c4cb48-59a0-4a95-91e9-865dbe8fc6b9"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 22 Oct 2019 00:28:10 GMT"
+        ],
+        "Content-Length": [
+          "987"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"PendingDomainControlValidationRequestApproval\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f868064b-b415-4c82-87d0-89fe6ae0e39c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d458afd9-fd46-4764-8b11-b774ded8b971"
+        ],
+        "x-ms-client-request-id": [
+          "f868064b-b415-4c82-87d0-89fe6ae0e39c"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "e48ebb70-16ef-4214-b1c3-26dd97bd3a84"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191022T003811Z:e48ebb70-16ef-4214-b1c3-26dd97bd3a84"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 22 Oct 2019 00:38:10 GMT"
+        ],
+        "Content-Length": [
+          "987"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"PendingDomainControlValidationRequestApproval\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4e8cf417-2413-4565-be7a-ef9c52017c61"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1f2476be-a3ee-44a0-98d7-2e2c6bdeeef5"
+        ],
+        "x-ms-client-request-id": [
+          "4e8cf417-2413-4565-be7a-ef9c52017c61"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "df5f35de-5b2b-47ac-856d-6dce8c41a1cb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191022T004812Z:df5f35de-5b2b-47ac-856d-6dce8c41a1cb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 22 Oct 2019 00:48:12 GMT"
+        ],
+        "Content-Length": [
+          "987"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"PendingDomainControlValidationRequestApproval\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "75a6b9b2-07ea-4901-9800-056189708615"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "204c38ed-53b4-45bf-9931-3a4cd791fcf4"
+        ],
+        "x-ms-client-request-id": [
+          "75a6b9b2-07ea-4901-9800-056189708615"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "9a242ea3-72d2-4d06-a5d2-2030fd877f7c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191022T005813Z:9a242ea3-72d2-4d06-a5d2-2030fd877f7c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 22 Oct 2019 00:58:13 GMT"
+        ],
+        "Content-Length": [
+          "987"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"PendingDomainControlValidationRequestApproval\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b6b6fe35-4530-40c9-bfad-3d2d0b450789"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "9c4158ea-2290-43d2-857a-cd9c061c2cd3"
+        ],
+        "x-ms-client-request-id": [
+          "b6b6fe35-4530-40c9-bfad-3d2d0b450789"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "a8cca8ab-8b1c-4438-b0a8-898680f3ab4a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191022T010814Z:a8cca8ab-8b1c-4438-b0a8-898680f3ab4a"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 22 Oct 2019 01:08:13 GMT"
+        ],
+        "Content-Length": [
+          "987"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"PendingDomainControlValidationRequestApproval\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a55a4359-982e-448a-aaee-260e0af5c63d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "bb8546ba-0fd0-474e-89d1-be6ea331797a"
+        ],
+        "x-ms-client-request-id": [
+          "a55a4359-982e-448a-aaee-260e0af5c63d"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "8a3d4074-27d1-44a5-86c7-b4f91bcde679"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191022T011815Z:8a3d4074-27d1-44a5-86c7-b4f91bcde679"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 22 Oct 2019 01:18:14 GMT"
+        ],
+        "Content-Length": [
+          "960"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabled\",\r\n    \"customHttpsProvisioningSubstate\": \"CertificateDeployed\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2128e2bf-0c10-4e67-991a-21c188476c2d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f79f9562-ec69-411e-aa38-328d6e3041aa"
+        ],
+        "x-ms-client-request-id": [
+          "2128e2bf-0c10-4e67-991a-21c188476c2d"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "6390ef3e-7d00-467c-b484-0b977913a6bb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191022T011815Z:6390ef3e-7d00-467c-b484-0b977913a6bb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 22 Oct 2019 01:18:15 GMT"
+        ],
+        "Content-Length": [
+          "960"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabled\",\r\n    \"customHttpsProvisioningSubstate\": \"CertificateDeployed\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7c7c9e64-d33f-4cd9-8cc4-154a6627a6d6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "23dcfc35-c4db-4732-ab18-19d01b8c6193"
+        ],
+        "x-ms-client-request-id": [
+          "7c7c9e64-d33f-4cd9-8cc4-154a6627a6d6"
         ],
         "OData-Version": [
           "4.0"
@@ -936,19 +1761,19 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "5acc816e-89f7-481a-b051-d8bd277a6511"
+          "2e617ab4-bebc-4eb7-89f1-c534c57d1ca0"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T224116Z:5acc816e-89f7-481a-b051-d8bd277a6511"
+          "WESTUS:20191022T011817Z:2e617ab4-bebc-4eb7-89f1-c534c57d1ca0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:41:15 GMT"
+          "Tue, 22 Oct 2019 01:18:16 GMT"
         ],
         "Content-Length": [
-          "840"
+          "962"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -957,26 +1782,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"test2d6635a8a3.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontdoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyvaultCertificateSourceParameters\": null,\r\n      \"certificateSource\": \"FrontDoor\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": \"Dedicated\"\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": null\r\n        },\r\n        \"secretName\": null,\r\n        \"secretVersion\": null\r\n      },\r\n      \"certificateSource\": \"FrontDoor\",\r\n      \"minimumTlsVersion\": \"1.2\"\r\n    },\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDQtMDE=",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f8310bb0-6163-4752-8991-6dbc8b1eb5c1"
+          "588db666-a1a4-4413-8e87-d10f8763cdc1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -987,10 +1812,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "72e8d6b8-b5c0-472e-89e2-20a9944fbe6b"
+          "2ef221a8-4126-48b4-91c7-f07dfe4816f7"
         ],
         "x-ms-client-request-id": [
-          "f8310bb0-6163-4752-8991-6dbc8b1eb5c1"
+          "588db666-a1a4-4413-8e87-d10f8763cdc1"
         ],
         "OData-Version": [
           "4.0"
@@ -1011,16 +1836,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "5b005fd4-4502-4845-bae3-18531f2b4b3b"
+          "d44656ee-eb18-47a7-9411-bfbac40abb0b"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T225117Z:5b005fd4-4502-4845-bae3-18531f2b4b3b"
+          "WESTUS:20191022T012817Z:d44656ee-eb18-47a7-9411-bfbac40abb0b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:51:16 GMT"
+          "Tue, 22 Oct 2019 01:28:17 GMT"
         ],
         "Content-Length": [
           "611"
@@ -1032,26 +1857,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"test2d6635a8a3.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Disabled\",\r\n    \"customHttpsProvisioningSubstate\": \"None\",\r\n    \"customHttpsConfiguration\": null,\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Disabled\",\r\n    \"customHttpsProvisioningSubstate\": \"None\",\r\n    \"customHttpsConfiguration\": null,\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDQtMDE=",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyP2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ba309466-d2c1-45d0-be34-8bbf02c14bc5"
+          "f0341506-8f5e-4c92-8e69-daa5638791d1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1062,10 +1887,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ad90a3a9-1a58-470e-871f-f34330de7105"
+          "2fb61490-50cb-4ea2-b03d-3741501f07eb"
         ],
         "x-ms-client-request-id": [
-          "ba309466-d2c1-45d0-be34-8bbf02c14bc5"
+          "f0341506-8f5e-4c92-8e69-daa5638791d1"
         ],
         "OData-Version": [
           "4.0"
@@ -1086,16 +1911,16 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "22befdf1-6d51-45b2-96e2-9f1fca40585c"
+          "04dd7629-414d-4857-ac09-4bb973af5e34"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T225117Z:22befdf1-6d51-45b2-96e2-9f1fca40585c"
+          "WESTUS:20191022T012818Z:04dd7629-414d-4857-ac09-4bb973af5e34"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:51:16 GMT"
+          "Tue, 22 Oct 2019 01:28:17 GMT"
         ],
         "Content-Length": [
           "611"
@@ -1107,26 +1932,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"test2d6635a8a3.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Disabled\",\r\n    \"customHttpsProvisioningSubstate\": \"None\",\r\n    \"customHttpsConfiguration\": null,\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"frontendendpoint2\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdoors/test-powershell-030620190342/frontendendpoints/frontendendpoint2\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Disabled\",\r\n    \"customHttpsProvisioningSubstate\": \"None\",\r\n    \"customHttpsConfiguration\": null,\r\n    \"resourceState\": \"Enabled\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps3767/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2/disableHttps?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMzc2Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyL2Rpc2FibGVIdHRwcz9hcGktdmVyc2lvbj0yMDE5LTA0LTAx",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5177/providers/Microsoft.Network/frontDoors/test-powershell-030620190342/frontendEndpoints/frontendendpoint2/disableHttps?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTE3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy90ZXN0LXBvd2Vyc2hlbGwtMDMwNjIwMTkwMzQyL2Zyb250ZW5kRW5kcG9pbnRzL2Zyb250ZW5kZW5kcG9pbnQyL2Rpc2FibGVIdHRwcz9hcGktdmVyc2lvbj0yMDE5LTA1LTAx",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6153365f-da8f-40a3-90d1-ff472cf7a077"
+          "592a47c5-3150-438c-8102-e10a459a2432"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18960.",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/1.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1137,19 +1962,19 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdooroperationresults/275e40c4-a4df-45ad-80a7-faa1c89be2c7/frontdoorresults/test-powershell-030620190342?api-version=2019-04-01"
+          "https://management.azure.com/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdooroperationresults/85c9ee48-e6c0-4f1f-9cc5-2d17279cedb5/frontdoorresults/test-powershell-030620190342?api-version=2019-05-01"
         ],
         "Retry-After": [
           "120"
         ],
         "x-ms-request-id": [
-          "68f924a4-9f25-4dca-98a3-ac4829268b88"
+          "5a88af22-09d5-454e-917a-b8caa1e29e87"
         ],
         "x-ms-client-request-id": [
-          "6153365f-da8f-40a3-90d1-ff472cf7a077"
+          "592a47c5-3150-438c-8102-e10a459a2432"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps3767/providers/Microsoft.Network/frontdooroperationresults/275e40c4-a4df-45ad-80a7-faa1c89be2c7?api-version=2019-04-01"
+          "https://management.azure.com/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5177/providers/Microsoft.Network/frontdooroperationresults/85c9ee48-e6c0-4f1f-9cc5-2d17279cedb5?api-version=2019-05-01"
         ],
         "OData-Version": [
           "4.0"
@@ -1170,19 +1995,19 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "5f15dcf9-c8e8-4f4d-b063-44062093315a"
+          "0f963451-df65-4335-bd20-6b6c4e855d26"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190403T224116Z:5f15dcf9-c8e8-4f4d-b063-44062093315a"
+          "WESTUS:20191022T011816Z:0f963451-df65-4335-bd20-6b6c4e855d26"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 03 Apr 2019 22:41:15 GMT"
+          "Tue, 22 Oct 2019 01:18:16 GMT"
         ],
         "Content-Length": [
-          "539"
+          "653"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -1191,13 +2016,13 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"hostName\": \"test2d6635a8a3.powershell-custom.azfdtest.xyz\",\r\n  \"sessionAffinityEnabledState\": \"Disabled\",\r\n  \"sessionAffinityTtlSeconds\": 0,\r\n  \"webApplicationFirewallPolicyLink\": null,\r\n  \"customHttpsProvisioningState\": \"Disabling\",\r\n  \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n  \"customHttpsConfiguration\": {\r\n    \"protocolType\": \"ServerNameIndication\",\r\n    \"frontdoorCertificateSourceParameters\": {\r\n      \"certificateType\": \"Dedicated\"\r\n    },\r\n    \"keyvaultCertificateSourceParameters\": null,\r\n    \"certificateSource\": \"FrontDoor\"\r\n  },\r\n  \"resourceState\": \"Enabled\"\r\n}",
+      "ResponseBody": "{\r\n  \"hostName\": \"testa349674e19.powershell-custom.azfdtest.xyz\",\r\n  \"sessionAffinityEnabledState\": \"Disabled\",\r\n  \"sessionAffinityTtlSeconds\": 0,\r\n  \"webApplicationFirewallPolicyLink\": null,\r\n  \"customHttpsProvisioningState\": \"Disabling\",\r\n  \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n  \"customHttpsConfiguration\": {\r\n    \"protocolType\": \"ServerNameIndication\",\r\n    \"frontDoorCertificateSourceParameters\": {\r\n      \"certificateType\": \"Dedicated\"\r\n    },\r\n    \"keyVaultCertificateSourceParameters\": {\r\n      \"vault\": {\r\n        \"id\": null\r\n      },\r\n      \"secretName\": null,\r\n      \"secretVersion\": null\r\n    },\r\n    \"certificateSource\": \"FrontDoor\",\r\n    \"minimumTlsVersion\": \"1.2\"\r\n  },\r\n  \"resourceState\": \"Enabled\"\r\n}",
       "StatusCode": 202
     }
   ],
   "Names": {
     "Test-FrontDoorEndpointCustomDomainHTTPS-FrontDoor": [
-      "ps3767"
+      "ps5177"
     ]
   },
   "Variables": {

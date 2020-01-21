@@ -125,39 +125,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ResolvesDuplicatedDynamicParameterNameSubstring()
-        {
-            string[] parameters = { "Username", "Location", "Mode" };
-            string[] parameterSetNames = { "__AllParameterSets" };
-            string key = "user";
-            TemplateFileParameterV1 value = new TemplateFileParameterV1()
-            {
-                AllowedValues = new List<object>() { "Mode1", "Mode2", "Mode3" },
-                MaxLength = "5",
-                MinLength = "1",
-                Type = "bool"
-            };
-            KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
-
-            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
-
-            Assert.Equal(key + "FromTemplate", dynamicParameter.Name);
-            Assert.Equal(value.DefaultValue, dynamicParameter.Value);
-            Assert.Equal(typeof(bool), dynamicParameter.ParameterType);
-            Assert.Equal(2, dynamicParameter.Attributes.Count);
-
-            ParameterAttribute parameterAttribute = (ParameterAttribute)dynamicParameter.Attributes[0];
-            Assert.True(parameterAttribute.Mandatory);
-            Assert.True(parameterAttribute.ValueFromPipelineByPropertyName);
-            Assert.Equal(parameterSetNames[0], parameterAttribute.ParameterSetName);
-
-            ValidateLengthAttribute validateLengthAttribute = (ValidateLengthAttribute)dynamicParameter.Attributes[1];
-            Assert.Equal(int.Parse(value.MinLength), validateLengthAttribute.MinLength);
-            Assert.Equal(int.Parse(value.MaxLength), validateLengthAttribute.MaxLength);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResolvesDuplicatedDynamicParameterNameCaseInsensitive()
         {
             string[] parameters = { "Name", "Location", "Mode" };
