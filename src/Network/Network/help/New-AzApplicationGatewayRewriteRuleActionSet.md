@@ -16,6 +16,7 @@ Creates a rewrite rule action set for an application gateway.
 New-AzApplicationGatewayRewriteRuleActionSet
  [-RequestHeaderConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderConfiguration]>]
  [-ResponseHeaderConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderConfiguration]>]
+ [-UrlConfiguration [Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlConfiguration]]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -26,7 +27,7 @@ New-AzApplicationGatewayRewriteRuleActionSet
 
 ### Example 1
 ```powershell
-PS C:\> $action = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $hc
+PS C:\> $action = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $hc -UrlConfiguration $urlConfiguration
 ```
 
 This command creates a rewrite rule action set and stores the result in the variable named $action.
@@ -78,6 +79,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UrlConfiguration
+Url Configuration for action set
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlConfiguration
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -106,3 +121,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzApplicationGatewayRewriteRule](./New-AzApplicationGatewayRewriteRule.md)
 
 [New-AzApplicationGatewayRewriteRuleHeaderConfiguration](./New-AzApplicationGatewayRewriteRuleHeaderConfiguration.md)
+
+[New-AzApplicationGatewayRewriteRuleUrlConfiguration](./New-AzApplicationGatewayRewriteRuleUrlConfiguration.md)

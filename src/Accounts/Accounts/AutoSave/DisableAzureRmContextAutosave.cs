@@ -13,17 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
-using System.IO;
 using System.Management.Automation;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -64,7 +60,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
             }
         }
 
-        void DisableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
+        protected void DisableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
         {
             var store = session.DataStore;
             string tokenPath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);

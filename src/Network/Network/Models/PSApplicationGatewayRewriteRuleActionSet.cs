@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public List<PSApplicationGatewayHeaderConfiguration> RequestHeaderConfigurations { get; set; }
         public List<PSApplicationGatewayHeaderConfiguration> ResponseHeaderConfigurations { get; set; }
+        public PSApplicationGatewayUrlConfiguration UrlConfiguration { get; set; }
 
         [JsonIgnore]
         public string RequestHeaderConfigurationsText
@@ -34,6 +35,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ResponseHeaderConfigurationsText
         {
             get { return JsonConvert.SerializeObject(ResponseHeaderConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string UrlConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(UrlConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
