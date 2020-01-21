@@ -35,7 +35,6 @@ Name                  : MyTcpTestConfig
 TestFrequencySec      : 40
 Protocol              : TCP
 PreferredIPVersion    : IPv4
-HttpConfiguration     :
 TcpConfiguration      : {
                           "Port": 80,
                           "DisableTraceRoute": false
