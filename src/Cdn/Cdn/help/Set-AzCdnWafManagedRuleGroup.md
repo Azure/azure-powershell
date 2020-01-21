@@ -42,7 +42,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 Disable all rules of the rule group.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DisableAllParameterSet
 Aliases:
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 Name of the CDN WAF rule group to override.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 One or more rules to override.
 
 ```yaml
-Type: PSManagedRuleOverride[]
+Type: Microsoft.Azure.Commands.Cdn.Models.WebApplicationFirewall.PSManagedRuleOverride[]
 Parameter Sets: SpecifyRuleParameterSet
 Aliases:
 

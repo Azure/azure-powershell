@@ -125,7 +125,7 @@ The transform to apply before matching.
 Type: Microsoft.Azure.Commands.Cdn.Models.WebApplicationFirewall.PSTransform[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Allow, Block, Log, Redirect
+Accepted values: Lowercase, Uppercase, Trim, UrlDecode, UrlEncode, RemoveNulls
 
 Required: False
 Position: Named

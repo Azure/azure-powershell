@@ -125,6 +125,12 @@ Updates a CDN origin server.
 ### [Set-AzCdnProfile](Set-AzCdnProfile.md)
 Updates a CDN profile.
 
+### [Set-AzCdnWafManagedRule](Set-AzCdnWafManagedRule.md)
+Sets a local CDN WAF managed rule for use in a managed rule group.
+
+### [Set-AzCdnWafManagedRuleGroup](Set-AzCdnWafManagedRuleGroup.md)
+Sets a local CDN WAF managed rule group for use in a managed rule set override.
+
 ### [Set-AzCdnWafPolicy](Set-AzCdnWafPolicy.md)
 Creates or updates a CDN WAF Policy.
 

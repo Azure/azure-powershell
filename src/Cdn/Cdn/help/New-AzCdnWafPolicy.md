@@ -14,17 +14,17 @@ Creates a CDN WAF Policy.
 
 ### ByFieldsParameterSet (Default)
 ```
-New-AzCdnWafPolicy -PolicyName <String> -Location <String> -Sku <PSSkuName> -ResourceGroupName <String>
- [-Tag <Hashtable>] [-Disable] [-Mode <PSPolicyMode>] [-DefaultRedirectUrl <String>]
- [-DefaultCustomBlockResponseStatusCode <Int32>] [-DefaultCustomBlockResponseBody <String>]
- [-RateLimitRule <PSRateLimitRule[]>] [-ManagedRuleSet <PSManagedRuleSet[]>] [-CustomRule <PSCustomRule[]>]
+New-AzCdnWafPolicy -PolicyName <String> -ResourceGroupName <String> [-Tag <Hashtable>] [-Disable]
+ [-Mode <PSPolicyMode>] [-DefaultRedirectUrl <String>] [-DefaultCustomBlockResponseStatusCode <Int32>]
+ [-DefaultCustomBlockResponseBody <String>] [-RateLimitRule <PSRateLimitRule[]>]
+ [-ManagedRuleSet <PSManagedRuleSet[]>] [-CustomRule <PSCustomRule[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-New-AzCdnWafPolicy -Location <String> -Sku <PSSkuName> -ResourceId <String> [-Tag <Hashtable>] [-Disable]
- [-Mode <PSPolicyMode>] [-DefaultRedirectUrl <String>] [-DefaultCustomBlockResponseStatusCode <Int32>]
+New-AzCdnWafPolicy -ResourceId <String> [-Tag <Hashtable>] [-Disable] [-Mode <PSPolicyMode>]
+ [-DefaultRedirectUrl <String>] [-DefaultCustomBlockResponseStatusCode <Int32>]
  [-DefaultCustomBlockResponseBody <String>] [-RateLimitRule <PSRateLimitRule[]>]
  [-ManagedRuleSet <PSManagedRuleSet[]>] [-CustomRule <PSCustomRule[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -127,21 +127,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The location in which to create the CDN WAF policy.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ManagedRuleSet
 Rule sets managed by CDN to apply to the policy.
 
@@ -230,23 +215,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Sku
-The pricing sku name of the CDN WAF policy.
-Valid values are StandardVerizon, StandardAkamai, Standard_Microsoft and PremiumVerizon.
-
-```yaml
-Type: Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName
-Parameter Sets: (All)
-Aliases:
-Accepted values: Standard_Verizon, Premium_Verizon, Custom_Verizon, Standard_Akamai, Standard_ChinaCdn, Standard_Microsoft
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
