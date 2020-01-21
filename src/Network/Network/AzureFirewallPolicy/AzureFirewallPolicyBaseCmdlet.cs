@@ -46,10 +46,16 @@ namespace Microsoft.Azure.Commands.Network
             var azureFirewallPolicy = this.AzureFirewallPolicyClient.Get(resourceGroupName, name);
 
             var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallPolicy>(azureFirewallPolicy);
-            psAzureFirewall.RuleCollectionGroups = new List<Microsoft.Azure.Management.Network.Models.SubResource>(azureFirewallPolicy.RuleGroups);
+            if(azureFirewallPolicy.RuleGroups != null)
+            {
+                psAzureFirewall.RuleCollectionGroups = new List<SubResource>(azureFirewallPolicy.RuleGroups);
+            }
+            else
+            {
+                psAzureFirewall.RuleCollectionGroups = new List<SubResource>();
+            }
             psAzureFirewall.ResourceGroupName = resourceGroupName;
             psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewallPolicy.Tags);
-            psAzureFirewall.BasePolicy = psAzureFirewall.BasePolicy;
 
             return psAzureFirewall;
         }

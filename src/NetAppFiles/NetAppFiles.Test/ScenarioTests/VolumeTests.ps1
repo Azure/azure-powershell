@@ -32,7 +32,7 @@ function Test-VolumeCrud
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -249,7 +249,7 @@ function Test-VolumePipelines
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
