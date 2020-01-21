@@ -38,7 +38,7 @@ Start-AzNetworkWatcherConnectionMonitor -ResourceId <String> [-PassThru] [-AsJob
 
 ### SetByInputObject
 ```
-Start-AzNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResultV1> [-PassThru] [-AsJob]
+Start-AzNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResult> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 Connection monitor object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResultV1
+Type: Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
 Parameter Sets: SetByInputObject
 Aliases:
 
@@ -246,7 +246,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResultV1
+### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
 
 ## OUTPUTS
 

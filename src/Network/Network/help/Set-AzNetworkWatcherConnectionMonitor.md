@@ -58,7 +58,7 @@ Set-AzNetworkWatcherConnectionMonitor -ResourceId <String> [-SourceResourceId <S
 
 ### SetByInputObject
 ```
-Set-AzNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResultV1> [-SourceResourceId <String>]
+Set-AzNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResult> [-SourceResourceId <String>]
  [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-DestinationResourceId <String>]
  [-DestinationAddress <String>] [-DestinationPort <Int32>]
  [-TestGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject]>]
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 Connection monitor object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResultV1
+Type: Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
 Parameter Sets: SetByInputObject
 Aliases:
 
@@ -450,7 +450,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResultV1
+### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
 
 ## OUTPUTS
 
