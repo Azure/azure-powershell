@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.2
 * Spelling fix in the docs.
 
 ## Version 0.8.1

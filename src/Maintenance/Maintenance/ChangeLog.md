@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.1.2
 * Update command will display pending updates by default
 * Added sample output to help documentation of Get-AZMaintenanceUpdate
 
