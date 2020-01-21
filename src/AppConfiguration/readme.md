@@ -70,4 +70,8 @@ directive:
       subject: OperationNameAvailability
     set:
       subject: StoreNameAvailability
+  - where:
+      subject: ConfigurationStoreKeyValue
+      verb: Get
+    remove: true
 ```

@@ -87,7 +87,7 @@ directive:
     transform: return $.replace(/ListRegenerateApiKeys$/, "RegenerateApiKeys")
   - from: swagger-document
     where: $
-    transform: return $.replace(/locationName/, "location")
+    transform: return $.replace(/locationName/g, "location")
   - where:
       subject: Operation
     hide: true
