@@ -6,6 +6,10 @@
       "_justification": "Documentation with non-live passwords in sample connection strings"
     },
     {
+      "file": "src\\DeploymentManager\\DeploymentManager.Test\\SessionRecords\\Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests.DeploymentManagerTests\\EndToEndFunctionalTests.json",      
+      "_justification": "Expired test session storage SAS"
+    },
+    {
       "file": "src\\Compute\\Compute.Test\\Templates\\tstorgnztn-validator.pem",
       "_justification": "Legitimate test certificate file"
     },
@@ -932,6 +936,18 @@
     {
       "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentMiTests\\VulnerabilityAssessmentManagedDatabaseScanConvertTest.json",
       "_justification": "Legitimate test session record, keys are deleted"
+    },
+    {
+      "file": "src\\CosmosDB\\CosmosDB.Test\\SessionRecords\\Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest.AccountTests\\TestAccountRelatedCmdlets.json",
+      "_justification": "Keys do not persist after test as resources got deleted"
+    },
+    {
+      "file": "src\\CosmosDB\\CosmosDB.Test\\SessionRecords\\Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest.AccountTests\\TestAccountRelatedCmdletsUsingObject.json",
+      "_justification": "Keys do not persist after test as resources got deleted"
+    },
+    {
+      "file": "src\\CosmosDB\\CosmosDB.Test\\SessionRecords\\Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest.AccountTests\\TestAccountRelatedCmdletsUsingRid.json",
+      "_justification": "Keys do not persist after test as resources got deleted"
     }
   ]
 }

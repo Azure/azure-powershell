@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.6.0
+* Set-AzWebapp and Set-AzWebappSlot supports AlwaysOn, MinTls and FtpsState properties
+* Fixing issue where setting HttpsOnly along with changing AppservicePlan at the same time using the single Set-AzWebApp Command, was resetting HttpsOnly to default value
+
 ## Version 1.5.1
 * Update references in .psd1 to use relative path
 

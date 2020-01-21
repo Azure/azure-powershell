@@ -1,3 +1,148 @@
+## 3.4.0 - February 2020
+#### Az.Accounts
+* Disable context auto saving when AzureRmContext.json not available
+* Update the reference to Azure Powershell Common to 1.3.5-preview
+
+#### Az.ApiManagement
+* **Get-AzApiManagementApiSchema** Fixed getting Open-Api Schema associated with an API
+    https://github.com/Azure/azure-powershell/issues/10626
+* **New-AzApiManagementProduct*** and **Set-AzApiManagementProduct**
+  - Fix documentation for https://github.com/Azure/azure-powershell/issues/10472
+* **Set-AzApiManagementApi**
+    Added example to show how to update the ServiceUrl using the cmdlet
+
+#### Az.Compute
+* Limit the number of VM status to 100 to avoid throttling when Get-AzVM -Status is performed without VM name.
+* Add Update-AzDiskEncryptionSet cmdlet
+* Add EncryptionType and DiskEncryptionSetId parameters to the following cmdlets:
+    - New-AzDiskUpdateConfig, New-AzSnapshotUpdateConfig
+* Add ColocationStatus parameter to Get-AzProximityPlacementGroup cmdlet.
+
+#### Az.DataFactory
+* Update ADF .Net SDK version to 4.7.0
+
+#### Az.DeploymentManager
+* Adds LIST operations for resources
+* Adds capability for performing operations on Health Check steps
+
+#### Az.HDInsight
+* Fix document error of New-AzHDInsightCluster.
+
+#### Az.KeyVault
+* Add Name alias to VaultName attribute to make Remove-AzureKeyVault consistent with New-AzureKeyVault.
+
+#### Az.Network
+* New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
+* Corrected Get-AzNetworkSecurityGroup examples to show examples for NSG's instead of network interfaces.
+* Fixed typo in New-AzureRmVpnSite command that was preventing resource id completer from completing a parameter.
+
+#### Az.PolicyInsights
+* Support evaluating compliance prior to determining what resource to remediate
+    - Add '-ResourceDiscoverMode' parameter to Start-AzPolicyRemediation
+* Add Get-AzPolicyMetadata cmdlet for getting policy metadata resources
+* Updated Get-AzPolicyState and Get-AzPolicyStateSummary for API version 2019-10-01
+
+#### Az.RecoveryServices
+* Azure Site Recovery support for removing a replicated disk.
+* Azure Backup added support for adding tags while creating a Recovery Services Vault.
+
+#### Az.Resources
+* Make -Scope optional in *-AzPolicyAssignment cmdlets with default to context subscription
+* Add examples of creating ADServicePrincipal with password and key credential
+
+#### Az.Storage
+* Support set Table/Queue Encryption Keytype in Create Storage Account
+    - New-AzRmStorageAccount
+* Show RequestId when StorageException don't have ExtendedErrorInformation
+* Fix the Example 6 of cmdlet Start-AzStorageBlobCopy
+
+#### Az.Websites
+* Set-AzWebapp and Set-AzWebappSlot supports AlwaysOn, MinTls and FtpsState properties
+* Fixing issue where setting HttpsOnly along with changing AppservicePlan at the same time using the single Set-AzWebApp Command, was resetting HttpsOnly to default value
+
+## 3.3.0 - January 2020
+#### Az.Accounts
+* Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix
+
+#### Az.Cdn
+* Display error response detail in New-AzCdnEndpoint cmdlet
+
+#### Az.Compute
+* Fix Set-AzVMCustomScriptExtension cmdlet for a VM with managed OD disk which does not have OS profile.
+
+#### Az.ContainerInstance
+* Fixed parameter names used by example of New-AzContainerGroup
+
+#### Az.DataBoxEdge
+* Added cmdlet 'Get-AzDataBoxEdgeStorageContainer'
+  - Get the Edge Storage Container
+* Added cmdlet 'New-AzDataBoxEdgeStorageContainer'
+  - Create new Edge Storage Container
+* Added cmdlet 'Remove-AzDataBoxEdgeStorageContainer'
+  - Remove the Edge Storage Container
+* Added cmdlet 'Invoke-AzDataBoxEdgeStorageContainer'
+  - Invoke action to refresh data on Edge Storage Container
+* Added cmdlet 'Get-AzDataBoxEdgeStorageAccount'
+  - Get the Edge Storage Account
+* Added cmdlet 'New-AzDataBoxEdgeStorageAccount'
+  - Create new Edge Storage Account
+* Added cmdlet 'Remove-AzDataBoxEdgeStorageAccount'
+  - Remove the Edge Storage Account
+* Invoke cmdlet 'Invoke-AzDataBoxEdgeShare'
+  - Invoke action to refresh data on share
+* Added cmdlet 'Set-AzDataBoxEdgeStorageAccountCredential'
+  - Set the az databoxedge storage account credential
+
+#### Az.DataFactory
+* Add AutoUpdateETA, LatestVersion, PushedVersion, TaskQueueId and VersionStatus properties for Get-AzDataFactoryV2IntegrationRuntime cmd
+* Update ADF .Net SDK version to 4.6.0
+* Add parameter 'PublicIPs' for 'Set-AzureRmDataFactoryV2IntegrationRuntime' cmd 
+to enable create Azure-SSIS IR with static public IP addresses.
+
+#### Az.DevTestLabs
+* Remove the broken link in Get-AzDtlAllowedVMSizesPolicy.md
+
+#### Az.EventHub
+* Fix for issue 10634 : Fix the null Object reference for remove eventhubnamespace
+
+#### Az.HDInsight
+* Fix Invoke-AzHDInsightHiveJob.md error.
+
+#### Az.MachineLearning
+* Removed below cmdlets because MachineLearningCompute is not available any longer
+  - Get-AzMlOpCluster
+  - Get-AzMlOpClusterKey
+  - New-AzMlOpCluster
+  - Remove-AzMlOpCluster
+  - Set-AzMlOpCluster
+  - Test-AzMlOpClusterSystemServicesUpdateAvailability
+  - Update-AzMlOpClusterSystemService
+
+#### Az.Network
+* Upgrade dependency of Microsoft.Azure.Management.Sql from 1.36-preview to 1.37-preview
+
+#### Az.RecoveryServices
+* Azure Site Recovery change support for managed disk vms encrypted at rest with customer managed leys for Azure to Azure provider.
+* Azure Site Recovery support to input disk encryption Set Id as optional input at enabling protection for Vmware to Azure.
+* Azure Site Recovery support to input disk encryption Set Id as optional input at disk level to enable protection for Vmware to Azure.
+* Azure Site Recovery support to update replication protected item with disk encryption set Map for HyperV to Azure.
+
+#### Az.Resources
+* Fix an error in help document of 'Remove-AzTag'.
+
+#### Az.Sql
+* Fix vulnerability assessment set baseline cmdlets functionality to work on master db for azure database and limit it on managed instance system databases.
+* Fix an error when creating SQL instance failover group
+
+#### Az.SqlVirtualMachine
+* Add DR as a new valid License type
+
+#### Az.Storage
+* Add breaking change warning message for DefaultAction Value change in a future release
+    - Update-AzStorageAccountNetworkRuleSet
+* Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats 
+    - Get-AzureRMStorageAccount
+
 ## 3.2.0 - December 2019
 
 ### General

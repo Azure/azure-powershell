@@ -20,6 +20,19 @@
 
 ## Upcoming Release
 
+## Version 2.2.2
+* New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
+* Corrected Get-AzNetworkSecurityGroup examples to show examples for NSG's instead of network interfaces.
+* Fixed typo in New-AzureRmVpnSite command that was preventing resource id completer from completing a parameter.
+* Added support for Url Confiugration in Rewrite Rules Action Set in the Application Gateway
+    - New cmdlets added:
+        - New-AzApplicationGatewayRewriteRuleUrlConfiguration
+    - Cmdlets updated with optional parameter - UrlConfiguration
+        - New-AzApplicationGatewayRewriteRuleActionSet
+
+## Version 2.2.1
+* Upgrade dependancy of Microsoft.Azure.Management.Sql from 1.36-preview to 1.37-preview
+
 ## Version 2.2.0
 * Update references in .psd1 to use relative path
 * Support for IpGroups in AzureFirewall Application,Nat & Network Rules.

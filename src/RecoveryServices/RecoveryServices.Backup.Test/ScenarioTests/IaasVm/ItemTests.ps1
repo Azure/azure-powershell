@@ -451,7 +451,6 @@ function Test-AzureVMSoftDelete
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
 		$vm = Create-VM $resourceGroupName $location
 		
-		Set-AzRecoveryServicesVaultContext -Vault $vault
 		
 		$item = Enable-Protection $vault $vm
 		$backupJob = Backup-Item $vault $item
