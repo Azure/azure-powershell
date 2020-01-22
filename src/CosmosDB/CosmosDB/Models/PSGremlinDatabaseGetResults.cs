@@ -11,23 +11,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
+    using Microsoft.Azure.Management.CosmosDB.Models;
 
-    public class PSSqlUniqueKeyPolicy
+    public class PSGremlinDatabaseGetResults 
     {
-        public PSSqlUniqueKeyPolicy()
+        public PSGremlinDatabaseGetResults()
         {
         }        
-
-        public PSSqlUniqueKeyPolicy(PSSqlUniqueKey[] uniqueKey)
+        
+        public PSGremlinDatabaseGetResults(GremlinDatabaseGetResults gremlinDatabaseGetResults)
         {
-            UniqueKey = uniqueKey;
+            Name = gremlinDatabaseGetResults.Name;
+            Id = gremlinDatabaseGetResults.Id;
+            Resource = new PSGremlinDatabaseGetPropertiesResource(gremlinDatabaseGetResults.Resource);
         }
 
         /// <summary>
-        /// Gets or sets the UniqueKey for the SqlUniqueKeyPolicy
+        /// Gets or sets Name of the Cosmos DB Gremlin database
         /// </summary>
-        public PSSqlUniqueKey[] UniqueKey { get; set; }
+        public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets Id of the Cosmos DB Gremlin database
+        /// </summary>
+        public string Id { get; set; }
+        //
+        public PSGremlinDatabaseGetPropertiesResource Resource { get; set; }
+
     }
 }

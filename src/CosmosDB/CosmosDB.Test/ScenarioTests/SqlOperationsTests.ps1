@@ -54,49 +54,44 @@ function Test-SqlOperationsCmdlets
   $Database = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   Assert-AreEqual $NewDatabase.Id $Database.Id
   Assert-AreEqual $NewDatabase.Name $Database.Name
-  Assert-AreEqual $NewDatabase.SqlDatabaseGetResultsId $Database.SqlDatabaseGetResultsId
-  Assert-AreEqual $NewDatabase._rid $Database._rid
-  Assert-AreEqual $NewDatabase._ts $Database._ts
-  Assert-AreEqual $NewDatabase._etag $Database._etag
-  Assert-AreEqual $NewDatabase._colls $Database._colls
-  Assert-AreEqual $NewDatabase._users $Database._users
+  Assert-AreEqual $NewDatabase.Resource._rid $Database.Resource._rid
+  Assert-AreEqual $NewDatabase.Resource._ts $Database.Resource._ts
+  Assert-AreEqual $NewDatabase.Resource._etag $Database.Resource._etag
+  Assert-AreEqual $NewDatabase.Resource._colls $Database.Resource._colls
+  Assert-AreEqual $NewDatabase.Resource._users $Database.Resource._users
 
   $Container = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
   Assert-AreEqual $NewContainer.Id $Container.Id
   Assert-AreEqual $NewContainer.Name $Container.Name
-  Assert-AreEqual $NewContainer.SqlContainerGetResultsId $Container.SqlContainerGetResultsId
-  Assert-AreEqual $NewContainer._rid $Container._rid
-  Assert-AreEqual $NewContainer._ts $Container._ts
-  Assert-AreEqual $NewContainer._etag $Container._etag
+  Assert-AreEqual $NewContainer.Resource._rid $Container.Resource._rid
+  Assert-AreEqual $NewContainer.Resource._ts $Container.Resource._ts
+  Assert-AreEqual $NewContainer.Resource._etag $Container.Resource._etag
 
   $StoredProcedure = Get-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName
   Assert-AreEqual $NewStoredProcedure.Id $StoredProcedure.Id
   Assert-AreEqual $NewStoredProcedure.Name $StoredProcedure.Name
-  Assert-AreEqual $NewStoredProcedure.SqlStoredProcedureGetResultsId $StoredProcedure.SqlStoredProcedureGetResultsId
-  Assert-AreEqual $NewStoredProcedure.Body $StoredProcedure.Body
-  Assert-AreEqual $NewStoredProcedure._rid $StoredProcedure._rid
-  Assert-AreEqual $NewStoredProcedure._ts $StoredProcedure._ts
-  Assert-AreEqual $NewStoredProcedure._etag $StoredProcedure._etag
+  Assert-AreEqual $NewStoredProcedure.Resource.Body $StoredProcedure.Resource.Body
+  Assert-AreEqual $NewStoredProcedure.Resource._rid $StoredProcedure.Resource._rid
+  Assert-AreEqual $NewStoredProcedure.Resource._ts $StoredProcedure.Resource._ts
+  Assert-AreEqual $NewStoredProcedure.Resource._etag $StoredProcedure.Resource._etag
   
   $UDF = Get-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $UDFName
   Assert-AreEqual $NewUDF.Id $UDF.Id
   Assert-AreEqual $NewUDF.Name $UDF.Name
-  Assert-AreEqual $NewUDF.SqlUserDefinedFunctionGetResultsId $UDF.SqlUserDefinedFunctionGetResultsId
-  Assert-AreEqual $NewUDF.Body $UDF.Body
-  Assert-AreEqual $NewUDF._rid $UDF._rid
-  Assert-AreEqual $NewUDF._ts $UDF._ts
-  Assert-AreEqual $NewUDF._etag $UDF._etag
+  Assert-AreEqual $NewUDF.Resource.Body $UDF.Resource.Body
+  Assert-AreEqual $NewUDF.Resource._rid $UDF.Resource._rid
+  Assert-AreEqual $NewUDF.Resource._ts $UDF.Resource._ts
+  Assert-AreEqual $NewUDF.Resource._etag $UDF.Resource._etag
 
   $Trigger = Get-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName
   Assert-AreEqual $NewTrigger.Id $Trigger.Id
   Assert-AreEqual $NewTrigger.Name $Trigger.Name
-  Assert-AreEqual $NewTrigger.SqlTriggerGetResultsId $Trigger.SqlTriggerGetResultsId
-  Assert-AreEqual $NewTrigger.Body $Trigger.Body
-  Assert-AreEqual $NewTrigger.TriggerType $Trigger.TriggerType
-  Assert-AreEqual $NewTrigger.TriggerOperation $Trigger.TriggerOperation
-  Assert-AreEqual $NewTrigger._rid $Trigger._rid
-  Assert-AreEqual $NewTrigger._ts $Trigger._ts
-  Assert-AreEqual $NewTrigger._etag $Trigger._etag
+  Assert-AreEqual $NewTrigger.Resource.Body $Trigger.Resource.Body
+  Assert-AreEqual $NewTrigger.Resource.TriggerType $Trigger.Resource.TriggerType
+  Assert-AreEqual $NewTrigger.Resource.TriggerOperation $Trigger.Resource.TriggerOperation
+  Assert-AreEqual $NewTrigger.Resource._rid $Trigger.Resource._rid
+  Assert-AreEqual $NewTrigger.Resource._ts $Trigger.Resource._ts
+  Assert-AreEqual $NewTrigger.Resource._etag $Trigger.Resource._etag
 
   $ListContainers = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
   Assert-NotNull($ListContainers)
@@ -168,49 +163,44 @@ function Test-SqlOperationsCmdletsUsingInputObject
   $Database = Get-AzCosmosDBSqlDatabase -InputObject $cosmosDBAccount -Name $DatabaseName
   Assert-AreEqual $NewDatabase.Id $Database.Id
   Assert-AreEqual $NewDatabase.Name $Database.Name
-  Assert-AreEqual $NewDatabase.SqlDatabaseGetResultsId $Database.SqlDatabaseGetResultsId
-  Assert-AreEqual $NewDatabase._rid $Database._rid
-  Assert-AreEqual $NewDatabase._ts $Database._ts
-  Assert-AreEqual $NewDatabase._etag $Database._etag
-  Assert-AreEqual $NewDatabase._colls $Database._colls
-  Assert-AreEqual $NewDatabase._users $Database._users
+  Assert-AreEqual $NewDatabase.Resource._rid $Database.Resource._rid
+  Assert-AreEqual $NewDatabase.Resource._ts $Database.Resource._ts
+  Assert-AreEqual $NewDatabase.Resource._etag $Database.Resource._etag
+  Assert-AreEqual $NewDatabase.Resource._colls $Database.Resource._colls
+  Assert-AreEqual $NewDatabase.Resource._users $Database.Resource._users
 
   $Container = Get-AzCosmosDBSqlContainer -InputObject $NewDatabase -Name $ContainerName
   Assert-AreEqual $NewContainer.Id $Container.Id
   Assert-AreEqual $NewContainer.Name $Container.Name
-  Assert-AreEqual $NewContainer.SqlContainerGetResultsId $Container.SqlContainerGetResultsId
-  Assert-AreEqual $NewContainer._rid $Container._rid
-  Assert-AreEqual $NewContainer._ts $Container._ts
-  Assert-AreEqual $NewContainer._etag $Container._etag
+  Assert-AreEqual $NewContainer.Resource._rid $Container.Resource._rid
+  Assert-AreEqual $NewContainer.Resource._ts $Container.Resource._ts
+  Assert-AreEqual $NewContainer.Resource._etag $Container.Resource._etag
 
   $StoredProcedure = Get-AzCosmosDBSqlStoredProcedure -InputObject $NewContainer -Name $StoredProcedureName
   Assert-AreEqual $NewStoredProcedure.Id $StoredProcedure.Id
   Assert-AreEqual $NewStoredProcedure.Name $StoredProcedure.Name
-  Assert-AreEqual $NewStoredProcedure.SqlStoredProcedureGetResultsId $StoredProcedure.SqlStoredProcedureGetResultsId
-  Assert-AreEqual $NewStoredProcedure.Body $StoredProcedure.Body
-  Assert-AreEqual $NewStoredProcedure._rid $StoredProcedure._rid
-  Assert-AreEqual $NewStoredProcedure._ts $StoredProcedure._ts
-  Assert-AreEqual $NewStoredProcedure._etag $StoredProcedure._etag
+  Assert-AreEqual $NewStoredProcedure.Resource.Body $StoredProcedure.Resource.Body
+  Assert-AreEqual $NewStoredProcedure.Resource._rid $StoredProcedure.Resource._rid
+  Assert-AreEqual $NewStoredProcedure.Resource._ts $StoredProcedure.Resource._ts
+  Assert-AreEqual $NewStoredProcedure.Resource._etag $StoredProcedure.Resource._etag
   
   $UDF = Get-AzCosmosDBSqlUserDefinedFunction -InputObject $NewContainer -Name $UDFName
   Assert-AreEqual $NewUDF.Id $UDF.Id
   Assert-AreEqual $NewUDF.Name $UDF.Name
-  Assert-AreEqual $NewUDF.SqlUserDefinedFunctionGetResultsId $UDF.SqlUserDefinedFunctionGetResultsId
-  Assert-AreEqual $NewUDF.Body $UDF.Body
-  Assert-AreEqual $NewUDF._rid $UDF._rid
-  Assert-AreEqual $NewUDF._ts $UDF._ts
-  Assert-AreEqual $NewUDF._etag $UDF._etag
+  Assert-AreEqual $NewUDF.Resource.Body $UDF.Resource.Body
+  Assert-AreEqual $NewUDF.Resource._rid $UDF.Resource._rid
+  Assert-AreEqual $NewUDF.Resource._ts $UDF.Resource._ts
+  Assert-AreEqual $NewUDF.Resource._etag $UDF.Resource._etag
 
   $Trigger = Get-AzCosmosDBSqlTrigger -InputObject $NewContainer -Name $TriggerName
   Assert-AreEqual $NewTrigger.Id $Trigger.Id
   Assert-AreEqual $NewTrigger.Name $Trigger.Name
-  Assert-AreEqual $NewTrigger.SqlTriggerGetResultsId $Trigger.SqlTriggerGetResultsId
-  Assert-AreEqual $NewTrigger.Body $Trigger.Body
-  Assert-AreEqual $NewTrigger.TriggerType $Trigger.TriggerType
-  Assert-AreEqual $NewTrigger.TriggerOperation $Trigger.TriggerOperation
-  Assert-AreEqual $NewTrigger._rid $Trigger._rid
-  Assert-AreEqual $NewTrigger._ts $Trigger._ts
-  Assert-AreEqual $NewTrigger._etag $Trigger._etag
+  Assert-AreEqual $NewTrigger.Resource.Body $Trigger.Resource.Body
+  Assert-AreEqual $NewTrigger.Resource.TriggerType $Trigger.Resource.TriggerType
+  Assert-AreEqual $NewTrigger.Resource.TriggerOperation $Trigger.Resource.TriggerOperation
+  Assert-AreEqual $NewTrigger.Resource._rid $Trigger.Resource._rid
+  Assert-AreEqual $NewTrigger.Resource._ts $Trigger.Resource._ts
+  Assert-AreEqual $NewTrigger.Resource._etag $Trigger.Resource._etag
 
   $ListContainers = Get-AzCosmosDBSqlContainer -InputObject $NewDatabase
   Assert-NotNull($ListContainers)

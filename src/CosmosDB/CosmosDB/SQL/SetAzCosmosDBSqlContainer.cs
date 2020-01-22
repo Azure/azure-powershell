@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.IndexingPolicyHelpMessage)]
         [ValidateNotNull]
-        public PSSqlIndexingPolicy IndexingPolicy { get; set; }
+        public PSIndexingPolicy IndexingPolicy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.PartitionKeyVersionHelpMessage)]
         public int? PartitionKeyVersion { get; set; }
@@ -65,11 +65,20 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.UniqueKeyPolciyHelpMessage)]
         [ValidateNotNull]
-        public PSSqlUniqueKeyPolicy UniqueKeyPolicy { get; set; }
+        public PSUniqueKeyPolicy UniqueKeyPolicy { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.ConflictResolutionPolicyHelpMessage)]
-        [ValidateNotNull]
-        public PSSqlConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyModeHelpMessage)]
+        [PSArgumentCompleter("Custom", "LastWriterWins")]
+        [ValidateNotNullOrEmpty]
+        public string ConflictResolutionPolicyMode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyPathHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string ConflictResolutionPolicyPath { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyProcedureHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string ConflictResolutionPolicyProcedure { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
@@ -86,6 +95,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             List<string> Paths = new List<string>();
+
             foreach (string path in PartitionKeyPath)
                 Paths.Add(path);
 
@@ -104,9 +114,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 UniqueKeyPolicy uniqueKeyPolicy = new UniqueKeyPolicy();
 
-                foreach (PSSqlUniqueKey uniqueKey in UniqueKeyPolicy.UniqueKey)
+                foreach (PSUniqueKey uniqueKey in UniqueKeyPolicy.UniqueKeys)
                 {
-                    UniqueKey key = new UniqueKey(uniqueKey.Path);
+                    UniqueKey key = new UniqueKey(uniqueKey.Paths);
                     uniqueKeyPolicy.UniqueKeys.Add(key);
                 }
 
@@ -118,42 +128,70 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 sqlContainerResource.DefaultTtl = TtlInSeconds;
             }
 
-            if (ConflictResolutionPolicy != null)
+            if (ConflictResolutionPolicyMode != null)
             {
                 ConflictResolutionPolicy conflictResolutionPolicy = new ConflictResolutionPolicy
                 {
-                    Mode = ConflictResolutionPolicy.Type
+                    Mode = ConflictResolutionPolicyMode
                 };
 
-                if (ConflictResolutionPolicy.Type.Equals("LastWriterWins", StringComparison.OrdinalIgnoreCase))
+                if (ConflictResolutionPolicyMode.Equals("LastWriterWins", StringComparison.OrdinalIgnoreCase))
                 {
-                    conflictResolutionPolicy.ConflictResolutionPath = ConflictResolutionPolicy.Path;
+                    conflictResolutionPolicy.ConflictResolutionPath = ConflictResolutionPolicyPath;
                 }
-                else if (ConflictResolutionPolicy.Type.Equals("Custom", StringComparison.OrdinalIgnoreCase))
+                else if (ConflictResolutionPolicyMode.Equals("Custom", StringComparison.OrdinalIgnoreCase))
                 {
-                    conflictResolutionPolicy.ConflictResolutionProcedure = ConflictResolutionPolicy.ConflictResolutionProcedure;
+                    conflictResolutionPolicy.ConflictResolutionProcedure = ConflictResolutionPolicyProcedure;
                 }
 
                 sqlContainerResource.ConflictResolutionPolicy = conflictResolutionPolicy;
             }
 
-            if(IndexingPolicy != null)
+            if (IndexingPolicy != null)
             {
                 IList<IncludedPath> includedPaths = new List<IncludedPath>();
                 IList<ExcludedPath> excludedPaths = new List<ExcludedPath>();
+                IList<IList<CompositePath>> compositeIndexes = new List<IList<CompositePath>>();
+                IList<SpatialSpec> spatialIndexes = new List<SpatialSpec>();
 
-                foreach (string path in IndexingPolicy.IncludedPaths)
-                    includedPaths.Add(new IncludedPath(path: path));
+                foreach (PSIncludedPath pSIncludedPath in IndexingPolicy.IncludedPaths)
+                {
+                    includedPaths.Add(new IncludedPath
+                    {
+                        Path = pSIncludedPath.Path,
+                        Indexes = PSIncludedPath.ConvertPSIndexesToIndexes(pSIncludedPath.Indexes)
+                    });
+                }
 
-                foreach (string path in IndexingPolicy.ExcludedPaths)
-                    excludedPaths.Add(new ExcludedPath(path: path));
+                foreach (PSExcludedPath pSExcludedPath in IndexingPolicy.ExcludedPaths)
+                {
+                    excludedPaths.Add(new ExcludedPath { Path = pSExcludedPath.Path });
+                }
+
+                foreach (IList<PSCompositePath> pSCompositePathList in IndexingPolicy.CompositeIndexes)
+                {
+                    IList<CompositePath> compositePathList = new List<CompositePath>();
+                    foreach (PSCompositePath pSCompositePath in pSCompositePathList)
+                    {
+                        compositePathList.Add(new CompositePath { Order = pSCompositePath.Order, Path = pSCompositePath.Path });
+                    }
+
+                    compositeIndexes.Add(compositePathList);
+                }
+
+                foreach (PSSpatialSpec pSSpatialSpec in IndexingPolicy.SpatialIndexes)
+                {
+                    spatialIndexes.Add(new SpatialSpec { Path = pSSpatialSpec.Path, Types = pSSpatialSpec.Types });
+                }
 
                 IndexingPolicy indexingPolicy = new IndexingPolicy
                 {
                     Automatic = IndexingPolicy.Automatic,
                     IndexingMode = IndexingPolicy.IndexingMode,
                     IncludedPaths = includedPaths,
-                    ExcludedPaths = excludedPaths
+                    ExcludedPaths = excludedPaths,
+                    CompositeIndexes = compositeIndexes,
+                    SpatialIndexes = spatialIndexes
                 };
 
                 sqlContainerResource.IndexingPolicy = indexingPolicy;

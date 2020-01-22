@@ -14,29 +14,31 @@
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
+    using Microsoft.Azure.Management.CosmosDB.Models;
 
-    public class PSSqlConflictResolutionPolicy
+    public class PSMongoDBDatabaseGetResults 
     {
-        public PSSqlConflictResolutionPolicy()
+        public PSMongoDBDatabaseGetResults()
         {
+        }        
+        
+        public PSMongoDBDatabaseGetResults(MongoDBDatabaseGetResults mongoDBDatabaseGetResults)
+        {
+            Name = mongoDBDatabaseGetResults.Name;
+            Id = mongoDBDatabaseGetResults.Id;
+            Resource = new PSMongoDBDatabaseGetPropertiesResource(mongoDBDatabaseGetResults.Resource);
+
         }
 
-        public PSSqlConflictResolutionPolicy(string type)
-        {
-            Type = type;
-        }
-
-        public PSSqlConflictResolutionPolicy(string type, string path, string conflictResolutionProcedure)
-        {
-            Type = type;
-            Path = path;
-            ConflictResolutionProcedure = conflictResolutionProcedure;
-        }
-
-        public string Type { get; set; }
-
-        public string Path { get; set; }
-
-        public string ConflictResolutionProcedure { get; set; }
+        /// <summary>
+        /// Gets or sets Name of the Cosmos DB MongoDB database
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets Id of the Cosmos DB MongoDB database
+        /// </summary>
+        public string Id { get; set; }
+        //
+        public PSMongoDBDatabaseGetPropertiesResource Resource { get; set; }
     }
 }

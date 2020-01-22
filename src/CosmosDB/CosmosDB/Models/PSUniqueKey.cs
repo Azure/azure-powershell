@@ -12,22 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.CosmosDB.Models;
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-    public class PSSqlUniqueKey
+    public class PSUniqueKey
     {
-        public PSSqlUniqueKey()
+        public PSUniqueKey()
         {
         }
 
-        public PSSqlUniqueKey(string[] path)
+        public PSUniqueKey(UniqueKey uniqueKey)
         {
-            Path = path;
+            Paths = uniqueKey.Paths;
         }
 
         /// <summary>
         /// Gets or sets the Path for the UniqueKey
         /// </summary>
-        public string[] Path { get; set; }
+        public IList<string> Paths { get; set; }
     }
 }

@@ -18,17 +18,17 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlUniqueKeyPolicy"), OutputType(typeof(PSSqlUniqueKeyPolicy))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlUniqueKeyPolicy"), OutputType(typeof(PSUniqueKeyPolicy))]
     public class NewAzCosmosDBSqlUniqueKeyPolicy : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.DatabaseNameHelpMessage)]
-        public PSSqlUniqueKey[] UniqueKey { get; set; }
+        public PSUniqueKey[] UniqueKey { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PSSqlUniqueKeyPolicy uniqueKeyPolicy = new PSSqlUniqueKeyPolicy
+            PSUniqueKeyPolicy uniqueKeyPolicy = new PSUniqueKeyPolicy
             {
-                UniqueKey = UniqueKey
+                UniqueKeys = UniqueKey
             };
 
             WriteObject(uniqueKeyPolicy);
