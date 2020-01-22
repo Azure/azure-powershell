@@ -157,6 +157,48 @@ function Test-CreateSecondaryDatabase()
 
 <#
 	.SYNOPSIS
+	Tests creating a named secondary database
+#>
+function Test-CreateNamedSecondaryDatabase()
+{
+	# Setup
+    $location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$database = Create-DatabaseForTest $rg $server
+
+	$partRg = Create-ResourceGroupForTest $location
+	$partServer = Create-ServerForTest $partRg $location
+
+	try
+	{
+		# Create Named Readable Secondary
+		$readSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -PartnerDatabaseName "secondary" -AllowConnections All
+		Assert-NotNull $readSecondary.LinkId
+		Assert-AreEqual $readSecondary.ResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $readSecondary.ServerName $server.ServerName
+		Assert-AreEqual $readSecondary.DatabaseName $database.DatabaseName
+		Assert-AreEqual $readSecondary.Role "Primary"
+		Assert-AreEqual $readSecondary.Location $location
+		Assert-AreEqual $readSecondary.PartnerResourceGroupName $partRg.ResourceGroupName
+		Assert-AreEqual $readSecondary.PartnerServerName $partServer.ServerName
+		Assert-AreEqual $readSecondary.PartnerDatabaseName "secondary"
+		Assert-NotNull $readSecondary.PartnerRole
+		Assert-AreEqual $readSecondary.PartnerLocation $location
+		Assert-NotNull $readSecondary.AllowConnections
+		Assert-NotNull $readSecondary.ReplicationState
+		Assert-NotNull $readSecondary.PercentComplete
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $partRg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests getting a secondary database
 #>
 function Test-GetReplicationLink()

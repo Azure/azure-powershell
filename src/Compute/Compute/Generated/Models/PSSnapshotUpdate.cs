@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public OperatingSystemTypes? OsType { get; set; }
         public int? DiskSizeGB { get; set; }
         public EncryptionSettingsCollection EncryptionSettingsCollection { get; set; }
+        public Encryption Encryption { get; set; }
         public IDictionary<string, string> Tags { get; set; }
         public SnapshotSku Sku { get; set; }
 
