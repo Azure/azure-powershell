@@ -89,16 +89,16 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             base.ExecuteCmdlet();
 
             bool hasPropertiesChange = false;
-            var properties = new JObject();
+            var properties = new CognitiveServicesAccountProperties();
             if (!string.IsNullOrWhiteSpace(CustomSubdomainName))
             {
                 hasPropertiesChange = true;
-                properties["customSubDomainName"] = CustomSubdomainName;
+                properties.CustomSubDomainName = CustomSubdomainName;
             }
             if (NetworkRuleSet != null)
             {
                 hasPropertiesChange = true;
-                properties["networkAcls"] = JToken.FromObject(NetworkRuleSet);
+                properties.NetworkAcls = NetworkRuleSet.ToNetworkRuleSet();
             }
 
             Sku sku = null;
@@ -152,9 +152,13 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     var updatedAccount = this.CognitiveServicesClient.Accounts.Update(
                         this.ResourceGroupName,
                         this.Name,
-                        sku,
-                        tags,
-                        properties);
+                        new CognitiveServicesAccount()
+                        {
+                        Sku = sku,
+                        Tags = tags,
+                        Properties = properties
+                        }
+                        );
 
                     WriteCognitiveServicesAccount(updatedAccount);
                 });
