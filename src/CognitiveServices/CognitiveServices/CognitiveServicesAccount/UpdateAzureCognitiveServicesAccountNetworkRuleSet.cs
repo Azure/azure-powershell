@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 var account = this.CognitiveServicesClient.Accounts.GetProperties(
                     this.ResourceGroupName,
                     this.Name);
-                NetworkRuleSet accountACL = account.NetworkAcls;
+                NetworkRuleSet accountACL = account.Properties.NetworkAcls;
 
                 if (accountACL == null)
                 {
@@ -138,13 +138,18 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     psNetworkRule.DefaultAction = defaultAction.Value;
                 }
 
-                var properties = new JObject();
-                properties["networkAcls"] = JToken.FromObject(psNetworkRule.ToNetworkRuleSet());
-                this.CognitiveServicesClient.Accounts.Update(this.ResourceGroupName, this.Name, null, null, properties);
+                var properties = new CognitiveServicesAccountProperties();
+                properties.NetworkAcls = psNetworkRule.ToNetworkRuleSet();
+                this.CognitiveServicesClient.Accounts.Update(this.ResourceGroupName, this.Name,
+                    new CognitiveServicesAccount()
+                    {
+                        Properties = properties
+                    }
+                    );
 
                 account = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
 
-                WriteObject(PSNetworkRuleSet.Create(account.NetworkAcls));
+                WriteObject(PSNetworkRuleSet.Create(account.Properties.NetworkAcls));
             }
         }
     }
