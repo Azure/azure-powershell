@@ -199,10 +199,33 @@ namespace Microsoft.Azure.Commands.Network
             {
                 ConnectionMonitorDetails connectionMonitorDetails = new ConnectionMonitorDetails();
                 connectionMonitorDetails = this.GetConnectionMonitorDetails(this.InputObject.Id);
-               
+
                 connectionMonitorName = connectionMonitorDetails.ConnectionMonitorName;
                 resourceGroupName = connectionMonitorDetails.ResourceGroupName;
                 networkWatcherName = connectionMonitorDetails.NetworkWatcherName;
+
+                if (this.InputObject.GetType() == typeof(PSConnectionMonitorResultV1))
+                {
+                    PSConnectionMonitorResultV1 InputObjectV1 = (PSConnectionMonitorResultV1)this.InputObject;
+
+                    this.ResourceId = InputObjectV1.Source.ResourceId;
+                    this.SourceResourceId = InputObjectV1.Source.ResourceId;
+
+                    this.SourcePort = InputObjectV1.Source.Port ?? default(int);
+
+                    this.DestinationResourceId = InputObjectV1.Destination.ResourceId;
+                    this.DestinationAddress = InputObjectV1.Destination.Address;
+                    this.DestinationPort = InputObjectV1.Destination.Port;
+                    this.MonitoringIntervalInSeconds = InputObjectV1.MonitoringIntervalInSeconds;
+                }
+                else if (this.InputObject.GetType() == typeof(PSConnectionMonitorResultV2))
+                {
+                    PSConnectionMonitorResultV2 InputObjectV2 = (PSConnectionMonitorResultV2)this.InputObject;
+
+                    this.TestGroup = InputObjectV2.TestGroups;
+                    this.Output = InputObjectV2.Outputs;
+                    this.Notes = InputObjectV2.Notes;
+                }
             }
             else if (ParameterSetName.Contains("SetByLocation"))
             {
@@ -217,7 +240,8 @@ namespace Microsoft.Azure.Commands.Network
                 networkWatcherName = networkWatcher.Name;
             }
 
-            if (TestGroup != null && TestGroup.Any())
+            if (TestGroup != null && TestGroup.Any() ||
+                (InputObject != null && this.InputObject.GetType() == typeof(PSConnectionMonitorResultV2)))
             {
                 connectionMonitorV2 = true;
             }
@@ -315,9 +339,35 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
-            return ValidateConnectionMonitorV2Parameters(this.SourceResourceId, this.DestinationResourceId, 
+            if (InputObject != null)
+            {
+                if (this.InputObject.GetType() == typeof(PSConnectionMonitorResultV1))
+                {
+                    PSConnectionMonitorResultV1 InputObjectV1 = (PSConnectionMonitorResultV1)this.InputObject;
+
+                    return ValidateConnectionMonitorV1V2Parameters(InputObjectV1.Source.ResourceId, InputObjectV1.Destination.ResourceId,
+                    null, InputObjectV1.Destination.Address,
+                    InputObjectV1.MonitoringIntervalInSeconds, this.TestGroup, this.Output);
+                }
+                else if (this.InputObject.GetType() == typeof(PSConnectionMonitorResultV2))
+                {
+                    PSConnectionMonitorResultV2 InputObjectV2 = (PSConnectionMonitorResultV2)this.InputObject;
+
+                    return ValidateConnectionMonitorV1V2Parameters(null, null,
+                    null, null,
+                    null, InputObjectV2.TestGroups, InputObjectV2.Outputs);
+                }
+                else
+                {
+                    throw new ArgumentException("Unrecognized InputObject type.");
+                }
+            }
+            else
+            {
+                return ValidateConnectionMonitorV1V2Parameters(this.SourceResourceId, this.DestinationResourceId,
                 this.InputObject, this.DestinationAddress,
                 this.MonitoringIntervalInSeconds, this.TestGroup, this.Output);
+            }
         }
     }
 }

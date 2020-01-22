@@ -263,12 +263,12 @@ namespace Microsoft.Azure.Commands.Network
             return null;
         }
 
-    public bool ValidateConnectionMonitorV2Parameters(string SourceResourceId, string DestinationResourceId, PSConnectionMonitorResult InputObject, string DestinationAddress, int? MonitoringIntervalInSeconds, List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroups, List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs)
+    public bool ValidateConnectionMonitorV1V2Parameters(string SourceResourceId, string DestinationResourceId, PSConnectionMonitorResult InputObject, string DestinationAddress, int? MonitoringIntervalInSeconds, List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroups, List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs)
         {
-            if ((!string.IsNullOrEmpty(SourceResourceId) || 
+            if ((!string.IsNullOrEmpty(SourceResourceId)     || 
                  !string.IsNullOrEmpty(DestinationResourceId)||
-                 !string.IsNullOrEmpty(DestinationAddress)|
-                    MonitoringIntervalInSeconds != null) && TestGroups != null)
+                 !string.IsNullOrEmpty(DestinationAddress)   ||
+                 MonitoringIntervalInSeconds != null) && (TestGroups != null || InputObject !=null))
             {
                 throw new ArgumentException("Connection moniotr V1 can not be defined with either TestGroup. Either connection monitor V1 or V2 can be specified");
             }
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (Outputs != null && !Outputs.Any())
             {
-                throw new ArgumentException("Output is empty");
+                // Output can be empty
             }
 
             return true;
