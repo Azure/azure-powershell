@@ -25,7 +25,7 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSDatabaseAccount))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSDatabaseAccount), typeof(void))]
     public class NewAzCosmosDBAccount : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -125,8 +125,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 if (!ApiKind.Equals("GlobalDocumentDB", StringComparison.OrdinalIgnoreCase) && !ApiKind.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
                 {
-                    WriteError(new ErrorRecord( new PSArgumentException("Gremlin, Cassandra and Table account creation not supported" +
-                        "in Azure Powershell"), string.Empty, ErrorCategory.CloseError, null));
+                    WriteWarning("Gremlin, Cassandra and Table account creation not supported" +
+                        "in Azure Powershell");
                     return;
                 }
             }
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 if(writeLocation != null)
                 {
-                    WriteError(new ErrorRecord(new PSArgumentException("Cannot accept Location and LocationObject simultaneously as parameters"), string.Empty, ErrorCategory.CloseError, null));
+                    WriteWarning("Cannot accept Location and LocationObject simultaneously as parameters");
                     return;
                 }
 
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if(string.IsNullOrEmpty(writeLocation))
             {
-                WriteError(new ErrorRecord(new PSArgumentException("Cannot create Account without a Write Location."), string.Empty, ErrorCategory.CloseError, null));
+                WriteWarning("Cannot create Account without a Write Location.");
                 return;
             }
 

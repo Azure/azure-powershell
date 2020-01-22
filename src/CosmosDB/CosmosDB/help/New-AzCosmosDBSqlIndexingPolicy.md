@@ -13,8 +13,9 @@ Creates a new CosmosDB Sql IndexingPolicy object.
 ## SYNTAX
 
 ```
-New-AzCosmosDBSqlIndexingPolicy -IncludedPath <String[]> -ExcludedPath <String[]> [-Automatic <Boolean>]
- -IndexingMode <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzCosmosDBSqlIndexingPolicy [-IncludedPath <PSIncludedPath[]>] [-SpatialSpec <PSSpatialSpec[]>]
+ [-CompositePath <PSCompositePath[][]>] [-ExcludedPath <String[]>] [-Automatic <Boolean>]
+ [-IndexingMode <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +49,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CompositePath
+Array of array of objects of type Microsoft.Azure.Commands.CosmosDB.PSCompositePath
+
+```yaml
+Type: PSCompositePath[][]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -71,7 +87,7 @@ Type: String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -82,11 +98,11 @@ Accept wildcard characters: False
 Array of strings containing includedPath (Specifies a path within a JSON document to be included in the Azure Cosmos DB service.) elements.
 
 ```yaml
-Type: String[]
+Type: PSIncludedPath[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -102,7 +118,22 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpatialSpec
+Array of objects of type Microsoft.Azure.Commands.CosmosDB.PSSpatialSpec
+
+```yaml
+Type: PSSpatialSpec[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

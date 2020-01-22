@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-    using System;
     using Microsoft.Azure.Management.CosmosDB.Models;
+    using System.Collections.Generic;
 
     public class PSSqlStoredProcedureGetResults 
     {
@@ -27,48 +27,28 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
             Name = sqlStoredProcedureGetResults.Name;
             Id = sqlStoredProcedureGetResults.Id;
-            SqlStoredProcedureGetResultsId = sqlStoredProcedureGetResults.SqlStoredProcedureGetResultsId;
-            Body = sqlStoredProcedureGetResults.Body;
-            _rid = sqlStoredProcedureGetResults._rid;
-            _ts = sqlStoredProcedureGetResults._ts;
-            _etag = sqlStoredProcedureGetResults._etag;
+            Location = sqlStoredProcedureGetResults.Location;
+            Tags = sqlStoredProcedureGetResults.Tags;
+            Resource = new PSSqlStoredProcedureGetPropertiesResource(sqlStoredProcedureGetResults.Resource);
         }
 
         /// <summary>
         /// Gets or sets Name the Cosmos DB SQL storedProcedure
         /// </summary>
         public string Name { get; set; }
-
         /// <summary>
         /// Gets or sets Id of the Cosmos DB SQL storedProcedure
         /// </summary>
         public string Id { get; set; }
-
         /// <summary>
-        /// Gets or sets name of the Cosmos DB SQL storedProcedure
+        /// Gets or sets Location of the Cosmos DB SQL storedProcedure
         /// </summary>
-        public string SqlStoredProcedureGetResultsId { get; set; }
-
+        public string Location { get; set; }
         /// <summary>
-        /// Gets or sets body of the Stored Procedure
+        /// Gets or sets Tags of the Cosmos DB SQL storedProcedure
         /// </summary>
-        public string Body { get; set; }
-
-        /// <summary>
-        /// Gets a system generated property. A unique identifier.
-        /// </summary>
-        public string _rid { get; set; }
-
-        /// <summary>
-        /// Gets a system generated property that denotes the last updated
-        /// timestamp of the resource.
-        /// </summary>
-        public object _ts { get; set; }
-
-        /// <summary>
-        /// Gets a system generated property representing the resource etag
-        /// required for optimistic concurrency control.
-        /// </summary>
-        public string _etag { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
+        //
+        public PSSqlStoredProcedureGetPropertiesResource Resource { get; set; }
     }
 }
