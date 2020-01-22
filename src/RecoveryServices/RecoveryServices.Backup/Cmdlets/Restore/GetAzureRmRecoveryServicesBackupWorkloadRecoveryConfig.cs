@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -80,6 +81,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPointConfig.AlternateWorkloadRestore)]
         public SwitchParameter AlternateWorkloadRestore { get; set; }
+
+        /// <summary>
+        /// Target Container to which files will be written
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public ContainerBase TargetContainer { get; set; }
+
+        /// <summary>
+        /// Use this switch to restore db as files to a given target container
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter RestoreAsFiles { get; set; }
+
+        /// <summary>
+        /// Specify Recovery point from which logs will be applies
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public RecoveryPointBase FromFul { get; set; }
+
+        /// <summary>
+        /// Specify Recovery point from which logs will be applies
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public string FilePath { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -225,6 +250,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     azureWorkloadRecoveryConfig.targetPhysicalPath = targetPhysicalPath;
                     azureWorkloadRecoveryConfig.ContainerId = GetContainerId(TargetItem.Id);
+                }
+                else if (RestoreAsFiles.IsPresent)
+                {
+                    if(TargetContainer == null)
+                    {
+                        throw new ArgumentNullException("TargetContainer", "TargetContainer can't be null for Restoring as files operation.");
+                    }
+
+                    azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
+                    azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
+                    azureWorkloadRecoveryConfig.ContainerId = (TargetContainer as AzureVmWorkloadContainer).Id;
+                    azureWorkloadRecoveryConfig.RecoveryMode = "FileRecovery";
+                    azureWorkloadRecoveryConfig.FilePath = FilePath;
                 }
                 RecoveryConfigBase baseobj = azureWorkloadRecoveryConfig;
                 WriteObject(baseobj);
@@ -403,6 +441,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     RecoveryPointId = "DefaultRangeRecoveryPoint"
                 };
                 recoveryPoint = azureWorkloadRecoveryPoint;
+            }
+            else if (RestoreAsFiles.IsPresent)
+            {
+                restoreRequestType = "Alternate WL Restore";
+                targetServer = TargetContainer.Name;
             }
 
             return new AzureWorkloadRecoveryConfig(targetServer, parentName, restoreRequestType, recoveryPoint, pointInTime);

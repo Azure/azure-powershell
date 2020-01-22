@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureWorkloadSQLRestoreRequest.RecoveryType =
                     string.Compare(wLRecoveryConfig.RestoreRequestType, "Original WL Restore") == 0 ?
                     RecoveryType.OriginalLocation : RecoveryType.AlternateLocation;
-                if (azureWorkloadSQLRestoreRequest.RecoveryType == RecoveryType.AlternateLocation)
+                if (azureWorkloadSQLRestoreRequest.RecoveryType == RecoveryType.AlternateLocation && wLRecoveryConfig.RecoveryMode == "FileRecovery")
                 {
                     azureWorkloadSQLRestoreRequest.TargetInfo = new TargetRestoreInfo()
                     {
@@ -400,6 +400,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ContainerId = wLRecoveryConfig.ContainerId
                     };
                     azureWorkloadSQLRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
+                }
+                if (wLRecoveryConfig.RecoveryMode == "FileRecovery")
+                {
+                    azureWorkloadSQLRestoreRequest.TargetInfo = new TargetRestoreInfo()
+                    {
+                        OverwriteOption = string.Compare(wLRecoveryConfig.OverwriteWLIfpresent, "No") == 0 ?
+                        OverwriteOptions.FailOnConflict : OverwriteOptions.Overwrite,
+                        ContainerId = wLRecoveryConfig.ContainerId,
+                        TargetDirectoryForFileRestore = wLRecoveryConfig.FilePath
+                    };
                 }
                 triggerRestoreRequest.Properties = azureWorkloadSQLRestoreRequest;
             }
@@ -416,7 +426,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureWorkloadSQLPointInTimeRestoreRequest.RecoveryType =
                     string.Compare(wLRecoveryConfig.RestoreRequestType, "Original WL Restore") == 0 ?
                     RecoveryType.OriginalLocation : RecoveryType.AlternateLocation;
-                if (azureWorkloadSQLPointInTimeRestoreRequest.RecoveryType == RecoveryType.AlternateLocation)
+                if (azureWorkloadSQLPointInTimeRestoreRequest.RecoveryType == RecoveryType.AlternateLocation && wLRecoveryConfig.RecoveryMode == "FileRecovery")
                 {
                     azureWorkloadSQLPointInTimeRestoreRequest.TargetInfo = new TargetRestoreInfo()
                     {
@@ -427,6 +437,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     };
                     azureWorkloadSQLPointInTimeRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
                 }
+
+                if (wLRecoveryConfig.RecoveryMode == "FileRecovery")
+                {
+                    azureWorkloadSQLPointInTimeRestoreRequest.TargetInfo = new TargetRestoreInfo()
+                    {
+                        OverwriteOption = string.Compare(wLRecoveryConfig.OverwriteWLIfpresent, "No") == 0 ?
+                        OverwriteOptions.FailOnConflict : OverwriteOptions.Overwrite,
+                        ContainerId = wLRecoveryConfig.ContainerId,
+                        TargetDirectoryForFileRestore = wLRecoveryConfig.FilePath
+                    };
+                }
+
                 azureWorkloadSQLPointInTimeRestoreRequest.PointInTime = wLRecoveryConfig.PointInTime;
                 triggerRestoreRequest.Properties = azureWorkloadSQLPointInTimeRestoreRequest;
             }
