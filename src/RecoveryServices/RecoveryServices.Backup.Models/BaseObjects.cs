@@ -504,6 +504,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public DateTime PointInTime { get; }
 
+        /// <summary>
+        /// Recovery Mode
+        /// </summary>
+        public string RecoveryMode { get; set; }
+
+        /// <summary>
+        /// File path for Restore as Files
+        /// </summary>
+        public string FilePath { get; set; }
+
         public RecoveryConfigBase(string restoreRequestType, RecoveryPointBase recoveryPoint, DateTime pointInTime)
         {
             RestoreRequestType = restoreRequestType;
