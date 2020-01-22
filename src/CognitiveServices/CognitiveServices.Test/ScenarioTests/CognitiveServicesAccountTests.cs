@@ -84,6 +84,14 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureCognitiveServiceAccount");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAsyncAccountOperations()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-AsyncAccountOperations");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAccount()
