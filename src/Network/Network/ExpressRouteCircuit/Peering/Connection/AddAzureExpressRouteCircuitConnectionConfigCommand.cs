@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31.Models;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
@@ -67,8 +66,7 @@ namespace Microsoft.Azure.Commands.Network
             circuitconnection = new PSExpressRouteCircuitConnection();
 
             circuitconnection.Name = this.Name;
-                  
-
+ 
             circuitconnection.ExpressRouteCircuitPeering = new PSResourceId();
             circuitconnection.ExpressRouteCircuitPeering.Id = peering.Id;
 
