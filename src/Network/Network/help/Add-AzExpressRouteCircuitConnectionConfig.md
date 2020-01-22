@@ -56,7 +56,7 @@ Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Ad
 
 ### -AddressPrefix
 A minimum /29 customer address space to create VxLan tunnels between Express Route Circuits for IPv4 tunnels.
-A minimum of /125 customer address space to create VxLan tunnels between Express Route Circuits for IPv6 tunnels.
+or a minimum of /125 customer address space to create VxLan tunnels between Express Route Circuits for IPv6 tunnels.
 
 ```yaml
 Type: System.String
