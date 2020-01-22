@@ -80,6 +80,11 @@ namespace Microsoft.Azure.Commands.Network
         public string HostName { get; set; }
 
         [Parameter(
+            HelpMessage = "Host names")]
+        [ValidateNotNullOrEmpty]
+        public string[] HostNames { get; set; }
+
+        [Parameter(
                HelpMessage = "RequireServerNameIndication")]
         [ValidateSet("true", "false", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
@@ -168,6 +173,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 httpListener.FirewallPolicy = new PSResourceId();
                 httpListener.FirewallPolicy.Id = this.FirewallPolicyId;
+            }
+
+            if (this.HostNames != null)
+            {
+                httpListener.HostNames = this.HostNames?.ToList();
             }
 
             if (this.CustomErrorConfiguration != null)
