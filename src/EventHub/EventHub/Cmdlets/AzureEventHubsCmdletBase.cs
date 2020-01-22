@@ -196,23 +196,28 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     {
         public LocalResourceIdentifier(string strResourceID) : base(strResourceID)
         {
-            string[] tokens = base.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-
-            // for upto 3 Parents 
-            switch (tokens.Length)
+            if (base.ParentResource != null && !(this.ResourceType.Equals("Microsoft.EventHub/namespaces") || this.ResourceType.Equals("Microsoft.ServiceBus/namespaces") || this.ResourceType.Equals("Microsoft.Relay/namespaces")))
             {
-                case 2:
-                    ParentResource = tokens[1];
-                    break;
-                case 4:
-                    ParentResource = tokens[1];
-                    ParentResource1 = tokens[3];
-                    break;
-                case 6:
-                    ParentResource = tokens[1];
-                    ParentResource1 = tokens[3];
-                    ParentResource2 = tokens[5];
-                    break;
+                string[] tokens = base.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+                // for upto 3 Parents 
+                switch (tokens.Length)
+                {
+                    case 2:
+                        ParentResource = tokens[1];
+                        break;
+                    case 4:
+                        ParentResource = tokens[1];
+                        ParentResource1 = tokens[3];
+                        break;
+                    case 6:
+                        ParentResource = tokens[1];
+                        ParentResource1 = tokens[3];
+                        ParentResource2 = tokens[5];
+                        break;
+                    default:
+                        throw new Exception("Invalid length of tokens");
+                }
             }
         }
 
