@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDataBoxEdgeOrder
 
 ## SYNOPSIS
-Remove the Order for a data box
+Removes the order for a device.
 
 ## SYNTAX
 
@@ -31,13 +31,13 @@ Remove-AzDataBoxEdgeOrder -InputObject <PSDataBoxEdgeOrder> [-AsJob] [-DefaultPr
 ```
 
 ## DESCRIPTION
-This **Remove-AzDataBoxEdgeOrder** will delete the configured order
+The **Remove-AzDataBoxEdgeOrder** cmdlet deletes an existing order for a Data Box Edge device.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeOrder -ResourceGroupName rgname -DeviceName device-name
+PS C:\> Remove-AzDataBoxEdgeOrder -ResourceGroupName resourceGroupName -DeviceName deviceName
 ```
 
 ## PARAMETERS
@@ -83,7 +83,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -128,7 +128,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -163,8 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

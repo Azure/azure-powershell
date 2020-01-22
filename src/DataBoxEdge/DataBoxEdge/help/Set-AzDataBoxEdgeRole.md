@@ -8,43 +8,54 @@ schema: 2.0.0
 # Set-AzDataBoxEdgeRole
 
 ## SYNOPSIS
-Update the Role
+Updates a Role for a device
 
 ## SYNTAX
 
 ### SetByNameParameterSet (Default)
 ```
-Set-AzDataBoxEdgeRole [-ResourceGroupName] <String> [-DeviceName] <String> -Name <String> -ShareName <String[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDataBoxEdgeRole [-ResourceGroupName] <String> [-DeviceName] <String> [-Name] <String>
+ -ShareName <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzDataBoxEdgeRole -ResourceId <String> -Name <String> -ShareName <String[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDataBoxEdgeRole -ResourceId <String> -ShareName <String[]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByParentObjectParameterSet
+### SetByInputObjectParameterSet
 ```
-Set-AzDataBoxEdgeRole -Name <String> -ShareName <String[]> [-DefaultProfile <IAzureContextContainer>]
- -DeviceObject <PSDataBoxEdgeDevice> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDataBoxEdgeRole -ShareName <String[]> [-DefaultProfile <IAzureContextContainer>]
+ -InputObject <PSDataBoxEdgeRole> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This **Set-AzDataBoxEdgeRole** will replace the share mappings with the new ones
+The **Set-AzDataBoxEdgeRole** cmdlet updates an IoT role for a Data Box Edge device. The old mounted shares will be replaced with the newly provided ones in the ShareName parameter.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $a = Set-AzDataBoxEdgeRole -ResourceGroupName rgname -DeviceName device-name -Name role-name -ShareName sharename1,sharename2,sharename3
+PS C:\> Set-AzDataBoxEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name roleiot -ShareName sharename1,sharename2,sharename3
 
-Name 
------------
-iot-role-name
+Name    IoTHostHub             Platform Status  IotEdgeDeviceId   IotDeviceId  ResourceGroupName
+----    ----------             -------- ------  ---------------   -----------  -----------------
+roleiot ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    resourceGroupName
 ```
 
 Share Names will replace the old mounted shares with the newly provided ones
+
+### Example 2
+```powershell
+PS C:\> Set-AzDataBoxEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name roleiot -ShareName @()
+
+Name    IoTHostHub             Platform Status  IotEdgeDeviceId   IotDeviceId  ResourceGroupName
+----    ----------             -------- ------  ---------------   -----------  -----------------
+roleiot ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    resourceGroupName
+```
+
+To unmount all shares
 
 ## PARAMETERS
 
@@ -74,17 +85,17 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DeviceObject
+### -InputObject
 Please provide corresponding device object
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice
-Parameter Sets: SetByParentObjectParameterSet
-Aliases:
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole
+Parameter Sets: SetByInputObjectParameterSet
+Aliases: Role
 
 Required: True
 Position: Named
@@ -98,13 +109,13 @@ Name of the Role
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -119,7 +130,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -134,12 +145,12 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -ShareName
-Mount points of local share in role(s)
+Share(s) in a role
 
 ```yaml
 Type: System.String[]
@@ -188,7 +199,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice
+### System.String
+
+### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole
 
 ## OUTPUTS
 
