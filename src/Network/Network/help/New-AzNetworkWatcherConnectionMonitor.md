@@ -45,9 +45,25 @@ New-AzNetworkWatcherConnectionMonitor -Location <String> -Name <String> [-Source
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### SetByConnectionMonitorV1
+```
+New-AzNetworkWatcherConnectionMonitor -Name <String> [-SourceResourceId <String>]
+ [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-DestinationResourceId <String>]
+ [-DestinationPort <Int32>] [-DestinationAddress <String>] [-ConfigureOnly] [-Tag <Hashtable>] [-Force]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByConnectionMonitorV2
+```
+New-AzNetworkWatcherConnectionMonitor -Name <String>
+ [-TestGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject]>]
+ [-Output <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorOutputObject]>]
+ [-Notes <String>] [-ConfigureOnly] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The New-AzNetworkWatcherConnectionMonitor cmdlet creates a connection monitor V1 or V2 for a specified source and destination or a test group.
-
 
 ## EXAMPLES
 
@@ -132,7 +148,7 @@ The Ip address of the connection monitor destination.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByLocation, SetByConnectionMonitorV1
 Aliases:
 
 Required: False
@@ -147,7 +163,7 @@ Destination port.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByLocation, SetByConnectionMonitorV1
 Aliases:
 
 Required: False
@@ -162,7 +178,7 @@ The ID of the connection monitor destination.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByLocation, SetByConnectionMonitorV1
 Aliases:
 
 Required: False
@@ -208,7 +224,7 @@ Default value is 60 seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByLocation, SetByConnectionMonitorV1
 Aliases:
 
 Required: False
@@ -268,7 +284,7 @@ Notes associated with connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByLocation, SetByConnectionMonitorV2
 Aliases:
 
 Required: False
@@ -283,7 +299,7 @@ The connection monitor output.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorOutputObject]
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByLocation, SetByConnectionMonitorV2
 Aliases:
 
 Required: False
@@ -313,7 +329,7 @@ Source port.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByLocation, SetByConnectionMonitorV1
 Aliases:
 
 Required: False
@@ -328,7 +344,7 @@ The ID of the connection monitor source.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByLocation, SetByConnectionMonitorV1
 Aliases:
 
 Required: False
@@ -358,7 +374,7 @@ The list of test group.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject]
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByLocation, SetByConnectionMonitorV2
 Aliases:
 
 Required: False
@@ -408,9 +424,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject, Microsoft.Azure.PowerShell.Cmdlets.Network, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject, Microsoft.Azure.PowerShell.Cmdlets.Network, Version=2.2.2.0, Culture=neutral, PublicKeyToken=null]]
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorOutputObject, Microsoft.Azure.PowerShell.Cmdlets.Network, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorOutputObject, Microsoft.Azure.PowerShell.Cmdlets.Network, Version=2.2.2.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

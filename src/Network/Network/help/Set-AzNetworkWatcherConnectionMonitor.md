@@ -34,6 +34,26 @@ Set-AzNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> -Name <
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### SetByConnectionMonitorV1
+```
+Set-AzNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> -NetworkWatcherName <String>
+ -ResourceGroupName <String> -Location <String> -ResourceId <String> -InputObject <PSConnectionMonitorResult>
+ -Name <String> [-SourceResourceId <String>] [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>]
+ [-DestinationResourceId <String>] [-DestinationAddress <String>] [-DestinationPort <Int32>] [-ConfigureOnly]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SetByConnectionMonitorV2
+```
+Set-AzNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> -NetworkWatcherName <String>
+ -ResourceGroupName <String> -Location <String> -InputObject <PSConnectionMonitorResult> -Name <String>
+ [-TestGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject]>]
+ [-Output <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorOutputObject]>]
+ [-Notes <String>] [-ConfigureOnly] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### SetByLocation
 ```
 Set-AzNetworkWatcherConnectionMonitor -Location <String> -Name <String> [-SourceResourceId <String>]
@@ -47,24 +67,14 @@ Set-AzNetworkWatcherConnectionMonitor -Location <String> -Name <String> [-Source
 
 ### SetByResourceId
 ```
-Set-AzNetworkWatcherConnectionMonitor -ResourceId <String> [-SourceResourceId <String>]
- [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-DestinationResourceId <String>]
- [-DestinationAddress <String>] [-DestinationPort <Int32>]
- [-TestGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject]>]
- [-Output <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorOutputObject]>]
- [-Notes <String>] [-ConfigureOnly] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkWatcherConnectionMonitor -ResourceId <String> [-ConfigureOnly] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObject
 ```
-Set-AzNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResult> [-SourceResourceId <String>]
- [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-DestinationResourceId <String>]
- [-DestinationAddress <String>] [-DestinationPort <Int32>]
- [-TestGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject]>]
- [-Output <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorOutputObject]>]
- [-Notes <String>] [-ConfigureOnly] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResult> [-ConfigureOnly] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +115,6 @@ Tags                        : {
 ```
 
 In this example we update existing connection monitor by changing destinationAddress and adding tags.
-
 
 ## PARAMETERS
 
@@ -159,7 +168,7 @@ The Ip address of the connection monitor destination.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByConnectionMonitorV1, SetByLocation
 Aliases:
 
 Required: False
@@ -174,7 +183,7 @@ Destination port.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByConnectionMonitorV1, SetByLocation
 Aliases:
 
 Required: False
@@ -189,7 +198,7 @@ The ID of the connection monitor destination.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByConnectionMonitorV1, SetByLocation
 Aliases:
 
 Required: False
@@ -204,7 +213,7 @@ Connection monitor object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
-Parameter Sets: SetByInputObject
+Parameter Sets: SetByConnectionMonitorV1, SetByConnectionMonitorV2, SetByInputObject
 Aliases:
 
 Required: True
@@ -219,7 +228,7 @@ Location of the network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByLocation
+Parameter Sets: SetByConnectionMonitorV1, SetByConnectionMonitorV2, SetByLocation
 Aliases:
 
 Required: True
@@ -235,7 +244,7 @@ Default value is 60 seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByConnectionMonitorV1, SetByLocation
 Aliases:
 
 Required: False
@@ -250,7 +259,7 @@ The connection monitor name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByName, SetByResource, SetByLocation
+Parameter Sets: SetByName, SetByResource, SetByConnectionMonitorV1, SetByConnectionMonitorV2, SetByLocation
 Aliases: ConnectionMonitorName
 
 Required: True
@@ -265,7 +274,7 @@ The network watcher resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-Parameter Sets: SetByResource
+Parameter Sets: SetByResource, SetByConnectionMonitorV1, SetByConnectionMonitorV2
 Aliases:
 
 Required: True
@@ -280,7 +289,7 @@ The name of network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByName
+Parameter Sets: SetByName, SetByConnectionMonitorV1, SetByConnectionMonitorV2
 Aliases:
 
 Required: True
@@ -295,7 +304,7 @@ Notes associated with connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByConnectionMonitorV2, SetByLocation
 Aliases:
 
 Required: False
@@ -310,7 +319,7 @@ The connection monitor output.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorOutputObject]
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByConnectionMonitorV2, SetByLocation
 Aliases:
 
 Required: False
@@ -325,7 +334,7 @@ The name of the network watcher resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByName
+Parameter Sets: SetByName, SetByConnectionMonitorV1, SetByConnectionMonitorV2
 Aliases:
 
 Required: True
@@ -340,7 +349,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: SetByConnectionMonitorV1, SetByResourceId
 Aliases:
 
 Required: True
@@ -355,7 +364,7 @@ Source port.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByConnectionMonitorV1, SetByLocation
 Aliases:
 
 Required: False
@@ -370,7 +379,7 @@ The ID of the connection monitor source.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByConnectionMonitorV1, SetByLocation
 Aliases:
 
 Required: False
@@ -385,7 +394,7 @@ A hashtable which represents resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByConnectionMonitorV1, SetByConnectionMonitorV2, SetByLocation
 Aliases:
 
 Required: False
@@ -400,7 +409,7 @@ The list of test group.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject]
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByResource, SetByConnectionMonitorV2, SetByLocation
 Aliases:
 
 Required: False
@@ -461,57 +470,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzNetworkWatcher](./New-AzNetworkWatcher.md)
-
-[Get-AzNetworkWatcher](./Get-AzNetworkWatcher.md)
-
-[Remove-AzNetworkWatcher](./Remove-AzNetworkWatcher.md)
-
-[Get-AzNetworkWatcherNextHop](./Get-AzNetworkWatcherNextHop.md)
-
-[Get-AzNetworkWatcherSecurityGroupView](./Get-AzNetworkWatcherSecurityGroupView.md)
-
-[Get-AzNetworkWatcherTopology](./Get-AzNetworkWatcherTopology.md)
-
-[Get-AzNetworkWatcherTroubleshootingResult](./Get-AzNetworkWatcherTroubleshootingResult.md)
-
-[New-AzNetworkWatcherPacketCapture](./New-AzNetworkWatcherPacketCapture.md)
-
-[New-AzPacketCaptureFilterConfig](./New-AzPacketCaptureFilterConfig.md)
-
-[Get-AzNetworkWatcherPacketCapture](./Get-AzNetworkWatcherPacketCapture.md)
-
-[Remove-AzNetworkWatcherPacketCapture](./Remove-AzNetworkWatcherPacketCapture.md)
-
-[Stop-AzNetworkWatcherPacketCapture](./Stop-AzNetworkWatcherPacketCapture.md)
-
-[Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor.md)
-
-[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport.md)
-
-[Remove-AzNetworkWatcherConnectionMonitor](./Remove-AzNetworkWatcherConnectionMonitor.md)
-
-[Set-AzNetworkWatcherConnectionMonitor](./Set-AzNetworkWatcherConnectionMonitor.md)
-
-[Stop-AzNetworkWatcherConnectionMonitor](./Stop-AzNetworkWatcherConnectionMonitor.md)
-
-[New-AzNetworkWatcherConnectionMonitor](./New-AzNetworkWatcherConnectionMonitor.md)
-
-[New-AzNetworkWatcherProtocolConfiguration](./New-AzNetworkWatcherProtocolConfiguration.md)
-
-[Test-AzNetworkWatcherIPFlow](./Test-AzNetworkWatcherIPFlow.md)
-
-[Test-AzNetworkWatcherConnectivity](./Test-AzNetworkWatcherConnectivity.md)
-
-[Start-AzNetworkWatcherResourceTroubleshooting](./Start-AzNetworkWatcherResourceTroubleshooting.md)
-
-[Start-AzNetworkWatcherConnectionMonitor](./Start-AzNetworkWatcherConnectionMonitor.md)
-
-[Set-AzNetworkWatcherConfigFlowLog](./Set-AzNetworkWatcherConfigFlowLog.md)
-
-[Get-AzNetworkWatcherReachabilityReport](./Get-AzNetworkWatcherReachabilityReport.md)
-
-[Get-AzNetworkWatcherReachabilityProvidersList](./Get-AzNetworkWatcherReachabilityProvidersList.md)
-
-[Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
