@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 
-## Version 2.2.2
+## Version 2.3.0
 * New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
 * Add support for assigning management IP configuration to Azure Firewall - a dedicated subnet and Public IP that the firewall will use for its management traffic
     - Updated New-AzFirewall cmdlet:
@@ -28,14 +28,14 @@
         - Added method SetManagementIpConfiguration on firewall object - requires a subnet and a Public IP address as input - subnet name must be "AzureFirewallManagementSubnet"
 * Corrected Get-AzNetworkSecurityGroup examples to show examples for NSG's instead of network interfaces.
 * Fixed typo in New-AzureRmVpnSite command that was preventing resource id completer from completing a parameter.
-* Added support for Url Confiugration in Rewrite Rules Action Set in the Application Gateway
+* Added support for Url Configuration in Rewrite Rules Action Set in the Application Gateway
     - New cmdlets added:
         - New-AzApplicationGatewayRewriteRuleUrlConfiguration
     - Cmdlets updated with optional parameter - UrlConfiguration
         - New-AzApplicationGatewayRewriteRuleActionSet
 
 ## Version 2.2.1
-* Upgrade dependancy of Microsoft.Azure.Management.Sql from 1.36-preview to 1.37-preview
+* Upgrade dependency of Microsoft.Azure.Management.Sql from 1.36-preview to 1.37-preview
 
 ## Version 2.2.0
 * Update references in .psd1 to use relative path
