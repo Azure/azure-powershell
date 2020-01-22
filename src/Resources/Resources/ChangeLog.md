@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.10.0
 * Make -Scope optional in *-AzPolicyAssignment cmdlets with default to context subscription
+* Add examples of creating ADServicePrincipal with password and key credential
 
 ## Version 1.9.1
 * Fix an error in help document of `Remove-AzTag`.

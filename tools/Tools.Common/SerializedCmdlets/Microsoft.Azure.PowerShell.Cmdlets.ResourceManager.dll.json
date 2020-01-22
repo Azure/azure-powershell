@@ -30063,7 +30063,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -30469,7 +30469,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -30827,7 +30827,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -31209,7 +31209,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -31591,7 +31591,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -31973,7 +31973,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -34662,7 +34662,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -37179,7 +37179,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -37489,7 +37489,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -37823,7 +37823,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -44654,7 +44654,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
             "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -45103,7 +45103,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -45551,7 +45551,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -45999,7 +45999,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -46447,7 +46447,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -46895,7 +46895,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -47343,7 +47343,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -47791,7 +47791,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -48239,7 +48239,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -48687,7 +48687,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -49135,7 +49135,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -49559,7 +49559,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -49983,7 +49983,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -50407,7 +50407,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -52233,7 +52233,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
             "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -52597,7 +52597,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -52942,7 +52942,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -53287,7 +53287,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -53632,7 +53632,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -53977,7 +53977,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -54322,7 +54322,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -54667,7 +54667,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -55012,7 +55012,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -55357,7 +55357,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -55702,7 +55702,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -56023,7 +56023,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -56344,7 +56344,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -56665,7 +56665,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
                   "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -67992,7 +67992,7 @@
     "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode": {
       "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
       "Name": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -68107,7 +68107,7 @@
     "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink": {
       "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
       "Name": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Uri": "System.String",
         "ContentVersion": "System.String"
@@ -68320,7 +68320,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ResourceManager.Models.AliasType]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ResourceManager.Models.AliasType]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ResourceManager.Models.AliasType, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ResourceManager.Models.AliasType, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -68332,7 +68332,7 @@
     "Microsoft.Azure.Management.ResourceManager.Models.AliasType": {
       "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
       "Name": "Microsoft.Azure.Management.ResourceManager.Models.AliasType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.AliasType, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.AliasType, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Paths": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ResourceManager.Models.AliasPathType]",
         "Name": "System.String"
@@ -68391,7 +68391,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ResourceManager.Models.AliasPathType]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ResourceManager.Models.AliasPathType]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ResourceManager.Models.AliasPathType, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ResourceManager.Models.AliasPathType, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -68403,7 +68403,7 @@
     "Microsoft.Azure.Management.ResourceManager.Models.AliasPathType": {
       "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
       "Name": "Microsoft.Azure.Management.ResourceManager.Models.AliasPathType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.AliasPathType, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.AliasPathType, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ApiVersions": "System.Collections.Generic.IList`1[System.String]",
         "Path": "System.String"
@@ -68644,7 +68644,7 @@
     "Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentExtended": {
       "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
       "Name": "Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentExtended",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentExtended, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentExtended, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Type": "System.Nullable`1[Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentType]",
         "ProvisioningState": "System.String",
@@ -68708,7 +68708,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentType, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentType, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -68720,7 +68720,7 @@
     "Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentType": {
       "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
       "Name": "Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentType, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.OnErrorDeploymentType, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -68815,7 +68815,7 @@
     "Microsoft.Azure.Management.ResourceManager.Models.Identity": {
       "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
       "Name": "Microsoft.Azure.Management.ResourceManager.Models.Identity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.Identity, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.Identity, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "UserAssignedIdentities": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.ResourceManager.Models.IdentityUserAssignedIdentitiesValue]",
         "Type": "System.Nullable`1[Microsoft.Azure.Management.ResourceManager.Models.ResourceIdentityType]",
@@ -68884,7 +68884,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.ResourceManager.Models.IdentityUserAssignedIdentitiesValue]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.ResourceManager.Models.IdentityUserAssignedIdentitiesValue]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Management.ResourceManager.Models.IdentityUserAssignedIdentitiesValue, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Management.ResourceManager.Models.IdentityUserAssignedIdentitiesValue, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -68897,7 +68897,7 @@
     "Microsoft.Azure.Management.ResourceManager.Models.IdentityUserAssignedIdentitiesValue": {
       "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
       "Name": "Microsoft.Azure.Management.ResourceManager.Models.IdentityUserAssignedIdentitiesValue",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.IdentityUserAssignedIdentitiesValue, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.IdentityUserAssignedIdentitiesValue, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.String",
         "ClientId": "System.String"
@@ -68956,7 +68956,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.ResourceManager.Models.ResourceIdentityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Management.ResourceManager.Models.ResourceIdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.ResourceManager.Models.ResourceIdentityType, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.ResourceManager.Models.ResourceIdentityType, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -68968,7 +68968,7 @@
     "Microsoft.Azure.Management.ResourceManager.Models.ResourceIdentityType": {
       "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
       "Name": "Microsoft.Azure.Management.ResourceManager.Models.ResourceIdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.ResourceIdentityType, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.ResourceIdentityType, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -69063,7 +69063,7 @@
     "Microsoft.Azure.Management.ResourceManager.Models.Plan": {
       "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
       "Name": "Microsoft.Azure.Management.ResourceManager.Models.Plan",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.Plan, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.Plan, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Publisher": "System.String",
@@ -69137,7 +69137,7 @@
     "Microsoft.Azure.Management.ResourceManager.Models.Sku": {
       "Namespace": "Microsoft.Azure.Management.ResourceManager.Models",
       "Name": "Microsoft.Azure.Management.ResourceManager.Models.Sku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.Sku, Microsoft.Azure.Management.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.Sku, Microsoft.Azure.Management.ResourceManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Capacity": "System.Nullable`1[System.Int32]",
         "Name": "System.String",

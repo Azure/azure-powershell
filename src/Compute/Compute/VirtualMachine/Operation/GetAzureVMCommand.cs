@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string ListNextLinkVirtualMachinesParamSet = "ListNextLinkVirtualMachinesParamSet";
         protected const string ListLocationVirtualMachinesParamSet = "ListLocationVirtualMachinesParamSet";
         private const string InfoNotAvailable = "Info Not Available";
+        private const int MaxNumVMforStatus = 100;
 
         [Parameter(
            Mandatory = false,
@@ -154,11 +155,13 @@ namespace Microsoft.Azure.Commands.Compute
         {
             if (vmListResult.Body != null)
             {
+                int vm_count = 0;
                 foreach (var item in vmListResult.Body)
                 {
+                    vm_count++;
                     var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
                     psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
-                    if (this.Status.IsPresent)
+                    if (this.Status.IsPresent && vm_count <= MaxNumVMforStatus)
                     {
                         VirtualMachine state = null;
                         try
@@ -192,6 +195,11 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     psItem.DisplayHint = this.DisplayHint;
                     psResultListStatus.Add(psItem);
+                }
+
+                if (this.Status.IsPresent && vm_count > MaxNumVMforStatus)
+                {
+                    WriteWarning(string.Format(Properties.Resources.VirtualMachineTooManyVMsWithStatusParameter, MaxNumVMforStatus));
                 }
             }
 
