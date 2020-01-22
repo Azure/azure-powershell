@@ -11,6 +11,9 @@
 * **Set-AzApiManagementApi**
     Added example to show how to update the ServiceUrl using the cmdlet
 
+#### Az.Blueprint
+* Added support to include subfolders when deploying blueprints with artifacts
+
 #### Az.Compute
 * Limit the number of VM status to 100 to avoid throttling when Get-AzVM -Status is performed without VM name.
 * Add Update-AzDiskEncryptionSet cmdlet
@@ -33,8 +36,17 @@
 
 #### Az.Network
 * New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
+* Add support for assigning management IP configuration to Azure Firewall - a dedicated subnet and Public IP that the firewall will use for its management traffic
+    - Updated New-AzFirewall cmdlet:
+        - Added parameter -ManagementPublicIpAddress (not mandatory) which accepts a Public IP Address object
+        - Added method SetManagementIpConfiguration on firewall object - requires a subnet and a Public IP address as input - subnet name must be "AzureFirewallManagementSubnet"
 * Corrected Get-AzNetworkSecurityGroup examples to show examples for NSG's instead of network interfaces.
 * Fixed typo in New-AzureRmVpnSite command that was preventing resource id completer from completing a parameter.
+* Added support for Url Configuration in Rewrite Rules Action Set in the Application Gateway
+    - New cmdlets added:
+        - New-AzApplicationGatewayRewriteRuleUrlConfiguration
+    - Cmdlets updated with optional parameter - UrlConfiguration
+        - New-AzApplicationGatewayRewriteRuleActionSet
 
 #### Az.PolicyInsights
 * Support evaluating compliance prior to determining what resource to remediate
