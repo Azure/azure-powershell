@@ -14,6 +14,9 @@
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Models
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Non-compliance summary on a particular summary level.
     /// </summary>
@@ -30,6 +33,23 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
         public int? NonCompliantPolicies { get; }
 
         /// <summary>
+        /// Gets or sets the resources summary at this level.
+        /// </summary>
+        public IList<ComplianceDetail> ResourceDetails { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy artifact summary at this level. For query
+        /// scope level, it represents policy assignment summary. For policy
+        /// assignment level, it represents policy definitions summary.
+        /// </summary>
+        public IList<ComplianceDetail> PolicyDetails { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy definition group summary at this level.
+        /// </summary>
+        public IList<ComplianceDetail> PolicyGroupDetails { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="SummaryResults" /> class.
         /// </summary>
         /// <param name="summaryResults">Summary results.</param>
@@ -42,6 +62,9 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
 
             this.NonCompliantPolicies = summaryResults.NonCompliantPolicies;
             this.NonCompliantResources = summaryResults.NonCompliantResources;
+            this.ResourceDetails = summaryResults.ResourceDetails.Select(resourceDetail => new ComplianceDetail(resourceDetail)).ToList();
+            this.PolicyDetails = summaryResults.PolicyDetails.Select(policyDetail => new ComplianceDetail(policyDetail)).ToList();
+            this.PolicyGroupDetails = summaryResults.PolicyGroupDetails.Select(policyGroupDetail => new ComplianceDetail(policyGroupDetail)).ToList();
         }
     }
 }

@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.5'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.PolicyInsights.dll'
@@ -76,7 +76,8 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzPolicyEvent', 'Get-AzPolicyState', 'Get-AzPolicyStateSummary', 
                'Get-AzPolicyRemediation', 'Remove-AzPolicyRemediation', 
-               'Start-AzPolicyRemediation', 'Stop-AzPolicyRemediation'
+               'Start-AzPolicyRemediation', 'Stop-AzPolicyRemediation',
+               'Get-AzPolicyMetadata'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -99,7 +100,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','Provider','Policy','PolicyInsights','PolicyEvent','PolicyState','Remediation'
+        Tags = 'Azure','ResourceManager','ARM','Provider','Policy','PolicyInsights','PolicyEvent','PolicyState','Remediation', 'PolicyMetadata'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'

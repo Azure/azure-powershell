@@ -51,8 +51,7 @@ function Test-CreateShare
 
 
 	$staname = Get-StorageAccountCredentialName
-	$encryptionKeyString = Get-EncryptionKey 
-	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
+	$encryptionKey = Get-EncryptionKey 
 	$storageAccountType = 'GeneralPurposeStorage'
 	$storageAccountSkuName = 'Standard_LRS'
 	$storageAccountLocation = 'WestUS'

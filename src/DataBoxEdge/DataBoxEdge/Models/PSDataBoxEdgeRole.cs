@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Azure.Commands.DataBoxEdge.Common;
-using Microsoft.Azure.Management.EdgeGateway.Models;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+﻿using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Role = Microsoft.Azure.Management.EdgeGateway.Models.Role;
+using System;
+using Microsoft.Azure.Management.DataBoxEdge.Models;
+using Role = Microsoft.Azure.Management.DataBoxEdge.Models.Role;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
 {
@@ -11,16 +10,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
     {
         [Ps1Xml(Label = "Name", Target = ViewControl.Table,
             ScriptBlock = "$_.role.Name")]
+        [Ps1Xml(Label = "IoTHostHub", Target = ViewControl.Table,
+            ScriptBlock = "$_.role.IoTDeviceDetails.IoTHostHub")]
+        [Ps1Xml(Label = "Platform", Target = ViewControl.Table,
+            ScriptBlock = "$_.role.HostPlatform")]
+        [Ps1Xml(Label = "Status", Target = ViewControl.Table,
+            ScriptBlock = "$_.role.RoleStatus")]
         [Ps1Xml(Label = "IotEdgeDeviceId", Target = ViewControl.Table,
             ScriptBlock = "$_.role.IoTEdgeDeviceDetails.DeviceId")]
         [Ps1Xml(Label = "IotDeviceId", Target = ViewControl.Table,
             ScriptBlock = "$_.role.IoTDeviceDetails.DeviceId")]
-        [Ps1Xml(Label = "IotEdgeDeviceId", Target = ViewControl.Table,
-            ScriptBlock = "$_.role.IoTDeviceDetails.IoTHostHub")]
         public Role Role;
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table)]
         public string ResourceGroupName;
+
         public string DeviceName { get; set; }
 
         public string Id;

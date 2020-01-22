@@ -20,12 +20,12 @@ using System.Net;
 using System.Security;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.Management.DataBoxEdge;
+using Microsoft.Azure.Management.DataBoxEdge.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
 using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Role;
+using ResourceModel = Microsoft.Azure.Management.DataBoxEdge.Models.Role;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
 {
@@ -177,6 +177,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
             }
         }
 
+        private string GetConnectionString(string hostName, string deviceId, string sharedAccessKey)
+        {
+            return string.Format("HostName={0};DeviceId={1};SharedAccessKey={2}",
+                hostName, deviceId, sharedAccessKey);
+        }
+
 
         public static IoTRole GetIoTRoleObject(
             string deviceId,
@@ -188,11 +194,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
             string roleStatus)
         {
             var authentication = new Authentication() {SymmetricKey = new SymmetricKey(iotDeviceSecret)};
-            var ioTDeviceInfo = new IoTDeviceInfo(deviceId, ioTHostHub, authentication);
+            var ioTDeviceInfo = new IoTDeviceInfo(deviceId, ioTHostHub, authentication: authentication);
 
             var edgeAuthentication = new Authentication()
                 {SymmetricKey = new SymmetricKey(iotEdgeDeviceSecret)};
-            var ioTEdgeDeviceInfo = new IoTDeviceInfo(edgeDeviceId, ioTHostHub, edgeAuthentication);
+            var ioTEdgeDeviceInfo = new IoTDeviceInfo(edgeDeviceId, ioTHostHub, authentication: edgeAuthentication);
 
             return new IoTRole(platform, ioTDeviceInfo, ioTEdgeDeviceInfo, roleStatus);
         }
@@ -251,14 +257,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
             var iotDeviceSecret = DataBoxEdgeManagementClient.Devices.GetAsymmetricEncryptedSecret(
                 this.DeviceName,
                 this.ResourceGroupName,
-                this.iotDeviceAccessKey,
+                GetConnectionString(this.IotHostHub, this.IotDeviceId, this.iotDeviceAccessKey),
                 this.EncryptionKey.ConvertToString()
             );
 
             var iotEdgeDeviceSecret = DataBoxEdgeManagementClient.Devices.GetAsymmetricEncryptedSecret(
                 this.DeviceName,
                 this.ResourceGroupName,
-                this.iotEdgeDeviceAccessKey,
+                GetConnectionString(this.IotHostHub, this.IotEdgeDeviceId, this.iotEdgeDeviceAccessKey),
                 this.EncryptionKey.ConvertToString()
             );
 
@@ -284,8 +290,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
             if (ConnectionString.IsPresent)
             {
                 ParseIotDeviceConnectionString();
-                WriteVerbose(this.IotDeviceConnectionString.ConvertToString());
-                WriteVerbose(this.IotEdgeDeviceConnectionString.ConvertToString());
                 ParseEdgeDeviceConnectionString();
                 int c = string.Compare(this.iotDeviceHostHub, this.iotEdgeDeviceHostHub);
                 if (c != 0)
