@@ -219,4 +219,7 @@
   <data name="UpdateStep" xml:space="preserve">
     <value>Update step</value>
   </data>
+  <data name="HealthCheckPropertiesFileNotFound" xml:space="preserve">
+    <value>The health check properties file path '{0}' does not exist.</value>
+  </data>
 </root>

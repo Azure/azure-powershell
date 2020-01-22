@@ -380,6 +380,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 DataLakeAudience = "DataLakeAudience",
                 AzureOperationalInsightsEndpointResourceId = "AzureOperationalInsightsEndpointResourceId",
                 AzureOperationalInsightsEndpoint = "https://AzureOperationalInsights",
+                AzureAttestationServiceEndpointResourceId = "AzureAttestationServiceEndpointResourceId",
+                AzureAttestationServiceEndpointSuffix = "https://AzureAttestationService",
             };
 
             var dict = new Dictionary<string, object>();
@@ -403,6 +405,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             dict["DataLakeAudience"] = "DataLakeAudience";
             dict["AzureOperationalInsightsEndpointResourceId"] = "AzureOperationalInsightsEndpointResourceId";
             dict["AzureOperationalInsightsEndpoint"] = "https://AzureOperationalInsights";
+            dict["AzureAttestationServiceEndpointResourceId"] = "AzureAttestationServiceEndpointResourceId";
+            dict["AzureAttestationServiceEndpointSuffix"] = "https://AzureAttestationService";
             cmdlet.SetBoundParameters(dict);
 
             cmdlet.InvokeBeginProcessing();
@@ -430,6 +434,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(cmdlet.DataLakeAudience, actual.DataLakeEndpointResourceId);
             Assert.Equal(cmdlet.AzureOperationalInsightsEndpointResourceId, actual.AzureOperationalInsightsEndpointResourceId);
             Assert.Equal(cmdlet.AzureOperationalInsightsEndpoint, actual.AzureOperationalInsightsEndpoint);
+            Assert.Equal(cmdlet.AzureAttestationServiceEndpointResourceId, actual.AzureAttestationServiceEndpointResourceId);
+            Assert.Equal(cmdlet.AzureAttestationServiceEndpointSuffix, actual.AzureAttestationServiceEndpointSuffix);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.GetEnvironment("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);

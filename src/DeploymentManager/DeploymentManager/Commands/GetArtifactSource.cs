@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Position = 1,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the artifact source.")]
         [ValidateNotNullOrEmpty]
@@ -77,14 +77,22 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 this.Name = parsedResourceId.ResourceName;
             }
 
-            var psArtifactSource = new PSArtifactSource()
+            if (!string.IsNullOrWhiteSpace(this.Name))
             {
-                ResourceGroupName = this.ResourceGroupName,
-                Name = this.Name,
-            };
+                var psArtifactSource = new PSArtifactSource()
+                {
+                    ResourceGroupName = this.ResourceGroupName,
+                    Name = this.Name,
+                };
 
-            psArtifactSource = this.DeploymentManagerClient.GetArtifactSource(psArtifactSource);
-            this.WriteObject(psArtifactSource);
+                psArtifactSource = this.DeploymentManagerClient.GetArtifactSource(psArtifactSource);
+                this.WriteObject(psArtifactSource);
+            }
+            else
+            {
+                var psArtifactSources = this.DeploymentManagerClient.ListArtifactSources(this.ResourceGroupName);
+                this.WriteObject(psArtifactSources, enumerateCollection: true);
+            }
         }
     }
 }
