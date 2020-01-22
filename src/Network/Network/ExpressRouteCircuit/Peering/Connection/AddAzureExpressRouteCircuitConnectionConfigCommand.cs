@@ -55,8 +55,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var circuitconnection = peering.Connections.SingleOrDefault(
                     resource =>
-                        string.Equals(resource.Name, Name, System.StringComparison.CurrentCultureIgnoreCase)
-                );
+                        string.Equals(resource.Name, Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (circuitconnection != null)
             {
