@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support to include subfolders when deploying blueprints with artifacts
 
 ## Version 0.2.9
 * Update references in .psd1 to use relative path
