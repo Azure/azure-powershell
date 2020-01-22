@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (circuitconnection != null)
             {
-                throw new ArgumentException("Circuit Connection {0} is already added ", Name);
+                throw new ArgumentException(string.Format("Circuit Connection {0} is already added ", Name));
             }
 
             circuitconnection = new PSExpressRouteCircuitConnection();

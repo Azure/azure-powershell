@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "AddressPrefixType")]
         [ValidateSet(
            IPv4,

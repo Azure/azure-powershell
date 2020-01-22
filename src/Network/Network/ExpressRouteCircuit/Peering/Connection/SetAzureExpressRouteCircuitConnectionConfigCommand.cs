@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network {
             Position = 1,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "Express Route Circuit Peering intiating connection")]
+            HelpMessage = "Express Route Circuit Peering initiating connection")]
         [ValidateNotNullOrEmpty]
         public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
@@ -57,12 +57,13 @@ namespace Microsoft.Azure.Commands.Network {
 
             if (null == circuitconnection)
             {
-                throw new ArgumentException("Circuit Connection with Name {0} was not added to the private peering", Name);
+                throw new ArgumentException(string.Format("Circuit Connection with Name {0} was not added to the private peering", Name));
             }
 
             circuitconnection.Name = this.Name;
 
-            if (null != peering.Id) {
+            if (null != peering.Id) 
+            {
                 circuitconnection.ExpressRouteCircuitPeering.Id = peering.Id;
             }
 
