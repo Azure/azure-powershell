@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
-            return ValidateConnectionMonitorV2Parameters(this.SourceResourceId, this.DestinationResourceId, 
+            return ValidateConnectionMonitorV1V2Parameters(this.SourceResourceId, this.DestinationResourceId, 
                 null, this.DestinationAddress, 
                 this.MonitoringIntervalInSeconds, this.TestGroup, this.Output);
         }
