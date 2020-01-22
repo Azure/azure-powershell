@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.ASRVaultBackupProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ASRVaultBackupProperties, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ASRVaultBackupProperties, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackupStorageRedundancy": "System.String"
             },
@@ -67,7 +67,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
               "Name": "System.String",
@@ -174,7 +174,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
                     "Name": "System.String",
@@ -301,7 +301,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
               "Name": "System.String",
@@ -401,6 +401,60 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "TagName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "TagValue",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Tag",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections",
+            "Name": "System.Collections.Hashtable",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzContext",
@@ -458,7 +512,7 @@
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
-              "Position": -2147483648,
+              "Position": 1,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
@@ -482,7 +536,263 @@
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
               "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ByTagNameValueParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "TagName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "TagValue",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ByTagObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Tag",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 2,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
@@ -544,7 +854,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.VaultSettingsFilePath",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.VaultSettingsFilePath, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.VaultSettingsFilePath, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FilePath": "System.String"
             },
@@ -597,7 +907,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
               "Name": "System.String",
@@ -812,7 +1122,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
                     "Name": "System.String",
@@ -1050,7 +1360,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
                     "Name": "System.String",
@@ -1240,7 +1550,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
                     "Name": "System.String",
@@ -1430,7 +1740,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
                     "Name": "System.String",
@@ -1579,7 +1889,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
               "Name": "System.String",
@@ -1685,6 +1995,24 @@
             "Namespace": "System",
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Tag",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections",
+            "Name": "System.Collections.Hashtable",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1808,6 +2136,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "Tag",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzContext",
@@ -1864,7 +2216,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.VaultOperationOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.VaultOperationOutput, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.VaultOperationOutput, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Response": "System.String"
             },
@@ -1917,7 +2269,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
               "Name": "System.String",
@@ -2024,7 +2376,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
                     "Name": "System.String",
@@ -2168,7 +2520,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
               "Name": "System.String",
@@ -2236,7 +2588,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2295,7 +2647,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
                     "Name": "System.String",
@@ -2369,7 +2721,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2467,7 +2819,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
               "Name": "System.String",
@@ -2574,7 +2926,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
                     "Name": "System.String",
@@ -2840,7 +3192,7 @@
     "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
       "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ProvisioningState": "System.String"
       },
@@ -3074,7 +3426,7 @@
     "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
       "Name": "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

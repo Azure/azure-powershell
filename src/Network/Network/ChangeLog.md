@@ -19,10 +19,23 @@
 --->
 
 ## Upcoming Release
+
+## Version 2.2.2
 * New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
+* Add support for assigning management IP configuration to Azure Firewall - a dedicated subnet and Public IP that the firewall will use for its management traffic
+    - Updated New-AzFirewall cmdlet:
+        - Added parameter -ManagementPublicIpAddress (not mandatory) which accepts a Public IP Address object
+        - Added method SetManagementIpConfiguration on firewall object - requires a subnet and a Public IP address as input - subnet name must be "AzureFirewallManagementSubnet"
+* Corrected Get-AzNetworkSecurityGroup examples to show examples for NSG's instead of network interfaces.
+* Fixed typo in New-AzureRmVpnSite command that was preventing resource id completer from completing a parameter.
+* Added support for Url Confiugration in Rewrite Rules Action Set in the Application Gateway
+    - New cmdlets added:
+        - New-AzApplicationGatewayRewriteRuleUrlConfiguration
+    - Cmdlets updated with optional parameter - UrlConfiguration
+        - New-AzApplicationGatewayRewriteRuleActionSet
 
 ## Version 2.2.1
-* Upgrade dependancy of Microsoft.Azure.Management.Sql from 1.36-preivew to 1.37-preivew
+* Upgrade dependancy of Microsoft.Azure.Management.Sql from 1.36-preview to 1.37-preview
 
 ## Version 2.2.0
 * Update references in .psd1 to use relative path
@@ -94,6 +107,10 @@
     - Cmdlets updated with optional parameters:
         - New-AzApplicationGatewayHttpListener : added parameter FirewallPolicy, FirewallPolicyId
         - New-AzApplicationGatewayPathRuleConfig : added parameter FirewallPolicy, FirewallPolicyId
+* Added support for perListener HostNames
+    - Cmdlets updated with optional parameters:
+        - New-AzApplicationGatewayHttpListener : added parameter HostNames
+        - Add-AzApplicationGatewayHttpListener : added parameter HostNames
 * Fix required subnet with name AzureBastionSubnet in `PSBastion` can be case insensitive
 * Support for Destination FQDNs in Network Rules and Translated FQDN in NAT Rules for Azure Firewall
 * Add support for top level resource RouteTables of IpGroup
