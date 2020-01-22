@@ -71,59 +71,192 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The connection monitor name.")]
+            HelpMessage = "The connection monitor name.",
+            ParameterSetName = "SetByResource")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The connection monitor name.",
+            ParameterSetName = "SetByName")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The connection monitor name.",
+            ParameterSetName = "SetByLocation")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The connection monitor name.",
+            ParameterSetName = "SetByConnectionMonitorV1")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The connection monitor name.",
+            ParameterSetName = "SetByConnectionMonitorV2")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
               Mandatory = false,
-              HelpMessage = "The ID of the connection monitor source.")]
+              HelpMessage = "The ID of the connection monitor source.",
+              ParameterSetName = "SetByResource")]
+        [Parameter(
+              Mandatory = false,
+              HelpMessage = "The ID of the connection monitor source.",
+              ParameterSetName = "SetByName")]
+        [Parameter(
+              Mandatory = false,
+              HelpMessage = "The ID of the connection monitor source.",
+              ParameterSetName = "SetByLocation")]
+        [Parameter(
+              Mandatory = false,
+              HelpMessage = "The ID of the connection monitor source.",
+              ParameterSetName = "SetByConnectionMonitorV1")]
         [ValidateNotNullOrEmpty]
         public string SourceResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Monitoring interval in seconds. Default value is 60 seconds.")]
+            HelpMessage = "Monitoring interval in seconds. Default value is 60 seconds.",
+            ParameterSetName = "SetByResource")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Monitoring interval in seconds. Default value is 60 seconds.",
+            ParameterSetName = "SetByName")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Monitoring interval in seconds. Default value is 60 seconds.",
+            ParameterSetName = "SetByLocation")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Monitoring interval in seconds. Default value is 60 seconds.",
+            ParameterSetName = "SetByConnectionMonitorV1")]
         [ValidateNotNullOrEmpty]
         public int? MonitoringIntervalInSeconds { get; set; }
 
+
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Source port.")]
+            HelpMessage = "Source port.",
+            ParameterSetName = "SetByResource")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Source port.",
+            ParameterSetName = "SetByName")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Source port.",
+            ParameterSetName = "SetByLocation")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Source port.",
+            ParameterSetName = "SetByConnectionMonitorV1")]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
         public int SourcePort { get; set; }
 
+
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The ID of the connection monitor destination.")]
+             HelpMessage = "The ID of the connection monitor destination.",
+             ParameterSetName = "SetByResource")]
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = "The ID of the connection monitor destination.",
+             ParameterSetName = "SetByName")]
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = "The ID of the connection monitor destination.",
+             ParameterSetName = "SetByLocation")]
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = "The ID of the connection monitor destination.",
+             ParameterSetName = "SetByConnectionMonitorV1")]
         [ValidateNotNullOrEmpty]
         public string DestinationResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Destination port.")]
+            HelpMessage = "Destination port.",
+            ParameterSetName = "SetByResource")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Destination port.",
+            ParameterSetName = "SetByName")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Destination port.",
+            ParameterSetName = "SetByLocation")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Destination port.",
+            ParameterSetName = "SetByConnectionMonitorV1")]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
         public int DestinationPort { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Ip address of the connection monitor destination.")]
+            HelpMessage = "The Ip address of the connection monitor destination.",
+            ParameterSetName = "SetByResource")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Ip address of the connection monitor destination.",
+            ParameterSetName = "SetByName")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Ip address of the connection monitor destination.",
+            ParameterSetName = "SetByLocation")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Ip address of the connection monitor destination.",
+            ParameterSetName = "SetByConnectionMonitorV1")]
         [ValidateNotNullOrEmpty]
         public string DestinationAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The list of test group.")]
+            HelpMessage = "The list of test group.",
+            ParameterSetName = "SetByResource")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of test group.",
+            ParameterSetName = "SetByName")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of test group.",
+            ParameterSetName = "SetByLocation")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of test group.",
+            ParameterSetName = "SetByConnectionMonitorV2")]
         [ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The connection monitor output.")]
+            HelpMessage = "The connection monitor output.",
+            ParameterSetName = "SetByResource")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The connection monitor output.",
+            ParameterSetName = "SetByName")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The connection monitor output.",
+            ParameterSetName = "SetByLocation")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The connection monitor output.",
+            ParameterSetName = "SetByConnectionMonitorV2")]
         //TODO
         //[ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
@@ -131,7 +264,23 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Notes associated with connection monitor.")]
+            HelpMessage = "Notes associated with connection monitor.",
+            ParameterSetName = "SetByResource")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Notes associated with connection monitor.",
+            ParameterSetName = "SetByName")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Notes associated with connection monitor.",
+            ParameterSetName = "SetByLocation")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Notes associated with connection monitor.",
+            ParameterSetName = "SetByConnectionMonitorV2")]
         //TODO
         //[ValidateNotNullOrEmpty]
         public string Notes { get; set; }
@@ -144,7 +293,24 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "A hashtable which represents resource tags.")]
+            HelpMessage = "A hashtable which represents resource tags.",
+            ParameterSetName = "SetByResource")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable which represents resource tags.",
+            ParameterSetName = "SetByName")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable which represents resource tags.",
+            ParameterSetName = "SetByLocation")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable which represents resource tags.",
+            ParameterSetName = "SetByConnectionMonitorV1")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable which represents resource tags.",
+            ParameterSetName = "SetByConnectionMonitorV2")]
         public Hashtable Tag { get; set; }
 
         [Parameter(
