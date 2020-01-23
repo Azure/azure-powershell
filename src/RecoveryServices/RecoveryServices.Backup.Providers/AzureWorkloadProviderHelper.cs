@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     Dictionary<CmdletModel.UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
                     string protectedItemUri = HelperUtils.GetProtectedItemUri(dictionary, protectedItem.Id);
-                    return protectedItemUri.ToLower().Contains(itemName.ToLower());
+                    return protectedItemUri.ToLower().Contains(itemName.ToLower()) || (protectedItem.Properties as AzureFileshareProtectedItem).FriendlyName.ToLower() == itemName.ToLower();
                 }).ToList();
 
                 ODataQuery<GetProtectedItemQueryObject> getItemQueryParams =

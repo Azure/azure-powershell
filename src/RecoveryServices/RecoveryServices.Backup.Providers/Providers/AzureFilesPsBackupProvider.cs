@@ -618,6 +618,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
+            string friendlyName = (string)ProviderData[ItemParams.FriendlyName];
 
             // 1. Filter by container
             List<ProtectedItemResource> protectedItems = AzureWorkloadProviderHelper.ListProtectedItemsByContainer(
@@ -905,6 +906,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public List<PointInTimeBase> GetLogChains()
         {
             throw new NotImplementedException();
+        }
+
+        private bool isFriendlyName(string name)
+        {
+
+
+            return true;
         }
     }
 }
