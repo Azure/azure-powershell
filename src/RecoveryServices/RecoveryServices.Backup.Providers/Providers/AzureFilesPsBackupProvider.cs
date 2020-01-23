@@ -651,7 +651,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
                             serviceClientExtendedInfo.RecoveryPointCount : 0);
                     ((AzureFileShareItem)itemModel).ExtendedInfo = extendedInfo;
-                });
+                }, friendlyName);
 
             // 3. Filter by item's Protection Status
             if (protectionStatus != 0)
