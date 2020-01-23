@@ -74,6 +74,26 @@ Name              : PktCaptureTestSite2Site1Cn
 Etag              :
 Id                :
 ```
+### Example 3
+Packet Capture example for capture all inner and outer packets
+```powershell
+$a = "{`"TracingFlags`": 11,`"MaxPacketBufferSize`": 120,`"MaxFileSize`": 500,`"Filters`" :[{`"CaptureSingleDirectionTrafficOnly`": false}]}"
+Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "PktCaptureTestSite2RG" -Name "PktCaptureTestSite2Site1Cn" -FilterData $a
+
+Code              : Succeeded
+EndTime           : 10/1/2019 12:52:37 AM
+StartTime         : 10/1/2019 12:52:25 AM
+ResultsText       :
+ResourceGroupName : PktCaptureTestSite2RG
+Location          : centraluseuap
+ResourceGuid      : ac70028f-5b88-4ad4-93d3-0b9a9172c382
+Type              :
+Tag               :
+TagsTable         :
+Name              : PktCaptureTestSite2Site1Cn
+Etag              :
+Id                :
+```
 
 ## PARAMETERS
 
