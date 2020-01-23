@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorOutputObject", SupportsShouldProcess = true), OutputType(typeof(PSNetworkWatcherConnectionMonitorOutputObject))]
     public class NetworkWatcherConnectionMonitorOutputObjectCommand : ConnectionMonitorBaseCmdlet
     {
-        [Alias("Output")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The type of output.")]

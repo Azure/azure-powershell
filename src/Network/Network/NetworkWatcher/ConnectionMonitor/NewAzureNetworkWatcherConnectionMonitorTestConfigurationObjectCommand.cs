@@ -116,8 +116,8 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.ProtocolConfigurationTestFrequency);
             }
 
-            if (this.PreferredIPVersion != null & String.Compare(this.PreferredIPVersion, NetworkBaseCmdlet.IPv4, true) != 0 &&
-                String.Compare(this.PreferredIPVersion, NetworkBaseCmdlet.IPv6, true) != 0)
+            if (this.PreferredIPVersion != null & !String.Equals(this.PreferredIPVersion, NetworkBaseCmdlet.IPv4) &&
+                !String.Equals(this.PreferredIPVersion, NetworkBaseCmdlet.IPv6))
             {
                 throw new PSArgumentException(Properties.Resources.ProtocolConfigurationIPVersion);
             }
