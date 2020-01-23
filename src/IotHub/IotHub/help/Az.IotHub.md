@@ -14,6 +14,9 @@ Commands for Managing Azure IotHubs
 ### [Add-AzIotHubCertificate](Add-AzIotHubCertificate.md)
 Create/update an Azure IoT Hub certificate.
 
+### [Add-AzIotHubDevice](Add-AzIotHubDevice.md)
+Add a device in an IoT Hub.
+
 ### [Add-AzIotHubEventHubConsumerGroup](Add-AzIotHubEventHubConsumerGroup.md)
 Creates an eventhub consumer group.
 
@@ -40,6 +43,9 @@ Generates a verification code for an Azure IoT Hub certificate.
 
 ### [Get-AzIotHubConnectionString](Get-AzIotHubConnectionString.md)
 Gets the IotHub connectionstrings.
+
+### [Get-AzIotHubDevice](Get-AzIotHubDevice.md)
+Lists all devices or a particular device contained within an Azure IoT Hub.
 
 ### [Get-AzIotHubEventHubConsumerGroup](Get-AzIotHubEventHubConsumerGroup.md)
 Gets all the eventhub consumergroups.
@@ -89,6 +95,9 @@ Deletes an IotHub.
 ### [Remove-AzIotHubCertificate](Remove-AzIotHubCertificate.md)
 Deletes an Azure IoT Hub certificate.
 
+### [Remove-azIotHubDevice](Remove-AzIotHubDevice.md)
+Deletes an IoT Hub device.
+
 ### [Remove-AzIotHubEventHubConsumerGroup](Remove-AzIotHubEventHubConsumerGroup.md)
 Deletes an eventhub consumergroup.
 
@@ -106,6 +115,9 @@ Delete an endpoint for your IoT Hub
 
 ### [Set-AzIotHub](Set-AzIotHub.md)
 Updates the properties of an IotHub.
+
+### [Set-AzIotHubDevice](Set-AzIotHubDevice.md)
+Updates an IoT Hub device.
 
 ### [Set-AzIotHubMessageEnrichment](Set-AzIotHubMessageEnrichment.md)
 Update a message enrichment in your IoT hub.
