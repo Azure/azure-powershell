@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+*Adds a -Tag parameter to New-AzAppServicePlan  and Set-AzAppServicePlan
 * Set-AzWebapp and Set-AzWebappSlot supports AlwaysOn, MinTls and FtpsState properties
 * Fixing issue where setting HttpsOnly along with changing AppservicePlan at the same time using the single Set-AzWebApp Command, was resetting HttpsOnly to default value
 
