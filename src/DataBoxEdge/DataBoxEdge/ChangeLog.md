@@ -23,19 +23,19 @@
 
 ## Version 1.1.0
 * Added cmdlet `Get-AzDataBoxEdgeStorageContainer`
-  - Get the Edge Stroage Container
+  - Get the Edge Storage Container
 * Added cmdlet `New-AzDataBoxEdgeStorageContainer`
-  - Create new Edge Stroage Container
+  - Create new Edge Storage Container
 * Added cmdlet `Remove-AzDataBoxEdgeStorageContainer`
-  - Remove the Edge Stroage Container
+  - Remove the Edge Storage Container
 * Added cmdlet `Invoke-AzDataBoxEdgeStorageContainer`
-  - Invoke action to refresh data on Edge Stroage Container
+  - Invoke action to refresh data on Edge Storage Container
 * Added cmdlet `Get-AzDataBoxEdgeStorageAccount`
-  - Get the Edge Stroage Account
+  - Get the Edge Storage Account
 * Added cmdlet `New-AzDataBoxEdgeStorageAccount`
-  - Create new Edge Stroage Account
+  - Create new Edge Storage Account
 * Added cmdlet `Remove-AzDataBoxEdgeStorageAccount`
-  - Remove the Edge Stroage Account
+  - Remove the Edge Storage Account
 * Invoke cmdlet `Invoke-AzDataBoxEdgeShare`
   - Invoke action to refresh data on share
 * Added cmdlet `Set-AzDataBoxEdgeStorageAccountCredential`

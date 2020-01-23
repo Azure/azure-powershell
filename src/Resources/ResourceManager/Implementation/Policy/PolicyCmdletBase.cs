@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected string MakePolicyAssignmentId(string scope, string resourceName)
         {
             return ResourceIdUtility.GetResourceId(
-                resourceId: scope,
+                resourceId: scope ?? $"/{Constants.Subscriptions}/{DefaultContext.Subscription.Id}",
                 extensionResourceType: Constants.MicrosoftAuthorizationPolicyAssignmentType,
                 extensionResourceName: resourceName);
         }

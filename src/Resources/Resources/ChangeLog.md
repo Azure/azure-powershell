@@ -18,11 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
 * Refactor template deployment cmdlets
     - Add new cmdlets for managing deployments at management group: *-AzManagementGroupDeployment
     - Add new cmdlets for managing deployments at tenant scope: *-AzTenantDeployment
     - Refactor *-AzDeployment cmdlets to work specificly at subscription scope
     - Created aliases *-AzSubscriptionDeployment for *-AzDeployment cmdlets
+* Make -Scope optional in *-AzPolicyAssignment cmdlets with default to context subscription
+* Add examples of creating ADServicePrincipal with password and key credential
 
 ## Version 1.9.1
 * Fix an error in help document of `Remove-AzTag`.
