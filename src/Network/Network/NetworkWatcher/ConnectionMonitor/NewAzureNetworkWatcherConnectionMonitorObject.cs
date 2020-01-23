@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Network
                     // validate mandatory parameters
                     if (string.IsNullOrEmpty(TestGroup.Name) || TestGroup.Sources == null || TestGroup.Destinations == null || TestGroup.TestConfigurations == null)
                     {
-                        throw new ArgumentException("Test group is missing one or more mandatory parameter");
+                        throw new ArgumentException(Properties.Resources.TestGroupParameters);
                     }
 
                     // validate Source and Destination Endpoints
@@ -165,12 +165,12 @@ namespace Microsoft.Azure.Commands.Network
                         {
                             if (string.IsNullOrEmpty(Endpoint.ResourceId) && string.IsNullOrEmpty(Endpoint.Address) && Endpoint.Filter == null)
                             {
-                                throw new ArgumentException("No Endpoint parameter is provided");
+                                throw new PSArgumentException(Properties.Resources.TestGroupEndpointParameter);
                             }
 
                             if (string.IsNullOrEmpty(Endpoint.ResourceId) && string.IsNullOrEmpty(Endpoint.Address))
                             {
-                                throw new ArgumentException("Endpoint ResourceId and Address can not be both empty");
+                                throw new PSArgumentException(Properties.Resources.TestGroupEndpointResourceIdorAddress);
                             }
 
                             if (!string.IsNullOrEmpty(Endpoint.ResourceId))
@@ -181,21 +181,21 @@ namespace Microsoft.Azure.Commands.Network
                                 // "resourceId": "/subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/iraVmTest2"
                                 if (SplittedName.Count() < 9)
                                 {
-                                    throw new ArgumentException("Endpoint ResourceId is not in the correct format");
+                                    throw new PSArgumentException(Properties.Resources.EndpointResourceId);
                                 }
                             }
 
                             if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type) && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
                             {
-                                throw new ArgumentException("Only FilterType Include is supported");
+                                throw new PSArgumentException(Properties.Resources.EndpointFilterType);
                             }
                             else if (Endpoint.Filter != null && Endpoint.Filter.Items == null)
                             {
-                                throw new ArgumentException("Endpoint FilterType defined without FilterItem");
+                                throw new PSArgumentException(Properties.Resources.EndpointFilterItem);
                             }
                             else if (Endpoint.Filter != null && !Endpoint.Filter.Items.Any())
                             {
-                                throw new ArgumentException("Filter item list is empty");
+                                throw new PSArgumentException(Properties.Resources.EndpointFilterItemList);
                             }
                             else if (Endpoint.Filter != null && Endpoint.Filter.Items.Any())
                             {
@@ -203,12 +203,12 @@ namespace Microsoft.Azure.Commands.Network
                                 {
                                     if (!string.IsNullOrEmpty(Item.Type) && String.Compare(Item.Type, "AgentAddress", true) != 0)
                                     {
-                                        throw new ArgumentException("Endpoint Filter Items Type is not AgentAddress");
+                                        throw new PSArgumentException(Properties.Resources.EndpointFilterItemType);
                                     }
 
                                     if (string.IsNullOrEmpty(Item.Address))
                                     {
-                                        throw new ArgumentException("Endpoint Filter Items Address is empty");
+                                        throw new PSArgumentException(Properties.Resources.EndpointFilterItemAddress);
                                     }
                                 }
                             }
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Commands.Network
                     }
                     else
                     {
-                        throw new ArgumentException("No sources or destination endpoints");
+                        throw new PSArgumentException(Properties.Resources.EndpointSourceDestination);
                     }
 
                     if (TestGroup.TestConfigurations.Any())
@@ -266,25 +266,25 @@ namespace Microsoft.Azure.Commands.Network
 
                             if (!string.IsNullOrEmpty(TestConfiguration.Name) && TestGroup.TestConfigurations.Count(x => x.Name == TestConfiguration.Name) > 2)
                             {
-                                throw new ArgumentException("Test configuration name is not unique");
+                                throw new ArgumentException(Properties.Resources.TestGroupTestConfigurationName);
                             }
 
                             // validate test configuration
                             if (TestConfiguration.HttpConfiguration == null && TestConfiguration.TcpConfiguration == null && TestConfiguration.IcmpConfiguration == null)
                             {
-                                throw new ArgumentException("Protocol configuration is not provided.");
+                                throw new ArgumentException(Properties.Resources.TestGroupProtocolConfiguration);
                             }
 
                             if (TestConfiguration.PreferredIPVersion != null & String.Compare(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv4, true) != 0 &&
                                 String.Compare(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv6, true) != 0)
                             {
-                                throw new ArgumentException("IP version is undefined.");
+                                throw new ArgumentException(Properties.Resources.ProtocolConfigurationIPVersion);
                             }
                         }
                     }
                     else
                     {
-                        throw new ArgumentException("No test configuraiton is provided");
+                        throw new ArgumentException(Properties.Resources.TestConfiguration);
                     }
                 }
             }
@@ -296,11 +296,11 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     if (Output.Type == null && Output.WorkspaceSettings == null)
                     {
-                        throw new ArgumentException("No Output parameter is provided");
+                        throw new PSArgumentException(Properties.Resources.ConnectionMonitorOutput);
                     }
                     else if (string.IsNullOrEmpty(Output.WorkspaceSettings.WorkspaceResourceId))
                     {
-                        throw new ArgumentException("Output WorkspaceResourceId parameter is empty");
+                        throw new PSArgumentException(Properties.Resources.WorkspaceResourceId);
                     }
                 }
             }

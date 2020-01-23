@@ -182,7 +182,7 @@
       <Name>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult</TypeName>
-      </ViewSelectedBy>
+      </ViewSelectedBy>      
       <ListControl>
         <ListEntries>
           <ListEntry>

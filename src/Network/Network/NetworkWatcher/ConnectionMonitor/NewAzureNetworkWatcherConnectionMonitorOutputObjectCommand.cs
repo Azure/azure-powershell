@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (this.OutputType == null && this.WorkspaceResourceId == null)
             {
-                throw new ArgumentException("No Parameter is provided");
+                throw new PSArgumentException(Properties.Resources.ConnectionMonitorOutput);
             }
 
             return true;
