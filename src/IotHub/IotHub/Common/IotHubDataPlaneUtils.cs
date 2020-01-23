@@ -14,10 +14,10 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Common
 {
-    using Microsoft.Azure.Commands.Management.IotHub.Models;
-    using Microsoft.Azure.Devices;
     using System.Collections.Generic;
     using System.Linq;
+    using Microsoft.Azure.Commands.Management.IotHub.Models;
+    using Microsoft.Azure.Devices;
 
     public static class IotHubDataPlaneUtils
     {
