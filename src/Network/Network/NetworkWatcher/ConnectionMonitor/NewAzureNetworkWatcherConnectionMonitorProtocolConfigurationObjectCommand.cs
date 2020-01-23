@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
             {
                 if (this.Port == 0)
                 {
-                    throw new ArgumentException("Port can not be zero for TCP configuration");
+                    throw new PSArgumentException(Properties.Resources.ProtocolConfigurationPort);
                 }
             }
             else if (HttpProtocol.IsPresent)
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
             }
             else
             {
-                throw new ArgumentException("Only TCP, HTTP, or ICMP are supported");
+                throw new PSArgumentException(Properties.Resources.ProtocolConfigurationProtocol);
             }
 
             return true;

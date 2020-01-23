@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 else
                 {
-                    throw new ArgumentException("Unrecognized InputObject type.");
+                    throw new PSArgumentException(Properties.Resources.ConnectionMonitorInputObject);
                 }
             }
             else

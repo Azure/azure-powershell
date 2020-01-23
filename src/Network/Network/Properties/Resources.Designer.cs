@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -232,6 +232,42 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unrecognized InputObject type..
+        /// </summary>
+        internal static string ConnectionMonitorInputObject {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorInputObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No output parameter is provided.
+        /// </summary>
+        internal static string ConnectionMonitorOutput {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorOutput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Either SourceResourceId or InputObject or TestGroups is to be defined.
+        /// </summary>
+        internal static string ConnectionMonitorSourceResourceIdInputObjectTestGroups {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorSourceResourceIdInputObjectTestGroups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection moniotr V1 can not be defined with either TestGroup. Either connection monitor V1 or V2 can be specified.
+        /// </summary>
+        internal static string ConnectionMonitorV1V2 {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorV1V2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connectivity check destination resource id must not be the same as source: {0}.
         /// </summary>
         internal static string ConnectivityDestinationIsMustNotBeTheSameAsSource {
@@ -291,6 +327,69 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string EmptyEffectiveNetworkSecurityGroupOnNic {
             get {
                 return ResourceManager.GetString("EmptyEffectiveNetworkSecurityGroupOnNic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FilterType defined without filter item.
+        /// </summary>
+        internal static string EndpointFilterItem {
+            get {
+                return ResourceManager.GetString("EndpointFilterItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Endpoint filter item address is empty.
+        /// </summary>
+        internal static string EndpointFilterItemAddress {
+            get {
+                return ResourceManager.GetString("EndpointFilterItemAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter item list is empty.
+        /// </summary>
+        internal static string EndpointFilterItemList {
+            get {
+                return ResourceManager.GetString("EndpointFilterItemList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Endpoint filter item type is not AgentAddress.
+        /// </summary>
+        internal static string EndpointFilterItemType {
+            get {
+                return ResourceManager.GetString("EndpointFilterItemType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only filter type Include is supported.
+        /// </summary>
+        internal static string EndpointFilterType {
+            get {
+                return ResourceManager.GetString("EndpointFilterType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Endpoint resourceId not in the correct format.
+        /// </summary>
+        internal static string EndpointResourceId {
+            get {
+                return ResourceManager.GetString("EndpointResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No sources or destination endpoints.
+        /// </summary>
+        internal static string EndpointSourceDestination {
+            get {
+                return ResourceManager.GetString("EndpointSourceDestination", resourceCulture);
             }
         }
         
@@ -493,6 +592,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The P2SVpnGateway to modify could not be found.
+        /// </summary>
+        internal static string P2SVpnGatewayNotFound {
+            get {
+                return ResourceManager.GetString("P2SVpnGatewayNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The parent ExpressRouteGateway for this connection cannot be found..
         /// </summary>
         internal static string ParentExpressRouteGatewayNotFound {
@@ -529,6 +637,51 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IP version is undefined.
+        /// </summary>
+        internal static string ProtocolConfigurationIPVersion {
+            get {
+                return ResourceManager.GetString("ProtocolConfigurationIPVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protocol configuration is not supported.
+        /// </summary>
+        internal static string ProtocolConfigurationNotSupported {
+            get {
+                return ResourceManager.GetString("ProtocolConfigurationNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port can not be zero for TCP configuration.
+        /// </summary>
+        internal static string ProtocolConfigurationPort {
+            get {
+                return ResourceManager.GetString("ProtocolConfigurationPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only TCP, HTTP, or ICMP are supported.
+        /// </summary>
+        internal static string ProtocolConfigurationProtocol {
+            get {
+                return ResourceManager.GetString("ProtocolConfigurationProtocol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test frequency can not be zero.
+        /// </summary>
+        internal static string ProtocolConfigurationTestFrequency {
+            get {
+                return ResourceManager.GetString("ProtocolConfigurationTestFrequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing resource ....
         /// </summary>
         internal static string RemoveResourceMessage {
@@ -552,6 +705,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string RemovingExpressRouteGatewayWarning {
             get {
                 return ResourceManager.GetString("RemovingExpressRouteGatewayWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing a P2SVpnGateway will also remove all P2SConnectionConfigurations associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemovingP2SVpnGatewayWarning {
+            get {
+                return ResourceManager.GetString("RemovingP2SVpnGatewayWarning", resourceCulture);
             }
         }
         
@@ -581,18 +743,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("RemovingVpnGatewayWarning", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Removing a P2SVpnGateway will also remove all P2SConnectionConfigurations associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
-        /// </summary>
-        internal static string RemovingP2SVpnGatewayWarning
-        {
-            get
-            {
-                return ResourceManager.GetString("RemovingP2SVpnGatewayWarning", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Resetting Resource.
         /// </summary>
@@ -725,6 +876,96 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string StaticIpAddressErrorMessage {
             get {
                 return ResourceManager.GetString("StaticIpAddressErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No test configuraiton is provided.
+        /// </summary>
+        internal static string TestConfiguration {
+            get {
+                return ResourceManager.GetString("TestConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TestGroup is empty.
+        /// </summary>
+        internal static string TestGroupEmpty {
+            get {
+                return ResourceManager.GetString("TestGroupEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Endpoint parameter is provided.
+        /// </summary>
+        internal static string TestGroupEndpointParameter {
+            get {
+                return ResourceManager.GetString("TestGroupEndpointParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Endpoint ResourceId and Address can not be both empty.
+        /// </summary>
+        internal static string TestGroupEndpointResourceIdorAddress {
+            get {
+                return ResourceManager.GetString("TestGroupEndpointResourceIdorAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source or destination endpoint is undefined.
+        /// </summary>
+        internal static string TestGroupEndpoints {
+            get {
+                return ResourceManager.GetString("TestGroupEndpoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test group is missing one or more mandatory parameter.
+        /// </summary>
+        internal static string TestGroupParameters {
+            get {
+                return ResourceManager.GetString("TestGroupParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protocol in test configuration is not provided.
+        /// </summary>
+        internal static string TestGroupProtocol {
+            get {
+                return ResourceManager.GetString("TestGroupProtocol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protocol configuration is not provided.
+        /// </summary>
+        internal static string TestGroupProtocolConfiguration {
+            get {
+                return ResourceManager.GetString("TestGroupProtocolConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test configuration is undefined.
+        /// </summary>
+        internal static string TestGroupTestConfiguration {
+            get {
+                return ResourceManager.GetString("TestGroupTestConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test configuration name is not unique.
+        /// </summary>
+        internal static string TestGroupTestConfigurationName {
+            get {
+                return ResourceManager.GetString("TestGroupTestConfigurationName", resourceCulture);
             }
         }
         
@@ -907,24 +1148,31 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnGatewayNotFound", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to The P2SVpnGateway to modify could not be found.
-        /// </summary>
-        internal static string P2SVpnGatewayNotFound
-        {
-            get
-            {
-                return ResourceManager.GetString("P2SVpnGatewayNotFound", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to A valid VpnGateway reference is required to create a VpnConnection..
         /// </summary>
         internal static string VpnGatewayRequiredToCreateVpnConnection {
             get {
                 return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The VpnServerConfiguration could not be found..
+        /// </summary>
+        internal static string VpnServerConfigurationNotFound {
+            get {
+                return ResourceManager.GetString("VpnServerConfigurationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VpnServerConfiguration is required to create a P2SVpnGateway.
+        /// </summary>
+        internal static string VpnServerConfigurationRequiredForP2SVpnGateway {
+            get {
+                return ResourceManager.GetString("VpnServerConfigurationRequiredForP2SVpnGateway", resourceCulture);
             }
         }
         
@@ -954,18 +1202,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnSiteNotFound", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to The VpnServerConfiguration could not be found..
-        /// </summary>
-        internal static string VpnServerConfigurationNotFound
-        {
-            get
-            {
-                return ResourceManager.GetString("VpnServerConfigurationNotFound", resourceCulture);
-            }
-        }        
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Update request for VpnSite contains deprecated property. Please use corresponding VpnSiteLink property instead..
         /// </summary>
@@ -983,15 +1220,13 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnSiteRequiredForVpnConnection", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to A valid VpnServerConfiguration is required to create a P2SVpnGateway.
+        ///   Looks up a localized string similar to Output WorkspaceResourceId parameter is empty.
         /// </summary>
-        internal static string VpnServerConfigurationRequiredForP2SVpnGateway
-        {
-            get
-            {
-                return ResourceManager.GetString("VpnServerConfigurationRequiredForP2SVpnGateway", resourceCulture);
+        internal static string WorkspaceResourceId {
+            get {
+                return ResourceManager.GetString("WorkspaceResourceId", resourceCulture);
             }
         }
     }

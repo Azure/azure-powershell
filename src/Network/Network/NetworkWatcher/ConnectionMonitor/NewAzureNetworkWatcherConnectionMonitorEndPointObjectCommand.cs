@@ -125,21 +125,22 @@ namespace Microsoft.Azure.Commands.Network
                 // "resourceId": "/subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/iraVmTest2"
                 if (SplittedName.Count() < 9)
                 {
-                    throw new ArgumentException("ResourceId not in the correct format");
+                    //throw new ArgumentException("ResourceId not in the correct format");
+                    throw new PSArgumentException(Properties.Resources.EndpointResourceId);
                 }
             }
 
             if (!string.IsNullOrEmpty(this.FilterType) && String.Compare(this.FilterType, "Include", true) != 0)
             {
-                throw new ArgumentException("Only FilterType Include is supported");
+                throw new PSArgumentException(Properties.Resources.EndpointFilterType);            
             }
             else if (!string.IsNullOrEmpty(this.FilterType) && this.FilterItem == null)
             {
-                throw new ArgumentException("FilterType defined without filter item ");
+                throw new PSArgumentException(Properties.Resources.EndpointFilterItem);
             }
             else if (!string.IsNullOrEmpty(this.FilterType) && !this.FilterItem.Any())
             {
-                throw new ArgumentException("Filter item list is empty");
+                throw new PSArgumentException(Properties.Resources.EndpointFilterItemList);
             }
 
             return true;

@@ -431,4 +431,85 @@
   <data name="RemoveVirtualRouterWarning" xml:space="preserve">
     <value>Removing a VirtualRouter will also remove all peerings associated with it. Are you sure you want to remove resource '{0}'</value>
   </data>
+  <data name="ConnectionMonitorV1V2" xml:space="preserve">
+    <value>Connection moniotr V1 can not be defined with either TestGroup. Either connection monitor V1 or V2 can be specified</value>
+  </data>
+  <data name="ConnectionMonitorSourceResourceIdInputObjectTestGroups" xml:space="preserve">
+    <value>Either SourceResourceId or InputObject or TestGroups is to be defined</value>
+  </data>
+  <data name="EndpointResourceId" xml:space="preserve">
+    <value>Endpoint resourceId not in the correct format</value>
+  </data>
+  <data name="EndpointFilterType" xml:space="preserve">
+    <value>Only filter type Include is supported</value>
+  </data>
+  <data name="EndpointFilterItem" xml:space="preserve">
+    <value>FilterType defined without filter item</value>
+  </data>
+  <data name="EndpointFilterItemType" xml:space="preserve">
+    <value>Endpoint filter item type is not AgentAddress</value>
+  </data>
+  <data name="EndpointFilterItemAddress" xml:space="preserve">
+    <value>Endpoint filter item address is empty</value>
+  </data>
+  <data name="EndpointFilterItemList" xml:space="preserve">
+    <value>Filter item list is empty</value>
+  </data>
+  <data name="EndpointSourceDestination" xml:space="preserve">
+    <value>No sources or destination endpoints</value>
+  </data>
+  <data name="ConnectionMonitorOutput" xml:space="preserve">
+    <value>No output parameter is provided</value>
+  </data>
+  <data name="WorkspaceResourceId" xml:space="preserve">
+    <value>Output WorkspaceResourceId parameter is empty</value>
+  </data>
+  <data name="ProtocolConfigurationPort" xml:space="preserve">
+    <value>Port can not be zero for TCP configuration</value>
+  </data>
+  <data name="ProtocolConfigurationProtocol" xml:space="preserve">
+    <value>Only TCP, HTTP, or ICMP are supported</value>
+  </data>
+  <data name="ProtocolConfigurationNotSupported" xml:space="preserve">
+    <value>Protocol configuration is not supported</value>
+  </data>
+  <data name="ProtocolConfigurationTestFrequency" xml:space="preserve">
+    <value>Test frequency can not be zero</value>
+  </data>
+  <data name="ProtocolConfigurationIPVersion" xml:space="preserve">
+    <value>IP version is undefined</value>
+  </data>
+  <data name="TestConfiguration" xml:space="preserve">
+    <value>No test configuraiton is provided</value>
+  </data>
+  <data name="TestGroupParameters" xml:space="preserve">
+    <value>Test group is missing one or more mandatory parameter</value>
+  </data>
+  <data name="TestGroupEmpty" xml:space="preserve">
+    <value>TestGroup is empty</value>
+  </data>
+  <data name="TestGroupTestConfiguration" xml:space="preserve">
+    <value>Test configuration is undefined</value>
+  </data>
+  <data name="TestGroupProtocol" xml:space="preserve">
+    <value>Protocol in test configuration is not provided</value>
+  </data>
+  <data name="TestGroupProtocolConfiguration" xml:space="preserve">
+    <value>Protocol configuration is not provided</value>
+  </data>
+  <data name="TestGroupTestConfigurationName" xml:space="preserve">
+    <value>Test configuration name is not unique</value>
+  </data>
+  <data name="TestGroupEndpoints" xml:space="preserve">
+    <value>Source or destination endpoint is undefined</value>
+  </data>
+  <data name="TestGroupEndpointParameter" xml:space="preserve">
+    <value>No Endpoint parameter is provided</value>
+  </data>
+  <data name="TestGroupEndpointResourceIdorAddress" xml:space="preserve">
+    <value>Endpoint ResourceId and Address can not be both empty</value>
+  </data>
+  <data name="ConnectionMonitorInputObject" xml:space="preserve">
+    <value>Unrecognized InputObject type.</value>
+  </data>
 </root>

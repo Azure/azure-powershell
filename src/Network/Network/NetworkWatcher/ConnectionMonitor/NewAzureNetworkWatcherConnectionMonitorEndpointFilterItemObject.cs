@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (!string.IsNullOrEmpty(this.Type) && String.Compare(this.Type, "AgentAddress", true) != 0)
             {
-                throw new ArgumentException("Endpoint Filter Items Type is not AgentAddress");
+                throw new PSArgumentException(Properties.Resources.EndpointFilterItemType);
             }
 
             return true;

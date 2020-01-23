@@ -108,18 +108,18 @@ namespace Microsoft.Azure.Commands.Network
                 this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorHttpConfiguration) &&
                 this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorIcmpConfiguration))
             {
-                throw new ArgumentException("Protocol configuration is not supported.");
+                throw new PSArgumentException(Properties.Resources.ProtocolConfigurationNotSupported);
             }
 
             if (this.TestFrequencySec == 0)
             {
-                throw new ArgumentException("Test frequency can not be zero.");
+                throw new PSArgumentException(Properties.Resources.ProtocolConfigurationTestFrequency);
             }
 
             if (this.PreferredIPVersion != null & String.Compare(this.PreferredIPVersion, NetworkBaseCmdlet.IPv4, true) != 0 &&
                 String.Compare(this.PreferredIPVersion, NetworkBaseCmdlet.IPv6, true) != 0)
             {
-                throw new ArgumentException("IP version is undefined.");
+                throw new PSArgumentException(Properties.Resources.ProtocolConfigurationIPVersion);
             }
 
             return true;
