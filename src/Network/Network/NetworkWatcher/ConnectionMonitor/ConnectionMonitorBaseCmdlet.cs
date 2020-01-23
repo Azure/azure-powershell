@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.Network
 
             foreach (ConnectionMonitorTestConfiguration TestConfiguration in TestConfigurations)
             {
-                if (string.Compare(TestConfigName, TestConfiguration.Name) == 0)
+                if (string.Equals(TestConfigName, TestConfiguration.Name))
                 {
                     return TestConfiguration;
                 }
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Commands.Network
 
             foreach (ConnectionMonitorEndpoint Endpoint in Endpoints)
             {
-                if (string.Compare(EndpointName, Endpoint.Name) == 0)
+                if (string.Equals(EndpointName, Endpoint.Name))
                 {
                     return Endpoint;
                 }
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Commands.Network
                                 }
                             }
 
-                            if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type) && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
+                            if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type) && !String.Equals(Endpoint.Filter.Type, "Include"))
                             {
                                 throw new PSArgumentException(Properties.Resources.EndpointFilterType);
                             }
@@ -387,8 +387,8 @@ namespace Microsoft.Azure.Commands.Network
                                 }
                             }
 
-                            if (TestConfiguration.PreferredIPVersion != null & String.Compare(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv4, true) != 0 &&
-                                String.Compare(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv6, true) != 0)
+                            if (TestConfiguration.PreferredIPVersion != null & !String.Equals(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv4) &&
+                                !String.Equals(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv6))
                             {
                                 throw new PSArgumentException(Properties.Resources.ProtocolConfigurationIPVersion);
                             }
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Commands.Network
 
                         TestConfigCounter++;
 
-                        if (string.Compare(TestConfiguration.Protocol, "TCP", true) == 0)
+                        if (string.Equals(TestConfiguration.Protocol, "TCP"))
                         {
                             ConnectionMonitorTcpConfiguration TcpConfiguration = new ConnectionMonitorTcpConfiguration()
                             {
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Commands.Network
 
                             TestConfiguration.TcpConfiguration = TcpConfiguration;
                         }
-                        else if (string.Compare(TestConfiguration.Protocol, "HTTP", true) == 0)
+                        else if (string.Equals(TestConfiguration.Protocol, "HTTP"))
                         {
                             ConnectionMonitorHttpConfiguration HttpConfiguration = new ConnectionMonitorHttpConfiguration()
                             {
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Commands.Network
                                 TestConfiguration.HttpConfiguration = HttpConfiguration;
                             }
                         }
-                        else if (string.Compare(TestConfiguration.Protocol, "ICMP", true) == 0)
+                        else if (string.Equals(TestConfiguration.Protocol, "ICMP"))
                         {
                             ConnectionMonitorIcmpConfiguration IcmpConfiguration = new ConnectionMonitorIcmpConfiguration()
                             {
@@ -741,7 +741,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             PSConnectionMonitorResult psConnectionMonitor = null;
 
-            if (String.Compare(connectionMonitor.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
+            if (String.Equals(connectionMonitor.ConnectionMonitorType, "SingleSourceDestination"))
             {
                 psConnectionMonitor = ConvertConnectionMonitorResultToPSConnectionMonitorResultV1(connectionMonitor);
             }

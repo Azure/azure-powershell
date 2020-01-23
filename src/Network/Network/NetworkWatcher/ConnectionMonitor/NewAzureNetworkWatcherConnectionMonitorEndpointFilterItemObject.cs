@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
-            if (!string.IsNullOrEmpty(this.Type) && String.Compare(this.Type, "AgentAddress", true) != 0)
+            if (!string.IsNullOrEmpty(this.Type) && !String.Equals(this.Type, "AgentAddress"))
             {
                 throw new PSArgumentException(Properties.Resources.EndpointFilterItemType);
             }

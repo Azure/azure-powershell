@@ -79,11 +79,6 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {            
-            if (!this.TestConfiguration.Any())
-            {
-                throw new PSArgumentException(Properties.Resources.TestGroupTestConfiguration);
-            }
-
             // Validate test configuration
             foreach (PSNetworkWatcherConnectionMonitorTestConfigurationObject TestConfiguration in this.TestConfiguration)
             {
@@ -105,8 +100,8 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 }
 
-                if (TestConfiguration.PreferredIPVersion != null & String.Compare(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv4, true) != 0 &&
-                    String.Compare(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv6, true) != 0)
+                if (TestConfiguration.PreferredIPVersion != null & !String.Equals(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv4) &&
+                    !String.Equals(TestConfiguration.PreferredIPVersion, NetworkBaseCmdlet.IPv6))
                 {
                     throw new PSArgumentException(Properties.Resources.ProtocolConfigurationIPVersion);
                 }
@@ -150,7 +145,7 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 }
 
-                if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type) && String.Compare(Endpoint.Filter.Type, "Include", true) != 0)
+                if (Endpoint.Filter != null && !string.IsNullOrEmpty(Endpoint.Filter.Type) && !String.Equals(Endpoint.Filter.Type, "Include"))
                 {
                     throw new PSArgumentException(Properties.Resources.EndpointFilterType);
                 }

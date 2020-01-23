@@ -130,9 +130,9 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            if (!string.IsNullOrEmpty(this.FilterType) && String.Compare(this.FilterType, "Include", true) != 0)
+            if (!string.IsNullOrEmpty(this.FilterType) && !String.Equals(this.FilterType, "Include"))
             {
-                throw new PSArgumentException(Properties.Resources.EndpointFilterType);            
+                throw new PSArgumentException(Properties.Resources.EndpointFilterType);
             }
             else if (!string.IsNullOrEmpty(this.FilterType) && this.FilterItem == null)
             {
