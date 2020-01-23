@@ -70,13 +70,13 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of test group.")]
+            HelpMessage = "The list of connection monitor test groups.")]
         [ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The connection monitor output.")]
+            HelpMessage = "The list of connection monitor outputs.")]
         [ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
 

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("Output")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The tyope of output.")]
+            HelpMessage = "The type of output.")]
         [ValidateNotNullOrEmpty]
         public string OutputType { get; set; }
 

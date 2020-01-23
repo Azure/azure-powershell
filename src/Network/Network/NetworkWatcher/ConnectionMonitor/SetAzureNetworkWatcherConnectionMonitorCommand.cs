@@ -157,19 +157,19 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The ID of the connection monitor source.",
+            HelpMessage = "The resource ID of the connection monitor source endpoint.",
             ParameterSetName = "SetByResource")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The ID of the connection monitor source.",
+            HelpMessage = "The resource ID of the connection monitor source endpoint.",
             ParameterSetName = "SetByName")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The ID of the connection monitor source.",
+            HelpMessage = "The resource ID of the connection monitor source endpoint.",
             ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The ID of the connection monitor source.",
+            HelpMessage = "The resource ID of the connection monitor source endpoint.",
             ParameterSetName = "SetByConnectionMonitorV1")]
         [ValidateNotNullOrEmpty]
         public string SourceResourceId { get; set; }
@@ -195,19 +195,19 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Source port.",
+            HelpMessage = "The source port.",
             ParameterSetName = "SetByResource")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Source port.",
+            HelpMessage = "The source port.",
             ParameterSetName = "SetByName")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Source port.",
+            HelpMessage = "The source port.",
             ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Source port.",
+            HelpMessage = "The source port.",
             ParameterSetName = "SetByConnectionMonitorV1")]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
@@ -215,57 +215,57 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The ID of the connection monitor destination.",
+             HelpMessage = "The resource ID of the connection monitor destination endpoint.",
              ParameterSetName = "SetByResource")]
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The ID of the connection monitor destination.",
+             HelpMessage = "The resource ID of the connection monitor destination endpoint.",
              ParameterSetName = "SetByName")]
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The ID of the connection monitor destination.",
+             HelpMessage = "The resource ID of the connection monitor destination endpoint.",
              ParameterSetName = "SetByLocation")]
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The ID of the connection monitor destination.",
+             HelpMessage = "The resource ID of the connection monitor destination endpoint.",
              ParameterSetName = "SetByConnectionMonitorV1")]
         [ValidateNotNullOrEmpty]
         public string DestinationResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Ip address of the connection monitor destination.",
+            HelpMessage = "The IP address of the connection monitor destination endpoint.",
             ParameterSetName = "SetByResource")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Ip address of the connection monitor destination.",
+            HelpMessage = "The IP address of the connection monitor destination endpoint.",
             ParameterSetName = "SetByName")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Ip address of the connection monitor destination.",
+            HelpMessage = "The IP address of the connection monitor destination endpoint.",
             ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Ip address of the connection monitor destination.",
+            HelpMessage = "The IP address of the connection monitor destination endpoint.",
             ParameterSetName = "SetByConnectionMonitorV1")]
         [ValidateNotNullOrEmpty]
         public string DestinationAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Destination port.",
+            HelpMessage = "The destination port.",
             ParameterSetName = "SetByResource")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Destination port.",
+            HelpMessage = "The destination port.",
             ParameterSetName = "SetByName")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Destination port.",
+            HelpMessage = "The destination port.",
             ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Destination port.",
+            HelpMessage = "The destination port.",
             ParameterSetName = "SetByConnectionMonitorV1")]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
@@ -273,38 +273,38 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of test group.",
+            HelpMessage = "The list of connection monitor test groups.",
             ParameterSetName = "SetByResource")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of test group.",
+            HelpMessage = "The list of connection monitor test groups.",
             ParameterSetName = "SetByName")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of test group.",
+            HelpMessage = "The list of connection monitor test groups.",
             ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of test group.",
+            HelpMessage = "The list of connection monitor test groups.",
             ParameterSetName = "SetByConnectionMonitorV2")]
         [ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The connection monitor output.",
+            HelpMessage = "The list of connection monitor outputs.",
             ParameterSetName = "SetByResource")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The connection monitor output.",
+            HelpMessage = "The list of connection monitor outputs.",
             ParameterSetName = "SetByName")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The connection monitor output.",
+            HelpMessage = "The list of connection monitor outputs.",
             ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The connection monitor output.",
+            HelpMessage = "The list of connection monitor outputs.",
             ParameterSetName = "SetByConnectionMonitorV2")]
         //[ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
