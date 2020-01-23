@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
           
         [Parameter(
              Mandatory = true,
-             HelpMessage = "The port.",
+             HelpMessage = "The destination port.",
              ParameterSetName = "TCP")]
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The port.",
+             HelpMessage = "The destination port.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
         public short? Port { get; set; }
@@ -73,25 +73,25 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
              HelpMessage = "Disable traceRoute.",
              ParameterSetName = "ICMP")]
         [ValidateNotNullOrEmpty]
-        public bool DisableTraceRoute { get; set; }
+        public SwitchParameter DisableTraceRoute { get; set; }
 
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The method.",
+             HelpMessage = "The HTTP method.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
         public string Method { get; set; }
 
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The path.",
+             HelpMessage = "The HTTP path.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The request header.",
+             HelpMessage = "The HTTP request header.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
         public List<PSHTTPHeader> RequestHeader { get; set; }
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
                 PSConnectionMonitorTcpConfiguration TcpConfiguration = new PSConnectionMonitorTcpConfiguration()
                 {
                     Port = this.Port,
-                    DisableTraceRoute = this.DisableTraceRoute
+                    DisableTraceRoute = this.DisableTraceRoute ? true : false
                 };
 
                 WriteObject(TcpConfiguration);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
             {
                 PSConnectionMonitorIcmpConfiguration IcmpConfiguration = new PSConnectionMonitorIcmpConfiguration()
                 {
-                    DisableTraceRoute = this.DisableTraceRoute
+                    DisableTraceRoute = this.DisableTraceRoute ? true : false
                 };
 
                 WriteObject(IcmpConfiguration);

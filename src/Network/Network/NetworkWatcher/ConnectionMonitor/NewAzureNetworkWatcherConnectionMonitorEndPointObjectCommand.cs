@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The ID of the endpoint.")]
+            HelpMessage = "The resource ID of the endpoint.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Ip address of the endpoint.")]
+            HelpMessage = "The IP address of the endpoint.")]
         [ValidateNotNullOrEmpty]
         public string Address { get; set; }
 
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The connection monitor filter addresses.")]
+            HelpMessage = "The list of connection monitor filter items.")]
         [ValidateNotNullOrEmpty]
         public List<PSConnectionMonitorEndpointFilterItem> FilterItem { get; set; }
 

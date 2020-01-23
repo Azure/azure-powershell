@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The list of test configuration.")]
+            HelpMessage = "The list of test configurations.")]
         [ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorTestConfigurationObject> TestConfiguration { get; set; }
 
