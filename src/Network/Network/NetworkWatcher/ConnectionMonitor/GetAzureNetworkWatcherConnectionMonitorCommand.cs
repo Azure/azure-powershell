@@ -25,10 +25,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitor", DefaultParameterSetName = "SetByName"),
-                                                                        OutputType(typeof(PSConnectionMonitorResultV1)),
-                                                                        OutputType(typeof(PSConnectionMonitorResultV2))]
-
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitor", DefaultParameterSetName = "SetByName"),OutputType(typeof(PSConnectionMonitorResultV1), typeof(PSConnectionMonitorResultV2))]
+    
     public class GetAzureNetworkWatcherConnectionMonitorCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
@@ -138,14 +136,9 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (var cm in connectionMonitorList)
                 {
                     PSConnectionMonitorResult psConnectionMonitor = null;
-                    if (String.Compare(cm.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
-                    {
-                        psConnectionMonitor = ConvertConnectionMonitorResultToPSConnectionMonitorResultV1(cm);
-                    }
-                    else
-                    {
-                        psConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResultV2(cm);
-                    }
+
+                    psConnectionMonitor = TransformConnectionMonitorResult(cm);
+
                     psConnectionMonitorList.Add(psConnectionMonitor);
                 }            
                 WriteObject(SubResourceWildcardFilter(Name, psConnectionMonitorList), true);

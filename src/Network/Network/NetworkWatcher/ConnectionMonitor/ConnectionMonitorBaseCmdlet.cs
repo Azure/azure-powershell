@@ -60,14 +60,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 connectionMonitor = this.ConnectionMonitors.Get(resourceGroupName, name, connectionMonitorName);
 
-                if (String.Compare(connectionMonitor.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
-                {
-                    psConnectionMonitor = ConvertConnectionMonitorResultToPSConnectionMonitorResultV1(connectionMonitor);
-                }
-                else
-                {
-                    psConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResultV2(connectionMonitor);
-                }
+                psConnectionMonitor = TransformConnectionMonitorResult(connectionMonitor);
             }
             else
             {
@@ -123,7 +116,7 @@ namespace Microsoft.Azure.Commands.Network
                 StartTime = ConnectionMonitor.StartTime,
                 Tags = new Dictionary<string, string>(),
                 ConnectionMonitorType = ConnectionMonitor.ConnectionMonitorType,
-                Notes = ConnectionMonitor.Notes,
+                Note = ConnectionMonitor.Notes,
 
                 TestConfigurations = NetworkResourceManagerProfile.Mapper.Map<List<PSNetworkWatcherConnectionMonitorTestConfigurationObject>>(ConnectionMonitor.TestConfigurations),
                 Endpoints = NetworkResourceManagerProfile.Mapper.Map<List<PSNetworkWatcherConnectionMonitorEndpointObject>>(ConnectionMonitor.Endpoints),
@@ -275,7 +268,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (string.IsNullOrEmpty(SourceResourceId) && InputObject == null && TestGroups == null)
             {
-                throw new ArgumentException("Either SourceResourceId or InputObject or TestGroups is to be ddefined");
+                throw new ArgumentException("Either SourceResourceId or InputObject or TestGroups is to be defined");
             }
 
             // Validate Test Group
@@ -740,6 +733,21 @@ namespace Microsoft.Azure.Commands.Network
             // getConnectionMonitor.MonitoringStatus
 
             return ConnectionMonitorResultV1;
+        }
+
+        public PSConnectionMonitorResult TransformConnectionMonitorResult(ConnectionMonitorResult connectionMonitor)
+        {
+            PSConnectionMonitorResult psConnectionMonitor = null;
+
+            if (String.Compare(connectionMonitor.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
+            {
+                psConnectionMonitor = ConvertConnectionMonitorResultToPSConnectionMonitorResultV1(connectionMonitor);
+            }
+            else
+            {
+                psConnectionMonitor = MapConnectionMonitorResultToPSConnectionMonitorResultV2(connectionMonitor);
+            }
+            return psConnectionMonitor;
         }
     }
 }

@@ -37,14 +37,16 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The resource ID of the endpoint.")]
+            Mandatory = true,
+            HelpMessage = "The resource ID of the endpoint.",
+            ParameterSetName ="SetByResourceId")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The IP address of the endpoint.")]
+            Mandatory = true,
+            HelpMessage = "The IP address of the endpoint.",
+            ParameterSetName = "SetByAddress")]
         [ValidateNotNullOrEmpty]
         public string Address { get; set; }
 
@@ -115,21 +117,6 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
-            if (string.IsNullOrEmpty(this.ResourceId) && string.IsNullOrEmpty(this.Address) && string.IsNullOrEmpty(this.FilterType) && this.FilterItem == null)
-            {
-                throw new ArgumentException("No Parameter is provided");
-            }
-
-            if (string.IsNullOrEmpty(this.ResourceId) && string.IsNullOrEmpty(this.Address))
-            {
-                throw new ArgumentException("ResourceId or Address can not be both empty");
-            }
-
-            if (!string.IsNullOrEmpty(this.ResourceId) && !string.IsNullOrEmpty(this.Address))
-            {
-                throw new ArgumentException("Endpoint in connection monitor should have either ResourceId or Address. These parameters should not be specified together.");
-            }
-
             if (!string.IsNullOrEmpty(ResourceId))
             {
                 string[] SplittedName = ResourceId.Split('/');

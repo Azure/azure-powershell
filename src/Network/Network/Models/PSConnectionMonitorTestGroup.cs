@@ -10,7 +10,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSNetworkWatcherConnectionMonitorTestGroupObject
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Name { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? Disable { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]

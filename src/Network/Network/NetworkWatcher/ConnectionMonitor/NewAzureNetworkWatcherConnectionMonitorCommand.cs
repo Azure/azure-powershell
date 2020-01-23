@@ -71,28 +71,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The connection monitor name.",
-            ParameterSetName = "SetByResource")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The connection monitor name.",
-            ParameterSetName = "SetByName")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The connection monitor name.",
-            ParameterSetName = "SetByLocation")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The connection monitor name.",
-            ParameterSetName = "SetByConnectionMonitorV1")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The connection monitor name.",
-            ParameterSetName = "SetByConnectionMonitorV2")]
+            HelpMessage = "The connection monitor name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -134,7 +113,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public int? MonitoringIntervalInSeconds { get; set; }
 
-
         [Parameter(
             Mandatory = false,
             HelpMessage = "Source port.",
@@ -155,19 +133,18 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateRange(1, int.MaxValue)]
         public int SourcePort { get; set; }
 
-
         [Parameter(
-             Mandatory = false,
-             HelpMessage = "The ID of the connection monitor destination.",
-             ParameterSetName = "SetByResource")]
+            Mandatory = false,
+            HelpMessage = "Source port.",
+            ParameterSetName = "SetByResource")]
         [Parameter(
-             Mandatory = false,
-             HelpMessage = "The ID of the connection monitor destination.",
-             ParameterSetName = "SetByName")]
+            Mandatory = false,
+            HelpMessage = "Source port.",
+            ParameterSetName = "SetByName")]
         [Parameter(
-             Mandatory = false,
-             HelpMessage = "The ID of the connection monitor destination.",
-             ParameterSetName = "SetByLocation")]
+            Mandatory = false,
+            HelpMessage = "Source port.",
+            ParameterSetName = "SetByLocation")]
         [Parameter(
              Mandatory = false,
              HelpMessage = "The ID of the connection monitor destination.",
@@ -197,15 +174,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Ip address of the connection monitor destination.",
+            HelpMessage = "The IP address of the connection monitor destination.",
             ParameterSetName = "SetByResource")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Ip address of the connection monitor destination.",
+            HelpMessage = "The IP address of the connection monitor destination.",
             ParameterSetName = "SetByName")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Ip address of the connection monitor destination.",
+            HelpMessage = "The IP address of the connection monitor destination.",
             ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = false,
@@ -257,8 +234,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The connection monitor output.",
             ParameterSetName = "SetByConnectionMonitorV2")]
-        //TODO
-        //[ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
 
         [Parameter(
@@ -281,9 +256,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Notes associated with connection monitor.",
             ParameterSetName = "SetByConnectionMonitorV2")]
-        //TODO
-        //[ValidateNotNullOrEmpty]
-        public string Notes { get; set; }
+        public string Note { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -375,9 +348,9 @@ namespace Microsoft.Azure.Commands.Network
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
             };
 
-            if (!string.IsNullOrEmpty(this.Notes))
+            if (!string.IsNullOrEmpty(this.Note))
             {
-                parameters.Notes = this.Notes;
+                parameters.Notes = this.Note;
             }
 
             if (connectionMonitorV2 == true)
