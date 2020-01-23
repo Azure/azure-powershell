@@ -152,18 +152,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string itemName,
             string vaultName,
             string resourceGroupName,
-            Action<CmdletModel.ItemBase, ProtectedItemResource> extendedInfoProcessor)
+            Action<CmdletModel.ItemBase, ProtectedItemResource> extendedInfoProcessor, string friendlyName = null)
         {
             List<ProtectedItemResource> protectedItemGetResponses =
                 new List<ProtectedItemResource>();
 
-            if (!string.IsNullOrEmpty(itemName))
+            if (itemName != null || friendlyName != null)
             {
                 protectedItems = protectedItems.Where(protectedItem =>
                 {
                     Dictionary<CmdletModel.UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
+
                     string protectedItemUri = HelperUtils.GetProtectedItemUri(dictionary, protectedItem.Id);
-                    return protectedItemUri.ToLower().Contains(itemName.ToLower()) || (protectedItem.Properties as AzureFileshareProtectedItem).FriendlyName.ToLower() == itemName.ToLower();
+
+                    string protectedItemFriendlyName = (protectedItem.Properties as AzureFileshareProtectedItem).FriendlyName;
+                    bool filteredByUniqueName = itemName != null && (protectedItemUri.ToLower().Contains(itemName.ToLower()) || protectedItemFriendlyName.ToLower() == itemName.ToLower());
+                    bool filteredByFriendlyName = friendlyName != null && (protectedItem.Properties as AzureFileshareProtectedItem).FriendlyName.ToLower() == friendlyName.ToLower();
+
+                    return filteredByUniqueName || filteredByFriendlyName;
                 }).ToList();
 
                 ODataQuery<GetProtectedItemQueryObject> getItemQueryParams =
@@ -184,6 +190,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     protectedItemGetResponses.Add(getResponse.Body);
                 }
             }
+
 
             List<CmdletModel.ItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems);
 
