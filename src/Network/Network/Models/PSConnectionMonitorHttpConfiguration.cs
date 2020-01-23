@@ -10,8 +10,13 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSConnectionMonitorHttpConfiguration : PSNetworkWatcherConnectionMonitorProtocolConfiguration
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? Port { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Method { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Path { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
@@ -19,6 +24,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.List)]
         public List<string> ValidStatusCodeRanges { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? PreferHTTPS { get; set; }
 
         [JsonIgnore]

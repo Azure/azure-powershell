@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Notes associated with connection monitor.")]
         [ValidateNotNullOrEmpty]
-        public string Notes { get; set; }
+        public string Note { get; set; }
 
         public override void Execute()
         {
@@ -134,9 +134,9 @@ namespace Microsoft.Azure.Commands.Network
                 CMObject.Output = this.Output;
             }
 
-            if (this.Notes != null)
+            if (this.Note != null)
             {
-                CMObject.Notes = this.Notes;
+                CMObject.Notes = this.Note;
             }
 
             WriteObject(CMObject);

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The resource ID of workspace.")]
         [ValidateNotNullOrEmpty]
-        public string ResourcWorkspaceResourceId { get; set; }
+        public string WorkspaceResourceId { get; set; }
 
         public override void Execute()
         {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
                  Type = this.OutputType,
                  WorkspaceSettings = new PSConnectionMonitorWorkspaceSettings()
                  {
-                     WorkspaceResourceId = ResourcWorkspaceResourceId
+                     WorkspaceResourceId = WorkspaceResourceId
                  }
              };
 
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
-            if (this.OutputType == null && this.ResourcWorkspaceResourceId == null)
+            if (this.OutputType == null && this.WorkspaceResourceId == null)
             {
                 throw new ArgumentException("No Parameter is provided");
             }

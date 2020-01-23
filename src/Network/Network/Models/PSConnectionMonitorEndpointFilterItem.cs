@@ -22,8 +22,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSConnectionMonitorEndpointFilterItem
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Type { get; set; }
-    
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Address { get; set; }
     }
 }

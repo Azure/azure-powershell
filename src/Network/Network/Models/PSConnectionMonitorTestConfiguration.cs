@@ -9,16 +9,30 @@ namespace Microsoft.Azure.Commands.Network.Models
     using WindowsAzure.Commands.Common.Attributes;
 
     public class PSNetworkWatcherConnectionMonitorTestConfigurationObject
-    { 
+    {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Name { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? TestFrequencySec { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Protocol { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PreferredIPVersion { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public PSConnectionMonitorHttpConfiguration HttpConfiguration { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public PSConnectionMonitorTcpConfiguration TcpConfiguration { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public PSConnectionMonitorIcmpConfiguration IcmpConfiguration { get; set; }
 
-         public PSConnectionMonitorSuccessThreshold SuccessThreshold { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public PSConnectionMonitorSuccessThreshold SuccessThreshold { get; set; }
 
         [JsonIgnore]
         public string HttpConfigurationText

@@ -219,10 +219,6 @@
                 <Label>Tags</Label>
                 <PropertyName>TagsText</PropertyName>
               </ListItem>
-              <ListItem>
-                <Label>Notes</Label>
-                <PropertyName>Notes</PropertyName>
-              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -352,8 +348,8 @@
                 <PropertyName>TagsText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Notes</Label>
-                <PropertyName>Notes</PropertyName>
+                <Label>Note</Label>
+                <PropertyName>Note</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -534,8 +530,8 @@
                 <PropertyName>OutputText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Notes</Label>
-                <PropertyName>Notes</PropertyName>
+                <Label>Note</Label>
+                <PropertyName>Note</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

@@ -108,6 +108,16 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource ID.",
+            ParameterSetName = "SetByName")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource ID.",
+            ParameterSetName = "SetByLocation")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource ID.",
             ParameterSetName = "SetByConnectionMonitorV1")]
         [ValidateNotNull]
         public string ResourceId { get; set; }
@@ -306,7 +316,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The list of connection monitor outputs.",
             ParameterSetName = "SetByConnectionMonitorV2")]
-        //[ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
 
         [Parameter(
@@ -325,8 +334,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Notes associated with connection monitor.",
             ParameterSetName = "SetByConnectionMonitorV2")]
-        //[ValidateNotNullOrEmpty]
-        public string Notes { get; set; }
+        public string Note { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -415,7 +423,7 @@ namespace Microsoft.Azure.Commands.Network
 
                     this.TestGroup = InputObjectV2.TestGroups;
                     this.Output = InputObjectV2.Outputs;
-                    this.Notes = InputObjectV2.Notes;
+                    this.Note = InputObjectV2.Note;
                 }
             }
             else if (ParameterSetName.Contains("SetByLocation"))
@@ -463,9 +471,9 @@ namespace Microsoft.Azure.Commands.Network
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
             };
 
-            if (!string.IsNullOrEmpty(Notes))
+            if (!string.IsNullOrEmpty(Note))
             {
-                parameters.Notes = this.Notes;
+                parameters.Notes = this.Note;
             }
 
             if (connectionMonitorV2 == true)

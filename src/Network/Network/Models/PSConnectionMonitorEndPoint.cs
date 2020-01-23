@@ -26,12 +26,16 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSNetworkWatcherConnectionMonitorEndpointObject
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Name { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ResourceId { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Address { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public PSConnectionMonitorEndpointFilter Filter { get; set; }
 
         [JsonIgnore]
