@@ -14,7 +14,7 @@ Restores an Azure SQL Managed Instance database.
 
 ### PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters (Default)
 ```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <Guid>] [-ResourceGroupName] <String>
+Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <String>] [-ResourceGroupName] <String>
  [-InstanceName] <String> [-Name] <String> -PointInTime <DateTime> -TargetInstanceDatabaseName <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -35,7 +35,7 @@ Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -P
 
 ### PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters
 ```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <Guid>] [-ResourceGroupName] <String>
+Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <String>] [-ResourceGroupName] <String>
  [-InstanceName] <String> [-Name] <String> -PointInTime <DateTime> -TargetInstanceDatabaseName <String>
  -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -58,7 +58,7 @@ Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -P
 
 ### PointInTimeDeletedDatabasesSameInstanceRestoreInstanceDatabaseFromInputParameters
 ```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <Guid>] [-ResourceGroupName] <String>
+Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <String>] [-ResourceGroupName] <String>
  [-InstanceName] <String> [-Name] <String> [-DeletionDate] <DateTime> -PointInTime <DateTime>
  -TargetInstanceDatabaseName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -66,7 +66,7 @@ Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <Guid>] 
 
 ### PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters
 ```
-Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <Guid>] [-ResourceGroupName] <String>
+Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <String>] [-ResourceGroupName] <String>
  [-InstanceName] <String> [-Name] <String> [-DeletionDate] <DateTime> -PointInTime <DateTime>
  -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -339,7 +339,7 @@ Accept wildcard characters: False
 Source subscription id.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters
 Aliases: SourceSubscriptionId
 

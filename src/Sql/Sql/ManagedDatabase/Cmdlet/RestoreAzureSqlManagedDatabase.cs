@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = false,
             HelpMessage = "Source subscription id.")]
         [Alias("SourceSubscriptionId")]
-        public Guid SubscriptionId { get; set; }
+        public string SubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
@@ -400,9 +400,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 RestorePointInTime = PointInTime,
             };
 
-            if (SubscriptionId == Guid.Empty)
+            if (SubscriptionId != null && !Guid.TryParse(SubscriptionId, out Guid _))
             {
-                SubscriptionId = Guid.Parse(ModelAdapter.Context.Subscription.Id);
+                throw new PSArgumentException(
+                    string.Format("The provided subscription ID {0} is not a valid Guid.", SubscriptionId),
+                    "SubscriptionId");
+            }
+
+            if (SubscriptionId == null)
+            {
+                SubscriptionId = ModelAdapter.Context.Subscription.Id;
             }
 
             switch (ParameterSetName)
