@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSConnectionMonitorTcpConfiguration : PSNetworkWatcherConnectionMonitorProtocolConfiguration
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public int? Port { get; set; }
+        public short? Port { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool?  DisableTraceRoute { get; set; }
