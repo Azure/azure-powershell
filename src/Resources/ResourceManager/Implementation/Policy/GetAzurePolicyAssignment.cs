@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetResourceId()
         {
-            return this.Id ?? this.MakePolicyAssignmentId(this.Scope ?? $"/{Constants.Subscriptions}/{DefaultContext.Subscription.Id}", this.Name);
+            return this.Id ?? this.MakePolicyAssignmentId(this.Scope, this.Name);
         }
 
         private string GetFilterParam(string resourceId)

@@ -2310,7 +2310,7 @@ function Test-VirtualMachineScaleSetAutoRepair
             -SubnetId $subnetId;
 
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -HealthProbeId $expectedLb.Probes[0].Id `
-                                 -EnableAutomaticRepair -AutomaticRepairGracePeriod "PT10S" -AutomaticRepairMaxInstanceRepairsPercent 100 `
+                                 -EnableAutomaticRepair -AutomaticRepairGracePeriod "PT10S" `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -2319,14 +2319,12 @@ function Test-VirtualMachineScaleSetAutoRepair
 
         Assert-True { $vmss.AutomaticRepairsPolicy.Enabled };
         Assert-AreEqual "PT10S" $vmss.AutomaticRepairsPolicy.GracePeriod;
-        Assert-AreEqual 100 $vmss.AutomaticRepairsPolicy.MaxInstanceRepairsPercent;
         New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         $vmssResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
         Assert-True { $vmssResult.AutomaticRepairsPolicy.Enabled };
         Assert-AreEqual "PT10S" $vmssResult.AutomaticRepairsPolicy.GracePeriod;
-        Assert-AreEqual 100 $vmssResult.AutomaticRepairsPolicy.MaxInstanceRepairsPercent;
 
         Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -EnableAutomaticRepair $false;
 
@@ -2334,7 +2332,6 @@ function Test-VirtualMachineScaleSetAutoRepair
 
         Assert-False { $vmssResult.AutomaticRepairsPolicy.Enabled };
         Assert-AreEqual "PT10S" $vmssResult.AutomaticRepairsPolicy.GracePeriod;
-        Assert-AreEqual 100 $vmssResult.AutomaticRepairsPolicy.MaxInstanceRepairsPercent;
     }
     finally
     {

@@ -15,10 +15,13 @@
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
     using System.Collections;
+    using System.IO;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.DeploymentManager.Models;
+    using Microsoft.Azure.Commands.DeploymentManager.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Newtonsoft.Json;
 
     [Cmdlet(
         VerbsCommon.New,
@@ -32,6 +35,16 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         /// The parameter set for the wait step.
         /// </summary>
         private const string WaitParamSet = "Wait";
+
+        /// <summary>
+        /// The parameter set for specifying health check step payload as a file.
+        /// </summary>
+        private const string HealthCheckFileParamSet = "HealthCheckFile";
+
+        /// <summary>
+        /// The parameter set for specifying health check step as an object.
+        /// </summary>
+        private const string HealthCheckObjectParamSet = "HealthCheckObject";
 
         [Parameter(
             Mandatory = true,
@@ -58,6 +71,18 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             HelpMessage = "The duration to wait in ISO 8601 format. E.g.: PT30M, PT1H", ParameterSetName = NewStep.WaitParamSet)]
         [ValidateNotNullOrEmpty]
         public string Duration { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The path to the file where health check properties are defined.", ParameterSetName = NewStep.HealthCheckFileParamSet)]
+        [ValidateNotNullOrEmpty]
+        public string HealthCheckPropertiesFile { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The health check properties.", ParameterSetName = NewStep.HealthCheckObjectParamSet)]
+        [ValidateNotNullOrEmpty]
+        public PSHealthCheckStepProperties HealthCheckProperties { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -97,6 +122,20 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                         Duration = this.Duration
                     };
 
+                case HealthCheckObjectParamSet:
+                    return this.HealthCheckProperties;
+
+                case HealthCheckFileParamSet:
+                    var healthCheckFileContent = FileUtilities.GetHealthCheckPropertiesFromFile(
+                        this.SessionState.Path.CurrentFileSystemLocation.Path,
+                        this.HealthCheckPropertiesFile);
+
+                    var psHealthCheckStepProperties = JsonConvert.DeserializeObject<PSHealthCheckStepProperties>(
+                        healthCheckFileContent,
+                        new HealthCheckAttributesConverter(),
+                        new RestRequestAuthenticationConverter());
+
+                    return psHealthCheckStepProperties;
                 default:
                     return null;
             }
