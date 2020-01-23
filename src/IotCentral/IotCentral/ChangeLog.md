@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Change sku type from string to enum so that powershell would validate the sku value passed in.
+
 ## Version 0.7.3
 
 * This release adds new skus: ST0, ST1, ST2 for IotCentral.
