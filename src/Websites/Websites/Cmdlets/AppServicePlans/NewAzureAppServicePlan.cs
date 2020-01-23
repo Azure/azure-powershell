@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
@@ -64,9 +63,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Tags are name/value pairs that enable you to categorize resources")]
-        public IDictionary<string, string> Tags { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (HyperV.IsPresent && Tier != "PremiumContainer")
@@ -105,16 +101,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Name = skuName,
                 Capacity = capacity
             };
-            //Dictionary<string, string> tags = new Dictionary<string, string>();
-            //tags.Add("test", "test");
-            
+
             var appServicePlan = new AppServicePlan
             {
                 Location = Location,
                 Sku = sku,
                 PerSiteScaling = PerSiteScaling,
-                IsXenon = HyperV.IsPresent,
-                Tags= Tags
+                IsXenon = HyperV.IsPresent
             };
 
             AppServicePlan retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName);
