@@ -8,41 +8,42 @@ schema: 2.0.0
 # Get-AzSupportTicketCommunication
 
 ## SYNOPSIS
-Get support ticket communications. 
+Get support ticket communications.
 
 ## SYNTAX
 
 ### GetByNameParameterSet (Default)
 ```
-Get-AzSupportTicketCommunication -SupportTicketName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSupportTicketCommunication -SupportTicketName <String> [-Name <String>] [-Filter <String>]
+ [-First <UInt32>] [-Skip <UInt32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByParentObjectParameterSet
 ```
 Get-AzSupportTicketCommunication [-Name <String>] -SupportTicketObject <PSSupportTicket> [-Filter <String>]
- [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByResourceIdParameterSet
-```
-Get-AzSupportTicketCommunication -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### NextLinkParameterSet
-```
-Get-AzSupportTicketCommunication [-NextLink <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-First <UInt32>] [-Skip <UInt32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get support ticket communications. You can filter the results by *CreatedDate* or *CommunicationType* using *Filter* parameter. Output will be a paged result with *NextLink* if there are more results available. This can be used to retrieve the next page of results.
+Gets communications for a support ticket. It will retrieve all the communications for a ticket if you do not specify any other parameters. You can also filter the communications by CreatedDate or CommunicationType using the Filter parameter. Here are some examples of filter values that you can specify.
 
+
+| Scenario                                                        | Filter                                                     |
+|-----------------------------------------------------------------|------------------------------------------------------------|
+| Get Web communications                                          | "CommunicationType eq 'Web'"                               |
+| Get Phone communications                                        | "CommunicationType eq 'Phone'"                             |
+| Get communications that were created on or after 20th Dec, 2019 | "CreatedDate ge 2019-12-20"                                |
+| Get communications that were created after 20th Dec, 2019       | "CreatedDate gt 2019-12-20"                                |
+| Gets Web communications created after 20th Dec, 2019            | "CreatedDate gt 2019-12-20 and CommunicationType eq 'Web'" |
+
+
+This cmdlet supports paging via First and Skip parameters.
+
+You can also retrieve a single support ticket communication by specifying the communication name. 
 
 ## EXAMPLES
 
-### Example 1: Retrieve communications for a support ticket
+### Example 1: Retrieve all communications for a support ticket
 ```powershell
 PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1
 
@@ -56,8 +57,8 @@ Subject                : test subject 1
 Body                   : test message 1
 CreatedDate            : 1/2/2020 1:15:49 AM
 
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/c
-                         ommunications/testmessage2
+Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage2
+Name                   : testmessage2
 Type                   : Microsoft.Support/communications
 CommunicationType      : Web
 CommunicationDirection : Inbound
@@ -67,13 +68,144 @@ Body                   : test message 2
 CreatedDate            : 1/2/2020 1:16:05 AM
 ```
 
-### Example 2: Retrieve communications for a support ticket using top parameter. Use the NextLink to retrieve the next page of communications.
+### Example 2: Retrieve a communication by it's name for a support ticket
 ```powershell
-PS C:\> $a = Get-AzSupportTicketCommunication -SupportTicketName test1 -Top 1    
-PS C:\> $a | fl
+PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1 -Name testmessage1
 
-SupportTicketCommunicatons : {testmessage1}
-NextLink                   : https://management.azure.com:443/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications?%24top=1&api-version=2019-05-01-preview&%24skipToken=xxxx
+Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage1
+Name                   : testmessage1
+Type                   : Microsoft.Support/communications
+CommunicationType      : Web
+CommunicationDirection : Inbound
+Sender                 : user@contoso.com
+Subject                : test subject 1
+Body                   : test message 1
+CreatedDate            : 1/2/2020 1:15:49 AM
+```
+
+### Example 3: Retrieve first 2 communications for a support ticket
+```powershell
+PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1 -First 2
+
+Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage1
+Name                   : testmessage1
+Type                   : Microsoft.Support/communications
+CommunicationType      : Web
+CommunicationDirection : Inbound
+Sender                 : user@contoso.com
+Subject                : test subject 1
+Body                   : test message 1
+CreatedDate            : 1/2/2020 1:15:49 AM
+
+Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage2
+Name                   : testmessage2
+Type                   : Microsoft.Support/communications
+CommunicationType      : Web
+CommunicationDirection : Inbound
+Sender                 : user@contoso.com
+Subject                : test subject 2
+Body                   : test message 2
+CreatedDate            : 1/2/2020 1:16:05 AM
+```
+
+### Example 4: Retrieve next 2 communications after skipping first 2 communications for a support ticket
+```powershell
+PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1 -Skip 2 -First 2
+
+Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage3
+Name                   : testmessage3
+Type                   : Microsoft.Support/communications
+CommunicationType      : Web
+CommunicationDirection : Inbound
+Sender                 : user@contoso.com
+Subject                : test subject 1
+Body                   : test message 1
+CreatedDate            : 1/2/2020 1:15:49 AM
+
+Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage4
+Name                   : testmessage4
+Type                   : Microsoft.Support/communications
+CommunicationType      : Web
+CommunicationDirection : Inbound
+Sender                 : user@contoso.com
+Subject                : test subject 2
+Body                   : test message 2
+CreatedDate            : 1/2/2020 1:16:05 AM
+```
+
+### Example 5: Retrieve all Web communications for a support ticket
+```powershell
+PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1 -Filter "CommunicationType eq 'Web'"
+
+Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage3
+Name                   : testmessage3
+Type                   : Microsoft.Support/communications
+CommunicationType      : Web
+CommunicationDirection : Inbound
+Sender                 : user@contoso.com
+Subject                : test subject 1
+Body                   : test message 1
+CreatedDate            : 1/2/2020 1:15:49 AM
+
+Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage4
+Name                   : testmessage4
+Type                   : Microsoft.Support/communications
+CommunicationType      : Web
+CommunicationDirection : Inbound
+Sender                 : user@contoso.com
+Subject                : test subject 2
+Body                   : test message 2
+CreatedDate            : 1/2/2020 1:16:05 AM
+```
+
+### Example 6: Retrieve all communications created on or after Dec 20th, 2019 for a support ticket
+```powershell
+PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1 -Filter "CreatedDate ge 2019-12-20"
+
+Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage3
+Name                   : testmessage3
+Type                   : Microsoft.Support/communications
+CommunicationType      : Web
+CommunicationDirection : Inbound
+Sender                 : user@contoso.com
+Subject                : test subject 1
+Body                   : test message 1
+CreatedDate            : 1/2/2020 1:15:49 AM
+
+Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage4
+Name                   : testmessage4
+Type                   : Microsoft.Support/communications
+CommunicationType      : Web
+CommunicationDirection : Inbound
+Sender                 : user@contoso.com
+Subject                : test subject 2
+Body                   : test message 2
+CreatedDate            : 1/2/2020 1:16:05 AM
+```
+
+### Example 7: Retrieve all Web communications created on or after Dec 20th, 2019 for a support ticket
+```powershell
+PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1 -Filter "CommunicationType eq 'Web' and CreatedDate ge 2019-12-20"
+
+Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage3
+Name                   : testmessage3
+Type                   : Microsoft.Support/communications
+CommunicationType      : Web
+CommunicationDirection : Inbound
+Sender                 : user@contoso.com
+Subject                : test subject 1
+Body                   : test message 1
+CreatedDate            : 1/2/2020 1:15:49 AM
+
+Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage4
+Name                   : testmessage4
+Type                   : Microsoft.Support/communications
+CommunicationType      : Web
+CommunicationDirection : Inbound
+Sender                 : user@contoso.com
+Subject                : test subject 2
+Body                   : test message 2
+CreatedDate            : 1/2/2020 1:16:05 AM
 ```
 
 ## PARAMETERS
@@ -98,7 +230,7 @@ Filter to be applied to the results of this cmdlet.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByParentObjectParameterSet, GetByNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -113,41 +245,10 @@ Name of Communication resource that this cmdlet gets.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet, GetByParentObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NextLink
-The link for the next page of Communication resources to be obtained.
-This value is obtained with the first Get-AzSupportTicketCommunication cmdlet call when more resources are still available to be queried.
-
-```yaml
-Type: System.String
-Parameter Sets: NextLinkParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Arm ResourceId of Communication resource that this cmdlet gets.
-
-```yaml
-Type: System.String
-Parameter Sets: GetByResourceIdParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -184,12 +285,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Top
-Max number of results that will be returned by this cmdlet.
+### -Skip
+Ignores the first N results and then gets the remaining results.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: GetByParentObjectParameterSet, GetByNameParameterSet
+Type: System.UInt32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -First
+Maximum number of results that will be returned by this cmdlet.
+
+```yaml
+Type: System.UInt32
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -205,8 +321,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Support.Models.PSSupportTicket
-
-### System.String
 
 ## OUTPUTS
 

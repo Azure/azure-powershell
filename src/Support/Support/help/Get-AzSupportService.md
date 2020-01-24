@@ -22,13 +22,10 @@ Get-AzSupportService [-DefaultProfile <IAzureContextContainer>] [<CommonParamete
 Get-AzSupportService -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetByResourceIdParameterSet
-```
-Get-AzSupportService -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Get services for which support is available. Using the service name, you cam then retrieve list of problem classifications or issue types for that service for which support is available.
+Gets the current list of Azure services for which support is available. Each Azure service has its own set of categories called problem classification. Get the current list of problem classification for a service using Get-AzSupportProblemClassification. You can use the service and problem classification GUID to create a new support ticket using New-AzSupportTicket.
+
+Always use the service and problem classification GUIDs obtained programmatically. This practice ensures that you have the most recent set of service and problem classification GUIDs for support ticket creation. 
 
 ## EXAMPLES
 
@@ -68,21 +65,6 @@ Name of Service resource that this cmdlet gets.
 ```yaml
 Type: System.String
 Parameter Sets: GetByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Arm ResourceId of Service resource that this cmdlet gets.
-
-```yaml
-Type: System.String
-Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
 Required: True
