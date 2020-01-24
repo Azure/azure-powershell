@@ -24,6 +24,9 @@ function Test-CreateNewAppServicePlan
 	$location = Get-Location
 	$capacity = 2
 	$skuName = "S2"
+	#Tags
+	$tagsDict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
+	$tagsDict.Add('TagName','TagValue')
 
 	try
 	{
@@ -31,7 +34,7 @@ function Test-CreateNewAppServicePlan
 		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$job = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Standard" -WorkerSize Medium -NumberOfWorkers $capacity -AsJob
+		$job = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Standard" -WorkerSize Medium -NumberOfWorkers $capacity -Tags $tagsDict -AsJob
 		$job | Wait-Job
 		$createResult = $job | Receive-Job
 
@@ -40,6 +43,8 @@ function Test-CreateNewAppServicePlan
 		Assert-AreEqual "Standard" $createResult.Sku.Tier
 		Assert-AreEqual $skuName $createResult.Sku.Name
 		Assert-AreEqual $capacity $createResult.Sku.Capacity
+		Assert-AreEqual $tagsDict.Keys $createResult.Tags.Keys
+		Assert-AreEqual $tagsDict.Values $createResult.Tags.Values
 
 		# Assert
 
@@ -127,7 +132,9 @@ function Test-SetAppServicePlan
 	$newWorkerSize = "Medium"
 	$newCapacity = 2
 	$newPerSiteScaling = $true;
-
+	#Tags
+	$tagsDict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
+	$tagsDict.Add('TagName','TagValue')
 
 	try
 	{
@@ -173,6 +180,12 @@ function Test-SetAppServicePlan
 		Assert-AreEqual $skuName $newresult.Sku.Name
 		Assert-AreEqual $perSiteScaling $newresult.PerSiteScaling
 
+		#Set Tags
+		$tagsResult= Set-AzAppServicePlan  -ResourceGroupName $rgname -Name $whpName -Tags $tagsDict
+		
+		# Assert
+		Assert-AreEqual $tagsDict.Keys $tagsResult.Tags.Keys
+		Assert-AreEqual $tagsDict.Values $tagsResult.Tags.Values
 	}
 	finally
 	{

@@ -1073,7 +1073,8 @@ function Test-SetWebApp
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	$capacity = 2
-
+	$HN="custom.domain.com"
+	
 	try
 	{
 		#Setup
@@ -1158,6 +1159,17 @@ function Test-SetWebApp
 		Assert-AreEqual $capacity $webApp.SiteConfig.NumberOfWorkers
 		Assert-AreEqual "" $webApp.SiteConfig.PhpVersion
 		Assert-AreEqual "1.2" $webApp.SiteConfig.MinTlsVersion
+
+		# set Custom Host Name(s)- Failed Scenario
+		$oldWebApp= Get-AzWebApp -ResourceGroupName $rgname -Name $webAppName
+		$CurrentWebApp = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -HostNames $HN
+		
+		#Assert
+		$status
+		foreach($oldHN in $oldWebApp.HostNames)
+		{
+			Assert-True { $CurrentWebApp.HostNames -contains $oldHN }
+		}	
 
 	}
 	finally
