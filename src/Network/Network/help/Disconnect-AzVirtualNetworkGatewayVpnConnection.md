@@ -75,11 +75,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VpnConnectionId
+### -VpnConnectionIds
 Vpn Connection Id
 
 ```yaml
-Type: System.String
+Type: String[]
 Parameter Sets: (All)
 Aliases: VpnConnectionId
 

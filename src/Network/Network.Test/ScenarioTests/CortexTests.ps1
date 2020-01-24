@@ -754,7 +754,7 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $vpnServerConfig1.Id $P2SVpnGateway.VpnServerConfiguration.Id
 		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
 
-		$expected = Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $P2SvpnGatewayName -VpnConnectionId "IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4"
+		$expected = Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $P2SvpnGatewayName -VpnConnectionIds @("IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
         Assert-AreEqual $expected.Name $P2SVpnGateway.Name
      }
      finally
