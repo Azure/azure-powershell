@@ -97,13 +97,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VpnConnectionId
+### -VpnConnectionIds
 Vpn Connection Id
 
 ```yaml
-Type: System.String
+Type: String[]
 Parameter Sets: (All)
-Aliases: VpnConnectionId
+Aliases: VpnConnectionIds
 
 Required: True
 Position: Named

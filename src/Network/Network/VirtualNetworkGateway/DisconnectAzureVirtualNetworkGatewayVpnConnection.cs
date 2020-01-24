@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Virtual network gateway Vpn connection Id, which is returned by getting virtualNetwork gateway Vpn client connection Health")]
+            HelpMessage = "Virtual network gateway Vpn connection Ids, which are returned by getting virtualNetwork gateway Vpn client connection Health")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public virtual string VpnConnectionId { get; set; }
+        public string[] VpnConnectionIds { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            var req = new P2SVpnConnectionRequest(new List<string>() { VpnConnectionId });
+            var req = new P2SVpnConnectionRequest(new List<string>(VpnConnectionIds));
             this.VirtualNetworkGatewayClient.DisconnectVirtualNetworkGatewayVpnConnections(ResourceGroupName, VirtualNetworkGatewayName, req);
             
             var getVirtualNetworkGateway = this.GetVirtualNetworkGateway(ResourceGroupName, VirtualNetworkGatewayName);

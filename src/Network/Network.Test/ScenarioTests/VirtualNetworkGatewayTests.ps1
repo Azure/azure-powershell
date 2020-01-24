@@ -1116,7 +1116,7 @@ function Test-DisconnectVirtualNetworKGatewayVpnConnection
 		Assert-AreEqual 2 @($protocols).Count
 		Assert-AreEqual "201.169.0.0/16" $actual.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes 
 		
-        $expected = Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $rname -VpnConnectionId "IKEv2_1e1cfe59-5c7c-4315-a876-b11fbfdfeed4"
+        $expected = Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $rname -VpnConnectionIds @("IKEv2_ae1cfe59-5c7c-4315-a876-b11fbfdfeed4")
         Assert-AreEqual $expected.Name $actual.Name
 	}
 	finally
