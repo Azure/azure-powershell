@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/remove-azcosmosdbgremlingraph
 schema: 2.0.0
 ---
 
 # Remove-AzCosmosDBGremlinGraph
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes a CosmosDB Gremlin Graph.
 
 ## SYNTAX
 
@@ -26,16 +26,16 @@ Remove-AzCosmosDBGremlinGraph -InputObject <PSGremlinGraphGetResults> [-PassThru
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzCosmosDBGremlinGraph** cmdlet deletes a CosmosDB Gremlin Graph.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzCosmosDBGremlinGraph -ResourceGroupName {rgName} -AccountName {accountName} -DatabaseName {dbName} -Name {graphName}
 ```
 
-{{ Add example description here }}
+The cmdlet returns an object of type bool(when -PassThru is passed) which is true, if the delete was successful.
 
 ## PARAMETERS
 

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabase
 schema: 2.0.0
 ---
 
 # Get-AzCosmosDBGremlinDatabase
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the CosmosDB Gremlin Database.
 
 ## SYNTAX
 
@@ -25,16 +25,18 @@ Get-AzCosmosDBGremlinDatabase [-Name <String>] -InputObject <PSDatabaseAccount> 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzCosmosDBGremlinDatabase** cmdlet gets the CosmosDB Gremlin Database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> Get-AzCosmosDBGremlinDatabase -ResourceGroupName {rgName} -AccountName {accountName} -Name {databaseName}
 
-{{ Add example description here }}
+Name    Id   Resource
+{name}  {id} Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinDatabaseGetPropertiesResource
+```
+Resource Object contains _rid, _ts, _etag.
 
 ## PARAMETERS
 

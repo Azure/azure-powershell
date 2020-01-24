@@ -1,14 +1,15 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/remove-azcosmosdbgremlindatabase
 schema: 2.0.0
 ---
 
 # Remove-AzCosmosDBGremlinDatabase
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes a CosmosDB Gremlin Database.
+
 
 ## SYNTAX
 
@@ -25,16 +26,16 @@ Remove-AzCosmosDBGremlinDatabase -InputObject <PSGremlinDatabaseGetResults> [-Pa
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzCosmosDBGremlinDatabase** cmdlet deletes a CosmosDB Gremlin Database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzCosmosDBGremlinDatabase -ResourceGroupName {rgName} -AccountName {accountName} -Name {dbName} 
 ```
 
-{{ Add example description here }}
+The cmdlet returns an object of type bool(when -PassThru is passed) which is true, if the delete was successful.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCosmosDBCassandraColumn
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new CosmosDB Cassandra Column.
 
 ## SYNTAX
 
@@ -18,16 +18,19 @@ New-AzCosmosDBCassandraColumn -Name <String> -Type <String> [-DefaultProfile <IA
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzCosmosDBCassandraColumn** creates a new CosmosDB Cassandra Column.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> New-AzCosmosDBCassandraColumn -Name "name" -Type int
 
-{{ Add example description here }}
+Name Type
+---- ----
+name int
+
+```
 
 ## PARAMETERS
 

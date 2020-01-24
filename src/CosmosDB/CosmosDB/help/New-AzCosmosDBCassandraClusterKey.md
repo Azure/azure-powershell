@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCosmosDBCassandraClusterKey
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new CosmosDB Cassandra Cluster Key.
 
 ## SYNTAX
 
@@ -18,16 +18,19 @@ New-AzCosmosDBCassandraClusterKey -Name <String> -OrderBy <String> [-DefaultProf
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzCosmosDBCassandraClusterKey** creates a new CosmosDB Cassandra Cluster Key.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> New-AzCosmosDBCassandraClusterKey -Name <String> -OrderBy <String>
 
-{{ Add example description here }}
+Name   OrderBy
+----   -------
+{name}  Asc
+
+```
 
 ## PARAMETERS
 

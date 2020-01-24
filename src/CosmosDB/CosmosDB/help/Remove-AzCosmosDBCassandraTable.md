@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzCosmosDBCassandraTable
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes a CosmosDB Cassandra Table.
 
 ## SYNTAX
 
@@ -26,16 +26,16 @@ Remove-AzCosmosDBCassandraTable -InputObject <PSCassandraTableGetResults> [-Pass
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzCosmosDBCassandraTable** delete a CosmosDB Cassandra Table.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzCosmosDBCassandraTable -ResourceGroupName {resourceGroup} -AccountName {account} -KeyspaceName {keyspace} -Name {tableName}
 ```
 
-{{ Add example description here }}
+The cmdlet returns an object of type bool(when -PassThru is passed) which is true, if the delete was successful.
 
 ## PARAMETERS
 

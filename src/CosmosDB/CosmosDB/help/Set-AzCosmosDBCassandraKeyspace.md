@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzCosmosDBCassandraKeyspace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets the CosmosDB Cassandra Keyspace.
 
 ## SYNTAX
 
@@ -25,16 +25,19 @@ Set-AzCosmosDBCassandraKeyspace -Name <String> [-Throughput <Int32>] -InputObjec
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzCosmosDBCassandraKeyspace** cmdlet sets the CosmosDB Cassandra Keyspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzCosmosDBCassandraKeyspace -ResourceGroupName {rgName} -AccountName {accountName} -Name {keyspaceName}
+Name        Id    Resource
+----        --    -------
+{name}     {id}   Microsoft.Azure.Commands.CosmosDB.Models.PSCassandraKeyspaceGetPropertiesResource
 ```
 
-{{ Add example description here }}
+Resource object contains the values of the _rid, _ts, _etag properties.
 
 ## PARAMETERS
 

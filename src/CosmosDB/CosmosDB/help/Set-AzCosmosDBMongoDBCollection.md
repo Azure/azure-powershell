@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/set-azcosmosdbmongodbcollection
 schema: 2.0.0
 ---
 
 # Set-AzCosmosDBMongoDBCollection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets the CosmosDB MongoDB Collection.
 
 ## SYNTAX
 
@@ -27,16 +27,18 @@ Set-AzCosmosDBMongoDBCollection -Name <String> [-Throughput <Int32>] [-Shard <St
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzCosmosDBMongoDBCollection** cmdlet sets the CosmosDB MongoDB Collection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> Set-AzCosmosDBMongoDBCollection -ResourceGroupName {rgName} -AccountName {accountName}  -Database {dbName} -Name {collectionName} 
 
-{{ Add example description here }}
+Name    Id   Resource
+{name}  {id} Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBCollectionGetPropertiesResource
+```
+Resource Object contains MongoIndexes, _rid, _ts, _etag properties.
 
 ## PARAMETERS
 

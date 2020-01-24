@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabasethroughput
 schema: 2.0.0
 ---
 
 # Get-AzCosmosDBGremlinDatabaseThroughput
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the throughput of a CosmosDB Gremlin Database.
 
 ## SYNTAX
 
@@ -25,16 +25,19 @@ Get-AzCosmosDBGremlinDatabaseThroughput -Name <String> -InputObject <PSDatabaseA
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzCosmosDBGremlinDatabaseThroughput** cmdlet gets the throughput of a CosmosDB Gremlin Database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzCosmosDBGremlinDatabaseThroughput -ResourceGroupName {rgName} -AccountName {accountName} -Name {databaseName}
+Name: {throughputName}
+Id: {Id}
+Throughput: {value} 
+MinimumThroughput: {value}
+OfferReplacePending: {value}
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
