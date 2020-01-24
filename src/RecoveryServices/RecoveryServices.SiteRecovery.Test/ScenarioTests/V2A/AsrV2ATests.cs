@@ -249,6 +249,9 @@ namespace RecoveryServices.SiteRecovery.Test
            Category.CheckIn)]
         public void V2ACreateRPIWithDES()
         {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "CMKInput","V2A.VaultCredentials");
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,
@@ -263,6 +266,9 @@ namespace RecoveryServices.SiteRecovery.Test
            Category.CheckIn)]
         public void V2ACreateRPIWithDESEnabledDiskInput()
         {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "CMKInput", "V2A.VaultCredentials");
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,

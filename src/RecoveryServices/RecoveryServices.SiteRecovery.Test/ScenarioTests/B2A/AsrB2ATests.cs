@@ -126,6 +126,9 @@ namespace RecoveryServices.SiteRecovery.Test
             Category.CheckIn)]
         public void TestUpdateRPIWithDES()
         {
+            this.VaultSettingsFilePath = System.IO.Path.Combine(
+                System.AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "B2A", "CMKInput", "B2A.VaultCredentials");
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,
