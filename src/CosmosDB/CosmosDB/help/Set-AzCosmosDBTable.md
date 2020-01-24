@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/set-azcosmosdbtable
 schema: 2.0.0
 ---
 
 # Set-AzCosmosDBTable
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets the CosmosDB Table.
 
 ## SYNTAX
 
@@ -25,16 +25,19 @@ Set-AzCosmosDBTable -Name <String> [-Throughput <Int32>] -InputObject <PSDatabas
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzCosmosDBTable** cmdlet creates a new Table or updates an existing Table, replacing the existing Table entirely.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzCosmosDBTable -AccountName {account} -Name {tableName} -ResourceGroupName {rgName}
+
+Name    Id    Resource
+{name}  {id}  Microsoft.Azure.Commands.CosmosDB.Models.PSTableGetPropertiesResource
 ```
 
-{{ Add example description here }}
+Resource object contains _rid, _ts, _ etag properties of the Table.
 
 ## PARAMETERS
 

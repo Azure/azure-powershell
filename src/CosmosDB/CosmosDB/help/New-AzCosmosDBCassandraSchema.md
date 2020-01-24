@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCosmosDBCassandraSchema
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new CosmosDB Cassandra Schema.
 
 ## SYNTAX
 
@@ -18,16 +18,18 @@ New-AzCosmosDBCassandraSchema [-Column <PSColumn[]>] [-PartitionKey <String[]>] 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzCosmosDBCassandraSchema** creates a new CosmosDB Cassandra Schema.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> New-AzCosmosDBCassandraSchema -Column {PSColumn[]} -PartitionKey <String[]> -ClusterKey {PSClusterKey[]}
 
-{{ Add example description here }}
+Columns PartitionKeys ClusterKeys
+------- ------------- -----------
+{column1}     {a}     {clusterkey1}
+```
 
 ## PARAMETERS
 

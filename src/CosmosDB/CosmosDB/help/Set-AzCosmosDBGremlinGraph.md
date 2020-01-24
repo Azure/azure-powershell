@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/set-azcosmosdbgremlingraph
 schema: 2.0.0
 ---
 
 # Set-AzCosmosDBGremlinGraph
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets the CosmosDB Gremlin Graph.
 
 ## SYNTAX
 
@@ -33,16 +33,20 @@ Set-AzCosmosDBGremlinGraph -Name <String> [-IndexingPolicy <PSIndexingPolicy>] [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzCosmosDBGremlinGraph** cmdlet sets a CosmosDB Gremlin Graph.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzCosmosDBGremlinGraph -ResourceGroupName {rgName} -AccountName {accountName} -DatabaseName {dbName} -Name {graphName} -PartitionKeyPath {path}
+
+Name        Id    Resource
+----        --    -------
+{name}     {id}   Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinGraphGetPropertiesResource
 ```
 
-{{ Add example description here }}
+Resource Object contains IndexingPolicy, PartitionKey, DefaultTtl, UniqueKeyPolicy, ConflictResolutionPolicy, _rid, _ts, _etag.
 
 ## PARAMETERS
 

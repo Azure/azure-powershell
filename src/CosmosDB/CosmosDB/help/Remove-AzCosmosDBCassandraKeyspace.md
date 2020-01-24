@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzCosmosDBCassandraKeyspace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes a CosmosDB Cassandra Keyspace.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Remove-AzCosmosDBCassandraKeyspace -InputObject <PSCassandraKeyspaceGetResults> 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzCosmosDBCassandraKeyspace** cmdlet deletes an existing CosmosDB Cassandra Keyspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzCosmosDBCassandraKeyspace -ResourceGroupName {resourceGroupName} -AccountName {accountName} -Name {keyspaceName}
 ```
 
-{{ Add example description here }}
+The cmdlet returns an object of type bool(when -PassThru is passed) which is true if the delete was successful.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCosmosDBCassandraTable
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a CosmosDB Cassandra Table.
 
 ## SYNTAX
 
@@ -25,16 +25,19 @@ Get-AzCosmosDBCassandraTable [-Name <String>] -InputObject <PSCassandraKeyspaceG
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzCosmosDBCassandraTable** cmdlet creates a new or updates an existing CosmosDB Cassandra Keyspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $table = Get-AzCosmosDBCassandraTable -ResourceGroupName {resourceGroupName} -AccountName {accountName} -Keyspace {keyspaceName} -Name {name}
+
+Name    Id   Resource
+{name}  {id} {resourceObject}
 ```
 
-{{ Add example description here }}
+{{ Get-AzCosmosDBCassandraTable gets the properties of an existing CassandraKeyspace. You can expand the Resource to get the DefaultTtl, Schema, _etag, _ts, _rid properties.}}
 
 ## PARAMETERS
 

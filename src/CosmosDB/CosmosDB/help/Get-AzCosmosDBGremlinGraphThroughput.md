@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraphthroughput
 schema: 2.0.0
 ---
 
 # Get-AzCosmosDBGremlinGraphThroughput
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the throughput of a CosmosDB Gremlin Graph.
 
 ## SYNTAX
 
@@ -25,16 +25,20 @@ Get-AzCosmosDBGremlinGraphThroughput [-Name <String>] -InputObject <PSGremlinGra
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzCosmosDBGremlinGraphThroughput** cmdlet gets the throughput of a CosmosDB Gremlin Graph.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> Get-AzCosmosDBGremlinGraphThroughput -ResourceGroupName {rgName} -AccountName {accountName} -DatabaseName {dbName} -Name {graphName}
 
-{{ Add example description here }}
+Name: {throughputName}
+Id: {Id}
+Throughput: {value} 
+MinimumThroughput: {value}
+OfferReplacePending: {value}
+```
 
 ## PARAMETERS
 

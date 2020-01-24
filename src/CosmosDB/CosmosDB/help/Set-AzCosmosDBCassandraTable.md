@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzCosmosDBCassandraTable
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets the CosmosDB Cassandra Table.
 
 ## SYNTAX
 
@@ -27,16 +27,19 @@ Set-AzCosmosDBCassandraTable -Name <String> [-Throughput <Int32>] [-TtlInSeconds
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzCosmosDBCassandraTable** cmdlet sets the CosmosDB Cassandra Keyspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzCosmosDBCassandraTable -ResourceGroupName {rgName} -AccountName {accountName} -Keyspace {keyspaceName} -Name {tableName}
+Name        Id    Resource
+----        --    -------
+{name}     {id}   Microsoft.Azure.Commands.CosmosDB.Models.PSCassandraTableGetPropertiesResource
 ```
 
-{{ Add example description here }}
+Resource object contains the values of the _rid, _ts, _etag, DefaultTtl and Schema properties.
 
 ## PARAMETERS
 

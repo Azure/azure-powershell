@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCosmosDBCassandraKeyspaceThroughput
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the throughput value of the Cassandra Keyspace.
 
 ## SYNTAX
 
@@ -25,16 +25,14 @@ Get-AzCosmosDBCassandraKeyspaceThroughput -Name <String> -InputObject <PSDatabas
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzCosmosDBCassandraKeyspaceThroughput** cmdlet gets the throughput object corresponding to a given Keyspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzCosmosDBCassandraKeyspaceThroughput -ResourceGroupName {resourceGroupName} -AccountName {accountName} -Name {name}
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 

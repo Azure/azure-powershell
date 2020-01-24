@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspace
 schema: 2.0.0
 ---
 
 # Get-AzCosmosDBCassandraKeyspace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a CosmosDB Cassandra Keyspace.
 
 ## SYNTAX
 
@@ -25,16 +25,19 @@ Get-AzCosmosDBCassandraKeyspace [-Name <String>] -InputObject <PSDatabaseAccount
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzCosmosDBCassandraKeyspace** cmdlet creates a new or updates an existing CosmosDB Cassandra Keyspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzCosmosDBCassandraKeyspace -ResourceGroupName {resourceGroupName} -AccountName {accountName} -Name {name}
+
+Name    Id   Resource
+{name}  {id} {resourceObject}
 ```
 
-{{ Add example description here }}
+Get-AzCosmosDBCassandraKeyspace gets the properties of an existing CassandraKeyspace. You can expand the Resource to get the _etag, _ts, _rid properties.
 
 ## PARAMETERS
 
