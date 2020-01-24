@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             List<ProtectedItemResource> protectedItemGetResponses =
                 new List<ProtectedItemResource>();
 
-            if (itemName != null || friendlyName != null)
+            if (!string.IsNullOrEmpty(itemName) || !string.IsNullOrEmpty(friendlyName))
             {
                 protectedItems = protectedItems.Where(protectedItem =>
                 {
@@ -165,9 +165,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                     string protectedItemUri = HelperUtils.GetProtectedItemUri(dictionary, protectedItem.Id);
 
-                    string protectedItemFriendlyName = (protectedItem.Properties as AzureFileshareProtectedItem).FriendlyName;
-                    bool filteredByUniqueName = itemName != null && (protectedItemUri.ToLower().Contains(itemName.ToLower()) || protectedItemFriendlyName.ToLower() == itemName.ToLower());
-                    bool filteredByFriendlyName = friendlyName != null && (protectedItem.Properties as AzureFileshareProtectedItem).FriendlyName.ToLower() == friendlyName.ToLower();
+                    bool filteredByUniqueName = itemName != null && (protectedItemUri.ToLower().Contains(itemName.ToLower()) );
+                    bool filteredByFriendlyName = false;
+
+                    if (protectedItem.Properties.BackupManagementType == "AzureStorage" && protectedItem.Properties.WorkloadType == "AzureFileShare")
+                    {
+                        string protectedItemFriendlyName = (protectedItem.Properties as AzureFileshareProtectedItem).FriendlyName;
+                        filteredByUniqueName = filteredByUniqueName || protectedItemFriendlyName.ToLower() == itemName.ToLower();
+                        filteredByFriendlyName = friendlyName != null && protectedItemFriendlyName.ToLower() == friendlyName.ToLower();
+                    }
 
                     return filteredByUniqueName || filteredByFriendlyName;
                 }).ToList();
