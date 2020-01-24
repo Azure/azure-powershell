@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCosmosDBTableThroughput
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the throughput of a CosmosDB Table.
 
 ## SYNTAX
 
@@ -25,16 +25,20 @@ Get-AzCosmosDBTableThroughput -Name <String> -InputObject <PSDatabaseAccount>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzCosmosDBTableThroughput** cmdlet gets the throughput of a CosmosDB Table.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> Get-AzCosmosDBTableThroughput -ResourceGroupName {rgName} -AccountName {accountName} -Name {databaseName}
 
-{{ Add example description here }}
+Name: {throughputName}
+Id: {Id}
+Throughput: {value} 
+MinimumThroughput: {value}
+OfferReplacePending: {value}
+```
 
 ## PARAMETERS
 
