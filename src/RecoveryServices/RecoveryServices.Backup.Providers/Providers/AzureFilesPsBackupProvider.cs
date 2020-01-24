@@ -620,6 +620,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
             string friendlyName = (string)ProviderData[ItemParams.FriendlyName];
 
+            if( itemName != null && isFriendlyName(itemName) )
+            {
+                Logger.Instance.WriteWarning(Resources.FriendlyNamePassedWarning);
+            }
+
             // 1. Filter by container
             List<ProtectedItemResource> protectedItems = AzureWorkloadProviderHelper.ListProtectedItemsByContainer(
                 vaultName,
@@ -910,8 +915,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         private bool isFriendlyName(string name)
         {
-
-
+            if (name.Contains(";"))
+                return false;
             return true;
         }
     }
