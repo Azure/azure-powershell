@@ -27,13 +27,20 @@ New-AzSupportTicketCommunication -SupportTicketObject <PSSupportTicket> -Name <S
 ```
 
 ## DESCRIPTION
-Creates a new support ticket communication.
+Adds a new customer communication to an Azure support ticket. 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSupportTicketCommunication -SupportTicketName testticket -Name testmessage -Subject "test subject" -Body "test body"
+
+PS C:\> Test-AzSupportNameAvailability -Name testmessage -SupportTicketName testticket -Communication
+
+NameAvailable Reason Message
+------------- ------ -------
+         True
+
+PS C:\> New-AzSupportTicketCommunication -Name testmessage -SupportTicketName testticket -Subject "test subject" -Body "test body" -Sender "user@contoso.com"
 
 Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/testticket/communications/testmessage
 Name                   : testmessage

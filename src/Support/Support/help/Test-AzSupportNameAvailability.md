@@ -5,33 +5,33 @@ online version:
 schema: 2.0.0
 ---
 
-# Test-AzSupportCheckNameAvailability
+# Test-AzSupportNameAvailability
 
 ## SYNOPSIS
 Test name availability for support ticket and support ticket communication resource types.
 
 ## SYNTAX
 
-### SupportTicketCheckNameAvailabilityParameterSet (Default)
+### SupportTicketNameAvailabilityParameterSet (Default)
 ```
-Test-AzSupportCheckNameAvailability -Name <String> [-SupportTicket] [-DefaultProfile <IAzureContextContainer>]
+Test-AzSupportNameAvailability -Name <String> [-SupportTicket] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### CommunicationCheckNameAvailabilityParameterSet
+### CommunicationNameAvailabilityParameterSet
 ```
-Test-AzSupportCheckNameAvailability -Name <String> -SupportTicketName <String> [-Communication]
+Test-AzSupportNameAvailability -Name <String> -SupportTicketName <String> [-Communication]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Test name availability for support ticket and support ticket communication resource types. Before creating a support ticket or support ticket communication with a name, you can call this cmdlet to test if that name is valid and is available.
+Use this cmdlet to test the availability of a name for support ticket or support ticket communication. It is a good practice to call this cmdlet to test if a name is valid and available before creating a new support ticket or adding a new customer communication to a support ticket.
 
 ## EXAMPLES
 
 ### Example 1: Test availability of name for support ticket. This example shows the result when the name is available. 
 ```powershell
-PS C:\> Test-AzSupportCheckNameAvailability -Name test -SupportTicket
+PS C:\> Test-AzSupportNameAvailability -Name test -SupportTicket
 
 NameAvailable Reason Message
 ------------- ------ -------
@@ -41,7 +41,7 @@ NameAvailable Reason Message
 
 ### Example 2: Test availability of name for support ticket. This example shows the result when the name is not available because it already exists.
 ```powershell
-PS C:\> Test-AzSupportCheckNameAvailability -Name test -SupportTicket
+PS C:\> Test-AzSupportNameAvailability -Name test -SupportTicket
 
 NameAvailable Reason        Message
 ------------- ------        -------
@@ -49,9 +49,9 @@ NameAvailable Reason        Message
 
 ```
 
-### Example 1: Test availability of name for support ticket communication. 
+### Example 3: Test availability of name for support ticket communication. 
 ```powershell
-PS C:\> Test-AzSupportCheckNameAvailability -Name testmessage -SupportTicketName testticket -Communication
+PS C:\> Test-AzSupportNameAvailability -Name testmessage -SupportTicketName testticket -Communication
 
 NameAvailable Reason Message
 ------------- ------ -------
@@ -66,7 +66,7 @@ Use this switch when doing availability test for Communication resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CommunicationCheckNameAvailabilityParameterSet
+Parameter Sets: CommunicationNameAvailabilityParameterSet
 Aliases:
 
 Required: True
@@ -111,7 +111,7 @@ Use this switch when doing availability test for SupportTicket resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SupportTicketCheckNameAvailabilityParameterSet
+Parameter Sets: SupportTicketNameAvailabilityParameterSet
 Aliases:
 
 Required: True
@@ -126,7 +126,7 @@ SupportTicket resource name that must be specified when doing availability test 
 
 ```yaml
 Type: System.String
-Parameter Sets: CommunicationCheckNameAvailabilityParameterSet
+Parameter Sets: CommunicationNameAvailabilityParameterSet
 Aliases:
 
 Required: True

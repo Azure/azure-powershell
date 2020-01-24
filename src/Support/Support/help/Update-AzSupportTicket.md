@@ -24,14 +24,8 @@ Update-AzSupportTicket -InputObject <PSSupportTicket> [-Severity <String>] [-Con
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateByResourceIdParameterSet
-```
-Update-AzSupportTicket -ResourceId <String> [-Severity <String>] [-ContactDetails <PSContactProfile>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Updates support ticket. Use this cmdlet to update Severity and/or ContactDetails of a support ticket.
+Use this cmdlet to update a support ticket's severity level or customer contact details. Note that updating a support ticket's severity level is not allowed when the ticket is assigned to a support engineer. If you wish to update the severity level after ticket assignment, contact the support engineer by sending a communication on the ticket.
 
 ## EXAMPLES
 
@@ -110,6 +104,36 @@ Country                  : USA
 PreferredSupportLanguage : en-us
 ```
 
+### Example 3: Updating severity of support ticket by piping support ticket object.
+```powershell
+PS C:\> Get-AzSupportTicket -Name test | Update-AzSupportTicket -Severity moderate
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test
+Name                             : test
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
+ProblemClassificationDisplayName :
+Severity                         : Moderate
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
+ServiceDisplayName               :
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 4:17:49 AM
+TechnicalTicketDetails           :
+QuotaTicketDetails               :
+```
+
 ## PARAMETERS
 
 ### -ContactDetails
@@ -163,21 +187,6 @@ Name of SupportTicket resource that this cmdlet updates.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Arm ResourceId of SupportTicket resource that this cmdlet updates.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateByResourceIdParameterSet
 Aliases:
 
 Required: True

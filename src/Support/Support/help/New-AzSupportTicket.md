@@ -15,130 +15,81 @@ Creates a support ticket.
 ### CreateSupportTicketParameterSet (Default)
 ```
 New-AzSupportTicket -Name <String> -Title <String> -Description <String> -ProblemClassificationId <String>
- -Severity <String> [-Require24X7Response <Boolean>] -ContactDetails <PSContactProfile>
- [-ProblemStartTime <DateTime>] -ServiceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ -Severity <Severity> -ContactDetail <PSContactProfile> [-ProblemStartTime <DateTime>]
+ [-CSPHomeTenantId <String>] [-Require24X7Response] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateTechnicalSupportTicketParameterSet
 ```
 New-AzSupportTicket -Name <String> -Title <String> -Description <String> -ProblemClassificationId <String>
- -Severity <String> [-Require24X7Response <Boolean>] -ContactDetails <PSContactProfile>
- [-ProblemStartTime <DateTime>] -ServiceId <String> [-TechnicalTicketDetails <PSTechnicalTicketDetails>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Severity <Severity> -ContactDetail <PSContactProfile> [-ProblemStartTime <DateTime>]
+ [-TechnicalTicketDetail <PSTechnicalTicketDetail>] [-CSPHomeTenantId <String>] [-Require24X7Response] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateQuotaTicketParameterSet
 ```
 New-AzSupportTicket -Name <String> -Title <String> -Description <String> -ProblemClassificationId <String>
- -Severity <String> [-Require24X7Response <Boolean>] -ContactDetails <PSContactProfile>
- [-ProblemStartTime <DateTime>] -ServiceId <String> [-QuotaTicketDetails <PSQuotaTicketDetails>] [-AsJob]
+ -Severity <Severity> -ContactDetail <PSContactProfile> [-ProblemStartTime <DateTime>]
+ [-QuotaTicketDetail <PSQuotaTicketDetail>] [-CSPHomeTenantId <String>] [-Require24X7Response] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet can be used to create a support ticket for billing, subscription management, quota or technical issues. Use Get-AzSupportService and Get-AzSupportProblemClassification cmdlets to identify the service and problem classification or issue type for which you want to request support. You must specify the following parameters.
+This cmdlet can be used to create a support ticket for Billing, Subscription Management, Quota or Technical issues. Use Get-AzSupportService and Get-AzSupportProblemClassification cmdlets to identify the Azure service and it's corresponding problem classifications respectively for which you want to request support. You must specify the following parameters: 
 
-*   Title
-*   Description
-*   Severity
-*   ServiceId
-*   ProblemClassificationId
-*   ContactDetails 
+	• Title
+	• Description
+	• Severity level
+	• ProblemClassificationId
+	• ContactDetail
 
-For technical tickets, you can optionally specify additional details as *TechnicalTicketDetails* and specify the Arm resource id of technical resource that you are requesting support for.
+You can use New-AzSupportContactProfileObject helper cmdlet to create ContactDetail object.
 
-For quota tickets, you can optionally specify additional details as *QuotaTicketDetails* to request automated quota increase for certain quota types. QuotaTicketDetails object consists of 3 properties as described below.
+Cloud Solution Providers can create a support ticket for their customer's subscriptions by logging into their customer's tenant and specifying their home tenant id using *CSPHomeTenantId* parameter.
 
-* QuotaChangeRequestSubType <String>
+__For technical tickets:__
 
-    This is required for certain quota types when there is a sub type that you are requesting quota increase for.
+To specify the resource name provide the ARM resource ID of the resource under *TechnicalTicketDetail* object. See an example below. 
 
-* QuotaChangeRequestVersion <String>
+__For quota tickets:__
 
-    This is mandatory and indicates the version of the quota change request payload.
+To request for quota increase for **Compute VM Cores**, **Batch**, **SQL Database** and **SQL Data Warehouse**, provide additional details under *QuotaTicketDetail* object. QuotaTicketDetail object consists of 3 properties as described below. For detailed documentation, please [click here.](https://aka.ms/supportrpquotarequestpayload)
 
-* QuotaChangeRequests <List>
+	• QuotaChangeRequestSubType
 
-    This is mandatory and is a list of PSQuotaChangeRequest objects. PSQuotaChangeRequest object has 2 mandatory properties.
+        This is required for certain quota types when there is a sub type that you are requesting quota increase for. Example: Batch, SQL Database and SQL Data Warehouse have a sub type.
 
-    * Region <String>
+	• QuotaChangeRequestVersion
 
-        This is the Azure location or region for which you are requesting quota increase. This is the *Location* property of *Get-AzLocation* cmdlet.
+        This is required and indicates the version of the quota change request payload.
 
-    * Payload <String>
+	• QuotaChangeRequests
 
-        This is quota type specific request payload where you specify the new limits.
+        This is required and is a list of PSQuotaChangeRequest objects. PSQuotaChangeRequest object has 2 required properties.
 
-Quota types for which you can specify QuotaTicketDetails are as follows.
+	    ○ Region
 
-* Cores
+            This is the Azure location or region for which you are requesting quota increase. This is the Location property of Get-AzLocation cmdlet.
+		
+        ○ Payload
 
-    You do not need to specify QuotaChangeRequestSubType for Cores. Remaining payload properties are as shown in the table below.
-
-    | QuotaChangeRequestVersion | Payload                                         |
-    |---------------------------|-------------------------------------------------|
-    | 1.0                       | {\"VmFamily\":\"ESv3 Series\",\"NewLimit\":200} |
-
-* Batch
-    
-     * Payload for requesting increase for Batch *Account*.
-
-        | QuotaChangeRequestVersion | QuotaChangeRequestSubType | Payload                                                                                        |
-        |---------------------------|---------------------------|------------------------------------------------------------------------------------------------|
-        | 1.0                       | Account                   | {\"AccountName\":\"test\",\"NewLimit\":200,\"Type\":\"LowPriority\"}                           |
-        | 1.0                       | Account                   | {\"AccountName\":\"test\",\"VMFamily\":\"Av2 Series\",\"NewLimit\":205,\"Type\":\"Dedicated\"} |
-        | 1.0                       | Account                   | {\"AccountName\":\"test\",\"NewLimit\":120,\"Type\":\"Pools\"}                                 |
-        | 1.0                       | Account                   | {\"AccountName\":\"test\",\"NewLimit\":150,\"Type\":\"Jobs\"}                                  |
+            This is where you specify the new limits for the selected quota type.
 
 
-    * Payload for requesting increase for Batch *Subscription*.
-
-        | QuotaChangeRequestVersion | QuotaChangeRequestSubType | Payload                             |
-        |---------------------------|---------------------------|-------------------------------------|
-        | 1.0                       | Subscription              | {\"NewLimit\":200,\"Type\":Account} |
-
-* SQL Database
-    
-    * Payload for increasing *DTUs* for SQL Database.
-
-        | QuotaChangeRequestVersion | QuotaChangeRequestSubType | Payload                                           |
-        |---------------------------|---------------------------|---------------------------------------------------|
-        | 1.0                       | DTUs                      | {\"NewLimit\":54005,\"ServerName\":\"testsever\"} |
-
-    * Payload for increasing *Servers* for SQL Database.
-
-        | QuotaChangeRequestVersion | QuotaChangeRequestSubType | Payload            |
-        |---------------------------|---------------------------|--------------------|
-        | 1.0                       | Servers                   | {\"NewLimit\":200} |
-
-* SQL Data Warehouse
-    
-    * Payload for increasing *DTUs* for SQL Data Warehouse.
-
-        | QuotaChangeRequestVersion | QuotaChangeRequestSubType | Payload                                            |
-        |---------------------------|---------------------------|----------------------------------------------------|
-        | 1.0                       | DTUs                      | {\"NewLimit\":54005,\"ServerName\":\"testsever\"}  |
-
-    * Payload for increasing *Servers* for SQL Data Warehouse.
-
-        | QuotaChangeRequestVersion | QuotaChangeRequestSubType | Payload            |
-        |---------------------------|---------------------------|--------------------|
-        | 1.0                       | Servers                   | {\"NewLimit\":200} |
+For detailed documentation on how to construct Payload for various quota types, please [click here](https://aka.ms/supportrpquotarequestpayload)
 
 ## EXAMPLES
 
-### Example 1: Create a support ticket
+### Example 1: All examples require creating a PSContactProfile object first. This example shows how to create that object using a helper cmdlet which will be used in all subsequent examples. 
 ```powershell
-PS C:\> $contactDetails = new-object Microsoft.Azure.Commands.Support.Models.PSContactProfile
-PS C:\> $contactDetails.FirstName = "first"
-PS C:\> $contactDetails.LastName = "last"
-PS C:\> $contactDetails.PreferredContactMethod = "email"
-PS C:\> $contactDetails.PrimaryEmailAddress = "user@contoso.com"
-PS C:\> $contactDetails.Country = "USA"
-PS C:\> $contactDetails.PreferredSupportLanguage = "en-us"
-PS C:\> $contactDetails.PreferredTimeZone = "Pacific Standard Time"
-PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ServiceId /providers/Microsoft.Support/services/{service_guid} -ProblemClassificationId /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid} -ContactDetails $contactDetails
+PS C:\> $contactDetail = New-AzSupportContactProfileObject -FirstName "first name" -LastName "last name" -PrimaryEmailAddress "user@contoso.com" -PreferredContactMethod "email" -Country "USA" -PreferredSupportLanguage "en-US" -PreferredTimeZone "Pacific Standard Time"
+```
+
+### Example 2: Create a Billing or Subscription Management support ticket. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Billing or Subscription Management problem classification for which you want to request support 
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{billing_service_guid}/problemClassifications/{problemClassification_guid} -ContactDetail $contactDetail
 
 Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
 Name                             : test1
@@ -146,24 +97,414 @@ Type                             : Microsoft.Support/supportTickets
 Title                            : Test
 SupportTicketId                  : 170010221000050
 Description                      : Test
-ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
+ProblemClassificationId          : /providers/Microsoft.Support/services/{billing_service_guid}/problemClassifications/{problemClassification_guid}
 ProblemClassificationDisplayName : Refund request
 Severity                         : Minimal
 EnrollmentId                     :
 ProductionOutage                 : False
-Require24X7Response              :
+Require24X7Response              : False
 ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
 ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
 SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
 SupportPlanType                  : Premier
 ProblemStartTime                 :
-ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
+ServiceId                        : /providers/Microsoft.Support/services/{billing_service_guid}
 ServiceDisplayName               : Billing
 Status                           : Open
 CreatedDate                      : 1/2/2020 3:09:28 AM
 ModifiedDate                     : 1/2/2020 3:09:31 AM
 TechnicalTicketDetails           :
 QuotaTicketDetails               :
+```
+
+### Example 3: Create a technical support ticket for Virtual Machine for Windows resource. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Virtual Machine for Windows problem classification for which you want to request support 
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{vm_windows_service_guid}/problemClassifications/{problemClassification_guid} -ContactDetail $contactDetail -TechnicalTicketDetail @{ResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM"}
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
+Name                             : test1
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{vm_windows_service_guid}/problemClassifications/{problemClassification_guid}
+ProblemClassificationDisplayName : VM restarted or stopped unexpectedly / Help diagnose my VM restart issue
+Severity                         : Minimal
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{vm_windows_service_guid}
+ServiceDisplayName               : Virtual Machine running Windows
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 3:09:31 AM
+TechnicalTicketDetails           : Microsoft.Azure.Commands.Support.Models.PSTechnicalTicketDetail
+QuotaTicketDetails               : 
+```
+
+### Example 4: Create a quota support ticket to increase quota for Virtual Machine Cores for a specific VM family. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Quota Compute VM Cores problem classification.
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{cores_problemClassification_guid} -ContactDetail $contactDetail -QuotaTicketDetail @{QuotaChangeRequestVersion = "1.0" ; QuotaChangeRequests = (@{Region = "westus"; Payload = "{`"VMFamily`":`"Dv2 Series`",`"NewLimit`":350}"}, @{Region = "eastus"; Payload = "{`"VMFamily`":`"Dv2 Series`",`"NewLimit`":516}"})}
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
+Name                             : test1
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{cores_problemClassification_guid}
+ProblemClassificationDisplayName : Compute-VM (cores-vCPUs) subscription limit increases
+Severity                         : Minimal
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{quota_service_guid}
+ServiceDisplayName               : Service and subscription limits (quotas)
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 3:09:31 AM
+TechnicalTicketDetails           :
+QuotaTicketDetails               : Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
+```
+
+### Example 5: Create a quota support ticket to increase quota for Low-priority cores for a Batch account. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Quota Batch problem classification.
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{batch_problemClassification_guid} -ContactDetail $contactDetail -QuotaTicketDetail @{QuotaChangeRequestVersion = "1.0" ; QuotaChangeRequestSubType = "Account" ; QuotaChangeRequests = (@{Region = "westus"; Payload = "{`"AccountName`":`"test`",`"NewLimit`":200,`"Type`":`"LowPriority`"}"})}
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
+Name                             : test1
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{batch_problemClassification_guid}
+ProblemClassificationDisplayName : Batch
+Severity                         : Minimal
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{quota_service_guid}
+ServiceDisplayName               : Service and subscription limits (quotas)
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 3:09:31 AM
+TechnicalTicketDetails           :
+QuotaTicketDetails               : Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
+```
+
+### Example 6: Create a quota support ticket to increase VM cores quota for a specific VM Family for a Batch account. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Quota Batch problem classification.
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{batch_problemClassification_guid} -ContactDetail $contactDetail -QuotaTicketDetail @{QuotaChangeRequestVersion = "1.0" ; QuotaChangeRequestSubType = "Account" ; QuotaChangeRequests = (@{Region = "westus"; Payload = "{`"AccountName`":`"test`",`"VMFamily`":`"standardA0_A7Family`",`"NewLimit`":200,`"Type`":`"Dedicated`"}"})}
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
+Name                             : test1
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{batch_problemClassification_guid}
+ProblemClassificationDisplayName : Batch
+Severity                         : Minimal
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{quota_service_guid}
+ServiceDisplayName               : Service and subscription limits (quotas)
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 3:09:31 AM
+TechnicalTicketDetails           :
+QuotaTicketDetails               : Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
+```
+
+### Example 7: Create a quota support ticket to increase Pools quota for a Batch account. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Quota Batch problem classification.
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{batch_problemClassification_guid} -ContactDetail $contactDetail -QuotaTicketDetail @{QuotaChangeRequestVersion = "1.0" ; QuotaChangeRequestSubType = "Account" ; QuotaChangeRequests = (@{Region = "westus"; Payload = "{`"AccountName`":`"test`",`"NewLimit`":120,`"Type`":`"Pools`"}"})}
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
+Name                             : test1
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{batch_problemClassification_guid}
+ProblemClassificationDisplayName : Batch
+Severity                         : Minimal
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{quota_service_guid}
+ServiceDisplayName               : Service and subscription limits (quotas)
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 3:09:31 AM
+TechnicalTicketDetails           :
+QuotaTicketDetails               : Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
+```
+
+### Example 8: Create a quota support ticket to increase active Jobs and job schedules quota for a Batch account. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Quota Batch problem classification.
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{batch_problemClassification_guid} -ContactDetail $contactDetail -QuotaTicketDetail @{QuotaChangeRequestVersion = "1.0" ; QuotaChangeRequestSubType = "Account" ; QuotaChangeRequests = (@{Region = "westus"; Payload = "{`"AccountName`":`"test`",`"NewLimit`":120,`"Type`":`"Jobs`"}"})}
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
+Name                             : test1
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{batch_problemClassification_guid}
+ProblemClassificationDisplayName : Batch
+Severity                         : Minimal
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{quota_service_guid}
+ServiceDisplayName               : Service and subscription limits (quotas)
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 3:09:31 AM
+TechnicalTicketDetails           :
+QuotaTicketDetails               : Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
+```
+
+### Example 9: Create a quota support ticket to increase number of Batch accounts for a subscription. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Quota Batch problem classification.
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{batch_problemClassification_guid} -ContactDetail $contactDetail -QuotaTicketDetail @{QuotaChangeRequestVersion = "1.0" ; QuotaChangeRequestSubType = "Subscription" ; QuotaChangeRequests = (@{Region = "westus"; Payload = "{`"NewLimit`":120,`"Type`":`"Account`"}"})}
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
+Name                             : test1
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{batch_problemClassification_guid}
+ProblemClassificationDisplayName : Batch
+Severity                         : Minimal
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{quota_service_guid}
+ServiceDisplayName               : Service and subscription limits (quotas)
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 3:09:31 AM
+TechnicalTicketDetails           :
+QuotaTicketDetails               : Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
+```
+
+### Example 10: Create a quota support ticket to increase quota for DTUs for SQL Database. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Quota SQL Database problem classification.
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{sql_database_problemClassification_guid} -ContactDetail $contactDetail -QuotaTicketDetail @{QuotaChangeRequestVersion = "1.0" ; QuotaChangeRequestSubType = "DTUs" ; QuotaChangeRequests = (@{Region = "westus"; Payload = "{`"ServerName`":`"testserver`",`"NewLimit`":54000}"})}
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
+Name                             : test1
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{sql_database_problemClassification_guid}
+ProblemClassificationDisplayName : SQL database
+Severity                         : Minimal
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{quota_service_guid}
+ServiceDisplayName               : Service and subscription limits (quotas)
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 3:09:31 AM
+TechnicalTicketDetails           :
+QuotaTicketDetails               : Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
+```
+
+### Example 11: Create a quota support ticket to increase quota for Servers for SQL Database. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Quota SQL Database problem classification.
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{sql_database_problemClassification_guid} -ContactDetail $contactDetail -QuotaTicketDetail @{QuotaChangeRequestVersion = "1.0" ; QuotaChangeRequestSubType = "Servers" ; QuotaChangeRequests = (@{Region = "westus"; Payload = "{`"NewLimit`":200}"})}
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
+Name                             : test1
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{sql_database_problemClassification_guid}
+ProblemClassificationDisplayName : SQL database
+Severity                         : Minimal
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{quota_service_guid}
+ServiceDisplayName               : Service and subscription limits (quotas)
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 3:09:31 AM
+TechnicalTicketDetails           :
+QuotaTicketDetails               : Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
+```
+
+### Example 12: Create a quota support ticket to increase quota for DTUs for SQL Data Warehouse. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Quota SQL Date Warehouse problem classification.
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{sql_datawarehouse_problemClassification_guid} -ContactDetail $contactDetail -QuotaTicketDetail @{QuotaChangeRequestVersion = "1.0" ; QuotaChangeRequestSubType = "DTUs" ; QuotaChangeRequests = (@{Region = "westus"; Payload = "{`"ServerName`":`"testserver`",`"NewLimit`":54000}"})}
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
+Name                             : test1
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{sql_datawarehouse_problemClassification_guid}
+ProblemClassificationDisplayName : SQL Data Warehouse
+Severity                         : Minimal
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{quota_service_guid}
+ServiceDisplayName               : Service and subscription limits (quotas)
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 3:09:31 AM
+TechnicalTicketDetails           :
+QuotaTicketDetails               : Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
+```
+
+### Example 13: Create a quota support ticket to increase quota for Servers for SQL Data Warehouse. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Quota SQL Data Warehouse problem classification.
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{sql_datawarehouse_problemClassification_guid} -ContactDetail $contactDetail -QuotaTicketDetail @{QuotaChangeRequestVersion = "1.0" ; QuotaChangeRequestSubType = "Servers" ; QuotaChangeRequests = (@{Region = "westus"; Payload = "{`"NewLimit`":200}"})}
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
+Name                             : test1
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{sql_datawarehouse_problemClassification_guid}
+ProblemClassificationDisplayName : SQL Data Warehouse
+Severity                         : Minimal
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{quota_service_guid}
+ServiceDisplayName               : Service and subscription limits (quotas)
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 3:09:31 AM
+TechnicalTicketDetails           :
+QuotaTicketDetails               : Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
+```
+
+### Example 14: Create a quota support ticket to increase quota for Low-priority cores for Machine Learning service. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Quota Machine Learning service problem classification.
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{sql_datawarehouse_problemClassification_guid} -ContactDetail $contactDetail -QuotaTicketDetail @{QuotaChangeRequestVersion = "1.0" ; QuotaChangeRequestSubType = "BatchAml" ; QuotaChangeRequests = (@{Region = "westus"; Payload = "{`"NewLimit`":200,`"Type`":`"LowPriority`" }"})}
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
+Name                             : test1
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{machine_learning_service_problemClassification_guid}
+ProblemClassificationDisplayName : Machine Learning service
+Severity                         : Minimal
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{quota_service_guid}
+ServiceDisplayName               : Service and subscription limits (quotas)
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 3:09:31 AM
+TechnicalTicketDetails           :
+QuotaTicketDetails               : Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
+```
+
+### Example 15: Create a quota support ticket to increase VM cores quota for a specific VM Family for Machine Learning service. Use Get-AzSupportService and Get-AzSupportProblemClassification to retrieve correct GUIDs for Quota Machine Learning service problem classification.
+```powershell
+PS C:\> New-AzSupportTicket -Name test1 -Title Test -Description Test -Severity minimal -ProblemClassificationId /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{sql_datawarehouse_problemClassification_guid} -ContactDetail $contactDetail -QuotaTicketDetail @{QuotaChangeRequestVersion = "1.0" ; QuotaChangeRequestSubType = "BatchAml" ; QuotaChangeRequests = (@{Region = "westus"; Payload = "{`"VMFamily`":`"standardDFamily`",`"NewLimit`":200,`"Type`":`"Dedicated`" }"})}
+
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
+Name                             : test1
+Type                             : Microsoft.Support/supportTickets
+Title                            : Test
+SupportTicketId                  : 170010221000050
+Description                      : Test
+ProblemClassificationId          : /providers/Microsoft.Support/services/{quota_service_guid}/problemClassifications/{machine_learning_service_problemClassification_guid}
+ProblemClassificationDisplayName : Machine Learning service
+Severity                         : Minimal
+EnrollmentId                     :
+ProductionOutage                 : False
+Require24X7Response              : False
+ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
+ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
+SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
+SupportPlanType                  : Premier
+ProblemStartTime                 :
+ServiceId                        : /providers/Microsoft.Support/services/{quota_service_guid}
+ServiceDisplayName               : Service and subscription limits (quotas)
+Status                           : Open
+CreatedDate                      : 1/2/2020 3:09:28 AM
+ModifiedDate                     : 1/2/2020 3:09:31 AM
+TechnicalTicketDetails           :
+QuotaTicketDetails               : Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
 ```
 
 ## PARAMETERS
@@ -183,7 +524,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ContactDetails
+### -ContactDetail
 Contact details associated with SupportTicket resource.
 
 ```yaml
@@ -192,6 +533,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CSPHomeTenantId
+This is the home tenant id of the Cloud Solution Provider user trying to create a support ticket for their customer.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -262,7 +618,7 @@ Accept wildcard characters: False
 Date and time when the problem started.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -273,11 +629,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -QuotaTicketDetails
+### -QuotaTicketDetail
 Additional details for a Quota SupportTicket resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetails
+Type: Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
 Parameter Sets: CreateQuotaTicketParameterSet
 Aliases:
 
@@ -292,7 +648,7 @@ Accept wildcard characters: False
 Indicates if 24 x 7 response is requested.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -303,28 +659,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceId
-Arm resource id of Service for which this SupportTicket resource is created.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Severity
 Severity of the SupportTicket resource.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.Severity
 Parameter Sets: (All)
 Aliases:
+Accepted values: Minimal, Moderate, Critical
 
 Required: True
 Position: Named
@@ -333,11 +675,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TechnicalTicketDetails
+### -TechnicalTicketDetail
 Additional details for a Technical SupportTicket resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Support.Models.PSTechnicalTicketDetails
+Type: Microsoft.Azure.Commands.Support.Models.PSTechnicalTicketDetail
 Parameter Sets: CreateTechnicalSupportTicketParameterSet
 Aliases:
 
