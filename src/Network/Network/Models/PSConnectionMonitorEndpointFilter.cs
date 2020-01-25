@@ -16,15 +16,15 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
     using Newtonsoft.Json;
-    using System;
+
     using System.Collections.Generic;
 
-    public class PSConnectionMonitorEndpointFilter
+    public class PSNetworkWatcherConnectionMonitorEndpointFilter
     {
         public string Type { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
-        public List<PSConnectionMonitorEndpointFilterItem> Items { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorEndpointFilterItem> Items { get; set; }
 
         [JsonIgnore]
         public string ItemsText

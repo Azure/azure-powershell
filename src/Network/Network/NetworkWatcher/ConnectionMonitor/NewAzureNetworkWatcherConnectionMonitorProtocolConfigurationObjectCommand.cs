@@ -16,166 +16,171 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 
 namespace Microsoft.Azure.Commands.Network.NetworkWatcher
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorProtocolConfigurationObject"),
-        OutputType(typeof(PSConnectionMonitorTcpConfiguration), ParameterSetName = (new string[] { "TCP" })),
-        OutputType(typeof(PSConnectionMonitorHttpConfiguration), ParameterSetName = (new string[] { "HTTP" })),
-        OutputType(typeof(PSConnectionMonitorIcmpConfiguration), ParameterSetName = (new string[] { "ICMP" }))]
+        OutputType(typeof(PSNetworkWatcherConnectionMonitorTcpConfiguration), ParameterSetName = (new string[] { "TCP" })),
+        OutputType(typeof(PSNetworkWatcherConnectionMonitorHttpConfiguration), ParameterSetName = (new string[] { "HTTP" })),
+        OutputType(typeof(PSNetworkWatcherConnectionMonitorIcmpConfiguration), ParameterSetName = (new string[] { "ICMP" }))]
 
     public class NewNetworkWatcherConnectionMonitorProtocolConfigurationObject : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The protocol.",
+            HelpMessage = "TCP protocol switch.",
             ParameterSetName = "TCP")]
         public SwitchParameter TcpProtocol { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The protocol.",
+            HelpMessage = "HTTP protocol switch.",
             ParameterSetName = "HTTP")]
         public SwitchParameter HttpProtocol { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The protocol.",
+            HelpMessage = "ICMP protocol switch.",
             ParameterSetName = "ICMP")]
         public SwitchParameter IcmpProtocol { get; set; }
           
         [Parameter(
              Mandatory = true,
-             HelpMessage = "The destination port.",
+             HelpMessage = "The port to connect to.",
              ParameterSetName = "TCP")]
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The destination port.",
+             HelpMessage = "The port to connect to.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
-        public short? Port { get; set; }
+        public int? Port { get; set; }
 
         [Parameter(
              Mandatory = false,
-             HelpMessage = "Disable traceRoute.",
+             HelpMessage = "Value indicating whether path evaluation with trace route should be disabled.",
              ParameterSetName = "TCP")]
         [Parameter(
              Mandatory = false,
-             HelpMessage = "Disable traceRoute.",
+             HelpMessage = "Value indicating whether path evaluation with trace route should be disabled.",
              ParameterSetName = "ICMP")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter DisableTraceRoute { get; set; }
 
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The HTTP method.",
+             HelpMessage = "The HTTP method to use.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("GET", "POST")]
         public string Method { get; set; }
 
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The HTTP path.",
+             HelpMessage = "The path component of the URI. For instance, \"/dir1/dir2\".",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The HTTP request header.",
+             HelpMessage = "The HTTP headers to transmit with the request.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
-        public List<PSHTTPHeader> RequestHeader { get; set; }
+        public Hashtable RequestHeader { get; set; }
 
         [Parameter(
              Mandatory = false,
-             HelpMessage = "The list of valid status code range.",
+             HelpMessage = "HTTP status codes to consider successful. For instance, \"2xx,301-304,418\".",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
         public List<String> ValidStatusCodeRange { get; set; }
 
         [Parameter(
              Mandatory = false,
-             HelpMessage = "Whether to prefer HTTPS or not.",
+             HelpMessage = "Value indicating whether HTTPS is preferred over HTTP in cases where the choice is not explicit.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
-        public bool PreferHTTPS { get; set; }
+        public SwitchParameter PreferHTTPS { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            Validate();
-
+            PSNetworkWatcherConnectionMonitorProtocolConfiguration protocolConfiguration;
             if (TcpProtocol.IsPresent)
             {
-                PSConnectionMonitorTcpConfiguration TcpConfiguration = new PSConnectionMonitorTcpConfiguration()
+                protocolConfiguration = new PSNetworkWatcherConnectionMonitorTcpConfiguration()
                 {
                     Port = this.Port,
                     DisableTraceRoute = this.DisableTraceRoute ? true : false
                 };
-
-                WriteObject(TcpConfiguration);
             }
             else if (HttpProtocol.IsPresent)
             {
-                PSConnectionMonitorHttpConfiguration HttpConfiguration = new PSConnectionMonitorHttpConfiguration()
+                protocolConfiguration = new PSNetworkWatcherConnectionMonitorHttpConfiguration()
                 {
                     Port = this.Port,
                     Method = this.Method,
                     Path = this.Path,
-                    RequestHeaders = this.RequestHeader,
+                    RequestHeaders = this.GetHeaders(),
                     ValidStatusCodeRanges = this.ValidStatusCodeRange,
-                    PreferHTTPS = this.PreferHTTPS
+                    PreferHTTPS = this.PreferHTTPS ? true : false
                 };
-
-                WriteObject(HttpConfiguration);
             }
             else if (IcmpProtocol.IsPresent)
             {
-                PSConnectionMonitorIcmpConfiguration IcmpConfiguration = new PSConnectionMonitorIcmpConfiguration()
+                protocolConfiguration = new PSNetworkWatcherConnectionMonitorIcmpConfiguration()
                 {
                     DisableTraceRoute = this.DisableTraceRoute ? true : false
                 };
-
-                WriteObject(IcmpConfiguration);
             }
             else
             {
                 throw new ArgumentException("Parameter set shall be TCP, HTTP, or ICMP");
             }
+
+            this.Validate(protocolConfiguration);
+
+            WriteObject(protocolConfiguration);
         }
 
-        public bool Validate()
+        private void Validate(PSNetworkWatcherConnectionMonitorProtocolConfiguration protocolConfiguration)
         {
-            if (TcpProtocol.IsPresent)
+            ValidateProtocolConfiguration(protocolConfiguration);
+        }
+
+        private List<PSHTTPHeader> GetHeaders()
+        {
+            if (this.RequestHeader == null)
             {
-                if (this.Port == 0)
-                {
-                    throw new PSArgumentException(Properties.Resources.ProtocolConfigurationPort);
-                }
-            }
-            else if (HttpProtocol.IsPresent)
-            {
-            }
-            else if (IcmpProtocol.IsPresent)
-            {
-            }
-            else
-            {
-                throw new PSArgumentException(Properties.Resources.ProtocolConfigurationProtocol);
+                return null;
             }
 
-            return true;
+            List<PSHTTPHeader> headers = new List<PSHTTPHeader>();
+            Dictionary<string, string> requestHeaders = TagsConversionHelper.CreateTagDictionary(this.RequestHeader, validate: false);
+            foreach (var pair in requestHeaders)
+            {
+                if (string.IsNullOrEmpty(pair.Key) || string.IsNullOrEmpty(pair.Value))
+                {
+                    throw new PSArgumentException($"Invalid request header with name {pair.Key} and value {pair.Value} in HTTPConfiguration. Both name and value should be populated.");
+                }
+
+                PSHTTPHeader header = new PSHTTPHeader()
+                {
+                    Name = pair.Key,
+                    Value = pair.Value
+                };
+
+                headers.Add(header);
+            }
+
+            return headers;
         }
     }
 }

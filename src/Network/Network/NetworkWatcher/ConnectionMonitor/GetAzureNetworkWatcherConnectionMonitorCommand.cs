@@ -124,23 +124,19 @@ namespace Microsoft.Azure.Commands.Network
 
             if (ShouldGetByName(resourceGroupName, connectionMonitorName))
             {
-                // Always call Get with the new Rest API version (i.e. the one for CMv2)
                 var connectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorName, true);
                 WriteObject(connectionMonitor);
             }
             else
             {
-                List<PSConnectionMonitorResult> psConnectionMonitorList = new List<PSConnectionMonitorResult>();
                 var connectionMonitorList = this.ConnectionMonitors.List(resourceGroupName, networkWatcherName);
 
-                foreach (var cm in connectionMonitorList)
+                List<PSConnectionMonitorResult> psConnectionMonitorList = new List<PSConnectionMonitorResult>();
+                foreach (var connectionMonitor in connectionMonitorList)
                 {
-                    PSConnectionMonitorResult psConnectionMonitor = null;
+                    psConnectionMonitorList.Add(ConvertConnectionMonitorResultV2ToPSFormat(connectionMonitor));
+                }
 
-                    psConnectionMonitor = TransformConnectionMonitorResult(cm);
-
-                    psConnectionMonitorList.Add(psConnectionMonitor);
-                }            
                 WriteObject(SubResourceWildcardFilter(Name, psConnectionMonitorList), true);
             }
         }

@@ -14,14 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using Microsoft.Azure.Management.Internal.Resources.Utilities;
-    using Newtonsoft.Json;
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSConnectionMonitorSuccessThreshold
+    public class PSNetworkWatcherConnectionMonitorSuccessThreshold
     {
         [Ps1Xml(Target = ViewControl.Table)]
         public int? ChecksFailedPercent { get; set; }

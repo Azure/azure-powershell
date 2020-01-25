@@ -15,30 +15,24 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorEndpointFilterItemObject", SupportsShouldProcess = true), OutputType(typeof(PSConnectionMonitorEndpointFilterItem))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorEndpointFilterItemObject", SupportsShouldProcess = true), OutputType(typeof(PSNetworkWatcherConnectionMonitorEndpointFilterItem))]
     public class NewAzureNetworkWatcherConnectionMonitorEndpointFilterItemObjectCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The connection monitor filter item type.")]
+            HelpMessage = "The type of item included in the filter. Currently only 'AgentAddress' is supported.")]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("AgentAddress")]
         public string Type { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The connection monitor filter item address.")]
+            HelpMessage = "The address of the filter item.")]
         [ValidateNotNullOrEmpty]
         public string Address;
 
@@ -46,25 +40,15 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            Validate();
-
-            PSConnectionMonitorEndpointFilterItem EndpointFilterItem = new PSConnectionMonitorEndpointFilterItem()
+            PSNetworkWatcherConnectionMonitorEndpointFilterItem endpointFilterItem = new PSNetworkWatcherConnectionMonitorEndpointFilterItem()
             {
-                Type = this.Type == null ? "AgentAddress" : this.Type,
+                Type = Type == null ? "AgentAddress" : this.Type,
                 Address = this.Address
             };
 
-            WriteObject(EndpointFilterItem);
-        }
+            this.ValidateEndpointFilterItem(endpointFilterItem);
 
-        public bool Validate()
-        {
-            if (!string.IsNullOrEmpty(this.Type) && !String.Equals(this.Type, "AgentAddress"))
-            {
-                throw new PSArgumentException(Properties.Resources.EndpointFilterItemType);
-            }
-
-            return true;
+            WriteObject(endpointFilterItem);
         }
     }
 }

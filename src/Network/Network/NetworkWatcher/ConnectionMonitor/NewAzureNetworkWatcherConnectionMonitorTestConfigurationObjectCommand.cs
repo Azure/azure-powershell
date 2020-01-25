@@ -15,12 +15,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -29,100 +24,72 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The test configuration name.")]
+            HelpMessage = "The name of the connection monitor test configuration.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Alias("TestFrequency")]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The test frequency in seconds.")]
+            HelpMessage = "The frequency of test evaluation, in seconds.")]
         [ValidateNotNullOrEmpty]
-        public Int32 TestFrequencySec { get; set; }
+        public int TestFrequencySec { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The protocol configuration.")]
+            HelpMessage = "The parameters used to perform test evaluation over some protocol.")]
         [ValidateNotNullOrEmpty]
         public PSNetworkWatcherConnectionMonitorProtocolConfiguration ProtocolConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The percentage of failed check.")]
+            HelpMessage = "The maximum percentage of failed checks permitted for a test to evaluate as successful.")]
         [ValidateNotNullOrEmpty]
-        public Int32? SuccessThresholdChecksFailedPercent { get; set; }
+        public int? SuccessThresholdChecksFailedPercent { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The round trip time in millisecond.")]
+            HelpMessage = "The maximum round-trip time in milliseconds permitted for a test to evaluate as successful.")]
         [ValidateNotNullOrEmpty]
-        public Int32? SuccessThresholdRoundTripTimeMs { get; set; }
+        public int? SuccessThresholdRoundTripTimeMs { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The preferred IP version.")]
+            HelpMessage = "The preferred IP version to use in test evaluation. The connection monitor may choose to use a different version depending on other parameters.")]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("IPv4", "IPv6")]
         public string PreferredIPVersion { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            Validate();
-
             PSNetworkWatcherConnectionMonitorTestConfigurationObject testConfiguration = new PSNetworkWatcherConnectionMonitorTestConfigurationObject()
             {
                 Name = this.Name,
                 TestFrequencySec = this.TestFrequencySec,
                 PreferredIPVersion = this.PreferredIPVersion,
-                SuccessThreshold = new PSConnectionMonitorSuccessThreshold()
-                {
-                    ChecksFailedPercent = this.SuccessThresholdChecksFailedPercent,
-                    RoundTripTimeMs = this.SuccessThresholdRoundTripTimeMs
-
-                }
+                SuccessThreshold = GetSuccessThreshold(),
+                ProtocolConfiguration = this.ProtocolConfiguration
             };
 
-           if (this.ProtocolConfiguration.GetType() == typeof(PSConnectionMonitorTcpConfiguration))
-            {
-                testConfiguration.TcpConfiguration = (PSConnectionMonitorTcpConfiguration)this.ProtocolConfiguration;
-                testConfiguration.Protocol = "TCP";
-            }
-            else if (this.ProtocolConfiguration.GetType() == typeof(PSConnectionMonitorHttpConfiguration))
-            {
-                testConfiguration.HttpConfiguration = (PSConnectionMonitorHttpConfiguration)this.ProtocolConfiguration;
-                testConfiguration.Protocol = "HTTP";
-            }
-            else
-            {
-                testConfiguration.IcmpConfiguration = (PSConnectionMonitorIcmpConfiguration)this.ProtocolConfiguration;
-                testConfiguration.Protocol = "ICMP";
-            }
+            this.ValidateTestConfiguration(testConfiguration);
 
             WriteObject(testConfiguration);
-   }
+        }
 
-    public bool Validate()
+        private PSNetworkWatcherConnectionMonitorSuccessThreshold GetSuccessThreshold()
         {
-            if (this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorTcpConfiguration) &&
-                this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorHttpConfiguration) &&
-                this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorIcmpConfiguration))
+            if (this.SuccessThresholdChecksFailedPercent == null && this.SuccessThresholdRoundTripTimeMs == null)
             {
-                throw new PSArgumentException(Properties.Resources.ProtocolConfigurationNotSupported);
+                return null;
             }
 
-            if (this.TestFrequencySec == 0)
+            return new PSNetworkWatcherConnectionMonitorSuccessThreshold()
             {
-                throw new PSArgumentException(Properties.Resources.ProtocolConfigurationTestFrequency);
-            }
-
-            if (this.PreferredIPVersion != null & !String.Equals(this.PreferredIPVersion, NetworkBaseCmdlet.IPv4) &&
-                !String.Equals(this.PreferredIPVersion, NetworkBaseCmdlet.IPv6))
-            {
-                throw new PSArgumentException(Properties.Resources.ProtocolConfigurationIPVersion);
-            }
-
-            return true;
+                ChecksFailedPercent = this.SuccessThresholdChecksFailedPercent,
+                RoundTripTimeMs = this.SuccessThresholdRoundTripTimeMs
+            };
         }
     }
 }

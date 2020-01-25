@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSConnectionMonitorEndpointFilterItem
+    public class PSNetworkWatcherConnectionMonitorEndpointFilterItem
     {
         [Ps1Xml(Target = ViewControl.Table)]
         public string Type { get; set; }
