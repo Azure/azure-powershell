@@ -687,7 +687,8 @@ function Test-CortexExpressRouteCRUD
      }
 }
 
-<# .SYNOPSIS
+<# 
+.SYNOPSIS
  Disconnect Point to site vpn gateway vpn connection
  #>
  function Test-DisconnectAzP2sVpnGatewayVpnConnection
@@ -736,9 +737,6 @@ function Test-CortexExpressRouteCRUD
         Assert-NotNull $vpnServerConfig1
 		Assert-AreEqual $rgName $vpnServerConfig1.ResourceGroupName
 		Assert-AreEqual $VpnServerConfiguration1Name $vpnServerConfig1.Name
-		$protocols = $vpnServerConfig1.VpnProtocols
-		Assert-AreEqual 1 @($protocols).Count
-		Assert-AreEqual "IkeV2" $protocols[0]
 		
 		# Create the P2SVpnGateway using New-AzP2sVpnGateway
 		$vpnClientAddressSpaces = New-Object string[] 2
@@ -749,9 +747,7 @@ function Test-CortexExpressRouteCRUD
 
 		# Get the created P2SVpnGateway using Get-AzP2sVpnGateway
 		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
-		Assert-AreEqual $rgName $P2SVpnGateway.ResourceGroupName
 		Assert-AreEqual $P2SvpnGatewayName $P2SVpnGateway.Name
-		Assert-AreEqual $vpnServerConfig1.Id $P2SVpnGateway.VpnServerConfiguration.Id
 		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
 
 		$expected = Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $P2SvpnGatewayName -VpnConnectionIds @("IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4")

@@ -1065,11 +1065,13 @@ function Test-VirtualNetworKGatewayPacketCapture
         # Cleanup
         Clean-ResourceGroup $rgname
      }
+}
 
-<# .SYNOPSIS
+<# 
+.SYNOPSIS
 Disconnect Virtual network gateway Vpn Client Connection
 #>
-function Test-DisconnectVirtualNetworKGatewayVpnConnection
+function Test-DisconnectVNGVpnConnection
 {
 	param 
     ( 
@@ -1101,7 +1103,7 @@ function Test-DisconnectVirtualNetworKGatewayVpnConnection
 		# Create the Virtual Network
 		$subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
 		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname      
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
 		# Create the IP config
@@ -1111,10 +1113,7 @@ function Test-DisconnectVirtualNetworKGatewayVpnConnection
 		# Create & Get P2S virtualnetworkgateway
 		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-		Assert-AreEqual "VpnGw1" $actual.Sku.Tier
-		$protocols = $actual.VpnClientConfiguration.VpnClientProtocols
-		Assert-AreEqual 2 @($protocols).Count
-		Assert-AreEqual "201.169.0.0/16" $actual.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes 
+		Assert-AreEqual "Succeeded" $actual.ProvisioningState
 		
         $expected = Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $rname -VpnConnectionIds @("IKEv2_ae1cfe59-5c7c-4315-a876-b11fbfdfeed4")
         Assert-AreEqual $expected.Name $actual.Name
@@ -1124,5 +1123,4 @@ function Test-DisconnectVirtualNetworKGatewayVpnConnection
 		# Cleanup
         Clean-ResourceGroup $rgname
     }
-}
 }
