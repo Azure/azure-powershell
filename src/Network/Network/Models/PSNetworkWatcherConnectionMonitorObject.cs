@@ -1,44 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Microsoft.Azure.Commands.Network.Models
+﻿namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
-    class PSNetworkWatcherConnectionMonitorObject
+    public class PSNetworkWatcherConnectionMonitorObject
     {
-        public PSNetworkWatcher NetworkWatcher { get; set; }
         public string NetworkWatcherName { get; set; }
+
         public string ResourceGroupName { get; set; }
-        public string Location { get; set; }
+
         public string Name { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
-        public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroups { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
-        public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs { get; set; }
+
         public string Notes { get; set; }
 
-        [JsonIgnore]
-        public string NetworkWatcherText
+        public Dictionary<string, string> Tags { get; set; }
+
+        public string TagsText
         {
-            get { return JsonConvert.SerializeObject(this.NetworkWatcher, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(this.Tags, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
-        public string TestGroupText
+        public string TestGroupsText
         {
-            get { return JsonConvert.SerializeObject(this.TestGroup, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(this.TestGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
-        public string OutputText
+        public string OutputsText
         {
-            get { return JsonConvert.SerializeObject(this.Output, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(this.Outputs, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

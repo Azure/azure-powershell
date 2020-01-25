@@ -16,14 +16,11 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -70,45 +67,36 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of connection monitor test groups.")]
+            HelpMessage = "List of connection monitor test groups.")]
         [ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of connection monitor outputs.")]
+            HelpMessage = "List of connection monitor output destinations.")]
         [ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Notes associated with connection monitor.")]
+            HelpMessage = "Optional notes to be associated with the connection monitor.")]
         [ValidateNotNullOrEmpty]
         public string Note { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A hashtable which represents resource tags.")]
+        public Hashtable Tag { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            Validate();
-
-            PSNetworkWatcherConnectionMonitorObject CMObject = new PSNetworkWatcherConnectionMonitorObject()
-            {
-                NetworkWatcherName = this.NetworkWatcherName,
-                ResourceGroupName = this.ResourceGroupName,
-                Name = this.Name
-            };
-
             if (ParameterSetName.Contains("SetByResource"))
             {
-                CMObject.NetworkWatcherName = this.NetworkWatcher.Name;
-                CMObject.ResourceGroupName = this.NetworkWatcher.ResourceGroupName;
-                CMObject.Location = this.NetworkWatcher.Location;
-            }
-            else if (ParameterSetName.Contains("SetByName"))
-            {
-                MNM.NetworkWatcher networkWatcher = this.NetworkClient.NetworkManagementClient.NetworkWatchers.Get(this.ResourceGroupName, this.NetworkWatcherName);
-                CMObject.Location = networkWatcher.Location;
+                this.NetworkWatcherName = this.NetworkWatcher.Name;
+                this.ResourceGroupName = this.NetworkWatcher.ResourceGroupName;
             }
             else if (ParameterSetName.Contains("SetByLocation"))
             {
@@ -119,33 +107,24 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("There is no network watcher in location {0}", this.Location);
                 }
 
-                CMObject.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
-                CMObject.NetworkWatcherName = networkWatcher.Name;
-                CMObject.Location = this.Location;
+                this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
+                this.NetworkWatcherName = networkWatcher.Name;
             }
 
-            if (this.TestGroup != null)
+            PSNetworkWatcherConnectionMonitorObject connectionMonitor = new PSNetworkWatcherConnectionMonitorObject()
             {
-                CMObject.TestGroup = this.TestGroup;
-            }
+                NetworkWatcherName = this.NetworkWatcherName,
+                ResourceGroupName = this.ResourceGroupName,
+                Name = this.Name,
+                TestGroups = this.TestGroup,
+                Outputs = this.Output,
+                Notes = this.Note,
+                Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
+            };
 
-            if (this.Output != null)
-            {
-                CMObject.Output = this.Output;
-            }
+            this.ValidateConnectionMonitor(connectionMonitor, throwIfTestGroupNotSet: false);
 
-            if (this.Note != null)
-            {
-                CMObject.Notes = this.Note;
-            }
-
-            WriteObject(CMObject);
-        }
-
-        public bool Validate()
-        {
-            return ValidateConnectionMonitorV1V2Parameters(null, null, 
-                null, null, null, this.TestGroup, this.Output);
+            WriteObject(connectionMonitor);
         }
     }
 }

@@ -15,37 +15,34 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorEndpointObject", SupportsShouldProcess = true), OutputType(typeof(PSNetworkWatcherConnectionMonitorEndpointObject))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorEndpointObject", SupportsShouldProcess = true), 
+        OutputType(typeof(PSNetworkWatcherConnectionMonitorEndpointObject))]
     public class NewAzureNetworkWatcherConnectionMonitorEndpointObjectCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The endpoint name.")]
+            HelpMessage = "The name of the connection monitor endpoint.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The resource ID of the endpoint.",
-            ParameterSetName ="SetByResourceId")]
+            HelpMessage = "Resource ID of the connection monitor endpoint.",
+            ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The IP address of the endpoint.",
+            Mandatory = false,
+            HelpMessage = "Address of the connection monitor endpoint (IP or domain name).",
             ParameterSetName = "SetByAddress")]
         [ValidateNotNullOrEmpty]
         public string Address { get; set; }
@@ -54,20 +51,18 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The connection monitor filter type.")]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Include")]
         public string FilterType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of connection monitor filter items.")]
+            HelpMessage = "The behavior of the endpoint filter. Currently only 'Include' is supported.")]
         [ValidateNotNullOrEmpty]
-        public List<PSConnectionMonitorEndpointFilterItem> FilterItem { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorEndpointFilterItem> FilterItem { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-
-            Validate();
-            string EndpointName = null;
 
             if (string.IsNullOrEmpty(this.Name))
             {
@@ -75,36 +70,36 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     string[] SplittedName = ResourceId.Split('/');
                     // Name is in the form resourceName(ResourceGroupName)
-                    EndpointName = SplittedName[8] + "(" + SplittedName[4] + ")";
+                    this.Name = SplittedName[8] + "(" + SplittedName[4] + ")";
                 }
                 else if (!string.IsNullOrEmpty(this.Address))
                 {
-                    EndpointName = this.Address;
+                    this.Name = this.Address;
                 }
             }
 
-            PSNetworkWatcherConnectionMonitorEndpointObject endPoint = new PSNetworkWatcherConnectionMonitorEndpointObject()
+            PSNetworkWatcherConnectionMonitorEndpointObject endpoint = new PSNetworkWatcherConnectionMonitorEndpointObject()
             {
-                Name = string.IsNullOrEmpty(this.Name)? EndpointName : this.Name,
+                Name = this.Name,
                 ResourceId = this.ResourceId,
                 Address = this.Address,
             };
 
             if (this.FilterItem != null)
             {
-                endPoint.Filter = new PSConnectionMonitorEndpointFilter()
+                endpoint.Filter = new PSNetworkWatcherConnectionMonitorEndpointFilter()
                 {
-                    Type = this.FilterType == null ? "Include" : this.FilterType
+                    Type = FilterType == null ? "Include" : this.FilterType
                 };
 
-                foreach (PSConnectionMonitorEndpointFilterItem Item in this.FilterItem)
+                foreach (PSNetworkWatcherConnectionMonitorEndpointFilterItem Item in this.FilterItem)
                 {
-                    if (endPoint.Filter.Items == null)
+                    if (endpoint.Filter.Items == null)
                     {
-                        endPoint.Filter.Items = new List<PSConnectionMonitorEndpointFilterItem>();
+                        endpoint.Filter.Items = new List<PSNetworkWatcherConnectionMonitorEndpointFilterItem>();
                     }
 
-                    endPoint.Filter.Items.Add(new PSConnectionMonitorEndpointFilterItem()
+                    endpoint.Filter.Items.Add(new PSNetworkWatcherConnectionMonitorEndpointFilterItem()
                     {
                         Type = string.IsNullOrEmpty(Item.Type) ? "AgentAddress" : Item.Type,
                         Address = Item.Address
@@ -112,38 +107,9 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            WriteObject(endPoint);
-        }
+            this.ValidateEndpoint(endpoint);
 
-        public bool Validate()
-        {
-            if (!string.IsNullOrEmpty(ResourceId))
-            {
-                string[] SplittedName = ResourceId.Split('/');
-
-                // Resource ID must be in this format
-                // "resourceId": "/subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/iraVmTest2"
-                if (SplittedName.Count() < 9)
-                {
-                    //throw new ArgumentException("ResourceId not in the correct format");
-                    throw new PSArgumentException(Properties.Resources.EndpointResourceId);
-                }
-            }
-
-            if (!string.IsNullOrEmpty(this.FilterType) && !String.Equals(this.FilterType, "Include"))
-            {
-                throw new PSArgumentException(Properties.Resources.EndpointFilterType);
-            }
-            else if (!string.IsNullOrEmpty(this.FilterType) && this.FilterItem == null)
-            {
-                throw new PSArgumentException(Properties.Resources.EndpointFilterItem);
-            }
-            else if (!string.IsNullOrEmpty(this.FilterType) && !this.FilterItem.Any())
-            {
-                throw new PSArgumentException(Properties.Resources.EndpointFilterItemList);
-            }
-
-            return true;
+            WriteObject(endpoint);
         }
     }
 }

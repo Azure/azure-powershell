@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Microsoft.Azure.Commands.Network.Models
+﻿namespace Microsoft.Azure.Commands.Network.Models
 {
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSConnectionMonitorIcmpConfiguration : PSNetworkWatcherConnectionMonitorProtocolConfiguration
+    public class PSNetworkWatcherConnectionMonitorIcmpConfiguration : PSNetworkWatcherConnectionMonitorProtocolConfiguration
     {
 
         [Ps1Xml(Target = ViewControl.Table)]

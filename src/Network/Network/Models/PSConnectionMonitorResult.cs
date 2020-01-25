@@ -76,25 +76,24 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSConnectionMonitorResultV2 : PSConnectionMonitorResult
     {
-        [Ps1Xml(Target = ViewControl.List)]
-        public List<PSNetworkWatcherConnectionMonitorEndpointObject> Endpoints { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
         public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroups { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
-        public List<PSNetworkWatcherConnectionMonitorTestConfigurationObject> TestConfigurations { get; set; }
-
-        [Ps1Xml(Target = ViewControl.List)]
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string Notes { get; set; }
+
+        public string TestGroupsText
+        {
+            get { return JsonConvert.SerializeObject(this.TestGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
         public string OutputsText
         {
             get { return JsonConvert.SerializeObject(this.Outputs, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
-
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string Note { get; set; }
     }
 
 }

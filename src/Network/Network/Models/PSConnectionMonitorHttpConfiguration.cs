@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Microsoft.Azure.Commands.Network.Models
+﻿namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSConnectionMonitorHttpConfiguration : PSNetworkWatcherConnectionMonitorProtocolConfiguration
+    public class PSNetworkWatcherConnectionMonitorHttpConfiguration : PSNetworkWatcherConnectionMonitorProtocolConfiguration
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public short? Port { get; set; }
+        public int? Port { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public string Method { get; set; }

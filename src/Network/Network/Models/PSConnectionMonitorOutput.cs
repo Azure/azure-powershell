@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Microsoft.Azure.Commands.Network.Models
+﻿namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
-    using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
+
     public class PSNetworkWatcherConnectionMonitorOutputObject
     {
         [Ps1Xml(Target = ViewControl.Table)]

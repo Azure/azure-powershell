@@ -15,14 +15,8 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -31,13 +25,14 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The type of output.")]
+            HelpMessage = "Connection monitor output destination type. Currently, only \"Workspace\" is supported.")]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Workspace")]
         public string OutputType { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The resource ID of workspace.")]
+            Mandatory = true,
+            HelpMessage = "Log analytics workspace resource ID.")]
         [ValidateNotNullOrEmpty]
         public string WorkspaceResourceId { get; set; }
 
@@ -45,28 +40,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            Validate();
-
-            PSNetworkWatcherConnectionMonitorOutputObject endPoint = new PSNetworkWatcherConnectionMonitorOutputObject()
+            PSNetworkWatcherConnectionMonitorOutputObject output = new PSNetworkWatcherConnectionMonitorOutputObject()
             {
-                 Type = this.OutputType,
+                 Type = string.IsNullOrEmpty(this.OutputType) ? "Workspace" : this.OutputType,
                  WorkspaceSettings = new PSConnectionMonitorWorkspaceSettings()
                  {
                      WorkspaceResourceId = WorkspaceResourceId
                  }
              };
 
-            WriteObject(endPoint);
-        }
+            this.ValidateOutput(output);
 
-        public bool Validate()
-        {
-            if (this.OutputType == null && this.WorkspaceResourceId == null)
-            {
-                throw new PSArgumentException(Properties.Resources.ConnectionMonitorOutput);
-            }
-
-            return true;
+            WriteObject(output);
         }
     }
 }

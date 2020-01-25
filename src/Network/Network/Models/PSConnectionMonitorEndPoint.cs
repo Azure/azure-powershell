@@ -13,15 +13,9 @@
 // limitations under the License.
 //
 
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
-    using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
     public class PSNetworkWatcherConnectionMonitorEndpointObject
@@ -36,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Address { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public PSConnectionMonitorEndpointFilter Filter { get; set; }
+        public PSNetworkWatcherConnectionMonitorEndpointFilter Filter { get; set; }
 
         [JsonIgnore]
         public string FilterText
