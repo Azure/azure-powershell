@@ -43,49 +43,123 @@ The New-AzNetworkWatcherConnectionMonitorObject cmdlet creates a connection moni
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkWatcherConnectionMonitorObject -NetworkWatcherName NetworkWatcher_centraluseuap -ResourceGroupName NetworkWatcherRG  -Name MyCMv321Object -TestGroup   $TcpTestGroup -Notes "This is my  note for CMv2"
+PS> $cmtest = New-AzNetworkWatcherConnectionMonitorObject -Location westcentralus -Name cmV2test -TestGroup $testGroup1, $testGroup2 -Tag @{"name" = "value"}
+PS> $cmtest
 ```
 
-NetworkWatcherName : NetworkWatcher_centraluseuap
+NetworkWatcherName : NetworkWatcher_westcentralus
 ResourceGroupName  : NetworkWatcherRG
-Name               : MyCMv321Object
-TestGroup          : [
+Name               : cmV2test
+TestGroups         : [
                        {
-                         "Name": "MyTcpTestGroup",
+                         "Name": "testGroup1",
                          "Disable": false,
                          "TestConfigurations": [
                            {
-                             "Name": "MyTcpTestConfig",
-                             "TestFrequencySec": 40,
-                             "Protocol": "TCP",
-                             "PreferredIPVersion": "IPv4",
-                             "TcpConfiguration": {
+                             "Name": "tcpTC",
+                             "TestFrequencySec": 60,
+                             "ProtocolConfiguration": {
                                "Port": 80,
                                "DisableTraceRoute": false
                              },
                              "SuccessThreshold": {
-                               "ChecksFailedPercent": 10,
-                               "RoundTripTimeMs": 10
+                               "ChecksFailedPercent": 20,
+                               "RoundTripTimeMs": 5
+                             }
+                           },
+                           {
+                             "Name": "icmpTC",
+                             "TestFrequencySec": 30,
+                             "PreferredIPVersion": "IPv4",
+                             "ProtocolConfiguration": {
+                               "DisableTraceRoute": true
                              }
                            }
                          ],
                          "Sources": [
                            {
-                             "Name": "MySrc1Test",
-                             "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyCanaryFlowLog/provide
-                     rs/Microsoft.Compute/virtualMachines/CanaryVM0"
+                             "Name": "MultiTierApp0(IrinaRGWestcentralus)",
+                             "ResourceId": "/subscriptions/00000000-0000-0000-0000-00000000/resourceGroups/RGW
+                     estcentralus/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
+                           },
+                           {
+                             "Name": "NPM-CommonEUS(er-lab)",
+                             "ResourceId": "/subscriptions/00000000-0000-0000-0000-00000000/resourceGroups/er-lab/p
+                     roviders/Microsoft.OperationalInsights/workspaces/NPM-CommonEUS",
+                             "Filter": {
+                               "Type": "Include",
+                               "Items": [
+                                 {
+                                   "Type": "AgentAddress",
+                                   "Address": "SEA-Cust50-VM01"
+                                 },
+                                 {
+                                   "Type": "AgentAddress",
+                                   "Address": "WIN-P0HGNDO2S1B"
+                                 }
+                               ]
+                             }
                            }
                          ],
                          "Destinations": [
                            {
-                             "Name": "MyDst1Test",
+                             "Name": "bingEndpoint",
                              "Address": "bing.com"
+                           },
+                           {
+                             "Name": "googleEndpoint",
+                             "Address": "google.com"
+                           }
+                         ]
+                       },
+                       {
+                         "Name": "testGroup2",
+                         "Disable": false,
+                         "TestConfigurations": [
+                           {
+                             "Name": "httpTC",
+                             "TestFrequencySec": 120,
+                             "ProtocolConfiguration": {
+                               "Port": 443,
+                               "Method": "GET",
+                               "RequestHeaders": [
+                                 {
+                                   "Name": "Allow",
+                                   "Value": "GET"
+                                 }
+                               ],
+                               "ValidStatusCodeRanges": [
+                                 "2xx",
+                                 "300-308"
+                               ],
+                               "PreferHTTPS": true
+                             },
+                             "SuccessThreshold": {
+                               "ChecksFailedPercent": 20,
+                               "RoundTripTimeMs": 30
+                             }
+                           }
+                         ],
+                         "Sources": [
+                           {
+                             "Name": "MultiTierApp0(IrinaRGWestcentralus)",
+                             "ResourceId": "/subscriptions/00000000-0000-0000-0000-00000000/resourceGroups/IrinaRGW
+                     estcentralus/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
+                           }
+                         ],
+                         "Destinations": [
+                           {
+                             "Name": "googleEndpoint",
+                             "Address": "google.com"
                            }
                          ]
                        }
                      ]
-Output             : null
-Notes              : This is my  note for CMv2
+Outputs            : null
+Notes              :
+Tags               : {
+                       "name": "value"
+                     }
         
    
 
