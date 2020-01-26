@@ -255,22 +255,46 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
+
+                if (FirewallPolicyId != null && (this.ApplicationRuleCollection != null || this.NetworkRuleCollection != null || this.NatRuleCollection != null))
+                {
+                    throw new ArgumentException("Firewall Policy and Rule Collections cannot coexist");
+                }
+
                 var sku = new PSAzureFirewallSku();
                 sku.Name = MNM.AzureFirewallSkuName.AZFWVNet;
                 sku.Tier = MNM.AzureFirewallSkuTier.Standard;
-                firewall = new PSAzureFirewall()
+                if (FirewallPolicyId != null)
                 {
-                    Name = this.Name,
-                    ResourceGroupName = this.ResourceGroupName,
-                    Location = this.Location,
-                    ApplicationRuleCollections = this.ApplicationRuleCollection?.ToList(),
-                    NatRuleCollections = this.NatRuleCollection?.ToList(),
-                    NetworkRuleCollections = this.NetworkRuleCollection?.ToList(),
-                    ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
-                    ThreatIntelWhitelist = this.ThreatIntelWhitelist,
-                    PrivateRange = this.PrivateRange,
-                    Sku = sku
-                };
+                    firewall = new PSAzureFirewall()
+                    {
+                        Name = this.Name,
+                        ResourceGroupName = this.ResourceGroupName,
+                        Location = this.Location,
+                        FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
+                        ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
+                        ThreatIntelWhitelist = this.ThreatIntelWhitelist,
+                        PrivateRange = this.PrivateRange,
+                        Sku = sku
+                    };
+                }
+                else
+                {
+                    firewall = new PSAzureFirewall()
+                    {
+                        Name = this.Name,
+                        ResourceGroupName = this.ResourceGroupName,
+                        Location = this.Location,
+                        ApplicationRuleCollections = this.ApplicationRuleCollection?.ToList(),
+                        NatRuleCollections = this.NatRuleCollection?.ToList(),
+                        NetworkRuleCollections = this.NetworkRuleCollection?.ToList(),
+                        ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
+                        ThreatIntelWhitelist = this.ThreatIntelWhitelist,
+                        PrivateRange = this.PrivateRange,
+                        Sku = sku
+                    };
+                }
+
 
                 if (this.Zone != null)
                 {
