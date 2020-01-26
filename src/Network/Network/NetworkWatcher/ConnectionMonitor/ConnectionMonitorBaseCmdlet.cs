@@ -270,7 +270,10 @@ namespace Microsoft.Azure.Commands.Network
             return null;
         }
 
-        public ConnectionMonitor PopulateConnectionMonitorParametersFromV2Request(List<PSNetworkWatcherConnectionMonitorTestGroupObject> testGroups, List<PSNetworkWatcherConnectionMonitorOutputObject> outputs, string notes)
+        public ConnectionMonitor PopulateConnectionMonitorParametersFromV2Request(
+            PSNetworkWatcherConnectionMonitorTestGroupObject[] testGroups, 
+            PSNetworkWatcherConnectionMonitorOutputObject[] outputs, 
+            string notes)
         {
             ConnectionMonitor connectionMonitor = new ConnectionMonitor()
             {
@@ -497,8 +500,8 @@ namespace Microsoft.Azure.Commands.Network
         }
 
         public void ValidateConnectionMonitorV2Request(
-            List<PSNetworkWatcherConnectionMonitorTestGroupObject> testGroups,
-            List<PSNetworkWatcherConnectionMonitorOutputObject> outputs)
+            PSNetworkWatcherConnectionMonitorTestGroupObject[] testGroups,
+            PSNetworkWatcherConnectionMonitorOutputObject[] outputs)
         {
             if (testGroups == null || !testGroups.Any())
             {
@@ -664,7 +667,7 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        private List<ConnectionMonitorOutput> GetOutputs(List<PSNetworkWatcherConnectionMonitorOutputObject> outputs)
+        private List<ConnectionMonitorOutput> GetOutputs(PSNetworkWatcherConnectionMonitorOutputObject[] outputs)
         {
             if (outputs == null)
             {

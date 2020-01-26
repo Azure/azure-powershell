@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The connection monitor filter type.")]
+            HelpMessage = "The behavior of the endpoint filter. Currently only 'Include' is supported.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Include")]
         public string FilterType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The behavior of the endpoint filter. Currently only 'Include' is supported.")]
+            HelpMessage = "List of items in the filter.")]
         [ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorEndpointFilterItem> FilterItem { get; set; }
 
