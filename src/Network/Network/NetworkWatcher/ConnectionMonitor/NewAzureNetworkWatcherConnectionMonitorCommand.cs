@@ -241,8 +241,8 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Describes a connection monitor output destinations.",
             ParameterSetName = "SetByLocationV2")]
-        public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
 
+        public PSNetworkWatcherConnectionMonitorOutputObject[] Output { get; set; }
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -377,8 +377,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (ParameterSetName.Contains("SetByConnectionMonitorV2Object"))
                 {
-                    this.TestGroup = this.ConnectionMonitor.TestGroups;
-                    this.Output = this.ConnectionMonitor.Outputs;
+                    this.TestGroup = this.ConnectionMonitor.TestGroups?.ToArray();
+                    this.Output = this.ConnectionMonitor.Outputs?.ToArray();
                     this.Note = this.ConnectionMonitor.Notes;
                 }
 

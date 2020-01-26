@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
                     Method = this.Method,
                     Path = this.Path,
                     RequestHeaders = this.GetHeaders(),
-                    ValidStatusCodeRanges = this.ValidStatusCodeRange,
+                    ValidStatusCodeRanges = this.ValidStatusCodeRange?.ToList(),
                     PreferHTTPS = this.PreferHTTPS ? true : false
                 };
             }

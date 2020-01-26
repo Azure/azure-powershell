@@ -116,8 +116,8 @@ namespace Microsoft.Azure.Commands.Network
                 NetworkWatcherName = this.NetworkWatcherName,
                 ResourceGroupName = this.ResourceGroupName,
                 Name = this.Name,
-                TestGroups = this.TestGroup,
-                Outputs = this.Output,
+                TestGroups = this.TestGroup?.ToList(),
+                Outputs = this.Output?.ToList(),
                 Notes = this.Note,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
             };

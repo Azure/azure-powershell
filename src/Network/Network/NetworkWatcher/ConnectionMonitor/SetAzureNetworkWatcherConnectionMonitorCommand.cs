@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The connection monitor name.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = "SetByName)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The list of test groups.",
             ParameterSetName = "SetByResourceIdV2")]
         [ValidateNotNullOrEmpty]
-        public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
+        public PSNetworkWatcherConnectionMonitorTestGroupObject[] TestGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Describes a connection monitor output destinations.",
             ParameterSetName = "SetByResourceIdV2")]
-        public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
+        public PSNetworkWatcherConnectionMonitorOutputObject[] Output { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -438,8 +438,8 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 else if (this.InputObject is PSConnectionMonitorResultV2 connectionMonitorV2)
                 {
-                    this.TestGroup = connectionMonitorV2.TestGroups;
-                    this.Output = connectionMonitorV2.Outputs;
+                    this.TestGroup = connectionMonitorV2.TestGroups?.ToArray();
+                    this.Output = connectionMonitorV2.Outputs?.ToArray();
                     this.Note = connectionMonitorV2.Notes;
                 }
             }
