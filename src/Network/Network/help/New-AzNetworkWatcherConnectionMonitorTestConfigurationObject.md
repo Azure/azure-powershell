@@ -8,12 +8,12 @@ schema: 2.0.0
 # New-AzNetworkWatcherConnectionMonitorTestConfigurationObject
 
 ## SYNOPSIS
-Create a new test configuration for connection monitor V2.
+Create a connection monitor test configuration.
 
 ## SYNTAX
 
 ```
-New-AzNetworkWatcherConnectionMonitorTestConfigurationObject [-Name <String>] -TestFrequencySec <Int32>
+New-AzNetworkWatcherConnectionMonitorTestConfigurationObject -Name <String> -TestFrequencySec <Int32>
  -ProtocolConfiguration <PSNetworkWatcherConnectionMonitorProtocolConfiguration>
  [-SuccessThresholdChecksFailedPercent <Int32>] [-SuccessThresholdRoundTripTimeMs <Int32>]
  [-PreferredIPVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -21,7 +21,7 @@ New-AzNetworkWatcherConnectionMonitorTestConfigurationObject [-Name <String>] -T
 ```
 
 ## DESCRIPTION
-The New-AzNetworkWatcherConnectionMonitorTestConfigurationObject cmdlet creates a new test configuration for connection monitor V2.
+The New-AzNetworkWatcherConnectionMonitorTestConfigurationObject cmdlet creates a connection monitor test configuration.
 
 ## EXAMPLES
 
@@ -33,16 +33,12 @@ PS C:\>$TcpTestConfiguration = New-AzNetworkWatcherConnectionMonitorTestConfigur
 
 Name                  : MyTcpTestConfig
 TestFrequencySec      : 40
-Protocol              : TCP
-PreferredIPVersion    : IPv4
+PreferredIPVersion    : 
 TcpConfiguration      : {
                           "Port": 80,
                           "DisableTraceRoute": false
                         }
-SuccessThreshold      : {
-                          "ChecksFailedPercent": 10,
-                          "RoundTripTimeMs": 10
-                        }
+SuccessThreshold      : 
 
 ## PARAMETERS
 
@@ -62,14 +58,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The test configuration name.
+The name of the connection monitor test configuration.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -77,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -PreferredIPVersion
-The preferred IP version.
+The preferred IP version to use in test evaluation. The connection monitor may choose to use a different version depending on other parameters.
 
 ```yaml
 Type: System.String
@@ -92,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProtocolConfiguration
-The protocol configuration.
+The parameters used to perform test evaluation over some protocol.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorProtocolConfiguration
@@ -107,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -SuccessThresholdChecksFailedPercent
-The percentage of failed check.
+The maximum percentage of failed checks permitted for a test to evaluate as successful.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -122,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -SuccessThresholdRoundTripTimeMs
-The round trip time in millisecond.
+The maximum round-trip time in milliseconds permitted for a test to evaluate as successful.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -137,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -TestFrequencySec
-The test frequency in seconds.
+The frequency of test evaluation, in seconds.
 
 ```yaml
 Type: System.Int32

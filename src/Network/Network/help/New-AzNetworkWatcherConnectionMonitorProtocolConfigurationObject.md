@@ -8,33 +8,31 @@ schema: 2.0.0
 # New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject
 
 ## SYNOPSIS
-Create a new protocol configuration for connection monitor V2.
+Create protocol configuration used to perform test evaluation over TCP, HTTP or ICMP.
 
 ## SYNTAX
 
 ### TCP
 ```
-New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-TcpProtocol] -Port <Int16>
- [-DisableTraceRoute <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-TcpProtocol] -Port <Int32>
+ [-DisableTraceRoute] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### HTTP
 ```
-New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-HttpProtocol] [-Port <Int16>]
- [-Method <String>] [-Path <String>]
- [-RequestHeader <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSHTTPHeader]>]
- [-ValidStatusCodeRange <System.Collections.Generic.List`1[System.String]>] [-PreferHTTPS <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-HttpProtocol] [-Port <Int32>]
+ [-Method <String>] [-Path <String>] [-RequestHeader <Hashtable>] [-ValidStatusCodeRange <String[]>]
+ [-PreferHTTPS] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ICMP
 ```
-New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-IcmpProtocol] [-DisableTraceRoute <Boolean>]
+New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-IcmpProtocol] [-DisableTraceRoute]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject cmdlet creates a new protocol configuration for connection monitor V2.
+The New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject cmdlet creates protocol configuration used to perform test evaluation over TCP, HTTP or ICMP.
 
 ## EXAMPLES
 
@@ -64,10 +62,10 @@ Accept wildcard characters: False
 ```
 
 ### -DisableTraceRoute
-Disable traceRoute.
+Value indicating whether path evaluation with trace route should be disabled.
 
 ```yaml
-Type: System.Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: TCP, ICMP
 Aliases:
 
@@ -79,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -HttpProtocol
-The protocol.
+HTTP protocol switch
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -94,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -IcmpProtocol
-The protocol.
+ICMP protocol switch.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -109,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Method
-The method.
+The HTTP method to use.
 
 ```yaml
 Type: System.String
@@ -124,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The path.
+The path component of the URI. For instance, \"/dir1/dir2\".
 
 ```yaml
 Type: System.String
@@ -139,10 +137,10 @@ Accept wildcard characters: False
 ```
 
 ### -Port
-The port.
+The port to connect to.
 
 ```yaml
-Type: System.Nullable`1[System.Int16]
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: TCP
 Aliases:
 
@@ -154,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.Nullable`1[System.Int16]
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: HTTP
 Aliases:
 
@@ -166,10 +164,10 @@ Accept wildcard characters: False
 ```
 
 ### -PreferHTTPS
-Whether to prefer HTTPS or not.
+Value indicating whether HTTPS is preferred over HTTP in cases where the choice is not explicit.
 
 ```yaml
-Type: System.Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: HTTP
 Aliases:
 
@@ -181,10 +179,10 @@ Accept wildcard characters: False
 ```
 
 ### -RequestHeader
-The request header.
+The HTTP headers to transmit with the request.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSHTTPHeader]
+Type: System.Collections.Hashtable
 Parameter Sets: HTTP
 Aliases:
 
@@ -196,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 ### -TcpProtocol
-The protocol.
+TCP protocol switch.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -211,10 +209,10 @@ Accept wildcard characters: False
 ```
 
 ### -ValidStatusCodeRange
-The list of valid status code range.
+HTTP status codes to consider successful. For instance, \"2xx,301-304,418\".
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: HTTP
 Aliases:
 

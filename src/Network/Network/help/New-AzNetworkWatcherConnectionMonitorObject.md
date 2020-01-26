@@ -12,12 +12,28 @@ Create a connection monitor V2 object.
 
 ## SYNTAX
 
+### SetByResource
+```
+New-AzNetworkWatcherConnectionMonitorObject -NetworkWatcher <PSNetworkWatcher> -Name <String>
+ [-TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>]
+ [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByName
 ```
 New-AzNetworkWatcherConnectionMonitorObject -NetworkWatcherName <String> -ResourceGroupName <String>
- -Name <String>
- [-TestGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject]>]
- [-Output <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorOutputObject]>]
- [-Notes <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Name <String> [-TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>]
+ [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByLocation
+```
+New-AzNetworkWatcherConnectionMonitorObject -Location <String> -Name <String>
+ [-TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>]
+ [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,6 +106,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Location
+Location of the network watcher.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByLocation
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The connection monitor name.
 
@@ -105,12 +136,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkWatcherName
-The name of network watcher.
+### -NetworkWatcher
+The network watcher resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
+Parameter Sets: SetByResource
 Aliases:
 
 Required: True
@@ -120,7 +151,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Notes
+### -NetworkWatcherName
+The name of network watcher.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Note
 Notes associated with connection monitor.
 
 ```yaml
@@ -136,10 +182,10 @@ Accept wildcard characters: False
 ```
 
 ### -Output
-The connection monitor output.
+Describes a connection monitor output destinations.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorOutputObject]
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorOutputObject[]
 Parameter Sets: (All)
 Aliases:
 
@@ -155,7 +201,7 @@ The name of the network watcher resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByName
 Aliases:
 
 Required: True
@@ -165,11 +211,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TestGroup
-The list of test group.
+### -Tag
+A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject]
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TestGroup
+The list of test groups.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestGroupObject[]
 Parameter Sets: (All)
 Aliases:
 
