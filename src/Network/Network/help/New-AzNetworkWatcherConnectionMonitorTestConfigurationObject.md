@@ -27,18 +27,32 @@ The New-AzNetworkWatcherConnectionMonitorTestConfigurationObject cmdlet creates 
 
 ### Example 1
 ```powershell
-PS C:\>$TcpProtocolConfiguration = New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject -TcpProtocol -Port 80 -DisableTraceRoute $false 
-PS C:\>$TcpTestConfiguration = New-AzNetworkWatcherConnectionMonitorTestConfigurationObject -Name MyTcpTestConfig -TestFrequencySec 40 -ProtocolConfiguration $TcpProtocolConfiguration
+PS C:\>$httpProtocolConfiguration = New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject -HttpProtocol -Port 443 -Method GET -RequestHeader @{"Allow" = "GET"} -ValidStatusCodeRange 2xx, 300-308 -PreferHTTPS
+PS C:\>$httpTestConfiguration = New-AzNetworkWatcherConnectionMonitorTestConfigurationObject -Name httpTC -TestFrequencySec 120 -ProtocolConfiguration $httpProtocolConfiguration -SuccessThresholdChecksFailedPercent 20 -SuccessThresholdRoundTripTimeMs 30
 ```
 
-Name                  : MyTcpTestConfig
-TestFrequencySec      : 40
-PreferredIPVersion    : 
-TcpConfiguration      : {
-                          "Port": 80,
-                          "DisableTraceRoute": false
+Name                  : httpTC
+TestFrequencySec      : 120
+PreferredIPVersion    :
+ProtocolConfiguration : {
+                          "Port": 443,
+                          "Method": "GET",
+                          "RequestHeaders": [
+                            {
+                              "Name": "Allow",
+                              "Value": "GET"
+                            }
+                          ],
+                          "ValidStatusCodeRanges": [
+                            "2xx",
+                            "300-308"
+                          ],
+                          "PreferHTTPS": true
                         }
-SuccessThreshold      : 
+SuccessThreshold      : {
+                          "ChecksFailedPercent": 20,
+                          "RoundTripTimeMs": 30
+                        } 
 
 ## PARAMETERS
 
