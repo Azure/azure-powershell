@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject
 
 ## SYNOPSIS
-Create and endpoint filter item for connection monitor V2.
+Creates a connection monitor endpoint filter item.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject [-Type <String>]
 ```
 
 ## DESCRIPTION
-The New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject cmdlet creates and endpoint filter item for connection monitor V2.
+The New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject cmdlet creates endpoint filter item.
 
 ## EXAMPLES
 
@@ -33,7 +33,7 @@ Address : 10.0.0.1
 ## PARAMETERS
 
 ### -Address
-The connection monitor filter item address.
+The address of the filter item.
 
 ```yaml
 Type: System.String
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-The connection monitor filter item type.
+The type of item included in the filter. Currently only 'AgentAddress' is supported.
 
 ```yaml
 Type: System.String

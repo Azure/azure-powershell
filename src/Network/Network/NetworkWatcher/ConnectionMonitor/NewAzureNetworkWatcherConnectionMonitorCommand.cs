@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The list of test groups.",
             ParameterSetName = "SetByLocationV2")]
         [ValidateNotNullOrEmpty]
-        public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
+        public PSNetworkWatcherConnectionMonitorTestGroupObject[] TestGroup { get; set; }
 
         [Parameter(
             Mandatory = false,

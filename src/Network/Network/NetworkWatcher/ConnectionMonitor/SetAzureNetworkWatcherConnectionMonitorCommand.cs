@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The connection monitor name.",
-            ParameterSetName = "SetByName)]
+            ParameterSetName = "SetByName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,

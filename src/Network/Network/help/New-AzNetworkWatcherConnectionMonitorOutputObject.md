@@ -8,25 +8,26 @@ schema: 2.0.0
 # New-AzNetworkWatcherConnectionMonitorOutputObject
 
 ## SYNOPSIS
-Create an output object for connection monitor V2.
+Create connection monitor output destination object.
+
 ## SYNTAX
 
 ```
-New-AzNetworkWatcherConnectionMonitorOutputObject [-OutputType <String>] [-ResourcWorkspaceResourceId <String>]
+New-AzNetworkWatcherConnectionMonitorOutputObject [-OutputType <String>] -WorkspaceResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzNetworkWatcherConnectionMonitorOutputObject cmdlet creates an output object for connection monitor V2.
+The New-AzNetworkWatcherConnectionMonitorOutputObject cmdlet creates connection monitor output destination object.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkWatcherConnectionMonitorOutputObject -OutputType MyWorkspaceOutput -ResourcWorkspaceResourceId MyWSResourceId
+PS C:\> New-AzNetworkWatcherConnectionMonitorOutputObject -OutputType "workspace" -ResourcWorkspaceResourceId MyWSResourceId
 ```
 
-Type              : MyWorkspaceOutput
+Type              : "workspace"
 WorkspaceSettings : {
                       "WorkspaceResourceId": "MyWSResourceId"
                     }
@@ -49,12 +50,12 @@ Accept wildcard characters: False
 ```
 
 ### -OutputType
-The tyope of output.
+Connection monitor output destination type. Currently, only \"Workspace\" is supported.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Output
+Aliases:
 
 Required: False
 Position: Named
@@ -63,15 +64,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourcWorkspaceResourceId
-The resource ID of workspace.
+### -WorkspaceResourceId
+Log analytics workspace resource ID.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
