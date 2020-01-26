@@ -18,11 +18,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -37,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network watcher resource.",
             ParameterSetName = "SetByResource")]
-               [Parameter(
+        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network watcher resource.",
@@ -47,12 +44,10 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByNameV2")]
         [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
@@ -61,12 +56,10 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByNameV2")]
         [ResourceGroupCompleter]
@@ -154,7 +147,6 @@ namespace Microsoft.Azure.Commands.Network
               ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The ID of the resource used as the source by connection monitor.",
             ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
@@ -174,7 +166,6 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Monitoring interval in seconds. Default value is 60 seconds.",
             ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
@@ -194,7 +185,6 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The source port used by connection monitor.",
             ParameterSetName = "SetByResourceId")]
         [ValidateNotNull]
@@ -215,7 +205,6 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The ID of the resource used as the destination by connection monitor.",
             ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
@@ -235,7 +224,6 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The destination port used by connection monitor.",
             ParameterSetName = "SetByResourceId")]
         [ValidateNotNull]
@@ -263,18 +251,15 @@ namespace Microsoft.Azure.Commands.Network
         public string DestinationAddress { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "The list of test groups.",
             ParameterSetName = "SetByResourceV2")]
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "The list of test groups.",
             ParameterSetName = "SetByNameV2")]
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "The list of test groups.",
             ParameterSetName = "SetByLocationV2")]
         [Parameter(
@@ -287,44 +272,36 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Describes a connection monitor output destinations.",
             ParameterSetName = "SetByResourceV2")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Describes a connection monitor output destinations.",
             ParameterSetName = "SetByNameV2")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Describes a connection monitor output destinations.",
             ParameterSetName = "SetByLocationV2")]
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Describes a connection monitor output destinations.",
             ParameterSetName = "SetByResourceIdV2")]
         public PSNetworkWatcherConnectionMonitorOutputObject[] Output { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Notes associated with connection monitor.",
             ParameterSetName = "SetByResourceV2")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Notes associated with connection monitor.",
             ParameterSetName = "SetByNameV2")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Notes associated with connection monitor.",
             ParameterSetName = "SetByLocationV2")]
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "ConnectionMonitor resource ID.",
             ParameterSetName = "SetByResourceIdV2")]
         public string Note { get; set; }
@@ -342,8 +319,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Configure connection monitor, but do not start it.",
             ParameterSetName = "SetByLocation")]
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "ConnectionMonitor resource ID.",
             ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
@@ -351,42 +327,34 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.",
             ParameterSetName = "SetByResource")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.",
             ParameterSetName = "SetByName")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.",
             ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.",
             ParameterSetName = "SetByResourceV2")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.",
             ParameterSetName = "SetByNameV2")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.",
             ParameterSetName = "SetByLocationV2")]
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "ConnectionMonitor resource ID.",
             ParameterSetName = "SetByResourceId")]
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "ConnectionMonitor resource ID.",
             ParameterSetName = "SetByResourceIdV2")]
         public Hashtable Tag { get; set; }

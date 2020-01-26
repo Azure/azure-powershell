@@ -833,6 +833,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException($"Connection monitor workspace endpoint {endpoint.ResourceId} must have at least one EndpointFilterItem.", Properties.Resources.EndpointResourceId);
             }
+
+            if (endpoint.Filter?.Items != null && endpoint.Filter.Items.Any() && !resourceType.Equals("workspaces", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException($"Resource type {resourceType} is not supported for endpoint with filter. Supported type is \"workspace\". Please set Log analytics workspace resource ID in resourceID field.");
+            }
         }
 
         private PSNetworkWatcherConnectionMonitorProtocolConfiguration GetPSProtocolConfiguration(ConnectionMonitorTestConfiguration testConfiguration)
