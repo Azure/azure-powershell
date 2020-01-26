@@ -25,71 +25,12 @@ The New-AzNetworkWatcherConnectionMonitorTestGroupObject cmdlet creates a connec
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-$testGroup1 = New-AzNetworkWatcherConnectionMonitorTestGroupObject -Name testGroup1 -TestConfiguration $tcpTestConfiguration, $icmpTestConfiguration -Source $vmEndpoint, $workspaceEndpoint -Destination $bingEndpoint, $googleEndpoint
+### Example 1: Create a test group with 2 testConfigurations, w source and 2 destination endpoints
 
 ```
-Name               : testGroup1
-Disable            : False
-TestConfigurations : [
-                       {
-                         "Name": "tcpTC",
-                         "TestFrequencySec": 60,
-                         "ProtocolConfiguration": {
-                           "Port": 80,
-                           "DisableTraceRoute": false
-                         },
-                         "SuccessThreshold": {
-                           "ChecksFailedPercent": 20,
-                           "RoundTripTimeMs": 5
-                         }
-                       },
-                       {
-                         "Name": "icmpTC",
-                         "TestFrequencySec": 30,
-                         "PreferredIPVersion": "IPv4",
-                         "ProtocolConfiguration": {
-                           "DisableTraceRoute": true
-                         }
-                       }
-                     ]
-Sources            : [
-                       {
-                         "Name": "MultiTierApp0(IrinaRGWestcentralus)",
-                         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000/resourceGroups/RGWestc
-                     entralus/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
-                       },
-                       {
-                         "Name": "NPM-CommonEUS(er-lab)",
-                         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000/resourceGroups/er-lab/provi
-                     ders/Microsoft.OperationalInsights/workspaces/NPM-CommonEUS",
-                         "Filter": {
-                           "Type": "Include",
-                           "Items": [
-                             {
-                               "Type": "AgentAddress",
-                               "Address": "SEA-Cust50-VM01"
-                             },
-                             {
-                               "Type": "AgentAddress",
-                               "Address": "WIN-P0HGNDO2S1B"
-                             }
-                           ]
-                         }
-                       }
-                     ]
-Destinations       : [
-                       {
-                         "Name": "bingEndpoint",
-                         "Address": "bing.com"
-                       },
-                       {
-                         "Name": "googleEndpoint",
-                         "Address": "google.com"
-                       }
-                     ]
+$testGroup1 = New-AzNetworkWatcherConnectionMonitorTestGroupObject -Name testGroup1 -TestConfiguration $tcpTestConfiguration, $icmpTestConfiguration -Source $vmEndpoint, $workspaceEndpoint -Destination $bingEndpoint, $googleEndpoint
 ```
+
 ## PARAMETERS
 
 ### -DefaultProfile
