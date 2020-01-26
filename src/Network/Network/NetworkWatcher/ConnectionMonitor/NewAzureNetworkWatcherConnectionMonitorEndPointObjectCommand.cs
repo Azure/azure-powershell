@@ -16,9 +16,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -49,14 +47,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The behavior of the endpoint filter. Currently only 'Include' is supported.")]
+            HelpMessage = "The behavior of the endpoint filter. Currently only 'Include' is supported.",
+            ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Include")]
         public string FilterType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of items in the filter.")]
+            HelpMessage = "List of items in the filter.",
+            ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorEndpointFilterItem> FilterItem { get; set; }
 
