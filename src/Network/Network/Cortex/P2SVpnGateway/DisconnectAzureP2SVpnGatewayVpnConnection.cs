@@ -67,8 +67,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "P2S Vpn gateway gateway Vpn connection Ids, which are returned by getting P2S Vpn gateway detailed connection health")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty] 
         public string[] VpnConnectionIds { get; set; }
 
         public override void Execute()

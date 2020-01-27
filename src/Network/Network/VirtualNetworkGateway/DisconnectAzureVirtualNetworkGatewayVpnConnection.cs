@@ -50,8 +50,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         [Parameter(
             Mandatory = true,
             HelpMessage = "Virtual network gateway Vpn connection Ids, which are returned by getting virtualNetwork gateway Vpn client connection Health")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty] 
         public string[] VpnConnectionIds { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

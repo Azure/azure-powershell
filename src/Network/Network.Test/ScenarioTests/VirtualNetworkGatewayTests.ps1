@@ -1085,9 +1085,8 @@ function Test-DisconnectVNGVpnConnection
     $vnetName = Get-ResourceName
     $publicIpName = Get-ResourceName
     $vnetGatewayConfigName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $rglocation = "eastus2euap"
+    $location = $rglocation
 
 	try 
 	{
@@ -1115,7 +1114,7 @@ function Test-DisconnectVNGVpnConnection
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 		Assert-AreEqual "Succeeded" $actual.ProvisioningState
 		
-        $expected = Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $rname -VpnConnectionIds @("IKEv2_ae1cfe59-5c7c-4315-a876-b11fbfdfeed4")
+        $expected = Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $rname -VpnConnectionIds @("IKEv2_1e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
         Assert-AreEqual $expected.Name $actual.Name
 	}
 	finally

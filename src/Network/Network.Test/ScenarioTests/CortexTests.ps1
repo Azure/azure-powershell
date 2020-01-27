@@ -700,7 +700,7 @@ function Test-CortexExpressRouteCRUD
 
     # Setup
     $rgname = Get-ResourceGroupName
-    $rglocation = Get-ProviderLocation "Microsoft.Network/VirtualWans"
+    $rglocation = "eastus2euap"
  
     $virtualWanName = Get-ResourceName
     $virtualHubName = Get-ResourceName
@@ -750,7 +750,7 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $P2SvpnGatewayName $P2SVpnGateway.Name
 		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
 
-		$expected = Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $P2SvpnGatewayName -VpnConnectionIds @("IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
+		$expected = Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $P2SvpnGatewayName -VpnConnectionIds @("IKEv2_1e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
         Assert-AreEqual $expected.Name $P2SVpnGateway.Name
      }
      finally
