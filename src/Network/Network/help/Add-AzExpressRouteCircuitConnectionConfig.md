@@ -23,7 +23,7 @@ Add-AzExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit
 ### SetByResourceId
 ```
 Add-AzExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
- [-PeerExpressRouteCircuitPeering] <String> [-AddressPrefix] <String> -[AddressPrefixType] <String> [-AuthorizationKey <String>]
+ [-PeerExpressRouteCircuitPeering] <String> [-AddressPrefix] <String> -[AddressPrefixType <String>] [-AuthorizationKey <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
