@@ -333,6 +333,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 this.ResourceGroupName = this.ConnectionMonitor.ResourceGroupName;
                 this.NetworkWatcherName = this.ConnectionMonitor.NetworkWatcherName;
+                this.Name = this.ConnectionMonitor.Name;
             }
 
             var present = this.IsConnectionMonitorPresent(this.ResourceGroupName, this.NetworkWatcherName, this.Name);
