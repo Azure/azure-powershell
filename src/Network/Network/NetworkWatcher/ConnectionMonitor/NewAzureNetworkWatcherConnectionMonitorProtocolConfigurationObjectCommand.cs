@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
                 protocolConfiguration = new PSNetworkWatcherConnectionMonitorTcpConfiguration()
                 {
                     Port = this.Port,
-                    DisableTraceRoute = this.DisableTraceRoute ? true : false
+                    DisableTraceRoute = this.DisableTraceRoute.IsPresent
                 };
             }
             else if (HttpProtocol.IsPresent)
@@ -131,14 +131,14 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
                     Path = this.Path,
                     RequestHeaders = this.GetHeaders(),
                     ValidStatusCodeRanges = this.ValidStatusCodeRange?.ToList(),
-                    PreferHTTPS = this.PreferHTTPS ? true : false
+                    PreferHTTPS = this.PreferHTTPS.IsPresent
                 };
             }
             else if (IcmpProtocol.IsPresent)
             {
                 protocolConfiguration = new PSNetworkWatcherConnectionMonitorIcmpConfiguration()
                 {
-                    DisableTraceRoute = this.DisableTraceRoute ? true : false
+                    DisableTraceRoute = this.DisableTraceRoute.IsPresent
                 };
             }
             else
