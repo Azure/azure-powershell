@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "List of items in the filter.",
             ParameterSetName = "SetByResourceId")]
         [ValidateNotNullOrEmpty]
-        public List<PSNetworkWatcherConnectionMonitorEndpointFilterItem> FilterItem { get; set; }
+        public PSNetworkWatcherConnectionMonitorEndpointFilterItem[] FilterItem { get; set; }
 
         public override void Execute()
         {

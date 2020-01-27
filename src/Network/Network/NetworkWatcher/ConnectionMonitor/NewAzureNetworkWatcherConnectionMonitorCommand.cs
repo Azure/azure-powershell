@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Commands.Network
                         Address = this.DestinationAddress,
                         Port = this.DestinationPort
                     },
-                    AutoStart = this.ConfigureOnly ? false : true,
+                    AutoStart = this.ConfigureOnly.IsPresent,
                     MonitoringIntervalInSeconds = this.MonitoringIntervalInSeconds
                 };
             }

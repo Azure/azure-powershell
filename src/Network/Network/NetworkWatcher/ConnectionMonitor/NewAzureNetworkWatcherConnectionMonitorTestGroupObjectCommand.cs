@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
             PSNetworkWatcherConnectionMonitorTestGroupObject testGroup = new PSNetworkWatcherConnectionMonitorTestGroupObject()
             {
                 Name = this.Name,
-                Disable = this.Disable? true:false,
+                Disable = this.Disable.IsPresent,
                 TestConfigurations = this.TestConfiguration,
                 Sources = this.Source,
                 Destinations = this.Destination
