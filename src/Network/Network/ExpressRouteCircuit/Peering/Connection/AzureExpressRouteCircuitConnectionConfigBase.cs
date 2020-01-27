@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "AddressPrefixType")]
+            HelpMessage = "Specify address family of the configured AddressPrefix. Valid values [IPv4|IPv6]")]
         [ValidateSet(
            IPv4,
            IPv6,
