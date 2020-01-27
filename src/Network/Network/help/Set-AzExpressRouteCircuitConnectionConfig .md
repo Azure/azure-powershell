@@ -6,10 +6,10 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.network/ad
 schema: 2.0.0
 ---
 
-# Add-AzExpressRouteCircuitConnectionConfig
+# Set-AzExpressRouteCircuitConnectionConfig
 
 ## SYNOPSIS
-Adds a circuit connection configuration to Private Peering of an Express Route Circuit. 
+Updates a circuit connection configuration created in Private Peerings for an Express Route Circuit. 
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Also, after running **Set-AzExpressRouteCircuitPeeringConfig**, you must call th
 ```
 $circuit_init = Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 $circuit_peer = Get-AzExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
-$addressSpace = 'aa:bb::/125'
+$addressSpace = 'aa:bb::0/125'
 $addressPrefixType = 'IPv6'
 Set-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AddressPrefixType $addressPrefixType -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit_init
@@ -59,7 +59,7 @@ Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Se
 
 ### -AddressPrefix
 A minimum /29 customer address space to create VxLan tunnels between Express Route Circuits for IPv4 tunnels.
-A minimum of /125 customer address space to create VxLan tunnels between Express Route Circuits for IPv6 tunnels.
+or a minimum of /125 customer address space to create VxLan tunnels between Express Route Circuits for IPv6 tunnels.
 
 ```yaml
 Type: System.String
@@ -73,7 +73,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 ### -AddressPrefixType
-This specifies the Address Family that address prefix belongs to.
+Specifies the address family that address prefix belongs to.
 
 ```yaml
 Type: System.String
