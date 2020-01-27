@@ -12,8 +12,6 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using Newtonsoft.Json;
-
     /// <summary>
     /// Status of Capabilities enabled on the device.
     /// </summary>
@@ -23,7 +21,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// <summary>
         /// IoT Edge capability.
         /// </summary>
-        [JsonProperty(PropertyName = "iotEdge")]
         public bool IotEdge { get; set; }
     }
 }
