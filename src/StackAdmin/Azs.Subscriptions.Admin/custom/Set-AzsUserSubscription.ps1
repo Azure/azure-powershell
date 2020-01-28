@@ -162,6 +162,9 @@ param(
 )
 
     process {
+        # Pipeline feature broken in autorest generated cmdlet 
+        # TargetSubscriptionId is a mandatory parameters along with the pipeline object
+        # Getting TargetSubscriptionId parameter from the pipeline object
         if ( $PSCmdlet.ParameterSetName -eq 'Update' )
         {
             if ($null -ne $PSBoundParameters['SubscriptionDefinition'].SubscriptionId)

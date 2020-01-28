@@ -154,6 +154,9 @@ param(
 )
 
     process {
+        # Pipeline feature broken in autorest generated cmdlet 
+        # Name and ResourceGroupName are mandatory parameters along with the pipeline object
+        # Getting these parameters from the pipeline object
         if ( $PSCmdlet.ParameterSetName -eq 'Update' )
         {
             if ($null -ne $PSBoundParameters['PlanDefinition'].PropertiesName)

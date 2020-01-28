@@ -94,6 +94,7 @@ directive:
       subject: Quota
     set:
       subject: SubscriptionQuota
+      alias: SubscriptionsQuota
   - where:
       subject: Subscription
     set:
@@ -121,6 +122,7 @@ directive:
       subject: SubscriptionMoveSubscription
     set:
       subject: MoveUserSubscription
+      alias: MoveSubscription
   - where:
       verb: Test
       subject: SubscriptionNameAvailability
@@ -223,7 +225,7 @@ directive:
       parameter-name: State
     set:
       default:
-        script: Echo "Private"
+        script: Write-Output "Private"
   - where:
       parameter-name: AddonPlans
     set:
