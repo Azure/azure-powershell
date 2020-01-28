@@ -143,7 +143,7 @@ Before submitting a design review, please be sure that you have read the documen
 
 Please submit a design review here: https://github.com/Azure/azure-powershell-cmdlet-review-pr
 
-_Note_: You will need to be part of the `GitHub Azure` org to see this repository. Please go to [this link](aka.ms/azuregithub) to become part of the `Azure` org.
+_Note_: You will need to be part of the `GitHub Azure` org to see this repository. Please go to [this link](https://aka.ms/azuregithub) to become part of the `Azure` org.
 
 We recommend using the `platyPS` module to easily generate markdown files that contains the above information and including the files in the design submission.
 
