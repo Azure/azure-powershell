@@ -85,6 +85,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public KeyVaultAndKeyReference KeyEncryptionKey { get; set; }
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string DiskEncryptionSetId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerKey")]
+        public string EncryptionType { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -101,6 +111,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // EncryptionSettingsCollection
             EncryptionSettingsElement vEncryptionSettingsElement = null;
+
+            // Encryption
+            Encryption vEncryption = null;
 
             // Sku
             DiskSku vSku = null;
@@ -156,6 +169,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
+            if (this.IsParameterBound(c => c.DiskEncryptionSetId))
+            {
+                if (vEncryption == null)
+                {
+                    vEncryption = new Encryption();
+                }
+                vEncryption.DiskEncryptionSetId = this.DiskEncryptionSetId;
+            }
+
+            if (this.IsParameterBound(c => c.EncryptionType))
+            {
+                if (vEncryption == null)
+                {
+                    vEncryption = new Encryption();
+                }
+                vEncryption.Type = this.EncryptionType;
+            }
+
             if (this.IsParameterBound(c => c.SkuName))
             {
                 if (vSku == null)
@@ -173,6 +204,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 DiskMBpsReadWrite = this.IsParameterBound(c => c.DiskMBpsReadWrite) ? this.DiskMBpsReadWrite : (int?)null,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
+                Encryption = vEncryption,
                 Sku = vSku,
             };
 
