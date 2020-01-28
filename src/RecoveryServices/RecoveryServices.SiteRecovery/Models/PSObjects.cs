@@ -2574,6 +2574,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.IsDiskKeyEncrypted = disk.IsDiskKeyEncrypted;
             this.KekKeyVaultArmId = disk.KekKeyVaultArmId;
             this.KeyIdentifier = disk.KeyIdentifier;
+            this.AllowedDiskLevelOperations = new List<string>();
+            if (disk.AllowedDiskLevelOperation != null)
+            {
+                foreach (var diskoperation in disk.AllowedDiskLevelOperation)
+                {
+                    this.AllowedDiskLevelOperations.Add(diskoperation);
+                }
+            }
         }
 
         /// <summary>
@@ -2604,6 +2612,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.KekKeyVaultArmId = disk.KekKeyVaultArmId;
             this.KeyIdentifier = disk.KeyIdentifier;
             this.RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId;
+            this.AllowedDiskLevelOperations = new List<string>();
+            if (disk.AllowedDiskLevelOperation != null)
+            {
+                foreach (var diskoperation in disk.AllowedDiskLevelOperation)
+                {
+                    this.AllowedDiskLevelOperations.Add(diskoperation);
+                }
+            }
             this.FailoverDiskName = disk.FailoverDiskName;
             this.TfoDiskName = disk.TfoDiskName;
         }
@@ -2673,6 +2689,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the recovery disk encryption set Id.
         /// </summary>
         public string RecoveryDiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the allowed disk level operations.
+        /// </summary>
+        public List<string> AllowedDiskLevelOperations { get; set; }
 
         /// <summary>
         /// Gets or sets the disk uri.
