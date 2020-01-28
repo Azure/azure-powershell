@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.StorageSync" Version="4.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="11.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="14.3.0" />
     <PackageReference Include="System.Management" Version="4.5.0" />
   </ItemGroup>
 	
