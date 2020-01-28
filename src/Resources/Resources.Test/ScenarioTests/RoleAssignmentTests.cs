@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -157,6 +157,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void RaGetByScope()
         {
             TestRunner.RunTestScript("Test-RaGetByScope");
+        }
+
+        [Fact(Skip = "Needs recording. PS-VSPrompt link and TestFramework are broken at time of commit")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaGetOnlyByRoleDefinitionName()
+        {
+            TestRunner.RunTestScript("Test-RaGetOnlyByRoleDefinitionName");
         }
 
         [Fact]
