@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RaGetByScope");
         }
 
-        [Fact(Skip = "Needs recording. PS-VSPrompt link and TestFramework are broken at time of commit")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaGetOnlyByRoleDefinitionName()
         {
