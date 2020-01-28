@@ -20,7 +20,6 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -318,7 +317,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (networkWatcher == null)
                 {
-                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
+                    throw new PSArgumentException(Properties.Resources.NoNetworkWatcherFound);
                 }
 
                 this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
@@ -328,7 +327,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (string.IsNullOrEmpty(this.ConnectionMonitor.ResourceGroupName) || string.IsNullOrEmpty(this.ConnectionMonitor.NetworkWatcherName))
                 {
-                    throw new PSArgumentException("NetworkWatcherName or resourceGroup are not defined in connectionMonitor object.");
+                    throw new PSArgumentException(Properties.Resources.MissingBaseParametersInConnectionMonitor);
                 }
 
                 this.ResourceGroupName = this.ConnectionMonitor.ResourceGroupName;

@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (throwIfTestGroupNotSet && (connectionMonitor.TestGroups == null || !connectionMonitor.TestGroups.Any()))
             {
-                throw new PSArgumentException("Connection monitor should have at least one testGroup");
+                throw new PSArgumentException(Properties.Resources.ConnectionMonitorMustHaveTestGroups);
             }
 
             if (connectionMonitor.TestGroups != null)
@@ -417,18 +417,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (output.Type != null && !output.Type.Equals("Workspace", StringComparison.OrdinalIgnoreCase))
             {
-                throw new PSArgumentException($"Invalid output type {output.Type}. Only \"Workspace\" now is supported");
+                throw new PSArgumentException(Properties.Resources.InvalidConnectionMonitorOutputType);
             }
 
             if (string.IsNullOrEmpty(output.WorkspaceSettings?.WorkspaceResourceId))
             {
-                throw new PSArgumentException($"WorkspaceResourceId is not provided.");
+                throw new PSArgumentException(Properties.Resources.WorkspaceResourceIdIsNotProvidedInConnectionMonitorOutput);
             }
 
             string[] SplittedName = output.WorkspaceSettings.WorkspaceResourceId.Split('/');
             if (SplittedName.Count() < 9 || string.IsNullOrEmpty(SplittedName[7]) || !SplittedName[7].Equals("workspaces", StringComparison.OrdinalIgnoreCase))
             {
-                throw new PSArgumentException($"WorkspaceResourceId specified {output.WorkspaceSettings.WorkspaceResourceId} is not a valid resource Id of Log analytics workspace.");
+                throw new PSArgumentException(Properties.Resources.InvalidWorkspaceResourceId);
             }
         }
 
@@ -436,12 +436,12 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (!string.IsNullOrEmpty(endpointFilterItem.Type) && !String.Equals(endpointFilterItem.Type, "AgentAddress"))
             {
-                throw new PSArgumentException($"Specified EndpointFilterItemType is not supported. Supported type is \"AgentAddress\"", Properties.Resources.EndpointFilterItemType);
+                throw new PSArgumentException(Properties.Resources.UnsupportedEndpointFilterItemType);
             }
 
             if (string.IsNullOrEmpty(endpointFilterItem.Address))
             {
-                throw new PSArgumentException($"Required property \"Address\" is missing.", Properties.Resources.EndpointFilterItemAddress);
+                throw new PSArgumentException(Properties.Resources.EndpointFilterItemAddressIsMissing);
             }
         }
 
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (protocolConfiguration == null)
             {
-                throw new PSArgumentException("Protocol configuration is not defined.");
+                throw new PSArgumentException(Properties.Resources.ProtocolConfigurationIsNotDefined);
             }
 
             Type protocolConfigurationType = protocolConfiguration.GetType();
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (protocolConfigurationType != typeof(PSNetworkWatcherConnectionMonitorIcmpConfiguration))
             {
-                throw new PSArgumentException("Either TCP, HTTP or ICMP protocol should be defined");
+                throw new PSArgumentException(Properties.Resources.UnsupportedProtocolConfigurationType);
             }
         }
 
@@ -482,18 +482,17 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(httpProtocolConfiguration.Method) && !httpProtocolConfiguration.Method.Equals("GET", StringComparison.OrdinalIgnoreCase)
                 && !httpProtocolConfiguration.Method.Equals("POST", StringComparison.OrdinalIgnoreCase))
             {
-                throw new PSArgumentException($"Method {httpProtocolConfiguration.Method} in HTTPConfiguration is not supported. Valid values are 'GET' and 'POST'.");
+                throw new PSArgumentException(Properties.Resources.UnsupportedHTTPMethod);
             }
 
             if (!string.IsNullOrEmpty(httpProtocolConfiguration.Path) && !Uri.IsWellFormedUriString(httpProtocolConfiguration.Path, UriKind.Relative))
             {
-                throw new PSArgumentException($"Invalid format of path {httpProtocolConfiguration.Path} in HTTPConfiguration");
+                throw new PSArgumentException(Properties.Resources.InvalidHttpUriPathFormat);
             }
 
             if (!this.IsValidStatusCodeRanges(httpProtocolConfiguration.ValidStatusCodeRanges))
             {
-                throw new PSArgumentException($"Invalid format of status code ranges {httpProtocolConfiguration.ValidStatusCodeRanges} in HTTPConfiguration. " +
-                    $"Example of valid values: '100', '200-205', '3xx'. Codes should be between 100 and 600.");
+                throw new PSArgumentException(Properties.Resources.InvalidStatusCodeRangesFormat);
             }
 
             this.ValidateRequestHeaders(httpProtocolConfiguration.RequestHeaders);
@@ -505,7 +504,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (testGroups == null || !testGroups.Any())
             {
-                throw new PSArgumentException("To create connectionMonitor, at least one test group should be specified.");
+                throw new PSArgumentException(Properties.Resources.ConnectionMonitorMustHaveTestGroups);
             }
 
             foreach (PSNetworkWatcherConnectionMonitorTestGroupObject testGroup in testGroups)
@@ -526,17 +525,17 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (string.IsNullOrEmpty(endpoint.Name))
             {
-                throw new PSArgumentException("ConnectionMonitor endpoint must have name.");
+                throw new PSArgumentException(Properties.Resources.ConnectionMonitorEndpointMustHaveName);
             }
 
             if (string.IsNullOrEmpty(endpoint.ResourceId) && string.IsNullOrEmpty(endpoint.Address))
             {
-                throw new PSArgumentException("Endpoint should have either ResourceId or Address.");
+                throw new PSArgumentException(Properties.Resources.MissedPropertiesInConnectionMonitorEndpoint);
             }
 
             if (!string.IsNullOrEmpty(endpoint.ResourceId) && !string.IsNullOrEmpty(endpoint.Address))
             {
-                throw new PSArgumentException("Endpoint in connection monitor should have either ResourceId or Address. These parameters should not be specified together.");
+                throw new PSArgumentException(Properties.Resources.InvalidPropertiesInConnectionMonitorEndpoint);
             }
 
             this.ValidateEndpointResourceId(endpoint);
@@ -547,7 +546,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (string.IsNullOrEmpty(testConfiguration.Name))
             {
-                throw new PSArgumentException("Required field \"Name\" is missing for test configuration");
+                throw new PSArgumentException(Properties.Resources.ConnectionMonitorTestConfigurationMustHaveName);
             }
 
             this.ValidateProtocolConfiguration(testConfiguration.ProtocolConfiguration);
@@ -560,12 +559,12 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (string.IsNullOrEmpty(testGroup.Name))
             {
-                throw new PSArgumentException("Test group must have name.");
+                throw new PSArgumentException(Properties.Resources.ConnectionMonitorTestGroupMustHaveName);
             }
 
             if (testGroup.TestConfigurations == null || !testGroup.TestConfigurations.Any())
             {
-                throw new PSArgumentException("Test group must have at least one testConfiguration specified.");
+                throw new PSArgumentException(Properties.Resources.ConnectionMonitorTestGroupMustHaveTestConfiguration);
             }
 
             HashSet<string> testConfigurationNames = new HashSet<string>();
@@ -575,13 +574,13 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (!testConfigurationNames.Add(testConfiguration.Name))
                 {
-                    throw new PSArgumentException($"Test group contains duplicates for test configuration name {testConfiguration.Name}. TestConfiguration names in testGroup must be unique.");
+                    throw new PSArgumentException(Properties.Resources.TestConfigurationNamesMustBeUnique);
                 }
             }
 
             if (testGroup.Sources == null || !testGroup.Sources.Any())
             {
-                throw new PSArgumentException("Test group must have at least one source endpoint specified.");
+                throw new PSArgumentException(Properties.Resources.ConnectionMonitorTestGroupMustHaveSourceEndpoint);
             }
 
             HashSet<string> sourceEndpointNames = new HashSet<string>();
@@ -591,13 +590,13 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (!sourceEndpointNames.Add(endpoint.Name))
                 {
-                    throw new PSArgumentException($"Test group contains duplicates for source endpoint name {endpoint.Name}. Source endpoint names in testGroup must be unique.");
+                    throw new PSArgumentException(Properties.Resources.ConnectionMonitorSourceEndpointNamesMustBeUnique);
                 }
             }
 
             if (testGroup.Destinations == null || !testGroup.Destinations.Any())
             {
-                throw new PSArgumentException("Test group must have at least one destination endpoint specified.");
+                throw new PSArgumentException(Properties.Resources.ConnectionMonitorTestGroupMustHaveDestinationEndpoint);
             }
 
             HashSet<string> destinationEndpointNames = new HashSet<string>();
@@ -607,7 +606,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (!destinationEndpointNames.Add(endpoint.Name))
                 {
-                    throw new PSArgumentException($"Test group contains duplicates for destination endpoint name {endpoint.Name}. Destination endpoint names in testGroup must be unique.");
+                    throw new PSArgumentException(Properties.Resources.ConnectionMonitorDestinationEndpointNamesMustBeUnique);
                 }
             }
         }
@@ -709,12 +708,12 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (throwIfNull && port == null)
             {
-                throw new PSArgumentException("TCP protocol configuration mast have port");
+                throw new PSArgumentException(Properties.Resources.TCPProtocolConfigurationMustHavePort);
             }
 
             if (port != null && (port < 0 || port > 65535))
             {
-                throw new PSArgumentException($"Port value {port} in protocol configuration is out of range. The value must be between 0 and 65535.");
+                throw new PSArgumentException(Properties.Resources.InvalidPortValue);
             }
         }
 
@@ -729,8 +728,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (string.IsNullOrEmpty(header.Name) || string.IsNullOrEmpty(header.Value))
                 {
-                    throw new PSArgumentException($"Invalid request header with name {header.Name} and value {header.Value} in HTTPConfiguration. " +
-                        $"Both name and value should be populated.");
+                    throw new PSArgumentException(Properties.Resources.InvalidHTTPRequestHeader);
                 }
             }
         }
@@ -817,7 +815,7 @@ namespace Microsoft.Azure.Commands.Network
             // Resource ID must be in the format "/subscriptions/00000000-0000-0000-0000-00000000/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/name"
             if (SplittedName.Count() < 9)
             {
-                throw new PSArgumentException($"EndpointResourceId specified {endpoint.ResourceId} is not a valid resource Id.", Properties.Resources.EndpointResourceId);
+                throw new PSArgumentException(Properties.Resources.InvalidEndpointResourceId);
             }
 
             string resourceType = SplittedName[7];
@@ -825,18 +823,17 @@ namespace Microsoft.Azure.Commands.Network
                 && !resourceType.Equals("virtualMachineScaleSets", StringComparison.OrdinalIgnoreCase)
                 && !resourceType.Equals("workspaces", StringComparison.OrdinalIgnoreCase)))
             {
-                throw new PSArgumentException($"Resource type {resourceType} of endpoint with resourceId {endpoint.ResourceId} is not supported. " +
-                    $"Supported types are VirtualMachine, VirtualMachineScaleSet and Workspace. Please update the resource ID of endpoint.", Properties.Resources.EndpointResourceId);
+                throw new PSArgumentException(Properties.Resources.InvalidEndpointResourceType);
             }
 
             if (resourceType.Equals("workspaces", StringComparison.OrdinalIgnoreCase) && (endpoint.Filter?.Items == null || !endpoint.Filter.Items.Any()))
             {
-                throw new PSArgumentException($"Connection monitor workspace endpoint {endpoint.ResourceId} must have at least one EndpointFilterItem.", Properties.Resources.EndpointResourceId);
+                throw new PSArgumentException(Properties.Resources.EndpointFilterItemIsMissing);
             }
 
             if (endpoint.Filter?.Items != null && endpoint.Filter.Items.Any() && !resourceType.Equals("workspaces", StringComparison.OrdinalIgnoreCase))
             {
-                throw new PSArgumentException($"Resource type {resourceType} is not supported for endpoint with filter. Supported type is \"workspace\". Please set Log analytics workspace resource ID in resourceID field.");
+                throw new PSArgumentException(Properties.Resources.UnsupportedEndpointTypeForEndpointWithFilter);
             }
         }
 
@@ -1012,17 +1009,17 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrEmpty(endpoint.Filter.Type) && !endpoint.Filter.Type.Equals("Include", StringComparison.OrdinalIgnoreCase))
             {
-                throw new PSArgumentException($"Filter type {endpoint.Filter.Type} is not supported. Supported type is \"Include\".", Properties.Resources.EndpointFilterType);
+                throw new PSArgumentException(Properties.Resources.UnsupportedEndpointFilterType);
             }
 
             if (!string.IsNullOrEmpty(endpoint.Filter.Type) && (endpoint.Filter.Items == null || (endpoint.Filter.Items != null && !endpoint.Filter.Items.Any())))
             {
-                throw new PSArgumentException("Endpoint with FilterType specified must have at least one EndpointFilterItem.");
+                throw new PSArgumentException(Properties.Resources.EndpointWilthFilterTypeMustHaveFilterItem);
             }
 
             if (endpoint.Filter.Items != null && endpoint.Filter.Items.Any() && string.IsNullOrEmpty(endpoint.ResourceId))
             {
-                throw new PSArgumentException("An endpoint with \"Filter\" specified must always have a resourceID.");
+                throw new PSArgumentException(Properties.Resources.ResourceIDIsMissingInEndpointWithFilter);
             }
 
             this.ValidateEndpointFilterItemList(endpoint.Filter?.Items);
@@ -1042,7 +1039,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (!addressSet.Add(item.Address))
                 {
-                    throw new PSArgumentException($"Endpoint item of endpoint contains a duplicate address {item.Address}", Properties.Resources.EndpointFilterItem);
+                    throw new PSArgumentException(Properties.Resources.EndpointFilterItemAddressesMustBeUnique);
                 }
             }
         }
@@ -1058,7 +1055,7 @@ namespace Microsoft.Azure.Commands.Network
             int minTestFrequencySeconds = 30;
             if (testFrequencySec > maxTestFrequencySeconds || testFrequencySec < minTestFrequencySeconds)
             {
-                throw new PSArgumentException($"Test frequency in seconds {testFrequencySec} should be greater or equal to {minTestFrequencySeconds} and lesser or equal to {maxTestFrequencySeconds}.");
+                throw new PSArgumentException(Properties.Resources.TestFrequencyIsOutOfRange);
             }
         }
 
@@ -1072,12 +1069,12 @@ namespace Microsoft.Azure.Commands.Network
             if (successThreshold.ChecksFailedPercent != null &&
                 (successThreshold.ChecksFailedPercent < 0 || successThreshold.ChecksFailedPercent > 100))
             {
-                throw new PSArgumentException($"Checks failed percent for success threshold in test configuration should be between 0-100%. The specified value {successThreshold.ChecksFailedPercent} is out of range.");
+                throw new PSArgumentException(Properties.Resources.ChecksFailedPercentIsOutOfRange);
             }
 
             if (successThreshold.RoundTripTimeMs != null && successThreshold.RoundTripTimeMs < 0)
             {
-                throw new PSArgumentException($"RoundTripTimeMs for success threshold should be a positive value. The specified value {successThreshold.RoundTripTimeMs} is invalid.");
+                throw new PSArgumentException(Properties.Resources.InvalidRoundtripTimeMs);
             }
         }
 
@@ -1086,8 +1083,7 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(preferredIPVersion) && !preferredIPVersion.Equals(NetworkBaseCmdlet.IPv4, StringComparison.OrdinalIgnoreCase)
                 && !preferredIPVersion.Equals(NetworkBaseCmdlet.IPv6, StringComparison.OrdinalIgnoreCase))
             {
-                throw new PSArgumentException($"Invalid value for PreferredIPVersion parameter {preferredIPVersion}. " +
-                    $"Supported values are {NetworkBaseCmdlet.IPv4} and {NetworkBaseCmdlet.IPv6}.");
+                throw new PSArgumentException(Properties.Resources.InvalidPreferredIPVersion);
             }
         }
     }
