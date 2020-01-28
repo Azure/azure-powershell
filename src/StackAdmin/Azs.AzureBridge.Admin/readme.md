@@ -58,38 +58,18 @@ psd1: Azs.AzureBridge.Admin.psd1
 psm1: Azs.AzureBridge.Admin.psm1
 
 directive:  
-  # Add AzureBridge prefix to subjects to match existing method names
-  - where:
-      subject: Activation
-    set:
-      subject-prefix: AzureBridge
-  - where:
-      subject: DownloadedProduct
-    set:
-      subject-prefix: AzureBridge
-  - where:
-      subject: Product
-    set:
-      subject-prefix: AzureBridge
-
-  # Add alias for ResourceGroup to ResourceGroupName
-  - where:
-      parameter-name: ResourceGroup
-    set:
-      alias: ResourceGroupName
-
   # Add alias for ProductName to Name
   - where:
         parameter-name: ProductName
     set:
         alias: Name
 
-  # Rename DownloadProduct to AzureBridgeProductDownload
+  # Rename DownloadProduct to ProductDownload
   - where:
       verb: Invoke
       subject: DownloadProduct
     set:
-      subject: AzureBridgeProductDownload
+      subject: ProductDownload
 
   # Remove cmdlets that don't exist in AzureRm module
   - where:
@@ -103,6 +83,6 @@ directive:
       subject: Activation
     remove: true.
 
-subject-prefix: ''
+subject-prefix: AzureBridge
 module-version: 0.0.1
 ```
