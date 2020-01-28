@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
              Mandatory = true,
-             ValueFromPipelineByPropertyName = true,
+             ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
              ParameterSetName = "SetByResource")]
         [Parameter(
              Mandatory = true,
-             ValueFromPipelineByPropertyName = true,
+             ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
              ParameterSetName = "SetByResourceV2")]
         [ValidateNotNull]
@@ -80,32 +80,26 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ConnectionMonitorName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The connection monitor name.",
             ParameterSetName = "SetByResource")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The connection monitor name.",
             ParameterSetName = "SetByName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The connection monitor name.",
             ParameterSetName = "SetByLocation")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The connection monitor name.",
             ParameterSetName = "SetByResourceV2")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The connection monitor name.",
             ParameterSetName = "SetByNameV2")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The connection monitor name.",
             ParameterSetName = "SetByLocationV2")]
         [ValidateNotNullOrEmpty]
@@ -127,15 +121,15 @@ namespace Microsoft.Azure.Commands.Network
         public string SourceResourceId { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Monitoring interval in seconds. Default value is 60 seconds.",
             ParameterSetName = "SetByResource")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Monitoring interval in seconds. Default value is 60 seconds.",
             ParameterSetName = "SetByName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Monitoring interval in seconds. Default value is 60 seconds.",
             ParameterSetName = "SetByLocation")]
         [ValidateNotNullOrEmpty]

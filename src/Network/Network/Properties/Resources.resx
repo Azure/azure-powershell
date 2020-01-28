@@ -629,4 +629,7 @@
   <data name="MissingBaseParametersInConnectionMonitor" xml:space="preserve">
     <value>NetworkWatcherName or resourceGroup are not defined in connectionMonitor object.</value>
   </data>
+  <data name="ConnectionMonitorNotFound" xml:space="preserve">
+    <value>Connection monitor is not found.</value>
+  </data>
 </root>

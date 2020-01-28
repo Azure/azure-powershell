@@ -140,7 +140,7 @@ Accept wildcard characters: False
 The port to connect to.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Nullable`1[System.UInt16]
 Parameter Sets: TCP
 Aliases:
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Nullable`1[System.UInt16]
 Parameter Sets: HTTP
 Aliases:
 

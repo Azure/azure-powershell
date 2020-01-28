@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
              HelpMessage = "HTTP status codes to consider successful. For instance, \"2xx,301-304,418\".",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
-        public List<String> ValidStatusCodeRange { get; set; }
+        public string[] ValidStatusCodeRange { get; set; }
 
         [Parameter(
              Mandatory = false,

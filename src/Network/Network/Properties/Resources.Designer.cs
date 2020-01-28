@@ -277,6 +277,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connection monitor is not found..
+        /// </summary>
+        internal static string ConnectionMonitorNotFound {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No output parameter is provided.
         /// </summary>
         internal static string ConnectionMonitorOutput {
