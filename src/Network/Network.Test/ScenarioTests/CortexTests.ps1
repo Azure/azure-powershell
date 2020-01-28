@@ -700,7 +700,7 @@ function Test-CortexExpressRouteCRUD
 
     # Setup
     $rgname = Get-ResourceGroupName
-    $rglocation = "eastus2euap"
+    $rglocation = "East US"
  
     $virtualWanName = Get-ResourceName
     $virtualHubName = Get-ResourceName
@@ -713,15 +713,13 @@ function Test-CortexExpressRouteCRUD
 		New-AzResourceGroup -Name $rgname -Location $rglocation
 
 		# Create the Virtual Wan
-		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation
+		New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation
 		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
-		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
 		Assert-AreEqual $virtualWanName $virtualWan.Name
 
 		# Create the Virtual Hub
-		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
+		New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
 		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
-		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 		Assert-AreEqual $virtualWan.Id $virtualhub.VirtualWan.Id
 
@@ -735,22 +733,19 @@ function Test-CortexExpressRouteCRUD
         # Get created VpnServerConfiguration using Get-AzVpnServerConfiguration
         $vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration1Name
         Assert-NotNull $vpnServerConfig1
-		Assert-AreEqual $rgName $vpnServerConfig1.ResourceGroupName
-		Assert-AreEqual $VpnServerConfiguration1Name $vpnServerConfig1.Name
 		
 		# Create the P2SVpnGateway using New-AzP2sVpnGateway
 		$vpnClientAddressSpaces = New-Object string[] 2
 		$vpnClientAddressSpaces[0] = "192.168.2.0/24"
 		$vpnClientAddressSpaces[1] = "192.168.3.0/24"
-		$createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1
-		Assert-AreEqual "Succeeded" $createdP2SVpnGateway.ProvisioningState
-
+		New-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1
+		
 		# Get the created P2SVpnGateway using Get-AzP2sVpnGateway
 		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
 		Assert-AreEqual $P2SvpnGatewayName $P2SVpnGateway.Name
 		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
 
-		$expected = Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $P2SvpnGatewayName -VpnConnectionIds @("IKEv2_1e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
+		$expected = Disconnect-AzP2SVpnGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $P2SvpnGatewayName -VpnConnectionIds @("IKEv2_1e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
         Assert-AreEqual $expected.Name $P2SVpnGateway.Name
      }
      finally
