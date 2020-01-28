@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         public string AvailabilityGroupName { get; private set; }
 
         /// <summary>
-        /// Port Number of the Availability Group Listner
+        /// Port number of AG Listener. Default Value is 1433.
         /// </summary>
         [Parameter(
             Mandatory = false,
