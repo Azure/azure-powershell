@@ -8,24 +8,24 @@ schema: 2.0.0
 # Disconnect-AzP2sVpnGatewayVpnConnection
 
 ## SYNOPSIS
-Disconnect a given connected vpn client connection with the given p2s vpn gateway
+Disconnect given connected vpn client connections with a given p2s vpn gateway
 
 ## SYNTAX
 
 ### ByP2SVpnGatewayName (Default)
 ```
 Disconnect-AzP2sVpnGatewayVpnConnection -Name <String> -ResourceGroupName <String>
- -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
+ -VpnConnectionIds <VpnConnectionId> [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayObject
 ```
-Disconnect-AzP2sVpnGatewayVpnConnection -InputObject <PSP2SVpnGateway> -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
+Disconnect-AzP2sVpnGatewayVpnConnection -InputObject <PSP2SVpnGateway> -VpnConnectionIds <VpnConnectionId> [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayResourceId
 ```
-Disconnect-AzP2sVpnGatewayVpnConnection -ResourceId <String> -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
+Disconnect-AzP2sVpnGatewayVpnConnection -ResourceId <String> -VpnConnectionIds <VpnConnectionId> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ The **Disconnect-AzP2sVpnGatewayVpnConnection** cmdlet enables you to disconnect
 
 ### Example 1
 ```powershell
-PS C:\> Disconnect-AzP2sVpnGatewayVpnConnection -ResourceName 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -VpnConnectionId IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4
+PS C:\> Disconnect-AzP2sVpnGatewayVpnConnection -ResourceName 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -VpnConnectionIds @("IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
 
 ResourceGroupName              : P2SCortexGATesting
 Name                           : 683482ade8564515aed4b8448c9757ea-westus-gw
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -VpnConnectionIds
-Vpn Connection Id
+Vpn Connection Ida
 
 ```yaml
 Type: String[]
@@ -133,7 +133,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Network.Models.PSP2SVpnGateway
 
 ## OUTPUTS
 
