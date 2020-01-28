@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
              HelpMessage = "The port to connect to.",
              ParameterSetName = "HTTP")]
         [ValidateNotNullOrEmpty]
-        public int? Port { get; set; }
+        public ushort? Port { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
             {
                 if (string.IsNullOrEmpty(pair.Key) || string.IsNullOrEmpty(pair.Value))
                 {
-                    throw new PSArgumentException($"Invalid request header with name {pair.Key} and value {pair.Value} in HTTPConfiguration. Both name and value should be populated.");
+                    throw new PSArgumentException(Properties.Resources.InvalidHTTPRequestHeader);
                 }
 
                 PSHTTPHeader header = new PSHTTPHeader()

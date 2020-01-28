@@ -296,7 +296,7 @@
   </data>
   <data name="RemovingP2SVpnGatewayWarning" xml:space="preserve">
     <value>Removing a P2SVpnGateway will also remove all P2SConnectionConfigurations associated with it. Are you sure you want to remove resource '{0}'</value>
-  </data>  
+  </data>
   <data name="RemovingExpressRouteGatewayWarning" xml:space="preserve">
     <value>Removing an ExpressRouteGateway will also remove all ExpressRouteExpressRouteConnections associated with it. Are you sure you want to remove resource '{0}'</value>
   </data>
@@ -329,7 +329,7 @@
   </data>
   <data name="P2SVpnGatewayNotFound" xml:space="preserve">
     <value>The P2SVpnGateway to modify could not be found</value>
-  </data>  
+  </data>
   <data name="VpnSiteListRequiredForVpnSiteConfiguration" xml:space="preserve">
     <value>A list of connected VpnSites is required to generate a vpnSites configuration.</value>
   </data>
@@ -341,10 +341,10 @@
   </data>
   <data name="VpnServerConfigurationRequiredForP2SVpnGateway" xml:space="preserve">
     <value>A valid VpnServerConfiguration is required to create a P2SVpnGateway</value>
-  </data>  
+  </data>
   <data name="VpnServerConfigurationNotFound" xml:space="preserve">
     <value>The VpnServerConfiguration could not be found.</value>
-  </data>  
+  </data>
   <data name="ChildResourceAlreadyPresentInResourceGroup" xml:space="preserve">
     <value>A resource with the same name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead.</value>
   </data>
@@ -511,5 +511,122 @@
   </data>
   <data name="ConnectionMonitorInputObject" xml:space="preserve">
     <value>Unrecognized InputObject type.</value>
+  </data>
+  <data name="ConnectionMonitorMustHaveTestGroups" xml:space="preserve">
+    <value>Connection monitor should have at least one testGroup.</value>
+  </data>
+  <data name="InvalidConnectionMonitorOutputType" xml:space="preserve">
+    <value>Invalid connection monitor output type. Only 'Workspace' now is supported.</value>
+  </data>
+  <data name="WorkspaceResourceIdIsNotProvidedInConnectionMonitorOutput" xml:space="preserve">
+    <value>WorkspaceResourceId must be provided in connection monitor output.</value>
+  </data>
+  <data name="InvalidWorkspaceResourceId" xml:space="preserve">
+    <value>WorkspaceResourceId specified in connection monitor output is not a valid resource Id of Log analytics workspace.</value>
+  </data>
+  <data name="UnsupportedEndpointFilterItemType" xml:space="preserve">
+    <value>Specified EndpointFilterItemType is not supported. Supported type is 'AgentAddress'.</value>
+  </data>
+  <data name="EndpointFilterItemAddressIsMissing" xml:space="preserve">
+    <value>Required property 'Address' is missing in endpoint filter item.</value>
+  </data>
+  <data name="ProtocolConfigurationIsNotDefined" xml:space="preserve">
+    <value>Protocol configuration is not defined.</value>
+  </data>
+  <data name="UnsupportedProtocolConfigurationType" xml:space="preserve">
+    <value>Either TCP, HTTP or ICMP protocol should be defined.</value>
+  </data>
+  <data name="UnsupportedHTTPMethod" xml:space="preserve">
+    <value>Method in HTTPConfiguration is not supported. Valid values are 'GET' and 'POST'.</value>
+  </data>
+  <data name="InvalidHttpUriPathFormat" xml:space="preserve">
+    <value>Invalid format of path in HTTPConfiguration.</value>
+  </data>
+  <data name="InvalidStatusCodeRangesFormat" xml:space="preserve">
+    <value>Invalid format of status code ranges in HTTPConfiguration. Example of valid values: '100', '200-205', '3xx'. Codes should be between 100 and 600.</value>
+  </data>
+  <data name="ConnectionMonitorEndpointMustHaveName" xml:space="preserve">
+    <value>Connection monitor endpoint must have name.</value>
+  </data>
+  <data name="MissedPropertiesInConnectionMonitorEndpoint" xml:space="preserve">
+    <value>Endpoint should have either ResourceId or Address.</value>
+  </data>
+  <data name="InvalidPropertiesInConnectionMonitorEndpoint" xml:space="preserve">
+    <value>ResourceId and Address should not be specified together in connection monitor endpoint.</value>
+  </data>
+  <data name="ConnectionMonitorTestConfigurationMustHaveName" xml:space="preserve">
+    <value>Required field 'Name' is missing in connection monitor test configuration.</value>
+  </data>
+  <data name="ConnectionMonitorTestGroupMustHaveName" xml:space="preserve">
+    <value>Required field 'Name' is missing in connection monitor test group.</value>
+  </data>
+  <data name="ConnectionMonitorTestGroupMustHaveTestConfiguration" xml:space="preserve">
+    <value>Connection monitor test group must have at least one testConfiguration specified.</value>
+  </data>
+  <data name="TestConfigurationNamesMustBeUnique" xml:space="preserve">
+    <value>Test group contains duplicates in test configuration names. TestConfiguration names in testGroup must be unique.</value>
+  </data>
+  <data name="ConnectionMonitorTestGroupMustHaveSourceEndpoint" xml:space="preserve">
+    <value>Connection monitor test group must have at least one source endpoint specified.</value>
+  </data>
+  <data name="ConnectionMonitorTestGroupMustHaveDestinationEndpoint" xml:space="preserve">
+    <value>Connection monitor test group must have at least one destination endpoint specified.</value>
+  </data>
+  <data name="ConnectionMonitorSourceEndpointNamesMustBeUnique" xml:space="preserve">
+    <value>Connection monitor test group contains duplicates in source endpoint names. Source endpoint names in testGroup must be unique.</value>
+  </data>
+  <data name="ConnectionMonitorDestinationEndpointNamesMustBeUnique" xml:space="preserve">
+    <value>Connection monitor test group contains duplicates in destination endpoint names. Destination endpoint names in testGroup must be unique.</value>
+  </data>
+  <data name="TCPProtocolConfigurationMustHavePort" xml:space="preserve">
+    <value>TCP protocol configuration mast have port.</value>
+  </data>
+  <data name="InvalidPortValue" xml:space="preserve">
+    <value>Port value in protocol configuration is out of range. The value must be between 0 and 65535.</value>
+  </data>
+  <data name="InvalidHTTPRequestHeader" xml:space="preserve">
+    <value>Invalid HTTP request header in HTTPConfiguration. Both name and value should be populated.</value>
+  </data>
+  <data name="InvalidEndpointResourceId" xml:space="preserve">
+    <value>Specified resourceID in endpoint is not a valid resource ID.</value>
+  </data>
+  <data name="InvalidEndpointResourceType" xml:space="preserve">
+    <value>Resource type of endpoint is not supported. Supported types are VirtualMachine, VirtualMachineScaleSet and Workspace. Please update the resource ID of endpoint.</value>
+  </data>
+  <data name="EndpointFilterItemIsMissing" xml:space="preserve">
+    <value>Connection monitor workspace endpoint must have at least one EndpointFilterItem.</value>
+  </data>
+  <data name="UnsupportedEndpointTypeForEndpointWithFilter" xml:space="preserve">
+    <value>Resource type is not supported for endpoint with filter. Supported type is 'workspace'. Please set Log analytics workspace resource ID in resourceID field.</value>
+  </data>
+  <data name="UnsupportedEndpointFilterType" xml:space="preserve">
+    <value>Filter type is not supported. Supported type is 'Include'.</value>
+  </data>
+  <data name="EndpointWilthFilterTypeMustHaveFilterItem" xml:space="preserve">
+    <value>Endpoint with FilterType specified must have at least one EndpointFilterItem.</value>
+  </data>
+  <data name="ResourceIDIsMissingInEndpointWithFilter" xml:space="preserve">
+    <value>An endpoint with 'Filter' specified must always have a resourceID.</value>
+  </data>
+  <data name="EndpointFilterItemAddressesMustBeUnique" xml:space="preserve">
+    <value>Endpoint filter items contain duplicate addresses.</value>
+  </data>
+  <data name="TestFrequencyIsOutOfRange" xml:space="preserve">
+    <value>Test frequency in seconds should be greater or equal to 30 and lesser or equal to 1800 seconds.</value>
+  </data>
+  <data name="ChecksFailedPercentIsOutOfRange" xml:space="preserve">
+    <value>Checks failed percent for success threshold in test configuration should be between 0-100%. The specified value is out of range.</value>
+  </data>
+  <data name="InvalidRoundtripTimeMs" xml:space="preserve">
+    <value>RoundTripTimeMs for success threshold should be a positive value. The specified value is invalid.</value>
+  </data>
+  <data name="InvalidPreferredIPVersion" xml:space="preserve">
+    <value>Invalid value for PreferredIPVersion parameter. Supported values are IPv4 and IPv6.</value>
+  </data>
+  <data name="NoNetworkWatcherFound" xml:space="preserve">
+    <value>There is no network watcher in specified location.</value>
+  </data>
+  <data name="MissingBaseParametersInConnectionMonitor" xml:space="preserve">
+    <value>NetworkWatcherName or resourceGroup are not defined in connectionMonitor object.</value>
   </data>
 </root>

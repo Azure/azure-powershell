@@ -223,11 +223,38 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Checks failed percent for success threshold in test configuration should be between 0-100%. The specified value is out of range..
+        /// </summary>
+        internal static string ChecksFailedPercentIsOutOfRange {
+            get {
+                return ResourceManager.GetString("ChecksFailedPercentIsOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A resource with the same name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead..
         /// </summary>
         internal static string ChildResourceAlreadyPresentInResourceGroup {
             get {
                 return ResourceManager.GetString("ChildResourceAlreadyPresentInResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection monitor test group contains duplicates in destination endpoint names. Destination endpoint names in testGroup must be unique..
+        /// </summary>
+        internal static string ConnectionMonitorDestinationEndpointNamesMustBeUnique {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorDestinationEndpointNamesMustBeUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection monitor endpoint must have name..
+        /// </summary>
+        internal static string ConnectionMonitorEndpointMustHaveName {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorEndpointMustHaveName", resourceCulture);
             }
         }
         
@@ -241,6 +268,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connection monitor should have at least one testGroup..
+        /// </summary>
+        internal static string ConnectionMonitorMustHaveTestGroups {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorMustHaveTestGroups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No output parameter is provided.
         /// </summary>
         internal static string ConnectionMonitorOutput {
@@ -250,11 +286,65 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connection monitor test group contains duplicates in source endpoint names. Source endpoint names in testGroup must be unique..
+        /// </summary>
+        internal static string ConnectionMonitorSourceEndpointNamesMustBeUnique {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorSourceEndpointNamesMustBeUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Either SourceResourceId or InputObject or TestGroups is to be defined.
         /// </summary>
         internal static string ConnectionMonitorSourceResourceIdInputObjectTestGroups {
             get {
                 return ResourceManager.GetString("ConnectionMonitorSourceResourceIdInputObjectTestGroups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Required field &apos;Name&apos; is missing in connection monitor test configuration..
+        /// </summary>
+        internal static string ConnectionMonitorTestConfigurationMustHaveName {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorTestConfigurationMustHaveName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection monitor test group must have at least one destination endpoint specified..
+        /// </summary>
+        internal static string ConnectionMonitorTestGroupMustHaveDestinationEndpoint {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorTestGroupMustHaveDestinationEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Required field &apos;Name&apos; is missing in connection monitor test group..
+        /// </summary>
+        internal static string ConnectionMonitorTestGroupMustHaveName {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorTestGroupMustHaveName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection monitor test group must have at least one source endpoint specified..
+        /// </summary>
+        internal static string ConnectionMonitorTestGroupMustHaveSourceEndpoint {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorTestGroupMustHaveSourceEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection monitor test group must have at least one testConfiguration specified..
+        /// </summary>
+        internal static string ConnectionMonitorTestGroupMustHaveTestConfiguration {
+            get {
+                return ResourceManager.GetString("ConnectionMonitorTestGroupMustHaveTestConfiguration", resourceCulture);
             }
         }
         
@@ -349,6 +439,33 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Endpoint filter items contain duplicate addresses..
+        /// </summary>
+        internal static string EndpointFilterItemAddressesMustBeUnique {
+            get {
+                return ResourceManager.GetString("EndpointFilterItemAddressesMustBeUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Required property &apos;Address&apos; is missing in endpoint filter item..
+        /// </summary>
+        internal static string EndpointFilterItemAddressIsMissing {
+            get {
+                return ResourceManager.GetString("EndpointFilterItemAddressIsMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection monitor workspace endpoint must have at least one EndpointFilterItem..
+        /// </summary>
+        internal static string EndpointFilterItemIsMissing {
+            get {
+                return ResourceManager.GetString("EndpointFilterItemIsMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Filter item list is empty.
         /// </summary>
         internal static string EndpointFilterItemList {
@@ -390,6 +507,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string EndpointSourceDestination {
             get {
                 return ResourceManager.GetString("EndpointSourceDestination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Endpoint with FilterType specified must have at least one EndpointFilterItem..
+        /// </summary>
+        internal static string EndpointWilthFilterTypeMustHaveFilterItem {
+            get {
+                return ResourceManager.GetString("EndpointWilthFilterTypeMustHaveFilterItem", resourceCulture);
             }
         }
         
@@ -439,6 +565,51 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid connection monitor output type. Only &apos;Workspace&apos; now is supported..
+        /// </summary>
+        internal static string InvalidConnectionMonitorOutputType {
+            get {
+                return ResourceManager.GetString("InvalidConnectionMonitorOutputType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specified resourceID in endpoint is not a valid resource ID..
+        /// </summary>
+        internal static string InvalidEndpointResourceId {
+            get {
+                return ResourceManager.GetString("InvalidEndpointResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource type of endpoint is not supported. Supported types are VirtualMachine, VirtualMachineScaleSet and Workspace. Please update the resource ID of endpoint..
+        /// </summary>
+        internal static string InvalidEndpointResourceType {
+            get {
+                return ResourceManager.GetString("InvalidEndpointResourceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid HTTP request header in HTTPConfiguration. Both name and value should be populated..
+        /// </summary>
+        internal static string InvalidHTTPRequestHeader {
+            get {
+                return ResourceManager.GetString("InvalidHTTPRequestHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid format of path in HTTPConfiguration..
+        /// </summary>
+        internal static string InvalidHttpUriPathFormat {
+            get {
+                return ResourceManager.GetString("InvalidHttpUriPathFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The IpAddress specified is invalid..
         /// </summary>
         internal static string InvalidIPAddress {
@@ -466,11 +637,65 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Port value in protocol configuration is out of range. The value must be between 0 and 65535..
+        /// </summary>
+        internal static string InvalidPortValue {
+            get {
+                return ResourceManager.GetString("InvalidPortValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid value for PreferredIPVersion parameter. Supported values are IPv4 and IPv6..
+        /// </summary>
+        internal static string InvalidPreferredIPVersion {
+            get {
+                return ResourceManager.GetString("InvalidPreferredIPVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ResourceId and Address should not be specified together in connection monitor endpoint..
+        /// </summary>
+        internal static string InvalidPropertiesInConnectionMonitorEndpoint {
+            get {
+                return ResourceManager.GetString("InvalidPropertiesInConnectionMonitorEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provided ResourceId isn&apos;t in the right format or doesn&apos;t refer to the right resource type ({0}).
         /// </summary>
         internal static string InvalidResourceId {
             get {
                 return ResourceManager.GetString("InvalidResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RoundTripTimeMs for success threshold should be a positive value. The specified value is invalid..
+        /// </summary>
+        internal static string InvalidRoundtripTimeMs {
+            get {
+                return ResourceManager.GetString("InvalidRoundtripTimeMs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid format of status code ranges in HTTPConfiguration. Example of valid values: &apos;100&apos;, &apos;200-205&apos;, &apos;3xx&apos;. Codes should be between 100 and 600..
+        /// </summary>
+        internal static string InvalidStatusCodeRangesFormat {
+            get {
+                return ResourceManager.GetString("InvalidStatusCodeRangesFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WorkspaceResourceId specified in connection monitor output is not a valid resource Id of Log analytics workspace..
+        /// </summary>
+        internal static string InvalidWorkspaceResourceId {
+            get {
+                return ResourceManager.GetString("InvalidWorkspaceResourceId", resourceCulture);
             }
         }
         
@@ -547,6 +772,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Endpoint should have either ResourceId or Address..
+        /// </summary>
+        internal static string MissedPropertiesInConnectionMonitorEndpoint {
+            get {
+                return ResourceManager.GetString("MissedPropertiesInConnectionMonitorEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NetworkWatcherName or resourceGroup are not defined in connectionMonitor object..
+        /// </summary>
+        internal static string MissingBaseParametersInConnectionMonitor {
+            get {
+                return ResourceManager.GetString("MissingBaseParametersInConnectionMonitor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Moving ExpressRoute Circuit.
         /// </summary>
         internal static string MovingExpressRoutCircuitMessage {
@@ -561,6 +804,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string NetworkProfileNameNotSet {
             get {
                 return ResourceManager.GetString("NetworkProfileNameNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no network watcher in specified location..
+        /// </summary>
+        internal static string NoNetworkWatcherFound {
+            get {
+                return ResourceManager.GetString("NoNetworkWatcherFound", resourceCulture);
             }
         }
         
@@ -642,6 +894,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string ProtocolConfigurationIPVersion {
             get {
                 return ResourceManager.GetString("ProtocolConfigurationIPVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protocol configuration is not defined..
+        /// </summary>
+        internal static string ProtocolConfigurationIsNotDefined {
+            get {
+                return ResourceManager.GetString("ProtocolConfigurationIsNotDefined", resourceCulture);
             }
         }
         
@@ -790,6 +1051,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An endpoint with &apos;Filter&apos; specified must always have a resourceID..
+        /// </summary>
+        internal static string ResourceIDIsMissingInEndpointWithFilter {
+            get {
+                return ResourceManager.GetString("ResourceIDIsMissingInEndpointWithFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resource &apos;{0}&apos; not found.
         /// </summary>
         internal static string ResourceNotFound {
@@ -880,11 +1150,38 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TCP protocol configuration mast have port..
+        /// </summary>
+        internal static string TCPProtocolConfigurationMustHavePort {
+            get {
+                return ResourceManager.GetString("TCPProtocolConfigurationMustHavePort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No test configuraiton is provided.
         /// </summary>
         internal static string TestConfiguration {
             get {
                 return ResourceManager.GetString("TestConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test group contains duplicates in test configuration names. TestConfiguration names in testGroup must be unique..
+        /// </summary>
+        internal static string TestConfigurationNamesMustBeUnique {
+            get {
+                return ResourceManager.GetString("TestConfigurationNamesMustBeUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test frequency in seconds should be greater or equal to 30 and lesser or equal to 1800 seconds..
+        /// </summary>
+        internal static string TestFrequencyIsOutOfRange {
+            get {
+                return ResourceManager.GetString("TestFrequencyIsOutOfRange", resourceCulture);
             }
         }
         
@@ -984,6 +1281,51 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string UltraPerformanceGatewayWarningMessage {
             get {
                 return ResourceManager.GetString("UltraPerformanceGatewayWarningMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specified EndpointFilterItemType is not supported. Supported type is &apos;AgentAddress&apos;..
+        /// </summary>
+        internal static string UnsupportedEndpointFilterItemType {
+            get {
+                return ResourceManager.GetString("UnsupportedEndpointFilterItemType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter type is not supported. Supported type is &apos;Include&apos;..
+        /// </summary>
+        internal static string UnsupportedEndpointFilterType {
+            get {
+                return ResourceManager.GetString("UnsupportedEndpointFilterType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource type is not supported for endpoint with filter. Supported type is &apos;workspace&apos;. Please set Log analytics workspace resource ID in resourceID field..
+        /// </summary>
+        internal static string UnsupportedEndpointTypeForEndpointWithFilter {
+            get {
+                return ResourceManager.GetString("UnsupportedEndpointTypeForEndpointWithFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method in HTTPConfiguration is not supported. Valid values are &apos;GET&apos; and &apos;POST&apos;..
+        /// </summary>
+        internal static string UnsupportedHTTPMethod {
+            get {
+                return ResourceManager.GetString("UnsupportedHTTPMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Either TCP, HTTP or ICMP protocol should be defined..
+        /// </summary>
+        internal static string UnsupportedProtocolConfigurationType {
+            get {
+                return ResourceManager.GetString("UnsupportedProtocolConfigurationType", resourceCulture);
             }
         }
         
@@ -1227,6 +1569,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string WorkspaceResourceId {
             get {
                 return ResourceManager.GetString("WorkspaceResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WorkspaceResourceId must be provided in connection monitor output..
+        /// </summary>
+        internal static string WorkspaceResourceIdIsNotProvidedInConnectionMonitorOutput {
+            get {
+                return ResourceManager.GetString("WorkspaceResourceIdIsNotProvidedInConnectionMonitorOutput", resourceCulture);
             }
         }
     }
