@@ -57,15 +57,51 @@ csproj: Azs.AzureBridge.Admin.csproj
 psd1: Azs.AzureBridge.Admin.psd1
 psm1: Azs.AzureBridge.Admin.psm1
 
-directive:
+directive:  
+  # Add AzureBridge prefix to subjects to match existing method names
   - where:
-      model-name: ActivationResource
+      subject: Activation
     set:
-      suppress-format: true
+      subject-prefix: AzureBridge
+  - where:
+      subject: DownloadedProduct
+    set:
+      subject-prefix: AzureBridge
+  - where:
+      subject: Product
+    set:
+      subject-prefix: AzureBridge
+
+  # Add alias for ResourceGroup to ResourceGroupName
+  - where:
+      parameter-name: ResourceGroup
+    set:
+      alias: ResourceGroupName
+
+  # Add alias for ProductName to Name
   - where:
         parameter-name: ProductName
     set:
         alias: Name
+
+  # Rename DownloadProduct to AzureBridgeProductDownload
+  - where:
+      verb: Invoke
+      subject: DownloadProduct
+    set:
+      subject: AzureBridgeProductDownload
+
+  # Remove cmdlets that don't exist in AzureRm module
+  - where:
+      verb: Set
+    remove: true.
+  - where:
+      verb: New
+    remove: true.
+  - where:
+      verb: Remove
+      subject: Activation
+    remove: true.
 
 subject-prefix: ''
 module-version: 0.0.1
