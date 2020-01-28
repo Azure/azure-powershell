@@ -111,7 +111,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             AzureAvailabilityGroupListenerModel agListener = model.FirstOrDefault();
             var loadBalancerConfiguration = agListener.LoadBalancerConfigurations.FirstOrDefault();
             loadBalancerConfiguration.SqlVirtualMachineInstances = this.SqlVirtualMachineId;
-
             updateData.Add(agListener);
             return updateData;
         }
