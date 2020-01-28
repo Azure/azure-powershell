@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Updating Microsoft.Azure.Management.StorageSync 4.0.0 
+
 ## Version 1.2.2
 * Update references in .psd1 to use relative path
 
