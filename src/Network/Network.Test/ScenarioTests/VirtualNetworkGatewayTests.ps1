@@ -1114,7 +1114,7 @@ function Test-DisconnectVNGVpnConnection
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 		Assert-AreEqual "Succeeded" $actual.ProvisioningState
 		
-        $expected = Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $rname -VpnConnectionIds @("IKEv2_1e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
+        $expected = Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $rname -VpnConnectionId @("IKEv2_1e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
         Assert-AreEqual $expected.Name $actual.Name
 	}
 	finally

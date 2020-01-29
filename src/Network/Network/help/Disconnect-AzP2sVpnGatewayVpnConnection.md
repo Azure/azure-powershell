@@ -15,17 +15,17 @@ Disconnect given connected vpn client connections with a given p2s vpn gateway
 ### ByP2SVpnGatewayName (Default)
 ```
 Disconnect-AzP2sVpnGatewayVpnConnection -Name <String> -ResourceGroupName <String>
- -VpnConnectionIds <VpnConnectionId> [<CommonParameters>]
+ -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayObject
 ```
-Disconnect-AzP2sVpnGatewayVpnConnection -InputObject <PSP2SVpnGateway> -VpnConnectionIds <VpnConnectionId> [<CommonParameters>]
+Disconnect-AzP2sVpnGatewayVpnConnection -InputObject <PSP2SVpnGateway> -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayResourceId
 ```
-Disconnect-AzP2sVpnGatewayVpnConnection -ResourceId <String> -VpnConnectionIds <VpnConnectionId> [<CommonParameters>]
+Disconnect-AzP2sVpnGatewayVpnConnection -ResourceId <String> -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ The **Disconnect-AzP2sVpnGatewayVpnConnection** cmdlet enables you to disconnect
 
 ### Example 1
 ```powershell
-PS C:\> Disconnect-AzP2sVpnGatewayVpnConnection -ResourceName 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -VpnConnectionIds @("IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
+PS C:\> Disconnect-AzP2sVpnGatewayVpnConnection -ResourceName 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -VpnConnectionId @("IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
 
 ResourceGroupName              : P2SCortexGATesting
 Name                           : 683482ade8564515aed4b8448c9757ea-westus-gw
@@ -97,13 +97,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VpnConnectionIds
+### -VpnConnectionId
 Vpn Connection Ida
 
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: VpnConnectionIds
+Aliases: VpnConnectionId
 
 Required: True
 Position: Named
