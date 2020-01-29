@@ -1054,7 +1054,7 @@
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>TagsTable</Label>
+                <Label>Tags</Label>
                 <PropertyName>TagsTable</PropertyName>
               </ListItem>
               <ListItem>
