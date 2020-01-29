@@ -1,4 +1,8 @@
 ## 3.4.0 - February 2020
+### Highlights since the last major release
+* Az.CosmosDB initial version 0.1.0 released
+* Az.Network ConnectionMonitor V2 support added
+
 #### Az.Accounts
 * Disable context auto saving when AzureRmContext.json not available
 * Update the reference to Azure Powershell Common to 1.3.5-preview
