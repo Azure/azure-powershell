@@ -70,60 +70,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There might be rollouts or topologies referencing the artifact source {0}. Are you sure you want to remove the artifact source?.
-        /// </summary>
-        internal static string ConfirmRemoveArtifactSource {
-            get {
-                return ResourceManager.GetString("ConfirmRemoveArtifactSource", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the rollout {0}?.
-        /// </summary>
-        internal static string ConfirmRemoveRollout {
-            get {
-                return ResourceManager.GetString("ConfirmRemoveRollout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the service {0}?.
-        /// </summary>
-        internal static string ConfirmRemoveService {
-            get {
-                return ResourceManager.GetString("ConfirmRemoveService", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the service unit {0}?.
-        /// </summary>
-        internal static string ConfirmRemoveServiceUnit {
-            get {
-                return ResourceManager.GetString("ConfirmRemoveServiceUnit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the step {0}?.
-        /// </summary>
-        internal static string ConfirmRemoveStep {
-            get {
-                return ResourceManager.GetString("ConfirmRemoveStep", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the topology {0}?.
-        /// </summary>
-        internal static string ConfirmRemoveTopology {
-            get {
-                return ResourceManager.GetString("ConfirmRemoveTopology", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to restart the rollout {0} and re-run all the steps from the start? If you want to skip all the steps that succeeded on the previous attempt, enter No and pass the SkipSucceeded parameter..
         /// </summary>
         internal static string ConfirmRestartRollout {
@@ -183,6 +129,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         internal static string CreateStep {
             get {
                 return ResourceManager.GetString("CreateStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The health check properties file path &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string HealthCheckPropertiesFileNotFound {
+            get {
+                return ResourceManager.GetString("HealthCheckPropertiesFileNotFound", resourceCulture);
             }
         }
         
