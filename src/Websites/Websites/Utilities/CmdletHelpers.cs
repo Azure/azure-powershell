@@ -594,5 +594,13 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 }
             }            
         }
+
+        internal static IDictionary ConvertHashtableToDictionary(Hashtable Tags)
+        {
+            if (Tags != null)
+                return Tags.Cast<DictionaryEntry>().ToDictionary(d => d.Key.ToString(), d => d.Value.ToString());
+            else
+                return null;
+        }
     }
 }

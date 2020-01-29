@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 7, Mandatory = false, HelpMessage = "Tags are name/value pairs that enable you to categorize resources")]
-        public IDictionary<string, string> Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Sku = sku,
                 PerSiteScaling = PerSiteScaling,
                 IsXenon = HyperV.IsPresent,
-                Tags = Tags
+                Tags = (IDictionary<string, string>)CmdletHelpers.ConvertHashtableToDictionary(Tags)
             };
 
             AppServicePlan retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName);
