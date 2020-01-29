@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdnwafmatchcondition
 schema: 2.0.0
 ---
 
@@ -23,6 +23,13 @@ The **New-AzCdnWafMatchCondition** cmdlet creates an Azure Content Delivery Netw
 WebApplication Firewall (WAF) match condition locally, for use in creating a rule.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> $condition = New-AzCdnWafMatchCondition -MatchVariable RequestHeader -Selector Etag -Operator LessThan -MatchValue "1" -Transform Trim
+```
+
+Saves a match condition which matches requests with an Etag header that is missing, empty, or contains only white space.
 
 ## PARAMETERS
 

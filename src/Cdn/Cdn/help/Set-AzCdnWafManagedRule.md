@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/set-azcdnwafmanagedrule
 schema: 2.0.0
 ---
 
@@ -24,10 +24,10 @@ Set-AzCdnWafManagedRule -RuleId <String> [-Enabled] [-Action <PSActionType>]
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $rule1 = New-AzCdnWafManagedRule -RuleId 942480 -Enabled -Action Redirect
 ```
 
-{{ Add example description here }}
+Saves a managed rule which changes rule 942480 to redirect instead of block for use in a managed rule set. 
 
 ## PARAMETERS
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdnwafratelimitrule
 schema: 2.0.0
 ---
 
@@ -23,6 +23,14 @@ The **New-AzCdnWafRateLimitRule** cmdlet creates an Azure Content Delivery Netwo
 Application Firewall (WAF) rate limit rule locally, for use in creating a policy.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> $rateLimitRule1 = New-AzCdnWafRateLimitRule -RateLimitRuleName example-limit -Priority 5 -MatchCondition $condition -Action Redirect -RateLimitThreshold 100 -RateLimitDurationInMinutes 1
+```
+
+Saves a custom rule named `redirect-rule` that redirects requests matching `$condition` with priority 10 for use in
+creating a CDN WAF policy.
 
 ## PARAMETERS
 

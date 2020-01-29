@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdnwafmanagedruleset
 schema: 2.0.0
 ---
 
@@ -23,6 +23,13 @@ The **New-AzCdnWafManagedRuleSet** cmdlet creates an Azure Content Delivery Netw
 Application Firewall (WAF) managed rule set locally, for use in creating a policy.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> $ruleSet = New-AzCdnWafManagedRuleSet -RuleSetType DefaultRuleSet -RuleSetVersion "1.0"
+```
+
+Saves a managed rule set which enables all rules in DefaultRuleSet_1.0 for use in creating a CDN WAF policy.
 
 ## PARAMETERS
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnwafpolicy
 schema: 2.0.0
 ---
 
@@ -28,6 +28,13 @@ The **Get-AzCdnWafPolicy** cmdlet gets an Azure Content Delivery Network (CDN) W
 Firewall (WAF) policy and its associated configuration data.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> Get-AzCdnWafPolicy -ResourceGroupName example-group
+```
+
+Lists all CDN WAF policies in the resource group `example-group`.
 
 ## PARAMETERS
 

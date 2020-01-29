@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnwafmanagedruleset
 schema: 2.0.0
 ---
 
@@ -22,6 +22,13 @@ The **Get-AzCdnWafManagedRuleSet** cmdlet gets a single Azure Content Delivery N
 or lists all available managed rule sets.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> Get-AzCdnWafManagedRuleSet
+```
+
+Lists all available managed rule sets that can be added to CDN WAF policies.
 
 ## PARAMETERS
 

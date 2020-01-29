@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/set-azcdnwafmanagedrulegroup
 schema: 2.0.0
 ---
 
@@ -31,10 +31,10 @@ Set-AzCdnWafManagedRuleGroup -RuleGroupName <String> [-DisableAll] [-DefaultProf
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $ruleGroup = New-AzCdnWafManagedRuleGroup -RuleGroupName SQLI -RuleOverride $rule1
 ```
 
-{{ Add example description here }}
+Saves a managed rule group which overrides a rule in the SQLI group.
 
 ## PARAMETERS
 

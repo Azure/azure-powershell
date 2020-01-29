@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/remove-azcdnwafpolicy
 schema: 2.0.0
 ---
 
@@ -34,6 +34,13 @@ Remove-AzCdnWafPolicy -CdnWafPolicy <PSPolicy> [-PassThru] [-Force] [-DefaultPro
 The **Remove-AzCdnWafPolicy** cmdlet removes a Azure Content Delivery Network (CDN) Web Application Firewall (WAF) policy.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> Remove-AzCdnWafPolicy -ResourceGroupName example-group -PolicyName ExamplePolicy
+```
+
+Deletes a CDN WAF policy named `ExamplePolicy` in the resource group `example-group`.
 
 ## PARAMETERS
 

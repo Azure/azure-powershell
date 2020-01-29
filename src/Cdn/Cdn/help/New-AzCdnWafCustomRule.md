@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdnwafcustomrule
 schema: 2.0.0
 ---
 
@@ -23,6 +23,14 @@ The **New-AzCdnWafCustomRule** cmdlet creates an Azure Content Delivery Network 
 Application Firewall (WAF) custom rule locally, for use in creating a policy.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> $customRule1 = New-AzCdnWafCustomRule -CustomRuleName redirect-rule -Priority 10 -MatchCondition $condition -Action Redirect
+```
+
+Saves a custom rule named `redirect-rule` that redirects requests matching `$condition` with priority 10 for use in
+creating a CDN WAF policy.
 
 ## PARAMETERS
 

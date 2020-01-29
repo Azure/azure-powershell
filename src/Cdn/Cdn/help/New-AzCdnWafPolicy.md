@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdnwafpolicy
 schema: 2.0.0
 ---
 
@@ -34,6 +34,14 @@ New-AzCdnWafPolicy -ResourceId <String> [-Tag <Hashtable>] [-Disable] [-Mode <PS
 The **New-AzCdnWafPolicy** cmdlet creates an Azure Content Delivery Network (CDN) Web Application Firewall (WAF) policy.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> New-AzCdnWafPolicy -ResourceGroupName example-group -PolicyName ExamplePolicy -DefaultRedirectUrl "https://example.com" -CustomRule $customRule1, $customRule2 -ManagedRuleSet $ruleSet
+```
+
+Creates a CDN WAF policy named `ExamplePolicy` in the resource group `example-group` with a redirect URL
+`https://example.com`, two custom rules, and a managed rule set.
 
 ## PARAMETERS
 
