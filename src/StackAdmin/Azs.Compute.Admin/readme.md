@@ -51,7 +51,7 @@ require:
   - $(repo)/specification/azsadmin/resource-manager/compute/readme.azsautogen.md
   - $(repo)/specification/azsadmin/resource-manager/compute/readme.md
 
-subject-prefix: ''
+subject-prefix: 'Compute'
 module-version: 0.0.1
 
 ### File Renames 
