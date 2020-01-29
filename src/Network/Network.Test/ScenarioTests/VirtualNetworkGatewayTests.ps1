@@ -1085,7 +1085,7 @@ function Test-DisconnectVNGVpnConnection
     $vnetName = Get-ResourceName
     $publicIpName = Get-ResourceName
     $vnetGatewayConfigName = Get-ResourceName
-    $rglocation = "eastus2euap"
+    $rglocation = "East US"
     $location = $rglocation
 
 	try 
