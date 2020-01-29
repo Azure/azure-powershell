@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.replicationStartTime =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(() => this.ReplicationStartTime))
-                    ? this.replicationStartTime
+                    ? this.ReplicationStartTime
                     : replicationProviderSettings.OnlineReplicationStartTime;
             this.recoveryAzureStorageAccountId =
                 this.MyInvocation.BoundParameters.ContainsKey(
@@ -428,7 +428,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.compression =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(() => this.Compression)) ? this.Compression
-                    : replicationProviderSettings.Compression;
+                    : replicationProviderSettings.Compression == Constants.Disabled ? Constants.Disable
+                    : Constants.Enable;
             this.replicationPort =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(() => this.ReplicationPort)) ? this.ReplicationPort
@@ -451,12 +452,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.replicationStartTime =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(() => this.ReplicationStartTime))
-                    ? this.replicationStartTime
+                    ? this.ReplicationStartTime
                     : replicationProviderSettings.OnlineReplicationStartTime;
             this.replicaDeletion =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(() => this.ReplicaDeletion)) ? this.ReplicaDeletion
-                    : replicationProviderSettings.ReplicaDeletionOption;
+                    : replicationProviderSettings.ReplicaDeletionOption == Constants.SecondaryVMOnRecoveryCloud ? Constants.Required
+                    : Constants.NotRequired;
 
             var updatePolicyProperties = new UpdatePolicyInputProperties();
 
