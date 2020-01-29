@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Changes inNew-AzPublicIpPrefix and New-AzPublicIpAddress
+    - Location parameter shown as mandatory in both cmdlets
+    - Name parameter made mandatory for New-AzPublicIpAddress
 * New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
 
 ## Version 2.2.1
