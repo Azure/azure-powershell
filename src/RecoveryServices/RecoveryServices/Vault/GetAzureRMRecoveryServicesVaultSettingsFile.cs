@@ -235,7 +235,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 // Upload cert into ID Mgmt
                 WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadingCertToIdmgmt));
-                var bytes = Encoding.ASCII.GetBytes(certificate);
+                X509Certificate2 x509 = new X509Certificate2();
+                byte[] data = Convert.FromBase64String(certificate);
+                x509.Import(data);
+                var bytes = x509.RawData;
                 var certificateArgs = new CertificateRequest
                 {
                     Properties = new RawCertificateData {Certificate = bytes, AuthType = AuthType.AAD}
@@ -304,7 +307,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 var fullFilePath = System.IO.Path.Combine(filePath, fileName);
                 // Upload cert into ID Mgmt
                 WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadingCertToIdmgmt));
-                var bytes = Encoding.ASCII.GetBytes(certificate);
+                X509Certificate2 x509 = new X509Certificate2();
+                byte[] data = Convert.FromBase64String(certificate);
+                x509.Import(data);
+                var bytes = x509.RawData;
                 var certificateArgs = new CertificateRequest
                 {
                     Properties = new RawCertificateData {Certificate = bytes, AuthType = AuthType.AAD}
