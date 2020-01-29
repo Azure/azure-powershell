@@ -73,6 +73,12 @@ directive:
       subject: (Location)
     remove: true.
 
+    # Rename ResourceName parameter to Name
+  - where:
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+
     # Default to Format-List for the Quota commandlets as there are many important fields
   - where:
       model-name: Quota
