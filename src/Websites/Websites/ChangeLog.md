@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Adding Tag parameter for New-AzAppServicePlan and Set-AzAppServicePlan &
  Stop executing if an exception is thrown when adding a custom domain to a website.
+ Adding operations for App Services not in the same resource group as the App Service Plan.
 * Set-AzWebapp and Set-AzWebappSlot supports AlwaysOn, MinTls and FtpsState properties
 * Fixing issue where setting HttpsOnly along with changing AppservicePlan at the same time using the single Set-AzWebApp Command, was resetting HttpsOnly to default value
 
