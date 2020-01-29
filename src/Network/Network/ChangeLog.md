@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 
-## Version 2.2.2
+## Version 2.3.0
 * New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
 * Add support for assigning management IP configuration to Azure Firewall - a dedicated subnet and Public IP that the firewall will use for its management traffic
     - Updated New-AzFirewall cmdlet:
@@ -33,6 +33,7 @@
         - New-AzApplicationGatewayRewriteRuleUrlConfiguration
     - Cmdlets updated with optional parameter - UrlConfiguration
         - New-AzApplicationGatewayRewriteRuleActionSet
+* Add suppport for NetworkWatcher ConnectionMonitor version 2 resources
 
 ## Version 2.2.1
 * Upgrade dependancy of Microsoft.Azure.Management.Sql from 1.36-preview to 1.37-preview
