@@ -34,10 +34,11 @@ output-folder: .
 > Directives
 ``` yaml
 directive:
-    # Remove cmdlets for /operations call
+  ## Remove cmdlets for /operations call
   - where:
       subject: Operation
     remove: true
+  ## Set default parameter value
   - where:
       parameter-name: SubscriptionId
     set:
@@ -47,9 +48,10 @@ directive:
       parameter-name: Location
     set:
       default:
-        script: '(Get-AzLocation)[0].Name'
+        script: '(Get-AzLocation)[0].Location'
+  ## variant removal (parameter InputObject) from all New cmdlets -- parameter sets CreateViaIdentity and CreateViaIdentityExpanded
   - where:
-      parameter-name: ResourceName
-    set:
-      parameter-name: Name
+      verb: New
+      variant: ^CreateViaIdentity(.*)
+    remove: true
 ```

@@ -241,11 +241,6 @@ directive:
       parameter-name: Subscription
     set:
       parameter-name: UserSubscriptionId
-## variant removal (parameter InputObject) from all New cmdlets -- parameter sets CreateViaIdentity and CreateViaIdentityExpanded
-  - where:
-      verb: New
-      variant: ^CreateViaIdentity(.*)
-    remove: true
 ## hide autorest generated cmdlet to use the custom one
   - where:
       verb: New

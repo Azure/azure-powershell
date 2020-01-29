@@ -2,7 +2,7 @@ $global:SkippedTests = @(
 )
 
 # Multiple tests
-$global:Location = (Get-AzLocation)[0].Name
+$global:Location = (Get-AzLocation)[0].Location
 $global:ResourceGroupName = "system." + "$($global:Location)"
 
 # Acquired plan tests
