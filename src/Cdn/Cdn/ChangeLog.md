@@ -19,7 +19,9 @@
 -->
 
 ## Upcoming Release
-* Display error response deatil in New-AzCdnEndpoint cmdlet
+
+## Version 1.4.2
+* Display error response detail in New-AzCdnEndpoint cmdlet
 
 ## Version 1.4.1
 * Update references in .psd1 to use relative path
