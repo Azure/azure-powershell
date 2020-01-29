@@ -13,7 +13,7 @@ Disconnect given connected vpn client connections with a given virtual network g
 ## SYNTAX
 
 ```
-Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceName <String> -ResourceGroupName <String> -InputObject <PSVirtualNetworkGateway> -ResourceId <ResourceId> -VpnConnectionIds <VpnConnectionIds> [-AsJob] [<CommonParameters>]
+Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceName <String> -ResourceGroupName <String> -InputObject <PSVirtualNetworkGateway> -ResourceId <ResourceId> -VpnConnectionId <VpnConnectionIds> [-AsJob] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ The **Disconnect-AzVirtualNetworkGatewayVpnConnection** cmdlet enables you to di
 
 ### Example
 ```
-PS C:\> Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceName vnet-gw -ResourceGroupName vnetgwrg -VpnConnectionIds @("IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
+PS C:\> Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceName vnet-gw -ResourceGroupName vnetgwrg -VpnConnectionId @("IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
 
 ```
 
@@ -74,13 +74,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VpnConnectionIds
+### -VpnConnectionId
 Vpn Connection Ids
 
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: VpnConnectionIds
+Aliases: VpnConnectionId
 
 Required: True
 Position: Named

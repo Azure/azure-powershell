@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Commands.Network
         
         [Parameter(
             Mandatory = true,
-            HelpMessage = "P2S Vpn gateway gateway Vpn connection Ids, which are returned by getting P2S Vpn gateway detailed connection health")]
+            HelpMessage = "P2S Vpn gateway gateway Vpn connection Id, which is returned by getting P2S Vpn gateway detailed connection health")]
         [ValidateNotNullOrEmpty] 
-        public string[] VpnConnectionIds { get; set; }
+        public string[] VpnConnectionId { get; set; }
 
         public override void Execute()
         {
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.P2SVpnGatewayNotFound);
             }
 
-            var req = new P2SVpnConnectionRequest(new List<string>(VpnConnectionIds));
+            var req = new P2SVpnConnectionRequest(new List<string>(VpnConnectionId));
             this.P2SVpnGatewayClient.DisconnectP2sVpnConnections(ResourceGroupName, Name, req);
 
             WriteObject(existingP2SVpnGateway);
