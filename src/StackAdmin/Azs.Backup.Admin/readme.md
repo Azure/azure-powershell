@@ -102,7 +102,7 @@ directive:
       parameter-name: ResourceGroupName
     set:
       default:
-        script: '"system.$((Get-AzLocation)[0].Name)"'
+        script: '"system.$((Get-AzLocation)[0].Location)"'
 
     # Rename parameter Backup to Name
   - where:
