@@ -57,16 +57,32 @@ csproj: Azs.AzureBridge.Admin.csproj
 psd1: Azs.AzureBridge.Admin.psd1
 psm1: Azs.AzureBridge.Admin.psm1
 
-directive:
-  - where:
-      model-name: ActivationResource
-    set:
-      suppress-format: true
+directive:  
+  # Add alias for ProductName to Name
   - where:
         parameter-name: ProductName
     set:
         alias: Name
 
-subject-prefix: ''
+  # Rename DownloadProduct to ProductDownload
+  - where:
+      verb: Invoke
+      subject: DownloadProduct
+    set:
+      subject: ProductDownload
+
+  # Remove cmdlets that don't exist in AzureRm module
+  - where:
+      verb: Set
+    remove: true.
+  - where:
+      verb: New
+    remove: true.
+  - where:
+      verb: Remove
+      subject: Activation
+    remove: true.
+
+subject-prefix: AzureBridge
 module-version: 0.0.1
 ```
