@@ -1,4 +1,8 @@
 ## 3.4.0 - February 2020
+### Highlights since the last major release
+* Az.CosmosDB initial version 0.1.0 released
+* Az.Network ConnectionMonitor V2 support added
+
 #### Az.Accounts
 * Disable context auto saving when AzureRmContext.json not available
 * Update the reference to Azure Powershell Common to 1.3.5-preview
@@ -33,8 +37,18 @@
 
 #### Az.Network
 * New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
+* Add support for assigning management IP configuration to Azure Firewall - a dedicated subnet and Public IP that the firewall will use for its management traffic
+    - Updated New-AzFirewall cmdlet:
+        - Added parameter -ManagementPublicIpAddress (not mandatory) which accepts a Public IP Address object
+        - Added method SetManagementIpConfiguration on firewall object - requires a subnet and a Public IP address as input - subnet name must be 'AzureFirewallManagementSubnet'
 * Corrected Get-AzNetworkSecurityGroup examples to show examples for NSG's instead of network interfaces.
 * Fixed typo in New-AzureRmVpnSite command that was preventing resource id completer from completing a parameter.
+* Added support for Url Confiugration in Rewrite Rules Action Set in the Application Gateway
+    - New cmdlets added:
+        - New-AzApplicationGatewayRewriteRuleUrlConfiguration
+    - Cmdlets updated with optional parameter - UrlConfiguration
+        - New-AzApplicationGatewayRewriteRuleActionSet
+* Add suppport for NetworkWatcher ConnectionMonitor version 2 resources
 
 #### Az.PolicyInsights
 * Support evaluating compliance prior to determining what resource to remediate
@@ -49,6 +63,9 @@
 #### Az.Resources
 * Make -Scope optional in *-AzPolicyAssignment cmdlets with default to context subscription
 * Add examples of creating ADServicePrincipal with password and key credential
+
+#### Az.Sql
+Fix New-AzSqlDatabaseSecondary cmdlet to check for PartnerDatabaseName existence instead of DatabaseName existence.
 
 #### Az.Storage
 * Support set Table/Queue Encryption Keytype in Create Storage Account
