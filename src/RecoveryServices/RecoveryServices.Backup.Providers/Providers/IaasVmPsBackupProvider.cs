@@ -91,7 +91,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string sourceResourceId = null;
 
             AzureVmPolicy azureVmPolicy = (AzureVmPolicy)ProviderData[ItemParams.Policy];
-            ValidateProtectedItemCount(azureVmPolicy);
+            if (azureVmPolicy != null)
+            {
+                ValidateProtectedItemCount(azureVmPolicy);
+            }
 
             if (itemBase == null)
             {
@@ -129,6 +132,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     sourceResourceId = iaasVmProtectableItem.VirtualMachineId;
                 }
             }
+            else if(parameterSetName.Contains("Disk") && parameterSetName.Contains("Modify"))
+            {
+                isComputeAzureVM = IsComputeAzureVM(item.VirtualMachineId);
+                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+                containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+                protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+                sourceResourceId = item.SourceResourceId;
+            }
             else
             {
                 ValidateAzureVMWorkloadType(item.WorkloadType, policy.WorkloadType);
@@ -153,7 +164,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 properties = new AzureIaaSComputeVMProtectedItem();
             }
 
-            properties.PolicyId = policy.Id;
+            if(policy != null)
+            {
+                properties.PolicyId = policy.Id;
+            }
+            else
+            {
+                properties.PolicyId = item.PolicyId;
+            }
             properties.SourceResourceId = sourceResourceId;
 
             ExtendedProperties extendedProperties = null;
@@ -1187,6 +1205,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     IaaSVMProtectableItem iaaSVMProtectableItem =
                         (IaaSVMProtectableItem)protectableItem.Properties;
+
                     if (iaaSVMProtectableItem != null &&
                         string.Compare(iaaSVMProtectableItem.FriendlyName, vmName, true) == 0
                         && iaaSVMProtectableItem.VirtualMachineId.IndexOf(virtualMachineId,
