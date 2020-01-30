@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                if (!OriginalWorkloadRestore.IsPresent && !AlternateWorkloadRestore.IsPresent)
+                if (!OriginalWorkloadRestore.IsPresent && !AlternateWorkloadRestore.IsPresent && !RestoreAsFiles.IsPresent)
                 {
                     throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreLocationException));
                 }
@@ -261,6 +261,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     azureWorkloadRecoveryConfig.ContainerId = (TargetContainer as AzureVmWorkloadContainer).Id;
+                    azureWorkloadRecoveryConfig.RestoreRequestType = "Alternate WL Restore";
                     azureWorkloadRecoveryConfig.RecoveryMode = "FileRecovery";
                     azureWorkloadRecoveryConfig.FilePath = FilePath;
                 }
