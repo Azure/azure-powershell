@@ -68,6 +68,7 @@ PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -Wo
 
 The first command gets the container of type AzureStorage, and then stores it in the $Container variable.
 The second command gets the Backup item whose friendlyName matches the value passed in FriendlyName Parameter, and then stores it in the $BackupItem variable.
+Using FriendlyName parameter can result in returning more than one Azure File Share. In such cases use -Name parameter with parameter value as the Name property returned in $BackupItem variable.
 
 ## PARAMETERS
 
