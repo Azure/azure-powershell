@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                     int.TryParse(Regex.Match(AppServicePlan.Sku.Name, @"\d+").Value, out workerSizeAsNumber);
                     AppServicePlan.Sku.Name = string.IsNullOrWhiteSpace(WorkerSize) ? CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, workerSizeAsNumber) : CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, WorkerSize);
                     AppServicePlan.PerSiteScaling = PerSiteScaling;
-                    AppServicePlan.Tags = (IDictionary<string, string>)CmdletHelpers.ConvertHashtableToDictionary(Tags);
+                    AppServicePlan.Tags = (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tags);
                     break;
             }
 

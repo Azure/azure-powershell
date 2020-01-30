@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Sku = sku,
                 PerSiteScaling = PerSiteScaling,
                 IsXenon = HyperV.IsPresent,
-                Tags = (IDictionary<string, string>)CmdletHelpers.ConvertHashtableToDictionary(Tags)
+                Tags = (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tags)
             };
 
             AppServicePlan retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName);
