@@ -51,9 +51,24 @@ require:
   - $(repo)/specification/azsadmin/resource-manager/fabric/readme.md
 
 input-file:
-  # (TODO) Add Compute and Network swagger files
-  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/FileShare.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/EdgeGateway.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/EdgeGatewayPool.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/Fabric.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/FabricLocation.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/InfraRole.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/InfraRoleInstance.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/IpPool.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/LogicalNetwork.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/LogicalSubnet.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/MacAddressPool.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/NetworkOperationResults.json
   - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/ScaleUnit.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/ScaleUnitNode.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/SlbMuxInstance.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/StorageOperationResults.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/StoragePool.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/StorageSystem.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/FileShare.json
   - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2018-10-01/StorageSubSystem.json
   - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2019-05-01/Drive.json
   - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2019-05-01/Volume.json
@@ -75,6 +90,48 @@ directive:
     set:
       default:
         script: -join("System.",(Get-AzLocation)[0].Name)
+
+  # Rename Invoke-ScaleUnitOut to Add-AzsScaleUnitNode
+  - where:
+      verb: Invoke
+      subject: ScaleUnitOut
+    set:
+      verb: Add
+      subject: ScaleUnitNode
+
+  # Rename Start-AzsScaleUnitNodeMaintenanceMode to Disable-AzsScaleUnitNode
+  - where:
+      verb: Start
+      subject: ScaleUnitNodeMaintenanceMode
+    set:
+      verb: Disable
+      subject: ScaleUnitNode
+
+  # Rename Stop-AzsScaleUnitNodeMaintenanceMode to Enable-AzsScaleUnitNode
+  - where:
+      verb: Stop
+      subject: ScaleUnitNodeMaintenanceMode
+    set:
+      verb: Enable
+      subject: ScaleUnitNode
+
+  # Rename Get-AzsFabricLocation to Get-AzsInfrastructureLocation
+  - where:
+      subject: FabricLocation
+    set:
+      subject: InfrastructureLocation
+
+  # Rename Restart-AzsInfraRole to Restart-AzsInfrastructureRole
+  - where:
+      subject: InfraRole
+    set:
+      subject: InfrastructureRole
+
+  # Rename Get-AzsInfraRole to Get-AzsInfrastructureRoleInstance
+  - where:
+      subject: InfraRoleInstance
+    set:
+      subject: InfrastructureRoleInstance
 
   # Rename Get-AzsFileShare to Get-AzsInfrastructureShare
   - where:
@@ -171,6 +228,34 @@ directive:
   - where:
       verb: Get
       subject: Volume
+    hide: true
+
+  # Hide the auto-generated Set-AzsIPPool and expose it through customized one
+  - where:
+      verb: Set
+      subject: IPPool
+    hide: true
+
+  # Hide the auto-generated Get-AzsFabricOperation and expose it through customized one
+  - where:
+      verb: Get
+      subject: FabricOperation
+    hide: true
+
+  # Hide the auto-generated Get-AzsNetworkOperationResult and expose it through customized one
+  - where:
+      verb: Get
+      subject: NetworkOperationResult
+    hide: true
+
+  # Hide the auto-generated Get-AzsStorageOperationResult and expose it through customized one
+  - where:
+      subject: StorageOperationResult
+    hide: true
+
+  # Hide the auto-generated New-AzsScaleUnitFromJson and expose it through customized one
+  - where:
+      subject: ScaleUnitFromJson
     hide: true
 
 subject-prefix: ''
