@@ -17,14 +17,7 @@ using Microsoft.Azure.Commands.WebApps.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.WebSites.Models;
-using System;
 using Microsoft.Azure.Commands.WebApps.Utilities;
-using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
-using System.ComponentModel;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -76,8 +69,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = "Allow or Deny rule.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Allow", "Deny")]
-        [DefaultValue("Allow")]
-        public string Action { get; set; }
+        public string Action { get; set; } = "Allow";
 
         [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = "Deployment Slot name.")]
         [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = "Deployment Slot name.")]

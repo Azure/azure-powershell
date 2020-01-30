@@ -17,9 +17,7 @@ using Microsoft.Azure.Commands.WebApps.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
-using System.ComponentModel;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -47,8 +45,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "Allow or Deny rule.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Allow", "Deny")]
-        [DefaultValue("Allow")]
-        public string Action { get; set; }
+        public string Action { get; set; } = "Allow";
 
         [Parameter(Mandatory = false, HelpMessage = "Rule is aimed for Main site or Scm site.")]
         [ValidateNotNullOrEmpty]
