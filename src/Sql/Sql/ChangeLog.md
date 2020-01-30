@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Added support for cross subscription point in time restore on Managed Instances.
 
+## Version 2.2.0
+Fix New-AzSqlDatabaseSecondary cmdlet to check for PartnerDatabaseName existence instead of DatabaseName existence.
+
 ## Version 2.1.2
 * Fix vulnerability assessment set baseline cmdlets functionality to work on master db for azure database and limit it on managed instance system databases.
 * Fix an error when creating SQL instance failover group
