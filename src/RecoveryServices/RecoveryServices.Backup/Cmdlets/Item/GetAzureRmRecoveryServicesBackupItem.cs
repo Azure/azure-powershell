@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Friendly Name of the item, Applicable only in case of Azure File Share item.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 7, HelpMessage = ParamHelpMsgs.Item.FriendlyName)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.FriendlyName)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
 

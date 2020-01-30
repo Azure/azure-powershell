@@ -58,6 +58,17 @@ PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -Wo
 The first command gets the container of type AzureVM, and then stores it in the $Container variable.
 The second command gets the Backup item named V2VM in $Container, and then stores it in the $BackupItem variable.
 
+### Example 2: Get an Azure File Share Item from FriendlyName
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -Name "StorageAccount1" -VaultId $vault.ID
+PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "FileShareName"
+```
+
+The first command gets the container of type AzureStorage, and then stores it in the $Container variable.
+The second command gets the Backup item whose friendlyName matches the value passed in FriendlyName Parameter, and then stores it in the $BackupItem variable.
+
 ## PARAMETERS
 
 ### -BackupManagementType
