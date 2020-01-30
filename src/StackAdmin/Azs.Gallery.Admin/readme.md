@@ -1,6 +1,6 @@
 <!-- region Generated -->
 # Azs.Gallery.Admin
-This directory contains the PowerShell module for the GalleryAdmin service.
+This directory contains the PowerShell module for the Gallery service.
 
 ---
 ## Status
@@ -42,23 +42,51 @@ In this directory, run AutoRest:
 > `autorest`
 
 ---
+
 ### AutoRest Configuration
+
 > see https://aka.ms/autorest
 
 ``` yaml
 require:
   - $(this-folder)/../readme.azurestack.md
-  - $(repo)/specification/azsadmin/resource-manager/gallery/readme.md
 
 input-file:
   - $(repo)/specification/azsadmin/resource-manager/gallery/Microsoft.Gallery.Admin/preview/2015-04-01/Gallery.json
   - $(repo)/specification/azsadmin/resource-manager/gallery/Microsoft.Gallery.Admin/preview/2015-04-01/GalleryItem.json
+```
+
+### File Renames
+
+```yaml
+module-name: Azs.Gallery.Admin
+csproj: Azs.Gallery.Admin.csproj
+psd1: Azs.Gallery.Admin.psd1
+psm1: Azs.Gallery.Admin.psm1
+```
+
+### Parameter default values
+
+``` yaml
+directive:
+## variant removal (parameter InputObject) from all New cmdlets -- parameter sets CreateViaIdentity and CreateViaIdentityExpanded
+  - where:
+      verb: New
+      variant: ^CreateViaIdentity(.*)
+    remove: true
+
+  - where:
+      model-name: GalleryItem
+    set:
+      format-table:
+        properties:
+          - Name
+          - Publisher
+          - PublisherDisplayName
+          - ItemName
+          - ItemDisplayName
+          - Version
+          - Summary
 
 subject-prefix: ''
 module-version: 0.0.1
-
-### File Renames 
-module-name: Azs.Gallery.Admin 
-csproj: Azs.Gallery.Admin.csproj 
-psd1: Azs.Gallery.Admin.psd1 
-psm1: Azs.Gallery.Admin.psm1
