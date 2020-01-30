@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureWorkloadSQLRestoreRequest.RecoveryType =
                     string.Compare(wLRecoveryConfig.RestoreRequestType, "Original WL Restore") == 0 ?
                     RecoveryType.OriginalLocation : RecoveryType.AlternateLocation;
-                if (azureWorkloadSQLRestoreRequest.RecoveryType == RecoveryType.AlternateLocation && wLRecoveryConfig.RecoveryMode == "FileRecovery")
+                if (azureWorkloadSQLRestoreRequest.RecoveryType == RecoveryType.AlternateLocation)
                 {
                     azureWorkloadSQLRestoreRequest.TargetInfo = new TargetRestoreInfo()
                     {
@@ -403,6 +403,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
                 if (wLRecoveryConfig.RecoveryMode == "FileRecovery")
                 {
+                    azureWorkloadSQLRestoreRequest.RecoveryMode = "FileRecovery";
                     azureWorkloadSQLRestoreRequest.TargetInfo = new TargetRestoreInfo()
                     {
                         OverwriteOption = string.Compare(wLRecoveryConfig.OverwriteWLIfpresent, "No") == 0 ?
@@ -426,7 +427,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureWorkloadSQLPointInTimeRestoreRequest.RecoveryType =
                     string.Compare(wLRecoveryConfig.RestoreRequestType, "Original WL Restore") == 0 ?
                     RecoveryType.OriginalLocation : RecoveryType.AlternateLocation;
-                if (azureWorkloadSQLPointInTimeRestoreRequest.RecoveryType == RecoveryType.AlternateLocation && wLRecoveryConfig.RecoveryMode == "FileRecovery")
+                if (azureWorkloadSQLPointInTimeRestoreRequest.RecoveryType == RecoveryType.AlternateLocation)
                 {
                     azureWorkloadSQLPointInTimeRestoreRequest.TargetInfo = new TargetRestoreInfo()
                     {
@@ -440,6 +441,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 if (wLRecoveryConfig.RecoveryMode == "FileRecovery")
                 {
+                    azureWorkloadSQLPointInTimeRestoreRequest.RecoveryMode = "FileRecovery";
                     azureWorkloadSQLPointInTimeRestoreRequest.TargetInfo = new TargetRestoreInfo()
                     {
                         OverwriteOption = string.Compare(wLRecoveryConfig.OverwriteWLIfpresent, "No") == 0 ?
