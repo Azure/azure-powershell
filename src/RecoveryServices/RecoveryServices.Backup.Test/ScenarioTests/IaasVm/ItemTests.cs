@@ -121,5 +121,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMSetVaultProperty");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
+        public void TestAzureVMDiskExclusion()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMDiskExclusion");
+        }
     }
 }

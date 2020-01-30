@@ -142,11 +142,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
 
         [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
-            HelpMessage = "")]
+            HelpMessage = "Restore OS Disk only")]
         public SwitchParameter RestoreOnlyOSDisk { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
-            HelpMessage = "")]
+            HelpMessage = "Specify disk list to be restored")]
         public string[] RestoreDiskList { get; set; }
 
 
