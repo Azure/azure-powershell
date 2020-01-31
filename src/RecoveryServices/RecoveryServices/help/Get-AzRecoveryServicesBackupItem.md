@@ -18,23 +18,23 @@ Gets the items from a container in Backup.
 ```
 Get-AzRecoveryServicesBackupItem [-Container] <ContainerBase> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
- [-WorkloadType] <WorkloadType> [[-DeleteState] <ItemDeleteState>] [[-FriendlyName] <String>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-WorkloadType] <WorkloadType> [[-DeleteState] <ItemDeleteState>] [-FriendlyName <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetItemsForVault
 ```
 Get-AzRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementType> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
- [-WorkloadType] <WorkloadType> [[-DeleteState] <ItemDeleteState>] [[-FriendlyName] <String>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-WorkloadType] <WorkloadType> [[-DeleteState] <ItemDeleteState>] [-FriendlyName <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetItemsForPolicy
 ```
 Get-AzRecoveryServicesBackupItem [-Policy] <PolicyBase> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
- [[-DeleteState] <ItemDeleteState>] [[-FriendlyName] <String>] [-VaultId <String>]
+ [[-DeleteState] <ItemDeleteState>] [-FriendlyName <String>] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -160,7 +160,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
