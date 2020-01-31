@@ -54,6 +54,7 @@ PS C:\>$api.ApiVersion = "v1"
 PS C:\>$api.ApiVersionSetDescription = $versionSet.Description
 PS C:\>Set-AzApiManagementApi -InputObject $api -PassThru
 ```
+
 This example adds an API to an existing API Version Set
 
 ### Example 3 Change the Backend ServiceUrl where the API is pointing to
@@ -62,6 +63,7 @@ PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Defa
 PS C:\>$updatedApiServiceUrl = "http://newechoapi.cloudapp.net/updateapi"
 PS C:\>$updatedApi = Set-AzApiManagementApi -Context $ApiMgmtContext -ApiId $echoApiId -ServiceUrl $updatedApiServiceUrl
 ```
+
 This example updates the ServiceUrl the `echo-api` is pointing to.
 
 ## PARAMETERS
