@@ -584,12 +584,9 @@
     <value>Do you want to proceed?</value>
   </data>
   <data name="ChangingHardwareFamilyIsIrreversable" xml:space="preserve">
-    <value>For this update operation provided compute generation parameter is Gen5. Once the hardware generation is upgraded, it is not possible to switch back to Gen4 compute generation as this hardware is being deprecated.</value>
+    <value>For this update operation provided compute generation parameter is '{0}'. Once the hardware generation is upgraded, it is not possible to switch back to Gen4 compute generation as this hardware is being deprecated.</value>
   </data>
   <data name="CannotChangeHardwareFamily" xml:space="preserve">
     <value>You cannot change hardware family.</value>
-  </data>
-  <data name="InvalidManagedInstanceSkuName" xml:space="preserve">
-    <value>Provided SkuName '{0}' is invalid '{1}'. Please enter a valid SkuName value and execute command again.</value>
   </data>
 </root>

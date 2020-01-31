@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For this update operation provided compute generation parameter is Gen5. Once the hardware generation is upgraded, it is not possible to switch back to Gen4 compute generation as this hardware is being deprecated..
+        ///   Looks up a localized string similar to For this update operation provided compute generation parameter is &apos;{0}&apos;. Once the hardware generation is upgraded, it is not possible to switch back to Gen4 compute generation as this hardware is being deprecated..
         /// </summary>
         internal static string ChangingHardwareFamilyIsIrreversable {
             get {
@@ -552,15 +552,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string InvalidKeyId {
             get {
                 return ResourceManager.GetString("InvalidKeyId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Provided SkuName &apos;{0}&apos; is invalid &apos;{1}&apos;. Please enter a valid SkuName value and execute command again..
-        /// </summary>
-        internal static string InvalidManagedInstanceSkuName {
-            get {
-                return ResourceManager.GetString("InvalidManagedInstanceSkuName", resourceCulture);
             }
         }
         
