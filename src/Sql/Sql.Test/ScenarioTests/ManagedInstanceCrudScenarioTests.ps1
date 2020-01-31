@@ -190,40 +190,35 @@ function Test-SetManagedInstance
 		Assert-AreEqual $managedInstance4.ProxyOverride $proxyOverride
 		Assert-StartsWith ($managedInstance4.ManagedInstanceName + ".") $managedInstance4.FullyQualifiedDomainName
 
-		# Test hardware generation change using SkuName
+		# Test hardware generation change using ComputeGeneration
 		$credentials = Get-ServerCredential
-		$skuName = "GP_Gen5"
+		$computeGeneration = "Gen5"
 
 		$managedInstance5 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
-			-SkuName $skuName -Force
+			-ComputeGeneration $computeGeneration -Force
 
 		Assert-AreEqual $managedInstance5.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance5.AdministratorLogin $managedInstance.AdministratorLogin
 		Assert-AreEqual $managedInstance5.VCores $managedInstance4.VCores
 		Assert-AreEqual $managedInstance5.StorageSizeInGB $managedInstance4.StorageSizeInGB
-		Assert-AreEqual $managedInstance5.Sku.Name $skuName
+		Assert-AreEqual $managedInstance5.Sku.Tier $managedInstance4.Sku.Tier
+		Assert-AreEqual $managedInstance5.Sku.Family $computeGeneration
 		Assert-StartsWith ($managedInstance5.ManagedInstanceName + ".") $managedInstance5.FullyQualifiedDomainName
 
-		# Drop test instance becuase its hardware generation cannot be changed to Gen4.
-		Remove-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName -Force
-
-		# Create new managed instance on Gen4 hardware
-		$managedInstance6 = Create-ManagedInstanceForTest $rg $subnetId
-
-		# Test hardware generation change using ComputeGeneration
+		# Test edition change using Edition
 		$credentials = Get-ServerCredential
-		$skuName = "GP_Gen5"
-		$computeGeneration = "Gen5"
+		$edition = "BusinessCritical"
 
-		$managedInstance7 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance6.ManagedInstanceName `
-			-ComputeGeneration $computeGeneration -Force
+		$managedInstance6 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
+			-Edition $edition -Force
 
-		Assert-AreEqual $managedInstance7.ManagedInstanceName $managedInstance6.ManagedInstanceName
-		Assert-AreEqual $managedInstance7.AdministratorLogin $managedInstance6.AdministratorLogin
-		Assert-AreEqual $managedInstance7.VCores $managedInstance6.VCores
-		Assert-AreEqual $managedInstance7.StorageSizeInGB $managedInstance6.storageSizeInGB
-		Assert-AreEqual $managedInstance7.Sku.Name $skuName
-		Assert-StartsWith ($managedInstance7.ManagedInstanceName + ".") $managedInstance7.FullyQualifiedDomainName
+		Assert-AreEqual $managedInstance6.ManagedInstanceName $managedInstance5.ManagedInstanceName
+		Assert-AreEqual $managedInstance6.AdministratorLogin $managedInstance5.AdministratorLogin
+		Assert-AreEqual $managedInstance6.VCores $managedInstance5.VCores
+		Assert-AreEqual $managedInstance6.StorageSizeInGB $managedInstance5.StorageSizeInGB
+		Assert-AreEqual $managedInstance6.Sku.Tier $edition
+		Assert-AreEqual $managedInstance6.Sku.Family $managedInstance5.Sku.Family
+		Assert-StartsWith ($managedInstance6.ManagedInstanceName + ".") $managedInstance6.FullyQualifiedDomainName
 	}
 	finally
 	{
