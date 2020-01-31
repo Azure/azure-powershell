@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.6.0
 * Azure Backup Added filtering of backup item based on friendly name.
 
 ## Version 2.5.0
