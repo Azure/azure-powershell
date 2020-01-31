@@ -97,11 +97,12 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return CmdletHelpers.CreateHostingEnvironmentProfile(WrappedWebsitesClient.SubscriptionId, resourceGroupName, aseResourceGroupName, aseName);
         }
 
-        public void UpdateWebApp(string resourceGroupName, string location, string webAppName, string slotName, string appServicePlan, Site siteEnvelope =null)
+        public void UpdateWebApp(string resourceGroupName, string location, string webAppName, string slotName, string appServicePlan, Site siteEnvelope =null,string appServicePlanRg=null)
         {
             var webSiteToUpdate = new Site()
             {
-                ServerFarmId = appServicePlan,
+                //Condition added to send full qualified ServerFarmId if ASP and WebApp are under different  RGs.
+                ServerFarmId = (string.IsNullOrEmpty(appServicePlanRg)&&resourceGroupName != appServicePlanRg) ? appServicePlan : siteEnvelope.ServerFarmId,
                 Location = location,
                 Tags = siteEnvelope?.Tags
             };
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
 
             // make sure the serverfarm ID is nt overwritten to the old value
-            if (appServicePlan != null)
+            if (appServicePlan != null && (string.IsNullOrEmpty(appServicePlanRg) && resourceGroupName != appServicePlanRg))
             {
                 webSiteToUpdate.ServerFarmId = appServicePlan;
             }
@@ -150,6 +151,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 catch (Exception e)
                 {
                     WriteWarning("Could not set custom hostname '{0}'. Details: {1}", hostName, e.ToString());
+                    return;
                 }
             }
 
