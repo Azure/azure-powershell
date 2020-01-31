@@ -73,4 +73,93 @@ directive:
     set:
       default:
         script: -join("System.",(Get-AzLocation)[0].Name)
+  - where:
+      model-name: Alert
+    set:
+      format-table:
+        properties:
+          - Title
+          - State
+          - Severity
+          - ImpactedResourceDisplayName
+          - CreatedTimestamp
+          - ClosedTimestamp
+        labels:
+          ImpactedResourceDisplayName: Impacted Resource
+          CreatedTimestamp: Created
+          ClosedTimestamp: Closed
+        width:
+          Title: 24
+          State: 10
+          Severity: 10
+          ImpactedResourceDisplayName: 24
+          CreateTimestamp: 20
+          ClosedTimestamp: 20
+  - where:
+      model-name: ServiceHealth
+    set:
+      format-table:
+        properties:
+          - DisplayName
+          - HealthState
+          - AlertSummaryCriticalAlertCount
+          - AlertSummaryWarningAlertCount
+        labels:
+          HealthState: Health State
+          AlertSummaryCriticalAlertCount: Alert Critical Summary
+          AlertSummaryWarningAlertCount: Alert Warning Summary
+        width:
+          DisplayName: 24
+          HealthState: 20
+          AlertSummaryCriticalAlertCount: 17
+          AlertSummaryWarningAlertCount: 17
+  - where:
+      model-name: ResourceHealth
+    set:
+      format-table:
+        properties:
+          - ResourceDisplayName
+          - HealthState
+          - AlertSummaryCriticalAlertCount
+          - AlertSummaryWarningAlertCount
+        labels:
+          ResourceDisplayName: Resource
+          HealthState: Health
+          AlertSummaryCriticalAlertCount: Alert Critical Summary
+          AlertSummaryWarningAlertCount: Alert Warning Summary
+        width:
+          Resource: 45
+          Health: 10
+          AlertSummaryCriticalAlertCount: 17
+          AlertSummaryWarningAlertCount: 17
+  - where:
+      model-name: RegionHealth
+    set:
+      format-table:
+        properties:
+          - Name
+          - AlertSummaryCriticalAlertCount
+          - AlertSummaryWarningAlertCount
+          - UsageMetric
+        labels:
+          AlertSummaryCriticalAlertCount: Alert Critical Summary
+          AlertSummaryWarningAlertCount: Alert Warning Summary
+          UsageMetric: UsageMetrics
+        width:
+          Name: 16
+          AlertSummaryCriticalAlertCount: 15
+          AlertSummaryWarningAlertCount: 15
+          UsageMetric: 30
+  - where:
+      model-name: UsageMetrics
+    set:
+      format-table:
+        properties:
+          - Name
+          - metricsvalue
+        labels:
+          metricsvalue: Capacity Metrics
+        width:
+          Name: 30
+          UsageMetric: 50
 ```
