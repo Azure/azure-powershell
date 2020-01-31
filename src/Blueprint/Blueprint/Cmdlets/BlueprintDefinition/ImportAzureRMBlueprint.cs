@@ -39,6 +39,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNullOrEmpty]
         public string InputPath { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.ImportBlueprintParameterSet, Mandatory = false, HelpMessage = ParameterHelpMessages.ImportIncludeSubFolders)]
+        public SwitchParameter IncludeSubFolders { get; set; }
+
         [Parameter(ParameterSetName = ParameterSetNames.ImportBlueprintParameterSet, Mandatory = false, HelpMessage = ParameterHelpMessages.ForceHelpMessage)]
         public SwitchParameter Force { get; set; }
 
@@ -56,7 +59,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 : Utils.GetScopeForSubscription(SubscriptionId ?? DefaultContext.Subscription.Id);
           
             ImportBlueprint(Name, scope, InputPath, Force);
-            ImportArtifacts(Name, scope, InputPath);
+            ImportArtifacts(Name, scope, InputPath, IncludeSubFolders);
 
             if (PassThru.IsPresent)
             {
