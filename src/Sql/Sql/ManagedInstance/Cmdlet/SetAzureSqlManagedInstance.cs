@@ -286,7 +286,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            System.Diagnostics.Debugger.Launch();
             if (!Force.IsPresent && !ShouldContinue(
                string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlInstanceDescription, this.Name),
                string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlInstanceWarning, this.Name)))
