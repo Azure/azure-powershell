@@ -16,6 +16,8 @@ $containerName = "psbvtsqlvm"
 $resourceGroupName = "pstestwlRG1bca8"
 $vaultName = "pstestwlRSV1bca8"
 $resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pscloudtestrg/providers/Microsoft.Compute/virtualMachines/psbvtsqlvm"
+$filepath = "C:\"
+$restoreAsFilesVault = "iaasvmsqlworkloadexistingvault1"
 $resourceIdForFileDB = $resourceId
 $policyName = "HourlyLogBackup"
 $instanceName = "sqlinstance;mssqlserver"
@@ -602,4 +604,51 @@ function Test-AzureVmWorkloadFullRestoreWithFiles
 	{
 			Cleanup-Vault $vault $item $container
 	}
+}
+
+function Test-AzureVmWorkloadRestoreAsFiles
+{
+	$vault = Get-AzRecoveryServicesVault -Name $restoreAsFilesVault
+	
+	$container = Get-AzRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-ContainerType "AzureVMAppContainer";
+
+	$item = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-BackupManagementType "AzureWorkload" `
+		-WorkloadType "MSSQL";
+
+	$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $item
+	$time = get-date -Year 2020 -Month 1 -Day 30 -Minute 5
+	$config = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
+		-VaultId $vault.ID -PointInTime $time -Item $item -RestoreAsFiles `
+		-FilePath $filepath -TargetContainer $container -FromFull $rp[3];
+
+	$restorejob1 = Restore-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-WLRecoveryConfig $config | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID;
+
+	Assert-True { $restorejob1.Status -eq "Completed" }
+
+	$config = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
+		-VaultId $vault.ID -RecoveryPoint $rp[0] -Item $item -RestoreAsFiles `
+		-FilePath $filepath -TargetContainer $container;
+
+	$restorejob2 = Restore-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-WLRecoveryConfig $config | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+
+	Assert-True { $restorejob2.Status -eq "Completed" }
+
+	$config = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
+		-VaultId $vault.ID -PointInTime $time -Item $item -RestoreAsFiles `
+		-FilePath $filepath -TargetContainer $container;
+
+	$restorejob3 = Restore-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-WLRecoveryConfig $config | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+
+	Assert-True { $restorejob3.Status -eq "Completed" }
+
 }

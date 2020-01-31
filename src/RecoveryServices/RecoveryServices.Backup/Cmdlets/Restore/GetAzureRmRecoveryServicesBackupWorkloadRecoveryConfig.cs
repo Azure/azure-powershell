@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Specify Recovery point from which logs will be applies
         /// </summary>
         [Parameter(Mandatory = false)]
-        public RecoveryPointBase FromFul { get; set; }
+        public RecoveryPointBase FromFull { get; set; }
 
         /// <summary>
         /// Specify Recovery point from which logs will be applies
@@ -264,6 +264,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     azureWorkloadRecoveryConfig.RestoreRequestType = "Alternate WL Restore";
                     azureWorkloadRecoveryConfig.RecoveryMode = "FileRecovery";
                     azureWorkloadRecoveryConfig.FilePath = FilePath;
+                    azureWorkloadRecoveryConfig.FullRP = FromFull;
                 }
                 RecoveryConfigBase baseobj = azureWorkloadRecoveryConfig;
                 WriteObject(baseobj);
@@ -447,6 +448,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 restoreRequestType = "Alternate WL Restore";
                 targetServer = TargetContainer.Name;
+                if(recoveryPoint == null && FromFull == null)
+                {
+                    Models.AzureWorkloadRecoveryPoint azureWorkloadRecoveryPoint = new Models.AzureWorkloadRecoveryPoint()
+                    {
+                        Id = Item.Id + "/recoveryPoints/DefaultRangeRecoveryPoint",
+                        RecoveryPointId = "DefaultRangeRecoveryPoint"
+                    };
+                    recoveryPoint = azureWorkloadRecoveryPoint;
+                }
+                else if(FromFull != null)
+                {
+                    recoveryPoint = FromFull;
+                }
             }
 
             return new AzureWorkloadRecoveryConfig(targetServer, parentName, restoreRequestType, recoveryPoint, pointInTime);
