@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Backup Added filtering of backup item based on friendly name.
 
 ## Version 2.5.0
 * Azure Site Recovery support for removing a replicated disk.
