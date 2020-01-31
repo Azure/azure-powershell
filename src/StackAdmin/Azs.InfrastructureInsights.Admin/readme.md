@@ -72,7 +72,17 @@ directive:
       parameter-name: ResourceGroupName
     set:
       default:
-        script: -join("System.",(Get-AzLocation)[0].Name)
+        script: -join("System.",(Get-AzLocation)[0].Location)
+  - where:
+      verb: Get
+      subject: ServiceHealth
+    set:
+      subject: RPHealth
+  - where:
+      verb: Get
+      subject: ResourceHealth
+    set:
+      subject: RegistrationHealth
   - where:
       model-name: Alert
     set:
