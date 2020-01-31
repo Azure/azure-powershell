@@ -570,18 +570,38 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSConnectionMonitorSource, MNM.ConnectionMonitorSource>();
                 cfg.CreateMap<CNM.PSConnectionMonitorDestination, MNM.ConnectionMonitorDestination>();
                 cfg.CreateMap<CNM.PSConnectionMonitorParameters, MNM.ConnectionMonitorParameters>();
-                cfg.CreateMap<CNM.PSConnectionMonitorResult, MNM.ConnectionMonitorResult>();
                 cfg.CreateMap<CNM.PSConnectionMonitorQueryResult, MNM.ConnectionMonitorQueryResult>();
                 cfg.CreateMap<CNM.PSConnectionStateSnapshot, MNM.ConnectionStateSnapshot>();
+                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorEndpointObject, MNM.ConnectionMonitorEndpoint>();
+                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorEndpointFilter, MNM.ConnectionMonitorEndpointFilter>();
+                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorEndpointFilterItem, MNM.ConnectionMonitorEndpointFilterItem>();
+                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorTestConfigurationObject, MNM.ConnectionMonitorTestConfiguration>();
+                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorTcpConfiguration, MNM.ConnectionMonitorTcpConfiguration>();
+                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorIcmpConfiguration, MNM.ConnectionMonitorIcmpConfiguration>();
+                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorHttpConfiguration, MNM.ConnectionMonitorHttpConfiguration>();
+                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorSuccessThreshold, MNM.ConnectionMonitorSuccessThreshold>();
+                cfg.CreateMap<CNM.PSHTTPHeader, MNM.HTTPHeader>();
+                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorTestGroupObject, MNM.ConnectionMonitorTestGroup>();
+                cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorOutputObject, MNM.ConnectionMonitorOutput>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ConnectionMonitor, CNM.PSConnectionMonitor>();
                 cfg.CreateMap<MNM.ConnectionMonitorSource, CNM.PSConnectionMonitorSource>();
                 cfg.CreateMap<MNM.ConnectionMonitorDestination, CNM.PSConnectionMonitorDestination>();
                 cfg.CreateMap<MNM.ConnectionMonitorParameters, CNM.PSConnectionMonitorParameters>();
-                cfg.CreateMap<MNM.ConnectionMonitorResult, CNM.PSConnectionMonitorResult>();
                 cfg.CreateMap<MNM.ConnectionMonitorQueryResult, CNM.PSConnectionMonitorQueryResult>();
                 cfg.CreateMap<MNM.ConnectionStateSnapshot, CNM.PSConnectionStateSnapshot>();
+                cfg.CreateMap<MNM.ConnectionMonitorEndpoint, CNM.PSNetworkWatcherConnectionMonitorEndpointObject>();
+                cfg.CreateMap<MNM.ConnectionMonitorEndpointFilter, CNM.PSNetworkWatcherConnectionMonitorEndpointFilter>();
+                cfg.CreateMap<MNM.ConnectionMonitorEndpointFilterItem, CNM.PSNetworkWatcherConnectionMonitorEndpointFilterItem>();
+                cfg.CreateMap<MNM.ConnectionMonitorTestConfiguration, CNM.PSNetworkWatcherConnectionMonitorTestConfigurationObject>();
+                cfg.CreateMap<MNM.ConnectionMonitorTcpConfiguration, CNM.PSNetworkWatcherConnectionMonitorTcpConfiguration>();
+                cfg.CreateMap<MNM.ConnectionMonitorIcmpConfiguration, CNM.PSNetworkWatcherConnectionMonitorIcmpConfiguration>();
+                cfg.CreateMap<MNM.ConnectionMonitorHttpConfiguration, CNM.PSNetworkWatcherConnectionMonitorHttpConfiguration>();
+                cfg.CreateMap<MNM.ConnectionMonitorSuccessThreshold, CNM.PSNetworkWatcherConnectionMonitorSuccessThreshold>();
+                cfg.CreateMap<MNM.HTTPHeader, CNM.PSHTTPHeader>();
+                cfg.CreateMap<MNM.ConnectionMonitorTestGroup, CNM.PSNetworkWatcherConnectionMonitorTestGroupObject>();
+                cfg.CreateMap<MNM.ConnectionMonitorOutput, CNM.PSNetworkWatcherConnectionMonitorOutputObject>();
 
                 // NetworkConfigurationDiagnostic
                 // CNM to MNM
@@ -907,6 +927,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayRewriteRule, MNM.ApplicationGatewayRewriteRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayRewriteRuleActionSet, MNM.ApplicationGatewayRewriteRuleActionSet>();
                 cfg.CreateMap<CNM.PSApplicationGatewayHeaderConfiguration, MNM.ApplicationGatewayHeaderConfiguration>();
+                cfg.CreateMap<CNM.PSApplicationGatewayUrlConfiguration, MNM.ApplicationGatewayUrlConfiguration>();
                 cfg.CreateMap<CNM.PSApplicationGatewayRewriteRuleCondition, MNM.ApplicationGatewayRewriteRuleCondition>();
                 cfg.CreateMap<CNM.PSApplicationGatewayAuthenticationCertificate, MNM.ApplicationGatewayAuthenticationCertificate>();
                 cfg.CreateMap<CNM.PSApplicationGatewayTrustedRootCertificate, MNM.ApplicationGatewayTrustedRootCertificate>();
@@ -969,6 +990,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ApplicationGatewayRewriteRule, CNM.PSApplicationGatewayRewriteRule>();
                 cfg.CreateMap<MNM.ApplicationGatewayRewriteRuleActionSet, CNM.PSApplicationGatewayRewriteRuleActionSet>();
                 cfg.CreateMap<MNM.ApplicationGatewayHeaderConfiguration, CNM.PSApplicationGatewayHeaderConfiguration>();
+                cfg.CreateMap<MNM.ApplicationGatewayUrlConfiguration, CNM.PSApplicationGatewayUrlConfiguration>();
                 cfg.CreateMap<MNM.ApplicationGatewayRewriteRuleCondition, CNM.PSApplicationGatewayRewriteRuleCondition>();
                 cfg.CreateMap<MNM.ApplicationGatewayAuthenticationCertificate, CNM.PSApplicationGatewayAuthenticationCertificate>();
                 cfg.CreateMap<MNM.ApplicationGatewayTrustedRootCertificate, CNM.PSApplicationGatewayTrustedRootCertificate>();
