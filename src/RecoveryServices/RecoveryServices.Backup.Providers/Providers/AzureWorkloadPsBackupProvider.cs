@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (AzureWorkloadRecoveryConfig)ProviderData[RestoreWLBackupItemParams.WLRecoveryConfig];
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
 
-            if (wLRecoveryConfig.RecoveryPoint.ContainerName != null)
+            if (wLRecoveryConfig.RecoveryPoint.ContainerName != null && wLRecoveryConfig.FullRP == null)
             {
                 AzureWorkloadSQLRestoreRequest azureWorkloadSQLRestoreRequest =
                     new AzureWorkloadSQLRestoreRequest();
