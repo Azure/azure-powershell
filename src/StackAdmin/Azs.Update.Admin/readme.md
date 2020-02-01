@@ -72,7 +72,17 @@ directive:
       parameter-name: ResourceGroupName
     set:
       default:
-        script: -join("System.",(Get-AzLocation)[0].Name)
+        script: -join("System.",(Get-AzLocation)[0].Location)
+  - where:
+      verb: Add
+    set:
+      verb: Install
+  - where:
+      verb: Invoke
+      subject: RerunUpdateRun
+    set:
+      verb: Resume
+      subject: UpdateRun
   - where:
       subject: Update 
       parameter-name: Location
