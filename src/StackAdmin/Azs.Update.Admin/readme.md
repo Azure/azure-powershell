@@ -72,7 +72,7 @@ directive:
       parameter-name: ResourceGroupName
     set:
       default:
-        script: -join("System.",(Get-AzLocation)[0].Name)
+        script: -join("System.",(Get-AzLocation)[0].Location)
   - where:
       verb: Add
     set:
