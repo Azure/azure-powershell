@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.0
 * Add Name alias to VaultName attribute to make Remove-AzureKeyVault consistent with New-AzureKeyVault.
 
 ## Version 1.4.0
