@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// Private Ip Address
         /// </summary>
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = HelpMessages.PrivateIpAddressHelpMessage)]
         public string IpAddress { get; private set; }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// Private Ip Address
         /// </summary>
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = HelpMessages.SubnetIdHelpMessage)]
         public string SubnetId { get; private set; }
 
