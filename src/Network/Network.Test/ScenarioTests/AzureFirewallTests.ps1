@@ -1367,4 +1367,3 @@ function Test-AzureFirewallPrivateRangeCRUD {
         Clean-ResourceGroup $rgname
     }
 }
-
