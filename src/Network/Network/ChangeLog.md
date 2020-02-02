@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Support Azure Firewall Policy on VNet Firewalls
+        - No new cmdlets are added. Relaxing the restriction for firewall policy on VNet firewalls
 
 ## Version 2.2.0
 * Update references in .psd1 to use relative path
