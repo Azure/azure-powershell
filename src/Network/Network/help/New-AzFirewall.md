@@ -183,6 +183,20 @@ New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -Virt
 
 This example creates a Firewall that treats "99.99.99.0/24" and "66.66.0.0/16" as private ip ranges and won't snat traffic to those addresses
 
+
+### 12:  Create a Firewall with Firewall Policy attached to a virtual network
+```
+$rgName = "resourceGroupName"
+$vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
+$pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
+$fp = Get-AzFirewallPolicy -ResourceGroupName $rgName -Name "fp"
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -FirewallPolicyId $fp
+```
+
+This example creates a Firewall attached to virtual network "vnet" in the same resource group as the firewall.
+The rules and threat intelligence that will be applied to the firewall will be taken from the firewall policy
+
+
 ## PARAMETERS
 
 ### -ApplicationRuleCollection
