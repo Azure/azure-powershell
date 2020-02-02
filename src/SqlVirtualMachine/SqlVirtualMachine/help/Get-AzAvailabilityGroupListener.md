@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/get-azavailabilitygrouplistener
 schema: 2.0.0
 ---
 
@@ -45,6 +45,7 @@ Name         ResourceGroupName GroupName    AvailabilityGroupName
 AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
 
 This command gets information about the Availability Group Listener AgListener01 in the SQL Virtual Machine Group SqlVmGroup01 and Resource Group ResourceGroup01.
+
 ### Example 2
 ```powershell
 PS C:\> Get-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01
@@ -56,6 +57,7 @@ AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
 AgListener02 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
 
 This command gets information about all Availability Group Listeners in the SQL Virtual Machine Group SqlVmGroup01 and Resource Group ResourceGroup01.
+
 ### Example 3
 ```powershell
 PS C:\> $SqlVmGroupObject = Get-AzSqlVMGroup -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01
