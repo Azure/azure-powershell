@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     /// <summary>
     /// This class implements the Get-AzAvailabilityGroupListener cmdlet. It will retrieve the information relative to one or more Availability Group Listener on Azure.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilityGroupListener", DefaultParameterSetName = ParameterSet.Name)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilityGroupListener", DefaultParameterSetName = ParameterSet.Name, ConfirmImpact = ConfirmImpact.None)]
     [OutputType(typeof(AzureAvailabilityGroupListenerModel))]
     public class GetAzureAvailabilityGroupListener : AzureAvailabilityGroupListenerCmdletBase
     {
