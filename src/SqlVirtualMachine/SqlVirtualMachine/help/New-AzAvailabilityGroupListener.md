@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/get-azsqlvmgroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/new-azavailabilitygrouplistener
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Creates a new Availability Group Listener.
 ### Name (Default)
 ```
 New-AzAvailabilityGroupListener -AvailabilityGroupName <String> [-Port <Int32>]
- -LoadBalancerResourceId <String> -IpAddress <String> -SubnetId <String> -ProbePort <Int32>
+ -LoadBalancerResourceId <String> [-IpAddress <String>] [-SubnetId <String>] -ProbePort <Int32>
  [-PublicIpAddressResourceId <String>] [-AsJob] -SqlVirtualMachineId <String[]> [-ResourceGroupName] <String>
  [-SqlVMGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -24,7 +24,7 @@ New-AzAvailabilityGroupListener -AvailabilityGroupName <String> [-Port <Int32>]
 ### SqlVmGroupObject
 ```
 New-AzAvailabilityGroupListener -AvailabilityGroupName <String> [-Port <Int32>]
- -LoadBalancerResourceId <String> -IpAddress <String> -SubnetId <String> -ProbePort <Int32>
+ -LoadBalancerResourceId <String> [-IpAddress <String>] [-SubnetId <String>] -ProbePort <Int32>
  [-PublicIpAddressResourceId <String>] [-AsJob] -SqlVirtualMachineId <String[]>
  [-SqlVMGroupObject] <AzureSqlVMGroupModel> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -101,7 +101,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -251,7 +251,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
