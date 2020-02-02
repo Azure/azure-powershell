@@ -33,6 +33,11 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         public string PartnerServerName { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the secondary
+        /// </summary>
+        public string PartnerDatabaseName { get; set; }
+
+        /// <summary>
         /// Get or sets the AllowConnections setting for the Replication Link
         /// </summary>
         public AllowConnections AllowConnections { get; set; }

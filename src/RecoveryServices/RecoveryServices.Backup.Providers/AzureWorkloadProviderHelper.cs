@@ -152,18 +152,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string itemName,
             string vaultName,
             string resourceGroupName,
-            Action<CmdletModel.ItemBase, ProtectedItemResource> extendedInfoProcessor)
+            Action<CmdletModel.ItemBase, ProtectedItemResource> extendedInfoProcessor, string friendlyName = null)
         {
             List<ProtectedItemResource> protectedItemGetResponses =
                 new List<ProtectedItemResource>();
 
-            if (!string.IsNullOrEmpty(itemName))
+            if (!string.IsNullOrEmpty(itemName) || !string.IsNullOrEmpty(friendlyName))
             {
                 protectedItems = protectedItems.Where(protectedItem =>
                 {
                     Dictionary<CmdletModel.UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
+
                     string protectedItemUri = HelperUtils.GetProtectedItemUri(dictionary, protectedItem.Id);
-                    return protectedItemUri.ToLower().Contains(itemName.ToLower());
+
+                    bool filteredByUniqueName = itemName != null && (protectedItemUri.ToLower().Contains(itemName.ToLower()) );
+                    bool filteredByFriendlyName = false;
+
+                    if (protectedItem.Properties.BackupManagementType == "AzureStorage" && protectedItem.Properties.WorkloadType == "AzureFileShare")
+                    {
+
+                        string protectedItemFriendlyName = (protectedItem.Properties as AzureFileshareProtectedItem).FriendlyName;
+                        filteredByUniqueName = filteredByUniqueName || ( itemName != null && protectedItemFriendlyName.ToLower() == itemName.ToLower() );
+                        filteredByFriendlyName = friendlyName != null && protectedItemFriendlyName.ToLower() == friendlyName.ToLower();
+                    }
+
+                    return filteredByUniqueName || filteredByFriendlyName;
                 }).ToList();
 
                 ODataQuery<GetProtectedItemQueryObject> getItemQueryParams =
@@ -184,6 +197,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     protectedItemGetResponses.Add(getResponse.Body);
                 }
             }
+
 
             List<CmdletModel.ItemBase> itemModels = ConversionHelpers.GetItemModelList(protectedItems);
 
