@@ -1290,8 +1290,8 @@ function Test-AzureFirewallWithFirewallPolicyCRUD {
         # Get the AzureFirewallPolicy
         $getazureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
 
+        $azureFirewallPolicyId = $getazureFirewallPolicy.Id
 
-        # Create AzureFirewall (with no rules, ThreatIntel is in Alert mode by default)
         $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -FirewallPolicyId $azureFirewallPolicyId
 
         # Get AzureFirewall
