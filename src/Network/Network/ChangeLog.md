@@ -23,6 +23,7 @@
 * Added Packet Capture example for capture all inner and outer packets in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
 * Support Azure Firewall Policy on VNet Firewalls
     - No new cmdlets are added. Relaxing the restriction for firewall policy on VNet firewalls
+
 ## Version 2.3.0
 * New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
 * Add support for assigning management IP configuration to Azure Firewall - a dedicated subnet and Public IP that the firewall will use for its management traffic
