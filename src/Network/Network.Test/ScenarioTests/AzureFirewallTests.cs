@@ -89,14 +89,6 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallCRUDwithManagementIpConfig");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
-        public void TestAzureFirewallWithFirewallPolicyCRUD()
-        {
-            TestRunner.RunTestScript("Test-AzureFirewallWithFirewallPolicyCRUD");
-        }
         
     }
 }
