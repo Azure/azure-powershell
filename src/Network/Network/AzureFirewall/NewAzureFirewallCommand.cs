@@ -281,7 +281,6 @@ namespace Microsoft.Azure.Commands.Network
                     Sku = sku
                 };
 
-
                 if (this.Zone != null)
                 {
                     firewall.Zones = this.Zone?.ToList();
