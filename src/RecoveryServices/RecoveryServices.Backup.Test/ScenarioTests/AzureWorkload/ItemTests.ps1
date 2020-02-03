@@ -619,7 +619,7 @@ function Test-AzureVmWorkloadRestoreAsFiles
 		-BackupManagementType "AzureWorkload" `
 		-WorkloadType "MSSQL";
 
-	$endtime = get-date -Year 2020 -Month 2 -Day 1 -Minute 5 -Hour 5 -Second 15
+	$endtime = get-date -Year 2020 -Month 2 -Day 1 -Minute 35 -Hour 10 -Second 15
 	$endtime = $endtime.ToUniversalTime()
 	$starttime = $endtime.AddDays(-30)
 	$starttime = $starttime.ToUniversalTime()
