@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Name { get; set; }
 
         [Alias("DeploymentId", "ResourceId")]
-        [Parameter(ParameterSetName = GetAzureSubscriptionDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = false,
+        [Parameter(ParameterSetName = GetAzureSubscriptionDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = true,
             HelpMessage = "The fully qualified resource Id of the deployment. example: /subscriptions/{subId}/providers/Microsoft.Resources/deployments/{deploymentName}")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
