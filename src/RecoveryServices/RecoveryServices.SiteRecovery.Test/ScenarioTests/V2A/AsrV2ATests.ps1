@@ -561,3 +561,60 @@ function Test-SetRPI
     
 }
 
+function Test-V2ACreateRPIWithDES
+{
+    param([string] $vaultSettingsFilePath)
+        Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+        $PrimaryFabricName = "ANUTALLUCS"
+        $pcName = "ANUTALLUCS"
+        $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+    
+}
+
+function V2ACreateRPIWithDES
+{
+    param([string] $vaultSettingsFilePath)
+        Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+        $PrimaryFabricName = "ANUTALLUCS"
+        $pcName = "ANUTALLUCS"
+        $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+        $pc =  Get-ASRProtectionContainer -FriendlyName $pcName -Fabric $fabric
+        $PolicyName1 = "testpolicy"
+        $Policy1 = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName1
+        $pcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "f10785ce-b961-4513-9f57-512c0d115650" 
+        $piName = "vi-win-1"
+        $pi = Get-ASRProtectableItem -ProtectionContainer $pc -FriendlyName $piName
+        $rpiName = "vi-win-1-vm"
+        $AccountHandles = $fabric[0].FabricSpecificDetails.RunAsAccounts
+        $ProcessServers = $fabric[0].FabricSpecificDetails.ProcessServers
+        $diskId="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/v2testwcusrg/providers/Microsoft.Compute/diskEncryptionSets/disksetwcus"
+        $ResourceGroupId ="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/v2testwcusrg"
+        $RecoveryVnetId ="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/v2testwcusrg/providers/Microsoft.Network/virtualNetworks/test"
+        $LogStorageAccountId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/v2testwcusrg/providers/Microsoft.Storage/storageAccounts/logstoaccount123"
+        $EnableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $pi -Name $rpiName -ProtectionContainerMapping $pcm -ProcessServer $ProcessServers[0] -Account $AccountHandles[0] -RecoveryResourceGroupId $ResourceGroupId -DiskEncryptionSetId $diskId -logStorageAccountId $LogStorageAccountId -RecoveryAzureNetworkId $RecoveryVnetId -RecoveryAzureSubnetName "Subnet-1"
+}
+
+function V2ACreateRPIWithDESEnabledDiskInput
+{
+    param([string] $vaultSettingsFilePath)
+        Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+        $PrimaryFabricName = "ANUTALLUCS"
+        $pcName = "ANUTALLUCS"
+        $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+        $pc =  Get-ASRProtectionContainer -FriendlyName $pcName -Fabric $fabric
+        $PolicyName1 = "testpolicy"
+        $Policy1 = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName1
+        $pcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "f10785ce-b961-4513-9f57-512c0d115650" 
+        $piName = "vi-win-1"
+        $pi = Get-ASRProtectableItem -ProtectionContainer $pc -FriendlyName $piName
+        $rpiName = "vi-win-1-vm"
+        $AccountHandles = $fabric[0].FabricSpecificDetails.RunAsAccounts
+        $ProcessServers = $fabric[0].FabricSpecificDetails.ProcessServers
+        $diskId="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/v2testwcusrg/providers/Microsoft.Compute/diskEncryptionSets/disksetwcus"
+        $ResourceGroupId ="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/v2testwcusrg"
+        $RecoveryVnetId ="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/v2testwcusrg/providers/Microsoft.Network/virtualNetworks/test"
+        $LogStorageAccountId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/v2testwcusrg/providers/Microsoft.Storage/storageAccounts/logstoaccount123"
+        $diskInput = New-AzRecoveryServicesAsrInMageAzureV2DiskInput -DiskId $pi.Disks[0].Id -LogStorageAccountId $LogStorageAccountId -DiskType "Standard_LRS" -DiskEncryptionSetId $diskId
+        $EnableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $pi -Name $rpiName -ProtectionContainerMapping $pcm -InMageAzureV2DiskInput $diskInput -ProcessServer $ProcessServers[0] -Account $AccountHandles[0] -RecoveryResourceGroupId $ResourceGroupId -LogStorageAccountId $LogStorageAccountId -RecoveryAzureNetworkId $RecoveryVnetId -RecoveryAzureSubnetName "Subnet-1"
+}
+
