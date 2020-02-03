@@ -65,15 +65,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = InputObjectParameterSetForAuth, HelpMessage = "Target DeviceId.")]
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceIdParameterSetForAuth, HelpMessage = "Target DeviceId.")]
-        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ResourceParameterSetForAuth, HelpMessage = "Target DeviceId.")]
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = InputObjectParameterSetForStatus, HelpMessage = "Target DeviceId.")]
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceIdParameterSetForStatus, HelpMessage = "Target DeviceId.")]
-        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ResourceParameterSetForStatus, HelpMessage = "Target DeviceId.")]
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = InputObjectParameterSetForEdgeEnabled, HelpMessage = "Target DeviceId.")]
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceIdParameterSetForEdgeEnabled, HelpMessage = "Target DeviceId.")]
-        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ResourceParameterSetForEdgeEnabled, HelpMessage = "Target DeviceId.")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = InputObjectParameterSetForAuth, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceIdParameterSetForAuth, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ResourceParameterSetForAuth, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = InputObjectParameterSetForStatus, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceIdParameterSetForStatus, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ResourceParameterSetForStatus, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = InputObjectParameterSetForEdgeEnabled, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceIdParameterSetForEdgeEnabled, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ResourceParameterSetForEdgeEnabled, HelpMessage = "Target Device Id.")]
         [ValidateNotNullOrEmpty]
         public string DeviceId { get; set; }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSetForStatus, HelpMessage = "Set device status upon creation.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceParameterSetForStatus, HelpMessage = "Set device status upon creation.")]
         [ValidateNotNullOrEmpty]
-        public PSDeviceStatus status { get; set; }
+        public PSDeviceStatus Status { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = InputObjectParameterSetForStatus, HelpMessage = "Description for device status.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSetForStatus, HelpMessage = "Description for device status.")]
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.DeviceId, Properties.Resources.SetIotHubDevice))
+            if (ShouldProcess(this.DeviceId, Properties.Resources.UpdateIotHubDevice))
             {
                 IotHubDescription iotHubDescription = null;
                 switch (ParameterSetName)
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     case InputObjectParameterSetForStatus:
                     case ResourceIdParameterSetForStatus:
                     case ResourceParameterSetForStatus:
-                        device.Status = this.status;
+                        device.Status = this.Status;
                         device.StatusReason = this.StatusReason;
                         break;
                     case InputObjectParameterSetForEdgeEnabled:

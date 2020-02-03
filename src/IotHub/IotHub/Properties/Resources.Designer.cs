@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
-    using System;
+    using System;  
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -257,20 +257,20 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set Device.
-        /// </summary>
-        internal static string SetIotHubDevice {
-            get {
-                return ResourceManager.GetString("SetIotHubDevice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Update IoT Hub .
         /// </summary>
         internal static string UpdateIotHub {
             get {
                 return ResourceManager.GetString("UpdateIotHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Device.
+        /// </summary>
+        internal static string UpdateIotHubDevice {
+            get {
+                return ResourceManager.GetString("UpdateIotHubDevice", resourceCulture);
             }
         }
         
