@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 2.6.0
+* Azure Backup Added filtering of backup item based on friendly name.
+* Fixed Vault credential file download for backup and site recovery service
+* Fixes for few properties for update policy of H2A 
+
 ## Version 2.5.0
 * Azure Site Recovery support for removing a replicated disk.
 * Azure Backup added support for adding tags while creating a Recovery Services Vault.

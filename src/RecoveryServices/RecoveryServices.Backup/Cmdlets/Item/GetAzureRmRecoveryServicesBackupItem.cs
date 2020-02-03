@@ -98,6 +98,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public ItemDeleteState DeleteState { get; set; }
 
+        /// <summary>
+        /// Friendly Name of the item, Applicable only in case of Azure File Share item.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.FriendlyName)]
+        [ValidateNotNullOrEmpty]
+        public string FriendlyName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -121,6 +128,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { ItemParams.ProtectionStatus, ProtectionStatus },
                         { ItemParams.ProtectionState, ProtectionState },
                         { ItemParams.WorkloadType, WorkloadType },
+                        { ItemParams.FriendlyName, FriendlyName }
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = null;
