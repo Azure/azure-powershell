@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Configuration.Internal;
+
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
@@ -162,6 +164,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TargetItem = "Specifies the target on which the DB needs to be restored. For SQL restores, it needs to be of protectable item type SQLInstance only.";
             public const string OriginalWorkloadRestore = "Specifies that the backed up DB is to be overwritten with the DB information present in the recovery point.";
             public const string AlternateWorkloadRestore = "Specifies that the backed up DB should be restored as a new DB in another instance or as a new DB in the same instance";
+            public const string TargetContainer = "Specifies the target machine on which DB Files need to be restored.";
+            public const string RestoeAsFiles = "Specifies to restore Database as files in a machine.";
+            public const string FilePath = "Specifies the filepath for restore operation.";
+            public const string FromFull = "Specifies the Full RecoveryPoint to which Log backups will be applied.";
         }
     }
 }

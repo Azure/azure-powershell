@@ -85,25 +85,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Target Container to which files will be written
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPointConfig.TargetContainer)]
         public ContainerBase TargetContainer { get; set; }
 
         /// <summary>
         /// Use this switch to restore db as files to a given target container
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPointConfig.RestoeAsFiles)]
         public SwitchParameter RestoreAsFiles { get; set; }
 
         /// <summary>
         /// Specify Recovery point from which logs will be applies
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPointConfig.FromFull)]
         public RecoveryPointBase FromFull { get; set; }
 
         /// <summary>
         /// Specify Recovery point from which logs will be applies
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPointConfig.FilePath)]
         public string FilePath { get; set; }
 
         public override void ExecuteCmdlet()
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     if(TargetContainer == null)
                     {
-                        throw new ArgumentNullException("TargetContainer", "TargetContainer can't be null for Restoring as files operation.");
+                        throw new ArgumentNullException("TargetContainer", Resources.TargetContainerRequiredException);
                     }
 
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";

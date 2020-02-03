@@ -580,4 +580,7 @@ Please contact Microsoft for further assistance.</value>
   <data name="AFSDiscoveryFailure" xml:space="preserve">
     <value>Failed to discover FileShare {0} under {1}. Please make sure names are correct and FileShare is not deleted</value>
   </data>
+  <data name="TargetContainerRequiredException" xml:space="preserve">
+    <value>Target Container parameter is required for this operation.</value>
+  </data>
 </root>
