@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Target DeviceId.")]
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Target DeviceId.")]
-        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Target DeviceId.")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Target Device Id.")]
         [ValidateNotNullOrEmpty]
         public string DeviceId { get; set; }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public PSDeviceAuthType AuthMethod { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Set device status upon creation.")]
-        public PSDeviceStatus status { get; set; }
+        public PSDeviceStatus Status { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Description for device status.")]
         public string StatusReason { get; set; }
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 }
                 device.Authentication = auth;
                 device.Capabilities = psDeviceCapabilities;
-                device.Status = this.status;
+                device.Status = this.Status;
                 device.StatusReason = this.StatusReason;
 
                 RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);

@@ -132,8 +132,8 @@
   <data name="RemoveIotHubDevice" xml:space="preserve">
     <value>Remove Device</value>
   </data>
-  <data name="SetIotHubDevice" xml:space="preserve">
-    <value>Set Device</value>
+  <data name="UpdateIotHubDevice" xml:space="preserve">
+    <value>Update Device</value>
   </data>
   <data name="AddIotHubKey" xml:space="preserve">
     <value>Add an IoT Hub Key</value>

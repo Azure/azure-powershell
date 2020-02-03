@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/set-aziothubdevice
@@ -15,7 +15,7 @@ Update an IoT Hub device.
 ### ResourceSetForStatus (Default)
 ```
 Set-AzIotHubDevice [-ResourceGroupName] <String> [-Name] <String> [-DeviceId] <String>
- [-status <PSDeviceStatus>] [-StatusReason <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Status <PSDeviceStatus>] [-StatusReason <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Set-AzIotHubDevice [-InputObject] <PSIotHub> [-DeviceId] <String> [-AuthMethod <
 
 ### InputObjectSetForStatus
 ```
-Set-AzIotHubDevice [-InputObject] <PSIotHub> [-DeviceId] <String> [-status <PSDeviceStatus>]
+Set-AzIotHubDevice [-InputObject] <PSIotHub> [-DeviceId] <String> [-Status <PSDeviceStatus>]
  [-StatusReason <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ Set-AzIotHubDevice [-ResourceId] <String> [-DeviceId] <String> [-AuthMethod <PSD
 
 ### ResourceIdSetForStatus
 ```
-Set-AzIotHubDevice [-ResourceId] <String> [-DeviceId] <String> [-status <PSDeviceStatus>]
+Set-AzIotHubDevice [-ResourceId] <String> [-DeviceId] <String> [-Status <PSDeviceStatus>]
  [-StatusReason <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -69,7 +69,7 @@ Set-AzIotHubDevice [-ResourceId] <String> [-DeviceId] <String> [-EdgeEnabled <Bo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Update an IoT Hub device.
 
 ## EXAMPLES
 
@@ -100,7 +100,7 @@ Update authorization type of an Iot Hub device.
 The authorization type an entity is to be created with.
 
 ```yaml
-Type: PSDeviceAuthType
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSDeviceAuthType
 Parameter Sets: InputObjectSetForAuth, ResourceSetForAuth, ResourceIdSetForAuth
 Aliases:
 Accepted values: shared_private_key, x509_thumbprint, x509_ca
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -128,10 +128,10 @@ Accept wildcard characters: False
 ```
 
 ### -DeviceId
-Target DeviceId.
+Target Device Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 Flag indicating edge enablement.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: InputObjectSetForEdgeEnabled, ResourceSetForEdgeEnabled, ResourceIdSetForEdgeEnabled
 Aliases:
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 IotHub object
 
 ```yaml
-Type: PSIotHub
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub
 Parameter Sets: InputObjectSetForAuth, InputObjectSetForStatus, InputObjectSetForEdgeEnabled
 Aliases:
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 Name of the Iot Hub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSetForStatus, ResourceSetForAuth, ResourceSetForEdgeEnabled
 Aliases:
 
@@ -187,11 +187,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrimaryThumbprint
+Explicit self-signed certificate thumbprint to use for primary key.
+
+```yaml
+Type: System.String
+Parameter Sets: InputObjectSetForAuth, ResourceSetForAuth, ResourceIdSetForAuth
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of the Resource Group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSetForStatus, ResourceSetForAuth, ResourceSetForEdgeEnabled
 Aliases:
 
@@ -206,7 +221,7 @@ Accept wildcard characters: False
 IotHub Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSetForAuth, ResourceIdSetForStatus, ResourceIdSetForEdgeEnabled
 Aliases:
 
@@ -217,11 +232,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -status
+### -SecondaryThumbprint
+Explicit self-signed certificate thumbprint to use for secondary key.
+
+```yaml
+Type: System.String
+Parameter Sets: InputObjectSetForAuth, ResourceSetForAuth, ResourceIdSetForAuth
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Status
 Set device status upon creation.
 
 ```yaml
-Type: PSDeviceStatus
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSDeviceStatus
 Parameter Sets: ResourceSetForStatus, InputObjectSetForStatus, ResourceIdSetForStatus
 Aliases:
 Accepted values: Enabled, Disabled
@@ -237,7 +267,7 @@ Accept wildcard characters: False
 Description for device status.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSetForStatus, InputObjectSetForStatus, ResourceIdSetForStatus
 Aliases:
 
@@ -252,7 +282,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -268,7 +298,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -280,8 +310,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

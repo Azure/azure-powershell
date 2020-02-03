@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = InputObjectParameterSet, HelpMessage = "Target DeviceId.")]
-        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Target DeviceId.")]
-        [Parameter(Mandatory = false, ParameterSetName = ResourceParameterSet, HelpMessage = "Target DeviceId.")]
+        [Parameter(Mandatory = false, ParameterSetName = InputObjectParameterSet, HelpMessage = "Target Device Id.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Target Device Id.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceParameterSet, HelpMessage = "Target Device Id.")]
         [ValidateNotNullOrEmpty]
         public string DeviceId { get; set; }
 
