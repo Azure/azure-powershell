@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Cdn.Models.CustomDomain
 
         public PSCustomHttpsProvisioningSubstate CustomHttpsProvisioningSubstate { get; set; }
 
+        public PSTlsVersion MinimumTlsVersion { get; set; }
 
         public string ResourceGroupName
         {

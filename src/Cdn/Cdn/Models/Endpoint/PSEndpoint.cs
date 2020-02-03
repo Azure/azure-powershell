@@ -56,6 +56,8 @@ namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 
         public PSEndpointResourceState ResourceState { get; set; }
 
+        public string LinkedWafPolicyResourceId { get; set; }
+
         public string ResourceGroupName
         {
             get

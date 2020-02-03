@@ -253,8 +253,9 @@ Enable Https for custom domain with running endpoint
 function Test-MicrosoftCustomDomainEnableHttpsWithRunningEndpoint
 {
   # Hard-coding host and endpoint names due to requirement for DNS CNAME
-    $endpointName = "testMicrosoftEP"
-    $hostName = "testMicrosoft.dustydog.us"
+    $endpointName = "pstestmicrosoft"
+    $hostName = "pstestmicrosoft.azfdtest.xyz"
+    $dogfoodHostName = "pstestmicrosoft-dogfood.azfdtest.xyz"
 
     $customDomainName = getAssetName
 
@@ -270,6 +271,11 @@ function Test-MicrosoftCustomDomainEnableHttpsWithRunningEndpoint
     $endpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
     $validateResult = Test-AzCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName $hostName
     Assert-True{$validateResult.CustomDomainValidated}
+
+    # If we're running the test against dogfood, we need to use a different custom domain host
+    if ($endpoint.HostName -like "*.azureedge-test.net") {
+        $hostName = dogfoodHostName
+	}
 
     $customDomain = New-AzCdnCustomDomain -HostName $hostName -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-AreEqual $customDomainName $customDomain.Name
