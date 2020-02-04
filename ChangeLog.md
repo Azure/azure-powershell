@@ -1,3 +1,9 @@
+## 3.4.0 - February 2020
+#### Az.CosmosDB
+* Added cmdlets for Gremlin, MongoDB, Cassandra and Table APIs.
+* Updated .NED SDK Version to 1.0.1
+* Added parameters ConflictResolutionPolicyMode, ConflictResolutionPolicyPath and ConflictResolutionPolicyPath in Set-AzCosmosDBSqlContainer.
+
 ## 3.3.0 - January 2020
 #### Az.Accounts
 * Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix
