@@ -140,7 +140,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
                 var properties = new CognitiveServicesAccountProperties();
                 properties.NetworkAcls = psNetworkRule.ToNetworkRuleSet();
-                this.CognitiveServicesClient.Accounts.Update(this.ResourceGroupName, this.Name,
+                this.CognitiveServicesClient.Accounts.Update(
+                    this.ResourceGroupName,
+                    this.Name,
                     new CognitiveServicesAccount()
                     {
                         Properties = properties
