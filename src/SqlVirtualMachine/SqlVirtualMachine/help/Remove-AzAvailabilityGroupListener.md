@@ -1,44 +1,57 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/new-azsqlvm
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/remove-azavailabilitygrouplistener
 schema: 2.0.0
 ---
 
-# New-AzSqlVM
+# Remove-AzAvailabilityGroupListener
 
 ## SYNOPSIS
-Creates a new sql virtual machine.
+Deletes an Availability Group Listener.
 
 ## SYNTAX
 
-### NameParamaterList (Default)
+### Name (Default)
 ```
-New-AzSqlVM [-ResourceGroupName] <String> [-Name] <String> [-LicenseType] <String> -Location <String> [-AsJob]
- [-Offer <String>] [-Sku <String>] [-SqlManagementType <String>] [-Tag <Hashtable>]
+Remove-AzAvailabilityGroupListener [-AsJob] [-PassThru] [-ResourceGroupName] <String>
+ [-SqlVMGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### InputObject
+```
+Remove-AzAvailabilityGroupListener [-InputObject] <AzureAvailabilityGroupListenerModel> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### NameInputObject
+### ResourceId
 ```
-New-AzSqlVM [-ResourceGroupName] <String> [-Name] <String> [-SqlVM] <AzureSqlVMModel> -Location <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAvailabilityGroupListener [-ResourceId] <String> [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SqlVmGroupObject
+```
+Remove-AzAvailabilityGroupListener [-AsJob] [-PassThru] [-SqlVMGroupObject] <AzureSqlVMGroupModel>
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzSqlVM cmdlet creates an Azure SQL virtual machine.
+The Remove-AzAvailabilityGroupListener cmdlet deletes an Availability Group Listener.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSqlVM  New-AzSqlVM -ResourceGroupName ResourceGroup01 -Name vm -LicenseType 'PAYG' -Sku Developer
-Name ResourceGroupName  LicenseType Sku       Offer          SqlManagementType
----- -----------------  ----------- ---       -----          -----------------
-vm   ResourceGroup01	PAYG        Developer SQL2017-WS2016 Full
+PS C:\> Remove-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01 -Name AgListener01
 ```
 
-Creates a new Azure SQL virtual machine with name vm in the resource group ResourceGroup01 
+Name         ResourceGroupName GroupName    AvailabilityGroupName
+----         ----------------- ---------    ---------------------
+AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
+
+Deletes the Availability Group Listener AgListener01 in the Availability Group AvailabilityGroup01.
 
 ## PARAMETERS
 
@@ -72,12 +85,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LicenseType
-SQL virtual machine license type.
+### -InputObject
+Availability Group Listener object.
+
+```yaml
+Type: Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureAvailabilityGroupListenerModel
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Availability Group Listener name.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParamaterList
+Parameter Sets: Name, SqlVmGroupObject
 Aliases:
 
 Required: True
@@ -87,42 +115,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-SQL virtual machine location.
+### -PassThru
+Specifies whether to output the deleted resource at end of cmdlet execution.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-SQL virtual machine name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: SqlVMName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Offer
-SQL virtual machine offer.
-
-```yaml
-Type: System.String
-Parameter Sets: NameParamaterList
 Aliases:
 
 Required: False
@@ -137,7 +135,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Name
 Aliases:
 
 Required: True
@@ -147,63 +145,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Sku
-SQL virtual machine edition type.
+### -ResourceId
+Availability Group Listener Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParamaterList
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SqlManagementType
-SQL virtual machine management type.
-
-```yaml
-Type: System.String
-Parameter Sets: NameParamaterList
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SqlVM
-SQL virtual machine object.
-
-```yaml
-Type: Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel
-Parameter Sets: NameInputObject
+Parameter Sets: ResourceId
 Aliases:
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tag
-The tags to associate with the SQL virtual machine
+### -SqlVMGroupName
+SQL virtual machine group name.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: NameParamaterList
-Aliases:
+Type: System.String
+Parameter Sets: Name
+Aliases: GroupName
 
-Required: False
-Position: Named
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlVMGroupObject
+SQL virtual machine Group object.
+
+```yaml
+Type: Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel
+Parameter Sets: SqlVmGroupObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -243,11 +226,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel
+### Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureAvailabilityGroupListenerModel
+
+### System.String
+
+### Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel
+### Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureAvailabilityGroupListenerModel
 
 ## NOTES
 
