@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private bool IsManagementGroupScope(string resourceId)
         {
-            return resourceId.StartsWith($"/{Constants.Providers}/{Constants.MicrosoftManagementGroupDefinitionType}", System.StringComparison.OrdinalIgnoreCase);
+            return resourceId.StartsWith($"{Constants.ManagementGroupIdPrefix}", System.StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>

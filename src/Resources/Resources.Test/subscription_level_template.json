@@ -8,7 +8,7 @@
     },
     "nestedDeploymentRG": {
       "type": "string",
-      "defaultValue": "demo-rg"
+      "defaultValue": "ps_test_subscription_deployment"
     }
   },
   "variables": {},
@@ -44,10 +44,21 @@
       }
     },
     {
+      "type": "Microsoft.Resources/resourceGroups",
+      "name": "[parameters('nestedDeploymentRG')]",
+      "location": "West US",
+      "apiVersion": "2019-05-01",
+      "properties": {
+      }
+    },
+    {
       "type": "Microsoft.Resources/deployments",
       "name": "rg-nested",
       "apiVersion": "2017-05-10",
       "resourceGroup": "[parameters('nestedDeploymentRG')]",
+      "dependsOn": [
+        "[parameters('nestedDeploymentRG')]"
+      ],
       "properties": {
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
