@@ -606,4 +606,8 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="WindowsConfigurationSpecified" xml:space="preserve">
     <value>Windows configuration is already specified.  This cmdlet requires a Linux configuration.</value>
   </data>
+  <data name="VirtualMachineTooManyVMsWithStatusParameter" xml:space="preserve">
+    <value>There are more than {0} VMs in the result.  Only the statuses of 100 VMs are shown to avoid throttling.  To get the actual status of each VM, please provide a VM name with -Status parameter.</value>
+    <comment>{0} = the number of VMs in the result</comment>
+  </data>
 </root>
