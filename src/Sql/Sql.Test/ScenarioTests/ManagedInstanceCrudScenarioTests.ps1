@@ -189,6 +189,36 @@ function Test-SetManagedInstance
 		Assert-AreEqual $managedInstance4.PublicDataEndpointEnabled $publicDataEndpointEnabled
 		Assert-AreEqual $managedInstance4.ProxyOverride $proxyOverride
 		Assert-StartsWith ($managedInstance4.ManagedInstanceName + ".") $managedInstance4.FullyQualifiedDomainName
+
+		# Test hardware generation change using ComputeGeneration
+		$credentials = Get-ServerCredential
+		$computeGeneration = "Gen5"
+
+		$managedInstance5 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
+			-ComputeGeneration $computeGeneration -Force
+
+		Assert-AreEqual $managedInstance5.ManagedInstanceName $managedInstance.ManagedInstanceName
+		Assert-AreEqual $managedInstance5.AdministratorLogin $managedInstance.AdministratorLogin
+		Assert-AreEqual $managedInstance5.VCores $managedInstance4.VCores
+		Assert-AreEqual $managedInstance5.StorageSizeInGB $managedInstance4.StorageSizeInGB
+		Assert-AreEqual $managedInstance5.Sku.Tier $managedInstance4.Sku.Tier
+		Assert-AreEqual $managedInstance5.Sku.Family $computeGeneration
+		Assert-StartsWith ($managedInstance5.ManagedInstanceName + ".") $managedInstance5.FullyQualifiedDomainName
+
+		# Test edition change using Edition
+		$credentials = Get-ServerCredential
+		$edition = "BusinessCritical"
+
+		$managedInstance6 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
+			-Edition $edition -Force
+
+		Assert-AreEqual $managedInstance6.ManagedInstanceName $managedInstance5.ManagedInstanceName
+		Assert-AreEqual $managedInstance6.AdministratorLogin $managedInstance5.AdministratorLogin
+		Assert-AreEqual $managedInstance6.VCores $managedInstance5.VCores
+		Assert-AreEqual $managedInstance6.StorageSizeInGB $managedInstance5.StorageSizeInGB
+		Assert-AreEqual $managedInstance6.Sku.Tier $edition
+		Assert-AreEqual $managedInstance6.Sku.Family $managedInstance5.Sku.Family
+		Assert-StartsWith ($managedInstance6.ManagedInstanceName + ".") $managedInstance6.FullyQualifiedDomainName
 	}
 	finally
 	{
