@@ -271,6 +271,7 @@ namespace Microsoft.Azure.Commands.Network
                     Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
+                    FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
                     ApplicationRuleCollections = this.ApplicationRuleCollection?.ToList(),
                     NatRuleCollections = this.NatRuleCollection?.ToList(),
                     NetworkRuleCollections = this.NetworkRuleCollection?.ToList(),
