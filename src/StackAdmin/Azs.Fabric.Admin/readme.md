@@ -89,7 +89,7 @@ directive:
       parameter-name: ResourceGroupName
     set:
       default:
-        script: -join("System.",(Get-AzLocation)[0].Name)
+        script: -join("System.",(Get-AzLocation)[0].Location)
 
   # Rename Invoke-ScaleUnitOut to Add-AzsScaleUnitNode
   - where:
@@ -139,6 +139,14 @@ directive:
     set:
       subject: InfrastructureShare
 
+  # Separate InfraRoleInstance stop opeartions
+  - where:
+      verb: Stop
+      subject: InfrastructureRoleInstance
+      variant: Shutdown.*
+    set:
+      verb: Disable
+
   # Rename model property names for StorageSubSystem to match spec
   - where:
       model-name: StorageSubSystem
@@ -177,6 +185,18 @@ directive:
       property-name: Label
     set:
       property-name: VolumeLabel
+
+  - where:
+      model-name: EdgeGateway
+      property-name: NumberOfConnections
+    set:
+      property-name: NumberOfConnection
+
+  - where:
+      model-name: EdgeGatewayPool
+      property-name: NumberOfGateway
+    set:
+      property-name: NumberOfGateways
 
   # Rename cmdlet parameter name in InfrastructureShare
   - where:
