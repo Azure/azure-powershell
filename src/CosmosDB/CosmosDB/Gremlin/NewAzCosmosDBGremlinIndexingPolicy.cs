@@ -20,8 +20,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlIndexingPolicy"), OutputType(typeof(PSIndexingPolicy))]
-    public class NewAzCosmosDBSqlIndexingPolicy : AzureCosmosDBCmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinIndexingPolicy"), OutputType(typeof(PSIndexingPolicy))]
+    public class NewAzCosmosDBGremlinIndexingPolicy : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyIncludedPathHelpMessage)]
         public PSIncludedPath[] IncludedPath { get; set; }
@@ -43,36 +43,36 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
-            PSIndexingPolicy sqlIndexingPolicy = new PSIndexingPolicy();
+            PSIndexingPolicy gremlinIndexingPolicy = new PSIndexingPolicy();
 
             if (IncludedPath != null && IncludedPath.Length > 0)
-                sqlIndexingPolicy.IncludedPaths = IncludedPath;
+                gremlinIndexingPolicy.IncludedPaths = IncludedPath;
 
             if (ExcludedPath != null && ExcludedPath.Length > 0)
             {
-                sqlIndexingPolicy.ExcludedPaths = new List<PSExcludedPath>();
+                gremlinIndexingPolicy.ExcludedPaths = new List<PSExcludedPath>();
                 foreach (string path in ExcludedPath)
                 {
-                    sqlIndexingPolicy.ExcludedPaths.Add(new PSExcludedPath{ Path = path });
+                    gremlinIndexingPolicy.ExcludedPaths.Add(new PSExcludedPath{ Path = path });
                 }
             }
 
             if(SpatialSpec != null)
             {
-                sqlIndexingPolicy.SpatialIndexes = SpatialSpec;
+                gremlinIndexingPolicy.SpatialIndexes = SpatialSpec;
             }
 
             if(CompositePath != null)
             {
-                sqlIndexingPolicy.CompositeIndexes = CompositePath;
+                gremlinIndexingPolicy.CompositeIndexes = CompositePath;
             }
 
-            sqlIndexingPolicy.Automatic = Automatic;
+            gremlinIndexingPolicy.Automatic = Automatic;
 
             if (IndexingMode != null)
-                sqlIndexingPolicy.IndexingMode = IndexingMode;
+                gremlinIndexingPolicy.IndexingMode = IndexingMode;
 
-            WriteObject(sqlIndexingPolicy);
+            WriteObject(gremlinIndexingPolicy);
             return;
         }
     }

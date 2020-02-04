@@ -67,18 +67,22 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSUniqueKeyPolicy UniqueKeyPolicy { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyModeHelpMessage)]
-        [PSArgumentCompleter("Custom", "LastWriterWins")]
+        [Parameter(Mandatory = false, HelpMessage = Constants.SqlConflictResolutionPolicyModeHelpMessage)]
+        [PSArgumentCompleter("Custom", "LastWriterWins", "Manual")]
         [ValidateNotNullOrEmpty]
         public string ConflictResolutionPolicyMode { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyPathHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.SqlConflictResolutionPolicyPathHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ConflictResolutionPolicyPath { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyProcedureHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.SqlConflictResolutionPolicyProcedureHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ConflictResolutionPolicyProcedure { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.ConflictResolutionPolicyHelpMessage)]
+        [ValidateNotNull]
+        public PSConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
@@ -126,6 +130,21 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (TtlInSeconds != null)
             {
                 sqlContainerResource.DefaultTtl = TtlInSeconds;
+            }
+
+            if(ConflictResolutionPolicy != null)
+            {
+                ConflictResolutionPolicyMode = ConflictResolutionPolicy.Mode;
+
+                if (ConflictResolutionPolicy.ConflictResolutionPath != null)
+                {
+                    ConflictResolutionPolicyPath = ConflictResolutionPolicy.ConflictResolutionPath;
+                }
+
+                if (ConflictResolutionPolicy.ConflictResolutionProcedure != null)
+                {
+                    ConflictResolutionPolicyProcedure = ConflictResolutionPolicy.ConflictResolutionProcedure;
+                }
             }
 
             if (ConflictResolutionPolicyMode != null)

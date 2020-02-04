@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public PSUniqueKeyPolicy UniqueKeyPolicy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyModeHelpMessage)]
-        [PSArgumentCompleter("Custom", "LastWriterWins")]
+        [PSArgumentCompleter("Custom", "LastWriterWins", "Manual")]
         [ValidateNotNullOrEmpty]
         public string ConflictResolutionPolicyMode { get; set; }
 
@@ -207,10 +207,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             GremlinGraphCreateUpdateParameters gremlinGraphCreateUpdateParameters = new GremlinGraphCreateUpdateParameters
             {
                 Resource = gremlinGraphResource,
-                Options = new Dictionary<string, string>() { }
+                Options = options
             };
 
-            if (ShouldProcess(Name, "Deleting CosmosDB Gremlin Graph"))
+            if (ShouldProcess(Name, "Creating CosmosDB Gremlin Graph"))
             {
                 GremlinGraphGetResults gremlinGraphGetResults = CosmosDBManagementClient.GremlinResources.CreateUpdateGremlinGraphWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, gremlinGraphCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSGremlinGraphGetResults(gremlinGraphGetResults));

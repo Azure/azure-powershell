@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string StoredProcedureNameHelpMessage = "Stored Prcodecure Name.";
         public const string UserDefinedFunctionNameHelpMessage = "User Defined Function Name.";
         public const string TriggerNameHelpMessage = "Trigger name.";
-        public const string IndexingPolicyHelpMessage = "Indexing Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlIndexingPolicy.";
-        public const string UniqueKeyPolciyHelpMessage = "UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlUniqueKeyPolicy. ";
-        public const string ConflictResolutionPolicyHelpMessage = "ConflictResolutionPolicy Object of type PSSqlConflictResolutionPolicy. ";
+        public const string IndexingPolicyHelpMessage = "Indexing Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSIndexingPolicy.";
+        public const string UniqueKeyPolciyHelpMessage = "UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSUniqueKeyPolicy. ";
+        public const string ConflictResolutionPolicyHelpMessage = "ConflictResolutionPolicy Object of type PSConflictResolutionPolicy, when provided this is set as the ConflictResolutionPolicy of the container.";
         public const string PartitionKeyPathHelpMessage = "Partition Key Path, e.g., '/address/zipcode'.";
         public const string SqlContainerThroughputHelpMessage = "The throughput of SQL container (RU/s). Default value is 400.";
         public const string TtlInSecondsHelpMessage = "Default Ttl in seconds. If the value is missing or set to  - 1, items don’t expire. If the value is set to n, items will expire n seconds after last modified time. ";
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string SqlContainerObjectHelpMessage = "Sql Container object.";
         public const string SqlDatabaseThroughputHelpMessage = "The throughput of SQL database (RU/s). Default value is 400.";
         public const string SqlDatabaseDetailedParamHelpMessage = "If provided then, the cmdlet returns the container with the throughput value. ";
-        public const string ConflictResolutionPolicyModeHelpMessage = "Can have the values: LastWriterWins, Custom, Manual.";
-        public const string ConflictResolutionPolicyPathHelpMessage = "To be provided when the type is LastWriterWins.";
-        public const string ConflictResolutionPolicyProcedureHelpMessage = "To be provided when the type is custom.";
+        public const string SqlConflictResolutionPolicyModeHelpMessage = "Can have the values: LastWriterWins, Custom, Manual. If provided along with ConflictResolutionPolicy parameter, it is ignored.";
+        public const string SqlConflictResolutionPolicyPathHelpMessage = "To be provided when the type is LastWriterWins. If provided along with ConflictResolutionPolicy parameter, it is ignored.";
+        public const string SqlConflictResolutionPolicyProcedureHelpMessage = "To be provided when the type is custom. If provided along with ConflictResolutionPolicy parameter, it is ignored.";
         public const string UniqueKeyPathHelpMessage = "Array of string of path values";
         public const string IndexingPolicyIncludedPathHelpMessage = "Array of strings containing includedPath (Specifies a path within a JSON document to be included in the Azure Cosmos DB service.) elements. ";
         public const string IndexingPolicyExcludedPathHelpMessage = "Array of strings containing excludedPath(Specifies a path within a JSON document to be excluded in the Azure Cosmos DB service.)  elements. ";
@@ -136,5 +136,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string GremlinGraphDetailedParamHelpMessage = "If provided then, the cmdlet returns the Gremlin Graph with the corresponding throughput value.";
         public const string GremlinDatabaseThroughputHelpMessage = "The throughput of Gremlin Database (RU/s). Default value is 400.";
         public const string GremlinGraphThroughputHelpMessage = "The throughput of Gremlin Graph (RU/s). Default value is 400.";
+        public const string ConflictResolutionPolicyModeHelpMessage = "Can have the values: LastWriterWins, Custom, Manual.";
+        public const string ConflictResolutionPolicyPathHelpMessage = "To be provided when the type is LastWriterWins.";
+        public const string ConflictResolutionPolicyProcedureHelpMessage = "To be provided when the type is custom.";
     }
 }
