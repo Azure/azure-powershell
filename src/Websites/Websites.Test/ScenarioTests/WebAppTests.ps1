@@ -1200,7 +1200,7 @@ function Test-SetWebApp
 		#Assert
 		Assert-AreNotEqual $currentWa1ClientAffinityEnabled $wa1.ClientAffinityEnabled
 
-		## Change a setting on the first Web App (which is in the same Resource Group as the App Service Plan).
+		## Change a setting on the Second Web App (which is in not the same Resource Group as the App Service Plan).
 		$currentWa2ClientAffinityEnabled=$wa2.ClientAffinityEnabled
 		$wa2.ClientAffinityEnabled = !$wa2.ClientAffinityEnabled
 		$wa2 | Set-AzWebApp
