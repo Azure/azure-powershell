@@ -154,9 +154,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         this.Name,
                         new CognitiveServicesAccount()
                         {
-                        Sku = sku,
-                        Tags = tags,
-                        Properties = properties
+                            Sku = sku,
+                            Tags = tags,
+                            Properties = properties
                         }
                         );
 
