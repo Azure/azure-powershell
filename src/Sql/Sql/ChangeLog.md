@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added support for cross subscription point in time restore on Managed Instances.
+* Add support for changing existing Sql Managed Instance hardware generation
 
 ## Version 2.2.0
 Fix New-AzSqlDatabaseSecondary cmdlet to check for PartnerDatabaseName existence instead of DatabaseName existence.
@@ -31,7 +32,6 @@ Fix New-AzSqlDatabaseSecondary cmdlet to check for PartnerDatabaseName existence
 ## Version 2.1.1
 * Update references in .psd1 to use relative path
 * Upgraded storage creation in Vulnerability Assessment auto enablement to StorageV2
-* Adding support for changing existing Sql Managed Instance hardware generation
 
 ## Version 2.1.0
 * Added support for database ReadReplicaCount.
