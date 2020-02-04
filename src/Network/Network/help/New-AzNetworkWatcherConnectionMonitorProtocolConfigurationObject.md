@@ -1,0 +1,243 @@
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworkwatcherconnectionmonitorprotocolconfigurationobject
+schema: 2.0.0
+---
+
+# New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject
+
+## SYNOPSIS
+Create protocol configuration used to perform test evaluation over TCP, HTTP or ICMP.
+
+## SYNTAX
+
+### TCP
+```
+New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-TcpProtocol] -Port <Int32>
+ [-DisableTraceRoute] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### HTTP
+```
+New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-HttpProtocol] [-Port <Int32>]
+ [-Method <String>] [-Path <String>] [-RequestHeader <Hashtable>] [-ValidStatusCodeRange <String[]>]
+ [-PreferHTTPS] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ICMP
+```
+New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-IcmpProtocol] [-DisableTraceRoute]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+The New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject cmdlet creates protocol configuration used to perform test evaluation over TCP, HTTP or ICMP.
+
+## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\>$TcpProtocolConfiguration = New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject -TcpProtocol -Port 80 -DisableTraceRoute $false
+```
+
+Port              : 80
+DisableTraceRoute : False
+
+## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableTraceRoute
+Value indicating whether path evaluation with trace route should be disabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: TCP, ICMP
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpProtocol
+HTTP protocol switch
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: HTTP
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IcmpProtocol
+ICMP protocol switch.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ICMP
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Method
+The HTTP method to use.
+
+```yaml
+Type: System.String
+Parameter Sets: HTTP
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Path
+The path component of the URI. For instance, \"/dir1/dir2\".
+
+```yaml
+Type: System.String
+Parameter Sets: HTTP
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Port
+The port to connect to.
+
+```yaml
+Type: System.Nullable`1[System.UInt16]
+Parameter Sets: TCP
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Nullable`1[System.UInt16]
+Parameter Sets: HTTP
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PreferHTTPS
+Value indicating whether HTTPS is preferred over HTTP in cases where the choice is not explicit.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: HTTP
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequestHeader
+The HTTP headers to transmit with the request.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: HTTP
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TcpProtocol
+TCP protocol switch.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: TCP
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ValidStatusCodeRange
+HTTP status codes to consider successful. For instance, \"2xx,301-304,418\".
+
+```yaml
+Type: System.String[]
+Parameter Sets: HTTP
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### None
+
+## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorTcpConfiguration
+
+### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorHttpConfiguration
+
+### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorIcmpConfiguration
+
+## NOTES
+
+## RELATED LINKS
