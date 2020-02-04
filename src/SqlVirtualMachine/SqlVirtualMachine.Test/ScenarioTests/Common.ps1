@@ -150,6 +150,62 @@ function Get-StorageaccountNameForTest()
 	return $nr
 }
 
+# Functions to get resources for Availability Group Listener
+# Currently there is not function to create Setup
+
+function Get-LoadBalancerResourceId()
+{
+	$loadBalancerResourceId = "/subscriptions/0009fc4d-e310-4e40-8e63-c48a23e9cdc1/resourceGroups/karthik-wcus2/providers/Microsoft.Network/loadBalancers/rlnaonlb4"
+	return $loadBalancerResourceId
+}
+
+function Get-SubnetId()
+{
+	$subnetId = "/subscriptions/0009fc4d-e310-4e40-8e63-c48a23e9cdc1/resourceGroups/karthik-wcus2/providers/Microsoft.Network/virtualNetworks/DecTest-vnet/subnets/DecTest-subnet"
+	return $subnetId
+}
+
+function Get-ProbePort()
+{
+	return 59999
+}
+
+function Get-SqlVirtualMachineId()
+{
+	$sqlVirtualMachineIds = "/subscriptions/0009fc4d-e310-4e40-8e63-c48a23e9cdc1/resourceGroups/rlnalwayson/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/rlnvmag2","/subscriptions/0009fc4d-e310-4e40-8e63-c48a23e9cdc1/resourceGroups/rlnalwayson/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/rlnagvm1"
+	return $sqlVirtualMachineIds
+}
+
+function Get-AGListenerName
+{
+	return "rlnaonagl11"
+}
+
+function Get-AGListenerResourceGroup
+{
+	return "rlnAlwaysOn"
+}
+
+function Get-AgListenerGroupName
+{
+	return "rlnaonsqlgr2"
+}
+
+function Get-IpAddress
+{
+	return "10.0.0.31"
+}
+
+function Get-DefaultPort()
+{
+	return 1433
+}
+
+function Get-AgName()
+{
+	return "rlnaonag"
+}
+
 <#
 	.SYNOPSIS
 	Checks that the sql virtual machines provided are equal

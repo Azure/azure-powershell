@@ -32,5 +32,4 @@ function Test-ExpressRoutePortsLocationRead
 	Assert-NotNull $vExpressRoutePortsLocation.Address
 	Assert-NotNull $vExpressRoutePortsLocation.Contact
 	Assert-NotNull $vExpressRoutePortsLocation.AvailableBandwidths
-	Assert-True { $vExpressRoutePortsLocation.AvailableBandwidths.Count -eq 1 }
 }

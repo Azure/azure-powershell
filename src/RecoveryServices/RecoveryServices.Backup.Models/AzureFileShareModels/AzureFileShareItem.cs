@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Runtime.Versioning;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
@@ -26,6 +27,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Container id of item
         /// </summary>
         public string ParentContainerFabricId { get; set; }
+
+        /// <summary>
+        /// FriendlyName of the file share item
+        /// </summary>
+        public string FriendlyName { get; set; }
+
+        /// <summary>
+        /// Resource State of the FileShare
+        /// </summary>
+        public string ResourceState { get; set; }
 
         /// <summary>
         /// Constructor. Takes the service client object representing the protected item 
@@ -45,6 +56,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             ProtectionState =
                 EnumUtils.GetEnum<ItemProtectionState>(protectedItem.ProtectionState.ToString());
             ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
+            FriendlyName = protectedItem.FriendlyName;
+            ResourceState = "";
+            if(protectedItem.ExtendedInfo != null && protectedItem.ExtendedInfo.ResourceState != null)
+            {
+                ResourceState = protectedItem.ExtendedInfo.ResourceState;
+            }
         }
     }
 
