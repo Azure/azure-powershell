@@ -16,10 +16,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.DataBoxEdge;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Trigger;
+using ResourceModel = Microsoft.Azure.Management.DataBoxEdge.Models.Trigger;
 using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger;
 using PSTopLevelResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
 

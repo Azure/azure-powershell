@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.2
+* Update references in .psd1 to use relative path
+
 ## Version 1.0.1
 * Fixed documentation typo where "Azure" was all lowercase letters
 * Fixed miscellaneous typos across module

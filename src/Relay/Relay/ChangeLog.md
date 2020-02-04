@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.3
+* Update references in .psd1 to use relative path
+
 ## Version 1.0.2
 * Fixed miscellaneous typos across module
 

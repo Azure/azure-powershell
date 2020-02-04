@@ -239,7 +239,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             List<string> pathParts = new List<string>(path.Split(new string[] { "\\" }, StringSplitOptions.None));
             int len = pathParts.Count();
             List<string> fileNameParts = new List<string>(pathParts[len - 1].Split(new string[] { "." }, StringSplitOptions.None));
-            string newFileName = name + "_" + offset.ToString() + "." + fileNameParts[1];
+            string newFileName = "";
+            if (fileNameParts.Count == 2)
+            {
+                newFileName = name + "_" + offset.ToString() + "." + fileNameParts[1];
+            }
+            else
+            {
+                newFileName = name + "_" + offset.ToString();
+            }
             return sqlDataDirectory.Path + newFileName;
         }
 

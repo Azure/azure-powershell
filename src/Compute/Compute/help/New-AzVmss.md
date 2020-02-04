@@ -30,9 +30,10 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
  [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-EnableUltraSSD]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-NatBackendPort <Int32[]>]
- [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroup <String>] [-Priority <String>]
+ [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroupId <String>] [-Priority <String>]
  [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SkipExtensionsOnOverprovisionedVMs] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -424,7 +425,10 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machine scale set.  Only supported values are 'Regular' and 'Low'.
+The priority for the virtual machine in the scale set.  Only supported values are 'Regular', 'Spot' and 'Low'.
+'Regular' is for regular virtual machine.
+'Spot' is for spot virtual machine.
+'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 
 ```yaml
 Type: System.String
@@ -438,13 +442,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProximityPlacementGroup
-The name or resource id of the Proximity Placement Group to use with this Scale Set.
+### -ProximityPlacementGroupId
+The resource id of the Proximity Placement Group to use with this scale set.
 
 ```yaml
 Type: System.String
 Parameter Sets: SimpleParameterSet
-Aliases:
+Aliases: ProximityPlacementGroup
 
 Required: False
 Position: Named
@@ -527,6 +531,21 @@ Accept wildcard characters: False
 
 ### -SinglePlacementGroup
 Use this to create the Scale set in a single placement group, default is multiple groups
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipExtensionsOnOverprovisionedVMs
+Specifies that the extensions do not run on the extra overprovisioned VMs.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

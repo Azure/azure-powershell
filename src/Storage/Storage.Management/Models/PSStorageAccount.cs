@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.StorageAccountName = storageAccount.Name;
             this.Id = storageAccount.Id;
             this.Location = storageAccount.Location;
-            this.Sku = storageAccount.Sku;
+            this.Sku = new PSSku(storageAccount.Sku);
             this.Encryption = storageAccount.Encryption;
             this.Kind = storageAccount.Kind;
             this.AccessTier = storageAccount.AccessTier;
@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled;
             this.LargeFileSharesState = storageAccount.LargeFileSharesState;
             this.AzureFilesIdentityBasedAuth = storageAccount.AzureFilesIdentityBasedAuthentication is null ? null : new PSAzureFilesIdentityBasedAuthentication(storageAccount.AzureFilesIdentityBasedAuthentication);
+            this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string Location { get; set; }
 
         [Ps1Xml(Label = "SkuName", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name", Position = 3)]
-        public Sku Sku { get; set; }
+        public PSSku Sku { get; set; }
 
         [Ps1Xml(Label = "Kind", Target = ViewControl.Table, Position = 4)]
         public string Kind { get; set; }
@@ -88,6 +89,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public Endpoints PrimaryEndpoints { get; set; }
 
+        [Ps1Xml(Label = "PrimaryLocation", Target = ViewControl.Table, Position = 2)]
         public string PrimaryLocation { get; set; }
 
         [Ps1Xml(Label = "ProvisioningState", Target = ViewControl.Table, Position = 7)]
@@ -113,6 +115,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string LargeFileSharesState { get; set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
+
+        public PSGeoReplicationStats GeoReplicationStats { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
@@ -154,6 +158,31 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public CustomDomain ParseCustomDomain()
         {
             return new CustomDomain(this.Name, this.UseSubDomain);
+        }
+    }
+
+    public class PSSku
+    {
+        public string Name { get; set; }
+        public SkuTier? Tier { get; set; }
+        public string ResourceType { get; set; }
+        public string Kind { get; set; }
+        public IList<string> Locations { get; set; }
+        public IList<SKUCapability> Capabilities { get; set; }
+        public IList<Restriction> Restrictions { get; set; }
+
+        public PSSku(Sku sku)
+        {
+            if (sku != null)
+            {
+                this.Name = sku.Name;
+                this.Tier = sku.Tier;
+            }
+        }
+
+        public Sku ParseSku()
+        {
+            return new Sku(Name, Tier);
         }
     }
 }

@@ -8,6 +8,8 @@ schema: 2.0.0
 # New-AzMlOpCluster
 
 ## SYNOPSIS
+**Important: This cmdlet is deprecated.**
+
 Creates a new operationalization cluster.
 
 ## SYNTAX

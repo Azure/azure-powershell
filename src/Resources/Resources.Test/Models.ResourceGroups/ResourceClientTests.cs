@@ -308,11 +308,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 {
                     var result = CreateAzureOperationResponse(new DeploymentValidateResult
                     {
-                        Error = new ResourceManagementErrorWithDetails(
+                        Error = new ErrorResponse(
                             code: "404",
                             message: "Awesome error message",
-                            details: new List<ResourceManagementErrorWithDetails>{
-                                new ResourceManagementErrorWithDetails(
+                            details: new List<ErrorResponse>{
+                                new ErrorResponse(
                                     code: "SubError",
                                     message: "Sub error message")
                             })
@@ -872,7 +872,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentValidateResult
                 {
-                    Error = new ResourceManagementErrorWithDetails()
+                    Error = new ErrorResponse()
                 })))
                 .Callback((string resourceGroup, string deployment, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
             SetupListForResourceGroupAsync(resourceGroupparameters.ResourceGroupName, new List<GenericResource>() {
@@ -992,7 +992,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 {
                     Body = new DeploymentValidateResult
                     {
-                        Error = new ResourceManagementErrorWithDetails()
+                        Error = new ErrorResponse()
                     }
                 }
             ))

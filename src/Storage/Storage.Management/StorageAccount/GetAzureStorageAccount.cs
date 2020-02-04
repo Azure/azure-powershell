@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Rest.Azure;
 using System.Management.Automation;
 
@@ -52,6 +53,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = AccountNameParameterSet,
+            HelpMessage = "Get the GeoReplicationStats of the Storage account.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter IncludeGeoReplicationStats { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -75,9 +83,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             else
             {
+                StorageAccountExpand? expandproperties = null;
+                if (IncludeGeoReplicationStats)
+                {
+                    expandproperties = StorageAccountExpand.GeoReplicationStats;
+                }
+
                 var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
                     this.ResourceGroupName,
-                    this.Name);
+                    this.Name,
+                    expandproperties);
 
                 WriteStorageAccount(storageAccount);
             }

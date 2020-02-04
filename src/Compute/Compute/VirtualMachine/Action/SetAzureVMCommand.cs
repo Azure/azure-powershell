@@ -26,8 +26,10 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const string GeneralizeResourceGroupNameParameterSet = "GeneralizeResourceGroupNameParameterSetName";
         protected const string RedeployResourceGroupNameParameterSet = "RedeployResourceGroupNameParameterSetName";
+        protected const string ReapplyResourceGroupNameParameterSet = "ReapplyResourceGroupNameParameterSetName";
         protected const string GeneralizeIdParameterSet = "GeneralizeIdParameterSetName";
         protected const string RedeployIdParameterSet = "RedeployIdParameterSetName";
+        protected const string ReapplyIdParameterSet = "ReapplyIdParameterSetName";
 
         [Parameter(
            Mandatory = true,
@@ -41,6 +43,12 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = RedeployResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
           HelpMessage = "The resource group name.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = ReapplyResourceGroupNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -50,13 +58,19 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ParameterSetName = GeneralizeIdParameterSet,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+           HelpMessage = "The resource ID.")]
         [Parameter(
            Mandatory = true,
            Position = 0,
            ParameterSetName = RedeployIdParameterSet,
            ValueFromPipelineByPropertyName = true,
-          HelpMessage = "The resource group name.")]
+          HelpMessage = "The resource ID.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ParameterSetName = ReapplyIdParameterSet,
+           ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The resource ID.")]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Compute/virtualMachines")]
         public string Id { get; set; }
@@ -71,6 +85,12 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = true,
            Position = 1,
            ParameterSetName = RedeployResourceGroupNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 1,
+           ParameterSetName = ReapplyResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
@@ -99,6 +119,16 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter Redeploy { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ReapplyResourceGroupNameParameterSet,
+            HelpMessage = "To reapply virtual machine.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ReapplyIdParameterSet,
+            HelpMessage = "To reapply virtual machine.")]
+        public SwitchParameter Reapply { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -108,6 +138,14 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
         [Parameter(
             ParameterSetName = RedeployResourceGroupNameParameterSet,
+            Mandatory = false,
+            HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
+        [Parameter(
+            ParameterSetName = ReapplyIdParameterSet,
+            Mandatory = false,
+            HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
+        [Parameter(
+            ParameterSetName = ReapplyResourceGroupNameParameterSet,
             Mandatory = false,
             HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
         public SwitchParameter NoWait { get; set; }
@@ -122,7 +160,7 @@ namespace Microsoft.Azure.Commands.Compute
                 this.Name = parsedId.ResourceName;
             }
 
-            if (this.ParameterSetName.Equals(GeneralizeIdParameterSet) || this.ParameterSetName.Equals(RedeployIdParameterSet))
+            if (this.ParameterSetName.Equals(GeneralizeIdParameterSet) || this.ParameterSetName.Equals(RedeployIdParameterSet) || this.ParameterSetName.Equals(ReapplyIdParameterSet))
             {
                 this.ResourceGroupName = GetResourceGroupNameFromId(this.Id);
             }
@@ -155,6 +193,30 @@ namespace Microsoft.Azure.Commands.Compute
                     else
                     {
                         var op = this.VirtualMachineClient.RedeployWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.Name).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                        result.StartTime = this.StartTime;
+                        result.EndTime = DateTime.Now;
+                        WriteObject(result);
+                    }
+                });
+            }
+            else if (this.Reapply.IsPresent)
+            {
+                ExecuteClientAction(() =>
+                {
+                    if (NoWait.IsPresent)
+                    {
+                        var op = this.VirtualMachineClient.BeginReapplyWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.Name).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                        WriteObject(result);
+                    }
+                    else
+                    {
+                        var op = this.VirtualMachineClient.ReapplyWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.Name).GetAwaiter().GetResult();
                         var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);

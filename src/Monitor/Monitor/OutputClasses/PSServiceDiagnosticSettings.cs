@@ -75,6 +75,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 }
 
                 this.WorkspaceId = serviceDiagnosticSettings.WorkspaceId;
+                this.LogAnalyticsDestinationType = serviceDiagnosticSettings.LogAnalyticsDestinationType;
             }
         }
     }

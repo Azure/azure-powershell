@@ -7,16 +7,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1fe2cd45-719a-400b-ab62-f11d07d474cd"
+          "5f97c005-9198-4ba2-9c9b-eee2f24802c7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.2.1"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
         ]
       },
       "ResponseHeaders": {
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11999"
         ],
         "x-ms-request-id": [
-          "764e45e3-02f0-4bea-ac6e-6bc57f23de7a"
+          "b07604ad-0830-4b0f-96bf-30a4fbcd03d8"
         ],
         "x-ms-correlation-request-id": [
-          "764e45e3-02f0-4bea-ac6e-6bc57f23de7a"
+          "b07604ad-0830-4b0f-96bf-30a4fbcd03d8"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190610T220537Z:764e45e3-02f0-4bea-ac6e-6bc57f23de7a"
+          "WESTUS:20191115T000641Z:b07604ad-0830-4b0f-96bf-30a4fbcd03d8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 10 Jun 2019 22:05:37 GMT"
+          "Fri, 15 Nov 2019 00:06:40 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -54,29 +54,29 @@
           "-1"
         ],
         "Content-Length": [
-          "8750"
+          "8844"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/providers/Microsoft.Resources\",\r\n  \"namespace\": \"Microsoft.Resources\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"tenants\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationresults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"notifyResourceJobs\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"tags\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkPolicyCompliance\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkresourcename\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/operationresults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa West\",\r\n        \"South Africa North\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa West\",\r\n        \"South Africa North\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourcegroups/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagnames\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagNames/tagValues\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments/operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"links\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-01-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/providers/Microsoft.Resources\",\r\n  \"namespace\": \"Microsoft.Resources\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"tenants\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationresults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"notifyResourceJobs\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"tags\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"checkPolicyCompliance\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkresourcename\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/operationresults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourcegroups/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagnames\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagNames/tagValues\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments/operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"links\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-01-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps1076?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlZ3JvdXBzL3BzMTA3Nj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5448?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlZ3JvdXBzL3BzNTQ0OD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0059caf3-703c-4042-8981-1b981d456ed6"
+          "8e7d1443-4965-4c19-9b4f-9bd0b0d39dc8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.2.1"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -93,16 +93,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-request-id": [
-          "7495cb21-5d61-443d-ac2e-c1b551690e30"
+          "baf7b98f-f730-4d08-8ca0-013a95753580"
         ],
         "x-ms-correlation-request-id": [
-          "7495cb21-5d61-443d-ac2e-c1b551690e30"
+          "baf7b98f-f730-4d08-8ca0-013a95753580"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190610T220538Z:7495cb21-5d61-443d-ac2e-c1b551690e30"
+          "WESTUS:20191115T000641Z:baf7b98f-f730-4d08-8ca0-013a95753580"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 10 Jun 2019 22:05:38 GMT"
+          "Fri, 15 Nov 2019 00:06:40 GMT"
         ],
         "Content-Length": [
           "165"
@@ -123,26 +123,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps1076\",\r\n  \"name\": \"ps1076\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5448\",\r\n  \"name\": \"ps5448\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps1076/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMTA3Ni9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5448/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies?api-version=2019-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTQ0OC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTktMTAtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3dea513f-0024-4a5c-85b3-e3a50776df13"
+          "fa186027-4239-4985-8be6-1176f4db3c7d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/2.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -153,10 +153,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "473d3491-0957-40f9-9b38-573d700bb0c1"
+          "0842f43b-6191-40e3-94a7-e9ea2b861924"
         ],
         "x-ms-client-request-id": [
-          "3dea513f-0024-4a5c-85b3-e3a50776df13"
+          "fa186027-4239-4985-8be6-1176f4db3c7d"
         ],
         "OData-Version": [
           "4.0"
@@ -177,16 +177,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "4494f34c-be9c-4da3-ba71-467f8c822901"
+          "a8231734-09cf-4707-a675-679fb7448816"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190610T220539Z:4494f34c-be9c-4da3-ba71-467f8c822901"
+          "WESTUS:20191115T000642Z:a8231734-09cf-4707-a675-679fb7448816"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 10 Jun 2019 22:05:39 GMT"
+          "Fri, 15 Nov 2019 00:06:42 GMT"
         ],
         "Content-Length": [
           "28"
@@ -202,22 +202,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps1076/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMTA3Ni9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5448/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies?api-version=2019-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTQ0OC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTktMTAtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c158969d-aaef-41da-ba65-58dcfc0404c6"
+          "340d57c0-f91c-43ab-9b10-ab8ad1814d64"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/2.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -228,10 +228,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "47defb40-7a33-47cf-923d-3664e6243b5d"
+          "1b3f9000-4ae1-4504-9982-d594a4b813ef"
         ],
         "x-ms-client-request-id": [
-          "c158969d-aaef-41da-ba65-58dcfc0404c6"
+          "340d57c0-f91c-43ab-9b10-ab8ad1814d64"
         ],
         "OData-Version": [
           "4.0"
@@ -252,19 +252,19 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "6802cb49-0c4d-4829-be15-3d99f4d90999"
+          "b71af1d6-6f4e-49e0-ae1d-bbdebe2e07b0"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190610T220541Z:6802cb49-0c4d-4829-be15-3d99f4d90999"
+          "WESTUS:20191115T000644Z:b71af1d6-6f4e-49e0-ae1d-bbdebe2e07b0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 10 Jun 2019 22:05:41 GMT"
+          "Fri, 15 Nov 2019 00:06:44 GMT"
         ],
         "Content-Length": [
-          "1822"
+          "2054"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -273,26 +273,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"ps2256\",\r\n      \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps1076/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps2256\",\r\n      \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n      \"tags\": {},\r\n      \"location\": \"Global\",\r\n      \"properties\": {\r\n        \"resourceState\": \"Enabled\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"policySettings\": {\r\n          \"enabledState\": \"Enabled\",\r\n          \"mode\": \"Prevention\",\r\n          \"redirectUrl\": null,\r\n          \"customBlockResponseStatusCode\": null,\r\n          \"customBlockResponseBody\": null\r\n        },\r\n        \"customRules\": {\r\n          \"rules\": [\r\n            {\r\n              \"name\": \"Rule1\",\r\n              \"enabledState\": null,\r\n              \"priority\": 2,\r\n              \"ruleType\": \"MatchRule\",\r\n              \"rateLimitDurationInMinutes\": 1,\r\n              \"rateLimitThreshold\": 0,\r\n              \"matchConditions\": [\r\n                {\r\n                  \"matchVariable\": \"RequestHeader\",\r\n                  \"selector\": \"UserAgent\",\r\n                  \"operator\": \"Contains\",\r\n                  \"negateCondition\": false,\r\n                  \"matchValue\": [\r\n                    \"WINDOWS\"\r\n                  ],\r\n                  \"transforms\": [\r\n                    \"Uppercase\"\r\n                  ]\r\n                }\r\n              ],\r\n              \"action\": \"Block\"\r\n            }\r\n          ]\r\n        },\r\n        \"managedRules\": {\r\n          \"managedRuleSets\": [\r\n            {\r\n              \"ruleSetType\": \"DefaultRuleSet\",\r\n              \"ruleSetVersion\": \"1.0\",\r\n              \"ruleGroupOverrides\": [\r\n                {\r\n                  \"ruleGroupName\": \"SQLI\",\r\n                  \"rules\": [\r\n                    {\r\n                      \"ruleId\": \"942100\",\r\n                      \"enabledState\": \"Enabled\",\r\n                      \"action\": \"Log\"\r\n                    }\r\n                  ]\r\n                }\r\n              ]\r\n            },\r\n            {\r\n              \"ruleSetType\": \"BotProtection\",\r\n              \"ruleSetVersion\": \"preview-0.1\",\r\n              \"ruleGroupOverrides\": []\r\n            }\r\n          ]\r\n        },\r\n        \"frontendEndpointLinks\": []\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"ps8783\",\r\n      \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5448/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps8783\",\r\n      \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n      \"tags\": {},\r\n      \"location\": \"Global\",\r\n      \"properties\": {\r\n        \"resourceState\": \"Enabled\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"policySettings\": {\r\n          \"enabledState\": \"Enabled\",\r\n          \"mode\": \"Prevention\",\r\n          \"redirectUrl\": null,\r\n          \"customBlockResponseStatusCode\": null,\r\n          \"customBlockResponseBody\": null\r\n        },\r\n        \"customRules\": {\r\n          \"rules\": [\r\n            {\r\n              \"name\": \"Rule1\",\r\n              \"enabledState\": \"Enabled\",\r\n              \"priority\": 2,\r\n              \"ruleType\": \"MatchRule\",\r\n              \"rateLimitDurationInMinutes\": 1,\r\n              \"rateLimitThreshold\": null,\r\n              \"matchConditions\": [\r\n                {\r\n                  \"matchVariable\": \"RequestHeader\",\r\n                  \"selector\": \"UserAgent\",\r\n                  \"operator\": \"Contains\",\r\n                  \"negateCondition\": false,\r\n                  \"matchValue\": [\r\n                    \"WINDOWS\"\r\n                  ],\r\n                  \"transforms\": [\r\n                    \"Uppercase\"\r\n                  ]\r\n                }\r\n              ],\r\n              \"action\": \"Block\"\r\n            }\r\n          ]\r\n        },\r\n        \"managedRules\": {\r\n          \"managedRuleSets\": [\r\n            {\r\n              \"ruleSetType\": \"DefaultRuleSet\",\r\n              \"ruleSetVersion\": \"1.0\",\r\n              \"ruleGroupOverrides\": [\r\n                {\r\n                  \"ruleGroupName\": \"SQLI\",\r\n                  \"rules\": [\r\n                    {\r\n                      \"ruleId\": \"942100\",\r\n                      \"enabledState\": \"Enabled\",\r\n                      \"action\": \"Log\",\r\n                      \"exclusions\": []\r\n                    }\r\n                  ],\r\n                  \"exclusions\": []\r\n                }\r\n              ],\r\n              \"exclusions\": []\r\n            },\r\n            {\r\n              \"ruleSetType\": \"BotProtection\",\r\n              \"ruleSetVersion\": \"preview-0.1\",\r\n              \"ruleGroupOverrides\": [],\r\n              \"exclusions\": []\r\n            }\r\n          ]\r\n        },\r\n        \"frontendEndpointLinks\": []\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps1076/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMTA3Ni9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5448/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies?api-version=2019-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTQ0OC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTktMTAtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "08ee30d0-b6db-4e95-b091-80b21397bf83"
+          "315b4610-4806-4b42-a3e3-51afbb5d56a2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/2.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -303,10 +303,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "fb8a80ee-493c-4b45-9bd6-6b0034c44e44"
+          "a353f1df-ea35-4f0e-9341-86fb85baacf7"
         ],
         "x-ms-client-request-id": [
-          "08ee30d0-b6db-4e95-b091-80b21397bf83"
+          "315b4610-4806-4b42-a3e3-51afbb5d56a2"
         ],
         "OData-Version": [
           "4.0"
@@ -327,19 +327,19 @@
           "11995"
         ],
         "x-ms-correlation-request-id": [
-          "aca5932f-1b7b-4a7f-8370-a6380a696437"
+          "9b167530-7fa1-41ef-87a7-94bab0b6a25e"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190610T220543Z:aca5932f-1b7b-4a7f-8370-a6380a696437"
+          "WESTUS:20191115T000645Z:9b167530-7fa1-41ef-87a7-94bab0b6a25e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 10 Jun 2019 22:05:42 GMT"
+          "Fri, 15 Nov 2019 00:06:45 GMT"
         ],
         "Content-Length": [
-          "1820"
+          "2052"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -348,32 +348,32 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"ps2256\",\r\n      \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps1076/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps2256\",\r\n      \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n      \"tags\": {},\r\n      \"location\": \"Global\",\r\n      \"properties\": {\r\n        \"resourceState\": \"Enabled\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"policySettings\": {\r\n          \"enabledState\": \"Enabled\",\r\n          \"mode\": \"Prevention\",\r\n          \"redirectUrl\": null,\r\n          \"customBlockResponseStatusCode\": null,\r\n          \"customBlockResponseBody\": null\r\n        },\r\n        \"customRules\": {\r\n          \"rules\": [\r\n            {\r\n              \"name\": \"Rule2\",\r\n              \"enabledState\": null,\r\n              \"priority\": 2,\r\n              \"ruleType\": \"MatchRule\",\r\n              \"rateLimitDurationInMinutes\": 1,\r\n              \"rateLimitThreshold\": 0,\r\n              \"matchConditions\": [\r\n                {\r\n                  \"matchVariable\": \"RequestHeader\",\r\n                  \"selector\": \"UserAgent\",\r\n                  \"operator\": \"Contains\",\r\n                  \"negateCondition\": false,\r\n                  \"matchValue\": [\r\n                    \"WINDOWS\"\r\n                  ],\r\n                  \"transforms\": [\r\n                    \"Uppercase\"\r\n                  ]\r\n                }\r\n              ],\r\n              \"action\": \"Log\"\r\n            }\r\n          ]\r\n        },\r\n        \"managedRules\": {\r\n          \"managedRuleSets\": [\r\n            {\r\n              \"ruleSetType\": \"DefaultRuleSet\",\r\n              \"ruleSetVersion\": \"1.0\",\r\n              \"ruleGroupOverrides\": [\r\n                {\r\n                  \"ruleGroupName\": \"SQLI\",\r\n                  \"rules\": [\r\n                    {\r\n                      \"ruleId\": \"942100\",\r\n                      \"enabledState\": \"Enabled\",\r\n                      \"action\": \"Log\"\r\n                    }\r\n                  ]\r\n                }\r\n              ]\r\n            },\r\n            {\r\n              \"ruleSetType\": \"BotProtection\",\r\n              \"ruleSetVersion\": \"preview-0.1\",\r\n              \"ruleGroupOverrides\": []\r\n            }\r\n          ]\r\n        },\r\n        \"frontendEndpointLinks\": []\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"ps8783\",\r\n      \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5448/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps8783\",\r\n      \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n      \"tags\": {},\r\n      \"location\": \"Global\",\r\n      \"properties\": {\r\n        \"resourceState\": \"Enabled\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"policySettings\": {\r\n          \"enabledState\": \"Enabled\",\r\n          \"mode\": \"Prevention\",\r\n          \"redirectUrl\": null,\r\n          \"customBlockResponseStatusCode\": null,\r\n          \"customBlockResponseBody\": null\r\n        },\r\n        \"customRules\": {\r\n          \"rules\": [\r\n            {\r\n              \"name\": \"Rule2\",\r\n              \"enabledState\": \"Enabled\",\r\n              \"priority\": 2,\r\n              \"ruleType\": \"MatchRule\",\r\n              \"rateLimitDurationInMinutes\": 1,\r\n              \"rateLimitThreshold\": null,\r\n              \"matchConditions\": [\r\n                {\r\n                  \"matchVariable\": \"RequestHeader\",\r\n                  \"selector\": \"UserAgent\",\r\n                  \"operator\": \"Contains\",\r\n                  \"negateCondition\": false,\r\n                  \"matchValue\": [\r\n                    \"WINDOWS\"\r\n                  ],\r\n                  \"transforms\": [\r\n                    \"Uppercase\"\r\n                  ]\r\n                }\r\n              ],\r\n              \"action\": \"Log\"\r\n            }\r\n          ]\r\n        },\r\n        \"managedRules\": {\r\n          \"managedRuleSets\": [\r\n            {\r\n              \"ruleSetType\": \"DefaultRuleSet\",\r\n              \"ruleSetVersion\": \"1.0\",\r\n              \"ruleGroupOverrides\": [\r\n                {\r\n                  \"ruleGroupName\": \"SQLI\",\r\n                  \"rules\": [\r\n                    {\r\n                      \"ruleId\": \"942100\",\r\n                      \"enabledState\": \"Enabled\",\r\n                      \"action\": \"Log\",\r\n                      \"exclusions\": []\r\n                    }\r\n                  ],\r\n                  \"exclusions\": []\r\n                }\r\n              ],\r\n              \"exclusions\": []\r\n            },\r\n            {\r\n              \"ruleSetType\": \"BotProtection\",\r\n              \"ruleSetVersion\": \"preview-0.1\",\r\n              \"ruleGroupOverrides\": [],\r\n              \"exclusions\": []\r\n            }\r\n          ]\r\n        },\r\n        \"frontendEndpointLinks\": []\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps1076/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps2256?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMTA3Ni9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzMjI1Nj9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5448/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps8783?api-version=2019-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTQ0OC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzODc4Mz9hcGktdmVyc2lvbj0yMDE5LTEwLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\"\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule1\",\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Block\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\"\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"global\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\"\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule1\",\r\n          \"priority\": 2,\r\n          \"enabledState\": \"Enabled\",\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Block\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\"\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"global\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "45b1c41e-a7db-4c59-a495-56ef0ee89446"
+          "5a997f1f-7bbf-40cf-9721-5a42117652fd"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/2.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "1385"
+          "1423"
         ]
       },
       "ResponseHeaders": {
@@ -384,10 +384,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "efab18cd-1277-48a7-9257-bd7ea226120f"
+          "2348d77a-4692-44ba-8416-abc3d1c8de74"
         ],
         "x-ms-client-request-id": [
-          "45b1c41e-a7db-4c59-a495-56ef0ee89446"
+          "5a997f1f-7bbf-40cf-9721-5a42117652fd"
         ],
         "OData-Version": [
           "4.0"
@@ -408,19 +408,19 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "a369cc77-f6d2-4e28-8e96-2f5ac7d55fb9"
+          "0f2bbe8e-9653-4d6c-ac79-615390189f49"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190610T220541Z:a369cc77-f6d2-4e28-8e96-2f5ac7d55fb9"
+          "WESTUS:20191115T000643Z:0f2bbe8e-9653-4d6c-ac79-615390189f49"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 10 Jun 2019 22:05:40 GMT"
+          "Fri, 15 Nov 2019 00:06:43 GMT"
         ],
         "Content-Length": [
-          "1626"
+          "1826"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal"
@@ -429,32 +429,32 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps2256\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps1076/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps2256\",\r\n  \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n  \"tags\": {},\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"redirectUrl\": null,\r\n      \"customBlockResponseStatusCode\": null,\r\n      \"customBlockResponseBody\": null\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule1\",\r\n          \"enabledState\": null,\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"rateLimitThreshold\": 0,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Block\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\"\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    },\r\n    \"frontendEndpointLinks\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps8783\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5448/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps8783\",\r\n  \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n  \"tags\": {},\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"redirectUrl\": null,\r\n      \"customBlockResponseStatusCode\": null,\r\n      \"customBlockResponseBody\": null\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule1\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"rateLimitThreshold\": null,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Block\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\",\r\n                  \"exclusions\": []\r\n                }\r\n              ],\r\n              \"exclusions\": []\r\n            }\r\n          ],\r\n          \"exclusions\": []\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleGroupOverrides\": [],\r\n          \"exclusions\": []\r\n        }\r\n      ]\r\n    },\r\n    \"frontendEndpointLinks\": []\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps1076/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps2256?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMTA3Ni9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzMjI1Nj9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5448/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps8783?api-version=2019-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTQ0OC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzODc4Mz9hcGktdmVyc2lvbj0yMDE5LTEwLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\"\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule2\",\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Log\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\"\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"global\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\"\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule2\",\r\n          \"priority\": 2,\r\n          \"enabledState\": \"Enabled\",\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Log\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"exclusions\": [],\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"exclusions\": [],\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\",\r\n                  \"exclusions\": []\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"exclusions\": [],\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"global\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "85f94ae6-c5e9-4bfa-8446-2c02c34efbee"
+          "8152312c-c74e-49ec-a976-a3293459d17a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/2.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "1420"
+          "1586"
         ]
       },
       "ResponseHeaders": {
@@ -465,10 +465,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9dfa9a9a-4bdb-4c21-a0b7-b50ea8f42bdc"
+          "51a15446-4903-4122-9731-21480b368de0"
         ],
         "x-ms-client-request-id": [
-          "85f94ae6-c5e9-4bfa-8446-2c02c34efbee"
+          "8152312c-c74e-49ec-a976-a3293459d17a"
         ],
         "OData-Version": [
           "4.0"
@@ -489,19 +489,19 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "83c7cf00-a2d9-4c77-80d4-8c32f547a1e3"
+          "a84763d0-4ff7-480a-943a-6ab6d26c8ac3"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190610T220542Z:83c7cf00-a2d9-4c77-80d4-8c32f547a1e3"
+          "WESTUS:20191115T000645Z:a84763d0-4ff7-480a-943a-6ab6d26c8ac3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 10 Jun 2019 22:05:41 GMT"
+          "Fri, 15 Nov 2019 00:06:44 GMT"
         ],
         "Content-Length": [
-          "1624"
+          "1824"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal"
@@ -510,26 +510,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps2256\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps1076/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps2256\",\r\n  \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n  \"tags\": {},\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"redirectUrl\": null,\r\n      \"customBlockResponseStatusCode\": null,\r\n      \"customBlockResponseBody\": null\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule2\",\r\n          \"enabledState\": null,\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"rateLimitThreshold\": 0,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Log\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\"\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    },\r\n    \"frontendEndpointLinks\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps8783\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5448/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps8783\",\r\n  \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n  \"tags\": {},\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"redirectUrl\": null,\r\n      \"customBlockResponseStatusCode\": null,\r\n      \"customBlockResponseBody\": null\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule2\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"rateLimitThreshold\": null,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Log\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\",\r\n                  \"exclusions\": []\r\n                }\r\n              ],\r\n              \"exclusions\": []\r\n            }\r\n          ],\r\n          \"exclusions\": []\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleGroupOverrides\": [],\r\n          \"exclusions\": []\r\n        }\r\n      ]\r\n    },\r\n    \"frontendEndpointLinks\": []\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps1076/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps2256?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMTA3Ni9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzMjI1Nj9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5448/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps8783?api-version=2019-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTQ0OC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzODc4Mz9hcGktdmVyc2lvbj0yMDE5LTEwLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5c532744-740c-43cb-bf46-85cbe6c4d88d"
+          "63f5b7d2-723f-4b59-a929-f31a47fa8e35"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/2.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -540,10 +540,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3d334605-77d2-4607-8f2d-57e0757f89c3"
+          "dec33903-e2df-4492-a9d6-ae121108d2e6"
         ],
         "x-ms-client-request-id": [
-          "5c532744-740c-43cb-bf46-85cbe6c4d88d"
+          "63f5b7d2-723f-4b59-a929-f31a47fa8e35"
         ],
         "OData-Version": [
           "4.0"
@@ -564,19 +564,19 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "46d0bf61-bf8c-484d-a930-b52be35cc513"
+          "eb217d60-b3a3-4ff7-a0eb-a8d78500329f"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190610T220541Z:46d0bf61-bf8c-484d-a930-b52be35cc513"
+          "WESTUS:20191115T000644Z:eb217d60-b3a3-4ff7-a0eb-a8d78500329f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 10 Jun 2019 22:05:40 GMT"
+          "Fri, 15 Nov 2019 00:06:44 GMT"
         ],
         "Content-Length": [
-          "1626"
+          "1826"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -585,26 +585,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps2256\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps1076/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps2256\",\r\n  \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n  \"tags\": {},\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"redirectUrl\": null,\r\n      \"customBlockResponseStatusCode\": null,\r\n      \"customBlockResponseBody\": null\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule1\",\r\n          \"enabledState\": null,\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"rateLimitThreshold\": 0,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Block\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\"\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    },\r\n    \"frontendEndpointLinks\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps8783\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5448/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps8783\",\r\n  \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n  \"tags\": {},\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"redirectUrl\": null,\r\n      \"customBlockResponseStatusCode\": null,\r\n      \"customBlockResponseBody\": null\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule1\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"rateLimitThreshold\": null,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Block\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\",\r\n                  \"exclusions\": []\r\n                }\r\n              ],\r\n              \"exclusions\": []\r\n            }\r\n          ],\r\n          \"exclusions\": []\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleGroupOverrides\": [],\r\n          \"exclusions\": []\r\n        }\r\n      ]\r\n    },\r\n    \"frontendEndpointLinks\": []\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps1076/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps2256?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMTA3Ni9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzMjI1Nj9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5448/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps8783?api-version=2019-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTQ0OC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzODc4Mz9hcGktdmVyc2lvbj0yMDE5LTEwLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a657834e-2619-40ce-8ea6-b281a7c8de6e"
+          "2d9f1691-1f93-4066-9095-4bf565523dfc"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/2.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -615,10 +615,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2f7cedc2-adb0-4e08-923c-49b68af68387"
+          "88438647-3d21-4322-bbac-279ced73dae3"
         ],
         "x-ms-client-request-id": [
-          "a657834e-2619-40ce-8ea6-b281a7c8de6e"
+          "2d9f1691-1f93-4066-9095-4bf565523dfc"
         ],
         "OData-Version": [
           "4.0"
@@ -639,19 +639,19 @@
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "6d353dc9-3438-4a14-b870-9873eca2f825"
+          "6c377d8d-8ee8-45e3-82ad-d5a7a7391c79"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190610T220542Z:6d353dc9-3438-4a14-b870-9873eca2f825"
+          "WESTUS:20191115T000645Z:6c377d8d-8ee8-45e3-82ad-d5a7a7391c79"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 10 Jun 2019 22:05:42 GMT"
+          "Fri, 15 Nov 2019 00:06:45 GMT"
         ],
         "Content-Length": [
-          "1624"
+          "1824"
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -660,26 +660,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps2256\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps1076/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps2256\",\r\n  \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n  \"tags\": {},\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"redirectUrl\": null,\r\n      \"customBlockResponseStatusCode\": null,\r\n      \"customBlockResponseBody\": null\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule2\",\r\n          \"enabledState\": null,\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"rateLimitThreshold\": 0,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Log\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\"\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    },\r\n    \"frontendEndpointLinks\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps8783\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps5448/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps8783\",\r\n  \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n  \"tags\": {},\r\n  \"location\": \"Global\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"redirectUrl\": null,\r\n      \"customBlockResponseStatusCode\": null,\r\n      \"customBlockResponseBody\": null\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule2\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"rateLimitThreshold\": null,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Log\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\",\r\n                  \"exclusions\": []\r\n                }\r\n              ],\r\n              \"exclusions\": []\r\n            }\r\n          ],\r\n          \"exclusions\": []\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleGroupOverrides\": [],\r\n          \"exclusions\": []\r\n        }\r\n      ]\r\n    },\r\n    \"frontendEndpointLinks\": []\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps1076/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps2256?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMTA3Ni9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzMjI1Nj9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5448/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps8783?api-version=2019-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTQ0OC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzODc4Mz9hcGktdmVyc2lvbj0yMDE5LTEwLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "da1da223-1bca-4528-ba92-4126b4029273"
+          "edd11c0a-694c-4e5a-a46c-794d76968c7c"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/2.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -693,13 +693,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "984380d2-b458-45e3-ae26-4a6acb7fbc90"
+          "fa6993e1-c1cc-49a0-961b-ce7dee4b78ac"
         ],
         "x-ms-correlation-request-id": [
-          "984380d2-b458-45e3-ae26-4a6acb7fbc90"
+          "fa6993e1-c1cc-49a0-961b-ce7dee4b78ac"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190610T220543Z:984380d2-b458-45e3-ae26-4a6acb7fbc90"
+          "WESTUS:20191115T000646Z:fa6993e1-c1cc-49a0-961b-ce7dee4b78ac"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -708,7 +708,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 10 Jun 2019 22:05:43 GMT"
+          "Fri, 15 Nov 2019 00:06:46 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -720,26 +720,26 @@
           "174"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/frontdoorWebApplicationFirewallPolicies/ps2256' under resource group 'ps1076' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/frontdoorWebApplicationFirewallPolicies/ps8783' under resource group 'ps5448' was not found.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps1076/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps2256?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzMTA3Ni9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzMjI1Nj9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps5448/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps8783?api-version=2019-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzNTQ0OC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzODc4Mz9hcGktdmVyc2lvbj0yMDE5LTEwLTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "43ea83f8-3a2c-49d6-93cb-d8aa1e7b0472"
+          "c4c1dcff-1d13-42a7-9c7d-8d96aefa566f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.28008.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/0.13.0.0"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/2.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -750,10 +750,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5e77c895-6330-49e2-b175-474d986f66f5"
+          "49210ad8-1d5c-4aaa-a05c-f4eed036daba"
         ],
         "x-ms-client-request-id": [
-          "43ea83f8-3a2c-49d6-93cb-d8aa1e7b0472"
+          "c4c1dcff-1d13-42a7-9c7d-8d96aefa566f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -771,16 +771,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "3e11656c-4af8-4034-8217-7431f8cbeab7"
+          "498472c8-e2c1-4a46-943e-4f7f5c878462"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20190610T220543Z:3e11656c-4af8-4034-8217-7431f8cbeab7"
+          "WESTUS:20191115T000646Z:498472c8-e2c1-4a46-943e-4f7f5c878462"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 10 Jun 2019 22:05:43 GMT"
+          "Fri, 15 Nov 2019 00:06:46 GMT"
         ],
         "Expires": [
           "-1"
@@ -792,8 +792,8 @@
   ],
   "Names": {
     "Test-PolicyCrudWithPiping": [
-      "ps2256",
-      "ps1076"
+      "ps8783",
+      "ps5448"
     ]
   },
   "Variables": {

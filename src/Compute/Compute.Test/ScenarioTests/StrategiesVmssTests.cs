@@ -123,5 +123,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SimpleNewVmssScaleInPolicy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SimpleNewVmssSkipExtOverprovision()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmssSkipExtOverprovision");
+        }
     }
 }

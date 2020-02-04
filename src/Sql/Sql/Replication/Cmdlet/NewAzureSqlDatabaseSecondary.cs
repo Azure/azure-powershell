@@ -89,6 +89,14 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string PartnerServerName { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the secondary.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the secondary database to create.")]
+        [ValidateNotNullOrEmpty]
+        public string PartnerDatabaseName { get; set; }
+
+        /// <summary>
         /// Gets or sets the read intent of the secondary (ReadOnly is not yet supported).
         /// </summary>
         [Parameter(Mandatory = false,
@@ -148,7 +156,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             // We try to get the database.  Since this is a create secondary database operation, we don't want the secondary database to already exist
             try
             {
-                ModelAdapter.GetDatabase(this.PartnerResourceGroupName, this.PartnerServerName, this.DatabaseName);
+                ModelAdapter.GetDatabase(this.PartnerResourceGroupName, this.PartnerServerName, GetEffectivePartnerDatabaseName(this.DatabaseName, this.PartnerDatabaseName));
             }
             catch (CloudException ex)
             {
@@ -187,6 +195,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 DatabaseName = this.DatabaseName,
                 PartnerResourceGroupName = this.PartnerResourceGroupName,
                 PartnerServerName = this.PartnerServerName,
+                PartnerDatabaseName = GetEffectivePartnerDatabaseName(this.DatabaseName, this.PartnerDatabaseName),
                 SecondaryElasticPoolName = this.SecondaryElasticPoolName,
                 AllowConnections = this.AllowConnections,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
@@ -230,6 +239,17 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             {
                 ModelAdapter.CreateLinkWithNewSdk(entity.First().PartnerResourceGroupName, entity.First().PartnerServerName, entity.First())
             };
+        }
+
+        /// <summary>
+        /// Returns the partner database name to be used in request based on input
+        /// </summary>
+        /// <param name="database">Source database name</param>
+        /// <param name="partnerDatabase">Partner database name if given</param>
+        /// <returns>The input entity</returns>
+        private string GetEffectivePartnerDatabaseName(string database, string partnerDatabase)
+        {
+            return string.IsNullOrEmpty(partnerDatabase) ? database : partnerDatabase;
         }
     }
 }

@@ -15,7 +15,7 @@ Creates a policy assignment.
 
 ### DefaultParameterSet (Default)
 ```
-New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>] [-Metadata <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-AssignIdentity] [-Location <String>]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -23,7 +23,7 @@ New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-D
 
 ### PolicyParameterObjectParameterSet
 ```
-New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
  -PolicyParameterObject <Hashtable> [-Metadata <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
  [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
@@ -32,7 +32,7 @@ New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-D
 
 ### PolicyParameterStringParameterSet
 ```
-New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
  -PolicyParameter <String> [-Metadata <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
  [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
@@ -41,7 +41,7 @@ New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-D
 
 ### PolicySetParameterObjectParameterSet
 ```
-New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
  -PolicyParameterObject <Hashtable> [-Metadata <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
  [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
@@ -50,7 +50,7 @@ New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-D
 
 ### PolicySetParameterStringParameterSet
 ```
-New-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
  -PolicyParameter <String> [-Metadata <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
  [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
@@ -438,7 +438,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
