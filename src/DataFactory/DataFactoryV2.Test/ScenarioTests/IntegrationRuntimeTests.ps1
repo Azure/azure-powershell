@@ -64,6 +64,12 @@ function Test-SelfHosted-IntegrationRuntime
             -Force
         Assert-AreEqual $result.Description $description
 
+        $status = Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $irname `
+            -Status
+        Assert-NotNull $status.LatestVersion
+
         Remove-AzDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
     }
     finally
@@ -78,13 +84,17 @@ Creates a SSIS-Azure integration runtime and then does operations.
 Deletes the created integration runtime at the end.
 
 To record this test,
-1. Prepare a Azure SQL Server, which will be used to create SSISDB during provisionning the SSIS-IR.
+1. Prepare a Azure SQL Server, which will be used to create SSISDB during provisionning the SSIS-IR. Besides, Prepare an ARM VNet
+   and two public IPs (which should be in standard SKU and should have DNS names) in the same subscription and region as the SSIS-IR.
 2. If you are using a existing Azure SQL Server, make sure there is no existed database with name 'SSISDB'.
-3. Configure the Azure SQL Server with either way below:
+3. Configure the Azure SQL Server and the network resources with either way below:
     a. Set following environment variables:
         CatalogServerEndpoint: The catalog server endpoint for catalog database (SSISDB)
         CatalogAdminUsername: The admin user name on this server
         CatalogAdminPassword: The password of the admin user.
+        VnetId: The resource id of the vnet.
+        FirstPublicIpId: The resource id of the first public IP address.
+        SecondPublicIpId: The resource id of the second public IP address.
     b. Set the variables directly in script.
 
 NOTE: this test will be running for 25 minutes to finish the SSIS-IR provision.
@@ -143,6 +153,51 @@ function Test-SsisAzure-IntegrationRuntime
         $secpasswd = ConvertTo-SecureString $catalogAdminPassword -AsPlainText -Force
         $mycreds = New-Object System.Management.Automation.PSCredential($catalogAdminUsername, $secpasswd)
 
+		# Prepare express custom setup
+		# Create setup for cmdkey
+		$targetName = 'fakeserver'
+		$userName = 'fakeuser'
+		$password = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString('fakepassword')
+		$setup1 = New-Object Microsoft.Azure.Management.DataFactory.Models.CmdkeySetup($targetName, $userName, $password)
+
+		# Create setup for environment variable
+		$variableName = 'name'
+		$variableValue = 'value'
+		$setup2 = New-Object Microsoft.Azure.Management.DataFactory.Models.EnvironmentVariableSetup($variableName, $variableValue)
+
+		# Create setup for 3rd party component without license Key
+		$componentName1 = 'componentName1'
+		$setup3 = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($componentName1)
+
+		# Create setup for 3rd party component with license Key
+		$componentName2 = 'componentName2'
+		$licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString('fakelicensekey')
+		$setup4 = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($componentName2, $licenseKey)
+
+		$setups = New-Object System.Collections.ArrayList
+		$setups.Add($setup1)
+		$setups.Add($setup2)
+		# Disable these two setup as it cannot be faked and the other two have already covered the function test
+		# $setups.Add($setup3)
+		# $setups.Add($setup4)
+
+        # Replace following variables with network resource ids
+        $vnetId = $Env:VnetId
+        $firstPublicIpId = $Env:FirstPublicIpId
+        $secondPublicIpId = $Env:SecondPublicIpId
+        
+        if ($vnetId -eq $null){
+            $vnetId = 'fakeid'
+        }
+
+        if ($firstPublicIpId -eq $null){
+            $firstPublicIpId = 'fakeid'
+        }
+
+        if ($secondPublicIpId -eq $null){
+            $secondPublicIpId = 'fakeid'
+        }
+
         $actual = Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
@@ -159,6 +214,10 @@ function Test-SsisAzure-IntegrationRuntime
             -Edition Enterprise `
             -DataProxyIntegrationRuntimeName $proxyIrName `
             -DataProxyStagingLinkedServiceName $lsname `
+            -ExpressCustomSetup $setups `
+            -VNetId $vnetId `
+            -Subnet "default" `
+            -PublicIPs @($firstPublicIpId, $secondPublicIpId) `
             -Force
 
         $expected = Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `

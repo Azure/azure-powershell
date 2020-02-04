@@ -94,5 +94,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(
                 _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadFullRestore");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
+        public void TestAzureVmWorkloadFullRestoreWithFiles()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadFullRestoreWithFiles");
+        }
     }
 }

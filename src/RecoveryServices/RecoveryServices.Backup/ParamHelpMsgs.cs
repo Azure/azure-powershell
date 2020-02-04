@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         internal static class Item
         {
-            public const string ItemName = "Name of the item.";
+            public const string ItemName = "UniqueName of the backed up item.";
             public const string AzureVMServiceName = "Cloud Service Name for Azure Classic Compute VM.";
             public const string AzureVMResourceGroupName = "Resource Group Name for Azure Compute VM .";
             public const string ProtectedItem = "Filter value for status of job.";
@@ -91,6 +91,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string BackupType = "Specifies the type of backup to be taken for an on-demand backup. Allowed values are “CopyOnlyFull”, “Full”, “Differential”, “Log”.";
             public const string EnableCompression = "A switch which will specify that the requested on-demand SQL backup should be compressed.";
             public const string ParentID = "Specified the ARM ID of an Instance or AG.";
+            public const string FriendlyName = "FriendlyName of the backed up item";
         }
 
         internal static class ProtectableItem

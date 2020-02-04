@@ -40,6 +40,7 @@ using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Proper
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using System.Management.Automation;
 using Microsoft.Rest;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -481,26 +482,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        private List<ResourceManagementErrorWithDetails> HandleError(Exception ex)
+        private List<ErrorResponse> HandleError(Exception ex)
         {
             if (ex == null)
             {
                 return null;
             }
 
-            ResourceManagementErrorWithDetails error = null;
+            ErrorResponse error = null;
             var innerException = HandleError(ex.InnerException);
             if (ex is CloudException)
             {
                 var cloudEx = ex as CloudException;
-                error = new ResourceManagementErrorWithDetails(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
+                error = new ErrorResponse(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
             }
             else
             {
-                error = new ResourceManagementErrorWithDetails(null, ex.Message, null, innerException);
+                error = new ErrorResponse(null, ex.Message, null, innerException);
             }
 
-            return new List<ResourceManagementErrorWithDetails> { error };
+            return new List<ErrorResponse> { error };
 
         }
 
@@ -958,7 +959,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return result.ToPSResourceGroupDeployment(parameters.ResourceGroupName);
         }
 
-        private void DisplayInnerDetailErrorMessage(ResourceManagementErrorWithDetails error)
+        private void DisplayInnerDetailErrorMessage(ErrorResponse error)
         {
             WriteError(string.Format(ErrorFormat, error.Code, error.Message));
             if (error.Details != null)
@@ -1168,6 +1169,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 var resourceType = provider.ResourceTypes
                                            .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
                                            .FirstOrDefault();
+                if (resourceType == null)
+                {
+                    string topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceTypeWithProvider(resourceIdentifier.ResourceType);
+                    resourceType = provider.ResourceTypes
+                                               .Where(t => string.Equals(t.ResourceType, topLevelResourceType, StringComparison.OrdinalIgnoreCase))
+                                               .FirstOrDefault();
+                }
                 if (resourceType != null)
                 {
                     apiVersion = resourceType.ApiVersions.Contains(apiVersion) ? apiVersion : resourceType.ApiVersions.FirstOrDefault();

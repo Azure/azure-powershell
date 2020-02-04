@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$location = "westus"
+$location = "southeastasia"
 $resourceGroupName = "pstestwlRG1bca8"
 $vaultName = "pstestwlRSV1bca8"
 $newPolicyName = "testSqlPolicy"

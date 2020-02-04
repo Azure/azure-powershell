@@ -106,22 +106,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
             }
 
             // ExtensionProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new VirtualMachineScaleSetExtensionProfile();
+                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new PSVirtualMachineScaleSetExtensionProfile();
             }
 
             // Extensions
             if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<VirtualMachineScaleSetExtension>();
+                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<PSVirtualMachineScaleSetExtension>();
             }
 
-            var vExtensions = new VirtualMachineScaleSetExtension();
+            var vExtensions = new PSVirtualMachineScaleSetExtension();
 
             vExtensions.Name = this.IsParameterBound(c => c.Name) ? this.Name : null;
             vExtensions.ForceUpdateTag = this.IsParameterBound(c => c.ForceUpdateTag) ? this.ForceUpdateTag : null;

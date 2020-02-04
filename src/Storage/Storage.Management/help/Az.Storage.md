@@ -257,6 +257,9 @@ Removes a storage table.
 ### [Remove-AzStorageTableStoredAccessPolicy](Remove-AzStorageTableStoredAccessPolicy.md)
 Removes a stored access policy from an Azure storage table.
 
+### [Revoke-AzStorageAccountUserDelegationKeys](Revoke-AzStorageAccountUserDelegationKeys.md)
+Revoke all User Delegation keys of a Storage account.
+
 ### [Set-AzCurrentStorageAccount](Set-AzCurrentStorageAccount.md)
 Modifies the current Storage account of the specified subscription.
 

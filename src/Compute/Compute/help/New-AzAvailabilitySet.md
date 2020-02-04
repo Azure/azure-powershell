@@ -125,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProximityPlacementGroupId
-The Id of ProximityPlacementGroup
+The resource id of the Proximity Placement Group to use with this availability set.
 
 ```yaml
 Type: System.String

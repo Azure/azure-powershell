@@ -63,6 +63,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.Eula = this.Eula;
                     }
 
+                    if (this.IsParameterBound(c => c.HyperVGeneration))
+                    {
+                        galleryImage.HyperVGeneration = this.HyperVGeneration;
+                    }
+
                     if (this.IsParameterBound(c => c.PrivacyStatementUri))
                     {
                         galleryImage.PrivacyStatementUri = this.PrivacyStatementUri;
@@ -245,17 +250,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public string Eula { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string PrivacyStatementUri { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string ReleaseNoteUri { get; set; }
+        public string[] DisallowedDiskType { get; set; } 
 
         [Parameter(
             Mandatory = false,
@@ -265,17 +260,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tag { get; set; }
+        public string Eula { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public int MinimumVCPU { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public int MaximumVCPU { get; set; }
+        [PSArgumentCompleter("V1", "V2")]
+        public string HyperVGeneration { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -285,12 +276,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public int MinimumVCPU { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public int MaximumMemory { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public string[] DisallowedDiskType { get; set; }
+        public int MaximumVCPU { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string PrivacyStatementUri { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -300,12 +301,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public string PurchasePlanProduct { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public string PurchasePlanPublisher { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public string PurchasePlanProduct { get; set; }
+        public string ReleaseNoteUri { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public Hashtable Tag { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryImageDefinition", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -527,17 +538,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public string Eula { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string PrivacyStatementUri { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string ReleaseNoteUri { get; set; }
+        public string[] DisallowedDiskType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -547,17 +548,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public int MinimumVCPU { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public int MaximumVCPU { get; set; }
+        public string Eula { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -567,12 +558,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public int MinimumVCPU { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public int MaximumMemory { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public string[] DisallowedDiskType { get; set; }
+        public int MaximumVCPU { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string PrivacyStatementUri { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -582,11 +583,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public string PurchasePlanProduct { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public string PurchasePlanPublisher { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public string PurchasePlanProduct { get; set; }
+        public string ReleaseNoteUri { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public Hashtable Tag { get; set; }
     }
 }

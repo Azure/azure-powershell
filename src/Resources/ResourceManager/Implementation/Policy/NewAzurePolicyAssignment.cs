@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment scope parameter
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentScopeHelp)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentScopeHelp)]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Description = this.Description ?? null,
                     Scope = this.Scope,
                     NotScopes = this.NotScope ?? null,
-                    Metadata = this.Metadata == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Metadata).ToString()),
+                    Metadata = this.Metadata == null ? null : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)),
                     EnforcementMode = EnforcementMode ?? PolicyAssignmentEnforcementMode.Default,
                     Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject)
                 }

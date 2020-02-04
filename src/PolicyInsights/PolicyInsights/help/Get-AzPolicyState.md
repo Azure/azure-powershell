@@ -189,7 +189,7 @@ Gets latest policy state records generated within the date range specified for a
 
 ### Example 17: Get latest policy states in current subscription scope, with Filter query option
 ```powershell
-PS C:\> Get-AzPolicyState -Filter "(PolicyDefinitionAction eq 'deny' or PolicyDefinitionAction eq 'audit') and IsCompliant eq false and ResourceLocation ne 'eastus'"
+PS C:\> Get-AzPolicyState -Filter "(PolicyDefinitionAction eq 'deny' or PolicyDefinitionAction eq 'audit') and ComplianceState eq 'NonCompliant' and ResourceLocation ne 'eastus'"
 ```
 
 Gets latest policy state records generated in the last day for all resources within the subscription in current session context.
@@ -205,7 +205,7 @@ The command returns the count of the policy state records only, which is returne
 
 ### Example 19: Get latest policy states in current subscription scope, with Apply specifying grouping with aggregation
 ```powershell
-PS C:\> Get-AzPolicyState -Filter "IsCompliant eq false" -Apply "groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId), aggregate(`$count as NumStates))" -OrderBy "NumStates desc" -Top 5
+PS C:\> Get-AzPolicyState -Filter "ComplianceState eq 'NonCompliant'" -Apply "groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId), aggregate(`$count as NumStates))" -OrderBy "NumStates desc" -Top 5
 ```
 
 Gets latest policy state records generated in the last day for all resources within the subscription in current session context. 
@@ -215,7 +215,7 @@ It orders the results by the count aggregation in descending order, and takes on
 
 ### Example 20: Get latest policy states in current subscription scope, with Apply specifying grouping without aggregation
 ```powershell
-PS C:\> Get-AzPolicyState -Filter "IsCompliant eq false" -Apply "groupby((ResourceId))"
+PS C:\> Get-AzPolicyState -Filter "ComplianceState eq 'NonCompliant'" -Apply "groupby((ResourceId))"
 ```
 
 Gets latest policy state records generated in the last day for all resources within the subscription in current session context. 
@@ -225,10 +225,10 @@ This generates the list of all resources within the subscription that are non-co
 
 ### Example 21: Get latest policy states in current subscription scope, with Apply specifying multiple groupings
 ```powershell
-PS C:\> Get-AzPolicyState -Filter "IsCompliant eq false" -Apply "groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId, ResourceId))/groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId), aggregate(`$count as NumNonCompliantResources))" -OrderBy "NumNonCompliantResources desc" -Top 5
+PS C:\> Get-AzPolicyState -Filter "ComplianceState eq 'NonCompliant'" -Apply "groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId, ResourceId))/groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId), aggregate(`$count as NumNonCompliantResources))" -OrderBy "NumNonCompliantResources desc" -Top 5
 ```
 
-### Example 22: Get latest policy states including policy evaluation details for a resource 
+### Example 22: Get latest policy states including policy evaluation details for a resource
 ```powershell
 PS C:\> Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myns1/eventhubs/eh1/consumergroups/cg1" -Expand "PolicyEvaluationDetails"
 ```

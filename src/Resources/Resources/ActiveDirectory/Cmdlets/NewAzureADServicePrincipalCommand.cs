@@ -22,6 +22,7 @@ using System;
 using System.Management.Automation;
 using System.Security;
 using System.Threading;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -206,6 +207,28 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         HomePage = uri
                     };
 
+                    if (this.IsParameterBound(c => c.PasswordCredential))
+                    {
+                        appParameters.PasswordCredentials = PasswordCredential;
+                    }
+                    else if (this.IsParameterBound(c => c.CertValue))
+                    {
+                        appParameters.KeyCredentials = new PSADKeyCredential[]
+                            {
+                            new PSADKeyCredential
+                            {
+                                StartDate = StartDate,
+                                EndDate = EndDate,
+                                KeyId = Guid.NewGuid(),
+                                CertValue = CertValue
+                            }
+                            };
+                    }
+                    else if (this.IsParameterBound(c => c.KeyCredential))
+                    {
+                        appParameters.KeyCredentials = KeyCredential;
+                    }
+
                     if (ShouldProcess(target: appParameters.DisplayName, action: string.Format("Adding a new application for with display name '{0}'", appParameters.DisplayName)))
                     {
                         var application = ActiveDirectoryClient.CreateApplication(appParameters);
@@ -218,28 +241,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     ApplicationId = ApplicationId,
                     AccountEnabled = true
                 };
-
-                if (this.IsParameterBound(c => c.PasswordCredential))
-                {
-                    createParameters.PasswordCredentials = PasswordCredential;
-                }
-                else if (this.IsParameterBound(c => c.CertValue))
-                {
-                    createParameters.KeyCredentials = new PSADKeyCredential[]
-                        {
-                            new PSADKeyCredential
-                            {
-                                StartDate = StartDate,
-                                EndDate = EndDate,
-                                KeyId = Guid.NewGuid(),
-                                CertValue = CertValue
-                            }
-                        };
-                }
-                else if (this.IsParameterBound(c => c.KeyCredential))
-                {
-                    createParameters.KeyCredentials = KeyCredential;
-                }
 
                 if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: string.Format("Adding a new service principal to be associated with an application having AppId '{0}'", createParameters.ApplicationId)))
                 {
@@ -273,20 +274,16 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
             var identifierUri = "http://" + DisplayName;
 
+            bool printPassword = false;
+            bool printUseExistingSecret = true;
+
             // Handle credentials
             var Password = Guid.NewGuid().ToString().ConvertToSecureString();
 
             // Create an application and get the applicationId
-            var passwordCredential = new PSADPasswordCredential()
-            {
-                StartDate = StartDate,
-                EndDate = EndDate,
-                KeyId = Guid.NewGuid(),
-                Password = SecureStringExtensions.ConvertToString(Password)
-            };
-
             if (!this.IsParameterBound(c => c.ApplicationId))
             {
+                printUseExistingSecret = false;
                 CreatePSApplicationParameters appParameters = new CreatePSApplicationParameters
                 {
                     DisplayName = DisplayName,
@@ -294,7 +291,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     HomePage = identifierUri,
                     PasswordCredentials = new PSADPasswordCredential[]
                     {
-                        passwordCredential
+                        new PSADPasswordCredential()
+                        {
+                            StartDate = StartDate,
+                            EndDate = EndDate,
+                            KeyId = Guid.NewGuid(),
+                            Password = SecureStringExtensions.ConvertToString(Password)
+                        }
                     }
                 };
 
@@ -303,6 +306,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     var application = ActiveDirectoryClient.CreateApplication(appParameters);
                     ApplicationId = application.ApplicationId;
                     WriteVerbose(string.Format("No application id provided - created new AD application with application id '{0}'", ApplicationId));
+                    printPassword = true;
                 }
             }
 
@@ -310,10 +314,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 ApplicationId = ApplicationId,
                 AccountEnabled = true,
-                PasswordCredentials = new PSADPasswordCredential[]
-                {
-                    passwordCredential
-                }
             };
 
             var shouldProcessMessage = string.Format("Adding a new service principal to be associated with an application " +
@@ -342,7 +342,14 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: shouldProcessMessage))
             {
                 PSADServicePrincipalWrapper servicePrincipal = new PSADServicePrincipalWrapper(ActiveDirectoryClient.CreateServicePrincipal(createParameters));
-                servicePrincipal.Secret = Password;
+                if(printPassword)
+                {
+                    servicePrincipal.Secret = Password;
+                }
+                else if(printUseExistingSecret)
+                {
+                    WriteVerbose(String.Format(ProjectResources.ServicePrincipalCreatedWithCredentials, ApplicationId));
+                }
                 WriteObject(servicePrincipal);
                 if (SkipRoleAssignment())
                 {

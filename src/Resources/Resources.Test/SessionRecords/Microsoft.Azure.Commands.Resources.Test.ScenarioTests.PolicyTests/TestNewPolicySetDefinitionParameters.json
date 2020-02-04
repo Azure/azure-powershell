@@ -1,14 +1,14 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8/providers/Microsoft.Authorization/policysetdefinitions/someName?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGI0MGJlMDYtMDRlOC00ZjcwLWFiZGUtYTUwMmIyNjQ2ZmU4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
+      "RequestUri": "/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.Authorization/policysetdefinitions/someName?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjY3Y2M5MTgtZjY0Zi00YzNmLWFhMjQtYTg1NTQ2NWY5ZDQxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"someThing\": \"someOtherThing\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "User-Agent": [
           "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "PSVersion/v6.2.3"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -31,16 +31,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:51f51bdc-16a9-481b-b31e-aa2437348863"
+          "westus:97add2cf-b14f-4f3b-9053-24e3a5590558"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "eaf5cf8c-6d7a-435e-90cc-92d718b8a83d"
+          "0c088f66-8f82-4384-8231-bfb27375f5ff"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191031T011413Z:eaf5cf8c-6d7a-435e-90cc-92d718b8a83d"
+          "WESTUS:20191202T224403Z:0c088f66-8f82-4384-8231-bfb27375f5ff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -49,7 +49,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 31 Oct 2019 01:14:13 GMT"
+          "Mon, 02 Dec 2019 22:44:03 GMT"
         ],
         "Content-Length": [
           "272"
@@ -68,14 +68,14 @@
       "StatusCode": 400
     },
     {
-      "RequestUri": "/subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8/providers/Microsoft.Authorization/policysetdefinitions/someName?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGI0MGJlMDYtMDRlOC00ZjcwLWFiZGUtYTUwMmIyNjQ2ZmU4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
+      "RequestUri": "/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.Authorization/policysetdefinitions/someName?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjY3Y2M5MTgtZjY0Zi00YzNmLWFhMjQtYTg1NTQ2NWY5ZDQxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"someThing\": \"someOtherThing\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "User-Agent": [
           "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "PSVersion/v6.2.3"
         ],
         "ParameterSetName": [
           "SubscriptionIdParameterSet"
@@ -98,16 +98,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:8a0db915-a505-4a65-95bf-c31cf2c7c067"
+          "westus:56e6e414-8e4d-4b21-959d-1e41fb792044"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "41e33fb5-d166-4cc4-abca-301d4093e2d5"
+          "d2b287e5-0784-4803-b340-3d836d10d3e5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191031T011414Z:41e33fb5-d166-4cc4-abca-301d4093e2d5"
+          "WESTUS:20191202T224404Z:d2b287e5-0784-4803-b340-3d836d10d3e5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -116,7 +116,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 31 Oct 2019 01:14:14 GMT"
+          "Mon, 02 Dec 2019 22:44:04 GMT"
         ],
         "Content-Length": [
           "272"
@@ -135,14 +135,14 @@
       "StatusCode": 400
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/managementgroups/someManagementGroup/providers/Microsoft.Authorization/policysetdefinitions/someName?api-version=2019-06-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50Z3JvdXBzL3NvbWVNYW5hZ2VtZW50R3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3BvbGljeXNldGRlZmluaXRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
+      "RequestUri": "/providers/Microsoft.Management/managementgroups/someManagementGroup/providers/Microsoft.Authorization/policysetdefinitions/someName?api-version=2019-09-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50Z3JvdXBzL3NvbWVNYW5hZ2VtZW50R3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3BvbGljeXNldGRlZmluaXRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMTktMDktMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"someThing\": \"someOtherThing\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "User-Agent": [
           "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
+          "PSVersion/v6.2.3"
         ],
         "ParameterSetName": [
           "ManagementGroupNameParameterSet"
@@ -168,13 +168,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "05f33352-d661-40f5-8a44-a2c4f242598c"
+          "0bde777c-6bb2-43ad-92ff-2912def8a258"
         ],
         "x-ms-correlation-request-id": [
-          "05f33352-d661-40f5-8a44-a2c4f242598c"
+          "0bde777c-6bb2-43ad-92ff-2912def8a258"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191031T011413Z:05f33352-d661-40f5-8a44-a2c4f242598c"
+          "WESTUS:20191202T224404Z:0bde777c-6bb2-43ad-92ff-2912def8a258"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -183,7 +183,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 31 Oct 2019 01:14:13 GMT"
+          "Mon, 02 Dec 2019 22:44:03 GMT"
         ],
         "Connection": [
           "close"
@@ -201,12 +201,12 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client '4358bf84-f563-48b9-aea0-8107d5294bf6' with object id '4358bf84-f563-48b9-aea0-8107d5294bf6' does not have authorization to perform action 'Microsoft.Authorization/policysetdefinitions/write' over scope '/providers/Microsoft.Management/managementgroups/someManagementGroup/providers/Microsoft.Authorization/policysetdefinitions/someName' or the scope is invalid. If access was recently granted, please refresh your credentials.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client '7140c269-e408-47a5-a626-a1d836b96883' with object id '7140c269-e408-47a5-a626-a1d836b96883' does not have authorization to perform action 'Microsoft.Authorization/policysetdefinitions/write' over scope '/providers/Microsoft.Management/managementgroups/someManagementGroup/providers/Microsoft.Authorization/policysetdefinitions/someName' or the scope is invalid. If access was recently granted, please refresh your credentials.\"\r\n  }\r\n}",
       "StatusCode": 403
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "0b40be06-04e8-4f70-abde-a502b2646fe8"
+    "SubscriptionId": "f67cc918-f64f-4c3f-aa24-a855465f9d41"
   }
 }

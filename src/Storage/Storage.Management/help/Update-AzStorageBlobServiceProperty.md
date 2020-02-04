@@ -42,7 +42,7 @@ C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" 
 
 StorageAccountName ResourceGroupName DefaultServiceVersion DeleteRetentionPolicy.Enabled DeleteRetentionPolicy.Days
 ------------------ ----------------- --------------------- ----------------------------- --------------------------
-myresourcegroup    mystorageaccount  2018-03-28            False
+myresourcegroup    mystorageaccount  2018-03-28            False                                                   
 ```
 
 This command sets the DefaultServiceVersion of Blob Service to 2018-03-28.

@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.Azure.Management.EdgeGateway.Models;
+﻿using Microsoft.Azure.Management.DataBoxEdge.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Trigger = Microsoft.Azure.Management.EdgeGateway.Models.Trigger;
+using System;
+using Trigger = Microsoft.Azure.Management.DataBoxEdge.Models.Trigger;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
 {

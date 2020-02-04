@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
-using DataBoxEdgeDeviceExtendedInfo = Microsoft.Azure.Management.EdgeGateway.Models.DataBoxEdgeDeviceExtendedInfo;
+using System;
+using DataBoxEdgeDeviceExtendedInfo = Microsoft.Azure.Management.DataBoxEdge.Models.DataBoxEdgeDeviceExtendedInfo;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
 {

@@ -27,5 +27,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public int? IntervalInSeconds { get; set; }
 
         public string ResourceState { get; set; }
+
+        public string HealthProbeMethod { get; set; }
+
+        public PSEnabledState? EnabledState { get; set; }
     }
 }

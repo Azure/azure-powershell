@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataBoxEdgeUser
 
 ## SYNOPSIS
-Get the created users  for this device
+Gets the configured users for a device.
 
 ## SYNTAX
 
@@ -36,17 +36,16 @@ Get-AzDataBoxEdgeUser [[-Name] <String>] [-DefaultProfile <IAzureContextContaine
 ```
 
 ## DESCRIPTION
-The **Get-AzDataBoxEdgeUser** will get the users for a device.
-If Name is provided along with ResourceGroupName and DeviceName, this will get the details by Name
+The **Get-AzDataBoxEdgeUser** cmdlet lists the users configured for a Data Box Edge device. You can mention the Name in parameters to get details about a specific user.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>  Get-AzDataBoxEdgeUser -ResourceGroupName resource-group-name -DeviceName device-name
-Name      ResourceGroupName
--------- -----------------
-usename   resource-group-name
+PS C:\>  Get-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName
+User name  Type  ResourceGroupName DeviceName
+---------  ----  ----------------- ----------
+deviceName Share resourceGroupName deviceName
 ```
 
 ## PARAMETERS
@@ -67,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeviceName
-Name of the Device
+Device Name
 
 ```yaml
 Type: System.String
@@ -97,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the user or Username
+Username
 
 ```yaml
 Type: System.String
@@ -124,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name 
+Resource Group Name
 
 ```yaml
 Type: System.String
@@ -158,7 +157,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice
 
 ## OUTPUTS
 
