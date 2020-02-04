@@ -42,7 +42,7 @@
         - Added parameter -ManagementPublicIpAddress (not mandatory) which accepts a Public IP Address object
         - Added method SetManagementIpConfiguration on firewall object - requires a subnet and a Public IP address as input - subnet name must be 'AzureFirewallManagementSubnet'
 * Corrected Get-AzNetworkSecurityGroup examples to show examples for NSG's instead of network interfaces.
-* Fixed typo in New-AzureRmVpnSite command that was preventing resource id completer from completing a parameter.
+* Fixed typo in New-AzVpnSite command that was preventing resource id completer from completing a parameter.
 * Added support for Url Confiugration in Rewrite Rules Action Set in the Application Gateway
     - New cmdlets added:
         - New-AzApplicationGatewayRewriteRuleUrlConfiguration
@@ -69,7 +69,7 @@ Fix New-AzSqlDatabaseSecondary cmdlet to check for PartnerDatabaseName existence
 
 #### Az.Storage
 * Support set Table/Queue Encryption Keytype in Create Storage Account
-    - New-AzRmStorageAccount
+    - New-AzStorageAccount
 * Show RequestId when StorageException don't have ExtendedErrorInformation
 * Fix the Example 6 of cmdlet Start-AzStorageBlobCopy
 
