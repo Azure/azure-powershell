@@ -1206,7 +1206,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("StorageAccountNameShouldNotBeEmpty", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Target Container parameter is required for this operation.
+        /// </summary>
+        public static string TargetContainerRequiredException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetContainerRequiredException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Tracking operation status URL for completion:.
         /// </summary>
