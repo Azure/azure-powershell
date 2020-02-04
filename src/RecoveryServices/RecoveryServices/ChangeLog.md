@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Support for Restore-as-files for SQL Databases.
 
 ## Version 2.6.0
 * Azure Backup Added filtering of backup item based on friendly name.

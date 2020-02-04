@@ -583,4 +583,7 @@ Please contact Microsoft for further assistance.</value>
   <data name="FriendlyNamePassedWarning" xml:space="preserve">
     <value>A friendly name might return multiple items since it is not unique. To get a unique item, please use the -name parameter. Pass the value displayed under the name column when displayed as a table or use the name field in the PS object</value>
   </data>
+  <data name="TargetContainerRequiredException" xml:space="preserve">
+    <value>Target Container parameter is required for this operation.</value>
+  </data>
 </root>
