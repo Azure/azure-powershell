@@ -35,12 +35,7 @@ PS C:\> Get-AzCosmosDBSqlDatabase -AccountName {accountName} -ResourceGroupName 
 
 Name                    : {databaseName}
 Id                      : {databaseId}
-SqlDatabaseGetResultsId :
-_rid                    :
-_ts                     :
-_etag                   :
-_colls                  :
-_users                  :
+Resource                 : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetPropertiesResource
 ```
 
 ## PARAMETERS
