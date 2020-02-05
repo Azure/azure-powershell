@@ -29,7 +29,6 @@ PS C:\> New-AzCosmosDBCassandraColumn -Name "name" -Type int
 Name Type
 ---- ----
 name int
-
 ```
 
 ## PARAMETERS

@@ -12,27 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.CosmosDB.Models;
-using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Management.CosmosDB.Models;
 
-namespace Microsoft.Azure.Commands.CosmosDB
+namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinUniqueKey"), OutputType(typeof(PSUniqueKey))]
-    public class NewAzCosmosDBGremlinUniqueKey : AzureCosmosDBCmdletBase
+    // This class was added to avoid breaking changes in consecutive versions, it should be eventually removed
+    public class PSSqlConflictResolutionPolicy : PSConflictResolutionPolicy
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.UniqueKeyPathHelpMessage)]
-        public string[] Path { get; set; }
-
-        public override void ExecuteCmdlet()
+        public PSSqlConflictResolutionPolicy() : base()
         {
-            PSUniqueKey uniqueKey = new PSUniqueKey
-            {
-                Paths = Path
-            };
+        }
 
-            WriteObject(uniqueKey);
-            return;
+        public PSSqlConflictResolutionPolicy(ConflictResolutionPolicy conflictResolutionPolicy) : base(conflictResolutionPolicy)
+        {
         }
     }
 }

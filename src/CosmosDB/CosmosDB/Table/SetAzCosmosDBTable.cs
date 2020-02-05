@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = options
             };
 
-            if (ShouldProcess(Name, "Removing CosmosDB Table"))
+            if (ShouldProcess(Name, "Setting CosmosDB Table"))
             {
                 TableGetResults tableGetResults = CosmosDBManagementClient.TableResources.CreateUpdateTableWithHttpMessagesAsync(ResourceGroupName, AccountName, Name, tableCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSTableGetResults(tableGetResults));

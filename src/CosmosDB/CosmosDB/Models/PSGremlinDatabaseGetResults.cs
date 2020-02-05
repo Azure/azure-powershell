@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
     using Microsoft.Azure.Management.CosmosDB.Models;
+    using System.Collections.Generic;
 
     public class PSGremlinDatabaseGetResults 
     {
@@ -26,6 +27,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
             Name = gremlinDatabaseGetResults.Name;
             Id = gremlinDatabaseGetResults.Id;
+            Tags = gremlinDatabaseGetResults.Tags;
+            Location = gremlinDatabaseGetResults.Location;
             Resource = new PSGremlinDatabaseGetPropertiesResource(gremlinDatabaseGetResults.Resource);
         }
 
@@ -37,6 +40,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// Gets or sets Id of the Cosmos DB Gremlin database
         /// </summary>
         public string Id { get; set; }
+        /// <summary>
+        /// Gets or sets Location of the Cosmos DB Gremlin database
+        /// </summary>
+        public string Location { get; set; }
+        /// <summary>
+        /// Gets or sets Tags of the Cosmos DB Gremlin database
+        /// </summary>
+        public IDictionary<string, string> Tags { get; set; }
         //
         public PSGremlinDatabaseGetPropertiesResource Resource { get; set; }
 

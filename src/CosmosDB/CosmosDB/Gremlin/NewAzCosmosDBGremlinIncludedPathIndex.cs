@@ -14,25 +14,11 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
-using Microsoft.Azure.Commands.CosmosDB.Helpers;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlUniqueKeyPolicy"), OutputType(typeof(PSSqlUniqueKeyPolicy))]
-    public class NewAzCosmosDBSqlUniqueKeyPolicy : AzureCosmosDBCmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinIncludedPathIndex"), OutputType(typeof(PSIndexes))]
+    public class NewAzCosmosDBGremlinIncludedPathIndex : NewAzCosmosDBSqlIncludedPathIndex
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.SqlUniqueKeysHelpMessage)]
-        public PSSqlUniqueKey[] UniqueKey { get; set; }
-
-        public override void ExecuteCmdlet()
-        {
-            PSSqlUniqueKeyPolicy uniqueKeyPolicy = new PSSqlUniqueKeyPolicy
-            {
-                UniqueKeys = UniqueKey
-            };
-
-            WriteObject(uniqueKeyPolicy);
-            return;
-        }
     }
 }

@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = options
             };
 
-            if (ShouldProcess(Name, "Creating or Updating CosmosDB Gremlin Database"))
+            if (ShouldProcess(Name, "Setting CosmosDB Gremlin Database"))
             {
                 GremlinDatabaseGetResults gremlinDatabaseGetResults = CosmosDBManagementClient.GremlinResources.CreateUpdateGremlinDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name, gremlinDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSGremlinDatabaseGetResults(gremlinDatabaseGetResults));

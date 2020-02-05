@@ -14,7 +14,9 @@
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.CosmosDB.Models;
+    using System.Collections.Generic;
 
     public class PSCassandraKeyspaceGetResults 
     {
@@ -26,6 +28,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
             Name = cassandraKeyspaceGetResults.Name;
             Id = cassandraKeyspaceGetResults.Id;
+            Location = cassandraKeyspaceGetResults.Location;
+            Tags = cassandraKeyspaceGetResults.Tags;
             Resource = new PSCassandraKeyspaceGetPropertiesResource(cassandraKeyspaceGetResults.Resource);
         }
 
@@ -33,10 +37,22 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// Gets or sets Name of the Cosmos DB Cassandra keyspace
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// Gets or sets Id of the Cosmos DB Cassandra keyspace
         /// </summary>
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets Location of the Cosmos DB Cassandra keyspace
+        /// </summary>
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets Tags of the Cosmos DB Cassandra keyspace
+        /// </summary>
+        public IDictionary<string, string> Tags { get; set; }
+
         public PSCassandraKeyspaceGetPropertiesResource Resource { get; set; }
     }
 }

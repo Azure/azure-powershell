@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = options
             };
 
-            if (ShouldProcess(Name, "Creating or Updating CosmosDB MongoDB Database"))
+            if (ShouldProcess(Name, "Setting CosmosDB MongoDB Database"))
             {
                 MongoDBDatabaseGetResults mongoDBDatabaseGetResults = CosmosDBManagementClient.MongoDBResources.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name, mongoDBDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSMongoDBDatabaseGetResults(mongoDBDatabaseGetResults));

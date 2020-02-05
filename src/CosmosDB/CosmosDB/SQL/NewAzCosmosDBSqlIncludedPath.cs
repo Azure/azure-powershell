@@ -15,23 +15,34 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlUniqueKeyPolicy"), OutputType(typeof(PSSqlUniqueKeyPolicy))]
-    public class NewAzCosmosDBSqlUniqueKeyPolicy : AzureCosmosDBCmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlIncludedPath"), OutputType(typeof(PSIncludedPath))]
+    public class NewAzCosmosDBSqlIncludedPath : AzureCosmosDBCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.SqlUniqueKeysHelpMessage)]
-        public PSSqlUniqueKey[] UniqueKey { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = Constants.IncludedPathHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string Path { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.IncludedPathIndexesHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public PSIndexes[] Index { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PSSqlUniqueKeyPolicy uniqueKeyPolicy = new PSSqlUniqueKeyPolicy
-            {
-                UniqueKeys = UniqueKey
-            };
+            PSIncludedPath pSIncludedPath = new PSIncludedPath();
 
-            WriteObject(uniqueKeyPolicy);
+            if (Path != null)
+                pSIncludedPath.Path = Path;
+
+            if(Index != null && Index.Length > 0)
+            {
+                pSIncludedPath.Indexes = new List<PSIndexes>(Index);
+            }
+
+            WriteObject(pSIncludedPath);
             return;
         }
     }

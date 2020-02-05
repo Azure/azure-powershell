@@ -10,7 +10,6 @@ schema: 2.0.0
 ## SYNOPSIS
 Deletes a CosmosDB Gremlin Database.
 
-
 ## SYNTAX
 
 ### ByNameParameterSet
@@ -32,7 +31,7 @@ The **Remove-AzCosmosDBGremlinDatabase** cmdlet deletes a CosmosDB Gremlin Datab
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCosmosDBGremlinDatabase -ResourceGroupName {rgName} -AccountName {accountName} -Name {dbName} 
+PS C:\> Remove-AzCosmosDBGremlinDatabase -ResourceGroupName {rgName} -AccountName {accountName} -Name {dbName}
 ```
 
 The cmdlet returns an object of type bool(when -PassThru is passed) which is true, if the delete was successful.

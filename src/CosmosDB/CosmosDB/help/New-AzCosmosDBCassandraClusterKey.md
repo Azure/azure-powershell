@@ -29,7 +29,6 @@ PS C:\> New-AzCosmosDBCassandraClusterKey -Name <String> -OrderBy <String>
 Name   OrderBy
 ----   -------
 {name}  Asc
-
 ```
 
 ## PARAMETERS

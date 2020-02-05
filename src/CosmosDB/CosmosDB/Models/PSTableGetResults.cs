@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.CosmosDB.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
@@ -26,6 +27,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
             Name = tableGetResults.Name;
             Id = tableGetResults.Id;
+            Location = tableGetResults.Location;
+            Tags = tableGetResults.Tags;
             Resource = new PSTableGetPropertiesResource(tableGetResults.Resource);
         }
 
@@ -33,11 +36,18 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// Gets or sets Name of the Cosmos DB Table 
         /// </summary>
         public string Name { get; set; }
-
         /// <summary>
         /// Gets or sets Id of the Cosmos DB Table
         /// </summary>
         public string Id { get; set; }
+        /// <summary>
+        /// Gets or sets Location of the Cosmos DB Table
+        /// </summary>
+        public string Location { get; set; }
+        /// <summary>
+        /// Gets or sets Tags of the Cosmos DB Table
+        /// </summary>
+        public IDictionary<string, string> Tags { get; set; }
         //
         public PSTableGetPropertiesResource Resource { get; set; }
     }

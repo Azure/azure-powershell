@@ -31,8 +31,9 @@ The **Remove-AzCosmosDBMongoDBDatabase** cmdlet deletes a CosmosDB MongoDB Datab
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCosmosDBMongoDBDatabase -ResourceGroupName {rgName} -AccountName {accountName} -Name {dbName} 
+PS C:\> Remove-AzCosmosDBMongoDBDatabase -ResourceGroupName {rgName} -AccountName {accountName} -Name {dbName}
 ```
+
 The cmdlet returns an object of type bool(when -PassThru is passed) which is true, if the delete was successful.
 
 ## PARAMETERS

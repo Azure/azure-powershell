@@ -25,6 +25,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSUniqueKeyPolicy(UniqueKeyPolicy uniqueKey)
         {
+            UniqueKeys = new List<PSUniqueKey>();
+            if (uniqueKey.UniqueKeys != null)
+            {
+                foreach (UniqueKey key in uniqueKey.UniqueKeys)
+                {
+                    UniqueKeys.Add(new PSUniqueKey(key));
+                }
+            }
         }
 
         //

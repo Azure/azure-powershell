@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
     using Microsoft.Azure.Management.CosmosDB.Models;
+    using System.Collections.Generic;
 
     public class PSMongoDBDatabaseGetResults 
     {
@@ -26,8 +27,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
             Name = mongoDBDatabaseGetResults.Name;
             Id = mongoDBDatabaseGetResults.Id;
+            Location = mongoDBDatabaseGetResults.Location;
+            Tags = mongoDBDatabaseGetResults.Tags;
             Resource = new PSMongoDBDatabaseGetPropertiesResource(mongoDBDatabaseGetResults.Resource);
-
         }
 
         /// <summary>
@@ -38,6 +40,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// Gets or sets Id of the Cosmos DB MongoDB database
         /// </summary>
         public string Id { get; set; }
+        /// <summary>
+        /// Gets or sets Location of the Cosmos DB MongoDB database
+        /// </summary>
+        public string Location { get; set; }
+        /// <summary>
+        /// Gets or sets Tags of the Cosmos DB MongoDB database
+        /// </summary>
+        public IDictionary<string, string> Tags { get; set; }
         //
         public PSMongoDBDatabaseGetPropertiesResource Resource { get; set; }
     }

@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = options
             };
 
-            if (ShouldProcess(Name, "Deleting CosmosDB Cassandra Table"))
+            if (ShouldProcess(Name, "Setting CosmosDB Cassandra Table"))
             {
                 CassandraTableGetResults cassandraTableGetResults = CosmosDBManagementClient.CassandraResources.CreateUpdateCassandraTableWithHttpMessagesAsync(ResourceGroupName, AccountName, KeyspaceName, Name, cassandraTableCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSCassandraTableGetResults(cassandraTableGetResults));

@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 }
             }
         }
-
         //
         // Summary:
         //     Gets or sets the path for which the indexing behavior applies to. Index paths
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets list of indexes for this path
         public IList<PSIndexes> Indexes { get; set; }
 
-        static public IList<Indexes> ConvertPSIndexesToIndexes(IList<PSIndexes> pSIndexes)
+        static public List<Indexes> ConvertPSIndexesToIndexes(IList<PSIndexes> pSIndexes)
         {
             List<Indexes> indexes = new List<Indexes>();
             foreach(PSIndexes pSIndex in pSIndexes)

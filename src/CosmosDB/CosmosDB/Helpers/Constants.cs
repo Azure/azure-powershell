@@ -54,8 +54,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string StoredProcedureNameHelpMessage = "Stored Prcodecure Name.";
         public const string UserDefinedFunctionNameHelpMessage = "User Defined Function Name.";
         public const string TriggerNameHelpMessage = "Trigger name.";
+        public const string SqlIndexingPolicyHelpMessage = "Indexing Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlIndexingPolicy.";
         public const string IndexingPolicyHelpMessage = "Indexing Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSIndexingPolicy.";
+        public const string SqlUniqueKeyPolciyHelpMessage = "UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlUniqueKeyPolicy. ";
         public const string UniqueKeyPolciyHelpMessage = "UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSUniqueKeyPolicy. ";
+        public const string SqlConflictResolutionPolicyHelpMessage = "ConflictResolutionPolicy Object of type PSSqlConflictResolutionPolicy, when provided this is set as the ConflictResolutionPolicy of the container.";
         public const string ConflictResolutionPolicyHelpMessage = "ConflictResolutionPolicy Object of type PSConflictResolutionPolicy, when provided this is set as the ConflictResolutionPolicy of the container.";
         public const string PartitionKeyPathHelpMessage = "Partition Key Path, e.g., '/address/zipcode'.";
         public const string SqlContainerThroughputHelpMessage = "The throughput of SQL container (RU/s). Default value is 400.";
@@ -69,6 +72,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string SqlConflictResolutionPolicyPathHelpMessage = "To be provided when the type is LastWriterWins. If provided along with ConflictResolutionPolicy parameter, it is ignored.";
         public const string SqlConflictResolutionPolicyProcedureHelpMessage = "To be provided when the type is custom. If provided along with ConflictResolutionPolicy parameter, it is ignored.";
         public const string UniqueKeyPathHelpMessage = "Array of string of path values";
+        public const string SqlUniqueKeysHelpMessage = "Array of objects of type PSSqlUniqueKey.";
         public const string IndexingPolicyIncludedPathHelpMessage = "Array of strings containing includedPath (Specifies a path within a JSON document to be included in the Azure Cosmos DB service.) elements. ";
         public const string IndexingPolicyExcludedPathHelpMessage = "Array of strings containing excludedPath(Specifies a path within a JSON document to be excluded in the Azure Cosmos DB service.)  elements. ";
         public const string IndexingPolicyAutomaticHelpMessage = "Bool to indicate if the indexing policy is automatic";
@@ -89,6 +93,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string SqlUserDefinedFunctionObjectHelpMessage = "Sql User Defined Function Object";
         public const string SqlTriggerObjectHelpMessage = "Sql trigger Object";
         public const string SqlStoredProcedureObjectHelpMessage = "Sql Stored Procedure Object";
+        public const string IncludedPathIndexesDataTypeHelpMessage = "Datatype for which the indexing behavior is applied to. Possible values include: 'String', 'Number', 'Point', 'Polygon', 'LineString', 'MultiPolygon'";
+        public const string IncludedPathIndexesPrecisionHelpMessage = "The precision of the index. -1 is maximum precision.";
+        public const string IncludedPathIndexesKindHelpMessage = "Indicates the type of index. Possible values include: 'Hash', 'Range', 'Spatial'";
+        public const string IncludedPathHelpMessage = "The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)";
+        public const string IncludedPathIndexesHelpMessage = "List of indexes for this path";
+        public const string CompositePathHelpMessage = "The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)";
+        public const string CompositePathOrderTypeHelpMessage = " Gets or sets sort order for composite paths. Possible values include: 'Ascending', 'Descending'";
 
         //MongoDB cmdlets help messages
         public const string CollectionNameHelpMessage = "Collection name.";
@@ -139,5 +150,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ConflictResolutionPolicyModeHelpMessage = "Can have the values: LastWriterWins, Custom, Manual.";
         public const string ConflictResolutionPolicyPathHelpMessage = "To be provided when the type is LastWriterWins.";
         public const string ConflictResolutionPolicyProcedureHelpMessage = "To be provided when the type is custom.";
+        public const string UniqueKeysHelpMessage = "Array of objects of type PSUniqueKey.";
     }
 }
