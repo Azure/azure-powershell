@@ -24,6 +24,7 @@
     - Refactor *-AzDeployment cmdlets to work specificly at subscription scope
     - Created aliases *-AzSubscriptionDeployment for *-AzDeployment cmdlets
 * Fix `Update-AzADApplication` when parameter `AvailableToOtherTenants` is not set 
+* Remove ApplicationObjectWithoutCredentialParameterSet to avoid AmbiguousParameterSetException.
 
 ## Version 1.10.0
 * Make -Scope optional in *-AzPolicyAssignment cmdlets with default to context subscription
