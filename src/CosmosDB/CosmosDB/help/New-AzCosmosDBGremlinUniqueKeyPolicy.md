@@ -1,35 +1,38 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekeypolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbgremlinuniquekeypolicy
 schema: 2.0.0
 ---
 
-# New-AzCosmosDBSqlUniqueKeyPolicy
+# New-AzCosmosDBGremlinUniqueKeyPolicy
 
 ## SYNOPSIS
-Creates a new CosmosDB SqlUniqueKeyPolicy object.
+Creates a new CosmosDB UniqueKeyPolicy object.
 
 ## SYNTAX
 
 ```
-New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey <PSSqlUniqueKey[]> [-DefaultProfile <IAzureContextContainer>]
+New-AzCosmosDBGremlinUniqueKeyPolicy -UniqueKey <PSUniqueKey[]> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzCosmosDBSqlUniqueKeyPolicy** cmdlet creates a new object of type PSSqlUniqueKeyPolicy.
+The **New-AzCosmosDBGremlinUniqueKeyPolicy** cmdlet creates a new object of type PSUniqueKeyPolicy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey {psUniqueKey1, psUniqueKey2}
+PS C:\> $uk = New-AzCosmosDBGremlinUniqueKey -Path "abc"
 
-UniqueKey
+ New-AzCosmosDBGremlinUniqueKeyPolicy -UniqueKey $uk,$uk
+ 
+ UniqueKey
 ---------
 {Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKey, Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKey}
 ```
+
 
 ## PARAMETERS
 
@@ -37,7 +40,7 @@ UniqueKey
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -49,10 +52,10 @@ Accept wildcard characters: False
 ```
 
 ### -UniqueKey
-Database name.
+Array of objects of type PSUniqueKey.
 
 ```yaml
-Type: PSSqlUniqueKey[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSUniqueKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +75,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKeyPolicy
+### Microsoft.Azure.Commands.CosmosDB.Models.PSUniqueKeyPolicy
 
 ## NOTES
 

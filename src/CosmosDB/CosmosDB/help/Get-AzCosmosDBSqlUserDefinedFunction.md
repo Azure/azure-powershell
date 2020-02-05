@@ -35,11 +35,7 @@ PS C:\> Get-AzCosmosDBSqlUserDefinedFunction -AccountName {accountName} -Resourc
 
 Name                               : {userDefinedFunctionName}
 Id                                 : {userDefinedFunctionId}
-SqlUserDefinedFunctionGetResultsId :
-Body                               :
-_rid                               :
-_ts                                :
-_etag                              :
+Resource                           : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUserDefinedFunctionGetPropertiesResource
 ```
 
 ## PARAMETERS
