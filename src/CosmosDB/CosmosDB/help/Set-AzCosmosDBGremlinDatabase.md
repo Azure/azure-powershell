@@ -36,6 +36,7 @@ PS C:\> Set-AzCosmosDBGremlinDatabase -ResourceGroupName {rgName} -AccountName {
 Name    Id   Resource
 {name}  {id} Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinDatabaseGetPropertiesResource
 ```
+
 Resource Object contains _rid, _ts, _etag.
 
 ## PARAMETERS

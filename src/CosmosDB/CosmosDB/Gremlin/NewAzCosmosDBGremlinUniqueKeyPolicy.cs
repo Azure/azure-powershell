@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinUniqueKeyPolicy"), OutputType(typeof(PSUniqueKeyPolicy))]
     public class NewAzCosmosDBGremlinUniqueKeyPolicy : AzureCosmosDBCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.DatabaseNameHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.UniqueKeysHelpMessage)]
         public PSUniqueKey[] UniqueKey { get; set; }
 
         public override void ExecuteCmdlet()

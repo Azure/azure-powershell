@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
             }
 
-            if (ShouldProcess(Name, "Removing CosmosDB Table"))
+            if (ShouldProcess(Name, "Deleting CosmosDB Table"))
             {
                 CosmosDBManagementClient.TableResources.DeleteTableWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult();
 

@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSCassandraSchema(CassandraSchema cassandraSchema)
         {
-
         }
 
         //

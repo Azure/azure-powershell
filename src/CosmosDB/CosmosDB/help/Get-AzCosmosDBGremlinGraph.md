@@ -35,7 +35,6 @@ PS C:\> Get-AzCosmosDBGremlinGraph -ResourceGroupName {rgName} -AccountName {acc
 
 Name    Id   Resource
 {name}  {id} Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinGraphGetPropertiesResource
-
 ```
 
 Resource Object contains IndexingPolicy, PartitionKey, DefaultTtl, UniqueKeyPolicy, ConflictResolutionPolicy, _rid, _ts, _etag.

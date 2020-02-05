@@ -29,16 +29,41 @@ function Test-GremlinOperationsCmdlets
   $NewDatabase =  Set-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   Assert-AreEqual $NewDatabase.Name $DatabaseName
 
-  $NewGraph = Set-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+  #Indexing Policy Creation
+  $ipath1 = New-AzCosmosDBGremlinIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+  $ipath2 = New-AzCosmosDBGremlinIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+  $IncludedPath = New-AzCosmosDBGremlinIncludedPath -Path "/*" -Index $ipath1, $ipath2
+  $SpatialSpec = New-AzCosmosDBGremlinSpatialSpec -Path  "/mySpatialPath/*" -Type  "Point", "LineString", "Polygon", "MultiPolygon"
+  $cp1 = New-AzCosmosDBGremlinCompositePath -Path "/abc" -Order Ascending
+  $cp2 = New-AzCosmosDBGremlinCompositePath -Path "/aberc" -Order Descending
+  $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
+
+  $IndexingPolicy = New-AzCosmosDBGremlinIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
+  
+  #UniqueKey Creation
+  $p1 = New-AzCosmosDBGremlinUniqueKey -Path "/myUniqueKey3"
+  $p2 = New-AzCosmosDBGremlinUniqueKey -Path "/myUniqueKey4"
+  $p3 = New-AzCosmosDBGremlinUniqueKey -Path "/myUniqueKey2"
+  $p4 = New-AzCosmosDBGremlinUniqueKey -Path "/myUniqueKey1"
+
+  $uk1 = New-AzCosmosDBGremlinUniqueKeyPolicy -UniqueKey $p1,$p2,$p3,$p4
+
+  $NewGraph = Set-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -IndexingPolicy $IndexingPolicy  -UniqueKeyPolicy $uk1
   Assert-AreEqual $NewGraph.Name $GraphName
+  Assert-AreEqual $NewGraph.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
+  Assert-AreEqual $NewGraph.Resource.IndexingPolicy.IndexingMode $IndexingPolicy.IndexingMode
+  Assert-AreEqual $NewGraph.Resource.IndexingPolicy.IncludedPath.Path $IndexingPolicy.IncludedPath.Path
+  Assert-AreEqual $NewGraph.Resource.IndexingPolicy.CompositeIndexes.Count 2
+  Assert-AreEqual $NewGraph.Resource.IndexingPolicy.SpatialIndexes.Path $SpatialSpec.Path
+  Assert-AreEqual $NewGraph.Resource.UniqueKeyPolicy.UniqueKeys.Count 4
 
   $Database = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   Assert-AreEqual $NewDatabase.Id $Database.Id
   Assert-AreEqual $NewDatabase.Name $Database.Name
-  Assert-AreEqual $NewDatabase.GremlinDatabaseGetResultsId $Database.GremlinDatabaseGetResultsId
-  Assert-AreEqual $NewDatabase._rid $Database._rid
-  Assert-AreEqual $NewDatabase._ts $Database._ts
-  Assert-AreEqual $NewDatabase._etag $Database._etag
+  Assert-AreEqual $NewDatabase.Resource.Id $Database.Resource.Id
+  Assert-AreEqual $NewDatabase.Resource._rid $Database.Resource._rid
+  Assert-AreEqual $NewDatabase.Resource._ts $Database.Resource._ts
+  Assert-AreEqual $NewDatabase.Resource._etag $Database.Resource._etag
 
   $Graph = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName
   Assert-AreEqual $NewGraph.Id $Graph.Id

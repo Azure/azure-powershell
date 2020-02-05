@@ -39,8 +39,33 @@ function Test-SqlOperationsCmdlets
   $NewDatabase =  Set-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   Assert-AreEqual $NewDatabase.Name $DatabaseName
 
-  $NewContainer = Set-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+  #Indexing Policy Creation
+  $ipath1 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+  $ipath2 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+  $IncludedPath = New-AzCosmosDBSqlIncludedPath -Path "/*" -Index $ipath1, $ipath2
+  $SpatialSpec = New-AzCosmosDBSqlSpatialSpec -Path  "/mySpatialPath/*" -Type  "Point", "LineString", "Polygon", "MultiPolygon"
+  $cp1 = New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
+  $cp2 = New-AzCosmosDBSqlCompositePath -Path "/aberc" -Order Descending
+  $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
+
+  $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
+  
+  #UniqueKey Creation
+  $p1 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey3"
+  $p2 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey4"
+  $p3 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey2"
+  $p4 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey1"
+
+  $uk1 = New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey $p1,$p2,$p3,$p4
+
+  $NewContainer = Set-AzCosmosDBSqlContainer  -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -IndexingPolicy $IndexingPolicy  -UniqueKeyPolicy $uk1
   Assert-AreEqual $NewContainer.Name $ContainerName
+  Assert-AreEqual $NewContainer.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
+  Assert-AreEqual $NewContainer.Resource.IndexingPolicy.IndexingMode $IndexingPolicy.IndexingMode
+  Assert-AreEqual $NewContainer.Resource.IndexingPolicy.IncludedPath.Path $IndexingPolicy.IncludedPath.Path
+  Assert-AreEqual $NewContainer.Resource.IndexingPolicy.CompositeIndexes.Count 2
+  Assert-AreEqual $NewContainer.Resource.IndexingPolicy.SpatialIndexes.Path $SpatialSpec.Path
+  Assert-AreEqual $NewContainer.Resource.UniqueKeyPolicy.UniqueKeys.Count 4
 
   $NewStoredProcedure = Set-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName -Body $Body
   Assert-AreEqual $NewStoredProcedure.Name $StoredProcedureName

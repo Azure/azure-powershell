@@ -19,8 +19,8 @@ using Microsoft.Azure.Commands.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlConflictResolutionPolicy"), OutputType(typeof(PSSqlConflictResolutionPolicy))]
-    public class NewAzCosmosDBSqlConflictResolutionPolicy : AzureCosmosDBCmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinConflictResolutionPolicy"), OutputType(typeof(PSConflictResolutionPolicy))]
+    public class NewAzCosmosDBGremlinConflictResolutionPolicy : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.ConflictResolutionPolicyModeHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
-            PSSqlConflictResolutionPolicy conflictResolutionPolicy = new PSSqlConflictResolutionPolicy
+            PSConflictResolutionPolicy conflictResolutionPolicy = new PSConflictResolutionPolicy
             {
                 Mode = Type
             };
@@ -51,5 +51,4 @@ namespace Microsoft.Azure.Commands.CosmosDB
             return;
         }
     }
-
 }

@@ -38,6 +38,7 @@ PS C:\> Set-AzCosmosDBMongoDBCollection -ResourceGroupName {rgName} -AccountName
 Name    Id   Resource
 {name}  {id} Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBCollectionGetPropertiesResource
 ```
+
 Resource Object contains MongoIndexes, _rid, _ts, _etag properties.
 
 ## PARAMETERS

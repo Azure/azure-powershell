@@ -11,28 +11,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Microsoft.Azure.Management.CosmosDB.Models;
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.CosmosDB.Models;
-using Microsoft.Azure.Commands.CosmosDB.Helpers;
-
-namespace Microsoft.Azure.Commands.CosmosDB
+namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinUniqueKey"), OutputType(typeof(PSUniqueKey))]
-    public class NewAzCosmosDBGremlinUniqueKey : AzureCosmosDBCmdletBase
+
+    public class PSSqlUniqueKeyPolicy : PSUniqueKeyPolicy
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.UniqueKeyPathHelpMessage)]
-        public string[] Path { get; set; }
-
-        public override void ExecuteCmdlet()
+        public PSSqlUniqueKeyPolicy() : base()
         {
-            PSUniqueKey uniqueKey = new PSUniqueKey
-            {
-                Paths = Path
-            };
+        }        
 
-            WriteObject(uniqueKey);
-            return;
+        public PSSqlUniqueKeyPolicy(UniqueKeyPolicy uniqueKey) : base(uniqueKey)
+        {
         }
     }
 }

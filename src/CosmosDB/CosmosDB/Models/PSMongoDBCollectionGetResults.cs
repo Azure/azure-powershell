@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
             Name = mongoDBCollectionGetResults.Name;
             Id = mongoDBCollectionGetResults.Id;
+            Location = mongoDBCollectionGetResults.Location;
+            Tags = mongoDBCollectionGetResults.Tags;
             Resource = new PSMongoDBCollectionGetPropertiesResource(mongoDBCollectionGetResults.Resource);
         }
 
@@ -35,13 +37,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// Gets or sets Name of the Cosmos DB MongoDB Collection 
         /// </summary>
         public string Name { get; set; }
-
         /// <summary>
         /// Gets or sets Id of the Cosmos DB MongoDB Collection
         /// </summary>
         public string Id { get; set; }
+        /// <summary>
+        /// Gets or sets Location of the Cosmos DB MongoDB Collection
+        /// </summary>
+        public string Location { get; set; }
+        /// <summary>
+        /// Gets or sets Tags of the Cosmos DB MongoDB Collection
+        /// </summary>
+        public IDictionary<string, string> Tags { get; set; }
         //
         public PSMongoDBCollectionGetPropertiesResource Resource { get; set; }
-
     }
 }

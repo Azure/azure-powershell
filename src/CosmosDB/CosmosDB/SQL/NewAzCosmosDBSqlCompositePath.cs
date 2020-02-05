@@ -15,23 +15,35 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlUniqueKeyPolicy"), OutputType(typeof(PSSqlUniqueKeyPolicy))]
-    public class NewAzCosmosDBSqlUniqueKeyPolicy : AzureCosmosDBCmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlCompositePath"), OutputType(typeof(PSCompositePath))]
+    public class NewAzCosmosDBSqlCompositePath : AzureCosmosDBCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.SqlUniqueKeysHelpMessage)]
-        public PSSqlUniqueKey[] UniqueKey { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = Constants.CompositePathHelpMessage)]
+        public string Path { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.CompositePathOrderTypeHelpMessage)]
+        [PSArgumentCompleter("Ascending", "Descending")]
+        public string Order { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PSSqlUniqueKeyPolicy uniqueKeyPolicy = new PSSqlUniqueKeyPolicy
-            {
-                UniqueKeys = UniqueKey
-            };
+            PSCompositePath pSCompositePath = new PSCompositePath();
 
-            WriteObject(uniqueKeyPolicy);
+            if(Path != null)
+            {
+                pSCompositePath.Path = Path;
+            }
+
+            if(Order != null)
+            {
+                pSCompositePath.Order = Order;
+            }
+
+            WriteObject(pSCompositePath);
             return;
         }
     }

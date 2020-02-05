@@ -81,6 +81,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string ConflictResolutionPolicyProcedure { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.ConflictResolutionPolicyHelpMessage)]
+        [ValidateNotNull]
+        public PSConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.GremlinDatabaseObjectHelpMessage)]
         [ValidateNotNull]
         public PSGremlinDatabaseGetResults InputObject { get; set; }
@@ -113,11 +117,23 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (UniqueKeyPolicy != null)
             {
-                UniqueKeyPolicy uniqueKeyPolicy = new UniqueKeyPolicy();
+                UniqueKeyPolicy uniqueKeyPolicy = new UniqueKeyPolicy
+                {
+                    UniqueKeys = new List<UniqueKey>()
+                };
 
                 foreach (PSUniqueKey uniqueKey in UniqueKeyPolicy.UniqueKeys)
                 {
-                    UniqueKey key = new UniqueKey(uniqueKey.Paths);
+                    UniqueKey key = new UniqueKey
+                    {
+                        Paths = new List<string>()
+                    };
+
+                    foreach (string path in uniqueKey.Paths)
+                    {
+                        key.Paths.Add(path);
+                    }
+
                     uniqueKeyPolicy.UniqueKeys.Add(key);
                 }
 
@@ -127,6 +143,21 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (TtlInSeconds != null)
             {
                 gremlinGraphResource.DefaultTtl = TtlInSeconds;
+            }
+
+            if (ConflictResolutionPolicy != null)
+            {
+                ConflictResolutionPolicyMode = ConflictResolutionPolicy.Mode;
+
+                if (ConflictResolutionPolicy.ConflictResolutionPath != null)
+                {
+                    ConflictResolutionPolicyPath = ConflictResolutionPolicy.ConflictResolutionPath;
+                }
+
+                if (ConflictResolutionPolicy.ConflictResolutionProcedure != null)
+                {
+                    ConflictResolutionPolicyProcedure = ConflictResolutionPolicy.ConflictResolutionProcedure;
+                }
             }
 
             if (ConflictResolutionPolicyMode != null)
@@ -150,50 +181,66 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (IndexingPolicy != null)
             {
-                IList<IncludedPath> includedPaths = new List<IncludedPath>();
-                IList<ExcludedPath> excludedPaths = new List<ExcludedPath>();
-                IList<IList<CompositePath>> compositeIndexes = new List<IList<CompositePath>>();
-                IList<SpatialSpec> spatialIndexes = new List<SpatialSpec>();
-
-                foreach (PSIncludedPath pSIncludedPath in IndexingPolicy.IncludedPaths)
-                {
-                    includedPaths.Add(new IncludedPath
-                    {
-                        Path = pSIncludedPath.Path,
-                        Indexes = PSIncludedPath.ConvertPSIndexesToIndexes(pSIncludedPath.Indexes)
-                    });
-                }
-
-                foreach (PSExcludedPath pSExcludedPath in IndexingPolicy.ExcludedPaths)
-                {
-                    excludedPaths.Add(new ExcludedPath { Path = pSExcludedPath.Path });
-                }
-
-                foreach (IList<PSCompositePath> pSCompositePathList in IndexingPolicy.CompositeIndexes)
-                {
-                    IList<CompositePath> compositePathList = new List<CompositePath>();
-                    foreach (PSCompositePath pSCompositePath in pSCompositePathList)
-                    {
-                        compositePathList.Add(new CompositePath { Order = pSCompositePath.Order, Path = pSCompositePath.Path });
-                    }
-
-                    compositeIndexes.Add(compositePathList);
-                }
-
-                foreach (PSSpatialSpec pSSpatialSpec in IndexingPolicy.SpatialIndexes)
-                {
-                    spatialIndexes.Add(new SpatialSpec { Path = pSSpatialSpec.Path, Types = pSSpatialSpec.Types });
-                }
-
                 IndexingPolicy indexingPolicy = new IndexingPolicy
                 {
                     Automatic = IndexingPolicy.Automatic,
                     IndexingMode = IndexingPolicy.IndexingMode,
-                    IncludedPaths = includedPaths,
-                    ExcludedPaths = excludedPaths,
-                    CompositeIndexes = compositeIndexes,
-                    SpatialIndexes = spatialIndexes
                 };
+
+                if (IndexingPolicy.IncludedPaths != null)
+                {
+                    IList<IncludedPath> includedPaths = new List<IncludedPath>();
+                    foreach (PSIncludedPath pSIncludedPath in IndexingPolicy.IncludedPaths)
+                    {
+                        includedPaths.Add(new IncludedPath
+                        {
+                            Path = pSIncludedPath.Path,
+                            Indexes = PSIncludedPath.ConvertPSIndexesToIndexes(pSIncludedPath.Indexes)
+                        });
+                    }
+
+                    indexingPolicy.IncludedPaths = new List<IncludedPath>(includedPaths);
+                }
+
+                if (IndexingPolicy.ExcludedPaths != null && IndexingPolicy.ExcludedPaths.Count > 0)
+                {
+                    IList<ExcludedPath> excludedPaths = new List<ExcludedPath>();
+                    foreach (PSExcludedPath pSExcludedPath in IndexingPolicy.ExcludedPaths)
+                    {
+                        excludedPaths.Add(new ExcludedPath { Path = pSExcludedPath.Path });
+                    }
+
+                    indexingPolicy.ExcludedPaths = new List<ExcludedPath>(excludedPaths);
+                }
+
+                if (IndexingPolicy.CompositeIndexes != null)
+                {
+                    IList<IList<CompositePath>> compositeIndexes = new List<IList<CompositePath>>();
+                    foreach (IList<PSCompositePath> pSCompositePathList in IndexingPolicy.CompositeIndexes)
+                    {
+                        IList<CompositePath> compositePathList = new List<CompositePath>();
+                        foreach (PSCompositePath pSCompositePath in pSCompositePathList)
+                        {
+                            compositePathList.Add(new CompositePath { Order = pSCompositePath.Order, Path = pSCompositePath.Path });
+                        }
+
+                        compositeIndexes.Add(compositePathList);
+                    }
+
+                    indexingPolicy.CompositeIndexes = new List<IList<CompositePath>>(compositeIndexes);
+                }
+
+                if (IndexingPolicy.SpatialIndexes != null && IndexingPolicy.SpatialIndexes.Count > 0)
+                {
+                    IList<SpatialSpec> spatialIndexes = new List<SpatialSpec>();
+
+                    foreach (PSSpatialSpec pSSpatialSpec in IndexingPolicy.SpatialIndexes)
+                    {
+                        spatialIndexes.Add(new SpatialSpec { Path = pSSpatialSpec.Path, Types = pSSpatialSpec.Types });
+                    }
+
+                    indexingPolicy.SpatialIndexes = new List<SpatialSpec>(spatialIndexes);
+                }
 
                 gremlinGraphResource.IndexingPolicy = indexingPolicy;
             }
@@ -210,7 +257,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = options
             };
 
-            if (ShouldProcess(Name, "Creating CosmosDB Gremlin Graph"))
+            if (ShouldProcess(Name, "Setting CosmosDB Gremlin Graph"))
             {
                 GremlinGraphGetResults gremlinGraphGetResults = CosmosDBManagementClient.GremlinResources.CreateUpdateGremlinGraphWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, gremlinGraphCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSGremlinGraphGetResults(gremlinGraphGetResults));

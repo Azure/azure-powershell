@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 mongoIndex.Key = PSMongoIndexKeys.ConvertPSMongoIndexKeysToMongoIndexKeys(psMongoIndex.Key);
             }
             
-            if(mongoIndex.Options != null)
+            if(psMongoIndex.Options != null)
             {
                 mongoIndex.Options = PSMongoIndexOptions.CovertPSMongoIndexOptionsToMongoIndexOptions(psMongoIndex.Options);
             }

@@ -15,7 +15,6 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB
@@ -24,55 +23,62 @@ namespace Microsoft.Azure.Commands.CosmosDB
     public class NewAzCosmosDBGremlinIndexingPolicy : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyIncludedPathHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public PSIncludedPath[] IncludedPath { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicySpatialIndexHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public PSSpatialSpec[] SpatialSpec { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyCompositePathHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public PSCompositePath[][] CompositePath { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyExcludedPathHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string[] ExcludedPath { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyAutomaticHelpMessage)]
         public bool? Automatic { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyIndexingModeIndexHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string IndexingMode { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PSIndexingPolicy gremlinIndexingPolicy = new PSIndexingPolicy();
+            PSIndexingPolicy indexingPolicy = new PSIndexingPolicy();
 
             if (IncludedPath != null && IncludedPath.Length > 0)
-                gremlinIndexingPolicy.IncludedPaths = IncludedPath;
+            {
+                indexingPolicy.IncludedPaths = new List<PSIncludedPath>(IncludedPath);
+            }
 
             if (ExcludedPath != null && ExcludedPath.Length > 0)
             {
-                gremlinIndexingPolicy.ExcludedPaths = new List<PSExcludedPath>();
+                indexingPolicy.ExcludedPaths = new List<PSExcludedPath>();
                 foreach (string path in ExcludedPath)
                 {
-                    gremlinIndexingPolicy.ExcludedPaths.Add(new PSExcludedPath{ Path = path });
+                    indexingPolicy.ExcludedPaths.Add(new PSExcludedPath{ Path = path });
                 }
             }
 
             if(SpatialSpec != null)
             {
-                gremlinIndexingPolicy.SpatialIndexes = SpatialSpec;
+                indexingPolicy.SpatialIndexes = SpatialSpec;
             }
 
             if(CompositePath != null)
             {
-                gremlinIndexingPolicy.CompositeIndexes = CompositePath;
+                indexingPolicy.CompositeIndexes = CompositePath;
             }
 
-            gremlinIndexingPolicy.Automatic = Automatic;
+            indexingPolicy.Automatic = Automatic;
 
             if (IndexingMode != null)
-                gremlinIndexingPolicy.IndexingMode = IndexingMode;
+                indexingPolicy.IndexingMode = IndexingMode;
 
-            WriteObject(gremlinIndexingPolicy);
+            WriteObject(indexingPolicy);
             return;
         }
     }

@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.5'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.CosmosDB.dll'
@@ -94,13 +94,16 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzCosmosDBAccount', 'Update-AzCosmosDBAccountRegion',
                'Update-AzCosmosDBAccountFailoverPriority',
                'New-AzCosmosDBVirtualNetworkRule', 'New-AzCosmosDBLocationObject',
-               'New-AzCosmosDBSqlSpatialSpec',
+               'New-AzCosmosDBSqlSpatialSpec', 'New-AzCosmosDBSqlCompositePath',
+               'New-AzCosmosDBSqlIncludedPath', 'New-AzCosmosDBSqlIncludedPathIndex',
                'Get-AzCosmosDBGremlinDatabase', 'Get-AzCosmosDBGremlinDatabaseThroughput',
                'Get-AzCosmosDBGremlinGraph', 'Get-AzCosmosDBGremlinGraphThroughput',
                'Remove-AzCosmosDBGremlinDatabase', 'Remove-AzCosmosDBGremlinGraph',
                'Set-AzCosmosDBGremlinDatabase', 'Set-AzCosmosDBGremlinGraph',
                'New-AzCosmosDBGremlinIndexingPolicy', 'New-AzCosmosDBGremlinUniqueKey', 
                'New-AzCosmosDBGremlinUniqueKeyPolicy', 'New-AzCosmosDBGremlinSpatialSpec',
+               'New-AzCosmosDBGremlinCompositePath',
+               'New-AzCosmosDBGremlinIncludedPath', 'New-AzCosmosDBGremlinIncludedPathIndex',
                'Get-AzCosmosDBTable', 'Get-AzCosmosDBTableThroughput',
                'Remove-AzCosmosDBTable', 'Set-AzCosmosDBTable',
                'Get-AzCosmosDBCassandraKeyspace', 'Get-AzCosmosDBCassandraKeyspaceThroughput',

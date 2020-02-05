@@ -15,21 +15,22 @@ Creates a new or updates an existing CosmosDB Sql Container.
 ### ByNameParameterSet (Default)
 ```
 Set-AzCosmosDBSqlContainer -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
- -Name <String> [-IndexingPolicy <PSIndexingPolicy>] [-PartitionKeyVersion <Int32>] -PartitionKeyKind <String>
- -PartitionKeyPath <String[]> [-Throughput <Int32>] [-TtlInSeconds <Int32>]
- [-UniqueKeyPolicy <PSUniqueKeyPolicy>] [-ConflictResolutionPolicyMode <String>]
+ -Name <String> [-IndexingPolicy <PSSqlIndexingPolicy>] [-PartitionKeyVersion <Int32>]
+ -PartitionKeyKind <String> -PartitionKeyPath <String[]> [-Throughput <Int32>] [-TtlInSeconds <Int32>]
+ [-UniqueKeyPolicy <PSSqlUniqueKeyPolicy>] [-ConflictResolutionPolicyMode <String>]
  [-ConflictResolutionPolicyPath <String>] [-ConflictResolutionPolicyProcedure <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Set-AzCosmosDBSqlContainer -Name <String> [-IndexingPolicy <PSIndexingPolicy>] [-PartitionKeyVersion <Int32>]
- -PartitionKeyKind <String> -PartitionKeyPath <String[]> [-Throughput <Int32>] [-TtlInSeconds <Int32>]
- [-UniqueKeyPolicy <PSUniqueKeyPolicy>] [-ConflictResolutionPolicyMode <String>]
+Set-AzCosmosDBSqlContainer -Name <String> [-IndexingPolicy <PSSqlIndexingPolicy>]
+ [-PartitionKeyVersion <Int32>] -PartitionKeyKind <String> -PartitionKeyPath <String[]> [-Throughput <Int32>]
+ [-TtlInSeconds <Int32>] [-UniqueKeyPolicy <PSSqlUniqueKeyPolicy>] [-ConflictResolutionPolicyMode <String>]
  [-ConflictResolutionPolicyPath <String>] [-ConflictResolutionPolicyProcedure <String>]
- -InputObject <PSSqlDatabaseGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>] -InputObject <PSSqlDatabaseGetResults>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,15 +44,7 @@ PS C:\> Set-AzCosmosDBSqlContainer -ResourceGroupName {resourceGroupName} -Accou
 
 Name                     : {containerName}
 Id                       : {containerId}
-SqlContainerGetResultsId :
-IndexingPolicy           :
-PartitionKey             :
-DefaultTtl               :
-UniqueKeyPolicy          :
-ConflictResolutionPolicy :
-_rid                     :
-_ts                      :
-_etag                    :
+Resource                 : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetPropertiesResource
 ```
 
 ## PARAMETERS
@@ -83,6 +76,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConflictResolutionPolicy
+ConflictResolutionPolicy Object of type PSSqlConflictResolutionPolicy, when provided this is set as the ConflictResolutionPolicy of the container.
+
+```yaml
+Type: PSSqlConflictResolutionPolicy
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -165,7 +173,7 @@ Accept wildcard characters: False
 Indexing Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlIndexingPolicy.
 
 ```yaml
-Type: PSIndexingPolicy
+Type: PSSqlIndexingPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -304,7 +312,7 @@ Accept wildcard characters: False
 UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlUniqueKeyPolicy.
 
 ```yaml
-Type: PSUniqueKeyPolicy
+Type: PSSqlUniqueKeyPolicy
 Parameter Sets: (All)
 Aliases:
 

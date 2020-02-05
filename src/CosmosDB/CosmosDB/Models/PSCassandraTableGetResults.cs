@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
     using System;
+    using System.Collections.Generic;
     using Microsoft.Azure.Management.CosmosDB.Models;
 
     public class PSCassandraTableGetResults
@@ -27,6 +28,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
             Name = cassandraTableGetResults.Name;
             Id = cassandraTableGetResults.Id;
+            Tags = cassandraTableGetResults.Tags;
+            Location = cassandraTableGetResults.Location;
             Resource = new PSCassandraTableGetPropertiesResource(cassandraTableGetResults.Resource);
         }
 
@@ -34,11 +37,22 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// Gets or sets Name of the Cosmos DB Cassandra table
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// Gets or sets Id of the Cosmos DB Cassandra table
         /// </summary>
         public string Id { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets Location of the Cosmos DB Cassandra table
+        /// </summary>
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets Tags of the Cosmos DB Cassandra table
+        /// </summary>
+        public IDictionary<string, string> Tags { get; set; }
+
         public PSCassandraTableGetPropertiesResource Resource { get; set; }
     }
 }

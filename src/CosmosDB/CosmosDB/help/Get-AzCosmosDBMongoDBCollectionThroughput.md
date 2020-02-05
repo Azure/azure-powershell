@@ -39,7 +39,6 @@ Id: {Id}
 Throughput: {value} 
 MinimumThroughput: {value}
 OfferReplacePending: {value}
-
 ```
 
 ## PARAMETERS

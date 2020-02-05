@@ -20,33 +20,41 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlIndexingPolicy"), OutputType(typeof(PSIndexingPolicy))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlIndexingPolicy"), OutputType(typeof(PSSqlIndexingPolicy))]
     public class NewAzCosmosDBSqlIndexingPolicy : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyIncludedPathHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public PSIncludedPath[] IncludedPath { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicySpatialIndexHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public PSSpatialSpec[] SpatialSpec { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyCompositePathHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public PSCompositePath[][] CompositePath { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyExcludedPathHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string[] ExcludedPath { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyAutomaticHelpMessage)]
         public bool? Automatic { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyIndexingModeIndexHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string IndexingMode { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PSIndexingPolicy sqlIndexingPolicy = new PSIndexingPolicy();
+            PSSqlIndexingPolicy sqlIndexingPolicy = new PSSqlIndexingPolicy();
 
             if (IncludedPath != null && IncludedPath.Length > 0)
-                sqlIndexingPolicy.IncludedPaths = IncludedPath;
+            {
+                sqlIndexingPolicy.IncludedPaths = new List<PSIncludedPath>(IncludedPath);
+            }
+
 
             if (ExcludedPath != null && ExcludedPath.Length > 0)
             {

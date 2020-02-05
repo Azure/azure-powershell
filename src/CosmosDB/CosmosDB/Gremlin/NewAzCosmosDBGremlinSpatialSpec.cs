@@ -14,36 +14,11 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
-using Microsoft.Azure.Commands.CosmosDB.Helpers;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinSpatialSpec"), OutputType(typeof(PSSpatialSpec))]
-    public class NewAzCosmosDBGremlinSpatialSpec : AzureCosmosDBCmdletBase
+    public class NewAzCosmosDBGremlinSpatialSpec : NewAzCosmosDBSqlSpatialSpec
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.SpatialPathHelpMessage)]
-        public string Path { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = Constants.SpatialTypeHelpMessage)]
-        public string[] Type { get; set; }
-
-        public override void ExecuteCmdlet()
-        {
-            IList<string> Types = new List<string>();
-            foreach (string type in Type)
-            {
-                Types.Add(type);
-            }
-
-            PSSpatialSpec pSSpatialSpec = new PSSpatialSpec
-            {
-                Path = Path,
-                Types = Types
-            };
-
-            WriteObject(pSSpatialSpec);
-            return;
-        }
     }
 }
