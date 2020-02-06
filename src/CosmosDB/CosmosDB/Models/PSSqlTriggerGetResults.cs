@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
     using Microsoft.Azure.Management.CosmosDB.Models;
+    using System.Collections.Generic;
 
     public class PSSqlTriggerGetResults 
     {
@@ -26,62 +27,28 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
             Name = sqlTriggerGetResults.Name;
             Id = sqlTriggerGetResults.Id;
-            SqlTriggerGetResultsId = sqlTriggerGetResults.SqlTriggerGetResultsId;
-            Body = sqlTriggerGetResults.Body;
-            TriggerType = sqlTriggerGetResults.TriggerType;
-            TriggerOperation = sqlTriggerGetResults.TriggerOperation;
-            _rid = sqlTriggerGetResults._rid;
-            _ts = sqlTriggerGetResults._ts;
-            _etag = sqlTriggerGetResults._etag;
+            Location = sqlTriggerGetResults.Location;
+            Tags = sqlTriggerGetResults.Tags;
+            Resource = new PSSqlTriggerGetPropertiesResource(sqlTriggerGetResults.Resource);
         }
 
         /// <summary>
         /// Gets or sets Name the Cosmos DB SQL Trigger
         /// </summary>
         public string Name { get; set; }
-
         /// <summary>
         /// Gets or sets Id of the Cosmos DB SQL Trigger
         /// </summary>
         public string Id { get; set; }
-
         /// <summary>
-        /// Gets or sets name of the Cosmos DB SQL trigger
+        /// Gets or sets Location of the Cosmos DB SQL Trigger
         /// </summary>
-        public string SqlTriggerGetResultsId { get; set; }
-
+        public string Location { get; set; }
         /// <summary>
-        /// Gets or sets body of the Trigger
+        /// Gets or sets Tags of the Cosmos DB SQL Trigger
         /// </summary>
-        public string Body { get; set; }
-
-        /// <summary>
-        /// Gets or sets type of the Trigger. Possible values include: 'Pre',
-        /// 'Post'
-        /// </summary>
-        public string TriggerType { get; set; }
-
-        /// <summary>
-        /// Gets or sets the operation the trigger is associated with. Possible
-        /// values include: 'All', 'Create', 'Update', 'Delete', 'Replace'
-        /// </summary>
-        public string TriggerOperation { get; set; }
-
-        /// <summary>
-        /// Gets a system generated property. A unique identifier.
-        /// </summary>
-        public string _rid { get; set; }
-
-        /// <summary>
-        /// Gets a system generated property that denotes the last updated
-        /// timestamp of the resource.
-        /// </summary>
-        public object _ts { get; set; }
-
-        /// <summary>
-        /// Gets a system generated property representing the resource etag
-        /// required for optimistic concurrency control.
-        /// </summary>
-        public string _etag { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
+        //
+        public PSSqlTriggerGetPropertiesResource Resource { get; set; }
     }
 }
