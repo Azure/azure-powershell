@@ -133,6 +133,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateSet("AllAllowed", "Disabled", "FtpsOnly")]
         public string FtpsState { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Custom hostnames associated with web app")]
+        [ValidateNotNullOrEmpty]
+        public string[] HostNames { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
@@ -259,6 +263,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         
                         //Update WebApp object after site update
                         WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
+                    }
+                    if (parameters.Contains("HostNames"))
+                    {
+                        WebsitesClient.AddCustomHostNames(ResourceGroupName, location, Name, HostNames);
                     }
 
                     break;
