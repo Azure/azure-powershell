@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-    using System;
+    using System.Collections.Generic;
     using Microsoft.Azure.Management.CosmosDB.Models;
 
     public class PSSqlDatabaseGetResults 
@@ -27,12 +27,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
             Name = sqlDatabaseGetResults.Name;
             Id = sqlDatabaseGetResults.Id;
-            SqlDatabaseGetResultsId = sqlDatabaseGetResults.SqlDatabaseGetResultsId;
-            _rid = sqlDatabaseGetResults._rid;
-            _ts = sqlDatabaseGetResults._ts;
-            _etag = sqlDatabaseGetResults._etag;
-            _colls = sqlDatabaseGetResults._colls;
-            _users = sqlDatabaseGetResults._users;
+            Location = sqlDatabaseGetResults.Location;
+            Tags = sqlDatabaseGetResults.Tags;
+            Resource = new PSSqlDatabaseGetPropertiesResource(sqlDatabaseGetResults.Resource);
         }
 
         /// <summary>
@@ -46,37 +43,16 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the Cosmos DB SQL database
+        /// Gets or sets Location of the Cosmos DB SQL database
         /// </summary>
-        public string SqlDatabaseGetResultsId { get; set; }
+        public string Location { get; set; }
 
         /// <summary>
-        /// Gets a system generated property. A unique identifier.
+        /// Gets or sets Tags of the Cosmos DB SQL database
         /// </summary>
-        public string _rid { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
 
-        /// <summary>
-        /// Gets a system generated property that denotes the last updated
-        /// timestamp of the resource.
-        /// </summary>
-        public object _ts { get; set; }
+        public PSSqlDatabaseGetPropertiesResource Resource { get; set; }
 
-        /// <summary>
-        /// Gets a system generated property representing the resource etag
-        /// required for optimistic concurrency control.
-        /// </summary>
-        public string _etag { get; set; }
-
-        /// <summary>
-        /// Gets or sets a system generated property that specified the
-        /// addressable path of the collections resource.
-        /// </summary>
-        public string _colls { get; set; }
-
-        /// <summary>
-        /// Gets or sets a system generated property that specifies the
-        /// addressable path of the users resource.
-        /// </summary>
-        public string _users { get; set; }
     }
 }

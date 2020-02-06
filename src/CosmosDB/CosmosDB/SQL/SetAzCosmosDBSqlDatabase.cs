@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = options
             };
 
-            if (ShouldProcess(Name, "Creating or Updating CosmosDB Sql Database"))
+            if (ShouldProcess(Name, "Setting CosmosDB Sql Database"))
             {
                 SqlDatabaseGetResults sqlDatabaseGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name, sqlDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSqlDatabaseGetResults(sqlDatabaseGetResults));

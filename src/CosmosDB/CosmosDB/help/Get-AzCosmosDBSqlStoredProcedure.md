@@ -35,11 +35,7 @@ PS C:\> Get-AzCosmosDBSqlStoredProcedure -AccountName {accountName} -ResourceGro
 
 Name                           : {storedProcedureName}
 Id                             : {storedProcedureId}
-SqlStoredProcedureGetResultsId :
-Body                           :
-_rid                           :
-_ts                            :
-_etag                          :
+Resource                       : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlStoredProcedureGetPropertiesResource
 ```
 
 ## PARAMETERS
@@ -115,7 +111,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = new Dictionary<string, string>() { }
             };
 
-            if (ShouldProcess(Name, "Creating or Updating CosmosDB Sql Trigger"))
+            if (ShouldProcess(Name, "Setting CosmosDB Sql Trigger"))
             {
                 SqlTriggerGetResults sqlTriggerGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlTriggerWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, ContainerName, Name, sqlTriggerCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSqlTriggerGetResults(sqlTriggerGetResults));
