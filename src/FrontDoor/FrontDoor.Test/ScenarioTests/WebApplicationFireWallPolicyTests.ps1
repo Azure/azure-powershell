@@ -115,3 +115,28 @@ function Test-PolicyCrudWithPiping
     Assert-True { $removed }
     Assert-ThrowsContains { Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName } "does not exist."
 }
+
+<#
+.SYNOPSIS
+WAF managed rule set definitions retrieval
+#>
+function Test-ManagedRuleSetDefinition
+{
+    $definitions = Get-AzFrontDoorWafManagedRuleSetDefinition | sort -Property RuleSetType,RuleSetVersion
+    Assert-AreEqual $definitions.Count 4
+    Assert-AreEqual $definitions[0].RuleSetType "BotProtection"
+    Assert-AreEqual $definitions[0].RuleSetVersion "preview-0.1"
+    Assert-AreEqual $definitions[0].RuleGroups.Count 1
+
+    Assert-AreEqual $definitions[1].RuleSetType "DefaultRuleSet"
+    Assert-AreEqual $definitions[1].RuleSetVersion "1.0"
+    Assert-AreEqual $definitions[1].RuleGroups.Count 9
+
+    Assert-AreEqual $definitions[2].RuleSetType "DefaultRuleSet"
+    Assert-AreEqual $definitions[2].RuleSetVersion "preview-0.1"
+    Assert-AreEqual $definitions[2].RuleGroups.Count 8
+
+    Assert-AreEqual $definitions[3].RuleSetType "Microsoft_BotManagerRuleSet"
+    Assert-AreEqual $definitions[3].RuleSetVersion "1.0"
+    Assert-AreEqual $definitions[3].RuleGroups.Count 3
+}
