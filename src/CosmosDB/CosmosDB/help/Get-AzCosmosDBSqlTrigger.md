@@ -35,13 +35,7 @@ PS C:\> Get-AzCosmosDBSqlTrigger -AccountName {accountName} -ResourceGroupName {
 
 Name                   : {triggerName}
 Id                     : {triggerId}
-SqlTriggerGetResultsId :
-Body                   :
-TriggerType            :
-TriggerOperation       :
-_rid                   :
-_ts                    :
-_etag                  :
+Resource               : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlTriggerGetPropertiesResource
 ```
 
 ## PARAMETERS
@@ -117,7 +111,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

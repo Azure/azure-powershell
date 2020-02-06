@@ -12,31 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.CosmosDB.Models;
+
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-
-    public class PSSqlConflictResolutionPolicy
+    // This class was added to avoid breaking changes in consecutive versions, it should be eventually removed
+    public class PSSqlConflictResolutionPolicy : PSConflictResolutionPolicy
     {
-        public PSSqlConflictResolutionPolicy()
+        public PSSqlConflictResolutionPolicy() : base()
         {
         }
 
-        public PSSqlConflictResolutionPolicy(string type)
+        public PSSqlConflictResolutionPolicy(ConflictResolutionPolicy conflictResolutionPolicy) : base(conflictResolutionPolicy)
         {
-            Type = type;
         }
-
-        public PSSqlConflictResolutionPolicy(string type, string path, string conflictResolutionProcedure)
-        {
-            Type = type;
-            Path = path;
-            ConflictResolutionProcedure = conflictResolutionProcedure;
-        }
-
-        public string Type { get; set; }
-
-        public string Path { get; set; }
-
-        public string ConflictResolutionProcedure { get; set; }
     }
 }
