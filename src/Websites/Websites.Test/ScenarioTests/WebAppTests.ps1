@@ -1163,7 +1163,7 @@ function Test-SetWebApp
 		Assert-AreEqual "1.2" $webApp.SiteConfig.MinTlsVersion
 
 		
-		#TODO- Need to handle exception received during TestCase execution
+		<##TODO- Need to handle exception received during TestCase execution
 		# set Custom Host Name(s)- Failed Scenario
 		$oldWebApp= Get-AzWebApp -ResourceGroupName $rgname -Name $webAppName
 		try{
@@ -1176,7 +1176,7 @@ function Test-SetWebApp
 		foreach($oldHN in $oldWebApp.HostNames)
 		{
 			Assert-True { $CurrentWebApp.HostNames -contains $oldHN }
-		}
+		}#>
 
 		#Set-AzWebApp errors on operations for App Services not in the same resource group as the App Service Plan
 		#setup
