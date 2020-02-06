@@ -18,6 +18,8 @@ using Microsoft.Azure.Management.WebSites.Models;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 {
@@ -49,6 +51,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Tags are name/value pairs that enable you to categorize resources")]
+        public Hashtable Tags { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -62,6 +67,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                     int.TryParse(Regex.Match(AppServicePlan.Sku.Name, @"\d+").Value, out workerSizeAsNumber);
                     AppServicePlan.Sku.Name = string.IsNullOrWhiteSpace(WorkerSize) ? CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, workerSizeAsNumber) : CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, WorkerSize);
                     AppServicePlan.PerSiteScaling = PerSiteScaling;
+                    AppServicePlan.Tags = (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tags);
                     break;
             }
 
