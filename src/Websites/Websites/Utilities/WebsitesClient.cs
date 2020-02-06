@@ -97,11 +97,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return CmdletHelpers.CreateHostingEnvironmentProfile(WrappedWebsitesClient.SubscriptionId, resourceGroupName, aseResourceGroupName, aseName);
         }
 
-        public void UpdateWebApp(string resourceGroupName, string location, string webAppName, string slotName, string appServicePlan, Site siteEnvelope =null, string appServicePlanRg = null)
+        public void UpdateWebApp(string resourceGroupName, string location, string webAppName, string slotName, string appServicePlan, Site siteEnvelope =null)
         {
             var webSiteToUpdate = new Site()
             {
-                ServerFarmId = (string.IsNullOrEmpty(appServicePlanRg) && resourceGroupName != appServicePlanRg) ? appServicePlan : siteEnvelope.ServerFarmId,
+                ServerFarmId = appServicePlan,
                 Location = location,
                 Tags = siteEnvelope?.Tags
             };
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
 
             // make sure the serverfarm ID is nt overwritten to the old value
-            if (appServicePlan != null && (string.IsNullOrEmpty(appServicePlanRg) && resourceGroupName != appServicePlanRg))
+            if (appServicePlan != null)
             {
                 webSiteToUpdate.ServerFarmId = appServicePlan;
             }
