@@ -122,7 +122,7 @@ WAF managed rule set definitions retrieval
 #>
 function Test-ManagedRuleSetDefinition
 {
-    $definitions = Get-AzFrontDoorWafManagedRuleSetDefinition | sort -Property RuleSetType,RuleSetVersion
+    $definitions = Get-AzFrontDoorWafManagedRuleSetDefinition
     Assert-AreEqual $definitions.Count 4
     Assert-AreEqual $definitions[0].RuleSetType "BotProtection"
     Assert-AreEqual $definitions[0].RuleSetVersion "preview-0.1"
