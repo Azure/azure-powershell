@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(WebApp.ServerFarmId, out rg, out servicePlanName);
                     // AzureStorage path is not a part of the back end siteObject, but if the PSSite Object is given as an input, we will some value for this
                     WebApp.AzureStoragePath = null;
-                    WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, servicePlanName, WebApp);
+                    WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, servicePlanName, WebApp,rg);
                     WebsitesClient.AddCustomHostNames(ResourceGroupName, location, Name, WebApp.HostNames.ToArray());
                     break;
             }
