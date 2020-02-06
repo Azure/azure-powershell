@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
+        [AllowEmptyString]
         public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(
@@ -78,6 +78,11 @@ namespace Microsoft.Azure.Commands.Compute
                                                 ? new SubResource(this.ProximityPlacementGroupId)
                                                 : this.AvailabilitySet.ProximityPlacementGroup
                     };
+
+                    if (avSetParams.ProximityPlacementGroup != null && string.IsNullOrEmpty(avSetParams.ProximityPlacementGroup.Id))
+                    {
+                        avSetParams.ProximityPlacementGroup.Id = null;
+                    }
 
                     var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.AvailabilitySet.ResourceGroupName,
