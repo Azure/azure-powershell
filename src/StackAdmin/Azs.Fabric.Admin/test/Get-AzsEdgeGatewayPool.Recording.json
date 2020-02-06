@@ -1,0 +1,202 @@
+{
+  "Get-AzsEdgeGatewayPool+[NoContext]+TestListEdgeGatewayPools+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools?api-version=2016-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "69" ],
+        "x-ms-client-request-id": [ "c5e92e9a-0aff-4f80-aad8-d131311a106a" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsEdgeGatewayPool" ],
+        "FullCommandName": [ "Get-AzsEdgeGatewayPool_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "0b8c1e7e-e940-4e11-8899-3c211af8ba65" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14928" ],
+        "x-ms-request-id": [ "0b8c1e7e-e940-4e11-8899-3c211af8ba65" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200206T193606Z:0b8c1e7e-e940-4e11-8899-3c211af8ba65" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Thu, 06 Feb 2020 19:36:05 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvn3Sanu9qsuKbcBzJTPpdoFa7iuRfz7SXngQ5bfWiYF/n/Tlf/IV9oFIZKDWpdMNkQWDdRix6/ydrhUzWKN3MOz4xYebpEgbVL19KIp7xb8p6tSZ8x9Pw7ibh/8qEbryhWGYRVJD/MUk3Bxa7IdDN" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "561" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools/default\",\"name\":\"redmond/default\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/edgeGatewayPools\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"gatewayType\":\"S2sIPsec\",\"numberOfGateways\":3,\"redundantGatewayCount\":1,\"gatewayCapacityKiloBitsPerSecond\":14000000,\"publicIpAddress\":\"00000000-5555-0000-0001-000000000000\",\"edgeGateways\":[\"n22r0903-Gwy01\",\"n22r0903-Gwy02\",\"n22r0903-Gwy03\"]}}]}"
+    }
+  },
+  "Get-AzsEdgeGatewayPool+[NoContext]+TestGetEdgeGatewayPool+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools?api-version=2016-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "70" ],
+        "x-ms-client-request-id": [ "03179219-e2d3-4f95-84c5-937b32ea918a" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsEdgeGatewayPool" ],
+        "FullCommandName": [ "Get-AzsEdgeGatewayPool_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "da352ecf-fdda-4bd1-aed6-4f53806ef3c6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14927" ],
+        "x-ms-request-id": [ "da352ecf-fdda-4bd1-aed6-4f53806ef3c6" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200206T193606Z:da352ecf-fdda-4bd1-aed6-4f53806ef3c6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Thu, 06 Feb 2020 19:36:05 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv/l+FG098Ms7x0lpSgRebsfTW6mss8gNHXRkojpTI5cqReEtaCzDKEkEqpNv5QJp0yX4uPvVFGkQvonqY/6ZQedM8e/nB5ZgZLQZC5Wy+kBbBdixBkYzph+VMQ5CRn9Ghy9r/1Uox0xlze5621Ztx" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "561" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools/default\",\"name\":\"redmond/default\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/edgeGatewayPools\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"gatewayType\":\"S2sIPsec\",\"numberOfGateways\":3,\"redundantGatewayCount\":1,\"gatewayCapacityKiloBitsPerSecond\":14000000,\"publicIpAddress\":\"00000000-5555-0000-0001-000000000000\",\"edgeGateways\":[\"n22r0903-Gwy01\",\"n22r0903-Gwy02\",\"n22r0903-Gwy03\"]}}]}"
+    }
+  },
+  "Get-AzsEdgeGatewayPool+[NoContext]+TestGetEdgeGatewayPool+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools/default?api-version=2016-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools/default?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "71" ],
+        "x-ms-client-request-id": [ "32eadc70-019c-46ec-ab5a-9028f3b802f5" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsEdgeGatewayPool" ],
+        "FullCommandName": [ "Get-AzsEdgeGatewayPool_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "57f24812-e668-4ea6-8faa-81e170b5b3a4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14926" ],
+        "x-ms-request-id": [ "57f24812-e668-4ea6-8faa-81e170b5b3a4" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200206T193606Z:57f24812-e668-4ea6-8faa-81e170b5b3a4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Thu, 06 Feb 2020 19:36:05 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvNdojGHeqHmh8nqhMnIWkR1FTyxJN3suIFUdR/aBft14jGqR/7x906vCrVlg3SViA4oxFvK4T88nkLpH98Hu7Dq/WdoqKk7lTL/gH5YxObzeiZ7jR9gQ3TIL/SNKOIARSan6dy2yLg9uEBa5yHvUc" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "549" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools/default\",\"name\":\"redmond/default\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/edgeGatewayPools\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"gatewayType\":\"S2sIPsec\",\"numberOfGateways\":3,\"redundantGatewayCount\":1,\"gatewayCapacityKiloBitsPerSecond\":14000000,\"publicIpAddress\":\"00000000-5555-0000-0001-000000000000\",\"edgeGateways\":[\"n22r0903-Gwy01\",\"n22r0903-Gwy02\",\"n22r0903-Gwy03\"]}}"
+    }
+  },
+  "Get-AzsEdgeGatewayPool+[NoContext]+TestGetAllEdgeGatewayPools+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools?api-version=2016-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "72" ],
+        "x-ms-client-request-id": [ "fc672fb8-0983-4174-9522-74c10f57c661" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsEdgeGatewayPool" ],
+        "FullCommandName": [ "Get-AzsEdgeGatewayPool_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "43dd4449-b4b4-456b-95cd-9fe8aff1d9b3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14925" ],
+        "x-ms-request-id": [ "43dd4449-b4b4-456b-95cd-9fe8aff1d9b3" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200206T193606Z:43dd4449-b4b4-456b-95cd-9fe8aff1d9b3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Thu, 06 Feb 2020 19:36:05 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvWZK9We6n+KdIvVz8h/O4ZJSYxiCnWkqK0LAfRaAES62EHGpUh8jrvr1h/ETsZQAMGdCULuQrS2DzDydWcCqJj0ejwOl40fToXaOaKEjYepCnjpIprxYbmj4rH829dIdux42qwo202jEauu27imIW" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "561" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools/default\",\"name\":\"redmond/default\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/edgeGatewayPools\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"gatewayType\":\"S2sIPsec\",\"numberOfGateways\":3,\"redundantGatewayCount\":1,\"gatewayCapacityKiloBitsPerSecond\":14000000,\"publicIpAddress\":\"00000000-5555-0000-0001-000000000000\",\"edgeGateways\":[\"n22r0903-Gwy01\",\"n22r0903-Gwy02\",\"n22r0903-Gwy03\"]}}]}"
+    }
+  },
+  "Get-AzsEdgeGatewayPool+[NoContext]+TestGetAllEdgeGatewayPools+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools/default?api-version=2016-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools/default?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "f7d0c05f-1747-4632-be07-dd958a9d93c0" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsEdgeGatewayPool" ],
+        "FullCommandName": [ "Get-AzsEdgeGatewayPool_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "c88deda2-0e63-46fa-bc6a-ce3cce020a87" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14924" ],
+        "x-ms-request-id": [ "c88deda2-0e63-46fa-bc6a-ce3cce020a87" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200206T193606Z:c88deda2-0e63-46fa-bc6a-ce3cce020a87" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Thu, 06 Feb 2020 19:36:05 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvDlHkHeSUbCS5KRz1/lXMYIA4oQlhE1D4DPaBsL54t5qnTAhGRJe2xh02N1honI0/XIVstecTZlN1L2/SfsOW0dny22t6pU0YOz0ueTl/TrmWP+H1ksoFvZ+kMaWWGM3ETqn7xDIq5l2BhhH9vZMR" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "549" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/edgeGatewayPools/default\",\"name\":\"redmond/default\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/edgeGatewayPools\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"gatewayType\":\"S2sIPsec\",\"numberOfGateways\":3,\"redundantGatewayCount\":1,\"gatewayCapacityKiloBitsPerSecond\":14000000,\"publicIpAddress\":\"00000000-5555-0000-0001-000000000000\",\"edgeGateways\":[\"n22r0903-Gwy01\",\"n22r0903-Gwy02\",\"n22r0903-Gwy03\"]}}"
+    }
+  }
+}

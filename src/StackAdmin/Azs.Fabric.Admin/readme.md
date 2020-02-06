@@ -91,6 +91,76 @@ directive:
       default:
         script: -join("System.",(Get-AzLocation)[0].Location)
 
+  # [EdgeGateway]: Folloing changes are for EdgeGateway
+  # [EdgeGateway] Propertity Rename: change NumberOfConnection to NumberOfConnections
+  - where:
+      model-name: EdgeGateway
+      property-name: NumberOfConnection
+    set:
+      property-name: NumberOfConnections
+
+  # [EdgeGateway] Rename cmdlet parameter name in EdgeGateway
+  - where:
+      subject: EdgeGateway
+      parameter-name: EdgeGateway
+    set:
+      parameter-name: Name
+
+  # [EdgeGateway] hide autorest generated cmdlet to use the custom one
+  - where:
+      verb: Get
+      subject: EdgeGateway
+    hide: true
+
+  # [EdgeGatewayPool]: Folloing changes are for EdgeGatewayPool
+  # [EdgeGateway] Rename cmdlet parameter name in EdgeGatewayPool
+  - where:
+      subject: EdgeGatewayPool
+      parameter-name: EdgeGatewayPool
+    set:
+      parameter-name: Name
+
+  # [EdgeGatewayPool]: Rename property name NumberOfGateway to NumberOfGateways
+  - where:
+      model-name: EdgeGatewayPool
+      property-name: NumberOfGateway
+    set:
+      property-name: NumberOfGateways
+
+  # [EdgeGatewayPool] hide autorest generated cmdlet to use the custom one
+  - where:
+      verb: Get
+      subject: EdgeGatewayPool
+    hide: true
+
+  # [InfrastructureRole]: Folloing changes are for InfrastructureRole
+  # Rename subject AzsInfraRole to AzsInfrastructureRole
+  - where:
+      subject: InfraRole
+    set:
+      subject: InfrastructureRole
+
+  # [InfrastructureRole]: Rename property name Instance to Instances
+  - where:
+      model-name: InfraRole
+      property-name: Instance
+    set:
+      property-name: Instances
+
+  # [InfrastructureRole] Rename cmdlet parameter name in EdgeGatewayPool
+  - where:
+      subject: InfrastructureRole
+      parameter-name: InfraRole
+    set:
+      parameter-name: Name
+
+  # [InfrastructureRole] hide autorest generated cmdlet to use the custom one
+  - where:
+      verb: Get
+      subject: InfrastructureRole
+    hide: true
+
+  # [ScaleUnitNode]: Following changes are for ScaleUnit
   # Rename Invoke-ScaleUnitOut to Add-AzsScaleUnitNode
   - where:
       verb: Invoke
@@ -120,12 +190,6 @@ directive:
       subject: FabricLocation
     set:
       subject: InfrastructureLocation
-
-  # Rename Restart-AzsInfraRole to Restart-AzsInfrastructureRole
-  - where:
-      subject: InfraRole
-    set:
-      subject: InfrastructureRole
 
   # Rename Get-AzsInfraRole to Get-AzsInfrastructureRoleInstance
   - where:
@@ -185,18 +249,6 @@ directive:
       property-name: Label
     set:
       property-name: VolumeLabel
-
-  - where:
-      model-name: EdgeGateway
-      property-name: NumberOfConnections
-    set:
-      property-name: NumberOfConnection
-
-  - where:
-      model-name: EdgeGatewayPool
-      property-name: NumberOfGateway
-    set:
-      property-name: NumberOfGateways
 
   # Rename cmdlet parameter name in InfrastructureShare
   - where:
