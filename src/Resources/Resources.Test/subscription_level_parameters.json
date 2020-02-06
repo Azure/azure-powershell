@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storageAccountName": {
-      "value": "armbuilddemo1819"
+      "value": "armbuilddemo1822"
     }
   }
 }

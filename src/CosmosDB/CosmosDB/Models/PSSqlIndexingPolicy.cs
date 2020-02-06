@@ -13,43 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.CosmosDB.Models;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-    public class PSSqlIndexingPolicy
+    public class PSSqlIndexingPolicy : PSIndexingPolicy
     {
-        public PSSqlIndexingPolicy()
+        public PSSqlIndexingPolicy() : base()
         {
         }
 
-        public PSSqlIndexingPolicy(string[] includedPaths, string[] excludedPaths, bool? automatic, string indexingMode)
+        public PSSqlIndexingPolicy(IndexingPolicy indexingPolicy) : base(indexingPolicy)
         {
-            IncludedPaths = includedPaths;
-            ExcludedPaths = excludedPaths;
-            Automatic = automatic;
-            IndexingMode = indexingMode;
         }
-
-        /// <summary>
-        /// Gets or sets indicates if the indexing policy is automatic
-        /// </summary>
-        public bool? Automatic { get; set; }
-
-        /// <summary>
-        /// Gets or sets indicates the indexing mode. Possible values include:
-        /// 'Consistent', 'Lazy', 'None'
-        /// </summary>
-        public string IndexingMode { get; set; }
-
-        /// <summary>
-        /// Gets or sets list of paths to include in the indexing
-        /// </summary>
-        public string[] IncludedPaths { get; set; }
-
-        /// <summary>
-        /// Gets or sets list of paths to exclude from indexing
-        /// </summary>
-        public string[] ExcludedPaths { get; set; }
     }
 }

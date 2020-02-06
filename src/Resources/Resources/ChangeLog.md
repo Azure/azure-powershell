@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Refactor template deployment cmdlets
+    - Add new cmdlets for managing deployments at management group: *-AzManagementGroupDeployment
+    - Add new cmdlets for managing deployments at tenant scope: *-AzTenantDeployment
+    - Refactor *-AzDeployment cmdlets to work specificly at subscription scope
+    - Created aliases *-AzSubscriptionDeployment for *-AzDeployment cmdlets
+* Fix `Update-AzADApplication` when parameter `AvailableToOtherTenants` is not set 
 
 ## Version 1.10.0
 * Make -Scope optional in *-AzPolicyAssignment cmdlets with default to context subscription

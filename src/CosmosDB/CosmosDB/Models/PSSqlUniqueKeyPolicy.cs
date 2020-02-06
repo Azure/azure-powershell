@@ -11,23 +11,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Microsoft.Azure.Management.CosmosDB.Models;
+
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
 
-    public class PSSqlUniqueKeyPolicy
+    public class PSSqlUniqueKeyPolicy : PSUniqueKeyPolicy
     {
-        public PSSqlUniqueKeyPolicy()
+        public PSSqlUniqueKeyPolicy() : base()
         {
         }        
 
-        public PSSqlUniqueKeyPolicy(PSSqlUniqueKey[] uniqueKey)
+        public PSSqlUniqueKeyPolicy(UniqueKeyPolicy uniqueKey) : base(uniqueKey)
         {
-            UniqueKey = uniqueKey;
         }
-
-        /// <summary>
-        /// Gets or sets the UniqueKey for the SqlUniqueKeyPolicy
-        /// </summary>
-        public PSSqlUniqueKey[] UniqueKey { get; set; }
     }
 }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCosmosDBSqlUniqueKeyPolicy
 
 ## SYNOPSIS
-Creates a new CosmosDB Sql UniqueKeyPolicy object.
+Creates a new CosmosDB SqlUniqueKeyPolicy object.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey <PSSqlUniqueKey[]> [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-The **New-AzCosmosDBSqlUniqueKeyPolicy** cmdlet creates a new object of type PSUniqueKeyPolicy.
+The **New-AzCosmosDBSqlUniqueKeyPolicy** cmdlet creates a new object of type PSSqlUniqueKeyPolicy.
 
 ## EXAMPLES
 

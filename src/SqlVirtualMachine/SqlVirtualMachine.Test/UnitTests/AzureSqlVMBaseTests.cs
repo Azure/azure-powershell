@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
         internal void CheckGetParameters(Type type)
         {
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
-            UnitTestHelper.CheckConfirmImpact(type, ConfirmImpact.Medium);
+            UnitTestHelper.CheckConfirmImpact(type, ConfirmImpact.None);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "Name", true, false, ParameterSet.Name);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ResourceGroupName", null, false, new HashSet<String>() {
