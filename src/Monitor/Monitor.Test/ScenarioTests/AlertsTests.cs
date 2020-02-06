@@ -108,6 +108,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAzureRmMetricAlertRuleV2WithActionGroupId()
+        {
+            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmMetricAlertRuleV2-ActionGroupId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmDynamicMetricAlertRuleV2()
         {
             TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmMetricAlertRuleV2-DynamicThreshold");
