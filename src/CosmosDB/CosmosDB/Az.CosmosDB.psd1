@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.5'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.CosmosDB.dll'
@@ -74,27 +74,49 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzCosmosDBSqlContainer', 
-               'Get-AzCosmosDBSqlContainerThroughput', 'Get-AzCosmosDBSqlDatabase', 
-               'Get-AzCosmosDBSqlDatabaseThroughput', 
-               'Get-AzCosmosDBSqlStoredProcedure', 'Get-AzCosmosDBSqlTrigger', 
-               'Get-AzCosmosDBSqlUserDefinedFunction', 
-               'Set-AzCosmosDBSqlStoredProcedure', 'Set-AzCosmosDBSqlTrigger', 
-               'Set-AzCosmosDBSqlUserDefinedFunction', 
-               'Remove-AzCosmosDBSqlStoredProcedure', 
-               'Remove-AzCosmosDBSqlTrigger', 
-               'Remove-AzCosmosDBSqlUserDefinedFunction', 
-               'New-AzCosmosDBSqlConflictResolutionPolicy', 
-               'New-AzCosmosDBSqlIndexingPolicy', 'New-AzCosmosDBSqlUniqueKey', 
-               'New-AzCosmosDBSqlUniqueKeyPolicy', 'Remove-AzCosmosDBSqlContainer', 
-               'Remove-AzCosmosDBSqlDatabase', 'Set-AzCosmosDBSqlContainer', 
-               'Set-AzCosmosDBSqlDatabase', 'New-AzCosmosDBAccount', 
-               'Remove-AzCosmosDBAccount', 'Get-AzCosmosDBAccount', 
-               'Get-AzCosmosDBAccountKey', 'New-AzCosmosDBAccountKey', 
-               'Update-AzCosmosDBAccount', 'Update-AzCosmosDBAccountRegion', 
-               'Update-AzCosmosDBAccountFailoverPriority', 
-               'New-AzCosmosDBVirtualNetworkRule', 'New-AzCosmosDBLocationObject'
-
+CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
+               'Get-AzCosmosDBSqlContainerThroughput', 'Get-AzCosmosDBSqlDatabase',
+               'Get-AzCosmosDBSqlDatabaseThroughput',
+               'Get-AzCosmosDBSqlStoredProcedure', 'Get-AzCosmosDBSqlTrigger',
+               'Get-AzCosmosDBSqlUserDefinedFunction',
+               'Set-AzCosmosDBSqlStoredProcedure', 'Set-AzCosmosDBSqlTrigger',
+               'Set-AzCosmosDBSqlUserDefinedFunction',
+               'Remove-AzCosmosDBSqlStoredProcedure',
+               'Remove-AzCosmosDBSqlTrigger',
+               'Remove-AzCosmosDBSqlUserDefinedFunction',
+               'New-AzCosmosDBSqlConflictResolutionPolicy',
+               'New-AzCosmosDBSqlIndexingPolicy', 'New-AzCosmosDBSqlUniqueKey',
+               'New-AzCosmosDBSqlUniqueKeyPolicy', 'Remove-AzCosmosDBSqlContainer',
+               'Remove-AzCosmosDBSqlDatabase', 'Set-AzCosmosDBSqlContainer',
+               'Set-AzCosmosDBSqlDatabase', 'New-AzCosmosDBAccount',
+               'Remove-AzCosmosDBAccount', 'Get-AzCosmosDBAccount',
+               'Get-AzCosmosDBAccountKey', 'New-AzCosmosDBAccountKey',
+               'Update-AzCosmosDBAccount', 'Update-AzCosmosDBAccountRegion',
+               'Update-AzCosmosDBAccountFailoverPriority',
+               'New-AzCosmosDBVirtualNetworkRule', 'New-AzCosmosDBLocationObject',
+               'New-AzCosmosDBSqlSpatialSpec', 'New-AzCosmosDBSqlCompositePath',
+               'New-AzCosmosDBSqlIncludedPath', 'New-AzCosmosDBSqlIncludedPathIndex',
+               'Get-AzCosmosDBGremlinDatabase', 'Get-AzCosmosDBGremlinDatabaseThroughput',
+               'Get-AzCosmosDBGremlinGraph', 'Get-AzCosmosDBGremlinGraphThroughput',
+               'Remove-AzCosmosDBGremlinDatabase', 'Remove-AzCosmosDBGremlinGraph',
+               'Set-AzCosmosDBGremlinDatabase', 'Set-AzCosmosDBGremlinGraph',
+               'New-AzCosmosDBGremlinIndexingPolicy', 'New-AzCosmosDBGremlinUniqueKey', 
+               'New-AzCosmosDBGremlinUniqueKeyPolicy', 'New-AzCosmosDBGremlinSpatialSpec',
+               'New-AzCosmosDBGremlinCompositePath', 'New-AzCosmosDBGremlinConflictResolutionPolicy',
+               'New-AzCosmosDBGremlinIncludedPath', 'New-AzCosmosDBGremlinIncludedPathIndex',
+               'Get-AzCosmosDBTable', 'Get-AzCosmosDBTableThroughput',
+               'Remove-AzCosmosDBTable', 'Set-AzCosmosDBTable',
+               'Get-AzCosmosDBCassandraKeyspace', 'Get-AzCosmosDBCassandraKeyspaceThroughput',
+               'Get-AzCosmosDBCassandraTable', 'Get-AzCosmosDBCassandraTableThroughput',
+               'New-AzCosmosDBCassandraClusterKey', 'New-AzCosmosDBCassandraColumn',
+               'New-AzCosmosDBCassandraSchema', 'Remove-AzCosmosDBCassandraKeyspace',
+               'Remove-AzCosmosDBCassandraTable', 'Set-AzCosmosDBCassandraKeyspace',
+               'Set-AzCosmosDBCassandraTable', 'Get-AzCosmosDBMongoDBCollection',
+               'Get-AzCosmosDBMongoDBCollectionThroughput', 'Get-AzCosmosDBMongoDBDatabase',
+               'Get-AzCosmosDBMongoDBDatabaseThroughput', 'Remove-AzCosmosDBMongoDBCollection',
+               'Remove-AzCosmosDBMongoDBDatabase', 'Set-AzCosmosDBMongoDBCollection',
+               'Set-AzCosmosDBMongoDBDatabase', 'New-AzCosmosDBMongoDBIndex'
+ 
 # Variables to export from this module
 # VariablesToExport = @()
 

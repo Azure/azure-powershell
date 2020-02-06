@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = new Dictionary<string, string>() { }
             };
 
-            if (ShouldProcess(Name, "Creating or Updating CosmosDB Sql Stored Procedure"))
+            if (ShouldProcess(Name, "Setting CosmosDB Sql Stored Procedure"))
             {
                 SqlStoredProcedureGetResults sqlStoredProcedureGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlStoredProcedureWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, ContainerName, Name, sqlStoredProcedureCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSqlStoredProcedureGetResults(sqlStoredProcedureGetResults));

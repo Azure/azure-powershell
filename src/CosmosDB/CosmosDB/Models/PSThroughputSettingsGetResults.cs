@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
             Name = throughputSettingsGetResults.Name;
             Id = throughputSettingsGetResults.Id;
-            Throughput = throughputSettingsGetResults.Throughput;
-            MinimumThroughput = throughputSettingsGetResults.MinimumThroughput;
-            OfferReplacePending = throughputSettingsGetResults.OfferReplacePending;
+            Throughput = throughputSettingsGetResults.Resource.Throughput;
+            MinimumThroughput = throughputSettingsGetResults.Resource.MinimumThroughput;
+            OfferReplacePending = throughputSettingsGetResults.Resource.OfferReplacePending;
         }
 
         /// <summary>

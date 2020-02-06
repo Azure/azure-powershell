@@ -26,7 +26,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
-            PSSqlUniqueKey uniqueKey = new PSSqlUniqueKey(Path);
+            PSSqlUniqueKey uniqueKey = new PSSqlUniqueKey
+            {
+                Paths = Path
+            };
+
             WriteObject(uniqueKey);
             return;
         }
