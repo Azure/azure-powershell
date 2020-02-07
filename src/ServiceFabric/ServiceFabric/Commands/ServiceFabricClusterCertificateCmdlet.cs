@@ -478,7 +478,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                 if (this.CertificateCommonName != null)
                                 {
                                     JArray newCommonNames = (JArray)extConfig.SelectToken("certificate.commonNames");
-                                    newCommonNames.Add(this.CertificateCommonName);
+
+                                    // Validate that the supplied common name doesn't already exist in the extension definition
+                                    if (!newCommonNames.Select(t => t.ToString().ToLower()).Contains(this.CertificateCommonName.ToLower()))
+                                    {
+                                        newCommonNames.Add(this.CertificateCommonName);
+                                    }
 
                                     extConfig["certificate"]["commonNames"] = newCommonNames;
                                 }

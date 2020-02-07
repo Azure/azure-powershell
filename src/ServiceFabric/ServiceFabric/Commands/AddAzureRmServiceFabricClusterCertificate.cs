@@ -87,6 +87,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     string issuerTP = this.CertificateIssuerThumbprint != null ? this.CertificateIssuerThumbprint : String.Empty;
                     patchRequest.CertificateCommonNames = clusterResource.CertificateCommonNames;
+
+                    // Find and remove any duplicate common names
+                    var duplicates = patchRequest.CertificateCommonNames.CommonNames.Where(cn => cn.CertificateCommonName.ToLower() == this.CertificateCommonName.ToLower());
+                    foreach (var dupe in duplicates)
+                    {
+                        patchRequest.CertificateCommonNames.CommonNames.Remove(dupe);
+                    }
                     patchRequest.CertificateCommonNames.CommonNames.Add(new ServerCertificateCommonName(this.CertificateCommonName, issuerTP));
                 }
                 else
