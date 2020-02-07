@@ -203,3 +203,92 @@ function Test-PrivateEndpointConnectionCRUD
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test operation for PrivateEndpointConnection to CosmosDB.
+#>
+function Test-PrivateEndpointConnectionCRUDforCosmosDB
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    
+    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "northcentralus";
+    # Dependency parameters
+
+    $accountName = Get-ResourceName
+
+    $peName = "mype"
+    $subId = getSubscription
+
+    $locations = @(
+        @{ "locationName"=$location; "failoverPriority"=0 }
+    )
+
+    $consistencyPolicy = @{
+        "defaultConsistencyLevel"="BoundedStaleness";
+        "maxIntervalInSeconds"=300;
+        "maxStalenessPrefix"=100000
+    }
+    $CosmosDBProperties = @{
+        "databaseAccountOfferType"="Standard";
+        "locations"=$locations;
+        "consistencyPolicy"=$consistencyPolicy;
+        "enableMultipleWriteLocations"="false"
+    }
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location;
+
+        if ((Get-NetworkTestMode) -ne 'Playback')
+        {
+            # Create CosmosDB Account
+            $cosmosDB = New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+                -ApiVersion "2015-04-08" `
+                -ResourceGroupName $rgname `
+                -Location $location `
+                -Name $accountName `
+                -PropertyObject $CosmosDBProperties -Force
+
+            $cosmosDBResourceId = $cosmosDB.ResourceId
+        }
+        else
+        {
+            $cosmosDBResourceId = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.DocumentDB/databaseAccounts/$accountName"
+        }
+
+        # Create Private Endpoint
+        $peSubnet = New-AzVirtualNetworkSubnetConfig -Name peSubnet -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPolicies "Disabled"
+        $vnetPE = New-AzVirtualNetwork -Name "vnetPE" -ResourceGroupName $rgname -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet
+
+        $plsConnection= New-AzPrivateLinkServiceConnection -Name plsConnection -PrivateLinkServiceId  $cosmosDBResourceId -GroupId 'Sql'
+        $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
+
+        # Get Private Endpoint Connection
+        $pecGet = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $cosmosDBResourceId
+        Assert-NotNull $pecGet;
+        Assert-AreEqual "Pending" $pecGet.PrivateLinkServiceConnectionState.Status
+
+        # Approve Private Endpoint Connection
+        $pecApprove = Approve-AzPrivateEndpointConnection -ResourceId $pecGet.Id
+        Assert-NotNull $pecApprove;
+        Assert-AreEqual "Approved" $pecApprove.PrivateLinkServiceConnectionState.Status
+
+        Start-TestSleep 30000
+
+        # Remove Private Endpoint Connection
+        $pecRemove = Remove-AzPrivateEndpointConnection -ResourceId $pecGet.Id -PassThru -Force
+        Assert-AreEqual true $pecRemove
+
+        # Get Private Endpoint Connection again
+        $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $cosmosDBResourceId
+        Assert-Null($pecGet2)
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

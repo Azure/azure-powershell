@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Management.CosmosDB;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Management.Sql;
@@ -36,6 +37,24 @@ namespace Microsoft.Azure.Commands.Network
     public partial class NetworkClient
     {
         public INetworkManagementClient NetworkManagementClient { get; set; }
+
+        public ICosmosDBManagementClient cosmosDBManagementClient = null;
+
+        public ICosmosDBManagementClient CosmosDBManagementClient
+        {
+            get
+            {
+                if (cosmosDBManagementClient == null)
+                {
+                    cosmosDBManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<CosmosDBManagementClient>(azureContext, AzureEnvironment.Endpoint.ResourceManager);
+                }
+                return cosmosDBManagementClient;
+            }
+            set
+            {
+                cosmosDBManagementClient = value;
+            }
+        }
 
         public ISqlManagementClient SqlManagementClient
         {

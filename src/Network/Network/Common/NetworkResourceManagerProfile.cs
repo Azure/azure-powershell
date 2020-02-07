@@ -1269,7 +1269,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.PrivateLinkServiceConnection, CNM.PSPrivateLinkServiceConnection>();
 
                 cfg.CreateMap<CNM.PSPrivateLinkServiceConnectionState, MNM.PrivateLinkServiceConnectionState>();
-                cfg.CreateMap<MNM.PrivateLinkServiceConnectionState, CNM.PSPrivateLinkServiceConnectionState>();
+                cfg.CreateMap<MNM.PrivateLinkServiceConnectionState, CNM.PSPrivateLinkServiceConnectionState>().AfterMap((src, dest) =>
+                {
+                    dest.ActionRequired = src.ActionsRequired;
+                });
 
                 cfg.CreateMap<CNM.PSPrivateLinkService, MNM.PrivateLinkService>();
                 cfg.CreateMap<MNM.PrivateLinkService, CNM.PSPrivateLinkService>();

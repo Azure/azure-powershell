@@ -59,6 +59,9 @@ namespace Microsoft.Azure.Commands.Network
 
             switch (resourceType.ToLower())
             {
+                case "microsoft.documentdb/databaseaccounts":
+                    provider = new CosmosDBProvider(this);
+                    break;
                 case "microsoft.sql/servers":
                     provider = new SqlProvider(this);
                     break;

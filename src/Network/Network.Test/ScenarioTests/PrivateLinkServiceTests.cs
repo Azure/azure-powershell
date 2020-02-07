@@ -40,5 +40,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-PrivateEndpointConnectionCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestPrivateEndpointConnectionCRUDforCosmosDB()
+        {
+            TestRunner.RunTestScript("Test-PrivateEndpointConnectionCRUDforCosmosDB");
+        }
     }
 }
