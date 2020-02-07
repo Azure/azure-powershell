@@ -1164,9 +1164,7 @@ function Test-SetWebApp
 		
 		#Set-AzWebApp errors on operations for App Services not in the same resource group as the App Service Plan
 		#setup
-
 		## Create two Resource Groups.
-		#New-AzResourceGroup -Name $rgname -Location $location
 		New-AzResourceGroup -Name $rgname1 -Location $location
 
 		## Create the App Service Plan in $rgname.
@@ -1202,11 +1200,8 @@ function Test-SetWebApp
 	{
 		# Cleanup
 		Remove-AzWebApp -ResourceGroupName $rgname -Name $webAppName -Force
-		#Remove-AzWebApp -ResourceGroupName $rgname -Name $app1 -Force
-		#Remove-AzWebApp -ResourceGroupName $rgname1 -Name $app2 -Force
 		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName1 -Force
 		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName2 -Force
-		#Remove-AzAppServicePlan -ResourceGroupName $rgname1 -Name  $appServicePlanName3 -Force
 		Remove-AzResourceGroup -Name $rgname -Force
 		Remove-AzResourceGroup -Name $rgname1 -Force
 	}
