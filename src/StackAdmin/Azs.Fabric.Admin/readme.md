@@ -160,6 +160,39 @@ directive:
       subject: InfrastructureRole
     hide: true
 
+  # [IPPool]: Following changes are for IpPool
+  # [IPPool]: Rename property name
+  - where:
+      model-name: IPPool
+      property-name: NumberOfAllocatedIPAddress
+    set:
+      property-name: NumberOfAllocatedIPAddresses
+
+  - where:
+      model-name: IPPool
+      property-name: NumberOfIPAddress
+    set:
+      property-name: NumberOfIPAddresses
+
+  # [IPPool] Rename cmdlet parameter name in IPPool
+  - where:
+      subject: IPPool
+      parameter-name: IPPool
+    set:
+      parameter-name: Name
+
+  # [IPPool] Hide the auto-generated Set-AzsIPPool and expose it through customized one
+  - where:
+      verb: Set
+      subject: IPPool
+    hide: true
+
+  # [IPPool] Hide the auto-generated Get-AzsIPPool and expose it through customized one
+  - where:
+      verb: Get
+      subject: IPPool
+    hide: true
+
   # [ScaleUnitNode]: Following changes are for ScaleUnit
   # Rename Invoke-ScaleUnitOut to Add-AzsScaleUnitNode
   - where:
@@ -203,7 +236,7 @@ directive:
     set:
       subject: InfrastructureShare
 
-  # Separate InfraRoleInstance stop opeartions
+  # Separate InfraRoleInstance stop operations
   - where:
       verb: Stop
       subject: InfrastructureRoleInstance
@@ -300,12 +333,6 @@ directive:
   - where:
       verb: Get
       subject: Volume
-    hide: true
-
-  # Hide the auto-generated Set-AzsIPPool and expose it through customized one
-  - where:
-      verb: Set
-      subject: IPPool
     hide: true
 
   # Hide the auto-generated Get-AzsFabricOperation and expose it through customized one
