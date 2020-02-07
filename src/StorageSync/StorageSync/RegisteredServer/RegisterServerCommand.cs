@@ -167,6 +167,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     throw new PSArgumentException(StorageSyncResources.MissingAfsAgentInstallerPathErrorMessage);
                 }
 
+                var path = Path.Combine(StorageSyncClientWrapper.AfsAgentInstallerPath, StorageSyncConstants.MonitoringAgentDirectoryName);
+                WriteObject(path);
                 return syncServerRegistrationClient.Register(
                     ProductionArmServiceHost.ToUri(),
                     subscriptionId,
@@ -175,7 +177,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     ManagementInteropConstants.CertificateProviderName,
                     ManagementInteropConstants.CertificateHashAlgorithm,
                     ManagementInteropConstants.CertificateKeyLength,
-                    Path.Combine(StorageSyncClientWrapper.AfsAgentInstallerPath, StorageSyncConstants.MonitoringAgentDirectoryName),
+                    path,
                     StorageSyncClientWrapper.AfsAgentVersion,
                     (pResourceGroupName, pStorageSyncCerviceName, pServerRegistrationData) => CreateRegisteredResourceInCloud(pResourceGroupName, pStorageSyncCerviceName,
                             StorageSyncClientWrapper.StorageSyncResourceManager.UpdateServerRegistrationData(pServerRegistrationData)));
