@@ -11,30 +11,30 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-InModuleScope Azs.InfrastructureInsights.Admin {
 
-    Describe "Alerts" -Tags @('Alert', 'InfrastructureInsightsAdmin') {
+Describe "Alerts" -Tags @('Alert', 'InfrastructureInsightsAdmin') {
 
-        it "TestCloseAlert" -Skip:$('TestCloseAlert' -in $global:SkippedTests) {
+    . $PSScriptRoot\Common.ps1
 
-                $global:TestName = 'TestCloseAlert'
+    it "TestCloseAlert" -Skip:$('TestCloseAlert' -in $global:SkippedTests) {
 
-                $Alerts = Get-AzsAlert -ResourceGroupName $global:ResourceGroupName -Location $global:location
+            $global:TestName = 'TestCloseAlert'
 
-                $Alerts | Should Not Be $null
+            $Alerts = Get-AzsAlert -ResourceGroupName $global:ResourceGroupName -Location $global:location
 
-                foreach ($Alert in $Alerts) {
+            $Alerts | Should Not Be $null
+
+            foreach ($Alert in $Alerts) {
                 
-                    $Alert | Should not be $null
-                    $Alert.State | Should not be $null
+                $Alert | Should not be $null
+                $Alert.State | Should not be $null
 
-                    if ($Alert.State -eq "Active") {
+                if ($Alert.State -eq "Active") {
 
-                        $Alert | Close-AzsAlert -Location $global:location -User "foobar"
+                    $Alert | Close-AzsAlert -Location $global:location -User "foobar"
 
-                        return
-                    }
+                    return
                 }
-         }
-    }
+            }
+        }
 }
