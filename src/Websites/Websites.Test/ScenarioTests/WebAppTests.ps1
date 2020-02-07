@@ -1173,8 +1173,8 @@ function Test-SetWebApp
 		$asp = New-AzAppServicePlan -Location $location -Tier Standard -NumberofWorkers 1 -WorkerSize Small -ResourceGroupName $rgname -Name $appServicePlanName3
 
 		## Create a Web App in each Resource Group.
-		$app1 = $(Get-Random)
-		$app2 = $(Get-Random)
+		$app1 = Get-WebsiteName
+		$app2 = Get-WebsiteName
 		New-AzWebApp -ResourceGroupName $rgname -Name $app1 -Location $location -AppServicePlan $asp.Id
 		New-AzWebApp -ResourceGroupName $rgname1 -Name $app2 -Location $location -AppServicePlan $asp.Id
 
@@ -1202,11 +1202,11 @@ function Test-SetWebApp
 	{
 		# Cleanup
 		Remove-AzWebApp -ResourceGroupName $rgname -Name $webAppName -Force
-		Remove-AzWebApp -ResourceGroupName $rgname -Name $app1 -Force
-		Remove-AzWebApp -ResourceGroupName $rgname1 -Name $app2 -Force
+		#Remove-AzWebApp -ResourceGroupName $rgname -Name $app1 -Force
+		#Remove-AzWebApp -ResourceGroupName $rgname1 -Name $app2 -Force
 		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName1 -Force
 		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName2 -Force
-		Remove-AzAppServicePlan -ResourceGroupName $rgname1 -Name  $appServicePlanName3 -Force
+		#Remove-AzAppServicePlan -ResourceGroupName $rgname1 -Name  $appServicePlanName3 -Force
 		Remove-AzResourceGroup -Name $rgname -Force
 		Remove-AzResourceGroup -Name $rgname1 -Force
 	}
