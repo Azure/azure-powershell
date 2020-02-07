@@ -619,9 +619,9 @@ function Test-AzureVmWorkloadRestoreAsFiles
 		-BackupManagementType "AzureWorkload" `
 		-WorkloadType "MSSQL";
 
-	$endtime = get-date -Year 2020 -Month 1 -Day 31 -Minute 35 -Hour 23 -Second 15
+	[datetime]$endtime = get-date -Year 2020 -Month 1 -Day 31 -Minute 35 -Hour 23 -Second 15 -Format "dddd MM/dd/yyyy HH:mm:ss Z"
 	$endtime = $endtime.ToUniversalTime()
-	$starttime = $endtime.AddDays(-30)
+	[datetime]$starttime = $endtime.AddDays(-30)
 	$starttime = $starttime.ToUniversalTime()
 
 	$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $item -StartDate $starttime -EndDate $endtime
