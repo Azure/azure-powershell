@@ -1161,58 +1161,7 @@ function Test-SetWebApp
 		Assert-AreEqual $capacity $webApp.SiteConfig.NumberOfWorkers
 		Assert-AreEqual "" $webApp.SiteConfig.PhpVersion
 		Assert-AreEqual "1.2" $webApp.SiteConfig.MinTlsVersion
-
 		
-		<##TODO- Need to handle exception received during TestCase execution
-		# set Custom Host Name(s)- Failed Scenario
-		$oldWebApp= Get-AzWebApp -ResourceGroupName $rgname -Name $webAppName
-		try{
-			$CurrentWebApp = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -HostNames $HN
-		}
-		catch{}
-		
-		#Assert
-		$status
-		foreach($oldHN in $oldWebApp.HostNames)
-		{
-			Assert-True { $CurrentWebApp.HostNames -contains $oldHN }
-		}#>
-
-		#Set-AzWebApp errors on operations for App Services not in the same resource group as the App Service Plan
-		#setup
-
-		## Create two Resource Groups.
-		New-AzResourceGroup -Name $rgname -Location $location
-		New-AzResourceGroup -Name $rgname1 -Location $location
-
-		## Create the App Service Plan in $rgname.
-		$asp = New-AzAppServicePlan -Location $location -Tier Standard -NumberofWorkers 1 -WorkerSize Small -ResourceGroupName $rgname -Name $appServicePlanName3
-
-		## Create a Web App in each Resource Group.
-		$app1 = $(Get-Random)
-		$app2 = $(Get-Random)
-		New-AzWebApp -ResourceGroupName $rgname -Name $app1 -Location $location -AppServicePlan $asp.Id
-		New-AzWebApp -ResourceGroupName $rgname1 -Name $app2 -Location $location -AppServicePlan $asp.Id
-
-		## Get the two Web Apps.
-		$wa1 = Get-AzWebApp -ResourceGroupName $rgname -Name $app1
-		$wa2 = Get-AzWebApp -ResourceGroupName $rgname1 -Name $app2
-
-		## Change a setting on the first Web App (which is in the same Resource Group as the App Service Plan).
-		$currentWa1ClientAffinityEnabled=$wa1.ClientAffinityEnabled
-		$wa1.ClientAffinityEnabled = !$wa1.ClientAffinityEnabled
-		$wa1 | Set-AzWebApp
-
-		#Assert
-		Assert-AreNotEqual $currentWa1ClientAffinityEnabled $wa1.ClientAffinityEnabled
-
-		## Change a setting on the Second Web App (which is in not the same Resource Group as the App Service Plan).
-		$currentWa2ClientAffinityEnabled=$wa2.ClientAffinityEnabled
-		$wa2.ClientAffinityEnabled = !$wa2.ClientAffinityEnabled
-		$wa2 | Set-AzWebApp
-
-		#Assert
-		Assert-AreNotEqual $currentWa2ClientAffinityEnabled $wa2.ClientAffinityEnabled
 	}
 	finally
 	{
