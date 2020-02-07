@@ -141,15 +141,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         internal ClusterType GetClusterType(Cluster clusterResource)
         {
-            if (string.IsNullOrWhiteSpace(clusterResource.Certificate.Thumbprint) &&
-                string.IsNullOrWhiteSpace(clusterResource.Certificate.ThumbprintSecondary))
-            {
-                return ClusterType.Unsecure;
-            }
-            else
+            // Check for any indication that a cluster certificate is present on the cluster.
+            var hasThumbprints = !string.IsNullOrWhiteSpace(clusterResource.Certificate?.Thumbprint) ||
+                !string.IsNullOrWhiteSpace(clusterResource.Certificate?.ThumbprintSecondary);
+            var validCommonNames = clusterResource.CertificateCommonNames?.CommonNames?.Where(cn =>
+                !string.IsNullOrWhiteSpace(cn.CertificateCommonName));
+            if (hasThumbprints || validCommonNames.Any())
             {
                 return ClusterType.Secure;
             }
+
+            return ClusterType.Unsecure;
         }
 
         #endregion
