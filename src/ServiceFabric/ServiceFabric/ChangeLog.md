@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Modified the `Add-AzServiceFabricClusterCertificate` cmdlet to allow adding new certificates with the same common name as the existing certificate by fixing the following bugs:
+    - A `NullReferenceException` would throw when cmdlet called on cluster without a `certificate` object in its resource properties.
+    - Cmdlet would throw when attempting to add multiple `certificateCommonNames.commonNames[*]` items with the same `certificateCommonName` property value.
+    - Cmdlet would add duplicate values to the `settings.certificate.commonNames[]` array on the Service Fabric VMSS Extension.
 
 ## Version 2.0.1
 * Update references in .psd1 to use relative path
