@@ -24,6 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Management.Automation.Host;
+using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -272,12 +273,17 @@ namespace Microsoft.WindowsAzure.Commands.Common
             eventProperties.Add("CommandParameters", qos.Parameters);
             eventProperties.Add("UserId", qos.Uid);
             eventProperties.Add("x-ms-client-request-id", qos.ClientRequestId);
-            eventProperties.Add("UserAgent", AzurePowerShell.UserAgentValue.ToString());
+            eventProperties.Add("UserAgent", qos.UserAgent);
             eventProperties.Add("HashMacAddress", HashMacAddress);
             eventProperties.Add("PowerShellVersion", PSVersion);
-            eventProperties.Add("Version", AzurePowerShell.AssemblyVersion);
+            eventProperties.Add("Version", qos.AzVersion);
             eventProperties.Add("CommandParameterSetName", qos.ParameterSetName);
             eventProperties.Add("CommandInvocationName", qos.InvocationName);
+            eventProperties.Add("start-time", qos.StartTime.ToUniversalTime().ToString("o"));
+            eventProperties.Add("end-time", qos.EndTime.ToUniversalTime().ToString("o"));
+            eventProperties.Add("duration", qos.Duration.ToString("c"));
+            eventProperties.Add("subscription-id", qos.SubscriptionId);
+            eventProperties.Add("tenant-id", qos.TenantId);
 
             if (qos.InputFromPipeline != null)
             {
@@ -371,12 +377,15 @@ public class AzurePSQoSEvent
     private readonly Stopwatch _timer;
 
     public DateTimeOffset StartTime { get; set; }
+    public DateTimeOffset EndTime { get; set; }
     public TimeSpan Duration { get; set; }
     public bool IsSuccess { get; set; }
     public string CommandName { get; set; }
     public string ModuleName { get; set; }
     public string ModuleVersion { get; set; }
     public string HostVersion { get; set; }
+    public string AzVersion { get; set; }
+    public string UserAgent { get; set; }
     public string Parameters { get; set; }
     public bool? InputFromPipeline { get; set; }
     public bool? OutputToPipeline { get; set; }
@@ -384,6 +393,9 @@ public class AzurePSQoSEvent
     public string Uid { get; set; }
     public string ClientRequestId { get; set; }
     public string SessionId { get; set; }
+    public string SubscriptionId { get; set; }
+    public string TenantId { get; set; }
+
     public string ParameterSetName { get; set; }
     public string InvocationName { get; set; }
     public Dictionary<string, string> CustomProperties { get; private set; }
@@ -410,12 +422,17 @@ public class AzurePSQoSEvent
     {
         _timer.Stop();
         Duration = _timer.Elapsed;
+        EndTime = DateTimeOffset.Now;
     }
 
     public override string ToString()
     {
-        return string.Format(
-            "AzureQoSEvent: CommandName - {0}; IsSuccess - {1}; Duration - {2}; Exception - {3};",
-            CommandName, IsSuccess, Duration, Exception);
+        string ret = string.Format(
+            "AzureQoSEvent: CommandName - {0}; IsSuccess - {1}; Duration - {2};", CommandName, IsSuccess, Duration);
+        if (Exception != null)
+        {
+            ret = $"{ret}; Exception - {Exception};";
+        }
+        return ret;
     }
 }

@@ -29,6 +29,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
+using System.Net.Http.Headers;
 using System.Security.Authentication;
 using System.Text;
 
@@ -295,6 +296,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 ParameterSetName = this.ParameterSetName
             };
 
+            if (AzVersion == null)
+            {
+                AzVersion = this.LoadAzVersion();
+                UserAgent = new ProductInfoHeaderValue("AzurePowershell", string.Format("Az{0}", AzVersion)).ToString();
+                string HostEnv = Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT");
+                if (!String.IsNullOrWhiteSpace(HostEnv))
+                    UserAgent += string.Format(";{0}", HostEnv.Trim());
+            }
+            _qosEvent.AzVersion = AzVersion;
+            _qosEvent.UserAgent = UserAgent;
+
             if (this.MyInvocation != null && !string.IsNullOrWhiteSpace(this.MyInvocation.InvocationName))
             {
                 _qosEvent.InvocationName = this.MyInvocation.InvocationName;
@@ -309,15 +321,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             IAzureContext context;
-            if (TryGetDefaultContext(out context) 
-                && context.Account != null 
-                && !string.IsNullOrWhiteSpace(context.Account.Id))
+            _qosEvent.Uid = "defaultid";
+            if (TryGetDefaultContext(out context))
             {
-                _qosEvent.Uid = MetricHelper.GenerateSha256HashString(context.Account.Id.ToString());
-            }
-            else
-            {
-                _qosEvent.Uid = "defaultid";
+                _qosEvent.SubscriptionId = context.Subscription?.Id;
+                _qosEvent.TenantId = context.Tenant?.Id;
+                if(context.Account != null && !String.IsNullOrWhiteSpace(context.Account.Id))
+                {
+                    _qosEvent.Uid = MetricHelper.GenerateSha256HashString(context.Account.Id.ToString());
+                }
             }
         }
 
