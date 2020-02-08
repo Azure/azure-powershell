@@ -79,7 +79,7 @@ If user wants to start the service again, the Allocate method should be called o
 The new VNet and Public IP must be in the same resource group as the Firewall. Again, for changes to be reflected in cloud,
 Set-AzFirewall must be called.
 
-#### Allocate with a management public IP address for forced tunneling scenarios
+### 5: Allocate with a management public IP address for forced tunneling scenarios
 ```
 $vnet = Get-AzVirtualNetwork -ResourceGroupName rgName -Name anotherVNetName
 $pip = Get-AzPublicIpAddress - ResourceGroupName rgName -Name publicIpName
@@ -89,7 +89,7 @@ $firewall | Set-AzFirewall
 ```
 This example allocates the firewall with a management public IP address and subnet for forced tunneling scenarios. The VNet must contain a subnet called "AzureFirewallManagementSubnet".
 
-### 5:	Add a Public IP address to an Azure Firewall
+### 6:	Add a Public IP address to an Azure Firewall
 ```
 $pip = New-AzPublicIpAddress -Name "azFwPublicIp1" -ResourceGroupName "rg" -Sku "Standard" -Location "centralus" -AllocationMethod Static
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
@@ -100,7 +100,7 @@ $azFw | Set-AzFirewall
 
 In this example, the Public IP Address "azFwPublicIp1" as attached to the Firewall.
 
-### 6:	Remove a Public IP address from an Azure Firewall
+### 7:	Remove a Public IP address from an Azure Firewall
 ```
 $pip = Get-AzPublicIpAddress -Name "azFwPublicIp1" -ResourceGroupName "rg"
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
@@ -111,7 +111,7 @@ $azFw | Set-AzFirewall
 
 In this example, the Public IP Address "azFwPublicIp1" as detached from the Firewall.
 
-### 7:	Change the management public IP address on an Azure Firewall
+### 8:	Change the management public IP address on an Azure Firewall
 ```
 $newMgmtPip = New-AzPublicIpAddress -Name "azFwMgmtPublicIp2" -ResourceGroupName "rg" -Sku "Standard" -Location "centralus" -AllocationMethod Static
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
