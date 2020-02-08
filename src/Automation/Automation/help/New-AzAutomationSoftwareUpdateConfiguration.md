@@ -63,7 +63,7 @@ New-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" `
                                                  -AutomationAccountName "myaccount" `
                                                  -Schedule $schedule `
                                                  -Windows `
-                                                 -AzVMResourceId $targetMachines `
+                                                 -AzureVMResourceId $targetMachines `
                                                  -IncludedUpdateClassification Critical `
                                                  -Duration $duration
 
