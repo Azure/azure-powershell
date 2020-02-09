@@ -23,7 +23,7 @@ using System.IO;
 
 namespace Tools.Common.Loaders
 {
-// TODO: Remove IfDef
+    // TODO: Remove IfDef
 #if NETSTANDARD
     public class CmdletLoader
 #else
@@ -54,6 +54,13 @@ namespace Tools.Common.Loaders
             return GetModuleMetadata(assemblyPath);
         }
 
+        static public ModuleMetadata GetModuleMetadata()
+        {
+            ModuleMetadata = new ModuleMetadata();
+
+            return ModuleMetadata;
+        }
+
         /// <summary>
         /// Get the ModuleMetadata from a cmdlet assembly.
         /// </summary>
@@ -61,156 +68,12 @@ namespace Tools.Common.Loaders
         /// <returns>ModuleMetadata containing information about the cmdlets found in the given assembly.</returns>
         public ModuleMetadata GetModuleMetadata(string assemblyPath)
         {
-            var results = new List<CmdletMetadata>();
+            var powershell = PowerShell.Create();
+            powershell.AddScript("import-module tools//GetModuleMedatada.ps1; Get-ModuleMetadataFromDotNet " + assemblyPath);
+            var requiredModules = powershell.Invoke().ToList();
+            Console.WriteLine(powershell.Streams.Error.ToString());
 
-            ModuleMetadata = new ModuleMetadata();
-            try
-            {
-                var assembly = Assembly.LoadFrom(assemblyPath);
-                foreach (var type in assembly.GetCmdletTypes())
-                {
-                    var cmdlet = type.GetAttribute<CmdletAttribute>();
-                    var outputs = type.GetAttributes<OutputTypeAttribute>();
-                    var parameters = type.GetParameters();
-
-                    var cmdletMetadata = new CmdletMetadata
-                    {
-                        VerbName = cmdlet.VerbName,
-                        NounName = cmdlet.NounName,
-                        ConfirmImpact = cmdlet.ConfirmImpact,
-                        SupportsPaging = cmdlet.SupportsPaging,
-                        SupportsShouldProcess = cmdlet.SupportsShouldProcess,
-                        ClassName = type.FullName,
-                        DefaultParameterSetName = cmdlet.DefaultParameterSetName ?? "__AllParameterSets"
-                    };
-
-                    if (type.HasAttribute<AliasAttribute>())
-                    {
-                        var aliases = type.GetAttributes<AliasAttribute>();
-                        cmdletMetadata.AliasList.AddRange(
-                            aliases.SelectMany(a => a.AliasNames));
-                    }
-
-                    foreach (var output in outputs)
-                    {
-                        foreach (var outputType in output.Type)
-                        {
-                            var outputMetadata = new OutputMetadata
-                            {
-                                Type = outputType.Type
-                            };
-                            outputMetadata.ParameterSets.AddRange(output.ParameterSetName);
-                            cmdletMetadata.OutputTypes.Add(outputMetadata);
-                        }
-                    }
-
-                    var globalParameters = new List<Parameter>();
-
-                    foreach (var parameter in parameters)
-                    {
-                        if (string.Equals(parameter.Name, "Force", StringComparison.OrdinalIgnoreCase) && parameter.PropertyType == typeof(SwitchParameter))
-                        {
-                            cmdletMetadata.HasForceSwitch = true;
-                        }
-
-                        var parameterData = new Models.ParameterMetadata
-                        {
-                            Type = parameter.PropertyType,
-                            Name = parameter.Name
-                        };
-
-                        if (parameter.HasAttribute<AliasAttribute>())
-                        {
-                            var aliases = parameter.GetAttributes<AliasAttribute>();
-                            parameterData.AliasList.AddRange(
-                                aliases.SelectMany(a => a.AliasNames));
-                        }
-
-                        if (parameter.HasAttribute<ValidateSetAttribute>())
-                        {
-                            var validateSet = parameter.GetAttribute<ValidateSetAttribute>();
-                            parameterData.ValidateSet.AddRange(validateSet.ValidValues);
-                        }
-
-                        if (parameter.HasAttribute<ValidateRangeAttribute>())
-                        {
-                            var validateRange = parameter.GetAttribute<ValidateRangeAttribute>();
-                            parameterData.ValidateRangeMin = Convert.ToInt64(validateRange.MinRange);
-                            parameterData.ValidateRangeMax = Convert.ToInt64(validateRange.MaxRange);
-                        }
-
-                        parameterData.ValidateNotNullOrEmpty = parameter.HasAttribute<ValidateNotNullOrEmptyAttribute>();
-
-                        cmdletMetadata.Parameters.Add(parameterData);
-
-                        foreach (var parameterSet in parameter.GetAttributes<ParameterAttribute>())
-                        {
-                            var parameterSetMetadata = 
-                                cmdletMetadata.ParameterSets.FirstOrDefault(s => s.Name.Equals(parameterSet.ParameterSetName))
-                                ?? new Models.ParameterSetMetadata
-                                {
-                                    Name = parameterSet.ParameterSetName ?? "__AllParameterSets"
-                                };
-
-                            var param = new Parameter
-                            {
-                                ParameterMetadata = parameterData,
-                                Mandatory = parameterSet.Mandatory,
-                                Position = parameterSet.Position,
-                                ValueFromPipeline = parameterSet.ValueFromPipeline,
-                                ValueFromPipelineByPropertyName = parameterSet.ValueFromPipelineByPropertyName
-                            };
-
-                            if (parameterSet.ParameterSetName.Equals("__AllParameterSets"))
-                            {
-                                globalParameters.Add(param);
-                            }
-
-                            parameterSetMetadata.Parameters.Add(param);
-
-                            if (parameterSetMetadata.Parameters.Count == 1)
-                            {
-                                cmdletMetadata.ParameterSets.Add(parameterSetMetadata);
-                            }
-                        }
-                    }
-
-                    foreach (var parameterSet in cmdletMetadata.ParameterSets)
-                    {
-                        if (parameterSet.Name.Equals("__AllParameterSets"))
-                        {
-                            continue;
-                        }
-
-                        foreach (var parameter in globalParameters)
-                        {
-                            var param = parameterSet.Parameters.FirstOrDefault(p => p.ParameterMetadata.Name.Equals(parameter.ParameterMetadata.Name));
-                            if (param == null)
-                            {
-                                parameterSet.Parameters.Add(parameter);
-                            }
-                        }
-                    }
-
-                    if (!cmdletMetadata.ParameterSets.Any(p => p.Name.Equals(cmdletMetadata.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase)))
-                    {
-                        var defaultSet = new Models.ParameterSetMetadata
-                        {
-                            Name = cmdletMetadata.DefaultParameterSetName
-                        };
-                        cmdletMetadata.ParameterSets.Add(defaultSet);
-                    }
-
-                    results.Add(cmdletMetadata);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            ModuleMetadata.Cmdlets = results;
-            return ModuleMetadata;
+            return new ModuleMetadata();
         }
     }
 }
