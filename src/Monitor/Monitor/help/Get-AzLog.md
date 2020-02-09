@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzLog
 
 ## SYNOPSIS
-Gets a log of events.
+Retrieve Activity Log events.
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ Get-AzLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Cal
 ```
 
 ## DESCRIPTION
-The **Get-AzLog** cmdlet gets a log of events.
+The **Get-AzLog** cmdlet retrieve Activity Log events.
 The events can be associated with the current subscription ID, correlation ID, resource group, resource ID, or resource provider.
 
 ## EXAMPLES
