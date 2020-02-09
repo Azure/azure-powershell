@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.Attestation;
 using Microsoft.Azure.Management.Attestation.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.IdentityModel.JsonWebTokens;
+
 namespace Microsoft.Azure.Commands.Attestation.Models
 {
     public class AttestationManagementClient
@@ -38,15 +38,15 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         {
             if (parameters == null)
             {
-                throw new ArgumentNullException("parameters");
+                throw new ArgumentNullException(nameof(parameters));
             }
             if (string.IsNullOrEmpty(parameters.ProviderName))
             {
-                throw new ArgumentNullException("parameters.ProviderName");
+                throw new ArgumentNullException(nameof(parameters.ProviderName));
             }
             if (string.IsNullOrEmpty(parameters.ResourceGroupName))
             {
-                throw new ArgumentNullException("parameters.ResourceGroupName");
+                throw new ArgumentNullException(nameof(parameters.ResourceGroupName));
             }
             AttestationServiceCreationParams _creationParams = new AttestationServiceCreationParams();
             if (!string.IsNullOrEmpty(parameters.AttestationPolicy))
@@ -70,11 +70,11 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         {
             if (string.IsNullOrEmpty(attestationName))
             {
-                throw new ArgumentNullException("attestationName");
+                throw new ArgumentNullException(nameof(attestationName));
             }
             if (string.IsNullOrEmpty(resourceGroupName))
             {
-                throw new ArgumentNullException("resourceGroupName");
+                throw new ArgumentNullException(nameof(resourceGroupName));
             }
             var response = attestationClient.AttestationProviders.Get(resourceGroupName, attestationName);
             return new PSAttestation(response);
@@ -83,12 +83,12 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         {
             if (string.IsNullOrEmpty(attestationName))
             {
-                throw new ArgumentNullException("attestationName");
+                throw new ArgumentNullException(nameof(attestationName));
             }
 
             if (string.IsNullOrEmpty(resourceGroupName))
             {
-                throw new ArgumentNullException("resourceGroupName");
+                throw new ArgumentNullException(nameof(resourceGroupName));
             }
             attestationClient.AttestationProviders.Delete(resourceGroupName, attestationName);
         }
