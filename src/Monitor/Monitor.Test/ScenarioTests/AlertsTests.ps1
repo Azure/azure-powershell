@@ -323,6 +323,53 @@ function Test-AddAzureRmMetricAlertRuleV2
 
 	<#
 .SYNOPSIS
+Tests adding a GenV2 metric alert rule without action group.
+#>
+function Test-AddAzureRmMetricAlertRuleV2-NoActionGroup
+{
+	# Setup
+	$sub = Get-AzContext
+    $subscription = $sub.subscription.subscriptionId
+	$rgname = Get-ResourceGroupName
+	$location =Get-ProviderLocation ResourceManagement
+	$resourceName = Get-ResourceName
+	$ruleWithActionGroupIdName = Get-ResourceName
+	$ruleByResourceId = Get-ResourceName
+	$ruleByResourceScope = Get-ResourceName
+	$actionGroupName = Get-ResourceName
+	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Storage/storageAccounts/'+$resourceName
+	$targetResourceScope = $targetResourceId
+	$targetResourceType = 'Microsoft.Storage/storageAccounts'
+	New-AzResourceGroup -Name $rgname -Location $location -Force
+	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
+	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+	$NewActionGroup1 =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
+	$NewActionGroup2 =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
+	$actionGroup1 = New-AzActionGroup -ActionGroupId $NewActionGroup1.Id
+	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
+    try
+    {
+		# Test - create metric alert by resource id without action group id
+        $actual = Add-AzMetricAlertRuleV2 -Name $ruleByResourceId -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:05:00 -TargetResourceId $targetResourceId -Condition $condition -Severity 3
+		Assert-AreEqual $actual.Name $ruleByResourceId
+
+		# Test - create metric alert by scope without action group id
+        $actual = Add-AzMetricAlertRuleV2 -Name $ruleByResourceScope -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:05:00 -TargetResourceScope $targetResourceScope -TargetResourceType $targetResourceType -TargetResourceRegion $location -Condition $condition -Severity 3
+		Assert-AreEqual $actual.Name $ruleByResourceScope
+	}
+    finally
+    {
+        # Cleanup
+        Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleByResourceId 
+		Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleByResourceScope
+		Remove-AzActionGroup -ResourceGroupName $rgname -Name $actionGroupName
+		Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $resourceName
+		Remove-AzResourceGroup -Name $rgname -Force
+    }
+}
+
+	<#
+.SYNOPSIS
 Tests adding a GenV2 metric alert rule with action group id.
 #>
 function Test-AddAzureRmMetricAlertRuleV2-ActionGroupId

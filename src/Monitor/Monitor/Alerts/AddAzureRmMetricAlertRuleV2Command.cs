@@ -26,9 +26,11 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Add a GenV2 Metric Alert rule
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", DefaultParameterSetName = CreateAlertByResourceIdAndActionGroup, SupportsShouldProcess = true), OutputType(typeof(PSMetricAlertRuleV2))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", DefaultParameterSetName = CreateAlertByResourceId, SupportsShouldProcess = true), OutputType(typeof(PSMetricAlertRuleV2))]
     public class AddAzureRmMetricAlertRuleV2Command : ManagementCmdletBase
     {
+        const string CreateAlertByResourceId = "CreateAlertByResourceId";
+        const string CreateAlertByScopes = "CreateAlertByScopes";
         const string CreateAlertByResourceIdAndActionGroup = "CreateAlertByResourceIdAndActionGroup";
         const string CreateAlertByScopesAndActionGroup = "CreateAlertByScopesAndActionGroup";
         const string CreateAlertByResourceIdAndActionGroupId = "CreateAlertByResourceIdAndActionGroupId";
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the TargetResourceId parameter
         /// </summary>
+        [Parameter(ParameterSetName = CreateAlertByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource id for rule")]
         [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource id for rule")]
         [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource id for rule")]
         [ValidateNotNullOrEmpty]
@@ -74,6 +77,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the TargetResourceScope parameter
         /// </summary>
+        [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource scope for rule")]
         [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource scope for rule")]
         [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource scope for rule")]
         [ValidateNotNullOrEmpty]
@@ -83,6 +87,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the TargetResourceType  parameter
         /// </summary>
+        [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]       
         [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]       
         [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]
         [ValidateNotNullOrEmpty]
@@ -91,6 +96,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the TargetResourceRegion  parameter
         /// </summary>
+        [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource region for rule")]
         [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource region for rule")]
         [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource region for rule")]
         [ValidateNotNullOrEmpty]
@@ -107,16 +113,16 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the ActionGroup parameter
         /// </summary>
-        [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
-        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
+        [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
+        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
         [Alias("Actions")]
         public ActivityLogAlertActionGroup[] ActionGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the ActionGroupId parameter
         /// </summary>
-        [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroupId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group id for rule")]
-        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroupId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group id for rule")]
+        [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group id for rule")]
+        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group id for rule")]
         public string[] ActionGroupId { get; set; }
 
         /// <summary>
