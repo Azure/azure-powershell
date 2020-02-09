@@ -50,12 +50,120 @@ require:
   - $(this-folder)/../readme.azurestack.md
   - $(repo)/specification/azsadmin/resource-manager/compute/readme.azsautogen.md
   - $(repo)/specification/azsadmin/resource-manager/compute/readme.md
-
-subject-prefix: 'Compute'
-module-version: 0.0.1
-
+```
+``` yaml
 ### File Renames 
 module-name: Azs.Compute.Admin 
 csproj: Azs.Compute.Admin.csproj 
 psd1: Azs.Compute.Admin.psd1 
 psm1: Azs.Compute.Admin.psm1
+```
+### Parameter default values
+``` yaml
+directive:
+    # Prepend Compute for the Quota cmdlets
+  - where:
+      subject: Quota
+    set:
+      subject-prefix: Compute
+
+    # Rename New-AzsPlatformImage to Add-AzsPlatformImage
+  - where:
+      verb: New
+      subject: PlatformImage
+    set:
+      verb: Add
+
+    # Rename New-AzsVMExtension to Add-AzsVMExtension
+  - where:
+      verb: New
+      subject: VMExtension
+    set:
+      verb: Add
+
+    # Rename New-AzsDiskMigrationJob to Start-AzsDiskMigrationJob and create alias with same name 
+  - where:
+      verb: New
+      subject: DiskMigrationJob
+    set:
+      alias: Start-AzsDiskMigrationJob  
+
+  # Default to Format-List for the VMExtension commandlets as there are many important fields
+  - where:
+      model-name: VMExtension
+    set:
+      suppress-format: true
+
+    # Default to Format-List for the Quota commandlets as there are many important fields
+  - where:
+      model-name: Quota
+    set:
+      suppress-format: true
+
+    # Default to Format-List for the PlatformImage commandlets as there are many important fields
+  - where:
+      model-name: PlatformImage
+    set:
+      suppress-format: true
+
+    # Default to Format-List for the Disk commandlets as there are many important fields
+  - where:
+      model-name: Disk
+    set:
+      suppress-format: true
+
+    # Default to Format-List for the DiskMigrationJob commandlets as there are many important fields
+  - where:
+      model-name: DiskMigrationJob
+    set:
+      suppress-format: true
+
+    # Rename DataDisk parameter to DataDisks in Add-AzsPlatformImage for back-compat
+  - where:
+      verb: Add
+      subject: PlatformImage
+      parameter-name: DataDisk
+    set:
+      parameter-name: DataDisks
+
+    # Rename DetailBillingPartNumber parameter to BillingPartNumber for back-compat
+  - where:
+      parameter-name: DetailBillingPartNumber
+    set:
+      parameter-name: BillingPartNumber
+
+    # Rename OsDiskOsType parameter to OsType for back-compat
+  - where:
+      parameter-name: OsDiskOsType
+    set:
+      parameter-name: OsType
+
+    # Rename OsDiskUri parameter to OsUri for back-compat
+  - where:
+      parameter-name: OsDiskUri
+    set:
+      parameter-name: OsUri
+  
+    # Rename VmosType parameter to VmOsType for back-compat
+  - where:
+      parameter-name: VmosType
+    set:
+      parameter-name: VmOsType
+
+  - where:
+      parameter-name: SourceBlobUri
+    set:
+      parameter-name: SourceBlob
+
+  - where:
+      parameter-name: VmScaleSetEnabled
+    set:
+      parameter-name: VMScaleSetEnabled
+
+  - where:
+      parameter-set: SupportMultipleExtension
+    set:
+      parameter-set: SupportMultipleExtensions
+  
+subject-prefix: ''
+module-version: 0.0.1
