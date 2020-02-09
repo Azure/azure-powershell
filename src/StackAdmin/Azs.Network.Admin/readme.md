@@ -159,17 +159,5 @@ directive:
       default:
         script: '50'
 
-    #rename properties
-  - where:
-      model-name: VirtualNetwork
-      property-name: ConfigurationStateHostError
-    set:
-      property-name: ConfigurationStateHostErrors
-  - where:
-      model-name: VirtualNetwork
-      property-name: ConfigurationStateVirtualNetworkInterfaceError
-    set:
-      property-name: ConfigurationStateVirtualNetworkInterfaceErrors
-
 subject-prefix: ''
 module-version: 0.0.1
