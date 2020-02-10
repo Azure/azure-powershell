@@ -998,7 +998,7 @@ function Test-AzureFirewallCRUDwithManagementIpConfig {
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
-    $location = Get-ProviderLocation $resourceTypeParent "centraluseuap"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
 
     $vnetName = Get-ResourceName
     $subnetName = "AzureFirewallSubnet"
@@ -1061,6 +1061,9 @@ function Test-AzureFirewallCRUDwithManagementIpConfig {
         Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress($null) } "Public IP Address cannot be null"
         Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress("ABCD") } "Cannot convert argument"
         Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress($mgmtPublicIp) } "not attached to firewall"
+
+        # Change Management PIP
+        $getAzureFirewall.ManagementIpConfiguration.PublicIpAddress = $mgmtPublicIp2
 
         # Set AzureFirewall
         Set-AzFirewall -AzureFirewall $getAzureFirewall
