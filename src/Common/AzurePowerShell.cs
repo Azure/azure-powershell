@@ -14,6 +14,7 @@
 
 using System;
 using System.IO;
+using System.Net.Http.Headers;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -41,6 +42,10 @@ namespace Microsoft.WindowsAzure.Commands.Common
 #if NETSTANDARD
             Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
             ".Azure");
+
+        public static ProductInfoHeaderValue UserAgentValue = new ProductInfoHeaderValue(
+            "AzurePowershell",
+            string.Format("Az{0}", AzurePowerShell.AssemblyVersion));
 
         public static string OldProfileDirectory = Path.Combine(
 #endif
