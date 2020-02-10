@@ -1,54 +1,57 @@
 ---
 external help file:
 Module Name: Azs.Fabric.Admin
-online version: https://docs.microsoft.com/en-us/powershell/module/azs.fabric.admin/get-azsinfrastructureshare
+online version: https://docs.microsoft.com/en-us/powershell/module/azs.fabric.admin/get-azsstoragesystem
 schema: 2.0.0
 ---
 
-# Get-AzsInfrastructureShare
+# Get-AzsStorageSystem
 
 ## SYNOPSIS
-Returns the requested fabric file share.
+Return the requested storage subsystem.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzsInfrastructureShare [-Location <String>] [-ResourceGroupName <String>] [-SubscriptionId <String[]>]
- [-Filter <String>] [-Skip <String>] [-Top <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [<CommonParameters>]
+Get-AzsStorageSystem [-Location <String>] [-ResourceGroupName <String>] [-SubscriptionId <String[]>]
+ [-Filter <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzsInfrastructureShare -Name <String> [-Location <String>] [-ResourceGroupName <String>]
+Get-AzsStorageSystem -StorageSubSystem <String> [-Location <String>] [-ResourceGroupName <String>]
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzsInfrastructureShare -InputObject <IFabricAdminIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+Get-AzsStorageSystem -InputObject <IFabricAdminIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the requested fabric file share.
+Return the requested storage subsystem.
 
 ## EXAMPLES
 
-### Example 1:
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzsInfrastructureShare
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Returns a list of all file shares.
+{{ Add description here }}
 
-### Example 2:
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzsInfrastructureShare -Name SU1_ObjStore_1
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Returns a file share based on name.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -117,22 +120,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Name
-Fabric file share name.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -165,15 +152,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Skip
-OData skip parameter.
+### -StorageSubSystem
+Name of the storage system.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: Get
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -198,22 +185,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Top
-OData top parameter.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -223,7 +194,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FabricAdmin.Models.Api20160501.IFileShare
+### Microsoft.Azure.PowerShell.Cmdlets.FabricAdmin.Models.Api20160501.IStorageSystem
 
 ## ALIASES
 
@@ -234,11 +205,24 @@ To create the parameters described below, construct a hash table containing the 
 
 #### INPUTOBJECT <IFabricAdminIdentity>: Identity Parameter
   - `[Drive <String>]`: Name of the storage drive.
+  - `[EdgeGateway <String>]`: Name of the edge gateway.
+  - `[EdgeGatewayPool <String>]`: Name of the edge gateway pool.
+  - `[FabricLocation <String>]`: Fabric location.
   - `[FileShare <String>]`: Fabric file share name.
+  - `[IPPool <String>]`: IP pool name.
   - `[Id <String>]`: Resource identity path
+  - `[InfraRole <String>]`: Infrastructure role name.
+  - `[InfraRoleInstance <String>]`: Name of an infrastructure role instance.
   - `[Location <String>]`: Location of the resource.
+  - `[LogicalNetwork <String>]`: Name of the logical network.
+  - `[LogicalSubnet <String>]`: Name of the logical subnet.
+  - `[MacAddressPool <String>]`: Name of the MAC address pool.
+  - `[Operation <String>]`: Operation identifier.
   - `[ResourceGroupName <String>]`: Name of the resource group.
   - `[ScaleUnit <String>]`: Name of the scale units.
+  - `[ScaleUnitNode <String>]`: Name of the scale unit node.
+  - `[SlbMuxInstance <String>]`: Name of a SLB MUX instance.
+  - `[StoragePool <String>]`: Storage pool name.
   - `[StorageSubSystem <String>]`: Name of the storage system.
   - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   - `[Volume <String>]`: Name of the storage volume.

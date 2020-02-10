@@ -51,9 +51,24 @@ require:
   - $(repo)/specification/azsadmin/resource-manager/fabric/readme.md
 
 input-file:
-  # (TODO) Add Compute and Network swagger files
-  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/FileShare.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/EdgeGateway.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/EdgeGatewayPool.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/Fabric.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/FabricLocation.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/InfraRole.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/InfraRoleInstance.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/IpPool.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/LogicalNetwork.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/LogicalSubnet.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/MacAddressPool.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/NetworkOperationResults.json
   - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/ScaleUnit.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/ScaleUnitNode.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/SlbMuxInstance.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/StorageOperationResults.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/StoragePool.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/StorageSystem.json
+  - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2016-05-01/FileShare.json
   - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2018-10-01/StorageSubSystem.json
   - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2019-05-01/Drive.json
   - $(repo)/specification/azsadmin/resource-manager/fabric/Microsoft.Fabric.Admin/preview/2019-05-01/Volume.json
@@ -74,13 +89,160 @@ directive:
       parameter-name: ResourceGroupName
     set:
       default:
-        script: -join("System.",(Get-AzLocation)[0].Name)
+        script: -join("System.",(Get-AzLocation)[0].Location)
+
+  # [EdgeGateway]: Folloing changes are for EdgeGateway
+  # [EdgeGateway] Propertity Rename: change NumberOfConnection to NumberOfConnections
+  - where:
+      model-name: EdgeGateway
+      property-name: NumberOfConnection
+    set:
+      property-name: NumberOfConnections
+
+  # [EdgeGateway] Rename cmdlet parameter name in EdgeGateway
+  - where:
+      subject: EdgeGateway
+      parameter-name: EdgeGateway
+    set:
+      parameter-name: Name
+
+  # [EdgeGateway] hide autorest generated cmdlet to use the custom one
+  - where:
+      verb: Get
+      subject: EdgeGateway
+    hide: true
+
+  # [EdgeGatewayPool]: Folloing changes are for EdgeGatewayPool
+  # [EdgeGateway] Rename cmdlet parameter name in EdgeGatewayPool
+  - where:
+      subject: EdgeGatewayPool
+      parameter-name: EdgeGatewayPool
+    set:
+      parameter-name: Name
+
+  # [EdgeGatewayPool]: Rename property name NumberOfGateway to NumberOfGateways
+  - where:
+      model-name: EdgeGatewayPool
+      property-name: NumberOfGateway
+    set:
+      property-name: NumberOfGateways
+
+  # [EdgeGatewayPool] hide autorest generated cmdlet to use the custom one
+  - where:
+      verb: Get
+      subject: EdgeGatewayPool
+    hide: true
+
+  # [InfrastructureRole]: Folloing changes are for InfrastructureRole
+  # Rename subject AzsInfraRole to AzsInfrastructureRole
+  - where:
+      subject: InfraRole
+    set:
+      subject: InfrastructureRole
+
+  # [InfrastructureRole]: Rename property name Instance to Instances
+  - where:
+      model-name: InfraRole
+      property-name: Instance
+    set:
+      property-name: Instances
+
+  # [InfrastructureRole] Rename cmdlet parameter name in EdgeGatewayPool
+  - where:
+      subject: InfrastructureRole
+      parameter-name: InfraRole
+    set:
+      parameter-name: Name
+
+  # [InfrastructureRole] hide autorest generated cmdlet to use the custom one
+  - where:
+      verb: Get
+      subject: InfrastructureRole
+    hide: true
+
+  # [IPPool]: Following changes are for IpPool
+  # [IPPool]: Rename property name
+  - where:
+      model-name: IPPool
+      property-name: NumberOfAllocatedIPAddress
+    set:
+      property-name: NumberOfAllocatedIPAddresses
+
+  - where:
+      model-name: IPPool
+      property-name: NumberOfIPAddress
+    set:
+      property-name: NumberOfIPAddresses
+
+  # [IPPool] Rename cmdlet parameter name in IPPool
+  - where:
+      subject: IPPool
+      parameter-name: IPPool
+    set:
+      parameter-name: Name
+
+  # [IPPool] Hide the auto-generated Set-AzsIPPool and expose it through customized one
+  - where:
+      verb: Set
+      subject: IPPool
+    hide: true
+
+  # [IPPool] Hide the auto-generated Get-AzsIPPool and expose it through customized one
+  - where:
+      verb: Get
+      subject: IPPool
+    hide: true
+
+  # [ScaleUnitNode]: Following changes are for ScaleUnit
+  # Rename Invoke-ScaleUnitOut to Add-AzsScaleUnitNode
+  - where:
+      verb: Invoke
+      subject: ScaleUnitOut
+    set:
+      verb: Add
+      subject: ScaleUnitNode
+
+  # Rename Start-AzsScaleUnitNodeMaintenanceMode to Disable-AzsScaleUnitNode
+  - where:
+      verb: Start
+      subject: ScaleUnitNodeMaintenanceMode
+    set:
+      verb: Disable
+      subject: ScaleUnitNode
+
+  # Rename Stop-AzsScaleUnitNodeMaintenanceMode to Enable-AzsScaleUnitNode
+  - where:
+      verb: Stop
+      subject: ScaleUnitNodeMaintenanceMode
+    set:
+      verb: Enable
+      subject: ScaleUnitNode
+
+  # Rename Get-AzsFabricLocation to Get-AzsInfrastructureLocation
+  - where:
+      subject: FabricLocation
+    set:
+      subject: InfrastructureLocation
+
+  # Rename Get-AzsInfraRole to Get-AzsInfrastructureRoleInstance
+  - where:
+      subject: InfraRoleInstance
+    set:
+      subject: InfrastructureRoleInstance
 
   # Rename Get-AzsFileShare to Get-AzsInfrastructureShare
   - where:
       subject: FileShare
     set:
       subject: InfrastructureShare
+
+  # Separate InfraRoleInstance stop operations
+  - where:
+      verb: Stop
+      subject: InfrastructureRoleInstance
+      variant: Shutdown.*
+    set:
+      verb: Disable
 
   # Rename model property names for StorageSubSystem to match spec
   - where:
@@ -171,6 +333,28 @@ directive:
   - where:
       verb: Get
       subject: Volume
+    hide: true
+
+  # Hide the auto-generated Get-AzsFabricOperation and expose it through customized one
+  - where:
+      verb: Get
+      subject: FabricOperation
+    hide: true
+
+  # Hide the auto-generated Get-AzsNetworkOperationResult and expose it through customized one
+  - where:
+      verb: Get
+      subject: NetworkOperationResult
+    hide: true
+
+  # Hide the auto-generated Get-AzsStorageOperationResult and expose it through customized one
+  - where:
+      subject: StorageOperationResult
+    hide: true
+
+  # Hide the auto-generated New-AzsScaleUnitFromJson and expose it through customized one
+  - where:
+      subject: ScaleUnitFromJson
     hide: true
 
 subject-prefix: ''
