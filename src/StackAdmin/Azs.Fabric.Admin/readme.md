@@ -214,7 +214,21 @@ directive:
       subject: IPPool
     hide: true
 
-  # [ScaleUnitNode]: Following changes are for ScaleUnit
+  # [ScaleUnit]: Following changes are for ScaleUnit
+  # [ScaleUnit] Cmdlet parameter rename
+  - where:
+      subject: ScaleUnit
+      parameter-name: ScaleUnit
+    set:
+      parameter-name: Name
+
+  # [ScaleUnit] Hide auto-generated
+  - where:
+      verb: Get
+      subject: ScaleUnit
+    hide: true
+
+  # [ScaleUnitNode]: Following changes are for ScaleUnitNode
   # Rename Invoke-ScaleUnitOut to Add-AzsScaleUnitNode
   - where:
       verb: Invoke
