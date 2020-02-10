@@ -300,9 +300,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 AzVersion = this.LoadAzVersion();
                 UserAgent = new ProductInfoHeaderValue("AzurePowershell", string.Format("Az{0}", AzVersion)).ToString();
-                string HostEnv = Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT");
-                if (!String.IsNullOrWhiteSpace(HostEnv))
-                    UserAgent += string.Format(";{0}", HostEnv.Trim());
+                string hostEnv = Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT");
+                if (!String.IsNullOrWhiteSpace(hostEnv))
+                    UserAgent += string.Format(";{0}", hostEnv.Trim());
             }
             _qosEvent.AzVersion = AzVersion;
             _qosEvent.UserAgent = UserAgent;
