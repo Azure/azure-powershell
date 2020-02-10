@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 
+## Version 1.5.0
 * Add support for CDN WAF
     - Add *-AzCdnWaf* cmdlets
     - Add WebApplicationFirewallPolicyLink to Endpoints
