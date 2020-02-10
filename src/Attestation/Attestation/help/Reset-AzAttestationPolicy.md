@@ -1,46 +1,40 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll-Help.xml
 Module Name: Az.Attestation
-online version: https://docs.microsoft.com/en-us/powershell/module/az.attestation/remove-azattestation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.attestation/reset-azattestationpolicy
 schema: 2.0.0
 ---
 
-# Remove-AzAttestation
+# Reset-AzAttestationPolicy
 
 ## SYNOPSIS
-Deletes an attestation.
+Resets the policy from a tenant in Azure Attestationn.}
 
 ## SYNTAX
 
-### ByAvailableAttestation (Default)
+### NameParameterSet
 ```
-Remove-AzAttestation [-Name] <String> [-ResourceGroupName] <String> [-PassThru]
+Reset-AzAttestationPolicy [-Name] <String> [-ResourceGroupName] <String> -Tee <String> [-Policy <String>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Reset-AzAttestationPolicy [-ResourceId] <String> -Tee <String> [-Policy <String>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdByAvailableAttestation
-```
-Remove-AzAttestation [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### InputObjectByAvailableAttestation
-```
-Remove-AzAttestation [-InputObject] <PSAttestation> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-The Remove-AzAttestation cmdlet deletes the specified attestation.
+The Reset-AzAttestationPolicy cmdlet resets the user defined attestation policy from a tenant in Azure Attestation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzAttestation -Name "example" -ResourceGroupName "rg1"
+PS C:\> Reset-AzAttestationPolicy -Name "example" -Tee "SgxEnclave" -AttestationPolicy "policyexample"
 ```
 
-Delete Attestation "example" from current Subscription and Resource Group "rg1".
+Deletes the user defined policy "policyexample" for tennat "example" in Tee "SgxEnclave".
 
 ## PARAMETERS
 
@@ -74,33 +68,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Attestation object to be deleted.
-
-```yaml
-Type: PSAttestation
-Parameter Sets: InputObjectByAvailableAttestation
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
-Specifies the name of the attestation to remove.
+Specifies a name of the tenant.
+This cmdlet resets the attestation policy for the tenant that this parameter specifies.
 
 ```yaml
 Type: String
-Parameter Sets: ByAvailableAttestation
+Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -120,33 +100,64 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Specifies the name of resource group for Azure attestation to remove.
+### -Policy
+Specifies the JSON Web Token describing the policy document to reset.
 
 ```yaml
 Type: String
-Parameter Sets: ByAvailableAttestation
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Attestation Resource Id.
+### -ResourceGroupName
+Specifies the resource group name of an attestation provider.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceIdByAvailableAttestation
+Parameter Sets: NameParameterSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Specifies the ResourceID of an attestation provider.
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdParameterSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tee
+Specifies a type of Trusted Execution Environment.
+We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VSMEnclave.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -172,8 +183,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
-### Microsoft.Azure.Commands.Attestation.Models.PSAttestation
 
 ## OUTPUTS
 
