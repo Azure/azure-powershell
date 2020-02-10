@@ -346,13 +346,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        protected override void LogCmdletEndInvocationInfo()
-        {
-            base.LogCmdletEndInvocationInfo();
-            string message = string.Format("{0} end processing.", this.GetType().Name);
-            WriteDebugWithTimestamp(message);
-        }
-
         protected override void SetupDebuggingTraces()
         {
             ServiceClientTracing.IsEnabled = true;
