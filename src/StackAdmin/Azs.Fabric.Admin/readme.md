@@ -229,7 +229,27 @@ directive:
     hide: true
 
   # [ScaleUnitNode]: Following changes are for ScaleUnitNode
-  # Rename Invoke-ScaleUnitOut to Add-AzsScaleUnitNode
+  # [ScaleUnitNode] Cmdlet parameter rename
+  - where:
+      subject: ScaleUnitNode
+      parameter-name: ScaleUnitNode
+    set:
+      parameter-name: Name
+
+  # [ScaleUnitNode] Hide auto-generated
+  - where:
+      verb: Get
+      subject: ScaleUnitNode
+    hide: true
+
+  # [ScaleUnitNode]: Rename property name
+  - where:
+      model-name: ScaleUnitNode
+      property-name: Status
+    set:
+      property-name: ScaleUnitNodeStatus
+
+  # [ScaleUnitNode] Rename Invoke-ScaleUnitOut to Add-AzsScaleUnitNode
   - where:
       verb: Invoke
       subject: ScaleUnitOut
