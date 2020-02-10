@@ -19,12 +19,15 @@
 -->
 ## Upcoming Release
 
-## Version 1.1.4
-* Update references in .psd1 to use relative path
+## Version 1.2.0
 * Support evaluating compliance prior to determining what resource to remediate
     - Add `-ResourceDiscoverMode` parameter to Start-AzPolicyRemediation
 * Add Get-AzPolicyMetadata cmdlet for getting policy metadata resources
 * Updated Get-AzPolicyState and Get-AzPolicyStateSummary for API version 2019-10-01
+
+
+## Version 1.1.4
+* Update references in .psd1 to use relative path
 
 ## Version 1.1.3
 * Fixed miscellaneous typos across module

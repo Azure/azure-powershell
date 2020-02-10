@@ -80,12 +80,6 @@ New-AzADServicePrincipal -DisplayName <String> -KeyCredential <PSADKeyCredential
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ApplicationObjectWithoutCredentialParameterSet
-```
-New-AzADServicePrincipal -ApplicationObject <PSADApplication> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ApplicationObjectWithPasswordPlainParameterSet
 ```
 New-AzADServicePrincipal -ApplicationObject <PSADApplication> [-StartDate <DateTime>] [-EndDate <DateTime>]
@@ -205,6 +199,38 @@ PS C:\> Get-AzADApplication -ObjectId 3ede3c26-b443-4e0b-9efc-b05e68338dc3 | New
 
 Gets the application with object id '3ede3c26-b443-4e0b-9efc-b05e68338dc3' and pipes that to the New-AzADServicePrincipal cmdlet to create a new AD service principal for that application.
 
+### Example 7 - Create a new AD service principal using DisplayName and password credential
+
+```
+PS C:\> $credentials = New-Object -TypeName Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential -Property @{ StartDate=Get-Date; EndDate=Get-Date -Year 2024; Password="StrongPassworld!23"}
+PS C:\> $sp = New-AzAdServicePrincipal -DisplayName ServicePrincipalName -PasswordCredential $credentials
+
+ServicePrincipalNames : {exxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxc, http://ServicePrincipalName}
+ApplicationId         : exxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxcc
+ObjectType            : ServicePrincipal
+DisplayName           : ServicePrincipalName
+Id                    : 6xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxb
+Type                  :
+```
+
+Creates a new application with name "ServicePrincipalName" and password "StrongPassworld!23" and creates the service principal based on the application just created. The start date and end date are added to password credential.
+
+### Example 8 - Create a new AD service principal using DisplayName and plain key credential
+
+```
+PS C:\> $cert = <public certificate as base64-encoded string>
+PS C:\> $sp = New-AzADServicePrincipal -DisplayName ServicePrincipalName -CertValue $cert  -EndDate "2021-01-01"
+
+ServicePrincipalNames : {cxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx6, http://ServicePrincipalName}
+ApplicationId         : cxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx6
+ObjectType            : ServicePrincipal
+DisplayName           : ServicePrincipalName
+Id                    : cxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxc
+Type                  :
+```
+
+Creates a new application with name "ServicePrincipalName" and certifcate "$cert" and creates the service principal based on the application just created. The end date is added to key credential.
+
 ## PARAMETERS
 
 ### -ApplicationId
@@ -241,7 +267,7 @@ The object representing the application for which the service principal is creat
 
 ```yaml
 Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
-Parameter Sets: ApplicationObjectWithoutCredentialParameterSet, ApplicationObjectWithPasswordPlainParameterSet, ApplicationObjectWithPasswordCredentialParameterSet, ApplicationObjectWithKeyPlainParameterSet, ApplicationObjectWithKeyCredentialParameterSet
+Parameter Sets: ApplicationObjectWithPasswordPlainParameterSet, ApplicationObjectWithPasswordCredentialParameterSet, ApplicationObjectWithKeyPlainParameterSet, ApplicationObjectWithKeyCredentialParameterSet
 Aliases:
 
 Required: True
@@ -510,7 +536,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
