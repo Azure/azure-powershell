@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string IotHubName { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Target Device Id.")]
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Target Device Id.")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 if (ParameterSetName.Equals(InputObjectParameterSet))
                 {
                     this.ResourceGroupName = this.InputObject.Resourcegroup;
-                    this.Name = this.InputObject.Name;
+                    this.IotHubName = this.InputObject.Name;
                     iotHubDescription = IotHubUtils.ConvertObject<PSIotHub, IotHubDescription>(this.InputObject);
                 }
                 else
@@ -83,13 +83,13 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     if (ParameterSetName.Equals(ResourceIdParameterSet))
                     {
                         this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
-                        this.Name = IotHubUtils.GetIotHubName(this.ResourceId);
+                        this.IotHubName = IotHubUtils.GetIotHubName(this.ResourceId);
                     }
 
-                    iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
+                    iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.IotHubName);
                 }
 
-                IEnumerable<SharedAccessSignatureAuthorizationRule> authPolicies = this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.Name);
+                IEnumerable<SharedAccessSignatureAuthorizationRule> authPolicies = this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.IotHubName);
                 SharedAccessSignatureAuthorizationRule policy = IotHubUtils.GetPolicy(authPolicies, PSAccessRights.RegistryWrite);
 
                 PSIotHubConnectionString psIotHubConnectionString = IotHubUtils.ToPSIotHubConnectionString(policy, iotHubDescription.Properties.HostName);

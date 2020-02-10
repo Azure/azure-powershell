@@ -14,7 +14,7 @@ Update an IoT Hub device.
 
 ### ResourceSetForStatus (Default)
 ```
-Set-AzIotHubDevice [-ResourceGroupName] <String> [-Name] <String> [-DeviceId] <String>
+Set-AzIotHubDevice [-ResourceGroupName] <String> [-IotHubName] <String> [-DeviceId] <String>
  [-Status <PSDeviceStatus>] [-StatusReason <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -39,15 +39,15 @@ Set-AzIotHubDevice [-InputObject] <PSIotHub> [-DeviceId] <String> [-EdgeEnabled 
 
 ### ResourceSetForAuth
 ```
-Set-AzIotHubDevice [-ResourceGroupName] <String> [-Name] <String> [-DeviceId] <String>
+Set-AzIotHubDevice [-ResourceGroupName] <String> [-IotHubName] <String> [-DeviceId] <String>
  [-AuthMethod <PSDeviceAuthType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceSetForEdgeEnabled
 ```
-Set-AzIotHubDevice [-ResourceGroupName] <String> [-Name] <String> [-DeviceId] <String> [-EdgeEnabled <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzIotHubDevice [-ResourceGroupName] <String> [-IotHubName] <String> [-DeviceId] <String>
+ [-EdgeEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSetForAuth
@@ -75,21 +75,21 @@ Update an IoT Hub device.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzIotHubDevice -ResourceGroupName "myresourcegroup" -Name "myiothub" -DeviceId "myDevice1" -EdgeEnabled
+PS C:\> Set-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -EdgeEnabled
 ```
 
 Turn on edge capabilities for device.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzIotHubDevice -ResourceGroupName "myresourcegroup" -Name "myiothub" -DeviceId "myDevice1" -Status Disabled
+PS C:\> Set-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -Status Disabled
 ```
 
 Disable device status.
 
 ### Example 3
 ```powershell
-PS C:\> Set-AzIotHubDevice -ResourceGroupName "myresourcegroup" -Name "myiothub" -DeviceId "myDevice1" -AuthMethod "x509_ca"
+PS C:\> Set-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -AuthMethod "x509_ca"
 ```
 
 Update authorization type of an Iot Hub device.
@@ -172,7 +172,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -IotHubName
 Name of the Iot Hub
 
 ```yaml

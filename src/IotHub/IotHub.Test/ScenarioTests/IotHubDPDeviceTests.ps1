@@ -40,43 +40,43 @@ function Test-AzureRmIotHubDeviceLifecycle
 	$iothub = New-AzIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1
 
 	# Get all devices
-	$devices = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	$devices = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
 	Assert-True { $devices.Count -eq 0 }
 
 	# Add iot device with symmetric authentication
-	$newDevice1 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -Name $IotHubName -DeviceId $device1 -AuthMethod 'shared_private_key'
+	$newDevice1 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -AuthMethod 'shared_private_key'
 	Assert-True { $newDevice1.Id -eq $device1 }
 	Assert-True { $newDevice1.Authentication.Type -eq 'Sas' }
 	Assert-False { $newDevice1.Capabilities.IotEdge }
 
 	# Add iot device with selfsigned authentication
-	$newDevice2 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -Name $IotHubName -DeviceId $device2 -AuthMethod 'x509_thumbprint' -PrimaryThumbprint $primaryThumbprint -SecondaryThumbprint $secondaryThumbprint
+	$newDevice2 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device2 -AuthMethod 'x509_thumbprint' -PrimaryThumbprint $primaryThumbprint -SecondaryThumbprint $secondaryThumbprint
 	Assert-True { $newDevice2.Id -eq $device2 }
 	Assert-True { $newDevice2.Authentication.Type -eq 'SelfSigned' }
 	Assert-False { $newDevice2.Capabilities.IotEdge }
 
 	# Add iot device with certifictae authority authentication
-	$newDevice3 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -Name $IotHubName -DeviceId $device3 -AuthMethod 'x509_ca'
+	$newDevice3 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3 -AuthMethod 'x509_ca'
 	Assert-True { $newDevice3.Id -eq $device3 }
 	Assert-True { $newDevice3.Authentication.Type -eq 'CertificateAuthority' }
 	Assert-False { $newDevice3.Capabilities.IotEdge }
 
 	# Get all devices
-	$devices = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	$devices = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
 	Assert-True { $devices.Count -eq 3}
 
 	# Update Device
-	$updatedDevice1 = Set-AzIoTHubDevice -ResourceGroupName $ResourceGroupName -Name $IotHubName -DeviceId $device1 -Status 'Disabled' -StatusReason 'Reason1'
+	$updatedDevice1 = Set-AzIoTHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -Status 'Disabled' -StatusReason 'Reason1'
 	Assert-True { $updatedDevice1.Id -eq $device1 }
 	Assert-True { $updatedDevice1.Status -eq 'Disabled' }
 	Assert-True { $updatedDevice1.StatusReason -eq 'Reason1' }
 
 	# Update iot device to edge device
-	$updatedDevice2 = Set-AzIoTHubDevice -ResourceGroupName $ResourceGroupName -Name $IotHubName -DeviceId $device3 -EdgeEnabled $true
+	$updatedDevice2 = Set-AzIoTHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3 -EdgeEnabled $true
 	Assert-True { $updatedDevice2.Capabilities.IotEdge }
 
 	# Get device detail
-	$iotDevice = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -Name $IotHubName -DeviceId $device1
+	$iotDevice = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
 	Assert-True { $iotDevice.Id -eq $device1 }
 	Assert-True { $iotDevice.Authentication.Type -eq 'Sas' }
 	Assert-False { $iotDevice.Capabilities.IotEdge }
@@ -84,10 +84,10 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-True { $iotDevice.StatusReason -eq 'Reason1' }
 
 	# Delete iot device
-	$result = Remove-AzIotHubDevice -ResourceGroupName $ResourceGroupName -Name $IotHubName -DeviceId $device1 -Passthru
+	$result = Remove-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -Passthru
 	Assert-True { $result }
 
 	# Delete all devices
-	$result = Remove-AzIotHubDevice -ResourceGroupName $ResourceGroupName -Name $IotHubName -Passthru
+	$result = Remove-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Passthru
 	Assert-True { $result }
 }
