@@ -14,7 +14,7 @@ Create a device in an IoT Hub.
 
 ### ResourceSet (Default)
 ```
-Add-AzIotHubDevice [-ResourceGroupName] <String> [-Name] <String> [-DeviceId] <String>
+Add-AzIotHubDevice [-ResourceGroupName] <String> [-IotHubName] <String> [-DeviceId] <String>
  [-AuthMethod <PSDeviceAuthType>] [-Status <PSDeviceStatus>] [-StatusReason <String>] [-EdgeEnabled]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -40,14 +40,14 @@ Create a device with different authorization type in an IoT Hub.
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzIotHubDevice -ResourceGroupName "myresourcegroup" -Name "myiothub" -DeviceId "myDevice1" -AuthMethod "shared_private_key" -EdgeEnabled
+PS C:\> Add-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -AuthMethod "shared_private_key" -EdgeEnabled
 ```
 
 Create an edge enabled IoT device with default authorization (shared private key).
 
 ### Example 2
 ```powershell
-PS C:\> Add-AzIotHubDevice -ResourceGroupName "myresourcegroup" -Name "myiothub" -DeviceId "myDevice2" -AuthMethod "x509_ca" -Status Disabled -StatusReason "Some Reason"
+PS C:\> Add-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice2" -AuthMethod "x509_ca" -Status Disabled -StatusReason "Some Reason"
 ```
 
 Create an IoT device with root CA authorization with disabled status and reason.
@@ -130,7 +130,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -IotHubName
 Name of the Iot Hub
 
 ```yaml

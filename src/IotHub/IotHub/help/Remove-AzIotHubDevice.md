@@ -14,7 +14,7 @@ Delete an IoT Hub device.
 
 ### ResourceSet (Default)
 ```
-Remove-AzIotHubDevice [-ResourceGroupName] <String> [-Name] <String> [-DeviceId <String>] [-PassThru]
+Remove-AzIotHubDevice [-ResourceGroupName] <String> [-IotHubName] <String> [-DeviceId <String>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,14 +37,14 @@ Delete all devices or a specific device from an Iot Hub.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzIotHubDevice -ResourceGroupName "myresourcegroup" -Name "myiothub"
+PS C:\> Remove-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub"
 ```
 
 Delete all Iot Hub devices.
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzIotHubDevice -ResourceGroupName "myresourcegroup" -Name "myiothub" -DeviceId "myDevice1" -PassThru
+PS C:\> Remove-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -PassThru
 
 True
 ```
@@ -98,7 +98,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -IotHubName
 Name of the Iot Hub
 
 ```yaml

@@ -14,7 +14,7 @@ Lists all devices or a particular device contained within an Azure IoT Hub.
 
 ### ResourceSet (Default)
 ```
-Get-AzIotHubDevice [-ResourceGroupName] <String> [-Name] <String> [-DeviceId <String>]
+Get-AzIotHubDevice [-ResourceGroupName] <String> [-IotHubName] <String> [-DeviceId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Get the details of an Iot Hub device or list all devices in an Iot Hub.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzIotHubDevice -ResourceGroupName "myresourcegroup" -Name "myiothub"
+PS C:\> Get-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub"
 
 Device Id Status   Connection State Authentication       Edge Enabled Last Activity Time
 --------- ------   ---------------- --------------       ------------ ------------------
@@ -50,7 +50,7 @@ Show all devices in an Iot Hub.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzIotHubDevice -ResourceGroupName "myresourcegroup" -Name "myiothub" -DeviceId "myDevice1"
+PS C:\> Get-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1"
 
 DeviceId                   : myDevice1
 GenerationId               : 637148941292917073
@@ -116,7 +116,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -IotHubName
 Name of the Iot Hub
 
 ```yaml
