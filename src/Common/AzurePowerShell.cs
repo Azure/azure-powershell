@@ -14,6 +14,7 @@
 
 using System;
 using System.IO;
+using System.Net.Http.Headers;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -36,6 +37,10 @@ namespace Microsoft.WindowsAzure.Commands.Common
         public const string OldProfileFileBackup = "WindowsAzureProfile.xml.bak";
 
         public const string TokenCacheFile = "TokenCache.dat";
+
+        public static ProductInfoHeaderValue UserAgentValue = new ProductInfoHeaderValue(
+            "AzurePowershell",
+            string.Format("Az{0}", AzurePowerShell.AssemblyVersion));
 
         public static string ProfileDirectory = Path.Combine(
 #if NETSTANDARD
