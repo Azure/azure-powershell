@@ -178,10 +178,10 @@ $rgName = "resourceGroupName"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
 $pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
 
-New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -PrivateRange @("99.99.99.0/24", "66.66.0.0/16")
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -PrivateRange @("IANAPrivateRanges", "99.99.99.0/24", "66.66.0.0/16")
 ```
 
-This example creates a Firewall that treats "99.99.99.0/24" and "66.66.0.0/16" as private ip ranges and won't snat traffic to those addresses
+This example creates a Firewall that treats "99.99.99.0/24" and "66.66.0.0/16" as private ip ranges and won't snat traffic to those addresses. The entry "IANAPrivateRanges" will ensure all traffic to IANA Private Ranges won't snat. When the PrivateRange parameter is not specified traffic to IANA Private Ranges won't snat.
 
 ### 12:  Create a Firewall with a management subnet and Public IP address
 ```
@@ -364,7 +364,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateRange
-The private IP ranges to which traffic won't be SNAT'ed
+The private IP ranges to which traffic won't be SNAT'ed. Include "IANAPrivateRanges" as a value to ensure traffic to IANA Private Ranges won't snat.
 
 ```yaml
 Type: System.String[]
