@@ -8,6 +8,8 @@ schema: 2.0.0
 # Remove-AzMlOpCluster
 
 ## SYNOPSIS
+**Important: This cmdlet is deprecated.**
+
 Removes an operationalization cluster.
 
 ## SYNTAX

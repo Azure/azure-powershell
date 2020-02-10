@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzReservation
 
 ## SYNOPSIS
-Purcahse a reservation
+Purchase a reservation
 
 ## SYNTAX
 

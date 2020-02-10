@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(this.interceptor, "Test-NewGetRemove");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to adjust it because MachineLearningCompute related cmdlets are removed. Issue #10559")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetKeys()
         {
@@ -39,14 +39,14 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(this.interceptor, "Test-UpdateSystemServices");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to adjust it because MachineLearningCompute related cmdlets are removed. Issue #10559")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSet()
         {
             TestController.NewInstance.RunPsTest(this.interceptor, "Test-Set");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to adjust it because MachineLearningCompute related cmdlets are removed. Issue #10559")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveIncludeAllResources()
         {

@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                         serverName,
                         model.SecondaryElasticPoolName);
 
-            var resp = ReplicationCommunicator.CreateCopy(resourceGroupName, serverName, model.DatabaseName, new Management.Sql.Models.Database
+            var resp = ReplicationCommunicator.CreateCopy(resourceGroupName, serverName, model.PartnerDatabaseName, new Management.Sql.Models.Database
             {
                 Location = model.PartnerLocation,
                 SourceDatabaseId = string.Format(AzureReplicationLinkModel.SourceIdTemplate, _subscription.Id.ToString(),
@@ -348,6 +348,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.LinkId = new Guid(resp.Name);
             model.PartnerResourceGroupName = partnerResourceGroupName;
             model.PartnerServerName = resp.Properties.PartnerServer;
+            model.PartnerDatabaseName = resp.Properties.PartnerDatabase;
             model.ResourceGroupName = resourceGroupName;
             model.ServerName = serverName;
             model.DatabaseName = databaseName;
@@ -385,6 +386,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.LinkId = new Guid(resp.Name);
             model.PartnerResourceGroupName = partnerResourceGroupName;
             model.PartnerServerName = resp.PartnerServer;
+            model.PartnerDatabaseName = resp.PartnerDatabase;
             model.ResourceGroupName = resourceGroupName;
             model.ServerName = serverName;
             model.DatabaseName = databaseName;

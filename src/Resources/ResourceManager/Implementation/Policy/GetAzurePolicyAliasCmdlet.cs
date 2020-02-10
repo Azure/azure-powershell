@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.ResourceManager;
@@ -116,12 +115,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private IEnumerable<Provider> GetAllProviders()
         {
             var returnList = new List<Provider>();
-            var tempResult = this.ResourceManagerSdkClient.ResourceManagementClient.Providers.List(expand: "resourceTypes/aliases");
+            var tempResult = this.ResourceManagerSdkClient.ResourceManagementClient.Providers.ListAtTenantScope(expand: "resourceTypes/aliases");
             returnList.AddRange(tempResult);
 
             while (!string.IsNullOrWhiteSpace(tempResult.NextPageLink))
             {
-                tempResult = this.ResourceManagerSdkClient.ResourceManagementClient.Providers.ListNext(tempResult.NextPageLink);
+                tempResult = this.ResourceManagerSdkClient.ResourceManagementClient.Providers.ListAtTenantScopeNext(tempResult.NextPageLink);
                 returnList.AddRange(tempResult);
             }
 

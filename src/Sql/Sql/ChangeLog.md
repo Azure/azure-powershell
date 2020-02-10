@@ -18,7 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix vulnerability assessment set baseline cmdlets functionality to work on master db for azure database and limit it on managed instance system databases. 
+* Added support for cross subscription point in time restore on Managed Instances.
+* Add support for changing existing Sql Managed Instance hardware generation
+
+## Version 2.2.0
+Fix New-AzSqlDatabaseSecondary cmdlet to check for PartnerDatabaseName existence instead of DatabaseName existence.
+
+## Version 2.1.2
+* Fix vulnerability assessment set baseline cmdlets functionality to work on master db for azure database and limit it on managed instance system databases.
+* Fix an error when creating SQL instance failover group
+* Added PartnerDatabaseName parameter to New-AzSqlDatabaseSecondary cmdlet.
 
 ## Version 2.1.1
 * Update references in .psd1 to use relative path
@@ -36,7 +45,7 @@
 * Get-AzSqlDatabaseRestorePoints (use Get-AzSqlDatabaseRestorePoint instead)
 * Remove Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
 * Remove aliases for deprecated Vulnerability Assessment Settings cmdlets
-* Deprecate Advanced Threat Detection Settings cmdlets 
+* Deprecate Advanced Threat Detection Settings cmdlets
 * Adding cmdlets to Disable and enable sensitivity recommendations on columns in a database.
 * Fix a small bug when reading auditing settings of a server or a database.
 
