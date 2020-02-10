@@ -20,13 +20,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         /// Policy assignment cmdlet parameter help strings
         /// </summary>
         public const string GetPolicyAssignmentNameHelp = "The name of the policy assignment to get.";
-        public const string GetPolicyAssignmentScopeHelp = "The scope of the policy assignment to get, e.g. /providers/managementGroups/{managementGroupName}.";
+        public const string GetPolicyAssignmentScopeHelp = "The scope of the policy assignment to get, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
         public const string GetPolicyAssignmentIdHelp = "The fully qualified policy assignment ID to get, including the scope, e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}.";
         public const string GetPolicyDefinitionFilterHelp = "Limits the list of returned policy assignments to those assigning the policy definition identified by this fully qualified Id.";
         public const string GetPolicyAssignmentIncludeDescendentsHelp = "Causes the list of returned policy assignments to include all assignments related to the given scope, including those from ancestor scopes and those from descendent scopes.";
         public const string GetPolicyAssignmentDoesNothingHelp = "This parameter is ignored if provided with -Name or -Id parameters.";
         public const string NewPolicyAssignmentNameHelp = "The name of the new policy assignment.";
-        public const string NewPolicyAssignmentScopeHelp = "The scope of the new policy assignment, e.g. /providers/managementGroups/{managementGroupName}.";
+        public const string NewPolicyAssignmentScopeHelp = "The scope of the new policy assignment, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
         public const string NewPolicyAssignmentNotScopesHelp = "The not scopes for the new policy assignment.";
         public const string NewPolicyAssignmentDisplayNameHelp = "The display name for the new policy assignment.";
         public const string NewPolicyAssignmentDescriptionHelp = "The description for the new policy assignment.";
@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string NewPolicyAssignmentEnforcementModeHelp = "The enforcement mode for the new policy assignment, e.g. Default, DoNotEnforce. It indicates whether a policy effect will be enforced or not during assignment creation and update. Please visit https://aka.ms/azure-policyAssignment-enforcement-mode for more information.";
         public const string NewPolicyAssignmentSkuHelp = "A hash table which specifies sku properties. This parameter is deprecated and ignored.";
         public const string RemovePolicyAssignmentNameHelp = "The name of the policy assignment to delete.";
-        public const string RemovePolicyAssignmentScopeHelp = "The scope of the policy assignment to delete, e.g. /providers/managementGroups/{managementGroupName}.";
+        public const string RemovePolicyAssignmentScopeHelp = "The scope of the policy assignment to delete, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
         public const string RemovePolicyAssignmentIdHelp = "The fully qualified policy assignment ID to delete, including the scope, e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}.";
         public const string SetPolicyAssignmentNameHelp = "The name of the policy assignment to update.";
-        public const string SetPolicyAssignmentScopeHelp = "The scope of the policy assignment to update, e.g. /providers/managementGroups/{managementGroupName}.";
+        public const string SetPolicyAssignmentScopeHelp = "The scope of the policy assignment to update, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
         public const string SetPolicyAssignmentNotScopesHelp = "The not scopes of the updated policy assignment.";
         public const string SetPolicyAssignmentIdHelp = "The fully qualified ID of the policy assignment to update, including the scope, e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}.";
         public const string SetPolicyAssignmentDisplayNameHelp = "The display name of the updated policy assignment";
