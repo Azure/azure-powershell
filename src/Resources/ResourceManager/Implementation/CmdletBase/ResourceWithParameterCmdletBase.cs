@@ -12,16 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -39,7 +37,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string TemplateUriParameterFileParameterSetName = "ByTemplateUriAndParameterFile";
         protected const string TemplateUriParameterUriParameterSetName = "ByTemplateUriAndParameterUri";
 
-        protected const string ParameterlessGalleryTemplateParameterSetName = "ByGalleryWithNoParameters";
         protected const string ParameterlessTemplateObjectParameterSetName = "ByTemplateObjectWithNoParameters";
         protected const string ParameterlessTemplateFileParameterSetName = "ByTemplateFileWithNoParameters";
         protected const string ParameterlessTemplateUriParameterSetName = "ByTemplateUriWithNoParameters";
@@ -126,8 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             if (!this.IsParameterBound(c => c.SkipTemplateParameterPrompt))
             {
-                if (TemplateObject != null &&
-                TemplateObject != templateObject)
+                if (TemplateObject != null && TemplateObject != templateObject)
                 {
                     templateObject = TemplateObject;
                     if (string.IsNullOrEmpty(TemplateParameterUri))

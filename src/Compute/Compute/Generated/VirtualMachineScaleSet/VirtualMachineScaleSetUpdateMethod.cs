@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
+        [AllowEmptyString]
         public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(
@@ -1097,6 +1097,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             if (this.VirtualMachineScaleSetUpdate != null
+                && this.VirtualMachineScaleSetUpdate.ProximityPlacementGroup != null
+                && string.IsNullOrEmpty(this.VirtualMachineScaleSetUpdate.ProximityPlacementGroup.Id))
+            {
+                this.VirtualMachineScaleSetUpdate.ProximityPlacementGroup.Id = null;
+            }
+
+            if (this.VirtualMachineScaleSetUpdate != null
                 && this.VirtualMachineScaleSetUpdate.VirtualMachineProfile != null
                 && this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile != null
                 && this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration != null
@@ -1697,6 +1704,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk = new VirtualMachineScaleSetOSDisk();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers = this.VhdContainer;
+            }
+
+            if (this.VirtualMachineScaleSet != null
+                && this.VirtualMachineScaleSet.ProximityPlacementGroup != null
+                && string.IsNullOrEmpty(this.VirtualMachineScaleSet.ProximityPlacementGroup.Id))
+            {
+                this.VirtualMachineScaleSet.ProximityPlacementGroup.Id = null;
             }
 
             if (this.VirtualMachineScaleSet != null

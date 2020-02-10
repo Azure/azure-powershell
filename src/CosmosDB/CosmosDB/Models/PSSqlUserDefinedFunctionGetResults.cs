@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
     using System;
+    using System.Collections.Generic;
     using Microsoft.Azure.Management.CosmosDB.Models;
 
     public class PSSqlUserDefinedFunctionGetResults 
@@ -27,11 +28,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
             Name = sqlUserDefinedFunctionGetResults.Name;
             Id = sqlUserDefinedFunctionGetResults.Id;
-            SqlUserDefinedFunctionGetResultsId = sqlUserDefinedFunctionGetResults.SqlUserDefinedFunctionGetResultsId;
-            Body = sqlUserDefinedFunctionGetResults.Body;
-            _rid = sqlUserDefinedFunctionGetResults._rid;
-            _ts = sqlUserDefinedFunctionGetResults._ts;
-            _etag = sqlUserDefinedFunctionGetResults._etag;
+            Location = sqlUserDefinedFunctionGetResults.Location;
+            Tags = sqlUserDefinedFunctionGetResults.Tags;
+            Resource = new PSSqlUserDefinedFunctionGetPropertiesResource(sqlUserDefinedFunctionGetResults.Resource);
         }
 
         /// <summary>
@@ -43,32 +42,16 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// Gets or sets Id of the User Defined Function
         /// </summary>
         public string Id { get; set; }
-
         /// <summary>
-        /// Gets or sets name of the Cosmos DB SQL userDefinedFunction
+        /// Gets or sets Location of the Cosmos DB SQL User Defined Function
         /// </summary>
-        public string SqlUserDefinedFunctionGetResultsId { get; set; }
-
+        public string Location { get; set; }
         /// <summary>
-        /// Gets or sets body of the User Defined Function
+        /// Gets or sets Tags of the Cosmos DB SQL User Defined Function
         /// </summary>
-        public string Body { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
+        //
+        public PSSqlUserDefinedFunctionGetPropertiesResource Resource { get; set; }
 
-        /// <summary>
-        /// Gets a system generated property. A unique identifier.
-        /// </summary>
-        public string _rid { get; set; }
-
-        /// <summary>
-        /// Gets a system generated property that denotes the last updated
-        /// timestamp of the resource.
-        /// </summary>
-        public object _ts { get; set; }
-
-        /// <summary>
-        /// Gets a system generated property representing the resource etag
-        /// required for optimistic concurrency control.
-        /// </summary>
-        public string _etag { get; set; }
     }
 }

@@ -19,10 +19,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Allow empty value for ProximityPlacementGroupId during update
+
+## Version 3.4.0
+* Limit the number of VM status to 100 to avoid throttling when Get-AzVM -Status is performed without VM name.
 * Add Update-AzDiskEncryptionSet cmdlet
 * Add EncryptionType and DiskEncryptionSetId parameters to the following cmdlets:
     - New-AzDiskUpdateConfig, New-AzSnapshotUpdateConfig
 * Add ColocationStatus parameter to Get-AzProximityPlacementGroup cmdlet.
+* Fix broken example code for 'Revoke-AzSnapshotAccess' and 'Grant-AzSnapshotAccess'
 
 ## Version 3.3.0
 * Fix Set-AzVMCustomScriptExtension cmdlet for a VM with managed OD disk which does not have OS profile.

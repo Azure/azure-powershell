@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlConflictResolutionPolicy"), OutputType(typeof(PSSqlConflictResolutionPolicy))]
     public class NewAzCosmosDBSqlConflictResolutionPolicy : AzureCosmosDBCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.ConflictResolutionPolicyTypeHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.ConflictResolutionPolicyModeHelpMessage)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("LastWriterWins", "Custom", "Manual")]
         public string Type { get; set; }
@@ -30,16 +30,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyPathHelpMessage)]
         public string Path { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyStoredProcedureNameHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyProcedureHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ConflictResolutionProcedure { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PSSqlConflictResolutionPolicy conflictResolutionPolicy = new PSSqlConflictResolutionPolicy(Type);
+            PSSqlConflictResolutionPolicy conflictResolutionPolicy = new PSSqlConflictResolutionPolicy
+            {
+                Mode = Type
+            };
 
             if (!string.IsNullOrEmpty(Path))
-                conflictResolutionPolicy.Path = Path;
+                conflictResolutionPolicy.ConflictResolutionPath = Path;
 
             if (!string.IsNullOrEmpty(ConflictResolutionProcedure))
                 conflictResolutionPolicy.ConflictResolutionProcedure = ConflictResolutionProcedure;
