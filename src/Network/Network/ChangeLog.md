@@ -23,6 +23,10 @@
 * Added Packet Capture example for capture all inner and outer packets in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
 * Support Azure Firewall Policy on VNet Firewalls
     - No new cmdlets are added. Relaxing the restriction for firewall policy on VNet firewalls
+* Added support to disconnect vpn connection in virtual network gateway and p2s vpn gateway
+    - New cmdlets added:
+        - Disconnect-AzVirtualNetworkGatewayVpnConnection
+        - Disconnect-AzP2sVpnGatewayVpnConnection
 
 ## Version 2.3.0
 * New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.
@@ -37,10 +41,6 @@
         - New-AzApplicationGatewayRewriteRuleUrlConfiguration
     - Cmdlets updated with optional parameter - UrlConfiguration
         - New-AzApplicationGatewayRewriteRuleActionSet
-* Added support to disconnect vpn connection in virtual network gateway and p2s vpn gateway
-    - New cmdlets added:
-        - Disconnect-AzVirtualNetworkGatewayVpnConnection
-        - Disconnect-AzP2sVpnGatewayVpnConnection
 * Add suppport for NetworkWatcher ConnectionMonitor version 2 resources
 
 ## Version 2.2.1
