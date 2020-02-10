@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add SubscriptionId, TenantId, and execution time into data of client side telemetry
 
 ## Version 1.7.1
 * Disable context auto saving when AzureRmContext.json not available
