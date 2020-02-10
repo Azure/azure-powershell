@@ -38,14 +38,14 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public const string TokenCacheFile = "TokenCache.dat";
 
+        public static ProductInfoHeaderValue UserAgentValue = new ProductInfoHeaderValue(
+            "AzurePowershell",
+            string.Format("Az{0}", AzurePowerShell.AssemblyVersion));
+
         public static string ProfileDirectory = Path.Combine(
 #if NETSTANDARD
             Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
             ".Azure");
-
-        public static ProductInfoHeaderValue UserAgentValue = new ProductInfoHeaderValue(
-            "AzurePowershell",
-            string.Format("Az{0}", AzurePowerShell.AssemblyVersion));
 
         public static string OldProfileDirectory = Path.Combine(
 #endif
