@@ -63,8 +63,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithoutCredential,
-            HelpMessage = "The object representing the application for which the service principal is created.")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordPlain,
             HelpMessage = "The object representing the application for which the service principal is created.")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordCredential,
