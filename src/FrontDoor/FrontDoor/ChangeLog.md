@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add cmdlet to get managed rule definitions that can be used in WAF
+* Added cmdlet to get managed rule definitions that can be used in WAF
 
 ## Version 1.3.0
 * Update references in .psd1 to use relative path
