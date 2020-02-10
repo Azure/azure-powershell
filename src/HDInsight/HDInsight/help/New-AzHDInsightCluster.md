@@ -261,7 +261,7 @@ Accept wildcard characters: False
 
 ### -ClusterType
 Specifies the type of cluster to create.
-Options are: Hadoop, HBase, Storm, Spark
+Options are: Hadoop, HBase, Storm, Spark, INTERACTIVEHIVE, Kafka, and RServer
 
 ```yaml
 Type: System.String

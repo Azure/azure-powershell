@@ -18,6 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Refactor template deployment cmdlets
+    - Add new cmdlets for managing deployments at management group: *-AzManagementGroupDeployment
+    - Add new cmdlets for managing deployments at tenant scope: *-AzTenantDeployment
+    - Refactor *-AzDeployment cmdlets to work specificly at subscription scope
+    - Created aliases *-AzSubscriptionDeployment for *-AzDeployment cmdlets
+* Fix `Update-AzADApplication` when parameter `AvailableToOtherTenants` is not set 
+* Remove ApplicationObjectWithoutCredentialParameterSet to avoid AmbiguousParameterSetException.
+* Regenerate help files
+
+## Version 1.10.0
+* Make -Scope optional in *-AzPolicyAssignment cmdlets with default to context subscription
+* Add examples of creating ADServicePrincipal with password and key credential
+
+## Version 1.9.1
+* Fix an error in help document of `Remove-AzTag`.
+* Fix for aliases missing from output of Get-AzPolicyAlias
+* Update resource client to new version that retrieves providers and aliases at tenant level
+* Update Get-AzPolicyAlias to retrieve aliases at tenant level
+* Update -Policy parameter of New-AzPolicyDefinition and Set-AzPolicyDefinition to allow full policy object
 
 ## Version 1.9.0
 * Update references in .psd1 to use relative path

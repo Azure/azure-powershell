@@ -30,11 +30,6 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         private static SqlManagementClient SqlClient { get; set; }
 
         /// <summary>
-        /// The Sql client default name for the active directory admin
-        /// </summary>
-        private static string ActiveDirectoryDefaultName { get { return "ActiveDirectory"; } }
-
-        /// <summary>
         /// The Sql client default type for the active directory admin
         /// </summary>
         private static string ActiveDirectoryDefaultType { get { return "activeDirectory"; } } // *** Check this, I think ActiveDirectory
@@ -69,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         /// </summary>
         public ManagedInstanceAdministrator Get(string resourceGroupName, string managedInstanceName)
         {
-            return GetCurrentSqlClient().ManagedInstanceAdministrators.Get(resourceGroupName, managedInstanceName, ActiveDirectoryDefaultName);
+            return GetCurrentSqlClient().ManagedInstanceAdministrators.Get(resourceGroupName, managedInstanceName);
         }
 
         /// <summary>
@@ -85,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         /// </summary>
         public ManagedInstanceAdministrator CreateOrUpdate(string resourceGroupName, string managedInstanceName, ManagedInstanceAdministrator parameters)
         {
-            return GetCurrentSqlClient().ManagedInstanceAdministrators.CreateOrUpdate(resourceGroupName, managedInstanceName, ActiveDirectoryDefaultName, parameters);
+            return GetCurrentSqlClient().ManagedInstanceAdministrators.CreateOrUpdate(resourceGroupName, managedInstanceName, parameters);
         }
 
         /// <summary>
@@ -93,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         /// </summary>
         public void Remove(string resourceGroupName, string managedInstanceName)
         {
-            GetCurrentSqlClient().ManagedInstanceAdministrators.Delete(resourceGroupName, managedInstanceName, ActiveDirectoryDefaultName);
+            GetCurrentSqlClient().ManagedInstanceAdministrators.Delete(resourceGroupName, managedInstanceName);
         }
 
         /// <summary>

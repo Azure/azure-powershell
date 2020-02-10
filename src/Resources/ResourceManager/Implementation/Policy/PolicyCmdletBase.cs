@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected string MakePolicyAssignmentId(string scope, string resourceName)
         {
             return ResourceIdUtility.GetResourceId(
-                resourceId: scope,
+                resourceId: scope ?? $"/{Constants.Subscriptions}/{DefaultContext.Subscription.Id}",
                 extensionResourceType: Constants.MicrosoftAuthorizationPolicyAssignmentType,
                 extensionResourceName: resourceName);
         }
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             // generate resource Id based on management group
             if (!string.IsNullOrEmpty(managementGroupName))
             {
-                return $"/providers/{Constants.MicrosoftManagementGroupDefinitionType}/{managementGroupName}/providers/{fullyQualifiedResourceType}{namePart}";
+                return $"{Constants.ManagementGroupIdPrefix}{managementGroupName}/providers/{fullyQualifiedResourceType}{namePart}";
             }
 
             // generate resource Id based on given subscription

@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -81,6 +82,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPointConfig.AlternateWorkloadRestore)]
         public SwitchParameter AlternateWorkloadRestore { get; set; }
 
+        /// <summary>
+        /// Target Container to which files will be written
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPointConfig.TargetContainer)]
+        public ContainerBase TargetContainer { get; set; }
+
+        /// <summary>
+        /// Use this switch to restore db as files to a given target container
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPointConfig.RestoeAsFiles)]
+        public SwitchParameter RestoreAsFiles { get; set; }
+
+        /// <summary>
+        /// Specify Recovery point from which logs will be applies
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPointConfig.FromFull)]
+        public RecoveryPointBase FromFull { get; set; }
+
+        /// <summary>
+        /// Specify Recovery point from which logs will be applies
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPointConfig.FilePath)]
+        public string FilePath { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -91,7 +116,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                if (!OriginalWorkloadRestore.IsPresent && !AlternateWorkloadRestore.IsPresent)
+                if (!OriginalWorkloadRestore.IsPresent && !AlternateWorkloadRestore.IsPresent && !RestoreAsFiles.IsPresent)
                 {
                     throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreLocationException));
                 }
@@ -225,6 +250,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     azureWorkloadRecoveryConfig.targetPhysicalPath = targetPhysicalPath;
                     azureWorkloadRecoveryConfig.ContainerId = GetContainerId(TargetItem.Id);
+                }
+                else if (RestoreAsFiles.IsPresent)
+                {
+                    if(TargetContainer == null)
+                    {
+                        throw new ArgumentNullException("TargetContainer", Resources.TargetContainerRequiredException);
+                    }
+
+                    azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
+                    azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
+                    azureWorkloadRecoveryConfig.ContainerId = (TargetContainer as AzureVmWorkloadContainer).Id;
+                    azureWorkloadRecoveryConfig.RestoreRequestType = "Alternate WL Restore";
+                    azureWorkloadRecoveryConfig.RecoveryMode = "FileRecovery";
+                    azureWorkloadRecoveryConfig.FilePath = FilePath;
+                    azureWorkloadRecoveryConfig.FullRP = FromFull;
                 }
                 RecoveryConfigBase baseobj = azureWorkloadRecoveryConfig;
                 WriteObject(baseobj);
@@ -403,6 +443,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     RecoveryPointId = "DefaultRangeRecoveryPoint"
                 };
                 recoveryPoint = azureWorkloadRecoveryPoint;
+            }
+            else if (RestoreAsFiles.IsPresent)
+            {
+                restoreRequestType = "Alternate WL Restore";
+                targetServer = TargetContainer.Name;
+                if(recoveryPoint == null && FromFull == null)
+                {
+                    Models.AzureWorkloadRecoveryPoint azureWorkloadRecoveryPoint = new Models.AzureWorkloadRecoveryPoint()
+                    {
+                        Id = Item.Id + "/recoveryPoints/DefaultRangeRecoveryPoint",
+                        RecoveryPointId = "DefaultRangeRecoveryPoint"
+                    };
+                    recoveryPoint = azureWorkloadRecoveryPoint;
+                }
+                else if(FromFull != null)
+                {
+                    recoveryPoint = FromFull;
+                }
             }
 
             return new AzureWorkloadRecoveryConfig(targetServer, parentName, restoreRequestType, recoveryPoint, pointInTime);

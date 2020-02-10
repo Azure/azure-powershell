@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 1.12.0
+* Support set Table/Queue Encryption Keytype in Create Storage Account
+    - New-AzRmStorageAccount
+* Show RequestId when StorageException don't have ExtendedErrorInformation
+* Fix the Example 6 of cmdlet Start-AzStorageBlobCopy
+
+## Version 1.11.0
+* Add breaking change warning message for DefaultAction Value change in a future release
+    - Update-AzStorageAccountNetworkRuleSet
+* Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats 
+    - Get-AzureRMStorageAccount
+
 ## Version 1.10.0
 * Update references in .psd1 to use relative path
 * Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
