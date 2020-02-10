@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added one extra parameter note for parameter `-EnableProxyProtocol` for `New-AzPrivateLinkService` cmdlet.
 
 ## Version 2.3.1
 * Small modify on md file for New-AzPrivateLinkService cmdlet .
