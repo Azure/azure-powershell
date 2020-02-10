@@ -20,12 +20,10 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Runspaces;
 using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
@@ -870,40 +868,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected string LoadAzVersion()
         {
-            Version latestAz = new Version("0.0.0");
-            string latestSuffix = "";
-            using (var powershell = System.Management.Automation.PowerShell.Create())
-            {
-                powershell.Runspace = RunspaceFactory.CreateRunspace(this.Host);
-                powershell.AddCommand("Get-Module");
-                powershell.AddParameter("Name", "Az");
-                powershell.AddParameter("ListAvailable", true);
-                powershell.Runspace.Open();
-                Collection<PSObject> outputs = powershell.Invoke();
-                foreach (PSObject obj in outputs)
-                {
-                    string psVersion = obj.Properties["Version"].Value.ToString();
-                    int pos = psVersion.IndexOf('-');
-                    string currentSuffix = (pos == -1 || pos == psVersion.Length - 1) ? "" : psVersion.Substring(pos + 1);
-                    Version currentAz = (pos == -1) ? new Version(psVersion) : new Version(psVersion.Substring(0, pos));
-                    if (currentAz > latestAz)
-                    {
-                        latestAz = currentAz;
-                        latestSuffix = currentSuffix;
-                    }
-                    else if (currentAz == latestAz)
-                    {
-                        latestSuffix = String.Compare(latestSuffix, currentSuffix) > 0 ? latestSuffix : currentSuffix;
-                    }
-                }
-            }
-            string ret = latestAz.ToString();
-            if (!String.IsNullOrEmpty(latestSuffix))
-            {
-                ret += "-" + latestSuffix;
-            }
-            WriteDebug(string.Format("Sought all Az modules and got latest version {0}", ret));
-            return ret;
+            return "1.0.0";
         }
     }
 }
