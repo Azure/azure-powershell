@@ -91,7 +91,7 @@ directive:
       default:
         script: -join("System.",(Get-AzLocation)[0].Location)
 
-  # [EdgeGateway]: Folloing changes are for EdgeGateway
+  # [EdgeGateway]: Following changes are for EdgeGateway
   # [EdgeGateway] Propertity Rename: change NumberOfConnection to NumberOfConnections
   - where:
       model-name: EdgeGateway
@@ -112,7 +112,28 @@ directive:
       subject: EdgeGateway
     hide: true
 
-  # [EdgeGatewayPool]: Folloing changes are for EdgeGatewayPool
+  # [LogicalNetwork]: Following changes are for LogicalNetwork
+  # [LogicalNetwork] Rename property name in LogicalNetwork
+  - where:
+      model-name: LogicalNetwork
+      property-name: Subnet
+    set:
+      property-name: Subnets
+
+  # [LogicalNetwork] Rename cmdlet parameter name in LogicalNetwork
+  - where:
+      subject: LogicalNetwork
+      parameter-name: LogicalNetwork
+    set:
+      parameter-name: Name
+
+  # [LogicalNetwork] hide autorest generated cmdlet to use the custom one
+  - where:
+      verb: Get
+      subject: LogicalNetwork
+    hide: true
+
+  # [EdgeGatewayPool]: Following changes are for EdgeGatewayPool
   # [EdgeGateway] Rename cmdlet parameter name in EdgeGatewayPool
   - where:
       subject: EdgeGatewayPool
@@ -133,7 +154,7 @@ directive:
       subject: EdgeGatewayPool
     hide: true
 
-  # [InfrastructureRole]: Folloing changes are for InfrastructureRole
+  # [InfrastructureRole]: Following changes are for InfrastructureRole
   # Rename subject AzsInfraRole to AzsInfrastructureRole
   - where:
       subject: InfraRole
