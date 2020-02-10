@@ -14,7 +14,6 @@
 
 using System;
 using System.IO;
-using System.Net.Http.Headers;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
