@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Onboard CosmosDB RP type for operations on PrivateEndpointConnection.
+    - Now the Approve, Deny, Get, Remove, Set operation on AzPrivateEndpointConnection will be supported for PE connected to CosmosDB.
+* Fix a naming-difference issue in PrivateLinkServiceConnectionState class.
+    - Mapping the field ActionsRequired to ActionRequired.
 * Fixed FilterData example in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
 * Added Packet Capture example for capture all inner and outer packets in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
 * Support Azure Firewall Policy on VNet Firewalls
