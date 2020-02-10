@@ -41,5 +41,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-PolicyCrudWithPiping");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedRuleSetDefinitions()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ManagedRuleSetDefinition");
+        }
     }
 }
