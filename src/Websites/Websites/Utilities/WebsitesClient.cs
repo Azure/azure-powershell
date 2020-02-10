@@ -150,6 +150,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 catch (Exception e)
                 {
                     WriteWarning("Could not set custom hostname '{0}'. Details: {1}", hostName, e.ToString());
+                    return;
                 }
             }
 
@@ -169,50 +170,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 }
             }
         }
-
-        public void AddCustomHostNamesForSlots(string resourceGroupName, string location, string webAppName, string slotName, string[] hostNames)
-        {
-            var webAppSlot = GetWebApp(resourceGroupName, webAppName, slotName);
-            var currentHostNames = webAppSlot.HostNames;
-
-            // Add new hostnames
-            foreach (var hostName in hostNames)
-            {
-                try
-                {
-                    if (!currentHostNames.Contains(hostName, StringComparer.OrdinalIgnoreCase))
-                    {
-                        WrappedWebsitesClient.WebApps().CreateOrUpdateHostNameBindingSlot(resourceGroupName, webAppName,
-                            hostName, new HostNameBinding
-                            {
-                                SiteName = webAppName,
-                            }, slotName);
-                    }
-                }
-                catch (Exception e)
-                {
-                    WriteWarning("Could not set custom hostname '{0}' for Slot. Details: {1}", hostName, e.ToString());
-                    return;
-                }
-            }
-
-            // Delete removed hostnames
-            foreach (var hostName in currentHostNames)
-            {
-                try
-                {
-                    if (!hostNames.Contains(hostName, StringComparer.OrdinalIgnoreCase))
-                    {
-                        WrappedWebsitesClient.WebApps().DeleteHostNameBindingSlot(resourceGroupName, webAppName, slotName, hostName);
-                    }
-                }
-                catch (Exception e)
-                {
-                    WriteWarning("Could not remove custom hostname '{0}' for Slot. Details: {1}", hostName, e.ToString());
-                }
-            }
-        }
-
 
         public void StartWebApp(string resourceGroupName, string webSiteName, string slotName)
         {
