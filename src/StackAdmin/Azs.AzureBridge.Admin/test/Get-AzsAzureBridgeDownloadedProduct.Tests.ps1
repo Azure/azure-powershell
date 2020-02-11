@@ -48,7 +48,7 @@ Describe 'Get-AzsAzureBridgeDownloadedProduct' {
 
     It "TestGetAzsAzureBridgeDownloadedProductByProductName" -Skip:$("TestGetAzsAzureBridgeDownloadedProductByProductName" -in $global:SkippedTests) {
         $global:TestName = "TestGetAzsAzureBridgeDownloadedProductByProductName"
-        $DownloadedProduct = (Get-AzsAzureBridgeDownloadedProduct -ActivationName $global:ActivationName -Name $global:ProductName1 -ResourceGroupName $global:ResourceGroupName  )
+        $DownloadedProduct = (Get-AzsAzureBridgeDownloadedProduct -ActivationName $global:ActivationName -Name $global:DProductName1 -ResourceGroupName $global:ResourceGroupName  )
         ValidateProductInfo $DownloadedProduct
     }
 }

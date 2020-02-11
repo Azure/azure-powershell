@@ -1,0 +1,70 @@
+{
+  "Get-AzsAzureBridgeDownloadedProduct+[NoContext]+TestGetAzsAzureBridgeDownloadedProduct+$GET+https://adminmanagement.local.azurestack.external/subscriptions/e63d3264-fc11-487e-a076-717498a81298/resourcegroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations/default/downloadedProducts?api-version=2016-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.local.azurestack.external/subscriptions/e63d3264-fc11-487e-a076-717498a81298/resourcegroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations/default/downloadedProducts?api-version=2016-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "506dcfd1-e919-477f-8bab-ae1bb698afd8" ],
+        "x-ms-correlation-request-id": [ "e65e7a17-8c03-4aa7-8606-da39689d1e6b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14814" ],
+        "x-ms-routing-request-id": [ "LOCAL:20200211T192924Z:e65e7a17-8c03-4aa7-8606-da39689d1e6b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 11 Feb 2020 19:29:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2335" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e63d3264-fc11-487e-a076-717498a81298/resourceGroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations/default/downloadedProducts/canonical.ubuntuserver1804lts-arm-18.04.20180911\",\"name\":\"default/canonical.ubuntuserver1804lts-arm-18.04.20180911\",\"type\":\"Microsoft.AzureBridge.Admin/activations/downloadedProducts\",\"etag\":\"W/\\\"datetime\u00272020-01-22T07%3A12%3A57.0614703Z\u0027\\\"\",\"properties\":{\"displayName\":\"Ubuntu Server 18.04 LTS\",\"description\":\"Ubuntu Server 18.04 LTS amd64 201814080. Ubuntu Server is the world\u0027s most popular Linux for cloud environments. Updates and patches for Ubuntu 18.04 will be available until April 2023.  Ubuntu Server is the perfect virtual machine (VM) platform for all workloads from web applications to NoSQL databases and Hadoop. For more information see \u003ca href=\u0027http://partners.ubuntu.com/microsoft\u0027 target=\u0027_blank\u0027\u003eUbuntu on Azure\u003c/a\u003e and \u003ca href=\u0027http://juju.ubuntu.com\u0027 target=\u0027_blank\u0027\u003eusing Juju to deploy your workloads\u003c/a\u003e.\",\"publisherDisplayName\":\"Canonical\",\"publisherIdentifier\":\"Canonical\",\"provisioningState\":\"Succeeded\",\"offer\":\"UbuntuServer\",\"offerVersion\":\"1.0.3\",\"sku\":\"18.04-LTS\",\"billingPartNumber\":\"\",\"galleryItemIdentity\":\"Canonical.UbuntuServer1804LTS-ARM.1.0.3\",\"iconUris\":{\"large\":\"https://azstmktprodwcu001.blob.core.windows.net/icons/027b00815995491a8986f8ff7e16c38c/Large.png\",\"wide\":\"https://azstmktprodwcu001.blob.core.windows.net/icons/027b00815995491a8986f8ff7e16c38c/Wide.png\",\"medium\":\"https://azstmktprodwcu001.blob.core.windows.net/icons/027b00815995491a8986f8ff7e16c38c/Medium.png\",\"small\":\"https://azstmktprodwcu001.blob.core.windows.net/icons/027b00815995491a8986f8ff7e16c38c/Small.png\"},\"links\":[{\"displayName\":\"Linux VM Documentation\",\"uri\":\"https://docs.microsoft.com/azure/virtual-machines/linux/\"},{\"displayName\":\"Ubuntu Documentation\",\"uri\":\"https://help.ubuntu.com/18.04/index.html\"},{\"displayName\":\"FAQ\",\"uri\":\"https://help.ubuntu.com/community/ServerFaq\"},{\"displayName\":\"Pricing Details\",\"uri\":\"http://azure.microsoft.com/pricing/details/virtual-machines/#linux\"}],\"legalTerms\":\"http://www.ubuntu.com/project/about-ubuntu/licensing\",\"privacyPolicy\":\"http://www.ubuntu.com/aboutus/privacypolicy\",\"payloadLength\":32212288275,\"productKind\":\"virtualMachine\",\"productProperties\":{\"version\":\"18.04.20180911\"}}}]}"
+    }
+  },
+  "Get-AzsAzureBridgeDownloadedProduct+[NoContext]+TestGetAzsAzureBridgeDownloadedProductByProductName+$GET+https://adminmanagement.local.azurestack.external/subscriptions/e63d3264-fc11-487e-a076-717498a81298/resourcegroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations/default/downloadedProducts/canonical.ubuntuserver1804lts-arm-18.04.20180911?api-version=2016-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.local.azurestack.external/subscriptions/e63d3264-fc11-487e-a076-717498a81298/resourcegroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations/default/downloadedProducts/canonical.ubuntuserver1804lts-arm-18.04.20180911?api-version=2016-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "26" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "4c606ba0-4ca8-4a8d-9143-171d2b688db2" ],
+        "x-ms-correlation-request-id": [ "c9c55399-178f-426f-9dff-053e55594379" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14813" ],
+        "x-ms-routing-request-id": [ "LOCAL:20200211T192924Z:c9c55399-178f-426f-9dff-053e55594379" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 11 Feb 2020 19:29:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2323" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e63d3264-fc11-487e-a076-717498a81298/resourceGroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations/default/downloadedProducts/canonical.ubuntuserver1804lts-arm-18.04.20180911\",\"name\":\"default/canonical.ubuntuserver1804lts-arm-18.04.20180911\",\"type\":\"Microsoft.AzureBridge.Admin/activations/downloadedProducts\",\"etag\":\"W/\\\"datetime\u00272020-01-22T07%3A12%3A57.0614703Z\u0027\\\"\",\"properties\":{\"displayName\":\"Ubuntu Server 18.04 LTS\",\"description\":\"Ubuntu Server 18.04 LTS amd64 201814080. Ubuntu Server is the world\u0027s most popular Linux for cloud environments. Updates and patches for Ubuntu 18.04 will be available until April 2023.  Ubuntu Server is the perfect virtual machine (VM) platform for all workloads from web applications to NoSQL databases and Hadoop. For more information see \u003ca href=\u0027http://partners.ubuntu.com/microsoft\u0027 target=\u0027_blank\u0027\u003eUbuntu on Azure\u003c/a\u003e and \u003ca href=\u0027http://juju.ubuntu.com\u0027 target=\u0027_blank\u0027\u003eusing Juju to deploy your workloads\u003c/a\u003e.\",\"publisherDisplayName\":\"Canonical\",\"publisherIdentifier\":\"Canonical\",\"provisioningState\":\"Succeeded\",\"offer\":\"UbuntuServer\",\"offerVersion\":\"1.0.3\",\"sku\":\"18.04-LTS\",\"billingPartNumber\":\"\",\"galleryItemIdentity\":\"Canonical.UbuntuServer1804LTS-ARM.1.0.3\",\"iconUris\":{\"large\":\"https://azstmktprodwcu001.blob.core.windows.net/icons/027b00815995491a8986f8ff7e16c38c/Large.png\",\"wide\":\"https://azstmktprodwcu001.blob.core.windows.net/icons/027b00815995491a8986f8ff7e16c38c/Wide.png\",\"medium\":\"https://azstmktprodwcu001.blob.core.windows.net/icons/027b00815995491a8986f8ff7e16c38c/Medium.png\",\"small\":\"https://azstmktprodwcu001.blob.core.windows.net/icons/027b00815995491a8986f8ff7e16c38c/Small.png\"},\"links\":[{\"displayName\":\"Linux VM Documentation\",\"uri\":\"https://docs.microsoft.com/azure/virtual-machines/linux/\"},{\"displayName\":\"Ubuntu Documentation\",\"uri\":\"https://help.ubuntu.com/18.04/index.html\"},{\"displayName\":\"FAQ\",\"uri\":\"https://help.ubuntu.com/community/ServerFaq\"},{\"displayName\":\"Pricing Details\",\"uri\":\"http://azure.microsoft.com/pricing/details/virtual-machines/#linux\"}],\"legalTerms\":\"http://www.ubuntu.com/project/about-ubuntu/licensing\",\"privacyPolicy\":\"http://www.ubuntu.com/aboutus/privacypolicy\",\"payloadLength\":32212288275,\"productKind\":\"virtualMachine\",\"productProperties\":{\"version\":\"18.04.20180911\"}}}"
+    }
+  }
+}

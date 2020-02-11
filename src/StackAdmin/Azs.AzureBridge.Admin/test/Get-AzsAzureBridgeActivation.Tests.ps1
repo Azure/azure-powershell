@@ -44,6 +44,7 @@ Describe "AzsAzureBridgeActivation" -Tags @('AzureBridgeActivation', 'Azs.AzureB
         $Activations = Get-AzsAzureBridgeActivation -ResourceGroupName $global:ResourceGroupName
 
         Foreach ($Activation in $Activations) {
+            Write-Verbose $Activation | ConvertTo-Json -Verbose
             ValidateActivationInfo -Activation $Activation
         }
     }

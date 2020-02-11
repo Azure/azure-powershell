@@ -1,0 +1,71 @@
+{
+  "AzsAzureBridgeActivation+[NoContext]+TestListAzsAzureBridgeActivation+$GET+https://adminmanagement.local.azurestack.external/subscriptions/e63d3264-fc11-487e-a076-717498a81298/resourcegroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations?api-version=2016-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.local.azurestack.external/subscriptions/e63d3264-fc11-487e-a076-717498a81298/resourcegroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations?api-version=2016-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "0409e69f-80ba-4b43-82ee-d844b3d4af69" ],
+        "x-ms-correlation-request-id": [ "fed3a05d-b5fa-489c-ae84-adc4c764c1dd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14818" ],
+        "x-ms-routing-request-id": [ "LOCAL:20200211T192901Z:fed3a05d-b5fa-489c-ae84-adc4c764c1dd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 11 Feb 2020 19:29:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "725" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e63d3264-fc11-487e-a076-717498a81298/resourceGroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations/default\",\"name\":\"default\",\"type\":\"Microsoft.AzureBridge.Admin/activations\",\"etag\":\"W/\\\"datetime\u00272020-02-06T20%3A45%3A55.9594366Z\u0027\\\"\",\"location\":\"local\",\"properties\":{\"displayName\":\"Azure Stack Activation\",\"azureRegistrationResourceIdentifier\":\"/subscriptions/9001f36e-41de-4edb-9913-780fa5d06b36/resourceGroups/azurestack/providers/Microsoft.AzureStack/registrations/AzsT-test-iotulai01\",\"azureEnvironmentName\":\"AzureCloud\",\"expiration\":\"9999-12-30T23:59:59.9999999Z\",\"marketplaceSyndicationEnabled\":true,\"usageReportingEnabled\":true,\"provisioningState\":\"Succeeded\"}}]}"
+    }
+  },
+  "AzsAzureBridgeActivation+[NoContext]+TestGetAzsAzureBridgeActivationByName+$GET+https://adminmanagement.local.azurestack.external/subscriptions/e63d3264-fc11-487e-a076-717498a81298/resourcegroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations/default?api-version=2016-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.local.azurestack.external/subscriptions/e63d3264-fc11-487e-a076-717498a81298/resourcegroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations/default?api-version=2016-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "f9c4b524-f7df-423f-82eb-7b6e8fedb9a1" ],
+        "x-ms-correlation-request-id": [ "a6f2dcfa-7eab-413d-bad7-8ab10aefe475" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14817" ],
+        "x-ms-routing-request-id": [ "LOCAL:20200211T192901Z:a6f2dcfa-7eab-413d-bad7-8ab10aefe475" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 11 Feb 2020 19:29:01 GMT" ],
+        "ETag": [ "W/\"datetime\u00272020-02-06T20%3A45%3A55.9594366Z\u0027\"" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "713" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e63d3264-fc11-487e-a076-717498a81298/resourceGroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations/default\",\"name\":\"default\",\"type\":\"Microsoft.AzureBridge.Admin/activations\",\"etag\":\"W/\\\"datetime\u00272020-02-06T20%3A45%3A55.9594366Z\u0027\\\"\",\"location\":\"local\",\"properties\":{\"displayName\":\"Azure Stack Activation\",\"azureRegistrationResourceIdentifier\":\"/subscriptions/9001f36e-41de-4edb-9913-780fa5d06b36/resourceGroups/azurestack/providers/Microsoft.AzureStack/registrations/AzsT-test-iotulai01\",\"azureEnvironmentName\":\"AzureCloud\",\"expiration\":\"9999-12-30T23:59:59.9999999Z\",\"marketplaceSyndicationEnabled\":true,\"usageReportingEnabled\":true,\"provisioningState\":\"Succeeded\"}}"
+    }
+  }
+}

@@ -58,11 +58,37 @@ psd1: Azs.AzureBridge.Admin.psd1
 psm1: Azs.AzureBridge.Admin.psm1
 
 directive:  
+  - where:
+        model-name: ActivationResource
+    set:	  
+        suppress-format: true
+  - where:
+        model-name: ProductResource
+    set:	  
+        suppress-format: true
+  - where:
+        model-name: DownloadedProductResource
+    set:	  
+        suppress-format: true
+  
   # Add alias for ProductName to Name
   - where:
         parameter-name: ProductName
     set:
         alias: Name
+        
+  # Rename Properties 
+  - where:
+      model-name: ProductResource
+      property-name: ProductPropertyVersion
+    set:
+      property-name: ProductProperties
+
+  - where:
+      model-name: DownloadedProductResource
+      property-name: ProductPropertyVersion
+    set:
+      property-name: ProductProperties
 
   # Rename DownloadProduct to ProductDownload
   - where:
