@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + StorageShareNounStr, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSShare))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + StorageShareNounStr, DefaultParameterSetName = AccountNameSingleParameterSet), OutputType(typeof(PSShare))]
     public class GetAzureStorageShareCommand : StorageFileBaseCmdlet
     {
         /// <summary>
@@ -113,7 +113,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Include deleted shares, by default list shares won't include deleted shares",
             ParameterSetName = AccountObjectParameterSet)]
         public SwitchParameter IncludeDeleted { get; set; }
-        
+
+        [Parameter(HelpMessage = "Specify this parameter to get the Share Usage in Bytes.",
+            Mandatory = false,
+            ParameterSetName = AccountObjectSingleParameterSet)]
+        [Parameter(HelpMessage = "Specify this parameter to get the Share Usage in Bytes.",
+            Mandatory = false,
+            ParameterSetName = AccountNameSingleParameterSet)]
+        [Parameter(HelpMessage = "Specify this parameter to get the Share Usage in Bytes.",
+            Mandatory = false,
+            ParameterSetName = ShareResourceIdParameterSet)]
+        public SwitchParameter GetShareUsage { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -138,10 +149,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (!string.IsNullOrEmpty(this.Name))
             {
+                GetShareExpand? expend = null;
+                if(this.GetShareUsage)
+                {
+                    expend = GetShareExpand.Stats;
+                }
                 var Share = this.StorageClient.FileShares.Get(
                            this.ResourceGroupName,
                            this.StorageAccountName,
-                           this.Name);
+                           this.Name,
+                           expend);
                 WriteObject(new PSShare(Share));
             }
             else
