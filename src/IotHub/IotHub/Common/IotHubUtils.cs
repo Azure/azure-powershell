@@ -68,6 +68,81 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return ConvertObject<PSSharedAccessSignatureAuthorizationRule, SharedAccessSignatureAuthorizationRule>(authorizationPolicy);
         }
 
+        public static SharedAccessSignatureAuthorizationRule GetPolicy(IEnumerable<SharedAccessSignatureAuthorizationRule> authorizationPolicies, PSAccessRights accessRights)
+        {
+            SharedAccessSignatureAuthorizationRule policy;
+            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryReadRegistryWriteServiceConnectDeviceConnect)).FirstOrDefault();
+            if (policy == null)
+            {
+                switch (accessRights)
+                {
+                    case PSAccessRights.RegistryRead:
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryReadServiceConnectDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryReadServiceConnectDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryReadDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryReadDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryReadServiceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryReadServiceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryRead)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryRead)).FirstOrDefault();
+                        break;
+                    case PSAccessRights.RegistryWrite:
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryWriteServiceConnectDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryWriteServiceConnectDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryReadRegistryWriteDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryReadRegistryWriteDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryReadRegistryWriteServiceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryReadRegistryWriteServiceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryWriteDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryWriteDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryWriteServiceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryWriteServiceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryReadRegistryWrite)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryReadRegistryWrite)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryWrite)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryWrite)).FirstOrDefault();
+                        break;
+                    case PSAccessRights.ServiceConnect:
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryWriteServiceConnectDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryWriteServiceConnectDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryReadServiceConnectDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryReadServiceConnectDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryReadRegistryWriteServiceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryReadRegistryWriteServiceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.ServiceConnectDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.ServiceConnectDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryWriteServiceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryWriteServiceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryReadServiceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryReadServiceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.ServiceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.ServiceConnect)).FirstOrDefault();
+                        break;
+                    case PSAccessRights.DeviceConnect:
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryWriteServiceConnectDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryWriteServiceConnectDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryReadServiceConnectDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryReadServiceConnectDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryReadRegistryWriteDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryReadRegistryWriteDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.ServiceConnectDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.ServiceConnectDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryWriteDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryWriteDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.RegistryReadDeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.RegistryReadDeviceConnect)).FirstOrDefault();
+                        if (policy == null && authorizationPolicies.Any(p => p.Rights.Equals(AccessRights.DeviceConnect)))
+                            policy = authorizationPolicies.Where(p => p.Rights.Equals(AccessRights.DeviceConnect)).FirstOrDefault();
+                        break;
+                }
+            }
+
+            if (policy == null)
+                throw new UnauthorizedAccessException("Missing access policy for RegistryWrite permission.");
+
+            return policy;
+        }
+
         public static IEnumerable<PSIotHubJobResponse> ToPSIotHubJobResponseList(IEnumerable<JobResponse> jobResponseList)
         {
             return ConvertObject<IEnumerable<JobResponse>, IEnumerable<PSIotHubJobResponse>>(jobResponseList.ToList());
