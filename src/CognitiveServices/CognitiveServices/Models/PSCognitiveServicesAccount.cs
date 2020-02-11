@@ -27,19 +27,19 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
             this.ResourceGroupName = ParseResourceGroupFromId(cognitiveServicesAccount.Id);
             this.AccountName = cognitiveServicesAccount.Name;
             this.Id = cognitiveServicesAccount.Id;
-            this.Endpoint = cognitiveServicesAccount.Endpoint;
+            this.Endpoint = cognitiveServicesAccount.Properties.Endpoint;
             this.Location = cognitiveServicesAccount.Location;
             this.Sku = cognitiveServicesAccount.Sku;
             this.AccountType = cognitiveServicesAccount.Kind;
             this.Etag = cognitiveServicesAccount.Etag;
             this.ResourceType = cognitiveServicesAccount.Type;
-            this.ProvisioningState = cognitiveServicesAccount.ProvisioningState;
+            this.ProvisioningState = cognitiveServicesAccount.Properties.ProvisioningState;
             this.Tags = cognitiveServicesAccount.Tags;
-            this.CustomSubDomainName = cognitiveServicesAccount.CustomSubDomainName;
+            this.CustomSubDomainName = cognitiveServicesAccount.Properties.CustomSubDomainName;
 
-            if (cognitiveServicesAccount.NetworkAcls != null)
+            if (cognitiveServicesAccount.Properties.NetworkAcls != null)
             {
-                this.NetworkRuleSet = PSNetworkRuleSet.Create(cognitiveServicesAccount.NetworkAcls);
+                this.NetworkRuleSet = PSNetworkRuleSet.Create(cognitiveServicesAccount.Properties.NetworkAcls);
             }
         }
 

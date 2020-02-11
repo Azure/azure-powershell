@@ -114,6 +114,36 @@ function Test-NewAzureRmAllKindsOfCognitiveServicesAccounts
 	}
 }
 
+
+<#
+.SYNOPSIS
+Test AsyncAccountOperations
+#>
+function Test-AsyncAccountOperations
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'Personalizer';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US 2";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
+        Remove-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 <#
 .SYNOPSIS
 Test Remove-AzCognitiveServicesAccount
