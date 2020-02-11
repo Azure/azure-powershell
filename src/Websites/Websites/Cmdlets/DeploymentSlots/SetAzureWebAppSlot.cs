@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     }
                     if (parameters.Contains("HostNames"))
                     {
-                        WebsitesClient.AddCustomHostNamesForSlots(ResourceGroupName, location, Name, Slot,HostNames);
+                        WebsitesClient.AddCustomHostNames(ResourceGroupName, location, Name,HostNames, Slot);
                     }
 
                     break;
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(WebApp.ServerFarmId, out rg, out servicePlanName);
                     WebApp.AzureStoragePath = null; // the API to update site Object doesn't have the AzureStorage Path property
                     WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, servicePlanName, WebApp);
-                    WebsitesClient.AddCustomHostNamesForSlots(ResourceGroupName, location, Name, Slot, WebApp.HostNames.ToArray());
+                    WebsitesClient.AddCustomHostNames(ResourceGroupName, location, Name, WebApp.HostNames.ToArray(), Slot);
                     break;
             }
 
