@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
-    using System;
+    using System;  
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -82,6 +82,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string AddIotHubCertificate {
             get {
                 return ResourceManager.GetString("AddIotHubCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Device.
+        /// </summary>
+        internal static string AddIotHubDevice {
+            get {
+                return ResourceManager.GetString("AddIotHubDevice", resourceCulture);
             }
         }
         
@@ -203,6 +212,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Device.
+        /// </summary>
+        internal static string RemoveIotHubDevice {
+            get {
+                return ResourceManager.GetString("RemoveIotHubDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove IoT Hub Key.
         /// </summary>
         internal static string RemoveIotHubKey {
@@ -244,6 +262,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string UpdateIotHub {
             get {
                 return ResourceManager.GetString("UpdateIotHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Device.
+        /// </summary>
+        internal static string UpdateIotHubDevice {
+            get {
+                return ResourceManager.GetString("UpdateIotHubDevice", resourceCulture);
             }
         }
         
