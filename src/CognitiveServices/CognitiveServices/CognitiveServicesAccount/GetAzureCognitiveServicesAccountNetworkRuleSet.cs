@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 this.ResourceGroupName,
                 this.Name);
 
-            if (account != null && account.NetworkAcls != null)
+            if (account != null && account.Properties.NetworkAcls != null)
             {
-                WriteObject(PSNetworkRuleSet.Create(account.NetworkAcls));
+                WriteObject(PSNetworkRuleSet.Create(account.Properties.NetworkAcls));
             }
         }
     }
