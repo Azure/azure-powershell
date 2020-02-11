@@ -198,4 +198,13 @@
   <data name="VerifyIotHubCertificate" xml:space="preserve">
     <value>Verify an Iot Hub Certificate</value>
   </data>
+  <data name="AddIotHubModule" xml:space="preserve">
+    <value>Add Module</value>
+  </data>
+  <data name="RemoveIotHubModule" xml:space="preserve">
+    <value>Remove Module</value>
+  </data>
+  <data name="UpdateIotHubModule" xml:space="preserve">
+    <value>Update Module</value>
+  </data>
 </root>

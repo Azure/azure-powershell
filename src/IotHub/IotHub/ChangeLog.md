@@ -23,6 +23,11 @@
 	- Get-AzIotHubDevice
 	- Remove-AzIotHubDevice
 	- Set-AzIotHubDevice
+* Add support to manage modules on a target Iot device in an Iot Hub. New Cmdlets are:
+	- Add-AzIotHubModule
+	- Get-AzIotHubModule
+	- Remove-AzIotHubModule
+	- Set-AzIotHubModule
 
 ## Version 2.0.1
 * Update references in .psd1 to use relative path
