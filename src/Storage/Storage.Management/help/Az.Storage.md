@@ -26,6 +26,9 @@ Closes file handles of a file share, a file directory or a file.
 ### [Disable-AzStorageBlobDeleteRetentionPolicy](Disable-AzStorageBlobDeleteRetentionPolicy.md)
 Disable delete retention policy for the Azure Storage Blob service.
 
+### [Disable-AzStorageBlobRestorePolicy](Disable-AzStorageBlobRestorePolicy.md)
+Disables Blob Restore Policy on a Storage account.
+
 ### [Disable-AzStorageDeleteRetentionPolicy](Disable-AzStorageDeleteRetentionPolicy.md)
 Disable delete retention policy  for the Azure Storage Blob service.
 
@@ -34,6 +37,9 @@ Disable static website for the Azure Storage account.
 
 ### [Enable-AzStorageBlobDeleteRetentionPolicy](Enable-AzStorageBlobDeleteRetentionPolicy.md)
 Enable delete retention policy for the Azure Storage Blob service.
+
+### [Enable-AzStorageBlobRestorePolicy](Enable-AzStorageBlobRestorePolicy.md)
+Enables Blob Restore Policy on a Storage account.
 
 ### [Enable-AzStorageDeleteRetentionPolicy](Enable-AzStorageDeleteRetentionPolicy.md)
 Enable delete retention policy  for the Azure Storage Blob service.
@@ -173,6 +179,9 @@ Creates a ManagementPolicy rule object, which can be used in Set-AzStorageAccoun
 ### [New-AzStorageAccountSASToken](New-AzStorageAccountSASToken.md)
 Creates an account-level SAS token.
 
+### [New-AzStorageBlobRangeToRestore](New-AzStorageBlobRangeToRestore.md)
+Creates a Blob Range object to restores a Storage account.
+
 ### [New-AzStorageBlobSASToken](New-AzStorageBlobSASToken.md)
 Generates a SAS token for an Azure storage blob.
 
@@ -280,6 +289,9 @@ Removes a storage table.
 
 ### [Remove-AzStorageTableStoredAccessPolicy](Remove-AzStorageTableStoredAccessPolicy.md)
 Removes a stored access policy from an Azure storage table.
+
+### [Restore-AzStorageBlobRange](Restore-AzStorageBlobRange.md)
+Restores a Storage account for specific Blob Ranges.
 
 ### [Revoke-AzStorageAccountUserDelegationKeys](Revoke-AzStorageAccountUserDelegationKeys.md)
 Revoke all User Delegation keys of a Storage account.

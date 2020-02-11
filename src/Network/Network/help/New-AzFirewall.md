@@ -178,10 +178,10 @@ $rgName = "resourceGroupName"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
 $pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
 
-New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -PrivateRange @("99.99.99.0/24", "66.66.0.0/16")
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -PrivateRange @("IANAPrivateRanges", "99.99.99.0/24", "66.66.0.0/16")
 ```
 
-This example creates a Firewall that treats "99.99.99.0/24" and "66.66.0.0/16" as private ip ranges and won't snat traffic to those addresses
+This example creates a Firewall that treats "99.99.99.0/24" and "66.66.0.0/16" as private ip ranges and won't snat traffic to those addresses. The entry "IANAPrivateRanges" will ensure all traffic to IANA Private Ranges won't snat. When the PrivateRange parameter is not specified traffic to IANA Private Ranges won't snat.
 
 ### 12:  Create a Firewall with a management subnet and Public IP address
 ```
@@ -198,6 +198,18 @@ Since no rules were specified, the firewall will block all traffic (default beha
 Threat Intel will also run in default mode - Alert - which means malicious traffic will be logged, but not denied.
 
 To support "forced tunneling" scenarios, this firewall will use the subnet "AzureFirewallManagementSubnet" and the management public IP address for its management traffic
+
+### 13:  Create a Firewall with Firewall Policy attached to a virtual network
+```
+$rgName = "resourceGroupName"
+$vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
+$pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
+$fp = Get-AzFirewallPolicy -ResourceGroupName $rgName -Name "fp"
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -FirewallPolicyId $fp
+```
+
+This example creates a Firewall attached to virtual network "vnet" in the same resource group as the firewall.
+The rules and threat intelligence that will be applied to the firewall will be taken from the firewall policy
 
 ## PARAMETERS
 
@@ -352,7 +364,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateRange
-The private IP ranges to which traffic won't be SNAT'ed
+The private IP ranges to which traffic won't be SNAT'ed. Include "IANAPrivateRanges" as a value to ensure traffic to IANA Private Ranges won't snat.
 
 ```yaml
 Type: System.String[]
