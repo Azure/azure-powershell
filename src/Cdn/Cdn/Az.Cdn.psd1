@@ -94,8 +94,7 @@ CmdletsToExport = 'Get-AzCdnProfile', 'Get-AzCdnProfileSsoUrl', 'New-AzCdnProfil
                'Remove-AzCdnWafPolicy', 'Get-AzCdnWafManagedRuleSet', 
                'New-AzCdnWafCustomRule', 'Set-AzCdnWafManagedRuleGroup', 
                'Set-AzCdnWafManagedRule', 'New-AzCdnWafManagedRuleSet', 
-               'New-AzCdnWafMatchCondition', 'New-AzCdnWafRateLimitRule', 
-               'New-AzCdnWafAction'
+               'New-AzCdnWafMatchCondition', 'New-AzCdnWafRateLimitRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
