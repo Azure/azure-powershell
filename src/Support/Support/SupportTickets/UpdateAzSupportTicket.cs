@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
         [Parameter(Mandatory = false, ParameterSetName = UpdateByNameWithContactDetailParameterSet, HelpMessage = "Additional email addresses. Email addresses listed here will be copied on any correspondence about the support ticket.")]
         [Parameter(Mandatory = false, ParameterSetName = UpdateByInputObjectWithContactDetailParameterSet, HelpMessage = "Additional email addresses. Email addresses listed here will be copied on any correspondence about the support ticket.")]
         [ValidateNotNull]
-        public string[] AdditionalEmailAddresses { get; set; }
+        public string[] AdditionalEmailAddress { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = UpdateByNameWithContactDetailParameterSet, HelpMessage = "Customer phone number. This is required if preferred contact method is phone.")]
         [Parameter(Mandatory = false, ParameterSetName = UpdateByInputObjectWithContactDetailParameterSet, HelpMessage = "Customer phone number. This is required if preferred contact method is phone.")]
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
                         PreferredTimeZone = this.IsParameterBound(c => c.CustomerPreferredTimeZone) ? this.CustomerPreferredTimeZone : null,
                         PreferredSupportLanguage = this.IsParameterBound(c => c.CustomerPreferredSupportLanguage) ? this.CustomerPreferredSupportLanguage : null,
                         PhoneNumber = this.IsParameterBound(c => c.CustomerPhoneNumber) ? this.CustomerPhoneNumber : null,
-                        AdditionalEmailAddresses = this.IsParameterBound(c => c.AdditionalEmailAddresses) ? this.AdditionalEmailAddresses.ToList() : null,
+                        AdditionalEmailAddresses = this.IsParameterBound(c => c.AdditionalEmailAddress) ? this.AdditionalEmailAddress.ToList() : null,
                         Country = this.IsParameterBound(c => c.CustomerCountry) ? this.CustomerCountry : null,
                         PreferredContactMethod = this.IsParameterBound(c => c.PreferredContactMethod) ? this.PreferredContactMethod.ToString() : null
                     };

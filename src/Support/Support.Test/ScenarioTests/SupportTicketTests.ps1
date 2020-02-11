@@ -355,7 +355,7 @@ Update support ticket by parent object paremeter set with contact detail
 function Update-AzSupportTicketParentObjectParameterSetWithContactDetail
 {
 	$newTicket = New-SupportTicketWithContactDetail
-	$updateTicket = $newTicket | Update-AzSupportTicket -CustomerFirstName "first updated" -CustomerLastName "last updated" -CustomerPrimaryEmailAddress "user2@contoso.com" -CustomerCountry "IND" -CustomerPreferredTimeZone "Eastern Standard Time" -CustomerPreferredSupportLanguage "ja-jp" -AdditionalEmailAddresses @("user3@contoso.com")
+	$updateTicket = $newTicket | Update-AzSupportTicket -CustomerFirstName "first updated" -CustomerLastName "last updated" -CustomerPrimaryEmailAddress "user2@contoso.com" -CustomerCountry "IND" -CustomerPreferredTimeZone "Eastern Standard Time" -CustomerPreferredSupportLanguage "ja-jp" -AdditionalEmailAddress @("user3@contoso.com")
 
 	$propertiesCount = 24
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
@@ -380,7 +380,7 @@ Update support ticket by name parameter set with contact detail
 function Update-AzSupportTicketNameParameterSetWithContactDetail
 {
 	$newTicket = New-SupportTicketWithContactDetail
-	$updateTicket = Update-AzSupportTicket -Name $newTicket.Name -CustomerFirstName "first updated" -CustomerLastName "last updated" -CustomerPrimaryEmailAddress "user2@contoso.com" -CustomerCountry "IND" -CustomerPreferredTimeZone "Eastern Standard Time" -CustomerPreferredSupportLanguage "ja-jp" -AdditionalEmailAddresses @("user3@contoso.com")
+	$updateTicket = Update-AzSupportTicket -Name $newTicket.Name -CustomerFirstName "first updated" -CustomerLastName "last updated" -CustomerPrimaryEmailAddress "user2@contoso.com" -CustomerCountry "IND" -CustomerPreferredTimeZone "Eastern Standard Time" -CustomerPreferredSupportLanguage "ja-jp" -AdditionalEmailAddress @("user3@contoso.com")
 
 	$propertiesCount = 24
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
