@@ -128,9 +128,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public void AddCustomHostNames(string resourceGroupName, string location, string webAppName, string[] hostNames)
+        public void AddCustomHostNames(string resourceGroupName, string location, string webAppName, string[] hostNames, string slotName=null)
         {
-            var webApp = WrappedWebsitesClient.WebApps().Get(resourceGroupName, webAppName);
+            var webApp = (slotName == null)
+                ? WrappedWebsitesClient.WebApps().Get(resourceGroupName, webAppName)
+                : GetWebApp(resourceGroupName, webAppName, slotName);
             var currentHostNames = webApp.HostNames;
 
             // Add new hostnames
@@ -140,11 +142,22 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 {
                     if (!currentHostNames.Contains(hostName, StringComparer.OrdinalIgnoreCase))
                     {
-                        WrappedWebsitesClient.WebApps().CreateOrUpdateHostNameBinding(resourceGroupName, webAppName,
+                        if (slotName == null)
+                        {
+                            WrappedWebsitesClient.WebApps().CreateOrUpdateHostNameBinding(resourceGroupName, webAppName,
                             hostName, new HostNameBinding
                             {
                                 SiteName = webAppName,
                             });
+                        }
+                        else
+                        {
+                            WrappedWebsitesClient.WebApps().CreateOrUpdateHostNameBindingSlot(resourceGroupName, webAppName,
+                                hostName, new HostNameBinding
+                                {
+                                    SiteName = webAppName,
+                                }, slotName);
+                        }
                     }
                 }
                 catch (Exception e)
@@ -161,55 +174,19 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 {
                     if (!hostNames.Contains(hostName, StringComparer.OrdinalIgnoreCase))
                     {
-                        WrappedWebsitesClient.WebApps().DeleteHostNameBinding(resourceGroupName, webAppName, hostName);
+                        if (slotName == null)
+                        {
+                            WrappedWebsitesClient.WebApps().DeleteHostNameBinding(resourceGroupName, webAppName, hostName);
+                        }
+                        else
+                        {
+                            WrappedWebsitesClient.WebApps().DeleteHostNameBindingSlot(resourceGroupName, webAppName, slotName, hostName);
+                        }
                     }
                 }
                 catch (Exception e)
                 {
                     WriteWarning("Could not remove custom hostname '{0}'. Details: {1}", hostName, e.ToString());
-                }
-            }
-        }
-
-        public void AddCustomHostNamesForSlots(string resourceGroupName, string location, string webAppName, string slotName, string[] hostNames)
-        {
-            var webAppSlot = GetWebApp(resourceGroupName, webAppName, slotName);
-            var currentHostNames = webAppSlot.HostNames;
-
-            // Add new hostnames
-            foreach (var hostName in hostNames)
-            {
-                try
-                {
-                    if (!currentHostNames.Contains(hostName, StringComparer.OrdinalIgnoreCase))
-                    {
-                        WrappedWebsitesClient.WebApps().CreateOrUpdateHostNameBindingSlot(resourceGroupName, webAppName,
-                            hostName, new HostNameBinding
-                            {
-                                SiteName = webAppName,
-                            }, slotName);
-                    }
-                }
-                catch (Exception e)
-                {
-                    WriteWarning("Could not set custom hostname '{0}' for Slot. Details: {1}", hostName, e.ToString());
-                    return;
-                }
-            }
-
-            // Delete removed hostnames
-            foreach (var hostName in currentHostNames)
-            {
-                try
-                {
-                    if (!hostNames.Contains(hostName, StringComparer.OrdinalIgnoreCase))
-                    {
-                        WrappedWebsitesClient.WebApps().DeleteHostNameBindingSlot(resourceGroupName, webAppName, slotName, hostName);
-                    }
-                }
-                catch (Exception e)
-                {
-                    WriteWarning("Could not remove custom hostname '{0}' for Slot. Details: {1}", hostName, e.ToString());
                 }
             }
         }
