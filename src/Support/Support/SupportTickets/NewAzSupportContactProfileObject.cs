@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Support.SupportTickets
 {
-    [Cmdlet(VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "SupportContactProfileObject"),
+    [Cmdlet(VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "SupportContactProfileObject", SupportsShouldProcess = true), 
       OutputType(typeof(PSContactProfile))]
     public class NewAzSupportContactProfileObject : AzSupportCmdletBase
     {
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support.SupportTickets
 
         [Parameter(Mandatory = false, HelpMessage = "Email addresses listed here will be copied on any correspondence about the support ticket.")]
         [ValidateNotNull]
-        public string[] AdditionalEmailAddresses { get; set; }
+        public string[] AdditionalEmailAddress { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Customer phone number. This is required if preferred contact method is phone.")]
         [ValidateNotNullOrEmpty]
@@ -71,12 +71,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support.SupportTickets
                 PreferredTimeZone = this.PreferredTimeZone,
                 PreferredSupportLanguage = this.PreferredSupportLanguage,
                 PhoneNumber = this.PhoneNumber,
-                AdditionalEmailAddresses = this.AdditionalEmailAddresses,
+                AdditionalEmailAddresses = this.AdditionalEmailAddress,
                 Country = this.Country,
                 PreferredContactMethod = this.PreferredContactMethod.ToString()
             };
 
-            this.WriteObject(contactObject);
+            if (this.ShouldProcess("Creating contact profile"))
+            {
+                this.WriteObject(contactObject);
+            }
         }
     }
 }

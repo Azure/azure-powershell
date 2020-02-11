@@ -17,7 +17,7 @@ Creates a support ticket.
 New-AzSupportTicket -Name <String> -Title <String> -Description <String> -ProblemClassificationId <String>
  -Severity <Severity> -CustomerFirstName <String> -CustomerLastName <String>
  -PreferredContactMethod <ContactMethod> -CustomerPrimaryEmailAddress <String>
- [-AdditionalEmailAddresses <String[]>] [-CustomerPhoneNumber <String>] -CustomerPreferredTimeZone <String>
+ [-AdditionalEmailAddress <String[]>] [-CustomerPhoneNumber <String>] -CustomerPreferredTimeZone <String>
  -CustomerCountry <String> -CustomerPreferredSupportLanguage <String> [-ProblemStartTime <DateTime>]
  [-CSPHomeTenantId <String>] [-Require24X7Response] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -52,7 +52,7 @@ New-AzSupportTicket -Name <String> -Title <String> -Description <String> -Proble
 New-AzSupportTicket -Name <String> -Title <String> -Description <String> -ProblemClassificationId <String>
  -Severity <Severity> -CustomerFirstName <String> -CustomerLastName <String>
  -PreferredContactMethod <ContactMethod> -CustomerPrimaryEmailAddress <String>
- [-AdditionalEmailAddresses <String[]>] [-CustomerPhoneNumber <String>] -CustomerPreferredTimeZone <String>
+ [-AdditionalEmailAddress <String[]>] [-CustomerPhoneNumber <String>] -CustomerPreferredTimeZone <String>
  -CustomerCountry <String> -CustomerPreferredSupportLanguage <String> [-ProblemStartTime <DateTime>]
  -TechnicalTicketResourceId <String> [-CSPHomeTenantId <String>] [-Require24X7Response] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -63,7 +63,7 @@ New-AzSupportTicket -Name <String> -Title <String> -Description <String> -Proble
 New-AzSupportTicket -Name <String> -Title <String> -Description <String> -ProblemClassificationId <String>
  -Severity <Severity> -CustomerFirstName <String> -CustomerLastName <String>
  -PreferredContactMethod <ContactMethod> -CustomerPrimaryEmailAddress <String>
- [-AdditionalEmailAddresses <String[]>] [-CustomerPhoneNumber <String>] -CustomerPreferredTimeZone <String>
+ [-AdditionalEmailAddress <String[]>] [-CustomerPhoneNumber <String>] -CustomerPreferredTimeZone <String>
  -CustomerCountry <String> -CustomerPreferredSupportLanguage <String> [-ProblemStartTime <DateTime>]
  -QuotaTicketDetail <PSQuotaTicketDetail> [-CSPHomeTenantId <String>] [-Require24X7Response] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -275,7 +275,7 @@ test1 Test  150010521000317 Minimal  Billing            Open   2/5/2020 1:33:53 
 
 ## PARAMETERS
 
-### -AdditionalEmailAddresses
+### -AdditionalEmailAddress
 Additional email addresses.
 Email addresses listed here will be copied on any correspondence about the support ticket.
 

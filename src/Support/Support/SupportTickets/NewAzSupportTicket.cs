@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
         [Parameter(Mandatory = false, ParameterSetName = CreateTechnicalSupportTicketWithContactDetailParameterSet, HelpMessage = "Additional email addresses. Email addresses listed here will be copied on any correspondence about the support ticket.")]
         [Parameter(Mandatory = false, ParameterSetName = CreateQuotaSupportTicketWithContactDetailParameterSet, HelpMessage = "Additional email addresses. Email addresses listed here will be copied on any correspondence about the support ticket.")]
         [ValidateNotNull]
-        public string[] AdditionalEmailAddresses { get; set; }
+        public string[] AdditionalEmailAddress { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = CreateSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer phone number. This is required if preferred contact method is phone.")]
         [Parameter(Mandatory = false, ParameterSetName = CreateTechnicalSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer phone number. This is required if preferred contact method is phone.")]
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
                         PreferredTimeZone = this.CustomerPreferredTimeZone,
                         PreferredSupportLanguage = this.CustomerPreferredSupportLanguage,
                         PhoneNumber = this.CustomerPhoneNumber,
-                        AdditionalEmailAddresses = this.AdditionalEmailAddresses,
+                        AdditionalEmailAddresses = this.AdditionalEmailAddress,
                         Country = this.CustomerCountry,
                         PreferredContactMethod = this.PreferredContactMethod.ToString()
                     };

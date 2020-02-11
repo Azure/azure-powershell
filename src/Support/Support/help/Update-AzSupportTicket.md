@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Support.dll-Help.xml
 Module Name: Az.Support
-online version:https://docs.microsoft.com/en-us/powershell/module/az.support/update-azsupportticket
+online version:https://docs.microsoft.com/en-us/powershell/module/az.support/
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Updates support ticket.
 ```
 Update-AzSupportTicket -Name <String> [-Severity <Severity>] [-CustomerFirstName <String>]
  [-CustomerLastName <String>] [-PreferredContactMethod <ContactMethod>] [-CustomerPrimaryEmailAddress <String>]
- [-AdditionalEmailAddresses <String[]>] [-CustomerPhoneNumber <String>] [-CustomerPreferredTimeZone <String>]
+ [-AdditionalEmailAddress <String[]>] [-CustomerPhoneNumber <String>] [-CustomerPreferredTimeZone <String>]
  [-CustomerCountry <String>] [-CustomerPreferredSupportLanguage <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ Update-AzSupportTicket -Name <String> [-Severity <Severity>] -CustomerContactDet
 ```
 Update-AzSupportTicket -InputObject <PSSupportTicket> [-Severity <Severity>] [-CustomerFirstName <String>]
  [-CustomerLastName <String>] [-PreferredContactMethod <ContactMethod>] [-CustomerPrimaryEmailAddress <String>]
- [-AdditionalEmailAddresses <String[]>] [-CustomerPhoneNumber <String>] [-CustomerPreferredTimeZone <String>]
+ [-AdditionalEmailAddress <String[]>] [-CustomerPhoneNumber <String>] [-CustomerPreferredTimeZone <String>]
  [-CustomerCountry <String>] [-CustomerPreferredSupportLanguage <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -80,8 +80,7 @@ test1 test title1                  150010521000317 Moderate Virtual Machine runn
 
 ### Example 4: Update contact details of support ticket by specifying individual contact parameters.
 ```powershell
-PS C:\> Update-AzSupportTicket -Name "test1" -CustomerFirstName "first name updated" -CustomerLastName "last name updated" -AdditionalEmailAddresses @
-("user2@contoso.com") 
+PS C:\> Update-AzSupportTicket -Name "test1" -CustomerFirstName "first name updated" -CustomerLastName "last name updated" -AdditionalEmailAddress @("user2@contoso.com") 
 
 Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
 ----  -----                        --------------- -------- ------------------            ------ -----------
@@ -90,7 +89,7 @@ test1 test title1                  150010521000317 Moderate Virtual Machine runn
 
 ## PARAMETERS
 
-### -AdditionalEmailAddresses
+### -AdditionalEmailAddress
 Additional email addresses.
 Email addresses listed here will be copied on any correspondence about the support ticket.
 
