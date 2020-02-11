@@ -27,30 +27,17 @@ New-AzSupportTicketCommunication -SupportTicketObject <PSSupportTicket> -Name <S
 ```
 
 ## DESCRIPTION
-Adds a new customer communication to an Azure support ticket. 
+Adds a new customer communication to an Azure support ticket.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
+PS C:\> New-AzSupportTicketCommunication -Name "testmessage" -SupportTicketName "testticket" -Subject "test subject" -Body "test body" -Sender "user@contoso.com"
 
-PS C:\> Test-AzSupportNameAvailability -Name testmessage -SupportTicketName testticket -Communication
-
-NameAvailable Reason Message
-------------- ------ -------
-         True
-
-PS C:\> New-AzSupportTicketCommunication -Name testmessage -SupportTicketName testticket -Subject "test subject" -Body "test body" -Sender "user@contoso.com"
-
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/testticket/communications/testmessage
-Name                   : testmessage
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject
-Body                   : test body
-CreatedDate            : 1/2/2020 1:15:49 AM
+Name         Sender               Subject        CreatedDate
+----         ------               -------        -----------
+testmessage  user@contoso.com     test subject   2/4/2020 9:38:14 PM
 ```
 
 ## PARAMETERS
@@ -71,7 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -Body
-Body of the Communication resource.
+Body of the communication.
 
 ```yaml
 Type: System.String
@@ -101,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of Communication resource that this cmdlet creates.
+Name of the communication resource.
 
 ```yaml
 Type: System.String
@@ -116,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sender
-Sender's email address of the Communication resource.
+Email address of the sender.
 
 ```yaml
 Type: System.String
@@ -131,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -Subject
-Subject of the Communication resource.
+Subject of the communication.
 
 ```yaml
 Type: System.String
@@ -146,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -SupportTicketName
-Name of SupportTicket resource object for which this Communication resource will be created.
+Support ticket name.
 
 ```yaml
 Type: System.String
@@ -161,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -SupportTicketObject
-SupportTicket resource object for which this Communication resource will be created.
+Support ticket object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Support.Models.PSSupportTicket

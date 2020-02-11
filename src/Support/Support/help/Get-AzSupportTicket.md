@@ -14,13 +14,14 @@ Get support tickets.
 
 ### ListParameterSet (Default)
 ```
-Get-AzSupportTicket [-Filter <String>] [-First <UInt32>] [-Skip <UInt32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSupportTicket [-Filter <String>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### GetByNameParameterSet
 ```
-Get-AzSupportTicket -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSupportTicket -Name <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +39,6 @@ Gets the list of support tickets. It will retrieve all the support tickets if yo
 This cmdlet supports paging via First and Skip parameters.
 
 You can also retrieve a single support ticket by specifying the ticket name. 
- 
 
 ## EXAMPLES
 
@@ -46,250 +46,49 @@ You can also retrieve a single support ticket by specifying the ticket name.
 ```powershell
 PS C:\> Get-AzSupportTicket -First 2
 
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
-Name                             : test1
-Type                             : Microsoft.Support/supportTickets
-Title                            : test title 1
-SupportTicketId                  : 117122721000811
-Description                      : test description 1
-ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
-ProblemClassificationDisplayName : Refund request
-Severity                         : Moderate
-EnrollmentId                     :
-ProductionOutage                 : False
-Require24X7Response              : False
-ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
-ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
-SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
-SupportPlanType                  : Premier
-ProblemStartTime                 :
-ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
-ServiceDisplayName               : Billing
-Status                           : Closed
-CreatedDate                      : 12/27/2019 8:46:14 PM
-ModifiedDate                     : 12/27/2019 10:21:38 PM
-TechnicalTicketDetails           :
-QuotaTicketDetails               :
-
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test2
-Name                             : test2
-Type                             : Microsoft.Support/supportTickets
-Title                            : test title 2
-SupportTicketId                  : 117122721000812
-Description                      : test description 2
-ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
-ProblemClassificationDisplayName : Refund request
-Severity                         : Moderate
-EnrollmentId                     :
-ProductionOutage                 : False
-Require24X7Response              : False
-ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
-ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
-SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
-SupportPlanType                  : Premier
-ProblemStartTime                 :
-ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
-ServiceDisplayName               : Billing
-Status                           : Closed
-CreatedDate                      : 12/28/2019 8:46:14 PM
-ModifiedDate                     : 12/29/2019 10:21:38 PM
-TechnicalTicketDetails           :
-QuotaTicketDetails               :
+Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
+----  -----                        --------------- -------- ------------------            ------ -----------
+test1 test title1                  150010521000317 Minimal  Virtual Machine running Linux Closed 2/5/2020 1:33:53 AM
+test2 test title2                  150010521000318 Minimal  Billing                       Closed 2/5/2020 1:33:53 AM
 ```
 
 ### Example 2: Get first 2 tickets after skipping the first 2
 ```powershell
 PS C:\> Get-AzSupportTicket -Skip 2 -First 2
 
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test3
-Name                             : test3
-Type                             : Microsoft.Support/supportTickets
-Title                            : test title 3
-SupportTicketId                  : 117122721000811
-Description                      : test description 3
-ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
-ProblemClassificationDisplayName : Refund request
-Severity                         : Moderate
-EnrollmentId                     :
-ProductionOutage                 : False
-Require24X7Response              : False
-ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
-ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
-SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
-SupportPlanType                  : Premier
-ProblemStartTime                 :
-ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
-ServiceDisplayName               : Billing
-Status                           : Closed
-CreatedDate                      : 12/27/2019 8:46:14 PM
-ModifiedDate                     : 12/27/2019 10:21:38 PM
-TechnicalTicketDetails           :
-QuotaTicketDetails               :
-
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test4
-Name                             : test4
-Type                             : Microsoft.Support/supportTickets
-Title                            : test title 4
-SupportTicketId                  : 117122721000812
-Description                      : test description 4
-ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
-ProblemClassificationDisplayName : Refund request
-Severity                         : Moderate
-EnrollmentId                     :
-ProductionOutage                 : False
-Require24X7Response              : False
-ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
-ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
-SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
-SupportPlanType                  : Premier
-ProblemStartTime                 :
-ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
-ServiceDisplayName               : Billing
-Status                           : Closed
-CreatedDate                      : 12/28/2019 8:46:14 PM
-ModifiedDate                     : 12/29/2019 10:21:38 PM
-TechnicalTicketDetails           :
-QuotaTicketDetails               :
+Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
+----  -----                        --------------- -------- ------------------            ------ -----------
+test3 test title3                  150010521000314 Minimal  Virtual Machine running Linux Closed 2/5/2020 1:33:53 AM
+test4 test title4                  150010521000315 Minimal  Billing                       Closed 2/5/2020 1:33:53 AM
 ```
 
 ### Example 3: Get a support ticket by name
 ```powershell
-PS C:\> Get-AzSupportTicket -Name test1
+PS C:\> Get-AzSupportTicket -Name "test1"
 
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
-Name                             : test1
-Type                             : Microsoft.Support/supportTickets
-Title                            : test title
-SupportTicketId                  : 117122721000811
-Description                      : test description
-ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
-ProblemClassificationDisplayName : Refund request
-Severity                         : Moderate
-EnrollmentId                     :
-ProductionOutage                 : False
-Require24X7Response              : False
-ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
-ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
-SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
-SupportPlanType                  : Premier
-ProblemStartTime                 :
-ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
-ServiceDisplayName               : Billing
-Status                           : Closed
-CreatedDate                      : 12/27/2019 8:46:14 PM
-ModifiedDate                     : 12/27/2019 10:21:38 PM
-TechnicalTicketDetails           :
-QuotaTicketDetails               :
+Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
+----  -----                        --------------- -------- ------------------            ------ -----------
+test1 test title1                  150010521000317 Minimal  Virtual Machine running Linux Closed 2/5/2020 1:33:53 AM
 ```
 
 ### Example 3: Get first 2 support tickets filtered by status
 ```powershell
 PS C:\> Get-AzSupportTicket -Filter "Status eq 'Closed'" -First 2
 
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
-Name                             : test1
-Type                             : Microsoft.Support/supportTickets
-Title                            : test title
-SupportTicketId                  : 117122721000811
-Description                      : test description
-ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
-ProblemClassificationDisplayName : Refund request
-Severity                         : Moderate
-EnrollmentId                     :
-ProductionOutage                 : False
-Require24X7Response              : False
-ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
-ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
-SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
-SupportPlanType                  : Premier
-ProblemStartTime                 :
-ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
-ServiceDisplayName               : Billing
-Status                           : Closed
-CreatedDate                      : 12/27/2019 8:46:14 PM
-ModifiedDate                     : 12/27/2019 10:21:38 PM
-TechnicalTicketDetails           :
-QuotaTicketDetails               :
-
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test2
-Name                             : test2
-Type                             : Microsoft.Support/supportTickets
-Title                            : test title 2
-SupportTicketId                  : 117122721000812
-Description                      : test description 2
-ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
-ProblemClassificationDisplayName : Refund request
-Severity                         : Moderate
-EnrollmentId                     :
-ProductionOutage                 : False
-Require24X7Response              : False
-ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
-ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
-SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
-SupportPlanType                  : Premier
-ProblemStartTime                 :
-ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
-ServiceDisplayName               : Billing
-Status                           : Closed
-CreatedDate                      : 12/27/2019 8:46:14 PM
-ModifiedDate                     : 12/27/2019 10:21:38 PM
-TechnicalTicketDetails           :
-QuotaTicketDetails               :
+Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
+----  -----                        --------------- -------- ------------------            ------ -----------
+test1 test title1                  150010521000317 Minimal  Virtual Machine running Linux Closed 2/5/2020 1:33:53 AM
+test2 test title2                  150010521000318 Minimal  Billing                       Closed 2/5/2020 1:33:53 AM
 ```
 
 ### Example 3: Get all support tickets that are in Open state and created after Dec 20th, 2019
 ```powershell
 PS C:\> Get-AzSupportTicket -Filter "Status eq 'Open' and CreatedDate gt 2019-12-20"
 
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1
-Name                             : test1
-Type                             : Microsoft.Support/supportTickets
-Title                            : test title
-SupportTicketId                  : 117122721000811
-Description                      : test description
-ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
-ProblemClassificationDisplayName : Refund request
-Severity                         : Moderate
-EnrollmentId                     :
-ProductionOutage                 : False
-Require24X7Response              : False
-ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
-ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
-SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
-SupportPlanType                  : Premier
-ProblemStartTime                 :
-ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
-ServiceDisplayName               : Billing
-Status                           : Open
-CreatedDate                      : 12/27/2019 8:46:14 PM
-ModifiedDate                     : 12/27/2019 10:21:38 PM
-TechnicalTicketDetails           :
-QuotaTicketDetails               :
-
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test2
-Name                             : test2
-Type                             : Microsoft.Support/supportTickets
-Title                            : test title 2
-SupportTicketId                  : 117122721000812
-Description                      : test description 2
-ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
-ProblemClassificationDisplayName : Refund request
-Severity                         : Moderate
-EnrollmentId                     :
-ProductionOutage                 : False
-Require24X7Response              : False
-ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
-ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
-SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
-SupportPlanType                  : Premier
-ProblemStartTime                 :
-ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
-ServiceDisplayName               : Billing
-Status                           : Open
-CreatedDate                      : 12/27/2019 8:46:14 PM
-ModifiedDate                     : 12/27/2019 10:21:38 PM
-TechnicalTicketDetails           :
-QuotaTicketDetails               :
+Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
+----  -----                        --------------- -------- ------------------            ------ -----------
+test6 test title6                  150010521000311 Minimal  Virtual Machine running Linux Open   2/5/2020 1:33:53 AM
+test7 test title7                  150010521000312 Minimal  Billing                       Open   2/5/2020 1:33:53 AM
 ```
 
 ## PARAMETERS
@@ -325,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of SupportTicket resource that this cmdlet gets.
+Name of support ticket that this cmdlet gets.
 
 ```yaml
 Type: System.String
@@ -339,12 +138,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Skip
-Ignores the first N results and then gets the remaining results.
+### -IncludeTotalCount
+Reports the total number of objects in the data set (an integer) followed by the selected objects.
+If the cmdlet cannot determine the total count, it displays "Unknown total count." The integer has an Accuracy property that indicates the reliability of the total count value.
+The value of Accuracy ranges from 0.0 to 1.0 where 0.0 means that the cmdlet could not count the objects, 1.0 means that the count is exact, and a value between 0.0 and 1.0 indicates an increasingly reliable estimate.
 
 ```yaml
-Type: System.UInt32
-Parameter Sets: ListParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Skip
+Ignores the specified number of objects and then gets the remaining objects.
+Enter the number of objects to skip.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -355,11 +172,12 @@ Accept wildcard characters: False
 ```
 
 ### -First
-Maximum number of results that will be returned by this cmdlet.
+Gets only the specified number of objects.
+Enter the number of objects to get.
 
 ```yaml
-Type: System.UInt32
-Parameter Sets: ListParameterSet
+Type: System.UInt64
+Parameter Sets: (All)
 Aliases:
 
 Required: False
