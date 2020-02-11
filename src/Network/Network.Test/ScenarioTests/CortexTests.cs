@@ -58,5 +58,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-P2SCortexCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestDisconnectAzP2sVpnGatewayVpnConnection()
+        {
+            TestRunner.RunTestScript("Test-DisconnectAzP2sVpnGatewayVpnConnection");
+        }
     }
 }

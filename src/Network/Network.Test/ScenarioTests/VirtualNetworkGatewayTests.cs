@@ -131,5 +131,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworKGatewayPacketCapture");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
+        public void TestDisconnectVirtualNetworkGatewayVpnConnection()
+        {
+            TestRunner.RunTestScript("Test-DisconnectVNGVpnConnection");
+        }
     }
 }
