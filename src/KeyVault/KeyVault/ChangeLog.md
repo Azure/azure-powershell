@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed duplicated text for Add-AzKeyVaultKey.md
 
 ## Version 1.5.0
 * Add Name alias to VaultName attribute to make Remove-AzureKeyVault consistent with New-AzureKeyVault.
