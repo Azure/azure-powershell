@@ -14,14 +14,13 @@ Creates a support contact profile object.
 
 ```
 New-AzSupportContactProfileObject -FirstName <String> -LastName <String>
- -PreferredContactMethod <ContactMethod> -PrimaryEmailAddress <String>
- [-AdditionalEmailAddresses <System.Collections.Generic.IList`1[System.String]>] [-PhoneNumber <String>]
- -PreferredTimeZone <String> -Country <String> -PreferredSupportLanguage <String>
+ -PreferredContactMethod <ContactMethod> -PrimaryEmailAddress <String> [-AdditionalEmailAddresses <String[]>]
+ [-PhoneNumber <String>] -PreferredTimeZone <String> -Country <String> -PreferredSupportLanguage <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This is a helper cmdlet that you can use to create a support contact profile object when creating a support ticket. You must specify the following parameters: 
+This is a helper cmdlet that you can use to create a support contact profile object when creating or updating a support ticket. You must specify the following parameters which are mandatory for creating a support ticket: 
 
 	• FirstName
 	• LastName
@@ -31,29 +30,24 @@ This is a helper cmdlet that you can use to create a support contact profile obj
     • PreferredSupportLanguage
 	• PreferredTimeZone
 
- 
-	• PhoneNumber
-    • AdditionalEmailAddresses
-
-
-
-
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a contact object
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> New-AzSupportContactProfileObject -FirstName "First" -LastName "Last" -PreferredContactMethod "Email" -PrimaryEmailAddress "user@contoso.com" -PreferredTimeZone "Pacific Standard Time" -PreferredSupportLanguage "en-US" -Country "USA"             
 
-{{ Add example description here }}
+FirstName LastName PreferredContactMethod PrimaryEmailAddress  PhoneNumber PreferredTimeZone     Country PreferredSupportLanguage
+--------- -------- ---------------------- -------------------  ----------- -----------------     ------- ------------------------
+First     Last     Email                  user@contoso.com                 Pacific Standard Time USA     en-US
+```
 
 ## PARAMETERS
 
 ### -AdditionalEmailAddresses
-Additional email addresses.
+Email addresses listed here will be copied on any correspondence about the support ticket.
 
 ```yaml
-Type: System.Collections.Generic.IList`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -Country
-Country of the contact.
+Customer country.
 This must be a valid ISO Alpha-3 country code (ISO 3166).
 
 ```yaml
@@ -96,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -FirstName
-First name of the contact.
+Customer first name.
 
 ```yaml
 Type: System.String
@@ -111,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -LastName
-Last name of the contact.
+Customer last name.
 
 ```yaml
 Type: System.String
@@ -126,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -PhoneNumber
-Phone number of the contact.
+Customer phone number.
 This is required if preferred contact method is phone.
 
 ```yaml
@@ -145,7 +139,7 @@ Accept wildcard characters: False
 Preferred contact method.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ContactMethod
+Type: Microsoft.Azure.Commands.Support.Models.ContactMethod
 Parameter Sets: (All)
 Aliases:
 Accepted values: Email, Phone
@@ -158,8 +152,8 @@ Accept wildcard characters: False
 ```
 
 ### -PreferredSupportLanguage
-Peferred language of the contact.
-This must be a valid language-contry code for one of the supported languages listed here https://azure.microsoft.com/en-us/support/faq/.
+Customer preferred support language.
+This must be a valid language-contry code for one of the supported languages listed here https://azure.microsoft.com/support/faq/.
 
 ```yaml
 Type: System.String
@@ -174,8 +168,8 @@ Accept wildcard characters: False
 ```
 
 ### -PreferredTimeZone
-Preferred time zone of the contact.
-This must be a valid System.TimeZoneInfo.Id value
+Customer preferred time zone.
+This must be a valid System.TimeZoneInfo.Id value.
 
 ```yaml
 Type: System.String
@@ -190,7 +184,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryEmailAddress
-Primary email address of the contact.
+Customer primary email address.
 
 ```yaml
 Type: System.String

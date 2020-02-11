@@ -15,13 +15,15 @@ Get support ticket communications.
 ### GetByNameParameterSet (Default)
 ```
 Get-AzSupportTicketCommunication -SupportTicketName <String> [-Name <String>] [-Filter <String>]
- [-First <UInt32>] [-Skip <UInt32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>]
+ [<CommonParameters>]
 ```
 
 ### GetByParentObjectParameterSet
 ```
 Get-AzSupportTicketCommunication [-Name <String>] -SupportTicketObject <PSSupportTicket> [-Filter <String>]
- [-First <UInt32>] [-Skip <UInt32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,167 +47,83 @@ You can also retrieve a single support ticket communication by specifying the co
 
 ### Example 1: Retrieve all communications for a support ticket
 ```powershell
-PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1
+PS C:\> Get-AzSupportTicketCommunication -SupportTicketName "test1"
 
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage1
-Name                   : testmessage1
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject 1
-Body                   : test message 1
-CreatedDate            : 1/2/2020 1:15:49 AM
-
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage2
-Name                   : testmessage2
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject 2
-Body                   : test message 2
-CreatedDate            : 1/2/2020 1:16:05 AM
+Name         Sender               Subject        CreatedDate
+----         ------               -------        -----------
+testmessage3 user@contoso.com     test message3  2/4/2020 9:38:14 PM
+testmessage2 user@contoso.com     test message2  2/4/2020 9:36:36 PM
+testmessage1 user@contoso.com     test message   2/4/2020 9:35:42 PM
 ```
 
-### Example 2: Retrieve a communication by it's name for a support ticket
+### Example 2: Retrieve a single communication by it's name for a support ticket
 ```powershell
-PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1 -Name testmessage1
+PS C:\> Get-AzSupportTicketCommunication -SupportTicketName "test1" -Name "testmessage1"
 
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage1
-Name                   : testmessage1
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject 1
-Body                   : test message 1
-CreatedDate            : 1/2/2020 1:15:49 AM
+Name         Sender               Subject        CreatedDate
+----         ------               -------        -----------
+testmessage1 user@contoso.com     test message   2/4/2020 9:38:14 PM
 ```
 
 ### Example 3: Retrieve first 2 communications for a support ticket
 ```powershell
-PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1 -First 2
+PS C:\> Get-AzSupportTicketCommunication -SupportTicketName "test1" -First 2
 
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage1
-Name                   : testmessage1
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject 1
-Body                   : test message 1
-CreatedDate            : 1/2/2020 1:15:49 AM
-
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage2
-Name                   : testmessage2
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject 2
-Body                   : test message 2
-CreatedDate            : 1/2/2020 1:16:05 AM
+Name         Sender               Subject        CreatedDate
+----         ------               -------        -----------
+testmessage3 user@contoso.com     test message3  2/4/2020 9:38:14 PM
+testmessage2 user@contoso.com     test message2  2/4/2020 9:36:36 PM
 ```
 
 ### Example 4: Retrieve next 2 communications after skipping first 2 communications for a support ticket
 ```powershell
-PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1 -Skip 2 -First 2
+PS C:\> Get-AzSupportTicketCommunication -SupportTicketName "test1" -Skip 2 -First 2
 
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage3
-Name                   : testmessage3
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject 1
-Body                   : test message 1
-CreatedDate            : 1/2/2020 1:15:49 AM
-
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage4
-Name                   : testmessage4
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject 2
-Body                   : test message 2
-CreatedDate            : 1/2/2020 1:16:05 AM
+Name         Sender               Subject        CreatedDate
+----         ------               -------        -----------
+testmessage4 user@contoso.com     test message4  2/4/2020 9:38:14 PM
+testmessage5 user@contoso.com     test message5  2/4/2020 9:36:36 PM
 ```
 
 ### Example 5: Retrieve all Web communications for a support ticket
 ```powershell
-PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1 -Filter "CommunicationType eq 'Web'"
+PS C:\> Get-AzSupportTicketCommunication -SupportTicketName "test1" -Filter "CommunicationType eq 'Web'"
 
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage3
-Name                   : testmessage3
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject 1
-Body                   : test message 1
-CreatedDate            : 1/2/2020 1:15:49 AM
-
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage4
-Name                   : testmessage4
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject 2
-Body                   : test message 2
-CreatedDate            : 1/2/2020 1:16:05 AM
+Name         Sender               Subject        CreatedDate
+----         ------               -------        -----------
+testmessage3 user@contoso.com     test message3  2/4/2020 9:38:14 PM
+testmessage2 user@contoso.com     test message2  2/4/2020 9:36:36 PM
 ```
 
 ### Example 6: Retrieve all communications created on or after Dec 20th, 2019 for a support ticket
 ```powershell
-PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1 -Filter "CreatedDate ge 2019-12-20"
+PS C:\> Get-AzSupportTicketCommunication -SupportTicketName "test1" -Filter "CreatedDate ge 2019-12-20"
 
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage3
-Name                   : testmessage3
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject 1
-Body                   : test message 1
-CreatedDate            : 1/2/2020 1:15:49 AM
-
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage4
-Name                   : testmessage4
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject 2
-Body                   : test message 2
-CreatedDate            : 1/2/2020 1:16:05 AM
+Name         Sender               Subject        CreatedDate
+----         ------               -------        -----------
+testmessage3 user@contoso.com     test message3  2/4/2020 9:38:14 PM
+testmessage2 user@contoso.com     test message2  2/4/2020 9:36:36 PM
 ```
 
 ### Example 7: Retrieve all Web communications created on or after Dec 20th, 2019 for a support ticket
 ```powershell
-PS C:\> Get-AzSupportTicketCommunication -SupportTicketName test1 -Filter "CommunicationType eq 'Web' and CreatedDate ge 2019-12-20"
+PS C:\> Get-AzSupportTicketCommunication -SupportTicketName "test1" -Filter "CommunicationType eq 'Web' and CreatedDate ge 2019-12-20"
 
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage3
-Name                   : testmessage3
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject 1
-Body                   : test message 1
-CreatedDate            : 1/2/2020 1:15:49 AM
+Name         Sender               Subject        CreatedDate
+----         ------               -------        -----------
+testmessage3 user@contoso.com     test message3  2/4/2020 9:38:14 PM
+testmessage2 user@contoso.com     test message2  2/4/2020 9:36:36 PM
+```
 
-Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test1/communications/testmessage4
-Name                   : testmessage4
-Type                   : Microsoft.Support/communications
-CommunicationType      : Web
-CommunicationDirection : Inbound
-Sender                 : user@contoso.com
-Subject                : test subject 2
-Body                   : test message 2
-CreatedDate            : 1/2/2020 1:16:05 AM
+### Example 8: Retrieve all communications for a support ticket by piping support ticket object
+```powershell
+PS C:\> Get-AzSupportTicket -Name "test1" | Get-AzSupportTicketCommunication
+
+Name         Sender               Subject        CreatedDate
+----         ------               -------        -----------
+testmessage3 user@contoso.com     test message3  2/4/2020 9:38:14 PM
+testmessage2 user@contoso.com     test message2  2/4/2020 9:36:36 PM
+testmessage1 user@contoso.com     test message   2/4/2020 9:35:42 PM
 ```
 
 ## PARAMETERS
@@ -241,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of Communication resource that this cmdlet gets.
+Communication name.
 
 ```yaml
 Type: System.String
@@ -256,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -SupportTicketName
-Name of SupportTicket resource for which Communication resources are retrieved by this cmdlet.
+Support ticket name.
 
 ```yaml
 Type: System.String
@@ -271,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -SupportTicketObject
-SupportTicket resource object for which Communication resources are retrieved by this cmdlet.
+Support ticket object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Support.Models.PSSupportTicket
@@ -285,11 +203,29 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Skip
-Ignores the first N results and then gets the remaining results.
+### -IncludeTotalCount
+Reports the total number of objects in the data set (an integer) followed by the selected objects.
+If the cmdlet cannot determine the total count, it displays "Unknown total count." The integer has an Accuracy property that indicates the reliability of the total count value.
+The value of Accuracy ranges from 0.0 to 1.0 where 0.0 means that the cmdlet could not count the objects, 1.0 means that the count is exact, and a value between 0.0 and 1.0 indicates an increasingly reliable estimate.
 
 ```yaml
-Type: System.UInt32
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Skip
+Ignores the specified number of objects and then gets the remaining objects.
+Enter the number of objects to skip.
+
+```yaml
+Type: System.UInt64
 Parameter Sets: (All)
 Aliases:
 
@@ -301,10 +237,11 @@ Accept wildcard characters: False
 ```
 
 ### -First
-Maximum number of results that will be returned by this cmdlet.
+Gets only the specified number of objects.
+Enter the number of objects to get.
 
 ```yaml
-Type: System.UInt32
+Type: System.UInt64
 Parameter Sets: (All)
 Aliases:
 

@@ -12,16 +12,35 @@ Updates support ticket.
 
 ## SYNTAX
 
-### UpdateByNameParameterSet (Default)
+### UpdateByNameWithContactDetailParameterSet (Default)
 ```
-Update-AzSupportTicket -Name <String> [-Severity <String>] [-ContactDetails <PSContactProfile>]
+Update-AzSupportTicket -Name <String> [-Severity <Severity>] [-CustomerFirstName <String>]
+ [-CustomerLastName <String>] [-PreferredContactMethod <ContactMethod>] [-CustomerPrimaryEmailAddress <String>]
+ [-AdditionalEmailAddresses <String[]>] [-CustomerPhoneNumber <String>] [-CustomerPreferredTimeZone <String>]
+ [-CustomerCountry <String>] [-CustomerPreferredSupportLanguage <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateByInputObjectParameterSet
+### UpdateByNameWithContactObjectParameterSet
 ```
-Update-AzSupportTicket -InputObject <PSSupportTicket> [-Severity <String>] [-ContactDetails <PSContactProfile>]
+Update-AzSupportTicket -Name <String> [-Severity <Severity>] -CustomerContactDetail <PSContactProfile>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateByInputObjectWithContactDetailParameterSet
+```
+Update-AzSupportTicket -InputObject <PSSupportTicket> [-Severity <Severity>] [-CustomerFirstName <String>]
+ [-CustomerLastName <String>] [-PreferredContactMethod <ContactMethod>] [-CustomerPrimaryEmailAddress <String>]
+ [-AdditionalEmailAddresses <String[]>] [-CustomerPhoneNumber <String>] [-CustomerPreferredTimeZone <String>]
+ [-CustomerCountry <String>] [-CustomerPreferredSupportLanguage <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateByInputObjectWithContactObjectParameterSet
+```
+Update-AzSupportTicket -InputObject <PSSupportTicket> [-Severity <Severity>]
+ -CustomerContactDetail <PSContactProfile> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,119 +48,179 @@ Use this cmdlet to update a support ticket's severity level or customer contact 
 
 ## EXAMPLES
 
-### Example 1: Updating severity of support ticket.
+### Example 1: Update severity of support ticket.
 ```powershell
-PS C:\> Update-AzSupportTicket -Name test -Severity moderate
+PS C:\> Update-AzSupportTicket -Name "test1" -Severity "moderate"
 
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test
-Name                             : test
-Type                             : Microsoft.Support/supportTickets
-Title                            : Test
-SupportTicketId                  : 170010221000050
-Description                      : Test
-ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
-ProblemClassificationDisplayName :
-Severity                         : Moderate
-EnrollmentId                     :
-ProductionOutage                 : False
-Require24X7Response              : False
-ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
-ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
-SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
-SupportPlanType                  : Premier
-ProblemStartTime                 :
-ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
-ServiceDisplayName               :
-Status                           : Open
-CreatedDate                      : 1/2/2020 3:09:28 AM
-ModifiedDate                     : 1/2/2020 4:17:49 AM
-TechnicalTicketDetails           :
-QuotaTicketDetails               :
+Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
+----  -----                        --------------- -------- ------------------            ------ -----------
+test1 test title1                  150010521000317 Moderate Virtual Machine running Linux Open   2/5/2020 1:33:53 AM
 ```
 
-### Example 2: Updating contact details of support ticket.
+### Example 2: Update contact details of support ticket by specify contact object.
 ```powershell
-PS C:\> $contactDetails = new-object Microsoft.Azure.Commands.Support.Models.PSContactProfile
-PS C:\> $contactDetails.FirstName = "first updated"
-PS C:\> $contactDetails.LastName = "last updated"
-PS C:\> Update-AzSupportTicket -Name testticketpowershell2 -ContactDetails $contactDetails 
+PS C:\> $contactDetail = new-object Microsoft.Azure.Commands.Support.Models.PSContactProfile
+PS C:\> $contactDetail.FirstName = "first name updated"
+PS C:\> $contactDetail.LastName = "last name updated"
+PS C:\> Update-AzSupportTicket -Name "test1" -CustomerContactDetail $contactDetail 
 
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test
-Name                             : test
-Type                             : Microsoft.Support/supportTickets
-Title                            : Test
-SupportTicketId                  : 170010221000050
-Description                      : Test
-ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
-ProblemClassificationDisplayName :
-Severity                         : Moderate
-EnrollmentId                     :
-ProductionOutage                 : False
-Require24X7Response              : False
-ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
-ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
-SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
-SupportPlanType                  : Premier
-ProblemStartTime                 :
-ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
-ServiceDisplayName               :
-Status                           : Open
-CreatedDate                      : 1/2/2020 3:09:28 AM
-ModifiedDate                     : 1/2/2020 4:17:49 AM
-TechnicalTicketDetails           :
-QuotaTicketDetails               :
-
-PS C:\> $a.ContactDetails
-
-FirstName                : first updated
-LastName                 : last updated
-PreferredContactMethod   : Email
-PrimaryEmailAddress      : user@contoso.com
-AdditionalEmailAddresses :
-PhoneNumber              :
-PreferredTimeZone        : Pacific Standard Time
-Country                  : USA
-PreferredSupportLanguage : en-us
+Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
+----  -----                        --------------- -------- ------------------            ------ -----------
+test1 test title1                  150010521000317 Moderate Virtual Machine running Linux Open   2/5/2020 1:33:53 AM
 ```
 
-### Example 3: Updating severity of support ticket by piping support ticket object.
+### Example 3: Update severity of support ticket by piping support ticket object.
 ```powershell
-PS C:\> Get-AzSupportTicket -Name test | Update-AzSupportTicket -Severity moderate
+PS C:\> Get-AzSupportTicket -Name "test1" | Update-AzSupportTicket -Severity "moderate"
 
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Support/supportTickets/test
-Name                             : test
-Type                             : Microsoft.Support/supportTickets
-Title                            : Test
-SupportTicketId                  : 170010221000050
-Description                      : Test
-ProblemClassificationId          : /providers/Microsoft.Support/services/{service_guid}/problemClassifications/{problemClassification_guid}
-ProblemClassificationDisplayName :
-Severity                         : Moderate
-EnrollmentId                     :
-ProductionOutage                 : False
-Require24X7Response              : False
-ContactDetails                   : Microsoft.Azure.Commands.Support.Models.PSContactProfile
-ServiceLevelAgreement            : Microsoft.Azure.Commands.Support.Models.PSServiceLevelAgreement
-SupportEngineer                  : Microsoft.Azure.Commands.Support.Models.PSSupportEngineer
-SupportPlanType                  : Premier
-ProblemStartTime                 :
-ServiceId                        : /providers/Microsoft.Support/services/{service_guid}
-ServiceDisplayName               :
-Status                           : Open
-CreatedDate                      : 1/2/2020 3:09:28 AM
-ModifiedDate                     : 1/2/2020 4:17:49 AM
-TechnicalTicketDetails           :
-QuotaTicketDetails               :
+Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
+----  -----                        --------------- -------- ------------------            ------ -----------
+test1 test title1                  150010521000317 Moderate Virtual Machine running Linux Open   2/5/2020 1:33:53 AM
+```
+
+### Example 4: Update contact details of support ticket by specifying individual contact parameters.
+```powershell
+PS C:\> Update-AzSupportTicket -Name "test1" -CustomerFirstName "first name updated" -CustomerLastName "last name updated" -AdditionalEmailAddresses @
+("user2@contoso.com") 
+
+Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
+----  -----                        --------------- -------- ------------------            ------ -----------
+test1 test title1                  150010521000317 Moderate Virtual Machine running Linux Open   2/5/2020 1:33:53 AM
 ```
 
 ## PARAMETERS
 
-### -ContactDetails
+### -AdditionalEmailAddresses
+Additional email addresses.
+Email addresses listed here will be copied on any correspondence about the support ticket.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomerContactDetail
 Update Contact details on SupportTicket.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Support.Models.PSContactProfile
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameWithContactObjectParameterSet, UpdateByInputObjectWithContactObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomerCountry
+Customer country.
+This must be a valid ISO Alpha-3 country code (ISO 3166).
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomerFirstName
+Customer first name.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomerLastName
+Customer last name.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomerPhoneNumber
+Customer phone number.
+This is required if preferred contact method is phone.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomerPreferredSupportLanguage
+Customer preferred support language.
+This must be a valid language-contry code for one of the supported languages listed here https://azure.microsoft.com/support/faq/.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomerPreferredTimeZone
+Customer preferred time zone.
+This must be a valid System.TimeZoneInfo.Id value.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomerPrimaryEmailAddress
+Customer primary email address.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
 Aliases:
 
 Required: False
@@ -171,7 +250,7 @@ SupportTicket resource object that this cmdlet updates.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Support.Models.PSSupportTicket
-Parameter Sets: UpdateByInputObjectParameterSet
+Parameter Sets: UpdateByInputObjectWithContactDetailParameterSet, UpdateByInputObjectWithContactObjectParameterSet
 Aliases:
 
 Required: True
@@ -186,10 +265,26 @@ Name of SupportTicket resource that this cmdlet updates.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet
+Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByNameWithContactObjectParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PreferredContactMethod
+Preferred contact method.
+
+```yaml
+Type: Microsoft.Azure.Commands.Support.Models.ContactMethod
+Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Aliases:
+Accepted values: Email, Phone
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -200,9 +295,10 @@ Accept wildcard characters: False
 Update Severity of SupportTicket.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.Support.Models.Severity
 Parameter Sets: (All)
 Aliases:
+Accepted values: Minimal, Moderate, Critical
 
 Required: False
 Position: Named

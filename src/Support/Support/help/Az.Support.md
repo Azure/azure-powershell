@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Support
-Module Guid: 885de86b-aa16-436f-b689-7955fdd27b30
+Module Guid: 22d73af7-38c2-4bf6-b56f-4dc9db05d97a
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.support
 Help Version: {{ Please enter version of help manually (X.X.X.X) format }}
 Locale: en-US
@@ -35,7 +35,5 @@ Gets communications for a support ticket. You can also filter support ticket com
 ### [New-AzSupportTicketCommunication](New-AzSupportTicketCommunication.md)
 Adds a new customer communication to an Azure support ticket. 
 
-### [Test-AzSupportNameAvailability](Test-AzSupportNameAvailability.md)
-Test availability of name for support ticket or support ticket communication.
 
 
