@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 2.3.1
 * Fixed FilterData example in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
 * Added Packet Capture example for capture all inner and outer packets in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
 * Supported Azure Firewall Policy on VNet Firewalls

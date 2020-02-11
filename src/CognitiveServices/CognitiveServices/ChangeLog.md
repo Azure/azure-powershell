@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.3
 * Updated SDK to 7.0
 * Improved error message when server responses empty body
 
