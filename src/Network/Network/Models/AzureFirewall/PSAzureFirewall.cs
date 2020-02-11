@@ -184,9 +184,11 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentNullException(nameof(publicIpAddress), "Public IP Address cannot be null!");
             }
 
+            PSAzureFirewallIpConfiguration conflictingIpConfig = null;
+
             if (this.IpConfigurations.Count > 0)
             {
-                var conflictingIpConfig = this.IpConfigurations.SingleOrDefault
+                conflictingIpConfig = this.IpConfigurations.SingleOrDefault
                     (ipConfig => string.Equals(ipConfig.PublicIpAddress?.Id, publicIpAddress.Id, System.StringComparison.CurrentCultureIgnoreCase));
 
                 if (conflictingIpConfig != null)
@@ -199,42 +201,24 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new InvalidOperationException($"Please invoke {nameof(Allocate)} to attach the firewall to a Virtual Network");
             }
 
+            var i = 0;
+            conflictingIpConfig = null;
+            var newIpConfigName = "";
+
+            do
+            {
+                newIpConfigName = $"{AzureFirewallIpConfigurationName}{this.IpConfigurations.Count + i}";
+                conflictingIpConfig = this.IpConfigurations.SingleOrDefault
+                    (ipConfig => string.Equals(ipConfig.Name, newIpConfigName, System.StringComparison.CurrentCultureIgnoreCase));
+                i++;
+            } while (conflictingIpConfig != null);
+
             this.IpConfigurations.Add(
                 new PSAzureFirewallIpConfiguration
                 {
-                    Name = $"{AzureFirewallIpConfigurationName}{this.IpConfigurations.Count}",
+                    Name = newIpConfigName,
                     PublicIpAddress = new PSResourceId { Id = publicIpAddress.Id }
                 });
-        }
-
-        public void SetManagementIpConfiguration(PSVirtualNetwork virtualNetwork, PSPublicIpAddress publicIpAddress)
-        {
-            if (publicIpAddress == null)
-            {
-                throw new ArgumentNullException(nameof(publicIpAddress), "Public IP Address cannot be null!");
-            }
-
-            if (virtualNetwork == null)
-            {
-                throw new ArgumentNullException(nameof(virtualNetwork), "Virtual Network cannot be null!");
-            }
-
-            PSSubnet subnet = null;
-            try
-            {
-                subnet = virtualNetwork.Subnets.Single(mgmtSubnet => AzureFirewallMgmtSubnetName.Equals(mgmtSubnet.Name));
-            }
-            catch (InvalidOperationException)
-            {
-                throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallMgmtSubnetName}");
-            }
-            
-            this.ManagementIpConfiguration = new PSAzureFirewallIpConfiguration
-            {
-                Name = AzureFirewallMgmtIpConfigurationName,
-                PublicIpAddress = new PSResourceId { Id = publicIpAddress.Id },
-                Subnet = new PSResourceId { Id = subnet.Id }
-            };
         }
 
         public void RemovePublicIpAddress(PSPublicIpAddress publicIpAddress)
@@ -250,6 +234,11 @@ namespace Microsoft.Azure.Commands.Network.Models
             if (ipConfigToRemove == null)
             {
                 throw new ArgumentException($"Public IP Address {publicIpAddress.Id} is not attached to firewall {this.Name}");
+            }
+
+            if (this.IpConfigurations.Count > 1 && ipConfigToRemove.Subnet != null)
+            {
+                throw new InvalidOperationException($"Cannot remove IpConfiguration {ipConfigToRemove.Name} because it references subnet {ipConfigToRemove.Subnet.Id}. Move the subnet reference to another IpConfiguration and try again.");
             }
 
             if (this.IpConfigurations.Count == 1)
