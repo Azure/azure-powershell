@@ -66,7 +66,7 @@
 
     <!-- Docker related -->
     <DockerRoot>$(RepoRoot)/docker</DockerRoot>
-    <DockerTools>$(RepoTools)/docker</DockerTools>
+    <DockerTools>$(RepoTools)/Docker</DockerTools>
     <DockerImageName Condition="'$(DockerImageName)' == ''">azure-powershell</DockerImageName>
   </PropertyGroup>
 
