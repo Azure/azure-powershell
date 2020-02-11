@@ -212,7 +212,8 @@ Accept wildcard characters: False
 ```
 
 ### -CorrelationId
-Specifies the correlation ID. This parameter is required.
+Specifies the correlation ID. 
+This parameter is required.
 
 ```yaml
 Type: System.String
