@@ -19,7 +19,8 @@
 -->
 ## Upcoming Release
 * Added support for cross subscription point in time restore on Managed Instances.
-* Add support for changing existing Sql Managed Instance hardware generation
+* Added support for changing existing Sql Managed Instance hardware generation
+* Fixed `Update-AzSqlServerVulnerabilityAssessmentSetting` help examples: parameter/property output - EmailAdmins
 
 ## Version 2.2.0
 Fix New-AzSqlDatabaseSecondary cmdlet to check for PartnerDatabaseName existence instead of DatabaseName existence.
