@@ -24,10 +24,12 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 
         [Alias("VirtualNetworkGatewayId")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.ByResourceId,
             HelpMessage = "The resource id of the virtual network gateway Id")]
+        [ResourceIdCompleter("Microsoft.Network/virtualNetworkGateways")]
+        [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Alias("VirtualNetworkGateway")]
@@ -36,6 +38,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             ValueFromPipeline = true,
             ParameterSetName = ParameterSetNames.ByFactoryObject,
             HelpMessage = "The virtual network gateway object")]
+        [ValidateNotNullOrEmpty]
         public PSVirtualNetworkGateway InputObject { get; set; }
 
         [Parameter(
@@ -55,6 +58,11 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Returns an object representing the item on which this operation is being performed.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void Execute()
         {
