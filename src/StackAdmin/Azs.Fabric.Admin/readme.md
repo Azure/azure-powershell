@@ -91,7 +91,7 @@ directive:
       default:
         script: -join("System.",(Get-AzLocation)[0].Location)
 
-  # [EdgeGateway]: Folloing changes are for EdgeGateway
+  # [EdgeGateway]: Following changes are for EdgeGateway
   # [EdgeGateway] Propertity Rename: change NumberOfConnection to NumberOfConnections
   - where:
       model-name: EdgeGateway
@@ -112,7 +112,28 @@ directive:
       subject: EdgeGateway
     hide: true
 
-  # [EdgeGatewayPool]: Folloing changes are for EdgeGatewayPool
+  # [LogicalNetwork]: Following changes are for LogicalNetwork
+  # [LogicalNetwork] Rename property name in LogicalNetwork
+  - where:
+      model-name: LogicalNetwork
+      property-name: Subnet
+    set:
+      property-name: Subnets
+
+  # [LogicalNetwork] Rename cmdlet parameter name in LogicalNetwork
+  - where:
+      subject: LogicalNetwork
+      parameter-name: LogicalNetwork
+    set:
+      parameter-name: Name
+
+  # [LogicalNetwork] hide autorest generated cmdlet to use the custom one
+  - where:
+      verb: Get
+      subject: LogicalNetwork
+    hide: true
+
+  # [EdgeGatewayPool]: Following changes are for EdgeGatewayPool
   # [EdgeGateway] Rename cmdlet parameter name in EdgeGatewayPool
   - where:
       subject: EdgeGatewayPool
@@ -133,7 +154,7 @@ directive:
       subject: EdgeGatewayPool
     hide: true
 
-  # [InfrastructureRole]: Folloing changes are for InfrastructureRole
+  # [InfrastructureRole]: Following changes are for InfrastructureRole
   # Rename subject AzsInfraRole to AzsInfrastructureRole
   - where:
       subject: InfraRole
@@ -193,8 +214,73 @@ directive:
       subject: IPPool
     hide: true
 
-  # [ScaleUnitNode]: Following changes are for ScaleUnit
-  # Rename Invoke-ScaleUnitOut to Add-AzsScaleUnitNode
+  # [ScaleUnit]: Following changes are for ScaleUnit
+  # [ScaleUnit] Cmdlet parameter rename
+  - where:
+      subject: ScaleUnit
+      parameter-name: ScaleUnit
+    set:
+      parameter-name: Name
+
+  # [ScaleUnit] Hide auto-generated
+  - where:
+      verb: Get
+      subject: ScaleUnit
+    hide: true
+
+  # [ScaleUnitNode]: Following changes are for ScaleUnitNode
+  # [ScaleUnitNode] Cmdlet parameter rename
+  - where:
+      subject: ScaleUnitNode
+      parameter-name: ScaleUnitNode
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ScaleUnitNodeMaintenanceMode
+      parameter-name: ScaleUnitNode
+    set:
+      parameter-name: Name
+
+  # [ScaleUnitNode] Hide auto-generated
+  - where:
+      verb: Get
+      subject: ScaleUnitNode
+    hide: true
+
+  - where:
+      verb: Repair
+      subject: ScaleUnitNode
+    hide: true
+
+  - where:
+      verb: Start
+      subject: ScaleUnitNode
+    hide: true
+
+  - where:
+      verb: Stop
+      subject: ScaleUnitNode
+    hide: true
+
+  - where:
+      verb: Enable
+      subject: ScaleUnitNode
+    hide: true
+
+  - where:
+      verb: Disable
+      subject: ScaleUnitNode
+    hide: true
+
+  # [ScaleUnitNode]: Rename property name
+  - where:
+      model-name: ScaleUnitNode
+      property-name: Status
+    set:
+      property-name: ScaleUnitNodeStatus
+
+  # [ScaleUnitNode] Rename Invoke-ScaleUnitOut to Add-AzsScaleUnitNode
   - where:
       verb: Invoke
       subject: ScaleUnitOut
@@ -202,20 +288,20 @@ directive:
       verb: Add
       subject: ScaleUnitNode
 
-  # Rename Start-AzsScaleUnitNodeMaintenanceMode to Disable-AzsScaleUnitNode
+  # [ScaleUnitNode]Rename Start-AzsScaleUnitNodeMaintenanceMode to Enable-AzsScaleUnitNode
   - where:
       verb: Start
       subject: ScaleUnitNodeMaintenanceMode
     set:
-      verb: Disable
+      verb: Enable
       subject: ScaleUnitNode
 
-  # Rename Stop-AzsScaleUnitNodeMaintenanceMode to Enable-AzsScaleUnitNode
+  # [ScaleUnitNode]Rename Stop-AzsScaleUnitNodeMaintenanceMode to Disable-AzsScaleUnitNode
   - where:
       verb: Stop
       subject: ScaleUnitNodeMaintenanceMode
     set:
-      verb: Enable
+      verb: Disable
       subject: ScaleUnitNode
 
   # Rename Get-AzsFabricLocation to Get-AzsInfrastructureLocation

@@ -1,0 +1,362 @@
+{
+  "Get-AzsScaleUnitNode+[NoContext]+TestListScaleUnitNodes+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes?api-version=2016-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "4e236fa0-6cba-43ee-993a-44d440d72697" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsScaleUnitNode" ],
+        "FullCommandName": [ "Get-AzsScaleUnitNode_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "e158c9ad-4558-40ad-bd69-2389326bfe61" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14914" ],
+        "x-ms-request-id": [ "e158c9ad-4558-40ad-bd69-2389326bfe61" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200210T223248Z:e158c9ad-4558-40ad-bd69-2389326bfe61" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 10 Feb 2020 22:32:48 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRva6lSnU+GCsqxMwfLKtHfSrwMI8KgH1cOs4E8fWRXmJsDtCryquJZ+gtZgTUWySwumMyYrH12LInt+wsBFMa/BIuScuEmW1QTdta9xQJBQo+i9xwkCayWg6Ni2l2QfNBe0yn37+tWImEKnX8EOVyJ" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2543" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U17\",\"name\":\"redmond/ASRR1N22R09U17\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.75\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCLGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}},{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U19\",\"name\":\"redmond/ASRR1N22R09U19\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.76\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GBRGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}},{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U21\",\"name\":\"redmond/ASRR1N22R09U21\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.77\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCMGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}},{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U23\",\"name\":\"redmond/ASRR1N22R09U23\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.78\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCNGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}}]}"
+    }
+  },
+  "Get-AzsScaleUnitNode+[NoContext]+TestGetScaleUnitNode+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes?api-version=2016-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "5031a488-8fe4-408c-9e92-b61eb7d16abc" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsScaleUnitNode" ],
+        "FullCommandName": [ "Get-AzsScaleUnitNode_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "21f03f2e-7824-4d9e-8087-a052534cbaf1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14913" ],
+        "x-ms-request-id": [ "21f03f2e-7824-4d9e-8087-a052534cbaf1" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200210T223249Z:21f03f2e-7824-4d9e-8087-a052534cbaf1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 10 Feb 2020 22:32:48 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvkNweV1h4vMxiQH+q3l30kHX+sDUvLkakqPYAW1y5lCHmdolb7qduc3Nmlh8fqGaHBZSHU+a14LWpV5UGYm3NfF4t1j6oAuaEBZ3GeoohhdEzSYm1Wx4c+6CgOdSVLBctxGvxgck9OzFSZAGO8wOG" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2543" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U17\",\"name\":\"redmond/ASRR1N22R09U17\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.75\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCLGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}},{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U19\",\"name\":\"redmond/ASRR1N22R09U19\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.76\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GBRGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}},{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U21\",\"name\":\"redmond/ASRR1N22R09U21\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.77\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCMGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}},{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U23\",\"name\":\"redmond/ASRR1N22R09U23\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.78\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCNGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}}]}"
+    }
+  },
+  "Get-AzsScaleUnitNode+[NoContext]+TestGetScaleUnitNode+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U17?api-version=2016-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U17?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "b694d742-ffa9-4f0e-84d8-dceb8cd2ace3" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsScaleUnitNode" ],
+        "FullCommandName": [ "Get-AzsScaleUnitNode_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "5b293588-7d90-4beb-b772-d669ee33ffb1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14912" ],
+        "x-ms-request-id": [ "5b293588-7d90-4beb-b772-d669ee33ffb1" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200210T223249Z:5b293588-7d90-4beb-b772-d669ee33ffb1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 10 Feb 2020 22:32:48 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv7+/k3h5WI3tOjM07iOVZeSSrkL2SB8M39Gv+s7eQg8i5r4pFLO0/H+WcxCBDUJ0e0Lq4YpaMb6TmMT9txz0RV+Rjl2PM2FAl4jswaWLPHNxXNFwfxx2cDHmj+B0ksWNhBS3GlzsNhh2S8kcz77ph" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "632" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U17\",\"name\":\"redmond/ASRR1N22R09U17\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.75\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCLGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}}"
+    }
+  },
+  "Get-AzsScaleUnitNode+[NoContext]+TestGetAllScaleUnitNodes+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes?api-version=2016-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "13ab6ebb-859a-4640-8949-8e5c4eaa6889" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsScaleUnitNode" ],
+        "FullCommandName": [ "Get-AzsScaleUnitNode_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "cf022c99-20e5-4f92-a533-c8c566d46514" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14911" ],
+        "x-ms-request-id": [ "cf022c99-20e5-4f92-a533-c8c566d46514" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200210T223250Z:cf022c99-20e5-4f92-a533-c8c566d46514" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 10 Feb 2020 22:32:50 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvgwzXjWU7AfqHkTGirsajtX23gK1jmA2y8Ma/wlrSPBZQEPz260pIwLqxfjKbKCl3iruQhrXKRltQf9NhQ6I5630rcdFn3NGtDPlI+NSBNXOyl67oygI9XXRzabBdoHZHPU8eEo0AZrk+/cnqZlcH" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2543" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U17\",\"name\":\"redmond/ASRR1N22R09U17\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.75\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCLGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}},{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U19\",\"name\":\"redmond/ASRR1N22R09U19\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.76\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GBRGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}},{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U21\",\"name\":\"redmond/ASRR1N22R09U21\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.77\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCMGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}},{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U23\",\"name\":\"redmond/ASRR1N22R09U23\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.78\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCNGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}}]}"
+    }
+  },
+  "Get-AzsScaleUnitNode+[NoContext]+TestGetAllScaleUnitNodes+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U17?api-version=2016-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U17?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "ac8c791b-b908-4c6b-8e8d-2eb8c0088ec3" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsScaleUnitNode" ],
+        "FullCommandName": [ "Get-AzsScaleUnitNode_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "5df96f91-e496-40ae-aa6d-999273c72f49" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14910" ],
+        "x-ms-request-id": [ "5df96f91-e496-40ae-aa6d-999273c72f49" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200210T223250Z:5df96f91-e496-40ae-aa6d-999273c72f49" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 10 Feb 2020 22:32:50 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvw5JrwGR3J2ZlaRPgvqtMEHzdKfTAXxiPP7vjYUQz0Fzl6yBNbyFb/wgXG5z+RNkgr/GLquEMNqreF2uFsUkIGC+m3ErBZlS7Eu8OWYOExWIhfYzqWqEorNW5aU7ODwH7D3PccQmKoQ5DCnEx9Crl" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "632" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U17\",\"name\":\"redmond/ASRR1N22R09U17\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.75\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCLGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}}"
+    }
+  },
+  "Get-AzsScaleUnitNode+[NoContext]+TestGetAllScaleUnitNodes+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U19?api-version=2016-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U19?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "5a41466e-7f6f-47db-be06-bab90a4a0a74" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsScaleUnitNode" ],
+        "FullCommandName": [ "Get-AzsScaleUnitNode_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "73f24ce7-624e-494b-858e-d63e2bc82aa8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14909" ],
+        "x-ms-request-id": [ "73f24ce7-624e-494b-858e-d63e2bc82aa8" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200210T223250Z:73f24ce7-624e-494b-858e-d63e2bc82aa8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 10 Feb 2020 22:32:50 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvyjWSIAjmFsuITd0keoqeuu2jL+0EDU6iMwRdzMSff76CKYiMJtsjlRbnZx/e9mUxye9ymzPssLB3D3iW0qJKuNg5qxndIITtjAlREFV/Ia0iQsrjsku7EneVmPcLwHMW490o4qMvHRiwDXU7zafw" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "632" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U19\",\"name\":\"redmond/ASRR1N22R09U19\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.76\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GBRGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}}"
+    }
+  },
+  "Get-AzsScaleUnitNode+[NoContext]+TestGetAllScaleUnitNodes+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U21?api-version=2016-05-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U21?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "32da4eaa-fc13-449e-9659-27eedb8e3590" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsScaleUnitNode" ],
+        "FullCommandName": [ "Get-AzsScaleUnitNode_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "7bcb10aa-357b-425a-897c-b07f8d590592" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14908" ],
+        "x-ms-request-id": [ "7bcb10aa-357b-425a-897c-b07f8d590592" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200210T223251Z:7bcb10aa-357b-425a-897c-b07f8d590592" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 10 Feb 2020 22:32:50 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvP/Hm0mbh6jNnzUIm0Ztx7R8vLHGBqR4xR7NhrHOgKYngZZk2hltiMtcsEEtL5aiV+5fk0UccKaV0tJvk6DPIBc2HFUcQDf4T3GZtS4P26Bt2aseRaiOc8JLqAPT/qLPRE+33baP7Sg5yuV9BZHQz" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "632" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U21\",\"name\":\"redmond/ASRR1N22R09U21\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.77\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCMGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}}"
+    }
+  },
+  "Get-AzsScaleUnitNode+[NoContext]+TestGetAllScaleUnitNodes+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U23?api-version=2016-05-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U23?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "da39bc06-bf8a-411f-8aa5-8afbc02767a2" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsScaleUnitNode" ],
+        "FullCommandName": [ "Get-AzsScaleUnitNode_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "fc44c506-1420-4bf4-99c9-1a8b0c77f2ea" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14907" ],
+        "x-ms-request-id": [ "fc44c506-1420-4bf4-99c9-1a8b0c77f2ea" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200210T223251Z:fc44c506-1420-4bf4-99c9-1a8b0c77f2ea" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 10 Feb 2020 22:32:51 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvt26r/XbRADw5SGHhpYGaqWPl02AV1ZyEfrEKl3Zbe9rXWFeveX7wLIR9SI9kBtnOMGeM277h7Lw1NawF8cUZpp3FB4RYUNJpSZ0G8gQnEPaAq1nnDvTyd8yIMkVky6xd76sZyUMTUxerBK89YVMQ" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "632" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U23\",\"name\":\"redmond/ASRR1N22R09U23\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.78\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCNGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}}"
+    }
+  },
+  "Get-AzsScaleUnitNode+[NoContext]+TestStartStopMaintenanceModeUnitNode+$GET+https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes?api-version=2016-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-n22r0903.masd.stbtest.microsoft.com/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes?api-version=2016-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "359a5b65-5749-4c21-89ab-dc724c8f8e08" ],
+        "CommandName": [ "Azs.Fabric.Admin.internal\\Get-AzsScaleUnitNode" ],
+        "FullCommandName": [ "Get-AzsScaleUnitNode_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "84cb9193-eea3-4e34-bbbd-6c5f3b63d2ad" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14906" ],
+        "x-ms-request-id": [ "84cb9193-eea3-4e34-bbbd-6c5f3b63d2ad" ],
+        "x-ms-routing-request-id": [ "REDMOND:20200210T223251Z:84cb9193-eea3-4e34-bbbd-6c5f3b63d2ad" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 10 Feb 2020 22:32:51 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv+A33EhVk0cs0NohY90IGMs8VxoLsuYFIcJKePUod6+7cg/0EjNuv21/AEWjo/oUULzw/ztKeOdLEDhSfnPCKXtJk6obI+WM1D4/uZmufUBjPftbMrMC3bbJMKBxStRcPqJwRvTFihlmX4/8Ev8Vo" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2543" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U17\",\"name\":\"redmond/ASRR1N22R09U17\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.75\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCLGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}},{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U19\",\"name\":\"redmond/ASRR1N22R09U19\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.76\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GBRGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}},{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U21\",\"name\":\"redmond/ASRR1N22R09U21\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.77\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCMGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}},{\"id\":\"/subscriptions/f7f5c0d1-e0a3-41f5-bf30-d27f13c9a3a7/resourceGroups/System.redmond/providers/Microsoft.Fabric.Admin/fabricLocations/redmond/scaleUnitNodes/ASRR1N22R09U23\",\"name\":\"redmond/ASRR1N22R09U23\",\"type\":\"Microsoft.Fabric.Admin/fabricLocations/scaleUnitNodes\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"scaleUnitNodeStatus\":\"Running\",\"powerState\":\"Running\",\"bmcAddress\":\"100.83.95.78\",\"scaleUnitName\":\"redmond/s-cluster\",\"scaleUnitUri\":\"/fabricLocations/redmond/scaleUnits/s-cluster\",\"canPowerOff\":true,\"vendor\":\"DELL\",\"model\":\"PowerEdge R730xd\",\"serialNumber\":\"9GCNGB2\",\"capacity\":{\"memoryGB\":511.90625,\"cores\":56}}}]}"
+    }
+  }
+}
