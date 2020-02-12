@@ -71,7 +71,7 @@ P2SConnectionConfigurations    : [
 The p2s vpn gateway object to be modified
 
 ```yaml
-Type: PSP2SVpnGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSP2SVpnGateway
 Parameter Sets: ByP2SVpnGatewayObject
 Aliases: P2SVpnGateway
 
@@ -132,10 +132,10 @@ P2s Virtual network gateway resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByP2SVpnGatewayResourceId
 Aliases: ResourceId
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
