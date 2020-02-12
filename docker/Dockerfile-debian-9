@@ -12,6 +12,8 @@ ARG Build_Date=
 ARG VERSION=
 ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell:${VERSION}-debian-9
 
+ENV AZUREPS_HOST_ENVIRONMENT="dockerImage/${VERSION}-debian-9"
+
 LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
       readme.md="http://aka.ms/azpsdockerreadme" \
       description="This Dockerfile will install the latest release of Azure PowerShell." \
