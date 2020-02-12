@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
-    using System;  
+    using System;
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -109,6 +109,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string AddIotHubMessageEnrichment {
             get {
                 return ResourceManager.GetString("AddIotHubMessageEnrichment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Module.
+        /// </summary>
+        internal static string AddIotHubModule {
+            get {
+                return ResourceManager.GetString("AddIotHubModule", resourceCulture);
             }
         }
         
@@ -239,6 +248,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Module.
+        /// </summary>
+        internal static string RemoveIotHubModule {
+            get {
+                return ResourceManager.GetString("RemoveIotHubModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Route.
         /// </summary>
         internal static string RemoveIotHubRoute {
@@ -280,6 +298,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string UpdateIotHubMessageEnrichment {
             get {
                 return ResourceManager.GetString("UpdateIotHubMessageEnrichment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Module.
+        /// </summary>
+        internal static string UpdateIotHubModule {
+            get {
+                return ResourceManager.GetString("UpdateIotHubModule", resourceCulture);
             }
         }
         
