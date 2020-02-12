@@ -97,10 +97,10 @@ directive:
     set:
       parameter-name: Name
       default:
-        script: (Get-AzLocation)[0].Name
+        script: (Get-AzLocation)[0].Location
   - where:
       subject: (.*)Run$
       parameter-name: RunName
     set:
-      parameter-name: Name
+      parameter-name: RunId
 ```
