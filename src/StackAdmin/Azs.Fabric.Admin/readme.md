@@ -236,9 +236,40 @@ directive:
     set:
       parameter-name: Name
 
+  - where:
+      subject: ScaleUnitNodeMaintenanceMode
+      parameter-name: ScaleUnitNode
+    set:
+      parameter-name: Name
+
   # [ScaleUnitNode] Hide auto-generated
   - where:
       verb: Get
+      subject: ScaleUnitNode
+    hide: true
+
+  - where:
+      verb: Repair
+      subject: ScaleUnitNode
+    hide: true
+
+  - where:
+      verb: Start
+      subject: ScaleUnitNode
+    hide: true
+
+  - where:
+      verb: Stop
+      subject: ScaleUnitNode
+    hide: true
+
+  - where:
+      verb: Enable
+      subject: ScaleUnitNode
+    hide: true
+
+  - where:
+      verb: Disable
       subject: ScaleUnitNode
     hide: true
 
@@ -257,20 +288,20 @@ directive:
       verb: Add
       subject: ScaleUnitNode
 
-  # Rename Start-AzsScaleUnitNodeMaintenanceMode to Disable-AzsScaleUnitNode
+  # [ScaleUnitNode]Rename Start-AzsScaleUnitNodeMaintenanceMode to Enable-AzsScaleUnitNode
   - where:
       verb: Start
       subject: ScaleUnitNodeMaintenanceMode
     set:
-      verb: Disable
+      verb: Enable
       subject: ScaleUnitNode
 
-  # Rename Stop-AzsScaleUnitNodeMaintenanceMode to Enable-AzsScaleUnitNode
+  # [ScaleUnitNode]Rename Stop-AzsScaleUnitNodeMaintenanceMode to Disable-AzsScaleUnitNode
   - where:
       verb: Stop
       subject: ScaleUnitNodeMaintenanceMode
     set:
-      verb: Enable
+      verb: Disable
       subject: ScaleUnitNode
 
   # Rename Get-AzsFabricLocation to Get-AzsInfrastructureLocation
