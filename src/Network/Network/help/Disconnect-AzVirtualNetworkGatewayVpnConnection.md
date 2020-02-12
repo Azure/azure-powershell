@@ -11,9 +11,19 @@ schema: 2.0.0
 Disconnect given connected vpn client connections with a given virtual network gateway.
 
 ## SYNTAX
-
+### ByVpnGatewayName (Default)
 ```
 Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceName <String> -ResourceGroupName <String> -InputObject <PSVirtualNetworkGateway> -ResourceId <ResourceId> -VpnConnectionId <VpnConnectionIds> [-AsJob] [<CommonParameters>]
+```
+
+### ByVpnGatewayObject
+```
+Disconnect-AzVirtualNetworkGatewayVpnConnection -InputObject <PSP2SVpnGateway> -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
+```
+
+### ByVpnGatewayResourceId
+```
+Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceId <String> -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +44,7 @@ Virtual network gateway resource group's name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByVpnGatewayName
 Aliases:
 
 Required: True
@@ -49,7 +59,7 @@ Virtual network gateway name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByVpnGatewayName
 Aliases: VirtualNetworkGatewayName
 
 Required: True
@@ -64,10 +74,10 @@ Virtual network gateway resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByVpnGatewayResourceId
 Aliases: ResourceId
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -94,7 +104,7 @@ Virtual network gateway object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
-Parameter Sets: (All)
+Parameter Sets: ByVpnGatewayObject
 Aliases: VirtualNetworkGateway
 
 Required: False
