@@ -21,7 +21,7 @@ param(
 
 Import-LocalizedData -BaseDirectory $PSScriptRoot"\..\Az" -FileName "Az.psd1" -BindingVariable AzMetaData 
 $version = $AzMetaData.ModuleVersion
-Write-Output "Az version: "$version", from Az.psd1"
+Write-Output "Az version: "$version" retrieved, from Az.psd1"
 
 try {
     foreach ($dockerfile in (Get-ChildItem -Path $DOCKER -Filter "Dockerfile-*").FullName) {
