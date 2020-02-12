@@ -19,7 +19,9 @@ param(
     [string]$DockerImageName
 )
 
-$version = (Get-Content "$DOCKER/config/release.props" | Select-String "az.version").ToString().Split("=")[1]
+Import-LocalizedData -BaseDirectory $PSScriptRoot"\..\Az" -FileName "Az.psd1" -BindingVariable AzMetaData 
+$version = $AzMetaData.ModuleVersion
+Write-Output "Az version: "$version", from Az.psd1"
 
 try {
     foreach ($dockerfile in (Get-ChildItem -Path $DOCKER -Filter "Dockerfile-*").FullName) {
