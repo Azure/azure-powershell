@@ -49,16 +49,17 @@ namespace Microsoft.Azure.Commands.Network
         
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayResourceId,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID of the P2SVpnGateway to be modified.")]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Network/p2sVpnGateways")]
         public string ResourceId { get; set; }
 
         [Alias("P2SVpnGateway")]
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayObject,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The P2S vpn gateway object")]
         [ValidateNotNullOrEmpty]
@@ -69,6 +70,14 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "P2S Vpn gateway gateway Vpn connection Id, which is returned by getting P2S Vpn gateway detailed connection health")]
         [ValidateNotNullOrEmpty] 
         public string[] VpnConnectionId { get; set; }
+        
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Returns an object representing the item on which this operation is being performed.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void Execute()
         {
