@@ -14,8 +14,8 @@ Get the details of an IoT device module or list modules located on an IoT device
 
 ### ResourceSet (Default)
 ```
-Get-AzIotHubModule [-ResourceGroupName] <String> [-IotHubName] <String> [-DeviceId] <String> [-ModuleId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIotHubModule [-ResourceGroupName] <String> [-IotHubName] <String> [-DeviceId] <String>
+ [-ModuleId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectSet
@@ -48,7 +48,7 @@ ConnectionState            : Disconnected
 ConnectionStateUpdatedTime : 1/1/0001 12:00:00 AM
 CloudToDeviceMessageCount  : 0
 Authentication             : Sas
-ManagedBy                  : 
+ManagedBy                  :
 ```
 
 Get the details of an IoT device module in an IoT Hub.
@@ -112,6 +112,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IotHubName
+Name of the Iot Hub
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ModuleId
 Target Module Id.
 
@@ -122,21 +137,6 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the Iot Hub
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceSet
-Aliases:
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

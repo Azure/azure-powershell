@@ -50,6 +50,9 @@ Gets the IotHub connectionstrings.
 ### [Get-AzIotHubDevice](Get-AzIotHubDevice.md)
 Lists all devices or a particular device contained within an Azure IoT Hub. 
 
+### [Get-AzIotHubDeviceConnectionString](Get-AzIotHubDeviceConnectionString.md)
+Get the connection string of a target IoT device in an Iot Hub.
+
 ### [Get-AzIotHubEventHubConsumerGroup](Get-AzIotHubEventHubConsumerGroup.md)
 Gets all the eventhub consumergroups.
 
