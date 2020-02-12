@@ -34,7 +34,7 @@ You can define and apply tags in a single step, but predefined tags let you esta
 PS C:\>Remove-AzTag -Name "Department"
 ```
 
-This command deletes the predefined tag named Department and all of its resources.
+This command deletes the predefined tag named Department and all of its values.
 If the tag has been applied to any resources or resource groups, the command fails.
 
 ### Example 2: Delete a value from a predefined tag
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -947,6 +947,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.RecoveryNetworkSecurityGroupId = vMNicDetails.RecoveryNetworkSecurityGroupId;
             this.RecoveryLBBackendAddressPoolId =
                 vMNicDetails.RecoveryLBBackendAddressPoolIds?.ToList() ?? new List<string>();
+            this.TfoVMNetworkId = vMNicDetails.TfoVMNetworkId;
+            this.TfoVMSubnetName = vMNicDetails.TfoVMSubnetName;
+            this.TfoNetworkSecurityGroupId = vMNicDetails.TfoNetworkSecurityGroupId;
+            this.TfoIPConfigs = vMNicDetails.TfoIPConfigs?.ToList() ?? new List<IPConfig>();
+            this.EnableAcceleratedNetworkingOnTfo = vMNicDetails.EnableAcceleratedNetworkingOnTfo;
         }
 
         //
@@ -1028,6 +1033,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the target backend address pools for the NIC.
         /// </summary>
         public List<string> RecoveryLBBackendAddressPoolId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets test failover network Id.
+        /// </summary>
+        public string TfoVMNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets test failover subnet name.
+        /// </summary>
+        public string TfoVMSubnetName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the id of the NSG associated with the test failover NIC.
+        /// </summary>
+        public string TfoNetworkSecurityGroupId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the IP configuration details for test failover NIC.
+        /// </summary>
+        public List<IPConfig> TfoIPConfigs { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets whether accelerated networking is enabled on test failover NIC.
+        public bool? EnableAcceleratedNetworkingOnTfo { get; set; }
     }
 
     /// <summary>
@@ -1202,6 +1232,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var hd = new AsrVirtualHardDisk();
                 hd.Id = disk.DiskId;
                 hd.Name = disk.DiskName;
+                hd.Capacity = Convert.ToInt64(disk.DiskSizeInMB);
 
                 // Update all the Volumes in this Disk.
                 hd.Volumes = new List<AsrVolume>();
@@ -1421,8 +1452,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var a2aProviderSpecificDetails = (A2AReplicationDetails)rpi.Properties.ProviderSpecificDetails;
 
                 this.RecoveryAzureVMName = a2aProviderSpecificDetails.RecoveryAzureVMName;
+                this.TfoAzureVMName = a2aProviderSpecificDetails.TfoAzureVMName;
                 this.RecoveryAzureVMSize = a2aProviderSpecificDetails.RecoveryAzureVMSize;
                 this.SelectedRecoveryAzureNetworkId = a2aProviderSpecificDetails.SelectedRecoveryAzureNetworkId;
+                this.SelectedTfoAzureNetworkId = a2aProviderSpecificDetails.SelectedTfoAzureNetworkId;
                 this.ProtectionState = a2aProviderSpecificDetails.VmProtectionState;
                 this.ProtectionStateDescription = a2aProviderSpecificDetails.VmProtectionStateDescription;
                 this.ProviderSpecificDetails = new ASRAzureToAzureSpecificRPIDetails(a2aProviderSpecificDetails);
@@ -1609,6 +1642,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets type of the Protection entity.
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        ///     Gets or sets name of the test failover virtual machine.
+        /// </summary>
+        public string TfoAzureVMName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Id of the test failover virtual network.
+        /// </summary>
+        public string SelectedTfoAzureNetworkId { get; set; }
     }
 
     /// <summary>
@@ -2252,6 +2295,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [DataMember]
         public List<AsrVolume> Volumes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Capacity.
+        /// </summary>
+        [DataMember]
+        public long Capacity { get; set; }
     }
 
     /// <summary>
@@ -2274,22 +2323,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    ///     Partial details of a NIC of a VM.
+    ///     Partial ASR details of a NIC.
     /// </summary>
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    public class VMNic
+    public class ASRVMNicConfig
     {
         /// <summary>
         ///     Gets or sets ID of the NIC.
         /// </summary>
         [DataMember]
         public string NicId { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the static IP address of the replica NIC.
-        /// </summary>
-        [DataMember]
-        public string RecoveryNicStaticIPAddress { get; set; }
 
         /// <summary>
         ///     Gets or sets Id of the recovery VM Network.
@@ -2304,16 +2347,52 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryVMSubnetName { get; set; }
 
         /// <summary>
-        ///     Gets or sets Name of the VM network.
+        ///     Gets or sets the id of the NSG associated with the recovery NIC.
         /// </summary>
         [DataMember]
-        public string VMNetworkName { get; set; }
+        public string RecoveryNetworkSecurityGroupId { get; set; }
 
         /// <summary>
-        ///     Gets or sets Name of the VM subnet.
+        ///     Gets or sets the IP configuration details for the recovery NIC.
         /// </summary>
         [DataMember]
-        public string VMSubnetName { get; set; }
+        public List<IPConfig> RecoveryIPConfigs { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether the recovery NIC has accelerated networking enabled.
+        /// </summary>
+        [DataMember]
+        public bool EnableAcceleratedNetworkingOnRecovery { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Id of the test failover VM Network.
+        /// </summary>
+        [DataMember]
+        public string TfoVMNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name of the test failover VM subnet.
+        /// </summary>
+        [DataMember]
+        public string TfoVMSubnetName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the id of the NSG associated with the test failover NIC.
+        /// </summary>
+        [DataMember]
+        public string TfoNetworkSecurityGroupId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the IP configuration details for the test failover NIC.
+        /// </summary>
+        [DataMember]
+        public List<IPConfig> TfoIPConfigs { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether the test failover NIC has accelerated networking enabled.
+        /// </summary>
+        [DataMember]
+        public bool EnableAcceleratedNetworkingOnTfo { get; set; }
     }
 
     /// <summary>
@@ -2357,6 +2436,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         //     Gets or sets the DiskType. Possible values include: 'Standard_LRS', 'Premium_LRS',
         //     'StandardSSD_LRS'
         public string DiskType { get; set; }
+        // Summary:
+        //     Gets or sets the DiskEncryptionSet ARM ID.
+        public string DiskEncryptionSetId { get; set; }
     }
 
     /// <summary>
@@ -2365,7 +2447,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class ASRAzuretoAzureDiskReplicationConfig
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ASRAzuretoAzureDiskReplicationConfig" /> class.
+        /// Initializes a new instance of the <see cref="ASRAzuretoAzureDiskReplicationConfig" /> class.
         /// </summary>
         public ASRAzuretoAzureDiskReplicationConfig()
         {
@@ -2415,6 +2497,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets RecoveryTargetDiskAccountType. 
         /// </summary>
         public string RecoveryTargetDiskAccountType;
+
+        /// <summary>
+        /// Gets or sets RecoveryDiskEncryptionSetId. 
+        /// </summary>
+        public string RecoveryDiskEncryptionSetId;
+
+        /// <summary>
+        /// Gets or sets DiskEncryptionVaultId.
+        /// </summary>
+        public string DiskEncryptionVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets DiskEncryptionSecretUrl.
+        /// </summary>
+        public string DiskEncryptionSecretUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets KeyEncryptionKeyUrl.
+        /// </summary>
+        public string KeyEncryptionKeyUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets KeyEncryptionVaultId.
+        /// </summary>
+        public string KeyEncryptionVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the failover disk name.
+        /// </summary>
+        public string FailoverDiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test failover disk name.
+        /// </summary>
+        public string TfoDiskName { get; set; }
     }
 
     /// <summary>
@@ -2457,6 +2574,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.IsDiskKeyEncrypted = disk.IsDiskKeyEncrypted;
             this.KekKeyVaultArmId = disk.KekKeyVaultArmId;
             this.KeyIdentifier = disk.KeyIdentifier;
+            this.AllowedDiskLevelOperations = new List<string>();
+            if (disk.AllowedDiskLevelOperation != null)
+            {
+                foreach (var diskoperation in disk.AllowedDiskLevelOperation)
+                {
+                    this.AllowedDiskLevelOperations.Add(diskoperation);
+                }
+            }
         }
 
         /// <summary>
@@ -2486,32 +2611,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.IsDiskKeyEncrypted = disk.IsDiskKeyEncrypted;
             this.KekKeyVaultArmId = disk.KekKeyVaultArmId;
             this.KeyIdentifier = disk.KeyIdentifier;
+            this.RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId;
+            this.AllowedDiskLevelOperations = new List<string>();
+            if (disk.AllowedDiskLevelOperation != null)
+            {
+                foreach (var diskoperation in disk.AllowedDiskLevelOperation)
+                {
+                    this.AllowedDiskLevelOperations.Add(diskoperation);
+                }
+            }
+            this.FailoverDiskName = disk.FailoverDiskName;
+            this.TfoDiskName = disk.TfoDiskName;
         }
 
-        //
-        // Summary:
-        //     Gets or sets a value indicating whether disk key got encrypted or not.
+        /// <summary>
+        /// Gets or sets a value indicating whether disk key got encrypted or not.
+        /// </summary>
         public bool? IsDiskKeyEncrypted { get; set; }
-        //
-        // Summary:
-        //     Gets or sets the KeyVault resource id for secret (BEK).
+
+        /// <summary>
+        //  Gets or sets the KeyVault resource id for secret (BEK).
+        /// </summary>
         public string DekKeyVaultArmId { get; set; }
-        //
-        // Summary:
-        //     Gets or sets the secret URL / identifier (BEK).
+
+        /// <summary>
+        //  Gets or sets the secret URL / identifier (BEK).
+        /// </summary>
         public string SecretIdentifier { get; set; }
-        //
-        // Summary:
-        //     Gets or sets a value indicating whether vm has encrypted os disk or not.
+
+        /// <summary>
+        //  Gets or sets a value indicating whether vm has encrypted os disk or not.
+        /// </summary>
         public bool? IsDiskEncrypted { get; set; }
 
-        //
-        // Summary:
-        //     Gets or sets the key URL / identifier (KEK).
+        /// <summary>
+        //  Gets or sets the key URL / identifier (KEK).
+        /// </summary>
         public string KeyIdentifier { get; set; }
-        //
-        // Summary:
-        //     Gets or sets the KeyVault resource id for key (KEK).
+
+        /// <summary>
+        //  Gets or sets the KeyVault resource id for key (KEK).
+        /// </summary>
         public string KekKeyVaultArmId { get; set; }
 
         /// <summary>
@@ -2544,6 +2684,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the recovery target disk Id.
         /// </summary>
         public string RecoveryTargetDiskId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery disk encryption set Id.
+        /// </summary>
+        public string RecoveryDiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the allowed disk level operations.
+        /// </summary>
+        public List<string> AllowedDiskLevelOperations { get; set; }
 
         /// <summary>
         /// Gets or sets the disk uri.
@@ -2612,6 +2762,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the data pending at source virtual machine in MB.
         /// </summary>
         public double? DataPendingAtSourceAgentInMB { get; set; }
+
+        /// <summary>
+        /// Gets or sets the failover disk name. 
+        /// </summary>
+        public string FailoverDiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test failover disk name. 
+        /// </summary>
+        public string TfoDiskName { get; set; }
     }
 
     /// <summary>
@@ -2778,42 +2938,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             return sb.ToString();
         }
-    }
-
-    /// <summary>
-    /// Encryption types for VM.
-    /// </summary>
-    public enum AzureDiskEncryptionType
-    {
-        /// <summary>
-        /// VM not encrypted.
-        /// </summary>
-        NotEncrypted,
-
-        /// <summary>
-        /// VM encrypted using one pass ADE flow.
-        /// </summary>
-        OnePassEncrypted,
-
-        /// <summary>
-        /// VM encrypted using two pass ADE flow.
-        /// </summary>
-        TwoPassEncrypted
-    }
-
-    /// <summary>
-    /// Azure Disk Encryption extension types for VMs.
-    /// </summary>
-    public enum AzureDiskEncryptionExtensionType
-    {
-        /// <summary>
-        /// ADE extension for Windows VM.
-        /// </summary>
-        AzureDiskEncryption,
-
-        /// <summary>
-        /// ADE extension for Linux VM.
-        /// </summary>
-        AzureDiskEncryptionForLinux
     }
 }

@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Commands.Compute
                         this.VMName
                         ).GetAwaiter().GetResult();
 
-                    if (vmResponse.Body.OsProfile.LinuxConfiguration != null)
+                    if (vmResponse.Body.OsProfile?.LinuxConfiguration != null)
                     {
                         ThrowTerminatingError(new ErrorRecord(new ArgumentException(
                             string.Format(CultureInfo.CurrentUICulture, "The current VM is a Linux VM.  Custom script extension can be set only to Windows VM.")),

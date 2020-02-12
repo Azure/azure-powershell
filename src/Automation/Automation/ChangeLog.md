@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed typo in Example 1 in reference documentation for `New-AzAutomationSoftwareUpdateConfiguration`
+
+## Version 1.3.5
+* Update references in .psd1 to use relative path
 
 ## Version 1.3.4
 

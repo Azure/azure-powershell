@@ -34,7 +34,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.Utilities
             object[] cmdletAttributes = cmdlet.GetCustomAttributes(typeof(CmdletAttribute), true);
             Assert.Single(cmdletAttributes);
             CmdletAttribute attribute = (CmdletAttribute)cmdletAttributes[0];
-            Assert.Equal(confirmImpact, attribute.ConfirmImpact);
+            if(attribute.SupportsShouldProcess)
+            {
+                Assert.Equal(confirmImpact, attribute.ConfirmImpact);
+            }else
+            {
+                Assert.Equal(ConfirmImpact.None, attribute.ConfirmImpact);
+            }
+            
         }
 
         /// <summary>

@@ -32,7 +32,7 @@ function Test-VolumeCrud
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -127,6 +127,8 @@ function Test-VolumeCrud
         Assert-AreEqual $retrievedVolume.ExportPolicy.Rules[1].AllowedClients '1.2.3.0/24'
         Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
         Assert-NotNull $retrievedVolume.MountTargets
+        Assert-Null $retrievedVolume.VolumeType
+        Assert-Null $retrievedVolume.DataProtection
 
         # use the NFSv4.1
         $protocolTypesv4 = New-Object string[] 1
@@ -249,7 +251,7 @@ function Test-VolumePipelines
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"

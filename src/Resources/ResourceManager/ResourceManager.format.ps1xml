@@ -291,10 +291,31 @@
           <ListEntry>
             <ListItems>
               <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>DeploymentName</Label>
                 <PropertyName>DeploymentName</PropertyName>
               </ListItem>
               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.ResourceGroupName -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.ManagementGroupId -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>ManagementGroupId</Label>
+                <PropertyName>ManagementGroupId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Location -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
                 <Label>Location</Label>
                 <PropertyName>Location</PropertyName>
               </ListItem>

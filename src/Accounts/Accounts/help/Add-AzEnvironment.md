@@ -25,7 +25,8 @@ Add-AzEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-Servi
  [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
  [[-BatchEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>]
  [[-AzureOperationalInsightsEndpoint] <String>] [-AzureAnalysisServicesEndpointSuffix <String>]
- [-AzureAnalysisServicesEndpointResourceId <String>] [-Scope <ContextModificationScope>]
+ [-AzureAnalysisServicesEndpointResourceId <String>] [-AzureAttestationServiceEndpointSuffix <String>]
+ [-AzureAttestationServiceEndpointResourceId <String>] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,6 +37,7 @@ Add-AzEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpoint] 
  [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId] <String>]
  [[-AzureOperationalInsightsEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpoint] <String>]
  [-AzureAnalysisServicesEndpointSuffix <String>] [-AzureAnalysisServicesEndpointResourceId <String>]
+ [-AzureAttestationServiceEndpointSuffix <String>] [-AzureAttestationServiceEndpointResourceId <String>]
  [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -87,6 +89,8 @@ AzureKeyVaultServiceEndpointResourceId            :
 AzureOperationalInsightsEndpointResourceId        :
 AzureOperationalInsightsEndpoint                  :
 AzureAnalysisServicesEndpointSuffix               :
+AzureAttestationServiceEndpointSuffix             :
+AzureAttestationServiceEndpointResourceId         :
 VersionProfiles                                   : {}
 ExtendedProperties                                : {}
 BatchEndpointResourceId                           :
@@ -173,6 +177,36 @@ Accept wildcard characters: False
 
 ### -AzureAnalysisServicesEndpointSuffix
 The endpoint to use when communicating with the Azure Log Analytics API.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureAttestationServiceEndpointResourceId
+The The resource identifier of the Azure Attestation service that is the recipient of the requested token.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureAttestationServiceEndpointSuffix
+Dns suffix of Azure Attestation service.
 
 ```yaml
 Type: System.String

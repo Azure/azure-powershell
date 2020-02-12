@@ -221,4 +221,86 @@ function Test-SetAzureRmDiagnosticSetting-TimegrainsOnly
     }
 }
 
+<#
+.SYNOPSIS
+Tests setting diagnostics exporting to EventHub
+#>
+function Test-SetAzureRmDiagnosticSetting-EventHub
+{
+    try 
+    {
+	    $actual = Set-AzDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true -Category TestLog2
+
+		Assert-Null $actual.StorageAccountId
+		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1" $actual.EventHubName
+		Assert-AreEqual 1            $actual.Metrics.Count
+		Assert-AreEqual $false       $actual.Metrics[0].Enabled
+		Assert-AreEqual "00:01:00"   $actual.Metrics[0].Timegrain
+		Assert-AreEqual 2            $actual.Logs.Count
+		Assert-AreEqual $false       $actual.Logs[0].Enabled
+		Assert-AreEqual "TestLog1"   $actual.Logs[0].Category
+		Assert-AreEqual $true        $actual.Logs[1].Enabled
+		Assert-AreEqual "TestLog2"   $actual.Logs[1].Category
+		Assert-Null $actual.WorkspaceId
+		Assert-Null $actual.ServiceBusRuleId
+		Assert-AreEqual "service"    $actual.Name
+		Assert-Null $actual.LogAnalyticsDestinationType
+    }
+    finally
+    {
+        # Cleanup
+        # No cleanup needed for now
+    }
+}
+
+<#
+.SYNOPSIS
+Tests setting diagnostics Log Analytics
+#>
+function Test-SetAzureRmDiagnosticSetting-LogAnalytics
+{
+    try 
+    {
+	    $actual = Set-AzDiagnosticSetting -ResourceId /subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP -WorkspaceId 99385489-e1d1-48b0-a1b6-df5a9f258fbf -Enabled $true -Category TestLog2
+
+		Assert-Null $actual.StorageAccountId
+		Assert-AreEqual 1            $actual.Metrics.Count
+		Assert-AreEqual $false       $actual.Metrics[0].Enabled
+		Assert-AreEqual "00:01:00"   $actual.Metrics[0].Timegrain
+		Assert-AreEqual 2            $actual.Logs.Count
+		Assert-AreEqual $false       $actual.Logs[0].Enabled
+		Assert-AreEqual "TestLog1"   $actual.Logs[0].Category
+		Assert-AreEqual $true        $actual.Logs[1].Enabled
+		Assert-AreEqual "TestLog2"   $actual.Logs[1].Category
+		Assert-AreEqual "/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/appendblobtest/providers/microsoft.operationalinsights/workspaces/appendblob" $actual.WorkspaceId
+		Assert-Null $actual.ServiceBusRuleId
+		Assert-AreEqual "service"    $actual.Name
+		Assert-Null $actual.LogAnalyticsDestinationType
+
+	    $actual = Set-AzDiagnosticSetting -ResourceId /subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP -WorkspaceId 99385489-e1d1-48b0-a1b6-df5a9f258fbf -Enabled $true -Category TestLog2 -ExportToResourceSpecific
+
+		Assert-Null $actual.StorageAccountId
+		Assert-AreEqual 1            $actual.Metrics.Count
+		Assert-AreEqual $false       $actual.Metrics[0].Enabled
+		Assert-AreEqual "00:01:00"   $actual.Metrics[0].Timegrain
+		Assert-AreEqual 2            $actual.Logs.Count
+		Assert-AreEqual $false       $actual.Logs[0].Enabled
+		Assert-AreEqual "TestLog1"   $actual.Logs[0].Category
+		Assert-AreEqual $true        $actual.Logs[1].Enabled
+		Assert-AreEqual "TestLog2"   $actual.Logs[1].Category
+		Assert-AreEqual "/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/appendblobtest/providers/microsoft.operationalinsights/workspaces/appendblob" $actual.WorkspaceId
+		Assert-Null $actual.ServiceBusRuleId
+		Assert-AreEqual "service"    $actual.Name
+		Assert-AreEqual "Dedicated"  $actual.LogAnalyticsDestinationType
+	}
+    finally
+    {
+        # Cleanup
+        # No cleanup needed for now
+    }
+}
+
+
+
+
 # TODO add more complicated scenarios after we have a definitive subscription

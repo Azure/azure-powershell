@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 28BC1B99-946C-4A8D-9581-4D5CC0BCEF8B
@@ -21,16 +21,17 @@ Set-AzKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> [-RenewAt
  [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>] [-IssuerName <String>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
- [-KeySize <Int32>] [-KeyType <String>] [-KeyNotExportable] [-CertificateTransparency <Boolean>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyType <String>] [-KeySize <Int32>] [-KeyNotExportable] [-CertificateTransparency <Boolean>] [-PassThru]
+ [-Curve <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByValue
 ```
 Set-AzKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
  [-InputObject] <PSKeyVaultCertificatePolicy> [-EmailAtNumberOfDaysBeforeExpiry <Int32>]
- [-EmailAtPercentageLifetime <Int32>] [-KeySize <Int32>] [-KeyType <String>] [-CertificateTransparency <Boolean>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EmailAtPercentageLifetime <Int32>] [-KeyType <String>] [-KeySize <Int32>]
+ [-CertificateTransparency <Boolean>] [-PassThru] [-Curve <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExpandedRenewNumber
@@ -41,8 +42,8 @@ Set-AzKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> -RenewAtN
  [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>] [-IssuerName <String>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
- [-KeySize <Int32>] [-KeyType <String>] [-KeyNotExportable] [-CertificateTransparency <Boolean>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyType <String>] [-KeySize <Int32>] [-KeyNotExportable] [-CertificateTransparency <Boolean>] [-PassThru]
+ [-Curve <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +58,7 @@ PS C:\> Set-AzKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert
 SecretContentType               : application/x-pkcs12
 Kty                             :
 KeySize                         : 2048
+Curve                           :
 Exportable                      :
 ReuseKeyOnRenewal               : True
 SubjectName                     : CN=contoso.com
@@ -107,6 +109,28 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Curve
+Specifies the elliptic curve name of the key of the certificate.
+The acceptable values for this parameter are:
+- P-256
+- P-384
+- P-521
+- P-256K
+- SECP256K1
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: P-256, P-384, P-521, P-256K, SECP256K1
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -251,16 +275,19 @@ The acceptable values for this parameter are:
 - 2048
 - 3072
 - 4096
+- 256
+- 384
+- 521
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-Accepted values: 2048, 3072, 4096
+Accepted values: 2048, 3072, 4096, 256, 384, 521
 
 Required: False
 Position: Named
-Default value: None
+Default value: 2048
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -270,16 +297,18 @@ Specifies the key type of the key that backs the certificate.
 The acceptable values for this parameter are:
 - RSA
 - RSA-HSM
+- EC
+- EC-HSM
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: RSA, RSA-HSM
+Accepted values: RSA, RSA-HSM, EC, EC-HSM
 
 Required: False
 Position: Named
-Default value: None
+Default value: RSA
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -472,7 +501,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -25,6 +25,12 @@ Set-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Redeploy] [-AsJob] [-N
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ReapplyResourceGroupNameParameterSetName
+```
+Set-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Reapply] [-AsJob] [-NoWait]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### GeneralizeIdParameterSetName
 ```
 Set-AzVM [-Id] <String> [-Generalized] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -33,6 +39,12 @@ Set-AzVM [-Id] <String> [-Generalized] [-AsJob] [-DefaultProfile <IAzureContextC
 ### RedeployIdParameterSetName
 ```
 Set-AzVM [-Id] <String> [-Redeploy] [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ReapplyIdParameterSetName
+```
+Set-AzVM [-Id] <String> [-Reapply] [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -101,7 +113,7 @@ Specifies the Resource ID of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: GeneralizeIdParameterSetName, RedeployIdParameterSetName
+Parameter Sets: GeneralizeIdParameterSetName, RedeployIdParameterSetName, ReapplyIdParameterSetName
 Aliases:
 
 Required: True
@@ -116,7 +128,7 @@ Specifies the name of the virtual machine on which this cmdlet operates.
 
 ```yaml
 Type: System.String
-Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGroupNameParameterSetName
+Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGroupNameParameterSetName, ReapplyResourceGroupNameParameterSetName
 Aliases:
 
 Required: True
@@ -131,10 +143,25 @@ Starts the operation and returns immediately, before the operation is completed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RedeployResourceGroupNameParameterSetName, RedeployIdParameterSetName
+Parameter Sets: RedeployResourceGroupNameParameterSetName, ReapplyResourceGroupNameParameterSetName, RedeployIdParameterSetName, ReapplyIdParameterSetName
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Reapply
+To reapply virtual machine.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ReapplyResourceGroupNameParameterSetName, ReapplyIdParameterSetName
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -162,7 +189,7 @@ Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGroupNameParameterSetName
+Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGroupNameParameterSetName, ReapplyResourceGroupNameParameterSetName
 Aliases:
 
 Required: True

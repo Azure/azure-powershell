@@ -1,0 +1,728 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/ps4486?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczQ0ODY/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"ps4486\",\r\n  \"properties\": {\r\n    \"description\": \"Sample fake test policy for unit tests.\",\r\n    \"displayName\": \"Fake test policy\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    },\r\n    \"metadata\": {\r\n      \"category\": \"Unit Test\",\r\n      \"createdBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n      \"createdOn\": \"2019-05-29T00:57:15.0979752Z\",\r\n      \"updatedBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n      \"updatedOn\": \"2019-06-20T19:08:27.0257131Z\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"defaultValue\": [\r\n          \"somewhere\"\r\n        ],\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"defaultValue\": \"Deny\",\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        }\r\n      }\r\n    },\r\n    \"mode\": \"All\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "New-AzPolicyDefinition"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1360"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:d37a5224-bc36-4226-9496-bb1560b432b4"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "a2b62091-186c-46b2-acae-c92b7d98c1c7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191212T212509Z:a2b62091-186c-46b2-acae-c92b7d98c1c7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 Dec 2019 21:25:09 GMT"
+        ],
+        "Content-Length": [
+          "1026"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Fake test policy\",\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Sample fake test policy for unit tests.\",\r\n    \"metadata\": {\r\n      \"category\": \"Unit Test\",\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:08.9730223Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        },\r\n        \"defaultValue\": [\r\n          \"somewhere\"\r\n        ]\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/ps4486\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps4486\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/ps4486?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczQ0ODY/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"ps4486\",\r\n  \"properties\": {\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"displayName\": \"testDisplay\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    },\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"defaultValue\": \"Deny\",\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        }\r\n      }\r\n    },\r\n    \"mode\": \"Indexed\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "New-AzPolicyDefinition"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1088"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:c1c51ea8-76dc-4dc2-ab30-99bcf56fd719"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "e84a21fc-d60f-4f62-9496-84ff06ae5f52"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191212T212510Z:e84a21fc-d60f-4f62-9496-84ff06ae5f52"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 Dec 2019 21:25:09 GMT"
+        ],
+        "Content-Length": [
+          "1011"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"testDisplay\",\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\",\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:10.4088422Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/ps4486\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps4486\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/ps4486?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczQ0ODY/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"ps4486\",\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    },\r\n    \"mode\": \"All\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "New-AzPolicyDefinition"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "279"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:91eb8b4e-0c37-4a4c-bdd1-6a2f39aab2ba"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "6c4c890d-da05-4292-9af1-8b4028858ed0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191212T212512Z:6c4c890d-da05-4292-9af1-8b4028858ed0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 Dec 2019 21:25:11 GMT"
+        ],
+        "Content-Length": [
+          "508"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:11.8775205Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/ps4486\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps4486\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/ps4486?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczQ0ODY/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"ps4486\",\r\n  \"properties\": {\r\n    \"description\": \"Sample fake test policy for unit tests.\",\r\n    \"displayName\": \"Fake test policy\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    },\r\n    \"metadata\": {\r\n      \"category\": \"Unit Test\",\r\n      \"createdBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n      \"createdOn\": \"2019-05-29T00:57:15.0979752Z\",\r\n      \"updatedBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n      \"updatedOn\": \"2019-06-20T19:08:27.0257131Z\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"defaultValue\": [\r\n          \"somewhere\"\r\n        ],\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"defaultValue\": \"Deny\",\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        }\r\n      }\r\n    },\r\n    \"mode\": \"All\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyDefinition"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1360"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:9927b3a4-5809-4e98-8438-2a180f9a3797"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "28322617-1032-4e4d-bf2b-8907171a482d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191212T212512Z:28322617-1032-4e4d-bf2b-8907171a482d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 Dec 2019 21:25:11 GMT"
+        ],
+        "Content-Length": [
+          "1086"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Fake test policy\",\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Sample fake test policy for unit tests.\",\r\n    \"metadata\": {\r\n      \"category\": \"Unit Test\",\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:11.8775205Z\",\r\n      \"updatedBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"updatedOn\": \"2019-12-12T21:25:12.5197697Z\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        },\r\n        \"defaultValue\": [\r\n          \"somewhere\"\r\n        ]\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/ps4486\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps4486\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/ps4486?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczQ0ODY/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyDefinition"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:a7ee07b5-e0b0-4d94-9ad3-c519c616112c"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "2522f583-9748-45ff-aeed-c4ef43e000d5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191212T212509Z:2522f583-9748-45ff-aeed-c4ef43e000d5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 Dec 2019 21:25:09 GMT"
+        ],
+        "Content-Length": [
+          "1026"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Fake test policy\",\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Sample fake test policy for unit tests.\",\r\n    \"metadata\": {\r\n      \"category\": \"Unit Test\",\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:08.9730223Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        },\r\n        \"defaultValue\": [\r\n          \"somewhere\"\r\n        ]\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/ps4486\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps4486\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/ps4486?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczQ0ODY/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyDefinition"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:46758753-8738-4c19-a53a-7b4a1a17ecd7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "a75309ad-7eee-41a9-bd26-bc5230f0330d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191212T212510Z:a75309ad-7eee-41a9-bd26-bc5230f0330d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 Dec 2019 21:25:10 GMT"
+        ],
+        "Content-Length": [
+          "1011"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"testDisplay\",\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\",\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:10.4088422Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/ps4486\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps4486\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/ps4486?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczQ0ODY/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyDefinition"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:40e41c77-5528-4f2d-9a42-b1443015250e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "a93a350d-e8a3-4026-9553-a54c8abaae81"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191212T212512Z:a93a350d-e8a3-4026-9553-a54c8abaae81"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 Dec 2019 21:25:11 GMT"
+        ],
+        "Content-Length": [
+          "508"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:11.8775205Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/ps4486\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps4486\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/ps4486?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczQ0ODY/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Get-AzPolicyDefinition"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:02d456a6-e66d-4d2c-90c9-9792a62bb761"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "1f17efde-1875-4aa8-8a93-f2689a478b11"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191212T212512Z:1f17efde-1875-4aa8-8a93-f2689a478b11"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 Dec 2019 21:25:12 GMT"
+        ],
+        "Content-Length": [
+          "1086"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Fake test policy\",\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Sample fake test policy for unit tests.\",\r\n    \"metadata\": {\r\n      \"category\": \"Unit Test\",\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:11.8775205Z\",\r\n      \"updatedBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"updatedOn\": \"2019-12-12T21:25:12.5197697Z\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        },\r\n        \"defaultValue\": [\r\n          \"somewhere\"\r\n        ]\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/ps4486\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps4486\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/ps4486?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczQ0ODY/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Remove-AzPolicyDefinition"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:bf2c9ece-e2bf-4cd4-b464-9e8a327f5053"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "817371bc-a94a-4600-8358-c2dc03e28ec5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191212T212510Z:817371bc-a94a-4600-8358-c2dc03e28ec5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 Dec 2019 21:25:09 GMT"
+        ],
+        "Content-Length": [
+          "1026"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Fake test policy\",\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Sample fake test policy for unit tests.\",\r\n    \"metadata\": {\r\n      \"category\": \"Unit Test\",\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:08.9730223Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        },\r\n        \"defaultValue\": [\r\n          \"somewhere\"\r\n        ]\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/ps4486\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps4486\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/ps4486?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczQ0ODY/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Remove-AzPolicyDefinition"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:41a379cd-8a3f-4002-9ce9-119cc7ebe661"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "238a2a4b-5acb-4b25-a2ef-4d5d843ca434"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191212T212511Z:238a2a4b-5acb-4b25-a2ef-4d5d843ca434"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 Dec 2019 21:25:11 GMT"
+        ],
+        "Content-Length": [
+          "1011"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"testDisplay\",\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"Indexed\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\",\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:10.4088422Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/ps4486\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps4486\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policydefinitions/ps4486?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczQ0ODY/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Remove-AzPolicyDefinition"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:ee3943bb-88c3-49d6-91d6-41c05b3f8012"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "73f33e21-4281-43f7-b0bc-67ad5849d7fb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191212T212513Z:73f33e21-4281-43f7-b0bc-67ad5849d7fb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 Dec 2019 21:25:12 GMT"
+        ],
+        "Content-Length": [
+          "1086"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Fake test policy\",\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Sample fake test policy for unit tests.\",\r\n    \"metadata\": {\r\n      \"category\": \"Unit Test\",\r\n      \"createdBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"createdOn\": \"2019-12-12T21:25:11.8775205Z\",\r\n      \"updatedBy\": \"094435f3-a5d5-4c38-abfb-238662bec758\",\r\n      \"updatedOn\": \"2019-12-12T21:25:12.5197697Z\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        },\r\n        \"defaultValue\": [\r\n          \"somewhere\"\r\n        ]\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Deny\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters('effectParam')]\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/ps4486\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps4486\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-PolicyDefinitionWithFullObject": [
+      "ps4486"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "40d77f8e-5982-4e7e-bafa-b7cd23b123e6"
+  }
+}

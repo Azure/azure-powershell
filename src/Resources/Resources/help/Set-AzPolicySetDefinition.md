@@ -15,31 +15,33 @@ Modifies a policy set definition
 ### NameParameterSet (Default)
 ```
 Set-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
- [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-GroupDefinition <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ManagementGroupNameParameterSet
 ```
 Set-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] -ManagementGroupName <String>
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-GroupDefinition <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionIdParameterSet
 ```
 Set-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] -SubscriptionId <Guid>
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-GroupDefinition <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
 Set-AzPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
- [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-GroupDefinition <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,6 +74,21 @@ PolicySetDefinitionId : /subscriptions/11111111-1111-1111-1111-111111111111/prov
 ```
 
 This command updates the metadata of a policy set definition named VMPolicySetDefinition to indicate its category is "Virtual Machine".
+
+### Example 3: Update the groups of a policy set definition
+```
+PS C:\> Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition '[{ "name": "group1", "displayName": "Virtual Machine Security" }, { "name": "group2" }]'
+```
+
+This command updates the groups of a policy set definition named VMPolicySetDefinition.
+
+### Example 4: Update the groups of a policy set definition using a hash table
+```
+$groupsJson = ConvertTo-Json @{ name = "group1", displayName = "Virtual Machine Security" }, @{ name = "group2" }
+PS C:\> Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson
+```
+
+This command updates the groups of a policy set definition named VMPolicySetDefinition using a hash table to construct the groups.
 
 ## PARAMETERS
 
@@ -136,6 +153,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -GroupDefinition
+The policy definition groups of the updated policy set definition. This can either be a path to a file containing the groups, or the groups as a JSON string.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Id
 The fully qualified policy definition Id, including the subscription.
 e.g.
@@ -169,7 +201,7 @@ Accept wildcard characters: False
 ```
 
 ### -Metadata
-The metadata of the updated policy set definition. This can either be a path to a file name containing the metadata, or the metadata as a string.
+The metadata of the updated policy set definition. This can either be a path to a file name containing the metadata, or the metadata as a JSON string.
 
 ```yaml
 Type: System.String
@@ -199,7 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-The parameters declaration of the updated policy set definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as a string.
+The parameters declaration of the updated policy set definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as a JSON string.
 
 ```yaml
 Type: System.String
@@ -214,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinition
-The policy definitions. This can either be a path to a file name containing the policy definitions, or the policy definitions as string.
+The policy definitions. This can either be a path to a file name containing the policy definitions, or the policy definitions as a JSON string.
 
 ```yaml
 Type: System.String

@@ -12,6 +12,16 @@ Create a new Azure Front Door load balancer
 
 ## SYNTAX
 
+### ByFieldsWithBackendPoolsSettingParameterSet (Default)
+```
+New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRoutingRule[]>
+ -BackendPool <PSBackendPool[]> -FrontendEndpoint <PSFrontendEndpoint[]>
+ -LoadBalancingSetting <PSLoadBalancingSetting[]> -HealthProbeSetting <PSHealthProbeSetting[]>
+ [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-BackendPoolsSetting <PSBackendPoolsSetting>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByFieldsWithCertificateNameCheckParameterSet
 ```
 New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRoutingRule[]>
  -BackendPool <PSBackendPool[]> -FrontendEndpoint <PSFrontendEndpoint[]>
@@ -27,12 +37,13 @@ The **New-AzFrontDoor** cmdlet creates a new Azure Front Door load balancer in t
 
 ### Example 1: Create a Front Door based on given parameters.
 ```powershell
-PS C:\> New-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "rg1" -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1
+PS C:\> New-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "rg1" -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSetting $backendPoolsSetting1
 
 FriendlyName                : frontdoor1
 RoutingRules                : {routingrule1}
 BackendPools                : {backendpool1}
-EnforceCertificateNameCheck : Enabled
+BackendPoolsSetting         : {backendPoolsSetting1}
+EnforceCertificateNameCheck : {backendPoolsSetting1.EnforceCertificateNameCheck}
 HealthProbeSettings         : {healthProbeSetting1}
 LoadBalancingSettings       : {loadbalancingsetting1}
 FrontendEndpoints           : {frontendendpoint1}
@@ -65,6 +76,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BackendPoolsSetting
+Settings for all backendPools
+
+```yaml
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting
+Parameter Sets: ByFieldsWithBackendPoolsSettingParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -85,7 +111,7 @@ Whether to disable certificate name check on HTTPS requests to all backend pools
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithCertificateNameCheckParameterSet
 Aliases:
 
 Required: False
@@ -254,11 +280,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
-
 ## NOTES
 
 ## RELATED LINKS

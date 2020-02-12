@@ -41,9 +41,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
             DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateShare");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateLocalShare()
+        {
+            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateLocalShare");
+        }
+
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveShare()
         {
             DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-RemoveShare");

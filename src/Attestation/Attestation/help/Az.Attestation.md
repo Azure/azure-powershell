@@ -20,3 +20,12 @@ Creates an attestation.
 ### [Remove-AzAttestation](Remove-AzAttestation.md)
 Deletes an attestation.
 
+### [Get-AzAttestationPolicy](Get-AzAttestationPolicy.md)
+Gets an attestationPolicy.
+
+### [Set-AzAttestationPolicy](Set-AzAttestationPolicy.md)
+Sets an attestationPolicy.
+
+### [Remove-AzAttestationPolicy](Remove-AzAttestationPolicy.md)
+Deletes an attestationPolicy.
+

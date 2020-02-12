@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzActionRule
 
 ## SYNOPSIS
-Deletes a action group
+Deletes a action rule
 
 ## SYNTAX
 

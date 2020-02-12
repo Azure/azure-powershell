@@ -130,6 +130,18 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Azure Storage to mount inside a Web App for Container. Use New-AzWebAppAzureStoragePath to create it")]
         public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Ensure web app gets loaded all the time, rather unloaded after been idle.")]
+        public bool AlwaysOn { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "The minimum version of TLS required for SSL requests. Allowed Values [1.0 | 1.1 | 1.2].")]
+        [ValidateSet("1.0", "1.1", "1.2")]
+        public string MinTlsVersion { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Set the Ftps state value for an app. Allowed Values [AllAllowed | Disabled | FtpsOnly].")]
+        [ValidateSet("AllAllowed", "Disabled", "FtpsOnly")]
+        public string FtpsState { get; set; }
+
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -144,6 +156,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     location = WebApp.Location;
                     tags = WebApp.Tags;
                     var parameters = new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
+                    if (parameters.Contains("AppServicePlan"))
+                    {
+                        // AzureStorage path is not a part of the back end siteObject, but if the PSSite Object is given as an input, so simply set this to null
+                        WebApp.AzureStoragePath = null;
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, AppServicePlan, WebApp);
+                    }
+ 
                     if (parameters.Any(p => CmdletHelpers.SiteConfigParameters.Contains(p)))
                     {
                         siteConfig = new SiteConfig
@@ -165,7 +184,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             Use32BitWorkerProcess =
                                 parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
                             AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
-                            NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers
+                            NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers,
+                            AlwaysOn = parameters.Contains("AlwaysOn") ? (bool?)AlwaysOn : null,
+                            MinTlsVersion = parameters.Contains("MinTlsVersion") ? MinTlsVersion : WebApp.SiteConfig.MinTlsVersion,
+                            FtpsState = parameters.Contains("FtpsState") ? FtpsState: WebApp.SiteConfig.FtpsState
                         };
                     }
 
@@ -241,16 +263,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             ServerFarmId = WebApp.ServerFarmId,
                             Identity = parameters.Contains("AssignIdentity") ? AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : new ManagedServiceIdentity("None", null, null) : WebApp.Identity,
                             HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
+                            
                         };
 
                         WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, WebApp.ServerFarmId, new PSSite(site));
-                    }
 
-                    if (parameters.Contains("AppServicePlan"))
-                    {
-                        // AzureStorage path is not a part of the back end siteObject, but if the PSSite Object is given as an input, so simply set this to null
-                        WebApp.AzureStoragePath = null;
-                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, AppServicePlan, WebApp);
+                        //Update WebApp object after site update
+                        WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
+
                     }
 
                     if (parameters.Contains("HostNames"))

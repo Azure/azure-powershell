@@ -103,6 +103,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicySetDefinitionCRUDWithGroups()
+        {
+            TestRunner.RunTestScript("Test-PolicySetDefinitionCRUDWithGroups");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicySetDefinitionCRUDAtManagementGroup()
         {
             TestRunner.RunTestScript("Test-PolicySetDefinitionCRUDAtManagementGroup");
@@ -120,6 +127,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestPolicyDefinitionWithUri()
         {
             TestRunner.RunTestScript("Test-PolicyDefinitionWithUri");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyDefinitionWithFullObject()
+        {
+            TestRunner.RunTestScript("Test-PolicyDefinitionWithFullObject");
         }
 
         [Fact]

@@ -460,5 +460,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// </summary>
         /// <returns>the sku name and account kind</returns>
         AccountProperties GetAccountProperties();
+
+        /// <summary>
+        /// Get UserDelegationKey, this key will be used to get  UserDelegation SAS token
+        /// </summary>
+        /// <param name="keyStart">The key valid start time</param>
+        /// <param name="keyEnd">The key valid end time</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="options">Blob request option</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <returns>The UserDelegationKey</returns>
+        UserDelegationKey GetUserDelegationKey(DateTimeOffset? keyStart, DateTimeOffset? keyEnd, AccessCondition accessCondition = null, BlobRequestOptions options = null, OperationContext operationContext = null);
     }
 }
