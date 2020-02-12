@@ -618,6 +618,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
+            string friendlyName = (string)ProviderData[ItemParams.FriendlyName];
+
+            if( itemName != null && isFriendlyName(itemName) )
+            {
+                Logger.Instance.WriteWarning(Resources.FriendlyNamePassedWarning);
+            }
 
             // 1. Filter by container
             List<ProtectedItemResource> protectedItems = AzureWorkloadProviderHelper.ListProtectedItemsByContainer(
@@ -650,7 +656,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
                             serviceClientExtendedInfo.RecoveryPointCount : 0);
                     ((AzureFileShareItem)itemModel).ExtendedInfo = extendedInfo;
-                });
+                }, friendlyName);
 
             // 3. Filter by item's Protection Status
             if (protectionStatus != 0)
@@ -905,6 +911,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public List<PointInTimeBase> GetLogChains()
         {
             throw new NotImplementedException();
+        }
+
+        private bool isFriendlyName(string name)
+        {
+            if (name.Contains(";"))
+                return false;
+            return true;
         }
     }
 }

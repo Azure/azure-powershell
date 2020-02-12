@@ -14,6 +14,9 @@ Commands for Managing Azure IotHubs
 ### [Add-AzIotHubCertificate](Add-AzIotHubCertificate.md)
 Create/update an Azure IoT Hub certificate.
 
+### [Add-AzIotHubDevice](Add-AzIotHubDevice.md)
+Create a device in an IoT Hub.
+
 ### [Add-AzIotHubEventHubConsumerGroup](Add-AzIotHubEventHubConsumerGroup.md)
 Creates an eventhub consumer group.
 
@@ -22,6 +25,9 @@ Creates an IotHub Key.
 
 ### [Add-AzIotHubMessageEnrichment](Add-AzIotHubMessageEnrichment.md)
 Creates a message enrichment for chosen endpoints in your IoT Hub.
+
+### [Add-AzIotHubModule](Add-AzIotHubModule.md)
+Create a module on a target IoT device in an IoT Hub.
 
 ### [Add-AzIotHubRoute](Add-AzIotHubRoute.md)
 Create a route in IoT Hub
@@ -41,6 +47,9 @@ Generates a verification code for an Azure IoT Hub certificate.
 ### [Get-AzIotHubConnectionString](Get-AzIotHubConnectionString.md)
 Gets the IotHub connectionstrings.
 
+### [Get-AzIotHubDevice](Get-AzIotHubDevice.md)
+Lists all devices or a particular device contained within an Azure IoT Hub. 
+
 ### [Get-AzIotHubEventHubConsumerGroup](Get-AzIotHubEventHubConsumerGroup.md)
 Gets all the eventhub consumergroups.
 
@@ -52,6 +61,9 @@ Gets an IotHub Key.
 
 ### [Get-AzIotHubMessageEnrichment](Get-AzIotHubMessageEnrichment.md)
 Lists all message enrichments or a particular message enrichment for your IoT Hub.
+
+### [Get-AzIotHubModule](Get-AzIotHubModule.md)
+Get the details of an IoT device module or list modules located on an IoT device in an IoT Hub.
 
 ### [Get-AzIotHubQuotaMetric](Get-AzIotHubQuotaMetric.md)
 Gets the Quota Metrics for an IotHub.
@@ -89,6 +101,9 @@ Deletes an IotHub.
 ### [Remove-AzIotHubCertificate](Remove-AzIotHubCertificate.md)
 Deletes an Azure IoT Hub certificate.
 
+### [Remove-AzIotHubDevice](Remove-AzIotHubDevice.md)
+Delete an IoT Hub device.
+
 ### [Remove-AzIotHubEventHubConsumerGroup](Remove-AzIotHubEventHubConsumerGroup.md)
 Deletes an eventhub consumergroup.
 
@@ -97,6 +112,9 @@ Removes an IotHub Key.
 
 ### [Remove-AzIotHubMessageEnrichment](Remove-AzIotHubMessageEnrichment.md)
 Delete a message enrichment in your IoT hub.
+
+### [Remove-AzIotHubModule](Remove-AzIotHubModule.md)
+Delete module(s) on a target IoT device in an IoT Hub.
 
 ### [Remove-AzIotHubRoute](Remove-AzIotHubRoute.md)
 Delete a route in IoT Hub
@@ -107,8 +125,14 @@ Delete an endpoint for your IoT Hub
 ### [Set-AzIotHub](Set-AzIotHub.md)
 Updates the properties of an IotHub.
 
+### [Set-AzIotHubDevice](Set-AzIotHubDevice.md)
+Update an IoT Hub device.
+
 ### [Set-AzIotHubMessageEnrichment](Set-AzIotHubMessageEnrichment.md)
 Update a message enrichment in your IoT hub.
+
+### [Set-AzIotHubModule](Set-AzIotHubModule.md)
+Update a module on a target IoT device in an IoT Hub.
 
 ### [Set-AzIotHubRoute](Set-AzIotHubRoute.md)
 Update a route in IoT Hub

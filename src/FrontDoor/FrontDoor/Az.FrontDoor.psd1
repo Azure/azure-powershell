@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.FrontDoor.dll'
@@ -85,6 +85,7 @@ CmdletsToExport = 'New-AzFrontDoor', 'Get-AzFrontDoor', 'Set-AzFrontDoor',
                'New-AzFrontDoorWafCustomRuleObject', 
                'New-AzFrontDoorWafManagedRuleObject', 'New-AzFrontDoorWafPolicy', 
                'Get-AzFrontDoorWafPolicy', 'Update-AzFrontDoorWafPolicy', 
+               'Get-AzFrontDoorWafManagedRuleSetDefinition',
                'Remove-AzFrontDoorWafPolicy', 
                'New-AzFrontDoorWafRuleGroupOverrideObject', 
                'Remove-AzFrontDoorContent', 'Enable-AzFrontDoorCustomDomainHttps', 

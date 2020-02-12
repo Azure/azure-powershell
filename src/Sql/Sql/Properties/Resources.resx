@@ -580,4 +580,13 @@
   <data name="VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase" xml:space="preserve">
     <value>Vulnerability Assessment operation is not available on master database. Skipping...</value>
   </data>
+  <data name="DoYouWantToProceed" xml:space="preserve">
+    <value>Do you want to proceed?</value>
+  </data>
+  <data name="ChangingHardwareFamilyIsIrreversable" xml:space="preserve">
+    <value>For this update operation provided compute generation parameter is '{0}'. Once the hardware generation is upgraded, it is not possible to switch back to Gen4 compute generation as this hardware is being deprecated.</value>
+  </data>
+  <data name="CannotChangeHardwareFamily" xml:space="preserve">
+    <value>You cannot change hardware family.</value>
+  </data>
 </root>
