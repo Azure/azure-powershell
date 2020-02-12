@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
