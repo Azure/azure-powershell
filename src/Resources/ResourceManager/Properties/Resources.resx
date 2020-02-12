@@ -450,4 +450,8 @@
   <data name="NoSubscriptionsUnderCurrentDirectory" xml:space="preserve">
     <value>No subscriptions can be found under current directory. Please login again using Connect-AzAccount.</value>
   </data>
+  <data name="WhatIfPreviewNotice" xml:space="preserve">
+    <value>Note: As What-If is currently in preview, the result may contain false positive predictions (noise).
+You can help us improve the accuracy of the result by opening an issue here: https://aka.ms/WhatIfIssues.</value>
+  </data>
 </root>
