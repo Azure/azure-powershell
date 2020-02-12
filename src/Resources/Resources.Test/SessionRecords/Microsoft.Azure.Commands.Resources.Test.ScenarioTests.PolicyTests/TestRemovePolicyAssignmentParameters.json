@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/Subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8/providers/Microsoft.Authorization/policyassignments?$filter=atScope()&api-version=2019-06-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMGI0MGJlMDYtMDRlOC00ZjcwLWFiZGUtYTUwMmIyNjQ2ZmU4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cz8kZmlsdGVyPWF0U2NvcGUoKSZhcGktdmVyc2lvbj0yMDE5LTA2LTAx",
+      "RequestUri": "/Subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyassignments?$filter=atScope()&api-version=2019-09-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cz8kZmlsdGVyPWF0U2NvcGUoKSZhcGktdmVyc2lvbj0yMDE5LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -28,16 +28,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:67985434-5512-4281-aacf-6284becd1e17"
+          "westus:285e7e88-7f0d-4d42-a180-d28a54d3d83e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "a58b88a6-1d79-408b-bda8-9f789c490ece"
+          "d873920d-76bf-4b4a-b5b7-14fe754e6613"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191031T010501Z:a58b88a6-1d79-408b-bda8-9f789c490ece"
+          "WESTUS:20200109T013116Z:d873920d-76bf-4b4a-b5b7-14fe754e6613"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,10 +46,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 31 Oct 2019 01:05:00 GMT"
+          "Thu, 09 Jan 2020 01:31:15 GMT"
         ],
         "Content-Length": [
-          "5833"
+          "4821"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -61,12 +61,12 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"A0\",\r\n        \"tier\": \"Free\"\r\n      },\r\n      \"properties\": {\r\n        \"policyDefinitionId\": \"/subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8/providers/Microsoft.Authorization/policyDefinitions/policy2\",\r\n        \"scope\": \"/subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8\",\r\n        \"metadata\": {\r\n          \"createdBy\": \"4358bf84-f563-48b9-aea0-8107d5294bf6\",\r\n          \"createdOn\": \"2019-08-28T20:41:58.8575234Z\",\r\n          \"updatedBy\": null,\r\n          \"updatedOn\": null\r\n        },\r\n        \"enforcementMode\": \"Default\"\r\n      },\r\n      \"id\": \"/subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8/providers/Microsoft.Authorization/policyAssignments/location-lock\",\r\n      \"type\": \"Microsoft.Authorization/policyAssignments\",\r\n      \"name\": \"location-lock\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"A1\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"displayName\": \"ASC Default (subscription: 0b40be06-04e8-4f70-abde-a502b2646fe8)\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8\",\r\n        \"scope\": \"/subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8\",\r\n        \"parameters\": {\r\n          \"diagnosticsLogsInServiceFabricMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"systemUpdatesMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"systemConfigurationsMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"endpointProtectionMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"diskEncryptionMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"networkSecurityGroupsMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"webApplicationFirewallMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"sqlAuditingMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"sqlEncryptionMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"nextGenerationFirewallMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"vulnerabilityAssesmentMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"storageEncryptionMonitoringEffect\": {\r\n            \"value\": \"Audit\"\r\n          },\r\n          \"jitNetworkAccessMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"adaptiveApplicationControlsMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"identityDesignateLessThanOwnersMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"identityDesignateMoreThanOneOwnerMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"identityEnableMFAForOwnerPermissionsMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"identityEnableMFAForWritePermissionsMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"identityEnableMFAForReadPermissionsMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"identityRemoveDeprecatedAccountWithOwnerPermissionsMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"identityRemoveDeprecatedAccountMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"identityRemoveExternalAccountWithOwnerPermissionsMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"identityRemoveExternalAccountWithWritePermissionsMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"identityRemoveExternalAccountWithReadPermissionsMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"secureTransferToStorageAccountMonitoringEffect\": {\r\n            \"value\": \"Audit\"\r\n          },\r\n          \"aadAuthenticationInSqlServerMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"diagnosticsLogsInRedisCacheMonitoringEffect\": {\r\n            \"value\": \"Audit\"\r\n          },\r\n          \"clusterProtectionLevelInServiceFabricMonitoringEffect\": {\r\n            \"value\": \"Audit\"\r\n          },\r\n          \"aadAuthenticationInServiceFabricMonitoringEffect\": {\r\n            \"value\": \"Audit\"\r\n          },\r\n          \"diagnosticsLogsInServiceBusMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"diagnosticsLogsInDataLakeAnalyticsMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"diagnosticsLogsInDataLakeStoreMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"diagnosticsLogsInBatchAccountMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"diagnosticsLogsInEventHubMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"metricAlertsInBatchAccountMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          },\r\n          \"namespaceAuthorizationRulesInServiceBusMonitoringEffect\": {\r\n            \"value\": \"Audit\"\r\n          },\r\n          \"disableUnrestrictedNetworkToStorageAccountMonitoringEffect\": {\r\n            \"value\": \"Audit\"\r\n          },\r\n          \"classicComputeVMsMonitoringEffect\": {\r\n            \"value\": \"Audit\"\r\n          },\r\n          \"classicStorageAccountsMonitoringEffect\": {\r\n            \"value\": \"Audit\"\r\n          },\r\n          \"sqlDbVulnerabilityAssesmentMonitoringEffect\": {\r\n            \"value\": \"AuditIfNotExists\"\r\n          }\r\n        },\r\n        \"description\": \"This policy assignment was automatically created by Azure Security Center\",\r\n        \"metadata\": {\r\n          \"assignedBy\": \"Security Center\"\r\n        },\r\n        \"enforcementMode\": \"Default\"\r\n      },\r\n      \"id\": \"/subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8/providers/Microsoft.Authorization/policyAssignments/SecurityCenterBuiltIn\",\r\n      \"type\": \"Microsoft.Authorization/policyAssignments\",\r\n      \"name\": \"SecurityCenterBuiltIn\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"A1\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"displayName\": \"Audit location\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Management/managementGroups/2PolicyTestMG/providers/Microsoft.Authorization/policyDefinitions/39c9b753-8ef9-4ca7-9410-479289f926fa\",\r\n        \"scope\": \"/providers/Microsoft.Management/managementGroups/2PolicyTestMG\",\r\n        \"notScopes\": [],\r\n        \"parameters\": {\r\n          \"allowedLocations\": {\r\n            \"value\": [\r\n              \"centralus\"\r\n            ]\r\n          }\r\n        },\r\n        \"metadata\": {\r\n          \"assignedBy\": \"Carolyn Zysman Yehezkel\",\r\n          \"parameterScopes\": {}\r\n        },\r\n        \"enforcementMode\": \"Default\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/2PolicyTestMG/providers/Microsoft.Authorization/policyAssignments/4812fcb8073643c7ad59267b\",\r\n      \"type\": \"Microsoft.Authorization/policyAssignments\",\r\n      \"name\": \"4812fcb8073643c7ad59267b\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"A1\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"displayName\": \"Audit location - 2\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Management/managementGroups/2PolicyTestMG/providers/Microsoft.Authorization/policyDefinitions/39c9b753-8ef9-4ca7-9410-479289f926fa\",\r\n        \"scope\": \"/providers/Microsoft.Management/managementGroups/2PolicyTestMG\",\r\n        \"notScopes\": [],\r\n        \"parameters\": {\r\n          \"allowedLocations\": {\r\n            \"value\": [\r\n              \"centralus\"\r\n            ]\r\n          }\r\n        },\r\n        \"description\": \"this is after unregister the subscription\",\r\n        \"metadata\": {\r\n          \"assignedBy\": \"Carolyn Zysman Yehezkel\",\r\n          \"parameterScopes\": {}\r\n        },\r\n        \"enforcementMode\": \"Default\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/2PolicyTestMG/providers/Microsoft.Authorization/policyAssignments/b5fe33098ed046b18eba9524\",\r\n      \"type\": \"Microsoft.Authorization/policyAssignments\",\r\n      \"name\": \"b5fe33098ed046b18eba9524\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"A0\",\r\n        \"tier\": \"Free\"\r\n      },\r\n      \"properties\": {\r\n        \"displayName\": \"TagNameCaseTest\",\r\n        \"policyDefinitionId\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyDefinitions/4ece3251-c015-4e6b-bad7-431cad00a3f6\",\r\n        \"scope\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6\",\r\n        \"notScopes\": [],\r\n        \"parameters\": {},\r\n        \"metadata\": {\r\n          \"assignedBy\": \"Chris Stackhouse\",\r\n          \"parameterScopes\": {},\r\n          \"createdBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n          \"createdOn\": \"2019-08-21T19:16:07.4077018Z\",\r\n          \"updatedBy\": null,\r\n          \"updatedOn\": null\r\n        },\r\n        \"enforcementMode\": \"Default\"\r\n      },\r\n      \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyAssignments/51df62459187464395b9eb9f\",\r\n      \"type\": \"Microsoft.Authorization/policyAssignments\",\r\n      \"name\": \"51df62459187464395b9eb9f\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"A1\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"displayName\": \"ASC Default (subscription: 40d77f8e-5982-4e7e-bafa-b7cd23b123e6)\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8\",\r\n        \"scope\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6\",\r\n        \"parameters\": {},\r\n        \"description\": \"This is the default set of policies monitored by Azure Security Center. It was automatically assigned as part of onboarding to Security Center. The default assignment contains only audit policies. For more information please visit https://aka.ms/ascpolicies\",\r\n        \"metadata\": {\r\n          \"assignedBy\": \"Security Center\",\r\n          \"createdBy\": \"6878917f-bc1d-4e4e-bb24-12924205b215\",\r\n          \"createdOn\": \"2019-02-20T19:08:35.3089897Z\",\r\n          \"updatedBy\": null,\r\n          \"updatedOn\": null\r\n        },\r\n        \"enforcementMode\": \"Default\"\r\n      },\r\n      \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyAssignments/SecurityCenterBuiltIn\",\r\n      \"type\": \"Microsoft.Authorization/policyAssignments\",\r\n      \"name\": \"SecurityCenterBuiltIn\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"A0\",\r\n        \"tier\": \"Free\"\r\n      },\r\n      \"properties\": {\r\n        \"displayName\": \"Repro scenario for Github Issue 9747\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/c4857be7-912a-4c75-87e6-e30292bcdf78\",\r\n        \"scope\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6\",\r\n        \"notScopes\": [\r\n          \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/resourceGroups/cloud-shell-storage-westus\",\r\n          \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/resourceGroups/NetworkWatcherRG\"\r\n        ],\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"Audit\"\r\n          }\r\n        },\r\n        \"metadata\": {\r\n          \"createdBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n          \"createdOn\": \"2019-12-06T20:12:38.0922122Z\",\r\n          \"updatedBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n          \"updatedOn\": \"2019-12-06T20:14:56.5017462Z\"\r\n        },\r\n        \"enforcementMode\": \"Default\"\r\n      },\r\n      \"id\": \"/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyAssignments/TestGithub9747\",\r\n      \"type\": \"Microsoft.Authorization/policyAssignments\",\r\n      \"name\": \"TestGithub9747\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"A0\",\r\n        \"tier\": \"Free\"\r\n      },\r\n      \"properties\": {\r\n        \"displayName\": \"Empty deployment on each KeyVault resource (MG)\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyDefinitions/78a38c70-5549-49bd-8a16-fe3619e5d2cf\",\r\n        \"scope\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest\",\r\n        \"notScopes\": [],\r\n        \"parameters\": {},\r\n        \"description\": \"Deploys an empty deployment (with one output) on each KeyVault vault.  Used for some PolicyInsights SDK tests.\",\r\n        \"metadata\": {\r\n          \"assignedBy\": \"Chris Eggert\",\r\n          \"parameterScopes\": {},\r\n          \"createdBy\": \"36e2f355-d2e2-4fbc-88ab-4281639dff94\",\r\n          \"createdOn\": \"2019-11-21T17:44:17.3643721Z\",\r\n          \"updatedBy\": null,\r\n          \"updatedOn\": null\r\n        },\r\n        \"enforcementMode\": \"DoNotEnforce\"\r\n      },\r\n      \"identity\": {\r\n        \"principalId\": \"067c1aa0-c425-4ad5-80fe-41d4639b1d42\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"type\": \"SystemAssigned\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/d80d743b97874fd3bfd1d539\",\r\n      \"type\": \"Microsoft.Authorization/policyAssignments\",\r\n      \"name\": \"d80d743b97874fd3bfd1d539\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"A0\",\r\n        \"tier\": \"Free\"\r\n      },\r\n      \"properties\": {\r\n        \"displayName\": \"Audit tag at MG\",\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyDefinitions/03ae6c12-b46a-43f1-9f3d-c20620473106\",\r\n        \"scope\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest\",\r\n        \"notScopes\": [\r\n          \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322\"\r\n        ],\r\n        \"parameters\": {},\r\n        \"metadata\": {\r\n          \"assignedBy\": \"Chris Eggert\",\r\n          \"parameterScopes\": {},\r\n          \"createdBy\": \"327c26bf-bf3e-4128-9b75-fbbd99e98739\",\r\n          \"createdOn\": \"2019-09-19T21:02:48.2629834Z\",\r\n          \"updatedBy\": \"36e2f355-d2e2-4fbc-88ab-4281639dff94\",\r\n          \"updatedOn\": \"2019-10-01T17:50:28.4254014Z\"\r\n        },\r\n        \"enforcementMode\": \"Default\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/ef26e8bbc3da423ebf7fcb80\",\r\n      \"type\": \"Microsoft.Authorization/policyAssignments\",\r\n      \"name\": \"ef26e8bbc3da423ebf7fcb80\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGI0MGJlMDYtMDRlOC00ZjcwLWFiZGUtYTUwMmIyNjQ2ZmU4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
+      "RequestUri": "/Subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -89,16 +89,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:e996f9f0-fbc2-422e-82a7-8049d18889b5"
+          "westus:8c06cdcb-f1c2-44b3-9e67-4d0ac29c77d6"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "3c7d4ea5-3e93-4822-a15c-0ff7460eb2d0"
+          "d72246f3-f4c7-41d1-b11b-246bfbaa341c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191031T010502Z:3c7d4ea5-3e93-4822-a15c-0ff7460eb2d0"
+          "WESTUS:20200109T013117Z:d72246f3-f4c7-41d1-b11b-246bfbaa341c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -107,7 +107,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 31 Oct 2019 01:05:01 GMT"
+          "Thu, 09 Jan 2020 01:31:16 GMT"
         ],
         "Expires": [
           "-1"
@@ -120,8 +120,63 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8/providers/Microsoft.Authorization/policyAssignments/someName?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGI0MGJlMDYtMDRlOC00ZjcwLWFiZGUtYTUwMmIyNjQ2ZmU4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lBc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
+      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Remove-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:b348f7b2-a8de-492b-8377-c059f4024aaf"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "ae99e66a-1027-45f4-b5cb-38d229cbc8d3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200109T013117Z:ae99e66a-1027-45f4-b5cb-38d229cbc8d3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 01:31:16 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/40d77f8e-5982-4e7e-bafa-b7cd23b123e6/providers/Microsoft.Authorization/policyAssignments/someName?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDBkNzdmOGUtNTk4Mi00ZTdlLWJhZmEtYjdjZDIzYjEyM2U2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lBc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -144,16 +199,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:dc96430e-1bbf-4957-aebf-f5311cda9124"
+          "westus:5392143a-2bdb-42b3-9d1d-1a6868ce7b9f"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "ba821b32-9af1-49de-a124-23caccbe36aa"
+          "43cf7dec-d5ef-4398-bddd-1f7d22ff3967"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191031T010502Z:ba821b32-9af1-49de-a124-23caccbe36aa"
+          "WESTUS:20200109T013117Z:43cf7dec-d5ef-4398-bddd-1f7d22ff3967"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -162,7 +217,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 31 Oct 2019 01:05:01 GMT"
+          "Thu, 09 Jan 2020 01:31:17 GMT"
         ],
         "Expires": [
           "-1"
@@ -177,6 +232,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "0b40be06-04e8-4f70-abde-a502b2646fe8"
+    "SubscriptionId": "40d77f8e-5982-4e7e-bafa-b7cd23b123e6"
   }
 }

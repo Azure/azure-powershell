@@ -391,7 +391,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         {
             switch (schemaContract.ContentType.ToLower())
             {
-                case "application/vnd.ms-azure-apim.swagger.definitions+json":
+                case ApiSchemaContentType.SwaggerDefinition:
+                    return schemaContract.Document.ToString();
+                case ApiSchemaContentType.OpenApiComponents:
                     return schemaContract.Document.ToString();
                 default:
                     try

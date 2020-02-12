@@ -98,6 +98,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Constants.Standard_SSD)]
         public string RecoveryTargetDiskAccountType { get; set; }
 
+        /// <summary>
+        /// Gets or sets RecoveryDiskEncryptionSetId.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryDiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets DiskEncryptionVaultId.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string DiskEncryptionVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets DiskEncryptionSecretUrl.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string DiskEncryptionSecretUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets KeyEncryptionKeyUrl.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string KeyEncryptionKeyUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets KeyEncryptionVaultId.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string KeyEncryptionVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the failover disk name.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string FailoverDiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test failover disk name.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string TfoDiskName { get; set; }
+
         #endregion Parameters
 
         /// <summary>
@@ -132,7 +181,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             RecoveryReplicaDiskAccountType = this.RecoveryReplicaDiskAccountType,
                             RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                             RecoveryTargetDiskAccountType = this.RecoveryTargetDiskAccountType,
-                            IsManagedDisk = true
+                            IsManagedDisk = true,
+                            DiskEncryptionSecretUrl = this.DiskEncryptionSecretUrl,
+                            DiskEncryptionVaultId = this.DiskEncryptionVaultId,
+                            KeyEncryptionKeyUrl = this.KeyEncryptionKeyUrl,
+                            KeyEncryptionVaultId = this.KeyEncryptionVaultId,
+                            RecoveryDiskEncryptionSetId = this.RecoveryDiskEncryptionSetId,
+                            FailoverDiskName = this.FailoverDiskName,
+                            TfoDiskName = this.TfoDiskName
                         };
                         break;
                 }

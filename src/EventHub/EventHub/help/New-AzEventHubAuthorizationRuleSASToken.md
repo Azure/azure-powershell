@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubAuthorizationRuleSASToken
 
 ## SYNOPSIS
-Generates a SAS tolen for Azure eventhub authorization rule of namespace/eventhub. 
+Generates a SAS token for Azure eventhub authorization rule of namespace/eventhub. 
 
 ## SYNTAX
 

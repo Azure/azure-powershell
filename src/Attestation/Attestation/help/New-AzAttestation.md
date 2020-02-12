@@ -14,7 +14,8 @@ Creates an attestation
 
 ```
 New-AzAttestation -Name <String> -ResourceGroupName <String> [-AttestationPolicy <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PolicySigningCertificateFile <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,7 @@ The New-AzAttestation cmdlet creates an attestation in the specified resource gr
 
 ### Example 1
 ```powershell
-PS C:\> New-AzAttestation -Name example -ResourceGroupName rg1 
+PS C:\> New-AzAttestation -Name "example" -ResourceGroupName "rg1" 
 Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Attestation/attestationProviders/example
 Name                : example
 Type                : Microsoft.Attestation/attestationProviders
@@ -34,12 +35,34 @@ ResoureGroupName    : rg1
 SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 ```
 
-Create a new Attestation "example" in current Subscription, Resource Group "rg1"
+### Example 2
+```powershell
+PS C:\> New-AzAttestation -Name "example" -ResourceGroupName "rg1" -AttestationPolicy "SgxDisableDebugMode"
+Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Attestation/attestationProviders/example
+Name                : example
+Type                : Microsoft.Attestation/attestationProviders
+Status              : Ready
+AttesUri            : https://example.us.attest.azure.net
+ResoureGroupName    : rg1 
+SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+```
+
+### Example 3
+```powershell
+PS C:\> New-AzAttestation -Name "example" -ResourceGroupName "rg1" -PolicySigningCertificateFile "c:\test\certs.pem"
+Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Attestation/attestationProviders/example
+Name                : example
+Type                : Microsoft.Attestation/attestationProviders
+Status              : Ready
+AttesUri            : https://example.us.attest.azure.net
+ResoureGroupName    : rg1 
+SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+```
 
 ## PARAMETERS
 
 ### -AttestationPolicy
-Specifies the attestation policy passed in which to create the attestation.
+Specifies the policy template passed in which to create the attestation. We support four types of policy template: SgxDisableDebugMode, SgxAllowDebugMode, SgxRequireSqlServer and SgxRequireSqlServerBogusMrSigner.
 
 ```yaml
 Type: String
@@ -50,6 +73,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -86,6 +124,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PolicySigningCertificateFile
+Specifies the configuration signing keys passed in which to create the attestation.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of an existing resource group in which to create the attestation.
 
@@ -98,21 +151,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

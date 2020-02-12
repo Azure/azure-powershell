@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed duplicated text for Add-AzKeyVaultKey.md
+
+## Version 1.5.0
+* Add Name alias to VaultName attribute to make Remove-AzureKeyVault consistent with New-AzureKeyVault.
+
+## Version 1.4.0
+* Update references in .psd1 to use relative path
+* Fixed error accessing value that is potentially not set
+* Elliptic Curve Cryptography Certificate Managment
+    - Added support to specify the Curve for Certificate Policies
 
 ## Version 1.3.1
 * Fixed miscellaneous typos across module

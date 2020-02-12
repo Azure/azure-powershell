@@ -272,6 +272,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                     if (enableAzureActiveDirectoryDomainServicesForFile != null)
                     {
+
                         updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
                         if (enableAzureActiveDirectoryDomainServicesForFile.Value)
                         {
@@ -279,6 +280,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         else
                         {
+
                             updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
                         }
                     }

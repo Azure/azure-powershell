@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.4
+* Update references in .psd1 to use relative path
+
 ## Version 1.3.3
 * Fixed miscellaneous typos across module
 * Updated documentation for `New-AzOperationalInsightsLinuxSyslogDataSource`

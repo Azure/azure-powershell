@@ -243,6 +243,8 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 {
                     StartTaskSyncCollections(spec.StartTask);
                 }
+
+                VirtualMachineConfigurationSyncCollections(spec.VirtualMachineConfiguration);
             }
         }
 
@@ -278,6 +280,26 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     ConvertEnvironmentSetting);
 
                 startTask.omObject.ResourceFiles = CreateSyncedList(startTask.ResourceFiles, ConvertResourceFile);
+            }
+        }
+
+        /// <summary>
+        /// Syncs the collections on a PSVirtualMachineConfiguration with its wrapped OM object
+        /// </summary>
+        internal static void VirtualMachineConfigurationSyncCollections(PSVirtualMachineConfiguration virtualMachineConfiguration)
+        {
+            if (virtualMachineConfiguration != null)
+            {
+                if (virtualMachineConfiguration.omObject.ContainerConfiguration != null)
+                {
+                    virtualMachineConfiguration.omObject.ContainerConfiguration.ContainerImageNames = 
+                        CreateSyncedList(virtualMachineConfiguration.ContainerConfiguration.ContainerImageNames, s => s);
+
+                    virtualMachineConfiguration.omObject.ContainerConfiguration.ContainerRegistries =
+                        CreateSyncedList(virtualMachineConfiguration.ContainerConfiguration.ContainerRegistries, ps => ps.omObject);
+                }
+
+                virtualMachineConfiguration.omObject.DataDisks = CreateSyncedList(virtualMachineConfiguration.DataDisks, ps => ps.omObject);
             }
         }
 

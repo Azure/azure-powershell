@@ -77,6 +77,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public long DiskIOPSReadWrite { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public long DiskMBpsReadWrite { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
         public string StorageAccountType { get; set; }
 
@@ -98,7 +108,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
             }
 
             // StorageProfile
@@ -121,6 +131,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vDataDisks.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
             vDataDisks.CreateOption = this.IsParameterBound(c => c.CreateOption) ? this.CreateOption : null;
             vDataDisks.DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null;
+            vDataDisks.DiskIOPSReadWrite = this.IsParameterBound(c => c.DiskIOPSReadWrite) ? this.DiskIOPSReadWrite : (long?)null;
+            vDataDisks.DiskMBpsReadWrite = this.IsParameterBound(c => c.DiskMBpsReadWrite) ? this.DiskMBpsReadWrite : (long?)null;
             if (this.IsParameterBound(c => c.StorageAccountType))
             {
                 // ManagedDisk

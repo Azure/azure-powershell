@@ -45,7 +45,7 @@ PS C:\> $rgname = "testRg"
  New-AzStorageContainer -Name $containerName -Context $context
  $container = Get-AzStorageContainer -Name $containerName -Context $context
  $now=get-date
- $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+ $sasurl = New-AzStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
 PS C:\> Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName $rgname -Name "testgw" -SasUrl $sasurl
 
 Code              : Succeeded
@@ -72,7 +72,7 @@ PS C:\> $rgname = "testRg"
  $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
  $container = Get-AzStorageContainer -Name $containerName -Context $context
  $now=get-date
- $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+ $sasurl = New-AzStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
  $gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name "testGw"
 PS C:\> Stop-AzVirtualNetworkGatewayPacketCapture -InputObject $gw -SasUrl $sasurl
 

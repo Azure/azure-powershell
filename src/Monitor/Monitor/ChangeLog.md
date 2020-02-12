@@ -16,8 +16,15 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
-        
+-->
 ## Upcoming Release
+* Fixed description of the Get-AzLog cmdlet.
+* A new parameter called ActionGroupId was added to `New-AzMetricAlertRuleV2` command.
+	- The user can provide either ActionGroupId(string) or ActionGorup(ActivityLogAlertActionGroup).
+
+## Version 1.5.0
+* Update references in .psd1 to use relative path
+* Adding optional argument to the Add Diagnostic Settings command. A switch argument that if present indicates that the export to Log Analytics must be to a fixed schema (a.k.a. dedicated, data type)
 
 ## Version 1.4.0
 * New action group receivers added for action group

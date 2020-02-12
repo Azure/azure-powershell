@@ -13,11 +13,11 @@
 # ----------------------------------------------------------------------------------
 
 $location = "southeastasia"
-$resourceGroupName = "pstestFSRG1bca8f8e"
-$vaultName = "PSTestFSRSV1bca8f8e"
-$fileShareFriendlyName = "pstestfs1bca8f8e"
-$fileShareName = "AzureFileShare;pstestfs1bca8f8e"
-$saName = "pstestsa1bca8f8e"
+$resourceGroupName = "pstestrg8895"
+$vaultName = "pstestrsv8895"
+$fileShareFriendlyName = "fs1"
+$fileShareName = "AzureFileShare;fs1"
+$saName = "pstestsa8895"
 $skuName="Standard_LRS"
 $newPolicyName = "newFilePolicy"
 

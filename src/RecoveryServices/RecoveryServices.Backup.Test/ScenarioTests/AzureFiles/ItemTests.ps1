@@ -13,19 +13,19 @@
 # ----------------------------------------------------------------------------------
 
 $location = "southeastasia"
-$resourceGroupName = "pstestFSRG1bca8f8e"
-$vaultName = "PSTestFSRSV1bca8f8e"
-$fileShareFriendlyName = "pstestfs1bca8f8e"
-$fileShareName = "AzureFileShare;pstestfs1bca8f8e"
-$saName = "pstestsa1bca8f8e"
-$saRgName = "pstestFSRG1bca8f8e"
-$targetSaName = "pstestsa3rty7d7s"
-$targetFileShareName = "pstestfs3rty7d7s"
+$resourceGroupName = "pstestrg8895"
+$vaultName = "pstestrsv8895"
+$fileShareFriendlyName = "fs1"
+$fileShareName = "AzureFileShare;fs1"
+$saName = "pstestsa8895"
+$saRgName = "pstestrg8895"
+$targetSaName = "pstesttargetsa8896"
+$targetFileShareName = "fs1"
 $targetFolder = "pstestfolder3rty7d7s"
 $folderPath = "pstestfolder1bca8f8e"
 $filePath = "pstestfolder1bca8f8e/pstestfile1bca8f8e.txt"
 $skuName="Standard_LRS"
-$policyName = "AFSBackupPolicy"
+$policyName = "afspolicy1"
 $newPolicyName = "NewAFSBackupPolicy"
 
 # Setup Instructions:

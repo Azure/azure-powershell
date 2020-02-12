@@ -8,6 +8,8 @@ schema: 2.0.0
 # Set-AzMlOpCluster
 
 ## SYNOPSIS
+**Important: This cmdlet is deprecated.**
+
 Sets the properties of an operationalization cluster.
 
 ## SYNTAX

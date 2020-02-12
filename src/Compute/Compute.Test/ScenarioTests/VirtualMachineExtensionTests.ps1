@@ -1028,6 +1028,157 @@ function Test-VirtualMachineCustomScriptExtensionLinuxVM
 
 <#
 .SYNOPSIS
+Test Virtual Machine Custom Script Extensions with Managed Disk VM
+#>
+function Test-VirtualMachineCustomScriptExtensionManagedDisk
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        # Common
+        $loc = (Get-ComputeVMLocation).ToLower().Replace(" ", "");
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a VM with managed disk
+        $vmname0 = $rgname + "v0";        
+        $username = "admin01";
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password;
+        [string]$domainNameLabel = "$vmname0-$vmname0".tolower();
+
+        $imgversion = Get-VMImageVersion -Publisher "MicrosoftWindowsServer" -Offer "WindowsServer" -Sku "2016-Datacenter";
+        $x = New-AzVM `
+            -ResourceGroupName $rgname `
+            -Name $vmname0 `
+            -Location $loc `
+            -Credential $cred `
+            -DomainNameLabel $domainNameLabel `
+            -ImageName ("MicrosoftWindowsServer:WindowsServer:2016-Datacenter:" + $imgversion);
+
+        # Get a managed disk from the stopped VM.
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname0;
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname0 -Force;
+        $managedDisk = Get-AzDisk -ResourceGroupName $rgname -DiskName $vm.StorageProfile.OsDisk.Name;
+
+        # Create a managed OS disk by copying the OS disk of the stopped VM.
+        $diskname = $rgname + "disk";        
+        $diskConfig = New-AzDiskConfig -SourceResourceId $managedDisk.Id -Location $loc -CreateOption Copy;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskConfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+
+        Assert-AreEqual $diskname $disk.Name;
+        Assert-AreEqual $managedDisk.DiskSizeGB $disk.DiskSizeGB;
+        Assert-AreEqual $managedDisk.OsType $disk.OsType;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D2s_v3';
+        $vmname1 = $rgname + "v1";
+        $p = New-AzVMConfig -VMName $vmname1 -VMSize $vmsize;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+
+        # Set the OS disk from the managed OS disk.
+        $osDiskCaching = 'ReadWrite';
+        $osDiskType = 'Premium_LRS';
+        $p = Set-AzVMOSDisk -VM $p -Windows -Name $disk.Name -Caching $osDiskCaching -CreateOption Attach -StorageAccountType $osDiskType -ManagedDiskId $disk.Id -DiskSizeInGB $disk.DiskSizeGB;
+
+        Assert-AreEqual $osDiskCaching $p.StorageProfile.OSDisk.Caching;
+        Assert-AreEqual $osDiskType $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
+        Assert-AreEqual $disk.Name $p.StorageProfile.OSDisk.Name;
+        Assert-AreEqual $disk.Id $p.StorageProfile.OSDisk.ManagedDisk.Id;
+        Assert-AreEqual $disk.DiskSizeGB $p.StorageProfile.OSDisk.DiskSizeGB;
+        Assert-AreEqual $disk.OsType $p.StorageProfile.OSDisk.OsType;
+
+        # Create a VM using the managed OS disk.
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;       
+        Assert-Null $vm.OSProfile;
+
+        # Storage Account (SA)
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; };
+        $stokey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
+
+        # Virtual Machine Extension
+        $extname = $rgname + 'ext';
+        $extver = '1.1';
+        $publisher = 'Microsoft.Compute';
+        $exttype = 'CustomScriptExtension';
+        $fileToExecute = 'a.exe';
+        $containerName = 'script';
+
+        # Set custom script extension
+        Assert-ThrowsContains { `
+            Set-AzVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname1 `
+            -Name $extname -TypeHandlerVersion $extver -StorageAccountName $stoname -StorageAccountKey $stokey `
+            -FileName $fileToExecute -ContainerName $containerName; } `
+            "Failed to download all specified files";
+
+        # Get VM Extension
+        $ext = Get-AzVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname1 -Name $extname;
+
+        $expCommand = 'powershell -ExecutionPolicy Unrestricted -file ' + $fileToExecute + ' ';
+        Assert-AreEqual $ext.ResourceGroupName $rgname;
+        Assert-AreEqual $ext.Name $extname;
+        Assert-AreEqual $ext.Publisher $publisher;
+        Assert-AreEqual $ext.ExtensionType $exttype;
+        Assert-AreEqual $ext.TypeHandlerVersion $extver;
+        Assert-AreEqual $ext.CommandToExecute $expCommand;
+        Assert-NotNull $ext.ProvisioningState;
+
+        $ext = Get-AzVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname1 -Name $extname -Status;
+        Assert-AreEqual $ext.ResourceGroupName $rgname;
+        Assert-AreEqual $ext.Name $extname;
+        Assert-AreEqual $ext.Publisher $publisher;
+        Assert-AreEqual $ext.ExtensionType $exttype;
+        Assert-AreEqual $ext.TypeHandlerVersion $extver;
+        Assert-AreEqual $ext.CommandToExecute $expCommand;
+        Assert-NotNull $ext.ProvisioningState;
+        Assert-NotNull $ext.Statuses;
+
+        # Get VM
+        $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+        Assert-AreEqual $vm1.Name $vmname1;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+
+        Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
+        Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
+
+        # Check Extensions in VM
+        Assert-AreEqual $vm1.Extensions.Count 2;
+        Assert-AreEqual $vm1.Extensions[1].Name $extname;
+        Assert-AreEqual $vm1.Extensions[1].Type 'Microsoft.Compute/virtualMachines/extensions';
+        Assert-AreEqual $vm1.Extensions[1].Publisher $publisher;
+        Assert-AreEqual $vm1.Extensions[1].VirtualMachineExtensionType $exttype;
+        Assert-AreEqual $vm1.Extensions[1].TypeHandlerVersion $extver;
+        Assert-NotNull $vm1.Extensions[1].Settings;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine Access Extensions
 #>
 function Test-VirtualMachineAccessExtension

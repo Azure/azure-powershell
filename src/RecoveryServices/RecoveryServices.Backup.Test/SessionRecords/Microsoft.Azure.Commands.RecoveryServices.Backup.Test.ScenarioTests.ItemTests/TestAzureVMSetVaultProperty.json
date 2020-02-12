@@ -1,0 +1,1091 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/PSTestRG09c96a87?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlZ3JvdXBzL1BTVGVzdFJHMDljOTZhODc/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f3fcaaad-1e7f-49a7-b864-a030e452ea2d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11872"
+        ],
+        "x-ms-request-id": [
+          "ae49065d-4aed-486b-a0e2-175b23538540"
+        ],
+        "x-ms-correlation-request-id": [
+          "ae49065d-4aed-486b-a0e2-175b23538540"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T164942Z:ae49065d-4aed-486b-a0e2-175b23538540"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:49:42 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "108"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'PSTestRG09c96a87' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/PSTestRG09c96a87?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlZ3JvdXBzL1BTVGVzdFJHMDljOTZhODc/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d5678418-e277-493c-8fbf-6e90ca9125ad"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11880"
+        ],
+        "x-ms-request-id": [
+          "5470971e-f9aa-4144-a859-412dd8f6735f"
+        ],
+        "x-ms-correlation-request-id": [
+          "5470971e-f9aa-4144-a859-412dd8f6735f"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165007Z:5470971e-f9aa-4144-a859-412dd8f6735f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:50:07 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "192"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87\",\r\n  \"name\": \"PSTestRG09c96a87\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/PSTestRG09c96a87?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlZ3JvdXBzL1BTVGVzdFJHMDljOTZhODc/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"southeastasia\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fc53960a-437d-4dcb-a986-003858ecb91a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "35"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "1dd07235-3794-4dae-9426-94632253d06d"
+        ],
+        "x-ms-correlation-request-id": [
+          "1dd07235-3794-4dae-9426-94632253d06d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T164946Z:1dd07235-3794-4dae-9426-94632253d06d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:49:46 GMT"
+        ],
+        "Content-Length": [
+          "192"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87\",\r\n  \"name\": \"PSTestRG09c96a87\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHMDljOTZhODcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1YwOWM5NmE4Nz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56c9b84-8c96-4ed3-87ad-8fcd76b01058-2020-01-31 16:49:47Z-P"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.2.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "74095cb9-e884-451c-97e1-7fb9a10bfbf0"
+        ],
+        "x-ms-correlation-request-id": [
+          "74095cb9-e884-451c-97e1-7fb9a10bfbf0"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T164948Z:74095cb9-e884-451c-97e1-7fb9a10bfbf0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:49:48 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "171"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87' under resource group 'PSTestRG09c96a87' was not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHMDljOTZhODcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1YwOWM5NmE4Nz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"location\": \"southeastasia\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "06fbc02f-2710-4aa5-8f70-3213c11be8e1-2020-01-31 16:49:48Z-P"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.2.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "98"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "b19ac158-c4f0-4052-bf83-52352b94fad4"
+        ],
+        "x-ms-client-request-id": [
+          "06fbc02f-2710-4aa5-8f70-3213c11be8e1-2020-01-31 16:49:48Z-P"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "199"
+        ],
+        "x-ms-correlation-request-id": [
+          "b19ac158-c4f0-4052-bf83-52352b94fad4"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165004Z:b19ac158-c4f0-4052-bf83-52352b94fad4"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:50:04 GMT"
+        ],
+        "Content-Length": [
+          "350"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"southeastasia\",\r\n  \"name\": \"PSTestRSV09c96a87\",\r\n  \"etag\": \"W/\\\"datetime'2020-01-31T16%3A50%3A02.864178Z'\\\"\",\r\n  \"properties\": {},\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87/backupconfig/vaultconfig?api-version=2019-06-15",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHMDljOTZhODcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1YwOWM5NmE4Ny9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAxOS0wNi0xNQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4b03967b-bb79-4a07-a1cb-17aa5062adfb"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.0.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "f34c943e-dcda-469c-b3bb-422882c7624c"
+        ],
+        "x-ms-client-request-id": [
+          "4b03967b-bb79-4a07-a1cb-17aa5062adfb",
+          "4b03967b-bb79-4a07-a1cb-17aa5062adfb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11968"
+        ],
+        "x-ms-correlation-request-id": [
+          "f34c943e-dcda-469c-b3bb-422882c7624c"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165005Z:f34c943e-dcda-469c-b3bb-422882c7624c"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:50:05 GMT"
+        ],
+        "Content-Length": [
+          "380"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87/backupconfig/vaultconfig\",\r\n  \"name\": \"vaultconfig\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupconfig\",\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Enabled\",\r\n    \"isSoftDeleteFeatureStateEditable\": true\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87/backupconfig/vaultconfig?api-version=2019-06-15",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHMDljOTZhODcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1YwOWM5NmE4Ny9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAxOS0wNi0xNQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1cdcdafb-3793-4d94-aec3-d39682cc092e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.0.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "5c035ace-560c-4a6f-b8ae-8c3f865e2ffd"
+        ],
+        "x-ms-client-request-id": [
+          "1cdcdafb-3793-4d94-aec3-d39682cc092e",
+          "1cdcdafb-3793-4d94-aec3-d39682cc092e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11967"
+        ],
+        "x-ms-correlation-request-id": [
+          "5c035ace-560c-4a6f-b8ae-8c3f865e2ffd"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165006Z:5c035ace-560c-4a6f-b8ae-8c3f865e2ffd"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:50:05 GMT"
+        ],
+        "Content-Length": [
+          "380"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87/backupconfig/vaultconfig\",\r\n  \"name\": \"vaultconfig\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupconfig\",\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Enabled\",\r\n    \"isSoftDeleteFeatureStateEditable\": true\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87/backupconfig/vaultconfig?api-version=2019-06-15",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHMDljOTZhODcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1YwOWM5NmE4Ny9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAxOS0wNi0xNQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3b0634c8-206e-4769-a124-c8cae513e785"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.0.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "84600dbf-28aa-4240-8f7e-ff7c528ab96d"
+        ],
+        "x-ms-client-request-id": [
+          "3b0634c8-206e-4769-a124-c8cae513e785",
+          "3b0634c8-206e-4769-a124-c8cae513e785"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11966"
+        ],
+        "x-ms-correlation-request-id": [
+          "84600dbf-28aa-4240-8f7e-ff7c528ab96d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165007Z:84600dbf-28aa-4240-8f7e-ff7c528ab96d"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:50:07 GMT"
+        ],
+        "Content-Length": [
+          "381"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87/backupconfig/vaultconfig\",\r\n  \"name\": \"vaultconfig\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupconfig\",\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Disabled\",\r\n    \"isSoftDeleteFeatureStateEditable\": true\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87/backupconfig/vaultconfig?api-version=2019-06-15",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHMDljOTZhODcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1YwOWM5NmE4Ny9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAxOS0wNi0xNQ==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Disabled\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "60f8e14f-3a61-4636-8e19-6de3d9798997"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.0.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "111"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "41955539-c59f-40ab-9959-623f2e541725"
+        ],
+        "x-ms-client-request-id": [
+          "60f8e14f-3a61-4636-8e19-6de3d9798997",
+          "60f8e14f-3a61-4636-8e19-6de3d9798997"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "x-ms-correlation-request-id": [
+          "41955539-c59f-40ab-9959-623f2e541725"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165007Z:41955539-c59f-40ab-9959-623f2e541725"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:50:07 GMT"
+        ],
+        "Content-Length": [
+          "381"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87/backupconfig/vaultconfig\",\r\n  \"name\": \"vaultconfig\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupconfig\",\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Disabled\",\r\n    \"isSoftDeleteFeatureStateEditable\": true\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHMDljOTZhODcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "aba1f806-d87a-47ce-b377-bf088bafe92b-2020-01-31 16:50:08Z-P"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.2.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "60af098a-4349-459f-a0df-023eda0f3460"
+        ],
+        "x-ms-client-request-id": [
+          "aba1f806-d87a-47ce-b377-bf088bafe92b-2020-01-31 16:50:08Z-P"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11965"
+        ],
+        "x-ms-correlation-request-id": [
+          "60af098a-4349-459f-a0df-023eda0f3460"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165008Z:60af098a-4349-459f-a0df-023eda0f3460"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:50:08 GMT"
+        ],
+        "Content-Length": [
+          "362"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"southeastasia\",\r\n      \"name\": \"PSTestRSV09c96a87\",\r\n      \"etag\": \"W/\\\"datetime'2020-01-31T16%3A50%3A02.864178Z'\\\"\",\r\n      \"properties\": {},\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87/backupProtectionContainers?$filter=backupManagementType%20eq%20'AzureIaasVM'%20and%20status%20eq%20'Registered'&api-version=2016-12-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHMDljOTZhODcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1YwOWM5NmE4Ny9iYWNrdXBQcm90ZWN0aW9uQ29udGFpbmVycz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVJYWFzVk0nJTIwYW5kJTIwc3RhdHVzJTIwZXElMjAnUmVnaXN0ZXJlZCcmYXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "aececdcb-a604-438d-adb0-e91641f74ff3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.0.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "b0f39e58-f78c-4c50-9d4e-6f62aeb86fb7"
+        ],
+        "x-ms-client-request-id": [
+          "aececdcb-a604-438d-adb0-e91641f74ff3",
+          "aececdcb-a604-438d-adb0-e91641f74ff3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11964"
+        ],
+        "x-ms-correlation-request-id": [
+          "b0f39e58-f78c-4c50-9d4e-6f62aeb86fb7"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165009Z:b0f39e58-f78c-4c50-9d4e-6f62aeb86fb7"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:50:08 GMT"
+        ],
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG09c96a87/providers/Microsoft.RecoveryServices/vaults/PSTestRSV09c96a87?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHMDljOTZhODcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1YwOWM5NmE4Nz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "88542d1e-1144-43dc-a4a5-e24b7e4af63d-2020-01-31 16:50:09Z-P"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.2.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "24b5cf6c-1711-446c-8b76-2d523383e892"
+        ],
+        "x-ms-client-request-id": [
+          "88542d1e-1144-43dc-a4a5-e24b7e4af63d-2020-01-31 16:50:09Z-P"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "199"
+        ],
+        "x-ms-correlation-request-id": [
+          "24b5cf6c-1711-446c-8b76-2d523383e892"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165011Z:24b5cf6c-1711-446c-8b76-2d523383e892"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:50:11 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/PSTestRG09c96a87?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlZ3JvdXBzL1BTVGVzdFJHMDljOTZhODc/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "54a096b9-2c70-4c12-a532-4a9023d7d6b4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzA5Qzk2QTg3LVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "490a4ae1-2e0d-4f44-81f3-4765175d0b87"
+        ],
+        "x-ms-correlation-request-id": [
+          "490a4ae1-2e0d-4f44-81f3-4765175d0b87"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165016Z:490a4ae1-2e0d-4f44-81f3-4765175d0b87"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:50:15 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzA5Qzk2QTg3LVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekE1UXprMlFUZzNMVk5QVlZSSVJVRlRWRUZUU1VFaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5OdmRYUm9aV0Z6ZEdGemFXRWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzA5Qzk2QTg3LVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11879"
+        ],
+        "x-ms-request-id": [
+          "feab1ad0-3180-4d6f-a464-89fc9fc7cd9d"
+        ],
+        "x-ms-correlation-request-id": [
+          "feab1ad0-3180-4d6f-a464-89fc9fc7cd9d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165032Z:feab1ad0-3180-4d6f-a464-89fc9fc7cd9d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:50:32 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzA5Qzk2QTg3LVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekE1UXprMlFUZzNMVk5QVlZSSVJVRlRWRUZUU1VFaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5OdmRYUm9aV0Z6ZEdGemFXRWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzA5Qzk2QTg3LVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11878"
+        ],
+        "x-ms-request-id": [
+          "39fba5d9-9372-460c-ac62-e62645992e46"
+        ],
+        "x-ms-correlation-request-id": [
+          "39fba5d9-9372-460c-ac62-e62645992e46"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165048Z:39fba5d9-9372-460c-ac62-e62645992e46"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:50:47 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzA5Qzk2QTg3LVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekE1UXprMlFUZzNMVk5QVlZSSVJVRlRWRUZUU1VFaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5OdmRYUm9aV0Z6ZEdGemFXRWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11877"
+        ],
+        "x-ms-request-id": [
+          "62aafe1b-1bdf-452d-ba61-91f88f797c35"
+        ],
+        "x-ms-correlation-request-id": [
+          "62aafe1b-1bdf-452d-ba61-91f88f797c35"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165103Z:62aafe1b-1bdf-452d-ba61-91f88f797c35"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:51:03 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzA5Qzk2QTg3LVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekE1UXprMlFUZzNMVk5QVlZSSVJVRlRWRUZUU1VFaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5OdmRYUm9aV0Z6ZEdGemFXRWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.4"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11876"
+        ],
+        "x-ms-request-id": [
+          "5f677254-0c41-4ba1-bfd4-c2d0ff421f45"
+        ],
+        "x-ms-correlation-request-id": [
+          "5f677254-0c41-4ba1-bfd4-c2d0ff421f45"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200131T165104Z:5f677254-0c41-4ba1-bfd4-c2d0ff421f45"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 31 Jan 2020 16:51:03 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c",
+    "NamingSuffix": "09c96a87-4379-4df3-8944-2bd2b943f008"
+  }
+}

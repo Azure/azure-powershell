@@ -21,24 +21,56 @@ function Test-CreateAttestation
 {
 	$unknownRGName = getAssetName
 	$attestationName = getAssetName
-    $attestationPolicy = "SgxDisableDebugMode"
+    $policyTemplateName = "SgxDisableDebugMode"
 
 	try
 	{
 	    $rgName = Create-ResourceGroup
-		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $attestationPolicy
-		
+		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $policyTemplateName
+
 		Assert-NotNull attestationCreated
 		Assert-AreEqual $attestationName $attestationCreated.Name
 		Assert-NotNull attestationCreated.AttesUri
 		Assert-NotNull attestationCreated.Id
 		Assert-NotNull attestationCreated.Status
-		
+
 		# Test throws for existing attestation
-		Assert-Throws { New-AzAttestation -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $attestationPolicy}
+		Assert-Throws { New-AzAttestation -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $policyTemplateName}
 
 		# Test throws for resourcegroup nonexistent
-		Assert-Throws { New-AzAttestation -Name $attestationName -ResourceGroupName $unknownRGName -AttestationPolicy $attestationPolicy}
+		Assert-Throws { New-AzAttestation -Name $attestationName -ResourceGroupName $unknownRGName -AttestationPolicy $policyTemplateName}
+	}
+
+	finally
+	{
+		Clean-ResourceGroup $rgName.ResourceGroupName
+	}
+}
+
+function Test-CreateAttestationWithPolicySigningCertificate
+{
+	$unknownRGName = getAssetName
+	$attestationName = getAssetName
+	$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
+	$PemDir = Join-Path $TestOutputRoot "PemFiles"
+        $file= Join-Path $PemDir "policySigningCerts.pem"
+
+	try
+	{
+	    $rgName = Create-ResourceGroup
+		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -PolicySigningCertificateFile $file
+
+		Assert-NotNull attestationCreated
+		Assert-AreEqual $attestationName $attestationCreated.Name
+		Assert-NotNull attestationCreated.AttesUri
+		Assert-NotNull attestationCreated.Id
+		Assert-NotNull attestationCreated.Status
+
+		# Test throws for existing attestation
+		Assert-Throws { New-AzAttestation -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $policyTemplateName}
+
+		# Test throws for resourcegroup nonexistent
+		Assert-Throws { New-AzAttestation -Name $attestationName -ResourceGroupName $unknownRGName -AttestationPolicy $policyTemplateName}
 	}
 
 	finally
@@ -53,13 +85,13 @@ Test Get-AzAttestation
 #>
 #------------------------------Get-AzAttestation-----------------------------------
 function Test-GetAttestation
-{	
+{
 	$attestationName = getAssetName
-	$attestationPolicy = "SgxDisableDebugMode"
+	$policyTemplateName = "SgxDisableDebugMode"
 	try
 	{
 	    $rgName = Create-ResourceGroup
-		New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $attestationPolicy
+		New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $policyTemplateName
 
 		$got = Get-AzAttestation  -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName
 		Assert-NotNull got
@@ -80,16 +112,16 @@ Test Remove-AzAttestation
 function Test-DeleteAttestationByName
 {
 	$attestationName = getAssetName
-	$attestationPolicy = "SgxDisableDebugMode"
+	$policyTemplateName = "SgxDisableDebugMode"
 	try
 	{
 		$rgName = Create-ResourceGroup
-		New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $attestationPolicy
-		Remove-AzAttestation  -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName 
+		New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $policyTemplateName
+		Remove-AzAttestation  -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName
 
 		Assert-Throws {Get-AzAttestation  -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName}
 	}
-	
+
 	finally
 	{
 		Clean-ResourceGroup $rgName.ResourceGroupName

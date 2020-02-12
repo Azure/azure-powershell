@@ -15,22 +15,24 @@ Creates a policy set definition.
 ### NameParameterSet (Default)
 ```
 New-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Metadata <String>]
- -PolicyDefinition <String> [-Parameter <String>] [-ApiVersion <String>] [-Pre]
+ -PolicyDefinition <String> [-Parameter <String>] [-GroupDefinition <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupNameParameterSet
 ```
 New-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Metadata <String>]
- -PolicyDefinition <String> [-Parameter <String>] -ManagementGroupName <String> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -PolicyDefinition <String> [-Parameter <String>] -ManagementGroupName <String> [-GroupDefinition <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionIdParameterSet
 ```
 New-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Metadata <String>]
- -PolicyDefinition <String> [-Parameter <String>] -SubscriptionId <Guid> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -PolicyDefinition <String> [-Parameter <String>] -SubscriptionId <Guid> [-GroupDefinition <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,6 +91,27 @@ PS C:\> New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinitio
 ```
 
 This command creates a parameterized policy set definition named VMPolicySetDefinition that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
+
+### Example 3: Create a policy set definition with policy definition groups
+```
+[
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+      "groupNames": [ "group1" ]
+   },
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/464dbb85-3d5f-4a1d-bb09-95a9b5dd19cf",
+      "groupNames": [ "group2" ]
+   }
+]
+```
+
+```
+$groupsJson = ConvertTo-Json @{ name = "group1" }, @{ name = "group2" }
+PS C:\> New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson -PolicyDefinition C:\VMPolicySet.json
+```
+
+This command creates a policy set definition named VMPolicySetDefinition with grouping of policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
 
 ## PARAMETERS
 
@@ -153,6 +176,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -GroupDefinition
+The policy definition groups for the new policy set definition. This can either be a path to a file containing the groups, or the groups as a JSON string.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ManagementGroupName
 The name of the management group of the new policy set definition.
 
@@ -169,7 +207,7 @@ Accept wildcard characters: False
 ```
 
 ### -Metadata
-The metadata for policy set definition. This can either be a path to a file name containing the metadata, or the metadata as string
+The metadata for policy set definition. This can either be a path to a file name containing the metadata, or the metadata as a JSON string.
 
 ```yaml
 Type: System.String
@@ -200,7 +238,7 @@ Accept wildcard characters: False
 
 ### -Parameter
 The parameters declaration for policy set definition.
-This can either be a path to a file name containing the parameters declaration, or the parameters declaration as string.
+This can either be a path to a file name containing the parameters declaration, or the parameters declaration as a JSON string.
 
 ```yaml
 Type: System.String
@@ -215,7 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinition
-The policy definitions. This can either be a path to a file name containing the policy definitions, or the policy definitions as string.
+The policy definitions. This can either be a path to a file name containing the policy definitions, or the policy definitions as a JSON string.
 
 ```yaml
 Type: System.String

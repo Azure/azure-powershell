@@ -710,6 +710,8 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 			$messageDNS = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client cannot process the request because the server name cannot be resolved"
 			$messageUnavailable = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client sent a request to an HTTP server and got a response saying the requested HTTP URL was not available."
 			$messagePsVersionNotSupported = "Remote Powershell sessions into Windows Containers on App Service from this version of PowerShell is not supported.";
+			$messageMIResulFailed = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : MI_RESULT_FAILED";
+			$messageWSManNotInstalled = "This parameter set requires WSMan, and no supported WSMan client library was found. WSMan is either not installed or unavailable for this system";
 
 			# One possible warning message in Playback mode.
 			$messageWSMANNotConfigured = "Your current WSMAN Trusted Hosts settings will prevent you from connecting to your Container Web App";
@@ -717,14 +719,18 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 			$resultError = ($Error[0] -like "*$($messageDNS)*") -or 
 				($Error[0] -like "*$($messageUnavailable)*") -or 
 				($Error[0] -like "*$($messageWSMANNotConfigured)*") -or
-				($Error[0] -like "*$($messagePsVersionNotSupported)*")
-			
+				($Error[0] -like "*$($messagePsVersionNotSupported)*") -or
+				($Error[0] -like "*$($messageMIResulFailed)*") -or
+				($Error[0] -like "*$($messageWSManNotInstalled)*")
+				
 			$resultWarning = ($wv[0] -like "*$($messageWSMANNotConfigured)*")
 
 			Write-Debug "Expected error message 1: $messageDNS"
 			Write-Debug "Expected error message 2: $messageUnavailable"
 			Write-Debug "Expected error message 3: $messagePsVersionNotSupported"
-			
+			Write-Debug "Expected error message 4: $messageMIResulFailed"
+			Write-Debug "Expected error message 5: $messageWSManNotInstalled"
+
 			Write-Debug "Expected Warning message 1: $messageWSMANNotConfigured"
 
 
@@ -908,13 +914,13 @@ function Test-SetAzureStorageWebAppHyperV
 	$azureStorageAccountName1 = "myaccountname.file.core.windows.net"
 	$azureStorageAccountShareName1 = "myremoteshare"
 	$azureStorageAccountAccessKey1 = "AnAccessKey"
-	$azureStorageAccountMountPath1 = "C:\mymountpath"
+	$azureStorageAccountMountPath1 = "\mymountpath"
 	$azureStorageAccountCustomId2 = "mystorageaccount2"
 	$azureStorageAccountType2 = "AzureFiles"
 	$azureStorageAccountName2 = "myaccountname2.file.core.windows.net"
 	$azureStorageAccountShareName2 = "myremoteshare2"
 	$azureStorageAccountAccessKey2 = "AnAccessKey2"
-	$azureStorageAccountMountPath2 = "C:\mymountpath2"
+	$azureStorageAccountMountPath2 = "\mymountpath2"
 
 	try
 	{
@@ -1084,9 +1090,11 @@ function Test-SetWebApp
 		Assert-AreEqual $serverFarm1.Id $webApp.ServerFarmId
 		Assert-Null $webApp.Identity
 		Assert-NotNull $webApp.SiteConfig.phpVersion
+		Assert-AreEqual $false $webApp.HttpsOnly
+		Assert-AreEqual "AllAllowed" $webApp.SiteConfig.FtpsState
 		
 		# Change service plan & set site properties
-		$job = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -AsJob
+		$job = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -AlwaysOn $false -AsJob
 		$job | Wait-Job
 		$webApp = $job | Receive-Job
 
@@ -1096,10 +1104,13 @@ function Test-SetWebApp
 		Assert-AreEqual $webAppName $webApp.Name
 		Assert-AreEqual $serverFarm2.Id $webApp.ServerFarmId
 		Assert-AreEqual $true $webApp.HttpsOnly
+		Assert-AreEqual $false $webapp.SiteConfig.AlwaysOn
 
 		# Set config properties
 		$webapp.SiteConfig.HttpLoggingEnabled = $true
 		$webapp.SiteConfig.RequestTracingEnabled = $true
+		$webapp.SiteConfig.FtpsState = "FtpsOnly"
+		$webApp.SiteConfig.MinTlsVersion = "1.0"
 
 		# Set site properties
 		$webApp = $webApp | Set-AzWebApp
@@ -1111,18 +1122,22 @@ function Test-SetWebApp
 		Assert-AreEqual $serverFarm2.Id $webApp.ServerFarmId
 		Assert-AreEqual $true $webApp.SiteConfig.HttpLoggingEnabled
 		Assert-AreEqual $true $webApp.SiteConfig.RequestTracingEnabled
-
+		Assert-AreEqual $false $webApp.SiteConfig.AlwaysOn
+		Assert-AreEqual "FtpsOnly" $webApp.SiteConfig.FtpsState
+		Assert-AreEqual "1.0" $webApp.SiteConfig.MinTlsVersion
+		 
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}
 
         # set app settings and assign Identity
-        $webApp = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppSettings $appSettings -AssignIdentity $true
+        $webApp = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppSettings $appSettings -AssignIdentity $true -MinTlsVersion "1.2"
 
         # Assert
         Assert-NotNull  $webApp.Identity
         # AssignIdentity adds an appsetting to handle enabling / disabling AssignIdentity
         Assert-AreEqual ($appSettings.Keys.Count) $webApp.SiteConfig.AppSettings.Count
         Assert-NotNull  $webApp.Identity
+		Assert-AreEqual "1.2" $webApp.SiteConfig.MinTlsVersion
 
         # set app settings and connection strings
 		$webApp = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppSettings $appSettings -ConnectionStrings $connectionStrings -NumberofWorkers $capacity -PhpVersion "off"
@@ -1142,6 +1157,7 @@ function Test-SetWebApp
 
 		Assert-AreEqual $capacity $webApp.SiteConfig.NumberOfWorkers
 		Assert-AreEqual "" $webApp.SiteConfig.PhpVersion
+		Assert-AreEqual "1.2" $webApp.SiteConfig.MinTlsVersion
 
 	}
 	finally

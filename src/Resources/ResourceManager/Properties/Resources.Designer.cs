@@ -187,11 +187,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deployment &apos;{0}&apos; doesn&apos;t exist in subscription..
+        ///   Looks up a localized string similar to Deployment &apos;{0}&apos; doesn&apos;t exist at management group &apos;{1}&apos;..
+        /// </summary>
+        internal static string DeploymentDoesntExistAtManagementGroupScope {
+            get {
+                return ResourceManager.GetString("DeploymentDoesntExistAtManagementGroupScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deployment &apos;{0}&apos; doesn&apos;t exist in the current subscription..
         /// </summary>
         internal static string DeploymentDoesntExistAtSubscriptionScope {
             get {
                 return ResourceManager.GetString("DeploymentDoesntExistAtSubscriptionScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deployment &apos;{0}&apos; doesn&apos;t exist in the current tenant..
+        /// </summary>
+        internal static string DeploymentDoesntExistAtTenantScope {
+            get {
+                return ResourceManager.GetString("DeploymentDoesntExistAtTenantScope", resourceCulture);
             }
         }
         
@@ -322,6 +340,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The &apos;Complete&apos; mode is not supported for a deployment at the current scope. Please use &apos;Incremental&apos; mode instead..
+        /// </summary>
+        internal static string InvalidDeploymentMode {
+            get {
+                return ResourceManager.GetString("InvalidDeploymentMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided file {0} doesn&apos;t exist.
         /// </summary>
         internal static string InvalidFilePath {
@@ -448,6 +475,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided value for parameter &apos;{0}&apos; is not a valid JSON array.
+        /// </summary>
+        internal static string JsonArrayExpected {
+            get {
+                return ResourceManager.GetString("JsonArrayExpected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided value for parameter &apos;{0}&apos; is not a valid JSON object.
+        /// </summary>
+        internal static string JsonObjectExpected {
+            get {
+                return ResourceManager.GetString("JsonObjectExpected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Moving resource(s) ....
         /// </summary>
         internal static string MoveResourcesMessage {
@@ -565,11 +610,47 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are no running deployment called &apos;{0}&apos; at the current subscription scope..
+        ///   Looks up a localized string similar to There is no running deployment called &apos;{0}&apos; at management group &apos;{1}&apos;..
+        /// </summary>
+        internal static string NoRunningDeploymentsAtManagementGroup {
+            get {
+                return ResourceManager.GetString("NoRunningDeploymentsAtManagementGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no running deployment called &apos;{0}&apos; at resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string NoRunningDeploymentsAtResourceGroup {
+            get {
+                return ResourceManager.GetString("NoRunningDeploymentsAtResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no running deployment called &apos;{0}&apos; at the current subscription scope..
         /// </summary>
         internal static string NoRunningDeploymentsAtSubscriptionScope {
             get {
                 return ResourceManager.GetString("NoRunningDeploymentsAtSubscriptionScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no running deployment called &apos;{0}&apos; at the current tenant scope..
+        /// </summary>
+        internal static string NoRunningDeploymentsAtTenantScope {
+            get {
+                return ResourceManager.GetString("NoRunningDeploymentsAtTenantScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No subscriptions can be found under current directory. Please login again using Connect-AzAccount..
+        /// </summary>
+        internal static string NoSubscriptionsUnderCurrentDirectory {
+            get {
+                return ResourceManager.GetString("NoSubscriptionsUnderCurrentDirectory", resourceCulture);
             }
         }
         

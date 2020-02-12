@@ -1,8 +1,8 @@
 variables:
   WindowsName: windows
   WindowsImage: VS2017-Win2016
-  TestFramework: net472
-  TestTarget: TestNet472
+  TestFramework: netcoreapp2.2
+  TestTarget: Test
   Configuration: Debug
 
 jobs:

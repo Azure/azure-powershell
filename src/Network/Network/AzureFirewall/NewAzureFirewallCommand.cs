@@ -109,6 +109,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "IpConfigurationParameterValues",
+            HelpMessage = "One or more Public IP Addresses to use for management traffic. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.")]
+        [ValidateNotNullOrEmpty]
+        public PSPublicIpAddress ManagementPublicIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of AzureFirewallApplicationRuleCollections")]
         public PSAzureFirewallApplicationRuleCollection[] ApplicationRuleCollection { get; set; }
 
@@ -139,6 +147,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The whitelist for Threat Intelligence")]
         public PSAzureFirewallThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The private IP ranges to which traffic won't be SNAT'ed"
+        )]
+        public string[] PrivateRange { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -257,11 +271,13 @@ namespace Microsoft.Azure.Commands.Network
                     Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
+                    FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
                     ApplicationRuleCollections = this.ApplicationRuleCollection?.ToList(),
                     NatRuleCollections = this.NatRuleCollection?.ToList(),
                     NetworkRuleCollections = this.NetworkRuleCollection?.ToList(),
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
+                    PrivateRange = this.PrivateRange,
                     Sku = sku
                 };
 
@@ -272,7 +288,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.virtualNetwork != null)
                 {
-                    firewall.Allocate(this.virtualNetwork, this.publicIpAddresses);
+                    firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
                 }
             }
 

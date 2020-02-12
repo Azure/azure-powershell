@@ -101,8 +101,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         protected void ImportBlueprint(string blueprintName, string scope, string inputPath, bool force)
         {
-            const string blueprintFileName = "Blueprint";
-            var blueprintPath = GetValidatedFilePath(inputPath, blueprintFileName);
+            var blueprintPath = GetValidatedFilePathForBlueprint(ResolveUserPath(inputPath));
 
             BlueprintModel bpObject;
             try
@@ -168,18 +167,16 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             return folderPath;
         }
 
-        protected void ImportArtifacts(string blueprintName, string scope, string inputPath)
+        protected void ImportArtifacts(string blueprintName, string scope, string inputPath, bool includeSubfolders = false)
         {
-            const string artifacts = "Artifacts";
-
-            var artifactsPath = GetValidatedFolderPath(inputPath, artifacts);
+            var artifactsPath = GetValidatedFolderPathForArtifacts(ResolveUserPath(inputPath));
 
             if (artifactsPath == null)
             {
                 return; // if blueprint doesn't contain artifacts don't proceed.
             }
 
-            var artifactFiles = AzureSession.Instance.DataStore.GetFiles(artifactsPath, "*.json", SearchOption.TopDirectoryOnly);
+            var artifactFiles = AzureSession.Instance.DataStore.GetFiles(artifactsPath, "*.json", includeSubfolders ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
 
             foreach (var artifactFile in artifactFiles)
             {

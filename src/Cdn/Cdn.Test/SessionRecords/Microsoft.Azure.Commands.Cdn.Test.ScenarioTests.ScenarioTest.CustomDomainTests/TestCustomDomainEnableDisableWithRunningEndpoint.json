@@ -1573,6 +1573,75 @@
       "StatusCode": 200
     },
     {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps9400/providers/Microsoft.Cdn/profiles/ps1016?api-version=2019-04-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzOTQwMC9wcm92aWRlcnMvTWljcm9zb2Z0LkNkbi9wcm9maWxlcy9wczEwMTY/YXBpLXZlcnNpb249MjAxOS0wNC0xNQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/4.2.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "3d2c77a3-2a65-4d0f-9d76-a96ae9d78258"
+        ],
+        "x-ms-client-request-id": [
+          "15557d7c-8d94-4c95-b03e-f36e56ad1b9d"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "f9967eb4-be89-435f-92d5-5181d418b8cb"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20190520T225553Z:f9967eb4-be89-435f-92d5-5181d418b8cb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 20 May 2019 22:55:52 GMT"
+        ],
+        "Content-Length": [
+          "373"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps1016\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps9400/providers/Microsoft.Cdn/profiles/ps1016\",\r\n  \"type\": \"Microsoft.Cdn/profiles\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"location\": \"EastUs\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_Verizon\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
       "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps9400/providers/Microsoft.Cdn/profiles/ps1016/endpoints/testVerizonEP/customDomains/ps2062/enableCustomHttps?api-version=2019-04-15",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzOTQwMC9wcm92aWRlcnMvTWljcm9zb2Z0LkNkbi9wcm9maWxlcy9wczEwMTYvZW5kcG9pbnRzL3Rlc3RWZXJpem9uRVAvY3VzdG9tRG9tYWlucy9wczIwNjIvZW5hYmxlQ3VzdG9tSHR0cHM/YXBpLXZlcnNpb249MjAxOS0wNC0xNQ==",
       "RequestMethod": "POST",
@@ -1661,6 +1730,75 @@
       },
       "ResponseBody": "{\r\n  \"provisioningState\": \"Succeeded\",\r\n  \"resourceState\": \"Active\",\r\n  \"hostName\": \"testverizon.dustydog.us\",\r\n  \"validationData\": null,\r\n  \"customHttpsProvisioningState\": \"Enabling\",\r\n  \"customHttpsProvisioningSubstate\": \"SubmittingDomainControlValidationRequest\",\r\n  \"customHttpsParameters\": {\r\n    \"certificateSource\": \"Cdn\",\r\n    \"certificateSourceParameters\": {\r\n      \"@odata.type\": \"#Microsoft.Azure.Cdn.Models.CdnCertificateSourceParameters\",\r\n      \"certificateType\": \"Shared\"\r\n    },\r\n    \"protocolType\": \"IPBased\"\r\n  }\r\n}",
       "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps9400/providers/Microsoft.Cdn/profiles/ps1016?api-version=2019-04-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Jlc291cmNlR3JvdXBzL3BzOTQwMC9wcm92aWRlcnMvTWljcm9zb2Z0LkNkbi9wcm9maWxlcy9wczEwMTY/YXBpLXZlcnNpb249MjAxOS0wNC0xNQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/4.2.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "3d2c77a3-2a65-4d0f-9d76-a96ae9d78258"
+        ],
+        "x-ms-client-request-id": [
+          "15557d7c-8d94-4c95-b03e-f36e56ad1b9d"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "f9967eb4-be89-435f-92d5-5181d418b8cb"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20190520T225553Z:f9967eb4-be89-435f-92d5-5181d418b8cb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 20 May 2019 22:55:52 GMT"
+        ],
+        "Content-Length": [
+          "373"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal; odata.streaming=true"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps1016\",\r\n  \"id\": \"/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourcegroups/ps9400/providers/Microsoft.Cdn/profiles/ps1016\",\r\n  \"type\": \"Microsoft.Cdn/profiles\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"location\": \"EastUs\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_Verizon\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceState\": \"Active\"\r\n  }\r\n}",
+      "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/ps9400/providers/Microsoft.Cdn/profiles/ps1016/endpoints/testVerizonEP/customDomains/ps2062/enableCustomHttps?api-version=2019-04-15",

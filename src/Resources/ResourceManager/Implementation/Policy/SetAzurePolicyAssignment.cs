@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment scope parameter.
         /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentScopeHelp)]
-        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentPolicyParameterObjectHelp)]
-        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameStringParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyParameterHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentScopeHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameObjectParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentPolicyParameterObjectHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameStringParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyParameterHelp)]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
 
-            var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : GetObjectFromParameter(this.Metadata).ToString();
+            var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)).ToString();
 
             PolicyAssignmentEnforcementMode? existingMode = null;
             if (Enum.TryParse(resource.Properties["enforcementMode"]?.ToString(), true, out PolicyAssignmentEnforcementMode tempMode))

@@ -14,9 +14,10 @@ Creates a Firewall NAT Rule.
 ## SYNTAX
 
 ```
-New-AzFirewallNatRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]> -TranslatedAddress <String>
- -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFirewallNatRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
+ [-SourceIpGroup <String[]>] -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
+ [-TranslatedAddress <String>] [-TranslatedFqdn <String>] -TranslatedPort <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationAddress
-The destination addresses of the rule.
+The destination addresses of the rule
 
 ```yaml
 Type: System.String[]
@@ -134,7 +135,22 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceIpGroup
+The source ipgroup of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -149,7 +165,22 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TranslatedFqdn
+The translated FQDN for this NAT rule
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

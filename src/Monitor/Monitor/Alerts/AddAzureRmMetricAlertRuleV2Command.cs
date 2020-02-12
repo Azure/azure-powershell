@@ -26,11 +26,15 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Add a GenV2 Metric Alert rule
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", DefaultParameterSetName = "CreateAlertByResourceId", SupportsShouldProcess = true), OutputType(typeof(PSMetricAlertRuleV2))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", DefaultParameterSetName = CreateAlertByResourceId, SupportsShouldProcess = true), OutputType(typeof(PSMetricAlertRuleV2))]
     public class AddAzureRmMetricAlertRuleV2Command : ManagementCmdletBase
     {
         const string CreateAlertByResourceId = "CreateAlertByResourceId";
         const string CreateAlertByScopes = "CreateAlertByScopes";
+        const string CreateAlertByResourceIdAndActionGroup = "CreateAlertByResourceIdAndActionGroup";
+        const string CreateAlertByScopesAndActionGroup = "CreateAlertByScopesAndActionGroup";
+        const string CreateAlertByResourceIdAndActionGroupId = "CreateAlertByResourceIdAndActionGroupId";
+        const string CreateAlertByScopesAndActionGroupId = "CreateAlertByScopesAndActionGroupId";
 
         /// <summary>
         /// Gets or sets Name  parameter of the cmdlet
@@ -65,6 +69,8 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the TargetResourceId parameter
         /// </summary>
         [Parameter(ParameterSetName = CreateAlertByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource id for rule")]
+        [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource id for rule")]
+        [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource id for rule")]
         [ValidateNotNullOrEmpty]
         public string TargetResourceId { get; set; }
 
@@ -72,6 +78,8 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the TargetResourceScope parameter
         /// </summary>
         [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource scope for rule")]
+        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource scope for rule")]
+        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource scope for rule")]
         [ValidateNotNullOrEmpty]
         [Alias("Scopes")]
         public string[] TargetResourceScope { get; set; }
@@ -79,7 +87,9 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the TargetResourceType  parameter
         /// </summary>
-        [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]
+        [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]       
+        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]       
+        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]
         [ValidateNotNullOrEmpty]
         public string TargetResourceType { get; set; }
 
@@ -87,6 +97,8 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the TargetResourceRegion  parameter
         /// </summary>
         [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource region for rule")]
+        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource region for rule")]
+        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource region for rule")]
         [ValidateNotNullOrEmpty]
         public string TargetResourceRegion { get; set; }
 
@@ -99,12 +111,19 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         public List<IPSMultiMetricCriteria> Condition { get; set; }
 
         /// <summary>
-        /// Gets or sets the ActionGroup  parameter
+        /// Gets or sets the ActionGroup parameter
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true,ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
+        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
         [Alias("Actions")]
         public ActivityLogAlertActionGroup[] ActionGroup { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ActionGroupId parameter
+        /// </summary>
+        [Parameter(ParameterSetName = CreateAlertByResourceIdAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group id for rule")]
+        [Parameter(ParameterSetName = CreateAlertByScopesAndActionGroupId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group id for rule")]
+        public string[] ActionGroupId { get; set; }
 
         /// <summary>
         /// Gets or sets the DisableRule flag.
@@ -132,6 +151,17 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 this.TargetResourceScope = this.TargetResourceScope ?? new string[] { this.TargetResourceId };
             }
 
+            var actions = new List<MetricAlertAction>();
+            if (this.ActionGroup != null)
+            {
+                actions.AddRange(this.ActionGroup.Select(actionGroup => new MetricAlertAction(actionGroupId: actionGroup.ActionGroupId, webhookProperties: actionGroup.WebhookProperties)));
+            }
+
+            if (this.ActionGroupId != null)
+            {
+                actions.AddRange(this.ActionGroupId.Select(actionGroupId => new MetricAlertAction(actionGroupId: actionGroupId)));
+            }
+
             if (this.TargetResourceScope == null)//Single Resource Metric Alert Rule
             {
                 var scopes = new List<string>();
@@ -145,11 +175,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 var criteria = new MetricAlertSingleResourceMultipleMetricCriteria(
                     allOf: metricCriteria
                 );
-                var actions = new List<MetricAlertAction>();
-                foreach (var actionGroup in this.ActionGroup)
-                {
-                    actions.Add(new MetricAlertAction(actionGroupId: actionGroup.ActionGroupId, webhookProperties: actionGroup.WebhookProperties));
-                }
                 var metricAlertResource = new MetricAlertResource(
                         description: this.Description ?? Utilities.GetDefaultDescription("new Metric alert rule"),
                         severity: this.Severity,
@@ -189,11 +214,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 MetricAlertMultipleResourceMultipleMetricCriteria metricCriteria = new MetricAlertMultipleResourceMultipleMetricCriteria(
                     allOf: multiMetricCriteria
                 );
-                var actions = new List<MetricAlertAction>();
-                foreach (var actionGroup in this.ActionGroup)
-                {
-                    actions.Add(new MetricAlertAction(actionGroupId: actionGroup.ActionGroupId, webhookProperties: actionGroup.WebhookProperties));
-                }
                 var metricAlertResource = new MetricAlertResource(
                     description: this.Description ?? Utilities.GetDefaultDescription("New multi resource Metric alert rule"),
                     severity: this.Severity,
