@@ -159,4 +159,5 @@
     { "regex": "DataBox", "alias": "DataBox" },
     { "regex": "AlertsManagement", "alias": "Alerts Management" },
     { "regex": "HealthcareApisService", "alias": "HealthcareApis Service" }
+    { "regex": "Support", "alias": "Support" }
 ]
