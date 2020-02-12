@@ -83,14 +83,14 @@ If you do not see your problem captured, please file a [new issue][] and follow 
 
 ## Legal and Licensing
 
-Azure-PowerShell is licensed under the [MIT license][].
+Azure-PowerShell is licensed under the [Apache license][].
 
-[MIT license]: https://github.com/Azure/azure-powershell/blob/master/LICENSE.txt
+[Apache license]: https://github.com/Azure/azure-powershell/blob/master/LICENSE.txt
 
 
-PowerShell is licensed under the [MIT license][].
+PowerShell is licensed under the [Apache license][].
 
-[MIT license]: https://github.com/PowerShell/PowerShell/tree/master/LICENSE.txt
+[Apache license]: https://github.com/PowerShell/PowerShell/tree/master/LICENSE.txt
 
 ## [Code of Conduct][conduct-md]
 
