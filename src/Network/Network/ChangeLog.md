@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 2.3.1
 * Small modify on md file for New-AzPrivateLinkService cmdlet .
     - Added one extra parameter note for parameter '-EnableProxyProtocol'
 * Fixed FilterData example in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
