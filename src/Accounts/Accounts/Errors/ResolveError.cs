@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Common;
 using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
@@ -79,6 +80,15 @@ namespace Microsoft.Azure.Commands.Profile.Errors
                     HandleError(record);
                 }
             }
+            WriteInformationWrapper(AzureProfileConstants.AzurePowerShellFeedbackMessage);
+        }
+
+        protected virtual void WriteInformationWrapper(string text)
+        {
+            var informationMessage = new HostInformationMessage();
+            informationMessage.Message = $"{Environment.NewLine}{text}{Environment.NewLine}";
+            informationMessage.NoNewLine = false;
+            WriteInformation(informationMessage, new string[] { "PSHOST" });
         }
 
         private IEnumerable<ErrorRecord> GetErrorVariable()

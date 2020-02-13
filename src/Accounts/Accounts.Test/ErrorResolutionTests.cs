@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Errors;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -29,6 +30,20 @@ namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class ErrorResolutionTests
     {
+        [Cmdlet("Mock", "Resolve" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Error", DefaultParameterSetName = ResolveError.AnyErrorParameterSet)]
+        class MockResolveError : ResolveError
+        {
+            protected override void WriteInformationWrapper(string text)
+            {
+                var informationMessage = new HostInformationMessage();
+                informationMessage.Message = $"{Environment.NewLine}{text}{Environment.NewLine}";
+                informationMessage.NoNewLine = false;
+
+                ICommandRuntime2 commandRuntime2 = CommandRuntime as ICommandRuntime2;
+                InformationRecord informationRecord = new InformationRecord(informationMessage, String.Empty);
+                commandRuntime2.WriteInformation(informationRecord);
+            }
+        }
         class TestHyakException : CloudException
         {
             public TestHyakException(string message, CloudHttpRequestErrorInfo request, CloudHttpResponseErrorInfo response) : base(message)
@@ -43,12 +58,12 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void DoesNotThrowWithNullError()
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
-            var cmdlet = new ResolveError();
-            var output = cmdlet.ExecuteCmdletInPipeline<AzureErrorRecord>("Resolve-Error");
+            var cmdlet = new MockResolveError();
+            var output = cmdlet.ExecuteCmdletInPipeline<AzureErrorRecord>("Mock-ResolveAzError");
             Assert.True(output == null || output.Count == 0);
-            output = cmdlet.ExecuteCmdletInPipeline<AzureErrorRecord>("Resolve-Error", new ErrorRecord[] { null, null });
+            output = cmdlet.ExecuteCmdletInPipeline<AzureErrorRecord>("Mock-ResolveAzError", new ErrorRecord[] { null, null });
             Assert.True(output == null || output.Count == 0);
-            output = cmdlet.ExecuteCmdletInPipeline<AzureErrorRecord>("Resolve-Error", new ErrorRecord[] { null, new ErrorRecord(new Exception(null), null, ErrorCategory.AuthenticationError, null) });
+            output = cmdlet.ExecuteCmdletInPipeline<AzureErrorRecord>("Mock-ResolveAzError", new ErrorRecord[] { null, new ErrorRecord(new Exception(null), null, ErrorCategory.AuthenticationError, null) });
             Assert.NotNull(output);
             Assert.Single(output);
             var record = output[0] as AzureExceptionRecord;
@@ -66,7 +81,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var response = new HttpResponseMessage(HttpStatusCode.BadRequest);
             var hyakException = new TestHyakException("exception message", CloudHttpRequestErrorInfo.Create(request), CloudHttpResponseErrorInfo.Create(response))
             {
-                Error = new Hyak.Common.CloudError { Code="HyakCode", Message="HyakError"}
+                Error = new Hyak.Common.CloudError { Code = "HyakCode", Message = "HyakError" }
             };
 
             var autorestException = new Microsoft.Rest.Azure.CloudException("exception message")
@@ -77,9 +92,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 RequestId = "AutoRestRequestId"
             };
 
-            var cmdlet = new ResolveError
+            var cmdlet = new MockResolveError
             {
-                Error = new [] 
+                Error = new[]
                 {
                     new ErrorRecord(new Exception("exception message"), "errorCode", ErrorCategory.AuthenticationError, this),
                     new ErrorRecord(hyakException, "errorCode", ErrorCategory.ConnectionError, this),
@@ -87,7 +102,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 },
                 CommandRuntime = runtime
             };
-
             cmdlet.ExecuteCmdlet();
             Assert.NotNull(runtime.OutputPipeline);
             Assert.Equal(3, runtime.OutputPipeline.Count);
@@ -122,6 +136,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal("AutoRestRequestId", autorestResult.RequestId);
             Assert.Contains("AutorestCode", autorestResult.ServerMessage);
             Assert.Contains("Autorest message", autorestResult.ServerMessage);
+
+            Assert.Single(runtime.informationStream);
+            char[] charsToTrim = Environment.NewLine.ToCharArray();
+            Assert.Equal(AzureProfileConstants.AzurePowerShellFeedbackMessage
+                , runtime.informationStream[0].MessageData.ToString().Trim(charsToTrim));
         }
 
         [Fact]
@@ -130,10 +149,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var runtime = new MockCommandRuntime();
             var hyakException = new TestHyakException(null, null, null);
- 
+
             var autorestException = new Microsoft.Rest.Azure.CloudException();
- 
-            var cmdlet = new ResolveError
+
+            var cmdlet = new MockResolveError
             {
                 Error = new[]
                 {
@@ -143,7 +162,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 },
                 CommandRuntime = runtime
             };
- 
+
             cmdlet.ExecuteCmdlet();
             Assert.NotNull(runtime.OutputPipeline);
             Assert.Equal(3, runtime.OutputPipeline.Count);
@@ -162,6 +181,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(ErrorCategory.InvalidOperation, autorestResult.ErrorCategory.Category);
             Assert.NotNull(autorestResult.Exception);
             Assert.Equal(typeof(Microsoft.Rest.Azure.CloudException), autorestResult.Exception.GetType());
+
+            Assert.Single(runtime.informationStream);
+            char[] charsToTrim = Environment.NewLine.ToCharArray();
+            Assert.Equal(AzureProfileConstants.AzurePowerShellFeedbackMessage
+                , runtime.informationStream[0].MessageData.ToString().Trim(charsToTrim));
         }
 
         [Fact]
@@ -173,7 +197,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlet = new ResolveError { CommandRuntime = mock };
             var message = "RuntimeErrorMessage";
             var exception = new Exception(message);
-            cmdlet.ExecuteCmdletWithExceptionInPipeline<AzureErrorRecord>("Resolve-AzureRmError", exception, new KeyValuePair<string, object>("Last", null ) );
+            cmdlet.ExecuteCmdletWithExceptionInPipeline<AzureErrorRecord>("Mock-ResolveAzError", exception, new KeyValuePair<string, object>("Last", null));
             Assert.NotNull(mock.ErrorStream);
             Assert.Single(mock.ErrorStream);
             Assert.NotNull(mock.OutputPipeline);
@@ -183,8 +207,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(record.Exception);
             Assert.Equal(typeof(Exception), record.Exception.GetType());
             Assert.Equal(message, record.Message);
-
-
         }
     }
 }

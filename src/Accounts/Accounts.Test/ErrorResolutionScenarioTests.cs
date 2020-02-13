@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,16 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.Profile.Common
+namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public static class AzureProfileConstants
+    public class ErrorResolutionScenarioTests : AccountsTestRunner
     {
-        public const string AzureAutosaveVariable = "Azure_Profile_Autosave";
+        public ErrorResolutionScenarioTests(ITestOutputHelper output)
+            : base(output)
+        {
+        }
 
-        public const string AzureSurveyUrl = "https://aka.ms/azpssurvey";
-
-        public static readonly string AzurePowerShellFeedbackMessage = string.Format(Resources.AzurePowerShellFeedback, AzureProfileConstants.AzureSurveyUrl);
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void WriteInformationInResolveError()
+        {
+            TestRunner.RunTestScript("Test-WriteInformationInResolveError");
+        }
     }
 }

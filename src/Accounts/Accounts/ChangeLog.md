@@ -21,6 +21,7 @@
 
 ## Version 1.7.2
 * Added SubscriptionId, TenantId, and execution time into data of client side telemetry
+* Display Azure PowerShell survey url to Resolve-Error.
 
 ## Version 1.7.1
 * Disable context auto saving when AzureRmContext.json not available

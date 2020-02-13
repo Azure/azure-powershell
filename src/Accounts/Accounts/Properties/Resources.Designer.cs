@@ -158,6 +158,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
                 return ResourceManager.GetString("AutosaveSettingFromSession", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The Azure PowerShell team is listening, please let us know how we are doing: {0}..
+        /// </summary>
+        internal static string AzurePowerShellFeedback {
+            get {
+                return ResourceManager.GetString("AzurePowerShellFeedback", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Selected profile must not be null..

@@ -471,4 +471,7 @@
   <data name="ProfileFileNotAccessible" xml:space="preserve">
     <value>Fail to access profile file and will try to use process ContextAutosaveSetting mode. Detailed error: '{0}'</value>
   </data>
+  <data name="AzurePowerShellFeedback" xml:space="preserve">
+    <value>The Azure PowerShell team is listening, please let us know how we are doing: {0}.</value>
+  </data>
 </root>

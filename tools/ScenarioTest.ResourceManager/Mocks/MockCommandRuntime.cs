@@ -23,13 +23,14 @@ using System.Security;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
-    public class MockCommandRuntime : ICommandRuntime
+    public class MockCommandRuntime : ICommandRuntime2
     {
         public List<ErrorRecord> ErrorStream = new List<ErrorRecord>();
         public List<object> OutputPipeline = new List<object>();
         public List<string> WarningStream = new List<string>();
         public List<string> VerboseStream = new List<string>();
         public List<string> DebugStream = new List<string>();
+        public List<InformationRecord> informationStream = new List<InformationRecord> ();
         PSHost _host = new MockPSHost();
 
         public override string ToString()
@@ -98,6 +99,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         public void WriteCommandDetail(string text)
         {
             throw new System.NotImplementedException();
+        }
+
+        public bool ShouldContinue(string query, string caption, bool hasSecurityImpact, ref bool yesToAll, ref bool noToAll)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void WriteInformation(InformationRecord informationRecord)
+        {
+            informationStream.Add(informationRecord);
         }
 
         public void WriteDebug(string text)
