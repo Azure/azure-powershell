@@ -36,6 +36,7 @@
 	- The user can provide either ActionGroupId(string) or ActionGorup(ActivityLogAlertActionGroup).
 
 #### Az.Network
+* Added one extra parameter note for parameter '-EnableProxyProtocol' for 'New-AzPrivateLinkService' cmdlet.
 * Fixed FilterData example in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
 * Added Packet Capture example for capture all inner and outer packets in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
 * Supported Azure Firewall Policy on VNet Firewalls

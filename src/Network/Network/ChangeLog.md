@@ -19,11 +19,9 @@
 --->
 
 ## Upcoming Release
-* Added one extra parameter note for parameter `-EnableProxyProtocol` for `New-AzPrivateLinkService` cmdlet.
 
 ## Version 2.3.1
-* Small modify on md file for New-AzPrivateLinkService cmdlet .
-    - Added one extra parameter note for parameter '-EnableProxyProtocol'
+* Added one extra parameter note for parameter `-EnableProxyProtocol` for `New-AzPrivateLinkService` cmdlet.
 * Fixed FilterData example in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
 * Added Packet Capture example for capture all inner and outer packets in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
 * Supported Azure Firewall Policy on VNet Firewalls
