@@ -20,13 +20,14 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     /// <summary>
     /// Creates a new resource group deployment.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", SupportsShouldProcess = true,DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
     public class NewAzureResourceGroupDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
     {
         [Alias("DeploymentName")]
@@ -59,6 +60,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The What-If result format.")]
+        public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
+
         public NewAzureResourceGroupDeploymentCmdlet()
         {
             this.Mode = DeploymentMode.Incremental;
@@ -66,46 +70,90 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
+            if (this.ShouldExecuteWhatIf())
+            {
+                string whatIfMessage = this.GetWhatIfMessage();
 
-            this.ConfirmAction(
-                this.Force,
-                string.Format(ProjectResources.ConfirmOnCompleteDeploymentMode, this.ResourceGroupName),
-                ProjectResources.CreateDeployment,
-                ResourceGroupName,
-                () =>
+                if (this.ShouldProcess(whatIfMessage, whatIfMessage, null))
                 {
-                    if (RollbackToLastDeployment && !string.IsNullOrEmpty(RollBackDeploymentName))
-                    {
-                        WriteExceptionError(new ArgumentException(ProjectResources.InvalidRollbackParameters));
-                    }
+                    this.ExecuteDeployment();
+                }
+            } else
+            {
+                this.ConfirmAction(
+                    this.Force,
+                    string.Format(ProjectResources.ConfirmOnCompleteDeploymentMode, this.ResourceGroupName),
+                    ProjectResources.CreateDeployment,
+                    ResourceGroupName,
+                    this.ExecuteDeployment,
+                    () => this.Mode == DeploymentMode.Complete);
+            }
+        }
 
-                    var parameters = new PSDeploymentCmdletParameters()
-                    {
-                        ScopeType = DeploymentScopeType.ResourceGroup,
-                        ResourceGroupName = ResourceGroupName,
-                        DeploymentName = Name,
-                        DeploymentMode = Mode,
-                        TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
-                        TemplateObject = TemplateObject,
-                        TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
-                        ParameterUri = TemplateParameterUri,
-                        DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
-                        OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)
-                            ? new OnErrorDeployment
-                            {
-                                Type = RollbackToLastDeployment ? OnErrorDeploymentType.LastSuccessful : OnErrorDeploymentType.SpecificDeployment,
-                                DeploymentName = RollbackToLastDeployment ? null : RollBackDeploymentName
-                            }
-                            : null
-                    };
+        private void ExecuteDeployment()
+        {
+            if (RollbackToLastDeployment && !string.IsNullOrEmpty(RollBackDeploymentName))
+            {
+                WriteExceptionError(new ArgumentException(ProjectResources.InvalidRollbackParameters));
+            }
 
-                    if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
+            var parameters = new PSDeploymentCmdletParameters()
+            {
+                ScopeType = DeploymentScopeType.ResourceGroup,
+                ResourceGroupName = ResourceGroupName,
+                DeploymentName = Name,
+                DeploymentMode = Mode,
+                TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                TemplateObject = TemplateObject,
+                TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
+                ParameterUri = TemplateParameterUri,
+                DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
+                OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)
+                    ? new OnErrorDeployment
                     {
-                        WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
+                        Type = RollbackToLastDeployment ? OnErrorDeploymentType.LastSuccessful : OnErrorDeploymentType.SpecificDeployment,
+                        DeploymentName = RollbackToLastDeployment ? null : RollBackDeploymentName
                     }
-                    WriteObject(ResourceManagerSdkClient.ExecuteResourceGroupDeployment(parameters));
-                },
-                () => this.Mode == DeploymentMode.Complete);
+                    : null
+            };
+
+            if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
+            {
+                WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
+            }
+            WriteObject(ResourceManagerSdkClient.ExecuteResourceGroupDeployment(parameters));
+        }
+
+        private string GetWhatIfMessage()
+        {
+            if (!this.ShouldExecuteWhatIf())
+            {
+                return null;
+            }
+
+            var parameters = new PSDeploymentWhatIfCmdletParameters
+            {
+                DeploymentName = this.Name,
+                Mode = this.Mode,
+                ResourceGroupName = this.ResourceGroupName,
+                TemplateUri = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                TemplateObject = this.TemplateObject,
+                TemplateParametersUri = this.TemplateParameterUri,
+                TemplateParametersObject = GetTemplateParameterObject(this.TemplateParameterObject),
+                ResultFormat = this.WhatIfResultFormat
+            };
+
+            PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters);
+            string whatIfMessage = WhatIfOperationResultFormatter.Format(whatIfResult);
+
+            // Use \r to override the built-in "What if:" in output.
+            return $"\r{whatIfMessage}";
+        }
+
+        private bool ShouldExecuteWhatIf()
+        {
+            return this.MyInvocation.BoundParameters.ContainsKey("WhatIf") ||
+                   this.MyInvocation.BoundParameters.ContainsKey("Confirm");
         }
     }
 }

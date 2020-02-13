@@ -1372,6 +1372,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
+        /// Executes deployment What-If at the specified scope.
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters)
+        {
+            IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
+            DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf();
+
+            return new PSWhatIfOperationResult(string.IsNullOrEmpty(parameters.ResourceGroupName)
+                ? deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf)
+                : deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf));
+        }
+
+        /// <summary>
         /// Creates new deployment at a resource group.
         /// </summary>
         /// <param name="parameters">The create deployment parameters</param>

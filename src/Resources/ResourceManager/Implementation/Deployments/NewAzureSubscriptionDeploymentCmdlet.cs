@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
@@ -50,26 +50,65 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The What-If result format.")]
+        public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
+
         public override void ExecuteCmdlet()
         {
-            var parameters = new PSDeploymentCmdletParameters()
+            string whatIfMessage = this.GetWhatIfMessage();
+
+            if (ShouldProcess(whatIfMessage, whatIfMessage, null))
             {
-                ScopeType = DeploymentScopeType.Subscription,
-                Location = Location,
-                DeploymentName = Name,
-                DeploymentMode = DeploymentMode.Incremental,
-                TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
-                TemplateObject = TemplateObject,
-                TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
-                ParameterUri = TemplateParameterUri,
-                DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
+                var parameters = new PSDeploymentCmdletParameters()
+                {
+                    ScopeType = DeploymentScopeType.Subscription,
+                    Location = Location,
+                    DeploymentName = Name,
+                    DeploymentMode = DeploymentMode.Incremental,
+                    TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                    TemplateObject = TemplateObject,
+                    TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
+                    ParameterUri = TemplateParameterUri,
+                    DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
+                };
+
+                if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
+                {
+                    WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
+                }
+                WriteObject(ResourceManagerSdkClient.ExecuteDeployment(parameters));
+            }
+        }
+
+        private string GetWhatIfMessage()
+        {
+            if (!this.ShouldExecuteWhatIf())
+            {
+                return null;
+            }
+
+            var parameters = new PSDeploymentWhatIfCmdletParameters
+            {
+                DeploymentName = this.Name,
+                Location = this.Location,
+                Mode = DeploymentMode.Incremental,
+                TemplateUri = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                TemplateObject = this.TemplateObject,
+                TemplateParametersUri = this.TemplateParameterUri,
+                TemplateParametersObject = GetTemplateParameterObject(this.TemplateParameterObject),
+                ResultFormat = this.WhatIfResultFormat
             };
 
-            if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
-            {
-                WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
-            }
-            WriteObject(ResourceManagerSdkClient.ExecuteDeployment(parameters));
+            PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters);
+            string whatIfMessage = WhatIfOperationResultFormatter.Format(whatIfResult);
+
+            return $"\r{whatIfMessage}";
+        }
+
+        private bool ShouldExecuteWhatIf()
+        {
+            return this.MyInvocation.BoundParameters.ContainsKey("WhatIf") ||
+                   this.MyInvocation.BoundParameters.ContainsKey("Confirm");
         }
     }
 }
