@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.2
 * Added SubscriptionId, TenantId, and execution time into data of client side telemetry
 
 ## Version 1.7.1

@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.5.0
 * Allowed empty value for ProximityPlacementGroupId during update
 
 ## Version 3.4.0

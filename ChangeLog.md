@@ -1,3 +1,70 @@
+## 3.5.0 - February 2020
+### Highlights since the last major release
+* Updated client side telemetry.
+* Az.IotHub added cmdlets to support to manage devices.
+* Az.SqlVirtualMachine added cmdlets for Availability Group Listener.
+
+#### Az.Accounts
+* Added SubscriptionId, TenantId, and execution time into data of client side telemetry
+
+#### Az.Automation
+* Fixed typo in Example 1 in reference documentation for 'New-AzAutomationSoftwareUpdateConfiguration'
+
+#### Az.CognitiveServices
+* Updated SDK to 7.0
+* Improved error message when server responses empty body
+
+#### Az.Compute
+* Allowed empty value for ProximityPlacementGroupId during update
+
+#### Az.FrontDoor
+* Added cmdlet to get managed rule definitions that can be used in WAF
+
+#### Az.IotHub
+* Added support to manage devices in an Iot Hub. New Cmdlets are:
+	- 'Add-AzIotHubDevice'
+	- 'Get-AzIotHubDevice'
+	- 'Remove-AzIotHubDevice'
+	- 'Set-AzIotHubDevice'
+
+#### Az.KeyVault
+* Fixed duplicated text for Add-AzKeyVaultKey.md
+
+#### Az.Monitor
+* Fixed description of the Get-AzLog cmdlet.
+* A new parameter called ActionGroupId was added to 'New-AzMetricAlertRuleV2' command.
+	- The user can provide either ActionGroupId(string) or ActionGorup(ActivityLogAlertActionGroup).
+
+#### Az.Network
+* Fixed FilterData example in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
+* Added Packet Capture example for capture all inner and outer packets in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
+* Supported Azure Firewall Policy on VNet Firewalls
+    - No new cmdlets are added. Relaxing the restriction for firewall policy on VNet firewalls
+
+#### Az.RecoveryServices
+* Added Support for Restore-as-files for SQL Databases.
+
+#### Az.Resources
+* Refactored template deployment cmdlets
+    - Added new cmdlets for managing deployments at management group: *-AzManagementGroupDeployment
+    - Added new cmdlets for managing deployments at tenant scope: *-AzTenantDeployment
+    - Refactored *-AzDeployment cmdlets to work specifically at subscription scope
+    - Created aliases *-AzSubscriptionDeployment for *-AzDeployment cmdlets
+* Fixed 'Update-AzADApplication' when parameter 'AvailableToOtherTenants' is not set
+* Removed ApplicationObjectWithoutCredentialParameterSet to avoid AmbiguousParameterSetException.
+* Regenerated help files
+
+#### Az.Sql
+* Added support for cross subscription point in time restore on Managed Instances.
+* Added support for changing existing Sql Managed Instance hardware generation
+* Fixed 'Update-AzSqlServerVulnerabilityAssessmentSetting' help examples: parameter/property output - EmailAdmins
+
+#### Az.SqlVirtualMachine
+* Added cmdlets for Availability Group Listener
+
+#### Az.StorageSync
+* Updated supported character sets in 'Invoke-AzStorageSyncCompatibilityCheck'.
+
 ## 3.4.0 - February 2020
 
 #### Az.CosmosDB
@@ -5,10 +72,6 @@
 * Updated .NET SDK Version to 1.0.1
 * Added parameters ConflictResolutionPolicyMode, ConflictResolutionPolicyPath and ConflictResolutionPolicyPath in Set-AzCosmosDBSqlContainer.
 * Added new cmdlets for Sql API : New-CosmosDBSqlSpatialSpec, New-CosmosDBSqlCompositePath, New-CosmosDBSqlIncludedPathIndex, New-CosmosDBSqlIncludedPath
-
-### Highlights since the last major release
-* Az.CosmosDB initial version 0.1.0 released
-* Az.Network ConnectionMonitor V2 support added
 
 #### Az.Accounts
 * Disable context auto saving when AzureRmContext.json not available
@@ -120,7 +183,7 @@ Fix New-AzSqlDatabaseSecondary cmdlet to check for PartnerDatabaseName existence
 #### Az.DataFactory
 * Add AutoUpdateETA, LatestVersion, PushedVersion, TaskQueueId and VersionStatus properties for Get-AzDataFactoryV2IntegrationRuntime cmd
 * Update ADF .Net SDK version to 4.6.0
-* Add parameter 'PublicIPs' for 'Set-AzureRmDataFactoryV2IntegrationRuntime' cmd 
+* Add parameter 'PublicIPs' for 'Set-AzDataFactoryV2IntegrationRuntime' cmd 
 to enable create Azure-SSIS IR with static public IP addresses.
 
 #### Az.DevTestLabs
@@ -164,8 +227,8 @@ to enable create Azure-SSIS IR with static public IP addresses.
 #### Az.Storage
 * Add breaking change warning message for DefaultAction Value change in a future release
     - Update-AzStorageAccountNetworkRuleSet
-* Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats 
-    - Get-AzureRMStorageAccount
+* Support Get last sync time of Storage account by run get-AzStorageAccount with parameter -IncludeGeoReplicationStats 
+    - Get-AzStorageAccount
 
 ## 3.2.0 - December 2019
 
@@ -268,7 +331,7 @@ to enable create Azure-SSIS IR with static public IP addresses.
 
 #### Az.DataFactory
 * Update ADF .Net SDK version to 4.4.0
-* Add parameter 'ExpressCustomSetup' for 'Set-AzureRmDataFactoryV2IntegrationRuntime' cmd to enable setup configurations and 3rd party components without custom setup script.
+* Add parameter 'ExpressCustomSetup' for 'Set-AzDataFactoryV2IntegrationRuntime' cmd to enable setup configurations and 3rd party components without custom setup script.
 
 #### Az.DataLakeStore
 * Update documentation of Get-AzDataLakeStoreDeletedItem and Restore-AzDataLakeStoreDeletedItem
@@ -478,13 +541,13 @@ to enable create Azure-SSIS IR with static public IP addresses.
         - Update-AzVirtualWan : added parameter VirtualWANType
 * Add support for EnableInternetSecurity property for HubVnetConnection, VpnConnection and ExpressRouteConnection
     - New cmdlets added:
-        - Update-AzureRmVirtualHubVnetConnection
+        - Update-AzVirtualHubVnetConnection
     - Cmdlets updated with optional parameters:
-        - New-AzureRmVirtualHubVnetConnection : added parameter EnableInternetSecurity
-        - New-AzureRmVpnConnection : added parameter EnableInternetSecurity
-        - Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
-        - New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
-        - Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+        - New-AzVirtualHubVnetConnection : added parameter EnableInternetSecurity
+        - New-AzVpnConnection : added parameter EnableInternetSecurity
+        - Update-AzVpnConnection : added parameter EnableInternetSecurity
+        - New-AzExpressRouteConnection : added parameter EnableInternetSecurity
+        - Set-AzExpressRouteConnection : added parameter EnableInternetSecurity
 * Add support for Configuring TopLevel WebApplicationFirewall Policy
     - New cmdlets added:
         - New-AzApplicationGatewayFirewallPolicySetting
@@ -591,8 +654,8 @@ to enable create Azure-SSIS IR with static public IP addresses.
     - New cmdlets added:
         - New-AzureRmTrafficSelectorPolicy
     - Cmdlets updated with optional parameter -TrafficSelectorPolicies
-        -New-AzureRmVirtualNetworkGatewayConnection
-        -Set-AzureRmVirtualNetworkGatewayConnection
+        -New-AzVirtualNetworkGatewayConnection
+        -Set-AzVirtualNetworkGatewayConnection
 * Add support for ESP and AH protocols in network security rule configurations
     - Updated cmdlets:
         - Add-AzNetworkSecurityRuleConfig
