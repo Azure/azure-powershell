@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.7.0
 * Added Support for Restore-as-files for SQL Databases.
 
 ## Version 2.6.0
