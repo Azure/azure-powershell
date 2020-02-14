@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.3.0
 * Added support for cross subscription point in time restore on Managed Instances.
 * Added support for changing existing Sql Managed Instance hardware generation
 * Fixed `Update-AzSqlServerVulnerabilityAssessmentSetting` help examples: parameter/property output - EmailAdmins
