@@ -144,5 +144,25 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         {
             return GetCurrentSqlClient().RestorableDroppedManagedDatabases.Get(resourceGroupName, serverName, databaseName);
         }
+
+        /// <summary>
+        /// Get a backup LongTermRetention policy for a Azure SQL Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <returns>A backup LongTermRetention policy</returns>
+        public Management.Sql.LegacySdk.Models.DatabaseBackupLongTermRetentionPolicy GetManagedDatabaseBackupLongTermRetentionPolicy(
+            string resourceGroupName,
+            string serverName,
+            string databaseName,
+            string baPolicyName)
+        {
+            return GetCurrentSqlClient().ManagedDatabaseBackup.GetDatabaseBackupLongTermRetentionPolicy(
+                resourceGroupName,
+                serverName,
+                databaseName,
+                baPolicyName).DatabaseBackupLongTermRetentionPolicy;
+        }
     }
 }
