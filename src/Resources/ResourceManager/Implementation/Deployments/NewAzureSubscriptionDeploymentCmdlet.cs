@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [PSArgumentCompleter("RequestContent", "ResponseContent", "All", "None")]
         public string DeploymentDebugLogLevel { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "The What-If result format.")]
         public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
