@@ -12,17 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+    using Microsoft.Rest.Azure;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Newtonsoft.Json;
+
     public abstract class ResourceWithParameterCmdletBase : ResourceManagerCmdletBase
     {
         protected const string TemplateObjectParameterObjectParameterSetName = "ByTemplateObjectAndParameterObject";
@@ -267,6 +272,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             return debugSetting;
+        }
+
+        protected void HandleException(CloudException ce)
+        {
+            var formattedException = new CloudException(string.Format(
+                CultureInfo.InvariantCulture,
+                Resources.FormattedCloudExceptionMessageTemplate,
+                ce.Response?.StatusCode,
+                ce.Body?.Code ?? ce.Response?.StatusCode.ToString(),
+                ce.Body?.Message ?? ce.Message,
+                JsonConvert.SerializeObject(ce.Body?.Details, Formatting.Indented),
+                ce.GetRequestId(),
+                DateTime.UtcNow));
+
+            this.WriteExceptionError(formattedException);
+        }
+
+        protected void HandleException(Exception e)
+        {
+            this.WriteExceptionError(e);
         }
     }
 }

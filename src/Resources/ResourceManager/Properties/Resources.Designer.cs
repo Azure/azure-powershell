@@ -304,6 +304,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HTTP Status Code: {0}.
+        /// </summary>
+        internal static string FormattedCloudExceptionMessageTemplate {
+            get {
+                return ResourceManager.GetString("FormattedCloudExceptionMessageTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parameter type in parameters cannot be null or empty.
         /// </summary>
         internal static string GetParameterTypeError {

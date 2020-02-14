@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Rest.Azure;
+
     /// <summary>
     /// Creates a new deployment.
     /// </summary>
@@ -74,7 +76,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
                 {
-                    WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
+                    WriteWarning(Resources.WarnOnDeploymentDebugSetting);
                 }
                 WriteObject(ResourceManagerSdkClient.ExecuteDeployment(parameters));
             }
@@ -82,27 +84,56 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         private string GetWhatIfMessage()
         {
-            if (!this.ShouldExecuteWhatIf())
+            if (this.ShouldExecuteWhatIf())
             {
-                return null;
+                const string statusMessage = "Getting the latest status of all resources...";
+                var clearMessage = new string(' ', statusMessage.Length);
+                var information = new HostInformationMessage { Message = statusMessage, NoNewLine = true };
+                var clearInformation = new HostInformationMessage { Message = $"\r{clearMessage}\r", NoNewLine = true };
+                var tags = new[] { "PSHOST" };
+
+                try
+                {
+                    // Write status message.
+                    this.WriteInformation(information, tags);
+
+
+                    var parameters = new PSDeploymentWhatIfCmdletParameters
+                    {
+                        DeploymentName = this.Name,
+                        Location = this.Location,
+                        Mode = DeploymentMode.Incremental,
+                        TemplateUri = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                        TemplateObject = this.TemplateObject,
+                        TemplateParametersUri = this.TemplateParameterUri,
+                        TemplateParametersObject = GetTemplateParameterObject(this.TemplateParameterObject),
+                        ResultFormat = this.WhatIfResultFormat
+                    };
+
+                    PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters);
+                    string whatIfMessage = WhatIfOperationResultFormatter.Format(whatIfResult);
+
+                    // Clear status before returning result.
+                    this.WriteInformation(clearInformation, tags);
+
+                    // Use \r to override the built-in "What if:" in output.
+                    return $"\r{whatIfMessage}";
+                }
+                catch (CloudException ce)
+                {
+                    // Clear status before handling exception.
+                    this.WriteInformation(clearInformation, tags);
+                    this.HandleException(ce);
+                }
+                catch (Exception e)
+                {
+                    // Clear status before handling exception.
+                    this.WriteInformation(clearInformation, tags);
+                    this.HandleException(e);
+                }
             }
 
-            var parameters = new PSDeploymentWhatIfCmdletParameters
-            {
-                DeploymentName = this.Name,
-                Location = this.Location,
-                Mode = DeploymentMode.Incremental,
-                TemplateUri = TemplateUri ?? this.TryResolvePath(TemplateFile),
-                TemplateObject = this.TemplateObject,
-                TemplateParametersUri = this.TemplateParameterUri,
-                TemplateParametersObject = GetTemplateParameterObject(this.TemplateParameterObject),
-                ResultFormat = this.WhatIfResultFormat
-            };
-
-            PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters);
-            string whatIfMessage = WhatIfOperationResultFormatter.Format(whatIfResult);
-
-            return $"\r{whatIfMessage}";
+            return null;
         }
 
         private bool ShouldExecuteWhatIf()

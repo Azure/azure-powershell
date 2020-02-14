@@ -454,4 +454,7 @@
     <value>Note: As What-If is currently in preview, the result may contain false positive predictions (noise).
 You can help us improve the accuracy of the result by opening an issue here: https://aka.ms/WhatIfIssues.</value>
   </data>
+  <data name="FormattedCloudExceptionMessageTemplate" xml:space="preserve">
+    <value>HTTP Status Code: {0}</value>
+  </data>
 </root>
