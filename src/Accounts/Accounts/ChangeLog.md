@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.7.1
+* Support ADAL token cache migration
+
 ## Version 2.0.1
 * Fix a few issues concerning authentication
 
