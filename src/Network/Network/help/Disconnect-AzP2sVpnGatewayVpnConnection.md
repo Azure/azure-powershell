@@ -71,7 +71,7 @@ P2SConnectionConfigurations    : [
 The p2s vpn gateway object to be modified
 
 ```yaml
-Type: PSP2SVpnGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSP2SVpnGateway
 Parameter Sets: ByP2SVpnGatewayObject
 Aliases: P2SVpnGateway
 
@@ -127,6 +127,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+P2s Virtual network gateway resource Id
+
+```yaml
+Type: System.String
+Parameter Sets: ByP2SVpnGatewayResourceId
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -136,7 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSP2SVpnConnectionHealth
+### Microsoft.Azure.Commands.Network.Models.PSP2SVpnGateway
 
 ## NOTES
 
