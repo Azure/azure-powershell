@@ -26,6 +26,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return IotHubUtils.ConvertObject<PSDevice, Device>(psDevice);
         }
 
+        public static Module ToModule(PSModule psModule)
+        {
+            return IotHubUtils.ConvertObject<PSModule, Module>(psModule);
+        }
+
         public static PSDevice ToPSDevice(Device device)
         {
             return IotHubUtils.ConvertObject<Device, PSDevice>(device);
@@ -34,6 +39,16 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
         public static IEnumerable<PSDevices> ToPSDevices(IEnumerable<Device> devices)
         {
             return IotHubUtils.ConvertObject<IEnumerable<Device>, IEnumerable<PSDevices>>(devices.ToList());
+        }
+
+        public static PSModule ToPSModule(Module module)
+        {
+            return IotHubUtils.ConvertObject<Module, PSModule>(module);
+        }
+
+        public static IEnumerable<PSModules> ToPSModules(IEnumerable<Module> modules)
+        {
+            return IotHubUtils.ConvertObject<IEnumerable<Module>, IEnumerable<PSModules>>(modules.ToList());
         }
     }
 }
