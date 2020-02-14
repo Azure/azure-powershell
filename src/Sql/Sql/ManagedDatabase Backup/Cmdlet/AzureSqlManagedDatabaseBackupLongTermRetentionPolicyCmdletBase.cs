@@ -15,37 +15,48 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Backup.Model;
-using Microsoft.Azure.Commands.Sql.Backup.Services;
+using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model;
+using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
-namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
 {
-    public abstract class AzureSqlServerBackupLongTermRetentionVaultCmdletBase : 
-        AzureSqlCmdletBase<IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel>, AzureSqlDatabaseBackupAdapter>
+    public abstract class AzureSqlManagedDatabaseBackupLongTermRetentionPolicyCmdletBase :
+        AzureSqlCmdletBase<IEnumerable<AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel>, AzureSqlManagedDatabaseBackupAdapter>
     {
         /// <summary>
-        /// Gets or sets the name of the database server to use.
+        /// Gets or sets the name of the managed instance to use.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The name of the Azure SQL Server the database is in.")]
-        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
+            HelpMessage = "The name of the Azure Managed Instance the database belongs to.")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstance", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string ServerName { get; set; }
+        public string ManagedInstanceName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the managed database to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = "The name of the Azure Managed Database to use.")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "ManagedInstanceName")]
+        [ValidateNotNullOrEmpty]
+        public string DatabaseName { get; set; }
 
         /// <summary>
         /// Initializes the adapter
         /// </summary>
         /// <returns></returns>
-        protected override AzureSqlDatabaseBackupAdapter InitModelAdapter()
+        protected override AzureSqlManagedDatabaseBackupAdapter InitModelAdapter()
         {
-            return new AzureSqlDatabaseBackupAdapter(DefaultProfile.DefaultContext);
+            return new AzureSqlManagedDatabaseBackupAdapter(DefaultProfile.DefaultContext);
         }
     }
 }
