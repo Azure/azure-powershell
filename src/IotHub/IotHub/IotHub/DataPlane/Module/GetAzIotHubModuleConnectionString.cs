@@ -16,19 +16,19 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Devices;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
-    using Newtonsoft.Json;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubDeviceConnectionString", DefaultParameterSetName = ResourceParameterSet)]
-    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubDCS")]
-    [OutputType(typeof(PSDeviceConnectionString))]
-    public class GetAzIotHubDeviceConnectionString : IotHubBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubModuleConnectionString", DefaultParameterSetName = ResourceParameterSet)]
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubMCS")]
+    [OutputType(typeof(PSModuleConnectionString))]
+    public class GetAzIotHubModuleConnectionString : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -52,10 +52,17 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string IotHubName { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = InputObjectParameterSet, HelpMessage = "Target Device Id.")]
-        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Target Device Id.")]
-        [Parameter(Mandatory = false, ParameterSetName = ResourceParameterSet, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Target Device Id.")]
+        [ValidateNotNullOrEmpty]
         public string DeviceId { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = InputObjectParameterSet, HelpMessage = "Target Module Id.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Target Module Id.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceParameterSet, HelpMessage = "Target Module Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ModuleId { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = InputObjectParameterSet, HelpMessage = "Shared access policy key type for auth.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Shared access policy key type for auth.")]
@@ -86,35 +93,37 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             SharedAccessSignatureAuthorizationRule policy = IotHubUtils.GetPolicy(authPolicies, PSAccessRights.RegistryRead);
             PSIotHubConnectionString psIotHubConnectionString = IotHubUtils.ToPSIotHubConnectionString(policy, iotHubDescription.Properties.HostName);
             RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);
-            if (this.DeviceId != null)
+            Device device = registryManager.GetDeviceAsync(this.DeviceId).GetAwaiter().GetResult();
+            if (device != null)
             {
-                Device device = registryManager.GetDeviceAsync(this.DeviceId).GetAwaiter().GetResult();
-                if (device != null)
+                List<Module> modules = registryManager.GetModulesOnDeviceAsync(this.DeviceId).GetAwaiter().GetResult().ToList();
+                if (this.ModuleId != null)
                 {
-                    this.WriteObject(GetDeviceConnectionString(device, iotHubDescription.Properties.HostName));
+                    if (modules.Any(m => m.Id.Equals(this.ModuleId)))
+                    {
+                        this.WriteObject(GetModuleConnectionString(modules.FirstOrDefault(m => m.Id.Equals(this.ModuleId)), iotHubDescription.Properties.HostName));
+                    }
                 }
-            }
-            else
-            {
-                IEnumerable<string> deviceResults = registryManager.CreateQuery("Select * from Devices").GetNextAsJsonAsync().GetAwaiter().GetResult();
-                IList<PSDeviceConnectionString> psDeviceConnectionStringCollection = new List<PSDeviceConnectionString>();
-                foreach (string deviceResult in deviceResults)
+                else
                 {
-                    Device device = registryManager.GetDeviceAsync(JsonConvert.DeserializeObject<Device>(deviceResult).Id).GetAwaiter().GetResult();
-                    psDeviceConnectionStringCollection.Add(GetDeviceConnectionString(device, iotHubDescription.Properties.HostName));
-                }
+                    IList<PSModuleConnectionString> psModuleConnectionStringCollection = new List<PSModuleConnectionString>();
+                    foreach (Module module in modules)
+                    {
+                        psModuleConnectionStringCollection.Add(GetModuleConnectionString(module, iotHubDescription.Properties.HostName));
+                    }
 
-                this.WriteObject(psDeviceConnectionStringCollection, true);
+                    this.WriteObject(psModuleConnectionStringCollection, true);
+                }
             }
         }
 
-        private PSDeviceConnectionString GetDeviceConnectionString(Device device, string hostName)
+        private PSModuleConnectionString GetModuleConnectionString(Module module, string hostName)
         {
             string key;
-            switch (device.Authentication.Type)
+            switch (module.Authentication.Type)
             {
                 case AuthenticationType.Sas:
-                    key = string.Format("SharedAccessKey={0}", this.KeyType.Equals(PSKeyType.primary) ? device.Authentication.SymmetricKey.PrimaryKey : device.Authentication.SymmetricKey.SecondaryKey);
+                    key = string.Format("SharedAccessKey={0}", this.KeyType.Equals(PSKeyType.primary) ? module.Authentication.SymmetricKey.PrimaryKey : module.Authentication.SymmetricKey.SecondaryKey);
                     break;
                 case AuthenticationType.SelfSigned:
                 case AuthenticationType.CertificateAuthority:
@@ -124,13 +133,13 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     throw new ArgumentNullException("Unable to get authentication type of device.");
             }
 
-            PSDeviceConnectionString psDeviceConnectionString = new PSDeviceConnectionString
+            PSModuleConnectionString psModuleConnectionString = new PSModuleConnectionString
             {
-                DeviceId = device.Id,
-                ConnectionString = $"HostName={hostName};DeviceId={device.Id};{key}"
+                ModuleId = module.Id,
+                ConnectionString = $"HostName={hostName};DeviceId={module.DeviceId};ModuleId={module.Id};{key}"
             };
 
-            return psDeviceConnectionString;
+            return psModuleConnectionString;
         }
     }
 }
