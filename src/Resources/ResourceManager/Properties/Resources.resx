@@ -455,6 +455,11 @@
 You can help us improve the accuracy of the result by opening an issue here: https://aka.ms/WhatIfIssues.</value>
   </data>
   <data name="FormattedCloudExceptionMessageTemplate" xml:space="preserve">
-    <value>HTTP Status Code: {0}</value>
+    <value>HTTP Status Code: {0}
+Error Code: {1}
+Error Message: {2}
+Error Details: {3}
+Request Id: {4}
+Timestamp (UTC): {5}</value>
   </data>
 </root>

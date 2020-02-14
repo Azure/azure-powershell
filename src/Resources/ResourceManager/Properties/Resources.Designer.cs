@@ -304,7 +304,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HTTP Status Code: {0}.
+        ///   Looks up a localized string similar to HTTP Status Code: {0}
+        ///Error Code: {1}
+        ///Error Message: {2}
+        ///Error Details: {3}
+        ///Request Id: {4}
+        ///Timestamp (UTC): {5}.
         /// </summary>
         internal static string FormattedCloudExceptionMessageTemplate {
             get {
