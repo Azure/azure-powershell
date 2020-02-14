@@ -41,7 +41,7 @@ PS C:\> Get-AzIotHubDeviceConnectionString -ResourceGroupName "myresourcegroup" 
 
 Device Id Connection String
 --------- -----------------
-device1   HostName=myiothub.azure-devices.net;DeviceId=device1;SharedAccessKey=/X4yj1WhlkpcZWied4mNEI+KShScCc+fgNjsdTSM3ag=     
+device1   HostName=myiothub.azure-devices.net;DeviceId=device1;SharedAccessKey=/X4y******     
 device2   HostName=myiothub.azure-devices.net;DeviceId=device2;x509=true
 ```
 
@@ -53,7 +53,7 @@ PS C:\> Get-AzIotHubDCS -ResourceGroupName "myresourcegroup" -IotHubName "myioth
 
 Device Id Connection String
 --------- -----------------
-device1   HostName=myiothub.azure-devices.net;DeviceId=device1;SharedAccessKey=/X4yj1WhlkpcZWied4mNEI+KShScCc+fgNjsdTSM3ag=
+device1   HostName=myiothub.azure-devices.net;DeviceId=device1;SharedAccessKey=/X4y******
 ```
 
 Get the secondary connection string of an IoT device.
