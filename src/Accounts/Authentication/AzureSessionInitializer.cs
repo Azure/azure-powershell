@@ -148,17 +148,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 return;
             }
 
-            var authenticationClientFactory = new SharedTokenCacheClientFactory();
+            var authenticationClientFactory = new SharedTokenCacheClientFactory(new CacheMigrationSettings
+            {
+                CacheData = adalData,
+                CacheFormat = CacheFormat.AdalV3
+            });
             var client = authenticationClientFactory.CreatePublicClient();
-            try
-            {
-                // client.UserTokenCache.DeserializeAdalV3(adalData);
-            }
-            catch
-            {
-                // Return if there was an error deserializing the ADAL data
-                return;
-            }
 
             var accounts = client.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             foreach (var account in accounts)
@@ -167,7 +162,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 {
                     var accountEnvironment = string.Format("https://{0}/", account.Environment);
                     var environment = AzureEnvironment.PublicEnvironments.Values.Where(e => e.ActiveDirectoryAuthority == accountEnvironment).FirstOrDefault();
-                     if (environment == null)
+                    if (environment == null)
                     {
                         // We cannot map the previous environment to one of the public environments
                         continue;

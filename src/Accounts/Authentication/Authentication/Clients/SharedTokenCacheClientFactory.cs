@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Extensions.Msal;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -25,10 +27,60 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public static readonly string CacheFilePath =
             Path.Combine(SharedUtilities.GetUserRootDirectory(), ".IdentityService", "msal.cache");
 
+        private CacheMigrationSettings _cacheMigrationSettings;
+
+        public SharedTokenCacheClientFactory() { }
+
+        /// <summary>
+        /// Initialize the client factory with token cache migration settings. Factory will try to migrate the cache before any access to token cache.
+        /// </summary>
+        public SharedTokenCacheClientFactory(CacheMigrationSettings cacheMigrationSettings) => _cacheMigrationSettings = cacheMigrationSettings;
+
         public override void RegisterCache(IClientApplicationBase client)
         {
-            var cacheHelper = GetCacheHelper(client.AppConfig.ClientId);
-            cacheHelper.RegisterCache(client.UserTokenCache);
+            if (_cacheMigrationSettings != null)
+            {
+                // register a one-time handler to deserialize token cache
+                client.UserTokenCache.SetBeforeAccess((TokenCacheNotificationArgs args) =>
+                {
+                    try
+                    {
+                        DeserializeTokenCache(args.TokenCache, _cacheMigrationSettings);
+                    }
+                    catch (Exception e)
+                    {
+                        // continue silently
+                        TracingAdapter.Information($"[SharedTokenCacheClientFactory] Exception caught trying migrating ADAL cache: {e.Message}");
+                    }
+                    finally
+                    {
+                        _cacheMigrationSettings = null;
+                        // replace the handler with the real one
+                        var cacheHelper = GetCacheHelper(client.AppConfig.ClientId);
+                        cacheHelper.RegisterCache(client.UserTokenCache);
+                    }
+                });
+            }
+            else
+            {
+                var cacheHelper = GetCacheHelper(client.AppConfig.ClientId);
+                cacheHelper.RegisterCache(client.UserTokenCache);
+            }
+        }
+
+        private void DeserializeTokenCache(ITokenCacheSerializer tokenCache, CacheMigrationSettings cacheMigrationSettings)
+        {
+            switch (cacheMigrationSettings.CacheFormat)
+            {
+                case CacheFormat.AdalV3:
+                    tokenCache.DeserializeAdalV3(cacheMigrationSettings.CacheData);
+                    return;
+                case CacheFormat.MsalV3:
+                    tokenCache.DeserializeMsalV3(cacheMigrationSettings.CacheData);
+                    return;
+                default:
+                    return;
+            }
         }
 
         private MsalCacheHelper GetCacheHelper(string clientId)
