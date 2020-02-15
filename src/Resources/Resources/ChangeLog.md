@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated `Get-AzResource` to perform resource group tag filtering on server-side.
+* Updated `Get-AzResourceGroup` to perform resource group tag filtering on server-side.
 
 ## Version 1.11.0
 * Refactored template deployment cmdlets
