@@ -16,44 +16,86 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.Tags.Client;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Commands.Tags.Properties;
 
 namespace Microsoft.Azure.Commands.Tags.Tag
 {
     /// <summary>
-    /// Creates a new tag with the specified values
+    /// Deletes tags cmdlet
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Tag", SupportsShouldProcess = true), OutputType(typeof(PSTag))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Tag", SupportsShouldProcess = true), OutputType(typeof(PSTag), typeof(PSTagResource))]
     public class RemoveAzureTagCommand : TagBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag to remove.")]
+        #region Parameter Set Names
+
+        private const string RemovePredefinedTagSet = "RemovePredefinedTagSet";
+        private const string RemoveByResourceIdParameterSet = "RemoveByResourceIdParameterSet";
+
+        #endregion
+
+        #region Input Parameter Definitions
+
+        [Parameter(Position = 0, 
+            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = RemovePredefinedTagSet,
+            HelpMessage = "Name of the tag to remove.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Value of the tag to remove. If not specified, remove the entire tag. If specified, only remove the tag value.")]
+        [Parameter(Position = 1, 
+            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = RemovePredefinedTagSet,
+            HelpMessage = "Value of the tag to remove. If not specified, remove the entire tag. If specified, only remove the tag value.")]
         [ValidateNotNullOrEmpty]
         public string[] Value { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
+        [Parameter(Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Return object if specified.")]
         public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = RemoveByResourceIdParameterSet,
+            HelpMessage = "Removes the entire set of tags on resourceId, resourceId can be a resource or subscription.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        #endregion
 
         public override void ExecuteCmdlet()
         {
-            PSTag tag = null;
-
-            ConfirmAction(
-                Resources.RemoveTagMessage,
-                Name,
-                () =>
+            if (!string.IsNullOrWhiteSpace(this.ResourceId))
+            {
+                if(ShouldProcess(this.ResourceId, "Removing the entire set of tags"))        
                 {
-                    tag = TagsClient.DeleteTag(Name, Value != null ? Value.ToList() : null);
-                    if (PassThru)
+                    var res = TagsClient.DeleteTagAtScope(this.ResourceId);
+                    if (this.PassThru.IsPresent)
                     {
-                        WriteObject(tag);
+                        WriteObject(res);
                     }
-                });
+                }
+            }
+            else
+            {
+                PSTag tag = null;
 
+                ConfirmAction(
+                    Resources.RemoveTagMessage,
+                    Name,
+                    () =>
+                    {
+                        tag = TagsClient.DeleteTag(Name, Value != null ? Value.ToList() : null);
+                        if (PassThru)
+                        {
+                            WriteObject(tag);
+                        }
+                    });
+            }
         }
     }
 }

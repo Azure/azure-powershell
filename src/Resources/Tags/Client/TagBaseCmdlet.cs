@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
 
-namespace Microsoft.Azure.Commands.Tags.Model
+namespace Microsoft.Azure.Commands.Tags.Client
 {
     public abstract class TagBaseCmdlet : AzureRMCmdlet
     {
