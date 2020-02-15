@@ -9,7 +9,11 @@
     "nestedDeploymentRG": {
       "type": "string",
       "defaultValue": "ps_test_subscription_deployment"
-    }
+    },
+    "policyLocation": {
+      "type": "string",
+      "defaultValue": "northeurope"
+    } 
   },
   "variables": {},
   "resources": [
@@ -23,7 +27,7 @@
         "policyRule": {
           "if": {
             "field": "location",
-            "equals": "northeurope"
+            "equals": "[parameters('policyLocation')]"
           },
           "then": {
             "effect": "deny"
