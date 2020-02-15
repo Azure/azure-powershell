@@ -1,0 +1,386 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/%2Fsubscriptions%2Fb9f138a1-1d64-4108-8413-9ea3be1c1b2d%2Fresourcegroups%2FTagsApiSDK%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2FTagTestVM/providers/Microsoft.Resources/tags/default?api-version=2019-10-01",
+      "EncodedRequestUri": "LyUyRnN1YnNjcmlwdGlvbnMlMkZiOWYxMzhhMS0xZDY0LTQxMDgtODQxMy05ZWEzYmUxYzFiMmQlMkZyZXNvdXJjZWdyb3VwcyUyRlRhZ3NBcGlTREslMkZwcm92aWRlcnMlMkZNaWNyb3NvZnQuQ29tcHV0ZSUyRnZpcnR1YWxNYWNoaW5lcyUyRlRhZ1Rlc3RWTS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy90YWdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAxOS0xMC0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key2\": \"value2\",\r\n      \"key1\": \"value1\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a7ec4147-daef-474f-9523-52af843f6ca8"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27110.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.3.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "99"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "ae1cef69-5b7f-47d5-898e-f7e80d029358"
+        ],
+        "x-ms-correlation-request-id": [
+          "ae1cef69-5b7f-47d5-898e-f7e80d029358"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200215T012438Z:ae1cef69-5b7f-47d5-898e-f7e80d029358"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 15 Feb 2020 01:24:38 GMT"
+        ],
+        "Content-Length": [
+          "57"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key2\": \"value2\",\r\n      \"key1\": \"value1\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/%2Fsubscriptions%2Fb9f138a1-1d64-4108-8413-9ea3be1c1b2d%2Fresourcegroups%2FTagsApiSDK%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2FTagTestVM/providers/Microsoft.Resources/tags/default?api-version=2019-10-01",
+      "EncodedRequestUri": "LyUyRnN1YnNjcmlwdGlvbnMlMkZiOWYxMzhhMS0xZDY0LTQxMDgtODQxMy05ZWEzYmUxYzFiMmQlMkZyZXNvdXJjZWdyb3VwcyUyRlRhZ3NBcGlTREslMkZwcm92aWRlcnMlMkZNaWNyb3NvZnQuQ29tcHV0ZSUyRnZpcnR1YWxNYWNoaW5lcyUyRlRhZ1Rlc3RWTS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy90YWdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAxOS0xMC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1b771a40-0522-49a4-bfb8-7281bd825f35"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27110.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "9c25a42c-a869-4a2d-b9dd-5d59f525284c"
+        ],
+        "x-ms-correlation-request-id": [
+          "9c25a42c-a869-4a2d-b9dd-5d59f525284c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200215T012438Z:9c25a42c-a869-4a2d-b9dd-5d59f525284c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 15 Feb 2020 01:24:37 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "57"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key1\": \"value1\",\r\n      \"key2\": \"value2\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/%2Fsubscriptions%2Fb9f138a1-1d64-4108-8413-9ea3be1c1b2d%2Fresourcegroups%2FTagsApiSDK%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2FTagTestVM/providers/Microsoft.Resources/tags/default?api-version=2019-10-01",
+      "EncodedRequestUri": "LyUyRnN1YnNjcmlwdGlvbnMlMkZiOWYxMzhhMS0xZDY0LTQxMDgtODQxMy05ZWEzYmUxYzFiMmQlMkZyZXNvdXJjZWdyb3VwcyUyRlRhZ3NBcGlTREslMkZwcm92aWRlcnMlMkZNaWNyb3NvZnQuQ29tcHV0ZSUyRnZpcnR1YWxNYWNoaW5lcyUyRlRhZ1Rlc3RWTS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy90YWdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAxOS0xMC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d5ede78e-a599-442e-86d8-adbbc3237ef4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27110.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "809e2ace-67b1-439b-a2e8-89c63a686825"
+        ],
+        "x-ms-correlation-request-id": [
+          "809e2ace-67b1-439b-a2e8-89c63a686825"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200215T012439Z:809e2ace-67b1-439b-a2e8-89c63a686825"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 15 Feb 2020 01:24:39 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "26"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"tags\": {}\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/%2Fsubscriptions%2Fb9f138a1-1d64-4108-8413-9ea3be1c1b2d%2Fresourcegroups%2FTagsApiSDK%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2FTagTestVM/providers/Microsoft.Resources/tags/default?api-version=2019-10-01",
+      "EncodedRequestUri": "LyUyRnN1YnNjcmlwdGlvbnMlMkZiOWYxMzhhMS0xZDY0LTQxMDgtODQxMy05ZWEzYmUxYzFiMmQlMkZyZXNvdXJjZWdyb3VwcyUyRlRhZ3NBcGlTREslMkZwcm92aWRlcnMlMkZNaWNyb3NvZnQuQ29tcHV0ZSUyRnZpcnR1YWxNYWNoaW5lcyUyRlRhZ1Rlc3RWTS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy90YWdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAxOS0xMC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d59b8ca6-b8c3-4ca9-a5cb-f59e612ef557"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27110.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "d90461ac-6bf3-4ea5-82a2-4d55d7baf44d"
+        ],
+        "x-ms-correlation-request-id": [
+          "d90461ac-6bf3-4ea5-82a2-4d55d7baf44d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200215T012439Z:d90461ac-6bf3-4ea5-82a2-4d55d7baf44d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 15 Feb 2020 01:24:39 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "26"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"tags\": {}\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/%2Fsubscriptions%2Fb9f138a1-1d64-4108-8413-9ea3be1c1b2d%2Fresourcegroups%2FTagsApiSDK%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2FTagTestVM/providers/Microsoft.Resources/tags/default?api-version=2019-10-01",
+      "EncodedRequestUri": "LyUyRnN1YnNjcmlwdGlvbnMlMkZiOWYxMzhhMS0xZDY0LTQxMDgtODQxMy05ZWEzYmUxYzFiMmQlMkZyZXNvdXJjZWdyb3VwcyUyRlRhZ3NBcGlTREslMkZwcm92aWRlcnMlMkZNaWNyb3NvZnQuQ29tcHV0ZSUyRnZpcnR1YWxNYWNoaW5lcyUyRlRhZ1Rlc3RWTS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy90YWdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAxOS0xMC0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8e9196d0-b62b-4d10-9e38-c8f0b979d09d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27110.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "d16a470f-749d-4aa7-94c6-844499ca0a07"
+        ],
+        "x-ms-correlation-request-id": [
+          "d16a470f-749d-4aa7-94c6-844499ca0a07"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200215T012439Z:d16a470f-749d-4aa7-94c6-844499ca0a07"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 15 Feb 2020 01:24:39 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/%2Fsubscriptions%2Fb9f138a1-1d64-4108-8413-9ea3be1c1b2d%2Fresourcegroups%2FTagsApiSDK%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2FTagTestVM/providers/Microsoft.Resources/tags/default?api-version=2019-10-01",
+      "EncodedRequestUri": "LyUyRnN1YnNjcmlwdGlvbnMlMkZiOWYxMzhhMS0xZDY0LTQxMDgtODQxMy05ZWEzYmUxYzFiMmQlMkZyZXNvdXJjZWdyb3VwcyUyRlRhZ3NBcGlTREslMkZwcm92aWRlcnMlMkZNaWNyb3NvZnQuQ29tcHV0ZSUyRnZpcnR1YWxNYWNoaW5lcyUyRlRhZ1Rlc3RWTS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy90YWdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAxOS0xMC0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "eb7134b4-b614-4083-a337-6f0e5cb9ed8d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27110.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "d3032e45-f56a-4b9a-a958-e781f595730b"
+        ],
+        "x-ms-correlation-request-id": [
+          "d3032e45-f56a-4b9a-a958-e781f595730b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200215T012439Z:d3032e45-f56a-4b9a-a958-e781f595730b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 15 Feb 2020 01:24:39 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "b9f138a1-1d64-4108-8413-9ea3be1c1b2d"
+  }
+}

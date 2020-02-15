@@ -16,14 +16,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Tags.Properties;
-using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Commands.Tags.Model;
+using SDKTagsObject = Microsoft.Azure.Management.ResourceManager.Models.Tags;
 
-namespace Microsoft.Azure.Commands.Tags.Model
+namespace Microsoft.Azure.Commands.Tags.Client
 {
     public class TagsClient
     {
@@ -92,6 +94,17 @@ namespace Microsoft.Azure.Commands.Tags.Model
         }
 
         /// <summary>
+        /// Gets the entire set of tags on a resource or subscription.
+        /// </summary>
+        /// <param name="scope">scope could be a resource or subscription</param>
+        /// <returns>PS object PSTagResource</returns>
+        public PSTagResource GetTagAtScope(string scope)
+        {
+            var res = ResourceManagementClient.Tags.GetAtScope(scope);
+            return res?.ToPSTagResource();
+        }
+
+        /// <summary>
         /// Creates a tag and if the tag name exists add the value to the existing tag name.
         /// </summary>
         /// <param name="tag">The tag name</param>
@@ -107,6 +120,45 @@ namespace Microsoft.Azure.Commands.Tags.Model
             }
 
             return GetTag(tag);
+        }
+
+        /// <summary>
+        /// Creates or updates the entire set of tags on a resource or subscription.
+        /// </summary>
+        /// <remarks>
+        /// This operation allows adding or replacing the entire set of tags on the
+        /// specified resource or subscription. The specified entity can have a maximum
+        /// of 50 tags.
+        /// </remarks>
+        /// <param name="scope">scope could be a resource or subscription</param>
+        /// <param name="parameters">dictionary of tags need to be created or updated</param>
+        /// <returns>PS object PSTagResource</returns>
+        public PSTagResource CreateOrUpdateTagAtScope(string scope, IDictionary<string, string> parameters)
+        {
+            var tagResource = new TagsResource(properties: new SDKTagsObject(parameters));
+            return ResourceManagementClient.Tags.CreateOrUpdateAtScope(scope: scope, parameters: tagResource)?.ToPSTagResource();
+        }
+
+        /// <summary>
+        /// Selectively updates the set of tags on a resource or subscription.
+        /// </summary>
+        /// <remarks>
+        /// This operation allows replacing, merging or selectively deleting tags on
+        /// the specified resource or subscription. The specified entity can have a
+        /// maximum of 50 tags at the end of the operation. The 'replace' option
+        /// replaces the entire set of existing tags with a new set. The 'merge' option
+        /// allows adding tags with new names and updating the values of tags with
+        /// existing names. The 'delete' option allows selectively deleting tags based
+        /// on given names or name/value pairs.
+        /// </remarks>
+        /// <param name="scope"></param>
+        /// <param name="operation"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public PSTagResource UpdateTagAtScope(string scope, TagPatchOpeation operation, IDictionary<string, string> parameters)
+        {
+            var tagPatchResource = new TagsPatchResource(operation: operation.ToString(), properties: new SDKTagsObject(parameters));
+            return ResourceManagementClient.Tags.UpdateAtScope(scope: scope, parameters: tagPatchResource)?.ToPSTagResource();
         }
 
         /// <summary>
@@ -142,6 +194,19 @@ namespace Microsoft.Azure.Commands.Tags.Model
             }
 
             return tagObject;
+        }
+
+        /// <summary>
+        /// Deletes the entire set of tags on a resource or subscription.
+        /// </summary>
+        /// <param name="scope">scope could be a resource or subscription</param>
+        /// <returns>PS object PSTagResource user wants to delete</returns>
+        public PSTagResource DeleteTagAtScope(string scope)
+        {
+            var tags = GetTagAtScope(scope);
+            ResourceManagementClient.Tags.DeleteAtScope(scope);
+
+            return tags;
         }
     }
 }
