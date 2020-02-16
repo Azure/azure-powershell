@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public IDictionary<string, IAzureContext> Contexts { get; set; } = new ConcurrentDictionary<string, IAzureContext>(StringComparer.CurrentCultureIgnoreCase);
 
+        private bool ShouldRefreshContextsFromCache { get; set; } = true;
+
         /// <summary>
         /// Gets the path of the profile file.
         /// </summary>
@@ -60,7 +62,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
-                if (AzureSession.Instance != null && AzureSession.Instance.ARMContextSaveMode == "CurrentUser")
+                if (ShouldRefreshContextsFromCache && AzureSession.Instance != null && AzureSession.Instance.ARMContextSaveMode == "CurrentUser")
                 {
                     // If context autosave is enabled, try reading from the cache, updating the contexts, and writing them out
                     RefreshContextsFromCache();
@@ -233,8 +235,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// Initializes a new instance of AzureRMProfile and loads its content from specified path.
         /// </summary>
         /// <param name="path">The location of profile file on disk.</param>
-        public AzureRmProfile(string path) : this()
+        public AzureRmProfile(string path, bool shouldRefreshContextsFromCache = true) : this()
         {
+            this.ShouldRefreshContextsFromCache = shouldRefreshContextsFromCache;
             Load(path);
         }
 

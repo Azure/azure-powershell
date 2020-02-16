@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
@@ -83,6 +84,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 if (_serializeCache && tempResult != null && tempResult.CacheData != null && tempResult.CacheData.Length > 0)
                 {
                     cache.CacheData = tempResult.CacheData;
+                    if (AzureSession.Instance.TryGetComponent(
+                        AuthenticationClientFactory.AuthenticationClientFactoryKey,
+                        out AuthenticationClientFactory authenticationClientFactory))
+                    {
+                        authenticationClientFactory.TokenCacheData = tempResult.CacheData;
+                    }
                 }
 
                 return cache;
@@ -120,7 +127,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (_serializeCache)
                 {
-                    value = new CacheBuffer { CacheData = cache.CacheData };
+                    byte[] cacheData = null;
+                    if (AzureSession.Instance.TryGetComponent(
+                        AuthenticationClientFactory.AuthenticationClientFactoryKey,
+                        out AuthenticationClientFactory authenticationClientFactory))
+                    {
+                        cacheData = authenticationClientFactory.ReadTokenData();
+                    }
+                    value = new CacheBuffer { CacheData = cacheData };
                 }
                 else
                 {

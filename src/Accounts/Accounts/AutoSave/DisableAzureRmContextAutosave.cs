@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 session.TokenCache = memoryCache;
             }
 
-            AuthenticationClientFactory authenticationClientFactory = new InMemoryTokenCacheClientFactory(cacheToMigratePath: SharedTokenCacheClientFactory.CacheFilePath);
+            AuthenticationClientFactory authenticationClientFactory = new InMemoryTokenCacheClientFactory(SharedTokenCacheClientFactory.CacheFilePath);
             AzureSession.Instance.UnregisterComponent<AuthenticationClientFactory>(AuthenticationClientFactory.AuthenticationClientFactoryKey);
             AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => authenticationClientFactory);
             if (writeAutoSaveFile)

@@ -17,8 +17,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
-using Microsoft.Azure.Commands.Profile.Models;
 // TODO: Remove IfDef
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Profile.Models.Core;
@@ -76,29 +76,28 @@ namespace Microsoft.Azure.Commands.Profile
                 target.TrySetDefaultContext(source.DefaultContextKey);
             }
 
-            AzureRmProfileProvider.Instance.SetTokenCacheForProfile(target.ToProfile());
-            EnsureProtectedCache(target, source.DefaultContext?.TokenCache?.CacheData);
+            EnsureProtectedMsalCache(target);
         }
 
-        void EnsureProtectedCache(IProfileOperations profile, byte[] cacheData)
+        void EnsureProtectedMsalCache(IProfileOperations profile)
         {
-            if (profile == null || cacheData == null)
+            if(profile == null)
             {
                 return;
             }
 
-            AzureRmAutosaveProfile autosave = profile as AzureRmAutosaveProfile;
-            var protectedcache = AzureSession.Instance.TokenCache as ProtectedFileTokenCache;
-            if (autosave != null && protectedcache == null && cacheData.Any())
+            try
             {
-                try
+                if (AzureSession.Instance.TryGetComponent(
+                    AuthenticationClientFactory.AuthenticationClientFactoryKey,
+                    out AuthenticationClientFactory authenticationClientFactory))
                 {
-                    var cache = new ProtectedFileTokenCache(cacheData, AzureSession.Instance.DataStore);
+                    authenticationClientFactory.WriteTokenData(authenticationClientFactory.TokenCacheData);
                 }
-                catch
-                {
-                    WriteWarning(Resources.ImportAuthenticationFailure);
-                }
+            }
+            catch
+            {
+                WriteWarning(Resources.ImportAuthenticationFailure);
             }
         }
 
@@ -119,7 +118,7 @@ namespace Microsoft.Azure.Commands.Profile
 
                     ModifyProfile((profile) =>
                     {
-                        CopyProfile(new AzureRmProfile(Path), profile);
+                        CopyProfile(new AzureRmProfile(Path, false), profile);
                         executionComplete = true;
                     });
                 });

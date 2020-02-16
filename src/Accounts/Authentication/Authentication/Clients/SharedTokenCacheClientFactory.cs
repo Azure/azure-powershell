@@ -27,6 +27,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public static readonly string CacheFilePath =
             Path.Combine(SharedUtilities.GetUserRootDirectory(), ".IdentityService", "msal.cache");
 
+        public override byte[] ReadTokenData()
+        {
+            if (TokenCacheData == null)
+            {
+                TryReadTokenFromFileCache(CacheFilePath);
+            }
+            return base.ReadTokenData();
+        }
+
+        public override void WriteTokenData(byte[] data)
+        {
+            WriteTokenToFileCache(data, CacheFilePath);
+        }
+
         private CacheMigrationSettings _cacheMigrationSettings;
 
         public SharedTokenCacheClientFactory() { }
@@ -58,6 +72,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         // replace the handler with the real one
                         var cacheHelper = GetCacheHelper(client.AppConfig.ClientId);
                         cacheHelper.RegisterCache(client.UserTokenCache);
+                        client.UserTokenCache.SetBeforeWrite(BeforeWriteNotification);
                     }
                 });
             }
@@ -65,6 +80,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 var cacheHelper = GetCacheHelper(client.AppConfig.ClientId);
                 cacheHelper.RegisterCache(client.UserTokenCache);
+                client.UserTokenCache.SetBeforeWrite(BeforeWriteNotification);
             }
         }
 
@@ -81,6 +97,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 default:
                     return;
             }
+        }
+
+        private void BeforeWriteNotification(TokenCacheNotificationArgs args)
+        {
+            TokenCacheData = args.TokenCache?.SerializeMsalV3();
         }
 
         private MsalCacheHelper GetCacheHelper(string clientId)
@@ -101,6 +122,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             var cacheHelper = GetCacheHelper(PowerShellClientId);
             cacheHelper.Clear();
+            TokenCacheData = null;
         }
     }
 }

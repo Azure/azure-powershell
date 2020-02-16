@@ -12,32 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Identity.Client;
-using Microsoft.Identity.Client.Extensions.Msal;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Runtime.InteropServices.ComTypes;
-using System.Security.Cryptography;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
 {
     public class InMemoryTokenCacheClientFactory : AuthenticationClientFactory
     {
-        private readonly IMemoryCache _memoryCache;
-        private readonly string _cacheId = "CacheId";
         private static readonly object _lock = new object();
 
         public InMemoryTokenCacheClientFactory()
         {
-            _memoryCache = new MemoryCache(new MemoryCacheOptions());
         }
 
-        public InMemoryTokenCacheClientFactory(string cacheToMigratePath)
+        public InMemoryTokenCacheClientFactory(string cacheFilePath)
         {
-            _memoryCache = new MemoryCache(new MemoryCacheOptions());
-            TryCacheMigration(cacheToMigratePath);
+            if (!string.IsNullOrEmpty(cacheFilePath) && TokenCacheData == null)
+            {
+                TryReadTokenFromFileCache(cacheFilePath);
+            }
         }
 
         public override void RegisterCache(IClientApplicationBase client)
@@ -50,10 +42,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
         {
             lock (_lock)
             {
-                byte[] blob;
-                if (_memoryCache.TryGetValue(_cacheId, out blob))
+                if (TokenCacheData != null)
                 {
-                    args.TokenCache.DeserializeMsalV3(blob);
+                    args.TokenCache.DeserializeMsalV3(TokenCacheData);
                 }
             }
         }
@@ -61,40 +52,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
         private void AfterAccessNotification(TokenCacheNotificationArgs args)
         {
             byte[] blob = args.TokenCache.SerializeMsalV3();
-            _memoryCache.Set(_cacheId, blob);
-        }
-
-        private void TryCacheMigration(string cacheToMigratePath)
-        {
-            lock (_lock)
-            {
-                try
-                {
-                    var cacheStorage = GetCacheStorage(cacheToMigratePath);
-                    byte[] data = cacheStorage.ReadData();
-                    _memoryCache.Set(_cacheId, data);
-                }
-                catch { }
-            }
-        }
-
-        private MsalCacheStorage GetCacheStorage(string filePath)
-        {
-            var builder = new StorageCreationPropertiesBuilder(Path.GetFileName(filePath), Path.GetDirectoryName(filePath), PowerShellClientId);
-            builder = builder.WithMacKeyChain(serviceName: "Microsoft.Developer.IdentityService", accountName: "MSALCache");
-            builder = builder.WithLinuxKeyring(
-                schemaName: "msal.cache",
-                collection: "default",
-                secretLabel: "MSALCache",
-                attribute1: new KeyValuePair<string, string>("MsalClientID", "Microsoft.Developer.IdentityService"),
-                attribute2: new KeyValuePair<string, string>("MsalClientVersion", "1.0.0.0"));
-            var storageCreationProperties = builder.Build();
-            return new MsalCacheStorage(storageCreationProperties, new TraceSource("Azure PowerShell"));
+            TokenCacheData = blob;
         }
 
         public override void ClearCache()
         {
-            _memoryCache.Set(_cacheId, new byte[] { });
+            TokenCacheData = null;
         }
     }
 }
