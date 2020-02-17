@@ -416,13 +416,28 @@ namespace Microsoft.Azure.Commands.Profile
                 name = ContextName;
             }
 
-            var profile = DefaultProfile as AzureRmProfile;
-            if (!CheckForExistingContext(profile, name)
-                || Force.IsPresent
-                || ShouldContinue(string.Format(Resources.ReplaceContextQuery, name),
-                string.Format(Resources.ReplaceContextCaption, name)))
+            AzureRmProfile profile = null;
+            try
             {
-                ModifyContext((prof, client) => setContextAction(prof, client, name));
+                profile = DefaultProfile as AzureRmProfile;
+                if (profile != null)
+                {
+                    profile.ShouldRefreshContextsFromCache = false;
+                }
+                if (!CheckForExistingContext(profile, name)
+                    || Force.IsPresent
+                    || ShouldContinue(string.Format(Resources.ReplaceContextQuery, name),
+                    string.Format(Resources.ReplaceContextCaption, name)))
+                {
+                    ModifyContext((prof, client) => setContextAction(prof, client, name));
+                }
+            }
+            finally
+            {
+                if(profile != null)
+                {
+                    profile.ShouldRefreshContextsFromCache = true;
+                }
             }
         }
 
