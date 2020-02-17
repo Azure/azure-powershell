@@ -29,16 +29,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public override byte[] ReadTokenData()
         {
-            if (TokenCacheData == null)
-            {
-                TryReadTokenFromFileCache(CacheFilePath);
-            }
-            return base.ReadTokenData();
+            return TryReadTokenFromFileCache(CacheFilePath);
         }
 
-        public override void WriteTokenData(byte[] data)
+        public override void FlushTokenData()
         {
-            WriteTokenToFileCache(data, CacheFilePath);
+            WriteTokenToFileCache(_tokenCacheDataToFlush, CacheFilePath);
+            base.FlushTokenData();
         }
 
         private CacheMigrationSettings _cacheMigrationSettings;
@@ -72,7 +69,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         // replace the handler with the real one
                         var cacheHelper = GetCacheHelper(client.AppConfig.ClientId);
                         cacheHelper.RegisterCache(client.UserTokenCache);
-                        client.UserTokenCache.SetBeforeWrite(BeforeWriteNotification);
                     }
                 });
             }
@@ -80,7 +76,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 var cacheHelper = GetCacheHelper(client.AppConfig.ClientId);
                 cacheHelper.RegisterCache(client.UserTokenCache);
-                client.UserTokenCache.SetBeforeWrite(BeforeWriteNotification);
             }
         }
 
@@ -99,11 +94,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        private void BeforeWriteNotification(TokenCacheNotificationArgs args)
-        {
-            TokenCacheData = args.TokenCache?.SerializeMsalV3();
-        }
-
         private MsalCacheHelper GetCacheHelper(string clientId)
         {
             var builder = new StorageCreationPropertiesBuilder(Path.GetFileName(CacheFilePath), Path.GetDirectoryName(CacheFilePath), clientId);
@@ -120,9 +110,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public override void ClearCache()
         {
+            base.ClearCache();
             var cacheHelper = GetCacheHelper(PowerShellClientId);
             cacheHelper.Clear();
-            TokenCacheData = null;
         }
     }
 }

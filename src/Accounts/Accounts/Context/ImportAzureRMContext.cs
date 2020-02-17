@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Profile
                     AuthenticationClientFactory.AuthenticationClientFactoryKey,
                     out AuthenticationClientFactory authenticationClientFactory))
                 {
-                    authenticationClientFactory.WriteTokenData(authenticationClientFactory.TokenCacheData);
+                    authenticationClientFactory.FlushTokenData();
                 }
             }
             catch

@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         AuthenticationClientFactory.AuthenticationClientFactoryKey,
                         out AuthenticationClientFactory authenticationClientFactory))
                     {
-                        authenticationClientFactory.TokenCacheData = tempResult.CacheData;
+                        authenticationClientFactory.UpdateTokenDataWithoutFlush(tempResult.CacheData);
                     }
                 }
 

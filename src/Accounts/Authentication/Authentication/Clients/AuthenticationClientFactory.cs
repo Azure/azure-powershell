@@ -37,24 +37,29 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
         private static readonly string CommonTenant = "organizations";
         private static readonly object _lock = new object();
 
-        public byte[] TokenCacheData { get; set; }
+        protected byte[] _tokenCacheDataToFlush;
 
         protected AuthenticationClientFactory(string cacheFilePath = null)
         {
         }
 
-        public virtual byte[] ReadTokenData()
+        public abstract byte[] ReadTokenData();
+
+        public void UpdateTokenDataWithoutFlush(byte[] data)
         {
-            return TokenCacheData;
+            _tokenCacheDataToFlush = data;
         }
 
-        public virtual void WriteTokenData(byte[] data)
+        public virtual void FlushTokenData()
         {
+            _tokenCacheDataToFlush = null;
         }
 
         public abstract void RegisterCache(IClientApplicationBase client);
 
-        public abstract void ClearCache();
+        public virtual void ClearCache()
+        {
+        }
 
         public IPublicClientApplication CreatePublicClient(
             string clientId = null,
@@ -252,21 +257,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
                 AzureSession.Instance.ClientFactory.GetCustomHandlers());
         }
 
-        protected bool TryReadTokenFromFileCache(string cacheFilePath)
+        protected byte[] TryReadTokenFromFileCache(string cacheFilePath)
         {
-            bool result = false;
+            byte[] data = null;
             lock (_lock)
             {
                 try
                 {
                     var cacheStorage = GetCacheStorage(cacheFilePath);
-                    byte[] data = cacheStorage.ReadData();
-                    TokenCacheData = data;
-                    result = true;
+                    data = cacheStorage.ReadData();
                 }
                 catch { }
             }
-            return result;
+            return data;
         }
 
         protected void WriteTokenToFileCache(byte[] data, string cacheFilePath)
