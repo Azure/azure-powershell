@@ -76,16 +76,11 @@ namespace Microsoft.Azure.Commands.Profile
                 target.TrySetDefaultContext(source.DefaultContextKey);
             }
 
-            EnsureProtectedMsalCache(target);
+            EnsureProtectedMsalCache();
         }
 
-        void EnsureProtectedMsalCache(IProfileOperations profile)
+        void EnsureProtectedMsalCache()
         {
-            if(profile == null)
-            {
-                return;
-            }
-
             try
             {
                 if (AzureSession.Instance.TryGetComponent(
