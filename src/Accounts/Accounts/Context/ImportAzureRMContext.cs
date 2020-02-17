@@ -144,16 +144,17 @@ namespace Microsoft.Azure.Commands.Profile
                 }
                 else
                 {
-                    if (profile.DefaultContext != null &&
-                        profile.DefaultContext.Subscription != null &&
-                        profile.DefaultContext.Subscription.State != null &&
-                        !profile.DefaultContext.Subscription.State.Equals(
+                    var defaultContext = profile.DefaultContext;
+                    if (defaultContext != null &&
+                        defaultContext.Subscription != null &&
+                        defaultContext.Subscription.State != null &&
+                        !defaultContext.Subscription.State.Equals(
                         "Enabled",
                         StringComparison.OrdinalIgnoreCase))
                     {
                         WriteWarning(string.Format(
                                        Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
-                                       profile.DefaultContext.Subscription.State));
+                                       defaultContext.Subscription.State));
                     }
 
                     WriteObject((PSAzureProfile)profile);
