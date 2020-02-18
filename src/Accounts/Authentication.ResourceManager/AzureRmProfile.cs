@@ -44,7 +44,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public IDictionary<string, IAzureContext> Contexts { get; set; } = new ConcurrentDictionary<string, IAzureContext>(StringComparer.CurrentCultureIgnoreCase);
 
-        private bool ShouldRefreshContextsFromCache { get; set; } = true;
+        [JsonIgnore]
+        [XmlIgnore]
+        public bool ShouldRefreshContextsFromCache { get; set; } = true;
 
         /// <summary>
         /// Gets the path of the profile file.
