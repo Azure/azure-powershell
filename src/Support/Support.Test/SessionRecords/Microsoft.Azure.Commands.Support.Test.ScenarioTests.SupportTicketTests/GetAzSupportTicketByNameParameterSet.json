@@ -1,0 +1,134 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets?api-version=2019-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9zdXBwb3J0VGlja2V0cz9hcGktdmVyc2lvbj0yMDE5LTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "df836aea-b8d2-4428-a761-0802f1094eab"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Support.MicrosoftSupportClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 09 Feb 2020 20:15:05 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "9f8c3007-6a1a-4a98-800d-af4aba2c00d4"
+        ],
+        "x-ms-correlation-request-id": [
+          "9f8c3007-6a1a-4a98-800d-af4aba2c00d4"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200209T201505Z:9f8c3007-6a1a-4a98-800d-af4aba2c00d4"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "8821"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/120020821000175\",\r\n      \"name\": \"120020821000175\",\r\n      \"type\": \"Microsoft.Support/supportTickets\",\r\n      \"properties\": {\r\n        \"description\": \"Question: When did the problem begin?\\nAnswer: \\n\\nQuestion: How frequently does the issue occur?\\nAnswer: \\n\\nQuestion: Please provide the exact error message including call stack, Tracking Id and timestamp, if any\\nAnswer: \\n\\nQuestion: Please specific the client library (.Net, .Net Standard, Java, Python, etc) you are using and the version number?\\nAnswer: \\n\\nQuestion: Details\\nAnswer: test\",\r\n        \"problemClassificationId\": \"/providers/Microsoft.Support/services/23e2c469-4b37-ebf5-0a3f-72e8b1407301/problemClassifications/aa32353a-0164-84d8-1498-02f88e48bad1\",\r\n        \"problemClassificationDisplayName\": \"Errors and Issues / Timeouts\",\r\n        \"severity\": \"Minimal\",\r\n        \"require24X7Response\": false,\r\n        \"enrollmentId\": \"\",\r\n        \"productionOutage\": false,\r\n        \"contactDetails\": {\r\n          \"firstName\": \"Wilson\",\r\n          \"lastName\": \"Huang\",\r\n          \"preferredContactMethod\": \"Email\",\r\n          \"primaryEmailAddress\": \"wihua@microsoft.com\",\r\n          \"phoneNumber\": \"\",\r\n          \"preferredTimeZone\": \"Pacific Standard Time\",\r\n          \"country\": \"BTN\",\r\n          \"preferredSupportLanguage\": \"en-us\"\r\n        },\r\n        \"technicalTicketDetails\": {\r\n          \"resourceId\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/resourceGroups/buildoutautomation-sb/providers/Microsoft.ServiceBus/namespaces/supportrp-test\"\r\n        },\r\n        \"serviceLevelAgreement\": {\r\n          \"startTime\": \"2020-02-10T02:00:00Z\",\r\n          \"expirationTime\": \"2020-02-10T06:00:00Z\",\r\n          \"slaMinutes\": 240\r\n        },\r\n        \"supportEngineer\": {\r\n          \"emailAddress\": \"wihua@microsoft.com\"\r\n        },\r\n        \"supportPlanType\": \"Premier\",\r\n        \"supportTicketId\": \"120020821000175\",\r\n        \"title\": \"test\",\r\n        \"serviceId\": \"/providers/Microsoft.Support/services/23e2c469-4b37-ebf5-0a3f-72e8b1407301\",\r\n        \"serviceDisplayName\": \"Service Bus\",\r\n        \"status\": \"Open\",\r\n        \"createdDate\": \"2020-02-08T08:15:48Z\",\r\n        \"modifiedDate\": \"2020-02-08T08:16:19Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/120020821000172\",\r\n      \"name\": \"120020821000172\",\r\n      \"type\": \"Microsoft.Support/supportTickets\",\r\n      \"properties\": {\r\n        \"description\": \"Question: Incident time\\nAnswer: \\n\\nQuestion: Details\\nAnswer: test ticket, please close.\\n\\nQuestion: Is the certificate that is used to secure your cluster CA signed or self-signed?\\nAnswer: \\n\\nQuestion: Is your cluster secured using certificate thumbprint or using certificate common name?\\nAnswer: \\n\\nQuestion: Provide the thumbprints of the subjective certificate(s)\\nAnswer:\",\r\n        \"problemClassificationId\": \"/providers/Microsoft.Support/services/a730ab7a-33ae-c83a-bca5-4935433e38ff/problemClassifications/d47761c9-360d-8bfd-4c68-aad0bcbef3ab\",\r\n        \"problemClassificationDisplayName\": \"Certificates and Security / Certificate expired\",\r\n        \"severity\": \"Minimal\",\r\n        \"require24X7Response\": false,\r\n        \"enrollmentId\": \"\",\r\n        \"productionOutage\": false,\r\n        \"contactDetails\": {\r\n          \"firstName\": \"Wilson\",\r\n          \"lastName\": \"Huang\",\r\n          \"preferredContactMethod\": \"Email\",\r\n          \"primaryEmailAddress\": \"wihua@microsoft.com\",\r\n          \"phoneNumber\": \"\",\r\n          \"preferredTimeZone\": \"Pacific Standard Time\",\r\n          \"country\": \"BTN\",\r\n          \"preferredSupportLanguage\": \"en-us\"\r\n        },\r\n        \"serviceLevelAgreement\": {\r\n          \"startTime\": \"2020-02-10T02:00:00Z\",\r\n          \"expirationTime\": \"2020-02-10T06:00:00Z\",\r\n          \"slaMinutes\": 240\r\n        },\r\n        \"supportEngineer\": {\r\n          \"emailAddress\": \"wihua@microsoft.com\"\r\n        },\r\n        \"supportPlanType\": \"Premier\",\r\n        \"supportTicketId\": \"120020821000172\",\r\n        \"title\": \"test test test\",\r\n        \"serviceId\": \"/providers/Microsoft.Support/services/a730ab7a-33ae-c83a-bca5-4935433e38ff\",\r\n        \"serviceDisplayName\": \"Service Fabric\",\r\n        \"status\": \"Open\",\r\n        \"createdDate\": \"2020-02-08T08:10:31Z\",\r\n        \"modifiedDate\": \"2020-02-08T08:11:08Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/120020821000060\",\r\n      \"name\": \"120020821000060\",\r\n      \"type\": \"Microsoft.Support/supportTickets\",\r\n      \"properties\": {\r\n        \"description\": \"Question: Incident time\\nAnswer: \\n\\nQuestion: Details\\nAnswer: test\\n\\nQuestion: Is the certificate that is used to secure your cluster CA signed or self-signed?\\nAnswer: \\n\\nQuestion: Is your cluster secured using certificate thumbprint or using certificate common name?\\nAnswer: \\n\\nQuestion: Provide the thumbprints of the subjective certificate(s)\\nAnswer:\",\r\n        \"problemClassificationId\": \"/providers/Microsoft.Support/services/a730ab7a-33ae-c83a-bca5-4935433e38ff/problemClassifications/d47761c9-360d-8bfd-4c68-aad0bcbef3ab\",\r\n        \"problemClassificationDisplayName\": \"Certificates and Security / Certificate expired\",\r\n        \"severity\": \"Minimal\",\r\n        \"require24X7Response\": false,\r\n        \"enrollmentId\": \"\",\r\n        \"productionOutage\": false,\r\n        \"contactDetails\": {\r\n          \"firstName\": \"Wilson\",\r\n          \"lastName\": \"Huang\",\r\n          \"preferredContactMethod\": \"Email\",\r\n          \"primaryEmailAddress\": \"wihua@microsoft.com\",\r\n          \"phoneNumber\": \"\",\r\n          \"preferredTimeZone\": \"Pacific Standard Time\",\r\n          \"country\": \"BTN\",\r\n          \"preferredSupportLanguage\": \"en-us\"\r\n        },\r\n        \"serviceLevelAgreement\": {\r\n          \"startTime\": \"2020-02-10T02:00:00Z\",\r\n          \"expirationTime\": \"2020-02-10T06:00:00Z\",\r\n          \"slaMinutes\": 240\r\n        },\r\n        \"supportEngineer\": {\r\n          \"emailAddress\": \"piw@microsoft.com\"\r\n        },\r\n        \"supportPlanType\": \"Premier\",\r\n        \"supportTicketId\": \"120020821000060\",\r\n        \"title\": \"test for my new queue\",\r\n        \"serviceId\": \"/providers/Microsoft.Support/services/a730ab7a-33ae-c83a-bca5-4935433e38ff\",\r\n        \"serviceDisplayName\": \"Service Fabric\",\r\n        \"status\": \"Open\",\r\n        \"createdDate\": \"2020-02-08T00:55:40Z\",\r\n        \"modifiedDate\": \"2020-02-09T00:02:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/120020721002245\",\r\n      \"name\": \"120020721002245\",\r\n      \"type\": \"Microsoft.Support/supportTickets\",\r\n      \"properties\": {\r\n        \"description\": \"Question: Incident time\\nAnswer: \\n\\nQuestion: Details\\nAnswer: test\\n\\nQuestion: Is the certificate that is used to secure your cluster CA signed or self-signed?\\nAnswer: \\n\\nQuestion: Is your cluster secured using certificate thumbprint or using certificate common name?\\nAnswer: \\n\\nQuestion: Provide the thumbprints of the subjective certificate(s)\\nAnswer: test\",\r\n        \"problemClassificationId\": \"/providers/Microsoft.Support/services/a730ab7a-33ae-c83a-bca5-4935433e38ff/problemClassifications/d47761c9-360d-8bfd-4c68-aad0bcbef3ab\",\r\n        \"problemClassificationDisplayName\": \"Certificates and Security / Certificate expired\",\r\n        \"severity\": \"Minimal\",\r\n        \"require24X7Response\": false,\r\n        \"enrollmentId\": \"\",\r\n        \"productionOutage\": false,\r\n        \"contactDetails\": {\r\n          \"firstName\": \"Wilson\",\r\n          \"lastName\": \"Huang\",\r\n          \"preferredContactMethod\": \"Email\",\r\n          \"primaryEmailAddress\": \"wihua@microsoft.com\",\r\n          \"phoneNumber\": \"\",\r\n          \"preferredTimeZone\": \"Pacific Standard Time\",\r\n          \"country\": \"BTN\",\r\n          \"preferredSupportLanguage\": \"en-us\"\r\n        },\r\n        \"serviceLevelAgreement\": {\r\n          \"startTime\": \"2020-02-10T02:00:00Z\",\r\n          \"expirationTime\": \"2020-02-10T06:00:00Z\",\r\n          \"slaMinutes\": 240\r\n        },\r\n        \"supportEngineer\": {\r\n          \"emailAddress\": \"piw@microsoft.com\"\r\n        },\r\n        \"supportPlanType\": \"Premier\",\r\n        \"supportTicketId\": \"120020721002245\",\r\n        \"title\": \"Test chat for new queue\",\r\n        \"serviceId\": \"/providers/Microsoft.Support/services/a730ab7a-33ae-c83a-bca5-4935433e38ff\",\r\n        \"serviceDisplayName\": \"Service Fabric\",\r\n        \"status\": \"Open\",\r\n        \"createdDate\": \"2020-02-07T23:42:27Z\",\r\n        \"modifiedDate\": \"2020-02-09T00:04:52Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/120020724005732\",\r\n      \"name\": \"120020724005732\",\r\n      \"type\": \"Microsoft.Support/supportTickets\",\r\n      \"properties\": {\r\n        \"description\": \"test\",\r\n        \"problemClassificationId\": \"/providers/Microsoft.Support/services/58cf91d7-3a04-37d3-9818-9bd5c979d9a9/problemClassifications/bedfb285-06e6-918c-0851-d180769d7078\",\r\n        \"problemClassificationDisplayName\": \"Availability and Performance / Buffering while streaming\",\r\n        \"severity\": \"Minimal\",\r\n        \"require24X7Response\": false,\r\n        \"enrollmentId\": \"\",\r\n        \"productionOutage\": false,\r\n        \"contactDetails\": {\r\n          \"firstName\": \"Nitin\",\r\n          \"lastName\": \"Kallikat\",\r\n          \"preferredContactMethod\": \"Email\",\r\n          \"primaryEmailAddress\": \"nikallik@microsoft.com\",\r\n          \"phoneNumber\": \"3333333335\",\r\n          \"preferredTimeZone\": \"Pacific Standard Time\",\r\n          \"country\": \"USA\",\r\n          \"preferredSupportLanguage\": \"en-us\"\r\n        },\r\n        \"serviceLevelAgreement\": {\r\n          \"startTime\": \"2020-02-07T23:18:00Z\",\r\n          \"expirationTime\": \"2020-02-10T15:18:00Z\",\r\n          \"slaMinutes\": 240\r\n        },\r\n        \"supportEngineer\": {\r\n          \"emailAddress\": \"v-anska@microsoft.com\"\r\n        },\r\n        \"supportPlanType\": \"Premier\",\r\n        \"supportTicketId\": \"120020724005732\",\r\n        \"title\": \"test, please ignore and close\",\r\n        \"serviceId\": \"/providers/Microsoft.Support/services/58cf91d7-3a04-37d3-9818-9bd5c979d9a9\",\r\n        \"serviceDisplayName\": \"Azure CDN\",\r\n        \"status\": \"Closed\",\r\n        \"createdDate\": \"2020-02-07T23:18:00Z\",\r\n        \"modifiedDate\": \"2020-02-09T16:39:20Z\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://centraluseuap.management.azure.com:443/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets?api-version=2019-05-01-preview&%24skipToken=%255B%257B%2522compositeToken%2522%253A%257B%2522token%2522%253Anull%252C%2522range%2522%253A%257B%2522min%2522%253A%252205C1DF3399CD60%2522%252C%2522max%2522%253A%252205C1DFFFFFFFFC%2522%257D%257D%252C%2522orderByItems%2522%253A%255B%257B%2522item%2522%253A%25222020-02-07T02%253A19%253A16.8455417Z%2522%257D%255D%252C%2522rid%2522%253A%2522e6dtAI34RR8iLj4AAADAAA%253D%253D%2522%252C%2522skipCount%2522%253A0%252C%2522filter%2522%253Anull%257D%255D\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/120020821000175?api-version=2019-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9zdXBwb3J0VGlja2V0cy8xMjAwMjA4MjEwMDAxNzU/YXBpLXZlcnNpb249MjAxOS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "02fd6085-1ee4-4366-a661-2b1d0190665a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Support.MicrosoftSupportClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 09 Feb 2020 20:15:05 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "2da6307a-d2ae-403a-932b-3ff6e6b5a5e3"
+        ],
+        "x-ms-correlation-request-id": [
+          "2da6307a-d2ae-403a-932b-3ff6e6b5a5e3"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200209T201506Z:2da6307a-d2ae-403a-932b-3ff6e6b5a5e3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "1841"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/120020821000175\",\r\n  \"name\": \"120020821000175\",\r\n  \"type\": \"Microsoft.Support/supportTickets\",\r\n  \"properties\": {\r\n    \"description\": \"Question: When did the problem begin?\\nAnswer: \\n\\nQuestion: How frequently does the issue occur?\\nAnswer: \\n\\nQuestion: Please provide the exact error message including call stack, Tracking Id and timestamp, if any\\nAnswer: \\n\\nQuestion: Please specific the client library (.Net, .Net Standard, Java, Python, etc) you are using and the version number?\\nAnswer: \\n\\nQuestion: Details\\nAnswer: test\",\r\n    \"problemClassificationId\": \"/providers/Microsoft.Support/services/23e2c469-4b37-ebf5-0a3f-72e8b1407301/problemClassifications/aa32353a-0164-84d8-1498-02f88e48bad1\",\r\n    \"problemClassificationDisplayName\": \"Errors and Issues / Timeouts\",\r\n    \"severity\": \"Minimal\",\r\n    \"require24X7Response\": false,\r\n    \"enrollmentId\": \"\",\r\n    \"productionOutage\": false,\r\n    \"contactDetails\": {\r\n      \"firstName\": \"Wilson\",\r\n      \"lastName\": \"Huang\",\r\n      \"preferredContactMethod\": \"Email\",\r\n      \"primaryEmailAddress\": \"wihua@microsoft.com\",\r\n      \"phoneNumber\": \"\",\r\n      \"preferredTimeZone\": \"Pacific Standard Time\",\r\n      \"country\": \"BTN\",\r\n      \"preferredSupportLanguage\": \"en-us\"\r\n    },\r\n    \"technicalTicketDetails\": {\r\n      \"resourceId\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/resourceGroups/buildoutautomation-sb/providers/Microsoft.ServiceBus/namespaces/supportrp-test\"\r\n    },\r\n    \"serviceLevelAgreement\": {\r\n      \"startTime\": \"2020-02-10T02:00:00Z\",\r\n      \"expirationTime\": \"2020-02-10T06:00:00Z\",\r\n      \"slaMinutes\": 240\r\n    },\r\n    \"supportEngineer\": {\r\n      \"emailAddress\": \"wihua@microsoft.com\"\r\n    },\r\n    \"supportPlanType\": \"Premier\",\r\n    \"supportTicketId\": \"120020821000175\",\r\n    \"title\": \"test\",\r\n    \"serviceId\": \"/providers/Microsoft.Support/services/23e2c469-4b37-ebf5-0a3f-72e8b1407301\",\r\n    \"serviceDisplayName\": \"Service Bus\",\r\n    \"status\": \"Open\",\r\n    \"createdDate\": \"2020-02-08T08:15:48Z\",\r\n    \"modifiedDate\": \"2020-02-08T08:16:19Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "76cb77fa-8b17-4eab-9493-b65dace99813"
+  }
+}

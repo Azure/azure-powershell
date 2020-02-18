@@ -17,7 +17,7 @@ Install-Module -Name platyPS -Scope CurrentUser
 **Note:** this module will need to be installed from the [PowerShell Gallery](http://www.powershellgallery.com/). If, for some reason, this isn't a registered repository when running the `Get-PSRepository` cmdlet, then you will need to register it by running the following command:
 
 ```powershell
-Register-PSRepository -Name PSGallery -SourceLocation https://www.powershellgallery.com/api/v2/
+Register-PSRepository -Default -InstallationPolicy Trusted
 ```
 
 ## Using `platyPS`

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 psArtifact.Parameters.Add(item.Key, parameter);
             }
 
-            psArtifact.DependsOn = artifact.DependsOn.Select(x => x) as List<string>;
+            psArtifact.DependsOn = artifact.DependsOn?.ToList();
 
             return psArtifact;
         }

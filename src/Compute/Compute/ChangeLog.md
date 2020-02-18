@@ -19,7 +19,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Allow empty value for ProximityPlacementGroupId during update
+
+## Version 3.5.0
+* Allowed empty value for ProximityPlacementGroupId during update
 
 ## Version 3.4.0
 * Limit the number of VM status to 100 to avoid throttling when Get-AzVM -Status is performed without VM name.
