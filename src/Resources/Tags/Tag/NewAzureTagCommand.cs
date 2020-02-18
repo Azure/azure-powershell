@@ -85,7 +85,10 @@ namespace Microsoft.Azure.Commands.Tags.Tag
             }
             else
             {
-                WriteObject(TagsClient.CreateTag(Name, Value != null ? new List<string> { Value } : null));
+                if (ShouldProcess(this.Name, $"Creating predefined tag with value {this.Value}"))
+                {
+                    WriteObject(TagsClient.CreateTag(Name, Value != null ? new List<string> { Value } : null));
+                }             
             }
         }
     }
