@@ -212,30 +212,28 @@ function Test-PrivateEndpointConnectionCRUDforCosmosDB
 {
     # Setup
     $rgname = Get-ResourceGroupName;
-    
-    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "northcentralus";
-    # Dependency parameters
-
+    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "westcentralus";
     $accountName = Get-ResourceName
-
+    $accountName = "cosmos-" + $accountName
     $peName = "mype"
     $subId = getSubscription
 
-    $locations = @(
-        @{ "locationName"=$location; "failoverPriority"=0 }
-    )
+    [string]$loc = $location
 
+    $locations = @(
+        @{ "locationName"=$loc; "failoverPriority"=0 }
+    );
     $consistencyPolicy = @{
         "defaultConsistencyLevel"="BoundedStaleness";
         "maxIntervalInSeconds"=300;
         "maxStalenessPrefix"=100000
-    }
+    };
     $CosmosDBProperties = @{
         "databaseAccountOfferType"="Standard";
         "locations"=$locations;
         "consistencyPolicy"=$consistencyPolicy;
         "enableMultipleWriteLocations"="false"
-    }
+    };
 
     try
     {
@@ -243,26 +241,29 @@ function Test-PrivateEndpointConnectionCRUDforCosmosDB
 
         if ((Get-NetworkTestMode) -ne 'Playback')
         {
-            # Create CosmosDB Account
             $cosmosDB = New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-                -ApiVersion "2015-04-08" `
                 -ResourceGroupName $rgname `
                 -Location $location `
                 -Name $accountName `
                 -PropertyObject $CosmosDBProperties -Force
 
-            $cosmosDBResourceId = $cosmosDB.ResourceId
+            Start-TestSleep 60000
+
+            $dbs = Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts"
+            $cosmosDBResourceId = $dbs[0].Id
         }
         else
         {
-            $cosmosDBResourceId = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.DocumentDB/databaseAccounts/$accountName"
+            $cosmosDBResourceId = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.DocumentDb/databaseAccounts/$accountName"
         }
+
+        Assert-NotNull $cosmosDBResourceId;
 
         # Create Private Endpoint
         $peSubnet = New-AzVirtualNetworkSubnetConfig -Name peSubnet -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPolicies "Disabled"
         $vnetPE = New-AzVirtualNetwork -Name "vnetPE" -ResourceGroupName $rgname -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet
 
-        $plsConnection= New-AzPrivateLinkServiceConnection -Name plsConnection -PrivateLinkServiceId  $cosmosDBResourceId -GroupId 'Sql'
+        $plsConnection= New-AzPrivateLinkServiceConnection -Name plsConnection -PrivateLinkServiceId $cosmosDBResourceId -GroupId 'Sql'
         $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
 
         # Get Private Endpoint Connection
