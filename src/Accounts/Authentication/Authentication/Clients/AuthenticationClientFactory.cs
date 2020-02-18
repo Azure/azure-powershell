@@ -17,10 +17,13 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.Extensions.Msal;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
@@ -32,10 +35,31 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
         public static readonly string AuthenticationClientFactoryKey = nameof(AuthenticationClientFactory);
         protected readonly string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
         private static readonly string CommonTenant = "organizations";
+        private static readonly object _lock = new object();
+
+        protected byte[] _tokenCacheDataToFlush;
+
+        protected AuthenticationClientFactory(string cacheFilePath = null)
+        {
+        }
+
+        public abstract byte[] ReadTokenData();
+
+        public void UpdateTokenDataWithoutFlush(byte[] data)
+        {
+            _tokenCacheDataToFlush = data;
+        }
+
+        public virtual void FlushTokenData()
+        {
+            _tokenCacheDataToFlush = null;
+        }
 
         public abstract void RegisterCache(IClientApplicationBase client);
 
-        public abstract void ClearCache();
+        public virtual void ClearCache()
+        {
+        }
 
         public IPublicClientApplication CreatePublicClient(
             string clientId = null,
@@ -231,6 +255,44 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
                 new TokenCredentials(token.AccessToken) as ServiceClientCredentials,
                 AzureSession.Instance.ClientFactory.GetCustomHandlers());
+        }
+
+        protected byte[] TryReadTokenFromFileCache(string cacheFilePath)
+        {
+            byte[] data = null;
+            lock (_lock)
+            {
+                try
+                {
+                    var cacheStorage = GetCacheStorage(cacheFilePath);
+                    data = cacheStorage.ReadData();
+                }
+                catch { }
+            }
+            return data;
+        }
+
+        protected void WriteTokenToFileCache(byte[] data, string cacheFilePath)
+        {
+            lock (_lock)
+            {
+                var cacheStorage = GetCacheStorage(cacheFilePath);
+                cacheStorage.WriteData(data);
+            }
+        }
+
+        private MsalCacheStorage GetCacheStorage(string filePath)
+        {
+            var builder = new StorageCreationPropertiesBuilder(Path.GetFileName(filePath), Path.GetDirectoryName(filePath), PowerShellClientId);
+            builder = builder.WithMacKeyChain(serviceName: "Microsoft.Developer.IdentityService", accountName: "MSALCache");
+            builder = builder.WithLinuxKeyring(
+                schemaName: "msal.cache",
+                collection: "default",
+                secretLabel: "MSALCache",
+                attribute1: new KeyValuePair<string, string>("MsalClientID", "Microsoft.Developer.IdentityService"),
+                attribute2: new KeyValuePair<string, string>("MsalClientVersion", "1.0.0.0"));
+            var storageCreationProperties = builder.Build();
+            return new MsalCacheStorage(storageCreationProperties, new TraceSource("Azure PowerShell"));
         }
     }
 }
