@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
     /// <summary>
     /// Cmdlet to create or update a new Azure Sql Database backup archival policy
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedDatabaseBackupLongTermRetentionPolicy",
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseBackupLongTermRetentionPolicy",
         DefaultParameterSetName = WeeklyRetentionRequiredSet, SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low),
         OutputType(typeof(AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel))]
-    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedDatabaseLongTermRetentionPolicy")]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseLongTermRetentionPolicy")]
     public class SetAzureSqlManagedDatabaseBackupLongTermRetentionPolicy : AzureSqlManagedDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
         /// <summary>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         {
             return new List<AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel>()
             {
-                ModelAdapter.GetManagedDatabaseBackupLongTermRetentionPolicy(
+                ModelAdapter.GetManagedDatabaseLongTermRetentionPolicy(
                     this.ResourceGroupName,
                     this.ManagedInstanceName,
                     this.DatabaseName)

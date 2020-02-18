@@ -26,4 +26,10 @@
     <ProjectReference Include="..\Sql\Sql.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.Sql">
+      <HintPath>..\..\..\..\azure-sdk-for-net\artifacts\bin\Microsoft.Azure.Management.Sql\Debug\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

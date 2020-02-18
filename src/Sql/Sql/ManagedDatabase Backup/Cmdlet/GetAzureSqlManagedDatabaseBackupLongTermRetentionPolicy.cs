@@ -21,10 +21,10 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedDatabaseBackupLongTermRetentionPolicy",
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseBackupLongTermRetentionPolicy",
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel))]
-    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedDatabaseLongTermRetentionPolicy")]
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseLongTermRetentionPolicy")]
     public class GetAzureSqlManagedDatabaseBackupLongTermRetentionPolicy : AzureSqlManagedDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
         /// <summary>
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         {
             return new List<AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel>()
             {
-                ModelAdapter.GetManagedDatabaseBackupLongTermRetentionPolicy(
+                ModelAdapter.GetManagedDatabaseLongTermRetentionPolicy(
                     this.ResourceGroupName,
                     this.ManagedInstanceName,
                     this.DatabaseName)

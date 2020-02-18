@@ -152,17 +152,134 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
         /// <returns>A backup LongTermRetention policy</returns>
-        public Management.Sql.LegacySdk.Models.DatabaseBackupLongTermRetentionPolicy GetManagedDatabaseBackupLongTermRetentionPolicy(
+        public ManagedInstanceLongTermRetentionPolicy GetManagedDatabaseLongTermRetentionPolicy(
             string resourceGroupName,
             string serverName,
-            string databaseName,
-            string baPolicyName)
+            string databaseName)
         {
-            return GetCurrentSqlClient().ManagedDatabaseBackup.GetDatabaseBackupLongTermRetentionPolicy(
+            return GetCurrentSqlClient().ManagedInstanceLongTermRetentionPolicies.Get(
                 resourceGroupName,
                 serverName,
-                databaseName,
-                baPolicyName).DatabaseBackupLongTermRetentionPolicy;
+                databaseName);
+        }
+
+        /// <summary>
+        /// Sets a database's Long Term Retention policy.
+        /// </summary>
+        /// <param name="resourceGroup">The resource group name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="policy">The Long Term Retention policy to apply.</param>
+        public Management.Sql.Models.ManagedInstanceLongTermRetentionPolicy SetManagedDatabaseLongTermRetentionPolicy(
+            string resourceGroup,
+            string serverName,
+            string databaseName,
+            ManagedInstanceLongTermRetentionPolicy policy)
+        {
+            return GetCurrentSqlClient().ManagedInstanceLongTermRetentionPolicies.CreateOrUpdate(resourceGroup, serverName, databaseName, policy);
+        }
+
+
+        /// <summary>
+        /// Gets the Long Term Retention backup.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        /// <param name="resourceGroupName">The resource group name</param>
+        public ManagedInstanceLongTermRetentionBackup GetManagedDatabaseLongTermRetentionBackup(
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName,
+            string resourceGroupName)
+        {
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.Get(locationName, serverName, databaseName, backupName);
+            }
+            else
+            {
+                return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.GetByResourceGroup(resourceGroupName, locationName, serverName, databaseName, backupName);
+            }
+        }
+
+        /// <summary>
+        /// Gets the Long Term Retention backups.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="onlyLatestPerDatabase">Whether or not to only get the latest backup per database.</param>
+        /// <param name="databaseState">The state of databases to get backups for: All, Live, Deleted.</param>
+        public Rest.Azure.IPage<ManagedInstanceLongTermRetentionBackup> GetManagedDatabaseLongTermRetentionBackups(
+            string locationName,
+            string serverName,
+            string databaseName,
+            string resourceGroupName,
+            bool? onlyLatestPerDatabase,
+            string databaseState)
+        {
+            if (!string.IsNullOrWhiteSpace(databaseName))
+            {
+                if (string.IsNullOrWhiteSpace(resourceGroupName))
+                {
+                    return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.ListByDatabase(locationName, serverName, databaseName, onlyLatestPerDatabase, databaseState);
+                }
+                else
+                {
+                    return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.ListByResourceGroupDatabase(resourceGroupName, locationName, serverName, databaseName, onlyLatestPerDatabase, databaseState);
+                }
+            }
+            else if (!string.IsNullOrWhiteSpace(serverName))
+            {
+                if (string.IsNullOrWhiteSpace(resourceGroupName))
+                {
+                    return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.ListByInstance(locationName, serverName, onlyLatestPerDatabase, databaseState);
+                }
+                else
+                {
+                    return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.ListByResourceGroupInstance(resourceGroupName, locationName, serverName, onlyLatestPerDatabase, databaseState);
+                }
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(resourceGroupName))
+                {
+                    return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.ListByLocation(locationName, onlyLatestPerDatabase, databaseState);
+                }
+                else
+                {
+                    return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.ListByResourceGroupLocation(resourceGroupName, locationName, onlyLatestPerDatabase, databaseState);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Removes a Long Term Retention backup.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        /// <param name="resourceGroupName">The resource group name</param>
+        public void RemoveManagedDatabaseLongTermRetentionBackup(
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName,
+            string resourceGroupName)
+        {
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.Delete(locationName, serverName, databaseName, backupName);
+            }
+            else
+            {
+                GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.DeleteByResourceGroup(resourceGroupName, locationName, serverName, databaseName, backupName);
+            }
         }
     }
 }
