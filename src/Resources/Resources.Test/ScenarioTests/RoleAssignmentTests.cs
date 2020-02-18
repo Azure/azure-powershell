@@ -131,14 +131,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RaDeletionByScope");
         }
 
-        [Fact(Skip = "Need AD team to re-record")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeletionByScopeAtRootScope()
         {
             TestRunner.RunTestScript("Test-RaDeletionByScopeAtRootScope");
         }
 
-        [Fact(Skip = "Need AD team to re-record")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDelegation()
         {
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RaGetByScope");
         }
 
-        [Fact(Skip = "Needs recording. PS-VSPrompt link and TestFramework are broken at time of commit")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaGetOnlyByRoleDefinitionName()
         {
