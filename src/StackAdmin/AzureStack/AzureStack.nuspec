@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>AzureStack</id>
+    <version>1.9.0</version>
+    <authors>Microsoft Corporation</authors>
+    <owners>Microsoft Corporation</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://aka.ms/azps-license</licenseUrl>
+    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>
+    <description>Microsoft Azure PowerShell: $(service-name) cmdlets</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Azure ResourceManager ARM PSModule $(service-name)</tags>
+  </metadata>
+  <files>
+    <file src="AzureStack.psd1" />
+    <file src="AzureStack.psm1" />
+  </files>
+</package>
