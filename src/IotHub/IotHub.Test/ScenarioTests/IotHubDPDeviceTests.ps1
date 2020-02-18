@@ -65,6 +65,11 @@ function Test-AzureRmIotHubDeviceLifecycle
 	$devices = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
 	Assert-True { $devices.Count -eq 3}
 
+	# Get device connection string
+	$deviceCS = Get-AzIotHubDCS -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3
+	Assert-True { $deviceCS.DeviceId -eq $device3 }
+	Assert-True { $deviceCS.ConnectionString -eq "HostName=$IotHubName.azure-devices.net;DeviceId=$device3;x509=true" }
+
 	# Update Device
 	$updatedDevice1 = Set-AzIoTHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -Status 'Disabled' -StatusReason 'Reason1'
 	Assert-True { $updatedDevice1.Id -eq $device1 }
