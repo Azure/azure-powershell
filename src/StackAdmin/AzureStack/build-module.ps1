@@ -36,14 +36,7 @@ if(-not $Isolated -and -not $Debugger) {
     }
   }
 
-  if($Docs) {
-    . (Join-Path $PSScriptRoot 'generate-help.ps1')
-    if($LastExitCode -ne 0) {
-      # Docs generation failed. Don't attempt to run the module.
-      return
-    }
-  }
-
+  
   if($Pack) {
     . (Join-Path $PSScriptRoot 'pack-module.ps1')
     if($LastExitCode -ne 0) {
