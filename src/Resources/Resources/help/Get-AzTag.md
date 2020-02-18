@@ -9,15 +9,30 @@ schema: 2.0.0
 # Get-AzTag
 
 ## SYNOPSIS
-Gets predefined Azure tags.
+Gets predefined Azure tags | Gets the entire set of tags on a resource or subscription.
 
 ## SYNTAX
 
-```
+### Gets predefined Azure tags
+
+```ps
 Get-AzTag [[-Name] <String>] [-Detailed] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### Gets the entire set of tags on a resource or subscription
+
+```ps
+Get-AzTag
+   -ResourceId <String>
+   [-DefaultProfile <IAzureContextContainer>]
+   [<CommonParameters>]
+```
+
+
 ## DESCRIPTION
+
+### Gets predefined Azure tags
+
 The **Get-AzTag** cmdlet gets predefined Azure tags in your subscription.
 This cmdlet returns basic information about the tags or detailed information about tags and their values.
 All output objects include a Count property that represents the number of resources and resource groups to which the tags and values have been applied.
@@ -27,6 +42,10 @@ You can define and apply tags in a single step, but predefined tags let you esta
 To create a predefined tag, use the New-AzTag cmdlet.
 To apply a predefined tag to a resource group, use the *Tag* parameter of the New-AzTag cmdlet.
 To search resource groups for a specific tag name or name and value, use the *Tag* parameter of the Get-AzResourceGroup cmdlet.
+
+### Gets the entire set of tags on a resource or subscription
+
+The **Get-AzTag** cmdlet with a **ResourceId** gets the entire set of tags on a resource or subscription.
 
 ## EXAMPLES
 
@@ -97,6 +116,40 @@ Values:
 This command uses the *Detailed* parameter to get detailed information about all predefined tags in the subscription.
 Using the *Detailed* parameter is the equivalent of using the *Name* parameter for every tag.
 
+### Example 4: Get the entire set of tags under a subscription
+
+``` ps
+PS C:\>Get-AzTag -ResourceId /subscriptions/{subId}
+
+Id         : {Id}
+Name       : {Name}
+Type       : {Type}
+Properties :
+             Name     Value
+             =======  =========
+             tagKey1  tagValue1
+             tagKey2  tagValue2
+```
+
+This command gets the entire set of tags under the subscription with {subId}.
+
+### Example 5: Get the entire set of tags under a tracked resource
+
+``` ps
+PS C:\>Get-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1
+
+Id         : {Id}
+Name       : {Name}
+Type       : {Type}
+Properties :
+             Name     Value
+             =======  =========
+             Dept     Finance
+             Status   Normal
+```
+
+This command gets the entire set of tags under the tracked resource with {resourceId}.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -146,6 +199,20 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Specifies the scope to get the entire set of tags, could be a subscription or resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -157,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag
+### Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag | Microsoft.Azure.Commands.Tags.MOdel.PSTagResource
 
 ## NOTES
 
@@ -167,4 +234,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzTag](./Remove-AzTag.md)
 
-
+[Update-AzTag](./Update-AzTag.md)
