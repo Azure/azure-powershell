@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedDatabaseLongTermRetentionBackup", DefaultParameterSetName = LocationSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlManagedDatabaseLongTermRetentionBackupModel))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseLongTermRetentionBackup", DefaultParameterSetName = LocationSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlManagedDatabaseLongTermRetentionBackupModel))]
     public class GetAzureSqlManagedDatabaseLongTermRetentionBackup : AzureSqlManagedDatabaseLongTermRetentionBackupCmdletBase
     {
         /// <summary>

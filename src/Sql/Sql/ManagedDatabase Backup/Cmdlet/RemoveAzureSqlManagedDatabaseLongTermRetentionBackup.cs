@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedDatabaseLongTermRetentionBackup", DefaultParameterSetName = RemoveBackupDefaultSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlManagedDatabaseLongTermRetentionBackupModel))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseLongTermRetentionBackup", DefaultParameterSetName = RemoveBackupDefaultSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlManagedDatabaseLongTermRetentionBackupModel))]
     public class RemoveAzureSqlManagedDatabaseLongTermRetentionBackup : AzureSqlManagedDatabaseLongTermRetentionBackupCmdletBase
     {
         /// <summary>

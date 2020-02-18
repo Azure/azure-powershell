@@ -211,12 +211,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// <param name="databaseName">The name of the Managed Database</param>
         /// <param name="current">Whether or not the user provided the Current switch to get the current implementation of LTR policy</param>
         /// <returns>A backup LongTermRetention policy</returns>
-        internal AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel GetManagedDatabaseBackupLongTermRetentionPolicy(
+        internal AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel GetManagedDatabaseLongTermRetentionPolicy(
             string resourceGroup,
             string instanceName,
             string databaseName)
         {
-            Management.Sql.Models.BackupLongTermRetentionPolicy response = Communicator.GetManagedDatabaseLongTermRetentionPolicy(
+            ManagedInstanceLongTermRetentionPolicy response = Communicator.GetManagedDatabaseLongTermRetentionPolicy(
                     resourceGroup,
                     instanceName,
                     databaseName);
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
             };
         }
 
-        private AzureSqlManagedDatabaseLongTermRetentionBackupModel GetBackupModel(Management.Sql.Models.LongTermRetentionBackup backup, string locationName)
+        private AzureSqlManagedDatabaseLongTermRetentionBackupModel GetBackupModel(ManagedInstanceLongTermRetentionBackup backup, string locationName)
         {
             return new AzureSqlManagedDatabaseLongTermRetentionBackupModel()
             {
@@ -243,8 +243,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
                 DatabaseName = backup.DatabaseName,
                 Location = locationName,
                 ResourceId = backup.Id,
-                ServerCreateTime = backup.ServerCreateTime,
-                ServerName = backup.ServerName,
+                ServerCreateTime = backup.ManagedInstanceCreateTime,
+                ServerName = backup.ManagedInstanceName,
                 ResourceGroupName = GetResourceGroupNameFromResourceId(backup.Id)
             };
         }
@@ -322,11 +322,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
             string databaseName,
             AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel model)
         {
-            Management.Sql.Models.BackupLongTermRetentionPolicy response = Communicator.SetDatabaseLongTermRetentionPolicy(
+            ManagedInstanceLongTermRetentionPolicy response = Communicator.SetManagedDatabaseLongTermRetentionPolicy(
                     resourceGroup,
                     managedInstanceName,
                     databaseName,
-                    new Management.Sql.Models.BackupLongTermRetentionPolicy()
+                    new ManagedInstanceLongTermRetentionPolicy()
                     {
                         WeeklyRetention = model.WeeklyRetention,
                         MonthlyRetention = model.MonthlyRetention,
