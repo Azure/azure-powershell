@@ -28,6 +28,7 @@
 	- Get-AzIotHubModule
 	- Remove-AzIotHubModule
 	- Set-AzIotHubModule
+* Add cmdlet to get the connection string of a target IoT device in an Iot Hub.
 
 ## Version 2.1.0
 * Added support to manage devices in an Iot Hub. New Cmdlets are:
