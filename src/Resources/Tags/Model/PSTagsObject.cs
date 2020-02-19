@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
 {
     public class PSTagsObject
     {
-        public PSTagsObject(IDictionary<string, string> tagsProperty = default)
+        public PSTagsObject(IDictionary<string, string> tagsProperty)
         {
             TagsProperty = tagsProperty;
         }
