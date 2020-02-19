@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.0
+* Added cmdlet to get managed rule definitions that can be used in WAF
+
 ## Version 1.3.0
 * Update references in .psd1 to use relative path
 * Added WAF managed rules exclusion support

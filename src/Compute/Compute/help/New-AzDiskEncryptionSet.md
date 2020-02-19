@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDiskEncryptionSet
 
 ## SYNOPSIS
-Creates a disk encryption key.
+Creates a disk encryption set.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzDiskEncryptionSet [-ResourceGroupName] <String> [-Name] <String> [-InputOb
 ```
 
 ## DESCRIPTION
-Creates a disk encryption key.
+Creates a disk encryption set.
 
 ## EXAMPLES
 

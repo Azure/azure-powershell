@@ -110,21 +110,21 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
             RunCmdLet(() =>
             {
-                var properties = new JObject();
+                var properties = new CognitiveServicesAccountProperties();
                 if (!string.IsNullOrWhiteSpace(CustomSubdomainName))
                 {
-                    properties["customSubDomainName"] = CustomSubdomainName;
+                    properties.CustomSubDomainName = CustomSubdomainName;
                 }
                 if (NetworkRuleSet != null)
                 {
-                    properties["networkAcls"] = JToken.FromObject(NetworkRuleSet);
+                    properties.NetworkAcls = NetworkRuleSet.ToNetworkRuleSet();
                 }
 
-                CognitiveServicesAccountCreateParameters createParameters = new CognitiveServicesAccountCreateParameters()
+                CognitiveServicesAccount createParameters = new CognitiveServicesAccount()
                 {
                     Location = Location,
                     Kind = Type, // must have value, mandatory parameter
-                    Sku = new Sku(SkuName),
+                    Sku = new Sku(SkuName, null),
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag),
                     Properties = properties
                 };
