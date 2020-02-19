@@ -14,18 +14,13 @@ Gets predefined Azure tags | Gets the entire set of tags on a resource or subscr
 ## SYNTAX
 
 ### GetPredefinedTagSet
-
-```powershell
+```
 Get-AzTag [[-Name] <String>] [-Detailed] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```  
+```
 
 ### GetByResourceIdParameterSet
-
-```powershell
-Get-AzTag
-   -ResourceId <String>
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
+```
+Get-AzTag -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
