@@ -34,9 +34,7 @@ Remove-AzTag
 
 ## DESCRIPTION
 
-### Deletes predefined Azure tags or values
-
-The **Remove-AzTag** cmdlet deletes predefined Azure tags and values from your subscription.
+**RemovePredefinedTagSet**: The **Remove-AzTag** cmdlet deletes predefined Azure tags and values from your subscription.
 To delete particular values from a predefined tag, use the *Value* parameter.
 By default, **Remove-AzTag** deletes the specified tag and all of its values.You cannot delete a tag or value that is currently applied to a resource or resource group.
 Before using **Remove-AzTag**, use the *Tag* parameter of the Set-AzResourceGroup cmdlet to delete the tag or values from the resource or resource group.
@@ -44,9 +42,7 @@ The Azure Tags module that **Remove-AzTag** is part of can help you manage your 
 An Azure tag is a name-value pair that you can use to categorize your Azure resources and resource groups, such as by department or cost center, or to track notes or comments about the resources and groups.
 You can define and apply tags in a single step, but predefined tags let you establish standard, consistent, predictable names and values for the tags in your subscription.
 
-### Deletes the entire set of tags on a resource or subscription
-
-The **Remove-AzTag** cmdlet with a **ResourceId** deletes the entire set of tags on a resource or subscription.
+**RemoveByResourceIdParameterSet**: The **Remove-AzTag** cmdlet with a **ResourceId** deletes the entire set of tags on a resource or subscription.
 
 ## EXAMPLES
 

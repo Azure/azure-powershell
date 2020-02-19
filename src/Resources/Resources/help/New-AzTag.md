@@ -33,9 +33,7 @@ New-AzTag
 
 ## DESCRIPTION
 
-### Creates a predefined Azure tag or adds values to an existing tag
-
-The **New-AzTag** cmdlet creates a predefined Azure tag with an optional predefined value.
+**CreatePredefinedTagSet**: The **New-AzTag** cmdlet creates a predefined Azure tag with an optional predefined value.
 You can also use it to add additional values to existing predefined tags.
 To create a predefined tag, enter a unique tag name.
 To add a value to an existing predefined tag, specify the name of the existing tag and the new value.
@@ -51,9 +49,7 @@ A predefined Azure tag can have multiple values, but when you apply the tag to a
 For example, you can create a predefined Department tag with a value for each department, such as Finance, Human Resources, and IT.
 When you apply the Department tag to a resource, you apply only one predefined value, such as Finance.
 
-### Creates or updates the entire set of tags on a resource or subscription
-
-The **New-AzTag** cmdlet with a **ResourceId** creates or updates the entire set of tags on a resource or subscription.
+**CreateByResourceIdParameterSet**: The **New-AzTag** cmdlet with a **ResourceId** creates or updates the entire set of tags on a resource or subscription.
 This operation allows adding or replacing the entire set of tags on the specified resource or subscription. The specified entity can have a maximum of 50 tags.
 
 ## EXAMPLES
