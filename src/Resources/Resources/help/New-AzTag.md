@@ -13,15 +13,15 @@ Creates a predefined Azure tag or adds values to an existing tag | Creates or up
 
 ## SYNTAX
 
-### Creates a predefined Azure tag or adds values to an existing tag
+### CreatePredefinedTagSet
 
-```ps
+```powershell
 New-AzTag [-Name] <String> [[-Value] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Creates or updates the entire set of tags on a resource or subscription
+### CreateByResourceIdParameterSet
 
-```ps
+```powershell
 New-AzTag
    -ResourceId <String>
    -Tag <Hashtable>
@@ -59,7 +59,7 @@ This operation allows adding or replacing the entire set of tags on the specifie
 ## EXAMPLES
 
 ### Example 1: Create a predefined tag
-```
+```powershell
 PS C:\>New-AzTag -Name "FY2015"
                                 
 Name   ValuesTable Count Values 
@@ -73,7 +73,7 @@ You can apply a tag with no values to a resource or resource group, or use **New
 You can also specify a value when you apply the tag to the resource or resource group.
 
 ### Example 2: Create a predefined tag with a value
-```
+```powershell
 PS C:\>New-AzTag -Name "Department" -Value "Finance"
 Name:   Department
 Count:  0
@@ -87,7 +87,7 @@ Values:
 This command creates a predefined tag named Department with a value of Finance.
 
 ### Example 3: Add a value to a predefined tag
-```
+```powershell
 PS C:\>New-AzTag -Name "Department" -Value "Finance"
 Name:   Department
 Count:  0
@@ -109,7 +109,7 @@ These commands create a predefined tag named Department with two values.
 If the tag name exists, **New-AzTag** adds the value to the existing tag instead of creating a new one.
 
 ### Example 4: Use a predefined tag
-```
+```powershell
 PS C:\>New-AzTag -Name "CostCenter" -Value "0001"
 Name:   CostCenter
 Count:  0
@@ -158,7 +158,7 @@ The commands in this example create and use a predefined tag.
 
 ### Example 5: Creates or updates the entire set of tags under a subscription
 
-``` ps
+```powershell
 PS C:\>$Tags = @{"tagKey1"="tagValue1"; "tagKey2"="tagValue2"}
 PS C:\>New-AzTag -ResourceId /subscriptions/{subId} -Tag $Tags
 
@@ -176,7 +176,7 @@ This command creates or updates the entire set of tags under the subscription wi
 
 ### Example 6: Creates or updates the entire set of tags under a tracked resource
 
-``` ps
+```powershell
 PS C:\>$Tags = @{"Dept"="Finance"; "Status"="Normal"}
 PS C:\>New-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1 -Tag $Tags
 
@@ -218,7 +218,7 @@ If an existing predefined tag has the specified name, **New-AzTag** adds the spe
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreatePredefinedTagSet
 Aliases:
 
 Required: True
@@ -235,7 +235,7 @@ This parameter is optional, because tags can have names without values.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreatePredefinedTagSet
 Aliases:
 
 Required: False
@@ -250,12 +250,13 @@ Specifies the scope to create or update the entire set of tags, could be a subsc
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateByResourceIdParameterSet
 Aliases:
 
 Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -263,13 +264,14 @@ Accept wildcard characters: False
 Specifies the Tag Dictionary needs to be created or updated on the {ResourceId}.
 
 ```yaml
-Type: System.Hashtable
-Parameter Sets: (All)
+Type: System.Collections.Hashtable
+Parameter Sets: CreateByResourceIdParameterSet
 Aliases:
 
 Required: True
+Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -310,6 +312,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 

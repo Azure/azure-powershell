@@ -13,16 +13,16 @@ Deletes predefined Azure tags or values | Deletes the entire set of tags on a re
 
 ## SYNTAX
 
-### Deletes predefined Azure tags or values
+### RemovePredefinedTagSet
 
-```
+```powershell
 Remove-AzTag [-Name] <String> [[-Value] <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Deletes the entire set of tags on a resource or subscription
+### RemoveByResourceIdParameterSet
 
-```ps
+```powershell
 Remove-AzTag
    -ResourceId <String>
    [-PassThru]
@@ -51,7 +51,7 @@ The **Remove-AzTag** cmdlet with a **ResourceId** deletes the entire set of tags
 ## EXAMPLES
 
 ### Example 1: Delete a predefined tag
-```
+```powershell
 PS C:\>Remove-AzTag -Name "Department"
 ```
 
@@ -59,7 +59,7 @@ This command deletes the predefined tag named Department and all of its values.
 If the tag has been applied to any resources or resource groups, the command fails.
 
 ### Example 2: Delete a value from a predefined tag
-```
+```powershell
 PS C:\>Remove-AzTag -Name "Department" -Value "HumanResources" -PassThru
 Name:   Department
 Count:  14
@@ -78,7 +78,7 @@ If the value has been applied to any resources or resource groups, the command f
 
 ### Example 3: Deletes the entire set of tags under a subscription
 
-``` ps
+``` powershell
 PS C:\>Remove-AzTag -ResourceId /subscriptions/{subId}
 ```
 
@@ -86,7 +86,7 @@ This command deletes the entire set of tags under the subscription with {subId}.
 
 ### Example 4: Deletes the entire set of tags under a tracked resource
 
-``` ps
+``` powershell
 PS C:\>Remove-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1 -PassThru
 
 Id         : {Id}
@@ -125,7 +125,7 @@ To delete selected values, but not delete the tag, use the *Value* parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemovePredefinedTagSet
 Aliases:
 
 Required: True
@@ -140,7 +140,7 @@ Deletes the specified values from the predefined tag, but does not delete the ta
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: RemovePredefinedTagSet
 Aliases:
 
 Required: False
@@ -155,12 +155,13 @@ Specifies the scope to get the entire set of tags, could be a subscription or re
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveByResourceIdParameterSet
 Aliases:
 
 Required: True
+Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
