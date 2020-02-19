@@ -58,8 +58,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public override void ExecuteCmdlet()
         {
             string whatIfMessage = this.GetWhatIfMessage();
+            string warningMessage = $"{Environment.NewLine}{Resources.ConfirmDeploymentMessage}";
+            string captionMessage = $"{(char)27}[1A{Color.Reset}{whatIfMessage}"; // {(char)27}[1A for cursor up.
 
-            if (ShouldProcess(whatIfMessage, whatIfMessage, null))
+            if (ShouldProcess(whatIfMessage, warningMessage, captionMessage))
             {
                 var parameters = new PSDeploymentCmdletParameters()
                 {
@@ -117,7 +119,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     this.WriteInformation(clearInformation, tags);
 
                     // Use \r to override the built-in "What if:" in output.
-                    return $"\r{whatIfMessage}";
+                    return $"\r        \r{Environment.NewLine}{whatIfMessage}{Environment.NewLine}";
                 }
                 catch (CloudException ce)
                 {

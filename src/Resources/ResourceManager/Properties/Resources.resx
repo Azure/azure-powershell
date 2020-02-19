@@ -462,4 +462,7 @@ Error Details: {3}
 Request Id: {4}
 Timestamp (UTC): {5}</value>
   </data>
+  <data name="ConfirmDeploymentMessage" xml:space="preserve">
+    <value>Are you sure you want to execute the deployment?</value>
+  </data>
 </root>

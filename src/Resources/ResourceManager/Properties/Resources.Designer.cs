@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to execute the deployment?.
+        /// </summary>
+        internal static string ConfirmDeploymentMessage {
+            get {
+                return ResourceManager.GetString("ConfirmDeploymentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to invoke the &apos;{0}&apos; action on the following resource: {1}.
         /// </summary>
         internal static string ConfirmInvokeAction {
