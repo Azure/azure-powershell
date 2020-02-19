@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix for null reference bug in GetAzureRoleAssignmentCommand
 
 ## Version 1.11.0
 * Refactored template deployment cmdlets
@@ -32,7 +33,6 @@
 ## Version 1.10.0
 * Make -Scope optional in *-AzPolicyAssignment cmdlets with default to context subscription
 * Add examples of creating ADServicePrincipal with password and key credential
-* Fix for null reference bug in GetAzureRoleAssignmentCommand
 
 ## Version 1.9.1
 * Fix an error in help document of `Remove-AzTag`.
