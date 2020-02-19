@@ -210,4 +210,7 @@
   <data name="DEVICE_DEVICESCOPE_PREFIX" xml:space="preserve">
     <value>ms-azure-iot-edge://</value>
   </data>
+  <data name="SetParentDevice" xml:space="preserve">
+    <value>Set Parent Device</value>
+  </data>
 </root>
