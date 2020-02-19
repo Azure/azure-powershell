@@ -30,9 +30,7 @@ Get-AzTag
 
 ## DESCRIPTION
 
-### Gets predefined Azure tags
-
-The **Get-AzTag** cmdlet gets predefined Azure tags in your subscription.
+**GetPredefinedTagSet**: The **Get-AzTag** cmdlet gets predefined Azure tags in your subscription.
 This cmdlet returns basic information about the tags or detailed information about tags and their values.
 All output objects include a Count property that represents the number of resources and resource groups to which the tags and values have been applied.
 The Azure Tags module that **Get-AzTag** is a part of can help you manage predefined Azure tags.
@@ -42,9 +40,7 @@ To create a predefined tag, use the New-AzTag cmdlet.
 To apply a predefined tag to a resource group, use the *Tag* parameter of the New-AzTag cmdlet.
 To search resource groups for a specific tag name or name and value, use the *Tag* parameter of the Get-AzResourceGroup cmdlet.
 
-### Gets the entire set of tags on a resource or subscription
-
-The **Get-AzTag** cmdlet with a **ResourceId** gets the entire set of tags on a resource or subscription.
+**GetByResourceIdParameterSet**: The **Get-AzTag** cmdlet with a **ResourceId** gets the entire set of tags on a resource or subscription.
 
 ## EXAMPLES
 
