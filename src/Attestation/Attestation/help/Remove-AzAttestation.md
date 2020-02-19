@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll-Help.xml
 Module Name: Az.Attestation
-online version:https://docs.microsoft.com/en-us/powershell/module/az.attestation/remove-azattestation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.attestation/remove-azattestation
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Deletes an attestation.
 
 ### ByAvailableAttestation (Default)
 ```
-Remove-AzAttestation [-Name] <String> [-ResourceGroupName] <String> [-AsJob] [-PassThru]
+Remove-AzAttestation [-Name] <String> [-ResourceGroupName] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,20 +37,20 @@ The Remove-AzAttestation cmdlet deletes the specified attestation.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzAttestation -Name example -ResourceGroupName rg1 
+PS C:\> Remove-AzAttestation -Name "example" -ResourceGroupName "rg1"
 ```
 
 Delete Attestation "example" from current Subscription and Resource Group "rg1".
 
 ## PARAMETERS
 
-### -AsJob
-Run cmdlet in the background
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
 Required: False
 Position: Named
@@ -147,21 +147,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
