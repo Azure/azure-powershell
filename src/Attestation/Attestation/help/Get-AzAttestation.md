@@ -18,7 +18,7 @@ Get-AzAttestation [-Name] <String> [-ResourceGroupName] <String> [-DefaultProfil
  [<CommonParameters>]
 ```
 
-### ResourceGroupParameterSet
+### ResourceIdParameterSet
 ```
 Get-AzAttestation [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -30,7 +30,7 @@ The Get-AzAttestation cmdlet gets information about the attestation in a subscri
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAttestation -Name example -ResourceGroupName rg1 
+PS C:\> Get-AzAttestation -Name "example" -ResourceGroupName "rg1" 
 Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Attestation/attestationProviders/example
 Name                : example
 Type                : Microsoft.Attestation/attestationProviders
@@ -39,6 +39,7 @@ AttesUri            : https://example.us.attest.azure.net
 ResoureGroupName    : rg1 
 SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 ```
+
 Get Attestation "example" in Resource Group "rg1". 
 
 ## PARAMETERS
@@ -93,7 +94,7 @@ Specifies the name of the ResourceID associated with the attestation being queri
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupParameterSet
+Parameter Sets: ResourceIdParameterSet
 Aliases:
 
 Required: True

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         public string NotificationRecipientsEmails { get; set; }
 
         /// <summary>
-        /// Gets or sets the whether to email administrators
+        /// Gets or sets the whether to email administrators.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines whether to email administrators")]
         [ValidateNotNullOrEmpty]
@@ -55,7 +55,8 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
             DetectionType.Sql_Injection_Vulnerability,
             DetectionType.Unsafe_Action,
             DetectionType.Data_Exfiltration,
-            DetectionType.Access_Anomaly)]
+            DetectionType.Access_Anomaly,
+            DetectionType.Brute_Force)]
         public string[] ExcludedDetectionType { get; set; }
 
         /// <summary>
