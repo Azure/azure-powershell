@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubDeviceParent", DefaultParameterSetName = ResourceParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubDeviceParent", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSDevice))]
     public class SetAzIotHubDeviceParent : IotHubBaseCmdlet
     {
@@ -67,50 +67,53 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
-            IotHubDescription iotHubDescription;
-            if (ParameterSetName.Equals(InputObjectParameterSet))
+            if (ShouldProcess(this.DeviceId, Properties.Resources.AddIotHubDevice))
             {
-                this.ResourceGroupName = this.InputObject.Resourcegroup;
-                this.IotHubName = this.InputObject.Name;
-                iotHubDescription = IotHubUtils.ConvertObject<PSIotHub, IotHubDescription>(this.InputObject);
-            }
-            else
-            {
-                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                IotHubDescription iotHubDescription;
+                if (ParameterSetName.Equals(InputObjectParameterSet))
                 {
-                    this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
-                    this.IotHubName = IotHubUtils.GetIotHubName(this.ResourceId);
+                    this.ResourceGroupName = this.InputObject.Resourcegroup;
+                    this.IotHubName = this.InputObject.Name;
+                    iotHubDescription = IotHubUtils.ConvertObject<PSIotHub, IotHubDescription>(this.InputObject);
+                }
+                else
+                {
+                    if (ParameterSetName.Equals(ResourceIdParameterSet))
+                    {
+                        this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
+                        this.IotHubName = IotHubUtils.GetIotHubName(this.ResourceId);
+                    }
+
+                    iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.IotHubName);
                 }
 
-                iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.IotHubName);
+                IEnumerable<SharedAccessSignatureAuthorizationRule> authPolicies = this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.IotHubName);
+                SharedAccessSignatureAuthorizationRule policy = IotHubUtils.GetPolicy(authPolicies, PSAccessRights.RegistryWrite);
+                PSIotHubConnectionString psIotHubConnectionString = IotHubUtils.ToPSIotHubConnectionString(policy, iotHubDescription.Properties.HostName);
+                RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);
+
+                Device childDevice = registryManager.GetDeviceAsync(this.DeviceId).GetAwaiter().GetResult();
+                Device parentDevice = registryManager.GetDeviceAsync(this.ParentDeviceId).GetAwaiter().GetResult();
+
+                if (childDevice.Capabilities.IotEdge)
+                {
+                    throw new ArgumentException($"The entered device \"{this.DeviceId}\" should be non-edge device.");
+                }
+
+                if (!parentDevice.Capabilities.IotEdge)
+                {
+                    throw new ArgumentException($"The entered parent device \"{this.ParentDeviceId}\" should be edge device.");
+                }
+
+                if (!string.IsNullOrEmpty(childDevice.Scope) && !childDevice.Scope.Equals(parentDevice.Scope) && !this.Force.IsPresent)
+                {
+                    throw new ArgumentException($"The entered device \"{this.DeviceId}\" already has a parent device, please use '-Force' to overwrite.");
+                }
+
+                childDevice.Scope = parentDevice.Scope;
+
+                this.WriteObject(IotHubDataPlaneUtils.ToPSDevice(registryManager.UpdateDeviceAsync(childDevice).GetAwaiter().GetResult()));
             }
-
-            IEnumerable<SharedAccessSignatureAuthorizationRule> authPolicies = this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.IotHubName);
-            SharedAccessSignatureAuthorizationRule policy = IotHubUtils.GetPolicy(authPolicies, PSAccessRights.RegistryWrite);
-            PSIotHubConnectionString psIotHubConnectionString = IotHubUtils.ToPSIotHubConnectionString(policy, iotHubDescription.Properties.HostName);
-            RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);
-
-            Device childDevice = registryManager.GetDeviceAsync(this.DeviceId).GetAwaiter().GetResult();
-            Device parentDevice = registryManager.GetDeviceAsync(this.ParentDeviceId).GetAwaiter().GetResult();
-
-            if (childDevice.Capabilities.IotEdge)
-            {
-                throw new ArgumentException($"The entered device \"{this.DeviceId}\" should be non-edge device.");
-            }
-
-            if (!parentDevice.Capabilities.IotEdge)
-            {
-                throw new ArgumentException($"The entered parent device \"{this.ParentDeviceId}\" should be edge device.");
-            }
-
-            if (!string.IsNullOrEmpty(childDevice.Scope) && !childDevice.Scope.Equals(parentDevice.Scope) && !this.Force.IsPresent)
-            {
-                throw new ArgumentException($"The entered device \"{this.DeviceId}\" already has a parent device, please use '-Force' to overwrite.");
-            }
-
-            childDevice.Scope = parentDevice.Scope;
-
-            this.WriteObject(IotHubDataPlaneUtils.ToPSDevice(registryManager.UpdateDeviceAsync(childDevice).GetAwaiter().GetResult()));
         }
     }
 }
