@@ -90,6 +90,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 var cmdlet = new EnableAzureRmContextAutosave();
                 cmdlet.Scope = Commands.Profile.Common.ContextModificationScope.Process;
                 cmdlet.CommandRuntime = commandRuntimeMock;
+                // test: this case should fail, because it references DefaultContext, and when autosave is enabled
+                // it will refresh token from cache, and actually call MSAL to acquire token
                 cmdlet.InvokeBeginProcessing();
                 cmdlet.ExecuteCmdlet();
                 cmdlet.InvokeEndProcessing();
