@@ -13,21 +13,20 @@ Gets predefined Azure tags | Gets the entire set of tags on a resource or subscr
 
 ## SYNTAX
 
-### Gets predefined Azure tags
+### GetPredefinedTagSet
 
-```ps
+```powershell
 Get-AzTag [[-Name] <String>] [-Detailed] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
+```  
 
-### Gets the entire set of tags on a resource or subscription
+### GetByResourceIdParameterSet
 
-```ps
+```powershell
 Get-AzTag
    -ResourceId <String>
    [-DefaultProfile <IAzureContextContainer>]
    [<CommonParameters>]
 ```
-
 
 ## DESCRIPTION
 
@@ -50,7 +49,7 @@ The **Get-AzTag** cmdlet with a **ResourceId** gets the entire set of tags on a 
 ## EXAMPLES
 
 ### Example 1: Get all predefined tags
-```
+```powershell
 PS C:\>Get-AzTag
 
 Name      Count
@@ -65,7 +64,7 @@ This command gets all predefined tags in the subscription.
 The Count property shows how many times the tag has been applied to resources and resource groups in the subscription.
 
 ### Example 2: Get a tag by name
-```
+```powershell
 PS C:\>Get-AzTag -Name "Department"
 
 Name:   Department
@@ -83,7 +82,7 @@ This command gets detailed information about the Department tag and its values.
 The Count property shows how many times the tag and each of its values has been applied to resources and resource groups in the subscription.
 
 ### Example 3: Get values of all tags
-```
+```powershell
 PS C:\>Get-AzTag -Detailed
 
 Name:   Department
@@ -118,7 +117,7 @@ Using the *Detailed* parameter is the equivalent of using the *Name* parameter f
 
 ### Example 4: Get the entire set of tags under a subscription
 
-``` ps
+```powershell
 PS C:\>Get-AzTag -ResourceId /subscriptions/{subId}
 
 Id         : {Id}
@@ -135,7 +134,7 @@ This command gets the entire set of tags under the subscription with {subId}.
 
 ### Example 5: Get the entire set of tags under a tracked resource
 
-``` ps
+```powershell
 PS C:\>Get-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1
 
 Id         : {Id}
@@ -172,7 +171,7 @@ Indicates that this operation adds information about tag values to the output.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: GetPredefinedTagSet
 Aliases:
 
 Required: False
@@ -189,7 +188,7 @@ When you specify the *Name* parameter, the *Detailed* parameter has no effect.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetPredefinedTagSet
 Aliases:
 
 Required: False
@@ -204,12 +203,13 @@ Specifies the scope to get the entire set of tags, could be a subscription or re
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
 Required: True
+Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

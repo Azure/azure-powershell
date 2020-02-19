@@ -14,22 +14,16 @@ Selectively updates the set of tags on a resource or subscription.
 
 ## SYNTAX
 
-```ps
+```powershell
 Update-AzTag
    -ResourceId <String>
-   -Operation <Enum>
+   -Operation <TagPatchOpeation>
    -Tag <Hashtable>
    [-DefaultProfile <IAzureContextContainer>]
    [-WhatIf]
    [-Confirm]
    [<CommonParameters>]
 
-enum Operation {
-    NotSpecified
-    Merge
-    Replace
-    Delete
-}
 ```
 
 ## DESCRIPTION
@@ -41,9 +35,9 @@ This operation allows replacing, merging or selectively deleting tags on the spe
 
 ### Example 1: Selectively updates the set of tags on a subscription with "Merge" Operation
 
-``` ps
+```powershell
 PS C:\>$mergedTags = @{"key1"="value1"; "key3"="value3";}
-PS C:\>Update-AzTag -ResourceId /subscriptions/{subId} -Operation Merge -Tag $mergedTags
+PS C:\>Update-AzTag -ResourceId /subscriptions/{subId} -Tag $mergedTags -Operation Merge
 
 Id         : {Id}
 Name       : {Name}
@@ -60,9 +54,9 @@ This command Merges the set of tags under the subscription with {subId}.
 
 ### Example 2: Selectively updates the set of tags on a subscription with "Replace" Operation
 
-``` ps
+```powershell
 PS C:\>$replacedTags = @{"key1"="value1"; "key3"="value3";}
-PS C:\>Update-AzTag -ResourceId /subscriptions/{subId} -Operation Replace -Tag $replacedTags
+PS C:\>Update-AzTag -ResourceId /subscriptions/{subId} -Tag $replacedTags -Operation Replace
 
 Id         : {Id}
 Name       : {Name}
@@ -78,9 +72,9 @@ This command Repalces the set of tags under the subscription with {subId}.
 
 ### Example 3: Selectively updates the set of tags on a subscription with "Delete" Operation
 
-``` ps
+```powershell
 PS C:\>$deletedTags = @{"key1"="value1"}
-PS C:\>Update-AzTag -ResourceId /subscriptions/{subId} -Operation Delete -Tag $deletedTags
+PS C:\>Update-AzTag -ResourceId /subscriptions/{subId} -Tag $deletedTags -Operation Delete
 
 Id         : {Id}
 Name       : {Name}
@@ -119,22 +113,9 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Operation
-Specifies the Operation for the update, select one from {"NotSpecified", "Merge", "Replace", "Delete"}
-
-```yaml
-Type: System.Enum
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -142,13 +123,30 @@ Accept wildcard characters: False
 Specifies the Tag Dictionary needs to be updated on the {ResourceId}.
 
 ```yaml
-Type: System.Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Operation
+Specifies the Operation for the update, select one from {"NotSpecified", "Merge", "Replace", "Delete"}
+
+```yaml
+Type: Microsoft.Azure.Commands.Tags.Model.TagPatchOpeation
+Parameter Sets: (All)
+Aliases:
+Accepted values: NotSpecified, Merge, Replace, Delete
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -184,15 +182,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
+### Microsoft.Azure.Commands.Tags.Model.TagPatchOpeation
+
+### System.Collections.Hashtable
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Tags.MOdel.PSTagResource
+### Microsoft.Azure.Commands.Tags.Model.PSTagResource
 
 ## NOTES
 
