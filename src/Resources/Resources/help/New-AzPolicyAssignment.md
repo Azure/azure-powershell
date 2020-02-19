@@ -276,7 +276,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies a name for the policy assignment.
+Specifies a name for the policy assignment. Limited to **24** characters
 
 ```yaml
 Type: System.String
