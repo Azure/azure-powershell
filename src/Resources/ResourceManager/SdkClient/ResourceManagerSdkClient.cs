@@ -559,13 +559,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         private DeploymentValidateResult ValidateDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
         {
+            var scopedDeployment = new ScopedDeployment { Properties = deployment.Properties, Location = deployment.Location };
+
             switch (parameters.ScopeType)
             {
                 case DeploymentScopeType.Tenant:
-                    return ResourceManagementClient.Deployments.ValidateAtTenantScope(parameters.DeploymentName, deployment);
+                    return ResourceManagementClient.Deployments.ValidateAtTenantScope(parameters.DeploymentName, scopedDeployment);
 
                 case DeploymentScopeType.ManagementGroup:
-                    return ResourceManagementClient.Deployments.ValidateAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, deployment);
+                    return ResourceManagementClient.Deployments.ValidateAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, scopedDeployment);
 
                 case DeploymentScopeType.ResourceGroup:
                     return ResourceManagementClient.Deployments.Validate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
@@ -686,14 +688,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         private void BeginDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
         {
+            var scopedDeployment = new ScopedDeployment { Properties = deployment.Properties, Location = deployment.Location };
+
             switch (parameters.ScopeType)
             {
                 case DeploymentScopeType.Tenant:
-                    ResourceManagementClient.Deployments.BeginCreateOrUpdateAtTenantScope(parameters.DeploymentName, deployment);
+                    ResourceManagementClient.Deployments.BeginCreateOrUpdateAtTenantScope(parameters.DeploymentName, scopedDeployment);
                     break;
 
                 case DeploymentScopeType.ManagementGroup:
-                    ResourceManagementClient.Deployments.BeginCreateOrUpdateAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, deployment);
+                    ResourceManagementClient.Deployments.BeginCreateOrUpdateAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, scopedDeployment);
                     break;
 
                 case DeploymentScopeType.ResourceGroup:
