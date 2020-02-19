@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 var account = this.CognitiveServicesClient.Accounts.GetProperties(
                                         this.ResourceGroupName,
                                         this.Name);
-                NetworkRuleSet accountACL = account.NetworkAcls;
+                NetworkRuleSet accountACL = account.Properties.NetworkAcls;
 
                 if (accountACL == null)
                 {
@@ -152,9 +152,16 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 }
 
 
-                var properties = new JObject();
-                properties["networkAcls"] = JToken.FromObject(accountACL);
-                this.CognitiveServicesClient.Accounts.Update(this.ResourceGroupName, this.Name, null, null, properties);
+                var properties = new CognitiveServicesAccountProperties();
+                properties.NetworkAcls = accountACL;
+                this.CognitiveServicesClient.Accounts.Update(
+                    this.ResourceGroupName,
+                    this.Name,
+                    new CognitiveServicesAccount()
+                    {
+                        Properties = properties
+                    }
+                    );
 
                 account = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
 
@@ -162,11 +169,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 {
                     case NetWorkRuleStringParameterSet:
                     case NetworkRuleObjectParameterSet:
-                        WriteObject(PSNetworkRuleSet.Create(account.NetworkAcls).VirtualNetworkRules);
+                        WriteObject(PSNetworkRuleSet.Create(account.Properties.NetworkAcls).VirtualNetworkRules);
                         break;
                     case IpRuleStringParameterSet:
                     case IpRuleObjectParameterSet:
-                        WriteObject(PSNetworkRuleSet.Create(account.NetworkAcls).IpRules);
+                        WriteObject(PSNetworkRuleSet.Create(account.Properties.NetworkAcls).IpRules);
                         break;
                 }
             }

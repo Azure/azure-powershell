@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDiskEncryptionSet
 
 ## SYNOPSIS
-Updates a disk encryption key.
+Updates a disk encryption set.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Update-AzDiskEncryptionSet [-InputObject] <PSDiskEncryptionSet> [-KeyUrl <String
 ```
 
 ## DESCRIPTION
-Updates a disk encryption key.
+Updates a disk encryption set.
 
 ## EXAMPLES
 

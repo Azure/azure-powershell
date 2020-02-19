@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             return folderPath;
         }
 
-        protected void ImportArtifacts(string blueprintName, string scope, string inputPath)
+        protected void ImportArtifacts(string blueprintName, string scope, string inputPath, bool includeSubfolders = false)
         {
             var artifactsPath = GetValidatedFolderPathForArtifacts(ResolveUserPath(inputPath));
 
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 return; // if blueprint doesn't contain artifacts don't proceed.
             }
 
-            var artifactFiles = AzureSession.Instance.DataStore.GetFiles(artifactsPath, "*.json", SearchOption.TopDirectoryOnly);
+            var artifactFiles = AzureSession.Instance.DataStore.GetFiles(artifactsPath, "*.json", includeSubfolders ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
 
             foreach (var artifactFile in artifactFiles)
             {

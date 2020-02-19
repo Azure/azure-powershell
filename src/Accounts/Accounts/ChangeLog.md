@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.2
+* Added SubscriptionId, TenantId, and execution time into data of client side telemetry
+
+## Version 1.7.1
 * Disable context auto saving when AzureRmContext.json not available
 * Update the reference to Azure Powershell Common to 1.3.5-preview
 

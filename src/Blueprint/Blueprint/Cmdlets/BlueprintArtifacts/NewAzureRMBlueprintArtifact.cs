@@ -68,7 +68,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         public string PolicyDefinitionId { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactPolicyDefinitionParameter)]
-        [ValidateNotNullOrEmpty]
         public Hashtable PolicyDefinitionParameter { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactTemplateParameterFile)]

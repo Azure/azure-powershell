@@ -55,6 +55,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public string ContainerId { get; set; }
 
+        /// <summary>
+        /// Full RP on which log backups will be applied
+        /// </summary>
+        public RecoveryPointBase FullRP { get; set; }
+
+
         public AzureWorkloadRecoveryConfig(string targetServer, string targetInstance, string restoreRequestType,
             RecoveryPointBase recoveryPoint, DateTime pointInTime)
             : base(restoreRequestType, recoveryPoint, pointInTime)

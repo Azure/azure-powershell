@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Added cmdlets for Availability Group Listener
+
 ## Version 1.0.2
 * Add DR as a new valid License type
 
