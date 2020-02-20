@@ -266,21 +266,21 @@ function AreHashtableEqual($hash1, $hash2)
     if($hash1 -eq $null -and $hash2 -eq $null)
     {
         return $true; 
-	}
+    }
     if($hash1 -eq $null -or $hash2 -eq $null -or $hash1.Count -ne $hash2.Count)
     {
         return $false;
-	}
+    }
     foreach($key in $hash1.Keys) 
     {
         if(!$hash2.ContainsKey($key))  # case insensitive
         {
             return $false;
-		}
+	}
         if($hash1.$key -cne $hash2.$key)  # case sensitive
         {
             return $false;
-		}
 	}
+    }
     return $true;
 }
