@@ -602,12 +602,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         internal static string GetSubnetResourceGroupName(IAzureContext context, string Subnet, string VirtualNetworkName)
         {
             networkClient = AzureSession.Instance.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            var vNetworks = networkClient.VirtualNetworks.ListAll();
-            var matchedVNetwork = vNetworks.FirstOrDefault(item => item.Name == VirtualNetworkName);
+            var matchedVNetwork = networkClient.VirtualNetworks.ListAll().FirstOrDefault(item => item.Name == VirtualNetworkName);
             if (matchedVNetwork != null)
             {
-                var subNets = matchedVNetwork.Subnets.ToList();
-                Subnet matchedSubnet = subNets.FirstOrDefault(sItem => sItem.Name == Subnet || sItem.Id == Subnet);
+                Subnet matchedSubnet = matchedVNetwork.Subnets.FirstOrDefault(sItem => sItem.Name == Subnet || sItem.Id == Subnet);
                 if(matchedSubnet!=null)
                 {
                     var subnetResourceId = new ResourceIdentifier(matchedSubnet.Id);
