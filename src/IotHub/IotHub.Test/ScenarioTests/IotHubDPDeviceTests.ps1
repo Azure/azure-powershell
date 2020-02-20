@@ -77,8 +77,20 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-True { $updatedDevice1.StatusReason -eq 'Reason1' }
 
 	# Update iot device to edge device
-	$updatedDevice2 = Set-AzIoTHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3 -EdgeEnabled $true
-	Assert-True { $updatedDevice2.Capabilities.IotEdge }
+	$updatedDevice3 = Set-AzIoTHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3 -EdgeEnabled $true
+	Assert-True { $updatedDevice3.Capabilities.IotEdge }
+
+	# Set parent device Id
+	$updatedChildDevice = Set-AzIotHubDeviceParent -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ParentDeviceId $device3
+	Assert-False { $updatedChildDevice.Capabilities.IotEdge }
+	Assert-True { $updatedChildDevice.Id -eq $device1 }
+	Assert-True { $updatedChildDevice.Scope -eq $updatedDevice3.Scope }
+
+	# Get parent device Id
+	$parentDevice = Get-AzIotHubDeviceParent -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
+	Assert-True { $parentDevice.Capabilities.IotEdge }
+	Assert-True { $parentDevice.Id -eq $device3 }
+	Assert-True { $updatedChildDevice.Scope -eq $updatedDevice3.Scope }
 
 	# Get device detail
 	$iotDevice = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
