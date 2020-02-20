@@ -18,15 +18,18 @@ Tests uploading an application package.
 #>
 function Test-UploadApplicationPackage
 {
-    param([string] $applicationId, [string] $applicationVersion, [string]$filePath)
+    param([string] $applicationName, [string] $applicationVersion, [string]$filePath)
 
     # Setup
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
+    $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
+    $subId = $context.Subscription
+    $resourceGroup = $context.ResourceGroupName
+    $batchAccountName = $context.AccountName
 
-    Assert-AreEqual $applicationId $addAppPack.Id
-    Assert-AreEqual $applicationVersion $addAppPack.Version
+    Assert-AreEqual "/subscriptions/$subId/resourceGroups/$resourceGroup/providers/Microsoft.Batch/batchAccounts/$batchAccountName/applications/$applicationName/versions/$applicationVersion" $addAppPack.Id
+    Assert-AreEqual $applicationVersion $addAppPack.Name
 }
 
 <#
@@ -35,18 +38,18 @@ Tests can update an application settings
 #>
 function Test-UpdateApplicationPackage
 {
-    param([string] $applicationId, [string] $applicationVersion, [string]$filePath)
+    param([string] $applicationName, [string] $applicationVersion, [string]$filePath)
 
     # Setup
     $newDisplayName = "application-display-name"
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    $beforeUpdateApp = Get-AzBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId
+    $beforeUpdateApp = Get-AzBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName
 
-    $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
-    Set-AzBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -displayName $newDisplayName -defaultVersion $applicationVersion
+    $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
+    Set-AzBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -displayName $newDisplayName -defaultVersion $applicationVersion
 
-    $afterUpdateApp = Get-AzBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId
+    $afterUpdateApp = Get-AzBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName
 
     Assert-AreEqual $afterUpdateApp.DefaultVersion $applicationVersion
     Assert-AreNotEqual $afterUpdateApp.DefaultVersion $beforeUpdateApp.DefaultVersion
@@ -59,20 +62,19 @@ Tests create pool with an application package.
 #>
 function Test-CreatePoolWithApplicationPackage
 {
-    param([string] $applicationId, [string] $applicationVersion, [string] $poolId, [string]$filePath)
+    param([string] $applicationName, [string] $applicationVersion, [string] $poolId, [string]$filePath)
 
     # Setup
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     try
     {
-        $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
+        $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
 
-        Assert-AreEqual $applicationId $addAppPack.Id
-        Assert-AreEqual $applicationVersion $addAppPack.Version
+        Assert-AreEqual $applicationVersion $addAppPack.Name
 
         $apr1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
-        $apr1.ApplicationId = $applicationId
+        $apr1.ApplicationId = $applicationName
         $apr1.Version = $applicationVersion
         $apr = [Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference[]]$apr1
 
@@ -85,8 +87,8 @@ function Test-CreatePoolWithApplicationPackage
     }
     finally
     {
-        Remove-AzBatchApplicationPackage -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName -ApplicationVersion $applicationVersion
-        Remove-AzBatchApplication  -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
+        Remove-AzBatchApplicationPackage -AccountName $context.AccountName -ApplicationName $applicationName -ResourceGroupName $context.ResourceGroupName -ApplicationVersion $applicationVersion
+        Remove-AzBatchApplication  -AccountName $context.AccountName -ApplicationName $applicationName -ResourceGroupName $context.ResourceGroupName
         Remove-AzBatchPool -Id $poolId -Force -BatchContext $context
     }
 }
@@ -97,20 +99,19 @@ Tests update pool with an application package.
 #>
 function Test-UpdatePoolWithApplicationPackage
 {
-    param([string] $applicationId, [string] $applicationVersion, [string] $poolId, [string]$filePath)
+    param([string] $applicationName, [string] $applicationVersion, [string] $poolId, [string]$filePath)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
+    $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
 
-    Assert-AreEqual $applicationId $addAppPack.Id
-    Assert-AreEqual $applicationVersion $addAppPack.Version
+    Assert-AreEqual $applicationVersion $addAppPack.Name
 
     $getPool = Get-AzBatchPool -Id $poolId -BatchContext $context
 
     # update pool with application package references
     $apr1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
-    $apr1.ApplicationId = $applicationId
+    $apr1.ApplicationId = $applicationName
     $apr1.Version = $applicationVersion
     $apr = [Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference[]]$apr1
 

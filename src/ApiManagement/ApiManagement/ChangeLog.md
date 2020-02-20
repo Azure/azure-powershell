@@ -18,6 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.4
+* **Get-AzApiManagementApiSchema** Fixed getting Open-Api Schema associated with an API
+    https://github.com/Azure/azure-powershell/issues/10626
+
+* **New-AzApiManagementProduct*** and **Set-AzApiManagementProduct**
+  - Fix documentation for https://github.com/Azure/azure-powershell/issues/10472
+
+* **Set-AzApiManagementApi**
+    Added example to show how to update the ServiceUrl using the cmdlet
+
+## Version 1.3.3
+* Update references in .psd1 to use relative path
+
+## Version 1.3.2
+* **Set-AzApiManagementApi** - Added support for Updating Api into ApiVersionSet
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/10068
+    
+## Version 1.3.1
 * Update `-Format` parameter description in `Set-AzApiManagementPolicy` reference documentation
 * Removed references of deprecated cmdlet `Update-AzApiManagementDeployment` from reference documentation. Use `Set-AzApiManagement` instead.
 

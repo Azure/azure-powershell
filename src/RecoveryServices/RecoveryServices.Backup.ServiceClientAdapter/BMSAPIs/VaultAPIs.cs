@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -24,6 +25,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             var response = RSAdapter.Client.Vaults.ListBySubscriptionIdWithHttpMessagesAsync(
                 cancellationToken: RSAdapter.CmdletCancellationToken).Result;
             return response.Body.Select(vault => vault.Id).ToList();
+        }
+        public BackupResourceVaultConfigResource SetVaultProperty(string vaultName, string resourceGroupName,
+            BackupResourceVaultConfigResource param)
+        {
+            return BmsAdapter.Client.BackupResourceVaultConfigs.UpdateWithHttpMessagesAsync(
+                vaultName, resourceGroupName, param).Result.Body;
+        }
+
+        public BackupResourceVaultConfigResource GetVaultProperty(string vaultName, string resourceGroupName)
+        {
+            return BmsAdapter.Client.BackupResourceVaultConfigs.GetWithHttpMessagesAsync(
+                vaultName, resourceGroupName).Result.Body;
         }
     }
 }

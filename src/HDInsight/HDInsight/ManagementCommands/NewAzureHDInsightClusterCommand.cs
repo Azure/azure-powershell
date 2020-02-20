@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
@@ -44,6 +43,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         private string _defaultStorageAccountName;
         private string _defaultStorageAccountKey;
         private string _defaultStorageContainer;
+        private OSType? _osType;
         #endregion
 
         #region Input Parameter Definitions
@@ -130,6 +130,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     HiveMetastore = HiveMetastore,
                     OozieMetastore = OozieMetastore,
                     ObjectId = ObjectId,
+                    ApplicationId = ApplicationId,
                     AADTenantId = AadTenantId,
                     CertificateFileContents = CertificateFileContents,
                     CertificateFilePath = CertificateFilePath,
@@ -185,6 +186,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 CertificateFilePath = value.CertificateFilePath;
                 AadTenantId = value.AADTenantId;
                 ObjectId = value.ObjectId;
+                ApplicationId = value.ApplicationId;
                 CertificatePassword = value.CertificatePassword;
                 SecurityProfile = value.SecurityProfile;
                 DisksPerWorkerNode = value.DisksPerWorkerNode;
@@ -279,11 +281,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the version for a service in the cluster.")]
-        public Dictionary<string, string> ComponentVersion
-        {
-            get { return parameters.ComponentVersion; }
-            set { parameters.ComponentVersion = value; }
-        }
+        public Dictionary<string, string> ComponentVersion { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the virtual network guid for this HDInsight cluster.")]
         public string VirtualNetworkId
@@ -302,8 +300,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the type of operating system installed on cluster nodes.")]
         public OSType OSType
         {
-            get { return parameters.OSType; }
-            set { parameters.OSType = value; }
+            get { return _osType ?? OSType.Linux; }
+            set { _osType = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
@@ -331,6 +329,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "Gets or sets the Service Principal Object Id for accessing Azure Data Lake.")]
         public Guid ObjectId { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Application Id for accessing Azure Data Lake.")]
+        public Guid ApplicationId { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate file path for accessing Azure Data Lake.",
             ParameterSetName = CertificateFilePathSet)]
@@ -375,7 +376,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 parameters.RdpPassword = RdpCredential.Password.ConvertToString();
             }
 
-            if (OSType == OSType.Linux && SshCredential != null)
+            if (SshCredential != null)
             {
                 parameters.SshUserName = SshCredential.UserName;
                 if (!string.IsNullOrEmpty(SshCredential.Password.ConvertToString()))
@@ -434,7 +435,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     CertificateFileContents = File.ReadAllBytes(CertificateFilePath);
                 }
                 var servicePrincipal = new Management.HDInsight.Models.ServicePrincipal(
-                    GetApplicationId(), GetTenantId(AadTenantId), CertificateFileContents,
+                    GetApplicationId(ApplicationId), GetTenantId(AadTenantId), CertificateFileContents,
                     CertificatePassword);
 
                 parameters.Principal = servicePrincipal;
@@ -463,20 +464,20 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             if (DisksPerWorkerNode > 0)
             {
-                parameters.WorkerNodeDataDisksGroups = new List<DataDisksGroupProperties>()
+                parameters.WorkerNodeDataDisksGroups = new List<DataDisksGroups>()
                 {
-                    new DataDisksGroupProperties()
+                    new DataDisksGroups()
                     {
                         DisksPerNode = DisksPerWorkerNode
                     }
                 };
             }
 
-            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, parameters);
+            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, OSType, parameters);
 
             if (cluster != null)
             {
-                WriteObject(new AzureHDInsightCluster(cluster.Cluster));
+                WriteObject(new AzureHDInsightCluster(cluster));
             }
         }
 
@@ -504,20 +505,34 @@ namespace Microsoft.Azure.Commands.HDInsight
             return new Guid(tenantIdStr);
         }
 
-        //Get ApplicationId for the given ObjectId.
-        private Guid GetApplicationId()
+        //Get ApplicationId of Service Principal if user doesn't provide this parameter
+        private Guid GetApplicationId(Guid applicationId)
         {
+            if (applicationId != Guid.Empty)
+            {
+                return applicationId;
+            }
+
             GraphRbacManagementClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
                 DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
 
             graphClient.TenantID = DefaultProfile.DefaultContext.Tenant.Id.ToString();
 
-            Microsoft.Azure.Graph.RBAC.Version1_6.Models.ServicePrincipal sp = graphClient.ServicePrincipals.Get(ObjectId.ToString());
+            Microsoft.Azure.Graph.RBAC.Version1_6.Models.ServicePrincipal sp=null;
+            try
+            {
+                sp = graphClient.ServicePrincipals.Get(ObjectId.ToString());
+            }
+            catch(Microsoft.Azure.Graph.RBAC.Version1_6.Models.GraphErrorException e)
+            {
+                string errorMessage = e.Message + ". Please specify Application Id explicitly by providing ApplicationId parameter and retry.";
+                throw new Microsoft.Azure.Graph.RBAC.Version1_6.Models.GraphErrorException(errorMessage);
+            }
 
-            var applicationId = Guid.Empty;
-            Guid.TryParse(sp.AppId, out applicationId);
-            Debug.Assert(applicationId != Guid.Empty);
-            return applicationId;
+            var spApplicationId = Guid.Empty;
+            Guid.TryParse(sp.AppId, out spApplicationId);
+            Debug.Assert(spApplicationId != Guid.Empty);
+            return spApplicationId;
         }
     }
 }

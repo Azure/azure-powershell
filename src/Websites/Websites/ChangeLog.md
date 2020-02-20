@@ -18,9 +18,27 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixing issue where webapp Tags were getting deleted when migrating App to new ASPwhere webapp Tags were getting deleted when migrating App to new ASP
+
+## Version 1.6.0
+* Set-AzWebapp and Set-AzWebappSlot supports AlwaysOn, MinTls and FtpsState properties
+* Fixing issue where setting HttpsOnly along with changing AppservicePlan at the same time using the single Set-AzWebApp Command, was resetting HttpsOnly to default value
+
+## Version 1.5.1
+* Update references in .psd1 to use relative path
+
+## Version 1.5.0
+* Set-AzWebApp updating ASP of an app was failing
+
+## Version 1.4.2
+* Fixing issue where webapp Tags were getting deleted when migrating App to new ASP
 * Fixing the Publish-AzureWebapp to work across Linux and windows
 * Update example in `Get-AzWebAppPublishingProfile` reference documentation
+* Add support for working with Access Restrictions
+	- New cmdlets
+		- Get-AzWebAppAccessRestrictionConfig
+		- Update-AzWebAppAccessRestrictionConfig
+		- Add-AzWebAppAccessRestrictionRule
+		- Remove-AzWebAppAccessRestrictionRule
 
 ## Version 1.4.1
 * Fixed miscellaneous typos across module

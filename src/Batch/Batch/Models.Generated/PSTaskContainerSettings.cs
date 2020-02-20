@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSContainerRegistry registry;
         
-        public PSTaskContainerSettings(string imageName, string containerRunOptions = null, PSContainerRegistry registry = default(PSContainerRegistry))
+        public PSTaskContainerSettings(string imageName, string containerRunOptions = null, PSContainerRegistry registry = default(PSContainerRegistry), System.Nullable<Microsoft.Azure.Batch.Common.ContainerWorkingDirectory> workingDirectory = null)
         {
             Microsoft.Azure.Batch.ContainerRegistry registryOmObject = null;
             if ((registry != null))
             {
                 registryOmObject = registry.omObject;
             }
-            this.omObject = new Microsoft.Azure.Batch.TaskContainerSettings(imageName, containerRunOptions, registryOmObject);
+            this.omObject = new Microsoft.Azure.Batch.TaskContainerSettings(imageName, containerRunOptions, registryOmObject, workingDirectory);
         }
         
         internal PSTaskContainerSettings(Microsoft.Azure.Batch.TaskContainerSettings omObject)
@@ -81,6 +81,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.registry = new PSContainerRegistry(this.omObject.Registry);
                 }
                 return this.registry;
+            }
+        }
+        
+        public Microsoft.Azure.Batch.Common.ContainerWorkingDirectory? WorkingDirectory
+        {
+            get
+            {
+                return this.omObject.WorkingDirectory;
             }
         }
     }

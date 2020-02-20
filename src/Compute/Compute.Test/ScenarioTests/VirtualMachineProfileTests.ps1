@@ -73,21 +73,25 @@ function Test-VirtualMachineProfile
         { Add-AzVMDataDisk -VM $p -Name 'dataDisk' -Caching 'ReadOnly' -DiskSizeInGB $null -Lun 2 -CreateOption Empty -ManagedDiskId $managedDataDiskId -StorageAccountType Standard_LRS; } `
         "does not match with given managed disk ID";
 
-    $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB $null -Lun 2 -CreateOption Empty -ManagedDiskId $managedDataDiskId -StorageAccountType Standard_LRS;
+    $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB $null -Lun 2 -CreateOption Empty `
+                          -ManagedDiskId $managedDataDiskId -StorageAccountType Standard_LRS -DiskEncryptionSetId "enc_id1";
     Assert-AreEqual $managedDataDiskId $p.StorageProfile.DataDisks[2].ManagedDisk.Id;
     Assert-AreEqual "Standard_LRS" $p.StorageProfile.DataDisks[2].ManagedDisk.StorageAccountType;
     Assert-Null $p.StorageProfile.DataDisks[2].DiskSizeGB;
     Assert-AreEqual $false $p.StorageProfile.DataDisks[2].WriteAcceleratorEnabled;
+    Assert-AreEqual "enc_id1" $p.StorageProfile.DataDisks[2].ManagedDisk.DiskEncryptionSet.Id;
 
-    $p = Set-AzVMDataDisk -VM $p -Name 'testDataDisk3' -StorageAccountType Premium_LRS -WriteAccelerator;
+    $p = Set-AzVMDataDisk -VM $p -Name 'testDataDisk3' -StorageAccountType Premium_LRS -WriteAccelerator -DiskEncryptionSetId "enc_id2";
     Assert-AreEqual $managedDataDiskId $p.StorageProfile.DataDisks[2].ManagedDisk.Id;
     Assert-AreEqual "Premium_LRS" $p.StorageProfile.DataDisks[2].ManagedDisk.StorageAccountType;
     Assert-AreEqual $true $p.StorageProfile.DataDisks[2].WriteAcceleratorEnabled;
+    Assert-AreEqual "enc_id2" $p.StorageProfile.DataDisks[2].ManagedDisk.DiskEncryptionSet.Id;
 
     $p = Remove-AzVMDataDisk -VM $p -Name 'testDataDisk3';
 
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+    Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
     Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
     Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
@@ -131,11 +135,12 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $true $p.StorageProfile.OSDisk.WriteAcceleratorEnabled;
     Assert-Null $p.StorageProfile.OSDisk.DiffDiskSettings;
 
-    $p = Set-AzVMOsDisk -VM $p -ManagedDiskId $managedOsDiskId_1 -DiffDiskSetting "Local";
+    $p = Set-AzVMOsDisk -VM $p -ManagedDiskId $managedOsDiskId_1 -DiffDiskSetting "Local" -DiskEncryptionSetId "enc_id3";
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
     Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
     Assert-AreEqual $managedOsDiskId_1 $p.StorageProfile.OSDisk.ManagedDisk.Id;
+    Assert-AreEqual "enc_id3" $p.StorageProfile.OSDisk.ManagedDisk.DiskEncryptionSet.Id;
     Assert-Null $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
     Assert-AreEqual $false $p.StorageProfile.OSDisk.WriteAcceleratorEnabled;
     Assert-AreEqual "Local" $p.StorageProfile.OSDisk.DiffDiskSettings.Option;

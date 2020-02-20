@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             if (string.IsNullOrEmpty(this.AccountName))
             {

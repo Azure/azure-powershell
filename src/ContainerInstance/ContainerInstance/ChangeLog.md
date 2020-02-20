@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 
+## Version 1.0.3
+* Fixed parameter names used by example of New-AzContainerGroup
+
+## Version 1.0.2
+* Update references in .psd1 to use relative path
+
 ## Version 1.0.1
 * Fixed issue in the -Command parameter of New-AzContainerGroup which added a trailing empty argument
 

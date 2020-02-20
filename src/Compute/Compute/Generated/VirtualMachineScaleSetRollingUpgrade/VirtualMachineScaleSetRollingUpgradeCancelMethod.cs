@@ -84,10 +84,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string VMScaleSetName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Mandatory = false)]
-        [Parameter(
-            ParameterSetName = "FriendMethod",
             Mandatory = false)]
         public SwitchParameter Force { get; set; }
 

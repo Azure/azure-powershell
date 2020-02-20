@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public const string ExtensionDefaultVersion = "1.4";
 
         public string CommandToExecute { get; set; }
-        public string[] Uri { get; set; }
 
         public VirtualMachineCustomScriptExtensionContext(PSVirtualMachineExtension psExt)
         {
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
             ProvisioningState = psExt.ProvisioningState;
             Statuses = psExt.Statuses;
             CommandToExecute = (publicSettings == null) ? null : publicSettings.commandToExecute;
-            Uri = (publicSettings == null) ? null : publicSettings.fileUris;
         }
     }
 }

@@ -244,9 +244,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiVersionSetImportCrudTest()
+        {
+            RunPowerShellTest("ApiVersionSet-ImportCrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiVersionSetCrudTest()
         {
-            RunPowerShellTest("ApiVersionSet-CrudTest");
+            RunPowerShellTest("ApiVersionSet-SetCrudTest");
         }
 
         [Fact]

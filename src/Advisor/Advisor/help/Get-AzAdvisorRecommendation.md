@@ -80,7 +80,7 @@ Category of the recommendation
 Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Cost, HighAvailability, Performance, Security
+Accepted values: Cost, HighAvailability, Performance, Security, OperationalExcellence
 
 Required: False
 Position: Named

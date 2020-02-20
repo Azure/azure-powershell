@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -116,6 +117,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public long UploadSizeInBytes { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public bool? EncryptionSettingsEnabled { get; set; }
 
         [Parameter(
@@ -127,6 +133,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public KeyVaultAndKeyReference KeyEncryptionKey { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string DiskEncryptionSetId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerKey")]
+        public string EncryptionType { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -146,6 +163,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // EncryptionSettingsCollection
             EncryptionSettingsCollection vEncryptionSettingsCollection = null;
+
+            // Encryption
+            Encryption vEncryption = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -201,6 +221,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.SourceResourceId = this.SourceResourceId;
             }
 
+            if (this.IsParameterBound(c => c.UploadSizeInBytes))
+            {
+                if (vCreationData == null)
+                {
+                    vCreationData = new CreationData();
+                }
+                vCreationData.UploadSizeBytes = this.UploadSizeInBytes;
+            }
+
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
             {
                 if (vEncryptionSettingsCollection == null)
@@ -250,6 +279,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
+            if (this.IsParameterBound(c => c.DiskEncryptionSetId))
+            {
+                if (vEncryption == null)
+                {
+                    vEncryption = new Encryption();
+                }
+                vEncryption.DiskEncryptionSetId = this.DiskEncryptionSetId;
+            }
+
+            if (this.IsParameterBound(c => c.EncryptionType))
+            {
+                if (vEncryption == null)
+                {
+                    vEncryption = new Encryption();
+                }
+                vEncryption.Type = this.EncryptionType;
+            }
+
             var vDisk = new PSDisk
             {
                 Zones = this.IsParameterBound(c => c.Zone) ? this.Zone : null,
@@ -263,6 +310,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Sku = vSku,
                 CreationData = vCreationData,
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
+                Encryption = vEncryption,
             };
 
             WriteObject(vDisk);

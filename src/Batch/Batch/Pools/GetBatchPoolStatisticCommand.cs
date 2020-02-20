@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Alias("Get-AzBatchPoolStatistics")]
     public class GetBatchPoolStatisticCommand : BatchObjectModelCmdletBase
     {
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             PSPoolStatistics poolStatistics = BatchClient.GetAllPoolsLifetimeStatistics(this.BatchContext, this.AdditionalBehaviors);
             WriteObject(poolStatistics);

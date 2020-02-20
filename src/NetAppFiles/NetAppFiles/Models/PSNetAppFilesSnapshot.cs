@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <remarks>
         /// The creation date of the snapshot
         /// </remarks>
-        public System.DateTime? CreationDate { get; set; }
+        public System.DateTime? Created { get; set; }
 
         /// <summary>
         /// Gets azure lifecycle management

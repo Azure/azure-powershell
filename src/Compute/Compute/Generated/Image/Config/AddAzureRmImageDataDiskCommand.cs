@@ -81,6 +81,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string ManagedDiskId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string DiskEncryptionSetId { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Image", "Add"))
@@ -121,6 +126,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // ManagedDisk
                 vDataDisks.ManagedDisk = new SubResource();
                 vDataDisks.ManagedDisk.Id = this.ManagedDiskId;
+            }
+            if (this.IsParameterBound(c => c.DiskEncryptionSetId))
+            {
+                // DiskEncryptionSet
+                vDataDisks.DiskEncryptionSet = new DiskEncryptionSetParameters();
+                vDataDisks.DiskEncryptionSet.Id = this.DiskEncryptionSetId;
             }
             this.Image.StorageProfile.DataDisks.Add(vDataDisks);
             WriteObject(this.Image);

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignmentByFile, Mandatory = true, HelpMessage = ParameterHelpMessages.BlueprintObject)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignmentByFile, Mandatory = false, HelpMessage = ParameterHelpMessages.BlueprintObject)]
         [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignment, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.BlueprintObject)]
         [ValidateNotNull]
         public PSBlueprintBase Blueprint { get; set; }
@@ -153,8 +153,15 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                 // Register Blueprint RP
                                 RegisterBlueprintRp(subscription);
 
-                                if (!this.IsParameterBound(c => c.UserAssignedIdentity))
+                                if (!IsUserAssignedIdentity(assignmentObject.Identity))
                                 {
+                                    // If user assigned identity is defined as the identity in the assignment
+                                    // we consider the user assigned MSI, otherwise system assigned MSI.
+                                    //
+                                    // Assign owner permission to Blueprint SPN only if assignment is being done using
+                                    // System assigned identity.
+                                    // This is a no-op for user assigned identity.
+
                                     var spnObjectId = GetBlueprintSpn(scope, Name);
                                     AssignOwnerPermission(subscription, spnObjectId);
                                 }

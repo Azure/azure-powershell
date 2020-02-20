@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.3
+* Updated SDK to 7.0
+* Improved error message when server responses empty body
+
+## Version 1.2.2
+* Update references in .psd1 to use relative path
+
 ## Version 1.2.1
 * Fixed miscellaneous typos across module
 

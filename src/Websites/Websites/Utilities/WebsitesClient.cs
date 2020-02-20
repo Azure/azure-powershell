@@ -111,6 +111,12 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 webSiteToUpdate = siteEnvelope;
             }
 
+            // make sure the serverfarm ID is nt overwritten to the old value
+            if (appServicePlan != null)
+            {
+                webSiteToUpdate.ServerFarmId = appServicePlan;
+            }
+
             string qualifiedSiteName;
             if (CmdletHelpers.ShouldUseDeploymentSlot(webAppName, slotName, out qualifiedSiteName))
             {

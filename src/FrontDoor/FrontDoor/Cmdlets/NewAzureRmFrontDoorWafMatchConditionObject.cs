@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Match Variable. 
         /// Possible values include: 'RemoteAddr', 'RequestMethod', 'QueryString', 'PostArgs',
-        /// 'RequestUri', 'RequestHeader', 'RequestBody'
+        /// 'RequestUri', 'RequestHeader', 'RequestBody', 'SocketAddr'
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Match Variable. Possible values include: 'RemoteAddr', 'RequestMethod', 'QueryString', 'PostArgs','RequestUri', 'RequestHeader', 'RequestBody'")]
-        [PSArgumentCompleter("RemoteAddr", "RequestMethod", "QueryString", "PostArgs", "RequestUri", "RequestHeader", "RequestBody")]
+        [Parameter(Mandatory = true, HelpMessage = "Match Variable. Possible values include: 'RemoteAddr', 'RequestMethod', 'QueryString', 'PostArgs','RequestUri', 'RequestHeader', 'RequestBody', 'SocketAddr'")]
+        [PSArgumentCompleter("RemoteAddr", "RequestMethod", "QueryString", "PostArgs", "RequestUri", "RequestHeader", "RequestBody", "SocketAddr")]
         public string MatchVariable { get; set; }
 
         /// <summary>

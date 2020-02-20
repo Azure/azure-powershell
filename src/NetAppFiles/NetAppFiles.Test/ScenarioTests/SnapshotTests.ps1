@@ -30,7 +30,7 @@ function Test-SnapshotCrud
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
     $subnetName = "default"
     $standardPoolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -63,6 +63,8 @@ function Test-SnapshotCrud
         # create two snapshots and check
         $retrieveSn = New-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName1 -FileSystemId $retrievedVolume.FileSystemId
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrieveSn.Name
+        # check created date has been populated
+        Assert-NotNull $retrieveSn.Created
 
         # one without using the filesystem id
         $retrieveSn = New-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName2
@@ -115,7 +117,7 @@ function Test-SnapshotPipelines
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"

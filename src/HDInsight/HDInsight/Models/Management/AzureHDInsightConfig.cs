@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public Guid ObjectId { get; set; }
 
         /// <summary>
+        /// Gets Application id of the service principal. 
+        /// </summary>
+        public Guid ApplicationId { get; set; }
+
+        /// <summary>
         /// Gets the file path of the client certificate file contents associated with the service principal.
         /// </summary>
         public byte[] CertificateFileContents { get; set; }

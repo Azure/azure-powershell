@@ -19,7 +19,8 @@ New-AzVmssIpConfig [[-Name] <String>] [[-Id] <String>] [[-SubnetId] <String>]
  [[-LoadBalancerInboundNatPoolsId] <String[]>] [-Primary] [-PrivateIPAddressVersion <String>]
  [-PublicIPAddressConfigurationName <String>] [-PublicIPAddressConfigurationIdleTimeoutInMinutes <Int32>]
  [-DnsSetting <String>] [-IpTag <VirtualMachineScaleSetIpTag[]>] [-PublicIPPrefix <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublicIPAddressVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateIPAddressVersion
-Specify the ip configuration is either IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
+Specify the IP configuration for private IP address.  Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
 
 ```yaml
 Type: System.String
@@ -229,6 +230,21 @@ The publicIP address configuration name.
 Type: System.String
 Parameter Sets: (All)
 Aliases: PublicIPAddressName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicIPAddressVersion
+Specify the IP configuration for public IP address.  Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

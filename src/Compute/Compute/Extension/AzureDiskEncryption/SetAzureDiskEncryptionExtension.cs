@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Properties;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
@@ -313,6 +314,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                       ErrorCategory.InvalidResult,
                                                       null));
             }
+            //encryption settings object to clear out encryption settings before updating
+            DiskEncryptionSettings resetEncryptionSettings = new DiskEncryptionSettings();
+            resetEncryptionSettings.Enabled = false;
+            resetEncryptionSettings.DiskEncryptionKey = null;
+            resetEncryptionSettings.KeyEncryptionKey = null;
 
             DiskEncryptionSettings encryptionSettings = new DiskEncryptionSettings();
             encryptionSettings.Enabled = true;
@@ -325,6 +331,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 encryptionSettings.KeyEncryptionKey.SourceVault = new SubResource(this.KeyEncryptionKeyVaultId);
                 encryptionSettings.KeyEncryptionKey.KeyUrl = this.KeyEncryptionKeyUrl;
             }
+
             vmParameters.StorageProfile.OsDisk.EncryptionSettings = encryptionSettings;
             var parameters = new VirtualMachine
             {
@@ -351,14 +358,35 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
             else
             {
-
-                // stop-update-start
+                // stop-clear-update-start
                 // stop vm
                 this.ComputeClient.ComputeManagementClient.VirtualMachines
                     .DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter()
                     .GetResult();
 
-                // update vm
+                // first update vm call to clear encryption settings
+                vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
+                this.ResourceGroupName, this.VMName));
+                vmParameters.StorageProfile.OsDisk.EncryptionSettings = resetEncryptionSettings;
+                parameters = new VirtualMachine
+                {
+                    DiagnosticsProfile = vmParameters.DiagnosticsProfile,
+                    HardwareProfile = vmParameters.HardwareProfile,
+                    StorageProfile = vmParameters.StorageProfile,
+                    NetworkProfile = vmParameters.NetworkProfile,
+                    OsProfile = vmParameters.OsProfile,
+                    Plan = vmParameters.Plan,
+                    AvailabilitySet = vmParameters.AvailabilitySet,
+                    Location = vmParameters.Location,
+                    Tags = vmParameters.Tags
+                };
+
+                updateResult = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName,
+                    vmParameters.Name,
+                    parameters).GetAwaiter().GetResult();
+
+                // second update vm call to set new encryption settings
                 vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
                 this.ResourceGroupName, this.VMName));
                 vmParameters.StorageProfile.OsDisk.EncryptionSettings = encryptionSettings;
@@ -541,9 +569,22 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
 
+                    var vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
+                        this.ResourceGroupName, VMName));
+
                     if (OperatingSystemTypes.Linux.Equals(currentOSType) && !SkipVmBackup)
                     {
-                        CreateVMBackupForLinx();
+                        if (vmParameters.StorageProfile.OsDisk.ManagedDisk != null)
+                        {
+                            ThrowTerminatingError(new ErrorRecord(new ArgumentException(string.Format(CultureInfo.CurrentUICulture, Resources.EnableDiskEncryptionMissingSkipVmBackup)),
+                                                          "InvalidArgument",
+                                                          ErrorCategory.InvalidArgument,
+                                                          null));
+                        }
+                        else
+                        {
+                            CreateVMBackupForLinx();
+                        }                        
                     }
 
                     VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse);
@@ -552,23 +593,23 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                                       new DiskEncryptionSettings { Enabled = false };
 
                     // Single Pass
-                    //      newer model, supported by newer extension versions and host functionality 
+                    //      newer model, supported by newer extension versions and host functionality
                     //      if SinglePassParameterSet is used, cmdlet will default to newer extension version
                     //      [first and only pass]
                     //          only one enable extension call will be issued from the cmdlet n
-                    //          No AD identity information or protected settings will be passed to the extension 
-                    //          Host performs the necessary key vault operations and vm model updates 
+                    //          No AD identity information or protected settings will be passed to the extension
+                    //          Host performs the necessary key vault operations and vm model updates
                     // Dual Pass
-                    //      older model, supported by older extension versions  
+                    //      older model, supported by older extension versions
                     //      if an AD ParameterSet is used, cmdlet will default to older extension version
-                    //      [first pass] 
+                    //      [first pass]
                     //          AD identity information is passed into the VM via protected settings of the extension
-                    //          VM uses the AD identity to authenticate and perform key vault operations  
+                    //          VM uses the AD identity to authenticate and perform key vault operations
                     //          VM returns result of key vault operation to caller via the extension status message
                     //      [second pass]
                     //          powershell reads extension status message returned from first pass
                     //          updates VM model with encryption settings
-                    //          updates VM 
+                    //          updates VM
 
                     // First Pass
                     AzureOperationResponse<VirtualMachineExtension> firstPass = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
@@ -594,7 +635,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     }
                     else
                     {
-                        // Second pass 
+                        // Second pass
                         var secondPass = UpdateVmEncryptionSettings(encryptionSettingsBackup);
                         WriteObject(ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(secondPass));
                     }

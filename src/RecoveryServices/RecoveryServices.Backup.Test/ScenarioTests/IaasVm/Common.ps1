@@ -58,12 +58,18 @@ function Create-VM(
 		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
 		$Credential=New-Object PSCredential($UserName,$Password)
 
+		$tags = @{"MabUsed"="Yes"}
+		$tags += @{"Owner"="sarath"}
+		$tags += @{"Purpose"="PSTest"}
+		$tags += @{"AutoShutDown"="No"}
+		$tags += @{"DeleteBy"="05-2020"}
+
 		$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1 | `
 			Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $Credential | `
 			Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer `
 			-Skus 2016-Datacenter -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
 
-		New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vmConfig | Out-Null
+		New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vmConfig -Tag $tags | Out-Null
 		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
 	}
 
@@ -131,6 +137,11 @@ function Create-UnmanagedVM(
 		$vm = Set-AzVMSourceImage -VM $vm -PublisherName $pubName -Offer $offerName -Skus $skuName -Version "latest" 
 		$vm = Add-AzVMNetworkInterface -VM $vm -Id $NIC.Id 
 
+		$tags = @{"MabUsed"="Yes"}
+		$tags += @{"Owner"="sarath"}
+		$tags += @{"Purpose"="PSTest"}
+		$tags += @{"AutoShutDown"="No"}
+		$tags += @{"DeleteBy"="05-2020"}
 
 		$sa = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $saname
 		$diskName = "mydisk"
@@ -138,7 +149,7 @@ function Create-UnmanagedVM(
 
 		$vm = Set-AzVMOSDisk -VM $vm -Name $diskName -VhdUri $OSDiskUri -CreateOption fromImage
 
-		New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm | Out-Null
+		New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm -Tag $tags | Out-Null
 	}
 
 	return $vm

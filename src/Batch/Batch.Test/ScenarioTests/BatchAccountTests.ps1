@@ -47,7 +47,8 @@ function Test-BatchAccountEndToEnd
         Assert-AreEqual $location $createdAccount.Location
         Assert-AreEqual 1 $createdAccount.Tags.Count
         Assert-AreEqual $tagValue $createdAccount.Tags[$tagName]
-        Assert-True { $createdAccount.CoreQuota -gt 0 }
+        Assert-True { $createdAccount.DedicatedCoreQuota -gt 0 }
+        Assert-True { $createdAccount.LowPriorityCoreQuota -gt 0 }
         Assert-True { $createdAccount.PoolQuota -gt 0 }
         Assert-True { $createdAccount.ActiveJobAndJobScheduleQuota -gt 0 }
 
@@ -97,19 +98,19 @@ function Test-BatchAccountEndToEnd
 
 <#
 .SYNOPSIS
-Tests getting a list of Batch node agent skus
+Tests getting a list of Batch supported images
 #>
-function Test-GetBatchNodeAgentSkus
+function Test-GetBatchSupportedImage
 {
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Get the node agent skus
-    $nodeAgentSkus = Get-AzBatchNodeAgentSku -BatchContext $context
+    $supportedImages = Get-AzBatchSupportedImage -BatchContext $context
 
-    foreach($nodeAgentSku in $nodeAgentSkus)
+    foreach($supportedImage in $supportedImages)
     {
-        Assert-True { $nodeAgentSku.Id.StartsWith("batch.node") }
-        Assert-True { $nodeAgentSku.OSType -in "linux","windows" }
-        Assert-AreNotEqual $null $nodeAgentSku.VerifiedImageReferences
+        Assert-True { $supportedImage.NodeAgentSkuId.StartsWith("batch.node") }
+        Assert-True { $supportedImage.OSType -in "linux","windows" }
+        Assert-AreNotEqual $null $supportedImage.VerificationType
     }
 }

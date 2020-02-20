@@ -29,6 +29,12 @@ namespace PSModelGenerator
         private const string OmObject = "omObject";
         private static string AssemblyPath;
 
+        private static readonly Dictionary<string, Tuple<string, string>> OMToPSDictionaryConversionMappings = new Dictionary<string, Tuple<string, string>>()
+        {
+            {  "Microsoft.Azure.Batch.EnvironmentSetting",  new Tuple<string, string>("Name", "Value") },
+            {  "Microsoft.Azure.Batch.MetadataItem",  new Tuple<string, string>("Name", "Value") },
+        };
+
         private static readonly Dictionary<string, string> OMtoPSClassMappings = new Dictionary<string, string>()
         {
             {"Microsoft.Azure.Batch.AffinityInformation", "PSAffinityInformation"},
@@ -38,8 +44,11 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.AutoScaleRunError", "PSAutoScaleRunError"},
             {"Microsoft.Azure.Batch.AutoUserSpecification", "PSAutoUserSpecification"},
             {"Microsoft.Azure.Batch.ApplicationPackageReference", "PSApplicationPackageReference"},
+            {"Microsoft.Azure.Batch.AzureBlobFileSystemConfiguration", "PSAzureBlobFileSystemConfiguration"},
+            {"Microsoft.Azure.Batch.AzureFileShareConfiguration", "PSAzureFileShareConfiguration"},
             {"Microsoft.Azure.Batch.Certificate", "PSCertificate"},
             {"Microsoft.Azure.Batch.CertificateReference", "PSCertificateReference"},
+            {"Microsoft.Azure.Batch.CifsMountConfiguration", "PSCifsMountConfiguration"},
             {"Microsoft.Azure.Batch.CloudJob", "PSCloudJob"},
             {"Microsoft.Azure.Batch.CloudJobSchedule", "PSCloudJobSchedule"},
             {"Microsoft.Azure.Batch.CloudPool", "PSCloudPool"},
@@ -60,12 +69,14 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.ExitCodeMapping", "PSExitCodeMapping"},
             {"Microsoft.Azure.Batch.ExitOptions", "PSExitOptions"},
             {"Microsoft.Azure.Batch.FileProperties", "PSFileProperties"},
+            {"Microsoft.Azure.Batch.ImageInformation", "PSImageInformation"},
             {"Microsoft.Azure.Batch.ImageReference", "PSImageReference"},
             {"Microsoft.Azure.Batch.InboundEndpoint", "PSInboundEndpoint"},
             {"Microsoft.Azure.Batch.InboundNatPool", "PSInboundNatPool"},
             {"Microsoft.Azure.Batch.RemoteLoginSettings", "PSRemoteLoginSettings"},
             {"Microsoft.Azure.Batch.JobConstraints", "PSJobConstraints"},
             {"Microsoft.Azure.Batch.JobExecutionInformation", "PSJobExecutionInformation"},
+            {"Microsoft.Azure.Batch.JobNetworkConfiguration", "PSJobNetworkConfiguration"},
             {"Microsoft.Azure.Batch.JobManagerTask", "PSJobManagerTask"},
             {"Microsoft.Azure.Batch.JobPreparationAndReleaseTaskExecutionInformation", "PSJobPreparationAndReleaseTaskExecutionInformation"},
             {"Microsoft.Azure.Batch.JobPreparationTask", "PSJobPreparationTask"},
@@ -79,15 +90,15 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.JobStatistics", "PSJobStatistics"},
             {"Microsoft.Azure.Batch.LinuxUserConfiguration", "PSLinuxUserConfiguration"},
             {"Microsoft.Azure.Batch.MetadataItem", "PSMetadataItem"},
+            {"Microsoft.Azure.Batch.MountConfiguration", "PSMountConfiguration"},
             {"Microsoft.Azure.Batch.MultiInstanceSettings", "PSMultiInstanceSettings"},
             {"Microsoft.Azure.Batch.NameValuePair", "PSNameValuePair"},
             {"Microsoft.Azure.Batch.NetworkConfiguration", "PSNetworkConfiguration"},
+            {"Microsoft.Azure.Batch.NfsMountConfiguration", "PSNfsMountConfiguration"},
             {"Microsoft.Azure.Batch.NodeAgentInformation", "PSNodeAgentInformation"},
             {"Microsoft.Azure.Batch.NetworkSecurityGroupRule", "PSNetworkSecurityGroupRule"},
-            {"Microsoft.Azure.Batch.NodeAgentSku", "PSNodeAgentSku"},
             {"Microsoft.Azure.Batch.NodeCounts", "PSNodeCounts"},
             {"Microsoft.Azure.Batch.NodeFile", "PSNodeFile"},
-            {"Microsoft.Azure.Batch.OSDisk", "PSOSDisk"},
             {"Microsoft.Azure.Batch.OutputFile", "PSOutputFile"},
             {"Microsoft.Azure.Batch.OutputFileDestination", "PSOutputFileDestination"},
             {"Microsoft.Azure.Batch.OutputFileUploadOptions", "PSOutputFileUploadOptions"},
@@ -123,6 +134,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.UserIdentity", "PSUserIdentity"},
             {"Microsoft.Azure.Batch.VirtualMachineConfiguration", "PSVirtualMachineConfiguration"},
             {"Microsoft.Azure.Batch.WindowsConfiguration", "PSWindowsConfiguration"},
+            {"Microsoft.Azure.Batch.WindowsUserConfiguration", "PSWindowsUserConfiguration"},
         };
 
 
@@ -134,7 +146,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.CloudJobSchedule", new string[] {"CustomBehaviors"}},
             {"Microsoft.Azure.Batch.CloudPool", new string[] {"CustomBehaviors"}},
             // Hide file staging for now - users can use storage cmdlets to upload files and generate SAS tokens
-            {"Microsoft.Azure.Batch.CloudTask", new string[] {"CustomBehaviors","FilesToStage"}},
+            {"Microsoft.Azure.Batch.CloudTask", new string[] {"CustomBehaviors", "FilesToStage"}},
             {"Microsoft.Azure.Batch.ComputeNode", new string[] {"CustomBehaviors"}},
             {"Microsoft.Azure.Batch.ComputeNodeUser", new string[] {"CustomBehaviors"}},
             {"Microsoft.Azure.Batch.NodeFile", new string[] {"CustomBehaviors"}},
@@ -368,8 +380,9 @@ namespace PSModelGenerator
 
                 string propertyType = GetPropertyType(property.PropertyType);
                 bool isGenericCollection = property.PropertyType.IsGenericType &&
-                    (property.PropertyType.GetGenericTypeDefinition() == typeof(IList<>) || property.PropertyType.GetGenericTypeDefinition() == typeof(IEnumerable<>) ||
-                     property.PropertyType.GetGenericTypeDefinition() == typeof(IReadOnlyList<>));
+                    (property.PropertyType.GetGenericTypeDefinition() == typeof(IList<>) || 
+                    property.PropertyType.GetGenericTypeDefinition() == typeof(IEnumerable<>) ||
+                    property.PropertyType.GetGenericTypeDefinition() == typeof(IReadOnlyList<>));
 
                 CodeFieldReferenceExpression wrappedObject = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), OmObject);
                 CodePropertyReferenceExpression wrappedObjectProperty = new CodePropertyReferenceExpression(wrappedObject, property.Name);
@@ -398,20 +411,19 @@ namespace PSModelGenerator
 
                 if (isGenericCollection)
                 {
-                    // Collections are not kept in sync with the wrapped OM object. Cmdlets will need to sync them before sending
-                    // a request to the server.
+                    // Special handling for dict
                     Type argType = property.PropertyType.GetGenericArguments()[0];
+                    bool magicalDictConversion = propertyType == "IDictionary";
                     string wrapperArgType = argType.FullName.StartsWith("System") ? argType.FullName : OMtoPSClassMappings[argType.FullName];
-                    string wrapperListType = string.Format("List<{0}>", wrapperArgType);
-
+                    string wrapperType = magicalDictConversion ? string.Format("Dictionary<string, string>") : string.Format("List<{0}>", wrapperArgType);
+                    string variableName = magicalDictConversion ? "dict" : "list";
                     if (property.GetMethod != null && property.GetMethod.IsPublic)
                     {
-                        codeProperty.HasGet = true;
-                        // Build a list of wrapper objects
-                        const string listVariableName = "list";
-                        CodeVariableDeclarationStatement listDeclaration = new CodeVariableDeclarationStatement(wrapperListType, listVariableName);
-                        CodeVariableReferenceExpression listReference = new CodeVariableReferenceExpression(listVariableName);
-                        CodeAssignStatement initializeList = new CodeAssignStatement(listReference, new CodeObjectCreateExpression(wrapperListType));
+                        // Collections are not kept in sync with the wrapped OM object. Cmdlets will need to sync them before sending
+                        // a request to the server.
+                        CodeVariableDeclarationStatement declaration = new CodeVariableDeclarationStatement(wrapperType, variableName);
+                        CodeVariableReferenceExpression reference = new CodeVariableReferenceExpression(variableName);
+                        CodeAssignStatement initialize = new CodeAssignStatement(reference, new CodeObjectCreateExpression(wrapperType));
 
                         // CodeDom doesn't support foreach loops very well, so instead explicitly get the enumerator and loop on MoveNext() calls
                         const string enumeratorVariableName = "enumerator";
@@ -425,37 +437,40 @@ namespace PSModelGenerator
                         CodePropertyReferenceExpression enumeratorCurrent = new CodePropertyReferenceExpression(enumeratorReference, "Current");
 
                         // Fill the list by individually wrapping each item in the loop
-                        if (wrapperArgType.Contains("System"))
+                        if (magicalDictConversion)
                         {
-                            CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(listReference, "Add", enumeratorCurrent);
+                            var keyReference = new CodePropertyReferenceExpression(enumeratorCurrent, OMToPSDictionaryConversionMappings[argType.FullName].Item1);
+                            var valueReference = new CodePropertyReferenceExpression(enumeratorCurrent, OMToPSDictionaryConversionMappings[argType.FullName].Item2);
+                            CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(reference, "Add", keyReference, valueReference);
                             loopStatement.Statements.Add(addToList);
                         }
                         else
                         {
-                            CodeObjectCreateExpression createListItem = new CodeObjectCreateExpression(wrapperArgType, enumeratorCurrent);
-                            CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(listReference, "Add", createListItem);
-                            loopStatement.Statements.Add(addToList);
+                            // Fill the list by individually wrapping each item in the loop
+                            if (wrapperArgType.Contains("System"))
+                            {
+                                CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(reference, "Add", enumeratorCurrent);
+                                loopStatement.Statements.Add(addToList);
+                            }
+                            else
+                            {
+                                CodeObjectCreateExpression createListItem = new CodeObjectCreateExpression(wrapperArgType, enumeratorCurrent);
+                                CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(reference, "Add", createListItem);
+                                loopStatement.Statements.Add(addToList);
+                            }
                         }
-
                         // Initialize the backing field with the built list on first access of the property
-                        CodeAssignStatement assignStatement;
-                        if (property.PropertyType.GetGenericTypeDefinition() == typeof(IReadOnlyList<>))
-                        {
-                            CodeMethodInvokeExpression asReadOnlyList = new CodeMethodInvokeExpression(listReference, "AsReadOnly");
-                            assignStatement = new CodeAssignStatement(fieldReference, asReadOnlyList);
-                        }
-                        else
-                        {
-                            assignStatement = new CodeAssignStatement(fieldReference, listReference);
-                        }
+                        CodeAssignStatement assignStatement = new CodeAssignStatement(fieldReference, reference);
+
                         CodePrimitiveExpression nullExpression = new CodePrimitiveExpression(null);
                         CodeBinaryOperatorExpression fieldNullCheck = new CodeBinaryOperatorExpression(fieldReference, CodeBinaryOperatorType.IdentityEquality, nullExpression);
                         CodeBinaryOperatorExpression wrappedPropertyNullCheck = new CodeBinaryOperatorExpression(wrappedObjectProperty, CodeBinaryOperatorType.IdentityInequality, nullExpression);
                         CodeBinaryOperatorExpression condition = new CodeBinaryOperatorExpression(fieldNullCheck, CodeBinaryOperatorType.BooleanAnd, wrappedPropertyNullCheck);
-                        CodeConditionStatement ifBlock = new CodeConditionStatement(condition, listDeclaration, initializeList, enumeratorDeclaration, initializeEnumerator, loopStatement, assignStatement);
+                        CodeConditionStatement ifBlock = new CodeConditionStatement(condition, declaration, initialize, enumeratorDeclaration, initializeEnumerator, loopStatement, assignStatement);
                         codeProperty.GetStatements.Add(ifBlock);
                         codeProperty.GetStatements.Add(new CodeMethodReturnStatement(fieldReference));
                     }
+
                     if (property.SetMethod != null && property.SetMethod.IsPublic)
                     {
                         // Call the "set" on the OM object to ensure that constraints are enforced.
@@ -542,6 +557,11 @@ namespace PSModelGenerator
             {
                 Type argType = t.GetGenericArguments()[0];
 
+                if(OMToPSDictionaryConversionMappings.ContainsKey(argType.FullName))
+                {
+                    return "IDictionary";
+                }
+
                 string str = string.Format("IList<{0}>", GetPropertyType(argType));
                 return str;
             }
@@ -549,12 +569,22 @@ namespace PSModelGenerator
             {
                 Type argType = t.GetGenericArguments()[0];
 
+                if (OMToPSDictionaryConversionMappings.ContainsKey(argType.FullName))
+                {
+                    return "IDictionary";
+                }
+
                 string str = string.Format("IReadOnlyList<{0}>", GetPropertyType(argType));
                 return str;
             }
             else if (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IEnumerable<>))
             {
                 Type argType = t.GetGenericArguments()[0];
+
+                if (OMToPSDictionaryConversionMappings.ContainsKey(argType.FullName))
+                {
+                    return "IDictionary";
+                }
 
                 string str = string.Format("IEnumerable<{0}>", GetPropertyType(argType));
                 return str;

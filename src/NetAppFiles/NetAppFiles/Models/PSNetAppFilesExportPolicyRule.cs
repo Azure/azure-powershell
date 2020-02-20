@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public bool? Nfsv3 { get; set; }
 
         /// <summary>
-        /// Gets or sets allows NFSv4 protocol
+        /// Gets or sets allows NFSv41 protocol
         /// </summary>
-        public bool? Nfsv4 { get; set; }
+        public bool? Nfsv41 { get; set; }
 
         /// <summary>
         /// Gets or sets client ingress specification as comma separated string

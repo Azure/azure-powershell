@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Attestation.Models;
+
 namespace Microsoft.Azure.Commands.Attestation.Models
 {
     public class AttestationCreationParameters
@@ -19,5 +21,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         public string ProviderName { get; set; }
         public string ResourceGroupName { get; set; }
         public string AttestationPolicy { get; set; }
+
+        public JSONWebKeySet PolicySigningCertificates { get; set; }
     }
 }

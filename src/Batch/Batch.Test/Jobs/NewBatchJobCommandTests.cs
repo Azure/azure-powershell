@@ -137,12 +137,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
             cmdlet.Id = "job-id";
-            string applicationId = "foo";
+            string applicationName = "foo";
             string applicationVersion = "beta";
 
             cmdlet.JobManagerTask = new PSJobManagerTask { ApplicationPackageReferences = new[] 
             {
-                new PSApplicationPackageReference { ApplicationId = applicationId, Version = applicationVersion} ,
+                new PSApplicationPackageReference { ApplicationId = applicationName, Version = applicationVersion} ,
             }};
             
             // Don't go to the service on an Add CloudJob call
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
                 request =>
                     {
                         var applicationPackageReference = request.Parameters.JobManagerTask.ApplicationPackageReferences.First();
-                        Assert.Equal(applicationId, applicationPackageReference.ApplicationId);
+                        Assert.Equal(applicationName, applicationPackageReference.ApplicationId);
                         Assert.Equal(applicationVersion, applicationPackageReference.Version);
                     });
 

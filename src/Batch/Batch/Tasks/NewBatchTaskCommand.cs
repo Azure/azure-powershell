@@ -13,13 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
+using System.Management.Automation;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -53,16 +50,15 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
-        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
-        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet, Mandatory = true)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet, Mandatory = true)]
         public string CommandLine { get; set; }
 
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceFile")]
-        public IDictionary ResourceFiles { get; set; }
+        public PSResourceFile[] ResourceFiles { get; set; }
 
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
@@ -126,7 +122,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSTaskContainerSettings ContainerSettings { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             if (Tasks != null)
             {

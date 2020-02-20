@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Routing Weight", Target = ViewControl.Table)]
         public uint RoutingWeight { get; set; }
 
+        [Ps1Xml(Label = "Internet Security Enabled", Target = ViewControl.Table)]
+        public bool EnableInternetSecurity { get; set; }
+
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 

@@ -149,5 +149,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetAutoRollback");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetScaleInPolicy()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetScaleInPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAutoRepair()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAutoRepair");
+        }
     }
 }

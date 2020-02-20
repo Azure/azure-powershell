@@ -67,9 +67,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewayWebApplicationFirewallPolicy ToPsApplicationGatewayFirewallPolicy(WebApplicationFirewallPolicy firewallPolicy)
         {
             var psFirewallPolicy = NetworkResourceManagerProfile.Mapper.Map<PSApplicationGatewayWebApplicationFirewallPolicy>(firewallPolicy);
-
             psFirewallPolicy.Tag = TagsConversionHelper.CreateTagHashtable(firewallPolicy.Tags);
-
             return psFirewallPolicy;
         }
     }

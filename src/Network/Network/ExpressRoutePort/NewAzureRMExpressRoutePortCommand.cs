@@ -109,6 +109,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "User Assigned Identity for reading MacSec configuration")]
+        public PSManagedServiceIdentity Identity { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -128,6 +133,11 @@ namespace Microsoft.Azure.Commands.Network
                 Location = this.Location,
                 Links = this.Link?.ToList(),
             };
+
+            if (this.Identity != null)
+            {
+                vExpressRoutePort.Identity = this.Identity;
+            }
 
             var vExpressRoutePortModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRoutePort>(vExpressRoutePort);
             vExpressRoutePortModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);

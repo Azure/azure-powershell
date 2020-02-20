@@ -85,6 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                         cfg.CreateMap<MNM.PeeringServiceLocation, CNM.PSPeeringServiceLocation>();
                         cfg.CreateMap<MNM.PeeringServicePrefix, CNM.PSPeeringServicePrefix>();
                         cfg.CreateMap<MNM.PeeringServiceProvider, CNM.PSPeeringServiceProvider>();
+                        cfg.CreateMap<MNM.PeeringServicePrefixEvent, CNM.PSPeeringServicePrefixEvent>();
                         // CNM to MNM
                         cfg.CreateMap<CNM.PSBgpSession, MNM.BgpSession>();
                         cfg.CreateMap<CNM.PSDirectConnection, MNM.DirectConnection>();
@@ -107,6 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                         cfg.CreateMap<CNM.PSPeeringServiceLocation, MNM.PeeringServiceLocation>();
                         cfg.CreateMap<CNM.PSPeeringServicePrefix, MNM.PeeringServicePrefix>();
                         cfg.CreateMap<CNM.PSPeeringServiceProvider, MNM.PeeringServiceProvider>();
+                        cfg.CreateMap<CNM.PSPeeringServicePrefixEvent, MNM.PeeringServicePrefixEvent>();
                     });
             mapper = config.CreateMapper();
         }

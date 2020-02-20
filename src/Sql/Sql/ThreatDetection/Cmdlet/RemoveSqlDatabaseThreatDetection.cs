@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// Clears advanced threat protection on a specific database.
     /// </summary>
-    [GenericBreakingChange("Remove-AzSqlDatabaseThreatDetectionPolicy alias will be removed in an upcoming breaking change release", "2.0.0")]
-    [Cmdlet("Clear", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAdvancedThreatProtectionSettings", SupportsShouldProcess = true),OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
-    [Alias("Remove-AzSqlDatabaseThreatDetectionPolicy")]
+    [GenericBreakingChange("Remove-AzSqlDatabaseAdvancedThreatProtectionSettings alias will be removed in an upcoming breaking change release", "3.0.0")]
+    [Cmdlet("Clear", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAdvancedThreatProtectionSetting", SupportsShouldProcess = true),OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
+    [Alias("Remove-AzSqlDatabaseAdvancedThreatProtectionSettings")]
     public class AzureRmSqlDatabaseThreatDetection : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>

@@ -14,8 +14,8 @@ Deletes an eventhub consumergroup.
 
 ```
 Remove-AzIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
- [-EventHubEndpointName] <String> [-EventHubConsumerGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EventHubConsumerGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Deletes an eventhub consumergroup.
 
 ### Example 1 Remove eventhub consumergroup from the telemetry eventhub
 ```
-PS C:\> Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events" -EventHubConsumerGroupName myconsumergroup
+PS C:\> Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubConsumerGroupName myconsumergroup
 ```
 
 Removes the consumergroup named myconsumergroup from the IotHub named "myiothub"
@@ -56,26 +56,9 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EventHubEndpointName
-EventHub Endpoint Name.
-Possible values events, operationsMonitoringEvents
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: events, operationsMonitoringEvents
-
-Required: True
 Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

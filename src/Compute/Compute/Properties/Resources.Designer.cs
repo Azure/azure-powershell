@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -541,6 +541,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks. For more information, see https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux. .
+        /// </summary>
+        internal static string EnableDiskEncryptionMissingSkipVmBackup {
+            get {
+                return ResourceManager.GetString("EnableDiskEncryptionMissingSkipVmBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error occurred when choosing existing standard storage account for boot diagnostics: {0}.
         /// </summary>
         internal static string ErrorDuringChoosingStandardStorageAccount {
@@ -573,6 +582,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         internal static string InvalidImageName {
             get {
                 return ResourceManager.GetString("InvalidImageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linux configuration is already specified.  This cmdlet requires a Windows configuration..
+        /// </summary>
+        internal static string LinuxConfigurationSpecified {
+            get {
+                return ResourceManager.GetString("LinuxConfigurationSpecified", resourceCulture);
             }
         }
         
@@ -1275,6 +1293,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are more than {0} VMs in the result.  Only the statuses of 100 VMs are shown to avoid throttling.  To get the actual status of each VM, please provide a VM name with -Status parameter..
+        /// </summary>
+        internal static string VirtualMachineTooManyVMsWithStatusParameter {
+            get {
+                return ResourceManager.GetString("VirtualMachineTooManyVMsWithStatusParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use &apos;{0}&apos; to connect to the VM..
         /// </summary>
         internal static string VirtualMachineUseConnectionString {
@@ -1307,6 +1334,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         internal static string VmssUseConnectionString {
             get {
                 return ResourceManager.GetString("VmssUseConnectionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows configuration is already specified.  This cmdlet requires a Linux configuration..
+        /// </summary>
+        internal static string WindowsConfigurationSpecified {
+            get {
+                return ResourceManager.GetString("WindowsConfigurationSpecified", resourceCulture);
             }
         }
     }

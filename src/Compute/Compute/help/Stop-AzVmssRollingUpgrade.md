@@ -12,16 +12,9 @@ Cancels the current virtual machine scale set rolling upgrade.
 
 ## SYNTAX
 
-### DefaultParameter (Default)
 ```
 Stop-AzVmssRollingUpgrade [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### FriendMethod
-```
-Stop-AzVmssRollingUpgrade [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +81,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -103,7 +96,7 @@ The name of the VM scale set.
 
 ```yaml
 Type: System.String
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases: Name
 
 Required: True

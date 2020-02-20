@@ -16,16 +16,16 @@ Creates an Azure VirtualHub resource.
 ```
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtualWan> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
- [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RouteTable <PSVirtualHubRouteTable[]>] [-Tag <Hashtable>] [-Sku <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceId
 ```
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWanId <String> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
- [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RouteTable <PSVirtualHubRouteTable[]>] [-Tag <Hashtable>] [-Sku <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,9 @@ Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG
 AddressPrefix             : 10.0.1.0/24
 RouteTable                : 
 VirtualNetworkConnections : {}
+RouteTables                           : {}
 Location                  : West US
+Sku                  : Standard
 Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 ```
@@ -68,7 +70,9 @@ Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG
 AddressPrefix             : 10.0.1.0/24
 RouteTable                : 
 VirtualNetworkConnections : {}
+RouteTables                           : {}
 Location                  : West US
+Sku                  : Standard
 Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 ```
@@ -94,7 +98,9 @@ Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG
 AddressPrefix             : 10.0.1.0/24
 RouteTable                : Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable
 VirtualNetworkConnections : {}
+RouteTables                           : {}
 Location                  : West US
+Sku                  : Standard
 Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 ```
@@ -109,7 +115,7 @@ This example is similar to Example 2, but also attaches a route table to the vir
 The address space string for this virtual hub.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +130,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +145,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -154,7 +160,7 @@ Accept wildcard characters: False
 The hub virtual network connections associated with this Virtual Hub.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection[]
+Type: PSHubVirtualNetworkConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +175,7 @@ Accept wildcard characters: False
 location.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +190,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, VirtualHubName
 
@@ -199,7 +205,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +220,22 @@ Accept wildcard characters: False
 The route table associated with this Virtual Hub.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable
+Type: PSVirtualHubRouteTable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Sku
+The sku of the Virtual Hub.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -229,7 +250,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -244,7 +265,7 @@ Accept wildcard characters: False
 The virtual wan object this hub is linked to.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
+Type: PSVirtualWan
 Parameter Sets: ByVirtualWanObject
 Aliases:
 
@@ -259,7 +280,7 @@ Accept wildcard characters: False
 The id of virtual wan object this hub is linked to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualWanResourceId
 Aliases:
 
@@ -274,7 +295,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -290,7 +311,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -302,7 +323,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

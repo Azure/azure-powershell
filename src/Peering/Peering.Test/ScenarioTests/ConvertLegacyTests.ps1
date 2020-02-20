@@ -18,14 +18,14 @@ GetLocationKindExchange
 function Test-ConvertLegacyKindExchangeAshburn {
     try {
         #must be hard coded asn because they have legacy items.
-        $peerAsn = makePeerAsn 12129;
-        $name = getPeeringVariable "Name" "AS12129_Ashburn_Exchange"
+        $peerAsn = makePeerAsn 11164;
+        $name = getPeeringVariable "Name" "AS11164_Ashburn_Exchange"
         $rg = getPeeringVariable "ResourceGroupName" "Building40"
         $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Ashburn 
 		Assert-NotNull $peerAsn.Id
         Assert-NotNull $legacy
         Assert-True { $legacy.Count -ge 1 }
-        $legacy | New-AzPeering -ResourceGroupName $rg -Name $name -PeerAsnResourceId $peerAsn.Id
+        $peering = $legacy | New-AzPeering -ResourceGroupName $rg -Name $name -PeerAsnResourceId $peerAsn.Id -Tag @{ "tfs_813288" = "Approved" }
         $peering = Get-AzPeering -ResourceGroupName $rg -Name $name
         Assert-NotNull $peering
     }

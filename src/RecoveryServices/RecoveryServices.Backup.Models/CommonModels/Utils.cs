@@ -75,7 +75,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class IdUtils
     {
-        static readonly string UriFormat = @"/Subscriptions/(?<subscriptionsId>.+)/resourceGroups" +
+        static readonly string UriFormat = @"/(Subscriptions|subscriptions)/(?<subscriptionsId>.+)"+
+            "/(resourceGroups|resourcegroups)" +
             @"/(?<resourceGroupName>.+)/providers/(?<providersName>.+)" +
             "/vaults/(?<BackupVaultName>.+)/backupFabrics/(?<BackupFabricName>.+)" +
             "/protectionContainers/(?<containersName>.+)";

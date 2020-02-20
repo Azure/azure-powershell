@@ -26,7 +26,7 @@ Get-AzPeeringLocation [-Kind] <String> [-PeeringDbFacilityId <Int32>]
 
 ### LocationByDirectType
 ```
-Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DirectPeeringType] <String>
+Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DirectPeeringType <String>]
  [-PeeringDbFacilityId <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -117,8 +117,8 @@ Type: System.String
 Parameter Sets: LocationByDirectType
 Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

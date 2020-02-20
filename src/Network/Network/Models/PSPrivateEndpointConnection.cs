@@ -41,6 +41,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSPrivateLinkServiceConnectionState PrivateLinkServiceConnectionState { get; set; }
 
+        public string LinkIdentifier { get; set; }
+
         [JsonIgnore]
         public string PrivateEndpointText
         {

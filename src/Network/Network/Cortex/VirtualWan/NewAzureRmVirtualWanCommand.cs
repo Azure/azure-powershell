@@ -70,6 +70,12 @@ namespace Microsoft.Azure.Commands.Network
         public Hashtable Tag { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "The type of the Virtual Wan.")]
+        [PSArgumentCompleter("Basic", "Standard")]
+        public string VirtualWANType { get; set; }
+
+        [Parameter(
             Mandatory = false, 
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -101,6 +107,11 @@ namespace Microsoft.Azure.Commands.Network
             virtualWan.Location = this.Location;
             virtualWan.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.IsPresent;
             virtualWan.AllowVnetToVnetTraffic = this.AllowVnetToVnetTraffic.IsPresent;
+
+            if(string.IsNullOrWhiteSpace(this.VirtualWANType))
+            {
+                virtualWan.VirtualWANType = "Standard";
+            }
 
             var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWAN>(virtualWan);
             virtualWanModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);

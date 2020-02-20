@@ -54,6 +54,12 @@ namespace Microsoft.Azure.Commands.Network
         public PSIpsecPolicy[] IpsecPolicies { get; set; }
 
         [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A list of traffic selector policies.")]
+        public PSTrafficSelectorPolicy[] TrafficSelectorPolicy { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "A hashtable which represents resource tags.")]
@@ -96,6 +102,11 @@ namespace Microsoft.Azure.Commands.Network
                     if (this.IpsecPolicies != null)
                     {
                         this.VirtualNetworkGatewayConnection.IpsecPolicies = this.IpsecPolicies?.ToList();
+                    }
+
+                    if (this.TrafficSelectorPolicy != null)
+                    {
+                        this.VirtualNetworkGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
                     }
 
                     var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);

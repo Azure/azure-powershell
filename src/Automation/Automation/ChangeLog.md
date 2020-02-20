@@ -18,8 +18,21 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.6
+* Fixed typo in Example 1 in reference documentation for `New-AzAutomationSoftwareUpdateConfiguration`
+
+## Version 1.3.5
+* Update references in .psd1 to use relative path
+
+## Version 1.3.4
+
+* Fixed New-AzureAutomationSoftwareUpdateConfiguration cmdlet for Linux reboot setting parameter. 
+
+## Version 1.3.3
 * Fixed example typo in reference documentation for `Register-AzAutomationDscNode`
 * Added clarification on OS restriction to Register-AzAutomationDSCNode
+* Fixed Start-AzAutomationRunbook cmdlet Null reference exception for -Wait option.
 
 ## Version 1.3.2
 * Fixed miscellaneous typos across module

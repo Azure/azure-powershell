@@ -21,6 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         public const string Verified = "Verified";
         public const string Failed = "Failed";
         public const string Pending = "Pending";
+        public const string Warning = "Warning";
         public const string Unknown = "Unknown";
     }
 }

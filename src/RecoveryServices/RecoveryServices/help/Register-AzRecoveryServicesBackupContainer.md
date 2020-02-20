@@ -8,7 +8,7 @@ schema: 2.0.0
 # Register-AzRecoveryServicesBackupContainer
 
 ## SYNOPSIS
-This command allows Azure Backup to convert the ‘Resource’ to a ‘Backup Container’ which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
+This command allows Azure Backup to convert the ï¿½Resourceï¿½ to a ï¿½Backup Containerï¿½ which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ The cmdlet registers an Azure VM for AzureWorkloads with specific workloadType.
 
 ### Example 1
 ```
-PS C:\> Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType “MSSQL” -BackupManagementType “AzureWorkload”
+PS C:\> Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType ï¿½MSSQLï¿½ -BackupManagementType ï¿½AzureWorkloadï¿½
 ```
 
 The cmdlet registers an azure VM for the workload MSSQL.
@@ -179,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

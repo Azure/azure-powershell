@@ -59,7 +59,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 resourceCulture = value;
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to discover FileShare {0} under {1}. Please make sure names are correct and FileShare is not deleted.
+        /// </summary>
+        public static string AFSDiscoveryFailure
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSDiscoveryFailure", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Handling aggregate exception.
         /// </summary>
@@ -463,7 +474,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("FinalOperationStatus", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        /// Looks up a localized string similar to A friendly name might return multiple items since it is not unique. To get a unique item, please use the -name parameter. Pass the value displayed under the name column when displayed as a table or use the name field in the PS object
+        /// </summary>
+        public static string FriendlyNamePassedWarning
+        {
+            get {
+                return ResourceManager.GetString("FriendlyNamePassedWarning", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Name parameter will be deprecated. Please use FriendlyName instead for filtering by name..
         /// </summary>
@@ -1165,7 +1186,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("SetVaultContextFirst", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Undo-deletion is only supported for AzureVMs. This method is not supported for other workloads.
+        /// </summary>
+        public static string SoftdeleteNotImplementedException
+        {
+            get
+            {
+                return ResourceManager.GetString("SoftdeleteNotImplementedException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to For Azure File share, Storage account  name can not be empty.
         /// </summary>
@@ -1174,7 +1206,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("StorageAccountNameShouldNotBeEmpty", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Target Container parameter is required for this operation.
+        /// </summary>
+        public static string TargetContainerRequiredException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetContainerRequiredException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Tracking operation status URL for completion:.
         /// </summary>

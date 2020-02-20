@@ -30,9 +30,8 @@ New-AzPeering -InputObject <PSPeering> [-ResourceGroupName] <String> [-Name] <St
 ### Direct
 ```
 New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] <String>
- [-PeerAsnResourceId] <String> -DirectConnection <PSDirectConnection[]> [-UseForPeeringService]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PeerAsnResourceId] <String> -DirectConnection <PSDirectConnection[]> -Sku <String> [-Tag <Hashtable>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -271,27 +270,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-The tags to associate with the Microsoft Peering Service.
+### -Sku
+Select Basic_Direct_Free or Premium_Direct_Free unless explicitly told to select another option.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Direct
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UseForPeeringService
-Enable for use with Microsoft Peering Service (MPS).
+### -Tag
+The tags to associate with the Microsoft Peering Service.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Direct
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False

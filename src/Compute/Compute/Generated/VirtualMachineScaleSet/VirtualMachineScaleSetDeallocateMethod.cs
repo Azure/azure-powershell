@@ -115,10 +115,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string[] InstanceId { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Mandatory = false)]
-        [Parameter(
-            ParameterSetName = "FriendMethod",
             Mandatory = false)]
         public SwitchParameter Force { get; set; }
 

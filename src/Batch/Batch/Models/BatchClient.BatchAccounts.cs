@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="maxCount">The number of results.</param>
         /// <param name="additionalBehaviors">Additional client behaviors to perform.</param>
         /// <returns>The node agent SKUs matching the specified filter.</returns>
-        public IEnumerable<PSNodeAgentSku> ListNodeAgentSkus(
+        public IEnumerable<PSImageInformation> ListSupportedImages(
             BatchAccountContext context,
             string filterClause = default(string),
             int maxCount = default(int),
@@ -244,10 +244,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
             PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
             ODATADetailLevel filterLevel = new ODATADetailLevel(filterClause: filterClause);
 
-            IPagedEnumerable<NodeAgentSku> nodeAgentSkus = poolOperations.ListNodeAgentSkus(filterLevel, additionalBehaviors);
-            Func<NodeAgentSku, PSNodeAgentSku> mappingFunction = p => { return new PSNodeAgentSku(p); };
+            IPagedEnumerable<ImageInformation> supportedImages = poolOperations.ListSupportedImages(filterLevel, additionalBehaviors);
+            Func<ImageInformation, PSImageInformation> mappingFunction = p => { return new PSImageInformation(p); };
 
-            return PSPagedEnumerable<PSNodeAgentSku, NodeAgentSku>.CreateWithMaxCount(nodeAgentSkus, mappingFunction,
+            return PSPagedEnumerable<PSImageInformation, ImageInformation>.CreateWithMaxCount(supportedImages, mappingFunction,
                 maxCount, () => WriteVerbose(string.Format(Resources.MaxCount, maxCount)));
         }
 

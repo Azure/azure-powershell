@@ -59,6 +59,16 @@ namespace Microsoft.Azure.Commands.Network
         public string SslCertificateId { get; set; }
 
         [Parameter(
+           ParameterSetName = "SetByResourceId",
+           HelpMessage = "FirewallPolicyId")]
+        public string FirewallPolicyId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "SetByResource",
+            HelpMessage = "FirewallPolicy")]
+        public PSApplicationGatewayWebApplicationFirewallPolicy FirewallPolicy { get; set; }
+
+        [Parameter(
                 ParameterSetName = "SetByResource",
                 HelpMessage = "Application gateway SslCertificate")]
         [ValidateNotNullOrEmpty]
@@ -68,6 +78,11 @@ namespace Microsoft.Azure.Commands.Network
                HelpMessage = "Host name")]
         [ValidateNotNullOrEmpty]
         public string HostName { get; set; }
+
+        [Parameter(
+            HelpMessage = "Host names")]
+        [ValidateNotNullOrEmpty]
+        public string[] HostNames { get; set; }
 
         [Parameter(
                HelpMessage = "RequireServerNameIndication")]
@@ -97,13 +112,20 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.FrontendIPConfigurationId = this.FrontendIPConfiguration.Id;
                 }
+
                 if (FrontendPort != null)
                 {
                     this.FrontendPortId = this.FrontendPort.Id;
                 }
+
                 if (SslCertificate != null)
                 {
                     this.SslCertificateId = this.SslCertificate.Id;
+                }
+
+                if (FirewallPolicy != null)
+                {
+                    this.FirewallPolicyId = this.FirewallPolicy.Id;
                 }
             }
         }
@@ -145,6 +167,17 @@ namespace Microsoft.Azure.Commands.Network
             {
                 httpListener.SslCertificate = new PSResourceId();
                 httpListener.SslCertificate.Id = this.SslCertificateId;
+            }
+
+            if (!string.IsNullOrEmpty(this.FirewallPolicyId))
+            {
+                httpListener.FirewallPolicy = new PSResourceId();
+                httpListener.FirewallPolicy.Id = this.FirewallPolicyId;
+            }
+
+            if (this.HostNames != null)
+            {
+                httpListener.HostNames = this.HostNames?.ToList();
             }
 
             if (this.CustomErrorConfiguration != null)

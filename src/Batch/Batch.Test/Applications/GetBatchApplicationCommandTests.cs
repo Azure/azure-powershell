@@ -71,14 +71,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
-            string applicationId = "applicationId";
+            string applicationName = "applicationName";
 
             PSApplication expected = new PSApplication();
-            batchClientMock.Setup(b => b.GetApplication(resourceGroup, accountName, applicationId)).Returns(expected);
+            batchClientMock.Setup(b => b.GetApplication(resourceGroup, accountName, applicationName)).Returns(expected);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
-            cmdlet.ApplicationId = applicationId;
+            cmdlet.ApplicationName = applicationName;
 
             cmdlet.ExecuteCmdlet();
 

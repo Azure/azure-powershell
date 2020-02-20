@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -131,14 +131,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RaDeletionByScope");
         }
 
-        [Fact(Skip = "Need AD team to re-record")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeletionByScopeAtRootScope()
         {
             TestRunner.RunTestScript("Test-RaDeletionByScopeAtRootScope");
         }
 
-        [Fact(Skip = "Need AD team to re-record")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDelegation()
         {
@@ -157,6 +157,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void RaGetByScope()
         {
             TestRunner.RunTestScript("Test-RaGetByScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaGetOnlyByRoleDefinitionName()
+        {
+            TestRunner.RunTestScript("Test-RaGetOnlyByRoleDefinitionName");
         }
 
         [Fact]

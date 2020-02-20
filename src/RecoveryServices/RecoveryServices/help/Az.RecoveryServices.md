@@ -11,6 +11,9 @@ Locale: en-US
 This topic displays help topics for the Azure Recovery Services cmdlets.
 
 ## Az.RecoveryServices Cmdlets
+### [Add-AzRecoveryServicesAsrReplicationProtectedItemDisk](Add-AzRecoveryServicesAsrReplicationProtectedItemDisk.md)
+Add the disk for protection for already protected azure virtual machine.
+
 ### [Backup-AzRecoveryServicesBackupItem](Backup-AzRecoveryServicesBackupItem.md)
 Starts a backup for a Backup item.
 
@@ -27,7 +30,7 @@ Dismounts all the files of the recovery point.
 Edits a Site Recovery plan.
 
 ### [Enable-AzRecoveryServicesBackupAutoProtection](Enable-AzRecoveryServicesBackupAutoProtection.md)
-Enables auto backup for a protectable item with a specified Backup protection policy.
+This commands allows users to automatically protect all existing unprotected DBs and any DB which will be added later with the given policy. Azure backup service will then regularly scan auto-protected containers for any new DBs and automatically protect them.
 
 ### [Enable-AzRecoveryServicesBackupProtection](Enable-AzRecoveryServicesBackupProtection.md)
 Enables backup for an item with a specified Backup protection policy.
@@ -105,13 +108,13 @@ Gets SCDPM and Azure Backup management servers.
 Gets Backup properties.
 
 ### [Get-AzRecoveryServicesBackupProtectableItem](Get-AzRecoveryServicesBackupProtectableItem.md)
-Get protectable items from a container.
+This command will retrieve all protectable items within a certain container or across all registered containers. It will consist of all the elements of the hierarchy of the application. Returns DBs and their upper tier entities like Instance, AvailabilityGroup etc.
 
 ### [Get-AzRecoveryServicesBackupProtectionPolicy](Get-AzRecoveryServicesBackupProtectionPolicy.md)
 Gets Backup protection policies for a vault.
 
 ### [Get-AzRecoveryServicesBackupRecoveryLogChain](Get-AzRecoveryServicesBackupRecoveryLogChain.md)
-Get time ranges for a backed up item.
+This command lists the start and end points of the unbroken log chain of the given backup item. Use it to determine whether the point-in-time, to which the user wants the DB to be restored, is valid or not.
 
 ### [Get-AzRecoveryServicesBackupRecoveryPoint](Get-AzRecoveryServicesBackupRecoveryPoint.md)
 Gets the recovery points for a backed up item.
@@ -129,7 +132,7 @@ Gets a base schedule policy object.
 Checks whether your ARM resource is backed up or not.
 
 ### [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](Get-AzRecoveryServicesBackupWorkloadRecoveryConfig.md)
-Get recovery plan for a backup up item.
+This command constructs the recovery configuration of a backed up item such as SQL DB. The configuration object stores all details such as the recovery mode, target destinations for the restore and application specific parameters like target physical paths for SQL.
 
 ### [Get-AzRecoveryServicesVault](Get-AzRecoveryServicesVault.md)
 Gets a list of Recovery Services vaults.
@@ -141,13 +144,16 @@ Gets the Azure Site Recovery vault settings file.
 Imports the specified ASR vault settings file to set the vault context(PowerShell session context) for subsequent ASR operations in the PowerShell session. 
 
 ### [Initialize-AzRecoveryServicesBackupProtectableItem](Initialize-AzRecoveryServicesBackupProtectableItem.md)
-Enquires for new DBs in the workload.
+This command triggers the discovery of any unprotected items of the given workload type in the given container. If the DB application is not auto-protected use this command to discover new DBs whenever they are added and proceed to protect them.
 
 ### [New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig](New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig.md)
 Creates a disk mapping object for Azure virtual machine disks to be replicated.
 
 ### [New-AzRecoveryServicesAsrFabric](New-AzRecoveryServicesAsrFabric.md)
 Creates an Azure Site Recovery Fabric.
+
+### [New-AzRecoveryServicesAsrInMageAzureV2DiskInput](New-AzRecoveryServicesAsrInMageAzureV2DiskInput.md)
+Creates a disk mapping object for vMWare virtual machine disks to be replicated.
 
 ### [New-AzRecoveryServicesAsrNetworkMapping](New-AzRecoveryServicesAsrNetworkMapping.md)
 Creates an ASR network mapping between two networks.
@@ -183,7 +189,7 @@ Creates a Backup protection policy.
 Creates a new Recovery Services vault.
 
 ### [Register-AzRecoveryServicesBackupContainer](Register-AzRecoveryServicesBackupContainer.md)
-Registers a protectable container.
+This command allows Azure Backup to convert the �Resource� to a �Backup Container� which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
 
 ### [Remove-AzRecoveryServicesAsrFabric](Remove-AzRecoveryServicesAsrFabric.md)
 Deletes the specified Azure Site Recovery Fabric from the Recovery Services vault.
@@ -292,6 +298,9 @@ Updates the specified azure site recovery network mapping.
 
 ### [Update-AzRecoveryServicesAsrPolicy](Update-AzRecoveryServicesAsrPolicy.md)
 Updates an Azure Site Recovery replication policy.
+
+### [Update-AzRecoveryServicesAsrProtectionContainerMapping](Update-AzRecoveryServicesAsrProtectionContainerMapping.md)
+Update the Azure site recovery protection container mapping.
 
 ### [Update-AzRecoveryServicesAsrProtectionDirection](Update-AzRecoveryServicesAsrProtectionDirection.md)
 Updates the replication direction for the specified replication protected item or recovery plan. Used to re-protect/reverse replicate a failed over replicated item or recovery plan.

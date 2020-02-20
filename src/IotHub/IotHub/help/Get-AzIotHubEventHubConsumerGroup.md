@@ -14,7 +14,7 @@ Gets all the eventhub consumergroups.
 
 ```
 Get-AzIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
- [-EventHubEndpointName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Gets all the eventhub consumergroups for the different EventHubs used by IotHub.
 
 ### Example 1 Gets all the eventhub consumergroups for the telemetry eventhub
 ```
-PS C:\> Get-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events"
+PS C:\> Get-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets all the eventhub consumergroups for the telemetry eventhub for the iothub named myiothub
@@ -43,23 +43,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EventHubEndpointName
-Name of the Event Hub endpoint.
-Possible values events, operationsMonitoringEvents
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: events, operationsMonitoringEvents
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -90,8 +90,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 Name = Name,
                 Parameters = Parameters,
                 Roles = NodeTypes.Select(n => n.ToString()).ToList(),
-                Uri = Uri,
-                ApplicationName = ApplicationName
+                Uri = Uri.IsAbsoluteUri ? Uri.AbsoluteUri : Uri.ToString()
             };
 
             var scriptActions = new List<RuntimeScriptAction> { scriptAction };
@@ -102,8 +101,17 @@ namespace Microsoft.Azure.Commands.HDInsight
                 PersistOnSuccess = PersistOnSuccess.IsPresent
             };
 
-            var operationResource = HDInsightManagementClient.ExecuteScriptActions(ResourceGroupName, ClusterName, executeScriptActionParameters);
-            WriteObject(new AzureHDInsightRuntimeScriptActionOperationResource(scriptAction, operationResource));
+            ErrorResponseException errorResponse = null;
+            try
+            {
+                HDInsightManagementClient.ExecuteScriptActions(ResourceGroupName, ClusterName, executeScriptActionParameters);
+            }
+            catch (ErrorResponseException ex)
+            {
+                errorResponse = ex;
+            }
+
+            WriteObject(new AzureHDInsightRuntimeScriptActionOperationResource(scriptAction, errorResponse));
         }
     }
 }

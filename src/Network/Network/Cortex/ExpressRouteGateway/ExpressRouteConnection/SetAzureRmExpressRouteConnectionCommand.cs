@@ -88,6 +88,11 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable internet security for this connection")]
+        public bool? EnableInternetSecurity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -138,6 +143,11 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
             if (this.RoutingWeight > 0)
             {
                 expressRouteConnectionToModify.RoutingWeight = this.RoutingWeight;
+            }
+
+            if (this.EnableInternetSecurity.HasValue)
+            {
+                expressRouteConnectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.Value;
             }
 
             // TODO: drop this hack after ER Gateways backend updated with all the functionality exposed

@@ -32,7 +32,7 @@ function Test-AzureRmIotHubRoutingLifecycle
 	$containerName2 = 'container2'
 	##############################################################
 
-	$Location = Get-Location "Microsoft.Devices" "IotHub" 
+	$Location = Get-Location "Microsoft.Devices" "IotHubs" "WEST US 2"
 	$IotHubName = getAssetName
 	$ResourceGroupName = getAssetName
 	$namespaceName = getAssetName 'eventHub'
@@ -42,6 +42,10 @@ function Test-AzureRmIotHubRoutingLifecycle
 	$endpointName1 = getAssetName
 	$endpointName2 = getAssetName
 	$routeName = getAssetName
+	$enrichmentName = getAssetName
+	$enrichmentValue = getAssetName
+	$enrichmentUpdatedValue = getAssetName
+	$endpoints = @($endpointName1,$endpointName2)
 	$Sku = "S1"
 	$EndpointTypeEventHub = [Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType] "EventHub"
 	$EndpointTypeAzureStorage = [Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType] "AzureStorageContainer"
@@ -106,6 +110,44 @@ function Test-AzureRmIotHubRoutingLifecycle
 	Assert-True { $updatedRoutingEndpoints[1].EndpointType -eq $EndpointTypeAzureStorage}
 	Assert-True { $updatedRoutingEndpoints[2].Name -eq $endpointName2}
 	Assert-True { $updatedRoutingEndpoints[2].EndpointType -eq $EndpointTypeAzureStorage}
+
+	# Get all message enrichments
+	$enrichments = Get-AzIotHubMessageEnrichment -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	Assert-True { $enrichments.Count -eq 0}
+
+	# Add new message enrichment
+	$newEnrichment = Add-AzIotHubMessageEnrichment -ResourceGroupName $ResourceGroupName -Name $IotHubName -Key $enrichmentName -Value $enrichmentValue -Endpoint $endpointName1
+	Assert-True { $newEnrichment.Key -eq $enrichmentName}
+	Assert-True { $newEnrichment.Value -eq $enrichmentValue}
+	Assert-True { $newEnrichment.EndpointNames -eq $endpointName1}
+
+	# Get all message enrichments
+	$enrichments = Get-AzIotHubMessageEnrichment -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	Assert-True { $enrichments.Count -eq 1}
+
+	# Get specific message enrichment
+	$enrichment = Get-AzIotHubMessageEnrichment -ResourceGroupName $ResourceGroupName -Name $IotHubName -Key $enrichmentName
+	Assert-True { $enrichment.Key -eq $enrichmentName}
+	Assert-True { $enrichment.Value -eq $enrichmentValue}
+	Assert-True { $enrichment.EndpointNames -eq $endpointName1}
+
+	# Update message enrichment's value
+	$updatedEnrichment = Set-AzIotHubMessageEnrichment -ResourceGroupName $ResourceGroupName -Name $IotHubName -Key $enrichmentName -Value $enrichmentUpdatedValue
+	Assert-True { $updatedEnrichment.Key -eq $enrichmentName}
+	Assert-True { $updatedEnrichment.Value -eq $enrichmentUpdatedValue}
+	Assert-True { $updatedEnrichment.EndpointNames -eq $endpointName1}
+
+	# Update message enrichment's endpoint
+	$updatedEnrichment = Set-AzIotHubMessageEnrichment -ResourceGroupName $ResourceGroupName -Name $IotHubName -Key $enrichmentName -Endpoint $endpointName1,$endpointName2
+	Assert-True { $updatedEnrichment.Key -eq $enrichmentName}
+	Assert-True { $updatedEnrichment.Value -eq $enrichmentUpdatedValue}
+	Assert-True { $updatedEnrichment.EndpointNames.Count -eq 2}
+	Assert-True { $updatedEnrichment.EndpointNames[0] -eq $endpointName1}
+	Assert-True { $updatedEnrichment.EndpointNames[1] -eq $endpointName2}
+
+	# Delete message enrichment
+	$result = Remove-AzIotHubMessageEnrichment -ResourceGroupName $ResourceGroupName -Name $IotHubName -Key $enrichmentName -Passthru
+	Assert-True { $result }
 
 	# Delete routing endpoints
 	$result = Remove-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName -EndpointName $endpointName1 -Passthru

@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Attestation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Management.Automation;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Attestation
 {
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Commands.Attestation
         #region Parameter Set Names
 
         private const string NameParameterSet = "NameParameterSet";
-        private const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
+        private const string ResourceIdParameterSet = "ResourceIdParameterSet";
         #endregion
 
         #region Input Parameter Definitions
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Commands.Attestation
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ResourceGroupParameterSet,
+            ParameterSetName = ResourceIdParameterSet,
             HelpMessage = "Specifies the name of the ResourceID associated with the attestation being queried")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
@@ -75,16 +74,6 @@ namespace Microsoft.Azure.Commands.Attestation
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
                 Name = resourceIdentifier.ResourceName;
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
-            }
-
-            if (string.IsNullOrEmpty(Name))
-            {
-                throw new CloudException(string.Format("ResourceNotSpecified", Name));
-            }
-
-            if (string.IsNullOrEmpty(ResourceGroupName))
-            {
-                throw new CloudException(string.Format("ResourceGroupNotSpecified", ResourceGroupName));
             }
 
             PSAttestation attestation = AttestationClient.GetAttestation(Name, ResourceGroupName);

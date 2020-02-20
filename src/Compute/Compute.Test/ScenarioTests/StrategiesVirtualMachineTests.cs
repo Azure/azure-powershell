@@ -169,5 +169,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SimpleNewVmPpgId");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmBilling()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmBilling");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleGalleryCrossTenant()
+        {
+            TestRunner.RunTestScript("Test-SimpleGalleryCrossTenant");
+        }
     }
 }

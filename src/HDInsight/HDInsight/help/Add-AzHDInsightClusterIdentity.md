@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: A40AB6AB-D3CB-4A6C-B614-0B22085759DA
@@ -17,14 +17,14 @@ Adds a cluster identity to a cluster configuration object.
 ```
 Add-AzHDInsightClusterIdentity [-Config] <AzureHDInsightConfig> [-ObjectId] <Guid>
  [-CertificateFilePath] <String> [-CertificatePassword] <String> [[-AadTenantId] <Guid>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApplicationId <Guid>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateFileContents
 ```
 Add-AzHDInsightClusterIdentity [-Config] <AzureHDInsightConfig> [-ObjectId] <Guid>
  [-CertificateFileContents] <Byte[]> [-CertificatePassword] <String> [[-AadTenantId] <Guid>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApplicationId <Guid>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +52,7 @@ PS C:\> $clusterCreds = Get-Credential
 # Cluster Identity values
 PS C:\> $tenantId = (Get-AzContext).Tenant.TenantId
 PS C:\> $objectId = "<Azure AD Service Principal Object ID>"
+PS C:\> $applicationId = "<Azure AD Service Principal Application ID>"
 PS C:\> $certificateFilePath = "<Path to Azure AD Service Principal Certificate>"
 PS C:\> $certificatePassword = "<Password for Azure AD Service Principal Certificate>"
 
@@ -60,11 +61,12 @@ PS C:\> New-AzHDInsightClusterConfig `
             | Add-AzHDInsightClusterIdentity `
                 -AadTenantId $tenantId `
                 -ObjectId $objectId `
+                -Application $applicationId
                 -CertificateFilePath $certificateFilePath `
                 -CertificatePassword $certificatePassword `
             | New-AzHDInsightCluster `
                 -ClusterType Hadoop `
-                -OSType Windows `
+                -OSType Linux `
                 -ClusterSizeInNodes 4 `
                 -ResourceGroupName $clusterResourceGroupName `
                 -ClusterName $clusterName `
@@ -89,6 +91,21 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApplicationId
+The Service Principal Application Id for accessing Azure Data Lake.
+
+```yaml
+Type: System.Guid
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -189,7 +206,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

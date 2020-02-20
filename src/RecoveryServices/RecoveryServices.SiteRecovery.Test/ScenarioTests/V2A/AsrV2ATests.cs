@@ -119,7 +119,7 @@ namespace RecoveryServices.SiteRecovery.Test
              "\"");
         }
 
-        [Fact]
+        [Fact(Skip = "Need to ReRecord")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void V2ACreateRPI()
         {
@@ -239,6 +239,40 @@ namespace RecoveryServices.SiteRecovery.Test
                 _logger,
                 Constants.NewModel,
                 "Test-SetRPI -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2ACreateRPIWithDES()
+        {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "CMKInput","V2A.VaultCredentials");
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2ACreateRPIWithDES -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2ACreateRPIWithDESEnabledDiskInput()
+        {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "CMKInput", "V2A.VaultCredentials");
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2ACreateRPIWithDESEnabledDiskInput -vaultSettingsFilePath \"" +
                 this.VaultSettingsFilePath +
                 "\"");
         }

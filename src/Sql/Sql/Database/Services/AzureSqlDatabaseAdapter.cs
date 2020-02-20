@@ -160,6 +160,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 LicenseType = model.Database.LicenseType,
                 AutoPauseDelay = model.Database.AutoPauseDelayInMinutes,
                 MinCapacity = model.Database.MinimumCapacity,
+                ReadReplicaCount = model.Database.ReadReplicaCount,
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);

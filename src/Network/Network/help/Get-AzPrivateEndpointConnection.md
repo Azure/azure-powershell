@@ -12,16 +12,23 @@ Gets a private endpoint connection resource.
 
 ## SYNTAX
 
-### ByResourceId (Default)
+### ByPrivateLinkResourceId (Default)
 ```
-Get-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
+Get-AzPrivateEndpointConnection -PrivateLinkResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Get-AzPrivateEndpointConnection -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Get-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String>
- [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPrivateEndpointConnection -ServiceName <String> -ResourceGroupName <String>
+[-Name <String>] [-PrivateLinkResourceType <String>] [-Description <String>]
+[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,10 +38,17 @@ The **Get-AzPrivateEndpointConnection** cmdlet retrieves a private endpoint conn
 
 ### Example 1
 ```
-Get-AzPrivateEndpointConnection -Name MyPrivateEndpointConnection1 -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkServiceName
+Get-AzPrivateEndpointConnection -PrivateLinkResourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Sql/servers/mySql'
 ```
 
-This example get a private endpoint connection named MyPrivateEndpointConnection1
+This example return a list of all private endpoint connections belongs to sql server named Mysql.
+
+### Example 2
+```
+Get-AzPrivateEndpointConnection -Name MyPrivateEndpointConnection1 -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkService -PrivateLinkResourceType 'Microsoft.Network/privateLinkServices'
+```
+
+This example get a private endpoint connection named MyPrivateEndpointConnection1 belongs to private link service named MyPrivateLinkService
 
 ## PARAMETERS
 
@@ -53,21 +67,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-The reason of action.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the private endpoint connection.
 
@@ -76,9 +75,39 @@ Type: System.String
 Parameter Sets: ByResource
 Aliases: ResourceName
 
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PrivateLinkResourceId
+The Azure resource manager id of the private link resource that private endpoint connection belongs to.
+
+```yaml
+Type: System.String
+Parameter Sets: ByPrivateLinkResourceId
+Aliases:
+
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PrivateLinkResourceType
+The private link resource type.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: 'Microsoft.Network/privateLinkServices'
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -114,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-The name of the private link service that has the private endpoint connection.
+The name of service that the private endpoint connection belong to.
 
 ```yaml
 Type: System.String
@@ -142,5 +171,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Approve-AzPrivateEndpointConnection](./Approve-AzPrivateEndpointConnection.md)
+
+[Deny-AzPrivateEndpointConnection](./Deny-AzPrivateEndpointConnection.md)
+
+[Remove-AzPrivateEndpointConnection](./Remove-AzPrivateEndpointConnection.md)
 
 [Set-AzPrivateEndpointConnection](./Set-AzPrivateEndpointConnection.md)

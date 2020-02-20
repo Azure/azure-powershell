@@ -26,9 +26,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Net;
     using System.Threading.Tasks;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
+    using System.Runtime.InteropServices;
+    using Microsoft.Azure.Storage.DataMovement;
 
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName), OutputType(typeof(CloudFile))]
-    public class SetAzureStorageFileContent : StorageFileDataManagementCmdletBase
+    public class SetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
     {
         [Parameter(
            Position = 0,
@@ -129,7 +131,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     this.TransferManager.UploadAsync(
                             localFile.FullName,
                             cloudFileToBeUploaded,
-                            null,
+                            new UploadOptions
+                            {
+                                PreserveSMBAttributes = context is null ? false : context.PreserveSMBAttribute.IsPresent
+                            },
                             this.GetTransferContext(progressRecord, localFile.Length),
                             this.CmdletCancellationToken),
                         progressRecord,
@@ -227,5 +232,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 return baseDirectory.GetFileReferenceByPath(path);
             }
         }
+
+        public object GetDynamicParameters()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                context = new WindowsOnlyParameters();
+                return context;
+            }
+            else return null;
+        }
+        private WindowsOnlyParameters context;
     }
 }

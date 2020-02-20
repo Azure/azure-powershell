@@ -33,7 +33,7 @@ function Test-ListStretchDatabaseRestorePoints
 			-Edition Stretch -RequestedServiceObjectiveName DS100
 
 		# Get restore points from stretch database.
-		$restorePoints = Get-AzSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $stretchdb.DatabaseName
+		$restorePoints = Get-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $stretchdb.DatabaseName
 		Assert-Null $restorePoints # Since the stretch database has just been created, it should not have any discrete restore points.
 	}
 	finally

@@ -18,15 +18,18 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
     public class AzureHDInsightRuntimeScriptActionOperationResource : AzureHDInsightRuntimeScriptAction
     {
-        public AzureHDInsightRuntimeScriptActionOperationResource(RuntimeScriptAction runtimeScriptAction, OperationResource operationResource)
+        public AzureHDInsightRuntimeScriptActionOperationResource(RuntimeScriptAction runtimeScriptAction, ErrorResponseException errorResponse)
             : base(runtimeScriptAction)
         {
-            if (operationResource.ErrorInfo != null)
+            if (errorResponse != null)
             {
-                ErrorMessage = operationResource.ErrorInfo.Message;
+                ErrorMessage = errorResponse.Body?.Message;
+                OperationState = errorResponse.Body?.Code;
             }
-
-            OperationState = operationResource.State.ToString();
+            else
+            {
+                OperationState = AsyncOperationState.Succeeded.ToString();
+            }
         }
 
         public string OperationState { get; set; }

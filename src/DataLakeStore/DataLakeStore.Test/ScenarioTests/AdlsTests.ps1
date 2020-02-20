@@ -699,7 +699,7 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual $result.FileCount 1
 
 		# Export DiskUsage
-		$targetFile = Join-Path $currentDir "DuOutput"
+		$targetFile = Join-Path $currentDir "DuOutputAdls"
 		Export-AzDataLakeStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile
 		$result = Get-Item -Path $targetFile
 		Assert-NotNull $result "No file was created on export properties"
@@ -1012,7 +1012,7 @@ function Test-EnumerateAndRestoreDataLakeStoreDeletedItem
 	{
 		# Creating Account
 		$resourceGroupName = Get-ResourceGroupName
-		$accountName = Get-DataLakeStoreAccountName
+		$accountName = Get-DataLakeStoreAccountName + "-c12" # testing accountname validation
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     

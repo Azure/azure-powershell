@@ -23,4 +23,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AccessRestrictionTests\" />
+  </ItemGroup>
+
 </Project>

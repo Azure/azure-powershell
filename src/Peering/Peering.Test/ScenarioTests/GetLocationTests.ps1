@@ -109,3 +109,20 @@ function Test-GetLocationKindDirectSeattle99999 {
         Remove-AzPeerAsn -Name $asnPeerName -Force
     }
 }
+
+<#
+.SYNOPSIS
+GetLocationKindDirectSeattle
+#>
+function Test-GetLocationKindDirectAmsterdam {
+    try {
+        $asn = 65000
+        $asnPeerName = makePeerAsn $asn
+        $location = Get-AzPeeringLocation -Kind Direct -DirectPeeringType Cdn -PeeringLocation Amsterdam
+        Assert-NotNull $location
+		Assert-True { $location.Count -ge 1 }
+    }
+    finally {
+        Remove-AzPeerAsn -Name $asnPeerName -Force
+    }
+}

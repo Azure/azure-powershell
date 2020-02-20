@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
 
             List<PsAzureAdvisorResourceRecommendationBase> filteredList = new List<PsAzureAdvisorResourceRecommendationBase>();
 
-            // Filter by category only if its a valid input
-            if (Category.Cost.Equals(category) || Category.HighAvailability.Equals(category) || Category.Performance.Equals(category) || Category.Security.Equals(category))
+            // Filter by category
+            if (!string.IsNullOrEmpty(category))
             {
                 // If resourceGroup filtering is as well specified 
                 if (!string.IsNullOrEmpty(resourceGroup))

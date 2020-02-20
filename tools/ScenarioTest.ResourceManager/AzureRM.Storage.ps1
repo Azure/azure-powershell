@@ -33,23 +33,28 @@ function New-AzureRmStorageAccount
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)][alias("StorageAccountName")] $Name,
     [string] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $Location,
-    [string] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $typeString)
+    [string] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $typeString,
+    [string] [Parameter(Position=4, ValueFromPipelineByPropertyName=$true)] $Kind)
   BEGIN { 
     $context = Get-Context
     $client = Get-StorageClient $context
   }
   PROCESS {
     $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.StorageAccountCreateParameters
-	  if ([string]::IsNullOrEmpty($typeString))
-		{
-		  $Type = [Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName]::StandardLRS
-		}
-		else
-		{
-		  $Type = Parse-Type $typeString
-		}
-
-		$createParms.Sku = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku $Type
+	if ([string]::IsNullOrEmpty($typeString))
+	{
+		$Type = [Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName]::StandardLRS
+	}
+	else
+	{
+		$Type = Parse-Type $typeString
+	}
+    if ([string]::IsNullOrEmpty($Kind))
+    {
+        $Kind = 'StorageV2'
+    }  
+    $createParms.Kind = $Kind
+	$createParms.Sku = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku $Type
     $createParms.Location = $Location
     $getTask = $client.StorageAccounts.CreateWithHttpMessagesAsync($ResourceGroupName, $name, $createParms)
     $sa = $getTask.Result.Body
@@ -58,6 +63,7 @@ function New-AzureRmStorageAccount
   END {}
 
 }
+
 
 function Set-AzureRmStorageAccount
 {

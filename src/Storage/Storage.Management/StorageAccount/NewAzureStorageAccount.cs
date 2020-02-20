@@ -181,8 +181,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
 
+        [Parameter(Mandatory = false, HelpMessage = "Indicates whether or not the storage account can support large file shares with more than 5 TiB capacity. Once the account is enabled, the feature cannot be disabled. Currently only supported for LRS and ZRS replication types, hence account conversions to geo-redundant accounts would not be possible. Learn more in https://go.microsoft.com/fwlink/?linkid=2086047")]
+        public SwitchParameter EnableLargeFileShare { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Set the Encryption KeyType for Table. -Account, Table will be encrypted with account-scoped encryption key. -Service, Table will always be encrypted with Service-Managed keys. The default value is Service.")]
+        [ValidateSet(StorageModels.KeyType.Service, 
+            StorageModels.KeyType.Account, 
+            IgnoreCase = true)]
+        public string EncryptionKeyTypeForTable { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Set the Encryption KeyType for Queue. -Account, Queue will be encrypted with account-scoped encryption key. -Service, Queue will always be encrypted with Service-Managed keys. The default value is Service.")]
+        [ValidateSet(StorageModels.KeyType.Service,
+            StorageModels.KeyType.Account,
+            IgnoreCase = true)]
+        public string EncryptionKeyTypeForQueue { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -250,6 +265,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 else
                 {
                     createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
+                }
+            }
+            if(this.EnableLargeFileShare.IsPresent)
+            {
+                createParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
+            }
+            if(this.EncryptionKeyTypeForQueue != null || this.EncryptionKeyTypeForTable != null)
+            {
+                createParameters.Encryption = new Encryption();
+                createParameters.Encryption.KeySource = KeySource.MicrosoftStorage;
+                createParameters.Encryption.Services = new EncryptionServices();
+                if (this.EncryptionKeyTypeForQueue != null)
+                {
+                    createParameters.Encryption.Services.Queue = new EncryptionService(keyType: this.EncryptionKeyTypeForQueue);
+                }
+                if (this.EncryptionKeyTypeForTable != null)
+                {
+                    createParameters.Encryption.Services.Table = new EncryptionService(keyType: this.EncryptionKeyTypeForTable);
                 }
             }
 

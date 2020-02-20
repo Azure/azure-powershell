@@ -70,6 +70,8 @@ The acceptable values for this parameter are:
 - Standard_Large
 - WAF_Medium
 - WAF_Large
+- Standard_v2
+- WAF_v2
 
 ```yaml
 Type: System.String
@@ -89,6 +91,8 @@ Specifies the tier of the SKU.
 The acceptable values for this parameter are:
 - Standard
 - WAF
+- Standard_v2
+- WAF_v2
 
 ```yaml
 Type: System.String

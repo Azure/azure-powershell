@@ -14,7 +14,7 @@ This command allows the users to create the Vpn profile package based on pre-con
 
 ```
 New-AzVpnClientConfiguration [-Name <String>] -ResourceGroupName <String> [-ProcessorArchitecture <String>]
- -AuthenticationMethod <String> [-RadiusRootCertificateFile <String>]
+ [-AuthenticationMethod <String>] [-RadiusRootCertificateFile <String>]
  [-ClientRootCertificateFileList <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -43,7 +43,7 @@ Parameter Sets: (All)
 Aliases:
 Accepted values: EAPTLS, EAPMSCHAPv2
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

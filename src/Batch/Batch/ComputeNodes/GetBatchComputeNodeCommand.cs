@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Select { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             ListComputeNodeOptions options = new ListComputeNodeOptions(this.BatchContext, this.PoolId, this.Pool, this.AdditionalBehaviors)
             {

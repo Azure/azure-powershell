@@ -88,6 +88,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable internet security for this ExpressRoute Gateway connection")]
+        public SwitchParameter EnableInternetSecurity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -140,6 +145,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 ExpressRouteCircuitPeering = peeringResourceId,
+                EnableInternetSecurity = this.EnableInternetSecurity.IsPresent
             };
 
             // Set the auth key, if specified

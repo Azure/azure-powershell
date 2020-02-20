@@ -16,7 +16,6 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Management.Batch;
-using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -34,6 +33,11 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using BatchAccount = Microsoft.Azure.Management.Batch.Models.BatchAccount;
+using BatchAccountCreateParameters = Microsoft.Azure.Management.Batch.Models.BatchAccountCreateParameters;
+using BatchAccountKeys = Microsoft.Azure.Management.Batch.Models.BatchAccountKeys;
+using ApplicationPackage = Microsoft.Azure.Management.Batch.Models.ApplicationPackage;
+
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
@@ -554,7 +558,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Uploads an application package to Storage
         /// </summary>
-        public static ApplicationPackage CreateApplicationPackage(BatchController controller, BatchAccountContext context, string applicationId, string version, string filePath)
+        public static ApplicationPackage CreateApplicationPackage(BatchController controller, BatchAccountContext context, string applicationName, string version, string filePath)
         {
             ApplicationPackage applicationPackage = null;
 
@@ -563,7 +567,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 applicationPackage = controller.BatchManagementClient.ApplicationPackage.Create(
                     context.ResourceGroupName,
                     context.AccountName,
-                    applicationId,
+                    applicationName,
                     version);
 
                 CloudBlockBlob blob = new CloudBlockBlob(new Uri(applicationPackage.StorageUrl));
@@ -580,21 +584,21 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Deletes an application used in a Scenario test.
         /// </summary>
-        public static void DeleteApplication(BatchController controller, BatchAccountContext context, string applicationId)
+        public static void DeleteApplication(BatchController controller, BatchAccountContext context, string applicationName)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            client.DeleteApplication(context.ResourceGroupName, context.AccountName, applicationId);
+            client.DeleteApplication(context.ResourceGroupName, context.AccountName, applicationName);
         }
 
         /// <summary>
         /// Deletes an application package used in a Scenario test.
         /// </summary>
-        public static void DeleteApplicationPackage(BatchController controller, BatchAccountContext context, string applicationId, string version)
+        public static void DeleteApplicationPackage(BatchController controller, BatchAccountContext context, string applicationName, string version)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            client.DeleteApplicationPackage(context.ResourceGroupName, context.AccountName, applicationId, version);
+            client.DeleteApplicationPackage(context.ResourceGroupName, context.AccountName, applicationName, version);
         }
 
         /// <summary>

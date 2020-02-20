@@ -25,6 +25,7 @@ using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// The subscription Id that the account belongs to.
         /// </summary>
-        public string Subscription { get; private set; }
+        public string Subscription { get; internal set; }
 
         /// <summary>
         /// The provisioning state of the account resource.
@@ -101,9 +102,24 @@ namespace Microsoft.Azure.Commands.Batch
         }
 
         /// <summary>
-        /// The core quota for this Batch account.
+        /// The dedicated core quota for this Batch account.
         /// </summary>
-        public int CoreQuota { get; private set; }
+        public int? DedicatedCoreQuota { get; private set; }
+
+        /// <summary>
+        /// The low priority core quota for this Batch account.
+        /// </summary>
+        public int? LowPriorityCoreQuota { get; private set; }
+
+        /// <summary>
+        /// If dedicated core quota is enforced per-family.
+        /// </summary>
+        public bool DedicatedCoreQuotaPerVMFamilyEnforced { get; private set; }
+
+        /// <summary>
+        /// The dedicated core quota per VM family. This value is only enforced if <see cref="DedicatedCoreQuotaPerVMFamilyEnforced"/> is set to true.
+        /// </summary>
+        public Hashtable DedicatedCoreQuotaPerVMFamily { get; private set; }
 
         /// <summary>
         /// The pool quota for this Batch account.
@@ -201,7 +217,10 @@ namespace Microsoft.Azure.Commands.Batch
             this.Location = resource.Location;
             this.State = resource.ProvisioningState.ToString();
             this.Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags);
-            this.CoreQuota = resource.CoreQuota;
+            this.DedicatedCoreQuota = resource.DedicatedCoreQuota;
+            this.LowPriorityCoreQuota = resource.LowPriorityCoreQuota;
+            this.DedicatedCoreQuotaPerVMFamilyEnforced = resource.DedicatedCoreQuotaPerVMFamilyEnforced;
+            this.DedicatedCoreQuotaPerVMFamily = CreateQuotaHashTable(resource.DedicatedCoreQuotaPerVMFamily);
             this.PoolQuota = resource.PoolQuota;
             this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota;
             this.PoolAllocationMode = resource.PoolAllocationMode;
@@ -237,6 +256,23 @@ namespace Microsoft.Azure.Commands.Batch
             this.ResourceGroupName = idParts[4];
         }
 
+
+        private static Hashtable CreateQuotaHashTable(IList<VirtualMachineFamilyCoreQuota> quotas)
+        {
+            Hashtable result = new Hashtable();
+
+            if(quotas == null)
+            {
+                return result;
+            }
+
+            foreach (var quota in quotas)
+            {
+                result.Add(quota.Name, quota.CoreQuota);
+            }
+
+            return result;
+        }
         /// <summary>
         /// Create a new BAC and fill it in
         /// </summary>
@@ -252,7 +288,8 @@ namespace Microsoft.Azure.Commands.Batch
 
         protected virtual BatchServiceClient CreateBatchRestClient(string url, ServiceClientCredentials creds, DelegatingHandler handler = default(DelegatingHandler))
         {
-            BatchServiceClient restClient = handler == null ? new BatchServiceClient(new Uri(url), creds) : new BatchServiceClient(new Uri(url), creds, handler);
+            BatchServiceClient restClient = handler == null ? new BatchServiceClient(creds) : new BatchServiceClient(creds, handler);
+            restClient.BatchUrl = url;
 
             restClient.HttpClient.DefaultRequestHeaders.UserAgent.Add(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.UserAgentValue);
 

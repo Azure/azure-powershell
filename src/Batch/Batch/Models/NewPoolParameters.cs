@@ -123,6 +123,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSNetworkConfiguration NetworkConfiguration { get; set; }
 
         /// <summary>
+        /// The mount configuration of the pool.
+        /// </summary>
+        public PSMountConfiguration[] MountConfiguration { get; set; }
+
+        /// <summary>
         /// The user accounts to be created on each node in the pool.
         /// </summary>
         public PSUserAccount[] UserAccounts { get; set; }

@@ -29,8 +29,9 @@ function Test-AzureRmIotHubLifecycle
 	$Location = Get-Location "Microsoft.Devices" "IotHub" 
 	$IotHubName = getAssetName 
 	$ResourceGroupName = getAssetName 
+	$SubscriptionId = '91d12660-3dec-467a-be2a-213b5544ddc0'
 	$Sku = "B1"
-	$namespaceName = getAssetName
+	$namespaceName = getAssetName 'eventHub'
 	$eventHubName = getAssetName
 	$authRuleName = getAssetName
 	$Tag1Key = "key1"
@@ -97,6 +98,8 @@ function Test-AzureRmIotHubLifecycle
 
 	Assert-True { $allIotHubsInResourceGroup.Count -eq 1 }
 	Assert-True { $iotHub.Name -eq $IotHubName }
+	Assert-True { $iotHub.Resourcegroup -eq $ResourceGroupName }
+	Assert-True { $iotHub.Subscriptionid -eq $SubscriptionId }
 	Assert-True { $iotHub.Properties.Routing.Routes.Count -eq 1}
     Assert-True { $iotHub.Properties.Routing.Routes[0].Name -eq "route"}
     Assert-True { $iotHub.Properties.Routing.Endpoints.EventHubs[0].Name -eq "eh1"}
@@ -116,7 +119,7 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True { $validSkus.Count -gt 1 }
 
 	# Get EventHub Consumer group for events
-	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events
+	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName
 	Assert-True { $eventubConsumerGroup.Count -eq 1 }
 
 	# Get Keys
@@ -136,17 +139,17 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True { $key.KeyName -eq "iothubowner" }
 
 	# Add consumer group
-	Add-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events -EventHubConsumerGroupName cg1
+	Add-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubConsumerGroupName cg1
 
 	# Get consumer group
-	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events
+	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName 
 	Assert-True { $eventubConsumerGroup.Count -eq 2 }
 
 	# Delete consumer group
-	Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events -EventHubConsumerGroupName cg1
+	Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubConsumerGroupName cg1
 
 	# Get consumer group
-	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events
+	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName
 	Assert-True { $eventubConsumerGroup.Count -eq 1 }
 
 	# Add Key

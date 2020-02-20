@@ -40,8 +40,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSImageReference imageReference;
         
-        private PSOSDisk oSDisk;
-        
         private PSWindowsConfiguration windowsConfiguration;
         
         public PSVirtualMachineConfiguration(PSImageReference imageReference, string nodeAgentSkuId)
@@ -164,31 +162,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.NodeAgentSkuId = value;
-            }
-        }
-        
-        public PSOSDisk OSDisk
-        {
-            get
-            {
-                if (((this.oSDisk == null) 
-                            && (this.omObject.OSDisk != null)))
-                {
-                    this.oSDisk = new PSOSDisk(this.omObject.OSDisk);
-                }
-                return this.oSDisk;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.OSDisk = null;
-                }
-                else
-                {
-                    this.omObject.OSDisk = value.omObject;
-                }
-                this.oSDisk = value;
             }
         }
         

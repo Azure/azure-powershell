@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId BackendHttpSettings { get; set; }
         public PSResourceId RewriteRuleSet { get; set; }
         public PSResourceId RedirectConfiguration { get; set; }
+        public PSResourceId FirewallPolicy { get; set; }
+
         public string Type { get; set; }
 
         [JsonIgnore]
@@ -54,6 +56,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RewriteRuleSetText
         {
             get { return JsonConvert.SerializeObject(RewriteRuleSet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+        
+        [JsonIgnore]
+        public string FirewallPolicyText
+        {
+            get { return JsonConvert.SerializeObject(FirewallPolicy, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

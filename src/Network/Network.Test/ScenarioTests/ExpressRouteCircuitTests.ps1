@@ -32,10 +32,10 @@ Tests ExpressRouteCircuitCRUD.
 #>
 function Test-ExpressRouteRouteFilters
 {
-    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "West US"
-    $rgname = "filter"
-    $filterName = "filter"
-    $ruleName = "rule"
+    $rgname = Get-ResourceGroupName
+    $ruleName = Get-ResourceName
+    $filterName = Get-ResourceName
+    $location = Get-ProviderLocation "Microsoft.Network/routeFilters" "westcentralus"
 
     try
     {
@@ -54,7 +54,7 @@ function Test-ExpressRouteRouteFilters
       Assert-AreEqual 0 @($filter.Rules).Count
 
 	  $rule = New-AzRouteFilterRuleConfig -Name $ruleName -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010" -Force
-	  $filter = Get-AzRouteFilter -Name filter -ResourceGroupName filter
+	  $filter = Get-AzRouteFilter -Name $filterName -ResourceGroupName $rgname
 	  $filter.Rules.Add($rule)
 	  $job = Set-AzRouteFilter -RouteFilter $filter -Force -AsJob
 	  $job | Wait-Job
@@ -286,30 +286,6 @@ function Test-ExpressRouteCircuitPrivatePublicPeeringCRUD
 		# List peering
 		$listPeering = $circuit | Get-AzExpressRouteCircuitPeeringConfig
 		Assert-AreEqual 1 @($listPeering).Count
-
-		# add public peering 
-		$circuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Add-AzExpressRouteCircuitPeeringConfig -Name AzurePublicPeering -PeeringType AzurePublicPeering -PeerASN 30 -PrimaryPeerAddressPrefix "192.168.1.0/30" -SecondaryPeerAddressPrefix "192.168.2.0/30" -VlanId 33  | Set-AzExpressRouteCircuit 
-		$p = $circuit | Get-AzExpressRouteCircuitPeeringConfig -Name AzurePublicPeering
-		Assert-AreEqual "AzurePublicPeering" $p.Name
-		Assert-AreEqual "AzurePublicPeering" $p.PeeringType
-		Assert-AreEqual "30" $p.PeerASN
-		Assert-AreEqual "192.168.1.0/30" $p.PrimaryPeerAddressPrefix
-		Assert-AreEqual "192.168.2.0/30" $p.SecondaryPeerAddressPrefix
-		Assert-AreEqual "33" $p.VlanId
-		
-		#set public peering
-	    $circuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Set-AzExpressRouteCircuitPeeringConfig -Name AzurePublicPeering -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "192.168.1.0/30" -SecondaryPeerAddressPrefix "192.168.2.0/30" -VlanId 55  | Set-AzExpressRouteCircuit 
-		$p = $circuit | Get-AzExpressRouteCircuitPeeringConfig -Name AzurePublicPeering
-
-		Assert-AreEqual "AzurePublicPeering" $p.Name
-		Assert-AreEqual "AzurePublicPeering" $p.PeeringType
-		Assert-AreEqual "100" $p.PeerASN
-		Assert-AreEqual "192.168.1.0/30" $p.PrimaryPeerAddressPrefix
-		Assert-AreEqual "192.168.2.0/30" $p.SecondaryPeerAddressPrefix
-		Assert-AreEqual "55" $p.VlanId
-
-		$listPeering = $circuit | Get-AzExpressRouteCircuitPeeringConfig
-		Assert-AreEqual 2 @($listPeering).Count			
 
 		# Delete Circuit
         $delete = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
@@ -755,30 +731,5 @@ function Test-ExpressRouteCircuitPeeringWithRouteFilter
     {
         # Cleanup
         Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Tests Local ExpressRouteCircuits. Ensures we can only create Local circuits on Direct ports.
-#>
-function Test-ExpressRouteLocalCircuit
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $circuitName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "Brazil South"
-
-    try 
-    {
-      # Create the resource group
-      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
-      Assert-ThrowsContains { New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Local -SkuFamily MeteredData -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 500 } "not allowed on"
-    }
-    finally
-    {
-    # Cleanup
-      Clean-ResourceGroup $rgname
     }
 }

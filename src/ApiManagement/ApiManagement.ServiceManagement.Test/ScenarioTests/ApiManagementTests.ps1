@@ -115,7 +115,7 @@ function Api-CrudTest {
 
         Assert-AreEqual $newApiId $newApi.ApiId
         Assert-AreEqual $newApiName $newApi.Name
-        Assert-AreEqual $newApiDescription.Description
+        Assert-AreEqual $newApiDescription $newApi.Description
         Assert-AreEqual $newApiServiceUrl $newApi.ServiceUrl
         Assert-AreEqual $newApiPath $newApi.Path
         Assert-AreEqual 1 $newApi.Protocols.Length
@@ -124,6 +124,16 @@ function Api-CrudTest {
         Assert-Null $newApi.AuthorizationScope
         Assert-AreEqual $subscriptionKeyParametersHeader $newApi.SubscriptionKeyHeaderName
         Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName
+                
+        $updatedApiServiceUrl = "http://newechoapi.cloudapp.net/updateapi"
+        $updatedApi = Set-AzApiManagementApi -Context $context -ApiId $newApiId -ServiceUrl $updatedApiServiceUrl -PassThru
+        Assert-AreEqual $newApiId $updatedApi.ApiId
+        Assert-AreEqual $newApiName $updatedApi.Name
+        Assert-AreEqual $newApiDescription $updatedApi.Description
+        Assert-AreEqual $updatedApiServiceUrl $updatedApi.ServiceUrl
+        Assert-AreEqual $newApiPath $updatedApi.Path
+        Assert-AreEqual 1 $updatedApi.Protocols.Length
+        Assert-AreEqual https $updatedApi.Protocols[0]
 
         $product = Get-AzApiManagementProduct -Context $context | Select-Object -First 1
         Add-AzApiManagementApiToProduct -Context $context -ApiId $newApiId -ProductId $product.ProductId
@@ -322,6 +332,12 @@ function Api-ImportExportWadlTest {
 
         Assert-AreEqual $wadlApiId $api.ApiId
         Assert-AreEqual $path $api.Path
+        
+        $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $wadlApiId
+        Assert-NotNull $apiSchemas
+        Assert-AreEqual 1 $apiSchemas.Count
+        Assert-AreEqual WadlGrammar $apiSchemas[0].SchemaDocumentContentType
+        Assert-AreEqual $wadlApiId $apiSchemas[0].ApiId
 
         # commented as powershell test framework on running test in playback mode, throws 403, as the exported link of file
         # gets expired
@@ -434,6 +450,12 @@ function Api-ImportExportWsdlTest {
         Assert-AreEqual $wsdlApiId2 $api.ApiId
         Assert-AreEqual $path2 $api.Path
 
+        $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $wsdlApiId2
+        Assert-NotNull $apiSchemas
+        Assert-AreEqual 4 $apiSchemas.Count
+        Assert-AreEqual XsdSchema $apiSchemas[0].SchemaDocumentContentType
+        Assert-AreEqual $wsdlApiId2 $apiSchemas[0].ApiId
+
         $newName = "apimSoap"
         $newDescription = "Soap api via Apim"
         $api = Set-AzApiManagementApi -InputObject $api -Name $newName -Description $newDescription -ServiceUrl $api.ServiceUrl -Protocols $api.Protocols -PassThru
@@ -488,6 +510,13 @@ function Api-ImportExportOpenApiTest {
 
         Assert-AreEqual $openApiId2 $api.ApiId
         Assert-AreEqual $path2 $api.Path
+
+         # get openapi schema
+        $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $openApiId1
+        Assert-NotNull $apiSchemas
+        Assert-AreEqual 1 $apiSchemas.Count
+        Assert-AreEqual OpenApiComponents $apiSchemas[0].SchemaDocumentContentType
+        Assert-AreEqual $openApiId1 $apiSchemas[0].ApiId
 
         $newName = "apimPetstore"
         $newDescription = "Open api via Apim"
@@ -2964,9 +2993,88 @@ function BackendServiceFabric-CrudTest {
 
 <#
 .SYNOPSIS
-Tests CRUD operations of APIVersion set.
+Tests CRUD operations of APIVersion set when performing Set ON Api
 #>
-function ApiVersionSet-CrudTest {
+function ApiVersionSet-SetCrudTest {
+    Param($resourceGroupName, $serviceName)
+
+    $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+
+    # get all apis
+    $apiversionsets = Get-AzApiManagementApiVersionSet -Context $context
+    # there should be no API Version sets initially
+    Assert-AreEqual 0 $apiversionsets.Count
+
+    # new api details
+    $swaggerPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "SwaggerPetStoreV2.json"
+    $path1 = "swaggerapifromFile"
+    $swaggerApiId1 = getAssetName        
+    $newApiVersionSetId = getAssetName
+    try {
+        $newVersionSetName = getAssetName
+        $queryName = getAssetName
+        $description = getAssetName
+
+        $newApiVersionSet = New-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId -Name $newVersionSetName -Scheme Query `
+            -QueryName $queryName -Description $description
+
+        Assert-AreEqual $newApiVersionSetId $newApiVersionSet.ApiVersionSetId
+        Assert-AreEqual $newVersionSetName $newApiVersionSet.DisplayName
+        Assert-AreEqual $description $newApiVersionSet.Description
+        Assert-AreEqual Query $newApiVersionSet.VersioningScheme
+        Assert-AreEqual $queryName $newApiVersionSet.VersionQueryName
+        Assert-Null $newApiVersionSet.VersionHeaderName
+
+        # update the versioning scheme to be header based
+        $versionHeaderName = getAssetName
+        $newApiVersionSet = Set-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId  `
+            -Scheme Header -HeaderName $versionHeaderName -PassThru
+
+        Assert-AreEqual $newApiVersionSetId $newApiVersionSet.ApiVersionSetId
+        Assert-AreEqual $newVersionSetName $newApiVersionSet.DisplayName
+        Assert-AreEqual $description $newApiVersionSet.Description
+        Assert-AreEqual Header $newApiVersionSet.VersioningScheme
+        Assert-AreEqual $versionHeaderName $newApiVersionSet.VersionHeaderName
+
+        # get the api version set using id
+        $newApiVersionSet = Get-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId
+        Assert-AreEqual $newApiVersionSetId $newApiVersionSet.ApiVersionSetId
+        Assert-AreEqual $newVersionSetName $newApiVersionSet.DisplayName
+        Assert-AreEqual $description $newApiVersionSet.Description
+        Assert-AreEqual Header $newApiVersionSet.VersioningScheme
+        Assert-AreEqual $versionHeaderName $newApiVersionSet.VersionHeaderName
+        
+        # import api from file
+        $api = Import-AzApiManagementApi -Context $context -ApiId $swaggerApiId1 -SpecificationPath $swaggerPath -SpecificationFormat Swagger -Path $path1
+        Assert-AreEqual $swaggerApiId1 $api.ApiId
+        Assert-AreEqual $path1 $api.Path
+
+        # now add the api to the version set
+        $api.ApiVersionSetId = $newApiVersionSet.Id
+        $api.APIVersion = "v1"
+        $api.ApiVersionSetDescription = $newApiVersionSet.Description
+        $updatedApi = Set-AzApiManagementApi -InputObject $api -PassThru
+        Assert-NotNull $updatedApi
+        Assert-AreEqual $newApiVersionSet.Id $updatedApi.ApiVersionSetId
+        Assert-AreEqual $newApiVersionSet.Description $updatedApi.ApiVersionSetDescription
+        Assert-AreEqual "v1" $updatedApi.ApiVersion
+    }
+    finally {
+        # remove created api
+        $removed = Remove-AzApiManagementApi -Context $context -ApiId $swaggerApiId1 -PassThru
+        Assert-True { $removed }
+
+        # remove created api version set
+        $removed = Remove-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId -PassThru
+        Assert-True { $removed }
+    }
+}
+
+<#
+.SYNOPSIS
+Tests CRUD operations of APIVersion set when Importing an API
+#>
+function ApiVersionSet-ImportCrudTest {
     Param($resourceGroupName, $serviceName)
 
     $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName

@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.CloudServiceConfiguration omObject;
         
-        public PSCloudServiceConfiguration(string osFamily, string targetOSVersion = null)
+        public PSCloudServiceConfiguration(string osFamily, string osVersion = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.CloudServiceConfiguration(osFamily, targetOSVersion);
+            this.omObject = new Microsoft.Azure.Batch.CloudServiceConfiguration(osFamily, osVersion);
         }
         
         internal PSCloudServiceConfiguration(Microsoft.Azure.Batch.CloudServiceConfiguration omObject)
@@ -46,14 +46,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
-        }
-        
-        public string CurrentOSVersion
-        {
-            get
-            {
-                return this.omObject.CurrentOSVersion;
-            }
         }
         
         public string OSFamily
@@ -68,15 +60,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public string TargetOSVersion
+        public string OSVersion
         {
             get
             {
-                return this.omObject.TargetOSVersion;
+                return this.omObject.OSVersion;
             }
             set
             {
-                this.omObject.TargetOSVersion = value;
+                this.omObject.OSVersion = value;
             }
         }
     }

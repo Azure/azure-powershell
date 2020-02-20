@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Batch
             HelpMessage = "Specifies what to do with active tasks associated with the job.")]
         public DisableJobOption DisableJobOption { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             DisableJobParameters parameters = new DisableJobParameters(this.BatchContext, this.Id, null, this.DisableJobOption, this.AdditionalBehaviors);
             BatchClient.DisableJob(parameters);

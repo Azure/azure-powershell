@@ -33,13 +33,16 @@ function Test-PoolCRUD
         $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
         New-AzBatchPool $poolId1 -CloudServiceConfiguration $paasConfiguration -TargetDedicated $targetDedicated -VirtualMachineSize $vmSize -BatchContext $context
 
-        $vmSize = "standard_a1"
-        $publisher = "Canonical"
-        $offer = "UbuntuServer"
-        $osSKU = "16.04.0-LTS"
+        $vmSize = "standard_d1_v2"
+        $publisher = "microsoft-azure-batch"
+        $offer = "ubuntu-server-container"
+        $osSKU = "16-04-lts"
         $nodeAgent = "batch.node.ubuntu 16.04"
         $imageRef = New-Object Microsoft.Azure.Commands.Batch.Models.PSImageReference -ArgumentList @($offer, $publisher, $osSKU)
         $iaasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration -ArgumentList @($imageRef, $nodeAgent)
+        $iaasConfiguration.ContainerConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSContainerConfiguration
+        $iaasConfiguration.ContainerConfiguration.ContainerImageNames = New-Object System.Collections.Generic.List[string]
+        $iaasConfiguration.ContainerConfiguration.ContainerImageNames.Add("test")
         New-AzBatchPool $poolId2 -VirtualMachineConfiguration $iaasConfiguration -TargetDedicated $targetDedicated -VirtualMachineSize $vmSize -BatchContext $context
 
         # List the pools to ensure they were created
@@ -48,6 +51,11 @@ function Test-PoolCRUD
         $pool2 = $pools | Where-Object { $_.Id -eq $poolId2 }
         Assert-NotNull $pool1
         Assert-NotNull $pool2
+
+        # Ensure that some of the properties were set correctly
+        Assert-NotNull $pool2.VirtualMachineConfiguration.ContainerConfiguration
+        Assert-NotNull $pool2.VirtualMachineConfiguration.ContainerConfiguration.ContainerImageNames
+        Assert-AreEqual "test" $pool2.VirtualMachineConfiguration.ContainerConfiguration.ContainerImageNames[0]
 
         # Update a pool
         $startTaskCmd = "/bin/bash -c 'echo start task'"

@@ -29,6 +29,7 @@ using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using OutputFileUploadCondition = Microsoft.Azure.Batch.Common.OutputFileUploadCondition;
+using ResourceFile = Microsoft.Azure.Batch.ResourceFile;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 {
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             cmdlet.JobId = "job-1";
 
-            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+            var e = Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.Id = "testTask";
 
@@ -77,9 +78,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.ExecuteCmdlet();
         }
 
-        [Fact]
+        [Theory]
+        [InlineData("cmd /c echo hello")]
+        [InlineData("")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewBatchTaskParametersGetPassedToRequestTest()
+        public void NewBatchTaskParametersGetPassedToRequestTest(string commandline)
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
@@ -89,18 +92,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.AffinityInformation = new PSAffinityInformation("affinityValue");
             cmdlet.DisplayName = "display name";
             cmdlet.Constraints = new PSTaskConstraints(TimeSpan.FromHours(1), TimeSpan.FromDays(2), 5);
-            cmdlet.CommandLine = "cmd /c echo hello";
+            cmdlet.CommandLine = commandline;
             cmdlet.EnvironmentSettings = new Dictionary<string, string>();
             cmdlet.EnvironmentSettings.Add("env1", "value1");
             cmdlet.MultiInstanceSettings = new PSMultiInstanceSettings("cmd /c echo coordinating", 3)
             {
                 CommonResourceFiles = new List<PSResourceFile>()
                 {
-                    new PSResourceFile("https://some.blob", "myFile.txt")
+                    new PSResourceFile(ResourceFile.FromUrl("https://some.blob", "myFile.txt"))
                 }
             };
-            cmdlet.ResourceFiles = new Dictionary<string, string>();
-            cmdlet.ResourceFiles.Add("anotherFile.txt", "https://another.blob");
+            cmdlet.ResourceFiles = new PSResourceFile[]
+            {
+                new PSResourceFile(ResourceFile.FromUrl("anotherFile.txt", "https://another.blob"))
+            };
 
             TaskAddParameter requestParameters = null;
 
@@ -127,10 +132,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             Assert.Equal(cmdlet.MultiInstanceSettings.NumberOfInstances, requestParameters.MultiInstanceSettings.NumberOfInstances);
             Assert.Equal(cmdlet.MultiInstanceSettings.CoordinationCommandLine, requestParameters.MultiInstanceSettings.CoordinationCommandLine);
             Assert.Equal(cmdlet.MultiInstanceSettings.CommonResourceFiles.Count, requestParameters.MultiInstanceSettings.CommonResourceFiles.Count);
-            Assert.Equal(cmdlet.MultiInstanceSettings.CommonResourceFiles[0].BlobSource, requestParameters.MultiInstanceSettings.CommonResourceFiles[0].BlobSource);
+            Assert.Equal(cmdlet.MultiInstanceSettings.CommonResourceFiles[0].HttpUrl, requestParameters.MultiInstanceSettings.CommonResourceFiles[0].HttpUrl);
             Assert.Equal(cmdlet.MultiInstanceSettings.CommonResourceFiles[0].FilePath, requestParameters.MultiInstanceSettings.CommonResourceFiles[0].FilePath);
-            Assert.Equal(cmdlet.ResourceFiles.Count, requestParameters.ResourceFiles.Count);
-            Assert.Equal(cmdlet.ResourceFiles["anotherFile.txt"], requestParameters.ResourceFiles[0].BlobSource);
+            Assert.Equal(cmdlet.ResourceFiles.Length, requestParameters.ResourceFiles.Count);
+            Assert.Equal(cmdlet.ResourceFiles.Single().HttpUrl, requestParameters.ResourceFiles.Single().HttpUrl);
         }
 
         [Fact]
@@ -149,12 +154,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             cmdlet.JobId = "job-id";
 
-            string applicationId = "foo";
+            string applicationName = "foo";
             string applicationVersion = "beta";
 
             cmdlet.ApplicationPackageReferences = new[]
             {
-                new PSApplicationPackageReference { ApplicationId = applicationId, Version = applicationVersion} ,
+                new PSApplicationPackageReference { ApplicationId = applicationName, Version = applicationVersion} ,
             };
 
             // Don't go to the service on an Add CloudJob call
@@ -163,7 +168,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
                 request =>
                 {
                     var applicationPackageReference = request.Parameters.ApplicationPackageReferences.First();
-                    Assert.Equal(applicationId, applicationPackageReference.ApplicationId);
+                    Assert.Equal(applicationName, applicationPackageReference.ApplicationId);
                     Assert.Equal(applicationVersion, applicationPackageReference.Version);
                 });
 
@@ -173,7 +178,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.ExecuteCmdlet();
         }
 
-        private void ExitConditionsAreSentToService()
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ExitConditionsAreSentToService()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
@@ -312,11 +319,65 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            string[] taskIds = new[] {"simple1", "simple2"};
-            PSCloudTask expected1 = new PSCloudTask(taskIds[0], commandLine);
-            PSCloudTask expected2 = new PSCloudTask(taskIds[1], commandLine);
+            const string pattern = @"**\*.txt";
+            const string containerUrl = "containerUrl";
+            const string path = "path";
+            const OutputFileUploadCondition uploadCondition = OutputFileUploadCondition.TaskCompletion;
 
-            cmdlet.Tasks = new PSCloudTask[] {expected1, expected2};
+            string[] taskIds = new[] { "simple1", "simple2" };
+            PSCloudTask[] tasks = taskIds.Select(
+                id => new PSCloudTask(id, commandLine)
+                {
+                    ResourceFiles = new[]
+                    {
+                         new PSResourceFile(ResourceFile.FromUrl("anotherFile.txt", "https://another.blob"))
+                    },
+                    OutputFiles = new[] 
+                    {
+                        new PSOutputFile(
+                            pattern,
+                            new PSOutputFileDestination(new PSOutputFileBlobContainerDestination(containerUrl, path)),
+                            new PSOutputFileUploadOptions(uploadCondition))
+                    },
+                    ApplicationPackageReferences = new[]
+                    {
+                        new PSApplicationPackageReference
+                        {
+                            ApplicationId = "1",
+                            Version = "foo"
+                        }
+                    },
+                    ExitConditions = new PSExitConditions()
+                    {
+                        ExitCodeRanges = new List<PSExitCodeRangeMapping>
+                        {
+                            new PSExitCodeRangeMapping(
+                                5,
+                                10,
+                                new PSExitOptions
+                                {
+                                    DependencyAction = Azure.Batch.Common.DependencyAction.Block
+                                })
+
+                        },
+                        ExitCodes = new List<PSExitCodeMapping>
+                        {
+                            new PSExitCodeMapping(
+                                11,
+                                new PSExitOptions
+                                {
+                                    DependencyAction = Azure.Batch.Common.DependencyAction.Block
+                                })
+
+                        },
+                        Default = new PSExitOptions
+                        {
+                            DependencyAction = Azure.Batch.Common.DependencyAction.Satisfy
+                        }
+                    }
+                }).ToArray();
+
+            cmdlet.Tasks = tasks;
 
             IList<TaskAddParameter> requestCollection = null;
 
@@ -344,6 +405,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             foreach (var task in requestCollection)
             {
                 Assert.Contains(task.Id, taskIds);
+                Assert.NotNull(task.ResourceFiles);
+                Assert.NotEmpty(task.ResourceFiles);
+                Assert.NotNull(task.OutputFiles);
+                Assert.NotEmpty(task.OutputFiles);
+                Assert.NotNull(task.ApplicationPackageReferences);
+                Assert.NotEmpty(task.ApplicationPackageReferences);
+
+                Assert.NotNull(task.ExitConditions.ExitCodeRanges);
+                Assert.NotEmpty(task.ExitConditions.ExitCodeRanges);
+                Assert.NotNull(task.ExitConditions.ExitCodes);
+                Assert.NotEmpty(task.ExitConditions.ExitCodes);
+                Assert.NotNull(task.ExitConditions.DefaultProperty);
             }
         }
 

@@ -239,7 +239,7 @@ Source of the route
 Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource
 Parameter Sets: InputObjectTestAllRouteSet, TestAllRouteSet, ResourceIdTestAllRouteSet
 Aliases:
-Accepted values: Invalid, DeviceMessages, TwinChangeEvents, DeviceLifecycleEvents, DeviceJobLifecycleEvents
+Accepted values: Invalid, DeviceMessages, TwinChangeEvents, DeviceLifecycleEvents, DeviceJobLifecycleEvents, DigitalTwinChangeEvents
 
 Required: True
 Position: 1

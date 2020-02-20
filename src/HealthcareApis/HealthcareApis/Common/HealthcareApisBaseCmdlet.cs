@@ -115,21 +115,9 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
         {
             if (healthcareApisAccount != null)
             {
-                WriteObject(PSHealthcareApisService.Create(healthcareApisAccount));
+                PSHealthcareApisService value = PSHealthcareApisService.Create(healthcareApisAccount);
+                WriteObject(value);
             }
-        }
-
-        protected void WriteHealthcareApisAccountList(
-          IEnumerable<ServicesDescription> healthcareApisAccounts)
-        {
-            List<PSHealthcareApisService> output = new List<PSHealthcareApisService>();
-            if (healthcareApisAccounts != null)
-            {
-                healthcareApisAccounts.ForEach(
-                    healthcareApisAccount => output.Add(PSHealthcareApisService.Create(healthcareApisAccount)));
-            }
-
-            WriteObject(output, true);
         }
 
         protected bool ValidateAndExtractName(string resourceId, out string resourceGroupName, out string resourceName)

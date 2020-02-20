@@ -174,10 +174,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             this.PeeringServiceName = peeringService.Name;
             if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"peering service prefix for the resource group name:{this.ResourceGroupName} peering service name:{this.PeeringServiceName} and resource name:{this.Name}.")))
             {
-                this.PeeringServicePrefixesClient.CreateOrUpdate(this.ResourceGroupName, this.PeeringServiceName, this.Name, prefix);
+                this.PeeringServicePrefixesClient.CreateOrUpdate(this.ResourceGroupName, this.PeeringServiceName, this.Name, prefix.Prefix);
                 return this.ToPeeringServicePrefixPS(this.PeeringServicePrefixesClient.Get(this.ResourceGroupName, this.PeeringServiceName, this.Name));
             }
-            return new PSPeeringServicePrefix { Prefix = this.Prefix, LearnedType = Models.LearnedType.None, PrefixValidationState = Models.PrefixValidationState.Pending };
+            return new PSPeeringServicePrefix { Prefix = this.Prefix };
         }
     }
 }

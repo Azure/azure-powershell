@@ -122,6 +122,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Disable = "Disable";
 
         /// <summary>
+        ///     Disabled.
+        /// </summary>
+        public const string Disabled = "Disabled";
+
+        /// <summary>
         ///     Represents Disable protection.
         /// </summary>
         public const string DisableProtection = "Disable";
@@ -130,6 +135,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Enable.
         /// </summary>
         public const string Enable = "Enable";
+
+        /// <summary>
+        ///     Enabled.
+        /// </summary>
+        public const string Enabled = "Enabled";
 
         /// <summary>
         ///     Represents Enable protection.
@@ -428,6 +438,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string SelectedByDefault = "SelectedByDefault";
 
         /// <summary>
+        ///     Secondary Vm on Recovery cloud
+        /// </summary>
+        public const string SecondaryVMOnRecoveryCloud = "SecondaryVMOnRecoveryCloud";
+
+        /// <summary>
         ///     Nic Selection Type - SelectedByUser
         /// </summary>
         public const string SelectedByUser = "SelectedByUser";
@@ -448,9 +463,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Sync = "Sync";
 
         /// <summary>
-        ///     Represents Premium_LRS storage account.
+        ///     Represents Standard_LRS storage account.
         /// </summary>
         public const string Standard_LRS = "Standard_LRS";
+
+        /// <summary>
+        ///     Represents Standard_SSD storage account.
+        /// </summary>
+        public const string Standard_SSD = "Standard_SSD";
 
         /// <summary>
         ///     Azure VM temporary disk name, to be excluded as part of switch protection.

@@ -37,6 +37,7 @@ using Newtonsoft.Json;
 using Microsoft.Rest.Azure;
 using rpError = Microsoft.Azure.Commands.RecoveryServices.RestApiInfra;
 using Formatting = System.Xml.Formatting;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     {
         private static AzureContext AzureContext;
 
-        private readonly Common.Compute.Version2016_04_preview.ComputeManagementClient computeManagementClient;
+        private readonly ComputeManagementClient computeManagementClient;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             AzureContext = (AzureContext)azureProfile.DefaultContext;
 
             this.computeManagementClient = AzureSession.Instance.ClientFactory
-                .CreateArmClient<Common.Compute.Version2016_04_preview.ComputeManagementClient>(
+                .CreateArmClient<ComputeManagementClient>(
                     AzureContext,
                     AzureEnvironment.Endpoint.ResourceManager);
         }
@@ -73,7 +74,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets the value of recovery services vault management client.
         /// </summary>
-        public Common.Compute.Version2016_04_preview.ComputeManagementClient GetComputeManagementClient => this
-            .computeManagementClient;
+        public ComputeManagementClient GetComputeManagementClient => this.computeManagementClient;
     }
 }

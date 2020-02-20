@@ -35,11 +35,12 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string ApplicationId { get; set; }
+        [Alias("ApplicationId")]
+        public string ApplicationName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
-            if (string.IsNullOrEmpty(this.ApplicationId))
+            if (string.IsNullOrEmpty(this.ApplicationName))
             {
                 foreach (PSApplication context in BatchClient.ListApplications(this.ResourceGroupName, this.AccountName))
                 {
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.Batch
             }
             else
             {
-                PSApplication context = BatchClient.GetApplication(this.ResourceGroupName, this.AccountName, this.ApplicationId);
+                PSApplication context = BatchClient.GetApplication(this.ResourceGroupName, this.AccountName, this.ApplicationName);
                 WriteObject(context);
             }
         }

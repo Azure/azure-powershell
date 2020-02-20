@@ -20,19 +20,19 @@ Tests creating a new application
 function Test-AddApplication
 {
     # Setup
-    $applicationId = "test"
+    $applicationName = "test"
     $applicationVersion = "foo"
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     try
     {
-        $addAppPack = New-AzBatchApplication -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
-        $getapp = Get-AzBatchApplication -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
+        $addAppPack = New-AzBatchApplication -AccountName $context.AccountName -ApplicationName $applicationName -ResourceGroupName $context.ResourceGroupName
+        $getapp = Get-AzBatchApplication -AccountName $context.AccountName -ApplicationName $applicationName -ResourceGroupName $context.ResourceGroupName
 
         Assert-AreEqual $getapp.Id $addAppPack.Id
     }
     finally
     {
-        Remove-AzBatchApplication  -AccountName $context.AccountName -ApplicationId $applicationId -ResourceGroupName $context.ResourceGroupName
+        Remove-AzBatchApplication  -AccountName $context.AccountName -ApplicationName $applicationName -ResourceGroupName $context.ResourceGroupName
     }
 }

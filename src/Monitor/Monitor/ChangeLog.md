@@ -16,8 +16,31 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
-        
+-->
 ## Upcoming Release
+
+## Version 1.6.0
+* Fixed description of the Get-AzLog cmdlet.
+* A new parameter called ActionGroupId was added to `New-AzMetricAlertRuleV2` command.
+	- The user can provide either ActionGroupId(string) or ActionGorup(ActivityLogAlertActionGroup).
+
+## Version 1.5.0
+* Update references in .psd1 to use relative path
+* Adding optional argument to the Add Diagnostic Settings command. A switch argument that if present indicates that the export to Log Analytics must be to a fixed schema (a.k.a. dedicated, data type)
+
+## Version 1.4.0
+* New action group receivers added for action group
+	-ItsmReceiver
+	-VoiceReceiver
+	-ArmRoleReceiver
+	-AzureFunctionReceiver
+	-LogicAppReceiver
+	-AutomationRunbookReceiver
+	-AzureAppPushReceiver
+* Use common alert schema enabled for the receivers. This is not applicable for SMS, Azure App push , ITSM and Voice recievers
+* Webhooks now supports Azure active directory authentication .
+
+## Version 1.3.0
 * Pointing to the most recent Monitor SDK, i.e. 0.24.1-preview
    - Adds non-braking changes to the Metrics cmdlets, i.e. the Unit enumeration supports several new values. These are read-only cmdlets, so there would be no change in the input of the cmdlets.
    - The api-version of the **ActionGroups** requests is now **2019-06-01**, before it was **2018-03-01**. The scenario tests have been updated to accommodate for this change.

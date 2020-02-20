@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 486748AC-3932-4E0C-BBCC-2BC194E69DCC
@@ -28,17 +28,12 @@ The cmdlet returns a **BatchAccountContext** object that has its current **Prima
 ```
 PS C:\>New-AzBatchAccountKey -AccountName "pfuller" -KeyType "Primary"
 AccountName                  : pfuller
-
 Location                     : westus
-
 ResourceGroupName            : CmdletExampleRG
-
-CoreQuota                    : 20
-
+DedicatedCoreQuota           : 20
+LowPriorityCoreQuota         : 20
 PoolQuota                    : 20
-
 ActiveJobAndJobScheduleQuota : 20
-
 Tags                         : 
 TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
 ```
@@ -112,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -126,7 +121,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
 
 [Azure Batch Cmdlets](./Az.Batch.md)
 

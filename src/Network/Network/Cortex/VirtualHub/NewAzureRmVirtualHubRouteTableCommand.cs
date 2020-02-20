@@ -19,7 +19,9 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.Network.Models;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
+    [CmdletDeprecation(ReplacementCmdletName = "Add-AzVirtualHubRouteTable")]
     [Cmdlet(VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRouteTable",
         SupportsShouldProcess = false),
@@ -34,10 +36,14 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            
-            var virtualHubRouteTable = new PSVirtualHubRouteTable
-            {
-                Routes = this.Route == null ? new List<PSVirtualHubRoute> () : this.Route?.ToList()
+
+            // Since this cmdlet and the VirtualHubRouteTable property of
+            // hub will be deprecated, we will rename this route table to 
+            // called defaultRouteTable and it will be attached to All_Branches
+            var virtualHubRouteTable = new PSVirtualHubRouteTable { 
+                Routes = this.Route == null ? new List<PSVirtualHubRoute>() : this.Route?.ToList(),
+                Name = "defaultRouteTable",
+                Connections = new List<string>() { "All_Branches" }
             };
 
             WriteObject(virtualHubRouteTable);

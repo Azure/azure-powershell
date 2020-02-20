@@ -158,3 +158,14 @@ Stops an Azure Web App slot.
 ### [Switch-AzWebAppSlot](Switch-AzWebAppSlot.md)
 Swap two slots with a Web App
 
+### [Get-AzWebAppAccessRestrictionConfig](Get-AzWebAppAccessRestrictionConfig.md)
+Gets the Access Restriction settings of an Azure Web App.
+
+### [Update-AzWebAppAccessRestrictionConfig](Update-AzWebAppAccessRestrictionConfig.md)
+Update SCM Site Inheritance config for an Azure Web App.
+
+### [Add-AzWebAppAccessRestrictionRule](Add-AzWebAppAccessRestrictionRule.md)
+Adds an Access Restriction to an Azure Web App.
+
+### [Remove-AzWebAppAccessRestrictionRule](Remove-AzWebAppAccessRestrictionRule.md)
+Removes an Access Restriction to an Azure Web App

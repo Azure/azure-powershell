@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.Network
             MNM.SecurityRuleProtocol.Tcp,
             MNM.SecurityRuleProtocol.Udp,
             MNM.SecurityRuleProtocol.Icmp,
+            MNM.SecurityRuleProtocol.Esp,
+            MNM.SecurityRuleProtocol.Ah,
             MNM.SecurityRuleProtocol.Asterisk,
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]

@@ -122,6 +122,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.ApiType, opt => opt.MapFrom(src => src.ApiType ?? ApiType.Http))
                     .ForMember(dest => dest.IsCurrent, opt => opt.MapFrom(src => src.IsCurrent ?? false))
                     .ForMember(dest => dest.IsOnline, opt => opt.MapFrom(src => src.IsOnline ?? false))
+                    .ForMember(dest => dest.ApiVersionSetDescription, opt => opt.MapFrom(src => src.ApiVersionDescription))
                     .ForMember(dest => dest.Protocols, opt => opt.MapFrom(src => src.Protocols.ToArray()))
                     .ForMember(
                         dest => dest.AuthorizationServerId,
@@ -174,6 +175,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.ApiType, opt => opt.MapFrom(src => src.ApiType ?? ApiType.Http))
                     .ForMember(dest => dest.IsCurrent, opt => opt.MapFrom(src => src.IsCurrent))
                     .ForMember(dest => dest.IsOnline, opt => opt.MapFrom(src => src.IsOnline))
+                    .ForMember(dest => dest.ApiVersionDescription, opt => opt.MapFrom(src => src.ApiVersionSetDescription))
                     .ForMember(dest => dest.Protocols, opt => opt.MapFrom(src => src.Protocols.ToArray()))
                     .AfterMap((src, dest) =>
                         dest.AuthenticationSettings = Utils.ToAuthenticationSettings(src))
@@ -191,6 +193,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.ApiType, opt => opt.MapFrom(src => src.ApiType ?? ApiType.Http))
                     .ForMember(dest => dest.IsCurrent, opt => opt.MapFrom(src => src.IsCurrent))
                     .ForMember(dest => dest.IsOnline, opt => opt.MapFrom(src => src.IsOnline))
+                    .ForMember(dest => dest.ApiVersionDescription, opt => opt.MapFrom(src => src.ApiVersionSetDescription))
                     .ForMember(dest => dest.Protocols, opt => opt.MapFrom(src => src.Protocols.ToArray()))
                     .AfterMap((src, dest) =>
                         dest.AuthenticationSettings = Utils.ToAuthenticationSettings(src))
@@ -845,6 +848,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             if (urlSchema != null)
             {
+                urlSchema = urlSchema.Distinct().ToArray();
                 api.Protocols = Mapper.Map<IList<Protocol?>>(urlSchema);
             }
 

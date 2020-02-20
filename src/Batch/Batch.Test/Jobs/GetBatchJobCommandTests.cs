@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.Filter = null;
 
             // Build a CloudJob instead of querying the service on a Get CloudJob call
-            string applicationId = "foo";
+            string applicationName = "foo";
             string applicationVersion = "beta";
             ProxyModels.CloudJob cloudTask = new ProxyModels.CloudJob
             {
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
                 {
                     ApplicationPackageReferences = new[]
                     {
-                        new ProxyModels.ApplicationPackageReference(applicationId, applicationVersion)
+                        new ProxyModels.ApplicationPackageReference(applicationName, applicationVersion)
                     }
                 }
             };
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
 
             var psApplicationPackageReference = pipeline[0].JobManagerTask.ApplicationPackageReferences.First();
-            Assert.Equal(applicationId, psApplicationPackageReference.ApplicationId);
+            Assert.Equal(applicationName, psApplicationPackageReference.ApplicationId);
             Assert.Equal(applicationVersion, psApplicationPackageReference.Version);
         }
     }

@@ -161,7 +161,7 @@ PS C:\>Connect-AzAccount
 PS C:\> $Context = New-AzStorageContext -StorageAccountName "myaccountname" -UseConnectedAccount
 ```
 
-This command creates a context by using the OAuth (Azure AD)  Authentication.
+This command creates a context by using the OAuth (Azure AD) Authentication.
 
 ## PARAMETERS
 

@@ -119,24 +119,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     string[] subfolders = NamingUtil.ValidatePath(this.Path);
                     targetDir = baseDirectory.GetDirectoryReferenceByPath(subfolders);
 
-                    if (!targetDir.Exists())
-                    {
-                        foundAFolder = false;
-                    }
-
-                    if (!foundAFolder)
-                    {
-                        //Get file
-                        string[] filePath = NamingUtil.ValidatePath(this.Path, true);
-                        targetFile = baseDirectory.GetFileReferenceByPath(filePath);
-
-                        this.Channel.FetchFileAttributesAsync(
-                            targetFile,
-                            null,
-                            this.RequestOptions,
-                            this.OperationContext,
-                            this.CmdletCancellationToken).ConfigureAwait(false);
-                    }
+                    // Don't need check the path target to File or FileDir since: 
+                    // 1. check File/FileDir exist will fail on File/FileDir with DeletePending status
+                    // 2. The File handle request send with CloudFileDirectory and CloudFile are same with same path, so need to differ it.
                 }
             }
 

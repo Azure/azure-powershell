@@ -15,7 +15,7 @@ Deletes a long term retention backup.
 ### RemoveBackupDefault (Default)
 ```
 Remove-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String>
- [-DatabaseName] <String> [-BackupName] <String> [[-ResourceGroupName] <String>] [-Force]
+ [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -201,7 +201,7 @@ Parameter Sets: RemoveBackupDefault
 Aliases:
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

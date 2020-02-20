@@ -52,6 +52,42 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public IList<PSWebhookReceiver> WebhookReceivers { get; set; }
 
         /// <summary>
+        /// Gets or sets the list of itsm receviers.
+        /// </summary>
+        public IList<PSItsmReceiver> ItsmReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of voice receviers.
+        /// </summary>
+        public IList<PSVoiceReceiver> VoiceReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of armrole receviers.
+        /// </summary>
+        public IList<PSArmRoleReceiver> ArmRoleReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of azure function receviers.
+        /// </summary>
+        public IList<PSAzureFunctionReceiver> AzureFunctionReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of logic app receviers.
+        /// </summary>
+        public IList<PSLogicAppReceiver> LogicAppReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of automation runbook  receviers.
+        /// </summary>
+        public IList<PSAutomationRunbookReceiver> AutomationRunbookReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of azure app push receviers.
+        /// </summary>
+        public IList<PSAzureAppPushReceiver> AzureAppPushReceivers { get; set; }
+
+
+        /// <summary>
         /// Initializes a new instance of the PSActionGroupProperty class.
         /// </summary>
         /// <param name="actionGroup">The action group to wrap.</param>
@@ -62,6 +98,13 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.EmailReceivers = actionGroup.EmailReceivers.Select(e => new PSEmailReceiver(e)).ToList();
             this.SmsReceivers = actionGroup.SmsReceivers.Select(s => new PSSmsReceiver(s)).ToList();
             this.WebhookReceivers = actionGroup.WebhookReceivers.Select(w => new PSWebhookReceiver(w)).ToList();
+            this.ItsmReceivers = actionGroup.ItsmReceivers.Select(w => new PSItsmReceiver(w)).ToList();
+            this.VoiceReceivers = actionGroup.VoiceReceivers.Select(w => new PSVoiceReceiver(w)).ToList();
+            this.ArmRoleReceivers = actionGroup.ArmRoleReceivers.Select(w => new PSArmRoleReceiver(w)).ToList();
+            this.AzureFunctionReceivers = actionGroup.AzureFunctionReceivers.Select(w => new PSAzureFunctionReceiver(w)).ToList();
+            this.LogicAppReceivers = actionGroup.LogicAppReceivers.Select(w => new PSLogicAppReceiver(w)).ToList();
+            this.AutomationRunbookReceivers = actionGroup.AutomationRunbookReceivers.Select(w => new PSAutomationRunbookReceiver(w)).ToList();
+            this.AzureAppPushReceivers = actionGroup.AzureAppPushReceivers.Select(w => new PSAzureAppPushReceiver(w)).ToList();
         }
     }
 }

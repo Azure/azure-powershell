@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = Constants.ODataFilterParameterSet), ValidateRange(1, defaultMaxCount)]
         public int MaxCount { get; set; } = defaultMaxCount;
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             ListPoolNodeCountsOptions options = new ListPoolNodeCountsOptions(this.BatchContext, this.PoolId, this.Pool, this.MaxCount, this.AdditionalBehaviors);
 

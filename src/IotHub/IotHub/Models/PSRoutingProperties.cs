@@ -39,6 +39,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         [JsonProperty(PropertyName = "fallbackRoute")]
         public PSFallbackRouteMetadata FallbackRoute { get; set; }
 
-
+        /// <summary>
+        /// Gets or sets the list of user-provided enrichments that the IoT hub
+        /// applies to messages to be delivered to built-in and custom
+        /// endpoints. See: https://aka.ms/iotmsgenrich
+        /// </summary>
+        [JsonProperty(PropertyName = "enrichments")]
+        public IList<PSEnrichmentMetadata> Enrichments { get; set; }
     }
 }

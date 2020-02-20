@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSTaskDependencies dependsOn;
         
-        private IList<PSEnvironmentSetting> environmentSettings;
+        private IDictionary environmentSettings;
         
         private PSTaskExecutionInformation executionInformation;
         
@@ -283,24 +283,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public IList<PSEnvironmentSetting> EnvironmentSettings
+        public IDictionary EnvironmentSettings
         {
             get
             {
                 if (((this.environmentSettings == null) 
                             && (this.omObject.EnvironmentSettings != null)))
                 {
-                    List<PSEnvironmentSetting> list;
-                    list = new List<PSEnvironmentSetting>();
+                    Dictionary<string, string> dict;
+                    dict = new Dictionary<string, string>();
                     IEnumerator<Microsoft.Azure.Batch.EnvironmentSetting> enumerator;
                     enumerator = this.omObject.EnvironmentSettings.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
-                        list.Add(new PSEnvironmentSetting(enumerator.Current));
+                        dict.Add(enumerator.Current.Name, enumerator.Current.Value);
                     }
-                    this.environmentSettings = list;
+                    this.environmentSettings = dict;
                 }
                 return this.environmentSettings;
             }

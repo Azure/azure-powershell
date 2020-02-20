@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCloudJobSchedule JobSchedule { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             this.BatchClient.UpdateJobSchedule(this.BatchContext, this.JobSchedule, this.AdditionalBehaviors);
         }

@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         const string UpdateEventHubEndpointPropertiesParameterSet = "UpdateEventHubEndpointProperties";
         const string UpdateFileUploadPropertiesParameterSet = "UpdateFileUploadProperties";
         const string UpdateCloudToDevicePropertiesParameterSet = "UpdateCloudToDeviceProperties";
-        const string UpdateOperationsMonitoringPropertiesParameterSet = "UpdateOperationsMonitoringProperties";
         const string UpdateRoutingPropertiesParameterSet = "UpdateRoutingProperties";        
         const string UpdateRoutePropertiesParameterSet = "UpdateRouteProperties";
         const string UpdateFallbackRoutePropertyParameterSet = "UpdateFallbackRouteProperty";
@@ -121,15 +120,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             HelpMessage = "Properties for CloudToDevice Messages")]
         [ValidateNotNullOrEmpty]
         public PSCloudToDeviceProperties CloudToDevice { get; set; }
-
-        public const string ChangeDesc = "Parameter is being deprecated without being replaced as IotHub is no longer using built-in endpoint(\"operationsMonitoringEvents\").";
-        [CmdletParameterBreakingChange("OperationsMonitoringProperties", ChangeDescription = ChangeDesc)]
-        [Parameter(
-            ParameterSetName = UpdateOperationsMonitoringPropertiesParameterSet,
-            Mandatory = true,
-            HelpMessage = "Set Operations Monitoring Properties")]
-        [ValidateNotNullOrEmpty]
-        public PSOperationsMonitoringProperties OperationsMonitoringProperties { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateRoutingPropertiesParameterSet,

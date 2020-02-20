@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSPoolEndpointConfiguration endpointConfiguration;
         
+        private IList<System.String> publicIPs;
+        
         public PSNetworkConfiguration()
         {
             this.omObject = new Microsoft.Azure.Batch.NetworkConfiguration();
@@ -48,6 +50,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
+        }
+        
+        public Microsoft.Azure.Batch.Common.DynamicVNetAssignmentScope? DynamicVNetAssignmentScope
+        {
+            get
+            {
+                return this.omObject.DynamicVNetAssignmentScope;
+            }
+            set
+            {
+                this.omObject.DynamicVNetAssignmentScope = value;
+            }
         }
         
         public PSPoolEndpointConfiguration EndpointConfiguration
@@ -72,6 +86,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.EndpointConfiguration = value.omObject;
                 }
                 this.endpointConfiguration = value;
+            }
+        }
+        
+        public IList<System.String> PublicIPs
+        {
+            get
+            {
+                if (((this.publicIPs == null) 
+                            && (this.omObject.PublicIPs != null)))
+                {
+                    List<System.String> list;
+                    list = new List<System.String>();
+                    IEnumerator<System.String> enumerator;
+                    enumerator = this.omObject.PublicIPs.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(enumerator.Current);
+                    }
+                    this.publicIPs = list;
+                }
+                return this.publicIPs;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.PublicIPs = null;
+                }
+                else
+                {
+                    this.omObject.PublicIPs = new List<System.String>();
+                }
+                this.publicIPs = value;
             }
         }
         

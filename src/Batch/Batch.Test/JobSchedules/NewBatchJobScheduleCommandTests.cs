@@ -80,10 +80,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             Models.PSJobSpecification jobSpec = new Models.PSJobSpecification()
             {
                 DisplayName = "job display name",
-                CommonEnvironmentSettings = new List<Models.PSEnvironmentSetting>()
+                CommonEnvironmentSettings = new Dictionary<string, string>
                 {
-                    new Models.PSEnvironmentSetting("common1", "val1"),
-                    new Models.PSEnvironmentSetting("common2", "val2")
+                    { "common1", "val1" },
+                    { "common2", "val2" }
                 },
                 JobManagerTask = new Models.PSJobManagerTask("job manager", "cmd /c echo job manager"),
                 JobPreparationTask = new Models.PSJobPreparationTask("cmd /c echo job prep"),
@@ -122,10 +122,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             // Verify the request parameters match the cmdlet parameters
             Assert.Equal(cmdlet.DisplayName, requestParameters.DisplayName);
             Assert.Equal(jobSpec.CommonEnvironmentSettings.Count, requestParameters.JobSpecification.CommonEnvironmentSettings.Count);
-            Assert.Equal(jobSpec.CommonEnvironmentSettings[0].Name, requestParameters.JobSpecification.CommonEnvironmentSettings[0].Name);
-            Assert.Equal(jobSpec.CommonEnvironmentSettings[0].Value, requestParameters.JobSpecification.CommonEnvironmentSettings[0].Value);
-            Assert.Equal(jobSpec.CommonEnvironmentSettings[1].Name, requestParameters.JobSpecification.CommonEnvironmentSettings[1].Name);
-            Assert.Equal(jobSpec.CommonEnvironmentSettings[1].Value, requestParameters.JobSpecification.CommonEnvironmentSettings[1].Value);
+            Assert.Contains(
+                requestParameters.JobSpecification.CommonEnvironmentSettings,
+                setting => setting.Name == "common1" && setting.Value == jobSpec.CommonEnvironmentSettings["common1"].ToString());
+            Assert.Contains(
+                requestParameters.JobSpecification.CommonEnvironmentSettings,
+                setting => setting.Name == "common2" && setting.Value == jobSpec.CommonEnvironmentSettings["common2"].ToString());
             Assert.Equal(jobSpec.JobManagerTask.Id, requestParameters.JobSpecification.JobManagerTask.Id);
             Assert.Equal(jobSpec.JobPreparationTask.CommandLine, requestParameters.JobSpecification.JobPreparationTask.CommandLine);
             Assert.Equal(jobSpec.JobReleaseTask.CommandLine, requestParameters.JobSpecification.JobReleaseTask.CommandLine);

@@ -31,5 +31,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public int? RateLimitThreshold { get; set; }
 
         public string Name { get; set; }
+
+        public string EnabledState { get; set; }
     }
 }

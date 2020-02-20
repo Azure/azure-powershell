@@ -20,7 +20,7 @@ Set-AzDiagnosticSetting -ResourceId <String> [-Name <String>] [-StorageAccountId
  [-Enabled <Boolean>] [-Category <System.Collections.Generic.List`1[System.String]>]
  [-MetricCategory <System.Collections.Generic.List`1[System.String]>]
  [-Timegrain <System.Collections.Generic.List`1[System.String]>] [-RetentionEnabled <Boolean>]
- [-WorkspaceId <String>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-WorkspaceId <String>] [-ExportToResourceSpecific] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -119,10 +119,10 @@ All other time grains and categories are unchanged.
 
 ### Example 5: Using pipeline
 ```
-PS C:\>Get-AzDiagnosticSetting -ResourceId "Resource01" | Set-AzDiagnosticSetting
+PS C:\>Get-AzDiagnosticSetting -ResourceId "Resource01" | Set-AzDiagnosticSetting -Enabled $True -Category Category1,Category2
 ```
 
-This command uses the PowerShell pipeline to set (not change made) a diagnostic setting.
+This command uses the PowerShell pipeline to set (no change made) a diagnostic setting.
 
 ## PARAMETERS
 
@@ -193,6 +193,23 @@ The event hub name
 
 ```yaml
 Type: System.String
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExportToResourceSpecific
+Flag indicating that the export to LA must be done to a resource specific table, a.k.a. dedicated or fixed schema table, as opposed to the **default** dynamic schema table called **AzureDiagnostics**.
+
+This argument is effective only when the argument **-workspaceId** is also given.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: OldSetDiagnosticSetting
 Aliases:
 

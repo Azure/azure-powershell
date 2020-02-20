@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSTaskIdRange(enumerator.Current));
                     }
-                    this.taskIdRanges = list.AsReadOnly();
+                    this.taskIdRanges = list;
                 }
                 return this.taskIdRanges;
             }
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(enumerator.Current);
                     }
-                    this.taskIds = list.AsReadOnly();
+                    this.taskIds = list;
                 }
                 return this.taskIds;
             }

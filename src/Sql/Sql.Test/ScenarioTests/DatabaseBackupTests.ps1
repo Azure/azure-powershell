@@ -37,11 +37,11 @@ function Test-ListDatabaseRestorePoints
 			-Edition Standard -RequestedServiceObjectiveName S0
 
 		# Get restore points from data warehouse database.
-		$restorePoints = Get-AzSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
+		$restorePoints = Get-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 		Assert-Null $restorePoints # Since the data warehouse database has just been created, it should not have any discrete restore points.
 
 		# Get restore points from standard database through pipe.
-		$restorePoints = $standarddb | Get-AzSqlDatabaseRestorePoints 
+		$restorePoints = $standarddb | Get-AzSqlDatabaseRestorePoint 
 		Assert-AreEqual $restorePoints.Count 1 # Standard databases should only have 1 continuous restore point.
 		$restorePoint = $restorePoints[0]
 		Assert-AreEqual $restorePoint.RestorePointType Continuous
@@ -369,7 +369,7 @@ function Test-NewDatabaseRestorePoint
 		New-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointLabel $label
 
 		# Get restore points from data warehouse database.
-		$restorePoints = Get-AzSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
+		$restorePoints = Get-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 
 		# We just created a restore point
 		Assert-AreEqual $restorePoints.Count 1
@@ -405,7 +405,7 @@ function Test-RemoveDatabaseRestorePoint
 		New-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointLabel $label
 
 		# Get restore points from data warehouse database.
-		$restorePoints = Get-AzSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
+		$restorePoints = Get-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 
 		# We just created a restore point
 		Assert-AreEqual $restorePoints.Count 1
@@ -418,7 +418,7 @@ function Test-RemoveDatabaseRestorePoint
 
 		Wait-Seconds 60
 	    # Get restore points from data warehouse database.
-		$restorePoints = Get-AzSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
+		$restorePoints = Get-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 
 		# We just created a restore point
 		Assert-AreEqual $restorePoints.Count 0

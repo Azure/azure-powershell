@@ -11,8 +11,6 @@ Locale: en-US
 Azure Service Fabric Module that you can use to automate the end-2-end operations like creating a secure cluster, rolling over cluster certificates, adding or removed nodes from the cluster, etc. The complete list of all operations are listed below.
 
 ## Az.ServiceFabric Cmdlets
-### [Add-AzServiceFabricApplicationCertificate](Add-AzServiceFabricApplicationCertificate.md)
-Add a new certificate to the Virtual Machine Scale Set(s) that make up the cluster. The certificate is intended to be used as an application certificate.
 
 ### [Add-AzServiceFabricClientCertificate](Add-AzServiceFabricClientCertificate.md)
 Add common name or thumbprint to the cluster for client authentication purposes.

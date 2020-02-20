@@ -36,11 +36,10 @@ function Test-AccountActiveDirectory
         Username = "sdkuser1"
 		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
         Password = "sdkpass1"
-        Domain = "sdkdomain1"
-        Dns = "127.0.0.2"
-        SmbServerName = "PSSMBSNam1"
+        Domain = "sdkdomain"
+        Dns = "127.0.0.1"
+        SmbServerName = "PSSMBSName"
     }
-    
 
     try
     {
@@ -79,7 +78,7 @@ function Test-AccountActiveDirectory
         Assert-AreEqual $activeDirectory1.Username $retrievedAcc.ActiveDirectories[0].Username
 
         # patch an Active Directory with no active directory. Should be no change
-        # create and check account 1
+        # except for the tag update
         $newTagName = "tag1"
         $newTagValue = "tagValue2"
         $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -Tag @{$newTagName = $newTagValue}
@@ -89,20 +88,21 @@ function Test-AccountActiveDirectory
         Assert-AreEqual 1 $retrievedAcc.ActiveDirectories.Length
         Assert-AreEqual "tagValue2" $retrievedAcc.Tags[$newTagName].ToString()
 
-        # patch an Active Directory. Should be updated to contain only the new one
-        $activedirectories = @( $activeDirectory2 )
-        $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -ActiveDirectory $activedirectories
-        Assert-AreEqual $accName1 $retrievedAcc.Name
-        Assert-AreEqual $activeDirectory2.SmbServerName $retrievedAcc.ActiveDirectories[0].SmbServerName
-        Assert-AreEqual $activeDirectory2.Username $retrievedAcc.ActiveDirectories[0].Username
-        Assert-AreEqual 1 $retrievedAcc.ActiveDirectories.Length
-        Assert-AreEqual "tagValue2" $retrievedAcc.Tags[$newTagName].ToString()
-
         # update (put) the account. The absence of an active directory should result in the removal of any currently associated. Also tags
         $retrievedAcc = Set-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -AccountName $accName1 -Location $resourceLocation
         Assert-AreEqual $accName1 $retrievedAcc.Name
         Assert-Null $retrievedAcc.Tags
         Assert-Null $retrievedAcc.ActiveDirectories
+
+        # patch an Active Directory. Should be updated to contain only the new one
+        $activedirectories = @( $activeDirectory2 )
+        $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -ActiveDirectory $activedirectories
+        Assert-AreEqual $accName1 $retrievedAcc.Name
+        # correction to (wildcard values in) returned password expected in RP
+        # add this check back in at that time since username/password are the two fields of concern
+        # Assert-AreEqual $activeDirectory2.Password $retrievedAcc.ActiveDirectories[0].Password
+        Assert-AreEqual $activeDirectory2.Username $retrievedAcc.ActiveDirectories[0].Username
+        Assert-AreEqual 1 $retrievedAcc.ActiveDirectories.Length
     }
     finally
     {

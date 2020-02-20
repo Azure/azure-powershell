@@ -19,6 +19,31 @@
 -->
 ## Upcoming Release
 
+## Version 1.7.2
+* Added SubscriptionId, TenantId, and execution time into data of client side telemetry
+
+## Version 1.7.1
+* Disable context auto saving when AzureRmContext.json not available
+* Update the reference to Azure Powershell Common to 1.3.5-preview
+
+## Version 1.7.0
+* Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix
+
+## Version 1.6.6
+* Add client-side telemetry info for Az 4.0 preview
+
+## Version 1.6.5
+* Update references in .psd1 to use relative path
+* Set correct UserAgent for client-side telemetry for Az 4.0 preview
+* Display user friendly error message when context is null in Az 4.0
+* Add endpoints for attestation service
+
+## Version 1.6.4
+* Add a deprecation message for `Resolve-Error` alias.
+
+## Version 1.6.3
+* Update telemetry and url rewriting for generated modules, fix windows unit tests.
+
 ## Version 1.6.2
 * Fixed miscellaneous typos across module
 * Support user-assigned MSI in Azure Functions Authentication (#9479)

@@ -30,47 +30,38 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Deny", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateEndpointConnection", DefaultParameterSetName = "ByResourceId"), OutputType(typeof(PSPrivateEndpointConnection))]
     public class DenyAzurePrivateEndpointConnection : PrivateEndpointConnectionBaseCmdlet
     {
+        [Alias("ResourceName")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.",
+            ParameterSetName = "ByResource")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The reason of action.")]
+        public string Description { get; set; }
+
         public override void Execute()
         {
             base.Execute();
-
-            string resourceType = string.Empty;
-            string parentResource = string.Empty;
 
             if (this.IsParameterBound(c => c.ResourceId))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.Name = resourceIdentifier.ResourceName;
-                resourceType = resourceIdentifier.ResourceType;
-                parentResource = resourceIdentifier.ParentResource;
-                this.ServiceName = parentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+                this.PrivateLinkResourceType = resourceIdentifier.ResourceType.Substring(0, resourceIdentifier.ResourceType.LastIndexOf('/'));
+                this.ServiceName = resourceIdentifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
             }
 
-            var psPrivateLinkService = this.GetPrivateLinkService(ResourceGroupName, ServiceName);
+            IPrivateLinkProvider provider = BuildProvider(this.PrivateLinkResourceType);
 
-            var peConnection = psPrivateLinkService.PrivateEndpointConnections.FirstOrDefault(
-                    resource =>
-                        string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
-
-            if (peConnection == null)
-            {
-                throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.Name));
-            }
-
-            peConnection.PrivateLinkServiceConnectionState.Status = "Rejected";
-            if(!string.IsNullOrEmpty(Description))
-            {
-                peConnection.PrivateLinkServiceConnectionState.Description = Description;
-            }
-
-            var peConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateEndpointConnection>(peConnection);
-            this.PrivateLinkServiceClient.UpdatePrivateEndpointConnection(ResourceGroupName, ServiceName, Name, peConnectionModel);
-
-            // Get the current object
-            var getPrivateLinkService = GetPrivateLinkService(ResourceGroupName, ServiceName);
-            var getPrivateEndpointConnection = getPrivateLinkService.PrivateEndpointConnections.Find(x => x.Name == Name);
-            WriteObject(getPrivateEndpointConnection);
+            var pec = provider.UpdatePrivateEndpointConnectionStatus(this.ResourceGroupName, this.ServiceName, this.Name, "Rejected", this.Description);
+            WriteObject(pec);
         }
     }
 }

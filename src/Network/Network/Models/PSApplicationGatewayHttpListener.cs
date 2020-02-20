@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Protocol { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string HostName { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public List<string> HostNames { get; set; }
         public PSResourceId SslCertificate { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public bool RequireServerNameIndication { get; set; }
@@ -34,6 +36,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
         public List<PSApplicationGatewayCustomError> CustomErrorConfigurations { get; set; }
+        public PSResourceId FirewallPolicy { get; set; }
 
         [JsonIgnore]
         public string FrontendIpConfigurationText
@@ -51,6 +54,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string SslCertificateText
         {
             get { return JsonConvert.SerializeObject(SslCertificate, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string FirewallPolicyText
+        {
+            get { return JsonConvert.SerializeObject(FirewallPolicy, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

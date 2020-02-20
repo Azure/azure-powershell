@@ -145,6 +145,12 @@ namespace Microsoft.Azure.Commands.Network
         public PSIpsecPolicy[] IpsecPolicies { get; set; }
 
         [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A list of traffic selector policies.")]
+        public PSTrafficSelectorPolicy[] TrafficSelectorPolicy { get; set; }
+
+        [Parameter(
         Mandatory = false,
         HelpMessage = "Gateway connection protocol:IKEv1/IKEv2")]
         [ValidateSet(
@@ -218,10 +224,15 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGatewayConnection.Peer = new PSResourceId();
                 vnetGatewayConnection.Peer.Id = this.PeerId;
             }
-            
+
             if (this.IpsecPolicies != null)
             {
                 vnetGatewayConnection.IpsecPolicies = this.IpsecPolicies?.ToList();
+            }
+
+            if (this.TrafficSelectorPolicy != null)
+            {
+                vnetGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
             }
 
             // Map to the sdk object

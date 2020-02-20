@@ -294,38 +294,3 @@ function Test-SetAzureRmServiceFabricUpgradeType
 	$clusters = Get-AzServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
 	Assert-AreEqual $clusters[0].UpgradeMode 'Manual'
 }
-
-function Test-AddAzureRmServiceFabricApplicationCertificate
-{
-	$clusterName = Get-ClusterName
-	$resourcGroup = Get-ResourceGroupName
-	$certSecert = Get-CertAppSecretUrl
-	$res = Add-AzServiceFabricApplicationCertificate -ResourceGroupName $resourcGroup -Name $clusterName -SecretIdentifier $certSecert
-	Assert-NotNull $res.CertificateThumbprint
-}
-
-function Test-AddAzureRmServiceFabricApplicationCertificateRollback
-{
-	$clusterName = Get-ClusterName
-	$resourcGroup = Get-ResourceGroupName
-	$certWU_SecretId = Get-CertWUSecretUrl
-
-	$exceptionThrown = $false
-	Try
-	{
-		$res = Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName $resourcGroup -Name $clusterName -SecretIdentifier $certWU_SecretId
-	}
-	Catch [System.Exception]
-	{
-		$Exception = $PSitem.Exception
-		while ($Exception.InnerException -ne $null)
-		{
-			$Exception = $Exception.InnerException
-		}
-		
-		Assert-AreEqual $true ($Exception.Message -match 'is different from the location of the VM') ("unexpected error message: " + $Exception.Message )
-		$exceptionThrown = $true
-	}
-
-	Assert-AreEqual $true $exceptionThrown "Expected Exception keyvault in different location than VMSS not thrown"
-}

@@ -125,13 +125,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             try
             {
                 var location = this.PeeringServiceLocationsClient.List();
-                var CheckProvider = this.PeeringManagementClient.CheckServiceProviderAvailability(
-                    new CheckServiceProviderAvailabilityInput(this.PeeringLocation, this.PeeringServiceProvider));
+                var CheckProvider = this.PeeringManagementClient.CheckServiceProviderAvailability(this.PeeringLocation, this.PeeringServiceProvider);
                 if (!CheckProvider.Equals(Constants.Available, StringComparison.InvariantCultureIgnoreCase))
                 {
                     throw new ItemNotFoundException(string.Format(Resources.Error_ProviderNotFound, this.PeeringServiceProvider, this.PeeringLocation, CheckProvider));
                 }
-
+                
                 var peeringService = new PeeringService
                 {
                     Location = location.Select(ToPeeringServiceLocationPS).ToList().Find(x => x.State.Equals(this.PeeringLocation.Trim(), StringComparison.InvariantCultureIgnoreCase)).AzureRegion,

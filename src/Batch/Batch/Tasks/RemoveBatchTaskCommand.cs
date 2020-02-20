@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             string taskId = InputObject == null ? this.Id : InputObject.Id;
             TaskOperationParameters parameters = new TaskOperationParameters(this.BatchContext, this.JobId,

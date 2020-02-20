@@ -8,6 +8,8 @@ schema: 2.0.0
 # Test-AzMlOpClusterSystemServicesUpdateAvailability
 
 ## SYNOPSIS
+**Important: This cmdlet is deprecated.**
+
 Checks if there are updates available for the system services associated with an operationalization cluster.
 
 ## SYNTAX

@@ -47,7 +47,16 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Use Local Azure IpAddress", Target = ViewControl.Table)]
         public bool UseLocalAzureIpAddress { get; set; }
 
+        [Ps1Xml(Label = "UsePolicyBasedTrafficSelectors", Target = ViewControl.Table)]
+        public bool UsePolicyBasedTrafficSelectors { get; set; }
+
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+        [Ps1Xml(Label = "VpnLink Connections", Target = ViewControl.Table)]
+        public List<PSVpnSiteLinkConnection> VpnLinkConnections { get; set; }
+
+        [Ps1Xml(Label = "Internet Security Enabled", Target = ViewControl.Table)]
+        public bool EnableInternetSecurity { get; set; }
     }
 }

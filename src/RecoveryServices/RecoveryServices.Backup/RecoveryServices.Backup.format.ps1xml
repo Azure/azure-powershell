@@ -521,6 +521,10 @@
             <Label>HealthStatus</Label>
             <Width>20</Width>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DeleteState</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -543,6 +547,9 @@
               <TableColumnItem>
                 <PropertyName>HealthStatus</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DeleteState</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -560,6 +567,10 @@
             <Width>40</Width>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>FriendlyName</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ContainerType</Label>
             <Width>20</Width>
           </TableColumnHeader>
@@ -575,12 +586,23 @@
             <Label>ProtectionStatus</Label>
             <Width>20</Width>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastBackupStatus</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceState</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ContainerType</PropertyName>
@@ -593,6 +615,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProtectionStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastBackupStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

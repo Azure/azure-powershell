@@ -2,7 +2,7 @@
 name: Az module bug report
 about: Report errors or unexpected behaviors for the Az module
 title: ''
-labels: ''
+labels: triage
 assignees: ''
 
 ---
@@ -29,7 +29,8 @@ assignees: ''
 
 ## Environment data
 
-<!-- Please run $PSVersionTable and paste the output in the below code block -->
+<!-- Please run $PSVersionTable and paste the output in the below code block
+     If running the Docker container image, indicate the tag of the image used and the version of Docker engine-->
 
 ```
 

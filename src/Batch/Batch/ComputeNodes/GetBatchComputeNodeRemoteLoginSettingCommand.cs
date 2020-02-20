@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSComputeNode ComputeNode { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             ComputeNodeOperationParameters parameters = new ComputeNodeOperationParameters(this.BatchContext, this.PoolId, this.ComputeNodeId, this.ComputeNode, this.AdditionalBehaviors);
 

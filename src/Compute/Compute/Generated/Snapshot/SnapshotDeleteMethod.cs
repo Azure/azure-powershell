@@ -84,7 +84,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string SnapshotName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         public SwitchParameter Force { get; set; }
 

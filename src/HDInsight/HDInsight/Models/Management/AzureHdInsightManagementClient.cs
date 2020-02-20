@@ -14,10 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Management.HDInsight.Models;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
@@ -26,7 +24,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     {
         public AzureHdInsightManagementClient(IAzureContext context)
         {
-            HdInsightManagementClient = AzureSession.Instance.ClientFactory.CreateClient<HDInsightManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            HdInsightManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<HDInsightManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>
@@ -36,9 +34,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         private IHDInsightManagementClient HdInsightManagementClient { get; set; }
 
-        public virtual ClusterGetResponse CreateNewCluster(string resourceGroupName, string clusterName, ClusterCreateParameters parameters)
+        public virtual Cluster CreateNewCluster(string resourceGroupName, string clusterName, OSType osType, ClusterCreateParameters parameters)
         {
-            return HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, parameters);
+            var createParams = CreateParametersConverter.GetExtendedClusterCreateParameters(clusterName, parameters);
+            createParams.Properties.OsType = osType;
+            return HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, createParams);
         }
 
         public virtual List<Cluster> GetCluster(string resourceGroupName, string clusterName)
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             var result = new List<Cluster>();
             if (string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(clusterName))
             {
-                result.AddRange(ListClusters().Clusters);
+                result.AddRange(ListClusters());
             }
             else if (string.IsNullOrEmpty(clusterName))
             {
-                result.AddRange(ListClusters(resourceGroupName).Clusters);
+                result.AddRange(ListClusters(resourceGroupName));
             }
             else if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -61,90 +61,121 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 var getresponse = Get(resourceGroupName, clusterName);
                 if (getresponse != null)
                 {
-                    result.Add(getresponse.Cluster);
+                    result.Add(getresponse);
                 }
             }
             return result;
         }
 
-        public virtual ClusterListResponse ListClusters()
+        public virtual IList<Cluster> ListClusters()
         {
-            return HdInsightManagementClient.Clusters.List();
+            var toReturn = new List<Cluster>();
+            var response = HdInsightManagementClient.Clusters.List();
+            toReturn.AddRange(response);
+            while (!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = HdInsightManagementClient.Clusters.ListNext(response.NextPageLink);
+                toReturn.AddRange(response);
+            }
+
+            return toReturn;
         }
 
-        public virtual ClusterListResponse ListClusters(string resourceGroupName)
+        public virtual IList<Cluster> ListClusters(string resourceGroupName)
         {
-            return HdInsightManagementClient.Clusters.ListByResourceGroup(resourceGroupName);
+            var toReturn = new List<Cluster>();
+            var response = HdInsightManagementClient.Clusters.ListByResourceGroup(resourceGroupName);
+            toReturn.AddRange(response);
+            while (!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = HdInsightManagementClient.Clusters.ListByResourceGroupNext(response.NextPageLink);
+                toReturn.AddRange(response);
+            }
+
+            return toReturn;
         }
 
-        public virtual ClusterGetResponse Get(string resourceGroupName, string clusterName)
+        public virtual Cluster Get(string resourceGroupName, string clusterName)
         {
             return HdInsightManagementClient.Clusters.Get(resourceGroupName, clusterName);
         }
 
-        public virtual OperationResource ResizeCluster(string resourceGroupName, string clusterName, ClusterResizeParameters resizeParams)
+        public virtual void ResizeCluster(string resourceGroupName, string clusterName, ClusterResizeParameters resizeParams)
         {
-            return HdInsightManagementClient.Clusters.Resize(resourceGroupName, clusterName, resizeParams);
+            HdInsightManagementClient.Clusters.Resize(resourceGroupName, clusterName, resizeParams);
         }
 
-        public virtual OperationResource ExecuteScriptActions(string resourceGroupName, string clusterName, ExecuteScriptActionParameters executeScriptActionParameters)
+        public virtual void ExecuteScriptActions(string resourceGroupName, string clusterName, ExecuteScriptActionParameters executeScriptActionParameters)
         {
-            return HdInsightManagementClient.Clusters.ExecuteScriptActions(resourceGroupName, clusterName, executeScriptActionParameters);
+            HdInsightManagementClient.Clusters.ExecuteScriptActions(resourceGroupName, clusterName, executeScriptActionParameters);
         }
 
-        public virtual ClusterRuntimeScriptActionDetailResponse GetScriptExecutionDetail(string resourceGroupName, string clusterName, long scriptExecutionId)
+        public virtual RuntimeScriptActionDetail GetScriptExecutionDetail(string resourceGroupName, string clusterName, long scriptExecutionId)
         {
-            return HdInsightManagementClient.Clusters.GetScriptExecutionDetail(resourceGroupName, clusterName, scriptExecutionId);
+            return HdInsightManagementClient.ScriptActions.GetExecutionDetail(resourceGroupName, clusterName, scriptExecutionId.ToString());
         }
 
-        public virtual ClusterListPersistedScriptActionsResponse ListPersistedScripts(string resourceGroupName, string clusterName)
+        public virtual IList<RuntimeScriptActionDetail> ListPersistedScripts(string resourceGroupName, string clusterName)
         {
-            return HdInsightManagementClient.Clusters.ListPersistedScripts(resourceGroupName, clusterName);
+            var toReturn = new List<RuntimeScriptActionDetail>();
+            var response = HdInsightManagementClient.ScriptActions.ListByCluster(resourceGroupName, clusterName);
+            toReturn.AddRange(response);
+            while (!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = HdInsightManagementClient.ScriptActions.ListByClusterNext(response.NextPageLink);
+                toReturn.AddRange(response);
+            }
+
+            return toReturn;
         }
 
-        public virtual ClusterListRuntimeScriptActionDetailResponse ListScriptExecutionHistory(string resourceGroupName, string clusterName)
+        public virtual List<RuntimeScriptActionDetail> ListScriptExecutionHistory(string resourceGroupName, string clusterName)
         {
-            return HdInsightManagementClient.Clusters.ListScriptExecutionHistory(resourceGroupName, clusterName);
+            var toReturn = new List<RuntimeScriptActionDetail>();
+            var response = HdInsightManagementClient.ScriptExecutionHistory.ListByCluster(resourceGroupName, clusterName);
+            toReturn.AddRange(response);
+            while (!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = HdInsightManagementClient.ScriptExecutionHistory.ListByClusterNext(response.NextPageLink);
+                toReturn.AddRange(response);
+            }
+
+            return toReturn;
         }
 
-        public virtual AzureOperationResponse DeletePersistedScript(string resourceGroupName, string clusterName, string scriptName)
+        public virtual void DeletePersistedScript(string resourceGroupName, string clusterName, string scriptName)
         {
-            return HdInsightManagementClient.Clusters.DeletePersistedScript(resourceGroupName, clusterName, scriptName);
+            HdInsightManagementClient.ScriptActions.Delete(resourceGroupName, clusterName, scriptName);
         }
 
-        public virtual AzureOperationResponse PromoteScript(string resourceGroupName, string clusterName, long scriptExecutionId)
+        public virtual void PromoteScript(string resourceGroupName, string clusterName, long scriptExecutionId)
         {
-            return HdInsightManagementClient.Clusters.PromoteScript(resourceGroupName, clusterName, scriptExecutionId);
+            HdInsightManagementClient.ScriptExecutionHistory.Promote(resourceGroupName, clusterName, scriptExecutionId.ToString());
         }
 
-        public virtual OperationResource DeleteCluster(string resourceGroupName, string clusterName)
+        public virtual void DeleteCluster(string resourceGroupName, string clusterName)
         {
-            return HdInsightManagementClient.Clusters.Delete(resourceGroupName, clusterName);
+            HdInsightManagementClient.Clusters.Delete(resourceGroupName, clusterName);
         }
 
-        public virtual OperationResource UpdateGatewayCredential(string resourceGroupName, string clusterName, HttpSettingsParameters httpSettings)
+        public virtual void UpdateGatewayCredential(string resourceGroupName, string clusterName, UpdateGatewaySettingsParameters updateGatewaySettingsParameters)
         {
-            return HdInsightManagementClient.Clusters.UpdateGatewaySettings(resourceGroupName, clusterName, httpSettings);
+            HdInsightManagementClient.Clusters.UpdateGatewaySettings(resourceGroupName, clusterName, updateGatewaySettingsParameters);
         }
 
-        public virtual HttpConnectivitySettings GetGatewaySettings(string resourceGroupName, string clusterName)
+        public virtual GatewaySettings GetGatewaySettings(string resourceGroupName, string clusterName)
         {
             return HdInsightManagementClient.Clusters.GetGatewaySettings(resourceGroupName, clusterName);
         }
 
-        public virtual ClusterListConfigurationsResponse ListConfigurations(string resourceGroupName, string clusterName)
+        public virtual CapabilitiesResult GetProperties(string location)
         {
-            return HdInsightManagementClient.Clusters.ListConfigurations(resourceGroupName, clusterName);
+            return HdInsightManagementClient.Locations.GetCapabilities(location);
         }
 
-        public virtual OperationResource ConfigureRdp(string resourceGroupName, string clusterName, RDPSettingsParameters rdpSettings)
+        public virtual ClusterConfigurations ListConfigurations(string resourceGroupName, string clusterName)
         {
-            return HdInsightManagementClient.Clusters.ConfigureRdpSettings(resourceGroupName, clusterName, rdpSettings);
-        }
-
-        public virtual CapabilitiesResponse GetCapabilities(string location)
-        {
-            return HdInsightManagementClient.Clusters.GetCapabilities(location);
+            return HdInsightManagementClient.Configurations.List(resourceGroupName, clusterName);
         }
 
         public virtual IDictionary<string, string> GetClusterConfigurations(string resourceGroupName, string clusterName, string configurationName)
@@ -158,25 +189,25 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 return properties;
             }
 
-            return HdInsightManagementClient.Clusters.GetClusterConfigurations(
+            return HdInsightManagementClient.Configurations.Get(
                 resourceGroupName,
                 clusterName,
-                configurationName).Configuration;
+                configurationName);
         }
 
-        public virtual OperationResource EnableOMS(string resourceGroupName, string clusterName, ClusterMonitoringRequest clusterMonitoringParameters)
+        public virtual void EnableMonitoring(string resourceGroupName, string clusterName, ClusterMonitoringRequest clusterMonitoringParameters)
         {
-            return HdInsightManagementClient.Clusters.EnableMonitoring(resourceGroupName, clusterName, clusterMonitoringParameters);
+            HdInsightManagementClient.Extensions.EnableMonitoring(resourceGroupName, clusterName, clusterMonitoringParameters);
         }
 
-        public virtual OperationResource DisableOMS(string resourceGroupName, string clusterName)
+        public virtual void DisableMonitoring(string resourceGroupName, string clusterName)
         {
-            return HdInsightManagementClient.Clusters.DisableMonitoring(resourceGroupName, clusterName);
+            HdInsightManagementClient.Extensions.DisableMonitoring(resourceGroupName, clusterName);
         }
 
-        public virtual ClusterMonitoringResponse GetOMS(string resourceGroupName, string clusterName)
+        public virtual ClusterMonitoringResponse GetMonitoring(string resourceGroupName, string clusterName)
         {
-            return HdInsightManagementClient.Clusters.GetMonitoringStatus(resourceGroupName, clusterName);
+            return HdInsightManagementClient.Extensions.GetMonitoringStatus(resourceGroupName, clusterName);
         }
     }
 }

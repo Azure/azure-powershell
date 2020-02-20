@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 93614655-A8F2-4A67-887D-43D41AB91F82
@@ -50,7 +50,7 @@ LastBootTime          : 7/25/2015 9:36:53 PM
 AllocationTime        : 7/25/2015 9:32:20 PM
 IPAddress             : 10.14.121.1
 AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
-VirtualMachineSize    : small
+VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 1
 StartTaskInformation  : 
 RecentTasks           : {}
@@ -60,7 +60,7 @@ Errors                :
 ```
 
 This command gets the compute node that has the ID tvm-2316545714_1-20150725t213220z from the pool that has the ID Pool06.
-Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
+Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Get all idle compute nodes from a pool
 ```
@@ -73,7 +73,7 @@ LastBootTime          : 7/25/2015 9:36:53 PM
 AllocationTime        : 7/25/2015 9:32:20 PM
 IPAddress             : 10.14.121.1
 AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
-VirtualMachineSize    : small
+VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 1
 StartTaskInformation  : 
 RecentTasks           : {}
@@ -89,7 +89,7 @@ LastBootTime          : 7/26/2015 5:33:58 PM
 AllocationTime        : 7/26/2015 5:29:20 PM
 IPAddress             : 10.14.121.38
 AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
-VirtualMachineSize    : small
+VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 0
 StartTaskInformation  : 
 RecentTasks           : 
@@ -112,7 +112,7 @@ LastBootTime          : 7/25/2015 9:36:53 PM
 AllocationTime        : 7/25/2015 9:32:20 PM
 IPAddress             : 10.14.121.1
 AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
-VirtualMachineSize    : small
+VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 1
 StartTaskInformation  : 
 RecentTasks           : {}
@@ -130,7 +130,7 @@ AllocationTime        : 7/26/2015 5:29:20 PM
 
 IPAddress             : 10.14.121.38
 AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
-VirtualMachineSize    : small
+VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 0
 StartTaskInformation  : 
 RecentTasks           : 
@@ -147,7 +147,7 @@ That cmdlet gets all compute nodes from that pool.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -274,7 +274,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -57,28 +57,25 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.DefaultStorageAccountName = StorageName;
             cmdlet.DefaultStorageAccountKey = StorageKey;
             cmdlet.ClusterType = ClusterType;
-            cmdlet.OSType = OSType.Linux;
             cmdlet.ClusterTier = Tier.Premium;
             cmdlet.SshCredential = _httpCred;
-            var cluster = new Cluster
+            var cluster = new Cluster(id: "id", name: ClusterName)
             {
-                Id = "id",
-                Name = ClusterName,
                 Location = Location,
                 Properties = new ClusterGetProperties
                 {
-                    ClusterVersion = "3.2",
+                    ClusterVersion = "3.6",
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = ClusterType
+                        Kind = ClusterType
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Linux,
-                    ClusterTier = Tier.Premium
+                    OsType = OSType.Linux,
+                    Tier = Tier.Premium
                 }
             };
             var coreConfigs = new Dictionary<string, string>
@@ -104,9 +101,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var serializedConfig = JsonConvert.SerializeObject(configurations);
             cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
 
-            var getresponse = new ClusterGetResponse { Cluster = cluster };
-
-            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
+            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, OSType.Linux, It.Is<ClusterCreateParameters>(
                 parameters =>
                     parameters.ClusterSizeInNodes == ClusterSize &&
                     parameters.DefaultStorageInfo as AzureStorageInfo != null &&
@@ -118,9 +113,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.SshUserName == _httpCred.UserName &&
                     parameters.SshPassword == _httpCred.Password.ConvertToString() &&
                     parameters.ClusterType == ClusterType &&
-                    parameters.OSType == OSType.Linux &&
                     parameters.ClusterTier == Tier.Premium)))
-            .Returns(getresponse)
+            .Returns(cluster)
             .Verifiable();
 
             cmdlet.ExecuteCmdlet();
@@ -130,7 +124,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 clusterout =>
                     clusterout.ClusterState == "Running" &&
                     clusterout.ClusterType == ClusterType &&
-                    clusterout.ClusterVersion == "3.2" &&
+                    clusterout.ClusterVersion == "3.6" &&
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&

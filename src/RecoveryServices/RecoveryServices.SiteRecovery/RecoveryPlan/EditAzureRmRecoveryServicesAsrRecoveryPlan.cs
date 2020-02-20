@@ -18,7 +18,6 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -30,12 +29,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",
         DefaultParameterSetName = ASRParameterSets.AppendGroup,
         SupportsShouldProcess = true)]
-    [CmdletOutputBreakingChange(
-        typeof(ASRRecoveryPlan),
-        DeprecatedOutputProperties = new String[] {
-            "ASRRecoveryPlanGroup.ReplicationProtectedItems",
-            "ASRRecoveryPlanGroup.StartGroupActions",
-            "ASRRecoveryPlanGroup.EndGroupActions" })]
     [Alias(
         "Edit-ASRRP",
         "Edit-ASRRecoveryPlan")]
@@ -181,7 +174,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                                     if (gp.ReplicationProtectedItems.Any(
                                         pi => string.Compare(
-                                                  pi.Id,
+                                                  pi.ID,
                                                   replicationProtectedItemResponse.Id,
                                                   StringComparison.OrdinalIgnoreCase) ==
                                               0))
@@ -197,7 +190,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                                 this.InputObject.Groups[this.InputObject.Groups.IndexOf(tempGroup)]
                                     .ReplicationProtectedItems
-                                    .Add(new ReplicationProtectedItem_2016_08_10(replicationProtectedItemResponse));
+                                    .Add(new ASRReplicationProtectedItem(replicationProtectedItemResponse));
                             }
                             else
                             {
@@ -230,7 +223,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                     .Groups[this.InputObject.Groups.IndexOf(tempGroup)]
                                     .ReplicationProtectedItems.FirstOrDefault(
                                         pi => string.Compare(
-                                                  pi.Id,
+                                                  pi.ID,
                                                   rpi.ID,
                                                   StringComparison.OrdinalIgnoreCase) ==
                                               0);

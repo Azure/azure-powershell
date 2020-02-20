@@ -23,9 +23,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
-    [GenericBreakingChange("New-AzIotHubExportDevices alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubExportDevice", SupportsShouldProcess = true)]
-    [Alias("New-AzIotHubExportDevices")]
     [OutputType(typeof(PSIotHubJobResponse))]
     public class NewAzureRmIotHubExportDevices : IotHubBaseCmdlet
     {

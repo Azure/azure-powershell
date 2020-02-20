@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                         storageRootPath: storageRootPath,
                         applicationId: appId,
                         tenantId: tenantId,
-                        certificateContents: Convert.FromBase64String(certContents ?? ""),
+                        certificateContents: null,
                         certificatePassword: certPassword,
                         resourceUri: resourceUri
                     );

@@ -43,27 +43,34 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         {
             var resourceGroupName = CdnEndpoint.ResourceGroupName;
             var profileName = CdnEndpoint.ProfileName;
+            try
+            {
+                var endpoint = CdnManagementClient.Endpoints.Update(
+                    resourceGroupName,
+                    profileName,
+                    CdnEndpoint.Name,
+                    new EndpointUpdateParameters(
+                        CdnEndpoint.Tags.ToDictionaryTags(),
+                        CdnEndpoint.OriginHostHeader,
+                        CdnEndpoint.OriginPath,
+                        CdnEndpoint.ContentTypesToCompress.ToList(),
+                        CdnEndpoint.IsCompressionEnabled,
+                        CdnEndpoint.IsHttpAllowed,
+                        CdnEndpoint.IsHttpsAllowed,
+                        (QueryStringCachingBehavior)Enum.Parse(typeof(QueryStringCachingBehavior), CdnEndpoint.QueryStringCachingBehavior.ToString()),
+                        CdnEndpoint.OptimizationType,
+                        CdnEndpoint.ProbePath,
+                        CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
+                        CdnEndpoint.DeliveryPolicy?.ToSdkDeliveryPolicy()));
 
-            var endpoint = CdnManagementClient.Endpoints.Update(
-                resourceGroupName,
-                profileName,
-                CdnEndpoint.Name,
-                new EndpointUpdateParameters(
-                    CdnEndpoint.Tags.ToDictionaryTags(),
-                    CdnEndpoint.OriginHostHeader,
-                    CdnEndpoint.OriginPath,
-                    CdnEndpoint.ContentTypesToCompress.ToList(),
-                    CdnEndpoint.IsCompressionEnabled,
-                    CdnEndpoint.IsHttpAllowed,
-                    CdnEndpoint.IsHttpsAllowed,
-                    (QueryStringCachingBehavior)Enum.Parse(typeof(QueryStringCachingBehavior), CdnEndpoint.QueryStringCachingBehavior.ToString()),
-                    CdnEndpoint.OptimizationType,
-                    CdnEndpoint.ProbePath,
-                    CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
-                    CdnEndpoint.DeliveryPolicy?.ToSdkDeliveryPolicy()));
-
-            WriteVerbose(Resources.Success);
-            WriteObject(endpoint.ToPsEndpoint());
+                WriteVerbose(Resources.Success);
+                WriteObject(endpoint.ToPsEndpoint());
+            }
+            catch (Microsoft.Azure.Management.Cdn.Models.ErrorResponseException e)
+            {
+                throw new PSArgumentException(string.Format("Error response received.Error Message: '{0}'",
+                                     e.Response.Content));
+            }
         }
     }
 }

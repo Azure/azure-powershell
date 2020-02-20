@@ -126,6 +126,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable internet security for this connection")]
+        public SwitchParameter EnableInternetSecurity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -159,6 +164,7 @@ namespace Microsoft.Azure.Commands.Network
 
             PSHubVirtualNetworkConnection hubVnetConnection = new PSHubVirtualNetworkConnection();
             hubVnetConnection.Name = this.Name;
+            hubVnetConnection.EnableInternetSecurity = this.EnableInternetSecurity.IsPresent;
 
             //// Resolve the remote virtual network
             //// Let's not try to resolve this since this can be in other RG/Sub/Location

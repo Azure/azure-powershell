@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// Updates the advanced threat protection properties for a specific database.
     /// </summary>
-    [GenericBreakingChange("Set-AzSqlDatabaseThreatDetectionPolicy alias will be removed in an upcoming breaking change release", "2.0.0")]
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAdvancedThreatProtectionSettings", SupportsShouldProcess = true), OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
-    [Alias("Set-AzSqlDatabaseThreatDetectionPolicy")]
+    [GenericBreakingChange("Set-AzSqlDatabaseAdvancedThreatProtectionSettings alias will be removed in an upcoming breaking change release", "3.0.0")]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAdvancedThreatProtectionSetting", SupportsShouldProcess = true), OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
+    [Alias("Set-AzSqlDatabaseAdvancedThreatProtectionSettings")]
     public class SetAzureSqlDatabaseThreatDetection : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         public string NotificationRecipientsEmails { get; set; }
 
         /// <summary>
-        /// Gets or sets the whether to email administrators
+        /// Gets or sets the whether to email administrators.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines whether to email administrators")]
         [ValidateNotNullOrEmpty]
@@ -55,7 +55,8 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
             DetectionType.Sql_Injection_Vulnerability,
             DetectionType.Unsafe_Action,
             DetectionType.Data_Exfiltration,
-            DetectionType.Access_Anomaly)]
+            DetectionType.Access_Anomaly,
+            DetectionType.Brute_Force)]
         public string[] ExcludedDetectionType { get; set; }
 
         /// <summary>

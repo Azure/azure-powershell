@@ -44,7 +44,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSCloudServiceConfiguration cloudServiceConfiguration;
         
-        private IList<PSMetadataItem> metadata;
+        private IDictionary metadata;
+        
+        private IList<PSMountConfiguration> mountConfiguration;
         
         private PSNetworkConfiguration networkConfiguration;
         
@@ -352,24 +354,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public IList<PSMetadataItem> Metadata
+        public IDictionary Metadata
         {
             get
             {
                 if (((this.metadata == null) 
                             && (this.omObject.Metadata != null)))
                 {
-                    List<PSMetadataItem> list;
-                    list = new List<PSMetadataItem>();
+                    Dictionary<string, string> dict;
+                    dict = new Dictionary<string, string>();
                     IEnumerator<Microsoft.Azure.Batch.MetadataItem> enumerator;
                     enumerator = this.omObject.Metadata.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
-                        list.Add(new PSMetadataItem(enumerator.Current));
+                        dict.Add(enumerator.Current.Name, enumerator.Current.Value);
                     }
-                    this.metadata = list;
+                    this.metadata = dict;
                 }
                 return this.metadata;
             }
@@ -384,6 +386,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.Metadata = new List<Microsoft.Azure.Batch.MetadataItem>();
                 }
                 this.metadata = value;
+            }
+        }
+        
+        public IList<PSMountConfiguration> MountConfiguration
+        {
+            get
+            {
+                if (((this.mountConfiguration == null) 
+                            && (this.omObject.MountConfiguration != null)))
+                {
+                    List<PSMountConfiguration> list;
+                    list = new List<PSMountConfiguration>();
+                    IEnumerator<Microsoft.Azure.Batch.MountConfiguration> enumerator;
+                    enumerator = this.omObject.MountConfiguration.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSMountConfiguration(enumerator.Current));
+                    }
+                    this.mountConfiguration = list;
+                }
+                return this.mountConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.MountConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.MountConfiguration = new List<Microsoft.Azure.Batch.MountConfiguration>();
+                }
+                this.mountConfiguration = value;
             }
         }
         
@@ -429,7 +466,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSResizeError(enumerator.Current));
                     }
-                    this.resizeErrors = list.AsReadOnly();
+                    this.resizeErrors = list;
                 }
                 return this.resizeErrors;
             }

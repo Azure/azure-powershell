@@ -43,18 +43,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        public const string ChangeDesc = "Parameter is being deprecated without being replaced as IotHub comes with only one built-in endpoint(\"events\") which could handle system and device messages.";
-        [CmdletParameterBreakingChange("EventHubEndpointName", ChangeDescription = ChangeDesc)]
         [Parameter(
-            Position = 2,
-            Mandatory = true,
-            HelpMessage = "EventHubEndpointName. Possible values events, operationsMonitoringEvents")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSetAttribute(EventsEndpointName, OperationsMonitoringEventsEndpointName)]
-        public string EventHubEndpointName { get; set; }
-
-        [Parameter(
-           Position = 3,
+           Position = 2,
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the EventHub ConsumerGroupName")]
@@ -71,8 +61,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 this.WriteObject(IotHubUtils.ToPSEventHubConsumerGroupInfo(iotHubEHConsumerGroups), true);
             }
         }
-
-        private const string EventsEndpointName = "events";
-        private const string OperationsMonitoringEventsEndpointName = "operationsMonitoringEvents";
     }
 }
