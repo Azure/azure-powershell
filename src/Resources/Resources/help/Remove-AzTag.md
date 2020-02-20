@@ -13,7 +13,7 @@ Deletes predefined Azure tags or values | Deletes the entire set of tags on a re
 
 ## SYNTAX
 
-### RemovePredefinedTagSet
+### RemovePredefinedTagParameterSet
 
 ```powershell
 Remove-AzTag [-Name] <String> [[-Value] <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
@@ -115,13 +115,13 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the tag to be deleted.
+Specifies the Name of the predefined tag to remove.
 By default, **Remove-AzTag** removes the specified tag and all of its values.
 To delete selected values, but not delete the tag, use the *Value* parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemovePredefinedTagSet
+Parameter Sets: RemovePredefinedTagParameterSet
 Aliases:
 
 Required: True
@@ -136,7 +136,7 @@ Deletes the specified values from the predefined tag, but does not delete the ta
 
 ```yaml
 Type: System.String[]
-Parameter Sets: RemovePredefinedTagSet
+Parameter Sets: RemovePredefinedTagParameterSet
 Aliases:
 
 Required: False
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the scope to get the entire set of tags, could be a subscription or resource.
+The resource identifier for the tagged entity. A resource, a resource group or a subscription may be tagged.
 
 ```yaml
 Type: System.String

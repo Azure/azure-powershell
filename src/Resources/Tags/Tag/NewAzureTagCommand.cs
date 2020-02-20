@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     {
         #region Parameter Set Names
 
-        private const string CreatePredefinedTagSet = "CreatePredefinedTagSet";
+        private const string CreatePredefinedTagParameterSet = "CreatePredefinedTagParameterSet";
         private const string CreateByResourceIdParameterSet = "CreateByResourceIdParameterSet";
 
         #endregion
@@ -40,16 +40,16 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         [Parameter(Position = 0, 
             Mandatory = true, 
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CreatePredefinedTagSet,
-            HelpMessage = "Name of the tag. If the tag name doesn't exist, create the tag name. Otherwise, add the value to the existing tag name.")]
+            ParameterSetName = CreatePredefinedTagParameterSet,
+            HelpMessage = "Name of the predefined tag. If the predefined tag name does not exist, create it.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Position = 1, 
             Mandatory = false, 
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CreatePredefinedTagSet,
-            HelpMessage = "Value of the tag. If specified, add the tag value to the tag name. Otherwise, keep the tag value unchanged.")]
+            ParameterSetName = CreatePredefinedTagParameterSet,
+            HelpMessage = "Value for the predefined tag.")]
         [ValidateNotNullOrEmpty]
         public string Value { get; set; }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CreateByResourceIdParameterSet,
-            HelpMessage = "Creates or updates the entire set of tags on resourceId, resourceId can be a resource or subscription.")]
+            HelpMessage = "The resource identifier for the entity being tagged. A resource, a resource group or a subscription may be tagged.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CreateByResourceIdParameterSet,
-            HelpMessage = "The tags need to be created or updated.")]
+            HelpMessage = "The tags to put on the resource.")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 

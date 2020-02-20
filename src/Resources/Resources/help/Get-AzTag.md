@@ -13,7 +13,7 @@ Gets predefined Azure tags | Gets the entire set of tags on a resource or subscr
 
 ## SYNTAX
 
-### GetPredefinedTagSet
+### GetPredefinedTagParameterSet
 ```
 Get-AzTag [[-Name] <String>] [-Detailed] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -162,7 +162,7 @@ Indicates that this operation adds information about tag values to the output.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: GetPredefinedTagSet
+Parameter Sets: GetPredefinedTagParameterSet
 Aliases:
 
 Required: False
@@ -173,13 +173,13 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the tag to get.
+Name of the predefined tag.
 By default, **Get-AzTag** gets basic information about all predefined tags in the subscription.
 When you specify the *Name* parameter, the *Detailed* parameter has no effect.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetPredefinedTagSet
+Parameter Sets: GetPredefinedTagParameterSet
 Aliases:
 
 Required: False
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the scope to get the entire set of tags, could be a subscription or resource.
+The resource identifier for the tagged entity. A resource, a resource group or a subscription may be tagged.
 
 ```yaml
 Type: System.String

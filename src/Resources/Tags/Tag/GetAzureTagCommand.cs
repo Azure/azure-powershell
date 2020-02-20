@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     {
         #region Parameter Set Names
 
-        private const string GetPredefinedTagSet = "GetPredefinedTagSet";
+        private const string GetPredefinedTagParameterSet = "GetPredefinedTagParameterSet";
         private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
 
         #endregion
@@ -37,21 +37,21 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         [Parameter(Position = 0, 
             Mandatory = false, 
             ValueFromPipelineByPropertyName = true, 
-            ParameterSetName = GetPredefinedTagSet, 
-            HelpMessage = "Name of the tag. If not specified, return all the tags of the subscription.")]
+            ParameterSetName = GetPredefinedTagParameterSet, 
+            HelpMessage = "Name of the tag. If not specified, return all the predefined and used tags under the subscription.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, 
             ValueFromPipelineByPropertyName = true, 
-            ParameterSetName = GetPredefinedTagSet, 
+            ParameterSetName = GetPredefinedTagParameterSet, 
             HelpMessage = "Whether should get the tag values information as well.")]
         public SwitchParameter Detailed { get; set; }
 
         [Parameter(Mandatory = true, 
             ValueFromPipelineByPropertyName = true, 
             ParameterSetName = GetByResourceIdParameterSet, 
-            HelpMessage = "Gets the entire set of tags on resourceId, resourceId can be a resource or subscription.")]
+            HelpMessage = "The resource identifier for the tagged entity. A resource, a resource group or a subscription may be tagged.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

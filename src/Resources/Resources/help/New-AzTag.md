@@ -13,7 +13,7 @@ Creates a predefined Azure tag or adds values to an existing tag | Creates or up
 
 ## SYNTAX
 
-### CreatePredefinedTagSet
+### CreatePredefinedTagParameterSet
 
 ```powershell
 New-AzTag [-Name] <String> [[-Value] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -207,14 +207,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the tag name.
+Specifies the predefined tag name.
 To create a new predefined tag, enter a unique name.
 To add a value to an existing tag, enter the name of the existing tag.
 If an existing predefined tag has the specified name, **New-AzTag** adds the specified value, if any, to the tag with that name instead of creating a new tag.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreatePredefinedTagSet
+Parameter Sets: CreatePredefinedTagParameterSet
 Aliases:
 
 Required: True
@@ -225,13 +225,13 @@ Accept wildcard characters: False
 ```
 
 ### -Value
-Specifies a tag value.
+Specifies a predefined tag value.
 Predefined tags can have multiple values, but you can enter only one value in each command.
 This parameter is optional, because tags can have names without values.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreatePredefinedTagSet
+Parameter Sets: CreatePredefinedTagParameterSet
 Aliases:
 
 Required: False
@@ -242,7 +242,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the scope to create or update the entire set of tags, could be a subscription or resource.
+The resource identifier for the entity being tagged. A resource, a resource group or a subscription may be tagged.
 
 ```yaml
 Type: System.String
@@ -257,7 +257,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies the Tag Dictionary needs to be created or updated on the {ResourceId}.
+The tags to put on the resource.
 
 ```yaml
 Type: System.Collections.Hashtable

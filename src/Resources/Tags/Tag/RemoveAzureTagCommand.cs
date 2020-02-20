@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     {
         #region Parameter Set Names
 
-        private const string RemovePredefinedTagSet = "RemovePredefinedTagSet";
+        private const string RemovePredefinedTagParameterSet = "RemovePredefinedTagParameterSet";
         private const string RemoveByResourceIdParameterSet = "RemoveByResourceIdParameterSet";
 
         #endregion
@@ -40,16 +39,16 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         [Parameter(Position = 0, 
             Mandatory = true, 
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = RemovePredefinedTagSet,
-            HelpMessage = "Name of the tag to remove.")]
+            ParameterSetName = RemovePredefinedTagParameterSet,
+            HelpMessage = "Name of the predefined tag to remove.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Position = 1, 
             Mandatory = false, 
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = RemovePredefinedTagSet,
-            HelpMessage = "Value of the tag to remove. If not specified, remove the entire tag. If specified, only remove the tag value.")]
+            ParameterSetName = RemovePredefinedTagParameterSet,
+            HelpMessage = "Predefined tag value to remove.")]
         [ValidateNotNullOrEmpty]
         public string[] Value { get; set; }
 
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = RemoveByResourceIdParameterSet,
-            HelpMessage = "Removes the entire set of tags on resourceId, resourceId can be a resource or subscription.")]
+            HelpMessage = "The resource identifier for the tagged entity. A resource, a resource group or a subscription may be tagged.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
