@@ -666,7 +666,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return result;
         }
 
-        private void WriteWarning(string message)
+        private void WriteWarningMessage(string message)
         {
             EventHandler<StreamEventArgs> writeWarningEvent;
             if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteWarningKey, out writeWarningEvent))
@@ -675,7 +675,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        private void WriteDebug(string message)
+        private void WriteDebugMessage(string message)
         {
             EventHandler<StreamEventArgs> writeDebugEvent;
             if(AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteDebugKey, out writeDebugEvent))
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     return;
                 }
 
-                WriteWarning($"No accounts found in the shared token cache; removing all user contexts.");
+                WriteWarningMessage($"No accounts found in the shared token cache; removing all user contexts.");
                 var removedContext = false;
                 foreach (var contextName in Contexts.Keys)
                 {
@@ -740,7 +740,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     if (!removedUsers.Contains(context.Account.Id))
                     {
                         removedUsers.Add(context.Account.Id);
-                        WriteWarning(string.Format(Resources.UserMissingFromSharedTokenCache, context.Account.Id));
+                        WriteWarningMessage(string.Format(Resources.UserMissingFromSharedTokenCache, context.Account.Id));
                     }
 
                     updatedContext |= TryCacheRemoveContext(contextName);
@@ -755,7 +755,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                         continue;
                     }
 
-                    WriteWarning(string.Format(Resources.CreatingContextsWarning, account.Username));
+                    WriteWarningMessage(string.Format(Resources.CreatingContextsWarning, account.Username));
                     var environment = sessionEnvironment ?? AzureEnvironment.PublicEnvironments
                                         .Where(env => env.Value.ActiveDirectoryAuthority.Contains(account.Environment))
                                         .Select(env => env.Value)
@@ -769,14 +769,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     List<IAccessToken> tokens = null;
                     try
                     {
-                        tokens = authenticationClientFactory.GetTenantTokensForAccount(account, environment, WriteWarning);
+                        tokens = authenticationClientFactory.GetTenantTokensForAccount(account, environment, WriteWarningMessage);
                     }
                     catch (Exception e)
                     {
                         //In SSO scenario, if the account from token cache has multiple tenants, e.g. MSA account, MSAL randomly picks up
                         //one tenant to ask for token, MSAL will throw exception if MSA home tenant is chosen. The exception is swallowed here as short term fix.
-                        WriteWarning(string.Format(Resources.NoTokenFoundWarning, account.Username));
-                        WriteDebug(e.ToString());
+                        WriteWarningMessage(string.Format(Resources.NoTokenFoundWarning, account.Username));
+                        WriteDebugMessage(e.ToString());
                         continue;
                     }
 
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     {
                         var azureTenant = new AzureTenant() { Id = token.TenantId };
                         azureAccount.SetOrAppendProperty(AzureAccount.Property.Tenants, token.TenantId);
-                        var subscriptions = authenticationClientFactory.GetSubscriptionsFromTenantToken(account, environment, token, WriteWarning);
+                        var subscriptions = authenticationClientFactory.GetSubscriptionsFromTenantToken(account, environment, token, WriteWarningMessage);
                         if (!subscriptions.Any())
                         {
                             subscriptions.Add(null);
@@ -795,13 +795,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                             var context = new AzureContext(subscription, azureAccount, environment, azureTenant);
                             if (!TryGetContextName(context, out string name))
                             {
-                                WriteWarning(string.Format(Resources.NoContextNameForSubscription, subscription.Id));
+                                WriteWarningMessage(string.Format(Resources.NoContextNameForSubscription, subscription.Id));
                                 continue;
                             }
 
                             if (!TrySetContext(name, context))
                             {
-                                WriteWarning(string.Format(Resources.UnableToCreateContextForSubscription, subscription.Id));
+                                WriteWarningMessage(string.Format(Resources.UnableToCreateContextForSubscription, subscription.Id));
                             }
                             else
                             {
