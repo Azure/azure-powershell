@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the scope to selectively update the set of tags, could be a subscription or resource.
+The resource identifier for the tagged entity. A resource, a resource group or a subscription may be tagged.
 
 ```yaml
 Type: System.String
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies the Tag Dictionary needs to be updated on the {ResourceId}.
+The set of tags to use for update.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -Operation
-Specifies the Operation for the update, select one from {"NotSpecified", "Merge", "Replace", "Delete"}
+The update operation. Options are Merge, Replace and Delete.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Tags.Model.TagPatchOpeation

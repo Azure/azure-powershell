@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = UpdateByResourceIdParameterSet,
-            HelpMessage = "Updates the entire set of tags on resourceId, resourceId can be a resource or subscription.")]
+            HelpMessage = "The resource identifier for the tagged entity. A resource, a resource group or a subscription may be tagged.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = UpdateByResourceIdParameterSet,
-            HelpMessage = "The tags need to be updated.")]
+            HelpMessage = "The set of tags to use for update.")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = UpdateByResourceIdParameterSet,
-            HelpMessage = "The operation for the update, including NotSpecified, Merge, Replace, Delete.")]
+            HelpMessage = "The update operation. Options are Merge, Replace and Delete.")]
         [ValidateNotNullOrEmpty]
         public TagPatchOpeation Operation { get; set; }
 

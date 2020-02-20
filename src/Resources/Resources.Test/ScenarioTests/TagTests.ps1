@@ -263,23 +263,23 @@ Utility function to see if two simple hashtables equal (key is case insensitive;
 #>
 function AreHashtableEqual($hash1, $hash2)
 {
-    if($hash1 -eq $null -and $hash2 -eq $null) 
+    if($hash1 -eq $null -and $hash2 -eq $null)
     {
-        return $true;
+        return $true; 
 	}
-    if($hash1 -eq $null -or $hash2 -eq $null -or $hash1.Count -ne $hash2.Count) 
+    if($hash1 -eq $null -or $hash2 -eq $null -or $hash1.Count -ne $hash2.Count)
     {
         return $false;
 	}
     foreach($key in $hash1.Keys) 
     {
         if(!$hash2.ContainsKey($key))  # case insensitive
-        { 
-            return $false;  
+        {
+            return $false;
 		}
         if($hash1.$key -cne $hash2.$key)  # case sensitive
-        { 
-            return $false;  
+        {
+            return $false;
 		}
 	}
     return $true;
