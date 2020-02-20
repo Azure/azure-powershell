@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating context for each subscription accessible by account &apos;{0}..
+        ///   Looks up a localized string similar to Creating context for each subscription accessible by account &apos;{0}&apos;..
         /// </summary>
         internal static string CreatingContextsWarning {
             get {
@@ -148,6 +148,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
         internal static string NoInternetConnection {
             get {
                 return ResourceManager.GetString("NoInternetConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get token for account &apos;{0}&apos;, please run Connect-AzAccount to login..
+        /// </summary>
+        internal static string NoTokenFoundWarning {
+            get {
+                return ResourceManager.GetString("NoTokenFoundWarning", resourceCulture);
             }
         }
         

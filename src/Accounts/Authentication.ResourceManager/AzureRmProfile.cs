@@ -675,6 +675,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
+        private void WriteDebug(string message)
+        {
+            EventHandler<StreamEventArgs> writeDebugEvent;
+            if(AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteDebugKey, out writeDebugEvent))
+            {
+                writeDebugEvent(this, new StreamEventArgs() { Message = message });
+            }
+        }
+
         private void RefreshContextsFromCache()
         {
             var authenticationClientFactory = new SharedTokenCacheClientFactory();
@@ -740,7 +749,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 // Check to see if each account has at least one context
                 foreach (var account in accounts)
                 {
-                    if (Contexts.Values.Where(v => v.Account != null && v.Account.Type == AzureAccount.AccountType.User )
+                    if (Contexts.Values.Where(v => v.Account != null && v.Account.Type == AzureAccount.AccountType.User)
                                        .Any(v => string.Equals(v.Account.Id, account.Username, StringComparison.OrdinalIgnoreCase)))
                     {
                         continue;
@@ -757,7 +766,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                         Type = AzureAccount.AccountType.User
                     };
 
-                    var tokens = authenticationClientFactory.GetTenantTokensForAccount(account, environment, WriteWarning);
+                    List<IAccessToken> tokens = null;
+                    try
+                    {
+                        tokens = authenticationClientFactory.GetTenantTokensForAccount(account, environment, WriteWarning);
+                    }
+                    catch (Exception e)
+                    {
+                        //In SSO scenario, if the account from token cache has multiple tenants, e.g. MSA account, MSAL randomly picks up
+                        //one tenant to ask for token, MSAL will throw exception if MSA home tenant is chosen. The exception is swallowed here as short term fix.
+                        WriteWarning(string.Format(Resources.NoTokenFoundWarning, account.Username));
+                        WriteDebug(e.ToString());
+                        continue;
+                    }
+
                     foreach (var token in tokens)
                     {
                         var azureTenant = new AzureTenant() { Id = token.TenantId };
