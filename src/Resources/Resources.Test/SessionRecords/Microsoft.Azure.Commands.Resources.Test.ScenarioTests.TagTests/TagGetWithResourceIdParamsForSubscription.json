@@ -4,10 +4,10 @@
       "RequestUri": "/%2Fsubscriptions%2Fb9f138a1-1d64-4108-8413-9ea3be1c1b2d/providers/Microsoft.Resources/tags/default?api-version=2019-10-01",
       "EncodedRequestUri": "LyUyRnN1YnNjcmlwdGlvbnMlMkZiOWYxMzhhMS0xZDY0LTQxMDgtODQxMy05ZWEzYmUxYzFiMmQvcHJvdmlkZXJzL01pY3Jvc29mdC5SZXNvdXJjZXMvdGFncy9kZWZhdWx0P2FwaS12ZXJzaW9uPTIwMTktMTAtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key2\": \"value2\",\r\n      \"key1\": \"value1\"\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key1\": \"value1\",\r\n      \"key2\": \"value2\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ce613b78-85d8-49dd-9a67-abfd3098d65d"
+          "6b53a7ab-e9d9-4f54-996b-79c1f19e9b67"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-request-id": [
-          "8f023687-2193-4024-ad20-f5162e780357"
+          "a54c0a62-5fdf-41a2-b836-ae6515317de6"
         ],
         "x-ms-correlation-request-id": [
-          "8f023687-2193-4024-ad20-f5162e780357"
+          "a54c0a62-5fdf-41a2-b836-ae6515317de6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200215T012412Z:8f023687-2193-4024-ad20-f5162e780357"
+          "WESTUS:20200220T014124Z:a54c0a62-5fdf-41a2-b836-ae6515317de6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +51,10 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 15 Feb 2020 01:24:12 GMT"
+          "Thu, 20 Feb 2020 01:41:24 GMT"
         ],
         "Content-Length": [
-          "57"
+          "210"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -66,7 +66,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key2\": \"value2\",\r\n      \"key1\": \"value1\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b9f138a1-1d64-4108-8413-9ea3be1c1b2d/providers/Microsoft.Resources/tags/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Resources/tags\",\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key1\": \"value1\",\r\n      \"key2\": \"value2\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -76,7 +76,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cf2035d8-ef9f-402a-8cc3-a4905c6d5d51"
+          "b92200b7-1ad5-45fc-bc59-e1db1e23d739"
         ],
         "Accept-Language": [
           "en-US"
@@ -96,16 +96,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-request-id": [
-          "3f0b10d9-d7fd-4d9e-ac7b-88718b726535"
+          "d6e001ca-eb59-4acc-9e68-a03ad79990d4"
         ],
         "x-ms-correlation-request-id": [
-          "3f0b10d9-d7fd-4d9e-ac7b-88718b726535"
+          "d6e001ca-eb59-4acc-9e68-a03ad79990d4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200215T012413Z:3f0b10d9-d7fd-4d9e-ac7b-88718b726535"
+          "WESTUS:20200220T014126Z:d6e001ca-eb59-4acc-9e68-a03ad79990d4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,7 +114,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 15 Feb 2020 01:24:12 GMT"
+          "Thu, 20 Feb 2020 01:41:26 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -123,13 +123,13 @@
           "-1"
         ],
         "Content-Length": [
-          "57"
+          "210"
         ],
         "Retry-After": [
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key2\": \"value2\",\r\n      \"key1\": \"value1\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b9f138a1-1d64-4108-8413-9ea3be1c1b2d/providers/Microsoft.Resources/tags/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Resources/tags\",\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key1\": \"value1\",\r\n      \"key2\": \"value2\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -139,7 +139,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0731a64b-b778-49db-a8bf-78105a150cac"
+          "e179a7fc-2a51-4d7c-87cb-9d84f2e8fab9"
         ],
         "Accept-Language": [
           "en-US"
@@ -159,16 +159,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11998"
         ],
         "x-ms-request-id": [
-          "288b02b6-8030-4224-bce2-ac3341b081b7"
+          "2a404932-c508-4137-bdfe-fa1f55ac50da"
         ],
         "x-ms-correlation-request-id": [
-          "288b02b6-8030-4224-bce2-ac3341b081b7"
+          "2a404932-c508-4137-bdfe-fa1f55ac50da"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200215T012414Z:288b02b6-8030-4224-bce2-ac3341b081b7"
+          "WESTUS:20200220T014127Z:2a404932-c508-4137-bdfe-fa1f55ac50da"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -177,7 +177,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 15 Feb 2020 01:24:13 GMT"
+          "Thu, 20 Feb 2020 01:41:26 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -186,13 +186,13 @@
           "-1"
         ],
         "Content-Length": [
-          "57"
+          "210"
         ],
         "Retry-After": [
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key2\": \"value2\",\r\n      \"key1\": \"value1\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b9f138a1-1d64-4108-8413-9ea3be1c1b2d/providers/Microsoft.Resources/tags/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Resources/tags\",\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key1\": \"value1\",\r\n      \"key2\": \"value2\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -202,7 +202,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4c3aefa5-d721-453e-a077-471b2e7b1e02"
+          "e61f80d4-9e54-4497-8c4a-8c8955a2f281"
         ],
         "Accept-Language": [
           "en-US"
@@ -222,16 +222,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14997"
+          "14998"
         ],
         "x-ms-request-id": [
-          "3ce2d418-47a6-4d65-aff0-030ae28d1986"
+          "035ed4e4-6391-46e6-937b-38efd0ea0914"
         ],
         "x-ms-correlation-request-id": [
-          "3ce2d418-47a6-4d65-aff0-030ae28d1986"
+          "035ed4e4-6391-46e6-937b-38efd0ea0914"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200215T012414Z:3ce2d418-47a6-4d65-aff0-030ae28d1986"
+          "WESTUS:20200220T014127Z:035ed4e4-6391-46e6-937b-38efd0ea0914"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -240,7 +240,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 15 Feb 2020 01:24:13 GMT"
+          "Thu, 20 Feb 2020 01:41:27 GMT"
         ],
         "Expires": [
           "-1"
