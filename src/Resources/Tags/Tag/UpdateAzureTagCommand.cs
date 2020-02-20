@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.Tags.Model;
 namespace Microsoft.Azure.Commands.Tags.Tag
 {
     /// <summary>
-    /// Update Tags 
+    /// Selectively updates the set of tags on a resource or subscription.
     /// </summary>
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Tag", SupportsShouldProcess = true), OutputType(typeof(PSTagResource))]
     public class UpdateAzureTagCommand : TagBaseCmdlet

@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.Tags.Properties;
 namespace Microsoft.Azure.Commands.Tags.Tag
 {
     /// <summary>
-    /// Deletes tags cmdlet
+    /// Deletes predefined Azure tags or values | Deletes the entire set of tags on a resource or subscription.
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Tag", SupportsShouldProcess = true), OutputType(typeof(PSTag), typeof(PSTagResource))]
     public class RemoveAzureTagCommand : TagBaseCmdlet

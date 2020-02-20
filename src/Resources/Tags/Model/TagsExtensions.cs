@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,11 +59,6 @@ namespace Microsoft.Azure.Commands.Tags.Model
                 Type = tagsResource?.Type,
                 Properties = new PSTagsObject(tagsResource?.Properties?.TagsProperty),
                 PropertiesTable = ResourcesExtensions.ConstructTagsTable(TagsConversionHelper.CreateTagHashtable(tagsResource?.Properties?.TagsProperty))
-                //PropertiesTable = ResourcesExtensions.ConstructTagsTable(new Hashtable(tagsResource?.Properties?.TagsProperty.ToDictionary(x => x.Key, x => x.Value)))
-                //TagsProperty = tagsResource?.Properties?.TagsProperty,
-                //TagsList = list,
-                ////Properties = null,
-                //Tags = TagsConversionHelper.CreateTagHashtable(tagsResource?.Properties?.TagsProperty)
             };
         }
 
@@ -75,7 +69,6 @@ namespace Microsoft.Azure.Commands.Tags.Model
                 return new TagValue()
                 {
                     TagValueProperty = string.Empty,
-                    //Id = string.Empty,
                     Count = new TagCount()
                     {
                         Type = string.Empty

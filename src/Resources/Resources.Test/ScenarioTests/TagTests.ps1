@@ -28,14 +28,11 @@ function Test-TagCreateOrUpdateWithResourceIdParams($resourceId)
         [hashtable]$actual = $res.Properties.TagsProperty
 
         # Assert
-        Assert-AreEqual $expected.Count $actual.Count
-        Assert-AreEqual $expected.key1 $actual.key1
-        Assert-AreEqual $expected.key2 $actual.key2
+        Assert-True { AreHashtableEqual $expected $actual }
     }
     finally
     {
         # Cleanup
-        # Clean-TagsByResourceId $resourceId
         Remove-AzTag -ResourceId $resourceId
     } 
 }
@@ -52,8 +49,7 @@ function Test-TagCreateOrUpdateWithResourceIdParamsForSubscription
     $subscriptionId = "b9f138a1-1d64-4108-8413-9ea3be1c1b2d"
     $resourceId = "/subscriptions/" + $subscriptionId
 
-    Test-TagCreateOrUpdateWithResourceIdParams $resourceId
-   
+    Test-TagCreateOrUpdateWithResourceIdParams $resourceId  
 }
 
 <#
@@ -78,6 +74,7 @@ function Test-UpdateWithResourceIdParams($resourceId)
     # Setup
     $original = @{"key1"="value1"; "key2"="value2";}
     New-AzTag -ResourceId $resourceId -Tag $original
+    Start-Sleep -s 2
 
     try
     {
@@ -91,10 +88,7 @@ function Test-UpdateWithResourceIdParams($resourceId)
             [hashtable]$actual = $res.Properties.TagsProperty
 
             # Assert
-            Assert-AreEqual $expected.Count $actual.Count
-            Assert-AreEqual $expected.key1 $actual.key1
-            Assert-AreEqual $expected.key2 $actual.key2
-            Assert-AreEqual $expected.key3 $actual.key3
+            Assert-True { AreHashtableEqual $expected $actual }
         }
 
         {
@@ -106,9 +100,7 @@ function Test-UpdateWithResourceIdParams($resourceId)
             [hashtable]$actual = $res.Properties.TagsProperty
 
             # Assert
-            Assert-AreEqual $expected.Count $actual.Count
-            Assert-AreEqual $expected.key1 $actual.key1
-            Assert-AreEqual $expected.key3 $actual.key3
+            Assert-True { AreHashtableEqual $expected $actual }
         }
 
         {
@@ -120,7 +112,7 @@ function Test-UpdateWithResourceIdParams($resourceId)
             [hashtable]$actual = $res.Properties.TagsProperty
 
             # Assert
-            Assert-AreEqual $expected $actual
+            Assert-True { AreHashtableEqual $expected $actual }
         }
     }
     finally
@@ -166,6 +158,7 @@ function Test-TagGetWithResourceIdParams($resourceId)
     # Setup
     $expected = @{"key1"="value1"; "key2"="value2";}
     New-AzTag -ResourceId $resourceId -Tag $expected
+    Start-Sleep -s 2
 
     try
     {
@@ -174,9 +167,7 @@ function Test-TagGetWithResourceIdParams($resourceId)
         [hashtable]$actual = $res.Properties.TagsProperty
 
         # Assert
-        Assert-AreEqual $expected.Count $actual.Count
-        Assert-AreEqual $expected.key1 $actual.key1
-        Assert-AreEqual $expected.key2 $actual.key2
+        Assert-True { AreHashtableEqual $expected $actual }
     }
     finally
     {
@@ -220,12 +211,13 @@ function Test-TagDeleteWithResourceIdParams($resourceId)
     # Setup
     $original = @{"key1"="value1"; "key2"="value2";}
     New-AzTag -ResourceId $resourceId -Tag $original
+    Start-Sleep -s 2
 
     try 
     {
         # Test
         Remove-AzTag -ResourceId $resourceId  
-
+        Start-Sleep -s 2
         $actual = Get-AzTag -ResourceId $resourceId
 
         # Assert
@@ -263,4 +255,32 @@ function Test-TagDeleteWithResourceIdParamsForResource
     $resourceId = "/subscriptions/b9f138a1-1d64-4108-8413-9ea3be1c1b2d/resourcegroups/TagsApiSDK/providers/Microsoft.Compute/virtualMachines/TagTestVM";
 
     Test-TagDeleteWithResourceIdParams $resourceId
+}
+
+<#
+.SYNOPSIS
+Utility function to see if two simple hashtables equal (key is case insensitive; value is case sensitive)
+#>
+function AreHashtableEqual($hash1, $hash2)
+{
+    if($hash1 -eq $null -and $hash2 -eq $null) 
+    {
+        return $true;
+	}
+    if($hash1 -eq $null -or $hash2 -eq $null -or $hash1.Count -ne $hash2.Count) 
+    {
+        return $false;
+	}
+    foreach($key in $hash1.Keys) 
+    {
+        if(!$hash2.ContainsKey($key))  # case insensitive
+        { 
+            return $false;  
+		}
+        if($hash1.$key -cne $hash2.$key)  # case sensitive
+        { 
+            return $false;  
+		}
+	}
+    return $true;
 }

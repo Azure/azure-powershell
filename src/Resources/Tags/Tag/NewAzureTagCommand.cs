@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.Tags.Model;
 namespace Microsoft.Azure.Commands.Tags.Tag
 {
     /// <summary>
-    /// Creates Tags cmdlet
+    /// Creates a predefined Azure tag or adds values to an existing tag | Creates or updates the entire set of tags on a resource or subscription.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Tag", SupportsShouldProcess = true), OutputType(typeof(PSTag), typeof(PSTagResource))]
     public class NewAzureTagCommand : TagBaseCmdlet

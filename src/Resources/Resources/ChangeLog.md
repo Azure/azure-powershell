@@ -19,16 +19,13 @@
 -->
 ## Upcoming Release
 * Fix for null reference bug in GetAzureRoleAssignmentCommand
-
-## Version 1.12.0
-* Extended Tag cmdlets to accept -ResourceId:
+* Extended Tag cmdlets to accept -ResourceId
     - Get-AzTag -ResourceId
     - New-AzTag -ResourceId
     - Remove-AzTag -ResourceId
-* Added new Tag cmdlet:
+* Added new Tag cmdlet
     - Update-AzTag -ResourceId
 * Brought ScopedDeployment from SDK 3.3.0 
-* Regenerated help files
 
 ## Version 1.11.0
 * Refactored template deployment cmdlets
