@@ -133,7 +133,6 @@ function Test-TagUpdateWithResourceIdParamsForSubscription
     $resourceId = "/subscriptions/" + $subscriptionId
 
     Test-UpdateWithResourceIdParams $resourceId
-   
 }
 
 <#
@@ -186,8 +185,7 @@ function Test-TagGetWithResourceIdParamsForSubscription
     $subscriptionId = "b9f138a1-1d64-4108-8413-9ea3be1c1b2d"
     $resourceId = "/subscriptions/" + $subscriptionId
 
-    Test-TagGetWithResourceIdParams $resourceId
-   
+    Test-TagGetWithResourceIdParams $resourceId   
 }
 
 <#
@@ -222,14 +220,12 @@ function Test-TagDeleteWithResourceIdParams($resourceId)
 
         # Assert
         Assert-AreEqual $actual.Properties.TagsProperty.Count 0
-	}
+    }
     finally
     {
         # Cleanup
         Remove-AzTag -ResourceId $resourceId
-    }
-
-        
+    }        
 }
 
 <#
