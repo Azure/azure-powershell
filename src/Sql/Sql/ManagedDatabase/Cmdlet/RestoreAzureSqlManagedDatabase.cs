@@ -146,6 +146,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             ParameterSetName = PointInTimeDeletedDatabasesCrossInstanceRestoreFromNameAndResourceGroupParameterSet,
             Mandatory = false,
             HelpMessage = "Source subscription id.")]
+        [Parameter(
+            ParameterSetName = LtrBackupRestoreFromInputParametersSet,
+            Mandatory = false,
+            HelpMessage = "Source subscription id.")]
         [Alias("SourceSubscriptionId")]
         public string SubscriptionId { get; set; }
 
@@ -370,7 +374,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             HelpMessage = "The name of the target instance to restore to.")]
         [Parameter(ParameterSetName = LtrBackupRestoreFromInputParametersSet,
             Mandatory = true,
-            Position = 0,
             HelpMessage = "The name of the target instance to restore to.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         public string TargetInstanceName { get; set; }

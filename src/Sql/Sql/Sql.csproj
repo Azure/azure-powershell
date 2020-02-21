@@ -21,18 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.37.0-preview" /> -->
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.37.0-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Sql.LegacySdk\Sql.LegacySdk.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Sql.dll">
-      <HintPath>D:\src\azure\azure-sdk-for-net\artifacts\bin\Microsoft.Azure.Management.Sql\Debug\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>
