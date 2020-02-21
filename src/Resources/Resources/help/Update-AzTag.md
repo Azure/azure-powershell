@@ -50,7 +50,7 @@ Properties :
              key3     value3
 ```
 
-This command Merges the set of tags under the subscription with {subId}.
+This command Merges the set of tags on the subscription with {subId}.
 
 ### Example 2: Selectively updates the set of tags on a subscription with "Replace" Operation
 
@@ -68,7 +68,7 @@ Properties :
              key3     value3
 ```
 
-This command Repalces the set of tags under the subscription with {subId}.
+This command Repalces the set of tags on the subscription with {subId}.
 
 ### Example 3: Selectively updates the set of tags on a subscription with "Delete" Operation
 
@@ -85,7 +85,7 @@ Properties :
              key3     value3
 ```
 
-This command Deletes the set of tags under the subscription with {subId}.
+This command Deletes the set of tags on the subscription with {subId}.
 
 ## PARAMETERS
 

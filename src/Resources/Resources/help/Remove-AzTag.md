@@ -72,15 +72,15 @@ This command deletes the HumanResources value from the predefined Department tag
 It does not delete the tag.
 If the value has been applied to any resources or resource groups, the command fails.
 
-### Example 3: Deletes the entire set of tags under a subscription
+### Example 3: Deletes the entire set of tags on a subscription
 
 ``` powershell
 PS C:\>Remove-AzTag -ResourceId /subscriptions/{subId}
 ```
 
-This command deletes the entire set of tags under the subscription with {subId}. It will not return the object deleted if not passing in "-PassThru".
+This command deletes the entire set of tags on the subscription with {subId}. It will not return the object deleted if not passing in "-PassThru".
 
-### Example 4: Deletes the entire set of tags under a tracked resource
+### Example 4: Deletes the entire set of tags on a resource
 
 ``` powershell
 PS C:\>Remove-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1 -PassThru
@@ -95,7 +95,7 @@ Properties :
              Status   Normal
 ```
 
-This command deletes the entire set of tags under the tracked resource with {resourceId}. It returns the deleted oject when passing in "-PassThru".
+This command deletes the entire set of tags on the resource with {resourceId}. It returns the deleted oject when passing in "-PassThru".
 
 ## PARAMETERS
 

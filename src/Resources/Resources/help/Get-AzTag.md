@@ -106,7 +106,7 @@ Values:
 This command uses the *Detailed* parameter to get detailed information about all predefined tags in the subscription.
 Using the *Detailed* parameter is the equivalent of using the *Name* parameter for every tag.
 
-### Example 4: Get the entire set of tags under a subscription
+### Example 4: Get the entire set of tags on a subscription
 
 ```powershell
 PS C:\>Get-AzTag -ResourceId /subscriptions/{subId}
@@ -121,9 +121,9 @@ Properties :
              tagKey2  tagValue2
 ```
 
-This command gets the entire set of tags under the subscription with {subId}.
+This command gets the entire set of tags on the subscription with {subId}.
 
-### Example 5: Get the entire set of tags under a tracked resource
+### Example 5: Get the entire set of tags on a resource
 
 ```powershell
 PS C:\>Get-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1
@@ -138,7 +138,7 @@ Properties :
              Status   Normal
 ```
 
-This command gets the entire set of tags under the tracked resource with {resourceId}.
+This command gets the entire set of tags on the resource with {resourceId}.
 
 ## PARAMETERS
 
