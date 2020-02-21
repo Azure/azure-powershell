@@ -26,6 +26,9 @@ Creates an IotHub Key.
 ### [Add-AzIotHubMessageEnrichment](Add-AzIotHubMessageEnrichment.md)
 Creates a message enrichment for chosen endpoints in your IoT Hub.
 
+### [Add-AzIotHubModule](Add-AzIotHubModule.md)
+Create a module on a target IoT device in an IoT Hub.
+
 ### [Add-AzIotHubRoute](Add-AzIotHubRoute.md)
 Create a route in IoT Hub
 
@@ -47,6 +50,12 @@ Gets the IotHub connectionstrings.
 ### [Get-AzIotHubDevice](Get-AzIotHubDevice.md)
 Lists all devices or a particular device contained within an Azure IoT Hub. 
 
+### [Get-AzIotHubDeviceConnectionString](Get-AzIotHubDeviceConnectionString.md)
+Get the connection string of a target IoT device in an Iot Hub.
+
+### [Get-AzIotHubDeviceParent](Get-AzIotHubDeviceParent.md)
+Get the parent device of the specified device.
+
 ### [Get-AzIotHubEventHubConsumerGroup](Get-AzIotHubEventHubConsumerGroup.md)
 Gets all the eventhub consumergroups.
 
@@ -58,6 +67,12 @@ Gets an IotHub Key.
 
 ### [Get-AzIotHubMessageEnrichment](Get-AzIotHubMessageEnrichment.md)
 Lists all message enrichments or a particular message enrichment for your IoT Hub.
+
+### [Get-AzIotHubModule](Get-AzIotHubModule.md)
+Get the details of an IoT device module or list modules located on an IoT device in an IoT Hub.
+
+### [Get-AzIotHubModuleConnectionString](Get-AzIotHubModuleConnectionString.md)
+Get the connection string of a target IoT device module in an Iot Hub.
 
 ### [Get-AzIotHubQuotaMetric](Get-AzIotHubQuotaMetric.md)
 Gets the Quota Metrics for an IotHub.
@@ -107,6 +122,9 @@ Removes an IotHub Key.
 ### [Remove-AzIotHubMessageEnrichment](Remove-AzIotHubMessageEnrichment.md)
 Delete a message enrichment in your IoT hub.
 
+### [Remove-AzIotHubModule](Remove-AzIotHubModule.md)
+Delete module(s) on a target IoT device in an IoT Hub.
+
 ### [Remove-AzIotHubRoute](Remove-AzIotHubRoute.md)
 Delete a route in IoT Hub
 
@@ -119,8 +137,14 @@ Updates the properties of an IotHub.
 ### [Set-AzIotHubDevice](Set-AzIotHubDevice.md)
 Update an IoT Hub device.
 
+### [Set-AzIotHubDeviceParent](Set-AzIotHubDeviceParent.md)
+Set the parent device of the specified device.
+
 ### [Set-AzIotHubMessageEnrichment](Set-AzIotHubMessageEnrichment.md)
 Update a message enrichment in your IoT hub.
+
+### [Set-AzIotHubModule](Set-AzIotHubModule.md)
+Update a module on a target IoT device in an IoT Hub.
 
 ### [Set-AzIotHubRoute](Set-AzIotHubRoute.md)
 Update a route in IoT Hub
