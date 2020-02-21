@@ -234,20 +234,6 @@ namespace Common.Authentication.Test
             return env;
         }
 
-        IAzureTokenCache GetDefaultTokenCache()
-        {
-            var cache = new AzureTokenCache
-            {
-#if !NETSTANDARD
-                CacheData = new byte[] { 2, 0, 0, 0, 0, 0, 0, 0 }
-#else
-                CacheData = new byte[] { 3, 0, 0, 0, 0, 0, 0, 0 }
-#endif
-            };
-
-            return cache;
-        }
-
         IAzureContext GetDefaultContext()
         {
             var context = new AzureContext
@@ -256,7 +242,7 @@ namespace Common.Authentication.Test
                 Environment = GetDefaultEnvironment(),
                 Subscription = GetDefaultSubscription(),
                 Tenant = GetDefaultTenant(),
-                TokenCache = GetDefaultTokenCache(),
+                TokenCache = null,
                 VersionProfile = "2017_09_25"
             };
 

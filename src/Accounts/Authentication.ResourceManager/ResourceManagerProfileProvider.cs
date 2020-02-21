@@ -14,10 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-#if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Identity.Client;
@@ -26,30 +23,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class ResourceManagerProfileProvider : AzureRmProfileProvider
     {
-        AzureRmProfile _profile = new AzureRmProfile { DefaultContext = new AzureContext { TokenCache = AzureSession.Instance.TokenCache } };
-        public override void ResetDefaultProfile()
-        {
-            foreach (var context in _profile.Contexts.Values)
-            {
-                context.TokenCache.Clear();
-            }
-
-            base.ResetDefaultProfile();
-        }
-
-        public override void SetTokenCacheForProfile(IAzureContextContainer profile)
-        {
-            base.SetTokenCacheForProfile(profile);
-            var cache = new AuthenticationStoreTokenCache(new TokenCache());
-            if (profile.HasTokenCache())
-            {
-                cache.CacheData = profile.GetTokenCache().CacheData;
-            }
-
-            AzureSession.Instance.TokenCache = cache;
-            profile.SetTokenCache(cache);
-        }
-
+        AzureRmProfile _profile = new AzureRmProfile { DefaultContext = new AzureContext() };
+        
         public override T GetProfile<T>()
         {
             return Profile as T;

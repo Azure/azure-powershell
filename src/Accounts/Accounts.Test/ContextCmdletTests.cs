@@ -634,7 +634,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(profile.DefaultContext);
             Assert.Null(profile.DefaultContext.Account);
             Assert.Null(profile.DefaultContext.Subscription);
-            Assert.NotNull(profile.DefaultContext.TokenCache);
         }
 
         [Fact]

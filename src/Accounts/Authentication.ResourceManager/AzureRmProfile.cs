@@ -206,7 +206,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
                 foreach (var context in profile.Contexts)
                 {
-                    context.Value.TokenCache = AzureSession.Instance.TokenCache;
                     this.Contexts.Add(context.Key, context.Value);
                 }
 

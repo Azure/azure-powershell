@@ -27,9 +27,6 @@ using Microsoft.Identity.Client.Extensions.Msal;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -63,26 +60,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public static void CreateOrReplaceSession(IDataStore dataStore)
         {
             AzureSession.Initialize(() => CreateInstance(dataStore), true);
-        }
-
-        static IAzureTokenCache InitializeTokenCache(IDataStore store, string cacheDirectory, string cacheFile, string autoSaveMode)
-        {
-            IAzureTokenCache result = new AuthenticationStoreTokenCache(new AzureTokenCache());
-            if (autoSaveMode == ContextSaveMode.CurrentUser)
-            {
-                try
-                {
-                    FileUtilities.DataStore = store;
-                    FileUtilities.EnsureDirectoryExists(cacheDirectory);
-                    var cachePath = Path.Combine(cacheDirectory, cacheFile);
-                    result = new ProtectedFileTokenCache(cachePath, store);
-                }
-                catch
-                {
-                }
-            }
-
-            return result;
         }
 
         static bool MigrateSettings(IDataStore store, string oldProfileDirectory, string newProfileDirectory)
@@ -280,7 +257,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
             MigrateAdalCache(session, dataStore, oldCachePath, Path.Combine(cachePath, "msal.cache"));
-            session.TokenCache = InitializeTokenCache(dataStore, session.TokenCacheDirectory, session.TokenCacheFile, autoSave.Mode);
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
             return session;

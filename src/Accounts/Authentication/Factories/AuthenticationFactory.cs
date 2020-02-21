@@ -22,6 +22,7 @@ using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
+using System.Security.Authentication;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
@@ -84,6 +85,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public ITokenProvider TokenProvider { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="environment"></param>
+        /// <param name="tenant"></param>
+        /// <param name="password"></param>
+        /// <param name="promptBehavior"></param>
+        /// <param name="promptAction"></param>
+        /// <param name="tokenCache"></param>
+        /// <param name="resourceId"></param>
+        /// <returns></returns>
         public IAccessToken Authenticate(
             IAzureAccount account,
             IAzureEnvironment environment,
@@ -154,7 +167,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 tenant, password,
                 promptBehavior,
                 promptAction,
-                AzureSession.Instance.TokenCache,
+                null,
                 resourceId);
         }
 
@@ -213,16 +226,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             try
             {
-                var tokenCache = AzureSession.Instance.TokenCache;
                 TracingAdapter.Information(
                     Resources.UPNAuthenticationTrace,
                     context.Account.Id,
                     context.Environment.Name,
                     tenant);
-                if (context.TokenCache != null && context.TokenCache.CacheData != null && context.TokenCache.CacheData.Length > 0)
-                {
-                    tokenCache = context.TokenCache;
-                }
 
                 var token = Authenticate(
                                 context.Account,
@@ -231,10 +239,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                                 null,
                                 ShowDialog.Never,
                                 null,
-                                tokenCache,
+                                null,
                                 context.Environment.GetTokenAudience(targetEndpoint));
-
-
+                
                 TracingAdapter.Information(
                     Resources.UPNAuthenticationTokenTrace,
                     token.LoginType,
@@ -298,38 +305,28 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 TracingAdapter.Information(Resources.UPNAuthenticationTrace,
                     context.Account.Id, context.Environment.Name, tenant);
-
-                // TODO: When we will refactor the code, need to add tracing
-                /*TracingAdapter.Information(Resources.UPNAuthenticationTokenTrace,
-                    token.LoginType, token.TenantId, token.UserId);*/
-
-                var tokenCache = AzureSession.Instance.TokenCache;
-
-                if (context.TokenCache != null)
-                {
-                    tokenCache = context.TokenCache;
-                }
-
-                ServiceClientCredentials result = null;
+                
+                IAccessToken token = null;
                 switch (context.Account.Type)
                 {
                     case AzureAccount.AccountType.ManagedService:
-                        result = new RenewingTokenCredential(
-                            GetManagedServiceToken(
-                                context.Account,
-                                context.Environment,
-                                tenant,
-                                context.Environment.GetTokenAudience(targetEndpoint)));
+                        token = GetManagedServiceToken(
+                            context.Account,
+                            context.Environment,
+                            tenant,
+                            context.Environment.GetTokenAudience(targetEndpoint));
                         break;
                     case AzureAccount.AccountType.User:
                     case AzureAccount.AccountType.ServicePrincipal:
-                        result = new RenewingTokenCredential(Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(targetEndpoint)));
+                        token = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(targetEndpoint));
                         break;
                     default:
                         throw new NotSupportedException(context.Account.Type.ToString());
                 }
 
-                return result;
+                TracingAdapter.Information(Resources.UPNAuthenticationTokenTrace,
+                    token.LoginType, token.TenantId, token.UserId);
+                return new RenewingTokenCredential(token);
             }
             catch (Exception ex)
             {
@@ -338,6 +335,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
+        /// <summary>
+        /// Remove a user from token cache.
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="tokenCache">This parameter is no longer used. However to keep the API unchanged it's not removed.</param>
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
         {
             if (account != null && !string.IsNullOrEmpty(account.Id) && !string.IsNullOrWhiteSpace(account.Type))

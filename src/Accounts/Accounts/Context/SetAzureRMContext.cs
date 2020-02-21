@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     SetContextWithOverwritePrompt((profile, client, name) =>
                         {
-                            profile.SetContextWithCache(new AzureContext(Context.Subscription,
-                              Context.Account,
-                              Context.Environment, Context.Tenant), name);
+                            profile.TrySetDefaultContext(name, new AzureContext(Context.Subscription,
+                                Context.Account,
+                                Context.Environment, Context.Tenant));
                             CompleteContextProcessing(profile);
                         });
                 }

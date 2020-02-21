@@ -35,7 +35,6 @@ namespace Common.Authentication.Test.Cmdlets
     [Cmdlet(VerbsCommunications.Connect, "AzAccount")]
     public class ConnectAccount : AzureRMCmdlet
     {
-        private IAzureTokenCache _cache;
         private IAzureEnvironment _environment;
         private IProfileOperations _profile;
         private PSCredential _credential;
@@ -71,12 +70,6 @@ namespace Common.Authentication.Test.Cmdlets
                 ProtectedFileProvider.CreateFileProvider(
                     Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ARMProfileFile),
                     FileProtection.ExclusiveWrite));
-            var context = _profile.DefaultContext;
-            _cache = AzureSession.Instance.TokenCache;
-            if (_profile != null && context != null && context.TokenCache != null)
-            {
-                _cache = context.TokenCache;
-            }
 
             _environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
             if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
@@ -282,7 +275,6 @@ namespace Common.Authentication.Test.Cmdlets
                 }
             }
 
-            _profile.DefaultContext.TokenCache = _cache;
             var defaultContext = _profile.DefaultContext;
             var subscriptions = ListSubscriptions(tenantId).Take(25);
             foreach (var subscription in subscriptions)
@@ -293,7 +285,6 @@ namespace Common.Authentication.Test.Cmdlets
                 };
 
                 var tempContext = new AzureContext(subscription, account, environment, tempTenant);
-                tempContext.TokenCache = _cache;
                 string tempName = null;
                 if (!_profile.TryGetContextName(tempContext, out tempName))
                 {
@@ -408,7 +399,7 @@ namespace Common.Authentication.Test.Cmdlets
                 password,
                 promptBehavior,
                 promptAction,
-                _cache);
+                null);
         }
 
         private IEnumerable<IAzureSubscription> ListSubscriptions(string tenantIdOrDomain = "")

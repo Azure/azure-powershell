@@ -27,10 +27,7 @@ namespace Common.Authentication.Test
         static IAzureAccount account1 = new AzureAccount { Id="user1@contoso.org"};
         static IAzureSubscription subscription1 = new AzureSubscription { Id = Guid.NewGuid().ToString(), Name = "Contoso Subscription 1" };
         static IAzureTenant tenant1 = new AzureTenant { Id = Guid.NewGuid().ToString() };
-        static IAzureTokenCache cache = new AzureTokenCache();
-        IAzureContext context1 = new AzureContext {
-            TokenCache = cache
-            }.WithAccount(account1).WithSubscription(subscription1).WithTenant(tenant1);
+        IAzureContext context1 = new AzureContext().WithAccount(account1).WithSubscription(subscription1).WithTenant(tenant1);
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

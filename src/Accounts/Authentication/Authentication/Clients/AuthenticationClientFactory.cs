@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
                 attribute1: new KeyValuePair<string, string>("MsalClientID", "Microsoft.Developer.IdentityService"),
                 attribute2: new KeyValuePair<string, string>("MsalClientVersion", "1.0.0.0"));
             var storageCreationProperties = builder.Build();
-            return new MsalCacheStorage(storageCreationProperties, new TraceSource("Azure PowerShell"));
+            return MsalCacheStorage.Create(storageCreationProperties, new TraceSource("Azure PowerShell"));
         }
     }
 }
