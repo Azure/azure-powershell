@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         /// <summary>
         /// Parameter set name for server name.
         /// </summary>
-        private const string ServerNameSet = "ServerName";
+        private const string InstanceNameSet = "InstanceName";
 
         /// <summary>
         /// Parameter set name for location name.
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             Position = 0,
             HelpMessage = "The location of the backups' source server.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ServerNameSet,
+            ParameterSetName = InstanceNameSet,
             Position = 0,
             HelpMessage = "The location of the backups' source server.")]
         [Parameter(Mandatory = true,
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         /// Gets or sets the name of the server.
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = ServerNameSet,
+            ParameterSetName = InstanceNameSet,
             Position = 1,
             HelpMessage = "The name of the Azure SQL Server the backups are under.")]
         [Parameter(Mandatory = true,
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         /// Gets or sets the name of the database.
         /// </summary>
         [Parameter(Mandatory = false,
-            ParameterSetName = ServerNameSet,
+            ParameterSetName = InstanceNameSet,
             HelpMessage = "The name of the Azure SQL Server the backups are under.")]
         [Parameter(Mandatory = true,
             ParameterSetName = BackupNameSet,
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             ParameterSetName = LocationSet,
             HelpMessage = "The name of the resource group.")]
         [Parameter(Mandatory = false,
-            ParameterSetName = ServerNameSet,
+            ParameterSetName = InstanceNameSet,
             HelpMessage = "The name of the resource group.")]
         [Parameter(Mandatory = false,
             ParameterSetName = BackupNameSet,
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         /// Gets or sets whether or not to only get the latest backup per database.
         /// </summary>
         [Parameter(Mandatory = false,
-            ParameterSetName = ServerNameSet,
+            ParameterSetName = InstanceNameSet,
             HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
         [Parameter(Mandatory = false,
             ParameterSetName = LocationSet,
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         /// Gets or sets the database state to look for (Alive or Deleted).
         /// </summary>
         [Parameter(Mandatory = false,
-            ParameterSetName = ServerNameSet,
+            ParameterSetName = InstanceNameSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The state of the database whose backups you want to find, Alive, Deleted, or All. Defaults to All")]
         [Parameter(Mandatory = false,
