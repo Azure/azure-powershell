@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix for null reference bug in GetAzureRoleAssignmentCommand
+
+## Version 1.11.0
 * Refactored template deployment cmdlets
     - Added new cmdlets for managing deployments at management group: *-AzManagementGroupDeployment
     - Added new cmdlets for managing deployments at tenant scope: *-AzTenantDeployment

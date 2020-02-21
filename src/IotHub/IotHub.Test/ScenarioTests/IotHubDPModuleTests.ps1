@@ -65,6 +65,11 @@ function Test-AzureRmIotHubModuleLifecycle
 	$modules = Get-AzIotHubModule -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
 	Assert-True { $modules.Count -eq 2}
 
+	# Get module connection string
+	$moduleCS = Get-AzIotHubMCS -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module2
+	Assert-True { $moduleCS.ModuleId -eq $module2 }
+	Assert-True { $moduleCS.ConnectionString -eq "HostName=$IotHubName.azure-devices.net;DeviceId=$device1;ModuleId=$module2;x509=true" }
+
 	# Get module detail
 	$module = Get-AzIotHubModule -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module2
 	Assert-True { $module.Id -eq $module2 }

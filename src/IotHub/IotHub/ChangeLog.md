@@ -28,6 +28,18 @@
 	- Get-AzIotHubModule
 	- Remove-AzIotHubModule
 	- Set-AzIotHubModule
+* Add cmdlet to get the connection string of a target IoT device in an Iot Hub.
+* Add cmdlet to get the connection string of a module on a target IoT device in an Iot Hub.
+* Add support to get/set parent device of an IoT device. New Cmdlets are:
+    - Get-AzIotHubDeviceParent
+    - Set-AzIotHubDeviceParent
+
+## Version 2.1.0
+* Added support to manage devices in an Iot Hub. New Cmdlets are:
+	- `Add-AzIotHubDevice`
+	- `Get-AzIotHubDevice`
+	- `Remove-AzIotHubDevice`
+	- `Set-AzIotHubDevice`
 
 ## Version 2.0.1
 * Update references in .psd1 to use relative path
