@@ -152,7 +152,7 @@ Tags:
 
 The commands in this example create and use a predefined tag.
 
-### Example 5: Creates or updates the entire set of tags under a subscription
+### Example 5: Creates or updates the entire set of tags on a subscription
 
 ```powershell
 PS C:\>$Tags = @{"tagKey1"="tagValue1"; "tagKey2"="tagValue2"}
@@ -168,9 +168,9 @@ Properties :
              tagKey2  tagValue2
 ```
 
-This command creates or updates the entire set of tags under the subscription with {subId}.
+This command creates or updates the entire set of tags on the subscription with {subId}.
 
-### Example 6: Creates or updates the entire set of tags under a tracked resource
+### Example 6: Creates or updates the entire set of tags on a resource
 
 ```powershell
 PS C:\>$Tags = @{"Dept"="Finance"; "Status"="Normal"}
@@ -186,8 +186,7 @@ Properties :
              Status   Normal
 ```
 
-This command creates or updates the entire set of tags under the tracked resource with {resourceId}.
-
+This command creates or updates the entire set of tags on the resource with {resourceId}.
 
 ## PARAMETERS
 
