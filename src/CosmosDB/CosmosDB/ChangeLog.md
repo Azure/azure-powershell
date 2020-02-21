@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.1.1
 * Added cmdlets for Gremlin, MongoDB, Cassandra and Table APIs.
 * Updated .NET SDK Version to 1.0.1
     - .NET SDK Version used in the CosmosDB-Account and SQL cmdlets is updated to 1.0.1
