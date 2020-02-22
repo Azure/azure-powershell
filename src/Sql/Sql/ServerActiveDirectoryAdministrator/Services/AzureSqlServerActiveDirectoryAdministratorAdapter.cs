@@ -14,8 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using System;
 using System.Collections.Generic;
@@ -113,10 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <returns>The upserted Azure SQL Server Active Directory administrator</returns>
         internal AzureSqlServerActiveDirectoryAdministratorModel UpsertServerActiveDirectoryAdministrator(string resourceGroup, string serverName, AzureSqlServerActiveDirectoryAdministratorModel model)
         {
-            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, new ServerAdministratorCreateOrUpdateParameters()
-            {
-                Properties = GetActiveDirectoryInformation(model.DisplayName, model.ObjectId)
-            });
+            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, GetActiveDirectoryInformation(model.DisplayName, model.ObjectId, model.IsAzureADOnlyAuthentication));
 
             return CreateServerActiveDirectoryAdministratorModelFromResponse(resourceGroup, serverName, resp);
         }
@@ -138,16 +134,21 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <param name="serverName">The name of the Azure Sql ServerActiveDirectoryAdministrator Server</param>
         /// <param name="admin">The service response</param>
         /// <returns>The converted model</returns>
-        public static AzureSqlServerActiveDirectoryAdministratorModel CreateServerActiveDirectoryAdministratorModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.ServerAdministrator admin)
+        public static AzureSqlServerActiveDirectoryAdministratorModel CreateServerActiveDirectoryAdministratorModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.ServerAzureADAdministrator admin)
         {
-            AzureSqlServerActiveDirectoryAdministratorModel model = new AzureSqlServerActiveDirectoryAdministratorModel();
+            if (admin != null)
+            {
+                AzureSqlServerActiveDirectoryAdministratorModel model = new AzureSqlServerActiveDirectoryAdministratorModel();
 
-            model.ResourceGroupName = resourceGroup;
-            model.ServerName = serverName;
-            model.DisplayName = admin.Properties.Login;
-            model.ObjectId = admin.Properties.Sid;
+                model.ResourceGroupName = resourceGroup;
+                model.ServerName = serverName;
+                model.DisplayName = admin.Login;
+                model.ObjectId = admin.Sid;
+                model.IsAzureADOnlyAuthentication = admin.AzureADOnlyAuthentication;
+                return model;
+            }
 
-            return model;
+            return null;
         }
 
         /// <summary>
@@ -155,8 +156,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         /// <param name="displayName">Azure Active Directory user or group display name</param>
         /// <param name="objectId">Azure Active Directory user or group object id</param>
+        /// <param name="isAzureADOnlyAuthentication">Allow only Azure Active Directory authentication</param>
         /// <returns></returns>
-        protected ServerAdministratorCreateOrUpdateProperties GetActiveDirectoryInformation(string displayName, Guid objectId)
+        protected ServerAzureADAdministrator GetActiveDirectoryInformation(string displayName, Guid objectId, bool? isAzureADOnlyAuthentication)
         {
             // Gets the default Tenant id for the subscriptions
             Guid tenantId = GetTenantId();
@@ -164,7 +166,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             // Check for a Azure Active Directory group. Recommended to always use group.
             IEnumerable<PSADGroup> groupList = null;
 
-            var filter = new ADObjectFilterOptions()
+                        var filter = new ADObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                 SearchString = displayName,
@@ -190,11 +192,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidADGroupNotSecurity, displayName));
                 }
 
-                return new ServerAdministratorCreateOrUpdateProperties()
+
+                return new ServerAzureADAdministrator()
                 {
                     Login = group.DisplayName,
                     Sid = group.Id,
                     TenantId = tenantId,
+                    AzureADOnlyAuthentication = isAzureADOnlyAuthentication,
                 };
             }
 
@@ -238,11 +242,12 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 // Only one user was found. Get the user display name and object id
                 var obj = userList.First();
 
-                return new ServerAdministratorCreateOrUpdateProperties()
+                return new ServerAzureADAdministrator()
                 {
                     Login = displayName,
                     Sid = obj.Id,
                     TenantId = tenantId,
+                    AzureADOnlyAuthentication = isAzureADOnlyAuthentication,
                 };
             }
         }
