@@ -641,6 +641,21 @@ function Test-RaGetByScope
 
 <#
 .SYNOPSIS
+Tests verifies get of RoleAssignment using only the role definition name
+#>
+function Test-RaGetOnlyByRoleDefinitionName
+{
+    # Setup
+    $definitionName = 'Owner'
+    
+    $ras = Get-AzRoleAssignment -RoleDefinitionName $definitionName
+
+    Assert-NotNull $ras
+    Assert-AreEqual $definitionName $ras[0].RoleDefinitionName
+}
+
+<#
+.SYNOPSIS
 Creates role assignment
 #>
 function CreateRoleAssignment

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Get Az-MaintenanceConfiguration will honor filters while listing maintenance configurations
 
 ## Version 0.1.2
 * Update command will display pending updates by default

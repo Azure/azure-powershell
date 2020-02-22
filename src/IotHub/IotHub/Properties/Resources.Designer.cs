@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
-    using System;  
+    using System;
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -113,6 +113,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Module.
+        /// </summary>
+        internal static string AddIotHubModule {
+            get {
+                return ResourceManager.GetString("AddIotHubModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Route.
         /// </summary>
         internal static string AddIotHubRoute {
@@ -127,6 +136,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string AddIotHubRoutingEndpoint {
             get {
                 return ResourceManager.GetString("AddIotHubRoutingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ms-azure-iot-edge://.
+        /// </summary>
+        internal static string DEVICE_DEVICESCOPE_PREFIX {
+            get {
+                return ResourceManager.GetString("DEVICE_DEVICESCOPE_PREFIX", resourceCulture);
             }
         }
         
@@ -239,6 +257,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Module.
+        /// </summary>
+        internal static string RemoveIotHubModule {
+            get {
+                return ResourceManager.GetString("RemoveIotHubModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Route.
         /// </summary>
         internal static string RemoveIotHubRoute {
@@ -253,6 +280,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string RemoveIotHubRoutingEndpoint {
             get {
                 return ResourceManager.GetString("RemoveIotHubRoutingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Parent Device.
+        /// </summary>
+        internal static string SetParentDevice {
+            get {
+                return ResourceManager.GetString("SetParentDevice", resourceCulture);
             }
         }
         
@@ -280,6 +316,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string UpdateIotHubMessageEnrichment {
             get {
                 return ResourceManager.GetString("UpdateIotHubMessageEnrichment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Module.
+        /// </summary>
+        internal static string UpdateIotHubModule {
+            get {
+                return ResourceManager.GetString("UpdateIotHubModule", resourceCulture);
             }
         }
         

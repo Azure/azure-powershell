@@ -20,6 +20,8 @@
 
 
 ## Upcoming Release
+
+## Version 0.1.4
 * Added policy management cmdlets to `Az.Attestation` module
 
 ## Version 0.1.3
