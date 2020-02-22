@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix for null reference bug in GetAzureRoleAssignmentCommand
+* Fixed for null reference bug in `Get-AzRoleAssignment`
+* Marked switch `-Force` and `-PassThru` optional in `Remove-AzADGroup`
 
 ## Version 1.11.0
 * Refactored template deployment cmdlets
