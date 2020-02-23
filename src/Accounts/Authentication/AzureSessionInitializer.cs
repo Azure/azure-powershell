@@ -125,11 +125,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 return;
             }
 
-            var authenticationClientFactory = new SharedTokenCacheClientFactory(new CacheMigrationSettings
+            SharedTokenCacheClientFactory authenticationClientFactory;
+            try
             {
-                CacheData = adalData,
-                CacheFormat = CacheFormat.AdalV3
-            });
+                authenticationClientFactory = new SharedTokenCacheClientFactory(new CacheMigrationSettings
+                {
+                    CacheData = adalData,
+                    CacheFormat = CacheFormat.AdalV3
+                });
+            }
+            catch (MsalCachePersistenceException)
+            {
+                throw new PlatformNotSupportedException(Resources.AutosaveNotSupportedWithSuggestion);
+            }
             var client = authenticationClientFactory.CreatePublicClient();
 
             var accounts = client.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();

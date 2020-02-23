@@ -115,6 +115,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Context autosave is not supported on current environment..
+        /// </summary>
+        internal static string AutosaveNotSupported {
+            get {
+                return ResourceManager.GetString("AutosaveNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Context autosave is not supported on current environment. Please disable it using &apos;Disable-AzContextSave&apos;..
+        /// </summary>
+        internal static string AutosaveNotSupportedWithSuggestion {
+            get {
+                return ResourceManager.GetString("AutosaveNotSupportedWithSuggestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Using Autosave scope &apos;{0}&apos;.
         /// </summary>
         internal static string AutosaveSettingFinalValue {

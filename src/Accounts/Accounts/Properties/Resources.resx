@@ -492,4 +492,10 @@
   <data name="InvalidAzureContext" xml:space="preserve">
     <value>The context is invalid. Please login using Connect-AzAccount.</value>
   </data>
+  <data name="AutosaveNotSupported" xml:space="preserve">
+    <value>Context autosave is not supported on current environment.</value>
+  </data>
+  <data name="AutosaveNotSupportedWithSuggestion" xml:space="preserve">
+    <value>Context autosave is not supported on current environment. Please disable it using 'Disable-AzContextSave'.</value>
+  </data>
 </root>

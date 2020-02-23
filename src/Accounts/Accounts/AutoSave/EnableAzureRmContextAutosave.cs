@@ -22,6 +22,9 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.Identity.Client;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
+using System;
+using Microsoft.Identity.Client.Extensions.Msal;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -101,9 +104,13 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
                 }
             }
-            catch
+            catch (Exception e)
             {
                 // do not throw if there are file system error
+                if (e is MsalCachePersistenceException)
+                {
+                    throw new PlatformNotSupportedException(Resources.AutosaveNotSupported);
+                }
             }
         }
 

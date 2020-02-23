@@ -27,6 +27,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Common.Authentication.Test
 {
+    // TODO: these tests are depending on msal token cache. E.g. they will fail if there are tokens in the cache.
     public class PSSerializationTests
     {
         [Fact]

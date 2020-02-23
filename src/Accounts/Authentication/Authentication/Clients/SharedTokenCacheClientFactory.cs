@@ -40,12 +40,28 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private CacheMigrationSettings _cacheMigrationSettings;
 
-        public SharedTokenCacheClientFactory() { }
+
+        /// <exception cref="MsalCachePersistenceException">When the operating system does not support persistence.</exception>
+        public SharedTokenCacheClientFactory()
+        {
+            VerifyCachePersistence();
+        }
 
         /// <summary>
         /// Initialize the client factory with token cache migration settings. Factory will try to migrate the cache before any access to token cache.
         /// </summary>
-        public SharedTokenCacheClientFactory(CacheMigrationSettings cacheMigrationSettings) => _cacheMigrationSettings = cacheMigrationSettings;
+        /// <exception cref="MsalCachePersistenceException">When the operating system does not support persistence.</exception>
+        public SharedTokenCacheClientFactory(CacheMigrationSettings cacheMigrationSettings) : this() =>
+            _cacheMigrationSettings = cacheMigrationSettings;
+
+        /// <summary>
+        /// Verify if token cache persistence is available on current system. Throws exception if not.
+        /// </summary>
+        /// <exception cref="MsalCachePersistenceException">When the operating system does not support persistence.</exception>
+        protected void VerifyCachePersistence()
+        {
+            GetCacheHelper(PowerShellClientId).VerifyPersistence();
+        }
 
         public override void RegisterCache(IClientApplicationBase client)
         {

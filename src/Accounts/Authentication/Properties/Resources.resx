@@ -340,4 +340,7 @@
   <data name="EnvironmentNotFound" xml:space="preserve">
     <value>The environment name '{0}' is not found.</value>
   </data>
+  <data name="AutosaveNotSupportedWithSuggestion" xml:space="preserve">
+    <value>Context autosave is not supported on current environment. Please disable it using 'Disable-AzContextSave'.</value>
+  </data>
 </root>

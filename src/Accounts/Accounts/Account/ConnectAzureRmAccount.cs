@@ -33,6 +33,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using System.Threading;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
+using Microsoft.Identity.Client.Extensions.Msal;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -485,16 +486,24 @@ namespace Microsoft.Azure.Commands.Profile
                     AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => builder);
                 }
 
+                AuthenticationClientFactory factory;
                 if (autoSaveEnabled)
                 {
-                    AuthenticationClientFactory factory = new SharedTokenCacheClientFactory();
-                    AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
+                    try
+                    {
+                        factory = new SharedTokenCacheClientFactory();
+                    }
+                    catch (MsalCachePersistenceException)
+                    {
+                        throw new PlatformNotSupportedException(Resources.AutosaveNotSupportedWithSuggestion);
+                    }
                 }
                 else
                 {
-                    AuthenticationClientFactory factory = new InMemoryTokenCacheClientFactory();
-                    AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
+                    factory = new InMemoryTokenCacheClientFactory();
+                    
                 }
+                AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)
