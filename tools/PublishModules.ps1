@@ -682,7 +682,7 @@ function Add-Module {
         }
 
         Write-Output "Publishing the module $moduleName"
-        Publish-Module -Path $Path -Repository $TempRepo -Force | Out-Null
+        Publish-InternalModule -Path $Path -Repository $TempRepo -Force -AllowPrerelease | Out-Null
         Write-Output "$moduleName published"
 
         # Create a psm1 and alter psd1 dependencies to allow fine-grained
@@ -851,6 +851,8 @@ if ([string]::IsNullOrEmpty($nugetExe)) {
 }
 
 Write-Host "Publishing $Scope package (and its dependencies)"
+
+Import-Module $PSScriptRoot\PSGet2.2.3\MyPowerShellGet.psd1
 
 Get-PackageProvider -Name NuGet -Force
 Write-Host " "
