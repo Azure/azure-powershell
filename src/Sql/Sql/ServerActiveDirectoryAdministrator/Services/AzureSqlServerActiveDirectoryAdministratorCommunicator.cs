@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Services
@@ -96,6 +95,14 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         public void Remove(string resourceGroupName, string serverName)
         {
             GetCurrentSqlClient().ServerAzureADAdministrators.DeleteWithHttpMessagesAsync(resourceGroupName, serverName);
+        }
+
+        /// <summary>
+        /// Disables Azure Active Directory only authentication on a Azure SQL Server
+        /// </summary>
+        public Management.Sql.Models.ServerAzureADAdministrator Disable(string resourceGroupName, string serverName)
+        {
+            return GetCurrentSqlClient().ServerAzureADAdministrators.DisableAzureADOnlyAuthenticationAsync(resourceGroupName, serverName).Result;
         }
 
         /// <summary>
