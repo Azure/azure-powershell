@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Context autosave is not supported on current environment..
+        ///   Looks up a localized string similar to Context autosave is not supported in current environment..
         /// </summary>
         internal static string AutosaveNotSupported {
             get {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Context autosave is not supported on current environment. It is disabled in the PowerShell process..
+        ///   Looks up a localized string similar to Context autosave is not supported in current environment and has been disabled temporarily..
         /// </summary>
         internal static string AutosaveNotSupportedWithFallback {
             get {
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Context autosave is not supported on current environment. Please disable it using &apos;Disable-AzContextSave&apos;..
+        ///   Looks up a localized string similar to Context autosave is not supported in current environment. Please disable it using &apos;Disable-AzContextSave&apos;..
         /// </summary>
         internal static string AutosaveNotSupportedWithSuggestion {
             get {

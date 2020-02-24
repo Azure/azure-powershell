@@ -493,12 +493,12 @@
     <value>The context is invalid. Please login using Connect-AzAccount.</value>
   </data>
   <data name="AutosaveNotSupported" xml:space="preserve">
-    <value>Context autosave is not supported on current environment.</value>
+    <value>Context autosave is not supported in current environment.</value>
   </data>
   <data name="AutosaveNotSupportedWithSuggestion" xml:space="preserve">
-    <value>Context autosave is not supported on current environment. Please disable it using 'Disable-AzContextSave'.</value>
+    <value>Context autosave is not supported in current environment. Please disable it using 'Disable-AzContextSave'.</value>
   </data>
   <data name="AutosaveNotSupportedWithFallback" xml:space="preserve">
-    <value>Context autosave is not supported on current environment. It is disabled in the PowerShell process.</value>
+    <value>Context autosave is not supported in current environment and has been disabled temporarily.</value>
   </data>
 </root>
