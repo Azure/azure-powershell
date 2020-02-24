@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.0.0'; }, 
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.0.0'; },
                @{ModuleName = 'Az.Billing'; RequiredVersion = '0.10.0'; }, 
                @{ModuleName = 'Az.Compute'; RequiredVersion = '0.10.0'; }, 
                @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.1.0'; }, 
@@ -121,55 +121,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '3.1.0 - November 2019
-Az.Compute
-* VM Reapply feature
-    - Add Reapply parameter to Set-AzVM cmdlet
-* VM Scale Set AutomaticRepairs feature:
-    - Add EnableAutomaticRepair, AutomaticRepairGracePeriod, and AutomaticRepairMaxInstanceRepairsPercent parameters to the following cmdlets:
-        New-AzVmssConfig
-        Update-AzVmss
-* Cross tenant gallery image support for New-AzVM
-* Add ''Spot'' to the argument completer of Priority parameter in New-AzVM, New-AzVMConfig and New-AzVmss cmdlets
-* Add DiskIOPSReadWrite and DiskMBpsReadWrite parameters to Add-AzVmssDataDisk cmdlet
-* Change SourceImageId parameter of New-AzGalleryImageVersion cmdlet to optional
-* Add OSDiskImage and DataDiskImage parameters to New-AzGalleryImageVersion cmdlet
-* Add HyperVGeneration parameter to New-AzGalleryImageDefinition cmdlet
-* Add SkipExtensionsOnOverprovisionedVMs parameters to New-AzVmss, New-AzVmssConfig and Update-AzVmss cmdlets
-
-Az.DataBoxEdge
-* Added cmdlet `Get-AzDataBoxEdgeOrder`
-    - Get the Order
-* Added cmdlet `New-AzDataBoxEdgeOrder`
-    - Create new Order
-* Added cmdlet `Remove-AzDataBoxEdgeOrder`
-    - Remove the Order
-* Change in cmdlet `New-AzDataBoxEdgeShare`
-    - Now creates Local Share
-* Added cmdlet `Set-AzDataBoxEdgeRole`
-    - Now IotRole can be mapped to Share
-* Added cmdlet `Invoke-AzDataBoxEdgeDevice`
-    - Invoke scan update, download update, install updates on the device
-* Added cmdlet `Get-AzDataBoxEdgeTrigger`
-    - Gets the information about Triggers
-* Added cmdlet `New-AzDataBoxEdgeTrigger`
-    - Create new Triggers
-* Added cmdlet `Remove-AzDataBoxEdgeTrigger`
-    - Remove the Triggers
-
-Az.EventHub
-* Fix for issue 10301 : Fix the SAS Token date format
-
-Az.Network
-* Change ''Start-AzVirtualNetworkGatewayConnectionPacketCapture.md'' and ''Start-AzVirtualnetworkGatewayPacketCapture.md'' FilterData option examples.
-
-Az.Resources
-- Updated policy cmdlets to use new api version 2019-06-01 that has new EnforcementMode property in policy assignment.
-- Updated create policy definition help example
-- Fix bug Remove-AZADServicePrincipal -ServicePrincipalName, throw null reference when service principal name not found.
-- Fix bug New-AZADServicePrincipal, throw null reference when tenant doesn''t have any subscription.
-- Change New-AzAdServicePrincipal to add credentials only to associated application.
-'
+        ReleaseNotes = '0.10.0 - March 2020
+* Support Azure Stack 2019-03-01 hybrid profile
+        '
 
         # Prerelease string of this module
         # Prerelease = ''
