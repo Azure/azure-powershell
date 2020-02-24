@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Sets the policy definition.
     /// </summary>
-    [CmdletOutputBreakingChange(typeof(PSObject), ReplacementCmdletOutputTypeName = "PsPolicyDefinition")]
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicyDefinition))]
     public class SetAzurePolicyDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -107,6 +106,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Guid? SubscriptionId { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy definition input object parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyDefinitionInputObjectHelp)]
+        public PsPolicyDefinition InputObject { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -134,7 +139,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
 
-            this.WriteObject(this.GetOutputObjects("PolicyDefinitionId", JObject.Parse(result)), enumerateCollection: true);
+            this.WriteObject(this.GetOutputPolicyDefinitions(JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
@@ -143,6 +148,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private JToken GetResource(string resourceId, string apiVersion)
         {
             var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
+
+            // apply incoming object properties if present
+            if (this.InputObject != null)
+            {
+                resource.Properties = this.InputObject.Properties.ToJToken();
+            }
 
             var policyDefinitionObject = new PolicyDefinition
             {
@@ -186,7 +197,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetResourceId()
         {
-            return this.Id ?? this.MakePolicyDefinitionId(this.ManagementGroupName, this.SubscriptionId, this.Name);
+            return this.Id ?? this.InputObject?.ResourceId ?? this.MakePolicyDefinitionId(this.ManagementGroupName, this.SubscriptionId, this.Name);
         }
     }
 }
