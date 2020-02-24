@@ -11,6 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Cmdlets\TrafficRouting\**" />
+    <EmbeddedResource Remove="Cmdlets\TrafficRouting\**" />
+    <None Remove="Cmdlets\TrafficRouting\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Websites" Version="2.2.0" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
