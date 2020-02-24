@@ -157,8 +157,8 @@ Creates the test environment needed to perform the Sql vulnerability assessment 
 function Create-InstanceTestEnvironmentWithParams ($params, $location)
 {
 	Create-BasicManagedTestEnvironmentWithParams $params $location
-
 	New-AzStorageAccount -StorageAccountName $params.storageAccount -ResourceGroupName $params.rgname -Location $location -Type Standard_GRS
+    Wait-Seconds 10
 }
 
 <#
@@ -200,7 +200,7 @@ Creates the basic test environment needed to perform the Sql data security tests
 #>
 function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
 {
-	New-AzureRmResourceGroup -Name $params.rgname -Location $location
+	New-AzResourceGroup -Name $params.rgname -Location $location
 
 	# Setup VNET
 	$vnetName = "cl_initial"
@@ -214,11 +214,11 @@ function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
  	$skuName = "GP_Gen4"
 	$collation = "SQL_Latin1_General_CP1_CI_AS"
 
-	$managedInstance = New-AzureRmSqlInstance -ResourceGroupName $params.rgname -Name $params.serverName `
+	$managedInstance = New-AzSqlInstance -ResourceGroupName $params.rgname -Name $params.serverName `
  			-Location $location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-Vcore $vCore -SkuName $skuName
 
-	New-AzureRmSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName -Collation $collation
+	New-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName -Collation $collation
 }
 
 <#
