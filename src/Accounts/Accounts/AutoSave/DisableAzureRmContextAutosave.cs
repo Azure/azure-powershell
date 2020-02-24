@@ -64,7 +64,6 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
         void DisableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
         {
-            var store = session.DataStore;
             string tokenPath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
             result = new ContextAutosaveSettings
             {

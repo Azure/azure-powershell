@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Commands.Profile
                     AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => builder);
                 }
 
-                AuthenticationClientFactory factory;
+                AuthenticationClientFactory factory = null;
                 if (autoSaveEnabled)
                 {
                     try
@@ -495,10 +495,24 @@ namespace Microsoft.Azure.Commands.Profile
                     }
                     catch (MsalCachePersistenceException)
                     {
-                        throw new PlatformNotSupportedException(Resources.AutosaveNotSupportedWithSuggestion);
+                        // Exception thrown here is not displayed when user runs a cmdlet
+                        // it only shows up when manually ipmo az.accounts, so it's useless
+                        // Workaround: disable context auto save
+                        // TODO: use some method to display a warning message when running the first cmdlet
+                        ModifyContext((profile, client) =>
+                        {
+                            AzureSession.Modify(session => {
+                                FileUtilities.DataStore = session.DataStore;
+                                session.ARMContextSaveMode = ContextSaveMode.Process;
+                            });
+                        });
+                        autoSaveEnabled = false;
+                        //throw new PlatformNotSupportedException(Resources.AutosaveNotSupportedWithSuggestion);
                     }
                 }
-                else
+
+                // if autosave is disabled, or the shared factory fails to initialize, we fallback to in memory
+                if (!autoSaveEnabled)
                 {
                     factory = new InMemoryTokenCacheClientFactory();
                     
