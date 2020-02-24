@@ -498,4 +498,7 @@
   <data name="AutosaveNotSupportedWithSuggestion" xml:space="preserve">
     <value>Context autosave is not supported on current environment. Please disable it using 'Disable-AzContextSave'.</value>
   </data>
+  <data name="AutosaveNotSupportedWithFallback" xml:space="preserve">
+    <value>Context autosave is not supported on current environment. It is disabled in the PowerShell process.</value>
+  </data>
 </root>

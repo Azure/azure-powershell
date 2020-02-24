@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Context autosave is not supported on current environment. It is disabled in the PowerShell process..
+        /// </summary>
+        internal static string AutosaveNotSupportedWithFallback {
+            get {
+                return ResourceManager.GetString("AutosaveNotSupportedWithFallback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Context autosave is not supported on current environment. Please disable it using &apos;Disable-AzContextSave&apos;..
         /// </summary>
         internal static string AutosaveNotSupportedWithSuggestion {

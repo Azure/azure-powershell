@@ -495,10 +495,9 @@ namespace Microsoft.Azure.Commands.Profile
                     }
                     catch (MsalCachePersistenceException)
                     {
-                        // Exception thrown here is not displayed when user runs a cmdlet
+                        // If token cache persistence is not supported, fall back to in-memory, and print a warning
+                        // Cannot throw exception here because it is not displayed when user runs a cmdlet
                         // it only shows up when manually ipmo az.accounts, so it's useless
-                        // Workaround: disable context auto save
-                        // TODO: use some method to display a warning message when running the first cmdlet
                         ModifyContext((profile, client) =>
                         {
                             AzureSession.Modify(session => {
@@ -507,7 +506,7 @@ namespace Microsoft.Azure.Commands.Profile
                             });
                         });
                         autoSaveEnabled = false;
-                        //throw new PlatformNotSupportedException(Resources.AutosaveNotSupportedWithSuggestion);
+                        WriteInitializationWarnings(Resources.AutosaveNotSupportedWithFallback);
                     }
                 }
 
