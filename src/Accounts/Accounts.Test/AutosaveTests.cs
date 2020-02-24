@@ -70,6 +70,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 Assert.Equal(ContextSaveMode.CurrentUser, AzureSession.Instance.ARMContextSaveMode);
                 Assert.Equal(typeof(ProtectedProfileProvider), AzureRmProfileProvider.Instance.GetType());
             }
+            catch (PlatformNotSupportedException)
+            {
+                // swallow exception when test env (Linux server) doesn't support token cache persistence
+            }
             finally
             {
                 ResetState();
@@ -122,10 +126,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 Assert.True(AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out AuthenticationClientFactory factory));
                 Assert.Equal(typeof(InMemoryTokenCacheClientFactory), factory.GetType());
                 Assert.Equal(typeof(ResourceManagerProfileProvider), AzureRmProfileProvider.Instance.GetType());
-            }
-            catch (PlatformNotSupportedException)
-            {
-                // swallow exception when test env (Linux server) doesn't support token cache persistence
             }
             finally
             {
