@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fix for null reference bug in GetAzureRoleAssignmentCommand
+* Add breaking change attributes for upcoming changes to policy cmdlets
 
 ## Version 1.11.0
 * Refactored template deployment cmdlets
