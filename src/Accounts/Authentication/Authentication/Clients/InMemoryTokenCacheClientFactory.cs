@@ -17,6 +17,10 @@ using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
 {
+    /// <summary>
+    /// Factory that creates client app for authenticating with MSAL.
+    /// Should be accessed using <see cref="AuthenticationClientFactory.AuthenticationClientFactoryKey"/>.
+    /// </summary>
     public class InMemoryTokenCacheClientFactory : AuthenticationClientFactory
     {
         private readonly IMemoryCache _memoryCache;

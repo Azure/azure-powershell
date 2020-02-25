@@ -110,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             Action<string> promptAction,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            return Authenticate(account, environment, tenant, password, promptBehavior, promptAction, AzureSession.Instance.TokenCache, resourceId);
+            return Authenticate(account, environment, tenant, password, promptBehavior, promptAction, null, resourceId);
         }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)

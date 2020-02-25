@@ -13,10 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -26,6 +22,9 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.Identity.Client;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
+using System;
+using Microsoft.Identity.Client.Extensions.Msal;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -84,30 +83,9 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
-            var diskCache = session.TokenCache as ProtectedFileTokenCache;
+            
             try
             {
-                if (diskCache == null)
-                {
-                    var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
-                    try
-                    {
-                        FileUtilities.EnsureDirectoryExists(session.TokenCacheDirectory);
-
-                        diskCache = new ProtectedFileTokenCache(tokenPath, store);
-                        if (memoryCache != null)
-                        {
-                            diskCache.CacheData = memoryCache.CacheData;
-                        }
-
-                        session.TokenCache = diskCache;
-                    }
-                    catch
-                    {
-                        // leave the token cache alone if there are file system errors
-                    }
-                }
-
                 AuthenticationClientFactory factory = new SharedTokenCacheClientFactory();
                 AzureSession.Instance.UnregisterComponent<AuthenticationClientFactory>(AuthenticationClientFactory.AuthenticationClientFactoryKey);
                 AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
@@ -126,9 +104,13 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
                 }
             }
-            catch
+            catch (Exception e)
             {
                 // do not throw if there are file system error
+                if (e is MsalCachePersistenceException)
+                {
+                    throw new PlatformNotSupportedException(Resources.AutosaveNotSupported);
+                }
             }
         }
 

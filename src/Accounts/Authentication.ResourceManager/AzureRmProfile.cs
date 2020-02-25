@@ -27,6 +27,7 @@ using System.Collections.Concurrent;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -206,7 +207,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
                 foreach (var context in profile.Contexts)
                 {
-                    context.Value.TokenCache = AzureSession.Instance.TokenCache;
                     this.Contexts.Add(context.Key, context.Value);
                 }
 
@@ -686,7 +686,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         private void RefreshContextsFromCache()
         {
-            var authenticationClientFactory = new SharedTokenCacheClientFactory();
+            // Authentication factory is already registered in `OnImport()`
+            AzureSession.Instance.TryGetComponent(
+                AuthenticationClientFactory.AuthenticationClientFactoryKey,
+                out AuthenticationClientFactory authenticationClientFactory);
+
             string authority = null;
             if (TryGetEnvironment(AzureSession.Instance.GetProperty(AzureSession.Property.Environment), out IAzureEnvironment sessionEnvironment))
             {

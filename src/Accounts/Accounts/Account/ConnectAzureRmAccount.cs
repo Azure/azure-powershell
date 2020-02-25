@@ -33,6 +33,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using System.Threading;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
+using Microsoft.Identity.Client.Extensions.Msal;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -485,16 +486,37 @@ namespace Microsoft.Azure.Commands.Profile
                     AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => builder);
                 }
 
+                AuthenticationClientFactory factory = null;
                 if (autoSaveEnabled)
                 {
-                    AuthenticationClientFactory factory = new SharedTokenCacheClientFactory();
-                    AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
+                    try
+                    {
+                        factory = new SharedTokenCacheClientFactory();
+                    }
+                    catch (MsalCachePersistenceException)
+                    {
+                        // If token cache persistence is not supported, fall back to in-memory, and print a warning
+                        // Cannot throw exception here because it is not displayed when user runs a cmdlet
+                        // it only shows up when manually ipmo az.accounts, so it's useless
+                        ModifyContext((profile, client) =>
+                        {
+                            AzureSession.Modify(session => {
+                                FileUtilities.DataStore = session.DataStore;
+                                session.ARMContextSaveMode = ContextSaveMode.Process;
+                            });
+                        });
+                        autoSaveEnabled = false;
+                        WriteInitializationWarnings(Resources.AutosaveNotSupportedWithFallback);
+                    }
                 }
-                else
+
+                // if autosave is disabled, or the shared factory fails to initialize, we fallback to in memory
+                if (!autoSaveEnabled)
                 {
-                    AuthenticationClientFactory factory = new InMemoryTokenCacheClientFactory();
-                    AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
+                    factory = new InMemoryTokenCacheClientFactory();
+                    
                 }
+                AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)

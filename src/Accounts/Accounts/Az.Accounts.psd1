@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.7.1'
+ModuleVersion = '2.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -82,12 +82,7 @@ RequiredAssemblies = 'Microsoft.Azure.PowerShell.Authentication.Abstractions.dll
                'Microsoft.Azure.PowerShell.Authenticators.dll', 
                'Microsoft.Extensions.Caching.Abstractions.dll', 
                'Microsoft.Extensions.Caching.Memory.dll', 
-               'Microsoft.Extensions.Configuration.Abstractions.dll', 
-               'Microsoft.Extensions.Configuration.Binder.dll', 
-               'Microsoft.Extensions.Configuration.dll', 
-               'Microsoft.Extensions.Configuration.EnvironmentVariables.dll', 
                'Microsoft.Extensions.DependencyInjection.Abstractions.dll', 
-               'Microsoft.Extensions.Logging.Abstractions.dll', 
                'Microsoft.Extensions.Options.dll', 
                'Microsoft.Extensions.Primitives.dll', 
                'Microsoft.Identity.Client.dll', 
@@ -160,7 +155,7 @@ PrivateData = @{
         ReleaseNotes = '* Support ADAL token cache migration'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

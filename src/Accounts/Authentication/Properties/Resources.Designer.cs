@@ -160,6 +160,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Context autosave is not supported on current environment. Please disable it using &apos;Disable-AzContextSave&apos;..
+        /// </summary>
+        internal static string AutosaveNotSupportedWithSuggestion {
+            get {
+                return ResourceManager.GetString("AutosaveNotSupportedWithSuggestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .Azure.
         /// </summary>
         internal static string AzureDirectoryName {

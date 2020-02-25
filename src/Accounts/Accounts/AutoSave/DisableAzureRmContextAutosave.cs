@@ -13,10 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -68,7 +64,6 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
         void DisableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
         {
-            var store = session.DataStore;
             string tokenPath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
             result = new ContextAutosaveSettings
             {
@@ -77,19 +72,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.Process;
-            var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
-            if (memoryCache == null)
-            {
-                var diskCache = session.TokenCache as ProtectedFileTokenCache;
-                memoryCache = new AuthenticationStoreTokenCache(new AzureTokenCache());
-                if (diskCache != null)
-                {
-                    memoryCache.CacheData = diskCache.CacheData;
-                }
-
-                session.TokenCache = memoryCache;
-            }
-
+            
             AuthenticationClientFactory authenticationClientFactory = new InMemoryTokenCacheClientFactory();
             if (AzureSession.Instance.TryGetComponent(
                     AuthenticationClientFactory.AuthenticationClientFactoryKey,
