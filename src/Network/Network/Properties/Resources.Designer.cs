@@ -601,6 +601,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid format type. Supported value is &apos;JSON&apos;..
+        /// </summary>
+        internal static string InvalidFlowLogFormatType {
+            get {
+                return ResourceManager.GetString("InvalidFlowLogFormatType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid format version. Supported values are 0, 1 and 2..
+        /// </summary>
+        internal static string InvalidFlowLogFormatVersion {
+            get {
+                return ResourceManager.GetString("InvalidFlowLogFormatVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid HTTP request header in HTTPConfiguration. Both name and value should be populated..
         /// </summary>
         internal static string InvalidHTTPRequestHeader {
@@ -682,6 +700,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number of days in retention policy should be greater than 0..
+        /// </summary>
+        internal static string InvalidRetentionPolicyDaysValue {
+            get {
+                return ResourceManager.GetString("InvalidRetentionPolicyDaysValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RoundTripTimeMs for success threshold should be a positive value. The specified value is invalid..
         /// </summary>
         internal static string InvalidRoundtripTimeMs {
@@ -700,7 +727,34 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WorkspaceResourceId specified in connection monitor output is not a valid resource Id of Log analytics workspace..
+        ///   Looks up a localized string similar to StorageId specified in flow log is not a valid ID of storage account..
+        /// </summary>
+        internal static string InvalidStorageId {
+            get {
+                return ResourceManager.GetString("InvalidStorageId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TargetResourceId specified in flow log is not a valid resource ID of Network security group..
+        /// </summary>
+        internal static string InvalidTargetResourceId {
+            get {
+                return ResourceManager.GetString("InvalidTargetResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TrafficAnalyticsInterval is invalid. Supported values are 10 and 60..
+        /// </summary>
+        internal static string InvalidTrafficAnalyticsInterval {
+            get {
+                return ResourceManager.GetString("InvalidTrafficAnalyticsInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LocAnalytics workspace..
         /// </summary>
         internal static string InvalidWorkspaceResourceId {
             get {
@@ -1272,6 +1326,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string TestGroupTestConfigurationName {
             get {
                 return ResourceManager.GetString("TestGroupTestConfigurationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workspace resourceID should be provided if traffic analytics is enabled..
+        /// </summary>
+        internal static string TrafficAnalyticsWorkspaceResourceIdIsMissing {
+            get {
+                return ResourceManager.GetString("TrafficAnalyticsWorkspaceResourceIdIsMissing", resourceCulture);
             }
         }
         
