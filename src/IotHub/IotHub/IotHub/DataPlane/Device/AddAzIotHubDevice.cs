@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
+    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
@@ -67,6 +68,21 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(Mandatory = false, HelpMessage = "Flag indicating edge enablement.")]
         public SwitchParameter EdgeEnabled { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = InputObjectParameterSet, HelpMessage = "Add child device list (comma separated) includes only non-edge devices.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Add child device list (comma separated) includes only non-edge devices.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceParameterSet, HelpMessage = "Add child device list (comma separated) includes only non-edge devices.")]
+        [ValidateNotNullOrEmpty]
+        public string[] Children { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = InputObjectParameterSet, HelpMessage = "Id of edge device.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Id of edge device.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceParameterSet, HelpMessage = "Id of edge device.")]
+        [ValidateNotNullOrEmpty]
+        public string ParentDeviceId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Overwrites the non-edge device\'s parent device.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(this.DeviceId, Properties.Resources.AddIotHubDevice))
@@ -91,8 +107,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
                 IEnumerable<SharedAccessSignatureAuthorizationRule> authPolicies = this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.IotHubName);
                 SharedAccessSignatureAuthorizationRule policy = IotHubUtils.GetPolicy(authPolicies, PSAccessRights.RegistryWrite);
-
                 PSIotHubConnectionString psIotHubConnectionString = IotHubUtils.ToPSIotHubConnectionString(policy, iotHubDescription.Properties.HostName);
+                RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);
 
                 PSDeviceCapabilities psDeviceCapabilities = new PSDeviceCapabilities();
                 psDeviceCapabilities.IotEdge = this.EdgeEnabled.IsPresent;
@@ -122,8 +138,74 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 device.Status = this.Status;
                 device.StatusReason = this.StatusReason;
 
-                RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);
-                this.WriteObject(IotHubDataPlaneUtils.ToPSDevice(registryManager.AddDeviceAsync(IotHubDataPlaneUtils.ToDevice(device)).GetAwaiter().GetResult()));
+                if (this.EdgeEnabled.IsPresent)
+                {
+                    IList<Device> childDevices = new List<Device>();
+                    foreach (string childDeviceId in this.Children)
+                    {
+                        Device childDevice = registryManager.GetDeviceAsync(childDeviceId).GetAwaiter().GetResult();
+
+                        if (childDevice == null)
+                        {
+                            throw new ArgumentException($"The entered children device \"{childDeviceId}\" doesn't exist.");
+                        }
+                        
+                        if (childDevice.Capabilities.IotEdge)
+                        {
+                            throw new ArgumentException($"The entered children device \"{childDeviceId}\" should be non-edge device.");
+                        }
+
+                        if (!string.IsNullOrEmpty(childDevice.Scope) && !this.Force.IsPresent)
+                        {
+                            throw new ArgumentException($"The entered children device \"{childDeviceId}\" already has a parent device, please use '-Force' to overwrite.");
+                        }
+
+                        childDevices.Add(childDevice);
+                    }
+                }
+                else
+                {
+                    if (this.ParentDeviceId != null)
+                    {
+                        Device parentDevice = registryManager.GetDeviceAsync(this.ParentDeviceId).GetAwaiter().GetResult();
+
+                        if (parentDevice == null)
+                        {
+                            throw new ArgumentException($"The entered parent device \"{this.ParentDeviceId}\" doesn't exist.");
+                        }
+
+                        if (!parentDevice.Capabilities.IotEdge)
+                        {
+                            throw new ArgumentException($"The entered parent device \"{this.ParentDeviceId}\" should be an edge device.");
+                        }
+
+                        device.Scope = parentDevice.Scope;
+                    }
+                }
+
+                Device newDevice = registryManager.AddDeviceAsync(IotHubDataPlaneUtils.ToDevice(device)).GetAwaiter().GetResult();
+                this.WriteObject(IotHubDataPlaneUtils.ToPSDevice(newDevice));
+
+                if (this.EdgeEnabled.IsPresent)
+                {
+                    foreach (string childDeviceId in this.Children)
+                    {
+                        Device childDevice = registryManager.GetDeviceAsync(childDeviceId).GetAwaiter().GetResult();
+
+                        if (childDevice.Capabilities.IotEdge)
+                        {
+                            throw new ArgumentException($"The entered children device \"{childDeviceId}\" should be non-edge device.");
+                        }
+
+                        if (!string.IsNullOrEmpty(childDevice.Scope) && !this.Force.IsPresent)
+                        {
+                            throw new ArgumentException($"The entered children device \"{childDeviceId}\" already has a parent device, please use '-Force' to overwrite.");
+                        }
+
+                        childDevice.Scope = newDevice.Scope;
+                        registryManager.UpdateDeviceAsync(childDevice).GetAwaiter().GetResult();
+                    }
+                }
             }
         }
 

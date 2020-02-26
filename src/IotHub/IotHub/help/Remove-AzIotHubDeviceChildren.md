@@ -1,71 +1,68 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/add-aziothubmodule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/remove-aziothubdevicechildren
 schema: 2.0.0
 ---
 
-# Add-AzIotHubModule
+# Remove-AzIotHubDeviceChildren
 
 ## SYNOPSIS
-Create a module on a target IoT device in an IoT Hub.
+Remove non edge devices as children from specified edge device.
 
 ## SYNTAX
 
 ### ResourceSet (Default)
 ```
-Add-AzIotHubModule [-ResourceGroupName] <String> [-IotHubName] <String> [-DeviceId] <String> [-ModuleId] <String>
- [-AuthMethod <PSDeviceAuthType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzIotHubDeviceChildren [-ResourceGroupName] <String> [-IotHubName] <String> [-DeviceId] <String>
+ [-Children <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Add-AzIotHubModule [-InputObject] <PSIotHub> [-DeviceId] <String> [-ModuleId] <String>
- [-AuthMethod <PSDeviceAuthType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzIotHubDeviceChildren [-InputObject] <PSIotHub> [-DeviceId] <String> [-Children <String[]>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Add-AzIotHubModule [-ResourceId] <String> [-DeviceId] <String> [-ModuleId] <String>
- [-AuthMethod <PSDeviceAuthType>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzIotHubDeviceChildren [-ResourceId] <String> [-DeviceId] <String> [-Children <String[]>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a module on a target IoT device with different authorization type in an IoT Hub.
+Remove all or mentioned non-edge devices as children specified edge device.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzIoTHubModule -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1" -AuthMethod shared_private_key
+PS C:\> Remove-AzIotHubDeviceChildren -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -Children device1,device2 -Passthru
 
-ModuleId                   : myModule1
-DeviceId                   : myDevice1
-GenerationId               : 637148941292917073
-ETag                       : "NzIyMDI4MTk3"
-LastActivityTime           : 1/1/0001 12:00:00 AM
-ConnectionState            : Disconnected
-ConnectionStateUpdatedTime : 1/1/0001 12:00:00 AM
-CloudToDeviceMessageCount  : 0
-Authentication             : Sas
-ManagedBy                  : 
+True
 ```
 
-Create a module on a target IoT device with default authorization (shared private key).
+Remove mentioned devices as children of specified device.
+
+### Example 2
+```powershell
+PS C:\> Remove-AzIotHubDeviceChildren -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -Passthru
+
+True
+```
+
+Remove all non-edge devices as children specified edge device.
 
 ## PARAMETERS
 
-### -AuthMethod
-The authorization type an entity is to be created with.
+### -Children
+Child device list (comma separated) includes only non-edge devices.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSDeviceAuthType
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: shared_private_key, x509_thumbprint, x509_ca
 
 Required: False
 Position: Named
@@ -90,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeviceId
-Target Device Id.
+Id of edge device.
 
 ```yaml
 Type: System.String
@@ -134,30 +131,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ModuleId
-Target Module Id.
+### -PassThru
+Allows to return the boolean object.
+By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrimaryThumbprint
-Explicit self-signed certificate thumbprint to use for primary key.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -191,21 +174,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SecondaryThumbprint
-Explicit self-signed certificate thumbprint to use for secondary key.
-
-```yaml
-Type:System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -251,7 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Management.IotHub.Models.PSModule
+### System.Boolean
 
 ## NOTES
 
