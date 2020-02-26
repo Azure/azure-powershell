@@ -44,10 +44,7 @@ Tests creating or updating tags on subscription.
 function Test-TagCreateOrUpdateWithResourceIdParamsForSubscription
 {
     # Setup
-    # $subs = Get-AzSubscription
-    # $subId = $subs[0].Id
-    $subscriptionId = "b9f138a1-1d64-4108-8413-9ea3be1c1b2d"
-    $resourceId = "/subscriptions/" + $subscriptionId
+    $resourceId = GetDefaultSubscriptionId
 
     Test-TagCreateOrUpdateWithResourceIdParams $resourceId  
 }
@@ -59,7 +56,7 @@ Tests creating or updating tags on tracked resource.
 function Test-TagCreateOrUpdateWithResourceIdParamsForResource
 {
     # Setup
-    $resourceId = "/subscriptions/b9f138a1-1d64-4108-8413-9ea3be1c1b2d/resourcegroups/TagsApiSDK/providers/Microsoft.Compute/virtualMachines/TagTestVM";
+    $resourceId = NewTestResource
 
     Test-TagCreateOrUpdateWithResourceIdParams $resourceId
 }
@@ -129,8 +126,7 @@ Tests updating tags on subscription.
 function Test-TagUpdateWithResourceIdParamsForSubscription
 {
     # Setup
-    $subscriptionId = "b9f138a1-1d64-4108-8413-9ea3be1c1b2d"
-    $resourceId = "/subscriptions/" + $subscriptionId
+    $resourceId = GetDefaultSubscriptionId
 
     Test-UpdateWithResourceIdParams $resourceId
 }
@@ -142,7 +138,7 @@ Tests updating tags on tracked resource.
 function Test-TagUpdateWithResourceIdParamsForResource
 {
     # Setup
-    $resourceId = "/subscriptions/b9f138a1-1d64-4108-8413-9ea3be1c1b2d/resourcegroups/TagsApiSDK/providers/Microsoft.Compute/virtualMachines/TagTestVM";
+    $resourceId = NewTestResource
 
     Test-UpdateWithResourceIdParams $resourceId
 }
@@ -182,8 +178,7 @@ Tests getting tags on subscription.
 function Test-TagGetWithResourceIdParamsForSubscription
 {
     # Setup
-    $subscriptionId = "b9f138a1-1d64-4108-8413-9ea3be1c1b2d"
-    $resourceId = "/subscriptions/" + $subscriptionId
+    $resourceId = GetDefaultSubscriptionId
 
     Test-TagGetWithResourceIdParams $resourceId   
 }
@@ -195,7 +190,7 @@ Tests getting tags on tracked resource.
 function Test-TagGetWithResourceIdParamsForResource
 {
     # Setup
-    $resourceId = "/subscriptions/b9f138a1-1d64-4108-8413-9ea3be1c1b2d/resourcegroups/TagsApiSDK/providers/Microsoft.Compute/virtualMachines/TagTestVM";
+    $resourceId = NewTestResource
 
     Test-TagGetWithResourceIdParams $resourceId
 }
@@ -235,8 +230,7 @@ Tests getting tags on subscription.
 function Test-TagDeleteWithResourceIdParamsForSubscription
 {
     # Setup
-    $subscriptionId = "b9f138a1-1d64-4108-8413-9ea3be1c1b2d"
-    $resourceId = "/subscriptions/" + $subscriptionId
+    $resourceId = GetDefaultSubscriptionId
 
     Test-TagDeleteWithResourceIdParams $resourceId
 }
@@ -248,9 +242,63 @@ Tests getting tags on tracked resource.
 function Test-TagDeleteWithResourceIdParamsForResource
 {
     # Setup
-    $resourceId = "/subscriptions/b9f138a1-1d64-4108-8413-9ea3be1c1b2d/resourcegroups/TagsApiSDK/providers/Microsoft.Compute/virtualMachines/TagTestVM";
+    $resourceId = NewTestResource
 
     Test-TagDeleteWithResourceIdParams $resourceId
+}
+
+<#
+.SYNOPSIS
+utility method to get default subscriptionId
+#>
+function GetDefaultSubscriptionId
+{
+    $subs = Get-AzSubscription
+    $subId = "/subscriptions/" + $subs[0].Id
+
+    return $subId
+}
+
+<#
+.SYNOPSIS
+utility method to create resource group
+#>
+function NewTestResourceGroup
+{
+    $rgName = "RG-Test05"
+    $location = "Central US"
+
+    $existed = Get-AzureRmResourceGroup -Name $rgName -ErrorVariable notPresent -ErrorAction SilentlyContinue
+
+    if($notPresent) {
+        $existed = New-AzureRmResourceGroup -Name $rgName -Location $location
+	}
+  
+    return $existed
+}
+
+<#
+.SYNOPSIS
+utility method to create resource
+#>
+function NewTestResource
+{
+    $rg = NewTestResourceGroup
+
+    $resourceName = "RS-Test05"
+    $resourceId = $rg.ResourceId + "/providers/microsoft.web/sites/" + $resourceName
+
+    $location = "Central US"
+    $property = @{test="test-tag"}
+    $resourceType = "microsoft.web/sites"
+    
+    $existed = Get-AzureRmResource -ResourceId $resourceId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+
+    if($notPresent) {
+        $existed = New-AzureRmResource -Location $location -Properties $property -ResourceName $resourceName -ResourceType $resourceType -ResourceGroupName $rg.ResourceGroupName -Force
+	}
+    
+    return $resourceId
 }
 
 <#

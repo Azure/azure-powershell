@@ -141,7 +141,7 @@ The update operation. Options are Merge, Replace and Delete.
 Type: Microsoft.Azure.Commands.Tags.Model.TagPatchOpeation
 Parameter Sets: (All)
 Aliases:
-Accepted values: NotSpecified, Merge, Replace, Delete
+Accepted values: Merge, Replace, Delete
 
 Required: True
 Position: 2

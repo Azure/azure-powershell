@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         {
             if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {
-                if(ShouldProcess(this.ResourceId, "Removing the entire set of tags"))        
+                if(ShouldProcess(this.ResourceId, Resources.RemoveTagMessage))        
                 {
                     var res = TagsClient.DeleteTagAtScope(this.ResourceId);
                     if (this.PassThru.IsPresent)
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
                 PSTag tag = null;
 
                 ConfirmAction(
-                    Resources.RemoveTagMessage,
+                    Resources.RemovePredefinedTagMessage,
                     Name,
                     () =>
                     {
