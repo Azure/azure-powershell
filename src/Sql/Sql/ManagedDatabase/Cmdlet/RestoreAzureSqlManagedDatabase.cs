@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
            ParameterSetName = LtrBackupRestoreFromInputParametersSet,
             Mandatory = true,
             HelpMessage = "Restore from a Long Term Retention backup.")]
-        public SwitchParameter FromLtrBackup { get; set; }
+        public SwitchParameter FromLongTermRetentionBackup { get; set; }
 
         /// <summary>
         /// Gets or sets the source subscription id.

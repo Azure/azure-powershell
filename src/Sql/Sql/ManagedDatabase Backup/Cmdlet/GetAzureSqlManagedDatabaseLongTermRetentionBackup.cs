@@ -17,6 +17,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "The database object to get backups for.")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlDatabaseModel InputObject { get; set; }
+        public AzureSqlManagedDatabaseModel InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the Database Resource ID to get backups for.
@@ -124,26 +125,26 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = InstanceNameSet,
             Position = 1,
-            HelpMessage = "The name of the Azure SQL Server the backups are under.")]
+            HelpMessage = "The name of the Managed Instance the backups are under.")]
         [Parameter(Mandatory = true,
             ParameterSetName = BackupNameSet,
             Position = 1,
-            HelpMessage = "The name of the Azure SQL Server the backups are under.")]
-        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
+            HelpMessage = "The name of the Managed Instance the backups are under.")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string ServerName { get; set; }
+        public string ManagedInstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database.
         /// </summary>
         [Parameter(Mandatory = false,
             ParameterSetName = InstanceNameSet,
-            HelpMessage = "The name of the Azure SQL Server the backups are under.")]
+            HelpMessage = "The name of the Managed Instance the backups are under.")]
         [Parameter(Mandatory = true,
             ParameterSetName = BackupNameSet,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Database the backup is from.")]
-        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
+            HelpMessage = "The name of the Managed Instance the backup is from.")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "ManagedInstanceName")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
@@ -235,8 +236,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             if (InputObject != null)
             {
                 Location = InputObject.Location;
-                ServerName = InputObject.ServerName;
-                DatabaseName = InputObject.DatabaseName;
+                ManagedInstanceName = InputObject.ManagedInstanceName;
+                DatabaseName = InputObject.Name;
                 ResourceGroupName = InputObject.ResourceGroupName;
             }
             else if (!string.IsNullOrWhiteSpace(ResourceId))
@@ -244,12 +245,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
                 ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
                 DatabaseName = identifier.ResourceName;
                 ResourceGroupName = identifier.ResourceGroupName;
-                ServerName = identifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries)[1];
+                ManagedInstanceName = identifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries)[1];
             }
 
             return SubResourceWildcardFilter(BackupName, ModelAdapter.GetManagedDatabaseLongTermRetentionBackups(
                     Location,
-                    ServerName,
+                    ManagedInstanceName,
                     DatabaseName,
                     BackupName,
                     ResourceGroupName,
@@ -269,7 +270,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         }
 
         /// <summary>
-        /// No changes to persist to server
+        /// No changes to persist to managed instance
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
