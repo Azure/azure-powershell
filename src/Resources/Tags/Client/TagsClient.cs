@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Tags.Client
         /// <param name="operation"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public PSTagResource UpdateTagAtScope(string scope, TagPatchOpeation operation, IDictionary<string, string> parameters)
+        public PSTagResource UpdateTagAtScope(string scope, TagPatchOperation operation, IDictionary<string, string> parameters)
         {
             var tagPatchResource = new TagsPatchResource(operation: operation.ToString(), properties: new SDKTagsObject(parameters));
             return ResourceManagementClient.Tags.UpdateAtScope(scope: scope, parameters: tagPatchResource)?.ToPSTagResource();

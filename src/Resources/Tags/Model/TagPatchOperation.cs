@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Tags.Model
 {
-    public enum TagPatchOpeation
+    public enum TagPatchOperation
     {
         Merge,
         Replace,
