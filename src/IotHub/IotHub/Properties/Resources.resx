@@ -213,4 +213,10 @@
   <data name="SetParentDevice" xml:space="preserve">
     <value>Set Parent Device</value>
   </data>
+  <data name="AddIotHubDeviceChildren" xml:space="preserve">
+    <value>Add Device Children</value>
+  </data>
+  <data name="RemoveIotHubDeviceChildren" xml:space="preserve">
+    <value>Remove Device Children</value>
+  </data>
 </root>
