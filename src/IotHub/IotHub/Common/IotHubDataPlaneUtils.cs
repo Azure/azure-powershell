@@ -21,6 +21,16 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
 
     public static class IotHubDataPlaneUtils
     {
+        public static string GetEdgeDevices()
+        {
+            return "select * from devices where capabilities.iotEdge=true";
+        }
+
+        public static string GetNonEdgeDevices(string DeviceScope)
+        {
+            return $"select * from devices where capabilities.iotEdge=false and deviceScope='{DeviceScope}'";
+        }
+
         public static Device ToDevice(PSDevice psDevice)
         {
             return IotHubUtils.ConvertObject<PSDevice, Device>(psDevice);
