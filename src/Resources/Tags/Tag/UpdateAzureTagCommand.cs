@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
             ParameterSetName = UpdateByResourceIdParameterSet,
             HelpMessage = "The update operation. Options are Merge, Replace and Delete.")]
         [ValidateNotNullOrEmpty]
-        public TagPatchOpeation Operation { get; set; }
+        public TagPatchOperation Operation { get; set; }
 
         #endregion
 
