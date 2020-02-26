@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Tags.Client;
 using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.Tags.Properties;
 
 namespace Microsoft.Azure.Commands.Tags.Tag
 {
@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         {
             if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {
-                if (ShouldProcess(this.ResourceId, $"Updating the entire set of tags with {Operation} operation"))
+                if (ShouldProcess(this.ResourceId, string.Format(Resources.UpdateTagMessage, this.Operation)))
                 {
                     var tagDict = this.Tag.Cast<DictionaryEntry>().ToDictionary(d => d.Key?.ToString(), d => d.Value?.ToString());
                     var res = TagsClient.UpdateTagAtScope(this.ResourceId, this.Operation, tagDict);
 
-                    WriteObject(res);
+                    WriteObject(res);  
                 }
             }
         }

@@ -6,7 +6,6 @@ namespace Microsoft.Azure.Commands.Tags.Model
 {
     public enum TagPatchOpeation
     {
-        NotSpecified,
         Merge,
         Replace,
         Delete

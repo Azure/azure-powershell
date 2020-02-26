@@ -19,6 +19,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Tags.Client;
 using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.Tags.Properties;
 
 namespace Microsoft.Azure.Commands.Tags.Tag
 {
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         {
             if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {
-                if (ShouldProcess(this.ResourceId, "Creating or updating the entire set of tags"))
+                if (ShouldProcess(this.ResourceId, Resources.CreateTagMessage))
                 {
                     var tagDict = this.Tag.Cast<DictionaryEntry>().ToDictionary(d => d.Key?.ToString(), d => d.Value?.ToString());
                     var res = TagsClient.CreateOrUpdateTagAtScope(this.ResourceId, tagDict);
@@ -85,7 +86,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
             }
             else
             {
-                if (ShouldProcess(this.Name, $"Creating predefined tag with value {this.Value}"))
+                if (ShouldProcess(this.Name, string.Format(Resources.CreatePredefinedTagMessage, this.Value)))
                 {
                     WriteObject(TagsClient.CreateTag(Name, Value != null ? new List<string> { Value } : null));
                 }             
