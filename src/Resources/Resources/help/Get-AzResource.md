@@ -101,6 +101,12 @@ ResourceGroupName : testRG
 ResourceType      : Microsoft.Compute/virtualMachines
 Location          : westus
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM
+Tags              :
+                    Name    Value
+                    ======  ========
+                    Dept    IT
+                    Year    2002
+                    Status  Approved
 ```
 
 This command gets all of the resources whose resource name is "testVM".
@@ -142,6 +148,12 @@ ResourceGroupName : testRG
 ResourceType      : Microsoft.Compute/virtualMachines
 Location          : westus
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM
+Tags              :
+                    Name    Value
+                    ======  ========
+                    Dept    IT
+                    Year    2002
+                    Status  Approved
 ```
 
 This command gets the resource with the provided resource id, which is a virtual machine called "testVM" in the resource group "testRG".
