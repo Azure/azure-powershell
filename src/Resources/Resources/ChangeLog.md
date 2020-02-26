@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fix for null reference bug in GetAzureRoleAssignmentCommand
+* Updated `Get-AzResourceGroup` to perform resource group tag filtering on server-side
 * Extended Tag cmdlets to accept -ResourceId
     - Get-AzTag -ResourceId
     - New-AzTag -ResourceId

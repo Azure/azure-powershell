@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+*Fixing issue to set custom hostnames for WebAppSlots
 
 ## Version 1.6.0
 * Set-AzWebapp and Set-AzWebappSlot supports AlwaysOn, MinTls and FtpsState properties
