@@ -51,5 +51,26 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-ManagedDeletedDatabaseShortTermRetentionPolicy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceLongTermRetentionPolicy()
+        {
+            RunPowerShellTest("Test-ManagedInstanceLongTermRetentionPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceLongTermRetentionBackup()
+        {
+            RunPowerShellTest("Test-ManagedInstanceLongTermRetentionBackup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceLongTermRetentionResourceGroupBasedBackup()
+        {
+            RunPowerShellTest("Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup");
+        }
     }
 }
