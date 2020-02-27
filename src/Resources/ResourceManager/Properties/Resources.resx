@@ -450,4 +450,7 @@
   <data name="NoSubscriptionsUnderCurrentDirectory" xml:space="preserve">
     <value>No subscriptions can be found under current directory. Please login again using Connect-AzAccount.</value>
   </data>
+  <data name="DeploymentScriptKindNotSupported" xml:space="preserve">
+    <value>An unsupported Deployment Script kind is requested.</value>
+  </data>
 </root>
