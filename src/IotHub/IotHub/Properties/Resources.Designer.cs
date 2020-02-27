@@ -95,6 +95,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Device Children.
+        /// </summary>
+        internal static string AddIotHubDeviceChildren {
+            get {
+                return ResourceManager.GetString("AddIotHubDeviceChildren", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add an IoT Hub Key.
         /// </summary>
         internal static string AddIotHubKey {
@@ -235,6 +244,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string RemoveIotHubDevice {
             get {
                 return ResourceManager.GetString("RemoveIotHubDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Device Children.
+        /// </summary>
+        internal static string RemoveIotHubDeviceChildren {
+            get {
+                return ResourceManager.GetString("RemoveIotHubDeviceChildren", resourceCulture);
             }
         }
         

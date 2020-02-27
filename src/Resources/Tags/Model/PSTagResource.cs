@@ -12,23 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
+using System.Collections;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Profile.Models
+namespace Microsoft.Azure.Commands.Tags.Model
 {
-    /// <summary>
-    /// Feedback data for Application Insights endpoint.
-    /// </summary>
-    public class PSAzureFeedback
+    public class PSTagResource
     {
-        public string ModuleName { get; set; }
-        public string ModuleVersion { get; set; }
-        public string SubscriptionId { get; set; }
-        public string TenantId { get; set; }
-        public string Environment { get; set; }
-        public int Recommendation { get; set; }
-        public string PositiveComments { get; set; }
-        public string NegativeComments { get; set; }
-        public string Email { get; set; }
+        public string Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Type { get; set; }
+
+        public PSTagsObject Properties { get; set; }
+
+        public string PropertiesTable { get; set; }
     }
 }
