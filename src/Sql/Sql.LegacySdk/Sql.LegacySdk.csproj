@@ -16,10 +16,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" PrivateAssets="all" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Sql">
-      <HintPath>..\..\..\..\azure-sdk-for-net\artifacts\bin\Microsoft.Azure.Management.Sql\Debug\net461\Microsoft.Azure.Management.Sql.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

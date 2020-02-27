@@ -21,18 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.38.0-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Sql.LegacySdk\Sql.LegacySdk.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Sql">
-      <HintPath>..\..\..\..\azure-sdk-for-net\artifacts\bin\Microsoft.Azure.Management.Sql\Debug\net461\Microsoft.Azure.Management.Sql.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -49,5 +43,5 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  
+
 </Project>
