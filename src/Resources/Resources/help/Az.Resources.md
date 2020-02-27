@@ -61,6 +61,12 @@ Gets managed application definitions
 ### [Get-AzManagementGroup](Get-AzManagementGroup.md)
 Gets Management Group(s)
 
+### [Get-AzManagementGroupDeployment](Get-AzManagementGroupDeployment.md)
+Get deployment at a mangement group
+
+### [Get-AzManagementGroupDeploymentOperation](Get-AzManagementGroupDeploymentOperation.md)
+Get deployment operation for management group deployment
+
 ### [Get-AzPolicyAlias](Get-AzPolicyAlias.md)
 Get-AzPolicyAlias retrieves and outputs Azure provider resource types that have aliases defined and match the
 given parameter values. If no parameters are provided, all provider resource types that contain an alias will be output.
@@ -108,7 +114,13 @@ Use respective parameters to list assignments to a specific user, or to list ass
 Lists all Azure RBAC roles that are available for assignment.
 
 ### [Get-AzTag](Get-AzTag.md)
-Gets predefined Azure tags.
+Gets predefined Azure tags | Gets the entire set of tags on a resource or subscription.
+
+### [Get-AzTenantDeployment](Get-AzTenantDeployment.md)
+Get deployment at tenant scope
+
+### [Get-AzTenantDeploymentOperation](Get-AzTenantDeploymentOperation.md)
+Get deployment operation for deployment at tenant scope
 
 ### [Invoke-AzResourceAction](Invoke-AzResourceAction.md)
 Invokes an action on a resource.
@@ -146,6 +158,9 @@ Creates a managed application definition.
 ### [New-AzManagementGroup](New-AzManagementGroup.md)
 Creates a Management Group
 
+### [New-AzManagementGroupDeployment](New-AzManagementGroupDeployment.md)
+Create a deployment at a management group
+
 ### [New-AzManagementGroupSubscription](New-AzManagementGroupSubscription.md)
 Adds a Subscription to a Management Group.
 
@@ -181,7 +196,10 @@ Then, modify its properties as required.
 Finally, use this command to create a custom role using role definition.
 
 ### [New-AzTag](New-AzTag.md)
-Creates a predefined Azure tag or adds values to an existing tag.
+Creates a predefined Azure tag or adds values to an existing tag | Creates or updates the entire set of tags on a resource or subscription.
+
+### [New-AzTenantDeployment](New-AzTenantDeployment.md)
+Create a deployment at tenant scope
 
 ### [Register-AzProviderFeature](Register-AzProviderFeature.md)
 Registers an Azure provider feature in your account.
@@ -222,6 +240,9 @@ Removes a managed application definition
 ### [Remove-AzManagementGroup](Remove-AzManagementGroup.md)
 Removes a Management Group
 
+### [Remove-AzManagementGroupDeployment](Remove-AzManagementGroupDeployment.md)
+Removes a deployment at a management group and any associated operations
+
 ### [Remove-AzManagementGroupSubscription](Remove-AzManagementGroupSubscription.md)
 Removes a Subscription from a Management Group.
 
@@ -255,13 +276,22 @@ The role to be deleted is specified using the Id property of the role.
 Delete will fail if there are existing role assignments made to the custom role.
 
 ### [Remove-AzTag](Remove-AzTag.md)
-Deletes predefined Azure tags or values.
+Deletes predefined Azure tags or values | Deletes the entire set of tags on a resource or subscription.
+
+### [Remove-AzTenantDeployment](Remove-AzTenantDeployment.md)
+Removes a deployment at tenant scope and any associated operations
 
 ### [Save-AzDeploymentTemplate](Save-AzDeploymentTemplate.md)
 Saves a deployment template to a file.
 
+### [Save-AzManagementGroupDeploymentTemplate](Save-AzManagementGroupDeploymentTemplate.md)
+Saves a deployment template to a file.
+
 ### [Save-AzResourceGroupDeploymentTemplate](Save-AzResourceGroupDeploymentTemplate.md)
 Saves a resource group deployment template to a file.
+
+### [Save-AzTenantDeploymentTemplate](Save-AzTenantDeploymentTemplate.md)
+Saves a deployment template to a file.
 
 ### [Set-AzManagedApplication](Set-AzManagedApplication.md)
 Updates managed application
@@ -297,14 +327,26 @@ Finally, save the role definition using this command.
 ### [Stop-AzDeployment](Stop-AzDeployment.md)
 Cancel a running deployment
 
+### [Stop-AzManagementGroupDeployment](Stop-AzManagementGroupDeployment.md)
+Cancel a running deployment at a management group
+
 ### [Stop-AzResourceGroupDeployment](Stop-AzResourceGroupDeployment.md)
 Cancels a resource group deployment.
+
+### [Stop-AzTenantDeployment](Stop-AzTenantDeployment.md)
+Cancel a running deployment at tenant scope
 
 ### [Test-AzDeployment](Test-AzDeployment.md)
 Validates a deployment.
 
+### [Test-AzManagementGroupDeployment](Test-AzManagementGroupDeployment.md)
+Validates a deployment at a management group.
+
 ### [Test-AzResourceGroupDeployment](Test-AzResourceGroupDeployment.md)
 Validates a resource group deployment.
+
+### [Test-AzTenantDeployment](Test-AzTenantDeployment.md)
+Validates a deployment at tenant scope.
 
 ### [Unregister-AzResourceProvider](Unregister-AzResourceProvider.md)
 Unregisters a resource provider.
@@ -320,4 +362,7 @@ Updates an existing active directory user.
 
 ### [Update-AzManagementGroup](Update-AzManagementGroup.md)
 Updates a Management Group
+
+### [Update-AzTag](Update-AzTag.md)
+Selectively updates the set of tags on a resource or subscription.
 
