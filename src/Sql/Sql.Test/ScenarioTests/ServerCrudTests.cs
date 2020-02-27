@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
@@ -72,6 +73,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestServerUpdateWithoutIdentity()
         {
             RunPowerShellTest("Test-UpdateServerWithoutIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerCreateAndGetWithPublicNetworkAccess()
+        {
+            RunPowerShellTest("Test-CreateAndGetServerWithPublicNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerUpdateWithPublicNetworkAccess()
+        {
+            RunPowerShellTest("Test-UpdateServerWithPublicNetworkAccess");
         }
     }
 }
