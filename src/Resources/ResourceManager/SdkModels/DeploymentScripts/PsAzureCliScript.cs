@@ -12,10 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.ResourceManager.Models;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public class PsAzureCliScript : PsAzureScriptBase
+    public class PsAzureCliScript : PsDeploymentScript
     {
-        public string AzPowerShellVersion { get; set; }
+        public string AzCliVersion { get; set; }
+
+        internal static PsAzureCliScript ToPsAzureCliScript(AzureCliScript script)
+        {
+            return new PsAzureCliScript
+            {
+                Identity = script.Identity,
+                Location = script.Location,
+                Tags = script.Tags,
+                CleanupPreference = script.CleanupPreference,
+                ProvisioningState = script.ProvisioningState,
+                Status = script.Status,
+                Outputs = script.Outputs,
+                PrimaryScriptUri = script.PrimaryScriptUri,
+                SupportingScriptUris = script.SupportingScriptUris,
+                ScriptContent = script.ScriptContent,
+                Arguments = script.Arguments,
+                EnvironmentVariables = script.EnvironmentVariables,
+                ForceUpdateTag = script.ForceUpdateTag,
+                RetentionInterval = script.RetentionInterval,
+                Timeout = script.Timeout,
+                AzCliVersion = script.AzCliVersion
+            };
+        }
     }
 }

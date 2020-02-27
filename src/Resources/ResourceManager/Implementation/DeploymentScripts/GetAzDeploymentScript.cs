@@ -16,30 +16,69 @@ using System.Management.Automation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    [Cmdlet(VerbsCommon.Get,  AzureRMConstants.AzureRMPrefix + "DeploymentScript", DefaultParameterSetName = GetAzDeploymentScript.DeploymentScriptByName), OutputType(typeof(PSBlueprint), typeof(PSPublishedBlueprint))]
-    public class GetAzDeploymentScript
+    [Cmdlet(VerbsCommon.Get,  AzureRMConstants.AzureRMPrefix + "DeploymentScript", DefaultParameterSetName = GetAzDeploymentScript.ListDeploymentScript), OutputType(typeof(PsDeploymentScript), typeof(PsDeploymentScript))]
+    public class GetAzDeploymentScript : ResourceManagerCmdletBase
     {
-        internal const string DeploymentScriptByName = "GetDeploymentScriptByName";
-        internal const string DeploymentScriptById = "GetDeploymentScriptById";
-        internal const string DeploymentScriptList = "GetDeploymentScriptList";
+        internal const string GetDeploymentScriptByName = "GetDeploymentScriptByName";
+        internal const string GetDeploymentScriptById = "GetDeploymentScriptById";
+        internal const string ListDeploymentScript = "GetDeploymentScriptList";
 
-        [Parameter(Position = 0, ParameterSetName = DeploymentScriptByName, Mandatory = true, HelpMessage = "To-Do")]
+        [Parameter(Position = 0, ParameterSetName = GetDeploymentScriptByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = DeploymentScriptByName, Mandatory = true, HelpMessage = "To-Do")]
+        [Parameter(Position = 0, ParameterSetName = ListDeploymentScript, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(Position = 0, ParameterSetName = GetDeploymentScriptByName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         public string SubscriptionId { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = DeploymentScriptByName, Mandatory = true, HelpMessage = "To-Do")]
+        [Parameter(Position = 0, ParameterSetName = ListDeploymentScript, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(Position = 0, ParameterSetName = GetDeploymentScriptByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceId")]
-        [Parameter(ParameterSetName = DeploymentScriptById, Mandatory = true,
+        [Parameter(ParameterSetName = GetDeploymentScriptById, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The fully qualified resource Id of the deployment script. Example: /subscriptions/{subId}/providers/Microsoft.Resources/deploymentScripts/{deploymentName}")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
+
+        #region Cmdlet Overrides
+        public override void ExecuteCmdlet()
+        {
+            var subscriptionId = SubscriptionId ?? DefaultContext.Subscription.Id;
+
+            try
+            {
+                switch (ParameterSetName)
+                {
+                    case GetAzDeploymentScript.GetDeploymentScriptByName:
+                        WriteObject(DeploymentScriptsSdkClient.GetDeploymentScript(Name, ResourceGroupName));
+                        break;
+                    case GetDeploymentScriptById:
+                        break;
+                    case ListDeploymentScript:
+                        if (!string.IsNullOrEmpty(ResourceGroupName))
+                        {
+                            //WriteObject();
+                        }
+
+                        //List DS under subscriptions
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteExceptionError(ex);
+            }
+        }
+        #endregion Cmdlet Overrides
     }
 }
