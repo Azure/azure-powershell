@@ -253,8 +253,8 @@ utility method to get default subscriptionId
 #>
 function GetDefaultSubscriptionId
 {
-    $subs = Get-AzSubscription
-    $subId = "/subscriptions/" + $subs[0].Id
+    $context = Get-AzContext
+    $subId = "/subscriptions/" + $context.Subscription.Id
 
     return $subId
 }
