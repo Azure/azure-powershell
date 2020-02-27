@@ -1,35 +1,42 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+ms.assetid: 7039528F-42AE-45DB-BF81-FE5003F8AEE2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlserver
 schema: 2.0.0
 ---
 
 # New-AzSqlServer
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a SQL Database server.
 
 ## SYNTAX
 
 ```
 New-AzSqlServer -ServerName <String> -SqlAdministratorCredentials <PSCredential> -Location <String>
- [-Tags <Hashtable>] [-ServerVersion <String>] [-AssignIdentity] [-PublicNetworkAccess <String>] [-AsJob]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tags <Hashtable>] [-ServerVersion <String>] [-AssignIdentity] [-AsJob] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzSqlServer** cmdlet creates an Azure SQL Database server.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Create a new Azure SQL Database server
+```
+PS C:\>New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential)
+ResourceGroupName        : resourcegroup01
+ServerName               : server01
+Location                 : Central US
+SqlAdministratorLogin    : adminLogin
+SqlAdministratorPassword :
+ServerVersion            : 12.0
+Tags                     :
 ```
 
-{{ Add example description here }}
+This command creates a version 12 Azure SQL Database server.
 
 ## PARAMETERS
 
@@ -37,7 +44,7 @@ PS C:\> {{ Add example code here }}
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -52,7 +59,7 @@ Accept wildcard characters: False
 Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -64,10 +71,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -79,10 +86,10 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location in which to create the server
+Specifies the location of the data center where this cmdlet creates the server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -93,27 +100,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkAccess
-Takes a flag, enabled/disabled, to specify whether public network access to server is allowed or not.
-When disabled, only connections made through Private Links can reach this server.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-The name of the resource group.
+Specifies the name of the resource group to which this cmdlet assigns the server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,10 +116,10 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.
+Specifies the name of the new server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -140,10 +131,11 @@ Accept wildcard characters: False
 ```
 
 ### -ServerVersion
-Determines which version of Sql Azure Server is created
+Specifies the version of the new server. The acceptable values for this parameter are: 2.0 and 12.0.
+Specify 2.0 to create a version 11 server, or 12.0 to create a version 12 server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -155,10 +147,12 @@ Accept wildcard characters: False
 ```
 
 ### -SqlAdministratorCredentials
-The SQL administrator credentials for the server
+Specifies the SQL Database server administrator credentials for the new server. To obtain a
+**PSCredential** object, use the Get-Credential cmdlet. For more information, type `Get-Help
+Get-Credential`.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -170,10 +164,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-The tags to associate with the Azure Sql Server
+Key-value pairs in the form of a hash table. For example:
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -188,13 +183,13 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -204,13 +199,13 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -229,3 +224,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzSqlServer](./Get-AzSqlServer.md)
+
+[Remove-AzSqlServer](./Remove-AzSqlServer.md)
+
+[Set-AzSqlServer](./Set-AzSqlServer.md)
+
+[New-AzSqlServerFirewallRule](./New-AzSqlServerFirewallRule.md)
+
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
