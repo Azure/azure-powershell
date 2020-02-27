@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support AllowProtectedAppendWrite in ImmutabilityPolicy
+    - Set-AzRmStorageContainerImmutabilityPolicy
 * Add breaking change warning message for AzureStorageTable type change in a future release
     - New-AzStorageTable
     - Get-AzStorageTable
