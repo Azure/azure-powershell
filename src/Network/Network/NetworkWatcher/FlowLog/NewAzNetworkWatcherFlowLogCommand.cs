@@ -29,27 +29,34 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherFlowLog", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"), OutputType(typeof(PSFlowLogResource))]
     public class NewAzNetworkWatcherFlowLogCommand : FlowLogBaseCmdlet
     {
+        private const string SetByResource = "SetByResource";
+        private const string SetByResourceWithTA = "SetByResourceWithTA";
+        private const string SetByName = "SetByName";
+        private const string SetByNameWithTA = "SetByNameWithTA";
+        private const string SetByLocation = "SetByLocation";
+        private const string SetByLocationWithTA = "SetByLocationWithTA";
+
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
-             ParameterSetName = "SetByResource")]
+             ParameterSetName = SetByResource)]
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
-             ParameterSetName = "SetByResourceWithTA")]
+             ParameterSetName = SetByResourceWithTA)]
         [ValidateNotNull]
         public PSNetworkWatcher NetworkWatcher { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of network watcher.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = SetByName)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of network watcher.",
-            ParameterSetName = "SetByNameWithTA")]
+            ParameterSetName = SetByNameWithTA)]
         [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
@@ -57,11 +64,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the network watcher resource group.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = SetByName)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the network watcher resource group.",
-            ParameterSetName = "SetByNameWithTA")]
+            ParameterSetName = SetByNameWithTA)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -69,11 +76,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "Location of the network watcher.",
-            ParameterSetName = "SetByLocation")]
+            ParameterSetName = SetByLocation)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Location of the network watcher.",
-            ParameterSetName = "SetByLocationWithTA")]
+            ParameterSetName = SetByLocationWithTA)]
         [LocationCompleter("Microsoft.Network/networkWatchers")]
         [ValidateNotNull]
         public string Location { get; set; }
@@ -131,45 +138,45 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable TrafficAnalytics",
-             ParameterSetName = "SetByResourceWithTA")]
+             ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable TrafficAnalytics",
-             ParameterSetName = "SetByNameWithTA")]
+             ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable TrafficAnalytics",
-             ParameterSetName = "SetByLocationWithTA")]
+             ParameterSetName = SetByLocationWithTA)]
         [ValidateNotNull]
         public SwitchParameter EnableTrafficAnalytics { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Resource Id of the attached workspace.",
-             ParameterSetName = "SetByResourceWithTA")]
+             ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Resource Id of the attached workspace.",
-             ParameterSetName = "SetByNameWithTA")]
+             ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Resource Id of the attached workspace.",
-             ParameterSetName = "SetByLocationWithTA")]
+             ParameterSetName = SetByLocationWithTA)]
         [ValidateNotNullOrEmpty]
         public string TrafficAnalyticsWorkspaceId { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The interval in minutes which would decide how frequently TA service should do flow analytics.",
-             ParameterSetName = "SetByResourceWithTA")]
+             ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The interval in minutes which would decide how frequently TA service should do flow analytics.",
-             ParameterSetName = "SetByNameWithTA")]
+             ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The interval in minutes which would decide how frequently TA service should do flow analytics.",
-             ParameterSetName = "SetByLocationWithTA")]
+             ParameterSetName = SetByLocationWithTA)]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
         public int? TrafficAnalyticsInterval { get; set; }
@@ -188,13 +195,13 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (ParameterSetName.Contains("SetByResource"))
+            if (ParameterSetName.Contains(SetByResource))
             {
                 this.ResourceGroupName = this.NetworkWatcher.ResourceGroupName;
                 this.NetworkWatcherName = this.NetworkWatcher.Name;
                 this.Location = this.NetworkWatcher.Location;
             }
-            else if (ParameterSetName.Contains("SetByLocation"))
+            else if (ParameterSetName.Contains(SetByLocation))
             {
                 var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
 
@@ -206,7 +213,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
                 this.NetworkWatcherName = networkWatcher.Name;
             }
-            else if (ParameterSetName.Contains("SetByName"))
+            else if (ParameterSetName.Contains(SetByName))
             {
                 MNM.NetworkWatcher networkWatcher = this.NetworkClient.NetworkManagementClient.NetworkWatchers.Get(this.ResourceGroupName, this.NetworkWatcherName);
                 this.Location = networkWatcher.Location;
@@ -229,7 +236,8 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSFlowLogResource CreateFlowLog()
         {
-            ValidateInput();
+            this.ValidateFlowLogParameters(this.TargetResourceId, this.StorageId, this.FormatVersion, this.FormatType, this.EnableTrafficAnalytics == true,
+                this.TrafficAnalyticsWorkspaceId, this.TrafficAnalyticsInterval, this.RetentionPolicyDays);
 
             MNM.FlowLog flowLogParameters = GetFlowLogParametersFromRequest();
 
@@ -237,55 +245,6 @@ namespace Microsoft.Azure.Commands.Network
             MNM.FlowLog flowLogResult = this.FlowLogs.Get(this.ResourceGroupName, this.NetworkWatcherName, this.Name);
 
             return NetworkResourceManagerProfile.Mapper.Map<PSFlowLogResource>(flowLogResult);
-        }
-
-        private void ValidateInput()
-        {
-            string[] splittedTargetResourceId = this.TargetResourceId.Split('/');
-            if (splittedTargetResourceId.Count() < 9 || string.IsNullOrEmpty(splittedTargetResourceId[7]) || !splittedTargetResourceId[7].Equals("networkSecurityGroups", StringComparison.OrdinalIgnoreCase))
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidTargetResourceId);
-            }
-
-            string[] splittedStorageId = this.StorageId.Split('/');
-            if (splittedStorageId.Count() < 9 || string.IsNullOrEmpty(splittedStorageId[7]) || !splittedStorageId[7].Equals("storageAccounts", StringComparison.OrdinalIgnoreCase))
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidStorageId);
-            }
-
-            if (this.FormatVersion != null && (this.FormatVersion < 0 || this.FormatVersion > 2))
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatVersion);
-            }
-
-            if (!string.IsNullOrEmpty(this.FormatType) && !string.Equals(this.FormatType, "JSON", StringComparison.OrdinalIgnoreCase))
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatVersion);
-            }
-
-            if (this.EnableTrafficAnalytics == true && string.IsNullOrEmpty(this.TrafficAnalyticsWorkspaceId))
-            {
-                throw new PSArgumentException(Properties.Resources.TrafficAnalyticsWorkspaceResourceIdIsMissing);
-            }
-
-            if (this.TrafficAnalyticsInterval != null && this.TrafficAnalyticsInterval != 10 && this.TrafficAnalyticsInterval != 60)
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidTrafficAnalyticsInterval);
-            }
-
-            if (!string.IsNullOrEmpty(this.TrafficAnalyticsWorkspaceId))
-            {
-                string[] splittedWorkspaceResourceId = this.TrafficAnalyticsWorkspaceId.Split('/');
-                if (splittedWorkspaceResourceId.Count() < 9 || string.IsNullOrEmpty(splittedWorkspaceResourceId[7]) || !splittedWorkspaceResourceId[7].Equals("workspaces", StringComparison.OrdinalIgnoreCase))
-                {
-                    throw new PSArgumentException(Properties.Resources.InvalidWorkspaceResourceId);
-                }
-            }
-
-            if (this.RetentionPolicyDays != null && this.RetentionPolicyDays < 0)
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidTrafficAnalyticsInterval);
-            }
         }
 
         private MNM.FlowLog GetFlowLogParametersFromRequest()
