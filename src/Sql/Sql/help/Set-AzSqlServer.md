@@ -1,46 +1,35 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-ms.assetid: FAAF458C-1662-4130-9A16-0514B714D11D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserver
+online version:
 schema: 2.0.0
 ---
 
 # Set-AzSqlServer
 
 ## SYNOPSIS
-Modifies properties of a SQL Database server.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
 Set-AzSqlServer [-ServerName] <String> [-SqlAdministratorPassword <SecureString>] [-Tags <Hashtable>]
- [-ServerVersion <String>] [-AssignIdentity] [-Force] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServerVersion <String>] [-AssignIdentity] [-PublicNetworkAccess <String>] [-Force]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzSqlServer** cmdlet modifies properties of an Azure SQL Database server.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Reset the administrator password
-```
-PS C:\>$ServerPassword = "newpassword"
-PS C:\> $SecureString = ConvertTo-SecureString $ServerPassword -AsPlainText -Force
-PS C:\> Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SqlAdministratorPassword $secureString
-ResourceGroupName        : ResourceGroup01
-ServerName               : Server01
-Location                 : Australia East
-SqlAdministratorLogin    : adminLogin
-SqlAdministratorPassword :
-ServerVersion            : 12.0
-Tags                     :
-Identity                 :
-FullyQualifiedDomainName : server01.database.windows.net
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command resets the administrator password on the AzureSQL Server named server01.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -48,7 +37,7 @@ This command resets the administrator password on the AzureSQL Server named serv
 Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -60,10 +49,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -75,10 +64,26 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the command to run without asking for user confirmation.
+Skip confirmation message for performing the action
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Takes a flag, enabled/disabled, to specify whether public network access to server is allowed or not.
+When disabled, only connections made through Private Links can reach this server.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,10 +95,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group to which the server is assigned.
+The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,10 +110,10 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-Specifies the name of the server that this cmdlet modifies.
+SQL Database server name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -120,11 +125,10 @@ Accept wildcard characters: False
 ```
 
 ### -ServerVersion
-Specifies the version to which this cmdlet changes the server. The acceptable values for this
-parameter are: 2.0 and 12.0.
+Which server version to change to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -136,12 +140,10 @@ Accept wildcard characters: False
 ```
 
 ### -SqlAdministratorPassword
-Specifies a new password, as a **SecureString**, for the database server administrator. To obtain a
-**SecureString**, use the Get-Credential cmdlet. For more information, type `Get-Help
-ConvertTo-SecureString`.
+The new SQL administrator password for the server.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -153,12 +155,10 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies a dictionary of tags that this cmdlet associates with the server. Key-value pairs in the
-form of a hash table set as tags on the server. For example:
-@{key0="value0";key1=$null;key2="value2"}
+The tags to associate with the server.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -173,13 +173,13 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -189,13 +189,13 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -214,5 +214,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
