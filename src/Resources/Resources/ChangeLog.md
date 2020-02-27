@@ -24,6 +24,13 @@
 * Fix for null reference bug in GetAzureRoleAssignmentCommand
 * Add breaking change attributes for upcoming changes to policy cmdlets
 * Updated `Get-AzResourceGroup` to perform resource group tag filtering on server-side
+* Extended Tag cmdlets to accept -ResourceId
+    - Get-AzTag -ResourceId
+    - New-AzTag -ResourceId
+    - Remove-AzTag -ResourceId
+* Added new Tag cmdlet
+    - Update-AzTag -ResourceId
+* Brought ScopedDeployment from SDK 3.3.0 
 
 ## Version 1.11.0
 * Refactored template deployment cmdlets
