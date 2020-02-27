@@ -619,6 +619,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provided flowLog resourceId is invalid..
+        /// </summary>
+        internal static string InvalidFlowLogResourceId {
+            get {
+                return ResourceManager.GetString("InvalidFlowLogResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid HTTP request header in HTTPConfiguration. Both name and value should be populated..
         /// </summary>
         internal static string InvalidHTTPRequestHeader {

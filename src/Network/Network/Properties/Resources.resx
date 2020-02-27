@@ -653,4 +653,7 @@
   <data name="InvalidRetentionPolicyDaysValue" xml:space="preserve">
     <value>Number of days in retention policy should be greater than 0.</value>
   </data>
+  <data name="InvalidFlowLogResourceId" xml:space="preserve">
+    <value>Provided flowLog resourceId is invalid.</value>
+  </data>
 </root>

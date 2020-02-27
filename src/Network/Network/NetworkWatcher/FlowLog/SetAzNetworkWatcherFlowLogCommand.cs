@@ -29,27 +29,37 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherFlowLog", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"), OutputType(typeof(PSFlowLogResource))]
     public class SetAzNetworkWatcherFlowLogCommand : FlowLogBaseCmdlet
     {
+        private const string SetByResource = "SetByResource";
+        private const string SetByResourceWithTA = "SetByResourceWithTA";
+        private const string SetByName = "SetByName";
+        private const string SetByNameWithTA = "SetByNameWithTA";
+        private const string SetByLocation = "SetByLocation";
+        private const string SetByLocationWithTA = "SetByLocationWithTA";
+        private const string SetByResourceId = "SetByResourceId";
+        private const string SetByResourceIdWithTA = "SetByResourceIdWithTA";
+        private const string SetByInputObject = "SetByInputObject";
+
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
-             ParameterSetName = "SetByResource")]
+             ParameterSetName = SetByResource)]
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
-             ParameterSetName = "SetByResourceWithTA")]
+             ParameterSetName = SetByResourceWithTA)]
         [ValidateNotNull]
         public PSNetworkWatcher NetworkWatcher { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of network watcher.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = SetByName)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of network watcher.",
-            ParameterSetName = "SetByNameWithTA")]
+            ParameterSetName = SetByNameWithTA)]
         [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
@@ -57,11 +67,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the network watcher resource group.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = SetByName)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the network watcher resource group.",
-            ParameterSetName = "SetByNameWithTA")]
+            ParameterSetName = SetByNameWithTA)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -69,11 +79,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "Location of the network watcher.",
-            ParameterSetName = "SetByLocation")]
+            ParameterSetName = SetByLocation)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Location of the network watcher.",
-            ParameterSetName = "SetByLocationWithTA")]
+            ParameterSetName = SetByLocationWithTA)]
         [LocationCompleter("Microsoft.Network/networkWatchers")]
         [ValidateNotNull]
         public string Location { get; set; }
@@ -82,12 +92,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "FlowLog resource ID.",
-            ParameterSetName = "SetByResourceId")]
+            ParameterSetName = SetByResourceId)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "FlowLog resource ID.",
-            ParameterSetName = "SetByResourceIdWithTA")]
+            ParameterSetName = SetByResourceIdWithTA)]
         [ValidateNotNull]
         public string ResourceId { get; set; }
 
@@ -95,7 +105,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "Flow lof object.",
-            ParameterSetName = "SetByInputObject")]
+            ParameterSetName = SetByInputObject)]
         [ValidateNotNull]
         public PSFlowLogResource InputObject { get; set; }
 
@@ -103,217 +113,217 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The flow log name.",
-            ParameterSetName = "SetByResource")]
+            ParameterSetName = SetByResource)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The flow log name.",
-            ParameterSetName = "SetByResourceWithTA")]
+            ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The flow log name.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = SetByName)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The flow log name.",
-            ParameterSetName = "SetByNameWithTA")]
+            ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The flow log name.",
-            ParameterSetName = "SetByLocation")]
+            ParameterSetName = SetByLocation)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The flow log name.",
-            ParameterSetName = "SetByLocationWithTA")]
+            ParameterSetName = SetByLocationWithTA)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of network security group to which flow log will be applied.",
-            ParameterSetName = "SetByResource")]
+            ParameterSetName = SetByResource)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of network security group to which flow log will be applied.",
-            ParameterSetName = "SetByResourceWithTA")]
+            ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of network security group to which flow log will be applied.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = SetByName)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of network security group to which flow log will be applied.",
-            ParameterSetName = "SetByNameWithTA")]
+            ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of network security group to which flow log will be applied.",
-            ParameterSetName = "SetByLocation")]
+            ParameterSetName = SetByLocation)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of network security group to which flow log will be applied.",
-            ParameterSetName = "SetByLocationWithTA")]
+            ParameterSetName = SetByLocationWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of network security group to which flow log will be applied.",
-            ParameterSetName = "SetByResourceId")]
+            ParameterSetName = SetByResourceId)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of network security group to which flow log will be applied.",
-            ParameterSetName = "SetByResourceIdWithTA")]
+            ParameterSetName = SetByResourceIdWithTA)]
         [ValidateNotNullOrEmpty]
         public string TargetResourceId { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of the storage account which is used to store the flow log.",
-            ParameterSetName = "SetByResource")]
+            ParameterSetName = SetByResource)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of the storage account which is used to store the flow log.",
-            ParameterSetName = "SetByResourceWithTA")]
+            ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of the storage account which is used to store the flow log.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = SetByName)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of the storage account which is used to store the flow log.",
-            ParameterSetName = "SetByNameWithTA")]
+            ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of the storage account which is used to store the flow log.",
-            ParameterSetName = "SetByLocation")]
+            ParameterSetName = SetByLocation)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of the storage account which is used to store the flow log.",
-            ParameterSetName = "SetByLocationWithTA")]
+            ParameterSetName = SetByLocationWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of the storage account which is used to store the flow log.",
-            ParameterSetName = "SetByResourceId")]
+            ParameterSetName = SetByResourceId)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "ID of the storage account which is used to store the flow log.",
-            ParameterSetName = "SetByResourceIdWithTA")]
+            ParameterSetName = SetByResourceIdWithTA)]
         [ValidateNotNullOrEmpty]
         public string StorageId { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable flow logging.",
-            ParameterSetName = "SetByResource")]
+            ParameterSetName = SetByResource)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable flow logging.",
-            ParameterSetName = "SetByResourceWithTA")]
+            ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable flow logging.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = SetByName)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable flow logging.",
-            ParameterSetName = "SetByNameWithTA")]
+            ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable flow logging.",
-            ParameterSetName = "SetByLocation")]
+            ParameterSetName = SetByLocation)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable flow logging.",
-            ParameterSetName = "SetByLocationWithTA")]
+            ParameterSetName = SetByLocationWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable flow logging.",
-            ParameterSetName = "SetByResourceId")]
+            ParameterSetName = SetByResourceId)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable flow logging.",
-            ParameterSetName = "SetByResourceIdWithTA")]
+            ParameterSetName = SetByResourceIdWithTA)]
         [ValidateNotNullOrEmpty]
         public bool Enabled { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = "SetByResource")]
+            ParameterSetName = SetByResource)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = "SetByResourceWithTA")]
+            ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = SetByName)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = "SetByNameWithTA")]
+            ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = "SetByLocation")]
+            ParameterSetName = SetByLocation)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = "SetByLocationWithTA")]
+            ParameterSetName = SetByLocationWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = "SetByResourceId")]
+            ParameterSetName = SetByResourceId)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = "SetByResourceIdWithTA")]
+            ParameterSetName = SetByResourceIdWithTA)]
         [ValidateNotNull]
         public bool? EnableRetention { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Number of days to retain flow log records.",
-            ParameterSetName = "SetByResource")]
+            ParameterSetName = SetByResource)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Number of days to retain flow log records.",
-            ParameterSetName = "SetByResourceWithTA")]
+            ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Number of days to retain flow log records.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = SetByName)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Number of days to retain flow log records.",
-            ParameterSetName = "SetByNameWithTA")]
+            ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Number of days to retain flow log records.",
-            ParameterSetName = "SetByLocation")]
+            ParameterSetName = SetByLocation)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Number of days to retain flow log records.",
-            ParameterSetName = "SetByLocationWithTA")]
+            ParameterSetName = SetByLocationWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Number of days to retain flow log records.",
-            ParameterSetName = "SetByResourceId")]
+            ParameterSetName = SetByResourceId)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Number of days to retain flow log records.",
-            ParameterSetName = "SetByResourceIdWithTA")]
+            ParameterSetName = SetByResourceIdWithTA)]
         [ValidateNotNull]
         public int? RetentionPolicyDays { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The file type of flow log. The only supported value now is 'JSON'.",
-            ParameterSetName = "SetByResource")]
+            ParameterSetName = SetByResource)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The file type of flow log. The only supported value now is 'JSON'.",
-            ParameterSetName = "SetByResourceWithTA")]
+            ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The file type of flow log. The only supported value now is 'JSON'.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = SetByName)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The file type of flow log. The only supported value now is 'JSON'.",
@@ -333,7 +343,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The file type of flow log. The only supported value now is 'JSON'.",
-            ParameterSetName = "SetByResourceIdWithTA")]
+            ParameterSetName = SetByResourceIdWithTA)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("JSON")]
         public string FormatType { get; set; }
@@ -341,92 +351,92 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The version (revision) of the flow log.",
-            ParameterSetName = "SetByResource")]
+            ParameterSetName = SetByResource)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The version (revision) of the flow log.",
-            ParameterSetName = "SetByResourceWithTA")]
+            ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The version (revision) of the flow log.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = SetByName)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The version (revision) of the flow log.",
-            ParameterSetName = "SetByNameWithTA")]
+            ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The version (revision) of the flow log.",
-            ParameterSetName = "SetByLocation")]
+            ParameterSetName = SetByLocation)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The version (revision) of the flow log.",
-            ParameterSetName = "SetByLocationWithTA")]
+            ParameterSetName = SetByLocationWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The version (revision) of the flow log.",
-            ParameterSetName = "SetByResourceId")]
+            ParameterSetName = SetByResourceId)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The version (revision) of the flow log.",
-            ParameterSetName = "SetByResourceIdWithTA")]
+            ParameterSetName = SetByResourceIdWithTA)]
         [ValidateNotNull]
         public int? FormatVersion { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable TrafficAnalytics",
-             ParameterSetName = "SetByResourceWithTA")]
+             ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable TrafficAnalytics",
-             ParameterSetName = "SetByNameWithTA")]
+             ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable TrafficAnalytics",
-             ParameterSetName = "SetByLocationWithTA")]
+             ParameterSetName = SetByLocationWithTA)]
         [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable TrafficAnalytics",
-             ParameterSetName = "SetByResourceIdWithTA")]
+             ParameterSetName = SetByResourceIdWithTA)]
         [ValidateNotNull]
         public SwitchParameter EnableTrafficAnalytics { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Resource Id of the attached workspace.",
-             ParameterSetName = "SetByResourceWithTA")]
+             ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Resource Id of the attached workspace.",
-             ParameterSetName = "SetByNameWithTA")]
+             ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Resource Id of the attached workspace.",
-             ParameterSetName = "SetByLocationWithTA")]
+             ParameterSetName = SetByLocationWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Resource Id of the attached workspace.",
-             ParameterSetName = "SetByResourceIdWithTA")]
+             ParameterSetName = SetByResourceIdWithTA)]
         [ValidateNotNullOrEmpty]
         public string TrafficAnalyticsWorkspaceId { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The interval in minutes which would decide how frequently TA service should do flow analytics.",
-             ParameterSetName = "SetByResourceWithTA")]
+             ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The interval in minutes which would decide how frequently TA service should do flow analytics.",
-             ParameterSetName = "SetByNameWithTA")]
+             ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The interval in minutes which would decide how frequently TA service should do flow analytics.",
-             ParameterSetName = "SetByLocationWithTA")]
+             ParameterSetName = SetByLocationWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The interval in minutes which would decide how frequently TA service should do flow analytics.",
-             ParameterSetName = "SetByResourceIdWithTA")]
+             ParameterSetName = SetByResourceIdWithTA)]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
         public int? TrafficAnalyticsInterval { get; set; }
@@ -434,35 +444,35 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.",
-            ParameterSetName = "SetByResource")]
+            ParameterSetName = SetByResource)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.",
-            ParameterSetName = "SetByResourceWithTA")]
+            ParameterSetName = SetByResourceWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = SetByName)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.",
-            ParameterSetName = "SetByNameWithTA")]
+            ParameterSetName = SetByNameWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.",
-            ParameterSetName = "SetByLocation")]
+            ParameterSetName = SetByLocation)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.",
-            ParameterSetName = "SetByLocationWithTA")]
+            ParameterSetName = SetByLocationWithTA)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.",
-            ParameterSetName = "SetByResourceId")]
+            ParameterSetName = SetByResourceId)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.",
-            ParameterSetName = "SetByResourceIdWithTA")]
+            ParameterSetName = SetByResourceIdWithTA)]
         public Hashtable Tag { get; set; }
 
         [Parameter(
@@ -474,17 +484,17 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (ParameterSetName.Contains("SetByResourceId"))
+            if (ParameterSetName.Contains(SetByResourceId))
             {
                 PopulateBaseParametersFromResourceID(this.ResourceId);
             }
-            else if (ParameterSetName.Contains("SetByResource"))
+            else if (ParameterSetName.Contains(SetByResource))
             {
                 this.ResourceGroupName = this.NetworkWatcher.ResourceGroupName;
                 this.NetworkWatcherName = this.NetworkWatcher.Name;
                 this.Location = this.NetworkWatcher.Location;
             }
-            else if (ParameterSetName.Contains("SetByLocation"))
+            else if (ParameterSetName.Contains(SetByLocation))
             {
                 var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
 
@@ -496,12 +506,12 @@ namespace Microsoft.Azure.Commands.Network
                 this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
                 this.NetworkWatcherName = networkWatcher.Name;
             }
-            else if (ParameterSetName.Contains("SetByName"))
+            else if (ParameterSetName.Contains(SetByName))
             {
                 MNM.NetworkWatcher networkWatcher = this.NetworkClient.NetworkManagementClient.NetworkWatchers.Get(this.ResourceGroupName, this.NetworkWatcherName);
                 this.Location = networkWatcher.Location;
             }
-            else if (ParameterSetName.Contains("SetByInputObject"))
+            else if (ParameterSetName.Contains(SetByInputObject))
             {
                 PopulateBaseParametersFromResourceID(this.InputObject.Id);
                 PopulateRequestParametersFromInputObject();
@@ -525,13 +535,16 @@ namespace Microsoft.Azure.Commands.Network
         private void PopulateBaseParametersFromResourceID(string id)
         {
             ResourceIdentifier flowLogInfo = new ResourceIdentifier(id);
+            if (!this.IsValidResourceId(flowLogInfo, "Microsoft.Network/networkWatchers/FlowLogs", validateParent: true, expectedParentType: "networkWatchers"))
+            {
+                throw new PSArgumentException(Properties.Resources.InvalidFlowLogResourceId);
+            }
 
             this.Name = flowLogInfo.ResourceName;
             this.ResourceGroupName = flowLogInfo.ResourceGroupName;
 
             string parent = flowLogInfo.ParentResource;
             string[] tokens = parent.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-
             this.NetworkWatcherName = tokens[1];
             MNM.NetworkWatcher networkWatcher = this.NetworkClient.NetworkManagementClient.NetworkWatchers.Get(this.ResourceGroupName, this.NetworkWatcherName);
             this.Location = networkWatcher.Location;
@@ -564,7 +577,8 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSFlowLogResource CreateFlowLog()
         {
-            ValidateInput();
+            this.ValidateFlowLogParameters(this.TargetResourceId, this.StorageId, this.FormatVersion, this.FormatType, this.EnableTrafficAnalytics == true,
+                this.TrafficAnalyticsWorkspaceId, this.TrafficAnalyticsInterval, this.RetentionPolicyDays);
 
             MNM.FlowLog flowLogParameters = GetFlowLogParametersFromRequest();
 
@@ -572,55 +586,6 @@ namespace Microsoft.Azure.Commands.Network
             MNM.FlowLog flowLogResult = this.FlowLogs.Get(this.ResourceGroupName, this.NetworkWatcherName, this.Name);
 
             return NetworkResourceManagerProfile.Mapper.Map<PSFlowLogResource>(flowLogResult);
-        }
-
-        private void ValidateInput()
-        {
-            string[] splittedTargetResourceId = this.TargetResourceId.Split('/');
-            if (splittedTargetResourceId.Count() < 9 || string.IsNullOrEmpty(splittedTargetResourceId[7]) || !splittedTargetResourceId[7].Equals("networkSecurityGroups", StringComparison.OrdinalIgnoreCase))
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidTargetResourceId);
-            }
-
-            string[] splittedStorageId = this.StorageId.Split('/');
-            if (splittedStorageId.Count() < 9 || string.IsNullOrEmpty(splittedStorageId[7]) || !splittedStorageId[7].Equals("storageAccounts", StringComparison.OrdinalIgnoreCase))
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidStorageId);
-            }
-
-            if (this.FormatVersion != null && (this.FormatVersion < 0 || this.FormatVersion > 2))
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatVersion);
-            }
-
-            if (!string.IsNullOrEmpty(this.FormatType) && !string.Equals(this.FormatType, "JSON", StringComparison.OrdinalIgnoreCase))
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatVersion);
-            }
-
-            if (this.EnableTrafficAnalytics == true && string.IsNullOrEmpty(this.TrafficAnalyticsWorkspaceId))
-            {
-                throw new PSArgumentException(Properties.Resources.TrafficAnalyticsWorkspaceResourceIdIsMissing);
-            }
-
-            if (this.TrafficAnalyticsInterval != null && this.TrafficAnalyticsInterval != 10 && this.TrafficAnalyticsInterval != 60)
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidTrafficAnalyticsInterval);
-            }
-
-            if (!string.IsNullOrEmpty(this.TrafficAnalyticsWorkspaceId))
-            {
-                string[] splittedWorkspaceResourceId = this.TrafficAnalyticsWorkspaceId.Split('/');
-                if (splittedWorkspaceResourceId.Count() < 9 || string.IsNullOrEmpty(splittedWorkspaceResourceId[7]) || !splittedWorkspaceResourceId[7].Equals("workspaces", StringComparison.OrdinalIgnoreCase))
-                {
-                    throw new PSArgumentException(Properties.Resources.InvalidWorkspaceResourceId);
-                }
-            }
-
-            if (this.RetentionPolicyDays != null && this.RetentionPolicyDays < 0)
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidTrafficAnalyticsInterval);
-            }
         }
 
         private MNM.FlowLog GetFlowLogParametersFromRequest()
