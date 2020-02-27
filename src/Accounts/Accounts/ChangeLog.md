@@ -21,6 +21,8 @@
 
 ## Version 1.7.2
 * Added SubscriptionId, TenantId, and execution time into data of client side telemetry
+* Display Azure Powershell survey url to Resolve-Error [#11020](https://github.com/Azure/azure-powershell/issues/11020).
+* Open AzurePowershell survey page in Send-Feedback [#11021](https://github.com/Azure/azure-powershell/issues/11021).
 
 ## Version 1.7.1
 * Disable context auto saving when AzureRmContext.json not available

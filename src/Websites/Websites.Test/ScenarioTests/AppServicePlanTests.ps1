@@ -24,14 +24,14 @@ function Test-CreateNewAppServicePlan
 	$location = Get-Location
 	$capacity = 2
 	$skuName = "S2"
-
+	$tag= @{"TagKey" = "TagValue"}
 	try
 	{
 		#Setup
 		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$job = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Standard" -WorkerSize Medium -NumberOfWorkers $capacity -AsJob
+		$job = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Standard" -WorkerSize Medium -NumberOfWorkers $capacity -Tag $tag -AsJob
 		$job | Wait-Job
 		$createResult = $job | Receive-Job
 
@@ -40,7 +40,8 @@ function Test-CreateNewAppServicePlan
 		Assert-AreEqual "Standard" $createResult.Sku.Tier
 		Assert-AreEqual $skuName $createResult.Sku.Name
 		Assert-AreEqual $capacity $createResult.Sku.Capacity
-
+		Assert-AreEqual $tag.Keys $createResult.Tags.Keys
+        Assert-AreEqual $tag.Values $createResult.Tags.Values
 		# Assert
 
 		$getResult = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName
@@ -127,7 +128,7 @@ function Test-SetAppServicePlan
 	$newWorkerSize = "Medium"
 	$newCapacity = 2
 	$newPerSiteScaling = $true;
-
+	$tag= @{"TagKey" = "TagValue"}
 
 	try
 	{
@@ -173,6 +174,11 @@ function Test-SetAppServicePlan
 		Assert-AreEqual $skuName $newresult.Sku.Name
 		Assert-AreEqual $perSiteScaling $newresult.PerSiteScaling
 
+		#Set Tags
+		$tagsResult= Set-AzAppServicePlan  -ResourceGroupName $rgname -Name $whpName -Tag $tag
+		# Assert
+		Assert-AreEqual $tag.Keys $tagsResult.Tags.Keys
+		Assert-AreEqual $tag.Values $tagsResult.Tags.Values
 	}
 	finally
 	{
