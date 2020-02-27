@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string GetResourceIdWithoutParentResource()
         {
             return ResourceIdUtility.GetResourceId(
-                subscriptionId: TenantLevel.IsPresent ? null : this.SubscriptionId,
+                subscriptionId: TenantLevel.IsPresent ? null : (Guid?)this.SubscriptionId,
                 resourceGroupName: TenantLevel.IsPresent ? null : this.ResourceGroupName,
                 resourceType: this.ResourceType,
                 resourceName: this.ResourceName,
