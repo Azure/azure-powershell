@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string RemovePolicyAssignmentNameHelp = "The name of the policy assignment to delete.";
         public const string RemovePolicyAssignmentScopeHelp = "The scope of the policy assignment to delete, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
         public const string RemovePolicyAssignmentIdHelp = "The fully qualified policy assignment ID to delete, including the scope, e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}.";
+        public const string RemovePolicyAssignmentInputObjectHelp = "The policy assignment object to remove that was output from another cmdlet.";
         public const string SetPolicyAssignmentNameHelp = "The name of the policy assignment to update.";
         public const string SetPolicyAssignmentScopeHelp = "The scope of the policy assignment to update, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
         public const string SetPolicyAssignmentNotScopesHelp = "The not scopes of the updated policy assignment.";
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string SetPolicyAssignmentPolicyParameterObjectHelp = "The new policy parameters object for the policy assignment.";
         public const string SetPolicyParameterHelp = "The new policy parameters file path or string for the policy assignment.";
         public const string SetPolicyAssignmentSkuHelp = "A hash table which specifies sku properties. This parameter is deprecated and ignored.";
+        public const string SetPolicyAssignmentInputObjectHelp = "The policy assignment object to update that was output from another cmdlet.";
         public const string PolicyAssignmentAssignIdentityHelp = "Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' policies. Location is required when assigning an identity.";
         public const string PolicyAssignmentLocationHelp = "The location of the policy assignment's resource identity. This is required when the -AssignIdentity switch is used.";
 
@@ -73,6 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string NewPolicyDefinitionSubscriptionIdHelp = "The subscription ID of the new policy definition.";
         public const string RemovePolicyDefinitionNameHelp = "The name of the policy definition to delete.";
         public const string RemovePolicyDefinitionIdHelp = "The fully qualified policy definition ID to delete, including the subscription or management group. e.g. /subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}.";
+        public const string RemovePolicyDefinitionInputObjectHelp = "The policy definition object to remove that was output from another cmdlet.";
         public const string ForceFlagHelp = "Do not ask for confirmation.";
         public const string RemovePolicyDefinitionManagementGroupHelp = "The name of the management group of the policy definition to delete.";
         public const string RemovePolicyDefinitionSubscriptionIdHelp = "The subscription ID of the policy definition to delete.";
@@ -85,6 +88,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string SetPolicyDefinitionParameterHelp = "The parameters declaration of the updated policy definition. This can either be a path to a file or uri containing the parameters JSON declaration, or the parameters declaration as a JSON string.";
         public const string SetPolicyDefinitionManagementGroupHelp = "The name of the management group of the policy definition to update.";
         public const string SetPolicyDefinitionSubscriptionIdHelp = "The subscription ID of the policy definition to update.";
+        public const string SetPolicyDefinitionInputObjectHelp = "The policy definition object to update that was output from another cmdlet.";
 
         /// <summary>
         /// Policy set definition cmdlet parameter help strings
@@ -106,6 +110,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string NewPolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the new policy set definition.";
         public const string RemovePolicySetDefinitionNameHelp = "The policy set definition name to delete.";
         public const string RemovePolicySetDefinitionIdHelp = "The fully qualified policy set definition ID to delete, including the subscription or management group. e.g. /subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}.";
+        public const string RemovePolicySetDefinitionInputObjectHelp = "The policy set definition object to remove that was output from another cmdlet.";
         public const string RemovePolicySetDefinitionManagementGroupHelp = "The name of the management group of the policy set definition to delete.";
         public const string RemovePolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the policy set definition to delete.";
         public const string SetPolicySetDefinitionNameHelp = "The name of the policy set definition to update.";
@@ -118,5 +123,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string SetPolicySetDefinitionParameterHelp = "The parameters declaration of the updated policy set definition. This can either be a path to a file or uri containing the parameters JSON declaration, or the parameters declaration as a JSON string.";
         public const string SetPolicySetDefinitionManagementGroupHelp = "The name of the management group of the policy set definition to update.";
         public const string SetPolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the policy set definition to update.";
+        public const string SetPolicySetDefinitionInputObjectHelp = "The policy set definition object to update that was output from another cmdlet.";
     }
 }
