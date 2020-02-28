@@ -186,7 +186,7 @@ function Test-ManagedInstanceLongTermRetentionPolicy($location = "southeastasia"
 	$managedInstance = Create-ManagedInstanceForTest
 	$managedInstanceName = $managedInstance.ManagedInstanceName
 	$weeklyRetention = "P1W"
-	$emptyRetention = "PT0S"
+	$zeroRetention = "PT0S"
 
 	try
 	{
@@ -197,8 +197,8 @@ function Test-ManagedInstanceLongTermRetentionPolicy($location = "southeastasia"
 		Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention
 		$policy = Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 		Assert-AreEqual $policy.WeeklyRetention $weeklyRetention
-		Assert-AreEqual $policy.MonthlyRetention $emptyRetention
-		Assert-AreEqual $policy.YearlyRetention $emptyRetention
+		Assert-AreEqual $policy.MonthlyRetention $zeroRetention
+		Assert-AreEqual $policy.YearlyRetention $zeroRetention
 	}
 	finally
 	{
@@ -226,7 +226,7 @@ function Test-ManagedInstanceLongTermRetentionBackup
 	$weeklyRetention1 = "P1W"
 	$weeklyRetention2 = "P2W"
 	$restoredDatabase = "ps_test_restore"
-	$databaseWithRemovableBackup = "test";
+	$databaseWithRemovableBackup = "target1";
 
 	# Basic Get Tests
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName
@@ -258,7 +258,7 @@ function Test-ManagedInstanceLongTermRetentionBackup
 	Assert-AreEqual $db.DatabaseName $restoredDatabase
 
 	# Test Remove with Piping
-	#Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ManagedInstanceName $serverName -DatabaseName $databaseWithRemovableBackup -BackupName $backups[0].BackupName | Remove-AzSqlDatabaseLongTermRetentionBackup
+	Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ManagedInstanceName $serverName -DatabaseName $databaseWithRemovableBackup -BackupName $backups[0].BackupName | Remove-AzSqlInstanceDatabaseLongTermRetentionBackup
 	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -ManagedInstanceName $managedInstanceName -DatabaseName $databaseWithRemovableBackup | Get-AzSqlInstanceDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
 	Assert-AreEqual $backups.Count 0
 

@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = RemoveBackupDefaultSet,
             Position = 0,
-            HelpMessage = "The location of the backups' source server.")]
+            HelpMessage = "The location of the backups' source Managed Instance.")]
         [ValidateNotNullOrEmpty]
-        [LocationCompleter("Microsoft.Sql/locations/longTermRetentionServers")]
+        [LocationCompleter("Microsoft.Sql/locations/longTermRetentionManagedInstance")]
         public virtual string Location { get; set; }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             ParameterSetName = RemoveBackupDefaultSet,
             Position = 2,
             HelpMessage = "The name of the Managed Database the backup is from.")]
-        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "ManagedInstanceName")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             if (InputObject != null)
             {
                 Location = InputObject.Location;
-                ManagedInstanceName = InputObject.ServerName;
+                ManagedInstanceName = InputObject.ManagedInstanceName;
                 DatabaseName = InputObject.DatabaseName;
                 BackupName = InputObject.BackupName;
                 ResourceGroupName = InputObject.ResourceGroupName;
@@ -193,8 +193,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             if (ShouldProcess(this.BackupName))
             {
                 if (Force.IsPresent || ShouldContinue(
-                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlDatabaseLongTermRetentionBackupDescription, this.BackupName, this.DatabaseName, this.ManagedInstanceName, this.Location),
-                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlDatabaseLongTermRetentionBackupWarning, this.BackupName, this.DatabaseName, this.ManagedInstanceName, this.Location)))
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription, this.BackupName, this.DatabaseName, this.ManagedInstanceName, this.Location),
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning, this.BackupName, this.DatabaseName, this.ManagedInstanceName, this.Location)))
                 {
                     base.ExecuteCmdlet();
                 }

@@ -58,14 +58,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the server name.
+        /// Gets or sets the Managed Instance name.
         /// </summary>
-        public string ServerName { get; set; }
+        public string ManagedInstanceName { get; set; }
 
         /// <summary>
-        /// Gets or sets the server create time.
+        /// Gets or sets the instance create time.
         /// </summary>
-        public DateTime? ServerCreateTime { get; set; }
+        public DateTime? InstanceCreateTime { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group name.

@@ -68,24 +68,24 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = LocationSet,
             Position = 0,
-            HelpMessage = "The location of the backups' source server.")]
+            HelpMessage = "The location of the backups' source Managed Instance.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InstanceNameSet,
             Position = 0,
-            HelpMessage = "The location of the backups' source server.")]
+            HelpMessage = "The location of the backups' source Managed Instance.")]
         [Parameter(Mandatory = true,
             ParameterSetName = BackupNameSet,
             Position = 0,
-            HelpMessage = "The location of the backups' source server.")]
+            HelpMessage = "The location of the backups' source Managed Instance.")]
         [Parameter(Mandatory = true,
             ParameterSetName = GetBackupByResourceIdSet,
             Position = 1,
-            HelpMessage = "The location of the backups' source server.")]
+            HelpMessage = "The location of the backups' source Managed Instance.")]
         [Parameter(Mandatory = true,
             ParameterSetName = GetBackupsByResourceIdSet,
             Position = 1,
-            HelpMessage = "The location of the backups' source server.")]
-        [LocationCompleter("Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentonBackups")]
+            HelpMessage = "The location of the backups' source Managed Instance.")]
+        [LocationCompleter("Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentonManagedInstanceBackups")]
         public string Location { get; set; }
 
         /// <summary>
