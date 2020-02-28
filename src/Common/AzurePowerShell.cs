@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
     {
         public const string AssemblyCompany = "Microsoft";
 
-        public const string AssemblyProduct = "Microsoft Azure Powershell";
+        public const string AssemblyProduct = "Microsoft Azure PowerShell";
 
         public const string AssemblyCopyright = "Copyright © Microsoft";
 
