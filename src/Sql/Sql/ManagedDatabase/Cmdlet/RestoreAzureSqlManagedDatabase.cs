@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of the long term retention backup object to restore.")]
+            HelpMessage = "The resource id of the long term retention managed instance backup object to restore.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

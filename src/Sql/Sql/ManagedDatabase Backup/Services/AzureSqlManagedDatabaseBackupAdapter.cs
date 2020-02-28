@@ -232,6 +232,42 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
             };
         }
 
+        /// <summary>
+        /// Create or update a backup LongTermRetention policy for a Managed Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="managedInstanceName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <returns>A backup LongTermRetention policy</returns>
+        internal AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel SetManagedDatabaseBackupLongTermRetentionPolicy(
+            string resourceGroup,
+            string managedInstanceName,
+            string databaseName,
+            AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel model)
+        {
+            ManagedInstanceLongTermRetentionPolicy response = Communicator.SetManagedDatabaseLongTermRetentionPolicy(
+                    resourceGroup,
+                    managedInstanceName,
+                    databaseName,
+                    new ManagedInstanceLongTermRetentionPolicy()
+                    {
+                        WeeklyRetention = model.WeeklyRetention,
+                        MonthlyRetention = model.MonthlyRetention,
+                        YearlyRetention = model.YearlyRetention,
+                        WeekOfYear = model.WeekOfYear
+                    });
+            return new AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ManagedInstanceName = managedInstanceName,
+                DatabaseName = databaseName,
+                WeeklyRetention = response.WeeklyRetention,
+                MonthlyRetention = response.MonthlyRetention,
+                YearlyRetention = response.YearlyRetention,
+                WeekOfYear = response.WeekOfYear
+            };
+        }
+
         private AzureSqlManagedDatabaseLongTermRetentionBackupModel GetBackupModel(ManagedInstanceLongTermRetentionBackup backup, string locationName)
         {
             return new AzureSqlManagedDatabaseLongTermRetentionBackupModel()
@@ -243,8 +279,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
                 DatabaseName = backup.DatabaseName,
                 Location = locationName,
                 ResourceId = backup.Id,
-                ServerCreateTime = backup.ManagedInstanceCreateTime,
-                ServerName = backup.ManagedInstanceName,
+                InstanceCreateTime = backup.ManagedInstanceCreateTime,
+                ManagedInstanceName = backup.ManagedInstanceName,
                 ResourceGroupName = GetResourceGroupNameFromResourceId(backup.Id)
             };
         }
@@ -308,43 +344,5 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         {
             Communicator.RemoveManagedDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName, resourceGroupName);
         }
-
-        /// <summary>
-        /// Create or update a backup LongTermRetention policy for a Managed Database
-        /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="managedInstanceName">The name of the Azure SQL Server</param>
-        /// <param name="databaseName">The name of the Azure SQL Database</param>
-        /// <returns>A backup LongTermRetention policy</returns>
-        internal AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel SetManagedDatabaseBackupLongTermRetentionPolicy(
-            string resourceGroup,
-            string managedInstanceName,
-            string databaseName,
-            AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel model)
-        {
-            ManagedInstanceLongTermRetentionPolicy response = Communicator.SetManagedDatabaseLongTermRetentionPolicy(
-                    resourceGroup,
-                    managedInstanceName,
-                    databaseName,
-                    new ManagedInstanceLongTermRetentionPolicy()
-                    {
-                        WeeklyRetention = model.WeeklyRetention,
-                        MonthlyRetention = model.MonthlyRetention,
-                        YearlyRetention = model.YearlyRetention,
-                        WeekOfYear = model.WeekOfYear
-                    });
-            return new AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel()
-            {
-                ResourceGroupName = resourceGroup,
-                ManagedInstanceName = managedInstanceName,
-                DatabaseName = databaseName,
-                WeeklyRetention = response.WeeklyRetention,
-                MonthlyRetention = response.MonthlyRetention,
-                YearlyRetention = response.YearlyRetention,
-                WeekOfYear = response.WeekOfYear
-            };
-        }
-
-
     }
 }

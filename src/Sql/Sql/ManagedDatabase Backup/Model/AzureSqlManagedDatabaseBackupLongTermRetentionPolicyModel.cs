@@ -59,24 +59,5 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model
         /// Gets or sets the location
         /// </summary>
         public string Location { get; set; }
-
-        ///// <summary>
-        ///// Construct AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel object
-        ///// </summary>
-        ///// <param name="resourceGroup">Resource group</param>
-        ///// <param name="managedInstanceName">Managed Instance name</param>
-        ///// <param name="managedDatabaseName">Managed Instance name</param>
-        ///// <param name="managedBackupRetentionPolicy">Managed Database object</param>
-        ///// <param name="deletionDate">Deletion date of the database, if it is deleted</param>
-        //public AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel(string resourceGroup, string managedInstanceName, string managedDatabaseName, string weeklyRetention, string monthlyRetention, string yearlyRetention, int? weekOfYear)
-        //{
-        //    ResourceGroupName = resourceGroup;
-        //    ManagedInstanceName = managedInstanceName;
-        //    DatabaseName = managedDatabaseName;
-        //    WeeklyRetention = weeklyRetention;
-        //    MonthlyRetention = monthlyRetention;
-        //    YearlyRetention = yearlyRetention;
-        //    WeekOfYear = weekOfYear;
-        //}
     }
 }
