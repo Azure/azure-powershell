@@ -47,6 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+repo: https://github.com/Azure/azure-rest-api-specs/blob/master
 require:
   - $(this-folder)/../readme.azure.md
   - $(repo)/specification/databricks/resource-manager/readme.md
@@ -58,6 +59,10 @@ subject-prefix: $(service-name)
 inlining-threshold: 40
 
 directive:
+  # Fix the error in swagger, RP actually returns 200 when deletion succeeds
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/204/g, "200")
   # Remove the unexpanded parameter set
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
@@ -87,4 +92,14 @@ directive:
   - where:
       verb: New
     hide: true
+  - where:
+      model-name: Workspace
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ManagedResourceGroupId
+        labels:
+          ManagedResourceGroupId: Managed Resource Group ID
 ```
