@@ -75,6 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment policy definition parameter.
         /// </summary>
+        [CmdletParameterBreakingChange("PolicyDefinition", OldParamaterType = typeof(PSObject), NewParameterTypeName = "PsPolicyDefinition")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicyDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.DefaultParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicyDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicyDefinitionHelp)]
@@ -84,6 +85,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment policy set definition parameter.
         /// </summary>
+        [CmdletParameterBreakingChange("PolicySetDefinition", OldParamaterType = typeof(PSObject), NewParameterTypeName = "PsPolicySetDefinition")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicySetDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.DefaultParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicySetDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.PolicySetParameterObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicySetDefinitionHelp)]
