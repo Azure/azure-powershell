@@ -237,23 +237,33 @@ function Test-NewDeploymentAndProviderRegistration
 
 <#
 .SYNOPSIS
-Tests deployment delete is successful
+Tests delete resource group deployment 
 #>
 function Test-RemoveDeployment
 {
     # Setup
     $deploymentName = "Test"
-    $templateUri = "https://gallery.azure.com/artifact/20140901/Microsoft.ResourceGroup.1.0.0/DeploymentTemplates/Template.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
     $rgName = "TestSDK0123"
 
     try
     {
-        # Test
+        # First create new resource group deployment
         New-AzResourceGroup -Name $rgName -Location "East US"
         $job = New-AzResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri -AsJob
 		Wait-Job $job
 		$deployment = Receive-Job $job
-		Assert-True { Remove-AzResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName }
+
+        # Test
+        $res = Remove-AzResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName
+
+        # Assert
+		Assert-True { $res }
+
+        # After deletion, try to get the given deployment should throw an error
+        Get-AzResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -ErrorAction SilentlyContinue
+        Assert-True { $Error[0] -like "*Deployment 'Test' could not be found." }
+        $Error.Clear()
     }
     finally
     {
