@@ -48,6 +48,10 @@ function Test-CrudApiManagement {
         Assert-AreEqual $location $result.Location
         Assert-AreEqual "Developer" $result.Sku
         Assert-AreEqual 1 $result.Capacity
+        Assert-NotNull $result.DeveloperPortalUrl
+        Assert-NotNull $result.PortalUrl
+        Assert-NotNull $result.RuntimeUrl
+        Assert-NotNull $result.ManagementApiUrl
         Assert-AreEqual "None" $result.VpnType
 		Assert-NotNull $result.SslSetting
 		Assert-AreEqual "True" $result.SslSetting.FrontendProtocol["Tls10"]
@@ -183,7 +187,7 @@ Tests ApiManagementVirtualNetworkCRUD
 #>
 function Test-ApiManagementVirtualNetworkCRUD {
     # Setup
-    $primarylocation = "North Central US"
+    $primarylocation = "East US"
     $secondarylocation = "South Central US"
     $resourceGroupName = Get-ResourceGroupName    
     $apiManagementName = Get-ApiManagementServiceName
@@ -191,7 +195,7 @@ function Test-ApiManagementVirtualNetworkCRUD {
     $adminEmail = "apim@powershell.org"
     $sku = "Developer"
     $capacity = 1
-    $primarySubnetResourceId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/virtualNetworks/powershellvnetncu/subnets/default"
+    $primarySubnetResourceId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/virtualNetworks/powershellvneteastus/subnets/default"
     $additionalSubnetResourceId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/virtualNetworks/powershellvnetscu/subnets/default"
     $vpnType = "External" 
  
@@ -286,12 +290,13 @@ Then updates the service by removing all but just one proxy hostname and adding 
 #>
 function Test-ApiManagementHostnamesCRUD {
     # Setup
-    $location = "North Central US"
+    $location = "East US"
     $certFilePath = "$TestOutputRoot/powershelltest.pfx";
     $certPassword = "Password";
     $certSubject = "CN=*.msitesting.net"
     $certThumbprint = "8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2"
     $portalHostName = "portalsdk.msitesting.net"
+    $devPortalHostName = "devportalsdk.msitesting.net"
     $proxyHostName1 = "gateway1.msitesting.net"
     $proxyHostName2 = "gateway2.msitesting.net"
     $managementHostName = "mgmt.msitesting.net"
@@ -311,8 +316,9 @@ function Test-ApiManagementHostnamesCRUD {
         $customProxy1 = New-AzApiManagementCustomHostnameConfiguration -Hostname $proxyHostName1 -HostnameType Proxy -PfxPath $certFilePath -PfxPassword $securePfxPassword -DefaultSslBinding
         $customProxy2 = New-AzApiManagementCustomHostnameConfiguration -Hostname $proxyHostName2 -HostnameType Proxy -PfxPath $certFilePath -PfxPassword $securePfxPassword
         $customPortal = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostName -HostnameType Portal -PfxPath $certFilePath -PfxPassword $securePfxPassword
+        $customDevPortal = New-AzApiManagementCustomHostnameConfiguration -Hostname $devPortalHostName -HostnameType DeveloperPortal -PfxPath $certFilePath -PfxPassword $securePfxPassword
         $customMgmt = New-AzApiManagementCustomHostnameConfiguration -Hostname $managementHostName -HostnameType Management -PfxPath $certFilePath -PfxPassword $securePfxPassword
-        $customHostnames = @($customProxy1, $customProxy2, $customPortal, $customMgmt)
+        $customHostnames = @($customProxy1, $customProxy2, $customPortal, $customMgmt, $customDevPortal)
 
         # Create API Management service
         $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity -CustomHostnameConfiguration $customHostnames
@@ -359,12 +365,19 @@ function Test-ApiManagementHostnamesCRUD {
         Assert-AreEqual Management $result.ManagementCustomHostnameConfiguration.HostnameType
         Assert-AreEqual $certThumbprint $result.ManagementCustomHostnameConfiguration.CertificateInformation.Thumbprint
 
+        #validate the DeveloperPortal custom hostname configuration
+        Assert-NotNull $result.DeveloperPortalHostnameConfiguration
+        Assert-AreEqual $devPortalHostName $result.DeveloperPortalHostnameConfiguration.Hostname
+        Assert-AreEqual DeveloperPortal $result.DeveloperPortalHostnameConfiguration.HostnameType
+        Assert-AreEqual $certThumbprint $result.DeveloperPortalHostnameConfiguration.CertificateInformation.Thumbprint
+
         #scm configuration is null
         Assert-Null $result.ScmCustomHostnameConfiguration
         
         # now delete all but one Proxy Custom Hostname         
         $result.ManagementCustomHostnameConfiguration = $null
         $result.PortalCustomHostnameConfiguration = $null
+        $result.DeveloperPortalHostnameConfiguration = $null
         $result.ProxyCustomHostnameConfiguration = @($customProxy1)
 
         # add a system certificate
@@ -398,6 +411,8 @@ function Test-ApiManagementHostnamesCRUD {
 
         #validate the portal custom hostname configuration
         Assert-Null $result.PortalCustomHostnameConfiguration
+        #validate the developerPortal custom hostname configuration
+        Assert-Null $result.DeveloperPortalHostnameConfiguration
         #validate the management custom hostname configuration
         Assert-Null $result.ManagementCustomHostnameConfiguration
         #scm configuration is null
