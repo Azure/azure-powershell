@@ -121,5 +121,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NetworkConfigurationDiagnostic");
         }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDFlowLog()
+        {
+            TestRunner.RunTestScript("Test-CRUDFlowLog");
+        }
     }
 }
