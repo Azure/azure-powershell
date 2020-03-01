@@ -19,10 +19,11 @@
 -->
 ## Upcoming Release
 * Fixed for null reference bug in `Get-AzRoleAssignment`
-* Marked switch `-Force` and `-PassThru` optional in `Remove-AzADGroup` (#10849)
-* Fixed issue that `MailNickname` doesn't return in `Remove-AzADGroup` (#11167)
-* Fix for null reference bug in GetAzureRoleAssignmentCommand
-* Add breaking change attributes for upcoming changes to policy cmdlets
+* Marked switch `-Force` and `-PassThru` optional in `Remove-AzADGroup` [#10849]
+* Fixed issue that `MailNickname` doesn't return in `Remove-AzADGroup` [#11167]
+* Fixed issue that `Remove-AzADGroup` pipe operation doesn't work [#11171]
+* Fixed for null reference bug in GetAzureRoleAssignmentCommand
+* Added breaking change attributes for upcoming changes to policy cmdlets
 * Updated `Get-AzResourceGroup` to perform resource group tag filtering on server-side
 * Extended Tag cmdlets to accept -ResourceId
     - Get-AzTag -ResourceId
