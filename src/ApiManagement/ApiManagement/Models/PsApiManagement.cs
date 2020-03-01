@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             Location = apiServiceResource.Location;
             Sku = ApiManagementClient.Mapper.Map<string, PsApiManagementSku>(apiServiceResource.Sku.Name);
             Capacity = apiServiceResource.Sku.Capacity ?? 1;
+            CreatedTimeUtc = apiServiceResource.CreatedAtUtc;
             PublisherEmail = apiServiceResource.PublisherEmail;
             OrganizationName = apiServiceResource.PublisherName;
             NotificationSenderEmail = apiServiceResource.NotificationSenderEmail;
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             RuntimeUrl = apiServiceResource.GatewayUrl;
             RuntimeRegionalUrl = apiServiceResource.GatewayRegionalUrl;
             PortalUrl = apiServiceResource.PortalUrl;
+            DeveloperPortalUrl = apiServiceResource.DeveloperPortalUrl;
             ManagementApiUrl = apiServiceResource.ManagementApiUrl;
             ScmUrl = apiServiceResource.ScmUrl;
             PublicIPAddresses = apiServiceResource.PublicIPAddresses != null ? apiServiceResource.PublicIPAddresses.ToArray() : null;
@@ -105,6 +107,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 {
                     ScmCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(scmHostnameResource);
                 }
+
+                var developerPortalResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.DeveloperPortal);
+                if (developerPortalResource != null)
+                {
+                    DeveloperPortalHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(developerPortalResource);
+                }
             }
 
             if (apiServiceResource.Certificates != null && apiServiceResource.Certificates.Any())
@@ -148,6 +156,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public int Capacity { get; set; }
 
+        public DateTime? CreatedTimeUtc { get; set; }
+
         public string ProvisioningState { get; private set; }
 
         public string RuntimeUrl { get; private set; }
@@ -155,6 +165,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         public string RuntimeRegionalUrl { get; private set; }
 
         public string PortalUrl { get; private set; }
+
+        public string DeveloperPortalUrl { get; private set; }
 
         public string ManagementApiUrl { get; private set; }
 
