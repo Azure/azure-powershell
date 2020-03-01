@@ -539,6 +539,55 @@ function Api-ImportExportOpenApiTest {
 
 <#
 .SYNOPSIS
+Tests API import from OpenApi Json type and export Api.
+#>
+function Api-ImportExportOpenApiJsonTest {
+    Param($resourceGroupName, $serviceName)
+
+    $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+    $jsonPath1 = Join-Path (Join-Path "$TestOutputRoot" "Resources") "petstoreOpenApi.json"
+    $path1 = "openapifromFile"
+    $openApiId1 = getAssetName
+    
+    try {
+        # import api from file
+        $api = Import-AzApiManagementApi -Context $context -ApiId $openApiId1 -SpecificationPath $jsonPath1 -SpecificationFormat OpenApi -Path $path1
+
+        Assert-AreEqual $openApiId1 $api.ApiId
+        Assert-AreEqual $path1 $api.Path
+
+         # get openapi schema
+        $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $openApiId1
+        Assert-NotNull $apiSchemas
+        Assert-AreEqual 1 $apiSchemas.Count
+        Assert-AreEqual OpenApiComponents $apiSchemas[0].SchemaDocumentContentType
+        Assert-AreEqual $openApiId1 $apiSchemas[0].ApiId
+
+        $newName = "apimPetstore"
+        $newDescription = "Open api via Apim"
+        $api = Set-AzApiManagementApi -InputObject $api -Name $newName -Description $newDescription -ServiceUrl $api.ServiceUrl -Protocols $api.Protocols -PassThru
+        Assert-AreEqual $openApiId1 $api.ApiId
+        Assert-AreEqual $path1 $api.Path
+        Assert-AreEqual $newName $api.Name
+        Assert-AreEqual $newDescription $api.Description
+        Assert-AreEqual 'Http' $api.ApiType
+
+        # commented as powershell test framework on running test in playback mode, throws 403, as the exported link of file
+        # gets expired
+        # export api to pipeline
+        #$result = Export-AzApiManagementApi -Context $context -ApiId $openApiId1 -SpecificationFormat OpenApiJson
+        #Assert-NotNull $result
+        #Assert-True {$result -like '*<wsdl:service name="OrdersAPI"*'}
+    }
+    finally {
+        # remove created api
+        $removed = Remove-AzApiManagementApi -Context $context -ApiId $openApiId1 -PassThru
+        Assert-True { $removed }
+    }
+}
+
+<#
+.SYNOPSIS
 Tests API Schema for Swagger Type Api.
 #>
 function ApiSchema-SwaggerCRUDTest {
@@ -2690,12 +2739,12 @@ function IdentityProvider-AadB2C-CrudTest {
     try {
         $clientId = getAssetName
         $clientSecret = getAssetName
-        $allowedTenants = 'samirtestbc.onmicrosoft.com'
-        $signupPolicyName = 'B2C_1_signup-policy'
-        $signinPolicyName = 'B2C_1_Sign-policy'
+        $allowedTenants = 'alzaslon.onmicrosoft.com'
+        $signupPolicyName = 'B2C_1_signuppolicy'
+        $signinPolicyName = 'B2C_1_signinpolicy'
 
         $identityProvider = New-AzApiManagementIdentityProvider -Context $context -Type $identityProviderName -ClientId $clientId -ClientSecret $clientSecret `
-            -AllowedTenants $allowedTenants -SignupPolicyName $signupPolicyName -SigninPolicyName $signinPolicyName
+            -AllowedTenants $allowedTenants -SignupPolicyName $signupPolicyName -SigninPolicyName $signinPolicyName 
 
         Assert-NotNull $identityProvider
         Assert-AreEqual $identityProviderName $identityProvider.Type
@@ -2720,7 +2769,7 @@ function IdentityProvider-AadB2C-CrudTest {
         Assert-AreEqual 1 $identityProviders.Count
 
         #update the provider with Secret
-        $profileEditingPolicy = 'B2C_1_UpdateEmail'
+        $profileEditingPolicy = 'B2C_1_profileediting'
         $identityProvider = Set-AzApiManagementIdentityProvider -Context $context -Type $identityProviderName -ProfileEditingPolicyName $profileEditingPolicy -PassThru
 
         Assert-AreEqual $identityProviderName $identityProvider.Type
@@ -2900,7 +2949,7 @@ function BackendServiceFabric-CrudTest {
         Assert-AreEqual $certSubject $cert.Subject
 
         $title = getAssetName
-        $urlEndpoint = 'https://contoso.com/awesomeapi'
+        $urlEndpoint = 'fabric:/mytestapp/mytestservice'
         $description = getAssetName
 
         $ManagementEndpoints = 'https://sfbackend-01.net:443', 'https://sfbackend-02.net:443'
