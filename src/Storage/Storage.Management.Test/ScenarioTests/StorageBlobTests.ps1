@@ -143,6 +143,78 @@ function Test-StorageBlobContainer
     }
 }
 
+<#
+.SYNOPSIS
+Test StorageAccount container with Encryption Scope
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageBlobContainerEncryptionScope
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+		$containerName = "container"+ $rgname
+		$containerName2 = "container2"+ $rgname
+		$scopeName = "testscope"
+		$scopeName2 = "testscope2"
+
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+		
+		# create Scope
+		New-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName -StorageEncryption
+		$scope = Get-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName
+		Assert-AreEqual $rgname $scope.ResourceGroupName
+		Assert-AreEqual $stoname $scope.StorageAccountName
+		Assert-AreEqual $scopeName $scope.Name
+		Assert-AreEqual "Microsoft.Storage" $scope.Source
+		Assert-AreEqual "Enabled" $scope.State
+		
+		# update Scope
+		$scope = Update-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName -State Disabled 
+		Assert-AreEqual "Disabled" $scope.State
+		$scope = Update-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName -State Enabled
+		Assert-AreEqual "Enabled" $scope.State
+		
+		#List Scope
+		New-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName2 -StorageEncryption
+		$scopes = Get-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual 2 $scopes.Count
+
+		#create container
+		New-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -DefaultEncryptionScope $scopename -PreventEncryptionScopeOverride $true 
+		$container = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		Assert-AreEqual $rgname $container.ResourceGroupName
+		Assert-AreEqual $stoname $container.StorageAccountName
+		Assert-AreEqual $containerName $container.Name
+		Assert-AreEqual $scopename $container.DefaultEncryptionScope
+		Assert-AreEqual $true $container.DenyEncryptionScopeOverride
+		New-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName2 -DefaultEncryptionScope $scopename2 -PreventEncryptionScopeOverride $false 
+		$container2 = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName2
+		Assert-AreEqual $rgname $container2.ResourceGroupName
+		Assert-AreEqual $stoname $container2.StorageAccountName
+		Assert-AreEqual $containerName2 $container2.Name
+		Assert-AreEqual $scopename2 $container2.DefaultEncryptionScope
+		Assert-AreEqual false $container2.DenyEncryptionScopeOverride
+		
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
 
 function Test-StorageBlobContainerLegalHold
 {

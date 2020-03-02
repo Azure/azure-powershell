@@ -178,7 +178,9 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'New-AzStorageBlobRangeToRestore', 'Restore-AzStorageBlobRange', 
                'Set-AzDataLakeGen2AclRecursive', 
                'Update-AzDataLakeGen2AclRecursive', 
-               'Remove-AzDataLakeGen2AclRecursive'
+               'Remove-AzDataLakeGen2AclRecursive',
+               'New-AzStorageEncryptionScope','Update-AzStorageEncryptionScope',
+               'Get-AzStorageEncryptionScope'
 
 # Variables to export from this module
 # VariablesToExport = @()
