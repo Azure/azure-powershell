@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Attestation
     /// Set AttestationPolicy.
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AttestationPolicySigner", SupportsShouldProcess = true)]
-    [OutputType(typeof(String))]
+    [OutputType(typeof(PSPolicySigners))]
     public class RemoveAzureAttestationPolicySigner : AttestationDataServiceCmdletBase
     {
         #region Input Parameter Definitions
@@ -77,9 +77,12 @@ namespace Microsoft.Azure.Commands.Attestation
 
         public override void ExecuteCmdlet()
         {
-            String policySignersString = AttestationDataPlaneClient.RemovePolicySigner(Name, ResourceGroupName, ResourceId, Signer);
-            PSPolicySigners policySigners = new PSPolicySigners(policySignersString);
-            WriteObject(policySigners);
+            if (ShouldProcess(Name, "RemoveAttestationPolicySigner"))
+            {
+                String policySignersString = AttestationDataPlaneClient.RemovePolicySigner(Name, ResourceGroupName, ResourceId, Signer);
+                PSPolicySigners policySigners = new PSPolicySigners(policySignersString);
+                WriteObject(policySigners);
+            }
         }
     }
 }

@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.Attestation
     /// <summary>
     /// Get AttestationPolicy.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AttestationPolicySigners", SupportsShouldProcess = true)]
-    [OutputType(typeof(String))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AttestationPolicySigners")]
+    [OutputType(typeof(PSPolicySigners))]
     public class GetAzureAttestationPolicySigners : AttestationDataServiceCmdletBase
     {
         #region Input Parameter Definitions
