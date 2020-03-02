@@ -21,19 +21,20 @@ function Test-GetAttestationPolicy
 {
 	$unknownRGName = getAssetName
 	$attestationProviderName = getAssetName
-    $policyTemplateName = "SgxDisableDebugMode"
+	$location = "East US"
 	$teeType = "SgxEnclave"
 
 	try
 	{
 	    $rgName = Create-ResourceGroup
-		$attestationCreated = New-AzAttestation -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $policyTemplateName
+		$attestationCreated = New-AzAttestation -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location
 
-		Assert-NotNull attestationCreated
+		Assert-NotNull $attestationCreated
 		Assert-AreEqual $attestationProviderName $attestationCreated.Name
-		Assert-NotNull attestationCreated.AttesUri
-		Assert-NotNull attestationCreated.Id
-		Assert-NotNull attestationCreated.Status
+		Assert-AreEqual $location $attestationCreated.Location
+		Assert-NotNull $attestationCreated.AttestUri
+		Assert-NotNull $attestationCreated.Id
+		Assert-NotNull $attestationCreated.Status
 
 		$getPolicy = Get-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee $teeType
 		Assert-NotNull $getPolicy
@@ -54,18 +55,19 @@ function Test-ResetAttestationPolicy
 {
 	$unknownRGName = getAssetName
 	$attestationProviderName = getAssetName
-    $policyTemplateName = "SgxDisableDebugMode"
+	$location = "East US"
 	$teeType = "SgxEnclave"
 	try
 	{
 	    $rgName = Create-ResourceGroup
-		$attestationCreated = New-AzAttestation -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $policyTemplateName
+		$attestationCreated = New-AzAttestation -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location
 
-		Assert-NotNull attestationCreated
+		Assert-NotNull $attestationCreated
 		Assert-AreEqual $attestationProviderName $attestationCreated.Name
-		Assert-NotNull attestationCreated.AttesUri
-		Assert-NotNull attestationCreated.Id
-		Assert-NotNull attestationCreated.Status
+		Assert-AreEqual $location $attestationCreated.Location
+		Assert-NotNull $attestationCreated.AttestUri
+		Assert-NotNull $attestationCreated.Id
+		Assert-NotNull $attestationCreated.Status
 
 		$getPolicy = Get-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee $teeType
 		Assert-NotNull $getPolicy
@@ -89,12 +91,19 @@ function Test-SetAttestationPolicy
 {
 	$unknownRGName = getAssetName
 	$attestationProviderName = getAssetName
-    $policyTemplateName = "SgxDisableDebugMode"
+	$location = "East US"
 	$teeType = "SgxEnclave"
 	$policyDocument = "eyJhbGciOiJub25lIn0.eyJBdHRlc3RhdGlvblBvbGljeSI6ICJ7XHJcbiAgICBcIiR2ZXJzaW9uXCI6IDEsXHJcbiAgICBcIiRhbGxvdy1kZWJ1Z2dhYmxlXCIgOiB0cnVlLFxyXG4gICAgXCIkY2xhaW1zXCI6W1xyXG4gICAgICAgIFwiaXMtZGVidWdnYWJsZVwiICxcclxuICAgICAgICBcInNneC1tcnNpZ25lclwiLFxyXG4gICAgICAgIFwic2d4LW1yZW5jbGF2ZVwiLFxyXG4gICAgICAgIFwicHJvZHVjdC1pZFwiLFxyXG4gICAgICAgIFwic3ZuXCIsXHJcbiAgICAgICAgXCJ0ZWVcIixcclxuICAgICAgICBcIk5vdERlYnVnZ2FibGVcIlxyXG4gICAgXSxcclxuICAgIFwiTm90RGVidWdnYWJsZVwiOiB7XCJ5ZXNcIjp7XCIkaXMtZGVidWdnYWJsZVwiOnRydWUsIFwiJG1hbmRhdG9yeVwiOnRydWUsIFwiJHZpc2libGVcIjpmYWxzZX19LFxyXG4gICAgXCJpcy1kZWJ1Z2dhYmxlXCIgOiBcIiRpcy1kZWJ1Z2dhYmxlXCIsXHJcbiAgICBcInNneC1tcnNpZ25lclwiIDogXCIkc2d4LW1yc2lnbmVyXCIsXHJcbiAgICBcInNneC1tcmVuY2xhdmVcIiA6IFwiJHNneC1tcmVuY2xhdmVcIixcclxuICAgIFwicHJvZHVjdC1pZFwiIDogXCIkcHJvZHVjdC1pZFwiLFxyXG4gICAgXCJzdm5cIiA6IFwiJHN2blwiLFxyXG4gICAgXCJ0ZWVcIiA6IFwiJHRlZVwiXHJcbn0ifQ."
 
 	# Prevent this script from inadvertantly running in Record or Playback modes
-	if (((Get-ChildItem Env:\HttpRecorderMode).Value -eq "Playback") -or ((Get-ChildItem Env:\HttpRecorderMode).Value -eq "Record"))
+	try
+	{
+		if (((Get-ChildItem Env:\HttpRecorderMode).Value -eq "Playback") -or ((Get-ChildItem Env:\HttpRecorderMode).Value -eq "Record"))
+		{
+			return
+		}
+	}
+	catch
 	{
 		return
 	}
@@ -102,13 +111,14 @@ function Test-SetAttestationPolicy
 	try
 	{
 	    $rgName = Create-ResourceGroup
-		$attestationCreated = New-AzAttestation -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $policyTemplateName
+		$attestationCreated = New-AzAttestation -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location
 
-		Assert-NotNull attestationCreated
+		Assert-NotNull $attestationCreated
 		Assert-AreEqual $attestationProviderName $attestationCreated.Name
-		Assert-NotNull attestationCreated.AttesUri
-		Assert-NotNull attestationCreated.Id
-		Assert-NotNull attestationCreated.Status
+		Assert-AreEqual $location $attestationCreated.Location
+		Assert-NotNull $attestationCreated.AttestUri
+		Assert-NotNull $attestationCreated.Id
+		Assert-NotNull $attestationCreated.Status
 
 		# NOTE: Set-AzAttestionPolicy does not work in recording/playback mode because the recorded JWT token expires and then fails validation
 		$setPolicyResponse = Set-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee $teeType -Policy $policyDocument -PassThru
