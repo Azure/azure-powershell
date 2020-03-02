@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Open Azure Powershell survey page in Send-Feedback` [#11020]
-* Display Azure Powershell survey url to Resolve-Error` [#11021]
+* Open Azure PowerShell survey page in `Send-Feedback` [#11020]
+* Display Azure PowerShell survey URL in `Resolve-Error` [#11021]
 * Added Az version in UserAgent
 
 ## Version 1.7.2
