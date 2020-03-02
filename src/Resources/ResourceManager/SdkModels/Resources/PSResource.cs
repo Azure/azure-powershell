@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Newtonsoft.Json.Linq;
 using System;
@@ -62,6 +63,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public Sku Sku { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
+
+        public string TagsTable
+        {
+            get { return ResourcesExtensions.ConstructTagsTable(TagsConversionHelper.CreateTagHashtable(Tags)); }
+        }
 
         public string SubscriptionId { get; set; }
 

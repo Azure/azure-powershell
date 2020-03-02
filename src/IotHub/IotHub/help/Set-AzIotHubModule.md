@@ -119,6 +119,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IotHubName
+Name of the Iot Hub
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ModuleId
 Target Module Id.
 
@@ -129,21 +144,6 @@ Aliases:
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the Iot Hub
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceSet
-Aliases:
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
