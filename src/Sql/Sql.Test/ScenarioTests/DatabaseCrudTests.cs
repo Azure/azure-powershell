@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public DatabaseCrudTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         protected override void SetupManagementClients(Rest.ClientRuntime.Azure.TestFramework.MockContext context)
