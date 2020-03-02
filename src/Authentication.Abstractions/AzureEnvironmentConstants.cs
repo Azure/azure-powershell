@@ -185,11 +185,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// The domain name suffix for Azure Synapse Services
         /// </summary>
-        public const string AzureSynapseServiceEndpointSuffix = "dev.azuresynapse.net";
+        public const string AzureSynapseAnalyticsEndpointSuffix = "dev.azuresynapse.net";
 
         /// <summary>
         /// The token audience for authorizing Synapse Service requests
         /// </summary>
-        public const string AzureSynapseServiceEndpointResourceId = "https://dev.azuresynapse.net";
+        public const string AzureSynapseAnalyticsEndpointResourceId = "https://dev.azuresynapse.net";
     }
 }

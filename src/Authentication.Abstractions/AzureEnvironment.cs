@@ -205,8 +205,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointResourceId, AzureEnvironmentConstants.AzureAnalysisServicesEndpointResourceId);
             azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureAttestationServiceEndpointSuffix, AzureEnvironmentConstants.AzureAttestationServiceEndpointSuffix);
             azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, AzureEnvironmentConstants.AzureAttestationServiceEndpointResourceId);
-            azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureSynapseServiceEndpointSuffix, AzureEnvironmentConstants.AzureSynapseServiceEndpointSuffix);
-            azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureSynapseServiceEndpointResourceId, AzureEnvironmentConstants.AzureSynapseServiceEndpointResourceId);
+            azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, AzureEnvironmentConstants.AzureSynapseAnalyticsEndpointSuffix);
+            azureEnvironments[EnvironmentName.AzureCloud].SetProperty(ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId, AzureEnvironmentConstants.AzureSynapseAnalyticsEndpointResourceId);
 
             azureEnvironments[EnvironmentName.AzureChinaCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.ChinaAnalysisServicesEndpointSuffix);
             azureEnvironments[EnvironmentName.AzureChinaCloud].SetProperty(ExtendedEndpoint.AnalysisServicesEndpointResourceId, AzureEnvironmentConstants.ChinaAnalysisServicesEndpointResourceId);
@@ -539,8 +539,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 AnalysisServicesEndpointResourceId = "AnalysisServicesEndpointResourceId",
                 AzureAttestationServiceEndpointSuffix = "AzureAttestationServiceEndpointSuffix",
                 AzureAttestationServiceEndpointResourceId = "AzureAttestationServiceEndpointResourceId",
-                AzureSynapseServiceEndpointSuffix = "AzureSynapseServiceEndpointSuffix",
-                AzureSynapseServiceEndpointResourceId = "AzureSynapseServiceEndpointResourceId";
+                AzureSynapseAnalyticsEndpointSuffix = "AzureSynapseAnalyticsEndpointSuffix",
+                AzureSynapseAnalyticsEndpointResourceId = "AzureSynapseAnalyticsEndpointResourceId";
         }
     }
 }

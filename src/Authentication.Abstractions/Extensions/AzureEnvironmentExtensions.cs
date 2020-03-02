@@ -283,11 +283,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId:
                         environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, propertyValue);
                         break;
-                    case AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointSuffix:
-                        environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointSuffix, propertyValue);
+                    case AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix:
+                        environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, propertyValue);
                         break;
-                    case AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointResourceId:
-                        environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointResourceId, propertyValue);
+                    case AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId:
+                        environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId, propertyValue);
                         break;
                 }
             }
@@ -328,9 +328,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 case AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId:
                     resource = AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId;
                     break;
-                case AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointSuffix:
-                case AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointResourceId:
-                    resource = AzureEnvironment.ExtendedEndpoint.AzureSynapseServiceEndpointResourceId;
+                case AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix:
+                case AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId:
+                    resource = AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId;
                     break;
                 default:
                     resource = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
