@@ -24,7 +24,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Text;
@@ -871,46 +870,31 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected string LoadAzVersion()
         {
-            Version defautVersion = new Version("0.0.0");
-            if (this.Host == null)
-            {
-                WriteDebug("Cannot fetch Az version due to no host in current environment");
-                return defautVersion.ToString();
-            }
-
-            Version latestAz = defautVersion;
+            Version latestAz = new Version("0.0.0");
             string latestSuffix = "";
             using (var powershell = System.Management.Automation.PowerShell.Create())
             {
-                try
+                powershell.Runspace = RunspaceFactory.CreateRunspace(this.Host);
+                powershell.AddCommand("Get-Module");
+                powershell.AddParameter("Name", "Az");
+                powershell.AddParameter("ListAvailable", true);
+                powershell.Runspace.Open();
+                Collection<PSObject> outputs = powershell.Invoke();
+                foreach (PSObject obj in outputs)
                 {
-                    powershell.Runspace = RunspaceFactory.CreateRunspace(this.Host);
-                    powershell.AddCommand("Get-Module");
-                    powershell.AddParameter("Name", "Az");
-                    powershell.AddParameter("ListAvailable", true);
-                    powershell.Runspace.Open();
-                    Collection<PSObject> outputs = powershell.Invoke();
-                    foreach (PSObject obj in outputs)
+                    string psVersion = obj.Properties["Version"].Value.ToString();
+                    int pos = psVersion.IndexOf('-');
+                    string currentSuffix = (pos == -1 || pos == psVersion.Length - 1) ? "" : psVersion.Substring(pos + 1);
+                    Version currentAz = (pos == -1) ? new Version(psVersion) : new Version(psVersion.Substring(0, pos));
+                    if (currentAz > latestAz)
                     {
-                        string psVersion = obj.Properties["Version"].Value.ToString();
-                        int pos = psVersion.IndexOf('-');
-                        string currentSuffix = (pos == -1 || pos == psVersion.Length - 1) ? "" : psVersion.Substring(pos + 1);
-                        Version currentAz = (pos == -1) ? new Version(psVersion) : new Version(psVersion.Substring(0, pos));
-                        if (currentAz > latestAz)
-                        {
-                            latestAz = currentAz;
-                            latestSuffix = currentSuffix;
-                        }
-                        else if (currentAz == latestAz)
-                        {
-                            latestSuffix = String.Compare(latestSuffix, currentSuffix) > 0 ? latestSuffix : currentSuffix;
-                        }
+                        latestAz = currentAz;
+                        latestSuffix = currentSuffix;
                     }
-                }
-                catch (Exception e)
-                {
-                    WriteDebug(string.Format("Cannot fetch Az version due to exception: {0}", e.Message));
-                    return defautVersion.ToString();
+                    else if (currentAz == latestAz)
+                    {
+                        latestSuffix = String.Compare(latestSuffix, currentSuffix) > 0 ? latestSuffix : currentSuffix;
+                    }
                 }
             }
             string ret = latestAz.ToString();
