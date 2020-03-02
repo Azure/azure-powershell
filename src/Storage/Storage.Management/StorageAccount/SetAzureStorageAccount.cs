@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string KeyName { get; set; }
 
         [Parameter(HelpMessage = "Storage Account encryption keySource KeyVault KeyVersion",
-        Mandatory = true,
+        Mandatory = false,
         ParameterSetName = KeyvaultEncryptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string KeyVersion { get; set; }
