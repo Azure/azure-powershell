@@ -1,40 +1,41 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll-Help.xml
 Module Name: Az.Attestation
-online version: https://docs.microsoft.com/en-us/powershell/module/az.attestation/get-azattestationpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.attestation/add-azattestationpolicysigner
 schema: 2.0.0
 ---
 
-# Get-AzAttestationPolicy
+# Add-AzAttestationPolicySigner
 
 ## SYNOPSIS
-Gets the policy from a tenant in Azure Attestation.
+Adds a trusted policy signer for a tenant in Azure Attestation.
 
 ## SYNTAX
 
 ### NameParameterSet
 ```
-Get-AzAttestationPolicy [-Name] <String> [-ResourceGroupName] <String> -Tee <String>
+Add-AzAttestationPolicySigner [-Name] <String> [-ResourceGroupName] <String> -Signer <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzAttestationPolicy [-ResourceId] <String> -Tee <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzAttestationPolicySigner [-ResourceId] <String> -Signer <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzAttestationPolicy cmdlet gets the policy from a tenant in Azure Attestation.
+The Add-AzAttestationPolicySigner cmdlet adds a trusted policy signer for a tenant in Azure Attestation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAttestationPolicy -Name "example" -Tee "SgxEnclave"
+PS C:\> $trustedSigner = Get-Content -Path .\trusted.signer.txt
+PS C:\> Add-AzAttestationPolicySigner -Name "myservice" -ResourceGroupName "myrg" -Signer $trustedSigner
 ```
 
-Gets the policy for tenant "example" in Tee "SgxEnclave".
+Adds a new trusted signer for the tenant named "myservice".
 
 ## PARAMETERS
 
@@ -54,8 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies a name of the tenant.
-This cmdlet gets the attestation policy for the tenant that this parameter specifies.
+Specifies the name of an attestation provider.
 
 ```yaml
 Type: System.String
@@ -99,9 +99,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tee
-Specifies a type of Trusted Execution Environment.
-We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VSMEnclave.
+### -Signer
+Specifies the RFC7519 JSON Web Token containing a claim named "aas-policyCertificate" whose value is an RFC7517 JSON Web Key which contains a new trusted signing key to add.
+The RFC7519 JWT must be signed with one of the existing trusted signing keys.
 
 ```yaml
 Type: System.String
@@ -131,7 +131,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -154,7 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners
 
 ## NOTES
 
