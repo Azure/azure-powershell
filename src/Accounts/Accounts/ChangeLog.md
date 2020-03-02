@@ -30,6 +30,7 @@
 * Open Azure PowerShell survey page in `Send-Feedback` [#11020]
 * Display Azure PowerShell survey URL in `Resolve-Error` [#11021]
 * Added Az version in UserAgent
+* Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureSynapseAnalyticsEndpointResourceId and AzureSynapseAnalyticsEndpointSuffix
 
 ## Version 1.7.2
 * Added SubscriptionId, TenantId, and execution time into data of client side telemetry
