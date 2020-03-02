@@ -12,8 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Attestation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
 
 namespace Microsoft.Azure.Commands.Attestation.Models
 {
@@ -21,31 +24,32 @@ namespace Microsoft.Azure.Commands.Attestation.Models
     {
         public  PSAttestation(AttestationProvider attestation)
         {
-            Name = attestation.Name;
             Id = attestation.Id;
-            Type = attestation.Type;
+            Location = attestation.Location;
+            ResourceGroupName = new ResourceIdentifier(attestation.Id).ResourceGroupName;
+            Name = attestation.Name;
             Status = attestation.Status;
+            TrustModel = attestation.TrustModel;
             AttestUri = attestation.AttestUri;
-
-            ResourceIdentifier identifier = new ResourceIdentifier(attestation.Id);
-
-            ResourceGroupName = identifier.ResourceGroupName;
-            SubscriptionId = identifier.Subscription;
+            Tags = TagsConversionHelper.CreateTagHashtable(attestation.Tags);
         }
    
         public string Id { get; protected set; }
 
-        public string Name { get; protected set; }
+        public string Location { get; protected set; }
 
-        public string Type { get; protected set; }
+        public string ResourceGroupName { get; protected set; }
+
+        public string Name { get; protected set; }
 
         public string Status { get; protected set; }
 
+        public string TrustModel { get; protected set; }
+
         public string AttestUri { get; protected set; }
-    
-        public string ResourceGroupName { get; protected set; }
 
-        public string SubscriptionId { get; protected set; }
+        public Hashtable Tags { get; protected set; }
 
+        public string TagsTable => ResourcesExtensions.ConstructTagsTable(Tags);
     }
 }
