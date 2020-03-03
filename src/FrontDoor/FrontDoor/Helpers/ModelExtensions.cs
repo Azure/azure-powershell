@@ -38,7 +38,10 @@ using SdkHealthProbeSetting = Microsoft.Azure.Management.FrontDoor.Models.Health
 using SdkHttpsConfig = Microsoft.Azure.Management.FrontDoor.Models.CustomHttpsConfiguration;
 using SdkLoadBalancingSetting = Microsoft.Azure.Management.FrontDoor.Models.LoadBalancingSettingsModel;
 using SdkManagedRule = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleSet;
+using SdkManagedRuleDefinition = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleDefinition;
+using SdkManagedRuleGroupDefinition = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleGroupDefinition;
 using SdkManagedRuleList = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleSetList;
+using SdkManagedRuleSetDefinition = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleSetDefinition;
 using sdkMatchCondition = Microsoft.Azure.Management.FrontDoor.Models.MatchCondition;
 using sdkPolicySetting = Microsoft.Azure.Management.FrontDoor.Models.PolicySettings;
 using SdkRedirectConfiguration = Microsoft.Azure.Management.FrontDoor.Models.RedirectConfiguration;
@@ -428,6 +431,38 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 CustomBlockResponseBody = sdkPolicy.PolicySettings?.CustomBlockResponseBody == null ? null : Encoding.UTF8.GetString(Convert.FromBase64String(sdkPolicy.PolicySettings?.CustomBlockResponseBody)),
                 CustomBlockResponseStatusCode = (ushort?)sdkPolicy.PolicySettings?.CustomBlockResponseStatusCode,
                 RedirectUrl = sdkPolicy.PolicySettings?.RedirectUrl
+            };
+        }
+
+        public static PSManagedRuleSetDefinition ToPSManagedRuleSetDefinition(this SdkManagedRuleSetDefinition sdkManagedRuleSetDefinition)
+        {
+            return new PSManagedRuleSetDefinition
+            {
+                ProvisioningState = sdkManagedRuleSetDefinition.ProvisioningState,
+                RuleSetType = sdkManagedRuleSetDefinition.RuleSetType,
+                RuleSetVersion = sdkManagedRuleSetDefinition.RuleSetVersion,
+                RuleGroups = sdkManagedRuleSetDefinition.RuleGroups?.Select(ruleGroup => ruleGroup.ToPSManagedRuleGroupDefinition()).ToList()
+            };
+        }
+
+        public static PSManagedRuleGroupDefinition ToPSManagedRuleGroupDefinition(this SdkManagedRuleGroupDefinition sdkManagedRuleGroupDefinition)
+        {
+            return new PSManagedRuleGroupDefinition
+            {
+                RuleGroupName = sdkManagedRuleGroupDefinition.RuleGroupName,
+                Description = sdkManagedRuleGroupDefinition.Description,
+                Rules = sdkManagedRuleGroupDefinition.Rules?.Select(rule => rule.ToPSManagedRuleDefinition()).ToList()
+            };
+        }
+
+        public static PSManagedRuleDefinition ToPSManagedRuleDefinition(this SdkManagedRuleDefinition sdkManagedRuleDefinition)
+        {
+            return new PSManagedRuleDefinition
+            {
+                RuleId = sdkManagedRuleDefinition.RuleId,
+                DefaultAction = sdkManagedRuleDefinition.DefaultAction,
+                DefaultState = sdkManagedRuleDefinition.DefaultState,
+                Description = sdkManagedRuleDefinition.Description
             };
         }
 

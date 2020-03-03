@@ -106,7 +106,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ProvidersList");
         }
 
-        [Fact]
+        [Fact(Skip = "Need to rewrite test after introduction of ConnectionMonitor V2")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestConnectionMonitor()

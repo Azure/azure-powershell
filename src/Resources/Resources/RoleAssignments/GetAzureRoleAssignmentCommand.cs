@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.Resources
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSRoleAssignment))]
     public class GetAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
+        #region Cmdlet Parameters
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "The user or group object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
@@ -213,6 +215,9 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceWithSPN,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
         public SwitchParameter IncludeClassicAdministrators { get; set; }
+
+        #endregion
+
 
         public override void ExecuteCmdlet()
         {

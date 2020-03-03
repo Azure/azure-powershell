@@ -18,7 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Support set Table/Queue Encyrption Keytype in Create Storage Account
+* Support AllowProtectedAppendWrite in ImmutabilityPolicy
+    - Set-AzRmStorageContainerImmutabilityPolicy
+* Add breaking change warning message for AzureStorageTable type change in a future release
+    - New-AzStorageTable
+    - Get-AzStorageTable
+
+## Version 1.12.0
+* Support set Table/Queue Encryption Keytype in Create Storage Account
     - New-AzRmStorageAccount
 * Show RequestId when StorageException don't have ExtendedErrorInformation
 * Fix the Example 6 of cmdlet Start-AzStorageBlobCopy

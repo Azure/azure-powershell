@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll-Help.xml
 Module Name: Az.Attestation
-online version:https://docs.microsoft.com/en-us/powershell/module/az.attestation/remove-azattestation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.attestation/remove-azattestation
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Deletes an attestation.
 
 ### ByAvailableAttestation (Default)
 ```
-Remove-AzAttestation [-Name] <String> [-ResourceGroupName] <String> [-AsJob] [-PassThru]
+Remove-AzAttestation [-Name] <String> [-ResourceGroupName] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,33 +37,18 @@ The Remove-AzAttestation cmdlet deletes the specified attestation.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzAttestation -Name example -ResourceGroupName rg1 
+PS C:\> Remove-AzAttestation -Name "example" -ResourceGroupName "rg1"
 ```
 
 Delete Attestation "example" from current Subscription and Resource Group "rg1".
 
 ## PARAMETERS
 
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -78,7 +63,7 @@ Accept wildcard characters: False
 Attestation object to be deleted.
 
 ```yaml
-Type: PSAttestation
+Type: Microsoft.Azure.Commands.Attestation.Models.PSAttestation
 Parameter Sets: InputObjectByAvailableAttestation
 Aliases:
 
@@ -93,7 +78,7 @@ Accept wildcard characters: False
 Specifies the name of the attestation to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAvailableAttestation
 Aliases:
 
@@ -109,7 +94,7 @@ This Cmdlet does not return an object by default.
 If this switch is specified, it returns true if successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +109,7 @@ Accept wildcard characters: False
 Specifies the name of resource group for Azure attestation to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAvailableAttestation
 Aliases:
 
@@ -139,7 +124,7 @@ Accept wildcard characters: False
 Attestation Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdByAvailableAttestation
 Aliases:
 
@@ -154,7 +139,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -170,7 +155,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

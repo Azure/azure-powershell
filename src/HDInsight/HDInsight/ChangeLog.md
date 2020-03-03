@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.3
+* Fix document error of New-AzHDInsightCluster.
+
 ## Version 3.0.2
 * Fix Invoke-AzHDInsightHiveJob.md error.
 

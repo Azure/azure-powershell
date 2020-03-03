@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Open Azure PowerShell survey page in `Send-Feedback` [#11020]
+* Display Azure PowerShell survey URL in `Resolve-Error` [#11021]
+* Added Az version in UserAgent
+
+## Version 1.7.2
+* Added SubscriptionId, TenantId, and execution time into data of client side telemetry
+
+## Version 1.7.1
+* Disable context auto saving when AzureRmContext.json not available
+* Update the reference to Azure Powershell Common to 1.3.5-preview
 
 ## Version 1.7.0
 * Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix

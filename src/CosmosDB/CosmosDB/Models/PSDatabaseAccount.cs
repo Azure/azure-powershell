@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
             Id = databaseAccountGetResults.Id;
             Name = databaseAccountGetResults.Name;
+            Tags = databaseAccountGetResults.Tags;
+            Location = databaseAccountGetResults.Location;
             EnableCassandraConnector = databaseAccountGetResults.EnableCassandraConnector;
             FailoverPolicies = databaseAccountGetResults.FailoverPolicies;
             ReadLocations = databaseAccountGetResults.ReadLocations;
@@ -56,6 +58,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the Name of the CosmosDB Account
         public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets Location of the Cosmos DB CosmosDB Account
+        /// </summary>
+        public string Location { get; set; }
+        /// <summary>
+        /// Gets or sets Tags of the Cosmos DB CosmosDB Account
+        /// </summary>
+        public IDictionary<string, string> Tags { get; set; }
         //
         //
         // Summary:
