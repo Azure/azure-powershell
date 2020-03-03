@@ -66,10 +66,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public override void ExecuteCmdlet()
         {
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
-
-            this.WriteObject(
-                ResourceManagerSdkClient.FilterResourceGroups(name: this.Name, tag: this.Tag, detailed: false, location: this.Location),
-                true);
+            this.WriteObject(ResourceManagerSdkClient.FilterResourceGroups(name: this.Name, tag: this.Tag, detailed: false, location: this.Location), true);
         }
 
     }

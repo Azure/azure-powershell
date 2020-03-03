@@ -41,11 +41,10 @@ The cmdlet prompts you for confirmation and returns no output.
 
 ### Example 2: Remove a resource group without confirmation
 ```
-PS C:\>Get-AzResourceGroup -Name "ContosoRG01" | Remove-AzResourceGroup -Verbose -Force
+PS C:\>Get-AzResourceGroup -Name "ContosoRG01" | Remove-AzResourceGroup -Force
 ```
 
-This command uses the Get-AzResourceGroup cmdlet to get the resource group ContosoRG01, and then passes it to **Remove-AzResourceGroup** by using the pipeline operator.
-The *Verbose* common parameter gets status information about the operation, and the *Force* parameter suppresses the confirmation prompt.
+This command uses the Get-AzResourceGroup cmdlet to get the resource group ContosoRG01, and then passes it to **Remove-AzResourceGroup** by using the pipeline operator. The *Force* parameter suppresses the confirmation prompt.
 
 ### Example 3: Remove all resource groups
 ```

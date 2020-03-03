@@ -536,7 +536,7 @@ function Test-RevokeAzStorageAccountUserDelegationKeys
         New-AzResourceGroup -Name $rgname -Location $loc
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype
 		
-		# revoke with storage account name and resoruce group name
+		# revoke with storage account name and resource group name
 		Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName $rgname  -Name $stoname
 
 		# revoke with pipeline

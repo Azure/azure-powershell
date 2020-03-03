@@ -32,7 +32,41 @@ The **New-AzApiManagement** cmdlet creates an API Management deployment in Azure
 
 ### Example 1: Create a Developer tier API Management service
 ```powershell
-PS C:\>New-AzApiManagement -ResourceGroupName "ContosoGroup02" -Name "ContosoApi" -Location "Central US" -Organization "Contoso" -AdminEmail "admin@contoso.com"
+PS D:\> New-AzApiManagement -ResourceGroupName "ContosoGroup02" -Name "ContosoApi2" -Location "Central US" -Organization "Contoso" -AdminEmail "admin@contoso.com"
+
+
+PublicIPAddresses                     : {104.43.240.65}
+PrivateIPAddresses                    :
+Id                                    : /subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/ContosoGroup02/providers/Microsoft.ApiManagement/service/ContosoApi2
+Name                                  : ContosoApi2
+Location                              : Central US
+Sku                                   : Developer
+Capacity                              : 1
+CreatedTimeUtc                        : 2/24/2020 10:34:12 PM
+ProvisioningState                     : Succeeded
+RuntimeUrl                            : https://contosoapi2.azure-api.net
+RuntimeRegionalUrl                    : https://contosoapi2-centralus-01.regional.azure-api.net
+PortalUrl                             : https://contosoapi2.portal.azure-api.net
+DeveloperPortalUrl                    : https://contosoapi2.developer.azure-api.net
+ManagementApiUrl                      : https://contosoapi2.management.azure-api.net
+ScmUrl                                : https://contosoapi2.scm.azure-api.net
+PublisherEmail                        : admin@contoso.com
+OrganizationName                      : Contoso
+NotificationSenderEmail               : apimgmt-noreply@mail.windowsazure.com
+VirtualNetwork                        :
+VpnType                               : None
+PortalCustomHostnameConfiguration     :
+ProxyCustomHostnameConfiguration      : {contosoapi2.azure-api.net}
+ManagementCustomHostnameConfiguration :
+ScmCustomHostnameConfiguration        :
+DeveloperPortalHostnameConfiguration  :
+SystemCertificates                    :
+Tags                                  : {}
+AdditionalRegions                     : {}
+SslSetting                            : Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting
+Identity                              :
+EnableClientCertificate               :
+ResourceGroupName                     : ContosoGroup02
 ```
 
 This command creates a Developer tier API Management service.

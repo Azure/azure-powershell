@@ -16,7 +16,7 @@ Modifies properties of a SQL Database server.
 ```
 Set-AzSqlServer [-ServerName] <String> [-SqlAdministratorPassword <SecureString>] [-Tags <Hashtable>]
  [-ServerVersion <String>] [-AssignIdentity] [-Force] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-MinimalTlsVersion <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-MinimalTlsVersion <String>] [-PublicNetworkAccess <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +79,22 @@ Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Takes a flag, enabled/disabled, to specify whether public network access to server is allowed or not.
+When disabled, only connections made through Private Links can reach this server.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
