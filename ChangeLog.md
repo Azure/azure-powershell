@@ -4,6 +4,10 @@
 * Az.IotHub added cmdlets to support to manage devices.
 * Az.SqlVirtualMachine added cmdlets for Availability Group Listener.
 
+#### Az.Resource
+* Fixed bug preventing correct tenant-level resource id generation.
+* Fixed typo.
+
 #### Az.Accounts
 * Added SubscriptionId, TenantId, and execution time into data of client side telemetry
 
