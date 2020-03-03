@@ -33,9 +33,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         private const string BackupNameSet = "BackupName";
 
         /// <summary>
-        /// Parameter set name for server name.
+        /// Parameter set name for instance name.
         /// </summary>
         private const string InstanceNameSet = "InstanceName";
+
+        /// <summary>
+        /// Parameter set for database name.
+        /// </summary>
+        private const string DatabaseNameSet = "DatabaseName";
 
         /// <summary>
         /// Parameter set name for location name.
@@ -58,11 +63,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         private const string GetBackupByResourceIdSet = "GetBackupByResourceId";
 
         /// <summary>
-        /// Parameter set for using a Database Resource ID when getting multiple backups.
-        /// </summary>
-        private const string GetBackupsByResourceIdSet = "GetBackupsByResourceId";
-
-        /// <summary>
         /// The location the backups are in.
         /// </summary>
         [Parameter(Mandatory = true,
@@ -72,20 +72,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = InstanceNameSet,
             Position = 0,
-            HelpMessage = "The location of the backups' source Managed Instance.")]
+            HelpMessage = "The backups' source Managed Instance.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = DatabaseNameSet,
+            Position = 0,
+            HelpMessage = "The backups' source Managed Database.")]
         [Parameter(Mandatory = true,
             ParameterSetName = BackupNameSet,
             Position = 0,
-            HelpMessage = "The location of the backups' source Managed Instance.")]
+            HelpMessage = "The backups' source Managed Instance.")]
         [Parameter(Mandatory = true,
             ParameterSetName = GetBackupByResourceIdSet,
             Position = 1,
-            HelpMessage = "The location of the backups' source Managed Instance.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = GetBackupsByResourceIdSet,
-            Position = 1,
-            HelpMessage = "The location of the backups' source Managed Instance.")]
-        [LocationCompleter("Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentonManagedInstanceBackups")]
+            HelpMessage = "The location of the backup's source Managed Instance.")]
+        [LocationCompleter("Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups")]
         public string Location { get; set; }
 
         /// <summary>
@@ -112,11 +112,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The database Resource ID to get backups for.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = GetBackupsByResourceIdSet,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The database Resource ID to get backups for.")]
         public string ResourceId { get; set; }
 
         /// <summary>
@@ -127,19 +122,24 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             Position = 1,
             HelpMessage = "The name of the Managed Instance the backups are under.")]
         [Parameter(Mandatory = true,
+            ParameterSetName = DatabaseNameSet,
+            Position = 1,
+            HelpMessage = "The name of the Managed Database the backups are under.")]
+        [Parameter(Mandatory = true,
             ParameterSetName = BackupNameSet,
             Position = 1,
             HelpMessage = "The name of the Managed Instance the backups are under.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string ManagedInstanceName { get; set; }
+        public string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database.
         /// </summary>
-        [Parameter(Mandatory = false,
-            ParameterSetName = InstanceNameSet,
-            HelpMessage = "The name of the Managed Instance the backups are under.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = DatabaseNameSet,
+            Position = 2,
+            HelpMessage = "The name of the Managed Database the backups are under.")]
         [Parameter(Mandatory = true,
             ParameterSetName = BackupNameSet,
             Position = 2,
@@ -159,12 +159,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = GetBackupByInputObjectSet,
             ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "The name of the backup.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = GetBackupByResourceIdSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
+            Position = 2,
             HelpMessage = "The name of the backup.")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -178,6 +173,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             HelpMessage = "The name of the resource group.")]
         [Parameter(Mandatory = false,
             ParameterSetName = InstanceNameSet,
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = DatabaseNameSet,
             HelpMessage = "The name of the resource group.")]
         [Parameter(Mandatory = false,
             ParameterSetName = BackupNameSet,
@@ -195,10 +193,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             ParameterSetName = LocationSet,
             HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
         [Parameter(Mandatory = false,
-            ParameterSetName = GetBackupsByInputObjectSet,
+            ParameterSetName = DatabaseNameSet,
             HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
         [Parameter(Mandatory = false,
-            ParameterSetName = GetBackupsByResourceIdSet,
+            ParameterSetName = GetBackupsByInputObjectSet,
             HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter OnlyLatestPerDatabase { get; set; }
@@ -218,10 +216,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             ParameterSetName = GetBackupsByInputObjectSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The state of the database whose backups you want to find, Alive, Deleted, or All. Defaults to All")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = GetBackupsByResourceIdSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The state of the database whose backups you want to find, Alive, Deleted, or All. Defaults to All")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(Management.Sql.Models.LongTermRetentionDatabaseState.All, Management.Sql.Models.LongTermRetentionDatabaseState.Deleted, Management.Sql.Models.LongTermRetentionDatabaseState.Live,
             IgnoreCase = true)]
@@ -236,7 +230,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             if (InputObject != null)
             {
                 Location = InputObject.Location;
-                ManagedInstanceName = InputObject.ManagedInstanceName;
+                InstanceName = InputObject.ManagedInstanceName;
                 DatabaseName = InputObject.Name;
                 ResourceGroupName = InputObject.ResourceGroupName;
             }
@@ -245,12 +239,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
                 ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
                 DatabaseName = identifier.ResourceName;
                 ResourceGroupName = identifier.ResourceGroupName;
-                ManagedInstanceName = identifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries)[1];
+                InstanceName = identifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries)[1];
             }
 
             return SubResourceWildcardFilter(BackupName, ModelAdapter.GetManagedDatabaseLongTermRetentionBackups(
                     Location,
-                    ManagedInstanceName,
+                    InstanceName,
                     DatabaseName,
                     BackupName,
                     ResourceGroupName,

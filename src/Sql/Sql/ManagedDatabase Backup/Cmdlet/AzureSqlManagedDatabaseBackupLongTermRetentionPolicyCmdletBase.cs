@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             HelpMessage = "The name of the Azure Managed Instance the database belongs to.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstance", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string ManagedInstanceName { get; set; }
+        public string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the managed database to use.
