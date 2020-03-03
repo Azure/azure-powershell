@@ -1,121 +1,137 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azmanagementgroupdeployment
+online version:
 schema: 2.0.0
 ---
 
-# Test-AzManagementGroupDeployment
+# Get-AzDeploymentWhatIf
 
 ## SYNOPSIS
-Validates a deployment at a management group.
+Gets an ARM template What-If result for a deployment at subscription scope. 
 
 ## SYNTAX
 
 ### ByTemplateFileWithNoParameters (Default)
 ```
-Test-AzManagementGroupDeployment -ManagementGroupId <String> -Location <String> -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterObject
 ```
-Test-AzManagementGroupDeployment -ManagementGroupId <String> -Location <String>
+Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterObject
 ```
-Test-AzManagementGroupDeployment -ManagementGroupId <String> -Location <String>
+Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateParameterObject <Hashtable> -TemplateFile <String> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterObject
 ```
-Test-AzManagementGroupDeployment -ManagementGroupId <String> -Location <String>
+Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateParameterObject <Hashtable> -TemplateUri <String> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterFile
 ```
-Test-AzManagementGroupDeployment -ManagementGroupId <String> -Location <String> -TemplateParameterFile <String>
- -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ -TemplateParameterFile <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterFile
 ```
-Test-AzManagementGroupDeployment -ManagementGroupId <String> -Location <String> -TemplateParameterFile <String>
- -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ -TemplateParameterFile <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterFile
 ```
-Test-AzManagementGroupDeployment -ManagementGroupId <String> -Location <String> -TemplateParameterFile <String>
- -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ -TemplateParameterFile <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterUri
 ```
-Test-AzManagementGroupDeployment -ManagementGroupId <String> -Location <String> -TemplateParameterUri <String>
- -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ -TemplateParameterUri <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterUri
 ```
-Test-AzManagementGroupDeployment -ManagementGroupId <String> -Location <String> -TemplateParameterUri <String>
- -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ -TemplateParameterUri <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterUri
 ```
-Test-AzManagementGroupDeployment -ManagementGroupId <String> -Location <String> -TemplateParameterUri <String>
- -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ -TemplateParameterUri <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectWithNoParameters
 ```
-Test-AzManagementGroupDeployment -ManagementGroupId <String> -Location <String> -TemplateObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
 ```
-Test-AzManagementGroupDeployment -ManagementGroupId <String> -Location <String> -TemplateUri <String>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzManagementGroupDeployment** cmdlet determines whether a deployment template and its parameter values are valid at a management group.
+The **Get-AzDeploymentWhatIf** cmdlet gets the ARM template What-If result for a template deployment at the current subscription scope. It returns a list of changes indicating what resources will be updated if the deployment is applied without making any changes to real resources. To specify the format for the returning result, use the *ResultFormat* parameter.
 
 ## EXAMPLES
 
-### Example 1: Test deployment with a custom template and parameter file
-```
-PS C:\> Test-AzManagementGroupDeployment -ManagementGroupId "myMG" -Location "West US" -TemplateFile "D:\Azure\Templates\OrgSetup.json" -TemplateParameterFile "D:\Azure\Templates\OrgParms.json"
-```
-
-This command tests a deployment at the management group "myMG" using the given template file and parameters file.
-
-### Example 2: Test deployment with a custom template object and parameter file
-```
-PS C:\> $TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\OrgSetup.json")
-PS C:\> $TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
-PS C:\> Test-AzManagementGroupDeployment -ManagementGroupId "myMG" -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json"
+### Example 1: Get a What-If result at subscription scope
+```powershell
+PS C:\> Get-AzDeploymentWhatIf `
+    -DeploymentName "deploy-01" `
+    -Location "West US" `
+    -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" `
+    -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json" `
+    -ResultFormat "FullResourcePayloads"
 ```
 
-This command tests a deployment at the management group "myMG" using the an in-memory hashtable created from the given template file and a parameter file.
+This command gets a What-If result at the current subscription scope by using a custom template file and a parameter file on disk.
+The command uses the *Location* parameter to specify where to store the deployment data.
+The command uses the *TemplateFile* parameter to specify a template file.
+The command uses the *TemplateParameterFile* parameter to specify a template parameter file.
+The command uses the *ResultFormat* parameter to set the What-If result to include full resource payloads.
+
+### Example 2: Get a What-If result at subscription scope with ResourceIdOnly
+```powershell
+PS C:\> Get-AzDeploymentWhatIf `
+    -DeploymentName "deploy-01" `
+    -Location "West US" `
+    -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" `
+    -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json" `
+    -ResultFormat "ResourceIdOnly"
+```
+
+This command gets a What-If result at the current subscription scope by using a custom template file and a parameter file on disk.
+The command uses the *Location* parameter to specify where to store the deployment data.
+The command uses the *TemplateFile* parameter to specify a template file.
+The command uses the *TemplateParameterFile* parameter to specify a template parameter file.
+The command uses the *ResultFormat* parameter to set the What-If result to only contain resource IDs.
 
 ## PARAMETERS
 
@@ -165,15 +181,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagementGroupId
-The management group id.
+### -Name
+The name of the deployment it's going to create.
+Only valid when a template is used.
+When a template is used, if the user doesn't specify a deployment name, use the current time, like "20131223140835".
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: DeploymentName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -187,6 +205,22 @@ When set, indicates that the cmdlet should use pre-release API versions when aut
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResultFormat
+The What-If result format.
+
+```yaml
+Type: Microsoft.Azure.Management.ResourceManager.Models.WhatIfResultFormat
+Parameter Sets: (All)
+Aliases:
+Accepted values: ResourceIdOnly, FullResourcePayloads
 
 Required: False
 Position: Named
@@ -313,7 +347,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.PSWhatIfOperationResult
 
 ## NOTES
 
