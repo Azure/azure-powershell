@@ -375,7 +375,7 @@ function Test-CreateUpdateManagedInstanceWithMinimalTlsVersion
 	$location = "eastus2euap"
 	$rgName = "DejanDuVnetRG"
 	$subnetId = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/AndyPG/providers/Microsoft.Network/virtualNetworks/prepare-cl-nimilj/subnets/default"
-	$managedInstanceName = Get-ManagedInstanceName
+	$managedInstanceName = "ps123"
  	$version = "12.0"
  	$credentials = Get-ServerCredential
  	$licenseType = "BasePrice"
@@ -401,13 +401,12 @@ function Test-CreateUpdateManagedInstanceWithMinimalTlsVersion
  		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstanceName
 		Assert-AreEqual $managedInstance1.MinimalTlsVersion $tls1_2
 
-		$managedInstance2 = Set-AzSqlInstance -ResourceGroupName $rgName -Name $managedInstanceName `
-			-MinimalTlsVersion $tls1_1 
+		$managedInstance2 = Set-AzSqlInstance -MinimalTlsVersion $tls1_1 -ResourceGroupName $rgName -Name "ps123" -Force
 
 		Assert-AreEqual $managedInstance2.MinimalTlsVersion $tls1_1
 	}
 	finally
 	{
-		Remove-AzSqlInstance -ResourceGroupName $rgName -Name $$managedInstanceName -Force
+		Remove-AzSqlInstance -ResourceGroupName $rgName -Name $managedInstanceName -Force
 	}
 }
