@@ -38,26 +38,11 @@ Sets the user defined policy "policyexample" for tennat "example" in Tee "SgxEnc
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -73,7 +58,7 @@ Specifies a name of the tenant.
 This cmdlet sets the attestation policy for the tenant that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet
 Aliases:
 
@@ -89,7 +74,7 @@ This Cmdlet does not return an object by default.
 If this switch is specified, it returns true if successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +89,7 @@ Accept wildcard characters: False
 Specifies the JSON Web Token describing the policy document to set.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +104,7 @@ Accept wildcard characters: False
 Specifies the resource group name of an attestation provider.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet
 Aliases:
 
@@ -134,7 +119,7 @@ Accept wildcard characters: False
 Specifies the ResourceID of an attestation provider.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -150,11 +135,26 @@ Specifies a type of Trusted Execution Environment.
 We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VSMEnclave.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,7 +166,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

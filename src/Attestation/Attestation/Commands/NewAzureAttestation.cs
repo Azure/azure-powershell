@@ -21,6 +21,8 @@ using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Management.Attestation.Models;
 using AttestationProperties = Microsoft.Azure.Commands.Attestation.Properties;
+using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Attestation
 {
@@ -39,11 +41,12 @@ namespace Microsoft.Azure.Commands.Attestation
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage =
-                "Specifies a name for the attestation provider. The name can be any combination of letters, digits, or hyphens. The name must start and end with a letter or digit. The name must be universally unique."
+                "Specifies the attestation provider name. The name can be any combination of letters, digits, or hyphens. The name must start and end with a letter or digit. The name must be universally unique."
             )]
         [ValidateNotNullOrEmpty]
         [Alias("InstanceName")]
         public string Name { get; set; }
+        
         /// <summary>
         /// Resource group name
         /// </summary>
@@ -54,54 +57,52 @@ namespace Microsoft.Azure.Commands.Attestation
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Location
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the Azure region in which to create the attestation provider. Use the command Get-AzResourceProvider with the ProviderNamespace parameter to see your choices.")]
+        [LocationCompleter("Microsoft.Attestation/attestationProviders")]
+        [ValidateNotNullOrEmpty()]
+        public string Location { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A hash table which represents resource tags.")]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage =
-                "Specifies the name of a policy template to be configured for the attestation provider."
+                "Specifies the set of trusted signing keys for issuance policy in a single certificate file."
         )]
-        [PSArgumentCompleter("SgxDisableDebugMode", "SgxAllowDebugMode", "SgxRequireSqlServer", "SgxRequireSqlServerBogusMrSigner")]
-        public string AttestationPolicy { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage =
-                "Specifies the configuration signing keys passed in which to create the attestation."
-        )]
-        public string PolicySigningCertificateFile { get; set; }
+        public string PolicySignersCertificateFile { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Resources.CreateAttestation))
             {
-                JSONWebKeySet jsonWebKeySet = null;
-
-                if (this.PolicySigningCertificateFile != null)
+                var newServiceParameters = new AttestationCreationParameters
                 {
-                    FileInfo certFile = new FileInfo(ResolveUserPath(this.PolicySigningCertificateFile));
-
-                    if (!certFile.Exists)
-                    {
-                        throw new FileNotFoundException(string.Format(AttestationProperties.Resources.CertificateFileNotFound, this.PolicySigningCertificateFile));
-                    }
-
-                    var pem = System.IO.File.ReadAllText(certFile.FullName);
-
-                    X509Certificate2Collection certificateCollection = AttestationClient.GetX509CertificateFromPEM(pem, "CERTIFICATE");
-
-                    if (certificateCollection.Count != 0)
-                    {
-                        jsonWebKeySet = AttestationClient.GetJSONWebKeySet(certificateCollection);
-                    }                    
-                }
-                var newAttestation = AttestationClient.CreateNewAttestation(new AttestationCreationParameters()
-                {
-                    ProviderName = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
-                    AttestationPolicy = this.AttestationPolicy,
-                    PolicySigningCertificates = jsonWebKeySet
-                });
+                    ProviderName = this.Name,
+                    CreationParameters = new AttestationServiceCreationParams
+                    {
+                        Location = this.Location,
+                        Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
+                        Properties = new AttestationServiceCreationSpecificParams
+                        {
+                            AttestationPolicy = null,
+                            PolicySigningCertificates =
+                                JwksHelper.GetJwks(ResolveUserPath(this.PolicySignersCertificateFile))
+                        }
+                    }
+                };
+
+                var newAttestation = AttestationClient.CreateNewAttestation(newServiceParameters);
                 this.WriteObject(newAttestation);
             } 
         }

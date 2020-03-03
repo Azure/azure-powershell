@@ -20,8 +20,6 @@ namespace Microsoft.Azure.Commands.Attestation.Models
     {
         public string ProviderName { get; set; }
         public string ResourceGroupName { get; set; }
-        public string AttestationPolicy { get; set; }
-
-        public JSONWebKeySet PolicySigningCertificates { get; set; }
+        public AttestationServiceCreationParams CreationParameters { get; set; }
     }
 }

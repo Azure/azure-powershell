@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Commands.Tags.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -20,7 +19,7 @@ namespace Microsoft.Azure.Commands.Tags.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Tags.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Tags.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Tags.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -71,7 +70,34 @@ namespace Microsoft.Azure.Commands.Tags.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating predefined tag with value &apos;{0}&apos;.
+        /// </summary>
+        internal static string CreatePredefinedTagMessage {
+            get {
+                return ResourceManager.GetString("CreatePredefinedTagMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating or updating the entire set of tags.
+        /// </summary>
+        internal static string CreateTagMessage {
+            get {
+                return ResourceManager.GetString("CreateTagMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing tag .....
+        /// </summary>
+        internal static string RemovePredefinedTagMessage {
+            get {
+                return ResourceManager.GetString("RemovePredefinedTagMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing the entire set of tags.
         /// </summary>
         internal static string RemoveTagMessage {
             get {
@@ -94,6 +120,15 @@ namespace Microsoft.Azure.Commands.Tags.Properties {
         internal static string TagNotFoundMessage {
             get {
                 return ResourceManager.GetString("TagNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating the entire set of tags with &apos;{0}&apos; operation.
+        /// </summary>
+        internal static string UpdateTagMessage {
+            get {
+                return ResourceManager.GetString("UpdateTagMessage", resourceCulture);
             }
         }
     }
