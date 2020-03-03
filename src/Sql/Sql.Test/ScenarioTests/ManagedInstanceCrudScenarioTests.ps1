@@ -38,6 +38,7 @@ function Test-CreateManagedInstance
 	$collation = "Serbian_Cyrillic_100_CS_AS"
 	$timezoneId = "Central Europe Standard Time"
 	$proxyOverride = "Proxy"
+	$minimalTlsVersion = "1.2"
  	try
  	{
 		# Setup VNET
@@ -48,7 +49,7 @@ function Test-CreateManagedInstance
  		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -Collation $collation `
-			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -AsJob
+			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -MinimalTlsVersion $minimalTlsVersion -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -65,6 +66,7 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.TimezoneId $timezoneId
 		Assert-AreEqual $managedInstance1.PublicDataEndpointEnabled $true
 		Assert-AreEqual $managedInstance1.ProxyOverride $proxyOverride
+		Assert-AreEqual $managedInstance1.MinimalTlsVersion $minimalTlsVersion
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
         Assert-NotNull $managedInstance1.DnsZone
 
@@ -176,10 +178,11 @@ function Test-SetManagedInstance
 		$vCore = 16
 		$publicDataEndpointEnabled = $true
 		$proxyOverride = "Proxy"
+		$minimalTlsVersion = "1.2"
 
 		$managedInstance4 = Set-AzSqlInstance -ResourceId $managedInstance.Id `
 			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore `
-			-PublicDataEndpointEnabled $publicDataEndpointEnabled -ProxyOverride $proxyOverride -Force
+			-PublicDataEndpointEnabled $publicDataEndpointEnabled -ProxyOverride $proxyOverride -MinimalTlsVersion $minimalTlsVersion -Force
 
 		Assert-AreEqual $managedInstance4.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance4.AdministratorLogin $managedInstance.AdministratorLogin
@@ -188,6 +191,7 @@ function Test-SetManagedInstance
 		Assert-AreEqual $managedInstance4.StorageSizeInGB $storageSizeInGB
 		Assert-AreEqual $managedInstance4.PublicDataEndpointEnabled $publicDataEndpointEnabled
 		Assert-AreEqual $managedInstance4.ProxyOverride $proxyOverride
+		Assert-AreEqual $managedInstance4.MinimalTlsVersion $minimalTlsVersion
 		Assert-StartsWith ($managedInstance4.ManagedInstanceName + ".") $managedInstance4.FullyQualifiedDomainName
 
 		# Test hardware generation change using ComputeGeneration
