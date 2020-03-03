@@ -265,7 +265,7 @@ function Test-ManagedInstanceLongTermRetentionBackup
 
 	# drop the restored db
 	Remove-AzSqlInstanceDatabase -ResourceGroupName $resourceGroup -InstanceName $managedInstanceName -Name $restoredDatabase -Force
-	}
+}
 
 <#
 	.SYNOPSIS
@@ -283,7 +283,6 @@ function Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup
 	$locationName = "southeastasia"
 	$managedInstanceName = "seageodr-gen5-gp"
 	$databaseName = "test"
-	$databaseWithRemovableBackup = "test";
 
 	# Basic Get Tests
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
@@ -313,7 +312,7 @@ function Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup
 	# Restore Test
 	$restoredDatabase = "ps-test-rest-rg-$(New-Guid)"
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
-	$db = Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -ResourceGroupName $resourceGroup -InstanceName $managedInstanceName -TargetDatabaseName $restoredDatabase
+	$db = Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -TargetResourceGroupName $resourceGroup -TargetInstanceName $managedInstanceName -TargetInstanceDatabaseName $restoredDatabase
 	Assert-AreEqual $db.Name $restoredDatabase
 
 	# drop the restored db

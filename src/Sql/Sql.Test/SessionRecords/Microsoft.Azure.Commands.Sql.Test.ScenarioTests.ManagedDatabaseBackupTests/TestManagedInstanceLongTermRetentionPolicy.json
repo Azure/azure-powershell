@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337?api-version=2019-06-01-preview",
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/managedInstances/ps-test-mi/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337?api-version=2019-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3AvZGF0YWJhc2VzL3Rlc3QtZTE4NjUyZDAtOTlhNy00YmM3LTllYjMtNzMzYWUzZGFlMzM3P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -57,11 +57,11 @@
           "218"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337' under resource group 'cl_stage_sea_cv' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Sql/managedInstances/ps-test-mi/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337' under resource group 'ps-test-rg' was not found.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337?api-version=2019-06-01-preview",
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/managedInstances/ps-test-mi/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337?api-version=2019-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3AvZGF0YWJhc2VzL3Rlc3QtZTE4NjUyZDAtOTlhNy00YmM3LTllYjMtNzMzYWUzZGFlMzM3P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -114,11 +114,11 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"status\": \"Online\",\r\n    \"creationDate\": \"2020-03-03T06:57:55.49Z\",\r\n    \"defaultSecondaryLocation\": \"northeurope\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337\",\r\n  \"name\": \"test-e18652d0-99a7-4bc7-9eb3-733ae3dae337\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/databases\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"status\": \"Online\",\r\n    \"creationDate\": \"2020-03-03T06:57:55.49Z\",\r\n    \"defaultSecondaryLocation\": \"northeurope\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/managedInstances/ps-test-mi/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337\",\r\n  \"name\": \"test-e18652d0-99a7-4bc7-9eb3-733ae3dae337\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/databases\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp?api-version=2018-06-01-preview",
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/managedInstances/ps-test-mi?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3A/YXBpLXZlcnNpb249MjAxOC0wNi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -177,11 +177,11 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen5\",\r\n    \"tier\": \"GeneralPurpose\",\r\n    \"family\": \"Gen5\",\r\n    \"capacity\": 8\r\n  },\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"seageodr-gen5-gp.lkgt1aeda54f909eb.sqltest-eg1.mscds.com\",\r\n    \"administratorLogin\": \"cloudSA\",\r\n    \"subnetId\": \"/subscriptions/741fd0f5-9cb8-442c-91c3-3ef4ca231c2a/resourceGroups/cloudlifter/providers/Microsoft.ClassicNetwork/virtualNetworks/cloudlifter-runners-stage-sea/subnets/Gen5GeoDR\",\r\n    \"state\": \"Ready\",\r\n    \"licenseType\": \"LicenseIncluded\",\r\n    \"vCores\": 8,\r\n    \"storageSizeInGB\": 256,\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"dnsZone\": \"lkgt1aeda54f909eb\",\r\n    \"publicDataEndpointEnabled\": true,\r\n    \"proxyOverride\": \"Proxy\",\r\n    \"timezoneId\": \"UTC\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp\",\r\n  \"name\": \"seageodr-gen5-gp\",\r\n  \"type\": \"Microsoft.Sql/managedInstances\"\r\n}",
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen5\",\r\n    \"tier\": \"GeneralPurpose\",\r\n    \"family\": \"Gen5\",\r\n    \"capacity\": 8\r\n  },\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"ps-test-mi.lkgt1aeda54f909eb.sqltest-eg1.mscds.com\",\r\n    \"administratorLogin\": \"cloudSA\",\r\n    \"subnetId\": \"/subscriptions/741fd0f5-9cb8-442c-91c3-3ef4ca231c2a/resourceGroups/cloudlifter/providers/Microsoft.ClassicNetwork/virtualNetworks/cloudlifter-runners-stage-sea/subnets/Gen5GeoDR\",\r\n    \"state\": \"Ready\",\r\n    \"licenseType\": \"LicenseIncluded\",\r\n    \"vCores\": 8,\r\n    \"storageSizeInGB\": 256,\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"dnsZone\": \"lkgt1aeda54f909eb\",\r\n    \"publicDataEndpointEnabled\": true,\r\n    \"proxyOverride\": \"Proxy\",\r\n    \"timezoneId\": \"UTC\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/managedInstances/ps-test-mi\",\r\n  \"name\": \"ps-test-mi\",\r\n  \"type\": \"Microsoft.Sql/managedInstances\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337?api-version=2019-06-01-preview",
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/managedInstances/ps-test-mi/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337?api-version=2019-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3AvZGF0YWJhc2VzL3Rlc3QtZTE4NjUyZDAtOTlhNy00YmM3LTllYjMtNzMzYWUzZGFlMzM3P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"southeastasia\"\r\n}",
@@ -379,7 +379,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default?api-version=2018-06-01-preview",
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/managedInstances/ps-test-mi/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3AvZGF0YWJhc2VzL3Rlc3QtZTE4NjUyZDAtOTlhNy00YmM3LTllYjMtNzMzYWUzZGFlMzM3L2JhY2t1cExvbmdUZXJtUmV0ZW50aW9uUG9saWNpZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -438,11 +438,11 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"weeklyRetention\": \"PT0S\",\r\n    \"monthlyRetention\": \"PT0S\",\r\n    \"yearlyRetention\": \"PT0S\",\r\n    \"weekOfYear\": 0\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/databases/backupLongTermRetentionPolicy\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"weeklyRetention\": \"PT0S\",\r\n    \"monthlyRetention\": \"PT0S\",\r\n    \"yearlyRetention\": \"PT0S\",\r\n    \"weekOfYear\": 0\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/managedInstances/ps-test-mi/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/databases/backupLongTermRetentionPolicy\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default?api-version=2018-06-01-preview",
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/managedInstances/ps-test-mi/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3AvZGF0YWJhc2VzL3Rlc3QtZTE4NjUyZDAtOTlhNy00YmM3LTllYjMtNzMzYWUzZGFlMzM3L2JhY2t1cExvbmdUZXJtUmV0ZW50aW9uUG9saWNpZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -495,11 +495,11 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"weeklyRetention\": \"P1W\",\r\n    \"monthlyRetention\": \"PT0S\",\r\n    \"yearlyRetention\": \"PT0S\",\r\n    \"weekOfYear\": 0\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/databases/backupLongTermRetentionPolicy\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"weeklyRetention\": \"P1W\",\r\n    \"monthlyRetention\": \"PT0S\",\r\n    \"yearlyRetention\": \"PT0S\",\r\n    \"weekOfYear\": 0\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/managedInstances/ps-test-mi/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/databases/backupLongTermRetentionPolicy\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default?api-version=2018-06-01-preview",
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/managedInstances/ps-test-mi/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3AvZGF0YWJhc2VzL3Rlc3QtZTE4NjUyZDAtOTlhNy00YmM3LTllYjMtNzMzYWUzZGFlMzM3L2JhY2t1cExvbmdUZXJtUmV0ZW50aW9uUG9saWNpZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -558,11 +558,11 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"weeklyRetention\": \"P1W\",\r\n    \"monthlyRetention\": \"PT0S\",\r\n    \"yearlyRetention\": \"PT0S\",\r\n    \"weekOfYear\": 0\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/databases/backupLongTermRetentionPolicy\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"weeklyRetention\": \"P1W\",\r\n    \"monthlyRetention\": \"PT0S\",\r\n    \"yearlyRetention\": \"PT0S\",\r\n    \"weekOfYear\": 0\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/managedInstances/ps-test-mi/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/databases/backupLongTermRetentionPolicy\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default?api-version=2018-06-01-preview",
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/managedInstances/ps-test-mi/databases/test-e18652d0-99a7-4bc7-9eb3-733ae3dae337/backupLongTermRetentionPolicies/default?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3AvZGF0YWJhc2VzL3Rlc3QtZTE4NjUyZDAtOTlhNy00YmM3LTllYjMtNzMzYWUzZGFlMzM3L2JhY2t1cExvbmdUZXJtUmV0ZW50aW9uUG9saWNpZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"weeklyRetention\": \"P1W\",\r\n    \"weekOfYear\": 0\r\n  }\r\n}",
@@ -594,13 +594,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyOperationResults/a0624928-18b3-4696-a23f-19856493b7f5?api-version=2018-06-01-preview"
+          "https://api-dogfood.resources.windows-int.net/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyOperationResults/a0624928-18b3-4696-a23f-19856493b7f5?api-version=2018-06-01-preview"
         ],
         "Retry-After": [
           "15"
         ],
         "Azure-AsyncOperation": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyAzureAsyncOperation/a0624928-18b3-4696-a23f-19856493b7f5?api-version=2018-06-01-preview"
+          "https://api-dogfood.resources.windows-int.net/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyAzureAsyncOperation/a0624928-18b3-4696-a23f-19856493b7f5?api-version=2018-06-01-preview"
         ],
         "x-ms-request-id": [
           "a0624928-18b3-4696-a23f-19856493b7f5"
@@ -640,7 +640,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyAzureAsyncOperation/a0624928-18b3-4696-a23f-19856493b7f5?api-version=2018-06-01-preview",
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyAzureAsyncOperation/a0624928-18b3-4696-a23f-19856493b7f5?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvc291dGhlYXN0YXNpYS9tYW5hZ2VkSW5zdGFuY2VMb25nVGVybVJldGVudGlvblBvbGljeUF6dXJlQXN5bmNPcGVyYXRpb24vYTA2MjQ5MjgtMThiMy00Njk2LWEyM2YtMTk4NTY0OTNiN2Y1P2FwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -700,7 +700,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyAzureAsyncOperation/a0624928-18b3-4696-a23f-19856493b7f5?api-version=2018-06-01-preview",
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyAzureAsyncOperation/a0624928-18b3-4696-a23f-19856493b7f5?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvc291dGhlYXN0YXNpYS9tYW5hZ2VkSW5zdGFuY2VMb25nVGVybVJldGVudGlvblBvbGljeUF6dXJlQXN5bmNPcGVyYXRpb24vYTA2MjQ5MjgtMThiMy00Njk2LWEyM2YtMTk4NTY0OTNiN2Y1P2FwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -760,7 +760,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyAzureAsyncOperation/a0624928-18b3-4696-a23f-19856493b7f5?api-version=2018-06-01-preview",
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/ps-test-rg/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyAzureAsyncOperation/a0624928-18b3-4696-a23f-19856493b7f5?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvc291dGhlYXN0YXNpYS9tYW5hZ2VkSW5zdGFuY2VMb25nVGVybVJldGVudGlvblBvbGljeUF6dXJlQXN5bmNPcGVyYXRpb24vYTA2MjQ5MjgtMThiMy00Njk2LWEyM2YtMTk4NTY0OTNiN2Y1P2FwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
