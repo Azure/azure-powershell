@@ -401,7 +401,7 @@ function Test-CreateUpdateManagedInstanceWithMinimalTlsVersion
  		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstanceName
 		Assert-AreEqual $managedInstance1.MinimalTlsVersion $tls1_2
 
-		$managedInstance2 = Set-AzSqlInstance -ResourceGroupName $rgName -Name $managedInstance.ManagedInstanceName `
+		$managedInstance2 = Set-AzSqlInstance -ResourceGroupName $rgName -Name $managedInstanceName `
 			-MinimalTlsVersion $tls1_1 
 
 		Assert-AreEqual $managedInstance2.MinimalTlsVersion $tls1_1
