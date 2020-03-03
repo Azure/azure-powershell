@@ -287,24 +287,9 @@
   <data name="SelectedSubscriptionNotActive" xml:space="preserve">
     <value>Selected subscription is in '{0}' state. </value>
   </data>
-  <data name="SendFeedbackEmailQuestion" xml:space="preserve">
-    <value>Please enter your email if you are interested in providing follow up information:</value>
-  </data>
-  <data name="SendFeedbackNegativeCommentsQuestion" xml:space="preserve">
-    <value>Upon what could Azure PowerShell improve? </value>
-  </data>
   <data name="SendFeedbackNonInteractiveMessage" xml:space="preserve">
     <value>{0} must be issued in interactive mode.</value>
     <comment>{0} is nameof feedback cmdlet</comment>
-  </data>
-  <data name="SendFeedbackOutOfRangeMessage" xml:space="preserve">
-    <value>The value entered was either not convertible to an integer or out of range [0, 10].</value>
-  </data>
-  <data name="SendFeedbackPositiveCommentsQuestion" xml:space="preserve">
-    <value>What does Azure PowerShell do well?</value>
-  </data>
-  <data name="SendFeedbackRecommendationQuestion" xml:space="preserve">
-    <value>With zero (0) being the least and ten (10) being the most, how likely are you to recommend Azure PowerShell to a friend or colleague?</value>
   </data>
   <data name="SetPropertyAction" xml:space="preserve">
     <value>Setting property '{0}'='{1}'</value>
@@ -467,5 +452,20 @@
   </data>
   <data name="InvalidAzureContext" xml:space="preserve">
     <value>The context is invalid. Please login using Connect-AzAccount.</value>
+  </data>
+  <data name="ProfileFileNotAccessible" xml:space="preserve">
+    <value>Fail to access profile file and will try to use process ContextAutosaveSetting mode. Detailed error: '{0}'</value>
+  </data>
+  <data name="AzurePowerShellFeedback" xml:space="preserve">
+    <value>The Azure PowerShell team is listening, please let us know how we are doing: {0}.</value>
+  </data>
+  <data name="SendFeedbackOpenLinkAutomatically" xml:space="preserve">
+    <value>Want to provide feedback about Azure PowerShell? Take a quick survey and let us know how we are doing: {0}. Do you want to open the link? (Y/N)</value>
+  </data>
+  <data name="DefaultBrowserOpenFailure" xml:space="preserve">
+    <value>Could not open the default browser. Use a web browser to open the page {0}.</value>
+  </data>
+  <data name="SendFeedbackOpenLinkManually" xml:space="preserve">
+    <value>Use a web browser to open the page {0}.</value>
   </data>
 </root>

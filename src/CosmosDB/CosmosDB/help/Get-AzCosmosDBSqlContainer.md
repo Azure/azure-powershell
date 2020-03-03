@@ -35,15 +35,7 @@ PS C:\> Get-AzCosmosDBSqlContainer -AccountName {accountName} -ResourceGroupName
 
 Name                     : {containerName1}
 Id                       : Id
-SqlContainerGetResultsId :
-IndexingPolicy           :
-PartitionKey             :
-DefaultTtl               :
-UniqueKeyPolicy          :
-ConflictResolutionPolicy :
-_rid                     :
-_ts                      :
-_etag                    :
+Resource                 : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetPropertiesResource
 ```
 
 ## PARAMETERS
@@ -119,7 +111,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

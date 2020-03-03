@@ -54,9 +54,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string StoredProcedureNameHelpMessage = "Stored Prcodecure Name.";
         public const string UserDefinedFunctionNameHelpMessage = "User Defined Function Name.";
         public const string TriggerNameHelpMessage = "Trigger name.";
-        public const string IndexingPolicyHelpMessage = "Indexing Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlIndexingPolicy.";
-        public const string UniqueKeyPolciyHelpMessage = "UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlUniqueKeyPolicy. ";
-        public const string ConflictResolutionPolicyHelpMessage = "ConflictResolutionPolicy Object of type PSSqlConflictResolutionPolicy. ";
+        public const string SqlIndexingPolicyHelpMessage = "Indexing Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlIndexingPolicy.";
+        public const string IndexingPolicyHelpMessage = "Indexing Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSIndexingPolicy.";
+        public const string SqlUniqueKeyPolciyHelpMessage = "UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlUniqueKeyPolicy. ";
+        public const string UniqueKeyPolciyHelpMessage = "UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSUniqueKeyPolicy. ";
+        public const string SqlConflictResolutionPolicyHelpMessage = "ConflictResolutionPolicy Object of type PSSqlConflictResolutionPolicy, when provided this is set as the ConflictResolutionPolicy of the container.";
+        public const string ConflictResolutionPolicyHelpMessage = "ConflictResolutionPolicy Object of type PSConflictResolutionPolicy, when provided this is set as the ConflictResolutionPolicy of the container.";
         public const string PartitionKeyPathHelpMessage = "Partition Key Path, e.g., '/address/zipcode'.";
         public const string SqlContainerThroughputHelpMessage = "The throughput of SQL container (RU/s). Default value is 400.";
         public const string TtlInSecondsHelpMessage = "Default Ttl in seconds. If the value is missing or set to  - 1, items don’t expire. If the value is set to n, items will expire n seconds after last modified time. ";
@@ -65,14 +68,17 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string SqlContainerObjectHelpMessage = "Sql Container object.";
         public const string SqlDatabaseThroughputHelpMessage = "The throughput of SQL database (RU/s). Default value is 400.";
         public const string SqlDatabaseDetailedParamHelpMessage = "If provided then, the cmdlet returns the container with the throughput value. ";
-        public const string ConflictResolutionPolicyTypeHelpMessage = "Can have the values: LastWriterWins, Custom, Manual.";
-        public const string ConflictResolutionPolicyPathHelpMessage = "To be provided when the type is LastWriterWins.";
-        public const string ConflictResolutionPolicyStoredProcedureNameHelpMessage = "To be provided when the type is custom.";
+        public const string SqlConflictResolutionPolicyModeHelpMessage = "Can have the values: LastWriterWins, Custom, Manual. If provided along with ConflictResolutionPolicy parameter, it is ignored.";
+        public const string SqlConflictResolutionPolicyPathHelpMessage = "To be provided when the type is LastWriterWins. If provided along with ConflictResolutionPolicy parameter, it is ignored.";
+        public const string SqlConflictResolutionPolicyProcedureHelpMessage = "To be provided when the type is custom. If provided along with ConflictResolutionPolicy parameter, it is ignored.";
         public const string UniqueKeyPathHelpMessage = "Array of string of path values";
+        public const string SqlUniqueKeysHelpMessage = "Array of objects of type PSSqlUniqueKey.";
         public const string IndexingPolicyIncludedPathHelpMessage = "Array of strings containing includedPath (Specifies a path within a JSON document to be included in the Azure Cosmos DB service.) elements. ";
         public const string IndexingPolicyExcludedPathHelpMessage = "Array of strings containing excludedPath(Specifies a path within a JSON document to be excluded in the Azure Cosmos DB service.)  elements. ";
         public const string IndexingPolicyAutomaticHelpMessage = "Bool to indicate if the indexing policy is automatic";
-        public const string IndexingPolicyIndexingModeIndexHelpMessage = " indicates the indexing mode. Possible values include: 'Consistent', 'Lazy', 'None'";
+        public const string IndexingPolicyIndexingModeIndexHelpMessage = "Indicates the indexing mode. Possible values include: 'Consistent', 'Lazy', 'None'";
+        public const string IndexingPolicySpatialIndexHelpMessage = "Array of objects of type Microsoft.Azure.Commands.CosmosDB.PSSpatialSpec";
+        public const string IndexingPolicyCompositePathHelpMessage = "Array of array of objects of type Microsoft.Azure.Commands.CosmosDB.PSCompositePath";
         public const string SpatialTypeHelpMessage = "Array of strings with acceptable values: Point, LineString, Polygon, MultiPolygon. Represent’s paths spatial type.";
         public const string SpatialPathHelpMessage = "Path in JSON document to index.";
         public const string SortOrderHelpMessage = "The sort order of the CompositeIndex";
@@ -82,10 +88,68 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string StoredProcedureBodyHelpMessage = "The body of the Stored Procedure.";
         public const string UserDefinedFunctionBodyHelpMessage = "The body of the User Defined Function.";
         public const string TriggerBodyHelpMessage = "The body of the Trigger.";
-        public const string TriggerOperationHelpMessage = "The operation the trigger is associated with. Possible values include: 'All', 'Create', 'Update', 'Delete', 'Replace'. If the value is not provided, then it defaults to 'All'.";
-        public const string TriggerTypeHelpMessage = "Type of the Trigger. Possible values include: 'Pre', 'Post'. If the value is not provided, then it defaults to 'Pre'.";
+        public const string TriggerOperationHelpMessage = "The operation the trigger is associated with. Possible values include: 'All', 'Create', 'Update', 'Delete', 'Replace' ";
+        public const string TriggerTypeHelpMessage = "Type of the Trigger. Possible values include: 'Pre', 'Post'";
         public const string SqlUserDefinedFunctionObjectHelpMessage = "Sql User Defined Function Object";
         public const string SqlTriggerObjectHelpMessage = "Sql trigger Object";
         public const string SqlStoredProcedureObjectHelpMessage = "Sql Stored Procedure Object";
+        public const string IncludedPathIndexesDataTypeHelpMessage = "Datatype for which the indexing behavior is applied to. Possible values include: 'String', 'Number', 'Point', 'Polygon', 'LineString', 'MultiPolygon'";
+        public const string IncludedPathIndexesPrecisionHelpMessage = "The precision of the index. -1 is maximum precision.";
+        public const string IncludedPathIndexesKindHelpMessage = "Indicates the type of index. Possible values include: 'Hash', 'Range', 'Spatial'";
+        public const string IncludedPathHelpMessage = "The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)";
+        public const string IncludedPathIndexesHelpMessage = "List of indexes for this path";
+        public const string CompositePathHelpMessage = "The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)";
+        public const string CompositePathOrderTypeHelpMessage = " Gets or sets sort order for composite paths. Possible values include: 'Ascending', 'Descending'";
+
+        //MongoDB cmdlets help messages
+        public const string CollectionNameHelpMessage = "Collection name.";
+        public const string MongoDatabaseObjectHelpMessage = "Mongo Database object.";
+        public const string MongoCollectionObjectHelpMessage = "Sql Container object.";
+        public const string MongoCollectionDetailedParamHelpMessage = "If provided then, the cmdlet returns the collection with the corresponding throughput value.";
+        public const string MongoDatabaseDetailedParamHelpMessage = "If provided then, the cmdlet returns the database with the corresponding throughput value.";
+        public const string MongoShardKeyHelpMessage = "Sharding key path.";
+        public const string MongoIndexTtlInSeconds = "Number of seconds after which the index expires.";
+        public const string MongoIndexUnique = "Bool to indicate if the index is unique or not.";
+        public const string MongoIndexKey = "Array of key values as strings.";
+        public const string MongoIndexHelpMessage = "Array of PSMongoIndex objects.";
+        public const string MongoCollectionThroughputHelpMessage = "The throughput of Mongo collection (RU/s). Default value is 400.";
+        public const string MongoDatabaseThroughputHelpMessage = "The throughput of Mongo database (RU/s). Default value is 400.";
+
+        //Table cmdlets help messages
+        public const string TableNameHelpMessage = "Name of the Table.";
+        public const string TableThroughputHelpMessage = "The throughput of Table (RU/s). Default value is 400.";
+        public const string TableDetailedParamHelpMessage = "If provided then, the cmdlet returns the Table with the corresponding throughput value.";
+        public const string TableObjectHelpMessage = "Table Object.";
+
+        //Cassandra cmdlets help messages
+        public const string KeyspaceNameHelpMessage = "Cassandra Keyspace Name.";
+        public const string CassandraTableNameHelpMessage = "Cassandra Table Name.";
+        public const string CassandraKeyspaceDetailedParamHelpMessage = "If provided then, the cmdlet returns the Keyspace with the corresponding throughput value.";
+        public const string CassandraKeyspaceObjectHelpMessage = "Cassandra Keyspace object.";
+        public const string CassandraTableObjectHelpMessage = "Cassandra Table object.";
+        public const string CassandraTableDetailedParamHelpMessage = "If provided then, the cmdlet returns the Cassandra Table with the corresponding throughput value.";
+        public const string CassandraKeyspaceThroughputHelpMessage = "The throughput of Cassandra Keyspace (RU/s). Default value is 400.";
+        public const string CassandraTableThroughputHelpMessage = "The throughput of Cassandra Keyspace (RU/s). Default value is 400.";
+        public const string CassandraSchemaHelpMessage = "PSCassandraSchema object. Use New-AzCosmosDBCassandraSchema to create this object.";
+        public const string CassandraClusterKeyNameHelpMessage = "Name of Cassandra Cluster Key.";
+        public const string CassandraClusterKeyOrderByHelpMessage = "Ordering of Cassandra Cluster key. Possible values include: 'Asc', 'Desc'";
+        public const string CassandraColumnNameHelpMessage = "Name of Cassandra Column.";
+        public const string CassandraColumnTypeHelpMessage = "Type of Cassandra Column.";
+        public const string CassandraSchemaColumnHelpMessage = "PSColumn object.";
+        public const string CassandraSchemaPartitionKeyHelpMessage = "Array of strings containing Partition Keys.";
+        public const string CassandraSchemaClusterKeyHelpMessage = "Array of PSClusterKey objects.";
+
+        //Gremlin cmdlets help messages
+        public const string GraphNameHelpMessage = "Gremlin Graph Name.";
+        public const string GremlinDatabaseDetailedParamHelpMessage = "If provided then, the cmdlet returns the Database with the corresponding throughput value.";
+        public const string GremlinDatabaseObjectHelpMessage = "Gremlin Database object.";
+        public const string GremlinGraphObjectHelpMessage = "Gremlin Graph object.";
+        public const string GremlinGraphDetailedParamHelpMessage = "If provided then, the cmdlet returns the Gremlin Graph with the corresponding throughput value.";
+        public const string GremlinDatabaseThroughputHelpMessage = "The throughput of Gremlin Database (RU/s). Default value is 400.";
+        public const string GremlinGraphThroughputHelpMessage = "The throughput of Gremlin Graph (RU/s). Default value is 400.";
+        public const string ConflictResolutionPolicyModeHelpMessage = "Can have the values: LastWriterWins, Custom, Manual.";
+        public const string ConflictResolutionPolicyPathHelpMessage = "To be provided when the type is LastWriterWins.";
+        public const string ConflictResolutionPolicyProcedureHelpMessage = "To be provided when the type is custom.";
+        public const string UniqueKeysHelpMessage = "Array of objects of type PSUniqueKey.";
     }
 }

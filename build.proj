@@ -63,6 +63,11 @@
     <OnPremiseBuild Condition="!Exists($(OnPremiseBuildTasks))">false</OnPremiseBuild>
     <!-- CISignRepo is an environment variable that points to ci-signing repo clone -->
     <CISignRepoPath>$(CISignRepo)</CISignRepoPath>
+
+    <!-- Docker related -->
+    <DockerRoot>$(RepoRoot)docker</DockerRoot>
+    <DockerTools>$(RepoTools)Docker</DockerTools>
+    <DockerImageName Condition="'$(DockerImageName)' == ''">azure-powershell</DockerImageName>
   </PropertyGroup>
 
   <!-- Tasks -->
@@ -235,6 +240,12 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(RepoArtifacts) -InstallationPolicy Trusted &quot;" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoRoot)/setup/generate.ps1 -repository MSIcreationrepository &quot;" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot;" />
+  </Target>
+
+  <Target Name="BuildImages">
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/GetArtifacts.ps1 -Artifacts $(RepoArtifacts) -Docker $(DockerRoot) &quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/BuildImages.ps1 -DOCKER $(DockerRoot) -DockerImageName $(DockerImageName) &quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/CleanArtifacts.ps1 -Docker $(DockerRoot) &quot;" />
   </Target>
 
   <Target Name="Test">

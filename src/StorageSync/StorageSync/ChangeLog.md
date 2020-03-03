@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.3
+* Updated supported character sets in `Invoke-AzStorageSyncCompatibilityCheck`.
+
 ## Version 1.2.2
 * Update references in .psd1 to use relative path
 

@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false)]
-        [ValidateNotNullOrEmpty]
+        [AllowEmptyString]
         public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -157,6 +157,16 @@ namespace Microsoft.Azure.Commands.Compute
                         EvictionPolicy = this.VM.EvictionPolicy,
                         Priority = this.VM.Priority
                     };
+
+                    if (parameters.Host != null && string.IsNullOrWhiteSpace(parameters.Host.Id))
+                    {
+                        parameters.Host.Id = null;
+                    }
+
+                    if (parameters.ProximityPlacementGroup != null && string.IsNullOrWhiteSpace(parameters.ProximityPlacementGroup.Id))
+                    {
+                        parameters.ProximityPlacementGroup.Id = null;
+                    }
 
                     if (this.IsParameterBound(c => c.IdentityType))
                     {

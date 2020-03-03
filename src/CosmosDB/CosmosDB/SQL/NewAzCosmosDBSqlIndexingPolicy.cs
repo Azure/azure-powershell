@@ -16,22 +16,34 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlIndexingPolicy"), OutputType(typeof(PSSqlIndexingPolicy))]
     public class NewAzCosmosDBSqlIndexingPolicy : AzureCosmosDBCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.IndexingPolicyIncludedPathHelpMessage)]
-        public string[] IncludedPath { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyIncludedPathHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public PSIncludedPath[] IncludedPath { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.IndexingPolicyExcludedPathHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicySpatialIndexHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public PSSpatialSpec[] SpatialSpec { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyCompositePathHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public PSCompositePath[][] CompositePath { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyExcludedPathHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string[] ExcludedPath { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyAutomaticHelpMessage)]
         public bool? Automatic { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.IndexingPolicyIndexingModeIndexHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyIndexingModeIndexHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string IndexingMode { get; set; }
 
         public override void ExecuteCmdlet()
@@ -39,10 +51,29 @@ namespace Microsoft.Azure.Commands.CosmosDB
             PSSqlIndexingPolicy sqlIndexingPolicy = new PSSqlIndexingPolicy();
 
             if (IncludedPath != null && IncludedPath.Length > 0)
-                sqlIndexingPolicy.IncludedPaths = IncludedPath;
+            {
+                sqlIndexingPolicy.IncludedPaths = new List<PSIncludedPath>(IncludedPath);
+            }
+
 
             if (ExcludedPath != null && ExcludedPath.Length > 0)
-                sqlIndexingPolicy.ExcludedPaths = ExcludedPath;
+            {
+                sqlIndexingPolicy.ExcludedPaths = new List<PSExcludedPath>();
+                foreach (string path in ExcludedPath)
+                {
+                    sqlIndexingPolicy.ExcludedPaths.Add(new PSExcludedPath{ Path = path });
+                }
+            }
+
+            if(SpatialSpec != null)
+            {
+                sqlIndexingPolicy.SpatialIndexes = SpatialSpec;
+            }
+
+            if(CompositePath != null)
+            {
+                sqlIndexingPolicy.CompositeIndexes = CompositePath;
+            }
 
             sqlIndexingPolicy.Automatic = Automatic;
 

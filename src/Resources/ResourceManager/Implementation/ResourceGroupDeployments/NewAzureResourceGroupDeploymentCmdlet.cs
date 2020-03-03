@@ -19,6 +19,7 @@ using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Proper
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -80,6 +81,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                     var parameters = new PSDeploymentCmdletParameters()
                     {
+                        ScopeType = DeploymentScopeType.ResourceGroup,
                         ResourceGroupName = ResourceGroupName,
                         DeploymentName = Name,
                         DeploymentMode = Mode,
@@ -101,7 +103,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
                     }
-                    WriteObject(ResourceManagerSdkClient.ExecuteDeployment(parameters));
+                    WriteObject(ResourceManagerSdkClient.ExecuteResourceGroupDeployment(parameters));
                 },
                 () => this.Mode == DeploymentMode.Complete);
         }

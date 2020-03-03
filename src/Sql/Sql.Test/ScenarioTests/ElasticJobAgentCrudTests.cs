@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public ElasticJobAgentCrudTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         #region Create Tests
