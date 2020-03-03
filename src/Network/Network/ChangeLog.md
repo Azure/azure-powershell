@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added PublicNetworkAccess to New-AzSqlServer and Set-AzSqlServer
 
 ## Version 2.3.1
 * Added one extra parameter note for parameter `-EnableProxyProtocol` for `New-AzPrivateLinkService` cmdlet.
