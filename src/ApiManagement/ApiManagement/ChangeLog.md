@@ -18,27 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for retrieving and configuring Custom Domain on the DeveloperPortal Endpoint
-    https://github.com/Azure/azure-powershell/issues/11007
-
-* **Export-AzApiManagementApi** Added support for downloading Api Definition in Json format
-    https://github.com/Azure/azure-powershell/issues/9987
-
-* **Import-AzApiManagementApi** Added support for importing OpenApi 3.0 definition from Json document
-
-* **New-AzApiManagementIdentityProvider** and **Set-AzApiManagementIdentityProvider** Added support for configuring `Signin Tenant` for AAD B2C Provider
-    https://github.com/Azure/azure-powershell/issues/9784
-
+* Added support for retrieving and configuring Custom Domain on the DeveloperPortal Endpoint [#11007]
+* `Export-AzApiManagementApi` Added support for downloading Api Definition in Json format [#9987]
+* `Import-AzApiManagementApi` Added support for importing OpenApi 3.0 definition from Json document
+* `New-AzApiManagementIdentityProvider` and `Set-AzApiManagementIdentityProvider` Added support for configuring `Signin Tenant` for AAD B2C Provider [#9784]
 
 ## Version 1.3.4
-* **Get-AzApiManagementApiSchema** Fixed getting Open-Api Schema associated with an API
-    https://github.com/Azure/azure-powershell/issues/10626
-
-* **New-AzApiManagementProduct*** and **Set-AzApiManagementProduct**
-  - Fix documentation for https://github.com/Azure/azure-powershell/issues/10472
-
-* **Set-AzApiManagementApi**
-    Added example to show how to update the ServiceUrl using the cmdlet
+* `Get-AzApiManagementApiSchema` Fixed getting Open-Api Schema associated with an API [#10626]
+* `New-AzApiManagementProduct` and `Set-AzApiManagementProduct` Fixed documentation for [#10472]
+* `Set-AzApiManagementApi` Added example to show how to update the ServiceUrl using the cmdlet
 
 ## Version 1.3.3
 * Update references in .psd1 to use relative path
