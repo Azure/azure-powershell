@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public DatabaseActivationTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         [Fact]
