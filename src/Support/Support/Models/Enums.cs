@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Support.Models
     {
         Minimal,
         Moderate,
-        Critical
+        Critical,
+        HighestCriticalImpact
     }
 }
