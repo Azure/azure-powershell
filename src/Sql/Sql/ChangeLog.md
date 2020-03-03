@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.4.0
 * Added PublicNetworkAccess to New-AzSqlServer and Set-AzSqlServer
 
 ## Version 2.3.0

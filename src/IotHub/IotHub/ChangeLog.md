@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Added support to manage devices in an Iot Hub. New Cmdlets are:
 	- `Add-AzIotHubDevice`
 	- `Get-AzIotHubDevice`

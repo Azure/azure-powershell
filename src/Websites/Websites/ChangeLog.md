@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.0
 * Added Tag parameter for `New-AzAppServicePlan` and `Set-AzAppServicePlan`
 * Stop cmdlt execution if an exception is thrown when adding a custom domain to a website
 * Added support to perform operations for App Services not in the same resource group as the App Service Plan
