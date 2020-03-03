@@ -71,5 +71,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Model
         /// Gets or sets the resource id of the server
         /// </summary>
         public string ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance minimal tls version
+        /// </summary>
+        public string MinimalTlsVersion { get; set; }
     }
 }

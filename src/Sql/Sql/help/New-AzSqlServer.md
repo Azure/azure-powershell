@@ -16,7 +16,7 @@ Creates a SQL Database server.
 ```
 New-AzSqlServer -ServerName <String> -SqlAdministratorCredentials <PSCredential> -Location <String>
  [-Tags <Hashtable>] [-ServerVersion <String>] [-AssignIdentity] [-AsJob] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-MinimalTlsVersion <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,6 +162,20 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -MinimalTlsVersion
+The minimal TLS version to enforce for Sql Server
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 
 ### -Tags
 Key-value pairs in the form of a hash table. For example:
