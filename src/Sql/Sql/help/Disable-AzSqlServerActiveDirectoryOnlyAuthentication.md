@@ -8,7 +8,7 @@ schema: 2.0.0
 # Disable-AzSqlServerActiveDirectoryOnlyAuthentication
 
 ## SYNOPSIS
-Disables Azure AD only authentication for a specific SQL Server.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -18,19 +18,16 @@ Disable-AzSqlServerActiveDirectoryOnlyAuthentication [-ServerName] <String> [-Re
 ```
 
 ## DESCRIPTION
-The **Disable-AzSqlServerActiveDirectoryOnlyAuthentication** cmdlet disables Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL Server in the current subscription.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>Disable-AzSqlServerActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
-ResourceGroupName ServerName DisplayName ObjectId IsAzureADOnlyAuthentication
------------------ ---------- ----------- -------- -----------
-ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b False
+PS C:\> {{ Add example code here }}
 ```
 
-This command disables Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL server named Server01 that is associated with a resource group named ResourceGroup01.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -124,11 +121,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Remove-AzSqlServerActiveDirectoryAdministrator](./Remove-AzSqlServerActiveDirectoryAdministrator.md)
-
-[Set-AzSqlServerActiveDirectoryAdministrator](./Set-AzSqlServerActiveDirectoryAdministrator.md)
-
-[Get-AzSqlServerActiveDirectoryAdministrator](./Get-AzSqlServerActiveDirectoryAdministrator.md)
-
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
