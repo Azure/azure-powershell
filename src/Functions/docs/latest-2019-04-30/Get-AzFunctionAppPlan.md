@@ -47,23 +47,47 @@ Get function apps plans in a subscription.
 ```powershell
 PS C:\> Get-AzFunctionAppPlan
 
+Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
+----                               ---------- -------        ------- --------    -----------------                --------------
+Func99-West-Europe-Linux-Premium   Linux      ElasticPremium EP1     West Europe Func99-West-Europe-Linux-Premium fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Func99-Windows-Premium1680894595   Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Func99-Windows-Premium428118799    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Func99-Windows-Premium677505437    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Func99-Windows-Premium711892854    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Func99-Windows-Premium819994758    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
+
 ```
 
 ### Example 2: Get function apps plans by resource group name.
 ```powershell
-PS C:\> Get-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName
+PS C:\> Get-AzFunctionAppPlan -ResourceGroupName "West Europe"
+
+Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
+----                               ---------- -------        ------- --------    -----------------                --------------
+Func99-West-Europe-Linux-Premium   Linux      ElasticPremium EP1     West Europe Func99-West-Europe-Linux-Premium fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Func99-Windows-Premium1680894595   Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
 
 ```
 
 ### Example 3: Get function apps plans for the given subscriptions.
 ```powershell
-PS C:\> Get-AzFunctionAppPlan -SubscriptionId 52d8cf1b-bcac-493a-bbae-f234b5ff3889, 07308f04-ea00-494b-b320-690df74b1c07
+PS C:\> Get-AzFunctionAppPlan -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8z
+
+Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
+----                               ---------- -------        ------- --------    -----------------                --------------
+Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8z
 
 ```
 
 ### Example 4: Get function apps plans by location.
 ```powershell
 PS C:\> Get-AzFunctionAppPlan -Location "Central US"
+
+Name                               WorkerType SkuTier        SkuName Location   ResourceGroupName                SubscriptionId
+----                               ---------- -------        ------- --------   -----------------                --------------
+Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     Central US Func99-West-Europe-Win-Premium   3r16564a-d943-4bf8-8c28-cf01708c3f8b
 
 ```
 

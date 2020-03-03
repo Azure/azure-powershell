@@ -24,7 +24,7 @@ function Stop-AzFunctionApp {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite]
         [ValidateNotNullOrEmpty()]
         ${InputObject},
 
@@ -32,6 +32,10 @@ function Stop-AzFunctionApp {
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${PassThru},
+
+        [Parameter(HelpMessage='Forces the cmdlet to stop the function app without prompting for confirmation.')]
+        [System.Management.Automation.SwitchParameter]
+        ${Force},
 
         [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -82,6 +86,7 @@ function Stop-AzFunctionApp {
     
     process {
 
+        # The input object is an ISite. This needs to be transformed into a FunctionsIdentity.
         if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
         {            
             if ($PSBoundParameters.ContainsKey("InputObject"))
@@ -89,19 +94,25 @@ function Stop-AzFunctionApp {
                 $null = $PSBoundParameters.Remove("InputObject")
             }
 
-            foreach ($input in $InputObject)
-            {
-                $functionsIdentity = CreateObjectFromPipeline -InputObject $input
-                if ($functionsIdentity)
-                {
-                    $null = $PSBoundParameters.Add("InputObject", $functionsIdentity)
-                    Az.Functions.internal\Stop-AzFunctionApp @PSBoundParameters
-                }
-            }
+            $functionsIdentity = CreateFunctionsIdentity -InputObject $InputObject
+            $null = $PSBoundParameters.Add("InputObject", $functionsIdentity)
+
+            # Set the name of the function app for the ShouldProcess and ShouldContinue calls.
+            $Name = $InputObject.Name
         }
-        else
+
+        if ($PsCmdlet.ShouldProcess($Name, "Stopping function app"))
         {
-            Az.Functions.internal\Stop-AzFunctionApp @PSBoundParameters
+            if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Stop function app '$Name'?", "Stopping function app"))
+            {
+                # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
+                if ($PSBoundParameters.ContainsKey("Force"))
+                {
+                    $null = $PSBoundParameters.Remove("Force")
+                }
+
+                Az.Functions.internal\Stop-AzFunctionApp @PSBoundParameters
+            }
         }
     }
 }

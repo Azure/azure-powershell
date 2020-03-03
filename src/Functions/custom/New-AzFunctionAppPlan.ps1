@@ -58,9 +58,8 @@ function New-AzFunctionAppPlan {
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150801Preview.IResourceTags]))]
         [System.Collections.Hashtable]
-        ${Tag},  
+        ${Tag},
 
-        <#       
         [Parameter(HelpMessage='Run the command asynchronously.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
@@ -70,7 +69,6 @@ function New-AzFunctionAppPlan {
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${AsJob},
-        #>
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -85,6 +83,7 @@ function New-AzFunctionAppPlan {
         # Wait for .NET debugger to attach
         ${Break},
 
+        <#
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
@@ -98,6 +97,7 @@ function New-AzFunctionAppPlan {
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
+        #>
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
@@ -176,9 +176,9 @@ function New-AzFunctionAppPlan {
                 $errorMessage = "Location is invalid. Currently supported locations are: $locationOptions"
                 $exception = [System.InvalidOperationException]::New($errorMessage)
                 ThrowTerminatingError -ErrorId "LocationIsInvalid" `
-                                    -ErrorMessage $errorMessage `
-                                    -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                    -Exception $exception
+                                      -ErrorMessage $errorMessage `
+                                      -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                      -Exception $exception
             }
 
             $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.AppServicePlan
@@ -203,26 +203,15 @@ function New-AzFunctionAppPlan {
             # Add the service plan definition
             $null = $PSBoundParameters.Add("AppServicePlan", $servicePlan)
 
-            # Run the command with -NoWait
-            if ($PSBoundParameters.ContainsKey("NoWait"))
+            if ($PsCmdlet.ShouldProcess($Name, "Creating function app plan"))
             {
-                $null = $PSBoundParameters.Remove("NoWait")
-                Az.Functions.internal\New-AzFunctionAppPlan @PSBoundParameters
-            }
-            else
-            {
-                # Create function app plan without AsJob and NoWait params
-                $null = $PSBoundParameters.Add("ErrorAction", "Stop")
+                # Save the ErrorActionPreference
+                $currentErrorActionPreference = $ErrorActionPreference
+                $ErrorActionPreference = 'Stop'
 
                 try
                 {
-                    $createdPlan = Az.Functions.internal\New-AzFunctionAppPlan @PSBoundParameters
-
-                    if ($createdPlan)
-                    {
-                        $servicePlan.WorkerType = $WorkerType
-                        $servicePlan
-                    }
+                    Az.Functions.internal\New-AzFunctionAppPlan @PSBoundParameters
                 }
                 catch
                 {
@@ -231,14 +220,19 @@ function New-AzFunctionAppPlan {
                     {
                         $exception = [System.InvalidOperationException]::New($errorMessage)
                         ThrowTerminatingError -ErrorId "FailedToCreateFunctionAppPlan" `
-                                            -ErrorMessage $errorMessage `
-                                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                            -Exception $exception
+                                              -ErrorMessage $errorMessage `
+                                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                              -Exception $exception
                     }
 
                     throw $_
                 }
-            }           
+                finally
+                {
+                    # Reset the ErrorActionPreference
+                    $ErrorActionPreference = $currentErrorActionPreference
+                }
+            }
         }
     }
 }

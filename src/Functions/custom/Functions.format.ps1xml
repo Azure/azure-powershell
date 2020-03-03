@@ -11,8 +11,7 @@
                     <TableColumnHeader><Label>Name</Label></TableColumnHeader>
                     <TableColumnHeader><Label>Status</Label><Width>7</Width></TableColumnHeader>
                     <TableColumnHeader><Label>OSType</Label><Width>8</Width></TableColumnHeader>                    
-                    <TableColumnHeader><Label>RuntimeName</Label></TableColumnHeader>
-                    <TableColumnHeader><Label>Host</Label></TableColumnHeader>
+                    <TableColumnHeader><Label>Runtime</Label><Width>13</Width></TableColumnHeader>
                     <TableColumnHeader><Label>Location</Label></TableColumnHeader>                    
                     <TableColumnHeader><Label>AppServicePlan</Label></TableColumnHeader>
                     <TableColumnHeader><Label>ResourceGroupName</Label></TableColumnHeader>
@@ -24,8 +23,7 @@
                             <TableColumnItem><PropertyName>Name</PropertyName></TableColumnItem>
                             <TableColumnItem><PropertyName>Status</PropertyName></TableColumnItem>
                             <TableColumnItem><PropertyName>OSType</PropertyName></TableColumnItem>
-                            <TableColumnItem><PropertyName>RuntimeName</PropertyName></TableColumnItem>
-                            <TableColumnItem><PropertyName>HostVersion</PropertyName></TableColumnItem>
+                            <TableColumnItem><PropertyName>Runtime</PropertyName></TableColumnItem>
                             <TableColumnItem><PropertyName>Location</PropertyName></TableColumnItem>                            
                             <TableColumnItem><PropertyName>AppServicePlan</PropertyName></TableColumnItem>
                             <TableColumnItem><PropertyName>ResourceGroupName</PropertyName></TableColumnItem>

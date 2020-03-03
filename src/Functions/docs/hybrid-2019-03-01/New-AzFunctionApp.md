@@ -14,18 +14,29 @@ Creates a function app.
 
 ### ByAppServicePlan (Default)
 ```
-New-AzFunctionApp -OSType <String> -PlanName <String> -Runtime <String> [-ApplicationInsightsKey <String>]
- [-ApplicationInsightsName <String>] [-DisableApplicationInsights] [-Name <String>] [-PassThru]
- [-ResourceGroupName <String>] [-StorageAccountName <String>] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFunctionApp -Name <String> -PlanName <String> -ResourceGroupName <String> -Runtime <String>
+ -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
+ [-DisableApplicationInsights] [-FunctionsVersion <String>] [-OSType <String>] [-PassThru]
+ [-RuntimeVersion <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Consumption
 ```
-New-AzFunctionApp -Location <String> -Name <String> -ResourceGroupName <String> -StorageAccountName <String>
- [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>] [-DisableApplicationInsights]
- [-OSType <String>] [-PassThru] [-Runtime <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+New-AzFunctionApp -Location <String> -Name <String> -ResourceGroupName <String> -Runtime <String>
+ -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
+ [-DisableApplicationInsights] [-FunctionsVersion <String>] [-OSType <String>] [-PassThru]
+ [-RuntimeVersion <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CustomDockerImage
+```
+New-AzFunctionApp -DockerImageName <String> -Name <String> -PlanName <String> -ResourceGroupName <String>
+ -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
+ [-DisableApplicationInsights] [-DockerRegistryCredential <PSCredential>] [-PassThru]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,6 +96,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -AsJob
+Runs the cmdlet as a background job.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DefaultProfile
 
 
@@ -109,6 +136,57 @@ No logs will be available.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: DisableAppInsights
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DockerImageName
+Linux only.
+Container image name from Docker Hub, e.g.
+publisher/image-name:tag.
+
+```yaml
+Type: System.String
+Parameter Sets: CustomDockerImage
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DockerRegistryCredential
+The container registry user name and password.
+Required for private registries.
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: CustomDockerImage
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -FunctionsVersion
+The Functions version.
+
+```yaml
+Type: System.String
+Parameter Sets: ByAppServicePlan, Consumption
+Aliases:
 
 Required: False
 Position: Named
@@ -150,15 +228,32 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Starts the operation and returns immediately, before the operation is completed.
+In order to determine if the operation has successfully been completed, use some other mechanism.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -OSType
 The OS to host the function app.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByAppServicePlan, Consumption
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -187,7 +282,7 @@ The name of the service plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByAppServicePlan
+Parameter Sets: ByAppServicePlan, CustomDockerImage
 Aliases:
 
 Required: True
@@ -219,10 +314,26 @@ The function runtime.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByAppServicePlan, Consumption
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -RuntimeVersion
+The function runtime.
+
+```yaml
+Type: System.String
+Parameter Sets: ByAppServicePlan, Consumption
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
