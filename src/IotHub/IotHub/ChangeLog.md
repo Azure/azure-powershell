@@ -33,7 +33,13 @@
 * Add support to get/set parent device of an IoT device. New Cmdlets are:
     - Get-AzIotHubDeviceParent
     - Set-AzIotHubDeviceParent
-* Add support to manage device parent-child relationship.
+* Add support to manage device parent-child relationship. New Cmdlets are:
+    - Add-AzIotHubDeviceChildren
+    - Get-AzIotHubDeviceChildren
+    - Remove-AzIotHubDeviceChildren
+* Add support to manage distributed settings per-device. New Cmdlets are:
+    - Get-AzIotHubDistributedTracing
+    - Set-AzIotHubDistributedTracing
 
 ## Version 2.1.0
 * Added support to manage devices in an Iot Hub. New Cmdlets are:

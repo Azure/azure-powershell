@@ -20,13 +20,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Devices;
+    using Microsoft.Azure.Devices.Shared;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubDeviceParent", DefaultParameterSetName = ResourceParameterSet)]
-    [OutputType(typeof(PSDevice))]
-    public class GetAzIotHubDeviceParent : IotHubBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubDistributedTracing", DefaultParameterSetName = ResourceParameterSet)]
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubTracing")]
+    [OutputType(typeof(PSDeviceTracing))]
+    public class GetAzIotHubDistributedTracing : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -50,9 +52,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string IotHubName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Id of non-edge device.")]
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Id of non-edge device.")]
-        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Id of non-edge device.")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Target Device Id.")]
+        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Target Device Id.")]
         [ValidateNotNullOrEmpty]
         public string DeviceId { get; set; }
 
@@ -77,25 +79,20 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             }
 
             IEnumerable<SharedAccessSignatureAuthorizationRule> authPolicies = this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.IotHubName);
-            SharedAccessSignatureAuthorizationRule policy = IotHubUtils.GetPolicy(authPolicies, PSAccessRights.RegistryRead);
+            SharedAccessSignatureAuthorizationRule policy = IotHubUtils.GetPolicy(authPolicies, PSAccessRights.RegistryWrite);
             PSIotHubConnectionString psIotHubConnectionString = IotHubUtils.ToPSIotHubConnectionString(policy, iotHubDescription.Properties.HostName);
             RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);
 
-            Device childDevice = registryManager.GetDeviceAsync(this.DeviceId).GetAwaiter().GetResult();
-            
-            if (childDevice.Capabilities.IotEdge)
+            Twin deviceTwin = registryManager.GetTwinAsync(this.DeviceId).GetAwaiter().GetResult();
+
+            if (deviceTwin == null)
             {
-                throw new ArgumentException($"The entered device \"{this.DeviceId}\" should be non-edge device.");
+                throw new ArgumentException($"The entered non-edge device \"{this.DeviceId}\" doesn't exist.");
             }
 
-            if (string.IsNullOrEmpty(childDevice.Scope))
-            {
-                throw new ArgumentException($"The entered device \"{this.DeviceId}\" doesn\'t support parent device functionality.");
-            }
-            
-            string parentDeviceId = childDevice.Scope.Substring(IotHubDataPlaneUtils.DEVICE_DEVICESCOPE_PREFIX.Length, childDevice.Scope.LastIndexOf("-") - IotHubDataPlaneUtils.DEVICE_DEVICESCOPE_PREFIX.Length);
-            
-            this.WriteObject(IotHubDataPlaneUtils.ToPSDevice(registryManager.GetDeviceAsync(parentDeviceId).GetAwaiter().GetResult()));
+            IotHubDataPlaneUtils.Validate_Device_Tracing(this.DeviceId, iotHubDescription.Sku.Tier.Value.ToString(), iotHubDescription.Location, deviceTwin.Capabilities.IotEdge);
+
+            this.WriteObject(IotHubDataPlaneUtils.GetDeviceTracing(this.DeviceId, deviceTwin));
         }
     }
 }

@@ -62,6 +62,9 @@ Get the connection string of a target IoT device in an Iot Hub.
 ### [Get-AzIotHubDeviceParent](Get-AzIotHubDeviceParent.md)
 Get the parent device of the specified device.
 
+### [Get-AzIotHubDistributedTracing](Get-AzIotHubDistributedTracing.md)
+Get the distributed tracing settings for a device.
+
 ### [Get-AzIotHubEventHubConsumerGroup](Get-AzIotHubEventHubConsumerGroup.md)
 Gets all the eventhub consumergroups.
 
@@ -148,6 +151,9 @@ Update an IoT Hub device.
 
 ### [Set-AzIotHubDeviceParent](Set-AzIotHubDeviceParent.md)
 Set the parent device of the specified device.
+
+### [Set-AzIotHubDistributedTracing](Set-AzIotHubDistributedTracing.md)
+Update the distributed tracing options for a device.
 
 ### [Set-AzIotHubMessageEnrichment](Set-AzIotHubMessageEnrichment.md)
 Update a message enrichment in your IoT hub.
