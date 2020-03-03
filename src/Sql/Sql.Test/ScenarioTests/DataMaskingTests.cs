@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         public DataMaskingTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         [Fact]
