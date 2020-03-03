@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             HelpMessage = "The name of the Managed Instance the backup is under.")]
         [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string ManagedInstanceName { get; set; }
+        public string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database.
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         {
             return ModelAdapter.GetManagedDatabaseLongTermRetentionBackups(
                 Location,
-                ManagedInstanceName,
+                InstanceName,
                 DatabaseName,
                 BackupName,
                 ResourceGroupName,
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         protected override IEnumerable<AzureSqlManagedDatabaseLongTermRetentionBackupModel> PersistChanges(
             IEnumerable<AzureSqlManagedDatabaseLongTermRetentionBackupModel> entity)
         {
-            ModelAdapter.RemoveManagedDatabaseLongTermRetentionBackup(Location, ManagedInstanceName, DatabaseName, BackupName, ResourceGroupName);
+            ModelAdapter.RemoveManagedDatabaseLongTermRetentionBackup(Location, InstanceName, DatabaseName, BackupName, ResourceGroupName);
             return entity;
         }
 
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             if (InputObject != null)
             {
                 Location = InputObject.Location;
-                ManagedInstanceName = InputObject.ManagedInstanceName;
+                InstanceName = InputObject.ManagedInstanceName;
                 DatabaseName = InputObject.DatabaseName;
                 BackupName = InputObject.BackupName;
                 ResourceGroupName = InputObject.ResourceGroupName;
@@ -193,8 +193,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             if (ShouldProcess(this.BackupName))
             {
                 if (Force.IsPresent || ShouldContinue(
-                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription, this.BackupName, this.DatabaseName, this.ManagedInstanceName, this.Location),
-                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning, this.BackupName, this.DatabaseName, this.ManagedInstanceName, this.Location)))
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription, this.BackupName, this.DatabaseName, this.InstanceName, this.Location),
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning, this.BackupName, this.DatabaseName, this.InstanceName, this.Location)))
                 {
                     base.ExecuteCmdlet();
                 }
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
                 }
 
                 Location = tokens[5 + offset];
-                ManagedInstanceName = tokens[7 + offset];
+                InstanceName = tokens[7 + offset];
                 DatabaseName = tokens[9 + offset];
                 BackupName = tokens[11 + offset];
             }

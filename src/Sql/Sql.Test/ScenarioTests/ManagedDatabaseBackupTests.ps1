@@ -181,21 +181,19 @@ function Test-ManagedDeletedDatabaseShortTermRetentionPolicy
 function Test-ManagedInstanceLongTermRetentionPolicy($location = "southeastasia")
 {
 	# Setup
-	$resourceGroup = Create-ResourceGroupForTest
-	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$managedInstance = Create-ManagedInstanceForTest
-	$managedInstanceName = $managedInstance.ManagedInstanceName
+	$resourceGroupName = "cl_stage_sea_cv"
+	$managedInstanceName = "seageodr-gen5-gp"
 	$weeklyRetention = "P1W"
 	$zeroRetention = "PT0S"
 
 	try
 	{
 		# create test database
-		$databaseName = "test_ltr_policy_database"
-		$database = New-AzSqlInstanceDatabase -ResourceGroupName $resourceGroupName -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName
+		$databaseName = "test-$(New-Guid)"
+		$database = New-AzSqlInstanceDatabase -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -Name $databaseName
 
-		Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention
-		$policy = Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention
+		$policy = Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName
 		Assert-AreEqual $policy.WeeklyRetention $weeklyRetention
 		Assert-AreEqual $policy.MonthlyRetention $zeroRetention
 		Assert-AreEqual $policy.YearlyRetention $zeroRetention
@@ -218,53 +216,56 @@ function Test-ManagedInstanceLongTermRetentionBackup
 	# Set the weekly retention on the database so that the first backup gets picked up, for example:
 	# Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
-	# Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ManagedinstanceName $managedInstanceName -DatabaeName $databaseName
+	# Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaeName $databaseName
 	$resourceGroup = "cl_stage_sea_cv"
 	$locationName = "southeastasia"
 	$managedInstanceName = "seageodr-gen5-gp"
-	$databaseName = "test"
-	$weeklyRetention1 = "P1W"
-	$weeklyRetention2 = "P2W"
-	$restoredDatabase = "ps_test_restore"
-	$databaseWithRemovableBackup = "target1";
+	$databaseName = "target1"
+	$databaseWithRemovableBackup = "sqlcrudtest-8305";
 
 	# Basic Get Tests
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName
 	Assert-AreNotEqual $backups.Count 0
-	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ManagedInstanceName $managedInstanceName
+	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName
 	Assert-AreNotEqual $backups.Count 0
-	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName
+	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseName
 	Assert-AreNotEqual $backups.Count 0
-	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName -BackupName $backups[0].BackupName
+	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseName -BackupName $backups[0].BackupName
 	Assert-AreNotEqual $backups.Count 0
 
 	# Test Get Piping
-	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName | Get-AzSqlInstanceDatabaseLongTermRetentionBackup
+	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -InstanceName $managedInstanceName -Name $databaseName | Get-AzSqlInstanceDatabaseLongTermRetentionBackup
 	Assert-AreNotEqual $backups.Count 0
-	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName | Get-AzSqlInstanceDatabaseLongTermRetentionBackup -BackupName $backups[0].BackupName
+	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -InstanceName $managedInstanceName -Name $databaseName | Get-AzSqlInstanceDatabaseLongTermRetentionBackup -BackupName $backups[0].BackupName
 	Assert-AreNotEqual $backups.Count 0
 
 	# Test Get Optional Parameters
-	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName -OnlyLatestPerDatabase -DatabaseState All
+	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseName -OnlyLatestPerDatabase
+	Assert-AreNotEqual $backups.Count 0
+	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -OnlyLatestPerDatabase -DatabaseState All
 	Assert-AreNotEqual $backups.Count 0
 
 	# Test Get Piping with Optional Parameters
-	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName | Get-AzSqlInstanceDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
+	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -InstanceName $managedInstanceName -Name $databaseName | Get-AzSqlInstanceDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
 	Assert-AreNotEqual $backups.Count 0
 
 	# Restore Test
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName
-	$db = Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -ResourceGroupName $resourceGroup -ManagedInstanceName $managedInstanceName -TargetDatabaseName $restoredDatabase
-	Assert-AreEqual $db.DatabaseName $restoredDatabase
+	$restoredDatabase = "ps-test-restore-$(New-Guid)"
+	$db = Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -TargetResourceGroupName $resourceGroup -TargetInstanceName $managedInstanceName -TargetInstanceDatabaseName $restoredDatabase
+	Assert-AreEqual $db.Name $restoredDatabase
 
-	# Test Remove with Piping
-	Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ManagedInstanceName $serverName -DatabaseName $databaseWithRemovableBackup -BackupName $backups[0].BackupName | Remove-AzSqlInstanceDatabaseLongTermRetentionBackup
-	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -ManagedInstanceName $managedInstanceName -DatabaseName $databaseWithRemovableBackup | Get-AzSqlInstanceDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
-	Assert-AreEqual $backups.Count 0
+	# Test Remove
+	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithRemovableBackup
+	$initialBackups = $backups.Count
+	Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithRemovableBackup -BackupName $backups[0].BackupName -Force
+	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -InstanceName $managedInstanceName -Name $databaseWithRemovableBackup | Get-AzSqlInstanceDatabaseLongTermRetentionBackup
+	$expectedBackups = $initialBackups-1
+	Assert-AreEqual $expectedBackups $backups.Count
 
 	# drop the restored db
-	Remove-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -ManagedInstanceName $managedInstanceName -DatabaseName $restoredDatabase
-}
+	Remove-AzSqlInstanceDatabase -ResourceGroupName $resourceGroup -InstanceName $managedInstanceName -Name $restoredDatabase -Force
+	}
 
 <#
 	.SYNOPSIS
@@ -282,42 +283,40 @@ function Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup
 	$locationName = "southeastasia"
 	$managedInstanceName = "seageodr-gen5-gp"
 	$databaseName = "test"
-	$restoredDatabase = "ps_test_restore_rg"
 	$databaseWithRemovableBackup = "test";
 
 	# Basic Get Tests
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
 	Assert-AreNotEqual $backups.Count 0
-	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ManagedInstanceName $managedInstanceName -ResourceGroupName $resourceGroup
+	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -ResourceGroupName $resourceGroup
 	Assert-AreNotEqual $backups.Count 0
-	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName -ResourceGroupName $resourceGroup
+	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseName -ResourceGroupName $resourceGroup
 	Assert-AreNotEqual $backups.Count 0
-	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName -BackupName $backups[0].BackupName -ResourceGroupName $resourceGroup
+	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseName -BackupName $backups[0].BackupName -ResourceGroupName $resourceGroup
 	Assert-AreNotEqual $backups.Count 0
 
 	# Test Get Piping
-	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName | Get-AzSqlInstanceDatabaseLongTermRetentionBackup
+	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -InstanceName $managedInstanceName -Name $databaseName | Get-AzSqlInstanceDatabaseLongTermRetentionBackup
 	Assert-AreNotEqual $backups.Count 0
-	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName | Get-AzSqlInstanceDatabaseLongTermRetentionBackup -BackupName $backups[0].BackupName
+	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -InstanceName $managedInstanceName -Name $databaseName | Get-AzSqlInstanceDatabaseLongTermRetentionBackup -BackupName $backups[0].BackupName
 	Assert-AreNotEqual $backups.Count 0
 
 	# Test Get Optional Parameters
-	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName -ResourceGroupName $resourceGroup -OnlyLatestPerDatabase -DatabaseState All
+	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseName -ResourceGroupName $resourceGroup -OnlyLatestPerDatabase
+	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -ResourceGroupName $resourceGroup -DatabaseState All
 	Assert-AreNotEqual $backups.Count 0
 
 	# Test Get Piping with Optional Parameters
-	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -ManagedInstanceName $managedInstanceName -DatabaseName $databaseName | Get-AzSqlInstanceDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
+	$backups = Get-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -InstanceName $managedInstanceName -Name $databaseName | Get-AzSqlInstanceDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
 	Assert-AreNotEqual $backups.Count 0
 
 	# Restore Test
+	$restoredDatabase = "ps-test-rest-rg-$(New-Guid)"
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
-	$db = Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -ResourceGroupName $resourceGroup -ManagedInstanceName $managedInstanceName -TargetDatabaseName $restoredDatabase
-	Assert-AreEqual $db.DatabaseName $restoredDatabase
-
-	# Test Remove with Piping
-	Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ManagedInstanceName $managedInstanceName -DatabaseName $databaseWithRemovableBackup -BackupName $backups[0].BackupName -ResourceGroupName $resourceGroup | Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -Force
+	$db = Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -ResourceGroupName $resourceGroup -InstanceName $managedInstanceName -TargetDatabaseName $restoredDatabase
+	Assert-AreEqual $db.Name $restoredDatabase
 
 	# drop the restored db
-	Remove-AzSqlInstanceDatabase -ResourceGroup $resourceGroup -ManagedInstanceName $managedInstanceName -DatabaseName $restoredDatabase -Force
+	Remove-AzSqlInstanceDatabase -ResourceGroupName $resourceGroup -InstanceName $managedInstanceName -Name $restoredDatabase -Force
 }
 

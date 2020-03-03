@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             {
                 ModelAdapter.GetManagedDatabaseLongTermRetentionPolicy(
                     this.ResourceGroupName,
-                    this.ManagedInstanceName,
+                    this.InstanceName,
                     this.DatabaseName)
             };
         }

@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet,
             Mandatory = true,
             HelpMessage = "The resource id of instance database object to restore")]
-        [Parameter(ParameterSetName =LtrBackupRestoreFromInputParametersSet,
+        [Parameter(ParameterSetName = LtrBackupRestoreFromInputParametersSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
@@ -404,7 +404,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             HelpMessage = "The name of the target resource group to restore to.")]
         [Parameter(ParameterSetName = LtrBackupRestoreFromInputParametersSet,
             Mandatory = true,
-            Position = 0,
             HelpMessage = "The name of the target resource group to restore to.")]
         [ResourceGroupCompleter]
         public string TargetResourceGroupName { get; set; }

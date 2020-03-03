@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             {
                 ModelAdapter.GetManagedDatabaseLongTermRetentionPolicy(
                     this.ResourceGroupName,
-                    this.ManagedInstanceName,
+                    this.InstanceName,
                     this.DatabaseName)
             };
         }
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
                 new AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel()
                 {
                     ResourceGroupName = ResourceGroupName,
-                    ManagedInstanceName = ManagedInstanceName,
+                    ManagedInstanceName = InstanceName,
                     DatabaseName = DatabaseName,
                     Location = model.FirstOrDefault().Location,
                     WeeklyRetention = WeeklyRetention,
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             if (ShouldProcess(DatabaseName))
             {
                 return new List<AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel>() {
-                    ModelAdapter.SetManagedDatabaseBackupLongTermRetentionPolicy(this.ResourceGroupName, this.ManagedInstanceName, this.DatabaseName, entity.First())
+                    ModelAdapter.SetManagedDatabaseBackupLongTermRetentionPolicy(this.ResourceGroupName, this.InstanceName, this.DatabaseName, entity.First())
                 };
             }
             else
