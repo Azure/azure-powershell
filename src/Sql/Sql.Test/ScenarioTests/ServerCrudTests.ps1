@@ -28,18 +28,20 @@ function Test-CreateServer
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$minimalTlsVersion = "1.2"
 
 	try
 	{
 		# With all parameters
 		$job = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName `
-			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -AsJob
+			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -MinimalTlsVersion $minimalTlsVersion -AsJob
 		$job | Wait-Job
 		$server1 = $job.Output
 
 		Assert-AreEqual $server1.ServerName $serverName
 		Assert-AreEqual $server1.ServerVersion $version
 		Assert-AreEqual $server1.SqlAdministratorLogin $serverLogin
+		Assert-AreEqual $server1.MinimalTlsVersion $minimalTlsVersion
 		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
 	}
 	finally
