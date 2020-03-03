@@ -199,7 +199,6 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-                    this.VirtualHubClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ParentResourceName, )
                     this.CreateOrUpdateVirtualHub(this.ResourceGroupName, this.ParentResourceName, parentVirtualHub, parentVirtualHub.Tag);
                     var createdVirtualHub = this.GetVirtualHub(this.ResourceGroupName, this.ParentResourceName);
 
