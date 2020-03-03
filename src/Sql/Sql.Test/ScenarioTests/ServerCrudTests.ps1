@@ -33,7 +33,7 @@ function Test-CreateServer
 	{
 		# With all parameters
 		$job = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName `
-			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -MinimalTlsVersion $minimalTlsVersion -AsJob
+			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -AsJob
 		$job | Wait-Job
 		$server1 = $job.Output
 
