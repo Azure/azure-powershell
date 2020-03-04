@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added PublicNetworkAccess to New-AzSqlServer and Set-AzSqlServer
-* Added support for Long Term Retention services for Managed instances
+* Added support for Long Term Retention backup configuration for Managed Databases
     - Get/Set LTR policy on a managed database 
     - Get LTR backup(s) by managed database, managed instance, or by location 
     - Remove an LTR backup 
@@ -27,7 +27,6 @@
 
 ## Version 2.3.0
 * Added support for cross subscription point in time restore on Managed Instances.
-* Add support for changing existing Sql Managed Instance hardware generation
 * Added support for changing existing Sql Managed Instance hardware generation
 * Fixed `Update-AzSqlServerVulnerabilityAssessmentSetting` help examples: parameter/property output - EmailAdmins
 

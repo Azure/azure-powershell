@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a managed database's long term retention policy
 
 ## SYNTAX
 
@@ -19,16 +19,27 @@ Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy [-InstanceName] <String> 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy** cmdlet gets the long term retention policy registered to this managed database.
+The policy is an Azure Backup resource used to define backup storage policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName cl_stage_sea_cv -InstanceName seageodr-gen5-gp -DatabaseName test
+
+
+ResourceGroupName   : cl_stage_sea_cv
+ManagedInstanceName : seageodr-gen5-gp
+DatabaseName        : test
+WeeklyRetention     : P2W
+MonthlyRetention    : PT0S
+YearlyRetention     : PT0S
+WeekOfYear          : 0
+Location            :
 ```
 
-{{ Add example description here }}
+This command gets the current version of the long term retention policy for database01
 
 ## PARAMETERS
 
@@ -137,3 +148,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzSqlInstanceDatabaseLongTermRetentionBackup](./Get-AzSqlInstanceDatabaseLongTermRetentionBackup.md)
+
+[Remove-AzSqlInstanceDatabaseLongTermRetentionBackup](./Remove-AzSqlInstanceDatabaseLongTermRetentionBackup.md)
+
+[Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](./Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
+
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
