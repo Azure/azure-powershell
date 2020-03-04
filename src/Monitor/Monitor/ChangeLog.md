@@ -21,7 +21,7 @@
 * Fixed description of the Get-AzLog cmdlet.
 * A new parameter called ActionGroupId was added to `New-AzMetricAlertRuleV2` command.
 	- The user can provide either ActionGroupId(string) or ActionGorup(ActivityLogAlertActionGroup).
-*Fix output value for Get-AzMetricDefinition
+* Fix output value for Get-AzMetricDefinition
 
 ## Version 1.5.0
 * Update references in .psd1 to use relative path
