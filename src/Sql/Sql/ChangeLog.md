@@ -20,6 +20,11 @@
 ## Upcoming Release
 * Added support for cross subscription point in time restore on Managed Instances.
 * Add support for changing existing Sql Managed Instance hardware generation
+* Added support for Long Term Retention services for Managed instances
+    - Get/Set LTR policy on a managed database 
+    - Get LTR backup(s) by managed database, managed instance, or by location 
+    - Remove an LTR backup 
+    - Restore an LTR backup to create a new managed database
 
 ## Version 2.2.0
 Fix New-AzSqlDatabaseSecondary cmdlet to check for PartnerDatabaseName existence instead of DatabaseName existence.
