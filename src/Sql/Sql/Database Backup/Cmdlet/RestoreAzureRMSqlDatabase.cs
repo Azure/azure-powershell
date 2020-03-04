@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(
             ParameterSetName = FromLongTermRetentionBackupWithVcoreSetName,
             Mandatory = true,
-            HelpMessage = "Restore from a long term retention backup backup.")]
+            HelpMessage = "Restore from a long term retention backup.")]
         public SwitchParameter FromLongTermRetentionBackup { get; set; }
 
         /// <summary>
