@@ -21,6 +21,7 @@
 * Added PublicNetworkAccess to New-AzSqlServer and Set-AzSqlServer
 * Added MinimalTlsVersion to New-AzSqlServer and Set-AzSqlServer
 * Added MinimalTlsVersion to New-AzSqlInstance and Set-AzSqlInstance
+* Bumped SQL SDK version for Az.Network
 
 ## Version 2.3.0
 * Added support for cross subscription point in time restore on Managed Instances.
