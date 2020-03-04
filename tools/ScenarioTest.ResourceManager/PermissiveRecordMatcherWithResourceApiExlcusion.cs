@@ -167,6 +167,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 // If we're looking at a specific provider and we have top level resource from this provider to ignore
                 foreach (var resourceToIgnore in resourcesToIgnore)
                 {
+                    if (requestUri.Contains("/databases") &&
+                        requestUri.Contains("/providers/Microsoft.Sql/managedInstances/"))
+                    {
+                        apiVersion = String.Empty;
+                        return true;
+                    }
+
                     string[] segments = requestUri.Split(new char[] { '/' }, options: StringSplitOptions.RemoveEmptyEntries);
 
                     // /subscriptions/.../resourceGroups/.../providers/Microsoft.X/resourceType...?api-version=Y
