@@ -224,8 +224,8 @@ function Test-ManagedInstanceLongTermRetentionBackup
 	$resourceGroup = "cl_stage_sea_cv"
 	$locationName = "southeastasia"
 	$managedInstanceName = "seageodr-gen5-gp"
-	$databaseName = "target1"
-	$databaseWithRemovableBackup = "test";
+	$databaseName = "ps-test-1"
+	$databaseWithRemovableBackup = "ps-test-2";
 
 	# Basic Get Tests
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName
@@ -249,7 +249,7 @@ function Test-ManagedInstanceLongTermRetentionBackup
 
 	# Restore Test
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName
-	$restoredDatabase = "ps-test-restore-1"
+	$restoredDatabase = "ps-test-restore-2"
 	$db = Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -TargetResourceGroupName $resourceGroup -TargetInstanceName $managedInstanceName -TargetInstanceDatabaseName $restoredDatabase
 	Assert-AreEqual $db.Name $restoredDatabase
 
@@ -280,7 +280,7 @@ function Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup
 	$resourceGroup = "cl_stage_sea_cv"
 	$locationName = "southeastasia"
 	$managedInstanceName = "seageodr-gen5-gp"
-	$databaseName = "test"
+	$databaseName = "ps-test-3"
 
 	# Basic Get Tests
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
@@ -308,7 +308,7 @@ function Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup
 	Assert-AreNotEqual $backups.Count 0
 
 	# Restore Test
-	$restoredDatabase = "ps-test-restore-with-rg-1"
+	$restoredDatabase = "ps-test-restore-with-rg-2"
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
 	$db = Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -TargetResourceGroupName $resourceGroup -TargetInstanceName $managedInstanceName -TargetInstanceDatabaseName $restoredDatabase
 	Assert-AreEqual $db.Name $restoredDatabase
