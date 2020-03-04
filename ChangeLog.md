@@ -48,7 +48,7 @@
 * Brought ScopedDeployment from SDK 3.3.0 
 
 #### Az.Sql
-* Added PublicNetworkAccess to New-AzSqlServer and Set-AzSqlServer
+* Added PublicNetworkAccess to `New-AzSqlServer` and `Set-AzSqlServer`
 
 #### Az.Storage
 * Supported AllowProtectedAppendWrite in ImmutabilityPolicy

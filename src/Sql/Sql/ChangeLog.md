@@ -20,7 +20,7 @@
 ## Upcoming Release
 
 ## Version 2.4.0
-* Added PublicNetworkAccess to New-AzSqlServer and Set-AzSqlServer
+* Added PublicNetworkAccess to `New-AzSqlServer` and `Set-AzSqlServer`
 
 ## Version 2.3.0
 * Added support for cross subscription point in time restore on Managed Instances.
