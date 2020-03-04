@@ -62,14 +62,14 @@ Converts a vulnerability assessment scan results to Excel format.
 ### [Convert-AzSqlInstanceDatabaseVulnerabilityAssessmentScan](Convert-AzSqlInstanceDatabaseVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
 
-### [Disable-AzSqlDatabaseSensitivityRecommendation](Disable-AzSqlDatabaseSensitivityRecommendation)
-Disables sensitivity recommendations on columns in the database.
+### [Disable-AzSqlDatabaseSensitivityRecommendation](Disable-AzSqlDatabaseSensitivityRecommendation.md)
+Disables (dismisses) sensitivity recommendations on columns in the database.
 
 ### [Disable-AzSqlInstanceAdvancedDataSecurity](Disable-AzSqlInstanceAdvancedDataSecurity.md)
 Disables Advanced Data Security on a managed instance.
 
-### [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](Disable-AzSqlInstanceDatabaseSensitivityRecommendation)
-Disbles sensitivity recommendations on columns in the Azure SQL managed instance database.
+### [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](Disable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
+Disables (dismisses) sensitivity recommendations on columns in the Azure SQL managed instance database.
 
 ### [Disable-AzSqlServerAdvancedDataSecurity](Disable-AzSqlServerAdvancedDataSecurity.md)
 Disables Advanced Data Security on a server.
@@ -77,14 +77,14 @@ Disables Advanced Data Security on a server.
 ### [Disable-AzSqlServerAdvancedThreatProtection](Disable-AzSqlServerAdvancedThreatProtection.md)
 Disables Advanced Threat Protection on a server.
 
-### [Enable-AzSqlDatabaseSensitivityRecommendation](Enable-AzSqlDatabaseSensitivityRecommendation)
-Enables sensitivity recommendations on columns in the database.
+### [Enable-AzSqlDatabaseSensitivityRecommendation](Enable-AzSqlDatabaseSensitivityRecommendation.md)
+Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the database.
 
 ### [Enable-AzSqlInstanceAdvancedDataSecurity](Enable-AzSqlInstanceAdvancedDataSecurity.md)
 Enables Advanced Data Security on a managed instance.
 
-### [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](Enable-AzSqlInstanceDatabaseSensitivityRecommendation)
-Enables sensitivity recommendations on columns in the Azure SQL managed instance database.
+### [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](Enable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
+Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the Azure SQL managed instance database.
 
 ### [Enable-AzSqlServerAdvancedDataSecurity](Enable-AzSqlServerAdvancedDataSecurity.md)
 Enables Advanced Data Security on a server.
@@ -108,11 +108,6 @@ Gets the advanced threat protection settings for a database.
 Gets one or more Advisors for an Azure SQL Database.
 
 ### [Get-AzSqlDatabaseAudit](Get-AzSqlDatabaseAudit.md)
-Gets the auditing settings of an Azure SQL database.
-
-### [Get-AzSqlDatabaseAuditing](Get-AzSqlDatabaseAuditing.md)
-**Important: This cmdlet is deprecated, [Get-AzSqlDatbaseAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseaudit) is replacing it.**
-
 Gets the auditing settings of an Azure SQL database.
 
 ### [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
@@ -286,18 +281,16 @@ Returns information about SQL Database servers.
 ### [Get-AzSqlServerActiveDirectoryAdministrator](Get-AzSqlServerActiveDirectoryAdministrator.md)
 Gets information about an Azure AD administrator for SQL Server.
 
+### [Get-AzSqlServerAdvancedDataSecurityPolicy](Get-AzSqlServerAdvancedDataSecurityPolicy.md)
+Gets Advanced Data Security policy of a server.
+
 ### [Get-AzSqlServerAdvancedThreatProtectionSetting](Get-AzSqlServerAdvancedThreatProtectionSetting.md)
-Gets Advanced Threat Protection policy of a server.
+Gets the advanced threat protection settings for a server.
 
 ### [Get-AzSqlServerAdvisor](Get-AzSqlServerAdvisor.md)
 Gets one or more Advisors for an Azure SQL Server.
 
 ### [Get-AzSqlServerAudit](Get-AzSqlServerAudit.md)
-Gets the auditing settings of an Azure SQL server.
-
-### [Get-AzSqlServerAuditing](Get-AzSqlServerAuditing.md)
-**Important: This cmdlet is deprecated, [Get-AzSqlServerAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserveraudit) is replacing it.**
-
 Gets the auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
@@ -570,11 +563,6 @@ Modifies auto execute status of an Azure SQL Database Advisor.
 ### [Set-AzSqlDatabaseAudit](Set-AzSqlDatabaseAudit.md)
 Changes the auditing settings for an Azure SQL database.
 
-### [Set-AzSqlDatabaseAuditing](Set-AzSqlDatabaseAuditing.md)
-**Important: This cmdlet is deprecated, [Set-AzSqlDatabaseAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabaseaudit) is replacing it.**
-
-Changes the auditing settings for an Azure SQL database.
-
 ### [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Sets a server long term retention policy.
 
@@ -665,11 +653,6 @@ Updates the auto execute status of an Azure SQL Server Advisor.
 ### [Set-AzSqlServerAudit](Set-AzSqlServerAudit.md)
 Changes the auditing settings of an Azure SQL server.
 
-### [Set-AzSqlServerAuditing](Set-AzSqlServerAuditing.md)
-**Important: This cmdlet is deprecated, [Set-AzSqlServerAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserveraudit) is replacing it.**
-
-Changes the auditing settings of an Azure SQL server.
-
 ### [Set-AzSqlServerDisasterRecoveryConfiguration](Set-AzSqlServerDisasterRecoveryConfiguration.md)
 Modifies a database server recovery configuration.
 
@@ -726,6 +709,9 @@ Executes a failover of an Azure SQL Database Failover Group.
 
 ### [Switch-AzSqlDatabaseInstanceFailoverGroup](Switch-AzSqlDatabaseInstanceFailoverGroup.md)
 Executes a failover of an Instance Failover Group.
+
+### [Update-AzSqlDatabaseAdvancedThreatProtectionSetting](Update-AzSqlDatabaseAdvancedThreatProtectionSetting.md)
+Sets a advanced threat protection settings on a database.
 
 ### [Update-AzSqlDatabaseVulnerabilityAssessmentSetting](Update-AzSqlDatabaseVulnerabilityAssessmentSetting.md)
 Updates the vulnerability assessment settings of a database.
