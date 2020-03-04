@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy
 
 ## SYNOPSIS
-Sets a managed database's long term retention policy.
+The **Set-AzSqlInstanceDatabaseLongTermRetentionBackup** cmdlet sets a managed database's long term retention policy.
 
 ## SYNTAX
 
@@ -65,7 +65,7 @@ Configures the database's long term retention weekly policy to one week.
 
 ### Example 2
 ```
-PS D:\src\azure\azure-powershell> Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName target1 -RemovePolicy
+PS C:\> Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName target1 -RemovePolicy
 
 
 ResourceGroupName   : testResourceGroup
@@ -76,7 +76,8 @@ MonthlyRetention    : PT0S
 YearlyRetention     : PT0S
 WeekOfYear          : 0
 Location            :
-...
+```
+
 
 This command removes the long term retention policy from the database.
 ## PARAMETERS
