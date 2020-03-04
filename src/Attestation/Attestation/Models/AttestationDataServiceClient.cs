@@ -97,6 +97,39 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             return ((AttestationPolicy)serviceCallResult.Body).Policy;
         }
 
+        public string GetPolicySigners(string name, string resourceGroupName, string resourceId)
+        {
+            ValidateCommonParameters(ref name, ref resourceGroupName, resourceId);
+
+            AzureOperationResponse<object> serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
+                _attestationDataPlaneClient.PolicyCertificates.GetWithHttpMessagesAsync(tenantUri).Result);
+            ThrowOn4xxErrors(serviceCallResult);
+
+            return (string)serviceCallResult.Body;
+        }
+
+        public string AddPolicySigner(string name, string resourceGroupName, string resourceId, string signer)
+        {
+            ValidateCommonParameters(ref name, ref resourceGroupName, resourceId);
+
+            AzureOperationResponse<object> serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
+                _attestationDataPlaneClient.PolicyCertificates.AddWithHttpMessagesAsync(tenantUri, signer).Result);
+            ThrowOn4xxErrors(serviceCallResult);
+
+            return (string)serviceCallResult.Body;
+        }
+
+        public string RemovePolicySigner(string name, string resourceGroupName, string resourceId, string signer)
+        {
+            ValidateCommonParameters(ref name, ref resourceGroupName, resourceId);
+
+            AzureOperationResponse<object> serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
+                _attestationDataPlaneClient.PolicyCertificates.RemoveWithHttpMessagesAsync(tenantUri, signer).Result);
+            ThrowOn4xxErrors(serviceCallResult);
+
+            return (string)serviceCallResult.Body;
+        }
+
         #region Private helper methods
 
         private void ValidateCommonParameters(ref string name, ref string resourceGroupName, string resourceId)

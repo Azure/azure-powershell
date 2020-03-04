@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Show DependsOn property value in the table view
-* Add support to accept PolicyDefinitionParameter empty 
+* Showed DependsOn property value in the table view
+* Added support to accept PolicyDefinitionParameter empty 
 
 ## Version 0.2.10
 * Added support to include subfolders when deploying blueprints with artifacts

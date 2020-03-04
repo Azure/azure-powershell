@@ -296,7 +296,7 @@ psdx_paramvalues Wadl, Wsdl, and Swagger.
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiFormat
 Parameter Sets: (All)
 Aliases:
-Accepted values: Wadl, Swagger, Wsdl, OpenApi
+Accepted values: Wadl, Swagger, Wsdl, OpenApi, OpenApiJson
 
 Required: True
 Position: Named

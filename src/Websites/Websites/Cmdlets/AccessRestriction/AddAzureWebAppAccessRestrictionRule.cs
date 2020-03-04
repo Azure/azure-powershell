@@ -149,10 +149,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     case SubnetNameParameterSet:
                     case SubnetIdParameterSet:
                         var Subnet = ParameterSetName == SubnetNameParameterSet ? SubnetName : SubnetId;
-                        var subnetResourceId = CmdletHelpers.ValidateSubnet(Subnet, VirtualNetworkName, ResourceGroupName, DefaultContext.Subscription.Id);
+                        //Fetch RG of given SubNet
+                        var subNetResourceGroupName = CmdletHelpers.GetSubnetResourceGroupName(DefaultContext, Subnet, VirtualNetworkName);
+                        //If unble to fetch SubNet rg from above step, use the input RG to get validation error from api call.
+                        subNetResourceGroupName = !String.IsNullOrEmpty(subNetResourceGroupName) ? subNetResourceGroupName : ResourceGroupName;
+                        var subnetResourceId = CmdletHelpers.ValidateSubnet(Subnet, VirtualNetworkName, subNetResourceGroupName, DefaultContext.Subscription.Id);
                         if (!IgnoreMissingServiceEndpoint)
                         {
-                            CmdletHelpers.VerifySubnetDelegation(DefaultContext, subnetResourceId);
+                            CmdletHelpers.VerifySubnetDelegation(subnetResourceId);
                         }
                         foreach (var accessRestriction in accessRestrictionList)
                         {
