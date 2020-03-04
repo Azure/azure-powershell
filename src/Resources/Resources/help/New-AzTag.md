@@ -9,16 +9,31 @@ schema: 2.0.0
 # New-AzTag
 
 ## SYNOPSIS
-Creates a predefined Azure tag or adds values to an existing tag.
+Creates a predefined Azure tag or adds values to an existing tag | Creates or updates the entire set of tags on a resource or subscription.
 
 ## SYNTAX
 
-```
+### CreatePredefinedTagParameterSet
+
+```powershell
 New-AzTag [-Name] <String> [[-Value] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### CreateByResourceIdParameterSet
+
+```powershell
+New-AzTag
+   -ResourceId <String>
+   -Tag <Hashtable>
+   [-DefaultProfile <IAzureContextContainer>]
+   [-WhatIf]
+   [-Confirm]
+   [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **New-AzTag** cmdlet creates a predefined Azure tag with an optional predefined value.
+
+**CreatePredefinedTagSet**: The **New-AzTag** cmdlet creates a predefined Azure tag with an optional predefined value.
 You can also use it to add additional values to existing predefined tags.
 To create a predefined tag, enter a unique tag name.
 To add a value to an existing predefined tag, specify the name of the existing tag and the new value.
@@ -34,10 +49,13 @@ A predefined Azure tag can have multiple values, but when you apply the tag to a
 For example, you can create a predefined Department tag with a value for each department, such as Finance, Human Resources, and IT.
 When you apply the Department tag to a resource, you apply only one predefined value, such as Finance.
 
+**CreateByResourceIdParameterSet**: The **New-AzTag** cmdlet with a **ResourceId** creates or updates the entire set of tags on a resource or subscription.
+This operation allows adding or replacing the entire set of tags on the specified resource or subscription. The specified entity can have a maximum of 50 tags.
+
 ## EXAMPLES
 
 ### Example 1: Create a predefined tag
-```
+```powershell
 PS C:\>New-AzTag -Name "FY2015"
                                 
 Name   ValuesTable Count Values 
@@ -51,7 +69,7 @@ You can apply a tag with no values to a resource or resource group, or use **New
 You can also specify a value when you apply the tag to the resource or resource group.
 
 ### Example 2: Create a predefined tag with a value
-```
+```powershell
 PS C:\>New-AzTag -Name "Department" -Value "Finance"
 Name:   Department
 Count:  0
@@ -65,7 +83,7 @@ Values:
 This command creates a predefined tag named Department with a value of Finance.
 
 ### Example 3: Add a value to a predefined tag
-```
+```powershell
 PS C:\>New-AzTag -Name "Department" -Value "Finance"
 Name:   Department
 Count:  0
@@ -87,7 +105,7 @@ These commands create a predefined tag named Department with two values.
 If the tag name exists, **New-AzTag** adds the value to the existing tag instead of creating a new one.
 
 ### Example 4: Use a predefined tag
-```
+```powershell
 PS C:\>New-AzTag -Name "CostCenter" -Value "0001"
 Name:   CostCenter
 Count:  0
@@ -134,6 +152,42 @@ Tags:
 
 The commands in this example create and use a predefined tag.
 
+### Example 5: Creates or updates the entire set of tags on a subscription
+
+```powershell
+PS C:\>$Tags = @{"tagKey1"="tagValue1"; "tagKey2"="tagValue2"}
+PS C:\>New-AzTag -ResourceId /subscriptions/{subId} -Tag $Tags
+
+Id         : {Id}
+Name       : {Name}
+Type       : {Type}
+Properties :
+             Name     Value
+             =======  =========
+             tagKey1  tagValue1
+             tagKey2  tagValue2
+```
+
+This command creates or updates the entire set of tags on the subscription with {subId}.
+
+### Example 6: Creates or updates the entire set of tags on a resource
+
+```powershell
+PS C:\>$Tags = @{"Dept"="Finance"; "Status"="Normal"}
+PS C:\>New-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1 -Tag $Tags
+
+Id         : {Id}
+Name       : {Name}
+Type       : {Type}
+Properties :
+             Name     Value
+             =======  =========
+             Dept     Finance
+             Status   Normal
+```
+
+This command creates or updates the entire set of tags on the resource with {resourceId}.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -152,14 +206,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the tag name.
+Specifies the predefined tag name.
 To create a new predefined tag, enter a unique name.
 To add a value to an existing tag, enter the name of the existing tag.
 If an existing predefined tag has the specified name, **New-AzTag** adds the specified value, if any, to the tag with that name instead of creating a new tag.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreatePredefinedTagParameterSet
 Aliases:
 
 Required: True
@@ -170,13 +224,13 @@ Accept wildcard characters: False
 ```
 
 ### -Value
-Specifies a tag value.
+Specifies a predefined tag value.
 Predefined tags can have multiple values, but you can enter only one value in each command.
 This parameter is optional, because tags can have names without values.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreatePredefinedTagParameterSet
 Aliases:
 
 Required: False
@@ -186,16 +240,79 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+The resource identifier for the entity being tagged. A resource, a resource group or a subscription may be tagged.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tag
+The tags to put on the resource.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
+### System.Collections.Hashtable
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag
+### Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag | Microsoft.Azure.Commands.Tags.Model.PSTagResource
 
 ## NOTES
 
@@ -205,4 +322,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzTag](./Remove-AzTag.md)
 
-
+[Update-AzTag](./Update-AzTag.md)
