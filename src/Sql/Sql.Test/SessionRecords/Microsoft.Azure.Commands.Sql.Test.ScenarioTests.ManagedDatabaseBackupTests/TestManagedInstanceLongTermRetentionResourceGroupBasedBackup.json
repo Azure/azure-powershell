@@ -915,13 +915,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseOperationResults/d8d33f75-5fe3-4c68-a33c-92eb7dca1177?api-version=2019-06-01-preview"
+          "https://management.azure.com/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseOperationResults/d8d33f75-5fe3-4c68-a33c-92eb7dca1177?api-version=2019-06-01-preview"
         ],
         "Retry-After": [
           "15"
         ],
         "Azure-AsyncOperation": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/d8d33f75-5fe3-4c68-a33c-92eb7dca1177?api-version=2019-06-01-preview"
+          "https://management.azure.com/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/d8d33f75-5fe3-4c68-a33c-92eb7dca1177?api-version=2019-06-01-preview"
         ],
         "x-ms-request-id": [
           "d8d33f75-5fe3-4c68-a33c-92eb7dca1177"
@@ -1527,13 +1527,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseOperationResults/31a73580-c5f0-4dca-9b5f-bffa39738617?api-version=2019-06-01-preview"
+          "https://management.azure.com/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseOperationResults/31a73580-c5f0-4dca-9b5f-bffa39738617?api-version=2019-06-01-preview"
         ],
         "Retry-After": [
           "15"
         ],
         "Azure-AsyncOperation": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/31a73580-c5f0-4dca-9b5f-bffa39738617?api-version=2019-06-01-preview"
+          "https://management.azure.com/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/31a73580-c5f0-4dca-9b5f-bffa39738617?api-version=2019-06-01-preview"
         ],
         "x-ms-request-id": [
           "31a73580-c5f0-4dca-9b5f-bffa39738617"

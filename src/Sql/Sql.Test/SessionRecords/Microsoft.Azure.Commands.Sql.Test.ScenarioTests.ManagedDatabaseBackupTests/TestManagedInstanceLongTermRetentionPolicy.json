@@ -213,13 +213,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseOperationResults/46dc2f72-75f8-4df9-8a2f-1a90c053504c?api-version=2019-06-01-preview"
+          "https://management.azure.com/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseOperationResults/46dc2f72-75f8-4df9-8a2f-1a90c053504c?api-version=2019-06-01-preview"
         ],
         "Retry-After": [
           "15"
         ],
         "Azure-AsyncOperation": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/46dc2f72-75f8-4df9-8a2f-1a90c053504c?api-version=2019-06-01-preview"
+          "https://management.azure.com/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/46dc2f72-75f8-4df9-8a2f-1a90c053504c?api-version=2019-06-01-preview"
         ],
         "x-ms-request-id": [
           "46dc2f72-75f8-4df9-8a2f-1a90c053504c"
@@ -714,13 +714,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/resourceGroups/ps-test-rg/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyOperationResults/4c538ab4-6731-40f7-8e02-5c624cec4ca6?api-version=2018-06-01-preview"
+          "https://management.azure.com/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/resourceGroups/ps-test-rg/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyOperationResults/4c538ab4-6731-40f7-8e02-5c624cec4ca6?api-version=2018-06-01-preview"
         ],
         "Retry-After": [
           "15"
         ],
         "Azure-AsyncOperation": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/resourceGroups/ps-test-rg/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyAzureAsyncOperation/4c538ab4-6731-40f7-8e02-5c624cec4ca6?api-version=2018-06-01-preview"
+          "https://management.azure.com/subscriptions/709b4d09-b251-4ae8-8998-e1954ee45cf9/resourceGroups/ps-test-rg/providers/Microsoft.Sql/locations/southeastasia/managedInstanceLongTermRetentionPolicyAzureAsyncOperation/4c538ab4-6731-40f7-8e02-5c624cec4ca6?api-version=2018-06-01-preview"
         ],
         "x-ms-request-id": [
           "4c538ab4-6731-40f7-8e02-5c624cec4ca6"
