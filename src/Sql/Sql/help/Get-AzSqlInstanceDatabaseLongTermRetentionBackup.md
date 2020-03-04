@@ -66,23 +66,23 @@ Get-AzSqlInstanceDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlManaged
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location southeastasia -ResourceGroupName cl_stage_sea_cv -InstanceName seageodr-gen5-gp -DatabaseName test
+PS C:\> Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location southeastasia -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName test
 
 
 BackupExpirationTime : 3/10/2020 1:10:45 PM
-BackupName           : 5e3f5f6c-df6f-4c82-a447-740ee7153b2b;132268250550000000
+BackupName           : 15be823c-7e2c-49d8-819f-a3fdcad92215;132268250550000000
 BackupTime           : 2/22/2020 6:04:15 AM
 DatabaseName         : test
 DatabaseDeletionTime : 2/24/2020 2:56:44 PM
 Location             : southeastasia
-ResourceId           : /subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManaged
-                       Instances/seageodr-gen5-gp/longTermRetentionDatabases/test/longTermRetentionManagedInstanceBackups/5e3f5f6c-df6f-4c82-a447-740ee7153b2b;132268250550000000
-ManagedInstanceName  : seageodr-gen5-gp
+ResourceId           : /subscriptions/f46521f3-5bb0-4eea-a3c2-c2d5987df96b/resourceGroups/testResourceGroup/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManaged
+                       Instances/testInstance/longTermRetentionDatabases/test/longTermRetentionManagedInstanceBackups/15be823c-7e2c-49d8-819f-a3fdcad92215;132268250550000000
+ManagedInstanceName  : testInstance
 InstanceCreateTime   : 10/17/2019 4:52:10 PM
-ResourceGroupName    : cl_stage_sea_cv
+ResourceGroupName    : testResourceGroup
 ```
 
-This command gets all long term retention backups for a particular database.  Resource Group is optional. 
+Gets all long term retention backups for a particular database.  Resource Group is optional. 
 
 ## PARAMETERS
 
