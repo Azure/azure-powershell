@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSqlInstanceDatabaseLongTermRetentionBackup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes a long term retention backup.
 
 ## SYNTAX
 
@@ -33,16 +33,16 @@ Remove-AzSqlInstanceDatabaseLongTermRetentionBackup [-ResourceId] <String> [-For
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup** cmdlet deletes the backup specified.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -Location southeastasia -ResourceGroupName cl_stage_sea_cv -InstanceName seageodr-gen5-gp -DatabaseName test -BackupName 5e3f5f6c-df6f-4c82-a447-740ee7153b2b;132268250550000000
 ```
 
-{{ Add example description here }}
+Deletes the backup with name 5e3f5f6c-df6f-4c82-a447-740ee7153b2b;132268250550000000
 
 ## PARAMETERS
 
@@ -228,3 +228,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzSqlInstanceDatabaseLongTermRetentionBackup](./Get-AzSqlInstanceDatabaseLongTermRetentionBackup.md)
+
+[Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](./Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
+
+[Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](./Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
+
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSqlInstanceDatabaseLongTermRetentionBackup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets long term retention backup(s).
 
 ## SYNTAX
 
@@ -66,10 +66,23 @@ Get-AzSqlInstanceDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlManaged
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location southeastasia -ResourceGroupName cl_stage_sea_cv -InstanceName seageodr-gen5-gp -DatabaseName test
+
+
+BackupExpirationTime : 3/10/2020 1:10:45 PM
+BackupName           : 5e3f5f6c-df6f-4c82-a447-740ee7153b2b;132268250550000000
+BackupTime           : 2/22/2020 6:04:15 AM
+DatabaseName         : test
+DatabaseDeletionTime : 2/24/2020 2:56:44 PM
+Location             : southeastasia
+ResourceId           : /subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManaged
+                       Instances/seageodr-gen5-gp/longTermRetentionDatabases/test/longTermRetentionManagedInstanceBackups/5e3f5f6c-df6f-4c82-a447-740ee7153b2b;132268250550000000
+ManagedInstanceName  : seageodr-gen5-gp
+InstanceCreateTime   : 10/17/2019 4:52:10 PM
+ResourceGroupName    : cl_stage_sea_cv
 ```
 
-{{ Add example description here }}
+This command gets all long term retention backups for a particular database.  Resource Group is optional. 
 
 ## PARAMETERS
 
@@ -273,3 +286,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Remove-AzSqlInstanceDatabaseLongTermRetentionBackup](./Remove-AzSqlInstanceDatabaseLongTermRetentionBackup.md)
+
+[Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](./Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
+
+[Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](./Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
+
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

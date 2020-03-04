@@ -102,7 +102,7 @@ Restore-AzSqlInstanceDatabase [-FromLongTermRetentionBackup] [-SubscriptionId <S
 ```
 
 ## DESCRIPTION
-The **Restore-AzSqlInstanceDatabase** cmdlet restores an instance database from a geo-redundant backup or a point in time in a live database.
+The **Restore-AzSqlInstanceDatabase** cmdlet restores an instance database from a geo-redundant backup, a point in time in a live database, or a long term retention backup.
 The restored database is created as a new instance database.
 
 ## EXAMPLES
@@ -147,6 +147,36 @@ PS C:\> Restore-AzSqlinstanceDatabase -InputObject $deletedDatabase[0] -PointInT
 
 The first command gets the deleted instance databases named 'DB1' on Instance 'managedInstance1'
 The second command restores the the fetched database, from the specified point-in-time backup to the instance database named Database01_restored using input object.
+
+### Example 5: Restore a database from LTR backup. 
+```
+PS C:\> Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId /subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabas es/test/longTermRetentionManagedInstanceBackups/5e3f5f6c-df6f-4c82-a447-740ee7153b2b;132268250550000000 -TargetInstanceDatabaseName restore-sample -TargetInstanceName seageodr-gen5-gp -TargetResourceGroupName cl_stage_sea_cv
+
+
+Location                          : southeastasia
+Tags                              :
+Collation                         : SQL_Latin1_General_CP1_CI_AS
+Status                            : Online
+RestorePointInTime                :
+DefaultSecondaryLocation          : northeurope
+CatalogCollation                  :
+CreateMode                        :
+StorageContainerUri               :
+StorageContainerSasToken          :
+SourceDatabaseId                  :
+FailoverGroupId                   :
+RecoverableDatabaseId             :
+RestorableDroppedDatabaseId       :
+LongTermRetentionBackupResourceId :
+ResourceGroupName                 : cl_stage_sea_cv
+ManagedInstanceName               : seageodr-gen5-gp
+Name                              : restore-sample
+CreationDate                      : 3/4/2020 8:12:56 AM
+EarliestRestorePoint              : 3/4/2020 8:14:29 AM
+Id                                : /subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/restore-sample
+```
+
+This command restores an LTR backup with the given resource ID (which can be found by running Get-AzSqlInstanceDatabaseLongTermRetentionBackup).
 
 ## PARAMETERS
 

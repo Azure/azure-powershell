@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets a managed database's long term retention policy.
 
 ## SYNTAX
 
@@ -42,17 +42,43 @@ Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention <String
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy** cmdlet sets the long term retention policy for this managed database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName cl_stage_sea_cv -InstanceName seageodr-gen5-gp -DatabaseName test -WeeklyRetention "P1W"
+
+
+ResourceGroupName   : cl_stage_sea_cv
+ManagedInstanceName : seageodr-gen5-gp
+DatabaseName        : test
+WeeklyRetention     : P1W
+MonthlyRetention    : PT0S
+YearlyRetention     : PT0S
+WeekOfYear          : 0
+Location            :
 ```
 
-{{ Add example description here }}
+This command configures the database's long term retention weekly policy to one week.
 
+### Example 2
+```
+PS D:\src\azure\azure-powershell> Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName cl_stage_sea_cv -InstanceName seageodr-gen5-gp -DatabaseName target1 -RemovePolicy
+
+
+ResourceGroupName   : cl_stage_sea_cv
+ManagedInstanceName : seageodr-gen5-gp
+DatabaseName        : target1
+WeeklyRetention     : PT0S
+MonthlyRetention    : PT0S
+YearlyRetention     : PT0S
+WeekOfYear          : 0
+Location            :
+...
+
+This command removes the long term retention policy from the database.
 ## PARAMETERS
 
 ### -DatabaseName
@@ -267,3 +293,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](./Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
+
+[Get-AzSqlInstanceDatabaseLongTermRetentionBackup](./Get-AzSqlInstanceDatabaseLongTermRetentionBackup.md)
+
+[Remove-AzSqlInstanceDatabaseLongTermRetentionBackup](./Remove-AzSqlInstanceDatabaseLongTermRetentionBackup.md)
+
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
