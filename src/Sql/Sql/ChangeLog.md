@@ -26,6 +26,7 @@
 * Added support for cross subscription point in time restore on Managed Instances.
 * Added support for changing existing Sql Managed Instance hardware generation
 * Fixed `Update-AzSqlServerVulnerabilityAssessmentSetting` help examples: parameter/property output - EmailAdmins
+* Updating Azure SQL Server Active Azure administrator API to use 2019-06-01-preview api version.
 
 ## Version 2.2.0
 Fix New-AzSqlDatabaseSecondary cmdlet to check for PartnerDatabaseName existence instead of DatabaseName existence.
