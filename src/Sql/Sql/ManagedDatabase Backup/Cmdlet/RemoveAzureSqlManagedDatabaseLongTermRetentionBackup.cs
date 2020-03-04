@@ -18,8 +18,8 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Globalization;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model;
+using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             Position = 0,
             HelpMessage = "The location of the backups' source Managed Instance.")]
         [ValidateNotNullOrEmpty]
-        [LocationCompleter("Microsoft.Sql/locations/longTermRetentionManagedInstance")]
+        [LocationCompleter("Microsoft.Sql/locations/longTermRetentionManagedInstances")]
         public virtual string Location { get; set; }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             ParameterSetName = RemoveBackupDefaultSet,
             Position = 1,
             HelpMessage = "The name of the Managed Instance the backup is under.")]
-        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
 

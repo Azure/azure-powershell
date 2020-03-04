@@ -790,6 +790,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanantly removing the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlServerActiveDirectoryAdministratorDescription {
@@ -1407,28 +1425,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string VulnerabilityAssessmentWrongParameterType {
             get {
                 return ResourceManager.GetString("VulnerabilityAssessmentWrongParameterType", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Permanently removing the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;..
-        /// </summary>
-        internal static string RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription
-        {
-            get
-            {
-                return ResourceManager.GetString("RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;?.
-        /// </summary>
-        internal static string RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning
-        {
-            get
-            {
-                return ResourceManager.GetString("RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning", resourceCulture);
             }
         }
     }
