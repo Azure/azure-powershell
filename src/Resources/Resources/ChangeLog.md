@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.12.0
 * Fix for null reference bug in GetAzureRoleAssignmentCommand
 * Breaking changes for policy cmdlets to support typed pipeline objects
 
