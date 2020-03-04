@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             if (!string.IsNullOrEmpty(options.RoleDefinitionName))
             {
-                result = result.Where(r => r.RoleDefinitionName.Equals(options.RoleDefinitionName, StringComparison.OrdinalIgnoreCase)).ToList();
+                result = result.Where(r => r.RoleDefinitionName?.Equals(options.RoleDefinitionName, StringComparison.OrdinalIgnoreCase) ?? false).ToList();
             }
 
             if (options.IncludeClassicAdministrators)
