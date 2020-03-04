@@ -48,11 +48,11 @@ The **Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy** cmdlet sets the l
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName cl_stage_sea_cv -InstanceName seageodr-gen5-gp -DatabaseName test -WeeklyRetention "P1W"
+PS C:\> Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName test -WeeklyRetention "P1W"
 
 
-ResourceGroupName   : cl_stage_sea_cv
-ManagedInstanceName : seageodr-gen5-gp
+ResourceGroupName   : testResourceGroup
+ManagedInstanceName : testInstance
 DatabaseName        : test
 WeeklyRetention     : P1W
 MonthlyRetention    : PT0S
@@ -61,15 +61,15 @@ WeekOfYear          : 0
 Location            :
 ```
 
-This command configures the database's long term retention weekly policy to one week.
+Configures the database's long term retention weekly policy to one week.
 
 ### Example 2
 ```
-PS D:\src\azure\azure-powershell> Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName cl_stage_sea_cv -InstanceName seageodr-gen5-gp -DatabaseName target1 -RemovePolicy
+PS D:\src\azure\azure-powershell> Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName target1 -RemovePolicy
 
 
-ResourceGroupName   : cl_stage_sea_cv
-ManagedInstanceName : seageodr-gen5-gp
+ResourceGroupName   : testResourceGroup
+ManagedInstanceName : testInstance
 DatabaseName        : target1
 WeeklyRetention     : PT0S
 MonthlyRetention    : PT0S

@@ -139,7 +139,7 @@ PS C:\> Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name -InstanceName 
 The first command gets the deleted instance databases named 'DB1' on Instance 'managedInstance1'
 The second command restores the the fetched database, from the specified point-in-time backup to the instance database named Database01_restored.
 
-### Example 4: Restore an deleted instance database from a point in time
+### Example 5: Restore an deleted instance database from a point in time
 ```
 PS C:\> $deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ResourceGroup01" -InstanceName "managedInstance1" -DatabaseName "DB1"
 PS C:\> Restore-AzSqlinstanceDatabase -InputObject $deletedDatabase[0] -PointInTime UTCDateTime -TargetInstanceDatabaseName "Database01_restored"
@@ -148,9 +148,9 @@ PS C:\> Restore-AzSqlinstanceDatabase -InputObject $deletedDatabase[0] -PointInT
 The first command gets the deleted instance databases named 'DB1' on Instance 'managedInstance1'
 The second command restores the the fetched database, from the specified point-in-time backup to the instance database named Database01_restored using input object.
 
-### Example 5: Restore a database from LTR backup. 
+### Example 6: Restore a database from LTR backup. 
 ```
-PS C:\> Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId /subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabas es/test/longTermRetentionManagedInstanceBackups/5e3f5f6c-df6f-4c82-a447-740ee7153b2b;132268250550000000 -TargetInstanceDatabaseName restore-sample -TargetInstanceName seageodr-gen5-gp -TargetResourceGroupName cl_stage_sea_cv
+PS C:\> Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId /subscriptions/f46521f3-5bb0-4eea-a3c2-c2d5987df96b/resourceGroups/testResourceGroup/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/testInstance/longTermRetentionDatabases/test/longTermRetentionManagedInstanceBackups/15be823c-7e2c-49d8-819f-a3fdcad92215;132268250550000000 -TargetInstanceDatabaseName restoreTarget -TargetInstanceName testInstance -TargetResourceGroupName testResourceGroup
 
 
 Location                          : southeastasia
@@ -168,15 +168,15 @@ FailoverGroupId                   :
 RecoverableDatabaseId             :
 RestorableDroppedDatabaseId       :
 LongTermRetentionBackupResourceId :
-ResourceGroupName                 : cl_stage_sea_cv
-ManagedInstanceName               : seageodr-gen5-gp
-Name                              : restore-sample
+ResourceGroupName                 : testResourceGroup
+ManagedInstanceName               : testInstance
+Name                              : restoreTarget
 CreationDate                      : 3/4/2020 8:12:56 AM
 EarliestRestorePoint              : 3/4/2020 8:14:29 AM
-Id                                : /subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/restore-sample
+Id                                : /subscriptions/f46521f3-5bb0-4eea-a3c2-c2d5987df96b/resourceGroups/testResourceGroup/providers/Microsoft.Sql/managedInstances/testInstance/databases/restoreTarget
 ```
 
-This command restores an LTR backup with the given resource ID (which can be found by running Get-AzSqlInstanceDatabaseLongTermRetentionBackup).
+Restores LTR backup with the given resource ID (which can be found by running Get-AzSqlInstanceDatabaseLongTermRetentionBackup).
 
 ## PARAMETERS
 
