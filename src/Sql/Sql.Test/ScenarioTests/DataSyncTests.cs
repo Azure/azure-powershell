@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
 
             base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
+                "Microsoft.Sql/servers",
+                 "Microsoft.Sql/managedInstances/databases"
             };
         }
 
