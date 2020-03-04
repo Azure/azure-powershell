@@ -153,14 +153,14 @@ function WaitForJobToComplete
     $tries = 1
     while ($true)
     {
-        Write-Warning "Wait time in seconds: $($tries*$WaitTimeInSeconds)"
+        Write-Verbose "Wait time in seconds: $($tries*$WaitTimeInSeconds)" -Verbose
         Start-Sleep -Seconds $WaitTimeInSeconds
         $result = Get-Job -Id $JobId
-        Write-Warning "JobState: $($result.State)"
+        Write-Verbose "JobState: $($result.State)" -Verbose
 
         if (($tries -ge $maxNumberOfTries) -or ($result.State -ne "Running"))
         {
-            Write-Warning "JobState: $($result.State)"
+            Write-Verbose "JobState: $($result.State)" -Verbose
             return $result
         }
 
@@ -337,78 +337,53 @@ Describe 'Functions End to End Tests' {
         $functionApp | Should -Be $null
     }
 
-    It "Validate New-AzFunctionAppPlan -AsJob, New-AzFunctionApp -AsJob and Remove-AzFunctionApp -Force" {
+    It "Create new AzFunctionApp using a custom Docker image" {
 
-        $planName = "Func99-Windows-Premium" + (Get-Random).ToString()
-        $functionName = "Func99-Windows-PowerShell-6-" + (Get-Random).ToString()
+        $functionName = "Func99-Custom-Docker-Image" + (Get-Random).ToString()
 
         try
         {
-            # Create a service plan
-            Write-Warning "Creating service plan"
-            $functionAppPlanJob = New-AzFunctionAppPlan -Name $planName `
-                                                        -ResourceGroupName $resourceGroupNameWindowsPremium `
-                                                        -WorkerType "Windows" `
-                                                        -MinimumWorkerCount 1 `
-                                                        -MaximumWorkerCount 10 `
-                                                        -Location $premiumPlanLocation `
-                                                        -Sku EP1 `
-                                                        -AsJob
+            New-AzFunctionApp -Name $functionName `
+                              -ResourceGroupName $resourceGroupNameLinuxPremium `
+                              -PlanName $planNameWorkerTypeLinux `
+                              -StorageAccount $storageAccountLinux `
+                              -DockerImageName "divyag2411/test:customcontainer"
 
-            Write-Warning "Job started."
-            $result = WaitForJobToComplete -JobId $functionAppPlanJob.Id
-            $result.State | Should -Be "Completed"
-            $result | Receive-Job -ErrorAction SilentlyContinue |  Remove-Job  -ErrorAction SilentlyContinue
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameLinuxPremium
+            $functionApp.OSType | Should -Be "Linux"
+            $functionApp.Runtime | Should -Be "Custom Image"
 
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupNameWindowsPremium
-            $plan.WorkerType | Should -Be "Windows"
-            $plan.SkuTier | Should -Be "ElasticPremium"
-            $plan.SkuName | Should -Be "EP1"
-
-            Write-Warning "Creating service plan -AsJob"
-            $functionAppPlan = New-AzFunctionApp -Name $functionName `
-                                                 -ResourceGroupName $resourceGroupNameWindowsPremium `
-                                                 -PlanName $planName `
-                                                 -StorageAccount $storageAccountWindows `
-                                                 -OSType "Windows" `
-                                                 -Runtime "PowerShell" `
-                                                 -RuntimeVersion 6 `
-                                                 -FunctionsVersion 3 `
-                                                 -AsJob
-
-            Write-Warning "Job completed. Validating result"
-            $result = WaitForJobToComplete -JobId $functionAppPlan.Id
-            $result.State | Should -Be "Completed"
-            $result | Receive-Job -ErrorAction SilentlyContinue |  Remove-Job -ErrorAction SilentlyContinue
-
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium
-            $functionApp.OSType | Should -Be "Windows"
-            $functionApp.Runtime | Should -Be "PowerShell"
+            # For a custom container image, the app setting `FUNCTIONS_EXTENSION_VERSION` should not be set.
+            # TODO: Uncomment this line once https://msazure.visualstudio.com/Antares/_workitems/edit/6386493 has been fixed.
+            # $functionApp.ApplicationSettings.ContainsKey("FUNCTIONS_EXTENSION_VERSION") | Should -Be $false
         }
         finally
         {
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue | Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameLinuxPremium -ErrorAction SilentlyContinue | Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
         }
     }
 
-    It "Create new AzFunctionApp using a custom container image" {
+    It "Linux functions apps should not set the 'WEBSITE_NODE_DEFAULT_VERSION' app setting" {
 
-        $functionName = "Func99-Linux-Dedicated-CentralU-" + (Get-Random).ToString()
-        New-AzFunctionApp -Name $functionName `
-                          -ResourceGroupName $resourceGroupNameLinuxPremium `
-                          -PlanName $planNameWorkerTypeLinux `
-                          -StorageAccount $storageAccountLinux `
-                          -DockerImageName "divyag2411/test:customcontainer"
+        $functionName = "Func99-Linux-Python-" + (Get-Random).ToString()
 
-        $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameLinuxPremium
-        $functionApp.OSType | Should -Be "Linux"
-        $functionApp.Runtime | Should -Be "Custom Image"
+        try
+        {
+            New-AzFunctionApp -Name $functionName `
+                              -ResourceGroupName $resourceGroupNameLinuxPremium `
+                              -PlanName $planNameWorkerTypeLinux `
+                              -StorageAccount $storageAccountLinux `
+                              -Runtime Python
 
-        $result = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameLinuxPremium | Remove-AzFunctionApp -PassThru -Force
-        $result | Should -Be $true
-
-        $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium
-        $functionApp | Should -Be $null
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameLinuxPremium
+            $functionApp.OSType | Should -Be "Linux"
+            $functionApp.Runtime | Should -Be "Python"
+            $functionApp.ApplicationSettings.ContainsKey("WEBSITE_NODE_DEFAULT_VERSION") | Should -Be $false
+        }
+        finally
+        {
+            Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameLinuxPremium -ErrorAction SilentlyContinue | Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+        }
     }
 
     # Validate RuntimeVersion default values
@@ -499,6 +474,7 @@ Describe 'Functions End to End Tests' {
                     # Note: These set of tests are for consumptions function apps. We do this for two things:
                     # 1) Test case is faster, we do not need to validate the service plan name
                     # 2) Validate the -Location code path
+                    # We use -WhatIf which performs all the inputs validation for the function app creation, and we return right before sending the request to the backend
 
                     try
                     {
@@ -513,7 +489,7 @@ Describe 'Functions End to End Tests' {
                                               -FunctionsVersion $functionsVersion `
                                               -WhatIf
 
-                        } 3>&1 2>&1 > $filePath
+                        } 4>&1 2>&1 > $filePath
 
                         $logFileContent = Get-Content -Path $filePath -Raw
                         $expectectedRuntimeVersion = $expectedDefaultRuntimeVersion[$OSType][$functionsVersion][$runtime]
@@ -594,6 +570,8 @@ Describe 'Functions End to End Tests' {
                 $functionName = "Func99-$expectedOSType-$runtime-" + (Get-Random).ToString()
 
                 &{
+                    # We use -WhatIf which performs all the inputs validation for the function app creation, and we return right before sending the request to the backend
+
                     New-AzFunctionApp -Name $functionName `
                                       -ResourceGroupName $resourceGroupName `
                                       -Location $location `
@@ -602,12 +580,12 @@ Describe 'Functions End to End Tests' {
                                       -RuntimeVersion $runtimeVersion `
                                       -WhatIf
 
-                } 3>&1 2>&1 > $filePath
+                } 4>&1 2>&1 > $filePath
 
                 $logFileContent = Get-Content -Path $filePath -Raw
 
                 $expectectedFunctionsVersionWarning = "FunctionsVersion not specified. Setting default FunctionsVersion to '$expectedFunctionsVersion'."
-                $expectectedOSTypeWarning = "OSType not specified. Setting default OSType for $runtime to '$expectedOSType'."
+                $expectectedOSTypeWarning = "OSType for $runtime is '$expectedOSType'."
 
                 $logFileContent | Should Match $expectectedFunctionsVersionWarning
                 $logFileContent | Should Match $expectectedOSTypeWarning
@@ -689,6 +667,60 @@ Describe 'Functions End to End Tests' {
                     $myError.Exception.Message | Should Match $expectedErrorMessage
                 }
             }
+        }
+    }
+
+    It "Validate New-AzFunctionAppPlan -AsJob, New-AzFunctionApp -AsJob and Remove-AzFunctionApp -Force" {
+
+        $planName = "Func99-Windows-Premium" + (Get-Random).ToString()
+        $functionName = "Func99-Windows-PowerShell-6-" + (Get-Random).ToString()
+
+        try
+        {
+            # Create a service plan
+            Write-Verbose "Creating service plan" -Verbose
+            $functionAppPlanJob = New-AzFunctionAppPlan -Name $planName `
+                                                        -ResourceGroupName $resourceGroupNameWindowsPremium `
+                                                        -WorkerType "Windows" `
+                                                        -MinimumWorkerCount 1 `
+                                                        -MaximumWorkerCount 10 `
+                                                        -Location $premiumPlanLocation `
+                                                        -Sku EP1 `
+                                                        -AsJob
+
+            Write-Verbose "Job started." -Verbose
+            $result = WaitForJobToComplete -JobId $functionAppPlanJob.Id
+            $result.State | Should -Be "Completed"
+            $result | Receive-Job -ErrorAction SilentlyContinue |  Remove-Job  -ErrorAction SilentlyContinue
+
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupNameWindowsPremium
+            $plan.WorkerType | Should -Be "Windows"
+            $plan.SkuTier | Should -Be "ElasticPremium"
+            $plan.SkuName | Should -Be "EP1"
+
+            Write-Verbose "Creating service plan -AsJob" -Verbose
+            $functionAppPlan = New-AzFunctionApp -Name $functionName `
+                                                 -ResourceGroupName $resourceGroupNameWindowsPremium `
+                                                 -PlanName $planName `
+                                                 -StorageAccount $storageAccountWindows `
+                                                 -OSType "Windows" `
+                                                 -Runtime "PowerShell" `
+                                                 -RuntimeVersion 6 `
+                                                 -FunctionsVersion 3 `
+                                                 -AsJob
+
+            Write-Verbose "Job completed. Validating result" -Verbose
+            $result = WaitForJobToComplete -JobId $functionAppPlan.Id
+            $result.State | Should -Be "Completed"
+            $result | Receive-Job -ErrorAction SilentlyContinue |  Remove-Job -ErrorAction SilentlyContinue
+
+            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium
+            $functionApp.OSType | Should -Be "Windows"
+            $functionApp.Runtime | Should -Be "PowerShell"
+        }
+        finally
+        {
+            Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue | Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
         }
     }
 }

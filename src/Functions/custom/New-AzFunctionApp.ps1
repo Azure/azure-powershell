@@ -222,30 +222,30 @@ function New-AzFunctionApp {
 
             ValidateFunctionName -Name $Name
 
-            if (-not $FunctionsVersion)
-            {
-                $FunctionsVersion = $DefaultFunctionsVersion
-                Write-Warning "FunctionsVersion not specified. Setting default FunctionsVersion to '$FunctionsVersion'."
-            }
-
             if (-not $functionAppIsCustomDockerImage)
             {
+                if (-not $FunctionsVersion)
+                {
+                    $FunctionsVersion = $DefaultFunctionsVersion
+                    Write-Verbose "FunctionsVersion not specified. Setting default FunctionsVersion to '$FunctionsVersion'." -Verbose
+                }
+
                 if (-not $OSType)
                 {
                     $OSType = GetDefaultOSType -Runtime $Runtime
-                    Write-Warning "OSType not specified. Setting default OSType for $Runtime to '$OSType'."
+                    Write-Verbose "OSType for $Runtime is '$OSType'." -Verbose
                 }
 
                 if (-not $RuntimeVersion)
                 {
                     # If not runtime version is provided, set the default version for the worker
                     $RuntimeVersion = GetDefaultRuntimeVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -OSType $OSType
-                    Write-Warning "RuntimeVersion not specified. Setting default runtime version for $Runtime to '$RuntimeVersion'."
+                    Write-Verbose "RuntimeVersion not specified. Setting default runtime version for $Runtime to '$RuntimeVersion'." -Verbose
                 }
 
                 if (($Runtime -eq "DotNet") -and ($RuntimeVersion -ne $FunctionsVersion))
                 {
-                    Write-Warning "DotNet version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to $FunctionsVersion."
+                    Write-Verbose "DotNet version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to $FunctionsVersion." -Verbose
                     $RuntimeVersion = $FunctionsVersion
                 }
 
@@ -344,18 +344,21 @@ function New-AzFunctionApp {
             {
                 # Windows function app
                 $functionAppDef.Kind = 'functionapp'
+
+                # Set default Node version
+                $defaultNodeVersion = GetFunctionAppDefaultNodeVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion
+                $appSettings.Add((NewAppSetting -Name 'WEBSITE_NODE_DEFAULT_VERSION' -Value $defaultNodeVersion))
             }
 
             # Validate storage account and get connection string
             $connectionStrings = GetConnectionString -StorageAccountName $StorageAccountName
-
-            $appSettings.Add((NewAppSetting -Name 'FUNCTIONS_EXTENSION_VERSION' -Value "~$FunctionsVersion"))
             $appSettings.Add((NewAppSetting -Name 'AzureWebJobsStorage' -Value $connectionStrings))
             $appSettings.Add((NewAppSetting -Name 'AzureWebJobsDashboard' -Value $connectionStrings))
 
-            # Set default Node version
-            $defaultNodeVersion = GetFunctionAppDefaultNodeVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion
-            $appSettings.Add((NewAppSetting -Name 'WEBSITE_NODE_DEFAULT_VERSION' -Value $defaultNodeVersion))
+            if (-not $functionAppIsCustomDockerImage)
+            {
+                $appSettings.Add((NewAppSetting -Name 'FUNCTIONS_EXTENSION_VERSION' -Value "~$FunctionsVersion"))
+            }
 
             # If plan is not consumption or elastic premium, set always on
             $planIsElasticPremium = $servicePlan.SkuTier -eq 'ElasticPremium'
@@ -435,8 +438,8 @@ function New-AzFunctionApp {
 
                     if ($consumptionPlan -and $OSIsLinux)
                     {
-                        $warningMessage = "Your Linux function app '$Name', that uses a consumption plan has been successfully created but is not active until content is published using Azure Portal or the Functions Core Tools."
-                        Write-Warning $warningMessage
+                        $message = "Your Linux function app '$Name', that uses a consumption plan has been successfully created but is not active until content is published using Azure Portal or the Functions Core Tools."
+                        Write-Verbose $message -Verbose
                     }
                 }
                 catch
