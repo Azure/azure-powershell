@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.6
+* Fixed typo in Example 1 in reference documentation for `New-AzAutomationSoftwareUpdateConfiguration`
+
 ## Version 1.3.5
 * Update references in .psd1 to use relative path
 

@@ -2023,7 +2023,8 @@
     "Set-AzADUser": "Set-AzureRmADUser",
     "Remove-AzTag": "Remove-AzureRmTag",
     "Get-AzTag": "Get-AzureRmTag",
-    "New-AzTag": "New-AzureRmTag"
+    "New-AzTag": "New-AzureRmTag",
+    "Update-AzTag": "Update-AzureRmTag"
   },
   "Az.Scheduler": {
     "Disable-AzSchedulerJobCollection": "Disable-AzureRmSchedulerJobCollection",

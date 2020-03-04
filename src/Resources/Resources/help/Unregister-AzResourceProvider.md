@@ -23,6 +23,14 @@ The **Unregister-AzResourceProvider** cmdlet unregisters an Azure resource provi
 
 ## EXAMPLES
 
+### Example 1: Unregister resource provider with ProviderNamespace
+
+```powershell
+PS C:\>Unregister-AzResourceProvider -ProviderNamespace "Microsoft.support"
+```
+
+This command unregisters the resource provider "Microsoft.support".
+
 ## PARAMETERS
 
 ### -ApiVersion
@@ -118,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
