@@ -74,6 +74,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Model
         public string ResourceId { get; set; }
 
         /// <summary>
+        /// Gets or sets the managed instance minimal tls version
+        /// </summary>
+        public string MinimalTlsVersion { get; set; }
+
         /// Gets or sets the flag to control enable/disable public network access
         /// </summary>
         public string PublicNetworkAccess { get; set; }
