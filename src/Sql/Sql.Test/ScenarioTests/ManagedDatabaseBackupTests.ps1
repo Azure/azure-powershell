@@ -182,18 +182,18 @@ function Test-ManagedDeletedDatabaseShortTermRetentionPolicy
 	.SYNOPSIS
 	Test long term retention for managed databases.
 #>
-function Test-ManagedInstanceLongTermRetentionPolicy($location = "southeastasia")
+function Test-ManagedInstanceLongTermRetentionPolicy()
 {
 	# Setup
-	$resourceGroupName = "ps-test-rg"
-	$managedInstanceName = "ps-test-mi"
+	$resourceGroupName = "cl_stage_sea_cv"
+	$managedInstanceName = "seageodr-gen5-gp"
 	$weeklyRetention = "P1W"
 	$zeroRetention = "PT0S"
 
 	try
 	{
 		# create test database
-		$databaseName = "ps-ltr-policy-test"
+		$databaseName = "ps-ltr-policy-test-1"
 		$database = New-AzSqlInstanceDatabase -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -Name $databaseName
 
 		Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention
@@ -221,9 +221,9 @@ function Test-ManagedInstanceLongTermRetentionBackup
 	# Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaeName $databaseName
-	$resourceGroup = "ps-test-rg"
+	$resourceGroup = "cl_stage_sea_cv"
 	$locationName = "southeastasia"
-	$managedInstanceName = "ps-test-mi"
+	$managedInstanceName = "seageodr-gen5-gp"
 	$databaseName = "target1"
 	$databaseWithRemovableBackup = "test";
 
@@ -249,7 +249,7 @@ function Test-ManagedInstanceLongTermRetentionBackup
 
 	# Restore Test
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName
-	$restoredDatabase = "ps-test-restore-x"
+	$restoredDatabase = "ps-test-restore-1"
 	$db = Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -TargetResourceGroupName $resourceGroup -TargetInstanceName $managedInstanceName -TargetInstanceDatabaseName $restoredDatabase
 	Assert-AreEqual $db.Name $restoredDatabase
 
@@ -277,9 +277,9 @@ function Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup
 	# Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName -ResourceGroupName $resourceGroup
-	$resourceGroup = "ps-test-rg"
+	$resourceGroup = "cl_stage_sea_cv"
 	$locationName = "southeastasia"
-	$managedInstanceName = "ps-test-mi"
+	$managedInstanceName = "seageodr-gen5-gp"
 	$databaseName = "test"
 
 	# Basic Get Tests
@@ -308,7 +308,7 @@ function Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup
 	Assert-AreNotEqual $backups.Count 0
 
 	# Restore Test
-	$restoredDatabase = "ps-test-restore-with-rg-x"
+	$restoredDatabase = "ps-test-restore-with-rg-1"
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
 	$db = Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -TargetResourceGroupName $resourceGroup -TargetInstanceName $managedInstanceName -TargetInstanceDatabaseName $restoredDatabase
 	Assert-AreEqual $db.Name $restoredDatabase
