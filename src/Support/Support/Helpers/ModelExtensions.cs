@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Support.Helpers
                 Title = sdkSupportTicketDetails.Title,
                 Description = sdkSupportTicketDetails.Description,
                 SupportTicketId = sdkSupportTicketDetails.SupportTicketId,
-                ServiceId = sdkSupportTicketDetails.ServiceId,                
+                ServiceId = sdkSupportTicketDetails.ServiceId,
                 ServiceDisplayName = sdkSupportTicketDetails.ServiceDisplayName,
                 ProblemClassificationId = sdkSupportTicketDetails.ProblemClassificationId,
                 ProblemClassificationDisplayName = sdkSupportTicketDetails.ProblemClassificationDisplayName,
@@ -68,7 +68,6 @@ namespace Microsoft.Azure.Commands.Support.Helpers
                 ModifiedDate = sdkSupportTicketDetails.ModifiedDate,
                 SupportPlanType = sdkSupportTicketDetails.SupportPlanType,
                 EnrollmentId = sdkSupportTicketDetails.EnrollmentId,
-                ProductionOutage = sdkSupportTicketDetails.ProductionOutage,
                 Status = sdkSupportTicketDetails.Status,
                 ContactDetail = sdkSupportTicketDetails.ContactDetails.ToPSContactProfile(),
                 ServiceLevelAgreement = sdkSupportTicketDetails.ServiceLevelAgreement.ToPSServiceLevelAgreement(),
@@ -91,11 +90,11 @@ namespace Microsoft.Azure.Commands.Support.Helpers
                 Require24X7Response = psSupportTicketDetails.Require24X7Response,
                 ProblemStartTime = psSupportTicketDetails.ProblemStartTime,
                 ContactDetails = psSupportTicketDetails.ContactDetail.ToContactProfile(),
-                TechnicalTicketDetails = !string.IsNullOrWhiteSpace(psSupportTicketDetails.TechnicalTicketResourceId) ? 
+                TechnicalTicketDetails = !string.IsNullOrWhiteSpace(psSupportTicketDetails.TechnicalTicketResourceId) ?
                     new TechnicalTicketDetails
                     {
                         ResourceId = psSupportTicketDetails.TechnicalTicketResourceId
-                    } : 
+                    } :
                     null,
                 QuotaTicketDetails = psSupportTicketDetails.QuotaTicketDetail.ToQuotaTicketDetails()
             };
