@@ -73,7 +73,7 @@ function Test-UpdateServer
 		Assert-AreEqual $server1.ServerVersion $server.ServerVersion
 		Assert-AreEqual $server1.SqlAdministratorLogin $server.SqlAdministratorLogin
 		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
-		
+
 		# Test piping
 		$serverPassword = "n3wc00lP@55w0rd!!!"
 		$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
@@ -248,6 +248,46 @@ function Test-UpdateServerWithoutIdentity
 		$server2 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName -SqlAdministratorPassword $secureString
 		Assert-AreEqual $server2.Identity.Type SystemAssigned
 		Assert-NotNull $server2.Identity.PrincipalId
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests create and update a server with minimal TLS version
+	.DESCRIPTION
+	SmokeTest
+#>
+function Test-CreateandUpdateServerWithMinimalTlsVersion
+{
+	# Setup
+	$location = "eastus2euap"
+	$rg = Create-ResourceGroupForTest $location
+
+	try
+	{
+		# Test using parameters
+		$serverName = Get-ServerName
+		$version = "12.0"
+		$serverLogin = "testusername"
+		$serverPassword = "t357ingP@s5w0rd!"
+		$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+		$tls1_1 = "1.1"
+		$tls1_2 = "1.2"
+
+		# With all parameters
+		$job = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName `
+			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -MinimalTlsVersion $tls1_2 -AsJob
+		$job | Wait-Job
+
+		$server1 =  Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName
+		Assert-AreEqual $server1.MinimalTlsVersion $tls1_2
+
+		$server2 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -MinimalTlsVersion $tls1_1
+		Assert-AreEqual $server2.MinimalTlsVersion $tls1_1
 	}
 	finally
 	{
