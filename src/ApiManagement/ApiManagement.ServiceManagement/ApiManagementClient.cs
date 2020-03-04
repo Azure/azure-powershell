@@ -416,7 +416,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.SignupPolicyName, opt => opt.MapFrom(src => src.SignupPolicyName))
                     .ForMember(dest => dest.ProfileEditingPolicyName, opt => opt.MapFrom(src => src.ProfileEditingPolicyName))
                     .ForMember(dest => dest.PasswordResetPolicyName, opt => opt.MapFrom(src => src.PasswordResetPolicyName))
-                    .ForMember(dest => dest.Authority, opt => opt.MapFrom(src => src.Authority))
+                    .ForMember(dest => dest.Authority, opt => opt.MapFrom(src => src.Authority))                    
+                    .ForMember(dest => dest.SigninTenant, opt => opt.MapFrom(src => src.SigninTenant))
                     .ForMember(dest => dest.AllowedTenants, opt => opt.MapFrom(src => src.AllowedTenants == null ? new string[0] : src.AllowedTenants.ToArray()));
 
                 cfg
@@ -1077,7 +1078,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     headerValue = fromFile ? ContentFormat.SwaggerJson : ContentFormat.SwaggerLinkJson; 
                     break;
                 case PsApiManagementApiFormat.OpenApi:
-                    headerValue = fromFile ? ContentFormat.Openapijson : ContentFormat.OpenapiLink;
+                    headerValue = fromFile ? ContentFormat.Openapi : ContentFormat.OpenapiLink;
+                    break;
+                case PsApiManagementApiFormat.OpenApiJson:
+                    headerValue = fromFile ? ContentFormat.Openapijson : ContentFormat.OpenapijsonLink;
                     break;
                 case PsApiManagementApiFormat.Wsdl:
                     headerValue = fromFile ? ContentFormat.Wsdl : ContentFormat.WsdlLink; 
@@ -1107,6 +1111,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     return ExportFormat.Swagger;
                 case PsApiManagementApiFormat.OpenApi:
                     return ExportFormat.Openapi;
+                case PsApiManagementApiFormat.OpenApiJson:
+                    return ExportFormat.OpenapiJson;
                 case PsApiManagementApiFormat.Wadl:
                     return ExportFormat.Wadl;
                 case PsApiManagementApiFormat.Wsdl:
@@ -3087,7 +3093,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string signinPolicyName,
             string signupPolicyName,
             string passwordResetPolicyName,
-            string profileEditPolicyName)
+            string profileEditPolicyName,
+            string signinTenant)
         {
             var identityProviderCreateParameters = new IdentityProviderContract(clientId, clientSecret);
             if (allowedTenants != null)
@@ -3118,6 +3125,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             if (!string.IsNullOrEmpty(passwordResetPolicyName))
             {
                 identityProviderCreateParameters.PasswordResetPolicyName = passwordResetPolicyName;
+            }
+
+            if (!string.IsNullOrEmpty(signinTenant))
+            {
+                identityProviderCreateParameters.SigninTenant = signinTenant;
             }
 
             var response = Client.IdentityProvider.CreateOrUpdate(
@@ -3169,6 +3181,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string signupPolicyName,
             string passwordResetPolicyName,
             string profileEditPolicyName,
+            string signinTenant,
             PsApiManagementIdentityProvider identityProvider)
         {            
             var parameters = new IdentityProviderUpdateParameters();
@@ -3216,6 +3229,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             if (!string.IsNullOrEmpty(passwordResetPolicyName))
             {
                 parameters.PasswordResetPolicyName = passwordResetPolicyName;
+            }
+
+            if (!string.IsNullOrEmpty(signinTenant))
+            {
+                parameters.SigninTenant = signinTenant;
             }
 
             Client.IdentityProvider.Update(

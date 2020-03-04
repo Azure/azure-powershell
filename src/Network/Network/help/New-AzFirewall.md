@@ -199,6 +199,18 @@ Threat Intel will also run in default mode - Alert - which means malicious traff
 
 To support "forced tunneling" scenarios, this firewall will use the subnet "AzureFirewallManagementSubnet" and the management public IP address for its management traffic
 
+### 13:  Create a Firewall with Firewall Policy attached to a virtual network
+```
+$rgName = "resourceGroupName"
+$vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
+$pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
+$fp = Get-AzFirewallPolicy -ResourceGroupName $rgName -Name "fp"
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -FirewallPolicyId $fp
+```
+
+This example creates a Firewall attached to virtual network "vnet" in the same resource group as the firewall.
+The rules and threat intelligence that will be applied to the firewall will be taken from the firewall policy
+
 ## PARAMETERS
 
 ### -ApplicationRuleCollection

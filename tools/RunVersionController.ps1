@@ -134,7 +134,7 @@ function Get-ReleaseNotes
                                                                                                           $_.FullName -notlike "*Debug*" -and `
                                                                                                           $_.FullName -notlike "*Netcore*" -and `
                                                                                                           $_.FullName -notlike "*dll-Help.psd1*" -and `
-                                                                                                          $_.FullName -notlike "*Stack*" } }
+                                                                                                          ($_.FullName -notlike "*Stack*" -or $_.FullName -like "*StackEdge*") } }
 
     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $ModuleManifestFile.DirectoryName -FileName $ModuleManifestFile.Name
     return $ModuleMetadata.PrivateData.PSData.ReleaseNotes
@@ -152,6 +152,19 @@ function Update-ChangeLog
     $ChangeLogFile = Get-Item -Path "$RootPath\ChangeLog.md"
     $ChangeLogContent = Get-Content -Path $ChangeLogFile.FullName
     ($Content + $ChangeLogContent) | Set-Content -Path $ChangeLogFile.FullName -Encoding UTF8
+}
+
+function Update-Image-Releases
+{
+    Param(
+        [Parameter(Mandatory = $true)]
+        [string]$ReleaseProps,
+        [Parameter(Mandatory = $true)]
+        [string]$AzVersion
+    )
+
+    $content = Get-Content $ReleaseProps
+    $content -Replace "az.version=\d+\.\d+\.\d+", "az.version=$AzVersion" | Set-Content $ReleaseProps
 }
 
 function Get-ExistSerializedCmdletJsonFile
@@ -287,5 +300,6 @@ switch ($PSCmdlet.ParameterSetName)
 
         Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
         Update-ChangeLog -Content $changeLog -RootPath $rootPath
+        Update-Image-Releases -ReleaseProps "$rootPath\docker\config\release.props" -AzVersion $newVersion
     }
 }

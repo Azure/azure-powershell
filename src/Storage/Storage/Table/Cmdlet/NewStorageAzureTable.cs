@@ -21,11 +21,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     /// <summary>
     /// create an new azure table
     /// </summary>
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTable"),OutputType(typeof(AzureStorageTable))]
+    [CmdletOutputBreakingChange(typeof(AzureStorageTable), ChangeDescription = "AzureStorageTable.CloudTable.ServiceClient will have 2 properties removed in a future release: ConnectionPolicy, ConsistencyLevel.")]
     public class NewAzureStorageTableCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Table")]

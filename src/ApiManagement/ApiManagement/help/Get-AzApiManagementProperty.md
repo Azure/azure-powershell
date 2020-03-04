@@ -48,6 +48,8 @@ PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default
 PS C:\>Get-AzApiManagementProperty -Context $apimContext -Name "sql-connectionstring"
 ```
 
+This command gets the property details given the property name.
+
 ## PARAMETERS
 
 ### -Context

@@ -11,13 +11,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using System;
-using System.Linq;
+using System.Diagnostics;
 using System.Management.Automation;
+using System.Runtime.InteropServices;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -37,50 +37,55 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            this.WriteQuestion(Resources.SendFeedbackRecommendationQuestion);
-            int recommendation;
-            if (!int.TryParse(this.Host.UI.ReadLine(), out recommendation) || recommendation < 0 || recommendation > 10)
-                throw new PSArgumentOutOfRangeException(Resources.SendFeedbackOutOfRangeMessage);
-
-            this.WriteQuestion(Resources.SendFeedbackPositiveCommentsQuestion);
-            var positiveComments = this.Host.UI.ReadLine();
-
-            this.WriteQuestion(Resources.SendFeedbackNegativeCommentsQuestion);
-            var negativeComments = this.Host.UI.ReadLine();
-
-            this.WriteQuestion(Resources.SendFeedbackEmailQuestion);
-            var email = this.Host.UI.ReadLine();
-
-            var loggedIn = this.DefaultProfile != null
-                && this.DefaultProfile.DefaultContext != null
-                && DefaultProfile.DefaultContext.Account != null
-                && DefaultProfile.DefaultContext.Tenant != null
-                && DefaultProfile.DefaultContext.Subscription != null
-                && DefaultProfile.DefaultContext.Environment != null;
-
-            var feedbackPayload = new PSAzureFeedback
+            this.WriteQuestion(AzureProfileConstants.AzurePowerShellFeedbackQuestion);
+            var yesOrNo = this.Host.UI.ReadLine();
+            if(0 == String.Compare(yesOrNo, "yes", true) || 0 == String.Compare(yesOrNo, "y", true))
             {
-                ModuleName = this.ModuleName, 
-                ModuleVersion = this.ModuleVersion, 
-                SubscriptionId = loggedIn ? this.DefaultContext.Subscription.Id : Guid.Empty.ToString(), 
-                TenantId = loggedIn ? this.DefaultContext.Tenant.Id : Guid.Empty.ToString(), 
-                Environment = loggedIn ? this.DefaultContext.Environment.Name : null, 
-                Recommendation = recommendation, 
-                PositiveComments = positiveComments, 
-                NegativeComments = negativeComments, 
-                Email = email
-            };
-
-            this.Host.UI.WriteLine();
-
-            // Log the event with force since the user specifically issued this command to provide feedback.
-
-            this._metricHelper.LogCustomEvent(_eventName, feedbackPayload, true /* force */);
+                if (OpenBrowser(AzureProfileConstants.AzureSurveyUrl))
+                {
+                    this.Host.UI.WriteLine();
+                    return;
+                }
+                this.Host.UI.WriteLine();
+                this.WriteWarning($"{AzureProfileConstants.AzurePowerShellFeedbackWarning}{Environment.NewLine}");
+                return;
+            }
+            this.Host.UI.WriteLine(this.Host.UI.RawUI.ForegroundColor, this.Host.UI.RawUI.BackgroundColor, $"{Environment.NewLine}{AzureProfileConstants.AzurePowerShellFeedbackManually}{Environment.NewLine}");
         }
 
         private void WriteQuestion(string question)
         {
             this.Host.UI.WriteLine(ConsoleColor.Cyan, this.Host.UI.RawUI.BackgroundColor, $"{Environment.NewLine}{question}{Environment.NewLine}");
+        }
+
+        private bool OpenBrowser(string url)
+        {
+            try
+            {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    url = url.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Process.Start("xdg-open", url);
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    Process.Start("open", url);
+                }
+                else
+                {
+                    throw new PlatformNotSupportedException(RuntimeInformation.OSDescription);
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
