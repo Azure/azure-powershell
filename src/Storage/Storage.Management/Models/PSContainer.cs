@@ -222,14 +222,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Name = policy.Name;
             this.Type = policy.Type;
             this.Id = policy.Id;
+            this.AllowProtectedAppendWrites = policy.AllowProtectedAppendWrites;
         }
 
-        public int ImmutabilityPeriodSinceCreationInDays { get; set; }
+        public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
         public string State { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public string Etag { get; set; }
+        public bool? AllowProtectedAppendWrites { get; set; }
     }
 
     public class PSImmutabilityPolicyProperties
@@ -239,6 +241,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.ImmutabilityPeriodSinceCreationInDays = policy.ImmutabilityPeriodSinceCreationInDays;
             this.State = policy.State;
             this.Etag = policy.Etag;
+            this.AllowProtectedAppendWrites = policy.AllowProtectedAppendWrites;
 
             List<PSUpdateHistoryProperty> updateHistoryList = new List<PSUpdateHistoryProperty>();
             if (policy.UpdateHistory != null && policy.UpdateHistory.Count != 0)
@@ -251,10 +254,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.UpdateHistory = updateHistoryList.ToArray();
         }
 
-        public int ImmutabilityPeriodSinceCreationInDays { get; set; }
+        public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
         public string State { get; set; }
         public string Etag { get; set; }
         public PSUpdateHistoryProperty[] UpdateHistory { get; set; }
+        public bool? AllowProtectedAppendWrites { get; set; }
     }
 
     public enum PSPublicAccess

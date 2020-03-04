@@ -26,9 +26,32 @@ Remove-AzResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
 ```
 
 ## DESCRIPTION
+
 The **Remove-AzResourceGroupDeployment** cmdlet removes an Azure resource group deployment and any associated operations.
 
 ## EXAMPLES
+
+### Example 1: Removes a resource group deployment with ResourceId
+
+```powershell
+PS C:\>Remove-AzResourceGroupDeployment -ResourceId /subscriptions/{subId}/resourceGroups/testGroup/providers/Microsoft.Resources/deployments/testDeployment1
+
+True
+```
+
+This command removes a resource group deployment with the fully qualified resource Id of the deployment.
+Successful removal returns true.
+
+### Example 2: Removes a resource group deployment with ResourceGroupName and ResourceName
+
+```powershell
+PS C:\>Remove-AzResourceGroupDeployment -ResourceGroupName testGroup -Name testDeployment1
+
+True
+```
+
+This command removes a resource group deployment with the provided ResourceGroupName and ResourceName.
+Successful removal returns true.
 
 ## PARAMETERS
 
