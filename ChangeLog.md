@@ -31,6 +31,12 @@
     - 'Set-AzIotHubDeviceParent'
 * Added support to manage device parent-child relationship.
 
+#### Az.Monitor
+* Fixed output value for 'Get-AzMetricDefinition' [#9714]
+
+#### Az.Network
+* Updated Sql Management SDK.
+
 #### Az.Resources
 * Fixed for null reference bug in 'Get-AzRoleAssignment'
 * Marked switch '-Force' and '-PassThru' optional in 'Remove-AzADGroup' [#10849]

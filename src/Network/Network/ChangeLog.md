@@ -19,7 +19,9 @@
 --->
 
 ## Upcoming Release
-* Updated dependency on Sql Management SDK.
+
+## Version 2.3.2
+* Updated Sql Management SDK.
 
 ## Version 2.3.1
 * Added one extra parameter note for parameter `-EnableProxyProtocol` for `New-AzPrivateLinkService` cmdlet.
