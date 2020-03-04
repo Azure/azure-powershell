@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             base.resourceTypesToIgnoreApiVersion = new string[] {
                 "Microsoft.Sql/managedInstances",
                 "Microsoft.Sql/managedInstances/databases",
-                "Microsoft.Network/virtualNetworks"
+                "Microsoft.Sql/managedInstances/managedDatabases"
             };
         }
 
@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-CreateManagedDatabase");
         }
 
-        [Fact]
+        [Fact(Skip = "Skip due to bug in ignore api version plus long setup time for managed instance")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedDatabase()
         {
             RunPowerShellTest("Test-GetManagedDatabase");
         }
 
-        [Fact]
+        [Fact(Skip = "Skip due to long setup time for managed instance")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveManagedDatabase()
         {
