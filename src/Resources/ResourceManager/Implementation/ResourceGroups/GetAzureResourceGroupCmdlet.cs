@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
             this.WriteObject(ResourceManagerSdkClient.FilterResourceGroups(name: this.Name, tag: this.Tag, detailed: false, location: this.Location), true);
