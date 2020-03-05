@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.Support.Helpers
                 Id = sdkService.Id,
                 Name = sdkService.Name,
                 Type = sdkService.Type,
-                DisplayName = sdkService.DisplayName
+                DisplayName = sdkService.DisplayName,
+                ResourceTypes = sdkService.ResourceTypes?.ToArray()
             };
         }
 
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.Support.Helpers
                 Id = sdkProblemClassification.Id,
                 Name = sdkProblemClassification.Name,
                 Type = sdkProblemClassification.Type,
-                DisplayName = sdkProblemClassification.DisplayName
+                DisplayName = sdkProblemClassification.DisplayName,
             };
         }
 
