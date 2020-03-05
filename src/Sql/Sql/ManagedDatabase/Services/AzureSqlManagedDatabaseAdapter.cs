@@ -129,6 +129,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 RecoverableDatabaseId = model.RecoverableDatabaseId,
                 RestorableDroppedDatabaseId = model.RestorableDroppedDatabaseId,
                 SourceDatabaseId = model.SourceDatabaseId,
+                LongTermRetentionBackupResourceId = model.LongTermRetentionBackupResourceId
             };
 
             Management.Sql.Models.ManagedDatabase database = Communicator.RestoreDatabase(model.ResourceGroupName, model.ManagedInstanceName, model.Name, dbModel);

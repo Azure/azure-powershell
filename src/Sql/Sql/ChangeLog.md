@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 * Added PublicNetworkAccess to New-AzSqlServer and Set-AzSqlServer
+* Added support for Long Term Retention backup configuration for Managed Databases
+    - Get/Set LTR policy on a managed database 
+    - Get LTR backup(s) by managed database, managed instance, or by location 
+    - Remove an LTR backup 
+    - Restore an LTR backup to create a new managed database
 * Added MinimalTlsVersion to New-AzSqlServer and Set-AzSqlServer
 * Added MinimalTlsVersion to New-AzSqlInstance and Set-AzSqlInstance
 * Bumped SQL SDK version for Az.Network
