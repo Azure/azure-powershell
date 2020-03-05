@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 throw new ArgumentException($"The entered non-edge device \"{this.DeviceId}\" doesn't exist.");
             }
 
-            IotHubDataPlaneUtils.Validate_Device_Tracing(this.DeviceId, iotHubDescription.Sku.Tier.Value.ToString(), iotHubDescription.Location, deviceTwin.Capabilities.IotEdge);
+            IotHubDataPlaneUtils.ValidateDeviceTracing(this.DeviceId, iotHubDescription.Sku.Tier.Value.ToString(), iotHubDescription.Location, deviceTwin.Capabilities.IotEdge);
 
             this.WriteObject(IotHubDataPlaneUtils.GetDeviceTracing(this.DeviceId, deviceTwin));
         }

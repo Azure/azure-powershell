@@ -34,7 +34,7 @@ Set-AzIotHubDistributedTracing [-ResourceId] <String> [-DeviceId] <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Update the distributed tracing options for a device.
 
 ## EXAMPLES
 
