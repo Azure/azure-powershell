@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzDataBoxEdgeDevice
 
 ## SYNOPSIS
-Invoke specific actions on the device
+Invokes specific actions on the device.
 
 ## SYNTAX
 
@@ -67,23 +67,23 @@ Invoke-AzDataBoxEdgeDevice -DeviceObject <PSDataBoxEdgeDevice> [-InstallUpdate] 
 ```
 
 ## DESCRIPTION
-This **Invoke-AzDataBoxEdgeDevice** will invole actions on  the device to scan, fetch and update
+The **Invoke-AzDataBoxEdgeDevice** cmdlet invokes actions to scan, download �and install the updates on the Data Box Edge device. An automatic scan runs on the device daily, you can trigger the scan explicitly by running this cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzDataBoxEdgeDevice -ResourceGroupName psrgpfortest -Name psdataboxedgedevice -ScanForUpdate
+PS C:\> Invoke-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -ScanForUpdate
 ```
 
 ### Example 2
 ```powershell
-PS C:\> Invoke-AzDataBoxEdgeDevice -ResourceGroupName psrgpfortest -Name psdataboxedgedevice -FetchUpdate
+PS C:\> Invoke-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -FetchUpdate
 ```
 
 ### Example 3
 ```powershell
-PS C:\> Invoke-AzDataBoxEdgeDevice -ResourceGroupName psrgpfortest -Name psdataboxedgedevice -InstallUpdate
+PS C:\> Invoke-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -InstallUpdate
 ```
 
 ## PARAMETERS
@@ -254,8 +254,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.Azure.Management.EdgeGateway.Models;
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
+﻿using Microsoft.Azure.Management.DataBoxEdge.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
-using DataBoxEdgeDevice = Microsoft.Azure.Management.EdgeGateway.Models.DataBoxEdgeDevice;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using System;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
 {

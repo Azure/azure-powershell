@@ -23,9 +23,10 @@ New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -VhdUri <String> -Log
 ```
 New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig [-ManagedDisk] -LogStorageAccountId <String>
  -DiskId <String> -RecoveryResourceGroupId <String> -RecoveryReplicaDiskAccountType <String>
- -RecoveryTargetDiskAccountType <String> [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>]
- [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -RecoveryTargetDiskAccountType <String> [-RecoveryDiskEncryptionSetId <String>]
+ [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
+ [-KeyEncryptionVaultId <String>] [-FailoverDiskName <String>] [-TfoDiskName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +57,14 @@ PS C:\> New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk 
 ```
 
 Create a managed disk mapping object with one pass encryption settings for Azure virtual machine disks to be replicated.Used during Azure to Azure EnableDr and re-protect operation.
+
+### Example 4
+```
+PS C:\> New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStorageAccountId -DiskId $diskId -RecoveryResourceGroupId $RecoveryResourceGroupId `
+-RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType -RecoveryDiskEncryptionSetId $RecoveryDiskEncryptionSetId
+```
+
+Create a managed disk mapping object with target disk encryption set Id, for Azure virtual machine disks to be replicated.Used during Azure to Azure EnableDr and re-protect operation.
 
 ## PARAMETERS
 
@@ -113,6 +122,21 @@ Parameter Sets: AzureToAzureManagedDisk
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FailoverDiskName
+Specifies the name of the disk created during failover.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,6 +218,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RecoveryDiskEncryptionSetId
+Specifies the ID of the Azure disk encryption set to be used for recovery disks.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RecoveryReplicaDiskAccountType
 Specifies the account type of replicated managed disk.
 
@@ -235,6 +274,21 @@ Aliases:
 Accepted values: Premium_LRS, Standard_LRS, Standard_SSD
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TfoDiskName
+Specifies the name of the disk created during test failover.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

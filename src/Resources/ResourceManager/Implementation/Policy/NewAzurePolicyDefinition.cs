@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
     using Newtonsoft.Json.Linq;
     using Policy;
     using System;
@@ -26,7 +28,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates the new policy definition.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PSObject))]
+    [CmdletOutputBreakingChange(typeof(PSObject), ReplacementCmdletOutputTypeName = "PsPolicyDefinition")]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PSObject))]
     public class NewAzurePolicyDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -134,23 +137,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Constructs the resource
+        /// Constructs the policy definition by combining command line parameters and json object
         /// </summary>
         private JToken GetResource()
         {
             var policyDefinitionObject = new PolicyDefinition
             {
                 Name = this.Name,
-                Properties = new PolicyDefinitionProperties
-                {
-                    Description = this.Description ?? null,
-                    DisplayName = this.DisplayName ?? null,
-                    PolicyRule = this.GetObjectFromParameter(this.Policy, nameof(this.Policy)),
-                    Metadata = this.Metadata == null ? null : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)),
-                    Parameters = this.Parameter == null ? null : this.GetObjectFromParameter(this.Parameter, nameof(this.Parameter)),
-                    Mode = string.IsNullOrEmpty(this.Mode) ? PolicyDefinitionMode.All : this.Mode
-                }
+                Properties = new PolicyDefinitionProperties()
             };
+
+            var policyObject = this.GetObjectFromParameter(this.Policy, nameof(this.Policy));
+            if (policyObject["policyRule"] != null)
+            {
+                // policy parameter was a full policy object, populate the properties from it, override from other command line parameters
+                policyDefinitionObject.Properties.Description = this.Description ?? policyObject["description"]?.ToString();
+                policyDefinitionObject.Properties.DisplayName = this.DisplayName ?? policyObject["displayName"]?.ToString();
+                policyDefinitionObject.Properties.PolicyRule = policyObject["policyRule"] as JObject;
+                policyDefinitionObject.Properties.Metadata = this.Metadata == null ? policyObject["metadata"] as JObject : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata));
+                policyDefinitionObject.Properties.Parameters = this.Parameter == null ? policyObject["parameters"] as JObject : this.GetObjectFromParameter(this.Parameter, nameof(this.Parameter));
+                policyDefinitionObject.Properties.Mode = string.IsNullOrEmpty(this.Mode) ? policyObject["mode"]?.ToString() ?? PolicyDefinitionMode.All : this.Mode;
+            }
+            else
+            {
+                // policy parameter was a rule object, populate policy rule from it and the properties from command line parameters
+                policyDefinitionObject.Properties.Description = this.Description;
+                policyDefinitionObject.Properties.DisplayName = this.DisplayName;
+                policyDefinitionObject.Properties.PolicyRule = this.GetObjectFromParameter(this.Policy, nameof(this.Policy));
+                policyDefinitionObject.Properties.Metadata = this.Metadata == null ? null : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata));
+                policyDefinitionObject.Properties.Parameters = this.Parameter == null ? null : this.GetObjectFromParameter(this.Parameter, nameof(this.Parameter));
+                policyDefinitionObject.Properties.Mode = string.IsNullOrEmpty(this.Mode) ? PolicyDefinitionMode.All : this.Mode;
+            }
 
             return policyDefinitionObject.ToJToken();
         }

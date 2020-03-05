@@ -1340,6 +1340,7 @@
     "New-AzApplicationGatewayRewriteRule": "New-AzureRmApplicationGatewayRewriteRule",
     "New-AzApplicationGatewayRewriteRuleActionSet": "New-AzureRmApplicationGatewayRewriteRuleActionSet",
     "New-AzApplicationGatewayRewriteRuleHeaderConfiguration": "New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration",
+    "New-AzApplicationGatewayRewriteRuleUrlConfiguration": "New-AzureRmApplicationGatewayRewriteRuleUrlConfiguration",
     "New-AzApplicationGatewayRewriteRuleCondition": "New-AzureRmApplicationGatewayRewriteRuleCondition",
     "Add-AzApplicationGatewayRedirectConfiguration": "Add-AzureRmApplicationGatewayRedirectConfiguration",
     "Get-AzApplicationGatewayRedirectConfiguration": "Get-AzureRmApplicationGatewayRedirectConfiguration",
@@ -2022,7 +2023,8 @@
     "Set-AzADUser": "Set-AzureRmADUser",
     "Remove-AzTag": "Remove-AzureRmTag",
     "Get-AzTag": "Get-AzureRmTag",
-    "New-AzTag": "New-AzureRmTag"
+    "New-AzTag": "New-AzureRmTag",
+    "Update-AzTag": "Update-AzureRmTag"
   },
   "Az.Scheduler": {
     "Disable-AzSchedulerJobCollection": "Disable-AzureRmSchedulerJobCollection",

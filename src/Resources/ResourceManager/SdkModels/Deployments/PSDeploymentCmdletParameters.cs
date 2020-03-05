@@ -4,13 +4,18 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     public class PSDeploymentCmdletParameters
     {
+        public string ManagementGroupId { get; set; }
+
         public string ResourceGroupName { get; set; }
+
+        public DeploymentScopeType ScopeType { get; set; }
 
         public string DeploymentName { get; set; }
 

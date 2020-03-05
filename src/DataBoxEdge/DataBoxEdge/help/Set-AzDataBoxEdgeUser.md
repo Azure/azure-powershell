@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzDataBoxEdgeUser
 
 ## SYNOPSIS
-Set the new password for the user
+Sets a new password for a user on the device.
 
 ## SYNTAX
 
@@ -32,14 +32,14 @@ Set-AzDataBoxEdgeUser -InputObject <PSDataBoxEdgeUser> -Password <SecureString> 
 ```
 
 ## DESCRIPTION
-The **Set-AzDataBoxEdgeUser** will update the user with new password
+The **Set-AzDataBoxEdgeUser** cmdlet sets a new password for a user on the Data Box Edge device.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzDataBoxEdgeUser -ResourceGroupName resource-group-name -DeviceName device-name -Name username
- -Password @SecureString -EncryptionKey EncryptionKey
+PS C:\> Set-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
+ -Password @SecureString -EncryptionKey @SecureString
 ```
 
 ## PARAMETERS

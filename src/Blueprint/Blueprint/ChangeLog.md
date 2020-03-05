@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Showed DependsOn property value in the table view
+* Added support to accept PolicyDefinitionParameter empty 
+
+## Version 0.2.10
+* Added support to include subfolders when deploying blueprints with artifacts
 
 ## Version 0.2.9
 * Update references in .psd1 to use relative path

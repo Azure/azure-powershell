@@ -435,8 +435,8 @@
   <data name="RetrievingStorageAccountKeysFailed" xml:space="preserve">
     <value>Failed retrieving keys of storage '{0}'.</value>
   </data>
-  <data name="VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase" xml:space="preserve">
-    <value>Vulnerability Assessment operation is not available on master database. Skipping...</value>
+  <data name="VulnerabilityAssessmentOperationIsNotAvailableOnManagedInstanceSystemDatabase" xml:space="preserve">
+    <value>Vulnerability Assessment operation is not available on managed instance system database. Skipping...</value>
   </data>
   <data name="KeyIdNotFoundForAzureKeyVaultEncryptionProtectorError" xml:space="preserve">
     <value>KeyId parameter is required for encryption protector type AzureKeyVault</value>
@@ -576,5 +576,17 @@
   <data name="AzureElasticJobExecutionNotExists" xml:space="preserve">
     <value>Job execution '{0}' does not exist in job '{1}'</value>
     <comment>Elastic Jobs</comment>
+  </data>
+  <data name="VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase" xml:space="preserve">
+    <value>Vulnerability Assessment operation is not available on master database. Skipping...</value>
+  </data>
+  <data name="DoYouWantToProceed" xml:space="preserve">
+    <value>Do you want to proceed?</value>
+  </data>
+  <data name="ChangingHardwareFamilyIsIrreversable" xml:space="preserve">
+    <value>For this update operation provided compute generation parameter is '{0}'. Once the hardware generation is upgraded, it is not possible to switch back to Gen4 compute generation as this hardware is being deprecated.</value>
+  </data>
+  <data name="CannotChangeHardwareFamily" xml:space="preserve">
+    <value>You cannot change hardware family.</value>
   </data>
 </root>

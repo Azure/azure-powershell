@@ -122,6 +122,21 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Azure Storage to mount inside a Web App for Container. Use New-AzWebAppAzureStoragePath to create it")]
         public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Ensure web app gets loaded all the time, rather unloaded after been idle.")]
+        public bool AlwaysOn { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "The minimum version of TLS required for SSL requests. Allowed Values [1.0 | 1.1 | 1.2].")]
+        [ValidateSet("1.0", "1.1", "1.2")]
+        public string MinTlsVersion { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Set the Ftps state value for an app. Allowed Values [AllAllowed | Disabled | FtpsOnly].")]
+        [ValidateSet("AllAllowed", "Disabled", "FtpsOnly")]
+        public string FtpsState { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Custom hostnames associated with web app slot")]
+        [ValidateNotNullOrEmpty]
+        public string[] HostNames { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
@@ -137,6 +152,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     location = WebApp.Location;
                     tags = WebApp.Tags;
                     var parameters = new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
+
+                    // Perform the AppServicePlan update before updating site or config properties
+                    if (parameters.Contains("AppServicePlan"))
+                    {
+                        WebApp.AzureStoragePath = null; // the API to update site Object doesn't have the AzureStorage Path property
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, AppServicePlan, WebApp);
+                    }
+
                     if (parameters.Any(p => CmdletHelpers.SiteConfigParameters.Contains(p)))
                     {
                         siteConfig = new SiteConfig
@@ -158,7 +181,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                             Use32BitWorkerProcess =
                                 parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
                             AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
-                            NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers
+                            NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers,
+                            AlwaysOn = parameters.Contains("AlwaysOn") ? (bool)AlwaysOn : false
                         };
                     }
 
@@ -236,12 +260,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         };
 
                         WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, WebApp.ServerFarmId, new PSSite(site));
+                        
+                        //Update WebApp object after site update
+                        WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
                     }
-
-                    if (parameters.Contains("AppServicePlan"))
+                    if (parameters.Contains("HostNames"))
                     {
-                        WebApp.AzureStoragePath = null; // the API to update site Object doesn't have the AzureStorage Path property
-                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, AppServicePlan, WebApp);
+                        WebsitesClient.AddCustomHostNames(ResourceGroupName, location, Name,HostNames, Slot);
                     }
 
                     break;
@@ -281,6 +306,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(WebApp.ServerFarmId, out rg, out servicePlanName);
                     WebApp.AzureStoragePath = null; // the API to update site Object doesn't have the AzureStorage Path property
                     WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, servicePlanName, WebApp);
+                    WebsitesClient.AddCustomHostNames(ResourceGroupName, location, Name, WebApp.HostNames.ToArray(), Slot);
                     break;
             }
 

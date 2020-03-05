@@ -17,6 +17,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
     using Newtonsoft.Json.Linq;
     using Policy;
     using System.Management.Automation;
@@ -25,7 +27,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Gets the policy assignment.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PSObject))]
+    [CmdletOutputBreakingChange(typeof(PSObject), ReplacementCmdletOutputTypeName = "PsPolicyAssignment")]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PSObject))]
     public class GetAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -151,7 +154,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private bool IsManagementGroupScope(string resourceId)
         {
-            return resourceId.StartsWith($"/{Constants.Providers}/{Constants.MicrosoftManagementGroupDefinitionType}", System.StringComparison.OrdinalIgnoreCase);
+            return resourceId.StartsWith($"{Constants.ManagementGroupIdPrefix}", System.StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>
@@ -169,7 +172,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetResourceId()
         {
-            return this.Id ?? this.MakePolicyAssignmentId(this.Scope ?? $"/{Constants.Subscriptions}/{DefaultContext.Subscription.Id}", this.Name);
+            return this.Id ?? this.MakePolicyAssignmentId(this.Scope, this.Name);
         }
 
         private string GetFilterParam(string resourceId)

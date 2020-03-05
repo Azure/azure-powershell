@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataBoxEdgeTrigger
 
 ## SYNOPSIS
-To Configure Triggers 
+Configures a trigger on the device.
 
 ## SYNTAX
 
@@ -39,13 +39,13 @@ New-AzDataBoxEdgeTrigger [-PeriodicTimerEvent] [-AsJob] [-DefaultProfile <IAzure
 ```
 
 ## DESCRIPTION
-The **New-AzDataBoxEdgeTrigger** is used to configure triggers on the device
+The **New-AzDataBoxEdgeTrigger** cmdlet configures a trigger on the Data Box Edge device. 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>  New-AzDataBoxEdgeTrigger -ResourceGroupName resource-group-name -DeviceName device-name -PeriodicTimerEvent -Name periodic-trigger -RoleName IOTRole -Schedule "00:00" -StartTime "2019-10-28 12:00:00" -Topic sample-topic
+PS C:\> New-AzDataBoxEdgeTrigger -ResourceGroupName resourceGroupName -DeviceName deviceName -PeriodicTimerEvent -Name periodic-trigger -RoleName IOTRole -Schedule "00:00" -StartTime "2019-10-28 12:00:00" -Topic sample-topic
 Name                  Kind               
 ----                  ----               
 periodic-trigger      PeriodicTimerEvent
@@ -174,8 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -Schedule
-Periodic frequency at which timer event needs to be raised.
-Supports daily, hourly, minutes, and seconds
+Periodic frequency at which timer event needs to be raised. Specify a schedule in either days (between 1 and 365) , hours (between 1 and 23), or minutes (between 1 and 59).
 
 ```yaml
 Type: System.String
@@ -220,10 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-The time of the day that results in a valid trigger.
-Schedule is computed with reference to the time specified up to seconds.
-If timezone is not specified the time will considered to be in device timezone.
-The value will always be returned as UTC time.
+The time of the day that results in a valid trigger. Schedule is computed with reference to the time specified up to seconds. If timezone is not specified the time will considered to be in device timezone. The value will always be returned as UTC time.
 
 ```yaml
 Type: System.DateTime
@@ -268,8 +264,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

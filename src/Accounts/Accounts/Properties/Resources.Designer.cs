@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -156,6 +156,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string AutosaveSettingFromSession {
             get {
                 return ResourceManager.GetString("AutosaveSettingFromSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Azure PowerShell team is listening, please let us know how we are doing: {0}..
+        /// </summary>
+        internal static string AzurePowerShellFeedback {
+            get {
+                return ResourceManager.GetString("AzurePowerShellFeedback", resourceCulture);
             }
         }
         
@@ -363,6 +372,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string DataCollectionEnabledWarning {
             get {
                 return ResourceManager.GetString("DataCollectionEnabledWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not open the default browser. Use a web browser to open the page {0}..
+        /// </summary>
+        internal static string DefaultBrowserOpenFailure {
+            get {
+                return ResourceManager.GetString("DefaultBrowserOpenFailure", resourceCulture);
             }
         }
         
@@ -628,6 +646,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fail to access profile file and will try to use process ContextAutosaveSetting mode. Detailed error: &apos;{0}&apos;.
+        /// </summary>
+        internal static string ProfileFileNotAccessible {
+            get {
+                return ResourceManager.GetString("ProfileFileNotAccessible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to set profile because environment variable &apos;${0}&apos; is null..
         /// </summary>
         internal static string ProfilePathNull {
@@ -790,24 +817,6 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter your email if you are interested in providing follow up information:.
-        /// </summary>
-        internal static string SendFeedbackEmailQuestion {
-            get {
-                return ResourceManager.GetString("SendFeedbackEmailQuestion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Upon what could Azure PowerShell improve? .
-        /// </summary>
-        internal static string SendFeedbackNegativeCommentsQuestion {
-            get {
-                return ResourceManager.GetString("SendFeedbackNegativeCommentsQuestion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} must be issued in interactive mode..
         /// </summary>
         internal static string SendFeedbackNonInteractiveMessage {
@@ -817,29 +826,20 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The value entered was either not convertible to an integer or out of range [0, 10]..
+        ///   Looks up a localized string similar to Want to provide feedback about Azure PowerShell? Take a quick survey and let us know how we are doing: {0}. Do you want to open the link? (Y/N).
         /// </summary>
-        internal static string SendFeedbackOutOfRangeMessage {
+        internal static string SendFeedbackOpenLinkAutomatically {
             get {
-                return ResourceManager.GetString("SendFeedbackOutOfRangeMessage", resourceCulture);
+                return ResourceManager.GetString("SendFeedbackOpenLinkAutomatically", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What does Azure PowerShell do well?.
+        ///   Looks up a localized string similar to Use a web browser to open the page {0}..
         /// </summary>
-        internal static string SendFeedbackPositiveCommentsQuestion {
+        internal static string SendFeedbackOpenLinkManually {
             get {
-                return ResourceManager.GetString("SendFeedbackPositiveCommentsQuestion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to With zero (0) being the least and ten (10) being the most, how likely are you to recommend Azure PowerShell to a friend or colleague?.
-        /// </summary>
-        internal static string SendFeedbackRecommendationQuestion {
-            get {
-                return ResourceManager.GetString("SendFeedbackRecommendationQuestion", resourceCulture);
+                return ResourceManager.GetString("SendFeedbackOpenLinkManually", resourceCulture);
             }
         }
         

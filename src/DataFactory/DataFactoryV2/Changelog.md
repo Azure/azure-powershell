@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 1.6.1
+* Update ADF .Net SDK version to 4.7.0
+
+## Version 1.6.0
+* Add AutoUpdateETA, LatestVersion, PushedVersion, TaskQueueId and VersionStatus properties for Get-AzDataFactoryV2IntegrationRuntime cmd
+
+* Update ADF .Net SDK version to 4.6.0
+* Add parameter "PublicIPs" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd 
+to enable create Azure-SSIS IR with static public IP addresses.
+
 ## Version 1.5.1
 * Update ADF .Net SDK version to 4.5.0
 * Update references in .psd1 to use relative path

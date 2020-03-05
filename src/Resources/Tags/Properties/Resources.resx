@@ -120,7 +120,7 @@
   <data name="CanNotDeleteTag" xml:space="preserve">
     <value>Can not remove tag/tag value because it's being referenced by other resources.</value>
   </data>
-  <data name="RemoveTagMessage" xml:space="preserve">
+  <data name="RemovePredefinedTagMessage" xml:space="preserve">
     <value>Removing tag ....</value>
   </data>
   <data name="RemovingTag" xml:space="preserve">
@@ -128,5 +128,17 @@
   </data>
   <data name="TagNotFoundMessage" xml:space="preserve">
     <value>Tag '{0}' not found</value>
+  </data>
+  <data name="RemoveTagMessage" xml:space="preserve">
+    <value>Removing the entire set of tags</value>
+  </data>
+  <data name="CreatePredefinedTagMessage" xml:space="preserve">
+    <value>Creating predefined tag with value '{0}'</value>
+  </data>
+  <data name="CreateTagMessage" xml:space="preserve">
+    <value>Creating or updating the entire set of tags</value>
+  </data>
+  <data name="UpdateTagMessage" xml:space="preserve">
+    <value>Updating the entire set of tags with '{0}' operation</value>
   </data>
 </root>
