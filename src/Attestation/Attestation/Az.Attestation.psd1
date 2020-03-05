@@ -56,8 +56,11 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.2'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Attestation.dll', 
-               'Microsoft.Azure.Attestation.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.Attestation.dll',
+               'Microsoft.Azure.Attestation.dll',
+               'Microsoft.IdentityModel.JsonWebTokens.dll',
+               'Microsoft.IdentityModel.Tokens.dll',
+               'Microsoft.IdentityModel.Logging.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -75,8 +78,8 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzAttestation', 'Get-AzAttestation', 'Remove-AzAttestation', 
-               'Get-AzAttestationPolicy', 'Set-AzAttestationPolicy', 
+CmdletsToExport = 'New-AzAttestation', 'Get-AzAttestation', 'Remove-AzAttestation',
+               'Get-AzAttestationPolicy', 'Set-AzAttestationPolicy',
 			   'Reset-AzAttestationPolicy',
 			   'Get-AzAttestationPolicySigners', 'Add-AzAttestationPolicySigner',
 			   'Remove-AzAttestationPolicySigner'
