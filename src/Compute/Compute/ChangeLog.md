@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix errors in examples of help document
 
 ## Version 3.5.0
 * Allowed empty value for ProximityPlacementGroupId during update
