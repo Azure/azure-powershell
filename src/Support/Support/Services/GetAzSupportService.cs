@@ -34,11 +34,6 @@ namespace Microsoft.Azure.Commands.Support.Services
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, HelpMessage = "Resource types.")]
-        [Alias("ResourceTypes")]
-        [ValidateNotNullOrEmpty]
-        public List<string> TypesOfResources { get; set; }
-
         public override void ExecuteCmdlet()
         {
             try
