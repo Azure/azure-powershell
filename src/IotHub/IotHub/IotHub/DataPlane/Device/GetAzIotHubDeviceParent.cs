@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 throw new ArgumentException($"The entered device \"{this.DeviceId}\" doesn\'t support parent device functionality.");
             }
             
-            string parentDeviceId = childDevice.Scope.Substring(IotHubDataPlaneUtils.DEVICE_DEVICESCOPE_PREFIX.Length, childDevice.Scope.LastIndexOf("-") - IotHubDataPlaneUtils.DEVICE_DEVICESCOPE_PREFIX.Length);
+            string parentDeviceId = childDevice.Scope.Substring(IotHubDataPlaneUtils.DeviceScopePrefix.Length, childDevice.Scope.LastIndexOf("-") - IotHubDataPlaneUtils.DeviceScopePrefix.Length);
             
             this.WriteObject(IotHubDataPlaneUtils.ToPSDevice(registryManager.GetDeviceAsync(parentDeviceId).GetAwaiter().GetResult()));
         }

@@ -18,23 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add support to manage modules on a target Iot device in an Iot Hub. New Cmdlets are:
-	- Add-AzIotHubModule
-	- Get-AzIotHubModule
-	- Remove-AzIotHubModule
-	- Set-AzIotHubModule
-* Add cmdlet to get the connection string of a target IoT device in an Iot Hub.
-* Add cmdlet to get the connection string of a module on a target IoT device in an Iot Hub.
-* Add support to get/set parent device of an IoT device. New Cmdlets are:
-    - Get-AzIotHubDeviceParent
-    - Set-AzIotHubDeviceParent
-* Add support to manage device parent-child relationship. New Cmdlets are:
-    - Add-AzIotHubDeviceChildren
-    - Get-AzIotHubDeviceChildren
-    - Remove-AzIotHubDeviceChildren
-* Add support to manage distributed settings per-device. New Cmdlets are:
-    - Get-AzIotHubDistributedTracing
-    - Set-AzIotHubDistributedTracing
+* Added support to manage devices in an Iot Hub. New Cmdlets are:
+	- `Add-AzIotHubDevice`
+	- `Get-AzIotHubDevice`
+	- `Remove-AzIotHubDevice`
+	- `Set-AzIotHubDevice`
+* Added support to manage modules on a target Iot device in an Iot Hub. New Cmdlets are:
+	- `Add-AzIotHubModule`
+	- `Get-AzIotHubModule`
+	- `Remove-AzIotHubModule`
+	- `Set-AzIotHubModule`
+* Added cmdlet to get the connection string of a target IoT device in an Iot Hub.
+* Added cmdlet to get the connection string of a module on a target IoT device in an Iot Hub.
+* Added support to get/set parent device of an IoT device. New Cmdlets are:
+    - `Get-AzIotHubDeviceParent`
+    - `Set-AzIotHubDeviceParent`
+* Added support to manage device parent-child relationship.
+* Added support to manage distributed settings per-device. New Cmdlets are:
+    - `Get-AzIotHubDistributedTracing`
+    - `Set-AzIotHubDistributedTracing`
 
 ## Version 2.1.0
 * Added support to manage devices in an Iot Hub. New Cmdlets are:

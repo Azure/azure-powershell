@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Devices.Shared;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json;
     using ResourceManager.Common.ArgumentCompleters;
 
@@ -101,24 +102,24 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 PSDistributedTracing psDistributedTracing = new PSDistributedTracing();
                 Twin deviceTwin = registryManager.GetTwinAsync(this.DeviceId).GetAwaiter().GetResult();
 
-                IotHubDataPlaneUtils.Validate_Device_Tracing(this.DeviceId, iotHubDescription.Sku.Tier.Value.ToString(), iotHubDescription.Location, deviceTwin.Capabilities.IotEdge);
+                IotHubDataPlaneUtils.ValidateDeviceTracing(this.DeviceId, iotHubDescription.Sku.Tier.Value.ToString(), iotHubDescription.Location, deviceTwin.Capabilities.IotEdge);
                 
-                if (deviceTwin.Properties.Desired.Contains(IotHubDataPlaneUtils.TRACING_PROPERTY))
+                if (deviceTwin.Properties.Desired.Contains(IotHubDataPlaneUtils.TracingProperty))
                 {
-                    psDistributedTracing = JsonConvert.DeserializeObject<PSDistributedTracing>(deviceTwin.Properties.Desired[IotHubDataPlaneUtils.TRACING_PROPERTY].ToString());
+                    psDistributedTracing = JsonConvert.DeserializeObject<PSDistributedTracing>(deviceTwin.Properties.Desired[IotHubDataPlaneUtils.TracingProperty].ToString());
                 }
 
                 psDistributedTracing.SamplingMode = this.SamplingMode;
 
                 if (this.SamplingMode.Equals(PSDistributedTracingSamplingMode.Enabled))
                 {
-                    if (this.MyInvocation.BoundParameters.ContainsKey("SamplingRate"))
+                    if (this.IsParameterBound(c => c.SamplingRate))
                     {
                         psDistributedTracing.SamplingRate = this.SamplingRate;
                     }
                 }
 
-                deviceTwin.Properties.Desired[IotHubDataPlaneUtils.TRACING_PROPERTY] = psDistributedTracing;
+                deviceTwin.Properties.Desired[IotHubDataPlaneUtils.TracingProperty] = psDistributedTracing;
 
                 deviceTwin = registryManager.UpdateTwinAsync(this.DeviceId, deviceTwin, deviceTwin.ETag).GetAwaiter().GetResult();
                 

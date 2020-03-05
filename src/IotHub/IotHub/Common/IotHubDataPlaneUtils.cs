@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
 
     public static class IotHubDataPlaneUtils
     {
-        public const string DEVICE_DEVICESCOPE_PREFIX = "ms-azure-iot-edge://";
-        public const string TRACING_ALLOWED_FOR_SKU = "standard";
-        public const string TRACING_PROPERTY = "azureiot*com^dtracing^1";
+        public const string DeviceScopePrefix = "ms-azure-iot-edge://";
+        public const string TracingAllowedForSku = "standard";
+        public const string TracingProperty = "azureiot*com^dtracing^1";
 
-        public static readonly string[] TRACING_ALLOWED_FOR_LOCATION = { "northeurope", "westus2", "west us 2", "southeastasia" };
+        public static readonly string[] TracingAllowedForLocation = { "northeurope", "westus2", "west us 2", "southeastasia" };
 
         public static string GetEdgeDevices()
         {
@@ -70,13 +70,13 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return IotHubUtils.ConvertObject<IEnumerable<Module>, IEnumerable<PSModules>>(modules.ToList());
         }
 
-        public static void Validate_Device_Tracing(string DeviceId, string Sku, string Location, bool IsEdgeDevice)
+        public static void ValidateDeviceTracing(string DeviceId, string Sku, string Location, bool IsEdgeDevice)
         {
-            if (!TRACING_ALLOWED_FOR_LOCATION.Any(location => location.Equals(Location, StringComparison.OrdinalIgnoreCase)))
+            if (!TracingAllowedForLocation.Any(location => location.Equals(Location, StringComparison.OrdinalIgnoreCase)))
             {
                 throw new ArgumentException($"Distributed tracing isn\'t supported for the hub located at \"{Location}\"");
             }
-            if (!TRACING_ALLOWED_FOR_SKU.Equals(Sku, StringComparison.OrdinalIgnoreCase))
+            if (!TracingAllowedForSku.Equals(Sku, StringComparison.OrdinalIgnoreCase))
             {
                 throw new ArgumentException($"Distributed tracing isn\'t supported for the hub belongs to \"{Sku}\" sku tier.");
             }
@@ -95,14 +95,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
                 IsSynced = false
             };
 
-            if (deviceTwin.Properties.Desired.Contains(TRACING_PROPERTY))
+            if (deviceTwin.Properties.Desired.Contains(TracingProperty))
             {
-                psDeviceTracing.TracingOption = JsonConvert.DeserializeObject<PSDistributedTracing>(deviceTwin.Properties.Desired[TRACING_PROPERTY].ToString());
+                psDeviceTracing.TracingOption = JsonConvert.DeserializeObject<PSDistributedTracing>(deviceTwin.Properties.Desired[TracingProperty].ToString());
             }
 
-            if (deviceTwin.Properties.Reported.Contains(TRACING_PROPERTY))
+            if (deviceTwin.Properties.Reported.Contains(TracingProperty))
             {
-                PSDistributedTracing psReportedDistributedTracing = JsonConvert.DeserializeObject<PSDistributedTracing>(deviceTwin.Properties.Reported[TRACING_PROPERTY].ToString());
+                PSDistributedTracing psReportedDistributedTracing = JsonConvert.DeserializeObject<PSDistributedTracing>(deviceTwin.Properties.Reported[TracingProperty].ToString());
                 if (psReportedDistributedTracing != null)
                 {
                     psDeviceTracing.IsSynced = (psDeviceTracing.TracingOption.SamplingMode.Equals(psReportedDistributedTracing.SamplingMode) && psDeviceTracing.TracingOption.SamplingRate.Equals(psReportedDistributedTracing.SamplingRate));
