@@ -38,6 +38,7 @@ function Test-CreateManagedInstance
 	$collation = "Serbian_Cyrillic_100_CS_AS"
 	$timezoneId = "Central Europe Standard Time"
 	$proxyOverride = "Proxy"
+
  	try
  	{
 		# Setup VNET
@@ -356,5 +357,53 @@ function Test-CreateManagedInstanceWithIdentity
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a managed instance with MinimalTlsVersion
+	.DESCRIPTION
+	SmokeTest
+#>
+function Test-CreateUpdateManagedInstanceWithMinimalTlsVersion
+{
+	# Setup
+	$location = "eastus2euap"
+	$rgName = "DejanDuVnetRG"
+	$subnetId = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/AndyPG/providers/Microsoft.Network/virtualNetworks/prepare-cl-nimilj/subnets/default"
+	$managedInstanceName = "ps123"
+ 	$version = "12.0"
+ 	$credentials = Get-ServerCredential
+ 	$licenseType = "BasePrice"
+  	$storageSizeInGB = 128
+ 	$vCore = 4
+ 	$skuName = "GP_Gen5"
+	$collation = "Serbian_Cyrillic_100_CS_AS"
+	$timezoneId = "Central Europe Standard Time"
+	$proxyOverride = "Proxy"
+	$tls1_2 = "1.2"
+	$tls1_1 = "1.1"
+
+ 	try
+ 	{
+ 		# With SKU name specified
+ 		$job = New-AzSqlInstance -ResourceGroupName $rgName -Name $managedInstanceName `
+ 			-Location $location -AdministratorCredential $credentials -SubnetId $subnetId `
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -Collation $collation `
+			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -MinimalTlsVersion $tls1_2 -AsJob
+ 		$job | Wait-Job
+ 		$managedInstance1 = $job.Output
+
+ 		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstanceName
+		Assert-AreEqual $managedInstance1.MinimalTlsVersion $tls1_2
+
+		$managedInstance2 = Set-AzSqlInstance -MinimalTlsVersion $tls1_1 -ResourceGroupName $rgName -Name "ps123" -Force
+
+		Assert-AreEqual $managedInstance2.MinimalTlsVersion $tls1_1
+	}
+	finally
+	{
+		Remove-AzSqlInstance -ResourceGroupName $rgName -Name $managedInstanceName -Force
 	}
 }
