@@ -20,6 +20,7 @@
 -->
 ## Upcoming Release
 * Fix errors in examples of help document
+* Show the exact string value for VM PowerState in the table format.
 
 ## Version 3.5.0
 * Allowed empty value for ProximityPlacementGroupId during update
