@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Update attribute of a key vault key.
     /// </summary>
-    [Alias("Set-AzureKeyVaultKey")]
+    [Alias("Set-AzKeyVaultKey")]
     [Cmdlet(VerbsCommon.Set, "AzKeyVaultKeyAttribute",
         SupportsShouldProcess = true, 
         HelpUri = Constants.KeyVaultHelpUri)]

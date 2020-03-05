@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.New, "AzureStorageQueue"),
+    [Cmdlet(VerbsCommon.New, StorageNouns.Queue),
         OutputType(typeof(AzureStorageQueue))]
     public class NewAzureStorageQueueCommand : StorageQueueBaseCmdlet
     {

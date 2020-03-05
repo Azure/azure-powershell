@@ -358,7 +358,7 @@ PrivateData = @{
         ReleaseNotes = '* Change ''Start-AzVirtualNetworkGatewayConnectionPacketCapture.md'' and ''Start-AzVirtualnetworkGatewayPacketCapture.md'' FilterData option examples.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

@@ -140,7 +140,7 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
     'New-AzDeployment', 'Get-AzDeployment', 'Test-AzDeployment',
     'Remove-AzDeployment', 'Stop-AzDeployment',
     'Save-AzDeploymentTemplate',
-    'Get-AzDeploymentOperation', 'Get-AzPolicyAlias', 'Remove-AzTag', 
+    'Get-AzDeploymentOperation', 'Remove-AzTag', 
     'Get-AzTag', 'New-AzTag'
 
 # Variables to export from this module
@@ -190,7 +190,7 @@ PrivateData = @{
 - Change New-AzAdServicePrincipal to add credentials only to associated application.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
