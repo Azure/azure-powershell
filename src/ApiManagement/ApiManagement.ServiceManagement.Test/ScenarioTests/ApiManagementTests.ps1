@@ -115,7 +115,7 @@ function Api-CrudTest {
 
         Assert-AreEqual $newApiId $newApi.ApiId
         Assert-AreEqual $newApiName $newApi.Name
-        Assert-AreEqual $newApiDescription.Description
+        Assert-AreEqual $newApiDescription $newApi.Description
         Assert-AreEqual $newApiServiceUrl $newApi.ServiceUrl
         Assert-AreEqual $newApiPath $newApi.Path
         Assert-AreEqual 1 $newApi.Protocols.Length
@@ -124,6 +124,16 @@ function Api-CrudTest {
         Assert-Null $newApi.AuthorizationScope
         Assert-AreEqual $subscriptionKeyParametersHeader $newApi.SubscriptionKeyHeaderName
         Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName
+                
+        $updatedApiServiceUrl = "http://newechoapi.cloudapp.net/updateapi"
+        $updatedApi = Set-AzApiManagementApi -Context $context -ApiId $newApiId -ServiceUrl $updatedApiServiceUrl -PassThru
+        Assert-AreEqual $newApiId $updatedApi.ApiId
+        Assert-AreEqual $newApiName $updatedApi.Name
+        Assert-AreEqual $newApiDescription $updatedApi.Description
+        Assert-AreEqual $updatedApiServiceUrl $updatedApi.ServiceUrl
+        Assert-AreEqual $newApiPath $updatedApi.Path
+        Assert-AreEqual 1 $updatedApi.Protocols.Length
+        Assert-AreEqual https $updatedApi.Protocols[0]
 
         $product = Get-AzApiManagementProduct -Context $context | Select-Object -First 1
         Add-AzApiManagementApiToProduct -Context $context -ApiId $newApiId -ProductId $product.ProductId
@@ -322,6 +332,12 @@ function Api-ImportExportWadlTest {
 
         Assert-AreEqual $wadlApiId $api.ApiId
         Assert-AreEqual $path $api.Path
+        
+        $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $wadlApiId
+        Assert-NotNull $apiSchemas
+        Assert-AreEqual 1 $apiSchemas.Count
+        Assert-AreEqual WadlGrammar $apiSchemas[0].SchemaDocumentContentType
+        Assert-AreEqual $wadlApiId $apiSchemas[0].ApiId
 
         # commented as powershell test framework on running test in playback mode, throws 403, as the exported link of file
         # gets expired
@@ -434,6 +450,12 @@ function Api-ImportExportWsdlTest {
         Assert-AreEqual $wsdlApiId2 $api.ApiId
         Assert-AreEqual $path2 $api.Path
 
+        $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $wsdlApiId2
+        Assert-NotNull $apiSchemas
+        Assert-AreEqual 4 $apiSchemas.Count
+        Assert-AreEqual XsdSchema $apiSchemas[0].SchemaDocumentContentType
+        Assert-AreEqual $wsdlApiId2 $apiSchemas[0].ApiId
+
         $newName = "apimSoap"
         $newDescription = "Soap api via Apim"
         $api = Set-AzApiManagementApi -InputObject $api -Name $newName -Description $newDescription -ServiceUrl $api.ServiceUrl -Protocols $api.Protocols -PassThru
@@ -489,6 +511,13 @@ function Api-ImportExportOpenApiTest {
         Assert-AreEqual $openApiId2 $api.ApiId
         Assert-AreEqual $path2 $api.Path
 
+         # get openapi schema
+        $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $openApiId1
+        Assert-NotNull $apiSchemas
+        Assert-AreEqual 1 $apiSchemas.Count
+        Assert-AreEqual OpenApiComponents $apiSchemas[0].SchemaDocumentContentType
+        Assert-AreEqual $openApiId1 $apiSchemas[0].ApiId
+
         $newName = "apimPetstore"
         $newDescription = "Open api via Apim"
         $api = Set-AzApiManagementApi -InputObject $api -Name $newName -Description $newDescription -ServiceUrl $api.ServiceUrl -Protocols $api.Protocols -PassThru
@@ -504,6 +533,55 @@ function Api-ImportExportOpenApiTest {
         Assert-True { $removed }
 
         $removed = Remove-AzApiManagementApi -Context $context -ApiId $openApiId2 -PassThru
+        Assert-True { $removed }
+    }
+}
+
+<#
+.SYNOPSIS
+Tests API import from OpenApi Json type and export Api.
+#>
+function Api-ImportExportOpenApiJsonTest {
+    Param($resourceGroupName, $serviceName)
+
+    $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+    $jsonPath1 = Join-Path (Join-Path "$TestOutputRoot" "Resources") "petstoreOpenApi.json"
+    $path1 = "openapifromFile"
+    $openApiId1 = getAssetName
+    
+    try {
+        # import api from file
+        $api = Import-AzApiManagementApi -Context $context -ApiId $openApiId1 -SpecificationPath $jsonPath1 -SpecificationFormat OpenApi -Path $path1
+
+        Assert-AreEqual $openApiId1 $api.ApiId
+        Assert-AreEqual $path1 $api.Path
+
+         # get openapi schema
+        $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $openApiId1
+        Assert-NotNull $apiSchemas
+        Assert-AreEqual 1 $apiSchemas.Count
+        Assert-AreEqual OpenApiComponents $apiSchemas[0].SchemaDocumentContentType
+        Assert-AreEqual $openApiId1 $apiSchemas[0].ApiId
+
+        $newName = "apimPetstore"
+        $newDescription = "Open api via Apim"
+        $api = Set-AzApiManagementApi -InputObject $api -Name $newName -Description $newDescription -ServiceUrl $api.ServiceUrl -Protocols $api.Protocols -PassThru
+        Assert-AreEqual $openApiId1 $api.ApiId
+        Assert-AreEqual $path1 $api.Path
+        Assert-AreEqual $newName $api.Name
+        Assert-AreEqual $newDescription $api.Description
+        Assert-AreEqual 'Http' $api.ApiType
+
+        # commented as powershell test framework on running test in playback mode, throws 403, as the exported link of file
+        # gets expired
+        # export api to pipeline
+        #$result = Export-AzApiManagementApi -Context $context -ApiId $openApiId1 -SpecificationFormat OpenApiJson
+        #Assert-NotNull $result
+        #Assert-True {$result -like '*<wsdl:service name="OrdersAPI"*'}
+    }
+    finally {
+        # remove created api
+        $removed = Remove-AzApiManagementApi -Context $context -ApiId $openApiId1 -PassThru
         Assert-True { $removed }
     }
 }
@@ -2661,12 +2739,12 @@ function IdentityProvider-AadB2C-CrudTest {
     try {
         $clientId = getAssetName
         $clientSecret = getAssetName
-        $allowedTenants = 'samirtestbc.onmicrosoft.com'
-        $signupPolicyName = 'B2C_1_signup-policy'
-        $signinPolicyName = 'B2C_1_Sign-policy'
+        $allowedTenants = 'alzaslon.onmicrosoft.com'
+        $signupPolicyName = 'B2C_1_signuppolicy'
+        $signinPolicyName = 'B2C_1_signinpolicy'
 
         $identityProvider = New-AzApiManagementIdentityProvider -Context $context -Type $identityProviderName -ClientId $clientId -ClientSecret $clientSecret `
-            -AllowedTenants $allowedTenants -SignupPolicyName $signupPolicyName -SigninPolicyName $signinPolicyName
+            -AllowedTenants $allowedTenants -SignupPolicyName $signupPolicyName -SigninPolicyName $signinPolicyName 
 
         Assert-NotNull $identityProvider
         Assert-AreEqual $identityProviderName $identityProvider.Type
@@ -2691,7 +2769,7 @@ function IdentityProvider-AadB2C-CrudTest {
         Assert-AreEqual 1 $identityProviders.Count
 
         #update the provider with Secret
-        $profileEditingPolicy = 'B2C_1_UpdateEmail'
+        $profileEditingPolicy = 'B2C_1_profileediting'
         $identityProvider = Set-AzApiManagementIdentityProvider -Context $context -Type $identityProviderName -ProfileEditingPolicyName $profileEditingPolicy -PassThru
 
         Assert-AreEqual $identityProviderName $identityProvider.Type
@@ -2871,7 +2949,7 @@ function BackendServiceFabric-CrudTest {
         Assert-AreEqual $certSubject $cert.Subject
 
         $title = getAssetName
-        $urlEndpoint = 'https://contoso.com/awesomeapi'
+        $urlEndpoint = 'fabric:/mytestapp/mytestservice'
         $description = getAssetName
 
         $ManagementEndpoints = 'https://sfbackend-01.net:443', 'https://sfbackend-02.net:443'

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public DatabaseReplicationTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         [Fact]
@@ -44,6 +47,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestCreateSecondaryDatabase()
         {
             RunPowerShellTest("Test-CreateSecondaryDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNamedSecondaryDatabase()
+        {
+            RunPowerShellTest("Test-CreateNamedSecondaryDatabase");
         }
 
         [Fact]

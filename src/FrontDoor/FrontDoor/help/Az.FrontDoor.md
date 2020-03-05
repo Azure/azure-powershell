@@ -23,6 +23,9 @@ Get Front Door load balancer
 ### [Get-AzFrontDoorFrontendEndpoint](Get-AzFrontDoorFrontendEndpoint.md)
 Get a front door frontend endpoint.
 
+### [Get-AzFrontDoorWafManagedRuleSetDefinition](Get-AzFrontDoorWafManagedRuleSetDefinition.md)
+Get WAF managed rule set definitions
+
 ### [Get-AzFrontDoorWafPolicy](Get-AzFrontDoorWafPolicy.md)
 Get WAF policy
 

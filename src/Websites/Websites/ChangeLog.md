@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Tag parameter for `New-AzAppServicePlan` and `Set-AzAppServicePlan`
+* Stop cmdlt execution if an exception is thrown when adding a custom domain to a website
+* Added support to perform operations for App Services not in the same resource group as the App Service Plan
+* Applied access restriction to WebApp/Function in different resource groups
+* Fixed issue to set custom hostnames for WebAppSlots
+
+## Version 1.6.0
+* Set-AzWebapp and Set-AzWebappSlot supports AlwaysOn, MinTls and FtpsState properties
+* Fixing issue where setting HttpsOnly along with changing AppservicePlan at the same time using the single Set-AzWebApp Command, was resetting HttpsOnly to default value
 
 ## Version 1.5.1
 * Update references in .psd1 to use relative path

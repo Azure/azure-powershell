@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Management.Sql.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
@@ -179,12 +180,46 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public SwitchParameter Force { get; set; }
 
         /// <summary>
+        /// Gets or sets the instance compute generation
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The compute generation for the instance.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter(Constants.ComputeGenerationGen5)]
+        public string ComputeGeneration { get; set; }
+
+        /// <summary>
         /// Get the instance to update
         /// </summary>
         /// <returns>The instance being updated</returns>
         protected override IEnumerable<Model.AzureSqlManagedInstanceModel> GetEntity()
         {
             return new List<AzureSqlManagedInstanceModel>() { ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name) };
+        }
+
+        /// <summary>
+        /// Validate requested Hardware family.
+        /// </summary>
+        protected bool ShouldConfirmHardwareFamilyChange()
+        {
+            bool shouldConfirmHardwareFamilyChange = false;
+
+            ModelAdapter = InitModelAdapter();
+            AzureSqlManagedInstanceModel existingInstance = ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name);
+
+            // Get current hardware family
+            string currentHardwareFamily = existingInstance.Sku.Family;
+
+            // Check whether the hardware family was changed
+            bool isHardwareFamilyChanged = !currentHardwareFamily.Equals(this.ComputeGeneration, StringComparison.InvariantCultureIgnoreCase);
+
+            // Check whether hardware family is being changed to a newer hardware family
+            if (isHardwareFamilyChanged && currentHardwareFamily.Equals(Constants.ComputeGenerationGen4, StringComparison.InvariantCultureIgnoreCase))
+            {
+                shouldConfirmHardwareFamilyChange = true;
+            }
+
+            return shouldConfirmHardwareFamilyChange;
         }
 
         /// <summary>
@@ -197,16 +232,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             AzureSqlManagedInstanceModel existingInstance = ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name);
             Management.Internal.Resources.Models.Sku Sku = new Management.Internal.Resources.Models.Sku();
 
-            if (Edition != null)
+            // Get current edition and family
+            string currentEdition = existingInstance.Sku.Tier;
+            string currentComputeGeneration = existingInstance.Sku.Family;
+
+            // If either edition or compute generation are set, get the new sku
+            if (this.Edition != null || this.ComputeGeneration != null)
             {
-                string computeGeneration = existingInstance.Sku.Name.Contains(Constants.ComputeGenerationGen4) ? Constants.ComputeGenerationGen4 : Constants.ComputeGenerationGen5;
-                string editionShort = AzureSqlManagedInstanceAdapter.GetInstanceSkuPrefix(Edition);
-                Sku.Name = editionShort + "_" + computeGeneration;
-                Sku.Tier = Edition;
+                string editionShort = AzureSqlManagedInstanceAdapter.GetInstanceSkuPrefix(!string.IsNullOrWhiteSpace(Edition) ? this.Edition : currentEdition);
+                Sku.Name = editionShort + "_" + (!string.IsNullOrWhiteSpace(this.ComputeGeneration) ? this.ComputeGeneration : currentComputeGeneration);
+                Sku.Tier = !string.IsNullOrWhiteSpace(this.Edition) ? this.Edition : null;
+                Sku.Family = !string.IsNullOrWhiteSpace(this.ComputeGeneration) ? this.ComputeGeneration : currentComputeGeneration;
             }
             else
             {
-                Sku = null;
+                Sku = existingInstance.Sku;
             }
 
             // Construct a new entity so we only send the relevant data to the Managed instance
@@ -264,6 +304,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 
                 ResourceGroupName = resourceInfo.ResourceGroupName;
                 Name = resourceInfo.ResourceName;
+            }
+
+            // Validate requested hardware family
+            if (!string.IsNullOrWhiteSpace(this.ComputeGeneration))
+            {
+                // Hardware family is being changed to a newer hardware family and it is not possible to scale back - Give confirmation message
+                if (this.ShouldConfirmHardwareFamilyChange())
+                {
+                    if (!Force.IsPresent && !ShouldContinue(
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
+                        string.Format(CultureInfo.InvariantCulture, string.Format(Properties.Resources.ChangingHardwareFamilyIsIrreversable, this.ComputeGeneration), this.Name)))
+                    {
+                        return;
+                    }
+                }
             }
 
             base.ExecuteCmdlet();

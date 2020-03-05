@@ -18,6 +18,41 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed for null reference bug in `Get-AzRoleAssignment`
+* Marked switch `-Force` and `-PassThru` optional in `Remove-AzADGroup` [#10849]
+* Fixed issue that `MailNickname` doesn't return in `Remove-AzADGroup` [#11167]
+* Fixed issue that `Remove-AzADGroup` pipe operation doesn't work [#11171]
+* Fixed for null reference bug in GetAzureRoleAssignmentCommand
+* Added breaking change attributes for upcoming changes to policy cmdlets
+* Updated `Get-AzResourceGroup` to perform resource group tag filtering on server-side
+* Extended Tag cmdlets to accept -ResourceId
+    - Get-AzTag -ResourceId
+    - New-AzTag -ResourceId
+    - Remove-AzTag -ResourceId
+* Added new Tag cmdlet
+    - Update-AzTag -ResourceId
+* Brought ScopedDeployment from SDK 3.3.0 
+
+## Version 1.11.0
+* Refactored template deployment cmdlets
+    - Added new cmdlets for managing deployments at management group: *-AzManagementGroupDeployment
+    - Added new cmdlets for managing deployments at tenant scope: *-AzTenantDeployment
+    - Refactored *-AzDeployment cmdlets to work specifically at subscription scope
+    - Created aliases *-AzSubscriptionDeployment for *-AzDeployment cmdlets
+* Fixed `Update-AzADApplication` when parameter `AvailableToOtherTenants` is not set
+* Removed ApplicationObjectWithoutCredentialParameterSet to avoid AmbiguousParameterSetException.
+* Regenerated help files
+
+## Version 1.10.0
+* Make -Scope optional in *-AzPolicyAssignment cmdlets with default to context subscription
+* Add examples of creating ADServicePrincipal with password and key credential
+
+## Version 1.9.1
+* Fix an error in help document of `Remove-AzTag`.
+* Fix for aliases missing from output of Get-AzPolicyAlias
+* Update resource client to new version that retrieves providers and aliases at tenant level
+* Update Get-AzPolicyAlias to retrieve aliases at tenant level
+* Update -Policy parameter of New-AzPolicyDefinition and Set-AzPolicyDefinition to allow full policy object
 
 ## Version 1.9.0
 * Update references in .psd1 to use relative path

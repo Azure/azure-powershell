@@ -1,0 +1,71 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets?$filter=Status%20eq%20'Closed'&api-version=2019-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9zdXBwb3J0VGlja2V0cz8kZmlsdGVyPVN0YXR1cyUyMGVxJTIwJTI3Q2xvc2VkJTI3JmFwaS12ZXJzaW9uPTIwMTktMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "197fc535-ef2d-4f31-8177-0c3f5bb61abf"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Support.MicrosoftSupportClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sun, 09 Feb 2020 20:24:45 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "b2886cc6-9b80-4dcd-9621-d924f968d066"
+        ],
+        "x-ms-correlation-request-id": [
+          "b2886cc6-9b80-4dcd-9621-d924f968d066"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20200209T202445Z:b2886cc6-9b80-4dcd-9621-d924f968d066"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "7685"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/120020724005732\",\r\n      \"name\": \"120020724005732\",\r\n      \"type\": \"Microsoft.Support/supportTickets\",\r\n      \"properties\": {\r\n        \"description\": \"test\",\r\n        \"problemClassificationId\": \"/providers/Microsoft.Support/services/58cf91d7-3a04-37d3-9818-9bd5c979d9a9/problemClassifications/bedfb285-06e6-918c-0851-d180769d7078\",\r\n        \"problemClassificationDisplayName\": \"Availability and Performance / Buffering while streaming\",\r\n        \"severity\": \"Minimal\",\r\n        \"require24X7Response\": false,\r\n        \"enrollmentId\": \"\",\r\n        \"productionOutage\": false,\r\n        \"contactDetails\": {\r\n          \"firstName\": \"Nitin\",\r\n          \"lastName\": \"Kallikat\",\r\n          \"preferredContactMethod\": \"Email\",\r\n          \"primaryEmailAddress\": \"nikallik@microsoft.com\",\r\n          \"phoneNumber\": \"3333333335\",\r\n          \"preferredTimeZone\": \"Pacific Standard Time\",\r\n          \"country\": \"USA\",\r\n          \"preferredSupportLanguage\": \"en-us\"\r\n        },\r\n        \"serviceLevelAgreement\": {\r\n          \"startTime\": \"2020-02-07T23:18:00Z\",\r\n          \"expirationTime\": \"2020-02-10T15:18:00Z\",\r\n          \"slaMinutes\": 240\r\n        },\r\n        \"supportEngineer\": {\r\n          \"emailAddress\": \"v-anska@microsoft.com\"\r\n        },\r\n        \"supportPlanType\": \"Premier\",\r\n        \"supportTicketId\": \"120020724005732\",\r\n        \"title\": \"test, please ignore and close\",\r\n        \"serviceId\": \"/providers/Microsoft.Support/services/58cf91d7-3a04-37d3-9818-9bd5c979d9a9\",\r\n        \"serviceDisplayName\": \"Azure CDN\",\r\n        \"status\": \"Closed\",\r\n        \"createdDate\": \"2020-02-07T23:18:00Z\",\r\n        \"modifiedDate\": \"2020-02-09T16:39:20Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/120020724000275\",\r\n      \"name\": \"120020724000275\",\r\n      \"type\": \"Microsoft.Support/supportTickets\",\r\n      \"properties\": {\r\n        \"description\": \"Question: What was the most recent change to the VM?\\nAnswer: Updates were applied\\n\\nQuestion: Description\\nAnswer: This is a test case. Please ignore.\\n\\nQuestion: When did the problem start?\\nAnswer:\",\r\n        \"problemClassificationId\": \"/providers/Microsoft.Support/services/6f16735c-b0ae-b275-ad3a-03479cfa1396/problemClassifications/5aed3921-4198-0d81-c999-f9c878ac00c8\",\r\n        \"problemClassificationDisplayName\": \"My VM is not booting / My VMs OS is not booting\",\r\n        \"severity\": \"Minimal\",\r\n        \"require24X7Response\": false,\r\n        \"enrollmentId\": \"\",\r\n        \"productionOutage\": false,\r\n        \"contactDetails\": {\r\n          \"firstName\": \"bug\",\r\n          \"lastName\": \"bash\",\r\n          \"preferredContactMethod\": \"Email\",\r\n          \"primaryEmailAddress\": \"yanylu@microsoft.com\",\r\n          \"phoneNumber\": \"1234567890\",\r\n          \"preferredTimeZone\": \"Pacific Standard Time\",\r\n          \"country\": \"USA\",\r\n          \"preferredSupportLanguage\": \"en-us\"\r\n        },\r\n        \"technicalTicketDetails\": {\r\n          \"resourceId\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/resourceGroups/ARM-VM-Group/providers/Microsoft.Compute/virtualMachines/GangaTFSVM\"\r\n        },\r\n        \"serviceLevelAgreement\": {\r\n          \"startTime\": \"2020-02-07T14:00:00Z\",\r\n          \"expirationTime\": \"2020-02-07T18:00:00Z\",\r\n          \"slaMinutes\": 240\r\n        },\r\n        \"supportEngineer\": {\r\n          \"emailAddress\": \"daspolto@microsoft.com\"\r\n        },\r\n        \"supportPlanType\": \"Premier\",\r\n        \"supportTicketId\": \"120020724000275\",\r\n        \"title\": \"test\",\r\n        \"serviceId\": \"/providers/Microsoft.Support/services/6f16735c-b0ae-b275-ad3a-03479cfa1396\",\r\n        \"serviceDisplayName\": \"Virtual Machine running Windows\",\r\n        \"status\": \"Closed\",\r\n        \"createdDate\": \"2020-02-07T02:19:16Z\",\r\n        \"modifiedDate\": \"2020-02-07T13:07:58Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/120020724000066\",\r\n      \"name\": \"120020724000066\",\r\n      \"type\": \"Microsoft.Support/supportTickets\",\r\n      \"properties\": {\r\n        \"description\": \"test\",\r\n        \"problemClassificationId\": \"/providers/Microsoft.Support/services/58cf91d7-3a04-37d3-9818-9bd5c979d9a9/problemClassifications/27a54e37-5930-2bf0-2437-37a3b46343c9\",\r\n        \"problemClassificationDisplayName\": \"Availability and Performance / CDN does not cache content\",\r\n        \"severity\": \"Minimal\",\r\n        \"require24X7Response\": false,\r\n        \"enrollmentId\": \"\",\r\n        \"productionOutage\": false,\r\n        \"contactDetails\": {\r\n          \"firstName\": \"firstname\",\r\n          \"lastName\": \"lastname\",\r\n          \"preferredContactMethod\": \"Email\",\r\n          \"primaryEmailAddress\": \"nikallik@microsoft.com\",\r\n          \"additionalEmailAddresses\": [\r\n            \"bhshah@microsoft.com\"\r\n          ],\r\n          \"phoneNumber\": \"12345\",\r\n          \"preferredTimeZone\": \"Afghanistan Standard Time\",\r\n          \"country\": \"JPN\",\r\n          \"preferredSupportLanguage\": \"es-es\"\r\n        },\r\n        \"serviceLevelAgreement\": {\r\n          \"startTime\": \"2020-02-07T00:29:31Z\",\r\n          \"expirationTime\": \"2020-02-07T04:29:31Z\",\r\n          \"slaMinutes\": 240\r\n        },\r\n        \"supportEngineer\": {\r\n          \"emailAddress\": \"kikawash@microsoft.com\"\r\n        },\r\n        \"supportPlanType\": \"Premier\",\r\n        \"supportTicketId\": \"120020724000066\",\r\n        \"title\": \"test, please ignore and close\",\r\n        \"serviceId\": \"/providers/Microsoft.Support/services/58cf91d7-3a04-37d3-9818-9bd5c979d9a9\",\r\n        \"serviceDisplayName\": \"Azure CDN\",\r\n        \"status\": \"Closed\",\r\n        \"createdDate\": \"2020-02-07T00:29:31Z\",\r\n        \"modifiedDate\": \"2020-02-09T04:59:37Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/120020624006627\",\r\n      \"name\": \"120020624006627\",\r\n      \"type\": \"Microsoft.Support/supportTickets\",\r\n      \"properties\": {\r\n        \"description\": \"test ticket\\n\\nProblem start date and time\\nThu, Feb 6, 2020, 12:00 AM PST\",\r\n        \"problemClassificationId\": \"\",\r\n        \"problemClassificationDisplayName\": \"\",\r\n        \"severity\": \"Minimal\",\r\n        \"require24X7Response\": false,\r\n        \"enrollmentId\": \"\",\r\n        \"productionOutage\": false,\r\n        \"contactDetails\": {\r\n          \"firstName\": \"Bert\",\r\n          \"lastName\": \"Wong\",\r\n          \"preferredContactMethod\": \"Email\",\r\n          \"primaryEmailAddress\": \"bewon@microsoft.com\",\r\n          \"phoneNumber\": \"123-13245\",\r\n          \"preferredTimeZone\": \"Pacific Standard Time\",\r\n          \"country\": \"BHS\",\r\n          \"preferredSupportLanguage\": \"en-us\"\r\n        },\r\n        \"serviceLevelAgreement\": {\r\n          \"startTime\": \"2020-02-06T23:05:40Z\",\r\n          \"expirationTime\": \"2020-02-07T15:05:40Z\",\r\n          \"slaMinutes\": 240\r\n        },\r\n        \"supportEngineer\": {\r\n          \"emailAddress\": \"nikallik@microsoft.com\"\r\n        },\r\n        \"supportPlanType\": \"Premier\",\r\n        \"supportTicketId\": \"120020624006627\",\r\n        \"title\": \"test ticket - please close\",\r\n        \"serviceId\": \"\",\r\n        \"serviceDisplayName\": \"\",\r\n        \"status\": \"Closed\",\r\n        \"problemStartTime\": \"2020-02-06T08:00:00Z\",\r\n        \"createdDate\": \"2020-02-06T23:05:40Z\",\r\n        \"modifiedDate\": \"2020-02-06T23:15:13Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/120020624006609\",\r\n      \"name\": \"120020624006609\",\r\n      \"type\": \"Microsoft.Support/supportTickets\",\r\n      \"properties\": {\r\n        \"description\": \"Question: Problem start time\\nAnswer: Thu, Feb 6, 2020, 12:00 AM PST\\n\\nQuestion: Additional details\\nAnswer: abcd\",\r\n        \"problemClassificationId\": \"/providers/Microsoft.Support/services/5a813df8-0060-7015-892d-9f17015a6706/problemClassifications/ef604a42-ce17-e7e7-7afe-a6116c1d2d62\",\r\n        \"problemClassificationDisplayName\": \"Management / Delete a VPN Gateway\",\r\n        \"severity\": \"Minimal\",\r\n        \"require24X7Response\": false,\r\n        \"enrollmentId\": \"\",\r\n        \"productionOutage\": false,\r\n        \"contactDetails\": {\r\n          \"firstName\": \"Bert\",\r\n          \"lastName\": \"Wong\",\r\n          \"preferredContactMethod\": \"Email\",\r\n          \"primaryEmailAddress\": \"bewon@microsoft.com\",\r\n          \"phoneNumber\": \"123-13245\",\r\n          \"preferredTimeZone\": \"Pacific Standard Time\",\r\n          \"country\": \"BHS\",\r\n          \"preferredSupportLanguage\": \"en-us\"\r\n        },\r\n        \"serviceLevelAgreement\": {\r\n          \"startTime\": \"2020-02-06T23:00:24Z\",\r\n          \"expirationTime\": \"2020-02-07T15:00:24Z\",\r\n          \"slaMinutes\": 240\r\n        },\r\n        \"supportEngineer\": {\r\n          \"emailAddress\": \"olsupsa@microsoft.com\"\r\n        },\r\n        \"supportPlanType\": \"Premier\",\r\n        \"supportTicketId\": \"120020624006609\",\r\n        \"title\": \"abcd\",\r\n        \"serviceId\": \"/providers/Microsoft.Support/services/5a813df8-0060-7015-892d-9f17015a6706\",\r\n        \"serviceDisplayName\": \"VPN Gateway\",\r\n        \"status\": \"Closed\",\r\n        \"problemStartTime\": \"2020-02-06T08:00:00Z\",\r\n        \"createdDate\": \"2020-02-06T23:00:24Z\",\r\n        \"modifiedDate\": \"2020-02-07T00:00:27Z\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://centraluseuap.management.azure.com:443/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets?%24filter=Status+eq+%27Closed%27&api-version=2019-05-01-preview&%24skipToken=%255B%257B%2522compositeToken%2522%253A%257B%2522token%2522%253Anull%252C%2522range%2522%253A%257B%2522min%2522%253A%252205C1E7673399CA%2522%252C%2522max%2522%253A%252205C1E799CD6730%2522%257D%257D%252C%2522orderByItems%2522%253A%255B%257B%2522item%2522%253A%25222020-02-06T22%253A52%253A12.5438597Z%2522%257D%255D%252C%2522rid%2522%253A%2522e6dtAI34RR8omz0AAACgAQ%253D%253D%2522%252C%2522skipCount%2522%253A0%252C%2522filter%2522%253Anull%257D%255D\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "76cb77fa-8b17-4eab-9493-b65dace99813"
+  }
+}
