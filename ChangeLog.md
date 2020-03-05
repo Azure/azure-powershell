@@ -36,6 +36,9 @@
 
 #### Az.Network
 * Updated Sql Management SDK.
+* Fixed a naming-difference issue in PrivateLinkServiceConnectionState class.
+    - Mapping the field ActionsRequired to ActionRequired.
+* Added PublicNetworkAccess to 'New-AzSqlServer' and 'Set-AzSqlServer'
 
 #### Az.Resources
 * Fixed for null reference bug in 'Get-AzRoleAssignment'
@@ -54,7 +57,15 @@
 * Brought ScopedDeployment from SDK 3.3.0 
 
 #### Az.Sql
-* Added PublicNetworkAccess to `New-AzSqlServer` and `Set-AzSqlServer`
+* Added PublicNetworkAccess to 'New-AzSqlServer' and 'Set-AzSqlServer'
+* Added support for Long Term Retention backup configuration for Managed Databases
+    - Get/Set LTR policy on a managed database 
+    - Get LTR backup(s) by managed database, managed instance, or by location 
+    - Remove an LTR backup 
+    - Restore an LTR backup to create a new managed database
+* Added MinimalTlsVersion to New-AzSqlServer and Set-AzSqlServer
+* Added MinimalTlsVersion to New-AzSqlInstance and Set-AzSqlInstance
+* Bumped SQL SDK version for Az.Network
 
 #### Az.Storage
 * Supported AllowProtectedAppendWrite in ImmutabilityPolicy
