@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Support.Models
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or sets display name
+        /// Gets or sets resource types
         /// </summary>
         [Ps1Xml(Target = ViewControl.Table)]
         public string[] ResourceTypes { get; set; }
