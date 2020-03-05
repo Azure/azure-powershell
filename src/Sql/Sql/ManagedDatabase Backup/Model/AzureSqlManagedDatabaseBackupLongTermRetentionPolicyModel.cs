@@ -13,13 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.Sql.Models;
 
-namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model
+namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model
 {
-    /// <summary>
-    /// Represents an Azure SQL Server Active Directory administrator
-    /// </summary>
-    public class AzureSqlServerActiveDirectoryAdministratorModel
+    public class AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel
     {
         /// <summary>
         /// Gets or sets the name of the resource group
@@ -27,23 +26,38 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the server
+        /// Gets or sets the name of the instance
         /// </summary>
-        public string ServerName { get; set; }
+        public string ManagedInstanceName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Azure SQL Server Active Directory administrator display name
+        /// Gets or sets the name of the database
         /// </summary>
-        public string DisplayName { get; set; }
+        public string DatabaseName { get; set; }
 
         /// <summary>
-        /// Gets or sets the unique ID of the Azure SQL Server Active administrator admin object id
+        /// Gets or sets the weekly retention
         /// </summary>
-        public Guid ObjectId { get; set; }
+        public string WeeklyRetention { get; set; }
 
         /// <summary>
-        /// Gets or sets the value to indicate if only Azure AD Only authentication is allowed
+        /// Gets or sets the monthly retention
         /// </summary>
-        public bool? IsAzureADOnlyAuthentication { get; set; }
+        public string MonthlyRetention { get; set; }
+
+        /// <summary>
+        /// Gets or sets the yearly retention
+        /// </summary>
+        public string YearlyRetention { get; set; }
+
+        /// <summary>
+        /// Gets or sets the week of year for yearly retention
+        /// </summary>
+        public int? WeekOfYear { get; set; }
+
+        /// <summary>
+        /// Gets or sets the location
+        /// </summary>
+        public string Location { get; set; }
     }
 }
