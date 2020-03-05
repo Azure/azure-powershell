@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
             base.resourceTypesToIgnoreApiVersion = new string[] {
                 "Microsoft.Sql/servers",
-                 "Microsoft.Sql/managedInstances/databases"
+                "Microsoft.Sql/managedInstances/databases"
             };
         }
 
@@ -135,6 +135,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestSyncMemberRemove()
         {
             RunPowerShellTest("Test-RemoveSyncMember");
-        }                       
+        }
     }
 }
