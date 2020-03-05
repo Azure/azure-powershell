@@ -31,7 +31,7 @@ Get-AzIotHubDistributedTracing [-ResourceId] <String> [-DeviceId] <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Get the distributed tracing settings for a device.
 
 ## EXAMPLES
 
