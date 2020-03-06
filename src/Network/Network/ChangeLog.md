@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+
+## Version 2.3.2
+* Updated Sql Management SDK.
 * Fixed a naming-difference issue in PrivateLinkServiceConnectionState class.
     - Mapping the field ActionsRequired to ActionRequired.
 * Added PublicNetworkAccess to `New-AzSqlServer` and `Set-AzSqlServer`

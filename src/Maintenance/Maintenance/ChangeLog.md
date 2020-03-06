@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.1.3
 * Got `Az-MaintenanceConfiguration` will honor filters while listing maintenance configurations
 
 ## Version 0.1.2
