@@ -27,4 +27,10 @@ namespace Microsoft.Azure.Commands.Support.Models
         Critical,
         HighestCriticalImpact
     }
+
+    public enum TicketStatus
+    {
+        Open,
+        Closed
+    }
 }

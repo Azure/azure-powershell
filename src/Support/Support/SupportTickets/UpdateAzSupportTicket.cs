@@ -41,6 +41,9 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
         [Parameter(Mandatory = false, HelpMessage = "Update Severity of SupportTicket.")]
         public Severity Severity { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Update Status of SupportTicket.")]
+        public TicketStatus Status { get; set; }
+
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameWithContactObjectParameterSet, HelpMessage = "Update Contact details on SupportTicket.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateByInputObjectWithContactObjectParameterSet, HelpMessage = "Update Contact details on SupportTicket.")]
         [ValidateNotNull]
@@ -110,6 +113,11 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
                 if (this.IsParameterBound(c => c.Severity))
                 {
                     updateSupportTicket.Severity = this.Severity.ToString();
+                }
+
+                if (this.IsParameterBound(c => c.Status))
+                {
+                    updateSupportTicket.Status = this.Status.ToString();
                 }
 
                 UpdateContactProfile updateContactProfile = null;
