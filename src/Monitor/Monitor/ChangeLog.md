@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.6.1
+* Fixed output value for `Get-AzMetricDefinition` [#9714]
+
 ## Version 1.6.0
 * Fixed description of the Get-AzLog cmdlet.
 * A new parameter called ActionGroupId was added to `New-AzMetricAlertRuleV2` command.
