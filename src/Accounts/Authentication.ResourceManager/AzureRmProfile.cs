@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         [JsonIgnore]
         [XmlIgnore]
-        public bool ShouldRefreshContextsFromCache { get; set; } = true;
+        public bool ShouldRefreshContextsFromCache { get; set; } = false;
 
         /// <summary>
         /// Gets the path of the profile file.
@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
+                //TODO: remove calling RefreshContextsFromCache
                 if (ShouldRefreshContextsFromCache && AzureSession.Instance != null && AzureSession.Instance.ARMContextSaveMode == "CurrentUser")
                 {
                     // If context autosave is enabled, try reading from the cache, updating the contexts, and writing them out
@@ -267,7 +268,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// Writes profile to a specified path.
         /// </summary>
         /// <param name="path">File path on disk to save profile to</param>
-        public void Save(string path)
+        public void Save(string path, bool serializeCache = true)
         {
             if (string.IsNullOrEmpty(path))
             {
@@ -276,7 +277,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             using (var provider = ProtectedFileProvider.CreateFileProvider(path, FileProtection.ExclusiveWrite))
             {
-                Save(provider);
+                Save(provider, serializeCache);
             }
         }
 
@@ -684,7 +685,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        private void RefreshContextsFromCache()
+        public void RefreshContextsFromCache()
         {
             // Authentication factory is already registered in `OnImport()`
             AzureSession.Instance.TryGetComponent(
@@ -822,7 +823,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 }
             }
 
-            Save(ProfilePath);
+            Save(ProfilePath, false);
         }
     }
 }

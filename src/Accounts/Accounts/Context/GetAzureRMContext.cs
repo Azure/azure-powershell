@@ -26,6 +26,7 @@ using System.Linq;
 using System.Collections.ObjectModel;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -63,6 +64,9 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory =true, ParameterSetName = ListAllParameterSet, HelpMessage ="List all available contexts in the current session.")]
         public SwitchParameter ListAvailable { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = ListAllParameterSet, HelpMessage = "Refresh contexts from token cache")]
+        public SwitchParameter RefreshContextFromTokenCache { get; set; }
+
         protected override void BeginProcessing()
         {
             // Skip BeginProcessing()
@@ -70,6 +74,22 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
+            if(ListAvailable.IsPresent && RefreshContextFromTokenCache.IsPresent)
+            {
+                try
+                {
+                    var defaultProfile = DefaultProfile as AzureRmProfile;
+                    if (defaultProfile != null && string.Equals(AzureSession.Instance?.ARMContextSaveMode, "CurrentUser"))
+                    {
+                        defaultProfile.RefreshContextsFromCache();
+                    }
+                }
+                catch(Exception e)
+                {
+                    WriteWarning(e.ToString());
+                }
+            }
+
             // If no context is found, return
             if (DefaultContext == null && !this.IsParameterBound(c => c.ListAvailable))
             {
