@@ -29,12 +29,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public override byte[] ReadTokenData()
         {
-            return TryReadTokenFromFileCache(CacheFilePath);
+            return GetCacheHelper(PowerShellClientId).LoadUnencryptedTokenCache();
         }
 
         public override void FlushTokenData()
         {
-            WriteTokenToFileCache(_tokenCacheDataToFlush, CacheFilePath);
+            GetCacheHelper(PowerShellClientId).SaveUnencryptedTokenCache(_tokenCacheDataToFlush);
             base.FlushTokenData();
         }
 
