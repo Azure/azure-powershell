@@ -76,7 +76,7 @@
 
 #### Az.Websites
 * Added Tag parameter for 'New-AzAppServicePlan' and 'Set-AzAppServicePlan'
-* Stop cmdlt execution if an exception is thrown when adding a custom domain to a website
+* Stop cmdlet execution if an exception is thrown when adding a custom domain to a website
 * Added support to perform operations for App Services not in the same resource group as the App Service Plan
 * Applied access restriction to WebApp/Function in different resource groups
 * Fixed issue to set custom hostnames for WebAppSlots
