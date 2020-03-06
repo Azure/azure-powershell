@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Added support for retrieving and configuring Custom Domain on the DeveloperPortal Endpoint [#11007]
 * `Export-AzApiManagementApi` Added support for downloading Api Definition in Json format [#9987]
 * `Import-AzApiManagementApi` Added support for importing OpenApi 3.0 definition from Json document

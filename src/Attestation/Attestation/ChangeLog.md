@@ -20,6 +20,8 @@
 
 
 ## Upcoming Release
+
+## Version 0.1.5
 * Added policy signer management cmdlets to `Az.Attestation` module
 * Added `Location` and `Tag` to `New-AzAttestation`
 
