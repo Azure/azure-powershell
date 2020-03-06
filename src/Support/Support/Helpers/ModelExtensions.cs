@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Support.Helpers
                 Id = sdkProblemClassification.Id,
                 Name = sdkProblemClassification.Name,
                 Type = sdkProblemClassification.Type,
-                DisplayName = sdkProblemClassification.DisplayName,
+                DisplayName = sdkProblemClassification.DisplayName
             };
         }
 
