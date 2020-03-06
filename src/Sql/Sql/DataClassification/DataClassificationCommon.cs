@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification
         internal const string ManagedDatabaseNameHelpMessage = "The name of the Azure SQL managed instance database.";
         internal const string LabelNameHelpMessage = "A name that describes the sensitivity of the data stored in the column.";
         internal const string InformationTypeHelpMessage = "A name that describes the information type of the data stored in the column.";
+        internal const string SensitivityRankHelpMessage = "An identifier based on a predefinied set of values which define sensitivity rank. Used by other services like Advanced Threat Protection to detect anomalies based on their rank.";
         internal const string SqlDatabaseObjectHelpMessage = "The SQL database object.";
         internal const string ManagedDatabaseObjectHelpMessage = "The Azure SQL managed instance database object.";
         internal const string SqlDatabaseSensitivityClassificationObjectHelpMessage = "An object representing a SQL Database Sensitivity Classification.";
