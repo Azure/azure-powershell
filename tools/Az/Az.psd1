@@ -31,7 +31,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Cmdlets to manage resources in Azure. This module is compatible with WindowsPowerShell and PowerShell Core.
-    For more information about the Az module, please visit the following: https://docs.microsoft.com/en-us/powershell/azure/'
+For more information about the Az module, please visit the following: https://docs.microsoft.com/en-us/powershell/azure/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -161,7 +161,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '3.7.0 - March 2020
+        ReleaseNotes = '3.6.0 - March 2020
 Az.Accounts
 * Open Azure PowerShell survey page in ''Send-Feedback'' [#11020]
 * Display Azure PowerShell survey URL in ''Resolve-Error'' [#11021]
@@ -239,7 +239,7 @@ Az.Storage
 
 Az.Websites
 * Added Tag parameter for ''New-AzAppServicePlan'' and ''Set-AzAppServicePlan''
-* Stop cmdlt execution if an exception is thrown when adding a custom domain to a website
+* Stop cmdlet execution if an exception is thrown when adding a custom domain to a website
 * Added support to perform operations for App Services not in the same resource group as the App Service Plan
 * Applied access restriction to WebApp/Function in different resource groups
 * Fixed issue to set custom hostnames for WebAppSlots
