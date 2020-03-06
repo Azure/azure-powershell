@@ -38,6 +38,9 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
         [Ps1Xml(Target = ViewControl.List)]
         public string InformationType { get; set; }
 
+        [Ps1Xml(Target = ViewControl.List)]
+        public SensitivityRank? SensitivityRank { get; set; }
+
         [Hidden]
         public string SensitivityLabelId { get; set; }
 
@@ -70,10 +73,10 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
 
         internal void ApplyModel(SensitivityLabelModel sensitivityLabel, InformationProtectionPolicy informationProtectionPolicy)
         {
-            ApplyInput(sensitivityLabel.InformationType, sensitivityLabel.SensitivityLabel, informationProtectionPolicy);
+            ApplyInput(sensitivityLabel.InformationType, sensitivityLabel.SensitivityLabel, sensitivityLabel.SensitivityRank, informationProtectionPolicy);
         }
 
-        internal void ApplyInput(string informationType, string sensitivityLabel, InformationProtectionPolicy informationProtectionPolicy)
+        internal void ApplyInput(string informationType, string sensitivityLabel, SensitivityRank? sensitivityRank, InformationProtectionPolicy informationProtectionPolicy)
         {
             if (string.IsNullOrEmpty(informationType) && string.IsNullOrEmpty(sensitivityLabel))
             {
@@ -82,6 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
 
             ApplyInformationType(informationType, informationProtectionPolicy);
             ApplySensitivityLabel(sensitivityLabel, informationProtectionPolicy);
+            ApplySensitivityRank(sensitivityRank);
         }
 
         private void ApplyInformationType(string newInformationType, InformationProtectionPolicy informationProtectionPolicy)
@@ -103,7 +107,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
 
         private void ApplySensitivityLabel(string newSensitivityLabel, InformationProtectionPolicy informationProtectionPolicy)
         {
-            if (!string.IsNullOrEmpty(newSensitivityLabel) ||
+            if (!string.IsNullOrEmpty(newSensitivityLabel) &&
                 !string.Equals(SensitivityLabel, newSensitivityLabel))
             {
                 if (informationProtectionPolicy.SensitivityLabels.TryGetValue(newSensitivityLabel, out Guid sensitivityLabelId))
@@ -118,9 +122,26 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
             }
         }
 
+        private void ApplySensitivityRank(SensitivityRank? newSensitivityRank)
+        {
+            if (newSensitivityRank != null && newSensitivityRank != SensitivityRank)
+            {
+                SensitivityRank = newSensitivityRank;
+            }
+        }
+
         private static string ToString(ICollection<string> collection)
         {
             return string.Join(", ", collection.Select(s => $"'{s}'"));
         }
+    }
+
+    public enum SensitivityRank
+    {
+        None,
+        Low,
+        Medium,
+        High,
+        Critical
     }
 }
