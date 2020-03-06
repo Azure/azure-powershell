@@ -25,8 +25,8 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: Guid("be2ca022-590c-48ba-b465-9ab61d6e2ea0")]
-[assembly: AssemblyVersion("2.3.1")]
-[assembly: AssemblyFileVersion("2.3.1")]
+[assembly: AssemblyVersion("2.3.2")]
+[assembly: AssemblyFileVersion("2.3.2")]
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.Network.Test")]
 #endif

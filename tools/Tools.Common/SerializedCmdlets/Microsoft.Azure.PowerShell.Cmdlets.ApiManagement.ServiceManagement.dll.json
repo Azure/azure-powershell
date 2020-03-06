@@ -7781,6 +7781,7 @@
               "SigninPolicyName": "System.String",
               "ProfileEditingPolicyName": "System.String",
               "PasswordResetPolicyName": "System.String",
+              "SigninTenant": "System.String",
               "Id": "System.String",
               "ResourceGroupName": "System.String",
               "ServiceName": "System.String",
@@ -26656,6 +26657,7 @@
               "SigninPolicyName": "System.String",
               "ProfileEditingPolicyName": "System.String",
               "PasswordResetPolicyName": "System.String",
+              "SigninTenant": "System.String",
               "Id": "System.String",
               "ResourceGroupName": "System.String",
               "ServiceName": "System.String",
@@ -26988,6 +26990,24 @@
         },
         {
           "Name": "PasswordResetPolicyName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SigninTenant",
           "AliasList": [],
           "Type": {
             "Namespace": "System",
@@ -27381,6 +27401,30 @@
             {
               "ParameterMetadata": {
                 "Name": "PasswordResetPolicyName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SigninTenant",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -57484,6 +57528,7 @@
               "SigninPolicyName": "System.String",
               "ProfileEditingPolicyName": "System.String",
               "PasswordResetPolicyName": "System.String",
+              "SigninTenant": "System.String",
               "Id": "System.String",
               "ResourceGroupName": "System.String",
               "ServiceName": "System.String",
@@ -57705,6 +57750,7 @@
               "SigninPolicyName": "System.String",
               "ProfileEditingPolicyName": "System.String",
               "PasswordResetPolicyName": "System.String",
+              "SigninTenant": "System.String",
               "Id": "System.String",
               "ResourceGroupName": "System.String",
               "ServiceName": "System.String",
@@ -57880,6 +57926,24 @@
         },
         {
           "Name": "PasswordResetPolicyName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SigninTenant",
           "AliasList": [],
           "Type": {
             "Namespace": "System",
@@ -58314,6 +58378,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "SigninTenant",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "PassThru",
                 "AliasList": [],
                 "Type": {
@@ -58397,6 +58485,7 @@
                     "SigninPolicyName": "System.String",
                     "ProfileEditingPolicyName": "System.String",
                     "PasswordResetPolicyName": "System.String",
+                    "SigninTenant": "System.String",
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
                     "ServiceName": "System.String",
@@ -58620,6 +58709,30 @@
             {
               "ParameterMetadata": {
                 "Name": "PasswordResetPolicyName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SigninTenant",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -58880,6 +58993,30 @@
             {
               "ParameterMetadata": {
                 "Name": "PasswordResetPolicyName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SigninTenant",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
