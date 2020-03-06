@@ -19,8 +19,8 @@
 -->
 ## Upcoming Release
 
-## Version 2.0.1
-* Update references in .psd1 to use relative path
+## Version 0.10.0
+* Signed version based on 2.0.1
 
 ## Version 2.0.0
 
@@ -45,10 +45,10 @@
 ## Version 1.3.0
 * Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.
 * Add support to manage message enrichment for an IotHub. New cmdlets are:
-	- Add-AzIotHubMessageEnrichment
-	- Get-AzIotHubMessageEnrichment
-	- Remove-AzIotHubMessageEnrichment
-	- Set-AzIotHubMessageEnrichment
+  - Add-AzIotHubMessageEnrichment
+  - Get-AzIotHubMessageEnrichment
+  - Remove-AzIotHubMessageEnrichment
+  - Set-AzIotHubMessageEnrichment
 
 ## Version 1.2.1
 * Fixed miscellaneous typos across module
