@@ -1937,7 +1937,7 @@ function Get-ModuleDependencies
             
             if ($PSBoundParameters.ContainsKey('AllowPrerelease'))
             {
-                $ValidateAndGetRequiredModuleDetails_Params.Add('AllowPrerelease',$Credential)
+                $ValidateAndGetRequiredModuleDetails_Params.Add('AllowPrerelease', $true)
             }
 
             $DependentModuleDetails += ValidateAndGet-RequiredModuleDetails @ValidateAndGetRequiredModuleDetails_Params
@@ -8080,6 +8080,16 @@ function ValidateAndGet-RequiredModuleDetails
             $psgetItemInfo = Find-Module @FindModuleArguments  |
                                         Microsoft.PowerShell.Core\Where-Object {$_.Name -eq $ModuleName} |
                                             Microsoft.PowerShell.Utility\Select-Object -Last 1 -ErrorAction Ignore
+
+            if(-not $psgetItemInfo -and $PSBoundParameters.ContainsKey('AllowPrerelease') -and 
+                $FindModuleArguments.ContainsKey('RequiredVersion') -and -not $FindModuleArguments['RequiredVersion'].Contains("-"))
+            {
+                $FindModuleArguments['RequiredVersion'] += "-preview";
+
+                $psgetItemInfo = Find-Module @FindModuleArguments  |
+                Microsoft.PowerShell.Core\Where-Object {$_.Name -eq $ModuleName} |
+                    Microsoft.PowerShell.Utility\Select-Object -Last 1 -ErrorAction Ignore
+            }
 
             if(-not $psgetItemInfo)
             {

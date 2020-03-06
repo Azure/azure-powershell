@@ -483,9 +483,11 @@ function Save-PackageLocally {
     # Only check for the modules that specifies = required exact dependency version
     if ($RequiredVersion -ne $null) {
         Write-Output "Checking for required module $ModuleName, $RequiredVersion"
-        if (Find-Module -Name $ModuleName -RequiredVersion $RequiredVersion -Repository $TempRepo -ErrorAction SilentlyContinue) {
+        if (Find-Module -Name $ModuleName -RequiredVersion $RequiredVersion -Repository $TempRepo -AllowPrerelease -ErrorAction SilentlyContinue) {
             Write-Output "Required dependency $ModuleName, $RequiredVersion found in the repo $TempRepo"
-        } else {
+        } elseif (Find-Module -Name $ModuleName -RequiredVersion "$RequiredVersion-preview" -Repository $TempRepo -AllowPrerelease -ErrorAction SilentlyContinue) {
+            Write-Output "Required dependency $ModuleName, $RequiredVersion-preview found in the repo $TempRepo"
+        } else{
             Write-Warning "Required dependency $ModuleName, $RequiredVersion not found in the repo $TempRepo"
             Write-Output "Downloading the package from PsGallery to the path $TempRepoPath"
             # We try to download the package from the PsGallery as we are likely intending to use the existing version of the module.
