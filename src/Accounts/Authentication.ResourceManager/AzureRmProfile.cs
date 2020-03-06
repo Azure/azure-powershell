@@ -675,12 +675,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        private void WriteDebugMessage(string message)
+        private void EnqueueDebugMessage(string message)
         {
-            EventHandler<StreamEventArgs> writeDebugEvent;
-            if(AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteDebugKey, out writeDebugEvent))
+            EventHandler<StreamEventArgs> enqueueDebugEvent;
+            if(AzureSession.Instance.TryGetComponent(AzureRMCmdlet.EnqueueDebugKey, out enqueueDebugEvent))
             {
-                writeDebugEvent(this, new StreamEventArgs() { Message = message });
+                enqueueDebugEvent(this, new StreamEventArgs() { Message = message });
             }
         }
 
@@ -775,12 +775,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     {
                         tokens = authenticationClientFactory.GetTenantTokensForAccount(account, environment, WriteWarningMessage);
                     }
-                    catch (Exception e)
+                    catch(Exception e)
                     {
                         //In SSO scenario, if the account from token cache has multiple tenants, e.g. MSA account, MSAL randomly picks up
                         //one tenant to ask for token, MSAL will throw exception if MSA home tenant is chosen. The exception is swallowed here as short term fix.
                         WriteWarningMessage(string.Format(Resources.NoTokenFoundWarning, account.Username));
-                        WriteDebugMessage(e.ToString());
+                        EnqueueDebugMessage(e.ToString());
                         continue;
                     }
 
