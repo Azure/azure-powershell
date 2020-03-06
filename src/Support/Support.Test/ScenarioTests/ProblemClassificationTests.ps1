@@ -21,7 +21,7 @@ function Get-AzSupportProblemClassificationServiceName
     $queryResult = Get-AzSupportService 
 	$serviceName = $queryResult[0].Name
 
-    $propertiesCount = 4
+    $propertiesCount = 5
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportProblemClassification"
 
 	$queryResult = Get-AzSupportProblemClassification -ServiceId $serviceName
@@ -44,7 +44,7 @@ function Get-AzSupportProblemClassificationAllParametersNameAlias
     $queryResult = Get-AzSupportService 
 	$serviceName = $queryResult[0].Name
 
-    $propertiesCount = 4
+    $propertiesCount = 5
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportProblemClassification"
 
 	$queryResult = Get-AzSupportProblemClassification -ServiceName $serviceName
@@ -68,7 +68,7 @@ function Get-AzSupportProblemClassificationAllParametersId
     $queryResult = Get-AzSupportService 
 	$serviceName = $queryResult[0].Name
 
-    $propertiesCount = 4
+    $propertiesCount = 5
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportProblemClassification"
 
 	$queryResult = Get-AzSupportProblemClassification -ServiceName $serviceName
@@ -92,7 +92,7 @@ function Get-AzSupportProblemClassificationAllParametersResourceId
     $queryResult = Get-AzSupportService 
 	$serviceName = $queryResult[0].Id
 
-    $propertiesCount = 4
+    $propertiesCount = 5
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportProblemClassification"
 
 	$queryResult = Get-AzSupportProblemClassification -ServiceName $serviceName
@@ -116,7 +116,7 @@ function Get-AzSupportProblemClassificationParentObjectServiceName
     $queryResult = Get-AzSupportService 
 	$serviceObject = $queryResult[0]
 
-    $propertiesCount = 4
+    $propertiesCount = 5
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportProblemClassification"
 
 	$queryResult = Get-AzSupportService -Name $serviceObject.Name | Get-AzSupportProblemClassification
@@ -139,7 +139,7 @@ function Get-AzSupportProblemClassificationParentObjectAllParameters
     $queryResult = Get-AzSupportService 
 	$serviceObject = $queryResult[0]
 
-    $propertiesCount = 4
+    $propertiesCount = 5
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportProblemClassification"
 
 	$queryResult = Get-AzSupportService -Name $serviceObject.Name | Get-AzSupportProblemClassification
