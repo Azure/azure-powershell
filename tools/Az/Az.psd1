@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.6.0'
+ModuleVersion = '3.6.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -161,7 +161,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '3.6.0 - March 2020
+        ReleaseNotes = '3.6.1 - March 2020
 Az.Accounts
 * Open Azure PowerShell survey page in ''Send-Feedback'' [#11020]
 * Display Azure PowerShell survey URL in ''Resolve-Error'' [#11021]

@@ -1,4 +1,4 @@
-## 3.6.0 - March 2020
+## 3.6.1 - March 2020
 #### Az.Accounts
 * Open Azure PowerShell survey page in 'Send-Feedback' [#11020]
 * Display Azure PowerShell survey URL in 'Resolve-Error' [#11021]
