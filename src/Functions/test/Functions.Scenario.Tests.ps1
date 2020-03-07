@@ -262,7 +262,7 @@ Describe 'Functions End to End Tests' {
         $functionApps.Count | Should -BeGreaterThan 0
     }
 
-    It "Get-AzFunctionApp -ResourceGroupName '$resourceGroupNameWindowsPremium'  (All apps by resource group name)" {
+    It "Get-AzFunctionApp -ResourceGroupName '$resourceGroupNameWindowsPremium' (All apps by resource group name)" {
         $functionApps = @(Get-AzFunctionApp -ResourceGroupName $resourceGroupNameWindowsPremium)
         $functionApps.Count | Should -BeGreaterThan 0
     }
@@ -316,15 +316,15 @@ Describe 'Functions End to End Tests' {
 
     It "Validate New-AzFunctionApp and Remove-AzFunctionApp -Force" {
 
-        $functionName = "Func99-Windows-Node-" + (Get-Random).ToString()
+        $functionName = "Func99-Windows-Node-535740294"
         New-AzFunctionApp -Name $functionName `
-                           -ResourceGroupName $resourceGroupNameWindowsPremium `
-                           -PlanName $planNameWorkerTypeWindows `
-                           -StorageAccount $storageAccountWindows `
-                           -OSType "Windows" `
-                           -Runtime "Node" `
-                           -RuntimeVersion 12 `
-                           -FunctionsVersion 3
+                          -ResourceGroupName $resourceGroupNameWindowsPremium `
+                          -PlanName $planNameWorkerTypeWindows `
+                          -StorageAccount $storageAccountWindows `
+                          -OSType "Windows" `
+                          -Runtime "Node" `
+                          -RuntimeVersion 12 `
+                          -FunctionsVersion 3
 
         $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium
         $functionApp.OSType | Should -Be "Windows"
@@ -339,7 +339,7 @@ Describe 'Functions End to End Tests' {
 
     It "Create new AzFunctionApp using a custom Docker image" {
 
-        $functionName = "Func99-Custom-Docker-Image" + (Get-Random).ToString()
+        $functionName = "Func99-Custom-Docker-Image-359659419"
 
         try
         {
@@ -359,13 +359,14 @@ Describe 'Functions End to End Tests' {
         }
         finally
         {
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameLinuxPremium -ErrorAction SilentlyContinue | Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameLinuxPremium -ErrorAction SilentlyContinue |
+                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
         }
     }
 
     It "Linux functions apps should not set the 'WEBSITE_NODE_DEFAULT_VERSION' app setting" {
 
-        $functionName = "Func99-Linux-Python-" + (Get-Random).ToString()
+        $functionName = "Func99-Linux-Python-259908045"
 
         try
         {
@@ -382,7 +383,8 @@ Describe 'Functions End to End Tests' {
         }
         finally
         {
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameLinuxPremium -ErrorAction SilentlyContinue | Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameLinuxPremium -ErrorAction SilentlyContinue |
+                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
         }
     }
 
@@ -478,7 +480,7 @@ Describe 'Functions End to End Tests' {
 
                     try
                     {
-                        $functionName = "Func99-$OSType-$runtime-" + (Get-Random).ToString()
+                        $functionName = "Func99-$OSType-$runtime-417956238"
                         &{
                             New-AzFunctionApp -Name $functionName `
                                               -ResourceGroupName $resourceGroupName `
@@ -495,7 +497,6 @@ Describe 'Functions End to End Tests' {
                         $expectectedRuntimeVersion = $expectedDefaultRuntimeVersion[$OSType][$functionsVersion][$runtime]
                         $expectedWarning = "RuntimeVersion not specified. Setting default runtime version for $runtime to '$expectectedRuntimeVersion'."
                         $logFileContent | Should Match $expectedWarning
-
                     }
                     finally
                     {
@@ -567,7 +568,7 @@ Describe 'Functions End to End Tests' {
 
             try
             {
-                $functionName = "Func99-$expectedOSType-$runtime-" + (Get-Random).ToString()
+                $functionName = "Func99-$expectedOSType-$runtime-1684505447"
 
                 &{
                     # We use -WhatIf which performs all the inputs validation for the function app creation, and we return right before sending the request to the backend
@@ -634,7 +635,7 @@ Describe 'Functions End to End Tests' {
 
             foreach ($runtime in $runtimeVersionNotSupported[$OSType][$functionsVersion].Keys)
             {
-                $functionName = "Func99-$OSType-$runtime-" + (Get-Random).ToString()
+                $functionName = "Func99-$OSType-$runtime-369440691"
                 $runtimeVersion = $runtimeVersionNotSupported[$OSType][$functionsVersion][$runtime]
 
                 $expectedErrorMessage = "$runtime version $runtimeVersion in Functions version $functionsVersion for $OSType is not supported."
@@ -672,8 +673,8 @@ Describe 'Functions End to End Tests' {
 
     It "Validate New-AzFunctionAppPlan -AsJob, New-AzFunctionApp -AsJob and Remove-AzFunctionApp -Force" {
 
-        $planName = "Func99-Windows-Premium" + (Get-Random).ToString()
-        $functionName = "Func99-Windows-PowerShell-6-" + (Get-Random).ToString()
+        $planName = "Func99-Windows-Premium-205029017"
+        $functionName = "Func99-Windows-PowerShell-6-1685589760"
 
         try
         {
@@ -691,7 +692,7 @@ Describe 'Functions End to End Tests' {
             Write-Verbose "Job started." -Verbose
             $result = WaitForJobToComplete -JobId $functionAppPlanJob.Id
             $result.State | Should -Be "Completed"
-            $result | Receive-Job -ErrorAction SilentlyContinue |  Remove-Job  -ErrorAction SilentlyContinue
+            $result | Receive-Job -ErrorAction SilentlyContinue | Remove-Job -ErrorAction SilentlyContinue
 
             $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupNameWindowsPremium
             $plan.WorkerType | Should -Be "Windows"
@@ -720,7 +721,8 @@ Describe 'Functions End to End Tests' {
         }
         finally
         {
-            Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue | Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
+            Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue |
+                Remove-AzFunctionApp -Force -ErrorAction SilentlyContinue
         }
     }
 }
