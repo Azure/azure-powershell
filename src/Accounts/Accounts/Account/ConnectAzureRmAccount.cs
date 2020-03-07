@@ -418,11 +418,13 @@ namespace Microsoft.Azure.Commands.Profile
             }
 
             AzureRmProfile profile = null;
+            bool? originalShouldRefreshContextsFromCache = null;
             try
             {
                 profile = DefaultProfile as AzureRmProfile;
                 if (profile != null)
                 {
+                    originalShouldRefreshContextsFromCache = profile.ShouldRefreshContextsFromCache;
                     profile.ShouldRefreshContextsFromCache = false;
                 }
                 if (!CheckForExistingContext(profile, name)
@@ -435,9 +437,9 @@ namespace Microsoft.Azure.Commands.Profile
             }
             finally
             {
-                if(profile != null)
+                if(profile != null && originalShouldRefreshContextsFromCache.HasValue)
                 {
-                    profile.ShouldRefreshContextsFromCache = true;
+                    profile.ShouldRefreshContextsFromCache = originalShouldRefreshContextsFromCache.Value;
                 }
             }
         }

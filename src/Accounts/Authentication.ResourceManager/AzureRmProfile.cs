@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         [JsonIgnore]
         [XmlIgnore]
-        public bool ShouldRefreshContextsFromCache { get; set; } = true;
+        public bool ShouldRefreshContextsFromCache { get; set; } = false;
 
         /// <summary>
         /// Gets the path of the profile file.
@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
+                //TODO: remove calling RefreshContextsFromCache
                 if (ShouldRefreshContextsFromCache && AzureSession.Instance != null && AzureSession.Instance.ARMContextSaveMode == "CurrentUser")
                 {
                     // If context autosave is enabled, try reading from the cache, updating the contexts, and writing them out
@@ -267,7 +268,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// Writes profile to a specified path.
         /// </summary>
         /// <param name="path">File path on disk to save profile to</param>
-        public void Save(string path)
+        public void Save(string path, bool serializeCache = true)
         {
             if (string.IsNullOrEmpty(path))
             {
@@ -276,7 +277,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             using (var provider = ProtectedFileProvider.CreateFileProvider(path, FileProtection.ExclusiveWrite))
             {
-                Save(provider);
+                Save(provider, serializeCache);
             }
         }
 
@@ -675,16 +676,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        private void WriteDebugMessage(string message)
+        private void EnqueueDebugMessage(string message)
         {
-            EventHandler<StreamEventArgs> writeDebugEvent;
-            if(AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteDebugKey, out writeDebugEvent))
+            EventHandler<StreamEventArgs> enqueueDebugEvent;
+            if(AzureSession.Instance.TryGetComponent(AzureRMCmdlet.EnqueueDebugKey, out enqueueDebugEvent))
             {
-                writeDebugEvent(this, new StreamEventArgs() { Message = message });
+                enqueueDebugEvent(this, new StreamEventArgs() { Message = message });
             }
         }
 
-        private void RefreshContextsFromCache()
+        public void RefreshContextsFromCache()
         {
             // Authentication factory is already registered in `OnImport()`
             AzureSession.Instance.TryGetComponent(
@@ -775,12 +776,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     {
                         tokens = authenticationClientFactory.GetTenantTokensForAccount(account, environment, WriteWarningMessage);
                     }
-                    catch (Exception e)
+                    catch(Exception e)
                     {
                         //In SSO scenario, if the account from token cache has multiple tenants, e.g. MSA account, MSAL randomly picks up
                         //one tenant to ask for token, MSAL will throw exception if MSA home tenant is chosen. The exception is swallowed here as short term fix.
                         WriteWarningMessage(string.Format(Resources.NoTokenFoundWarning, account.Username));
-                        WriteDebugMessage(e.ToString());
+                        EnqueueDebugMessage(e.ToString());
                         continue;
                     }
 
@@ -822,7 +823,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 }
             }
 
-            Save(ProfilePath);
+            Save(ProfilePath, false);
         }
     }
 }
