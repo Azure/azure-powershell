@@ -14,17 +14,14 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Management.Automation;
-using Microsoft.Identity.Client;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
-using System;
-using Microsoft.Identity.Client.Extensions.Msal;
-using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -32,8 +29,15 @@ namespace Microsoft.Azure.Commands.Profile.Context
     [OutputType(typeof(ContextAutosaveSettings))]
     public class EnableAzureRmContextAutosave : AzureContextModificationCmdlet
     {
+        protected override bool RequireDefaultContext() { return false; }
+
         public override void ExecuteCmdlet()
         {
+            if (!SharedTokenCacheClientFactory.SupportCachePersistence(out string message))
+            {
+                throw new PlatformNotSupportedException(Resources.AutosaveNotSupported);
+            }
+
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Scope)) && Scope == ContextModificationScope.Process)
             {
                 ConfirmAction("Autosave the context in the current session", "Current session", () =>
@@ -83,33 +87,22 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
-            
-            try
-            {
-                AuthenticationClientFactory factory = new SharedTokenCacheClientFactory();
-                AzureSession.Instance.UnregisterComponent<AuthenticationClientFactory>(AuthenticationClientFactory.AuthenticationClientFactoryKey);
-                AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
-                if (writeAutoSaveFile)
-                {
-                    try
-                    {
-                        FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
-                        string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
-                        session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
-                    }
-                    catch
-                    {
-                        // do not fail for file system errors in writing the autosave setting
-                    }
 
-                }
-            }
-            catch (Exception e)
+            AuthenticationClientFactory factory = new SharedTokenCacheClientFactory();
+            AzureSession.Instance.UnregisterComponent<AuthenticationClientFactory>(AuthenticationClientFactory.AuthenticationClientFactoryKey);
+            AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
+            if (writeAutoSaveFile)
             {
-                // do not throw if there are file system error
-                if (e is MsalCachePersistenceException)
+                try
                 {
-                    throw new PlatformNotSupportedException(Resources.AutosaveNotSupported);
+                    FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
+                    string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
+                    session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
+                }
+                catch
+                {
+                    // do not fail for file system errors in writing the autosave setting
+                    // it may impact automation environment and module import.
                 }
             }
         }

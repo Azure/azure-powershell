@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
     public abstract class AuthenticationClientFactory
     {
         public static readonly string AuthenticationClientFactoryKey = nameof(AuthenticationClientFactory);
-        protected readonly string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
+        protected static readonly string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
         private static readonly string CommonTenant = "organizations";
 
         protected byte[] _tokenCacheDataToFlush;
