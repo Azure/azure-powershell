@@ -126,20 +126,8 @@
   <data name="CertificateNotFoundInStore" xml:space="preserve">
     <value>No certificate was found in the certificate store with thumbprint {0}</value>
   </data>
-  <data name="ChangingDefaultEnvironmentNotSupported" xml:space="preserve">
-    <value>Changing public environment is not supported.</value>
-  </data>
   <data name="CredentialOrganizationIdMessage" xml:space="preserve">
     <value>-Credential parameter can only be used with Organization ID credentials. For more information, please refer to http://go.microsoft.com/fwlink/?linkid=331007&amp;clcid=0x409 for more information about the difference between an organizational account and a Microsoft account.</value>
-  </data>
-  <data name="EnvironmentNameNeedsToBeSpecified" xml:space="preserve">
-    <value>Environment name needs to be specified</value>
-  </data>
-  <data name="EnvironmentNeedsToBeSpecified" xml:space="preserve">
-    <value>Environment needs to be specified</value>
-  </data>
-  <data name="EnvironmentNotFound" xml:space="preserve">
-    <value>The environment name '{0}' is not found.</value>
   </data>
   <data name="ExpiredRefreshToken" xml:space="preserve">
     <value>Your Microsoft Azure credential in the Windows PowerShell session has expired. Please log in again. In PowerShell, execute Connect-AzAccount.</value>
@@ -189,9 +177,6 @@
   <data name="PublishSettingsFileRealmFormat" xml:space="preserve">
     <value>&amp;whr={0}</value>
   </data>
-  <data name="RemovingDefaultEnvironmentsNotSupported" xml:space="preserve">
-    <value>Removing public environment is not supported.</value>
-  </data>
   <data name="ServiceKeyNotFound" xml:space="preserve">
     <value>Unable to retrieve service key for ServicePrincipal account {0}. Please log in again to supply the credentials for this service principal. In PowerShell, execute Connect-AzAccount.</value>
   </data>
@@ -226,7 +211,7 @@
     <value>[Common.Authentication]: Acquiring token using AdalConfiguration with Domain: '{0}', AdEndpoint: '{1}', ClientId: '{2}', ClientRedirectUri: {3}</value>
   </data>
   <data name="UPNAcquireTokenContextTrace" xml:space="preserve">
-    <value>[Common.Authentication]: Acquiring token using context with Authority '{0}', CorrelationId: '{1}', ValidateAuthority: '{2}'</value>
+    <value>[Common.Authentication]: Acquiring token using context with Authority '{0}', ClientId: '{1}'</value>
   </data>
   <data name="UPNExpiredTokenTrace" xml:space="preserve">
     <value>[Common.Authentication]: Token is expired</value>
@@ -235,7 +220,7 @@
     <value>[Common.Authentication]: Renewing Token with Type: '{0}', Expiry: '{1}', MultipleResource? '{2}', Tenant: '{3}', UserId: '{4}'</value>
   </data>
   <data name="UPNRenewTokenUserInfoTrace" xml:space="preserve">
-    <value>[Common.Authentication]: User info for token DisplayId: '{0}', Name: {2} {1}, IdProvider: '{3}', Uid: '{4}'</value>
+    <value>[Common.Authentication]: User info for token Username: '{0}', HomeAccountId: {1}, Environment: '{2}', Uid: '{3}'</value>
   </data>
   <data name="UPNTokenExpirationCheckTrace" xml:space="preserve">
     <value>[Common.Authentication]: Checking token expiration, token expires '{0}' Comparing to '{1}' With threshold '{2}', calculated time until token expiry: '{3}'</value>
@@ -339,5 +324,23 @@
   </data>
   <data name="OldAzureDirectoryName" xml:space="preserve">
     <value>Windows Azure Powershell</value>
+  </data>
+  <data name="AuthenticationClientFactoryNotRegistered" xml:space="preserve">
+    <value>No authentication client factory has been registered, please try to re-authenticate using Connect-AzAccount.</value>
+  </data>
+  <data name="SuccessfullyLaunchedBrowser" xml:space="preserve">
+    <value>We have launched a browser for you to log in. For the old experience with device code flow, please run 'Connect-AzAccount -UseDeviceAuthentication'.</value>
+  </data>
+  <data name="TryLaunchBrowser" xml:space="preserve">
+    <value>Attempting to launch a browser for authorization code login.</value>
+  </data>
+  <data name="UnableToLaunchBrowser" xml:space="preserve">
+    <value>Unable to launch a browser for authorization code login. Reverting to device code login.</value>
+  </data>
+  <data name="EnvironmentNotFound" xml:space="preserve">
+    <value>The environment name '{0}' is not found.</value>
+  </data>
+  <data name="AutosaveNotSupportedWithSuggestion" xml:space="preserve">
+    <value>Context autosave is not supported on current environment. Please disable it using 'Disable-AzContextSave'.</value>
   </data>
 </root>

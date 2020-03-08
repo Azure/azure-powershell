@@ -14,10 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
 using Newtonsoft.Json;
@@ -45,8 +43,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 || objectType == typeof(IAzureTenant) 
                 || objectType == typeof(IAzureTokenCache)
                 || objectType == typeof(AzureTokenCache) 
-                || objectType == typeof(ProtectedFileTokenCache)
-                || objectType == typeof(AuthenticationStoreTokenCache)
                 || objectType == typeof(IAzureContextContainer);
         }
 
@@ -79,13 +75,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             else if (objectType == typeof(IAzureTokenCache))
             {
                 var tempResult = serializer.Deserialize<CacheBuffer>(reader);
-                var cache = AzureSession.Instance.TokenCache;
                 if (_serializeCache && tempResult != null && tempResult.CacheData != null && tempResult.CacheData.Length > 0)
                 {
-                    cache.CacheData = tempResult.CacheData;
+                    if (AzureSession.Instance.TryGetComponent(
+                        AuthenticationClientFactory.AuthenticationClientFactoryKey,
+                        out AuthenticationClientFactory authenticationClientFactory))
+                    {
+                        authenticationClientFactory.UpdateTokenDataWithoutFlush(tempResult.CacheData);
+                    }
                 }
-
-                return cache;
+                // cache data is not for direct use, so we do not return anything
+                return null;
             }
             else if (objectType == typeof(Dictionary<string, IAzureEnvironment>))
             {
@@ -120,7 +120,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (_serializeCache)
                 {
-                    value = new CacheBuffer { CacheData = cache.CacheData };
+                    byte[] cacheData = null;
+                    if (AzureSession.Instance.TryGetComponent(
+                        AuthenticationClientFactory.AuthenticationClientFactoryKey,
+                        out AuthenticationClientFactory authenticationClientFactory))
+                    {
+                        cacheData = authenticationClientFactory.ReadTokenData();
+                    }
+                    value = new CacheBuffer { CacheData = cacheData };
                 }
                 else
                 {

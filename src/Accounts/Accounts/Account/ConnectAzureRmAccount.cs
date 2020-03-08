@@ -27,6 +27,13 @@ using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.PowerShell.Authenticators;
+using System.IO;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
+using System.Threading;
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
+using Microsoft.Identity.Client.Extensions.Msal;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -57,7 +64,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true, HelpMessage = "Service Principal Secret")]
         [Parameter(ParameterSetName = UserWithCredentialParameterSet,
-                    Mandatory = true, HelpMessage = "User Password Credential: this is only supported in Windows PowerShell 5.1")]
+                    Mandatory = true, HelpMessage = "Username/Password Credential")]
         public PSCredential Credential { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
@@ -172,6 +179,11 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
+        /// <summary>
+        /// This cmdlet should work even if there isn't a default context
+        /// </summary>
+        protected override bool RequireDefaultContext() { return false; }
+
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
@@ -184,6 +196,24 @@ namespace Microsoft.Azure.Commands.Profile
                         string.Format(Resources.UnknownEnvironment, Environment));
                 }
             }
+
+            // save the target environment so it can be read to get the correct accounts from token cache
+            AzureSession.Instance.SetProperty(AzureSession.Property.Environment, Environment);
+
+            _writeWarningEvent -= WriteWarningSender;
+            _writeWarningEvent += WriteWarningSender;
+            // store the original write warning handler, register a thread safe one
+            AzureSession.Instance.TryGetComponent(WriteWarningKey, out _originalWriteWarning);
+            AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteWarningKey);
+            AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _writeWarningEvent);
+        }
+
+        private event EventHandler<StreamEventArgs> _writeWarningEvent;
+        private event EventHandler<StreamEventArgs> _originalWriteWarning;
+
+        private void WriteWarningSender(object sender, StreamEventArgs args)
+        {
+            _tasks.Enqueue(new Task(() => this.WriteWarning(args.Message)));
         }
 
         public override void ExecuteCmdlet()
@@ -241,7 +271,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ? builder.Uri.ToString()
                         : envUri;
 
-                    if (!this.IsBound(nameof(ManagedServiceHostName)) && !string.IsNullOrWhiteSpace(envUri) 
+                    if (!this.IsBound(nameof(ManagedServiceHostName)) && !string.IsNullOrWhiteSpace(envUri)
                         && !this.IsBound(nameof(ManagedServiceSecret)) && !string.IsNullOrWhiteSpace(envSecret))
                     {
                         // set flag indicating this is AppService Managed Identity ad hoc mode
@@ -322,7 +352,14 @@ namespace Microsoft.Azure.Commands.Profile
 
                 SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
                {
-                   WriteObject((PSAzureProfile)profileClient.Login(
+                   bool shouldPopulateContextList = true;
+                   if (this.IsParameterBound(c => c.SkipContextPopulation))
+                   {
+                       shouldPopulateContextList = false;
+                   }
+
+                   profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
+                   var task = new Task<AzureRmProfile>( () => profileClient.Login(
                         azureAccount,
                         _environment,
                         Tenant,
@@ -330,10 +367,40 @@ namespace Microsoft.Azure.Commands.Profile
                         subscriptionName,
                         password,
                         SkipValidation,
-                        WriteWarning,
+                        WriteWarningEvent,
                         name,
-                        !SkipContextPopulation.IsPresent));
+                        shouldPopulateContextList));
+                   task.Start();
+                   while (!task.IsCompleted)
+                   {
+                       HandleActions();
+                       Thread.Yield();
+                   }
+
+                   HandleActions();
+                   var result = (PSAzureProfile) (task.ConfigureAwait(false).GetAwaiter().GetResult());
+                   WriteObject(result);
                });
+            }
+        }
+
+        private ConcurrentQueue<Task> _tasks = new ConcurrentQueue<Task>();
+
+        private void HandleActions()
+        {
+            Task task;
+            while (_tasks.TryDequeue(out task))
+            {
+                task.RunSynchronously();
+            }
+        }
+
+        private void WriteWarningEvent(string message)
+        {
+            EventHandler<StreamEventArgs> writeWarningEvent;
+            if (AzureSession.Instance.TryGetComponent(WriteWarningKey, out writeWarningEvent))
+            {
+                writeWarningEvent(this, new StreamEventArgs() { Message = message });
             }
         }
 
@@ -350,13 +417,30 @@ namespace Microsoft.Azure.Commands.Profile
                 name = ContextName;
             }
 
-            var profile = DefaultProfile as AzureRmProfile;
-            if (!CheckForExistingContext(profile, name)
-                || Force.IsPresent
-                || ShouldContinue(string.Format(Resources.ReplaceContextQuery, name),
-                string.Format(Resources.ReplaceContextCaption, name)))
+            AzureRmProfile profile = null;
+            bool? originalShouldRefreshContextsFromCache = null;
+            try
             {
-                ModifyContext((prof, client) => setContextAction(prof, client, name));
+                profile = DefaultProfile as AzureRmProfile;
+                if (profile != null)
+                {
+                    originalShouldRefreshContextsFromCache = profile.ShouldRefreshContextsFromCache;
+                    profile.ShouldRefreshContextsFromCache = false;
+                }
+                if (!CheckForExistingContext(profile, name)
+                    || Force.IsPresent
+                    || ShouldContinue(string.Format(Resources.ReplaceContextQuery, name),
+                    string.Format(Resources.ReplaceContextCaption, name)))
+                {
+                    ModifyContext((prof, client) => setContextAction(prof, client, name));
+                }
+            }
+            finally
+            {
+                if(profile != null && originalShouldRefreshContextsFromCache.HasValue)
+                {
+                    profile.ShouldRefreshContextsFromCache = originalShouldRefreshContextsFromCache.Value;
+                }
             }
         }
 
@@ -381,13 +465,37 @@ namespace Microsoft.Azure.Commands.Profile
 
                 var autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
                 var autosaveVariable = System.Environment.GetEnvironmentVariable(AzureProfileConstants.AzureAutosaveVariable);
-                bool localAutosave;
-                if(bool.TryParse(autosaveVariable, out localAutosave))
+
+                if(bool.TryParse(autosaveVariable, out bool localAutosave))
                 {
                     autoSaveEnabled = localAutosave;
                 }
 
+                bool shouldModifyContext = false;
+                if (autoSaveEnabled && !SharedTokenCacheClientFactory.SupportCachePersistence(out string message))
+                {
+                    // If token cache persistence is not supported, fall back to in-memory, and print a warning
+                    // We cannot just throw an exception here because this is called when importing the module
+                    autoSaveEnabled = false;
+                    WriteInitializationWarnings(Resources.AutosaveNotSupportedWithFallback);
+                    WriteInitializationWarnings(message);
+                    shouldModifyContext = true;
+                }
+
                 InitializeProfileProvider(autoSaveEnabled);
+
+                if (shouldModifyContext)
+                {
+                    ModifyContext((profile, client) =>
+                    {
+                        AzureSession.Modify(session =>
+                        {
+                            FileUtilities.DataStore = session.DataStore;
+                            session.ARMContextSaveMode = ContextSaveMode.Process;
+                        });
+                    });
+                }
+
                 IServicePrincipalKeyStore keyStore =
 // TODO: Remove IfDef
 #if NETSTANDARD
@@ -396,6 +504,26 @@ namespace Microsoft.Azure.Commands.Profile
                     new AzureRmServicePrincipalKeyStore();
 #endif
                 AzureSession.Instance.RegisterComponent(ServicePrincipalKeyStore.Name, () => keyStore);
+
+                IAuthenticatorBuilder builder = null;
+                if (!AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out builder))
+                {
+                    builder = new DefaultAuthenticatorBuilder();
+                    AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => builder);
+                }
+
+                AuthenticationClientFactory factory = null;
+                if (autoSaveEnabled)
+                {
+                    factory = new SharedTokenCacheClientFactory();
+                }
+                else // if autosave is disabled, or the shared factory fails to initialize, we fallback to in memory
+                {
+                    factory = new InMemoryTokenCacheClientFactory();
+                    
+                }
+
+                AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)
@@ -403,6 +531,14 @@ namespace Microsoft.Azure.Commands.Profile
                 // This will throw exception for tests, ignore.
             }
 #endif
+        }
+
+        protected override void EndProcessing()
+        {
+            base.EndProcessing();
+            // unregister the thread-safe write warning, because it won't work out of this cmdlet
+            AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteWarningKey);
+            AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _originalWriteWarning);
         }
     }
 }

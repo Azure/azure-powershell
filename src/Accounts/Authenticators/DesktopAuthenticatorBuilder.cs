@@ -17,19 +17,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 {
     public class DesktopAuthenticatorBuilder : IAuthenticatorBuilder
     {
-        public IAuthenticator Authenticator { get; set; }
-
-        public static void Apply(IAzureSession session)
+        public DesktopAuthenticatorBuilder()
         {
-            session.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () =>
-            {
-                var userPassword = new UsernamePasswordAuthenticator();
-                userPassword.Next = new InteractiveUserAuthenticator();
-                var authenticator = new DesktopAuthenticatorBuilder();
-                authenticator.Authenticator = userPassword;
-                return authenticator as IAuthenticatorBuilder;
-            });
+            AppendAuthenticator(() => { return new InteractiveUserAuthenticator(); });
+            var defaultBuilder = new DefaultAuthenticatorBuilder();
+            AppendAuthenticator(() => { return defaultBuilder.Authenticator; });
         }
+
+        public IAuthenticator Authenticator { get; set; }
 
         public bool AppendAuthenticator(Func<IAuthenticator> constructor)
         {

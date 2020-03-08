@@ -17,13 +17,11 @@ using Common.Authentication.Test.Cmdlets;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
+using Microsoft.Identity.Client;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -96,7 +94,7 @@ namespace Common.Authentication.Test
         public void LoginWithServicePrincipal()
         {
             // REQUIRED:
-            // _tenantId --> Id of the tenant that the service princinpal is registered to
+            // _tenantId --> Id of the tenant that the service principal is registered to
             // _userName --> Application id of the service principal
             // _password --> Secret of the service principal
             _account = new AzureAccount() { Type = AzureAccount.AccountType.ServicePrincipal };
@@ -141,30 +139,9 @@ namespace Common.Authentication.Test
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
-            var diskCache = session.TokenCache as ProtectedFileTokenCache;
             try
             {
-                if (diskCache == null)
-                {
-                    var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
-                    try
-                    {
-                        FileUtilities.EnsureDirectoryExists(session.TokenCacheDirectory);
-
-                        diskCache = new ProtectedFileTokenCache(tokenPath, store);
-                        if (memoryCache != null && memoryCache.Count > 0)
-                        {
-                            diskCache.Deserialize(memoryCache.Serialize());
-                        }
-
-                        session.TokenCache = diskCache;
-                    }
-                    catch
-                    {
-                        // leave the token cache alone if there are file system errors
-                    }
-                }
-
+                // TODO: enable auto save with the client factory
                 if (writeAutoSaveFile)
                 {
                     try

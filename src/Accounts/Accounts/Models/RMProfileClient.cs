@@ -29,7 +29,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
-using AuthenticationMessages = Microsoft.Azure.Commands.Common.Authentication.Properties.Resources;
+using System.Threading.Tasks;
 using ProfileMessages = Microsoft.Azure.Commands.Profile.Properties.Resources;
 using ResourceMessages = Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources;
 
@@ -38,19 +38,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     public class RMProfileClient
     {
         private IProfileOperations _profile;
-        private IAzureTokenCache _cache;
         public Action<string> WarningLog;
 
         public RMProfileClient(IProfileOperations profile)
         {
             _profile = profile;
-            var context = _profile.DefaultContext;
-            _cache = AzureSession.Instance.TokenCache;
-            if (_profile != null && context != null &&
-                context.TokenCache != null)
-            {
-                _cache = context.TokenCache;
-            }
         }
 
         /// <summary>
@@ -252,7 +244,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
 
-            shouldPopulateContextList &= _profile.DefaultContext?.Account == null;
+            var populateContextList = true;
+            try
+            {
+                populateContextList = shouldPopulateContextList && _profile.DefaultContext?.Account == null;
+            }
+            catch (PSInvalidOperationException) { }
+
             if (newSubscription == null)
             {
                 if (subscriptionId != null)
@@ -286,8 +284,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
 
-            _profile.DefaultContext.TokenCache = _cache;
-            if (shouldPopulateContextList)
+            if (populateContextList)
             {
                 var defaultContext = _profile.DefaultContext;
                 var subscriptions = ListSubscriptions(tenantId).Take(25);
@@ -299,7 +296,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     };
 
                     var tempContext = new AzureContext(subscription, account, environment, tempTenant);
-                    tempContext.TokenCache = _cache;
                     string tempName = null;
                     if (!_profile.TryGetContextName(tempContext, out tempName))
                     {
@@ -405,13 +401,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (environment == null)
             {
-                throw new ArgumentNullException("environment", AuthenticationMessages.EnvironmentNeedsToBeSpecified);
+                throw new ArgumentNullException("environment", ProfileMessages.EnvironmentNeedsToBeSpecified);
             }
 
             if (AzureEnvironment.PublicEnvironments.ContainsKey(environment.Name))
             {
                 throw new InvalidOperationException(
-                    string.Format(AuthenticationMessages.ChangingDefaultEnvironmentNotSupported, "environment"));
+                    string.Format(ProfileMessages.ChangingDefaultEnvironmentNotSupported, "environment"));
             }
 
             IAzureEnvironment result = null;
@@ -439,11 +435,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new ArgumentNullException("name", AuthenticationMessages.EnvironmentNameNeedsToBeSpecified);
+                throw new ArgumentNullException("name", ProfileMessages.EnvironmentNameNeedsToBeSpecified);
             }
             if (AzureEnvironment.PublicEnvironments.ContainsKey(name))
             {
-                throw new ArgumentException(AuthenticationMessages.RemovingDefaultEnvironmentsNotSupported, "name");
+                throw new ArgumentException(ProfileMessages.RemovingDefaultEnvironmentsNotSupported, "name");
             }
 
             IAzureEnvironment environment;
@@ -453,7 +449,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
             else
             {
-                throw new ArgumentException(string.Format(AuthenticationMessages.EnvironmentNotFound, name), "name");
+                throw new ArgumentException(string.Format(ProfileMessages.EnvironmentNotFound, name), "name");
             }
         }
 
@@ -527,8 +523,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 tenantId,
                 password,
                 promptBehavior,
-                promptAction,
-                _cache);
+                promptAction);
         }
 
         private bool TryGetTenantSubscription(IAccessToken accessToken,
@@ -673,7 +668,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, commonTenant));
                 if (account.IsPropertySet(AzureAccount.Property.Tenants))
@@ -698,9 +693,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 return tenant;
                             }).ToList();
                 }
+
                 if (!result.Any())
                 {
-                    throw;
+                    WriteWarningMessage("Error occurred when attempting to acquire the common tenant token. Please run 'Connect-AzAccount` again to authenticate.");
+                    throw ex;
                 }
 
             }

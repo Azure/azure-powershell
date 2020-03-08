@@ -13,10 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -499,19 +495,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetContextPreservesTokenCache()
-        {
-            AzureRmProfile profile = null;
-            AzureContext context = new AzureContext(null, null, null, null);
-            Assert.Throws<ArgumentNullException>(() => profile.SetContextWithCache(context));
-            profile = new AzureRmProfile();
-            Assert.Throws<ArgumentNullException>(() => profile.SetContextWithCache(null));
-            profile.SetContextWithCache(context);
-            Assert.Equal(AzureSession.Instance.TokenCache.CacheData, profile.DefaultContext.TokenCache.CacheData);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzurePSComletMessageQueue()
         {
             ConcurrentQueue<string> queue = new ConcurrentQueue<string>();
@@ -547,15 +530,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             profile.DefaultContext = Context;
-            var cmdlt = new GetAzureRMSubscriptionCommand();
+            var cmdlet = new GetAzureRMSubscriptionCommand();
             // Setup
-            cmdlt.DefaultProfile = profile;
-            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlet.DefaultProfile = profile;
+            cmdlet.CommandRuntime = commandRuntimeMock;
 
             // Act
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
 
             var subscriptionName = MockSubscriptionClientFactory.GetSubscriptionNameFromId(secondList[0]);
 
@@ -593,16 +576,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             profile.DefaultContext = Context;
-            var cmdlt = new GetAzureRMSubscriptionCommand();
+            var cmdlet = new GetAzureRMSubscriptionCommand();
             // Setup
-            cmdlt.DefaultProfile = profile;
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionId = secondTenantSubscriptions[2];
+            cmdlet.DefaultProfile = profile;
+            cmdlet.CommandRuntime = commandRuntimeMock;
+            cmdlet.SubscriptionId = secondTenantSubscriptions[2];
 
             // Act
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
 
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
 
@@ -643,16 +626,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             profile.DefaultContext = Context;
-            var cmdlt = new GetAzureRMSubscriptionCommand();
+            var cmdlet = new GetAzureRMSubscriptionCommand();
             // Setup
-            cmdlt.DefaultProfile = profile;
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionName = subscriptionName;
+            cmdlet.DefaultProfile = profile;
+            cmdlet.CommandRuntime = commandRuntimeMock;
+            cmdlet.SubscriptionName = subscriptionName;
 
             // Act
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
 
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
 
@@ -696,16 +679,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             profile.DefaultContext.Tenant.Id = DefaultTenant.ToString();
 
             profile.DefaultContext.Account.Type = "User";
-            var cmdlt = new GetAzureRMSubscriptionCommand();
+            var cmdlet = new GetAzureRMSubscriptionCommand();
             // Setup
-            cmdlt.DefaultProfile = profile;
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            Assert.Null(cmdlt.TenantId);
+            cmdlet.DefaultProfile = profile;
+            cmdlet.CommandRuntime = commandRuntimeMock;
+            Assert.Null(cmdlet.TenantId);
             // Act
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
-            Assert.Null(cmdlt.TenantId);
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+            Assert.Null(cmdlet.TenantId);
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 8);
 
             // TEST WITH MANAGEDSERVICE
@@ -722,16 +705,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             profile.DefaultContext.Tenant.Id = DefaultTenant.ToString();
 
             profile.DefaultContext.Account.Type = "ManagedService";
-            cmdlt = new GetAzureRMSubscriptionCommand();
+            cmdlet = new GetAzureRMSubscriptionCommand();
             // Setup
-            cmdlt.DefaultProfile = profile;
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            Assert.Null(cmdlt.TenantId);
+            cmdlet.DefaultProfile = profile;
+            cmdlet.CommandRuntime = commandRuntimeMock;
+            Assert.Null(cmdlet.TenantId);
             // Act
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
-            Assert.NotNull(cmdlt.TenantId);
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+            Assert.NotNull(cmdlet.TenantId);
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 4);
         }
 
@@ -778,7 +761,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             currentProfile.DefaultContext = new AzureContext(sub, account, environment, tenant);
             currentProfile.EnvironmentTable[environment.Name] = environment;
-            currentProfile.DefaultContext.TokenCache = new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } };
+            currentProfile.DefaultContext.TokenCache = null;
 
             AzureRmProfile deserializedProfile;
             // Round-trip the exception: Serialize and de-serialize with a BinaryFormatter
@@ -900,9 +883,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         }
       },
       ""VersionProfile"": null,
-      ""TokenCache"": {
-        ""CacheData"": ""AgAAAAAAAAA=""
-      },
+      ""TokenCache"": null,
       ""ExtendedProperties"": {}
     }
   },
@@ -945,7 +926,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             };
             profile.DefaultContext = new AzureContext(sub, account, environment, tenant);
             profile.EnvironmentTable[environment.Name] = environment;
-            profile.DefaultContext.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } });
             profile.Save();
             string actual = dataStore.ReadFileAsText(path).Substring(1).TrimEnd(new[] { '\0' });
 #if NETSTANDARD
@@ -972,7 +952,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
     }
   },
   ""Context"": {
-    ""TokenCache"": ""AgAAAAAAAAA="",
+    ""TokenCache"": null,
     ""Account"": {
       ""Id"": ""me@contoso.com"",
       ""Type"": 1,
@@ -1002,11 +982,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
     }
   }
 }";
-            var expectedArray = new byte[] { 2, 0, 0, 0, 0, 0, 0, 0 };
-#if NETSTANDARD
-            contents = contents.Replace("AgAAAAAAAAA=", "AwAAAAAAAAA=");
-            expectedArray = new byte[] { 3, 0, 0, 0, 0, 0, 0, 0 };
-#endif
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ARMProfileFile);
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
@@ -1018,7 +993,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("testCloud", profile.DefaultContext.Environment.Name);
             Assert.Equal("me@contoso.com", profile.DefaultContext.Account.Id);
             Assert.Equal(AzureAccount.AccountType.User, profile.DefaultContext.Account.Type);
-            Assert.Equal(expectedArray, profile.DefaultContext.TokenCache.CacheData);
             Assert.Equal(path, profile.ProfilePath);
         }
 

@@ -13,11 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using System.Security;
+using System.Threading;
 using System.Threading.Tasks;
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -26,20 +29,28 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     /// </summary>
     public class UsernamePasswordAuthenticator : DelegatingAuthenticator
     {
-        public override Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
+        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
-            var audience = environment.GetEndpoint(resourceId);
-            var context = new AuthenticationContext(
-                AuthenticationHelpers.GetAuthority(environment, tenant), 
-                environment?.OnPremise ?? true, 
-                tokenCache as TokenCache ?? TokenCache.DefaultShared);
-            var result = context.AcquireTokenAsync(audience, AuthenticationHelpers.PowerShellClientId, new UserPasswordCredential(account.Id, password));
-            return AuthenticationResultToken.GetAccessTokenAsync(result);
+            var upParameters = parameters as UsernamePasswordParameters;
+            var onPremise = upParameters.Environment.OnPremise;
+            var authenticationClientFactory = upParameters.AuthenticationClientFactory;
+            var resource = upParameters.Environment.GetEndpoint(upParameters.ResourceId) ?? upParameters.ResourceId;
+            var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
+            var clientId = AuthenticationHelpers.PowerShellClientId;
+            var authority = onPremise ?
+                                upParameters.Environment.ActiveDirectoryAuthority :
+                                AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+            TracingAdapter.Information(string.Format("[UsernamePasswordAuthenticator] Creating IPublicClientApplication - ClientId: '{0}', Authority: '{1}', UseAdfs: '{2}'", clientId, authority, onPremise));
+            var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, useAdfs: onPremise);
+            TracingAdapter.Information(string.Format("[UsernamePasswordAuthenticator] Calling AcquireTokenByUsernamePassword - Scopes: '{0}', UserId: '{1}'", string.Join(",", scopes), upParameters.UserId));
+            var response = publicClient.AcquireTokenByUsernamePassword(scopes, upParameters.UserId, upParameters.Password).ExecuteAsync(cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
+            return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
 
-        public override bool CanAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
+        public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
-            return (account?.Type == AzureAccount.AccountType.User && environment != null && !string.IsNullOrEmpty(environment.GetEndpoint(resourceId)) && !string.IsNullOrWhiteSpace(tenant) && password != null && tokenCache != null);
+            return (parameters as UsernamePasswordParameters) != null;
         }
     }
 }

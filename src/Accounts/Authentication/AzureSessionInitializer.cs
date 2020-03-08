@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using System;
 using System.IO;
 using System.Diagnostics;
@@ -23,9 +23,10 @@ using Newtonsoft.Json;
 using TraceLevel = System.Diagnostics.TraceLevel;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Common;
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
+using Microsoft.Identity.Client.Extensions.Msal;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -59,26 +60,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public static void CreateOrReplaceSession(IDataStore dataStore)
         {
             AzureSession.Initialize(() => CreateInstance(dataStore), true);
-        }
-
-        static IAzureTokenCache InitializeTokenCache(IDataStore store, string cacheDirectory, string cacheFile, string autoSaveMode)
-        {
-            IAzureTokenCache result = new AuthenticationStoreTokenCache(new AzureTokenCache());
-            if (autoSaveMode == ContextSaveMode.CurrentUser)
-            {
-                try
-                {
-                    FileUtilities.DataStore = store;
-                    FileUtilities.EnsureDirectoryExists(cacheDirectory);
-                    var cachePath = Path.Combine(cacheDirectory, cacheFile);
-                    result = new ProtectedFileTokenCache(cachePath, store);
-                }
-                catch
-                {
-                }
-            }
-
-            return result;
         }
 
         static bool MigrateSettings(IDataStore store, string oldProfileDirectory, string newProfileDirectory)
@@ -117,14 +98,86 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return false;
         }
 
+        static void MigrateAdalCache(AzureSession session, IDataStore store, string adalCachePath, string msalCachePath)
+        {
+            if (session.ARMContextSaveMode == ContextSaveMode.Process)
+            {
+                // Don't attempt to migrate if context autosave is disabled
+                return;
+            }
+
+            if (!store.FileExists(adalCachePath) || store.FileExists(msalCachePath))
+            {
+                // Return if
+                // (1) The ADAL cache doesn't exist (nothing to migrate), or
+                // (2) The MSAL cache does exist (don't override existing cache)
+                return;
+            }
+
+            byte[] adalData;
+            try
+            {
+                adalData = File.ReadAllBytes(adalCachePath);
+            }
+            catch
+            {
+                // Return if there was an error converting the ADAL data safely
+                return;
+            }
+
+            SharedTokenCacheClientFactory authenticationClientFactory;
+            try
+            {
+                authenticationClientFactory = new SharedTokenCacheClientFactory(new CacheMigrationSettings
+                {
+                    CacheData = adalData,
+                    CacheFormat = CacheFormat.AdalV3
+                });
+            }
+            catch (MsalCachePersistenceException)
+            {
+                throw new PlatformNotSupportedException(Resources.AutosaveNotSupportedWithSuggestion);
+            }
+            var client = authenticationClientFactory.CreatePublicClient();
+
+            var accounts = client.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            foreach (var account in accounts)
+            {
+                try
+                {
+                    var accountEnvironment = string.Format("https://{0}/", account.Environment);
+                    var environment = AzureEnvironment.PublicEnvironments.Values.Where(e => e.ActiveDirectoryAuthority == accountEnvironment).FirstOrDefault();
+                    if (environment == null)
+                    {
+                        // We cannot map the previous environment to one of the public environments
+                        continue;
+                    }
+
+                    var scopes = new string[] { string.Format("{0}{1}", environment.ActiveDirectoryServiceEndpointResourceId, ".default") };
+                    var token = client.AcquireTokenSilent(scopes, account).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                }
+                catch
+                {
+                    // Continue if we're unable to get the token for the current account
+                    continue;
+                }
+            }
+
+        }
+
         static ContextAutosaveSettings InitializeSessionSettings(IDataStore store, string profileDirectory, string settingsFile, bool migrated = false)
+        {
+            return InitializeSessionSettings(store, profileDirectory, profileDirectory, settingsFile, migrated);
+        }
+
+        static ContextAutosaveSettings InitializeSessionSettings(IDataStore store, string cacheDirectory, string profileDirectory, string settingsFile, bool migrated = false)
         {
             var result = new ContextAutosaveSettings
             {
-                CacheDirectory = profileDirectory,
+                CacheDirectory = cacheDirectory,
                 ContextDirectory = profileDirectory,
                 Mode = ContextSaveMode.Process,
-                CacheFile = "TokenCache.dat",
+                CacheFile = "msal.cache",
                 ContextFile = "AzureRmContext.json"
             };
 
@@ -136,8 +189,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 {
                     var settingsText = store.ReadFileAsText(settingsPath);
                     ContextAutosaveSettings settings = JsonConvert.DeserializeObject<ContextAutosaveSettings>(settingsText);
-                    result.CacheDirectory = migrated ? profileDirectory : settings.CacheDirectory ?? result.CacheDirectory;
-                    result.CacheFile = settings.CacheFile ?? result.CacheFile;
+                    result.CacheDirectory = migrated ? cacheDirectory : settings.CacheDirectory == null ? cacheDirectory : string.Equals(settings.CacheDirectory, profileDirectory) ? cacheDirectory : settings.CacheDirectory;
+                    result.CacheFile = settings.CacheFile == null ? result.CacheFile : string.Equals(settings.CacheFile, "TokenCache.dat") ? result.CacheFile : settings.CacheFile;
                     result.ContextDirectory = migrated ? profileDirectory : settings.ContextDirectory ?? result.ContextDirectory;
                     result.Mode = settings.Mode;
                     result.ContextFile = settings.ContextFile ?? result.ContextFile;
@@ -185,6 +238,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     Resources.OldAzureDirectoryName);
             dataStore = dataStore ?? new DiskDataStore();
 
+
+            string oldCachePath = Path.Combine(profilePath, "TokenCache.dat");
+            string cachePath = Path.Combine(SharedUtilities.GetUserRootDirectory(), ".IdentityService");
             var session = new AdalSession
             {
                 ClientFactory = new ClientFactory(),
@@ -202,13 +258,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #else
                 MigrateSettings(dataStore, oldProfilePath, profilePath);
 #endif
-            var autoSave = InitializeSessionSettings(dataStore, profilePath, ContextAutosaveSettings.AutoSaveSettingsFile, migrated);
+            var autoSave = InitializeSessionSettings(dataStore, cachePath, profilePath, ContextAutosaveSettings.AutoSaveSettingsFile, migrated);
             session.ARMContextSaveMode = autoSave.Mode;
             session.ARMProfileDirectory = autoSave.ContextDirectory;
             session.ARMProfileFile = autoSave.ContextFile;
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
-            session.TokenCache = InitializeTokenCache(dataStore, session.TokenCacheDirectory, session.TokenCacheFile, autoSave.Mode);
+            MigrateAdalCache(session, dataStore, oldCachePath, Path.Combine(cachePath, "msal.cache"));
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
             return session;
@@ -233,8 +289,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #else
             public AdalSession()
             {
-                AdalLogger = new AdalLogger(WriteToTraceListeners);
-                LoggerCallbackHandler.UseDefaultLogging = false;
+
             }
 
             public override TraceLevel AuthenticationLegacyTraceLevel
@@ -250,11 +305,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 get => SourceLevels.Off;
                 set { }
             }
-
-            /// <summary>
-            /// Adal Logger for Adal 3.x +
-            /// </summary>
-            public AdalLogger AdalLogger { get; private set; }  
 
             /// <summary>
             /// Write messages to the existing trace listeners when log messages occur

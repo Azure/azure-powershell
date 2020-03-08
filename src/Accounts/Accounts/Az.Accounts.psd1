@@ -72,12 +72,22 @@ RequiredAssemblies = 'Microsoft.Azure.PowerShell.Authentication.Abstractions.dll
                'Microsoft.Azure.PowerShell.Clients.KeyVault.dll', 
                'Microsoft.Azure.PowerShell.Clients.Websites.dll', 
                'Hyak.Common.dll', 'Microsoft.ApplicationInsights.dll', 
-               'Microsoft.Azure.Common.dll', 'Microsoft.Rest.ClientRuntime.dll', 
+               'Microsoft.Azure.Common.dll', 
+               'Microsoft.Rest.ClientRuntime.dll', 
                'Microsoft.Rest.ClientRuntime.Azure.dll', 
                'Microsoft.WindowsAzure.Storage.dll', 
                'Microsoft.WindowsAzure.Storage.DataMovement.dll', 
                'Microsoft.Azure.PowerShell.Clients.Aks.dll', 
-               'Microsoft.Azure.PowerShell.Strategies.dll'
+               'Microsoft.Azure.PowerShell.Strategies.dll', 
+               'Microsoft.Azure.PowerShell.Authenticators.dll', 
+               'Microsoft.Extensions.Caching.Abstractions.dll', 
+               'Microsoft.Extensions.Caching.Memory.dll', 
+               'Microsoft.Extensions.DependencyInjection.Abstractions.dll', 
+               'Microsoft.Extensions.Options.dll', 
+               'Microsoft.Extensions.Primitives.dll', 
+               'Microsoft.Identity.Client.dll', 
+               'Microsoft.Identity.Client.Extensions.Msal.dll', 
+               'System.Runtime.CompilerServices.Unsafe.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -142,7 +152,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix'
+        ReleaseNotes = '* Support ADAL token cache migration'
 
         # Prerelease string of this module
         Prerelease = 'preview'

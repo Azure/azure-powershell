@@ -102,7 +102,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                 context.Tenant = new AzureTenant();
                 context.Tenant.CopyFrom(other.Tenant);
                 context.CopyPropertiesFrom(other);
-                context.TokenCache = AzureSession.Instance.TokenCache;
             }
         }
 

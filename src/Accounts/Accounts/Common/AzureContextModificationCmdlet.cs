@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Properties;
@@ -43,7 +44,11 @@ namespace Microsoft.Azure.Commands.Profile.Common
         {
             using (var profile = GetDefaultProfile())
             {
-                contextAction(profile.ToProfile(), new RMProfileClient(profile));
+                var client = new RMProfileClient(profile)
+                {
+                    WarningLog = (s) => WriteWarning(s)
+                };
+                contextAction(profile.ToProfile(), client);
             }
         }
 
@@ -83,7 +88,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// <summary>
         /// Get the context modification scope for the current cmdlet invoication
         /// </summary>
-        /// <returns>Process if the cmdlet should only change the current process, CurrentUser 
+        /// <returns>Process if the cmdlet should only change the current process, CurrentUser
         /// if any changes should occur globally.</returns>
         protected virtual ContextModificationScope GetContextModificationScope()
         {
@@ -193,6 +198,5 @@ namespace Microsoft.Azure.Commands.Profile.Common
 
             return result;
         }
-
     }
 }

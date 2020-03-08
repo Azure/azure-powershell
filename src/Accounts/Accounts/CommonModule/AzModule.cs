@@ -39,13 +39,11 @@ namespace Microsoft.Azure.Commands.Common
         IEventStore _deferredEvents;
         ICommandRuntime _runtime;
         TelemetryProvider _telemetry;
-        AdalLogger _logger;
         internal static readonly string[] ClientHeaders = {"x-ms-client-request-id", "client-request-id", "x-ms-request-id", "request-id" };
         public AzModule(ICommandRuntime runtime, IEventStore eventHandler)
         {
             _runtime = runtime;
             _deferredEvents = eventHandler;
-            _logger = new AdalLogger(_deferredEvents.GetDebugLogger());
             _telemetry = TelemetryProvider.Create(
                 _deferredEvents.GetWarningLogger(), _deferredEvents.GetDebugLogger()); 
         }
@@ -58,7 +56,6 @@ namespace Microsoft.Azure.Commands.Common
         {
             _deferredEvents = store;
             _runtime = runtime;
-            _logger = new AdalLogger(_deferredEvents.GetDebugLogger()); ;
             _telemetry = provider;
         }
 
@@ -72,13 +69,13 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="appendStep">a delegate which allows the module to append a step in the HTTP Pipeline</param>
         public void OnModuleLoad(string resourceId, string moduleName, PipelineChangeDelegate prependStep, PipelineChangeDelegate appendStep)
         {
-            // this will be called once when the module starts up 
+            // this will be called once when the module starts up
             // the common module can prepend or append steps to the pipeline at this point.
             prependStep(UniqueId.Instance.SendAsync);
         }
 
         /// <summary>
-        /// The cmdlet will call this for every event during the pipeline. 
+        /// The cmdlet will call this for every event during the pipeline.
         /// </summary>
         /// <param name="id">a <c>string</c> containing the name of the event being raised (well-known events are in <see cref="Microsoft.Azure.Commands.Common.Events"/></param>
         /// <param name="cancellationToken">a <c>CancellationToken</c> indicating if this request is being cancelled.</param>
@@ -223,8 +220,6 @@ namespace Microsoft.Azure.Commands.Common
                 _telemetry?.Flush();
                 _telemetry?.Dispose();
                 _telemetry = null;
-                _logger?.Dispose();
-                _logger = null;
                 _deferredEvents?.Dispose();
                 _deferredEvents = null;
             }

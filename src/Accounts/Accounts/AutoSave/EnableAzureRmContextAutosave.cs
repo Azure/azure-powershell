@@ -13,15 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Management.Automation;
 
@@ -31,8 +29,15 @@ namespace Microsoft.Azure.Commands.Profile.Context
     [OutputType(typeof(ContextAutosaveSettings))]
     public class EnableAzureRmContextAutosave : AzureContextModificationCmdlet
     {
+        protected override bool RequireDefaultContext() { return false; }
+
         public override void ExecuteCmdlet()
         {
+            if (!SharedTokenCacheClientFactory.SupportCachePersistence(out string message))
+            {
+                throw new PlatformNotSupportedException(Resources.AutosaveNotSupported);
+            }
+
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Scope)) && Scope == ContextModificationScope.Process)
             {
                 ConfirmAction("Autosave the context in the current session", "Current session", () =>
@@ -82,48 +87,23 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
-            var diskCache = session.TokenCache as ProtectedFileTokenCache;
-            try
+
+            AuthenticationClientFactory factory = new SharedTokenCacheClientFactory();
+            AzureSession.Instance.UnregisterComponent<AuthenticationClientFactory>(AuthenticationClientFactory.AuthenticationClientFactoryKey);
+            AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
+            if (writeAutoSaveFile)
             {
-                if (diskCache == null)
+                try
                 {
-                    var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
-                    try
-                    {
-                        FileUtilities.EnsureDirectoryExists(session.TokenCacheDirectory);
-
-                        diskCache = new ProtectedFileTokenCache(tokenPath, store);
-                        if (memoryCache != null && memoryCache.Count > 0)
-                        {
-                            diskCache.Deserialize(memoryCache.Serialize());
-                        }
-
-                        session.TokenCache = diskCache;
-                    }
-                    catch
-                    {
-                        // leave the token cache alone if there are file system errors
-                    }
+                    FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
+                    string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
+                    session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
                 }
-
-                if (writeAutoSaveFile)
+                catch
                 {
-                    try
-                    {
-                        FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
-                        string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
-                        session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
-                    }
-                    catch
-                    {
-                        // do not fail for file system errors in writing the autosave setting
-                    }
-
+                    // do not fail for file system errors in writing the autosave setting
+                    // it may impact automation environment and module import.
                 }
-            }
-            catch
-            {
-                // do not throw if there are file system error
             }
         }
 
