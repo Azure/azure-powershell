@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.ResourceManager.Models;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
@@ -24,6 +25,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         {
             return new PsAzureCliScript
             {
+                Name = script.Name,
+                Type = script.Type,
+                Id = script.Id,
                 Identity = script.Identity,
                 Location = script.Location,
                 Tags = script.Tags,
@@ -37,9 +41,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                 Arguments = script.Arguments,
                 EnvironmentVariables = script.EnvironmentVariables,
                 ForceUpdateTag = script.ForceUpdateTag,
-                RetentionInterval = script.RetentionInterval,
-                Timeout = script.Timeout,
-                AzCliVersion = script.AzCliVersion
+                RetentionInterval = XmlConvert.ToString(script.RetentionInterval),
+                Timeout = script.Timeout.HasValue ? XmlConvert.ToString(script.Timeout.Value) : null,
+                AzCliVersion = script.AzCliVersion,
+                ScriptKind = "AzureCLI"
             };
         }
     }

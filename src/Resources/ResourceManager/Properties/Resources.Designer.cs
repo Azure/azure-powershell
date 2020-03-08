@@ -223,6 +223,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deployment script &apos;{0}&apos; doesn&apos;t exist in resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string DeploymentScriptDoesntExist {
+            get {
+                return ResourceManager.GetString("DeploymentScriptDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An unsupported Deployment Script kind is requested..
         /// </summary>
         internal static string DeploymentScriptKindNotSupported {

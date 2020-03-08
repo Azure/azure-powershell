@@ -12,66 +12,64 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.ResourceManager;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    [Cmdlet(VerbsCommon.Get,  AzureRMConstants.AzureRMPrefix + "DeploymentScript", DefaultParameterSetName = GetAzDeploymentScript.ListDeploymentScript), OutputType(typeof(PsDeploymentScript), typeof(PsDeploymentScript))]
-    public class GetAzDeploymentScript : ResourceManagerCmdletBase
+    [Cmdlet(VerbsCommon.Get,  AzureRMConstants.AzureRMPrefix + "DeploymentScript", DefaultParameterSetName = GetAzDeploymentScript.ListDeploymentScript), OutputType(typeof(PsDeploymentScript))]
+    public class GetAzDeploymentScript : DeploymentScriptCmdletBase
     {
+        #region Cmdlet Parameters and Parameter Set Definitions
+
         internal const string GetDeploymentScriptByName = "GetDeploymentScriptByName";
-        internal const string GetDeploymentScriptById = "GetDeploymentScriptById";
-        internal const string ListDeploymentScript = "GetDeploymentScriptList";
+        internal const string GetDeploymentScriptByResourceId = "GetDeploymentScriptByResourceId";
+        internal const string ListDeploymentScript = "ListDeploymentScript";
 
-        [Parameter(Position = 0, ParameterSetName = GetDeploymentScriptByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(Position = 0, ParameterSetName = ListDeploymentScript, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(Position = 0, ParameterSetName = GetDeploymentScriptByName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        public string SubscriptionId { get; set; }
-
-        [Parameter(Position = 0, ParameterSetName = ListDeploymentScript, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(Position = 0, ParameterSetName = GetDeploymentScriptByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(Position = 0, ParameterSetName = ListDeploymentScript, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(Position = 0, ParameterSetName = GetDeploymentScriptByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Position = 1, ParameterSetName = GetDeploymentScriptByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the deployment script")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
         [Alias("ResourceId")]
-        [Parameter(ParameterSetName = GetDeploymentScriptById, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The fully qualified resource Id of the deployment script. Example: /subscriptions/{subId}/providers/Microsoft.Resources/deploymentScripts/{deploymentName}")]
+        [Parameter(Position = 0, ParameterSetName = GetDeploymentScriptByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The fully qualified resource Id of the deployment script. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deploymentScripts/{deploymentScriptName}")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
+        #endregion
+
         #region Cmdlet Overrides
+
         public override void ExecuteCmdlet()
         {
-            var subscriptionId = SubscriptionId ?? DefaultContext.Subscription.Id;
-
             try
             {
                 switch (ParameterSetName)
                 {
-                    case GetAzDeploymentScript.GetDeploymentScriptByName:
+                    case GetDeploymentScriptByName:
                         WriteObject(DeploymentScriptsSdkClient.GetDeploymentScript(Name, ResourceGroupName));
                         break;
-                    case GetDeploymentScriptById:
+                    case GetDeploymentScriptByResourceId:
+                        WriteObject(DeploymentScriptsSdkClient.GetDeploymentScript(ResourceIdUtility.GetResourceName(this.Id), 
+                            ResourceIdUtility.GetResourceGroupName(this.Id)));
                         break;
                     case ListDeploymentScript:
-                        if (!string.IsNullOrEmpty(ResourceGroupName))
-                        {
-                            //WriteObject();
-                        }
-
-                        //List DS under subscriptions
+                        WriteObject(!string.IsNullOrEmpty(ResourceGroupName)
+                            ? DeploymentScriptsSdkClient.ListDeploymentScriptsByResourceGroup(ResourceGroupName)
+                            : DeploymentScriptsSdkClient.ListDeploymentScriptsBySubscription());
                         break;
+                    default:
+                        throw new PSInvalidOperationException();
                 }
             }
             catch (Exception ex)
@@ -79,6 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 WriteExceptionError(ex);
             }
         }
+
         #endregion Cmdlet Overrides
     }
 }

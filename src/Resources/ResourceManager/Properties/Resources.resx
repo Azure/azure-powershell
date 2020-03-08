@@ -453,4 +453,7 @@
   <data name="DeploymentScriptKindNotSupported" xml:space="preserve">
     <value>An unsupported Deployment Script kind is requested.</value>
   </data>
+  <data name="DeploymentScriptDoesntExist" xml:space="preserve">
+    <value>Deployment script '{0}' doesn't exist in resource group '{1}'.</value>
+  </data>
 </root>
