@@ -465,11 +465,13 @@ namespace Microsoft.Azure.Commands.Profile
 
                 var autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
                 var autosaveVariable = System.Environment.GetEnvironmentVariable(AzureProfileConstants.AzureAutosaveVariable);
-                bool localAutosave;
-                if(bool.TryParse(autosaveVariable, out localAutosave))
+
+                if(bool.TryParse(autosaveVariable, out bool localAutosave))
                 {
                     autoSaveEnabled = localAutosave;
                 }
+
+                bool shouldModifyContext = false;
                 if (autoSaveEnabled && !SharedTokenCacheClientFactory.SupportCachePersistence(out string message))
                 {
                     // If token cache persistence is not supported, fall back to in-memory, and print a warning
@@ -477,6 +479,13 @@ namespace Microsoft.Azure.Commands.Profile
                     autoSaveEnabled = false;
                     WriteInitializationWarnings(Resources.AutosaveNotSupportedWithFallback);
                     WriteInitializationWarnings(message);
+                    shouldModifyContext = true;
+                }
+
+                InitializeProfileProvider(autoSaveEnabled);
+
+                if (shouldModifyContext)
+                {
                     ModifyContext((profile, client) =>
                     {
                         AzureSession.Modify(session =>
@@ -487,7 +496,6 @@ namespace Microsoft.Azure.Commands.Profile
                     });
                 }
 
-                InitializeProfileProvider(autoSaveEnabled);
                 IServicePrincipalKeyStore keyStore =
 // TODO: Remove IfDef
 #if NETSTANDARD
