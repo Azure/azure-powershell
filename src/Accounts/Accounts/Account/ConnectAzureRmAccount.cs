@@ -470,11 +470,21 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     autoSaveEnabled = localAutosave;
                 }
-                if(!SharedTokenCacheClientFactory.SupportCachePersistence(out string message))
+                if (autoSaveEnabled && !SharedTokenCacheClientFactory.SupportCachePersistence(out string message))
                 {
+                    // If token cache persistence is not supported, fall back to in-memory, and print a warning
+                    // We cannot just throw an exception here because this is called when importing the module
                     autoSaveEnabled = false;
                     WriteInitializationWarnings(Resources.AutosaveNotSupportedWithFallback);
                     WriteInitializationWarnings(message);
+                    ModifyContext((profile, client) =>
+                    {
+                        AzureSession.Modify(session =>
+                        {
+                            FileUtilities.DataStore = session.DataStore;
+                            session.ARMContextSaveMode = ContextSaveMode.Process;
+                        });
+                    });
                 }
 
                 InitializeProfileProvider(autoSaveEnabled);
@@ -502,17 +512,7 @@ namespace Microsoft.Azure.Commands.Profile
                 else // if autosave is disabled, or the shared factory fails to initialize, we fallback to in memory
                 {
                     factory = new InMemoryTokenCacheClientFactory();
-                    // If token cache persistence is not supported, fall back to in-memory, and print a warning
-                    // Cannot throw exception here because it is not displayed when user runs a cmdlet
-                    // it only shows up when manually ipmo az.accounts, so it's useless
-                    ModifyContext((profile, client) =>
-                    {
-                        AzureSession.Modify(session =>
-                        {
-                            FileUtilities.DataStore = session.DataStore;
-                            session.ARMContextSaveMode = ContextSaveMode.Process;
-                        });
-                    });
+                    
                 }
 
                 AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);

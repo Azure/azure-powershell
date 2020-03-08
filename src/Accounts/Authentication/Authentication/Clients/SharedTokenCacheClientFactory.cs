@@ -54,26 +54,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public SharedTokenCacheClientFactory(CacheMigrationSettings cacheMigrationSettings) : this() =>
             _cacheMigrationSettings = cacheMigrationSettings;
 
-        private static Dictionary<string, MsalCacheHelper> _helperDict = new Dictionary<string, MsalCacheHelper>();
-
-        private static Object _helperDictLocker = new Object();
+        private static MsalCacheHelper _helper;
+        private static readonly object _lock = new object();
 
         private static MsalCacheHelper GetCacheHelper(String clientId)
         {
-            if (_helperDict.ContainsKey(clientId))
+            if (_helper != null)
             {
-                return _helperDict[clientId];
+                return _helper;
             }
-            lock(_helperDictLocker)
+            lock(_lock)
             {
                 // Double check helper existence
-                if (_helperDict.ContainsKey(clientId))
+                if (_helper == null)
                 {
-                    return _helperDict[clientId];
+                    _helper = CreateCacheHelper(clientId);
                 }
-                MsalCacheHelper helper = CreateCacheHelper(clientId);
-                _helperDict.Add(clientId, helper);
-                return helper;
+                return _helper;
             }
         }
 
@@ -83,10 +80,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <returns></returns>
         public static bool SupportCachePersistence(out string message)
         {
-            MsalCacheHelper cacheHelper = null;
             try
             {
-                cacheHelper = GetCacheHelper(PowerShellClientId);
+                var cacheHelper = GetCacheHelper(PowerShellClientId);
                 cacheHelper.VerifyPersistence();
             }
             catch (MsalCachePersistenceException e)
@@ -161,12 +157,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public override void ClearCache()
         {
-            lock (_helperDictLocker)
+            lock (_helper)
             {
-                foreach (MsalCacheHelper helper in _helperDict.Values)
-                {
-                    helper.Clear();
-                }
+                _helper.Clear();
             }
             base.ClearCache();
         }
