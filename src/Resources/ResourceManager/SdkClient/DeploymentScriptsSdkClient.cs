@@ -12,12 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -31,42 +34,115 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             this.DeploymentScriptsClient = deploymentScriptsClient;
         }
+
         /// <summary>
-        /// Parameterless constructor for mocking
+        /// Parameter-less constructor for mocking
         /// </summary>
         public DeploymentScriptsSdkClient()
         {
-
         }
 
         public DeploymentScriptsSdkClient(IAzureContext context)
             : this(
-                AzureSession.Instance.ClientFactory.CreateArmClient<DeploymentScriptsClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+                AzureSession.Instance.ClientFactory.CreateArmClient<DeploymentScriptsClient>(context,
+                    AzureEnvironment.Endpoint.ResourceManager))
         {
             this.azureContext = context;
-
         }
-
 
         public PsDeploymentScript GetDeploymentScript(string scriptName, string resourceGroupName)
         {
             var deploymentScript = DeploymentScriptsClient.DeploymentScripts.Get(resourceGroupName, scriptName);
 
-            PsDeploymentScript DeploymentScript = null;
+            PsDeploymentScript psDeploymentScriptObject;
 
             switch (deploymentScript)
             {
                 case AzurePowerShellScript azurePowerShellScript:
-                    DeploymentScript = PsAzurePowerShellScript.ToPsAzurePowerShellScript(azurePowerShellScript);
+                    psDeploymentScriptObject = PsAzurePowerShellScript.ToPsAzurePowerShellScript(azurePowerShellScript);
                     break;
                 case AzureCliScript azureCliScript:
-                    DeploymentScript = PsAzureCliScript.ToPsAzureCliScript(azureCliScript);
+                    psDeploymentScriptObject = PsAzureCliScript.ToPsAzureCliScript(azureCliScript);
                     break;
                 default:
                     throw new NotSupportedException(Properties.Resources.DeploymentScriptKindNotSupported);
             }
 
-            return DeploymentScript;
+            return psDeploymentScriptObject;
+        }
+
+        public PsDeploymentScriptLog GetDeploymentScriptLog(string scriptName, string resourceGroupName)
+        {
+            var deploymentScriptLog =
+                DeploymentScriptsClient.DeploymentScripts.GetLogsDefault(resourceGroupName, scriptName);
+
+            return PsDeploymentScriptLog.ToPsDeploymentScriptLog(deploymentScriptLog);
+        }
+
+        public IEnumerable<PsDeploymentScript> ListDeploymentScriptsBySubscription()
+        {
+            var list = new List<PsDeploymentScript>();
+
+            var deploymentScripts = DeploymentScriptsClient.DeploymentScripts.ListBySubscription();
+
+            list.AddRange(deploymentScripts.Select(TypeCastDeploymentScript));
+
+            while (deploymentScripts.NextPageLink != null)
+            {
+                deploymentScripts =
+                    DeploymentScriptsClient.DeploymentScripts.ListBySubscriptionNext(deploymentScripts.NextPageLink);
+
+                list.AddRange(deploymentScripts.Select(TypeCastDeploymentScript));
+            }
+
+            return list;
+        }
+
+        public IEnumerable<PsDeploymentScript> ListDeploymentScriptsByResourceGroup(string resourceGroupName)
+        {
+            var list = new List<PsDeploymentScript>();
+
+            var deploymentScripts = DeploymentScriptsClient.DeploymentScripts.ListByResourceGroup(resourceGroupName);
+
+            list.AddRange(deploymentScripts.Select(TypeCastDeploymentScript));
+
+            while (deploymentScripts.NextPageLink != null)
+            {
+                deploymentScripts =
+                    DeploymentScriptsClient.DeploymentScripts.ListByResourceGroupNext(deploymentScripts.NextPageLink);
+                list.AddRange(deploymentScripts.Select(TypeCastDeploymentScript));
+            }
+
+            return list;
+        }
+
+        public bool DeleteDeploymentScript(string name, string resourceGroupName)
+        {
+            var response = DeploymentScriptsClient.DeploymentScripts.DeleteWithHttpMessagesAsync(resourceGroupName,name).GetAwaiter().GetResult();
+
+            // response can be 200(deleted) or 204 (no content). 204 is set for Not Found response.
+            // Based on the PowerShell guidance, throw exception when service returns 204.
+            // -------------------------------------------------------------------------------------
+
+            if (response.Response.StatusCode == HttpStatusCode.NoContent)
+            {
+                throw new ArgumentException(string.Format(Properties.Resources.DeploymentScriptDoesntExist, name, resourceGroupName));
+            }
+
+            return true;
+        }
+
+        private PsDeploymentScript TypeCastDeploymentScript(DeploymentScript deploymentScript)
+        {
+            switch (deploymentScript)
+            {
+                case AzurePowerShellScript azurePowerShellScript:
+                    return PsAzurePowerShellScript.ToPsAzurePowerShellScript(azurePowerShellScript);
+                case AzureCliScript azureCliScript:
+                    return PsAzureCliScript.ToPsAzureCliScript(azureCliScript);
+                default:
+                    throw new NotSupportedException(Properties.Resources.DeploymentScriptKindNotSupported);
+            }
         }
     }
 }

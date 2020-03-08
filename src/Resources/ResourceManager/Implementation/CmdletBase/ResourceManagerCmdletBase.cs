@@ -61,11 +61,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private ResourceManagerSdkClient resourceManagerSdkClient;
 
         /// <summary>
-        /// Field that holds the deployment scripts client instance
-        /// </summary>
-        private DeploymentScriptsSdkClient deploymentScriptsSdkClient;
-
-        /// <summary>
         /// Field that holds the subscriptions client instance
         /// </summary>
         private SubscriptionSdkClient subscriptionSdkClient;
@@ -311,29 +306,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             set { this.resourceManagerSdkClient = value; }
         }
 
-        /// <summary>
-        /// Gets or sets the resource manager sdk client
-        /// </summary>
-        public DeploymentScriptsSdkClient DeploymentScriptsSdkClient
-        {
-            get
-            {
-                if (this.deploymentScriptsSdkClient == null)
-                {
-                    this.deploymentScriptsSdkClient = new DeploymentScriptsSdkClient(DefaultContext);
-                }
-
-                //this.deploymentScriptsSdkClient.VerboseLogger = WriteVerboseWithTimestamp;
-               // this.deploymentScriptsSdkClient.ErrorLogger = WriteErrorWithTimestamp;
-               // this.deploymentScriptsSdkClient.WarningLogger = WriteWarningWithTimestamp;
-
-                return this.deploymentScriptsSdkClient;
-            }
-
-            set { this.deploymentScriptsSdkClient = value; }
-        }
-
-        /// <summary>
+    /// <summary>
         /// Gets or sets the subscription sdk client
         /// </summary>
         public SubscriptionSdkClient SubscriptionSdkClient

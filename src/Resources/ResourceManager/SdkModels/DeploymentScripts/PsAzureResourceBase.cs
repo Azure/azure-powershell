@@ -19,6 +19,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public string Id { get; set; }
         public string Type { get; set; }
         public string Name { get; set; }
-
     }
 }
