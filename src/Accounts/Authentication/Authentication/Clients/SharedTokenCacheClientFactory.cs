@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
 
         /// <exception cref="MsalCachePersistenceException">When the operating system does not support persistence.</exception>
-        public SharedTokenCacheClientFactory()
+        public SharedTokenCacheClientFactory() 
         {
-            VerifyCachePersistence();
+            GetCacheHelper(PowerShellClientId);
         }
 
         /// <summary>
@@ -54,13 +54,44 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public SharedTokenCacheClientFactory(CacheMigrationSettings cacheMigrationSettings) : this() =>
             _cacheMigrationSettings = cacheMigrationSettings;
 
-        /// <summary>
-        /// Verify if token cache persistence is available on current system. Throws exception if not.
-        /// </summary>
-        /// <exception cref="MsalCachePersistenceException">When the operating system does not support persistence.</exception>
-        protected void VerifyCachePersistence()
+        private static MsalCacheHelper _helper;
+        private static readonly object _lock = new object();
+
+        private static MsalCacheHelper GetCacheHelper(String clientId)
         {
-            GetCacheHelper(PowerShellClientId).VerifyPersistence();
+            if (_helper != null)
+            {
+                return _helper;
+            }
+            lock(_lock)
+            {
+                // Double check helper existence
+                if (_helper == null)
+                {
+                    _helper = CreateCacheHelper(clientId);
+                }
+                return _helper;
+            }
+        }
+
+        /// <summary>
+        /// Check if current environment support token cache persistence
+        /// </summary>
+        /// <returns></returns>
+        public static bool SupportCachePersistence(out string message)
+        {
+            try
+            {
+                var cacheHelper = GetCacheHelper(PowerShellClientId);
+                cacheHelper.VerifyPersistence();
+            }
+            catch (MsalCachePersistenceException e)
+            {
+                message = e.Message;
+                return false;
+            }
+            message = null;
+            return true;
         }
 
         public override void RegisterCache(IClientApplicationBase client)
@@ -110,7 +141,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        private MsalCacheHelper GetCacheHelper(string clientId)
+        private static MsalCacheHelper CreateCacheHelper(string clientId)
         {
             var builder = new StorageCreationPropertiesBuilder(Path.GetFileName(CacheFilePath), Path.GetDirectoryName(CacheFilePath), clientId);
             builder = builder.WithMacKeyChain(serviceName: "Microsoft.Developer.IdentityService", accountName: "MSALCache");
@@ -126,9 +157,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public override void ClearCache()
         {
+            lock (_helper)
+            {
+                _helper.Clear();
+            }
             base.ClearCache();
-            var cacheHelper = GetCacheHelper(PowerShellClientId);
-            cacheHelper.Clear();
         }
     }
 }

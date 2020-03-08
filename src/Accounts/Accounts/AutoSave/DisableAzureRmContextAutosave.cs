@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.Profile.Context
     [OutputType(typeof(ContextAutosaveSettings))]
     public class DisableAzureRmContextAutosave : AzureContextModificationCmdlet
     {
+        protected override bool RequireDefaultContext() { return false; }
+
         public override void ExecuteCmdlet()
         {
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Scope)) && Scope == ContextModificationScope.Process)

@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Profile
         /// <summary>
         /// This cmdlet should work even if there isn't a default context
         /// </summary>
-        protected override bool RequireDefaultContext => false;
+        protected override bool RequireDefaultContext() { return false; }
 
         protected override void BeginProcessing()
         {
@@ -465,13 +465,37 @@ namespace Microsoft.Azure.Commands.Profile
 
                 var autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
                 var autosaveVariable = System.Environment.GetEnvironmentVariable(AzureProfileConstants.AzureAutosaveVariable);
-                bool localAutosave;
-                if(bool.TryParse(autosaveVariable, out localAutosave))
+
+                if(bool.TryParse(autosaveVariable, out bool localAutosave))
                 {
                     autoSaveEnabled = localAutosave;
                 }
 
+                bool shouldModifyContext = false;
+                if (autoSaveEnabled && !SharedTokenCacheClientFactory.SupportCachePersistence(out string message))
+                {
+                    // If token cache persistence is not supported, fall back to in-memory, and print a warning
+                    // We cannot just throw an exception here because this is called when importing the module
+                    autoSaveEnabled = false;
+                    WriteInitializationWarnings(Resources.AutosaveNotSupportedWithFallback);
+                    WriteInitializationWarnings(message);
+                    shouldModifyContext = true;
+                }
+
                 InitializeProfileProvider(autoSaveEnabled);
+
+                if (shouldModifyContext)
+                {
+                    ModifyContext((profile, client) =>
+                    {
+                        AzureSession.Modify(session =>
+                        {
+                            FileUtilities.DataStore = session.DataStore;
+                            session.ARMContextSaveMode = ContextSaveMode.Process;
+                        });
+                    });
+                }
+
                 IServicePrincipalKeyStore keyStore =
 // TODO: Remove IfDef
 #if NETSTANDARD
@@ -491,33 +515,14 @@ namespace Microsoft.Azure.Commands.Profile
                 AuthenticationClientFactory factory = null;
                 if (autoSaveEnabled)
                 {
-                    try
-                    {
-                        factory = new SharedTokenCacheClientFactory();
-                    }
-                    catch (MsalCachePersistenceException)
-                    {
-                        // If token cache persistence is not supported, fall back to in-memory, and print a warning
-                        // Cannot throw exception here because it is not displayed when user runs a cmdlet
-                        // it only shows up when manually ipmo az.accounts, so it's useless
-                        ModifyContext((profile, client) =>
-                        {
-                            AzureSession.Modify(session => {
-                                FileUtilities.DataStore = session.DataStore;
-                                session.ARMContextSaveMode = ContextSaveMode.Process;
-                            });
-                        });
-                        autoSaveEnabled = false;
-                        WriteInitializationWarnings(Resources.AutosaveNotSupportedWithFallback);
-                    }
+                    factory = new SharedTokenCacheClientFactory();
                 }
-
-                // if autosave is disabled, or the shared factory fails to initialize, we fallback to in memory
-                if (!autoSaveEnabled)
+                else // if autosave is disabled, or the shared factory fails to initialize, we fallback to in memory
                 {
                     factory = new InMemoryTokenCacheClientFactory();
                     
                 }
+
                 AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
 #if DEBUG
             }

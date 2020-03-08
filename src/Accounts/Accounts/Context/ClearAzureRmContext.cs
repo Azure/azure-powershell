@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Profile.Context
         [Parameter(Mandatory = false, HelpMessage = "Delete all users and groups from the global scope without prompting")]
         public SwitchParameter Force { get; set; }
 
+        protected override bool RequireDefaultContext() { return false; }
+
         public override void ExecuteCmdlet()
         {
             switch (GetContextModificationScope())

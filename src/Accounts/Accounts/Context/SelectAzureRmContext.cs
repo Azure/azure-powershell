@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
         /// <summary>
         /// This cmdlet should work even if there isn't a default context
         /// </summary>
-        protected override bool RequireDefaultContext => false;
+        protected override bool RequireDefaultContext() { return false; }
 
         public object GetDynamicParameters()
         {
