@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.7.3
 * Update the privacy notice text displayed during account creation
     - Per CELA guidance we have updated the privacy notice text shown while you create an account.
 
