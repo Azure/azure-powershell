@@ -43,18 +43,6 @@ namespace Microsoft.Azure.Commands.Profile.Default
         [Parameter(Mandatory = false, HelpMessage = "Create a new resource group if specified default does not exist")]
         public SwitchParameter Force { get; set; }
 
-        protected override IAzureContext DefaultContext
-        {
-            get
-            {
-                if (AzureRmProfileProvider.Instance.Profile == null || AzureRmProfileProvider.Instance.Profile.DefaultContext == null || AzureRmProfileProvider.Instance.Profile.DefaultContext.Account == null)
-                {
-                    throw new PSInvalidOperationException(ResourceManager.Common.Properties.Resources.RunConnectAccount);
-                }
-                return AzureRmProfileProvider.Instance.Profile.DefaultContext;
-            }
-        }
-
         public override void ExecuteCmdlet()
         {
             if (Environment.GetEnvironmentVariable("ACC_CLOUD") != null)

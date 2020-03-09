@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
                 throw new Exception("Default Resource Group cannot be set on CloudShell");
             }
 
-            IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
+            IAzureContext context = DefaultContext;
             // If no parameters are specified, clear all defaults
             if (!ResourceGroup)
             {
