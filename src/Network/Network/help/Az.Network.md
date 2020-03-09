@@ -429,7 +429,7 @@ Gets the troubleshooting result from the previously run or currently running tro
 Gets an existing P2SVpnGateway under VirtualHub.
 
 ### [Get-AzP2sVpnGatewayConnectionHealth](Get-AzP2sVpnGatewayConnectionHealth.md)
-Gets the current aggregared point to site connections health infomation from P2SVpnGateway.
+Gets the current aggregared point to site connections health information from P2SVpnGateway.
 
 ### [Get-AzP2sVpnGatewayDetailedConnectionHealth](Get-AzP2sVpnGatewayDetailedConnectionHealth.md)
 Gets the detailed information of current point to site connections from P2SVpnGateway.
