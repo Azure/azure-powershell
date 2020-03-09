@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support to manage distributed settings per-device. New Cmdlets are:
+    - `Get-AzIotHubDistributedTracing`
+    - `Set-AzIotHubDistributedTracing`
 
 ## Version 2.2.0
 * Added support to manage devices in an Iot Hub. New Cmdlets are:
@@ -36,9 +39,6 @@
     - `Get-AzIotHubDeviceParent`
     - `Set-AzIotHubDeviceParent`
 * Added support to manage device parent-child relationship.
-* Added support to manage distributed settings per-device. New Cmdlets are:
-    - `Get-AzIotHubDistributedTracing`
-    - `Set-AzIotHubDistributedTracing`
 
 ## Version 2.1.0
 * Added support to manage devices in an Iot Hub. New Cmdlets are:
