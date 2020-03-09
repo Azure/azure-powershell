@@ -1,3 +1,86 @@
+## 3.6.1 - March 2020
+#### Az.Accounts
+* Open Azure PowerShell survey page in 'Send-Feedback' [#11020]
+* Display Azure PowerShell survey URL in 'Resolve-Error' [#11021]
+* Added Az version in UserAgent
+
+#### Az.ApiManagement
+* Added support for retrieving and configuring Custom Domain on the DeveloperPortal Endpoint [#11007]
+* 'Export-AzApiManagementApi' Added support for downloading Api Definition in Json format [#9987]
+* 'Import-AzApiManagementApi' Added support for importing OpenApi 3.0 definition from Json document
+* 'New-AzApiManagementIdentityProvider' and 'Set-AzApiManagementIdentityProvider' Added support for configuring 'Signin Tenant' for AAD B2C Provider [#9784]
+
+#### Az.DataLakeStore
+* Added reference to System.Buffers explicitly in csproj and psd1.
+
+#### Az.IotHub
+* Added support to manage devices in an Iot Hub. New Cmdlets are:
+	- 'Add-AzIotHubDevice'
+	- 'Get-AzIotHubDevice'
+	- 'Remove-AzIotHubDevice'
+	- 'Set-AzIotHubDevice'
+* Added support to manage modules on a target Iot device in an Iot Hub. New Cmdlets are:
+	- 'Add-AzIotHubModule'
+	- 'Get-AzIotHubModule'
+	- 'Remove-AzIotHubModule'
+	- 'Set-AzIotHubModule'
+* Added cmdlet to get the connection string of a target IoT device in an Iot Hub.
+* Added cmdlet to get the connection string of a module on a target IoT device in an Iot Hub.
+* Added support to get/set parent device of an IoT device. New Cmdlets are:
+    - 'Get-AzIotHubDeviceParent'
+    - 'Set-AzIotHubDeviceParent'
+* Added support to manage device parent-child relationship.
+
+#### Az.Monitor
+* Fixed output value for 'Get-AzMetricDefinition' [#9714]
+
+#### Az.Network
+* Updated Sql Management SDK.
+* Fixed a naming-difference issue in PrivateLinkServiceConnectionState class.
+    - Mapping the field ActionsRequired to ActionRequired.
+* Added PublicNetworkAccess to 'New-AzSqlServer' and 'Set-AzSqlServer'
+
+#### Az.Resources
+* Fixed for null reference bug in 'Get-AzRoleAssignment'
+* Marked switch '-Force' and '-PassThru' optional in 'Remove-AzADGroup' [#10849]
+* Fixed issue that 'MailNickname' doesn't return in 'Remove-AzADGroup' [#11167]
+* Fixed issue that 'Remove-AzADGroup' pipe operation doesn't work [#11171]
+* Fixed for null reference bug in GetAzureRoleAssignmentCommand
+* Added breaking change attributes for upcoming changes to policy cmdlets
+* Updated 'Get-AzResourceGroup' to perform resource group tag filtering on server-side
+* Extended Tag cmdlets to accept -ResourceId
+    - Get-AzTag -ResourceId
+    - New-AzTag -ResourceId
+    - Remove-AzTag -ResourceId
+* Added new Tag cmdlet
+    - Update-AzTag -ResourceId
+* Brought ScopedDeployment from SDK 3.3.0 
+
+#### Az.Sql
+* Added PublicNetworkAccess to 'New-AzSqlServer' and 'Set-AzSqlServer'
+* Added support for Long Term Retention backup configuration for Managed Databases
+    - Get/Set LTR policy on a managed database 
+    - Get LTR backup(s) by managed database, managed instance, or by location 
+    - Remove an LTR backup 
+    - Restore an LTR backup to create a new managed database
+* Added MinimalTlsVersion to New-AzSqlServer and Set-AzSqlServer
+* Added MinimalTlsVersion to New-AzSqlInstance and Set-AzSqlInstance
+* Bumped SQL SDK version for Az.Network
+
+#### Az.Storage
+* Supported AllowProtectedAppendWrite in ImmutabilityPolicy
+    - 'Set-AzRmStorageContainerImmutabilityPolicy'
+* Added breaking change warning message for AzureStorageTable type change in a future release
+    - 'New-AzStorageTable'
+    - 'Get-AzStorageTable'
+
+#### Az.Websites
+* Added Tag parameter for 'New-AzAppServicePlan' and 'Set-AzAppServicePlan'
+* Stop cmdlet execution if an exception is thrown when adding a custom domain to a website
+* Added support to perform operations for App Services not in the same resource group as the App Service Plan
+* Applied access restriction to WebApp/Function in different resource groups
+* Fixed issue to set custom hostnames for WebAppSlots
+
 ## 3.5.0 - February 2020
 ### Highlights since the last major release
 * Updated client side telemetry.

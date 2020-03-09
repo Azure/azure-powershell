@@ -61,6 +61,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         private const string GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet =
             "GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter";
 
+        private const string LongTermRetentionBackupRestoreParameterSet =
+            "LongTermRetentionBackupRestoreParameter";
+
         /// <summary>
         /// Gets or sets flag indicating a restore from a point-in-time backup.
         /// </summary>
@@ -116,6 +119,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public SwitchParameter FromGeoBackup { get; set; }
 
         /// <summary>
+        /// Gets or sets flag indicating a Long Term Retention backup restore request
+        /// </summary>
+        [Parameter(
+           ParameterSetName = LongTermRetentionBackupRestoreParameterSet,
+            Mandatory = true,
+            HelpMessage = "Restore from a Long Term Retention backup.")]
+        public SwitchParameter FromLongTermRetentionBackup { get; set; }
+
+        /// <summary>
         /// Gets or sets the source subscription id.
         /// </summary>
         [Parameter(
@@ -132,6 +144,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             HelpMessage = "Source subscription id.")]
         [Parameter(
             ParameterSetName = PointInTimeDeletedDatabasesCrossInstanceRestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = false,
+            HelpMessage = "Source subscription id.")]
+        [Parameter(
+            ParameterSetName = LongTermRetentionBackupRestoreParameterSet,
             Mandatory = false,
             HelpMessage = "Source subscription id.")]
         [Alias("SourceSubscriptionId")]
@@ -193,7 +209,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [ValidateNotNullOrEmpty]
         public override string InstanceName { get; set; }
 
-        /// <summary> 
+        /// <summary>
         /// Gets or sets the instance database name to restore
         /// </summary>
         [Parameter(ParameterSetName = PointInTimeSameInstanceRestoreFromNameAndResourceGroupParameterSet,
@@ -277,6 +293,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet,
             Mandatory = true,
             HelpMessage = "The resource id of instance database object to restore")]
+        [Parameter(ParameterSetName = LongTermRetentionBackupRestoreParameterSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of the long term retention managed instance backup object to restore.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -351,6 +372,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet,
             Mandatory = true,
             HelpMessage = "The name of the target instance to restore to.")]
+        [Parameter(ParameterSetName = LongTermRetentionBackupRestoreParameterSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target instance to restore to.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         public string TargetInstanceName { get; set; }
 
@@ -376,6 +400,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             HelpMessage = "The name of the target resource group to restore to.")]
         [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target resource group to restore to.")]
+        [Parameter(ParameterSetName = LongTermRetentionBackupRestoreParameterSet,
             Mandatory = true,
             HelpMessage = "The name of the target resource group to restore to.")]
         [ResourceGroupCompleter]
@@ -481,6 +508,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 case GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet:
                     model.CreateMode = "Recovery";
                     model.RecoverableDatabaseId = ResourceId;
+                    model.RestorePointInTime = null;
+                    break;
+
+                case LongTermRetentionBackupRestoreParameterSet:
+                    model.CreateMode = "RestoreLongTermRetentionBackup";
+                    model.LongTermRetentionBackupResourceId = ResourceId;
                     model.RestorePointInTime = null;
                     break;
 
