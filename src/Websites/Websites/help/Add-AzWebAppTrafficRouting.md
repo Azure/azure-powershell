@@ -1,7 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-#online version:
 schema: 2.0.0
 ---
 
