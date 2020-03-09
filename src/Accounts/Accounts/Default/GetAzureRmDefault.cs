@@ -35,18 +35,6 @@ namespace Microsoft.Azure.Commands.Profile.Default
         [Parameter(ParameterSetName = ResourceGroupParameterSet, Mandatory = false, HelpMessage = "Display Default Resource Group", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter ResourceGroup { get; set; }
 
-        protected override IAzureContext DefaultContext
-        {
-            get
-            {
-                if (AzureRmProfileProvider.Instance.Profile == null || AzureRmProfileProvider.Instance.Profile.DefaultContext == null || AzureRmProfileProvider.Instance.Profile.DefaultContext.Account == null)
-                {
-                    throw new PSInvalidOperationException(ResourceManager.Common.Properties.Resources.RunConnectAccount);
-                }
-                return AzureRmProfileProvider.Instance.Profile.DefaultContext;
-            }
-        }
-
         public override void ExecuteCmdlet()
         {
             IAzureContext context = DefaultContext;
