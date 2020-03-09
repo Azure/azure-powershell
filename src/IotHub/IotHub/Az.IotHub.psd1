@@ -99,8 +99,8 @@ CmdletsToExport = 'Add-AzIotHubKey', 'Get-AzIotHubEventHubConsumerGroup',
                'Set-AzIotHubModule', 'Get-AzIotHubDeviceConnectionString', 
                'Get-AzIotHubModuleConnectionString', 'Get-AzIotHubDeviceParent', 
                'Set-AzIotHubDeviceParent', 'Add-AzIotHubDeviceChildren', 
-               'Remove-AzIotHubDeviceChildren', 'Get-AzIotHubDeviceChildren'
-
+               'Remove-AzIotHubDeviceChildren', 'Get-AzIotHubDeviceChildren',
+               'Get-AzIotHubDistributedTracing', 'Set-AzIotHubDistributedTracing'
 # Variables to export from this module
 # VariablesToExport = @()
 
@@ -109,7 +109,8 @@ AliasesToExport = 'Get-AzIotHubEHCG', 'Add-AzIotHubEHCG', 'Remove-AzIotHubEHCG',
                'Set-AzIotHubVC', 'Get-AzIotHubCVC', 'Add-AzIotHubMsgEnrich', 
                'Get-AzIotHubMsgEnrich', 'Remove-AzIotHubMsgEnrich', 
                'Set-AzIotHubMsgEnrich', 'Get-AzIotHubDCS', 'Get-AzIotHubMCS', 
-               'Add-AzIotHubDCL', 'Remove-AzIotHubDCL', 'Get-AzIotHubDCL'
+               'Add-AzIotHubDCL', 'Remove-AzIotHubDCL', 'Get-AzIotHubDCL',
+               'Get-AzIotHubTracing', 'Set-AzIotHubTracing'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
