@@ -21,9 +21,6 @@
     <None Update="ScenarioTests\Resources\nodejs-sample.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ScenarioTests\RoutingRuleTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
