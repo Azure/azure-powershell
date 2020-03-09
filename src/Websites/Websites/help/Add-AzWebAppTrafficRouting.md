@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/remove-azwebappsslbinding
+#online version:
 schema: 2.0.0
 ---
 
-# Remove-AzWebAppTrafficRouting
+# Add-AzWebAppTrafficRouting
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Remove-AzWebAppTrafficRouting -ResourceGroupName <String> -WebAppName <String> -RuleName <String>
+Add-AzWebAppTrafficRouting -ResourceGroupName <String> -WebAppName <String> -RoutingRule <Hashtable>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -61,11 +61,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleName
-{{ Fill RuleName Description }}
+### -RoutingRule
+Web App RoutingRule.
+Example: -RoutingRule @{ActionHostName=$slot.DefaultHostName ; ReroutePercentage=$ReroutePercentage ; Name=$slotName}
 
 ```yaml
-Type: System.String
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
