@@ -32,6 +32,7 @@
 * Added new Tag cmdlet
     - Update-AzTag -ResourceId
 * Brought ScopedDeployment from SDK 3.3.0 
+* Add correlationId logging for error scenarios
 
 ## Version 1.11.0
 * Refactored template deployment cmdlets
