@@ -183,11 +183,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '- Updated policy cmdlets to use new api version 2019-06-01 that has new EnforcementMode property in policy assignment.
-- Updated create policy definition help example
-- Fix bug Remove-AZADServicePrincipal -ServicePrincipalName, throw null reference when service principal name not found.
-- Fix bug New-AZADServicePrincipal, throw null reference when tenant doesn''t have any subscription.
-- Change New-AzAdServicePrincipal to add credentials only to associated application.'
+        ReleaseNotes = '* Release for Azure Stack 2019-03-01-hybrid profile'
 
         # Prerelease string of this module
         Prerelease = 'preview'

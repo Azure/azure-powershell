@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update references in .psd1 to use relative path
+
+## Version 0.10.0-preview
+* Release for Azure Stack 2019-03-01-hybrid profile
 
 ## Version 1.0.1
 * Fixed miscellaneous typos across module

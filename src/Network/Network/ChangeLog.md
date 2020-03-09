@@ -19,6 +19,5 @@
 -->
 ## Current Release
 
-## Version 0.8.0 
-
-* TZL release for profile hybrid-2019-03-01 
+## Version 0.10.0-preview
+* Release for Azure Stack 2019-03-01-hybrid profile

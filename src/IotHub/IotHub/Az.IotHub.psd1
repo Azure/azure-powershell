@@ -129,7 +129,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Update references in .psd1 to use relative path'
+        ReleaseNotes = '* Release for Azure Stack 2019-03-01-hybrid profile'
 
         # Prerelease string of this module
         Prerelease = 'preview'

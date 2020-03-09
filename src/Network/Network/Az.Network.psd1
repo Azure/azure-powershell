@@ -355,7 +355,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Change ''Start-AzVirtualNetworkGatewayConnectionPacketCapture.md'' and ''Start-AzVirtualnetworkGatewayPacketCapture.md'' FilterData option examples.'
+        ReleaseNotes = '* Release for Azure Stack 2019-03-01-hybrid profile.'
 
         # Prerelease string of this module
         Prerelease = 'preview'

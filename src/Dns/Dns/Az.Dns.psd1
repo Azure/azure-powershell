@@ -113,7 +113,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed a typo in ''Set-AzDnsZone'' help examples.'
+        ReleaseNotes = '* Release for Azure Stack 2019-03-01-hybrid profile.'
 
         # Prerelease string of this module
         Prerelease = 'preview'

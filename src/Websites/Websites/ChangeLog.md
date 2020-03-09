@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update references in .psd1 to use relative path
+
+## Version 0.10.0-preview
+* Release for Azure Stack 2019-03-01-hybrid profile
 
 ## Version 1.5.0
 * Set-AzWebApp updating ASP of an app was failing
@@ -28,11 +30,11 @@
 * Fixing the Publish-AzureWebapp to work across Linux and windows
 * Update example in `Get-AzWebAppPublishingProfile` reference documentation
 * Add support for working with Access Restrictions
-	- New cmdlets
-		- Get-AzWebAppAccessRestrictionConfig
-		- Update-AzWebAppAccessRestrictionConfig
-		- Add-AzWebAppAccessRestrictionRule
-		- Remove-AzWebAppAccessRestrictionRule
+  - New cmdlets
+    - Get-AzWebAppAccessRestrictionConfig
+    - Update-AzWebAppAccessRestrictionConfig
+    - Add-AzWebAppAccessRestrictionRule
+    - Remove-AzWebAppAccessRestrictionRule
 
 ## Version 1.4.1
 * Fixed miscellaneous typos across module

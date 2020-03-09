@@ -19,8 +19,8 @@
 -->
 ## Upcoming Release
 
-## Version 0.10.0
-* Signed version based on 2.0.1
+## Version 0.10.0-preview
+* Release for Azure Stack 2019-03-01-hybrid profile
 
 ## Version 2.0.0
 
