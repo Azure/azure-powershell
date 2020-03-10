@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AzWebAppTrafficRouting
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Add a routing Rule to the Slot.
 
 ## SYNTAX
 
@@ -17,16 +17,26 @@ Add-AzWebAppTrafficRouting -ResourceGroupName <String> -WebAppName <String> -Rou
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Add-AzWebAppTrafficRouting** cmdlet adds a Routing rule to an Azure Web App Slot.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Add a routing rule to transfer 15% of production traffice to  Stg slot
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>Add-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" 
+- RoutingRule @{AtionHostName='XXXX.azurewebsites.net';ReroutePercentage=15;Name='Stg'}
 ```
 
-{{ Add example description here }}
+This command adds a routing rule to transfer 15% of production traffice to  Stg slot
+
+### Example 2 Add a routing rule to transfer the production traffice to Stg slot ranges from 50% to 90% in incremental manner.
+```powershell
+PS C:\>Add-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" 
+-RoutingRule @{ActionHostName='XXXX.azurewebsites.net';ReroutePercentage=50;ChangeIntervalInMinutes=1;
+MinReroutePercentage=50;MaxReroutePercentage=90;Name='Stg';ChangeStep=10}
+```
+
+This command adds a routing rule to transfer the production traffice to Stg slot ranges from 50% to 90% in incremental manner.
 
 ## PARAMETERS
 
@@ -46,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Resource Group Name
 
 ```yaml
 Type: System.String
@@ -77,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebAppName
-{{ Fill WebAppName Description }}
+WebApp Name
 
 ```yaml
 Type: System.String
@@ -136,3 +146,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Update-AzWebAppTrafficRouting](./Update-AzWebAppTrafficRouting.md)
+
+[Get-AzWebAppTrafficRouting](./Get-AzWebAppTrafficRouting.md)
+
+[Remove-AzWebAppTrafficRouting](./Remove-AzWebAppTrafficRouting.md)

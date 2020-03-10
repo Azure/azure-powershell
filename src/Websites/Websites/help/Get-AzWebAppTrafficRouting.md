@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzWebAppTrafficRouting
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get a routing Rule for the given Slot name.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Get-AzWebAppTrafficRouting -ResourceGroupName <String> -WebAppName <String> -Rul
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzWebAppTrafficRouting** cmdlet Gets a routing rule configuration from an Azure Web App Slot.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Gets the specific routing rule from webapp slot
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite"  -RuleName 'Stg'
 ```
 
-{{ Add example description here }}
+This command gets a routing rule for a given webapp slot.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Resource Group Name
 
 ```yaml
 Type: System.String
@@ -61,8 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -RuleName
-{{ Fill RuleName Description }}
-
+Rule Name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -76,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebAppName
-{{ Fill WebAppName Description }}
+WebApp Name
 
 ```yaml
 Type: System.String
@@ -84,37 +83,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -135,3 +103,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Update-AzWebAppTrafficRouting](./Update-AzWebAppTrafficRouting.md)
+
+[Add-AzWebAppTrafficRouting](./Add-AzWebAppTrafficRouting.md)
+
+[Remove-AzWebAppTrafficRouting](./Remove-AzWebAppTrafficRouting.md)
