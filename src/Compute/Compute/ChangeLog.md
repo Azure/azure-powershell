@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Set-AzVMAEMExtension, Get-AzVMAEMExtension, Remove-AzVMAEMExtension, Update-AzVMAEMExtension: Add support for new SAP Extension
 * Fix errors in examples of help document
 * Show the exact string value for VM PowerState in the table format.
 
