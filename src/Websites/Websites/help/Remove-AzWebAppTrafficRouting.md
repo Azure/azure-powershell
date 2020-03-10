@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzWebAppTrafficRouting
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Remove a routing Rule from the Slot.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Remove-AzWebAppTrafficRouting -ResourceGroupName <String> -WebAppName <String> -
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzWebAppTrafficRouting** cmdlet removes a routing rule from an Azure Web App Slot.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Removes the specific routing rule from webapp slot
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite"  -RuleName 'Stg'
 ```
 
-{{ Add example description here }}
+This command removes a routing rule for a given webapp slot.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Resource Group Name
 
 ```yaml
 Type: System.String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -RuleName
-{{ Fill RuleName Description }}
+Rule Name
 
 ```yaml
 Type: System.String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -WebAppName
-{{ Fill WebAppName Description }}
+WebApp Name
 
 ```yaml
 Type: System.String
@@ -135,3 +135,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Add-AzWebAppTrafficRouting](./Add-AzWebAppTrafficRouting.md)
+
+[Get-AzWebAppTrafficRouting](./Get-AzWebAppTrafficRouting.md)
+
+[Update-AzWebAppTrafficRouting](./Update-AzWebAppTrafficRouting.md)
