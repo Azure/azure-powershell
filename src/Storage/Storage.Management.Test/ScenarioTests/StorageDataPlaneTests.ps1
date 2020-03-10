@@ -207,6 +207,26 @@ function Test-Blob
         Assert-AreEqual $blob.Count 2
         Get-AzStorageBlob -Container $containerName -Blob $objectName2 -Context $storageContext | Remove-AzStorageBlob -Force 
 
+		#check XSCL Track2 Items works for container
+		$container = Get-AzStorageContainer $containerName -Context $storageContext
+		$containerProperties = $container.BlobContainerClient.GetProperties().Value
+		Assert-AreEqual $container.BlobContainerProperties.ETag $containerProperties.ETag
+		Set-AzStorageContainerAcl $containerName -Context $storageContext -Permission Blob
+		$containerProperties = $container.BlobContainerClient.GetProperties().Value
+		Assert-AreNotEqual $container.BlobContainerProperties.ETag $containerProperties.ETag
+		$container.FetchAttributes()
+		Assert-AreEqual $container.BlobContainerProperties.ETag $containerProperties.ETag
+
+		#check XSCL Track2 Items works for Blob
+		$blob = Get-AzStorageBlob -Container $containerName -Blob $objectName1 -Context $storageContext
+		$blobProperties = $blob.BlobClient.GetProperties().Value
+		Assert-AreEqual $blob.BlobProperties.ETag $blobProperties.ETag
+		Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName1 -Force -Context $storageContext
+		$blobProperties = $blob.BlobClient.GetProperties().Value
+		Assert-AreNotEqual $blob.BlobProperties.ETag $blobProperties.ETag
+		$blob.FetchAttributes()
+		Assert-AreEqual $blob.BlobProperties.ETag $blobProperties.ETag
+
         # Copy blob to the same container, but with a different name.
         Start-AzStorageBlobCopy -srcContainer $containerName -SrcBlob $objectName1 -DestContainer $containerName -DestBlob $objectName2 -StandardBlobTier $StandardBlobTier -RehydratePriority High -Context $storageContext -DestContext $storageContext
         Get-AzStorageBlobCopyState -Container $containerName -Blob $objectName2 -Context $storageContext
