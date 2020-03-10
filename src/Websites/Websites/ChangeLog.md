@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+<<<<<<< HEAD
 
 ## Version 1.7.0
 * Added Tag parameter for `New-AzAppServicePlan` and `Set-AzAppServicePlan`
