@@ -20,10 +20,15 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Extension.AEM;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Rest;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
@@ -88,8 +93,33 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Disables the settings for table content")]
         public SwitchParameter SkipStorage { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
         public SwitchParameter NoWait { get; set; }
+
+        [Parameter(
+                Mandatory = false,
+                Position = 5,
+                ParameterSetName = "NewExtension",
+                ValueFromPipelineByPropertyName = false,
+                HelpMessage = "Sets the access of the VM identity to the individual resources, e.g. data disks instead of the complete resource group.")]
+        public SwitchParameter SetAccessToIndividualResources { get; set; }
+
+        [Parameter(
+                Mandatory = false,
+                Position = 6,
+                ParameterSetName = "NewExtension",
+                ValueFromPipelineByPropertyName = false,
+                HelpMessage = "Install the new extension.")]
+        public SwitchParameter InstallNewExtension { get; set; }
+
+        private IAuthorizationManagementClient _authClient;
+
+        protected IAuthorizationManagementClient AuthClient =>
+            _authClient ?? (_authClient = AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(
+                DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager));
+
+        private const int MAX_WAIT_TIME_FOR_SP_SECONDS = 300;
 
         public SetAzureRmVMAEMExtension()
         {
@@ -99,9 +129,9 @@ namespace Microsoft.Azure.Commands.Compute
         {
             this._StorageEndpoint = this.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
-                this.CommandRuntime.Host.UI, 
+                this.CommandRuntime.Host.UI,
                 AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
-                    DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager), 
+                    DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
                 this.DefaultContext.Subscription,
                 this._StorageEndpoint);
 
@@ -134,323 +164,500 @@ namespace Microsoft.Azure.Commands.Compute
                     return;
                 }
 
-                var disks = selectedVM.StorageProfile.DataDisks;
-
-                var sapmonPublicConfig = new List<KeyValuePair>();
-                var sapmonPrivateConfig = new List<KeyValuePair>();
-                var cpuOvercommit = 0;
-                var memOvercommit = 0;
-                var vmsize = selectedVM.HardwareProfile.VmSize;
-                switch (vmsize)
+                var aemExtension = AEMHelper.GetAEMExtension(selectedVM, this.OSType);
+                /*
+                 * no extension + new extension switch => install new extension
+                 * new extension + new extension switch => install new extension
+                 * new extension + no extension switch => install new extension
+                 * no extension + no new extension switch => install old extension
+                 * old extension + no new extension switch => install old extension
+                 * old extension + new extension switch => error                 
+                 */
+                if ((aemExtension == null && InstallNewExtension.IsPresent)
+                    || (AEMHelper.IsNewExtension(aemExtension, this.OSType)))
                 {
-                    case AEMExtensionConstants.VMSizeExtraSmall:
-                    case AEMExtensionConstants.VMSizeStandard_A0:
-                    case AEMExtensionConstants.VMSizeBasic_A0:
-                        vmsize = "ExtraSmall (A0)";
-                        WriteVerbose("VM Size is ExtraSmall - setting overcommitted setting");
-                        cpuOvercommit = 1;
-                        break;
-                    case "Small":
-                        vmsize = "Small (A1)";
-                        break;
-                    case "Medium":
-                        vmsize = "Medium (A2)";
-                        break;
-                    case "Large":
-                        vmsize = "Large (A3)";
-                        break;
-                    case "ExtraLarge":
-                        vmsize = "ExtraLarge (A4)";
-                        break;
+                    this.SetNewExtension(selectedVM, selectedVMStatus);
                 }
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "vmsize", Value = vmsize });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.role", Value = "IaaS" });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.memory.isovercommitted", Value = memOvercommit });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.cpu.isovercommitted", Value = cpuOvercommit });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "script.version", Value = AEMExtensionConstants.CurrentScriptVersion });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "verbose", Value = "0" });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "href", Value = "http://aka.ms/sapaem" });
-
-                var vmSLA = this._Helper.GetVMSLA(selectedVM);
-                if (vmSLA.HasSLA)
+                else if ((aemExtension == null && !InstallNewExtension.IsPresent)
+                    || (AEMHelper.IsOldExtension(aemExtension, this.OSType) && !InstallNewExtension.IsPresent))
                 {
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.sla.throughput", Value = vmSLA.TP });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.sla.iops", Value = vmSLA.IOPS });
-                }
-
-                // Get Disks
-                var accounts = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-                if (osdisk.ManagedDisk == null)
-                {
-                    var accountName = this._Helper.GetStorageAccountFromUri(osdisk.Vhd.Uri);
-                    var storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
-                    accounts.Add(accountName, storageKey);
-
-                    this._Helper.WriteHost("[INFO] Adding configuration for OS disk");
-
-                    var caching = osdisk.Caching;
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = this._Helper.GetDiskName(osdisk.Vhd.Uri) });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.account", Value = accountName });
-                    if (this._Helper.IsPremiumStorageAccount(accountName))
-                    {
-                        WriteVerbose("OS Disk Storage Account is a premium account - adding SLAs for OS disk");
-                        var sla = this._Helper.GetDiskSLA(osdisk);
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_PREMIUM });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.throughput", Value = sla.TP });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.iops", Value = sla.IOPS });
-                    }
-                    else
-                    {
-                        WriteVerbose("OS Disk Storage Account is a standard account");
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_STANDARD });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.connminute", Value = (accountName + ".minute") });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.connhour", Value = (accountName + ".hour") });
-                    }
+                    this.SetOldExtension(selectedVM, selectedVMStatus);
                 }
                 else
                 {
-                    var resId = new ResourceIdentifier(osdisk.ManagedDisk.Id);
+                    this._Helper.WriteVerbose($"Migration from the old extension to the new one is not supported. " +
+                        $"Please remove the old extension first. (" +
+                        $"Extension installed={aemExtension != null} " +
+                        $"IsNewExtension={AEMHelper.IsNewExtension(aemExtension, this.OSType)} " +
+                        $"IsOldExtension={AEMHelper.IsOldExtension(aemExtension, this.OSType)}" +
+                        $"InstallNewExtension={InstallNewExtension.IsPresent}");
+                    this._Helper.WriteError("Migration from the old extension to the new one is not supported. Please remove the old extension first.");
+                    return;
+                }
+            });
+        }
 
-                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
-                    if (osDiskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
+
+
+        private void SetNewExtension(VirtualMachine selectedVM, VirtualMachineInstanceView selectedVMStatus)
+        {
+            // check VM identity
+            // give VM idenity access to resources/resource groups
+            // deploy extension on VM
+
+            //TODO should we allow user assigned identity?
+            if (selectedVM.Identity == null)
+            {
+                selectedVM.Identity = new VirtualMachineIdentity(type: ResourceIdentityType.SystemAssigned);
+                selectedVM = this.ComputeClient.ComputeManagementClient.VirtualMachines.
+                    CreateOrUpdate(this.ResourceGroupName, this.VMName, selectedVM);
+            }
+            else if (selectedVM.Identity.Type == ResourceIdentityType.UserAssigned)
+            {
+                selectedVM.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
+                selectedVM = this.ComputeClient.ComputeManagementClient.VirtualMachines.
+                    CreateOrUpdate(this.ResourceGroupName, this.VMName, selectedVM);
+            }
+
+            HashSet<string> scopes = new HashSet<string>();
+
+            int endIndex = 4; //Scope is set to resource group
+            if (this.SetAccessToIndividualResources)
+            {
+                endIndex = 8; //Scope is set to resource
+            }
+
+            // Add VM Scope or Resource Group scope
+            scopes.Add(String.Join("/", selectedVM.Id.Split('/').SubArray(0, endIndex)));
+            //TODO: do we want to support unmanaged disks?
+            scopes.Add(String.Join("/", selectedVM.StorageProfile.OsDisk.ManagedDisk.Id.Split('/').SubArray(0, endIndex)));
+            foreach (var dataDisk in selectedVM.StorageProfile.DataDisks)
+            {
+                scopes.Add(String.Join("/", dataDisk.ManagedDisk.Id.Split('/').SubArray(0, endIndex)));
+            }
+            foreach (var nic in selectedVM.NetworkProfile.NetworkInterfaces)
+            {
+                scopes.Add(String.Join("/", nic.Id.Split('/').SubArray(0, endIndex)));
+            }
+
+            DateTime startTime = DateTime.Now;
+            foreach (string scope in scopes)
+            {
+                /* In some cases, the role assignment cannot be created because the VM identity is not yet available for usage. */
+                bool created = false;
+                while (!created)
+                {
+                    string scopedRoleId = $"{scope}/providers/Microsoft.Authorization/roleDefinitions/{AEMExtensionConstants.NewExtensionRole}";
+                    string roleDefinitionId = $"/subscriptions/{this.DefaultContext.Subscription.Id}/providers/Microsoft.Authorization/roleDefinitions/{AEMExtensionConstants.NewExtensionRole}";
+                    var existingRoleAssignments = AuthClient.RoleAssignments.ListForScope(scope);
+                    var existingRoleAssignment = existingRoleAssignments.FirstOrDefault(assignmentTest =>
+                        assignmentTest.Properties.PrincipalId.EqualsInsensitively(selectedVM.Identity.PrincipalId)
+                            && assignmentTest.Properties.RoleDefinitionId.EqualsInsensitively(roleDefinitionId)
+                            && assignmentTest.Properties.Scope.EqualsInsensitively(scope));
+
+                    if (existingRoleAssignment != null)
                     {
-                        WriteVerbose("OS Disk is a Premium Managed Disk - adding SLAs for OS disk");
-                        var sla = this._Helper.GetDiskSLA(osDiskMD.DiskSizeGB, null);
-                        var caching = osdisk.Caching;
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = resId.ResourceName });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.throughput", Value = sla.TP });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.iops", Value = sla.IOPS });
+                        this._Helper.WriteVerbose($"Role Assignment for scope {scope} already exists for principal {selectedVM.Identity.PrincipalId}");
+                        created = true;
+                        break;
+                    }
+
+
+                    RoleAssignmentCreateParameters createParameters = new RoleAssignmentCreateParameters()
+                    {
+                        Properties = new RoleAssignmentProperties()
+                        {
+                            RoleDefinitionId = scopedRoleId,
+                            //TODO: do we want to support user assigned identity?
+                            PrincipalId = selectedVM.Identity.PrincipalId
+                        }
+                    };
+                    try
+                    {
+                        string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+                        string assignmentName = Guid.NewGuid().ToString();
+                        if ("Record".EqualsInsensitively(testMode) || Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.RunningMocked)
+                        {
+                            // Make sure to use the same ID during test record and playback
+                            assignmentName = AEMHelper.GenerateGuid(scope);
+                        }
+
+                        AuthClient.RoleAssignments.Create(scope, assignmentName, createParameters);
+                        created = true;
+                    }
+                    catch (CloudException cex)
+                    {
+                        if (!("PrincipalNotFound".Equals(cex.Body.Code)))
+                        {
+                            throw;
+                        }
+
+                        this._Helper.WriteVerbose(cex.ToString());
+                    }
+
+                    if (!created && (DateTime.Now - startTime).TotalSeconds < MAX_WAIT_TIME_FOR_SP_SECONDS)
+                    {
+                        this._Helper.WriteVerbose("Virtual Machine System Identity not available yet - waiting 5 seconds");
+                        Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.Delay(5000);
+                    }
+                    else if (!created)
+                    {
+                        this._Helper.WriteError($"Waited {MAX_WAIT_TIME_FOR_SP_SECONDS} seconds for VM identity to become available - giving up. Please try again later.");
+                        return;
+                    }
+                }
+            }
+
+            var vmExtensionConfig = new VirtualMachineExtension()
+            {
+                Publisher = AEMExtensionConstants.AEMExtensionPublisherv2[OSType],
+                VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionTypev2[OSType],
+                TypeHandlerVersion = AEMExtensionConstants.AEMExtensionVersionv2[OSType].ToString(2),
+                Location = selectedVM.Location,
+                AutoUpgradeMinorVersion = true,
+                ForceUpdateTag = DateTime.Now.Ticks.ToString()
+            };
+
+            if (NoWait.IsPresent)
+            {
+                var op = this.VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultNamev2[OSType],
+                    vmExtensionConfig).GetAwaiter().GetResult();
+
+                var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                WriteObject(result);
+            }
+            else
+            {
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultNamev2[OSType],
+                    vmExtensionConfig).GetAwaiter().GetResult();
+
+                var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                WriteObject(result);
+            }
+
+        }
+
+        private void SetOldExtension(VirtualMachine selectedVM, VirtualMachineInstanceView selectedVMStatus)
+        {
+            var osdisk = selectedVM.StorageProfile.OsDisk;
+            var disks = selectedVM.StorageProfile.DataDisks;
+
+            var sapmonPublicConfig = new List<KeyValuePair>();
+            var sapmonPrivateConfig = new List<KeyValuePair>();
+            var cpuOvercommit = 0;
+            var memOvercommit = 0;
+            var vmsize = selectedVM.HardwareProfile.VmSize;
+            switch (vmsize)
+            {
+                case AEMExtensionConstants.VMSizeExtraSmall:
+                case AEMExtensionConstants.VMSizeStandard_A0:
+                case AEMExtensionConstants.VMSizeBasic_A0:
+                    vmsize = "ExtraSmall (A0)";
+                    WriteVerbose("VM Size is ExtraSmall - setting overcommitted setting");
+                    cpuOvercommit = 1;
+                    break;
+                case "Small":
+                    vmsize = "Small (A1)";
+                    break;
+                case "Medium":
+                    vmsize = "Medium (A2)";
+                    break;
+                case "Large":
+                    vmsize = "Large (A3)";
+                    break;
+                case "ExtraLarge":
+                    vmsize = "ExtraLarge (A4)";
+                    break;
+            }
+            sapmonPublicConfig.Add(new KeyValuePair() { Key = "vmsize", Value = vmsize });
+            sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.role", Value = "IaaS" });
+            sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.memory.isovercommitted", Value = memOvercommit });
+            sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.cpu.isovercommitted", Value = cpuOvercommit });
+            sapmonPublicConfig.Add(new KeyValuePair() { Key = "script.version", Value = AEMExtensionConstants.CurrentScriptVersion });
+            sapmonPublicConfig.Add(new KeyValuePair() { Key = "verbose", Value = "0" });
+            sapmonPublicConfig.Add(new KeyValuePair() { Key = "href", Value = "http://aka.ms/sapaem" });
+
+            var vmSLA = this._Helper.GetVMSLA(selectedVM);
+            if (vmSLA.HasSLA)
+            {
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.sla.throughput", Value = vmSLA.TP });
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.sla.iops", Value = vmSLA.IOPS });
+            }
+
+            // Get Disks
+            var accounts = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+            if (osdisk.ManagedDisk == null)
+            {
+                var accountName = this._Helper.GetStorageAccountFromUri(osdisk.Vhd.Uri);
+                var storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
+                accounts.Add(accountName, storageKey);
+
+                this._Helper.WriteHost("[INFO] Adding configuration for OS disk");
+
+                var caching = osdisk.Caching;
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = this._Helper.GetDiskName(osdisk.Vhd.Uri) });
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.account", Value = accountName });
+                if (this._Helper.IsPremiumStorageAccount(accountName))
+                {
+                    WriteVerbose("OS Disk Storage Account is a premium account - adding SLAs for OS disk");
+                    var sla = this._Helper.GetDiskSLA(osdisk);
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_PREMIUM });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.throughput", Value = sla.TP });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.iops", Value = sla.IOPS });
+                }
+                else
+                {
+                    WriteVerbose("OS Disk Storage Account is a standard account");
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_STANDARD });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.connminute", Value = (accountName + ".minute") });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.connhour", Value = (accountName + ".hour") });
+                }
+            }
+            else
+            {
+                var resId = new ResourceIdentifier(osdisk.ManagedDisk.Id);
+
+                var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
+                if (osDiskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
+                {
+                    WriteVerbose("OS Disk is a Premium Managed Disk - adding SLAs for OS disk");
+                    var sla = this._Helper.GetDiskSLA(osDiskMD.DiskSizeGB, null);
+                    var caching = osdisk.Caching;
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = resId.ResourceName });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.throughput", Value = sla.TP });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.iops", Value = sla.IOPS });
+                }
+                else
+                {
+                    this._Helper.WriteWarning("[WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.");
+                }
+            }
+
+            // Get Storage accounts from disks
+            var diskNumber = 1;
+            foreach (var disk in disks)
+            {
+                if (disk.ManagedDisk != null)
+                {
+                    var resId = new ResourceIdentifier(disk.ManagedDisk.Id);
+
+                    var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
+
+                    if (diskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
+                    {
+                        this._Helper.WriteVerbose("Data Disk {0} is a Premium Managed Disk - adding SLAs for disk", diskNumber.ToString());
+                        var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
+                        var cachingMD = disk.Caching;
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = resId.ResourceName });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = cachingMD });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = sla.TP });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = sla.IOPS });
+                        this._Helper.WriteVerbose("Done - Data Disk {0} is a Premium Managed Disk - adding SLAs for disk", diskNumber.ToString());
+                    }
+                    else if (diskMD.Sku.Name == StorageAccountTypes.UltraSSDLRS)
+                    {
+                        this._Helper.WriteVerbose("Data Disk {0} is an UltraSSD Disk - adding SLAs for disk", diskNumber.ToString());
+                        var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
+                        var cachingMD = disk.Caching;
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = resId.ResourceName });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = cachingMD });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_ULTRA_MD });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = diskMD.DiskMBpsReadWrite });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = diskMD.DiskIOPSReadWrite });
+                        this._Helper.WriteVerbose("Done - Data Disk {0} is an UltraSSD Disk - adding SLAs for disk", diskNumber.ToString());
                     }
                     else
                     {
                         this._Helper.WriteWarning("[WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.");
+
                     }
                 }
-
-                // Get Storage accounts from disks
-                var diskNumber = 1;
-                foreach (var disk in disks)
+                else
                 {
-                    if (disk.ManagedDisk != null)
+
+                    var accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
+                    if (!accounts.ContainsKey(accountName))
                     {
-                        var resId = new ResourceIdentifier(disk.ManagedDisk.Id);
+                        var storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
+                        accounts.Add(accountName, storageKey);
+                    }
 
-                        var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
+                    this._Helper.WriteHost("[INFO] Adding configuration for data disk {0}", disk.Name);
+                    var caching = disk.Caching;
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetDiskName(disk.Vhd.Uri) });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = caching });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.account." + diskNumber, Value = accountName });
 
-                        if (diskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
-                        {
-                            this._Helper.WriteVerbose("Data Disk {0} is a Premium Managed Disk - adding SLAs for disk", diskNumber.ToString());
-                            var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
-                            var cachingMD = disk.Caching;
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = resId.ResourceName });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = cachingMD });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = sla.TP });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = sla.IOPS });
-                            this._Helper.WriteVerbose("Done - Data Disk {0} is a Premium Managed Disk - adding SLAs for disk", diskNumber.ToString());
-                        }
-                        else if (diskMD.Sku.Name == StorageAccountTypes.UltraSSDLRS)
-                        {
-                            this._Helper.WriteVerbose("Data Disk {0} is an UltraSSD Disk - adding SLAs for disk", diskNumber.ToString());
-                            var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
-                            var cachingMD = disk.Caching;
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = resId.ResourceName });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = cachingMD });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_ULTRA_MD });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = diskMD.DiskMBpsReadWrite });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = diskMD.DiskIOPSReadWrite });
-                            this._Helper.WriteVerbose("Done - Data Disk {0} is an UltraSSD Disk - adding SLAs for disk", diskNumber.ToString());
-                        }
-                        else
-                        {
-                            this._Helper.WriteWarning("[WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.");
+                    if (this._Helper.IsPremiumStorageAccount(accountName))
+                    {
+                        this._Helper.WriteVerbose("Data Disk {0} Storage Account is a premium account - adding SLAs for disk", diskNumber.ToString());
+                        var sla = this._Helper.GetDiskSLA(disk);
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_PREMIUM });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = sla.TP });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = sla.IOPS });
+                        this._Helper.WriteVerbose("Done - Data Disk {0} Storage Account is a premium account - adding SLAs for disk", diskNumber.ToString());
 
-                        }
                     }
                     else
                     {
-
-                        var accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
-                        if (!accounts.ContainsKey(accountName))
-                        {
-                            var storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
-                            accounts.Add(accountName, storageKey);
-                        }
-
-                        this._Helper.WriteHost("[INFO] Adding configuration for data disk {0}", disk.Name);
-                        var caching = disk.Caching;
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetDiskName(disk.Vhd.Uri) });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = caching });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.account." + diskNumber, Value = accountName });
-
-                        if (this._Helper.IsPremiumStorageAccount(accountName))
-                        {
-                            this._Helper.WriteVerbose("Data Disk {0} Storage Account is a premium account - adding SLAs for disk", diskNumber.ToString());
-                            var sla = this._Helper.GetDiskSLA(disk);
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_PREMIUM });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = sla.TP });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = sla.IOPS });
-                            this._Helper.WriteVerbose("Done - Data Disk {0} Storage Account is a premium account - adding SLAs for disk", diskNumber.ToString());
-
-                        }
-                        else
-                        {
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_STANDARD });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.connminute." + diskNumber, Value = (accountName + ".minute") });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.connhour." + diskNumber, Value = (accountName + ".hour") });
-                        }
-                    }
-                    diskNumber += 1;
-                }
-
-                //Check storage accounts for analytics
-                foreach (var account in accounts)
-                {
-                    this._Helper.WriteVerbose("Testing Storage Metrics for {0}", account.Key);
-
-                    var storage = this._Helper.GetStorageAccountFromCache(account.Key);
-
-                    if (!this._Helper.IsPremiumStorageAccount(storage))
-                    {
-                        if (!this.SkipStorage.IsPresent)
-                        {
-                            var currentConfig = this._Helper.GetStorageAnalytics(storage.Name);
-
-                            if (!this._Helper.CheckStorageAnalytics(storage.Name, currentConfig))
-                            {
-                                this._Helper.WriteHost("[INFO] Enabling Storage Account Metrics for storage account {0}", storage.Name);
-
-                                // Enable analytics on storage accounts
-                                this.SetStorageAnalytics(storage.Name);
-                            }
-                        }
-
-                        var endpoint = this._Helper.GetAzureSAPTableEndpoint(storage);
-                        var hourUri = endpoint + "$MetricsHourPrimaryTransactionsBlob";
-                        var minuteUri = endpoint + "$MetricsMinutePrimaryTransactionsBlob";
-
-                        this._Helper.WriteHost("[INFO] Adding Storage Account Metric information for storage account {0}", storage.Name);
-
-                        sapmonPrivateConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".hour.key"), Value = account.Value });
-                        sapmonPrivateConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".minute.key"), Value = account.Value });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".hour.uri"), Value = hourUri });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".minute.uri"), Value = minuteUri });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".hour.name"), Value = storage.Name });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".minute.name"), Value = storage.Name });
-                    }
-                    else
-                    {
-                        this._Helper.WriteHost("[INFO] {0} is of type {1} - Storage Account Metrics are not available for Premium Type Storage.", storage.Name, storage.SkuName());
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".hour.ispremium"), Value = 1 });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".minute.ispremium"), Value = 1 });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_STANDARD });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.connminute." + diskNumber, Value = (accountName + ".minute") });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.connhour." + diskNumber, Value = (accountName + ".hour") });
                     }
                 }
+                diskNumber += 1;
+            }
 
-                WriteVerbose("Chechking if WAD needs to be configured");
-                // Enable VM Diagnostics
-                if (this.EnableWAD.IsPresent)
+            //Check storage accounts for analytics
+            foreach (var account in accounts)
+            {
+                this._Helper.WriteVerbose("Testing Storage Metrics for {0}", account.Key);
+
+                var storage = this._Helper.GetStorageAccountFromCache(account.Key);
+
+                if (!this._Helper.IsPremiumStorageAccount(storage))
                 {
-                    this._Helper.WriteHost("[INFO] Enabling IaaSDiagnostics for VM {0}", selectedVM.Name);
-                    KeyValuePair wadstorage = null;
-                    if (String.IsNullOrEmpty(this.WADStorageAccountName))
+                    if (!this.SkipStorage.IsPresent)
                     {
-                        KeyValuePair<string, string>? wadstorageTemp = accounts.Cast<KeyValuePair<string, string>?>().
-                            FirstOrDefault(accTemp => !this._Helper.IsPremiumStorageAccount(accTemp.Value.Key));
-                        if (wadstorageTemp.HasValue)
+                        var currentConfig = this._Helper.GetStorageAnalytics(storage.Name);
+
+                        if (!this._Helper.CheckStorageAnalytics(storage.Name, currentConfig))
                         {
-                            wadstorage = new KeyValuePair(wadstorageTemp.Value.Key, wadstorageTemp.Value.Value);
+                            this._Helper.WriteHost("[INFO] Enabling Storage Account Metrics for storage account {0}", storage.Name);
+
+                            // Enable analytics on storage accounts
+                            this.SetStorageAnalytics(storage.Name);
                         }
                     }
-                    else
-                    {
-                        wadstorage = new KeyValuePair(this.WADStorageAccountName, this._Helper.GetAzureStorageKeyFromCache(WADStorageAccountName));
-                    }
 
-                    if (wadstorage == null)
-                    {
-                        this._Helper.WriteError("A standard storage account is required. Please use parameter WADStorageAccountName to specify a standard storage account you want to use for this VM.");
-                        return;
-                    }
-
-                    selectedVM = SetAzureVMDiagnosticsExtensionC(selectedVM, selectedVMStatus, wadstorage.Key, wadstorage.Value as string);
-
-                    var storage = this._Helper.GetStorageAccountFromCache(wadstorage.Key);
                     var endpoint = this._Helper.GetAzureSAPTableEndpoint(storage);
-                    var wadUri = endpoint + AEMExtensionConstants.WadTableName;
+                    var hourUri = endpoint + "$MetricsHourPrimaryTransactionsBlob";
+                    var minuteUri = endpoint + "$MetricsMinutePrimaryTransactionsBlob";
 
-                    sapmonPrivateConfig.Add(new KeyValuePair() { Key = "wad.key", Value = wadstorage.Value });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.name", Value = wadstorage.Key });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.isenabled", Value = 1 });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.uri", Value = wadUri });
+                    this._Helper.WriteHost("[INFO] Adding Storage Account Metric information for storage account {0}", storage.Name);
+
+                    sapmonPrivateConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".hour.key"), Value = account.Value });
+                    sapmonPrivateConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".minute.key"), Value = account.Value });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".hour.uri"), Value = hourUri });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".minute.uri"), Value = minuteUri });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".hour.name"), Value = storage.Name });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".minute.name"), Value = storage.Name });
                 }
                 else
                 {
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.isenabled", Value = 0 });
+                    this._Helper.WriteHost("[INFO] {0} is of type {1} - Storage Account Metrics are not available for Premium Type Storage.", storage.Name, storage.SkuName());
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".hour.ispremium"), Value = 1 });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".minute.ispremium"), Value = 1 });
                 }
+            }
 
-                ExtensionConfig jsonPublicConfig = new ExtensionConfig();
-                jsonPublicConfig.Config = sapmonPublicConfig;
-
-                ExtensionConfig jsonPrivateConfig = new ExtensionConfig();
-                jsonPrivateConfig.Config = sapmonPrivateConfig;
-
-                this._Helper.WriteHost("[INFO] Updating Azure Enhanced Monitoring Extension for SAP configuration - Please wait...");
-
-                WriteVerbose("Installing AEM extension");
-
-                Version aemVersion = this._Helper.GetExtensionVersion(selectedVM, selectedVMStatus, OSType, AEMExtensionConstants.AEMExtensionType[OSType], AEMExtensionConstants.AEMExtensionPublisher[OSType]);
-
-                if (NoWait.IsPresent)
+            WriteVerbose("Chechking if WAD needs to be configured");
+            // Enable VM Diagnostics
+            if (this.EnableWAD.IsPresent)
+            {
+                this._Helper.WriteHost("[INFO] Enabling IaaSDiagnostics for VM {0}", selectedVM.Name);
+                KeyValuePair wadstorage = null;
+                if (String.IsNullOrEmpty(this.WADStorageAccountName))
                 {
-                    var op = this.VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
-                        this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
-                        new VirtualMachineExtension()
-                        {
-                            Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
-                            VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
-                            TypeHandlerVersion = aemVersion.ToString(2),
-                            Settings = jsonPublicConfig,
-                            ProtectedSettings = jsonPrivateConfig,
-                            Location = selectedVM.Location,
-                            AutoUpgradeMinorVersion = true,
-                            ForceUpdateTag = DateTime.Now.Ticks.ToString()
-                        }).GetAwaiter().GetResult();
-
-                    this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
-                    this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
-
-                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                    WriteObject(result);
+                    KeyValuePair<string, string>? wadstorageTemp = accounts.Cast<KeyValuePair<string, string>?>().
+                        FirstOrDefault(accTemp => !this._Helper.IsPremiumStorageAccount(accTemp.Value.Key));
+                    if (wadstorageTemp.HasValue)
+                    {
+                        wadstorage = new KeyValuePair(wadstorageTemp.Value.Key, wadstorageTemp.Value.Value);
+                    }
                 }
                 else
                 {
-                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                        this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
-                        new VirtualMachineExtension()
-                        {
-                            Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
-                            VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
-                            TypeHandlerVersion = aemVersion.ToString(2),
-                            Settings = jsonPublicConfig,
-                            ProtectedSettings = jsonPrivateConfig,
-                            Location = selectedVM.Location,
-                            AutoUpgradeMinorVersion = true,
-                            ForceUpdateTag = DateTime.Now.Ticks.ToString()
-                        }).GetAwaiter().GetResult();
-
-                    this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
-                    this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
-
-                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                    WriteObject(result);
+                    wadstorage = new KeyValuePair(this.WADStorageAccountName, this._Helper.GetAzureStorageKeyFromCache(WADStorageAccountName));
                 }
-            });
+
+                if (wadstorage == null)
+                {
+                    this._Helper.WriteError("A standard storage account is required. Please use parameter WADStorageAccountName to specify a standard storage account you want to use for this VM.");
+                    return;
+                }
+
+                selectedVM = SetAzureVMDiagnosticsExtensionC(selectedVM, selectedVMStatus, wadstorage.Key, wadstorage.Value as string);
+
+                var storage = this._Helper.GetStorageAccountFromCache(wadstorage.Key);
+                var endpoint = this._Helper.GetAzureSAPTableEndpoint(storage);
+                var wadUri = endpoint + AEMExtensionConstants.WadTableName;
+
+                sapmonPrivateConfig.Add(new KeyValuePair() { Key = "wad.key", Value = wadstorage.Value });
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.name", Value = wadstorage.Key });
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.isenabled", Value = 1 });
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.uri", Value = wadUri });
+            }
+            else
+            {
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "wad.isenabled", Value = 0 });
+            }
+
+            ExtensionConfig jsonPublicConfig = new ExtensionConfig();
+            jsonPublicConfig.Config = sapmonPublicConfig;
+
+            ExtensionConfig jsonPrivateConfig = new ExtensionConfig();
+            jsonPrivateConfig.Config = sapmonPrivateConfig;
+
+            this._Helper.WriteHost("[INFO] Updating Azure Enhanced Monitoring Extension for SAP configuration - Please wait...");
+
+            WriteVerbose("Installing AEM extension");
+
+            Version aemVersion = this._Helper.GetExtensionVersion(selectedVM, selectedVMStatus, OSType, AEMExtensionConstants.AEMExtensionType[OSType], AEMExtensionConstants.AEMExtensionPublisher[OSType]);
+
+            if (NoWait.IsPresent)
+            {
+                var op = this.VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
+                    new VirtualMachineExtension()
+                    {
+                        Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
+                        VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
+                        TypeHandlerVersion = aemVersion.ToString(2),
+                        Settings = jsonPublicConfig,
+                        ProtectedSettings = jsonPrivateConfig,
+                        Location = selectedVM.Location,
+                        AutoUpgradeMinorVersion = true,
+                        ForceUpdateTag = DateTime.Now.Ticks.ToString()
+                    }).GetAwaiter().GetResult();
+
+                this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
+                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
+
+                var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                WriteObject(result);
+            }
+            else
+            {
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
+                    new VirtualMachineExtension()
+                    {
+                        Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
+                        VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
+                        TypeHandlerVersion = aemVersion.ToString(2),
+                        Settings = jsonPublicConfig,
+                        ProtectedSettings = jsonPrivateConfig,
+                        Location = selectedVM.Location,
+                        AutoUpgradeMinorVersion = true,
+                        ForceUpdateTag = DateTime.Now.Ticks.ToString()
+                    }).GetAwaiter().GetResult();
+
+                this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
+                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
+
+                var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                WriteObject(result);
+            }
         }
 
         private VirtualMachine SetAzureVMDiagnosticsExtensionC(VirtualMachine vm, VirtualMachineInstanceView vmStatus, string storageAccountName, string storageAccountKey)
@@ -459,8 +666,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var extensionName = AEMExtensionConstants.WADExtensionDefaultName[this.OSType];
 
-            var extTemp = this._Helper.GetExtension(vm,
-                AEMExtensionConstants.WADExtensionType[this.OSType], AEMExtensionConstants.WADExtensionPublisher[OSType]);
+            var extTemp = AEMHelper.GetAEMExtension(vm, this.OSType);
             object publicConf = null;
             if (extTemp != null)
             {
@@ -572,7 +778,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var key = this._Helper.GetAzureStorageKeyFromCache(storageAccountName);
             var credentials = new StorageCredentials(storageAccountName, key);
-            var cloudStorageAccount = new CloudStorageAccount(credentials,  this._StorageEndpoint, true);
+            var cloudStorageAccount = new CloudStorageAccount(credentials, this._StorageEndpoint, true);
 
             cloudStorageAccount.CreateCloudBlobClient().SetServicePropertiesAsync(props)
                                                        .ConfigureAwait(false).GetAwaiter().GetResult();
