@@ -98,7 +98,7 @@ function New-AzFunctionApp {
         [Alias("DisableAppInsights")]
         ${DisableApplicationInsights},
         
-        [Parameter(Mandatory=$true, ParameterSetName="CustomDockerImage", HelpMessage='Linux only. Container image name from Docker Hub, e.g. publisher/image-name:tag.')]
+        [Parameter(Mandatory=$true, ParameterSetName="CustomDockerImage", HelpMessage='Linux only. Container image name from Docker Registry, e.g. publisher/image-name:tag.')]
         [ValidateNotNullOrEmpty()]
         [System.String]
         ${DockerImageName},
