@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
         [Parameter(Position = 0, ParameterSetName = RemoveDeploymentScriptByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The fully qualified resource Id of the deployment script. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deploymentScripts/{deploymentScriptName}")]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Resources/deploymentScripts")]
         public string Id { get; set; }
 
         [Parameter(Position = 0, ParameterSetName = RemoveDeploymentScriptByInputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The deployment script PowerShell object.")]

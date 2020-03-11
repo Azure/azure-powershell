@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             set { this.resourceManagerSdkClient = value; }
         }
 
-    /// <summary>
+        /// <summary>
         /// Gets or sets the subscription sdk client
         /// </summary>
         public SubscriptionSdkClient SubscriptionSdkClient

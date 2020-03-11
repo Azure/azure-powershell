@@ -456,4 +456,10 @@
   <data name="DeploymentScriptDoesntExist" xml:space="preserve">
     <value>Deployment script '{0}' doesn't exist in resource group '{1}'.</value>
   </data>
+  <data name="DeploymentScriptLogFileExists" xml:space="preserve">
+    <value>A file with the name '{0}' already exists in directory '{1}'. This operation will replace the existing file. Would you like to continue?</value>
+  </data>
+  <data name="DeploymentScriptShouldProcessString" xml:space="preserve">
+    <value>Save script execution log to disk.</value>
+  </data>
 </root>

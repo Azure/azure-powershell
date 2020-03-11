@@ -334,20 +334,18 @@ function Test-SaveDeploymentScriptLogFile
 		$deploymentScriptName = "PsTest-DeploymentScripts-" + $deployment.parameters.scriptSuffix.Value		
 		$resourceId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deploymentScripts/$deploymentScriptName"
 
-		# Test
 		$deploymentScript = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName 
 
-		# Assert
 		Assert-NotNull $deploymentScript
 		Assert-NotNull $deploymentScriptName $deploymentScript.Log
 		Assert-AreEqual $deploymentScriptName $deploymentScript.Name
 		
 		# Test  
-		Get-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -OutputPath $TestOutputRoot
+		$logPathObject = Save-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -OutputPath $TestOutputRoot
 
 		#Assert
-		$log = Get-ChildItem -Path $TestOutputRoot | Where-Object { $_.Name -eq "$deploymentScriptName.txt" }
-		Assert-True	1 log.Count
+		Assert-NotNull $logPathObject
+		Assert-True { $logPathObject.Path.Contains($rname + ".json") }
 			
 	}
 	finally

@@ -241,6 +241,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A file with the name &apos;{0}&apos; already exists in directory &apos;{1}&apos;. This operation will replace the existing file. Would you like to continue?.
+        /// </summary>
+        internal static string DeploymentScriptLogFileExists {
+            get {
+                return ResourceManager.GetString("DeploymentScriptLogFileExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save script execution log to disk..
+        /// </summary>
+        internal static string DeploymentScriptShouldProcessString {
+            get {
+                return ResourceManager.GetString("DeploymentScriptShouldProcessString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find a deployment with name &apos;{0}&apos;..
         /// </summary>
         internal static string DeploymentWithNameNotFound {
