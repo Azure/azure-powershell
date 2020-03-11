@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.13.0'
+ModuleVersion = '1.13.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -209,11 +209,13 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Supported AllowProtectedAppendWrite in ImmutabilityPolicy
-    - ''Set-AzRmStorageContainerImmutabilityPolicy''
-* Added breaking change warning message for AzureStorageTable type change in a future release
-    - ''New-AzStorageTable''
-    - ''Get-AzStorageTable'''
+        ReleaseNotes = '* Support Point In Time Restore
+    - Enable-AzStorageBlobRestorePolicy
+    - Disable-AzStorageBlobRestorePolicy
+    - New-AzStorageBlobRangeToRestore
+    - Restore-AzStorageBlobRange
+* Support get blob restore status of Storage account by run get-AzureRMStorageAccount with parameter -IncludeBlobRestoreStatus 
+    - Get-AzureRMStorageAccount'
 
         # Prerelease string of this module
         Prerelease = 'preview'
