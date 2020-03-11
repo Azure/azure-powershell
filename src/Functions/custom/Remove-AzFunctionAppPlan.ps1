@@ -24,7 +24,7 @@ function Remove-AzFunctionAppPlan {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.IAppServicePlan[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.IAppServicePlan]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -32,6 +32,10 @@ function Remove-AzFunctionAppPlan {
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${PassThru},
+
+        [Parameter(HelpMessage='Forces the cmdlet to remove the function app plan without prompting for confirmation.')]
+        [System.Management.Automation.SwitchParameter]
+        ${Force},
 
         [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -81,27 +85,31 @@ function Remove-AzFunctionAppPlan {
     )
     
     process {
-        
+
         if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
         {            
             if ($PSBoundParameters.ContainsKey("InputObject"))
             {
-                $null = $PSBoundParameters.Remove("InputObject")
-            }
-
-            foreach ($input in $InputObject)
-            {
-                $functionsIdentity = CreateObjectFromPipeline -InputObject $input
-                if ($functionsIdentity)
+                if ($InputObject.Name)
                 {
-                    $null = $PSBoundParameters.Add("InputObject", $functionsIdentity)
-                    Az.Functions.internal\Remove-AzFunctionAppPlan @PSBoundParameters
+                    # Set the name variable for the ShouldProcess and ShouldContinue calls
+                    $Name = $InputObject.Name
                 }
             }
         }
-        else
+
+        if ($PsCmdlet.ShouldProcess($Name, "Deleting function app plan"))
         {
-            Az.Functions.internal\Remove-AzFunctionAppPlan @PSBoundParameters
+            if ($Force.IsPresent  -or $PsCmdlet.ShouldContinue("Delete function app plan '$Name'? This operation cannot be undone. Are you sure?", "Deleting function app plan"))
+            {
+                # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
+                if ($PSBoundParameters.ContainsKey("Force"))
+                {
+                    $null = $PSBoundParameters.Remove("Force")
+                }
+
+                Az.Functions.internal\Remove-AzFunctionAppPlan @PSBoundParameters
+            }
         }
     }
 }

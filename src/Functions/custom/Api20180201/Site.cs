@@ -10,9 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201
 
         public System.Collections.Hashtable ApplicationSettings { get; set; }
         
-        public string RuntimeName { get; set; }
-        
-        public string HostVersion { get; set; }
+        public string Runtime { get; set; }
 
         public string OSType { get; set; }
 
