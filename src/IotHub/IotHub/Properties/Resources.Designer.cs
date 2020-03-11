@@ -293,6 +293,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replace Device Twin.
+        /// </summary>
+        internal static string SetIotHubDeviceTwin {
+            get {
+                return ResourceManager.GetString("SetIotHubDeviceTwin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Distributed Tracing.
         /// </summary>
         internal static string SetIotHubDistributedTracing {
@@ -325,6 +334,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string UpdateIotHubDevice {
             get {
                 return ResourceManager.GetString("UpdateIotHubDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Device Twin.
+        /// </summary>
+        internal static string UpdateIotHubDeviceTwin {
+            get {
+                return ResourceManager.GetString("UpdateIotHubDeviceTwin", resourceCulture);
             }
         }
         
