@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Management.PolicyInsights;
+    using Microsoft.Azure.Management.PolicyInsights.Models;
+    using Microsoft.Rest;
 
     /// <summary>
     /// Base class for Azure Policy Insights cmdlets
@@ -42,6 +44,34 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
             set
             {
                 _policyInsightsClient = value;
+            }
+        }
+
+        /// <summary>
+        /// Executes the cmdlet logic.
+        /// </summary>
+        public abstract void Execute();
+
+        /// <summary>
+        /// The cmdlet execution wrapper
+        /// </summary>
+        public sealed override void ExecuteCmdlet()
+        {
+            try
+            {
+                this.Execute();
+            }
+            catch (QueryFailureException ex)
+            {
+                WriteExceptionError(ex.Body?.Error != null
+                    ? new RestException($"{ex.Message} ({ex.Body.Error.Code}: {ex.Body.Error.Message})")
+                    : ex);
+            }
+            catch (ErrorResponseException ex)
+            {
+                WriteExceptionError(ex.Body?.Error != null
+                    ? new RestException($"{ex.Message} ({ex.Body.Error.Code}: {ex.Body.Error.Message})")
+                    : ex);
             }
         }
     }
