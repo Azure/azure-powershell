@@ -18,7 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-<<<<<<< HEAD
+* Add support for working with webapp Traffic Routing Rules
+	- New cmdlets
+		- Get-AzWebAppTrafficRouting
+		- Update-AzWebAppTrafficRouting
+		- Add-AzWebAppTrafficRouting
+		- Remove-AzWebAppTrafficRouting
 
 ## Version 1.7.0
 * Added Tag parameter for `New-AzAppServicePlan` and `Set-AzAppServicePlan`
@@ -26,14 +31,6 @@
 * Added support to perform operations for App Services not in the same resource group as the App Service Plan
 * Applied access restriction to WebApp/Function in different resource groups
 * Fixed issue to set custom hostnames for WebAppSlots
-=======
-*Added new cmdlets for managing Routing Rules 
-*Adding Tag parameter for New-AzAppServicePlan and Set-AzAppServicePlan.
-*Stop cmdlt execution if an exception is thrown when adding a custom domain to a website.
-*Adding support to perform operations for App Services not in the same resource group as the App Service Plan.
-*Apply access restriction to WebApp/Function in different resource groups
-*Fixing issue to set custom hostnames for WebAppSlots
->>>>>>> Updated changelog.md file for RoutingRules
 
 ## Version 1.6.0
 * Set-AzWebapp and Set-AzWebappSlot supports AlwaysOn, MinTls and FtpsState properties
