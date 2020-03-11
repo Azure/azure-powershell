@@ -43,7 +43,7 @@ Lists deployment scripts in the subscription in current user's context.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzDeploymentScript -Name MyDeploymentScript - ResourceGroupName DS-TestRg
+PS C:\> Get-AzDeploymentScript -Name MyDeploymentScript -ResourceGroupName DS-TestRg
 ```
 
 Gets a deployment script with the name MyDeploymentScript in resource group DS-TestRG.

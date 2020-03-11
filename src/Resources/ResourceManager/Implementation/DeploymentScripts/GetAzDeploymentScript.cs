@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Position = 0, ParameterSetName = GetDeploymentScriptByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The fully qualified resource Id of the deployment script. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deploymentScripts/{deploymentScriptName}")]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Resources/deploymentScripts")]
         public string Id { get; set; }
 
         #endregion
