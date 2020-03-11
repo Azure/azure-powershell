@@ -24,7 +24,7 @@ The **Revoke-AzSnapshotAccess** cmdlet revokes an access to a snapshot.
 
 ### Example 1
 ```
-PS C:\> Revoke-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01'
+PS C:\> Revoke-AzSnapshotAccess -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01'
 ```
 
 Revoke the access to the snapshot named 'Snapshot01' in the resource group named 'ResourceGroup01'

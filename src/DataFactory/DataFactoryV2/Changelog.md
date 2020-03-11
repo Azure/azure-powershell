@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update ADF .Net SDK version to 4.8.0
+
+## Version 1.6.1
+* Update ADF .Net SDK version to 4.7.0
 
 ## Version 1.6.0
 * Add AutoUpdateETA, LatestVersion, PushedVersion, TaskQueueId and VersionStatus properties for Get-AzDataFactoryV2IntegrationRuntime cmd

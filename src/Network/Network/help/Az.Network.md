@@ -429,7 +429,7 @@ Gets the troubleshooting result from the previously run or currently running tro
 Gets an existing P2SVpnGateway under VirtualHub.
 
 ### [Get-AzP2sVpnGatewayConnectionHealth](Get-AzP2sVpnGatewayConnectionHealth.md)
-Gets the current aggregared point to site connections health infomation from P2SVpnGateway.
+Gets the current aggregared point to site connections health information from P2SVpnGateway.
 
 ### [Get-AzP2sVpnGatewayDetailedConnectionHealth](Get-AzP2sVpnGatewayDetailedConnectionHealth.md)
 Gets the detailed information of current point to site connections from P2SVpnGateway.
@@ -679,6 +679,9 @@ Adds a condition to the RewriteRule for an application gateway.
 
 ### [New-AzApplicationGatewayRewriteRuleHeaderConfiguration](New-AzApplicationGatewayRewriteRuleHeaderConfiguration.md)
 Creates a rewrite rule header configuration for an application gateway.
+
+### [New-AzApplicationGatewayRewriteRuleUrlConfiguration](New-AzApplicationGatewayRewriteRuleUrlConfiguration.md)
+Creates a rewrite rule url configuration for an application gateway
 
 ### [New-AzApplicationGatewayRewriteRuleSet](New-AzApplicationGatewayRewriteRuleSet.md)
 Creates a request routing rule for an application gateway.

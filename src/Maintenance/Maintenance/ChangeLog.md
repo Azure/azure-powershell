@@ -20,6 +20,13 @@
 
 ## Upcoming Release
 
+## Version 0.1.3
+* Got `Az-MaintenanceConfiguration` will honor filters while listing maintenance configurations
+
+## Version 0.1.2
+* Update command will display pending updates by default
+* Added sample output to help documentation of Get-AZMaintenanceUpdate
+
 ## Version 0.1.1
 * Preview release of `Az.Maintenance` module
 

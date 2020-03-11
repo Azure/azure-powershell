@@ -268,6 +268,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You cannot change hardware family..
+        /// </summary>
+        internal static string CannotChangeHardwareFamily {
+            get {
+                return ResourceManager.GetString("CannotChangeHardwareFamily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For this update operation provided compute generation parameter is &apos;{0}&apos;. Once the hardware generation is upgraded, it is not possible to switch back to Gen4 compute generation as this hardware is being deprecated..
+        /// </summary>
+        internal static string ChangingHardwareFamilyIsIrreversable {
+            get {
+                return ResourceManager.GetString("ChangingHardwareFamilyIsIrreversable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string DatabaseNameExists {
@@ -318,6 +336,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string DeprecatedCmdletUsageWarning {
             get {
                 return ResourceManager.GetString("DeprecatedCmdletUsageWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to proceed?.
+        /// </summary>
+        internal static string DoYouWantToProceed {
+            get {
+                return ResourceManager.GetString("DoYouWantToProceed", resourceCulture);
             }
         }
         
@@ -763,6 +790,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanantly removing the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlServerActiveDirectoryAdministratorDescription {
@@ -1015,7 +1060,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceVulnerabilityAssessmentSetting first..
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceVulnerabilityAssessmentSettings first..
         /// </summary>
         internal static string RunSetManagedDatabaseVulnerabilityAssemenSettings {
             get {

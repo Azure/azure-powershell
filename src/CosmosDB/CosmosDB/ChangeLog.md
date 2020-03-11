@@ -20,6 +20,13 @@
 
 ## Upcoming Release
 
+## Version 0.1.1
+* Added cmdlets for Gremlin, MongoDB, Cassandra and Table APIs.
+* Updated .NET SDK Version to 1.0.1
+    - .NET SDK Version used in the CosmosDB-Account and SQL cmdlets is updated to 1.0.1
+* Added parameters ConflictResolutionPolicyMode, ConflictResolutionPolicyPath and ConflictResolutionPolicyPath in Set-AzCosmosDBSqlContainer.
+* Added new cmdlets for Sql API : New-CosmosDBSqlSpatialSpec, New-CosmosDBSqlCompositePath, New-CosmosDBSqlIncludedPathIndex, New-CosmosDBSqlIncludedPath
+
 ## Version 0.1.0
 * Preview release of `Az.CosmosDB` module
 

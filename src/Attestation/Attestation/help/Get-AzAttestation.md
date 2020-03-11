@@ -18,7 +18,7 @@ Get-AzAttestation [-Name] <String> [-ResourceGroupName] <String> [-DefaultProfil
  [<CommonParameters>]
 ```
 
-### ResourceGroupParameterSet
+### ResourceIdParameterSet
 ```
 Get-AzAttestation [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -30,7 +30,7 @@ The Get-AzAttestation cmdlet gets information about the attestation in a subscri
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAttestation -Name example -ResourceGroupName rg1 
+PS C:\> Get-AzAttestation -Name "example" -ResourceGroupName "rg1" 
 Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Attestation/attestationProviders/example
 Name                : example
 Type                : Microsoft.Attestation/attestationProviders
@@ -39,6 +39,7 @@ AttesUri            : https://example.us.attest.azure.net
 ResoureGroupName    : rg1 
 SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 ```
+
 Get Attestation "example" in Resource Group "rg1". 
 
 ## PARAMETERS
@@ -47,7 +48,7 @@ Get Attestation "example" in Resource Group "rg1".
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -62,7 +63,7 @@ Accept wildcard characters: False
 Attestation Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet
 Aliases:
 
@@ -77,7 +78,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group associated with the attestation being queried.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet
 Aliases:
 
@@ -92,8 +93,8 @@ Accept wildcard characters: False
 Specifies the name of the ResourceID associated with the attestation being queried
 
 ```yaml
-Type: String
-Parameter Sets: ResourceGroupParameterSet
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
 Aliases:
 
 Required: True
