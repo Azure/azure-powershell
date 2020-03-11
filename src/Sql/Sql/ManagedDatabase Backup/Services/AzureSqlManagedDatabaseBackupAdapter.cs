@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Management.Sql.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
 {
@@ -200,6 +201,148 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
                 Id = deletedDatabaseBackup.Id,
                 EarliestRestorePoint = deletedDatabaseBackup.EarliestRestoreDate,
             };
+        }
+
+        /// <summary>
+        /// Get a backup LongTermRetention policy for a Managed Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="instanceName">The name of the Managed Instance</param>
+        /// <param name="databaseName">The name of the Managed Database</param>
+        /// <param name="current">Whether or not the user provided the Current switch to get the current implementation of LTR policy</param>
+        /// <returns>A backup LongTermRetention policy</returns>
+        internal AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel GetManagedDatabaseLongTermRetentionPolicy(
+            string resourceGroup,
+            string instanceName,
+            string databaseName)
+        {
+            ManagedInstanceLongTermRetentionPolicy response = Communicator.GetManagedDatabaseLongTermRetentionPolicy(
+                    resourceGroup,
+                    instanceName,
+                    databaseName);
+            return new AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ManagedInstanceName = instanceName,
+                DatabaseName = databaseName,
+                WeeklyRetention = response.WeeklyRetention,
+                MonthlyRetention = response.MonthlyRetention,
+                YearlyRetention = response.YearlyRetention,
+                WeekOfYear = response.WeekOfYear
+            };
+        }
+
+        /// <summary>
+        /// Create or update a backup LongTermRetention policy for a Managed Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="managedInstanceName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <returns>A backup LongTermRetention policy</returns>
+        internal AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel SetManagedDatabaseBackupLongTermRetentionPolicy(
+            string resourceGroup,
+            string managedInstanceName,
+            string databaseName,
+            AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel model)
+        {
+            ManagedInstanceLongTermRetentionPolicy response = Communicator.SetManagedDatabaseLongTermRetentionPolicy(
+                    resourceGroup,
+                    managedInstanceName,
+                    databaseName,
+                    new ManagedInstanceLongTermRetentionPolicy()
+                    {
+                        WeeklyRetention = model.WeeklyRetention,
+                        MonthlyRetention = model.MonthlyRetention,
+                        YearlyRetention = model.YearlyRetention,
+                        WeekOfYear = model.WeekOfYear
+                    });
+            return new AzureSqlManagedDatabaseBackupLongTermRetentionPolicyModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ManagedInstanceName = managedInstanceName,
+                DatabaseName = databaseName,
+                WeeklyRetention = response.WeeklyRetention,
+                MonthlyRetention = response.MonthlyRetention,
+                YearlyRetention = response.YearlyRetention,
+                WeekOfYear = response.WeekOfYear
+            };
+        }
+
+        private AzureSqlManagedDatabaseLongTermRetentionBackupModel GetBackupModel(ManagedInstanceLongTermRetentionBackup backup, string locationName)
+        {
+            return new AzureSqlManagedDatabaseLongTermRetentionBackupModel()
+            {
+                BackupExpirationTime = backup.BackupExpirationTime,
+                BackupName = backup.Name,
+                BackupTime = backup.BackupTime,
+                DatabaseDeletionTime = backup.DatabaseDeletionTime,
+                DatabaseName = backup.DatabaseName,
+                Location = locationName,
+                ResourceId = backup.Id,
+                InstanceCreateTime = backup.ManagedInstanceCreateTime,
+                ManagedInstanceName = backup.ManagedInstanceName,
+                ResourceGroupName = GetResourceGroupNameFromResourceId(backup.Id)
+            };
+        }
+
+        private string GetResourceGroupNameFromResourceId(string resourceId)
+        {
+            if (resourceId.Contains("/resourceGroups/"))
+            {
+                return resourceId.Split('/')[4];
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Gets the Long Term Retention backups.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="managedInstanceName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="onlyLatestPerDatabase">Whether or not to only get the latest backup per database.</param>
+        /// <param name="databaseState">The state of databases to get backups for: All, Live, Deleted.</param>
+        internal IEnumerable<AzureSqlManagedDatabaseLongTermRetentionBackupModel> GetManagedDatabaseLongTermRetentionBackups(
+            string locationName,
+            string managedInstanceName,
+            string databaseName,
+            string backupName,
+            string resourceGroupName,
+            bool? onlyLatestPerDatabase,
+            string databaseState)
+        {
+            if (!string.IsNullOrWhiteSpace(backupName) && !WildcardPattern.ContainsWildcardCharacters(backupName))
+            {
+                return new List<AzureSqlManagedDatabaseLongTermRetentionBackupModel>()
+                {
+                    GetBackupModel(Communicator.GetManagedDatabaseLongTermRetentionBackup(locationName, managedInstanceName, databaseName, backupName, resourceGroupName), locationName)
+                };
+            }
+            else
+            {
+                return Communicator.GetManagedDatabaseLongTermRetentionBackups(locationName, managedInstanceName, databaseName, resourceGroupName, onlyLatestPerDatabase, databaseState)
+                    .Select(b => GetBackupModel(b, locationName));
+            }
+        }
+
+        /// <summary>
+        /// Removes a Long Term Retention backup.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        internal void RemoveManagedDatabaseLongTermRetentionBackup(
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName,
+            string resourceGroupName)
+        {
+            Communicator.RemoveManagedDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName, resourceGroupName);
         }
     }
 }

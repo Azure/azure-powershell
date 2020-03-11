@@ -16,7 +16,7 @@ Modifies properties of a SQL Database server.
 ```
 Set-AzSqlServer [-ServerName] <String> [-SqlAdministratorPassword <SecureString>] [-Tags <Hashtable>]
  [-ServerVersion <String>] [-AssignIdentity] [-Force] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-MinimalTlsVersion <String>] [-PublicNetworkAccess <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,6 +89,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicNetworkAccess
+Takes a flag, enabled/disabled, to specify whether public network access to server is allowed or not.
+When disabled, only connections made through Private Links can reach this server.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group to which the server is assigned.
 
@@ -142,6 +158,21 @@ ConvertTo-SecureString`.
 
 ```yaml
 Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimalTlsVersion
+The minimal TLS version to enforce for Sql Server
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

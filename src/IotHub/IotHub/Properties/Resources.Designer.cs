@@ -149,15 +149,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ms-azure-iot-edge://.
-        /// </summary>
-        internal static string DEVICE_DEVICESCOPE_PREFIX {
-            get {
-                return ResourceManager.GetString("DEVICE_DEVICESCOPE_PREFIX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Failover Iot Hub to the secondary location..
         /// </summary>
         internal static string ManualFailoverIotHub {
@@ -298,6 +289,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string RemoveIotHubRoutingEndpoint {
             get {
                 return ResourceManager.GetString("RemoveIotHubRoutingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Distributed Tracing.
+        /// </summary>
+        internal static string SetIotHubDistributedTracing {
+            get {
+                return ResourceManager.GetString("SetIotHubDistributedTracing", resourceCulture);
             }
         }
         
