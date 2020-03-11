@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
             var queryOptions = new RestApiModels.QueryOptions
             {
@@ -158,66 +158,56 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
 
             RestApiModels.PolicyEventsQueryResults policyEventsQueryResults;
 
-            try
+            switch (ParameterSetName)
             {
-                switch (ParameterSetName)
-                {
-                    case ParameterSetNames.ManagementGroupScope:
-                        policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForManagementGroup(
-                            ManagementGroupName,
-                            queryOptions);
-                        break;
-                    case ParameterSetNames.SubscriptionScope:
-                        policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForSubscription(
-                            SubscriptionId ?? DefaultContext.Subscription.Id,
-                            queryOptions);
-                        break;
-                    case ParameterSetNames.ResourceGroupScope:
-                        policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForResourceGroup(
-                            SubscriptionId ?? DefaultContext.Subscription.Id,
-                            ResourceGroupName,
-                            queryOptions);
-                        break;
-                    case ParameterSetNames.ResourceScope:
-                        policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForResource(
-                            ResourceId,
-                            queryOptions);
-                        break;
-                    case ParameterSetNames.PolicySetDefinitionScope:
-                        policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForPolicySetDefinition(
-                            SubscriptionId ?? DefaultContext.Subscription.Id,
-                            PolicySetDefinitionName,
-                            queryOptions);
-                        break;
-                    case ParameterSetNames.PolicyDefinitionScope:
-                        policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForPolicyDefinition(
-                            SubscriptionId ?? DefaultContext.Subscription.Id,
-                            PolicyDefinitionName,
-                            queryOptions);
-                        break;
-                    case ParameterSetNames.SubscriptionLevelPolicyAssignmentScope:
-                        policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForSubscriptionLevelPolicyAssignment(
-                            SubscriptionId ?? DefaultContext.Subscription.Id,
-                            PolicyAssignmentName,
-                            queryOptions);
-                        break;
-                    case ParameterSetNames.ResourceGroupLevelPolicyAssignmentScope:
-                        policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForResourceGroupLevelPolicyAssignment(
-                            SubscriptionId ?? DefaultContext.Subscription.Id,
-                            ResourceGroupName,
-                            PolicyAssignmentName,
-                            queryOptions);
-                        break;
-                    default:
-                        throw new PSInvalidOperationException();
-                }
-            }
-            catch (RestApiModels.QueryFailureException e)
-            {
-                WriteExceptionError(e.Body?.Error != null
-                    ? new Exception($"{e.Message} ({e.Body.Error.Code}: {e.Body.Error.Message})")
-                    : e);
-                return;
+                case ParameterSetNames.ManagementGroupScope:
+                    policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForManagementGroup(
+                        ManagementGroupName,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.SubscriptionScope:
+                    policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForSubscription(
+                        SubscriptionId ?? DefaultContext.Subscription.Id,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.ResourceGroupScope:
+                    policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForResourceGroup(
+                        SubscriptionId ?? DefaultContext.Subscription.Id,
+                        ResourceGroupName,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.ResourceScope:
+                    policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForResource(
+                        ResourceId,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.PolicySetDefinitionScope:
+                    policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForPolicySetDefinition(
+                        SubscriptionId ?? DefaultContext.Subscription.Id,
+                        PolicySetDefinitionName,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.PolicyDefinitionScope:
+                    policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForPolicyDefinition(
+                        SubscriptionId ?? DefaultContext.Subscription.Id,
+                        PolicyDefinitionName,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.SubscriptionLevelPolicyAssignmentScope:
+                    policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForSubscriptionLevelPolicyAssignment(
+                        SubscriptionId ?? DefaultContext.Subscription.Id,
+                        PolicyAssignmentName,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.ResourceGroupLevelPolicyAssignmentScope:
+                    policyEventsQueryResults = PolicyInsightsClient.PolicyEvents.ListQueryResultsForResourceGroupLevelPolicyAssignment(
+                        SubscriptionId ?? DefaultContext.Subscription.Id,
+                        ResourceGroupName,
+                        PolicyAssignmentName,
+                        queryOptions);
+                    break;
+                default:
+                    throw new PSInvalidOperationException();
             }
 
             WriteObject(policyEventsQueryResults.Value.Select(policyEvent => new PolicyEvent(policyEvent)), true);
