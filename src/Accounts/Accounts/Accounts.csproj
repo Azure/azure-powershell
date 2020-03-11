@@ -22,10 +22,15 @@
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.ServiceModel.Primitives.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetFx\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetFx\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Runtime.CompilerServices.Unsafe.dll" />
     <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetCore\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
     <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetCore\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
+    <!--The following assembly is not part of PowerShell Core 6.x, it is in RequiredAssemblies in Az.Accounts.psd1 and so need copy to root folder-->
+    <AzureCoreAssemblies Include="$(RepoSrc)lib\System.Threading.Tasks.Extensions.dll" />
+    <AzureCoreAssemblies Include="$(RepoSrc)lib\Azure.Core.dll" />
+    <AzureCoreAssemblies Include="$(RepoSrc)lib\Microsoft.Bcl.AsyncInterfaces.dll" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +41,7 @@
     <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
     <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)\NetCoreAssemblies" />
     <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />
+    <Copy SourceFiles="@(AzureCoreAssemblies)" DestinationFolder="$(TargetDir)" />
   </Target>
 
   <ItemGroup>
