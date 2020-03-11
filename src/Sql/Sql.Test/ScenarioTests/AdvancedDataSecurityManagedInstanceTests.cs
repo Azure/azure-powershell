@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public AdvancedDataSecurityManagedInstanceTests(ITestOutputHelper output) : base(output)
         {
             base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/managedInstances"
+                "Microsoft.Sql/managedInstances",
+                "Microsoft.Sql/managedInstances/databases"
             };
         }
 
