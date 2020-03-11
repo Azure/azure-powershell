@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed `Get-AzResource -ResourceGroupName -Name -ExpandProperties -ResourceType` to use actual apiVersion of resources instead of default apiVersion [#11267]
+* Add correlationId logging for error scenarios
 
 ## Version 1.12.0
 * Fixed for null reference bug in `Get-AzRoleAssignment`
