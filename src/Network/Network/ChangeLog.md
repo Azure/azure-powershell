@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to allow cross-tenant VirtualHubVnetConnections
+    - New-AzVirtualHubVnetConnection
+    - Update-AzVirtualHubVnetConnection
+    - New-AzVirtualHub
+    - Update-AzVirtualHub
 
 ## Version 2.3.2
 * Updated Sql Management SDK.
