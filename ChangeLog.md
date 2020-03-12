@@ -157,6 +157,7 @@ to enable create Azure-SSIS IR with static public IP addresses.
 #### Az.Sql
 * Fix vulnerability assessment set baseline cmdlets functionality to work on master db for azure database and limit it on managed instance system databases.
 * Fix an error when creating SQL instance failover group
+* Add cmdlet Disable-AzSqlServerActiveDirectoryOnlyAuthentication
 
 #### Az.SqlVirtualMachine
 * Add DR as a new valid License type
