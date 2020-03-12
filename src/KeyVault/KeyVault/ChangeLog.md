@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.1
 * Fixed duplicated text for Add-AzKeyVaultKey.md
 
 ## Version 1.5.0

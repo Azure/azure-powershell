@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.5.0
 * Allowed empty value for ProximityPlacementGroupId during update
 
 ## Version 3.4.0
@@ -28,6 +30,7 @@
     - New-AzDiskUpdateConfig, New-AzSnapshotUpdateConfig
 * Add ColocationStatus parameter to Get-AzProximityPlacementGroup cmdlet.
 * Fix broken example code for 'Revoke-AzSnapshotAccess' and 'Grant-AzSnapshotAccess'
+* Fix broken example code for 'Set-AzDiskDiskEncryptionKey' and 'Set-AzDiskKeyEncryptionKey'
 
 ## Version 3.3.0
 * Fix Set-AzVMCustomScriptExtension cmdlet for a VM with managed OD disk which does not have OS profile.

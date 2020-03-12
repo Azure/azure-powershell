@@ -8,7 +8,10 @@ schema: 2.0.0
 # Invoke-AzStorageSyncChangeDetection
 
 ## SYNOPSIS
-This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. A maximum of 10,000 changes can be detected. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within a 10,000 changes limit.
+This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. A maximum of 10,000 items can be detected. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within the 10,000 item limit.
+
+> [!Note]  
+> The Invoke-AzStorageSyncChangeDetection cmdlet will not detect files that are deleted in the Azure file share. If files are deleted in the Azure file share, they will be detected when the [change detection job](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#afs-change-detection) runs.
 
 ## SYNTAX
 
