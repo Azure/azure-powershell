@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
             var providers = this.ListPSResourceProviders();
 
