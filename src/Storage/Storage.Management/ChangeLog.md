@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported AllowProtectedAppendWrite in ImmutabilityPolicy
+    - `Set-AzRmStorageContainerImmutabilityPolicy`
+* Added breaking change warning message for AzureStorageTable type change in a future release
+    - `New-AzStorageTable`
+    - `Get-AzStorageTable`
 
 ## Version 1.12.0
 * Support set Table/Queue Encryption Keytype in Create Storage Account

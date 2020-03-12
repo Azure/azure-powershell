@@ -37,7 +37,7 @@ This command adds two premium SKU units and the region named East US to the **Ps
 ```powershell
 PS C:\>$service = Get-AzApiManagement -ResourceGroupName "Contoso" -Name "ContosoApi"
 PS C:\>$service = Add-AzApiManagementRegion -ApiManagement $service -Location $secondarylocation -VirtualNetwork $additionalRegionVirtualNetwork
-PS C:\>$service = Set-AzApiManagement -InputObject $service -PassThru 
+PS C:\>$service = Set-AzApiManagement -InputObject $service -PassThru
 ```
 
 This command gets a **PsApiManagement** object, adds two premium SKU units for the region named East US, and then updates deployment.

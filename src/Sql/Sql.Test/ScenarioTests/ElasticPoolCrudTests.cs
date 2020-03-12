@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public ElasticPoolCrudTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         // Currently the test runs too long to be marked as a check-in test.
