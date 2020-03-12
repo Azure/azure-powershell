@@ -729,7 +729,7 @@
                 <ScriptBlock>$_.Zones</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.PowerState.Replace("VM ", "")</ScriptBlock>
+                <ScriptBlock>$_.PowerState</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.MaintenanceRedeployStatus.IsCustomerInitiatedMaintenanceAllowed</ScriptBlock>

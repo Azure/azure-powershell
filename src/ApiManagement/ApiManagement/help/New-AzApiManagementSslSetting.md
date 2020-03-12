@@ -40,6 +40,10 @@ Create an new instance of PsApiManagementSslSetting to Enable TLSv 1.0 in both F
 
 ### -BackendProtocol
 Backend Security protocol settings. This parameter is optional.
+The valid Protocol Settings are 
+`Tls11` - Tls 1.1
+`Tls10` - Tls 1.0
+`Ssl30` - SSL 3.0
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -55,6 +59,8 @@ Accept wildcard characters: False
 
 ### -CipherSuite
 Ssl cipher suites settings in the specified order. This parameter is optional.
+The valid Settings are 
+`TripleDes168` - Enable / Disable Tripe Des 168
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -85,6 +91,11 @@ Accept wildcard characters: False
 
 ### -FrontendProtocol
 Frontend Security protocols settings. This parameter is optional.
+The valid Protocol Settings are 
+`Tls11` - Tls 1.1
+`Tls10` - Tls 1.0
+`Ssl30` - SSL 3.0
+
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -100,6 +111,8 @@ Accept wildcard characters: False
 
 ### -ServerProtocol
 Server protocol settings like Http2. This parameter is optional.
+The valid Settings are 
+`Http2` - Enable Http 2.0
 
 ```yaml
 Type: System.Collections.Hashtable

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.13.1
 * Support Point In Time Restore
     - Enable-AzStorageBlobRestorePolicy
     - Disable-AzStorageBlobRestorePolicy
@@ -28,6 +30,13 @@
 * Integrate Azure.Storage.Blobs 12.3.0, to handle new storage features in the future.
     - Blob cmdlets output type "AzureStorageBlob" has 2 new properties: BlobClient, BlobProperties
     - Container cmdlets output type "AzureStorageContainer" has 2 new properties: BlobContainerClient, BlobContainerProperties
+
+## Version 1.13.0
+* Supported AllowProtectedAppendWrite in ImmutabilityPolicy
+    - `Set-AzRmStorageContainerImmutabilityPolicy`
+* Added breaking change warning message for AzureStorageTable type change in a future release
+    - `New-AzStorageTable`
+    - `Get-AzStorageTable`
 
 ## Version 1.12.0
 * Support set Table/Queue Encryption Keytype in Create Storage Account

@@ -17,6 +17,9 @@ Create/update an Azure IoT Hub certificate.
 ### [Add-AzIotHubDevice](Add-AzIotHubDevice.md)
 Create a device in an IoT Hub.
 
+### [Add-AzIotHubDeviceChildren](Add-AzIotHubDeviceChildren.md)
+Add non-edge devices as a children to the edge device.
+
 ### [Add-AzIotHubEventHubConsumerGroup](Add-AzIotHubEventHubConsumerGroup.md)
 Creates an eventhub consumer group.
 
@@ -50,11 +53,17 @@ Gets the IotHub connectionstrings.
 ### [Get-AzIotHubDevice](Get-AzIotHubDevice.md)
 Lists all devices or a particular device contained within an Azure IoT Hub. 
 
+### [Get-AzIotHubDeviceChildren](Get-AzIotHubDeviceChildren.md)
+Print comma-separated list of assigned child devices.
+
 ### [Get-AzIotHubDeviceConnectionString](Get-AzIotHubDeviceConnectionString.md)
 Get the connection string of a target IoT device in an Iot Hub.
 
 ### [Get-AzIotHubDeviceParent](Get-AzIotHubDeviceParent.md)
 Get the parent device of the specified device.
+
+### [Get-AzIotHubDistributedTracing](Get-AzIotHubDistributedTracing.md)
+Get the distributed tracing settings for a device.
 
 ### [Get-AzIotHubEventHubConsumerGroup](Get-AzIotHubEventHubConsumerGroup.md)
 Gets all the eventhub consumergroups.
@@ -113,6 +122,9 @@ Deletes an Azure IoT Hub certificate.
 ### [Remove-AzIotHubDevice](Remove-AzIotHubDevice.md)
 Delete an IoT Hub device.
 
+### [Remove-AzIotHubDeviceChildren](Remove-AzIotHubDeviceChildren.md)
+Remove non edge devices as children from specified edge device.
+
 ### [Remove-AzIotHubEventHubConsumerGroup](Remove-AzIotHubEventHubConsumerGroup.md)
 Deletes an eventhub consumergroup.
 
@@ -139,6 +151,9 @@ Update an IoT Hub device.
 
 ### [Set-AzIotHubDeviceParent](Set-AzIotHubDeviceParent.md)
 Set the parent device of the specified device.
+
+### [Set-AzIotHubDistributedTracing](Set-AzIotHubDistributedTracing.md)
+Update the distributed tracing options for a device.
 
 ### [Set-AzIotHubMessageEnrichment](Set-AzIotHubMessageEnrichment.md)
 Update a message enrichment in your IoT hub.

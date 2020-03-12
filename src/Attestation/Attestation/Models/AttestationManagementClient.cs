@@ -34,35 +34,24 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         public AttestationManagementClient()
         {
         }
-        public PSAttestation CreateNewAttestation(AttestationCreationParameters parameters)
+        public PSAttestation CreateNewAttestation(AttestationCreationParameters newServiceParams)
         {
-            if (parameters == null)
+            if (newServiceParams == null)
             {
-                throw new ArgumentNullException(nameof(parameters));
+                throw new ArgumentNullException(nameof(newServiceParams));
             }
-            if (string.IsNullOrEmpty(parameters.ProviderName))
+            if (string.IsNullOrEmpty(newServiceParams.ProviderName))
             {
-                throw new ArgumentNullException(nameof(parameters.ProviderName));
+                throw new ArgumentNullException(nameof(newServiceParams.ProviderName));
             }
-            if (string.IsNullOrEmpty(parameters.ResourceGroupName))
+            if (string.IsNullOrEmpty(newServiceParams.ResourceGroupName))
             {
-                throw new ArgumentNullException(nameof(parameters.ResourceGroupName));
+                throw new ArgumentNullException(nameof(newServiceParams.ResourceGroupName));
             }
-            AttestationServiceCreationParams _creationParams = new AttestationServiceCreationParams();
-            if (!string.IsNullOrEmpty(parameters.AttestationPolicy))
-            {
-                _creationParams.AttestationPolicy = parameters.AttestationPolicy;
-            }
-            if (parameters.PolicySigningCertificates != null)
-            {
-                _creationParams.PolicySigningCertificates = parameters.PolicySigningCertificates;
-            }
-
-
             var response = attestationClient.AttestationProviders.Create(
-                resourceGroupName: parameters.ResourceGroupName,
-                providerName: parameters.ProviderName,
-                creationParams: _creationParams);
+                resourceGroupName: newServiceParams.ResourceGroupName,
+                providerName: newServiceParams.ProviderName,
+                creationParams: newServiceParams.CreationParameters);
             return new PSAttestation(response);
         }
 
@@ -93,43 +82,5 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             attestationClient.AttestationProviders.Delete(resourceGroupName, attestationName);
         }
 
-        public X509Certificate2Collection GetX509CertificateFromPEM(string pemString, string section)
-        {
-            X509Certificate2Collection certificateCollection = new X509Certificate2Collection();
-            var header = String.Format("-----BEGIN {0}-----", section);
-            var footer = String.Format("-----END {0}-----", section);
-
-            var start = 0;
-            var lengthOfSection = 0;
-            while (true)
-            {
-                start = pemString.IndexOf(header, StringComparison.Ordinal);
-
-                if (start < 0)
-                    break;
-                start += header.Length;
-                lengthOfSection = pemString.IndexOf(footer, start, StringComparison.Ordinal) - start;
-                if (lengthOfSection < 0)
-                    break;
-                byte [] certBuffer = Convert.FromBase64String(pemString.Substring(start, lengthOfSection));
-                X509Certificate2 certs = new X509Certificate2(certBuffer);
-                certificateCollection.Add(certs);
-                pemString = pemString.Substring(start + lengthOfSection);
-            }
-            return certificateCollection;
-        }
-
-        public JSONWebKeySet GetJSONWebKeySet(X509Certificate2Collection certificateCollection)
-        {
-            var jwks = new JSONWebKeySet();
-            jwks.Keys = new List<JSONWebKey>();
-            foreach (var certificate in certificateCollection)
-            {
-                var jwk = new JSONWebKey() { Kty = "RSA" };
-                jwk.X5c = new List<string>() { System.Convert.ToBase64String(certificate.Export(X509ContentType.Cert)) };
-                jwks.Keys.Add(jwk);
-            }
-            return jwks;
-        }
     }
 }
