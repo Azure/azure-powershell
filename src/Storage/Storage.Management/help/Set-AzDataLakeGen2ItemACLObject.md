@@ -1,32 +1,32 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azdatalakegen2itemaclobject
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azdatalakegen2itemaclobject
 schema: 2.0.0
 ---
 
-# New-AzDataLakeGen2ItemAclObject
+# Set-AzDataLakeGen2ItemAclObject
 
 ## SYNOPSIS
-Creates a DataLake gen2 item ACL object, which can be used in Update-AzDataLakeGen2Item cmdlet.
+Creates/Updates a DataLake gen2 item ACL object, which can be used in Update-AzDataLakeGen2Item cmdlet.
 
 ## SYNTAX
 
 ```
-New-AzDataLakeGen2ItemAclObject [-EntityId <String>] [-DefaultScope] -Permission <String>
+Set-AzDataLakeGen2ItemAclObject [-EntityId <String>] [-DefaultScope] -Permission <String>
  [-InputObject <PSPathAccessControlEntry[]>] -AccessControlType <AccessControlType> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzDataLakeGen2ItemAclObject** cmdlet creates a DataLake gen2 item ACL object, which can be used in Update-AzDataLakeGen2Item cmdlet.
+The **Set-AzDataLakeGen2ItemAclObject** cmdlet creates/updates a DataLake gen2 item ACL object, which can be used in Update-AzDataLakeGen2Item cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Create an ACL object with 3 ACL entry, and update ACL on a directory
 ```
-PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
-PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
+PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
+PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
+PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
 PS C:\>Update-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2" -ACL $acl
 
    FileSystem Uri: https://testaccount.blob.core.windows.net/testfilesystem
@@ -44,7 +44,7 @@ This command creates an ACL object with 3 acl entry (use -InputObject parameter 
 There are four types: "user" grants rights to the owner or a named user, "group" grants rights to the owning group or a named group, "mask" restricts rights granted to named users and the members of groups, and "other" grants rights to all users not found in any of the other entries.
 
 ```yaml
-Type: Microsoft.Azure.Storage.Blob.AccessControlType
+Type: Azure.Storage.Files.DataLake.Models.AccessControlType
 Parameter Sets: (All)
 Aliases:
 Accepted values: User, Group, Mask, Other

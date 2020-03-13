@@ -13,8 +13,8 @@ Lists sub directorys and files from a directory or filesystem root.
 ## SYNTAX
 
 ```
-Get-AzDataLakeGen2ChildItem [-FileSystem] <String> [[-Path] <String>] [-FetchPermission] [-Recurse]
- [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>] [-AsJob] [-Context <IStorageContext>]
+Get-AzDataLakeGen2ChildItem [-FileSystem] <String> [[-Path] <String>] [-FetchProperty] [-Recurse]
+ [-MaxCount <Int32>] [-ContinuationToken <String>] [-AsJob] [-UserPrincipalName] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 Continuation Token.
 
 ```yaml
-Type: Microsoft.Azure.Storage.Blob.BlobContinuationToken
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -156,13 +156,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FetchPermission
-Fetch Blob Permission.
+### -FetchProperty
+Fetch the datalake item properties and ACL.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: FetchPermission
 
 Required: False
 Position: Named
@@ -240,6 +240,21 @@ The server time out for each request in seconds.
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases: ServerTimeoutPerRequestInSeconds
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserPrincipalName
+If speicify this parameter, the user identity values returned in the owner and group fields of each list entry will be transformed from Azure Active Directory Object IDs to User Principal Names. If not speicify this parameter, the values will be returned as Azure Active Directory Object IDs. Note that group and application Object IDs are not translated because they do not have unique friendly names.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

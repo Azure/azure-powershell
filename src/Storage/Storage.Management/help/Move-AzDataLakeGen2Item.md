@@ -15,16 +15,14 @@ Move a file or directory to another a file or directory in same Storage account.
 ### ReceiveManual (Default)
 ```
 Move-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> -DestFileSystem <String> -DestPath <String>
- [-Umask <String>] [-PathRenameMode <PathRenameMode>] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ItemPipeline
 ```
 Move-AzDataLakeGen2Item -InputObject <AzureDataLakeGen2Item> -DestFileSystem <String> -DestPath <String>
- [-Umask <String>] [-PathRenameMode <PathRenameMode>] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -152,6 +150,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Force
+Force to over write the destination.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Azure Datalake Gen2 Item Object to move from.
 
@@ -183,23 +196,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PathRenameMode
-This parameter determines the behavior of the rename operation.
-The value must be "legacy" or "posix", and the default value will be "posix".
-
-```yaml
-Type: Microsoft.Azure.Storage.Blob.PathRenameMode
-Parameter Sets: (All)
-Aliases:
-Accepted values: Legacy, Posix
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ServerTimeoutPerRequest
 The server time out for each request in seconds.
 
@@ -207,23 +203,6 @@ The server time out for each request in seconds.
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases: ServerTimeoutPerRequestInSeconds
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Umask
-The umask restricts the permissions of the file or directory to be created.
-The resulting permission is given by p & ^u, where p is the permission and u is the umask.
-Symbolic (rwxrw-rw-) is supported.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

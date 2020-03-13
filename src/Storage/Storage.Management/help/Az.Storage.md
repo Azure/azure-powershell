@@ -155,9 +155,6 @@ Move a file or directory to another a file or directory in same Storage account.
 ### [New-AzDataLakeGen2Item](New-AzDataLakeGen2Item.md)
 Create a file or directory in a filesystem.
 
-### [New-AzDataLakeGen2ItemAclObject](New-AzDataLakeGen2ItemAclObject.md)
-Creates a DataLake gen2 item ACL object, which can be used in Update-AzDataLakeGen2Item cmdlet.
-
 ### [New-AzRmStorageContainer](New-AzRmStorageContainer.md)
 Creates a Storage blob container
 
@@ -298,6 +295,9 @@ Revoke all User Delegation keys of a Storage account.
 
 ### [Set-AzCurrentStorageAccount](Set-AzCurrentStorageAccount.md)
 Modifies the current Storage account of the specified subscription.
+
+### [Set-AzDataLakeGen2ItemAclObject](Set-AzDataLakeGen2ItemAclObject.md)
+Creates/Updates a DataLake gen2 item ACL object, which can be used in Update-AzDataLakeGen2Item cmdlet.
 
 ### [Set-AzRmStorageContainerImmutabilityPolicy](Set-AzRmStorageContainerImmutabilityPolicy.md)
 Creates or updates ImmutabilityPolicy of a Storage blob containers

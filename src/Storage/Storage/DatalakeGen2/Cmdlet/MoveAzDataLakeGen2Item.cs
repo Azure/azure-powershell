@@ -66,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string DestPath { get; set; }
 
-        [Parameter(HelpMessage = "Force to remove the ImmutabilityPolicy.")]
+        [Parameter(HelpMessage = "Force to over write the destination.")]
         public SwitchParameter Force { get; set; }
 
         //[Parameter(Mandatory = false, HelpMessage = "The umask restricts the permissions of the file or directory to be created. The resulting permission is given by p & ^u, where p is the permission and u is the umask. Symbolic (rwxrw-rw-) is supported. ")]

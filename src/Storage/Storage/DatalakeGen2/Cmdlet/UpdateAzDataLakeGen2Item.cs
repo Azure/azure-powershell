@@ -142,7 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             DataLakeFileClient fileClient = null;
             DataLakeDirectoryClient dirClient = null;
-            IDictionary<string, string> originalMetadata = null;
+            //IDictionary<string, string> originalMetadata = null;
             if (ParameterSetName == ManualParameterSet)
             {
                 DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);
@@ -153,14 +153,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (!InputObject.IsDirectory)
                 {
                     fileClient = InputObject.File;
-                    originalMetadata = InputObject.Properties.Metadata;
                 }
                 else
                 {
                     dirClient = InputObject.Directory;
-                    originalMetadata = InputObject.Properties.Metadata;
                     foundAFolder = true;
                 }
+                //if (InputObject.Properties != null)
+                //{
+                //    originalMetadata = InputObject.Properties.Metadata;
+                //}
             }
 
             if (foundAFolder)
@@ -184,10 +186,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     }
 
                     // Set Properties
-                    SetBlobDirProperties(dirClient, this.BlobProperties, setToServer: true);
+                    SetDatalakegen2ItemProperties(dirClient, this.BlobProperties, setToServer: true);
 
                     //Set MetaData
-                    SetBlobDirMetadata(dirClient, this.BlobMetadata, setToServer: true, originalMetadata: originalMetadata);
+                    SetDatalakegen2ItemMetaData(dirClient, this.BlobMetadata, setToServer: true);
 
                     WriteDataLakeGen2Item(localChannel, dirClient);
                 }
@@ -217,10 +219,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     }
 
                     // Set Properties
-                    SetFileProperties(fileClient, this.BlobProperties, setToServer: true);
+                    SetDatalakegen2ItemProperties(fileClient, this.BlobProperties, setToServer: true);
 
                     //Set MetaData
-                    SetFileMetaData(fileClient, this.BlobMetadata, setToServer: true, originalMetadata: originalMetadata);
+                    SetDatalakegen2ItemMetaData(fileClient, this.BlobMetadata, setToServer: true);
 
                     WriteDataLakeGen2Item(localChannel, fileClient);
                 }

@@ -185,8 +185,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     }
 
                     // Set BlobDir Properties and MetaData
-                    PathHttpHeaders pathHttpHeaders = SetBlobDirProperties(dirClient, BlobProperties, setToServer: false);
-                    IDictionary<string, string> metadata = SetBlobDirMetadata(dirClient, BlobMetadata, setToServer: false);
+                    PathHttpHeaders pathHttpHeaders = SetDatalakegen2ItemProperties(dirClient, BlobProperties, setToServer: false);
+                    IDictionary<string, string> metadata = SetDatalakegen2ItemMetaData(dirClient, BlobMetadata, setToServer: false);
 
                     dirClient.Create(pathHttpHeaders, 
                         metadata, 

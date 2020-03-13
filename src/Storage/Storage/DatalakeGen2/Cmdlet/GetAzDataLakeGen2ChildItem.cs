@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Alias("FetchPermission")]
         [Parameter(Mandatory = false, HelpMessage = "Fetch the datalake item properties and ACL.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter FetchProperties{ get; set; }
+        public SwitchParameter FetchProperty{ get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Indicates if will recursively get the Child Item. The default is false.")]
         [ValidateNotNullOrEmpty]
@@ -124,7 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             page = enumerator.Current;
             foreach (PathItem item in page.Values)
             {
-                WriteDataLakeGen2Item(localChannel, item, fileSystem, page.ContinuationToken, this.FetchProperties.IsPresent);
+                WriteDataLakeGen2Item(localChannel, item, fileSystem, page.ContinuationToken, this.FetchProperty.IsPresent);
                 //    if (item.IsDirectory != null && item.IsDirectory.Value) // Directory
                 //    {
                 //        DataLakeDirectoryClient dirClient = fileSystem.GetDirectoryClient(item.Name);

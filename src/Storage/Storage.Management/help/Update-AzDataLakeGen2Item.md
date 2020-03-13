@@ -14,7 +14,7 @@ Update a file or directory on properties, metadata, permission, ACL, and owner.
 
 ### ReceiveManual (Default)
 ```
-Update-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> [-Permission <String>] [-Owner <String>]
+Update-AzDataLakeGen2Item [-FileSystem] <String> [[-Path] <String>] [-Permission <String>] [-Owner <String>]
  [-Group <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Acl <PSPathAccessControlEntry[]>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -277,7 +277,7 @@ Type: System.String
 Parameter Sets: ReceiveManual
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)

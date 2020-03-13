@@ -459,57 +459,57 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 //{"ContentType", (p, v) => p.ContentType = v},
             };
 
+        ///// <summary>
+        ///// Set properties to a datalake gen2 folder
+        ///// </summary>
+        ///// <param name="dir">datalake gen2 folder</param>
+        ///// <param name="BlobDirProperties">properties to set</param>
+        ///// <param name="setToServer">True will set to server, false only set to the local folder object</param>
+        //protected static PathHttpHeaders SetBlobDirProperties(DataLakeDirectoryClient dir, Hashtable BlobDirProperties, bool setToServer = true)
+        //{
+        //    if (BlobDirProperties != null)
+        //    {
+        //        // Valid Blob Dir properties
+        //        foreach (DictionaryEntry entry in BlobDirProperties)
+        //        {
+        //            if (!validDatalakeGen2FolderProperties.ContainsKey(entry.Key.ToString()))
+        //            {
+        //                throw new ArgumentException(String.Format("InvalidDataLakeDirectoryProperties", entry.Key.ToString(), entry.Value.ToString()));
+        //            }
+        //        }
+
+        //        PathHttpHeaders headers = new PathHttpHeaders();
+
+        //        foreach (DictionaryEntry entry in BlobDirProperties)
+        //        {
+        //            string key = entry.Key.ToString();
+        //            string value = entry.Value.ToString();
+        //            Action<PathHttpHeaders, string> action = validDatalakeGen2FolderProperties[key];
+
+        //            if (action != null)
+        //            {
+        //                action(headers, value);
+        //            }
+        //        }
+        //        if (setToServer && dir != null)
+        //        {
+        //            dir.SetHttpHeaders(headers);
+        //        }
+        //        return headers;
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
+
         /// <summary>
-        /// Set properties to a datalake gen2 folder
+        /// Set properties to a datalake gen2 Datalakegen2Item
         /// </summary>
-        /// <param name="dir">datalake gen2 folder</param>
-        /// <param name="BlobDirProperties">properties to set</param>
-        /// <param name="setToServer">True will set to server, false only set to the local folder object</param>
-        protected static PathHttpHeaders SetBlobDirProperties(DataLakeDirectoryClient dir, Hashtable BlobDirProperties, bool setToServer = true)
-        {
-            if (BlobDirProperties != null)
-            {
-                // Valid Blob Dir properties
-                foreach (DictionaryEntry entry in BlobDirProperties)
-                {
-                    if (!validDatalakeGen2FolderProperties.ContainsKey(entry.Key.ToString()))
-                    {
-                        throw new ArgumentException(String.Format("InvalidDataLakeDirectoryProperties", entry.Key.ToString(), entry.Value.ToString()));
-                    }
-                }
-
-                PathHttpHeaders headers = new PathHttpHeaders();
-
-                foreach (DictionaryEntry entry in BlobDirProperties)
-                {
-                    string key = entry.Key.ToString();
-                    string value = entry.Value.ToString();
-                    Action<PathHttpHeaders, string> action = validDatalakeGen2FolderProperties[key];
-
-                    if (action != null)
-                    {
-                        action(headers, value);
-                    }
-                }
-                if (setToServer && dir != null)
-                {
-                    dir.SetHttpHeaders(headers);
-                }
-                return headers;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Set properties to a datalake gen2 file
-        /// </summary>
-        /// <param name="file">datalake gen2 file</param>
+        /// <param name="file">datalake gen2 Datalakegen2Item</param>
         /// <param name="BlobProperties">properties to set</param>
-        /// <param name="setToServer">True will set to server, false only set to the local file object</param>
-        protected static PathHttpHeaders SetFileProperties(DataLakeFileClient file, Hashtable BlobProperties, bool setToServer = true)
+        /// <param name="setToServer">True will set to server, false only set to the local Datalakegen2Item object</param>
+        protected static PathHttpHeaders SetDatalakegen2ItemProperties(DataLakePathClient item, Hashtable BlobProperties, bool setToServer = true)
         {
             if (BlobProperties != null)
             {
@@ -534,9 +534,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                         action(headers, value);
                     }
                 }
-                if (setToServer && file != null)
+                if (setToServer && item != null)
                 {
-                    file.SetHttpHeaders(headers);
+                    item.SetHttpHeaders(headers);
                 }
                 return headers;
             }
@@ -547,16 +547,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         }
 
         /// <summary>
-        /// Set Metadata to a datalake gen2 file
+        /// Set Metadata to a datalake gen2 item
         /// </summary>
-        /// <param name="file">datalake gen2 file</param>
+        /// <param name="file">datalake gen2 item</param>
         /// <param name="Metadata">Metadata to set</param>
-        /// <param name="setToServer">True will set to server, false only set to the local file object</param>
-        protected static IDictionary<string, string> SetFileMetaData(DataLakeFileClient file, Hashtable Metadata, bool setToServer = true, IDictionary<string, string> originalMetadata = null)
+        /// <param name="setToServer">True will set to server, false only set to the local Datalakegen2Item object</param>
+        protected static IDictionary<string, string> SetDatalakegen2ItemMetaData(DataLakePathClient item, Hashtable Metadata, bool setToServer = true)
         {
             if (Metadata != null)
             {
-                IDictionary<string, string> metadata = GetUpdatedMetaData(Metadata, originalMetadata);
+                //if (originalMetadata == null)
+                //{
+                //    try
+                //    {
+                //        originalMetadata = item.GetProperties().Value.Metadata;
+                //    }
+                //    catch (RequestFailedException e) when (e.Status == 404)
+                //    {
+                //        originalMetadata = null;
+                //    }
+                //}
+                IDictionary<string, string> metadata = GetUpdatedMetaData(Metadata, null);
                 //if (originalMetadata == null)
                 //{
                 //    metadata = new Dictionary<string, string>();
@@ -579,60 +590,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 //        metadata.Add(key, value);
                 //    }
                 //}
-                if (setToServer && file != null)
+                if (setToServer && item != null)
                 {
-                    file.SetMetadata(metadata);
+                    item.SetMetadata(metadata);
                 }
                 return metadata;
             }
             else
             {
-                return originalMetadata;
-            }
-        }
-
-        /// <summary>
-        /// Set Metadata to a datalake gen2 folder
-        /// </summary>
-        /// <param name="dir">datalake gen2 folder</param>
-        /// <param name="Metadata">Metadata to set</param>
-        /// <param name="setToServer">True will set to server, false only set to the local folder object</param>
-        protected static IDictionary<string, string> SetBlobDirMetadata(DataLakeDirectoryClient dir, Hashtable Metadata, bool setToServer = true, IDictionary<string, string> originalMetadata = null)
-        {
-            if (Metadata != null)
-            {
-                IDictionary<string, string> metadata = GetUpdatedMetaData (Metadata, originalMetadata);
-                //if (originalMetadata == null)
-                //{
-                //    metadata = new Dictionary<string, string>();
-                //}
-                //else
-                //{
-                //    metadata = originalMetadata;
-                //}
-                //foreach (DictionaryEntry entry in Metadata)
-                //{
-                //    string key = entry.Key.ToString();
-                //    string value = entry.Value.ToString();
-
-                //    if (metadata.ContainsKey(key))
-                //    {
-                //        metadata[key] = value;
-                //    }
-                //    else
-                //    {
-                //        metadata.Add(key, value);
-                //    }
-                //}
-                if (setToServer && dir != null)
-                {
-                    dir.SetMetadata(metadata);
-                }
-                return metadata;
-            }
-            else
-            {
-                return originalMetadata;
+                return null;
             }
         }
 
@@ -648,6 +614,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 else
                 {
                     metadata = originalMetadata;
+                    metadata.Remove("hdi_isfolder");
                 }
                 foreach (DictionaryEntry entry in Metadata)
                 {
