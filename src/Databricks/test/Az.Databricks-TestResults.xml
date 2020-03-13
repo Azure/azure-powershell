@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="9" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-03-06" time="13:59:45">
+  <environment os-version="10.0.18363" cwd="C:\Users\xidi\src\azure-powershell\src\Databricks" user="xidi" platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" user-domain="FAREAST" clr-version="Unknown" nunit-version="2.5.8.0" machine-name="DESKTOP-G5346B7" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="1450.5888" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\Databricks\test\latest-2019-04-30\Get-AzDatabricksWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="7.3856" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\Databricks\test\latest-2019-04-30\Get-AzDatabricksWorkspace.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzDatabricksWorkspace" executed="True" result="Success" success="True" time="6.479" asserts="0" description="Get-AzDatabricksWorkspace">
+            <results>
+              <test-case description="List1" name="Get-AzDatabricksWorkspace.List1" time="0.9278" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzDatabricksWorkspace.Get" time="0.934" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzDatabricksWorkspace.List" time="0.5736" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzDatabricksWorkspace.GetViaIdentity" time="1.1317" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\Databricks\test\latest-2019-04-30\New-AzDatabricksWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="444.209" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\Databricks\test\latest-2019-04-30\New-AzDatabricksWorkspace.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzDatabricksWorkspace" executed="True" result="Success" success="True" time="443.9093" asserts="0" description="New-AzDatabricksWorkspace">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzDatabricksWorkspace.CreateExpanded" time="443.7349" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\Databricks\test\latest-2019-04-30\Remove-AzDatabricksWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="983.2777" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\Databricks\test\latest-2019-04-30\Remove-AzDatabricksWorkspace.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzDatabricksWorkspace" executed="True" result="Success" success="True" time="982.9357" asserts="0" description="Remove-AzDatabricksWorkspace">
+            <results>
+              <test-case description="Delete" name="Remove-AzDatabricksWorkspace.Delete" time="508.0776" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzDatabricksWorkspace.DeleteViaIdentity" time="474.6103" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\Databricks\test\latest-2019-04-30\Update-AzDatabricksWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="15.7166" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\Databricks\test\latest-2019-04-30\Update-AzDatabricksWorkspace.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzDatabricksWorkspace" executed="True" result="Success" success="True" time="15.3225" asserts="0" description="Update-AzDatabricksWorkspace">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzDatabricksWorkspace.UpdateExpanded" time="7.996" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzDatabricksWorkspace.UpdateViaIdentityExpanded" time="7.139" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
