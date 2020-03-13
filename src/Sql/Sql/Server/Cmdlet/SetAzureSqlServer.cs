@@ -75,6 +75,15 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string PublicNetworkAccess { get; set; }
 
         /// <summary>
+        /// Gets or sets the sql server minimal tls version
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Minimal Tls Version for the Sql Azure Managed Instance. Options are: 1.0, 1.1 and 1.2 ")]
+        [ValidateSet("1.0", "1.1", "1.2")]
+        [PSArgumentCompleter("1.0", "1.1", "1.2")]
+        public string MinimalTlsVersion { get; set; }
+
+        /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
@@ -108,6 +117,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 Location = model.FirstOrDefault().Location,
                 Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
                 PublicNetworkAccess = this.PublicNetworkAccess,
+                MinimalTlsVersion = this.MinimalTlsVersion,
             });
             return updateData;
         }

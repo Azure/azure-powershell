@@ -190,6 +190,7 @@ Accept wildcard characters: False
 
 ### -ResourceDiscoveryMode
 Describes how the remediation task will discover resources that need to be remediated.
+ReEvaluateCompliance is not supported when remediating management group scopes.
 
 ```yaml
 Type: System.String
