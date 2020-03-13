@@ -19,7 +19,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Runtime.Serialization.Formatters;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -1151,108 +1150,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(resourceGroup2.Name, actual[1].ResourceGroupName);
             Assert.Equal(resourceGroup3.Name, actual[2].ResourceGroupName);
             Assert.Equal(resourceGroup4.Name, actual[3].ResourceGroupName);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetsResourceGroupsFilteredByTags()
-        {
-            Dictionary<string, string> tag1 = new Dictionary<string, string> { { "tag1", "val1" }, { "tag2", "val2" } };
-            Dictionary<string, string> tag2 = new Dictionary<string, string> { { "tag1", "valx" } };
-            Dictionary<string, string> tag3 = new Dictionary<string, string> { { "tag2", "" } };
-
-            ResourceGroup resourceGroup1 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 1, tags: tag1);
-            ResourceGroup resourceGroup2 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 2, tags: tag2);
-            ResourceGroup resourceGroup3 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 3, tags: tag3);
-            ResourceGroup resourceGroup4 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 4);
-            var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
-            var pagableResult = new Page<ResourceGroup>();
-            pagableResult.SetItemValue(listResult);
-            resourceGroupMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, new CancellationToken()))
-                             .Returns(Task.Factory.StartNew(() =>
-                                new AzureOperationResponse<IPage<ResourceGroup>>()
-                                {
-                                    Body = pagableResult
-                                }));
-            SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
-            SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
-            SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
-            SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
-
-            List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null, 
-                new Hashtable(new Dictionary<string, string> { { "tag1", "val1" } }), false);
-
-            Assert.Single(groups1);
-            Assert.Equal(resourceGroup1.Name, groups1[0].ResourceGroupName);
-
-            List<PSResourceGroup> groups2 = resourcesClient.FilterResourceGroups(null,
-                new Hashtable(new Dictionary<string, string> { { "tag2", "" } }), false);
-
-            Assert.Equal(2, groups2.Count);
-            Assert.Equal(resourceGroup1.Name, groups2[0].ResourceGroupName);
-            Assert.Equal(resourceGroup3.Name, groups2[1].ResourceGroupName);
-
-            List<PSResourceGroup> groups3 = resourcesClient.FilterResourceGroups(null,
-                new Hashtable(new Dictionary<string, string> { { "Name", "tag3" } }), false);
-
-            Assert.Empty(groups3);
-
-            List<PSResourceGroup> groups4 = resourcesClient.FilterResourceGroups(null,
-                new Hashtable(new Dictionary<string, string> { { "TAG1", "val1" } }), false);
-
-            Assert.Single(groups4);
-            Assert.Equal(resourceGroup1.Name, groups4[0].ResourceGroupName);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetsResourceGroupsFilteredByTagsWithDetails()
-        {
-            Dictionary<string, string> tag1 = new Dictionary<string, string> { { "tag1", "val1" }, { "tag2", "val2" } };
-            Dictionary<string, string> tag2 = new Dictionary<string, string> { { "tag1", "valx" } };
-            Dictionary<string, string> tag3 = new Dictionary<string, string> { { "tag2", "" } };
-
-            ResourceGroup resourceGroup1 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 1, tags: tag1);
-            ResourceGroup resourceGroup2 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 2, tags: tag2);
-            ResourceGroup resourceGroup3 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 3, tags: tag3);
-            ResourceGroup resourceGroup4 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 4);
-            var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
-            var pagableResult = new Page<ResourceGroup>();
-            pagableResult.SetItemValue(listResult);
-            resourceGroupMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, new CancellationToken()))
-                             .Returns(Task.Factory.StartNew(() =>
-                                new AzureOperationResponse<IPage<ResourceGroup>>()
-                                {
-                                    Body = pagableResult
-                                }));
-            SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
-            SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
-            SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
-            SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
-
-            List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null,
-                new Hashtable(new Dictionary<string, string> { { "tag1", "val1" } }), true);
-
-            Assert.Single(groups1);
-            Assert.Equal(resourceGroup1.Name, groups1[0].ResourceGroupName);
-
-            List<PSResourceGroup> groups2 = resourcesClient.FilterResourceGroups(null,
-                new Hashtable(new Dictionary<string, string> { { "tag2", "" } }), true);
-
-            Assert.Equal(2, groups2.Count);
-            Assert.Equal(resourceGroup1.Name, groups2[0].ResourceGroupName);
-            Assert.Equal(resourceGroup3.Name, groups2[1].ResourceGroupName);
-
-            List<PSResourceGroup> groups3 = resourcesClient.FilterResourceGroups(null,
-                new Hashtable(new Dictionary<string, string> { { "tag3", "" } }), true);
-
-            Assert.Empty(groups3);
-
-            List<PSResourceGroup> groups4 = resourcesClient.FilterResourceGroups(null,
-                new Hashtable(new Dictionary<string, string> { { "TAG1", "val1" }}), true);
-
-            Assert.Single(groups4);
-            Assert.Equal(resourceGroup1.Name, groups4[0].ResourceGroupName);
         }
 
         [Fact]

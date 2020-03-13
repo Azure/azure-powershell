@@ -35,6 +35,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
@@ -559,13 +560,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         private DeploymentValidateResult ValidateDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
         {
+            var scopedDeployment = new ScopedDeployment { Properties = deployment.Properties, Location = deployment.Location };
+
             switch (parameters.ScopeType)
             {
                 case DeploymentScopeType.Tenant:
-                    return ResourceManagementClient.Deployments.ValidateAtTenantScope(parameters.DeploymentName, deployment);
+                    return ResourceManagementClient.Deployments.ValidateAtTenantScope(parameters.DeploymentName, scopedDeployment);
 
                 case DeploymentScopeType.ManagementGroup:
-                    return ResourceManagementClient.Deployments.ValidateAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, deployment);
+                    return ResourceManagementClient.Deployments.ValidateAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, scopedDeployment);
 
                 case DeploymentScopeType.ResourceGroup:
                     return ResourceManagementClient.Deployments.Validate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
@@ -686,14 +689,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         private void BeginDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
         {
+            var scopedDeployment = new ScopedDeployment { Properties = deployment.Properties, Location = deployment.Location };
+
             switch (parameters.ScopeType)
             {
                 case DeploymentScopeType.Tenant:
-                    ResourceManagementClient.Deployments.BeginCreateOrUpdateAtTenantScope(parameters.DeploymentName, deployment);
+                    ResourceManagementClient.Deployments.BeginCreateOrUpdateAtTenantScope(parameters.DeploymentName, scopedDeployment);
                     break;
 
                 case DeploymentScopeType.ManagementGroup:
-                    ResourceManagementClient.Deployments.BeginCreateOrUpdateAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, deployment);
+                    ResourceManagementClient.Deployments.BeginCreateOrUpdateAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, scopedDeployment);
                     break;
 
                 case DeploymentScopeType.ResourceGroup:
@@ -905,11 +910,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
 
+            ODataQuery<ResourceGroupFilter> resourceGroupFilter = null;
+
+            if (tag != null && tag.Count >= 1)
+            {
+                PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
+                if (tagValuePair == null || tag.Count > 1)
+                {
+                    throw new ArgumentException(ProjectResources.InvalidTagFormat);
+                }
+
+                resourceGroupFilter = string.IsNullOrEmpty(tagValuePair.Value)
+                    ? new ODataQuery<ResourceGroupFilter>(rgFilter => rgFilter.TagName == tagValuePair.Name)
+                    : new ODataQuery<ResourceGroupFilter>(rgFilter => rgFilter.TagName == tagValuePair.Name && rgFilter.TagValue == tagValuePair.Value);
+            }
+
             if (string.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))
             {
                 List<ResourceGroup> resourceGroups = new List<ResourceGroup>();
 
-                var listResult = ResourceManagementClient.ResourceGroups.List(null);
+                var listResult = ResourceManagementClient.ResourceGroups.List(odataQuery: resourceGroupFilter);
                 resourceGroups.AddRange(listResult);
 
                 while (!string.IsNullOrEmpty(listResult.NextPageLink))
@@ -928,32 +948,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     ? resourceGroups.Where(resourceGroup => resourceGroup.Location.EqualsAsLocation(location)).ToList()
                     : resourceGroups;
 
-                // TODO: Replace with server side filtering when available
-                if (tag != null && tag.Count >= 1)
-                {
-                    PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
-                    if (tagValuePair == null)
-                    {
-                        throw new ArgumentException(ProjectResources.InvalidTagFormat);
-                    }
-                    if (string.IsNullOrEmpty(tagValuePair.Value))
-                    {
-                        resourceGroups =
-                            resourceGroups.Where(rg => rg.Tags != null
-                                                       && rg.Tags.Keys.Contains(tagValuePair.Name,
-                                                           StringComparer.OrdinalIgnoreCase))
-                                .Select(rg => rg).ToList();
-                    }
-                    else
-                    {
-                        resourceGroups =
-                            resourceGroups.Where(rg => rg.Tags != null && rg.Tags.Keys.Contains(tagValuePair.Name,
-                                                           StringComparer.OrdinalIgnoreCase))
-                                          .Where(rg => rg.Tags.Values.Contains(tagValuePair.Value,
-                                                           StringComparer.OrdinalIgnoreCase))
-                                .Select(rg => rg).ToList();
-                    }
-                }
                 result.AddRange(resourceGroups.Select(rg => rg.ToPSResourceGroup()));
             }
             else

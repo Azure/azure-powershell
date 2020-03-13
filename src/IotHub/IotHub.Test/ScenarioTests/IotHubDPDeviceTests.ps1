@@ -30,6 +30,8 @@ function Test-AzureRmIotHubDeviceLifecycle
 	$device1 = getAssetName
 	$device2 = getAssetName
 	$device3 = getAssetName
+	$device4 = getAssetName
+	$device5 = getAssetName
 	$primaryThumbprint = '38303FC7371EC78DDE3E18D732C8414EE50969C7'
 	$secondaryThumbprint = 'F54465586FBAF4AC269851424A592254C8861BE7'
 
@@ -65,6 +67,11 @@ function Test-AzureRmIotHubDeviceLifecycle
 	$devices = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
 	Assert-True { $devices.Count -eq 3}
 
+	# Get device connection string
+	$deviceCS = Get-AzIotHubDCS -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3
+	Assert-True { $deviceCS.DeviceId -eq $device3 }
+	Assert-True { $deviceCS.ConnectionString -eq "HostName=$IotHubName.azure-devices.net;DeviceId=$device3;x509=true" }
+
 	# Update Device
 	$updatedDevice1 = Set-AzIoTHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -Status 'Disabled' -StatusReason 'Reason1'
 	Assert-True { $updatedDevice1.Id -eq $device1 }
@@ -72,8 +79,26 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-True { $updatedDevice1.StatusReason -eq 'Reason1' }
 
 	# Update iot device to edge device
-	$updatedDevice2 = Set-AzIoTHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3 -EdgeEnabled $true
-	Assert-True { $updatedDevice2.Capabilities.IotEdge }
+	$updatedDevice3 = Set-AzIoTHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3 -EdgeEnabled $true
+	Assert-True { $updatedDevice3.Capabilities.IotEdge }
+
+	# Set parent device Id
+	$updatedChildDevice = Set-AzIotHubDeviceParent -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ParentDeviceId $device3
+	Assert-False { $updatedChildDevice.Capabilities.IotEdge }
+	Assert-True { $updatedChildDevice.Id -eq $device1 }
+	Assert-True { $updatedChildDevice.Scope -eq $updatedDevice3.Scope }
+
+	# Get parent device Id
+	$parentDevice = Get-AzIotHubDeviceParent -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
+	Assert-True { $parentDevice.Capabilities.IotEdge }
+	Assert-True { $parentDevice.Id -eq $device3 }
+	Assert-True { $updatedChildDevice.Scope -eq $updatedDevice3.Scope }
+
+	# Add Device with children Device
+	$newDevice4 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device4 -AuthMethod 'shared_private_key' -EdgeEnabled -Children $device1,$device2 -Force
+	Assert-True { $newDevice4.Capabilities.IotEdge }
+	Assert-True { $newDevice4.Id -eq $device4 }
+	Assert-True { $newDevice4.Authentication.Type -eq 'Sas' }
 
 	# Get device detail
 	$iotDevice = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
@@ -82,6 +107,37 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-False { $iotDevice.Capabilities.IotEdge }
 	Assert-True { $iotDevice.Status -eq 'Disabled' }
 	Assert-True { $iotDevice.StatusReason -eq 'Reason1' }
+	Assert-True { $iotDevice.Scope -eq $newDevice4.Scope }
+
+	# Add Device with parent Device
+	$newDevice5 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device5 -AuthMethod 'shared_private_key' -ParentDeviceId $device4
+	Assert-True { $newDevice5.Id -eq $device5 }
+	Assert-True { $newDevice5.Authentication.Type -eq 'Sas' }
+	Assert-False { $newDevice5.Capabilities.IotEdge }
+	Assert-True { $newDevice5.Scope -eq $newDevice4.Scope }
+
+	# Get all device children
+	$devices = Get-AzIotHubDCL -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
+	Assert-True { $devices.Count -eq 2}
+
+	# Get device children
+	$deviceChildren1 = Get-AzIotHubDCL -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device4
+	Assert-True { $deviceChildren1[0].DeviceId -eq $device4}
+	Assert-True { $deviceChildren1[0].ChildrenDeviceId.split().Count -eq 3}
+	
+	# Add Children Device to Edge Device
+	$deviceChildren2 = Add-AzIotHubDeviceChildren -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3 -Children $device1,$device2 -Force
+	Assert-True { $deviceChildren2.DeviceId -eq $device3}
+	Assert-True { $deviceChildren2.ChildrenDeviceId.split().Count -eq 2}
+
+	# Remove device children
+	$result = Remove-AzIotHubDeviceChildren -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3 -Children $device1 -Passthru
+	Assert-True { $result }
+
+	# Get device children
+	$device = Get-AzIotHubDCL -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3
+	Assert-True { $device[0].DeviceId -eq $device3}
+	Assert-True { $device[0].ChildrenDeviceId.split().Count -eq 1}
 
 	# Delete iot device
 	$result = Remove-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -Passthru

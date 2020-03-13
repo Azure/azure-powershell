@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             {
                 var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient(context);
                 ResourceGroupName = "powershelltest";
-                Location = "West US";
+                Location = "CentralUSEUAP";
 
                 if (string.IsNullOrWhiteSpace(ResourceGroupName))
                 {
@@ -102,6 +102,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             RunPowerShellTest("Api-ImportExportOpenApiTest");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiImportExportOpenApiJsonTest()
+        {
+            RunPowerShellTest("Api-ImportExportOpenApiJsonTest");
+        }
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiSchemaCrudOnSwaggerApiTest()

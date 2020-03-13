@@ -19,6 +19,20 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to allow cross-tenant VirtualHubVnetConnections
+    - New-AzVirtualHubVnetConnection
+    - Update-AzVirtualHubVnetConnection
+    - New-AzVirtualHub
+    - Update-AzVirtualHub
+
+## Version 2.3.2
+* Updated Sql Management SDK.
+* Fixed a naming-difference issue in PrivateLinkServiceConnectionState class.
+    - Mapping the field ActionsRequired to ActionRequired.
+* Added PublicNetworkAccess to `New-AzSqlServer` and `Set-AzSqlServer`
+
+## Version 2.3.1
+* Added one extra parameter note for parameter `-EnableProxyProtocol` for `New-AzPrivateLinkService` cmdlet.
 * Fixed FilterData example in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
 * Added Packet Capture example for capture all inner and outer packets in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
 * Supported Azure Firewall Policy on VNet Firewalls
@@ -49,8 +63,8 @@
 ## Version 2.1.0
 * Change `Start-AzVirtualNetworkGatewayConnectionPacketCapture.md` and `Start-AzVirtualnetworkGatewayPacketCapture.md` FilterData option examples.
 * Add `PrivateRange` parameter to `AzureFirewall`
-	- Updated cmdlet:
-		- New-AzFirewall
+    - Updated cmdlet:
+        - New-AzFirewall
 
 ## Version 2.0.0
 * Change all cmdlets for PrivateEndpointConnection to support generic service provider.
