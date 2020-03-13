@@ -38,6 +38,7 @@ The Azure PowerShell Developer Guide was created to help with the development an
 - [After Development](#after-development)
 - [Misc](#misc)
     - [Publish to PowerShell Gallery](#publish-to-powershell-gallery)
+- [Autorest PowerShell Generator](#autorest-powershell-generator)
 
 # Prerequisites
 
