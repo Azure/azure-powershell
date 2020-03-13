@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 4,
             HelpMessage = "Specifies if only Azure Active Directory authentication is allowed.")]
-        [ValidateNotNullOrEmpty()]
+        [Alias("IsAzureOnlyAuthentication")]
         public bool? IsAzureADOnlyAuthentication { get; set; }
 
         /// <summary>
