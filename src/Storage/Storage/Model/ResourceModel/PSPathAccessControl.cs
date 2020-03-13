@@ -20,7 +20,9 @@ using System.Linq;
 using Microsoft.Azure.Storage.File;
 using System.Net;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Microsoft.Azure.Storage.Blob;
+//using Microsoft.Azure.Storage.Blob;
+using Azure.Storage.Files.DataLake;
+using Azure.Storage.Files.DataLake.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
 {
@@ -31,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
     {
 
         public bool DefaultScope;
-        public AccessControlType? AccessControlType;
+        public AccessControlType AccessControlType;
         public string EntityId;
         public RolePermissions Permissions;
 
@@ -42,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
             this.EntityId = entityId;
             this.Permissions = permissions;
         }
-        public PSPathAccessControlEntry(PathAccessControlEntry acl)
+        public PSPathAccessControlEntry(PathAccessControlItem acl)
         {
             this.DefaultScope = acl.DefaultScope;
             this.AccessControlType = acl.AccessControlType;
@@ -50,16 +52,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
             this.Permissions = acl.Permissions;
         }
 
-        public static List<PathAccessControlEntry> ParseAccessControls(PSPathAccessControlEntry[] psacls)
+        public static List<PathAccessControlItem> ParseAccessControls(PSPathAccessControlEntry[] psacls)
         {
             if (psacls == null || psacls.Count() == 0)
             {
                 return null;
             }
-            List<PathAccessControlEntry> acls = new List<PathAccessControlEntry>();
+            List<PathAccessControlItem> acls = new List<PathAccessControlItem>();
             foreach (PSPathAccessControlEntry psacl in psacls)
             {
-                acls.Add(new PathAccessControlEntry()
+                acls.Add(new PathAccessControlItem()
                 {
                     AccessControlType = psacl.AccessControlType,
                     Permissions = psacl.Permissions,
@@ -70,18 +72,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
             return acls;
         }
 
-        public static PSPathAccessControlEntry[] ParsePSPathAccessControlEntrys(IList<PathAccessControlEntry> acls)
+        public static PSPathAccessControlEntry[] ParsePSPathAccessControlEntrys(IEnumerable<PathAccessControlItem> acls)
         {
             if (acls == null || acls.Count() == 0)
             {
                 return null;
             }
             List<PSPathAccessControlEntry> psacls = new List<PSPathAccessControlEntry>();
-            foreach (PathAccessControlEntry acl in acls)
+            foreach (PathAccessControlItem acl in acls)
             {
                 psacls.Add(new PSPathAccessControlEntry(acl));
             }
             return psacls.ToArray();
+        }
+
+        public string GetSymbolicRolePermissions()
+        {
+            return PathAccessControlExtensions.ToSymbolicRolePermissions(this.Permissions);
         }
     }
 

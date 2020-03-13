@@ -11,14 +11,26 @@
     <RootNamespace>Microsoft.WindowsAzure.Commands.$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 
+
   <ItemGroup>
-    <PackageReference Include="Azure.Storage.Blobs" Version="12.3.0" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Runtime.CompilerServices.Unsafe.dll" />
+  </ItemGroup>
+
+  <Target Name="CopyFiles" AfterTargets="Build">
+    <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
+    <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)" />
+  </Target>
+ 
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.4.0" />
+    <PackageReference Include="Azure.Storage.Files.DataLake" Version="12.0.0" />
     <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="0.10.1-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
-    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.2.0-Release-jenkins-dotnet-nuget-231" />
-    <PackageReference Include="Microsoft.Azure.Storage.File" Version="11.2.0-Release-jenkins-dotnet-nuget-231" />
-    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="11.2.0-Release-jenkins-dotnet-nuget-231" />
-  </ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.1.1" />
+    <PackageReference Include="Microsoft.Azure.Storage.File" Version="11.1.1" />
+    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="11.1.1" />
+  </ItemGroup>    
 
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Storage.DataMovement">

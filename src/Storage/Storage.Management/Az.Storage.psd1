@@ -163,7 +163,7 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Get-AzDataLakeGen2ChildItem', 'Get-AzDataLakeGen2Item', 
                'New-AzDataLakeGen2Item', 'Move-AzDataLakeGen2Item', 
                'Remove-AzDataLakeGen2Item', 'Update-AzDataLakeGen2Item', 
-               'New-AzDataLakeGen2ItemAclObject', 'Get-AzDataLakeGen2ItemContent',
+               'Set-AzDataLakeGen2ItemAclObject', 'Get-AzDataLakeGen2ItemContent',
                'Enable-AzStorageBlobRestorePolicy','Disable-AzStorageBlobRestorePolicy',
                'New-AzStorageBlobRangeToRestore','Restore-AzStorageBlobRange'
 
@@ -180,7 +180,7 @@ AliasesToExport = 'Get-AzStorageContainerAcl', 'Start-CopyAzureStorageBlob',
                'Set-AzureRmStorageAccountManagementPolicy', 
                'Remove-AzureRmStorageAccountManagementPolicy', 
                'New-AzDatalakeGen2FileSystem', 'Remove-AzDatalakeGen2FileSystem', 
-               'Get-AzDatalakeGen2FileSystem'
+               'Get-AzDatalakeGen2FileSystem','New-AzDataLakeGen2ItemAclObject'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

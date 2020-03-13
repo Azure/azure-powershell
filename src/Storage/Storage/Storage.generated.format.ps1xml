@@ -329,11 +329,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>ContentType</Label>
-            <Width>30</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
             <Label>LastModified</Label>
             <Width>20</Width>
           </TableColumnHeader>
@@ -370,15 +365,11 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>ContentType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
                 <ScriptBlock>$_.LastModified.UtcDateTime.ToString("u")</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>$_.Permissions.ToSymbolicString()</ScriptBlock>
+                <ScriptBlock>$_.Permissions.ToSymbolicPermissions()</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
@@ -393,8 +384,8 @@
         </TableRowEntries>
       </TableControl>
       <GroupBy>
-        <ScriptBlock>if ($_.IsDirectory) {$_.Directory.Container.Uri} else {$_.File.Container.Uri}</ScriptBlock>
-        <Label>FileSystem Uri</Label>
+        <ScriptBlock>if ($_.IsDirectory) {$_.Directory.FileSystemName} else {$_.File.FileSystemName}</ScriptBlock>
+        <Label>FileSystem Name</Label>
       </GroupBy>
     </View>
     <View>
@@ -513,7 +504,7 @@
                 <PropertyName>EntityId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.Permissions.ToSymbolicString()</ScriptBlock>
+                <ScriptBlock>$_.GetSymbolicRolePermissions()</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

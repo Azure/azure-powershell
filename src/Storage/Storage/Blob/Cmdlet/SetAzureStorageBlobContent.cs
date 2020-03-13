@@ -371,7 +371,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         //only support the common blob properties for block blob and page blob
         //http://msdn.microsoft.com/en-us/library/windowsazure/ee691966.aspx
-        private Dictionary<string, Action<StorageBlob.BlobProperties, string>> validCloudBlobProperties =
+        public static Dictionary<string, Action<StorageBlob.BlobProperties, string>> validCloudBlobProperties =
             new Dictionary<string, Action<StorageBlob.BlobProperties, string>>(StringComparer.OrdinalIgnoreCase)
             {
                 {"CacheControl", (p, v) => p.CacheControl = v},
@@ -407,7 +407,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         /// <param name="azureBlob">CloudBlob object</param>
         /// <param name="meta">blob properties hashtable</param>
-        private void SetBlobProperties(StorageBlob.CloudBlob blob, Hashtable properties)
+        public static void SetBlobProperties(StorageBlob.CloudBlob blob, Hashtable properties)
         {
             if (properties == null)
             {
@@ -432,7 +432,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         /// <param name="azureBlob">CloudBlob object</param>
         /// <param name="meta">meta data hashtable</param>
-        private void SetBlobMeta(StorageBlob.CloudBlob blob, Hashtable meta)
+        public static void SetBlobMeta(StorageBlob.CloudBlob blob, Hashtable meta)
         {
             if (meta == null)
             {
