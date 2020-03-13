@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
         }
 
         internal void EnableSensitivityRecommendation(string resourceGroupName, string serverName, string databaseName,
-    string schemaName, string tableName, string columnName)
+            string schemaName, string tableName, string columnName)
         {
             GetCurrentSqlManagementClient().SensitivityLabels.EnableRecommendation(resourceGroupName, serverName, databaseName,
                 schemaName, tableName, columnName);
