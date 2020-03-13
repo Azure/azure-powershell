@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
             Position = 4,
             HelpMessage = "Specifies if only Azure Active Directory authentication is allowed.")]
         [ValidateNotNullOrEmpty()]
-        public bool? IsAzureOnlyAuthentication { get; set; }
+        public bool? IsAzureADOnlyAuthentication { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
                 ServerName = ServerName,
                 DisplayName = DisplayName,
                 ObjectId = ObjectId,
-                IsAzureADOnlyAuthentication = IsAzureOnlyAuthentication,
+                IsAzureADOnlyAuthentication = IsAzureADOnlyAuthentication,
             });
             return newEntity;
         }
