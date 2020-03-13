@@ -95,6 +95,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Device Children.
+        /// </summary>
+        internal static string AddIotHubDeviceChildren {
+            get {
+                return ResourceManager.GetString("AddIotHubDeviceChildren", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add an IoT Hub Key.
         /// </summary>
         internal static string AddIotHubKey {
@@ -230,6 +239,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Device Children.
+        /// </summary>
+        internal static string RemoveIotHubDeviceChildren {
+            get {
+                return ResourceManager.GetString("RemoveIotHubDeviceChildren", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove IoT Hub Key.
         /// </summary>
         internal static string RemoveIotHubKey {
@@ -271,6 +289,24 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string RemoveIotHubRoutingEndpoint {
             get {
                 return ResourceManager.GetString("RemoveIotHubRoutingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Distributed Tracing.
+        /// </summary>
+        internal static string SetIotHubDistributedTracing {
+            get {
+                return ResourceManager.GetString("SetIotHubDistributedTracing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Parent Device.
+        /// </summary>
+        internal static string SetParentDevice {
+            get {
+                return ResourceManager.GetString("SetParentDevice", resourceCulture);
             }
         }
         

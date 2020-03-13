@@ -162,5 +162,6 @@
     { "regex": "HealthcareApisService", "alias": "HealthcareApis Service" },
     { "regex": "Maintenance", "alias": "Maintenance" },
     { "regex": "CosmosDB", "alias": "Cosmos DB" },
-    { "regex": "Support", "alias": "Support" }
+    { "regex": "Support", "alias": "Support" },
+    { "regex": "StackEdge", "alias": "Stack Edge" }
 ]

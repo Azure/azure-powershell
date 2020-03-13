@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix Get-AzTenant/Get-AzDefault/Set-AzDefault throw NullReferenceException when not login
+
+## Version 1.7.3
+* Open Azure PowerShell survey page in `Send-Feedback` [#11020]
+* Display Azure PowerShell survey URL in `Resolve-Error` [#11021]
+* Added Az version in UserAgent
+
+## Version 1.7.2
 * Added SubscriptionId, TenantId, and execution time into data of client side telemetry
 
 ## Version 1.7.1

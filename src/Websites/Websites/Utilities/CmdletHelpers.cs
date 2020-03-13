@@ -16,6 +16,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 {
     public static class CmdletHelpers
     {
+        public static NetworkManagementClient networkClient
+        {
+            get;
+            private set;
+        }
         public static HashSet<string> SiteConfigParameters = new HashSet<string>
             {
                 "DefaultDocuments",
@@ -559,14 +564,13 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return subnetResourceId.ToString();
         }
 
-        internal static void VerifySubnetDelegation(IAzureContext context, string subnet)
+        internal static void VerifySubnetDelegation(string subnet)
         {
             var subnetResourceId = new ResourceIdentifier(subnet);
             var resourceGroupName = subnetResourceId.ResourceGroupName;
             var virtualNetworkName = subnetResourceId.ParentResource.Substring(subnetResourceId.ParentResource.IndexOf('/') + 1);
             var subnetName = subnetResourceId.ResourceName;
 
-            var networkClient = AzureSession.Instance.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
             Subnet subnetObj = networkClient.Subnets.Get(resourceGroupName, virtualNetworkName, subnetName);
             var serviceEndpointServiceName = "Microsoft.Web";
             var serviceEndpointLocations = new List<string>() { "*" };
@@ -593,6 +597,23 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                     networkClient.Subnets.CreateOrUpdate(resourceGroupName, virtualNetworkName, subnetName, subnetObj);
                 }
             }            
+        }
+
+        internal static string GetSubnetResourceGroupName(IAzureContext context, string Subnet, string VirtualNetworkName)
+        {
+            networkClient = AzureSession.Instance.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            var matchedVNetwork = networkClient.VirtualNetworks.ListAll().FirstOrDefault(item => item.Name == VirtualNetworkName);
+            if (matchedVNetwork != null)
+            {
+                var subNets = matchedVNetwork.Subnets.ToList();
+                Subnet matchedSubnet = matchedVNetwork.Subnets.FirstOrDefault(sItem => sItem.Name == Subnet || sItem.Id == Subnet);
+                if (matchedSubnet != null)
+                {
+                    var subnetResourceId = new ResourceIdentifier(matchedSubnet.Id);
+                    return subnetResourceId.ResourceGroupName;
+                }
+            }
+            return null;
         }
     }
 }

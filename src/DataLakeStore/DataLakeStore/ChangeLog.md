@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.7
+* Added reference to System.Buffers explicitly in csproj and psd1.
+
 ## Version 1.2.6
 * Update references in .psd1 to use relative path
 

@@ -1,0 +1,1937 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstanceBackups?onlyLatestPerDatabase=false&api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlQmFja3Vwcz9vbmx5TGF0ZXN0UGVyRGF0YWJhc2U9ZmFsc2UmYXBpLXZlcnNpb249MjAxOC0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4d3b2bc4-3c49-415c-b873-18f7d90acc57"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "9e67f48d-4e27-4888-8972-75c637977b51"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "aafa479d-0e7b-4b95-abd1-5f22d96f265c"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193627Z:aafa479d-0e7b-4b95-abd1-5f22d96f265c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:36:27 GMT"
+        ],
+        "Content-Length": [
+          "10541"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"target1\",\r\n        \"backupTime\": \"2020-02-25T00:33:48Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T00:33:48Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/target1/longTermRetentionManagedInstanceBackups/ae1ea149-d5ff-4554-9333-33debe0b92ff;132270644280000000\",\r\n      \"name\": \"ae1ea149-d5ff-4554-9333-33debe0b92ff;132270644280000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"target1\",\r\n        \"backupTime\": \"2020-03-02T20:01:47Z\",\r\n        \"backupExpirationTime\": \"2020-03-16T20:01:47Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/target1/longTermRetentionManagedInstanceBackups/ae1ea149-d5ff-4554-9333-33debe0b92ff;132276529070000000\",\r\n      \"name\": \"ae1ea149-d5ff-4554-9333-33debe0b92ff;132276529070000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-5\",\r\n        \"backupTime\": \"2020-03-03T14:16:38Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:16:38Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-5/longTermRetentionManagedInstanceBackups/151bab0a-8376-4a30-9731-45813da9a614;132277185980000000\",\r\n      \"name\": \"151bab0a-8376-4a30-9731-45813da9a614;132277185980000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-1\",\r\n        \"backupTime\": \"2020-03-03T14:06:27Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:06:27Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-1/longTermRetentionManagedInstanceBackups/0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"name\": \"0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-2\",\r\n        \"backupTime\": \"2020-03-03T14:11:22Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:11:22Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-2/longTermRetentionManagedInstanceBackups/a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47;132277182820000000\",\r\n      \"name\": \"a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47;132277182820000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-ltr-policy-test\",\r\n        \"backupTime\": \"2020-03-04T01:25:46Z\",\r\n        \"backupExpirationTime\": \"2020-03-11T01:25:46Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-ltr-policy-test/longTermRetentionManagedInstanceBackups/f22f0729-4b77-45bd-a8e2-623406aee7ad;132277587460000000\",\r\n      \"name\": \"f22f0729-4b77-45bd-a8e2-623406aee7ad;132277587460000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-4\",\r\n        \"backupTime\": \"2020-03-03T14:16:35Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:16:35Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-4/longTermRetentionManagedInstanceBackups/3322749b-c621-4bc2-b97e-62a53318fe0a;132277185950000000\",\r\n      \"name\": \"3322749b-c621-4bc2-b97e-62a53318fe0a;132277185950000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"sqlcrudtest-8305\",\r\n        \"backupTime\": \"2020-02-27T23:09:39Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:59:29.7608268Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/sqlcrudtest-8305/longTermRetentionManagedInstanceBackups/5083d673-239d-433b-ab32-8d56bd69e9ae;132273185790000000\",\r\n      \"name\": \"5083d673-239d-433b-ab32-8d56bd69e9ae;132273185790000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-3\",\r\n        \"backupTime\": \"2020-03-03T14:11:24Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:11:24Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-3/longTermRetentionManagedInstanceBackups/f1a4625b-5ffc-40f7-ad16-b4d24bc7e911;132277182840000000\",\r\n      \"name\": \"f1a4625b-5ffc-40f7-ad16-b4d24bc7e911;132277182840000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"test-b083bf22-b64c-42ee-958f-a5ee0a512f75\",\r\n        \"backupTime\": \"2020-03-03T13:51:21Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:51:21Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/test-b083bf22-b64c-42ee-958f-a5ee0a512f75/longTermRetentionManagedInstanceBackups/91512746-7623-4077-97df-bfc754317765;132277170810000000\",\r\n      \"name\": \"91512746-7623-4077-97df-bfc754317765;132277170810000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"sqlcrudtest-8750\",\r\n        \"backupTime\": \"2020-02-25T19:33:51Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:55:06.3032425Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/sqlcrudtest-8750/longTermRetentionManagedInstanceBackups/869a4e40-bbe8-4703-82d8-d0be49021f66;132271328310000000\",\r\n      \"name\": \"869a4e40-bbe8-4703-82d8-d0be49021f66;132271328310000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test\",\r\n        \"backupTime\": \"2020-03-03T14:01:29Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:01:29Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test/longTermRetentionManagedInstanceBackups/723e1806-41e3-4cc1-86c8-e561433f245d;132277176890000000\",\r\n      \"name\": \"723e1806-41e3-4cc1-86c8-e561433f245d;132277176890000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"sqlcrudtest-5830\",\r\n        \"backupTime\": \"2020-03-03T02:26:49Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:01:51.29337Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/sqlcrudtest-5830/longTermRetentionManagedInstanceBackups/733cf33d-027c-455e-a80e-edfc1b06b0ee;132276760090000000\",\r\n      \"name\": \"733cf33d-027c-455e-a80e-edfc1b06b0ee;132276760090000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"test-j\",\r\n        \"backupTime\": \"2020-03-03T06:56:52Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T06:56:52Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/test-j/longTermRetentionManagedInstanceBackups/d159f3d8-0ee6-40df-8e97-fb221a00f835;132276922120000000\",\r\n      \"name\": \"d159f3d8-0ee6-40df-8e97-fb221a00f835;132276922120000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstanceBackups?onlyLatestPerDatabase=false&api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlQmFja3Vwcz9vbmx5TGF0ZXN0UGVyRGF0YWJhc2U9ZmFsc2UmYXBpLXZlcnNpb249MjAxOC0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1863aaa3-0293-4fb2-86ce-16c0fecdab85"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "0d7e0da6-d577-4408-afbe-b73b7b96cd22"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-correlation-request-id": [
+          "37fa1956-30bc-4f9e-a8ad-6adb056a1b65"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193630Z:37fa1956-30bc-4f9e-a8ad-6adb056a1b65"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:36:30 GMT"
+        ],
+        "Content-Length": [
+          "10541"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"target1\",\r\n        \"backupTime\": \"2020-02-25T00:33:48Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T00:33:48Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/target1/longTermRetentionManagedInstanceBackups/ae1ea149-d5ff-4554-9333-33debe0b92ff;132270644280000000\",\r\n      \"name\": \"ae1ea149-d5ff-4554-9333-33debe0b92ff;132270644280000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"target1\",\r\n        \"backupTime\": \"2020-03-02T20:01:47Z\",\r\n        \"backupExpirationTime\": \"2020-03-16T20:01:47Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/target1/longTermRetentionManagedInstanceBackups/ae1ea149-d5ff-4554-9333-33debe0b92ff;132276529070000000\",\r\n      \"name\": \"ae1ea149-d5ff-4554-9333-33debe0b92ff;132276529070000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-5\",\r\n        \"backupTime\": \"2020-03-03T14:16:38Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:16:38Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-5/longTermRetentionManagedInstanceBackups/151bab0a-8376-4a30-9731-45813da9a614;132277185980000000\",\r\n      \"name\": \"151bab0a-8376-4a30-9731-45813da9a614;132277185980000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-1\",\r\n        \"backupTime\": \"2020-03-03T14:06:27Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:06:27Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-1/longTermRetentionManagedInstanceBackups/0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"name\": \"0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-2\",\r\n        \"backupTime\": \"2020-03-03T14:11:22Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:11:22Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-2/longTermRetentionManagedInstanceBackups/a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47;132277182820000000\",\r\n      \"name\": \"a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47;132277182820000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-ltr-policy-test\",\r\n        \"backupTime\": \"2020-03-04T01:25:46Z\",\r\n        \"backupExpirationTime\": \"2020-03-11T01:25:46Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-ltr-policy-test/longTermRetentionManagedInstanceBackups/f22f0729-4b77-45bd-a8e2-623406aee7ad;132277587460000000\",\r\n      \"name\": \"f22f0729-4b77-45bd-a8e2-623406aee7ad;132277587460000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-4\",\r\n        \"backupTime\": \"2020-03-03T14:16:35Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:16:35Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-4/longTermRetentionManagedInstanceBackups/3322749b-c621-4bc2-b97e-62a53318fe0a;132277185950000000\",\r\n      \"name\": \"3322749b-c621-4bc2-b97e-62a53318fe0a;132277185950000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"sqlcrudtest-8305\",\r\n        \"backupTime\": \"2020-02-27T23:09:39Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:59:29.7608268Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/sqlcrudtest-8305/longTermRetentionManagedInstanceBackups/5083d673-239d-433b-ab32-8d56bd69e9ae;132273185790000000\",\r\n      \"name\": \"5083d673-239d-433b-ab32-8d56bd69e9ae;132273185790000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-3\",\r\n        \"backupTime\": \"2020-03-03T14:11:24Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:11:24Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-3/longTermRetentionManagedInstanceBackups/f1a4625b-5ffc-40f7-ad16-b4d24bc7e911;132277182840000000\",\r\n      \"name\": \"f1a4625b-5ffc-40f7-ad16-b4d24bc7e911;132277182840000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"test-b083bf22-b64c-42ee-958f-a5ee0a512f75\",\r\n        \"backupTime\": \"2020-03-03T13:51:21Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:51:21Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/test-b083bf22-b64c-42ee-958f-a5ee0a512f75/longTermRetentionManagedInstanceBackups/91512746-7623-4077-97df-bfc754317765;132277170810000000\",\r\n      \"name\": \"91512746-7623-4077-97df-bfc754317765;132277170810000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"sqlcrudtest-8750\",\r\n        \"backupTime\": \"2020-02-25T19:33:51Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:55:06.3032425Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/sqlcrudtest-8750/longTermRetentionManagedInstanceBackups/869a4e40-bbe8-4703-82d8-d0be49021f66;132271328310000000\",\r\n      \"name\": \"869a4e40-bbe8-4703-82d8-d0be49021f66;132271328310000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test\",\r\n        \"backupTime\": \"2020-03-03T14:01:29Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:01:29Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test/longTermRetentionManagedInstanceBackups/723e1806-41e3-4cc1-86c8-e561433f245d;132277176890000000\",\r\n      \"name\": \"723e1806-41e3-4cc1-86c8-e561433f245d;132277176890000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"sqlcrudtest-5830\",\r\n        \"backupTime\": \"2020-03-03T02:26:49Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:01:51.29337Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/sqlcrudtest-5830/longTermRetentionManagedInstanceBackups/733cf33d-027c-455e-a80e-edfc1b06b0ee;132276760090000000\",\r\n      \"name\": \"733cf33d-027c-455e-a80e-edfc1b06b0ee;132276760090000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"test-j\",\r\n        \"backupTime\": \"2020-03-03T06:56:52Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T06:56:52Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/test-j/longTermRetentionManagedInstanceBackups/d159f3d8-0ee6-40df-8e97-fb221a00f835;132276922120000000\",\r\n      \"name\": \"d159f3d8-0ee6-40df-8e97-fb221a00f835;132276922120000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionManagedInstanceBackups?onlyLatestPerDatabase=false&api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlcy9zZWFnZW9kci1nZW41LWdwL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlQmFja3Vwcz9vbmx5TGF0ZXN0UGVyRGF0YWJhc2U9ZmFsc2UmYXBpLXZlcnNpb249MjAxOC0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5cb9836b-e490-420f-aa95-5f2e24517e10"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d04e20f0-552e-4b69-86e6-513fdc9abde3"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "dbdb75c6-5de3-41db-b689-4621592ef56b"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193627Z:dbdb75c6-5de3-41db-b689-4621592ef56b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:36:27 GMT"
+        ],
+        "Content-Length": [
+          "10541"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"target1\",\r\n        \"backupTime\": \"2020-02-25T00:33:48Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T00:33:48Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/target1/longTermRetentionManagedInstanceBackups/ae1ea149-d5ff-4554-9333-33debe0b92ff;132270644280000000\",\r\n      \"name\": \"ae1ea149-d5ff-4554-9333-33debe0b92ff;132270644280000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"target1\",\r\n        \"backupTime\": \"2020-03-02T20:01:47Z\",\r\n        \"backupExpirationTime\": \"2020-03-16T20:01:47Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/target1/longTermRetentionManagedInstanceBackups/ae1ea149-d5ff-4554-9333-33debe0b92ff;132276529070000000\",\r\n      \"name\": \"ae1ea149-d5ff-4554-9333-33debe0b92ff;132276529070000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-5\",\r\n        \"backupTime\": \"2020-03-03T14:16:38Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:16:38Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-5/longTermRetentionManagedInstanceBackups/151bab0a-8376-4a30-9731-45813da9a614;132277185980000000\",\r\n      \"name\": \"151bab0a-8376-4a30-9731-45813da9a614;132277185980000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-1\",\r\n        \"backupTime\": \"2020-03-03T14:06:27Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:06:27Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-1/longTermRetentionManagedInstanceBackups/0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"name\": \"0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-2\",\r\n        \"backupTime\": \"2020-03-03T14:11:22Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:11:22Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-2/longTermRetentionManagedInstanceBackups/a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47;132277182820000000\",\r\n      \"name\": \"a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47;132277182820000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-ltr-policy-test\",\r\n        \"backupTime\": \"2020-03-04T01:25:46Z\",\r\n        \"backupExpirationTime\": \"2020-03-11T01:25:46Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-ltr-policy-test/longTermRetentionManagedInstanceBackups/f22f0729-4b77-45bd-a8e2-623406aee7ad;132277587460000000\",\r\n      \"name\": \"f22f0729-4b77-45bd-a8e2-623406aee7ad;132277587460000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-4\",\r\n        \"backupTime\": \"2020-03-03T14:16:35Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:16:35Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-4/longTermRetentionManagedInstanceBackups/3322749b-c621-4bc2-b97e-62a53318fe0a;132277185950000000\",\r\n      \"name\": \"3322749b-c621-4bc2-b97e-62a53318fe0a;132277185950000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"sqlcrudtest-8305\",\r\n        \"backupTime\": \"2020-02-27T23:09:39Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:59:29.7608268Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/sqlcrudtest-8305/longTermRetentionManagedInstanceBackups/5083d673-239d-433b-ab32-8d56bd69e9ae;132273185790000000\",\r\n      \"name\": \"5083d673-239d-433b-ab32-8d56bd69e9ae;132273185790000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-3\",\r\n        \"backupTime\": \"2020-03-03T14:11:24Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:11:24Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-3/longTermRetentionManagedInstanceBackups/f1a4625b-5ffc-40f7-ad16-b4d24bc7e911;132277182840000000\",\r\n      \"name\": \"f1a4625b-5ffc-40f7-ad16-b4d24bc7e911;132277182840000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"test-b083bf22-b64c-42ee-958f-a5ee0a512f75\",\r\n        \"backupTime\": \"2020-03-03T13:51:21Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:51:21Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/test-b083bf22-b64c-42ee-958f-a5ee0a512f75/longTermRetentionManagedInstanceBackups/91512746-7623-4077-97df-bfc754317765;132277170810000000\",\r\n      \"name\": \"91512746-7623-4077-97df-bfc754317765;132277170810000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"sqlcrudtest-8750\",\r\n        \"backupTime\": \"2020-02-25T19:33:51Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:55:06.3032425Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/sqlcrudtest-8750/longTermRetentionManagedInstanceBackups/869a4e40-bbe8-4703-82d8-d0be49021f66;132271328310000000\",\r\n      \"name\": \"869a4e40-bbe8-4703-82d8-d0be49021f66;132271328310000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test\",\r\n        \"backupTime\": \"2020-03-03T14:01:29Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:01:29Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test/longTermRetentionManagedInstanceBackups/723e1806-41e3-4cc1-86c8-e561433f245d;132277176890000000\",\r\n      \"name\": \"723e1806-41e3-4cc1-86c8-e561433f245d;132277176890000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"sqlcrudtest-5830\",\r\n        \"backupTime\": \"2020-03-03T02:26:49Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:01:51.29337Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/sqlcrudtest-5830/longTermRetentionManagedInstanceBackups/733cf33d-027c-455e-a80e-edfc1b06b0ee;132276760090000000\",\r\n      \"name\": \"733cf33d-027c-455e-a80e-edfc1b06b0ee;132276760090000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"test-j\",\r\n        \"backupTime\": \"2020-03-03T06:56:52Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T06:56:52Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/test-j/longTermRetentionManagedInstanceBackups/d159f3d8-0ee6-40df-8e97-fb221a00f835;132276922120000000\",\r\n      \"name\": \"d159f3d8-0ee6-40df-8e97-fb221a00f835;132276922120000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-1/longTermRetentionManagedInstanceBackups?onlyLatestPerDatabase=false&api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlcy9zZWFnZW9kci1nZW41LWdwL2xvbmdUZXJtUmV0ZW50aW9uRGF0YWJhc2VzL3BzLXRlc3QtMS9sb25nVGVybVJldGVudGlvbk1hbmFnZWRJbnN0YW5jZUJhY2t1cHM/b25seUxhdGVzdFBlckRhdGFiYXNlPWZhbHNlJmFwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1f1f1879-e3ce-4c76-b586-4ed378b8379f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f0826be7-ff80-442c-bea7-f7d1c0f2eee5"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-correlation-request-id": [
+          "c2bdba37-e90f-4f59-bc57-cb75a999620f"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193628Z:c2bdba37-e90f-4f59-bc57-cb75a999620f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:36:28 GMT"
+        ],
+        "Content-Length": [
+          "754"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-1\",\r\n        \"backupTime\": \"2020-03-03T14:06:27Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:06:27Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-1/longTermRetentionManagedInstanceBackups/0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"name\": \"0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-1/longTermRetentionManagedInstanceBackups/0cf6fbbd-0040-4a2b-b95d-591eba358931%3B132277179870000000?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlcy9zZWFnZW9kci1nZW41LWdwL2xvbmdUZXJtUmV0ZW50aW9uRGF0YWJhc2VzL3BzLXRlc3QtMS9sb25nVGVybVJldGVudGlvbk1hbmFnZWRJbnN0YW5jZUJhY2t1cHMvMGNmNmZiYmQtMDA0MC00YTJiLWI5NWQtNTkxZWJhMzU4OTMxJTNCMTMyMjc3MTc5ODcwMDAwMDAwP2FwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5259916c-43fb-470b-ba7d-5e8fb81ed569"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "dfc87066-c3ce-4b89-84d6-2925ae391ff3"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14996"
+        ],
+        "x-ms-correlation-request-id": [
+          "3ba204b7-8856-4308-bed2-cc7d3428f102"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193628Z:3ba204b7-8856-4308-bed2-cc7d3428f102"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:36:28 GMT"
+        ],
+        "Content-Length": [
+          "742"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n    \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n    \"databaseName\": \"ps-test-1\",\r\n    \"backupTime\": \"2020-03-03T14:06:27Z\",\r\n    \"backupExpirationTime\": \"2020-03-10T14:06:27Z\"\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-1/longTermRetentionManagedInstanceBackups/0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n  \"name\": \"0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n  \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-1/longTermRetentionManagedInstanceBackups?onlyLatestPerDatabase=true&api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlcy9zZWFnZW9kci1nZW41LWdwL2xvbmdUZXJtUmV0ZW50aW9uRGF0YWJhc2VzL3BzLXRlc3QtMS9sb25nVGVybVJldGVudGlvbk1hbmFnZWRJbnN0YW5jZUJhY2t1cHM/b25seUxhdGVzdFBlckRhdGFiYXNlPXRydWUmYXBpLXZlcnNpb249MjAxOC0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0fbc1e5c-d4a8-4f03-b6e3-23cb5a878bc9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1dd4ea71-e8fa-4c67-8696-5f076c9eddf4"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "28c87417-d7d7-4875-9c76-8668a0f1f3a5"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193628Z:28c87417-d7d7-4875-9c76-8668a0f1f3a5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:36:28 GMT"
+        ],
+        "Content-Length": [
+          "754"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-1\",\r\n        \"backupTime\": \"2020-03-03T14:06:27Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:06:27Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-1/longTermRetentionManagedInstanceBackups/0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"name\": \"0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionManagedInstanceBackups?onlyLatestPerDatabase=true&databaseState=All&api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlcy9zZWFnZW9kci1nZW41LWdwL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlQmFja3Vwcz9vbmx5TGF0ZXN0UGVyRGF0YWJhc2U9dHJ1ZSZkYXRhYmFzZVN0YXRlPUFsbCZhcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cc8c89b1-9e0a-457d-8a43-c7ee5bf0432b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "06c8035e-55ad-4826-8e3e-6fad52fb1742"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14994"
+        ],
+        "x-ms-correlation-request-id": [
+          "86bcc537-9a7a-46f5-99f8-c4502f8e4b94"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193629Z:86bcc537-9a7a-46f5-99f8-c4502f8e4b94"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:36:29 GMT"
+        ],
+        "Content-Length": [
+          "9802"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"target1\",\r\n        \"backupTime\": \"2020-03-02T20:01:47Z\",\r\n        \"backupExpirationTime\": \"2020-03-16T20:01:47Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/target1/longTermRetentionManagedInstanceBackups/ae1ea149-d5ff-4554-9333-33debe0b92ff;132276529070000000\",\r\n      \"name\": \"ae1ea149-d5ff-4554-9333-33debe0b92ff;132276529070000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-5\",\r\n        \"backupTime\": \"2020-03-03T14:16:38Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:16:38Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-5/longTermRetentionManagedInstanceBackups/151bab0a-8376-4a30-9731-45813da9a614;132277185980000000\",\r\n      \"name\": \"151bab0a-8376-4a30-9731-45813da9a614;132277185980000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-1\",\r\n        \"backupTime\": \"2020-03-03T14:06:27Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:06:27Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-1/longTermRetentionManagedInstanceBackups/0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"name\": \"0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-2\",\r\n        \"backupTime\": \"2020-03-03T14:11:22Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:11:22Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-2/longTermRetentionManagedInstanceBackups/a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47;132277182820000000\",\r\n      \"name\": \"a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47;132277182820000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-ltr-policy-test\",\r\n        \"backupTime\": \"2020-03-04T01:25:46Z\",\r\n        \"backupExpirationTime\": \"2020-03-11T01:25:46Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-ltr-policy-test/longTermRetentionManagedInstanceBackups/f22f0729-4b77-45bd-a8e2-623406aee7ad;132277587460000000\",\r\n      \"name\": \"f22f0729-4b77-45bd-a8e2-623406aee7ad;132277587460000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-4\",\r\n        \"backupTime\": \"2020-03-03T14:16:35Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:16:35Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-4/longTermRetentionManagedInstanceBackups/3322749b-c621-4bc2-b97e-62a53318fe0a;132277185950000000\",\r\n      \"name\": \"3322749b-c621-4bc2-b97e-62a53318fe0a;132277185950000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"sqlcrudtest-8305\",\r\n        \"backupTime\": \"2020-02-27T23:09:39Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:59:29.7608268Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/sqlcrudtest-8305/longTermRetentionManagedInstanceBackups/5083d673-239d-433b-ab32-8d56bd69e9ae;132273185790000000\",\r\n      \"name\": \"5083d673-239d-433b-ab32-8d56bd69e9ae;132273185790000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-3\",\r\n        \"backupTime\": \"2020-03-03T14:11:24Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:11:24Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-3/longTermRetentionManagedInstanceBackups/f1a4625b-5ffc-40f7-ad16-b4d24bc7e911;132277182840000000\",\r\n      \"name\": \"f1a4625b-5ffc-40f7-ad16-b4d24bc7e911;132277182840000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"test-b083bf22-b64c-42ee-958f-a5ee0a512f75\",\r\n        \"backupTime\": \"2020-03-03T13:51:21Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:51:21Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/test-b083bf22-b64c-42ee-958f-a5ee0a512f75/longTermRetentionManagedInstanceBackups/91512746-7623-4077-97df-bfc754317765;132277170810000000\",\r\n      \"name\": \"91512746-7623-4077-97df-bfc754317765;132277170810000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"sqlcrudtest-8750\",\r\n        \"backupTime\": \"2020-02-25T19:33:51Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:55:06.3032425Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/sqlcrudtest-8750/longTermRetentionManagedInstanceBackups/869a4e40-bbe8-4703-82d8-d0be49021f66;132271328310000000\",\r\n      \"name\": \"869a4e40-bbe8-4703-82d8-d0be49021f66;132271328310000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test\",\r\n        \"backupTime\": \"2020-03-03T14:01:29Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:01:29Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test/longTermRetentionManagedInstanceBackups/723e1806-41e3-4cc1-86c8-e561433f245d;132277176890000000\",\r\n      \"name\": \"723e1806-41e3-4cc1-86c8-e561433f245d;132277176890000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"sqlcrudtest-5830\",\r\n        \"backupTime\": \"2020-03-03T02:26:49Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T13:01:51.29337Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/sqlcrudtest-5830/longTermRetentionManagedInstanceBackups/733cf33d-027c-455e-a80e-edfc1b06b0ee;132276760090000000\",\r\n      \"name\": \"733cf33d-027c-455e-a80e-edfc1b06b0ee;132276760090000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"test-j\",\r\n        \"backupTime\": \"2020-03-03T06:56:52Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T06:56:52Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/test-j/longTermRetentionManagedInstanceBackups/d159f3d8-0ee6-40df-8e97-fb221a00f835;132276922120000000\",\r\n      \"name\": \"d159f3d8-0ee6-40df-8e97-fb221a00f835;132276922120000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/ps-test-1?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3AvZGF0YWJhc2VzL3BzLXRlc3QtMT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3eb446d4-e18e-4b52-8e9f-569782293cf9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6d5bdca9-725e-4ccc-a588-03ea3960e119"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-correlation-request-id": [
+          "b4776bb7-5c1e-45c2-99e5-07214db52ee3"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193629Z:b4776bb7-5c1e-45c2-99e5-07214db52ee3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:36:29 GMT"
+        ],
+        "Content-Length": [
+          "474"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"status\": \"Online\",\r\n    \"creationDate\": \"2020-03-03T14:04:06.987Z\",\r\n    \"earliestRestorePoint\": \"2020-03-03T14:06:29.743Z\",\r\n    \"defaultSecondaryLocation\": \"northeurope\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/ps-test-1\",\r\n  \"name\": \"ps-test-1\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/databases\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-1/longTermRetentionManagedInstanceBackups?onlyLatestPerDatabase=true&api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvc291dGhlYXN0YXNpYS9sb25nVGVybVJldGVudGlvbk1hbmFnZWRJbnN0YW5jZXMvc2VhZ2VvZHItZ2VuNS1ncC9sb25nVGVybVJldGVudGlvbkRhdGFiYXNlcy9wcy10ZXN0LTEvbG9uZ1Rlcm1SZXRlbnRpb25NYW5hZ2VkSW5zdGFuY2VCYWNrdXBzP29ubHlMYXRlc3RQZXJEYXRhYmFzZT10cnVlJmFwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2ce793f5-50f8-4805-baef-309941501e7e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b13d064e-5b87-40ce-8010-637a9ed4bc39"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14992"
+        ],
+        "x-ms-correlation-request-id": [
+          "7c556c73-abe7-472c-af5c-179135079936"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193630Z:7c556c73-abe7-472c-af5c-179135079936"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:36:29 GMT"
+        ],
+        "Content-Length": [
+          "754"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-1\",\r\n        \"backupTime\": \"2020-03-03T14:06:27Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:06:27Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-1/longTermRetentionManagedInstanceBackups/0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"name\": \"0cf6fbbd-0040-4a2b-b95d-591eba358931;132277179870000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3A/YXBpLXZlcnNpb249MjAxOC0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "196a90fb-d53c-45e3-949f-efc0864c62bc"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "35dd4c13-00cc-4442-8232-7aeda3c5dc01"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-correlation-request-id": [
+          "c30d0398-5a98-4f9b-9c7a-29bc1f213c56"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193631Z:c30d0398-5a98-4f9b-9c7a-29bc1f213c56"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:36:31 GMT"
+        ],
+        "Content-Length": [
+          "873"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen5\",\r\n    \"tier\": \"GeneralPurpose\",\r\n    \"family\": \"Gen5\",\r\n    \"capacity\": 8\r\n  },\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"seageodr-gen5-gp.lkgt1aeda54f909eb.sqltest-eg1.mscds.com\",\r\n    \"administratorLogin\": \"cloudSA\",\r\n    \"subnetId\": \"/subscriptions/741fd0f5-9cb8-442c-91c3-3ef4ca231c2a/resourceGroups/cloudlifter/providers/Microsoft.ClassicNetwork/virtualNetworks/cloudlifter-runners-stage-sea/subnets/Gen5GeoDR\",\r\n    \"state\": \"Ready\",\r\n    \"licenseType\": \"LicenseIncluded\",\r\n    \"vCores\": 8,\r\n    \"storageSizeInGB\": 256,\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"dnsZone\": \"lkgt1aeda54f909eb\",\r\n    \"publicDataEndpointEnabled\": true,\r\n    \"proxyOverride\": \"Proxy\",\r\n    \"timezoneId\": \"UTC\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp\",\r\n  \"name\": \"seageodr-gen5-gp\",\r\n  \"type\": \"Microsoft.Sql/managedInstances\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/ps-test-restore-2?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3AvZGF0YWJhc2VzL3BzLXRlc3QtcmVzdG9yZS0yP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"createMode\": \"RestoreLongTermRetentionBackup\",\r\n    \"longTermRetentionBackupResourceId\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/target1/longTermRetentionManagedInstanceBackups/ae1ea149-d5ff-4554-9333-33debe0b92ff;132270644280000000\"\r\n  },\r\n  \"location\": \"southeastasia\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "35beac5c-97c5-4b04-ad8a-972d6db8b36f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "470"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseOperationResults/f58c3fd7-fa3f-44ae-be56-812155ee7cf2?api-version=2019-06-01-preview"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/f58c3fd7-fa3f-44ae-be56-812155ee7cf2?api-version=2019-06-01-preview"
+        ],
+        "x-ms-request-id": [
+          "f58c3fd7-fa3f-44ae-be56-812155ee7cf2"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "1cc05d76-85d1-4829-a178-24d190f529c7"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193633Z:1cc05d76-85d1-4829-a178-24d190f529c7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:36:32 GMT"
+        ],
+        "Content-Length": [
+          "94"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateManagedRestoreFromLtrBackupRequest\",\r\n  \"startTime\": \"2020-03-04T19:36:33.17Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/f58c3fd7-fa3f-44ae-be56-812155ee7cf2?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL21hbmFnZWREYXRhYmFzZUF6dXJlQXN5bmNPcGVyYXRpb24vZjU4YzNmZDctZmEzZi00NGFlLWJlNTYtODEyMTU1ZWU3Y2YyP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "4f0c9f75-feea-4e92-91fc-2003924ebb16"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-correlation-request-id": [
+          "6be84457-71d2-4553-85c1-b61a2fe3cf08"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193648Z:6be84457-71d2-4553-85c1-b61a2fe3cf08"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:36:48 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"f58c3fd7-fa3f-44ae-be56-812155ee7cf2\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-03-04T19:36:33.17Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/f58c3fd7-fa3f-44ae-be56-812155ee7cf2?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL21hbmFnZWREYXRhYmFzZUF6dXJlQXN5bmNPcGVyYXRpb24vZjU4YzNmZDctZmEzZi00NGFlLWJlNTYtODEyMTU1ZWU3Y2YyP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "2d9cabb9-4248-439b-8052-2e3364b5e530"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-correlation-request-id": [
+          "2849557b-7f5d-46a6-ab7b-d966f7fd2df0"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193704Z:2849557b-7f5d-46a6-ab7b-d966f7fd2df0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:37:03 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"f58c3fd7-fa3f-44ae-be56-812155ee7cf2\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-03-04T19:36:33.17Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/f58c3fd7-fa3f-44ae-be56-812155ee7cf2?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL21hbmFnZWREYXRhYmFzZUF6dXJlQXN5bmNPcGVyYXRpb24vZjU4YzNmZDctZmEzZi00NGFlLWJlNTYtODEyMTU1ZWU3Y2YyP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "236cc9c5-a829-49a7-9d21-f55ffe747dd6"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14987"
+        ],
+        "x-ms-correlation-request-id": [
+          "e626da9f-4d20-46cc-b92d-9ac98659af55"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193719Z:e626da9f-4d20-46cc-b92d-9ac98659af55"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:37:18 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"f58c3fd7-fa3f-44ae-be56-812155ee7cf2\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-03-04T19:36:33.17Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/f58c3fd7-fa3f-44ae-be56-812155ee7cf2?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL21hbmFnZWREYXRhYmFzZUF6dXJlQXN5bmNPcGVyYXRpb24vZjU4YzNmZDctZmEzZi00NGFlLWJlNTYtODEyMTU1ZWU3Y2YyP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "7f1c2ac3-112f-4bef-9d49-d3950dc0679d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14986"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "a4b340ca-1286-4b2b-a8dd-2c8c08eaffff"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193734Z:a4b340ca-1286-4b2b-a8dd-2c8c08eaffff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:37:34 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"f58c3fd7-fa3f-44ae-be56-812155ee7cf2\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-03-04T19:36:33.17Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/f58c3fd7-fa3f-44ae-be56-812155ee7cf2?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL21hbmFnZWREYXRhYmFzZUF6dXJlQXN5bmNPcGVyYXRpb24vZjU4YzNmZDctZmEzZi00NGFlLWJlNTYtODEyMTU1ZWU3Y2YyP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "eb489ad5-b0b1-470e-a52e-42644e3fe7c3"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14985"
+        ],
+        "x-ms-correlation-request-id": [
+          "ef333b67-e438-46d7-a3fc-4a919bd5ff8f"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193750Z:ef333b67-e438-46d7-a3fc-4a919bd5ff8f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:37:50 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"f58c3fd7-fa3f-44ae-be56-812155ee7cf2\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-03-04T19:36:33.17Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/f58c3fd7-fa3f-44ae-be56-812155ee7cf2?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL21hbmFnZWREYXRhYmFzZUF6dXJlQXN5bmNPcGVyYXRpb24vZjU4YzNmZDctZmEzZi00NGFlLWJlNTYtODEyMTU1ZWU3Y2YyP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "ba96c546-2ca6-42cc-8173-df5d6accaa1c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14984"
+        ],
+        "x-ms-correlation-request-id": [
+          "5a92631c-c99f-46eb-bb2e-ae90bca3497d"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193805Z:5a92631c-c99f-46eb-bb2e-ae90bca3497d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:38:05 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"f58c3fd7-fa3f-44ae-be56-812155ee7cf2\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-03-04T19:36:33.17Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/f58c3fd7-fa3f-44ae-be56-812155ee7cf2?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL21hbmFnZWREYXRhYmFzZUF6dXJlQXN5bmNPcGVyYXRpb24vZjU4YzNmZDctZmEzZi00NGFlLWJlNTYtODEyMTU1ZWU3Y2YyP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "88ac18a6-21b3-4ec1-b901-4629fb9da01c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14983"
+        ],
+        "x-ms-correlation-request-id": [
+          "5035108c-d654-48eb-b9d0-02b20f9185bb"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193821Z:5035108c-d654-48eb-b9d0-02b20f9185bb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:38:21 GMT"
+        ],
+        "Content-Length": [
+          "106"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"f58c3fd7-fa3f-44ae-be56-812155ee7cf2\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-03-04T19:36:33.17Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/ps-test-restore-2?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3AvZGF0YWJhc2VzL3BzLXRlc3QtcmVzdG9yZS0yP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ceb2a956-1a50-4d67-a960-99729c7ba86d"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14982"
+        ],
+        "x-ms-correlation-request-id": [
+          "a686bcef-a105-4e05-a729-0f03dc5d1036"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193821Z:a686bcef-a105-4e05-a729-0f03dc5d1036"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:38:21 GMT"
+        ],
+        "Content-Length": [
+          "439"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"status\": \"Online\",\r\n    \"creationDate\": \"2020-03-04T19:36:34.06Z\",\r\n    \"defaultSecondaryLocation\": \"northeurope\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/ps-test-restore-2\",\r\n  \"name\": \"ps-test-restore-2\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/databases\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/ps-test-restore-2?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3AvZGF0YWJhc2VzL3BzLXRlc3QtcmVzdG9yZS0yP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d9a1b712-a717-4a6c-9ccc-e47f67a9001c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d60b0035-4769-4f4e-99be-ae32e8357ff9"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14975"
+        ],
+        "x-ms-correlation-request-id": [
+          "055dc5df-22c6-400b-98fd-f5ae4da0259c"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193840Z:055dc5df-22c6-400b-98fd-f5ae4da0259c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:38:39 GMT"
+        ],
+        "Content-Length": [
+          "439"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"status\": \"Online\",\r\n    \"creationDate\": \"2020-03-04T19:36:34.06Z\",\r\n    \"defaultSecondaryLocation\": \"northeurope\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/ps-test-restore-2\",\r\n  \"name\": \"ps-test-restore-2\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/databases\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-2/longTermRetentionManagedInstanceBackups?onlyLatestPerDatabase=false&api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlcy9zZWFnZW9kci1nZW41LWdwL2xvbmdUZXJtUmV0ZW50aW9uRGF0YWJhc2VzL3BzLXRlc3QtMi9sb25nVGVybVJldGVudGlvbk1hbmFnZWRJbnN0YW5jZUJhY2t1cHM/b25seUxhdGVzdFBlckRhdGFiYXNlPWZhbHNlJmFwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e49affdc-e178-42a3-b2b6-48f7574b7cf3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7c3a4203-2e88-4509-86ec-e1e67b079ba8"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14981"
+        ],
+        "x-ms-correlation-request-id": [
+          "e3b9d7b5-d562-471e-a0b8-805c45051fda"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193822Z:e3b9d7b5-d562-471e-a0b8-805c45051fda"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:38:21 GMT"
+        ],
+        "Content-Length": [
+          "754"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n        \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n        \"databaseName\": \"ps-test-2\",\r\n        \"backupTime\": \"2020-03-03T14:11:22Z\",\r\n        \"backupExpirationTime\": \"2020-03-10T14:11:22Z\"\r\n      },\r\n      \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-2/longTermRetentionManagedInstanceBackups/a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47;132277182820000000\",\r\n      \"name\": \"a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47;132277182820000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-2/longTermRetentionManagedInstanceBackups/a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47%3B132277182820000000?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlcy9zZWFnZW9kci1nZW41LWdwL2xvbmdUZXJtUmV0ZW50aW9uRGF0YWJhc2VzL3BzLXRlc3QtMi9sb25nVGVybVJldGVudGlvbk1hbmFnZWRJbnN0YW5jZUJhY2t1cHMvYTJhMGJkNGEtNWRhYi00OTA3LWEwZjEtNWJjZmU5MDUzZTQ3JTNCMTMyMjc3MTgyODIwMDAwMDAwP2FwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "24db0d2e-d970-467f-b5b9-60781d3bc3b3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "526a9a99-a6e8-4d97-9f5f-25ef01c0655b"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14980"
+        ],
+        "x-ms-correlation-request-id": [
+          "9e60a198-0b7e-45d6-9534-03761cca51a0"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193822Z:9e60a198-0b7e-45d6-9534-03761cca51a0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:38:22 GMT"
+        ],
+        "Content-Length": [
+          "742"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"managedInstanceName\": \"seageodr-gen5-gp\",\r\n    \"managedInstanceCreateTime\": \"2019-10-17T16:52:10.627Z\",\r\n    \"databaseName\": \"ps-test-2\",\r\n    \"backupTime\": \"2020-03-03T14:11:22Z\",\r\n    \"backupExpirationTime\": \"2020-03-10T14:11:22Z\"\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-2/longTermRetentionManagedInstanceBackups/a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47;132277182820000000\",\r\n  \"name\": \"a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47;132277182820000000\",\r\n  \"type\": \"Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-2/longTermRetentionManagedInstanceBackups/a2a0bd4a-5dab-4907-a0f1-5bcfe9053e47%3B132277182820000000?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlcy9zZWFnZW9kci1nZW41LWdwL2xvbmdUZXJtUmV0ZW50aW9uRGF0YWJhc2VzL3BzLXRlc3QtMi9sb25nVGVybVJldGVudGlvbk1hbmFnZWRJbnN0YW5jZUJhY2t1cHMvYTJhMGJkNGEtNWRhYi00OTA3LWEwZjEtNWJjZmU5MDUzZTQ3JTNCMTMyMjc3MTgyODIwMDAwMDAwP2FwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6281b72d-ad65-4bb4-9f93-101ad57a4c3a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstanceBackupOperationResults/1d23ecc2-3d38-419e-b02d-b859083ba00d?api-version=2018-06-01-preview"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstanceBackupAzureAsyncOperation/1d23ecc2-3d38-419e-b02d-b859083ba00d?api-version=2018-06-01-preview"
+        ],
+        "x-ms-request-id": [
+          "1d23ecc2-3d38-419e-b02d-b859083ba00d"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "63512286-aeb0-4b28-930a-e4c304c699c2"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193822Z:63512286-aeb0-4b28-930a-e4c304c699c2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:38:22 GMT"
+        ],
+        "Content-Length": [
+          "70"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"DeleteLTRBackup\",\r\n  \"startTime\": \"2020-03-04T19:38:22.743Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstanceBackupAzureAsyncOperation/1d23ecc2-3d38-419e-b02d-b859083ba00d?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlQmFja3VwQXp1cmVBc3luY09wZXJhdGlvbi8xZDIzZWNjMi0zZDM4LTQxOWUtYjAyZC1iODU5MDgzYmEwMGQ/YXBpLXZlcnNpb249MjAxOC0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "c4d9dc89-5747-4aab-b230-a00ff8c502b7"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14979"
+        ],
+        "x-ms-correlation-request-id": [
+          "bb407d5d-f934-45dd-bbad-46135d40e5de"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193838Z:bb407d5d-f934-45dd-bbad-46135d40e5de"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:38:38 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"1d23ecc2-3d38-419e-b02d-b859083ba00d\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-03-04T19:38:22.743Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstanceBackupOperationResults/1d23ecc2-3d38-419e-b02d-b859083ba00d?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL2xvbmdUZXJtUmV0ZW50aW9uTWFuYWdlZEluc3RhbmNlQmFja3VwT3BlcmF0aW9uUmVzdWx0cy8xZDIzZWNjMi0zZDM4LTQxOWUtYjAyZC1iODU5MDgzYmEwMGQ/YXBpLXZlcnNpb249MjAxOC0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e6a4a52c-9289-4803-b2c7-0fc92469c85c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14978"
+        ],
+        "x-ms-correlation-request-id": [
+          "d936fbb5-7700-4e90-b4da-4853a4b0df3f"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193839Z:d936fbb5-7700-4e90-b4da-4853a4b0df3f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:38:39 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/ps-test-2?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3AvZGF0YWJhc2VzL3BzLXRlc3QtMj9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c3abf6ea-40f0-4906-ba2f-04dba2b55dd4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "41a1c1b1-d733-471f-a7c8-6fda0759f6d3"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14977"
+        ],
+        "x-ms-correlation-request-id": [
+          "e2f73603-3ba9-4810-870a-347d0a8f91af"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193839Z:e2f73603-3ba9-4810-870a-347d0a8f91af"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:38:39 GMT"
+        ],
+        "Content-Length": [
+          "471"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"status\": \"Online\",\r\n    \"creationDate\": \"2020-03-03T14:09:56.2Z\",\r\n    \"earliestRestorePoint\": \"2020-03-03T14:11:24.56Z\",\r\n    \"defaultSecondaryLocation\": \"northeurope\"\r\n  },\r\n  \"location\": \"southeastasia\",\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/ps-test-2\",\r\n  \"name\": \"ps-test-2\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/databases\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/seageodr-gen5-gp/longTermRetentionDatabases/ps-test-2/longTermRetentionManagedInstanceBackups?onlyLatestPerDatabase=false&api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvc291dGhlYXN0YXNpYS9sb25nVGVybVJldGVudGlvbk1hbmFnZWRJbnN0YW5jZXMvc2VhZ2VvZHItZ2VuNS1ncC9sb25nVGVybVJldGVudGlvbkRhdGFiYXNlcy9wcy10ZXN0LTIvbG9uZ1Rlcm1SZXRlbnRpb25NYW5hZ2VkSW5zdGFuY2VCYWNrdXBzP29ubHlMYXRlc3RQZXJEYXRhYmFzZT1mYWxzZSZhcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4bea662e-fe39-4e80-8ea5-2e33e6be3467"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "272f540b-ebc9-41d6-a713-57c713aae3d1"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14976"
+        ],
+        "x-ms-correlation-request-id": [
+          "337c8ac2-909d-4ff4-a01b-aceb8599c178"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193839Z:337c8ac2-909d-4ff4-a01b-aceb8599c178"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:38:39 GMT"
+        ],
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/cl_stage_sea_cv/providers/Microsoft.Sql/managedInstances/seageodr-gen5-gp/databases/ps-test-restore-2?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Jlc291cmNlR3JvdXBzL2NsX3N0YWdlX3NlYV9jdi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3NlYWdlb2RyLWdlbjUtZ3AvZGF0YWJhc2VzL3BzLXRlc3QtcmVzdG9yZS0yP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1b724fb3-2302-4a5b-8ceb-138cfcc76ce7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseOperationResults/648619f7-20a1-4159-a609-368ac888ea50?api-version=2019-06-01-preview"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/648619f7-20a1-4159-a609-368ac888ea50?api-version=2019-06-01-preview"
+        ],
+        "x-ms-request-id": [
+          "648619f7-20a1-4159-a609-368ac888ea50"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "c8f9bfee-f0bd-4eef-80ab-763f784afd61"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193840Z:c8f9bfee-f0bd-4eef-80ab-763f784afd61"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:38:40 GMT"
+        ],
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"DropManagedDatabase\",\r\n  \"startTime\": \"2020-03-04T19:38:40.543Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/648619f7-20a1-4159-a609-368ac888ea50?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL21hbmFnZWREYXRhYmFzZUF6dXJlQXN5bmNPcGVyYXRpb24vNjQ4NjE5ZjctMjBhMS00MTU5LWE2MDktMzY4YWM4ODhlYTUwP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "8ee37258-b3f0-43a6-ad0e-4d2bb0dd536e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14974"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "748155b9-8b64-4a42-af27-bc2701e12193"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193856Z:748155b9-8b64-4a42-af27-bc2701e12193"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:38:55 GMT"
+        ],
+        "Content-Length": [
+          "108"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"648619f7-20a1-4159-a609-368ac888ea50\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-03-04T19:38:40.543Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseAzureAsyncOperation/648619f7-20a1-4159-a609-368ac888ea50?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL21hbmFnZWREYXRhYmFzZUF6dXJlQXN5bmNPcGVyYXRpb24vNjQ4NjE5ZjctMjBhMS00MTU5LWE2MDktMzY4YWM4ODhlYTUwP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "cf9db10f-fed9-48ed-8008-4ca6148c605b"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14973"
+        ],
+        "x-ms-correlation-request-id": [
+          "bfa10d35-e59d-4af7-a8a2-4be6ce6ae2a6"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193912Z:bfa10d35-e59d-4af7-a8a2-4be6ce6ae2a6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:39:11 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"648619f7-20a1-4159-a609-368ac888ea50\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-03-04T19:38:40.543Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/providers/Microsoft.Sql/locations/southeastasia/managedDatabaseOperationResults/648619f7-20a1-4159-a609-368ac888ea50?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGNmYjhiNjItYmNkNi00NzEzLTg5YWQtMTgwOTdmNzVjYzViL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9zb3V0aGVhc3Rhc2lhL21hbmFnZWREYXRhYmFzZU9wZXJhdGlvblJlc3VsdHMvNjQ4NjE5ZjctMjBhMS00MTU5LWE2MDktMzY4YWM4ODhlYTUwP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.40.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4d717a15-bfa6-4803-8928-c09c9c16650b"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14972"
+        ],
+        "x-ms-correlation-request-id": [
+          "b133f4bf-bef7-4f47-9bc6-fbf8c3c78d93"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200304T193912Z:b133f4bf-bef7-4f47-9bc6-fbf8c3c78d93"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Mar 2020 19:39:11 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "8cfb8b62-bcd6-4713-89ad-18097f75cc5b"
+  }
+}

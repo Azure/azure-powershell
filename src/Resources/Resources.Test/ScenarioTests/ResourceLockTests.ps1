@@ -71,7 +71,7 @@ function Test-ResourceLockNonExisting
 	
 	$lock = Get-AzResourceLock -LockName "NonExisting" -Scope $rg.ResourceId -ErrorAction SilentlyContinue
 
-	Assert-True { $Error[0] -like "*LockNotFound : The lock 'NonExisting' could not be found." }
+	Assert-True { $Error[0] -like "*LockNotFound : The lock 'NonExisting' could not be found.*" }
 	Assert-Null $lock
 
 	$Error.Clear()

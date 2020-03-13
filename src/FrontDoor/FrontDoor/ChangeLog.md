@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Added cmdlet to get managed rule definitions that can be used in WAF
 
 ## Version 1.3.0
