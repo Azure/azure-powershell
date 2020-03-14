@@ -86,12 +86,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public YearlyRetentionSchedule YearlySchedule { get; set; }
 
-        public LongTermRetentionPolicy()
+        protected string hello { get; set; }
+
+        public LongTermRetentionPolicy(string backupManagementType = "")
         {
             IsDailyScheduleEnabled = false;
             IsWeeklyScheduleEnabled = false;
             IsMonthlyScheduleEnabled = false;
             IsYearlyScheduleEnabled = false;
+            if(backupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
+            {
+                DailySchedule.
+            }
         }
 
         /// <summary>
@@ -226,10 +232,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public int DurationCountInDays { get; set; }
 
+        /// <summary>
+        /// Minimum value of daily retention in days
+        /// </summary>
+        protected int MinDurationCountInDays { get; set; } = 7;
+
+        /// <summary>
+        /// Maximum value of daily retention in days
+        /// </summary>
+        private int MaxDurationCountInDays { get; set; } = PolicyConstants.MaxAllowedRetentionDurationCount;
+
         // no extra fields
         public override void Validate()
         {
-            if (DurationCountInDays < 7 || DurationCountInDays > PolicyConstants.MaxAllowedRetentionDurationCount)
+            if (DurationCountInDays < MinDurationCountInDays || DurationCountInDays > MaxDurationCountInDays)
             {
                 throw new ArgumentException(Resources.RetentionDurationCountInDaysInvalidException);
             }
@@ -258,9 +274,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public List<DayOfWeek> DaysOfTheWeek { get; set; }
 
+        /// <summary>
+        /// Minimum value of Weekly retention in Weeks
+        /// </summary>
+        private int MinDurationCountInWeeks { get; set; } = 1;
+
+        /// <summary>
+        /// Maximum value of Weekly retention in Weeks
+        /// </summary>
+        private int MaxDurationCountInWeeks { get; set; } = PolicyConstants.MaxAllowedRetentionDurationCount;
+
         public override void Validate()
         {
-            if (DurationCountInWeeks <= 0 || DurationCountInWeeks > PolicyConstants.MaxAllowedRetentionDurationCount)
+            if (DurationCountInWeeks < MinDurationCountInWeeks || DurationCountInWeeks > MaxDurationCountInWeeks)
             {
                 throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
             }
@@ -305,6 +331,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public WeeklyRetentionFormat RetentionScheduleWeekly { get; set; }
 
+        /// <summary>
+        /// Minimum value of Monthly retention in Months
+        /// </summary>
+        private int MinDurationCountInMonths { get; set; } = 1;
+
+        /// <summary>
+        /// Maximum value of Monthly retention in Months
+        /// </summary>
+        private int MaxDurationCountInMonths { get; set; } = PolicyConstants.MaxAllowedRetentionDurationCount;
+
         public MonthlyRetentionSchedule()
             : base()
         {
@@ -314,7 +350,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             base.Validate();
 
-            if (DurationCountInMonths <= 0 || DurationCountInMonths > PolicyConstants.MaxAllowedRetentionDurationCount)
+            if (DurationCountInMonths < MinDurationCountInMonths || DurationCountInMonths > MaxDurationCountInMonths)
             {
                 throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
             }
@@ -381,6 +417,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public WeeklyRetentionFormat RetentionScheduleWeekly { get; set; }
 
+        /// <summary>
+        /// Minimum value of Yearly retention in Years
+        /// </summary>
+        private int MinDurationCountInYears { get; set; } = 1;
+
+        /// <summary>
+        /// Maximum value of Yearly retention in Years
+        /// </summary>
+        private int MaxDurationCountInYears { get; set; } = 10;
+
         public YearlyRetentionSchedule()
             : base()
         {
@@ -391,7 +437,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             base.Validate();
 
-            if (DurationCountInYears <= 0 || DurationCountInYears > PolicyConstants.MaxAllowedRetentionDurationCount)
+            if (DurationCountInYears < MinDurationCountInYears || DurationCountInYears > MaxDurationCountInYears)
             {
                 throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
             }
