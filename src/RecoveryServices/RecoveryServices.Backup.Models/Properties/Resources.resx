@@ -586,6 +586,9 @@ Please contact Microsoft for further assistance.</value>
   <data name="TargetContainerRequiredException" xml:space="preserve">
     <value>Target Container parameter is required for this operation.</value>
   </data>
+  <data name="AFSWeeklyScheduleNotAllowed" xml:space="preserve">
+    <value>Weekly Backup Schedule for Azure File Share policy is not allowed. Please Give Daily Scheudle input instead.</value>
+  </data>
   <data name="DiskExclusionParametersRedundant" xml:space="preserve">
     <value>Multiple Parameters Provided. Please specify only one of the parameters from InclusionDisksList, ExclusionDisksList, ResetExclusionSetting and ExcludeAllDataDisks.</value>
   </data>
