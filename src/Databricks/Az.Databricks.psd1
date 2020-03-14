@@ -9,8 +9,8 @@
   Description = 'Microsoft Azure PowerShell: Databricks cmdlets'
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
-  RequiredAssemblies = './bin/Az.Databricks.private.dll'
-  FormatsToProcess = './Az.Databricks.format.ps1xml'
+  RequiredAssemblies = 'Az.Databricks.private.dll'
+  FormatsToProcess = 'Az.Databricks.format.ps1xml'
   CmdletsToExport = 'Get-AzDatabricksWorkspace', 'New-AzDatabricksWorkspace', 'Remove-AzDatabricksWorkspace', 'Update-AzDatabricksWorkspace', '*'
   AliasesToExport = '*'
   PrivateData = @{

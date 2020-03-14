@@ -6,6 +6,7 @@
 
   <!-- Build -->
   <PropertyGroup>
+    <LangVersion>7.1</LangVersion>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName)</AssemblyName>
     <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)</RootNamespace>
@@ -13,6 +14,8 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\</OutputPath>
     <PublishDir>$(OutputPath)</PublishDir>
+    <!-- Some methods are marked async and don't have an await in them -->
+    <NoWarn>1998</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -46,8 +49,17 @@
   <!-- Assets -->
   <ItemGroup>
     <None Update="Az.$(PsModuleName).psd1" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Az.$(PsModuleName).psm1" CopyToOutputDirectory="PreserveNewest" />
     <None Update="help\*.md" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="internal\*.*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="custom\*.*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="exports\*.*" CopyToOutputDirectory="PreserveNewest" />
     <None Update="*.ps1xml" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.4.1" />
   </ItemGroup>
 
 </Project>

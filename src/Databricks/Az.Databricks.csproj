@@ -32,12 +32,10 @@
 -->
   <PropertyGroup>
     <PsModuleName>Databricks</PsModuleName>
+    <AssemblyName>Az.Databricks.private</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Databricks</RootNamespace>
+    <DelaySign>true</DelaySign>
   </PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)..\Az.props" />
-
-  <PropertyGroup>
-    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
-  </PropertyGroup>
-
+  <Import Project="$(MSBuildThisFileDirectory)..\Az.autorest.props" />
 </Project>
