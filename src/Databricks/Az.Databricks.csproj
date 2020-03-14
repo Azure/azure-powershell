@@ -1,5 +1,5 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
+<!--
   <PropertyGroup>
     <Version>0.0.1</Version>
     <LangVersion>7.1</LangVersion>
@@ -13,22 +13,12 @@
     <PublishDir>$(OutputPath)</PublishDir>
     <NuspecFile>Az.Databricks.nuspec</NuspecFile>
     <NoPackageAnalysis>true</NoPackageAnalysis>
+-->
     <!-- Some methods are marked async and don't have an await in them -->
+    <!--
     <NoWarn>1998</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DelaySign>false</DelaySign>
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <SignAssembly>true</SignAssembly>
-    <DelaySign>true</DelaySign>
-    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
-    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,6 +28,16 @@
 
   <PropertyGroup>
     <DefaultItemExcludes>$(DefaultItemExcludes);resources/**</DefaultItemExcludes>
+  </PropertyGroup>
+-->
+  <PropertyGroup>
+    <PsModuleName>Databricks</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\Az.props" />
+
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 
 </Project>
