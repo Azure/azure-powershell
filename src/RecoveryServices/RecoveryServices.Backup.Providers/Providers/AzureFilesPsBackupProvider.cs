@@ -623,6 +623,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public RetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
+            string backupMnagementType = Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage;
             CmdletModel.LongTermRetentionPolicy defaultRetention = new CmdletModel.LongTermRetentionPolicy();
             DateTime retentionTime = AzureWorkloadProviderHelper.GenerateRandomScheduleTime();
 
@@ -632,24 +633,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.DailySchedule.RetentionTimes = new List<DateTime>();
             defaultRetention.DailySchedule.RetentionTimes.Add(retentionTime);
             defaultRetention.DailySchedule.DurationCountInDays = defaultFileRetentionCount;
+            defaultRetention.DailySchedule.backupManagementType = backupMnagementType;
 
             // Weekly Retention Policy
-            defaultRetention.IsWeeklyScheduleEnabled = true;
+            defaultRetention.IsWeeklyScheduleEnabled = false;
             defaultRetention.WeeklySchedule = new CmdletModel.WeeklyRetentionSchedule();
             defaultRetention.WeeklySchedule.DaysOfTheWeek = new List<System.DayOfWeek>();
             defaultRetention.WeeklySchedule.DaysOfTheWeek.Add(System.DayOfWeek.Sunday);
             defaultRetention.WeeklySchedule.DurationCountInWeeks = defaultWeeklyRetentionCount;
             defaultRetention.WeeklySchedule.RetentionTimes = new List<DateTime>();
             defaultRetention.WeeklySchedule.RetentionTimes.Add(retentionTime);
+            defaultRetention.WeeklySchedule.backupManagementType = backupMnagementType;
 
             //Monthly retention policy
-            defaultRetention.IsMonthlyScheduleEnabled = true;
+            defaultRetention.IsMonthlyScheduleEnabled = false;
             defaultRetention.MonthlySchedule = new CmdletModel.MonthlyRetentionSchedule();
             defaultRetention.MonthlySchedule.DurationCountInMonths = defaultMonthlyRetentionCount;
             defaultRetention.MonthlySchedule.RetentionTimes = new List<DateTime>();
             defaultRetention.MonthlySchedule.RetentionTimes.Add(retentionTime);
             defaultRetention.MonthlySchedule.RetentionScheduleFormatType =
                 CmdletModel.RetentionScheduleFormat.Weekly;
+            defaultRetention.MonthlySchedule.backupManagementType = backupMnagementType;
 
             //Initialize day based schedule
             defaultRetention.MonthlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
@@ -658,7 +662,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.MonthlySchedule.RetentionScheduleWeekly = AzureWorkloadProviderHelper.GetWeeklyRetentionFormat();
 
             //Yearly retention policy
-            defaultRetention.IsYearlyScheduleEnabled = true;
+            defaultRetention.IsYearlyScheduleEnabled = false;
             defaultRetention.YearlySchedule = new CmdletModel.YearlyRetentionSchedule();
             defaultRetention.YearlySchedule.DurationCountInYears = 10;
             defaultRetention.YearlySchedule.RetentionTimes = new List<DateTime>();
@@ -669,6 +673,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.YearlySchedule.MonthsOfYear.Add(Month.January);
             defaultRetention.YearlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
             defaultRetention.YearlySchedule.RetentionScheduleWeekly = AzureWorkloadProviderHelper.GetWeeklyRetentionFormat();
+            defaultRetention.YearlySchedule.backupManagementType = backupMnagementType;
+
+            defaultRetention.backupManagementType = backupMnagementType;
 
             return defaultRetention;
         }
