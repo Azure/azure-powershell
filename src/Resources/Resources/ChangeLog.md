@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Add correlationId logging for error scenarios
+* Escaped single quote in parameter value of `Get-AzADUser` [#11317]
 
 ## Version 1.12.0
 * Fixed for null reference bug in `Get-AzRoleAssignment`
