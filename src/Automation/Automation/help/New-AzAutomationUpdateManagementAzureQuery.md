@@ -29,7 +29,7 @@ PS C:\>$query1Scope = @(
 "/subscriptions/22e2445a-0984-4fa5-86a4-0280d76c4b2c/resourceGroups/resourceGroupName",
 "/subscriptions/32e2445a-0984-4fa5-86a4-0280d76c4b2d/"
     )
-PS C:\>$query1Location =@("Japan East", "UK South")
+PS C:\>$query1Location =@("JapanEast", "UKSouth")
 PS C:\>$query1FilterOperator = "All"
 PS C:\>$tag1 = @{"tag1"= @("tag1Value1", "tag1Value2")}
 PS C:\>$tag1.add("tag2", "tag2Value")
