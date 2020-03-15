@@ -36,6 +36,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string DatabaseName { get; set; }
 
         /// <summary>
+        /// Defines whether to failover the readable secondary
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Failover the readable secondary replica instead of the default primary replica")]
+        public SwitchParameter ReadableSecondary { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -52,6 +58,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
         public SwitchParameter Force { get; set; }
+
+        /// <summary>
+        /// String to indicate failover on primary replica of database
+        /// </summary>
+        public const string PrimaryReplica = "Primary";
+
+        /// <summary>
+        /// String to indicate failover on readable secondary replica of database
+        /// </summary>
+        public const string ReadableSecondaryReplica = "ReadableSecondary";
 
         /// <summary>
         /// Get the entities from the service
@@ -81,7 +97,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
         {
-            ModelAdapter.FailoverDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName);
+            string replicaType = this.ReadableSecondary.IsPresent ? ReadableSecondaryReplica : PrimaryReplica;
+            ModelAdapter.FailoverDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName, replicaType);
             return entity;
         }
 
