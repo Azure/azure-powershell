@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.5.0
 * Add readable secondary parameter to Invoke-AzureSqlDatabaseFailover
 * Add cmdlet Disable-AzSqlServerActiveDirectoryOnlyAuthentication
 
