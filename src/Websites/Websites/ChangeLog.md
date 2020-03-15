@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-*Fixing issue to set custom hostnames for WebAppSlots
+
+## Version 1.7.0
+* Added Tag parameter for `New-AzAppServicePlan` and `Set-AzAppServicePlan`
+* Stop cmdlet execution if an exception is thrown when adding a custom domain to a website
+* Added support to perform operations for App Services not in the same resource group as the App Service Plan
+* Applied access restriction to WebApp/Function in different resource groups
+* Fixed issue to set custom hostnames for WebAppSlots
 
 ## Version 1.6.0
 * Set-AzWebapp and Set-AzWebappSlot supports AlwaysOn, MinTls and FtpsState properties

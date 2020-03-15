@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
 

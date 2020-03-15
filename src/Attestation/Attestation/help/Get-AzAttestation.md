@@ -48,7 +48,7 @@ Get Attestation "example" in Resource Group "rg1".
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 Attestation Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group associated with the attestation being queried.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Specifies the name of the ResourceID associated with the attestation being queried
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 

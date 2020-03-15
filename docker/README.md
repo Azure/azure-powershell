@@ -15,7 +15,7 @@ Please follow [Docker's official instructions][install] to install `docker` corr
 
 ## Release
 
-The release containers derive from the [Powershell image][powershell image], and then install the current Az package.
+The release containers derive from the [Powershell image][powershell image], and then install the current Az package. The current images are using PowerShell 6.2.4, we are planning to add support for PowerShell 7 in the near future.
 
 [powershell image]: https://hub.docker.com/_/microsoft-powershell
 

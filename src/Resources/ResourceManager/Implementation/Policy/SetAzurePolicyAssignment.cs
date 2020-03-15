@@ -23,13 +23,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
     using Newtonsoft.Json.Linq;
     using Policy;      
 
     /// <summary>
     /// Sets the policy assignment.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PSObject))]
+    [CmdletOutputBreakingChange(typeof(PSObject), ReplacementCmdletOutputTypeName = "PsPolicyAssignment")]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PSObject))]
     public class SetAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
         /// <summary>

@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public FailoverTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
         }
 
         [Fact]
@@ -52,6 +55,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestFailoverDatabaseWithServerPiping()
         {
             RunPowerShellTest("Test-FailoverDatabaseWithServerPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFailoverDatabaseReadableSecondary()
+        {
+            RunPowerShellTest("Test-FailoverDatabaseReadableSecondary");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFailoverStandardDatabaseReadableSecondary()
+        {
+            RunPowerShellTest("Test-FailoverStandardDatabaseReadableSecondary");
         }
 
         [Fact]

@@ -88,14 +88,10 @@ namespace Microsoft.Azure.Commands.Attestation
 
         public override void ExecuteCmdlet()
         {
-            if (InputObject != null)
+            var resolvedResourceId = (InputObject != null) ? InputObject.Id : ResourceId;
+            if (resolvedResourceId != null)
             {
-                Name = InputObject.Name;
-                ResourceGroupName = InputObject.ResourceGroupName;
-            }
-            else if (ResourceId != null)
-            {
-                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                var resourceIdentifier = new ResourceIdentifier(resolvedResourceId);
                 Name = resourceIdentifier.ResourceName;
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
