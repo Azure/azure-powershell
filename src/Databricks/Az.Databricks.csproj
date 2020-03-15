@@ -9,7 +9,6 @@
     <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Databricks</RootNamespace>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>./bin</OutputPath>
     <PublishDir>$(OutputPath)</PublishDir>
     <NuspecFile>Az.Databricks.nuspec</NuspecFile>
     <NoPackageAnalysis>true</NoPackageAnalysis>
@@ -32,9 +31,8 @@
 -->
   <PropertyGroup>
     <PsModuleName>Databricks</PsModuleName>
-    <AssemblyName>Az.Databricks.private</AssemblyName>
-    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Databricks</RootNamespace>
     <DelaySign>true</DelaySign>
+    <OutputPath>./bin</OutputPath>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\Az.autorest.props" />

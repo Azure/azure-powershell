@@ -1,6 +1,6 @@
 # region Generated 
   # Load the private module dll
-  $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '..\bin\Az.Databricks.private.dll')
+  $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '..\Az.Databricks.private.dll')
 
   # Get the private module's instance
   $instance = [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Module]::Instance
