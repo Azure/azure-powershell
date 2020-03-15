@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
         public Severity Severity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Update Status of SupportTicket.")]
-        public TicketStatus Status { get; set; }
+        public Models.Status Status { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameWithContactObjectParameterSet, HelpMessage = "Update Contact details on SupportTicket.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateByInputObjectWithContactObjectParameterSet, HelpMessage = "Update Contact details on SupportTicket.")]

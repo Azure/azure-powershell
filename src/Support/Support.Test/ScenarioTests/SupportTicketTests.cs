@@ -130,9 +130,23 @@ namespace Microsoft.Azure.Commands.Support.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UpdateAzSupportTicketNameParameterSetUpdateSeverity()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketNameParameterSetUpdateSeverity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAzSupportTicketParentObjectParameterSetUpdateStatus()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketParentObjectParameterSetUpdateSeverity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UpdateAzSupportTicketNameParameterSetUpdateStatus()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketNameParameterSetUpdateStatus");
         }
     }
 }
