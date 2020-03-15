@@ -13,12 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Linq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Support.Test.ScenarioTests
@@ -123,6 +119,20 @@ namespace Microsoft.Azure.Commands.Support.Test.ScenarioTests
         public void UpdateAzSupportTicketNameParameterSetWithContactDetail()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketNameParameterSetWithContactDetail");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UpdateAzSupportTicketParentObjectParameterSetUpdateSeverity()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketParentObjectParameterSetUpdateSeverity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UpdateAzSupportTicketParentObjectParameterSetUpdateStatus()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketParentObjectParameterSetUpdateSeverity");
         }
     }
 }
