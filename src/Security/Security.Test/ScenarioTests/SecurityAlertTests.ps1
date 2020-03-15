@@ -89,7 +89,7 @@ function Set-AzureRmSecurityAlert-ResourceGroupLevelResource
 	$location = Extract-ResourceLocation -ResourceId $alert.Id
 	$rgName = Extract-ResourceGroup -ResourceId $alert.Id
 
-    Set-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name -ActionType "Activate"
+    Set-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name -ActionType "Reactivate"
 
 	$fetchedAlert = Get-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name
 
@@ -106,7 +106,7 @@ function Set-AzureRmSecurityAlert-SubscriptionLevelResource
 	$alert = $alerts | where { $_.Id -notlike "*resourceGroups*" } | Select -First 1
 	$location = Extract-ResourceLocation -ResourceId $alert.Id
 
-    Set-AzSecurityAlert -Location $location -Name $alert.Name -ActionType "Activate"
+    Set-AzSecurityAlert -Location $location -Name $alert.Name -ActionType "Reactivate"
 
 	$fetchedAlert = Get-AzSecurityAlert -Location $location -Name $alert.Name
 
@@ -122,7 +122,7 @@ function Set-AzureRmSecurityAlert-ResourceId
 	$alerts = Get-AzSecurityAlert
 	$alert = $alerts | Select -First 1
 
-    Set-AzSecurityAlert -ResourceId $alert.Id -ActionType "Activate"
+    Set-AzSecurityAlert -ResourceId $alert.Id -ActionType "Reactivate"
 
 	$fetchedAlert = Get-AzSecurityAlert -ResourceId $alert.Id
 
@@ -166,5 +166,5 @@ function Validate-AlertActivity
 	param($alert)
 
 	Assert-NotNull $alert
-	Assert-True { $alert.State -eq "Active" }
+	Assert-True { $alert.State -eq "Reactivate" }
 }

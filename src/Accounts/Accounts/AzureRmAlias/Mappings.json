@@ -2077,7 +2077,18 @@
     "Get-AzSecurityTask": "Get-AzureRmSecurityTask",
     "Get-AzSecurityWorkspaceSetting": "Get-AzureRmSecurityWorkspaceSetting",
     "Set-AzSecurityWorkspaceSetting": "Set-AzureRmSecurityWorkspaceSetting",
-    "Remove-AzSecurityWorkspaceSetting": "Remove-AzureRmSecurityWorkspaceSetting"
+    "Remove-AzSecurityWorkspaceSetting": "Remove-AzureRmSecurityWorkspaceSetting",
+    "Get-AzSecurityAnalytics": "Get-AzureRmIotSecurityAnalytics",
+    "Set-AzIotSecurityAnalyticsAggregatedAlerts": "Set-AzureRmIotSecurityAnalyticsAggregatedAlerts",
+    "Get-AzIotSecurityAnalyticsAggregatedAlerts": "Get-AzureRmIotSecurityAnalyticsAggregatedAlerts",
+    "Get-AzIotSecurityAnalyticsAggregatedRecommendations": "Get-AzureRmIotSecurityAnalyticsAggregatedRecommendations",
+    "Get-AzDeviceSecurityGroups": "Get-AzureRmDeviceSecurityGroups",
+    "Set-AzDeviceSecurityGroups": "Set-AzureRmDeviceSecurityGroups",
+    "Remove-AzDeviceSecurityGroups": "Remove-AzureRmDeviceSecurityGroups",
+    "Get-AzIotSecuritySolutions": "Get-AzureRmIotSecuritySolutions",
+    "Set-AzIotSecuritySolutions": "Set-AzureRmIotSecuritySolutions",
+    "Remove-AzIotSecuritySolutions": "Remove-AzureRmIotSecuritySolutions",
+    "Update-AzIotSecuritySolutions": "Update-AzureRmIotSecuritySolutions"
   },
   "Az.ServiceBus": {
     "New-AzServiceBusNamespace": "New-AzureRmServiceBusNamespace",
