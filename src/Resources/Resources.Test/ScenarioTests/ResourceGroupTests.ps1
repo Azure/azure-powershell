@@ -279,7 +279,7 @@ function Test-FindResourceGroup
     {
         # Test
         $actual = New-AzResourceGroup -Name $rgname -Location $location -Tag @{ testtag = "testval" }
-        $actual2 = New-AzResourceGroup -Name $rgname2 -Location $location -Tag @{ testtag = "testval2" }
+        $actual2 = New-AzResourceGroup -Name $rgname2 -Location $location -Tag @{ testtag2 = "testval2"; testtag = "test_val" }
 
         $expected1 = Get-AzResourceGroup -Name $rgname
         # Assert
@@ -316,7 +316,19 @@ function Test-FindResourceGroup
 
 		$expected6 = Get-AzResourceGroup -Tag @{ testtag2 = $null }
         # Assert
-        Assert-AreEqual @($expected6).Count 0
+        Assert-AreEqual @($expected6).Count 1
+
+		$expected7 = Get-AzResourceGroup -Tag @{ testtag2 = "testval" }
+        # Assert
+        Assert-AreEqual @($expected7).Count 0
+
+		$expected8 = Get-AzResourceGroup -Tag @{ testtagX = $null }
+        # Assert
+        Assert-AreEqual @($expected8).Count 0
+
+		$expected9 = Get-AzResourceGroup -Tag @{ testtagY = "testval" }
+        # Assert
+        Assert-AreEqual @($expected9).Count 0
     }
     finally
     {
@@ -357,7 +369,7 @@ function Test-ExportResourceGroup
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
                 #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-		$r = New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+		$r = New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
 		Assert-AreEqual $r.ResourceGroupName $rgname
 
 		$exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -Force
@@ -393,11 +405,11 @@ function Test-ExportResourceGroupWithFiltering
         New-AzResourceGroup -Name $rgname -Location $rglocation
 
         #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-        $r1 = New-AzResource -Name $rname1 -Location "centralus" -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $r1 = New-AzResource -Name $rname1 -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
         Assert-NotNull $r1.ResourceId
 
         #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-        $r2 = New-AzResource -Name $rname2 -Location "centralus" -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $r2 = New-AzResource -Name $rname2 -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
         Assert-NotNull $r2.ResourceId
 
         $exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -Force -Resource @($r2.ResourceId) -IncludeParameterDefaultValue -IncludeComments
