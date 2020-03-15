@@ -21,12 +21,28 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string SubscriptionId = "Subscription ID.";
         public const string ResourceGroupName = "Resource group name.";
         public const string ResourceName = "Resource name.";
+        public const string SolutionName = "Solution name"; 
         public const string ResourceId = "ID of the security resource that you want to invoke the command on.";
         public const string Scope = "Scope.";
         public const string Kind = "Kind.";
         public const string InputObject = "Input Object.";
         public const string Location = "Location.";
         public const string PassThru = "Return whether the operation was successful.";
+        public const string Tags = "Tags.";
+        public const string DisplayName = "Display name.";
+        public const string Status = "Status .";
+        public const string Export = "Export data.";
+        public const string DisabledDataSources = "Disabled data sources.";
+        public const string IotHubs = "Iot hubs.";
+        public const string UserDefinedResources = "User defined resources.";
+        public const string AutoDiscoveredResources = "Auto discovered resources.";
+        public const string RecommendationsConfiguration = "Recommendations configuration.";
+        public const string UnmaskedIpLoggingStatus = "Unmasked ip logging status.";
+        public const string HubResourceId = "IoT Hub resource Id.";
+        public const string ThresholdRules = "Threshold rules.";
+        public const string TimeWindowRules = "Time window rules.";
+        public const string AllowlistRules = "Allow list rules.";
+        public const string DenylistRules = "Deny list rules.";
 
         #endregion
 
