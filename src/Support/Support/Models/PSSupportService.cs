@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Support.Models
         /// <summary>
         /// Gets or sets resource types
         /// </summary>
-        [Ps1Xml(Target = ViewControl.Table)]
         public string[] ResourceTypes { get; set; }
     }
 }
