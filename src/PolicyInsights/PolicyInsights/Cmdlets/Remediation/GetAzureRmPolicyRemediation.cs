@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
         /// <summary>
         /// Executes the cmdlet to retrieve remediation resources
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
             var queryOptions = new QueryOptions
             {

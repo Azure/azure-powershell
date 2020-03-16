@@ -207,9 +207,6 @@
   <data name="UpdateIotHubModule" xml:space="preserve">
     <value>Update Module</value>
   </data>
-  <data name="DEVICE_DEVICESCOPE_PREFIX" xml:space="preserve">
-    <value>ms-azure-iot-edge://</value>
-  </data>
   <data name="SetParentDevice" xml:space="preserve">
     <value>Set Parent Device</value>
   </data>
@@ -218,5 +215,8 @@
   </data>
   <data name="RemoveIotHubDeviceChildren" xml:space="preserve">
     <value>Remove Device Children</value>
+  </data>
+  <data name="SetIotHubDistributedTracing" xml:space="preserve">
+    <value>Update Distributed Tracing</value>
   </data>
 </root>

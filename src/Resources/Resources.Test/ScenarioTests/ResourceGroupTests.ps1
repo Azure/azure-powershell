@@ -262,7 +262,7 @@ function Test-RemoveDeployment
 
         # After deletion, try to get the given deployment should throw an error
         Get-AzResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -ErrorAction SilentlyContinue
-        Assert-True { $Error[0] -like "*Deployment 'Test' could not be found." }
+        Assert-True { $Error[0] -like "*Deployment 'Test' could not be found.*" }
         $Error.Clear()
     }
     finally

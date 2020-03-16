@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             Mandatory = true, ValueFromPipeline = true, HelpMessage = "The deployment object.")]
         public PSDeployment DeploymentObject { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
             var options = new FilterDeploymentOptions(DeploymentScopeType.Tenant)
             {
