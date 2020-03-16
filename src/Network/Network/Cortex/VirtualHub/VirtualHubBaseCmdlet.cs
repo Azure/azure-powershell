@@ -71,13 +71,26 @@ namespace Microsoft.Azure.Commands.Network
             return psVirtualHub == null ? false : true;
         }
 
-        public PSVirtualHub CreateOrUpdateVirtualHub(string resourceGroupName, string virtualHubName, PSVirtualHub virtualHub, Hashtable tags)
+        public PSVirtualHub CreateOrUpdateVirtualHub(string resourceGroupName, string virtualHubName, PSVirtualHub virtualHub, Hashtable tags, Dictionary<string, List<string>> customHeaders = null)
         {
             var virtualHubModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualHub>(virtualHub);
             virtualHubModel.Location = virtualHub.Location;
             virtualHubModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
+            MNM.VirtualHub virtualHubCreatedOrUpdated;
 
-            var virtualHubCreatedOrUpdated = this.VirtualHubClient.CreateOrUpdate(resourceGroupName, virtualHubName, virtualHubModel);
+            if (customHeaders == null)
+            {
+                virtualHubCreatedOrUpdated = this.VirtualHubClient.CreateOrUpdate(resourceGroupName, virtualHubName, virtualHubModel);
+            }
+            else
+            {
+                // Execute the create call and pass the custom headers. 
+                using (var _result = this.VirtualHubClient.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualHubName, virtualHubModel, customHeaders).GetAwaiter().GetResult())
+                {
+                    virtualHubCreatedOrUpdated = _result.Body;
+                }
+            }
+
             PSVirtualHub hubToReturn = this.ToPsVirtualHub(virtualHubCreatedOrUpdated);
             hubToReturn.ResourceGroupName = resourceGroupName;
 
