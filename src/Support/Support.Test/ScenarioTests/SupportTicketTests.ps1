@@ -323,7 +323,7 @@ function Update-AzSupportTicketParentObjectParameterSetUpdateStatus
 	Assert-IsInstance $updateTicket $cmdletReturnType
 	Assert-PropertiesCount $updateTicket $propertiesCount
 	Assert-IsInstance $updateTicket.Name String
-	Assert-AreEqual "closed" $updateTicket.Severity.ToLower()
+	Assert-AreEqual "closed" $updateTicket.Status.ToLower()
 }
 
 <#

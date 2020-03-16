@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -110,15 +110,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Preview release of ''Az.Support'' module. Added following cmdlets for creation and management of support tickets.
-    - Get-AzSupportService
-    - Get-AzSupportProblemClassification
-    - New-AzSupportContactProfileObject
-    - New-AzSupportTicket
-    - Get-AzSupportTicket
-    - Update-AzSupportTicket
-    - New-AzSupportTicketCommunication
-    - Get-AzSupportTicketCommunication'
+        ReleaseNotes = '* Stable release of ''Az.Support'' module. A support ticket can now be closed using Update-AzSupportTicket cmdlet. A new severity HighestCriticalImpact was added that is available to certain customers. Get-AzSupportService returns one or more ARM ResourceTypes that the service is responsible for. ProductionOutage property was removed from support ticket details object.'
 
         # Prerelease string of this module
         # Prerelease = ''
