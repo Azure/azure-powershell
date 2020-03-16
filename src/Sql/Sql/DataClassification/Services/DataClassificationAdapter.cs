@@ -154,7 +154,8 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
 
         internal async Task<InformationProtectionPolicy> RetrieveInformationProtectionPolicyAsync()
         {
-            return Context.Environment.Name == EnvironmentName.AzureCloud
+            return Context.Environment.Name == EnvironmentName.AzureCloud ||
+                Context.Environment.Name == EnvironmentName.AzureUSGovernment
                 ? await AzureCommunicator.RetrieveInformationProtectionPolicyAsync(Context.Tenant.GetId())
                 : InformationProtectionPolicy.DefaultInformationProtectionPolicy;
         }
@@ -215,7 +216,8 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 LabelName = sensitivityLabelModel.SensitivityLabel,
                 LabelId = sensitivityLabelModel.SensitivityLabelId,
                 InformationType = sensitivityLabelModel.InformationType,
-                InformationTypeId = sensitivityLabelModel.InformationTypeId
+                InformationTypeId = sensitivityLabelModel.InformationTypeId,
+                Rank = ToSensitivityLabelRank(sensitivityLabelModel.Rank)
             };
         }
 
@@ -230,8 +232,65 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 SensitivityLabel = sensitivityLabel.LabelName,
                 SensitivityLabelId = sensitivityLabel.LabelId,
                 InformationType = sensitivityLabel.InformationType,
-                InformationTypeId = sensitivityLabel.InformationTypeId
+                InformationTypeId = sensitivityLabel.InformationTypeId,
+                Rank = ToSensitivityRank(sensitivityLabel.Rank)
             };
+        }
+
+        private static SensitivityRank? ToSensitivityRank(SensitivityLabelRank? rank)
+        {
+            SensitivityRank? sensitivityRank = null;
+            if (rank.HasValue)
+            {
+                switch (rank.Value)
+                {
+                    case SensitivityLabelRank.None:
+                        sensitivityRank = SensitivityRank.None;
+                        break;
+                    case SensitivityLabelRank.Low:
+                        sensitivityRank = SensitivityRank.Low;
+                        break;
+                    case SensitivityLabelRank.Medium:
+                        sensitivityRank = SensitivityRank.Medium;
+                        break;
+                    case SensitivityLabelRank.High:
+                        sensitivityRank = SensitivityRank.High;
+                        break;
+                    case SensitivityLabelRank.Critical:
+                        sensitivityRank = SensitivityRank.Critical;
+                        break;
+                }
+            }
+
+            return sensitivityRank;
+        }
+
+        private static SensitivityLabelRank? ToSensitivityLabelRank(SensitivityRank? rank)
+        {
+            SensitivityLabelRank? sensitivityLabelRank = null;
+            if (rank.HasValue)
+            {
+                switch (rank.Value)
+                {
+                    case SensitivityRank.None:
+                        sensitivityLabelRank = SensitivityLabelRank.None;
+                        break;
+                    case SensitivityRank.Low:
+                        sensitivityLabelRank = SensitivityLabelRank.Low;
+                        break;
+                    case SensitivityRank.Medium:
+                        sensitivityLabelRank = SensitivityLabelRank.Medium;
+                        break;
+                    case SensitivityRank.High:
+                        sensitivityLabelRank = SensitivityLabelRank.High;
+                        break;
+                    case SensitivityRank.Critical:
+                        sensitivityLabelRank = SensitivityLabelRank.Critical;
+                        break;
+                }
+            }
+
+            return sensitivityLabelRank;
         }
     }
 }

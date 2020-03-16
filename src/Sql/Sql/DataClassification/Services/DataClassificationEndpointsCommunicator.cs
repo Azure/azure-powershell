@@ -71,21 +71,42 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
         internal List<SensitivityLabel> GetSensitivityLabel(string resourceGroupName, string serverName, string databaseName,
             string schemaName, string tableName, string columnName)
         {
-            SensitivityLabel sensitivityLabel =
+            SensitivityLabel sensitivityLabel = GetSensitivityLabel(() =>
                 GetCurrentSqlManagementClient().SensitivityLabels.Get(
                     resourceGroupName, serverName, databaseName, schemaName, tableName, columnName,
-                    SensitivityLabelSource.Current);
+                    SensitivityLabelSource.Current));
+
             return ToList(sensitivityLabel);
         }
 
         internal List<SensitivityLabel> GetManagedDatabaseSensitivityLabel(string resourceGroupName, string managedInstanceName, string databaseName,
             string schemaName, string tableName, string columnName)
         {
-            SensitivityLabel sensitivityLabel =
+            SensitivityLabel sensitivityLabel = GetSensitivityLabel(() =>
                 GetCurrentSqlManagementClient().ManagedDatabaseSensitivityLabels.Get(
                     resourceGroupName, managedInstanceName, databaseName, schemaName, tableName, columnName,
-                    SensitivityLabelSource.Current);
+                    SensitivityLabelSource.Current));
+
             return ToList(sensitivityLabel);
+        }
+
+        private SensitivityLabel GetSensitivityLabel(Func<SensitivityLabel> getSensitivityLabelFromServer)
+        {
+            SensitivityLabel sensitivityLabel = null;
+            try
+            {
+                sensitivityLabel = getSensitivityLabelFromServer();
+            }
+            catch (CloudException e)
+            {
+                if (!(e.Body.Code == "SensitivityLabelsLabelNotFound" &&
+                    e.Body.Message == "The specified sensitivity label could not be found"))
+                {
+                    throw;
+                }
+            }
+
+            return sensitivityLabel;
         }
 
         internal List<SensitivityLabel> GetCurrentSensitivityLabels(string resourceGroupName,
