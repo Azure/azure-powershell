@@ -575,7 +575,7 @@ This indicates the urgency of the case, which in turn determines the response ti
 Type: Microsoft.Azure.Commands.Support.Models.Severity
 Parameter Sets: (All)
 Aliases:
-Accepted values: Minimal, Moderate, Critical
+Accepted values: Minimal, Moderate, Critical, HighestCriticalImpact
 
 Required: True
 Position: Named

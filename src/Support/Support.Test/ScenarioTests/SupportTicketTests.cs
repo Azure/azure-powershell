@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Support.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAzSupportTicketParentObjectParameterSetUpdateStatus()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketParentObjectParameterSetUpdateSeverity");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketParentObjectParameterSetUpdateStatus");
         }
 
         [Fact]
