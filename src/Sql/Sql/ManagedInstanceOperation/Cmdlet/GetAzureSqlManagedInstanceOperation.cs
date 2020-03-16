@@ -101,6 +101,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
             {
                 var resourceId = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceId.ResourceGroupName;
+                this.ManagedInstanceName = resourceId.ParentResource.Split('/')[1];
                 this.Name = System.Guid.Parse(resourceId.ResourceName);
             }
 
@@ -115,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
         {
             ICollection<AzureSqlManagedInstanceOperationModel> results = new List<AzureSqlManagedInstanceOperationModel>();
 
-            if (MyInvocation.BoundParameters.ContainsKey("Name") && !WildcardPattern.ContainsWildcardCharacters(Name.ToString()))
+            if (ParameterSetName == GetByManagedInstanceOperationResourceIdentifierParameterSet || (MyInvocation.BoundParameters.ContainsKey("Name") && !WildcardPattern.ContainsWildcardCharacters(Name.ToString())))
             {
                 results.Add(ModelAdapter.GetManagedInstanceOperation(this.ResourceGroupName, this.ManagedInstanceName, this.Name));
             }
