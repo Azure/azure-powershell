@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
         public string InformationType { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
-        public SensitivityRank? SensitivityRank { get; set; }
+        public SensitivityRank? Rank { get; set; }
 
         [Hidden]
         public string SensitivityLabelId { get; set; }
@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
 
         internal void ApplyModel(SensitivityLabelModel sensitivityLabel, InformationProtectionPolicy informationProtectionPolicy)
         {
-            ApplyInput(sensitivityLabel.InformationType, sensitivityLabel.SensitivityLabel, sensitivityLabel.SensitivityRank, informationProtectionPolicy);
+            ApplyInput(sensitivityLabel.InformationType, sensitivityLabel.SensitivityLabel, informationProtectionPolicy);
         }
 
-        internal void ApplyInput(string informationType, string sensitivityLabel, SensitivityRank? sensitivityRank, InformationProtectionPolicy informationProtectionPolicy)
+        internal void ApplyInput(string informationType, string sensitivityLabel, InformationProtectionPolicy informationProtectionPolicy)
         {
             if (string.IsNullOrEmpty(informationType) && string.IsNullOrEmpty(sensitivityLabel))
             {
@@ -85,7 +85,6 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
 
             ApplyInformationType(informationType, informationProtectionPolicy);
             ApplySensitivityLabel(sensitivityLabel, informationProtectionPolicy);
-            ApplySensitivityRank(sensitivityRank);
         }
 
         private void ApplyInformationType(string newInformationType, InformationProtectionPolicy informationProtectionPolicy)
@@ -100,33 +99,33 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
                 }
                 else
                 {
-                    throw new Exception($"Information Type '{newInformationType}' is not part of Information Protection Policy. Please add '{newInformationType}' to the Information Protection Policy, or use one of the following: {ToString(informationProtectionPolicy.SensitivityLabels.Keys)}");
+                    throw new Exception($"Information Type '{newInformationType}' is not part of Information Protection Policy. Please add '{newInformationType}' to the Information Protection Policy, or use one of the following: {ToString(informationProtectionPolicy.InformationTypes.Keys)}");
                 }
             }
         }
-
         private void ApplySensitivityLabel(string newSensitivityLabel, InformationProtectionPolicy informationProtectionPolicy)
         {
             if (!string.IsNullOrEmpty(newSensitivityLabel) &&
                 !string.Equals(SensitivityLabel, newSensitivityLabel))
             {
-                if (informationProtectionPolicy.SensitivityLabels.TryGetValue(newSensitivityLabel, out Guid sensitivityLabelId))
+                if (informationProtectionPolicy.SensitivityLabels.TryGetValue(newSensitivityLabel, out Tuple<Guid, SensitivityRank> idRankTuple))
                 {
                     SensitivityLabel = newSensitivityLabel;
-                    SensitivityLabelId = sensitivityLabelId.ToString();
+                    SensitivityLabelId = idRankTuple.Item1.ToString();
+                    Rank = idRankTuple.Item2;
                 }
                 else
                 {
-                    throw new Exception($"Sensitivity Label '{newSensitivityLabel}' is not part of Information Protection Policy. Please add '{newSensitivityLabel}' to the Information Protection Policy, or use one of the following: {ToString(informationProtectionPolicy.InformationTypes.Keys)}");
+                    throw new Exception($"Sensitivity Label '{newSensitivityLabel}' is not part of Information Protection Policy. Please add '{newSensitivityLabel}' to the Information Protection Policy, or use one of the following: {ToString(informationProtectionPolicy.SensitivityLabels.Keys)}");
                 }
             }
         }
 
         private void ApplySensitivityRank(SensitivityRank? newSensitivityRank)
         {
-            if (newSensitivityRank != null && newSensitivityRank != SensitivityRank)
+            if (newSensitivityRank != null && newSensitivityRank != Rank)
             {
-                SensitivityRank = newSensitivityRank;
+                Rank = newSensitivityRank;
             }
         }
 

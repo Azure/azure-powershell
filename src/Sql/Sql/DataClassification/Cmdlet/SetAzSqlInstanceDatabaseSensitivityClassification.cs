@@ -55,19 +55,6 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         [ValidateNotNullOrEmpty]
         public string InformationType { get; set; }
 
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.ColumnParameterSet,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DataClassificationCommon.SensitivityRankHelpMessage)]
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.DatabaseObjectColumnParameterSet,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DataClassificationCommon.SensitivityRankHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public SensitivityRank SensitivityRank { get; set; }
-
         protected override ManagedDatabaseSensitivityClassificationModel GetEntity()
         {
             if (ClassificationObject != null)
@@ -127,7 +114,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
                     model.SensitivityLabels.Add(sensitivityLabelModel);
                 }
 
-                sensitivityLabelModel.ApplyInput(InformationType, SensitivityLabel, SensitivityRank, informationProtectionPolicy);
+                sensitivityLabelModel.ApplyInput(InformationType, SensitivityLabel, informationProtectionPolicy);
             }
             else
             {
