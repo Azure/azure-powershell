@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
+using System.IO;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Model;
@@ -35,6 +36,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
 
         protected const string StopByResourceIdParameterSet =
             "StopByResourceIdParameterSet";
+
+        protected const string StopByInputObjectParameterSet =
+            "StopByInputObjectParameterSet";
 
 
         /// <summary>
@@ -84,6 +88,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
         public string ResourceId { get; set; }
 
         /// <summary>
+        /// Operation object to cancel
+        /// </summary>
+        [Parameter(ParameterSetName = StopByInputObjectParameterSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "The operation to cancel")]
+        [ValidateNotNullOrEmpty]
+        [Alias("SqlInstanceOperation")]
+        public AzureSqlManagedInstanceOperationModel InputObject { get; set; }
+
+        /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
@@ -126,19 +142,26 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent && !ShouldContinue(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlInstanceOperationDescription, this.Name, this.ManagedInstanceName),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlInstanceOperationWarning, this.Name, this.ManagedInstanceName)))
+            if (string.Equals(this.ParameterSetName, StopByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
-                return;
+                ResourceGroupName = InputObject.ResourceGroupName;
+                ManagedInstanceName = InputObject.ManagedInstanceName;
+                Name = System.Guid.Parse(InputObject.Name);
             }
-
-            if (string.Equals(this.ParameterSetName, StopByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            else if (string.Equals(this.ParameterSetName, StopByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
                 var resourceInfo = new ResourceIdentifier(ResourceId);
 
                 ResourceGroupName = resourceInfo.ResourceGroupName;
+                ManagedInstanceName = resourceInfo.ParentResource.Split('/')[1];
                 Name = System.Guid.Parse(resourceInfo.ResourceName);
+            }
+
+            if (!Force.IsPresent && !ShouldContinue(
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlInstanceOperationDescription, this.Name.ToString(), this.ManagedInstanceName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlInstanceOperationWarning, this.Name.ToString(), this.ManagedInstanceName)))
+            {
+                return;
             }
 
             base.ExecuteCmdlet();

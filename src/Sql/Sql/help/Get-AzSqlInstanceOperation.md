@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlinstance
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzSqlInstanceOperation
 
 ## SYNOPSIS
-Returns information about operation on Azure SQL Managed Database Instance.
+Gets a SQL managed instance's operations.
 
 ## SYNTAX
 
@@ -31,251 +31,99 @@ Get-AzSqlInstanceOperation -ManagedInstanceName <String> -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlInstanceOperation** cmdlet returns information about one or more operation on Azure SQL Managed Instances.
-Specify the name of an operation to see information for only that operation.
+The Get-AzSqlInstanceOperation cmdlet gets information about the operations on a SQL managed instance. You can view all operations on a managed instance or view a specific operation by providing the operation name.
 
 ## EXAMPLES
 
-### Example 1: Get all operations on managed instance
+### Example 1: Get all instance's operations
 ```powershell
-PS C:\> Get-AzSqlInstanceOperation -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
-Location                 : westcentralus
-Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
-ResourceGroupName        : resourcegroup01
-ManagedInstanceName      : managedInstance1
-Tags                     :
-Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
-Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
-FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
-AdministratorLogin       : adminLogin1
-AdministratorPassword    :
-SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-LicenseType              : BasePrice
-VCores                   : 8
-StorageSizeInGB          : 512
+PS C:\> Get-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698
 
-Location                 : westcentralus
-Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
-ResourceGroupName        : resourcegroup01
-ManagedInstanceName      : managedInstance2
-Tags                     :
-Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
-Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
-FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
-AdministratorLogin       : adminLogin2
-AdministratorPassword    :
-SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-LicenseType              : BasePrice
-VCores                   : 8
-StorageSizeInGB          : 512
-DnsZone                  : ad35cna0mw
+Id                      : /subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps3753/providers/Microsoft.Sql/managedInstances/ps3698/operations/5870c6d8-6703-4b27-8ae4-687b4ca7caea
+ResourceGroupName       : ps3753
+ManagedInstanceName     : ps3698
+Name                    : 5870c6d8-6703-4b27-8ae4-687b4ca7caea
+Operation               : UpsertManagedServer
+OperationFriendlyName   : UPDATE MANAGED SERVER
+PercentComplete         : 100
+StartTime               : 3/16/2020 8:11:13 AM
+State                   : Succeeded
+ErrorCode               :
+ErrorDescription        :
+ErrorSeverity           :
+IsUserError             :
+EstimatedCompletionTime :
+Description             :
+IsCancellable           : False
+
+Id                      : /subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps3753/providers/Microsoft.Sql/managedInstances/ps3698/operations/79f2c91b-0080-4c14-b9b4-d9991c6e82dd
+ResourceGroupName       : ps3753
+ManagedInstanceName     : ps3698
+Name                    : 79f2c91b-0080-4c14-b9b4-d9991c6e82dd
+Operation               : UpsertManagedServer
+OperationFriendlyName   : UPDATE MANAGED SERVER
+PercentComplete         : 100
+StartTime               : 3/16/2020 8:19:53 AM
+State                   : Cancelled
+ErrorCode               :
+ErrorDescription        :
+ErrorSeverity           :
+IsUserError             :
+EstimatedCompletionTime :
+Description             :
+IsCancellable           : False
 ```
 
-This command gets information about all instances assigned to the resource group ResourceGroup01.
+This command gets all operations a SQL managed instance.
 
-### Example 2: Get information about an  instance
+### Example 2: Get a specific operation
 ```powershell
-PS C:\> Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
-Location                 : westcentralus
-Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
-ResourceGroupName        : resourcegroup01
-ManagedInstanceName      : managedInstance1
-Tags                     :
-Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
-Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
-FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
-AdministratorLogin       : adminLogin1
-AdministratorPassword    :
-SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-LicenseType              : BasePrice
-VCores                   : 8
-StorageSizeInGB          : 512
-DnsZone                  : ad35cna0mw
+PS C:\> Get-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698 -Name 5870c6d8-6703-4b27-8ae4-687b4ca7caea
+
+Id                      : /subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps3753/providers/Microsoft.Sql/managedInstances/ps3698/operations/5870c6d8-6703-4b27-8ae4-687b4ca7caea
+ResourceGroupName       : ps3753
+ManagedInstanceName     : ps3698
+Name                    : 5870c6d8-6703-4b27-8ae4-687b4ca7caea
+Operation               : UpsertManagedServer
+OperationFriendlyName   : UPDATE MANAGED SERVER
+PercentComplete         : 100
+StartTime               : 3/16/2020 8:11:13 AM
+State                   : Succeeded
+ErrorCode               :
+ErrorDescription        :
+ErrorSeverity           :
+IsUserError             :
+EstimatedCompletionTime :
+Description             :
+IsCancellable           : False
 ```
 
-This command gets information about the instance named managedInstance1.
+This command gets operation with name '5870c6d8-6703-4b27-8ae4-687b4ca7caea' on a SQL managed instance.
 
-### Example 3: Get all instances assigned to a resource group using filtering
+### Example 3: Using operation resource id
 ```powershell
-PS C:\> Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "managedInstance*"
-Location                 : westcentralus
-Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
-ResourceGroupName        : resourcegroup01
-ManagedInstanceName      : managedInstance1
-Tags                     :
-Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
-Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
-FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
-AdministratorLogin       : adminLogin1
-AdministratorPassword    :
-SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-LicenseType              : BasePrice
-VCores                   : 8
-StorageSizeInGB          : 512
-DnsZone                  : ad35cna0mw
+PS C:\> $managedInstanceOperation = Get-AzSqlInstanceOperation -ResourceGroupName ps3753 -ManagedInstanceName ps3698 -Name 5870c6d8-6703-4b27-8ae4-687b4ca7caea
+PS C:\> Get-AzSqlInstanceOperation -ResourceId $managedInstanceOperation.Id
 
-Location                 : westcentralus
-Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
-ResourceGroupName        : resourcegroup01
-ManagedInstanceName      : managedInstance2
-Tags                     :
-Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
-Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
-FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
-AdministratorLogin       : adminLogin2
-AdministratorPassword    :
-SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-LicenseType              : BasePrice
-VCores                   : 8
-StorageSizeInGB          : 512
-DnsZone                  : ad35cna0mw
+Id                      : /subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps3753/providers/Microsoft.Sql/managedInstances/ps3698/operations/5870c6d8-6703-4b27-8ae4-687b4ca7caea
+ResourceGroupName       : ps3753
+ManagedInstanceName     : ps3698
+Name                    : 5870c6d8-6703-4b27-8ae4-687b4ca7caea
+Operation               : UpsertManagedServer
+OperationFriendlyName   : UPDATE MANAGED SERVER
+PercentComplete         : 100
+StartTime               : 3/16/2020 8:11:13 AM
+State                   : Succeeded
+ErrorCode               :
+ErrorDescription        :
+ErrorSeverity           :
+IsUserError             :
+EstimatedCompletionTime :
+Description             :
+IsCancellable           : False
 ```
 
-This command gets information about all instances assigned to the resource group ResourceGroup01 that start with "managedInstance".
-
-### Example 4: Get all instances within an instance pool
-```powershell
-PS C:\> Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -InstancePoolName "instancePool0"
-Location                 : westcentralus
-Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
-ResourceGroupName        : resourcegroup01
-ManagedInstanceName      : managedInstance1
-Tags                     :
-Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
-Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
-FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
-AdministratorLogin       : adminLogin1
-AdministratorPassword    :
-SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-LicenseType              : BasePrice
-VCores                   : 8
-StorageSizeInGB          : 512
-DnsZone                  : ad35cna0mw
-InstancePoolName         : instancePool0
-
-Location                 : westcentralus
-Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
-ResourceGroupName        : resourcegroup01
-ManagedInstanceName      : managedInstance2
-Tags                     :
-Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
-Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
-FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
-AdministratorLogin       : adminLogin2
-AdministratorPassword    :
-SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-LicenseType              : BasePrice
-VCores                   : 8
-StorageSizeInGB          : 512
-DnsZone                  : ad35cna0mw
-InstancePoolName         : instancePool0
-```
-
-This command gets information about all instances within the instance pool "instancePool0".
-
-### Example 5: Get all instances within an instance pool using instance pool object
-```powershell
-PS C:\> $instancePool = Get-AzSqlInstancePool -ResourceGroupName "ResourceGroup01" -Name "instancePool0"
-PS C:\> Get-AzSqlInstance -InstancePool $instancePool
-Location                 : westcentralus
-Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
-ResourceGroupName        : resourcegroup01
-ManagedInstanceName      : managedInstance1
-Tags                     :
-Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
-Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
-FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
-AdministratorLogin       : adminLogin1
-AdministratorPassword    :
-SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-LicenseType              : BasePrice
-VCores                   : 8
-StorageSizeInGB          : 512
-DnsZone                  : ad35cna0mw
-InstancePoolName         : instancePool0
-
-Location                 : westcentralus
-Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
-ResourceGroupName        : resourcegroup01
-ManagedInstanceName      : managedInstance2
-Tags                     :
-Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
-Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
-FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
-AdministratorLogin       : adminLogin2
-AdministratorPassword    :
-SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-LicenseType              : BasePrice
-VCores                   : 8
-StorageSizeInGB          : 512
-DnsZone                  : ad35cna0mw
-InstancePoolName         : instancePool0
-```
-
-This command gets information about all instances within the instance pool "instancePool0".
-
-### Example 6: Get all instances within an instance pool using instance pool resource identifier
-```powershell
-PS C:\> Get-AzSqlInstance -InstancePoolResourceIdentifier "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0"
-Location                 : westcentralus
-Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
-ResourceGroupName        : resourcegroup01
-ManagedInstanceName      : managedInstance1
-Tags                     :
-Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
-Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
-FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
-AdministratorLogin       : adminLogin1
-AdministratorPassword    :
-SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-LicenseType              : BasePrice
-VCores                   : 8
-StorageSizeInGB          : 512
-DnsZone                  : ad35cna0mw
-InstancePoolName         : instancePool0
-
-Location                 : westcentralus
-Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
-ResourceGroupName        : resourcegroup01
-ManagedInstanceName      : managedInstance2
-Tags                     :
-Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
-Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
-FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
-AdministratorLogin       : adminLogin2
-AdministratorPassword    :
-SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-LicenseType              : BasePrice
-VCores                   : 8
-StorageSizeInGB          : 512
-DnsZone                  : ad35cna0mw
-InstancePoolName         : instancePool0
-```
-
-This command gets information about all instances within the instance pool "instancePool0".
-
-### Example 7: Get a managed instance using its resource identifier
-```powershell
-PS C:\> Get-AzSqlInstance -ResourceIdentifier "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1"
-Location                 : westcentralus
-Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
-ResourceGroupName        : resourcegroup01
-ManagedInstanceName      : managedInstance1
-Tags                     :
-Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
-Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
-FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
-AdministratorLogin       : adminLogin1
-AdministratorPassword    :
-SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-LicenseType              : BasePrice
-VCores                   : 8
-StorageSizeInGB          : 512
-DnsZone                  : ad35cna0mw
-InstancePoolName         :
-```
-
-This command gets information about the instance named managedInstance1.
+This command gets operation with id '/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps3753/providers/Microsoft.Sql/managedInstances/ps3698/operations/5870c6d8-6703-4b27-8ae4-687b4ca7caea'.
 
 ## PARAMETERS
 
@@ -283,7 +131,7 @@ This command gets information about the instance named managedInstance1.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -298,7 +146,7 @@ Accept wildcard characters: False
 The name of the instance.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: DefaultParameterSet, ListByManagedInstanceParameterSet
 Aliases: InstanceName
 
@@ -310,10 +158,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-SQL instance name.
+The name of the operation.
 
 ```yaml
-Type: System.Guid
+Type: Guid
 Parameter Sets: DefaultParameterSet
 Aliases: OperationName
 
@@ -328,7 +176,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: DefaultParameterSet, ListByManagedInstanceParameterSet
 Aliases:
 
@@ -340,10 +188,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The managed instance resource identifier.
+The managed instance operation resource identifier.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByManagedInstanceOperationResourceIdentifierParameterSet
 Aliases:
 
@@ -359,11 +207,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+### Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Model.AzureSqlManagedInstanceOperationModel
 
 ## NOTES
 
