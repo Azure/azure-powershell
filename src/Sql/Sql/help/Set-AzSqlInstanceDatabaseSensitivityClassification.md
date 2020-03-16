@@ -23,17 +23,16 @@ Set-AzSqlInstanceDatabaseSensitivityClassification
 ### ColumnParameterSet
 ```
 Set-AzSqlInstanceDatabaseSensitivityClassification [-SensitivityLabel <String>] [-InformationType <String>]
- [-SensitivityRank <SensitivityRank>] [-ResourceGroupName] <String> [-InstanceName] <String>
- [-DatabaseName] <String> -SchemaName <String> -TableName <String> -ColumnName <String> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-InstanceName] <String> [-DatabaseName] <String> -SchemaName <String>
+ -TableName <String> -ColumnName <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DatabaseObjectColumnParameterSet
 ```
 Set-AzSqlInstanceDatabaseSensitivityClassification [-SensitivityLabel <String>] [-InformationType <String>]
- [-SensitivityRank <SensitivityRank>] -DatabaseObject <AzureSqlManagedDatabaseModel> -SchemaName <String>
- -TableName <String> -ColumnName <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -DatabaseObject <AzureSqlManagedDatabaseModel> -SchemaName <String> -TableName <String> -ColumnName <String>
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -230,22 +229,6 @@ A name that describes the sensitivity of the data stored in the column.
 Type: System.String
 Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SensitivityRank
-An identifier based on a predefinied set of values which define sensitivity rank. Used by other services like Advanced Threat Protection to detect anomalies based on their rank.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.SensitivityRank
-Parameter Sets: ColumnParameterSet, DatabaseObjectColumnParameterSet
-Aliases:
-Accepted values: None, Low, Medium, High, Critical
 
 Required: False
 Position: Named
