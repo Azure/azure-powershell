@@ -238,12 +238,14 @@ function Test-DataClassificationOnSqlDatabase
 		$firstColumnName = $firstRecommendation.ColumnName
 		$firstInformationType = $firstRecommendation.InformationType
 		$firstSensitivityLabel = $firstRecommendation.SensitivityLabel
+		$firstRank = $firstRecommendation.Rank
 
 		Assert-AreEqual "dbo" $firstSchemaName
 		Assert-AreEqual "Persons" $firstTableName
 		Assert-NotNullOrEmpty $firstColumnName
 		Assert-NotNullOrEmpty $firstInformationType
 		Assert-NotNullOrEmpty $firstSensitivityLabel
+		Assert-NotNullOrEmpty $firstRank
 
 		$secondRecommendation = ($recommendations.SensitivityLabels)[1]
 		$secondSchemaName = $secondRecommendation.SchemaName
@@ -251,12 +253,14 @@ function Test-DataClassificationOnSqlDatabase
 		$secondColumnName = $secondRecommendation.ColumnName
 		$secondInformationType = $secondRecommendation.InformationType
 		$secondSensitivityLabel = $secondRecommendation.SensitivityLabel
+		$secondRank = $secondRecommendation.Rank
 
 		Assert-AreEqual "dbo" $secondSchemaName
 		Assert-AreEqual "Persons" $secondTableName
 		Assert-NotNullOrEmpty $secondColumnName
 		Assert-NotNullOrEmpty $secondInformationType
 		Assert-NotNullOrEmpty $secondSensitivityLabel
+		Assert-NotNullOrEmpty $secondRank
 
 		# Set first two sensitivity labels as recommended and verify.
 		# Second label is set using pipeline.
@@ -278,6 +282,7 @@ function Test-DataClassificationOnSqlDatabase
 		Assert-AreEqual $firstColumnName $classification.ColumnName
 		Assert-AreEqual $firstInformationType $classification.InformationType
 		Assert-AreEqual $firstSensitivityLabel $classification.SensitivityLabel
+		Assert-AreEqual $firstRank $classification.Rank
 
 		$secondClassification = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityClassification -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
 		Assert-AreEqual 1 ($secondClassification.SensitivityLabels).count
@@ -287,6 +292,7 @@ function Test-DataClassificationOnSqlDatabase
 		Assert-AreEqual $secondColumnName $classification.ColumnName
 		Assert-AreEqual $secondInformationType $classification.InformationType
 		Assert-AreEqual $secondSensitivityLabel $classification.SensitivityLabel
+		Assert-AreEqual $secondRank $classification.Rank
 
 		# Get, using pipeline, recommended sensitivity labels, and verify.
 		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation
@@ -464,6 +470,9 @@ function Create-ManagedDataClassificationTestEnvironment ($testSuffix, $location
  			-Location $location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName
 
+	# Enable Advanced Data Security
+	Enable-AzSqlManagedInstanceAdvancedDataSecurity -ResourceGroupName $params.rgname -InstanceName $params.serverName -DoNotConfigureVulnerabilityAssessment
+	
 	New-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName -Collation $collation
 }
 
@@ -503,6 +512,8 @@ function Create-SqlDataClassificationTestEnvironment ($testSuffix, $location = "
     New-AzSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -ServerVersion $serverVersion -Location $location -SqlAdministratorCredentials $credentials
 	New-AzSqlServerFirewallRule -ResourceGroupName  $params.rgname -ServerName $params.serverName -StartIpAddress 0.0.0.0 -EndIpAddress 255.255.255.255 -FirewallRuleName "dcRule"
 
+	# Enable Advanced Data Security
+	Enable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName -DoNotConfigureVulnerabilityAssessment
 
 	New-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
@@ -577,7 +588,7 @@ function Test-EnableDisableRecommendationsOnSqlDatabase
 		Assert-NotNullOrEmpty $secondInformationType
 		Assert-NotNullOrEmpty $secondSensitivityLabel
 
-		# Disable first two recommdationsd, second recommdation is disabled using pipeline.
+		# Disable first two recommdations, second recommdation is disabled using pipeline.
 		Disable-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -SchemaName $firstSchemaName -TableName $firstTableName -ColumnName $firstColumnName
 		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Disable-AzSqlDatabaseSensitivityRecommendation -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
 
