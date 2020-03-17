@@ -59,13 +59,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetDeploymentScriptLog-Cli");
         }
 
-        [Fact(Skip = "Saving a file operation fails. To-Do Ask test infra team. ")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDeploymentScriptSaveDeploymentScriptLogFile()
-        {
-            TestRunner.RunTestScript("Test-SaveDeploymentScriptLogFile");
-        }
-
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeploymentScriptPipeDeploymentScriptObjectToGetLogs()

@@ -5,43 +5,42 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-AzDeploymentScript
+# Save-AzDeploymentScriptLog
 
 ## SYNOPSIS
-Removes a deployment script and its associated resources.
-
+Saves the log of a deployment script execution to disk.
 
 ## SYNTAX
 
-### RemoveDeploymentScriptLogByName (Default)
+### SaveDeploymentScriptLogByName (Default)
 ```
-Remove-AzDeploymentScript [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
+Save-AzDeploymentScriptLog [-ResourceGroupName] <String> [-Name] <String> [-OutputPath] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveDeploymentScriptLogByResourceId
+### SaveDeploymentScriptLogByResourceId
 ```
-Remove-AzDeploymentScript [-Id] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Save-AzDeploymentScriptLog [-DeploymentScriptResourceId] <String> [-OutputPath] <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveDeploymentScriptLogByInputObject
+### SaveDeploymentScriptLogByInputObject
 ```
-Remove-AzDeploymentScript [-InputObject] <PsDeploymentScript> [-PassThru]
+Save-AzDeploymentScriptLog [-DeploymentScriptInputObject] <PsDeploymentScript> [-OutputPath] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzDeploymentScript** cmdlet removes a deployment script and its associated resources.
+The **Save-AzDeploymentScriptLog** saves the log of a deployment script execution to disk.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDeploymentScript -Name MyDeploymentScript -ResourceGroupName DS-TestRg
+PS C:\> Save-AzDeploymentScriptLog -Name MyDeploymentScript -ResourceGroupName DS-TestRg -OutputPath C:\Workspace
 ```
 
-Deletes a deployment script with the name MyDeploymentScript in resource group DS-TestRG.
+Saves the log of a deployment script with the given name and resource group.
 
 ## PARAMETERS
 
@@ -75,14 +74,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
+### -DeploymentScriptInputObject
+The deployment script PowerShell object.
+
+```yaml
+Type: PsDeploymentScript
+Parameter Sets: SaveDeploymentScriptLogByInputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeploymentScriptResourceId
 The fully qualified resource Id of the deployment script.
 Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deploymentScripts/{deploymentScriptName}
 
 ```yaml
 Type: String
-Parameter Sets: RemoveDeploymentScriptLogByResourceId
-Aliases: ResourceId
+Parameter Sets: SaveDeploymentScriptLogByResourceId
+Aliases:
 
 Required: True
 Position: 0
@@ -91,38 +105,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The deployment script PowerShell object.
-
-```yaml
-Type: PsDeploymentScript
-Parameter Sets: RemoveDeploymentScriptLogByInputObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the resource group.
-
-```yaml
-Type: String
-Parameter Sets: RemoveDeploymentScriptLogByName
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PassThru
-{{Fill PassThru Description}}
+### -Force
+Forces the overwrite of the existing file.
 
 ```yaml
 Type: SwitchParameter
@@ -136,12 +120,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the deployment script.
+
+```yaml
+Type: String
+Parameter Sets: SaveDeploymentScriptLogByName
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -OutputPath
+The directory path to save deployment script log.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: RemoveDeploymentScriptLogByName
+Parameter Sets: SaveDeploymentScriptLogByName
 Aliases:
 
 Required: True
@@ -175,11 +189,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.String
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScript
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScript
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PsDeploymentScriptLogPath
 
 ## NOTES
 

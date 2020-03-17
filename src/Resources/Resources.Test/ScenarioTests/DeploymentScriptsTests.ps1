@@ -315,48 +315,6 @@ function Test-GetDeploymentScriptLog-Cli
 
 <#
 .SYNOPSIS
-Tests deployment scripts Get logs operation with save log file to disk option.
-#>
-function Test-SaveDeploymentScriptLogFile
-{
-	# Setup
-	$rgname = Get-ResourceGroupName
-	$rname = Get-ResourceName
-	$rglocation = "West US 2"
-	$subId = (Get-AzContext).Subscription.SubscriptionId
-
-	try 
-	{
-		#Prepare
-		New-AzResourceGroup -Name $rgname -Location $rglocation
-
-		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile TemplateScriptDeployment.json -TemplateParameterFile TemplateScriptDeploymentParameters.json
-		$deploymentScriptName = "PsTest-DeploymentScripts-" + $deployment.parameters.scriptSuffix.Value		
-		$resourceId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deploymentScripts/$deploymentScriptName"
-
-		$deploymentScript = Get-AzDeploymentScript -ResourceGroupName $rgname -Name $deploymentScriptName 
-
-		Assert-NotNull $deploymentScript
-		Assert-NotNull $deploymentScriptName $deploymentScript.Log
-		Assert-AreEqual $deploymentScriptName $deploymentScript.Name
-		
-		# Test  
-		$logPathObject = Save-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -OutputPath $TestOutputRoot
-
-		#Assert
-		Assert-NotNull $logPathObject
-		Assert-True { $logPathObject.Path.Contains($rname + ".json") }
-			
-	}
-	finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
 Tests deployment scripts Get logs operation with piped deployment script object.
 #>
 function Test-PipeDeploymentScriptObjectToGetLogs
@@ -420,7 +378,7 @@ function Test-TrySaveNonExistingFilePathForLogFile
 		$path = (Get-Item ".\").FullName
         $fullPath = Join-Path $path $badPath
         $exceptionMessage = "Cannot find path '$fullPath'"
-        Assert-Throws { Get-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -OutputPath $badPath } $exceptionMessage	
+        Assert-Throws { Save-AzDeploymentScriptLog -DeploymentScriptInputObject $deploymentScript -OutputPath $badPath } $exceptionMessage	
 	}
 	finally
     {
