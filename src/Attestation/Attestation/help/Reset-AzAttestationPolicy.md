@@ -132,7 +132,7 @@ Accept wildcard characters: False
 
 ### -Tee
 Specifies a type of Trusted Execution Environment.
-We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VSMEnclave.
+We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VBSEnclave.
 
 ```yaml
 Type: System.String
