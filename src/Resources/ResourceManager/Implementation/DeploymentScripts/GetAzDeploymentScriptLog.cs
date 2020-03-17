@@ -39,8 +39,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = GetDeploymentScriptLogByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The fully qualified resource Id of the deployment script. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deploymentScripts/{deploymentScriptName}")]
+        [Parameter(Position = 0, ParameterSetName = GetDeploymentScriptLogByResourceId, Mandatory = true, HelpMessage = "The fully qualified resource Id of the deployment script. Example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deploymentScripts/{deploymentScriptName}")]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Resources/deploymentScripts")]
         public string DeploymentScriptResourceId { get; set; }
@@ -77,6 +76,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     default:
                         throw new PSInvalidOperationException();
                 }
+
+                WriteObject(deploymentScriptLog);
             }
             catch (Exception ex)
             {

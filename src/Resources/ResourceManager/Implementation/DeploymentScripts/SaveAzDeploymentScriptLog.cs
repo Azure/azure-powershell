@@ -58,12 +58,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public PsDeploymentScript DeploymentScriptInputObject { get; set; }
 
-        [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByName, Mandatory = true,
-            ValueFromPipelineByPropertyName = true, HelpMessage = "The directory path to save deployment script log.")]
-        [Parameter(Position = 1, ParameterSetName = SaveDeploymentScriptLogByResourceId, Mandatory = true,
-            ValueFromPipelineByPropertyName = true, HelpMessage = "The directory path to save deployment script log.")]
-        [Parameter(Position = 1, ParameterSetName = SaveDeploymentScriptLogByInputObject, Mandatory = true,
-            ValueFromPipelineByPropertyName = true, HelpMessage = "The directory path to save deployment script log.")]
+        [Parameter(Position = 2, ParameterSetName = SaveDeploymentScriptLogByName, Mandatory = true, HelpMessage = "The directory path to save deployment script log.")]
+        [Parameter(Position = 1, ParameterSetName = SaveDeploymentScriptLogByResourceId, Mandatory = true, HelpMessage = "The directory path to save deployment script log.")]
+        [Parameter(Position = 1, ParameterSetName = SaveDeploymentScriptLogByInputObject, Mandatory = true, HelpMessage = "The directory path to save deployment script log.")]
         [ValidateNotNullOrEmpty]
         public string OutputPath { get; set; }
 
@@ -77,7 +74,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-           // base.OnProcessRecord();
 
             PsDeploymentScriptLog deploymentScriptLog;
 

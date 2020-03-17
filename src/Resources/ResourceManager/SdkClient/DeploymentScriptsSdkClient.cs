@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return psDeploymentScriptObject;
         }
 
-        public PsDeploymentScriptLog GetDeploymentScriptLog(string scriptName, string resourceGroupName)
+        public virtual PsDeploymentScriptLog GetDeploymentScriptLog(string scriptName, string resourceGroupName)
         {
             var deploymentScriptLog =
                 DeploymentScriptsClient.DeploymentScripts.GetLogsDefault(resourceGroupName, scriptName);
