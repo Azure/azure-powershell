@@ -229,12 +229,17 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 SchemaName = idComponents[12],
                 TableName = idComponents[14],
                 ColumnName = idComponents[16],
-                SensitivityLabel = sensitivityLabel.LabelName,
-                SensitivityLabelId = sensitivityLabel.LabelId,
-                InformationType = sensitivityLabel.InformationType,
-                InformationTypeId = sensitivityLabel.InformationTypeId,
+                SensitivityLabel = NullifyStringIfEmpty(sensitivityLabel.LabelName),
+                SensitivityLabelId = NullifyStringIfEmpty(sensitivityLabel.LabelId),
+                InformationType = NullifyStringIfEmpty(sensitivityLabel.InformationType),
+                InformationTypeId = NullifyStringIfEmpty(sensitivityLabel.InformationTypeId),
                 Rank = ToSensitivityRank(sensitivityLabel.Rank)
             };
+        }
+
+        private static string NullifyStringIfEmpty(string s)
+        {
+            return string.IsNullOrEmpty(s) ? null : s;
         }
 
         private static SensitivityRank? ToSensitivityRank(SensitivityLabelRank? rank)
