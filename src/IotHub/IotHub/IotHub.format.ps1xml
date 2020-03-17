@@ -898,5 +898,35 @@
         </TableRowEntries>
       </TableControl>
     </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSDeviceTracing
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSDeviceTracing</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>DeviceId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Sampling Mode</Label>
+                <ScriptBlock>$_.TracingOption.SamplingMode</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Sampling Rate</Label>
+                <ScriptBlock>if($_.TracingOption.SamplingMode.value__ -eq 1) { "$($_.TracingOption.SamplingRate)%" } else { "" }</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsSynced</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

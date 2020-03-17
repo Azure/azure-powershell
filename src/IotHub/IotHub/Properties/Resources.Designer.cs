@@ -95,6 +95,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Device Children.
+        /// </summary>
+        internal static string AddIotHubDeviceChildren {
+            get {
+                return ResourceManager.GetString("AddIotHubDeviceChildren", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add an IoT Hub Key.
         /// </summary>
         internal static string AddIotHubKey {
@@ -136,15 +145,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string AddIotHubRoutingEndpoint {
             get {
                 return ResourceManager.GetString("AddIotHubRoutingEndpoint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ms-azure-iot-edge://.
-        /// </summary>
-        internal static string DEVICE_DEVICESCOPE_PREFIX {
-            get {
-                return ResourceManager.GetString("DEVICE_DEVICESCOPE_PREFIX", resourceCulture);
             }
         }
         
@@ -239,6 +239,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Device Children.
+        /// </summary>
+        internal static string RemoveIotHubDeviceChildren {
+            get {
+                return ResourceManager.GetString("RemoveIotHubDeviceChildren", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove IoT Hub Key.
         /// </summary>
         internal static string RemoveIotHubKey {
@@ -280,6 +289,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string RemoveIotHubRoutingEndpoint {
             get {
                 return ResourceManager.GetString("RemoveIotHubRoutingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Distributed Tracing.
+        /// </summary>
+        internal static string SetIotHubDistributedTracing {
+            get {
+                return ResourceManager.GetString("SetIotHubDistributedTracing", resourceCulture);
             }
         }
         

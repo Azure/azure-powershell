@@ -11,9 +11,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
-using Hyak.Common;
 using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure SQL Server Active Directory administrator
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerActiveDirectoryAdministrator",ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerActiveDirectoryAdministratorModel))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerActiveDirectoryAdministrator", ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerActiveDirectoryAdministratorModel))]
     public class SetAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
     {
         /// <summary>
@@ -48,18 +47,32 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         public Guid ObjectId { get; set; }
 
         /// <summary>
+        /// Only Azure Active Directory authentication allowed
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 4,
+            HelpMessage = "Specifies if only Azure Active Directory authentication is allowed.")]
+        [Alias("IsAzureOnlyAuthentication")]
+        public bool? IsAzureADOnlyAuthentication { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlServerActiveDirectoryAdministratorModel> GetEntity()
         {
             List<AzureSqlServerActiveDirectoryAdministratorModel> currentActiveDirectoryAdmins = null;
+
             try
             {
-                currentActiveDirectoryAdmins = new List<AzureSqlServerActiveDirectoryAdministratorModel>()
+                AzureSqlServerActiveDirectoryAdministratorModel model = ModelAdapter.GetServerActiveDirectoryAdministrator(this.ResourceGroupName, this.ServerName);
+
+                if (model != null)
                 {
-                    ModelAdapter.GetServerActiveDirectoryAdministrator(this.ResourceGroupName, this.ServerName),
-                };
+                    currentActiveDirectoryAdmins = new List<AzureSqlServerActiveDirectoryAdministratorModel>();
+                    currentActiveDirectoryAdmins.Add(model);
+                }
             }
             catch (CloudException ex)
             {
@@ -67,6 +80,14 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
                 {
                     // Unexpected exception encountered
                     throw;
+                }
+            }
+            catch (Exception ex)
+            {
+                if ((ex.InnerException is CloudException ex1) &&
+                     ex1.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                {
+                    throw ex.InnerException ?? ex;
                 }
             }
 
@@ -80,13 +101,14 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         /// <returns>A list of models that was passed in</returns>
         protected override IEnumerable<AzureSqlServerActiveDirectoryAdministratorModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerActiveDirectoryAdministratorModel> model)
         {
-            List<Model.AzureSqlServerActiveDirectoryAdministratorModel> newEntity = new List<AzureSqlServerActiveDirectoryAdministratorModel>();
+            List<Model.AzureSqlServerActiveDirectoryAdministratorModel> newEntity  = new List<AzureSqlServerActiveDirectoryAdministratorModel>();
             newEntity.Add(new AzureSqlServerActiveDirectoryAdministratorModel()
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
                 DisplayName = DisplayName,
                 ObjectId = ObjectId,
+                IsAzureADOnlyAuthentication = IsAzureADOnlyAuthentication,
             });
             return newEntity;
         }

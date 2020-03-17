@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.Maintenance
     [OutputType(typeof(PSMaintenanceConfiguration))]
     public partial class GetAzureRmMaintenanceConfiguration : MaintenanceAutomationBaseCmdlet
     {
+        private readonly string[] uriSplit = new string[] { "/" };
+                
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -35,7 +37,6 @@ namespace Microsoft.Azure.Commands.Maintenance
             {
                 string resourceGroupName = this.ResourceGroupName;
                 string name = this.Name;
-
                 if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(name))
                 {
                     var result = MaintenanceConfigurationsClient.Get(resourceGroupName, name);
@@ -49,6 +50,20 @@ namespace Microsoft.Azure.Commands.Maintenance
 
                     foreach (var maintenanceConfiguration in result)
                     {
+                        string[] mcInfo = maintenanceConfiguration.Id.Split(uriSplit, StringSplitOptions.RemoveEmptyEntries);
+                        if (null != mcInfo && mcInfo.Length == 8)
+                        {
+                            if(!string.IsNullOrEmpty(resourceGroupName) && !mcInfo[3].Equals(resourceGroupName))
+                            {
+                                continue;
+                            }
+
+                            if(!string.IsNullOrEmpty(name) && !maintenanceConfiguration.Name.Equals(name))
+                            {
+                                continue;
+                            }
+                        }
+
                         PSMaintenanceConfiguration psMaintenanceConfiguration = new PSMaintenanceConfiguration();
                         MaintenanceAutomationAutoMapperProfile.Mapper.Map<MaintenanceConfiguration, PSMaintenanceConfiguration>(maintenanceConfiguration, psMaintenanceConfiguration);
                         psObject.Add(psMaintenanceConfiguration);

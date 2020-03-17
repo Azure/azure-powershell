@@ -232,9 +232,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="databaseName">The name of the Azure Sql Database to failover</param>
-        public void FailoverDatabase(string resourceGroupName, string serverName, string databaseName)
+        /// <param name="replicaType">Whether to failover primary replica or readable secondary replica</param>
+        public void FailoverDatabase(string resourceGroupName, string serverName, string databaseName, string replicaType)
         {
-            Communicator.Failover(resourceGroupName, serverName, databaseName);
+            Communicator.Failover(resourceGroupName, serverName, databaseName, replicaType);
         }
 
         internal IEnumerable<AzureSqlDatabaseActivityModel> ListDatabaseActivity(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, Guid? operationId)

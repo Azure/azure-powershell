@@ -106,7 +106,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                 AdministratorLogin = model.SqlAdministratorLogin,
                 AdministratorLoginPassword = model.SqlAdministratorPassword != null ? Decrypt(model.SqlAdministratorPassword) : null,
                 Version = model.ServerVersion,
-                Identity = model.Identity
+                Identity = model.Identity,
+                MinimalTlsVersion = model.MinimalTlsVersion,
+                PublicNetworkAccess = model.PublicNetworkAccess
             });
 
             return CreateServerModelFromResponse(resp);
@@ -146,6 +148,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             server.Identity = resp.Identity;
             server.FullyQualifiedDomainName = resp.FullyQualifiedDomainName;
             server.ResourceId = resp.Id;
+            server.MinimalTlsVersion = resp.MinimalTlsVersion;
+            server.PublicNetworkAccess = resp.PublicNetworkAccess;
 
             return server;
         }
