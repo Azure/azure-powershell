@@ -31,10 +31,11 @@ The Set-AzAttestationPolicy cmdlet sets the policy from a tenant in Azure Attest
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzAttestationPolicy -Name "example" -Tee "SgxEnclave" -Policy "policyexample"
+PS C:\> $policy = Get-Content -Path .\custom.sgx.policy.txt
+PS C:\> Set-AzAttestationPolicy -Name pshtest -ResourceGroupName psh-test-rg -Tee SgxEnclave -Policy $policy
 ```
 
-Sets the user defined policy "policyexample" for tennat "example" in Tee "SgxEnclave".
+Sets the user defined policy for TEE type *SgxEnclave* for Attestation Provider *pshtest*.
 
 ## PARAMETERS
 
