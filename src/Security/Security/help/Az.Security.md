@@ -12,10 +12,13 @@ Azure Security Center gives you control over the security of your Azure subscrip
 
 ## Az.Security Cmdlets
 ### [Disable-AzSecurityAdvancedThreatProtection](Disable-AzSecurityAdvancedThreatProtection.md)
-Disables the advanced threat protection policy for a storage account.
+Disables the advanced threat protection policy for a storage / cosmosDB account.
 
 ### [Enable-AzSecurityAdvancedThreatProtection](Enable-AzSecurityAdvancedThreatProtection.md)
-Enables the advanced threat protection policy for a storage account.
+Enables the advanced threat protection policy for a storage / cosmosDB account.
+
+### [Get-AzDeviceSecurityGroups](Get-AzDeviceSecurityGroups.md)
+{{ Fill in the Synopsis }}
 
 ### [Get-AzDiscoveredSecuritySolution](Get-AzDiscoveredSecuritySolution.md)
 Gets security solutions that were discovered by Azure Security Center
@@ -23,11 +26,23 @@ Gets security solutions that were discovered by Azure Security Center
 ### [Get-AzExternalSecuritySolution](Get-AzExternalSecuritySolution.md)
 Get external security solution 
 
+### [Get-AzIotSecurityAnalytics](Get-AzIotSecurityAnalytics.md)
+{{ Fill in the Synopsis }}
+
+### [Get-AzIotSecurityAnalyticsAggregatedAlerts](Get-AzIotSecurityAnalyticsAggregatedAlerts.md)
+{{ Fill in the Synopsis }}
+
+### [Get-AzIotSecurityAnalyticsAggregatedRecommendations](Get-AzIotSecurityAnalyticsAggregatedRecommendations.md)
+{{ Fill in the Synopsis }}
+
+### [Get-AzIotSecuritySolutions](Get-AzIotSecuritySolutions.md)
+{{ Fill in the Synopsis }}
+
 ### [Get-AzJitNetworkAccessPolicy](Get-AzJitNetworkAccessPolicy.md)
 Gets the JIT network access policies
 
 ### [Get-AzSecurityAdvancedThreatProtection](Get-AzSecurityAdvancedThreatProtection.md)
-Gets the advanced threat protection policy for a storage account.
+Gets the advanced threat protection policy for a storage / cosmosDB account.
 
 ### [Get-AzSecurityAlert](Get-AzSecurityAlert.md)
 Gets security alerts that were detected by Azure Security Center
@@ -53,6 +68,12 @@ Gets the security tasks that Azure Security Center recommends you to do in order
 ### [Get-AzSecurityWorkspaceSetting](Get-AzSecurityWorkspaceSetting.md)
 Gets the configured security workspace settings on a subscription.
 
+### [Remove-AzDeviceSecurityGroups](Remove-AzDeviceSecurityGroups.md)
+{{ Fill in the Synopsis }}
+
+### [Remove-AzIotSecuritySolutions](Remove-AzIotSecuritySolutions.md)
+{{ Fill in the Synopsis }}
+
 ### [Remove-AzJitNetworkAccessPolicy](Remove-AzJitNetworkAccessPolicy.md)
 Deletes a JIT network access policy.
 
@@ -61,6 +82,15 @@ Deletes a security contact.
 
 ### [Remove-AzSecurityWorkspaceSetting](Remove-AzSecurityWorkspaceSetting.md)
 Deletes the security workspace setting for this subscription.
+
+### [Set-AzDeviceSecurityGroups](Set-AzDeviceSecurityGroups.md)
+{{ Fill in the Synopsis }}
+
+### [Set-AzIotSecurityAnalyticsAggregatedAlerts](Set-AzIotSecurityAnalyticsAggregatedAlerts.md)
+{{ Fill in the Synopsis }}
+
+### [Set-AzIotSecuritySolutions](Set-AzIotSecuritySolutions.md)
+{{ Fill in the Synopsis }}
 
 ### [Set-AzJitNetworkAccessPolicy](Set-AzJitNetworkAccessPolicy.md)
 Updates JIT network access policy.
@@ -82,4 +112,7 @@ Updates the workspace settings for the subscription.
 
 ### [Start-AzJitNetworkAccessPolicy](Start-AzJitNetworkAccessPolicy.md)
 Invokes a temporary network access request.
+
+### [Update-AzIotSecuritySolutions](Update-AzIotSecuritySolutions.md)
+{{ Fill in the Synopsis }}
 
