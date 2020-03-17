@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+## Version 0.1.2
+* Updated the Azure.Management.CosmosDB Sdk Version to 1.0.2 
+    -Fix bugs related to https://github.com/Azure/azure-sdk-for-net/issues/10639
+
 ## Version 0.1.1
 * Added cmdlets for Gremlin, MongoDB, Cassandra and Table APIs.
 * Updated .NET SDK Version to 1.0.1
