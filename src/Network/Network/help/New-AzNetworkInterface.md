@@ -70,15 +70,17 @@ created automatically using the name IPConfiguration1.
 
 ### Example 2: Create an Azure network interface using an IP configuration object
 ```
-PS C:\>$IPconfig = New-AzNetworkInterfaceIpConfig -Name "IPConfig1" -PrivateIpAddressVersion IPv4 -PrivateIpAddress "10.0.1.10" -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Network/virtualNetworks/VirtualNetwork1/subnets/Subnet1"
+PS C:\>$Subnet = Get-AzVirtualNetwork -name "VirtualNetwork1" -ResourceGroupName "ResourceGroup1" 
+PS C:\>$IPconfig = New-AzNetworkInterfaceIpConfig -Name "IPConfig1" -PrivateIpAddressVersion IPv4 -PrivateIpAddress "10.0.1.10" -SubnetId $Subnet.subnets[0].id
 PS C:\> New-AzNetworkInterface -Name "NetworkInterface1" -ResourceGroupName "ResourceGroup1" -Location "centralus" -IpConfiguration $IPconfig
 ```
 
 This example creates a new network interface using an IP configuration object. The IP configuration
 object specifies a static private IPv4 address.
-The first command creates a network interface IP configuration named IPConfig1 and stores the
+The first command retrieves an existing specified virtual network used to assign the subnet in the second command.
+The second command creates a network interface IP configuration named IPConfig1 and stores the
 configuration in the variable named $IPconfig.
-The second command creates a network interface named NetworkInterface1 that uses the network
+The third command creates a network interface named NetworkInterface1 that uses the network
 interface IP configuration stored in the variable named $IPconfig.
 
 ## PARAMETERS
