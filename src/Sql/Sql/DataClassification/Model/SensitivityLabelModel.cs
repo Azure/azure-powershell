@@ -49,8 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
 
         public override string ToString()
         {
-            StringBuilder builder = new StringBuilder();
-            builder.AppendLine("{");
+            List<string> valuesPerPropertyName = new List<string>();
             foreach (var property in this.GetType().GetProperties())
             {
                 string name = property.Name;
@@ -62,10 +61,13 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
                 object value = property.GetValue(this);
                 if (value != null)
                 {
-                    builder.AppendLine($"\t{name}: {value},");
+                    valuesPerPropertyName.Add($"\t{name}: {value}");
                 }
             }
 
+            StringBuilder builder = new StringBuilder();
+            builder.AppendLine("{");
+            builder.AppendLine(string.Join($",{Environment.NewLine}", valuesPerPropertyName));
             builder.Append("}");
 
             return builder.ToString();
