@@ -75,6 +75,20 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             HelpMessage = "Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Takes a flag, enabled/disabled, to specify whether public network access to server is allowed or not. When disabled, only connections made through Private Links can reach this server.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance minimal tls version
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Minimal Tls Version for the Sql Azure Managed Instance. Options are: 1.0, 1.1 and 1.2 ")]
+        [ValidateSet("1.0", "1.1", "1.2")]
+        [PSArgumentCompleter("1.0", "1.1", "1.2")]
+        public string MinimalTlsVersion { get; set; }
+
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
@@ -135,6 +149,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 SqlAdministratorLogin = this.SqlAdministratorCredentials.UserName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
+                MinimalTlsVersion = this.MinimalTlsVersion,
+                PublicNetworkAccess = this.PublicNetworkAccess,
             });
             return newEntity;
         }

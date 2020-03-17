@@ -42,6 +42,45 @@ To get a list of supported actions, use the Azure Resource Explorer tool.
 
 ## EXAMPLES
 
+### Example 1: Invoke starting a VM with ResourceId
+
+```powershell
+PS C:\>Invoke-AzResourceAction -ResourceId /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Compute/virtualMachines/testVM -Action start
+
+Confirm
+Are you sure you want to invoke the 'start' action on the following resource: /subscriptions/{subId}/resourceGroups/testGroup/providers/Microsoft.Compute/virtualMachines/testVM
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+```
+
+This command starts the Virtual Machine with {ResourceId}.
+
+### Example 2: Invoke poweroffing a VM with ResourceName
+
+```powershell
+PS C:\>Invoke-AzResourceAction -ResourceGroupName testGroup -ResourceName testVM -ResourceType Microsoft.Compute/virtualMachines/ -Action Poweroff -Force
+```
+
+This command stops the Virtual Machine with {ResourceId}.
+The command specifies the *Force* parameter, therefore, it does not prompt you for confirmation.
+
+### Example 3: Invoke registering a resource provider with ResourceId
+
+```powershell
+PS C:\>Invoke-AzResourceAction -ResourceId /subscriptions/{subId}/providers/Microsoft.Network -action register -Force
+
+id                : /subscriptions/{subId}/providers/Microsoft.Network
+namespace         : Microsoft.Network
+authorizations    : {…}
+resourceTypes     : {@{resourceType=virtualNetworks; locations=System.Object[]; apiVersions=System.Object[]},
+                    @{resourceType=publicIPAddresses; locations=System.Object[]; apiVersions=System.Object[]},
+                    @{resourceType=networkInterfaces; locations=System.Object[]; apiVersions=System.Object[]},
+                    @{resourceType=privateEndpoints; locations=System.Object[]; apiVersions=System.Object[]}…}
+registrationState : Registered
+```
+
+This command registers a resource provider "Microsoft.Network".
+The command specifies the *Force* parameter, therefore, it does not prompt you for confirmation.
+
 ## PARAMETERS
 
 ### -Action

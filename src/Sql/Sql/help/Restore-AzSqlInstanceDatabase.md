@@ -94,8 +94,15 @@ Restore-AzSqlInstanceDatabase [-FromGeoBackup] [-ResourceGroupName] <String> [-I
  [<CommonParameters>]
 ```
 
+### LongTermRetentionBackupRestoreParameter
+```
+Restore-AzSqlInstanceDatabase [-FromLongTermRetentionBackup] [-SubscriptionId <String>] [-ResourceId] <String>
+ -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Restore-AzSqlInstanceDatabase** cmdlet restores an instance database from a geo-redundant backup or a point in time in a live database.
+The **Restore-AzSqlInstanceDatabase** cmdlet restores an instance database from a geo-redundant backup, a point in time in a live database, or a long term retention backup.
 The restored database is created as a new instance database.
 
 ## EXAMPLES
@@ -123,23 +130,53 @@ PS C:\> $GeoBackup | Restore-AzSqlInstanceDatabase -FromGeoBackup -TargetInstanc
 The first command gets the geo-redundant backup for the database named Database01, and then stores it in the $GeoBackup variable.
 The second command restores the backup in $GeoBackup to the instance database named Database01_restored.
 
-### Example 4: Restore an deleted instance database from a point in time
+### Example 4: Restore a deleted instance database from a point in time
 ```
 PS C:\> $deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ResourceGroup01" -InstanceName "managedInstance1" -DatabaseName "DB1"
 PS C:\> Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name -InstanceName $deletedDatabase.ManagedInstanceName -ResourceGroupName $deletedDatabase.ResourceGroupName -DeletionDate $deletedDatabase.DeletionDate -PointInTime UTCDateTime -TargetInstanceDatabaseName "Database01_restored"
 ```
 
-The first command gets the deleted instance databases named 'DB1' on Instance 'managedInstance1'
+The first command gets the deleted instance databases named 'DB1' on Instance 'managedInstance1'.
 The second command restores the the fetched database, from the specified point-in-time backup to the instance database named Database01_restored.
 
-### Example 4: Restore an deleted instance database from a point in time
+### Example 5: Restore a deleted instance database from a point in time
 ```
 PS C:\> $deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ResourceGroup01" -InstanceName "managedInstance1" -DatabaseName "DB1"
 PS C:\> Restore-AzSqlinstanceDatabase -InputObject $deletedDatabase[0] -PointInTime UTCDateTime -TargetInstanceDatabaseName "Database01_restored"
 ```
 
-The first command gets the deleted instance databases named 'DB1' on Instance 'managedInstance1'
+The first command gets the deleted instance databases named 'DB1' on Instance 'managedInstance1'.
 The second command restores the the fetched database, from the specified point-in-time backup to the instance database named Database01_restored using input object.
+
+### Example 6: Restore a database from LTR backup. 
+```
+PS C:\> Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId /subscriptions/f46521f3-5bb0-4eea-a3c2-c2d5987df96b/resourceGroups/testResourceGroup/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionManagedInstances/testInstance/longTermRetentionDatabases/test/longTermRetentionManagedInstanceBackups/15be823c-7e2c-49d8-819f-a3fdcad92215;132268250550000000 -TargetInstanceDatabaseName restoreTarget -TargetInstanceName testInstance -TargetResourceGroupName testResourceGroup
+
+
+Location                          : southeastasia
+Tags                              :
+Collation                         : SQL_Latin1_General_CP1_CI_AS
+Status                            : Online
+RestorePointInTime                :
+DefaultSecondaryLocation          : northeurope
+CatalogCollation                  :
+CreateMode                        :
+StorageContainerUri               :
+StorageContainerSasToken          :
+SourceDatabaseId                  :
+FailoverGroupId                   :
+RecoverableDatabaseId             :
+RestorableDroppedDatabaseId       :
+LongTermRetentionBackupResourceId :
+ResourceGroupName                 : testResourceGroup
+ManagedInstanceName               : testInstance
+Name                              : restoreTarget
+CreationDate                      : 3/4/2020 8:12:56 AM
+EarliestRestorePoint              : 3/4/2020 8:14:29 AM
+Id                                : /subscriptions/f46521f3-5bb0-4eea-a3c2-c2d5987df96b/resourceGroups/testResourceGroup/providers/Microsoft.Sql/managedInstances/testInstance/databases/restoreTarget
+```
+
+Restores LTR backup with the given resource ID (which can be found by running Get-AzSqlInstanceDatabaseLongTermRetentionBackup).
 
 ## PARAMETERS
 
@@ -194,6 +231,21 @@ Restore from a geo backup.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameter, GeoRestoreFromGeoBackupSetNameFromResourceIdParameter, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FromLongTermRetentionBackup
+Restore from a Long Term Retention backup.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: LongTermRetentionBackupRestoreParameter
 Aliases:
 
 Required: True
@@ -313,7 +365,7 @@ The resource id of Instance Database object to restore
 
 ```yaml
 Type: System.String
-Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromAzureResourceId, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId
+Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromAzureResourceId, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId, LongTermRetentionBackupRestoreParameter
 Aliases:
 
 Required: True
@@ -340,7 +392,7 @@ Source subscription id.
 
 ```yaml
 Type: System.String
-Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters
+Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesSameInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters, LongTermRetentionBackupRestoreParameter
 Aliases: SourceSubscriptionId
 
 Required: False
@@ -371,7 +423,7 @@ If not specified, the target instance is the same as the source instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId, PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters, GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameter, GeoRestoreFromGeoBackupSetNameFromResourceIdParameter, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter
+Parameter Sets: PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId, PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters, GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameter, GeoRestoreFromGeoBackupSetNameFromResourceIdParameter, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter, LongTermRetentionBackupRestoreParameter
 Aliases:
 
 Required: True
@@ -387,7 +439,7 @@ If not specified, the target resource group is the same as the source resource g
 
 ```yaml
 Type: System.String
-Parameter Sets: PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId, PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters, GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameter, GeoRestoreFromGeoBackupSetNameFromResourceIdParameter, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter
+Parameter Sets: PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition, PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId, PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters, GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameter, GeoRestoreFromGeoBackupSetNameFromResourceIdParameter, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter, LongTermRetentionBackupRestoreParameter
 Aliases:
 
 Required: True

@@ -563,6 +563,42 @@ function Test-GetResourceExpandProperties
 
 <#
 .SYNOPSIS
+Tests getting a resource by id, name, type, and its properties ensuring default resource api version is *not* used.
+#>
+function Test-GetResourceByNameAndType
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $location = "West US"
+    $resourceType = "Microsoft.Resources/deployments"
+    $apiVersionWithType = "2019-10-01"
+    $templateFile = "sampleTemplate.json"
+    $templateParameterFile = "sampleTemplateParams.json"
+    
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $location
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile
+    
+        Assert-AreEqual Succeeded $deployment.ProvisioningState
+    
+        $specifiedVersion = get-azresource -ResourceGroupName $rgname -Name $rname -ResourceType $resourceType -ExpandProperties -apiversion $apiVersionWithType
+        Assert-NotNull $specifiedVersion.type
+
+        $unspecifiedVersion = get-azresource -ResourceGroupName $rgname -Name $rname -ResourceType $resourceType -ExpandProperties
+        Assert-NotNull $unspecifiedVersion.type
+        Assert-AreEqual $specifiedVersion.Type $unspecifiedVersion.Type
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests getting a resource by id and its properties
 #>
 function Test-GetResourceByIdAndProperties
