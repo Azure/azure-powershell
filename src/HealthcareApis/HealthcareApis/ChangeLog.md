@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.2
+* Removed population of access policies
+
 ## Version 1.0.1
 * Update references in .psd1 to use relative path
 * Exception Handling
