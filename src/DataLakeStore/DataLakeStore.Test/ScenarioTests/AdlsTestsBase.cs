@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         private readonly EnvironmentSetupHelper _helper;
 
         internal const string ResourceGroupLocation = "westus";
+        internal const string TestFileSystemResourceGroupLocation = "eastus2";
 
         public NewResourceManagementClient NewResourceManagementClient { get; private set; }
 
