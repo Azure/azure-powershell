@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Site Recovery support for doing reprotect and update vm properties for azure disk encrypted Virtual Machines.
 
 ## Version 2.7.0
 * Added Support for Restore-as-files for SQL Databases.

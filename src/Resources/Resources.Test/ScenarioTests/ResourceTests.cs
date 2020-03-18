@@ -140,6 +140,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceByNameAndType()
+        {
+            TestRunner.RunTestScript("Test-GetResourceByNameAndType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceByIdAndProperties()
         {
             TestRunner.RunTestScript("Test-GetResourceByIdAndProperties");

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAvailablePrivateEndpointType
 
 ## SYNOPSIS
-Return available private end point types in the location
+Return available private end point types in the location.
 
 ## SYNTAX
 
@@ -30,17 +30,17 @@ Get-AzAvailablePrivateEndpointType -Location eastus
   {
     "id": "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/availablePrivateEndpointTypes/typename1",
     "type": "Microsoft.Network/availablePrivateEndpointType",
-    "resourceName": "Microsot.Sql/servers"
+    "resourceName": "Microsoft.Sql/servers"
   },
   {
     "id": "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/availablePrivateEndpointTypes/typename2",
     "type": "Microsoft.Network/availablePrivateEndpointType",
-    "resourceName": "Microsot.Storage/accounts"
+    "resourceName": "Microsoft.Storage/accounts"
   },
   {
     "id": "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/availablePrivateEndpointTypes/typename3",
     "type": "Microsoft.Network/availablePrivateEndpointType",
-    "resourceName": "Microsot.Cosmos/cosmosDbAccounts"
+    "resourceName": "Microsoft.Cosmos/cosmosDbAccounts"
   }
 ]
 ```

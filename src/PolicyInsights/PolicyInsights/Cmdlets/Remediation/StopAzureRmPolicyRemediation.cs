@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
         /// <summary>
         /// Executes the cmdlet to cancel a remediation resource
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
             if (!string.IsNullOrEmpty(this.Name) && new[] { this.Scope, this.ManagementGroupName, this.ResourceGroupName }.Count(s => s != null) > 1)
             {
