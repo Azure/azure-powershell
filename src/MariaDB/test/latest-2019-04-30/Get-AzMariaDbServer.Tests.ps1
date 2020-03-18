@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Get-AzMariaDbServer' {
     It 'List1' {
         $mariaDb = Get-AzMariaDbServer
-        $mariaDb.Count | Should -BeGreaterOrEqual 1
+        $mariaDb.Count | Should -BeGreaterOrEqual 2
     }
 
     It 'Get' {

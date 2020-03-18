@@ -2,9 +2,9 @@ $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
-$utilsPath = Join-Path $PSScriptRoot '..\utils.ps1'
+$helperPath = Join-Path $PSScriptRoot '..\helper.ps1'
+. ($helperPath)
 . ($loadEnvPath)
-. ($utilsPath)
 
 $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzMariaDBServer.Recording.json'
 $currentPath = $PSScriptRoot
@@ -20,10 +20,7 @@ Describe 'New-AzMariaDBServer' {
     It 'CreateExpanded' {
         # ConvertTo-SecureString "P@ssW0rD!" -AsPlainText -Force
         $administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-        $mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -Location eastus
+        $mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -Location $env.Location
         $mariadb.Name | Should -Be $rstr01
-    }
-    It 'CreateViaIdentityExpanded' -Skip {
-
     }
 }

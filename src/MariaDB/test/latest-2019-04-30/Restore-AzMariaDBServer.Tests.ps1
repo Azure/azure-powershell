@@ -2,9 +2,9 @@ $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
-$utilsPath = Join-Path $PSScriptRoot '..\utils.ps1'
+$helperPath = Join-Path $PSScriptRoot '..\helper.ps1'
 . ($loadEnvPath)
-. ($utilsPath)
+. ($helperPath)
 
 $TestRecordingFile = Join-Path $PSScriptRoot 'Restore-AzMariaDBServer.Recording.json'
 $currentPath = $PSScriptRoot
@@ -16,22 +16,22 @@ while(-not $mockingPath) {
 
 $rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
 $administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-$mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -Location eastus
+$mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -Location $env.Location
 Describe 'Restore-AzMariaDBServer' {
     It 'RestoreExpanded' {
         $restoreMariaDbName = 'restore01-' + $mariadb.Name
         $restorePointInTime = (Get-Date).AddHours(-8)
-        $restoreMode = 'PointInTimeRestore'
-        $restoreMariadb = Restore-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup -SourceServerId $mariadb.Id
-        -RestoreMode $restoreMode -RestorePointInTime $restorePointInTime
+        #$restoreMode = 'PointInTimeRestore'
+        Restore-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup -SourceServerId $mariadb.Id -RestorePointInTime $restorePointInTime
+        $restoreMariadb = Get-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup
         $restoreMariadb.Name | Should -Be $restoreMariaDbName
     }
-    It 'RestoreExpanded' {
+    It 'RestoreViaIdentity' {
         $restoreMariaDbName = 'restore02-' + $mariadb.Name
         $restorePointInTime = (Get-Date).AddHours(-8)
-        $restoreMode = 'PointInTimeRestore'
-        $restoreMariadb = Restore-AzMariaDBServer -Name $restoreMariaDbName -InputObject $mariadb
-        -RestoreMode $restoreMode -RestorePointInTime $restorePointInTime
+        #$restoreMode = 'PointInTimeRestore'
+        Restore-AzMariaDBServer -Name $restoreMariaDbName -InputObject $mariadb -RestorePointInTime $restorePointInTime
+        $restoreMariadb = Get-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup
         $restoreMariadb.Name | Should -Be $restoreMariaDbName
     }
 }

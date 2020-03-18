@@ -2,7 +2,9 @@ $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
+$helperPath = Join-Path $PSScriptRoot '..\helper.ps1'
 . ($loadEnvPath)
+. ($helperPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzMariaDbVNetRule.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
@@ -11,20 +13,19 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzMariaDbVNetRule' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+$rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
+$administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
+$skuName = 'GP_Gen5_4'
+$mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -SkuName $skuName  -Location $env.Location
+$vnetResourceGroup = 'lucas-vnet'
+$vnetName = 'vnet-01'
+$vnetobj = Get-AzVirtualNetwork -ResourceGroupName $vnetResourceGroup -Name $vnetName
+Describe 'Add-AzMariaDbVNetRule' {
+    It 'CreateExpanded' {
+        $vnetRuleName = 'vnetrule-01'
+        $serverName = $rstr01
+        New-AzMariaDbVNetRule -ServerName $serverName -ResourceGroupName $env.ResourceGroup -Name $vnetRuleName -SubnetId $vnetobj.Subnets[0].id -IgnoreMissingVnetServiceEndpoint
+        $mariaDbVnet = Get-AzMariaDbVNetRule -Name $vnetRuleName -ResourceGroupName $env.ResourceGroup -ServerName $serverName
+        $mariaDbVnet.Name | Should -Be $vnetRuleName
     }
 }

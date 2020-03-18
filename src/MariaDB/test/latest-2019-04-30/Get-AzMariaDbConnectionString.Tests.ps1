@@ -2,7 +2,10 @@ $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
+$helperPath = Join-Path $PSScriptRoot '..\helper.ps1'
 . ($loadEnvPath)
+. ($helperPath)
+
 $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzMariaDbConnectionString.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
@@ -11,15 +14,19 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+$rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
+$administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
+$mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -Location $env.Location
+
 Describe 'Get-AzMariaDbConnectionString' {
-    It 'ServerName' -Skip {
+    It 'ServerName' {
         $client = 'ADO.NET'
-        $conStr = Get-AzMariaDbConnectionString -Client $client -Name $env.rstr01 -ResourceGroupName $env.ResourceGroupGet
+        $conStr = Get-AzMariaDbConnectionString -Client $client -Name $rstr01 -ResourceGroupName $env.ResourceGroup
         $conStr | Should -Not -BeNullOrEmpty
     }
-    It 'ServerObject' -Skip {
+    It 'ServerObject' {
         $client = 'JDBC'
-        $mariadb = Get-AzMariaDbServer -Name $env.rstr01 -ResourceGroupName $env.ResourceGroupGet
+        $mariadb = Get-AzMariaDbServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup
         $conStr = Get-AzMariaDbConnectionString -Client $client -InputObject $mariadb
         $conStr | Should -Not -BeNullOrEmpty
     }   

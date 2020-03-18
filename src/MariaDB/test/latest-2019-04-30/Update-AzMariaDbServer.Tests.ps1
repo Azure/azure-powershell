@@ -4,7 +4,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 }
 $utilsPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 . ($loadEnvPath)
-. ($utilsPath)
+
 $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzMariaDbServer.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
@@ -22,7 +22,13 @@ Describe 'Update-AzMariaDbServer' {
     It 'UpdateExpanded' {
         $mariadb = Get-AzMariaDbServer -Name $env.rstr01 -ResourceGroupName $env.ResourceGroupGet
         $newStorageProfileStorageMb = $mariadb.StorageProfileStorageMb + 10240
-        $mariadb = Update-AzMariaDbServer -Name $mariadb.Name -ResourceGroupName $env.ResourceGroup  -StorageProfileStorageMb $newStorageProfileStorageMb 
+        $mariadb = Update-AzMariaDbServer -Name $mariadb.Name -ResourceGroupName $env.ResourceGroupGet  -StorageProfileStorageMb $newStorageProfileStorageMb 
+        $mariadb.StorageProfileStorageMb | Should -Be $newStorageProfileStorageMb
+    }
+    It 'UpdateViaIdentity' {
+        $mariadb = Get-AzMariaDbServer -Name $env.rstr01 -ResourceGroupName $env.ResourceGroupGet
+        $newStorageProfileStorageMb = $mariadb.StorageProfileStorageMb - 10240
+        $mariadb = Update-AzMariaDbServer -InputObject $mariadb -StorageProfileStorageMb $newStorageProfileStorageMb 
         $mariadb.StorageProfileStorageMb | Should -Be $newStorageProfileStorageMb
     }
 }

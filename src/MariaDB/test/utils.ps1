@@ -13,17 +13,17 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     #Generate some strings for use in the test.
     $location = 'eastus'
-    $adminLogin = 'administrator'
+    $adminLogin = 'adminuser'
     $adminLoginPassword = 'Password01!!'
     $rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
     $rstr02 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-    $rstr03 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
+    #$rstr03 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
     $null = $env.Add('Location', $location)
     $null = $env.Add('AdminLogin', $adminLogin)
     $null = $env.Add('AdminLoginPassword',$adminLoginPassword)
     $null = $env.add('rstr01', $rstr01)
     $null = $env.add('rstr02', $rstr02)
-    $null = $env.add('rstr03', $rstr03)
+    #$null = $env.add('rstr03', $rstr03)
 
     # Create test resource group.
     $resourceGroupGet = 'lucas-test-getcmd'
@@ -31,20 +31,20 @@ function setupEnv() {
     
     $null = $env.Add('ResourceGroupGet', $resourceGroupGet)
     $null = $env.Add('ResourceGroup', $resourceGroup)
-    Write-Host -ForegroundColor Green "Start to creating test resource group..."
+    Write-Host -ForegroundColor Green "Start to creating resource group for test..."
     New-AzResourceGroup -Name $resourceGroup -Location $location
     New-AzResourceGroup -Name $resourceGroupGet -Location $location
-    Write-Host -ForegroundColor Green "Created successfully."
+    Write-Host -ForegroundColor Green "Resource group created successfully."
     # For any resources you created for test, you should add it to $env here.
 
     # create mariadb for test  
     # ConvertTo-SecureString "P@ssW0rD!" -AsPlainText -Force
-    Write-Host -ForegroundColor Green "Start to creating test mariadb."
-    $adminLoginPasswordSecure =  ConvertTo-SecureString adminLoginPassword -AsPlainText -Force 
+    Write-Host -ForegroundColor Green "Start to creating mariadb for test..."
+    $adminLoginPasswordSecure =  ConvertTo-SecureString $adminLoginPassword -AsPlainText -Force 
     $mariadbTest01 = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroupGet -AdministratorLogin $adminLogin -AdministratorLoginPassword $adminLoginPasswordSecure -Location eastus
     $mariadbTest02 = New-AzMariaDBServer -Name $rstr02 -ResourceGroupName $env.ResourceGroupGet -AdministratorLogin $adminLogin -AdministratorLoginPassword $adminLoginPasswordSecure -Location eastus
-    $mariadbTest03 = New-AzMariaDBServer -Name $rstr03 -ResourceGroupName $env.ResourceGroupGet -AdministratorLogin $adminLogin -AdministratorLoginPassword $adminLoginPasswordSecure -Location eastus -SkuName GP_Gen5_4
-    Write-Host -ForegroundColor Green "Created successfully."
+    #$mariadbTest03 = New-AzMariaDBServer -Name $rstr03 -ResourceGroupName $env.ResourceGroupGet -AdministratorLogin $adminLogin -AdministratorLoginPassword $adminLoginPasswordSecure -Location eastus -SkuName GP_Gen5_4
+    Write-Host -ForegroundColor Green "MariaDB created successfully."
     
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -54,8 +54,8 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    # Remove-AzResourceGroup -Name $env.ResourceGroup
-    # Remove-AzResourceGroup -Name $env.ResourceGroup
+    Remove-AzResourceGroup -Name $env.ResourceGroupGet
+    Remove-AzResourceGroup -Name $env.ResourceGroup
 }
 
 

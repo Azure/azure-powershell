@@ -2,9 +2,9 @@ $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
-$utilsPath = Join-Path $PSScriptRoot '..\utils.ps1'
+$helperPath = Join-Path $PSScriptRoot '..\helper.ps1'
 . ($loadEnvPath)
-. ($utilsPath)
+. ($helperPath)
 
 $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzMariaDbServer.Recording.json'
 $currentPath = $PSScriptRoot
@@ -25,11 +25,13 @@ $mariadbTest02 = New-AzMariaDBServer -Name $rstr02 -ResourceGroupName $env.Resou
 Describe 'Remove-AzMariaDbServer' {
     It 'Delete' {
         Remove-AzMariaDbServer -Name $mariadbTest01.Name -ResourceGroupName $env.ResourceGroup
-        (Get-AzMariaDbServer -Name name -ResourceGroupName $env.ResourceGroup) | Should -Throw
+        $mariadbs = Get-AzMariaDbServer -ResourceGroupName $env.ResourceGroup
+        $mariadbs.Name | Should -Not -Contain $mariadbTest01.Name
     }
 
     It 'DeleteViaIdentity' {
         Remove-AzMariaDbServer -InputObject $mariadbTest02
-        (Get-AzMariaDbServer -Name $mariadbTest02.Name -ResourceGroupName $env.ResourceGroup) | Should -Throw
+        $mariadbs = Get-AzMariaDbServer -ResourceGroupName $env.ResourceGroup
+        $mariadbs.Name | Should -Not -Contain $mariadbTest02.Name
     }
 }
