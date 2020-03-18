@@ -19,12 +19,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProperty", DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(PsApiManagementProperty))]
-    public class GetAzureApiManagementProperty : AzureApiManagementCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementNamedValue", DefaultParameterSetName = GetAll)]
+    [OutputType(typeof(PsApiManagementNamedValue))]
+    public class GetAzureApiManagementNamedValue : AzureApiManagementCmdletBase
     {
-        private const string GetAll = "GetAllProperties";
-        private const string GetById = "GetByPropertyId";
+        private const string GetAll = "GetAllNamedValues";
+        private const string GetById = "GetByNamedValueId";
         private const string FindByName = "GetByName";
         private const string FindByTag = "GetByTag";
 
@@ -40,43 +40,43 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ParameterSetName = GetById,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Identifier of a property. If specified will try to find property by the identifier. This parameter is optional.")]
-        public String PropertyId { get; set; }
+            HelpMessage = "Identifier of the named value. If specified will try to find named value by the identifier. This parameter is optional.")]
+        public String NamedValueId { get; set; }
 
         [Parameter(
             ParameterSetName = FindByName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Finds Properties with names containing the string Name. This parameter is optional.")]
+            HelpMessage = "Finds named values with names containing the string Name. This parameter is optional.")]
         public String Name { get; set; }
 
         [Parameter(
             ParameterSetName = FindByTag,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Finds Properties associated with a Tag. If specified will return all properties associated with a tag. This parameter is optional.")]
+            HelpMessage = "Finds named values associated with a Tag. If specified will return all properties associated with a tag. This parameter is optional.")]
         public String Tag { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
         {
             if (ParameterSetName.Equals(GetAll))
             {
-                var properties = Client.PropertiesList(Context);
+                var properties = Client.NamedValuesList(Context);
                 WriteObject(properties, true);
             }
             else if (ParameterSetName.Equals(GetById))
             {
-                var property = Client.PropertyById(Context, PropertyId);
+                var property = Client.NamedValueById(Context, NamedValueId);
                 WriteObject(property);
             }
             else if (ParameterSetName.Equals(FindByName))
             {
-                var properties = Client.PropertyByName(Context, Name);
+                var properties = Client.NamedValueByName(Context, Name);
                 WriteObject(properties, true);
             }
             else if (ParameterSetName.Equals(FindByTag))
             {
-                var properties = Client.PropertyByTag(Context, Tag);
+                var properties = Client.NamedValueByTag(Context, Tag);
                 WriteObject(properties, true);
             }
             else

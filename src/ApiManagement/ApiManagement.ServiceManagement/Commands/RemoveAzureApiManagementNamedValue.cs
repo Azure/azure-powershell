@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProperty", SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementNamedValue", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemoveAzureApiManagementProperty : AzureApiManagementCmdletBase
+    public class RemoveAzureApiManagementNamedValue : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Identifier of existing property. This parameter is required.")]
+            HelpMessage = "Identifier of existing named value. This parameter is required.")]
         [ValidateNotNullOrEmpty]
-        public String PropertyId { get; set; }
+        public String NamedValueId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.PropertyRemoveDescription, PropertyId);
-            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.PropertyRemoveWarning, PropertyId);
+            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.NamedValueRemoveDescription, NamedValueId);
+            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.NamedValueRemoveWarning, NamedValueId);
 
             // Do nothing if force is not specified and user cancelled the operation
             if (!ShouldProcess(
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 return;
             }
 
-            Client.PropertyRemove(Context, PropertyId);
+            Client.NamedValueRemove(Context, NamedValueId);
 
             if (PassThru.IsPresent)
             {
