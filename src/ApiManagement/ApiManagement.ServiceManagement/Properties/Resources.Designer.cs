@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -394,6 +394,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Named Value &quot;{0}&quot;.
+        /// </summary>
+        internal static string NamedValueRemoveDescription {
+            get {
+                return ResourceManager.GetString("NamedValueRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Named Value &quot;{0}&quot;?.
+        /// </summary>
+        internal static string NamedValueRemoveWarning {
+            get {
+                return ResourceManager.GetString("NamedValueRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing OpenID Connect Provider &quot;{0}&quot;..
         /// </summary>
         internal static string OpenIdConnectProviderRemoveDescription {
@@ -462,24 +480,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         internal static string ProductRemoveWarning {
             get {
                 return ResourceManager.GetString("ProductRemoveWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing Property &quot;{0}&quot;.
-        /// </summary>
-        internal static string PropertyRemoveDescription {
-            get {
-                return ResourceManager.GetString("PropertyRemoveDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove Property &quot;{0}&quot;?.
-        /// </summary>
-        internal static string PropertyRemoveWarning {
-            get {
-                return ResourceManager.GetString("PropertyRemoveWarning", resourceCulture);
             }
         }
         
@@ -610,6 +610,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set Named Value.
+        /// </summary>
+        internal static string SetNamedValue {
+            get {
+                return ResourceManager.GetString("SetNamedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set OpenIdConnectProvider.
         /// </summary>
         internal static string SetOpenIdConnectProvider {
@@ -633,15 +642,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         internal static string SetProduct {
             get {
                 return ResourceManager.GetString("SetProduct", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set Property.
-        /// </summary>
-        internal static string SetProperty {
-            get {
-                return ResourceManager.GetString("SetProperty", resourceCulture);
             }
         }
         

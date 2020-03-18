@@ -14,16 +14,17 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementProperty : PsApiManagementArmResource
+    using System;
+    using System.Text.RegularExpressions;
+
+    public class PsApiManagementSubscriptionKey //: PsApiManagementArmResource
     {
-        public string PropertyId { get; set; }
+        public string PrimaryKey { get; set; }
 
-        public string Name { get; set; }
+        public string SecondaryKey { get; set; }
 
-        public string Value { get; set; }
 
-        public string[] Tags { get; set; }
+        public PsApiManagementSubscriptionKey() { }
 
-        public bool Secret { get; set; }
     }
 }

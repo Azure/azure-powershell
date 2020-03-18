@@ -1,58 +1,41 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-ms.assetid: 894297BF-2771-4871-9E4C-8684364DAC4B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementproperty
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzApiManagementProperty
+# Remove-AzApiManagementNamedValue
 
 ## SYNOPSIS
-Gets a list or a particular Property (Named-Value).
+Removes an API Management Named Value.
 
 ## SYNTAX
 
-### GetAllProperties (Default)
 ```
-Get-AzApiManagementProperty -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### GetByPropertyId
-```
-Get-AzApiManagementProperty -Context <PsApiManagementContext> [-PropertyId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByName
-```
-Get-AzApiManagementProperty -Context <PsApiManagementContext> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByTag
-```
-Get-AzApiManagementProperty -Context <PsApiManagementContext> [-Tag <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzApiManagementNamedValue -Context <PsApiManagementContext> -NamedValueId <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzApiManagementProperty** cmdlet gets a list or a particular property.
+The **Remove-AzApiManagementNamedValue** cmdlet removes an Azure API Management **Named Value**.
 
 ## EXAMPLES
 
-### Example 1: Get Property by name
+### Example 1: Remove the named value
 ```
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementProperty -Context $apimContext -Name "sql-connectionstring"
+PS C:\>Remove-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Property11" -PassThru
 ```
 
-This command gets the property details given the property name.
+This command removes the named value that has the ID Property11.
 
 ## PARAMETERS
 
 ### -Context
+Instance of PsApiManagementContext.
+This parameter is required.
+
 ```yaml
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
@@ -66,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -80,10 +63,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -NamedValueId
+Identifier of existing named value.
+This parameter is required.
+
 ```yaml
 Type: System.String
-Parameter Sets: GetByName
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+If specified will write true in case operation succeeds.
+This parameter is optional.
+Default value is false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -93,32 +96,34 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PropertyId
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
 ```yaml
-Type: System.String
-Parameter Sets: GetByPropertyId
-Aliases:
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Key-value pairs in the form of a hash table. For example:
-@{key0="value0";key1=$null;key2="value2"}
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByTag
-Aliases:
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -131,9 +136,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
+### System.Management.Automation.SwitchParameter
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty
+### System.Boolean
 
 ## NOTES
 
