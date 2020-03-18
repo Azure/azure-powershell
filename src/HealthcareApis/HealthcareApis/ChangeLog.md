@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.0.2
 * Removed population of access policies
 
 ## Version 1.0.1
