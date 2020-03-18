@@ -470,9 +470,6 @@ function Create-ManagedDataClassificationTestEnvironment ($testSuffix, $location
  			-Location $location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName
 
-	# Enable Advanced Data Security
-	Enable-AzSqlManagedInstanceAdvancedDataSecurity -ResourceGroupName $params.rgname -InstanceName $params.serverName -DoNotConfigureVulnerabilityAssessment
-	
 	New-AzSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName -Collation $collation
 }
 
