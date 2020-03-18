@@ -6,6 +6,7 @@ internal
 exports
 custom/*.psm1
 test/*-TestResults.xml
+test/*-.json
 /*.ps1
 /*.ps1xml
 /*.psm1
