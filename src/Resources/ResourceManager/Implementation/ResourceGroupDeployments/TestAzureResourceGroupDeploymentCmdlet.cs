@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             this.Mode = DeploymentMode.Incremental;
         }
 
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
             if (RollbackToLastDeployment && !string.IsNullOrEmpty(RollBackDeploymentName))
             {

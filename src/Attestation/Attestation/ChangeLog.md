@@ -20,9 +20,11 @@
 
 
 ## Upcoming Release
+* Added three additional required assemblies to Az.Attestation.psd1
+
+## Version 0.1.5
 * Added policy signer management cmdlets to `Az.Attestation` module
 * Added `Location` and `Tag` to `New-AzAttestation`
-* Added three additional required assemblies to Az.Attestation.psd1
 
 ## Version 0.1.4
 * Added policy management cmdlets to `Az.Attestation` module

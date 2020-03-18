@@ -107,6 +107,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                 AdministratorLoginPassword = model.SqlAdministratorPassword != null ? Decrypt(model.SqlAdministratorPassword) : null,
                 Version = model.ServerVersion,
                 Identity = model.Identity,
+                MinimalTlsVersion = model.MinimalTlsVersion,
                 PublicNetworkAccess = model.PublicNetworkAccess
             });
 
@@ -147,7 +148,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             server.Identity = resp.Identity;
             server.FullyQualifiedDomainName = resp.FullyQualifiedDomainName;
             server.ResourceId = resp.Id;
+            server.MinimalTlsVersion = resp.MinimalTlsVersion;
             server.PublicNetworkAccess = resp.PublicNetworkAccess;
+
             return server;
         }
 
