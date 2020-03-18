@@ -450,6 +450,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_GRS\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"id\": \"/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/ps5548/providers/Microsoft.Storage/storageAccounts/stops5548\",\r\n  \"name\": \"stops5548\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"privateEndpointConnections\": [],\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"virtualNetworkRules\": [],\r\n      \"ipRules\": [],\r\n      \"defaultAction\": \"Allow\"\r\n    },\r\n    \"supportsHttpsTrafficOnly\": true,\r\n    \"encryption\": {\r\n      \"services\": {\r\n        \"file\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2020-03-10T16:49:43.9949956Z\"\r\n        },\r\n        \"blob\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2020-03-10T16:49:43.9949956Z\"\r\n        }\r\n      },\r\n      \"keySource\": \"Microsoft.Storage\"\r\n    },\r\n    \"accessTier\": \"Hot\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"2020-03-10T16:49:43.9324997Z\",\r\n    \"primaryEndpoints\": {\r\n      \"dfs\": \"https://stops5548.dfs.core.windows.net/\",\r\n      \"web\": \"https://stops5548.z4.web.core.windows.net/\",\r\n      \"blob\": \"https://stops5548.blob.core.windows.net/\",\r\n      \"queue\": \"https://stops5548.queue.core.windows.net/\",\r\n      \"table\": \"https://stops5548.table.core.windows.net/\",\r\n      \"file\": \"https://stops5548.file.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"westcentralus\",\r\n    \"statusOfPrimary\": \"available\",\r\n    \"secondaryLocation\": \"westus2\",\r\n    \"statusOfSecondary\": \"available\"\r\n  }\r\n}",
       "StatusCode": 200
     },
@@ -513,6 +514,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"Yb79iEpCYD8LsnhSRRDsFELXFVOsmhvkdeFO8oG+kjDiET0u94wjz9FPUHuU8Uc4Rr8rf5X0cTwwengvnfdelQ==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"NNBScMynmHahuDQWLzfRQnBf2dniyvpQofv/gDTjUN64CapgUly+fQyeaZuO7qxmu659aVO64oSv3MIUoTgMWA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
@@ -29495,6 +29497,7 @@
       "RequestUri": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/ps5548/providers/Microsoft.Network/connections/ps4544/stopPacketCapture?api-version=2019-12-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjFmMWRlZWQtYWY2MC00YmFiLTkyMjMtNjVkMzQwNDYyZTI0L3Jlc291cmNlR3JvdXBzL3BzNTU0OC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvY29ubmVjdGlvbnMvcHM0NTQ0L3N0b3BQYWNrZXRDYXB0dXJlP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "POST",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"sasUrl\": \"https://stops5548.blob.core.windows.net/testcontainer?sv=2019-02-02&sr=c&sig=Y8SdJJch4V8s3VqhD%2FF5waK43WlUFB3kDimJEz5ZHQc%3D&st=2020-03-10T15%3A50%3A05Z&se=2020-03-11T16%3A50%3A05Z&sp=rwd\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -29577,6 +29580,7 @@
       "RequestUri": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/ps5548/providers/Microsoft.Network/connections/ps4544/stopPacketCapture?api-version=2019-12-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjFmMWRlZWQtYWY2MC00YmFiLTkyMjMtNjVkMzQwNDYyZTI0L3Jlc291cmNlR3JvdXBzL3BzNTU0OC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvY29ubmVjdGlvbnMvcHM0NTQ0L3N0b3BQYWNrZXRDYXB0dXJlP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "POST",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"sasUrl\": \"https://stops5548.blob.core.windows.net/testcontainer?sv=2019-02-02&sr=c&sig=Y8SdJJch4V8s3VqhD%2FF5waK43WlUFB3kDimJEz5ZHQc%3D&st=2020-03-10T15%3A50%3A05Z&se=2020-03-11T16%3A50%3A05Z&sp=rwd\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
