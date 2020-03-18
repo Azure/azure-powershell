@@ -22,6 +22,7 @@
 * Add correlationId logging for error scenarios
 * Small documentation change to `Get-AzResourceLock`. Added example.
 * Escaped single quote in parameter value of `Get-AzADUser` [#11317]
+* Add new cmdlets for Deployment Scripts (Get-AzDeploymentScript, Get-AzDeploymentScriptLog, Save-AzDeploymentScriptLog, Remove-AzDeploymentScript)
 
 ## Version 1.12.0
 * Fixed for null reference bug in `Get-AzRoleAssignment`
