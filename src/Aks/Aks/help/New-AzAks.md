@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
 online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/new-azaks
@@ -13,10 +13,16 @@ Create a new managed Kubernetes cluster.
 ## SYNTAX
 
 ```
-New-AzAks [-Force] [-ResourceGroupName] <String> [-Name] <String> [[-ClientIdAndSecret] <PSCredential>]
- [-Location <String>] [-AdminUserName <String>] [-DnsNamePrefix <String>] [-KubernetesVersion <String>]
- [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>] [-SshKeyValue <String>] [-AsJob]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAks [-Force] [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMaxPodCount <Int32>]
+ [-NodeOsType <String>] [-EnableNodePublicIp] [-NodeSetPriority <String>]
+ [-NodeScaleSetEvictionPolicy <String>] [-AcrNameToAttach <String>] [-EnableRbac] [-EnablePodSecurityPolicy]
+ [-WindowsProfileAdminUserName <String>] [-WindowsProfileAdminUserPassword <SecureString>]
+ [-NetworkPlugin <String>] [-LoadBalancerSku <String>] [-ResourceGroupName] <String> [-Name] <String>
+ [[-ClientIdAndSecret] <PSCredential>] [-Location <String>] [-AdminUserName <String>] [-DnsNamePrefix <String>]
+ [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
+ [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
+ [-SshKeyValue <String>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,15 +31,35 @@ Create a new managed Kubernetes cluster.
 
 ## EXAMPLES
 
-### Example 1
-
-Create a new managed Kubernetes cluster with default params.
+### Create a new managed Kubernetes cluster with default params.
 
 ```
-PS C:\> New-AzAks -ResourceGroupName group -Name myCluster
+PS C:\> New-AzAks -ResourceGroupName myResourceGroup -Name myCluster
+```
+
+### Create a new managed Kubernetes cluster using Windows Server container.
+
+```
+PS C:\> $cred = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
+PS C:\> New-AzAks -ResourceGroupName eriwanaks -Name myCluster -KubernetesVersion 1.15.5 -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -NodeOsType Windows
 ```
 
 ## PARAMETERS
+
+### -AcrNameToAttach
+Grant the 'acrpull' role of the specified ACR to AKS Service Principal, e.g. myacr
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AdminUserName
 User name for the Linux Virtual Machines.
@@ -110,6 +136,66 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableNodeAutoScaling
+Whether to enable auto-scaler
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableNodePublicIp
+Whether to enable public IP for nodes
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePodSecurityPolicy
+Whether to enable Kubernetes Pod security
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableRbac
+Whether to enable Kubernetes Role-Based Access
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Create cluster even if it already exists
 
@@ -127,6 +213,21 @@ Accept wildcard characters: False
 
 ### -KubernetesVersion
 The version of Kubernetes to use for creating the cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerSku
+The load balancer sku for the managed cluster.
 
 ```yaml
 Type: System.String
@@ -171,11 +272,86 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkPlugin
+Network plugin used for building Kubernetes network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodeCount
 The default number of nodes for the node pools.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeMaxCount
+Maximum number of nodes for auto-scaling
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeMaxPodCount
+Maximum number of pods that can run on node.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeMinCount
+Minimum number of nodes for auto-scaling.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeName
+Unique name of the agent pool profile in the context of the subscription and resource group.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -201,8 +377,83 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NodeOsType
+OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeScaleSetEvictionPolicy
+ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeSetPriority
+ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeVmSetType
+AgentPoolType represents types of an agent pool. Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodeVmSize
 The size of the Virtual Machine.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeVnetSubnetID
+VNet SubnetID specifies the VNet's subnet identifier.
 
 ```yaml
 Type: System.String
@@ -262,6 +513,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WindowsProfileAdminUserName
+The administrator username to use for Windows VMs.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WindowsProfileAdminUserPassword
+The administrator password to use for Windows VMs
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -294,7 +575,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

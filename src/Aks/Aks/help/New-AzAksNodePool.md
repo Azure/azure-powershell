@@ -1,98 +1,87 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/set-azaks
+online version:
 schema: 2.0.0
 ---
 
-# Set-AzAks
+# New-AzAksNodePool
 
 ## SYNOPSIS
-Update or create a managed Kubernetes cluster.
+Create a new node pool in specified cluster.
 
 ## SYNTAX
 
-### defaultParameterSet (Default)
+### IdParameterSet
 ```
-Set-AzAks [-ResourceGroupName] <String> [-Name] <String> [[-ClientIdAndSecret] <PSCredential>]
- [-Location <String>] [-AdminUserName <String>] [-DnsNamePrefix <String>] [-KubernetesVersion <String>]
- [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling]
- [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>] [-SshKeyValue <String>] [-AsJob]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### InputObjectParameterSet
-```
-Set-AzAks -InputObject <PSKubernetesCluster> [-Location <String>] [-AdminUserName <String>]
- [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
- [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
- [-NodeVmSize <String>] [-SshKeyValue <String>] [-AsJob] [-Tag <Hashtable>]
+New-AzAksNodePool [-ClusterObject <PSKubernetesCluster>] [-Count <Int32>] [-OsDiskSize <Int32>]
+ [-VmSize <String>] [-VnetSubnetID <String>] [-MaxPodCount <Int32>] [-OsType <String>] [-EnableNodePublicIp]
+ [-ScaleSetPriority <String>] [-ScaleSetEvictionPolicy <String>] [-VmSetType <String>] [-Force]
+ [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### IdParameterSet
+### defaultParameterSet
 ```
-Set-AzAks [-Id] <String> [-Location <String>] [-AdminUserName <String>] [-DnsNamePrefix <String>]
- [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
- [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-SshKeyValue <String>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzAksNodePool [-Count <Int32>] [-OsDiskSize <Int32>] [-VmSize <String>] [-VnetSubnetID <String>]
+ [-MaxPodCount <Int32>] [-OsType <String>] [-EnableNodePublicIp] [-ScaleSetPriority <String>]
+ [-ScaleSetEvictionPolicy <String>] [-VmSetType <String>] [-Force] -ResourceGroupName <String>
+ -ClusterName <String> -Name <String> [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>]
+ [-EnableAutoScaling] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update or create a managed Kubernetes cluster.
+Create a new node pool in specified cluster.
 
 ## EXAMPLES
 
-### Example 1
+### Create windows node pool
+```powershell
+PS C:\> New-AzAksNodePool -ResourceGroupName myResouceGroup -ClusterName myCluster -Name windefault -KubernetesVersion 1.15.5  -VmSetType VirtualMachineScaleSets -OsType Windows -EnableAutoScaling -EnableNodePublicIP
 ```
-PS C:\> Get-AzAks -ResourceGroupName group -Name myCluster | Set-AzAks -NodeCount 5
-```
-
-Set the number of nodes in the Kubernetes cluster to 5.
 
 ## PARAMETERS
 
-### -AdminUserName
-User name for the Linux Virtual Machines.
+### -ClusterName
+The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClientIdAndSecret
-The client id and client secret associated with the AAD application / service principal.
-
-```yaml
-Type: System.Management.Automation.PSCredential
 Parameter Sets: defaultParameterSet
 Aliases:
 
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterObject
+Specify cluster object in which to create node pool.
+
+```yaml
+Type: Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
+Parameter Sets: IdParameterSet
+Aliases:
+
 Required: False
-Position: 2
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Count
+The default number of nodes for the node pools.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -113,22 +102,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsNamePrefix
-The DNS name prefix for the cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableNodeAutoScaling
+### -EnableAutoScaling
 Whether to enable auto-scaler
 
 ```yaml
@@ -143,33 +117,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Id of a managed Kubernetes cluster
+### -EnableNodePublicIp
+Whether to enable public IP for nodes
 
 ```yaml
-Type: System.String
-Parameter Sets: IdParameterSet
-Aliases: ResourceId
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-A PSKubernetesCluster object, normally passed through the pipeline.
+### -Force
+Create node pool even if it already exists
 
 ```yaml
-Type: Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
-Parameter Sets: InputObjectParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -188,53 +162,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Azure location for the cluster.
-Defaults to the location of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Kubernetes managed cluster Name.
-
-```yaml
-Type: System.String
-Parameter Sets: defaultParameterSet
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NodeCount
-The default number of nodes for the node pools.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NodeMaxCount
+### -MaxCount
 Maximum number of nodes for auto-scaling
 
 ```yaml
@@ -249,7 +177,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NodeMinCount
+### -MaxPodCount
+Maximum number of pods that can run on node.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinCount
 Minimum number of nodes for auto-scaling.
 
 ```yaml
@@ -264,22 +207,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NodeName
-Unique name of the agent pool profile in the context of the subscription and resource group.
+### -Name
+The name of the node pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: defaultParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NodeOsDiskSize
+### -OsDiskSize
 The default number of nodes for the node pools.
 
 ```yaml
@@ -294,8 +237,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NodeVmSize
-The size of the Virtual Machine.
+### -OsType
+OsType to be used to specify os type.
+Choose from Linux and Windows.
+Default to Linux.
 
 ```yaml
 Type: System.String
@@ -310,7 +255,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
 
 ```yaml
 Type: System.String
@@ -318,20 +263,20 @@ Parameter Sets: defaultParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SshKeyValue
-SSH key file value or key file path.
-Defaults to {HOME}/.ssh/id_rsa.pub.
+### -ScaleSetEvictionPolicy
+ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set.
+Default to Delete.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: SshKeyPath
+Aliases:
 
 Required: False
 Position: Named
@@ -340,11 +285,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Tags to be applied to the resource
+### -ScaleSetPriority
+ScaleSetPriority to be used to specify virtual machine scale set priority.
+Default to regular.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VmSetType
+Represents types of an node pool.
+Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VmSize
+The size of the Virtual Machine.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VnetSubnetID
+VNet SubnetID specifies the VNet's subnet identifier.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -391,13 +383,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
-
-### System.String
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
+### Microsoft.Azure.Commands.Aks.Models.PSNodePool
 
 ## NOTES
 

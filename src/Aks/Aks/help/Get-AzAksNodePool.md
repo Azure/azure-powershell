@@ -1,44 +1,60 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azaks
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzAks
+# Get-AzAksNodePool
 
 ## SYNOPSIS
-List Kubernetes managed clusters.
+Create note pool in specified cluster.
 
 ## SYNTAX
 
-### ResourceGroupParameterSet (Default)
+### IdParameterSet (Default)
 ```
-Get-AzAks [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAksNodePool [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### IdParameterSet
+### ParentNameParameterSet
 ```
-Get-AzAks [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NameParameterSet
 ```
-Get-AzAks [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List Kubernetes managed clusters.
+Create note pool in specified cluster.
 
 ## EXAMPLES
 
-### List all Kubernetes clusters
-```
-PS C:\> Get-AzAks
+### Get all node pools within specified cluster
+```powershell
+PS C:\> Get-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster
 ```
 
 ## PARAMETERS
+
+### -ClusterName
+The name of the managed cluster resource.
+
+```yaml
+Type: System.String
+Parameter Sets: ParentNameParameterSet, NameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -56,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Id of a managed Kubernetes cluster
+Id of an node pool in managed Kubernetes cluster
 
 ```yaml
 Type: System.String
@@ -71,7 +87,19 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of your managed Kubernetes cluster
+The name of the node pool.
+
+```yaml
+Type: System.String
+Parameter Sets: ParentNameParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ```yaml
 Type: System.String
@@ -79,34 +107,22 @@ Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource group name
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupParameterSet
-Aliases:
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: ParentNameParameterSet, NameParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -121,7 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
+### Microsoft.Azure.Commands.Aks.Models.PSNodePool
 
 ## NOTES
 

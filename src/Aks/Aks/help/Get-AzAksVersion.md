@@ -1,32 +1,30 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/stop-azaksdashboard
+online version:
 schema: 2.0.0
 ---
 
-# Stop-AzAksDashboard
+# Get-AzAksVersion
 
 ## SYNOPSIS
-Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
+List available version for creating managed Kubernetes cluster.
 
 ## SYNTAX
 
 ```
-Stop-AzAksDashboard [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAksVersion -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
+List available version for creating managed Kubernetes cluster.
 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+PS C:\> Get-AzAksVersion -Location westus
 ```
-PS C:\> Stop-AzKubernetesDashboard
-```
-
-Stops the existing SSH tunnel setup by executing Start-AzKubernetesDashboard.
 
 ## PARAMETERS
 
@@ -45,15 +43,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true if SSH tunnel is closed.
+### -Location
+Azure location for the cluster.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -69,7 +67,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Aks.Models.PSOrchestratorVersionProfile
 
 ## NOTES
 

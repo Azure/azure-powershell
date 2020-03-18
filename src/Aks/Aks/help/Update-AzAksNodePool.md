@@ -1,49 +1,52 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/import-azakscredential
+online version:
 schema: 2.0.0
 ---
 
-# Import-AzAksCredential
+# Update-AzAksNodePool
 
 ## SYNOPSIS
-Import and merge Kubectl config for a managed Kubernetes Cluster.
+Update node pool in a managed cluster.
 
 ## SYNTAX
 
-### GroupNameParameterSet (Default)
+### defaultParameterSet (Default)
 ```
-Import-AzAksCredential [-ResourceGroupName] <String> [-Name] <String> [-Admin] [-ConfigPath <String>] [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzAksNodePool [-PassThru] [-AsJob] [-Force] -ResourceGroupName <String> -ClusterName <String>
+ -Name <String> [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Import-AzAksCredential -InputObject <PSKubernetesCluster> [-Admin] [-ConfigPath <String>] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzAksNodePool -InputObject <PSNodePool> [-PassThru] [-AsJob] [-Force] [-KubernetesVersion <String>]
+ [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Import-AzAksCredential [-Id] <String> [-Admin] [-ConfigPath <String>] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzAksNodePool [-Id] <String> [-PassThru] [-AsJob] [-Force] [-KubernetesVersion <String>]
+ [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Import and merge Kubectl config for a managed Kubernetes Cluster.
+Update node pool in a managed cluster.
 
 ## EXAMPLES
 
-### Import and merge Kubectl config
-```
-PS C:\> Import-AzAksCredential -ResourceGroupName group -Name myCluster
+### Change minimun count to 5 for specified node pool
+```powershell
+PS C:\> Update-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name linuxpool -MinCount 5
 ```
 
 ## PARAMETERS
 
-### -Admin
-Get the 'clusterAdmin' kubectl config instead of the default 'clusterUser'.
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -57,17 +60,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConfigPath
-A kubectl config file to create or update.
-Use '-' to print YAML to stdout instead.
-Default: %Home%/.kube/config.
+### -ClusterName
+The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: defaultParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -89,8 +90,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAutoScaling
+Whether to enable auto-scaler
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
-Import Kubernetes config even if it is the default
+Update node pool without prompt
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -105,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Id of a managed Kubernetes cluster
+Id of an node pool in managed Kubernetes cluster
 
 ```yaml
 Type: System.String
@@ -120,10 +136,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-A PSKubernetesCluster object, normally passed through the pipeline.
+A PSAgentPool object, normally passed through the pipeline.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
+Type: Microsoft.Azure.Commands.Aks.Models.PSNodePool
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -134,23 +150,68 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of your managed Kubernetes cluster
+### -KubernetesVersion
+The version of Kubernetes to use for creating the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: GroupNameParameterSet
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxCount
+Maximum number of nodes for auto-scaling
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinCount
+Minimum number of nodes for auto-scaling.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the node pool.
+
+```yaml
+Type: System.String
+Parameter Sets: defaultParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns true if import is successful
+{{ Fill PassThru Description }}
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -165,15 +226,15 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource group name
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GroupNameParameterSet
+Parameter Sets: defaultParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -215,13 +276,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
+### Microsoft.Azure.Commands.Aks.Models.PSNodePool
 
 ### System.String
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Aks.Models.PSNodePool
 
 ## NOTES
 

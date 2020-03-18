@@ -1,69 +1,39 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/import-azakscredential
+online version:
 schema: 2.0.0
 ---
 
-# Import-AzAksCredential
+# Install-AzAksKubectl
 
 ## SYNOPSIS
-Import and merge Kubectl config for a managed Kubernetes Cluster.
+Download and install kubectl, the Kubernetes command-line tool.
 
 ## SYNTAX
 
-### GroupNameParameterSet (Default)
 ```
-Import-AzAksCredential [-ResourceGroupName] <String> [-Name] <String> [-Admin] [-ConfigPath <String>] [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### InputObjectParameterSet
-```
-Import-AzAksCredential -InputObject <PSKubernetesCluster> [-Admin] [-ConfigPath <String>] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### IdParameterSet
-```
-Import-AzAksCredential [-Id] <String> [-Admin] [-ConfigPath <String>] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Install-AzAksKubectl [-Destination <String>] [-Version <String>] [-DownloadFromMirror] [-PassThru] [-AsJob]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Import and merge Kubectl config for a managed Kubernetes Cluster.
+Download and install kubectl, the Kubernetes command-line tool.
 
 ## EXAMPLES
 
-### Import and merge Kubectl config
-```
-PS C:\> Import-AzAksCredential -ResourceGroupName group -Name myCluster
+### Download and install latest version of kubectl
+```powershell
+PS C:\> Install-AzAksKubectl -Version latest
 ```
 
 ## PARAMETERS
 
-### -Admin
-Get the 'clusterAdmin' kubectl config instead of the default 'clusterUser'.
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigPath
-A kubectl config file to create or update.
-Use '-' to print YAML to stdout instead.
-Default: %Home%/.kube/config.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,8 +59,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Import Kubernetes config even if it is the default
+### -Destination
+Path at which to install kubectl.
+Default to install into ~/.azure-kubectl/
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DownloadFromMirror
+Download from mirror site : https://mirror.azure.cn/kubernetes/kubectl/
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -104,53 +90,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Id of a managed Kubernetes cluster
+### -Force
+Overwrite existing kubectl without prompt
 
 ```yaml
-Type: System.String
-Parameter Sets: IdParameterSet
-Aliases: ResourceId
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InputObject
-A PSKubernetesCluster object, normally passed through the pipeline.
-
-```yaml
-Type: Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
-Parameter Sets: InputObjectParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Name of your managed Kubernetes cluster
-
-```yaml
-Type: System.String
-Parameter Sets: GroupNameParameterSet
-Aliases:
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns true if import is successful
+{{ Fill PassThru Description }}
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -164,16 +120,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource group name
+### -Version
+Version of kubectl to install, e.g.
+'v1.17.2'.
+Default value: Latest
 
 ```yaml
 Type: System.String
-Parameter Sets: GroupNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -215,13 +173,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
-
-### System.String
+### None
 
 ## OUTPUTS
 
-### System.String
+### System.Boolean
 
 ## NOTES
 
