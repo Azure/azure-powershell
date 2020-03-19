@@ -31,7 +31,7 @@ The **New-AzRmStorageShare** cmdlet creates a Storage file share.
 ## EXAMPLES
 
 ### Example 1: Create a Storage file share with Storage account name and share name, with metadata and share quota as 100 GiB.
-```
+```powershell
 PS C:\>New-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare" -QuotaGiB 100 -Metadata @{"tag1" = "value1"; "tag2" = "value2" } 
 
 Name     StorageAccountName ResourceGroupName Etag                QuotaGiB LastModifiedTime    
@@ -42,7 +42,7 @@ myshare  myStorageAccount   myResourceGroup
 This command creates a Storage file share with metadata and share quota as 100 GiB.
 
 ### Example 2: Create a Storage file share with Storage account object
-```
+```powershell
 Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" | New-AzRmStorageShare -Name "myshare"
 
 Name     StorageAccountName ResourceGroupName Etag                QuotaGiB LastModifiedTime    
@@ -51,6 +51,13 @@ myshare  myStorageAccount   myResourceGroup
 ```
 
 This command creates a Storage file share with Storage account object and share name.
+
+### Example 3
+```powershell <!-- Aladdin Generated Example --> 
+PS C:> New-AzRmStorageShare -Name "myshare" -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount"
+```
+
+
 
 ## PARAMETERS
 
