@@ -31,10 +31,10 @@ The Reset-AzAttestationPolicy cmdlet resets the user defined attestation policy 
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzAttestationPolicy -Name "example" -Tee "SgxEnclave"
+PS C:\> Reset-AzAttestationPolicy -Name pshtest -ResourceGroupName psh-test-rg -Tee SgxEnclave
 ```
 
-Resets the policy to the default for tenant "example" in Tee "SgxEnclave".
+Reset the policy to the default for the Attestation Provider *pshtest* for Tee type *SgxEnclave*.
 
 ## PARAMETERS
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 
 ### -Tee
 Specifies a type of Trusted Execution Environment.
-We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VSMEnclave.
+We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VBSEnclave.
 
 ```yaml
 Type: System.String
