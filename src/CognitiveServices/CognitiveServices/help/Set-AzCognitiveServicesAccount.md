@@ -13,10 +13,21 @@ Modifies an account.
 
 ## SYNTAX
 
+### CognitiveServicesEncryption (Default)
 ```
 Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName <String>]
- [-Tag <Hashtable[]>] [-CustomSubdomainName <String>] [-NetworkRuleSet <PSNetworkRuleSet>] [-Force]
+ [-Tag <Hashtable[]>] [-CustomSubdomainName <String>] [-AssignIdentity] [-IdentityType <IdentityType>]
+ [-StorageAccountId <String[]>] [-CognitiveServicesEncryption] [-NetworkRuleSet <PSNetworkRuleSet>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### KeyVaultEncryption
+```
+Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName <String>]
+ [-Tag <Hashtable[]>] [-CustomSubdomainName <String>] [-AssignIdentity] [-IdentityType <IdentityType>]
+ [-StorageAccountId <String[]>] [-KeyVaultEncryption] -KeyName <String> -KeyVersion <String>
+ -KeyVaultUri <String> [-NetworkRuleSet <PSNetworkRuleSet>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +55,36 @@ Tags              :
 ```
 
 ## PARAMETERS
+
+### -AssignIdentity
+Generate and assign a new Cognitive Services Account Identity for this storage account for use with key management services like Azure KeyVault.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CognitiveServicesEncryption
+Whether to set Cognitive Services Account Encryption KeySource to Microsoft.CognitiveServices or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CognitiveServicesEncryption
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CustomSubdomainName
 Cognitive Services Account Subdomain Name.
@@ -84,6 +125,82 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType]
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, SystemAssigned, UserAssigned
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyName
+Cognitive Services Account encryption keySource KeyVault KeyName
+
+```yaml
+Type: System.String
+Parameter Sets: KeyVaultEncryption
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultEncryption
+Whether to set Cognitive Services Account encryption keySource to Microsoft.KeyVault or not. If you specify KeyName, KeyVersion and KeyVaultUri, Cognitive Services Account Encryption KeySource will also be set to Microsoft.KeyVault weather this parameter is set or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: KeyVaultEncryption
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultUri
+Cognitive Services Account encryption keySource KeyVault KeyVaultUri
+
+```yaml
+Type: System.String
+Parameter Sets: KeyVaultEncryption
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVersion
+Cognitive Services Account encryption keySource KeyVault KeyVersion
+
+```yaml
+Type: System.String
+Parameter Sets: KeyVaultEncryption
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -154,6 +271,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccountId
+List of User Owned Storage Accounts.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
