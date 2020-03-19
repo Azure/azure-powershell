@@ -120,10 +120,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         BackupType,
         EnableCompression,
         DeleteState,
-        FriendlyName
+        FriendlyName,
         InclusionDisksList,
         ExclusionDisksList,
-        ResetExclusionSettings
+        ResetExclusionSettings,
+        ExcludeAllDataDisks
     }
 
     public enum ProtectionCheckParams
