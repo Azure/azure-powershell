@@ -41,9 +41,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string ModifyProtectionWithPolicy = "ModifyProtectionPolicy";
         internal const string ModifyProtectionWithDiskExclusion = "ModifyProtectionDiskExclusion";
         internal const string ModifyProtectionWithDiskInclusion = "ModifyProtectionDiskInclusion";
-        //internal const string ModifyWithDiskExclusion = "DiskExclusion";
-        // internal const string DiskInclusionParameterSet = "DiskInclusion";
         internal const string ModifyProtectionWithDiskReset = "ModifyProtectionDiskReset";
+        internal const string ModifyProtectionWithOSDiskOnly = "ModifyProtectionWithOSDiskOnly";
 
         /// <summary>
         /// Policy to be associated with this item as part of the protection operation.
@@ -113,24 +112,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionWithDiskInclusion)]
         [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionWithDiskExclusion)]
         [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionWithDiskReset)]
+        [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionWithOSDiskOnly)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
 
-        // [Parameter(Mandatory = false, ParameterSetName = DiskExclusionParameterSet)]
+        /// <summary>
+        /// List of Disk LUNs to include in backup
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionWithDiskInclusion)]
         public string[] InclusionDisksList { get; set; }
 
-        // [Parameter(Mandatory = false, ParameterSetName = DiskExclusionParameterSet)]
+        /// <summary>
+        /// List of Disk LUNs to exclude in backup
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionWithDiskExclusion)]
         public string[] ExclusionDisksList { get; set; }
 
-        // [Parameter(Mandatory = true, ParameterSetName = DiskExclusionResetParameterSet)]
+        /// <summary>
+        /// Reset Disk Exclusion Settings
+        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionWithDiskReset)]
         public SwitchParameter ResetExclusionSettings { get; set; }
+
+        /// <summary>
+        /// Backup OS disks of VM only
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionWithOSDiskOnly)]
+        public SwitchParameter ExcludeAllDataDisks { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -236,7 +250,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { ItemParams.ParameterSetName, this.ParameterSetName },
                                 { ItemParams.InclusionDisksList, InclusionDisksList },
                                 { ItemParams.ExclusionDisksList, ExclusionDisksList },
-                                { ItemParams.ResetExclusionSettings, ResetExclusionSettings }
+                                { ItemParams.ResetExclusionSettings, ResetExclusionSettings },
+                                { ItemParams.ExcludeAllDataDisks, ExcludeAllDataDisks.IsPresent }
                             }, ServiceClientAdapter);
 
                         IPsBackupProvider psBackupProvider = (Item != null) ?

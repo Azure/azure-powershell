@@ -522,7 +522,7 @@ function Test-AzureVMDiskExclusion
 {
 	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
-	$storageType = 'Premium_LRS'
+	$storageType = 'Standard_LRS'
 	try
 	{
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
@@ -571,7 +571,13 @@ function Test-AzureVMDiskExclusion
 			-WorkloadType "AzureVM";
 
 		$backupJob = Backup-Item $vault $item
-		$rp = Get-RecoveryPoint $vault $item $backupJob
+		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+		$backupEndTime = $backupJob.EndTime.AddDays(1);
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-Item $item `
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime;
 
 		$arr = ("0")
 

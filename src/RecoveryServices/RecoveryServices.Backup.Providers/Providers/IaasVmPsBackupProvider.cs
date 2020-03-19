@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string[] inclusionDisksList = (string[])ProviderData[ItemParams.InclusionDisksList];
             string[] exclusionDisksList = (string[])ProviderData[ItemParams.ExclusionDisksList];
             SwitchParameter resetDiskExclusionSetting = (SwitchParameter)ProviderData[ItemParams.ResetExclusionSettings];
+            bool excludeAllDataDisks = (bool)ProviderData[ItemParams.ExcludeAllDataDisks];
 
             PolicyBase policy = (PolicyBase)ProviderData[ItemParams.Policy];
 
@@ -193,6 +194,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     IList<int?> exclusionList = Array.ConvertAll(exclusionDisksList, s => int.Parse(s)).OfType<int?>().ToList();
                     DiskExclusionProperties diskExclusionProperties = new DiskExclusionProperties(exclusionList, false);
+                    extendedProperties = new ExtendedProperties();
+                    extendedProperties.DiskExclusionProperties = diskExclusionProperties;
+                }
+                else if(excludeAllDataDisks == true)
+                {
+                    IList<int?> exclusionList = new List<int?>();
+                    DiskExclusionProperties diskExclusionProperties = new DiskExclusionProperties(exclusionList, true);
                     extendedProperties = new ExtendedProperties();
                     extendedProperties.DiskExclusionProperties = diskExclusionProperties;
                 }
