@@ -20,17 +20,6 @@
 
 ## Upcoming Release
 
-## Version 1.0.0
-* Stable release of `Az.Support` module. Following cmdlets can be used for creation and management of support tickets. Update-AzSupportTicket can now be used to close a support ticket as long as it is not assigned to a support engineer.
-    - Get-AzSupportService
-    - Get-AzSupportProblemClassification
-    - New-AzSupportContactProfileObject
-    - New-AzSupportTicket
-    - Get-AzSupportTicket
-    - Update-AzSupportTicket
-    - New-AzSupportTicketCommunication
-    - Get-AzSupportTicketCommunication
-
 ## Version 0.1.0
 * Preview release of `Az.Support` module. Added following cmdlets for creation and management of support tickets.
     - Get-AzSupportService

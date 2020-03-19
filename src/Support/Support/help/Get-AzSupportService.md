@@ -23,7 +23,7 @@ Get-AzSupportService -Id <String> [-DefaultProfile <IAzureContextContainer>] [<C
 ```
 
 ## DESCRIPTION
-Gets the current list of Azure services for which support is available. Each Azure service may contain one of more ARM ResouceTypes that it is responsible for, that you can use to identify the service when creating a technical support ticket for an ARM resource. Each Azure service has its own set of categories called problem classification. Get the current list of problem classification for a service using Get-AzSupportProblemClassification. You can use the service and problem classification GUID to create a new support ticket using New-AzSupportTicket.
+Gets the current list of Azure services for which support is available. Each service may contain one or more Azure resource manager (ARM) resource type information. Resource types (example: 'microsoft.compute/virtualmachines') can be useful to map the right product and ARM resource when creating a technical support ticket. Each Azure service has its own set of categories called problem classification. Get the current list of problem classification for a service using Get-AzSupportProblemClassification. You can use the service and problem classification GUID to create a new support ticket using New-AzSupportTicket.
 
 Always use the service and problem classification GUIDs obtained programmatically. This practice ensures that you have the most recent set of service and problem classification GUIDs for support ticket creation.
 
