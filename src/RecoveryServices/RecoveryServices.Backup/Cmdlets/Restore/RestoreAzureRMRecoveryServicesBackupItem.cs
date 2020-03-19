@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Array of source file paths to be recovered
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureFileParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreFS.SourceFilePath)]
+            HelpMessage = ParamHelpMsgs.RestoreFS.MultipleSourceFilePaths)]
         public List<string> MultipleSourceFilePaths { get; set; }
 
         /// <summary>

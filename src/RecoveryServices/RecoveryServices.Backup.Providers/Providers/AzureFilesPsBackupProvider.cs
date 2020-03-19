@@ -918,13 +918,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileSourceFilePathMissingException));
             }
-            else if (sourceFilePath != null && multipleSourceFilePaths != null && sourceFileType == null)
+            else if (sourceFilePath != null && sourceFileType == null)
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileSourceFileTypeMissingException));
             }
             else if(sourceFilePath != null && multipleSourceFilePaths != null)
             {
-                throw new ArgumentException(string.Format("Both source file path and multiple source file paths provided. Please give only one option"));
+                throw new ArgumentException(string.Format(Resources.AzureFileSourceFilePathRedundantException));
             }
         }
 

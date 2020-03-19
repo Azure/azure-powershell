@@ -316,6 +316,19 @@ function Test-AzureFSFullRestore
 			-ResolveConflict Overwrite `
 			-SourceFilePath $filePath } `
 			"Provide SourceFileType for File restore or remove SourceFilePath for file share restore"
+			
+		# Multiple Files Restore
+		$files = ($file1, $file2)
+		$restoreJob = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $recoveryPoint[0] `
+			-MultipleSourceFilePaths $files `
+			-SourceFileType File `
+			-ResolveConflict Overwrite | `
+				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob.Status -eq "Completed" }
     
 		# Test without storage account dependancy
 		# Item level restore at alternate location
@@ -370,19 +383,6 @@ function Test-AzureFSFullRestore
 				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob4.Status -eq "Completed" }
-
-		# Multiple Files Restore
-		$files = [System.Collections.ArrayList]@($file1, $file2)
-		$restoreJob = Restore-AzRecoveryServicesBackupItem `
-			-VaultId $vault.ID `
-			-VaultLocation $vault.Location `
-			-RecoveryPoint $recoveryPoint[0] `
-			-MultipleSourceFilePaths $files `
-			-SourceFileType File `
-			-ResolveConflict Overwrite | `
-				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
-
-		Assert-True { $restoreJob5.Status -eq "Completed" }
 	}
 	finally
 	{
