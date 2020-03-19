@@ -38,12 +38,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
         /// </summary>
         public AzureRestClient Client { get; private set; }
 
-        public async Task<AzureOperationResponse<T>> BeginHttpMessagesAsync<T>(HttpMethod method, string path, IDictionary<string, IList<string>> queries = null, string fragment = null, string content = null, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<T>> BeginHttpMessagesAsync<T>(HttpMethod method, string path, IDictionary<string, IList<string>> queries = null, string fragment = null, Object content = null, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (path == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "path");
             }
+            if (path.Length > 0)
+            {
+                if (path.StartsWith("/") && Client.EndsWithSlash)
+                {
+                    path = path.Substring(1);
+                }
+                else if (!path.StartsWith("/") && !Client.EndsWithSlash)
+                {
+                    path = "/" + path;
+                }
+            }
+
             if (method == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "method");
@@ -101,11 +113,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
                     _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
                 }
             }
-
             // Serialize Request
-            string _requestContent = content;
-            if (_requestContent != null)
+            string _requestContent = null;
+            if (content != null)
             {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(content, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
@@ -205,7 +217,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
                     throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
-            if ((int)_statusCode == 204)
+            if ((int)_statusCode > 200)
             {
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return null;
@@ -221,7 +233,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
         public async Task<T> BeginHttpGetMessagesAsync<T>(string resourceUri, string apiVersion, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             IDictionary<string, IList<string>> queries = new Dictionary<string, IList<string>>();
-            queries.Add(API_VERSION, new List<string> { apiVersion });
+            if(apiVersion != null)
+            {
+                queries.Add(API_VERSION, new List<string> { apiVersion });
+            }
             using (var _result = await BeginHttpMessagesAsync<T>(method: HttpMethod.Get,
                                                                 path: resourceUri,
                                                                 queries: queries,
@@ -237,7 +252,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
         public async Task BeginHttpDeleteMessagesAsync(string resourceUri, string apiVersion, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             IDictionary<string, IList<string>> queries = new Dictionary<string, IList<string>>();
-            queries.Add(API_VERSION, new List<string> { apiVersion });
+            if (apiVersion != null)
+            {
+                queries.Add(API_VERSION, new List<string> { apiVersion });
+            }
             using (var _result = await BeginHttpMessagesAsync<Object>(method: HttpMethod.Delete,
                                                                 path: resourceUri,
                                                                 queries: queries,
@@ -251,10 +269,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
         }
 
 
-        public async Task<T> BeginHttpUpdateMessagesAsync<T>(HttpMethod method, string resourceUri, string apiVersion, string content, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<T> BeginHttpUpdateMessagesAsync<T>(HttpMethod method, string resourceUri, string apiVersion, Object content, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             IDictionary<string, IList<string>> queries = new Dictionary<string, IList<string>>();
-            queries.Add(API_VERSION, new List<string> { apiVersion });
+            if (apiVersion != null)
+            {
+                queries.Add(API_VERSION, new List<string> { apiVersion });
+            }
             using (var _result = await BeginHttpMessagesAsync<T>(method: method,
                                                                 path: resourceUri,
                                                                 queries: queries,
@@ -263,7 +284,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
                                                                 customHeaders: null,
                                                                 cancellationToken: cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return (_result==null)? default(T) : _result.Body;
             }
         }
         public T GetResouce<T>(string resourceId, string apiVersion, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -276,9 +297,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
             return BeginHttpGetMessagesAsync<List<T>>(resourceUri, apiVersion, customHeaders, cancellationToken).GetAwaiter().GetResult();
         }
 
-        public IPage<T> GetResoucePage<T>(string resourceUri, string apiVersion, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public P GetResoucePage<P, T>(string resourceUri, string apiVersion, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken)) where P : IPage<T>
         {
-            return BeginHttpGetMessagesAsync<IPage<T>>(resourceUri, apiVersion, customHeaders, cancellationToken).GetAwaiter().GetResult();
+            return BeginHttpGetMessagesAsync<P>(resourceUri, apiVersion, customHeaders, cancellationToken).GetAwaiter().GetResult();
         }
 
         public void DeleteResouce(string resourceUri, string apiVersion, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -286,16 +307,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
             BeginHttpDeleteMessagesAsync(resourceUri, apiVersion, customHeaders, cancellationToken).GetAwaiter().GetResult();
         }
 
-        public T PutResouce<T>(string resourceUri, string apiVersion, string content, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public T PutResouce<T>(string resourceUri, string apiVersion, Object content, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return BeginHttpUpdateMessagesAsync<T>(HttpMethod.Put, resourceUri, apiVersion, content, customHeaders, cancellationToken).GetAwaiter().GetResult();
         }
 
-        public T PostResouce<T>(string resourceUri, string apiVersion, string content, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public T PostResouce<T>(string resourceUri, string apiVersion, Object content, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return BeginHttpUpdateMessagesAsync<T>(HttpMethod.Post, resourceUri, apiVersion, content, customHeaders, cancellationToken).GetAwaiter().GetResult();
         }
-        public T PatchResouce<T>(string resourceUri, string apiVersion, string content, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public T PatchResouce<T>(string resourceUri, string apiVersion, Object content, IDictionary<string, IList<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return BeginHttpUpdateMessagesAsync<T>(PATCH, resourceUri, apiVersion, content, customHeaders, cancellationToken).GetAwaiter().GetResult();
         }

@@ -9,6 +9,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
 {
     public partial class AzureRestClient : ServiceClient<AzureRestClient>, IAzureRestClient, IAzureClient
     {
+        /// <summary>
+        /// Credentials needed for the client to connect to Azure.
+        /// </summary>
         public ServiceClientCredentials Credentials { get; private set; }
 
         public int? LongRunningOperationRetryTimeout { get; set; }
@@ -21,9 +24,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
 
         public string AcceptLanguage { get; set; }
 
+        /// <summary>
+        /// The base URI of the service.
+        /// </summary>
         public System.Uri BaseUri { get; set; }
 
         public IAzureRestOperations Operations { get; private set; }
+
+        public bool EndsWithSlash { get; private set; }
 
         protected AzureRestClient(params DelegatingHandler[] handlers)
         {
@@ -37,6 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
                 throw new System.ArgumentNullException("baseUri");
             }
             BaseUri = baseUri;
+            EndsWithSlash = baseUri.AbsoluteUri.EndsWith("/");
             if (credentials == null)
             {
                 throw new System.ArgumentNullException("credentials");
@@ -75,6 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
                         new Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings = new JsonSerializerSettings
             {
                 DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
@@ -88,6 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
                     }
             };
             CustomInitialize();
+            DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }
     }
