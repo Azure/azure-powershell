@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Throw exception for Import-AzDataLakeStoreItem, Export-AzDataLakeStoreItem for store side exceptions. Earlier it used to write in the console.
 
 ## Version 1.2.7
 * Added reference to System.Buffers explicitly in csproj and psd1.

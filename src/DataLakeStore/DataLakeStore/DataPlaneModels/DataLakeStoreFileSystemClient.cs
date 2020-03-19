@@ -724,9 +724,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 UpdateProgress(progress, cmdletRunningRequest);
                 if (status != null && cmdletRunningRequest != null)
                 {
-                    foreach (var failedEntry in status.EntriesFailed)
+                    if (status.EntriesFailed.Count > 0)
                     {
-                        cmdletRunningRequest.WriteObject($"FailedTransfer: {failedEntry.EntryName} {failedEntry.Errors}");
+                        string error = "";
+                        foreach (var failedEntry in status.EntriesFailed)
+                        {
+                            error+=$"FailedTransfer: Name- {failedEntry.EntryName}, Type- {failedEntry.Type}, Status- {failedEntry.Status}, Error- {failedEntry.Errors}";
+                        }
+                        throw new AdlsException(error);
                     }
                 }
             }
