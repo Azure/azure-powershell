@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.TrafficRouting
         [ValidateNotNullOrEmpty]
         public string RuleName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Return the Routing Rule object.")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrWhiteSpace(ResourceGroupName) && !string.IsNullOrWhiteSpace(WebAppName))
@@ -59,8 +62,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.TrafficRouting
                         siteConfig.Experiments.RampUpRules.Remove(givenRampUpRuleObj);
                         // Update web app configuration
                         WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, webApp.Location, WebAppName, null, siteConfig, null, null, null);
-                        var app = WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, null);
-                        WriteObject(app.SiteConfig.Experiments.RampUpRules.FirstOrDefault(rule => rule.Name == RuleName));
+                        if (PassThru.IsPresent)
+                        {
+                            var app = WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, null);
+                            WriteObject(app.SiteConfig.Experiments.RampUpRules.FirstOrDefault(rule => rule.Name == RuleName));
+                        }
                     }
                 }
                 else
