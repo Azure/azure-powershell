@@ -525,6 +525,7 @@ function Test-AzureVMDiskExclusion
 	$storageType = 'Standard_LRS'
 	try
 	{
+		$saName = Create-SA $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
 		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 
@@ -572,7 +573,7 @@ function Test-AzureVMDiskExclusion
 
 		$backupJob = Backup-Item $vault $item
 		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
-		$backupEndTime = $backupJob.EndTime.AddDays(1);
+		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
 		$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
 			-VaultId $vault.ID `
 			-Item $item `
@@ -587,13 +588,13 @@ function Test-AzureVMDiskExclusion
 			-RecoveryPoint $rp `
 			-StorageAccountName $saName `
 			-StorageAccountResourceGroupName $resourceGroupName `
-			-RestoreDiskList $arr
-			-UseOriginalStorageAccount | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+			-RestoreDiskList $arr | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 		
 		Assert-True { $restoreJob.Status -eq "Completed" }
 
 		Disable-AzRecoveryServicesBackupProtection `
 			-Item $item `
+			-VaultId $vault.ID `
 			-RemoveRecoveryPoints `
 			-Force;
 
