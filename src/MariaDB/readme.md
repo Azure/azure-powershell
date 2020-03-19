@@ -59,33 +59,12 @@ directive:
       verb: Set
     set:
       verb: Update
-<<<<<<< HEAD
-  - where:
-     verb: New$
-     variant: ^CreateViaIdentity
-    hide: true
-  - where:
-      verb: New$|Update$
-      variant: ^(?!.*?Expanded)
-    hide: true
-=======
->>>>>>> upstream/wyunchi/generate-mariadb
 
 # Server
   - where:
       verb: New|Update
       subject: Server
     hide: true
-<<<<<<< HEAD
-
-# VNet
-  - where:
-      subject: VirtualNetworkRule
-    set:
-      subject: VNetRule
-  - where:
-      subject: VNetRule
-=======
   - where:
       parameter-name: StorageProfileBackupRetentionDay
       subject: Server
@@ -94,16 +73,11 @@ directive:
 # VNet
   - where:
       subject: VirtualNetworkRule
->>>>>>> upstream/wyunchi/generate-mariadb
       parameter-name: Parameter
     set:
       parameter-name: VNetRule
   - where:
-<<<<<<< HEAD
-      subject: VNetRule
-=======
       subject: VirtualNetworkRule
->>>>>>> upstream/wyunchi/generate-mariadb
       parameter-name: VirtualNetworkSubnetId
     set:
       parameter-name: SubnetId
@@ -134,42 +108,14 @@ directive:
   - where:
       subject: LogFile|Database|LocationBasedPerformanceTier|CheckNameAvailability|ServerSecurityAlertPolicy
     hide: true
-<<<<<<< HEAD
-  
-# Fix the name of the module in the nuspec
-  - from: Az.MariaDB.nuspec
-    where: $
-    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - MariaDB service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on MariaDB, please visit the following$1 https://docs.microsoft.com/azure/MariaDB/');
-# Add release notes
-  - from: Az.MariaDB.nuspec
-    where: $
-    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview MariaDB cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
- # Make the nuget package a preview
-  - from: Az.MariaDB.nuspec
-    where: $
-    transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
-# Update the psd1 description
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell(.) MariaDB cmdlets\"\}\'\"\);/, 'sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell - MariaDB service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\\n\\nFor more information on MariaDB, please visit the following$1 https://docs.microsoft.com/azure/MariaDB/\"\}\'\"\);');
-# Make this a preview module
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'Initial release of preview MariaDB cmdlets - see https://aka.ms/azps4doc for more information.\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
-=======
-
->>>>>>> upstream/wyunchi/generate-mariadb
 # Fix the bug that OperationOrigin.System conflict with namespace System
   - from: source-file-csharp
-    where: $
+    where: $s
     transform: $ = $.replace(/OperationOrigin System/, 'OperationOrigin System1');
   - from: ServerForCreate.cs
     where: $
     transform: $ = $.replace(/internal partial interface IServerForCreateInternal/, 'public partial interface IServerForCreateInternal');
-<<<<<<< HEAD
-=======
   - from: (.*)AzMariaDbServer_(.*).cs
     where: $
     transform: $ = $.replace('public int StorageProfileBackupRetentionDay', '[System.Management.Automation.ValidateRangeAttribute(7,35)]\n        public int StorageProfileBackupRetentionDay');
->>>>>>> upstream/wyunchi/generate-mariadb
 ```

@@ -12,64 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-<<<<<<< HEAD
-<#
-.Synopsis
-Get the connection string for different clients.
-.Description
-Get the connection string for different clients.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconnectionstring
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-System.String
-.Notes
-
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconnectionstring
-#>
-=======
->>>>>>> upstream/wyunchi/generate-mariadb
 function Get-AzMariaDbConnectionString {
     [OutputType([System.String])]
     [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
     param(
-<<<<<<< HEAD
-        [Parameter(ParameterSetName='ServerName', Mandatory)]
-=======
         [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='The name of the server.')]
->>>>>>> upstream/wyunchi/generate-mariadb
         [Alias('ServerName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # The name of the server.
         ${Name},
     
-<<<<<<< HEAD
-        [Parameter(ParameterSetName='ServerName', Mandatory)]
-=======
         [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='The name of the resource group that contains the resource.')]
->>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # The name of the resource group that contains the resource.
         # You can obtain this value from the Azure Resource Manager API or the portal.
         ${ResourceGroupName},
     
-<<<<<<< HEAD
-        [Parameter(ParameterSetName='ServerName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-        [System.String]
-        # The subscription ID that identifies an Azure subscription.
-        ${SubscriptionId},
-    
-        [Parameter(ParameterSetName='ServerObject', ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
-=======
         [Parameter(HelpMessage='The subscription ID is part of the URI for every service call')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -81,16 +42,11 @@ function Get-AzMariaDbConnectionString {
         [Parameter(ParameterSetName='ServerObject', ValueFromPipeline, Mandatory, HelpMessage='Identity Parameter')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
->>>>>>> upstream/wyunchi/generate-mariadb
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
 
-<<<<<<< HEAD
-        [Parameter(Mandatory)]
-=======
         [Parameter(Mandatory, HelpMessage='Connect client type')]
->>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Validateset('ADO.NET', 'JDBC', 'Node.js', 'PHP', 'Python', 'Ruby', 'WebApp')]
         [string]

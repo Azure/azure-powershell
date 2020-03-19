@@ -12,126 +12,52 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-<<<<<<< HEAD
-<#
-.Synopsis
-Updates a configuration of a server.
-.Description
-Updates a configuration of a server.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbconfiguration
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-CONFIGURATION <IConfiguration>: Represents a Configuration.
-  [Source <String>]: Source of the configuration.
-  [Value <String>]: Value of the configuration.
-
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbconfiguration
-#>
-function Update-AzMariaDbConfiguration {
-=======
 function Update-AzMariaDbConfiguration
 {
->>>>>>> upstream/wyunchi/generate-mariadb
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
     param(
-<<<<<<< HEAD
-        [Parameter(ParameterSetName='ServerName', Mandatory)]
-=======
         [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='You can obtain this value from the Azure Resource Manager API or the portal.')]
->>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # The name of the resource group that contains the resource.
         # You can obtain this value from the Azure Resource Manager API or the portal.
         ${ResourceGroupName},
     
-<<<<<<< HEAD
-        [Parameter(ParameterSetName='ServerName', Mandatory)]
-=======
         [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='The name of the server.')]
->>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # The name of the server.
         ${ServerName},
-<<<<<<< HEAD
-
-        [Parameter(ParameterSetName='ServerId', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-        [System.String]
-        # The Id of the server.
-        ${ServerId},
-    
-        [Parameter(ParameterSetName='ServerName', Mandatory)]
-=======
     
         [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='The subscription ID that identifies an Azure subscription.')]
->>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The subscription ID that identifies an Azure subscription.
         ${SubscriptionId},
     
-<<<<<<< HEAD
-        [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline)]
-=======
         [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline, HelpMessage='Identity Parameter')]
->>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${ServerObject},
     
-<<<<<<< HEAD
-        [Parameter()]
-=======
         [Parameter(HelpMessage='Configurations to be updated.')]
->>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.Collections.Hashtable]
         ${Configuration},
 
-<<<<<<< HEAD
-        [Parameter()]
-=======
         [Parameter(HelpMessage='The name of the server configuration.')]
->>>>>>> upstream/wyunchi/generate-mariadb
         [Alias('ConfigurationName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # The name of the server configuration.
         ${Name},
     
-<<<<<<< HEAD
-        [Parameter()]
-=======
         [Parameter(HelpMessage='Value of the configuration.')]
->>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.String]
         # Value of the configuration.
@@ -201,10 +127,6 @@ function Update-AzMariaDbConfiguration
     
     process {
         try {
-<<<<<<< HEAD
-            Import-Module (Join-Path $PSScriptRoot MariaDbUtils.psm1)
-=======
->>>>>>> upstream/wyunchi/generate-mariadb
             if ($PSBoundParameters.ContainsKey('ServerId')) {
                 $ServerId = $PSBoundParameters['ServerId']
                 $PSBoundParameters['ServerName'] = Get-ServerNameFromMariaDbId $ServerId
