@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Azure Site Recovery support for doing reprotect and update vm properties for azure disk encrypted Virtual Machines.
+* Added Azure Site Recovery VmwareToAzure properties DR monitoring
 
 ## Version 2.7.0
 * Added Support for Restore-as-files for SQL Databases.
