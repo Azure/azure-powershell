@@ -24,6 +24,8 @@ $targetFileShareName = "fs1"
 $targetFolder = "pstestfolder3rty7d7s"
 $folderPath = "pstestfolder1bca8f8e"
 $filePath = "pstestfolder1bca8f8e/pstestfile1bca8f8e.txt"
+$file1 = "file1.txt"
+$file2 = "file2.txt"
 $skuName="Standard_LRS"
 $policyName = "afspolicy1"
 $newPolicyName = "NewAFSBackupPolicy"
@@ -368,6 +370,19 @@ function Test-AzureFSFullRestore
 				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob4.Status -eq "Completed" }
+
+		# Multiple Files Restore
+		$files = [System.Collections.ArrayList]@($file1, $file2)
+		$restoreJob = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $recoveryPoint[0] `
+			-MultipleSourceFilePaths files `
+			-SourceFileType File `
+			-ResolveConflict Overwrite | `
+				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob5.Status -eq "Completed" }
 	}
 	finally
 	{
