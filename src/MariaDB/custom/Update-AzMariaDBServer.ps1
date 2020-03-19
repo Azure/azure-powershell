@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+<<<<<<< HEAD
 <#
 .Synopsis
 Updates an existing server.
@@ -63,10 +64,15 @@ PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserver
 #>
 function Update-AzMariaDBServer {
+=======
+function Update-AzMariaDbServer
+{
+>>>>>>> upstream/wyunchi/generate-mariadb
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
     [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
     param(
+<<<<<<< HEAD
         [Parameter(ParameterSetName='ServerName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
@@ -74,13 +80,27 @@ function Update-AzMariaDBServer {
         ${Name},
     
         [Parameter(ParameterSetName='ServerName', Mandatory)]
+=======
+        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='MariaDb server name')]
+        [Alias('ServerName')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+        [System.String]
+        # MariaDb server name.
+        ${Name},
+    
+        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='The name of the resource group that contains the resource.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # The name of the resource group that contains the resource.
         # You can obtain this value from the Azure Resource Manager API or the portal.
         ${ResourceGroupName},
     
+<<<<<<< HEAD
         [Parameter(ParameterSetName='ServerName')]
+=======
+        [Parameter(ParameterSetName='ServerName', HelpMessage='The subscription ID is part of the URI for every service call')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -88,7 +108,11 @@ function Update-AzMariaDBServer {
         # The subscription ID is part of the URI for every service call.
         ${SubscriptionId},
     
+<<<<<<< HEAD
         [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline)]
+=======
+        [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline, HelpMessage='Identity Parameter')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
         # Identity Parameter
@@ -96,12 +120,17 @@ function Update-AzMariaDBServer {
         ${InputObject},
 
         #region ServerUpdateParameters
+<<<<<<< HEAD
         [Parameter()]
+=======
+        [Parameter(HelpMessage='The replication role of the server.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.String]
         # The replication role of the server.
         ${ReplicationRole},
     
+<<<<<<< HEAD
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.Security.SecureString]
@@ -139,11 +168,21 @@ function Update-AzMariaDBServer {
         ${SkuSize},
 
         [Parameter()]
+=======
+        [Parameter(HelpMessage='The password of the administrator login.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        [System.Security.SecureString]
+        # The password of the administrator login which should be SecureString.
+        ${AdministratorLoginPassword},
+
+        [Parameter(HelpMessage='Enable ssl enforcement or not when connect to server.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum]
         # Enable ssl enforcement or not when connect to server.
         ${SslEnforcement},
 
+<<<<<<< HEAD
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [int]
@@ -151,17 +190,37 @@ function Update-AzMariaDBServer {
         ${StorageProfileBackupRetentionDay},
 
         [Parameter()]
+=======
+        [Parameter(HelpMessage='Backup retention days for the server.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        [int]
+        # Backup retention days for the server.
+        ${StorageProfileBackupRetentionDay},
+
+        [Parameter(HelpMessage='Enable Geo-redundant or not for server backup.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]
+        # Enable Geo-redundant or not for server backup.
+        ${StorageProfileGeoRedundantBackup},
+
+        [Parameter(HelpMessage='Enable Storage Auto Grow.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
         # Enable Storage Auto Grow.
         ${StorageProfileStorageAutogrow},
 
+<<<<<<< HEAD
         [Parameter()]
+=======
+        [Parameter(HelpMessage='Max storage allowed for a server.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [int]
         # Max storage allowed for a server.
         ${StorageProfileStorageMb},
 
+<<<<<<< HEAD
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion]
@@ -173,6 +232,20 @@ function Update-AzMariaDBServer {
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion]
         # Server version
         ${Version},
+=======
+        [Parameter(HelpMessage='The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        [System.String]
+        # The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
+        ${SkuName},
+
+        [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerUpdateParametersTags]))]
+        [System.Collections.Hashtable]
+        # Application-specific metadata in the form of key-value pairs.
+        ${Tag},
+>>>>>>> upstream/wyunchi/generate-mariadb
         #endregion ServerUpdateParameters
     
         #region DefaultParameters
@@ -239,6 +312,7 @@ function Update-AzMariaDBServer {
     
     process {
         try {
+<<<<<<< HEAD
             $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerUpdateParameters]::new()
 
             #region ServerForCreate
@@ -310,6 +384,12 @@ function Update-AzMariaDBServer {
             }
             
             $PSBoundParameters.Add('Parameter', $Parameter)
+=======
+            if ($PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
+                $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($PSBoundParameters['AdministratorLoginPassword'])
+                $PSBoundParameters['AdministratorLoginPassword'] = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+            }
+>>>>>>> upstream/wyunchi/generate-mariadb
     
             Az.MariaDb.internal\Update-AzMariaDbServer @PSBoundParameters
           } catch {

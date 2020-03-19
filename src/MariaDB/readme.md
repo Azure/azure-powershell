@@ -59,6 +59,7 @@ directive:
       verb: Set
     set:
       verb: Update
+<<<<<<< HEAD
   - where:
      verb: New$
      variant: ^CreateViaIdentity
@@ -67,12 +68,15 @@ directive:
       verb: New$|Update$
       variant: ^(?!.*?Expanded)
     hide: true
+=======
+>>>>>>> upstream/wyunchi/generate-mariadb
 
 # Server
   - where:
       verb: New|Update
       subject: Server
     hide: true
+<<<<<<< HEAD
 
 # VNet
   - where:
@@ -81,11 +85,25 @@ directive:
       subject: VNetRule
   - where:
       subject: VNetRule
+=======
+  - where:
+      parameter-name: StorageProfileBackupRetentionDay
+      subject: Server
+    set:
+      parameter-description: Backup retention days for the server. Day count is between 7 and 35.
+# VNet
+  - where:
+      subject: VirtualNetworkRule
+>>>>>>> upstream/wyunchi/generate-mariadb
       parameter-name: Parameter
     set:
       parameter-name: VNetRule
   - where:
+<<<<<<< HEAD
       subject: VNetRule
+=======
+      subject: VirtualNetworkRule
+>>>>>>> upstream/wyunchi/generate-mariadb
       parameter-name: VirtualNetworkSubnetId
     set:
       parameter-name: SubnetId
@@ -116,6 +134,7 @@ directive:
   - where:
       subject: LogFile|Database|LocationBasedPerformanceTier|CheckNameAvailability|ServerSecurityAlertPolicy
     hide: true
+<<<<<<< HEAD
   
 # Fix the name of the module in the nuspec
   - from: Az.MariaDB.nuspec
@@ -137,6 +156,9 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'Initial release of preview MariaDB cmdlets - see https://aka.ms/azps4doc for more information.\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
+=======
+
+>>>>>>> upstream/wyunchi/generate-mariadb
 # Fix the bug that OperationOrigin.System conflict with namespace System
   - from: source-file-csharp
     where: $
@@ -144,4 +166,10 @@ directive:
   - from: ServerForCreate.cs
     where: $
     transform: $ = $.replace(/internal partial interface IServerForCreateInternal/, 'public partial interface IServerForCreateInternal');
+<<<<<<< HEAD
+=======
+  - from: (.*)AzMariaDbServer_(.*).cs
+    where: $
+    transform: $ = $.replace('public int StorageProfileBackupRetentionDay', '[System.Management.Automation.ValidateRangeAttribute(7,35)]\n        public int StorageProfileBackupRetentionDay');
+>>>>>>> upstream/wyunchi/generate-mariadb
 ```

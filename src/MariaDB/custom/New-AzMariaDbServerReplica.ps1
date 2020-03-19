@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+<<<<<<< HEAD
 <#
 .Synopsis
 Creates a replica for an existing database.
@@ -52,11 +53,21 @@ function New-AzMariaDbServerReplica {
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
     param(
         [Parameter(Mandatory)]
+=======
+function New-AzMariaDbServerReplica {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
+    [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
+    param(
+        [Parameter(Mandatory, HelpMessage='Replica name.')]
+        [Alias('ReplicaName')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # Replica name
         ${Name},
 
+<<<<<<< HEAD
         [Parameter(ParameterSetName='SourceServerId', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
@@ -64,19 +75,36 @@ function New-AzMariaDbServerReplica {
         ${SourceServerId},
 
         [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline)]
+=======
+        [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline, HelpMessage='The source server object to restore from.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
         # The source server object to restore from.
         ${InputObject},
     
+<<<<<<< HEAD
         [Parameter(Mandatory)]
+=======
+        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='MariaDb server name.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+        [System.String]
+        # MariaDb server name.
+        ${ServerName},
+    
+        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='You can obtain this value from the Azure Resource Manager API or the portal.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # The name of the resource group that contains the resource.
         # You can obtain this value from the Azure Resource Manager API or the portal.
         ${ResourceGroupName},
     
+<<<<<<< HEAD
         [Parameter()]
+=======
+        [Parameter(HelpMessage='The subscription ID is part of the URI for every service call.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -85,12 +113,17 @@ function New-AzMariaDbServerReplica {
         ${SubscriptionId},
     
         #region ServerForCreate
+<<<<<<< HEAD
         [Parameter()]
+=======
+        [Parameter(HelpMessage='The location the resource resides in.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.String]
         # The location the resource resides in.
         ${Location},
 
+<<<<<<< HEAD
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [int]
@@ -110,11 +143,15 @@ function New-AzMariaDbServerReplica {
         ${SkuTier},
 
         [Parameter()]
+=======
+        [Parameter(HelpMessage='The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.String]
         # The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
         ${SkuName},
 
+<<<<<<< HEAD
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.String]
@@ -162,6 +199,14 @@ function New-AzMariaDbServerReplica {
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion]
         # Server version
         ${Version},
+=======
+        [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerUpdateParametersTags]))]
+        [System.Collections.Hashtable]
+        # Application-specific metadata in the form of key-value pairs.
+        ${Tag},
+>>>>>>> upstream/wyunchi/generate-mariadb
         #endregion ServerForCreate
     
         #region DefaultParameters
@@ -232,6 +277,7 @@ function New-AzMariaDbServerReplica {
             $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForReplica]::new()
     
             #region ServerForCreate
+<<<<<<< HEAD
             if ($PSBoundParameters.ContaineKey('Location')) {
                 $Parameter.Location = $PSBoundParameters['Location']
                 $Null = $PSBoundParameters.Remove('Location')
@@ -265,11 +311,28 @@ function New-AzMariaDbServerReplica {
                 $Null = $PSBoundParameters.Remove('SkuTier')
             }
 
+=======
+            if ($PSBoundParameters.ContainsKey('InputObject')) {
+                $Null = $PSBoundParameters.Remove('InputObject')
+            } else {
+                $InputObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+            }
+            $Parameter.Property.SourceServerId = $InputObject.Id
+            
+            if ($PSBoundParameters.ContainsKey('Location')) {
+                $Parameter.Location = $PSBoundParameters['Location']
+                $Null = $PSBoundParameters.Remove('Location')
+            } else {
+                $Parameter.Location = $InputObject.Location
+            }
+
+>>>>>>> upstream/wyunchi/generate-mariadb
             if ($PSBoundParameters.ContainsKey('SkuName')) {
                 $Parameter.SkuName = $PSBoundParameters['SkuName']
                 $Null = $PSBoundParameters.Remove('SkuName')
             }
 
+<<<<<<< HEAD
             if ($PSBoundParameters.ContainsKey('SkuSize')) {
                 $Parameter.SkuSize = $PSBoundParameters['SkuSize']
                 $Null = $PSBoundParameters.Remove('SkuSize')
@@ -304,15 +367,20 @@ function New-AzMariaDbServerReplica {
                 $Null = $PSBoundParameters.Remove('StorageProfileStorageMb')
             }
 
+=======
+>>>>>>> upstream/wyunchi/generate-mariadb
             if ($PSBoundParameters.ContainsKey('Tag')) {
                 $Parameter.Tag = $PSBoundParameters['Tag']
                 $Null = $PSBoundParameters.Remove('Tag')
             }
+<<<<<<< HEAD
 
             if ($PSBoundParameters.ContainsKey('Version')) {
                 $Parameter.Version = $PSBoundParameters['Version']
                 $Null = $PSBoundParameters.Remove('Version')
             }
+=======
+>>>>>>> upstream/wyunchi/generate-mariadb
             #endregion ServerForCreate
 
             $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::Replica

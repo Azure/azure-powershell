@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+<<<<<<< HEAD
 <#
 .Synopsis
 Restore a existing mariadb server from a backup with a timestamp.
@@ -64,19 +65,42 @@ function Restore-AzMariaDBServerWithGeo {
         ${SourceServerId},
 
         [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline)]
+=======
+function Restore-AzMariaDbServerWithGeo
+{
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
+    [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
+    param(
+        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='MariaDb server name.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+        [System.String]
+        # MariaDb server name.
+        ${Name},
+
+        [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline, HelpMessage='The source server object to restore from.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
         # The source server object to restore from.
         ${InputObject},
     
+<<<<<<< HEAD
         [Parameter(Mandatory)]
+=======
+        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='You can obtain this value from the Azure Resource Manager API or the portal.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # The name of the resource group that contains the resource.
         # You can obtain this value from the Azure Resource Manager API or the portal.
         ${ResourceGroupName},
     
+<<<<<<< HEAD
         [Parameter()]
+=======
+        [Parameter(HelpMessage='The subscription ID is part of the URI for every service call.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -85,12 +109,17 @@ function Restore-AzMariaDBServerWithGeo {
         ${SubscriptionId},
     
         #region ServerForCreate
+<<<<<<< HEAD
         [Parameter()]
+=======
+        [Parameter(HelpMessage='The location the resource resides in.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.String]
         # The location the resource resides in.
         ${Location},
 
+<<<<<<< HEAD
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [int]
@@ -110,16 +139,28 @@ function Restore-AzMariaDBServerWithGeo {
         ${SkuTier},
 
         [Parameter()]
+=======
+        [Parameter(HelpMessage='The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.')]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.String]
         # The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
         ${SkuName},
 
+<<<<<<< HEAD
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.String]
         # The size code, to be interpreted by resource as appropriate.
         ${SkuSize},
+=======
+        [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerUpdateParametersTags]))]
+        [System.Collections.Hashtable]
+        # Application-specific metadata in the form of key-value pairs.
+        ${Tag},
+>>>>>>> upstream/wyunchi/generate-mariadb
         #endregion ServerForCreate
 
         #region GeoRestore
@@ -193,7 +234,11 @@ function Restore-AzMariaDBServerWithGeo {
             $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForGeoRestore]::new()
 
             #region ServerForCreate
+<<<<<<< HEAD
             if ($PSBoundParameters.ContaineKey('Location')) {
+=======
+            if ($PSBoundParameters.ContainsKey('Location')) {
+>>>>>>> upstream/wyunchi/generate-mariadb
                 $Parameter.Location = $PSBoundParameters['Location']
                 $Null = $PSBoundParameters.Remove('Location')
             } else {
@@ -211,6 +256,7 @@ function Restore-AzMariaDBServerWithGeo {
                 $Parameter.Location = $InputObject.Location
             }
 
+<<<<<<< HEAD
             if ($PSBoundParameters.ContainsKey('SkuCapacity')) {
                 $Parameter.SkuCapacity = $PSBoundParameters['SkuCapacity']
                 $PSBoundParameters.Remove('SkuCapacity')
@@ -226,15 +272,20 @@ function Restore-AzMariaDBServerWithGeo {
                 $PSBoundParameters.Remove('SkuTier')
             }
 
+=======
+>>>>>>> upstream/wyunchi/generate-mariadb
             if ($PSBoundParameters.ContainsKey('SkuName')) {
                 $Parameter.SkuName = $PSBoundParameters['SkuName']
                 $PSBoundParameters.Remove('SkuName')
             }
+<<<<<<< HEAD
 
             if ($PSBoundParameters.ContainsKey('SkuSize')) {
                 $Parameter.SkuSize = $PSBoundParameters['SkuSize']
                 $PSBoundParameters.Remove('SkuSize')
             }
+=======
+>>>>>>> upstream/wyunchi/generate-mariadb
             #endregion ServerForCreate
 
             $PSBoundParameters.Add('Parameter', $Parameter)

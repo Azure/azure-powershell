@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+<<<<<<< HEAD
 <#
 .Synopsis
 Restore a existing mariadb server from a backup with a timestamp.
@@ -52,24 +53,40 @@ function Restore-AzMariaDBServer {
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
     param(
         [Parameter(Mandatory)]
+=======
+function Restore-AzMariaDbServer
+{
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
+    [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
+    param(
+        [Parameter(ParameterSetName='ServerName', Mandatory)]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # MariaDb member name.
         ${Name},
 
+<<<<<<< HEAD
         [Parameter(ParameterSetName='SourceServerId', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # The source server id to restore from.
         ${SourceServerId},
 
+=======
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
         # The source server object to restore from.
         ${InputObject},
     
+<<<<<<< HEAD
         [Parameter(Mandatory)]
+=======
+        [Parameter(ParameterSetName='ServerName', Mandatory)]
+>>>>>>> upstream/wyunchi/generate-mariadb
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # The name of the resource group that contains the resource.
@@ -84,6 +101,16 @@ function Restore-AzMariaDBServer {
         # The subscription ID is part of the URI for every service call.
         ${SubscriptionId},
 
+<<<<<<< HEAD
+=======
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerUpdateParametersTags]))]
+        [System.Collections.Hashtable]
+        # Application-specific metadata in the form of key-value pairs.
+        ${Tag},
+
+>>>>>>> upstream/wyunchi/generate-mariadb
         #region PointInTimeRestore
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
