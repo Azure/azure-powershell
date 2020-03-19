@@ -28,8 +28,8 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
 Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
  -ResolveConflict <RestoreFSResolveConflictOption> [-SourceFilePath <String>]
  [-SourceFileType <SourceFileType>] [-TargetStorageAccountName <String>] [-TargetFileShareName <String>]
- [-TargetFolder <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-TargetFolder <String>] [-MultipleSourceFilePaths <System.Collections.Generic.List`1[System.String]>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureWorkloadParameterSet
@@ -86,6 +86,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MultipleSourceFilePaths
+Used for Multiple files restore from a file share. The paths of the items to be restored within the file share.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: AzureFileParameterSet
+Aliases:
 
 Required: False
 Position: Named
