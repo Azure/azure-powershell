@@ -40,34 +40,12 @@ Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-ProtectableIt
  [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ModifyProtectionPolicy
+### ModifyProtection
 ```
-Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Item] <ItemBase> [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ModifyProtectionDiskInclusion
-```
-Enable-AzRecoveryServicesBackupProtection [-Item] <ItemBase> [-InclusionDisksList <String[]>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ModifyProtectionDiskExclusion
-```
-Enable-AzRecoveryServicesBackupProtection [-Item] <ItemBase> [-ExclusionDisksList <String[]>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ModifyProtectionDiskReset
-```
-Enable-AzRecoveryServicesBackupProtection [-Item] <ItemBase> [-ResetExclusionSettings] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ModifyProtectionWithOSDiskOnly
-```
-Enable-AzRecoveryServicesBackupProtection [-Item] <ItemBase> [-ExcludeAllDataDisks] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Item] <ItemBase>
+ [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>] [-ResetExclusionSettings]
+ [-ExcludeAllDataDisks] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,7 +88,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection, ModifyProtectionWithOSDiskOnly
+Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection, ModifyProtection
 Aliases:
 
 Required: False
@@ -125,7 +103,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection, ModifyProtectionDiskExclusion
+Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection, ModifyProtection
 Aliases:
 
 Required: False
@@ -140,7 +118,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection, ModifyProtectionDiskInclusion
+Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection, ModifyProtection
 Aliases:
 
 Required: False
@@ -156,19 +134,7 @@ To obtain an **AzureRmRecoveryServicesBackupItem**, use the Get-AzRecoveryServic
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
-Parameter Sets: ModifyProtectionPolicy
-Aliases:
-
-Required: True
-Position: 4
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
-Parameter Sets: ModifyProtectionDiskInclusion, ModifyProtectionDiskExclusion, ModifyProtectionDiskReset, ModifyProtectionWithOSDiskOnly
+Parameter Sets: ModifyProtection
 Aliases:
 
 Required: True
@@ -199,7 +165,7 @@ To obtain an **AzureRmRecoveryServicesBackupProtectionPolicy** object, use the G
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
-Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection, AzureFileShareEnableProtection, AzureWorkloadEnableProtection, ModifyProtectionPolicy
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -229,7 +195,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ModifyProtectionDiskReset
+Parameter Sets: ModifyProtection
 Aliases:
 
 Required: True

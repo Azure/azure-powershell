@@ -586,4 +586,10 @@ Please contact Microsoft for further assistance.</value>
   <data name="TargetContainerRequiredException" xml:space="preserve">
     <value>Target Container parameter is required for this operation.</value>
   </data>
+  <data name="DiskExclusionParametersRedundant" xml:space="preserve">
+    <value>Multiple Parameters Provided. Please specify only one of the parameters from InclusionDisksList, ExclusionDisksList, ResetExclusionSetting and ExcludeAllDataDisks.</value>
+  </data>
+  <data name="InclusionListRedundantError" xml:space="preserve">
+    <value>Both Inclusion and Exclusion lists provided. Please provide only one of them.</value>
+  </data>
 </root>
