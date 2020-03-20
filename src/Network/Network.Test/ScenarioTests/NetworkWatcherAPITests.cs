@@ -33,7 +33,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetTopology");
         }
 
-        [Fact]
+        [Fact(Skip = "Skipped due to backend issues")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestGetSecurityGroupView()
@@ -120,6 +120,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestNetworkConfigurationDiagnostic()
         {
             TestRunner.RunTestScript("Test-NetworkConfigurationDiagnostic");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDFlowLog()
+        {
+            TestRunner.RunTestScript("Test-CRUDFlowLog");
         }
     }
 }

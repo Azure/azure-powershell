@@ -2407,7 +2407,7 @@ function Test-ApplicationGatewayWithFirewallPolicy
 	{
 		# The Per-Site firewall policy can only be enabled in regions which have the dynamic setting set to true.
 		# Currently Central US EUAP region has it enabled so hardcoding it to this region, This can be removed once it is enabled on regions in production.
-		$location = "centraluseuap"
+		$location = "westus"
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
