@@ -16,13 +16,15 @@ Enables backup for an item with a specified Backup protection policy.
 ### AzureVMComputeEnableProtection (Default)
 ```
 Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <String> [-ResourceGroupName] <String>
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>] [-ExcludeAllDataDisks] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMClassicComputeEnableProtection
 ```
 Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <String> [-ServiceName] <String>
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>] [-ExcludeAllDataDisks] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureFileShareEnableProtection
@@ -38,9 +40,33 @@ Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-ProtectableIt
  [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ModifyProtection
+### ModifyProtectionPolicy
 ```
 Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Item] <ItemBase> [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ModifyProtectionDiskInclusion
+```
+Enable-AzRecoveryServicesBackupProtection [-Item] <ItemBase> [-InclusionDisksList <String[]>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ModifyProtectionDiskExclusion
+```
+Enable-AzRecoveryServicesBackupProtection [-Item] <ItemBase> [-ExclusionDisksList <String[]>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ModifyProtectionDiskReset
+```
+Enable-AzRecoveryServicesBackupProtection [-Item] <ItemBase> [-ResetExclusionSettings] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ModifyProtectionWithOSDiskOnly
+```
+Enable-AzRecoveryServicesBackupProtection [-Item] <ItemBase> [-ExcludeAllDataDisks] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -79,13 +105,70 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExcludeAllDataDisks
+{{ Fill ExcludeAllDataDisks Description }}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection, ModifyProtectionWithOSDiskOnly
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExclusionDisksList
+{{ Fill ExclusionDisksList Description }}
+
+```yaml
+Type: System.String[]
+Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection, ModifyProtectionDiskExclusion
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InclusionDisksList
+{{ Fill InclusionDisksList Description }}
+
+```yaml
+Type: System.String[]
+Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection, ModifyProtectionDiskInclusion
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Item
 Specifies the Backup item for which this cmdlet enables protection.
 To obtain an **AzureRmRecoveryServicesBackupItem**, use the Get-AzRecoveryServicesBackupItem cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
-Parameter Sets: ModifyProtection
+Parameter Sets: ModifyProtectionPolicy
+Aliases:
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
+Parameter Sets: ModifyProtectionDiskInclusion, ModifyProtectionDiskExclusion, ModifyProtectionDiskReset, ModifyProtectionWithOSDiskOnly
 Aliases:
 
 Required: True
@@ -116,7 +199,7 @@ To obtain an **AzureRmRecoveryServicesBackupProtectionPolicy** object, use the G
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
-Parameter Sets: (All)
+Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection, AzureFileShareEnableProtection, AzureWorkloadEnableProtection, ModifyProtectionPolicy
 Aliases:
 
 Required: True
@@ -138,6 +221,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ResetExclusionSettings
+{{ Fill ResetExclusionSettings Description }}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ModifyProtectionDiskReset
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
