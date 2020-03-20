@@ -635,7 +635,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
                 return ResourceManager.GetString("BreakingChangesAttributesUsageChangeMessageConsole", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   The cmdlet is in experimental stage. The function may not be enabled in current subscription.
+        /// </summary>
+        public static string ExperimentalCmdletMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("ExperimentalCmdletMessage", resourceCulture);
+            }
+        }
+
         
+
         /// <summary>
         ///   Looks up a localized string similar to CACHERUNTIMEURL.
         /// </summary>
@@ -2547,7 +2560,19 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
                 return ResourceManager.GetString("PortalInstructionsGit", resourceCulture);
             }
         }
+
+        /// <summary>
+        /// Looks up a localized string similar to This cmdlet is in preview. The functionality may not be available in the selected subscription.
+        /// </summary>
+        public static string PreviewCmdletMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("PreviewCmdletMessage", resourceCulture);
+            }
+        }
         
+
         /// <summary>
         ///   Looks up a localized string similar to A value for the Primary Peer Subnet has to be provided..
         /// </summary>
