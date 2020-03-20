@@ -15,7 +15,7 @@ Describe 'New-AzMySqlServer' {
     It 'CreateExpanded' {
         {
             $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
-            New-AzMySqlServer -Name "leijin-mysql-server" -ResourceGroupName $env.resourceGroup -Location eastus -AdministratorLogin mysql_test -AdministratorLoginPassword $password -SkuName GP_Gen5_4 -Subscription 0b1f6471-1bf0-4dda-aec3-cb9272f09590
+            New-AzMySqlServer -Name "leijin-mysql-server" -ResourceGroupName $env.resourceGroup -Location $env.location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
         } | Should -Not -Throw
     }
 }

@@ -1,25 +1,31 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlserverreplica
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlconnectionstring
 schema: 2.0.0
 ---
 
-# New-AzMySqlServerReplica
+# Get-AzMySqlConnectionString
 
 ## SYNOPSIS
-Creates a new replica from an existing database.
+Get the connection string according to client connection provider.
 
 ## SYNTAX
 
+### Get (Default)
 ```
-New-AzMySqlServerReplica -Name <String> -ResourceGroupName <String> -InputObject <IServer>
- [-Location <String>] [-SkuName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Get-AzMySqlConnectionString -Client <String> -Name <String> -ResourceGroupName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzMySqlConnectionString -Client <String> -InputObject <IServer> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new replica from an existing database.
+Get the connection string according to client connection provider.
 
 ## EXAMPLES
 
@@ -43,15 +49,15 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job.
+### -Client
+Client connection provider.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -80,8 +86,8 @@ The source server object to create replica from.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServer
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -92,47 +98,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Location
-The location the resource resides in.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Name
 The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases: ServerName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NoWait
-Run the command asynchronously.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -145,60 +119,10 @@ The name of the resource group that contains the resource, You can obtain this v
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SkuName
-The name of the sku, typically, tier + family + cores, e.g.
-B_Gen4_1, GP_Gen5_8.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -211,11 +135,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServer
+### System.String
 
 ## ALIASES
 
@@ -235,7 +159,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[InfrastructureEncryption <InfrastructureEncryption?>]`: Status showing whether the server enabled infrastructure encryption.
   - `[MasterServerId <String>]`: The master server id of a replica server.
   - `[MinimalTlsVersion <MinimalTlsVersionEnum?>]`: Enforce a minimal Tls version for the server.
-  - `[PublicNetworkAccess <PublicNetworkAccessEnum?>]`: Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+  - `[PublicNetworkAccess <PublicNetworkAccessEnum?>]`: Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   - `[ReplicaCapacity <Int32?>]`: The maximum number of replicas that a master server can have.
   - `[ReplicationRole <String>]`: The replication role of the server.
   - `[SkuCapacity <Int32?>]`: The scale up/out capacity, representing server's compute units.

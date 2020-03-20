@@ -48,8 +48,9 @@ In this directory, run AutoRest:
 
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/mysql/resource-manager/readme.md
+  - $(this-folder)/../readme.azure.noprofile.md
+input-file:
+  - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
 module-version: 0.1.0
 title: MySQL
 subject-prefix: 'MySQL'
@@ -84,6 +85,10 @@ directive:
       variant: ^(?!.*?Expanded)
     hide: true
   - where:
+      verb: New
+      subject: Configuration
+    hide: true
+  - where:
       model-name: Server
     set:
       format-table:
@@ -104,7 +109,7 @@ directive:
       parameter-description: Backup retention days for the server. Day count is between 7 and 35.
   - from: ServerForCreate.cs
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServerPropertiesForCreate Property', 'public Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServerPropertiesForCreate Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesForCreate Property', 'public Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesForCreate Property');
   - from: OperationOrigin.cs
     where: $
     transform: $ = $.replace('(System.Convert.ToString(value))', '(global::System.Convert.ToString(value))');

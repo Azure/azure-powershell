@@ -1,65 +1,56 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlserver
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlfirewallrule
 schema: 2.0.0
 ---
 
-# Get-AzMySqlServer
+# Get-AzMySqlFirewallRule
 
 ## SYNOPSIS
-Gets information about a server.
+Gets information about a server firewall rule.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
-Get-AzMySqlServer [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMySqlFirewallRule -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzMySqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzMySqlServer -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzMySqlServer -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzMySqlFirewallRule -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets information about a server.
+Gets information about a server firewall rule.
 
 ## EXAMPLES
 
-### Example 1: Get MySql server by ResourceGroup and ServerName
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzMySqlServer -ResourceGroupName mysql_test -ServerName mysql-test
+PS C:\> {{ Add code here }}
 
-Name        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----        -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test  eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
+{{ Add output here }}
 ```
 
-The cmdlet gets MySql server by ResourceGroup and ServerName.
+{{ Add description here }}
 
-### Example 2: Lists all the MySql servers in specified resource group
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzMySqlServer -ResourceGroupName mysql_test
+PS C:\> {{ Add code here }}
 
-Name        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----        -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
-mysql-test  eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
+{{ Add output here }}
 ```
 
-The cmdlet lists all the MySql servers in specified resource group.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -97,12 +88,12 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the server.
+The name of the server firewall rule.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: ServerName
+Aliases: FirewallRuleName
 
 Required: True
 Position: Named
@@ -113,8 +104,24 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ServerName
+The name of the server.
 
 ```yaml
 Type: System.String
@@ -130,11 +137,11 @@ Dynamic: False
 ```
 
 ### -SubscriptionId
-The subscription ID that identifies an Azure subscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -154,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
 
 ## ALIASES
 
@@ -169,10 +176,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The name of the location.
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
   - `[ServerName <String>]`: The name of the server.
-  - `[SubscriptionId <String>]`: The subscription ID that identifies an Azure subscription.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
 ## RELATED LINKS

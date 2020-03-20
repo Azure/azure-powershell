@@ -59,8 +59,8 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -92,7 +92,7 @@ Dynamic: False
 ```
 
 ### -SubscriptionId
-The subscription ID that identifies an Azure subscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -114,7 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 
 ## ALIASES
 

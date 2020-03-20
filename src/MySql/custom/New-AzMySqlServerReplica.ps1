@@ -14,10 +14,9 @@
 # ----------------------------------------------------------------------------------
 
 function New-AzMySqlServerReplica {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServer])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Creates a new replica from an existing database.')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Profile('latest-2019-04-30')]
     param(
         [Parameter(Mandatory, HelpMessage = 'The name of the server.')]
         [Alias('ServerName')]
@@ -32,7 +31,7 @@ function New-AzMySqlServerReplica {
 
         [Parameter(Mandatory, ValueFromPipeline, HelpMessage = 'The source server object to create replica from.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServer]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer]
         ${InputObject},
 
         [Parameter(HelpMessage = 'The location the resource resides in.')]
@@ -43,7 +42,7 @@ function New-AzMySqlServerReplica {
         [Parameter(HelpMessage = 'The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
-        ${SkuName},
+        ${Sku},
 
         [Parameter(HelpMessage = 'The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -103,8 +102,8 @@ function New-AzMySqlServerReplica {
 
     process {
         try {
-          $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.ServerForCreate]::new()
-          $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.ServerPropertiesForReplica]::new()
+          $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ServerForCreate]::new()
+          $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ServerPropertiesForReplica]::new()
           $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode]::Replica
 
           $server = $PSBoundParameters['InputObject']
@@ -117,9 +116,9 @@ function New-AzMySqlServerReplica {
               $null = $PSBoundParameters.Remove('Location')
           }
 
-          if ($PSBoundParameters.ContainsKey('SkuName')) {
-              $Parameter.SkuName = $PSBoundParameters['SkuName']
-              $null = $PSBoundParameters.Remove('SkuName')
+          if ($PSBoundParameters.ContainsKey('Sku')) {
+              $Parameter.SkuName = $PSBoundParameters['Sku']
+              $null = $PSBoundParameters.Remove('Sku')
           }
 
           $PSBoundParameters.Add('Parameter', $Parameter)

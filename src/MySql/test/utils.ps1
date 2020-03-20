@@ -16,16 +16,20 @@ function setupEnv() {
 
     # Create the test group
     write-host "start to create test group."
-    $resourceGroup = "mysql_test" 
+    $resourceGroup = "mysql_test"
+    $location = "westcentralus"
     $env.Add("resourceGroup", $resourceGroup)
-    New-AzResourceGroup -Name $resourceGroup -Location eastus
+    $env.Add("location", $location)
+    New-AzResourceGroup -Name $resourceGroup -Location $location
 
     $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
-    $serverName = "mysql-test"
+    $serverName = "mysql-azure-powershell"
     $env.Add("serverName", $serverName)
 
-    write-host "New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location eastus -AdministratorLogin mysql_test -AdministratorLoginPassword $password -SkuName GP_Gen5_4"
-    New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location eastus -AdministratorLogin mysql_test -AdministratorLoginPassword $password -SkuName GP_Gen5_4
+    write-host (Get-AzContext | Out-String)
+
+    write-host "New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4"
+    New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

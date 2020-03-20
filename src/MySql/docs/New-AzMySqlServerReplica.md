@@ -1,25 +1,25 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/restore-azmysqlserverwithgeo
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlserverreplica
 schema: 2.0.0
 ---
 
-# Restore-AzMySqlServerWithGeo
+# New-AzMySqlServerReplica
 
 ## SYNOPSIS
-Restore a server from an existing backup
+Creates a new replica from an existing database.
 
 ## SYNTAX
 
 ```
-Restore-AzMySqlServerWithGeo -Name <String> -ResourceGroupName <String> -InputObject <IServer>
- [-Location <String>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlServerReplica -Name <String> -ResourceGroupName <String> -InputObject <IServer>
+ [-Location <String>] [-Sku <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restore a server from an existing backup
+Creates a new replica from an existing database.
 
 ## EXAMPLES
 
@@ -76,11 +76,11 @@ Dynamic: False
 ```
 
 ### -InputObject
-The source server object to restore from.
+The source server object to create replica from.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServer
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 Parameter Sets: (All)
 Aliases:
 
@@ -156,28 +156,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -SkuName
+### -Sku
 The name of the sku, typically, tier + family + cores, e.g.
 B_Gen4_1, GP_Gen5_8.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Tag
-Application-specific metadata in the form of key-value pairs.
-
-```yaml
-Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -227,11 +211,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 
 ## ALIASES
 
@@ -240,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IServer>: The source server object to restore from.
+#### INPUTOBJECT <IServer>: The source server object to create replica from.
   - `Location <String>`: The location the resource resides in.
   - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
@@ -251,7 +235,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[InfrastructureEncryption <InfrastructureEncryption?>]`: Status showing whether the server enabled infrastructure encryption.
   - `[MasterServerId <String>]`: The master server id of a replica server.
   - `[MinimalTlsVersion <MinimalTlsVersionEnum?>]`: Enforce a minimal Tls version for the server.
-  - `[PublicNetworkAccess <PublicNetworkAccessEnum?>]`: Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+  - `[PublicNetworkAccess <PublicNetworkAccessEnum?>]`: Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   - `[ReplicaCapacity <Int32?>]`: The maximum number of replicas that a master server can have.
   - `[ReplicationRole <String>]`: The replication role of the server.
   - `[SkuCapacity <Int32?>]`: The scale up/out capacity, representing server's compute units.
