@@ -12,10 +12,8 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-$rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-$administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-$skuName = 'GP_Gen5_4'
-$mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -SkuName $skuName -Location $env.Location
+$mariaDbParam01 = @{SkuName='GP_Gen5_4'}
+$mariadbTest01 = GetOrCreateMariaDb -forceCreate $true -mariaDb $mariaDbParam01 -ResourceGroup $env.resourceGroup
 $repMariadbName01 = $mariadb.Name + '-rep01' 
 $repMariadbName02 = $mariadb.Name + '-rep02'
 Restore-AzMariaDBServerWithGeo -Name $repMariadbName01 -ResourceGroupName $env.ResourceGroup -SourceServerId $mariadb.Id -Location $env.Location

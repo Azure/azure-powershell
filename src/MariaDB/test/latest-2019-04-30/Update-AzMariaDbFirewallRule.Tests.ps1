@@ -13,20 +13,19 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+$mariaDbParam01 = @{SkuName='B_Gen5_1'}
+$mariadbTest01 = GetOrCreateMariaDb -mariaDb $mariaDbParam01 -ResourceGroup $env.resourceGroup
 $firewallName01 = 'fr-' + (RandomString -allChars $false -len 6)
 $endIPAddress = '0.0.0.125'
 $startIPAddress = '0.0.0.1'
-$rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-$administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-$mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -Location $env.Location
-New-AzMariaDbFirewallRule -Name $firewallName01 -ResourceGroupName $env.ResourceGroup -ServerName $rstr01 -EndIPAddress $endIPAddress -StartIPAddress $startIPAddress
+New-AzMariaDbFirewallRule -Name $firewallName01 -ResourceGroupName $env.ResourceGroup -ServerName $mariadbTest01.Name -EndIPAddress $endIPAddress -StartIPAddress $startIPAddress
 
 Describe 'Update-AzMariaDbFirewallRule' {
     It 'UpdateExpanded' {
         $newEndIPAddress = '0.0.255.125'
         $newStartIPAddress = '0.0.255.1'
-        Update-AzMariaDbFirewallRule -Name $firewallName01 -ResourceGroupName $env.ResourceGroup -ServerName $rstr01 -EndIPAddress $newEndIPAddress -StartIPAddress $newStartIPAddress
-        $newfirewallRule = Get-AzMariaDbFirewallRule -Name $firewallName01 -ResourceGroupName $env.ResourceGroup -ServerName $rstr01
+        Update-AzMariaDbFirewallRule -Name $firewallName01 -ResourceGroupName $env.ResourceGroup -ServerName $mariadbTest01.Name -EndIPAddress $newEndIPAddress -StartIPAddress $newStartIPAddress
+        $newfirewallRule = Get-AzMariaDbFirewallRule -Name $firewallName01 -ResourceGroupName $env.ResourceGroup -ServerName $mariadbTest01.Name
         $newfirewallRule.EndIPAddress | Should -Be $newEndIPAddress
         $newfirewallRule.StartIPAddress | Should -Be $newStartIPAddress
     }

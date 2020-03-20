@@ -24,7 +24,7 @@ Describe 'Get-AzMariaDbServer' {
 
     It 'List' {
         $mariaDb = Get-AzMariaDbServer -ResourceGroupName $env.ResourceGroupGet
-        $mariaDb.Count | Should -Be 2
+        $mariaDb.Count | Should -Be 7
     }
 
     It 'GetViaIdentity' {

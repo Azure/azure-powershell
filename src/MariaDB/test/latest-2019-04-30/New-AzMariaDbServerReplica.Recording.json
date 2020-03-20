@@ -6,7 +6,7 @@
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "4239d2c1-5792-4b07-9b6c-9cd6352f1d7f" ],
+        "x-ms-client-request-id": [ "b47d8a3d-e134-4018-896e-4509cde75ad1" ],
         "CommandName": [ "Get-AzMariaDbServer" ],
         "FullCommandName": [ "Get-AzMariaDbServer_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,14 +21,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "f1118378-aacd-4cc1-9835-4a583b432809" ],
+        "x-ms-request-id": [ "799bedb0-d350-41d7-8a02-94a5982914ea" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "f9db3e2e-1192-48a3-8b9b-a29c66dcd594" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200319T095352Z:f9db3e2e-1192-48a3-8b9b-a29c66dcd594" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "8e34523a-c62a-420a-9e73-7f398e7efaa5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200319T102915Z:8e34523a-c62a-420a-9e73-7f398e7efaa5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 19 Mar 2020 09:53:51 GMT" ]
+        "Date": [ "Thu, 19 Mar 2020 10:29:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2683" ],

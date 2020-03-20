@@ -19,8 +19,11 @@ $rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
 Describe 'New-AzMariaDBServer' {
     It 'CreateExpanded' {
         # ConvertTo-SecureString "P@ssW0rD!" -AsPlainText -Force
-        $administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-        $mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -Location $env.Location
+        $adminLoginPassword = CreateAdminPassword
+        $adminLogin = 'adminuser'
+        $administratorLoginPassword =  ConvertTo-SecureString $adminLoginPassword -AsPlainText -Force
+        $skuName = 'B_Gen5_1' 
+        $mariadb = New-AzMariaDBServer -Name $rstr01 -SkuName $skuName -ResourceGroupName $env.ResourceGroup -AdministratorLogin $adminLogin -AdministratorLoginPassword $administratorLoginPassword -Location $env.Location
         $mariadb.Name | Should -Be $rstr01
     }
 }

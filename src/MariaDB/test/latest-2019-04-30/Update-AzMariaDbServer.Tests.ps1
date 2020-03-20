@@ -2,8 +2,9 @@ $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
-$utilsPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+$helperPath = Join-Path $PSScriptRoot '..\helper.ps1'
 . ($loadEnvPath)
+. ($helperPath)
 
 $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzMariaDbServer.Recording.json'
 $currentPath = $PSScriptRoot
@@ -13,21 +14,18 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-<#
-$rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-$passwordSecure =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-$mariadbTest01 = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $passwordSecure -Location eastus
-#>
+$mariaDbParam01 = @{SkuName='B_Gen5_1'}
+$mariadbTest01 = GetOrCreateMariaDb -mariaDb $mariaDbParam01 -ResourceGroup $env.resourceGroup
+
 Describe 'Update-AzMariaDbServer' {
     It 'UpdateExpanded' {
-        $mariadb = Get-AzMariaDbServer -Name $env.rstr01 -ResourceGroupName $env.ResourceGroupGet
-        $newStorageProfileStorageMb = $mariadb.StorageProfileStorageMb + 10240
-        $mariadb = Update-AzMariaDbServer -Name $mariadb.Name -ResourceGroupName $env.ResourceGroupGet  -StorageProfileStorageMb $newStorageProfileStorageMb 
+        $newStorageProfileStorageMb = $mariadbTest01.StorageProfileStorageMb + 1024
+        $mariadb = Update-AzMariaDbServer -Name $mariadbTest01.Name -ResourceGroupName $env.ResourceGroup  -StorageProfileStorageMb $newStorageProfileStorageMb 
         $mariadb.StorageProfileStorageMb | Should -Be $newStorageProfileStorageMb
     }
     It 'UpdateViaIdentity' {
-        $mariadb = Get-AzMariaDbServer -Name $env.rstr01 -ResourceGroupName $env.ResourceGroupGet
-        $newStorageProfileStorageMb = $mariadb.StorageProfileStorageMb - 10240
+        $mariadb = Get-AzMariaDbServer -Name $mariadbTest01.Name -ResourceGroupName $env.ResourceGroup
+        $newStorageProfileStorageMb = $mariadb.StorageProfileStorageMb + 1024
         $mariadb = Update-AzMariaDbServer -InputObject $mariadb -StorageProfileStorageMb $newStorageProfileStorageMb 
         $mariadb.StorageProfileStorageMb | Should -Be $newStorageProfileStorageMb
     }

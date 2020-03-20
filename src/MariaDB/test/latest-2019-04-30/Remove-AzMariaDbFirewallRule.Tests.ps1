@@ -14,20 +14,19 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+$mariaDbParam01 = @{SkuName='B_Gen5_1'}
+$mariadbTest01 = GetOrCreateMariaDb -mariaDb $mariaDbParam01 -ResourceGroup $env.resourceGroup
 $firewallName01 = 'fr-' + (RandomString -allChars $false -len 6)
 $firewallName02 = 'fr-' + (RandomString -allChars $false -len 6)
 $endIPAddress = '0.0.0.125'
 $startIPAddress = '0.0.0.1'
-$rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-$administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-$mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -Location $env.Location
-New-AzMariaDbFirewallRule -Name $firewallName01 -ResourceGroupName $env.ResourceGroup -ServerName $rstr01 -EndIPAddress $endIPAddress -StartIPAddress $startIPAddress
-New-AzMariaDbFirewallRule -Name $firewallName02 -ResourceGroupName $env.ResourceGroup -ServerName $rstr01 -EndIPAddress $endIPAddress -StartIPAddress $startIPAddress
+New-AzMariaDbFirewallRule -Name $firewallName01 -ResourceGroupName $env.ResourceGroup -ServerName $mariadbTest01.Name -EndIPAddress $endIPAddress -StartIPAddress $startIPAddress
+New-AzMariaDbFirewallRule -Name $firewallName02 -ResourceGroupName $env.ResourceGroup -ServerName $mariadbTest01.Name -EndIPAddress $endIPAddress -StartIPAddress $startIPAddress
 
 Describe 'Remove-AzMariaDbFirewallRule' {
     It 'Delete' {
-        Remove-AzMariaDBFirewallRule -Name $firewallName01 -ResourceGroupName $env.ResourceGroup -ServerName $rstr01
-        $firewallRule = Get-AzMariaDbFirewallRule -ServerName $rstr01 -ResourceGroupName $env.ResourceGroup
+        Remove-AzMariaDBFirewallRule -Name $firewallName01 -ResourceGroupName $env.ResourceGroup -ServerName $mariadbTest01.Name
+        $firewallRule = Get-AzMariaDbFirewallRule -ServerName $mariadbTest01.Name -ResourceGroupName $env.ResourceGroup
         $firewallRule.Name | Should -Not -Contain $firewallName01
     }
 }

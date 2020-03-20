@@ -13,25 +13,21 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-$rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-$administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-$skuName = 'GP_Gen5_4'
-$mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -SkuName $skuName -Location $env.Location
-$rstMariadbName = $mariadb.Name + '-rep01' 
-Restore-AzMariaDBServerWithGeo -Name $rstMariadbName -ResourceGroupName $env.ResourceGroup -SourceServerId $mariadb.Id -Location $env.Location
+$mariaDbParam01 = @{SkuName='GP_Gen5_4'}
+$mariadbTest01 = GetOrCreateMariaDb -mariaDb $mariaDbParam01 -ResourceGroup $env.resourceGroup
 
 Describe 'Restore-AzMariaDBServerWithGeo' {
     It 'SourceServerId' {
         # The basic mariadb not support replication feature. 
-        $rstMariadbName = $mariadb.Name + '-rep01' 
-        Restore-AzMariaDBServerWithGeo -Name $rstMariadbName -ResourceGroupName $env.ResourceGroup -SourceServerId $mariadb.Id -Location $env.Location
-        $rstMariadb = Get-AzMariaDbServer -Name $rstMariadbName -ResourceGroupName $env.ResourceGroup
-        $rstMariadb.Name | Should -Be $rstMariadbName
+        $repMariadbName = $mariadbTest01.Name + '-rep01'
+        Restore-AzMariaDBServerWithGeo -Name $repMariadbName -SourceServerId $mariadbTest01.Id -Location $mariadbTest01.Location
+        $repMariadb = Get-AzMariaDbServer -Name $repMariadbName -ResourceGroupName $env.ResourceGroup
+        $repMariadb.Name | Should -Be $repMariadbName
     }
     It 'ServerObject' {
-        $rstMariadbName = $mariadb.Name + '-rep02' 
-        Restore-AzMariaDBServerWithGeo -Name $rstMariadbName -InputObject $mariadb -Location $env.Location
-        $rstMariadb = Get-AzMariaDbServer -Name $rstMariadbName -ResourceGroupName $env.ResourceGroup
-        $rstMariadb.Name | Should -Be $rstMariadbName
+        $repMariadbName = $mariadbTest01.Name + '-rep02' 
+        Restore-AzMariaDBServerWithGeo -Name $repMariadbName -InputObject $mariadbTest01
+        $repMariadb = Get-AzMariaDbServer -Name $repMariadbName -ResourceGroupName $env.ResourceGroup
+        $repMariadb.Name | Should -Be $repMariadbName
     }
 }

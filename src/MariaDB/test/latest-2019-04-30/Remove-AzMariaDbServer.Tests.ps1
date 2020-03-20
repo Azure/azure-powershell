@@ -14,13 +14,10 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-$rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-$rstr02 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-
-# ConvertTo-SecureString "P@ssW0rD!" -AsPlainText -Force
-$passwordSecure =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-$mariadbTest01 = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $passwordSecure -Location eastus
-$mariadbTest02 = New-AzMariaDBServer -Name $rstr02 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $passwordSecure -Location eastus
+$mariaDbParam01 = @{SkuName='B_Gen5_1'}
+$mariaDbParam02 = @{SkuName='B_Gen5_1'}
+$mariadbTest01 = GetOrCreateMariaDb -forceCreate $true -mariaDb $mariaDbParam01 -ResourceGroup $env.resourceGroup
+$mariadbTest02 = GetOrCreateMariaDb -forceCreate $true -mariaDb $mariaDbParam02 -ResourceGroup $env.resourceGroup
 
 Describe 'Remove-AzMariaDbServer' {
     It 'Delete' {

@@ -13,24 +13,22 @@ while(-not $mockingPath) {
     $currentPath = Split-Path -Path $currentPath -Parent
 }
 . ($mockingPath | Select-Object -First 1).FullName
-
-$rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-$administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-$mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -Location $env.Location
+$mariaDbParam01 = @{SkuName='B_Gen5_1'}
+$mariadbTest01 = GetOrCreateMariaDb -mariaDb $mariaDbParam01 -ResourceGroup $env.resourceGroup
 Describe 'Restore-AzMariaDBServer' {
     It 'RestoreExpanded' {
-        $restoreMariaDbName = 'restore01-' + $mariadb.Name
+        $restoreMariaDbName = $mariadbTest01.Name + '-rst01'
         $restorePointInTime = (Get-Date).AddHours(-8)
         #$restoreMode = 'PointInTimeRestore'
-        Restore-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup -SourceServerId $mariadb.Id -RestorePointInTime $restorePointInTime
+        Restore-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup -SourceServerId $mariadbTest01.Id -RestorePointInTime $restorePointInTime
         $restoreMariadb = Get-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup
         $restoreMariadb.Name | Should -Be $restoreMariaDbName
     }
     It 'RestoreViaIdentity' {
-        $restoreMariaDbName = 'restore02-' + $mariadb.Name
+        $restoreMariaDbName = $mariadbTest01.Name + '-rst01'
         $restorePointInTime = (Get-Date).AddHours(-8)
         #$restoreMode = 'PointInTimeRestore'
-        Restore-AzMariaDBServer -Name $restoreMariaDbName -InputObject $mariadb -RestorePointInTime $restorePointInTime
+        Restore-AzMariaDBServer -Name $restoreMariaDbName -InputObject $mariadbTest01 -RestorePointInTime $restorePointInTime
         $restoreMariadb = Get-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup
         $restoreMariadb.Name | Should -Be $restoreMariaDbName
     }

@@ -14,20 +14,13 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-$rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-$administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-$mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -Location $env.Location
+$mariaDbParam01 = @{SkuName='B_Gen5_1'}
+$mariadbTest01 = GetOrCreateMariaDb -mariaDb $mariaDbParam01 -ResourceGroup $env.resourceGroup
 
 Describe 'Get-AzMariaDbConnectionString' {
     It 'ServerName' {
         $client = 'ADO.NET'
-        $conStr = Get-AzMariaDbConnectionString -Client $client -Name $rstr01 -ResourceGroupName $env.ResourceGroup
+        $conStr = Get-AzMariaDbConnectionString -Client $client -Name $mariadbTest01.Name -ResourceGroupName $env.ResourceGroup
         $conStr | Should -Not -BeNullOrEmpty
-    }
-    It 'ServerObject' {
-        $client = 'JDBC'
-        $mariadb = Get-AzMariaDbServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup
-        $conStr = Get-AzMariaDbConnectionString -Client $client -InputObject $mariadb
-        $conStr | Should -Not -BeNullOrEmpty
-    }   
+    } 
 }

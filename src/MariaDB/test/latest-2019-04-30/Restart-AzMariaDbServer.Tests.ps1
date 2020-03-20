@@ -14,18 +14,18 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-$rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-$administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-$mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -Location eastus
+$mariaDbParam01 = @{SkuName='B_Gen5_1'}
+$mariadbTest01 = GetOrCreateMariaDb -mariaDb $mariaDbParam01 -ResourceGroup $env.resourceGroup
+
 Describe 'Restart-AzMariaDbServer' {
     It 'Restart' {
-        Restart-AzMariaDbServer -Name $mariadb.Name -ResourceGroupName $env.ResourceGroup
-        $mariadbRestart = Get-AzMariaDbServer -Name $mariadb.Name -ResourceGroupName $env.ResourceGroup
+        Restart-AzMariaDbServer -Name $mariadbTest01.Name -ResourceGroupName $env.ResourceGroup
+        $mariadbRestart = Get-AzMariaDbServer -Name $mariadbTest01.Name -ResourceGroupName $env.ResourceGroup
         $mariadbRestart.UserVisibleState | Should -BeExactly  'Ready'       
     }
     It 'RestartViaIdentity' {
-        Restart-AzMariaDbServer -InputObject $mariadb
-        $mariadbRestart = Get-AzMariaDbServer -Name $mariadb.Name -ResourceGroupName $env.ResourceGroup
+        Restart-AzMariaDbServer -InputObject $mariadbTest01
+        $mariadbRestart = Get-AzMariaDbServer -Name $mariadbTest01.Name -ResourceGroupName $env.ResourceGroup
         $mariadbRestart.UserVisibleState | Should -BeExactly  'Ready'       
     }
 }

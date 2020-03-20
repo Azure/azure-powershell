@@ -13,25 +13,24 @@ while(-not $mockingPath) {
     $currentPath = Split-Path -Path $currentPath -Parent
 }
 . ($mockingPath | Select-Object -First 1).FullName
-$rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-$administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-$mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -Location $env.Location
+$mariaDbParam01 = @{SkuName='B_Gen5_1'}
+$mariadbTest01 = GetOrCreateMariaDb -mariaDb $mariaDbParam01 -ResourceGroup $env.resourceGroup
 
 Describe 'Update-AzMariaDbConfiguration' {
     It 'ServerId' {
         $confName = 'wait_timeout'
-        $mariadbConf = Get-AzMariaDbConfiguration -Name $confName -ServerName $mariadb.Name -ResourceGroupName $env.ResourceGroup
+        $mariadbConf = Get-AzMariaDbConfiguration -Name $confName -ServerName $mariadbTest01.Name -ResourceGroupName $env.ResourceGroup
         $newConfValue = $mariadbConf.Value + 200
-        Update-AzMariaDbConfiguration -Name $confName -ServerId $mariadb.Id -Value $newConfValue
-        $mariadbConf = Get-AzMariaDbConfiguration -Name $confName -ServerName $mariadb.Name -ResourceGroupName $env.ResourceGroup
+        Update-AzMariaDbConfiguration -Name $confName -ServerId $mariadbTest01.Id -Value $newConfValue
+        $mariadbConf = Get-AzMariaDbConfiguration -Name $confName -ServerName $mariadbTest01.Name -ResourceGroupName $env.ResourceGroup
         $mariadbConf.Value | Should -Be $newConfValue
     }
     It 'ServerName' {
-        $confName = 'wait_timeout'
-        $mariadbConf = Get-AzMariaDbConfiguration -Name $confName -ServerName $mariadb.Name -ResourceGroupName $env.ResourceGroup
+        $confName = 'delayed_insert_timeout'
+        $mariadbConf = Get-AzMariaDbConfiguration -Name $confName -ServerName $mariadbTest01.Name -ResourceGroupName $env.ResourceGroup
         $newConfValue = $mariadbConf.Value - 100
-        Update-AzMariaDbConfiguration -Name $confName -ServerName $mariadb.Name -ResourceGroupName $env.ResourceGroup -Value $newConfValue
-        $mariadbConf = Get-AzMariaDbConfiguration -Name $confName -ServerName $mariadb.Name -ResourceGroupName $env.ResourceGroup
+        Update-AzMariaDbConfiguration -Name $confName -ServerName $mariadbTest01.Name -ResourceGroupName $env.ResourceGroup -Value $newConfValue
+        $mariadbConf = Get-AzMariaDbConfiguration -Name $confName -ServerName $mariadbTest01.Name -ResourceGroupName $env.ResourceGroup
         $mariadbConf.Value | Should -Be $newConfValue
     }
 }

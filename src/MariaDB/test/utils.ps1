@@ -1,3 +1,4 @@
+. ("$PSScriptRoot\helper.ps1")
 function RandomString([bool]$allChars, [int32]$len) {
     if ($allChars) {
         return -join ((33..126) | Get-Random -Count $len | % {[char]$_})
@@ -13,44 +14,39 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     #Generate some strings for use in the test.
     $location = 'eastus'
-    $adminLogin = 'adminuser'
-    $adminLoginPassword = 'Password01!!'
     $rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
     $rstr02 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-    #$rstr03 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
     $null = $env.Add('Location', $location)
-    $null = $env.Add('AdminLogin', $adminLogin)
-    $null = $env.Add('AdminLoginPassword',$adminLoginPassword)
-    $null = $env.add('rstr01', $rstr01)
-    $null = $env.add('rstr02', $rstr02)
-    #$null = $env.add('rstr03', $rstr03)
+
 
     # Create test resource group.
     $resourceGroupGet = 'lucas-test-getcmd'
     $resourceGroup = 'lucas-test'
-    
+    Write-Host -ForegroundColor Green "Start to creating resource group for test..."
+    #New-AzResourceGroup -Name $resourceGroup -Location $location
+    #New-AzResourceGroup -Name $resourceGroupGet -Location $location  
     $null = $env.Add('ResourceGroupGet', $resourceGroupGet)
     $null = $env.Add('ResourceGroup', $resourceGroup)
-    Write-Host -ForegroundColor Green "Start to creating resource group for test..."
-    New-AzResourceGroup -Name $resourceGroup -Location $location
-    New-AzResourceGroup -Name $resourceGroupGet -Location $location
     Write-Host -ForegroundColor Green "Resource group created successfully."
     # For any resources you created for test, you should add it to $env here.
 
     # create mariadb for test  
-    # ConvertTo-SecureString "P@ssW0rD!" -AsPlainText -Force
     Write-Host -ForegroundColor Green "Start to creating mariadb for test..."
-    $adminLoginPasswordSecure =  ConvertTo-SecureString $adminLoginPassword -AsPlainText -Force 
-    $mariadbTest01 = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroupGet -AdministratorLogin $adminLogin -AdministratorLoginPassword $adminLoginPasswordSecure -Location eastus
-    $mariadbTest02 = New-AzMariaDBServer -Name $rstr02 -ResourceGroupName $env.ResourceGroupGet -AdministratorLogin $adminLogin -AdministratorLoginPassword $adminLoginPasswordSecure -Location eastus
-    #$mariadbTest03 = New-AzMariaDBServer -Name $rstr03 -ResourceGroupName $env.ResourceGroupGet -AdministratorLogin $adminLogin -AdministratorLoginPassword $adminLoginPasswordSecure -Location eastus -SkuName GP_Gen5_4
+    #Write-Host -ForegroundColor Green "mariadb name: $rstr01"
+    #Write-Host -ForegroundColor Green "mariadb name: $rstr02"
+    $mariaDbParam01 = @{Name=$rstr01; SkuName='B_Gen5_1'}
+    $mariaDbParam02 = @{Name=$rstr02; SkuName='B_Gen5_1'}
+    #GetOrCreateMariaDb -forceCreate $true -mariaDb $mariaDbParam01 -ResourceGroup $resourceGroupGet
+    #GetOrCreateMariaDb -forceCreate $true -mariaDb $mariaDbParam02 -ResourceGroup $resourceGroupGet
+    $null = $env.add('rstr01', $rstr01)
+    $null = $env.add('rstr02', $rstr02)
     Write-Host -ForegroundColor Green "MariaDB created successfully."
     
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    #set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
     # Clean resources you create for testing

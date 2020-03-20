@@ -14,17 +14,17 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-$rstr01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
-$administratorLoginPassword =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force 
-$mariadb = New-AzMariaDBServer -Name $rstr01 -ResourceGroupName $env.ResourceGroup -AdministratorLogin $env.AdminLogin -AdministratorLoginPassword $administratorLoginPassword -Location $env.Location
+
+$mariaDbParam01 = @{SkuName='B_Gen5_1'}
+$mariadbTest01 = GetOrCreateMariaDb -mariaDb $mariaDbParam01 -ResourceGroup $env.resourceGroup
 
 Describe 'Get-AzMariaDbConfiguration' {
     It 'List' {
-        $mariaDbConf = Get-AzMariaDbConfiguration -ResourceGroup $env.ResourceGroup -ServerName $rstr01
+        $mariaDbConf = Get-AzMariaDbConfiguration -ResourceGroup $env.ResourceGroup -ServerName $mariadbTest01.Name
         $mariaDbConf.Count | Should -BeGreaterOrEqual 1
     }
     It 'Get' {
-        $mariaDbConf = Get-AzMariaDbConfiguration -Name max_connections -ResourceGroup $env.ResourceGroup -ServerName $rstr01 
+        $mariaDbConf = Get-AzMariaDbConfiguration -Name max_connections -ResourceGroup $env.ResourceGroup -ServerName $mariadbTest01.Name 
         $mariaDbConf.Value | Should -Not -BeNullOrEmpty 
     }
 }
