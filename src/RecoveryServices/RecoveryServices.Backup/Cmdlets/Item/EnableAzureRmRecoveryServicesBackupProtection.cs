@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Policy to be associated with this item as part of the protection operation.
         /// </summary>
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
+        [Parameter(Position = 1, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Reset Disk Exclusion Settings
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet)]
         public SwitchParameter ResetExclusionSettings { get; set; }
 
         /// <summary>
