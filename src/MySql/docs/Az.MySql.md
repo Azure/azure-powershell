@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MySql
-Module Guid: b349883d-3af4-4242-ad59-d673b14baac8
+Module Guid: 0f647138-8c4e-4bc5-952e-51f18bd12b28
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.mysql
 Help Version: 1.0.0.0
 Locale: en-US
@@ -29,9 +29,6 @@ Gets information about a server.
 ### [Get-AzMySqlVirtualNetworkRule](Get-AzMySqlVirtualNetworkRule.md)
 Gets a virtual network rule.
 
-### [New-AzMySqlConfiguration](New-AzMySqlConfiguration.md)
-Updates a configuration of a server.
-
 ### [New-AzMySqlFirewallRule](New-AzMySqlFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
 
@@ -57,9 +54,6 @@ Deletes the virtual network rule with the given name.
 Restarts a server.
 
 ### [Restore-AzMySqlServer](Restore-AzMySqlServer.md)
-Restore a server from an existing backup
-
-### [Restore-AzMySqlServerWithGeo](Restore-AzMySqlServerWithGeo.md)
 Restore a server from an existing backup
 
 ### [Update-AzMySqlConfiguration](Update-AzMySqlConfiguration.md)

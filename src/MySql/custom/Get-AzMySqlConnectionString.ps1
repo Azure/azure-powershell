@@ -16,7 +16,6 @@ function Get-AzMySqlConnectionString {
     [OutputType([System.String])]
     [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Get the connection string according to client connection provider.')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Profile('latest-2019-04-30')]
     param(
         [Parameter(ParameterSetName='Get', Mandatory, HelpMessage = 'The name of the server.')]
         [Alias('ServerName')]
@@ -31,7 +30,7 @@ function Get-AzMySqlConnectionString {
 
         [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline, HelpMessage = 'The source server object to create replica from.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServer]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer]
         ${InputObject},
 
         [Parameter(Mandatory, HelpMessage = 'Client connection provider.')]

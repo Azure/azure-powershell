@@ -1,25 +1,28 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlvirtualnetworkrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlserver
 schema: 2.0.0
 ---
 
-# New-AzMySqlVirtualNetworkRule
+# New-AzMySqlServer
 
 ## SYNOPSIS
-Creates or updates an existing virtual network rule.
+Creates a new server.
 
 ## SYNTAX
 
 ```
-New-AzMySqlVirtualNetworkRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- -VirtualNetworkSubnetId <String> [-SubscriptionId <String>] [-IgnoreMissingVnetServiceEndpoint]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlServer -Name <String> -ResourceGroupName <String> -AdministratorLoginPassword <SecureString>
+ -AdministratorUserName <String> -Location <String> -Sku <String> [-SubscriptionId <String>]
+ [-SslEnforcement <SslEnforcementEnum>] [-StorageProfileBackupRetentionDay <Int32>]
+ [-StorageProfileGeoRedundantBackup <GeoRedundantBackup>] [-StorageProfileStorageAutogrow <StorageAutogrow>]
+ [-StorageProfileStorageInMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an existing virtual network rule.
+Creates a new server.
 
 ## EXAMPLES
 
@@ -43,8 +46,40 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -AdministratorLoginPassword
+The location the resource resides in.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -AdministratorUserName
+The location the resource resides in.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -AsJob
-Run the command as a job
+Run the command as a job.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -75,15 +110,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IgnoreMissingVnetServiceEndpoint
-Create firewall rule before the virtual network has vnet service endpoint enabled.
+### -Location
+The location the resource resides in.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -92,12 +127,12 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the virtual network rule.
+The name of the server.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: VirtualNetworkRuleName
+Aliases: ServerName
 
 Required: True
 Position: Named
@@ -108,23 +143,7 @@ Dynamic: False
 ```
 
 ### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PassThru
-Returns true when the command succeeds
+Run the command asynchronously.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -140,8 +159,7 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
@@ -156,8 +174,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ServerName
-The name of the server.
+### -Sku
+The name of the sku, typically, tier + family + cores, e.g.
+B_Gen4_1, GP_Gen5_8.
 
 ```yaml
 Type: System.String
@@ -165,6 +184,87 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SslEnforcement
+Enable ssl enforcement or not when connect to server.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StorageProfileBackupRetentionDay
+Backup retention days for the server.
+Day count is between 7 and 35.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StorageProfileGeoRedundantBackup
+Enable Geo-redundant or not for server backup.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.GeoRedundantBackup
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StorageProfileStorageAutogrow
+Enable Storage Auto Grow.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StorageProfileStorageInMb
+Max storage allowed for a server.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -188,15 +288,31 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VirtualNetworkSubnetId
-The ARM resource id of the virtual network subnet.
+### -Tag
+Application-specific metadata in the form of key-value pairs.
 
 ```yaml
-Type: System.String
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Version
+Server version.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -244,7 +360,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IVirtualNetworkRule
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 
 ## ALIASES
 

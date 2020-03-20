@@ -1,25 +1,25 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlfirewallrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlvirtualnetworkrule
 schema: 2.0.0
 ---
 
-# New-AzMySqlFirewallRule
+# New-AzMySqlVirtualNetworkRule
 
 ## SYNOPSIS
-Creates a new firewall rule or updates an existing firewall rule.
+Creates or updates an existing virtual network rule.
 
 ## SYNTAX
 
 ```
-New-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String> -EndIPAddress <String>
- -StartIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlVirtualNetworkRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ -VirtualNetworkSubnetId <String> [-SubscriptionId <String>] [-IgnoreMissingVnetServiceEndpoint]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new firewall rule or updates an existing firewall rule.
+Creates or updates an existing virtual network rule.
 
 ## EXAMPLES
 
@@ -75,16 +75,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -EndIPAddress
-The end IP address of the server firewall rule.
-Must be IPv4 format.
+### -IgnoreMissingVnetServiceEndpoint
+Create firewall rule before the virtual network has vnet service endpoint enabled.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -93,12 +92,12 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the server firewall rule.
+The name of the virtual network rule.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: FirewallRuleName
+Aliases: VirtualNetworkRuleName
 
 Required: True
 Position: Named
@@ -124,9 +123,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -157,25 +172,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -StartIPAddress
-The start IP address of the server firewall rule.
-Must be IPv4 format.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SubscriptionId
-The subscription ID that identifies an Azure subscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -185,6 +183,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VirtualNetworkSubnetId
+The ARM resource id of the virtual network subnet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -230,7 +244,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IFirewallRule
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule
 
 ## ALIASES
 

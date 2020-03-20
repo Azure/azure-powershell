@@ -14,10 +14,9 @@
 # ----------------------------------------------------------------------------------
 
 function New-AzMySqlServer {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServer])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Creates a new server.')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Profile('latest-2019-04-30')]
     param(
         [Parameter(Mandatory, HelpMessage = 'The name of the server.')]
         [Alias('ServerName')]
@@ -44,7 +43,7 @@ function New-AzMySqlServer {
         [Parameter(Mandatory, HelpMessage = 'The location the resource resides in.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
-        ${AdministratorLogin},
+        ${AdministratorUserName},
 
         [Parameter(Mandatory, HelpMessage = 'The location the resource resides in.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
@@ -55,7 +54,7 @@ function New-AzMySqlServer {
         [Parameter(Mandatory, HelpMessage = 'The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
-        ${SkuName},
+        ${Sku},
 
         [Parameter(HelpMessage = 'Enable ssl enforcement or not when connect to server.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum])]
@@ -83,11 +82,11 @@ function New-AzMySqlServer {
         [Parameter(HelpMessage = 'Max storage allowed for a server.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.Int32]
-        ${StorageProfileStorageMb},
+        ${StorageProfileStorageInMb},
 
         [Parameter(HelpMessage = 'Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServerForCreateTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerForCreateTags]))]
         [System.Collections.Hashtable]
         ${Tag},
 
@@ -155,17 +154,17 @@ function New-AzMySqlServer {
 
     process {
         try {
-          $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.ServerForCreate]::new()
-          $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.ServerPropertiesForDefaultCreate]::new()
+          $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ServerForCreate]::new()
+          $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ServerPropertiesForDefaultCreate]::new()
 
           if ($PSBoundParameters.ContainsKey('Location')) {
               $Parameter.Location = $PSBoundParameters['Location']
               $null = $PSBoundParameters.Remove('Location')
           }
 
-          if ($PSBoundParameters.ContainsKey('SkuName')) {
-              $Parameter.SkuName = $PSBoundParameters['SkuName']
-              $null = $PSBoundParameters.Remove('SkuName')
+          if ($PSBoundParameters.ContainsKey('Sku')) {
+              $Parameter.SkuName = $PSBoundParameters['Sku']
+              $null = $PSBoundParameters.Remove('Sku')
           }
 
           if ($PSBoundParameters.ContainsKey('SslEnforcement')) {
@@ -192,9 +191,9 @@ function New-AzMySqlServer {
               $null = $PSBoundParameters.Remove('StorageProfileStorageAutogrow')
           }
 
-          if ($PSBoundParameters.ContainsKey('StorageProfileStorageMb')) {
-              $Parameter.StorageProfileStorageMb = $PSBoundParameters['StorageProfileStorageMb']
-              $null = $PSBoundParameters.Remove('StorageProfileStorageMb')
+          if ($PSBoundParameters.ContainsKey('StorageProfileStorageInMb')) {
+              $Parameter.StorageProfileStorageMb = $PSBoundParameters['StorageProfileStorageInMb']
+              $null = $PSBoundParameters.Remove('StorageProfileStorageInMb')
           }
 
           if ($PSBoundParameters.ContainsKey('Tag')) {
@@ -209,8 +208,8 @@ function New-AzMySqlServer {
 
           $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode]::Default
 
-          $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorLogin']
-          $null = $PSBoundParameters.Remove('AdministratorLogin')
+          $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorUserName']
+          $null = $PSBoundParameters.Remove('AdministratorUserName')
 
           $Parameter.Property.AdministratorLoginPassword = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($PSBoundParameters['AdministratorLoginPassword']))
           $null = $PSBoundParameters.Remove('AdministratorLoginPassword')

@@ -1,33 +1,31 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlvirtualnetworkrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/remove-azmysqlserver
 schema: 2.0.0
 ---
 
-# Update-AzMySqlVirtualNetworkRule
+# Remove-AzMySqlServer
 
 ## SYNOPSIS
-Creates or updates an existing virtual network rule.
+Deletes a server.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Delete (Default)
 ```
-Update-AzMySqlVirtualNetworkRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- -VirtualNetworkSubnetId <String> [-SubscriptionId <String>] [-IgnoreMissingVnetServiceEndpoint]
+Remove-AzMySqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### DeleteViaIdentity
 ```
-Update-AzMySqlVirtualNetworkRule -InputObject <IMySqlIdentity> -VirtualNetworkSubnetId <String>
- [-IgnoreMissingVnetServiceEndpoint] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzMySqlServer -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an existing virtual network rule.
+Deletes a server.
 
 ## EXAMPLES
 
@@ -83,29 +81,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IgnoreMissingVnetServiceEndpoint
-Create firewall rule before the virtual network has vnet service endpoint enabled.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -117,12 +99,12 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the virtual network rule.
+The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: VirtualNetworkRuleName
+Parameter Sets: Delete
+Aliases: ServerName
 
 Required: True
 Position: Named
@@ -165,28 +147,12 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ServerName
-The name of the server.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -198,32 +164,16 @@ Dynamic: False
 ```
 
 ### -SubscriptionId
-The subscription ID that identifies an Azure subscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VirtualNetworkSubnetId
-The ARM resource id of the virtual network subnet.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -271,7 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IVirtualNetworkRule
+### System.Boolean
 
 ## ALIASES
 
@@ -286,10 +236,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The name of the location.
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
   - `[ServerName <String>]`: The name of the server.
-  - `[SubscriptionId <String>]`: The subscription ID that identifies an Azure subscription.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
 ## RELATED LINKS

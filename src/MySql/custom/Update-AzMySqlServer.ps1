@@ -14,10 +14,9 @@
 # ----------------------------------------------------------------------------------
 
 function Update-AzMySqlServer {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServer])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Updates an existing server. The request body can contain one to many of the properties present in the normal server definition.')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Profile('latest-2019-04-30')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The name of the server.')]
         [Alias('ServerName')]
@@ -64,7 +63,7 @@ function Update-AzMySqlServer {
         [Parameter(HelpMessage='The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
-        ${SkuName},
+        ${Sku},
 
         [Parameter(HelpMessage='The size code, to be interpreted by resource as appropriate.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
@@ -97,11 +96,11 @@ function Update-AzMySqlServer {
         [Parameter(HelpMessage='Max storage allowed for a server.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.Int32]
-        ${StorageProfileStorageMb},
+        ${StorageProfileStorageInMb},
 
         [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201Preview.IServerUpdateParametersTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParametersTags]))]
         [System.Collections.Hashtable]
         ${Tag},
 
@@ -168,6 +167,17 @@ function Update-AzMySqlServer {
                 $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
                 $PSBoundParameters.Add('AdministratorLoginPassword', [System.Runtime.InteropServices.marshal]::PtrToStringAuto($bStr))
             }
+
+            if ($PSBoundParameters.ContainsKey('StorageProfileStorageInMb')) {
+                $PSBoundParameters.Add('StorageProfileStorageMb', $PSBoundParameters['StorageProfileStorageInMb'])
+                $null = $PSBoundParameters.Remove('StorageProfileStorageInMb')
+            }
+
+            if ($PSBoundParameters.ContainsKey('Sku')) {
+                $PSBoundParameters.Add('SkuName', $PSBoundParameters['Sku'])
+                $null = $PSBoundParameters.Remove('Sku')
+            }
+
             Az.MySql.internal\Update-AzMySqlServer @PSBoundParameters
         } catch {
             throw
