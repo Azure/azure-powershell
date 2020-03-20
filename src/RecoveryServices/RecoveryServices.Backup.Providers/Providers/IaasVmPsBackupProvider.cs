@@ -388,6 +388,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             bool osaOption = (bool)ProviderData[RestoreVMBackupItemParams.OsaOption];
             string[] restoreDiskList = (string[])ProviderData[RestoreVMBackupItemParams.RestoreDiskList];
             SwitchParameter restoreOnlyOSDisk = (SwitchParameter)ProviderData[RestoreVMBackupItemParams.RestoreOnlyOSDisk];
+            SwitchParameter restoreAsUnmanagedDisks = (SwitchParameter)ProviderData[RestoreVMBackupItemParams.RestoreAsUnmanagedDisks];
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
@@ -405,9 +406,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new Exception(string.Format(Resources.RestoreDiskStorageTypeError, vmType));
             }
 
+            if(targetResourceGroupName != null && restoreAsUnmanagedDisks.IsPresent)
+            {
+                throw new Exception(Resources.TargetRGUnmanagedRestoreDuplicateParamsException);
+            }
+
             if (targetResourceGroupName != null && rp.IsManagedVirtualMachine == false)
             {
                 Logger.Instance.WriteWarning(Resources.UnManagedBackupVmWarning);
+            }
+
+            if(rp.IsManagedVirtualMachine == true && targetResourceGroupName == null
+                && restoreAsUnmanagedDisks.IsPresent == false)
+            {
+                Logger.Instance.WriteWarning(Resources.UnmanagedVMRestoreWarning);
             }
 
             IList<int?> restoreDiskLUNS;

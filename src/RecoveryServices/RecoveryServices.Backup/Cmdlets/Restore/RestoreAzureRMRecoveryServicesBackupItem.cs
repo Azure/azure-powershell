@@ -140,15 +140,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreVM.OsaOption)]
         public SwitchParameter UseOriginalStorageAccount { get; set; }
 
-
+        /// <summary>
+        /// Use this switch to restore only OS disks of the backed up VM
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
-            HelpMessage = "Restore OS Disk only")]
+            HelpMessage = ParamHelpMsgs.RestoreVM.RestoreOnlyOSDisk)]
         public SwitchParameter RestoreOnlyOSDisk { get; set; }
 
+        /// <summary>
+        /// Specify which disks to recover of the backed up VM
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
-            HelpMessage = "Specify disk list to be restored")]
+            HelpMessage = ParamHelpMsgs.RestoreVM.RestoreDiskList)]
         public string[] RestoreDiskList { get; set; }
 
+        /// <summary>
+        /// Use this switch to specify to restore as unmanaged disks
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreVM.RestoreAsUnmanagedDisks)]
+        public SwitchParameter RestoreAsUnmanagedDisks { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -174,7 +185,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreWLBackupItemParams.WLRecoveryConfig, WLRecoveryConfig);
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreDiskList, RestoreDiskList);
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreOnlyOSDisk, RestoreOnlyOSDisk);
-
+                providerParameters.Add(RestoreVMBackupItemParams.RestoreAsUnmanagedDisks, RestoreAsUnmanagedDisks);
 
                 if (StorageAccountName != null)
                 {

@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         TargetResourceGroupName,
         OsaOption,
         RestoreDiskList,
-        RestoreOnlyOSDisk
+        RestoreOnlyOSDisk,
+        RestoreAsUnmanagedDisks
     }
 
     public enum RestoreFSBackupItemParams
