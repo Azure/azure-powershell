@@ -34,10 +34,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         private IHDInsightManagementClient HdInsightManagementClient { get; set; }
 
-        public virtual Cluster CreateNewCluster(string resourceGroupName, string clusterName, OSType osType, ClusterCreateParameters parameters)
+        public virtual Cluster CreateNewCluster(string resourceGroupName, string clusterName, OSType osType, ClusterCreateParameters parameters, string minSupportedTlsVersion=default(string))
         {
             var createParams = CreateParametersConverter.GetExtendedClusterCreateParameters(clusterName, parameters);
             createParams.Properties.OsType = osType;
+            createParams.Properties.MinSupportedTlsVersion = minSupportedTlsVersion;
             return HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, createParams);
         }
 
