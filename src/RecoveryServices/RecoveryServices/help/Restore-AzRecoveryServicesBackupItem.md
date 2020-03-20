@@ -18,7 +18,8 @@ Restores the data and configuration for a Backup item to a recovery point.
 ```
 Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
  [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String>
- [[-TargetResourceGroupName] <String>] [-UseOriginalStorageAccount] [-VaultId <String>]
+ [[-TargetResourceGroupName] <String>] [-UseOriginalStorageAccount] [-RestoreOnlyOSDisk]
+ [-RestoreDiskList <String[]>] [-RestoreAsUnmanagedDisks] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -123,6 +124,51 @@ Aliases:
 Accepted values: Overwrite, Skip
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoreAsUnmanagedDisks
+Use this switch to specify to restore as unmanaged disks
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureVMParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoreDiskList
+Specify which disks to recover of the backed up VM
+
+```yaml
+Type: System.String[]
+Parameter Sets: AzureVMParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoreOnlyOSDisk
+Use this switch to restore only OS disks of a backed up VM
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureVMParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
