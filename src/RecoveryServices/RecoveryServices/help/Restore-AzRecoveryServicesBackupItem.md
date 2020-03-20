@@ -28,8 +28,8 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
 Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
  -ResolveConflict <RestoreFSResolveConflictOption> [-SourceFilePath <String>]
  [-SourceFileType <SourceFileType>] [-TargetStorageAccountName <String>] [-TargetFileShareName <String>]
- [-TargetFolder <String>] [-MultipleSourceFilePaths <System.Collections.Generic.List`1[System.String]>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TargetFolder <String>] [-MultipleSourceFilePath <String[]>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureWorkloadParameterSet
@@ -94,11 +94,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MultipleSourceFilePaths
+### -MultipleSourceFilePath
 Used for Multiple files restore from a file share. The paths of the items to be restored within the file share.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: AzureFileParameterSet
 Aliases:
 

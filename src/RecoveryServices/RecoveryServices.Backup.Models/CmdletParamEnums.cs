@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         TargetStorageAccountName,
         TargetFileShareName,
         TargetFolder,
-        MultipleSourceFilePaths
+        MultipleSourceFilePath
     }
     public enum RestoreWLBackupItemParams
     {

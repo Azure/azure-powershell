@@ -323,7 +323,7 @@ function Test-AzureFSFullRestore
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
 			-RecoveryPoint $recoveryPoint[0] `
-			-MultipleSourceFilePaths $files `
+			-MultipleSourceFilePath $files `
 			-SourceFileType File `
 			-ResolveConflict Overwrite | `
 				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
