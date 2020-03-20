@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "86d18e97-7a6a-4fb9-8e1d-d596682edc94"
+          "eef0bb5a-53ee-462e-80b0-70aeebc63b15"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11899"
+          "11912"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -36,19 +36,19 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "a4955db4-24b3-45f8-8790-daafb84f6ae5"
+          "774a3713-bcd9-42df-be58-ea72050926b4"
         ],
         "x-ms-correlation-request-id": [
-          "a4955db4-24b3-45f8-8790-daafb84f6ae5"
+          "774a3713-bcd9-42df-be58-ea72050926b4"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20200315T071647Z:a4955db4-24b3-45f8-8790-daafb84f6ae5"
+          "CENTRALUSEUAP:20200315T071058Z:774a3713-bcd9-42df-be58-ea72050926b4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 15 Mar 2020 07:16:47 GMT"
+          "Sun, 15 Mar 2020 07:10:58 GMT"
         ],
         "Content-Length": [
           "53685"
@@ -70,7 +70,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1bbd3ac4-a90e-4feb-9a88-2b9619b5fc95"
+          "72614c0b-f4ba-4d88-ba84-0946524cf72f"
         ],
         "Accept-Language": [
           "en-US"
@@ -90,7 +90,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11898"
+          "11911"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -99,19 +99,19 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "c4dc9d96-1a9f-4041-9044-9508ac1022ab"
+          "3d10d2e6-200d-4b4b-b5bf-949556f76d40"
         ],
         "x-ms-correlation-request-id": [
-          "c4dc9d96-1a9f-4041-9044-9508ac1022ab"
+          "3d10d2e6-200d-4b4b-b5bf-949556f76d40"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20200315T071648Z:c4dc9d96-1a9f-4041-9044-9508ac1022ab"
+          "CENTRALUSEUAP:20200315T071058Z:3d10d2e6-200d-4b4b-b5bf-949556f76d40"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 15 Mar 2020 07:16:48 GMT"
+          "Sun, 15 Mar 2020 07:10:58 GMT"
         ],
         "Content-Length": [
           "16930"
@@ -130,10 +130,10 @@
       "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/checkNameAvailability?api-version=2020-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAyMC0wNC0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"name\": \"PowershellScenarioTest7402\",\r\n  \"type\": \"Microsoft.Support/supportTickets\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"PowershellScenarioTest842\",\r\n  \"type\": \"Microsoft.Support/supportTickets\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a05621a6-4804-444a-b01e-ff07025fa672"
+          "2f1bd9e9-8a2f-49a6-a96d-3aeb377ff2e8"
         ],
         "Accept-Language": [
           "en-US"
@@ -148,7 +148,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "91"
+          "90"
         ]
       },
       "ResponseHeaders": {
@@ -159,7 +159,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -168,19 +168,19 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "511124a8-5bc6-424c-8ad1-516e857dea65"
+          "d9865a03-20c8-4f17-9f78-ce410330d4a5"
         ],
         "x-ms-correlation-request-id": [
-          "511124a8-5bc6-424c-8ad1-516e857dea65"
+          "d9865a03-20c8-4f17-9f78-ce410330d4a5"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20200315T071648Z:511124a8-5bc6-424c-8ad1-516e857dea65"
+          "CENTRALUSEUAP:20200315T071059Z:d9865a03-20c8-4f17-9f78-ce410330d4a5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 15 Mar 2020 07:16:48 GMT"
+          "Sun, 15 Mar 2020 07:10:58 GMT"
         ],
         "Content-Length": [
           "22"
@@ -196,13 +196,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest7402?api-version=2020-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9zdXBwb3J0VGlja2V0cy9Qb3dlcnNoZWxsU2NlbmFyaW9UZXN0NzQwMj9hcGktdmVyc2lvbj0yMDIwLTA0LTAx",
+      "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest842?api-version=2020-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9zdXBwb3J0VGlja2V0cy9Qb3dlcnNoZWxsU2NlbmFyaW9UZXN0ODQyP2FwaS12ZXJzaW9uPTIwMjAtMDQtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"problemClassificationId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc/problemClassifications/3ec1a070-f242-9ecf-5a7c-e1a88ce029ef\",\r\n    \"severity\": \"Minimal\",\r\n    \"contactDetails\": {\r\n      \"firstName\": \"first\",\r\n      \"lastName\": \"last\",\r\n      \"preferredContactMethod\": \"Email\",\r\n      \"primaryEmailAddress\": \"user@contoso.com\",\r\n      \"additionalEmailAddresses\": [\r\n        \"user2@contoso.com\"\r\n      ],\r\n      \"phoneNumber\": \"2222\",\r\n      \"preferredTimeZone\": \"Pacific Standard Time\",\r\n      \"country\": \"USA\",\r\n      \"preferredSupportLanguage\": \"en-US\"\r\n    },\r\n    \"title\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"serviceId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d4f82f06-3d8b-496a-ad1c-fb25f7c2700e"
+          "f74f6066-fe8f-4c2a-98ee-6f1683382106"
         ],
         "Accept-Language": [
           "en-US"
@@ -228,34 +228,34 @@
           "no-cache"
         ],
         "Location": [
-          "https://centraluseuap.management.azure.com/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/operationResults/a894c89c-da17-482a-8053-ed9e7583436a?api-version=2020-04-01"
+          "https://centraluseuap.management.azure.com/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/operationResults/6fdb43eb-189f-4b30-bbcf-a25aa5247a2a?api-version=2020-04-01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Azure-AsyncOperation": [
-          "https://centraluseuap.management.azure.com/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/operationsStatus/a894c89c-da17-482a-8053-ed9e7583436a?api-version=2020-04-01"
+          "https://centraluseuap.management.azure.com/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/operationsStatus/6fdb43eb-189f-4b30-bbcf-a25aa5247a2a?api-version=2020-04-01"
         ],
         "Server": [
           "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-request-id": [
-          "742cdc55-aefe-44fc-8646-5ca0c7d419f7"
+          "58b86b82-b8f6-4cb9-bd27-74c1968cd68a"
         ],
         "x-ms-correlation-request-id": [
-          "742cdc55-aefe-44fc-8646-5ca0c7d419f7"
+          "58b86b82-b8f6-4cb9-bd27-74c1968cd68a"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20200315T071650Z:742cdc55-aefe-44fc-8646-5ca0c7d419f7"
+          "CENTRALUSEUAP:20200315T071100Z:58b86b82-b8f6-4cb9-bd27-74c1968cd68a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 15 Mar 2020 07:16:50 GMT"
+          "Sun, 15 Mar 2020 07:11:00 GMT"
         ],
         "Expires": [
           "-1"
@@ -268,8 +268,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/operationsStatus/a894c89c-da17-482a-8053-ed9e7583436a?api-version=2020-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9vcGVyYXRpb25zU3RhdHVzL2E4OTRjODljLWRhMTctNDgyYS04MDUzLWVkOWU3NTgzNDM2YT9hcGktdmVyc2lvbj0yMDIwLTA0LTAx",
+      "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/operationsStatus/6fdb43eb-189f-4b30-bbcf-a25aa5247a2a?api-version=2020-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9vcGVyYXRpb25zU3RhdHVzLzZmZGI0M2ViLTE4OWYtNGIzMC1iYmNmLWEyNWFhNTI0N2EyYT9hcGktdmVyc2lvbj0yMDIwLTA0LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -290,26 +290,26 @@
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11995"
         ],
+        "x-ms-request-id": [
+          "b7a215de-dce3-4939-acb6-8acf9a939aff"
+        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Server": [
           "Kestrel"
         ],
-        "x-ms-request-id": [
-          "d51ea9e2-8cc4-4e68-bc3f-f73af015b05b"
-        ],
         "x-ms-correlation-request-id": [
-          "d51ea9e2-8cc4-4e68-bc3f-f73af015b05b"
+          "b7a215de-dce3-4939-acb6-8acf9a939aff"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20200315T071720Z:d51ea9e2-8cc4-4e68-bc3f-f73af015b05b"
+          "CENTRALUSEUAP:20200315T071131Z:b7a215de-dce3-4939-acb6-8acf9a939aff"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 15 Mar 2020 07:17:19 GMT"
+          "Sun, 15 Mar 2020 07:11:31 GMT"
         ],
         "Content-Length": [
           "212"
@@ -321,12 +321,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/operationsStatus/a894c89c-da17-482a-8053-ed9e7583436a\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"supportTicketCreationWarning\": \"\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/operationsStatus/6fdb43eb-189f-4b30-bbcf-a25aa5247a2a\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"supportTicketCreationWarning\": \"\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest7402?api-version=2020-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9zdXBwb3J0VGlja2V0cy9Qb3dlcnNoZWxsU2NlbmFyaW9UZXN0NzQwMj9hcGktdmVyc2lvbj0yMDIwLTA0LTAx",
+      "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest842?api-version=2020-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9zdXBwb3J0VGlja2V0cy9Qb3dlcnNoZWxsU2NlbmFyaW9UZXN0ODQyP2FwaS12ZXJzaW9uPTIwMjAtMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -354,22 +354,22 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "f84ac303-83a9-4c2d-94ef-1bca74a1dd9a"
+          "b0c4d577-51b0-471b-9e04-447845fd6a15"
         ],
         "x-ms-correlation-request-id": [
-          "f84ac303-83a9-4c2d-94ef-1bca74a1dd9a"
+          "b0c4d577-51b0-471b-9e04-447845fd6a15"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20200315T071720Z:f84ac303-83a9-4c2d-94ef-1bca74a1dd9a"
+          "CENTRALUSEUAP:20200315T071132Z:b0c4d577-51b0-471b-9e04-447845fd6a15"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 15 Mar 2020 07:17:20 GMT"
+          "Sun, 15 Mar 2020 07:11:32 GMT"
         ],
         "Content-Length": [
-          "1432"
+          "1430"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -378,17 +378,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest7402\",\r\n  \"name\": \"PowershellScenarioTest7402\",\r\n  \"type\": \"Microsoft.Support/supportTickets\",\r\n  \"properties\": {\r\n    \"description\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"problemClassificationId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc/problemClassifications/3ec1a070-f242-9ecf-5a7c-e1a88ce029ef\",\r\n    \"problemClassificationDisplayName\": \"Add or update VAT, tax id, PO number or profile information\",\r\n    \"severity\": \"Minimal\",\r\n    \"require24X7Response\": false,\r\n    \"enrollmentId\": \"\",\r\n    \"contactDetails\": {\r\n      \"firstName\": \"first\",\r\n      \"lastName\": \"last\",\r\n      \"preferredContactMethod\": \"Email\",\r\n      \"primaryEmailAddress\": \"user@contoso.com\",\r\n      \"additionalEmailAddresses\": [\r\n        \"user2@contoso.com\"\r\n      ],\r\n      \"phoneNumber\": \"2222\",\r\n      \"preferredTimeZone\": \"Pacific Standard Time\",\r\n      \"country\": \"USA\",\r\n      \"preferredSupportLanguage\": \"en-US\"\r\n    },\r\n    \"serviceLevelAgreement\": {\r\n      \"startTime\": \"2020-03-16T13:00:00Z\",\r\n      \"expirationTime\": \"2020-03-16T17:00:00Z\",\r\n      \"slaMinutes\": 240\r\n    },\r\n    \"supportEngineer\": {},\r\n    \"supportPlanType\": \"Premier\",\r\n    \"supportTicketId\": \"120031521000095\",\r\n    \"title\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"serviceId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc\",\r\n    \"serviceDisplayName\": \"Billing\",\r\n    \"status\": \"Open\",\r\n    \"createdDate\": \"2020-03-15T07:16:54Z\",\r\n    \"modifiedDate\": \"2020-03-15T07:16:56Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest842\",\r\n  \"name\": \"PowershellScenarioTest842\",\r\n  \"type\": \"Microsoft.Support/supportTickets\",\r\n  \"properties\": {\r\n    \"description\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"problemClassificationId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc/problemClassifications/3ec1a070-f242-9ecf-5a7c-e1a88ce029ef\",\r\n    \"problemClassificationDisplayName\": \"Add or update VAT, tax id, PO number or profile information\",\r\n    \"severity\": \"Minimal\",\r\n    \"require24X7Response\": false,\r\n    \"enrollmentId\": \"\",\r\n    \"contactDetails\": {\r\n      \"firstName\": \"first\",\r\n      \"lastName\": \"last\",\r\n      \"preferredContactMethod\": \"Email\",\r\n      \"primaryEmailAddress\": \"user@contoso.com\",\r\n      \"additionalEmailAddresses\": [\r\n        \"user2@contoso.com\"\r\n      ],\r\n      \"phoneNumber\": \"2222\",\r\n      \"preferredTimeZone\": \"Pacific Standard Time\",\r\n      \"country\": \"USA\",\r\n      \"preferredSupportLanguage\": \"en-US\"\r\n    },\r\n    \"serviceLevelAgreement\": {\r\n      \"startTime\": \"2020-03-16T13:00:00Z\",\r\n      \"expirationTime\": \"2020-03-16T17:00:00Z\",\r\n      \"slaMinutes\": 240\r\n    },\r\n    \"supportEngineer\": {},\r\n    \"supportPlanType\": \"Premier\",\r\n    \"supportTicketId\": \"120031521000083\",\r\n    \"title\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"serviceId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc\",\r\n    \"serviceDisplayName\": \"Billing\",\r\n    \"status\": \"Open\",\r\n    \"createdDate\": \"2020-03-15T07:11:07Z\",\r\n    \"modifiedDate\": \"2020-03-15T07:11:08Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest7402?api-version=2020-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9zdXBwb3J0VGlja2V0cy9Qb3dlcnNoZWxsU2NlbmFyaW9UZXN0NzQwMj9hcGktdmVyc2lvbj0yMDIwLTA0LTAx",
+      "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest842?api-version=2020-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9zdXBwb3J0VGlja2V0cy9Qb3dlcnNoZWxsU2NlbmFyaW9UZXN0ODQyP2FwaS12ZXJzaW9uPTIwMjAtMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7f653560-08f1-473b-b5db-b6dc7e0b8185"
+          "f47f628f-1809-4acf-b19f-e5bc22f71f57"
         ],
         "Accept-Language": [
           "en-US"
@@ -417,22 +417,22 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "5aba16ad-3ab2-4fba-a1f7-c6c410f5b497"
+          "2fbe723c-0cf1-479b-bce4-8857f4a7e895"
         ],
         "x-ms-correlation-request-id": [
-          "5aba16ad-3ab2-4fba-a1f7-c6c410f5b497"
+          "2fbe723c-0cf1-479b-bce4-8857f4a7e895"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20200315T071721Z:5aba16ad-3ab2-4fba-a1f7-c6c410f5b497"
+          "CENTRALUSEUAP:20200315T071132Z:2fbe723c-0cf1-479b-bce4-8857f4a7e895"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 15 Mar 2020 07:17:20 GMT"
+          "Sun, 15 Mar 2020 07:11:32 GMT"
         ],
         "Content-Length": [
-          "1432"
+          "1430"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -441,17 +441,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest7402\",\r\n  \"name\": \"PowershellScenarioTest7402\",\r\n  \"type\": \"Microsoft.Support/supportTickets\",\r\n  \"properties\": {\r\n    \"description\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"problemClassificationId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc/problemClassifications/3ec1a070-f242-9ecf-5a7c-e1a88ce029ef\",\r\n    \"problemClassificationDisplayName\": \"Add or update VAT, tax id, PO number or profile information\",\r\n    \"severity\": \"Minimal\",\r\n    \"require24X7Response\": false,\r\n    \"enrollmentId\": \"\",\r\n    \"contactDetails\": {\r\n      \"firstName\": \"first\",\r\n      \"lastName\": \"last\",\r\n      \"preferredContactMethod\": \"Email\",\r\n      \"primaryEmailAddress\": \"user@contoso.com\",\r\n      \"additionalEmailAddresses\": [\r\n        \"user2@contoso.com\"\r\n      ],\r\n      \"phoneNumber\": \"2222\",\r\n      \"preferredTimeZone\": \"Pacific Standard Time\",\r\n      \"country\": \"USA\",\r\n      \"preferredSupportLanguage\": \"en-US\"\r\n    },\r\n    \"serviceLevelAgreement\": {\r\n      \"startTime\": \"2020-03-16T13:00:00Z\",\r\n      \"expirationTime\": \"2020-03-16T17:00:00Z\",\r\n      \"slaMinutes\": 240\r\n    },\r\n    \"supportEngineer\": {},\r\n    \"supportPlanType\": \"Premier\",\r\n    \"supportTicketId\": \"120031521000095\",\r\n    \"title\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"serviceId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc\",\r\n    \"serviceDisplayName\": \"Billing\",\r\n    \"status\": \"Open\",\r\n    \"createdDate\": \"2020-03-15T07:16:54Z\",\r\n    \"modifiedDate\": \"2020-03-15T07:16:56Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest842\",\r\n  \"name\": \"PowershellScenarioTest842\",\r\n  \"type\": \"Microsoft.Support/supportTickets\",\r\n  \"properties\": {\r\n    \"description\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"problemClassificationId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc/problemClassifications/3ec1a070-f242-9ecf-5a7c-e1a88ce029ef\",\r\n    \"problemClassificationDisplayName\": \"Add or update VAT, tax id, PO number or profile information\",\r\n    \"severity\": \"Minimal\",\r\n    \"require24X7Response\": false,\r\n    \"enrollmentId\": \"\",\r\n    \"contactDetails\": {\r\n      \"firstName\": \"first\",\r\n      \"lastName\": \"last\",\r\n      \"preferredContactMethod\": \"Email\",\r\n      \"primaryEmailAddress\": \"user@contoso.com\",\r\n      \"additionalEmailAddresses\": [\r\n        \"user2@contoso.com\"\r\n      ],\r\n      \"phoneNumber\": \"2222\",\r\n      \"preferredTimeZone\": \"Pacific Standard Time\",\r\n      \"country\": \"USA\",\r\n      \"preferredSupportLanguage\": \"en-US\"\r\n    },\r\n    \"serviceLevelAgreement\": {\r\n      \"startTime\": \"2020-03-16T13:00:00Z\",\r\n      \"expirationTime\": \"2020-03-16T17:00:00Z\",\r\n      \"slaMinutes\": 240\r\n    },\r\n    \"supportEngineer\": {},\r\n    \"supportPlanType\": \"Premier\",\r\n    \"supportTicketId\": \"120031521000083\",\r\n    \"title\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"serviceId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc\",\r\n    \"serviceDisplayName\": \"Billing\",\r\n    \"status\": \"Open\",\r\n    \"createdDate\": \"2020-03-15T07:11:07Z\",\r\n    \"modifiedDate\": \"2020-03-15T07:11:08Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest7402?api-version=2020-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9zdXBwb3J0VGlja2V0cy9Qb3dlcnNoZWxsU2NlbmFyaW9UZXN0NzQwMj9hcGktdmVyc2lvbj0yMDIwLTA0LTAx",
+      "RequestUri": "/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest842?api-version=2020-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzZjYjc3ZmEtOGIxNy00ZWFiLTk0OTMtYjY1ZGFjZTk5ODEzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3VwcG9ydC9zdXBwb3J0VGlja2V0cy9Qb3dlcnNoZWxsU2NlbmFyaW9UZXN0ODQyP2FwaS12ZXJzaW9uPTIwMjAtMDQtMDE=",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"contactDetails\": {\r\n    \"firstName\": \"first updated\",\r\n    \"lastName\": \"last updated\",\r\n    \"preferredContactMethod\": \"Email\",\r\n    \"primaryEmailAddress\": \"user@contoso.com\",\r\n    \"additionalEmailAddresses\": [\r\n      \"user2@contoso.com\"\r\n    ],\r\n    \"phoneNumber\": \"2222\",\r\n    \"preferredTimeZone\": \"Pacific Standard Time\",\r\n    \"country\": \"USA\",\r\n    \"preferredSupportLanguage\": \"en-US\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"severity\": \"Critical\",\r\n  \"contactDetails\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "11ea4ef1-a489-4650-abc1-90b36cc842df"
+          "ad74b3aa-cc33-43a8-872b-cc571b4852c3"
         ],
         "Accept-Language": [
           "en-US"
@@ -466,7 +466,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "401"
+          "55"
         ]
       },
       "ResponseHeaders": {
@@ -477,7 +477,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1198"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -486,22 +486,22 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "ba30263c-4285-4ebc-88ae-3d68cfdfa768"
+          "7e0f6a95-bba0-4ef2-895e-f753afa5fdea"
         ],
         "x-ms-correlation-request-id": [
-          "ba30263c-4285-4ebc-88ae-3d68cfdfa768"
+          "7e0f6a95-bba0-4ef2-895e-f753afa5fdea"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20200315T071724Z:ba30263c-4285-4ebc-88ae-3d68cfdfa768"
+          "CENTRALUSEUAP:20200315T071136Z:7e0f6a95-bba0-4ef2-895e-f753afa5fdea"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 15 Mar 2020 07:17:24 GMT"
+          "Sun, 15 Mar 2020 07:11:36 GMT"
         ],
         "Content-Length": [
-          "1448"
+          "1431"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -510,13 +510,13 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest7402\",\r\n  \"name\": \"PowershellScenarioTest7402\",\r\n  \"type\": \"Microsoft.Support/supportTickets\",\r\n  \"properties\": {\r\n    \"description\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"problemClassificationId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc/problemClassifications/3ec1a070-f242-9ecf-5a7c-e1a88ce029ef\",\r\n    \"problemClassificationDisplayName\": \"Add or update VAT, tax id, PO number or profile information\",\r\n    \"severity\": \"Minimal\",\r\n    \"require24X7Response\": false,\r\n    \"enrollmentId\": \"\",\r\n    \"contactDetails\": {\r\n      \"firstName\": \"first updated\",\r\n      \"lastName\": \"last updated\",\r\n      \"preferredContactMethod\": \"Email\",\r\n      \"primaryEmailAddress\": \"user@contoso.com\",\r\n      \"additionalEmailAddresses\": [\r\n        \"user2@contoso.com\"\r\n      ],\r\n      \"phoneNumber\": \"2222\",\r\n      \"preferredTimeZone\": \"Pacific Standard Time\",\r\n      \"country\": \"USA\",\r\n      \"preferredSupportLanguage\": \"en-US\"\r\n    },\r\n    \"serviceLevelAgreement\": {\r\n      \"startTime\": \"2020-03-16T13:00:00Z\",\r\n      \"expirationTime\": \"2020-03-16T17:00:00Z\",\r\n      \"slaMinutes\": 240\r\n    },\r\n    \"supportEngineer\": {},\r\n    \"supportPlanType\": \"Premier\",\r\n    \"supportTicketId\": \"120031521000095\",\r\n    \"title\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"serviceId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc\",\r\n    \"serviceDisplayName\": \"Billing\",\r\n    \"status\": \"Open\",\r\n    \"createdDate\": \"2020-03-15T07:16:54Z\",\r\n    \"modifiedDate\": \"2020-03-15T07:17:22Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets/PowershellScenarioTest842\",\r\n  \"name\": \"PowershellScenarioTest842\",\r\n  \"type\": \"Microsoft.Support/supportTickets\",\r\n  \"properties\": {\r\n    \"description\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"problemClassificationId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc/problemClassifications/3ec1a070-f242-9ecf-5a7c-e1a88ce029ef\",\r\n    \"problemClassificationDisplayName\": \"Add or update VAT, tax id, PO number or profile information\",\r\n    \"severity\": \"Critical\",\r\n    \"require24X7Response\": false,\r\n    \"enrollmentId\": \"\",\r\n    \"contactDetails\": {\r\n      \"firstName\": \"first\",\r\n      \"lastName\": \"last\",\r\n      \"preferredContactMethod\": \"Email\",\r\n      \"primaryEmailAddress\": \"user@contoso.com\",\r\n      \"additionalEmailAddresses\": [\r\n        \"user2@contoso.com\"\r\n      ],\r\n      \"phoneNumber\": \"2222\",\r\n      \"preferredTimeZone\": \"Pacific Standard Time\",\r\n      \"country\": \"USA\",\r\n      \"preferredSupportLanguage\": \"en-US\"\r\n    },\r\n    \"serviceLevelAgreement\": {\r\n      \"startTime\": \"2020-03-16T13:00:00Z\",\r\n      \"expirationTime\": \"2020-03-16T17:00:00Z\",\r\n      \"slaMinutes\": 240\r\n    },\r\n    \"supportEngineer\": {},\r\n    \"supportPlanType\": \"Premier\",\r\n    \"supportTicketId\": \"120031521000083\",\r\n    \"title\": \"test ticket from azure powershell scenario test. please ignore and close\",\r\n    \"serviceId\": \"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc\",\r\n    \"serviceDisplayName\": \"Billing\",\r\n    \"status\": \"Open\",\r\n    \"createdDate\": \"2020-03-15T07:11:07Z\",\r\n    \"modifiedDate\": \"2020-03-15T07:11:33Z\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {
     "": [
-      "PowershellScenarioTest7402"
+      "PowershellScenarioTest842"
     ]
   },
   "Variables": {
