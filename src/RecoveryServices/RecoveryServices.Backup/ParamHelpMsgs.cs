@@ -138,6 +138,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             public const string TargetResourceGroupName = "The resource group to which the managed disks are restored. This parameter is mandatory for backup of VM with managed disks";
             public const string OsaOption = "Use this switch if the disks from the recovery point are to be restored to their original storage accounts";
+            public const string RestoreOnlyOSDisk = "Use this switch to restore only OS disks of a backed up VM";
+            public const string RestoreDiskList = "Specify which disks to recover of the backed up VM";
+            public const string RestoreAsUnmanagedDisks = "Use this switch to specify to restore as unmanaged disks";
         }
 
         internal static class RestoreFS

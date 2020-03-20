@@ -1401,7 +1401,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("URIValueNotFound", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to The disks of the managed VM will be restored as unmanaged since TargetResourceGroupName parameter is not provided. This will NOT leverage the instant restore functionality and hence can be significantly slow based on given storage account. To leverage instant restore, provide the TargetResourceGroupName parameter. Otherwise, provide the intent next time by passing the RestoreAsUnmanagedDisks parameter
+        /// </summary>
+        public static string UnmanagedVMRestoreWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("UnmanagedVMRestoreWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be spceified. Please give Only one parameter and retry.
+        /// </summary>
+        public static string TargetRGUnmanagedRestoreDuplicateParamsException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetRGUnmanagedRestoreDuplicateParamsException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to VirtualMachineId is NULL or Empty. Please enter valid VirtualMachineId.
         /// </summary>
