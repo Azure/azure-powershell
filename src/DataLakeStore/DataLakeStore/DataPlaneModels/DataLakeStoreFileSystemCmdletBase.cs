@@ -101,7 +101,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 {
                     return byteArray;
                 }
-
+                /*
+                 *  [byte[]] $byteData = 1,2,3,4,5
+                 * $MyList = [System.Collections.Generic.List[object]]::new()
+                 * $MyList.Add($byteData[0])
+                 * $MyList.Add($byteData[1])
+                 * And then pass $MyList.ToArray() this will pass object[] containing bytes
+                 */
                 // attempt to convert the object into an object array	
                 var contentArray = content as object[];
                 if (contentArray == null)

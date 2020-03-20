@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             Mandatory = false,
             HelpMessage = "Optionally indicates the encoding for the content being downloaded. Default is UTF8")]
         [ArgumentToEncodingTransformation]
-        [PSArgumentCompleter(EncodingUtils.Unknown, EncodingUtils.String, EncodingUtils.Unicode, EncodingUtils.BigEndianUnicode, EncodingUtils.Ascii, EncodingUtils.Utf8, EncodingUtils.Utf7, EncodingUtils.Utf32, EncodingUtils.Default, EncodingUtils.Oem, EncodingUtils.BigEndianUtf32)]
+        [PSArgumentCompleter(EncodingUtils.Unknown, EncodingUtils.String, EncodingUtils.Unicode, EncodingUtils.BigEndianUnicode, EncodingUtils.Ascii, EncodingUtils.Utf8, EncodingUtils.Utf7, EncodingUtils.Utf32, EncodingUtils.Default, EncodingUtils.Oem, EncodingUtils.BigEndianUtf32, EncodingUtils.Byte)]
         
         public Encoding Encoding { get; set; } = Encoding.UTF8;
 
