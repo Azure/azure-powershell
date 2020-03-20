@@ -857,3 +857,50 @@ function Test-RemoveASetOfResources
     $expected = Get-AzResource -ResourceName "*test*" -ResourceGroupName "*$rgname*"
     Assert-Null $expected
 }
+
+<#
+.SYNOPSIS
+Tests setting resource tags.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-SetAResourceTagCase
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $apiversion = "2014-04-01"
+    $resourceType = "Providers.Test/statefulResources"
+ 
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+ 
+        # Verify tags and their casing
+        # resource.Tags key is exactly "testtag" with case sensitive match
+ 
+        # Set resource (add a new tag with key TestTag2 = "TestVal2")
+        Set-AzResource -Tags @{testtag = "testval"; TestTag2 = "TestVal2"} -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+        $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+ 
+        # Verify tags and their casing (note upper case in the key)
+        # resource.Tags keys are exactly "testtag" and "TestTag2" with case sensitive match
+        # case sensitive match for keys too
+ 
+        # Set resource (add a new tag with key TestTag2 = "TestVal2")
+        Set-AzResource -Tags @{Testtag = "testVAL"; TestTag2 = "TestVal2"} -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+        $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+ 
+        # Verify tags and their casing (note upper case in the key)
+        # check ARM behavior (does it change the key case?)
+        # resource.Tags keys are exactly "testtag" (or "Testtag") and "TestTag2" with case sensitive match
+        # values case should have changed for sure (check that casing too)
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
