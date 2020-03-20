@@ -13,10 +13,17 @@ Modifies a Backup protection policy.
 
 ## SYNTAX
 
+### ModifyPolicyParamSet
 ```
 Set-AzRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [[-RetentionPolicy] <RetentionPolicyBase>]
  [[-SchedulePolicy] <SchedulePolicyBase>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### FixPolicyParamSet
+```
+Set-AzRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [-FixForInconsistentItems]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +72,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FixForInconsistentItems
+Switch Parameter indicating whether or not to retry Policy Update for failed items.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: FixPolicyParamSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Policy
 Specifies the Backup protection policy that this cmdlet modifies.
 To obtain a **BackupProtectionPolicy** object, use the Get-AzRecoveryServicesBackupProtectionPolicy cmdlet.
@@ -87,7 +109,7 @@ To obtain a **RetentionPolicy** object, use the Get-AzRecoveryServicesBackupRete
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase
-Parameter Sets: (All)
+Parameter Sets: ModifyPolicyParamSet
 Aliases:
 
 Required: False
@@ -103,7 +125,7 @@ To obtain a **SchedulePolicy** object, use the Get-AzRecoveryServicesBackupSched
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase
-Parameter Sets: (All)
+Parameter Sets: ModifyPolicyParamSet
 Aliases:
 
 Required: False
