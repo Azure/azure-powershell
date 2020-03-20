@@ -177,8 +177,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (string)ProviderData[RestoreFSBackupItemParams.TargetFileShareName] : null;
             string targetFolder = ProviderData.ContainsKey(RestoreFSBackupItemParams.TargetFolder) ?
                 (string)ProviderData[RestoreFSBackupItemParams.TargetFolder] : null;
-            List<string> multipleSourceFilePaths = ProviderData.ContainsKey(RestoreFSBackupItemParams.MultipleSourceFilePaths) ?
-                (List<string>)ProviderData[RestoreFSBackupItemParams.MultipleSourceFilePaths] : null;
+            string[] multipleSourceFilePaths = ProviderData.ContainsKey(RestoreFSBackupItemParams.MultipleSourceFilePath) ?
+                (string[])ProviderData[RestoreFSBackupItemParams.MultipleSourceFilePath] : null;
 
             //validate file recovery request
             ValidateFileRestoreRequest(sourceFilePath, sourceFileType, multipleSourceFilePaths);
@@ -912,7 +912,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         private void ValidateFileRestoreRequest(string sourceFilePath, string sourceFileType,
-            List<string> multipleSourceFilePaths)
+            string[] multipleSourceFilePaths)
         {
             if (sourceFilePath == null && multipleSourceFilePaths == null && sourceFileType != null)
             {

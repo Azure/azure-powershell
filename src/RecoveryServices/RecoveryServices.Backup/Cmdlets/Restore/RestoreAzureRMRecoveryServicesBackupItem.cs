@@ -137,8 +137,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Array of source file paths to be recovered
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureFileParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreFS.MultipleSourceFilePaths)]
-        public List<string> MultipleSourceFilePaths { get; set; }
+            HelpMessage = ParamHelpMsgs.RestoreFS.MultipleSourceFilePath)]
+        public string[] MultipleSourceFilePath { get; set; }
 
         /// <summary>
         /// Use this switch if the disks from the recovery point are to be restored to their original storage accounts
@@ -214,9 +214,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     providerParameters.Add(RestoreFSBackupItemParams.SourceFileType, SourceFileType.ToString());
                 }
 
-                if(MultipleSourceFilePaths != null)
+                if(MultipleSourceFilePath != null)
                 {
-                    providerParameters.Add(RestoreFSBackupItemParams.MultipleSourceFilePaths, MultipleSourceFilePaths);
+                    providerParameters.Add(RestoreFSBackupItemParams.MultipleSourceFilePath, MultipleSourceFilePath);
                 }
 
                 PsBackupProviderManager providerManager =
