@@ -38,9 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Policy object to be modified
         /// </summary>
         [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy,
-            ValueFromPipeline = true, ParameterSetName = ModifyPolicyParamSet)]
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy,
-            ValueFromPipeline = true, ParameterSetName = FixInconsistentPolicyParamSet)]
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 
@@ -63,9 +61,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Retry Policy Update for Failed Items
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.FixForInConsistentItems,
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.FixForInConsistentItems,
             ParameterSetName = FixInconsistentPolicyParamSet)]
-        [ValidateNotNullOrEmpty]
         public SwitchParameter FixForInconsistentItems { get; set; }
 
         public override void ExecuteCmdlet()
