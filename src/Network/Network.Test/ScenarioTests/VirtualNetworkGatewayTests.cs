@@ -126,10 +126,18 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset5)]
         public void TestVirtualNetworKGatewayPacketCapture()
         {
             TestRunner.RunTestScript("Test-VirtualNetworKGatewayPacketCapture");
+        }
+
+        [Fact(Skip = "Skipped due to intermittent backend failures")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset5)]
+        public void TestDisconnectVirtualNetworkGatewayVpnConnection()
+        {
+            TestRunner.RunTestScript("Test-DisconnectVNGVpnConnection");
         }
     }
 }
