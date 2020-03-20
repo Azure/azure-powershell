@@ -277,6 +277,7 @@ function Test-AzureVMFullRestore
 			-VaultLocation $vault.Location `
 			-RecoveryPoint $rp `
 			-StorageAccountName $saName `
+			-RestoreAsUnmanagedDisks `
 			-StorageAccountResourceGroupName $resourceGroupName | `
 				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
@@ -586,6 +587,7 @@ function Test-AzureVMDiskExclusion
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
 			-RecoveryPoint $rp `
+			-RestoreAsUnmanagedDisks `
 			-StorageAccountName $saName `
 			-StorageAccountResourceGroupName $resourceGroupName `
 			-RestoreDiskList $arr | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
