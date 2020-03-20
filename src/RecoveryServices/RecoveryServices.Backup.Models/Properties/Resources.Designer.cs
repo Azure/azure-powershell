@@ -429,7 +429,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("DiscoveryFailureErrorMessage", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Multiple Parameters Provided. Please specify only one of the parameters from InclusionDisksList, ExclusionDisksList, ResetExclusionSetting and ExcludeAllDataDisks..
+        /// </summary>
+        public static string DiskExclusionParametersRedundant
+        {
+            get
+            {
+                return ResourceManager.GetString("DiskExclusionParametersRedundant", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Both Inclusion and Exclusion lists provided. Please provide only one of them.
+        /// </summary>
+        public static string InclusionListRedundantError
+        {
+            get
+            {
+                return ResourceManager.GetString("InclusionListRedundantError", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Empty response received from Service Client.
         /// </summary>

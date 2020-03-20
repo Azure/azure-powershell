@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Rest;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
@@ -85,6 +86,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             AzureVmItem item = (AzureVmItem)ProviderData[ItemParams.Item];
 
+            bool isDiskExclusionParamPresent = ValidateDiskExclusionParameters(
+                inclusionDisksList, exclusionDisksList, resetDiskExclusionSetting, excludeAllDataDisks);
+
             // do validations
             string containerUri = "";
             string protectedItemUri = "";
@@ -133,7 +137,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     sourceResourceId = iaasVmProtectableItem.VirtualMachineId;
                 }
             }
-            else if(parameterSetName.Contains("Disk") && parameterSetName.Contains("Modify"))
+            else if(isDiskExclusionParamPresent && parameterSetName.Contains("Modify"))
             {
                 isComputeAzureVM = IsComputeAzureVM(item.VirtualMachineId);
                 Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
@@ -1058,6 +1062,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 throw new ArgumentException(Resources.VirtualMachineIdIsEmptyOrNull);
             }
+        }
+
+        private bool ValidateDiskExclusionParameters(string[] inclusionDiskList, string[] exclusionDiskList,
+            SwitchParameter resetDiskExclusion, bool excludeAllDataDisks)
+        {
+            bool isDiskExclusionParamPresent = false;
+            if(inclusionDiskList != null || exclusionDiskList != null || resetDiskExclusion.IsPresent || excludeAllDataDisks)
+            {
+                isDiskExclusionParamPresent = true;
+            }
+
+            if(inclusionDiskList != null && exclusionDiskList != null)
+            {
+                throw new ArgumentException(Resources.InclusionListRedundantError);
+            }
+
+            if(resetDiskExclusion.IsPresent && (inclusionDiskList != null && exclusionDiskList != null))
+            {
+                throw new ArgumentException(Resources.DiskExclusionParametersRedundant);
+            }
+
+            if(excludeAllDataDisks && (inclusionDiskList != null || exclusionDiskList != null || resetDiskExclusion.IsPresent))
+            {
+                throw new ArgumentException(Resources.DiskExclusionParametersRedundant);
+            }
+
+            return isDiskExclusionParamPresent;
         }
 
         private void ValidateAzureVMDisableProtectionRequest(ItemBase itemBase)

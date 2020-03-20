@@ -38,27 +38,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string AzureVMComputeParameterSet = "AzureVMComputeEnableProtection";
         internal const string AzureFileShareParameterSet = "AzureFileShareEnableProtection";
         internal const string AzureWorkloadParameterSet = "AzureWorkloadEnableProtection";
-        internal const string ModifyProtectionWithPolicy = "ModifyProtectionPolicy";
-        internal const string ModifyProtectionWithDiskExclusion = "ModifyProtectionDiskExclusion";
-        internal const string ModifyProtectionWithDiskInclusion = "ModifyProtectionDiskInclusion";
-        internal const string ModifyProtectionWithDiskReset = "ModifyProtectionDiskReset";
-        internal const string ModifyProtectionWithOSDiskOnly = "ModifyProtectionWithOSDiskOnly";
+        internal const string ModifyProtectionParameterSet = "ModifyProtection";
 
         /// <summary>
         /// Policy to be associated with this item as part of the protection operation.
         /// </summary>
-        // [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = AzureVMClassicComputeParameterSet, 
-            HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
-        
-        [Parameter(Mandatory = true, ParameterSetName = AzureVMComputeParameterSet,
-            HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
-        [Parameter(Mandatory = true, ParameterSetName = AzureFileShareParameterSet,
-            HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
-        [Parameter(Mandatory = true, ParameterSetName = AzureWorkloadParameterSet,
-            HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
-        [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionWithPolicy,
-            HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 
@@ -107,12 +92,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Item whose protection needs to be modified.
         /// </summary>
-        [Parameter(Position = 4, Mandatory = true, ParameterSetName = ModifyProtectionWithPolicy,
+        [Parameter(Position = 4, Mandatory = true, ParameterSetName = ModifyProtectionParameterSet,
             HelpMessage = ParamHelpMsgs.Item.ProtectedItem, ValueFromPipeline = true)]
-        [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionWithDiskInclusion)]
-        [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionWithDiskExclusion)]
-        [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionWithDiskReset)]
-        [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionWithOSDiskOnly)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
 
@@ -121,7 +102,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionWithDiskInclusion)]
+        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet)]
         public string[] InclusionDisksList { get; set; }
 
         /// <summary>
@@ -129,13 +110,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionWithDiskExclusion)]
+        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet)]
         public string[] ExclusionDisksList { get; set; }
 
         /// <summary>
         /// Reset Disk Exclusion Settings
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionWithDiskReset)]
+        [Parameter(Mandatory = true, ParameterSetName = ModifyProtectionParameterSet)]
         public SwitchParameter ResetExclusionSettings { get; set; }
 
         /// <summary>
@@ -143,7 +124,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionWithOSDiskOnly)]
+        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet)]
         public SwitchParameter ExcludeAllDataDisks { get; set; }
 
         public override void ExecuteCmdlet()
