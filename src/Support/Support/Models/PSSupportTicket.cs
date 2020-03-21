@@ -77,11 +77,6 @@ namespace Microsoft.Azure.Commands.Support.Models
         public string EnrollmentId { get; set; }
 
         /// <summary>
-        /// Gets indicates if this is a production outage.
-        /// </summary>
-        public bool? ProductionOutage { get; set; }
-
-        /// <summary>
         /// Gets or sets indicates if this is a 24x7 support ticket.
         /// </summary>
         public bool? Require24X7Response { get; set; }

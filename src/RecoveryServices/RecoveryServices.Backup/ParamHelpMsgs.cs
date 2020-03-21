@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RetentionPolicy = "Retention Policy object for the policy.";
             public const string SchedulePolicy = "Schedule Policy object for the policy.";
             public const string ProtectionPolicy = "Protection policy object.";
+            public const string FixForInConsistentItems = "Switch Parameter indicating whether or not to retry Policy Update for failed items.";
         }
 
         internal static class Job

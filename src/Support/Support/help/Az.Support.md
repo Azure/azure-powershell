@@ -27,7 +27,7 @@ Creates a new Azure support ticket. This operation is modeled on the behavior of
 Gets the list of support tickets. You can get full support ticket details by ticket name or filter the support tickets by *Status* or *CreatedDate*.
 
 ### [Update-AzSupportTicket](Update-AzSupportTicket.md)
-Update a support ticket's severity or customer contact details.
+Update a support ticket's severity, status or customer contact details.
 
 ### [Get-AzSupportTicketCommunication](Get-AzSupportTicketCommunication.md)
 Gets communications for a support ticket. You can also filter support ticket communications by *CreatedDate* or *CommunicationType*. 

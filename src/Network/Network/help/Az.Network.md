@@ -1543,3 +1543,8 @@ Updates an existing VpnServerConfiguration.
 ### [Update-AzVpnSite](Update-AzVpnSite.md)
 Updates a VPN site.
 
+### [Disconnect-AzVirtualNetworkGatewayVpnConnection](Disconnect-AzVirtualNetworkGatewayVpnConnection.md)
+Disconnect virtual network gateway VPN connection.
+
+### [Disconnect-AzP2sVpnGatewayVpnConnection](Disconnect-AzP2sVpnGatewayVpnConnection.md)
+Disconnect p2s vpn gateway VPN connection.
