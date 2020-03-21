@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string AccountKeyKindHelpMessage = "The access key to regenerate. Accepted values: primary, primaryReadonly, secondary, secondaryReadonly ";
         public const string AccountFailoverPolicyHelpMessage = "Array of strings having region names, ordered by failover priority. E.g eastus, westus";
         public const string AccountObjectHelpMessage = "CosmosDB Account object";
-        public const string AccountUpdateLocationHelpMessage = "Name of the location to be added.";
+        public const string AccountUpdateLocationHelpMessage = "The georeplication location to be enabled for the Cosmos DB account, can be a single string or an array of strings.";
         public const string DefaultConsistencyLevelHelpMessage = "Default consistency level of the Cosmos DB database account. Accepted values: BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong. Default is Session.";
         public const string EnableAutomaticFailoverHelpMessage = "Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result" +
                " in a new write region for the account and is chosen based on the failover priorities configured for the account. Accepted values: false, true ";
