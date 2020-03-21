@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "arguments": {
+      "value": "'foo','bar'"
+    },
+    "scriptContent": {
+      "value": "result=$(bad content); echo \"arg1 is: $1\"; echo \"arg2 is: $2\"; echo $result | jq -c '{Result: map({id: .id})}' > $AZ_SCRIPTS_OUTPUT_PATH"
+    },
+    "scriptKind": {
+      "value": "AzureCLI"
+    }
+  }
+}
