@@ -881,23 +881,49 @@ function Test-SetAResourceTagCase
  
         # Verify tags and their casing
         # resource.Tags key is exactly "testtag" with case sensitive match
+        Assert-True { $resource.Tags.ContainsKey("testtag") }
+        Assert-True { !$resource.Tags.ContainsKey("TESTtag") }
+
+        Assert-True { $resource.Tags.testtag -ceq "testval" }
+        Assert-True { $resource.Tags.testtag -cne "testVAL" }
  
-        # Set resource (add a new tag with key TestTag2 = "TestVal2")
-        Set-AzResource -Tags @{testtag = "testval"; TestTag2 = "TestVal2"} -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+        # Set resource (add a new tag with key testTag2 = "TestVal2")
+        Set-AzResource -Tags @{testtag = "testval"; testTag2 = "TestVal2"} -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+        Start-Sleep -s 30
         $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+        
+        # Verify tag keys
+        Assert-True { $resource.Tags.ContainsKey("testtag") }
+        Assert-True { !$resource.Tags.ContainsKey("TESTtag") }
+
+        Assert-True { $resource.Tags.ContainsKey("testTag2") }
+        Assert-True { !$resource.Tags.ContainsKey("TestTag2") }
+        
+        # Verify tag values
+        Assert-True { $resource.Tags.testtag -ceq "testval" }
+        Assert-True { $resource.Tags.testtag -cne "testVAL" }
+        
+        Assert-True { $resource.Tags.testTag2 -ceq "TestVal2" }
+        Assert-True { $resource.Tags.testTag2 -cne "testval2" }
  
-        # Verify tags and their casing (note upper case in the key)
-        # resource.Tags keys are exactly "testtag" and "TestTag2" with case sensitive match
-        # case sensitive match for keys too
- 
-        # Set resource (add a new tag with key TestTag2 = "TestVal2")
-        Set-AzResource -Tags @{Testtag = "testVAL"; TestTag2 = "TestVal2"} -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+        # Set resource (replace tags with keys of different cases)
+        Set-AzResource -Tags @{testTag = "testVAL"; testtag2 = "Testval2"} -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+        Start-Sleep -s 30
         $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
- 
-        # Verify tags and their casing (note upper case in the key)
-        # check ARM behavior (does it change the key case?)
-        # resource.Tags keys are exactly "testtag" (or "Testtag") and "TestTag2" with case sensitive match
-        # values case should have changed for sure (check that casing too)
+       
+        # Verify tag keys
+        Assert-True { $resource.Tags.ContainsKey("testTag") }
+        Assert-True { !$resource.Tags.ContainsKey("testtag") }
+
+        Assert-True { $resource.Tags.ContainsKey("testtag2") }
+        Assert-True { !$resource.Tags.ContainsKey("testTag2") }
+
+        # Verify tag values
+        Assert-True { $resource.Tags.testTag -ceq "testVAL" }
+        Assert-True { $resource.Tags.testTag -cne "testval" }
+        
+        Assert-True { $resource.Tags.testtag2 -ceq "Testval2" }
+        Assert-True { $resource.Tags.testtag2 -cne "TestVal2" }
     }
     finally
     {
