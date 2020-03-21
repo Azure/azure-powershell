@@ -325,7 +325,7 @@ function Test-Gallery
         Assert-AreEqual 2 $imageConfig.StorageProfile.DataDisks.Count;
 
         $image = New-AzImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname
-        $targetRegions = @(@{Name='South Central US';ReplicaCount=1},@{Name='East US';ReplicaCount=2},@{Name='Central US'});        
+        $targetRegions = @(@{Name='South Central US';ReplicaCount=1},@{Name='East US';ReplicaCount=2});
         $tag = @{test1 = "testval1"; test2 = "testval2" };
 
         New-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
@@ -347,9 +347,11 @@ function Test-Gallery
         Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
                                    $image.Id 1 $endOfLifeDate $targetRegions;
 
+        $targetRegions = @(@{Name='South Central US';ReplicaCount=1},@{Name='East US';ReplicaCount=2},@{Name='Central US';StorageAccountType="Standard_ZRS"});
+
         Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                           -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName `
-                                          -Tag $tag;
+                                          -TargetRegion $targetRegions -Tag $tag;
 
         $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                                   -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
