@@ -43,6 +43,8 @@ PS C:\> $SchPol.ScheduleRunTimes.Add($DT.ToUniversalTime())
 PS C:\> $RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
 PS C:\> $RetPol.DailySchedule.DurationCountInDays = 365
 PS C:\> $Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
+PS C:\> $Pol.AzureBackupRGName = "RG_prefix"
+PS C:\> $Pol.AzureBackupRGNameSuffix = "RG_suffix"
 PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
 ```
 
@@ -53,6 +55,7 @@ The fourth command adds the date and time in $DT to the schedule run time for th
 The fifth command gets a base retention policy object, and then stores it in the $RetPol variable.
 The sixth command sets the retention duration to 365 days.
 The seventh command gets the Backup protection policy named NewPolicy, and then stores it in the $Pol variable.
+The eighth and ninth sets the resource group parameters associated with policy which stores the restore points.
 The final command modifies the Backup protection policy in $Pol using schedule policy in $SchPol and the retention policy in $RetPol.
 
 ## PARAMETERS
