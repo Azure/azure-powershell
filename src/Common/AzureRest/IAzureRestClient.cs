@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
+namespace Microsoft.Azure.Internal.Common
 {
     public partial interface IAzureRestClient : IDisposable
     {

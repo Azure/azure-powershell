@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
 
-namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
+namespace Microsoft.Azure.Internal.Common
 {
     public partial class AzureRestClient : ServiceClient<AzureRestClient>, IAzureRestClient, IAzureClient
     {
@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.AzureRest
 
         public bool EndsWithSlash { get; private set; }
 
-        protected AzureRestClient(params DelegatingHandler[] handlers)
+        protected AzureRestClient(params DelegatingHandler[] handlers) : base(handlers)
         {
             Initialize();
         }
