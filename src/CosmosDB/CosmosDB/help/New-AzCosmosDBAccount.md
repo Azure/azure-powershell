@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbaccountkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbaccount
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ DatabaseAccountOfferType      : Standard
 IpRangeFilter                 :
 IsVirtualNetworkFilterEnabled : False
 EnableAutomaticFailover       : False
-ConsistencyPolicy             : Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConsistencyPolicy
+ConsistencyPolicy             : Microsoft.Azure.Management.CosmosDB.Models.ConsistencyPolicy
 Capabilities                  : {}
 WriteLocations                : {databaseAccountName-eastus}
 ReadLocations                 : {databaseAccountName-eastus}
@@ -57,7 +57,7 @@ A new CosmosDB Account with name databaseAccountName is created in the ResourceG
 
 ### -ApiKind
 The type of Cosmos DB database account to create.
-Accepted values: GlobalDocumentDB, Sql, MongoDB, Gremlin, Table, Cassandra.
+Accepted values: GlobalDocumentDB, MongoDB, Gremlin, Table, Cassandra.
 Default value: GlobalDocumentDB
 
 ```yaml
