@@ -708,11 +708,11 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual $result.FileCount 1
 
 		# Export DiskUsage
-		$targetFile = Join-Path $currentDir "DuOutputAlias"
-		Export-AdlStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile
-		$result = Get-Item -Path $targetFile
-		Assert-NotNull $result "No file was created on export properties"
-        Remove-Item -Path $targetFile
+		#$targetFile = Join-Path $currentDir "DuOutputAlias"
+		#Export-AdlStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile
+		#$result = Get-Item -Path $targetFile
+		#Assert-NotNull $result "No file was created on export properties"
+        #Remove-Item -Path $targetFile
 
 		# delete a file
 		Assert-True {Remove-AdlStoreItem -Account $accountName -paths "$moveFolder/movefile.txt" -force -passthru } "Remove File Failed"
