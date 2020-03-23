@@ -25,19 +25,15 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
     /// <summary>
     /// Get or List private link scope(s)
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", DefaultParameterSetName = ByResourceNameParameterSet), OutputType(typeof(PSMonitorPrivateLinkScope))]
-    class GetAzureInsightsPrivateLinkScope : ManagementCmdletBase
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", DefaultParameterSetName = ByResourceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    class RemoveAzureInsightsPrivateLinkScope : ManagementCmdletBase
     {
-        const string ByResourceGroupParameterSet = "ByResourceGroupParameterSet";
         const string ByResourceNameParameterSet = "ByResourceNameParameterSet";
         const string ByResourceIdParameterSet = "ByResourceIdParameterSet";
+        const string ByInputObjectSet = "ByInputObjectSet";
 
         #region Cmdlet parameters
 
-        [Parameter(
-            ParameterSetName = ByResourceGroupParameterSet,
-            Mandatory = false,
-            HelpMessage = "Resource Group Name")]
         [Parameter(
             ParameterSetName = ByResourceNameParameterSet,
             Mandatory = true,
@@ -60,42 +56,36 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(
+            ParameterSetName = ByInputObjectSet,
+            Mandatory = true,
+            HelpMessage = "PSMonitorPrivateLinkScope")]
+        [ValidateNotNullOrEmpty]
+        public PSMonitorPrivateLinkScope InputObject { get; set; }
+
         #endregion
 
         protected override void ProcessRecordInternal()
         {
-            if (ParameterSetName.Equals(ByResourceGroupParameterSet))
+            if (this.IsParameterBound(c => c.ResourceId) || this.IsParameterBound(c => c.InputObject))
             {
-                if (this.IsParameterBound(c => c.ResourceGroupName))
-                {                    
-                    var response = this.MonitorManagementClient
-                                       .PrivateLinkScopes
-                                       .ListByResourceGroupWithHttpMessagesAsync(this.ResourceGroupName)
-                                       .Result;
-                    WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(response.Body), true);
-                }
-                else
+                if (this.IsParameterBound(c => c.InputObject))
                 {
-                    var response = this.MonitorManagementClient
-                                       .PrivateLinkScopes.ListWithHttpMessagesAsync()
-                                       .Result;
-                    WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(response.Body), true);
+                    this.ResourceId = InputObject.Id;
                 }
-            }
-            else if (ParameterSetName.Equals(ByResourceNameParameterSet) || ParameterSetName.Equals(ResourceId))
-            {
-                if (this.IsParameterBound(c => c.ResourceId))
-                {
-                    ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
-                    this.ResourceGroupName = identifier.ResourceGroupName;
-                    this.Name = identifier.ResourceName;
 
-                    var response = this.MonitorManagementClient
-                                       .PrivateLinkScopes
-                                       .GetWithHttpMessagesAsync(this.ResourceGroupName, this.Name)
-                                       .Result;
-                    WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(response.Body));
-                }
+                ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = identifier.ResourceGroupName;
+                this.Name = identifier.ResourceName;
+            }
+            
+            if (ShouldProcess(this.Name, string.Format("delete scope: {0} from resource group: {1}", this.Name, this.ResourceGroupName)))
+            {
+                var response = this.MonitorManagementClient
+                                   .PrivateLinkScopes
+                                   .DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.Name)
+                                   .Result;
+                WriteObject(true);
             }
         }
     }

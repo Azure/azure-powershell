@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.Insights.Utils
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<AzureMonitorPrivateLinkScope, PSMonitorPrivateLinkScope>().ReverseMap();
+                cfg.CreateMap<AzureMonitorPrivateLinkScope, PSMonitorPrivateLinkScope>().ReverseMap(); 
             });
             _instance = config.CreateMapper();
         }
