@@ -22,7 +22,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkServiceProvider
 {
-    public class GenericProvider : IPrivateLinkProvider
+    internal class GenericProvider : IPrivateLinkProvider
     {
 
         private static IDictionary<string, string> _apiVersions = new Dictionary<string, string>{

@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkServiceProvider
 {
-    public class PrivateLinkProviderFactory
+    internal class PrivateLinkProviderFactory
     {
         private const string NETWORKING_TYPE = "microsoft.network/privatelinkservices";
         
