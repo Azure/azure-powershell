@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.TrafficRouting
     /// <summary>
     /// this commandlet will let you Remove the given Azure App Service Traffic Routing using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + "WebAppTrafficRouting", DefaultParameterSetName = RoutingParameterSet, SupportsShouldProcess = true), OutputType(typeof(RampUpRule))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + "WebAppTrafficRouting", DefaultParameterSetName = RoutingParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureWebAppTrafficRoutingRuleCmdlet : WebAppBaseClientCmdLet
     {
         private const string RoutingParameterSet = "RoutingParameterSet";
@@ -63,16 +63,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.TrafficRouting
                         // Update web app configuration
                         WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, webApp.Location, WebAppName, null, siteConfig, null, null, null);
                         if (PassThru.IsPresent)
-                        {
-                            var app = WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, null);
-                            WriteObject(app.SiteConfig.Experiments.RampUpRules.FirstOrDefault(rule => rule.Name == RuleName));
+                        {                            
+                            WriteObject(true);
                         }
                     }
                 }
                 else
                 {
-                    throw new ValidationMetadataException(string.Format("Given Routing Rule with name '{0}' in WebApp '{1}' is not present." +
-                        "Please use a valid RuleName to remove ", RuleName, WebAppName));
+                    throw new ValidationMetadataException(string.Format(Properties.Resources.UpdateAndGetRoutingRuleErrorMessage, RuleName, WebAppName));
                 }
             }
         }

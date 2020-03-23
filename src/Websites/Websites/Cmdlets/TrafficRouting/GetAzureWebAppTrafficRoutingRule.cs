@@ -56,8 +56,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.TrafficRouting
                 }
                 else
                 {
-                    throw new ValidationMetadataException(string.Format("Given Routing Rule with name '{0}' in WebApp '{1}' is not present." +
-                        "Please use a valid RuleName to remove ", RuleName, WebAppName));
+                    throw new ValidationMetadataException(string.Format(Properties.Resources.UpdateAndGetRoutingRuleErrorMessage, RuleName, WebAppName));
                 }
             }
         }
