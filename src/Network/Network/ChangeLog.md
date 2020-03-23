@@ -20,10 +20,10 @@
 
 ## Upcoming Release
 * Updated cmdlets to allow cross-tenant VirtualHubVnetConnections
-    - New-AzVirtualHubVnetConnection
-    - Update-AzVirtualHubVnetConnection
-    - New-AzVirtualHub
-    - Update-AzVirtualHub
+    - `New-AzVirtualHubVnetConnection`
+    - `Update-AzVirtualHubVnetConnection`
+    - `New-AzVirtualHub`
+    - `Update-AzVirtualHub`
 * Removed Sql Management SDK dependency
 
 ## Version 2.3.2
