@@ -16,7 +16,6 @@ function Update-AzMariaDbConfiguration
 {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
     param(
         [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='You can obtain this value from the Azure Resource Manager API or the portal.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
@@ -127,12 +126,7 @@ function Update-AzMariaDbConfiguration
     
     process {
         try {
-            if ($PSBoundParameters.ContainsKey('ServerId')) {
-                $ServerId = $PSBoundParameters['ServerId']
-                $PSBoundParameters['ServerName'] = Get-ServerNameFromMariaDbId $ServerId
-                $PSBoundParameters['ResourceGroupName'] = Get-ResourceGroupNameFromMariaDbId $ServerId
-                $Null = $PSBoundParameters.Remove('ServerId')
-            } elseif ($PSBoundParameters.ContainsKey('ServerObject')) {
+            if ($PSBoundParameters.ContainsKey('ServerObject')) {
                 $ServerId = $PSBoundParameters['ServerObject'].Id
                 $PSBoundParameters['ServerName'] = Get-ServerNameFromMariaDbId $ServerId
                 $PSBoundParameters['ResourceGroupName'] = Get-ResourceGroupNameFromMariaDbId $ServerId
@@ -144,10 +138,11 @@ function Update-AzMariaDbConfiguration
                 $Configuration.Add($Name, $Value)
             }
             if ($PSBoundParameters.ContainsKey('Configuration')) {
-                $PSBoundParameters.Remove('PSBoundParameters')
+                $Null = $PSBoundParameters.Remove('PSBoundParameters')
             }
             foreach ($ConfigName in $Configuration.Keys) {
-                $PSBoundParameters['Name'] = $Configuration[$ConfigName]
+                $PSBoundParameters['Name'] = $ConfigName
+                $PSBoundParameters['Value'] = $Configuration[$ConfigName]
                 Az.MariaDb.internal\Update-AzMariaDbConfiguration @PSBoundParameters
             }
         } catch {

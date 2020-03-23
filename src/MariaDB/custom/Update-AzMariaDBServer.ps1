@@ -16,7 +16,6 @@ function Update-AzMariaDbServer
 {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
     [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
     param(
         [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='MariaDb server name')]
         [Alias('ServerName')]
@@ -42,7 +41,7 @@ function Update-AzMariaDbServer
     
         [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline, HelpMessage='Identity Parameter')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
@@ -94,7 +93,7 @@ function Update-AzMariaDbServer
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.String]
         # The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-        ${SkuName},
+        ${Sku},
 
         [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
@@ -171,6 +170,7 @@ function Update-AzMariaDbServer
             if ($PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
                 $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($PSBoundParameters['AdministratorLoginPassword'])
                 $PSBoundParameters['AdministratorLoginPassword'] = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+                $Null = $PSBoundParameters.Remove('AdministratorLoginPassword')
             }
     
             Az.MariaDb.internal\Update-AzMariaDbServer @PSBoundParameters

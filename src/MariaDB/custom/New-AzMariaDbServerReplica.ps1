@@ -14,7 +14,6 @@
 function New-AzMariaDbServerReplica {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
     [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
     param(
         [Parameter(Mandatory, HelpMessage='Replica name.')]
         [Alias('ReplicaName')]
@@ -25,7 +24,7 @@ function New-AzMariaDbServerReplica {
 
         [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline, HelpMessage='The source server object to restore from.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
         # The source server object to restore from.
         ${InputObject},
     
@@ -61,7 +60,7 @@ function New-AzMariaDbServerReplica {
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.String]
         # The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-        ${SkuName},
+        ${Sku},
 
         [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
@@ -153,9 +152,9 @@ function New-AzMariaDbServerReplica {
                 $Parameter.Location = $InputObject.Location
             }
 
-            if ($PSBoundParameters.ContainsKey('SkuName')) {
-                $Parameter.SkuName = $PSBoundParameters['SkuName']
-                $Null = $PSBoundParameters.Remove('SkuName')
+            if ($PSBoundParameters.ContainsKey('Sku')) {
+                $Parameter.Sku = $PSBoundParameters['Sku']
+                $Null = $PSBoundParameters.Remove('Sku')
             }
 
             if ($PSBoundParameters.ContainsKey('Tag')) {

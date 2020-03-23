@@ -14,14 +14,14 @@ Deletes a function app.
 
 ### ByName (Default)
 ```
-Remove-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Remove-AzFunctionApp -InputObject <ISite[]> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzFunctionApp -InputObject <ISite> [-Force] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,19 +29,18 @@ Deletes a function app.
 
 ## EXAMPLES
 
-### Example 1: Get a function app by name and delete it.
+### Example 1: Example 1: Get a function app by name and delete it.
 ```powershell
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -PassThru
+PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -Force
 
+True
 ```
 
-### Example 2: Delete the function app by given name.
+### ### Example 2: Delete the function app by given name.
 ```powershell
-PS C:\> Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -PassThru
+PS C:\> Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 
 ```
-
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -60,11 +59,27 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Force
+Forces the cmdlet to remove the function app without prompting for confirmation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -178,7 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite[]
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite
 
 ## OUTPUTS
 
@@ -191,7 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <ISite[]>: 
+#### INPUTOBJECT <ISite>: 
   - `Location <String>`: Resource Location.
   - `CloningInfoSourceWebAppId <String>`: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   - `[Kind <String>]`: Kind of resource.

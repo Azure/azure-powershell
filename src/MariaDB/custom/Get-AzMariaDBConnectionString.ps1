@@ -15,7 +15,6 @@
 function Get-AzMariaDbConnectionString {
     [OutputType([System.String])]
     [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
     param(
         [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='The name of the server.')]
         [Alias('ServerName')]

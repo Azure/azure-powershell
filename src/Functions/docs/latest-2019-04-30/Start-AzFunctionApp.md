@@ -12,7 +12,7 @@ Starts a function app.
 
 ## SYNTAX
 
-### Start (Default)
+### StartByName (Default)
 ```
 Start-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -20,7 +20,7 @@ Start-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId 
 
 ### ByObjectInput
 ```
-Start-AzFunctionApp -InputObject <ISite[]> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+Start-AzFunctionApp -InputObject <ISite> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -31,13 +31,13 @@ Starts a function app.
 
 ### Example 1: Get a function app by name and start it.
 ```powershell
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp -PassThru
+PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp
 
 ```
 
 ### Example 2: Start the function app by given name.
 ```powershell
-PS C:\> Start-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -PassThru
+PS C:\> Start-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName
 
 ```
 
@@ -63,7 +63,7 @@ Dynamic: False
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -80,7 +80,7 @@ The name of function app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: StartByName
 Aliases:
 
 Required: True
@@ -112,7 +112,7 @@ Dynamic: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: StartByName
 Aliases:
 
 Required: True
@@ -128,7 +128,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: StartByName
 Aliases:
 
 Required: False
@@ -177,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite[]
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite
 
 ## OUTPUTS
 
@@ -190,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <ISite[]>: 
+#### INPUTOBJECT <ISite>: 
   - `Location <String>`: Resource Location.
   - `CloningInfoSourceWebAppId <String>`: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   - `[Kind <String>]`: Kind of resource.

@@ -14,22 +14,27 @@
 function Restore-AzMariaDbServer
 {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
-    [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='ServerName', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
-        # MariaDb member name.
+        # The dest server name to restore from.
         ${Name},
 
-        [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
+        [System.String]
+        # The source server name to restore from.
+        ${ServerName},
+
+        [Parameter(ValueFromPipeline)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
         # The source server object to restore from.
-        ${InputObject},
+        ${Server},
     
-        [Parameter(ParameterSetName='ServerName', Mandatory)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # The name of the resource group that contains the resource.
@@ -43,6 +48,13 @@ function Restore-AzMariaDbServer
         # Gets the subscription Id which uniquely identifies the Microsoft Azure subscription.
         # The subscription ID is part of the URI for every service call.
         ${SubscriptionId},
+    
+        #region ServerForCreate
+        [Parameter(HelpMessage='The location the resource resides in.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        [System.String]
+        # The location the resource resides in.
+        ${Location},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
@@ -52,12 +64,26 @@ function Restore-AzMariaDbServer
         ${Tag},
 
         #region PointInTimeRestore
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='PointInTimeRestore', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.DateTime]
         # The location the resource resides in.
         ${RestorePointInTime},
-        #endregion
+
+        [Parameter(ParameterSetName='PointInTimeRestore', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        [Switch]
+        # Use PointInTimeRestore mode.
+        ${UsePointInTimeRestore},
+        #endregion PointInTimeRestore
+
+        #region Geo
+        [Parameter(ParameterSetName='GeoRestore', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        [Switch]
+        # Use GeoRestore mode.
+        ${UseGeoRetore},
+        #endregion Geo
 
         #region DefaultParameters
         [Parameter()]
@@ -124,24 +150,24 @@ function Restore-AzMariaDbServer
     process {
         try {
             $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerForCreate]::new()
-            $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForRestore]::new()
-
-            if ($PSBoundParameters.ContainsKey('SourceServerId')) {
-                $Parameter.Property.SourceServerId = $PSBoundParameters['SourceServerId']
-                
-                $FieldList = $PSBoundParameters['SourceServerId'].Split('/')
-                $InputObject = Get-AzMariadbServer -ResourceGroupName $FieldList[4] -ServerName $FieldList[8]
-                $PSBoundParameters.Remove('SourceServerId')
-            }
-            if ($PSBoundParameters.ContainsKey('InputObject')) {
-                $Parameter.Property.SourceServerId = $InputObject.Id
-                $PSBoundParameters.Remove('InputObject')
-            }
-            $Parameter.Location = $InputObject.Location
-    
-            if ($PSBoundParameters.ContainsKey('RestorePointInTime')) {
+            if ($PSBoundParameters.ContainsKey('UsePointInTimeRestore')) {
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForRestore]::new()
                 $Parameter.Property.RestorePointInTime = $RestorePointInTime
-                $PSBoundParameters.Remove('RestorePointInTime')
+                $Null = $PSBoundParameters.Remove('RestorePointInTime')
+                $Null = $PSBoundParameters.Remove('UsePointInTimeRestore')
+            } elseif ($PSBoundParameters.ContainsKey('UseGeoRetore')) {
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForGeoRestore]::new()
+                $Null = $PSBoundParameters.Remove('UseGeoRetore')
+            }
+
+            if ($PSBoundParameters.ContainsKey('Server')) {
+                $Null = $PSBoundParameters.Remove('Server')
+            } else {
+                $Server = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+            }
+            $Parameter.Property.SourceServerId = $Server.Id
+            if (-ne $PSBoundParameters.ContainsKey('Location')) {
+                $Location = $Server.Location
             }
 
             $PSBoundParameters.Add('Parameter', $Parameter)

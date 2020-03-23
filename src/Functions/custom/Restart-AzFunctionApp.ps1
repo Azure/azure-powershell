@@ -1,22 +1,22 @@
 function Restart-AzFunctionApp {
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='Restart', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='RestartByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Restarts a function app.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Profile('latest-2019-04-30')]
     param(
-        [Parameter(ParameterSetName='Restart', Mandatory=$true, HelpMessage='The name of function app.')]
+        [Parameter(ParameterSetName='RestartByName', Mandatory=$true, HelpMessage='The name of function app.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [System.String]
         [ValidateNotNullOrEmpty()]
         ${Name},
 
-        [Parameter(ParameterSetName='Restart', Mandatory=$true)]
+        [Parameter(ParameterSetName='RestartByName', Mandatory=$true)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [System.String]
         [ValidateNotNullOrEmpty()]
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='Restart', HelpMessage='The Azure subscription ID.')]
+        [Parameter(ParameterSetName='RestartByName', HelpMessage='The Azure subscription ID.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -24,7 +24,7 @@ function Restart-AzFunctionApp {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -32,6 +32,10 @@ function Restart-AzFunctionApp {
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${PassThru},
+
+        [Parameter(HelpMessage='Forces the cmdlet to restart the function app without prompting for confirmation.')]
+        [System.Management.Automation.SwitchParameter]
+        ${Force},
 
         [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -81,7 +85,8 @@ function Restart-AzFunctionApp {
     )
 
     process {
-        
+
+        # The input object is an ISite. This needs to be transformed into a FunctionsIdentity
         if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
         {            
             if ($PSBoundParameters.ContainsKey("InputObject"))
@@ -89,19 +94,25 @@ function Restart-AzFunctionApp {
                 $null = $PSBoundParameters.Remove("InputObject")
             }
 
-            foreach ($input in $InputObject)
-            {
-                $functionsIdentity = CreateObjectFromPipeline -InputObject $input
-                if ($functionsIdentity)
-                {
-                    $null = $PSBoundParameters.Add("InputObject", $functionsIdentity)
-                    Az.Functions.internal\Restart-AzFunctionApp @PSBoundParameters
-                }
-            }
+            $functionsIdentity = CreateFunctionsIdentity -InputObject $InputObject
+            $null = $PSBoundParameters.Add("InputObject", $functionsIdentity)
+
+            # Set the name of the function app for the ShouldProcess and ShouldContinue calls
+            $Name = $InputObject.Name
         }
-        else
+
+        if ($PsCmdlet.ShouldProcess($Name, "Restarting function app"))
         {
-            Az.Functions.internal\Restart-AzFunctionApp @PSBoundParameters
+            if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Restart function app '$Name'?", "Restarting function app"))
+            {
+                # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
+                if ($PSBoundParameters.ContainsKey("Force"))
+                {
+                    $null = $PSBoundParameters.Remove("Force")
+                }
+
+                Az.Functions.internal\Restart-AzFunctionApp @PSBoundParameters
+            }
         }
     }
 }

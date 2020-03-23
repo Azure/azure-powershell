@@ -1,22 +1,22 @@
 function Start-AzFunctionApp {
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='Start', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='StartByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Starts a function app.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Profile('latest-2019-04-30')]
     param(
-        [Parameter(ParameterSetName='Start', Mandatory=$true, HelpMessage='The name of function app.')]
+        [Parameter(ParameterSetName='StartByName', Mandatory=$true, HelpMessage='The name of function app.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [System.String]
         [ValidateNotNullOrEmpty()]
         ${Name},
 
-        [Parameter(ParameterSetName='Start', Mandatory=$true)]
+        [Parameter(ParameterSetName='StartByName', Mandatory=$true)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [System.String]
         [ValidateNotNullOrEmpty()]
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='Start', HelpMessage='The Azure subscription ID.')]
+        [Parameter(ParameterSetName='StartByName', HelpMessage='The Azure subscription ID.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -24,7 +24,7 @@ function Start-AzFunctionApp {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20180201.ISite]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -82,6 +82,7 @@ function Start-AzFunctionApp {
 
     process {
 
+        # The input object is an ISite. This needs to be transformed into a FunctionsIdentity.
         if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
         {            
             if ($PSBoundParameters.ContainsKey("InputObject"))
@@ -89,17 +90,14 @@ function Start-AzFunctionApp {
                 $null = $PSBoundParameters.Remove("InputObject")
             }
 
-            foreach ($input in $InputObject)
-            {
-                $functionsIdentity = CreateObjectFromPipeline -InputObject $input
-                if ($functionsIdentity)
-                {
-                    $null = $PSBoundParameters.Add("InputObject", $functionsIdentity)
-                    Az.Functions.internal\Start-AzFunctionApp @PSBoundParameters
-                }
-            }
+            $functionsIdentity = CreateFunctionsIdentity -InputObject $InputObject
+            $null = $PSBoundParameters.Add("InputObject", $functionsIdentity)
+
+            # Set the name of the function app for the ShouldProcess call.
+            $Name = $InputObject.Name
         }
-        else
+
+        if ($PsCmdlet.ShouldProcess($Name, "Starting function app"))
         {
             Az.Functions.internal\Start-AzFunctionApp @PSBoundParameters
         }

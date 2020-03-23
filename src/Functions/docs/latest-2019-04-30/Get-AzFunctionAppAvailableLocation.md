@@ -26,11 +26,72 @@ Gets the location where a function app for the given os and plan type is availab
 ```powershell
 PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 
+Name                Type
+----                ----
+Central US          Microsoft.Web/geoRegions
+North Europe        Microsoft.Web/geoRegions
+West Europe         Microsoft.Web/geoRegions
+Southeast Asia      Microsoft.Web/geoRegions
+East Asia           Microsoft.Web/geoRegions
+West US             Microsoft.Web/geoRegions
+East US             Microsoft.Web/geoRegions
+Japan West          Microsoft.Web/geoRegions
+Japan East          Microsoft.Web/geoRegions
+East US 2           Microsoft.Web/geoRegions
+North Central US    Microsoft.Web/geoRegions
+South Central US    Microsoft.Web/geoRegions
+Brazil South        Microsoft.Web/geoRegions
+Australia East      Microsoft.Web/geoRegions
+Australia Southeast Microsoft.Web/geoRegions
+West India          Microsoft.Web/geoRegions
+Canada Central      Microsoft.Web/geoRegions
+West Central US     Microsoft.Web/geoRegions
+West US 2           Microsoft.Web/geoRegions
+UK West             Microsoft.Web/geoRegions
+UK South            Microsoft.Web/geoRegions
+Central US EUAP     Microsoft.Web/geoRegions
+Korea Central       Microsoft.Web/geoRegions
+France Central      Microsoft.Web/geoRegions
+Norway East         Microsoft.Web/geoRegions
+
 ```
 
 ### Example 2: Get the locations where Premium is available for Windows.
 ```powershell
 PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Windows
+
+Name                 Type
+----                 ----
+Central US           Microsoft.Web/geoRegions
+North Europe         Microsoft.Web/geoRegions
+West Europe          Microsoft.Web/geoRegions
+Southeast Asia       Microsoft.Web/geoRegions
+East Asia            Microsoft.Web/geoRegions
+West US              Microsoft.Web/geoRegions
+East US              Microsoft.Web/geoRegions
+Japan West           Microsoft.Web/geoRegions
+Japan East           Microsoft.Web/geoRegions
+East US 2            Microsoft.Web/geoRegions
+North Central US     Microsoft.Web/geoRegions
+South Central US     Microsoft.Web/geoRegions
+Brazil South         Microsoft.Web/geoRegions
+Australia East       Microsoft.Web/geoRegions
+Australia Southeast  Microsoft.Web/geoRegions
+East Asia (Stage)    Microsoft.Web/geoRegions
+West India           Microsoft.Web/geoRegions
+South India          Microsoft.Web/geoRegions
+Canada Central       Microsoft.Web/geoRegions
+West US 2            Microsoft.Web/geoRegions
+UK West              Microsoft.Web/geoRegions
+UK South             Microsoft.Web/geoRegions
+East US 2 EUAP       Microsoft.Web/geoRegions
+Central US EUAP      Microsoft.Web/geoRegions
+Korea Central        Microsoft.Web/geoRegions
+France Central       Microsoft.Web/geoRegions
+Australia Central 2  Microsoft.Web/geoRegions
+Australia Central    Microsoft.Web/geoRegions
+Germany West Central Microsoft.Web/geoRegions
+Norway East          Microsoft.Web/geoRegions
 
 ```
 

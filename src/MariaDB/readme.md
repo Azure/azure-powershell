@@ -48,8 +48,9 @@ In this directory, run AutoRest:
 
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/mariadb/resource-manager/readme.md
+  - $(this-folder)/../readme.azure.noprofile.md
+input-file:
+  - $(repo)/specification/mariadb/resource-manager/Microsoft.DBforMariaDB/preview/2018-06-01-preview/mariadb.json
 
 title: MariaDB
 module-version: 4.0.0
@@ -59,6 +60,18 @@ directive:
       verb: Set
     set:
       verb: Update
+  - where:
+     verb: Get$
+     variant: GetViaIdentify
+    hide: true
+  - where:
+     verb: New$
+     variant: ^Create$
+    hide: true
+  - where:
+     verb: New$
+     variant: ^CreateViaIdentity
+    hide: true
 
 # Server
   - where:
@@ -70,6 +83,35 @@ directive:
       subject: Server
     set:
       parameter-description: Backup retention days for the server. Day count is between 7 and 35.
+  - where:
+      subject: Server
+      parameter-name: StorageProfileStorageMb
+    set:
+      parameter-name: StorageProfileStorageInMb
+  - where:
+      subject: Server
+      parameter-name: SkuName
+    set:
+      parameter-name: Sku
+  - where:
+      subject: Server
+      parameter-name: AdministratorLogin
+    set:
+      parameter-name: AdministratorUsername
+  - where:
+      model-name: Server
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - AdministratorLogin
+          - Version
+          - StorageProfileStorageMb
+          - SkuName
+          - SkuSize
+          - SkuTier
+          - SslEnforcement
 # VNet
   - where:
       subject: VirtualNetworkRule
@@ -108,9 +150,10 @@ directive:
   - where:
       subject: LogFile|Database|LocationBasedPerformanceTier|CheckNameAvailability|ServerSecurityAlertPolicy
     hide: true
+
 # Fix the bug that OperationOrigin.System conflict with namespace System
   - from: source-file-csharp
-    where: $s
+    where: $
     transform: $ = $.replace(/OperationOrigin System/, 'OperationOrigin System1');
   - from: ServerForCreate.cs
     where: $

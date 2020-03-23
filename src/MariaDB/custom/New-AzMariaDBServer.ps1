@@ -14,7 +14,6 @@
 function New-AzMariaDbServer {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Profile('latest-2019-04-30')]
     param(
         [Parameter(Mandatory, HelpMessage='MariaDb server name.')]
         [Alias('ServerName')]
@@ -49,7 +48,7 @@ function New-AzMariaDbServer {
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.String]
         # The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-        ${SkuName},
+        ${Sku},
 
         [Parameter(HelpMessage='Enable ssl enforcement or not when connect to server.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
@@ -100,7 +99,7 @@ function New-AzMariaDbServer {
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [System.String]
         # Username of administrator.
-        ${AdministratorLogin},
+        ${AdministratorUsername},
     
         [Parameter(Mandatory, HelpMessage='Password of administrator, should be SecureString.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
@@ -182,9 +181,9 @@ function New-AzMariaDbServer {
                 $null = $PSBoundParameters.Remove('Location')
             }
 
-            if ($PSBoundParameters.ContainsKey('SkuName')) {
-                $Parameter.SkuName = $PSBoundParameters['SkuName']
-                $null = $PSBoundParameters.Remove('SkuName')
+            if ($PSBoundParameters.ContainsKey('Sku')) {
+                $Parameter.Sku = $PSBoundParameters['Sku']
+                $null = $PSBoundParameters.Remove('Sku')
             }
 
             if ($PSBoundParameters.ContainsKey('SslEnforcement')) {
@@ -228,8 +227,8 @@ function New-AzMariaDbServer {
             #endregion ServerForCreate
 
             $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::Default
-            $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorLogin']
-            $null = $PSBoundParameters.Remove('AdministratorLogin')
+            $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorUsername']
+            $null = $PSBoundParameters.Remove('AdministratorUsername')
 
             $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($PSBoundParameters['AdministratorLoginPassword'])
             $Parameter.Property.AdministratorLoginPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)

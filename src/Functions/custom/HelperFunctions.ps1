@@ -1,23 +1,39 @@
 # Load Az.Functions module constants
 $constants = @{}
-$constants["LinuxRuntimes"] = @('DotNet', 'Node', 'Node_8', 'Node_10', 'Python', 'Python_3.6', 'Python_3.7')
-$constants["WindowsRuntimes"] = @('Dotnet', 'Node', 'Node_8', 'Node_10', 'Java', 'PowerShell')
 $constants["AllowedStorageTypes"] = @('Standard_GRS', 'Standard_RAGRS', 'Standard_LRS', 'Standard_ZRS', 'Premium_LRS')
 $constants["RequiredStorageEndpoints"] = @('PrimaryEndpointFile', 'PrimaryEndpointQueue', 'PrimaryEndpointTable')
-$constants["RuntimeToDefaultVersion"] = @{'Node' = '8'; 'DotNet' = '2'; 'Python' = '3.6'}
-$constants["DefaultHostRuntimeVersion"] = '~2'
-$constants["NodeDefaultVersion"] = '~10'
-$constants["RuntimeToImageFunctionApp"] = @{
-    'Node' = @{
-     '8' = 'mcr.microsoft.com/azure-functions/node:2.0-node8-appservice'
-    '10' = 'mcr.microsoft.com/azure-functions/node:2.0-node10-appservice'
+$constants["DefaultFunctionsVersion"] = '3'
+$constants["NodeDefaultVersion"] = @{
+    '2' = '~10'
+    '3' = '~12'
+}
+$constants["RuntimeToDefaultVersion"] = @{
+    'Linux' = @{
+        '2'= @{
+            'Node' = '10'
+            'DotNet'= '2'
+            'Python' = '3.7'
+        }
+        '3' =  @{
+            'Node' = '10'
+            'DotNet' = '3'
+            'Python' = '3.7'
+            'Java' = '8'
+        }
     }
-    'python'= @{
-        '3.6' = 'mcr.microsoft.com/azure-functions/python:2.0-python3.6-appservice'
-        '3.7' = 'mcr.microsoft.com/azure-functions/python:2.0-python3.7-appservice'
-    }
-    'dotnet'= @{
-        '2' = 'mcr.microsoft.com/azure-functions/dotnet:2.0-appservice'
+    'Windows' = @{
+        '2'= @{
+            'Node' = '10'
+            'DotNet'= '2'
+            'PowerShell' = '6'
+            'Java' = '8'
+        }
+        '3' =  @{
+            'Node' = '10'
+            'DotNet' = '3'
+            'PowerShell' = '6'
+            'Java' = '8'
+        }
     }
 }
 $constants["RuntimeToFormattedName"] = @{
@@ -27,6 +43,22 @@ $constants["RuntimeToFormattedName"] = @{
     'java' = 'Java'
     'powershell' = 'PowerShell'
 }
+$constants["RuntimeToDefaultOSType"] = @{
+    'DotNet'= 'Windows'
+    'Node' = 'Windows'
+    'Java' = 'Windows'
+    'PowerShell' = 'Windows'
+    'Python' = 'Linux'
+}
+
+# This are use for tab completion for the RuntimeVersion parameter in New-AzFunctionApp
+$constants["RuntimeVersions"] = @{
+    'DotNet'= @(2, 3)
+    'Node' = @(8, 10, 12)
+    'Java' = @(8)
+    'PowerShell' = @(6)
+    'Python' = @(3.6, 3.7)
+}
 
 foreach ($variableName in $constants.Keys)
 {
@@ -34,6 +66,71 @@ foreach ($variableName in $constants.Keys)
     {
         Set-Variable $variableName -value $constants[$variableName]
     }
+}
+
+function GetDefaultRuntimeVersion
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $FunctionsVersion,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Runtime,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $OSType
+    )
+
+    if ($Runtime -eq "DotNet")
+    {
+        return $FunctionsVersion
+    }
+
+    $defaultVersion = $RuntimeToDefaultVersion[$OSType][$FunctionsVersion][$Runtime]
+
+    if (-not $defaultVersion)
+    {
+        $errorMessage = "$Runtime is not supported in Functions version $FunctionsVersion for $OSType."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "RuntimeNotSuported" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    return $defaultVersion
+}
+
+function GetDefaultOSType
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Runtime
+    )
+
+    $defaultOSType = $RuntimeToDefaultOSType[$Runtime]
+
+    if (-not $defaultOSType)
+    {
+        $errorMessage = "Failed to get default OS type for $Runtime."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FailedToGetDefaultOSType" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    return $defaultOSType
 }
 
 function GetConnectionString
@@ -55,7 +152,17 @@ function GetConnectionString
                               -ErrorMessage $errorMessage `
                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                               -Exception $exception
-    }    
+    }
+
+    if ($storageAccountInfo.ProvisioningState -ne "Succeeded")
+    {
+        $errorMessage = "Storage account '$StorageAccountName' is not ready. Please run 'Get-AzStorageAccount' and ensure that the ProvisioningState is 'Succeeded'"
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "StorageAccountNotFound" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
     
     $skuName = $storageAccountInfo.SkuName
     if (-not ($AllowedStorageTypes -contains $skuName))
@@ -86,7 +193,12 @@ function GetConnectionString
     $keys = Az.Functions.internal\Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountInfo.Name -ErrorAction SilentlyContinue
     if ([string]::IsNullOrEmpty($keys[0].Value))
     {
-        throw "Storage account '$StorageAccountName' has no key value."
+        $errorMessage = "Storage account '$StorageAccountName' has no key value."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "StorageAccountHasNoKeyValue" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
     }
 
     $accountKey = $keys[0].Value
@@ -225,13 +337,19 @@ function AddFunctionAppSettings
         $applicationSettings[$keyName] = $settings.Property[$keyName]
     }
 
-    # Add application settings, RuntimeName, and HostVersion
+    # Add application settings
     $App.ApplicationSettings = $applicationSettings
 
     $runtimeName = $settings.Property["FUNCTIONS_WORKER_RUNTIME"]
-    $App.RuntimeName = if (($runtimeName -ne $null) -and ($RuntimeToFormattedName.ContainsKey($runtimeName))) {$RuntimeToFormattedName[$runtimeName]} else {""}
-    $App.HostVersion = $settings.Property["FUNCTIONS_EXTENSION_VERSION"]
-
+    $App.Runtime = if (($null -ne $runtimeName) -and ($RuntimeToFormattedName.ContainsKey($runtimeName)))
+                   {
+                       $RuntimeToFormattedName[$runtimeName]
+                   }
+                   elseif ($applicationSettings.ContainsKey("DOCKER_CUSTOM_IMAGE_NAME"))
+                   {
+                       "Custom Image"
+                   }
+                   else {""}
     return $App
 }
 
@@ -252,6 +370,8 @@ function GetFunctionApps
     {
         return
     }
+
+    $activityName = "Getting function apps"
 
     for ($index = 0; $index -lt $Apps.Count; $index++)
     {
@@ -278,6 +398,8 @@ function GetFunctionApps
             }
         }
     }
+
+    Write-Progress -Activity $activityName -Status "Completed" -Completed
 }
 
 function AddFunctionAppPlanWorkerType
@@ -287,9 +409,6 @@ function AddFunctionAppPlanWorkerType
         [ValidateNotNullOrEmpty()]
         $AppPlan
     )
-
-    $currentSubscription = $null
-    $resetDefaultSubscription = $false
 
     # The GetList api for service plan that does not set the Reserved property, which is needed to figure out if the OSType is Linux.
     # TODO: Remove this code once  https://msazure.visualstudio.com/Antares/_workitems/edit/5623226 is fixed.
@@ -323,13 +442,15 @@ function GetFunctionAppPlans
         return
     }
 
+    $activityName = "Getting function app plans"
+
     for ($index = 0; $index -lt $Plans.Count; $index++)
     {
         $plan = $Plans[$index]
         
         $percentageCompleted = [int]((100 * ($index + 1)) / $Plans.Count)
         $status = "Complete: $($index + 1)/$($Plans.Count) function apps plans processed."
-        Write-Progress -Activity "Getting function app plans" -Status $status -PercentComplete $percentageCompleted
+        Write-Progress -Activity $activityName -Status $status -PercentComplete $percentageCompleted
 
         try {
             if ($Location)
@@ -350,6 +471,8 @@ function GetFunctionAppPlans
             continue;
         }
     }
+
+    Write-Progress -Activity $activityName -Status "Completed" -Completed
 }
 
 function ValidateLocation
@@ -390,7 +513,7 @@ function ValidateFunctionName
         $Name
     )
 
-    $result = Test-AzNameAvailability -Type Site -Name $Name
+    $result = Az.Functions.internal\Test-AzNameAvailability -Type Site -Name $Name
 
     if (-not $result.NameAvailable)
     {
@@ -419,7 +542,7 @@ function NormalizeSku
     return $Sku
 }
 
-function CreateObjectFromPipeline
+function CreateFunctionsIdentity
 {
     param
     (
@@ -428,17 +551,22 @@ function CreateObjectFromPipeline
         $InputObject
     )
 
-    if ($InputObject.Name -and $InputObject.ResourceGroupName -and $InputObject.SubscriptionId)
+    if (-not ($InputObject.Name -and $InputObject.ResourceGroupName -and $InputObject.SubscriptionId))
     {
-        $functionsIdentity = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionsIdentity
-        $functionsIdentity.Name = $InputObject.Name
-        $functionsIdentity.SubscriptionId = $InputObject.SubscriptionId
-        $functionsIdentity.ResourceGroupName = $InputObject.ResourceGroupName
-
-        return $functionsIdentity
+        $errorMessage = "Input object '$InputObject' is missing one or more of the following properties: Name, ResourceGroupName, SubscriptionId"
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FailedToCreateFunctionsIdentity" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
     }
-    
-    return $null
+
+    $functionsIdentity = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionsIdentity
+    $functionsIdentity.Name = $InputObject.Name
+    $functionsIdentity.SubscriptionId = $InputObject.SubscriptionId
+    $functionsIdentity.ResourceGroupName = $InputObject.ResourceGroupName
+
+    return $functionsIdentity
 }
 
 function GetSkuName
@@ -535,6 +663,9 @@ function GetFunctionAppDefaultNodeVersion
     param
     (
         [System.String]
+        $FunctionsVersion,
+
+        [System.String]
         $Runtime,
 
         [System.String]
@@ -543,7 +674,7 @@ function GetFunctionAppDefaultNodeVersion
 
     if ((-not $Runtime) -or ($Runtime -ne "node"))
     {
-        return $NodeDefaultVersion
+        return $NodeDefaultVersion[$FunctionsVersion]
     }
 
     if ($RuntimeVersion)
@@ -551,7 +682,7 @@ function GetFunctionAppDefaultNodeVersion
         return "~$RuntimeVersion"
     }
 
-    return $NodeDefaultVersion
+    return $NodeDefaultVersion[$FunctionsVersion]
 }
 
 function GetLinuxFxVersion
@@ -561,57 +692,20 @@ function GetLinuxFxVersion
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $RuntimeName,
+        $Runtime,
 
         [System.String]
-        $RuntimeVersion,
-
-        [Switch]
-        $IsConsumption
+        $RuntimeVersion
     )
     
     if (-not $RuntimeVersion)
     {
-        $RuntimeVersion = $RuntimeToDefaultVersion[$RuntimeName]
+        $RuntimeVersion = $RuntimeToDefaultVersion[$Runtime]
     }
 
-    if ($IsConsumption)
-    {
-        if ($RuntimeName -eq "Node")
-        {
-            # TODO: Remove this workaround at the end of November once linuxfxversion change is deployed
-            #       and just return "$runtimeName|$runtimeVersion"
-            if ($RuntimeVersion -eq "8")
-            {
-                return "node|8.16.2"
-            }
-            elseif ($RuntimeVersion -eq "10")
-            {
-                return "node|10.17.0"
-            }
-        }
-        else 
-        {
-            $runtimeName = $runtimeName.ToLower()
-            return "$runtimeName|$runtimeVersion"
-        }
-    }
+    $runtimeName = $Runtime.ToUpper()
 
-    # App service or Elastic Premium
-    $containerImage = [string]$RuntimeToImageFunctionApp[$RuntimeName][$RuntimeVersion]
-    if (-not $containerImage)
-    {
-        $errorMessage = "Cannot find container image for '$RuntimeName' version '$RuntimeVersion'."
-        $exception = [System.InvalidOperationException]::New($errorMessage)
-        ThrowTerminatingError -ErrorId "NoContainerImageFoundForTheGivenRuntime" `
-                                -ErrorMessage $errorMessage `
-                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                -Exception $exception
-    }
-
-    $containerImage = $containerImage.ToLower()
-    
-    return "DOCKER|$containerImage"
+    return "$runtimeName|$RuntimeVersion"
 }
 
 function GetErrorMessage
@@ -639,84 +733,136 @@ function GetErrorMessage
         }
     }
 }
-function GetRuntimeName
+
+function GetSupportedRuntimes
 {
     param
     (
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $Runtime
+        $OSType
     )
 
-    if ($Runtime.Contains("_"))
+    if ($OSType -eq "Linux")
     {
-        $parts = $Runtime -split "_"
-        return $parts[0]
+        return $LinuxRuntimes
+    }
+    elseif ($OSType -eq "Windows")
+    {
+        return $WindowsRuntimes
     }
 
-    return  $Runtime
+    throw "Unknown OS type '$OSType'"
 }
 
-function GetRuntimeVersion
+function ValidateRuntimeAndRuntimeVersion
 {
     param
     (
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $Runtime
-    )
+        $FunctionsVersion,
 
-    if ($Runtime.Contains("_"))
-    {
-        $parts = $Runtime -split "_"
-        return $parts[1]
-    }
-    
-    return $null
-}
-
-function ValidateRuntime
-{
-    param
-    (
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Runtime,
 
-        [Switch]
-        $OSIsLinux
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $RuntimeVersion,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $OSType
     )
 
-    if ($OSIsLinux)
+    if ($Runtime -eq "DotNet")
     {
-        if (-not ($LinuxRuntimes -contains $Runtime))
+        return
+    }
+
+    $runtimeVersionIsSupported = $false
+    $supportedRuntimes = GetSupportedRuntimes -OSType $OSType
+    
+    foreach ($majorVersion in $supportedRuntimes[$Runtime].MajorVersions)
+    {
+        if ($majorVersion.DisplayVersion -eq $RuntimeVersion)
         {
-            $runtimeOptions = $LinuxRuntimes -join ", "
-            $errorMessage = "Invalid runtime for Linux. Currently supported runtimes are: $runtimeOptions"
-            $exception = [System.InvalidOperationException]::New($errorMessage)
-            ThrowTerminatingError -ErrorId "InvalidRuntimeForLinux" `
-                                -ErrorMessage $errorMessage `
-                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                -Exception $exception
+            if ($majorVersion.SupportedFunctionsExtensionVersions -contains $FunctionsVersion)
+            {
+                $runtimeVersionIsSupported = $true
+                break
+            }
         }
     }
-    else
+
+    if (-not $runtimeVersionIsSupported)
     {
-        # Windows runtime
-        if (-not ($WindowsRuntimes -contains $Runtime))
+        $errorMessage = "$Runtime version $RuntimeVersion in Functions version $FunctionsVersion for $OSType is not supported."
+        $errorMessage += " For supported languages, please visit 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'."
+        $errorId = "InvalidRuntimeVersionFor" + $Runtime + "In" + $OSType
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId $errorId `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+}
+
+function GetWorkerVersion
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $FunctionsVersion,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Runtime,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $RuntimeVersion,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $OSType
+    )
+
+    $workerRuntimeVersion = $null
+    $supportedRuntimes = GetSupportedRuntimes -OSType $OSType
+
+    foreach ($majorVersion in $supportedRuntimes[$Runtime].MajorVersions)
+    {
+        if ($majorVersion.DisplayVersion -eq $RuntimeVersion)
         {
-            $runtimeOptions = $WindowsRuntimes -join ", "
-            $errorMessage = "Invalid runtime for Windows. Currently supported runtimes are: $runtimeOptions"
-            $exception = [System.InvalidOperationException]::New($errorMessage)
-            ThrowTerminatingError -ErrorId "InvalidRuntimeForWindows" `
-                                -ErrorMessage $errorMessage `
-                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                -Exception $exception
+            $workerRuntimeVersion = $majorVersion.runtimeVersion
+            break
         }
     }
+
+    if (-not $workerRuntimeVersion)
+    {
+        $errorMessage = "Falied to get runtime version for $Runtime $RuntimeVersion in Functions version $FunctionsVersion for $OSType."
+        $errorId = "InvalidWorkerRuntimeVersionFor" + $Runtime + "In" + $OSType
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId $errorId `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    return $workerRuntimeVersion
 }
 
 function ValidateConsumptionPlanLocation
@@ -739,8 +885,121 @@ function ValidateConsumptionPlanLocation
         $errorMessage = "Location is invalid. Currently supported locations are: $locationOptions"
         $exception = [System.InvalidOperationException]::New($errorMessage)
         ThrowTerminatingError -ErrorId "LocationIsInvalid" `
-                            -ErrorMessage $errorMessage `
-                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                            -Exception $exception
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
     }
 }
+
+function ParseDockerImage
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $DockerImageName
+    )
+
+    # Sample urls:
+    # myacr.azurecr.io/myimage:tag
+    # mcr.microsoft.com/azure-functions/powershell:2.0
+    if ($DockerImageName.Contains("/"))
+    {
+        $index = $DockerImageName.LastIndexOf("/")
+        $value = $DockerImageName.Substring(0,$index)
+        if ($value.Contains(".") -or $value.Contains(":"))
+        {
+            return $value
+        }
+    }
+}
+
+# Set Linux and Windows supported runtimes
+Class Runtime {
+    [string]$Name
+    [Object[]]$MajorVersions
+}
+
+Class MajorVersion {
+    [string]$DisplayVersion
+    [string]$RuntimeVersion
+    [string[]]$SupportedFunctionsExtensionVersions
+}
+
+$LinuxRuntimes = @{}
+$WindowsRuntimes = @{}
+
+function SetLinuxandWindowsSupportedRuntimes
+{
+    foreach ($fileName in @("LinuxFunctionsStacks.json", "WindowsFunctionsStacks.json"))
+    {
+        $filePath = Join-Path "$PSScriptRoot/FunctionsStack" $fileName
+
+        if (-not (Test-Path $filePath))
+        {
+            throw "Unable to create list of supported runtimes. File path '$filePath' does not exist."
+        }
+
+        $functionsStack = Get-Content -Path $filePath -Raw | ConvertFrom-Json
+
+        foreach ($stack in $functionsStack.value)
+        {
+            $runtime = [Runtime]::new()
+            $runtime.name = $stack.name
+
+            foreach ($version in $stack.properties.majorVersions)
+            {
+                $majorVersion = [MajorVersion]::new()
+
+                if ($version.displayVersion)
+                {
+                    $majorVersion.DisplayVersion = $version.displayVersion
+                }
+                $majorVersion.RuntimeVersion = $version.RuntimeVersion
+                $majorVersion.SupportedFunctionsExtensionVersions = $version.supportedFunctionsExtensionVersions
+                $runtime.MajorVersions += $majorVersion
+            }
+
+            if ($stack.type -like "*LinuxFunctions")
+            {
+                if (-not $LinuxRuntimes.ContainsKey($runtime.name))
+                {
+                    $LinuxRuntimes[$runtime.name] = $runtime
+                }
+            }
+            elseif ($stack.type -like "*WindowsFunctions")
+            {
+                if (-not $WindowsRuntimes.ContainsKey($runtime.name))
+                {
+                    $WindowsRuntimes[$runtime.name] = $runtime
+                }
+            }
+            else
+            {
+                throw "Unknown stack type '$($stack.type)'"
+            }
+        }
+    }
+}
+SetLinuxandWindowsSupportedRuntimes
+
+# New-AzFunction app ArgumentCompleter for the RuntimeVersion parameter
+# The values of RuntimeVersion depend on the selection of the Runtime parameter
+$GetRuntimeVersionCompleter = {
+
+    param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+
+    if ($fakeBoundParameters.ContainsKey('Runtime'))
+    {
+        # RuntimeVersions is defined at the top of this file
+        $RuntimeVersions[$fakeBoundParameters.Runtime] | Where-Object {
+            $_ -like "$wordToComplete*"
+        } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
+    }
+    else
+    {
+        $RuntimeVersions.RuntimeVersion | ForEach-Object {$_}
+    }
+}
+Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName RuntimeVersion -ScriptBlock $GetRuntimeVersionCompleter
