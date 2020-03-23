@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Weekly Backup Schedule for Azure File Share policy is not allowed. Please Give Daily Scheudle input instead..
+        ///   Looks up a localized string similar to Weekly Backup Schedule for Azure File Share policy is not allowed. Please give Daily Schedule input instead..
         /// </summary>
         public static string AFSWeeklyScheduleNotAllowed
         {
