@@ -79,8 +79,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.TrafficRouting
                     }
                     else
                     {
-                        throw new ValidationMetadataException(string.Format("A Routing Rule with name '{0}' in WebApp '{1}' already exists." +
-                            "Please use Update-AzWebAppTrafficRouting to update an existing Routing Rule.", rampUpRule.Name, WebAppName));
+                        throw new ValidationMetadataException(string.Format(Properties.Resources.AddRoutingRuleErrorMessage, rampUpRule.Name, WebAppName));
                     }
 
                 }

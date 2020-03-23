@@ -76,15 +76,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.TrafficRouting
                             siteConfig.Experiments.RampUpRules.Add(rampUpRule);
                             // Update web app configuration
                             WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, webApp.Location, WebAppName, null, siteConfig, null, null, null);
-                            //var app = WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, null);
-                            //WriteObject(app.SiteConfig.Experiments.RampUpRules.FirstOrDefault(rule => rule.Name == rampUpRule.Name));
                             WriteObject(rampUpRule);
                         }
                     }
                     else
                     {
-                        throw new ValidationMetadataException(string.Format("A Routing Rule with name '{0}' in WebApp '{1}' already exists." +
-                            "Please use Update-AzWebAppTrafficRouting to update an existing Routing Rule.", rampUpRule.Name, WebAppName));
+                        throw new ValidationMetadataException(string.Format(Properties.Resources.UpdateAndGetRoutingRuleErrorMessage, rampUpRule.Name, WebAppName));
                     }
 
                 }
