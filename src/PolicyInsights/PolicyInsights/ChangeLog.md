@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Improve error messages
+* Improved error messages
 
 ## Version 1.2.0
 * Support evaluating compliance prior to determining what resource to remediate
