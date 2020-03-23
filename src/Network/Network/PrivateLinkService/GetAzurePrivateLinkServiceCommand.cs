@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using NM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else 
             {
-                IPage<PrivateLinkService> plsPage;
+                IPage<NM.PrivateLinkService> plsPage;
                 if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     plsPage = this.PrivateLinkServiceClient.List(this.ResourceGroupName);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
 
-                var plsList = ListNextLink<PrivateLinkService>.GetAllResourcesByPollingNextLink(plsPage, this.PrivateLinkServiceClient.ListNext);
+                var plsList = ListNextLink<NM.PrivateLinkService>.GetAllResourcesByPollingNextLink(plsPage, this.PrivateLinkServiceClient.ListNext);
                 var psPLSs = new List<PSPrivateLinkService>();
                 foreach (var pls in plsList)
                 {
