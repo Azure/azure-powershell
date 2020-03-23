@@ -172,6 +172,11 @@ function Update-AzMariaDbServer
                 $PSBoundParameters['AdministratorLoginPassword'] = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
                 $Null = $PSBoundParameters.Remove('AdministratorLoginPassword')
             }
+
+            if ($PSBoundParameters.ContainsKey('Sku')) {
+                $Parameter.SkuName = $PSBoundParameters['Sku']
+                $null = $PSBoundParameters.Remove('Sku')
+            }
     
             Az.MariaDb.internal\Update-AzMariaDbServer @PSBoundParameters
           } catch {
