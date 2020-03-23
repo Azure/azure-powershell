@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System.Management.Automation;
 using Microsoft.Azure.DataLake.Store;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
+    [GenericBreakingChange("For store side import failures, Import-AzDataLakeStoreItem will throw exception instead of printing message on screen", "2.0.0")]
     [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreItem", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(string))]
     [Alias("Import-AdlStoreItem")]
     public class ImportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase

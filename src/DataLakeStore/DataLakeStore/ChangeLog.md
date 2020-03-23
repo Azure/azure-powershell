@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-Added option of Byte encoding for New-AzDataLakeStoreItem, Add-AzDAtaLakeStoreItemContent, Get-AzDAtaLakeStoreItemContent
+* Added option of Byte encoding for New-AzDataLakeStoreItem, Add-AzDAtaLakeStoreItemContent, Get-AzDAtaLakeStoreItemContent
+* Add breaking change description for Export-AzDataLakeStoreItem and Import-AzDataLakeStoreItem
 
 ## Version 1.2.7
 * Added reference to System.Buffers explicitly in csproj and psd1.
