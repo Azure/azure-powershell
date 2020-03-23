@@ -4,6 +4,7 @@ using System.Text;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Monitor;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
@@ -48,7 +49,16 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 
         #endregion
 
+        protected override void ProcessRecordInternal()
+        {
+            if (ParameterSetName.Equals(ByResourceGroupParameterSet))
+            {
+                if (!this.IsParameterBound(c => c.ResourceGroupName))
+                {
 
+                }
+            }
+        }
 
 
 
