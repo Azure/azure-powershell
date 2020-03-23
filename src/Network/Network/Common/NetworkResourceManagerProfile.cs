@@ -519,6 +519,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSFlowLogFormatParameters, MNM.FlowLogFormatParameters>();
                 cfg.CreateMap<CNM.PSTrafficAnalyticsProperties, MNM.TrafficAnalyticsProperties>();
                 cfg.CreateMap<CNM.PSTrafficAnalyticsConfigurationProperties, MNM.TrafficAnalyticsConfigurationProperties>();
+                cfg.CreateMap<CNM.PSFlowLogResource, MNM.FlowLog>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.FlowLogInformation, CNM.PSFlowLog>();
@@ -526,6 +527,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.FlowLogFormatParameters, CNM.PSFlowLogFormatParameters>();
                 cfg.CreateMap<MNM.TrafficAnalyticsProperties, CNM.PSTrafficAnalyticsProperties>();
                 cfg.CreateMap<MNM.TrafficAnalyticsConfigurationProperties, CNM.PSTrafficAnalyticsConfigurationProperties>();
+                cfg.CreateMap<MNM.FlowLog, CNM.PSFlowLogResource>();
 
                 // CheckConnectivity
                 // CNM to MNM

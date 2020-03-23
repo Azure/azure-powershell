@@ -690,6 +690,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
                         RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
                         PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
+                        RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId,
+                        DiskEncryptionInfo = Utilities.A2AEncryptionDetails(
+                            disk.DiskEncryptionSecretUrl,
+                            disk.DiskEncryptionVaultId,
+                            disk.KeyEncryptionKeyUrl,
+                            disk.KeyEncryptionVaultId)
                     });
                 }
             }

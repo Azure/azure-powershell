@@ -18,7 +18,7 @@ Get support ticket by name parameter set
 #>
 function Get-AzSupportTicketByNameParameterSet
 {
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 
 	$queryResult = Get-AzSupportTicket -First 1
@@ -38,13 +38,13 @@ Get support tickets filtered by status
 #>
 function Get-AzSupportTicketFilterByStatus
 {
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 
 	$queryResult = Get-AzSupportTicket -First 1 -Filter "Status eq 'Closed'"
 	Assert-NotNull  $queryResult
 	Assert-AreEqual 1 $queryResult.Count
-	
+
 	for ($i = 0; $i -lt $queryResult.Count; $i++)
 	{
 		Assert-IsInstance $queryResult[$i] $cmdletReturnType
@@ -60,7 +60,7 @@ Get support tickets using paging parameter
 #>
 function Get-AzSupportTicketPagingParameters
 {
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 
 	$queryResult = Get-AzSupportTicket -First 1 -Skip 1
@@ -81,9 +81,9 @@ New support ticket
 #>
 function New-AzSupportTicketWithContactObject
 {
- 	$result = New-SupportTicketWith24X7Response 
+ 	$result = New-SupportTicketWith24X7Response
 
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 	Assert-NotNull  $result
 	Assert-IsInstance $result $cmdletReturnType
@@ -118,14 +118,14 @@ function New-AzSupportTicketQuotaWithContactObject
     $quotaChangeRequest = new-object Microsoft.Azure.Commands.Support.Models.PSQuotaChangeRequest
 	$quotaChangeRequest.Region = "EastUS"
 	$quotaChangeRequest.Payload = "{`"VMFamily`":`"Dv2 Series`",`"NewLimit`":516}"
-	    
+
     $quotaTicketDetail = new-object Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
 	$quotaTicketDetail.QuotaChangeRequestVersion = "1.0"
-	$quotaTicketDetail.QuotaChangeRequests = @($quotaChangeRequest) 
+	$quotaTicketDetail.QuotaChangeRequests = @($quotaChangeRequest)
 
 	$result = New-SupportTicketWith24X7Response -serviceDisplayName "Service and subscription limits" -problemClassificationDisplayName "Compute" -quotaTicketDetails $quotaTicketDetail
 
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 	Assert-NotNull  $result
 	Assert-IsInstance $result $cmdletReturnType
@@ -147,7 +147,7 @@ function New-AzSupportTicketTechnicalWithContactObject
 	$resource = Get-AzureRmResource -ResourceType "Microsoft.Compute/virtualMachines"
 	$result = New-SupportTicketWith24X7Response -serviceDisplayName "Virtual Machine" -technicalTicketResourceId $resource[0].Id
 
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 	Assert-NotNull  $result
 	Assert-IsInstance $result $cmdletReturnType
@@ -163,9 +163,9 @@ New support ticket
 #>
 function New-AzSupportTicketWithContactDetail
 {
- 	$result = New-SupportTicketWithContactDetail 
+ 	$result = New-SupportTicketWithContactDetail
 
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 	Assert-NotNull  $result
 	Assert-IsInstance $result $cmdletReturnType
@@ -203,11 +203,11 @@ function New-AzSupportTicketQuotaWithContactDetail
 
     $quotaTicketDetail = new-object Microsoft.Azure.Commands.Support.Models.PSQuotaTicketDetail
 	$quotaTicketDetail.QuotaChangeRequestVersion = "1.0"
-	$quotaTicketDetail.QuotaChangeRequests = @($quotaChangeRequest) 
+	$quotaTicketDetail.QuotaChangeRequests = @($quotaChangeRequest)
 
 	$result = New-SupportTicketWithContactDetail -serviceDisplayName "Service and subscription limits" -problemClassificationDisplayName "Compute" -quotaTicketDetails $quotaTicketDetail
 
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 	Assert-NotNull  $result
 	Assert-IsInstance $result $cmdletReturnType
@@ -227,10 +227,10 @@ New technical support ticket
 function New-AzSupportTicketTechnicalWithContactDetail
 {
 	$resource = Get-AzureRmResource -ResourceType Microsoft.Compute/virtualMachines
-	
+
 	$result = New-SupportTicketWithContactDetail -serviceDisplayName "Virtual Machine" -technicalTicketResourceId $resource[0].Id
 
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 	Assert-NotNull  $result
 	Assert-IsInstance $result $cmdletReturnType
@@ -248,7 +248,7 @@ function New-AzSupportTicketCspWithContactObject
 {
 	$result = New-CspSupportTicket -CSPHomeTenantId "8465bc54-690d-4169-b3fd-dc47631637c2"
 
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 	Assert-NotNull  $result
 	Assert-IsInstance $result $cmdletReturnType
@@ -274,7 +274,7 @@ function Update-AzSupportTicketParentObjectParameterSetWithContactObject
 	$contactDetail.AdditionalEmailAddresses = @("user3@contoso.com")
 	$updateTicket = $newTicket | Update-AzSupportTicket -CustomerContactDetail $contactDetail
 
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 	Assert-NotNull  $updateTicket
 	Assert-IsInstance $updateTicket $cmdletReturnType
@@ -297,15 +297,33 @@ Update support ticket by parent object paremeter set with contact object
 function Update-AzSupportTicketParentObjectParameterSetUpdateSeverity
 {
 	$newTicket = New-SupportTicketWithContactDetail
-	$updateTicket = $newTicket | Update-AzSupportTicket -Severity "Critical" 
+	$updateTicket = $newTicket | Update-AzSupportTicket -Severity "Critical"
 
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 	Assert-NotNull  $updateTicket
 	Assert-IsInstance $updateTicket $cmdletReturnType
 	Assert-PropertiesCount $updateTicket $propertiesCount
 	Assert-IsInstance $updateTicket.Name String
 	Assert-AreEqual "critical" $updateTicket.Severity.ToLower()
+}
+
+<#
+.SYNOPSIS
+Update support ticket by parent object paremeter set with contact object
+#>
+function Update-AzSupportTicketParentObjectParameterSetUpdateStatus
+{
+	$newTicket = New-SupportTicketWithContactDetail
+	$updateTicket = $newTicket | Update-AzSupportTicket -Status "Closed"
+
+	$propertiesCount = 23
+	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
+	Assert-NotNull  $updateTicket
+	Assert-IsInstance $updateTicket $cmdletReturnType
+	Assert-PropertiesCount $updateTicket $propertiesCount
+	Assert-IsInstance $updateTicket.Name String
+	Assert-AreEqual "closed" $updateTicket.Status.ToLower()
 }
 
 <#
@@ -320,7 +338,7 @@ function Update-AzSupportTicketNameParameterSetWithContactObject
 	$contactDetail.LastName = "last updated"
 	$updateTicket = Update-AzSupportTicket -Name $newTicket.Name -CustomerContactDetail $contactDetail
 
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 	Assert-NotNull  $updateTicket
 	Assert-IsInstance $updateTicket $cmdletReturnType
@@ -339,13 +357,31 @@ function Update-AzSupportTicketNameParameterSetUpdateSeverity
 	$newTicket = New-SupportTicketWithContactDetail
 	$updateTicket = Update-AzSupportTicket -Name $newTicket.Name -Severity "Critical"
 
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 	Assert-NotNull  $updateTicket
 	Assert-IsInstance $updateTicket $cmdletReturnType
 	Assert-PropertiesCount $updateTicket $propertiesCount
 	Assert-IsInstance $updateTicket.Name String
 	Assert-AreEqual "critical" $updateTicket.Severity.ToLower()
+}
+
+<#
+.SYNOPSIS
+Update support ticket by name parameter set with contact object
+#>
+function Update-AzSupportTicketNameParameterSetUpdateStatus
+{
+	$newTicket = New-SupportTicketWithContactDetail
+	$updateTicket = Update-AzSupportTicket -Name $newTicket.Name -Status "Closed"
+
+	$propertiesCount = 23
+	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
+	Assert-NotNull  $updateTicket
+	Assert-IsInstance $updateTicket $cmdletReturnType
+	Assert-PropertiesCount $updateTicket $propertiesCount
+	Assert-IsInstance $updateTicket.Name String
+	Assert-AreEqual "closed" $updateTicket.Status.ToLower()
 }
 
 <#
@@ -357,7 +393,7 @@ function Update-AzSupportTicketParentObjectParameterSetWithContactDetail
 	$newTicket = New-SupportTicketWithContactDetail
 	$updateTicket = $newTicket | Update-AzSupportTicket -CustomerFirstName "first updated" -CustomerLastName "last updated" -CustomerPrimaryEmailAddress "user2@contoso.com" -CustomerCountry "IND" -CustomerPreferredTimeZone "Eastern Standard Time" -CustomerPreferredSupportLanguage "ja-jp" -AdditionalEmailAddress @("user3@contoso.com")
 
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 	Assert-NotNull  $updateTicket
 	Assert-IsInstance $updateTicket $cmdletReturnType
@@ -382,7 +418,7 @@ function Update-AzSupportTicketNameParameterSetWithContactDetail
 	$newTicket = New-SupportTicketWithContactDetail
 	$updateTicket = Update-AzSupportTicket -Name $newTicket.Name -CustomerFirstName "first updated" -CustomerLastName "last updated" -CustomerPrimaryEmailAddress "user2@contoso.com" -CustomerCountry "IND" -CustomerPreferredTimeZone "Eastern Standard Time" -CustomerPreferredSupportLanguage "ja-jp" -AdditionalEmailAddress @("user3@contoso.com")
 
-	$propertiesCount = 24
+	$propertiesCount = 23
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportTicket"
 	Assert-NotNull  $updateTicket
 	Assert-IsInstance $updateTicket $cmdletReturnType

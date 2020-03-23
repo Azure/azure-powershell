@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public VirtualMachineScaleSetVMProtectionPolicy ProtectionPolicy { get; set; }
         public Plan Plan { get; set; }
         public IList<VirtualMachineExtension> Resources { get; set; }
-        public System.Collections.Generic.IList<string> Zones { get; set; }
+        public IList<string> Zones { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }

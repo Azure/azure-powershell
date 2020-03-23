@@ -483,6 +483,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData.ContainsKey(PolicyParams.ProtectionPolicy) ?
                 (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy] :
                 null;
+            bool fixForInconsistentItems = ProviderData.ContainsKey(PolicyParams.FixForInconsistentItems) ?
+                (bool)ProviderData[PolicyParams.FixForInconsistentItems] : false;
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource();
 
             if (policy != null)
@@ -494,44 +496,58 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 // RetentionPolicy and SchedulePolicy both should not be empty
                 if (retentionPolicy == null && schedulePolicy == null)
                 {
-                    throw new ArgumentException(Resources.BothRetentionAndSchedulePoliciesEmpty);
+                    if (fixForInconsistentItems == false)
+                    {
+                        throw new ArgumentException(Resources.BothRetentionAndSchedulePoliciesEmpty);
+                    }
+                    AzureVmWorkloadProtectionPolicy azureVmWorkloadModifyPolicy = new AzureVmWorkloadProtectionPolicy();
+                    azureVmWorkloadModifyPolicy.Settings = new Settings("UTC",
+                        ((AzureVmWorkloadPolicy)policy).IsCompression,
+                        ((AzureVmWorkloadPolicy)policy).IsCompression);
+                    azureVmWorkloadModifyPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
+                    azureVmWorkloadModifyPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
+                    azureVmWorkloadModifyPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy);
+                    azureVmWorkloadModifyPolicy.MakePolicyConsistent = true;
+                    serviceClientRequest.Properties = azureVmWorkloadModifyPolicy;
                 }
-
-                // validate RetentionPolicy and SchedulePolicy
-                if (schedulePolicy != null)
+                else
                 {
-                    AzureWorkloadProviderHelper.ValidateSQLSchedulePolicy(schedulePolicy);
-                    AzureWorkloadProviderHelper.GetUpdatedSchedulePolicy(policy, (SQLSchedulePolicy)schedulePolicy);
-                    Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
+                    // validate RetentionPolicy and SchedulePolicy
+                    if (schedulePolicy != null)
+                    {
+                        AzureWorkloadProviderHelper.ValidateSQLSchedulePolicy(schedulePolicy);
+                        AzureWorkloadProviderHelper.GetUpdatedSchedulePolicy(policy, (SQLSchedulePolicy)schedulePolicy);
+                        Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
+                    }
+                    if (retentionPolicy != null)
+                    {
+                        AzureWorkloadProviderHelper.ValidateSQLRetentionPolicy(retentionPolicy);
+                        AzureWorkloadProviderHelper.GetUpdatedRetentionPolicy(policy, (SQLRetentionPolicy)retentionPolicy);
+                        Logger.Instance.WriteDebug("Validation of Retention policy is successful");
+                    }
+
+                    // copy the backupSchedule time to retentionPolicy after converting to UTC
+                    AzureWorkloadProviderHelper.CopyScheduleTimeToRetentionTimes(
+                        (CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy,
+                        (CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy);
+                    Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
+
+                    // Now validate both RetentionPolicy and SchedulePolicy matches or not
+                    PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+                        (CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy,
+                        (CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy);
+                    Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
+
+                    // construct Service Client policy request
+                    AzureVmWorkloadProtectionPolicy azureVmWorkloadProtectionPolicy = new AzureVmWorkloadProtectionPolicy();
+                    azureVmWorkloadProtectionPolicy.Settings = new Settings("UTC",
+                        ((AzureVmWorkloadPolicy)policy).IsCompression,
+                        ((AzureVmWorkloadPolicy)policy).IsCompression);
+                    azureVmWorkloadProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
+                    azureVmWorkloadProtectionPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
+                    azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy);
+                    serviceClientRequest.Properties = azureVmWorkloadProtectionPolicy;
                 }
-                if (retentionPolicy != null)
-                {
-                    AzureWorkloadProviderHelper.ValidateSQLRetentionPolicy(retentionPolicy);
-                    AzureWorkloadProviderHelper.GetUpdatedRetentionPolicy(policy, (SQLRetentionPolicy)retentionPolicy);
-                    Logger.Instance.WriteDebug("Validation of Retention policy is successful");
-                }
-
-                // copy the backupSchedule time to retentionPolicy after converting to UTC
-                AzureWorkloadProviderHelper.CopyScheduleTimeToRetentionTimes(
-                    (CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy,
-                    (CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy);
-                Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
-
-                // Now validate both RetentionPolicy and SchedulePolicy matches or not
-                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
-                    (CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy,
-                    (CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy);
-                Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
-
-                // construct Service Client policy request
-                AzureVmWorkloadProtectionPolicy azureVmWorkloadProtectionPolicy = new AzureVmWorkloadProtectionPolicy();
-                azureVmWorkloadProtectionPolicy.Settings = new Settings("UTC",
-                    ((AzureVmWorkloadPolicy)policy).IsCompression,
-                    ((AzureVmWorkloadPolicy)policy).IsCompression);
-                azureVmWorkloadProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
-                azureVmWorkloadProtectionPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
-                azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy);
-                serviceClientRequest.Properties = azureVmWorkloadProtectionPolicy;
             }
             else
             {

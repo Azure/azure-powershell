@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -64,6 +62,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Paging = true,
                     Mail = Mail
                 };
+                if(!string.IsNullOrEmpty(options.SearchString))
+                {
+                    //query string is wrapped with single quote. Escape is needed if it contains additional quote.
+                    options.SearchString = options.SearchString.Replace("'", "''");
+                }
+                 
 
                 ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
                 ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
