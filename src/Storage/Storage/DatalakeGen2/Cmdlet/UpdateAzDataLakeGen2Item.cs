@@ -15,15 +15,9 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using Commands.Common.Storage.ResourceModel;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    //using Microsoft.Azure.Storage.Blob;
-    using System;
     using System.Management.Automation;
-    using System.Security.Permissions;
-    using System.Threading.Tasks;
     using System.Collections;
-    using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using global::Azure.Storage.Files.DataLake;
     using global::Azure.Storage.Files.DataLake.Models;
@@ -50,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = false, HelpMessage =
                 "The path in the specified FileSystem that should be updated. Can be a file or directory " +
-                "In the format 'directory/file.txt' or 'directory1/directory2/'. Don't specify this parameter to update the root directory of the Filesystem.", ParameterSetName = ManualParameterSet)]
+                "In the format 'directory/file.txt' or 'directory1/directory2/'. Not specify this parameter will update the root directory of the Filesystem.", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
@@ -112,6 +106,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         // Overwrite the useless parameter
         public override int? ConcurrentTaskCount { get; set; }
+        public override int? ClientTimeoutPerRequest { get; set; }
+        public override int? ServerTimeoutPerRequest { get; set; }
 
 
         /// <summary>
@@ -142,7 +138,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             DataLakeFileClient fileClient = null;
             DataLakeDirectoryClient dirClient = null;
-            //IDictionary<string, string> originalMetadata = null;
             if (ParameterSetName == ManualParameterSet)
             {
                 DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);
@@ -159,10 +154,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     dirClient = InputObject.Directory;
                     foundAFolder = true;
                 }
-                //if (InputObject.Properties != null)
-                //{
-                //    originalMetadata = InputObject.Properties.Metadata;
-                //}
             }
 
             if (foundAFolder)
@@ -201,11 +192,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     //Set Permission
                     if (this.Permission != null || this.Owner != null || this.Group != null)
                     {
-                        //PathAccessControl originPathAccessControl = fileClient.GetAccessControl().Value;
-                        //dirClient.SetPermissions(
-                        //    this.Permission != null ? PathPermissions.ParseSymbolicPermissions(this.Permission) : originPathAccessControl.Permissions,
-                        //    this.Owner != null ? this.Owner : originPathAccessControl.Owner,
-                        //    this.Group != null ? this.Group : originPathAccessControl.Group);
                         fileClient.SetPermissions(
                             this.Permission != null ? PathPermissions.ParseSymbolicPermissions(this.Permission) : null,
                             this.Owner,

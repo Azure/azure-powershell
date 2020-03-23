@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgrade DataLake Gen2 cmdlets to use new SDK "Azure.Storage.Files.DataLake"
+    -  New-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2ChildItem
+    -  Move-AzDataLakeGen2Item
+    -  New-AzDataLakeGen2ItemAclObject
+    -  Update-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2ItemContent
+    -  Remove-AzDataLakeGen2Item
+
+## Version 1.13.1
 * Support Point In Time Restore
     - Enable-AzStorageBlobRestorePolicy
     - Disable-AzStorageBlobRestorePolicy

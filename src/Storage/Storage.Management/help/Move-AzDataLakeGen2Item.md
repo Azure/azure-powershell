@@ -15,15 +15,15 @@ Move a file or directory to another a file or directory in same Storage account.
 ### ReceiveManual (Default)
 ```
 Move-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> -DestFileSystem <String> -DestPath <String>
- [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ItemPipeline
 ```
 Move-AzDataLakeGen2Item -InputObject <AzureDataLakeGen2Item> -DestFileSystem <String> -DestPath <String>
- [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,46 +34,31 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: Move a fold in same Filesystem
 ```
-PS C:\> Move-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/" -DestFileSystem "filesystem1" -DestPath "dir2/" -Umask --x--x--- -PathRenameMode Posix
+PS C:\> Move-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/" -DestFileSystem "filesystem1" -DestPath "dir3/"
 
-   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
+   FileSystem Name: filesystem1
 
-Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
-----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
-dir2/                True                         application/octet-stream       2019-10-29 04:23:05Z rw-rw--wx    $superuser $superuser
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir3                 True                         2020-03-13 13:07:34Z rwxrw-rw-    $superuser           $superuser
 ```
 
-This command move directory 'dir/' to directory 'dir2' in the same Filesystem.
+This command move directory 'dir1' to directory 'dir3' in the same Filesystem.
 
-### Example 2: Move a file by pipeline, to another Filesystem in the same Storage account
+### Example 2: Move a file by pipeline, to another Filesystem in the same Storage account without prompt
 ```
-PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" | Move-AzDataLakeGen2Item -DestFileSystem "filesystem2" -DestPath "dir2/file2"
+PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" | Move-AzDataLakeGen2Item -DestFileSystem "filesystem2" -DestPath "dir2/file2" -Force
 
-   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem2
+   FileSystem Name: filesystem2
 
-Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
-----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
-dir2/                True                         application/octet-stream       2019-10-29 04:23:05Z rw-rw--wx    $superuser $superuser
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir2/file2           False        1024            2020-03-23 09:57:33Z rwxrw-rw-    $superuser           $superuser
 ```
 
-This command move file 'dir1/file1' in 'filesystem1' to file 'dir2/file2' in 'filesystem2' in the same Storage account.
+This command move file 'dir1/file1' in 'filesystem1' to file 'dir2/file2' in 'filesystem2' in the same Storage account without prompt.
 
 ## PARAMETERS
-
-### -ClientTimeoutPerRequest
-The client side maximum execution time for each request in seconds.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases: ClientTimeoutPerRequestInSeconds
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Context
 Azure Storage Context Object
@@ -193,21 +178,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ServerTimeoutPerRequest
-The server time out for each request in seconds.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

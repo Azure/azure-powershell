@@ -14,7 +14,6 @@ Gets the details of a file or directory in a filesystem.
 
 ```
 Get-AzDataLakeGen2Item [-FileSystem] <String> [[-Path] <String>] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -29,54 +28,65 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 PS C:\> $dir1 = Get-AzDataLakeGen2tem -FileSystem "filesystem1" -Path "dir1/"
 PS C:\> $dir1
 
-   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
+   FileSystem Name: filesystem1
 
-Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
-----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
-dir1/                True                         application/octet-stream       2019-10-29 04:23:05Z rw-rw--wx    $superuser $superuser  
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir1                 True                         2020-03-23 09:15:56Z rwx---rwx    $superuser           $superuser     
  
-PS C:\> $dir1.ACL
+PS C:\WINDOWS\system32> $dir1.ACL
 
 DefaultScope AccessControlType EntityId Permissions
 ------------ ----------------- -------- -----------
-False        User                       rw-        
-False        Group                      rw-        
-False        Other                      -wx   
+False        User                       rwx        
+False        Group                      ---        
+False        Other                      rwx      
 
-PS C:\> $dir1.Directory.Metadata
+PS C:\WINDOWS\system32> $dir1.Permissions
 
-Key          Value  
----          -----  
-tag1         value1 
-hdi_isfolder true 
+Owner        : Execute, Write, Read
+Group        : None
+Other        : Execute, Write, Read
+StickyBit    : False
+ExtendedAcls : False
 
-PS C:\WINDOWS\system32> $dir1.Directory.Properties
+PS C:\WINDOWS\system32> $dir1.Properties.Metadata
 
-CacheControl                       : READ
-ContentDisposition                 : True
-ContentEncoding                    : UDF8
-ContentLanguage                    : EN-US
-Length                             : 0
-ContentMD5                         : 
-ContentType                        : application/octet-stream
-ETag                               : "0x8D75C27B2338204"
-Created                            : 10/29/2019 4:09:34 AM +00:00
-LastModified                       : 10/29/2019 4:23:05 AM +00:00
-BlobType                           : BlockBlob
-LeaseStatus                        : Unlocked
-LeaseState                         : Available
-LeaseDuration                      : Unspecified
-PageBlobSequenceNumber             : 
-AppendBlobCommittedBlockCount      : 
-IsServerEncrypted                  : True
-IsIncrementalCopy                  : False
-StandardBlobTier                   : Cool
-RehydrationStatus                  : 
-PremiumPageBlobTier                : 
-BlobTierInferred                   : True
-BlobTierLastModifiedTime           : 
-DeletedTime                        : 
-RemainingDaysBeforePermanentDelete :
+Key          Value 
+---          ----- 
+hdi_isfolder true  
+tag1         value1
+tag2         value2
+
+PS C:\WINDOWS\system32> $dir1.Properties
+
+LastModified          : 3/23/2020 9:15:56 AM +00:00
+CreatedOn             : 3/23/2020 9:15:56 AM +00:00
+Metadata              : {[hdi_isfolder, true], [tag1, value1], [tag2, value2]}
+CopyCompletedOn       : 1/1/0001 12:00:00 AM +00:00
+CopyStatusDescription : 
+CopyId                : 
+CopyProgress          : 
+CopySource            : 
+CopyStatus            : Pending
+IsIncrementalCopy     : False
+LeaseDuration         : Infinite
+LeaseState            : Available
+LeaseStatus           : Unlocked
+ContentLength         : 0
+ContentType           : application/octet-stream
+ETag                  : "0x8D7CF0ACBA35FA8"
+ContentHash           : 
+ContentEncoding       : UDF12
+ContentDisposition    : 
+ContentLanguage       : 
+CacheControl          : READ
+AcceptRanges          : bytes
+IsServerEncrypted     : True
+EncryptionKeySha256   : 
+AccessTier            : Cool
+ArchiveStatus         : 
+AccessTierChangedOn   : 1/1/0001 12:00:00 AM +00:00
 ```
 
 This command gets a directory from a Filesystem, and show the details.
@@ -85,31 +95,16 @@ This command gets a directory from a Filesystem, and show the details.
 ```
 PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1"
 
-   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
+   FileSystem Name: filesystem1
 
-Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
-----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
-dir1/file1           False        14400000        application/octet-stream       2019-10-29 07:40:28Z rwx---rwx    $superuser $superuser
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir1/file1           False        1024            2020-03-23 09:20:37Z rwx---rwx    $superuser           $superuser
 ```
 
-This command gets the details of a file from a Filesystem.
+This command gets the details of a file from a Filesystem. 
 
 ## PARAMETERS
-
-### -ClientTimeoutPerRequest
-The client side maximum execution time for each request in seconds.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases: ClientTimeoutPerRequestInSeconds
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Context
 Azure Storage Context Object
@@ -158,7 +153,8 @@ Accept wildcard characters: False
 
 ### -Path
 The path in the specified Filesystem that should be retrieved.
-Can be a file or directory In the format 'directory/file.txt' or 'directory1/directory2/'
+Can be a file or directory In the format 'directory/file.txt' or 'directory1/directory2/'.
+Not specify this parameter to get the root directory of the Filesystem.
 
 ```yaml
 Type: System.String
@@ -169,21 +165,6 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ServerTimeoutPerRequest
-The server time out for each request in seconds.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

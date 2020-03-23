@@ -15,7 +15,6 @@ Lists sub directorys and files from a directory or filesystem root.
 ```
 Get-AzDataLakeGen2ChildItem [-FileSystem] <String> [[-Path] <String>] [-FetchProperty] [-Recurse]
  [-MaxCount <Int32>] [-ContinuationToken <String>] [-AsJob] [-UserPrincipalName] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -29,28 +28,27 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ```
 PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" 
 
+   FileSystem Name: filesystem1
 
-   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
-
-Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
-----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
-dir1/                True                                                                                                                         
-dir2/                True
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir1                 True                         2020-03-13 13:07:34Z rwxr-x---    $superuser           $superuser          
+dir2                 True                         2020-03-23 09:28:36Z rwxr-x---    $superuser           $superuser
 ```
 
 This command lists the direct sub items from a Filesystem
 
-### Example 2: List recursively from a directory, and fetch permission/owner/ACL
+### Example 2: List recursively from a directory, and fetch Properties/ACL
 ```
-PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -FetchPermission
+PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -FetchProperty
 
+   FileSystem Name: filesystem1
 
-   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
-
-Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
-----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
-dir1/dir1/           True                         application/octet-stream       2019-10-29 04:13:22Z rwxr-x---    $superuser $superuser          
-dir1/dir1/testfile1  False        14400000        application/octet-stream       2019-10-29 04:14:36Z rw-r-----    $superuser $superuser
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir1/dir3            True                         2020-03-23 09:34:31Z rwx---rwx    $superuser           $superuser          
+dir1/file1           False        1024            2020-03-23 09:29:18Z rwx---rwx    $superuser           $superuser           
+dir1/testfile_1K_0   False        1024            2020-03-23 09:29:21Z rw-r-----    $superuser           $superuser
 ```
 
 This command lists the direct sub items from a Filesystem
@@ -88,21 +86,6 @@ Run cmdlet in the background
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClientTimeoutPerRequest
-The client side maximum execution time for each request in seconds.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases: ClientTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -225,21 +208,6 @@ The default is false.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServerTimeoutPerRequest
-The server time out for each request in seconds.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named

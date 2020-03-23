@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Azure Datalake Gen2 Item Object to remove.",
+        [Parameter(Mandatory = true, HelpMessage = "Azure Datalake Gen2 Item Object to download.",
             ValueFromPipeline = true, ParameterSetName = BlobParameterSet)]
         [ValidateNotNull]
         public AzureDataLakeGen2Item InputObject { get; set; }
@@ -77,6 +77,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private BlobToFileSystemNameResolver fileNameResolver;
 
         private DataLakeFileClient fileClient;
+
+        // Overwrite the useless parameter
+        public override int? ClientTimeoutPerRequest { get; set; }
+        public override int? ServerTimeoutPerRequest { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetAzDataLakeGen2ItemContentCommand class.
@@ -165,7 +169,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             IStorageBlobManagement localChannel = Channel;
 
-            //DownloadBlob(taskId, localChannel, blob, filePath);
             Func<long, Task> taskGenerator = (taskId) => DownloadBlob(taskId, localChannel, blob, filePath);
             RunTask(taskGenerator);
         }

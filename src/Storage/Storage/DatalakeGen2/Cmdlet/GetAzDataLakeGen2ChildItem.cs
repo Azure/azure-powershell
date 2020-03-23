@@ -85,6 +85,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         // Overwrite the useless parameter
         public override int? ConcurrentTaskCount { get; set; }
+        public override int? ClientTimeoutPerRequest { get; set; }
+        public override int? ServerTimeoutPerRequest { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetAzDataLakeGen2ChildItemCommand class.
@@ -125,17 +127,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             foreach (PathItem item in page.Values)
             {
                 WriteDataLakeGen2Item(localChannel, item, fileSystem, page.ContinuationToken, this.FetchProperty.IsPresent);
-                //    if (item.IsDirectory != null && item.IsDirectory.Value) // Directory
-                //    {
-                //        DataLakeDirectoryClient dirClient = fileSystem.GetDirectoryClient(item.Name);
-                //        WriteDataLakeGen2Item(localChannel, item, fileSystem, page.ContinuationToken);
-                //    }
-                //    else //File
-                //    {
-                //        DataLakeFileClient fileClient = fileSystem.GetFileClient(item.Name);
-                //        WriteDataLakeGen2Item(localChannel, fileClient, page.ContinuationToken);
-                //    }
-                //}
             }
         }
     }

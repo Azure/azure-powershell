@@ -223,13 +223,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         }
 
         /// <summary>
-        /// Write a datalake gen2 item  to output. If the input blob represent a folder of datalake gen2 , will output a folder, else output a file of datalake gen2
+        /// Write a datalake gen2 file  to output
         /// </summary>
         internal void WriteDataLakeGen2Item(IStorageBlobManagement channel, DataLakeFileClient fileClient, long? taskId = null)
         {
             AzureDataLakeGen2Item azureDataLakeGen2Item = new AzureDataLakeGen2Item(fileClient);
             azureDataLakeGen2Item.Context = channel.StorageContext;
-            //azureDataLakeGen2Item.ContinuationToken = continuationToken;
             if (taskId == null)
             {
                 WriteObject(azureDataLakeGen2Item);
@@ -245,31 +244,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// </summary>
         internal void WriteDataLakeGen2Item(IStorageBlobManagement channel, DataLakeDirectoryClient dirClient)
         {
-
-            //if (fetchPermission)
-            //{
-            //    blobDir.FetchAccessControls();
-            //}
             AzureDataLakeGen2Item azureDataLakeGen2Item = new AzureDataLakeGen2Item(dirClient);
             azureDataLakeGen2Item.Context = channel.StorageContext;
-            //azureDataLakeGen2Item.ContinuationToken = continuationToken;
             WriteObject(azureDataLakeGen2Item);
         }
 
         /// <summary>
         /// Write a datalake gen2 pathitem to output.
         /// </summary>
-        internal void WriteDataLakeGen2Item(IStorageBlobManagement channel, PathItem item, DataLakeFileSystemClient fileSystem, string ContinuationToken = null, bool fetchPermission = false)
+        internal void WriteDataLakeGen2Item(IStorageBlobManagement channel, PathItem item, DataLakeFileSystemClient fileSystem, string ContinuationToken = null, bool fetchProperties = false)
         {
-
-            //if (fetchPermission)
-            //{
-            //    blobDir.FetchAccessControls();
-            //}
-            AzureDataLakeGen2Item azureDataLakeGen2Item = new AzureDataLakeGen2Item(item, fileSystem, fetchPermission);
+            AzureDataLakeGen2Item azureDataLakeGen2Item = new AzureDataLakeGen2Item(item, fileSystem, fetchProperties);
             azureDataLakeGen2Item.Context = channel.StorageContext;
             azureDataLakeGen2Item.ContinuationToken = ContinuationToken;
-            //azureDataLakeGen2Item.ContinuationToken = continuationToken;
             WriteObject(azureDataLakeGen2Item);
         }
 
@@ -336,7 +323,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// decide if a object represent a folder of datalake gen2
         /// </summary>
-        /// <param name="blob">the File Object</param>
+        /// <param name="fileProperties">the PathProperties of the datalakeGen2 Object</param>
         /// <returns>return true if it represent a folder of datalake gen2</returns>
         public static bool isDirectory(PathProperties fileProperties)
         {
@@ -408,31 +395,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 // TODO: through exception that the item not exist
                 throw new ArgumentException(string.Format("The Item in File System {0} on path {1} does not exist.", fileSystem.Name, path));
             }
-
-
-
-            //Pageable<PathItem> items = fileSystem.GetPaths(path);
-            //PathItem current = items.GetEnumerator().Current;
-            //if (current != null)
-            //{
-            //    if (current.IsDirectory != null && current.IsDirectory.Value) // Directory
-            //    {
-            //        dirClient = fileSystem.GetDirectoryClient(path);
-            //        fileClient = null;
-            //        return true;
-            //    }
-            //    else //File
-            //    {
-            //        fileClient = fileSystem.GetFileClient(path);
-            //        dirClient = null;
-            //        return false;
-            //    }
-            //}
-            //else
-            //{
-            //    // TODO: through exception that the item not exist
-            //    throw new System.Exception();
-            //}
         }
 
         //only support the common properties for DatalakeGen2File
@@ -455,58 +417,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 {"ContentDisposition", (p, v) => p.ContentDisposition = v},
                 {"ContentEncoding", (p, v) => p.ContentEncoding = v},
                 {"ContentLanguage", (p, v) => p.ContentLanguage = v},
-                //{"ContentMD5", (p, v) => p.ContentMD5 = v},
-                //{"ContentType", (p, v) => p.ContentType = v},
             };
-
-        ///// <summary>
-        ///// Set properties to a datalake gen2 folder
-        ///// </summary>
-        ///// <param name="dir">datalake gen2 folder</param>
-        ///// <param name="BlobDirProperties">properties to set</param>
-        ///// <param name="setToServer">True will set to server, false only set to the local folder object</param>
-        //protected static PathHttpHeaders SetBlobDirProperties(DataLakeDirectoryClient dir, Hashtable BlobDirProperties, bool setToServer = true)
-        //{
-        //    if (BlobDirProperties != null)
-        //    {
-        //        // Valid Blob Dir properties
-        //        foreach (DictionaryEntry entry in BlobDirProperties)
-        //        {
-        //            if (!validDatalakeGen2FolderProperties.ContainsKey(entry.Key.ToString()))
-        //            {
-        //                throw new ArgumentException(String.Format("InvalidDataLakeDirectoryProperties", entry.Key.ToString(), entry.Value.ToString()));
-        //            }
-        //        }
-
-        //        PathHttpHeaders headers = new PathHttpHeaders();
-
-        //        foreach (DictionaryEntry entry in BlobDirProperties)
-        //        {
-        //            string key = entry.Key.ToString();
-        //            string value = entry.Value.ToString();
-        //            Action<PathHttpHeaders, string> action = validDatalakeGen2FolderProperties[key];
-
-        //            if (action != null)
-        //            {
-        //                action(headers, value);
-        //            }
-        //        }
-        //        if (setToServer && dir != null)
-        //        {
-        //            dir.SetHttpHeaders(headers);
-        //        }
-        //        return headers;
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
 
         /// <summary>
         /// Set properties to a datalake gen2 Datalakegen2Item
         /// </summary>
-        /// <param name="file">datalake gen2 Datalakegen2Item</param>
+        /// <param name="item">datalake gen2 Datalakegen2Item</param>
         /// <param name="BlobProperties">properties to set</param>
         /// <param name="setToServer">True will set to server, false only set to the local Datalakegen2Item object</param>
         protected static PathHttpHeaders SetDatalakegen2ItemProperties(DataLakePathClient item, Hashtable BlobProperties, bool setToServer = true)
@@ -556,40 +472,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         {
             if (Metadata != null)
             {
-                //if (originalMetadata == null)
-                //{
-                //    try
-                //    {
-                //        originalMetadata = item.GetProperties().Value.Metadata;
-                //    }
-                //    catch (RequestFailedException e) when (e.Status == 404)
-                //    {
-                //        originalMetadata = null;
-                //    }
-                //}
                 IDictionary<string, string> metadata = GetUpdatedMetaData(Metadata, null);
-                //if (originalMetadata == null)
-                //{
-                //    metadata = new Dictionary<string, string>();
-                //}
-                //else
-                //{
-                //    metadata = originalMetadata;
-                //}
-                //foreach (DictionaryEntry entry in Metadata)
-                //{
-                //    string key = entry.Key.ToString();
-                //    string value = entry.Value.ToString();
-
-                //    if (metadata.ContainsKey(key))
-                //    {
-                //        metadata[key] = value;
-                //    }
-                //    else
-                //    {
-                //        metadata.Add(key, value);
-                //    }
-                //}
                 if (setToServer && item != null)
                 {
                     item.SetMetadata(metadata);

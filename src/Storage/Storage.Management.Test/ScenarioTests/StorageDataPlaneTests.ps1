@@ -731,9 +731,9 @@ function Test-DatalakeGen2
         $localDestFile = "localdestDatalakeGen2testfile.txt"
 		
         $filesystemName = "adlsgen2testfilesystem" 
-		$directoryPath1 = "dir1/"
-		$directoryPath2 = "dir2/"
-		$directoryPath3 = "dir3/"
+		$directoryPath1 = "dir1"
+		$directoryPath2 = "dir2"
+		$directoryPath3 = "dir3"
         $filePath1 = "dir1/Item1.txt"
         $filePath2 = "dir2/Item2.txt"
         $filePath3 = "dir2/Item3.txt"
@@ -746,7 +746,7 @@ function Test-DatalakeGen2
 		# Create folders
 		$dir1 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Directory -Permission rwxrwxrwx -Umask ---rwx---  -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 		Assert-AreEqual $dir1.Path $directoryPath1
-        Assert-AreEqual $dir1.Permissions.ToSymbolicString() "rwx---rwx"
+        Assert-AreEqual $dir1.Permissions.ToSymbolicPermissions() "rwx---rwx"
 		$dir2 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath2 -Directory
 
 		# Create (upload) File
@@ -756,10 +756,9 @@ function Test-DatalakeGen2
         Assert-AreEqual $t.Error $null
 		$file2 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath2 -Source $localSrcFile -Permission rwxrwxrwx -Umask ---rwx--- -Property @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5}  -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
         Assert-AreEqual $file2.Path $filePath2
-        Assert-AreEqual $file2.File.Properties.ContentType $ContentType
-        Assert-AreEqual $file2.File.Properties.ContentMD5 $ContentMD5
-        Assert-AreEqual $file2.File.Metadata.Count 2
-        Assert-AreEqual $file2.Permissions.ToSymbolicString() "rwx---rwx"
+        Assert-AreEqual $file2.Properties.ContentType $ContentType
+        Assert-AreEqual $file2.Properties.Metadata.Count 2
+        Assert-AreEqual $file2.Permissions.ToSymbolicPermissions() "rwx---rwx"
 
 		# update Blob and Directory
         $ContentType = "application/octet-stream"
@@ -779,10 +778,9 @@ function Test-DatalakeGen2
                 -Group '$superuser'
 		$file1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1
 		Assert-AreEqual $file1.Path $filePath1
-        Assert-AreEqual $file1.Permissions.ToSymbolicString() "rw-rw--wx"
-        Assert-AreEqual $file1.File.Properties.ContentMD5 $ContentMD5
-        Assert-AreEqual $file1.File.Properties.ContentType $ContentType
-        Assert-AreEqual $file1.File.Metadata.Count 2
+        Assert-AreEqual $file1.Permissions.ToSymbolicPermissions() "rw-rw--wx"
+        Assert-AreEqual $file1.Properties.ContentType $ContentType
+        Assert-AreEqual $file1.Properties.Metadata.Count 2
         Assert-AreEqual $file1.Owner '$superuser'
         Assert-AreEqual $file1.Group '$superuser'
 		## Update Directory
@@ -795,9 +793,9 @@ function Test-DatalakeGen2
                  -Group '$superuser' 
 		$dir1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1
 		Assert-AreEqual $dir1.Path $directoryPath1
-        Assert-AreEqual $dir1.Permissions.ToSymbolicString() "rw-rw--wx"
-        Assert-AreEqual $dir1.Directory.Properties.ContentEncoding $ContentEncoding
-        Assert-AreEqual $dir1.Directory.Metadata.Count 3
+        Assert-AreEqual $dir1.Permissions.ToSymbolicPermissions() "rw-rw--wx"
+        Assert-AreEqual $dir1.Properties.ContentEncoding $ContentEncoding
+        Assert-AreEqual $dir1.Properties.Metadata.Count 3  # inlucde "hdi_isfolder" which is handle by server
         Assert-AreEqual $dir1.Owner '$superuser'
         Assert-AreEqual $dir1.Group '$superuser'
 
@@ -819,7 +817,7 @@ function Test-DatalakeGen2
 
         # Move Items
 		## Move File
-        $file3 = Move-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath2 -DestFileSystem $filesystemName -DestPath $filePath3 -Umask --------- -PathRenameMode Posix
+        $file3 = Move-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath2 -DestFileSystem $filesystemName -DestPath $filePath3 -Force
 		$file3 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath3
 		Assert-AreEqual $file3.Path $filePath3
         Assert-AreEqual $file3.Permissions $file2.Permissions
@@ -828,7 +826,7 @@ function Test-DatalakeGen2
 		Assert-AreEqual $file2.Path $filePath2
         Assert-AreEqual $file2.Permissions $file3.Permissions
 		## Move Folder
-        $dir3 = Move-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -DestFileSystem $filesystemName -DestPath $directoryPath3 -Umask --------- -PathRenameMode Posix
+        $dir3 = Move-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -DestFileSystem $filesystemName -DestPath $directoryPath3 
 		$dir3 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath3
 		Assert-AreEqual $dir3.Path $directoryPath3
         Assert-AreEqual $dir3.Permissions $dir1.Permissions

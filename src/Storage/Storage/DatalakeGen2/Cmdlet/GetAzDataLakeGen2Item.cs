@@ -15,18 +15,10 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using Commands.Common.Storage.ResourceModel;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.Blob;
-    using System;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using System.Threading.Tasks;
-    using System.Collections.Generic;
     using global::Azure.Storage.Files.DataLake;
-    using global::Azure;
-    using global::Azure.Storage.Files.DataLake.Models;
 
     /// <summary>
     /// list azure blobs in specified azure FileSystem
@@ -41,12 +33,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = false, HelpMessage =
                 "The path in the specified FileSystem that should be retrieved. Can be a file or directory " +
-                "In the format 'directory/file.txt' or 'directory1/directory2/'. Don't specify this parameter to get the root directory of the Filesystem.")]
+                "In the format 'directory/file.txt' or 'directory1/directory2/'. Not specify this parameter to get the root directory of the Filesystem.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }        
         
         // Overwrite the useless parameter
         public override int? ConcurrentTaskCount { get; set; }
+        public override int? ClientTimeoutPerRequest { get; set; }
+        public override int? ServerTimeoutPerRequest { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetDataLakeGen2ItemCommand class.
@@ -87,28 +81,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 //File
                 WriteDataLakeGen2Item(Channel, fileClient);
             }
-
-            //CloudBlob blob = (CloudBlob)container.GetBlobReferenceFromServer(this.Path);
-            //Pageable<PathItem> items = fileSystem.GetPaths(this.Path);
-            //PathItem current = items.GetEnumerator().Current;
-            //if (current != null)
-            //{
-            //    if (current.IsDirectory != null && current.IsDirectory.Value) // Directory
-            //    {
-            //        DataLakeDirectoryClient dirClient = fileSystem.GetDirectoryClient(this.Path);
-            //        WriteDataLakeGen2Item(localChannel, dirClient, null, fetchPermission: true);
-            //    }
-            //    else //File
-            //    {
-            //        DataLakeFileClient fileClient = fileSystem.GetFileClient(this.Path);
-            //        WriteDataLakeGen2Item(Channel, fileClient, null, fetchPermission: true);
-            //    }
-            //}
-            //else
-            //{
-            //    // TODO: through exception that the item not exist
-            //}
-
         }
     }
 }

@@ -15,17 +15,15 @@ Download a file.
 ### ReceiveManual (Default)
 ```
 Get-AzDataLakeGen2ItemContent [-FileSystem] <String> [-Path] <String> [-Destination <String>] [-CheckMd5]
- [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-AsJob] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ItemPipeline
 ```
 Get-AzDataLakeGen2ItemContent -InputObject <AzureDataLakeGen2Item> [-Destination <String>] [-CheckMd5] [-Force]
- [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AsJob] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,11 +36,11 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ```
 PS C:\> Get-AzDataLakeGen2ItemContent -FileSystem "filesystem1" -Path "dir1/file1" -Destination $localDestFile -Force
 
-   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
+   FileSystem Name: filesystem1
 
-Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
-----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
-dir1/file1           False        14400000        application/octet-stream       2019-10-29 07:40:28Z rwx---rwx    $superuser $superuser
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir1/file1           False        1024            2020-03-23 09:29:18Z rwx---rwx    $superuser           $superuser
 ```
 
 This command downloads a file to a local file without prompt.
@@ -51,11 +49,11 @@ This command downloads a file to a local file without prompt.
 ```
 PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" |  Get-AzDataLakeGen2ItemContent -Destination $localDestFile 
 
-   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
+   FileSystem Name: filesystem1
 
-Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
-----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
-dir1/file1           False        14400000        application/octet-stream       2019-10-29 07:40:28Z rwx---rwx    $superuser $superuser
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir1/file1           False        1024            2020-03-23 09:29:18Z rwx---rwx    $superuser           $superuser
 ```
 
 This command first gets a file, then pipeline to download the file to a local file.
@@ -84,21 +82,6 @@ check the md5sum
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClientTimeoutPerRequest
-The client side maximum execution time for each request in seconds.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases: ClientTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -199,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Azure Datalake Gen2 Item Object to remove.
+Azure Datalake Gen2 Item Object to download.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureDataLakeGen2Item
@@ -226,21 +209,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ServerTimeoutPerRequest
-The server time out for each request in seconds.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

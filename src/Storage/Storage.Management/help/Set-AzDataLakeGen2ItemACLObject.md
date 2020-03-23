@@ -19,6 +19,7 @@ Set-AzDataLakeGen2ItemAclObject [-EntityId <String>] [-DefaultScope] -Permission
 
 ## DESCRIPTION
 The **Set-AzDataLakeGen2ItemAclObject** cmdlet creates/updates a DataLake gen2 item ACL object, which can be used in Update-AzDataLakeGen2Item cmdlet.
+If the new ACL entry with same AccessControlType/EntityId/DefaultScope not exist in the input ACL, will create a new ACL entry, else update permission of existing ACL entry.
 
 ## EXAMPLES
 
@@ -27,16 +28,45 @@ The **Set-AzDataLakeGen2ItemAclObject** cmdlet creates/updates a DataLake gen2 i
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
-PS C:\>Update-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2" -ACL $acl
+PS C:\>Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/dir3" -ACL $acl
 
-   FileSystem Uri: https://testaccount.blob.core.windows.net/testfilesystem
+   FileSystem Name: filesystem1
 
-Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
-----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
-dir1/dir2            True                         application/octet-stream       2019-10-30 02:43:09Z rw-rw--wx    $superuser $superuser
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir1/dir3            True                         2020-03-23 09:34:31Z rwxrw-rw-+   $superuser           $superuser
 ```
 
-This command creates an ACL object with 3 acl entry (use -InputObject parameter to add acl entry to existing acl object), and updates ACL on a directory.
+This command creates an ACL object with 3 ACL entries (use -InputObject parameter to add acl entry to existing acl object), and updates ACL on a directory.
+
+### Example 2: Create an ACL object with 4 ACL entries, and update permission of an existing ACL entry
+```
+PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
+PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
+PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
+PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission rwx -InputObject $acl 
+PS C:\>$acl
+
+DefaultScope AccessControlType EntityId                             Permissions
+------------ ----------------- --------                             -----------
+True         User                                                   rwx        
+False        Group                                                  rw-        
+False        Other                                                  rw-        
+False        User              ********-****-****-****-************ rwx        
+
+PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission r-x -InputObject $acl 
+PS C:\>$acl  
+
+DefaultScope AccessControlType EntityId                             Permissions
+------------ ----------------- --------                             -----------
+True         User                                                   rwx        
+False        Group                                                  rw-        
+False        Other                                                  rw-        
+False        User              ********-****-****-****-************ r-x
+```
+
+This command first creates an ACL object with 4 ACL entries, then run the cmdlet again with different permission but same AccessControlType/EntityId/DefaultScope of an existing ACL entry.
+Then the permission of the ACL entry is updated, but no new ACL entry is added.
 
 ## PARAMETERS
 

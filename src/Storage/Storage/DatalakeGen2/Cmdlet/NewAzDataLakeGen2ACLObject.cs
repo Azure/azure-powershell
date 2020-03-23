@@ -64,21 +64,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 psacls = new List<PSPathAccessControlEntry>(this.InputObject);
             }
 
-            ////Parse Role permission
-            //RolePermissions rolePermission = RolePermissions.None;
-            //if (this.Permission[0] != '-') // [r-]
-            //{
-            //    rolePermission = rolePermission | RolePermissions.Read;
-            //}
-            //if (this.Permission[1] != '-') // [w-]
-            //{
-            //    rolePermission = rolePermission | RolePermissions.Write;
-            //}
-            //if (this.Permission[2] != '-') // [x-]
-            //{
-            //    rolePermission = rolePermission | RolePermissions.Execute;
-            //}
-
             // Remove the ACL entry to add if already exist, to avoid duplicated entries
             PSPathAccessControlEntry entryToRemove = null;
             foreach (PSPathAccessControlEntry entry in psacls)

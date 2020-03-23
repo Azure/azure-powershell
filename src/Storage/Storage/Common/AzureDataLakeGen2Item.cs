@@ -14,16 +14,11 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
-    //using Microsoft.Azure.Storage.Blob;
     using System;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using global::Azure.Storage.Files.DataLake;
     using global::Azure.Storage.Files.DataLake.Models;
-    using System.Threading;
-    using global::Azure;
-    using System.Collections.Generic;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
     /// <summary>
     /// Azure storage blob object
@@ -35,20 +30,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// </summary>
         public DataLakeFileClient File { get; set; }
 
-        ///// <summary>
-        ///// File Client
-        ///// </summary>
-        //public DataLakeFileClient FileClient { get; set; }
-
         /// <summary>
         /// Directory Properties
         /// </summary>
         public DataLakeDirectoryClient Directory { get; private set; }
-
-        ///// <summary>
-        ///// Directory Client
-        ///// </summary>
-        //public DataLakeDirectoryClient DirectoryClient { get; set; }
 
         /// <summary>
         /// The Path of the item
@@ -127,14 +112,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             Name = fileClient.Name;
             Path = fileClient.Path;
             File = fileClient;
-            //BlobType = blob.BlobType;
             Properties = fileClient.GetProperties();
             AccessControl = File.GetAccessControl();
             Length = Properties.ContentLength;
             ContentType = Properties.ContentType;
             LastModified = Properties.LastModified;
             IsDirectory = false;
-            //PathAccessControl acl = fileClient.GetAccessControl();
             Permissions = AccessControl.Permissions;
             ACL = PSPathAccessControlEntry.ParsePSPathAccessControlEntrys(AccessControl.AccessControlList);
             Owner = AccessControl.Owner;
@@ -151,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             Path = directoryClient.Path;
             Directory = directoryClient;
             IsDirectory = true;
-            if (directoryClient.Path != "/") //is root directory
+            if (directoryClient.Path != "/") //if root directory, GetProperties() will fail. Skip until this is fixed.
             {
                 Properties = directoryClient.GetProperties();
                 Length = Properties.ContentLength;
@@ -170,7 +153,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// Azure DataLakeGen2 Item constructor
         /// </summary>
         /// <param name="item">datalake gen2 listout item</param>
-        public AzureDataLakeGen2Item(PathItem item, DataLakeFileSystemClient fileSystem, bool fetchPermission = false)
+        public AzureDataLakeGen2Item(PathItem item, DataLakeFileSystemClient fileSystem, bool fetchProperties = false)
         {
             this.Name = item.Name;
             this.Path = item.Name;
@@ -193,7 +176,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             this.LastModified = item.LastModified;
             this.Length = item.ContentLength is null ? 0 : item.ContentLength.Value;
 
-            if (fetchPermission)
+            if (fetchProperties)
             {
                 this.Properties = pathclient.GetProperties();
                 this.AccessControl = pathclient.GetAccessControl();
@@ -202,70 +185,4 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             }
         }
     }
-
-
-
-    //public class PSDataLakeFile : DataLakeFileClient
-    //{
-    //    /// <summary>
-    //    /// File Properties
-    //    /// </summary>
-    //    public PathProperties Properties
-    //    {
-    //        get
-    //        {
-    //            if (properties == null)
-    //            {
-    //                properties = this.GetProperties();
-    //            }
-    //            return properties;
-    //        }
-    //    }
-    //    private PathProperties properties;
-
-    //    public IDictionary<string, string> Metadata {
-    //        get
-    //        {
-    //            return this.Properties.Metadata;
-    //        }
-    //    }
-
-    //    public PathAccessControl PathProperties
-    //    {
-    //        get
-    //        {
-    //            if (pathProperties == null)
-    //            {
-    //                pathProperties = this.GetAccessControl();
-    //            }
-    //            return pathProperties;
-    //        }
-    //    }
-    //    private PathAccessControl pathProperties;
-    //}
-    //public static class DataLakeDirectoryClientExtensions
-    //{
-    //    /// <summary>
-    //    /// File Properties
-    //    /// </summary>
-    //    public static PathProperties Properties(this DataLakeDirectoryClient client)
-    //    {
-    //        return client.GetProperties().Value; 
-    //    }
-
-    //    public static IDictionary<string, string> Metadata(this DataLakeDirectoryClient client)
-    //    {
-    //        return client.GetProperties().Value.Metadata;
-    //    }
-
-    //    public static PathAccessControl PathProperties(this DataLakeDirectoryClient client)
-    //    {
-    //        //if (pathProperties == null)
-    //        //{
-    //        //    pathProperties = client.GetAccessControl();
-    //        //}
-    //        return client.GetAccessControl().Value; 
-    //    }
-    //    //private PathAccessControl pathProperties;
-    //}
 }

@@ -12,16 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Storage.Shared.Protocol;
-using XTable = Microsoft.Azure.Cosmos.Table;
 using System.Collections.Generic;
-using System;
 using System.Linq;
-using Microsoft.Azure.Storage.File;
-using System.Net;
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
-//using Microsoft.Azure.Storage.Blob;
-using Azure.Storage.Files.DataLake;
 using Azure.Storage.Files.DataLake.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
