@@ -1727,5 +1727,8 @@ Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can
   </data>
   <data name="BreakingChangesAttributesFooterMessage" xml:space="preserve">
     <value>NOTE : Go to {0} for steps to suppress this breaking change warning, and other information on breaking changes in Azure PowerShell.</value>
-  </data> 
+  </data>
+  <data name="PreviewCmdletMessage" xml:space="preserve">
+    <value>This cmdlet is in preview. The functionality may not be available in the selected subscription.</value>
+  </data>
 </root>

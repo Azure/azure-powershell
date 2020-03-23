@@ -368,6 +368,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             //Now see if the cmdlet has any Breaking change attributes on it and process them if it does
             //This will print any breaking change attribute messages that are applied to the cmdlet
             BreakingChangeAttributeHelper.ProcessCustomAttributesAtRuntime(this.GetType(), this.MyInvocation, WriteWarning);
+            PreviewAttributeHelper.ProcessCustomAttributesAtRuntime(this.GetType(), this.MyInvocation, WriteDebug);
         }
 
         /// <summary>
@@ -406,8 +407,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 _qosEvent.Exception = errorRecord.Exception;
                 _qosEvent.IsSuccess = false;
             }
-
             base.WriteError(errorRecord);
+            PreviewAttributeHelper.ProcessCustomAttributesAtRuntime(this.GetType(), this.MyInvocation, WriteWarning);
         }
 
         protected new void ThrowTerminatingError(ErrorRecord errorRecord)
