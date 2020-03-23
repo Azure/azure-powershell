@@ -61,16 +61,12 @@ directive:
     set:
       verb: Update
   - where:
-     verb: Get$
-     variant: GetViaIdentify
+     verb: Get
+     variant: GetViaIdentity
     hide: true
   - where:
-     verb: New$
+     verb: New
      variant: ^Create$
-    hide: true
-  - where:
-     verb: New$
-     variant: ^CreateViaIdentity
     hide: true
 
 # Server
@@ -88,11 +84,6 @@ directive:
       parameter-name: StorageProfileStorageMb
     set:
       parameter-name: StorageProfileStorageInMb
-  - where:
-      subject: Server
-      parameter-name: SkuName
-    set:
-      parameter-name: Sku
   - where:
       subject: Server
       parameter-name: AdministratorLogin
