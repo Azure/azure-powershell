@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
+using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -120,11 +120,11 @@ namespace Microsoft.Azure.Commands.Aks
                     throw new CmdletInvocationException(Resources.KubectlIsRequriedToBeInstalledAndOnYourPathToExecute);
 
                 var tmpFileName = Path.GetTempFileName();
-                var encoded = Client.ManagedClusters.GetAccessProfiles(ResourceGroupName, Name, "clusterUser")
+                var encoded = Client.ManagedClusters.GetAccessProfile(ResourceGroupName, Name, "clusterUser")
                     .KubeConfig;
                 AzureSession.Instance.DataStore.WriteFile(
                     tmpFileName,
-                    Encoding.UTF8.GetString(Convert.FromBase64String(encoded)));
+                    Encoding.UTF8.GetString(encoded));
 
                 WriteVerbose(string.Format(
                     Resources.RunningKubectlGetPodsKubeconfigNamespaceSelector,

@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -13,6 +12,9 @@ using System.Reflection;
 using System.IO;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Management.ContainerService;
+using Microsoft.Azure.Management.ContainerRegistry;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 
 namespace Commands.Aks.Test.ScenarioTests
 {
@@ -30,6 +32,10 @@ namespace Commands.Aks.Test.ScenarioTests
         public static TestController NewInstance => new TestController();
 
         public ResourceManagementClient InternalResourceManagementClient { get; private set; }
+
+        public ContainerRegistryManagementClient InternalContainerRegistryManagementClient { get; private set; }
+
+        public AuthorizationManagementClient InternalAuthorizationManagementClient { get; private set; }
 
         public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
@@ -115,6 +121,14 @@ namespace Commands.Aks.Test.ScenarioTests
         private static ResourceManagementClient GetInternalResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>();
+        }
+        private static ContainerRegistryManagementClient GetContainerRegistryManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ContainerRegistryManagementClient>();
+        }
+        private static AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<AuthorizationManagementClient>();
         }
     }
 }
