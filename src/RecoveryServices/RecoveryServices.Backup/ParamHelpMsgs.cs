@@ -95,6 +95,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string EnableCompression = "A switch which will specify that the requested on-demand SQL backup should be compressed.";
             public const string ParentID = "Specified the ARM ID of an Instance or AG.";
             public const string FriendlyName = "FriendlyName of the backed up item";
+            public const string inclusionDiskList = "List of Disk LUNs to include in backup";
+            public const string exclusionDiskList = "List of Disk LUNs to exclude in backup";
+            public const string resetExclusionSettings = "Specifies to reset disk exclusion setting associated with the item";
+            public const string excludeAllDataDisks = "Option to specify to backup OS disks only";
         }
 
         internal static class ProtectableItem
