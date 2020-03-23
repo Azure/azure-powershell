@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.DailySchedule.RetentionTimes = new List<DateTime>();
             defaultRetention.DailySchedule.RetentionTimes.Add(retentionTime);
             defaultRetention.DailySchedule.DurationCountInDays = defaultFileRetentionCount;
-            defaultRetention.DailySchedule.backupManagementType = backupMnagementType;
+            defaultRetention.DailySchedule.BackupManagementType = backupMnagementType;
 
             // Weekly Retention Policy
             defaultRetention.IsWeeklyScheduleEnabled = false;
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.WeeklySchedule.DurationCountInWeeks = defaultWeeklyRetentionCount;
             defaultRetention.WeeklySchedule.RetentionTimes = new List<DateTime>();
             defaultRetention.WeeklySchedule.RetentionTimes.Add(retentionTime);
-            defaultRetention.WeeklySchedule.backupManagementType = backupMnagementType;
+            defaultRetention.WeeklySchedule.BackupManagementType = backupMnagementType;
 
             //Monthly retention policy
             defaultRetention.IsMonthlyScheduleEnabled = false;
@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.MonthlySchedule.RetentionTimes.Add(retentionTime);
             defaultRetention.MonthlySchedule.RetentionScheduleFormatType =
                 CmdletModel.RetentionScheduleFormat.Weekly;
-            defaultRetention.MonthlySchedule.backupManagementType = backupMnagementType;
+            defaultRetention.MonthlySchedule.BackupManagementType = backupMnagementType;
 
             //Initialize day based schedule
             defaultRetention.MonthlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
@@ -673,9 +673,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.YearlySchedule.MonthsOfYear.Add(Month.January);
             defaultRetention.YearlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
             defaultRetention.YearlySchedule.RetentionScheduleWeekly = AzureWorkloadProviderHelper.GetWeeklyRetentionFormat();
-            defaultRetention.YearlySchedule.backupManagementType = backupMnagementType;
+            defaultRetention.YearlySchedule.BackupManagementType = backupMnagementType;
 
-            defaultRetention.backupManagementType = backupMnagementType;
+            defaultRetention.BackupManagementType = backupMnagementType;
 
             return defaultRetention;
         }
