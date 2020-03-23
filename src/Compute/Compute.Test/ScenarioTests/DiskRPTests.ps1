@@ -32,15 +32,24 @@ function Test-Disk
         $mockkey = 'https://myvault.vault-int.azure-int.net/keys/mockkey/00000000000000000000000000000000';
         $mocksecret = 'https://myvault.vault-int.azure-int.net/secrets/mocksecret/00000000000000000000000000000000';
         $access = 'Read';
+        $mockGalleryImageId = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/galleries/swaggergallery/images/swaggerimagedef/versions/1.0.0';
 
         # Config create test
         $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 500 -SkuName UltraSSD_LRS -OsType Windows -CreateOption Empty `
-                                       -DiskMBpsReadWrite 8 -DiskIOPSReadWrite 500 -EncryptionType "EncryptionAtRestWithCustomerKey" -DiskEncryptionSetId $encSetId;
+                                       -DiskMBpsReadWrite 8 -DiskIOPSReadWrite 500 -EncryptionType "EncryptionAtRestWithCustomerKey" -DiskEncryptionSetId $encSetId `
+                                       -DiskIOPSReadOnly 1000 -DiskMBpsReadOnly 10 -MaxSharesCount 5 `
+                                       -GalleryImageReference @{Id=$mockGalleryImageId;Lun=2};
+
         Assert-AreEqual "UltraSSD_LRS" $diskconfig.Sku.Name;
         Assert-AreEqual 500 $diskconfig.DiskIOPSReadWrite;
         Assert-AreEqual 8 $diskconfig.DiskMBpsReadWrite;
         Assert-AreEqual $encSetId $diskconfig.Encryption.DiskEncryptionSetId;
         Assert-AreEqual "EncryptionAtRestWithCustomerKey" $diskconfig.Encryption.Type;
+        Assert-AreEqual 1000 $diskconfig.DiskIOPSReadOnly;
+        Assert-AreEqual 10 $diskconfig.DiskMBpsReadOnly;
+        Assert-AreEqual 5 $diskconfig.MaxShares;
+        Assert-AreEqual $mockGalleryImageId $diskconfig.CreationData.GalleryImageReference.Id;
+        Assert-AreEqual 2 $diskconfig.CreationData.GalleryImageReference.Lun;
 
         $diskconfig = New-AzDiskConfig -Location $loc -Zone "1" -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty `
                                        -EncryptionSettingsEnabled $true -HyperVGeneration "V1";
