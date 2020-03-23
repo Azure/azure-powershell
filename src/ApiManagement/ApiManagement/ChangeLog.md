@@ -21,6 +21,7 @@
 
 ## Version 1.4.0
 * Added support for retrieving and configuring Custom Domain on the DeveloperPortal Endpoint [#11007]
+* `Set-AzApiManagementGroup` Update documentation to specify the GroupId parameter [#11392]
 * `Export-AzApiManagementApi` Added support for downloading Api Definition in Json format [#9987]
 * `Import-AzApiManagementApi` Added support for importing OpenApi 3.0 definition from Json document
 * `New-AzApiManagementIdentityProvider` and `Set-AzApiManagementIdentityProvider` Added support for configuring `Signin Tenant` for AAD B2C Provider [#9784]
