@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExcludeAllDataDisks
-{{ Fill ExcludeAllDataDisks Description }}
+Option to specify to backup OS disks only
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExclusionDisksList
-{{ Fill ExclusionDisksList Description }}
+List of Disk LUNs to exclude in backup
 
 ```yaml
 Type: System.String[]
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -InclusionDisksList
-{{ Fill InclusionDisksList Description }}
+List of Disk LUNs to include in backup
 
 ```yaml
 Type: System.String[]
@@ -192,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResetExclusionSettings
-{{ Fill ResetExclusionSettings Description }}
+Specifies to reset disk exclusion setting associated with the item
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

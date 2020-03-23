@@ -100,31 +100,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// List of Disk LUNs to include in backup
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.inclusionDiskList)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.inclusionDiskList)]
+        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.inclusionDiskList)]
         public string[] InclusionDisksList { get; set; }
 
         /// <summary>
         /// List of Disk LUNs to exclude in backup
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.exclusionDiskList)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.exclusionDiskList)]
+        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.exclusionDiskList)]
         public string[] ExclusionDisksList { get; set; }
 
         /// <summary>
         /// Reset Disk Exclusion Settings
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.resetExclusionSettings)]
         public SwitchParameter ResetExclusionSettings { get; set; }
 
         /// <summary>
         /// Backup OS disks of VM only
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.excludeAllDataDisks)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.excludeAllDataDisks)]
+        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.excludeAllDataDisks)]
         public SwitchParameter ExcludeAllDataDisks { get; set; }
 
         public override void ExecuteCmdlet()
