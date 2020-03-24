@@ -555,7 +555,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                     managedDisk.RecoveryTargetDiskAccountType,
                                     managedDisk.RecoveryReplicaDiskAccountType,
                                     failoverDiskName: managedDisk.FailoverDiskName,
-                                    tfoDiskName: managedDisk.TfoDiskName));
+                                    tfoDiskName: managedDisk.TfoDiskName,
+                                    diskEncryptionInfo: Utilities.A2AEncryptionDetails(
+                                        managedDisk.DiskEncryptionSecretUrl,
+                                        managedDisk.DiskEncryptionVaultId,
+                                        managedDisk.KeyEncryptionKeyUrl,
+                                        managedDisk.KeyEncryptionVaultId)));
                         }
                     }
 
@@ -565,8 +570,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                         RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId,
                         ManagedDiskUpdateDetails = managedDiskUpdateDetails,
-                        DiskEncryptionInfo = this.A2AEncryptionDetails(provider),
-                        TfoAzureVMName = this.TfoAzureVMName
+                        TfoAzureVMName = this.TfoAzureVMName,
+                        DiskEncryptionInfo = Utilities.A2AEncryptionDetails(
+                            this.DiskEncryptionSecretUrl,
+                            this.DiskEncryptionVaultId,
+                            this.KeyEncryptionKeyUrl,
+                            this.KeyEncryptionVaultId)
                     };
 
                     if (this.ASRVMNicConfiguration != null &&

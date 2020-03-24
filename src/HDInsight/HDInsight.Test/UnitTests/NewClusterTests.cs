@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.Location == Location &&
                     parameters.UserName == _httpCred.UserName &&
                     parameters.Password == _httpCred.Password.ConvertToString() &&
-                    parameters.ClusterType == ClusterType)))
+                    parameters.ClusterType == ClusterType), It.IsAny<string>()))
             .Returns(cluster)
             .Verifiable();
 
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                         parameters.SshUserName == _sshCred.UserName &&
                         parameters.SshPassword == _sshCred.Password.ConvertToString() &&
                         ((!setEdgeNodeVmSize && parameters.EdgeNodeSize == null) || (setEdgeNodeVmSize && parameters.EdgeNodeSize == "edgeNodeVmSizeSetTest")) &&
-                        (workerNodeDataDisks == 0) || (workerNodeDataDisks > 0 && parameters.WorkerNodeDataDisksGroups.First().DisksPerNode == workerNodeDataDisks))))
+                        (workerNodeDataDisks == 0) || (workerNodeDataDisks > 0 && parameters.WorkerNodeDataDisksGroups.First().DisksPerNode == workerNodeDataDisks)), It.IsAny<string>()))
                 .Returns(cluster)
                 .Verifiable();
 
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.ClusterType == sparkClusterType &&
                     parameters.SshUserName == _sshCred.UserName &&
                     parameters.SshPassword == _sshCred.Password.ConvertToString() &&
-                    parameters.ComponentVersion["Spark"] == componentVersion["Spark"])))
+                    parameters.ComponentVersion["Spark"] == componentVersion["Spark"]), It.IsAny<string>()))
             .Returns(cluster)
             .Verifiable();
             hdinsightManagementMock.Setup(
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                         parameters.Password == _httpCred.Password.ConvertToString() &&
                         parameters.ClusterType == ClusterType &&
                         parameters.SshUserName == _sshCred.UserName &&
-                        parameters.SshPassword == _sshCred.Password.ConvertToString())))
+                        parameters.SshPassword == _sshCred.Password.ConvertToString()), It.IsAny<string>()))
                 .Returns(cluster)
                 .Verifiable();
 
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.DefaultStorageAccountKey = StorageKey;
             cmdlet.ClusterType = ClusterType;
 
-            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName,  OSType.Linux, It.IsAny<ClusterCreateParameters>()));
+            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName,  OSType.Linux, It.IsAny<ClusterCreateParameters>(), It.IsAny<string>()));
 
             cmdlet.ExecuteCmdlet();
 
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.Location == Location &&
                     parameters.UserName == _httpCred.UserName &&
                     parameters.Password == _httpCred.Password.ConvertToString() &&
-                    parameters.ClusterType == ClusterType)),
+                    parameters.ClusterType == ClusterType), It.IsAny<string>()),
                 Times.Once);
         }
 
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ClusterType = ClusterType;
             cmdlet.DefaultStorageAccountType = StorageType.AzureStorage;
 
-            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, OSType.Linux, It.IsAny<ClusterCreateParameters>()));
+            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, OSType.Linux, It.IsAny<ClusterCreateParameters>(), It.IsAny<string>()));
 
             cmdlet.ExecuteCmdlet();
 
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.Location == Location &&
                     parameters.UserName == _httpCred.UserName &&
                     parameters.Password == _httpCred.Password.ConvertToString() &&
-                    parameters.ClusterType == ClusterType)),
+                    parameters.ClusterType == ClusterType), It.IsAny<string>()),
                 Times.Once);
         }
 
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ClusterType = ClusterType;
             cmdlet.DefaultStorageAccountType = StorageType.AzureDataLakeStore;
 
-            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, OSType.Linux, It.IsAny<ClusterCreateParameters>()));
+            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, OSType.Linux, It.IsAny<ClusterCreateParameters>(), It.IsAny<string>()));
 
             cmdlet.ExecuteCmdlet();
 
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.Location == Location &&
                     parameters.UserName == _httpCred.UserName &&
                     parameters.Password == _httpCred.Password.ConvertToString() &&
-                    parameters.ClusterType == ClusterType)),
+                    parameters.ClusterType == ClusterType), It.IsAny<string>()),
                 Times.Once);
         }
     }

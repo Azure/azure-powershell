@@ -226,6 +226,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                             ResourceGroupName,
                                             ResourceType,
                                             Name);
+
+                this.DefaultApiVersion = DetermineApiVersion(resourceId).Result;
+
                 return true;
             }
 

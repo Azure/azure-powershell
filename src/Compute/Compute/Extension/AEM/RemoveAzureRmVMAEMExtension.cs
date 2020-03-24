@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
                     }
-                    var aemExtension = this._Helper.GetExtension(virtualMachine, AEMExtensionConstants.AEMExtensionType[this.OSType], AEMExtensionConstants.AEMExtensionPublisher[this.OSType]);
+                    var aemExtension = AEMHelper.GetAEMExtension(virtualMachine, this.OSType);
 
                     if (aemExtension == null)
                     {

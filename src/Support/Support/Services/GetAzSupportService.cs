@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Support.Models;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Support;
 using Microsoft.Azure.Management.Support.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Support.ArgumentCompleters;
 using System.Linq;
 using System.Management.Automation;
 using static Microsoft.Azure.Commands.Support.Helpers.ResourceIdentifierHelper;
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.Support.Services
     {
         [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, HelpMessage = "Service id.")]
         [Alias("Name")]
+        [ServiceIdCompleter()]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 

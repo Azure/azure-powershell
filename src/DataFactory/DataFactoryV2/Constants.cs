@@ -182,6 +182,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpParameterFileForRun = "The name of the file with parameters for pipeline run.";
 
+        public const string HelpReferencePipelineRunIdForRun = "The pipeline run ID for rerun. If run ID is specified, the parameters of the specified run will be used to create a new run.";
+
+        public const string HelpIsRecoveryForRun = "Recovery mode flag. If recovery mode is set to true, the specified referenced pipeline run and the new run will be grouped under the same groupId.";
+
+        public const string HelpStartActivityNameForRun = "In recovery mode, the rerun will start from this activity. If not specified, all activities will run.";
+
+        public const string HelpStartFromFailureForRun = "Start rerun from failed activities flag. In recovery mode, if specified, the rerun will start from failed activities.";
+
         public const string HelpQueryParametersForRun = "Query parameters for pipeline run.";
 
         public const string HelpRunStartedAfter = "The time at or after which the pipeline run started to execute in ISO8601 format.";

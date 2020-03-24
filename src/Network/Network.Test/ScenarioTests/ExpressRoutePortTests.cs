@@ -25,7 +25,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "Resource under whitelisting")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRoutePortCRUDMinimalParameters()
@@ -33,7 +33,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript(string.Format("Test-ExpressRoutePortCRUD"));
         }
 
-        [Fact(Skip = "Resource under whitelisting")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRoutePortIdentityCRUD()
