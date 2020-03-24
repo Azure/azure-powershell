@@ -30,7 +30,7 @@ function Restore-AzMariaDbServer
 
         [Parameter(ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
         # The source server object to restore from.
         ${Server},
     
@@ -160,14 +160,18 @@ function Restore-AzMariaDbServer
                 $Null = $PSBoundParameters.Remove('UseGeoRetore')
             }
 
-            if ($PSBoundParameters.ContainsKey('Server')) {
-                $Null = $PSBoundParameters.Remove('Server')
-            } else {
+            if (-not $PSBoundParameters.ContainsKey('Server')) {
                 $Server = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+            } else {
+                $Null = $PSBoundParameters.Remove('Server')
             }
             $Parameter.Property.SourceServerId = $Server.Id
-            if (-ne $PSBoundParameters.ContainsKey('Location')) {
-                $Location = $Server.Location
+            
+            if ($PSBoundParameters.ContainsKey('Location')) {
+                $Parameter.Location = $PSBoundParameters['Location']
+                $Null = $PSBoundParameters.Remove('Location')
+            } else {
+                $Parameter.Location = $Server.Location
             }
 
             $PSBoundParameters.Add('Parameter', $Parameter)
