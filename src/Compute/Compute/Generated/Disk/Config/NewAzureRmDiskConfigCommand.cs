@@ -77,12 +77,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public int DiskIOPSReadWrite { get; set; }
+        public long DiskIOPSReadWrite { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public int DiskMBpsReadWrite { get; set; }
+        public long DiskMBpsReadWrite { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public long DiskIOPSReadOnly { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public long DiskMBpsReadOnly { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public int MaxSharesCount { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -103,6 +118,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public ImageDiskReference ImageReference { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public ImageDiskReference GalleryImageReference { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -201,6 +221,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vCreationData = new CreationData();
                 }
                 vCreationData.ImageReference = this.ImageReference;
+            }
+
+            if (this.IsParameterBound(c => c.GalleryImageReference))
+            {
+                if (vCreationData == null)
+                {
+                    vCreationData = new CreationData();
+                }
+                vCreationData.GalleryImageReference = this.GalleryImageReference;
             }
 
             if (this.IsParameterBound(c => c.SourceUri))
@@ -303,8 +332,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
                 HyperVGeneration = this.IsParameterBound(c => c.HyperVGeneration) ? this.HyperVGeneration : null,
                 DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null,
-                DiskIOPSReadWrite = this.IsParameterBound(c => c.DiskIOPSReadWrite) ? this.DiskIOPSReadWrite : (int?)null,
-                DiskMBpsReadWrite = this.IsParameterBound(c => c.DiskMBpsReadWrite) ? this.DiskMBpsReadWrite : (int?)null,
+                DiskIOPSReadWrite = this.IsParameterBound(c => c.DiskIOPSReadWrite) ? this.DiskIOPSReadWrite : (long?)null,
+                DiskMBpsReadWrite = this.IsParameterBound(c => c.DiskMBpsReadWrite) ? this.DiskMBpsReadWrite : (long?)null,
+                DiskIOPSReadOnly = this.IsParameterBound(c => c.DiskIOPSReadOnly) ? this.DiskIOPSReadOnly : (long?)null,
+                DiskMBpsReadOnly = this.IsParameterBound(c => c.DiskMBpsReadOnly) ? this.DiskMBpsReadOnly : (long?)null,
+                MaxShares = this.IsParameterBound(c => c.MaxSharesCount) ? this.MaxSharesCount : (int?)null,
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 Sku = vSku,

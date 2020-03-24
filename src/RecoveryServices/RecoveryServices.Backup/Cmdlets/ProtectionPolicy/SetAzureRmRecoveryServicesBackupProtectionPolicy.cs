@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectionPolicy",SupportsShouldProcess = true), OutputType(typeof(JobBase))]
     public class SetAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
     {
+        public const string ModifyPolicyParamSet = "ModifyPolicyParamSet";
+        public const string FixInconsistentPolicyParamSet = "FixPolicyParamSet";
         /// <summary>
         /// Policy object to be modified
         /// </summary>
@@ -43,16 +45,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Retention policy object to be modified
         /// </summary>
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.RetentionPolicy)]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.RetentionPolicy,
+            ParameterSetName = ModifyPolicyParamSet)]
         [ValidateNotNullOrEmpty]
         public RetentionPolicyBase RetentionPolicy { get; set; }
 
         /// <summary>
         /// Schedule policy object to be modified
         /// </summary>
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.SchedulePolicy)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.SchedulePolicy,
+            ParameterSetName = ModifyPolicyParamSet)]
         [ValidateNotNullOrEmpty]
         public SchedulePolicyBase SchedulePolicy { get; set; }
+
+        /// <summary>
+        /// Retry Policy Update for Failed Items
+        /// </summary>
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.FixForInConsistentItems,
+            ParameterSetName = FixInconsistentPolicyParamSet)]
+        public SwitchParameter FixForInconsistentItems { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -93,6 +104,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { PolicyParams.ProtectionPolicy, Policy },
                         { PolicyParams.RetentionPolicy, RetentionPolicy },
                         { PolicyParams.SchedulePolicy, SchedulePolicy },
+                        { PolicyParams.FixForInconsistentItems, FixForInconsistentItems.IsPresent }
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(

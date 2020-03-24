@@ -1,19 +1,19 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/West%20Central%20US/availableDelegations?api-version=2019-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvV2VzdCUyMENlbnRyYWwlMjBVUy9hdmFpbGFibGVEZWxlZ2F0aW9ucz9hcGktdmVyc2lvbj0yMDE5LTExLTAx",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/West%20Central%20US/availableDelegations?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvV2VzdCUyMENlbnRyYWwlMjBVUy9hdmFpbGFibGVEZWxlZ2F0aW9ucz9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cbf31589-10ec-4acc-9bac-46246501c6c5"
+          "26b9f51d-287c-41f5-833c-ca2619f93b46"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.04",
+          "FxVersion/4.6.28516.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.14393.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c2984f4c-826c-428d-aad9-478ef52c0aaa"
+          "4feeb9c6-6904-4cda-b1c6-8f57a7d9fd4f"
         ],
         "x-ms-correlation-request-id": [
-          "e169ed94-cb90-4eb2-afe4-86793e8f1cad"
+          "ffe119ab-2fcf-4ec5-861a-dd0aaa6086f9"
         ],
         "x-ms-arm-service-request-id": [
-          "c3c17a4b-7dd6-4e8f-813e-fd1c04dc8dbc"
+          "8ea9e7db-958d-40f6-b375-0c392320fa71"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,16 +43,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11886"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20200115T134359Z:e169ed94-cb90-4eb2-afe4-86793e8f1cad"
+          "WESTUS2:20200310T191739Z:ffe119ab-2fcf-4ec5-861a-dd0aaa6086f9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 15 Jan 2020 13:43:59 GMT"
+          "Tue, 10 Mar 2020 19:17:39 GMT"
         ],
         "Content-Length": [
           "7003"

@@ -140,6 +140,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </summary>
         public int DisksPerWorkerNode { get; set; }
 
+        /// <summary>
+        /// Gets or sets the minimal supported TLS version.
+        /// </summary>
+        public string MinSupportedTlsVersion { get; set; }
+
         public AzureHDInsightConfig()
         {
             ClusterType = Constants.Hadoop;

@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
 
                     if (!technicalResourceId.Subscription.Equals(this.SupportClient.SubscriptionId, StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new PSArgumentException(string.Format("TechnicalResourceId {0} does not belong in subscription {1}.", this.TechnicalTicketResourceId, this.SupportClient.SubscriptionId));
+                        throw new PSArgumentException(string.Format("TechnicalResourceId {0} does not belong to subscription {1}.", this.TechnicalTicketResourceId, this.SupportClient.SubscriptionId));
                     }
 
                     var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(

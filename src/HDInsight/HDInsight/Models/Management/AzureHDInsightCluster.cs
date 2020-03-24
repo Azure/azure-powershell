@@ -66,6 +66,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 LdapsUrls = clusterSecurityProfile.LdapsUrls != null ? clusterSecurityProfile.LdapsUrls.ToArray() : null,
                 ClusterUsersGroupDNs = clusterSecurityProfile.ClusterUsersGroupDNs != null ? clusterSecurityProfile.ClusterUsersGroupDNs.ToArray() : null,
             } : null;
+
+            MinSupportedTlsVersion = cluster.Properties.MinSupportedTlsVersion;
         }
 
         public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration, IDictionary<string, string> clusterIdentity)
@@ -201,5 +203,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// The security profile.
         /// </value>
         public AzureHDInsightSecurityProfile SecurityProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the minimal supported TLS version.
+        /// </summary>
+        public string MinSupportedTlsVersion { get; set; }
     }
 }

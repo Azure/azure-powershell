@@ -148,6 +148,13 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _config.AADTenantId = value; }
         }
 
+        [Parameter(HelpMessage = "Gets or sets the minimal supported TLS version.")]
+        public string MinSupportedTlsVersion
+        {
+            get { return _config.MinSupportedTlsVersion; }
+            set { _config.MinSupportedTlsVersion = value; }
+        }
+
         #endregion
 
         public NewAzureHDInsightClusterConfigCommand()
