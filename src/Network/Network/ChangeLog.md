@@ -25,6 +25,11 @@
     - New-AzVirtualHub
     - Update-AzVirtualHub
 * Removed Sql Management SDK dependency
+* Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
+	- New-AzVirtualNetworkGateway
+	- Set-AzVirtualNetworkGateway
+	- New-AzVirtualNetworkGatewayConnection
+	- Set-AzVirtualNetworkGatewayConnection
 
 ## Version 2.3.2
 * Updated Sql Management SDK.
