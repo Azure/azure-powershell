@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// <summary>
     /// wrapper class for Microsoft.Azure.Management.Monitor.Models.AzureMonitorPrivateLinkScope
     /// </summary>
-    class PSMonitorPrivateLinkScope
+    public class PSMonitorPrivateLinkScope
     {
         public PSMonitorPrivateLinkScope() { }
 

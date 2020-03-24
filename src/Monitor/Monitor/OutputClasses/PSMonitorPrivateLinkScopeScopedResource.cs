@@ -17,7 +17,7 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
-    class PSMonitorPrivateLinkScopeScopedResource
+    public class PSMonitorPrivateLinkScopeScopedResource
     {
         public PSMonitorPrivateLinkScopeScopedResource(string linkedResourceId = default(string), string provisioningState = default(string))
         {
