@@ -58,7 +58,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum RestoreVMBackupItemParams
     {
         TargetResourceGroupName,
-        OsaOption
+        OsaOption,
+        RestoreDiskList,
+        RestoreOnlyOSDisk,
+        RestoreAsUnmanagedDisks
     }
 
     public enum RestoreFSBackupItemParams
@@ -68,7 +71,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         SourceFileType,
         TargetStorageAccountName,
         TargetFileShareName,
-        TargetFolder
+        TargetFolder,
+        MultipleSourceFilePath
     }
     public enum RestoreWLBackupItemParams
     {
@@ -94,7 +98,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         RetentionPolicy,
         ProtectionPolicy,
         ResourceGroupName,
-        ResourceName
+        ResourceName,
+        FixForInconsistentItems
     }
 
     public enum ItemParams
@@ -117,7 +122,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         BackupType,
         EnableCompression,
         DeleteState,
-        FriendlyName
+        FriendlyName,
+        InclusionDisksList,
+        ExclusionDisksList,
+        ResetExclusionSettings,
+        ExcludeAllDataDisks
     }
 
     public enum ProtectionCheckParams

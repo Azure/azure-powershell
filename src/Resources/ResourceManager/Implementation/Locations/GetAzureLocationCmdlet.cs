@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
             if(DefaultContext.Subscription == null)
             {

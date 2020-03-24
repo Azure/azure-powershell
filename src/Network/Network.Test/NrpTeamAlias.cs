@@ -19,7 +19,10 @@ namespace Commands.Network.Test
         // Below is the list of aliases to contact on test behavior
 
         // Virtual Appliance dev team
+        // First part of ApplicationGateway tests
         public const string nvadev = "nvadev";
+        // Second part of ApplicationGateway tests
+        public const string nvadev_subset1 = "nvadev_subset1";
 
         // SDN NRP Dev Team
         public const string sdnnrp = "sdnnrp";
@@ -42,6 +45,8 @@ namespace Commands.Network.Test
         public const string brooklynft_subset3 = "brooklynft_subset3";
         // Second part of VirtualNetworkGatewayConnection tests
         public const string brooklynft_subset4 = "brooklynft_subset4";
+        // Third part of VirtualNetworkGatewayConnection tests
+        public const string brooklynft_subset5 = "brooklynft_subset5";
 
         // Azure Network Analytics Dev Team
         public const string netanalyticsdev = "netanalyticsdev";

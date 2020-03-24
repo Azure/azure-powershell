@@ -12,18 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
-using System;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -53,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.Name = resourceIdentifier.ResourceName;
+                this.Subscription = resourceIdentifier.Subscription;
                 this.PrivateLinkResourceType = resourceIdentifier.ResourceType.Substring(0, resourceIdentifier.ResourceType.LastIndexOf('/'));
                 this.ServiceName = resourceIdentifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
             }
@@ -60,11 +56,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 var resourceIdentifier = new ResourceIdentifier(this.PrivateLinkResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Subscription = resourceIdentifier.Subscription;
                 this.PrivateLinkResourceType = resourceIdentifier.ResourceType;
                 this.ServiceName = resourceIdentifier.ResourceName;
             }
 
-            IPrivateLinkProvider provider = BuildProvider(this.PrivateLinkResourceType);
+            IPrivateLinkProvider provider = BuildProvider(this.Subscription, this.PrivateLinkResourceType);
 
             if (ShouldGetByName(this.ResourceGroupName, this.Name))
             {

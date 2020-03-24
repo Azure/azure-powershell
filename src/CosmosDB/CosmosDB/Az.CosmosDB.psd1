@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.1'
+ModuleVersion = '0.1.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -163,11 +163,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added cmdlets for Gremlin, MongoDB, Cassandra and Table APIs.
-* Updated .NET SDK Version to 1.0.1
-    - .NET SDK Version used in the CosmosDB-Account and SQL cmdlets is updated to 1.0.1
-* Added parameters ConflictResolutionPolicyMode, ConflictResolutionPolicyPath and ConflictResolutionPolicyPath in Set-AzCosmosDBSqlContainer.
-* Added new cmdlets for Sql API : New-CosmosDBSqlSpatialSpec, New-CosmosDBSqlCompositePath, New-CosmosDBSqlIncludedPathIndex, New-CosmosDBSqlIncludedPath'
+        ReleaseNotes = '* Updated the Azure.Management.CosmosDB Sdk Version to 1.0.2 
+    - Fix bugs related to https://github.com/Azure/azure-sdk-for-net/issues/10639'
 
         # Prerelease string of this module
         # Prerelease = ''

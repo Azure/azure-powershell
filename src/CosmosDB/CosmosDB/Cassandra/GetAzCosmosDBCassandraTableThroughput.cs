@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.CassandraResources.GetCassandraTableThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, KeyspaceName, Name).GetAwaiter().GetResult().Body;
-            WriteObject(throughputSettingsGetResults);
+            WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
 
             return;
         }

@@ -26,10 +26,23 @@ namespace Microsoft.Azure.Commands.Compute
         public static Dictionary<string, string> AEMExtensionType = new Dictionary<string, string>() { { OSTypeWindows, "AzureCATExtensionHandler" }, { OSTypeLinux, "AzureEnhancedMonitorForLinux" } };
         public static Dictionary<string, Version> AEMExtensionVersion = new Dictionary<string, Version>() { { OSTypeWindows, new Version(2, 2) }, { OSTypeLinux, new Version(3, 0) } };
 
+        public static Dictionary<string, string> AEMExtensionDefaultNamev2 = new Dictionary<string, string>() { { OSTypeWindows, "MonitorX64Windows" }, { OSTypeLinux, "MonitorX64Linux" } };
+        public static Dictionary<string, string> AEMExtensionPublisherv2 = new Dictionary<string, string>() { { OSTypeWindows, "Microsoft.AzureCAT.AzureEnhancedMonitoring.Edp" }, { OSTypeLinux, "Microsoft.AzureCAT.AzureEnhancedMonitoring.Edp" } };
+        public static Dictionary<string, string> AEMExtensionTypev2 = new Dictionary<string, string>() { { OSTypeWindows, "MonitorX64Windows" }, { OSTypeLinux, "MonitorX64Linux" } };
+        public static Dictionary<string, Version> AEMExtensionVersionv2 = new Dictionary<string, Version>() { { OSTypeWindows, new Version(1, 0) }, { OSTypeLinux, new Version(1, 0) } };
+
+
         public static Dictionary<string, string> WADExtensionDefaultName = new Dictionary<string, string>() { { OSTypeWindows, "IaaSDiagnostics" }, { OSTypeLinux, "LinuxDiagnostic" } };
         public static Dictionary<string, string> WADExtensionPublisher = new Dictionary<string, string>() { { OSTypeWindows, "Microsoft.Azure.Diagnostics" }, { OSTypeLinux, "Microsoft.OSTCExtensions" } };
         public static Dictionary<string, string> WADExtensionType = new Dictionary<string, string>() { { OSTypeWindows, "IaaSDiagnostics" }, { OSTypeLinux, "LinuxDiagnostic" } };
         public static Dictionary<string, Version> WADExtensionVersion = new Dictionary<string, Version>() { { OSTypeWindows, new Version(1, 5) }, { OSTypeLinux, new Version(2, 3) } };
+
+        //TODO: Once we use IMDS for everything, test whether Monitoring Reader is enough. 
+        //!! Keep in mind that once we change this value, we have to support a migration from old role to new role or otherwise we have orphaned permissions !!
+        //
+        //Monitoring Reader	Can read all monitoring data (metrics, logs, etc.). See also Get started with roles, permissions, and security with Azure Monitor.	43d0d8ad-25c7-4714-9337-8ba259a9fe05
+        //Reader	Lets you view everything, but not make any changes.	
+        public const string NewExtensionRole = "acdd72a7-3385-48ef-bd42-f606fba81ae7";
 
         public const string OSTypeWindows = "Windows";
         public const string OSTypeLinux = "Linux";

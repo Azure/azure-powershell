@@ -68,6 +68,13 @@ PS C:\>Get-AzResourceLock -LockName "ContosoSiteLock" -ResourceName "ContosoSite
 
 This command gets the resource lock named ContosoSiteLock.
 
+### Example 2: Get locks at resource group level or higher
+```
+PS C:\> Get-AzResourceLock -ResourceGroupName "ResourceGroup11" -AtScope
+```
+
+This command gets the resource locks on the resource group or the subscription.
+
 ## PARAMETERS
 
 ### -ApiVersion

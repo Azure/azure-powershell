@@ -38,7 +38,8 @@ function Create-Cluster{
       [string] $location="West US",
       [string] $resourceGroupName="group-ps-test",
       [string] $clusterType="Spark",
-      [string] $storageAccountName="storagepstest"
+      [string] $storageAccountName="storagepstest",
+      [string] $minSupportedTlsVersion="1.2"
     )
 
     $clusterName=Generate-Name($clusterName)
@@ -65,7 +66,7 @@ function Create-Cluster{
 
     $cluster=New-AzHDInsightCluster -Location $location -ResourceGroupName $resourceGroup.ResourceGroupName -ClusterName $clusterName `
              -ClusterSizeInNodes $clusterSizeInNodes -ClusterType $clusterType -DefaultStorageAccountName $storageAccountName `
-             -DefaultStorageAccountKey $storageAccountKey -HttpCredential $httpCredential -SshCredential $sshCredential
+             -DefaultStorageAccountKey $storageAccountKey -HttpCredential $httpCredential -SshCredential $sshCredential -MinSupportedTlsVersion $minSupportedTlsVersion
 
     return $cluster
 }

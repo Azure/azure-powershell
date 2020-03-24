@@ -13,10 +13,17 @@ Modifies a Backup protection policy.
 
 ## SYNTAX
 
+### ModifyPolicyParamSet
 ```
 Set-AzRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [[-RetentionPolicy] <RetentionPolicyBase>]
  [[-SchedulePolicy] <SchedulePolicyBase>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### FixPolicyParamSet
+```
+Set-AzRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [-FixForInconsistentItems]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +43,8 @@ PS C:\> $SchPol.ScheduleRunTimes.Add($DT.ToUniversalTime())
 PS C:\> $RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
 PS C:\> $RetPol.DailySchedule.DurationCountInDays = 365
 PS C:\> $Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
+PS C:\> $Pol.AzureBackupRGName = "RG_prefix"
+PS C:\> $Pol.AzureBackupRGNameSuffix = "RG_suffix"
 PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
 ```
 
@@ -46,6 +55,7 @@ The fourth command adds the date and time in $DT to the schedule run time for th
 The fifth command gets a base retention policy object, and then stores it in the $RetPol variable.
 The sixth command sets the retention duration to 365 days.
 The seventh command gets the Backup protection policy named NewPolicy, and then stores it in the $Pol variable.
+The eighth and ninth sets the resource group parameters associated with policy which stores the restore points.
 The final command modifies the Backup protection policy in $Pol using schedule policy in $SchPol and the retention policy in $RetPol.
 
 ## PARAMETERS
@@ -59,6 +69,21 @@ Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FixForInconsistentItems
+Switch Parameter indicating whether or not to retry Policy Update for failed items.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: FixPolicyParamSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -87,7 +112,7 @@ To obtain a **RetentionPolicy** object, use the Get-AzRecoveryServicesBackupRete
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase
-Parameter Sets: (All)
+Parameter Sets: ModifyPolicyParamSet
 Aliases:
 
 Required: False
@@ -103,7 +128,7 @@ To obtain a **SchedulePolicy** object, use the Get-AzRecoveryServicesBackupSched
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase
-Parameter Sets: (All)
+Parameter Sets: ModifyPolicyParamSet
 Aliases:
 
 Required: False

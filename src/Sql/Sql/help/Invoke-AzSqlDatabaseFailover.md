@@ -13,9 +13,9 @@ Failovers a database.
 ## SYNTAX
 
 ```
-Invoke-AzSqlDatabaseFailover [-DatabaseName] <String> [-AsJob] [-PassThru] [-Force] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-AzSqlDatabaseFailover [-DatabaseName] <String> [-ReadableSecondary] [-AsJob] [-PassThru] [-Force]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,14 @@ The Invoke-AzSqlDatabaseFailover cmdlet failovers an Azure SQL database. If the 
 PS C:\> Invoke-AzSqlDatabaseFailover -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
-This command will failover the database named "Database01" on the server named "Server01"
+This command will failover the primary replica of the database named "Database01" on the server named "Server01"
+
+### Example 2
+```powershell
+PS C:\> Invoke-AzSqlDatabaseFailover -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -ReadableSecondary
+```
+
+This command will failover the readable secondary replica of the database named "Database01" on the server named "Server01"
 
 ## PARAMETERS
 
@@ -94,6 +101,21 @@ Accept wildcard characters: False
 
 ### -PassThru
 On Successful execution, returns true.  By default, this cmdlet does not generate any output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReadableSecondary
+Failover the readable secondary replica instead of the default primary replica
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

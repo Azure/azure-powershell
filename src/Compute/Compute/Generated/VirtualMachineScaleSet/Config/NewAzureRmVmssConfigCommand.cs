@@ -376,11 +376,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
 
-            if (vAutomaticRepairsPolicy == null)
+            if (this.EnableAutomaticRepair.IsPresent)
             {
-                vAutomaticRepairsPolicy = new PSAutomaticRepairsPolicy();
+                if (vAutomaticRepairsPolicy == null)
+                {
+                    vAutomaticRepairsPolicy = new PSAutomaticRepairsPolicy();
+                }
+                vAutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair.IsPresent;
             }
-            vAutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair.IsPresent;
 
             if (this.IsParameterBound(c => c.AutomaticRepairGracePeriod))
             {

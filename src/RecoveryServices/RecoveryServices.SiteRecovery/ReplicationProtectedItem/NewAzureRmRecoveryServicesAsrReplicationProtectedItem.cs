@@ -826,37 +826,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             input.Properties.ProviderSpecificDetails = providerSettings;
         }
 
-        /**
-         * Creating DiskEncryptionInfo for A2A encrypted Vm.
-         */
-        private DiskEncryptionInfo A2AEncryptionDetails()
-        {
-            // Checking if any encryption data is present then the only creating DiskEncryptionInfo.
-            if (this.IsParameterBound(c => c.DiskEncryptionSecretUrl) ||
-                this.IsParameterBound(c => c.DiskEncryptionVaultId) ||
-                this.IsParameterBound(c => c.KeyEncryptionKeyUrl) ||
-                this.IsParameterBound(c => c.KeyEncryptionVaultId))
-            {
-                DiskEncryptionInfo diskEncryptionInfo = new DiskEncryptionInfo();
-                // BEK DATA is present
-                if (this.IsParameterBound(c => c.DiskEncryptionSecretUrl) && this.IsParameterBound(c => c.DiskEncryptionVaultId))
-                {
-                    diskEncryptionInfo.DiskEncryptionKeyInfo = new DiskEncryptionKeyInfo(this.DiskEncryptionSecretUrl, this.DiskEncryptionVaultId);
-                    // KEK Data is present in pair.
-                    if (this.IsParameterBound(c => c.KeyEncryptionKeyUrl) && this.IsParameterBound(c => c.KeyEncryptionVaultId))
-                    {
-                        diskEncryptionInfo.KeyEncryptionKeyInfo = new KeyEncryptionKeyInfo(this.KeyEncryptionKeyUrl, this.KeyEncryptionVaultId);
-                    }
-                }
-                else
-                {
-                    throw new Exception("Provide Disk DiskEncryptionSecretUrl and DiskEncryptionVaultId.");
-                }
-                return diskEncryptionInfo;
-            }
-            return null;
-        }
-
         /// <summary>
         ///     Writes Job.
         /// </summary>

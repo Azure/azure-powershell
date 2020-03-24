@@ -68,9 +68,9 @@ namespace Microsoft.Azure.Commands.Attestation
          /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage =
-                "Specifies a type of Trusted Execution Environment. We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VSMEnclave."
+                "Specifies a type of Trusted Execution Environment. We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VBSEnclave."
         )]
-        [PSArgumentCompleter("SgxEnclave", "OpenEnclave", "CyResComponent", "VSMEnclave")]
+        [PSArgumentCompleter("SgxEnclave", "OpenEnclave", "CyResComponent", "VBSEnclave")]
         [ValidateNotNullOrEmpty]
         public string Tee { get; set; }
 

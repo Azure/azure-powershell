@@ -44,11 +44,11 @@ Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
 
-Create an IoT Central application in the standard pricing tier S1, in the region of the resource group.
+Create an IoT Central application in the standard pricing tier ST2, in the region of the resource group.
 
 ### Example 2 Create simple IoT Central Application.
 ```powershell
-PS C:\> New-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Subdomain "MyAppSubdomain" -Sku "S1" -DisplayName "My Custom Display Name" -Template "iotc-default" -Location "westus"
+PS C:\> New-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Subdomain "MyAppSubdomain" -Sku "ST2" -DisplayName "My Custom Display Name" -Template "iotc-default" -Location "westus"
 ```
 
 Example Output:
@@ -67,7 +67,7 @@ Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
 
-Create an IoT Central application with the standard pricing tier S1 in the 'westus' region, with a custom display name, based on the iotc-default template.
+Create an IoT Central application with the standard pricing tier ST2 in the 'westus' region, with a custom display name, based on the iotc-default template.
 
 ## PARAMETERS
 
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 
 ### -Sku
 Pricing tier for IoT Central applications.
-Default value is S1.
+Default value is ST2.
 
 ```yaml
 Type: System.String

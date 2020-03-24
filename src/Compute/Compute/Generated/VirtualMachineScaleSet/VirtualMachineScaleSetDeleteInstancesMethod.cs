@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;
-                    System.Collections.Generic.IList<string> instanceIds = this.InstanceId;
+                    IList<string> instanceIds = this.InstanceId;
 
                     Rest.Azure.AzureOperationResponse result = null;
                     if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName) && instanceIds != null)

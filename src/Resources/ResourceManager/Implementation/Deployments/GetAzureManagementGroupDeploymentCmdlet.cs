@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
             FilterDeploymentOptions options = new FilterDeploymentOptions(DeploymentScopeType.ManagementGroup)
             {

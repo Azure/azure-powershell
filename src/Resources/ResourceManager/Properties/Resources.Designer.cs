@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -219,6 +219,42 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string DeploymentDoesntExistInResourceGroup {
             get {
                 return ResourceManager.GetString("DeploymentDoesntExistInResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deployment script &apos;{0}&apos; doesn&apos;t exist in resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string DeploymentScriptDoesntExist {
+            get {
+                return ResourceManager.GetString("DeploymentScriptDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unsupported Deployment Script kind is requested..
+        /// </summary>
+        internal static string DeploymentScriptKindNotSupported {
+            get {
+                return ResourceManager.GetString("DeploymentScriptKindNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A file with the name &apos;{0}&apos; already exists in directory &apos;{1}&apos;. This operation will replace the existing file. Would you like to continue?.
+        /// </summary>
+        internal static string DeploymentScriptLogFileExists {
+            get {
+                return ResourceManager.GetString("DeploymentScriptLogFileExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save script execution log to disk..
+        /// </summary>
+        internal static string DeploymentScriptShouldProcessString {
+            get {
+                return ResourceManager.GetString("DeploymentScriptShouldProcessString", resourceCulture);
             }
         }
         

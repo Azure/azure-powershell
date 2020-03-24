@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void OnProcessRecord()
         {
             var options = new FilterDeploymentOptions(DeploymentScopeType.ManagementGroup)
             {
