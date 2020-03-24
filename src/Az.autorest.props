@@ -55,7 +55,6 @@
   <ItemGroup>
         <ModuleInteralFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\internal\**\*.*"/>
         <ModuleCustomFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\custom\**\*.*"/>
-        <ModuleExportsFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\exports\**\*.*"/>
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
@@ -65,7 +64,7 @@
     <Copy SourceFiles="Az.$(PsModuleName).nuspec" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)" />
     <Copy SourceFiles="@(ModuleInteralFiles)" DestinationFiles="@(ModuleInteralFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\internal\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(ModuleCustomFiles)" DestinationFiles="@(ModuleCustomFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\custom\%(RecursiveDir)%(Filename)%(Extension)')" />
-    <Copy SourceFiles="@(ModuleExportsFiles)" DestinationFiles="@(ModuleExportsFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\exports\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="exports\ProxyCmdletDefinitions.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\exports" />
   </Target>
 
 </Project>

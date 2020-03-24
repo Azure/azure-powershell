@@ -12,15 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Lists all of the available RP operations.
 .Description
 Lists all of the available RP operations.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.databricks/get-azdatabricksoperation
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperation
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.databricks/get-azdatabricksoperation
 #>

@@ -18,7 +18,7 @@ ModuleVersion = '0.0.1'
 CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
-GUID = 'd0d2abdd-a9f9-4695-9d09-897b890d0e44'
+GUID = 'fd603f36-03d8-47f4-9f7c-c13a78761936'
 
 # Author of this module
 Author = 'Microsoft Corporation'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @()
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = './bin/Az.Databricks.private.dll'
@@ -69,11 +69,11 @@ FormatsToProcess = './Az.Databricks.format.ps1xml'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-# FunctionsToExport = @()
+FunctionsToExport = 'Get-AzDatabricksWorkspace', 'New-AzDatabricksWorkspace', 
+               'Remove-AzDatabricksWorkspace', 'Update-AzDatabricksWorkspace'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzDatabricksWorkspace', 'New-AzDatabricksWorkspace', 
-               'Remove-AzDatabricksWorkspace', 'Update-AzDatabricksWorkspace'
+# CmdletsToExport = @()
 
 # Variables to export from this module
 # VariablesToExport = @()

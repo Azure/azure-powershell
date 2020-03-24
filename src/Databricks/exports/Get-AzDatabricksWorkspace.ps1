@@ -12,26 +12,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Gets the workspace.
 .Description
 Gets the workspace.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.databricks/get-azdatabricksworkspace
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> Get-AzDatabricksWorkspace -Name databricks-test -ResourceGroupName testgroup
 
-INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [WorkspaceName <String>]: The name of the workspace.
+Location Name            Type
+-------- ----            ----
+eastus   databricks-test Microsoft.Databricks/workspaces
+.Example
+PS C:\> Get-AzDatabricksWorkspace
+
+Location Name                           Type
+-------- ----                           ----
+eastus   databricks-test                Microsoft.Databricks/workspaces
+eastus   databricks-test-with-custom-vn Microsoft.Databricks/workspaces
+.Example
+PS C:\> Get-AzDatabricksWorkspace -ResourceGroupName testgroup
+
+Location Name                           Type
+-------- ----                           ----
+eastus   databricks-test                Microsoft.Databricks/workspaces
+eastus   databricks-test-with-custom-vn Microsoft.Databricks/workspaces
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.databricks/get-azdatabricksworkspace
 #>

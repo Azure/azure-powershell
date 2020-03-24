@@ -12,26 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Deletes the workspace.
 .Description
 Deletes the workspace.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.databricks/remove-azdatabricksworkspace
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test
 
-INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [WorkspaceName <String>]: The name of the workspace.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.databricks/remove-azdatabricksworkspace
 #>

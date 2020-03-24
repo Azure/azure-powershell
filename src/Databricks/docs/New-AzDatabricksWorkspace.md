@@ -103,7 +103,7 @@ Dynamic: False
 ```
 
 ### -ManagedResourceGroupName
-The managed resource group name.
+The managed resource group Id.
 
 ```yaml
 Type: System.String

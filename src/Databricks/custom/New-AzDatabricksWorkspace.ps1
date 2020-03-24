@@ -35,6 +35,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.databricks/new-azdatabrick
 function New-AzDatabricksWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+#[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Profile('latest-2019-04-30')]
 param(
     [Parameter(Mandatory)]
     [Alias('WorkspaceName')]
@@ -65,7 +66,7 @@ param(
 
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
-    # The managed resource group name.
+    # The managed resource group Id.
     ${ManagedResourceGroupName},
 
     [Parameter()]
