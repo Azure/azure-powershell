@@ -38,7 +38,6 @@ https://docs.microsoft.com/en-us/powershell/module/az.databricks/get-azdatabrick
 function Get-AzDatabricksWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Profile('latest-2019-04-30')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('WorkspaceName')]

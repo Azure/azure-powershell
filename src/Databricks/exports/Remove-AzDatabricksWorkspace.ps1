@@ -38,7 +38,6 @@ https://docs.microsoft.com/en-us/powershell/module/az.databricks/remove-azdatabr
 function Remove-AzDatabricksWorkspace {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Profile('latest-2019-04-30')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Alias('WorkspaceName')]

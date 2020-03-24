@@ -295,8 +295,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
                         var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
 
                         // while we wait, let's grab the headers and get ready to poll.
-                        asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                        location = _response.GetFirstHeader(@"Location");
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
                         var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Method.Get);
 
@@ -556,8 +560,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
                         var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
 
                         // while we wait, let's grab the headers and get ready to poll.
-                        asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                        location = _response.GetFirstHeader(@"Location");
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
                         var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Method.Get);
 
@@ -1309,8 +1317,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
                         var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
 
                         // while we wait, let's grab the headers and get ready to poll.
-                        asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                        location = _response.GetFirstHeader(@"Location");
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
                         var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Method.Get);
 

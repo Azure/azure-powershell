@@ -46,16 +46,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PowerShell
           exportDirectories = new[] { ExportsFolder };
         }
         var utilFile = Path.Combine(OutputFolder, "utils.ps1");
-        var sc = new StringBuilder();
-        sc.AppendLine(@"function RandomString([bool]$allChars, [int32]$len) {
+        if (!File.Exists(utilFile))
+        {
+          var sc = new StringBuilder();
+          sc.AppendLine(@"function RandomString([bool]$allChars, [int32]$len) {
     if ($allChars) {
         return -join ((33..126) | Get-Random -Count $len | % {[char]$_})
     } else {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+$env = @{}
 function setupEnv() {
-    $env = @{}
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
@@ -71,7 +73,8 @@ function cleanupEnv() {
     # Clean resources you create for testing
 }
 ");
-        File.WriteAllText(utilFile, sc.ToString());
+          File.WriteAllText(utilFile, sc.ToString());
+        }
         foreach (var exportDirectory in exportDirectories)
         {
           var outputFolder = OutputFolder;

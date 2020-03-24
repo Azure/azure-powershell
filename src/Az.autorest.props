@@ -12,7 +12,7 @@
     <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)</RootNamespace>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\</OutputPath>
+    <OutputPath>$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\bin</OutputPath>
     <PublishDir>$(OutputPath)</PublishDir>
     <!-- Some methods are marked async and don't have an await in them -->
     <NoWarn>1998</NoWarn>
@@ -48,18 +48,24 @@
 
   <!-- Assets -->
   <ItemGroup>
-    <None Update="Az.$(PsModuleName).psd1" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="Az.$(PsModuleName).psm1" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="help\*.md" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="internal\**" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="custom\**" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="exports\**" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="*.ps1xml" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.4.1" />
   </ItemGroup>
+
+  <ItemGroup>
+        <ModuleInteralFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\internal\**\*.*"/>
+        <ModuleCustomFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\custom\**\*.*"/>
+        <ModuleExportsFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\exports\**\*.*"/>
+  </ItemGroup>
+
+  <Target Name="CopyFiles" AfterTargets="Build">
+    <Copy SourceFiles="Az.$(PsModuleName).psd1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)" />
+    <Copy SourceFiles="Az.$(PsModuleName).psm1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)" />
+    <Copy SourceFiles="Az.$(PsModuleName).format.ps1xml" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)" />
+    <Copy SourceFiles="Az.$(PsModuleName).nuspec" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)" />
+    <Copy SourceFiles="@(ModuleInteralFiles)" DestinationFiles="@(ModuleInteralFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\internal\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(ModuleCustomFiles)" DestinationFiles="@(ModuleCustomFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\custom\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(ModuleExportsFiles)" DestinationFiles="@(ModuleExportsFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\exports\%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
 
 </Project>

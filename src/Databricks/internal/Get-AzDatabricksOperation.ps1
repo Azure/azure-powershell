@@ -27,7 +27,6 @@ https://docs.microsoft.com/en-us/powershell/module/az.databricks/get-azdatabrick
 function Get-AzDatabricksOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Profile('latest-2019-04-30')]
 param(
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

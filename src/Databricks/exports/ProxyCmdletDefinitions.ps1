@@ -38,7 +38,6 @@ https://docs.microsoft.com/en-us/powershell/module/az.databricks/get-azdatabrick
 function Get-AzDatabricksWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Profile('latest-2019-04-30')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('WorkspaceName')]
@@ -207,7 +206,6 @@ https://docs.microsoft.com/en-us/powershell/module/az.databricks/remove-azdatabr
 function Remove-AzDatabricksWorkspace {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Profile('latest-2019-04-30')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Alias('WorkspaceName')]
@@ -382,7 +380,6 @@ https://docs.microsoft.com/en-us/powershell/module/az.databricks/update-azdatabr
 function Update-AzDatabricksWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Profile('latest-2019-04-30')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('WorkspaceName')]
@@ -547,7 +544,6 @@ https://docs.microsoft.com/en-us/powershell/module/az.databricks/new-azdatabrick
 function New-AzDatabricksWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Profile('latest-2019-04-30')]
 param(
     [Parameter(Mandatory)]
     [Alias('WorkspaceName')]
@@ -579,7 +575,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
-    # The managed resource group Id.
+    # The managed resource group name.
     ${ManagedResourceGroupName},
 
     [Parameter()]

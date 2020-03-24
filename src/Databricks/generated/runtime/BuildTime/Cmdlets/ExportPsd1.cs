@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PowerShell
         sb.AppendLine($@"{Indent}{Indent}{Indent}LicenseUri = '{"https://aka.ms/azps-license"}'");
         sb.AppendLine($@"{Indent}{Indent}{Indent}ProjectUri = '{"https://github.com/Azure/azure-powershell"}'");
         sb.AppendLine($@"{Indent}{Indent}{Indent}ReleaseNotes = ''");
-        var profilesList = "'latest-2019-04-30'";
+        var profilesList = "";
         if (IsAzure && !String.IsNullOrEmpty(profilesList))
         {
           sb.AppendLine($@"{Indent}{Indent}{Indent}Profiles = {profilesList}");

@@ -31,8 +31,6 @@
 -->
   <PropertyGroup>
     <PsModuleName>Databricks</PsModuleName>
-    <DelaySign>true</DelaySign>
-    <OutputPath>./bin</OutputPath>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\Az.autorest.props" />
