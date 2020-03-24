@@ -22,6 +22,7 @@
 * Added Azure Site Recovery VmwareToAzure properties DR monitoring
 * Azure Backup added support for retrying policy update for failed items.
 * Azure Backup Added support for disk exclusion settings during backup and restore.
+* Azure Backup Added Support for Restoring Multiple files/folders in AzureFileShare
 
 ## Version 2.7.0
 * Added Support for Restore-as-files for SQL Databases.
