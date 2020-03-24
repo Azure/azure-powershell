@@ -52,7 +52,7 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2019-11-09/kusto.json
+  - $(repo)/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2020-02-15/kusto.json
 
 ```
 
