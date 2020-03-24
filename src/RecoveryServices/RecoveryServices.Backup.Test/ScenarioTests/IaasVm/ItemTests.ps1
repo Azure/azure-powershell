@@ -277,6 +277,7 @@ function Test-AzureVMFullRestore
 			-VaultLocation $vault.Location `
 			-RecoveryPoint $rp `
 			-StorageAccountName $saName `
+			-RestoreAsUnmanagedDisks `
 			-StorageAccountResourceGroupName $resourceGroupName | `
 				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
@@ -515,5 +516,93 @@ function Test-AzureVMSetVaultProperty
 	{
 		# Cleanup
 		Cleanup-ResourceGroup $resourceGroupName
+	}
+}
+
+function Test-AzureVMDiskExclusion
+{
+	$location = "southeastasia"
+	$resourceGroupName = Create-ResourceGroup $location
+	$storageType = 'Standard_LRS'
+	try
+	{
+		$saName = Create-SA $resourceGroupName $location
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+
+		$vm = Create-VM $resourceGroupName $location
+		$diskConfig = New-AzDiskConfig -SkuName $storageType -Location $location -CreateOption "Empty" -DiskSizeGB 32
+		$dataDisk1 = New-AzDisk -DiskName "disk1" -Disk $diskConfig -ResourceGroupName $resourceGroupName
+		$dataDisk2 = New-AzDisk -DiskName "disk2" -Disk $diskConfig -ResourceGroupName $resourceGroupName
+		$dataDisk3 = New-AzDisk -DiskName "disk3" -Disk $diskConfig -ResourceGroupName $resourceGroupName
+
+		$vm = Get-AzVM -Name $vm.Name -ResourceGroupName $resourceGroupName 
+		$vm = Add-AzVMDataDisk -VM $vm -Name "disk1" -CreateOption "Attach" -ManagedDiskId $dataDisk1.Id -Lun 0
+		$vm = Add-AzVMDataDisk -VM $vm -Name "disk2" -CreateOption "Attach" -ManagedDiskId $dataDisk2.Id -Lun 1
+		$vm = Add-AzVMDataDisk -VM $vm -Name "disk3" -CreateOption "Attach" -ManagedDiskId $dataDisk3.Id -Lun 2
+
+		Update-AzVM -VM $vm -ResourceGroupName $resourceGroupName
+
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID -Name "DefaultPolicy";
+
+		$arr = ("0", "1")
+
+		Enable-AzRecoveryServicesBackupProtection `
+		-VaultId $vault.ID `
+		-Name $vm.Name `
+		-Policy $policy `
+		-InclusionDisksList $arr `
+		-ResourceGroupName	$resourceGroupName;
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-BackupManagementType "AzureVM" `
+			-WorkloadType "AzureVM";
+
+		$arr = ("1", "2")
+
+		Enable-AzRecoveryServicesBackupProtection `
+		-VaultId $vault.ID `
+		-Item $item `
+		-ExclusionDisksList $arr;
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-BackupManagementType "AzureVM" `
+			-WorkloadType "AzureVM";
+
+		$backupJob = Backup-Item $vault $item
+		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-Item $item `
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime;
+
+		$arr = ("0")
+
+		$restoreJob = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $rp `
+			-RestoreAsUnmanagedDisks `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $resourceGroupName `
+			-RestoreDiskList $arr | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJob.Status -eq "Completed" }
+
+		Disable-AzRecoveryServicesBackupProtection `
+			-Item $item `
+			-VaultId $vault.ID `
+			-RemoveRecoveryPoints `
+			-Force;
+
+	}
+	finally
+	{
+		cleanup-ResourceGroup $resourceGroupName
 	}
 }
