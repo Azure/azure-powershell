@@ -182,7 +182,7 @@ function New-AzMariaDbServer {
             }
 
             if ($PSBoundParameters.ContainsKey('Sku')) {
-                $Parameter.Sku = $PSBoundParameters['Sku']
+                $Parameter.SkuName = $PSBoundParameters['Sku']
                 $null = $PSBoundParameters.Remove('Sku')
             }
 
