@@ -48,27 +48,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName;
                     string galleryName;
-                    string galleryImageName;
+                    string galleryImageDefinitionName;
                     switch (this.ParameterSetName)
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
-                            galleryName = GetResourceName(this.ResourceId, "Microsoft.Compute/Galleries", "Images");
-                            galleryImageName = GetInstanceId(this.ResourceId, "Microsoft.Compute/Galleries", "Images");
+                            galleryName = GetResourceName(this.ResourceId, "Microsoft.Compute/galleries", "images");
+                            galleryImageDefinitionName = GetInstanceId(this.ResourceId, "Microsoft.Compute/galleries", "images");
                             break;
                         case "ObjectParameter":
                             resourceGroupName = GetResourceGroupName(this.InputObject.Id);
-                            galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/Galleries", "Images");
-                            galleryImageName = GetInstanceId(this.InputObject.Id, "Microsoft.Compute/Galleries", "Images");
+                            galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/galleries", "images");
+                            galleryImageDefinitionName = GetInstanceId(this.InputObject.Id, "Microsoft.Compute/galleries", "images");
                             break;
                         default:
                             resourceGroupName = this.ResourceGroupName;
                             galleryName = this.GalleryName;
-                            galleryImageName = this.Name;
+                            galleryImageDefinitionName = this.Name;
                             break;
                     }
 
-                    var result = GalleryImagesClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName).GetAwaiter().GetResult();
+                    var result = GalleryImagesClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageDefinitionName).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,

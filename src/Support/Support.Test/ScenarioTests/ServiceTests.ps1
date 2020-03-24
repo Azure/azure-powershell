@@ -18,7 +18,7 @@ Gets complete list of services.
 #>
 function Get-AzSupportServiceNoParameter
 {
-    $propertiesCount = 4
+    $propertiesCount = 5
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportService"
 
 	$queryResult = Get-AzSupportService 
@@ -38,7 +38,7 @@ Get service by name
 #>
 function Get-AzSupportServiceByNameParameterSetUsingNameAlias
 {
-	$propertiesCount = 4
+	$propertiesCount = 5
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportService"
 
 	$queryResult = Get-AzSupportService 
@@ -58,7 +58,7 @@ Get service by name
 #>
 function Get-AzSupportServiceByNameParameterSetUsingId
 {
-	$propertiesCount = 4
+	$propertiesCount = 5
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportService"
 
 	$queryResult = Get-AzSupportService 
@@ -78,7 +78,7 @@ Get service by name
 #>
 function Get-AzSupportServiceByNameParameterSetUsingCompleteResourceId
 {
-	$propertiesCount = 4
+	$propertiesCount = 5
 	$cmdletReturnType = "Microsoft.Azure.Commands.Support.Models.PSSupportService"
 
 	$queryResult = Get-AzSupportService 

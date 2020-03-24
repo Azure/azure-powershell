@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.Attestation;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Attestation.Models
 {
@@ -163,10 +164,28 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         private void ThrowOn4xxErrors(AzureOperationResponse<object> result)
         {
-            if (result.Response.StatusCode == HttpStatusCode.BadRequest)
-                throw new ArgumentException($"Operation returns BadRequest");
-            if (result.Response.StatusCode == HttpStatusCode.Unauthorized)
-                throw new ArgumentException("Operation is unauthorized");
+            int statusCode = (int) result.Response.StatusCode;
+
+            if (statusCode >= 400 && statusCode <= 499)
+            {
+                var responseBody = result.Response.Content.ReadAsStringAsync().Result;
+                var errorDetails = $"Operation returned HTTP Status Code {statusCode}";
+
+                // Include response body as either parsed ServerError or string
+                if (!string.IsNullOrEmpty(responseBody))
+                {
+                    try
+                    {
+                        var error = JsonConvert.DeserializeObject<ServerError>(responseBody).Error;
+                        errorDetails += $"\n\rCode: {error.Code}\n\rMessage: {error.Message}\n\r";
+                    }
+                    catch (Exception)
+                    {
+                        errorDetails += $"\n\rResponse Body: {responseBody}\n\r";
+                    }
+                }
+                throw new RestException(errorDetails);
+            }
         }
 
         /// <summary>

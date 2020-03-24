@@ -16,7 +16,8 @@ Enables support for monitoring for SAP systems.
 ```
 Set-AzVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [-EnableWAD]
  [[-WADStorageAccountName] <String>] [[-OSType] <String>] [-SkipStorage] [-NoWait]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SetAccessToIndividualResources] [-InstallNewExtension] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +66,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InstallNewExtension
+Install the new VM Extension for SAP.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.
 
@@ -109,6 +125,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SetAccessToIndividualResources
+Sets the access of the VM identity to the individual resources, e.g. data disks instead of the complete resource group.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

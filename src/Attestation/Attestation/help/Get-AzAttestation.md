@@ -30,17 +30,23 @@ The Get-AzAttestation cmdlet gets information about the attestation in a subscri
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAttestation -Name "example" -ResourceGroupName "rg1" 
-Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Attestation/attestationProviders/example
-Name                : example
-Type                : Microsoft.Attestation/attestationProviders
-Status              : Ready
-AttesUri            : https://example.us.attest.azure.net
-ResoureGroupName    : rg1 
-SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+PS C:\> Get-AzAttestation -Name pshtest -ResourceGroupName psh-test-rg                                                                                                                                                                                                                                                       
+Id                : subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/psh-test-rg/providers/Microsoft.Attestation/attestationProviders/pshtest
+Location          : East US
+ResourceGroupName : psh-test-rg
+Name              : pshtest
+Status            : Ready
+TrustModel        : AAD
+AttestUri         : https://pshtest.us.attest.azure.net
+Tags              : {Production, Example}
+TagsTable         :
+                    Name        Value
+                    ==========  =====
+                    Production  False
+                    Example     True
 ```
 
-Get Attestation "example" in Resource Group "rg1". 
+Get Attestation Provider *pshtest* in Resource Group *psh-test-rg*.
 
 ## PARAMETERS
 

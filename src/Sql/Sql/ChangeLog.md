@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add readable secondary parameter to Invoke-AzureSqlDatabaseFailover
+* Add cmdlet Disable-AzSqlServerActiveDirectoryOnlyAuthentication
+* Save sensitivity rank when classifying columns in the database.
 
 ## Version 2.4.0
 * Added PublicNetworkAccess to `New-AzSqlServer` and `Set-AzSqlServer`

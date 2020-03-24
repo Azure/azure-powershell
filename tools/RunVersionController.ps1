@@ -185,7 +185,7 @@ switch ($PSCmdlet.ParameterSetName)
         # clean the unnecessary SerializedCmdlets json file
         $ExistSerializedCmdletJsonFile = Get-ExistSerializedCmdletJsonFile
         $ExpectJsonHashSet = @{}
-        $SrcPath = "..\src"
+        $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "..\src"
         foreach ($ModuleName in $(Get-ChildItem $SrcPath -Directory).Name)
         {
             $ModulePath = $(Join-Path -Path $SrcPath -ChildPath $ModuleName)

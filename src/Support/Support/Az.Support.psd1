@@ -110,15 +110,15 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Preview release of ''Az.Support'' module. Added following cmdlets for creation and management of support tickets.
-    - Get-AzSupportService
-    - Get-AzSupportProblemClassification
-    - New-AzSupportContactProfileObject
-    - New-AzSupportTicket
-    - Get-AzSupportTicket
-    - Update-AzSupportTicket
-    - New-AzSupportTicketCommunication
-    - Get-AzSupportTicketCommunication'
+         ReleaseNotes = '* Preview release of ''Az.Support'' module. Added following cmdlets for creation and management of support tickets.
+        - Get-AzSupportService
+        - Get-AzSupportProblemClassification
+        - New-AzSupportContactProfileObject
+        - New-AzSupportTicket
+        - Get-AzSupportTicket
+        - Update-AzSupportTicket
+        - New-AzSupportTicketCommunication
+        - Get-AzSupportTicketCommunication'
 
         # Prerelease string of this module
         # Prerelease = ''
