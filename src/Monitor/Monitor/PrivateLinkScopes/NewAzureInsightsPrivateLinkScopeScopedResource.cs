@@ -16,16 +16,15 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Insights.Utils;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", DefaultParameterSetName = ByScopeParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScopeScopedResource))]
-    public class UpdateAzInsightsPrivateLinkScopeScopedResource : AzureInsightsPrivateLinkScopeScopedResourceCreateOrUpdateCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScopeScopedResource", DefaultParameterSetName = ByScopeParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScopeScopedResource))]
+    public class NewAzInsightsPrivateLinkScopeScopedResource : AzureInsightsPrivateLinkScopeScopedResourceCreateOrUpdateCmdletBase
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Private Link Resource Id to Link")]
         [ValidateNotNullOrEmpty]
         public string LinkedResourceId { get; set; }
@@ -43,16 +42,25 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
             }
             catch
             {
-                throw new PSInvalidOperationException(string.Format("A scoped resource with name: '{0}' in scope: {1}, resource group: '{2}' doesn't exist. Please use New-AzInsightsPrivateLinkScopeScopedResource to create a scoped resource.", this.Name, this.ScopeName, this.ResourceGroupName));
+                existingScopedResource = null;
             }
 
-            existingScopedResource.LinkedResourceId = this.LinkedResourceId;
+            if (existingScopedResource != null)
+            {
+                throw new PSInvalidOperationException(string.Format("A scoped resource with name: '{0}' in scope: {1}, resource group: '{2}' already exists. Please use Update-AzInsightsPrivateLinkScopeScopedResource to update an existing scoped resource.", this.Name, this.ScopeName, this.ResourceGroupName));
+            }
+
+            ScopedResource payload = new ScopedResource();
+            if (this.IsParameterBound(c => c.LinkedResourceId))
+            {
+                payload.LinkedResourceId = this.LinkedResourceId;
+            }
 
             if (ShouldProcess(this.Name, string.Format("create scoped resource: {0} from scope: {1} under resource group: {2}", this.Name, this.ScopeName, this.ResourceGroupName)))
             {
                 var response = this.MonitorManagementClient
                                        .PrivateLinkScopedResources
-                                       .CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ScopeName, this.Name, existingScopedResource)
+                                       .CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ScopeName, this.Name, payload)
                                        .Result;
                 WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(response.Body));
             }
