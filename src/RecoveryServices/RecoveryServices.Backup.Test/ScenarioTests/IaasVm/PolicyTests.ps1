@@ -18,6 +18,8 @@ $policyName = "PsTestPolicy";
 $defaultPolicyName = "DefaultPolicy";
 $DefaultSnapshotDays = 2;
 $UpdatedSnapShotDays = 5;
+$rgPrefix = "RecoveryServices";
+$rgsuffix = "Policy";
 
 # Test old polices in the VaultId
 $oldResourceGroupName = "sambit_rg"
@@ -78,6 +80,8 @@ function Test-AzureVMPolicy
 
 		#update snapshot days
 		$policy.SnapshotRetentionInDays = $UpdatedSnapShotDays;
+		$policy.AzureBackupRGName = $rgPrefix;
+		$policy.AzureBackupRGNameSuffix	= $rgsuffix;
 
 		# Update policy
 		Set-AzRecoveryServicesBackupProtectionPolicy `

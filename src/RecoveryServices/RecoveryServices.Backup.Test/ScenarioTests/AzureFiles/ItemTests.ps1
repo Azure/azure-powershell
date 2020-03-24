@@ -24,6 +24,8 @@ $targetFileShareName = "fs1"
 $targetFolder = "pstestfolder3rty7d7s"
 $folderPath = "pstestfolder1bca8f8e"
 $filePath = "pstestfolder1bca8f8e/pstestfile1bca8f8e.txt"
+$file1 = "file1.txt"
+$file2 = "file2.txt"
 $skuName="Standard_LRS"
 $policyName = "afspolicy1"
 $newPolicyName = "NewAFSBackupPolicy"
@@ -314,6 +316,19 @@ function Test-AzureFSFullRestore
 			-ResolveConflict Overwrite `
 			-SourceFilePath $filePath } `
 			"Provide SourceFileType for File restore or remove SourceFilePath for file share restore"
+			
+		# Multiple Files Restore
+		$files = ($file1, $file2)
+		$restoreJob = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $recoveryPoint[0] `
+			-MultipleSourceFilePath $files `
+			-SourceFileType File `
+			-ResolveConflict Overwrite | `
+				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob.Status -eq "Completed" }
     
 		# Test without storage account dependancy
 		# Item level restore at alternate location

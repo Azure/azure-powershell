@@ -28,8 +28,8 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
 Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
  -ResolveConflict <RestoreFSResolveConflictOption> [-SourceFilePath <String>]
  [-SourceFileType <SourceFileType>] [-TargetStorageAccountName <String>] [-TargetFileShareName <String>]
- [-TargetFolder <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-TargetFolder <String>] [-MultipleSourceFilePath <String[]>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureWorkloadParameterSet
@@ -76,6 +76,25 @@ The date range specified is the last 7 days.
 The seventh command specifies which disks to restore from the recovery point and stores it in $restoreDiskLUNs variable.
 The last command restores the disks to the target storage account DestAccount in the DestRG resource group.
 
+### Example 2: Restore Multiple files of an AzureFileShare item
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureStorage -WorkloadType AzureVM -VaultId $vault.ID -Name "fileshareitem"
+PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID
+PS C:\> $files = ("file1.txt", "file2.txt")
+PS C:\> $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePath $files -SourceFileType File -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location
+    WorkloadName    Operation       Status          StartTime              EndTime
+    ------------    ---------       ------          ---------              -------
+    fileshareitem            Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
+```
+
+The first command gets the Backup container of type AzureVM, and then stores it in the $Container variable.
+The second command gets the Backup item named fileshareitem and then stores it in the $BackupItem variable.
+The third command gets a list of recovery points for the specific backup item.
+The fourth command spceifies which files to restore and stores it in $files variable.
+The last command restores the specified files to its original location.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -86,6 +105,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MultipleSourceFilePath
+Used for Multiple files restore from a file share. The paths of the items to be restored within the file share.
+
+```yaml
+Type: System.String[]
+Parameter Sets: AzureFileParameterSet
+Aliases:
 
 Required: False
 Position: Named
