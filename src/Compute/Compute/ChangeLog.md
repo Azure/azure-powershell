@@ -30,7 +30,7 @@
     - `Update-AzVMAEMExtension`
 * Fixed errors in examples of help document
 * Showed the exact string value for VM PowerState in the table format.
-* Fixed issue that `New-AzVmssConfig` does not create AutomaticRepairs property when it is disabled.
+* `New-AzVmssConfig`: fixed serialization of AutomaticRepairs property when SinglePlacementGroup is disabled. [#11257]
 
 ## Version 3.5.0
 * Allowed empty value for ProximityPlacementGroupId during update
