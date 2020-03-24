@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
-    class AzureInsightsPrivateLinkScopeScopedResourceCreateOrUpdateCmdletBase : ManagementCmdletBase
+    public class AzureInsightsPrivateLinkScopeScopedResourceCreateOrUpdateCmdletBase : ManagementCmdletBase
     {
         internal const string ByScopeParameterSet = "ByScopeParameterSet";
         internal const string ByInputObjectParameterSet = "ByInputObjectParameterSet";

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
     /// Get or List private link scope(s)
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", DefaultParameterSetName = ByResourceNameParameterSet), OutputType(typeof(PSMonitorPrivateLinkScope))]
-    class GetAzureInsightsPrivateLinkScope : ManagementCmdletBase
+    public class GetAzureInsightsPrivateLinkScope : ManagementCmdletBase
     {
         const string ByResourceGroupParameterSet = "ByResourceGroupParameterSet";
         const string ByResourceNameParameterSet = "ByResourceNameParameterSet";

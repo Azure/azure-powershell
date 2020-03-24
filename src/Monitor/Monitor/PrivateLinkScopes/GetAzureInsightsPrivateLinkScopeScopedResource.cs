@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", DefaultParameterSetName = ByScopeParameterSet), OutputType(typeof(PSMonitorPrivateLinkScope))]
-    class GetAzureInsightsPrivateLinkScopeScopedResource : ManagementCmdletBase
+    public class GetAzureInsightsPrivateLinkScopeScopedResource : ManagementCmdletBase
     {
         const string ByScopeParameterSet = "ByScopeParameterSet";
         const string ByResourceIdParameterSet = "ByResourceIdParameterSet";

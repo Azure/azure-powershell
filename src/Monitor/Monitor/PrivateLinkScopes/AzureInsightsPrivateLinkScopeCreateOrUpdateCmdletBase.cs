@@ -24,7 +24,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
-    class AzureInsightsPrivateLinkScopeCreateOrUpdateCmdletBase : ManagementCmdletBase
+    public class AzureInsightsPrivateLinkScopeCreateOrUpdateCmdletBase : ManagementCmdletBase
     {
         #region Cmdlet parameters
 

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
     /// Get or List private link scope(s)
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", DefaultParameterSetName = ByResourceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    class RemoveAzureInsightsPrivateLinkScope : ManagementCmdletBase
+    public class RemoveAzureInsightsPrivateLinkScope : ManagementCmdletBase
     {
         const string ByResourceNameParameterSet = "ByResourceNameParameterSet";
         const string ByResourceIdParameterSet = "ByResourceIdParameterSet";
