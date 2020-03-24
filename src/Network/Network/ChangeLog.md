@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
+    - New-AzVirtualNetworkGateway
+    - Set-AzVirtualNetworkGateway
+    - New-AzVirtualNetworkGatewayConnection
+    - Set-AzVirtualNetworkGatewayConnection
 * Updated cmdlets to enable FQDN based LocalNetworkGateways and VpnSites
     - `New-AzLocalNetworkGateway`
     - `New-AzVpnSiteLink`
