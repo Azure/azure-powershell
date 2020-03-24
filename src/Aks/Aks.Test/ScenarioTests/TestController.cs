@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 
 namespace Commands.Aks.Test.ScenarioTests
 {
-    public class TestController : RMTestBase
+    public class TestController
     {
         private readonly EnvironmentSetupHelper _helper;
 
