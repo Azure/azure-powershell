@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/remove-azaksnodepool
 schema: 2.0.0
 ---
 
