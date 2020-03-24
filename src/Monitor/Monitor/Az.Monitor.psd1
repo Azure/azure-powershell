@@ -101,6 +101,14 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'New-AzScheduledQueryRuleAlertingAction', 
                'New-AzScheduledQueryRule', 'Get-AzScheduledQueryRule', 
                'Set-AzScheduledQueryRule', 'Update-AzScheduledQueryRule', 
+               'Get-AzInsightsPrivateLinkScope', 
+               'Remove-AzInsightsPrivateLinkScope', 
+               'New-AzInsightsPrivateLinkScope', 
+               'Update-AzInsightsPrivateLinkScope', 
+               'Get-AzInsightsPrivateLinkScopeScopedResource', 
+               'Remove-AzInsightsPrivateLinkScopeScopedResource', 
+               'New-AzInsightsPrivateLinkScopeScopedResource', 
+               'Update-AzInsightsPrivateLinkScopeScopedResource', 
                'Remove-AzScheduledQueryRule'
 
 # Variables to export from this module

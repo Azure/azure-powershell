@@ -17,23 +17,19 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
-    /// <summary>
-    /// Get or List private link scope(s)
-    /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", DefaultParameterSetName = ByResourceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    class RemoveAzureInsightsPrivateLinkScope : ManagementCmdletBase
+    class AzureInsightsPrivateLinkScopeScopedResourceCreateOrUpdateCmdletBase : ManagementCmdletBase
     {
-        const string ByResourceNameParameterSet = "ByResourceNameParameterSet";
-        const string ByResourceIdParameterSet = "ByResourceIdParameterSet";
-        const string ByInputObjectParameterSet = "ByInputObjectSet";
+        internal const string ByScopeParameterSet = "ByScopeParameterSet";
+        internal const string ByInputObjectParameterSet = "ByInputObjectParameterSet";
 
         #region Cmdlet parameters
 
         [Parameter(
-            ParameterSetName = ByResourceNameParameterSet,
+            ParameterSetName = ByScopeParameterSet,
             Mandatory = true,
             HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -41,18 +37,23 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = ByResourceNameParameterSet,
+            ParameterSetName = ByScopeParameterSet,
             Mandatory = true,
             HelpMessage = "Private Link Scope Name")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        [ResourceNameCompleter("Microsoft.Insights/privateLinkScopes", nameof(ResourceGroupName))]
+        public string ScopeName { get; set; }
 
         [Parameter(
-            ParameterSetName = ByResourceIdParameterSet,
+            ParameterSetName = ByScopeParameterSet,
             Mandatory = true,
-            HelpMessage = "Resource Id")]
+            HelpMessage = "Scoped resource Name")]
+        [Parameter(
+            ParameterSetName = ByInputObjectParameterSet,
+            Mandatory = true,
+            HelpMessage = "Scoped resource Name")]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = ByInputObjectParameterSet,
@@ -60,31 +61,26 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
             HelpMessage = "PSMonitorPrivateLinkScope")]
         [ValidateNotNullOrEmpty]
         public PSMonitorPrivateLinkScope InputObject { get; set; }
-
+   
         #endregion
 
         protected override void ProcessRecordInternal()
         {
-            if (this.IsParameterBound(c => c.ResourceId) || this.IsParameterBound(c => c.InputObject))
+            if (this.IsParameterBound(c => c.InputObject))
             {
-                if (this.IsParameterBound(c => c.InputObject))
-                {
-                    this.ResourceId = InputObject.Id;
-                }
-
-                ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
+                ResourceIdentifier identifier = new ResourceIdentifier(this.InputObject.Id);
                 this.ResourceGroupName = identifier.ResourceGroupName;
-                this.Name = identifier.ResourceName;
+                this.ScopeName = identifier.ResourceName;
             }
-            
-            if (ShouldProcess(this.Name, string.Format("delete scope: {0} from resource group: {1}", this.Name, this.ResourceGroupName)))
-            {
-                var response = this.MonitorManagementClient
-                                   .PrivateLinkScopes
-                                   .DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.Name)
-                                   .Result;
-                WriteObject(true);
-            }
+        }
+
+        internal ScopedResource getExistingScopedResource(string resourceGroupName, string scopeName, string name)
+        {
+            return this.MonitorManagementClient
+                       .PrivateLinkScopedResources
+                       .GetWithHttpMessagesAsync(resourceGroupName, scopeName, name)
+                       .Result
+                       .Body;
         }
     }
 }

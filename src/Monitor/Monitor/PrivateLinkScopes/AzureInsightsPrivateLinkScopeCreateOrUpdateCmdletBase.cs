@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -25,7 +24,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
-    class CreateOrUpdateCmdletBase : ManagementCmdletBase
+    class AzureInsightsPrivateLinkScopeCreateOrUpdateCmdletBase : ManagementCmdletBase
     {
         #region Cmdlet parameters
 
@@ -67,6 +66,15 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                     }
                 }
             }
+        }
+
+        internal AzureMonitorPrivateLinkScope getExistingScope(string resourceGroupName, string name)
+        {
+            return this.MonitorManagementClient
+                       .PrivateLinkScopes
+                       .GetWithHttpMessagesAsync(resourceGroupName, name)
+                       .Result
+                       .Body;
         }
     }
 }

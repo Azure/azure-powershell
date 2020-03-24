@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Azure.Commands.Insights.Utils;
 using System.Linq;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScope))]
-    class NewAzureInsightsPrivateLinkScope : CreateOrUpdateCmdletBase
+    class NewAzureInsightsPrivateLinkScope : AzureInsightsPrivateLinkScopeCreateOrUpdateCmdletBase
     {
         #region Cmdlet parameters
 
@@ -39,13 +38,10 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
         {
             base.ProcessRecordInternal();
 
-            AzureOperationResponse<AzureMonitorPrivateLinkScope> existingScope = null ;
+            AzureMonitorPrivateLinkScope existingScope = null ;
             try
             {
-                existingScope = this.MonitorManagementClient
-                                       .PrivateLinkScopes
-                                       .GetWithHttpMessagesAsync(this.ResourceGroupName, this.Name)
-                                       .Result;
+                existingScope = this.getExistingScope(this.ResourceGroupName, this.Name);
             }
             catch
             {
@@ -54,7 +50,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 
             if (existingScope != null)
             {
-                throw new PSInvalidOperationException(string.Format("A Private Link Scope with name '{0}' in resource group '{1}' already exists. Please use Update-AzInsightsPrivateLinkScope to update an existing scope.", this.Name, this.ResourceGroupName));
+                throw new PSInvalidOperationException(string.Format("A Private Link Scope with name: '{0}' in resource group: '{1}' already exists. Please use Update-AzInsightsPrivateLinkScope to update an existing scope.", this.Name, this.ResourceGroupName));
             }
 
             AzureMonitorPrivateLinkScope payLoad = new AzureMonitorPrivateLinkScope(this.Location, 

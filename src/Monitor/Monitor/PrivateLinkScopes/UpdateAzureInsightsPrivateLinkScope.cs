@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -26,7 +25,7 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", DefaultParameterSetName = UpdateTags, SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScope))]
-    class UpdateAzureInsightsPrivateLinkScope : CreateOrUpdateCmdletBase
+    class UpdateAzureInsightsPrivateLinkScope : AzureInsightsPrivateLinkScopeCreateOrUpdateCmdletBase
     {
         const string UpdateTags = "UpdateTags";
 
