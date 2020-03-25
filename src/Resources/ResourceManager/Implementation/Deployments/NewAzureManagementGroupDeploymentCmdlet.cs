@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
-using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri,
                 DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
-                Tags = Tag?.Cast<DictionaryEntry>().ToDictionary(d => d.Key?.ToString(), d => d.Value?.ToString())
+                Tags = TagsHelper.ConvertToTagsDictionary(Tag)
             };
 
             if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))

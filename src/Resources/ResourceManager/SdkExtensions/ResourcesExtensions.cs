@@ -283,8 +283,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
         public static Hashtable ToHashtable(this object obj)
         {
             return new Hashtable(obj.GetType()
-                    .GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public)
-                    .ToDictionary(p => p.Name, p => p.GetValue(obj, null)));
+                .GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public)
+                .ToDictionary(p => p.Name, p => p.GetValue(obj, null)));
 
         }
     }
