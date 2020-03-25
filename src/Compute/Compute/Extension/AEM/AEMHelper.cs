@@ -33,6 +33,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Host;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AEM
@@ -59,6 +61,129 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             this._StorageClient = storageClient;
             this._Subscription = subscription;
             this._StorageEndpoint = storageEndpoint;
+        }
+
+        internal static VirtualMachineExtension GetAEMExtension(VirtualMachine virtualMachine, string osType)
+        {
+            var aemExtension = virtualMachine.Resources != null
+                            ? virtualMachine.Resources.FirstOrDefault(extension =>
+                                extension.Publisher.Equals(AEMExtensionConstants.AEMExtensionPublisher[osType], 
+                                    StringComparison.InvariantCultureIgnoreCase) &&
+                                extension.VirtualMachineExtensionType.Equals(AEMExtensionConstants.AEMExtensionType[osType], 
+                                    StringComparison.InvariantCultureIgnoreCase))
+                            : null;
+
+            var aemExtensionv2 = virtualMachine.Resources != null
+                    ? virtualMachine.Resources.FirstOrDefault(extension =>
+                        extension.Publisher.Equals(AEMExtensionConstants.AEMExtensionPublisherv2[osType], 
+                            StringComparison.InvariantCultureIgnoreCase) &&
+                        extension.VirtualMachineExtensionType.Equals(AEMExtensionConstants.AEMExtensionTypev2[osType], 
+                            StringComparison.InvariantCultureIgnoreCase))
+                    : null;
+
+            return aemExtension != null ? aemExtension : aemExtensionv2;
+        }
+
+        internal static VirtualMachineExtension GetWADExtension(VirtualMachine virtualMachine, string osType)
+        {
+            var aemExtension = virtualMachine.Resources != null
+                            ? virtualMachine.Resources.FirstOrDefault(extension =>
+                                extension.Publisher.Equals(AEMExtensionConstants.WADExtensionPublisher[osType],
+                                    StringComparison.InvariantCultureIgnoreCase) &&
+                                extension.VirtualMachineExtensionType.Equals(AEMExtensionConstants.WADExtensionType[osType],
+                                    StringComparison.InvariantCultureIgnoreCase))
+                            : null;
+
+            return aemExtension;
+        }
+        internal static VirtualMachineExtensionInstanceView GetAEMExtensionStatus(VirtualMachine virtualMachine, VirtualMachineInstanceView vmStatus, string osType)
+        {
+            var aemExtension = GetAEMExtension(virtualMachine, osType);
+            if (aemExtension == null)
+            {
+                return null;
+            }
+
+            if (vmStatus.Extensions == null)
+            {
+                return null;
+            }
+            return vmStatus.Extensions.FirstOrDefault(extSt => extSt.Name.Equals(aemExtension.Name));
+        }
+
+        public static bool CheckScopePermissions(bool? groupOK, bool? resourceOK,
+            string scopeResourceGroup, string scopeResource, string roleDefinitionId, VirtualMachine vm,
+            HashSet<string> testedScopeOK, HashSet<string> testedScopeNOK,
+            Func<string, string, VirtualMachine, bool> scopeCheck)
+        {
+            bool checkOk = false;
+
+            // | Permissions for RG | Permission for Resource | Result                                         | Checked with |
+            // |         Y          |           Y             |   Y                                            | 1
+            // |         Y          |           N             |   Y                                            | 1
+            // |         Y          |           ?             |   Y                                            | 1
+            // |         N          |           Y             |   Y                                            | 1
+            // |         N          |           N             |   N                                            | 2
+            // |         N          |           ?             | check resource                                 | 4
+            // |         ?          |           Y             |   Y                                            | 1
+            // |         ?          |           N             | check resource group                           | 3
+            // |         ?          |           ?             | check resource group, if no, check resource    | 3 and 4
+
+            if (groupOK == true || resourceOK == true) // 1
+            {
+                checkOk = true;
+            }
+            else if (groupOK == false && resourceOK == false) //2
+            {
+                checkOk = false;
+            }
+
+            if (!checkOk && groupOK == null) //3
+            {
+                var result = scopeCheck(scopeResourceGroup, roleDefinitionId, vm);
+                if (result)
+                {
+                    checkOk = true;
+                    testedScopeOK.Add(scopeResourceGroup);
+                }
+                else
+                {
+                    testedScopeNOK.Add(scopeResourceGroup);
+                }
+            }
+
+            if (!checkOk && resourceOK == null) //4
+            {
+                var result = scopeCheck(scopeResource, roleDefinitionId, vm);
+                if (result)
+                {
+                    checkOk = true;
+                    testedScopeOK.Add(scopeResource);
+                }
+                else
+                {
+                    testedScopeNOK.Add(scopeResource);
+                }
+            }
+
+            return checkOk;
+        }
+
+        internal static bool IsOldExtension(VirtualMachineExtension aemExtension, string osType)
+        {
+            return aemExtension != null 
+                && aemExtension.Publisher.Equals(AEMExtensionConstants.AEMExtensionPublisher[osType],
+                                    StringComparison.InvariantCultureIgnoreCase)
+                && aemExtension.VirtualMachineExtensionType.Equals(AEMExtensionConstants.AEMExtensionType[osType],
+                                    StringComparison.InvariantCultureIgnoreCase);
+        }
+        internal static bool IsNewExtension(VirtualMachineExtension aemExtension, string osType)
+        {
+            return aemExtension != null
+                && aemExtension.Publisher.Equals(AEMExtensionConstants.AEMExtensionPublisherv2[osType],
+                                    StringComparison.InvariantCultureIgnoreCase)
+                && aemExtension.VirtualMachineExtensionType.Equals(AEMExtensionConstants.AEMExtensionTypev2[osType],
+                                    StringComparison.InvariantCultureIgnoreCase);
         }
 
         internal string GetStorageAccountFromUri(string uri)
@@ -586,17 +711,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             return "UKNOWN";
         }
 
-        internal VirtualMachineExtension GetExtension(VirtualMachine vm, string type, string publisher)
-        {
-            if (vm.Resources != null)
-            {
-                return vm.Resources.FirstOrDefault(ext =>
-                   ext.VirtualMachineExtensionType.Equals(type)
-                   && ext.Publisher.Equals(publisher));
-            }
-            return null;
-        }
-
         internal Version GetExtensionVersion(VirtualMachine vm, VirtualMachineInstanceView vmStatus, string osType, string type, string publisher)
         {
             Version version = new Version();
@@ -633,21 +747,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                 }
             }
             return version;
-        }
-
-        internal VirtualMachineExtensionInstanceView GetExtension(VirtualMachine vm, VirtualMachineInstanceView vmStatus, string type, string publisher)
-        {
-            var ext = this.GetExtension(vm, type, publisher);
-            if (ext == null)
-            {
-                return null;
-            }
-
-            if (vmStatus.Extensions == null)
-            {
-                return null;
-            }
-            return vmStatus.Extensions.FirstOrDefault(extSt => extSt.Name.Equals(ext.Name));
         }
 
         internal void MonitoringPropertyExists(string CheckMessage, string PropertyName, JObject Properties, AEMTestResult parentResult, bool expectedResult = true)
@@ -923,6 +1022,39 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                 }
             }
             return tableExists;
+        }
+
+        /// <summary>
+        /// https://stackoverflow.com/a/41622689
+        /// Generates Guid based on String. Key assumption for this algorithm is that name is unique (across where it it's being used)
+        /// and if name byte length is less than 16 - it will be fetched directly into guid, if over 16 bytes - then we compute sha-1
+        /// hash from string and then pass it to guid.
+        /// </summary>
+        /// <param name="name">Unique name which is unique across where this guid will be used.</param>
+        /// <returns>For example "{706C7567-696E-7300-0000-000000000000}" for "plugins"</returns>
+        static public String GenerateGuid(String name)
+        {
+            byte[] buf = Encoding.UTF8.GetBytes(name);
+            byte[] guid = new byte[16];
+            if (buf.Length < 16)
+            {
+                Array.Copy(buf, guid, buf.Length);
+            }
+            else
+            {
+                using (SHA1 sha1 = SHA1.Create())
+                {
+                    byte[] hash = sha1.ComputeHash(buf);
+                    // Hash is 20 bytes, but we need 16. We loose some of "uniqueness", but I doubt it will be fatal
+                    Array.Copy(hash, guid, 16);
+                }
+            }
+
+            // Don't use Guid constructor, it tends to swap bytes. We want to preserve original string as hex dump.
+            String guidS = String.Format("{0:X2}{1:X2}{2:X2}{3:X2}-{4:X2}{5:X2}-{6:X2}{7:X2}-{8:X2}{9:X2}-{10:X2}{11:X2}{12:X2}{13:X2}{14:X2}{15:X2}",
+                guid[0], guid[1], guid[2], guid[3], guid[4], guid[5], guid[6], guid[7], guid[8], guid[9], guid[10], guid[11], guid[12], guid[13], guid[14], guid[15]);
+
+            return guidS;
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 
         public int PlatformFaultDomainCount { get; set; }
         public IList<SubResourceReadOnly> Hosts { get; set; }
-        public System.Collections.Generic.IList<string> Zones { get; set; }
+        public IList<string> Zones { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
