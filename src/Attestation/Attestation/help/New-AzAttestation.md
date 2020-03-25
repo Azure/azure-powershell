@@ -25,39 +25,39 @@ The New-AzAttestation cmdlet creates an attestation in the specified resource gr
 
 ### Example 1
 ```powershell
-PS C:\> New-AzAttestation -Name "example" -ResourceGroupName "rg1" 
-Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Attestation/attestationProviders/example
-Name                : example
-Type                : Microsoft.Attestation/attestationProviders
-Status              : Ready
-AttesUri            : https://example.us.attest.azure.net
-ResoureGroupName    : rg1 
-SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+PS C:\> New-AzAttestation -Name pshtest4 -ResourceGroupName psh-test-rg -Location "East US" -Tags @{Test="true";CreationYear="2020"}                                                                                                                                                                                         
+Id                : subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/psh-test-rg/providers/Microsoft.Attestation/attestationProviders/pshtest4
+Location          : East US
+ResourceGroupName : psh-test-rg
+Name              : pshtest4
+Status            : Ready
+TrustModel        : AAD
+AttestUri         : https://pshtest4.us.attest.azure.net
+Tags              : {CreationYear, Test}
+TagsTable         :
+                    Name          Value
+                    ============  =====
+                    CreationYear  2020
+                    Test          true
 ```
+
+Create a new instance of an Attestation Provider named *pshtest4* with a couple tags and using AAD trust for mastering TEE policy.
 
 ### Example 2
 ```powershell
-PS C:\> New-AzAttestation -Name "example" -ResourceGroupName "rg1" -AttestationPolicy "SgxDisableDebugMode"
-Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Attestation/attestationProviders/example
-Name                : example
-Type                : Microsoft.Attestation/attestationProviders
-Status              : Ready
-AttesUri            : https://example.us.attest.azure.net
-ResoureGroupName    : rg1 
-SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+PS C:\> New-AzAttestation -Name pshtest3 -ResourceGroupName psh-test-rg -Location "East US" -PolicySignersCertificateFile .\cert1.pem                                                                                                                                                
+Id                : subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/psh-test-rg/providers/Microsoft.Attestation/attestationProviders/pshtest3
+Location          : East US
+ResourceGroupName : psh-test-rg
+Name              : pshtest3
+Status            : Ready
+TrustModel        : Isolated
+AttestUri         : https://pshtest3.us.attest.azure.net
+Tags              :
+TagsTable         :
 ```
 
-### Example 3
-```powershell
-PS C:\> New-AzAttestation -Name "example" -ResourceGroupName "rg1" -PolicySigningCertificateFile "c:\test\certs.pem"
-Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Attestation/attestationProviders/example
-Name                : example
-Type                : Microsoft.Attestation/attestationProviders
-Status              : Ready
-AttesUri            : https://example.us.attest.azure.net
-ResoureGroupName    : rg1 
-SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
-```
+Create a new instance of an Attestation Provider named *pshtest3*` that uses Isoladed trust for mastering TEE policy via specifying a set of trusted signing keys via a PEM file.
 
 ## PARAMETERS
 
@@ -191,6 +191,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 

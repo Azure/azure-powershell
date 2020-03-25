@@ -19,19 +19,13 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using Microsoft.Azure.Management.Compute.Models;
-
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSHostList : PSHost
+    public class PSHostList : PSHost
     {
-        public PSHost ToPSHost()
+        public PSHost ToPSHost ()
         {
             return ComputeAutomationAutoMapperProfile.Mapper.Map<PSHost>(this);
         }
-
     }
 }

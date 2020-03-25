@@ -20,6 +20,8 @@
 
 
 ## Upcoming Release
+* Improved error messages for server response codes 400 and 401
+* Improved example code included in documentation files
 * Added three additional required assemblies to Az.Attestation.psd1
 
 ## Version 0.1.5
