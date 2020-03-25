@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Insights.Utils;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
@@ -71,14 +72,14 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                                        .PrivateLinkScopes
                                        .ListByResourceGroupWithHttpMessagesAsync(this.ResourceGroupName)
                                        .Result;
-                    WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(response.Body), true);
+                    WriteObject(response.Body.Select(scope => PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(scope)).ToList(), true);
                 }
                 else
                 {
                     var response = this.MonitorManagementClient
                                        .PrivateLinkScopes.ListWithHttpMessagesAsync()
                                        .Result;
-                    WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(response.Body), true);
+                    WriteObject(response.Body.Select(scope => PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(scope)).ToList(), true);
                 }
             }
             else if (ParameterSetName.Equals(ByResourceNameParameterSet) || ParameterSetName.Equals(ResourceId))

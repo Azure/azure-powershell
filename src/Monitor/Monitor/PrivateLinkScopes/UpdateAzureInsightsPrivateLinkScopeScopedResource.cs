@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                                        .PrivateLinkScopedResources
                                        .CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ScopeName, this.Name, existingScopedResource)
                                        .Result;
-                WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(response.Body));
+                WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScopeScopedResource>(response.Body));
             }
         }
 
