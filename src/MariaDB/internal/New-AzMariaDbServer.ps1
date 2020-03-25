@@ -196,7 +196,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [System.Int32]
     # Max storage allowed for a server.
-    ${StorageProfileStorageInMb},
+    ${StorageProfileStorageMb},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]

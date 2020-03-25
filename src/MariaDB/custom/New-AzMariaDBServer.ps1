@@ -210,9 +210,9 @@ function New-AzMariaDbServer {
                 $null = $PSBoundParameters.Remove('StorageProfileStorageAutogrow')
             }
 
-            if ($PSBoundParameters.ContainsKey('StorageProfileStorageMb')) {
-                $Parameter.StorageProfileStorageMb = $PSBoundParameters['StorageProfileStorageMb']
-                $null = $PSBoundParameters.Remove('StorageProfileStorageMb')
+            if ($PSBoundParameters.ContainsKey('StorageProfileStorageInMb')) {
+                $Parameter.StorageProfileStorageMb = $PSBoundParameters['StorageProfileStorageInMb']
+                $null = $PSBoundParameters.Remove('StorageProfileStorageInMb')
             }
 
             if ($PSBoundParameters.ContainsKey('Tag')) {
