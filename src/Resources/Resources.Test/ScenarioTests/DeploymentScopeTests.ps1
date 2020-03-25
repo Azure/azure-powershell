@@ -21,17 +21,20 @@ function Test-DeploymentEndToEnd-SubscriptionScope
     # Setup
 	$deploymentName = Get-ResourceName
 	$location = "WestUS"
+	$expectedTags = @{"key1"="value1"; "key2"="value2";}
 
     try
 	{
 		# Test
-		$deployment = New-AzSubscriptionDeployment -Name $deploymentName -Location $location -TemplateFile subscription_level_template.json -TemplateParameterFile subscription_level_parameters.json
+		$deployment = New-AzSubscriptionDeployment -Name $deploymentName -Location $location -TemplateFile subscription_level_template.json -TemplateParameterFile subscription_level_parameters.json -Tag $expectedTags
     
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
+		Assert-True { AreHashtableEqual $expectedTags $deployment.Tags }
     
 		$getByName = Get-AzSubscriptionDeployment -Name $deploymentName
 		Assert-AreEqual $getByName.DeploymentName $deployment.DeploymentName
+		Assert-True { AreHashtableEqual $expectedTags $getByName.Tags }
 
 		$templatePath = Save-AzSubscriptionDeploymentTemplate -Name $deploymentName -Force
 		Assert-NotNull $templatePath.Path
@@ -61,17 +64,20 @@ function Test-DeploymentEndToEnd-ResourceGroup
 		$rgname = Get-ResourceGroupName
 		$deploymentName = Get-ResourceName
 		$storageAccountName = Get-ResourceName
+		$expectedTags = @{"key1"="value1"; "key2"="value2";}
 
 		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$deployment = New-AzResourceGroupDeployment -ResourceGroupName $rgname -Name $deploymentName -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json -storageAccountName $storageAccountName
+		$deployment = New-AzResourceGroupDeployment -ResourceGroupName $rgname -Name $deploymentName -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json -storageAccountName $storageAccountName -Tag $expectedTags
     
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
+		Assert-True { AreHashtableEqual $expectedTags $deployment.Tags }
     
 		$getByName = Get-AzResourceGroupDeployment -ResourceGroupName $rgname -Name $deploymentName
 		Assert-AreEqual $getByName.DeploymentName $deployment.DeploymentName
+		Assert-True { AreHashtableEqual $expectedTags $getByName.Tags }
 
 		$templatePath = Save-AzResourceGroupDeploymentTemplate -ResourceGroupName $rgname -Name $deploymentName -Force
 		Assert-NotNull $templatePath.Path
@@ -96,10 +102,11 @@ function Test-DeploymentEndToEnd-ManagementGroup
     # Setup
 	$deploymentName = Get-ResourceName
 	$managementGroupId = Get-ResourceName
-	$subscriptionId = "89ec4d1d-dcc7-4a3f-a701-0a5d074c8505"
+	$subscriptionId = (Get-AzContext).Subscription.SubscriptionId
 	$rgname = Get-ResourceGroupName
 	$storageAccountName = Get-ResourceName
 	$deploymentLocation = "EastUS"
+	$expectedTags = @{"key1"="value1"; "key2"="value2";}
 
     try
 	{
@@ -107,18 +114,21 @@ function Test-DeploymentEndToEnd-ManagementGroup
 	    New-AzManagementGroup -GroupName $managementGroupId
 
 		# New deployment
-		$deployment = New-AzManagementGroupDeployment -ManagementGroupId $managementGroupId -Name $deploymentName -Location $deploymentLocation -TemplateFile management_group_level_template.json -TemplateParameterFile management_group_level_parameters.json -targetMG $managementGroupId -nestedSubId $subscriptionId -nestedRG $rgname -storageAccountName $storageAccountName
+		$deployment = New-AzManagementGroupDeployment -ManagementGroupId $managementGroupId -Name $deploymentName -Location $deploymentLocation -TemplateFile management_group_level_template.json -TemplateParameterFile management_group_level_parameters.json -targetMG $managementGroupId -nestedSubId $subscriptionId -nestedRG $rgname -storageAccountName $storageAccountName -Tag $expectedTags
     
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
+		Assert-True { AreHashtableEqual $expectedTags $deployment.Tags }
     
 		$deploymentId = "/providers/Microsoft.Management/managementGroups/$managementGroupId/providers/Microsoft.Resources/deployments/$deploymentName"
 		
 		$getById = Get-AzManagementGroupDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+		Assert-True { AreHashtableEqual $expectedTags $getById.Tags }
 
 		$getByName = Get-AzManagementGroupDeployment -ManagementGroupId $managementGroupId -Name $deploymentName
 		Assert-AreEqual $getByName.DeploymentName $deployment.DeploymentName
+		Assert-True { AreHashtableEqual $expectedTags $getByName.Tags }
 		
 		$templatePath = Save-AzManagementGroupDeploymentTemplate -ManagementGroupId $managementGroupId -Name $deploymentName -Force
 		Assert-NotNull $templatePath.Path
@@ -145,9 +155,10 @@ function Test-DeploymentEndToEnd-TenantScope
     # Setup
 	$deploymentName = Get-ResourceName
 	$managementGroupId = Get-ResourceName
-	$subscriptionId = "89ec4d1d-dcc7-4a3f-a701-0a5d074c8505"
+	$subscriptionId = (Get-AzContext).Subscription.SubscriptionId
 	$rgname = Get-ResourceGroupName
 	$deploymentLocation = "EastUS"
+	$expectedTags = @{"key1"="value1"; "key2"="value2";}
 
     try
 	{
@@ -155,18 +166,21 @@ function Test-DeploymentEndToEnd-TenantScope
 	    New-AzManagementGroup -GroupName $managementGroupId
 
 		# Test
-		$deployment = New-AzTenantDeployment -Name $deploymentName -Location $deploymentLocation -TemplateFile tenant_level_template.json -targetMG $managementGroupId -nestedSubId $subscriptionId -nestedRG $rgname
+		$deployment = New-AzTenantDeployment -Name $deploymentName -Location $deploymentLocation -TemplateFile tenant_level_template.json -targetMG $managementGroupId -nestedSubId $subscriptionId -nestedRG $rgname -Tag $expectedTags
     
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
+		Assert-True { AreHashtableEqual $expectedTags $deployment.Tags }
     
 		$deploymentId = "/providers/Microsoft.Resources/deployments/$deploymentName"
 		
 		$getById = Get-AzTenantDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+		Assert-True { AreHashtableEqual $expectedTags $getById.Tags }
 
 		$getByName = Get-AzTenantDeployment -Name $deploymentName
 		Assert-AreEqual $getByName.DeploymentName $deployment.DeploymentName
+		Assert-True { AreHashtableEqual $expectedTags $getByName.Tags }
 		
 		$templatePath = Save-AzTenantDeploymentTemplate -Name $deploymentName -Force
 		Assert-NotNull $templatePath.Path
