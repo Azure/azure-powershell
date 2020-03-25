@@ -538,6 +538,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             deployment.Location = parameters.Location;
+            deployment.Tags = parameters?.Tags == null ? null : new Dictionary<string, string>(parameters.Tags);
             deployment.Properties.OnErrorDeployment = parameters.OnErrorDeployment;
 
             return deployment;
@@ -689,7 +690,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         private void BeginDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
         {
-            var scopedDeployment = new ScopedDeployment { Properties = deployment.Properties, Location = deployment.Location };
+            var scopedDeployment = new ScopedDeployment
+            {
+                Properties = deployment.Properties,
+                Location = deployment.Location,
+                Tags = deployment?.Tags == null ? null : new Dictionary<string, string>(deployment.Tags)
+            };
 
             switch (parameters.ScopeType)
             {

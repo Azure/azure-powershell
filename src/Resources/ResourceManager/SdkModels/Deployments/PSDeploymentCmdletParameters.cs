@@ -4,6 +4,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Management.ResourceManager.Models;
 
@@ -30,6 +31,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public Hashtable TemplateParameterObject { get; set; }
 
         public string ParameterUri { get; set; }
+
+        public IDictionary<string, string> Tags { get; set; }
 
         public string DeploymentDebugLogLevel { get; set; }
 

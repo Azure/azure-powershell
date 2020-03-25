@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
@@ -47,6 +48,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [PSArgumentCompleter("RequestContent", "ResponseContent", "All", "None")]
         public string DeploymentDebugLogLevel { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The tags to put on the deployment.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -62,8 +67,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 TemplateObject = TemplateObject,
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri,
-                DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
-            };
+                DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
+                Tags = Tag?.Cast<DictionaryEntry>().ToDictionary(d => d.Key?.ToString(), d => d.Value?.ToString())
+        };
 
             if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
             {
