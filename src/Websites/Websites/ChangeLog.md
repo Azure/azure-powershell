@@ -18,12 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add support for working with webapp Traffic Routing Rules
-	- New cmdlets
-		- Get-AzWebAppTrafficRouting
-		- Update-AzWebAppTrafficRouting
-		- Add-AzWebAppTrafficRouting
-		- Remove-AzWebAppTrafficRouting
+* Added support for working with webapp Traffic Routing Rules via below new cmdlets
+	- `Get-AzWebAppTrafficRouting`
+	- `Update-AzWebAppTrafficRouting`
+	- `Add-AzWebAppTrafficRouting`
+	- `Remove-AzWebAppTrafficRouting`
 
 ## Version 1.7.0
 * Added Tag parameter for `New-AzAppServicePlan` and `Set-AzAppServicePlan`
