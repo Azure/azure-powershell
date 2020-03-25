@@ -112,7 +112,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [System.Int32]
     # Max storage allowed for a server.
-    ${StorageProfileStorageMb},
+    ${StorageProfileStorageInMb},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]

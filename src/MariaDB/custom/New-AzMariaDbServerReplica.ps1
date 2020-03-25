@@ -141,14 +141,13 @@ function New-AzMariaDbServerReplica {
             $ServerObject = $InputObject
             if (-not $PSBoundParameters.ContainsKey('InputObject')) {
                 $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName
-                $Parameter.Property.SourceServerId = $ServerObject.Id
             } else {
-                $Parameter.Property.SourceServerId = $ServerObject.Id
                 $Fields = $InputObject.Id.Split('/')
                 $PSBoundParameters['SubscriptionId'] = $Fields[2]
                 $PSBoundParameters['ResourceGroupName'] = $Fields[4]
                 $Null = $PSBoundParameters.Remove('InputObject')
             }
+            $Parameter.Property.SourceServerId = $ServerObject.Id
             
             if ($PSBoundParameters.ContainsKey('Location')) {
                 $Parameter.Location = $PSBoundParameters['Location']

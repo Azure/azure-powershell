@@ -76,7 +76,7 @@ param(
     # The name of the resource group that contains the resource.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ServerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -142,7 +142,7 @@ begin {
             ServerName = 'Az.MariaDb.custom\Get-AzMariaDbConnectionString';
             ServerObject = 'Az.MariaDb.custom\Get-AzMariaDbConnectionString';
         }
-        if (('ServerName', 'ServerObject') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('ServerName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

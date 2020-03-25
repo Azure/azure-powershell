@@ -20,30 +20,42 @@
 .Example
 To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restore-azmariadbserver
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
+Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 .Notes
 COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-SERVER <IMariaDbIdentity>: 
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+INPUTOBJECT <IServer>: 
+  Location <String>: The location the resource resides in.
+  [Tag <ITrackedResourceTags>]: Application-specific metadata in the form of key-value pairs.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [AdministratorLogin <String>]: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
+  [EarliestRestoreDate <DateTime?>]: Earliest restore point creation time (ISO8601 format)
+  [FullyQualifiedDomainName <String>]: The fully qualified domain name of a server.
+  [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+  [MasterServerId <String>]: The master server id of a replica server.
+  [ReplicaCapacity <Int32?>]: The maximum number of replicas that a master server can have.
+  [ReplicationRole <String>]: The replication role of the server.
+  [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
+  [SkuFamily <String>]: The family of hardware.
+  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
+  [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
+  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
+  [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
+  [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
+  [StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]: Enable Geo-redundant or not for server backup.
+  [StorageProfileStorageAutogrow <StorageAutogrow?>]: Enable Storage Auto Grow.
+  [StorageProfileStorageMb <Int32?>]: Max storage allowed for a server.
+  [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
+  [Version <ServerVersion?>]: Server version.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restore-azmariadbserver
 #>
 function Restore-AzMariaDbServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
-[CmdletBinding(DefaultParameterSetName='GeoRestore', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='PointInTimeRestore', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
@@ -57,9 +69,9 @@ param(
 
     [Parameter(ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
-    # To construct, see NOTES section for SERVER properties and create a hash table.
-    ${Server},
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
