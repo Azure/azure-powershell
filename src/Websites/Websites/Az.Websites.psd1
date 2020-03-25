@@ -100,7 +100,11 @@ CmdletsToExport = 'Get-AzAppServicePlan', 'Set-AzAppServicePlan',
                'Publish-AzWebApp', 'Get-AzWebAppAccessRestrictionConfig', 
                'Add-AzWebAppAccessRestrictionRule', 
                'Remove-AzWebAppAccessRestrictionRule', 
-               'Update-AzWebAppAccessRestrictionConfig'
+               'Update-AzWebAppAccessRestrictionConfig',
+			   'Add-AzWebAppTrafficRouting',
+			   'Remove-AzWebAppTrafficRouting',
+			   'Get-AzWebAppTrafficRouting',
+			   'Update-AzWebAppTrafficRouting'
 
 # Variables to export from this module
 # VariablesToExport = @()
