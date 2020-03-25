@@ -71,7 +71,7 @@ directive:
 
 # Server
   - where:
-      verb: New|Update
+      verb: New|Update|Restart
       subject: Server
     hide: true
   - where:
@@ -79,11 +79,6 @@ directive:
       subject: Server
     set:
       parameter-description: Backup retention days for the server. Day count is between 7 and 35.
-  - where:
-      subject: Server
-      parameter-name: StorageProfileStorageMb
-    set:
-      parameter-name: StorageProfileStorageInMb
   - where:
       subject: Server
       parameter-name: AdministratorLogin

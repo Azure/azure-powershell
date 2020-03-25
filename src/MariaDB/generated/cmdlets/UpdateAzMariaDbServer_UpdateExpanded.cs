@@ -284,7 +284,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         Description = @"Max storage allowed for a server.",
         SerializedName = @"storageMB",
         PossibleTypes = new [] { typeof(int) })]
-        public int StorageProfileStorageInMb { get => ParametersBody.StorageProfileStorageMb ?? default(int); set => ParametersBody.StorageProfileStorageMb = value; }
+        public int StorageProfileStorageMb { get => ParametersBody.StorageProfileStorageMb ?? default(int); set => ParametersBody.StorageProfileStorageMb = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;

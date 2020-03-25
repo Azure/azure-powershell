@@ -87,7 +87,7 @@ function Update-AzMariaDbServer
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [int]
         # Max storage allowed for a server.
-        ${StorageProfileStorageMb},
+        ${StorageProfileStorageInMb},
 
         [Parameter(HelpMessage='The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
@@ -176,6 +176,11 @@ function Update-AzMariaDbServer
             if ($PSBoundParameters.ContainsKey('Sku')) {
                 $Parameter.SkuName = $PSBoundParameters['Sku']
                 $null = $PSBoundParameters.Remove('Sku')
+            }
+
+            if ($PSBoundParameters.ContainsKey('StorageProfileStorageInMb')) {
+                $PSBoundParameters.Add('StorageProfileStorageMb', $PSBoundParameters['StorageProfileStorageInMb'])
+                $null = $PSBoundParameters.Remove('StorageProfileStorageInMb')
             }
     
             Az.MariaDb.internal\Update-AzMariaDbServer @PSBoundParameters

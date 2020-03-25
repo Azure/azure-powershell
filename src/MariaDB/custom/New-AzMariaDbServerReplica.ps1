@@ -24,7 +24,7 @@ function New-AzMariaDbServerReplica {
 
         [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline, HelpMessage='The source server object to restore from.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
         # The source server object to restore from.
         ${InputObject},
     
@@ -138,27 +138,32 @@ function New-AzMariaDbServerReplica {
             $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForReplica]::new()
     
             #region ServerForCreate
-            if ($PSBoundParameters.ContainsKey('InputObject')) {
-                $Null = $PSBoundParameters.Remove('InputObject')
+            $ServerObject = $InputObject
+            if (-not $PSBoundParameters.ContainsKey('InputObject')) {
+                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+                $Parameter.Property.SourceServerId = $ServerObject.Id
             } else {
-                $InputObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+                $Parameter.Property.SourceServerId = $ServerObject.Id
+                $Fields = $InputObject.Id.Split('/')
+                $PSBoundParameters['SubscriptionId'] = $Fields[2]
+                $PSBoundParameters['ResourceGroupName'] = $Fields[4]
+                $Null = $PSBoundParameters.Remove('InputObject')
             }
-            $Parameter.Property.SourceServerId = $InputObject.Id
             
             if ($PSBoundParameters.ContainsKey('Location')) {
                 $Parameter.Location = $PSBoundParameters['Location']
                 $Null = $PSBoundParameters.Remove('Location')
             } else {
-                $Parameter.Location = $InputObject.Location
+                $Parameter.Location = $ServerObject.Location
             }
 
             if ($PSBoundParameters.ContainsKey('Sku')) {
-                $Parameter.Sku = $PSBoundParameters['Sku']
+                $PSBoundParameters.SkuName = $PSBoundParameters['Sku']
                 $Null = $PSBoundParameters.Remove('Sku')
             }
 
             if ($PSBoundParameters.ContainsKey('Tag')) {
-                $Parameter.Tag = $PSBoundParameters['Tag']
+                $PSBoundParameters.Tag = $PSBoundParameters['Tag']
                 $Null = $PSBoundParameters.Remove('Tag')
             }
             #endregion ServerForCreate
