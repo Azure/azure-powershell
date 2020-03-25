@@ -464,7 +464,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzVirtualRouter', 'Add-AzVirtualRouterPeer', 
                'Update-AzVirtualRouterPeer', 'Remove-AzVirtualRouterPeer', 
                'Get-AzVirtualRouterPeer', 'New-AzIpGroup', 'Remove-AzIpGroup', 
-               'Get-AzIpGroup', 'Set-AzIpGroup'
+               'Get-AzIpGroup', 'Set-AzIpGroup',
+               'New-AzIpConfigurationBgpPeeringAddressObject'
 
 # Variables to export from this module
 # VariablesToExport = @()
