@@ -20,6 +20,14 @@
 ## Upcoming Release
 * Fixed `Get-AzResource -ResourceGroupName -Name -ExpandProperties -ResourceType` to use actual apiVersion of resources instead of default apiVersion [#11267]
 * Add correlationId logging for error scenarios
+* Updated nuget Microsoft.Azure.Management.ResourceManager to "3.4.0-preview"
+* Removed specific test cases as Error property in DeploymentValidateResult has changed to readonly from nuget 3.4.0-preview
+* Brought GenericResourceExpanded from SDK ResourceManager 3.4.0-preview
+* Added tag support for all Get cmdlets for deployment, as well as
+    - NewAzureManagementGroupDeploymentCmdlet
+    - NewAzureSubscriptionDeploymentCmdlet
+    - NewAzureResourceGroupDeploymentCmdlet
+    - NewAzureTenantDeploymentCmdlet
 
 ## Version 1.12.0
 * Fixed for null reference bug in `Get-AzRoleAssignment`
