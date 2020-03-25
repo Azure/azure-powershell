@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using System.Collections;
-using System.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -72,7 +72,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         protected override void OnProcessRecord()
         {
-
             this.ConfirmAction(
                 this.Force,
                 string.Format(ProjectResources.ConfirmOnCompleteDeploymentMode, this.ResourceGroupName),
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                         ParameterUri = TemplateParameterUri,
                         DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
-                        Tags = Tag?.Cast<DictionaryEntry>().ToDictionary(d => d.Key?.ToString(), d => d.Value?.ToString()),
+                        Tags = TagsHelper.ConvertToTagsDictionary(Tag),
                         OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)
                             ? new OnErrorDeployment
                             {

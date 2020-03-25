@@ -308,6 +308,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() =>
                 {
+
                     var result = CreateAzureOperationResponse(new DeploymentValidateResult{});
 
                     result.Response = new System.Net.Http.HttpResponseMessage();
