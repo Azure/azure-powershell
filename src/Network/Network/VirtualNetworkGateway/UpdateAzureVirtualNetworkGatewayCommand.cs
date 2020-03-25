@@ -188,6 +188,13 @@ namespace Microsoft.Azure.Commands.Network
         public string[] CustomRoute { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The BgpPeeringAddresses for Virtual network gateway.")]
+        [ValidateNotNullOrEmpty]
+        public PSIpConfigurationBgpPeeringAddress[] IpConfigurationBgpPeeringAddresses { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "P2S External Radius server address.")]
@@ -338,6 +345,44 @@ namespace Microsoft.Azure.Commands.Network
             else if (this.PeerWeight < 0)
             {
                 throw new ArgumentException("PeerWeight must be a positive integer");
+            }
+
+            if(this.IpConfigurationBgpPeeringAddresses != null)
+            {
+               if(this.VirtualNetworkGateway.BgpSettings == null)
+               {
+                    this.VirtualNetworkGateway.BgpSettings = new PSBgpSettings();
+               }
+
+               if (this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses == null)
+               {
+                    this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses = new List<PSIpConfigurationBgpPeeringAddress>();
+
+                    foreach (var address in this.IpConfigurationBgpPeeringAddresses)
+                    {
+                        this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.Add(address);
+                    }
+               }
+               else
+               {
+                    foreach (var address in this.IpConfigurationBgpPeeringAddresses)
+                    {
+                        bool isGatewayIpConfigurationExists = this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.Any(
+                        ipconfaddress => ipconfaddress.Id.Equals(address.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
+
+                        if(isGatewayIpConfigurationExists)
+                        {
+                            var bgpPeeringPropertiesInRequest = this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.FirstOrDefault(
+                                x => x.IpconfigurationId.Equals(address.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
+
+                            bgpPeeringPropertiesInRequest.CustomBgpIpAddresses = address.CustomBgpIpAddresses;
+                        }
+                        else
+                        {
+                            this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.Add(address);
+                        }
+                    }
+               }
             }
 
             if (this.CustomRoute != null && this.CustomRoute.Any())

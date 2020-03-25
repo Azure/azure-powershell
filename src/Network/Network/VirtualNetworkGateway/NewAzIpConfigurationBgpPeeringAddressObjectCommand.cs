@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         public override void Execute()
         {
             base.Execute();
-            var output = new PSIpConfigurationBgpPeeringAddress();
+            var output = new IPConfigurationBgpPeeringAddress();
             output.IpconfigurationId = this.IpConfigurationId;
             output.CustomBgpIpAddresses = this.CustomAddress;
             WriteObject(output);

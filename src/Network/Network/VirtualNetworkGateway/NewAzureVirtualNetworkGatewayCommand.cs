@@ -273,6 +273,13 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VpnGatewayGeneration.Generation2)]
         public string VpnGatewayGeneration { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The BgpPeeringAddresses for Virtual network gateway.")]
+        [ValidateNotNullOrEmpty]
+        public PSIpConfigurationBgpPeeringAddress[] IpConfigurationBgpPeeringAddresses { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -463,6 +470,25 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     throw new ArgumentException("PeerWeight must be a positive integer");
                 }
+            }
+
+            if (this.IpConfigurationBgpPeeringAddresses != null)
+            {
+                if(vnetGateway.BgpSettings == null)
+                {
+                    vnetGateway.BgpSettings = new PSBgpSettings();
+                }
+
+                vnetGateway.BgpSettings.BgpPeeringAddresses = new List<PSIpConfigurationBgpPeeringAddress>();
+
+                foreach (var address in this.IpConfigurationBgpPeeringAddresses)
+                {
+                    vnetGateway.BgpSettings.BgpPeeringAddresses.Add(address);
+                }
+            }
+            else if(vnetGateway.BgpSettings != null)
+            {
+                vnetGateway.BgpSettings.BgpPeeringAddresses = null;
             }
 
             if (this.CustomRoute != null && this.CustomRoute.Any())
