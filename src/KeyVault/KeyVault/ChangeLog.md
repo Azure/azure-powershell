@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Added breaking change attributes to `New-AzKeyVault`
+
 ## Version 1.5.1
 * Fixed duplicated text for Add-AzKeyVaultKey.md
 
