@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     {
         public PSMonitorPrivateLinkScope() { }
 
-        public PSMonitorPrivateLinkScope(string location, IDictionary<string, string> tags = default(IDictionary<string, string>), string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string))
+        public PSMonitorPrivateLinkScope(string location, IDictionary<string, string> tags = default(IDictionary<string, string>), string id = default(string), string name = default(string), string type = default(string), string provisioningState = "")
         {
             this.Id = id;
             this.Name = name;

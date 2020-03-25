@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
     /// <summary>
     /// Get or List private link scope(s)
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", DefaultParameterSetName = ByResourceNameParameterSet), OutputType(typeof(PSMonitorPrivateLinkScope))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", DefaultParameterSetName = ByResourceGroupParameterSet), OutputType(typeof(PSMonitorPrivateLinkScope))]
     public class GetAzureInsightsPrivateLinkScope : ManagementCmdletBase
     {
         const string ByResourceGroupParameterSet = "ByResourceGroupParameterSet";
@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
             Mandatory = true,
             HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -89,13 +88,13 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                     ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
                     this.ResourceGroupName = identifier.ResourceGroupName;
                     this.Name = identifier.ResourceName;
+                }
 
-                    var response = this.MonitorManagementClient
+                var response = this.MonitorManagementClient
                                        .PrivateLinkScopes
                                        .GetWithHttpMessagesAsync(this.ResourceGroupName, this.Name)
                                        .Result;
-                    WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(response.Body));
-                }
+                WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(response.Body));
             }
         }
     }

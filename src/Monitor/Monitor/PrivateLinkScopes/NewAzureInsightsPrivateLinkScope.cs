@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Azure.Commands.Insights.Utils;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
@@ -53,8 +54,13 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                 throw new PSInvalidOperationException(string.Format("A Private Link Scope with name: '{0}' in resource group: '{1}' already exists. Please use Update-AzInsightsPrivateLinkScope to update an existing scope.", this.Name, this.ResourceGroupName));
             }
 
-            AzureMonitorPrivateLinkScope payLoad = new AzureMonitorPrivateLinkScope(this.Location, 
-                                                                                    tags:this.Tags.ToDictionary(s => s.Split(':')[0], s => s.Split(':')[1]));
+            AzureMonitorPrivateLinkScope payLoad = new AzureMonitorPrivateLinkScope(this.Location);
+
+            if (this.IsParameterBound(c => c.Tags))
+            {
+                payLoad.Tags = this.Tags.ToDictionary(s => s.Split(':')[0], s => s.Split(':')[1]);
+            }
+
             if (ShouldProcess(this.Name, string.Format("create scope: {0} under resource group: {1}", this.Name, this.ResourceGroupName)))
             {
                 var response = this.MonitorManagementClient
