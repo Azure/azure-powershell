@@ -63,7 +63,7 @@ directive:
   - where:
      verb: Get
      variant: GetViaIdentity
-    hide: true
+    remove: true
   - where:
      verb: New
      variant: ^Create$

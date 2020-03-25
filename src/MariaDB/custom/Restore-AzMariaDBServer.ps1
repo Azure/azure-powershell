@@ -14,7 +14,7 @@
 function Restore-AzMariaDbServer
 {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='PointInTimeRestore', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
@@ -32,7 +32,7 @@ function Restore-AzMariaDbServer
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
         # The source server object to restore from.
-        ${Server},
+        ${InputObject},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
@@ -153,25 +153,36 @@ function Restore-AzMariaDbServer
             if ($PSBoundParameters.ContainsKey('UsePointInTimeRestore')) {
                 $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForRestore]::new()
                 $Parameter.Property.RestorePointInTime = $RestorePointInTime
+                $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::PointInTimeRestore
                 $Null = $PSBoundParameters.Remove('RestorePointInTime')
                 $Null = $PSBoundParameters.Remove('UsePointInTimeRestore')
             } elseif ($PSBoundParameters.ContainsKey('UseGeoRetore')) {
+                $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::GeoRestore
                 $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForGeoRestore]::new()
                 $Null = $PSBoundParameters.Remove('UseGeoRetore')
             }
 
-            if (-not $PSBoundParameters.ContainsKey('Server')) {
-                $Server = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+            $ServerObject = $InputObject
+            if (-not $PSBoundParameters.ContainsKey('InputObject')) {
+                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName
             } else {
-                $Null = $PSBoundParameters.Remove('Server')
+                $Fields = $InputObject.Id.Split('/')
+                $PSBoundParameters['SubscriptionId'] = $Fields[2]
+                $PSBoundParameters['ResourceGroupName'] = $Fields[4]
+                $Null = $PSBoundParameters.Remove('InputObject')
             }
-            $Parameter.Property.SourceServerId = $Server.Id
+            $Parameter.Property.SourceServerId = $ServerObject.Id
             
             if ($PSBoundParameters.ContainsKey('Location')) {
                 $Parameter.Location = $PSBoundParameters['Location']
                 $Null = $PSBoundParameters.Remove('Location')
             } else {
                 $Parameter.Location = $Server.Location
+            }
+
+            if ($PSBoundParameters.ContainsKey('Tag')) {
+                $PSBoundParameters.Tag = $PSBoundParameters['Tag']
+                $Null = $PSBoundParameters.Remove('Tag')
             }
 
             $PSBoundParameters.Add('Parameter', $Parameter)
