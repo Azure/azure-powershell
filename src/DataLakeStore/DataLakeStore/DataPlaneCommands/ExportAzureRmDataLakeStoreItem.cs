@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Commands.DataLakeStore.Properties;
+
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Rest.Azure;
 using System.Management.Automation;
 using Microsoft.Azure.DataLake.Store;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
+    [GenericBreakingChange("For store side export failures, Export-AzDataLakeStoreItem will throw exception instead of printing message on screen", "2.0.0", "05/18/2020")]
     [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreItem", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(string))]
     [Alias("Export-AdlStoreItem")]
     public class ExportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
