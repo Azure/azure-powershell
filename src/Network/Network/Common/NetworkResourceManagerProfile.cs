@@ -519,6 +519,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSFlowLogFormatParameters, MNM.FlowLogFormatParameters>();
                 cfg.CreateMap<CNM.PSTrafficAnalyticsProperties, MNM.TrafficAnalyticsProperties>();
                 cfg.CreateMap<CNM.PSTrafficAnalyticsConfigurationProperties, MNM.TrafficAnalyticsConfigurationProperties>();
+                cfg.CreateMap<CNM.PSFlowLogResource, MNM.FlowLog>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.FlowLogInformation, CNM.PSFlowLog>();
@@ -526,6 +527,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.FlowLogFormatParameters, CNM.PSFlowLogFormatParameters>();
                 cfg.CreateMap<MNM.TrafficAnalyticsProperties, CNM.PSTrafficAnalyticsProperties>();
                 cfg.CreateMap<MNM.TrafficAnalyticsConfigurationProperties, CNM.PSTrafficAnalyticsConfigurationProperties>();
+                cfg.CreateMap<MNM.FlowLog, CNM.PSFlowLogResource>();
 
                 // CheckConnectivity
                 // CNM to MNM
@@ -1268,8 +1270,14 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSPrivateLinkServiceConnection, MNM.PrivateLinkServiceConnection>();
                 cfg.CreateMap<MNM.PrivateLinkServiceConnection, CNM.PSPrivateLinkServiceConnection>();
 
-                cfg.CreateMap<CNM.PSPrivateLinkServiceConnectionState, MNM.PrivateLinkServiceConnectionState>();
-                cfg.CreateMap<MNM.PrivateLinkServiceConnectionState, CNM.PSPrivateLinkServiceConnectionState>();
+                cfg.CreateMap<CNM.PSPrivateLinkServiceConnectionState, MNM.PrivateLinkServiceConnectionState>().AfterMap((src, dest) =>
+                {
+                    dest.ActionsRequired = src.ActionRequired;
+                });
+                cfg.CreateMap<MNM.PrivateLinkServiceConnectionState, CNM.PSPrivateLinkServiceConnectionState>().AfterMap((src, dest) =>
+                {
+                    dest.ActionRequired = src.ActionsRequired;
+                });
 
                 cfg.CreateMap<CNM.PSPrivateLinkService, MNM.PrivateLinkService>();
                 cfg.CreateMap<MNM.PrivateLinkService, CNM.PSPrivateLinkService>();

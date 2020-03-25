@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Support.Models
         /// </summary>
         [Ps1Xml(Target = ViewControl.Table)]
         public string Name { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the type of the resource.
         /// </summary>
@@ -39,5 +39,10 @@ namespace Microsoft.Azure.Commands.Support.Models
         /// </summary>
         [Ps1Xml(Target = ViewControl.Table)]
         public string DisplayName { get; set; }
+
+        /// <summary>
+        /// Gets or sets resource types
+        /// </summary>
+        public string[] ResourceTypes { get; set; }
     }
 }

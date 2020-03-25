@@ -39,7 +39,7 @@ FailoverPolicies              : {databaseAccountName-region1}
 ReadLocations                 : {databaseAccountName-region1}
 WriteLocations                : {databaseAccountName-region1}
 Capabilities                  : {}
-ConsistencyPolicy             : Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConsistencyPolicy
+ConsistencyPolicy             : Microsoft.Azure.Management.CosmosDB.Models.ConsistencyPolicy
 EnableAutomaticFailover       : False
 IsVirtualNetworkFilterEnabled : False
 IpRangeFilter                 :

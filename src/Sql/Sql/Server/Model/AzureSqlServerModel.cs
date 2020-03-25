@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
 using System.Security;
 
@@ -71,5 +72,14 @@ namespace Microsoft.Azure.Commands.Sql.Server.Model
         /// Gets or sets the resource id of the server
         /// </summary>
         public string ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance minimal tls version
+        /// </summary>
+        public string MinimalTlsVersion { get; set; }
+
+        /// Gets or sets the flag to control enable/disable public network access
+        /// </summary>
+        public string PublicNetworkAccess { get; set; }
     }
 }

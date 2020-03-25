@@ -2971,12 +2971,16 @@ function Test-VirtualMachineGetStatus
         Assert-True {$a.Contains("Statuses");}
 
         $vms = Get-AzVM -ResourceGroupName $rgname -Status;
+        Assert-AreEqual "VM running" ($vms | ? {$_.Name -eq $vmname}).PowerState;
         $a = $vms | Out-String;
         Write-Verbose($a);
+        Assert-True {$a.Contains("VM running")};
 
         $vms = Get-AzVM -Status;
+        Assert-AreEqual "VM running" ($vms | ? {$_.Name -eq $vmname}).PowerState;
         $a = $vms | Out-String;
         Write-Verbose($a);
+        Assert-True {$a.Contains("VM running")};
 
         # VM Compact output
         $a = $vms[0] | Format-Custom | Out-String;
@@ -3685,13 +3689,13 @@ function Test-VirtualMachineStop
         # Get VM
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
         $vmstate = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
-        Assert-AreEqual "PowerState/running" $vmstate.Statuses[1].Code
+        Assert-AreEqual "PowerState/running" $vmstate.Statuses[1].Code;
 
         # Stop the VM
         Stop-AzVM -ResourceGroupName $rgname -Name $vmname -StayProvisioned -SkipShutdown -Force;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
         $vmstate = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
-        Assert-AreEqual "PowerState/stopped" $vmstate.Statuses[1].Code
+        Assert-AreEqual "PowerState/stopped" $vmstate.Statuses[1].Code;
 
         Remove-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
     }

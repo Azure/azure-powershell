@@ -19,6 +19,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add the following parameters to New-AzDiskConfig cmdlet: 
+    - DiskIOPSReadOnly, DiskMBpsReadOnly, MaxSharesCount, GalleryImageReference
+* Allow Encryption property to Target parameter of New-AzGalleryImageVersion cmdlet.
+* Fix tempDisk issue for Set-AzVmss -Reimage and Invoke-AzVMReimage cmdlets.
+* Set-AzVMAEMExtension, Get-AzVMAEMExtension, Remove-AzVMAEMExtension, Update-AzVMAEMExtension: Add support for new SAP Extension
+* Fix errors in examples of help document
+* Show the exact string value for VM PowerState in the table format.
+* New-AzVmssConfig does not create AutomaticRepairs property when it is disabled.
 
 ## Version 3.5.0
 * Allowed empty value for ProximityPlacementGroupId during update

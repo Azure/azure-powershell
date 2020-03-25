@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.Attestation;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Attestation.Models
 {
@@ -97,6 +98,39 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             return ((AttestationPolicy)serviceCallResult.Body).Policy;
         }
 
+        public string GetPolicySigners(string name, string resourceGroupName, string resourceId)
+        {
+            ValidateCommonParameters(ref name, ref resourceGroupName, resourceId);
+
+            AzureOperationResponse<object> serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
+                _attestationDataPlaneClient.PolicyCertificates.GetWithHttpMessagesAsync(tenantUri).Result);
+            ThrowOn4xxErrors(serviceCallResult);
+
+            return (string)serviceCallResult.Body;
+        }
+
+        public string AddPolicySigner(string name, string resourceGroupName, string resourceId, string signer)
+        {
+            ValidateCommonParameters(ref name, ref resourceGroupName, resourceId);
+
+            AzureOperationResponse<object> serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
+                _attestationDataPlaneClient.PolicyCertificates.AddWithHttpMessagesAsync(tenantUri, signer).Result);
+            ThrowOn4xxErrors(serviceCallResult);
+
+            return (string)serviceCallResult.Body;
+        }
+
+        public string RemovePolicySigner(string name, string resourceGroupName, string resourceId, string signer)
+        {
+            ValidateCommonParameters(ref name, ref resourceGroupName, resourceId);
+
+            AzureOperationResponse<object> serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) =>
+                _attestationDataPlaneClient.PolicyCertificates.RemoveWithHttpMessagesAsync(tenantUri, signer).Result);
+            ThrowOn4xxErrors(serviceCallResult);
+
+            return (string)serviceCallResult.Body;
+        }
+
         #region Private helper methods
 
         private void ValidateCommonParameters(ref string name, ref string resourceGroupName, string resourceId)
@@ -130,10 +164,28 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         private void ThrowOn4xxErrors(AzureOperationResponse<object> result)
         {
-            if (result.Response.StatusCode == HttpStatusCode.BadRequest)
-                throw new ArgumentException($"Operation returns BadRequest");
-            if (result.Response.StatusCode == HttpStatusCode.Unauthorized)
-                throw new ArgumentException("Operation is unauthorized");
+            int statusCode = (int) result.Response.StatusCode;
+
+            if (statusCode >= 400 && statusCode <= 499)
+            {
+                var responseBody = result.Response.Content.ReadAsStringAsync().Result;
+                var errorDetails = $"Operation returned HTTP Status Code {statusCode}";
+
+                // Include response body as either parsed ServerError or string
+                if (!string.IsNullOrEmpty(responseBody))
+                {
+                    try
+                    {
+                        var error = JsonConvert.DeserializeObject<ServerError>(responseBody).Error;
+                        errorDetails += $"\n\rCode: {error.Code}\n\rMessage: {error.Message}\n\r";
+                    }
+                    catch (Exception)
+                    {
+                        errorDetails += $"\n\rResponse Body: {responseBody}\n\r";
+                    }
+                }
+                throw new RestException(errorDetails);
+            }
         }
 
         /// <summary>

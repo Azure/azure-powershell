@@ -20,6 +20,13 @@
 
 
 ## Upcoming Release
+* Improved error messages for server response codes 400 and 401
+* Improved example code included in documentation files
+* Added three additional required assemblies to Az.Attestation.psd1
+
+## Version 0.1.5
+* Added policy signer management cmdlets to `Az.Attestation` module
+* Added `Location` and `Tag` to `New-AzAttestation`
 
 ## Version 0.1.4
 * Added policy management cmdlets to `Az.Attestation` module

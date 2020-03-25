@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.4'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Support.dll'
@@ -110,15 +110,15 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Preview release of ''Az.Support'' module. Added following cmdlets for creation and management of support tickets.
-    - Get-AzSupportService
-    - Get-AzSupportProblemClassification
-    - New-AzSupportContactProfileObject
-    - New-AzSupportTicket
-    - Get-AzSupportTicket
-    - Update-AzSupportTicket
-    - New-AzSupportTicketCommunication
-    - Get-AzSupportTicketCommunication'
+         ReleaseNotes = '* Preview release of ''Az.Support'' module. Added following cmdlets for creation and management of support tickets.
+        - Get-AzSupportService
+        - Get-AzSupportProblemClassification
+        - New-AzSupportContactProfileObject
+        - New-AzSupportTicket
+        - Get-AzSupportTicket
+        - Update-AzSupportTicket
+        - New-AzSupportTicketCommunication
+        - Get-AzSupportTicketCommunication'
 
         # Prerelease string of this module
         # Prerelease = ''

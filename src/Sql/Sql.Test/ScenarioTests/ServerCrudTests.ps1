@@ -73,7 +73,7 @@ function Test-UpdateServer
 		Assert-AreEqual $server1.ServerVersion $server.ServerVersion
 		Assert-AreEqual $server1.SqlAdministratorLogin $server.SqlAdministratorLogin
 		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
-		
+
 		# Test piping
 		$serverPassword = "n3wc00lP@55w0rd!!!"
 		$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
@@ -248,6 +248,139 @@ function Test-UpdateServerWithoutIdentity
 		$server2 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName -SqlAdministratorPassword $secureString
 		Assert-AreEqual $server2.Identity.Type SystemAssigned
 		Assert-NotNull $server2.Identity.PrincipalId
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests create and update a server with minimal TLS version
+	.DESCRIPTION
+	SmokeTest
+#>
+function Test-CreateandUpdateServerWithMinimalTlsVersion
+{
+	# Setup
+	$location = "eastus2euap"
+	$rg = Create-ResourceGroupForTest $location
+
+	try
+	{
+		# Test using parameters
+		$serverName = Get-ServerName
+		$version = "12.0"
+		$serverLogin = "testusername"
+		$serverPassword = "t357ingP@s5w0rd!"
+		$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+		$tls1_1 = "1.1"
+		$tls1_2 = "1.2"
+
+		# With all parameters
+		$job = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName `
+			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -MinimalTlsVersion $tls1_2 -AsJob
+		$job | Wait-Job
+
+		$server1 =  Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName
+		Assert-AreEqual $server1.MinimalTlsVersion $tls1_2
+
+		$server2 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -MinimalTlsVersion $tls1_1
+		Assert-AreEqual $server2.MinimalTlsVersion $tls1_1
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests create server with Enabled/Disabled/null PublicNetworkAccess.  Also check get server returns correct PublicNetworkAccess.
+#>
+function Test-CreateAndGetServerWithPublicNetworkAccess
+{
+	# Setup
+	$location = "westeurope"
+	$rg = Create-ResourceGroupForTest $location
+	 	
+	$serverName1 = Get-ServerName
+	$serverName2 = Get-ServerName
+	$serverName3 = Get-ServerName
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$enabled = "Enabled"
+	$disabled = "Disabled"
+
+	try
+	{
+		# Create a server with PublicNetworkAccess Disabled
+		$server1 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName1 -Location $location -SqlAdministratorCredentials $credentials -PublicNetworkAccess "Enabled"
+		Assert-AreEqual $server1.ServerName $serverName1
+		Assert-AreEqual $server1.PublicNetworkAccess $enabled
+
+		$retrievedServer1 = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName
+		Assert-AreEqual $retrievedServer1.ServerName $server1.ServerName
+		Assert-AreEqual $retrievedServer1.PublicNetworkAccess $enabled
+
+		# Create a server with PublicNetworkAccess Disabled
+		$server2 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName2 -Location $location -SqlAdministratorCredentials $credentials -PublicNetworkAccess "Disabled"
+		Assert-AreEqual $server2.ServerName $serverName2
+		Assert-AreEqual $server2.PublicNetworkAccess $disabled
+
+		# Create a server with PublicNetworkAccess null (should default to Enabled)
+		$server3 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName3 -Location $location -SqlAdministratorCredentials $credentials
+		Assert-AreEqual $server3.ServerName $serverName3
+		Assert-AreEqual $server3.PublicNetworkAccess $enabled
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests update PublicNetworkAccess to Enabled/Disabled/null on server
+#>
+function Test-UpdateServerWithPublicNetworkAccess
+{
+	# Setup
+	$location = "westeurope"
+	$rg = Create-ResourceGroupForTest $location
+	 	
+	$serverName = Get-ServerName
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$enabled = "Enabled"
+	$disabled = "Disabled"
+
+	try
+	{
+		# Create a server with PublicNetworkAccess Disabled
+		$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $location -SqlAdministratorCredentials $credentials
+		Assert-AreEqual $server.ServerName $serverName
+		Assert-AreEqual $server.PublicNetworkAccess $enabled
+
+		# Update server with PublicNetworkAccess Disabled
+		$server = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SqlAdministratorPassword $secureString -PublicNetworkAccess "Disabled"
+		Assert-AreEqual $server.ServerName $serverName
+		Assert-AreEqual $server.PublicNetworkAccess $disabled
+
+		# Update server with PublicNetworkAccess null (should still be Disabled)
+		$server = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SqlAdministratorPassword $secureString -AssignIdentity
+		Assert-AreEqual $server.ServerName $serverName
+		Assert-AreEqual $server.Identity.Type SystemAssigned
+		Assert-AreEqual $server.PublicNetworkAccess $disabled
+
+		# Update server with PublicNetworkAccess Enabled
+		$server = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SqlAdministratorPassword $secureString -PublicNetworkAccess "Enabled"
+		Assert-AreEqual $server.ServerName $serverName
+		Assert-AreEqual $server.PublicNetworkAccess $enabled
 	}
 	finally
 	{

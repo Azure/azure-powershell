@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add reference to System.Buffers explicitly in csproj and psd1.
+Added option of Byte encoding for New-AzDataLakeStoreItem, Add-AzDAtaLakeStoreItemContent, Get-AzDAtaLakeStoreItemContent
+
+## Version 1.2.7
+* Added reference to System.Buffers explicitly in csproj and psd1.
 
 ## Version 1.2.6
 * Update references in .psd1 to use relative path
