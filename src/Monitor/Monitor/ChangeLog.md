@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* update documentation for New-AzScheduledQueryRuleLogMetricTrigger
+* Updated documentation for `New-AzScheduledQueryRuleLogMetricTrigger`
 
 ## Version 1.6.1
 * Fixed output value for `Get-AzMetricDefinition` [#9714]

@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update ADF .Net SDK version to 4.8.0
-* Add optional parameters to Invoke-AzDataFactoryV2Pipeline command to support rerun
+* Updated ADF .Net SDK version to 4.8.0
+* Added optional parameters to `Invoke-AzDataFactoryV2Pipeline` command to support rerun
 
 ## Version 1.6.1
 * Update ADF .Net SDK version to 4.7.0
