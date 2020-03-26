@@ -30,6 +30,7 @@
 	- Set-AzVirtualNetworkGateway
 	- New-AzVirtualNetworkGatewayConnection
 	- Set-AzVirtualNetworkGatewayConnection
+* Bug fix for Set-AzApplicationGatewaySslCertificate (https://github.com/Azure/azure-powershell/issues/9488)
 
 ## Version 2.3.2
 * Updated Sql Management SDK.
