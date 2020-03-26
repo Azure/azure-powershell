@@ -8,6 +8,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.ManagedServiceIdentity;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
