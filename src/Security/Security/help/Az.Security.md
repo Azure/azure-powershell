@@ -1,118 +1,136 @@
 ---
 Module Name: Az.Security
-Module Guid: 5e312bb4-9d3a-4c88-94c3-8e5bbb2e3da4
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.security
-Help Version: 0.1.0
+Module Guid: 2b6bac56-a03a-4606-8b05-c1a1f36248db
+Download Help Link: {{ Update Download Link }}
+Help Version: {{ Please enter version of help manually (X.X.X.X) format }}
 Locale: en-US
 ---
 
 # Az.Security Module
 ## Description
-Azure Security Center gives you control over the security of your Azure subscriptions and other machines that you connected to it outside of Azure.
+{{ Fill in the Description }}
 
 ## Az.Security Cmdlets
 ### [Disable-AzSecurityAdvancedThreatProtection](Disable-AzSecurityAdvancedThreatProtection.md)
-Disables the advanced threat protection policy for a storage / cosmosDB account.
+{{ Fill in the Description }}
 
 ### [Enable-AzSecurityAdvancedThreatProtection](Enable-AzSecurityAdvancedThreatProtection.md)
-Enables the advanced threat protection policy for a storage / cosmosDB account.
+{{ Fill in the Description }}
 
-### [Get-AzDeviceSecurityGroups](Get-AzDeviceSecurityGroups.md)
-{{ Fill in the Synopsis }}
+### [Get-AzDeviceSecurityGroup](Get-AzDeviceSecurityGroup.md)
+{{ Fill in the Description }}
 
 ### [Get-AzDiscoveredSecuritySolution](Get-AzDiscoveredSecuritySolution.md)
-Gets security solutions that were discovered by Azure Security Center
+{{ Fill in the Description }}
 
 ### [Get-AzExternalSecuritySolution](Get-AzExternalSecuritySolution.md)
-Get external security solution 
+{{ Fill in the Description }}
 
 ### [Get-AzIotSecurityAnalytics](Get-AzIotSecurityAnalytics.md)
-{{ Fill in the Synopsis }}
+{{ Fill in the Description }}
 
-### [Get-AzIotSecurityAnalyticsAggregatedAlerts](Get-AzIotSecurityAnalyticsAggregatedAlerts.md)
-{{ Fill in the Synopsis }}
+### [Get-AzIotSecurityAnalyticsAggregatedAlert](Get-AzIotSecurityAnalyticsAggregatedAlert.md)
+{{ Fill in the Description }}
 
-### [Get-AzIotSecurityAnalyticsAggregatedRecommendations](Get-AzIotSecurityAnalyticsAggregatedRecommendations.md)
-{{ Fill in the Synopsis }}
+### [Get-AzIotSecurityAnalyticsAggregatedRecommendation](Get-AzIotSecurityAnalyticsAggregatedRecommendation.md)
+{{ Fill in the Description }}
 
-### [Get-AzIotSecuritySolutions](Get-AzIotSecuritySolutions.md)
-{{ Fill in the Synopsis }}
+### [Get-AzIotSecuritySolution](Get-AzIotSecuritySolution.md)
+{{ Fill in the Description }}
 
 ### [Get-AzJitNetworkAccessPolicy](Get-AzJitNetworkAccessPolicy.md)
-Gets the JIT network access policies
+{{ Fill in the Description }}
 
 ### [Get-AzSecurityAdvancedThreatProtection](Get-AzSecurityAdvancedThreatProtection.md)
-Gets the advanced threat protection policy for a storage / cosmosDB account.
+{{ Fill in the Description }}
 
 ### [Get-AzSecurityAlert](Get-AzSecurityAlert.md)
-Gets security alerts that were detected by Azure Security Center
+{{ Fill in the Description }}
 
 ### [Get-AzSecurityAutoProvisioningSetting](Get-AzSecurityAutoProvisioningSetting.md)
-Gets the security automatic provisioning settings
+{{ Fill in the Description }}
 
 ### [Get-AzSecurityCompliance](Get-AzSecurityCompliance.md)
-Get the security compliance of a subscription over time
+{{ Fill in the Description }}
 
 ### [Get-AzSecurityContact](Get-AzSecurityContact.md)
-Gets security contacts that were configured on this subscription
+{{ Fill in the Description }}
 
 ### [Get-AzSecurityLocation](Get-AzSecurityLocation.md)
-Gets the location where Azure Security Center will automatically save data for the specific subscription
+{{ Fill in the Description }}
 
 ### [Get-AzSecurityPricing](Get-AzSecurityPricing.md)
-Gets the pricing tier data for Azure Security Center for a scope.
+{{ Fill in the Description }}
 
 ### [Get-AzSecurityTask](Get-AzSecurityTask.md)
-Gets the security tasks that Azure Security Center recommends you to do in order to strengthen your security posture.
+{{ Fill in the Description }}
 
 ### [Get-AzSecurityWorkspaceSetting](Get-AzSecurityWorkspaceSetting.md)
-Gets the configured security workspace settings on a subscription.
+{{ Fill in the Description }}
 
-### [Remove-AzDeviceSecurityGroups](Remove-AzDeviceSecurityGroups.md)
-{{ Fill in the Synopsis }}
+### [New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject](New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject.md)
+{{ Fill in the Description }}
 
-### [Remove-AzIotSecuritySolutions](Remove-AzIotSecuritySolutions.md)
-{{ Fill in the Synopsis }}
+### [New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject](New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject.md)
+{{ Fill in the Description }}
+
+### [New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject](New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject.md)
+{{ Fill in the Description }}
+
+### [New-AzDeviceSecurityGroupTimeWindowRuleObject](New-AzDeviceSecurityGroupTimeWindowRuleObject.md)
+{{ Fill in the Description }}
+
+### [New-AzIotSecuritySolutionRecommendationConfigurationObject](New-AzIotSecuritySolutionRecommendationConfigurationObject.md)
+{{ Fill in the Description }}
+
+### [New-AzIotSecuritySolutionUserDefinedResourcesObject](New-AzIotSecuritySolutionUserDefinedResourcesObject.md)
+{{ Fill in the Description }}
+
+### [Remove-AzDeviceSecurityGroup](Remove-AzDeviceSecurityGroup.md)
+{{ Fill in the Description }}
+
+### [Remove-AzIotSecuritySolution](Remove-AzIotSecuritySolution.md)
+{{ Fill in the Description }}
 
 ### [Remove-AzJitNetworkAccessPolicy](Remove-AzJitNetworkAccessPolicy.md)
-Deletes a JIT network access policy.
+{{ Fill in the Description }}
 
 ### [Remove-AzSecurityContact](Remove-AzSecurityContact.md)
-Deletes a security contact.
+{{ Fill in the Description }}
 
 ### [Remove-AzSecurityWorkspaceSetting](Remove-AzSecurityWorkspaceSetting.md)
-Deletes the security workspace setting for this subscription.
+{{ Fill in the Description }}
 
-### [Set-AzDeviceSecurityGroups](Set-AzDeviceSecurityGroups.md)
-{{ Fill in the Synopsis }}
+### [Set-AzDeviceSecurityGroup](Set-AzDeviceSecurityGroup.md)
+{{ Fill in the Description }}
 
-### [Set-AzIotSecurityAnalyticsAggregatedAlerts](Set-AzIotSecurityAnalyticsAggregatedAlerts.md)
-{{ Fill in the Synopsis }}
+### [Set-AzIotSecurityAnalyticsAggregatedAlert](Set-AzIotSecurityAnalyticsAggregatedAlert.md)
+{{ Fill in the Description }}
 
-### [Set-AzIotSecuritySolutions](Set-AzIotSecuritySolutions.md)
-{{ Fill in the Synopsis }}
+### [Set-AzIotSecuritySolution](Set-AzIotSecuritySolution.md)
+{{ Fill in the Description }}
 
 ### [Set-AzJitNetworkAccessPolicy](Set-AzJitNetworkAccessPolicy.md)
-Updates JIT network access policy.
+{{ Fill in the Description }}
 
 ### [Set-AzSecurityAlert](Set-AzSecurityAlert.md)
-Updates a security alert state.
+{{ Fill in the Description }}
 
 ### [Set-AzSecurityAutoProvisioningSetting](Set-AzSecurityAutoProvisioningSetting.md)
-Updates automatic provisioning setting
+{{ Fill in the Description }}
 
 ### [Set-AzSecurityContact](Set-AzSecurityContact.md)
-Updates a security contact for a subscription.
+{{ Fill in the Description }}
 
 ### [Set-AzSecurityPricing](Set-AzSecurityPricing.md)
-Sets the pricing of Azure Security Center tier for a scope.
+{{ Fill in the Description }}
 
 ### [Set-AzSecurityWorkspaceSetting](Set-AzSecurityWorkspaceSetting.md)
-Updates the workspace settings for the subscription.
+{{ Fill in the Description }}
 
 ### [Start-AzJitNetworkAccessPolicy](Start-AzJitNetworkAccessPolicy.md)
-Invokes a temporary network access request.
+{{ Fill in the Description }}
 
-### [Update-AzIotSecuritySolutions](Update-AzIotSecuritySolutions.md)
-{{ Fill in the Synopsis }}
+### [Update-AzIotSecuritySolution](Update-AzIotSecuritySolution.md)
+{{ Fill in the Description }}
 
