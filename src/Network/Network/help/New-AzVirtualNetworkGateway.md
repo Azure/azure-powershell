@@ -1,8 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-ms.assetid: 5784FD44-91D4-4537-84F3-4F03CCBA355F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualnetworkgateway
+online version:
 schema: 2.0.0
 ---
 
@@ -21,9 +20,10 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
  [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] [-CustomRoute <String[]>]
- [-VpnGatewayGeneration <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Asn <UInt32>] [-PeerWeight <Int32>]
+ [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-Tag <Hashtable>] [-Force]
+ [-CustomRoute <String[]>] [-VpnGatewayGeneration <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RadiusServerConfiguration
@@ -34,9 +34,11 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
  [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] -RadiusServerAddress <String>
- -RadiusServerSecret <SecureString> [-CustomRoute <String[]>] [-VpnGatewayGeneration <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Asn <UInt32>] [-PeerWeight <Int32>]
+ [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-Tag <Hashtable>] [-Force]
+ -RadiusServerAddress <String> -RadiusServerSecret <SecureString> [-CustomRoute <String[]>]
+ [-VpnGatewayGeneration <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AadAuthenticationConfiguration
@@ -47,9 +49,11 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
  [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] -AadTenantUri <String>
- -AadAudienceId <String> -AadIssuerUri <String> [-CustomRoute <String[]>] [-VpnGatewayGeneration <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Asn <UInt32>] [-PeerWeight <Int32>]
+ [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-Tag <Hashtable>] [-Force]
+ -AadTenantUri <String> -AadAudienceId <String> -AadIssuerUri <String> [-CustomRoute <String[]>]
+ [-VpnGatewayGeneration <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -158,13 +162,37 @@ The gateway will be called "myNGW" within the resource group "vnet-gateway" in t
 with the previously created IP configurations saved in the variable "ngwIPConfig," the
 gateway type of "VPN", the vpn type "RouteBased", the sku "VpnGw4" and VpnGatewayGeneration Generation2 enabled.
 
+### 6: Create a Virtual Network Gateway with IpConfigurationBgpPeeringAddresses
+```
+New-AzResourceGroup -Location "UK West" -Name "resourcegroup1"
+$subnet = New-AzVirtualNetworkSubnetConfig -Name 'gatewaysubnet' -AddressPrefix '10.254.0.0/27'
+
+$ngwpip = New-AzPublicIpAddress -Name ngwpip -ResourceGroupName "resourcegroup1" -Location "UK West" -AllocationMethod Dynamic
+$vnet = New-AzVirtualNetwork -AddressPrefix "10.254.0.0/27" -Location "UK West" -Name vnet-gateway -ResourceGroupName "resourcegroup1" -Subnet $subnet
+$subnet = Get-AzVirtualNetworkSubnetConfig -name 'gatewaysubnet' -VirtualNetwork $vnet
+$ngwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name ipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $ngwpip.Id
+
+$ipconfigurationId1 = '/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/resourcegroup1/providers/Microsoft.Network/virtualNetworkGateways/gateway1/ipConfigurations/ipconfig1'
+$addresslist1 = @('169.254.21.10')
+$gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
+
+New-AzVirtualNetworkGateway -Name gateway1 -ResourceGroupName vnet-gateway -Location "UK West" -IpConfigurations $ngwIpConfig -IpConfigurationBgpPeeringAddresses $gw1ipconfBgp1 -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "VpnGw4" -VpnGatewayGeneration "Generation2"
+```
+
+The above will create a resource group, request a Public IP Address, create a Virtual Network and
+subnet and create a Virtual Network Gateway in Azure.
+ipconfigurationId1 can be formated using subscription id, resource group name, ipconfiguration name and gateway name.
+The gateway will be called "gateway1" within the resource group "resourcegroup1resourcegroup1" in the location "UK West" 
+with the previously created IP configurations Bgppeering address saved in the variable "gw1ipconfBgp1," the
+gateway type of "VPN", the vpn type "RouteBased", the sku "VpnGw4" and VpnGatewayGeneration Generation2 enabled.
+
 ## PARAMETERS
 
 ### -AadAudienceId
 P2S AAD authentication option:AadAudienceId.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AadAuthenticationConfiguration
 Aliases:
 
@@ -179,7 +207,7 @@ Accept wildcard characters: False
 P2S AAD authentication option:AadIssuerUri.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AadAuthenticationConfiguration
 Aliases:
 
@@ -194,7 +222,7 @@ Accept wildcard characters: False
 P2S AAD authentication option:AadTenantUri.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AadAuthenticationConfiguration
 Aliases:
 
@@ -209,7 +237,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -221,9 +249,10 @@ Accept wildcard characters: False
 ```
 
 ### -Asn
+The virtual network gateway's ASN for BGP over VPN
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -234,11 +263,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CustomRoute
 Custom routes AddressPool specified by customer
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -250,10 +294,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -265,10 +309,10 @@ Accept wildcard characters: False
 ```
 
 ### -EnableActiveActiveFeature
-Enables the active-active feature.
+Flag to enable Active Active feature on virtual network gateway
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -280,9 +324,10 @@ Accept wildcard characters: False
 ```
 
 ### -EnableBgp
+EnableBgp Flag
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -294,10 +339,10 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the command to run without asking for user confirmation.
+Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -309,9 +354,10 @@ Accept wildcard characters: False
 ```
 
 ### -GatewayDefaultSite
+GatewayDefaultSite
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
+Type: PSLocalNetworkGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -323,9 +369,10 @@ Accept wildcard characters: False
 ```
 
 ### -GatewaySku
+The Gateway Sku Tier
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, VpnGw4AZ, VpnGw5AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ
@@ -338,9 +385,10 @@ Accept wildcard characters: False
 ```
 
 ### -GatewayType
+The type of this virtual network gateway: Vpn, ExoressRoute
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Vpn, ExpressRoute
@@ -352,10 +400,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IpConfigurations
+### -IpConfigurationBgpPeeringAddresses
+The BgpPeeringAddresses for Virtual network gateway bgpsettings.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayIpConfiguration[]
+Type: PSIpConfigurationBgpPeeringAddress[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IpConfigurations
+The IpConfigurations for Virtual network gateway.
+
+```yaml
+Type: PSVirtualNetworkGatewayIpConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -367,9 +431,10 @@ Accept wildcard characters: False
 ```
 
 ### -Location
+location.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -381,9 +446,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -395,9 +461,10 @@ Accept wildcard characters: False
 ```
 
 ### -PeerWeight
+The weight added to routes learned over BGP from this virtual network gateway
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -412,7 +479,7 @@ Accept wildcard characters: False
 P2S External Radius server address.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: RadiusServerConfiguration
 Aliases:
 
@@ -427,7 +494,7 @@ Accept wildcard characters: False
 P2S External Radius server secret.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: RadiusServerConfiguration
 Aliases:
 
@@ -439,9 +506,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -453,11 +521,10 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Key-value pairs in the form of a hash table. For example:
-@{key0="value0";key1=$null;key2="value2"}
+A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -469,9 +536,10 @@ Accept wildcard characters: False
 ```
 
 ### -VpnClientAddressPool
+P2S VpnClient AddressPool
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -486,7 +554,7 @@ Accept wildcard characters: False
 A list of IPSec policies for P2S VPN client tunneling protocols.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
+Type: PSIpsecPolicy[]
 Parameter Sets: (All)
 Aliases:
 
@@ -501,7 +569,7 @@ Accept wildcard characters: False
 The list of P2S VPN client tunneling protocols
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: SSTP, IkeV2, OpenVPN
@@ -514,9 +582,10 @@ Accept wildcard characters: False
 ```
 
 ### -VpnClientRevokedCertificates
+The list of VpnClientCertificates to be revoked.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate[]
+Type: PSVpnClientRevokedCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -528,9 +597,10 @@ Accept wildcard characters: False
 ```
 
 ### -VpnClientRootCertificates
+The list of VpnClientRootCertificates to be added.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate[]
+Type: PSVpnClientRootCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -542,14 +612,13 @@ Accept wildcard characters: False
 ```
 
 ### -VpnGatewayGeneration
-The generation for this VirtualNetwork VPN gateway. Must be None if GatewayType is not VPN. 
-Once set, this property cannot be changed over the lifetime of the gateway.
+The generation for this VirtualNetwork VPN gateway.
+Must be None if GatewayType is not VPN.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, Generation1, Generation2
 
 Required: False
 Position: Named
@@ -559,9 +628,10 @@ Accept wildcard characters: False
 ```
 
 ### -VpnType
+The type of the Vpn:PolicyBased/RouteBased
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: PolicyBased, RouteBased
@@ -573,39 +643,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -629,6 +684,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Int32
 
+### Microsoft.Azure.Commands.Network.Models.PSIpConfigurationBgpPeeringAddress[]
+
 ### System.Collections.Hashtable
 
 ### System.Security.SecureString
@@ -640,13 +697,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzVirtualNetworkGateway](./Get-AzVirtualNetworkGateway.md)
-
-[Remove-AzVirtualNetworkGateway](./Remove-AzVirtualNetworkGateway.md)
-
-[Reset-AzVirtualNetworkGateway](./Reset-AzVirtualNetworkGateway.md)
-
-[Resize-AzVirtualNetworkGateway](./Resize-AzVirtualNetworkGateway.md)
-
-[Set-AzVirtualNetworkGateway](./Set-AzVirtualNetworkGateway.md)
