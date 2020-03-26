@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.6.2
 * Updated documentation for `New-AzScheduledQueryRuleLogMetricTrigger`
 
 ## Version 1.6.1
