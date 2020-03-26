@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
             if (result != null)
             {
-                deployment = CreatePSResourceGroupDeployment(result, resourceGroup);
+                deployment = CreatePSResourceGroupDeployment(result.Name, resourceGroup, result.Properties);
             }
 
             return deployment;
@@ -205,15 +205,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             string managementGroupId,
             string resourceGroup)
         {
-            PSDeployment deploymentObject = new PSDeployment
-            {
-                Id = deployment.Id,
-                DeploymentName = deployment.Name,
-                Location = deployment.Location,
-                ManagementGroupId = managementGroupId,
-                ResourceGroupName = resourceGroup,
-                Tags = deployment.Tags == null ? new Dictionary<string, string>() : new Dictionary<string, string>(deployment.Tags)
-            };
+            PSDeployment deploymentObject = new PSDeployment();
+
+            deploymentObject.Id = deployment.Id;
+            deploymentObject.DeploymentName = deployment.Name;
+            deploymentObject.Location = deployment.Location;
+            deploymentObject.ManagementGroupId = managementGroupId;
+            deploymentObject.ResourceGroupName = resourceGroup;
 
             SetDeploymentProperties(deploymentObject, deployment.Properties);
 
@@ -221,17 +219,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
         }
 
         private static PSResourceGroupDeployment CreatePSResourceGroupDeployment(
-            DeploymentExtended deployment,
-            string resourceGroup)
+            string name,
+            string resourceGroup,
+            DeploymentPropertiesExtended properties)
         {
-            PSResourceGroupDeployment deploymentObject = new PSResourceGroupDeployment
-            {
-                DeploymentName = deployment.Name,
-                ResourceGroupName = resourceGroup,
-                Tags = deployment.Tags == null ? null : new Dictionary<string, string>(deployment.Tags)
-            };
+            PSResourceGroupDeployment deploymentObject = new PSResourceGroupDeployment();
 
-            SetDeploymentProperties(deploymentObject, deployment.Properties);
+            deploymentObject.DeploymentName = name;
+            deploymentObject.ResourceGroupName = resourceGroup;
+
+            SetDeploymentProperties(deploymentObject, properties);
 
             return deploymentObject;
         }
@@ -283,8 +280,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
         public static Hashtable ToHashtable(this object obj)
         {
             return new Hashtable(obj.GetType()
-                    .GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public)
-                    .ToDictionary(p => p.Name, p => p.GetValue(obj, null)));
+                                    .GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public)
+                                    .ToDictionary(p => p.Name, p => p.GetValue(obj, null)));
 
         }
     }

@@ -42,26 +42,21 @@ function Test-NewDeploymentFromTemplateFile
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
 	$rglocation = "West US 2"
-	$expectedTags = @{"key1"="value1"; "key2"="value2";}
 
 	try
 	{
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
 
-		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json -Tag $expectedTags
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
-		Assert-True { AreHashtableEqual $expectedTags $deployment.Tags }
 
 		$subId = (Get-AzContext).Subscription.SubscriptionId
 		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
 		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
-
-		[hashtable]$actualTags = $getById.Tags
-		Assert-True { AreHashtableEqual $expectedTags $getById.Tags }
 	}
 
 	finally
@@ -88,8 +83,8 @@ function Test-NewDeploymentFromTemplateObject
         $json = ConvertFrom-Json ([System.IO.File]::ReadAllText($file))
         $templateObject = @{}
         $json.PSObject.Properties | % { $templateObject[$_.Name] = $_.Value }
-        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateObject $templateObject -TemplateParameterFile sampleDeploymentTemplateParams.json 
-		
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateObject $templateObject -TemplateParameterFile sampleDeploymentTemplateParams.json
+
         # Assert
         Assert-AreEqual Succeeded $deployment.ProvisioningState
 
@@ -152,7 +147,6 @@ function Test-CrossResourceGroupDeploymentFromTemplateFile
 	$rgname2 = Get-ResourceGroupName
 	$rname = Get-ResourceName
 	$rglocation = "West US 2"
-	$expectedTags = @{"key1"="value1"; "key2"="value2";}
 
 	try
 	{
@@ -161,17 +155,15 @@ function Test-CrossResourceGroupDeploymentFromTemplateFile
 		New-AzResourceGroup -Name $rgname2 -Location $rglocation
 
 		$parameters = @{ "NestedDeploymentResourceGroup" = $rgname2 }
-		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplateWithCrossResourceGroupDeployment.json -TemplateParameterObject $parameters -Tag $expectedTags
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplateWithCrossResourceGroupDeployment.json -TemplateParameterObject $parameters
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
-		Assert-True { AreHashtableEqual $expectedTags $deployment.Tags }
 
 		$subId = (Get-AzContext).Subscription.SubscriptionId
 		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
 		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
-		Assert-True { AreHashtableEqual $expectedTags $getById.Tags }
 
 		$nestedDeploymentId = "/subscriptions/$subId/resourcegroups/$rgname2/providers/Microsoft.Resources/deployments/nestedTemplate"
 		$nestedDeployment = Get-AzResourceGroupDeployment -Id $nestedDeploymentId
@@ -227,18 +219,16 @@ function Test-NestedDeploymentFromTemplateFile
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
 	$rglocation = "West US 2"
-	$expectedTags = @{"key1"="value1"; "key2"="value2";}
 
 	try
 	{
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
 
-		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleNestedTemplate.json -TemplateParameterFile sampleNestedTemplateParams.json -Tag $expectedTags
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleNestedTemplate.json -TemplateParameterFile sampleNestedTemplateParams.json
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
-		Assert-True { AreHashtableEqual $expectedTags $deployment.Tags }
 
 		$subId = (Get-AzContext).Subscription.SubscriptionId
 		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"

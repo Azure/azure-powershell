@@ -4,7 +4,7 @@
   "parameters": {
     "storageAccountName": {
       "type": "string",
-      "defaultValue": "armbuilddemo18122"
+      "defaultValue": "armbuilddemo1811"
     },
     "nestedDeploymentRG": {
       "type": "string",

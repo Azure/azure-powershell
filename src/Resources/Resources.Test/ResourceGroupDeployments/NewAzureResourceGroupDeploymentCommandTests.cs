@@ -27,9 +27,6 @@ using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
 using Microsoft.Azure.ServiceManagement.Common.Models;
-using System.Linq;
-using System.Collections;
-using FluentAssertions;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
@@ -46,8 +43,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private string deploymentName = "fooDeployment";
 
         private string lastDeploymentName = "oldfooDeployment";
-
-        private Dictionary<string, string> deploymentTags = Enumerable.Range(0, 2).ToDictionary(i => $"tagname{i}", i => $"tagvalue{i}");
 
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
@@ -72,7 +67,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             {
                 TemplateFile = templateFile,
                 DeploymentName = deploymentName,
-                Tags = new Dictionary<string, string>(this.deploymentTags)
             };
             PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
             PSResourceGroupDeployment expected = new PSResourceGroupDeployment()
@@ -109,19 +103,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = expectedParameters.DeploymentName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
-            cmdlet.Tag = new Hashtable(this.deploymentTags);
 
             cmdlet.ExecuteCmdlet();
 
-            actualParameters.DeploymentName.Should().Equals(expectedParameters.DeploymentName);
-            actualParameters.TemplateFile.Should().Equals(expectedParameters.TemplateFile);
-            actualParameters.TemplateParameterObject.Should().NotBeNull();
-            actualParameters.OnErrorDeployment.Should().BeNull();
-            actualParameters.Tags.Should().NotBeNull();
-
-            var differenceTags = actualParameters.Tags
-                .Where(entry => expectedParameters.Tags[entry.Key] != entry.Value);
-            differenceTags.Should().BeEmpty();
+            Assert.Equal(expectedParameters.DeploymentName, actualParameters.DeploymentName);
+            Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
+            Assert.NotNull(actualParameters.TemplateParameterObject);
+            Assert.Null(actualParameters.OnErrorDeployment);
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
         }
@@ -134,7 +122,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             {
                 TemplateFile = templateFile,
                 DeploymentName = deploymentName,
-                Tags = new Dictionary<string, string>(this.deploymentTags),
                 OnErrorDeployment = new OnErrorDeployment
                 {
                     Type = OnErrorDeploymentType.SpecificDeployment,
@@ -182,20 +169,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet.Name = expectedParameters.DeploymentName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
             cmdlet.RollBackDeploymentName = lastDeploymentName;
-            cmdlet.Tag = new Hashtable(this.deploymentTags);
             cmdlet.ExecuteCmdlet();
 
-            actualParameters.DeploymentName.Should().Equals(expectedParameters.DeploymentName);
-            actualParameters.TemplateFile.Should().Equals(expectedParameters.TemplateFile);
-            actualParameters.TemplateParameterObject.Should().NotBeNull();
-            actualParameters.OnErrorDeployment.Should().NotBeNull();
-            actualParameters.OnErrorDeployment.Type.Should().Equals(expectedParameters.OnErrorDeployment.Type);
-            actualParameters.OnErrorDeployment.DeploymentName.Should().Equals(expectedParameters.OnErrorDeployment.DeploymentName);
-            actualParameters.Tags.Should().NotBeNull();
-
-            var differenceTags = actualParameters.Tags
-                .Where(entry => expectedParameters.Tags[entry.Key] != entry.Value);
-            differenceTags.Should().BeEmpty();
+            Assert.Equal(expectedParameters.DeploymentName, actualParameters.DeploymentName);
+            Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
+            Assert.NotNull(actualParameters.TemplateParameterObject);
+            Assert.NotNull(actualParameters.OnErrorDeployment);
+            Assert.Equal(expectedParameters.OnErrorDeployment.Type, actualParameters.OnErrorDeployment.Type);
+            Assert.Equal(expectedParameters.OnErrorDeployment.DeploymentName, actualParameters.OnErrorDeployment.DeploymentName);
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
         }
@@ -208,7 +189,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             {
                 TemplateFile = templateFile,
                 DeploymentName = deploymentName,
-                Tags = new Dictionary<string, string>(this.deploymentTags),
                 OnErrorDeployment = new OnErrorDeployment
                 {
                     Type = OnErrorDeploymentType.LastSuccessful,
@@ -254,20 +234,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet.Name = expectedParameters.DeploymentName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
             cmdlet.RollbackToLastDeployment = true;
-            cmdlet.Tag = new Hashtable(this.deploymentTags);
             cmdlet.ExecuteCmdlet();
 
-            actualParameters.DeploymentName.Should().Equals(expectedParameters.DeploymentName);
-            actualParameters.TemplateFile.Should().Equals(expectedParameters.TemplateFile);
-            actualParameters.TemplateParameterObject.Should().NotBeNull();
-            actualParameters.OnErrorDeployment.Should().NotBeNull();
-            actualParameters.OnErrorDeployment.Type.Should().Equals(expectedParameters.OnErrorDeployment.Type);
-            actualParameters.OnErrorDeployment.DeploymentName.Should().Equals(expectedParameters.OnErrorDeployment.DeploymentName);
-            actualParameters.Tags.Should().NotBeNull();
-
-            var differenceTags = actualParameters.Tags
-                .Where(entry => expectedParameters.Tags[entry.Key] != entry.Value);
-            differenceTags.Should().BeEmpty();
+            Assert.Equal(expectedParameters.DeploymentName, actualParameters.DeploymentName);
+            Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
+            Assert.NotNull(actualParameters.TemplateParameterObject);
+            Assert.NotNull(actualParameters.OnErrorDeployment);
+            Assert.Equal(expectedParameters.OnErrorDeployment.Type, actualParameters.OnErrorDeployment.Type);
+            Assert.Equal(expectedParameters.OnErrorDeployment.DeploymentName, actualParameters.OnErrorDeployment.DeploymentName);
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
         }
