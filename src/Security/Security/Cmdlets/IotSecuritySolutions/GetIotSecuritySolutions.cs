@@ -22,8 +22,8 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotSecuritySolutions", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSIotSecuritySolution))]
-    public class GetIotSecuritySolutions : SecurityCenterCmdletBase
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotSecuritySolution", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSIotSecuritySolution))]
+    public class GetIotSecuritySolution : SecurityCenterCmdletBase
     {
         private const int MaxSolutionssToFetch = 1500;
 

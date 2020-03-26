@@ -17,14 +17,15 @@ using Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
 using Microsoft.Azure.Management.Security.Models;
 using System;
-using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 using System.Management.Automation;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotSecuritySolutions", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource, SupportsShouldProcess = true), OutputType(typeof(PSIotSecuritySolution))]
-    public class UpdateIotSecuritySolutions : SecurityCenterCmdletBase
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotSecuritySolution", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource, SupportsShouldProcess = true), OutputType(typeof(PSIotSecuritySolution))]
+    public class UpdateIotSecuritySolution : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceName)]
         [ValidateNotNullOrEmpty]
@@ -40,15 +41,15 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.Tags)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.Tags)]
-        public Dictionary<string, string> Tags { get; set; }
+        public System.Collections.Hashtable Tag { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.UserDefinedResources)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.UserDefinedResources)]
-        public PSUserDefinedResources UserDefinedResources { get; set; }
+        public PSUserDefinedResources UserDefinedResource { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.RecommendationsConfiguration)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.RecommendationsConfiguration)]
-        public List<PSRecommendationConfiguration> RecommendationsConfiguration { get; set; }
+        public PSRecommendationConfiguration[] RecommendationsConfiguration { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -67,7 +68,9 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
                     throw new PSInvalidOperationException();
             }
 
-            UpdateIotSecuritySolutionData solutionData = new UpdateIotSecuritySolutionData(Tags, UserDefinedResources?.CreatePSType(), RecommendationsConfiguration?.CreatePSType());
+            UpdateIotSecuritySolutionData solutionData = new UpdateIotSecuritySolutionData(Tag.Cast<DictionaryEntry>().ToDictionary(t => (string)t.Key, t => (string)t.Value), 
+                UserDefinedResource?.CreatePSType(), 
+                RecommendationsConfiguration?.CreatePSType());
 
             if (ShouldProcess(Name, "Update"))
             {

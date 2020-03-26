@@ -14,6 +14,7 @@
 using Commands.Security;
 using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics;
+using Microsoft.Azure.Commands.SecurityCenter.Common;
 using Microsoft.Azure.Management.Security;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutionAnalytics
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotSecurityAnalyticsAggregatedAlerts", DefaultParameterSetName = ParameterSetNames.SolutionLevelResource), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotSecurityAnalyticsAggregatedAlert", DefaultParameterSetName = ParameterSetNames.SolutionLevelResource, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetIoTSecurityAggregatedAlert : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.SolutionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
@@ -37,25 +38,46 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutionAnalytics
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.PassThru)]
-        public SwitchParameter PassThru { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
+        [ValidateNotNullOrEmpty]
+        public PSIoTSecurityAggregatedAlert InputObject { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
             {
                 case ParameterSetNames.SolutionLevelResource:
-                    if (ShouldProcess(Name, VerbsCommon.Set))
+                    break;
+                case ParameterSetNames.ResourceId:
+                    ResourceGroupName = AzureIdUtilities.GetResourceGroup(ResourceId);
+                    SolutionName = AzureIdUtilities.GetIotSolutionResourceName(ResourceId);
+                    var idParts = ResourceId.Split('/');
+                    if (idParts.Length > 2)
                     {
-                        SecurityCenterClient.IotSecuritySolutionsAnalyticsAggregatedAlert.DismissWithHttpMessagesAsync(ResourceGroupName, SolutionName, Name).GetAwaiter().GetResult();
+                        Name = $"{idParts[idParts.Length - 2]}/{idParts[idParts.Length - 1]}";
                     }
-                    if (PassThru.IsPresent)
+                    else
                     {
-                        WriteObject(true);
+                        throw new ArgumentException("Invalid format of the resource identifier.", "ResourceId");
                     }
+                    break;
+                case ParameterSetNames.InputObject:
+                    ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
+                    SolutionName = AzureIdUtilities.GetIotSolutionResourceName(InputObject.Id);
+                    Name = AzureIdUtilities.GetResourceName(InputObject.Name);
                     break;
                 default:
                     throw new PSInvalidOperationException();
+            }
+
+            if (ShouldProcess(Name, VerbsCommon.Set))
+            {
+                SecurityCenterClient.IotSecuritySolutionsAnalyticsAggregatedAlert.DismissWithHttpMessagesAsync(ResourceGroupName, SolutionName, Name).GetAwaiter().GetResult();
+                WriteObject(true);
             }
         }
     }

@@ -89,12 +89,15 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Get-AzSecurityAdvancedThreatProtection', 
                'Enable-AzSecurityAdvancedThreatProtection', 
                'Disable-AzSecurityAdvancedThreatProtection',
-			   'Get-AzIotSecuritySolutions', 'Set-AzIotSecuritySolutions', 'Remove-AzIotSecuritySolutions', 'Update-AzIotSecuritySolutions',
-			   'Get-AzDeviceSecurityGroups', 'Set-AzDeviceSecurityGroups', 'Remove-AzDeviceSecurityGroups',
-			   'Get-AzIotSecurityAnalyticsAggregatedAlerts',
-			   'Get-AzIotSecurityAnalyticsAggregatedRecommendations',
+			   'Get-AzIotSecuritySolution', 'Set-AzIotSecuritySolution', 'Remove-AzIotSecuritySolution', 'Update-AzIotSecuritySolution',
+			   'New-AzIotSecuritySolutionRecommendationConfigurationObject', 'New-AzIotSecuritySolutionUserDefinedResourcesObject',
+			   'Get-AzDeviceSecurityGroup', 'Set-AzDeviceSecurityGroup', 'Remove-AzDeviceSecurityGroup',
+			   'New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject', 'New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject', 
+			   'New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject', 'New-AzDeviceSecurityGroupTimeWindowRuleObject',
+			   'Get-AzIotSecurityAnalyticsAggregatedAlert',
+			   'Get-AzIotSecurityAnalyticsAggregatedRecommendation',
 			   'Get-AzIotSecurityAnalytics', 
-			   'Set-AzIotSecurityAnalyticsAggregatedAlerts'
+			   'Set-AzIotSecurityAnalyticsAggregatedAlert'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -21,7 +21,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutionAnalytics
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotSecurityAnalyticsAggregatedRecommendations", DefaultParameterSetName = ParameterSetNames.SolutionScope), OutputType(typeof(PSIoTSecurityAggregatedRecommendation))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotSecurityAnalyticsAggregatedRecommendation", DefaultParameterSetName = ParameterSetNames.SolutionScope), OutputType(typeof(PSIoTSecurityAggregatedRecommendation))]
     public class GetIoTSecurityAggregatedRecommendation : SecurityCenterCmdletBase
     {
         private const int MaxAlertsToFetch = 1500;
