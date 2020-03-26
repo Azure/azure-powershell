@@ -172,7 +172,7 @@ $vnet = New-AzVirtualNetwork -AddressPrefix "10.254.0.0/27" -Location "UK West" 
 $subnet = Get-AzVirtualNetworkSubnetConfig -name 'gatewaysubnet' -VirtualNetwork $vnet
 $ngwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name ipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $ngwpip.Id
 
-$ipconfigurationId1 = '/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/resourcegroup1/providers/Microsoft.Network/virtualNetworkGateways/gateway1/ipConfigurations/ipconfig1'
+$ipconfigurationId1 = ngwipconfig.id
 $addresslist1 = @('169.254.21.10')
 $gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
 
@@ -181,7 +181,7 @@ New-AzVirtualNetworkGateway -Name gateway1 -ResourceGroupName vnet-gateway -Loca
 
 The above will create a resource group, request a Public IP Address, create a Virtual Network and
 subnet and create a Virtual Network Gateway in Azure.
-ipconfigurationId1 can be formated using subscription id, resource group name, ipconfiguration name and gateway name.
+ipconfigurationId1 of gateway ipconfiguration just created and stored in ngwipconfig.
 The gateway will be called "gateway1" within the resource group "resourcegroup1resourcegroup1" in the location "UK West" 
 with the previously created IP configurations Bgppeering address saved in the variable "gw1ipconfBgp1," the
 gateway type of "VPN", the vpn type "RouteBased", the sku "VpnGw4" and VpnGatewayGeneration Generation2 enabled.
