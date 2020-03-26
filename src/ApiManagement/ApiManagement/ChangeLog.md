@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* `Set-AzApiManagementGroup` Update documentation to specify the GroupId parameter
 
 ## Version 1.4.0
 * Added support for retrieving and configuring Custom Domain on the DeveloperPortal Endpoint [#11007]

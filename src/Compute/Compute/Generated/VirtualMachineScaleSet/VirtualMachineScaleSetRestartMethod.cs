@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;
-                    System.Collections.Generic.IList<string> instanceIds = this.InstanceId;
+                    IList<string> instanceIds = this.InstanceId;
 
                     var result = VirtualMachineScaleSetsClient.RestartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmName = this.VMName;
-                    bool? tempDisk = this.TempDisk.IsPresent;
+                    bool? tempDisk = this.TempDisk.IsPresent ? true : (bool?)null;
 
                     var result = VirtualMachinesClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmName, tempDisk).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
