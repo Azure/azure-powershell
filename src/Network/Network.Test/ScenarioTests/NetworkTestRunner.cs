@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
                     GetKeyVaultManagementClient,
                     GetNetworkManagementClient,
                     GetComputeManagementClient,
+                    GetStorageManagementClient,
                     GetKeyVaultClient,
                     GetAzureRestClient
                 )
@@ -92,6 +93,11 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         private static ComputeManagementClient GetComputeManagementClient(MockContext context)
         {
             return context.GetServiceClient<ComputeManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static StorageManagementClient GetStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static AzureRestClient GetAzureRestClient(MockContext context)
