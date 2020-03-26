@@ -18,15 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Upgrade DataLake Gen2 cmdlets to use new SDK "Azure.Storage.Files.DataLake"
+* Upgrade DataLake Gen2 cmdlets to use new SDK "Azure.Storage.Files.DataLake", and remove 2 parameter -ServerTimeoutPerRequest, -ClientTimeoutPerRequest
     -  New-AzDataLakeGen2Item
     -  Get-AzDataLakeGen2Item
     -  Get-AzDataLakeGen2ChildItem
     -  Move-AzDataLakeGen2Item
-    -  New-AzDataLakeGen2ItemAclObject
+    -  Set-AzDataLakeGen2ItemAclObject
     -  Update-AzDataLakeGen2Item
     -  Get-AzDataLakeGen2ItemContent
     -  Remove-AzDataLakeGen2Item
+* Change cmdlet name from New-AzDataLakeGen2ItemAclObject to Set-AzDataLakeGen2ItemAclObject, and when InputObject already has an ACL entry with same AccessControlType/EntityId/DefaultScope, will update permission of ACL entry instead of adding new ACL entry.
+    -  Set-AzDataLakeGen2ItemAclObject
+* Change -Path parameter to optional, don't set -Path will get/update FileSystem root Directory
+    -  Get-AzDataLakeGen2Item
+    -  Update-AzDataLakeGen2Item
+* In list DataLakeGen2 items, support -OutputUserPrincipalName, and change -FetchPermission to -Fetchproperties
+    -  Get-AzDataLakeGen2ChildItem
+* In move DataLakeGen2 item, remove 2 parameters -Umask, -PathRenameMode, and add -Force to skip overwrite confirmation prompt.
+    -  Move-AzDataLakeGen2Item
+
 
 ## Version 1.13.1
 * Support Point In Time Restore
