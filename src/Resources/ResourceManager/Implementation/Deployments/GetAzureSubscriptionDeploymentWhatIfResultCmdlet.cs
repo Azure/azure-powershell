@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Gets What-If results for a deployment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "DeploymentWhatIf",
+    [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "DeploymentWhatIfResult",
          DefaultParameterSetName = ParameterlessTemplateFileParameterSetName),
      OutputType(typeof(PSWhatIfOperationResult))]
-    [Alias("Get-AzSubscriptionDeploymentWhatIf")]
-    public class GetAzureSubscriptionDeploymentWhatIfCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
+    [Alias("Get-AzSubscriptionDeploymentWhatIfResult")]
+    public class GetAzureSubscriptionDeploymentWhatIfResultCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
     {
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false, HelpMessage = "The name of the deployment it's going to create. Only valid when a template is used. When a template is used, if the user doesn't specify a deployment name, use the current time, like \"20131223140835\".")]

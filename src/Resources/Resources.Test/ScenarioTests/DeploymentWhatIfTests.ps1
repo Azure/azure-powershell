@@ -28,7 +28,7 @@ function Test-WhatIfWithBlankTemplateAtResourceGroupScope
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Act.
-		$result = Get-AzResourceGroupDeploymentWhatIf `
+		$result = Get-AzResourceGroupDeploymentWhatIfResult `
 			-ResourceGroupName $resourceGroupName `
 			-Name $deploymentName `
 			-TemplateFile blankTemplate.json
@@ -62,7 +62,7 @@ function Test-WhatIfWithResourceIdOnlyAtResourceGroupScope
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Act.
-		$result = Get-AzResourceGroupDeploymentWhatIf `
+		$result = Get-AzResourceGroupDeploymentWhatIfResult `
 			-ResourceGroupName $resourceGroupName `
 			-Name $deploymentName `
 			-ResultFormat ResourceIdOnly `
@@ -108,7 +108,7 @@ function Test-WhatIfCreateResourcesAtResourceGroupScope
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 		# Act.
-		$result = Get-AzResourceGroupDeploymentWhatIf `
+		$result = Get-AzResourceGroupDeploymentWhatIfResult `
 			-ResourceGroupName $resourceGroupName `
 			-Name $deploymentName `
 			-ResultFormat ResourceIdOnly `
@@ -152,7 +152,7 @@ function Test-WhatIfModifyResourcesAtResourceGroupScope
 			-storageAccountType "Standard_LRS"
 
 		# Act.
-		$result = Get-AzResourceGroupDeploymentWhatIf `
+		$result = Get-AzResourceGroupDeploymentWhatIfResult `
 			-ResourceGroupName $resourceGroupName `
 			-Name $deploymentName `
 			-ResultFormat FullResourcePayloads `
@@ -214,7 +214,7 @@ function Test-WhatIfDeleteResourcesAtResourceGroupScope
 			-storageAccountName $storageAccountName
 
 		# Act.
-		$result = Get-AzResourceGroupDeploymentWhatIf `
+		$result = Get-AzResourceGroupDeploymentWhatIfResult `
 			-Mode "Complete" `
 			-ResourceGroupName $resourceGroupName `
 			-Name $deploymentName `
@@ -249,7 +249,7 @@ function Test-WhatIfWithBlankTemplateAtSubscriptionScope
 	$location = "westcentralus"
 
 	# Act.
-	$result = Get-AzDeploymentWhatIf -Name $deploymentName -Location $location -TemplateFile blankTemplate.json
+	$result = Get-AzDeploymentWhatIfResult -Name $deploymentName -Location $location -TemplateFile blankTemplate.json
 
 	# Assert.
 	Assert-AreEqual "Succeeded" $result.Status
@@ -269,7 +269,7 @@ function Test-WhatIfWithResourceIdOnlyAtSubscriptionScope
 	$location = "westcentralus"
 
 	# Act.
-	$result = Get-AzDeploymentWhatIf `
+	$result = Get-AzDeploymentWhatIfResult `
 		-Name $deploymentName `
 		-Location $location `
 		-ResultFormat ResourceIdOnly `
@@ -303,7 +303,7 @@ function Test-WhatIfCreateResourcesAtSubscriptionScope
 	$location = "westcentralus"
 
 	# Act.
-	$result = Get-AzDeploymentWhatIf `
+	$result = Get-AzDeploymentWhatIfResult `
 		-Name $deploymentName `
 		-Location $location `
 		-ResultFormat ResourceIdOnly `
@@ -335,7 +335,7 @@ function Test-WhatIfModifyResourcesAtSubscriptionScope
 		-storageAccountName $storageAccountName
 
 	# Act.
-	$result = Get-AzDeploymentWhatIf `
+	$result = Get-AzDeploymentWhatIfResult `
 		-Name $deploymentName `
 		-Location $location `
 		-ResultFormat FullResourcePayloads `

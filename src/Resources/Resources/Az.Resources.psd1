@@ -141,7 +141,7 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Get-AzTenantDeploymentOperation', 
                'Save-AzTenantDeploymentTemplate', 'Stop-AzTenantDeployment', 
                'Remove-AzTenantDeployment',
-               'Get-AzDeploymentWhatIf', 'Get-AzResourceGroupDeploymentWhatIf',
+               'Get-AzDeploymentWhatIfResult', 'Get-AzResourceGroupDeploymentWhatIfResult',
                'Get-AzPolicyAlias', 'Remove-AzTag', 
                'Get-AzTag', 'New-AzTag', 'Get-AzDenyAssignment', 'Update-AzTag'
 
@@ -159,7 +159,7 @@ AliasesToExport = 'Get-AzResourceProviderAction',
                'Stop-AzSubscriptionDeployment', 
                'Save-AzSubscriptionDeploymentTemplate', 
                'Get-AzSubscriptionDeploymentOperation',
-               'Get-AzSubscriptionDeploymentWhatIf'
+               'Get-AzSubscriptionDeploymentWhatIfResult'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
