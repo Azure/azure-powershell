@@ -18,12 +18,22 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Insights.Utils;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Azure.Commands.Common.Strategies;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScopeScopedResource", DefaultParameterSetName = ByScopeParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScopeScopedResource))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScopeScopedResource", DefaultParameterSetName = ByRresourceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScopeScopedResource))]
     public class UpdateAzureInsightsPrivateLinkScopeScopedResource : AzureInsightsPrivateLinkScopeScopedResourceCreateOrUpdateCmdletBase
     {
+        const string ByResourceIdParameterSet = "ByResourceIdParameterSet";
+
+        [Parameter(
+            ParameterSetName = ByResourceIdParameterSet,
+            Mandatory = true,
+            HelpMessage = "Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         [Parameter(
             Mandatory = true,
             HelpMessage = "Private Link Resource Id to Link")]
@@ -34,9 +44,15 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
         {
             base.ProcessRecordInternal();
 
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = identifier.ResourceGroupName;
+                this.ScopeName = identifier.ParentResource;
+                this.Name = identifier.ResourceName;
+            }
+
             ScopedResource existingScopedResource = null;
-
-
             try
             {
                 existingScopedResource = getExistingScopedResource(this.ResourceGroupName, this.ScopeName, this.Name);

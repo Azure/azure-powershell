@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScopeScopedResource", DefaultParameterSetName = ByScopeParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScopeScopedResource))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScopeScopedResource", DefaultParameterSetName = ByRresourceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScopeScopedResource))]
     public class NewAzureInsightsPrivateLinkScopeScopedResource : AzureInsightsPrivateLinkScopeScopedResourceCreateOrUpdateCmdletBase
     {
         [Parameter(

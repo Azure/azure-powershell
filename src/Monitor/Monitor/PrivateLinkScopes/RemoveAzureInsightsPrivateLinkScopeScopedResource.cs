@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
         [Parameter(
             ParameterSetName = ByInputObjectParameterSet,
             Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "PSMonitorPrivateLinkScope")]
         [ValidateNotNullOrEmpty]
         public PSMonitorPrivateLinkScope InputObject { get; set; }

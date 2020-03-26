@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
     {
         const string ByResourceNameParameterSet = "ByResourceNameParameterSet";
         const string ByResourceIdParameterSet = "ByResourceIdParameterSet";
-        const string ByInputObjectParameterSet = "ByInputObjectSet";
+        const string ByInputObjectParameterSet = "ByInputObjectParameterSet";
 
         #region Cmdlet parameters
 
@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
         [Parameter(
             ParameterSetName = ByInputObjectParameterSet,
             Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "PSMonitorPrivateLinkScope")]
         [ValidateNotNullOrEmpty]
         public PSMonitorPrivateLinkScope InputObject { get; set; }

@@ -24,14 +24,46 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", DefaultParameterSetName = UpdateTags, SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScope))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", DefaultParameterSetName = ByResourceGroupParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScope))]
     public class UpdateAzureInsightsPrivateLinkScope : AzureInsightsPrivateLinkScopeCreateOrUpdateCmdletBase
     {
-        const string UpdateTags = "UpdateTags";
+
+        const string ByResourceIdParameterSet = "ByResourceIdParameterSet";
+        const string ByInputObjectParameterSet = "ByInputObjectParameterSet";
+
+        #region Cmdlet parameters
+
+        [Parameter(
+            ParameterSetName = ByResourceIdParameterSet,
+            Mandatory = true,
+            HelpMessage = "Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByInputObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "PSMonitorPrivateLinkScope")]
+        [ValidateNotNullOrEmpty]
+        public PSMonitorPrivateLinkScope InputObject { get; set; }
+
+        #endregion
 
         protected override void ProcessRecordInternal()
         {
             base.ProcessRecordInternal();
+
+            if (this.IsParameterBound(c => c.InputObject) || this.IsParameterBound(c => c.ResourceId))
+            {
+                if (this.IsParameterBound(c => c.InputObject))
+                {
+                    this.ResourceId = this.InputObject.Id;
+                }
+                ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = identifier.ResourceGroupName;
+                this.Name = identifier.ResourceName;
+            }
 
             if (ShouldProcess(this.Name, string.Format("update scope: {0} under resource group: {1}", this.Name, this.ResourceGroupName)))
             {

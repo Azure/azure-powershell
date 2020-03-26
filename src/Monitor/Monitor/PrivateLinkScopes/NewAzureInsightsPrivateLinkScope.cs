@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScope))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScope", DefaultParameterSetName = ByResourceGroupParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScope))]
     public class NewAzureInsightsPrivateLinkScope : AzureInsightsPrivateLinkScopeCreateOrUpdateCmdletBase
     {
         #region Cmdlet parameters
