@@ -1,18 +1,15 @@
-### Example 1: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
+### Example 1: Stop an existing Kusto cluster by name
 
-{{ Add output here }}
+```powershell
+PS C:\> Stop-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster
 ```
 
-{{ Add description here }}
+The above command stops the Kusto cluster named "mykustocluster" found in the resource group "testrg".
 
-### Example 2: {{ Add title here }}
+### Example 2: Stop an existing Kusto cluster by piping
+
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster | Stop-AzKustoCluster
 ```
 
-{{ Add description here }}
-
+The above command gets the Kusto cluster named "mykustocluster" found in the resource group "testrg" using the `Get-AzKustoCluster` cmdlet, and then pipes the result to `Stop-AzKustoCluster` to stop it.
