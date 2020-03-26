@@ -29,23 +29,19 @@ Deletes a Kusto cluster.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete an existing Kusto cluster by name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster
 ```
 
-{{ Add description here }}
+The above command deletes the Kusto cluster named "mykustocluster" in the resource group "testrg".
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete an existing Kusto cluster by piping
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster | Remove-AzKustoCluster
 ```
 
-{{ Add description here }}
+The above command gets the Kusto cluster named "mykustocluster" in the resource group "testrg" using the `Get-AzKustoCluster` cmdlet, and then pipes the result to `Remove-AzKustoCluster` to delete it.
 
 ## PARAMETERS
 

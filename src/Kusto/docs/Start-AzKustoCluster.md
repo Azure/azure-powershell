@@ -29,23 +29,19 @@ Starts a Kusto cluster.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start a stopped Kusto cluster by name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Start-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster
 ```
 
-{{ Add description here }}
+The above command starts the stopped Kusto cluster named "mykustocluster" found in the resource group "testrg".
 
-### Example 2: {{ Add title here }}
+### Example 2: Start a stopped Kusto cluster by piping
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster | Start-AzKustoCluster
 ```
 
-{{ Add description here }}
+The above command gets the Kusto cluster named "mykustocluster" found in the resource group "testrg" using the `Get-AzKustoCluster` cmdlet, and then pipes the result to `Start-AzKustoCluster` to start it.
 
 ## PARAMETERS
 
