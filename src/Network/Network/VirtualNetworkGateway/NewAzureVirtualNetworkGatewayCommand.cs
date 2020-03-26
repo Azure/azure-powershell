@@ -483,6 +483,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 foreach (var address in this.IpConfigurationBgpPeeringAddresses)
                 {
+                    address.IpconfigurationId = FormatIdBgpPeeringAddresses(address.IpconfigurationId, this.ResourceGroupName, this.Name);
                     vnetGateway.BgpSettings.BgpPeeringAddresses.Add(address);
                 }
             }
