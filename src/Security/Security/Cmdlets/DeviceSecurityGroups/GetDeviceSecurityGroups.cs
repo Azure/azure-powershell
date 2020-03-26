@@ -21,8 +21,8 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.DeviceSecurityGroups
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeviceSecurityGroups", DefaultParameterSetName = ParameterSetNames.ResourceIdScope), OutputType(typeof(PSDeviceSecurityGroup))]
-    public class GetDeviceSecurityGroups : SecurityCenterCmdletBase
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeviceSecurityGroup", DefaultParameterSetName = ParameterSetNames.ResourceIdScope), OutputType(typeof(PSDeviceSecurityGroup))]
+    public class GetDeviceSecurityGroup : SecurityCenterCmdletBase
     {
         private const int MaxGroupsToFetch = 1500;
 

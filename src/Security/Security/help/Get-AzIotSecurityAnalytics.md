@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzExternalSecuritySolution
 schema: 2.0.0
 ---
 
@@ -12,15 +12,8 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### SolutionLevelResource (Default)
 ```
-Get-AzIotSecurityAnalytics -ResourceGroupName <String> -SolutionName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### SolutionScope
-```
-Get-AzIotSecurityAnalytics -ResourceGroupName <String> -SolutionName <String>
+Get-AzIotSecurityAnalytics -ResourceGroupName <String> -SolutionName <String> -Defualt <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -47,6 +40,21 @@ Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Defualt
+Get the default analytics set or the list of all analytics sets.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

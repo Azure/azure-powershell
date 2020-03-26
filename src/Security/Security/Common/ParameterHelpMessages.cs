@@ -39,11 +39,10 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string RecommendationsConfiguration = "Recommendations configuration.";
         public const string UnmaskedIpLoggingStatus = "Unmasked ip logging status.";
         public const string HubResourceId = "IoT Hub resource Id.";
-        public const string ThresholdRules = "Threshold rules.";
-        public const string TimeWindowRules = "Time window rules.";
-        public const string AllowlistRules = "Allow list rules.";
-        public const string DenylistRules = "Deny list rules.";
-
+        public const string IsDefualt = "Get the default analytics set or the list of all analytics sets.";
+        public const string RecommendationType = "Recommendation type.";
+        public const string Query = "Query.";
+        public const string QuerySubscriptions = "Query subscriptions.";
         #endregion
 
         #region Workspace Settings
@@ -89,6 +88,24 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         public const string Disable = "Disables Threat Protection Policy";
         public const string Enable = "Enables Threat Protection Policy";
+
+        #endregion
+
+        #region Device Security Groups
+
+        public const string ThresholdRules = "Threshold rules.";
+        public const string TimeWindowRules = "Time window rules.";
+        public const string AllowlistRules = "Allow list rules.";
+        public const string DenylistRules = "Deny list rules.";
+        public const string TimeWindowSize = "Time window size.";
+        public const string MinThreshold = "Minimum threshold.";
+        public const string MaxThreshold = "Maximum threshold.";
+        public const string Description = "Description.";
+        public const string IsEnabled = "Is rule enabled.";
+        public const string RuleType = "Rule type.";
+        public const string ValueType = "Value type.";
+        public const string AllowlistValues = "Allow list values.";
+        public const string DenylistValues = "Deny list values.";
 
         #endregion
     }

@@ -14,6 +14,7 @@
 using Commands.Security;
 using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups;
+using Microsoft.Azure.Commands.SecurityCenter.Common;
 using Microsoft.Azure.Management.Security.Models;
 using System;
 using System.Collections.Generic;
@@ -22,8 +23,8 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.DeviceSecurityGroups
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeviceSecurityGroups", DefaultParameterSetName = ParameterSetNames.ResourceIdLevelResource), OutputType(typeof(PSDeviceSecurityGroup))]
-    public class SetDeviceSecurityGroups : SecurityCenterCmdletBase
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeviceSecurityGroup", DefaultParameterSetName = ParameterSetNames.ResourceIdLevelResource, SupportsShouldProcess = true), OutputType(typeof(PSDeviceSecurityGroup))]
+    public class SetDeviceSecurityGroup : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceIdLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceName)]
         [ValidateNotNullOrEmpty]
@@ -34,24 +35,69 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.DeviceSecurityGroups
         public string HubResourceId { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceIdLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.ThresholdRules)]
-        public List<PSThresholdCustomAlertRule> ThresholdRules { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.ThresholdRules)]
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.ThresholdRules)]
+        public PSThresholdCustomAlertRule[] ThresholdRule { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceIdLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.TimeWindowRules)]
-        public List<PSTimeWindowCustomAlertRule> TimeWindowRules { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.TimeWindowRules)]
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.TimeWindowRules)]
+        public PSTimeWindowCustomAlertRule[] TimeWindowRule { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceIdLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.AllowlistRules)]
-        public List<PSAllowlistCustomAlertRule> AllowlistRules { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.AllowlistRules)]
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.AllowlistRules)]
+        public PSAllowlistCustomAlertRule[] AllowlistRule { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceIdLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.DenylistRules)]
-        public List<PSDenylistCustomAlertRule> DenylistRules { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.DenylistRules)]
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.DenylistRules)]
+        public PSDenylistCustomAlertRule[] DenylistRule { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
+        [ValidateNotNullOrEmpty]
+        public PSDeviceSecurityGroup InputObject { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            DeviceSecurityGroup group = new DeviceSecurityGroup();
-            group.AllowlistRules = AllowlistRules?.CreatePSType();
-            group.DenylistRules = DenylistRules?.CreatePSType();
-            group.ThresholdRules = ThresholdRules?.CreatePSType();
-            group.TimeWindowRules = TimeWindowRules?.CreatePSType();
+            switch (ParameterSetName)
+            {
+                case ParameterSetNames.ResourceIdLevelResource:
+                    break;
+                case ParameterSetNames.InputObject:
+                    Name = InputObject.Name;
+                    var subscription = AzureIdUtilities.GetResourceSubscription(InputObject.Id);
+                    var rg = AzureIdUtilities.GetResourceGroup(InputObject.Id);
+                    var hubName = AzureIdUtilities.GetIotHubResourceName(InputObject.Id);
+                    HubResourceId = $"/subscriptions/{subscription}/resourceGroups/{rg}/providers/Microsoft.Devices/iotHubs/{hubName}";
+
+                    AllowlistRule = AllowlistRule ?? ((List<PSAllowlistCustomAlertRule>)InputObject.AllowlistRules).ToArray();
+                    DenylistRule = DenylistRule ?? ((List<PSDenylistCustomAlertRule>)InputObject.DenylistRules).ToArray();
+                    ThresholdRule = ThresholdRule ?? ((List<PSThresholdCustomAlertRule>)InputObject.ThresholdRules).ToArray();
+                    TimeWindowRule = TimeWindowRule ?? ((List<PSTimeWindowCustomAlertRule>)InputObject.TimeWindowRules).ToArray();
+                    break;
+                case ParameterSetNames.ResourceId:
+                    Name = AzureIdUtilities.GetResourceName(ResourceId);
+                    subscription = AzureIdUtilities.GetResourceSubscription(ResourceId);
+                    rg = AzureIdUtilities.GetResourceGroup(ResourceId);
+                    hubName = AzureIdUtilities.GetIotHubResourceName(ResourceId);
+                    HubResourceId = $"/subscriptions/{subscription}/resourceGroups/{rg}/providers/Microsoft.Devices/iotHubs/{hubName}";
+                    break;
+                default:
+                    throw new PSInvalidOperationException();
+            }
+
+            DeviceSecurityGroup group = new DeviceSecurityGroup
+            {
+                AllowlistRules = AllowlistRule?.CreatePSType(),
+                DenylistRules = DenylistRule?.CreatePSType(),
+                ThresholdRules = ThresholdRule?.CreatePSType(),
+                TimeWindowRules = TimeWindowRule?.CreatePSType()
+            };
 
             if (ShouldProcess(Name, VerbsCommon.Set))
             {
