@@ -79,9 +79,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Alias("UserPrincipalName")]
         [Parameter(Mandatory = false, HelpMessage = "If speicify this parameter, the user identity values returned in the owner and group fields of each list entry will be transformed from Azure Active Directory Object IDs to User Principal Names. " 
             + "If not speicify this parameter, the values will be returned as Azure Active Directory Object IDs. Note that group and application Object IDs are not translated because they do not have unique friendly names.")]
-        public SwitchParameter UserPrincipalName { get; set; }
+        public SwitchParameter OutputUserPrincipalName { get; set; }
 
         // Overwrite the useless parameter
         public override int? ConcurrentTaskCount { get; set; }
@@ -117,7 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             BlobRequestOptions requestOptions = RequestOptions;
             bool useFlatBlobListing = this.Recurse.IsPresent ? true : false;
 
-            IEnumerator<Page<PathItem>> enumerator = fileSystem.GetPaths(this.Path, this.Recurse, this.UserPrincipalName.IsPresent)
+            IEnumerator<Page<PathItem>> enumerator = fileSystem.GetPaths(this.Path, this.Recurse, this.OutputUserPrincipalName.IsPresent)
                 .AsPages(this.ContinuationToken, this.MaxCount)
                 .GetEnumerator();
 

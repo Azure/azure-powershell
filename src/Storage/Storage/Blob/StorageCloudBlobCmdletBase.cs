@@ -556,5 +556,91 @@ namespace Microsoft.WindowsAzure.Commands.Storage
 
             return fileSystem;
         }
+
+        //only support the common blob properties for block blob and page blob
+        //http://msdn.microsoft.com/en-us/library/windowsazure/ee691966.aspx
+        protected static Dictionary<string, Action<BlobProperties, string>> validCloudBlobProperties =
+            new Dictionary<string, Action<BlobProperties, string>>(StringComparer.OrdinalIgnoreCase)
+            {
+                {"CacheControl", (p, v) => p.CacheControl = v},
+                {"ContentDisposition", (p, v) => p.ContentDisposition = v},
+                {"ContentEncoding", (p, v) => p.ContentEncoding = v},
+                {"ContentLanguage", (p, v) => p.ContentLanguage = v},
+                {"ContentMD5", (p, v) => p.ContentMD5 = v},
+                {"ContentType", (p, v) => p.ContentType = v},
+            };
+
+        /// <summary>
+        /// check whether the blob properties is valid
+        /// </summary>
+        /// <param name="properties">Blob properties table</param>
+        protected void ValidateBlobProperties(Hashtable properties)
+        {
+            if (properties == null)
+            {
+                return;
+            }
+
+            foreach (DictionaryEntry entry in properties)
+            {
+                if (!validCloudBlobProperties.ContainsKey(entry.Key.ToString()))
+                {
+                    throw new ArgumentException(String.Format(Resources.InvalidBlobProperties, entry.Key.ToString(), entry.Value.ToString()));
+                }
+            }
+        }
+
+        /// <summary>
+        /// set blob properties to a blob object
+        /// </summary>
+        /// <param name="azureBlob">CloudBlob object</param>
+        /// <param name="meta">blob properties hashtable</param>
+        protected static void SetBlobProperties(CloudBlob blob, Hashtable properties)
+        {
+            if (properties == null)
+            {
+                return;
+            }
+
+            foreach (DictionaryEntry entry in properties)
+            {
+                string key = entry.Key.ToString();
+                string value = entry.Value.ToString();
+                Action<BlobProperties, string> action = validCloudBlobProperties[key];
+
+                if (action != null)
+                {
+                    action(blob.Properties, value);
+                }
+            }
+        }
+
+        /// <summary>
+        /// set blob metadata to a blob object
+        /// </summary>
+        /// <param name="azureBlob">CloudBlob object</param>
+        /// <param name="meta">meta data hashtable</param>
+        protected static void SetBlobMeta(CloudBlob blob, Hashtable meta)
+        {
+            if (meta == null)
+            {
+                return;
+            }
+
+            foreach (DictionaryEntry entry in meta)
+            {
+                string key = entry.Key.ToString();
+                string value = entry.Value.ToString();
+
+                if (blob.Metadata.ContainsKey(key))
+                {
+                    blob.Metadata[key] = value;
+                }
+                else
+                {
+                    blob.Metadata.Add(key, value);
+                }
+            }
+        }
     }
 }

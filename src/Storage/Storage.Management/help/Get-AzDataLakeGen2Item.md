@@ -13,7 +13,7 @@ Gets the details of a file or directory in a filesystem.
 ## SYNTAX
 
 ```
-Get-AzDataLakeGen2Item [-FileSystem] <String> [[-Path] <String>] [-Context <IStorageContext>]
+Get-AzDataLakeGen2Item [-FileSystem] <String> [-Path <String>] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -162,7 +162,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
