@@ -25,6 +25,8 @@
     - New-AzVirtualHub
     - Update-AzVirtualHub
 * Removed Sql Management SDK dependency
+* Added 'New-AzIpConfigurationBgpPeeringAddressObject'
+* Updated 'Set-AzVirtualNetworkGateway' and 'New-AzVirtualNetworkGateway'
 
 ## Version 2.3.2
 * Updated Sql Management SDK.

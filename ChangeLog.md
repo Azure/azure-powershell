@@ -39,8 +39,6 @@
 * Fixed a naming-difference issue in PrivateLinkServiceConnectionState class.
     - Mapping the field ActionsRequired to ActionRequired.
 * Added PublicNetworkAccess to 'New-AzSqlServer' and 'Set-AzSqlServer'
-* Added 'New-AzIpConfigurationBgpPeeringAddressObject'
-* Updated 'Set-AzVirtualNetworkGateway' and 'New-AzVirtualNetworkGateway'
 
 #### Az.Resources
 * Fixed for null reference bug in 'Get-AzRoleAssignment'
