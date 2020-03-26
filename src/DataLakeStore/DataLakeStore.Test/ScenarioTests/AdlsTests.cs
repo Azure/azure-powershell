@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreAccountTiers -location '{0}'", AdlsTestsBase.ResourceGroupLocation));
         }
 
-        [Fact(Skip = "This case has been unstable on Linux for approximately 20% of failure. Needs investigation.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFileSystem()
         {
