@@ -72,6 +72,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public Hashtable Desired { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Allows to only partially update the tags and desired properties of a device twin.")]
+        public SwitchParameter Partial { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(this.DeviceId, Properties.Resources.UpdateIotHubDeviceTwin))
@@ -116,7 +119,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     deviceTwin.Properties.Desired = new TwinCollection(JsonConvert.SerializeObject(this.Desired));
                 }
 
-                this.WriteObject(registryManager.UpdateTwinAsync(this.DeviceId, deviceTwin, deviceTwin.ETag).GetAwaiter().GetResult());
+                if (this.Partial.IsPresent)
+                {
+                    this.WriteObject(registryManager.UpdateTwinAsync(this.DeviceId, deviceTwin, deviceTwin.ETag).GetAwaiter().GetResult());
+                }
+                else
+                {
+                    this.WriteObject(registryManager.ReplaceTwinAsync(this.DeviceId, deviceTwin, deviceTwin.ETag).GetAwaiter().GetResult());
+                }
             }
         }
     }

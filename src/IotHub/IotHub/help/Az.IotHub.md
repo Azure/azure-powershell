@@ -155,9 +155,6 @@ Update an IoT Hub device.
 ### [Set-AzIotHubDeviceParent](Set-AzIotHubDeviceParent.md)
 Set the parent device of the specified device.
 
-### [Set-AzIotHubDeviceTwin](Set-AzIotHubDeviceTwin.md)
-Replaces tags and desired properties of a device twin.
-
 ### [Set-AzIotHubDistributedTracing](Set-AzIotHubDistributedTracing.md)
 Update the distributed tracing options for a device.
 

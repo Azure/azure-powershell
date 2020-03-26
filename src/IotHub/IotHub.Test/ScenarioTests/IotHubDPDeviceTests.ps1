@@ -67,25 +67,25 @@ function Test-AzureRmIotHubDeviceLifecycle
 	$device1twin = Get-AzIotHubDeviceTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
 	Assert-True { $device1twin.DeviceId -eq $device1}
 
-	# Update device twin
+	# Partial update device twin
 	$tags1 = @{}
 	$tags1.Add('Test1', '1')
-	$updateddevice1twin1 = Update-AzIotHubDeviceTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -tag $tags1
+	$updateddevice1twin1 = Update-AzIotHubDeviceTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -tag $tags1 -Partial
 	Assert-True { $updateddevice1twin1.DeviceId -eq $device1}
 	Assert-True { $updateddevice1twin1.tags.Count -eq 1}
 
 	$tags2 = @{}
 	$tags2.Add('Test2', '2')
-	$updateddevice1twin2 = Update-AzIotHubDeviceTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -tag $tags2
+	$updateddevice1twin2 = Update-AzIotHubDeviceTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -tag $tags2 -Partial
 	Assert-True { $updateddevice1twin2.DeviceId -eq $device1}
 	Assert-True { $updateddevice1twin2.tags.Count -eq 2}
 
-	# Set device twin
+	# Update device twin
 	$tags3 = @{}
 	$tags3.Add('Test3', '3')
-	$setdevice1twin = Set-AzIotHubDeviceTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -tag $tags3
-	Assert-True { $setdevice1twin.DeviceId -eq $device1}
-	Assert-True { $setdevice1twin.tags.Count -eq 1}
+	$updateddevice1twin3 = Update-AzIotHubDeviceTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -tag $tags3
+	Assert-True { $updateddevice1twin3.DeviceId -eq $device1}
+	Assert-True { $updateddevice1twin3.tags.Count -eq 1}
 
 	# Get all devices
 	$devices = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName

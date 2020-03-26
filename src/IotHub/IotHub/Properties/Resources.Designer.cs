@@ -293,15 +293,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replace Device Twin.
-        /// </summary>
-        internal static string SetIotHubDeviceTwin {
-            get {
-                return ResourceManager.GetString("SetIotHubDeviceTwin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Update Distributed Tracing.
         /// </summary>
         internal static string SetIotHubDistributedTracing {

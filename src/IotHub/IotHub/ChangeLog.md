@@ -24,7 +24,6 @@
 * Manage IoT device twin configuration, New cmdlets are:
     - `Get-AzIotHubDeviceTwin`
     - `Update-AzIotHubDeviceTwin`
-    - `Set-AzIotHubDeviceTwin`
 
 ## Version 2.2.0
 * Added support to manage devices in an Iot Hub. New Cmdlets are:
