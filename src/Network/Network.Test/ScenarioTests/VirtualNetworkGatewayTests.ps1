@@ -281,6 +281,13 @@ function Test-SetVirtualNetworkGatewayCRUD
 	  Assert-AreEqual $asn $gateway.BgpSettings.Asn 
 	  Assert-AreEqual $peerWeight $gateway.BgpSettings.PeerWeight
 
+      # BGPPeeringAddresses
+      $ipconfigurationId1 = $gateway.ipconfigurations[0].id
+      $addresslist1 = @('169.254.21.10')
+      $gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
+      $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -IpConfigurationBgpPeeringAddresses $gw1ipconfBgp1
+       Assert-AreEqual $ipconfigurationId1 $gateway.BgpSettings.BGPPeeringAddresses[0].IpConfigurationId
+
 	  # Tags
 	  $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -Tag @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" }
 	  Assert-AreEqual 2 $gateway.Tag.Count
