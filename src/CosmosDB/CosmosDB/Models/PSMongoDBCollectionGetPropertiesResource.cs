@@ -21,6 +21,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     {
         public PSMongoDBCollectionGetPropertiesResource(MongoDBCollectionGetPropertiesResource mongoDBCollectionGetPropertiesResource)
         {
+            Id = mongoDBCollectionGetPropertiesResource.Id;
+            if (mongoDBCollectionGetPropertiesResource.ShardKey != null)
+            {
+                ShardKey = new Dictionary<string, string>(mongoDBCollectionGetPropertiesResource.ShardKey);
+            }
             List<PSMongoIndex> psMongoIndex = new List<PSMongoIndex>();
             if (mongoDBCollectionGetPropertiesResource.Indexes != null)
             {

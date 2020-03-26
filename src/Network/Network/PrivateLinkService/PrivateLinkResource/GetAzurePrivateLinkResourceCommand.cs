@@ -13,17 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Management.Network;
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Management.Network.Models;
-using Microsoft.Rest.Azure;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkServiceProvider;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Network.Models;
 using System;
-using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -46,31 +40,15 @@ namespace Microsoft.Azure.Commands.Network
             string Name = resourceIdentifier.ResourceName;
             string ResourceType = resourceIdentifier.ResourceType;
 
-            IPrivateLinkProvider provider = BuildProvider(ResourceType);
+            IPrivateLinkProvider provider = PrivateLinkProviderFactory.CreatePrivateLinkProvder(this, resourceIdentifier.Subscription, ResourceType);
             if (provider == null)
             {
                 throw new ArgumentException(string.Format(Properties.Resources.InvalidResourceId, this.PrivateLinkResourceId));
             }
-
+            
             var plrs = provider.ListPrivateLinkResource(ResourceGroupName, Name);
             WriteObject(plrs, true);
 
-        }
-
-        protected IPrivateLinkProvider BuildProvider(string resourceType)
-        {
-            IPrivateLinkProvider provider = null;
-
-            switch (resourceType.ToLower())
-            {
-                case "microsoft.sql/servers":
-                    provider = new SqlProvider(this);
-                    break;
-                default:
-                    break;
-            }
-
-            return provider;
         }
     }
 }

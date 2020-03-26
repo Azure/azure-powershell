@@ -19,8 +19,10 @@
 -->
 ## Upcoming Release
 * Fixed `Get-AzResource -ResourceGroupName -Name -ExpandProperties -ResourceType` to use actual apiVersion of resources instead of default apiVersion [#11267]
-* Add correlationId logging for error scenarios
+* Added correlationId logging for error scenarios
+* Small documentation change to `Get-AzResourceLock`. Added example.
 * Escaped single quote in parameter value of `Get-AzADUser` [#11317]
+* Added new cmdlets for Deployment Scripts (`Get-AzDeploymentScript`, `Get-AzDeploymentScriptLog`, `Save-AzDeploymentScriptLog`, `Remove-AzDeploymentScript`)
 
 ## Version 1.12.0
 * Fixed for null reference bug in `Get-AzRoleAssignment`

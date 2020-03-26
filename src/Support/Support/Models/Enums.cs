@@ -24,6 +24,13 @@ namespace Microsoft.Azure.Commands.Support.Models
     {
         Minimal,
         Moderate,
-        Critical
+        Critical,
+        HighestCriticalImpact
+    }
+
+    public enum Status
+    {
+        Open,
+        Closed
     }
 }

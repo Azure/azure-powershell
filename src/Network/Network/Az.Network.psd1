@@ -56,8 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.3'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Network.dll', 
-               'Microsoft.Azure.Management.Sql.dll'
+RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Network.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -247,6 +246,10 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzNetworkWatcherTroubleshootingResult', 
                'Get-AzNetworkWatcherFlowLogStatus', 
                'Set-AzNetworkWatcherConfigFlowLog', 
+               'New-AzNetworkWatcherFlowLog', 
+               'Set-AzNetworkWatcherFlowLog', 
+               'Get-AzNetworkWatcherFlowLog', 
+               'Remove-AzNetworkWatcherFlowLog', 
                'Test-AzNetworkWatcherConnectivity', 
                'Get-AzNetworkWatcherReachabilityReport', 
                'Get-AzNetworkWatcherReachabilityProvidersList', 
@@ -396,6 +399,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Update-AzVirtualHubVnetConnection', 'Get-AzVpnServerConfiguration', 
                'New-AzVpnServerConfiguration', 'Remove-AzVpnServerConfiguration', 
                'Update-AzVpnServerConfiguration', 'Get-AzP2sVpnGateway', 
+               'Disconnect-AzP2sVpnGatewayVpnConnection',
                'Get-AzP2sVpnGatewayConnectionHealth', 
                'Get-AzP2sVpnGatewayDetailedConnectionHealth', 
                'Get-AzP2sVpnGatewayVpnProfile', 'New-AzP2sVpnGateway', 
@@ -447,6 +451,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Stop-AzVirtualNetworkGatewayPacketCapture', 
                'Start-AzVirtualNetworkGatewayConnectionPacketCapture', 
                'Stop-AzVirtualNetworkGatewayConnectionPacketCapture', 
+               'Disconnect-AzVirtualNetworkGatewayVpnConnection',
                'New-AzFirewallPolicyNetworkRule', 
                'New-AzFirewallPolicyApplicationRule', 
                'New-AzFirewallPolicyNatRuleCollection', 

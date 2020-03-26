@@ -38,21 +38,23 @@ ResourceGroupName : resourceGroup
 ServerName        : server
 DatabaseName      : database
 SensitivityLabels : {{
-                        SchemaName: schema1,
-                        TableName: table1,
-                        ColumnName: column1,
-                        SensitivityLabel: label1,
-                        InformationType: informationType1,
+                        SchemaName: dbo,
+                        TableName: Report,
+                        ColumnName: ReportEmailBody,
+                        InformationType: Contact Info
                     }, {
-                        SchemaName: schema2,
-                        TableName: table2,
-                        ColumnName: column2,
-                        SensitivityLabel: label2,
+                        SchemaName: dbo,
+                        TableName: Report,
+                        ColumnName: ReportEmailSubject,
+                        SensitivityLabel: Confidential,
+                        Rank: Medium
                     }, {
-                        SchemaName: schema3,
-                        TableName: table3,
-                        ColumnName: column3,
-                        SensitivityLabel: label3,
+                        SchemaName: dbo,
+                        TableName: EMailLog,
+                        ColumnName: BounceEmailSubject,
+                        SensitivityLabel: Confidential,
+                        InformationType: Contact Info,
+                        Rank: Medium
                     }}
 ```
 
@@ -64,21 +66,23 @@ ResourceGroupName : resourceGroup
 ServerName        : server
 DatabaseName      : database
 SensitivityLabels : {{
-                        SchemaName: schema1,
-                        TableName: table1,
-                        ColumnName: column1,
-                        SensitivityLabel: label1,
-                        InformationType: informationType1,
+                        SchemaName: dbo,
+                        TableName: Report,
+                        ColumnName: ReportEmailBody,
+                        InformationType: Contact Info
                     }, {
-                        SchemaName: schema2,
-                        TableName: table2,
-                        ColumnName: column2,
-                        SensitivityLabel: label2,
+                        SchemaName: dbo,
+                        TableName: Report,
+                        ColumnName: ReportEmailSubject,
+                        SensitivityLabel: Confidential,
+                        Rank: Medium
                     }, {
-                        SchemaName: schema3,
-                        TableName: table3,
-                        ColumnName: column3,
-                        SensitivityLabel: label3,
+                        SchemaName: dbo,
+                        TableName: EMailLog,
+                        ColumnName: BounceEmailSubject,
+                        SensitivityLabel: Confidential,
+                        InformationType: Contact Info,
+                        Rank: Medium
                     }}
 ```
 

@@ -14,10 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Management.Sql;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
@@ -36,23 +34,6 @@ namespace Microsoft.Azure.Commands.Network
     public partial class NetworkClient
     {
         public INetworkManagementClient NetworkManagementClient { get; set; }
-
-        public ISqlManagementClient SqlManagementClient
-        {
-            get
-            {
-                if (sqlManagementClient == null)
-                {
-                    sqlManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(azureContext, AzureEnvironment.Endpoint.ResourceManager);
-                }
-                return sqlManagementClient;
-            }
-            set
-            {
-                sqlManagementClient = value;
-            }
-        }
-        private ISqlManagementClient sqlManagementClient = null;
 
         private IAzureContext azureContext;
 
