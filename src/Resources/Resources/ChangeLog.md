@@ -18,7 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.12.0
 * Fix for null reference bug in GetAzureRoleAssignmentCommand
+* Updated `Get-AzResourceGroup` to perform resource group tag filtering on server-side
+* Extended Tag cmdlets to accept -ResourceId
+    - Get-AzTag -ResourceId
+    - New-AzTag -ResourceId
+    - Remove-AzTag -ResourceId
+* Added new Tag cmdlet
+    - Update-AzTag -ResourceId
+* Brought ScopedDeployment from SDK 3.3.0 
 * Breaking changes for policy cmdlets to support typed pipeline objects
 * Add Get-AzDeploymentWhatIf cmdlet for getting ARM template What-If at subscription scope.
     - Alias: Get-AzSubscriptionDeploymentWhatIf.

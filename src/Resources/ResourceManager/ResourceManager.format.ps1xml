@@ -454,6 +454,10 @@
                 <Label>ResourceId</Label>
                 <PropertyName>Id</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsTable</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

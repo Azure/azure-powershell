@@ -120,7 +120,13 @@ Use respective parameters to list assignments to a specific user, or to list ass
 Lists all Azure RBAC roles that are available for assignment.
 
 ### [Get-AzTag](Get-AzTag.md)
-Gets predefined Azure tags.
+Gets predefined Azure tags | Gets the entire set of tags on a resource or subscription.
+
+### [Get-AzTenantDeployment](Get-AzTenantDeployment.md)
+Get deployment at tenant scope
+
+### [Get-AzTenantDeploymentOperation](Get-AzTenantDeploymentOperation.md)
+Get deployment operation for deployment at tenant scope
 
 ### [Get-AzTenantDeployment](Get-AzTenantDeployment.md)
 Get deployment at tenant scope
@@ -202,7 +208,10 @@ Then, modify its properties as required.
 Finally, use this command to create a custom role using role definition.
 
 ### [New-AzTag](New-AzTag.md)
-Creates a predefined Azure tag or adds values to an existing tag.
+Creates a predefined Azure tag or adds values to an existing tag | Creates or updates the entire set of tags on a resource or subscription.
+
+### [New-AzTenantDeployment](New-AzTenantDeployment.md)
+Create a deployment at tenant scope
 
 ### [New-AzTenantDeployment](New-AzTenantDeployment.md)
 Create a deployment at tenant scope
@@ -282,7 +291,10 @@ The role to be deleted is specified using the Id property of the role.
 Delete will fail if there are existing role assignments made to the custom role.
 
 ### [Remove-AzTag](Remove-AzTag.md)
-Deletes predefined Azure tags or values.
+Deletes predefined Azure tags or values | Deletes the entire set of tags on a resource or subscription.
+
+### [Remove-AzTenantDeployment](Remove-AzTenantDeployment.md)
+Removes a deployment at tenant scope and any associated operations
 
 ### [Remove-AzTenantDeployment](Remove-AzTenantDeployment.md)
 Removes a deployment at tenant scope and any associated operations
@@ -368,4 +380,7 @@ Updates an existing active directory user.
 
 ### [Update-AzManagementGroup](Update-AzManagementGroup.md)
 Updates a Management Group
+
+### [Update-AzTag](Update-AzTag.md)
+Selectively updates the set of tags on a resource or subscription.
 
