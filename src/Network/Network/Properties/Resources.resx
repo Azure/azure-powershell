@@ -656,4 +656,7 @@
   <data name="InvalidFlowLogResourceId" xml:space="preserve">
     <value>Provided flowLog resourceId is invalid.</value>
   </data>
+  <data name="InvalidFqdn" xml:space="preserve">
+    <value>The Fqdn specified is invalid.</value>
+  </data>
 </root>
