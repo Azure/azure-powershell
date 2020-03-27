@@ -89,7 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group of the virtual machine.
+Specifies the name of the resource group of the Storage Account.
 
 ```yaml
 Type: System.String
