@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzIpConfigurationBgpPeeringAddressObject
 
 ## SYNOPSIS
-creates a new IpconfigurationBgpPeeringAddressObject.
+creates a new IpconfigurationBgpPeeringAddressObject
 
 ## SYNTAX
 
@@ -18,10 +18,8 @@ New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId <String>
  -CustomAddress <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
-
-The IpConfigurationBgpPeeringAddressObject is the object representing BgpPeeringAddresses property in your virtual network gateway bgpsettings in in Azure.
-The **New-AzIpConfigurationBgpPeeringAddressObject** cmdlet creates a object of type AzIpConfigurationBgpPeeringAddressObject.
-There must be one IpConfigurationBgpPeeringAddressObject for each ipconfiguration in virtual networkgateway.
+## DESCRIPTION
+The **New-AzIpConfigurationBgpPeeringAddressObject** creates a IpConfigurationBgpPeeringAddressObject object which represents BgpPeeringAddresses property in your virtual network gateway bgpsettings.
 
 ## EXAMPLES
 
@@ -32,8 +30,7 @@ $addresslist1 = @('169.254.21.5')
 $gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddresses -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
 ```
 
-The above will create a IpConfigurationBgpPeeringAddressObject.
-This new object will be to gw1ipconfBgp1.
+The above will create a IpConfigurationBgpPeeringAddressObject.This new object will be to gw1ipconfBgp1.
 
 ## PARAMETERS
 
@@ -117,8 +114,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-### System.String
-### System.Collections.Generic.List
 
 ### None
 
