@@ -26,7 +26,7 @@ Set-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Administrator
 Set-AzSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-AdministratorPassword <SecureString>]
  [-Edition <String>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
  [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
- [-InstancePoolName <String>] [-Force] [-ComputeGeneration <String>] [-AsJob]
+ [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-Force] [-ComputeGeneration <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Set-AzSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-AdministratorP
 Set-AzSqlInstance [-ResourceId] <String> [-AdministratorPassword <SecureString>] [-Edition <String>]
  [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-PublicDataEndpointEnabled <Boolean>]
  [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity] [-InstancePoolName <String>]
- [-Force] [-ComputeGeneration <String>] [-AsJob]
+ [-MinimalTlsVersion <String>] [-Force] [-ComputeGeneration <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -258,6 +258,22 @@ Determines which License Type to use. Possible values are:
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimalTlsVersion
+The minimal TLS version to enforce for Managed instance 
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, 1.0, 1.1, 1.2
 
 Required: False
 Position: Named

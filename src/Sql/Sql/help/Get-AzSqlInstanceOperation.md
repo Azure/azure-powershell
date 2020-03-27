@@ -131,7 +131,7 @@ This command gets operation with id '/subscriptions/a8c9a924-06c0-4bde-9788-e7b1
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 The name of the instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameterSet, ListByManagedInstanceParameterSet
 Aliases: InstanceName
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 The name of the operation.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: DefaultParameterSet
 Aliases: OperationName
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameterSet, ListByManagedInstanceParameterSet
 Aliases:
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 The managed instance operation resource identifier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByManagedInstanceOperationResourceIdentifierParameterSet
 Aliases:
 
