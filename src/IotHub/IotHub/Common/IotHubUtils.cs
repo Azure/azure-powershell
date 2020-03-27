@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
         public static string GetIotHubName(string Id)
         {
             if (string.IsNullOrEmpty(Id)) return null;
-            Regex r = new Regex(@"(.*?)/IotHubs/(?<iothubname>\S+)/certificates/(.*?)", RegexOptions.IgnoreCase);
+            Regex r = new Regex(@"(.*?)/IotHubs/(?<iothubname>[^\s/]+)", RegexOptions.IgnoreCase);
             Match m = r.Match(Id);
             return m.Success ? m.Groups["iothubname"].Value : null;
         }

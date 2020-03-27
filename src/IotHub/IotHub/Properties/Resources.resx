@@ -219,4 +219,7 @@
   <data name="SetIotHubDistributedTracing" xml:space="preserve">
     <value>Update Distributed Tracing</value>
   </data>
+  <data name="UpdateIotHubDeviceTwin" xml:space="preserve">
+    <value>Update Device Twin</value>
+  </data>
 </root>
