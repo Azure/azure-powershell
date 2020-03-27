@@ -1,0 +1,5 @@
+bin
+obj
+.vs
+generated/modules/
+test/*-TestResults.xml
