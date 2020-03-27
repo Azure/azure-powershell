@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.PowerShell
 
         public PsHelpTypeInfo[] InputTypes { get; }
         public PsHelpTypeInfo[] OutputTypes { get; }
-        public PsHelpExampleInfo[] Examples { get; }
+        public PsHelpExampleInfo[] Examples { get; set; }
         public string[] Aliases { get; }
 
         public PsParameterHelpInfo[] Parameters { get; }
@@ -117,6 +117,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.PowerShell
             Code = exampleObject.GetProperty<string>("code");
             Remarks = exampleObject.GetProperty<PSObject[]>("remarks").EmptyIfNull().ToDescriptionText();
         }
+        public PsHelpExampleInfo(MarkdownExampleHelpInfo markdownExample)
+        {
+            Title = markdownExample.Name;
+            Code = markdownExample.Code;
+            Remarks = markdownExample.Description;
+        }
+
+        public static implicit operator PsHelpExampleInfo(MarkdownExampleHelpInfo markdownExample) => new PsHelpExampleInfo(markdownExample);
     }
 
     internal class PsParameterHelpInfo

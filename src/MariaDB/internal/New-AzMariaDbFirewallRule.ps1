@@ -12,24 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Creates a new firewall rule or updates an existing firewall rule.
 .Description
 Creates a new firewall rule or updates an existing firewall rule.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-FIREWALLRULE <IFirewallRule>: Represents a server firewall rule.
-  EndIPAddress <String>: The end IP address of the server firewall rule. Must be IPv4 format.
-  StartIPAddress <String>: The start IP address of the server firewall rule. Must be IPv4 format.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule
 #>

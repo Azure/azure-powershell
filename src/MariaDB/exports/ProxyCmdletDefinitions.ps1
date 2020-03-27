@@ -12,32 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Gets information about a configuration of server.
 .Description
 Gets information about a configuration of server.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconfiguration
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconfiguration
 #>
@@ -184,32 +173,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Gets information about a server firewall rule.
 .Description
 Gets information about a server firewall rule.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbfirewallrule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbfirewallrule
 #>
@@ -356,15 +334,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 List all the replicas for a given server.
 .Description
 List all the replicas for a given server.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbreplica
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbreplica
 #>
@@ -492,32 +476,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Gets information about a server.
 .Description
 Gets information about a server.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbserver
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbserver
 #>
@@ -659,32 +632,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Gets a virtual network rule.
 .Description
 Gets a virtual network rule.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbvirtualnetworkrule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbvirtualnetworkrule
 #>
@@ -837,38 +799,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Creates a new firewall rule or updates an existing firewall rule.
 .Description
 Creates a new firewall rule or updates an existing firewall rule.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-FIREWALLRULE <IFirewallRule>: Represents a server firewall rule.
-  EndIPAddress <String>: The end IP address of the server firewall rule. Must be IPv4 format.
-  StartIPAddress <String>: The start IP address of the server firewall rule. Must be IPv4 format.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule
 #>
@@ -1048,38 +993,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Creates or updates an existing virtual network rule.
 .Description
 Creates or updates an existing virtual network rule.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbvirtualnetworkrule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
 
-VNETRULE <IVirtualNetworkRule>: A virtual network rule.
-  VirtualNetworkSubnetId <String>: The ARM resource id of the virtual network subnet.
-  [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Create firewall rule before the virtual network has vnet service endpoint enabled.
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbvirtualnetworkrule
 #>
@@ -1263,32 +1191,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Deletes a server firewall rule.
 .Description
 Deletes a server firewall rule.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbfirewallrule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbfirewallrule
 #>
@@ -1449,32 +1366,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Deletes a server.
 .Description
 Deletes a server.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbserver
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbserver
 #>
@@ -1629,32 +1535,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Deletes the virtual network rule with the given name.
 .Description
 Deletes the virtual network rule with the given name.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbvirtualnetworkrule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbvirtualnetworkrule
 #>
@@ -1815,38 +1710,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Creates a new firewall rule or updates an existing firewall rule.
 .Description
 Creates a new firewall rule or updates an existing firewall rule.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbfirewallrule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-FIREWALLRULE <IFirewallRule>: Represents a server firewall rule.
-  EndIPAddress <String>: The end IP address of the server firewall rule. Must be IPv4 format.
-  StartIPAddress <String>: The start IP address of the server firewall rule. Must be IPv4 format.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbfirewallrule
 #>
@@ -2032,38 +1910,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Creates or updates an existing virtual network rule.
 .Description
 Creates or updates an existing virtual network rule.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbvirtualnetworkrule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
 
-VNETRULE <IVirtualNetworkRule>: A virtual network rule.
-  VirtualNetworkSubnetId <String>: The ARM resource id of the virtual network subnet.
-  [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Create firewall rule before the virtual network has vnet service endpoint enabled.
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbvirtualnetworkrule
 #>
@@ -2253,44 +2114,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 
 .Description
 
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconnectionstring
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Outputs
-System.String
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IServer>: Identity Parameter
-  Location <String>: The location the resource resides in.
-  [Tag <ITrackedResourceTags>]: Application-specific metadata in the form of key-value pairs.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [AdministratorLogin <String>]: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
-  [EarliestRestoreDate <DateTime?>]: Earliest restore point creation time (ISO8601 format)
-  [FullyQualifiedDomainName <String>]: The fully qualified domain name of a server.
-  [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-  [MasterServerId <String>]: The master server id of a replica server.
-  [ReplicaCapacity <Int32?>]: The maximum number of replicas that a master server can have.
-  [ReplicationRole <String>]: The replication role of the server.
-  [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
-  [SkuFamily <String>]: The family of hardware.
-  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-  [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
-  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
-  [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
-  [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
-  [StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]: Enable Geo-redundant or not for server backup.
-  [StorageProfileStorageAutogrow <StorageAutogrow?>]: Enable Storage Auto Grow.
-  [StorageProfileStorageMb <Int32?>]: Max storage allowed for a server.
-  [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
-  [Version <ServerVersion?>]: Server version.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconnectionstring
 #>
@@ -2425,15 +2263,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 
 .Description
 
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
 #>
@@ -2632,44 +2476,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 
 .Description
 
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserverreplica
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IServer>: The source server object to restore from.
-  Location <String>: The location the resource resides in.
-  [Tag <ITrackedResourceTags>]: Application-specific metadata in the form of key-value pairs.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [AdministratorLogin <String>]: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
-  [EarliestRestoreDate <DateTime?>]: Earliest restore point creation time (ISO8601 format)
-  [FullyQualifiedDomainName <String>]: The fully qualified domain name of a server.
-  [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-  [MasterServerId <String>]: The master server id of a replica server.
-  [ReplicaCapacity <Int32?>]: The maximum number of replicas that a master server can have.
-  [ReplicationRole <String>]: The replication role of the server.
-  [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
-  [SkuFamily <String>]: The family of hardware.
-  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-  [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
-  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
-  [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
-  [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
-  [StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]: Enable Geo-redundant or not for server backup.
-  [StorageProfileStorageAutogrow <StorageAutogrow?>]: Enable Storage Auto Grow.
-  [StorageProfileStorageMb <Int32?>]: Max storage allowed for a server.
-  [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
-  [Version <ServerVersion?>]: Server version.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserverreplica
 #>
@@ -2834,32 +2655,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 
 .Description
 
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restart-azmariadbserver
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: 
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restart-azmariadbserver
 #>
@@ -2999,44 +2809,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 
 .Description
 
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restore-azmariadbserver
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IServer>: 
-  Location <String>: The location the resource resides in.
-  [Tag <ITrackedResourceTags>]: Application-specific metadata in the form of key-value pairs.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [AdministratorLogin <String>]: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
-  [EarliestRestoreDate <DateTime?>]: Earliest restore point creation time (ISO8601 format)
-  [FullyQualifiedDomainName <String>]: The fully qualified domain name of a server.
-  [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-  [MasterServerId <String>]: The master server id of a replica server.
-  [ReplicaCapacity <Int32?>]: The maximum number of replicas that a master server can have.
-  [ReplicationRole <String>]: The replication role of the server.
-  [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
-  [SkuFamily <String>]: The family of hardware.
-  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-  [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
-  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
-  [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
-  [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
-  [StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]: Enable Geo-redundant or not for server backup.
-  [StorageProfileStorageAutogrow <StorageAutogrow?>]: Enable Storage Auto Grow.
-  [StorageProfileStorageMb <Int32?>]: Max storage allowed for a server.
-  [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
-  [Version <ServerVersion?>]: Server version.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restore-azmariadbserver
 #>
@@ -3202,32 +2989,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 
 .Description
 
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbconfiguration
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-SERVEROBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbconfiguration
 #>
@@ -3385,32 +3161,21 @@ end {
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 
 .Description
 
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserver
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserver
 #>

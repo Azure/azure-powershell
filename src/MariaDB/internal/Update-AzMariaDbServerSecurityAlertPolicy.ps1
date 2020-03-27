@@ -12,43 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Creates or updates a threat detection policy.
 .Description
 Creates or updates a threat detection policy.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserversecurityalertpolicy
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerSecurityAlertPolicy
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerSecurityAlertPolicy
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
 
-PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
-  State <ServerSecurityAlertPolicyState>: Specifies the state of the policy, whether it is enabled or disabled.
-  [DisabledAlert <String[]>]: Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly
-  [EmailAccountAdmin <Boolean?>]: Specifies that the alert is sent to the account administrators.
-  [EmailAddress <String[]>]: Specifies an array of e-mail addresses to which the alert is sent.
-  [RetentionDay <Int32?>]: Specifies the number of days to keep in the Threat Detection audit logs.
-  [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
-  [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserversecurityalertpolicy
 #>

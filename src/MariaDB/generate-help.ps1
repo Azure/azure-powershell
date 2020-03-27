@@ -44,8 +44,8 @@ $modulePath = $modulePsd1.FullName
 $moduleName = $modulePsd1.BaseName
 
 # Load DLL to use build-time cmdlets
-Import-Module -Name (Join-Path $PSScriptRoot './bin/Az.MariaDb.private.dll')
 Import-Module -Name $modulePath
+Import-Module -Name (Join-Path $PSScriptRoot './bin/Az.MariaDb.private.dll')
 $instance = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Module]::Instance
 # Module info is shared per profile
 $moduleInfo = Get-Module -Name $moduleName

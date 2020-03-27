@@ -12,38 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 Creates a new firewall rule or updates an existing firewall rule.
 .Description
 Creates a new firewall rule or updates an existing firewall rule.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbfirewallrule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+PS C:\> {{ Add code here }}
 
-FIREWALLRULE <IFirewallRule>: Represents a server firewall rule.
-  EndIPAddress <String>: The end IP address of the server firewall rule. Must be IPv4 format.
-  StartIPAddress <String>: The start IP address of the server firewall rule. Must be IPv4 format.
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
-  [ConfigurationName <String>]: The name of the server configuration.
-  [DatabaseName <String>]: The name of the database.
-  [FirewallRuleName <String>]: The name of the server firewall rule.
-  [Id <String>]: Resource identity path
-  [LocationName <String>]: The name of the location.
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
-  [ServerName <String>]: The name of the server.
-  [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+{{ Add output here }}
+
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbfirewallrule
 #>

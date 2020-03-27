@@ -356,6 +356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.PowerShell
         public string Description { get; }
         public string Synopsis { get; }
 
+        public string[] Examples { get; }
         public string[] Inputs { get; }
         public string[] Outputs { get; }
 
@@ -372,6 +373,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.PowerShell
             // If there is no Synopsis, PowerShell may put in the Syntax string as the Synopsis. This seems unintended, so we remove the Synopsis in this situation.
             var synopsis = helpInfo.Synopsis.EmptyIfNull().Trim().StartsWith(variantGroup.CmdletName) ? String.Empty : helpInfo.Synopsis;
             Synopsis = synopsis.NullIfEmpty() ?? Description;
+
+            Examples = helpInfo.Examples.Select(rl => rl.Code).ToArray();
 
             Inputs = (variantGroup.ParameterGroups.Where(pg => pg.IsInputType).Select(pg => pg.ParameterType.FullName).ToArray().NullIfEmpty() ??
                       helpInfo.InputTypes.Where(it => it.Name.NullIfWhiteSpace() != null).Select(it => it.Name).ToArray())

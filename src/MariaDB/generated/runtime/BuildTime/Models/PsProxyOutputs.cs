@@ -261,13 +261,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.PowerShell
             var notesText = !String.IsNullOrEmpty(notes) ? $"{Environment.NewLine}.Notes{Environment.NewLine}{ComplexParameterHeader}{notes}" : String.Empty;
             var relatedLinks = String.Join(Environment.NewLine, CommentInfo.RelatedLinks.Select(l => $".Link{Environment.NewLine}{l}"));
             var relatedLinksText = !String.IsNullOrEmpty(relatedLinks) ? $"{Environment.NewLine}{relatedLinks}" : String.Empty;
+            var examples = "";
+            foreach (var example in VariantGroup.HelpInfo.Examples)
+            {
+                examples = examples + ".Example" + "\r\n" + example.Code + "\r\n";
+            }
             return $@"<#
 .Synopsis
 {CommentInfo.Synopsis.ToDescriptionFormat(false)}
 .Description
 {CommentInfo.Description.ToDescriptionFormat(false)}
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: {CommentInfo.OnlineVersion}{inputsText}{outputsText}{notesText}
+{examples}
 .Link
 {CommentInfo.OnlineVersion}{relatedLinksText}
 #>
