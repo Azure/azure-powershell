@@ -30,7 +30,7 @@ Gets keys for a self-hosted integration runtime.
 Gets metric data for an integration runtime. 
 
 ### [Get-AzureRmDataFactoryV2IntegrationRuntimeNode](Get-AzureRmDataFactoryV2IntegrationRuntimeNode.md)
-Gets an integration runtime node infomation.
+Gets an integration runtime node information.
 
 ### [Get-AzureRmDataFactoryV2LinkedService](Get-AzureRmDataFactoryV2LinkedService.md)
 Gets information about linked services in Data Factory.
