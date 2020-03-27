@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
         DefaultParameterSetName = StopByNameAndManagedInstanceAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceOperationModel))]
-    public class RemoveAzureSqlManagedInstanceOperation : ManagedInstanceOperationCmdletBase
+    public class StopAzureSqlManagedInstanceOperation : ManagedInstanceOperationCmdletBase
     {
         protected const string StopByNameAndManagedInstanceAndResourceGroupParameterSet =
             "StopByNameAndManagedInstanceAndResourceGroupParameterSet";
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
         [Alias("OperationName")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstance/operations", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public System.Guid Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the instance to use.
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
         protected override IEnumerable<Model.AzureSqlManagedInstanceOperationModel> GetEntity()
         {
             return new List<Model.AzureSqlManagedInstanceOperationModel>() {
-                ModelAdapter.GetManagedInstanceOperation(this.ResourceGroupName, this.ManagedInstanceName, this.Name)
+                ModelAdapter.GetManagedInstanceOperation(this.ResourceGroupName, this.ManagedInstanceName, System.Guid.Parse(this.Name))
             };
         }
 
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
         /// <returns>The instance that was deleted</returns>
         protected override IEnumerable<Model.AzureSqlManagedInstanceOperationModel> PersistChanges(IEnumerable<Model.AzureSqlManagedInstanceOperationModel> entity)
         {
-            ModelAdapter.CancelManagedInstanceOperation(this.ResourceGroupName, this.ManagedInstanceName, this.Name);
+            ModelAdapter.CancelManagedInstanceOperation(this.ResourceGroupName, this.ManagedInstanceName, System.Guid.Parse(this.Name));
             return entity;
         }
 
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 ManagedInstanceName = InputObject.ManagedInstanceName;
-                Name = System.Guid.Parse(InputObject.Name);
+                Name = InputObject.Name;
             }
             else if (string.Equals(this.ParameterSetName, StopByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
@@ -154,12 +154,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
 
                 ResourceGroupName = resourceInfo.ResourceGroupName;
                 ManagedInstanceName = resourceInfo.ParentResource.Split('/')[1];
-                Name = System.Guid.Parse(resourceInfo.ResourceName);
+                Name = resourceInfo.ResourceName;
             }
 
             if (!Force.IsPresent && !ShouldContinue(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlInstanceOperationDescription, this.Name.ToString(), this.ManagedInstanceName),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlInstanceOperationWarning, this.Name.ToString(), this.ManagedInstanceName)))
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlInstanceOperationDescription, this.Name, this.ManagedInstanceName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlInstanceOperationWarning, this.Name, this.ManagedInstanceName)))
             {
                 return;
             }
