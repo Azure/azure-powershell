@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Get-AzDeploymentWhatIfResult cmdlet for getting ARM template What-If at subscription scope.
+    - Alias: Get-AzSubscriptionDeploymentWhatIf.
+* Add Get-AzDeploymentResourceGroupWhatIfResult cmdlet for getting ARM template What-If at resource group scope.
+* Override -WhatIf and -Confirm parameters for New-AzDeployment and New-AzResourceGroupDeployment to use ARM template What-If output.
 
 ## Version 1.12.0
 * Fix for null reference bug in GetAzureRoleAssignmentCommand
@@ -30,10 +34,6 @@
     - Update-AzTag -ResourceId
 * Brought ScopedDeployment from SDK 3.3.0 
 * Breaking changes for policy cmdlets to support typed pipeline objects
-* Add Get-AzDeploymentWhatIf cmdlet for getting ARM template What-If at subscription scope.
-    - Alias: Get-AzSubscriptionDeploymentWhatIf.
-* Add Get-AzDeploymentResourceGroupWhatIf cmdlet for getting ARM template What-If at resource group scope.
-* Override -WhatIf and -Confirm parameters for New-AzDeployment and New-AzResourceGroupDeployment to use ARM template What-If output.
 
 ## Version 1.11.0
 * Refactored template deployment cmdlets
