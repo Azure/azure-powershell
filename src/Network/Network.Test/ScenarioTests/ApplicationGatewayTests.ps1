@@ -1458,8 +1458,8 @@ function Test-KeyVaultIntegrationTest
 		}
 		else
 		{
-			$secretId01 = "https://$keyVaultName.vault.azure.net/secrets/$sslCert01Name"
-			$secretId02 = "https://$keyVaultName.vault.azure.net/secrets/$sslCert02Name"
+			$secretId01 = "https://$keyVaultName.vault.azure.net:443/secrets/$sslCert01Name/"
+			$secretId02 = "https://$keyVaultName.vault.azure.net:443/secrets/$sslCert02Name/"
 		}
 
 		# virtual network

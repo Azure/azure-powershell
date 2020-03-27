@@ -78,8 +78,8 @@ namespace Commands.Network.Test.ScenarioTests
             if (!string.IsNullOrEmpty(environmentConnectionString))
             {
                 var connectionInfo = new ConnectionString(Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION"));
-                var mode = connectionInfo.GetValue<HttpRecorderMode>(ConnectionStringKeys.HttpRecorderModeKey);
-                if (mode == HttpRecorderMode.Playback)
+                var mode = connectionInfo.GetValue<string>(ConnectionStringKeys.HttpRecorderModeKey);
+                if (mode == HttpRecorderMode.Playback.ToString())
                 {
                     servicePrincipal = HttpMockServer.GetVariable("spn", "fake");
                 }
