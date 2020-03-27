@@ -20,9 +20,6 @@
 
 ## Upcoming Release
 
-## Version 0.1.4
-* Publishing release version of Maintenance cmdlets for GA
-
 ## Version 0.1.3
 * Got `Az-MaintenanceConfiguration` will honor filters while listing maintenance configurations
 
