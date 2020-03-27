@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Aks
         public int OsDiskSize { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine. Default value is Standard_D2_v2.")]
-        public string VmSize { get; set; }
+        public string VmSize { get; set; } = "Standard_D2_v2";
 
         [Parameter(Mandatory = false, HelpMessage = "VNet SubnetID specifies the VNet's subnet identifier.")]
         public string VnetSubnetID { get; set; }

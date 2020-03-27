@@ -35,9 +35,16 @@ Create a new node pool in specified cluster.
 
 ## EXAMPLES
 
-### Create windows node pool
+### Create node pool with default parameters
 ```powershell
-PS C:\> New-AzAksNodePool -ResourceGroupName myResouceGroup -ClusterName myCluster -Name windefault -KubernetesVersion 1.15.5  -VmSetType VirtualMachineScaleSets -OsType Windows -EnableAutoScaling -EnableNodePublicIP
+PS C:\> New-AzAksNodePool -ResourceGroupName myResouceGroup -ClusterName myCluster -Name mydefault
+```
+
+### Create Windows Server container on an AKS
+```powershell
+PS C:\> $cred = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
+PS C:\> New-AzAks -ResourceGroupName myResourceGroup -Name myCluster -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
+PS C:\> New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
 ```
 
 ## PARAMETERS
@@ -303,7 +310,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmSize
-The size of the Virtual Machine.
+The size of the Virtual Machine. Default value is Standard_D2_v2.
 
 ```yaml
 Type: System.String
@@ -368,7 +375,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
 
 ## OUTPUTS
 

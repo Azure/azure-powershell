@@ -26,22 +26,24 @@ New-AzAks [-Force] [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-Node
 
 ## DESCRIPTION
 
-Create a new managed Kubernetes cluster.
+Create a new Azure Kubernetes Service(AKS) cluster.
 
 ## EXAMPLES
 
-### Create a new managed Kubernetes cluster with default params.
+### New an AKS with default params.
 
 ```
 PS C:\> New-AzAks -ResourceGroupName myResourceGroup -Name myCluster
 ```
 
-### Create a new managed Kubernetes cluster using Windows Server container.
+### Create Windows Server container on an AKS.
+To create Windows Server container on an AKS, you must specify at least four following parameters when creating the AKS, and the value for `NetworkPlugin` and `NodeVmSetType` must be `azure` and `VirtualMachineScaleSets` respectively.
+`-WindowsProfileAdminUserName *** -WindowsProfileAdminUserPassword *** -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets`
 
 ```
 PS C:\> $cred = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
-PS C:\> New-AzAks -ResourceGroupName myResourceGroup -Name myCluster -KubernetesVersion 1.15.7 -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
-PS C:\> New-AzAksNodePool -ResourceGroupName myResourceGroup -Name myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
+PS C:\> New-AzAks -ResourceGroupName myResourceGroup -Name myCluster -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
+PS C:\> New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
 ```
 
 ## PARAMETERS
@@ -408,7 +410,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeVmSize
-The size of the Virtual Machine.
+The size of the Virtual Machine. Default value is Standard_D2_v2.
 
 ```yaml
 Type: System.String
@@ -499,7 +501,7 @@ Accept wildcard characters: False
 ```
 
 ### -WindowsProfileAdminUserPassword
-The administrator password to use for Windows VMs
+The administrator password to use for Windows VMs, its length must be at least 12, containing at least one lower case character, i.e. `[a-z]`, one `[A-Z]` and one special character `[!@#$%^&*()]`.
 
 ```yaml
 Type: System.Security.SecureString
