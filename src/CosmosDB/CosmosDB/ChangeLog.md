@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Allowing Account Creation for API Types: Gremlin, Cassandra and Table.
+* Bug Fixes
+
+## Version 0.1.2
+* Updated the Azure.Management.CosmosDB Sdk Version to 1.0.2 
+    -Fix bugs related to https://github.com/Azure/azure-sdk-for-net/issues/10639
 
 ## Version 0.1.2
 * Updated the Azure.Management.CosmosDB Sdk Version to 1.0.2 

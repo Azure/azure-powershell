@@ -127,7 +127,7 @@ function Test-PrivateEndpointConnectionCRUD
     # Setup
     $rgname = Get-ResourceGroupName;
     $rname = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "eastus2";
+    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "eastus";
     # Dependency parameters
     $IpConfigurationName = "IpConfigurationName";
     $vnetName = Get-ResourceName;
@@ -186,11 +186,13 @@ function Test-PrivateEndpointConnectionCRUD
         Assert-NotNull $pecApprove;
         Assert-AreEqual "Approved" $pecApprove.PrivateLinkServiceConnectionState.Status
 
-        Start-TestSleep 30000
+        Start-TestSleep 20000
 
         # Remove Private Endpoint Connection
         $pecRemove = Remove-AzPrivateEndpointConnection -ResourceId $pecGet.Id -PassThru -Force
         Assert-AreEqual true $pecRemove
+
+        Start-TestSleep 15000
 
         # Get Private Endpoint Connection again
         $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $sqlResourceId
