@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azdeploymentwhatif
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azdeploymentwhatifresult
 schema: 2.0.0
 ---
 
-# Get-AzDeploymentWhatIf
+# Get-AzDeploymentWhatIfResult
 
 ## SYNOPSIS
 Gets an ARM template What-If result for a deployment at subscription scope. 
@@ -14,96 +14,96 @@ Gets an ARM template What-If result for a deployment at subscription scope.
 
 ### ByTemplateFileWithNoParameters (Default)
 ```
-Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterObject
 ```
-Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterObject
 ```
-Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateParameterObject <Hashtable> -TemplateFile <String> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterObject
 ```
-Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateParameterObject <Hashtable> -TemplateUri <String> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterFile
 ```
-Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateParameterFile <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterFile
 ```
-Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateParameterFile <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterFile
 ```
-Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateParameterFile <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterUri
 ```
-Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateParameterUri <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterUri
 ```
-Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateParameterUri <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterUri
 ```
-Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateParameterUri <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectWithNoParameters
 ```
-Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
 ```
-Get-AzDeploymentWhatIf [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzDeploymentWhatIf** cmdlet gets the ARM template What-If result for a template deployment at the current subscription scope. It returns a list of changes indicating what resources will be updated if the deployment is applied without making any changes to real resources. To specify the format for the returning result, use the *ResultFormat* parameter.
+The **Get-AzDeploymentWhatIfResult** cmdlet gets the ARM template What-If result for a template deployment at the current subscription scope. It returns a list of changes indicating what resources will be updated if the deployment is applied without making any changes to real resources. To specify the format for the returning result, use the *ResultFormat* parameter.
 
 ## EXAMPLES
 
 ### Example 1: Get a What-If result at subscription scope
 ```powershell
-PS C:\> Get-AzDeploymentWhatIf `
+PS C:\> Get-AzDeploymentWhatIfResult `
     -DeploymentName "deploy-01" `
     -Location "West US" `
     -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" `
@@ -119,7 +119,7 @@ The command uses the *ResultFormat* parameter to set the What-If result to inclu
 
 ### Example 2: Get a What-If result at subscription scope with ResourceIdOnly
 ```powershell
-PS C:\> Get-AzDeploymentWhatIf `
+PS C:\> Get-AzDeploymentWhatIfResult `
     -DeploymentName "deploy-01" `
     -Location "West US" `
     -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" `

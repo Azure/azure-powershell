@@ -49,7 +49,7 @@ Get deployment
 ### [Get-AzDeploymentOperation](Get-AzDeploymentOperation.md)
 Get deployment operation
 
-### [Get-AzDeploymentWhatIf](Get-AzDeploymentWhatIf.md)
+### [Get-AzDeploymentWhatIfResult](Get-AzDeploymentWhatIfResult.md)
 Gets the ARM template What-If result for a deployment at subscription scope. 
 
 ### [Get-AzLocation](Get-AzLocation.md)
@@ -102,7 +102,7 @@ Gets the deployments in a resource group.
 ### [Get-AzResourceGroupDeploymentOperation](Get-AzResourceGroupDeploymentOperation.md)
 Gets the resource group deployment operation
 
-### [Get-AzResourceGroupDeploymentWhatIf](Get-AzResourceGroupDeploymentWhatIf.md)
+### [Get-AzResourceGroupDeploymentWhatIfResult](Get-AzResourceGroupDeploymentWhatIfResult.md)
 Gets the ARM template What-If result for a deployment at resource group scope. 
 
 ### [Get-AzResourceLock](Get-AzResourceLock.md)
