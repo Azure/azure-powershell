@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.2
+
 * Added breaking change attributes to `New-AzKeyVault`
 
 ## Version 1.5.1
