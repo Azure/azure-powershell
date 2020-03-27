@@ -12,6 +12,7 @@ creates a new IpconfigurationBgpPeeringAddressObject.
 
 ## SYNTAX
 
+### Default (Default)
 ```
 New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId <String>
  -CustomAddress <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
