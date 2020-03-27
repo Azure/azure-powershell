@@ -15,16 +15,12 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using Commands.Common.Storage.ResourceModel;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage.Blob;
-    using System;
     using System.Management.Automation;
-    using System.Security.Permissions;
-    using System.Threading.Tasks;
     using System.Collections;
-    using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using global::Azure.Storage.Files.DataLake;
+    using global::Azure.Storage.Files.DataLake.Models;
 
     /// <summary>
     /// create a new azure FileSystem
@@ -46,9 +42,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string FileSystem { get; set; }
 
-        [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = true, HelpMessage =
+        [Parameter(ValueFromPipeline = true, Mandatory = false, HelpMessage =
                 "The path in the specified FileSystem that should be updated. Can be a file or directory " +
-                "In the format 'directory/file.txt' or 'directory1/directory2/'", ParameterSetName = ManualParameterSet)]
+                "In the format 'directory/file.txt' or 'directory1/directory2/'. Not specify this parameter will update the root directory of the Filesystem.", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
@@ -110,6 +106,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         // Overwrite the useless parameter
         public override int? ConcurrentTaskCount { get; set; }
+        public override int? ClientTimeoutPerRequest { get; set; }
+        public override int? ServerTimeoutPerRequest { get; set; }
 
 
         /// <summary>
@@ -135,108 +133,85 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override void ExecuteCmdlet()
         {
             IStorageBlobManagement localChannel = Channel;
-            BlobRequestOptions requestOptions = RequestOptions;
 
             bool foundAFolder = false;
-            CloudBlockBlob blob = null;
-            CloudBlobDirectory blobDir = null;
+
+            DataLakeFileClient fileClient = null;
+            DataLakeDirectoryClient dirClient = null;
             if (ParameterSetName == ManualParameterSet)
             {
-                CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
-                foundAFolder = GetExistDataLakeGen2Item(container, this.Path, out blob, out blobDir);
+                DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);
+                foundAFolder = GetExistDataLakeGen2Item(fileSystem, this.Path, out fileClient, out dirClient);
             }
             else //BlobParameterSet
             {
                 if (!InputObject.IsDirectory)
                 {
-                    blob = (CloudBlockBlob)InputObject.File;
+                    fileClient = InputObject.File;
                 }
                 else
                 {
-                    blobDir = InputObject.Directory;
+                    dirClient = InputObject.Directory;
                     foundAFolder = true;
                 }
             }
 
             if (foundAFolder)
             {
-                if (ShouldProcess(blobDir.Uri.ToString(), "Update Directory: "))
+                if (ShouldProcess(dirClient.Uri.ToString(), "Update Directory: "))
                 {
                     //Set Permission
                     if (this.Permission != null || this.Owner != null || this.Group != null)
                     {
-                        blobDir.FetchAccessControls();
-                        if (this.Permission != null)
-                        {
-                            blobDir.PathProperties.Permissions = PathPermissions.ParseSymbolic(this.Permission);
-                        }
-                        if (this.Owner != null)
-                        {
-                            blobDir.PathProperties.Owner = this.Owner;
-                        }
-                        if (this.Group != null)
-                        {
-                            blobDir.PathProperties.Group = this.Group;
-                        }
-                        blobDir.SetPermissions();
+                        //PathAccessControl originPathAccessControl = dirClient.GetAccessControl().Value;
+                        dirClient.SetPermissions(
+                            this.Permission != null ? PathPermissions.ParseSymbolicPermissions(this.Permission) : null,
+                            this.Owner,
+                            this.Group);
                     }
 
                     //Set ACL            
                     if (this.Acl != null)
                     {
-                        blobDir.PathProperties.ACL = PSPathAccessControlEntry.ParseAccessControls(this.Acl);
-                        blobDir.SetAcl();
+                        dirClient.SetAccessControlList(PSPathAccessControlEntry.ParseAccessControls(this.Acl));
                     }
 
                     // Set Properties
-                    SetBlobDirProperties(blobDir, this.BlobProperties);
+                    SetDatalakegen2ItemProperties(dirClient, this.BlobProperties, setToServer: true);
 
                     //Set MetaData
-                    SetBlobDirMetadata(blobDir, this.BlobMetadata);
+                    SetDatalakegen2ItemMetaData(dirClient, this.BlobMetadata, setToServer: true);
 
-                    blobDir.FetchAttributes();
-                    WriteDataLakeGen2Item(localChannel, blobDir, null, fetchPermission: true);
+                    WriteDataLakeGen2Item(localChannel, dirClient);
                 }
             }
             else
             {
-                if (ShouldProcess(blob.Uri.ToString(), "Update File: "))
+                if (ShouldProcess(fileClient.Uri.ToString(), "Update File: "))
                 {
-                    //Set permission
+                    //Set Permission
                     if (this.Permission != null || this.Owner != null || this.Group != null)
                     {
-                        blob.FetchAccessControls();
-                        if (this.Permission != null)
-                        {
-                            blob.PathProperties.Permissions = PathPermissions.ParseSymbolic(this.Permission);
-                        }
-                        if (this.Owner != null)
-                        {
-                            blob.PathProperties.Owner = this.Owner;
-                        }
-                        if (this.Group != null)
-                        {
-                            blob.PathProperties.Group = this.Group;
-                        }
-                        blob.SetPermissions();
+                        fileClient.SetPermissions(
+                            this.Permission != null ? PathPermissions.ParseSymbolicPermissions(this.Permission) : null,
+                            this.Owner,
+                            this.Group);
                     }
 
-                    //Set ACL               
+                    //Set ACL            
                     if (this.Acl != null)
                     {
-                        blob.PathProperties.ACL = PSPathAccessControlEntry.ParseAccessControls(this.Acl);
-                        blob.SetAcl();
+                        fileClient.SetAccessControlList(PSPathAccessControlEntry.ParseAccessControls(this.Acl));
                     }
 
-                    // Set Blob Properties
-                    SetBlobProperties(blob, this.BlobProperties);
+                    // Set Properties
+                    SetDatalakegen2ItemProperties(fileClient, this.BlobProperties, setToServer: true);
 
-                    //Set Blob MetaData
-                    SetBlobMetaData(blob, this.BlobMetadata);
+                    //Set MetaData
+                    SetDatalakegen2ItemMetaData(fileClient, this.BlobMetadata, setToServer: true);
+
+                    WriteDataLakeGen2Item(localChannel, fileClient);
                 }
-
-                blob.FetchAttributes();
-                WriteDataLakeGen2Item(Channel, blob, null, fetchPermission: true);
             }
         }
     }

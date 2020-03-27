@@ -16,16 +16,16 @@ Create a file or directory in a filesystem.
 ```
 New-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> -Source <String> [-Umask <String>]
  [-Permission <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Force] [-AsJob]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Directory
 ```
 New-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> [-Directory] [-Umask <String>]
  [-Permission <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Force] [-AsJob]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,11 +38,11 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ```
 PS C:\>New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 
-   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
+   FileSystem Name: filesystem1
 
-Name                 IsDirectory  BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime         IsDeleted  Permissions 
-----                 -----------  --------  ------          -----------                    ------------         ---------- ------------         ---------  ----------- 
-dir1/dir2/           True                                   application/octet-stream       2019-10-14 07:54:47Z                                 False      rwx--xrwx
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir1/dir2            True                         2020-03-23 09:15:56Z rwx---rwx    $superuser           $superuser
 ```
 
 This command creates a directory with specified Permission, Umask, properties, and metadata
@@ -53,11 +53,11 @@ PS C:\> $task = New-AzDataLakeGen2Item  -FileSystem "testfilesystem" -Path "dir1
 PS C:\> $task | Wait-Job
 PS C:\> $task.Output
 
-   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
+   FileSystem Name: filesystem1
 
-Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
-----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
-dir1/dir2/file1      False        14400000        application/octet-stream       2019-10-29 09:04:44Z
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group                
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir1/dir2/file1      False        14400000        2020-03-23 09:19:13Z rw-r-----    $superuser           $superuser
 ```
 
 This command creates(upload) a data lake file from a local source file, and the cmdlet runs in background.
@@ -79,13 +79,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClientTimeoutPerRequest
-The client side maximum execution time for each request in seconds.
+### -ConcurrentTaskCount
+The total amount of concurrent async tasks. The default value is 10.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ClientTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -226,21 +226,6 @@ The supported properties for directory are: CacheControl, ContentDisposition, Co
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServerTimeoutPerRequest
-The server time out for each request in seconds.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named

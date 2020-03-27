@@ -28,6 +28,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.IO;
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using global::Azure.Storage.Files.DataLake;
+    using global::Azure.Storage.Files.DataLake.Models;
+    using DataLakeModels = global::Azure.Storage.Files.DataLake.Models;
 
     /// <summary>
     /// create a new DataLakeGen2 Item
@@ -47,6 +50,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private const string defaultFilePermission = "rw-rw-rw-";
         private const string defaultUmask = "----w-rwx";
+
+        private DataLakeFileSystemClient fileSystem;
 
         [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "FileSystem name")]
         [ValidateNotNullOrEmpty]
@@ -117,7 +122,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private Hashtable BlobMetadata = null;
 
         // Overwrite the useless parameter
-        public override int? ConcurrentTaskCount { get; set; }
+        public override int? ClientTimeoutPerRequest { get; set; }
+        public override int? ServerTimeoutPerRequest { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the NewAzDataLakeGen2ItemCommand class.
@@ -162,44 +168,42 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
 
             IStorageBlobManagement localChannel = Channel;
-            BlobRequestOptions requestOptions = RequestOptions;
-            CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
+            fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);
 
             if (this.Directory.IsPresent)
             {
-                CloudBlobDirectory blobDir = container.GetDirectoryReference(this.Path);
-                if (ShouldProcess(blobDir.Uri.ToString(), "Create Directory: "))
+                DataLakeDirectoryClient dirClient = fileSystem.GetDirectoryClient(this.Path);
+                if (ShouldProcess(dirClient.Uri.ToString(), "Create Directory: "))
                 {
-                    if (blobDir.Exists())
+                    if (dirClient.Exists())
                     {
-                        throw new ResourceAlreadyExistException(String.Format("Folder '{0}' already exists.", blobDir.Uri));
+                        throw new ResourceAlreadyExistException(String.Format("Folder '{0}' already exists.", dirClient.Uri));
                     }
-
+                    DataLakeModels.PathPermissions pathPermissions = null;
                     if (this.Permission != null)
                     {
-                        blobDir.PathProperties.Permissions = PathPermissions.ParseSymbolic(this.Permission);
+                        pathPermissions = DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Permission);
                     }
 
                     // Set BlobDir Properties and MetaData
-                    SetBlobDirProperties(blobDir, BlobProperties, setToServer: false);
-                    SetBlobDirMetadata(blobDir, BlobMetadata, setToServer: false);
+                    PathHttpHeaders pathHttpHeaders = SetDatalakegen2ItemProperties(dirClient, BlobProperties, setToServer: false);
+                    IDictionary<string, string> metadata = SetDatalakegen2ItemMetaData(dirClient, BlobMetadata, setToServer: false);
 
-                    blobDir.Create(requestOptions,
-                            this.Umask != null ? PathPermissions.ParseSymbolic(this.Umask) : null);
+                    dirClient.Create(pathHttpHeaders, 
+                        metadata, 
+                        this.Permission, 
+                        this.Umask != null ? DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Umask).ToOctalPermissions() : null);
 
-                    blobDir.FetchAttributes();
-                    WriteDataLakeGen2Item(localChannel, blobDir, null, fetchPermission: true);
+                    WriteDataLakeGen2Item(localChannel, dirClient);
                 }
             }
             else //create File
             {
+                CloudBlobContainer container = Channel.GetContainerReference(this.FileSystem);
                 CloudBlockBlob blob = container.GetBlockBlobReference(this.Path);
 
                 if (ShouldProcess(blob.Uri.ToString(), "Create File: "))
                 {
-                    //SetBlobContent(blob, ResolvedFileName, true);
-
-                    //UploadBlob(taskId, localChannel, blob, filePath);
                     Func<long, Task> taskGenerator = (taskId) => Upload2Blob(taskId, Channel, ResolvedFileName, blob);
                     RunTask(taskGenerator);
                 }
@@ -261,8 +265,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
             {
                 CloudBlob destBlob = destination as CloudBlob;
-                SetBlobProperties((CloudBlockBlob)destBlob, this.BlobProperties, false);
-                SetBlobMetaData((CloudBlockBlob)destBlob, this.BlobMetadata, false);
+                SetAzureBlobContentCommand.SetBlobProperties(destBlob, this.BlobProperties);
+                SetAzureBlobContentCommand.SetBlobMeta(destBlob, this.BlobMetadata);
             };
 
             await DataMovementTransferHelper.DoTransfer(() =>
@@ -279,8 +283,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             // Set blob permission with umask, since create Blob API still not support them
             SetBlobPermissionWithUMask((CloudBlockBlob)blob, this.Permission, this.Umask);
 
-            blob.FetchAttributes();
-            WriteDataLakeGen2Item(localChannel, (CloudBlockBlob)blob, taskId: data.TaskId);
+            //blob.FetchAttributes();
+            WriteDataLakeGen2Item(localChannel, fileSystem.GetFileClient(blob.Name), taskId: data.TaskId);
         }
 
         /// <summary>
@@ -291,7 +295,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="blob">the blob object to set permission with umask</param>
         /// <param name="permission">permission string to set, in format "rwxrwxrwx", default value is "rwxrwxrwx"</param>
         /// <param name="umask">umask string to set, in format "rwxrwxrwx", default value is "----w-rwx"</param>
-        protected static void SetBlobPermissionWithUMask(CloudBlockBlob blob, string permission, String umask)
+        protected void SetBlobPermissionWithUMask(CloudBlockBlob blob, string permission, String umask)
         {
             // Don't need set permission when both input permission and umask are null
             if (string.IsNullOrEmpty(permission) && string.IsNullOrEmpty(umask))
@@ -328,8 +332,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
 
             //Set permission to blob
-            blob.PathProperties.Permissions = PathPermissions.ParseSymbolic(blobPermission);
-            blob.SetPermissions();
+            fileSystem.GetFileClient(blob.Name).SetPermissions(DataLakeModels.PathPermissions.ParseSymbolicPermissions(blobPermission));
         }
     }
 }

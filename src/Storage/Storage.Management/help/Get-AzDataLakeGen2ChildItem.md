@@ -13,10 +13,9 @@ Lists sub directorys and files from a directory or filesystem root.
 ## SYNTAX
 
 ```
-Get-AzDataLakeGen2ChildItem [-FileSystem] <String> [[-Path] <String>] [-FetchPermission] [-Recurse]
- [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>] [-AsJob] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataLakeGen2ChildItem [-FileSystem] <String> [[-Path] <String>] [-FetchProperty] [-Recurse]
+ [-MaxCount <Int32>] [-ContinuationToken <String>] [-AsJob] [-OutputUserPrincipalName]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,28 +28,27 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ```
 PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" 
 
+   FileSystem Name: filesystem1
 
-   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
-
-Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
-----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
-dir1/                True                                                                                                                         
-dir2/                True
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir1                 True                         2020-03-13 13:07:34Z rwxr-x---    $superuser           $superuser          
+dir2                 True                         2020-03-23 09:28:36Z rwxr-x---    $superuser           $superuser
 ```
 
 This command lists the direct sub items from a Filesystem
 
-### Example 2: List recursively from a directory, and fetch permission/owner/ACL
+### Example 2: List recursively from a directory, and fetch Properties/ACL
 ```
-PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -FetchPermission
+PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -FetchProperty
 
+   FileSystem Name: filesystem1
 
-   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
-
-Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
-----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
-dir1/dir1/           True                         application/octet-stream       2019-10-29 04:13:22Z rwxr-x---    $superuser $superuser          
-dir1/dir1/testfile1  False        14400000        application/octet-stream       2019-10-29 04:14:36Z rw-r-----    $superuser $superuser
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir1/dir3            True                         2020-03-23 09:34:31Z rwx---rwx    $superuser           $superuser          
+dir1/file1           False        1024            2020-03-23 09:29:18Z rwx---rwx    $superuser           $superuser           
+dir1/testfile_1K_0   False        1024            2020-03-23 09:29:21Z rw-r-----    $superuser           $superuser
 ```
 
 This command lists the direct sub items from a Filesystem
@@ -96,21 +94,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClientTimeoutPerRequest
-The client side maximum execution time for each request in seconds.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases: ClientTimeoutPerRequestInSeconds
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Context
 Azure Storage Context Object
 
@@ -130,7 +113,7 @@ Accept wildcard characters: False
 Continuation Token.
 
 ```yaml
-Type: Microsoft.Azure.Storage.Blob.BlobContinuationToken
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -156,13 +139,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FetchPermission
-Fetch Blob Permission.
+### -FetchProperty
+Fetch the datalake item properties and ACL.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: FetchPermission
 
 Required: False
 Position: Named
@@ -201,6 +184,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OutputUserPrincipalName
+If speicify this parameter, the user identity values returned in the owner and group fields of each list entry will be transformed from Azure Active Directory Object IDs to User Principal Names. If not speicify this parameter, the values will be returned as Azure Active Directory Object IDs. Note that group and application Object IDs are not translated because they do not have unique friendly names.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: UserPrincipalName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Path
 The path in the specified Filesystem that should be retrieved.
 Should be a directory, in the format 'directory1/directory2/'.
@@ -225,21 +223,6 @@ The default is false.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServerTimeoutPerRequest
-The server time out for each request in seconds.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named

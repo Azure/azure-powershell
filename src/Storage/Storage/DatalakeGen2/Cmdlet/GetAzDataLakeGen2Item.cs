@@ -15,15 +15,10 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using Commands.Common.Storage.ResourceModel;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.Blob;
-    using System;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using System.Threading.Tasks;
-    using System.Collections.Generic;
+    using global::Azure.Storage.Files.DataLake;
 
     /// <summary>
     /// list azure blobs in specified azure FileSystem
@@ -36,14 +31,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string FileSystem { get; set; }
 
-        [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = true, HelpMessage =
+        [Parameter(ValueFromPipeline = true, Mandatory = false, HelpMessage =
                 "The path in the specified FileSystem that should be retrieved. Can be a file or directory " +
-                "In the format 'directory/file.txt' or 'directory1/directory2/'")]
+                "In the format 'directory/file.txt' or 'directory1/directory2/'. Not specify this parameter to get the root directory of the Filesystem.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }        
         
         // Overwrite the useless parameter
         public override int? ConcurrentTaskCount { get; set; }
+        public override int? ClientTimeoutPerRequest { get; set; }
+        public override int? ServerTimeoutPerRequest { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetDataLakeGen2ItemCommand class.
@@ -70,20 +67,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             IStorageBlobManagement localChannel = Channel;
 
-            CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
+            DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);
 
-            try
+            DataLakeFileClient fileClient;
+            DataLakeDirectoryClient dirClient;
+            if (GetExistDataLakeGen2Item(fileSystem, this.Path, out fileClient, out dirClient))
             {
-                CloudBlob blob = (CloudBlob)container.GetBlobReferenceFromServer(this.Path);
-                WriteDataLakeGen2Item(Channel, (CloudBlockBlob)blob, null, fetchPermission: true);
+                // Directory
+                WriteDataLakeGen2Item(localChannel, dirClient);
             }
-            catch (StorageException e) when (e.IsNotFoundException())
+            else 
             {
-                CloudBlobDirectory blobDir = container.GetDirectoryReference(this.Path);
-                blobDir.FetchAttributes();
-                WriteDataLakeGen2Item(localChannel, blobDir, null, fetchPermission: true);
+                //File
+                WriteDataLakeGen2Item(Channel, fileClient);
             }
-
         }
     }
 }

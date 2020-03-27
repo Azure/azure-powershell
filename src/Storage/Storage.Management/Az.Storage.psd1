@@ -66,7 +66,10 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Storage.dll',
                'Microsoft.Azure.Storage.DataMovement.dll', 
                'Microsoft.Azure.DocumentDB.Core.dll', 'Microsoft.OData.Core.dll', 
                'Microsoft.OData.Edm.dll', 'Microsoft.Spatial.dll', 
-               'Microsoft.Azure.KeyVault.Core.dll'
+               'Microsoft.Azure.KeyVault.Core.dll','Azure.Storage.Blobs.dll',
+               'Azure.Storage.Common.dll', 'Azure.Storage.Files.DataLake.dll',
+               'Azure.Core.dll', 'Microsoft.Bcl.AsyncInterfaces.dll',
+               'System.Text.Json.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -163,7 +166,7 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Get-AzDataLakeGen2ChildItem', 'Get-AzDataLakeGen2Item', 
                'New-AzDataLakeGen2Item', 'Move-AzDataLakeGen2Item', 
                'Remove-AzDataLakeGen2Item', 'Update-AzDataLakeGen2Item', 
-               'New-AzDataLakeGen2ItemAclObject', 'Get-AzDataLakeGen2ItemContent',
+               'Set-AzDataLakeGen2ItemAclObject', 'Get-AzDataLakeGen2ItemContent',
                'Enable-AzStorageBlobRestorePolicy','Disable-AzStorageBlobRestorePolicy',
                'New-AzStorageBlobRangeToRestore','Restore-AzStorageBlobRange'
 
@@ -180,7 +183,7 @@ AliasesToExport = 'Get-AzStorageContainerAcl', 'Start-CopyAzureStorageBlob',
                'Set-AzureRmStorageAccountManagementPolicy', 
                'Remove-AzureRmStorageAccountManagementPolicy', 
                'New-AzDatalakeGen2FileSystem', 'Remove-AzDatalakeGen2FileSystem', 
-               'Get-AzDatalakeGen2FileSystem'
+               'Get-AzDatalakeGen2FileSystem','New-AzDataLakeGen2ItemAclObject'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

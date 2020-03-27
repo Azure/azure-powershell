@@ -24,6 +24,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Security.Permissions;
     using System.Threading.Tasks;
     using System.Collections.Generic;
+    using global::Azure.Storage.Files.DataLake;
+    using global::Azure.Storage.Files.DataLake.Models;
+    using global::Azure;
 
     /// <summary>
     /// list azure blobs in specified azure FileSystem
@@ -42,9 +45,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Fetch Blob permission/ACL/owner.")]
+        [Alias("FetchPermission")]
+        [Parameter(Mandatory = false, HelpMessage = "Fetch the datalake item properties and ACL.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter FetchPermission { get; set; }
+        public SwitchParameter FetchProperty{ get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Indicates if will recursively get the Child Item. The default is false.")]
         [ValidateNotNullOrEmpty]
@@ -70,13 +74,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private int InternalMaxCount = int.MaxValue;
 
         [Parameter(Mandatory = false, HelpMessage = "Continuation Token.")]
-        public BlobContinuationToken ContinuationToken { get; set; }
+        public string ContinuationToken { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Alias("UserPrincipalName")]
+        [Parameter(Mandatory = false, HelpMessage = "If speicify this parameter, the user identity values returned in the owner and group fields of each list entry will be transformed from Azure Active Directory Object IDs to User Principal Names. " 
+            + "If not speicify this parameter, the values will be returned as Azure Active Directory Object IDs. Note that group and application Object IDs are not translated because they do not have unique friendly names.")]
+        public SwitchParameter OutputUserPrincipalName { get; set; }
+
         // Overwrite the useless parameter
         public override int? ConcurrentTaskCount { get; set; }
+        public override int? ClientTimeoutPerRequest { get; set; }
+        public override int? ServerTimeoutPerRequest { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetAzDataLakeGen2ChildItemCommand class.
@@ -102,57 +113,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override void ExecuteCmdlet()
         {
             IStorageBlobManagement localChannel = Channel;
-            CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
+            DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);
 
             BlobRequestOptions requestOptions = RequestOptions;
             bool useFlatBlobListing = this.Recurse.IsPresent ? true : false;
-            BlobListingDetails details = BlobListingDetails.Metadata | BlobListingDetails.Copy;
 
-            int listCount = InternalMaxCount;
-            int MaxListCount = 5000;
-            int requestCount = MaxListCount;
-            int realListCount = 0;
-            BlobContinuationToken continuationToken = ContinuationToken;
+            IEnumerator<Page<PathItem>> enumerator = fileSystem.GetPaths(this.Path, this.Recurse, this.OutputUserPrincipalName.IsPresent)
+                .AsPages(this.ContinuationToken, this.MaxCount)
+                .GetEnumerator();
 
-            do
+            Page<PathItem> page;
+            enumerator.MoveNext();
+            page = enumerator.Current;
+            foreach (PathItem item in page.Values)
             {
-                requestCount = Math.Min(listCount, MaxListCount);
-                realListCount = 0;
-                BlobResultSegment blobResult = localChannel.ListBlobsSegmentedAsync(container, this.Path, useFlatBlobListing,
-                    details, requestCount, continuationToken, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false).GetAwaiter().GetResult();
-
-                foreach (IListBlobItem blobItem in blobResult.Results)
-                {
-                    CloudBlob blob = blobItem as CloudBlob;
-
-                    if (blob == null)
-                    {
-                        CloudBlobDirectory blobDir = blobItem as CloudBlobDirectory;
-                        if (blobDir == null)
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            WriteDataLakeGen2Item(localChannel, blobDir, blobResult.ContinuationToken, this.FetchPermission.IsPresent);
-                            realListCount++;
-                        }
-                    }
-                    else
-                    {
-                        WriteDataLakeGen2Item(localChannel, (CloudBlockBlob)blob, blobResult.ContinuationToken, this.FetchPermission.IsPresent);
-                        realListCount++;
-                    }
-                }
-
-                if (InternalMaxCount != int.MaxValue)
-                {
-                    listCount -= realListCount;
-                }
-
-                continuationToken = blobResult.ContinuationToken;
+                WriteDataLakeGen2Item(localChannel, item, fileSystem, page.ContinuationToken, this.FetchProperty.IsPresent);
             }
-            while (listCount > 0 && continuationToken != null);
         }
     }
 }

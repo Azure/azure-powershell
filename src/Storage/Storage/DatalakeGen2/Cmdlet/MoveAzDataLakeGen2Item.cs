@@ -24,6 +24,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Threading.Tasks;
     using System.Collections;
     using System.Collections.Generic;
+    using global::Azure.Storage.Files.DataLake;
+    using global::Azure;
 
     /// <summary>
     /// create a new azure FileSystem
@@ -64,27 +66,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string DestPath { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The umask restricts the permissions of the file or directory to be created. The resulting permission is given by p & ^u, where p is the permission and u is the umask. Symbolic (rwxrw-rw-) is supported. ")]
-        [ValidateNotNullOrEmpty]
-        [ValidatePattern("([r-][w-][x-]){3}")]
-        public string Umask { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "This parameter determines the behavior of the rename operation. The value must be \"legacy\" or \"posix\", and the default value will be \"posix\". ")]
-        public PathRenameMode PathRenameMode
-        {
-            get
-            {
-                return (pathRenameMode == null) ? PathRenameMode.Posix : pathRenameMode.Value;
-            }
-            set
-            {
-                pathRenameMode = value;
-            }
-        }
-        private PathRenameMode? pathRenameMode = null;
+        [Parameter(HelpMessage = "Force to over write the destination.")]
+        public SwitchParameter Force { get; set; }
 
         // Overwrite the useless parameter
         public override int? ConcurrentTaskCount { get; set; }
+        public override int? ClientTimeoutPerRequest { get; set; }
+        public override int? ServerTimeoutPerRequest { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the MoveAzDataLakeGen2ItemCommand class.
@@ -102,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             Channel = channel;
         }
-        
+
         /// <summary>
         /// execute command
         /// </summary>
@@ -112,18 +100,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             BlobRequestOptions requestOptions = RequestOptions;
 
             bool foundAFolder = false;
-            CloudBlockBlob srcBlob = null;
-            CloudBlobDirectory srcBlobDir = null;
+            DataLakeFileClient srcBlob = null;
+            DataLakeDirectoryClient srcBlobDir = null;
             if (ParameterSetName == ManualParameterSet)
             {
-                CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
-                foundAFolder = GetExistDataLakeGen2Item(container, this.Path, out srcBlob, out srcBlobDir);
+                DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);
+                foundAFolder = GetExistDataLakeGen2Item(fileSystem, this.Path, out srcBlob, out srcBlobDir);
             }
             else //BlobParameterSet
             {
                 if (!InputObject.IsDirectory)
                 {
-                    srcBlob = (CloudBlockBlob)InputObject.File;
+                    srcBlob = InputObject.File;
                 }
                 else
                 {
@@ -132,35 +120,54 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
             }
 
-            // Create Dest Blob Dir object
-            CloudBlobContainer destblobContainer = GetCloudBlobContainerByName(localChannel, this.DestFileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
-
-
             if (foundAFolder)
             {
                 if (ShouldProcess(srcBlobDir.Uri.ToString(), "Move Directory: "))
                 {
-                    CloudBlobDirectory destBlobDir = destblobContainer.GetDirectoryReference(this.DestPath);
-                    srcBlobDir.Move(destBlobDir.Uri, null, null, requestOptions, OperationContext,
-                    this.Umask != null ? PathPermissions.ParseSymbolic(this.Umask) : null,
-                    this.pathRenameMode);
-                    destBlobDir.FetchAttributes();
-                    WriteDataLakeGen2Item(localChannel, destBlobDir, null, fetchPermission: true);
+                    // check dest exist
+                    bool destExist = true;
+                    DataLakeFileSystemClient destFileSystem = GetFileSystemClientByName(localChannel, this.DestFileSystem != null ? this.DestFileSystem : this.FileSystem);
+                    DataLakeDirectoryClient destBlobDir = destFileSystem.GetDirectoryClient(this.DestPath);
+                    try
+                    {
+                        destBlobDir.GetProperties();
+                    }
+                    catch (RequestFailedException e) when (e.Status == 404)
+                    {
+                        destExist = false;
+                    }
+
+                    if (this.Force || !destExist || ShouldContinue(string.Format("Overwrite destination {0}", destBlobDir.Uri), ""))
+                    {
+                        destBlobDir = srcBlobDir.Rename(this.DestPath, this.DestFileSystem).Value;
+                        WriteDataLakeGen2Item(localChannel, destBlobDir);
+                    }
                 }
             }
             else
             {
                 if (ShouldProcess(srcBlob.Uri.ToString(), "Move File: "))
                 {
-                    CloudBlockBlob destBlob = destblobContainer.GetBlockBlobReference(this.DestPath);
-                    (srcBlob).Move(destBlob.Uri, null, null, requestOptions, OperationContext,
-                    this.Umask != null ? PathPermissions.ParseSymbolic(this.Umask) : null,
-                    this.pathRenameMode);
-                    destBlob.FetchAttributes();
-                    WriteDataLakeGen2Item(Channel, destBlob, null, fetchPermission: true);
+                    // check dest exist
+                    bool destExist = true;
+                    DataLakeFileSystemClient destFileSystem = GetFileSystemClientByName(localChannel, this.DestFileSystem != null ? this.DestFileSystem : this.FileSystem);
+                    DataLakeFileClient destBlob = destFileSystem.GetFileClient(this.DestPath);
+                    try
+                    {
+                        destBlob.GetProperties();
+                    }
+                    catch (RequestFailedException e) when (e.Status == 404)
+                    {
+                        destExist = false;
+                    }
+
+                    if (this.Force || !destExist || ShouldContinue(string.Format("Overwrite destination {0}", destBlob.Uri), ""))
+                    {
+                        destBlob = srcBlob.Rename(this.DestPath, this.DestFileSystem).Value;
+                        WriteDataLakeGen2Item(localChannel, destBlob);
+                    }
                 }
             }
-
         }
     }
 }

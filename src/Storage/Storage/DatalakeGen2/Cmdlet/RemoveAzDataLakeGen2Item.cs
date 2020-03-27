@@ -19,6 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System;
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using global::Azure.Storage.Files.DataLake;
 
     /// <summary>
     /// remove specified azure FileSystem
@@ -67,6 +68,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         // Overwrite the useless parameter
         public override int? ConcurrentTaskCount { get; set; }
+        public override int? ClientTimeoutPerRequest { get; set; }
+        public override int? ServerTimeoutPerRequest { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the RemoveAzDataLakeGen2ItemCommand class.
@@ -103,43 +106,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             BlobRequestOptions requestOptions = RequestOptions;
 
             bool foundAFolder = false;
-            CloudBlockBlob blob = null;
-            CloudBlobDirectory blobDir = null;
+
+            DataLakeFileClient fileClient = null;
+            DataLakeDirectoryClient dirClient = null;
             if (ParameterSetName == ManualParameterSet)
             {
-                CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
-                foundAFolder = GetExistDataLakeGen2Item(container, this.Path, out blob, out blobDir);
+                DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);
+                foundAFolder = GetExistDataLakeGen2Item(fileSystem, this.Path, out fileClient, out dirClient);
             }
             else //BlobParameterSet
             {
                 if (!InputObject.IsDirectory)
                 {
-                    blob = (CloudBlockBlob)InputObject.File;
+                    fileClient = InputObject.File;
                 }
                 else
                 {
-                    blobDir = InputObject.Directory;
+                    dirClient = InputObject.Directory;
                     foundAFolder = true;
                 }
             }
 
             if (foundAFolder)
             {
-                if (force || ShouldContinue(string.Format("Remove Directory: {0}", blobDir.Uri.ToString()), ""))
+                if (force || ShouldContinue(string.Format("Remove Directory: {0}", dirClient.Uri.ToString()), ""))
                 {
-                    string continuationToken = null;
-                    do
-                    {
-                        continuationToken = blobDir.Delete(requestOptions, continuation: continuationToken);
-                    }
-                    while (!string.IsNullOrEmpty(continuationToken));
+                    dirClient.Delete(true);
                 }
             }
             else
             {
-                if (force || ShouldContinue(string.Format("Remove File: {0}", blob.Uri.ToString()), ""))
+                if (force || ShouldContinue(string.Format("Remove File: {0}", fileClient.Uri.ToString()), ""))
                 {
-                    blob.Delete(options: requestOptions);
+                    fileClient.Delete();
                 }
             }
 

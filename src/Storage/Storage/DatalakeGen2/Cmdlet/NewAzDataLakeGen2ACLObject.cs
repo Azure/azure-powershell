@@ -12,18 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Storage.Blob;
+//using Microsoft.Azure.Storage.Blob;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
+using global::Azure.Storage.Files.DataLake;
+using global::Azure;
+using global::Azure.Storage.Files.DataLake.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DataLakeGen2ItemAclObject"), OutputType(typeof(PSPathAccessControlEntry))]
-    public class NewAzDataLakeGen2ItemAclObjectCommand : AzureDataCmdlet
+    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DataLakeGen2ItemAclObject"), OutputType(typeof(PSPathAccessControlEntry))]
+    [Alias("New-" + Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DataLakeGen2ItemAclObject")]
+    public class SetAzDataLakeGen2ItemAclObjectCommand : AzureDataCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "The user or group identifier. It is omitted for entries of AccessControlType \"mask\" and \"other\". The user or group identifier is also omitted for the owner and owning group.")]
         [ValidateNotNullOrEmpty]
@@ -46,7 +50,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidatePattern("[r-][w-][x-]")]
         public string Permission { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "If input the PSPathAccessControlEntry[] object, will add the new ACL as a new element of the input PSPathAccessControlEntry[] object.")]
+        [Parameter(Mandatory = false, HelpMessage = "If input the PSPathAccessControlEntry[] object, will add the new ACL entry as a new element of the input PSPathAccessControlEntry[] object. If an ACL entry when same AccessControlType, EntityId, DefaultScope exist, will update permission of it.")]
         [ValidateNotNullOrEmpty]
         public PSPathAccessControlEntry[] InputObject { get; set; }       
 
@@ -60,7 +64,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 psacls = new List<PSPathAccessControlEntry>(this.InputObject);
             }
 
-            PSPathAccessControlEntry psacl = new PSPathAccessControlEntry(this.AccessControlType, RolePermissions.ParseSymbolic(this.Permission, false), this.DefaultScope, this.EntityId);
+            // Remove the ACL entry to add if already exist, to avoid duplicated entries
+            PSPathAccessControlEntry entryToRemove = null;
+            foreach (PSPathAccessControlEntry entry in psacls)
+            {
+                if (entry.DefaultScope == this.DefaultScope.IsPresent 
+                    && entry.AccessControlType == this.AccessControlType
+                    && entry.EntityId == this.EntityId)
+                {
+                    entryToRemove = entry;
+                }
+            }
+            if (entryToRemove != null)
+            {
+                psacls.Remove(entryToRemove);
+            }
+
+            PSPathAccessControlEntry psacl = new PSPathAccessControlEntry(this.AccessControlType, PathAccessControlExtensions.ParseSymbolicRolePermissions(this.Permission), this.DefaultScope, this.EntityId);
             psacls.Add(psacl);
 
             WriteObject(psacls.ToArray(), true);
