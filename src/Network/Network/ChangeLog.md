@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 2.4.0
 * Updated cmdlets to allow cross-tenant VirtualHubVnetConnections
     - `New-AzVirtualHubVnetConnection`
     - `Update-AzVirtualHubVnetConnection`

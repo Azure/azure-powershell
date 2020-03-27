@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.8.0
 * Azure Site Recovery added support for doing reprotect and updated vm properties for Azure disk encrypted Virtual Machines.
 * Added Azure Site Recovery VmwareToAzure properties DR monitoring
 * Azure Backup added support for retrying policy update for failed items.

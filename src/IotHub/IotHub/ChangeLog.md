@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.3.0
 * Added support to manage distributed settings per-device. New Cmdlets are:
     - `Get-AzIotHubDistributedTracing`
     - `Set-AzIotHubDistributedTracing`
