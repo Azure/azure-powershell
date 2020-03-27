@@ -21,6 +21,9 @@
 * Added support to manage distributed settings per-device. New Cmdlets are:
     - `Get-AzIotHubDistributedTracing`
     - `Set-AzIotHubDistributedTracing`
+* Manage IoT device twin configuration, New cmdlets are:
+    - `Get-AzIotHubDeviceTwin`
+    - `Update-AzIotHubDeviceTwin`
 
 ## Version 2.2.0
 * Added support to manage devices in an Iot Hub. New Cmdlets are:
