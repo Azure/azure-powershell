@@ -186,18 +186,6 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
                         throw new PSArgumentException(string.Format("TechnicalResourceId {0} does not belong to subscription {1}.", this.TechnicalTicketResourceId, this.SupportClient.SubscriptionId));
                     }
 
-                    var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
-                            DefaultProfile.DefaultContext,
-                            AzureEnvironment.Endpoint.ResourceManager);
-
-                    var oDataQuery = new ODataQuery<GenericResourceFilter>($"resourceGroup eq '{technicalResourceId.ResourceGroupName}' and resourceType eq '{technicalResourceId.ResourceType}' and name eq '{technicalResourceId.ResourceName}'");
-
-                    var result = resourceClient.Resources.List(oDataQuery);
-
-                    if (result.Count() != 1)
-                    {
-                        throw new Exception(string.Format("TechnicalResourceId {0} was not found in subscription {1}.", this.TechnicalTicketResourceId, this.SupportClient.SubscriptionId));
-                    }
                 }
 
                 var customHeaders = new Dictionary<string, List<string>>();
