@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Family { get; set; }
         public string Kind { get; set; }
         public ResourceSkuCapacity Capacity { get; set; }
-        public System.Collections.Generic.IList<string> Locations { get; set; }
+        public IList<string> Locations { get; set; }
         public IList<ResourceSkuLocationInfo> LocationInfo { get; set; }
-        public System.Collections.Generic.IList<string> ApiVersions { get; set; }
+        public IList<string> ApiVersions { get; set; }
         public IList<ResourceSkuCosts> Costs { get; set; }
         public IList<ResourceSkuCapabilities> Capabilities { get; set; }
         public IList<ResourceSkuRestrictions> Restrictions { get; set; }

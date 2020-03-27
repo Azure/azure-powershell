@@ -61,7 +61,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         }
 
         #region cmdlet helpers from the FilesystemProvider
-
+        /// <summary>
+        /// Checks whether type is ByteEncoding
+        /// </summary>
+        /// <param name="encoding"></param>
+        /// <returns></returns>
+        internal static bool UsingByteEncoding(Encoding encoding)
+        {
+            return encoding.GetType() == typeof(ByteEncoding);
+        }
         /// <summary>
         /// Converts the stream type string into an Encoding
         /// </summary>
@@ -85,13 +93,52 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         internal static byte[] GetBytes(object content, Encoding encoding)
         {
-            var contentString = content as string;
-            if (contentString == null)
+            if (UsingByteEncoding(encoding))
             {
-                throw new CloudException(Resources.InvalidContent);
-            }
+                // first attempt to convert it directly into a byte array	
+                var byteArray = content as byte[];
+                if (byteArray != null)
+                {
+                    return byteArray;
+                }
+                /*
+                 *  [byte[]] $byteData = 1,2,3,4,5
+                 * $MyList = [System.Collections.Generic.List[object]]::new()
+                 * $MyList.Add($byteData[0])
+                 * $MyList.Add($byteData[1])
+                 * And then pass $MyList.ToArray() this will pass object[] containing bytes
+                 */
+                // attempt to convert the object into an object array	
+                var contentArray = content as object[];
+                if (contentArray == null)
+                {
+                    throw new CloudException(Resources.InvalidEncoding);
+                }
 
-            return GetBytes(contentString, encoding);
+                // now, for each element in the content array, ensure it is of type byte	
+                var byteList = new List<byte>();
+                foreach (var entry in contentArray)
+                {
+                    if (!(entry is byte))
+                    {
+                        throw new CloudException(Resources.InvalidEncoding);
+                    }
+
+                    byteList.Add((byte)entry);
+                }
+
+                return byteList.ToArray();
+            }
+            else
+            {
+                var contentString = content as string;
+                if (contentString == null)
+                {
+                    throw new CloudException(Resources.InvalidContent);
+                }
+
+                return GetBytes(contentString, encoding);
+            }
         }
 
         internal static string BytesToString(byte[] content, Encoding encoding)

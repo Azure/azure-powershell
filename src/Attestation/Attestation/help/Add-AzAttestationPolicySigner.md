@@ -32,10 +32,10 @@ The Add-AzAttestationPolicySigner cmdlet adds a trusted policy signer for a tena
 ### Example 1
 ```powershell
 PS C:\> $trustedSigner = Get-Content -Path .\trusted.signer.txt
-PS C:\> Add-AzAttestationPolicySigner -Name "myservice" -ResourceGroupName "myrg" -Signer $trustedSigner
+PS C:\> Add-AzAttestationPolicySigner -Name pshtest -ResourceGroupName psh-test-rg -Signer $trustedSigner
 ```
 
-Adds a new trusted signer for the tenant named "myservice".
+Add a trusted signer for the Atteestation Provider named *pshtest*.
 
 ## PARAMETERS
 

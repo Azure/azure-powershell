@@ -13,16 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
-using System;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using MNM = Microsoft.Azure.Management.Network.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -53,11 +48,12 @@ namespace Microsoft.Azure.Commands.Network
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.Name = resourceIdentifier.ResourceName;
+                this.Subscription = resourceIdentifier.Subscription;
                 this.PrivateLinkResourceType = resourceIdentifier.ResourceType.Substring(0,resourceIdentifier.ResourceType.LastIndexOf('/'));
                 this.ServiceName = resourceIdentifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
             }
 
-            IPrivateLinkProvider provider = BuildProvider(this.PrivateLinkResourceType);
+            IPrivateLinkProvider provider = BuildProvider(this.Subscription, this.PrivateLinkResourceType);
 
             var pec = provider.UpdatePrivateEndpointConnectionStatus(this.ResourceGroupName, this.ServiceName, this.Name, "Approved", this.Description);
             WriteObject(pec);
