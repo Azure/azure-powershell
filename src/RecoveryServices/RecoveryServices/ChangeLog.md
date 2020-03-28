@@ -18,9 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Azure Site Recovery support for doing reprotect and update vm properties for azure disk encrypted Virtual Machines.
+* Azure Site Recovery added support for doing reprotect and updated vm properties for Azure disk encrypted Virtual Machines.
 * Added Azure Site Recovery VmwareToAzure properties DR monitoring
 * Azure Backup added support for retrying policy update for failed items.
+* Azure Backup Added support for disk exclusion settings during backup and restore.
 
 ## Version 2.7.0
 * Added Support for Restore-as-files for SQL Databases.
