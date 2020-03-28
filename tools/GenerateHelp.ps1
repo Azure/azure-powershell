@@ -78,7 +78,23 @@ if ($ValidateMarkdownHelp)
     }
 }
 
+# We need to define new version of module instead of hardcode here
+$NewModules = @("Az.Databricks")
 if ($GenerateMamlHelp)
 {
-    $FilteredHelpFolders | foreach { New-AzMamlHelp $_.FullName }
+    $FilteredMamlHelpFolders = @()
+    foreach ($HelpFolder in $FilteredHelpFolders)
+    {
+        $ModuleName = "" 
+        if($HelpFolder -match "(?s)artifacts\\Release\\(?<module>.+)\\help")
+        {
+            $ModuleName = $Matches["module"]
+        }
+        if($NewModules -notcontains $ModuleName)
+        {
+            $FilteredMamlHelpFolders += $HelpFolder
+        }
+
+    }
+    $FilteredMamlHelpFolders | foreach { New-AzMamlHelp $_.FullName }
 }
