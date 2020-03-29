@@ -15,13 +15,13 @@ Update a Kusto cluster.
 ### UpdateExpanded (Default)
 ```
 Update-AzKustoCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EnableDiskEncryption] [-EnablePurge] [-EnableStreamingIngest] [-IdentityType <IdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-KeyVaultPropertyKeyName <String>]
- [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
- [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>] [-OptimizedAutoscaleIsEnabled]
- [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
- [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>]
- [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
+ [-Capacity <Int32>] [-EnableDiskEncryption] [-EnablePurge] [-EnableStreamingIngest]
+ [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
+ [-KeyVaultPropertyKeyVersion <String>] [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>]
+ [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
+ [-OptimizedAutoscaleVersion <Int32>] [-Sku <AzureSkuName>] [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>]
+ [-TrustedExternalTenant <ITrustedExternalTenant[]>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
  [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationSubnetId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -42,13 +42,13 @@ Update-AzKustoCluster -InputObject <IKustoIdentity> -Parameter <IClusterUpdate> 
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKustoCluster -InputObject <IKustoIdentity> [-EnableDiskEncryption] [-EnablePurge]
+Update-AzKustoCluster -InputObject <IKustoIdentity> [-Capacity <Int32>] [-EnableDiskEncryption] [-EnablePurge]
  [-EnableStreamingIngest] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
  [-KeyVaultPropertyKeyVersion <String>] [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>]
  [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
- [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>]
- [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
+ [-OptimizedAutoscaleVersion <Int32>] [-Sku <AzureSkuName>] [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>]
+ [-TrustedExternalTenant <ITrustedExternalTenant[]>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
  [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationSubnetId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -61,43 +61,23 @@ Update a Kusto cluster.
 
 ### Example 1: Update an existing cluster by name
 ```powershell
-PS C:\> Update-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Sku D14_v2
+PS C:\> Update-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -Sku Standard_D12_v2 -SkuTier Standard
 
-Type              : Microsoft.Kusto/Clusters
-Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster
-ResourceGroup     : testrg
-Name              : mykustocluster
-Location          : Central US
-Sku               : D14_v2
-Capacity          : 5
-ProvisioningState : Succeeded
-State             : Running
-Tag               : {}
-Uri               : https://mykustocluster1.centralus.kusto.windows.net
-DataIngestionUri  : https://ingest-mykustocluster1.centralus.kusto.windows.net
+Location Name                Type                     Zone
+-------- ----                ----                     ----
+East US  testnewkustocluster Microsoft.Kusto/Clusters
 ```
 
-The above command updates the tier of the Kusto cluster "mykustocluster" found in the resource group "testrg".
+The above command updates the sku of the Kusto cluster "testnewkustocluster" found in the resource group "testrg".
 
 ### Example 2: Update an existing cluster by piping
 ```powershell
-PS C:\> PS C:\> Get-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster | Update-AzKustoCluster -Sku D14_v2 -Capacity 10
+PS C:\> {{ Add code here }}
 
-Type              : Microsoft.Kusto/Clusters
-Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster
-ResourceGroup     : testrg
-Name              : mykustocluster
-Location          : Central US
-Capacity          : 10
-Sku               : D14_v2
-ProvisioningState : Succeeded
-State             : Running
-Tag               : {}
-Uri               : https://mykustocluster1.centralus.kusto.windows.net
-DataIngestionUri  : https://ingest-mykustocluster1.centralus.kusto.windows.net
+{{ Add output here }}
 ```
 
-The above command gets the Kusto cluster "mykustocluster" found in the resource group "testrg" using the `Get-AzKustoCluster` cmdlet, and then pipes the result to `Update-AzKustoCluster` to update the cluster's tier to "standard".
+The above command gets the Kusto cluster "testnewkustocluster" found in the resource group "testrg" using the `Get-AzKustoCluster` cmdlet, and then pipes the result to `Update-AzKustoCluster` to update the cluster's sku to "Standard_D12_v2".
 
 ## PARAMETERS
 
@@ -107,6 +87,22 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Capacity
+The number of instances of the cluster.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -441,23 +437,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -SkuCapacity
-The number of instances of the cluster.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SkuName
+### -Sku
 SKU name.
 
 ```yaml

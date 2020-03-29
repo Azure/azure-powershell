@@ -77,4 +77,29 @@ directive:
     where: $..produces
     transform: $ = $.filter( each => each === 'application/json');
     reason: this spec adds produces application/xml and text/json erronously.
+  # Rename the parameter name to follow Azure PowerShell best practice
+  - where:
+      parameter-name: SkuName
+    set:
+      parameter-name: Sku
+  - where:
+      parameter-name: SkuCapacity
+    set:
+      parameter-name: Capacity
+  - where:
+      parameter-name: CustomVirtualNetworkIdValue
+    set:
+      parameter-name: VirtualNetworkId
+  - where:
+      parameter-name: CustomPublicSubnetNameValue
+    set:
+      parameter-name: PublicSubnetName
+  - where:
+      parameter-name: CustomPrivateSubnetNameValue
+    set:
+      parameter-name: PrivateSubnetName
+  # Remove the set-* cmdlet
+  - where:
+      verb: Set
+    remove: true
 ```
