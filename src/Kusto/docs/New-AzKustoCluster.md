@@ -14,14 +14,13 @@ Create or update a Kusto cluster.
 
 ### CreateExpanded (Default)
 ```
-New-AzKustoCluster -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <AzureSkuName>
- -SkuTier <AzureSkuTier> [-SubscriptionId <String>] [-EnableDiskEncryption] [-EnablePurge]
+New-AzKustoCluster -Name <String> -ResourceGroupName <String> -Location <String> -Sku <AzureSkuName>
+ -SkuTier <AzureSkuTier> [-SubscriptionId <String>] [-Capacity <Int32>] [-EnableDiskEncryption] [-EnablePurge]
  [-EnableStreamingIngest] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
  [-KeyVaultPropertyKeyVersion <String>] [-LanguageExtensionValue <ILanguageExtension[]>]
  [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
- [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
- [-TrustedExternalTenant <ITrustedExternalTenant[]>]
+ [-OptimizedAutoscaleVersion <Int32>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
  [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationSubnetId <String>]
  [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -41,14 +40,13 @@ New-AzKustoCluster -InputObject <IKustoIdentity> -Parameter <ICluster> [-Default
 
 ### CreateViaIdentityExpanded
 ```
-New-AzKustoCluster -InputObject <IKustoIdentity> -Location <String> -SkuName <AzureSkuName>
- -SkuTier <AzureSkuTier> [-EnableDiskEncryption] [-EnablePurge] [-EnableStreamingIngest]
+New-AzKustoCluster -InputObject <IKustoIdentity> -Location <String> -Sku <AzureSkuName>
+ -SkuTier <AzureSkuTier> [-Capacity <Int32>] [-EnableDiskEncryption] [-EnablePurge] [-EnableStreamingIngest]
  [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
  [-KeyVaultPropertyKeyVersion <String>] [-LanguageExtensionValue <ILanguageExtension[]>]
  [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
- [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
- [-TrustedExternalTenant <ITrustedExternalTenant[]>]
+ [-OptimizedAutoscaleVersion <Int32>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
  [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationSubnetId <String>]
  [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -61,23 +59,14 @@ Create or update a Kusto cluster.
 
 ### Example 1: Create a new Kusto cluster
 ```powershell
-PS C:\> New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location 'Central US' -Sku D13_v2 -Capacity 10
+PS C:\> New-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -Location 'East US' -Sku Standard_D11_v2 -SkuTier Standard
 
-Type              : Microsoft.Kusto/Clusters
-Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster
-ResourceGroup     : testrg
-Name              : mykustocluster
-Location          : Central US
-Capacity          : 10
-Sku               : D13_v2
-ProvisioningState : Succeeded
-State             : Running
-Tag               : {}
-Uri               : https://mykustocluster.centralus.kusto.windows.net
-DataIngestionUri  : https://ingest-mykustocluster.centralus.kusto.windows.net
+Location Name                Type                     Zone
+-------- ----                ----                     ----
+East US  testnewkustocluster Microsoft.Kusto/Clusters
 ```
 
-The above command creates a new Kusto cluster named "mykustocluster" in the resource group "testrg".
+The above command creates a new Kusto cluster named "testnewkustocluster" in the resource group "testrg".
 
 ## PARAMETERS
 
@@ -87,6 +76,22 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Capacity
+The number of instances of the cluster.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -421,23 +426,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -SkuCapacity
-The number of instances of the cluster.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SkuName
+### -Sku
 SKU name.
 
 ```yaml
