@@ -34,15 +34,6 @@ function Get-RG-Name
 .SYNOPSIS
 Gets an instance number of a machines in a cluster.
 #>
-function Get-Cluster-Default-Capacity
-{
-	return 2
-}
-
-<#
-.SYNOPSIS
-Gets an instance number of a machines in a cluster.
-#>
 function Get-Cluster-Capacity
 {
 	return 5
@@ -63,7 +54,7 @@ Gets a name of the cluster testing.
 #>
 function Get-Cluster-Name
 {
-	return "sdkpowershellclustereu"
+	return "sdkpsclustereu"
 }
 
 <#
@@ -153,7 +144,7 @@ Gets a database soft delet perios in days parameter
 #>
 function Get-Soft-Delete-Period-In-Days
 {
-	return 4
+	return New-TimeSpan -Days 4
 }
 
 <#
@@ -162,7 +153,7 @@ Gets a database hot cache period in days
 #>
 function Get-Hot-Cache-Period-In-Days
 {
-	return 2
+	return New-TimeSpan -Days 2
 }
 
 <#
@@ -171,7 +162,7 @@ Gets a different  database soft delet perios in days parameter ( for testing upd
 #>
 function Get-Updated-Soft-Delete-Period-In-Days
 {
-	return 6
+	return New-TimeSpan -Days 6
 }
 
 <#
@@ -180,7 +171,7 @@ Gets a different database hot cache period in days (for testring update)
 #>
 function Get-Updated-Hot-Cache-Period-In-Days
 {
-	return 3
+	return New-TimeSpan -Days 3
 }
 
 <#
@@ -191,28 +182,6 @@ function Get-Database-Not-Exist-Message
 {
 	Param([string]$DatabaseName)
 	return "$DatabaseName' is not found"
-}
-
-<#
-.SYNOPSIS
-Gets a the cluster does not exist message
-#>
-function Get-Cluster-Not-Exist-Message
-{
-	Param([string]$ResourceGroupName,
-		[string]$ClusterName)
-	return "'Microsoft.Kusto/clusters/$ClusterName' under resource group '$ResourceGroupName' was not found"
-}
-
-
-<#
-.SYNOPSIS
-Gets a the cluster does not exist message
-#>
-function Get-Cluster-Name-Exists-Message
-{
-	Param([string]$ClusterName)
-	return "Name '$ClusterName' with type Engine is already taken. Please specify a different name"
 }
 
 
