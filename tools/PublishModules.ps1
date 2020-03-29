@@ -689,7 +689,7 @@ function Add-Module {
         # control over assembly loading.  Opt out by definitng a RootModule.
         if ($ModuleMetadata.RootModule) {
             Write-Output "Root module found, done"
-            return
+            #return
         }
         Write-Output "No root module found, creating"
 
@@ -715,8 +715,12 @@ function Add-Module {
             Write-Output "Expanding $zipPath"
             Expand-Archive $zipPath -DestinationPath $dirPath
 
-            Write-Output "Adding PSM1 dependency to $unzippedManifest"
-            Add-PSM1Dependency -Path $unzippedManifest
+            if ($ModuleMetadata.RootModule) {
+                Write-Output "Adding PSM1 dependency is skipped because root module is found"
+            } else {
+                Write-Output "Adding PSM1 dependency to $unzippedManifest"
+                Add-PSM1Dependency -Path $unzippedManifest 
+            }
 
             Write-Output "Removing module manifest dependencies for $unzippedManifest"
             Remove-ModuleDependencies -Path (Join-Path $TempRepoPath $unzippedManifest)
