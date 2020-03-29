@@ -93,7 +93,11 @@ $RMpsd1s | ForEach-Object {
 
     $outputCmdlets = @{}
 
-    $parsedPsd1.CmdletsToExport | ForEach-Object {
+    $cmdletsToExport = $parsedPsd1.CmdletsToExport | Where-Object { $_ }
+    $functionsToExport = $parsedPsd1.FunctionsToExport | Where-Object { $_ }
+    $cmdletsToExport = $cmdletsToExport + $functionsToExport
+
+    $cmdletsToExport | ForEach-Object {
         $cmdletHelpFile = $HelpFileMapping["$_.md"]
         if ($cmdletHelpFile -eq $null -and $Target -eq "Latest")
         {
