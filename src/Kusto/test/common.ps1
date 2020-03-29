@@ -34,18 +34,9 @@ function Get-RG-Name
 .SYNOPSIS
 Gets an instance number of a machines in a cluster.
 #>
-function Get-Cluster-Capacity
+function Get-Cluster-Default-Capacity
 {
-	return 5
-}
-
-<#
-.SYNOPSIS
-Gets an instance number of a machines in a cluster.
-#>
-function Get-Cluster-Updated-Capacity
-{
-	return 10
+	return 2
 }
 
 <#

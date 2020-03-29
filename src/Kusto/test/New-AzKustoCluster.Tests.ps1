@@ -1,4 +1,3 @@
-$TestMode='playback'
 $kustoCommonPath = Join-Path $PSScriptRoot 'common.ps1'
 . ($kustoCommonPath)
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'

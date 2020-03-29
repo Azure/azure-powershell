@@ -1,4 +1,3 @@
-$TestMode='playback'
 $kustoCommonPath = Join-Path $PSScriptRoot 'common.ps1'
 . ($kustoCommonPath)
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
@@ -48,7 +47,7 @@ function Ensure_Database_Not_Exist {
         }
 }
 
-Describe 'Set-AzKustoDatabase' {
+Describe 'New-AzKustoDatabase' {
     It 'AllTests' {
         try
         {  
@@ -68,7 +67,6 @@ Describe 'Set-AzKustoDatabase' {
             $hotCachePeriodInDaysUpdated = Get-Updated-Hot-Cache-Period-In-Days
 
             #create cluster for the databases
-            #New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
             New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -SkuName $skuName -SkuTier $skuTier
 
             $databaseProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadWriteDatabase -Property @{Location=$location; SoftDeletePeriod=$softDeletePeriodInDays; HotCachePeriod=$hotCachePeriodInDays}
