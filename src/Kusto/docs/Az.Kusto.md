@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Kusto
-Module Guid: 32305a5d-7a10-4a01-9864-d3471d0a663d
+Module Guid: ceda79dd-1c5f-4a89-8031-0f9679732125
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.kusto
 Help Version: 1.0.0.0
 Locale: en-US
@@ -97,24 +97,6 @@ Deletes a Kusto principalAssignment.
 
 ### [Remove-AzKustoDataConnection](Remove-AzKustoDataConnection.md)
 Deletes the data connection with the given name.
-
-### [Set-AzKustoAttachedDatabaseConfiguration](Set-AzKustoAttachedDatabaseConfiguration.md)
-Creates or updates an attached database configuration.
-
-### [Set-AzKustoCluster](Set-AzKustoCluster.md)
-Create or update a Kusto cluster.
-
-### [Set-AzKustoClusterPrincipalAssignment](Set-AzKustoClusterPrincipalAssignment.md)
-Create a Kusto cluster principalAssignment.
-
-### [Set-AzKustoDatabase](Set-AzKustoDatabase.md)
-Creates or updates a database.
-
-### [Set-AzKustoDatabasePrincipalAssignment](Set-AzKustoDatabasePrincipalAssignment.md)
-Creates a Kusto cluster database principalAssignment.
-
-### [Set-AzKustoDataConnection](Set-AzKustoDataConnection.md)
-Creates or updates a data connection.
 
 ### [Start-AzKustoCluster](Start-AzKustoCluster.md)
 Starts a Kusto cluster.
