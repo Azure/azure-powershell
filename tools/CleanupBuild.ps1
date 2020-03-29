@@ -53,21 +53,28 @@ foreach($RMPath in $resourceManagerPaths)
         # NestedModule Assemblies may have a folder path, just getting the dll name alone
         foreach($cmdAssembly in $ModuleMetadata.NestedModules)
         {
-            $acceptedDlls += $cmdAssembly.Split("\")[-1]
+            if($cmdAssembly.Contains("/")) {
+                $acceptedDlls += $cmdAssembly.Split("/")[-1]
+            } else {
+                $acceptedDlls += $cmdAssembly.Split("\")[-1]
+            }
         }
 
         # RequiredAssmeblies may have a folder path, just getting the dll name alone
         foreach($assembly in $ModuleMetadata.RequiredAssemblies)
         {
-            $acceptedDlls += $assembly.Split("\")[-1]
+            if($assembly.Contains("/")) {
+                $acceptedDlls += $assembly.Split("/")[-1]
+            } else {
+                $acceptedDlls += $assembly.Split("\")[-1]
+            }
         }
 
-        Write-Verbose "Removing redundant dlls in $($RMFolder.Name)"
+        Write-Host "Removing redundant dlls in $($RMFolder.Name)"
         $removedDlls = Get-ChildItem -Path $RMFolder.FullName -Filter "*.dll" -Recurse | where { $acceptedDlls -notcontains $_.Name -and !$_.FullName.Contains("Assemblies") }
         $removedDlls | % { Write-Verbose "Removing $($_.Name)"; Remove-Item $_.FullName -Force }
 
-        Write-Verbose "Removing scripts and psd1 in $($RMFolder.FullName)"
-
+        Write-Host "Removing scripts and psd1 in $($RMFolder.FullName)"
         $removedPsd1 = Get-ChildItem -Path "$($RMFolder.FullName)" -Include "*.psd1" -Exclude "PsSwaggerUtility*.psd1" -Recurse | where { $_.FullName -ne "$($RMFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($RMFolder.Name).psd1" }
         $removedPsd1 | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
     }

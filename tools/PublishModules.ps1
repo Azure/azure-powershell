@@ -690,8 +690,9 @@ function Add-Module {
         if ($ModuleMetadata.RootModule) {
             Write-Output "Root module found, done"
             #return
+        } else {
+            Write-Output "No root module found, creating"
         }
-        Write-Output "No root module found, creating"
 
         Write-Output "Changing to local repository directory for module modifications $TempRepoPath"
         Push-Location $TempRepoPath
