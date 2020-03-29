@@ -78,6 +78,7 @@ if ($ValidateMarkdownHelp)
     }
 }
 
+<<<<<<< HEAD
 # We need to define new version of module instead of hardcode here
 $NewModules = @("Az.Databricks")
 if ($GenerateMamlHelp)
@@ -97,4 +98,9 @@ if ($GenerateMamlHelp)
 
     }
     $FilteredMamlHelpFolders | foreach { New-AzMamlHelp $_.FullName }
+=======
+if ($GenerateMamlHelp)
+{
+    $FilteredHelpFolders | foreach { New-AzMamlHelp $_.FullName }
+>>>>>>> upstream/master
 }
