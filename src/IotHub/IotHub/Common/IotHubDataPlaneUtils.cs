@@ -70,6 +70,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return IotHubUtils.ConvertObject<IEnumerable<Module>, IEnumerable<PSModules>>(modules.ToList());
         }
 
+        public static PSDeviceTwin ToPSDeviceTwin(Twin deviceTwin)
+        {
+            return IotHubUtils.ConvertObject<Twin, PSDeviceTwin>(deviceTwin);
+        }
+
         public static void ValidateDeviceTracing(string DeviceId, string Sku, string Location, bool IsEdgeDevice)
         {
             if (!TracingAllowedForLocation.Any(location => location.Equals(Location, StringComparison.OrdinalIgnoreCase)))

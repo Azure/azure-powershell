@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.Support.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
+using Status = Microsoft.Azure.Commands.Support.Models.Status;
 
 namespace Microsoft.Azure.Commands.Support.SupportTickets
 {
@@ -40,6 +41,9 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
 
         [Parameter(Mandatory = false, HelpMessage = "Update Severity of SupportTicket.")]
         public Severity Severity { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Update Status of SupportTicket.")]
+        public Status Status { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameWithContactObjectParameterSet, HelpMessage = "Update Contact details on SupportTicket.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateByInputObjectWithContactObjectParameterSet, HelpMessage = "Update Contact details on SupportTicket.")]
@@ -112,6 +116,11 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
                     updateSupportTicket.Severity = this.Severity.ToString();
                 }
 
+                if (this.IsParameterBound(c => c.Status))
+                {
+                    updateSupportTicket.Status = this.Status.ToString();
+                }
+
                 UpdateContactProfile updateContactProfile = null;
                 if (this.ParameterSetName.Equals(UpdateByNameWithContactObjectParameterSet) ||
                     this.ParameterSetName.Equals(UpdateByInputObjectWithContactObjectParameterSet))
@@ -120,18 +129,29 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
                 }
                 else
                 {
-                    updateContactProfile = new UpdateContactProfile
+                    if (this.IsParameterBound(c => c.CustomerFirstName) ||
+                        this.IsParameterBound(c => c.CustomerLastName) ||
+                        this.IsParameterBound(c => c.CustomerPrimaryEmailAddress) ||
+                        this.IsParameterBound(c => c.CustomerPreferredTimeZone) ||
+                        this.IsParameterBound(c => c.CustomerPreferredSupportLanguage) ||
+                        this.IsParameterBound(c => c.CustomerPhoneNumber) ||
+                        this.IsParameterBound(c => c.AdditionalEmailAddress) ||
+                        this.IsParameterBound(c => c.CustomerCountry) ||
+                        this.IsParameterBound(c => c.PreferredContactMethod))
                     {
-                        FirstName = this.IsParameterBound(c => c.CustomerFirstName) ? this.CustomerFirstName : null,
-                        LastName = this.IsParameterBound(c => c.CustomerLastName) ? this.CustomerLastName : null,
-                        PrimaryEmailAddress = this.IsParameterBound(c => c.CustomerPrimaryEmailAddress) ? this.CustomerPrimaryEmailAddress : null,
-                        PreferredTimeZone = this.IsParameterBound(c => c.CustomerPreferredTimeZone) ? this.CustomerPreferredTimeZone : null,
-                        PreferredSupportLanguage = this.IsParameterBound(c => c.CustomerPreferredSupportLanguage) ? this.CustomerPreferredSupportLanguage : null,
-                        PhoneNumber = this.IsParameterBound(c => c.CustomerPhoneNumber) ? this.CustomerPhoneNumber : null,
-                        AdditionalEmailAddresses = this.IsParameterBound(c => c.AdditionalEmailAddress) ? this.AdditionalEmailAddress.ToList() : null,
-                        Country = this.IsParameterBound(c => c.CustomerCountry) ? this.CustomerCountry : null,
-                        PreferredContactMethod = this.IsParameterBound(c => c.PreferredContactMethod) ? this.PreferredContactMethod.ToString() : null
-                    };
+                        updateContactProfile = new UpdateContactProfile
+                        {
+                            FirstName = this.IsParameterBound(c => c.CustomerFirstName) ? this.CustomerFirstName : null,
+                            LastName = this.IsParameterBound(c => c.CustomerLastName) ? this.CustomerLastName : null,
+                            PrimaryEmailAddress = this.IsParameterBound(c => c.CustomerPrimaryEmailAddress) ? this.CustomerPrimaryEmailAddress : null,
+                            PreferredTimeZone = this.IsParameterBound(c => c.CustomerPreferredTimeZone) ? this.CustomerPreferredTimeZone : null,
+                            PreferredSupportLanguage = this.IsParameterBound(c => c.CustomerPreferredSupportLanguage) ? this.CustomerPreferredSupportLanguage : null,
+                            PhoneNumber = this.IsParameterBound(c => c.CustomerPhoneNumber) ? this.CustomerPhoneNumber : null,
+                            AdditionalEmailAddresses = this.IsParameterBound(c => c.AdditionalEmailAddress) ? this.AdditionalEmailAddress.ToList() : null,
+                            Country = this.IsParameterBound(c => c.CustomerCountry) ? this.CustomerCountry : null,
+                            PreferredContactMethod = this.IsParameterBound(c => c.PreferredContactMethod) ? this.PreferredContactMethod.ToString() : null
+                        };
+                    }
                 }
 
                 updateSupportTicket.ContactDetails = updateContactProfile;

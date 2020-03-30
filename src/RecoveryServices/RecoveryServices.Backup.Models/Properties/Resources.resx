@@ -586,4 +586,16 @@ Please contact Microsoft for further assistance.</value>
   <data name="TargetContainerRequiredException" xml:space="preserve">
     <value>Target Container parameter is required for this operation.</value>
   </data>
+  <data name="DiskExclusionParametersRedundant" xml:space="preserve">
+    <value>Multiple Parameters Provided. Please specify only one of the parameters from InclusionDisksList, ExclusionDisksList, ResetExclusionSetting and ExcludeAllDataDisks.</value>
+  </data>
+  <data name="InclusionListRedundantError" xml:space="preserve">
+    <value>Both Inclusion and Exclusion lists provided. Please provide only one of them.</value>
+  </data>
+  <data name="TargetRGUnmanagedRestoreDuplicateParamsException" xml:space="preserve">
+    <value>Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be spceified. Please give Only one parameter and retry.</value>
+  </data>
+  <data name="UnmanagedVMRestoreWarning" xml:space="preserve">
+    <value>The disks of the managed VM will be restored as unmanaged since TargetResourceGroupName parameter is not provided. This will NOT leverage the instant restore functionality and hence can be significantly slow based on given storage account. To leverage instant restore, provide the TargetResourceGroupName parameter. Otherwise, provide the intent next time by passing the RestoreAsUnmanagedDisks parameter</value>
+  </data>
 </root>

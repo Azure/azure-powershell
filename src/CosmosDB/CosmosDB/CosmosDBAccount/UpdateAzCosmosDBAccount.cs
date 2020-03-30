@@ -152,21 +152,23 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountUpdateParameters.Tags = tags;
             }
 
-            if ( ( VirtualNetworkRule != null && VirtualNetworkRule.Length > 0) ||
-                (VirtualNetworkRuleObject != null && VirtualNetworkRuleObject.Length > 0))
+            if (VirtualNetworkRule != null || VirtualNetworkRuleObject != null)
             {
                 Collection<VirtualNetworkRule> virtualNetworkRule = new Collection<VirtualNetworkRule>();
-
-                foreach (string id in VirtualNetworkRule)
+                if (VirtualNetworkRule != null && VirtualNetworkRule.Length > 0)
                 {
-                    virtualNetworkRule.Add(new VirtualNetworkRule(id:id));
+                    foreach (string id in VirtualNetworkRule)
+                    {
+                        virtualNetworkRule.Add(new VirtualNetworkRule(id: id));
+                    }
                 }
-
-                foreach (PSVirtualNetworkRule psVirtualNetworkRule in VirtualNetworkRuleObject)
+                if (VirtualNetworkRuleObject != null && VirtualNetworkRuleObject.Length > 0)
                 {
-                    virtualNetworkRule.Add(PSVirtualNetworkRule.ConvertPSVirtualNetworkRuleToVirtualNetworkRule(psVirtualNetworkRule));
+                    foreach (PSVirtualNetworkRule psVirtualNetworkRule in VirtualNetworkRuleObject)
+                    {
+                        virtualNetworkRule.Add(PSVirtualNetworkRule.ConvertPSVirtualNetworkRuleToVirtualNetworkRule(psVirtualNetworkRule));
+                    }
                 }
-
                 databaseAccountUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
             }
 

@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Support.Models;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Support;
 using Microsoft.Azure.Management.Support.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Support.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.Support.ProblemClassifications
     {
         [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, HelpMessage = "Service id for which all problem classifications are retrieved.")]
         [Alias("ServiceName")]
+        [ServiceIdCompleter()]
         [ValidateNotNullOrEmpty]
         public string ServiceId { get; set; }
 

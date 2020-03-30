@@ -28,6 +28,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public ItemProtectionStatus ProtectionStatus { get; set; }
 
         /// <summary>
+        /// Policy ID Associated with item
+        /// </summary>
+        public string PolicyId { get; set; }
+
+        /// <summary>
         /// Protection State of the item
         /// </summary>
         public ItemProtectionState ProtectionState { get; set; }
@@ -67,6 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             : base(protectedItemResource, containerName, containerType)
         {
             ProtectionPolicyName = policyName;
+            PolicyId = protectedItemResource.Properties.PolicyId;
         }
     }
     public class AzureItemExtendedInfo : ItemExtendedInfoBase

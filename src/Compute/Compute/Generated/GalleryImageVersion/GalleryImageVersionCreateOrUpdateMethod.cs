@@ -132,7 +132,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion.PublishingProfile.TargetRegions = new List<TargetRegion>();
                         foreach (var t in this.TargetRegion)
                         {
-                            galleryImageVersion.PublishingProfile.TargetRegions.Add(new TargetRegion((string)t["Name"], (int?)t["ReplicaCount"], (string)t["StorageAccountType"]));
+                            var target = new TargetRegion()
+                            {
+                                Name = (string)t["Name"],
+                                RegionalReplicaCount = (int?)t["ReplicaCount"],
+                                StorageAccountType = (string)t["StorageAccountType"],
+                                Encryption = (t["Encryption"] == null) ? (EncryptionImages)t["Encryption"] : null
+                            };
+
+                            galleryImageVersion.PublishingProfile.TargetRegions.Add(target);
                         }
                     }
 
@@ -319,7 +327,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion.PublishingProfile.TargetRegions = new List<TargetRegion>();
                         foreach (var t in this.TargetRegion)
                         {
-                            galleryImageVersion.PublishingProfile.TargetRegions.Add(new TargetRegion((string)t["Name"], (int?)t["ReplicaCount"]));
+                            var target = new TargetRegion()
+                            {
+                                Name = (string)t["Name"],
+                                RegionalReplicaCount = (int?)t["ReplicaCount"],
+                                StorageAccountType = (string)t["StorageAccountType"],
+                                Encryption = (t["Encryption"] == null) ? (EncryptionImages)t["Encryption"] : null
+                            };
+
+                            galleryImageVersion.PublishingProfile.TargetRegions.Add(target);
                         }
                     }
 
