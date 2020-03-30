@@ -227,3 +227,6 @@ launchSettings.json
 /tools/Modules/tmp
 /tools/Az/Az.psm1
 /Azure.PowerShell.sln
+
+# Added due to scan
+src/DataFactory/DataFactoryV2.Test/SessionRecords/Microsoft.Azure.Commands.DataFactoryV2.Test.RunTests/TestRunV2.json

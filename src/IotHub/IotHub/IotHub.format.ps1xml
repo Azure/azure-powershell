@@ -928,5 +928,42 @@
         </ListEntries>
       </ListControl>
     </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSDeviceTwin
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSDeviceTwin</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>DeviceId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <ScriptBlock>$_.Tags</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Desired</Label>
+                <ScriptBlock>$_.Properties.Desired</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Reported</Label>
+                <ScriptBlock>$_.Properties.Reported</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ETag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Version</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>
