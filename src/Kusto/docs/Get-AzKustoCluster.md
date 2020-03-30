@@ -62,15 +62,6 @@ East US  testnewkustocluster Microsoft.Kusto/Clusters
 
 The above command returns the Kusto cluster named "testnewkustocluster" in the resource group "testrg".
 
-### Example 3: Get a specific Kusto cluster by resource id
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-The above command returns the Kusto cluster named "testnewkustocluster" in the resource group "testrg".
-
 ## PARAMETERS
 
 ### -DefaultProfile

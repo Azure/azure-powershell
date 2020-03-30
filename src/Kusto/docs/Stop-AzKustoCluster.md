@@ -29,19 +29,12 @@ Stops a Kusto cluster.
 
 ## EXAMPLES
 
-### Example 1: Stop an existing Kusto cluster by name
+### Example 1: Stop a Kusto cluster
 ```powershell
-PS C:\> Stop-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster
+PS C:\> Stop-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster
 ```
 
-The above command stops the Kusto cluster named "mykustocluster" found in the resource group "testrg".
-
-### Example 2: Stop an existing Kusto cluster by piping
-```powershell
-PS C:\> Get-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster | Stop-AzKustoCluster
-```
-
-The above command gets the Kusto cluster named "mykustocluster" found in the resource group "testrg" using the `Get-AzKustoCluster` cmdlet, and then pipes the result to `Stop-AzKustoCluster` to stop it.
+The above command stops a Kusto cluster
 
 ## PARAMETERS
 

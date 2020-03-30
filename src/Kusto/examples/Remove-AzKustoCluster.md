@@ -3,13 +3,4 @@
 PS C:\> Remove-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster
 ```
 
-The above command deletes the Kusto cluster named "mykustocluster" in the resource group "testrg".
-
-### Example 2: Delete an existing Kusto cluster by piping
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-The above command gets the Kusto cluster named "mykustocluster" in the resource group "testrg" using the `Get-AzKustoCluster` cmdlet, and then pipes the result to `Remove-AzKustoCluster` to delete it.
+The above command deletes the Kusto cluster named "testnewkustocluster" in the resource group "testrg".

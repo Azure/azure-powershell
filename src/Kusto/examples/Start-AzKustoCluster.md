@@ -1,15 +1,6 @@
-### Example 1: Start a stopped Kusto cluster by name
-
+### Example 1: Start a Kusto cluster
 ```powershell
-PS C:\> Start-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster
+PS C:\> Start-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster
 ```
 
-The above command starts the stopped Kusto cluster named "mykustocluster" found in the resource group "testrg".
-
-### Example 2: Start a stopped Kusto cluster by piping
-
-```powershell
-PS C:\> Get-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster | Start-AzKustoCluster
-```
-
-The above command gets the Kusto cluster named "mykustocluster" found in the resource group "testrg" using the `Get-AzKustoCluster` cmdlet, and then pipes the result to `Start-AzKustoCluster` to start it.
+The above command starts a Kusto cluster.
