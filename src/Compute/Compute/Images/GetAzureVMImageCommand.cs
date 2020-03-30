@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure.OData;
-using System.Linq;
-using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -70,14 +71,16 @@ namespace Microsoft.Azure.Commands.Compute
         public string Skus { get; set; }
 
         [Parameter(ParameterSetName = ListVMImageParamSetName,
-            ValueFromPipelineByPropertyName = false),
-        ValidateNotNullOrEmpty]
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        [CmdletParameterBreakingChange("FilterExpression",
+            ChangeDescription = "FilterExpression parameter will be removed because FilterExpression has not been supported by the API.")]
         public string FilterExpression { get; set; }
 
         [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true),
-        ValidateNotNullOrEmpty]
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string Version { get; set; }
 
@@ -95,8 +98,7 @@ namespace Microsoft.Azure.Commands.Compute
                         this.Location.Canonicalize(),
                         this.PublisherName,
                         this.Offer,
-                        this.Skus,
-                        odataQuery: filter).GetAwaiter().GetResult();
+                        this.Skus).GetAwaiter().GetResult();
 
                     var images = from r in result.Body
                                  select new PSVirtualMachineImage
