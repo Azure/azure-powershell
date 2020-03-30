@@ -53,7 +53,6 @@
   </ItemGroup>
 
   <ItemGroup>
-        <ModuleInteralFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\internal\**\*.*"/>
         <ModuleCustomFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\custom\**\*.*"/>
         <ModuleHelpFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\help\**\*.*"/>
   </ItemGroup>
@@ -62,10 +61,10 @@
     <Copy SourceFiles="Az.$(PsModuleName).psd1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)" />
     <Copy SourceFiles="Az.$(PsModuleName).psm1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)" />
     <Copy SourceFiles="Az.$(PsModuleName).format.ps1xml" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)" />
-    <Copy SourceFiles="@(ModuleInteralFiles)" DestinationFiles="@(ModuleInteralFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\internal\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(ModuleCustomFiles)" DestinationFiles="@(ModuleCustomFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\custom\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(ModuleHelpFiles)" DestinationFiles="@(ModuleHelpFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\help\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="exports\ProxyCmdletDefinitions.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\exports" />
+    <Copy SourceFiles="internal\ProxyCmdletDefinitions.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\internal" />
   </Target>
 
 </Project>
