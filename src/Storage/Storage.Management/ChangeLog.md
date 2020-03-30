@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 
-## Version 1.13.2
+## Version 1.13.3
 * Upgrade DataLake Gen2 cmdlets to use new SDK "Azure.Storage.Files.DataLake", and remove 2 parameter -ServerTimeoutPerRequest, -ClientTimeoutPerRequest
     -  New-AzDataLakeGen2Item
     -  Get-AzDataLakeGen2Item
