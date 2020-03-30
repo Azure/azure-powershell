@@ -632,9 +632,6 @@ Sets properties for an Azure SQL Database Managed Instance.
 ### [Set-AzSqlInstanceActiveDirectoryAdministrator](Set-AzSqlInstanceActiveDirectoryAdministrator.md)
 Provisions an Azure AD administrator for SQL Managed Instance.
 
-### [Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
-The **Set-AzSqlInstanceDatabaseLongTermRetentionBackup** cmdlet sets a managed database's long term retention policy.
-
 ### [Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy](Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy.md)
 Sets a backup short term retention policy.
 
