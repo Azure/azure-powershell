@@ -19,11 +19,32 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     public class PSMonitorPrivateLinkScopeScopedResource
     {
-        public PSMonitorPrivateLinkScopeScopedResource(string linkedResourceId = default(string), string provisioningState = default(string))
+        public PSMonitorPrivateLinkScopeScopedResource(string id = default(string), string name = default(string), string type = default(string), string linkedResourceId = default(string), string provisioningState = default(string))
         {
+            Id = id;
+            Name = name;
+            Type = type;
             LinkedResourceId = linkedResourceId;
             ProvisioningState = provisioningState;
         }
+
+        /// <summary>
+        /// Gets azure resource Id
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; private set; }
+
+        /// <summary>
+        /// Gets azure resource name
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets azure resource type
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
         /// <summary>
         /// Gets or sets the resource id of the scoped Azure monitor resource.

@@ -34,12 +34,33 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// the private endpoint connection.</param>
         /// <param name="provisioningState">State of the private endpoint
         /// connection.</param>
-        public PSPrivateEndpointConnection(PSPrivateEndpointProperty privateEndpoint = default(PSPrivateEndpointProperty), PSPrivateLinkServiceConnectionStateProperty privateLinkServiceConnectionState = default(PSPrivateLinkServiceConnectionStateProperty), string provisioningState = default(string))
+        public PSPrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), PSPrivateEndpointProperty privateEndpoint = default(PSPrivateEndpointProperty), PSPrivateLinkServiceConnectionStateProperty privateLinkServiceConnectionState = default(PSPrivateLinkServiceConnectionStateProperty), string provisioningState = default(string))
         {
+            Id = id;
+            Name = name;
+            Type = type;
             PrivateEndpoint = privateEndpoint;
             PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             ProvisioningState = provisioningState;
         }
+
+        /// <summary>
+        /// Gets azure resource Id
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; private set; }
+
+        /// <summary>
+        /// Gets azure resource name
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets azure resource type
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
         /// <summary>
         /// Gets or sets private endpoint which the connection belongs to.

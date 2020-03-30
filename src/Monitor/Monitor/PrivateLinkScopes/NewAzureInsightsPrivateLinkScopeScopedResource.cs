@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
     public class NewAzureInsightsPrivateLinkScopeScopedResource : AzureInsightsPrivateLinkScopeScopedResourceCreateOrUpdateCmdletBase
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "LA/AI Resource Id to Link")]
         [ValidateNotNullOrEmpty]
         public string LinkedResourceId { get; set; }
