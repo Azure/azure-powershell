@@ -71,8 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         SourceFileType,
         TargetStorageAccountName,
         TargetFileShareName,
-        TargetFolder,
-        MultipleSourceFilePath
+        TargetFolder
     }
     public enum RestoreWLBackupItemParams
     {

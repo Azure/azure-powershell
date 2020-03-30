@@ -170,10 +170,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
                                              ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy,
                                              ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone);
-            iaasPolicyModel.AzureBackupRGName = 
-                ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantRPDetails.AzureBackupRGNamePrefix;
-            iaasPolicyModel.AzureBackupRGNameSuffix = 
-                ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantRPDetails.AzureBackupRGNameSuffix;
             return policyModel;
         }
 

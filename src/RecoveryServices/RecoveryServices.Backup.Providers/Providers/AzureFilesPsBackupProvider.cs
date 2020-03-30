@@ -177,14 +177,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (string)ProviderData[RestoreFSBackupItemParams.TargetFileShareName] : null;
             string targetFolder = ProviderData.ContainsKey(RestoreFSBackupItemParams.TargetFolder) ?
                 (string)ProviderData[RestoreFSBackupItemParams.TargetFolder] : null;
-            string[] multipleSourceFilePaths = ProviderData.ContainsKey(RestoreFSBackupItemParams.MultipleSourceFilePath) ?
-                (string[])ProviderData[RestoreFSBackupItemParams.MultipleSourceFilePath] : null;
 
             //validate file recovery request
-            ValidateFileRestoreRequest(sourceFilePath, sourceFileType, multipleSourceFilePaths);
+            ValidateFileRestoreRequest(sourceFilePath, sourceFileType);
 
             //validate alternate location restore request
-            ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName, targetFolder);
+            ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName);
 
             if (targetFileShareName != null && targetStorageAccountName != null && targetFolder == null)
             {
@@ -229,31 +227,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 restoreFileSpecs = new List<RestoreFileSpecs>();
                 restoreFileSpecs.Add(restoreFileSpec);
-            }
-            else if(multipleSourceFilePaths != null)
-            {
-                restoreFileSpecs = new List<RestoreFileSpecs>();
-                foreach (string filepath in multipleSourceFilePaths)
-                {
-                    RestoreFileSpecs fileSpec = new RestoreFileSpecs();
-                    fileSpec.Path = filepath;
-                    fileSpec.FileSpecType = sourceFileType;
-                    restoreRequest.RestoreRequestType = RestoreRequestType.ItemLevelRestore;
-                    if(targetFolder != null)
-                    {
-                        fileSpec.TargetFolderPath = targetFolder;
-                        targetDetails = new TargetAFSRestoreInfo();
-                        targetDetails.Name = targetFileShareName;
-                        targetDetails.TargetResourceId = targetStorageAccountResource.Id;
-                        restoreRequest.RecoveryType = RecoveryType.AlternateLocation;
-                    }
-                    else
-                    {
-                        fileSpec.TargetFolderPath = null;
-                        restoreRequest.RecoveryType = RecoveryType.OriginalLocation;
-                    }
-                    restoreFileSpecs.Add(fileSpec);
-                }
             }
             else
             {
@@ -911,10 +884,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        private void ValidateFileRestoreRequest(string sourceFilePath, string sourceFileType,
-            string[] multipleSourceFilePaths)
+        private void ValidateFileRestoreRequest(string sourceFilePath, string sourceFileType)
         {
-            if (sourceFilePath == null && multipleSourceFilePaths == null && sourceFileType != null)
+            if (sourceFilePath == null && sourceFileType != null)
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileSourceFilePathMissingException));
             }
@@ -922,23 +894,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileSourceFileTypeMissingException));
             }
-            else if(sourceFilePath != null && multipleSourceFilePaths != null)
-            {
-                throw new ArgumentException(string.Format(Resources.AzureFileSourceFilePathRedundantException));
-            }
         }
 
-        private void ValidateLocationRestoreRequest(string targetFileShareName, string targetStorageAccountName, string targetFolder)
+        private void ValidateLocationRestoreRequest(string targetFileShareName, string targetStorageAccountName)
         {
             if (targetFileShareName == null && targetStorageAccountName != null)
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileTargetFSNameMissingException));
             }
             else if (targetFileShareName != null && targetStorageAccountName == null)
-            {
-                throw new ArgumentException(string.Format(Resources.AzureFileTargetSANameMissingException));
-            }
-            else if(targetFolder != null && targetFileShareName == null && targetStorageAccountName == null)
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileTargetSANameMissingException));
             }

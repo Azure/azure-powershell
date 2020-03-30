@@ -62,6 +62,9 @@ Get the connection string of a target IoT device in an Iot Hub.
 ### [Get-AzIotHubDeviceParent](Get-AzIotHubDeviceParent.md)
 Get the parent device of the specified device.
 
+### [Get-AzIotHubDeviceTwin](Get-AzIotHubDeviceTwin.md)
+Gets a device twin.
+
 ### [Get-AzIotHubDistributedTracing](Get-AzIotHubDistributedTracing.md)
 Get the distributed tracing settings for a device.
 
@@ -172,4 +175,7 @@ Test routes in IoT Hub
 
 ### [Update-AzIotHub](Update-AzIotHub.md)
 Update an Azure IoT Hub.
+
+### [Update-AzIotHubDeviceTwin](Update-AzIotHubDeviceTwin.md)
+Updates tags and desired properties of a device twin.
 

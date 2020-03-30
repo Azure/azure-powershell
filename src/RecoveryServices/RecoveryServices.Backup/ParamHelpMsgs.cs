@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TargetStorageAccountName = "The storage account to which the file share has to be restored to.";
             public const string TargetFileShareName = "The File Share to which the file share has to be restored to.";
             public const string TargetFolder = "The folder under which the file share has to be restored to within the targetFileShareName.Leave the variable empty to restore under root folder.";
-            public const string MultipleSourceFilePath = "Used for Multiple files restore from a file share. The paths of the items to be restored within the file share.";
+
         }
 
         internal static class ProtectionCheck

@@ -137,18 +137,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("AzureFileSourceFileTypeMissingException", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Both source file path and multiple source file paths provided. Please give only one option
-        /// </summary>
-        public static string AzureFileSourceFilePathRedundantException
-        {
-            get
-            {
-                return ResourceManager.GetString("AzureFileSourceFilePathRedundantException", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Provide TargetFileShareName for Alternate Location restore or remove TargetStorageAccountName for Original Location restore.
         /// </summary>
