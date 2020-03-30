@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Insights.Utils
             {
                 cfg.CreateMap<AzureMonitorPrivateLinkScope, PSMonitorPrivateLinkScope>().ReverseMap();
                 cfg.CreateMap<ScopedResource, PSMonitorPrivateLinkScopeScopedResource>().ReverseMap();
+                cfg.CreateMap<PrivateEndpointConnection, PSPrivateEndpointConnection>().ReverseMap();
+                cfg.CreateMap<PrivateEndpointProperty, PSPrivateEndpointProperty>().ReverseMap();
+                cfg.CreateMap<PrivateLinkServiceConnectionStateProperty, PSPrivateLinkServiceConnectionStateProperty>().ReverseMap();
             });
             _instance = config.CreateMapper();
         }

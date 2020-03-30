@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     {
         public PSMonitorPrivateLinkScope() { }
 
-        public PSMonitorPrivateLinkScope(string location, IDictionary<string, string> tags = default(IDictionary<string, string>), string id = default(string), string name = default(string), string type = default(string), string provisioningState = "")
+        public PSMonitorPrivateLinkScope(string location, IDictionary<string, string> tags = default(IDictionary<string, string>), string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), IList<PSPrivateEndpointConnection> privateEndpointConnections = default(IList<PSPrivateEndpointConnection>))
         {
             this.Id = id;
             this.Name = name;
@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.Location = location;
             this.Tags = tags;
             this.ProvisioningState = provisioningState;
+            this.PrivateEndpointConnections = privateEndpointConnections;
         }
 
         /// <summary>
@@ -72,5 +73,11 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets list of private endpoint connections.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
+        public IList<PSPrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
     }
 }
