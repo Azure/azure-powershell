@@ -86,6 +86,9 @@ Get the details of an IoT device module or list modules located on an IoT device
 ### [Get-AzIotHubModuleConnectionString](Get-AzIotHubModuleConnectionString.md)
 Get the connection string of a target IoT device module in an Iot Hub.
 
+### [Get-AzIotHubModuleTwin](Get-AzIotHubModuleTwin.md)
+Gets an IoT device module twin.
+
 ### [Get-AzIotHubQuotaMetric](Get-AzIotHubQuotaMetric.md)
 Gets the Quota Metrics for an IotHub.
 
@@ -178,4 +181,7 @@ Update an Azure IoT Hub.
 
 ### [Update-AzIotHubDeviceTwin](Update-AzIotHubDeviceTwin.md)
 Updates tags and desired properties of a device twin.
+
+### [Update-AzIotHubModuleTwin](Update-AzIotHubModuleTwin.md)
+Updates tags and desired properties of an IoT device module twin.
 

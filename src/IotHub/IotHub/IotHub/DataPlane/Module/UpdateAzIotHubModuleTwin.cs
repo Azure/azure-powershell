@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Newtonsoft.Json;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubDeviceTwin", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubModuleTwin", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSDeviceTwin))]
-    public class UpdateAzIotHubDeviceTwin : IotHubBaseCmdlet
+    public class UpdateAzIotHubModuleTwin : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -60,24 +60,24 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string DeviceId { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = InputObjectParameterSet, HelpMessage = "Add or update the tags property in a device twin.")]
-        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Add or update the tags property in a device twin.")]
-        [Parameter(Mandatory = false, ParameterSetName = ResourceParameterSet, HelpMessage = "Add or update the tags property in a device twin.")]
+        [Parameter(Mandatory = true, HelpMessage = "Target Module Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ModuleId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Add or update the tags property in a module twin.")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = InputObjectParameterSet, HelpMessage = "Add or update the desired property in a device twin.")]
-        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Add or update the desired property in a device twin.")]
-        [Parameter(Mandatory = false, ParameterSetName = ResourceParameterSet, HelpMessage = "Add or update the desired property in a device twin.")]
+        [Parameter(Mandatory = false, HelpMessage = "Add or update the desired property in a module twin.")]
         [ValidateNotNullOrEmpty]
         public Hashtable Desired { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Allows to only partially update the tags and desired properties of a device twin.")]
+        [Parameter(Mandatory = false, HelpMessage = "Allows to only partially update the tags and desired properties of a module twin.")]
         public SwitchParameter Partial { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.DeviceId, Properties.Resources.UpdateIotHubDeviceTwin))
+            if (ShouldProcess(this.IotHubName, Properties.Resources.UpdateIotHubModuleTwin))
             {
                 IotHubDescription iotHubDescription;
                 if (ParameterSetName.Equals(InputObjectParameterSet))
@@ -102,30 +102,30 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 PSIotHubConnectionString psIotHubConnectionString = IotHubUtils.ToPSIotHubConnectionString(policy, iotHubDescription.Properties.HostName);
                 RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);
 
-                Twin deviceTwin = registryManager.GetTwinAsync(this.DeviceId).GetAwaiter().GetResult();
+                Twin moduleTwin = registryManager.GetTwinAsync(this.DeviceId, this.ModuleId).GetAwaiter().GetResult();
 
-                if (deviceTwin == null)
+                if (moduleTwin == null)
                 {
-                    throw new ArgumentException($"The entered device \"{this.DeviceId}\" doesn't exist.");
+                    throw new ArgumentException($"The entered module \"{this.ModuleId}\" doesn't exist.");
                 }
 
                 if (this.IsParameterBound(c => c.Tag))
                 {
-                    deviceTwin.Tags = new TwinCollection(JsonConvert.SerializeObject(this.Tag));
+                    moduleTwin.Tags = new TwinCollection(JsonConvert.SerializeObject(this.Tag));
                 }
 
                 if (this.IsParameterBound(c => c.Desired))
                 {
-                    deviceTwin.Properties.Desired = new TwinCollection(JsonConvert.SerializeObject(this.Desired));
+                    moduleTwin.Properties.Desired = new TwinCollection(JsonConvert.SerializeObject(this.Desired));
                 }
 
                 if (this.Partial.IsPresent)
                 {
-                    this.WriteObject(IotHubDataPlaneUtils.ToPSDeviceTwin(registryManager.UpdateTwinAsync(this.DeviceId, deviceTwin, deviceTwin.ETag).GetAwaiter().GetResult()));
+                    this.WriteObject(IotHubDataPlaneUtils.ToPSModuleTwin(registryManager.UpdateTwinAsync(this.DeviceId, this.ModuleId, moduleTwin, moduleTwin.ETag).GetAwaiter().GetResult()));
                 }
                 else
                 {
-                    this.WriteObject(IotHubDataPlaneUtils.ToPSDeviceTwin(registryManager.ReplaceTwinAsync(this.DeviceId, deviceTwin, deviceTwin.ETag).GetAwaiter().GetResult()));
+                    this.WriteObject(IotHubDataPlaneUtils.ToPSModuleTwin(registryManager.ReplaceTwinAsync(this.DeviceId, this.ModuleId, moduleTwin, moduleTwin.ETag).GetAwaiter().GetResult()));
                 }
             }
         }
