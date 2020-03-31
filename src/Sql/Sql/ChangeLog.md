@@ -18,10 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add cmdlets Get-AzSqlInstanceOperation and Stop-AzSqlInstanceOperation
+
+## Version 2.5.0
 * Add readable secondary parameter to Invoke-AzureSqlDatabaseFailover
 * Add cmdlet Disable-AzSqlServerActiveDirectoryOnlyAuthentication
 * Save sensitivity rank when classifying columns in the database.
-* Add cmdlets Get-AzSqlInstanceOperation and Stop-AzSqlInstanceOperation
 
 ## Version 2.4.0
 * Added PublicNetworkAccess to `New-AzSqlServer` and `Set-AzSqlServer`
