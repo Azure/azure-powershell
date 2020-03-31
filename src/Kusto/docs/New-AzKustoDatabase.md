@@ -12,30 +12,10 @@ Creates or updates a database.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Kind <Kind>
  [-SubscriptionId <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Parameter <IDatabase>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzKustoDatabase -InputObject <IKustoIdentity> -Parameter <IDatabase> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzKustoDatabase -InputObject <IKustoIdentity> -Kind <Kind> [-Location <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +57,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -104,29 +84,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Kind
 Kind of the database
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -142,7 +105,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -158,7 +121,7 @@ The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases: DatabaseName
 
 Required: True
@@ -185,29 +148,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Class representing a Kusto database.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group containing the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -224,7 +170,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -273,10 +219,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase
-
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase
@@ -284,24 +226,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ## NOTES
-
-### COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-#### INPUTOBJECT <IKustoIdentity>: Identity Parameter
-  - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
-  - `[ClusterName <String>]`: The name of the Kusto cluster.
-  - `[DataConnectionName <String>]`: The name of the data connection.
-  - `[DatabaseName <String>]`: The name of the database in the Kusto cluster.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Azure location.
-  - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
-  - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
-  - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-#### PARAMETER <IDatabase>: Class representing a Kusto database.
-  - `Kind <Kind>`: Kind of the database
-  - `[Location <String>]`: Resource location.
 
 ## RELATED LINKS
 

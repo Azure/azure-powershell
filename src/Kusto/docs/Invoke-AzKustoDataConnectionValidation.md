@@ -19,19 +19,6 @@ Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <Stri
  [-Location <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Data
-```
-Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> -Parameter <IDataConnectionValidation> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DataViaIdentity
-```
-Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -Parameter <IDataConnectionValidation>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### DataViaIdentityExpanded
 ```
 Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> [-DataConnectionName <String>]
@@ -68,7 +55,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Data, DataExpanded
+Parameter Sets: DataExpanded
 Aliases:
 
 Required: True
@@ -84,7 +71,7 @@ The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Data, DataExpanded
+Parameter Sets: DataExpanded
 Aliases:
 
 Required: True
@@ -100,7 +87,7 @@ The name of the data connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: DataExpanded, DataViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -133,7 +120,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-Parameter Sets: DataViaIdentity, DataViaIdentityExpanded
+Parameter Sets: DataViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -149,7 +136,7 @@ Kind of the endpoint for the data connection
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind
-Parameter Sets: DataExpanded, DataViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -165,7 +152,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: DataExpanded, DataViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -176,29 +163,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Class representing an data connection validation.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDataConnectionValidation
-Parameter Sets: Data, DataViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group containing the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Data, DataExpanded
+Parameter Sets: DataExpanded
 Aliases:
 
 Required: True
@@ -215,7 +185,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Data, DataExpanded
+Parameter Sets: DataExpanded
 Aliases:
 
 Required: False
@@ -264,8 +234,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDataConnectionValidation
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
@@ -289,11 +257,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
   - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-#### PARAMETER <IDataConnectionValidation>: Class representing an data connection validation.
-  - `Kind <Kind>`: Kind of the endpoint for the data connection
-  - `[DataConnectionName <String>]`: The name of the data connection.
-  - `[Location <String>]`: Resource location.
 
 ## RELATED LINKS
 

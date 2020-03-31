@@ -77,6 +77,16 @@ directive:
     where: $..produces
     transform: $ = $.filter( each => each === 'application/json');
     reason: this spec adds produces application/xml and text/json erronously.  
+  # Remove the unexpanded parameter set
+  - where:
+      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Data$|^DataViaIdentity$|^Detach$|^DetachViaIdentity$|^Update$|^UpdateViaIdentity$
+    remove: true
+  # Remove the unexpanded parameter set for specific commands
+  - where:
+      verb: Remove
+      subject: DatabasePrincipal|ClusterLanguageExtension
+      variant: ^Remove$|^RemoveViaIdentity$
+    remove: true
   # Remove the set-* cmdlet
   - where:
       verb: Set

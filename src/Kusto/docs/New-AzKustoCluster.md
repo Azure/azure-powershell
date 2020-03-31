@@ -12,38 +12,10 @@ Create or update a Kusto cluster.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzKustoCluster -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <AzureSkuName>
  -SkuTier <AzureSkuTier> [-SubscriptionId <String>] [-EnableDiskEncryption] [-EnablePurge]
  [-EnableStreamingIngest] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
- [-KeyVaultPropertyKeyVersion <String>] [-LanguageExtensionValue <ILanguageExtension[]>]
- [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
- [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
- [-TrustedExternalTenant <ITrustedExternalTenant[]>]
- [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
- [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationSubnetId <String>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzKustoCluster -Name <String> -ResourceGroupName <String> -Parameter <ICluster> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzKustoCluster -InputObject <IKustoIdentity> -Parameter <ICluster> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzKustoCluster -InputObject <IKustoIdentity> -Location <String> -SkuName <AzureSkuName>
- -SkuTier <AzureSkuTier> [-EnableDiskEncryption] [-EnablePurge] [-EnableStreamingIngest]
- [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
  [-KeyVaultPropertyKeyVersion <String>] [-LanguageExtensionValue <ILanguageExtension[]>]
  [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
@@ -109,7 +81,7 @@ A boolean value that indicates if the cluster's disks are encrypted.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -125,7 +97,7 @@ A boolean value that indicates if the purge operations are enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -141,7 +113,7 @@ A boolean value that indicates if the streaming ingest is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -157,7 +129,7 @@ The identity type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -174,7 +146,7 @@ The user identity dictionary key references will be ARM resource ids in the form
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -185,29 +157,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -KeyVaultPropertyKeyName
 The name of the key vault key.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -223,7 +178,7 @@ The Uri of the key vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -239,7 +194,7 @@ The version of the key vault key.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -256,7 +211,7 @@ To construct, see NOTES section for LANGUAGEEXTENSIONVALUE properties and create
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ILanguageExtension[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -272,7 +227,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -288,7 +243,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases: ClusterName
 
 Required: True
@@ -320,7 +275,7 @@ A boolean value that indicate if the optimized autoscale feature is enabled or n
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -336,7 +291,7 @@ Maximum allowed instances count.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -352,7 +307,7 @@ Minimum allowed instances count.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -368,7 +323,7 @@ The version of the template defined, for instance 1.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -379,29 +334,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Class representing a Kusto cluster.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ICluster
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group containing the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -417,7 +355,7 @@ The number of instances of the cluster.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -433,7 +371,7 @@ SKU name.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -449,7 +387,7 @@ SKU tier.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuTier
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -466,7 +404,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -482,7 +420,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -499,7 +437,7 @@ To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ITrustedExternalTenant[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -515,7 +453,7 @@ Data management's service public IP address resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -531,7 +469,7 @@ Engine service's public IP address resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -547,7 +485,7 @@ The subnet resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -563,7 +501,7 @@ The availability zones of the cluster.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -612,10 +550,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ICluster
-
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ICluster
@@ -627,48 +561,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IKustoIdentity>: Identity Parameter
-  - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
-  - `[ClusterName <String>]`: The name of the Kusto cluster.
-  - `[DataConnectionName <String>]`: The name of the data connection.
-  - `[DatabaseName <String>]`: The name of the database in the Kusto cluster.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Azure location.
-  - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
-  - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
-  - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
 #### LANGUAGEEXTENSIONVALUE <ILanguageExtension[]>: The list of language extensions.
   - `[Name <LanguageExtensionName?>]`: The language extension name.
-
-#### PARAMETER <ICluster>: Class representing a Kusto cluster.
-  - `Location <String>`: The geo-location where the resource lives
-  - `IdentityType <IdentityType>`: The identity type.
-  - `KeyVaultPropertyKeyName <String>`: The name of the key vault key.
-  - `KeyVaultPropertyKeyVaultUri <String>`: The Uri of the key vault.
-  - `KeyVaultPropertyKeyVersion <String>`: The version of the key vault key.
-  - `OptimizedAutoscaleIsEnabled <Boolean>`: A boolean value that indicate if the optimized autoscale feature is enabled or not.
-  - `OptimizedAutoscaleMaximum <Int32>`: Maximum allowed instances count.
-  - `OptimizedAutoscaleMinimum <Int32>`: Minimum allowed instances count.
-  - `OptimizedAutoscaleVersion <Int32>`: The version of the template defined, for instance 1.
-  - `SkuName <AzureSkuName>`: SKU name.
-  - `SkuTier <AzureSkuTier>`: SKU tier.
-  - `VirtualNetworkConfigurationDataManagementPublicIPId <String>`: Data management's service public IP address resource id.
-  - `VirtualNetworkConfigurationEnginePublicIPId <String>`: Engine service's public IP address resource id.
-  - `VirtualNetworkConfigurationSubnetId <String>`: The subnet resource id.
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[EnableDiskEncryption <Boolean?>]`: A boolean value that indicates if the cluster's disks are encrypted.
-  - `[EnablePurge <Boolean?>]`: A boolean value that indicates if the purge operations are enabled.
-  - `[EnableStreamingIngest <Boolean?>]`: A boolean value that indicates if the streaming ingest is enabled.
-  - `[IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>]`: The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    - `[(Any) <IComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
-  - `[LanguageExtensionValue <ILanguageExtension[]>]`: The list of language extensions.
-    - `[Name <LanguageExtensionName?>]`: The language extension name.
-  - `[SkuCapacity <Int32?>]`: The number of instances of the cluster.
-  - `[TrustedExternalTenant <ITrustedExternalTenant[]>]`: The cluster's external tenants.
-    - `[Value <String>]`: GUID representing an external tenant.
-  - `[Zone <String[]>]`: The availability zones of the cluster.
 
 #### TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants.
   - `[Value <String>]`: GUID representing an external tenant.

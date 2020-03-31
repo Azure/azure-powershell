@@ -19,20 +19,6 @@ Invoke-AzKustoDetachClusterFollowerDatabase -ClusterName <String> -ResourceGroup
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Detach
-```
-Invoke-AzKustoDetachClusterFollowerDatabase -ClusterName <String> -ResourceGroupName <String>
- -FollowerDatabaseToRemove <IFollowerDatabaseDefinition> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DetachViaIdentity
-```
-Invoke-AzKustoDetachClusterFollowerDatabase -InputObject <IKustoIdentity>
- -FollowerDatabaseToRemove <IFollowerDatabaseDefinition> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### DetachViaIdentityExpanded
 ```
 Invoke-AzKustoDetachClusterFollowerDatabase -InputObject <IKustoIdentity>
@@ -86,7 +72,7 @@ Resource name of the attached database configuration in the follower cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: DetachExpanded, DetachViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -102,7 +88,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Detach, DetachExpanded
+Parameter Sets: DetachExpanded
 Aliases:
 
 Required: True
@@ -118,7 +104,7 @@ Resource id of the cluster that follows a database owned by this cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: DetachExpanded, DetachViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -145,30 +131,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -FollowerDatabaseToRemove
-A class representing follower database request.
-To construct, see NOTES section for FOLLOWERDATABASETOREMOVE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IFollowerDatabaseDefinition
-Parameter Sets: Detach, DetachViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-Parameter Sets: DetachViaIdentity, DetachViaIdentityExpanded
+Parameter Sets: DetachViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -216,7 +185,7 @@ The name of the resource group containing the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Detach, DetachExpanded
+Parameter Sets: DetachExpanded
 Aliases:
 
 Required: True
@@ -233,7 +202,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Detach, DetachExpanded
+Parameter Sets: DetachExpanded
 Aliases:
 
 Required: False
@@ -282,8 +251,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IFollowerDatabaseDefinition
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
@@ -296,10 +263,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-#### FOLLOWERDATABASETOREMOVE <IFollowerDatabaseDefinition>: A class representing follower database request.
-  - `AttachedDatabaseConfigurationName <String>`: Resource name of the attached database configuration in the follower cluster.
-  - `ClusterResourceId <String>`: Resource id of the cluster that follows a database owned by this cluster.
 
 #### INPUTOBJECT <IKustoIdentity>: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.

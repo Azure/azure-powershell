@@ -19,20 +19,6 @@ Test-AzKustoDataConnectionNameAvailability -ClusterName <String> -DatabaseName <
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Check
-```
-Test-AzKustoDataConnectionNameAvailability -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> -DataConnectionName <IDataConnectionCheckNameRequest> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentity
-```
-Test-AzKustoDataConnectionNameAvailability -InputObject <IKustoIdentity>
- -DataConnectionName <IDataConnectionCheckNameRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### CheckViaIdentityExpanded
 ```
 Test-AzKustoDataConnectionNameAvailability -InputObject <IKustoIdentity> -Name <String> -Type <Type>
@@ -69,7 +55,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
@@ -85,30 +71,13 @@ The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DataConnectionName
-A data connection check name availability request.
-To construct, see NOTES section for DATACONNECTIONNAME properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDataConnectionCheckNameRequest
-Parameter Sets: Check, CheckViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -135,7 +104,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
+Parameter Sets: CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -151,7 +120,7 @@ Data Connection name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -167,7 +136,7 @@ The name of the resource group containing the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
@@ -184,7 +153,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -200,7 +169,7 @@ The type of resource, Microsoft.Kusto/clusters/databases/dataConnections.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Type
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -249,8 +218,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDataConnectionCheckNameRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
@@ -263,10 +230,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-#### DATACONNECTIONNAME <IDataConnectionCheckNameRequest>: A data connection check name availability request.
-  - `Name <String>`: Data Connection name.
-  - `Type <Type>`: The type of resource, Microsoft.Kusto/clusters/databases/dataConnections.
 
 #### INPUTOBJECT <IKustoIdentity>: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.

@@ -19,20 +19,6 @@ Add-AzKustoDatabasePrincipal -ClusterName <String> -DatabaseName <String> -Resou
  [<CommonParameters>]
 ```
 
-### Add
-```
-Add-AzKustoDatabasePrincipal -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
- -DatabasePrincipalsToAdd <IDatabasePrincipalListRequest> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddViaIdentity
-```
-Add-AzKustoDatabasePrincipal -InputObject <IKustoIdentity>
- -DatabasePrincipalsToAdd <IDatabasePrincipalListRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### AddViaIdentityExpanded
 ```
 Add-AzKustoDatabasePrincipal -InputObject <IKustoIdentity> [-Value <IDatabasePrincipal[]>]
@@ -69,7 +55,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded
+Parameter Sets: AddExpanded
 Aliases:
 
 Required: True
@@ -85,30 +71,13 @@ The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded
+Parameter Sets: AddExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DatabasePrincipalsToAdd
-The list Kusto database principals operation request.
-To construct, see NOTES section for DATABASEPRINCIPALSTOADD properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabasePrincipalListRequest
-Parameter Sets: Add, AddViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -135,7 +104,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-Parameter Sets: AddViaIdentity, AddViaIdentityExpanded
+Parameter Sets: AddViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -151,7 +120,7 @@ The name of the resource group containing the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded
+Parameter Sets: AddExpanded
 Aliases:
 
 Required: True
@@ -168,7 +137,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded
+Parameter Sets: AddExpanded
 Aliases:
 
 Required: False
@@ -185,7 +154,7 @@ To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabasePrincipal[]
-Parameter Sets: AddExpanded, AddViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -234,8 +203,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabasePrincipalListRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
@@ -248,15 +215,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-#### DATABASEPRINCIPALSTOADD <IDatabasePrincipalListRequest>: The list Kusto database principals operation request.
-  - `[Value <IDatabasePrincipal[]>]`: The list of Kusto database principals.
-    - `Name <String>`: Database principal name.
-    - `Role <DatabasePrincipalRole>`: Database principal role.
-    - `Type <DatabasePrincipalType>`: Database principal type.
-    - `[AppId <String>]`: Application id - relevant only for application principal type.
-    - `[Email <String>]`: Database principal email if exists.
-    - `[Fqn <String>]`: Database principal fully qualified name.
 
 #### INPUTOBJECT <IKustoIdentity>: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.

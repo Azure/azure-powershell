@@ -19,19 +19,6 @@ Test-AzKustoDatabaseNameAvailability -ClusterName <String> -ResourceGroupName <S
  [<CommonParameters>]
 ```
 
-### Check
-```
-Test-AzKustoDatabaseNameAvailability -ClusterName <String> -ResourceGroupName <String>
- -ResourceName <ICheckNameRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentity
-```
-Test-AzKustoDatabaseNameAvailability -InputObject <IKustoIdentity> -ResourceName <ICheckNameRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CheckViaIdentityExpanded
 ```
 Test-AzKustoDatabaseNameAvailability -InputObject <IKustoIdentity> -Name <String> -Type <Type>
@@ -68,7 +55,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
@@ -101,7 +88,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
+Parameter Sets: CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -117,7 +104,7 @@ Resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -133,7 +120,7 @@ The name of the resource group containing the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
@@ -144,30 +131,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceName
-The result returned from a database check name availability request.
-To construct, see NOTES section for RESOURCENAME properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ICheckNameRequest
-Parameter Sets: Check, CheckViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SubscriptionId
 Gets subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -183,7 +153,7 @@ The type of resource, for instance Microsoft.Kusto/clusters/databases.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Type
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -232,8 +202,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ICheckNameRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
@@ -257,10 +225,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
   - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-#### RESOURCENAME <ICheckNameRequest>: The result returned from a database check name availability request.
-  - `Name <String>`: Resource name.
-  - `Type <Type>`: The type of resource, for instance Microsoft.Kusto/clusters/databases.
 
 ## RELATED LINKS
 

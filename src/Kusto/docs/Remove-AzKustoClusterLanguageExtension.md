@@ -19,20 +19,6 @@ Remove-AzKustoClusterLanguageExtension -ClusterName <String> -ResourceGroupName 
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Remove
-```
-Remove-AzKustoClusterLanguageExtension -ClusterName <String> -ResourceGroupName <String>
- -LanguageExtensionsToRemove <ILanguageExtensionsList> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RemoveViaIdentity
-```
-Remove-AzKustoClusterLanguageExtension -InputObject <IKustoIdentity>
- -LanguageExtensionsToRemove <ILanguageExtensionsList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### RemoveViaIdentityExpanded
 ```
 Remove-AzKustoClusterLanguageExtension -InputObject <IKustoIdentity> [-Value <ILanguageExtension[]>]
@@ -85,7 +71,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove, RemoveExpanded
+Parameter Sets: RemoveExpanded
 Aliases:
 
 Required: True
@@ -118,24 +104,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-Parameter Sets: RemoveViaIdentity, RemoveViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -LanguageExtensionsToRemove
-The list of language extension objects.
-To construct, see NOTES section for LANGUAGEEXTENSIONSTOREMOVE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ILanguageExtensionsList
-Parameter Sets: Remove, RemoveViaIdentity
+Parameter Sets: RemoveViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -183,7 +152,7 @@ The name of the resource group containing the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove, RemoveExpanded
+Parameter Sets: RemoveExpanded
 Aliases:
 
 Required: True
@@ -200,7 +169,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove, RemoveExpanded
+Parameter Sets: RemoveExpanded
 Aliases:
 
 Required: False
@@ -217,7 +186,7 @@ To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ILanguageExtension[]
-Parameter Sets: RemoveExpanded, RemoveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -266,8 +235,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ILanguageExtensionsList
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
@@ -291,10 +258,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
   - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-#### LANGUAGEEXTENSIONSTOREMOVE <ILanguageExtensionsList>: The list of language extension objects.
-  - `[Value <ILanguageExtension[]>]`: The list of language extensions.
-    - `[Name <LanguageExtensionName?>]`: The language extension name.
 
 #### VALUE <ILanguageExtension[]>: The list of language extensions.
   - `[Name <LanguageExtensionName?>]`: The language extension name.
