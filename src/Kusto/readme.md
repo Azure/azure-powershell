@@ -91,6 +91,10 @@ directive:
   - where:
       subject: Operation
     hide: true
+  # Hide cmdlets that are not reviewed yet
+  - where:
+      subject: ClusterLanguageExtension|DatabasePrincipal|AttachedDatabaseConfiguration|ClusterFollowerDatabase|ClusterPrincipalAssignment|DatabasePrincipalAssignment|DataConnection|DetachClusterFollowerDatabase|DiagnoseClusterVirtualNetwork
+    hide: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
