@@ -30,23 +30,27 @@ Checks that the database name is valid and is not already in use.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check the availability of a Kusto database name which is in use
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzKustoDatabaseNameAvailability -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Type Microsoft.Kusto/Clusters/Databases
 
-{{ Add output here }}
+Message                                                                                                          Name            NameAvailable Reason
+-------                                                                                                          ----            ------------- ------
+Database mykustodatabase already exists in cluster testnewkustocluster. Please select a different database name. mykustodatabase False
 ```
 
-{{ Add description here }}
+The above command returns whether or not a Kusto database named "mykustodatabase" exists in the "testnewkustocluster" cluster.
 
-### Example 2: {{ Add title here }}
+### Example 2: Check the availability of a Kusto database name which is not in use
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzKustoDatabaseNameAvailability -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase2 -Type Microsoft.Kusto/Clusters/Databases
 
-{{ Add output here }}
+Message Name             NameAvailable Reason
+------- ----             ------------- ------
+        mykustodatabase2 True
 ```
 
-{{ Add description here }}
+The above command returns whether or not a Kusto database named "mykustodatabase2" exists in the "testnewkustocluster" cluster.
 
 ## PARAMETERS
 
