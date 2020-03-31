@@ -87,6 +87,10 @@ directive:
       subject: DatabasePrincipal|ClusterLanguageExtension
       variant: ^Remove$|^RemoveViaIdentity$
     remove: true
+  # Hide the operation API
+  - where:
+      subject: Operation
+    hide: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
