@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support create/update/get/list EncryptionScope of a Storage account
+    -  New-AzStorageEncryptionScope
+    -  Update-AzStorageEncryptionScope
+    -  Get-AzStorageEncryptionScope
+* Support create Storage Container with EncryptionScope settings
+    -  New-AzRmStorageContainer
+* Support update Storage account with encryted by Keyvault without Keyversion
+    -  Set-AzStorageAccount
 
 ## Version 1.13.3
 * Upgrade DataLake Gen2 cmdlets to use new SDK "Azure.Storage.Files.DataLake", and remove 2 parameter -ServerTimeoutPerRequest, -ClientTimeoutPerRequest

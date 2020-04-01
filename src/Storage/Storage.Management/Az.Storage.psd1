@@ -69,7 +69,7 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Storage.dll',
                'Microsoft.Azure.KeyVault.Core.dll','Azure.Storage.Blobs.dll',
                'Azure.Storage.Common.dll', 'Azure.Storage.Files.DataLake.dll',
                'Azure.Core.dll', 'Microsoft.Bcl.AsyncInterfaces.dll',
-               'System.Text.Json.dll',"System.Threading.Tasks.Extensions.dll"
+               'System.Text.Json.dll', 'System.Threading.Tasks.Extensions.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -169,7 +169,9 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Set-AzDataLakeGen2ItemAclObject', 'Get-AzDataLakeGen2ItemContent', 
                'Enable-AzStorageBlobRestorePolicy', 
                'Disable-AzStorageBlobRestorePolicy', 
-               'New-AzStorageBlobRangeToRestore', 'Restore-AzStorageBlobRange'
+               'New-AzStorageBlobRangeToRestore', 'Restore-AzStorageBlobRange',
+               'New-AzStorageEncryptionScope','Update-AzStorageEncryptionScope',
+               'Get-AzStorageEncryptionScope'
 
 # Variables to export from this module
 # VariablesToExport = @()
