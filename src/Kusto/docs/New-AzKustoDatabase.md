@@ -12,10 +12,18 @@ Creates or updates a database.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Kind <Kind>
  [-SubscriptionId <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Parameter <IDatabase>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +97,7 @@ Kind of the database
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -105,7 +113,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -144,6 +152,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Parameter
+Class representing a Kusto database.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -219,6 +244,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase
@@ -226,6 +253,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IDatabase>: Class representing a Kusto database.
+  - `Kind <Kind>`: Kind of the database
+  - `[Location <String>]`: Resource location.
 
 ## RELATED LINKS
 
