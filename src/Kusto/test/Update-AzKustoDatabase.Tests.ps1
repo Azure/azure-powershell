@@ -25,8 +25,7 @@ Describe 'Update-AzKustoDatabase' {
         $softDeletePeriodInDaysUpdated = Get-Updated-Soft-Delete-Period-In-Days
         $hotCachePeriodInDaysUpdated = Get-Updated-Hot-Cache-Period-In-Days
         
-        $databaseProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadWriteDatabase -Property @{SoftDeletePeriod= $softDeletePeriodInDaysUpdated; HotCachePeriod=$hotCachePeriodInDaysUpdated}
-        $databaseUpdatedWithParameters = Update-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Parameter $databaseProperties
+        $databaseUpdatedWithParameters = Update-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Parameter @{SoftDeletePeriod= $softDeletePeriodInDaysUpdated; HotCachePeriod=$hotCachePeriodInDaysUpdated}
         Validate_Database $databaseUpdatedWithParameters $databaseFullName $location $resourceType $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated
     }
 }
