@@ -1,18 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a virtual network rule
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzMariaDbVirtualNetworkRule -Name vnet-001 -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-9pebvn
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a virtual network rule.
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

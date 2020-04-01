@@ -1,18 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a MariaDB
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzMariaDbServer -Name mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a MariaDB.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a MariaDB
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMariaDbServer -Name mariadb-bc-t01 -ResourceGroupName mariadb-test-qu5ov0 | Remove-AzMariaDbServer
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a MariaDB.
 

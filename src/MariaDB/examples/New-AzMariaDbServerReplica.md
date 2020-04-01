@@ -1,18 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a replica db for a MariaDB
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMariaDbServerReplica -ServerName mariadb-test-9pebvn -Name mariadb-test-9pebvn-rep01 -ResourceGroupName mariadb-test-qu5ov0
 
-{{ Add output here }}
+Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----                      -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mariadb-test-9pebvn-rep01 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
 ```
 
-{{ Add description here }}
+This command creates a replica db for a MariaDB.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a replica db for a MariaDB
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | New-AzMariaDbServerReplica -Name mariadb-test-9pebvn-rep02
 
-{{ Add output here }}
+Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----                      -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mariadb-test-9pebvn-rep02 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
 ```
 
-{{ Add description here }}
+This command creates a replica db for a MariaDB.
 
