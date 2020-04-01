@@ -1186,6 +1186,72 @@ function Test-RemoveAuditOnDatabase
 
 <#
 .SYNOPSIS
+Test Auditing to storage acount in VNet
+#>
+function Test-AuditingToStorageInVNet
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+	$subscriptionId = (Get-AzContext).Subscription.Id
+
+	try
+	{
+		Update-AzStorageAccountNetworkRuleSet -ResourceGroupName $params.rgname -Name $params.storageAccount -DefaultAction Deny
+
+
+		# Enable Server Auditing to storage in VNet, and verify.
+		Get-AzSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName | Set-AzSqlServerAudit -BlobStorageTargetState Enabled -StorageAccountResourceId $params.storageAccountResourceId
+		$policy = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
+		Assert-Null "Primary" $policy.StorageKeyType
+		Assert-AreEqual 0 $policy.RetentionInDays
+
+		# Disable Server Auditing and verify.
+		Get-AzSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName | Set-AzSqlServerAudit -BlobStorageTargetState Disabled
+		$policy = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 0 $policy.AuditActionGroup.Length
+		Assert-Null $policy.StorageAccountResourceId
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-Null $policy.StorageKeyType
+		Assert-Null $policy.RetentionInDays
+
+		# Enable Database Auditing to storage in VNet, and verify.
+		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Set-AzSqlDatabaseAudit -BlobStorageTargetState Enabled -StorageAccountResourceId $params.storageAccountResourceId
+		$policy = Get-AzSqlDatabaseAudit -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
+		Assert-Null "Primary" $policy.StorageKeyType
+		Assert-AreEqual 0 $policy.RetentionInDays
+
+		# Disable Server Auditing and verify.
+		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Set-AzSqlDatabaseAudit -BlobStorageTargetState Disabled
+		$policy = Get-AzSqlDatabaseAudit -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 0 $policy.AuditActionGroup.Length
+		Assert-Null $policy.StorageAccountResourceId
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-Null $policy.StorageKeyType
+		Assert-Null $policy.RetentionInDays
+
+		Update-AzStorageAccountNetworkRuleSet -ResourceGroupName $params.rgname -Name $params.storageAccount -DefaultAction Allow
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
 Test for all auditing settings on a server
 #>
 function Test-AuditOnServer

@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         public string StorageAccountResourceId { get; set; }
 
-        public StorageKeyKind StorageKeyType { get; set; }
+        public StorageKeyKind? StorageKeyType { get; set; }
 
         public uint? RetentionInDays { get; set; }
 

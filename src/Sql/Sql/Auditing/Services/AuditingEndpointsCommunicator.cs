@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using Microsoft.Azure.Management.Sql;
@@ -180,6 +181,19 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         {
             return GetMonitorManagementClient().DiagnosticSettings.CreateOrUpdateAsync(
                 GetResourceUri(resourceGroupName, serverName, databaseName), settings, settings.Name).Result;
+        }
+
+        public Guid? AssignServerIdentity(string resourceGroupName, string serverName)
+        {
+            var server = GetCurrentSqlClient().Servers.Get(resourceGroupName, serverName);
+            if (server.Identity == null ||
+                server.Identity.Type != ResourceIdentityType.SystemAssigned.ToString())
+            {
+                server.Identity = ResourceIdentityHelper.GetIdentityObjectFromType(true);
+                server = GetCurrentSqlClient().Servers.CreateOrUpdate(resourceGroupName, serverName, server);
+            }
+
+            return server.Identity.PrincipalId;
         }
 
         private static string GetNextDiagnosticSettingsName(IList<DiagnosticSettingsResource> settings)

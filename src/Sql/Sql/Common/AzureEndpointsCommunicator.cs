@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Sql.DataClassification.Services;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -240,30 +240,13 @@ namespace Microsoft.Azure.Commands.Sql.Common
         }
 
         /// <summary>
-        /// Retrieves storage keys.
-        /// </summary>
-        /// <param name="storageAccountSubscriptionId">Storage account subscription id</param>
-        /// <param name="storageAccountName">Storage account name</param>
-        /// <returns>Dictionary containing storage keys</returns>
-        internal Dictionary<StorageKeyKind, string> RetrieveStorageKeys(Guid storageAccountSubscriptionId, string storageAccountName)
-        {
-            // Retrieve the id of the storage account.
-            //
-            var storageAccountId = RetrieveStorageAccountIdAsync(storageAccountSubscriptionId, storageAccountName).GetAwaiter().GetResult();
-
-            // Extract storage account keys. 
-            //
-            return RetrieveStorageKeysAsync(storageAccountId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
         /// Retrieves storage account keys.
         /// </summary>
         /// <param name="storageAccountId">Storage account id</param>
         /// <returns>Dictionary containing storage keys</returns>
         internal async Task<Dictionary<StorageKeyKind, string>> RetrieveStorageKeysAsync(string storageAccountId)
         {
-            var isClassicStorage = storageAccountId.Contains("Microsoft.ClassicStorage/storageAccounts");
+            var isClassicStorage = IsClassicStorage(storageAccountId);
 
             // Build a URI for calling corresponding REST-API
             //
@@ -364,6 +347,47 @@ namespace Microsoft.Azure.Commands.Sql.Common
             return InformationProtectionPolicy.ToInformationProtectionPolicy(policyToken);
         }
 
+        internal void AddRoleAssignmentToStorage(string storageAccountResourceId, Guid principalId)
+        {
+            Uri endpoint = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
+            string uri = $"{endpoint}/{storageAccountResourceId}/providers/Microsoft.Authorization/roleAssignments/{Guid.NewGuid()}?api-version=2018-01-01-preview";
+
+            string roleDefinitionId = $"/subscriptions/{GetStorageAccountSubscription(storageAccountResourceId)}/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe";
+            string content = $"{{\"properties\": {{ \"roleDefinitionId\": \"{roleDefinitionId}\", \"principalId\": \"{principalId}\", \"principalType\": \"ServicePrincipal\"}}}}";
+
+            var httpRequest = new HttpRequestMessage
+            {
+                Method = HttpMethod.Put,
+                RequestUri = new Uri(uri),
+                Content = new StringContent(content, Encoding.UTF8, "application/json")
+            };
+
+            var client = GetCurrentResourcesClient(Context);
+            client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
+            HttpResponseMessage response = client.HttpClient.SendAsync(httpRequest, CancellationToken.None).Result;
+            if (response.IsSuccessStatusCode || response.StatusCode == System.Net.HttpStatusCode.Conflict)
+            {
+                return;
+            }
+
+            throw new Exception(string.Format(Properties.Resources.FailedToAddRoleAssignmentForStorageAccount, storageAccountResourceId));
+        }
+
+        internal bool IsStorageAccountInVNet(string storageAccountResourceId)
+        {
+            if (IsClassicStorage(storageAccountResourceId))
+            {
+                return false;
+            }
+
+            string uri = $"{Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString()}{storageAccountResourceId}?api-version=2019-06-01";
+            Exception exception = new Exception(
+                string.Format(Properties.Resources.RetrievingStorageAccountPropertiesFailed,
+                storageAccountResourceId));
+            JToken storageAccountPropertiesToken = SendAsync(uri, HttpMethod.Get, exception).Result;
+            return GetNetworkAclsDefaultAction(storageAccountPropertiesToken, exception).Equals("Deny");
+        }
+
         /// <summary>
         /// Deploys an ARM template at resource group level
         /// </summary>
@@ -440,6 +464,33 @@ namespace Microsoft.Azure.Commands.Sql.Common
             }
 
             return JToken.Parse(await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false));
+        }
+
+        private string GetNetworkAclsDefaultAction(JToken storageAccountPropertiesToken, Exception exceptionToThrowOnFailure)
+        {
+            JToken value;
+            try
+            {
+                value = storageAccountPropertiesToken["properties"]["networkAcls"]["defaultAction"];
+            }
+            catch (Exception)
+            {
+                throw exceptionToThrowOnFailure;
+            }
+
+            return value?.ToString();
+        }
+
+        private static bool IsClassicStorage(string storageAccountResourceId)
+        {
+            return storageAccountResourceId.Contains("Microsoft.ClassicStorage/storageAccounts");
+        }
+
+        private static string GetStorageAccountSubscription(string storageAccountResourceId)
+        {
+            const string separator = "subscriptions/";
+            int subscriptionStartIndex = storageAccountResourceId.IndexOf(separator) + separator.Length;
+            return storageAccountResourceId.Substring(subscriptionStartIndex, Guid.Empty.ToString().Length);
         }
 
         /// <summary>

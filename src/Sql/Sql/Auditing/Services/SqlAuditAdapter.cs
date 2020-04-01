@@ -130,8 +130,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 return;
             }
 
-            model.StorageKeyType = GetStorageKeyKind(isSecondary);
-
             if (isAuditEnabled)
             {
                 if (storageAccountSubscriptionId == null || Guid.Empty.Equals(storageAccountSubscriptionId))
@@ -140,15 +138,21 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 }
 
                 model.StorageAccountResourceId = AzureCommunicator.RetrieveStorageAccountIdAsync(
-                    (Guid)storageAccountSubscriptionId,
+                    storageAccountSubscriptionId.Value,
                     GetStorageAccountName(storageEndpoint)).GetAwaiter().GetResult();
+                model.StorageKeyType = GetStorageKeyKind(isSecondary);
                 ModelizeRetentionInfo(model, retentionDays);
             }
         }
 
-        private static StorageKeyKind GetStorageKeyKind(bool? isSecondary)
+        private static StorageKeyKind? GetStorageKeyKind(bool? isSecondary)
         {
-            return (isSecondary ?? false) ? StorageKeyKind.Secondary : StorageKeyKind.Primary;
+            if (isSecondary.HasValue)
+            {
+                return isSecondary.Value ? StorageKeyKind.Secondary : StorageKeyKind.Primary;
+            }
+
+            return null;
         }
 
         private static string GetStorageAccountName(string storageEndpoint)
@@ -419,13 +423,22 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 
         private void PolicizeStorageInfo(ServerAuditModel model, dynamic policy)
         {
-            ExtractStorageAccountProperties(model.StorageAccountResourceId, out string storageAccountName, out Guid storageAccountSubscriptionId);
-            string storageEndpointSuffix = Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
-
-            policy.StorageEndpoint = GetStorageAccountEndpoint(storageAccountName, storageEndpointSuffix);
-            policy.StorageAccountAccessKey = AzureCommunicator.RetrieveStorageKeysAsync(model.StorageAccountResourceId).GetAwaiter().GetResult()[model.StorageKeyType];
-            policy.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
+            ExtractStorageAccountProperties(model.StorageAccountResourceId,
+                out string storageAccountName,
+                out Guid storageAccountSubscriptionId);
+            policy.StorageEndpoint = GetStorageAccountEndpoint(storageAccountName);
             policy.StorageAccountSubscriptionId = storageAccountSubscriptionId;
+
+            if (AzureCommunicator.IsStorageAccountInVNet(model.StorageAccountResourceId))
+            {
+                Guid? principalId = Communicator.AssignServerIdentity(model.ResourceGroupName, model.ServerName);
+                AzureCommunicator.AddRoleAssignmentToStorage(model.StorageAccountResourceId, principalId.Value);
+            }
+            else
+            {
+                policy.StorageAccountAccessKey = AzureCommunicator.RetrieveStorageKeysAsync(model.StorageAccountResourceId).GetAwaiter().GetResult()[model.StorageKeyType.Value];
+                policy.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
+            }
 
             if (model.RetentionInDays != null)
             {
@@ -464,9 +477,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Extracts the storage account name from the given model
         /// </summary>
-        private static string GetStorageAccountEndpoint(string storageAccountName, string endpointSuffix)
+        private string GetStorageAccountEndpoint(string storageAccountName)
         {
-            return string.Format("https://{0}.blob.{1}", storageAccountName, endpointSuffix);
+            return string.Format("https://{0}.blob.{1}", storageAccountName, Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
         }
 
         internal void PersistAuditChanges(ServerAuditModel model)

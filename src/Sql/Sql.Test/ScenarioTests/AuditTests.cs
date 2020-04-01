@@ -240,5 +240,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-RemoveServerAuditingSettingsMultipleDiagnosticSettings");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAuditingToStorageInVNet()
+        {
+            RunPowerShellTest("Test-AuditingToStorageInVNet");
+        }
     }
 }
