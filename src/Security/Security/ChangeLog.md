@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add new cmdlets: `Get-AzRegulatoryComplianceStandard`, 
+					`Get-AzRegulatoryComplianceControl`, 
+					`Get-AzRegulatoryComplainceAssessment`
 
 ## Version 0.7.7
 * Update references in .psd1 to use relative path

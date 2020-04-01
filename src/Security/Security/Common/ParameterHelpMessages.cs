@@ -75,5 +75,12 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string Enable = "Enables Threat Protection Policy";
 
         #endregion
+
+        #region RegulatoryCompliance
+
+        public const string StandardName = "Standard Name.";
+        public const string ControlName = "Control Name.";
+
+        #endregion
     }
 }

@@ -26,6 +26,12 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Common
 
         private static Regex subscriptionRegex = new Regex("/subscriptions/(?<subscriptionId>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
+        private static Regex regulatoryStandardRegex = new Regex("regulatoryComplianceStandards/(?<StandardName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static Regex regulatoryStandardControlRegex = new Regex("regulatoryComplianceControls/(?<ControlName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static Regex regulatoryStandardAssessmentRegex = new Regex("regulatoryComplianceAssessments/(?<AssessmentName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
         public static string GetResourceName(string id)
         {
             return id.Split('/').Last();
@@ -65,6 +71,68 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Common
             }
 
             return match.Groups["subscriptionId"].Value;
+        }
+
+        public static string GetRegulatoryStandardName(string id)
+        {
+            var match = regulatoryStandardRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the resource identifier.", "standardName");
+            }
+
+            return match.Groups["StandardName"].Value;
+        }
+
+        /// <summary>
+        /// Parse from the resourceId the control name
+        /// </summary>
+        /// <param name="id">resource id</param>
+        /// <param name="isLast">true if the control name is the last element in the id</param>
+        /// <returns>Control name</returns>
+        public static string GetRegulatoryStandardControlName(string id, bool isLast)
+        {
+            if (isLast)
+            {
+                return id.Split('/').Last();
+            }
+            else
+            {
+                var match = regulatoryStandardControlRegex.Match(id);
+
+                if (match.Success != true)
+                {
+                    throw new ArgumentException("Invalid format of the resource identifier.", "ControlName");
+                }
+
+                return match.Groups["ControlName"].Value;
+            }
+        }
+
+        /// <summary>
+        /// Parse from the resourceId the assessment name
+        /// </summary>
+        /// <param name="id">resource id</param>
+        /// <param name="isLast">true if the control name is the last element in the id</param>
+        /// <returns>Assessment name</returns>
+        public static string GetRegulatoryStandardAssessmentName(string id, bool isLast)
+        {
+            if (isLast)
+            {
+                return id.Split('/').Last();
+            }
+            else
+            {
+                var match = regulatoryStandardAssessmentRegex.Match(id);
+
+                if (match.Success != true)
+                {
+                    throw new ArgumentException("Invalid format of the resource identifier.", "AssessmentName");
+                }
+
+                return match.Groups["AssessmentName"].Value;
+            }
         }
     }
 }

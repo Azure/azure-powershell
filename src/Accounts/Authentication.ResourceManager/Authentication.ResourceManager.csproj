@@ -11,6 +11,10 @@
     <RootNamespace>$(LegacyAssemblyPrefix)Common.Authentication.ResourceManager</RootNamespace>
   </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Azure.Management.SecurityCenter" Version="1.1.1" />
+    </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
   </ItemGroup>
