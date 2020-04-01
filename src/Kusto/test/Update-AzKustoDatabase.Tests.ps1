@@ -15,18 +15,13 @@ while(-not $mockingPath) {
 
 Describe 'Update-AzKustoDatabase' {
     It 'Update' {
-        $location = Get-Location
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $databaseName = Get-Database-Name
-        $resourceType =  Get-Database-Type
-        $databaseFullName = "$clusterName/$databaseName"
+        $databaseFullName = $env.clusterName + "/" + $env.databaseName
         
         $softDeletePeriodInDaysUpdated = Get-Updated-Soft-Delete-Period-In-Days
         $hotCachePeriodInDaysUpdated = Get-Updated-Hot-Cache-Period-In-Days
         
         $databaseProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadWriteDatabase -Property @{SoftDeletePeriod= $softDeletePeriodInDaysUpdated; HotCachePeriod=$hotCachePeriodInDaysUpdated}
-        $databaseUpdatedWithParameters = Update-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Parameter $databaseProperties
-        Validate_Database $databaseUpdatedWithParameters $databaseFullName $location $resourceType $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated
+        $databaseUpdatedWithParameters = Update-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $env.databaseName -Parameter $databaseProperties
+        Validate_Database $databaseUpdatedWithParameters $databaseFullName $env.location $env.databaseType $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated
     }
 }

@@ -14,78 +14,6 @@
 
 <#
 .SYNOPSIS
-Gets resource location for testing.
-#>
-function Get-Location
-{
-	return "East US"
-}
-
-<#
-.SYNOPSIS
-Gets a name of the resource group testing.
-#>
-function Get-RG-Name
-{
-	return "sdkpowershellrg"
-}
-
-<#
-.SYNOPSIS
-Gets an instance number of a machines in a cluster.
-#>
-function Get-Cluster-Default-Capacity
-{
-	return 2
-}
-
-<#
-.SYNOPSIS
-Gets a name of the cluster testing.
-#>
-function Get-Cluster-Name
-{
-	return "sdkpsclustereu"
-}
-
-<#
-.SYNOPSIS
-Gets a sku name
-#>
-function Get-SkuName
-{
-	return "Standard_D11_v2"
-}
-
-<#
-.SYNOPSIS
-Gets sku tier
-#>
-function Get-SkuTier
-{
-	return "Standard"
-}
-
-<#
-.SYNOPSIS
-Gets a sku diferent sku name.
-#>
-function Get-Updated-SkuName
-{
-	return "Standard_D12_v2"
-}
-
-<#
-.SYNOPSIS
-Gets a name of a not existing resource group for testing.
-#>
-function Get-Cluster-Resource-Type
-{
-	return "Microsoft.Kusto/Clusters"
-}
-
-<#
-.SYNOPSIS
 Gets a cluster resource id
 #>
 function Get-Cluster-Resource-Id
@@ -108,25 +36,6 @@ function Get-Database-Resource-Id
 		[string]$DatabaseName)
 	$clusterResourceId = Get-Cluster-Resource-Id -Subscription $Subscription -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName
 	return "$clusterResourceId/databases/$DatabaseName"
-}
-
-
-<#
-.SYNOPSIS
-Gets a database name
-#>
-function Get-Database-Name
-{
-	return "sdkpowershelldb"
-}
-
-<#
-.SYNOPSIS
-Gets a database type
-#>
-function Get-Database-Type
-{
-	return "Microsoft.Kusto/Clusters/Databases"
 }
 
 <#

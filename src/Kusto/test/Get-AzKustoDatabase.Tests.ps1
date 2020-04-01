@@ -15,31 +15,21 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzKustoDatabase' {
     It 'List' {
-        $location = Get-Location
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $databaseName = Get-Database-Name
-        $resourceType =  Get-Database-Type
         $softDeletePeriodInDays =  Get-Updated-Soft-Delete-Period-In-Days
         $hotCachePeriodInDays =  Get-Updated-Hot-Cache-Period-In-Days
-        $databaseFullName = "$clusterName/$databaseName"
+        $databaseFullName = $env.clusterName + "/" + $env.databaseName
 
-        [array]$databaseGet = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
+        [array]$databaseGet = Get-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $env.databaseName
         $databaseGetItem = $databaseGet[0]
-        Validate_Database $databaseGetItem $databaseFullName $location $resourceType $softDeletePeriodInDays $hotCachePeriodInDays
+        Validate_Database $databaseGetItem $databaseFullName $env.location $env.databaseType $softDeletePeriodInDays $hotCachePeriodInDays
     }
 
     It 'Get' {
-        $location = Get-Location
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $databaseName = Get-Database-Name
-        $resourceType =  Get-Database-Type
         $softDeletePeriodInDays =  Get-Updated-Soft-Delete-Period-In-Days
         $hotCachePeriodInDays =  Get-Updated-Hot-Cache-Period-In-Days
-        $databaseFullName = "$clusterName/$databaseName"
+        $databaseFullName = $env.clusterName + "/" + $env.databaseName
 
-        $databaseGetItem = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
-        Validate_Database $databaseGetItem $databaseFullName $location $resourceType $softDeletePeriodInDays $hotCachePeriodInDays
+        $databaseGetItem = Get-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $env.databaseName
+        Validate_Database $databaseGetItem $databaseFullName $env.location $env.databaseType $softDeletePeriodInDays $hotCachePeriodInDays
     }
 }
