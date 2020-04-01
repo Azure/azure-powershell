@@ -1,3 +1,5 @@
+$TestMode='record'
+Import-Module C:\work\Repos\azure-powershell\src\Kusto\Az.Kusto.psd1
 $kustoCommonPath = Join-Path $PSScriptRoot 'common.ps1'
 . ($kustoCommonPath)
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
@@ -25,7 +27,8 @@ Describe 'Update-AzKustoDatabase' {
         $softDeletePeriodInDaysUpdated = Get-Updated-Soft-Delete-Period-In-Days
         $hotCachePeriodInDaysUpdated = Get-Updated-Hot-Cache-Period-In-Days
         
-        $databaseUpdatedWithParameters = Update-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Parameter @{SoftDeletePeriod= $softDeletePeriodInDaysUpdated; HotCachePeriod=$hotCachePeriodInDaysUpdated}
+        $databaseProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadWriteDatabase -Property @{SoftDeletePeriod= $softDeletePeriodInDaysUpdated; HotCachePeriod=$hotCachePeriodInDaysUpdated}
+        $databaseUpdatedWithParameters = Update-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Parameter $databaseProperties
         Validate_Database $databaseUpdatedWithParameters $databaseFullName $location $resourceType $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated
     }
 }
