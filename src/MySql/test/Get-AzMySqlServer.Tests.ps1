@@ -13,24 +13,23 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzMySqlServer' {
     It 'List1' {
-        { 
-            $servers = Get-AzMySqlServer
-        } | Should -Not -Throw
+        $servers = Get-AzMySqlServer
+        $servers.Length | Should -Be 1
     }
 
     It 'Get' {
-        {
-            $servers = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup -Name $env.serverName
-        } | Should -Not -Throw
+        $servers = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup -Name $env.serverName
+        $servers.Length | Should -Be 1
     }
 
     It 'List' {
-        {
-            $servers = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup
-        } | Should -Not -Throw
+        $servers = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup
+        $servers.Length | Should -Be 1
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/$($env.serverName)"
+        $servers = Get-AzMySqlServer -InputObject $ID
+        $servers.Count | Should -Be 1
     }
 }

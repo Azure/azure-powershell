@@ -13,17 +13,28 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    $env.Add("serverName2", "mysql-test-100-2")
+    $env.Add("restoreName", "mysql-test-100-restore")
+    $env.Add("restoreName2", "mysql-test-100-restore-2")
+    $env.Add("replicaName", "mysql-test-100-replica")
+    $env.Add("firewallRuleName", "mysqlrule01")
+    $env.Add("firewallRuleName2", "mysqlrule02")
+    $env.Add("VNetName", "mysqlvnet")
 
     # Create the test group
     write-host "start to create test group."
-    $resourceGroup = "mysql_test"
-    $location = "westcentralus"
+    $resourceGroup = "MySqlTest"
+    $location = "eastus"
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("location", $location)
     New-AzResourceGroup -Name $resourceGroup -Location $location
 
+    # Create the test Vnet
+    write-host "Deploy Vnet template"
+    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
+
     $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
-    $serverName = "mysql-azure-powershell"
+    $serverName = "mysql-test-100"
     $env.Add("serverName", $serverName)
 
     write-host (Get-AzContext | Out-String)
