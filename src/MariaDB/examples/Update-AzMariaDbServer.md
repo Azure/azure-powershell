@@ -1,18 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update MariaDb
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 -StorageProfileStorageInMb 8192
 
-{{ Add output here }}
+Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
+----                -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
+mariadb-test-4rmtig eastus   xofavpndqj         10.2    8192                    B_Gen5_1         Basic   Enabled
 ```
 
-{{ Add description here }}
+This command updates a MariaDb.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MariaDb
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 | Update-AzMariaDbServer -StorageProfileStorageInMb (8192+1024)
 
-{{ Add output here }}
+Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
+----                -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
+mariadb-test-4rmtig eastus   xofavpndqj         10.2    9216                    B_Gen5_1         Basic   Enabled
 ```
 
-{{ Add description here }}
+This command updates a MariaDb.
 

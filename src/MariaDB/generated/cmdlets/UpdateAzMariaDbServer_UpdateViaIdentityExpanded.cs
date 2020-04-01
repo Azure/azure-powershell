@@ -260,7 +260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         Description = @"Max storage allowed for a server.",
         SerializedName = @"storageMB",
         PossibleTypes = new [] { typeof(int) })]
-        public int StorageProfileStorageInMb { get => ParametersBody.StorageProfileStorageMb ?? default(int); set => ParametersBody.StorageProfileStorageMb = value; }
+        public int StorageProfileStorageMb { get => ParametersBody.StorageProfileStorageMb ?? default(int); set => ParametersBody.StorageProfileStorageMb = value; }
 
         /// <summary>Application-specific metadata in the form of key-value pairs.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.ExportAs(typeof(global::System.Collections.Hashtable))]

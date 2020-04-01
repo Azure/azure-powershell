@@ -11,7 +11,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
     /// <remarks>
     /// [OpenAPI] Configurations_Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/configurations/{configurationName}"
     /// </remarks>
-    [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMariaDbConfiguration_GetViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Description(@"Gets information about a configuration of server.")]

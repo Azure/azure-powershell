@@ -24,14 +24,11 @@ function RandomString([bool]$allChars, [int32]$len) {
 
 function CreateAdminPassword()
 {
-    $randPasswordArray1 = ('A','B','C','D','E','F','G','H','L','K' | Get-Random -Count 5)
-    $randPasswordArray2 = ('a','b','c','f','g','h','j','t' | Get-Random -Count 5)
-    $randPasswordArray3 = (0,1,2,3,4,5,6,7,8,9 | Get-Random -Count 5)
-    $randPasswordArray4 = ('!','$','#','%' | Get-Random -Count 2)
-    $randPasswordArray =  $randPasswordArray1 + $randPasswordArray2 + $randPasswordArray3
-    foreach($randPasswordStr in $randPasswordArray) {
-        $password += $randPasswordStr
-    }
+    $randPasswordStr1 = -Join ((65..90) | Get-Random -Count 5 | % {[char]$_})
+    $randPasswordStr2 = -Join ((97..122) | Get-Random -Count 5 | % {[char]$_})
+    $randPasswordStr3 = -Join ((0..9) | Get-Random -Count 5 | % {[int32]$_})
+    $randPasswordStr4 = -Join ('!','$','#','%' | Get-Random -Count 2)
+    $password =  $randPasswordStr1 + $randPasswordStr2 + $randPasswordStr3 + $randPasswordStr4
     return $password
 }
 function GetOrCreateMariaDb([bool]$forceCreate, $mariaDb, [string]$resourceGroup) {
@@ -39,7 +36,7 @@ function GetOrCreateMariaDb([bool]$forceCreate, $mariaDb, [string]$resourceGroup
         $mariaDbObjArray = Get-AzMariaDbServer -ResourceGroup $resourceGroup
         foreach($mariaDbObj in $mariaDbObjArray) {
             if( $mariaDbObj.SkuName -eq $mariaDb.SkuName) {
-                Write-Host -ForegroundColor Green "Get mariadb for test from resource group."
+                Write-Host -ForegroundColor Yellow "Get mariadb for test from resource group."
                 return $mariaDbObj
              }
         }
@@ -52,17 +49,16 @@ function GetOrCreateMariaDb([bool]$forceCreate, $mariaDb, [string]$resourceGroup
         $mariaDb.Location = 'eastus'
     }
     if(!$mariaDb.AdminLogin) {
-        $randAdminLoginArray = ((97..122) | Get-Random -Count 10 | % {[char]$_})
-        foreach($randAdminLoginStr in $randAdminLoginArray) {
-            $adminLogin += $randAdminLoginStr
-        }
-        $mariaDb.AdminLogin = $adminLogin
+        $randAdminLogin = -join ((97..122) | Get-Random -Count 10 | % {[char]$_})
+        $mariaDb.AdminLogin = $randAdminLogin
     }
     if(!$mariaDb.AdminLoginPassword) {
         $mariaDb.AdminLoginPassword = CreateAdminPassword
     }
-    Write-Host -ForegroundColor Green "Create mariadb for test."
-    $adminLoginPasswordSecure =  ConvertTo-SecureString $mariaDb.AdminLoginPassword -AsPlainText -Force 
-    $mariaDbObj = New-AzMariaDbServer -Name $mariaDb.Name -ResourceGroup $resourceGroup -SkuName $mariaDb.SkuName -Location $mariaDb.Location -AdministratorLogin $mariaDb.AdminLogin -AdministratorLoginPassword $adminLoginPasswordSecure
+    Write-Host -ForegroundColor Yellow "Create mariadb for test..."
+    $adminLoginPasswordSecure =  ConvertTo-SecureString $mariaDb.AdminLoginPassword -AsPlainText -Force
+    $sku =  $mariaDb.SkuName
+    $mariaDbObj = New-AzMariaDbServer -Name $mariaDb.Name -ResourceGroup $resourceGroup -Sku $sku -Location $mariaDb.Location -AdministratorUsername $mariaDb.AdminLogin -AdministratorLoginPassword $adminLoginPasswordSecure
+    Write-Host -ForegroundColor Yellow "Created successfully."
     return $mariaDbObj
 }

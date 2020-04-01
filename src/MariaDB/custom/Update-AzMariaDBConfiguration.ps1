@@ -138,7 +138,7 @@ function Update-AzMariaDbConfiguration
                 $Configuration.Add($Name, $Value)
             }
             if ($PSBoundParameters.ContainsKey('Configuration')) {
-                $Null = $PSBoundParameters.Remove('PSBoundParameters')
+                $Null = $PSBoundParameters.Remove('Configuration')
             }
             foreach ($ConfigName in $Configuration.Keys) {
                 $PSBoundParameters['Name'] = $ConfigName

@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the MariaDb service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.2 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -61,17 +61,13 @@ directive:
     set:
       verb: Update
   - where:
-     verb: Get
-     variant: GetViaIdentity
-    hide: true
-  - where:
      verb: New
      variant: ^Create$
     hide: true
 
 # Server
   - where:
-      verb: New|Update
+      verb: New|Update|Restart
       subject: Server
     hide: true
   - where:
@@ -79,16 +75,6 @@ directive:
       subject: Server
     set:
       parameter-description: Backup retention days for the server. Day count is between 7 and 35.
-  - where:
-      subject: Server
-      parameter-name: StorageProfileStorageMb
-    set:
-      parameter-name: StorageProfileStorageInMb
-  - where:
-      subject: Server
-      parameter-name: AdministratorLogin
-    set:
-      parameter-name: AdministratorUsername
   - where:
       model-name: Server
     set:

@@ -30,7 +30,7 @@ function Get-AzMariaDbConnectionString {
         # You can obtain this value from the Azure Resource Manager API or the portal.
         ${ResourceGroupName},
     
-        [Parameter(HelpMessage='The subscription ID is part of the URI for every service call')]
+        [Parameter(ParameterSetName='ServerName', HelpMessage='The subscription ID is part of the URI for every service call')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]

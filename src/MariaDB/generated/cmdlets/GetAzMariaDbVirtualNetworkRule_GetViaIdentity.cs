@@ -11,7 +11,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
     /// <remarks>
     /// [OpenAPI] VirtualNetworkRules_Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}"
     /// </remarks>
-    [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMariaDbVirtualNetworkRule_GetViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Description(@"Gets a virtual network rule.")]

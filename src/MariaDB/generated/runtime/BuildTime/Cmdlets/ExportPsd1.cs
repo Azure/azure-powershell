@@ -88,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.PowerShell
 
         var functionInfos = GetScriptCmdlets(ExportsFolder).ToArray();
         var cmdletsList = functionInfos.Select(fi => fi.Name).Distinct().Append("*").ToPsList();
-        sb.AppendLine($@"{Indent}CmdletsToExport = {cmdletsList}");
+        sb.AppendLine($@"{Indent}FunctionsToExport = {cmdletsList}");
         var aliasesList = functionInfos.SelectMany(fi => fi.ScriptBlock.Attributes).ToAliasNames().Append("*").ToPsList();
         sb.AppendLine($@"{Indent}AliasesToExport = {aliasesList}");
 

@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a firewall rule under a MariaDB
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzMariaDbFirewallRule -Name frname-001 -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-4rmtig
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command removes a firewall rule under a MariaDB.
 
