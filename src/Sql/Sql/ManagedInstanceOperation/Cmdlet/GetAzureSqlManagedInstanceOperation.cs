@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
         [ResourceNameCompleter("Microsoft.Sql/managedInstance/operations", "OperationName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public System.Guid Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the instance.
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
                 var resourceId = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceId.ResourceGroupName;
                 this.ManagedInstanceName = resourceId.ParentResource.Split('/')[1];
-                this.Name = System.Guid.Parse(resourceId.ResourceName);
+                this.Name = resourceId.ResourceName;
             }
 
             base.ExecuteCmdlet();
@@ -116,9 +116,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
         {
             ICollection<AzureSqlManagedInstanceOperationModel> results = new List<AzureSqlManagedInstanceOperationModel>();
 
-            if (ParameterSetName == GetByManagedInstanceOperationResourceIdentifierParameterSet || (MyInvocation.BoundParameters.ContainsKey("Name") && !WildcardPattern.ContainsWildcardCharacters(Name.ToString())))
+            if (ParameterSetName == GetByManagedInstanceOperationResourceIdentifierParameterSet || (MyInvocation.BoundParameters.ContainsKey("Name") && !WildcardPattern.ContainsWildcardCharacters(Name)))
             {
-                results.Add(ModelAdapter.GetManagedInstanceOperation(this.ResourceGroupName, this.ManagedInstanceName, this.Name));
+                results.Add(ModelAdapter.GetManagedInstanceOperation(this.ResourceGroupName, this.ManagedInstanceName, System.Guid.Parse(this.Name)));
             }
             else
             {
