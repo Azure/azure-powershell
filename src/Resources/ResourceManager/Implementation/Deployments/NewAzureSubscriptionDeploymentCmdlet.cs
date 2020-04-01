@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Rest.Azure;
+
     /// <summary>
     /// Creates a new deployment.
     /// </summary>
@@ -47,29 +49,99 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [PSArgumentCompleter("RequestContent", "ResponseContent", "All", "None")]
         public string DeploymentDebugLogLevel { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The What-If result format.")]
+        public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var parameters = new PSDeploymentCmdletParameters()
-            {
-                ScopeType = DeploymentScopeType.Subscription,
-                Location = Location,
-                DeploymentName = Name,
-                DeploymentMode = DeploymentMode.Incremental,
-                TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
-                TemplateObject = TemplateObject,
-                TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
-                ParameterUri = TemplateParameterUri,
-                DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
-            };
+            string whatIfMessage = this.GetWhatIfMessage();
+            string warningMessage = $"{Environment.NewLine}{Resources.ConfirmDeploymentMessage}";
+            string captionMessage = $"{(char)27}[1A{Color.Reset}{whatIfMessage}"; // {(char)27}[1A for cursor up.
 
-            if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
+            if (ShouldProcess(whatIfMessage, warningMessage, captionMessage))
             {
-                WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
+                var parameters = new PSDeploymentCmdletParameters()
+                {
+                    ScopeType = DeploymentScopeType.Subscription,
+                    Location = Location,
+                    DeploymentName = Name,
+                    DeploymentMode = DeploymentMode.Incremental,
+                    TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                    TemplateObject = TemplateObject,
+                    TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
+                    ParameterUri = TemplateParameterUri,
+                    DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
+                };
+
+                if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
+                {
+                    WriteWarning(Resources.WarnOnDeploymentDebugSetting);
+                }
+                WriteObject(ResourceManagerSdkClient.ExecuteDeployment(parameters));
             }
-            WriteObject(ResourceManagerSdkClient.ExecuteDeployment(parameters));
+        }
+
+        private string GetWhatIfMessage()
+        {
+            if (this.ShouldExecuteWhatIf())
+            {
+                const string statusMessage = "Getting the latest status of all resources...";
+                var clearMessage = new string(' ', statusMessage.Length);
+                var information = new HostInformationMessage { Message = statusMessage, NoNewLine = true };
+                var clearInformation = new HostInformationMessage { Message = $"\r{clearMessage}\r", NoNewLine = true };
+                var tags = new[] { "PSHOST" };
+
+                try
+                {
+                    // Write status message.
+                    this.WriteInformation(information, tags);
+
+
+                    var parameters = new PSDeploymentWhatIfCmdletParameters
+                    {
+                        DeploymentName = this.Name,
+                        Location = this.Location,
+                        Mode = DeploymentMode.Incremental,
+                        TemplateUri = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                        TemplateObject = this.TemplateObject,
+                        TemplateParametersUri = this.TemplateParameterUri,
+                        TemplateParametersObject = GetTemplateParameterObject(this.TemplateParameterObject),
+                        ResultFormat = this.WhatIfResultFormat
+                    };
+
+                    PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters);
+                    string whatIfMessage = WhatIfOperationResultFormatter.Format(whatIfResult);
+
+                    // Clear status before returning result.
+                    this.WriteInformation(clearInformation, tags);
+
+                    // Use \r to override the built-in "What if:" in output.
+                    return $"\r        \r{Environment.NewLine}{whatIfMessage}{Environment.NewLine}";
+                }
+                catch (CloudException ce)
+                {
+                    // Clear status before handling exception.
+                    this.WriteInformation(clearInformation, tags);
+                    this.HandleException(ce);
+                }
+                catch (Exception e)
+                {
+                    // Clear status before handling exception.
+                    this.WriteInformation(clearInformation, tags);
+                    this.HandleException(e);
+                }
+            }
+
+            return null;
+        }
+
+        private bool ShouldExecuteWhatIf()
+        {
+            return this.MyInvocation.BoundParameters.ContainsKey("WhatIf") ||
+                   this.MyInvocation.BoundParameters.ContainsKey("Confirm");
         }
     }
 }

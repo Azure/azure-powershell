@@ -56,7 +56,7 @@ When set, indicates the version of the resource provider API to use.
 If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -102,7 +102,7 @@ The fully qualified resource Id of the deployment.
 example: /providers/Microsoft.Resources/deployments/{deploymentName}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByDeploymentId
 Aliases: DeploymentId, ResourceId
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 The deployment object.
 
 ```yaml
-Type: PSDeployment
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment
 Parameter Sets: RemoveByInputObject
 Aliases:
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 The name of the deployment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByDeploymentName
 Aliases: DeploymentName
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 {{ Fill PassThru Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -193,7 +193,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

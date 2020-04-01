@@ -49,6 +49,9 @@ Get deployment
 ### [Get-AzDeploymentOperation](Get-AzDeploymentOperation.md)
 Get deployment operation
 
+### [Get-AzDeploymentWhatIfResult](Get-AzDeploymentWhatIfResult.md)
+Gets the ARM template What-If result for a deployment at subscription scope. 
+
 ### [Get-AzLocation](Get-AzLocation.md)
 Gets all locations and the supported resource providers for each location.
 
@@ -62,7 +65,7 @@ Gets managed application definitions
 Gets Management Group(s)
 
 ### [Get-AzManagementGroupDeployment](Get-AzManagementGroupDeployment.md)
-Get deployment at a mangement group
+Get deployment at a management group
 
 ### [Get-AzManagementGroupDeploymentOperation](Get-AzManagementGroupDeploymentOperation.md)
 Get deployment operation for management group deployment
@@ -99,6 +102,9 @@ Gets the deployments in a resource group.
 ### [Get-AzResourceGroupDeploymentOperation](Get-AzResourceGroupDeploymentOperation.md)
 Gets the resource group deployment operation
 
+### [Get-AzResourceGroupDeploymentWhatIfResult](Get-AzResourceGroupDeploymentWhatIfResult.md)
+Gets the ARM template What-If result for a deployment at resource group scope. 
+
 ### [Get-AzResourceLock](Get-AzResourceLock.md)
 Gets a resource lock.
 
@@ -115,6 +121,12 @@ Lists all Azure RBAC roles that are available for assignment.
 
 ### [Get-AzTag](Get-AzTag.md)
 Gets predefined Azure tags | Gets the entire set of tags on a resource or subscription.
+
+### [Get-AzTenantDeployment](Get-AzTenantDeployment.md)
+Get deployment at tenant scope
+
+### [Get-AzTenantDeploymentOperation](Get-AzTenantDeploymentOperation.md)
+Get deployment operation for deployment at tenant scope
 
 ### [Get-AzTenantDeployment](Get-AzTenantDeployment.md)
 Get deployment at tenant scope
@@ -201,6 +213,9 @@ Creates a predefined Azure tag or adds values to an existing tag | Creates or up
 ### [New-AzTenantDeployment](New-AzTenantDeployment.md)
 Create a deployment at tenant scope
 
+### [New-AzTenantDeployment](New-AzTenantDeployment.md)
+Create a deployment at tenant scope
+
 ### [Register-AzProviderFeature](Register-AzProviderFeature.md)
 Registers an Azure provider feature in your account.
 
@@ -277,6 +292,9 @@ Delete will fail if there are existing role assignments made to the custom role.
 
 ### [Remove-AzTag](Remove-AzTag.md)
 Deletes predefined Azure tags or values | Deletes the entire set of tags on a resource or subscription.
+
+### [Remove-AzTenantDeployment](Remove-AzTenantDeployment.md)
+Removes a deployment at tenant scope and any associated operations
 
 ### [Remove-AzTenantDeployment](Remove-AzTenantDeployment.md)
 Removes a deployment at tenant scope and any associated operations
