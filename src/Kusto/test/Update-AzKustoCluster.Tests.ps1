@@ -26,4 +26,18 @@ Describe 'Update-AzKustoCluster' {
         $updatedCluster = Update-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -SkuName $updatedSkuName -SkuTier $skuTier
         Validate_Cluster $updatedCluster $clusterName $location "Running" "Succeeded" $resourceType $updatedSkuName $skuTier $capacity
     }
+
+    It 'UpdateViaIdentityExpanded' {
+        $location = Get-Location
+        $resourceGroupName = Get-RG-Name
+        $clusterName = Get-Cluster-Name
+        $skuTier = Get-SkuTier
+        $updatedSkuName = Get-Updated-SkuName
+        $resourceType =  Get-Cluster-Resource-Type
+        $capacity = Get-Cluster-Default-Capacity
+
+        $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+        $updatedCluster = Update-AzKustoCluster -InputObject $clusterGetItem -SkuName $updatedSkuName -SkuTier $skuTier
+        Validate_Cluster $updatedCluster $clusterName $location "Running" "Succeeded" $resourceType $updatedSkuName $skuTier $capacity
+    }
 }
