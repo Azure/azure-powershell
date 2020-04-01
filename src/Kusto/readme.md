@@ -79,13 +79,22 @@ directive:
     reason: this spec adds produces application/xml and text/json erronously.  
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Data$|^DataViaIdentity$|^Detach$|^DetachViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Data$|^DataViaIdentity$|^Detach$|^DetachViaIdentity$|^UpdateViaIdentity$
     remove: true
   # Remove the unexpanded parameter set for specific commands
   - where:
       verb: Remove
       subject: DatabasePrincipal|ClusterLanguageExtension
       variant: ^Remove$|^RemoveViaIdentity$
+    remove: true
+  - where:
+      subject: ^Cluster$
+      variant: ^Create$|^Update$
+    remove: true
+  - where:
+      verb: New
+      subject: ^DatabasePrincipalAssignment$|^ClusterPrincipalAssignment$
+      variant: ^Create$
     remove: true
   # Hide the operation API
   - where:
