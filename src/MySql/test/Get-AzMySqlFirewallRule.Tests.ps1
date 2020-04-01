@@ -15,14 +15,14 @@ Describe 'Get-AzMySqlFirewallRule' {
     It 'List' {
         New-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
         $rule = Get-AzMySqlFirewallRule -ResourceGroupName $env.resourceGroup -ServerName $env.serverName 
-        $rule.Length | Should -Be 1
+        $rule.Count | Should -Be 1
         Remove-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
     }
 
     It 'Get' {
         New-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
         $rule = Get-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
-        $rule.Length | Should -Be 1
+        $rule.Count | Should -Be 1
         Remove-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
     }
 
@@ -30,7 +30,7 @@ Describe 'Get-AzMySqlFirewallRule' {
         New-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
         $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/$($env.serverName)/firewallRules/$($env.firewallRuleName)"
         $rule = Get-AzMySqlFirewallRule -InputObject $ID
-        $rule.Length | Should -Be 1
+        $rule.Count | Should -Be 1
         Remove-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
     }
 }

@@ -14,17 +14,17 @@ while(-not $mockingPath) {
 Describe 'Get-AzMySqlServer' {
     It 'List1' {
         $servers = Get-AzMySqlServer
-        $servers.Length | Should -Be 1
+        $servers.Count | Should -Be 1
     }
 
     It 'Get' {
         $servers = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup -Name $env.serverName
-        $servers.Length | Should -Be 1
+        $servers.Count | Should -Be 1
     }
 
     It 'List' {
         $servers = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup
-        $servers.Length | Should -Be 1
+        $servers.Count | Should -Be 1
     }
 
     It 'GetViaIdentity' {
