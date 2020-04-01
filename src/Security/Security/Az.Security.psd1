@@ -88,7 +88,17 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Remove-AzSecurityWorkspaceSetting', 
                'Get-AzSecurityAdvancedThreatProtection', 
                'Enable-AzSecurityAdvancedThreatProtection', 
-               'Disable-AzSecurityAdvancedThreatProtection'
+               'Disable-AzSecurityAdvancedThreatProtection',
+               'Set-AzSqlInformationProtectionPolicy',
+               'Get-AzSqlInformationProtectionPolicy',
+               'Get-AzSqlInformationType',
+               'Get-AzSqlSensitivityLabel',
+               'New-AzSqlInformationType',
+               'New-AzSqlSensitivityLabel',
+               'Remove-AzSqlInformationType',
+               'Remove-AzSqlSensitivityLabel',
+               'Update-AzSqlInformationType',
+               'Update-AzSqlSensitivityLabel'
 
 # Variables to export from this module
 # VariablesToExport = @()
