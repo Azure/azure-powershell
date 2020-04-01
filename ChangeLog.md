@@ -1,6 +1,105 @@
-## 0.10.0-preview - March 2020
+## 0.10.0-preview - April 2020
 ### General
-* Preview release for Azure Stack 2019-03-01-hybrid profile, for more detail please follow the [link](https://aka.ms/az4AzureStack)
+* Az modules is now available in preview on Azure Stack Hub. This allows for cross-platform compatibility with Linux and macOs. Azure Stack Hub now supports PowerShell core with the Az modules, more information [here](https://aka.ms/az4AzureStack)
+* Az modules support profile 2019-03-01-hybrid:
+  - Az.Billing
+  - Az.Compute
+  - Az.DataBoxEdge
+  - Az.EventHub
+  - Az.IotHub
+  - Az.KeyVault
+  - Az.Monitor
+  - Az.Network
+  - Az.Resources
+  - Az.Storage
+  - Az.Websites
+* Three new PowerShell modules for az have been introduced that work with Azure Stack Hub, which are Az.Databox, Az.IotHub, and Az.EventHub
+* Commands remain relatively the same, with minor changes such as changing AzureRM to Az
+* Updated link to PowerShell documentation for Azure Stack Hub can be found [here](aka.ms/InstallASHPowerShell)
+
+#### Az.Accounts
+* Upgrade from ADAL to MSAL
+
+## 3.7.0 - March 2020
+#### Az.Accounts
+* Fixed 'Get-AzTenant'/'Get-AzDefault'/'Set-AzDefault' throw NullReferenceException when not login [#10292]
+
+#### Az.Compute
+* Added the following parameters to 'New-AzDiskConfig' cmdlet: 
+    - DiskIOPSReadOnly, DiskMBpsReadOnly, MaxSharesCount, GalleryImageReference
+* Allowed Encryption property to Target parameter of 'New-AzGalleryImageVersion' cmdlet.
+* Fixed tempDisk issue for 'Set-AzVmss' -Reimage and 'Invoke-AzVMReimage' cmdlets. [#11354]
+* Added support to below cmdlets for new SAP Extension
+    - 'Set-AzVMAEMExtension'
+    - 'Get-AzVMAEMExtension'
+    - 'Remove-AzVMAEMExtension'
+    - 'Update-AzVMAEMExtension'
+* Fixed errors in examples of help document
+* Showed the exact string value for VM PowerState in the table format.
+* 'New-AzVmssConfig': fixed serialization of AutomaticRepairs property when SinglePlacementGroup is disabled. [#11257]
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 4.8.0
+* Added optional parameters to 'Invoke-AzDataFactoryV2Pipeline' command to support rerun
+
+#### Az.DataLakeStore
+* Added breaking change description for 'Export-AzDataLakeStoreItem' and 'Import-AzDataLakeStoreItem'
+* Added option of Byte encoding for 'New-AzDataLakeStoreItem', 'Add-AzDAtaLakeStoreItemContent', and 'Get-AzDAtaLakeStoreItemContent'
+
+#### Az.HDInsight
+* Supported specifying minimal supported TLS version when creating cluster.
+
+#### Az.IotHub
+* Added support to manage distributed settings per-device. New Cmdlets are:
+    - 'Get-AzIotHubDistributedTracing'
+    - 'Set-AzIotHubDistributedTracing'
+
+#### Az.KeyVault
+* Added breaking change attributes to 'New-AzKeyVault'
+
+#### Az.Monitor
+* Updated documentation for 'New-AzScheduledQueryRuleLogMetricTrigger'
+
+#### Az.Network
+* Updated cmdlets to allow cross-tenant VirtualHubVnetConnections
+    - 'New-AzVirtualHubVnetConnection'
+    - 'Update-AzVirtualHubVnetConnection'
+    - 'New-AzVirtualHub'
+    - 'Update-AzVirtualHub'
+* Removed Sql Management SDK dependency
+
+#### Az.PolicyInsights
+* Improved error messages
+
+#### Az.RecoveryServices
+* Azure Site Recovery added support for doing reprotect and updated vm properties for Azure disk encrypted Virtual Machines.
+* Added Azure Site Recovery VmwareToAzure properties DR monitoring
+* Azure Backup added support for retrying policy update for failed items.
+* Azure Backup Added support for disk exclusion settings during backup and restore.
+* Azure Backup Added Support for Restoring Multiple files/folders in AzureFileShare
+* Azure Backup Added support for User-specified Resourcegroup support while updating IaasVM Policy
+
+#### Az.Resources
+* Fixed 'Get-AzResource -ResourceGroupName -Name -ExpandProperties -ResourceType' to use actual apiVersion of resources instead of default apiVersion [#11267]
+* Added correlationId logging for error scenarios
+* Small documentation change to 'Get-AzResourceLock'. Added example.
+* Escaped single quote in parameter value of 'Get-AzADUser' [#11317]
+* Added new cmdlets for Deployment Scripts ('Get-AzDeploymentScript', 'Get-AzDeploymentScriptLog', 'Save-AzDeploymentScriptLog', 'Remove-AzDeploymentScript')
+
+#### Az.Sql
+* Added readable secondary parameter to 'Invoke-AzSqlDatabaseFailover'
+* Added cmdlet 'Disable-AzSqlServerActiveDirectoryOnlyAuthentication'
+* Saved sensitivity rank when classifying columns in the database.
+
+#### Az.Support
+* General availability of 'Az.Support' module
+
+#### Az.Websites
+* Added support for working with webapp Traffic Routing Rules via below new cmdlets
+  - 'Get-AzWebAppTrafficRouting'
+  - 'Update-AzWebAppTrafficRouting'
+  - 'Add-AzWebAppTrafficRouting'
+  - 'Remove-AzWebAppTrafficRouting'
 
 ## 3.6.1 - March 2020
 #### Az.Accounts
