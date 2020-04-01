@@ -35,7 +35,6 @@ app.config
 [Rr]elease/
 [Rr]eleases/
 x64/
-build/
 bld/
 src/*/[Bb]in/
 setup/**/*/[Bb]in/
