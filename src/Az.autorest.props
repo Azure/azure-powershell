@@ -65,6 +65,7 @@
     <Copy SourceFiles="@(ModuleHelpFiles)" DestinationFiles="@(ModuleHelpFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\help\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="exports\ProxyCmdletDefinitions.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\exports" />
     <Copy SourceFiles="internal\ProxyCmdletDefinitions.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\internal" />
+    <Copy SourceFiles="internal\Az.$(PsModuleName).internal.psm1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\internal" />
   </Target>
 
 </Project>
