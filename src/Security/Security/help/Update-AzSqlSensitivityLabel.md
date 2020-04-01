@@ -15,7 +15,7 @@ Updates properties of a sensitivity label in the SQL information protection poli
 ```
 Update-AzSqlSensitivityLabel [-NewDisplayName <String>] [-Description <String>]
  [-State <PSSqlSensitivityObjectState>] [-Rank <PSSensitivityRank>] [-Order <Int32>]
- [-AssociatedInformationTypes <String[]>] -DisplayName <String> [-AsJob]
+ [-AssociatedInformationType <String[]>] -DisplayName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -55,7 +55,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AssociatedInformationTypes
+### -AssociatedInformationType
 If any of these information types are identified, this label is applied
 
 ```yaml
