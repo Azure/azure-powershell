@@ -18,9 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support to Microsoft.PowerShell.SecretManagement
 
 ## Version 1.5.2
-
 * Added breaking change attributes to `New-AzKeyVault`
 
 ## Version 1.5.1
