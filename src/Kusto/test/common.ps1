@@ -202,3 +202,45 @@ function Invoke-HandledCmdlet
 		}
 	}
 }
+
+<#
+.SYNOPSIS
+Validate if cluster is valid
+#>
+function Validate_Cluster{
+	Param ([Object]$Cluster,
+		[string]$ClusterName,
+		[string]$Location,
+		[string]$State,
+		[string]$ProvisioningState,
+		[string]$ResourceType,
+        [string]$SkuName,
+        [string]$SkuTier,
+		[int]$Capacity)
+	$Cluster.Name | Should Be $ClusterName
+	$Cluster.Location | Should Be $Location
+	$Cluster.State | Should Be $State
+	$Cluster.ProvisioningState | Should Be  $ProvisioningState
+	$Cluster.Type | Should Be $ResourceType
+    $Cluster.SkuName | Should Be $SkuName
+    $Cluster.SkuTier | Should Be $SkuTier 
+	$Cluster.SkuCapacity | Should Be $Capacity
+}
+
+<#
+.SYNOPSIS
+Validate if database is valid
+#>
+function Validate_Database {
+	Param ([Object]$Database,
+		[string]$DatabaseFullName,
+		[string]$Location,
+		[string]$ResourceType,
+		[timespan]$SoftDeletePeriodInDays,
+		[timespan]$HotCachePeriodInDays)
+		$Database.Name | Should Be $DatabaseFullName
+		$Database.Location | Should Be $Location
+		$Database.Type | Should Be $ResourceType
+		$Database.SoftDeletePeriod | Should Be $SoftDeletePeriodInDays 
+		$Database.HotCachePeriod | Should Be $HotCachePeriodInDays
+}
