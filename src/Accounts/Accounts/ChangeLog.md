@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix Get-AzTenant/Get-AzDefault/Set-AzDefault throw NullReferenceException when not login
+
+## Version 1.7.4
+* Fixed `Get-AzTenant`/`Get-AzDefault`/`Set-AzDefault` throw NullReferenceException when not login [#10292]
 
 ## Version 1.7.3
 * Open Azure PowerShell survey page in `Send-Feedback` [#11020]

@@ -77,12 +77,5 @@ namespace Microsoft.Azure.Commands.Network
 
             return psVpnClientIPsecParameters;
         }
-
-        public string FormatIdBgpPeeringAddresses(string id, string resourceGroupName, string resourceName)
-        {
-            string result = ChildResourceHelp.NormalizeVirtualNetworkGatewayChildResourceIds(id, resourceGroupName, resourceName);
-            result = result.Replace("virtualNetworkGatewayIpConfiguration", "ipConfigurations");
-            return result;
-        }
     }
 }

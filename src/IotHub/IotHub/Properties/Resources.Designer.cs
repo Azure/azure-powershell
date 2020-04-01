@@ -329,6 +329,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update Device Twin.
+        /// </summary>
+        internal static string UpdateIotHubDeviceTwin {
+            get {
+                return ResourceManager.GetString("UpdateIotHubDeviceTwin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Message Enrichment.
         /// </summary>
         internal static string UpdateIotHubMessageEnrichment {

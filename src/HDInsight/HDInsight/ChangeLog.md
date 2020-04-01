@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-Supported specifying minimal supported TLS version when creating cluster.
+
+## Version 3.1.0
+* Supported specifying minimal supported TLS version when creating cluster.
 
 ## Version 3.0.3
 * Fix document error of New-AzHDInsightCluster.

@@ -88,9 +88,9 @@ Azure-PowerShell is licensed under the [Apache license][].
 [Apache license]: https://github.com/Azure/azure-powershell/blob/master/LICENSE.txt
 
 
-PowerShell is licensed under the [Apache license][].
+PowerShell is licensed under the [MIT license][].
 
-[Apache license]: https://github.com/PowerShell/PowerShell/tree/master/LICENSE.txt
+[MIT license]: https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt
 
 ## [Code of Conduct][conduct-md]
 

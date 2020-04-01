@@ -209,13 +209,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The BgpPeeringAddresses for Virtual network gateway bgpsettings.")]
-        [ValidateNotNullOrEmpty]
-        public PSIpConfigurationBgpPeeringAddress[] IpConfigurationBgpPeeringAddresses { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -470,26 +463,6 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     throw new ArgumentException("PeerWeight must be a positive integer");
                 }
-            }
-
-            if (this.IpConfigurationBgpPeeringAddresses != null)
-            {
-                if(vnetGateway.BgpSettings == null)
-                {
-                    vnetGateway.BgpSettings = new PSBgpSettings();
-                }
-
-                vnetGateway.BgpSettings.BgpPeeringAddresses = new List<PSIpConfigurationBgpPeeringAddress>();
-
-                foreach (var address in this.IpConfigurationBgpPeeringAddresses)
-                {
-                    address.IpconfigurationId = FormatIdBgpPeeringAddresses(address.IpconfigurationId, this.ResourceGroupName, this.Name);
-                    vnetGateway.BgpSettings.BgpPeeringAddresses.Add(address);
-                }
-            }
-            else if(vnetGateway.BgpSettings != null)
-            {
-                vnetGateway.BgpSettings.BgpPeeringAddresses = null;
             }
 
             if (this.CustomRoute != null && this.CustomRoute.Any())

@@ -27,7 +27,6 @@
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -39,6 +38,5 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string BgpPeeringAddress { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public int? PeerWeight { get; set; }
-        public List<PSIpConfigurationBgpPeeringAddress> BgpPeeringAddresses { get; set; }
     }
 }
