@@ -236,8 +236,8 @@ function Validate_Database {
 		[string]$DatabaseFullName,
 		[string]$Location,
 		[string]$ResourceType,
-		[timespan]$SoftDeletePeriodInDays,
-		[timespan]$HotCachePeriodInDays)
+		[Nullable[timespan]]$SoftDeletePeriodInDays,
+		[Nullable[timespan]]$HotCachePeriodInDays)
 		$Database.Name | Should Be $DatabaseFullName
 		$Database.Location | Should Be $Location
 		$Database.Type | Should Be $ResourceType
