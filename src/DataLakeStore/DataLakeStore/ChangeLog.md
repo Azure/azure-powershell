@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.8
+* Added breaking change description for `Export-AzDataLakeStoreItem` and `Import-AzDataLakeStoreItem`
 * Added option of Byte encoding for `New-AzDataLakeStoreItem`, `Add-AzDAtaLakeStoreItemContent`, and `Get-AzDAtaLakeStoreItemContent`
 
 ## Version 1.2.7

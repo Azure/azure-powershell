@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.5.0
 * Added readable secondary parameter to `Invoke-AzSqlDatabaseFailover`
 * Added cmdlet `Disable-AzSqlServerActiveDirectoryOnlyAuthentication`
 * Saved sensitivity rank when classifying columns in the database.

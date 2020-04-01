@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability of `Az.Support` module
+
 ## Version 0.1.0
 * Preview release of `Az.Support` module. Added following cmdlets for creation and management of support tickets.
     - Get-AzSupportService

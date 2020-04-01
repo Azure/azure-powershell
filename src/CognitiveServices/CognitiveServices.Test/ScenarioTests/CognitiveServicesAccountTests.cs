@@ -176,5 +176,26 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetUsages");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedIdentity()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManagedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEncryption()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-Encryption");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUserOwnedStorage()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-UserOwnedStorage");
+        }
     }
 }

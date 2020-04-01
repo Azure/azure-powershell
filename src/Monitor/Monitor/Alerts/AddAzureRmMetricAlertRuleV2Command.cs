@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             var actions = new List<MetricAlertAction>();
             if (this.ActionGroup != null)
             {
-                actions.AddRange(this.ActionGroup.Select(actionGroup => new MetricAlertAction(actionGroupId: actionGroup.ActionGroupId, webHookProperties: actionGroup.WebhookProperties)));
+                actions.AddRange(this.ActionGroup.Select(actionGroup => new MetricAlertAction(actionGroupId: actionGroup.ActionGroupId, webhookProperties: actionGroup.WebhookProperties)));
             }
 
             if (this.ActionGroupId != null)

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.1.3
 * Allowing Account Creation for API Types: Gremlin, Cassandra and Table.
 * Bug Fixes
 
