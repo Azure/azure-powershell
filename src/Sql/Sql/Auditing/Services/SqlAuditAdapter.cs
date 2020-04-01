@@ -436,6 +436,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
             else
             {
+                if (!model.StorageKeyType.HasValue)
+                {
+                    model.StorageKeyType = StorageKeyKind.Primary;
+                }
+
                 policy.StorageAccountAccessKey = AzureCommunicator.RetrieveStorageKeysAsync(model.StorageAccountResourceId).GetAwaiter().GetResult()[model.StorageKeyType.Value];
                 policy.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
             }

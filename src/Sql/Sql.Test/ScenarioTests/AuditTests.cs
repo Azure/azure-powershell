@@ -243,9 +243,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAuditingToStorageInVNet()
+        public void TestServerAuditingToStorageInVNet()
         {
-            RunPowerShellTest("Test-AuditingToStorageInVNet");
+            RunPowerShellTest("Test-ServerAuditingToStorageInVNet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseAuditingToStorageInVNet()
+        {
+            RunPowerShellTest("Test-DatabaseAuditingToStorageInVNet");
         }
     }
 }
