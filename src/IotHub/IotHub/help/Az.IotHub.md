@@ -101,6 +101,9 @@ Get information on all the endpoints for your IoT Hub
 ### [Get-AzIotHubValidSku](Get-AzIotHubValidSku.md)
 Gets all valid skus that this IotHub can transition to.
 
+### [Invoke-AzIotHubDeviceMethod](Invoke-AzIotHubDeviceMethod.md)
+Invoke a direct method on a device.
+
 ### [Invoke-AzIotHubManualFailover](Invoke-AzIotHubManualFailover.md)
 Invoke failover process for the IoT Hub to the geo-paired disaster recovery region.
 
