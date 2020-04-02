@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
     {
 
         private static IDictionary<string, string> _apiVersions = new Dictionary<string, string>{
+            {"microsoft.insights/privatelinkscopes", "2019-10-17-preview"},
             {"microsoft.sql/servers", "2018-06-01-preview"}
         };
 
