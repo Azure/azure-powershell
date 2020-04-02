@@ -86,7 +86,11 @@ if ($GenerateMamlHelp)
     foreach ($HelpFolder in $FilteredHelpFolders)
     {
         $ModuleName = "" 
-        if($HelpFolder -match "(?s)artifacts\\Release\\(?<module>.+)\\help")
+        if($HelpFolder -match "(?s)artifacts\\$BuildConfig\\(?<module>.+)\\help")
+        {
+            $ModuleName = $Matches["module"]
+        }
+        if($HelpFolder -match "(?s)artifacts/$BuildConfig/(?<module>.+)/help")
         {
             $ModuleName = $Matches["module"]
         }
