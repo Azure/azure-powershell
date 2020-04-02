@@ -87,6 +87,10 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-True { $updateddevice1twin3.DeviceId -eq $device1}
 	Assert-True { $updateddevice1twin3.tags.Count -eq 1}
 
+	# Invoke direct method on device
+	$errorMessage = 'Timed out waiting for device to connect.'
+	Assert-ThrowsContains { Invoke-AzIotHubDeviceMethod -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -Name "SetTelemetryInterval" } $errorMessage
+	
 	# Get all devices
 	$devices = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
 	Assert-True { $devices.Count -eq 3}

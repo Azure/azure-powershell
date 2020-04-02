@@ -753,7 +753,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                   (CmdletModel.SimpleSchedulePolicy)((AzureVmPolicy)policy).SchedulePolicy),
                     TimeZone = DateTimeKind.Utc.ToString().ToUpper(),
-                    InstantRpRetentionRangeInDays = ((AzureVmPolicy)policy).SnapshotRetentionInDays
+                    InstantRpRetentionRangeInDays = ((AzureVmPolicy)policy).SnapshotRetentionInDays,
+                    InstantRPDetails = new InstantRPAdditionalDetails(
+                        ((AzureVmPolicy)policy).AzureBackupRGName,
+                        ((AzureVmPolicy)policy).AzureBackupRGNameSuffix)
                 }
             };
 

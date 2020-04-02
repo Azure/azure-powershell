@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.13.0
 * Fixed `Get-AzResource -ResourceGroupName -Name -ExpandProperties -ResourceType` to use actual apiVersion of resources instead of default apiVersion [#11267]
 * Added correlationId logging for error scenarios
 * Small documentation change to `Get-AzResourceLock`. Added example.
