@@ -5,7 +5,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzKustoClusterPrincipalAssignment.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzKustoDatabasePrincipalAssignment.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -13,12 +13,13 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Remove-AzKustoClusterPrincipalAssignment' {
+Describe 'Remove-AzKustoDatabasePrincipalAssignment' {
     It 'Delete' {
         $resourceGroupName = Get-RG-Name
         $clusterName = Get-Cluster-Name
+        $databaseName = Get-Database-Name
         $principalAssignmentName = Get-PrincipalAssignment-Name
 
-        Remove-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName
+        Remove-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName  -PrincipalAssignmentName $principalAssignmentName
     }
 }

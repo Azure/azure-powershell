@@ -5,7 +5,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzKustoClusterPrincipalAssignment.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzKustoDatabasePrincipalAssignment.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -13,17 +13,18 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzKustoClusterPrincipalAssignment' {
+Describe 'New-AzKustoDatabasePrincipalAssignment' {
     It 'CreateExpanded' {
         $resourceGroupName = Get-RG-Name
         $clusterName = Get-Cluster-Name
+        $databaseName = Get-Database-Name
         $principalAssignmentName = Get-PrincipalAssignment-Name
         $principalId = Get-PrincipalAssignment-PrincipalId
-        $role = Get-Cluster-PrincipalAssignment-Role
+        $role = Get-Database-PrincipalAssignment-Role
         $principalType = Get-PrincipalAssignment-PrincipalType
-        $principalAssignmentFullName = "$clusterName/$principalAssignmentName"
+        $principalAssignmentFullName = "$clusterName/$databaseName/$principalAssignmentName"
 
-        $principalAssignment = New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName -PrincipalId $principalId -PrincipalType $principalType -Role $role
+        $principalAssignment = New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName -DatabaseName $databaseName -PrincipalId $principalId -PrincipalType $principalType -Role $role
         Validate_PrincipalAssignment $principalAssignment $principalAssignmentFullName $principalId $principalType $role
     }
 }

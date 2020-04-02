@@ -88,7 +88,7 @@ function Get-Cluster-Resource-Type
 .SYNOPSIS
 Gets a name of the cluster principalassignment testing.
 #>
-function Get-Cluster-PrincipalAssignment-Name
+function Get-PrincipalAssignment-Name
 {
 	return "principalassignment1"
 }
@@ -97,7 +97,7 @@ function Get-Cluster-PrincipalAssignment-Name
 .SYNOPSIS
 Gets a name of the cluster principalassignment principalId.
 #>
-function Get-Cluster-PrincipalAssignment-PrincipalId
+function Get-PrincipalAssignment-PrincipalId
 {
 	return "e60fe5c8-d6a5-4dee-b382-fb4502588dd0"
 }
@@ -106,7 +106,7 @@ function Get-Cluster-PrincipalAssignment-PrincipalId
 .SYNOPSIS
 Gets a name of the cluster principalassignment principalType.
 #>
-function Get-Cluster-PrincipalAssignment-PrincipalType
+function Get-PrincipalAssignment-PrincipalType
 {
 	return "App"
 }
@@ -118,6 +118,15 @@ Gets a name of the cluster principalassignment Role.
 function Get-Cluster-PrincipalAssignment-Role
 {
 	return "AllDatabasesViewer"
+}
+
+<#
+.SYNOPSIS
+Gets a name of the cluster principalassignment Role.
+#>
+function Get-Database-PrincipalAssignment-Role
+{
+	return "Viewer"
 }
 
 <#
