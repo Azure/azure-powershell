@@ -65,3 +65,31 @@ function Test-TableOperationsCmdletsUsingInputObject
   $IsTableRemoved = Remove-AzCosmosDBTable -InputObject $Table -PassThru
   Assert-AreEqual $IsTableRemoved true
 }
+
+function Test-TableThroughputCmdlets
+{
+  $AccountName = "db2527"
+  $rgName = "CosmosDBResourceGroup2510"
+  $TableName = "tableName3"
+
+  $ThroughputValue = 1200
+  $UpdatedThroughputValue = 1100
+  $UpdatedThroughputValue2 = 1000
+  $UpdatedThroughputValue3 = 900
+
+  $NewTable =  Set-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput  $ThroughputValue
+  $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
+  Assert-AreEqual $Throughput.Throughput $ThroughputValue
+
+  $UpdatedThroughput = Update-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput $UpdatedThroughputValue
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue
+
+  $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
+  $UpdatedThroughput = Update-AzCosmosDBTableThroughput -ParentObject $CosmosDBAccount -Name $TableName -Throughput $UpdatedThroughputValue2
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue2
+
+  $UpdatedThroughput = Update-AzCosmosDBTableThroughput -InputObject $NewTable -Throughput $UpdatedThroughputValue3
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue3
+
+  Remove-AzCosmosDBTable -InputObject $NewTable 
+}
