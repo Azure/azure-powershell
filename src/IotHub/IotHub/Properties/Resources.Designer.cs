@@ -149,6 +149,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoke Direct Method on a device.
+        /// </summary>
+        internal static string InvokeIotHubDeviceMethod {
+            get {
+                return ResourceManager.GetString("InvokeIotHubDeviceMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failover Iot Hub to the secondary location..
         /// </summary>
         internal static string ManualFailoverIotHub {
