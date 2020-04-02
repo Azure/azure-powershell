@@ -1,0 +1,161 @@
+{
+  "Remove-AzMariaDbFirewallRule+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-yqubmw/providers/Microsoft.DBforMariaDB/servers/mariadb-test-tbzqo9/firewallRules/fr-pzqy4x?api-version=2018-06-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-yqubmw/providers/Microsoft.DBforMariaDB/servers/mariadb-test-tbzqo9/firewallRules/fr-pzqy4x?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "188" ],
+        "x-ms-client-request-id": [ "2731da50-542a-4c57-86ad-e5e0b53101f6" ],
+        "CommandName": [ "Remove-AzMariaDBFirewallRule" ],
+        "FullCommandName": [ "Remove-AzMariaDbFirewallRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/789bcd72-bdee-49b7-9b35-bbccf26dfe23?api-version=2018-06-01-preview" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/789bcd72-bdee-49b7-9b35-bbccf26dfe23?api-version=2018-06-01-preview" ],
+        "x-ms-request-id": [ "789bcd72-bdee-49b7-9b35-bbccf26dfe23" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "3d72fe57-7b33-4ba2-a1da-dc9cf11ba7d4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200407T113522Z:3d72fe57-7b33-4ba2-a1da-dc9cf11ba7d4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Apr 2020 11:35:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "84" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"DropElasticServerFirewallRule\",\"startTime\":\"2020-04-07T11:35:21.403Z\"}"
+    }
+  },
+  "Remove-AzMariaDbFirewallRule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/789bcd72-bdee-49b7-9b35-bbccf26dfe23?api-version=2018-06-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/789bcd72-bdee-49b7-9b35-bbccf26dfe23?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "188", "189" ],
+        "x-ms-client-request-id": [ "2731da50-542a-4c57-86ad-e5e0b53101f6", "2731da50-542a-4c57-86ad-e5e0b53101f6" ],
+        "CommandName": [ "Remove-AzMariaDBFirewallRule", "Remove-AzMariaDBFirewallRule" ],
+        "FullCommandName": [ "Remove-AzMariaDbFirewallRule_Delete", "Remove-AzMariaDbFirewallRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "3b420caf-6dec-4585-b555-d0b03dc54fc4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11856" ],
+        "x-ms-correlation-request-id": [ "cff570e3-0da4-4864-b89b-450160492e00" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200407T113537Z:cff570e3-0da4-4864-b89b-450160492e00" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Apr 2020 11:35:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"789bcd72-bdee-49b7-9b35-bbccf26dfe23\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-07T11:35:21.403Z\"}"
+    }
+  },
+  "Remove-AzMariaDbFirewallRule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/789bcd72-bdee-49b7-9b35-bbccf26dfe23?api-version=2018-06-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/789bcd72-bdee-49b7-9b35-bbccf26dfe23?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "188", "189", "190" ],
+        "x-ms-client-request-id": [ "2731da50-542a-4c57-86ad-e5e0b53101f6", "2731da50-542a-4c57-86ad-e5e0b53101f6", "2731da50-542a-4c57-86ad-e5e0b53101f6" ],
+        "CommandName": [ "Remove-AzMariaDBFirewallRule", "Remove-AzMariaDBFirewallRule", "Remove-AzMariaDBFirewallRule" ],
+        "FullCommandName": [ "Remove-AzMariaDbFirewallRule_Delete", "Remove-AzMariaDbFirewallRule_Delete", "Remove-AzMariaDbFirewallRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3", "PSVersion/v6.2.3", "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "7383f39d-7517-480c-b3b3-cd04d2d03617" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11855" ],
+        "x-ms-correlation-request-id": [ "37414585-6a50-49bf-bc74-e95fe4470c44" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200407T113538Z:37414585-6a50-49bf-bc74-e95fe4470c44" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Apr 2020 11:35:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzMariaDbFirewallRule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-yqubmw/providers/Microsoft.DBforMariaDB/servers/mariadb-test-tbzqo9/firewallRules?api-version=2018-06-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-yqubmw/providers/Microsoft.DBforMariaDB/servers/mariadb-test-tbzqo9/firewallRules?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "191" ],
+        "x-ms-client-request-id": [ "a3609e55-a9dc-4ef0-9222-f675453b1565" ],
+        "CommandName": [ "Get-AzMariaDbFirewallRule" ],
+        "FullCommandName": [ "Get-AzMariaDbFirewallRule_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "PSVersion/v6.2.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "f9ce37d7-eefd-44f8-b25b-d6bebdf860d8" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11854" ],
+        "x-ms-correlation-request-id": [ "7128ec86-8c1f-4e3a-af9d-7d574c28e991" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200407T113538Z:7128ec86-8c1f-4e3a-af9d-7d574c28e991" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Apr 2020 11:35:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "659" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"startIpAddress\":\"0.0.0.1\",\"endIpAddress\":\"0.0.0.125\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-yqubmw/providers/Microsoft.DBforMariaDB/servers/mariadb-test-tbzqo9/firewallRules/fr-qh708u\",\"name\":\"fr-qh708u\",\"type\":\"Microsoft.DBforMariaDB/servers/firewallRules\"},{\"properties\":{\"startIpAddress\":\"0.0.2.1\",\"endIpAddress\":\"0.0.2.125\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-yqubmw/providers/Microsoft.DBforMariaDB/servers/mariadb-test-tbzqo9/firewallRules/frname-001\",\"name\":\"frname-001\",\"type\":\"Microsoft.DBforMariaDB/servers/firewallRules\"}]}"
+    }
+  }
+}
