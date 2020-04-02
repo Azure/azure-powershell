@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LocalNetworkGateway", SupportsShouldProcess = true),OutputType(typeof(PSLocalNetworkGateway))]
     public class NewAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
     {
+        public const string ByLocalNetworkGatewayIpAddress = "ByLocalNetworkGatewayIpAddress";
+        public const string ByLocalNetworkGatewayFqdn = "ByLocalNetworkGatewayFqdn";
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
@@ -53,10 +56,18 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-       Mandatory = false,
-       ValueFromPipelineByPropertyName = true,
-       HelpMessage = "IP address of local network gateway.")]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByLocalNetworkGatewayIpAddress,
+            HelpMessage = "IP address of local network gateway.")]
         public string GatewayIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByLocalNetworkGatewayFqdn,
+            HelpMessage = "FQDN of local network gateway.")]
+        public string Fqdn { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -122,7 +133,17 @@ namespace Microsoft.Azure.Commands.Network
             localnetGateway.Location = this.Location;
             localnetGateway.LocalNetworkAddressSpace = new PSAddressSpace();
             localnetGateway.LocalNetworkAddressSpace.AddressPrefixes = this.AddressPrefix?.ToList();
-            localnetGateway.GatewayIpAddress = this.GatewayIpAddress;
+
+            if (ParameterSetName.Contains(ByLocalNetworkGatewayIpAddress))
+            {
+                localnetGateway.GatewayIpAddress = this.GatewayIpAddress;
+                localnetGateway.Fqdn = string.Empty;
+            }
+            else if (ParameterSetName.Contains(ByLocalNetworkGatewayFqdn))
+            {
+                localnetGateway.Fqdn = this.Fqdn;
+                localnetGateway.GatewayIpAddress = string.Empty;
+            }
 
             if (this.PeerWeight < 0)
             {

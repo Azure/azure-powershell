@@ -1174,6 +1174,10 @@
                 <PropertyName>GatewayIpAddress</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Fqdn</Label>
+                <PropertyName>Fqdn</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>LocalNetworkAddressSpace</Label>
                 <PropertyName>AddressSpaceText</PropertyName>
               </ListItem>

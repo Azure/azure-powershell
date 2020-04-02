@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to enable FQDN based LocalNetworkGateways and VpnSites
+    - `New-AzLocalNetworkGateway`
+    - `New-AzVpnSiteLink`
 
 ## Version 2.4.0
 * Updated cmdlets to allow cross-tenant VirtualHubVnetConnections
