@@ -144,6 +144,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFailoverAzureStorageAccount()
+        {
+            TestRunner.RunTestScript("Test-FailoverAzureStorageAccount");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureStorageAccountGeoReplicationStats()
         {
             TestRunner.RunTestScript("Test-GetAzureStorageAccountGeoReplicationStats");
@@ -168,6 +175,20 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestStorageAccountManagementPolicy()
         {
             TestRunner.RunTestScript("Test-StorageAccountManagementPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccountGZRS()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_GZRS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccountRAGZRS()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_RAGZRS");
         }
 
         [Fact]

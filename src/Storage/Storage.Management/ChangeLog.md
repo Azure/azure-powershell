@@ -18,6 +18,44 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support create/update/get/list EncryptionScope of a Storage account
+    -  New-AzStorageEncryptionScope
+    -  Update-AzStorageEncryptionScope
+    -  Get-AzStorageEncryptionScope
+* Support create Storage Container with EncryptionScope settings
+    -  New-AzRmStorageContainer
+* Support update Storage account with encryted by Keyvault without Keyversion
+    -  Set-AzStorageAccount
+
+## Version 1.13.3
+* Upgrade DataLake Gen2 cmdlets to use new SDK "Azure.Storage.Files.DataLake", and remove 2 parameter -ServerTimeoutPerRequest, -ClientTimeoutPerRequest
+    -  New-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2ChildItem
+    -  Move-AzDataLakeGen2Item
+    -  Set-AzDataLakeGen2ItemAclObject
+    -  Update-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2ItemContent
+    -  Remove-AzDataLakeGen2Item
+* Change cmdlet name from New-AzDataLakeGen2ItemAclObject to Set-AzDataLakeGen2ItemAclObject, and when InputObject already has an ACL entry with same AccessControlType/EntityId/DefaultScope, will update permission of ACL entry instead of adding new ACL entry.
+    -  Set-AzDataLakeGen2ItemAclObject
+* Change -Path parameter to optional, don't set -Path will get/update FileSystem root Directory
+    -  Get-AzDataLakeGen2Item
+    -  Update-AzDataLakeGen2Item
+* In list DataLakeGen2 items, support -OutputUserPrincipalName, and change -FetchPermission to -Fetchproperties
+    -  Get-AzDataLakeGen2ChildItem
+* In move DataLakeGen2 item, remove 2 parameters -Umask, -PathRenameMode, and add -Force to skip overwrite confirmation prompt.
+    -  Move-AzDataLakeGen2Item
+
+
+## Version 1.13.1
+* Support Point In Time Restore
+    - Enable-AzStorageBlobRestorePolicy
+    - Disable-AzStorageBlobRestorePolicy
+    - New-AzStorageBlobRangeToRestore
+    - Restore-AzStorageBlobRange
+* Support get blob restore status of Storage account by run get-AzureRMStorageAccount with parameter -IncludeBlobRestoreStatus 
+    - Get-AzureRMStorageAccount
 
 ## Version 1.13.0
 * Supported AllowProtectedAppendWrite in ImmutabilityPolicy
@@ -29,6 +67,15 @@
 ## Version 1.12.0
 * Support set Table/Queue Encryption Keytype in Create Storage Account
     - New-AzRmStorageAccount
+* Show RequestId when StorageException don't have ExtendedErrorInformation
+* Fix the Example 6 of cmdlet Start-AzStorageBlobCopy
+
+## Version 1.11.1
+* Support set Table/Queue Encyrption Keytype in Create Storage Account
+    - New-AzRmStorageAccount
+* Fix DataLake Gen2 Output AzureDataLakeGen2Item.Permissions display format
+    - Get-AzDataLakeGen2Item
+    - Get-AzDataLakeGen2ChildItem
 * Show RequestId when StorageException don't have ExtendedErrorInformation
 * Fix the Example 6 of cmdlet Start-AzStorageBlobCopy
 
@@ -47,12 +94,23 @@
     - Revoke-AzStorageAccountUserDelegationKeys
 * Upgrade to Microsoft.Azure.Management.Storage 14.2.0, to support new API version 2019-06-01.
 * Support Share QuotaGiB more than 5120 in Management plane File Share cmdlets, and add parameter alias "Quota" to parameter "QuotaGiB" 
-	- New-AzRmStorageShare
-	- Update-AzRmStorageShare
+  - New-AzRmStorageShare
+  - Update-AzRmStorageShare
 * Add parameter alias "QuotaGiB" to parameter "Quota"
-	- Set-AzStorageShareQuota
+  - Set-AzStorageShareQuota
 * Fix the issue that Set-AzStorageContainerAcl can clean up the stored Access Policy
-	- Set-AzStorageContainerAcl
+  - Set-AzStorageContainerAcl
+
+## Version 1.9.1
+* Support DataLake Gen2 
+    -  New-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2ChildItem
+    -  Move-AzDataLakeGen2Item
+    -  New-AzDataLakeGen2ItemAclObject
+    -  Update-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2ItemContent
+    -  Remove-AzDataLakeGen2Item
 
 ## Version 1.9.0
 * Support enable Large File share when create or update Storage account
@@ -61,6 +119,25 @@
 * When close/get File handle, skip check the input path is File directory or File, to avoid failure with object in DeletePending status
     -  Get-AzStorageFileHandle
     -  Close-AzStorageFileHandle
+
+## Version 1.8.2
+* Fix issue in enabled Azure Files Active Directory Domain Service Authentication, on a new Storage account which has never enable it.
+
+## Version 1.8.1
+* Support enable Large File share when create or update Storage account
+    -  New-AzStorageAccount
+    -  Set-AzStorageAccount
+* When close/get File handle, skip check the input path is File directory or File, to avoid failure with object in DeletePending status
+    -  Get-AzStorageFileHandle
+    -  Close-AzStorageFileHandle
+* Support enable/disable Changefeed on Blob Service of a Storage account
+    -  Update-AzStorageBlobServiceProperty
+* Support create or update Storage account with Azure Files Active Directory Domain Service Authentication
+    -  New-AzStorageAccount
+    -  Set-AzStorageAccount
+* Support New or List Kerberos keys of Storage account
+    -  New-AzStorageAccountKey
+    -  Get-AzStorageAccountKey
 
 ## Version 1.8.0
 * Upgrade Storage Client Library to 11.1.0
@@ -112,6 +189,18 @@
 * Clarified description of blob immutability cmdlet
     -  Remove-AzRmStorageContainerImmutabilityPolicy
 
+## Version 1.3.2
+* Support new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
+    - New-AzStorageAccount
+    - Set-AzStorageAccount
+
+## Version 1.3.1
+* Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
+    - New-AzStorageContainerSASToken
+    - New-AzStorageBlobSASToken
+* Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
+    - Revoke-AzStorageAccountUserDelegationKeys
+
 ## Version 1.3.0
 * Upgrade to Storage Client Library 10.0.1 (the namespace of all objects from this SDK change from "Microsoft.WindowsAzure.Storage.*" to "Microsoft.Azure.Storage.*")
 * Upgrade to Microsoft.Azure.Management.Storage 11.0.0, to support new API version 2019-04-01.
@@ -121,6 +210,10 @@
     - New-AzStorageAccount
     - Get-AzStorageAccount
     - Set-AzStorageAccount
+
+## Version 1.2.1
+* Add a sub property "CanFailover" to Storage Account cmdlet output type PSStorageAccount.GeoReplicationStats
+    - New/Get/Set-AzureRMStorageAccount
 
 ## Version 1.2.0
 * Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account
@@ -152,6 +245,12 @@
 * Support Kind BlockBlobStorage when create Storage account
        - New-AzStorageAccount
 
+## Version 1.1.1
+* Support failover Storage account
+    - Invoke-AzureRmStorageAccountFailover
+* Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats
+    - Get-AzureRMStorageAccount
+    
 ## Version 1.0.2
 * Update incorrect online help URLs
 * Give detail error message when get/set classic Logging/Metric on Premium Storage Account, since Premium Storage Account not supoort classic Logging/Metric.
