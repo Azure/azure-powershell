@@ -26,9 +26,17 @@ function Test-PrivateLinkScopeCRUD
     $connection_name = Get-ResourceName
     $endpoint_name = Get-ResourceName
 
-    $tag1 = "key1:val1"
-    $tag2 = "key1:val2"
-    $tag3 = "key1:val3"
+    $key1 = "key1"
+    $key2 = "key2"
+    $key3 = "key3"
+
+    $val1 = "val1"
+    $val2 = "val2"
+    $val3 = "val3"
+    
+    $tag1 = $key1+":"+$val1
+    $tag2 = $key2+":"+$val2
+    $tag3 = $key3+":"+$val3
 
     try
     {
@@ -58,13 +66,21 @@ function Test-PrivateLinkScopeCRUD
         Assert-AreEqual "Succeeded" $scope3.ProvisioningState
 
         #update private link scope
-        Update-AzInsightsPrivateLinkScope -ResourceGroupName $rg_name -Name $scope_name1 -Tags $tag1
-        Update-AzInsightsPrivateLinkScope -ResourceId $scope2.Id -Tags $tag2
-        Get-AzInsightsPrivateLinkScope $scope3 | Update-AzInsightsPrivateLinkScope -Tags $tag3
+        $scope1 = Update-AzInsightsPrivateLinkScope -ResourceGroupName $rg_name -Name $scope_name1 -Tags $tag1
+        $scope2 = Update-AzInsightsPrivateLinkScope -ResourceId $scope2.Id -Tags $tag2
+        $scope3 = $scope3 | Update-AzInsightsPrivateLinkScope -Tags $tag3
 
-        Assert-AreEqual $tag1 $scope1.Tags
-        Assert-AreEqual $tag2 $scope2.Tags
-        Assert-AreEqual $tag3 $scope3.Tags
+        $valout1 = "abracadabra"
+        $valout2 = "abracadabra"
+        $valout3 = "abracadabra"
+
+        $scope1.Tags.TryGetValue($key1, [ref]$valout1)
+        $scope2.Tags.TryGetValue($key2, [ref]$valout2)
+        $scope3.Tags.TryGetValue($key3, [ref]$valout3)
+
+        Assert-AreEqual $val1 $valout1
+        Assert-AreEqual $val2 $valout2
+        Assert-AreEqual $val3 $valout3
 
         #get/list private-link-resource
         $private_link_resource = Get-AzPrivateLinkResource -PrivateLinkResourceId $scope1.Id
@@ -76,7 +92,7 @@ function Test-PrivateLinkScopeCRUD
         $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name $config_name -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPolicies "Disabled"
         New-AzVirtualNetwork -ResourceGroupName $rg_name -Name $vnet_name -Location "eastus2euap" -AddressPrefix "11.0.0.0/16" -Subnet $subnetConfig
         $vnet=Get-AzVirtualNetwork -Name $vnet_name -ResourceGroupName $rg_name
-        $plsConnection= New-AzPrivateLinkServiceConnection -Name $connection_name -PrivateLinkServiceId  $scope1.Id -GroupId $private_link_resource[0].GroupId
+        $plsConnection = New-AzPrivateLinkServiceConnection -Name $connection_name -PrivateLinkServiceId $scope1.Id -GroupId 'azuremonitor'
         New-AzPrivateEndpoint -ResourceGroupName $rg_name -Name $endpoint_name -Location "eastus2euap" -Subnet $vnet.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
 
         $connection = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $scope1.Id
