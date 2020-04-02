@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.4'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Monitor.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.Monitor.dll', 'AutoMapper.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -101,7 +101,14 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'New-AzScheduledQueryRuleAlertingAction', 
                'New-AzScheduledQueryRule', 'Get-AzScheduledQueryRule', 
                'Set-AzScheduledQueryRule', 'Update-AzScheduledQueryRule', 
-               'Remove-AzScheduledQueryRule'
+               'Remove-AzScheduledQueryRule', 
+               'New-AzInsightsPrivateLinkScope', 
+               'Get-AzInsightsPrivateLinkScope', 
+               'Update-AzInsightsPrivateLinkScope', 
+               'Remove-AzInsightsPrivateLinkScope', 
+               'New-AzInsightsPrivateLinkScopeScopedResource', 
+               'Get-AzInsightsPrivateLinkScopeScopedResource', 
+               'Remove-AzInsightsPrivateLinkScopeScopedResource'
 
 # Variables to export from this module
 # VariablesToExport = @()
