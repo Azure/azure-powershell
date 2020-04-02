@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/d2ad5196-2292-4080-b209-ce4399b0a807/providers/Microsoft.Network/azureFirewallFqdnTags?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDJhZDUxOTYtMjI5Mi00MDgwLWIyMDktY2U0Mzk5YjBhODA3L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9henVyZUZpcmV3YWxsRnFkblRhZ3M/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/azureFirewallFqdnTags?api-version=2020-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9henVyZUZpcmV3YWxsRnFkblRhZ3M/YXBpLXZlcnNpb249MjAyMC0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7d2035eb-7705-4dfd-a2da-9c71b6b1504c"
+          "4d4de90c-b3ab-4d41-bad7-10621f8441de"
         ],
         "Accept-Language": [
           "en-US"
@@ -15,7 +15,7 @@
         "User-Agent": [
           "FxVersion/4.6.28516.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
         ]
       },
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8013f713-feb8-473a-9611-aca278fd0c29"
+          "201af413-fd27-40ac-9ee7-5f8ac9205404"
         ],
         "x-ms-correlation-request-id": [
-          "ab976f06-d935-44e0-9e53-ac2fa68a2221"
+          "04e5f79f-9468-4c0b-acd6-c720f54a1e23"
         ],
         "x-ms-arm-service-request-id": [
-          "8f8b4005-a920-46cb-b1ab-91203815114b"
+          "b0b0263b-fd32-4cae-a40d-44e0ceff2551"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,13 +46,13 @@
           "11999"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20200310T170559Z:ab976f06-d935-44e0-9e53-ac2fa68a2221"
+          "WESTEUROPE:20200404T084041Z:04e5f79f-9468-4c0b-acd6-c720f54a1e23"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 10 Mar 2020 17:05:59 GMT"
+          "Sat, 04 Apr 2020 08:40:40 GMT"
         ],
         "Content-Length": [
           "1988"
@@ -70,6 +70,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "d2ad5196-2292-4080-b209-ce4399b0a807"
+    "SubscriptionId": "947d47b4-7883-4bb9-9d85-c5e8e2f572ce"
   }
 }
