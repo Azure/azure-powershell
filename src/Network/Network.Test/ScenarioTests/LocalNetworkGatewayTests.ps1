@@ -30,21 +30,16 @@ function Test-LocalNetworkGatewayCRUD
       # Create the resource group
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }             
       
-      # Create, Get & Remove LocalNetworkGateway 
-      $job = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -AddressPrefix 192.168.0.0/16 -Fqdn "lng.ontoso.com" -AsJob
+      # Create and Get LocalNetworkGateway with Fqdn
+      $rnameFqdn = $rname + "Fqdn"
+      $job = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rnameFqdn -location $location -AddressPrefix 192.168.0.0/16 -Fqdn "lng.ontoso.com" -AsJob
       $job | Wait-Job
 	  $actual = $job | Receive-Job	  
-
-	  $expected = Get-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname
+	  $expected = Get-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rnameFqdn
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
-      Assert-AreEqual "lng.ontoso.com" $expectedFqdn.Fqdn
+      Assert-AreEqual $expected.Fqdn $actual.Fqdn
       Assert-AreEqual "192.168.0.0/16" $expected.LocalNetworkAddressSpace.AddressPrefixes[0]
-
-      $job = Remove-AzLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
-	  $job | Wait-Job
-	  $delete = $job | Receive-Job
-      Assert-AreEqual true $delete
 
       # Create & Get LocalNetworkGateway      
       $job = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.4 -AsJob
@@ -59,7 +54,7 @@ function Test-LocalNetworkGatewayCRUD
 
       # List LocalNetworkGateways
       $list = Get-AzLocalNetworkGateway -ResourceGroupName $rgname
-      Assert-AreEqual 1 @($list).Count
+      Assert-AreEqual 2 @($list).Count
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $list[0].Name $actual.Name	
       Assert-AreEqual $list[0].Location $actual.Location
@@ -100,6 +95,12 @@ function Test-LocalNetworkGatewayCRUD
 
       # Delete LocalNetworkGateway
       $job = Remove-AzLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
+	  $job | Wait-Job
+	  $delete = $job | Receive-Job
+      Assert-AreEqual true $delete
+
+      # Delete LocalNetworkGateway
+      $job = Remove-AzLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rnameFqdn -PassThru -Force -AsJob
 	  $job | Wait-Job
 	  $delete = $job | Receive-Job
       Assert-AreEqual true $delete

@@ -32,7 +32,6 @@ function Test-CortexCRUD
 	$vpnSite2Name = Get-ResourceName
 	$vpnSiteLink1Name = Get-ResourceName
 	$vpnSiteLink2Name = Get-ResourceName
-	$vpnSiteLink3Name = Get-ResourceName
 	$vpnConnection2Name = Get-ResourceName
 	$vpnLink1ConnectionName = Get-ResourceName
 	$vpnLink2ConnectionName = Get-ResourceName
@@ -119,6 +118,8 @@ function Test-CortexCRUD
 		$vpnSite2AddressSpaces[1] = "192.169.3.0/24"
 		$vpnSiteLink1 = New-AzVpnSiteLink -Name $vpnSiteLink1Name -IpAddress "5.5.5.5" -LinkProviderName "SomeTelecomProvider1" -LinkSpeedInMbps "10"
 		$vpnSiteLink2 = New-AzVpnSiteLink -Name $vpnSiteLink2Name -IpAddress "5.5.5.6" -LinkProviderName "SomeTelecomProvider2" -LinkSpeedInMbps "10"
+
+		$vpnSiteLink3Name = "vpnSiteLink3"
 		$vpnSiteLink3 = New-AzVpnSiteLink -Name $vpnSiteLink3Name -Fqdn "link3.contoso.com" -LinkProviderName "SomeTelecomProvider3" -LinkSpeedInMbps "10"
 		$createdVpnSite2 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name -Location $rglocation -VirtualWan $virtualWan -AddressSpace $vpnSite2AddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($vpnSiteLink1, $vpnSiteLink2)
 		$vpnSite2 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name
@@ -268,7 +269,6 @@ function Test-CortexDownloadConfig
 	$vpnSite2Name = Get-ResourceName
 	$vpnSiteLink1Name = Get-ResourceName
 	$vpnSiteLink2Name = Get-ResourceName
-	$vpnSiteLink3Name = Get-ResourceName
 	$vpnGatewayName = Get-ResourceName
 	$remoteVirtualNetworkName = Get-ResourceName
 	$vpnConnectionName = Get-ResourceName
