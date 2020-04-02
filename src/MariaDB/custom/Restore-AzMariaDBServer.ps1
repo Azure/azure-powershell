@@ -82,7 +82,7 @@ function Restore-AzMariaDbServer
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [Switch]
         # Use GeoRestore mode.
-        ${UseGeoRetore},
+        ${UseGeoRestore},
         #endregion Geo
 
         #region DefaultParameters
@@ -156,11 +156,10 @@ function Restore-AzMariaDbServer
                 $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::PointInTimeRestore
                 $Null = $PSBoundParameters.Remove('RestorePointInTime')
                 $Null = $PSBoundParameters.Remove('UsePointInTimeRestore')
-                Write-Host 'UsePointInTimeRestore'
-            } elseif ($PSBoundParameters.ContainsKey('UseGeoRetore')) {
+            } elseif ($PSBoundParameters.ContainsKey('UseGeoRestore')) {
                 $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForGeoRestore]::new()
                 $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::GeoRestore
-                $Null = $PSBoundParameters.Remove('UseGeoRetore')
+                $Null = $PSBoundParameters.Remove('UseGeoRestore')
             }
 
             $ServerObject = $InputObject
@@ -180,7 +179,7 @@ function Restore-AzMariaDbServer
                 $Parameter.Location = $PSBoundParameters['Location']
                 $Null = $PSBoundParameters.Remove('Location')
             } else {
-                $Parameter.Location = $Server.Location
+                $Parameter.Location = $ServerObject.Location
             }
 
             if ($PSBoundParameters.ContainsKey('Tag')) {
