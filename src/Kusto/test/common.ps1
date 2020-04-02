@@ -86,6 +86,42 @@ function Get-Cluster-Resource-Type
 
 <#
 .SYNOPSIS
+Gets a name of the cluster principalassignment testing.
+#>
+function Get-Cluster-PrincipalAssignment-Name
+{
+	return "principalassignment1"
+}
+
+<#
+.SYNOPSIS
+Gets a name of the cluster principalassignment principalId.
+#>
+function Get-Cluster-PrincipalAssignment-PrincipalId
+{
+	return "e60fe5c8-d6a5-4dee-b382-fb4502588dd0"
+}
+
+<#
+.SYNOPSIS
+Gets a name of the cluster principalassignment principalType.
+#>
+function Get-Cluster-PrincipalAssignment-PrincipalType
+{
+	return "App"
+}
+
+<#
+.SYNOPSIS
+Gets a name of the cluster principalassignment Role.
+#>
+function Get-Cluster-PrincipalAssignment-Role
+{
+	return "AllDatabasesViewer"
+}
+
+<#
+.SYNOPSIS
 Gets a cluster resource id
 #>
 function Get-Cluster-Resource-Id
@@ -243,4 +279,20 @@ function Validate_Database {
 		$Database.Type | Should Be $ResourceType
 		$Database.SoftDeletePeriod | Should Be $SoftDeletePeriodInDays 
 		$Database.HotCachePeriod | Should Be $HotCachePeriodInDays
+}
+
+<#
+.SYNOPSIS
+Validate if database is valid
+#>
+function Validate_PrincipalAssignment {
+	Param ([Object]$PrincipalAssignment,
+		[string]$PrincipalAssignmentFullName,
+		[string]$PrincipalId,
+		[string]$PrincipalType,
+		[string]$Role)
+		$PrincipalAssignment.Name | Should Be $PrincipalAssignmentFullName
+		$PrincipalAssignment.PrincipalId | Should Be $PrincipalId
+		$PrincipalAssignment.PrincipalType | Should Be $PrincipalType
+		$PrincipalAssignment.Role | Should Be $Role 
 }
