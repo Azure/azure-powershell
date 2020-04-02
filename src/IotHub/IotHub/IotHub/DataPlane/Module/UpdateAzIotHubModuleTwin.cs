@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubModuleTwin", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSDeviceTwin))]
+    [OutputType(typeof(PSModuleTwin))]
     public class UpdateAzIotHubModuleTwin : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";

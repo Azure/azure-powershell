@@ -14,10 +14,6 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using System;
-    using Microsoft.Azure.Devices.Shared;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// Device's Module Twin Representation.
     /// </summary>

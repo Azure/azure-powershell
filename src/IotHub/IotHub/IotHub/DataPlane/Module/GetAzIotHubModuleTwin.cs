@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubModuleTwin", DefaultParameterSetName = ResourceParameterSet)]
-    [OutputType(typeof(PSDeviceTwin))]
+    [OutputType(typeof(PSModuleTwin))]
     public class GetAzIotHubModuleTwin : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
