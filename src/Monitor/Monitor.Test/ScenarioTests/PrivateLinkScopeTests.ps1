@@ -32,6 +32,9 @@ function Test-PrivateLinkScopeCRUD
 
     try
     {
+        #create resource group
+        New-AzResourceGroup -Name $rg_name -Location "westus"
+
         #create private link scope
         New-AzInsightsPrivateLinkScope -ResourceGroupName $rg_name -Name $scope_name1 -Location "global"
         New-AzInsightsPrivateLinkScope -ResourceGroupName $rg_name -Name $scope_name2 -Location "global"
@@ -131,6 +134,9 @@ function Test-PrivateLinkScopeScopedResourceCRUD
 
     try 
     {
+        #create resource group
+        New-AzResourceGroup -Name $rg_name -Location "westus"
+
         #create private link scope
         New-AzInsightsPrivateLinkScope -ResourceGroupName $rg_name -Name $scope_name1 -Location "global"
         New-AzInsightsPrivateLinkScope -ResourceGroupName $rg_name -Name $scope_name2 -Location "global"
