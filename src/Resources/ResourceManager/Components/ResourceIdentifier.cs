@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
         public string Subscription { get; set; }
 
+        public bool IsResourceGroupId { get; set; }
+
         public ResourceIdentifier() { }
 
         public ResourceIdentifier(string idFromServer)
@@ -83,6 +85,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 }
                 return new ResourceIdentifier
                 {
+                    IsResourceGroupId = tokens.Length == 4,
                     Subscription = tokens[1],
                     ResourceGroupName = tokens[3],
                 };

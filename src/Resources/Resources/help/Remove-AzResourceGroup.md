@@ -19,7 +19,7 @@ Remove-AzResourceGroup [-Name] <String> [-Force] [-AsJob] [-ApiVersion <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveByResourceGroupId
+### RemoveByResourceGroupId or RemoveByResourceId
 ```
 Remove-AzResourceGroup -Id <String> [-Force] [-AsJob] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

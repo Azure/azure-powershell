@@ -57,6 +57,9 @@ namespace Microsoft.Azure.Commands.Resources
         protected override void OnProcessRecord()
         {
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
+            if (!ResourceIdentifier.FromResourceGroupIdentifier(this.Id).IsResourceGroupId) {
+                Force.IsPresent = true;
+            }
 
             ConfirmAction(
                 Force.IsPresent,
