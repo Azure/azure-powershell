@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.ApplicationInsights.Management;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -40,6 +41,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         public IMonitorManagementClient MonitorManagementClient { get; private set; }
 
         public ApplicationInsightsManagementClient ApplicationInsightsClient { get; private set; }
+
+        public NetworkManagementClient NetworkManagementClient { get; private set; }
 
         public static TestsController NewInstance => new TestsController();
 
@@ -130,6 +133,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                 ResourceManagementClient = this.GetResourceManagementClient(context: context, env: environment);
                 StorageManagementClient = this.GetStorageManagementClient(context: context, env: environment);
                 ApplicationInsightsClient = this.GetApplicationInsightsManagementClient(context: context, env: environment);
+                NetworkManagementClient = this.GetNetworkManagementClient(context: context, env: environment);
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
@@ -172,6 +176,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             return env != null
                 ? context.GetServiceClient<ApplicationInsightsManagementClient>(currentEnvironment: env)
                 : context.GetServiceClient<ApplicationInsightsManagementClient>();
+        }
+
+        private NetworkManagementClient GetNetworkManagementClient(RestTestFramework.MockContext context, RestTestFramework.TestEnvironment env)
+        {
+            return env != null
+                ? context.GetServiceClient<NetworkManagementClient>(currentEnvironment: env)
+                : context.GetServiceClient<NetworkManagementClient>();
         }
     }
 }
