@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add breaking change notice for Azure File cmdlets output change in a future release
 
 ## Version 1.13.0
 * Supported AllowProtectedAppendWrite in ImmutabilityPolicy
