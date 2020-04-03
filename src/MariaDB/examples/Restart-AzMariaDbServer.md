@@ -4,7 +4,7 @@ PS C:\> Restart-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mar
 
 ```
 
-This command Restart a MariaDB.
+This command restart a MariaDB.
 
 ### Example 2: Restart a MariaDB
 ```powershell
@@ -12,5 +12,5 @@ PS C:\> Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb
 
 ```
 
-This command Restart a MariaDB.
+This command restart a MariaDB.
 

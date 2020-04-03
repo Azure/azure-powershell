@@ -28,17 +28,29 @@ Describe 'Restore-AzMariaDbServer' {
         $restoreMariaDb = Get-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup
         $restoreMariaDb.Name | Should -Be $restoreMariaDbName
     }
-    It 'GeoRestore' {
-        $repMariaDbName = $env.rstrgp02 + '-geo01' 
-        Restore-AzMariaDBServer -Name $repMariaDbName -ServerName $env.rstrgp02 -ResourceGroupName $env.ResourceGroup -UseGeoRetore -Location $env.Location
-        $repMariaDb = Get-AzMariaDBServer -Name $repMariaDbName -ResourceGroupName $env.ResourceGroup
-        $repMariaDb.Name | Should -Be $repMariaDbName
+    It 'GeoRestore' -skip {
+        $adminLoginPasswordSecure =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force
+        $dbname = $env.rstrgp02 + 'new01'
+        New-AzMariaDbServer -Name $dbname -ResourceGroupName $env.ResourceGroup -Sku 'GP_Gen5_4' -StorageProfileGeoRedundantBackup Enabled -Location $env.Location -AdministratorUsername $env.AdminLogin -AdministratorLoginPassword $adminLoginPasswordSecure
+        $geoMariaDbName = $dbname + '-geo01' 
+        $repMariaDbName = $dbname + '-geo01rep01'
+        $location = 'eastus2'
+        New-AzMariaDbServerReplica -Name $repMariaDbName -ServerName $dbname -ResourceGroupName $env.ResourceGroup
+        Restore-AzMariaDBServer -Name $geoMariaDbName -ServerName $repMariaDbName -ResourceGroupName $env.ResourceGroup -UseGeoRetore -Location $location
+        $geoMariaDb = Get-AzMariaDBServer -Name $geoMariaDbName -ResourceGroupName $env.ResourceGroup
+        $geoMariaDb.Name | Should -Be $geoMariaDbName
     }
-    It 'GeoRestoreServerObject' {
-        $repMariaDbName = $env.rstrgp02 + '-geo02' 
-        $mariadb = Get-AzMariaDbServer -ResourceGroupName $env.ResourceGroup -Name $env.rstrgp02
-        Restore-AzMariaDBServer -Name $repMariaDbName -InputObject $mariadb -UseGeoRetore -Location $env.Location
-        $repMariaDb = Get-AzMariaDBServer -Name $repMariaDbName -ResourceGroupName $env.ResourceGroup
-        $repMariaDb.Name | Should -Be $repMariaDbName
+    It 'GeoRestoreServerObject' -skip {
+        $adminLoginPasswordSecure =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force
+        $dbname = $env.rstrgp02 + 'new02'
+        New-AzMariaDbServer -Name $dbname -ResourceGroupName $env.ResourceGroup -Sku 'GP_Gen5_4' -StorageProfileGeoRedundantBackup Enabled -Location $env.Location -AdministratorUsername $env.AdminLogin -AdministratorLoginPassword $adminLoginPasswordSecure
+        $geoMariaDbName = $dbname + '-geo02' 
+        $repMariaDbName = $dbname + '-geo02rep01'
+        $location = 'eastus2'
+        New-AzMariaDbServerReplica -Name $repMariaDbName -ServerName $dbname -ResourceGroupName $env.ResourceGroup
+        $mariadb = Get-AzMariaDbServer -ResourceGroupName $env.ResourceGroup -Name $repMariaDbName
+        Restore-AzMariaDBServer -Name $geoMariaDbName -InputObject $mariadb -UseGeoRetore -Location $location
+        $geoMariaDb = Get-AzMariaDBServer -Name $geoMariaDbName -ResourceGroupName $env.ResourceGroup
+        $geoMariaDb.Name | Should -Be $geoMariaDbName
     }
 }

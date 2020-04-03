@@ -1,12 +1,12 @@
 {
-  "Restart-AzMariaDbServer+[NoContext]+Restart+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-w8fa5m/restart?api-version=2018-06-01-preview+1": {
+  "Restart-AzMariaDbServer+[NoContext]+Restart+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-3x8js7/restart?api-version=2018-06-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-w8fa5m/restart?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-3x8js7/restart?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "208" ],
-        "x-ms-client-request-id": [ "0fd5002d-3943-4df9-98c4-8def7644c57b" ],
+        "x-ms-unique-id": [ "161" ],
+        "x-ms-client-request-id": [ "0e25c7a3-b354-4a42-830b-52a175399ddb" ],
         "CommandName": [ "Az.MariaDb.internal\\Restart-AzMariaDbServer" ],
         "FullCommandName": [ "Restart-AzMariaDbServer_Restart" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,34 +21,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/384af443-0a9e-4abc-9685-8ef1634ca2b1?api-version=2018-06-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0?api-version=2018-06-01-preview" ],
         "Retry-After": [ "15" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/384af443-0a9e-4abc-9685-8ef1634ca2b1?api-version=2018-06-01-preview" ],
-        "x-ms-request-id": [ "384af443-0a9e-4abc-9685-8ef1634ca2b1" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0?api-version=2018-06-01-preview" ],
+        "x-ms-request-id": [ "28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "69cb09bc-76ab-43a1-9703-09ef2a13fc76" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083129Z:69cb09bc-76ab-43a1-9703-09ef2a13fc76" ],
+        "x-ms-correlation-request-id": [ "ac9a0f0f-d1c3-4a57-aa18-0b1a070db56f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034624Z:ac9a0f0f-d1c3-4a57-aa18-0b1a070db56f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:31:29 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:46:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "75" ],
+        "Content-Length": [ "74" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"operation\":\"RestartElasticServer\",\"startTime\":\"2020-04-01T08:31:29.187Z\"}"
+      "Content": "{\"operation\":\"RestartElasticServer\",\"startTime\":\"2020-04-02T03:46:24.84Z\"}"
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/384af443-0a9e-4abc-9685-8ef1634ca2b1?api-version=2018-06-01-preview+2": {
+  "Restart-AzMariaDbServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0?api-version=2018-06-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/384af443-0a9e-4abc-9685-8ef1634ca2b1?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "208", "209" ],
-        "x-ms-client-request-id": [ "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b" ],
+        "x-ms-unique-id": [ "161", "162" ],
+        "x-ms-client-request-id": [ "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb" ],
         "CommandName": [ "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer" ],
         "FullCommandName": [ "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
@@ -64,31 +64,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "x-ms-request-id": [ "9c9c0fc3-2fdf-44c6-9826-c8dab5e393c6" ],
+        "x-ms-request-id": [ "1abcf73f-a81a-4aef-b03e-fba5ed73a812" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11884" ],
-        "x-ms-correlation-request-id": [ "8877cbc2-b1c7-4bb5-bf37-6f61219b8c81" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083144Z:8877cbc2-b1c7-4bb5-bf37-6f61219b8c81" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11913" ],
+        "x-ms-correlation-request-id": [ "a3bae5f8-f120-4887-9b02-2372157d52ff" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034640Z:a3bae5f8-f120-4887-9b02-2372157d52ff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:31:44 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:46:39 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "108" ],
+        "Content-Length": [ "107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"384af443-0a9e-4abc-9685-8ef1634ca2b1\",\"status\":\"InProgress\",\"startTime\":\"2020-04-01T08:31:29.187Z\"}"
+      "Content": "{\"name\":\"28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0\",\"status\":\"InProgress\",\"startTime\":\"2020-04-02T03:46:24.84Z\"}"
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/384af443-0a9e-4abc-9685-8ef1634ca2b1?api-version=2018-06-01-preview+3": {
+  "Restart-AzMariaDbServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0?api-version=2018-06-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/384af443-0a9e-4abc-9685-8ef1634ca2b1?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "208", "209", "210" ],
-        "x-ms-client-request-id": [ "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b" ],
+        "x-ms-unique-id": [ "161", "162", "163" ],
+        "x-ms-client-request-id": [ "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb" ],
         "CommandName": [ "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer" ],
         "FullCommandName": [ "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -104,31 +104,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "x-ms-request-id": [ "56ad8169-d938-4534-b74a-bfea5440f7ae" ],
+        "x-ms-request-id": [ "d0a4bc80-2981-440b-9fb6-e44161d4ff2b" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11883" ],
-        "x-ms-correlation-request-id": [ "27a4c03e-833d-45da-bd18-8b655ddc76f1" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083200Z:27a4c03e-833d-45da-bd18-8b655ddc76f1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11912" ],
+        "x-ms-correlation-request-id": [ "c545b361-cd4f-4ee8-803a-a353b8ba6ea1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034655Z:c545b361-cd4f-4ee8-803a-a353b8ba6ea1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:31:59 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:46:54 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "108" ],
+        "Content-Length": [ "107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"384af443-0a9e-4abc-9685-8ef1634ca2b1\",\"status\":\"InProgress\",\"startTime\":\"2020-04-01T08:31:29.187Z\"}"
+      "Content": "{\"name\":\"28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0\",\"status\":\"InProgress\",\"startTime\":\"2020-04-02T03:46:24.84Z\"}"
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/384af443-0a9e-4abc-9685-8ef1634ca2b1?api-version=2018-06-01-preview+4": {
+  "Restart-AzMariaDbServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0?api-version=2018-06-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/384af443-0a9e-4abc-9685-8ef1634ca2b1?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "208", "209", "210", "211" ],
-        "x-ms-client-request-id": [ "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b" ],
+        "x-ms-unique-id": [ "161", "162", "163", "164" ],
+        "x-ms-client-request-id": [ "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb" ],
         "CommandName": [ "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer" ],
         "FullCommandName": [ "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -144,31 +144,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "x-ms-request-id": [ "7d067080-0336-48b2-aed1-ef9de1aae20c" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11882" ],
+        "x-ms-request-id": [ "3c5f7246-0a56-46cb-a813-7a2967b95373" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "8e2d14c0-7818-49e9-9243-bf5310cf267e" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083215Z:8e2d14c0-7818-49e9-9243-bf5310cf267e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11911" ],
+        "x-ms-correlation-request-id": [ "864460a1-c17e-4d03-888b-255f341a9d98" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034711Z:864460a1-c17e-4d03-888b-255f341a9d98" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:32:14 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:47:11 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "108" ],
+        "Content-Length": [ "107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"384af443-0a9e-4abc-9685-8ef1634ca2b1\",\"status\":\"InProgress\",\"startTime\":\"2020-04-01T08:31:29.187Z\"}"
+      "Content": "{\"name\":\"28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0\",\"status\":\"InProgress\",\"startTime\":\"2020-04-02T03:46:24.84Z\"}"
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/384af443-0a9e-4abc-9685-8ef1634ca2b1?api-version=2018-06-01-preview+5": {
+  "Restart-AzMariaDbServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0?api-version=2018-06-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/384af443-0a9e-4abc-9685-8ef1634ca2b1?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "208", "209", "210", "211", "212" ],
-        "x-ms-client-request-id": [ "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b" ],
+        "x-ms-unique-id": [ "161", "162", "163", "164", "165" ],
+        "x-ms-client-request-id": [ "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb" ],
         "CommandName": [ "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer" ],
         "FullCommandName": [ "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -184,31 +184,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "x-ms-request-id": [ "6f896e63-d97b-48df-bc29-deebb0a9823c" ],
+        "x-ms-request-id": [ "6c788fc6-4646-4647-b2de-33a0dd7042c7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11910" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11881" ],
-        "x-ms-correlation-request-id": [ "42ac3504-6768-4504-bd71-c22ac467cc0e" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083231Z:42ac3504-6768-4504-bd71-c22ac467cc0e" ],
+        "x-ms-correlation-request-id": [ "d93edecb-651b-4872-aa3e-1e5a5cc661c1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034726Z:d93edecb-651b-4872-aa3e-1e5a5cc661c1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:32:30 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:47:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "107" ],
+        "Content-Length": [ "106" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"384af443-0a9e-4abc-9685-8ef1634ca2b1\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-01T08:31:29.187Z\"}"
+      "Content": "{\"name\":\"28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-02T03:46:24.84Z\"}"
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/384af443-0a9e-4abc-9685-8ef1634ca2b1?api-version=2018-06-01-preview+6": {
+  "Restart-AzMariaDbServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0?api-version=2018-06-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/384af443-0a9e-4abc-9685-8ef1634ca2b1?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/28630dbb-b2b1-4c0b-934f-b3daa8f0b9b0?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "208", "209", "210", "211", "212", "213" ],
-        "x-ms-client-request-id": [ "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b", "0fd5002d-3943-4df9-98c4-8def7644c57b" ],
+        "x-ms-unique-id": [ "161", "162", "163", "164", "165", "166" ],
+        "x-ms-client-request-id": [ "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb", "0e25c7a3-b354-4a42-830b-52a175399ddb" ],
         "CommandName": [ "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer" ],
         "FullCommandName": [ "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -223,14 +223,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "5204150b-6436-4464-998f-4a301518bf98" ],
+        "x-ms-request-id": [ "58211968-6432-4332-901f-320c988af983" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11880" ],
-        "x-ms-correlation-request-id": [ "93ad4290-b525-4b19-ba85-f04abc61bcf3" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083231Z:93ad4290-b525-4b19-ba85-f04abc61bcf3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11909" ],
+        "x-ms-correlation-request-id": [ "0af5152b-c88f-4d87-8405-d440ba0f1070" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034727Z:0af5152b-c88f-4d87-8405-d440ba0f1070" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:32:31 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:47:27 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -239,14 +239,14 @@
       "Content": null
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-w8fa5m?api-version=2018-06-01-preview+7": {
+  "Restart-AzMariaDbServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-3x8js7?api-version=2018-06-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-w8fa5m?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-3x8js7?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "214" ],
-        "x-ms-client-request-id": [ "cc2b7d18-b637-42c2-b80c-27cce3f5b9f1" ],
+        "x-ms-unique-id": [ "167" ],
+        "x-ms-client-request-id": [ "9bcb2351-57d2-4345-8543-fcc0e6d69286" ],
         "CommandName": [ "Get-AzMariaDbServer" ],
         "FullCommandName": [ "Get-AzMariaDbServer_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -261,31 +261,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "63f10366-cd92-4ca6-917e-e48a84df0b88" ],
+        "x-ms-request-id": [ "a07a967b-5ca1-44cc-b888-fe5fd9f82eb3" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11879" ],
-        "x-ms-correlation-request-id": [ "f5e7dd53-5edb-4bd7-b3b9-aa6dc68a9a6b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083232Z:f5e7dd53-5edb-4bd7-b3b9-aa6dc68a9a6b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11908" ],
+        "x-ms-correlation-request-id": [ "03d0eaa9-cc6a-4757-b7f3-436dbab56b36" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034727Z:03d0eaa9-cc6a-4757-b7f3-436dbab56b36" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:32:31 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:47:27 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "927" ],
+        "Content-Length": [ "923" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"B_Gen5_1\",\"tier\":\"Basic\",\"family\":\"Gen5\",\"capacity\":1},\"properties\":{\"administratorLogin\":\"fyjtzmowvi\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"10.2\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mariadb-test-w8fa5m.mariadb.database.azure.com\",\"earliestRestoreDate\":\"2020-04-01T07:22:46.417+00:00\",\"replicationRole\":\"None\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"infrastructureEncryption\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-w8fa5m\",\"name\":\"mariadb-test-w8fa5m\",\"type\":\"Microsoft.DBforMariaDB/servers\"}"
+      "Content": "{\"sku\":{\"name\":\"B_Gen5_1\",\"tier\":\"Basic\",\"family\":\"Gen5\",\"capacity\":1},\"properties\":{\"administratorLogin\":\"vdzyaotful\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"10.2\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mariadb-test-3x8js7.mariadb.database.azure.com\",\"earliestRestoreDate\":\"2020-04-02T03:01:15+00:00\",\"replicationRole\":\"None\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"infrastructureEncryption\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-3x8js7\",\"name\":\"mariadb-test-3x8js7\",\"type\":\"Microsoft.DBforMariaDB/servers\"}"
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-f4dm0g?api-version=2018-06-01-preview+1": {
+  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-65t28v?api-version=2018-06-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-f4dm0g?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-65t28v?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "215" ],
-        "x-ms-client-request-id": [ "5c968152-ab69-43cc-92de-1466bef84690" ],
+        "x-ms-unique-id": [ "168" ],
+        "x-ms-client-request-id": [ "fa37a33e-a59c-428c-8568-552353a85225" ],
         "CommandName": [ "Get-AzMariaDbServer" ],
         "FullCommandName": [ "Get-AzMariaDbServer_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -300,31 +300,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "203ad5b1-2b42-4d3f-aa6b-4865d2d55b9c" ],
+        "x-ms-request-id": [ "3a18785f-804a-4078-9e73-6913f0a0f683" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11878" ],
-        "x-ms-correlation-request-id": [ "3f53b8c2-09cc-4b15-af88-3b37337b1b55" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083232Z:3f53b8c2-09cc-4b15-af88-3b37337b1b55" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11907" ],
+        "x-ms-correlation-request-id": [ "c3d4d06b-5eae-46b8-a43e-ae6e8aeb504a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034728Z:c3d4d06b-5eae-46b8-a43e-ae6e8aeb504a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:32:31 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:47:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "927" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"B_Gen5_1\",\"tier\":\"Basic\",\"family\":\"Gen5\",\"capacity\":1},\"properties\":{\"administratorLogin\":\"tqpmoxrabn\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"10.2\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mariadb-test-f4dm0g.mariadb.database.azure.com\",\"earliestRestoreDate\":\"2020-04-01T07:24:55.803+00:00\",\"replicationRole\":\"None\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"infrastructureEncryption\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-f4dm0g\",\"name\":\"mariadb-test-f4dm0g\",\"type\":\"Microsoft.DBforMariaDB/servers\"}"
+      "Content": "{\"sku\":{\"name\":\"B_Gen5_1\",\"tier\":\"Basic\",\"family\":\"Gen5\",\"capacity\":1},\"properties\":{\"administratorLogin\":\"aqdscnrkwf\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"10.2\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mariadb-test-65t28v.mariadb.database.azure.com\",\"earliestRestoreDate\":\"2020-04-02T03:03:25.887+00:00\",\"replicationRole\":\"None\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"infrastructureEncryption\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-65t28v\",\"name\":\"mariadb-test-65t28v\",\"type\":\"Microsoft.DBforMariaDB/servers\"}"
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-f4dm0g/restart?api-version=2018-06-01-preview+2": {
+  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-65t28v/restart?api-version=2018-06-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-f4dm0g/restart?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-65t28v/restart?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "216" ],
-        "x-ms-client-request-id": [ "2945d3ff-df3a-4321-8436-bdaf204fc991" ],
+        "x-ms-unique-id": [ "169" ],
+        "x-ms-client-request-id": [ "95a57a83-869a-4f8f-bab6-f47cb491bed9" ],
         "CommandName": [ "Az.MariaDb.internal\\Restart-AzMariaDbServer" ],
         "FullCommandName": [ "Restart-AzMariaDbServer_Restart" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -339,34 +339,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/31aea857-18d6-4823-899d-88187651e0a5?api-version=2018-06-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/898eb1e7-aa8b-4adb-bb86-4dd77533ea06?api-version=2018-06-01-preview" ],
         "Retry-After": [ "15" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/31aea857-18d6-4823-899d-88187651e0a5?api-version=2018-06-01-preview" ],
-        "x-ms-request-id": [ "31aea857-18d6-4823-899d-88187651e0a5" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/898eb1e7-aa8b-4adb-bb86-4dd77533ea06?api-version=2018-06-01-preview" ],
+        "x-ms-request-id": [ "898eb1e7-aa8b-4adb-bb86-4dd77533ea06" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "2bb93de5-a907-48de-abbc-6cd2c6908764" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083233Z:2bb93de5-a907-48de-abbc-6cd2c6908764" ],
+        "x-ms-correlation-request-id": [ "38a31cc5-9e9f-4432-a70d-98cc634d47e6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034728Z:38a31cc5-9e9f-4432-a70d-98cc634d47e6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:32:32 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:47:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "75" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"operation\":\"RestartElasticServer\",\"startTime\":\"2020-04-01T08:32:33.023Z\"}"
+      "Content": "{\"operation\":\"RestartElasticServer\",\"startTime\":\"2020-04-02T03:47:28.573Z\"}"
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/31aea857-18d6-4823-899d-88187651e0a5?api-version=2018-06-01-preview+3": {
+  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/898eb1e7-aa8b-4adb-bb86-4dd77533ea06?api-version=2018-06-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/31aea857-18d6-4823-899d-88187651e0a5?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/898eb1e7-aa8b-4adb-bb86-4dd77533ea06?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "216", "217" ],
-        "x-ms-client-request-id": [ "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991" ],
+        "x-ms-unique-id": [ "169", "170" ],
+        "x-ms-client-request-id": [ "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9" ],
         "CommandName": [ "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer" ],
         "FullCommandName": [ "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
@@ -382,31 +382,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "x-ms-request-id": [ "1270f629-372c-4d35-9071-54abbbd0a925" ],
+        "x-ms-request-id": [ "8f9cd87f-bd6d-48e6-bb89-232c71e8b352" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11877" ],
-        "x-ms-correlation-request-id": [ "17dd8507-6e69-4c14-8a3e-c3aa297054f8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083248Z:17dd8507-6e69-4c14-8a3e-c3aa297054f8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11906" ],
+        "x-ms-correlation-request-id": [ "670030ce-e653-45e5-a79c-d11f107a1260" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034744Z:670030ce-e653-45e5-a79c-d11f107a1260" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:32:48 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:47:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "108" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"31aea857-18d6-4823-899d-88187651e0a5\",\"status\":\"InProgress\",\"startTime\":\"2020-04-01T08:32:33.023Z\"}"
+      "Content": "{\"name\":\"898eb1e7-aa8b-4adb-bb86-4dd77533ea06\",\"status\":\"InProgress\",\"startTime\":\"2020-04-02T03:47:28.573Z\"}"
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/31aea857-18d6-4823-899d-88187651e0a5?api-version=2018-06-01-preview+4": {
+  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/898eb1e7-aa8b-4adb-bb86-4dd77533ea06?api-version=2018-06-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/31aea857-18d6-4823-899d-88187651e0a5?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/898eb1e7-aa8b-4adb-bb86-4dd77533ea06?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "216", "217", "218" ],
-        "x-ms-client-request-id": [ "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991" ],
+        "x-ms-unique-id": [ "169", "170", "171" ],
+        "x-ms-client-request-id": [ "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9" ],
         "CommandName": [ "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer" ],
         "FullCommandName": [ "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -422,31 +422,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "x-ms-request-id": [ "08e72c7c-d005-4714-a185-99645f5d9fdb" ],
+        "x-ms-request-id": [ "15dbadf0-396a-46f8-8e87-6eeb1459f017" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11876" ],
-        "x-ms-correlation-request-id": [ "646461ec-51ee-4090-a27e-600c13b60780" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083303Z:646461ec-51ee-4090-a27e-600c13b60780" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11905" ],
+        "x-ms-correlation-request-id": [ "4c18f46e-e0d4-43a2-b3ae-06c218b49937" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034759Z:4c18f46e-e0d4-43a2-b3ae-06c218b49937" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:33:03 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:47:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "108" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"31aea857-18d6-4823-899d-88187651e0a5\",\"status\":\"InProgress\",\"startTime\":\"2020-04-01T08:32:33.023Z\"}"
+      "Content": "{\"name\":\"898eb1e7-aa8b-4adb-bb86-4dd77533ea06\",\"status\":\"InProgress\",\"startTime\":\"2020-04-02T03:47:28.573Z\"}"
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/31aea857-18d6-4823-899d-88187651e0a5?api-version=2018-06-01-preview+5": {
+  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/898eb1e7-aa8b-4adb-bb86-4dd77533ea06?api-version=2018-06-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/31aea857-18d6-4823-899d-88187651e0a5?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/898eb1e7-aa8b-4adb-bb86-4dd77533ea06?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "216", "217", "218", "219" ],
-        "x-ms-client-request-id": [ "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991" ],
+        "x-ms-unique-id": [ "169", "170", "171", "172" ],
+        "x-ms-client-request-id": [ "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9" ],
         "CommandName": [ "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer" ],
         "FullCommandName": [ "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -462,31 +462,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "x-ms-request-id": [ "1cf7ebc9-5c33-4fd2-bf17-056fc015f69a" ],
+        "x-ms-request-id": [ "05ebaa51-ee25-4a8d-8d3e-c6e2ecf3dd74" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11875" ],
-        "x-ms-correlation-request-id": [ "f77ebbbb-d3ca-4848-b715-a099a223ed8b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083319Z:f77ebbbb-d3ca-4848-b715-a099a223ed8b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11904" ],
+        "x-ms-correlation-request-id": [ "11eb063c-6121-499d-9031-baf399f1acb8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034814Z:11eb063c-6121-499d-9031-baf399f1acb8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:33:18 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:48:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "108" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"31aea857-18d6-4823-899d-88187651e0a5\",\"status\":\"InProgress\",\"startTime\":\"2020-04-01T08:32:33.023Z\"}"
+      "Content": "{\"name\":\"898eb1e7-aa8b-4adb-bb86-4dd77533ea06\",\"status\":\"InProgress\",\"startTime\":\"2020-04-02T03:47:28.573Z\"}"
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/31aea857-18d6-4823-899d-88187651e0a5?api-version=2018-06-01-preview+6": {
+  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/898eb1e7-aa8b-4adb-bb86-4dd77533ea06?api-version=2018-06-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/31aea857-18d6-4823-899d-88187651e0a5?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/898eb1e7-aa8b-4adb-bb86-4dd77533ea06?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "216", "217", "218", "219", "220" ],
-        "x-ms-client-request-id": [ "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991" ],
+        "x-ms-unique-id": [ "169", "170", "171", "172", "173" ],
+        "x-ms-client-request-id": [ "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9" ],
         "CommandName": [ "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer" ],
         "FullCommandName": [ "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -502,31 +502,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "x-ms-request-id": [ "f016cd8e-90ad-4bc4-9430-1d37d2d2fcb9" ],
+        "x-ms-request-id": [ "992fc205-00ee-4d5a-bd5f-6b6a729106d1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11903" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11874" ],
-        "x-ms-correlation-request-id": [ "0b46991a-e6dc-4d1f-a1e6-fdc72140c763" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083334Z:0b46991a-e6dc-4d1f-a1e6-fdc72140c763" ],
+        "x-ms-correlation-request-id": [ "c43e9add-e7d0-47d5-b545-efa735662319" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034830Z:c43e9add-e7d0-47d5-b545-efa735662319" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:33:33 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:48:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"31aea857-18d6-4823-899d-88187651e0a5\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-01T08:32:33.023Z\"}"
+      "Content": "{\"name\":\"898eb1e7-aa8b-4adb-bb86-4dd77533ea06\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-02T03:47:28.573Z\"}"
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/31aea857-18d6-4823-899d-88187651e0a5?api-version=2018-06-01-preview+7": {
+  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/898eb1e7-aa8b-4adb-bb86-4dd77533ea06?api-version=2018-06-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/31aea857-18d6-4823-899d-88187651e0a5?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/898eb1e7-aa8b-4adb-bb86-4dd77533ea06?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "216", "217", "218", "219", "220", "221" ],
-        "x-ms-client-request-id": [ "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991", "2945d3ff-df3a-4321-8436-bdaf204fc991" ],
+        "x-ms-unique-id": [ "169", "170", "171", "172", "173", "174" ],
+        "x-ms-client-request-id": [ "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9", "95a57a83-869a-4f8f-bab6-f47cb491bed9" ],
         "CommandName": [ "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer", "Az.MariaDb.internal\\Restart-AzMariaDbServer" ],
         "FullCommandName": [ "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart", "Restart-AzMariaDbServer_Restart" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -541,14 +541,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "c8564661-0ce4-480a-bcbe-10ddc1927bc2" ],
+        "x-ms-request-id": [ "18af926b-b4af-4aaa-a872-2f14396003ab" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11873" ],
-        "x-ms-correlation-request-id": [ "3f3c4e1d-2703-4f53-8316-d6bafe44cea9" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083334Z:3f3c4e1d-2703-4f53-8316-d6bafe44cea9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11902" ],
+        "x-ms-correlation-request-id": [ "8b66b59d-ff9f-48fc-937b-73c6025c7524" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034831Z:8b66b59d-ff9f-48fc-937b-73c6025c7524" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:33:34 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:48:30 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -557,14 +557,14 @@
       "Content": null
     }
   },
-  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-f4dm0g?api-version=2018-06-01-preview+8": {
+  "Restart-AzMariaDbServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-65t28v?api-version=2018-06-01-preview+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-f4dm0g?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-65t28v?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "222" ],
-        "x-ms-client-request-id": [ "55aa704c-4289-4443-acbd-9059a612f806" ],
+        "x-ms-unique-id": [ "175" ],
+        "x-ms-client-request-id": [ "999816a1-5e77-4dfd-a77f-639589d15572" ],
         "CommandName": [ "Get-AzMariaDbServer" ],
         "FullCommandName": [ "Get-AzMariaDbServer_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -579,21 +579,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "45460204-cc49-498b-916e-cb2e1b166772" ],
+        "x-ms-request-id": [ "f4ab0b78-cc4d-4c94-901d-842705c67061" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11872" ],
-        "x-ms-correlation-request-id": [ "a4969c2f-1b3a-41f3-b02e-fc2a94dcbe6b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T083335Z:a4969c2f-1b3a-41f3-b02e-fc2a94dcbe6b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11901" ],
+        "x-ms-correlation-request-id": [ "10449264-e94c-42ba-9d61-e01aef93e687" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T034831Z:10449264-e94c-42ba-9d61-e01aef93e687" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 08:33:34 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:48:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "927" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"B_Gen5_1\",\"tier\":\"Basic\",\"family\":\"Gen5\",\"capacity\":1},\"properties\":{\"administratorLogin\":\"tqpmoxrabn\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"10.2\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mariadb-test-f4dm0g.mariadb.database.azure.com\",\"earliestRestoreDate\":\"2020-04-01T07:24:55.803+00:00\",\"replicationRole\":\"None\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"infrastructureEncryption\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-f4dm0g\",\"name\":\"mariadb-test-f4dm0g\",\"type\":\"Microsoft.DBforMariaDB/servers\"}"
+      "Content": "{\"sku\":{\"name\":\"B_Gen5_1\",\"tier\":\"Basic\",\"family\":\"Gen5\",\"capacity\":1},\"properties\":{\"administratorLogin\":\"aqdscnrkwf\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"10.2\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mariadb-test-65t28v.mariadb.database.azure.com\",\"earliestRestoreDate\":\"2020-04-02T03:03:25.887+00:00\",\"replicationRole\":\"None\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"infrastructureEncryption\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-65t28v\",\"name\":\"mariadb-test-65t28v\",\"type\":\"Microsoft.DBforMariaDB/servers\"}"
     }
   }
 }
