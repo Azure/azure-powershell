@@ -275,7 +275,7 @@ Describe 'Functions End to End Tests' {
                                              -SubscriptionId $testSubscriptionId
 
             $functionApp.OSType | Should -Be $functionDefinition.OSType
-            $functionApp.RuntimeName | Should -Be $functionDefinition.Runtime
+            $functionApp.Runtime | Should -Be $functionDefinition.Runtime
             $functionApp.ResourceGroupName | Should -Be $functionDefinition.ResourceGroupName
         }
     }
