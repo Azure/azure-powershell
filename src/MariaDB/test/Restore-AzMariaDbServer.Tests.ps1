@@ -13,14 +13,14 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Restore-AzMariaDbServer' {
-    It 'PointInTimeRestore' -skip {
+    It 'PointInTimeRestore' {
         $restoreMariaDbName = $env.rstrgp02 + '-rst01' 
         $restorePointInTime = [datetime]::parse($env.restorePointInTime)
         Restore-AzMariaDBServer -Name $restoreMariaDbName -ServerName $env.rstrgp02 -ResourceGroupName $env.ResourceGroup -UsePointInTimeRestore -RestorePointInTime $restorePointInTime -Location $env.Location
         $restoreMariaDb = Get-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup
         $restoreMariaDb.Name | Should -Be $restoreMariaDbName
     }
-    It 'PointInTimeRestoreServerObject' -skip {
+    It 'PointInTimeRestoreServerObject' {
         $restoreMariaDbName = $env.rstrgp02 +'-rst02'
         $restorePointInTime = [datetime]::parse($env.restorePointInTime)
         $mariadb = Get-AzMariaDbServer -ResourceGroupName $env.ResourceGroup -Name $env.rstrgp02
@@ -28,7 +28,7 @@ Describe 'Restore-AzMariaDbServer' {
         $restoreMariaDb = Get-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup
         $restoreMariaDb.Name | Should -Be $restoreMariaDbName
     }
-    It 'GeoRestore' {
+    It 'GeoRestore' -skip {
         $adminLoginPasswordSecure =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force
         $dbname = $env.rstrgp02 + 'new01'
         New-AzMariaDbServer -Name $dbname -ResourceGroupName $env.ResourceGroup -Sku 'GP_Gen5_4' -StorageProfileGeoRedundantBackup Enabled -Location $env.Location -AdministratorUsername $env.AdminLogin -AdministratorLoginPassword $adminLoginPasswordSecure
@@ -40,7 +40,7 @@ Describe 'Restore-AzMariaDbServer' {
         $geoMariaDb = Get-AzMariaDBServer -Name $geoMariaDbName -ResourceGroupName $env.ResourceGroup
         $geoMariaDb.Name | Should -Be $geoMariaDbName
     }
-    It 'GeoRestoreServerObject' {
+    It 'GeoRestoreServerObject' -skip {
         $adminLoginPasswordSecure =  ConvertTo-SecureString $env.AdminLoginPassword -AsPlainText -Force
         $dbname = $env.rstrgp02 + 'new02'
         New-AzMariaDbServer -Name $dbname -ResourceGroupName $env.ResourceGroup -Sku 'GP_Gen5_4' -StorageProfileGeoRedundantBackup Enabled -Location $env.Location -AdministratorUsername $env.AdminLogin -AdministratorLoginPassword $adminLoginPasswordSecure
