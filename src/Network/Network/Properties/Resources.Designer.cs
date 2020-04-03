@@ -554,7 +554,29 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ExpressRouteGatewayRequiredToCreateExpressRouteConnection", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
+        /// </summary>
+        internal static string ExpressRoutePrivatePeeringNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("ExpressRoutePrivatePeeringNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
+        /// </summary>
+        internal static string ExpressRouteCircuitConnectionNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("ExpressRouteCircuitConnectionNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to The hub virtual network connection to modify could not be found..
         /// </summary>

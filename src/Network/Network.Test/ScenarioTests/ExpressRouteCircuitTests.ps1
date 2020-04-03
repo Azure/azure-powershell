@@ -537,7 +537,6 @@ function Test-ExpressRouteCircuitConnectionCRUD
     $connectionName = Get-ResourceName
     $addressPrefix = "30.0.0.0/29"
 	
-
 	try
 	{
         # Create the resource group
@@ -680,6 +679,455 @@ function Test-ExpressRouteCircuitConnectionCRUD
 	}
 }
 
+
+<#
+.SYNOPSIS
+Tests ExpressRouteCircuitConnectionCRUD.
+#>
+function Test-ExpressRouteCircuitConnectionIPv6CRUD
+{
+    
+    #Generate random names for testing
+	$initCircuitName = Get-ResourceName
+
+    $rgname = Get-ResourceGroupName
+    $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
+
+    $rglocation = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    $primaryPeerAddressPrefix = "192.168.16.252/30"
+    $secondaryPeerAddressPrefix` = "192.168.18.252/30"
+
+    $primaryPeerAddressPrefixV6 = "aa:bb:cc::/126"
+    $secondaryPeerAddressPrefixV6 = "bb:cc:dd::/126"
+
+    #$peeringLocation = ""
+    $peeringLocation = "Boydton 1 dc"
+    $serviceProviderName = "bvtazureixp01"
+
+	try
+	{
+
+        # Use subscription
+        # 
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+    
+        # Create the initiating ExpressRouteCircuit with peering
+        $initpeering = New-AzExpressRouteCircuitPeeringConfig `
+        -Name AzurePrivatePeering `
+        -PeeringType AzurePrivatePeering `
+        -PeerASN 100 `
+        -PrimaryPeerAddressPrefix $primaryPeerAddressPrefix `
+        -SecondaryPeerAddressPrefix $secondaryPeerAddressPrefix `
+        -VlanId 22
+
+        $initCkt = New-AzExpressRouteCircuit `
+        -Name $initCircuitName `
+        -Location $rglocation `
+        -ResourceGroupName $rgname `
+        -SkuTier Standard `
+        -SkuFamily MeteredData `
+        -ServiceProviderName $serviceProviderName `
+        -PeeringLocation $peeringLocation `
+        -BandwidthInMbps 1000 `
+        -Peering $initpeering
+		
+
+        #Get Express Route Circuit Resource
+		$initCkt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
+		$initCkt
+
+        #verification
+        Assert-AreEqual $rgName $initCkt.ResourceGroupName
+        Assert-AreEqual $initCircuitName $initCkt.Name
+        Assert-NotNull $initCkt.Location
+        Assert-NotNull $initCkt.Etag
+        Assert-AreEqual 1 @($initCkt.Peerings).Count
+        Assert-AreEqual "Standard_MeteredData" $initCkt.Sku.Name
+        Assert-AreEqual "Standard" $initCkt.Sku.Tier
+        Assert-AreEqual "MeteredData" $initCkt.Sku.Family
+        Assert-AreEqual $serviceProviderName $initCkt.ServiceProviderProperties.ServiceProviderName
+        Assert-AreEqual $peeringLocation $initCkt.ServiceProviderProperties.PeeringLocation
+        Assert-AreEqual "1000" $initCkt.ServiceProviderProperties.BandwidthInMbps
+
+
+        #Create Peer Circuit
+
+        $peerPrimaryPeerAddressPrefix = "192.168.26.252/30"
+        $peerSecondaryPeerAddressPrefix` = "192.168.28.252/30"
+
+        $peerPrimaryPeerAddressPrefixV6 = "bb:cc::/126"
+		$peerSecondaryPeerAddressPrefixV6 = "bb:cd::/126"
+
+		$peerPeeringLocation = "Boydton cbn"
+		$peerServiceProviderName = "bvtazureixp01"
+
+        $peerCircuitName = Get-ResourceName
+          # Create the initiating ExpressRouteCircuit with peering
+        $peerCircuitPeering = New-AzExpressRouteCircuitPeeringConfig `
+        -Name AzurePrivatePeering `
+        -PeeringType AzurePrivatePeering `
+        -PeerASN 100 `
+        -PrimaryPeerAddressPrefix $peerPrimaryPeerAddressPrefix `
+        -SecondaryPeerAddressPrefix $peerSecondaryPeerAddressPrefix `
+        -VlanId 22
+
+        $peerCkt = New-AzExpressRouteCircuit `
+        -Name $peerCircuitName `
+        -Location $rglocation `
+        -ResourceGroupName $rgname `
+        -SkuTier Standard `
+        -SkuFamily MeteredData `
+        -ServiceProviderName $peerServiceProviderName `
+        -PeeringLocation $peerPeeringLocation `
+        -BandwidthInMbps 1000 `
+        -Peering $peerCircuitPeering
+		
+        #Get Peer Express Route Circuit Resource
+
+		$peerCkt = Get-AzExpressRouteCircuit -Name $peerCircuitName -ResourceGroupName $rgname
+		$peerckt
+
+        #verification
+        Assert-AreEqual $rgName $peerCkt.ResourceGroupName
+        Assert-AreEqual $peerCircuitName $peerCkt.Name
+        Assert-NotNull $peerCkt.Location
+        Assert-NotNull $peerCkt.Etag
+        Assert-AreEqual 1 @($peerCkt.Peerings).Count
+        Assert-AreEqual "Standard_MeteredData" $peerCkt.Sku.Name
+        Assert-AreEqual "Standard" $peerCkt.Sku.Tier
+        Assert-AreEqual "MeteredData" $peerCkt.Sku.Family
+        Assert-AreEqual $peerServiceProviderName $peerCkt.ServiceProviderProperties.ServiceProviderName
+        Assert-AreEqual $peerPeeringLocation $peerCkt.ServiceProviderProperties.PeeringLocation
+        Assert-AreEqual "1000" $peerCkt.ServiceProviderProperties.BandwidthInMbps
+   
+       $connectionName = Get-ResourceName
+
+        $addressPrefix = "10.1.1.0/29"
+        $addressPrefixv6 = "cc:dd::1/125"
+
+   		Add-AzExpressRouteCircuitConnectionConfig `
+        -Name $connectionName `
+        -ExpressRouteCircuit $initCkt `
+        -PeerExpressRouteCircuitPeering $peerCkt.Peerings[0].Id `
+        -AddressPrefix $addressPrefix `
+        -AuthorizationKey test
+
+        #Create IPv6 Peering
+        Set-AzExpressRouteCircuitConnectionConfig `
+        -Name $connectionName `
+        -ExpressRouteCircuit $initCkt `
+        -PeerExpressRouteCircuitPeering $peerCkt.Peerings[0].Id `
+        -AddressPrefix $addressPrefixv6 `
+        -AddressPrefixType IPv6
+
+        Set-AzExpressRouteCircuit -ExpressRouteCircuit $initCkt
+
+
+		$initCkt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
+        $initCkt
+        #Verify Circuit Connection fields
+		Assert-AreEqual $connectionName $initCkt.Peerings[0].Connections[0].Name
+		Assert-AreEqual "Succeeded" $initCkt.Peerings[0].Connections[0].ProvisioningState
+		Assert-AreEqual "Connected" $initCkt.Peerings[0].Connections[0].CircuitConnectionStatus
+        Assert-AreEqual 1 $initCkt.Peerings[0].Connections.Count
+
+        Assert-AreEqual "Connected" $initCkt.Peerings[0].Connections[0].IPv6CircuitConnectionConfig.CircuitConnectionStatus
+        Assert-AreEqual $addressPrefixv6 $initCkt.Peerings[0].Connections[0].IPv6CircuitConnectionConfig.AddressPrefix
+
+		#Get Express Route Circuit Resource
+		$initCkt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
+
+		#Verify Global reach enabled readonly flag
+		Assert-AreEqual $true $initCkt.GlobalReachEnabled
+
+        $connection = Get-AzExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initCkt
+		Assert-AreEqual $connectionName $connection.Name
+		Assert-AreEqual "Succeeded" $connection.ProvisioningState
+		Assert-AreEqual "Connected" $connection.CircuitConnectionStatus
+
+        Assert-AreEqual $addressPrefixv6 $connection.IPv6CircuitConnectionConfig.AddressPrefix
+        Assert-AreEqual "Connected" $connection.IPv6CircuitConnectionConfig.CircuitConnectionStatus
+
+        $connections = Get-AzExpressRouteCircuitConnectionConfig -ExpressRouteCircuit $initCkt
+        Assert-NotNull $connections
+        Assert-AreEqual 1 $connections.Count
+
+		$peerCkt = Get-AzExpressRouteCircuit -Name $peerCircuitName -ResourceGroupName $rgname
+
+		#Verify Global reach enabled readonly flag in peer circuit
+		Assert-AreEqual $true $peerCkt.GlobalReachEnabled
+        
+		#Verify Peer Circuit Connection fields
+		Assert-AreEqual 1 $peerCkt.Peerings[0].PeeredConnections.Count
+		Assert-AreEqual $initCkt.ServiceKey $peerCkt.Peerings[0].PeeredConnections[0].Name
+		Assert-AreEqual $connectionName $peerCkt.Peerings[0].PeeredConnections[0].ConnectionName
+		Assert-AreEqual "Succeeded" $peerCkt.Peerings[0].PeeredConnections[0].ProvisioningState
+		Assert-AreEqual "Connected" $peerCkt.Peerings[0].PeeredConnections[0].CircuitConnectionStatus
+
+		#Delete the circuit connection Resource
+		Remove-AzExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initCkt
+
+        #Set on Express Route Circuit
+		Set-AzExpressRouteCircuit -ExpressRouteCircuit $initCkt
+
+		#Get Express Route Circuit Resource
+		$initCkt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
+		$initCkt
+
+		#Verify Global reach enabled readonly flag
+		Assert-AreEqual $false $initckt.GlobalReachEnabled
+
+		#Verify Circuit Connection does not exist
+		Assert-AreEqual 0 $initckt.Peerings[0].Connections.Count
+
+		#Get peer Express Route Circuit Resource
+		$peerckt = Get-AzExpressRouteCircuit -Name $peerCircuitName -ResourceGroupName $rgname
+
+		#Verify Global reach enabled readonly flag in peer circuit
+		Assert-AreEqual $false $peerckt.GlobalReachEnabled
+
+		#Verify peer Circuit Connection does not exist
+		Assert-AreEqual 0 $peerckt.Peerings[0].PeeredConnections.Count
+
+        #Test Deletion
+        Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $initckt -Name AzurePrivatePeering
+        $initckt = Set-AzExpressRouteCircuit -ExpressRouteCircuit $initckt
+
+        Assert-ThrowsLike { Get-AzExpressRouteCircuitConnectionConfig -ExpressRouteCircuit $initckt } "*does not exist*"
+        Assert-ThrowsLike { Add-AzExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initckt -PeerExpressRouteCircuitPeering $peerckt.Peerings[0].Id -AddressPrefix $addressPrefix } "*needs to be configured*"
+        Assert-ThrowsLike { Remove-AzExpressRouteCircuitConnectionConfig -ExpressRouteCircuit $initckt -Name $connectionName } "*does not exist*"
+
+        # Delete Circuits
+        $deleteinit = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -name $initCircuitName -PassThru -Force
+        Assert-AreEqual true $deleteinit
+
+        $deletepeer = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -name $peerCircuitName -PassThru -Force
+        Assert-AreEqual true $deletepeer
+		    
+        $list = Get-AzExpressRouteCircuit -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count	
+    
+	}
+	finally
+	{
+	# Cleanup
+     Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Tests ExpressRoute Global Reach creation over IPv6 peering.
+With Precreated circuits
+#>
+function Test-ExpressRouteCircuitConnectionIPv6PrecreatedCRUD
+{
+    $connectionName = Get-ResourceName
+    #initCircuitName
+    <#
+    For global reach the connections need to be in Provisioned State.
+    #>
+
+    $initCircuitName = "ParentCircuit";
+    $rgName = "DO_NOT_DEL_UT_GR_RG";
+    $rglocation = "North Europe"
+
+
+    $serviceProviderName = "Equinix";
+    $peeringLocation = "London";
+    try{
+
+        #Get Init Circuit
+        <#
+        Dump circuit information output :
+        ================================================================================================
+        SUBSCRIPTION ID: b25d654b-d9d2-4ad8-9982-32e84af77698
+        SERVICE KEY: 1838cbc7-83fa-42ad-8176-ad26ae55238d
+        CIRCUIT NAME: ParentCircuit
+        CIRCUIT LOCATION: London
+        GATEWAY MANAGER REGION: North Europe
+        GATEWAY MANAGER REGION MONIKER: DB
+        CIRCUIT SKU: Standard
+        BANDWIDTH: 1000
+        BILLING TYPE: MeteredData
+        PRIMARY DEVICE: lon31-09xgmr-cis-1
+        SECONDARY DEVICE: lon31-09xgmr-cis-2
+        SERVICE PROVIDER: Equinix
+        CIRCUIT STATE: Enabled
+        NRP RESOURCE URI: https://northeurope.network.azure.com/subscriptions/b25d654b-d9d2-4ad8-9982-32e84af77698/resourceGroups/DO_NOT_DEL_UT_GR_RG/providers/Microsoft.Network/expressRouteCircuits/ParentCircuit
+        #>
+
+        $initCkt =  Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
+        Assert-AreEqual $rgName $initCkt.ResourceGroupName
+        Assert-AreEqual $initCircuitName $initCkt.Name
+        Assert-NotNull $initCkt.Location
+        Assert-NotNull $initCkt.Etag
+        Assert-AreEqual 1 @($initCkt.Peerings).Count
+        Assert-AreEqual "Standard_MeteredData" $initCkt.Sku.Name
+        Assert-AreEqual "Standard" $initCkt.Sku.Tier
+        Assert-AreEqual "MeteredData" $initCkt.Sku.Family
+        Assert-AreEqual $serviceProviderName $initCkt.ServiceProviderProperties.ServiceProviderName
+        Assert-AreEqual $peeringLocation $initCkt.ServiceProviderProperties.PeeringLocation
+        Assert-AreEqual "1000" $initCkt.ServiceProviderProperties.BandwidthInMbps
+
+        #Get PeerCircuit
+        <#
+        Dump circuit information output :
+        ================================================================================================
+        SUBSCRIPTION ID: b25d654b-d9d2-4ad8-9982-32e84af77698
+        SERVICE KEY: 5c3ce1c3-8bbf-47b7-9b0c-97348adf3ec2
+        CIRCUIT NAME: PeerCircuit
+        CIRCUIT LOCATION: London2
+        GATEWAY MANAGER REGION: UK South
+        GATEWAY MANAGER REGION MONIKER: LN
+        CIRCUIT SKU: Standard
+        BANDWIDTH: 1000
+        BILLING TYPE: MeteredData
+        ALLOW GLOBAL REACH: False
+        PRIMARY DEVICE: lon32-06gmr-cis-1
+        SECONDARY DEVICE: lon32-06gmr-cis-2
+        SERVICE PROVIDER: Equinix
+        CIRCUIT STATE: Enabled
+        NRP RESOURCE URI: https://northeurope.network.azure.com/subscriptions/b25d654b-d9d2-4ad8-9982-32e84af77698/resourceGroups/DO_NOT_DEL_UT_GR_RG/providers/Microsoft.Network/expressRouteCircuits/PeerCircuit
+        #>
+
+        $peerServiceProviderName = "Equinix"
+        $peerPeeringLocation = "London2"
+        $peerCircuitName = "PeerCircuit";
+
+        $peerCkt = Get-AzExpressRouteCircuit -Name $peerCircuitName -ResourceGroupName $rgname
+
+          #verification
+        Assert-AreEqual $rgName $peerCkt.ResourceGroupName
+        Assert-AreEqual $peerCircuitName $peerCkt.Name
+        Assert-NotNull $peerCkt.Location
+        Assert-NotNull $peerCkt.Etag
+        Assert-AreEqual 1 @($peerCkt.Peerings).Count
+        Assert-AreEqual "Standard_MeteredData" $peerCkt.Sku.Name
+        Assert-AreEqual "Standard" $peerCkt.Sku.Tier
+        Assert-AreEqual "MeteredData" $peerCkt.Sku.Family
+        Assert-AreEqual $peerServiceProviderName $peerCkt.ServiceProviderProperties.ServiceProviderName
+        Assert-AreEqual $peerPeeringLocation $peerCkt.ServiceProviderProperties.PeeringLocation
+        Assert-AreEqual "1000" $peerCkt.ServiceProviderProperties.BandwidthInMbps
+
+        #Create Global Reach
+        $connectionName = Get-ResourceName
+
+        $addressPrefix = "10.1.1.0/29"
+        $addressPrefixv6 = "cc:dd::1/125"
+
+   		Add-AzExpressRouteCircuitConnectionConfig `
+        -Name $connectionName `
+        -ExpressRouteCircuit $initCkt `
+        -PeerExpressRouteCircuitPeering $peerCkt.Peerings[0].Id `
+        -AddressPrefix $addressPrefix `
+        -AuthorizationKey test
+
+        #Create IPv6 Peering
+        Set-AzExpressRouteCircuitConnectionConfig `
+        -Name $connectionName `
+        -ExpressRouteCircuit $initCkt `
+        -PeerExpressRouteCircuitPeering $peerCkt.Peerings[0].Id `
+        -AddressPrefix $addressPrefixv6 `
+        -AddressPrefixType IPv6
+
+        Set-AzExpressRouteCircuit -ExpressRouteCircuit $initCkt
+
+
+		$initCkt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
+        $initCkt
+        #Verify Circuit Connection fields
+		Assert-AreEqual $connectionName $initCkt.Peerings[0].Connections[0].Name
+		Assert-AreEqual "Succeeded" $initCkt.Peerings[0].Connections[0].ProvisioningState
+		Assert-AreEqual "Connected" $initCkt.Peerings[0].Connections[0].CircuitConnectionStatus
+        Assert-AreEqual 1 $initCkt.Peerings[0].Connections.Count
+
+        Assert-AreEqual "Connected" $initCkt.Peerings[0].Connections[0].IPv6CircuitConnectionConfig.CircuitConnectionStatus
+        Assert-AreEqual $addressPrefixv6 $initCkt.Peerings[0].Connections[0].IPv6CircuitConnectionConfig.AddressPrefix
+
+		#Get Express Route Circuit Resource
+		$initCkt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
+
+		#Verify Global reach enabled readonly flag
+		Assert-AreEqual $true $initCkt.GlobalReachEnabled
+
+        $connection = Get-AzExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initCkt
+		Assert-AreEqual $connectionName $connection.Name
+		Assert-AreEqual "Succeeded" $connection.ProvisioningState
+		Assert-AreEqual "Connected" $connection.CircuitConnectionStatus
+
+        Assert-AreEqual $addressPrefixv6 $connection.IPv6CircuitConnectionConfig.AddressPrefix
+        Assert-AreEqual "Connected" $connection.IPv6CircuitConnectionConfig.CircuitConnectionStatus
+
+        $connections = Get-AzExpressRouteCircuitConnectionConfig -ExpressRouteCircuit $initCkt
+        Assert-NotNull $connections
+        Assert-AreEqual 1 $connections.Count
+
+		$peerCkt = Get-AzExpressRouteCircuit -Name $peerCircuitName -ResourceGroupName $rgname
+
+		#Verify Global reach enabled readonly flag in peer circuit
+		Assert-AreEqual $true $peerCkt.GlobalReachEnabled
+
+        <#
+		#Verify Peer Circuit Connection fields
+		Assert-AreEqual 1 $peerCkt.Peerings[0].PeeredConnections.Count
+		Assert-AreEqual $initCkt.ServiceKey $peerCkt.Peerings[0].PeeredConnections[0].Name
+		Assert-AreEqual $connectionName $peerCkt.Peerings[0].PeeredConnections[0].ConnectionName
+		Assert-AreEqual "Succeeded" $peerCkt.Peerings[0].PeeredConnections[0].ProvisioningState
+		Assert-AreEqual "Connected" $peerCkt.Peerings[0].PeeredConnections[0].CircuitConnectionStatus
+        Assert-AreEqual "Test"  "1"
+        #>
+
+		#Delete the circuit connection Resource
+		Remove-AzExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initCkt
+
+        #Set on Express Route Circuit
+		Set-AzExpressRouteCircuit -ExpressRouteCircuit $initCkt
+
+		#Get Express Route Circuit Resource
+		$initCkt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
+		$initCkt
+
+		#Verify Global reach enabled readonly flag
+		Assert-AreEqual $false $initckt.GlobalReachEnabled
+
+		#Verify Circuit Connection does not exist
+		Assert-AreEqual 0 $initckt.Peerings[0].Connections.Count
+
+		#Get peer Express Route Circuit Resource
+		$peerckt = Get-AzExpressRouteCircuit -Name $peerCircuitName -ResourceGroupName $rgname
+
+		#Verify Global reach enabled readonly flag in peer circuit
+		Assert-AreEqual $false $peerckt.GlobalReachEnabled
+
+		#Verify peer Circuit Connection does not exist
+		Assert-AreEqual 0 $peerckt.Peerings[0].PeeredConnections.Count
+
+    }
+    finally
+    {
+    
+        #Cleanup
+    	$initckt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
+		$initckt
+
+        $connections = Get-AzExpressRouteCircuitConnectionConfig -ExpressRouteCircuit $initCkt
+
+        if($connections.Count -ge 1)
+        {
+            foreach($connection in $connections)
+            {
+		        Remove-AzExpressRouteCircuitConnectionConfig -Name $connection.Name -ExpressRouteCircuit $initCkt
+            }
+
+	        Set-AzExpressRouteCircuit -ExpressRouteCircuit $initCkt  
+        }
+       
+    }
+    
+}
 <#
 .SYNOPSIS
 Tests ExpressRouteCircuit Peering with RouteFilter
