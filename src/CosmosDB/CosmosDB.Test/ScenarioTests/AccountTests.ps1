@@ -167,3 +167,11 @@ function Test-AccountRelatedCmdletsUsingObject
   $IsAccountDeleted = Remove-AzCosmosDBAccount -InputObject $cosmosDBAccount -PassThru
   Assert-AreEqual $IsAccountDeleted true
 }
+
+function Test-AddRegionOperation
+{
+    $rgName = "CosmosDBResourceGroup2510"
+    $accountName = "db1002"
+
+    Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $accountName -Location "EASTUS"
+}
