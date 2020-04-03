@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
     {
 
         private static IDictionary<string, string> _apiVersions = new Dictionary<string, string>{
-            {"microsoft.sql/servers", "2018-06-01-preview"}
+            {"Microsoft.Sql/servers".ToLower(), "2018-06-01-preview"},
+            {"Microsoft.Storage/storageAccounts".ToLower(), "2019-06-01"}
         };
 
         #region Constructor
