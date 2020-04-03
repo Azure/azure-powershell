@@ -362,7 +362,7 @@ function New-AzFunctionApp {
 
             # If plan is not consumption or elastic premium, set always on
             $planIsElasticPremium = $servicePlan.SkuTier -eq 'ElasticPremium'
-            if ((-not $consumptionPlan) -and $planIsElasticPremium)
+            if ((-not $consumptionPlan) -and (-not $planIsElasticPremium))
             {
                 $siteCofig.AlwaysOn = $true
             }
