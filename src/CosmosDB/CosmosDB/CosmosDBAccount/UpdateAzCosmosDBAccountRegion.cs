@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     foreach (string location in Location)
                     {
-                        locations.Add(new Location(location));
+                        locations.Add(new Location(locationName: location));
                     }
                 }
                 if (LocationObject != null && LocationObject.Length > 0)
