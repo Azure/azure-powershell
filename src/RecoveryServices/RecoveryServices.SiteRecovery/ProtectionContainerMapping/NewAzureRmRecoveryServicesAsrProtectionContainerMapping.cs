@@ -36,6 +36,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.VMwareCbt,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -50,6 +53,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = true,
             ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.VMwareCbt,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRPolicy Policy { get; set; }
 
@@ -63,6 +69,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.VMwareCbt,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionContainer PrimaryProtectionContainer { get; set; }
 
@@ -75,6 +84,60 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionContainer RecoveryProtectionContainer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target key vault ARM Id for VmwareCbt.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.VMwareCbt,
+            Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target key vault URL for VmwareCbt.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.VMwareCbt,
+            Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultUri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the storage account ARM Id for VmwareCbt.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.VMwareCbt,
+            Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string StorageAccountId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secret name of the storage account for VmwareCbt.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.VMwareCbt,
+            Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string StorageAccountSasSecretName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secret name of the service bus connection string.
+        /// </summary>
+        [Parameter(
+           ParameterSetName = ASRParameterSets.VMwareCbt,
+           Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string ServiceBusConnectionStringSecretName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target location for VmwareCbt.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.VMwareCbt,
+            Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string TargetLocation { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -94,6 +157,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         break;
                     case ASRParameterSets.EnterpriseToEnterprise:
                         this.A2AE2EAndVMwareToVMwareAssociation();
+                        break;
+                    case ASRParameterSets.VMwareCbt:
+                        this.VMwareCbtAssociation();
                         break;
                 }
             }
@@ -124,6 +190,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
                 PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+            this.WriteObject(new ASRJob(jobResponse));
+        }
+
+        /// <summary>
+        ///    VMwareCbt Helper to configure cloud
+        /// </summary>
+        private void VMwareCbtAssociate(
+            string targetProtectionContainerId)
+        {
+            var vmwareCbtContainerMappingInput = new VMwareCbtContainerMappingInput
+            {
+                KeyVaultId = this.KeyVaultId,
+                KeyVaultUri = this.KeyVaultUri,
+                StorageAccountId = this.StorageAccountId,
+                ServiceBusConnectionStringSecretName = this.ServiceBusConnectionStringSecretName,
+                StorageAccountSasSecretName = this.StorageAccountSasSecretName,
+                TargetLocation = this.TargetLocation
+            };
+
+            var inputProperties = new CreateProtectionContainerMappingInputProperties
+            {
+                PolicyId = this.Policy.ID,
+                ProviderSpecificInput = vmwareCbtContainerMappingInput,
+                TargetProtectionContainerId = targetProtectionContainerId
+            };
+
+            var input = new CreateProtectionContainerMappingInput { Properties = inputProperties };
+
+            var response = this.RecoveryServicesClient.ConfigureProtection(
+                Utilities.GetValueFromArmId(
+                    this.PrimaryProtectionContainer.ID,
+                    ARMResourceTypeConstants.ReplicationFabrics),
+                this.PrimaryProtectionContainer.Name,
+                this.Name,
+                input);
+
+           var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+               PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
             this.WriteObject(new ASRJob(jobResponse));
         }
@@ -186,6 +291,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
 
             this.Associate(this.RecoveryProtectionContainer.ID);
+        }
+
+        /// <summary>
+        ///     Associates Policy with VMwareV2 protection containers
+        /// </summary>
+        private void VMwareCbtAssociation()
+        {
+            if (string.Compare(
+                    this.Policy.ReplicationProvider,
+                    Constants.VMwareCbt,
+                    StringComparison.OrdinalIgnoreCase) !=
+                0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.IncorrectReplicationProvider,
+                        this.Policy.ReplicationProvider));
+            }
+
+            this.VMwareCbtAssociate(Constants.AzureContainer);
         }
     }
 }

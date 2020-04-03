@@ -34,6 +34,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter Azure { get; set; }
 
         /// <summary>
+        ///    Switch parameter indicates creation of Vmware cbt fabric.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareCbt, Mandatory = true)]
+        public SwitchParameter VMwareCbt { get; set; }
+
+        /// <summary>
         ///     Gets or sets the name of the Azure Site Recovery Fabric.
         /// </summary>
         [Parameter(
@@ -41,6 +47,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             HelpMessage = "Name of the fabric to be created")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the ARM Id of the VMware site.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.VMwareCbt,
+            Mandatory = true,
+            HelpMessage = "ARM Id of the VMware site")]
+        [ValidateNotNullOrEmpty]
+        public string VMwareSiteId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the ARM Id of the migration solution.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.VMwareCbt,
+            Mandatory = true,
+            HelpMessage = "ARM Id of the migration solution")]
+        [ValidateNotNullOrEmpty]
+        public string MigrationSolutionId { get; set; }
 
         /// <summary>
         ///     Gets or Sets the Azure Site Recovery Fabric Type.
@@ -80,6 +106,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         input.Properties.CustomDetails = new AzureFabricCreationInput()
                         {
                             Location = this.Location
+                        };
+                        break;
+
+                    case ASRParameterSets.VMwareCbt:
+
+                        input.Properties.CustomDetails = new VMwareV2FabricCreationInput()
+                        {
+                            VmwareSiteId = this.VMwareSiteId,
+                            MigrationSolutionId = this.MigrationSolutionId
                         };
                         break;
 

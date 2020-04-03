@@ -1,0 +1,950 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "33b1c4ec-8a47-4818-a93d-866f4149eb0b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.2.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "89c4ec7c-09f7-46ec-bbbb-368c7d03bdf6"
+        ],
+        "x-ms-client-request-id": [
+          "33b1c4ec-8a47-4818-a93d-866f4149eb0b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "89c4ec7c-09f7-46ec-bbbb-368c7d03bdf6"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T100903Z:89c4ec7c-09f7-46ec-bbbb-368c7d03bdf6"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 10:09:03 GMT"
+        ],
+        "Content-Length": [
+          "496"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"centralus\",\r\n      \"name\": \"vijami-mig-proj2e89rsvault\",\r\n      \"etag\": \"W/\\\"datetime'2020-03-03T09%3A01%3A09.90723Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uRmFicmljcz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c1012dc2-4e20-4716-a0fb-cdda8a04f54a-2020-04-02 10:09:03Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585818543807)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586423343807)\\/\",\"ClientRequestId\":\"c1012dc2-4e20-4716-a0fb-cdda8a04f54a-2020-04-02 10:09:03Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"kX46aDm+G69dyzIYrtiCZlCd3f+V0aplfhVFvGY/a80=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "c1012dc2-4e20-4716-a0fb-cdda8a04f54a-2020-04-02 10:09:03Z-Ps 4/2/2020 10:09:04 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "c1012dc2-4e20-4716-a0fb-cdda8a04f54a-2020-04-02 10:09:03Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "e0971f43-870d-4abf-b48f-2c75d1d8c036"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T100904Z:e0971f43-870d-4abf-b48f-2c75d1d8c036"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 10:09:04 GMT"
+        ],
+        "Content-Length": [
+          "1364"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"vijamiMig-lat29ddreplicationfabric\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"vijamiMig-lat29ddreplicationfabric\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"ad2d3055-6dfe-5445-8d85-7acbeb6f3952\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"VMwareV2\",\r\n          \"vmwareSiteId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.OffAzure/VMwareSites/vijamiMig-lat29ddsite\",\r\n          \"physicalSiteId\": null,\r\n          \"migrationSolutionId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.Migrate/MigrateProjects/vijami-mig-proj/Solutions/Servers-Migration-ServerMigration\",\r\n          \"srsServiceEndpoint\": \"https://pod01-srs1.cus.hypervrecoverymanager.windowsazure.com\",\r\n          \"serviceEndpoint\": \"https://pod01-srs1.cus.hypervrecoverymanager.windowsazure.com\",\r\n          \"serviceResourceId\": \"70701616594027520\",\r\n          \"serviceContainerId\": \"26079271263094\",\r\n          \"processServers\": []\r\n        },\r\n        \"healthErrorDetails\": [],\r\n        \"health\": \"Normal\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uRmFicmljcy92aWphbWlNaWctbGF0MjlkZHJlcGxpY2F0aW9uZmFicmljP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ed4cefa2-0e2e-4d59-916c-9fd73394d8af-2020-04-02 10:09:04Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585818544307)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586423344307)\\/\",\"ClientRequestId\":\"ed4cefa2-0e2e-4d59-916c-9fd73394d8af-2020-04-02 10:09:04Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"eNiy9DS0+XjNAd05XpWHFLqkxTe8ln9hhm5UH4zDyV0=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "ed4cefa2-0e2e-4d59-916c-9fd73394d8af-2020-04-02 10:09:04Z-Ps 4/2/2020 10:09:04 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "ed4cefa2-0e2e-4d59-916c-9fd73394d8af-2020-04-02 10:09:04Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "95244398-5119-4c66-b167-731735427f37"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T100904Z:95244398-5119-4c66-b167-731735427f37"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 10:09:04 GMT"
+        ],
+        "Content-Length": [
+          "1336"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"vijamiMig-lat29ddreplicationfabric\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"vijamiMig-lat29ddreplicationfabric\",\r\n    \"encryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"rolloverEncryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"internalIdentifier\": \"ad2d3055-6dfe-5445-8d85-7acbeb6f3952\",\r\n    \"bcdrState\": \"Valid\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"VMwareV2\",\r\n      \"vmwareSiteId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.OffAzure/VMwareSites/vijamiMig-lat29ddsite\",\r\n      \"physicalSiteId\": null,\r\n      \"migrationSolutionId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.Migrate/MigrateProjects/vijami-mig-proj/Solutions/Servers-Migration-ServerMigration\",\r\n      \"srsServiceEndpoint\": \"https://pod01-srs1.cus.hypervrecoverymanager.windowsazure.com\",\r\n      \"serviceEndpoint\": \"https://pod01-srs1.cus.hypervrecoverymanager.windowsazure.com\",\r\n      \"serviceResourceId\": \"70701616594027520\",\r\n      \"serviceContainerId\": \"26079271263094\",\r\n      \"processServers\": []\r\n    },\r\n    \"healthErrorDetails\": [],\r\n    \"health\": \"Normal\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uRmFicmljcy92aWphbWlNaWctbGF0MjlkZHJlcGxpY2F0aW9uZmFicmljL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bb166651-5552-447d-b48d-995007d3c642-2020-04-02 10:09:04Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585818544680)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586423344680)\\/\",\"ClientRequestId\":\"bb166651-5552-447d-b48d-995007d3c642-2020-04-02 10:09:04Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"J+vtS/ymlEp2MJDIT6s8tPzRpSOxmywWkhbz0xhKmYg=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11987"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "bb166651-5552-447d-b48d-995007d3c642-2020-04-02 10:09:04Z-Ps 4/2/2020 10:09:04 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "bb166651-5552-447d-b48d-995007d3c642-2020-04-02 10:09:04Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "4ff297ef-fda1-48ee-889c-9eb3db210d3f"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T100905Z:4ff297ef-fda1-48ee-889c-9eb3db210d3f"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 10:09:04 GMT"
+        ],
+        "Content-Length": [
+          "695"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers/vijamiMig-lat29ddreplicationcontainer\",\r\n      \"name\": \"vijamiMig-lat29ddreplicationcontainer\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\r\n      \"properties\": {\r\n        \"fabricFriendlyName\": \"vijamiMig-lat29ddreplicationfabric\",\r\n        \"friendlyName\": \"vijamiMig-lat29ddreplicationcontainer\",\r\n        \"fabricType\": \"VMwareV2\",\r\n        \"protectedItemCount\": 0,\r\n        \"pairingStatus\": \"Paired\",\r\n        \"role\": \"Primary\",\r\n        \"fabricSpecificDetails\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uRmFicmljcy92aWphbWlNaWctbGF0MjlkZHJlcGxpY2F0aW9uZmFicmljL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bf4221f6-3be9-4300-bbdf-9ad75a230e97-2020-04-02 10:09:05Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585818545746)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586423345746)\\/\",\"ClientRequestId\":\"bf4221f6-3be9-4300-bbdf-9ad75a230e97-2020-04-02 10:09:05Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"mbZttzZgvK8MBN88MC09Qp0jD+X6vIP3wcbTOWSIs50=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11984"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "bf4221f6-3be9-4300-bbdf-9ad75a230e97-2020-04-02 10:09:05Z-Ps 4/2/2020 10:09:05 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "bf4221f6-3be9-4300-bbdf-9ad75a230e97-2020-04-02 10:09:05Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "938a33cc-a7ef-4f8b-92ee-6f706077ae64"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T100906Z:938a33cc-a7ef-4f8b-92ee-6f706077ae64"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 10:09:05 GMT"
+        ],
+        "Content-Length": [
+          "695"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers/vijamiMig-lat29ddreplicationcontainer\",\r\n      \"name\": \"vijamiMig-lat29ddreplicationcontainer\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\r\n      \"properties\": {\r\n        \"fabricFriendlyName\": \"vijamiMig-lat29ddreplicationfabric\",\r\n        \"friendlyName\": \"vijamiMig-lat29ddreplicationcontainer\",\r\n        \"fabricType\": \"VMwareV2\",\r\n        \"protectedItemCount\": 0,\r\n        \"pairingStatus\": \"Paired\",\r\n        \"role\": \"Primary\",\r\n        \"fabricSpecificDetails\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers/vijamiMig-lat29ddreplicationcontainer/replicationProtectionContainerMappings?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uRmFicmljcy92aWphbWlNaWctbGF0MjlkZHJlcGxpY2F0aW9uZmFicmljL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvdmlqYW1pTWlnLWxhdDI5ZGRyZXBsaWNhdGlvbmNvbnRhaW5lci9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJNYXBwaW5ncz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d5912f0d-884b-481e-9c4b-c32446b73132-2020-04-02 10:09:05Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585818545027)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586423345027)\\/\",\"ClientRequestId\":\"d5912f0d-884b-481e-9c4b-c32446b73132-2020-04-02 10:09:05Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"6b+Erscndg3wxUXvf5IJPr317u+6nzA8oPUJ0Eer5PY=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11986"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "d5912f0d-884b-481e-9c4b-c32446b73132-2020-04-02 10:09:05Z-Ps 4/2/2020 10:09:05 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "d5912f0d-884b-481e-9c4b-c32446b73132-2020-04-02 10:09:05Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "45020f8e-c1b1-4b62-ae24-76b520c56ed4"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T100905Z:45020f8e-c1b1-4b62-ae24-76b520c56ed4"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 10:09:05 GMT"
+        ],
+        "Content-Length": [
+          "5788"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers/vijamiMig-lat29ddreplicationcontainer/replicationProtectionContainerMappings/containermapping\",\r\n      \"name\": \"containermapping\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings\",\r\n      \"properties\": {\r\n        \"targetProtectionContainerId\": \"Microsoft Azure\",\r\n        \"targetProtectionContainerFriendlyName\": \"Microsoft Azure\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"VMwareCbt\",\r\n          \"keyVaultId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.KeyVault/vaults/migratekv1214124206\",\r\n          \"keyVaultUri\": \"https://migratekv1214124206.vault.azure.net\",\r\n          \"storageAccountId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.Storage/storageAccounts/migrategwsa1214124206\",\r\n          \"storageAccountSasSecretName\": \"migrategwsa1214124206-gwySas\",\r\n          \"serviceBusConnectionStringSecretName\": \"ServiceBusConnectionString\",\r\n          \"targetLocation\": \"centralus\",\r\n          \"roleSizeToNicCountMap\": {\r\n            \"default\": 1,\r\n            \"extraSmall\": 2,\r\n            \"small\": 2,\r\n            \"medium\": 2,\r\n            \"large\": 2,\r\n            \"a6\": 2,\r\n            \"a7\": 4,\r\n            \"a8\": 2,\r\n            \"a9\": 4,\r\n            \"a10\": 2,\r\n            \"a11\": 4,\r\n            \"standard_NV6\": 1,\r\n            \"standard_NV12\": 2,\r\n            \"standard_NV24\": 4,\r\n            \"standard_NV12s_v3\": 4,\r\n            \"standard_NV24s_v3\": 8,\r\n            \"standard_NV48s_v3\": 8,\r\n            \"standard_NC6\": 1,\r\n            \"standard_NC12\": 2,\r\n            \"standard_NC24\": 4,\r\n            \"standard_NC24r\": 4,\r\n            \"standard_NC6s_v3\": 4,\r\n            \"standard_NC12s_v3\": 8,\r\n            \"standard_NC24rs_v3\": 8,\r\n            \"standard_NC24s_v3\": 8,\r\n            \"standard_NC6s_v2\": 4,\r\n            \"standard_NC12s_v2\": 8,\r\n            \"standard_NC24rs_v2\": 8,\r\n            \"standard_NC24s_v2\": 8,\r\n            \"standard_ND6s\": 4,\r\n            \"standard_ND12s\": 8,\r\n            \"standard_ND24s\": 8,\r\n            \"standard_ND24rs\": 8,\r\n            \"standard_ND40s_v2\": 8,\r\n            \"standard_M208ms_v2\": 8,\r\n            \"standard_M208s_v2\": 8,\r\n            \"standard_M8ms\": 4,\r\n            \"standard_M16ms\": 8,\r\n            \"standard_M32ts\": 8,\r\n            \"standard_M32ls\": 8,\r\n            \"standard_M32ms\": 8,\r\n            \"standard_M64s\": 8,\r\n            \"standard_M64ls\": 8,\r\n            \"standard_M64ms\": 8,\r\n            \"standard_M128s\": 8,\r\n            \"standard_M128ms\": 8,\r\n            \"standard_M64\": 8,\r\n            \"standard_M64m\": 8,\r\n            \"standard_M128\": 8,\r\n            \"standard_M128m\": 8,\r\n            \"standard_L4s\": 2,\r\n            \"standard_L8s\": 4,\r\n            \"standard_L16s\": 8,\r\n            \"standard_L32s\": 8,\r\n            \"standard_L8s_v2\": 2,\r\n            \"standard_L16s_v2\": 4,\r\n            \"standard_L32s_v2\": 8,\r\n            \"standard_L48s_v2\": 8,\r\n            \"standard_L64s_v2\": 8,\r\n            \"standard_L80s_v2\": 8,\r\n            \"standard_H8\": 2,\r\n            \"standard_H16\": 4,\r\n            \"standard_H8m\": 2,\r\n            \"standard_H16m\": 4,\r\n            \"standard_H16r\": 4,\r\n            \"standard_H16mr\": 4,\r\n            \"standard_HB60rs\": 1,\r\n            \"standard_HC44rs\": 1,\r\n            \"standard_G1\": 2,\r\n            \"standard_G2\": 2,\r\n            \"standard_G3\": 4,\r\n            \"standard_G4\": 8,\r\n            \"standard_G5\": 8,\r\n            \"standard_GS1\": 2,\r\n            \"standard_GS2\": 2,\r\n            \"standard_GS3\": 4,\r\n            \"standard_GS4\": 8,\r\n            \"standard_GS4-4\": 8,\r\n            \"standard_GS4-8\": 8,\r\n            \"standard_GS5\": 8,\r\n            \"standard_GS5-8\": 8,\r\n            \"standard_GS5-16\": 8,\r\n            \"standard_F1\": 2,\r\n            \"standard_F2\": 2,\r\n            \"standard_F4\": 4,\r\n            \"standard_F8\": 8,\r\n            \"standard_F16\": 8,\r\n            \"standard_F1s\": 2,\r\n            \"standard_F2s\": 2,\r\n            \"standard_F4s\": 4,\r\n            \"standard_F8s\": 8,\r\n            \"standard_F16s\": 8,\r\n            \"standard_F2s_v2\": 2,\r\n            \"standard_F4s_v2\": 2,\r\n            \"standard_F8s_v2\": 4,\r\n            \"standard_F16s_v2\": 4,\r\n            \"standard_F32s_v2\": 8,\r\n            \"standard_F48s_v2\": 8,\r\n            \"standard_F64s_v2\": 8,\r\n            \"standard_F72s_v2\": 8,\r\n            \"standard_E2_v3\": 2,\r\n            \"standard_E4_v3\": 2,\r\n            \"standard_E8_v3\": 4,\r\n            \"standard_E16_v3\": 8,\r\n            \"standard_E32_v3\": 8,\r\n            \"standard_E64_v3\": 8,\r\n            \"standard_E2s_v3\": 2,\r\n            \"standard_E4s_v3\": 2,\r\n            \"standard_E4-2s_v3\": 2,\r\n            \"standard_E8s_v3\": 4,\r\n            \"standard_E8-2s_v3\": 4,\r\n            \"standard_E8-4s_v3\": 4,\r\n            \"standard_E16s_v3\": 8,\r\n            \"standard_E16-4s_v3\": 8,\r\n            \"standard_E16-8s_v3\": 8,\r\n            \"standard_E32s_v3\": 8,\r\n            \"standard_E32-8s_v3\": 8,\r\n            \"standard_E32-16s_v3\": 8,\r\n            \"standard_E64s_v3\": 8,\r\n            \"standard_E64-16s_v3\": 8,\r\n            \"standard_E64-32s_v3\": 8,\r\n            \"standard_D1\": 2,\r\n            \"standard_D2\": 2,\r\n            \"standard_D3\": 4,\r\n            \"standard_D4\": 8,\r\n            \"standard_D11\": 2,\r\n            \"standard_D12\": 4,\r\n            \"standard_D13\": 8,\r\n            \"standard_D14\": 8,\r\n            \"standard_D1_v2\": 2,\r\n            \"standard_D2_v2\": 2,\r\n            \"standard_D3_v2\": 4,\r\n            \"standard_D4_v2\": 8,\r\n            \"standard_D5_v2\": 8,\r\n            \"standard_D11_v2\": 2,\r\n            \"standard_D12_v2\": 4,\r\n            \"standard_D13_v2\": 8,\r\n            \"standard_D14_v2\": 8,\r\n            \"standard_D15_v2\": 8,\r\n            \"standard_D2_v3\": 2,\r\n            \"standard_D4_v3\": 2,\r\n            \"standard_D8_v3\": 4,\r\n            \"standard_D16_v3\": 8,\r\n            \"standard_D32_v3\": 8,\r\n            \"standard_D64_v3\": 8,\r\n            \"standard_DS1\": 2,\r\n            \"standard_DS2\": 2,\r\n            \"standard_DS3\": 4,\r\n            \"standard_DS4\": 8,\r\n            \"standard_DS11\": 2,\r\n            \"standard_DS12\": 4,\r\n            \"standard_DS13\": 8,\r\n            \"standard_DS14\": 8,\r\n            \"standard_DS1_v2\": 2,\r\n            \"standard_DS2_v2\": 2,\r\n            \"standard_DS3_v2\": 4,\r\n            \"standard_DS4_v2\": 8,\r\n            \"standard_DS5_v2\": 8,\r\n            \"standard_DS11_v2\": 2,\r\n            \"standard_DS11-1_v2\": 2,\r\n            \"standard_DS12_v2\": 4,\r\n            \"standard_DS12_v2_Promo\": 4,\r\n            \"standard_DS12-1_v2\": 4,\r\n            \"standard_DS12-2_v2\": 4,\r\n            \"standard_DS13_v2\": 8,\r\n            \"standard_DS13-2_v2\": 8,\r\n            \"standard_DS13-4_v2\": 8,\r\n            \"standard_DS14_v2\": 8,\r\n            \"standard_DS14-4_v2\": 8,\r\n            \"standard_DS14-8_v2\": 8,\r\n            \"standard_DS15_v2\": 8,\r\n            \"standard_D2s_v3\": 2,\r\n            \"standard_D4s_v3\": 2,\r\n            \"standard_D8s_v3\": 4,\r\n            \"standard_D16s_v3\": 8,\r\n            \"standard_D32s_v3\": 8,\r\n            \"standard_D64s_v3\": 8,\r\n            \"standard_DC2s\": 2,\r\n            \"standard_DC4s\": 2,\r\n            \"standard_B1ls\": 2,\r\n            \"standard_B1s\": 2,\r\n            \"standard_B1ms\": 2,\r\n            \"standard_B2s\": 3,\r\n            \"standard_B2ms\": 3,\r\n            \"standard_B4ms\": 4,\r\n            \"standard_B8ms\": 4,\r\n            \"standard_B12ms\": 6,\r\n            \"standard_B16ms\": 8,\r\n            \"standard_B20ms\": 8,\r\n            \"standard_A0\": 2,\r\n            \"standard_A1\": 2,\r\n            \"standard_A2\": 2,\r\n            \"standard_A3\": 2,\r\n            \"standard_A4\": 4,\r\n            \"standard_A5\": 2,\r\n            \"standard_A6\": 2,\r\n            \"standard_A7\": 4,\r\n            \"standard_A8\": 2,\r\n            \"standard_A9\": 4,\r\n            \"standard_A10\": 2,\r\n            \"standard_A11\": 4,\r\n            \"standard_A1_v2\": 2,\r\n            \"standard_A2_v2\": 2,\r\n            \"standard_A4_v2\": 4,\r\n            \"standard_A8_v2\": 8,\r\n            \"standard_A2m_v2\": 2,\r\n            \"standard_A4m_v2\": 4,\r\n            \"standard_A8m_v2\": 8,\r\n            \"basic_A0\": 2,\r\n            \"basic_A1\": 2,\r\n            \"basic_A2\": 2,\r\n            \"basic_A3\": 2,\r\n            \"basic_A4\": 2\r\n          },\r\n          \"excludedSkus\": [\r\n            \"Standard_DC2s\",\r\n            \"Standard_DC4s\",\r\n            \"Standard_DC8s\"\r\n          ]\r\n        },\r\n        \"health\": \"Normal\",\r\n        \"healthErrorDetails\": [],\r\n        \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationPolicies/migratevijamiMig-lat29ddsitepolicy\",\r\n        \"state\": \"Paired\",\r\n        \"sourceProtectionContainerFriendlyName\": \"vijamiMig-lat29ddreplicationcontainer\",\r\n        \"sourceFabricFriendlyName\": \"vijamiMig-lat29ddreplicationfabric\",\r\n        \"targetFabricFriendlyName\": \"Microsoft Azure\",\r\n        \"policyFriendlyName\": \"migratevijamiMig-lat29ddsitepolicy\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers/vijamiMig-lat29ddreplicationcontainer/replicationProtectionContainerMappings?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uRmFicmljcy92aWphbWlNaWctbGF0MjlkZHJlcGxpY2F0aW9uZmFicmljL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvdmlqYW1pTWlnLWxhdDI5ZGRyZXBsaWNhdGlvbmNvbnRhaW5lci9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJNYXBwaW5ncz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a8c0ea43-f3c1-4992-9e65-c2c8519ddbea-2020-04-02 10:09:06Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585818546468)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586423346468)\\/\",\"ClientRequestId\":\"a8c0ea43-f3c1-4992-9e65-c2c8519ddbea-2020-04-02 10:09:06Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"TsvEWgwnLF+fVoQCQMHexDYARYEwOLm9PFFbphcs8ak=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11982"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "a8c0ea43-f3c1-4992-9e65-c2c8519ddbea-2020-04-02 10:09:06Z-Ps 4/2/2020 10:09:06 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "a8c0ea43-f3c1-4992-9e65-c2c8519ddbea-2020-04-02 10:09:06Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "3899e7ac-6df9-486d-b4ac-4caad3f6ca37"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T100906Z:3899e7ac-6df9-486d-b4ac-4caad3f6ca37"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 10:09:06 GMT"
+        ],
+        "Content-Length": [
+          "5788"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers/vijamiMig-lat29ddreplicationcontainer/replicationProtectionContainerMappings/containermapping\",\r\n      \"name\": \"containermapping\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings\",\r\n      \"properties\": {\r\n        \"targetProtectionContainerId\": \"Microsoft Azure\",\r\n        \"targetProtectionContainerFriendlyName\": \"Microsoft Azure\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"VMwareCbt\",\r\n          \"keyVaultId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.KeyVault/vaults/migratekv1214124206\",\r\n          \"keyVaultUri\": \"https://migratekv1214124206.vault.azure.net\",\r\n          \"storageAccountId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.Storage/storageAccounts/migrategwsa1214124206\",\r\n          \"storageAccountSasSecretName\": \"migrategwsa1214124206-gwySas\",\r\n          \"serviceBusConnectionStringSecretName\": \"ServiceBusConnectionString\",\r\n          \"targetLocation\": \"centralus\",\r\n          \"roleSizeToNicCountMap\": {\r\n            \"default\": 1,\r\n            \"extraSmall\": 2,\r\n            \"small\": 2,\r\n            \"medium\": 2,\r\n            \"large\": 2,\r\n            \"a6\": 2,\r\n            \"a7\": 4,\r\n            \"a8\": 2,\r\n            \"a9\": 4,\r\n            \"a10\": 2,\r\n            \"a11\": 4,\r\n            \"standard_NV6\": 1,\r\n            \"standard_NV12\": 2,\r\n            \"standard_NV24\": 4,\r\n            \"standard_NV12s_v3\": 4,\r\n            \"standard_NV24s_v3\": 8,\r\n            \"standard_NV48s_v3\": 8,\r\n            \"standard_NC6\": 1,\r\n            \"standard_NC12\": 2,\r\n            \"standard_NC24\": 4,\r\n            \"standard_NC24r\": 4,\r\n            \"standard_NC6s_v3\": 4,\r\n            \"standard_NC12s_v3\": 8,\r\n            \"standard_NC24rs_v3\": 8,\r\n            \"standard_NC24s_v3\": 8,\r\n            \"standard_NC6s_v2\": 4,\r\n            \"standard_NC12s_v2\": 8,\r\n            \"standard_NC24rs_v2\": 8,\r\n            \"standard_NC24s_v2\": 8,\r\n            \"standard_ND6s\": 4,\r\n            \"standard_ND12s\": 8,\r\n            \"standard_ND24s\": 8,\r\n            \"standard_ND24rs\": 8,\r\n            \"standard_ND40s_v2\": 8,\r\n            \"standard_M208ms_v2\": 8,\r\n            \"standard_M208s_v2\": 8,\r\n            \"standard_M8ms\": 4,\r\n            \"standard_M16ms\": 8,\r\n            \"standard_M32ts\": 8,\r\n            \"standard_M32ls\": 8,\r\n            \"standard_M32ms\": 8,\r\n            \"standard_M64s\": 8,\r\n            \"standard_M64ls\": 8,\r\n            \"standard_M64ms\": 8,\r\n            \"standard_M128s\": 8,\r\n            \"standard_M128ms\": 8,\r\n            \"standard_M64\": 8,\r\n            \"standard_M64m\": 8,\r\n            \"standard_M128\": 8,\r\n            \"standard_M128m\": 8,\r\n            \"standard_L4s\": 2,\r\n            \"standard_L8s\": 4,\r\n            \"standard_L16s\": 8,\r\n            \"standard_L32s\": 8,\r\n            \"standard_L8s_v2\": 2,\r\n            \"standard_L16s_v2\": 4,\r\n            \"standard_L32s_v2\": 8,\r\n            \"standard_L48s_v2\": 8,\r\n            \"standard_L64s_v2\": 8,\r\n            \"standard_L80s_v2\": 8,\r\n            \"standard_H8\": 2,\r\n            \"standard_H16\": 4,\r\n            \"standard_H8m\": 2,\r\n            \"standard_H16m\": 4,\r\n            \"standard_H16r\": 4,\r\n            \"standard_H16mr\": 4,\r\n            \"standard_HB60rs\": 1,\r\n            \"standard_HC44rs\": 1,\r\n            \"standard_G1\": 2,\r\n            \"standard_G2\": 2,\r\n            \"standard_G3\": 4,\r\n            \"standard_G4\": 8,\r\n            \"standard_G5\": 8,\r\n            \"standard_GS1\": 2,\r\n            \"standard_GS2\": 2,\r\n            \"standard_GS3\": 4,\r\n            \"standard_GS4\": 8,\r\n            \"standard_GS4-4\": 8,\r\n            \"standard_GS4-8\": 8,\r\n            \"standard_GS5\": 8,\r\n            \"standard_GS5-8\": 8,\r\n            \"standard_GS5-16\": 8,\r\n            \"standard_F1\": 2,\r\n            \"standard_F2\": 2,\r\n            \"standard_F4\": 4,\r\n            \"standard_F8\": 8,\r\n            \"standard_F16\": 8,\r\n            \"standard_F1s\": 2,\r\n            \"standard_F2s\": 2,\r\n            \"standard_F4s\": 4,\r\n            \"standard_F8s\": 8,\r\n            \"standard_F16s\": 8,\r\n            \"standard_F2s_v2\": 2,\r\n            \"standard_F4s_v2\": 2,\r\n            \"standard_F8s_v2\": 4,\r\n            \"standard_F16s_v2\": 4,\r\n            \"standard_F32s_v2\": 8,\r\n            \"standard_F48s_v2\": 8,\r\n            \"standard_F64s_v2\": 8,\r\n            \"standard_F72s_v2\": 8,\r\n            \"standard_E2_v3\": 2,\r\n            \"standard_E4_v3\": 2,\r\n            \"standard_E8_v3\": 4,\r\n            \"standard_E16_v3\": 8,\r\n            \"standard_E32_v3\": 8,\r\n            \"standard_E64_v3\": 8,\r\n            \"standard_E2s_v3\": 2,\r\n            \"standard_E4s_v3\": 2,\r\n            \"standard_E4-2s_v3\": 2,\r\n            \"standard_E8s_v3\": 4,\r\n            \"standard_E8-2s_v3\": 4,\r\n            \"standard_E8-4s_v3\": 4,\r\n            \"standard_E16s_v3\": 8,\r\n            \"standard_E16-4s_v3\": 8,\r\n            \"standard_E16-8s_v3\": 8,\r\n            \"standard_E32s_v3\": 8,\r\n            \"standard_E32-8s_v3\": 8,\r\n            \"standard_E32-16s_v3\": 8,\r\n            \"standard_E64s_v3\": 8,\r\n            \"standard_E64-16s_v3\": 8,\r\n            \"standard_E64-32s_v3\": 8,\r\n            \"standard_D1\": 2,\r\n            \"standard_D2\": 2,\r\n            \"standard_D3\": 4,\r\n            \"standard_D4\": 8,\r\n            \"standard_D11\": 2,\r\n            \"standard_D12\": 4,\r\n            \"standard_D13\": 8,\r\n            \"standard_D14\": 8,\r\n            \"standard_D1_v2\": 2,\r\n            \"standard_D2_v2\": 2,\r\n            \"standard_D3_v2\": 4,\r\n            \"standard_D4_v2\": 8,\r\n            \"standard_D5_v2\": 8,\r\n            \"standard_D11_v2\": 2,\r\n            \"standard_D12_v2\": 4,\r\n            \"standard_D13_v2\": 8,\r\n            \"standard_D14_v2\": 8,\r\n            \"standard_D15_v2\": 8,\r\n            \"standard_D2_v3\": 2,\r\n            \"standard_D4_v3\": 2,\r\n            \"standard_D8_v3\": 4,\r\n            \"standard_D16_v3\": 8,\r\n            \"standard_D32_v3\": 8,\r\n            \"standard_D64_v3\": 8,\r\n            \"standard_DS1\": 2,\r\n            \"standard_DS2\": 2,\r\n            \"standard_DS3\": 4,\r\n            \"standard_DS4\": 8,\r\n            \"standard_DS11\": 2,\r\n            \"standard_DS12\": 4,\r\n            \"standard_DS13\": 8,\r\n            \"standard_DS14\": 8,\r\n            \"standard_DS1_v2\": 2,\r\n            \"standard_DS2_v2\": 2,\r\n            \"standard_DS3_v2\": 4,\r\n            \"standard_DS4_v2\": 8,\r\n            \"standard_DS5_v2\": 8,\r\n            \"standard_DS11_v2\": 2,\r\n            \"standard_DS11-1_v2\": 2,\r\n            \"standard_DS12_v2\": 4,\r\n            \"standard_DS12_v2_Promo\": 4,\r\n            \"standard_DS12-1_v2\": 4,\r\n            \"standard_DS12-2_v2\": 4,\r\n            \"standard_DS13_v2\": 8,\r\n            \"standard_DS13-2_v2\": 8,\r\n            \"standard_DS13-4_v2\": 8,\r\n            \"standard_DS14_v2\": 8,\r\n            \"standard_DS14-4_v2\": 8,\r\n            \"standard_DS14-8_v2\": 8,\r\n            \"standard_DS15_v2\": 8,\r\n            \"standard_D2s_v3\": 2,\r\n            \"standard_D4s_v3\": 2,\r\n            \"standard_D8s_v3\": 4,\r\n            \"standard_D16s_v3\": 8,\r\n            \"standard_D32s_v3\": 8,\r\n            \"standard_D64s_v3\": 8,\r\n            \"standard_DC2s\": 2,\r\n            \"standard_DC4s\": 2,\r\n            \"standard_B1ls\": 2,\r\n            \"standard_B1s\": 2,\r\n            \"standard_B1ms\": 2,\r\n            \"standard_B2s\": 3,\r\n            \"standard_B2ms\": 3,\r\n            \"standard_B4ms\": 4,\r\n            \"standard_B8ms\": 4,\r\n            \"standard_B12ms\": 6,\r\n            \"standard_B16ms\": 8,\r\n            \"standard_B20ms\": 8,\r\n            \"standard_A0\": 2,\r\n            \"standard_A1\": 2,\r\n            \"standard_A2\": 2,\r\n            \"standard_A3\": 2,\r\n            \"standard_A4\": 4,\r\n            \"standard_A5\": 2,\r\n            \"standard_A6\": 2,\r\n            \"standard_A7\": 4,\r\n            \"standard_A8\": 2,\r\n            \"standard_A9\": 4,\r\n            \"standard_A10\": 2,\r\n            \"standard_A11\": 4,\r\n            \"standard_A1_v2\": 2,\r\n            \"standard_A2_v2\": 2,\r\n            \"standard_A4_v2\": 4,\r\n            \"standard_A8_v2\": 8,\r\n            \"standard_A2m_v2\": 2,\r\n            \"standard_A4m_v2\": 4,\r\n            \"standard_A8m_v2\": 8,\r\n            \"basic_A0\": 2,\r\n            \"basic_A1\": 2,\r\n            \"basic_A2\": 2,\r\n            \"basic_A3\": 2,\r\n            \"basic_A4\": 2\r\n          },\r\n          \"excludedSkus\": [\r\n            \"Standard_DC2s\",\r\n            \"Standard_DC4s\",\r\n            \"Standard_DC8s\"\r\n          ]\r\n        },\r\n        \"health\": \"Normal\",\r\n        \"healthErrorDetails\": [],\r\n        \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationPolicies/migratevijamiMig-lat29ddsitepolicy\",\r\n        \"state\": \"Paired\",\r\n        \"sourceProtectionContainerFriendlyName\": \"vijamiMig-lat29ddreplicationcontainer\",\r\n        \"sourceFabricFriendlyName\": \"vijamiMig-lat29ddreplicationfabric\",\r\n        \"targetFabricFriendlyName\": \"Microsoft Azure\",\r\n        \"policyFriendlyName\": \"migratevijamiMig-lat29ddsitepolicy\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers/vijamiMig-lat29ddreplicationcontainer/replicationProtectionContainerMappings?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uRmFicmljcy92aWphbWlNaWctbGF0MjlkZHJlcGxpY2F0aW9uZmFicmljL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvdmlqYW1pTWlnLWxhdDI5ZGRyZXBsaWNhdGlvbmNvbnRhaW5lci9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJNYXBwaW5ncz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "97106c68-a287-4cc6-aa02-ea1720713cd1-2020-04-02 10:09:07Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585818547802)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586423347802)\\/\",\"ClientRequestId\":\"97106c68-a287-4cc6-aa02-ea1720713cd1-2020-04-02 10:09:07Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"q5LBA2dNWl//q9oTuwBDsjuoR5XKCMq5qX/Vts6G6HI=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11979"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "97106c68-a287-4cc6-aa02-ea1720713cd1-2020-04-02 10:09:07Z-Ps 4/2/2020 10:09:08 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "97106c68-a287-4cc6-aa02-ea1720713cd1-2020-04-02 10:09:07Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "629ccf07-2d13-45f8-b4a4-f93e6ef17c39"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T100908Z:629ccf07-2d13-45f8-b4a4-f93e6ef17c39"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 10:09:08 GMT"
+        ],
+        "Content-Length": [
+          "5788"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers/vijamiMig-lat29ddreplicationcontainer/replicationProtectionContainerMappings/containermapping\",\r\n      \"name\": \"containermapping\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings\",\r\n      \"properties\": {\r\n        \"targetProtectionContainerId\": \"Microsoft Azure\",\r\n        \"targetProtectionContainerFriendlyName\": \"Microsoft Azure\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"VMwareCbt\",\r\n          \"keyVaultId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.KeyVault/vaults/migratekv1214124206\",\r\n          \"keyVaultUri\": \"https://migratekv1214124206.vault.azure.net\",\r\n          \"storageAccountId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.Storage/storageAccounts/migrategwsa1214124206\",\r\n          \"storageAccountSasSecretName\": \"migrategwsa1214124206-gwySas\",\r\n          \"serviceBusConnectionStringSecretName\": \"ServiceBusConnectionString\",\r\n          \"targetLocation\": \"centralus\",\r\n          \"roleSizeToNicCountMap\": {\r\n            \"default\": 1,\r\n            \"extraSmall\": 2,\r\n            \"small\": 2,\r\n            \"medium\": 2,\r\n            \"large\": 2,\r\n            \"a6\": 2,\r\n            \"a7\": 4,\r\n            \"a8\": 2,\r\n            \"a9\": 4,\r\n            \"a10\": 2,\r\n            \"a11\": 4,\r\n            \"standard_NV6\": 1,\r\n            \"standard_NV12\": 2,\r\n            \"standard_NV24\": 4,\r\n            \"standard_NV12s_v3\": 4,\r\n            \"standard_NV24s_v3\": 8,\r\n            \"standard_NV48s_v3\": 8,\r\n            \"standard_NC6\": 1,\r\n            \"standard_NC12\": 2,\r\n            \"standard_NC24\": 4,\r\n            \"standard_NC24r\": 4,\r\n            \"standard_NC6s_v3\": 4,\r\n            \"standard_NC12s_v3\": 8,\r\n            \"standard_NC24rs_v3\": 8,\r\n            \"standard_NC24s_v3\": 8,\r\n            \"standard_NC6s_v2\": 4,\r\n            \"standard_NC12s_v2\": 8,\r\n            \"standard_NC24rs_v2\": 8,\r\n            \"standard_NC24s_v2\": 8,\r\n            \"standard_ND6s\": 4,\r\n            \"standard_ND12s\": 8,\r\n            \"standard_ND24s\": 8,\r\n            \"standard_ND24rs\": 8,\r\n            \"standard_ND40s_v2\": 8,\r\n            \"standard_M208ms_v2\": 8,\r\n            \"standard_M208s_v2\": 8,\r\n            \"standard_M8ms\": 4,\r\n            \"standard_M16ms\": 8,\r\n            \"standard_M32ts\": 8,\r\n            \"standard_M32ls\": 8,\r\n            \"standard_M32ms\": 8,\r\n            \"standard_M64s\": 8,\r\n            \"standard_M64ls\": 8,\r\n            \"standard_M64ms\": 8,\r\n            \"standard_M128s\": 8,\r\n            \"standard_M128ms\": 8,\r\n            \"standard_M64\": 8,\r\n            \"standard_M64m\": 8,\r\n            \"standard_M128\": 8,\r\n            \"standard_M128m\": 8,\r\n            \"standard_L4s\": 2,\r\n            \"standard_L8s\": 4,\r\n            \"standard_L16s\": 8,\r\n            \"standard_L32s\": 8,\r\n            \"standard_L8s_v2\": 2,\r\n            \"standard_L16s_v2\": 4,\r\n            \"standard_L32s_v2\": 8,\r\n            \"standard_L48s_v2\": 8,\r\n            \"standard_L64s_v2\": 8,\r\n            \"standard_L80s_v2\": 8,\r\n            \"standard_H8\": 2,\r\n            \"standard_H16\": 4,\r\n            \"standard_H8m\": 2,\r\n            \"standard_H16m\": 4,\r\n            \"standard_H16r\": 4,\r\n            \"standard_H16mr\": 4,\r\n            \"standard_HB60rs\": 1,\r\n            \"standard_HC44rs\": 1,\r\n            \"standard_G1\": 2,\r\n            \"standard_G2\": 2,\r\n            \"standard_G3\": 4,\r\n            \"standard_G4\": 8,\r\n            \"standard_G5\": 8,\r\n            \"standard_GS1\": 2,\r\n            \"standard_GS2\": 2,\r\n            \"standard_GS3\": 4,\r\n            \"standard_GS4\": 8,\r\n            \"standard_GS4-4\": 8,\r\n            \"standard_GS4-8\": 8,\r\n            \"standard_GS5\": 8,\r\n            \"standard_GS5-8\": 8,\r\n            \"standard_GS5-16\": 8,\r\n            \"standard_F1\": 2,\r\n            \"standard_F2\": 2,\r\n            \"standard_F4\": 4,\r\n            \"standard_F8\": 8,\r\n            \"standard_F16\": 8,\r\n            \"standard_F1s\": 2,\r\n            \"standard_F2s\": 2,\r\n            \"standard_F4s\": 4,\r\n            \"standard_F8s\": 8,\r\n            \"standard_F16s\": 8,\r\n            \"standard_F2s_v2\": 2,\r\n            \"standard_F4s_v2\": 2,\r\n            \"standard_F8s_v2\": 4,\r\n            \"standard_F16s_v2\": 4,\r\n            \"standard_F32s_v2\": 8,\r\n            \"standard_F48s_v2\": 8,\r\n            \"standard_F64s_v2\": 8,\r\n            \"standard_F72s_v2\": 8,\r\n            \"standard_E2_v3\": 2,\r\n            \"standard_E4_v3\": 2,\r\n            \"standard_E8_v3\": 4,\r\n            \"standard_E16_v3\": 8,\r\n            \"standard_E32_v3\": 8,\r\n            \"standard_E64_v3\": 8,\r\n            \"standard_E2s_v3\": 2,\r\n            \"standard_E4s_v3\": 2,\r\n            \"standard_E4-2s_v3\": 2,\r\n            \"standard_E8s_v3\": 4,\r\n            \"standard_E8-2s_v3\": 4,\r\n            \"standard_E8-4s_v3\": 4,\r\n            \"standard_E16s_v3\": 8,\r\n            \"standard_E16-4s_v3\": 8,\r\n            \"standard_E16-8s_v3\": 8,\r\n            \"standard_E32s_v3\": 8,\r\n            \"standard_E32-8s_v3\": 8,\r\n            \"standard_E32-16s_v3\": 8,\r\n            \"standard_E64s_v3\": 8,\r\n            \"standard_E64-16s_v3\": 8,\r\n            \"standard_E64-32s_v3\": 8,\r\n            \"standard_D1\": 2,\r\n            \"standard_D2\": 2,\r\n            \"standard_D3\": 4,\r\n            \"standard_D4\": 8,\r\n            \"standard_D11\": 2,\r\n            \"standard_D12\": 4,\r\n            \"standard_D13\": 8,\r\n            \"standard_D14\": 8,\r\n            \"standard_D1_v2\": 2,\r\n            \"standard_D2_v2\": 2,\r\n            \"standard_D3_v2\": 4,\r\n            \"standard_D4_v2\": 8,\r\n            \"standard_D5_v2\": 8,\r\n            \"standard_D11_v2\": 2,\r\n            \"standard_D12_v2\": 4,\r\n            \"standard_D13_v2\": 8,\r\n            \"standard_D14_v2\": 8,\r\n            \"standard_D15_v2\": 8,\r\n            \"standard_D2_v3\": 2,\r\n            \"standard_D4_v3\": 2,\r\n            \"standard_D8_v3\": 4,\r\n            \"standard_D16_v3\": 8,\r\n            \"standard_D32_v3\": 8,\r\n            \"standard_D64_v3\": 8,\r\n            \"standard_DS1\": 2,\r\n            \"standard_DS2\": 2,\r\n            \"standard_DS3\": 4,\r\n            \"standard_DS4\": 8,\r\n            \"standard_DS11\": 2,\r\n            \"standard_DS12\": 4,\r\n            \"standard_DS13\": 8,\r\n            \"standard_DS14\": 8,\r\n            \"standard_DS1_v2\": 2,\r\n            \"standard_DS2_v2\": 2,\r\n            \"standard_DS3_v2\": 4,\r\n            \"standard_DS4_v2\": 8,\r\n            \"standard_DS5_v2\": 8,\r\n            \"standard_DS11_v2\": 2,\r\n            \"standard_DS11-1_v2\": 2,\r\n            \"standard_DS12_v2\": 4,\r\n            \"standard_DS12_v2_Promo\": 4,\r\n            \"standard_DS12-1_v2\": 4,\r\n            \"standard_DS12-2_v2\": 4,\r\n            \"standard_DS13_v2\": 8,\r\n            \"standard_DS13-2_v2\": 8,\r\n            \"standard_DS13-4_v2\": 8,\r\n            \"standard_DS14_v2\": 8,\r\n            \"standard_DS14-4_v2\": 8,\r\n            \"standard_DS14-8_v2\": 8,\r\n            \"standard_DS15_v2\": 8,\r\n            \"standard_D2s_v3\": 2,\r\n            \"standard_D4s_v3\": 2,\r\n            \"standard_D8s_v3\": 4,\r\n            \"standard_D16s_v3\": 8,\r\n            \"standard_D32s_v3\": 8,\r\n            \"standard_D64s_v3\": 8,\r\n            \"standard_DC2s\": 2,\r\n            \"standard_DC4s\": 2,\r\n            \"standard_B1ls\": 2,\r\n            \"standard_B1s\": 2,\r\n            \"standard_B1ms\": 2,\r\n            \"standard_B2s\": 3,\r\n            \"standard_B2ms\": 3,\r\n            \"standard_B4ms\": 4,\r\n            \"standard_B8ms\": 4,\r\n            \"standard_B12ms\": 6,\r\n            \"standard_B16ms\": 8,\r\n            \"standard_B20ms\": 8,\r\n            \"standard_A0\": 2,\r\n            \"standard_A1\": 2,\r\n            \"standard_A2\": 2,\r\n            \"standard_A3\": 2,\r\n            \"standard_A4\": 4,\r\n            \"standard_A5\": 2,\r\n            \"standard_A6\": 2,\r\n            \"standard_A7\": 4,\r\n            \"standard_A8\": 2,\r\n            \"standard_A9\": 4,\r\n            \"standard_A10\": 2,\r\n            \"standard_A11\": 4,\r\n            \"standard_A1_v2\": 2,\r\n            \"standard_A2_v2\": 2,\r\n            \"standard_A4_v2\": 4,\r\n            \"standard_A8_v2\": 8,\r\n            \"standard_A2m_v2\": 2,\r\n            \"standard_A4m_v2\": 4,\r\n            \"standard_A8m_v2\": 8,\r\n            \"basic_A0\": 2,\r\n            \"basic_A1\": 2,\r\n            \"basic_A2\": 2,\r\n            \"basic_A3\": 2,\r\n            \"basic_A4\": 2\r\n          },\r\n          \"excludedSkus\": [\r\n            \"Standard_DC2s\",\r\n            \"Standard_DC4s\",\r\n            \"Standard_DC8s\"\r\n          ]\r\n        },\r\n        \"health\": \"Normal\",\r\n        \"healthErrorDetails\": [],\r\n        \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationPolicies/migratevijamiMig-lat29ddsitepolicy\",\r\n        \"state\": \"Paired\",\r\n        \"sourceProtectionContainerFriendlyName\": \"vijamiMig-lat29ddreplicationcontainer\",\r\n        \"sourceFabricFriendlyName\": \"vijamiMig-lat29ddreplicationfabric\",\r\n        \"targetFabricFriendlyName\": \"Microsoft Azure\",\r\n        \"policyFriendlyName\": \"migratevijamiMig-lat29ddsitepolicy\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationPolicies?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uUG9saWNpZXM/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3bc69acf-fd96-4a95-b744-091fe1b9cca6-2020-04-02 10:09:05Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585818545411)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586423345411)\\/\",\"ClientRequestId\":\"3bc69acf-fd96-4a95-b744-091fe1b9cca6-2020-04-02 10:09:05Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"YhfmmptW5evjgfCfRQbPbkFT14cVyuexxLWDHzzQAao=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11985"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "3bc69acf-fd96-4a95-b744-091fe1b9cca6-2020-04-02 10:09:05Z-Ps 4/2/2020 10:09:05 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "3bc69acf-fd96-4a95-b744-091fe1b9cca6-2020-04-02 10:09:05Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "8f727516-9e2a-4692-9363-16de26fe9137"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T100905Z:8f727516-9e2a-4692-9363-16de26fe9137"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 10:09:05 GMT"
+        ],
+        "Content-Length": [
+          "582"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationPolicies/migratevijamiMig-lat29ddsitepolicy\",\r\n      \"name\": \"migratevijamiMig-lat29ddsitepolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"migratevijamiMig-lat29ddsitepolicy\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"VMwareCbt\",\r\n          \"recoveryPointHistoryInMinutes\": 4320,\r\n          \"appConsistentFrequencyInMinutes\": 240,\r\n          \"crashConsistentFrequencyInMinutes\": 60\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers/vijamiMig-lat29ddreplicationcontainer?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uRmFicmljcy92aWphbWlNaWctbGF0MjlkZHJlcGxpY2F0aW9uZmFicmljL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvdmlqYW1pTWlnLWxhdDI5ZGRyZXBsaWNhdGlvbmNvbnRhaW5lcj9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cd18483b-845b-45c8-8198-1963cd8fd7ef-2020-04-02 10:09:06Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585818546122)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586423346122)\\/\",\"ClientRequestId\":\"cd18483b-845b-45c8-8198-1963cd8fd7ef-2020-04-02 10:09:06Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"cZuD34HerdsLlYAW7WMY8cTZ9iIosJnBXubPSA1URrA=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11983"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "cd18483b-845b-45c8-8198-1963cd8fd7ef-2020-04-02 10:09:06Z-Ps 4/2/2020 10:09:06 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "cd18483b-845b-45c8-8198-1963cd8fd7ef-2020-04-02 10:09:06Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "48bb7fa4-1164-4230-9c14-885712b7bd36"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T100906Z:48bb7fa4-1164-4230-9c14-885712b7bd36"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 10:09:06 GMT"
+        ],
+        "Content-Length": [
+          "667"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers/vijamiMig-lat29ddreplicationcontainer\",\r\n  \"name\": \"vijamiMig-lat29ddreplicationcontainer\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\r\n  \"properties\": {\r\n    \"fabricFriendlyName\": \"vijamiMig-lat29ddreplicationfabric\",\r\n    \"friendlyName\": \"vijamiMig-lat29ddreplicationcontainer\",\r\n    \"fabricType\": \"VMwareV2\",\r\n    \"protectedItemCount\": 0,\r\n    \"pairingStatus\": \"Paired\",\r\n    \"role\": \"Primary\",\r\n    \"fabricSpecificDetails\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers/vijamiMig-lat29ddreplicationcontainer?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uRmFicmljcy92aWphbWlNaWctbGF0MjlkZHJlcGxpY2F0aW9uZmFicmljL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvdmlqYW1pTWlnLWxhdDI5ZGRyZXBsaWNhdGlvbmNvbnRhaW5lcj9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "52104a3e-e188-4150-911f-27507a8e8ecd-2020-04-02 10:09:07Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585818547162)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586423347162)\\/\",\"ClientRequestId\":\"52104a3e-e188-4150-911f-27507a8e8ecd-2020-04-02 10:09:07Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"m1gMgO61am7bsPQl3p4AHFS+VP2aEtqq4xUKQHkRvSY=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11980"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "52104a3e-e188-4150-911f-27507a8e8ecd-2020-04-02 10:09:07Z-Ps 4/2/2020 10:09:07 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "52104a3e-e188-4150-911f-27507a8e8ecd-2020-04-02 10:09:07Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "e72538b8-13d5-4e83-8f2b-e4793c2445ee"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T100907Z:e72538b8-13d5-4e83-8f2b-e4793c2445ee"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 10:09:07 GMT"
+        ],
+        "Content-Length": [
+          "667"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric/replicationProtectionContainers/vijamiMig-lat29ddreplicationcontainer\",\r\n  \"name\": \"vijamiMig-lat29ddreplicationcontainer\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\r\n  \"properties\": {\r\n    \"fabricFriendlyName\": \"vijamiMig-lat29ddreplicationfabric\",\r\n    \"friendlyName\": \"vijamiMig-lat29ddreplicationcontainer\",\r\n    \"fabricType\": \"VMwareV2\",\r\n    \"protectedItemCount\": 0,\r\n    \"pairingStatus\": \"Paired\",\r\n    \"role\": \"Primary\",\r\n    \"fabricSpecificDetails\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationPolicies/migratevijamiMig-lat29ddsitepolicy?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uUG9saWNpZXMvbWlncmF0ZXZpamFtaU1pZy1sYXQyOWRkc2l0ZXBvbGljeT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e66b5b22-0439-4a4b-b2e1-1fe3ec343016-2020-04-02 10:09:06Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585818546840)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586423346840)\\/\",\"ClientRequestId\":\"e66b5b22-0439-4a4b-b2e1-1fe3ec343016-2020-04-02 10:09:06Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"PiDR4OBT7aQxpOA4e61sAghH3Wfd8vxLGs8EjNReRfQ=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11981"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "e66b5b22-0439-4a4b-b2e1-1fe3ec343016-2020-04-02 10:09:06Z-Ps 4/2/2020 10:09:07 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "e66b5b22-0439-4a4b-b2e1-1fe3ec343016-2020-04-02 10:09:06Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "e9681fda-17e6-4150-8830-7104ed61817a"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T100907Z:e9681fda-17e6-4150-8830-7104ed61817a"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 10:09:06 GMT"
+        ],
+        "Content-Length": [
+          "554"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationPolicies/migratevijamiMig-lat29ddsitepolicy\",\r\n  \"name\": \"migratevijamiMig-lat29ddsitepolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"migratevijamiMig-lat29ddsitepolicy\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"VMwareCbt\",\r\n      \"recoveryPointHistoryInMinutes\": 4320,\r\n      \"appConsistentFrequencyInMinutes\": 240,\r\n      \"crashConsistentFrequencyInMinutes\": 60\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationPolicies/migratevijamiMig-lat29ddsitepolicy?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uUG9saWNpZXMvbWlncmF0ZXZpamFtaU1pZy1sYXQyOWRkc2l0ZXBvbGljeT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5a856405-bd03-40b4-9584-99c5fdd53b2a-2020-04-02 10:09:08Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585818548173)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586423348173)\\/\",\"ClientRequestId\":\"5a856405-bd03-40b4-9584-99c5fdd53b2a-2020-04-02 10:09:08Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"10a61r2IFNYwMHMg2s8ZtK0Oce1oAL0qZ6afrhtOeNc=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11978"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "5a856405-bd03-40b4-9584-99c5fdd53b2a-2020-04-02 10:09:08Z-Ps 4/2/2020 10:09:08 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "5a856405-bd03-40b4-9584-99c5fdd53b2a-2020-04-02 10:09:08Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "a07d0a95-5485-4b1c-8b73-0fa858263da5"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T100908Z:a07d0a95-5485-4b1c-8b73-0fa858263da5"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 10:09:08 GMT"
+        ],
+        "Content-Length": [
+          "554"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationPolicies/migratevijamiMig-lat29ddsitepolicy\",\r\n  \"name\": \"migratevijamiMig-lat29ddsitepolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"migratevijamiMig-lat29ddsitepolicy\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"VMwareCbt\",\r\n      \"recoveryPointHistoryInMinutes\": 4320,\r\n      \"appConsistentFrequencyInMinutes\": 240,\r\n      \"crashConsistentFrequencyInMinutes\": 60\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "7c943c1b-5122-4097-90c8-861411bdd574"
+  }
+}

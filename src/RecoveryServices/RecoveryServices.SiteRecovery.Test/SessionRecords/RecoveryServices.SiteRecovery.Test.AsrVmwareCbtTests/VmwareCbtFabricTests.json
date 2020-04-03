@@ -1,0 +1,293 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "010f13de-38ac-4f9b-8ab0-71a34a52ddac"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.2.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "9a62c7b2-ecb1-45fd-b8cf-94685cd6f8f9"
+        ],
+        "x-ms-client-request-id": [
+          "010f13de-38ac-4f9b-8ab0-71a34a52ddac"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "9a62c7b2-ecb1-45fd-b8cf-94685cd6f8f9"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T091512Z:9a62c7b2-ecb1-45fd-b8cf-94685cd6f8f9"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 09:15:11 GMT"
+        ],
+        "Content-Length": [
+          "496"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"centralus\",\r\n      \"name\": \"vijami-mig-proj2e89rsvault\",\r\n      \"etag\": \"W/\\\"datetime'2020-03-03T09%3A01%3A09.90723Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uRmFicmljcz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "13054ecd-9e46-4d19-a1c4-43b465a5223d-2020-04-02 09:15:12Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585815312161)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586420112161)\\/\",\"ClientRequestId\":\"13054ecd-9e46-4d19-a1c4-43b465a5223d-2020-04-02 09:15:12Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"F1keRgS1J/K3S/2hUocTUXQnTivUZFXt3XHwYVmkAkc=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "13054ecd-9e46-4d19-a1c4-43b465a5223d-2020-04-02 09:15:12Z-Ps 4/2/2020 9:15:12 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "13054ecd-9e46-4d19-a1c4-43b465a5223d-2020-04-02 09:15:12Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "3dd0fb38-88bf-48b0-961f-dd3049d7d101"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T091512Z:3dd0fb38-88bf-48b0-961f-dd3049d7d101"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 09:15:12 GMT"
+        ],
+        "Content-Length": [
+          "1364"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"vijamiMig-lat29ddreplicationfabric\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"vijamiMig-lat29ddreplicationfabric\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"ad2d3055-6dfe-5445-8d85-7acbeb6f3952\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"VMwareV2\",\r\n          \"vmwareSiteId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.OffAzure/VMwareSites/vijamiMig-lat29ddsite\",\r\n          \"physicalSiteId\": null,\r\n          \"migrationSolutionId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.Migrate/MigrateProjects/vijami-mig-proj/Solutions/Servers-Migration-ServerMigration\",\r\n          \"srsServiceEndpoint\": \"https://pod01-srs1.cus.hypervrecoverymanager.windowsazure.com\",\r\n          \"serviceEndpoint\": \"https://pod01-srs1.cus.hypervrecoverymanager.windowsazure.com\",\r\n          \"serviceResourceId\": \"70701616594027520\",\r\n          \"serviceContainerId\": \"26079271263094\",\r\n          \"processServers\": []\r\n        },\r\n        \"healthErrorDetails\": [],\r\n        \"health\": \"Normal\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uRmFicmljcz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4bb38cef-da99-412a-8ebf-17f315517458-2020-04-02 09:15:12Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585815312616)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586420112616)\\/\",\"ClientRequestId\":\"4bb38cef-da99-412a-8ebf-17f315517458-2020-04-02 09:15:12Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"ULWgS5bXVdirmBZdmnYLHpIiTF3ro9OHhdFi5VD0MLw=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "4bb38cef-da99-412a-8ebf-17f315517458-2020-04-02 09:15:12Z-Ps 4/2/2020 9:15:12 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "4bb38cef-da99-412a-8ebf-17f315517458-2020-04-02 09:15:12Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "02f19320-2c08-499a-98c8-17a0338745bd"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T091512Z:02f19320-2c08-499a-98c8-17a0338745bd"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 09:15:12 GMT"
+        ],
+        "Content-Length": [
+          "1364"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"vijamiMig-lat29ddreplicationfabric\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"vijamiMig-lat29ddreplicationfabric\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"ad2d3055-6dfe-5445-8d85-7acbeb6f3952\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"VMwareV2\",\r\n          \"vmwareSiteId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.OffAzure/VMwareSites/vijamiMig-lat29ddsite\",\r\n          \"physicalSiteId\": null,\r\n          \"migrationSolutionId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.Migrate/MigrateProjects/vijami-mig-proj/Solutions/Servers-Migration-ServerMigration\",\r\n          \"srsServiceEndpoint\": \"https://pod01-srs1.cus.hypervrecoverymanager.windowsazure.com\",\r\n          \"serviceEndpoint\": \"https://pod01-srs1.cus.hypervrecoverymanager.windowsazure.com\",\r\n          \"serviceResourceId\": \"70701616594027520\",\r\n          \"serviceContainerId\": \"26079271263094\",\r\n          \"processServers\": []\r\n        },\r\n        \"healthErrorDetails\": [],\r\n        \"health\": \"Normal\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3ZpamFtaS1taWctcHJvajJlODlyc3ZhdWx0L3JlcGxpY2F0aW9uRmFicmljcy92aWphbWlNaWctbGF0MjlkZHJlcGxpY2F0aW9uZmFicmljP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d0c53c3d-1ce2-4d30-a6bf-499683820d05-2020-04-02 09:15:12Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1585815312970)\\/\",\"NotAfterTimestamp\":\"\\/Date(1586420112970)\\/\",\"ClientRequestId\":\"d0c53c3d-1ce2-4d30-a6bf-499683820d05-2020-04-02 09:15:12Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"TA1tiBBEE7I1MVfY6VN1ZN3L65ELoyAR5No7DaG4Nz4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "d0c53c3d-1ce2-4d30-a6bf-499683820d05-2020-04-02 09:15:12Z-Ps 4/2/2020 9:15:13 AM"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "d0c53c3d-1ce2-4d30-a6bf-499683820d05-2020-04-02 09:15:12Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "0fed4171-8f1b-46cb-b9b0-a9de36f67cff"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200402T091513Z:0fed4171-8f1b-46cb-b9b0-a9de36f67cff"
+        ],
+        "Date": [
+          "Thu, 02 Apr 2020 09:15:13 GMT"
+        ],
+        "Content-Length": [
+          "1336"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"vijamiMig-lat29ddreplicationfabric\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.RecoveryServices/vaults/vijami-mig-proj2e89rsvault/replicationFabrics/vijamiMig-lat29ddreplicationfabric\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"vijamiMig-lat29ddreplicationfabric\",\r\n    \"encryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"rolloverEncryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"internalIdentifier\": \"ad2d3055-6dfe-5445-8d85-7acbeb6f3952\",\r\n    \"bcdrState\": \"Valid\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"VMwareV2\",\r\n      \"vmwareSiteId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.OffAzure/VMwareSites/vijamiMig-lat29ddsite\",\r\n      \"physicalSiteId\": null,\r\n      \"migrationSolutionId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-rg/providers/Microsoft.Migrate/MigrateProjects/vijami-mig-proj/Solutions/Servers-Migration-ServerMigration\",\r\n      \"srsServiceEndpoint\": \"https://pod01-srs1.cus.hypervrecoverymanager.windowsazure.com\",\r\n      \"serviceEndpoint\": \"https://pod01-srs1.cus.hypervrecoverymanager.windowsazure.com\",\r\n      \"serviceResourceId\": \"70701616594027520\",\r\n      \"serviceContainerId\": \"26079271263094\",\r\n      \"processServers\": []\r\n    },\r\n    \"healthErrorDetails\": [],\r\n    \"health\": \"Normal\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "7c943c1b-5122-4097-90c8-861411bdd574"
+  }
+}

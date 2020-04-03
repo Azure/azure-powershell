@@ -133,5 +133,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
+
+        /// <summary>
+        ///     Create Azure Site Recovery Providers.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="providerName">Recovery services provider name</param>
+        /// <param name="addProviderInput">Add provider input.</param>
+        /// <returns>Provider response</returns>
+        public PSSiteRecoveryLongRunningOperation CreateAzureSiteRecoveryProvider(
+            string fabricName,
+            string providerName,
+            AddRecoveryServicesProviderInput addProviderInput)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationRecoveryServicesProviders.BeginCreateWithHttpMessagesAsync(
+                    fabricName,
+                    providerName,
+                    addProviderInput,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
     }
 }

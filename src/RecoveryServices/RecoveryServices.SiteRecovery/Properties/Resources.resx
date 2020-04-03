@@ -373,6 +373,9 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="ReplicationProtectedItemNotFound" xml:space="preserve">
     <value>Replication Protected Item"{0}" is not associated with Protection Container "{1}"</value>
   </data>
+  <data name="ReplicationMigrationItemNotFound" xml:space="preserve">
+    <value>Replication Migration Item"{0}" is not associated with Protection Container "{1}"</value>
+  </data>
   <data name="LocationNotSpecifiedForAzureFabric" xml:space="preserve">
     <value>Location is not specified for creating Azure fabric.</value>
   </data>

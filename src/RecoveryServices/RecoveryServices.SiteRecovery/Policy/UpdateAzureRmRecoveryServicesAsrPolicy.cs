@@ -76,6 +76,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter VmmToVmm { get; set; }
 
         /// <summary>
+        ///    Switch parameter to specify policy is to be used to migrate VMware virtual machines to Azure.
+        /// </summary>
+        [Parameter(Position = 0,
+            ParameterSetName = ASRParameterSets.VMwareCbt,
+            Mandatory = true)]
+        public SwitchParameter VMwareCbt { get; set; }
+
+        /// <summary>
         ///     Gets or sets ASR replication policy object corresponding to the replication policy to be updated.
         /// </summary>
         [Parameter(
@@ -124,6 +132,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.AzureToVMware)]
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareCbt)]
         [ValidateNotNullOrEmpty]
         public int RecoveryPointRetentionInHours { get; set; }
 
@@ -249,6 +258,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         break;
                     case ASRParameterSets.AzureToAzure:
                         this.UpdateA2APolicy();
+                        break;
+                    case ASRParameterSets.VMwareCbt:
+                        this.UpdateVmwareCbtPolicy();
                         break;
                     case ASRParameterSets.Default:
                         DefaultUpdatePolicy();
@@ -664,6 +676,77 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var updatePolicyProperties = new UpdatePolicyInputProperties
             {
                 ReplicationProviderSettings = inmagePolicyInput
+            };
+
+            // Create the Update Policy Input.
+            var updatePolicyInput = new UpdatePolicyInput
+            {
+                Properties = updatePolicyProperties
+            };
+
+            var response = this.RecoveryServicesClient.UpdatePolicy(
+                this.InputObject.Name,
+                updatePolicyInput);
+
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+            this.WriteObject(new ASRJob(jobResponse));
+        }
+
+        /// <summary>
+        ///     Updates an VmwareCbt Policy.
+        /// </summary>
+        private void UpdateVmwareCbtPolicy()
+        {
+            if (string.Compare(
+                    this.InputObject.ReplicationProvider,
+                    Constants.VMwareCbt,
+                    StringComparison.OrdinalIgnoreCase) !=
+                0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.IncorrectReplicationProvider,
+                        this.InputObject.ReplicationProvider));
+            }
+
+            // Get the VmwareCbt Provider specific details from the Policy.
+            var replicationProviderSettings =
+                this.InputObject.ReplicationProviderSettings as ASRVmwareCbtPolicyDetails;
+
+            // Set the Paremeters to be updated.
+            this.applicationConsistentSnapshotFrequencyInMinutes =
+                this.MyInvocation.BoundParameters.ContainsKey(
+                    Utilities.GetMemberName(
+                        () =>
+                            this.applicationConsistentSnapshotFrequencyInHours))
+                    ? this.ApplicationConsistentSnapshotFrequencyInHours * 60
+                    : replicationProviderSettings.AppConsistentFrequencyInMinutes;
+
+            this.crashConsistentFrequencyInMinutes =
+                replicationProviderSettings.CrashConsistentFrequencyInMinutes;
+
+            this.RecoveryPointRetentionInHours =
+                this.MyInvocation.BoundParameters.ContainsKey(
+                    Utilities.GetMemberName(
+                        () =>
+                            this.RecoveryPointRetentionInHours))
+                    ? this.RecoveryPointRetentionInHours
+                    : replicationProviderSettings.RecoveryPointHistoryInMinutes / 60;
+
+            // Set the Provider Specific Input for VmwareCbt.
+            var vmwareCbtPolicyInput = new VMwareCbtPolicyCreationInput
+            {
+                AppConsistentFrequencyInMinutes =
+                    this.applicationConsistentSnapshotFrequencyInMinutes,
+                RecoveryPointHistoryInMinutes = this.RecoveryPointRetentionInHours * 60, // Convert from hours to minutes.
+                CrashConsistentFrequencyInMinutes = this.crashConsistentFrequencyInMinutes
+            };
+
+            var updatePolicyProperties = new UpdatePolicyInputProperties
+            {
+                ReplicationProviderSettings = vmwareCbtPolicyInput
             };
 
             // Create the Update Policy Input.

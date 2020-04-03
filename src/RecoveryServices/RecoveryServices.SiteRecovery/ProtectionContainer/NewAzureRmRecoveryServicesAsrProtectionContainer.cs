@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the name of the protection container.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareCbt, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets fabric in which protection container to be created.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareCbt, Mandatory = true, ValueFromPipeline = true)]
         [Alias("Fabric")]
         [ValidateNotNullOrEmpty]
         public ASRFabric InputObject { get; set; }
@@ -58,12 +60,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.Name,
                 VerbsCommon.New))
             {
-                if (!this.InputObject.FabricType.Equals(Constants.Azure))
+                if (!this.InputObject.FabricType.Equals(Constants.Azure) 
+                    || !this.InputObject.FabricType.Equals(Constants.VMwareCbt))
                 {
                     throw new Exception(
                         string.Format(
                             Resources.IncorrectFabricType,
-                            Constants.Azure,
                             this.InputObject.FabricType));
                 }
 

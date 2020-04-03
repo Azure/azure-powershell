@@ -190,7 +190,17 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Get-AzRecoveryServicesBackupStatus', 
                'Undo-AzRecoveryServicesBackupItemDeletion', 
                'Set-AzRecoveryServicesVaultProperty', 
-               'Get-AzRecoveryServicesVaultProperty'
+               'Get-AzRecoveryServicesVaultProperty',
+			   'Get-AzRecoveryServicesAsrReplicationMigrationItem',
+			   'New-AzRecoveryServicesAsrReplicationMigrationItem',
+			   'Remove-AzRecoveryServicesAsrReplicationMigrationItem',
+			   'Update-AzRecoveryServicesAsrReplicationMigrationItem',
+			   'Start-AzRecoveryServicesAsrMigrateJob',
+			   'Start-AzRecoveryServicesAsrTestMigrateCleanupJob',
+			   'Start-AzRecoveryServicesAsrTestMigrateJob',
+			   'Get-AzRecoveryServicesAsrMigrationRecoveryPoint',
+			   'New-AzRecoveryServicesAsrServicesProvider',
+			   'Start-AzRecoveryServicesAsrResyncJob'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -237,7 +247,18 @@ AliasesToExport = 'Get-AzRecoveryServicesBackupProperties',
                'Update-ASRProtectionDirection', 'Update-ASRRecoveryPlan', 
                'Update-ASRServicesProvider', 'Update-ASRvCenter', 
                'Set-AzRecoveryServicesBackupProperties', 
-               'Get-AzRecoveryServicesBackupJobDetails'
+               'Get-AzRecoveryServicesBackupJobDetails',
+			   'Get-ASRReplicationMigrationItem',
+			   'New-ASRReplicationMigrationItem',
+			   'Remove-ASRReplicationMigrationItem',
+			   'Update-ASRReplicationMigrationItem',
+			   'Start-ASRMigrateJob',
+			   'Start-ASRTestMigrateCleanupJob',
+			   'Start-ASRTestMigrateJob"',
+			   'New-ASRServicesProvider',
+			   'Start-ASRResyncJob',
+			   'Get-ASRMigrationRecoveryPoint'
+                   			   
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

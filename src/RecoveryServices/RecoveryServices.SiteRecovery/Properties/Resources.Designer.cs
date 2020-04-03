@@ -792,6 +792,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replication Migration Item&quot;{0}&quot; is not associated with Protection Container &quot;{1}&quot;.
+        /// </summary>
+        internal static string ReplicationMigrationItemNotFound {
+            get {
+                return ResourceManager.GetString("ReplicationMigrationItemNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replication Protected Item&quot;{0}&quot; is not associated with Protection Container &quot;{1}&quot;.
         /// </summary>
         internal static string ReplicationProtectedItemNotFound {

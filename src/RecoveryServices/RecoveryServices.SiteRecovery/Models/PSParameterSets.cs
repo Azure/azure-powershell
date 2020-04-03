@@ -290,9 +290,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string ByRPIObject = "ByRPIObject";
 
         /// <summary>
+        ///     When only RMI Object is passed to the command.
+        /// </summary>
+        internal const string ByRMIObject = "ByRMIObject";
+
+        /// <summary>
         ///     When only RPI Object is passed along with Logical VM network to the command.
         /// </summary>
         internal const string ByRPIObjectWithAzureVMNetworkId = "ByRPIObjectWithAzureVMNetworkId";
+
+        /// <summary>
+        ///     When only RMI Object is passed along with Logical VM network to the command.
+        /// </summary>
+        internal const string ByRMIObjectWithAzureVMNetworkId = "ByRMIObjectWithAzureVMNetworkId";
 
         /// <summary>
         ///     When only RPI Object is passed along with Logical VM network to the command.
@@ -402,6 +412,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Disable DR
         /// </summary>
         internal const string DisableDR = "DisableDR";
+
+        /// <summary>
+        ///     Disable Migration
+        /// </summary>
+        internal const string DisableMigration = "DisableMigration";
+
+        /// <summary>
+        ///     Disable Migration with delete option
+        /// </summary>
+        internal const string DisableMigrationWithDeleteOption = "DisableMigrationWithDeleteOption";
 
         /// <summary>
         ///     For Disable replication group parameter set.
@@ -517,6 +537,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Set email addresses.
         /// </summary>
         internal const string SetEmail = "SetEmail";
+
+        /// <summary>
+        ///     VMware Cbt.
+        /// </summary>
+        internal const string VMwareCbt = "VMwareCbt";
 
         /// <summary>
         ///     Mapping for VMware to Azure.

@@ -112,6 +112,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                              0 ? true : false;
             this.FabricType = provider.Properties.FabricType;
             this.Type = provider.Type;
+            if (string.Compare(
+                        Constants.VMwareV2,
+                        provider.Properties.FabricType,
+                        StringComparison.OrdinalIgnoreCase) == 0)
+            {
+                this.DraIdentifier = provider.Properties.DraIdentifier;
+                this.AuthenticationIdentityDetails = new ASRIdentityProviderDetails(provider.Properties.AuthenticationIdentityDetails);
+                this.ResourceAccessIdentityDetails = new ASRIdentityProviderDetails(provider.Properties.ResourceAccessIdentityDetails);
+            }
         }
 
         #region Properties
@@ -161,8 +170,152 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public string ServerVersion { get; set; }
 
+        /// <summary>
+        /// Gets or sets the DRA Id.
+        /// </summary>
+        public string DraIdentifier { get; set; }
+
+        /// <summary>
+        /// Gets or sets the authentication identity details.
+        /// </summary>
+        public ASRIdentityProviderDetails AuthenticationIdentityDetails { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource access identity details.
+        /// </summary>
+        public ASRIdentityProviderDetails ResourceAccessIdentityDetails { get; set; }
+
         #endregion
     }
+
+    /// <summary>
+    ///     Azure Site Recovery Identity Provider Input.
+    /// </summary>
+    public class ASRIdentityProviderInput
+    {
+        #region Constructor
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRIdentityProviderInput" /> class.
+        /// </summary>
+        public ASRIdentityProviderInput()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRIdentityProviderInput" /> class.
+        /// </summary>
+        /// <param name="site">Hydra site object.</param>
+        public ASRIdentityProviderInput(
+            IdentityProviderInput input)
+        {
+            this.TenantId = input.TenantId;
+            this.ApplicationId =input.ApplicationId;
+            this.ObjectId = input.ObjectId;
+            this.Audience = input.Audience;
+            this.AadAuthority = input.AadAuthority;
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the tenant Id for the service principal with which the on-premise
+        /// management/data plane components would communicate with our Azure services.
+        /// </summary>
+        public string TenantId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the application/client Id for the service principal with which the
+        /// on-premise management/data plane components would communicate with our Azure services.
+        /// </summary>
+        public string ApplicationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the object Id of the service principal with which the on-premise
+        /// management/data plane components would communicate with our Azure services.
+        /// </summary>
+        public string ObjectId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the intended Audience of the service principal with which the on-premise
+        /// management/data plane components would communicate with our Azure services.
+        /// </summary>
+        public string Audience { get; set; }
+
+        /// <summary>
+        /// Gets or sets the base authority for Azure Active Directory authentication.
+        /// </summary>
+        public string AadAuthority { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    ///     Azure Site Recovery Identity Provider Details.
+    /// </summary>
+    public class ASRIdentityProviderDetails
+    {
+        #region Constructor
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRIdentityProviderDetails" /> class.
+        /// </summary>
+        public ASRIdentityProviderDetails()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRIdentityProviderDetails" /> class.
+        /// </summary>
+        /// <param name="site">Hydra site object.</param>
+        public ASRIdentityProviderDetails(
+            IdentityProviderDetails input)
+        {
+            this.TenantId = input.TenantId;
+            this.ApplicationId = input.ApplicationId;
+            this.ObjectId = input.ObjectId;
+            this.Audience = input.Audience;
+            this.AadAuthority = input.AadAuthority;
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the tenant Id for the service principal with which the on-premise
+        /// management/data plane components would communicate with our Azure services.
+        /// </summary>
+        public string TenantId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the application/client Id for the service principal with which the
+        /// on-premise management/data plane components would communicate with our Azure services.
+        /// </summary>
+        public string ApplicationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the object Id of the service principal with which the on-premise
+        /// management/data plane components would communicate with our Azure services.
+        /// </summary>
+        public string ObjectId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the intended Audience of the service principal with which the on-premise
+        /// management/data plane components would communicate with our Azure services.
+        /// </summary>
+        public string Audience { get; set; }
+
+        /// <summary>
+        /// Gets or sets the base authority for Azure Active Directory authentication.
+        /// </summary>
+        public string AadAuthority { get; set; }
+
+        #endregion
+    }
+
 
     /// <summary>
     ///     Azure Site Recovery Site object.
@@ -245,6 +398,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             else if (fabric.Properties.CustomDetails is VmmDetails)
             {
                 this.FabricType = Constants.VMM;
+            }
+            else if (fabric.Properties.CustomDetails is VMwareV2FabricSpecificDetails)
+            {
+                this.FabricType = Constants.VMwareV2;
+                var vmwareV2FabricSpecificDetails =
+                   fabric.Properties.CustomDetails as VMwareV2FabricSpecificDetails;
+                this.FabricSpecificDetails = new ASRVMWareV2SpecificDetails
+                {
+                    MigrationSolutionId = vmwareV2FabricSpecificDetails?.MigrationSolutionId,
+                    ServiceEndpoint = vmwareV2FabricSpecificDetails?.ServiceEndpoint,
+                    ServiceResourceId = vmwareV2FabricSpecificDetails?.ServiceResourceId,
+                    VmwareSiteId = vmwareV2FabricSpecificDetails?.VmwareSiteId
+                };
             }
         }
 
@@ -347,6 +513,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     ScheduleName = details.ScheduleName
                 };
             }
+
+            if (pcm.Properties.ProviderSpecificDetails is VMwareCbtProtectionContainerMappingDetails)
+            {
+                var details = (VMwareCbtProtectionContainerMappingDetails)pcm.Properties.ProviderSpecificDetails;
+                this.ProviderSpecificDetails = new ASRVMwareCbtProtectionContainerMappingDetails
+                {
+                    KeyVaultId = details.KeyVaultId,
+                    KeyVaultUri = details.KeyVaultUri,
+                    StorageAccountId = details.StorageAccountId,
+                    StorageAccountSasSecretName = details.StorageAccountSasSecretName,
+                    ServiceBusConnectionStringSecretName = details.ServiceBusConnectionStringSecretName,
+                    TargetLocation = details.TargetLocation
+                };
+            }
         }
 
         #region Properties
@@ -447,6 +627,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         // Summary:
         //     Gets or sets the job schedule arm name.
         public string JobScheduleName { get; set; }
+    }
+
+    /// <summary>
+    ///     ASR VmwareCbt ProtectionContainerMapping provider settings
+    /// </summary>
+    public class ASRVMwareCbtProtectionContainerMappingDetails : ASRProtectionContainerMappingProviderSpecificDetails
+    {
+        //
+        // Summary:
+        //     Gets or sets the target key vault ARM Id.
+        public string KeyVaultId { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the target key vault URI.
+        public string KeyVaultUri { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the storage account ARM Id.
+        public string StorageAccountId { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the secret name of the storage account.
+        public string StorageAccountSasSecretName { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the secret name of the service bus connection string.
+        public string ServiceBusConnectionStringSecretName { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the target location.
+        public string TargetLocation { get; set; }
     }
 
     /// <summary>
@@ -703,6 +914,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.ReplicationProviderSettings = replicationProviderSettings;
                 this.ReplicationProvider = Constants.A2A;
             }
+            else if (policy.Properties.ProviderSpecificDetails is VmwareCbtPolicyDetails)
+            {
+                var details =
+                   (VmwareCbtPolicyDetails)policy.Properties.ProviderSpecificDetails;
+
+                var replicationProviderSettings =
+                    new ASRVmwareCbtPolicyDetails
+                    {
+                        RecoveryPointHistoryInMinutes =
+                        (int)details.RecoveryPointHistoryInMinutes,
+                        AppConsistentFrequencyInMinutes =
+                        (int)details.AppConsistentFrequencyInMinutes,
+                        CrashConsistentFrequencyInMinutes =
+                        (int)details.CrashConsistentFrequencyInMinutes
+                    };
+
+                this.ReplicationProviderSettings = replicationProviderSettings;
+                this.ReplicationProvider = Constants.VMwareCbt;
+            }
         }
 
         #region Properties
@@ -913,6 +1143,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
+    /// ASR VmwareCbt policy details.
+    /// </summary>
+    public class ASRVmwareCbtPolicyDetails : ASRPolicyProviderSettingsDetails
+    {
+        /// <summary>
+        /// Gets or sets the duration in minutes until which the recovery points need to be
+        /// stored.
+        /// </summary>
+        public int RecoveryPointHistoryInMinutes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the app consistent snapshot frequency in minutes.
+        /// </summary>
+        public int AppConsistentFrequencyInMinutes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the crash consistent snapshot frequency in minutes.
+        /// </summary>
+        public int CrashConsistentFrequencyInMinutes { get; set; }
+    }
+
+    /// <summary>
     ///     ASR VM Nic Details
     /// </summary>
     public class ASRVMNicDetails
@@ -1058,6 +1310,273 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         // Summary:
         //     Gets or sets whether accelerated networking is enabled on test failover NIC.
         public bool? EnableAcceleratedNetworkingOnTfo { get; set; }
+    }
+
+    /// <summary>
+    ///     ASR VMware Cbt Nic Details
+    /// </summary>
+    public class ASRVMwareCbtNicDetails
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRVMwareCbtNicDetails" /> class.
+        /// </summary>
+        public ASRVMwareCbtNicDetails()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRVMwareCbtNicDetails" /> class.
+        /// </summary>
+        public ASRVMwareCbtNicDetails(
+            VMwareCbtNicDetails vmwareCbtNicDetails)
+        {
+            this.NicId = vmwareCbtNicDetails.NicId;
+            this.IsPrimaryNic = vmwareCbtNicDetails.IsPrimaryNic;
+            this.SourceIPAddress = vmwareCbtNicDetails.SourceIPAddress;
+            this.SourceIPAddressType = vmwareCbtNicDetails.SourceIPAddressType;
+            this.SourceNetworkId = vmwareCbtNicDetails.SourceNetworkId;
+            this.TargetIPAddress = vmwareCbtNicDetails.TargetIPAddress;
+            this.TargetIPAddressType = vmwareCbtNicDetails.TargetIPAddressType;
+            this.TargetSubnetName = vmwareCbtNicDetails.TargetSubnetName;
+            this.IsSelectedForMigration = vmwareCbtNicDetails.IsSelectedForMigration;
+        }
+
+        //
+        // Summary:
+        //     Gets or sets the NIC Id.
+        public string NicId { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets a value indicating whether this is the primary NIC.
+        public string IsPrimaryNic { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the source IP address.
+        public string SourceIPAddress { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the source IP address type.
+        public string SourceIPAddressType { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets source network Id.
+        public string SourceNetworkId { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the target IP address.
+        public string TargetIPAddress { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the target IP address type.
+        public string TargetIPAddressType { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets target subnet name.
+        public string TargetSubnetName { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets a value indicating whether this NIC is selected for migration.
+        public string IsSelectedForMigration { get; set; }
+    }
+
+    /// <summary>
+    ///     ASR VMware Cbt Protected Disk Details
+    /// </summary>
+    public class ASRVMwareCbtProtectedDiskDetails
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRVMwareCbtProtectedDiskDetails" /> class.
+        /// </summary>
+        public ASRVMwareCbtProtectedDiskDetails()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRVMwareCbtProtectedDiskDetails" /> class.
+        /// </summary>
+        public ASRVMwareCbtProtectedDiskDetails(
+            VMwareCbtProtectedDiskDetails vmwareCbtProtectedDiskDetails)
+        {
+            this.DiskId = vmwareCbtProtectedDiskDetails.DiskId;
+            this.DiskName = vmwareCbtProtectedDiskDetails.DiskName;
+            this.DiskType = vmwareCbtProtectedDiskDetails.DiskType;
+            this.DiskPath = vmwareCbtProtectedDiskDetails.DiskPath;
+            this.IsOSDisk = vmwareCbtProtectedDiskDetails.IsOSDisk;
+            this.CapacityInBytes = vmwareCbtProtectedDiskDetails.CapacityInBytes;
+            this.LogStorageAccountId = vmwareCbtProtectedDiskDetails.LogStorageAccountId;
+            this.LogStorageAccountSasSecretName = vmwareCbtProtectedDiskDetails.LogStorageAccountSasSecretName;
+            this.SeedManagedDiskId = vmwareCbtProtectedDiskDetails.SeedManagedDiskId;
+            this.TargetManagedDiskId = vmwareCbtProtectedDiskDetails.TargetManagedDiskId;
+            this.DiskEncryptionSetId = vmwareCbtProtectedDiskDetails.DiskEncryptionSetId;
+        }
+
+        //
+        // Summary:
+        //     Gets or sets the disk id.
+        public string DiskId { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the disk name.
+        public string DiskName { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the disk type.
+        public string DiskType { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the disk path.
+        public string DiskPath { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets a value indicating whether the disk is the OS disk.
+        public string IsOSDisk { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the disk capacity in bytes.
+        public long? CapacityInBytes { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the log storage account ARM Id.
+        public string LogStorageAccountId { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the key vault secret name of the log storage account.
+        public string LogStorageAccountSasSecretName { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the ARM Id of the seed managed disk.
+        public string SeedManagedDiskId { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the ARM Id of the target managed disk.
+        public string TargetManagedDiskId { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the ARM Id of the DiskEncryptionSet.
+        public string DiskEncryptionSetId { get; }
+    }
+
+
+    /// <summary>
+    ///     ASR VMware Cbt Disk Input Details
+    /// </summary>
+    public class ASRVMwareCbtDiskInput
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRVMwareCbtDiskInput" /> class.
+        /// </summary>
+        public ASRVMwareCbtDiskInput()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRVMwareCbtProtectedDiskDetails" /> class.
+        /// </summary>
+        public ASRVMwareCbtDiskInput(
+            VMwareCbtDiskInput vmwareCbtDiskInput)
+        {
+            this.DiskId = vmwareCbtDiskInput.DiskId;
+            this.DiskType = vmwareCbtDiskInput.DiskType;
+            this.IsOSDisk = vmwareCbtDiskInput.IsOSDisk;
+            this.LogStorageAccountId = vmwareCbtDiskInput.LogStorageAccountId;
+            this.LogStorageAccountSasSecretName = vmwareCbtDiskInput.LogStorageAccountSasSecretName;
+            this.DiskEncryptionSetId = vmwareCbtDiskInput.DiskEncryptionSetId;
+        }
+
+        //
+        // Summary:
+        //     Gets or sets the disk id.
+        public string DiskId { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the disk type.
+        public string DiskType { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets a value indicating whether the disk is the OS disk.
+        public string IsOSDisk { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the log storage account ARM Id.
+        public string LogStorageAccountId { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the key vault secret name of the log storage account.
+        public string LogStorageAccountSasSecretName { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the ARM Id of the DiskEncryptionSet.
+        public string DiskEncryptionSetId { get; }
+    }
+
+    /// <summary>
+    ///     ASR VMware Cbt Nic Input Details
+    /// </summary>
+    public class ASRVMwareCbtNicInput
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRVMwareCbtNicInput" /> class.
+        /// </summary>
+        public ASRVMwareCbtNicInput()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRVMwareCbtNicInput" /> class.
+        /// </summary>
+        public ASRVMwareCbtNicInput(
+            VMwareCbtNicInput vmwareCbtNicInput)
+        {
+            this.NicId = vmwareCbtNicInput.NicId;
+            this.IsPrimaryNic = vmwareCbtNicInput.IsPrimaryNic;
+            this.TargetSubnetName = vmwareCbtNicInput.TargetSubnetName;
+            this.TargetStaticIPAddress = vmwareCbtNicInput.TargetStaticIPAddress;
+            this.IsSelectedForMigration = vmwareCbtNicInput.IsSelectedForMigration;
+        }
+
+        //
+        // Summary:
+        //     Gets or sets the NIC Id.
+        public string NicId { get; set; }
+        //
+        // Summary:
+        //     Gets or sets a value indicating whether this is the primary NIC.
+        public string IsPrimaryNic { get; set; }
+        //
+        // Summary:
+        //     Gets or sets target subnet name.
+        public string TargetSubnetName { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the static IP address.
+        public string TargetStaticIPAddress { get; set; }
+        //
+        // Summary:
+        //     Gets or sets a value indicating whether this NIC is selected for migration.
+        public string IsSelectedForMigration { get; set; }
     }
 
     /// <summary>
@@ -1657,7 +2176,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Provider Specific Replication Protected Item Details.
     /// </summary>
-    public class ASRProviderSpecificRPIDetails
+        public class ASRProviderSpecificRPIDetails
     {
     }
 
@@ -1750,6 +2269,335 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string VmProtectionStateDescription { get; set; }
     }
 
+    /// Azure Site Recovery Replication Migration Item.
+    /// </summary>
+    public class ASRReplicationMigrationItem
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRReplicationMigrationItem" /> class.
+        /// </summary>
+        public ASRReplicationMigrationItem()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRReplicationMigrationItem" /> class when it is
+        ///     protected
+        /// </summary>
+        /// <param name="mi">Replication Migration Item to read values from</param>
+        public ASRReplicationMigrationItem(
+            MigrationItem mi)
+        {
+            this.Id = mi.Id;
+            this.Name = mi.Name;
+            this.Type = mi.Type;
+            this.MachineName = mi.Properties.MachineName;
+            this.PolicyId = mi.Properties.PolicyId;
+            this.PolicyFriendlyName = mi.Properties.PolicyFriendlyName;
+            this.EventCorrelationId = mi.Properties.EventCorrelationId;
+            this.MigrationState = mi.Properties.MigrationState;
+            this.MigrationStateDescription = mi.Properties.MigrationStateDescription;
+            this.TestMigrateState = mi.Properties.TestMigrateState;
+            this.TestMigrateStateDescription = mi.Properties.TestMigrateStateDescription;
+            this.LastTestMigrationTime = mi.Properties.LastTestMigrationTime;
+            this.LastTestMigrationStatus = mi.Properties.LastTestMigrationStatus;
+            this.Health = mi.Properties.Health;
+            if (mi.Properties.HealthErrors != null)
+            {
+                this.HealthErrors = mi.Properties.HealthErrors.ToList().ConvertAll(
+                    healthError => new ASRHealthError(healthError));
+            }
+            this.AllowedOperations = mi.Properties.AllowedOperations;
+            this.CurrentJob = mi.Properties.CurrentJob;
+
+            if ( mi.Properties.ProviderSpecificDetails is VMwareCbtMigrationDetails)
+            {
+                // Populate VMwareCbt specific properties
+                this.MigrationProvider = Constants.VMwareCbt;
+                var vmwareCbtSpecificDetails = (VMwareCbtMigrationDetails)mi.Properties.ProviderSpecificDetails;
+                this.ProviderSpecificDetails = new ASRVMwareCbtMIDetails(vmwareCbtSpecificDetails);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the Id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the object.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the on-premise virtual machine name.
+        /// </summary>
+        public string MachineName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ARM Id of policy governing this item.
+        /// </summary>
+        public string PolicyId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of policy governing this item.
+        /// </summary>
+        public string PolicyFriendlyName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the migration status.
+        /// </summary>
+        public string MigrationState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the migration state description.
+        /// </summary>
+        public string MigrationStateDescription { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last test migration time.
+        /// </summary>
+        public DateTime? LastTestMigrationTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the status of the last test migration.
+        /// </summary>
+        public string LastTestMigrationStatus { get; set; }
+
+        /// <summary>
+        /// Gets the correlation Id for events associated with this migration item.
+        /// </summary>
+        public string EventCorrelationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test migrate state.
+        /// </summary>
+        public string TestMigrateState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test migrate state description.
+        /// </summary>
+        public string TestMigrateStateDescription { get; set; }
+
+        /// <summary>
+        /// Gets or sets the consolidated health.
+        /// </summary>
+        public string Health { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of health errors.
+        /// </summary>
+        public List<ASRHealthError> HealthErrors { get; set; }
+
+        /// <summary>
+        /// Gets or sets the allowed operations on the migration item based on the current
+        /// migration state of the item.
+        /// </summary>
+        public IList<string> AllowedOperations { get; set; }
+
+        /// <summary>
+        /// Gets or sets the current job details.
+        /// </summary>
+        public CurrentJobDetails CurrentJob { get; set; }
+
+        /// <summary>
+        /// Gets or sets the migration provider custom settings.
+        /// </summary>
+        public ASRProviderSpecificMIDetails ProviderSpecificDetails { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Replication provider.
+        /// </summary>
+        public string MigrationProvider { get; set; }
+    }
+
+    /// <summary>
+    ///     Provider Specific Replication Migration Item Details.
+    /// </summary>
+    public class ASRProviderSpecificMIDetails
+    {
+    }
+
+    //
+    // Summary:
+    //     VMware Cbt migration details.
+    public class ASRVMwareCbtMIDetails : ASRProviderSpecificMIDetails
+    {
+        //
+        // Summary:
+        //     Initializes a new instance of the VMwareCbtMigrationDetails class.
+        public ASRVMwareCbtMIDetails(VMwareCbtMigrationDetails vmwareCbtMigrationDetails)
+        {
+            this.InstanceType = Constants.VMwareCbt;
+            this.VmwareMachineId = vmwareCbtMigrationDetails.VmwareMachineId;
+            this.OSType = vmwareCbtMigrationDetails.OsType;
+            this.LicenseType = vmwareCbtMigrationDetails.LicenseType;
+            this.DataMoverRunAsAccountId = vmwareCbtMigrationDetails.DataMoverRunAsAccountId;
+            this.SnapshotRunAsAccountId = vmwareCbtMigrationDetails.SnapshotRunAsAccountId;
+            this.TargetVmName = vmwareCbtMigrationDetails.TargetVmName;
+            this.TargetVmSize = vmwareCbtMigrationDetails.TargetVmSize;
+            this.TargetLocation = vmwareCbtMigrationDetails.TargetLocation;
+            this.TargetResourceGroupId = vmwareCbtMigrationDetails.TargetResourceGroupId;
+            this.TargetAvailabilitySetId = vmwareCbtMigrationDetails.TargetAvailabilitySetId;
+            this.TargetBootDiagnosticsStorageAccountId = vmwareCbtMigrationDetails.TargetBootDiagnosticsStorageAccountId;
+            this.TargetNetworkId = vmwareCbtMigrationDetails.TargetNetworkId;
+            this.MigrationRecoveryPointId = vmwareCbtMigrationDetails.MigrationRecoveryPointId;
+            this.LastRecoveryPointReceived = vmwareCbtMigrationDetails.LastRecoveryPointReceived;
+            this.ResyncRequired = vmwareCbtMigrationDetails.ResyncRequired;
+            this.ResyncProgressPercentage = vmwareCbtMigrationDetails.ResyncProgressPercentage;
+            this.MigrationProgressPercentage = vmwareCbtMigrationDetails.MigrationProgressPercentage;
+            this.InitialSeedingProgressPercentage = vmwareCbtMigrationDetails.InitialSeedingProgressPercentage;
+            this.LastRecoveryPointId = vmwareCbtMigrationDetails.LastRecoveryPointId;
+            this.ResyncState = vmwareCbtMigrationDetails.ResyncState;
+            this.PerformAutoResync = vmwareCbtMigrationDetails.PerformAutoResync;
+            if (vmwareCbtMigrationDetails.VmNics != null)
+            {
+                this.VMNics =
+                       vmwareCbtMigrationDetails.VmNics?.ToList()
+                       .ConvertAll(nic => new ASRVMwareCbtNicDetails(nic));
+            }
+          
+            if (vmwareCbtMigrationDetails.ProtectedDisks != null)
+            {
+                this.ProtectedDisks =
+                    vmwareCbtMigrationDetails.ProtectedDisks?.ToList()
+                    .ConvertAll(protectedDisk => new ASRVMwareCbtProtectedDiskDetails(protectedDisk));
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the InstanceType.
+        /// </summary>
+        public string InstanceType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ARM Id of the VM discovered in VMware.
+        /// </summary>
+        public string VmwareMachineId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the OS on the VM.
+        /// </summary>
+        public string OSType { get; set; }
+
+        /// <summary>
+        /// Gets or sets License Type of the VM to be used.
+        /// </summary>
+        public string LicenseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the data mover runas account Id.
+        /// </summary>
+        public string DataMoverRunAsAccountId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the snapshot runas account Id.
+        /// </summary>
+        public string SnapshotRunAsAccountId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replication storage account ARM Id. This is applicable only for the
+        /// blob based replication test hook.
+        /// </summary>
+        public string StorageAccountId { get; set; }
+
+        /// <summary>
+        /// Gets or sets target VM name.
+        /// </summary>
+        public string TargetVmName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target VM size.
+        /// </summary>
+        public string TargetVmSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target location.
+        /// </summary>
+        public string TargetLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target resource group Id.
+        /// </summary>
+        public string TargetResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target availability set Id.
+        /// </summary>
+        public string TargetAvailabilitySetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target boot diagnostics storage account ARM Id.
+        /// </summary>
+        public string TargetBootDiagnosticsStorageAccountId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of protected disks.
+        /// </summary>
+        public List<ASRVMwareCbtProtectedDiskDetails> ProtectedDisks { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target network Id.
+        /// </summary>
+        public string TargetNetworkId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the network details.
+        /// </summary>
+        public List<ASRVMwareCbtNicDetails> VMNics { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery point Id to which the VM was migrated.
+        /// </summary>
+        public string MigrationRecoveryPointId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last recovery point received time.
+        /// </summary>
+        public DateTime? LastRecoveryPointReceived { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether resync is required.
+        /// </summary>
+        public string ResyncRequired { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resync progress percentage.
+        /// </summary>
+        public int? ResyncProgressPercentage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the migration progress percentage.
+        /// </summary>
+        public int? MigrationProgressPercentage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial seeding progress percentage.
+        /// </summary>
+        public int? InitialSeedingProgressPercentage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last recovery point Id.
+        /// </summary>
+        public string LastRecoveryPointId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the  resync state.
+        /// </summary>
+        public string ResyncState { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether auto resync is to be done.
+        /// </summary>
+        public string PerformAutoResync { get; set; }
+
+    }
+
     /// <summary>
     ///     PS Recovery Point Class.
     /// </summary>
@@ -1774,6 +2622,58 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.Type = recoveryPoint.Type;
             this.RecoveryPointTime = recoveryPoint.Properties.RecoveryPointTime;
             this.RecoveryPointType = recoveryPoint.Properties.RecoveryPointType;
+        }
+
+        /// <summary>
+        ///     Gets or sets Recovery Point ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Name of the Recovery Point.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Point Time.
+        /// </summary>
+        public DateTime? RecoveryPointTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Point Type.
+        /// </summary>
+        public string RecoveryPointType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets type of the Recovery Point.
+        /// </summary>
+        public string Type { get; set; }
+    }
+
+    /// <summary>
+    ///     PS Migration Recovery Point Class.
+    /// </summary>
+    public class ASRMigrationRecoveryPoint
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRMigrationRecoveryPoint" /> class.
+        /// </summary>
+        public ASRMigrationRecoveryPoint()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRMigrationRecoveryPoint" /> class.
+        /// </summary>
+        /// <param name="recoveryPoint">Recovery point object to read values from.</param>
+        public ASRMigrationRecoveryPoint(
+            MigrationRecoveryPoint migrationRecoveryPoint)
+        {
+            this.ID = migrationRecoveryPoint.Id;
+            this.Name = migrationRecoveryPoint.Name;
+            this.Type = migrationRecoveryPoint.Type;
+            this.RecoveryPointTime = migrationRecoveryPoint.Properties.RecoveryPointTime;
+            this.RecoveryPointType = migrationRecoveryPoint.Properties.RecoveryPointType;
         }
 
         /// <summary>

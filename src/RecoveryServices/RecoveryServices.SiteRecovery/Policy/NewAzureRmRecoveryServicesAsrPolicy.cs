@@ -75,6 +75,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter VmmToVmm { get; set; }
 
         /// <summary>
+        ///    Switch parameter to specify policy is to be used to migrate VMware virtual machines to Azure.
+        /// </summary>
+        [Parameter(Position = 0,
+            ParameterSetName = ASRParameterSets.VMwareCbt,
+            Mandatory = true)]
+        public SwitchParameter VMwareCbt { get; set; }
+
+        /// <summary>
         ///     Gets or sets the name of the ASR replication policy.
         /// </summary>
         [Parameter(Mandatory = true)]
@@ -140,6 +148,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToVMware, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareCbt, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [DefaultValue(0)]
         public int RecoveryPointRetentionInHours { get; set; }
@@ -230,6 +239,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public int RPOWarningThresholdInMinutes { get; set; }
 
         /// <summary>
+        /// Gets or sets the crash consistent snapshot frequency (in minutes).
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareCbt, Mandatory = true)]
+        public int CrashConsistentFrequencyInMinutes { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
@@ -258,6 +273,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     case ASRParameterSets.AzureToAzure:
                         this.ReplicationProvider = Constants.A2A;
                         this.CreateA2APolicy();
+                        break;
+                    case ASRParameterSets.VMwareCbt:
+                        this.ReplicationProvider = Constants.VMwareCbt;
+                        this.VMwareCbtPolicyObject();
                         break;
                 }
             }
@@ -521,6 +540,53 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 .GetAzureSiteRecoveryJobDetails(jobId);
 
             this.WriteObject(new ASRJob(jobResponse));
+        }
+
+        /// <summary>
+        ///     Creates an Vmware Cbt Policy Object.
+        /// </summary>
+        private void VMwareCbtPolicyObject()
+        {
+            // Validate the Replication Provider.
+            if (string.Compare(
+                    this.ReplicationProvider,
+                    Constants.VMwareCbt,
+                    StringComparison.OrdinalIgnoreCase) !=
+                0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.IncorrectReplicationProvider,
+                        this.ReplicationProvider));
+            }
+
+            var vmwareCbtPolicyCreationInput = new VMwareCbtPolicyCreationInput()
+            {
+                AppConsistentFrequencyInMinutes = this.ApplicationConsistentSnapshotFrequencyInHours*60,
+                CrashConsistentFrequencyInMinutes = this.CrashConsistentFrequencyInMinutes,
+                RecoveryPointHistoryInMinutes = this.RecoveryPointRetentionInHours * 60
+            };
+
+            var createPolicyInputProperties = new CreatePolicyInputProperties()
+            {
+                ProviderSpecificInput = vmwareCbtPolicyCreationInput
+            };
+
+            var createPolicyInput = new CreatePolicyInput()
+            {
+                Properties = createPolicyInputProperties
+            };
+
+            var response =
+                RecoveryServicesClient.CreatePolicy(this.Name, createPolicyInput);
+
+            string jobId = PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location);
+
+            var jobResponse =
+                RecoveryServicesClient
+                .GetAzureSiteRecoveryJobDetails(jobId);
+
+            WriteObject(new ASRJob(jobResponse));
         }
 
         /// <summary>

@@ -76,6 +76,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
+    ///     Fabric Specific Details for VMWareV2.
+    /// </summary>
+    public class ASRVMWareV2SpecificDetails : ASRFabricSpecificDetails
+    {
+        /// <summary>
+        ///     Gets or sets the Migration solution ARM Id.
+        /// </summary>
+        public string MigrationSolutionId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the service endpoint.
+        /// </summary>
+        public string ServiceEndpoint { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the service resource Id.
+        /// </summary>
+        public string ServiceResourceId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the ARM Id of the VMware site.
+        /// </summary>
+        public string VmwareSiteId { get; set; }
+    }
+
+    /// <summary>
     ///     Fabric Specific Details for Azure.
     /// </summary>
     public class ASRAzureFabricSpecificDetails : ASRFabricSpecificDetails
