@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update MariaDb configuration
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzMariaDbConfiguration -Name delayed_insert_timeout -ServerName mariadb-test-h3pame -ResourceGroupName mariadb-test-qu5ov0 -Value 200
 
-{{ Add output here }}
+Name                   Type
+----                   ----
+delayed_insert_timeout Microsoft.DBforMariaDB/servers/configurations
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command updates a MariaDb configuration.

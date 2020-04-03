@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="29" errors="0" failures="0" not-run="0" inconclusive="0" ignored="2" skipped="0" invalid="0" date="2020-04-03" time="02:27:57">
+  <environment platform="Linux" user="root" user-domain="" nunit-version="2.5.8.0" machine-name="d6ba020f85ae" clr-version="Unknown" cwd="/src/MariaDB" os-version="4.19.76-linuxkit" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="17.2222" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Get-AzMariaDbConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="8.2606" asserts="0" description="/src/MariaDB/test/Get-AzMariaDbConfiguration.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzMariaDbConfiguration" executed="True" result="Success" success="True" time="2.3661" asserts="0" description="Get-AzMariaDbConfiguration">
+            <results>
+              <test-case description="List" name="Get-AzMariaDbConfiguration.List" time="2.0919" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzMariaDbConfiguration.Get" time="0.0684" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Get-AzMariaDbConnectionString.Tests.ps1" executed="True" result="Success" success="True" time="0.2278" asserts="0" description="/src/MariaDB/test/Get-AzMariaDbConnectionString.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzMariaDbConnectionString" executed="True" result="Success" success="True" time="0.0919" asserts="0" description="Get-AzMariaDbConnectionString">
+            <results>
+              <test-case description="ServerName" name="Get-AzMariaDbConnectionString.ServerName" time="0.0612" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Get-AzMariaDbFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.2657" asserts="0" description="/src/MariaDB/test/Get-AzMariaDbFirewallRule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzMariaDbFirewallRule" executed="True" result="Success" success="True" time="0.1392" asserts="0" description="Get-AzMariaDbFirewallRule">
+            <results>
+              <test-case description="List" name="Get-AzMariaDbFirewallRule.List" time="0.0738" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzMariaDbFirewallRule.Get" time="0.0363" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Get-AzMariaDbReplica.Tests.ps1" executed="True" result="Success" success="True" time="0.192" asserts="0" description="/src/MariaDB/test/Get-AzMariaDbReplica.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzMariaDbReplica" executed="True" result="Success" success="True" time="0.0587" asserts="0" description="Get-AzMariaDbReplica">
+            <results>
+              <test-case description="List" name="Get-AzMariaDbReplica.List" time="0.0374" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Get-AzMariaDbServer.Tests.ps1" executed="True" result="Success" success="True" time="0.2575" asserts="0" description="/src/MariaDB/test/Get-AzMariaDbServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzMariaDbServer" executed="True" result="Success" success="True" time="0.1278" asserts="0" description="Get-AzMariaDbServer">
+            <results>
+              <test-case description="List1" name="Get-AzMariaDbServer.List1" time="0.0359" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzMariaDbServer.Get" time="0.0196" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzMariaDbServer.List" time="0.036" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Get-AzMariaDbVirtualNetworkRule.Tests.ps1" executed="True" result="Success" success="True" time="0.2614" asserts="0" description="/src/MariaDB/test/Get-AzMariaDbVirtualNetworkRule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzMariaDbVirtualNetworkRule" executed="True" result="Success" success="True" time="0.1298" asserts="0" description="Get-AzMariaDbVirtualNetworkRule">
+            <results>
+              <test-case description="List" name="Get-AzMariaDbVirtualNetworkRule.List" time="0.055" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzMariaDbVirtualNetworkRule.Get" time="0.0391" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/New-AzMariaDbFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.2323" asserts="0" description="/src/MariaDB/test/New-AzMariaDbFirewallRule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzMariaDbFirewallRule" executed="True" result="Success" success="True" time="0.1104" asserts="0" description="New-AzMariaDbFirewallRule">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzMariaDbFirewallRule.CreateExpanded" time="0.0895" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/New-AzMariaDbServer.Tests.ps1" executed="True" result="Success" success="True" time="0.287" asserts="0" description="/src/MariaDB/test/New-AzMariaDbServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzMariaDbServer" executed="True" result="Success" success="True" time="0.1667" asserts="0" description="New-AzMariaDbServer">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzMariaDbServer.CreateExpanded" time="0.1446" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/New-AzMariaDbServerReplica.Tests.ps1" executed="True" result="Success" success="True" time="3.3928" asserts="0" description="/src/MariaDB/test/New-AzMariaDbServerReplica.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzMariaDbServerReplica" executed="True" result="Success" success="True" time="3.2595" asserts="0" description="New-AzMariaDbServerReplica">
+            <results>
+              <test-case description="ServerName" name="New-AzMariaDbServerReplica.ServerName" time="2.7599" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="ServerObject" name="New-AzMariaDbServerReplica.ServerObject" time="0.4685" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/New-AzMariaDbVirtualNetworkRule.Tests.ps1" executed="True" result="Success" success="True" time="0.2159" asserts="0" description="/src/MariaDB/test/New-AzMariaDbVirtualNetworkRule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzMariaDbVirtualNetworkRule" executed="True" result="Success" success="True" time="0.0955" asserts="0" description="New-AzMariaDbVirtualNetworkRule">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzMariaDbVirtualNetworkRule.CreateExpanded" time="0.0723" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Remove-AzMariaDbFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.2178" asserts="0" description="/src/MariaDB/test/Remove-AzMariaDbFirewallRule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzMariaDbFirewallRule" executed="True" result="Success" success="True" time="0.096" asserts="0" description="Remove-AzMariaDbFirewallRule">
+            <results>
+              <test-case description="Delete" name="Remove-AzMariaDbFirewallRule.Delete" time="0.0679" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Remove-AzMariaDbServer.Tests.ps1" executed="True" result="Success" success="True" time="0.359" asserts="0" description="/src/MariaDB/test/Remove-AzMariaDbServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzMariaDbServer" executed="True" result="Success" success="True" time="0.2294" asserts="0" description="Remove-AzMariaDbServer">
+            <results>
+              <test-case description="Delete" name="Remove-AzMariaDbServer.Delete" time="0.0757" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzMariaDbServer.DeleteViaIdentity" time="0.1228" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Remove-AzMariaDbVirtualNetworkRule.Tests.ps1" executed="True" result="Success" success="True" time="0.2288" asserts="0" description="/src/MariaDB/test/Remove-AzMariaDbVirtualNetworkRule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzMariaDbVirtualNetworkRule" executed="True" result="Success" success="True" time="0.0879" asserts="0" description="Remove-AzMariaDbVirtualNetworkRule">
+            <results>
+              <test-case description="Delete" name="Remove-AzMariaDbVirtualNetworkRule.Delete" time="0.0692" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Restart-AzMariaDbServer.Tests.ps1" executed="True" result="Success" success="True" time="0.3396" asserts="0" description="/src/MariaDB/test/Restart-AzMariaDbServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Restart-AzMariaDbServer" executed="True" result="Success" success="True" time="0.2202" asserts="0" description="Restart-AzMariaDbServer">
+            <results>
+              <test-case description="Restart" name="Restart-AzMariaDbServer.Restart" time="0.1039" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="RestartViaIdentity" name="Restart-AzMariaDbServer.RestartViaIdentity" time="0.0868" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Restore-AzMariaDbServer.Tests.ps1" executed="True" result="Ignored" success="True" time="1.5374" asserts="0" description="/src/MariaDB/test/Restore-AzMariaDbServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Restore-AzMariaDbServer" executed="True" result="Ignored" success="True" time="1.4143" asserts="0" description="Restore-AzMariaDbServer">
+            <results>
+              <test-case description="PointInTimeRestore" name="Restore-AzMariaDbServer.PointInTimeRestore" time="1.0928" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="PointInTimeRestoreServerObject" name="Restore-AzMariaDbServer.PointInTimeRestoreServerObject" time="0.2777" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GeoRestore" name="Restore-AzMariaDbServer.GeoRestore" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GeoRestoreServerObject" name="Restore-AzMariaDbServer.GeoRestoreServerObject" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Update-AzMariaDbConfiguration.Tests.ps1" executed="True" result="Success" success="True" time="0.2325" asserts="0" description="/src/MariaDB/test/Update-AzMariaDbConfiguration.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzMariaDbConfiguration" executed="True" result="Success" success="True" time="0.1094" asserts="0" description="Update-AzMariaDbConfiguration">
+            <results>
+              <test-case description="ServerName" name="Update-AzMariaDbConfiguration.ServerName" time="0.0821" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Update-AzMariaDbFirewallRule.Tests.ps1" executed="True" result="Success" success="True" time="0.2149" asserts="0" description="/src/MariaDB/test/Update-AzMariaDbFirewallRule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzMariaDbFirewallRule" executed="True" result="Success" success="True" time="0.0875" asserts="0" description="Update-AzMariaDbFirewallRule">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzMariaDbFirewallRule.UpdateExpanded" time="0.0664" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Update-AzMariaDbServer.Tests.ps1" executed="True" result="Success" success="True" time="0.3037" asserts="0" description="/src/MariaDB/test/Update-AzMariaDbServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzMariaDbServer" executed="True" result="Success" success="True" time="0.1838" asserts="0" description="Update-AzMariaDbServer">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzMariaDbServer.UpdateExpanded" time="0.0975" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentity" name="Update-AzMariaDbServer.UpdateViaIdentity" time="0.0596" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/MariaDB/test/Update-AzMariaDbVirtualNetworkRule.Tests.ps1" executed="True" result="Success" success="True" time="0.1956" asserts="0" description="/src/MariaDB/test/Update-AzMariaDbVirtualNetworkRule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzMariaDbVirtualNetworkRule" executed="True" result="Success" success="True" time="0.0763" asserts="0" description="Update-AzMariaDbVirtualNetworkRule">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzMariaDbVirtualNetworkRule.UpdateExpanded" time="0.0546" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

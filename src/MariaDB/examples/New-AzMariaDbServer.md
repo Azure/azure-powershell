@@ -1,18 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a MariaDB
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMariaDbServer -Name mariadb-aassd-01 -ResourceGroupName lucas-manual-test -Sku 'B_Gen5_1' -Location eastus
+cmdlet New-AzMariaDbServer at command pipeline position 1
+Supply values for the following parameters:
+AdministratorUsername: adminuser
+AdministratorLoginPassword: ************
 
-{{ Add output here }}
+Name             Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
+----             -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
+mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_Gen5_1         Basic   Enabled
 ```
 
-{{ Add description here }}
+This command creates a MariaDB.
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

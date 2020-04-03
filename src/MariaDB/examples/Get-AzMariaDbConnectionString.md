@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a connection string of MariaDB
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMariaDbConnectionString -ServerName mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0 -Client ADO.NET
 
-{{ Add output here }}
+Server=mariadb-asd-01.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid=adminuser@mariadb-asd-01; Pwd={your_password}; SslMode=Preferred;
 ```
 
-{{ Add description here }}
+This command gets a connection string of MariaDB.
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

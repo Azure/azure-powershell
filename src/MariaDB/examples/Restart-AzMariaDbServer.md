@@ -1,18 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Restart a MariaDB
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Restart-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command restart a MariaDB.
 
-### Example 2: {{ Add title here }}
+### Example 2: Restart a MariaDB
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | Restart-AzMariaDbServer
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command restart a MariaDB.
 
