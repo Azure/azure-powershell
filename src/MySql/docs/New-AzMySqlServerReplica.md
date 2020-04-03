@@ -23,23 +23,16 @@ Creates a new replica from an existing database.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new MySql server replica
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | New-AzMySqlServerReplica -Name mysql-test-replica -ResourceGroupName PowershellMySqlTest
 
-{{ Add output here }}
+Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----               -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mysql-test-replica eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet creates a new MySql server replica.
 
 ## PARAMETERS
 

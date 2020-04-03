@@ -26,23 +26,17 @@ Creates a new server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new MySql server
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
+PS C:\> New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUser mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
 
-{{ Add output here }}
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   ------- -------        ------------
+mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+These cmdlets create a new MySql server.
 
 ## PARAMETERS
 

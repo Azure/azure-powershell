@@ -22,23 +22,16 @@ List all the replicas for a given server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get MySql server replica by resource group and server name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMySqlReplica -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 
-{{ Add output here }}
+Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----               -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mysql-test-replica eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet gets MySql server replica by resource group and server name.
 
 ## PARAMETERS
 

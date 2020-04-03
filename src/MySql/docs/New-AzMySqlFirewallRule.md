@@ -23,23 +23,16 @@ Creates a new firewall rule or updates an existing firewall rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new MySql server Firewall Rule
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
 
-{{ Add output here }}
+Name Type
+---- ----
+rule Microsoft.DBforMySQL/servers/firewallRules
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlets create a MySql server Firewall Rule.
 
 ## PARAMETERS
 

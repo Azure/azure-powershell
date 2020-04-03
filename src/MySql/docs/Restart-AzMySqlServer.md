@@ -29,23 +29,22 @@ Restarts a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Restart MySql server by resource group and server name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Restart-AzMySqlServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This cmdlet restarts MySql server by resource group and server name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Restart MySql server by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/restart"
+PS C:\> Restart-AzMySqlServer -InputObject $ID
+ 
 ```
 
-{{ Add description here }}
+These cmdlets restart MySql server by identity.
 
 ## PARAMETERS
 

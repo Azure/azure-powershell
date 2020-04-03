@@ -30,23 +30,28 @@ Updates a configuration of a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update MySql configuration by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzMySqlConfiguration -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
 
-{{ Add output here }}
+Name            Type
+----            ----
+net_retry_count Microsoft.DBforMySQL/servers/configurations
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql configuration by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql configuration by identity.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/configurations/wait_timeout"
+PS C:\> Update-AzMySqlConfiguration -InputObject $ID -Value 150
 
-{{ Add output here }}
+Name         Type
+----         ----
+wait_timeout Microsoft.DBforMySQL/servers/configurations
 ```
 
-{{ Add description here }}
+These cmdlets update MySql configuration by identity.
 
 ## PARAMETERS
 

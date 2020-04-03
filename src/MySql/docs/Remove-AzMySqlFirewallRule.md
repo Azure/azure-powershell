@@ -30,23 +30,22 @@ Deletes a server firewall rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove MySql Firewall Rule by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This cmdlet removes MySql Firewall Rule by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove MySql Firewall Rule by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
+PS C:\> Remove-AzMySqlFirewallRule -InputObject $ID
+ 
 ```
 
-{{ Add description here }}
+These cmdlets remove MySql Firewall Rule by identity.
 
 ## PARAMETERS
 

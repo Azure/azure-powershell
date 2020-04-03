@@ -30,23 +30,22 @@ Deletes the virtual network rule with the given name.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove MySql server Virtual Network Rule by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzMySqlVirtualNetworkRule -Name vnet -ResourceGroupName PowershellMySqlTest-ServerName mysql-test
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This cmdlet removes MySql server Virtual Network Rule by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove MySql server Virtual Network Rule by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/virtualNetworkRules/vnet"
+PS C:\> Remove-AzMySqlVirtualNetworkRule -InputObject $ID
+ 
 ```
 
-{{ Add description here }}
+These cmdlets remove MySql server Virtual Network Rule by identity.
 
 ## PARAMETERS
 
