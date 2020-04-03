@@ -1,12 +1,12 @@
 {
-  "Get-AzMariaDbReplica+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-h8jxra/replicas?api-version=2018-06-01-preview+1": {
+  "Get-AzMariaDbReplica+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-p5yb9o/replicas?api-version=2018-06-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-h8jxra/replicas?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-p5yb9o/replicas?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "99" ],
-        "x-ms-client-request-id": [ "0bc07ae9-d7da-4f1f-acf8-5e5b16755bb2" ],
+        "x-ms-unique-id": [ "75" ],
+        "x-ms-client-request-id": [ "99425f59-02b2-4794-9d0f-d62bb23e1315" ],
         "CommandName": [ "Get-AzMariaDbReplica" ],
         "FullCommandName": [ "Get-AzMariaDbReplica_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,21 +21,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "9bcada15-76e7-4710-8708-c34c2ba86f06" ],
+        "x-ms-request-id": [ "0cbf5068-86c2-4731-80cc-77dfbd94d85e" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
-        "x-ms-correlation-request-id": [ "a9680972-772f-4607-bd8f-b3bdaea17721" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200401T075318Z:a9680972-772f-4607-bd8f-b3bdaea17721" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-correlation-request-id": [ "507cb506-2af9-41f0-b999-c2d5dba5c966" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200402T031951Z:507cb506-2af9-41f0-b999-c2d5dba5c966" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 01 Apr 2020 07:53:18 GMT" ]
+        "Date": [ "Thu, 02 Apr 2020 03:19:50 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1118" ],
+        "Content-Length": [ "1119" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"fdjmtqhrgc\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Enabled\"},\"version\":\"10.2\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mariadb-test-h8jxra-rep769.mariadb.database.azure.com\",\"earliestRestoreDate\":\"2020-04-01T07:51:57.71+00:00\",\"replicationRole\":\"Replica\",\"masterServerId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-h8jxra\",\"replicaCapacity\":0,\"byokEnforcement\":\"Disabled\",\"infrastructureEncryption\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4fgj6l/providers/Microsoft.DBforMariaDB/servers/mariadb-test-h8jxra-rep769\",\"name\":\"mariadb-test-h8jxra-rep769\",\"type\":\"Microsoft.DBforMariaDB/servers\"}]}"
+      "Content": "{\"value\":[{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"fblnkxuagj\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Enabled\"},\"version\":\"10.2\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mariadb-test-p5yb9o-rep109.mariadb.database.azure.com\",\"earliestRestoreDate\":\"2020-04-02T03:17:17.707+00:00\",\"replicationRole\":\"Replica\",\"masterServerId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-p5yb9o\",\"replicaCapacity\":0,\"byokEnforcement\":\"Disabled\",\"infrastructureEncryption\":\"Disabled\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-4rih5z/providers/Microsoft.DBforMariaDB/servers/mariadb-test-p5yb9o-rep109\",\"name\":\"mariadb-test-p5yb9o-rep109\",\"type\":\"Microsoft.DBforMariaDB/servers\"}]}"
     }
   }
 }

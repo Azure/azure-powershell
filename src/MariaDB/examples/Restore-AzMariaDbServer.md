@@ -21,22 +21,4 @@ restore-db02 eastus   adminuser          10.2    5120                    GP_Gen5
 
 This command restore a PointInTime MariaDB by server object.
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
 
