@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
+    - New-AzStorageAccount
+    - Set-AzStorageAccount
 
 ## Version 1.13.0
 * Supported AllowProtectedAppendWrite in ImmutabilityPolicy
