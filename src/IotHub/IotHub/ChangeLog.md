@@ -22,6 +22,7 @@
     - `Get-AzIotHubDeviceTwin`
     - `Update-AzIotHubDeviceTwin`
 * Added cmdlet to invoke direct method on a device in an Iot Hub.
+* Added cmdlet to invoke an edge module method in an Iot Hub.
 
 ## Version 2.3.0
 * Added support to manage distributed settings per-device. New Cmdlets are:
