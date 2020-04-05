@@ -20,7 +20,7 @@ Describe 'New-AzKustoClusterPrincipalAssignment' {
         $principalAssignmentName = $env.principalAssignmentName
         $principalId = $env.principalId
         $role = $env.principalRole
-        $principalType = $evn.principalType
+        $principalType = $env.principalType
         $principalAssignmentFullName = "$clusterName/$principalAssignmentName"
 
         $principalAssignment = New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName -PrincipalId $principalId -PrincipalType $principalType -Role $role

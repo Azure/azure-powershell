@@ -15,10 +15,10 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzKustoDataConnection' {
     It 'Delete' {
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $databaseName = Get-Database-Name
-        $dataConnectionName = Get-DataConnection-Name
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.clusterName
+        $databaseName = $env.databaseName
+        $dataConnectionName = $env.dataConnectionName
 
         Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
     }

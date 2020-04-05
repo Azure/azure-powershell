@@ -21,8 +21,8 @@ Describe 'Update-AzKustoCluster' {
 
     It 'UpdateViaIdentityExpanded' {
 
-        $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
-        $updatedCluster = Update-AzKustoCluster -InputObject $clusterGetItem -SkuName $updatedSkuName -SkuTier $skuTier
+        $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.clusterName 
+        $updatedCluster = Update-AzKustoCluster -InputObject $clusterGetItem -SkuName $env.updatedSkuName -SkuTier $env.skuTier
         Validate_Cluster $updatedCluster $env.clusterName $env.location "Running" "Succeeded" $env.resourceType $env.updatedSkuName $env.skuTier $env.capacity
     }
 }

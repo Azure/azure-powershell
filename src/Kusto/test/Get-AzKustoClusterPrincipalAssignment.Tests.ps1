@@ -20,7 +20,7 @@ Describe 'Get-AzKustoClusterPrincipalAssignment' {
         $principalAssignmentName = $env.principalAssignmentName
         $principalId = $env.principalId
         $role = $env.principalRole
-        $principalType = $evn.principalType
+        $principalType = $env.principalType
         $principalAssignmentFullName = "$clusterName/$principalAssignmentName"
 
         [array]$principalAssignmentGet = Get-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName
@@ -34,7 +34,7 @@ Describe 'Get-AzKustoClusterPrincipalAssignment' {
         $principalAssignmentName = $env.principalAssignmentName
         $principalId = $env.principalId
         $role = $env.principalRole
-        $principalType = $evn.principalType
+        $principalType = $env.principalType
         $principalAssignmentFullName = "$clusterName/$principalAssignmentName"
 
         $principalAssignment = Get-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName  $principalAssignmentName

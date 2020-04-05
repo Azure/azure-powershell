@@ -169,3 +169,25 @@ function Validate_PrincipalAssignment {
 		$PrincipalAssignment.PrincipalType | Should Be $PrincipalType
 		$PrincipalAssignment.Role | Should Be $Role 
 }
+
+<#
+.SYNOPSIS
+Validate if database is valid
+#>
+function Validate_DataConnection {
+	Param ([Object]$DataConnection,
+		[string]$dataConnectionFullName,
+		[string]$location,
+		[string]$eventHubResourceId,
+		[string]$tableName,
+		[string]$tableMappingName,
+		[string]$dataFormat,
+		[string]$kind)
+		$DataConnection.Name | Should Be $dataConnectionFullName
+		$DataConnection.Location | Should Be $location
+		$DataConnection.EventHubResourceId | Should Be $eventHubResourceId
+		$DataConnection.TableName | Should Be $tableName 
+		$DataConnection.MappingRuleName | Should Be $tableMappingName
+		$DataConnection.DataFormat | Should Be $dataFormat
+		$DataConnection.Kind | Should Be $kind 
+}

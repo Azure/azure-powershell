@@ -1,3 +1,5 @@
+$TestMode='playback'
+Import-Module C:\work\Repos\azure-powershell\src\Kusto\Az.Kusto.psd1
 $kustoCommonPath = Join-Path $PSScriptRoot 'common.ps1'
 . ($kustoCommonPath)
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'

@@ -24,7 +24,7 @@ Describe 'New-AzKustoDatabase' {
     It 'Create' {
         $softDeletePeriodInDays =  Get-Soft-Delete-Period-In-Days
         $hotCachePeriodInDays =  Get-Hot-Cache-Period-In-Days
-        $databaseFullName = "$clusterName/$databaseName"
+        $databaseFullName = $env.clusterName + "/" + $env.databaseName
 
         $databaseProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadWriteDatabase -Property @{Location=$location; SoftDeletePeriod=$softDeletePeriodInDays; HotCachePeriod=$hotCachePeriodInDays; Kind="ReadWrite"}
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $env.databaseName -Parameter $databaseProperties
