@@ -8,5 +8,3 @@ testnewkustoclusterf/myfollowerconfiguration Microsoft.Kusto/Clusters/AttachedDa
 ```
 
 The above command creates a ReadOnly database "mykustodatabase" in cluster "testnewkustoclusterf". It follows the database "mykustodatabase" from cluster "testnewkustocluster"
-
-

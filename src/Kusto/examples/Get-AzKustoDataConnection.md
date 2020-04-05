@@ -1,6 +1,6 @@
 ### Example 1: List all data connections in a specific database
 ```powershell
-PS C:\> Get-AzKustoDatabase -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase"
+PS C:\> Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase"
 
 Kind     Location Name                                               Type
 ----     -------- ----                                               ----
