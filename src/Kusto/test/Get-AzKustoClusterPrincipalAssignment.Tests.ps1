@@ -15,12 +15,12 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzKustoClusterPrincipalAssignment' {
     It 'List' {
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $principalAssignmentName = Get-PrincipalAssignment-Name
-        $principalId = Get-PrincipalAssignment-PrincipalId
-        $role = Get-Cluster-PrincipalAssignment-Role
-        $principalType = Get-PrincipalAssignment-PrincipalType
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.clusterName
+        $principalAssignmentName = $env.principalAssignmentName
+        $principalId = $env.principalId
+        $role = $env.principalRole
+        $principalType = $evn.principalType
         $principalAssignmentFullName = "$clusterName/$principalAssignmentName"
 
         [array]$principalAssignmentGet = Get-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName
@@ -29,12 +29,12 @@ Describe 'Get-AzKustoClusterPrincipalAssignment' {
     }
 
     It 'Get' {
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $principalAssignmentName = Get-PrincipalAssignment-Name
-        $principalId = Get-PrincipalAssignment-PrincipalId
-        $role = Get-Cluster-PrincipalAssignment-Role
-        $principalType = Get-PrincipalAssignment-PrincipalType
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.clusterName
+        $principalAssignmentName = $env.principalAssignmentName
+        $principalId = $env.principalId
+        $role = $env.principalRole
+        $principalType = $evn.principalType
         $principalAssignmentFullName = "$clusterName/$principalAssignmentName"
 
         $principalAssignment = Get-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName  $principalAssignmentName

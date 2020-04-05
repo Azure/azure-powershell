@@ -16,17 +16,17 @@ while(-not $mockingPath) {
 Describe 'Update-AzKustoDataConnection' {
     It 'Update' {
         $subscriptionId = $env.SubscriptionId
-        $location = Get-Location
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $databaseName = Get-Database-Name
-        $dataConnectionName = Get-DataConnection-Name
-        $eventhubNS= Get-EventHub-NameSpace-Name
-        $eventhub= Get-EventHub-Name
+        $location = $env.location
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.clusterName
+        $databaseName = $env.databaseName
+        $dataConnectionName = $env.dataConnectionName
+        $eventhubNS= $env.eventhubNSName
+        $eventhub= $env.eventhubName
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
-        $tableName = Get-Table-Name
-        $tableMappingName = Get-Updated-Table-Mapping-Name
-        $dataFormat = Get-DataFormat-Name
+        $tableName = $env.tableName
+        $tableMappingName = $env.tableMappingNameForUpdate
+        $dataFormat = $env.dataFormat
         $kind = "EventHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 

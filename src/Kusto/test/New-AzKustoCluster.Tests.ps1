@@ -15,15 +15,7 @@ while(-not $mockingPath) {
 
 Describe 'New-AzKustoCluster' {
     It 'CreateExpanded' {
-        $location = Get-Location
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $skuName = Get-SkuName
-        $skuTier = Get-SkuTier
-        $resourceType =  Get-Cluster-Resource-Type
-        $capacity = Get-Cluster-Default-Capacity
-
-        $clusterCreated = New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -SkuName $skuName -SkuTier $skuTier
-        Validate_Cluster $clusterCreated $clusterName  $location  "Running" "Succeeded" $resourceType $skuName $skuTier $capacity
+        $clusterCreated = New-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.clusterName -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
+        Validate_Cluster $clusterCreated $env.clusterName  $env.location  "Running" "Succeeded" $env.resourceType $env.skuName $env.skuTier $env.capacity
     }
 }

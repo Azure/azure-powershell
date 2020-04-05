@@ -15,29 +15,13 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzKustoCluster' {
     It 'Get' {
-        $location = Get-Location
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $skuName = Get-SkuName
-        $skuTier = Get-SkuTier
-        $resourceType =  Get-Cluster-Resource-Type
-        $capacity = Get-Cluster-Default-Capacity
-
-        $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
-        Validate_Cluster $clusterGetItem $clusterName $location "Running" "Succeeded" $resourceType $skuName $skuTier $capacity
+        $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.clusterName
+        Validate_Cluster $clusterGetItem $env.clusterName $env.location "Running" "Succeeded" $env.resourceType $env.skuName $env.skuTier $env.capacity
     }
 
     It 'List' {
-        $location = Get-Location
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $skuName = Get-SkuName
-        $skuTier = Get-SkuTier
-        $resourceType =  Get-Cluster-Resource-Type
-        $capacity = Get-Cluster-Default-Capacity
-
-        [array]$clusterGet = Get-AzKustoCluster -ResourceGroupName $resourceGroupName
+        [array]$clusterGet = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName
         $clusterGetItem = $clusterGet[0]
-        Validate_Cluster $clusterGetItem $clusterName $location "Running" "Succeeded" $resourceType $skuName $skuTier $capacity
+        Validate_Cluster $clusterGetItem $env.clusterName $env.location "Running" "Succeeded" $env.resourceType $env.skuName $env.skuTier $env.capacity
     }
 }

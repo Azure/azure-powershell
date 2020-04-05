@@ -15,29 +15,14 @@ while(-not $mockingPath) {
 
 Describe 'Update-AzKustoCluster' {
     It 'UpdateExpanded' {
-        $location = Get-Location
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $skuTier = Get-SkuTier
-        $updatedSkuName = Get-Updated-SkuName
-        $resourceType =  Get-Cluster-Resource-Type
-        $capacity = Get-Cluster-Default-Capacity
-
-        $updatedCluster = Update-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -SkuName $updatedSkuName -SkuTier $skuTier
-        Validate_Cluster $updatedCluster $clusterName $location "Running" "Succeeded" $resourceType $updatedSkuName $skuTier $capacity
+        $updatedCluster = Update-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.clusterName -SkuName $env.updatedSkuName -SkuTier $env.skuTier
+        Validate_Cluster $updatedCluster $env.clusterName $env.location "Running" "Succeeded" $env.resourceType $env.updatedSkuName $env.skuTier $env.capacity
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $location = Get-Location
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $skuTier = Get-SkuTier
-        $updatedSkuName = Get-Updated-SkuName
-        $resourceType =  Get-Cluster-Resource-Type
-        $capacity = Get-Cluster-Default-Capacity
 
         $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
         $updatedCluster = Update-AzKustoCluster -InputObject $clusterGetItem -SkuName $updatedSkuName -SkuTier $skuTier
-        Validate_Cluster $updatedCluster $clusterName $location "Running" "Succeeded" $resourceType $updatedSkuName $skuTier $capacity
+        Validate_Cluster $updatedCluster $env.clusterName $env.location "Running" "Succeeded" $env.resourceType $env.updatedSkuName $env.skuTier $env.capacity
     }
 }

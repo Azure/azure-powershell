@@ -15,10 +15,10 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzKustoDatabasePrincipalAssignment' {
     It 'Delete' {
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $databaseName = Get-Database-Name
-        $principalAssignmentName = Get-PrincipalAssignment-Name
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.clusterName
+        $databaseName = $env.databaseName
+        $principalAssignmentName = $env.principalAssignmentName
 
         Remove-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName  -PrincipalAssignmentName $principalAssignmentName
     }

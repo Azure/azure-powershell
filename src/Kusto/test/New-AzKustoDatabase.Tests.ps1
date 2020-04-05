@@ -15,30 +15,19 @@ while(-not $mockingPath) {
 
 Describe 'New-AzKustoDatabase' {
     It 'CreateExpanded' {
-        $location = Get-Location
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $databaseName = Get-Database-Name
-        $resourceType =  Get-Database-Type
-        $databaseFullName = "$clusterName/$databaseName"
+        $databaseFullName = $env.clusterName + "/" + $env.databaseName
 
-        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $location
-        Validate_Database $databaseCreated $databaseFullName $location $resourceType $null $null
+        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $env.databaseName -Kind ReadWrite -Location $env.location
+        Validate_Database $databaseCreated $databaseFullName $env.location $env.databaseType $null $null
     }
 
     It 'Create' {
-        $location = Get-Location
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $databaseName = Get-Database-Name
-        $resourceType =  Get-Database-Type
         $softDeletePeriodInDays =  Get-Soft-Delete-Period-In-Days
         $hotCachePeriodInDays =  Get-Hot-Cache-Period-In-Days
         $databaseFullName = "$clusterName/$databaseName"
 
         $databaseProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadWriteDatabase -Property @{Location=$location; SoftDeletePeriod=$softDeletePeriodInDays; HotCachePeriod=$hotCachePeriodInDays; Kind="ReadWrite"}
-        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Parameter $databaseProperties
-        Validate_Database $databaseCreated $databaseFullName $location $resourceType $softDeletePeriodInDays $hotCachePeriodInDays
-
+        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $env.databaseName -Parameter $databaseProperties
+		Validate_Database $databaseCreated $databaseFullName $env.location $env.databaseType $softDeletePeriodInDays $hotCachePeriodInDays
     }
 }

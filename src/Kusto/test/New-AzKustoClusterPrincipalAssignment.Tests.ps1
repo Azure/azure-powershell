@@ -15,12 +15,12 @@ while(-not $mockingPath) {
 
 Describe 'New-AzKustoClusterPrincipalAssignment' {
     It 'CreateExpanded' {
-        $resourceGroupName = Get-RG-Name
-        $clusterName = Get-Cluster-Name
-        $principalAssignmentName = Get-PrincipalAssignment-Name
-        $principalId = Get-PrincipalAssignment-PrincipalId
-        $role = Get-Cluster-PrincipalAssignment-Role
-        $principalType = Get-PrincipalAssignment-PrincipalType
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.clusterName
+        $principalAssignmentName = $env.principalAssignmentName
+        $principalId = $env.principalId
+        $role = $env.principalRole
+        $principalType = $evn.principalType
         $principalAssignmentFullName = "$clusterName/$principalAssignmentName"
 
         $principalAssignment = New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName -PrincipalId $principalId -PrincipalType $principalType -Role $role
