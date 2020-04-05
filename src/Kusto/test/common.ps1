@@ -205,3 +205,14 @@ function Validate_AttachedDatabaseConfiguration {
 		$AttachedDatabaseConfigurationCreated.DatabaseName | Should Be $DatabaseName 
 		$AttachedDatabaseConfigurationCreated.DefaultPrincipalsModificationKind | Should Be $DefaultPrincipalsModificationKind
 }
+
+
+function Validate_ClusterFollowerDatabase {
+	Param ([Object]$ClusterFollowerDatabase,
+		[string]$AttachedDatabaseConfigurationName,
+		[string]$FollowerClusterResourceId,
+		[string]$DatabaseName)
+		$ClusterFollowerDatabase.AttachedDatabaseConfigurationName | Should Be $AttachedDatabaseConfigurationName
+		$ClusterFollowerDatabase.ClusterResourceId | Should Be $FollowerClusterResourceId
+		$ClusterFollowerDatabase.DatabaseName | Should Be $DatabaseName
+}
