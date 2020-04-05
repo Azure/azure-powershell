@@ -77,6 +77,22 @@ directive:
     where: $..produces
     transform: $ = $.filter( each => each === 'application/json');
     reason: this spec adds produces application/xml and text/json erronously.
+  # Fix the case mismatch between swagger and RP
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/clusters\//g, "/Clusters/")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/databases\//g, "/Databases/")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/dataConnections\//g, "/DataConnections/")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/attachedDatabaseConfigurations\//g, "/AttachedDatabaseConfigurations/")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/principalAssignments\//g, "/PrincipalAssignments/")
   # Remove the unexpanded parameter set
   - where:
       variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Data$|^DataViaIdentity$|^Detach$|^DetachViaIdentity$|^UpdateViaIdentity$
@@ -99,10 +115,6 @@ directive:
   # Hide the operation API
   - where:
       subject: Operation
-    hide: true
-  # Hide cmdlets that are not reviewed yet
-  - where:
-      subject: ClusterFollowerDatabase|DetachClusterFollowerDatabase|DiagnoseClusterVirtualNetwork
     hide: true
   - where:
       subject: .*PrincipalAssignmentNameAvailability
