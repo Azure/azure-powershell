@@ -1,61 +1,77 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/en-us/powershell/module/az.kusto/test-azkustodatabasenameavailability
+online version: https://docs.microsoft.com/en-us/powershell/module/az.kusto/test-azkustodataconnectionnameavailability
 schema: 2.0.0
 ---
 
-# Test-AzKustoDatabaseNameAvailability
+# Test-AzKustoDataConnectionNameAvailability
 
 ## SYNOPSIS
-Checks that the database name is valid and is not already in use.
+Checks that the data connection name is valid and is not already in use.
 
 ## SYNTAX
 
 ### CheckExpanded (Default)
 ```
-Test-AzKustoDatabaseNameAvailability -ClusterName <String> -ResourceGroupName <String> -Name <String>
- -Type <Type> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzKustoDataConnectionNameAvailability -ClusterName <String> -DatabaseName <String>
+ -ResourceGroupName <String> -Name <String> -Type <Type> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
-Test-AzKustoDatabaseNameAvailability -InputObject <IKustoIdentity> -Name <String> -Type <Type>
+Test-AzKustoDataConnectionNameAvailability -InputObject <IKustoIdentity> -Name <String> -Type <Type>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Checks that the database name is valid and is not already in use.
+Checks that the data connection name is valid and is not already in use.
 
 ## EXAMPLES
 
-### Example 1: Check the availability of a Kusto database name which is in use
+### Example 1: Check the availability of a Data Connection name which is in use
 ```powershell
-PS C:\> Test-AzKustoDatabaseNameAvailability -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Type Microsoft.Kusto/Clusters/Databases
+PS C:\> Test-AzKustoDataConnectionNameAvailability -ClusterName testnewkustocluster -DatabaseName mykustodatabase -ResourceGroupName testrg -Name mykustodataconnection -Type Microsoft.Kusto/Clusters/Databases/dataConnections
 
-Message                                                                                                          Name            NameAvailable Reason
--------                                                                                                          ----            ------------- ------
-Database mykustodatabase already exists in cluster testnewkustocluster. Please select a different database name. mykustodatabase False
+Message                                                                                                                                                          Name                  NameAvailable Reason
+-------                                                                                                                                                          ----                  ------------- ------
+Data Connection mykustodataconnection already exists in database mykustodatabase in cluster testnewkustocluster. Please select a different data connection name. mykustodataconnection False         AlreadyExists
 ```
 
-The above command returns whether or not a Kusto database named "mykustodatabase" exists in the "testnewkustocluster" cluster.
+The above command returns whether or not a Data Connection named "mykustodataconnection" exists in the "mykustodatabase" database.
 
-### Example 2: Check the availability of a Kusto database name which is not in use
+### Example 2: Check the availability of a Data Connection name which is not in use
 ```powershell
-PS C:\> Test-AzKustoDatabaseNameAvailability -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase2 -Type Microsoft.Kusto/Clusters/Databases
+PS C:\> Test-AzKustoDataConnectionNameAvailability -ClusterName testnewkustocluster -DatabaseName mykustodatabase -ResourceGroupName testrg -Name mydataconnection -Type Microsoft.Kusto/Clusters/Databases/dataConnections
 
 Message Name             NameAvailable Reason
 ------- ----             ------------- ------
-        mykustodatabase2 True
+        mydataconnection True
 ```
 
-The above command returns whether or not a Kusto database named "mykustodatabase2" exists in the "testnewkustocluster" cluster.
+The above command returns whether or not a Data Connection named "mydataconnection" exists in the "mykustodatabase" database.
 
 ## PARAMETERS
 
 ### -ClusterName
 The name of the Kusto cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: CheckExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DatabaseName
+The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
@@ -104,7 +120,7 @@ Dynamic: False
 ```
 
 ### -Name
-Resource name.
+Data Connection name.
 
 ```yaml
 Type: System.String
@@ -153,7 +169,7 @@ Dynamic: False
 ```
 
 ### -Type
-The type of resource, for instance Microsoft.Kusto/Clusters/databases.
+The type of resource, Microsoft.Kusto/Clusters/Databases/dataConnections.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Type

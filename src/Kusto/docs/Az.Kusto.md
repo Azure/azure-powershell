@@ -107,6 +107,9 @@ Checks that the cluster name is valid and is not already in use.
 ### [Test-AzKustoDatabaseNameAvailability](Test-AzKustoDatabaseNameAvailability.md)
 Checks that the database name is valid and is not already in use.
 
+### [Test-AzKustoDataConnectionNameAvailability](Test-AzKustoDataConnectionNameAvailability.md)
+Checks that the data connection name is valid and is not already in use.
+
 ### [Update-AzKustoCluster](Update-AzKustoCluster.md)
 Update a Kusto cluster.
 
