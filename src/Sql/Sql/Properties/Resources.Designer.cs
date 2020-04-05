@@ -1330,6 +1330,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to submit request for stopping the operation &apos;{0}&apos; on Azure Sql Managed Instance &apos;{1}&apos;?.
+        /// </summary>
+        internal static string StopAzureSqlInstanceOperationDescription {
+            get {
+                return ResourceManager.GetString("StopAzureSqlInstanceOperationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submiting request for stopping the operation &apos;{0}&apos; on Azure Sql Managed Instance &apos;{1}&apos;..
+        /// </summary>
+        internal static string StopAzureSqlInstanceOperationWarning {
+            get {
+                return ResourceManager.GetString("StopAzureSqlInstanceOperationWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stopping upgrade for Azure Sql Database Server &apos;{0}&apos;..
         /// </summary>
         internal static string StopAzureSqlServerUpgradeDescription {

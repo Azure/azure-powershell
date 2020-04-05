@@ -258,6 +258,12 @@
   <data name="StopAzureSqlServerUpgradeWarning" xml:space="preserve">
     <value>Are you sure you want to stop the upgrade for Azure Sql Database Server '{0}'?</value>
   </data>
+  <data name="StopAzureSqlInstanceOperationDescription" xml:space="preserve">
+    <value>Are you sure you want to submit request for stopping the operation '{0}' on Azure Sql Managed Instance '{1}'?</value>
+  </data>
+  <data name="StopAzureSqlInstanceOperationWarning" xml:space="preserve">
+    <value>Submiting request for stopping the operation '{0}' on Azure Sql Managed Instance '{1}'.</value>
+  </data>
   <data name="StorageAccountNotFound" xml:space="preserve">
     <value>Cannot find a storage account with the name '{0}'. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it.</value>
   </data>

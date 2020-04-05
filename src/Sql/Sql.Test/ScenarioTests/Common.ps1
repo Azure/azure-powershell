@@ -558,6 +558,15 @@ function Get-VNetName
 
 <#
 .SYNOPSIS
+Gets valid managed instance operation name
+#>
+function Get-ManagedInstanceOperationName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets test mode - 'Record' or 'Playback'
 #>
 function Get-SqlTestMode {
@@ -915,6 +924,34 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 	$managedInstance = New-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
  			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-Vcore $vCore -SkuName $skuName -AssignIdentity
+
+	return $managedInstance
+}
+
+<#
+	.SYNOPSIS
+	Asyn update of hardware generation on Sql managed instance
+#>
+function Update-ManagedInstanceGenerationForTest ($resourceGroup, $managedInstance)
+{
+ 	$computeGeneration = "Gen5"
+
+	$managedInstance = Set-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
+ 			 -ComputeGeneration $computeGeneration -Force -AsJob
+
+	return $managedInstance
+}
+
+<#
+	.SYNOPSIS
+	Sync update of storage on Sql managed instance
+#>
+function Update-ManagedInstanceStorageForTest ($resourceGroup, $managedInstance)
+{
+	$storageSize = 928
+
+	$managedInstance = Set-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
+ 			-StorageSizeInGb $storageSize -Force
 
 	return $managedInstance
 }
