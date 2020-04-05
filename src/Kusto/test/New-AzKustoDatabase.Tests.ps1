@@ -30,7 +30,7 @@ Describe 'New-AzKustoDatabase' {
         $location = Get-Location
         $resourceGroupName = Get-RG-Name
         $clusterName = Get-Cluster-Name
-        $databaseName = Get-Database-Name + "a"
+        $databaseName = Get-Database-Name
         $resourceType =  Get-Database-Type
         $softDeletePeriodInDays =  Get-Soft-Delete-Period-In-Days
         $hotCachePeriodInDays =  Get-Hot-Cache-Period-In-Days
