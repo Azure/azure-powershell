@@ -191,3 +191,17 @@ function Validate_DataConnection {
 		$DataConnection.DataFormat | Should Be $dataFormat
 		$DataConnection.Kind | Should Be $kind 
 }
+
+function Validate_AttachedDatabaseConfiguration {
+	Param ([Object]$AttachedDatabaseConfigurationCreated,
+		[string]$AttachedDatabaseConfigurationFullName,
+		[string]$Location,
+		[string]$ClusterResourceId,
+		[string]$DatabaseName,
+		[string]$DefaultPrincipalsModificationKind)
+		$AttachedDatabaseConfigurationCreated.Name | Should Be $AttachedDatabaseConfigurationFullName
+		$AttachedDatabaseConfigurationCreated.Location | Should Be $Location
+		$AttachedDatabaseConfigurationCreated.ClusterResourceId | Should Be $ClusterResourceId
+		$AttachedDatabaseConfigurationCreated.DatabaseName | Should Be $DatabaseName 
+		$AttachedDatabaseConfigurationCreated.DefaultPrincipalsModificationKind | Should Be $DefaultPrincipalsModificationKind
+}
