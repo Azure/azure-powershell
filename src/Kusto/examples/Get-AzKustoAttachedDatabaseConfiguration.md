@@ -19,4 +19,3 @@ testnewkustoclusterf/myfollowerconfiguration Microsoft.Kusto/Clusters/AttachedDa
 ```
 
 The above command returns the AttachedDatabaseConfigurations named "myfollowerconfiguration" in the cluster "testnewkustoclusterf".
-

@@ -9,4 +9,3 @@ EventHub East US  testnewkustocluster/mykustodatabase/mykustodataconnection Micr
 ```
 
 The above command updates an existing EventHub data connection named "mykustodataconnection" for table "Events" in database "mykustodatabase" of the existing cluster "testnewkustocluster" found in the resource group "testrg".
-
