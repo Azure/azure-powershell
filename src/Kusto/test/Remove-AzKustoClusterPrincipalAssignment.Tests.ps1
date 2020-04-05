@@ -19,6 +19,6 @@ Describe 'Remove-AzKustoClusterPrincipalAssignment' {
         $clusterName = $env.clusterName
         $principalAssignmentName = $env.principalAssignmentName
 
-        Remove-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName
+        { Remove-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName } | Should -Not -Throw
     }
 }

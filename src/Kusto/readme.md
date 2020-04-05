@@ -76,7 +76,7 @@ directive:
   - from: swagger-document
     where: $..produces
     transform: $ = $.filter( each => each === 'application/json');
-    reason: this spec adds produces application/xml and text/json erronously.  
+    reason: this spec adds produces application/xml and text/json erronously.
   # Remove the unexpanded parameter set
   - where:
       variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Data$|^DataViaIdentity$|^Detach$|^DetachViaIdentity$|^UpdateViaIdentity$
@@ -102,7 +102,7 @@ directive:
     hide: true
   # Hide cmdlets that are not reviewed yet
   - where:
-      subject: AttachedDatabaseConfiguration|ClusterFollowerDatabase|DataConnection|DetachClusterFollowerDatabase|DiagnoseClusterVirtualNetwork
+      subject: ClusterFollowerDatabase|DetachClusterFollowerDatabase|DiagnoseClusterVirtualNetwork
     hide: true
   - where:
       subject: .*PrincipalAssignmentNameAvailability

@@ -20,6 +20,6 @@ Describe 'Remove-AzKustoDatabasePrincipalAssignment' {
         $databaseName = $env.databaseName
         $principalAssignmentName = $env.principalAssignmentName
 
-        Remove-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName  -PrincipalAssignmentName $principalAssignmentName
+        { Remove-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName  -PrincipalAssignmentName $principalAssignmentName} | Should -Not -Throw
     }
 }
