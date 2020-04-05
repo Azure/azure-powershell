@@ -17,8 +17,14 @@ Add a list of language extensions that can run within KQL queries.
 ### [Add-AzKustoDatabasePrincipal](Add-AzKustoDatabasePrincipal.md)
 Add Database principals permissions.
 
+### [Get-AzKustoAttachedDatabaseConfiguration](Get-AzKustoAttachedDatabaseConfiguration.md)
+Returns an attached database configuration.
+
 ### [Get-AzKustoCluster](Get-AzKustoCluster.md)
 Gets a Kusto cluster.
+
+### [Get-AzKustoClusterFollowerDatabase](Get-AzKustoClusterFollowerDatabase.md)
+Returns a list of databases that are owned by this cluster and were followed by another cluster.
 
 ### [Get-AzKustoClusterLanguageExtension](Get-AzKustoClusterLanguageExtension.md)
 Returns a list of language extensions that can run within KQL queries.
@@ -38,6 +44,18 @@ Returns a list of database principals of the given Kusto cluster and database.
 ### [Get-AzKustoDatabasePrincipalAssignment](Get-AzKustoDatabasePrincipalAssignment.md)
 Gets a Kusto cluster database principalAssignment.
 
+### [Get-AzKustoDataConnection](Get-AzKustoDataConnection.md)
+Returns a data connection.
+
+### [Invoke-AzKustoDetachClusterFollowerDatabase](Invoke-AzKustoDetachClusterFollowerDatabase.md)
+Detaches all followers of a database owned by this cluster.
+
+### [Invoke-AzKustoDiagnoseClusterVirtualNetwork](Invoke-AzKustoDiagnoseClusterVirtualNetwork.md)
+Diagnoses network connectivity status for external resources on which the service is dependent on.
+
+### [New-AzKustoAttachedDatabaseConfiguration](New-AzKustoAttachedDatabaseConfiguration.md)
+Creates or updates an attached database configuration.
+
 ### [New-AzKustoCluster](New-AzKustoCluster.md)
 Create or update a Kusto cluster.
 
@@ -49,6 +67,12 @@ Creates or updates a database.
 
 ### [New-AzKustoDatabasePrincipalAssignment](New-AzKustoDatabasePrincipalAssignment.md)
 Creates a Kusto cluster database principalAssignment.
+
+### [New-AzKustoDataConnection](New-AzKustoDataConnection.md)
+Creates or updates a data connection.
+
+### [Remove-AzKustoAttachedDatabaseConfiguration](Remove-AzKustoAttachedDatabaseConfiguration.md)
+Deletes the attached database configuration with the given name.
 
 ### [Remove-AzKustoCluster](Remove-AzKustoCluster.md)
 Deletes a Kusto cluster.
@@ -68,6 +92,9 @@ Remove Database principals permissions.
 ### [Remove-AzKustoDatabasePrincipalAssignment](Remove-AzKustoDatabasePrincipalAssignment.md)
 Deletes a Kusto principalAssignment.
 
+### [Remove-AzKustoDataConnection](Remove-AzKustoDataConnection.md)
+Deletes the data connection with the given name.
+
 ### [Start-AzKustoCluster](Start-AzKustoCluster.md)
 Starts a Kusto cluster.
 
@@ -85,4 +112,7 @@ Update a Kusto cluster.
 
 ### [Update-AzKustoDatabase](Update-AzKustoDatabase.md)
 Updates a database.
+
+### [Update-AzKustoDataConnection](Update-AzKustoDataConnection.md)
+Updates a data connection.
 
