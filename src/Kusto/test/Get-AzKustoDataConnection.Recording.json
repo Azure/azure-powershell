@@ -1,8 +1,8 @@
 {
-  "Get-AzKustoDataConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/clusters/sdkpsclustereu/databases/sdkpowershelldb/dataConnections/sdkpsdataconnection?api-version=2020-02-15+1": {
+  "Get-AzKustoDataConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/clusters/sdkpsclustereu/databases/sdkpowershelldb/dataConnections/sdkpsdataconnection?api-version=2020-02-15",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "10" ],
@@ -41,10 +41,10 @@
       "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection\",\"name\":\"sdkpsclustereu/sdkpowershelldb/sdkpsdataconnection\",\"type\":\"Microsoft.Kusto/Clusters/Databases/DataConnections\",\"etag\":\"\\\"\\\"\",\"location\":\"East US\",\"kind\":\"EventHub\",\"tags\":{},\"properties\":{\"eventHubResourceId\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubns/eventhubs/sdkpseventhub\",\"consumerGroup\":\"$Default\",\"tableName\":\"Events\",\"mappingRuleName\":\"EventsMapping\",\"dataFormat\":\"JSON\",\"eventSystemProperties\":[],\"compression\":\"None\",\"provisioningState\":\"Succeeded\"}}"
     }
   },
-  "Get-AzKustoDataConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/clusters/sdkpsclustereu/databases/sdkpowershelldb/dataConnections/sdkpsdataconnection?api-version=2020-02-15+1": {
+  "Get-AzKustoDataConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/clusters/sdkpsclustereu/databases/sdkpowershelldb/dataConnections/sdkpsdataconnection?api-version=2020-02-15",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/DataConnections/sdkpsdataconnection?api-version=2020-02-15",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "11" ],

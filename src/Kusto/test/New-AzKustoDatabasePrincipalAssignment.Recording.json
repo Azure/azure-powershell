@@ -1,8 +1,8 @@
 {
-  "New-AzKustoDatabasePrincipalAssignment+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/clusters/sdkpsclustereu/databases/sdkpowershelldb/principalAssignments/principalassignment1?api-version=2020-02-15+1": {
+  "New-AzKustoDatabasePrincipalAssignment+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/PrincipalAssignments/principalassignment1?api-version=2020-02-15+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/clusters/sdkpsclustereu/databases/sdkpowershelldb/principalAssignments/principalassignment1?api-version=2020-02-15",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/PrincipalAssignments/principalassignment1?api-version=2020-02-15",
       "Content": "{\r\n  \"properties\": {\r\n    \"principalId\": \"e60fe5c8-d6a5-4dee-b382-fb4502588dd0\",\r\n    \"principalType\": \"App\",\r\n    \"role\": \"Viewer\"\r\n  }\r\n}",
       "Headers": {
         "x-ms-unique-id": [ "277" ],
@@ -84,10 +84,10 @@
       "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationresults/99f492bf-aab4-4868-a5f1-4b5a9921c5b8\",\"name\":\"99f492bf-aab4-4868-a5f1-4b5a9921c5b8\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-02T15:52:57.9960113Z\",\"endTime\":\"2020-04-02T15:52:58.1209476Z\",\"percentComplete\":1.0,\"properties\":{\"OperationKind\":\"DatabaseAddPrincipals\",\"RootActivityId\":\"9bff7d5e-5022-458c-b25a-70112cf0b746\",\"provisioningState\":\"Succeeded\"}}"
     }
   },
-  "New-AzKustoDatabasePrincipalAssignment+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/clusters/sdkpsclustereu/databases/sdkpowershelldb/principalAssignments/principalassignment1?api-version=2020-02-15+3": {
+  "New-AzKustoDatabasePrincipalAssignment+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/PrincipalAssignments/principalassignment1?api-version=2020-02-15+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/clusters/sdkpsclustereu/databases/sdkpowershelldb/principalAssignments/principalassignment1?api-version=2020-02-15",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/PrincipalAssignments/principalassignment1?api-version=2020-02-15",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "277", "278", "279" ],

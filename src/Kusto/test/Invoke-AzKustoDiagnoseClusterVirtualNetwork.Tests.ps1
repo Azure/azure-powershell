@@ -1,3 +1,5 @@
+$kustoCommonPath = Join-Path $PSScriptRoot 'common.ps1'
+. ($kustoCommonPath)
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
@@ -12,15 +14,14 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Invoke-AzKustoDiagnoseClusterVirtualNetwork' {
-    It 'Diagnose' -skip {
+    It 'Diagnose' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
 
         { Invoke-AzKustoDiagnoseClusterVirtualNetwork -ResourceGroupName $resourceGroupName -ClusterName $clusterName } | Should -Not -Throw
-        Write-Output "hahah"
     }
 
-    It 'DiagnoseViaIdentity' {
+    It 'DiagnoseViaIdentity' -skip {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
 

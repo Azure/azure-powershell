@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Invoke-AzKustoDetachClusterFollowerDatabase' {
-    It 'DetachExpanded' -skip {
+    It 'DetachExpanded' {
         $subscriptionId = $env.SubscriptionId
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
@@ -25,7 +25,7 @@ Describe 'Invoke-AzKustoDetachClusterFollowerDatabase' {
         { Invoke-AzKustoDetachClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $clusterResourceId } | Should -Not -Throw
     }
 
-    It 'DetachViaIdentityExpanded' {
+    It 'DetachViaIdentityExpanded' -skip {
         $subscriptionId = $env.SubscriptionId
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
