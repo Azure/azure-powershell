@@ -50,12 +50,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         public IAzureContext Context { get; set; }
 
-        public SqlAuditAdapter(IAzureContext context)
+        private Guid RoleAssignmentId { get; }
+
+        public SqlAuditAdapter(IAzureContext context, Guid roleAssignmentId = default(Guid))
         {
             Context = context;
             Subscription = context?.Subscription;
             Communicator = new AuditingEndpointsCommunicator(Context);
             AzureCommunicator = new AzureEndpointsCommunicator(Context);
+            RoleAssignmentId = roleAssignmentId;
         }
 
         internal void GetAuditingSettings(
@@ -140,7 +143,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 model.StorageAccountResourceId = AzureCommunicator.RetrieveStorageAccountIdAsync(
                     storageAccountSubscriptionId.Value,
                     GetStorageAccountName(storageEndpoint)).GetAwaiter().GetResult();
-                model.StorageKeyType = GetStorageKeyKind(isSecondary);
+                if (!AzureCommunicator.IsStorageAccountInVNet(model.StorageAccountResourceId))
+                {
+                    model.StorageKeyType = GetStorageKeyKind(isSecondary);
+                }
+
                 ModelizeRetentionInfo(model, retentionDays);
             }
         }
@@ -377,7 +384,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             IList<DiagnosticSettingsResource> diagnosticsEnablingAuditCategory = model.DiagnosticsEnablingAuditCategory;
             DiagnosticSettingsResource settings = diagnosticsEnablingAuditCategory.FirstOrDefault();
             if (settings == null ||
-                (model is DatabaseAuditModel dbModel  ?
+                (model is DatabaseAuditModel dbModel ?
                 Communicator.RemoveDiagnosticSettings(settings.Name, dbModel.ResourceGroupName, dbModel.ServerName, dbModel.DatabaseName) :
                 Communicator.RemoveDiagnosticSettings(settings.Name, model.ResourceGroupName, model.ServerName)) == false)
             {
@@ -432,7 +439,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             if (AzureCommunicator.IsStorageAccountInVNet(model.StorageAccountResourceId))
             {
                 Guid? principalId = Communicator.AssignServerIdentity(model.ResourceGroupName, model.ServerName);
-                AzureCommunicator.AddRoleAssignmentToStorage(model.StorageAccountResourceId, principalId.Value);
+                AzureCommunicator.AssignRoleForServerIdentityOnStorage(model.StorageAccountResourceId, principalId.Value, RoleAssignmentId);
             }
             else
             {

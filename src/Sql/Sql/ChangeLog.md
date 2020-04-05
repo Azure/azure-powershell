@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support auditing to a storage account in VNet.
 
 ## Version 2.5.0
 * Added readable secondary parameter to `Invoke-AzSqlDatabaseFailover`

@@ -347,28 +347,43 @@ namespace Microsoft.Azure.Commands.Sql.Common
             return InformationProtectionPolicy.ToInformationProtectionPolicy(policyToken);
         }
 
-        internal void AddRoleAssignmentToStorage(string storageAccountResourceId, Guid principalId)
+        internal void AssignRoleForServerIdentityOnStorage(string storageAccountResourceId, Guid principalId, Guid roleAssignmentId)
         {
+            roleAssignmentId = roleAssignmentId == default(Guid) ? Guid.NewGuid() : roleAssignmentId;
             Uri endpoint = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
-            string uri = $"{endpoint}/{storageAccountResourceId}/providers/Microsoft.Authorization/roleAssignments/{Guid.NewGuid()}?api-version=2018-01-01-preview";
+            string uri = $"{endpoint}/{storageAccountResourceId}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2018-01-01-preview";
 
             string roleDefinitionId = $"/subscriptions/{GetStorageAccountSubscription(storageAccountResourceId)}/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe";
             string content = $"{{\"properties\": {{ \"roleDefinitionId\": \"{roleDefinitionId}\", \"principalId\": \"{principalId}\", \"principalType\": \"ServicePrincipal\"}}}}";
 
-            var httpRequest = new HttpRequestMessage
-            {
-                Method = HttpMethod.Put,
-                RequestUri = new Uri(uri),
-                Content = new StringContent(content, Encoding.UTF8, "application/json")
-            };
-
+            int numberOfTries = 20;
+            const int SecondsToWaitBetweenTries = 20;
             var client = GetCurrentResourcesClient(Context);
-            client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
-            HttpResponseMessage response = client.HttpClient.SendAsync(httpRequest, CancellationToken.None).Result;
-            if (response.IsSuccessStatusCode || response.StatusCode == System.Net.HttpStatusCode.Conflict)
+            HttpResponseMessage response = null;
+            bool isARetry = false;
+            do
             {
-                return;
-            }
+                if (isARetry)
+                {
+                    Thread.Sleep(TimeSpan.FromSeconds(SecondsToWaitBetweenTries));
+                }
+
+                HttpRequestMessage httpRequest = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Put,
+                    RequestUri = new Uri(uri),
+                    Content = new StringContent(content, Encoding.UTF8, "application/json")
+                };
+                client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
+                response = client.HttpClient.SendAsync(httpRequest, CancellationToken.None).Result;
+                if (response.IsSuccessStatusCode || response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                {
+                    return;
+                }
+
+                numberOfTries--;
+                isARetry = true;
+            } while (response.StatusCode == System.Net.HttpStatusCode.BadRequest && numberOfTries > 0);
 
             throw new Exception(string.Format(Properties.Resources.FailedToAddRoleAssignmentForStorageAccount, storageAccountResourceId));
         }
