@@ -1,55 +1,57 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-ms.assetid: 7b4a8c9f-874c-4a27-b87e-c8ad7e73188d
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azexpressroutecircuitconnectionconfig
+ms.assetid: 8b4a8c9f-874c-4a27-b87e-c8ad7e73188d
 schema: 2.0.0
 ---
 
-# Add-AzExpressRouteCircuitConnectionConfig
+# Set-AzExpressRouteCircuitConnectionConfig
 
 ## SYNOPSIS
-Adds a circuit connection configuration to Private Peering of an Express Route Circuit. 
+Updates a circuit connection configuration created in Private Peerings for an Express Route Circuit. 
 
 ## SYNTAX
 
 ### SetByResource (Default)
 ```
-Add-AzExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
+Set-AzExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
  [-AddressPrefix] <String> [-AddressPrefixType <String>] [-AuthorizationKey <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-Add-AzExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
+Set-AzExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
  [-PeerExpressRouteCircuitPeering] <String> [-AddressPrefix] <String> -[AddressPrefixType <String>] [-AuthorizationKey <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzExpressRouteCircuitConnectionConfig** cmdlet adds a circuit connection configuration to
+The **Set-AzExpressRouteCircuitConnectionConfig** cmdlet updates a circuit connection configuration created in
 private peering for an ExpressRoute circuit. This allows peering two Express Route Circuits 
-across regions or subscriptions.Note that, after running **Add-AzExpressRouteCircuitConnectionConfig**, 
-you must call the Set-AzExpressRouteCircuit cmdlet to activate the configuration.
+across regions or subscriptions.
+Note that, before running **Set-AzExpressRouteCircuitConnectionConfig** you must add the circuit connection using 
+**Add-AzExpressRouteCircuitConnectionConfig**. 
+Also, after running **Set-AzExpressRouteCircuitPeeringConfig**, you must call the Set-AzExpressRouteCircuit cmdlet to activate the configuration.
+
 
 ## EXAMPLES
 
-### Example 1: Add a circuit connection resource to an existing ExpressRoute circuit
+### Example 1: Update a circuit connection resource to an existing ExpressRoute circuit
 ```
 $circuit_init = Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 $circuit_peer = Get-AzExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
-$addressSpace = '60.0.0.0/29'
-$addressPrefixType = 'IPv4'
-Add-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AddressPrefixType $addressPrefixType -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey
+$addressSpace = 'aa:bb::0/125'
+$addressPrefixType = 'IPv6'
+Set-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AddressPrefixType $addressPrefixType -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 ```
 
-### Example 2: Add a circuit connection configuration using Piping to an existing ExpressRoute Circuit
+### Example 2: Set a circuit connection configuration using Piping to an existing ExpressRoute Circuit
 ```
 $circuit_peer = Get-AzExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
 $addressSpace = '60.0.0.0/29'
-Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Add-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey |Set-AzExpressRouteCircuit
+Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Set-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey |Set-AzExpressRouteCircuit
 ```
 
 ## PARAMETERS
@@ -70,7 +72,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 ### -AddressPrefixType
-This specifies the Address Family that address prefix belongs to.
+Specifies the address family that address prefix belongs to.
 
 ```yaml
 Type: System.String
@@ -212,7 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzExpressRouteCircuitConnectionConfig](Remove-AzExpressRouteCircuitConnectionConfig.md)
 
-[Set-AzExpressRouteCircuitConnectionConfig](Set-AzExpressRouteCircuitConnectionConfig.md)
+[Add-AzExpressRouteCircuitConnectionConfig](Set-AzExpressRouteCircuitConnectionConfig.md)
 
 [Set-AzExpressRouteCircuit](Set-AzExpressRouteCircuit.md)
 
