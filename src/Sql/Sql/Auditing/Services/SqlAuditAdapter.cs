@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
 
             model.StorageKeyType = GetStorageKeyKind(isSecondary);
-            
+
             if (isAuditEnabled)
             {
                 if (storageAccountSubscriptionId == null || Guid.Empty.Equals(storageAccountSubscriptionId))
