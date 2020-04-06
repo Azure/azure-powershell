@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.PolicyInsights
 Module Guid: B1876B47-3652-4265-9AD5-782EC3E98319
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.policyinsights
@@ -13,6 +13,9 @@ This topic displays help for the Azure Policy Insights cmdlets.
 ## Az.PolicyInsights Cmdlets
 ### [Get-AzPolicyEvent](Get-AzPolicyEvent.md)
 Gets policy evaluation events generated as resources are created or updated.
+
+### [Get-AzPolicyMetadata](Get-AzPolicyMetadata.md)
+Gets policy metadata resources
 
 ### [Get-AzPolicyRemediation](Get-AzPolicyRemediation.md)
 Gets policy remediations.
@@ -31,4 +34,7 @@ Creates and starts a policy remediation for a policy assignment.
 
 ### [Stop-AzPolicyRemediation](Stop-AzPolicyRemediation.md)
 Cancels an in-progress policy remediation.
+
+### [Start-AzPolicyComplianceScan](Start-AzPolicyComplianceScan.md)
+Triggers a policy compliance evaluation for all resources in a subscription or resource group.
 
