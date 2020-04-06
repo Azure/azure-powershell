@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string IgnoreMissingVNetServiceEndpointHelpMessage = "Boolean to indicate if to create firewall rule before the virtual network has vnet service endpoint enabled.";
         public const string ApiKindHelpMessage = "The type of Cosmos DB database account to create. Accepted values: GlobalDocumentDB, Sql, MongoDB, Gremlin, Table, Cassandra. Default value: GlobalDocumentDB ";
         public const string AccountKeyTypeHelpMessage = "Value from: {ConnectionStrings, Keys, ReadOnlyKeys}. Default is Keys.";
-        
+        public const string DisableKeyBasedMetadataWriteAccessHelpMessage = "Disable write operations on metadata resources (databases, containers, throughput) via account keys";
+
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";
         public const string ContainerNameHelpMessage = "Container name.";

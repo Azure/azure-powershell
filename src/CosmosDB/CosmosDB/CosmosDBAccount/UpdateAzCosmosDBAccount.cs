@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public bool EnableVirtualNetwork { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IpRangeFilterHelpMessage)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string[] IpRangeFilter { get; set; }
         
         [Parameter(Mandatory = false, HelpMessage = Constants.MaxStalenessIntervalInSecondsHelpMessage)]
@@ -80,6 +80,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.VirtualNetworkRuleObjectHelpMessage)]
         [ValidateNotNullOrEmpty]
         public PSVirtualNetworkRule[] VirtualNetworkRuleObject { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
+        public bool DisableKeyBasedMetadataWriteAccess { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
@@ -107,6 +110,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountUpdateParameters.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
             databaseAccountUpdateParameters.IsVirtualNetworkFilterEnabled = EnableVirtualNetwork;
             databaseAccountUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
+            databaseAccountUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
             {
@@ -172,7 +176,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
             }
 
-            if (IpRangeFilter != null && IpRangeFilter.Length > 0)
+            if (IpRangeFilter != null)
             {
                 string IpRangeFilterAsString = null;
 
