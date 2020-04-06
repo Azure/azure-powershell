@@ -16,7 +16,7 @@ Describe 'Test-AzKustoClusterPrincipalAssignmentNameAvailability' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $principalAssignmentName = $env.principalAssignmentName
-        $principalAssignmentResourceType = $env.principalAssignmentResourceType
+        $principalAssignmentResourceType = $env.clusterPrincipalAssignmentResourceType
 
         $availability = Test-AzKustoClusterPrincipalAssignmentNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $principalAssignmentName -Type $principalAssignmentResourceType
         $availability.NameAvailable | Should Be $true
@@ -27,7 +27,7 @@ Describe 'Test-AzKustoClusterPrincipalAssignmentNameAvailability' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $principalAssignmentName = $env.principalAssignmentName
-        $principalAssignmentResourceType = $env.principalAssignmentResourceType
+        $principalAssignmentResourceType = $env.clusterPrincipalAssignmentResourceType
 
         $cluster = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
         $availability = Test-AzKustoClusterPrincipalAssignmentNameAvailability -InputObject $cluster -Name $principalAssignmentName -Type $principalAssignmentResourceType
