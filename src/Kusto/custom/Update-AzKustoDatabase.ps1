@@ -21,8 +21,7 @@ Updates a database.
 .Example
 PS C:\> $2ds = New-TimeSpan -Days 2
 PS C:\> $4ds = New-TimeSpan -Days 4
-PS C:\> $databaseProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadWriteDatabase -Property @{Location='East US'; SoftDeletePeriod=$4ds; HotCachePeriod=$2ds}
-PS C:\> Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Parameter $databaseProperties
+PS C:\> Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US'
 
 Kind      Location Name                                Type
 ----      -------- ----                                ----
