@@ -47,6 +47,9 @@ Gets a Kusto cluster database principalAssignment.
 ### [Get-AzKustoDataConnection](Get-AzKustoDataConnection.md)
 Returns a data connection.
 
+### [Invoke-AzKustoDataConnectionValidation](Invoke-AzKustoDataConnectionValidation.md)
+Checks that the data connection parameters are valid.
+
 ### [Invoke-AzKustoDetachClusterFollowerDatabase](Invoke-AzKustoDetachClusterFollowerDatabase.md)
 Detaches all followers of a database owned by this cluster.
 
@@ -104,8 +107,14 @@ Stops a Kusto cluster.
 ### [Test-AzKustoClusterNameAvailability](Test-AzKustoClusterNameAvailability.md)
 Checks that the cluster name is valid and is not already in use.
 
+### [Test-AzKustoClusterPrincipalAssignmentNameAvailability](Test-AzKustoClusterPrincipalAssignmentNameAvailability.md)
+Checks that the principal assignment name is valid and is not already in use.
+
 ### [Test-AzKustoDatabaseNameAvailability](Test-AzKustoDatabaseNameAvailability.md)
 Checks that the database name is valid and is not already in use.
+
+### [Test-AzKustoDatabasePrincipalAssignmentNameAvailability](Test-AzKustoDatabasePrincipalAssignmentNameAvailability.md)
+Checks that the database principal assignment is valid and is not already in use.
 
 ### [Test-AzKustoDataConnectionNameAvailability](Test-AzKustoDataConnectionNameAvailability.md)
 Checks that the data connection name is valid and is not already in use.

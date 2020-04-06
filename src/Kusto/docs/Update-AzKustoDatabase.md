@@ -22,22 +22,22 @@ Update-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <
 ### UpdateExpandedReadOnlyFollowing
 ```
 Update-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Kind <Kind>
- -Location <String> [-SubscriptionId <String>] [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Location <String> [-SubscriptionId <String>] [-HotCachePeriod <TimeSpan>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedReadOnlyFollowing
 ```
 Update-AzKustoDatabase -InputObject <IKustoIdentity> -Kind <Kind> -Location <String>
- [-SubscriptionId <String>] [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-HotCachePeriod <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedReadWrite
 ```
 Update-AzKustoDatabase -InputObject <IKustoIdentity> -Kind <Kind> -Location <String>
- [-SubscriptionId <String>] [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +56,21 @@ Kind      Location Name                                Type
 ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
 ```
 
-The above command updates the soft deletion period of the Kusto database "mykustodatabase" in the cluster "testnewkustocluster" found in the resource group "testrg".
+The above command updates the soft deletion period and hot cache period of the Kusto database "mykustodatabase" in the cluster "testnewkustocluster" found in the resource group "testrg".
+
+### Example 2: Update an existing database by database object
+```powershell
+PS C:\> $database = Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase
+PS C:\> $2ds = New-TimeSpan -Days 2
+PS C:\> $4ds = New-TimeSpan -Days 4
+PS C:\> Update-AzKustoDatabase -InputObject $database -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US'
+
+Kind      Location Name                                Type
+----      -------- ----                                ----
+ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
+```
+
+The above command updates the soft deletion period and hot cache period of the Kusto database "mykustodatabase" in the cluster "testnewkustocluster" found in the resource group "testrg".
 
 ## PARAMETERS
 
@@ -226,7 +240,7 @@ The time the data should be kept before it stops being accessible to queries in 
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: UpdateExpandedReadWrite, UpdateViaIdentityExpandedReadWrite
 Aliases:
 
 Required: False
@@ -243,7 +257,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpandedReadOnlyFollowing, UpdateExpandedReadWrite
 Aliases:
 
 Required: False
