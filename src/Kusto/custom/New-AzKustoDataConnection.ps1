@@ -67,7 +67,7 @@ function New-AzKustoDataConnection {
         ${SubscriptionId},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('Microsoft.EventHub', 'Microsoft.EventGrid', 'Microsoft.IoTHub') })]
+        [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('EventHub', 'EventGrid', 'IoTHub') })]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind]
         # Kind of the endpoint for the data connection
@@ -207,7 +207,7 @@ function New-AzKustoDataConnection {
 
     process {
         try {
-            if ($PSBoundParameters['Kind'] -eq 'Microsoft.EventHub') {
+            if ($PSBoundParameters['Kind'] -eq 'EventHub') {
                 $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.EventHubDataConnection]::new()
                 
                 $Parameter.EventHubResourceId = $PSBoundParameters['EventHubResourceId']            
@@ -223,7 +223,7 @@ function New-AzKustoDataConnection {
                     $null = $PSBoundParameters.Remove('Compression')
                 }
             }
-            elseif ($PSBoundParameters['Kind'] -eq 'Microsoft.EventGrid') {
+            elseif ($PSBoundParameters['Kind'] -eq 'EventGrid') {
                 $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.EventGridDataConnection]::new()
             
                 $Parameter.EventHubResourceId = $PSBoundParameters['EventHubResourceId']
