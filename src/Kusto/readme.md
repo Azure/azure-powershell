@@ -121,9 +121,6 @@ directive:
   - where:
       subject: Operation
     hide: true
-  - where:
-      subject: .*PrincipalAssignmentNameAvailability
-    hide: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
