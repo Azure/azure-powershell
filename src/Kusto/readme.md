@@ -96,7 +96,7 @@ directive:
     transform: return $.replace(/\/principalAssignments\//g, "/PrincipalAssignments/")
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DataExpanded$|^DataViaIdentityExpanded$|^Detach$|^DetachViaIdentity$
+      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DataExpanded$|^DataViaIdentityExpanded$|^Detach$|^DetachViaIdentity$|^UpdateViaIdentity$
     remove: true
   # Remove the unexpanded parameter set for specific commands
   - where:
@@ -115,7 +115,7 @@ directive:
     remove: true
   - where:
       subject: ^Database$
-      variant: ^Create$|^CreateExpanded$|^Update$|^UpdateViaIdentity$|^UpdateExpanded$|^UpdateViaIdentityExpanded$
+      variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentityExpanded$
     hide: true
   # Hide the operation API
   - where:
