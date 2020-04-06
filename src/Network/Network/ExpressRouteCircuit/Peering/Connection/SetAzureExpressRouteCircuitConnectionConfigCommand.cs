@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.Network {
 
             if (peering == null)
             {
-                // throw new ArgumentException("Private Peering needs to be configured on the Express Route Circuit");
                 throw new ArgumentException(Properties.Resources.ExpressRoutePrivatePeeringNotFound);
             }
 

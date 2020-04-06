@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (peering == null)
             {
-                throw new ArgumentException("Private Peering needs to be configured on the Express Route Circuit");
+                throw new ArgumentException(Properties.Resources.ExpressRouteCircuitConnectionNotFound);
             }
 
             var circuitconnection = peering.Connections.SingleOrDefault(
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (circuitconnection != null)
             {
-                throw new ArgumentException(string.Format("Circuit Connection {0} is already added ", Name));
+                throw new ArgumentException(string.Format(Properties.Resources.ExpressRouteCircuitConnectionAlreadyAdded, Name));
             }
 
             circuitconnection = new PSExpressRouteCircuitConnection();

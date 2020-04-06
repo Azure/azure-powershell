@@ -577,6 +577,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
             }
         }
 
+
+        /// <summary>
+        ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
+        /// </summary>
+        internal static string ExpressRouteCircuitConnectionAlreadyAdded
+        {
+            get
+            {
+                return ResourceManager.GetString("ExpressRouteCircuitConnectionAlreadyAdded", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to The hub virtual network connection to modify could not be found..
         /// </summary>

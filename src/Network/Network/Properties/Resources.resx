@@ -662,4 +662,7 @@
   <data name="ExpressRouteCircuitConnectionNotFound" xml:space="preserve">
     <value>Circuit Connection with Name '{0}' was not added to the private peering.</value>
   </data>
+  <data name="ExpressRouteCircuitConnectionAlreadyAdded" xml:space="preserve">
+    <value>Circuit Connection with Name '{0}' is already added.</value>
+  </data>
 </root>
