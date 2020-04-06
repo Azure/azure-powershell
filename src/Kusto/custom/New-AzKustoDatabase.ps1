@@ -60,7 +60,7 @@ function New-AzKustoDatabase {
         ${SubscriptionId},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('ReadWrite', 'ReadOnlyFollowing') })]
+        [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('ReadWrite') })]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind]
         # Kind of the database
@@ -146,18 +146,9 @@ function New-AzKustoDatabase {
 
     process {
         try {
-            if ($PSBoundParameters['Kind'] -eq 'ReadWrite') {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadWriteDatabase]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadWriteDatabase]::new()
 
-                if ($PSBoundParameters.ContainsKey('HotCachePeriod')) {
-                    $Parameter.HotCachePeriod = $PSBoundParameters['HotCachePeriod']
-                    $null = $PSBoundParameters.Remove('HotCachePeriod')
-                }
-            }
-            else {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadOnlyFollowingDatabase]::new()
-            }
-
+            $Parameter.Kind = $PSBoundParameters['Kind']
             $null = $PSBoundParameters.Remove('Kind')
 
             $Parameter.Location = $PSBoundParameters['Location']
@@ -166,6 +157,11 @@ function New-AzKustoDatabase {
             if ($PSBoundParameters.ContainsKey('SoftDeletePeriod')) {
                 $Parameter.SoftDeletePeriod = $PSBoundParameters['SoftDeletePeriod']
                 $null = $PSBoundParameters.Remove('SoftDeletePeriod')
+            }
+
+            if ($PSBoundParameters.ContainsKey('HotCachePeriod')) {
+                $Parameter.HotCachePeriod = $PSBoundParameters['HotCachePeriod']
+                $null = $PSBoundParameters.Remove('HotCachePeriod')
             }
 
             $null = $PSBoundParameters.Add('Parameter', $Parameter)
