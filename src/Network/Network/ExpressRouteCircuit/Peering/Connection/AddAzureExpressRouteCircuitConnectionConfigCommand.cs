@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (peering == null)
             {
-                throw new ArgumentException(Properties.Resources.ExpressRouteCircuitConnectionNotFound);
+                throw new ArgumentException(Properties.Resources.ExpressRoutePrivatePeeringNotFound);
             }
 
             var circuitconnection = peering.Connections.SingleOrDefault(
