@@ -56,8 +56,8 @@ function Update-AzKustoDatabase {
         # The name of the resource group containing the Kusto cluster.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedReadWrite', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpandedReadOnlyFollowing', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpandedReadWrite')]
+        [Parameter(ParameterSetName = 'UpdateExpandedReadOnlyFollowing')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -80,17 +80,14 @@ function Update-AzKustoDatabase {
         # Kind of the database
         ${Kind},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedReadWrite')]
-        [Parameter(ParameterSetName = 'UpdateExpandedReadOnlyFollowing')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedReadWrite', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedReadOnlyFollowing', Mandatory, ValueFromPipeline)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.TimeSpan]
         # The time the data should be kept in cache for fast queries in TimeSpan.
         ${HotCachePeriod},
 
         [Parameter(ParameterSetName = 'UpdateExpandedReadWrite')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedReadWrite', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedReadWrite')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.TimeSpan]
         # The time the data should be kept before it stops being accessible to queries in TimeSpan.
@@ -190,7 +187,6 @@ function Update-AzKustoDatabase {
             $null = $PSBoundParameters.Add('Parameter', $Parameter)
 
             Az.Kusto.internal\Update-AzKustoDatabase @PSBoundParameters
-
         }
         catch {
             throw
