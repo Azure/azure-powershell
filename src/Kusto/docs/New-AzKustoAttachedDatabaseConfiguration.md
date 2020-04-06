@@ -12,19 +12,11 @@ Creates or updates an attached database configuration.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzKustoAttachedDatabaseConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ClusterResourceId <String>] [-DatabaseName <String>]
  [-DefaultPrincipalsModificationKind <DefaultPrincipalsModificationKind>] [-Location <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzKustoAttachedDatabaseConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
- -Parameter <IAttachedDatabaseConfiguration> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,7 +75,7 @@ The resource id of the cluster where the databases you would like to attach resi
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -99,7 +91,7 @@ The name of the database which you would like to attach, use * if you want to fo
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -115,7 +107,7 @@ The default principals modification kind
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DefaultPrincipalsModificationKind
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -147,7 +139,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -186,23 +178,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-Class representing an attached database configuration.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IAttachedDatabaseConfiguration
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -278,8 +253,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IAttachedDatabaseConfiguration
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IAttachedDatabaseConfiguration
@@ -287,15 +260,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ## NOTES
-
-### COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-#### PARAMETER <IAttachedDatabaseConfiguration>: Class representing an attached database configuration.
-  - `ClusterResourceId <String>`: The resource id of the cluster where the databases you would like to attach reside.
-  - `DatabaseName <String>`: The name of the database which you would like to attach, use * if you want to follow all current and future databases.
-  - `DefaultPrincipalsModificationKind <DefaultPrincipalsModificationKind>`: The default principals modification kind
-  - `[Location <String>]`: Resource location.
 
 ## RELATED LINKS
 
