@@ -96,9 +96,13 @@ directive:
     transform: return $.replace(/\/principalAssignments\//g, "/PrincipalAssignments/")
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DataExpanded$|^DataViaIdentityExpanded$|^Detach$|^DetachViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DataExpanded$|^DataViaIdentityExpanded$|^Detach$|^DetachViaIdentity$|^UpdateViaIdentity$
     remove: true
   # Remove the unexpanded parameter set for specific commands
+  - where:
+      subject: ^AttachedDatabaseConfiguration$|^Cluster$|^ClusterPrincipalAssignment$|^DatabasePrincipalAssignment$
+      variant: ^Create$|^Update$
+    remove: true
   - where:
       verb: Remove
       subject: DatabasePrincipal|ClusterLanguageExtension
@@ -107,7 +111,7 @@ directive:
   # Custom commands
   - where:
       subject: ^Database$|^DataConnection$
-      variant: ^CreateExpanded$|^UpdateExpanded$|^UpdateViaIdentityExpanded$
+      variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentityExpanded$
     hide: true
   # Hide the operation API
   - where:
