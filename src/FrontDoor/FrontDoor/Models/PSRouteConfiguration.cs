@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,35 +14,38 @@
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
-    public class PSBackend
+    public class PSRouteConfiguration
     {
-        public string Address { get; set; }
 
-        public int? HttpPort { get; set; }
-
-        public int? HttpsPort { get; set; }
-
-        public int? Priority { get; set; }
-
-        public int? Weight { get; set; }
-
-        public string BackendHostHeader { get; set; }
-
-        public PSEnabledState? EnabledState { get; set; }
-
-        public string PrivateLinkAlias { get; set; }
-
-        public PSPrivateEndpointStatus? PrivateEndpointStatus { get; set; }
-
-        public string PrivateLinkApprovalMessage { get; set; }
     }
 
-    public enum PSPrivateEndpointStatus
+    public class PSForwardingConfiguration : PSRouteConfiguration
     {
-        Pending,
-        Approved,
-        Rejected,
-        Disconnected,
-        Timeout
+        public string CustomForwardingPath { get; set; }
+
+        public string ForwardingProtocol { get; set; }
+
+        public string BackendPoolId { get; set; }
+
+        public string QueryParameterStripDirective { get; set; }
+
+        public PSEnabledState? DynamicCompression { get; set; }
+
+        public bool EnableCaching { get; set; }
+    }
+
+    public class PSRedirectConfiguration : PSRouteConfiguration
+    {
+        public string RedirectType { get; set; }
+
+        public string RedirectProtocol { get; set; }
+
+        public string CustomHost { get; set; }
+
+        public string CustomPath { get; set; }
+
+        public string CustomFragment { get; set; }
+
+        public string CustomQueryString { get; set; }
     }
 }

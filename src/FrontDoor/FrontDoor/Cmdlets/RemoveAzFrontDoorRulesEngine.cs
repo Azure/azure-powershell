@@ -12,30 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
+using Microsoft.Azure.Commands.FrontDoor.Common;
+using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.FrontDoor.Models
+namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
-    /// <summary>
-    /// Represents the properties of an Azure Front Door object.
-    /// </summary>
-    public class PSRoutingRule : PSResource
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine"), OutputType(typeof(bool))]
+    public class RemoveAzFrontDoorRulesEngine : AzureFrontDoorCmdletBase
     {
-        public List<string> FrontendEndpointIds { get; set; }
-
-        public List<PSProtocol> AcceptedProtocols { get; set; }
-
-        public List<String> PatternsToMatch { get; set; }
-
-        public List<PSHealthProbeSetting> HealthProbeSettings { get; set; }
-
-        public PSRouteConfiguration RouteConfiguration { get; set; }
-
-        public PSEnabledState? EnabledState { get; set; }
-
-        public string ResourceState { get; set; }
-
-        public string RulesEngineId { get; set; }
     }
 }

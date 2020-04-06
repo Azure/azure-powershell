@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.FrontDoor.Models;
+using Microsoft.Azure.Management.FrontDoor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 frontendEndpoints: psFrontDoor.FrontendEndpoints?.Select(x => x.ToSdkFrontendEndpoints()).ToList(),
                 enabledState: psFrontDoor.EnabledState.ToString(),
                 backendPoolsSettings: psFrontDoor.BackendPoolsSetting.ToSdkBackendPoolsSettings()
+                // Rule Engine should not be allowed to be updated here
                 );
         }
         public static PSFrontDoor ToPSFrontDoor(this SdkFrontDoor sdkFrontDoor)
@@ -96,6 +98,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 // PSFrontDoor parameter EnforceCertificateNameCheck is no longer actively used, in favor of BackendPoolsSetting which 
                 // encapsulates this property. However, for backwards compability, we set this field so that it is still displayed to users.
                 EnforceCertificateNameCheck = sdkFrontDoor.BackendPoolsSettings == null ? (PSEnforceCertificateNameCheck?)null : (PSEnforceCertificateNameCheck)Enum.Parse(typeof(PSEnforceCertificateNameCheck), sdkFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck)
+                // Convert Rules Engine
             };
         }
 
@@ -196,14 +199,21 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 EnabledState = sdkBackend.EnabledState == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkBackend.EnabledState),
                 Priority = sdkBackend.Priority,
                 Weight = sdkBackend.Weight,
-                BackendHostHeader = sdkBackend.BackendHostHeader
-
+                BackendHostHeader = sdkBackend.BackendHostHeader,
+                PrivateLinkAlias = sdkBackend.PrivateLinkAlias,
+                PrivateEndpointStatus = sdkBackend.PrivateEndpointStatus == null ?
+                        (PSPrivateEndpointStatus?)null :
+                        (PSPrivateEndpointStatus)Enum.Parse(typeof(PSPrivateEndpointStatus), sdkBackend.PrivateEndpointStatus.ToString()),
+                PrivateLinkApprovalMessage = sdkBackend.PrivateLinkApprovalMessage
             };
         }
         public static SdkBackend ToSdkBackend(this PSBackend psBackend)
         {
             return new SdkBackend(
                 psBackend.Address,
+                psBackend.PrivateLinkAlias,
+                (PrivateEndpointStatus)Enum.Parse(typeof(PrivateEndpointStatus), psBackend.PrivateEndpointStatus.ToString()),
+                psBackend.PrivateLinkApprovalMessage,
                 psBackend.HttpPort,
                 psBackend.HttpsPort,
                 psBackend.EnabledState.ToString(),
