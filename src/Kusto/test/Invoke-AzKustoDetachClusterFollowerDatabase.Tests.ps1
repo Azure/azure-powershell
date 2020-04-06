@@ -25,7 +25,7 @@ Describe 'Invoke-AzKustoDetachClusterFollowerDatabase' {
         { Invoke-AzKustoDetachClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $clusterResourceId } | Should -Not -Throw
     }
 
-    It 'DetachViaIdentityExpanded' -skip {
+    It 'DetachViaIdentityExpanded' {
         $subscriptionId = $env.SubscriptionId
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName

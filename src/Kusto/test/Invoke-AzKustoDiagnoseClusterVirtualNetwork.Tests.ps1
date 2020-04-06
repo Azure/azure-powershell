@@ -21,7 +21,7 @@ Describe 'Invoke-AzKustoDiagnoseClusterVirtualNetwork' {
         { Invoke-AzKustoDiagnoseClusterVirtualNetwork -ResourceGroupName $resourceGroupName -ClusterName $clusterName } | Should -Not -Throw
     }
 
-    It 'DiagnoseViaIdentity' -skip {
+    It 'DiagnoseViaIdentity' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
 

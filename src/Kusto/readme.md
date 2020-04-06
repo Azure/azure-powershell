@@ -71,6 +71,7 @@ output-folder: .
 
 > Directives
 ``` yaml
+identity-correction-for-post: true
 directive:
   # Fix the error in swagger, RP actually returns 200 when deletion succeeds
   - from: swagger-document
@@ -95,7 +96,7 @@ directive:
     transform: return $.replace(/\/principalAssignments\//g, "/PrincipalAssignments/")
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Data$|^DataViaIdentity$|^Detach$|^DetachViaIdentity$
+      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DataExpanded$|^DataViaIdentityExpanded$|^Detach$|^DetachViaIdentity$
     remove: true
   # Remove the unexpanded parameter set for specific commands
   - where:

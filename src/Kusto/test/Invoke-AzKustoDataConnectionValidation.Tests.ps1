@@ -35,7 +35,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $validationResult.errorMessage | Should Be "event hub resource id and consumer group tuple provided are already used"
     }
 
-    It 'DataViaIdentity' -skip {
+    It 'DataViaIdentity' {
         $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
