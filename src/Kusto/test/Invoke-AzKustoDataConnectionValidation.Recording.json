@@ -1,0 +1,45 @@
+{
+  "Invoke-AzKustoDataConnectionValidation+[NoContext]+Data+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/dataConnectionValidation?api-version=2020-02-15+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/dataConnectionValidation?api-version=2020-02-15",
+      "Content": "{\r\n  \"properties\": {\r\n    \"kind\": \"EventHub\",\r\n    \"location\": \"East US\",\r\n    \"properties\": {\r\n      \"compression\": \"None\",\r\n      \"consumerGroup\": \"$Default\",\r\n      \"dataFormat\": \"JSON\",\r\n      \"eventHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/sdkpowershellrg/providers/Microsoft.EventHub/namespaces/sdkpseventhubns/eventhubs/sdkpseventhub\",\r\n      \"mappingRuleName\": \"EventsMapping\",\r\n      \"tableName\": \"Events\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"sdkpsdataconnectiona\"\r\n}",
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "12c5d548-4f4a-4087-a125-13d398875af0" ],
+        "CommandName": [ "Invoke-AzKustoDataConnectionValidation" ],
+        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_Data" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "520" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-correlation-request-id": [ "3f335e96-4bc5-4c97-b1aa-f4f2a060d61a" ],
+        "x-ms-request-id": [ "ec12a3b0-9ba6-46f7-8459-12125d192874" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-routing-request-id": [ "GERMANYWESTCENTRAL:20200406T122233Z:3f335e96-4bc5-4c97-b1aa-f4f2a060d61a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 06 Apr 2020 12:22:32 GMT" ],
+        "Set-Cookie": [ "ARRAffinity=f977ea28325f4c100ed19c1a7ed6395c7554e0af5ce62499bbee5975165c7757;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
+        "X-Powered-By": [ "ASP.NET" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "103" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"errorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}"
+    }
+  }
+}
