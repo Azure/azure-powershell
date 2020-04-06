@@ -12,10 +12,33 @@ Creates or updates a data connection.
 
 ## SYNTAX
 
+### CreateExpandedEventHub (Default)
 ```
 New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> -Kind <Kind> [-SubscriptionId <String>] [-Location <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -ConsumerGroup <String> -EventHubResourceId <String> -Kind <Kind>
+ -Location <String> [-SubscriptionId <String>] [-Compression <Compression>]
+ [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
+ [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateExpandedEventGrid
+```
+New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
+ -ResourceGroupName <String> -ConsumerGroup <String> -DataFormat <EventGridDataFormat>
+ -EventHubResourceId <String> -Kind <Kind> -Location <String> -StorageAccountResourceId <String>
+ -TableName <String> [-SubscriptionId <String>] [-MappingRuleName <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpandedIotHub
+```
+New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
+ -ResourceGroupName <String> -ConsumerGroup <String> -IotHubResourceId <String> -Kind <Kind>
+ -Location <String> -SharedAccessPolicyName <String> [-SubscriptionId <String>]
+ [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
+ [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,11 +92,60 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Compression
+The event hub messages compression type.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Compression
+Parameter Sets: CreateExpandedEventHub
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ConsumerGroup
+The event/iot hub consumer group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DatabaseName
 The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DataFormat
+The data format of the message.
+Optionally the data format can be added to each message.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat
 Parameter Sets: (All)
 Aliases:
 
@@ -101,6 +173,54 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -EventHubResourceId
+The resource ID of the event hub to be used to create a data connection / event grid is configured to send events.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpandedEventGrid, CreateExpandedEventHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EventSystemProperty
+System properties of the event/iot hub.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpandedEventHub, CreateExpandedIotHub
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IotHubResourceId
+The resource ID of the Iot hub to be used to create a data connection.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpandedIotHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Kind
 Kind of the endpoint for the data connection
 
@@ -119,6 +239,23 @@ Dynamic: False
 
 ### -Location
 Resource location.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MappingRuleName
+The mapping rule to be used to ingest the data.
+Optionally the mapping information can be added to each message.
 
 ```yaml
 Type: System.String
@@ -181,6 +318,38 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -SharedAccessPolicyName
+The name of the share access policy.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpandedIotHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StorageAccountResourceId
+The resource ID of the storage account where the data resides.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpandedEventGrid
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubscriptionId
 Gets subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -193,6 +362,23 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TableName
+The table where the data should be ingested.
+Optionally the table information can be added to each message.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -104,8 +104,9 @@ directive:
       subject: DatabasePrincipal|ClusterLanguageExtension
       variant: ^Remove$|^RemoveViaIdentity$
     remove: true
+  # Custom commands
   - where:
-      subject: ^Database$
+      subject: ^Database$|^DataConnection$
       variant: ^CreateExpanded$|^UpdateExpanded$|^UpdateViaIdentityExpanded$
     hide: true
   # Hide the operation API
