@@ -15,20 +15,20 @@ Updates a database.
 ### UpdateExpanded (Default)
 ```
 Update-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Kind <Kind>
- [-SubscriptionId <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Parameter <IDatabase>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -Location <String> [-SubscriptionId <String>] [-AttachedDatabaseConfigurationName <String>]
+ [-HotCachePeriod <TimeSpan>] [-IsFollowed <String>] [-LeaderClusterResourceId <String>]
+ [-PrincipalsModificationKind <PrincipalsModificationKind>] [-ProvisioningState <ProvisioningState>]
+ [-SoftDeletePeriod <TimeSpan>] [-Statistics <IDatabaseStatistics>] [-StatisticsSize <Single>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKustoDatabase -InputObject <IKustoIdentity> -Kind <Kind> [-Location <String>]
+Update-AzKustoDatabase -InputObject <IKustoIdentity> -Kind <Kind> -Location <String>
+ [-SubscriptionId <String>] [-AttachedDatabaseConfigurationName <String>] [-HotCachePeriod <TimeSpan>]
+ [-IsFollowed <String>] [-LeaderClusterResourceId <String>]
+ [-PrincipalsModificationKind <PrincipalsModificationKind>] [-ProvisioningState <ProvisioningState>]
+ [-SoftDeletePeriod <TimeSpan>] [-Statistics <IDatabaseStatistics>] [-StatisticsSize <Single>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -41,8 +41,7 @@ Updates a database.
 ```powershell
 PS C:\> $2ds = New-TimeSpan -Days 2
 PS C:\> $4ds = New-TimeSpan -Days 4
-PS C:\> $databaseProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadWriteDatabase -Property @{Location='East US'; SoftDeletePeriod=$4ds; HotCachePeriod=$2ds}
-PS C:\> Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Parameter $databaseProperties
+PS C:\> Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US'
 
 Kind      Location Name                                Type
 ----      -------- ----                                ----
@@ -69,12 +68,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -AttachedDatabaseConfigurationName
+The name of the attached database configuration cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ClusterName
 The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -101,6 +116,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -HotCachePeriod
+The time the data should be kept in cache for fast queries in TimeSpan.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -118,15 +149,47 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -IsFollowed
+Indicates whether the database is followed.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Kind
 Kind of the database
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -LeaderClusterResourceId
+The name of the leader cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -139,10 +202,10 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -155,7 +218,7 @@ The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: DatabaseName
 
 Required: True
@@ -182,19 +245,34 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Class representing a Kusto database.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+### -PrincipalsModificationKind
+The principals modification kind of the database.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase
-Parameter Sets: Update
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalsModificationKind
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ProvisioningState
+The provisioned state of the resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ProvisioningState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -204,10 +282,59 @@ The name of the resource group containing the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SoftDeletePeriod
+The time the data should be kept before it stops being accessible to queries in TimeSpan.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Statistics
+The statistics of the database.
+To construct, see NOTES section for STATISTICS properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabaseStatistics
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StatisticsSize
+The database size - the total size of compressed data and index in bytes.
+
+```yaml
+Type: System.Single
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -221,7 +348,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -270,8 +397,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
@@ -296,9 +421,8 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-#### PARAMETER <IDatabase>: Class representing a Kusto database.
-  - `Kind <Kind>`: Kind of the database
-  - `[Location <String>]`: Resource location.
+#### STATISTICS <IDatabaseStatistics>: The statistics of the database.
+  - `[Size <Single?>]`: The database size - the total size of compressed data and index in bytes.
 
 ## RELATED LINKS
 
