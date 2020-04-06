@@ -12,18 +12,13 @@ Creates or updates a database.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Kind <Kind>
- [-SubscriptionId <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Parameter <IDatabase>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-AttachedDatabaseConfigurationName <String>] [-HotCachePeriod <TimeSpan>]
+ [-IsFollowed <String>] [-LeaderClusterResourceId <String>] [-Location <String>]
+ [-PrincipalsModificationKind <PrincipalsModificationKind>] [-ProvisioningState <ProvisioningState>]
+ [-SoftDeletePeriod <TimeSpan>] [-Statistics <IDatabaseStatistics>] [-StatisticsSize <Single>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,6 +44,22 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -AttachedDatabaseConfigurationName
+The name of the attached database configuration cluster.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -92,15 +103,63 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -HotCachePeriod
+The time the data should be kept in cache for fast queries in TimeSpan.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IsFollowed
+Indicates whether the database is followed.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Kind
 Kind of the database
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -LeaderClusterResourceId
+The name of the leader cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -113,7 +172,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -156,19 +215,34 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Class representing a Kusto database.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+### -PrincipalsModificationKind
+The principals modification kind of the database.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase
-Parameter Sets: Create
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalsModificationKind
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ProvisioningState
+The provisioned state of the resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ProvisioningState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -182,6 +256,55 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SoftDeletePeriod
+The time the data should be kept before it stops being accessible to queries in TimeSpan.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Statistics
+The statistics of the database.
+To construct, see NOTES section for STATISTICS properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabaseStatistics
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StatisticsSize
+The database size - the total size of compressed data and index in bytes.
+
+```yaml
+Type: System.Single
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -244,8 +367,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase
@@ -257,9 +378,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IDatabase>: Class representing a Kusto database.
-  - `Kind <Kind>`: Kind of the database
-  - `[Location <String>]`: Resource location.
+#### STATISTICS <IDatabaseStatistics>: The statistics of the database.
+  - `[Size <Single?>]`: The database size - the total size of compressed data and index in bytes.
 
 ## RELATED LINKS
 
