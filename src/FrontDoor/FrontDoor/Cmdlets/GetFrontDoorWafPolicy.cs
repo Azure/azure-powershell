@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the Get-AzFrontDoorFireWallPolicy cmdlet.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafPolicy"), OutputType(typeof(PSPolicy))]
-    public class GetAzureRmFrontDoorWafPolicy : AzureFrontDoorCmdletBase
+    public class GetFrontDoorWafPolicy : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// The resource group name.

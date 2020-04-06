@@ -12,16 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -29,7 +25,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the New-AzFrontDoorWafCustomRuleObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafCustomRuleObject"), OutputType(typeof(PSCustomRule))]
-    public class NewAzureRmFrontDoorWafCustomRuleObject : AzureFrontDoorCmdletBase
+    public class NewFrontDoorWafCustomRuleObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// Name of the rule. 
@@ -56,7 +52,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Type of Actions. Possible values include: 'Allow', 'Block', 'Log', 'Redirect'
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Type of Actions. Possible values include: 'Allow', 'Block', 'Log', 'Redirect'.")]
-        [PSArgumentCompleter("Allow","Block","Log","Redirect")]
+        [PSArgumentCompleter("Allow", "Block", "Log", "Redirect")]
         public string Action { get; set; }
 
         /// <summary>
@@ -88,17 +84,17 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         {
             var CustomRule = new PSCustomRule
             {
-               Name = Name,
-               MatchConditions = MatchCondition.ToList(),
-               Priority = Priority,
-               RuleType = RuleType,
-               RateLimitDurationInMinutes = !this.IsParameterBound(c => c.RateLimitDurationInMinutes)? 1 : RateLimitDurationInMinutes,
-               RateLimitThreshold = RateLimitThreshold,
-               Action = Action,
-               EnabledState = !this.IsParameterBound(c => c.EnabledState) ? "Enabled" : EnabledState
+                Name = Name,
+                MatchConditions = MatchCondition.ToList(),
+                Priority = Priority,
+                RuleType = RuleType,
+                RateLimitDurationInMinutes = !this.IsParameterBound(c => c.RateLimitDurationInMinutes) ? 1 : RateLimitDurationInMinutes,
+                RateLimitThreshold = RateLimitThreshold,
+                Action = Action,
+                EnabledState = !this.IsParameterBound(c => c.EnabledState) ? "Enabled" : EnabledState
             };
             WriteObject(CustomRule);
         }
-        
+
     }
 }

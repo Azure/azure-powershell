@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the New-AzFrontDoorWafMatchConditionObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafMatchConditionObject"), OutputType(typeof(PSMatchCondition))]
-    public class NewAzureRmFrontDoorWafMatchConditionObject : AzureFrontDoorCmdletBase
+    public class NewFrontDoorWafMatchConditionObject : AzureFrontDoorCmdletBase
     {
 
         /// <summary>

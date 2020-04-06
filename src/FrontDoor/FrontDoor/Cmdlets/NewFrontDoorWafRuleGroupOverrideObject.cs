@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the New-AzFrontDoorWafRuleGroupOverrideObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafRuleGroupOverrideObject"), OutputType(typeof(PSAzureRuleGroupOverride))]
-    public class NewAzureRmFrontDoorWafRuleGroupOverrideObject : AzureFrontDoorCmdletBase
+    public class NewFrontDoorWafRuleGroupOverrideObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// Rule Group Name
@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            var ruleGroupOverride = new PSAzureRuleGroupOverride 
+            var ruleGroupOverride = new PSAzureRuleGroupOverride
             {
-               ManagedRuleOverrides = ManagedRuleOverride?.ToList(),
-               RuleGroupName = RuleGroupName,
-               Exclusions = Exclusion?.ToList()
+                ManagedRuleOverrides = ManagedRuleOverride?.ToList(),
+                RuleGroupName = RuleGroupName,
+                Exclusions = Exclusion?.ToList()
             };
             WriteObject(ruleGroupOverride);
         }
-        
+
     }
 }

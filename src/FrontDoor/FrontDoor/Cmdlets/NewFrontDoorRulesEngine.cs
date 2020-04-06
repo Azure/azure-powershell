@@ -18,8 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngineRuleObject"), OutputType(typeof(PSRulesEngineRule))]
-    public class NewAzFrontDoorRulesEngineRuleObject : AzureFrontDoorCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine"), OutputType(typeof(PSRulesEngine))]
+    public class NewFrontDoorRulesEngine : AzureFrontDoorCmdletBase
     {
     }
 }

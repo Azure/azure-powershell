@@ -12,17 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -30,7 +26,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the New-AzFrontDoorRoutingRuleObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorRoutingRuleObject", DefaultParameterSetName = FieldsWithForwardingParameterSet), OutputType(typeof(PSRoutingRule))]
-    public class NewAzureRmFrontDoorRoutingRuleObject : AzureFrontDoorCmdletBase
+    public class NewFrontDoorRoutingRuleObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// The resource group name that the RoutingRule will be created in.

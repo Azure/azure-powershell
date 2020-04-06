@@ -13,13 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.FrontDoor.Common;
-using Microsoft.Azure.Commands.FrontDoor.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine"), OutputType(typeof(PSRulesEngine))]
-    public class NewAzFrontDoorRulesEngine : AzureFrontDoorCmdletBase
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine"), OutputType(typeof(bool))]
+    public class RemoveFrontDoorRulesEngine : AzureFrontDoorCmdletBase
     {
     }
 }

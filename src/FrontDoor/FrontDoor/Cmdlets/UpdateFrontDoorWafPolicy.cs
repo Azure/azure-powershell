@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
-using System.Text;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Helpers;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.FrontDoor.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
+using System.Linq;
+using System.Management.Automation;
+using System.Text;
 using SdkPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFirewallPolicy;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the Update-AzFrontDoorWafPolicy cmdlet.
     /// </summary>
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafPolicy", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSPolicy))]
-    public class UpdateAzureRmFrontDoorWafPolicy : AzureFrontDoorCmdletBase
+    public class UpdateFrontDoorWafPolicy : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// The resource group to which the FireWallPolicy belongs.

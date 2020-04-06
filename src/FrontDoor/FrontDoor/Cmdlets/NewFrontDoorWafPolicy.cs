@@ -12,10 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
-using System.Text;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Helpers;
 using Microsoft.Azure.Commands.FrontDoor.Models;
@@ -23,6 +19,10 @@ using Microsoft.Azure.Commands.FrontDoor.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Linq;
+using System.Management.Automation;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the New-AzFrontDoorWafPolicy cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafPolicy", SupportsShouldProcess = true), OutputType(typeof(PSPolicy))]
-    public class NewAzureRmFrontDoorWafPolicy : AzureFrontDoorCmdletBase
+    public class NewFrontDoorWafPolicy : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// The resource group name.

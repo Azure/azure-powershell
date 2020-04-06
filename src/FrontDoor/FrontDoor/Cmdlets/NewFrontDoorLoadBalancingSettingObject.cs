@@ -12,16 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -29,7 +23,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the New-AzFrontDoorLoadBalancingSettingObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorLoadBalancingSettingObject"), OutputType(typeof(PSLoadBalancingSetting))]
-    public class NewAzureRmFrontDoorLoadBalancingSettingObject : AzureFrontDoorCmdletBase
+    public class NewFrontDoorLoadBalancingSettingObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// Gets or sets the health probe setting name.
@@ -41,7 +35,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// The number of samples to consider for load balancing decisions
         /// </summary>
-        [Parameter(Mandatory = false,  HelpMessage = "The number of samples to consider for load balancing decisions.Default value is 4")]
+        [Parameter(Mandatory = false, HelpMessage = "The number of samples to consider for load balancing decisions.Default value is 4")]
         public int SampleSize { get; set; }
 
         /// <summary>
@@ -64,11 +58,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             {
                 Name = Name,
                 SampleSize = !this.IsParameterBound(c => c.SampleSize) ? 4 : SampleSize,
-                AdditionalLatencyMilliseconds = !this.IsParameterBound(c => c.AdditionalLatencyInMilliseconds)? 0 : AdditionalLatencyInMilliseconds,
+                AdditionalLatencyMilliseconds = !this.IsParameterBound(c => c.AdditionalLatencyInMilliseconds) ? 0 : AdditionalLatencyInMilliseconds,
                 SuccessfulSamplesRequired = !this.IsParameterBound(c => c.SuccessfulSamplesRequired) ? 2 : SuccessfulSamplesRequired
             };
             WriteObject(LoadBalancingSetting);
         }
-        
+
     }
 }

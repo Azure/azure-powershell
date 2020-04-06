@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the New-AzFrontDoor cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", DefaultParameterSetName = FieldsWithBackendPoolsSettingParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFrontDoor))]
-    public class NewAzureRmFrontDoor : AzureFrontDoorCmdletBase
+    public class NewFrontDoor : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// The resource group name of the Front Door.
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
             if (existingProfile.Count() != 0)
             {
-                throw new PSArgumentException(string.Format(Resources.Error_CreateExistingFrontDoor, 
+                throw new PSArgumentException(string.Format(Resources.Error_CreateExistingFrontDoor,
                                 Name,
                                 ResourceGroupName));
             }
@@ -116,16 +116,16 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             switch (ParameterSetName)
             {
                 case FieldsWithCertificateNameCheckParameterSet:
-                {
-                    backendPoolsSettings = new Management.FrontDoor.Models.BackendPoolsSettings(
-                            DisableCertificateNameCheck ? PSEnforceCertificateNameCheck.Disabled.ToString() : PSEnforceCertificateNameCheck.Enabled.ToString());
-                    break;
-                }
+                    {
+                        backendPoolsSettings = new Management.FrontDoor.Models.BackendPoolsSettings(
+                                DisableCertificateNameCheck ? PSEnforceCertificateNameCheck.Disabled.ToString() : PSEnforceCertificateNameCheck.Enabled.ToString());
+                        break;
+                    }
                 default:
-                {
-                    backendPoolsSettings = BackendPoolsSetting?.ToSdkBackendPoolsSettings();
-                    break;
-                }
+                    {
+                        backendPoolsSettings = BackendPoolsSetting?.ToSdkBackendPoolsSettings();
+                        break;
+                    }
             }
 
             var updateParameters = new Management.FrontDoor.Models.FrontDoorModel(

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the New-AzFrontDoorFrontendEndpointObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFrontendEndpointObject"), OutputType(typeof(PSFrontendEndpoint))]
-    public class NewAzureRmFrontDoorFrontendEndpointObject : AzureFrontDoorCmdletBase
+    public class NewFrontDoorFrontendEndpointObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// Gets or sets the frontend endpoint name.

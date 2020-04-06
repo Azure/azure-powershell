@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the Enable-AzCustomDomainHttps cmdlet.
     /// </summary>
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorCustomDomainHttps", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSFrontendEndpoint))]
-    public class EnableAzureRmFrontDoorCustomDomainHttps : AzureFrontDoorCmdletBase
+    public class EnableFrontDoorCustomDomainHttps : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// The resource group to which the Front Door belongs.

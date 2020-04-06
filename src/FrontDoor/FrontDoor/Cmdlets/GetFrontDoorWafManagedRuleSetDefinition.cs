@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the Get-AzFrontDoorWafManagedRuleSetDefinition cmdlet.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafManagedRuleSetDefinition"), OutputType(typeof(PSManagedRuleSetDefinition))]
-    public class GetAzureRmFrontDoorWafManagedRuleSetDefinition : AzureFrontDoorCmdletBase
+    public class GetFrontDoorWafManagedRuleSetDefinition : AzureFrontDoorCmdletBase
     {
         public override void ExecuteCmdlet()
         {

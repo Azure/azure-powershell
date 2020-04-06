@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the Set-AzFrontDoor cmdlet.
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSFrontDoor))]
-    public class SetAzureRmFrontDoor : AzureFrontDoorCmdletBase
+    public class SetFrontDoor : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// The resource group to which the Front Door belongs.
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 updateParameters.BackendPoolsSetting.EnforceCertificateNameCheck = DisableCertificateNameCheck ? PSEnabledState.Disabled : PSEnabledState.Enabled;
                 // PSFrontDoor parameter EnforceCertificateNameCheck is no longer used to update Front Door, in favor of BackendPoolsSetting which 
                 // encapsulates this property. However, for backwards compability, we set this field so that it is still displayed to users.
-                updateParameters.EnforceCertificateNameCheck = (PSEnforceCertificateNameCheck) updateParameters.BackendPoolsSetting.EnforceCertificateNameCheck;
+                updateParameters.EnforceCertificateNameCheck = (PSEnforceCertificateNameCheck)updateParameters.BackendPoolsSetting.EnforceCertificateNameCheck;
             }
 
             if ((ParameterSetName == FieldsWithBackendPoolsSettingParameterSet) || (ParameterSetName == ObjectWithBackendPoolsSettingParameterSet)

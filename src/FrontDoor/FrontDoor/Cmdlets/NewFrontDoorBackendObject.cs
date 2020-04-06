@@ -12,16 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -29,7 +23,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the New-AzFrontDoorRoutingRuleObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorBackendObject"), OutputType(typeof(PSBackend))]
-    public class NewAzureRmFrontDoorBackendObject : AzureFrontDoorCmdletBase
+    public class NewFrontDoorBackendObject : AzureFrontDoorCmdletBase
     {
 
         /// <summary>
@@ -83,15 +77,15 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             var Backend = new PSBackend
             {
                 Address = Address,
-                HttpPort = !this.IsParameterBound(c => c.HttpPort)? 80 : HttpPort,
-                HttpsPort = !this.IsParameterBound(c => c.HttpsPort)? 443 : HttpsPort,
-                EnabledState = !this.IsParameterBound(c => c.EnabledState)? PSEnabledState.Enabled : EnabledState,
-                Priority = !this.IsParameterBound(c => c.Priority)? 1 : Priority,
-                Weight = !this.IsParameterBound(c => c.Weight)? 50 : Weight,
+                HttpPort = !this.IsParameterBound(c => c.HttpPort) ? 80 : HttpPort,
+                HttpsPort = !this.IsParameterBound(c => c.HttpsPort) ? 443 : HttpsPort,
+                EnabledState = !this.IsParameterBound(c => c.EnabledState) ? PSEnabledState.Enabled : EnabledState,
+                Priority = !this.IsParameterBound(c => c.Priority) ? 1 : Priority,
+                Weight = !this.IsParameterBound(c => c.Weight) ? 50 : Weight,
                 BackendHostHeader = !this.IsParameterBound(c => c.BackendHostHeader) ? Address : BackendHostHeader
             };
             WriteObject(Backend);
         }
-        
+
     }
 }

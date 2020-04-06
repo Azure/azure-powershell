@@ -12,25 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
-using Microsoft.Azure.Commands.FrontDoor.Helpers;
-using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.FrontDoor.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Management.Automation;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
     /// Defines the New-AzFrontDoor cmdlet.
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorContent", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureRmFrontDoorContent : AzureFrontDoorCmdletBase
+    public class RemoveFrontDoorContent : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// The resource group name of the Front Door.

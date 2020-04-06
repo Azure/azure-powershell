@@ -12,41 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
-using Microsoft.Azure.Commands.FrontDoor.Helpers;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.FrontDoor.Properties;
 using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the Remove-AzFrontDoorWafPolicy cmdlet.
+    /// Defines the Remove-AzFrontDoor cmdlet.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafPolicy", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
-    public class RemoveAzureRmFrontDoorWafPolicy : AzureFrontDoorCmdletBase
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
+    public class RemoveFrontDoor : AzureFrontDoorCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the WAF policy belongs.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the Front Door belongs.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the WAF policy to delete.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the Front Door to delete.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The WAF policy object to delete.")]
+        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The Front Door object to delete.")]
         [ValidateNotNullOrEmpty]
-        public PSPolicy InputObject { get; set; }
+        public PSFrontDoor InputObject { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Id of the WAF policy to delete")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Id of the Front Door to delete")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -69,28 +63,28 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             }
 
 
-            var existingPolicy = FrontDoorManagementClient.Policies.List(ResourceGroupName)
+            var existingProfile = FrontDoorManagementClient.FrontDoors.ListByResourceGroup(ResourceGroupName)
                 .FirstOrDefault(fd => fd.Name.ToLower() == Name.ToLower());
-                
 
-            if (existingPolicy == null)
+
+            if (existingProfile == null)
             {
-                throw new PSArgumentException(string.Format(
-                    Resources.Error_DeleteNonExistingWebApplicationFirewallPolicy,
+                throw new PSArgumentException(string.Format(Resources.Error_DeleteNonExistingFrontDoor,
                     Name,
                     ResourceGroupName));
             }
 
-            if (ShouldProcess(Resources.WebApplicationFirewallPolicyTarget, string.Format(Resources.RemoveWebApplicationFirewallPolicy, Name)))
+            if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.RemoveFrontDoor, Name)))
             {
-                FrontDoorManagementClient.Policies.Delete(ResourceGroupName, Name);
+                FrontDoorManagementClient.FrontDoors.Delete(ResourceGroupName, Name);
                 if (PassThru)
                 {
                     WriteObject(true);
                 }
             }
 
+
         }
     }
-    
+
 }

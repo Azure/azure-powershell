@@ -12,15 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.Azure.Management.FrontDoor;
 using System.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -28,7 +23,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the New-AzFrontDoorBackendPoolObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorBackendPoolObject"), OutputType(typeof(PSBackendPool))]
-    public class NewAzureRmFrontDoorBackendPoolObject : AzureFrontDoorCmdletBase
+    public class NewFrontDoorBackendPoolObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// The resource group name that the RoutingRule will be created in.
@@ -88,6 +83,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             };
             WriteObject(backendPool);
         }
-        
+
     }
 }

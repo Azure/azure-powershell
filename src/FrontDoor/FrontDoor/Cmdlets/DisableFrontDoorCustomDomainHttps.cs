@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Helpers;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.FrontDoor.Properties;
-using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -31,7 +27,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the Enable-AzCustomDomainHttps cmdlet.
     /// </summary>
     [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorCustomDomainHttps", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSFrontendEndpoint))]
-    public class DisableAzureRmFrontDoorCustomDomainHttps : AzureFrontDoorCmdletBase
+    public class DisableFrontDoorCustomDomainHttps : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// The resource group to which the Front Door belongs.

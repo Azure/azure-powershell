@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the New-AzFrontDoorWafManagedRuleExclusionObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafManagedRuleExclusionObject"), OutputType(typeof(PSManagedRuleExclusion))]
-    public class NewAzureRmFrontDoorWafManagedRuleExclusionObject : AzureFrontDoorCmdletBase
+    public class NewFrontDoorWafManagedRuleExclusionObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// Exclusion match variable

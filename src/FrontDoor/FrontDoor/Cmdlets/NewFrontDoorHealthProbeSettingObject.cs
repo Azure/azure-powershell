@@ -12,16 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.Azure.Management.FrontDoor;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -29,7 +24,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// Defines the New-AzFrontDoorHealthProbeSettingObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorHealthProbeSettingObject"), OutputType(typeof(PSHealthProbeSetting))]
-    public class NewAzureRmFrontDoorHealthProbeSettingObject : AzureFrontDoorCmdletBase
+    public class NewFrontDoorHealthProbeSettingObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// Gets or sets the health probe setting name.
@@ -41,7 +36,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// The path to use for the health probe. Default is /
         /// </summary>
-        [Parameter(Mandatory = false,  HelpMessage = "The path to use for the health probe. Default value is /")]
+        [Parameter(Mandatory = false, HelpMessage = "The path to use for the health probe. Default value is /")]
         public string Path { get; set; }
 
         /// <summary>
