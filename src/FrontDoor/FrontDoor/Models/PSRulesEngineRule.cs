@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public PSMatchProcessingBehavior MatchProcessingBehavior { get; set; }
 
-        public List<PSRulesEngineMatchCondition> RulesEngineMAtchCondition { get; set; }
+        public List<PSRulesEngineMatchCondition> MatchConditions { get; set; }
 
         // required
-        public PSRulesEngineAction RulesEngineAction { get; set; }
+        public PSRulesEngineAction Action { get; set; }
     }
 
     public class PSRulesEngineMatchCondition
@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public string Selector { get; set; }
 
-        // This should be enum because there's a set of valid values
         public PSRulesEngineOperator RulesEngineOperator { get; set; }
 
         public bool? NegateCondition { get; set; }

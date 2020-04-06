@@ -72,6 +72,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "The value to use as the host header sent to the backend. Default value is the backend address.")]
         public string BackendHostHeader { get; set; }
 
+        /// <summary>
+        /// The Alias of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The Alias of the Private Link resource. Populating this optional field indicates that this backend is 'Private'")]
+        public string PrivateLinkAlias { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var Backend = new PSBackend
@@ -82,7 +88,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 EnabledState = !this.IsParameterBound(c => c.EnabledState) ? PSEnabledState.Enabled : EnabledState,
                 Priority = !this.IsParameterBound(c => c.Priority) ? 1 : Priority,
                 Weight = !this.IsParameterBound(c => c.Weight) ? 50 : Weight,
-                BackendHostHeader = !this.IsParameterBound(c => c.BackendHostHeader) ? Address : BackendHostHeader
+                BackendHostHeader = !this.IsParameterBound(c => c.BackendHostHeader) ? Address : BackendHostHeader,
+                PrivateLinkAlias = !this.IsParameterBound(c => c.PrivateLinkAlias) ? null : PrivateLinkAlias
             };
             WriteObject(Backend);
         }

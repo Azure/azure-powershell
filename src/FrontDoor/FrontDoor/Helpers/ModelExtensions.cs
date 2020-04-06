@@ -49,6 +49,8 @@ using SdkRedirectConfiguration = Microsoft.Azure.Management.FrontDoor.Models.Red
 using SdkRefId = Microsoft.Azure.Management.FrontDoor.Models.SubResource;
 using SdkRouteConfiguration = Microsoft.Azure.Management.FrontDoor.Models.RouteConfiguration;
 using SdkRoutingRule = Microsoft.Azure.Management.FrontDoor.Models.RoutingRule;
+using SdkRulesEngine = Microsoft.Azure.Management.FrontDoor.Models.RulesEngine;
+using SdkRulesEngineRule = Microsoft.Azure.Management.FrontDoor.Models.RulesEngineRule;
 using SdkVault = Microsoft.Azure.Management.FrontDoor.Models.KeyVaultCertificateSourceParametersVault;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Helpers
@@ -97,8 +99,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 BackendPoolsSetting = sdkFrontDoor.BackendPoolsSettings?.ToPSBackendPoolsSetting(),
                 // PSFrontDoor parameter EnforceCertificateNameCheck is no longer actively used, in favor of BackendPoolsSetting which 
                 // encapsulates this property. However, for backwards compability, we set this field so that it is still displayed to users.
-                EnforceCertificateNameCheck = sdkFrontDoor.BackendPoolsSettings == null ? (PSEnforceCertificateNameCheck?)null : (PSEnforceCertificateNameCheck)Enum.Parse(typeof(PSEnforceCertificateNameCheck), sdkFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck)
-                // Convert Rules Engine
+                EnforceCertificateNameCheck = sdkFrontDoor.BackendPoolsSettings == null
+                                                ? (PSEnforceCertificateNameCheck?)null
+                                                : (PSEnforceCertificateNameCheck)Enum.Parse(typeof(PSEnforceCertificateNameCheck), sdkFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck),
+                RulesEngine = sdkFrontDoor.RulesEngines?.Select(x => x.ToPSRulesEngine()).ToList()
             };
         }
 
@@ -189,6 +193,122 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 enabledState: psRoutingRule.EnabledState.ToString()
             );
         }
+
+        public static PSRulesEngineRule ToPSRulesEngineRule(this SdkRulesEngineRule sdkRulesEngineRule)
+        {
+            return new PSRulesEngineRule
+            {
+                Name = sdkRulesEngineRule.Name,
+                Priority = sdkRulesEngineRule.Priority,
+                MatchProcessingBehavior = (PSMatchProcessingBehavior)Enum.Parse(typeof(PSMatchProcessingBehavior), sdkRulesEngineRule.MatchProcessingBehavior),
+                MatchConditions = sdkRulesEngineRule.MatchConditions?.Select(x => ToPSRulesEngineMatchCondition(x)).ToList(),
+                Action = ToPSRulesEngineAction(sdkRulesEngineRule.Action)
+            };
+        }
+
+        public static SdkRulesEngineRule ToSdkRulesEngineRule(this PSRulesEngineRule psRulesEngineRule)
+        {
+            return new SdkRulesEngineRule
+            (
+                name: psRulesEngineRule.Name,
+                priority: psRulesEngineRule.Priority,
+                action: ToSdkRulesEngineAction(psRulesEngineRule.Action),
+                matchConditions: psRulesEngineRule.MatchConditions?.Select(x => ToSdkMatchcondition(x)).ToList(),
+                matchProcessingBehavior: psRulesEngineRule.MatchProcessingBehavior.ToString()
+            );
+        }
+
+        public static PSRulesEngineAction ToPSRulesEngineAction(RulesEngineAction sdkRulesEngineAction)
+        {
+            return new PSRulesEngineAction
+            {
+                RequestHeaderActions = sdkRulesEngineAction.RequestHeaderActions?
+                                            .Select(x => ToPSHeaderAction(x))
+                                            .ToList(),
+                ResponseHeaderActions = sdkRulesEngineAction.ResponseHeaderActions?
+                                            .Select(x => ToPSHeaderAction(x))
+                                            .ToList(),
+                RouteConfigurationOverride = ToPSRouteConfiguration(sdkRulesEngineAction.RouteConfigurationOverride)
+            };
+        }
+
+        public static RulesEngineAction ToSdkRulesEngineAction(PSRulesEngineAction psRulesEngineAction)
+        {
+            return new RulesEngineAction
+            (
+                requestHeaderActions: psRulesEngineAction.RequestHeaderActions?
+                                            .Select(x => ToSdkHeaderAction(x))
+                                            .ToList(),
+                responseHeaderActions: psRulesEngineAction.ResponseHeaderActions?
+                                            .Select(x => ToSdkHeaderAction(x))
+                                            .ToList(),
+                routeConfigurationOverride: ToSdkRouteConfiguration(psRulesEngineAction.RouteConfigurationOverride)
+            );
+        }
+
+        public static PSHeaderAction ToPSHeaderAction(HeaderAction sdkHeaderAction)
+        {
+            return new PSHeaderAction
+            {
+                HeaderName = sdkHeaderAction.HeaderName,
+                HeaderActionType = (PSHeaderActionType)Enum.Parse(typeof(PSHeaderActionType), sdkHeaderAction.HeaderActionType),
+                Value = sdkHeaderAction.Value
+            };
+        }
+
+        public static HeaderAction ToSdkHeaderAction(PSHeaderAction psHeaderAction)
+        {
+            return new HeaderAction
+            (
+                headerActionType: psHeaderAction.HeaderActionType.ToString(),
+                headerName: psHeaderAction.HeaderName,
+                value: psHeaderAction.Value
+            );
+        }
+
+        public static PSRulesEngineMatchCondition ToPSRulesEngineMatchCondition(RulesEngineMatchCondition sdkMatchCondition)
+        {
+            return new PSRulesEngineMatchCondition
+            {
+                RulesEngineMatchVariable = (PSRulesEngineMatchVariable)Enum.Parse(typeof(PSRulesEngineMatchVariable), sdkMatchCondition.RulesEngineMatchVariable),
+                RulesEngineMatchValue = sdkMatchCondition.RulesEngineMatchValue.ToList(),
+                Selector = sdkMatchCondition.Selector,
+                RulesEngineOperator = (PSRulesEngineOperator)Enum.Parse(typeof(PSRulesEngineOperator), sdkMatchCondition.RulesEngineOperator),
+                NegateCondition = sdkMatchCondition.NegateCondition,
+                Transforms = sdkMatchCondition.Transforms?.Select(x => (PSTransforms)Enum.Parse(typeof(PSTransforms), x.ToString())).ToList()
+            };
+        }
+
+        public static RulesEngineMatchCondition ToSdkMatchcondition(PSRulesEngineMatchCondition psRulesEngineMatchCondition)
+        {
+            return new RulesEngineMatchCondition
+            (
+                rulesEngineMatchVariable: psRulesEngineMatchCondition.RulesEngineMatchVariable.ToString(),
+                rulesEngineOperator: psRulesEngineMatchCondition.RulesEngineOperator.ToString(),
+                rulesEngineMatchValue: psRulesEngineMatchCondition.RulesEngineMatchValue,
+                selector: psRulesEngineMatchCondition.Selector,
+                negateCondition: psRulesEngineMatchCondition.NegateCondition,
+                transforms: psRulesEngineMatchCondition.Transforms?.Select(x => x.ToString()).ToList()
+            );
+        }
+
+        public static PSRulesEngine ToPSRulesEngine(this SdkRulesEngine sdkRulesEngine)
+        {
+            return new PSRulesEngine
+            {
+                Name = sdkRulesEngine.Name,
+                RulesEngineRules = sdkRulesEngine.Rules?.Select(x => ToPSRulesEngineRule(x)).ToList()
+            };
+        }
+
+        public static SdkRulesEngine ToSdkRulesEngine(this PSRulesEngine psRulesEngine)
+        {
+            return new SdkRulesEngine
+            (
+                rules: psRulesEngine.RulesEngineRules?.Select(x => ToSdkRulesEngineRule(x)).ToList()
+            );
+        }
+
         public static PSBackend ToPSBackend(this SdkBackend sdkBackend)
         {
             return new PSBackend
