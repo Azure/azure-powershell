@@ -12,16 +12,68 @@ Checks that the data connection parameters are valid.
 
 ## SYNTAX
 
-### DataViaIdentity (Default)
+### DataExpandedEventHub (Default)
 ```
-Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -Parameter <IDataConnectionValidation>
+Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
+ -ResourceGroupName <String> -ConsumerGroup <String> -EventHubResourceId <String> -Kind <Kind>
+ [-SubscriptionId <String>] [-Compression <Compression>] [-DataFormat <EventGridDataFormat>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Data
+### DataExpanded
+```
+Invoke-AzKustoDataConnectionValidation -ConsumerGroup <String> -Kind <Kind> [-DataConnectionName <String>]
+ [-Location <String>] [-MappingRuleName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### DataExpandedEventGrid
 ```
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> -Parameter <IDataConnectionValidation> [-SubscriptionId <String>]
+ -ResourceGroupName <String> -ConsumerGroup <String> -DataFormat <EventGridDataFormat>
+ -EventHubResourceId <String> -Kind <Kind> -StorageAccountResourceId <String> -TableName <String>
+ [-SubscriptionId <String>] [-MappingRuleName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### DataExpandedIotHub
+```
+Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
+ -ResourceGroupName <String> -ConsumerGroup <String> -IotHubResourceId <String> -Kind <Kind>
+ -SharedAccessPolicyName <String> [-SubscriptionId <String>] [-DataFormat <EventGridDataFormat>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DataViaIdentityExpanded
+```
+Invoke-AzKustoDataConnectionValidation -ConsumerGroup <String> -Kind <Kind> [-DataConnectionName <String>]
+ [-Location <String>] [-MappingRuleName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### DataViaIdentityExpandedEventGrid
+```
+Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
+ -DataFormat <EventGridDataFormat> -EventHubResourceId <String> -Kind <Kind>
+ -StorageAccountResourceId <String> -TableName <String> [-MappingRuleName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DataViaIdentityExpandedEventHub
+```
+Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
+ -EventHubResourceId <String> -Kind <Kind> [-Compression <Compression>] [-DataFormat <EventGridDataFormat>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DataViaIdentityExpandedIotHub
+```
+Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
+ -IotHubResourceId <String> -Kind <Kind> -SharedAccessPolicyName <String> [-DataFormat <EventGridDataFormat>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -50,7 +102,39 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Data
+Parameter Sets: DataExpandedEventGrid, DataExpandedEventHub, DataExpandedIotHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Compression
+The event hub messages compression type.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Compression
+Parameter Sets: DataExpandedEventHub, DataViaIdentityExpandedEventHub
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ConsumerGroup
+The event/iot hub consumer group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -66,7 +150,40 @@ The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Data
+Parameter Sets: DataExpandedEventGrid, DataExpandedEventHub, DataExpandedIotHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DataConnectionName
+The name of the data connection.
+
+```yaml
+Type: System.String
+Parameter Sets: DataExpanded, DataViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DataFormat
+The data format of the message.
+Optionally the data format can be added to each message.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat
+Parameter Sets: DataExpandedEventGrid, DataExpandedEventHub, DataExpandedIotHub, DataViaIdentityExpandedEventGrid, DataViaIdentityExpandedEventHub, DataViaIdentityExpandedIotHub
 Aliases:
 
 Required: True
@@ -93,13 +210,45 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -EventHubResourceId
+The resource ID of the event hub to be used to create a data connection / event grid is configured to send events.
+
+```yaml
+Type: System.String
+Parameter Sets: DataExpandedEventGrid, DataExpandedEventHub, DataViaIdentityExpandedEventGrid, DataViaIdentityExpandedEventHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EventSystemProperty
+System properties of the event/iot hub.
+
+```yaml
+Type: System.String[]
+Parameter Sets: DataExpandedEventHub, DataExpandedIotHub, DataViaIdentityExpandedEventHub, DataViaIdentityExpandedIotHub
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-Parameter Sets: DataViaIdentity
+Parameter Sets: DataViaIdentityExpandedEventGrid, DataViaIdentityExpandedEventHub, DataViaIdentityExpandedIotHub
 Aliases:
 
 Required: True
@@ -110,19 +259,67 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Class representing an data connection validation.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+### -IotHubResourceId
+The resource ID of the Iot hub to be used to create a data connection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDataConnectionValidation
+Type: System.String
+Parameter Sets: DataExpandedIotHub, DataViaIdentityExpandedIotHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Kind
+Kind of the endpoint for the data connection
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Location
+Resource location.
+
+```yaml
+Type: System.String
+Parameter Sets: DataExpanded, DataViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MappingRuleName
+The mapping rule to be used to ingest the data.
+Optionally the mapping information can be added to each message.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -132,7 +329,39 @@ The name of the resource group containing the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Data
+Parameter Sets: DataExpandedEventGrid, DataExpandedEventHub, DataExpandedIotHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SharedAccessPolicyName
+The name of the share access policy.
+
+```yaml
+Type: System.String
+Parameter Sets: DataExpandedIotHub, DataViaIdentityExpandedIotHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StorageAccountResourceId
+The resource ID of the storage account where the data resides.
+
+```yaml
+Type: System.String
+Parameter Sets: DataExpandedEventGrid, DataViaIdentityExpandedEventGrid
 Aliases:
 
 Required: True
@@ -149,12 +378,29 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Data
+Parameter Sets: DataExpandedEventGrid, DataExpandedEventHub, DataExpandedIotHub
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TableName
+The table where the data should be ingested.
+Optionally the table information can be added to each message.
+
+```yaml
+Type: System.String
+Parameter Sets: DataExpandedEventGrid, DataExpandedEventHub, DataExpandedIotHub, DataViaIdentityExpandedEventGrid, DataViaIdentityExpandedEventHub, DataViaIdentityExpandedIotHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -198,8 +444,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDataConnectionValidation
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
@@ -223,11 +467,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
   - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-#### PARAMETER <IDataConnectionValidation>: Class representing an data connection validation.
-  - `Kind <Kind>`: Kind of the endpoint for the data connection
-  - `[DataConnectionName <String>]`: The name of the data connection.
-  - `[Location <String>]`: Resource location.
 
 ## RELATED LINKS
 
