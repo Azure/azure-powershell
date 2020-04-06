@@ -74,51 +74,9 @@ function New-AzKustoDatabase {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ProvisioningState]
-        # The provisioned state of the resource.
-        ${ProvisioningState},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.TimeSpan]
         # The time the data should be kept before it stops being accessible to queries in TimeSpan.
         ${SoftDeletePeriod},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabaseStatistics]
-        # The statistics of the database.
-        ${Statistics},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [float]
-        # The database size - the total size of compressed data and index in bytes.
-        ${StatisticsSize},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [System.String]
-        # Indicates whether the database is followed.
-        ${IsFollowed},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [System.String]
-        # The name of the attached database configuration cluster.
-        ${AttachedDatabaseConfigurationName},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [System.String]
-        # The name of the leader cluster.
-        ${LeaderClusterResourceId},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalsModificationKind]
-        # The principals modification kind of the database.
-        ${PrincipalsModificationKind},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -191,28 +149,13 @@ function New-AzKustoDatabase {
             if ($PSBoundParameters['Kind'] -eq 'ReadWrite') {
                 $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadWriteDatabase]::new()
 
-                if ($PSBoundParameters.ContainsKey('IsFollowed')) {
-                    $Parameter.IsFollowed = $PSBoundParameters['IsFollowed']
-                    $null = $PSBoundParameters.Remove('IsFollowed')
+                if ($PSBoundParameters.ContainsKey('HotCachePeriod')) {
+                    $Parameter.HotCachePeriod = $PSBoundParameters['HotCachePeriod']
+                    $null = $PSBoundParameters.Remove('HotCachePeriod')
                 }
             }
             else {
                 $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadOnlyFollowingDatabase]::new()
-            
-                if ($PSBoundParameters.ContainsKey('AttachedDatabaseConfigurationName')) {
-                    $Parameter.AttachedDatabaseConfigurationName = $PSBoundParameters['AttachedDatabaseConfigurationName']
-                    $null = $PSBoundParameters.Remove('AttachedDatabaseConfigurationName')
-                }
-
-                if ($PSBoundParameters.ContainsKey('LeaderClusterResourceId')) {
-                    $Parameter.LeaderClusterResourceId = $PSBoundParameters['LeaderClusterResourceId']
-                    $null = $PSBoundParameters.Remove('LeaderClusterResourceId')
-                }
-
-                if ($PSBoundParameters.ContainsKey('PrincipalsModificationKind')) {
-                    $Parameter.PrincipalsModificationKind = $PSBoundParameters['PrincipalsModificationKind']
-                    $null = $PSBoundParameters.Remove('PrincipalsModificationKind')
-                }
             }
 
             $null = $PSBoundParameters.Remove('Kind')
@@ -220,29 +163,9 @@ function New-AzKustoDatabase {
             $Parameter.Location = $PSBoundParameters['Location']
             $null = $PSBoundParameters.Remove('Location')
 
-            if ($PSBoundParameters.ContainsKey('HotCachePeriod')) {
-                $Parameter.HotCachePeriod = $PSBoundParameters['HotCachePeriod']
-                $null = $PSBoundParameters.Remove('HotCachePeriod')
-            }
-
-            if ($PSBoundParameters.ContainsKey('ProvisioningState')) {
-                $Parameter.ProvisioningState = $PSBoundParameters['ProvisioningState']
-                $null = $PSBoundParameters.Remove('ProvisioningState')
-            }
-
             if ($PSBoundParameters.ContainsKey('SoftDeletePeriod')) {
                 $Parameter.SoftDeletePeriod = $PSBoundParameters['SoftDeletePeriod']
                 $null = $PSBoundParameters.Remove('SoftDeletePeriod')
-            }
-
-            if ($PSBoundParameters.ContainsKey('Statistics')) {
-                $Parameter.Statistics = $PSBoundParameters['Statistics']
-                $null = $PSBoundParameters.Remove('Statistics')
-            }
-
-            if ($PSBoundParameters.ContainsKey('StatisticsSize')) {
-                $Parameter.StatisticsSize = $PSBoundParameters['StatisticsSize']
-                $null = $PSBoundParameters.Remove('StatisticsSize')
             }
 
             $null = $PSBoundParameters.Add('Parameter', $Parameter)
