@@ -93,6 +93,22 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestExpressRouteCircuitConnectionIPv6CRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitConnectionIPv6CRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestExpressRouteCircuitConnectionIPv6PrecreatedCRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitConnectionIPv6PrecreatedCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitPeeringWithRouteFilter()
         {
             TestRunner.RunTestScript("Test-ExpressRouteCircuitPeeringWithRouteFilter");

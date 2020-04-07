@@ -20,6 +20,14 @@
 
 ## Upcoming Release
 
+*  Add Support for IPv6 address family in ExpressRouteCircuitConnectionConfig (Global Reach)
+    - Added Cmdlet
+        - Set-AzExpressRouteCircuitConnectionConfig 
+            - allows setting of all the existing properties including the IPv6CircuitConnectionProperties
+    -Updated Cmdlet
+        - Add-AzExpressRouteCircuitConnectionConfig 
+            - Added another optional parameter AddressPrefixType to specify the address family of address prefix
+
 ## Version 2.4.0
 * Updated cmdlets to allow cross-tenant VirtualHubVnetConnections
     - `New-AzVirtualHubVnetConnection`

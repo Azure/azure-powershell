@@ -77,7 +77,7 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzPolicyEvent', 'Get-AzPolicyState', 'Get-AzPolicyStateSummary', 
                'Get-AzPolicyRemediation', 'Remove-AzPolicyRemediation', 
                'Start-AzPolicyRemediation', 'Stop-AzPolicyRemediation', 
-               'Get-AzPolicyMetadata'
+               'Get-AzPolicyMetadata', 'Start-AzPolicyComplianceScan'
 
 # Variables to export from this module
 # VariablesToExport = @()
