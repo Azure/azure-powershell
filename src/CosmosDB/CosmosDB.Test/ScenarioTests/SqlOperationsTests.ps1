@@ -153,13 +153,10 @@ function Test-SqlOperationsCmdletsUsingInputObject
 
   $PartitionKeyPathValue = "/foo/bar"
   $PartitionKeyKindValue = "Hash"
-  $StoredProcedureName = "storedProcedure"
 
+  $StoredProcedureName = "storedProcedure"
   $UDFName = "udf"
   $TriggerName = "trigger"
-
-  $PartitionKeyPathValue = "/foo/bar"
-  $PartitionKeyKindValue = "Hash"
 
   $Body = "function () { var context = getContext(); " +
                         "var response = context.getResponse();" +
@@ -250,5 +247,56 @@ function Test-SqlOperationsCmdletsUsingInputObject
 
   Remove-AzCosmosDBSqlContainer -InputObject $NewContainer 
 
+  Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase 
+}
+
+function Test-SqlThroughputCmdlets
+{
+  $AccountName = "cosmosdb9921232812"
+  $rgName = "rgtest9921232812"
+  $DatabaseName = "dbName3"
+  $ContainerName = "containerName"
+
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+
+  $ThroughputValue = 1200
+  $UpdatedThroughputValue = 1100
+  $UpdatedThroughputValue2 = 1000
+  $UpdatedThroughputValue3 = 900
+
+  $ContainerThroughputValue = 800
+  $UpdatedContainerThroughputValue = 700
+  $UpdatedContainerThroughputValue2 = 600
+  $UpdatedContainerThroughputValue3 = 500
+
+  $NewDatabase =  Set-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
+  $Throughput = Get-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  Assert-AreEqual $Throughput.Throughput $ThroughputValue
+
+  $UpdatedThroughput = Update-AzCosmosDBSqlDatabaseThroughput  -InputObject $NewDatabase -Throughput $UpdatedThroughputValue
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue
+
+  $UpdatedThroughput = Update-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedThroughputValue2
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue2
+
+  $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
+  $UpdatedThroughput = Update-AzCosmosDBSqlDatabaseThroughput  -ParentObject $CosmosDBAccount -Name $DatabaseName -Throughput $UpdatedThroughputValue3
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue3
+
+  $NewContainer =  Set-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+  $ContainerThroughput = Get-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+  Assert-AreEqual $ContainerThroughput.Throughput $ContainerThroughputValue
+
+  $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
+  Assert-AreEqual $UpdatedContainerThroughput.Throughput $UpdatedContainerThroughputValue
+
+  $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput  -InputObject $NewContainer -Throughput $UpdatedContainerThroughputValue2
+  Assert-AreEqual $UpdatedContainerThroughput.Throughput $UpdatedContainerThroughputValue2
+
+  $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput -ParentObject $NewDatabase -Name $ContainerName -Throughput $UpdatedContainerThroughputValue3
+  Assert-AreEqual $UpdatedContainerThroughput.Throughput $UpdatedContainerThroughputValue3
+
+  Remove-AzCosmosDBSqlContainer -InputObject $NewContainer 
   Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase 
 }

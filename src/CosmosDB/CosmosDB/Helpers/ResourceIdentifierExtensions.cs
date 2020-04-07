@@ -91,6 +91,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
             return GetChildResourceName(resourceId, CassandraKeyspaces);
         }
 
+        public static string GetTableName(this ResourceIdentifier resourceId)
+        {
+            return GetChildResourceName(resourceId, Tables);
+        }
+
         private static string GetChildResourceName(this ResourceIdentifier resourceId, string resourceType)
         {
             var parentResource = resourceId.ParentResource.Split(new[] { '/' });
