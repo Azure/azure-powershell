@@ -12,28 +12,14 @@ Updates a database.
 
 ## SYNTAX
 
-### UpdateExpandedReadWrite (Default)
+### UpdateExpanded (Default)
 ```
 Update-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Kind <Kind>
  -Location <String> [-SubscriptionId <String>] [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateExpandedReadOnlyFollowing
-```
-Update-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Kind <Kind>
- -Location <String> [-SubscriptionId <String>] [-HotCachePeriod <TimeSpan>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpandedReadOnlyFollowing
-```
-Update-AzKustoDatabase -InputObject <IKustoIdentity> -Kind <Kind> -Location <String>
- [-HotCachePeriod <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpandedReadWrite
+### UpdateViaIdentityExpanded
 ```
 Update-AzKustoDatabase -InputObject <IKustoIdentity> -Kind <Kind> -Location <String>
  [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -58,7 +44,7 @@ ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/
 
 The above command updates the soft deletion period and hot cache period of the Kusto database "mykustodatabase" in the cluster "testnewkustocluster" found in the resource group "testrg".
 
-### Example 2: Update an existing database by database object
+### Example 2: Update an existing database via identity
 ```powershell
 PS C:\> $database = Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase
 PS C:\> $2ds = New-TimeSpan -Days 2
@@ -71,6 +57,31 @@ ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/
 ```
 
 The above command updates the soft deletion period and hot cache period of the Kusto database "mykustodatabase" in the cluster "testnewkustocluster" found in the resource group "testrg".
+
+### Example 3: Update an existing ReadOnly database by name
+```powershell
+PS C:\> $2ds = New-TimeSpan -Days 2
+PS C:\> Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName myfollowercluster -Name mykustodatabase -Kind ReadOnlyFollowing -HotCachePeriod $2ds -Location 'East US'
+
+Kind              Location Name                                Type
+----              -------- ----                                ----
+ReadOnlyFollowing East US  myfollowercluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
+```
+
+The above command updates the hot cache period of the Kusto database "mykustodatabase" in the cluster "myfollowercluster" found in the resource group "testrg".
+
+### Example 4: Update an existing ReadOnly database via identity
+```powershell
+PS C:\> $database = Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName myfollowercluster -Name mykustodatabase
+PS C:\> $2ds = New-TimeSpan -Days 2
+PS C:\> Update-AzKustoDatabase -InputObject $database -Kind ReadOnlyFollowing -HotCachePeriod $2ds -Location 'East US'
+
+Kind              Location Name                                Type
+----              -------- ----                                ----
+ReadOnlyFollowing East US  myfollowercluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
+```
+
+The above command updates the hot cache period of the Kusto database "mykustodatabase" in the cluster "myfollowercluster" found in the resource group "testrg".
 
 ## PARAMETERS
 
@@ -95,7 +106,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedReadOnlyFollowing, UpdateExpandedReadWrite
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -144,7 +155,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-Parameter Sets: UpdateViaIdentityExpandedReadOnlyFollowing, UpdateViaIdentityExpandedReadWrite
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -192,7 +203,7 @@ The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedReadOnlyFollowing, UpdateExpandedReadWrite
+Parameter Sets: UpdateExpanded
 Aliases: DatabaseName
 
 Required: True
@@ -224,7 +235,7 @@ The name of the resource group containing the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedReadOnlyFollowing, UpdateExpandedReadWrite
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -240,7 +251,7 @@ The time the data should be kept before it stops being accessible to queries in 
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: UpdateExpandedReadWrite, UpdateViaIdentityExpandedReadWrite
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -257,7 +268,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedReadOnlyFollowing, UpdateExpandedReadWrite
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
