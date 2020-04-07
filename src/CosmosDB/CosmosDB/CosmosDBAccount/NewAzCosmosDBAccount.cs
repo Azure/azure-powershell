@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public PSVirtualNetworkRule[] VirtualNetworkRuleObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ApiKindHelpMessage)]
-        [PSArgumentCompleter("GlobalDocumentDB", "MongoDB", "Gremlin", "Cassandra", "Table")]
+        [PSArgumentCompleter("Sql", "MongoDB", "Gremlin", "Cassandra", "Table")]
         public string ApiKind { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
@@ -204,10 +204,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
             databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
             databaseAccountCreateUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
+            databaseAccountCreateUpdateParameters.IpRangeFilter = IpRangeFilterAsString;
 
             if (!string.IsNullOrEmpty(ApiKind))
             {
-                if (!ApiKind.Equals("GlobalDocumentDB", StringComparison.OrdinalIgnoreCase) && !ApiKind.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
+                if (!ApiKind.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
                 {
                     switch (ApiKind)
                     {
@@ -219,6 +220,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                             break;
                         case "Table":
                             databaseAccountCreateUpdateParameters.Capabilities = new List<Capability> { new Capability { Name = "EnableTable" } };
+                            break;
+                        case "Sql":
                             break;
                     }
 
