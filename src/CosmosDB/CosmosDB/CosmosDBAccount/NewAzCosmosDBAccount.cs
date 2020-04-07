@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string ApiKind { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
-        public bool DisableKeyBasedMetadataWriteAccess { get; set; }
+        public SwitchParameter DisableKeyBasedMetadataWriteAccess { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }

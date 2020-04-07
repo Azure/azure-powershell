@@ -17,9 +17,8 @@ New-AzCosmosDBAccount -ResourceGroupName <String> -Name <String> [-DefaultConsis
  [-EnableAutomaticFailover] [-EnableMultipleWriteLocations] [-EnableVirtualNetwork] [-IpRangeFilter <String[]>]
  [-Location <String[]>] [-LocationObject <PSLocation[]>] [-MaxStalenessIntervalInSeconds <Int32>]
  [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
- [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-ApiKind <String>]
- [-DisableKeyBasedMetadataWriteAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-ApiKind <String>] [-DisableKeyBasedMetadataWriteAccess]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,7 +137,7 @@ Accept wildcard characters: False
 Disable write operations on metadata resources (databases, containers, throughput) via account keys
 
 ```yaml
-Type: Boolean
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
