@@ -70,6 +70,21 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return IotHubUtils.ConvertObject<IEnumerable<Module>, IEnumerable<PSModules>>(modules.ToList());
         }
 
+        public static PSConfiguration ToPSConfiguration(Configuration config)
+        {
+            return IotHubUtils.ConvertObject<Configuration, PSConfiguration>(config);
+        }
+
+        public static Configuration ToConfiguration(PSConfiguration psConfig)
+        {
+            return IotHubUtils.ConvertObject<PSConfiguration, Configuration>(psConfig);
+        }
+
+        public static IEnumerable<PSConfigurations> ToPSConfigurations(IEnumerable<Configuration> configs)
+        {
+            return IotHubUtils.ConvertObject<IEnumerable<Configuration>, IEnumerable<PSConfigurations>>(configs.ToList());
+        }
+
         public static PSDeviceTwin ToPSDeviceTwin(Twin deviceTwin)
         {
             return IotHubUtils.ConvertObject<Twin, PSDeviceTwin>(deviceTwin);

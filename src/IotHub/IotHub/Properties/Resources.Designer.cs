@@ -86,6 +86,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Configuration.
+        /// </summary>
+        internal static string AddIotHubConfiguration {
+            get {
+                return ResourceManager.GetString("AddIotHubConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Device.
         /// </summary>
         internal static string AddIotHubDevice {
@@ -239,6 +248,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Configuration.
+        /// </summary>
+        internal static string RemoveIotHubConfiguration {
+            get {
+                return ResourceManager.GetString("RemoveIotHubConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Device.
         /// </summary>
         internal static string RemoveIotHubDevice {
@@ -298,6 +316,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string RemoveIotHubRoutingEndpoint {
             get {
                 return ResourceManager.GetString("RemoveIotHubRoutingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Configuration.
+        /// </summary>
+        internal static string SetIotHubConfiguration {
+            get {
+                return ResourceManager.GetString("SetIotHubConfiguration", resourceCulture);
             }
         }
         
