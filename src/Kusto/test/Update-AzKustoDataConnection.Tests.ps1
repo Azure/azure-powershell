@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzKustoDataConnection' {
-    It 'UpdateExpandedEventHub' -skip {
+    It 'UpdateExpandedEventHub' {
         $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
@@ -34,7 +34,7 @@ Describe 'Update-AzKustoDataConnection' {
         Validate_EventHubDataConnection $dataConnectionUpdated $dataConnectionFullName $location $eventHubResourceId $tableName $tableMappingName $dataFormat $kind
     }
 
-    It 'UpdateExpandedEventGrid' -skip {
+    It 'UpdateExpandedEventGrid' {
         $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
@@ -56,7 +56,7 @@ Describe 'Update-AzKustoDataConnection' {
         Validate_EventGridDataConnection $dataConnectionUpdated $dataConnectionFullName $location $eventHubResourceId $storageAccountResourceId $tableName $tableMappingName $dataFormat $kind
     }
 
-    It 'UpdateExpandedIotHub' -skip {
+    It 'UpdateExpandedIotHub' {
         $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
