@@ -305,5 +305,4 @@ function Invoke-AzKustoDataConnectionValidation {
             throw
         }
     }
-} }
 }
