@@ -96,7 +96,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.7.2'; },
                @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '2.7.0'; }, 
                @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.2.1'; }, 
                @{ModuleName = 'Az.Relay'; RequiredVersion = '1.0.3'; }, 
-               @{ModuleName = 'Az.Resources'; RequiredVersion = '1.12.0'; }, 
+#               @{ModuleName = 'Az.Resources'; RequiredVersion = '1.12.0'; },  # removed to support preview
                @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '1.4.1'; }, 
                @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '2.0.1'; }, 
                @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.1.1'; }, 

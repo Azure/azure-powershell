@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.12.1
 * Add Get-AzDeploymentWhatIfResult cmdlet for getting ARM template What-If at subscription scope.
     - Alias: Get-AzSubscriptionDeploymentWhatIf.
 * Add Get-AzDeploymentResourceGroupWhatIfResult cmdlet for getting ARM template What-If at resource group scope.
