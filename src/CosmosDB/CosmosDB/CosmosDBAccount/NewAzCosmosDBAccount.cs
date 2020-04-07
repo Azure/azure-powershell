@@ -16,6 +16,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
@@ -194,19 +195,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             string IpRangeFilterAsString = null;
             if (IpRangeFilter != null && IpRangeFilter.Length > 0)
             {
-                for (int i = 0; i < IpRangeFilter.Length; i++)
-                {
-                    if (i == 0)
-                    {
-                        IpRangeFilterAsString = IpRangeFilter[0];
-                    }
-                    else
-                        IpRangeFilterAsString = string.Concat(IpRangeFilterAsString, ",", IpRangeFilter[i]);
-                }
-            }
-            else if (IpRangeFilter != null)
-            {
-                IpRangeFilterAsString = "";
+                IpRangeFilterAsString = IpRangeFilter?.Aggregate(string.Empty, (output, next) => string.Concat(output, (!string.IsNullOrWhiteSpace(output) && !string.IsNullOrWhiteSpace(next) ? "," : string.Empty), next)) ?? string.Empty;
             }
 
             DatabaseAccountCreateUpdateParameters databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParameters(locations:LocationCollection, location: writeLocation, name:Name, consistencyPolicy:consistencyPolicy, tags:tags, ipRangeFilter:IpRangeFilterAsString);
