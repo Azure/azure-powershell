@@ -32,7 +32,7 @@ Describe 'Get-AzKustoDataConnection' {
 
         [array]$dataConnectionGet = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
         $dataConnectionCreated = $dataConnectionGet[0]
-        Validate_DataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $tableName $tableMappingName $dataFormat $kind
+        Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $tableName $tableMappingName $dataFormat $kind
     }
 
     It 'Get' {
@@ -52,6 +52,6 @@ Describe 'Get-AzKustoDataConnection' {
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
         $dataConnectionCreated = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
-        Validate_DataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $tableName $tableMappingName $dataFormat $kind
+        Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $tableName $tableMappingName $dataFormat $kind
     }
 }

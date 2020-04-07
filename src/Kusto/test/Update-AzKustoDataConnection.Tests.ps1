@@ -31,7 +31,7 @@ Describe 'Update-AzKustoDataConnection' {
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
         $dataConnectionCreated = Update-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -DataFormat $dataFormat -ConsumerGroup '$Default' -Compression "None" -TableName $tableName -MappingRuleName $tableMappingName
-        Validate_DataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $tableName $tableMappingName $dataFormat $kind
+        Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $tableName $tableMappingName $dataFormat $kind
     }
 
     It 'UpdateExpandedEventGrid' {
