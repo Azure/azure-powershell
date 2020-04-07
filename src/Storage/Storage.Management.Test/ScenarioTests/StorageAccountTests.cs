@@ -183,5 +183,19 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewAzureStorageAccountQueueTableEncrytionKeyType");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccountGZRS()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_GZRS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccountRAGZRS()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_RAGZRS");
+        }
     }
 }
