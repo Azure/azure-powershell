@@ -14,6 +14,9 @@
 
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
@@ -21,5 +24,46 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngineRuleObject"), OutputType(typeof(PSRulesEngineRule))]
     public class NewFrontDoorRulesEngineRuleObject : AzureFrontDoorCmdletBase
     {
+        [Parameter(Mandatory = true, HelpMessage = "A name to refer to this specific rule.")]
+        public string Name { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "A priority assigned to this rule. ")]
+        public int Priority { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "Actions to perform on the request and response if all of the match conditions are met.")]
+        public PSRulesEngineAction Action { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.")]
+        [PSArgumentCompleter("Continue", "Stop")]
+        public PSMatchProcessingBehavior MatchProcessingBehavior { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.")]
+        public PSRulesEngineMatchCondition[] MatchConditions { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            // Validations
+            // Priority >= 0
+
+            var rule = new PSRulesEngineRule
+            {
+                Name = Name,
+                Priority = Priority,
+                Action = Action,
+            };
+
+            if (this.IsParameterBound(c => c.MatchProcessingBehavior))
+            {
+                rule.MatchProcessingBehavior = MatchProcessingBehavior;
+                //(PSMatchProcessingBehavior)Enum.Parse(typeof(PSMatchProcessingBehavior), MatchProcessingBehavior);
+            }
+
+            if (this.IsParameterBound(c => c.MatchConditions))
+            {
+                rule.MatchConditions = MatchConditions.ToList();
+            }
+
+            WriteObject(rule);
+        }
     }
 }
