@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = "The name of the header this action will apply to.")]
         public string HeaderName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Which type of manipulation to apply to the header.")]
+        [Parameter(Mandatory = true, HelpMessage = "Which type of manipulation to apply to the header. Possible values include 'Append', 'Delete', or 'Overwrite'")]
         [PSArgumentCompleter("Append", "Delete", "Overwrite")]
         public PSHeaderActionType HeaderActionType { get; set; }
 

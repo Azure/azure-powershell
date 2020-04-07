@@ -27,13 +27,15 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = "A name to refer to this specific rule.")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "A priority assigned to this rule. ")]
+        [Parameter(Mandatory = true, HelpMessage = "A priority assigned to this rule. Cannot be negative.")]
+        [ValidateRange(0, int.MaxValue)]
         public int Priority { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Actions to perform on the request and response if all of the match conditions are met.")]
         public PSRulesEngineAction Action { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.")]
+        [Parameter(Mandatory = false,
+            HelpMessage = "If this rule is a match should the rules engine continue running the remaining rules or stop. Possible values are Continue and Stop. If not present, defaults to Continue.")]
         [PSArgumentCompleter("Continue", "Stop")]
         public PSMatchProcessingBehavior MatchProcessingBehavior { get; set; }
 

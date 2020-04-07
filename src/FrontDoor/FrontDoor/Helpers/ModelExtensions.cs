@@ -200,9 +200,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
             {
                 Name = sdkRulesEngineRule.Name,
                 Priority = sdkRulesEngineRule.Priority,
-                MatchProcessingBehavior = (PSMatchProcessingBehavior)Enum.Parse(typeof(PSMatchProcessingBehavior), sdkRulesEngineRule.MatchProcessingBehavior),
+                Action = ToPSRulesEngineAction(sdkRulesEngineRule.Action),
+                MatchProcessingBehavior = sdkRulesEngineRule.MatchProcessingBehavior == null
+                    ? PSMatchProcessingBehavior.Continue
+                    : (PSMatchProcessingBehavior)Enum.Parse(typeof(PSMatchProcessingBehavior), sdkRulesEngineRule.MatchProcessingBehavior),
                 MatchConditions = sdkRulesEngineRule.MatchConditions?.Select(x => ToPSRulesEngineMatchCondition(x)).ToList(),
-                Action = ToPSRulesEngineAction(sdkRulesEngineRule.Action)
             };
         }
 

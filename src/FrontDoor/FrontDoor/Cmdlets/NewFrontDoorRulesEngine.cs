@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Front Door name.")]
         [ValidateNotNullOrEmpty]
-        public string FrontDoor { get; set; }
+        public string FrontDoorName { get; set; }
 
         /// <summary>
         /// The rules engine name.
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             {
                 var rulesEngine = FrontDoorManagementClient.RulesEngines.CreateOrUpdate(
                         resourceGroupName: ResourceGroupName,
-                        frontDoorName: FrontDoor,
+                        frontDoorName: FrontDoorName,
                         rulesEngineName: Name,
                         rulesEngineParameters: updateParameter
                         );

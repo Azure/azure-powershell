@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.FrontDoor.Common;
+using Microsoft.Azure.Commands.FrontDoor.Properties;
+using Microsoft.Azure.Management.FrontDoor;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
@@ -20,5 +22,49 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine"), OutputType(typeof(bool))]
     public class RemoveFrontDoorRulesEngine : AzureFrontDoorCmdletBase
     {
+        /// <summary>
+        /// The resource group name of the Front Door.
+        /// </summary>
+        [Parameter(Mandatory = true, HelpMessage = "The resource group name that the Front Door will be created in.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// The Front Door name.
+        /// </summary>
+        [Parameter(Mandatory = true, HelpMessage = "Front Door name.")]
+        [ValidateNotNullOrEmpty]
+        public string FrontDoorName { get; set; }
+
+        /// <summary>
+        /// The rules engine name.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Rules engine name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Return object (if specified).")]
+        public SwitchParameter PassThru { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            var existingRulesEngine = FrontDoorManagementClient.RulesEngines.Get(ResourceGroupName, FrontDoorName, Name);
+
+            if (existingRulesEngine == null)
+            {
+                throw new PSArgumentException(string.Format(Resources.Error_DeleteNonExistingFrontDoor,
+                    Name,
+                    ResourceGroupName));
+            }
+
+            if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.RemoveFrontDoor, Name)))
+            {
+                FrontDoorManagementClient.FrontDoors.Delete(ResourceGroupName, Name);
+                if (PassThru)
+                {
+                    WriteObject(true);
+                }
+            }
+        }
     }
 }

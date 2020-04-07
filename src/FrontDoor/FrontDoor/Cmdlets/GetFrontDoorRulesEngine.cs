@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Front Door name.")]
         [ValidateNotNullOrEmpty]
-        public string FrontDoor { get; set; }
+        public string FrontDoorName { get; set; }
 
         /// <summary>
         /// The rules engine name.
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 // Retrieve specified Rules Engine
                 try
                 {
-                    var rulesEngine = FrontDoorManagementClient.RulesEngines.Get(ResourceGroupName, FrontDoor, Name);
+                    var rulesEngine = FrontDoorManagementClient.RulesEngines.Get(ResourceGroupName, FrontDoorName, Name);
                     WriteObject(rulesEngine.ToPSRulesEngine());
                 }
                 catch (Microsoft.Azure.Management.FrontDoor.Models.ErrorResponseException e)
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     string nextPageLink;
                     do
                     {
-                        var pageResult = FrontDoorManagementClient.RulesEngines.ListByFrontDoor(ResourceGroupName, FrontDoor);
+                        var pageResult = FrontDoorManagementClient.RulesEngines.ListByFrontDoor(ResourceGroupName, FrontDoorName);
                         foreach (var rulesEngine in pageResult)
                         {
                             allRulesEngines.Add(rulesEngine.ToPSRulesEngine());
