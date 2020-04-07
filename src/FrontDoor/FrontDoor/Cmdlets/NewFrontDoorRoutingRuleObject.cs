@@ -151,7 +151,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable use of this rule. Default value is Enabled")]
         public PSEnabledState EnabledState { get; set; }
 
-
         public override void ExecuteCmdlet()
         {
             string subid = DefaultContext.Subscription.Id;
@@ -191,7 +190,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     CustomPath = !this.IsParameterBound(c => c.CustomPath) ? "" : CustomPath,
                     CustomQueryString = CustomQueryString
                 };
-
             }
             WriteObject(RoutingRule);
         }

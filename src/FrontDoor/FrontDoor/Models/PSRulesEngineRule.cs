@@ -34,8 +34,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
     public class PSRulesEngineMatchCondition
     {
+        // required
         public PSRulesEngineMatchVariable RulesEngineMatchVariable { get; set; }
 
+        // required
         public List<string> RulesEngineMatchValue { get; set; }
 
         public string Selector { get; set; }
@@ -44,7 +46,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public bool? NegateCondition { get; set; }
 
-        public List<PSTransforms> Transforms { get; set; }
+        public List<PSTransform> Transforms { get; set; }
     }
 
     public class PSRulesEngineAction
@@ -95,7 +97,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         IPMatch,
         GeoMatch,
         Equal,
-        contains,
+        Contains,
         LessThan,
         GreaterThan,
         LessThanOrEqual,
@@ -104,7 +106,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         EndsWith
     }
 
-    public enum PSTransforms
+    public enum PSTransform
     {
         Lowercase,
         Uppercase,

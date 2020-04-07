@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 Selector = sdkMatchCondition.Selector,
                 RulesEngineOperator = (PSRulesEngineOperator)Enum.Parse(typeof(PSRulesEngineOperator), sdkMatchCondition.RulesEngineOperator),
                 NegateCondition = sdkMatchCondition.NegateCondition,
-                Transforms = sdkMatchCondition.Transforms?.Select(x => (PSTransforms)Enum.Parse(typeof(PSTransforms), x.ToString())).ToList()
+                Transforms = sdkMatchCondition.Transforms?.Select(x => (PSTransform)Enum.Parse(typeof(PSTransform), x.ToString())).ToList()
             };
         }
 
