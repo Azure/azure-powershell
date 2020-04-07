@@ -172,9 +172,9 @@ function Validate_PrincipalAssignment {
 
 <#
 .SYNOPSIS
-Validate if database is valid
+Validate if data connection is valid for EventHub
 #>
-function Validate_DataConnection {
+function Validate_EventHubDataConnection {
 	Param ([Object]$DataConnection,
 		[string]$dataConnectionFullName,
 		[string]$location,
@@ -186,6 +186,54 @@ function Validate_DataConnection {
 		$DataConnection.Name | Should Be $dataConnectionFullName
 		$DataConnection.Location | Should Be $location
 		$DataConnection.EventHubResourceId | Should Be $eventHubResourceId
+		$DataConnection.TableName | Should Be $tableName 
+		$DataConnection.MappingRuleName | Should Be $tableMappingName
+		$DataConnection.DataFormat | Should Be $dataFormat
+		$DataConnection.Kind | Should Be $kind 
+}
+
+<#
+.SYNOPSIS
+Validate if data connection is valid for EventGrid
+#>
+function Validate_EventGridDataConnection {
+	Param ([Object]$DataConnection,
+		[string]$dataConnectionFullName,
+		[string]$location,
+		[string]$eventHubResourceId,
+		[string]$storageAccountResourceId,
+		[string]$tableName,
+		[string]$tableMappingName,
+		[string]$dataFormat,
+		[string]$kind)
+		$DataConnection.Name | Should Be $dataConnectionFullName
+		$DataConnection.Location | Should Be $location
+		$DataConnection.EventHubResourceId | Should Be $eventHubResourceId
+		$DataConnection.StorageAccountResourceId | Should Be $storageAccountResourceId
+		$DataConnection.TableName | Should Be $tableName 
+		$DataConnection.MappingRuleName | Should Be $tableMappingName
+		$DataConnection.DataFormat | Should Be $dataFormat
+		$DataConnection.Kind | Should Be $kind 
+}
+
+<#
+.SYNOPSIS
+Validate if data connection is valid for IotHub
+#>
+function Validate_IotHubDataConnection {
+	Param ([Object]$DataConnection,
+		[string]$dataConnectionFullName,
+		[string]$location,
+		[string]$iotHubResourceId,
+		[string]$sharedAccessPolicyName,
+		[string]$tableName,
+		[string]$tableMappingName,
+		[string]$dataFormat,
+		[string]$kind)
+		$DataConnection.Name | Should Be $dataConnectionFullName
+		$DataConnection.Location | Should Be $location
+		$DataConnection.IotHubResourceId | Should Be $iotHubResourceId
+		$DataConnection.SharedAccessPolicyName | Should Be $sharedAccessPolicyName
 		$DataConnection.TableName | Should Be $tableName 
 		$DataConnection.MappingRuleName | Should Be $tableMappingName
 		$DataConnection.DataFormat | Should Be $dataFormat
