@@ -69,25 +69,25 @@ function Update-AzMariaDbServer
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [int]
         # Backup retention days for the server.
-        ${StorageProfileBackupRetentionDay},
+        ${BackupRetentionDay},
 
         [Parameter(HelpMessage='Enable Geo-redundant or not for server backup.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]
         # Enable Geo-redundant or not for server backup.
-        ${StorageProfileGeoRedundantBackup},
+        ${GeoRedundantBackup},
 
         [Parameter(HelpMessage='Enable Storage Auto Grow.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
         # Enable Storage Auto Grow.
-        ${StorageProfileStorageAutogrow},
+        ${StorageAutogrow},
 
         [Parameter(HelpMessage='Max storage allowed for a server.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [int]
         # Max storage allowed for a server.
-        ${StorageProfileStorageInMb},
+        ${StorageInMb},
 
         [Parameter(HelpMessage='The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
@@ -178,9 +178,24 @@ function Update-AzMariaDbServer
                 $null = $PSBoundParameters.Remove('Sku')
             }
 
-            if ($PSBoundParameters.ContainsKey('StorageProfileStorageInMb')) {
-                $PSBoundParameters.Add('StorageProfileStorageMb', $PSBoundParameters['StorageProfileStorageInMb'])
-                $null = $PSBoundParameters.Remove('StorageProfileStorageInMb')
+            if ($PSBoundParameters.ContainsKey('BackupRetentionDay')) {
+                $PSBoundParameters.Add('StorageProfileBackupRetentionDay', $PSBoundParameters['BackupRetentionDay'])
+                $null = $PSBoundParameters.Remove('BackupRetentionDay')
+            }
+
+            if ($PSBoundParameters.ContainsKey('GeoRedundantBackup')) {
+                $PSBoundParameters.Add('StorageProfileGeoRedundantBackup', $PSBoundParameters['GeoRedundantBackup'])
+                $null = $PSBoundParameters.Remove('GeoRedundantBackup')
+            }
+
+            if ($PSBoundParameters.ContainsKey('StorageAutogrow')) {
+                $PSBoundParameters.Add('StorageProfileStorageAutogrow', $PSBoundParameters['StorageAutogrow'])
+                $null = $PSBoundParameters.Remove('StorageAutogrow')
+            }
+
+            if ($PSBoundParameters.ContainsKey('StorageInMb')) {
+                $PSBoundParameters.Add('StorageInMb', $PSBoundParameters['StorageInMb'])
+                $null = $PSBoundParameters.Remove('StorageInMb')
             }
     
             Az.MariaDb.internal\Update-AzMariaDbServer @PSBoundParameters

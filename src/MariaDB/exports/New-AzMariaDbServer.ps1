@@ -19,13 +19,15 @@
 .Description
 
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMariaDbServer -Name mariadb-aassd-01 -ResourceGroupName lucas-manual-test -Sku 'B_Gen5_1' -Location eastus
+cmdlet New-AzMariaDbServer at command pipeline position 1
+Supply values for the following parameters:
+AdministratorUsername: adminuser
+AdministratorLoginPassword: ************
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name             Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
+----             -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
+mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_Gen5_1         Basic   Enabled
 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
@@ -89,25 +91,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [System.Int32]
     # Backup retention days for the server.
-    ${StorageProfileBackupRetentionDay},
+    ${BackupRetentionDay},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]
     # Enable Geo-redundant or not for server backup.
-    ${StorageProfileGeoRedundantBackup},
+    ${GeoRedundantBackup},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
     # Enable Storage Auto Grow.
-    ${StorageProfileStorageAutogrow},
+    ${StorageAutogrow},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [System.Int32]
     # Max storage allowed for a server.
-    ${StorageProfileStorageMb},
+    ${StorageInMb},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]

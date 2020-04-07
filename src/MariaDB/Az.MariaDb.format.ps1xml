@@ -699,16 +699,10 @@
             <Label>Version</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>StorageProfileStorageMb</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>SkuName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SkuSize</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SkuTier</Label>
+            <Label>StorageProfileStorageMb</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SslEnforcement</Label>
@@ -730,16 +724,10 @@
                 <PropertyName>Version</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>StorageProfileStorageMb</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>SkuName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SkuSize</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SkuTier</PropertyName>
+                <PropertyName>StorageProfileStorageMb</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SslEnforcement</PropertyName>

@@ -19,13 +19,11 @@ Creates a new firewall rule or updates an existing firewall rule.
 .Description
 Creates a new firewall rule or updates an existing firewall rule.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMariaDbFirewallRule -Name firewall-101 -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-asd-01 -EndIPAddress 0.0.2.255 -StartIPAddress 0.0.2.1
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name         Type
+----         ----
+firewall-101 Microsoft.DBforMariaDB/servers/firewallRules
 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule

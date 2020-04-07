@@ -19,13 +19,17 @@
 .Description
 
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzMariaDbServerReplica -ServerName mariadb-test-9pebvn -Name mariadb-test-9pebvn-rep01 -ResourceGroupName mariadb-test-qu5ov0
 
-{{ Add output here }}
+Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----                      -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mariadb-test-9pebvn-rep01 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | New-AzMariaDbServerReplica -Name mariadb-test-9pebvn-rep02
 
-{{ Add output here }}
+Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----                      -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mariadb-test-9pebvn-rep02 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4         GeneralPurpose Enabled
 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserverreplica
@@ -35,7 +39,7 @@ function New-AzMariaDbServerReplica {
 [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [Alias('ReplicaName')]
+    [Alias('ReplicaServerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
     # Replica name.

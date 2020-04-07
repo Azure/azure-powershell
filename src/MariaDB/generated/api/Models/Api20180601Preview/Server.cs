@@ -145,22 +145,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
         /// The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.FormatTable(Index = 5)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.FormatTable(Index = 4)]
         public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ISkuInternal)Sku).Name = value; }
 
         /// <summary>The size code, to be interpreted by resource as appropriate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.FormatTable(Index = 6)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.DoNotFormat]
         public string SkuSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ISkuInternal)Sku).Size; set => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ISkuInternal)Sku).Size = value; }
 
         /// <summary>The tier of the particular SKU, e.g. Basic.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.FormatTable(Index = 7)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier? SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ISkuInternal)Sku).Tier = value; }
 
         /// <summary>Enable ssl enforcement or not when connect to server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.FormatTable(Index = 8)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.FormatTable(Index = 6)]
         public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum? SslEnforcement { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerPropertiesInternal)Property).SslEnforcement; set => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerPropertiesInternal)Property).SslEnforcement = value; }
 
         /// <summary>Backup retention days for the server.</summary>
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
 
         /// <summary>Max storage allowed for a server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.FormatTable(Index = 4)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.FormatTable(Index = 5)]
         public int? StorageProfileStorageMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerPropertiesInternal)Property).StorageProfileStorageMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerPropertiesInternal)Property).StorageProfileStorageMb = value; }
 
         /// <summary>Application-specific metadata in the form of key-value pairs.</summary>

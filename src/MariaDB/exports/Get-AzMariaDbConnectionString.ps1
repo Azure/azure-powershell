@@ -19,13 +19,9 @@
 .Description
 
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMariaDbConnectionString -ServerName mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0 -Client ADO.NET
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Server=mariadb-asd-01.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid=adminuser@mariadb-asd-01; Pwd={your_password}; SslMode=Preferred;
 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconnectionstring

@@ -19,13 +19,11 @@ Deletes a server.
 .Description
 Deletes a server.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzMariaDbServer -Name mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0
 
-{{ Add output here }}
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMariaDbServer -Name mariadb-bc-t01 -ResourceGroupName mariadb-test-qu5ov0 | Remove-AzMariaDbServer
 
-{{ Add output here }}
 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbserver

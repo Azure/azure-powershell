@@ -60,25 +60,25 @@ function New-AzMariaDbServer {
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [int]
         # Backup retention days for the server
-        ${StorageProfileBackupRetentionDay},
+        ${BackupRetentionDay},
 
         [Parameter(HelpMessage='Enable Geo-redundant or not for server backup.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]
         # Enable Geo-redundant or not for server backup.
-        ${StorageProfileGeoRedundantBackup},
+        ${GeoRedundantBackup},
 
         [Parameter(HelpMessage='Enable Storage Auto Grow.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
         # Enable Storage Auto Grow.
-        ${StorageProfileStorageAutogrow},
+        ${StorageAutogrow},
 
         [Parameter(HelpMessage='Max storage allowed for a server.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [int]
         # Max storage allowed for a server.
-        ${StorageProfileStorageMb},
+        ${StorageInMb},
 
         [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
@@ -195,24 +195,24 @@ function New-AzMariaDbServer {
                 $Parameter.SslEnforcement = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum]::Enable
             }
 
-            if ($PSBoundParameters.ContainsKey('StorageProfileBackupRetentionDay')) {
-                $Parameter.StorageProfileBackupRetentionDay = $PSBoundParameters['StorageProfileBackupRetentionDay']
-                $null = $PSBoundParameters.Remove('StorageProfileBackupRetentionDay')
+            if ($PSBoundParameters.ContainsKey('BackupRetentionDay')) {
+                $Parameter.StorageProfileBackupRetentionDay = $PSBoundParameters['BackupRetentionDay']
+                $null = $PSBoundParameters.Remove('BackupRetentionDay')
             }
 
-            if ($PSBoundParameters.ContainsKey('StorageProfileGeoRedundantBackup')) {
-                $Parameter.StorageProfileGeoRedundantBackup = $PSBoundParameters['StorageProfileGeoRedundantBackup']
-                $null = $PSBoundParameters.Remove('StorageProfileGeoRedundantBackup')
+            if ($PSBoundParameters.ContainsKey('GeoRedundantBackup')) {
+                $Parameter.StorageProfileGeoRedundantBackup = $PSBoundParameters['GeoRedundantBackup']
+                $null = $PSBoundParameters.Remove('GeoRedundantBackup')
             }
 
-            if ($PSBoundParameters.ContainsKey('StorageProfileStorageAutogrow')) {
-                $Parameter.StorageProfileStorageAutogrow = $PSBoundParameters['StorageProfileStorageAutogrow']
-                $null = $PSBoundParameters.Remove('StorageProfileStorageAutogrow')
+            if ($PSBoundParameters.ContainsKey('StorageAutogrow')) {
+                $Parameter.StorageProfileStorageAutogrow = $PSBoundParameters['StorageAutogrow']
+                $null = $PSBoundParameters.Remove('StorageAutogrow')
             }
 
-            if ($PSBoundParameters.ContainsKey('StorageProfileStorageInMb')) {
-                $Parameter.StorageProfileStorageMb = $PSBoundParameters['StorageProfileStorageInMb']
-                $null = $PSBoundParameters.Remove('StorageProfileStorageInMb')
+            if ($PSBoundParameters.ContainsKey('StorageInMb')) {
+                $Parameter.StorageProfileStorageMb = $PSBoundParameters['StorageInMb']
+                $null = $PSBoundParameters.Remove('StorageInMb')
             }
 
             if ($PSBoundParameters.ContainsKey('Tag')) {

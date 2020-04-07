@@ -15,17 +15,15 @@
 
 <#
 .Synopsis
-
+Updates a configuration of a server.
 .Description
-
+Updates a configuration of a server.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzMariaDbConfiguration -Name delayed_insert_timeout -ServerName mariadb-test-h3pame -ResourceGroupName mariadb-test-qu5ov0 -Value 200
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name                   Type
+----                   ----
+delayed_insert_timeout Microsoft.DBforMariaDB/servers/configurations
 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbconfiguration
@@ -34,46 +32,62 @@ function Update-AzMariaDbConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter()]
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('ConfigurationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
     # The name of the server configuration.
     ${Name},
 
-    [Parameter(ParameterSetName='ServerName', Mandatory)]
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
+    # The name of the resource group that contains the resource.
     # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='ServerName', Mandatory)]
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
     # The name of the server.
     ${ServerName},
 
-    [Parameter(ParameterSetName='ServerName')]
+    [Parameter(ParameterSetName='Update')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The subscription ID that identifies an Azure subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for SERVEROBJECT properties and create a hash table.
-    ${ServerObject},
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.Collections.Hashtable]
-    # Configurations to be updated.
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration]
+    # Represents a Configuration.
+    # To construct, see NOTES section for CONFIGURATION properties and create a hash table.
     ${Configuration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+    [System.String]
+    # Source of the configuration.
+    ${Source},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [System.String]
     # Value of the configuration.
@@ -84,49 +98,58 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
     [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
     ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
     ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Uri]
+    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
 
@@ -138,11 +161,12 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UpdateExpanded = 'Az.MariaDb.custom\Update-AzMariaDbConfiguration';
-            ServerName = 'Az.MariaDb.custom\Update-AzMariaDbConfiguration';
-            ServerObject = 'Az.MariaDb.custom\Update-AzMariaDbConfiguration';
+            Update = 'Az.MariaDb.private\Update-AzMariaDbConfiguration_Update';
+            UpdateExpanded = 'Az.MariaDb.private\Update-AzMariaDbConfiguration_UpdateExpanded';
+            UpdateViaIdentity = 'Az.MariaDb.private\Update-AzMariaDbConfiguration_UpdateViaIdentity';
+            UpdateViaIdentityExpanded = 'Az.MariaDb.private\Update-AzMariaDbConfiguration_UpdateViaIdentityExpanded';
         }
-        if (('ServerName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

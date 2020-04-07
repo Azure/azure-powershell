@@ -19,13 +19,12 @@ List all the replicas for a given server.
 .Description
 List all the replicas for a given server.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMariaDbReplica -ServerName mariadb-test-szp6dt -ResourceGroupName mariadb-test-qu5ov0
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name                       Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----                       -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mariadb-test-szp6dt-rep428 eastus   zmoxhpgjqc         10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
+mariadb-test-szp6dt-rep154 eastus   zcsxhpasdc         10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbreplica

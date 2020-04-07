@@ -19,13 +19,17 @@
 .Description
 
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 -StorageProfileStorageInMb 8192
 
-{{ Add output here }}
+Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
+----                -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
+mariadb-test-4rmtig eastus   xofavpndqj         10.2    8192                    B_Gen5_1         Basic   Enabled
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 | Update-AzMariaDbServer -StorageProfileStorageInMb (8192+1024)
 
-{{ Add output here }}
+Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
+----                -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
+mariadb-test-4rmtig eastus   xofavpndqj         10.2    9216                    B_Gen5_1         Basic   Enabled
 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserver
@@ -83,25 +87,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [System.Int32]
     # Backup retention days for the server.
-    ${StorageProfileBackupRetentionDay},
+    ${BackupRetentionDay},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]
     # Enable Geo-redundant or not for server backup.
-    ${StorageProfileGeoRedundantBackup},
+    ${GeoRedundantBackup},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
     # Enable Storage Auto Grow.
-    ${StorageProfileStorageAutogrow},
+    ${StorageAutogrow},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [System.Int32]
     # Max storage allowed for a server.
-    ${StorageProfileStorageInMb},
+    ${StorageInMb},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]

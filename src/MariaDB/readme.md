@@ -84,10 +84,8 @@ directive:
           - Location
           - AdministratorLogin
           - Version
-          - StorageProfileStorageMb
           - SkuName
-          - SkuSize
-          - SkuTier
+          - StorageProfileStorageMb
           - SslEnforcement
 # VNet
   - where:
@@ -119,10 +117,10 @@ directive:
       parameter-name: Parameter
     set:
       parameter-name: Configuration
-  - where:
-      verb: Update
-      subject: Configuration
-    hide: true
+  # - where:
+  #     verb: Update
+  #     subject: Configuration
+  #   hide: true
 
   - where:
       subject: LogFile|Database|LocationBasedPerformanceTier|CheckNameAvailability|ServerSecurityAlertPolicy

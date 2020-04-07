@@ -19,13 +19,18 @@ Gets a virtual network rule.
 .Description
 Gets a virtual network rule.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMariaDbVirtualNetworkRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-9pebvn
 
-{{ Add output here }}
+Name            Type
+----            ----
+vnetrule-QdMJpU Microsoft.DBforMariaDB/servers/virtualNetworkRules
+vnetrule-Adsefc Microsoft.DBforMariaDB/servers/virtualNetworkRules
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMariaDbVirtualNetworkRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-9pebvn -Name vnetrule-QdMJpU
 
-{{ Add output here }}
+Name            Type
+----            ----
+vnetrule-QdMJpU Microsoft.DBforMariaDB/servers/virtualNetworkRules
 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbvirtualnetworkrule

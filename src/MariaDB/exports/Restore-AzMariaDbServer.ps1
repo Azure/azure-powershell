@@ -19,13 +19,18 @@
 .Description
 
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Restore-AzMariaDbServer -Name restore-db01 -ServerName mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
 
-{{ Add output here }}
+Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----         -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+restore-db01 eastus   adminuser          10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $db = Get-AzMariaDbServer -Name mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z
+PS C:\>Restore-AzMariaDbServer -Name restore-db02 -InputObject $db -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
 
-{{ Add output here }}
+Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----         -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+restore-db02 eastus   adminuser          10.2    5120                    GP_Gen5_4         GeneralPurpose Enabled
 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restore-azmariadbserver
@@ -61,15 +66,10 @@ param(
     [System.String]
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='PointInTimeRestore', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [System.DateTime]
     ${RestorePointInTime},
-
-    [Parameter(ParameterSetName='PointInTimeRestore', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    ${UsePointInTimeRestore},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
@@ -82,11 +82,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerUpdateParametersTags]))]
     [System.Collections.Hashtable]
     ${Tag},
-
-    [Parameter(ParameterSetName='GeoRestore', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    ${UseGeoRetore},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -148,9 +143,8 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             PointInTimeRestore = 'Az.MariaDb.custom\Restore-AzMariaDbServer';
-            GeoRestore = 'Az.MariaDb.custom\Restore-AzMariaDbServer';
         }
-        if (('PointInTimeRestore', 'GeoRestore') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('PointInTimeRestore') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

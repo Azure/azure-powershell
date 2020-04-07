@@ -19,13 +19,8 @@ Deletes the virtual network rule with the given name.
 .Description
 Deletes the virtual network rule with the given name.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzMariaDbVirtualNetworkRule -Name vnet-001 -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-9pebvn
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbvirtualnetworkrule

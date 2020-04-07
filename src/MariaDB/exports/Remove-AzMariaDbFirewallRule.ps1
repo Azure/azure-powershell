@@ -19,13 +19,8 @@ Deletes a server firewall rule.
 .Description
 Deletes a server firewall rule.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzMariaDbFirewallRule -Name frname-001 -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-4rmtig
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbfirewallrule

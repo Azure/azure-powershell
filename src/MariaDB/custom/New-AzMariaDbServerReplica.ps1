@@ -16,7 +16,7 @@ function New-AzMariaDbServerReplica {
     [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory, HelpMessage='Replica name.')]
-        [Alias('ReplicaName')]
+        [Alias('ReplicaServerName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # Replica name
@@ -158,7 +158,7 @@ function New-AzMariaDbServerReplica {
             }
 
             if ($PSBoundParameters.ContainsKey('Sku')) {
-                $PSBoundParameters.SkuName = $PSBoundParameters['Sku']
+                $Parameter.SkuName = $PSBoundParameters['Sku']
                 $Null = $PSBoundParameters.Remove('Sku')
             }
 
