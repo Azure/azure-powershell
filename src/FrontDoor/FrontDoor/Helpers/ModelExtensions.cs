@@ -178,7 +178,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 PatternsToMatch = sdkRoutingRule.PatternsToMatch?.ToList(),
                 FrontendEndpointIds = sdkRoutingRule.FrontendEndpoints?.Select(x => x.Id).ToList(),
                 RouteConfiguration = ToPSRouteConfiguration(sdkRoutingRule.RouteConfiguration),
-                EnabledState = sdkRoutingRule.EnabledState == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkRoutingRule.EnabledState)
+                EnabledState = sdkRoutingRule.EnabledState == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkRoutingRule.EnabledState),
+                RulesEngineId = sdkRoutingRule.RulesEngine?.Id
             };
         }
         public static SdkRoutingRule ToSdkRoutingRule(this PSRoutingRule psRoutingRule)
@@ -190,7 +191,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 patternsToMatch: psRoutingRule.PatternsToMatch,
                 routeConfiguration: ToSdkRouteConfiguration(psRoutingRule.RouteConfiguration),
                 name: psRoutingRule.Name,
-                enabledState: psRoutingRule.EnabledState.ToString()
+                enabledState: psRoutingRule.EnabledState.ToString(),
+                rulesEngine: new SdkRefId(psRoutingRule.RulesEngineId)
             );
         }
 

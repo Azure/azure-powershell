@@ -151,20 +151,27 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable use of this rule. Default value is Enabled")]
         public PSEnabledState EnabledState { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "A reference to a specific Rules Engine Configuration to apply to this route.")]
+        public string RulesEngineName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             string subid = DefaultContext.Subscription.Id;
             List<string> FrontendEndpointIds = FrontendEndpointName?.Select(x => string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/frontDoors/{2}/FrontendEndpoints/{3}",
-                  subid, ResourceGroupName, FrontDoorName, x)).ToList();
+                subid, ResourceGroupName, FrontDoorName, x)).ToList();
             string BackendPoolId = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/frontDoors/{2}/BackendPools/{3}",
-                  subid, ResourceGroupName, FrontDoorName, BackendPoolName);
+                subid, ResourceGroupName, FrontDoorName, BackendPoolName);
+            string RulesEngineId = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/frontDoors/{2}/BackendPools/{3}",
+                subid, ResourceGroupName, FrontDoorName, RulesEngineName);
+
             var RoutingRule = new PSRoutingRule
             {
                 Name = Name,
                 EnabledState = !this.IsParameterBound(c => c.EnabledState) ? PSEnabledState.Enabled : EnabledState,
                 FrontendEndpointIds = FrontendEndpointIds,
                 AcceptedProtocols = !this.IsParameterBound(c => c.AcceptedProtocol) ? new List<PSProtocol> { PSProtocol.Http, PSProtocol.Https } : AcceptedProtocol?.ToList(),
-                PatternsToMatch = !this.IsParameterBound(c => c.PatternToMatch) ? new List<string> { "/*" } : PatternToMatch?.ToList()
+                PatternsToMatch = !this.IsParameterBound(c => c.PatternToMatch) ? new List<string> { "/*" } : PatternToMatch?.ToList(),
+                RulesEngineId = this.IsParameterBound(c => c.RulesEngineName) ? RulesEngineId : ""
             };
 
             if (ParameterSetName == FieldsWithForwardingParameterSet)
