@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         //MongoDB cmdlets help messages
         public const string CollectionNameHelpMessage = "Collection name.";
         public const string MongoDatabaseObjectHelpMessage = "Mongo Database object.";
-        public const string MongoCollectionObjectHelpMessage = "Sql Container object.";
+        public const string MongoCollectionObjectHelpMessage = "Mongo Collection object.";
         public const string MongoCollectionDetailedParamHelpMessage = "If provided then, the cmdlet returns the collection with the corresponding throughput value.";
         public const string MongoDatabaseDetailedParamHelpMessage = "If provided then, the cmdlet returns the database with the corresponding throughput value.";
         public const string MongoShardKeyHelpMessage = "Sharding key path.";
