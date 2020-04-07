@@ -13,64 +13,62 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Attestation.Models
 {
-    public class PSPolicySigners
+    public class PSPolicy
     {
-        public  PSPolicySigners(string jwt)
+        public PSPolicy(string jwt)
         {
             Jwt = jwt;
-            (Algorithm, JKU) = ExtractHeaders(jwt);
-            Certificates = ExtractCertificates(jwt);
-            CertificateCount = Certificates.Length;
+            JwtLength = Jwt?.Length ?? 0;
+            Text = ExtractPolicyText(Jwt);
+            TextLength = Text?.Length ?? 0;
+            Algorithm = ExtractAlgorithm(Jwt);
         }
 
-        public int CertificateCount { get; protected set; }
+        public string Text { get; }
 
-        public string Jwt { get; protected set; }
+        public int TextLength { get; }
+
+        public string Jwt { get; }
+
+        public int JwtLength { get; }
 
         public string Algorithm { get; protected set; }
 
-        public string JKU { get; set; }
-
-        public string[] Certificates { get; protected set; }
-
-        private static (string algorithm, string jku) ExtractHeaders(string jwt)
+        private static string ExtractAlgorithm(string jwt)
         {
-            var algorithm = "";
-            var jku = "";
+            var algorithm = string.Empty;
             if (!string.IsNullOrEmpty(jwt))
             {
                 try
                 {
-                    var parsedHeader = JoseHelper.ExtractJosePart(jwt, 0);
-                    algorithm = parsedHeader["alg"].ToString();
-                    jku = parsedHeader["jku"].ToString();
+                    algorithm = JoseHelper.ExtractJosePartField(jwt, 0, "alg").ToString();
                 }
                 catch (Exception)
                 {
                     // Ignore on purpose
                 }
             }
-            return (algorithm, jku);
+            return algorithm;
         }
 
-        private static string[] ExtractCertificates(string jwt)
+        private static string ExtractPolicyText(string jwt)
         {
-            string[] certificates = new string[0];
+            string parsedPolicy = string.Empty;
 
             if (!string.IsNullOrEmpty(jwt))
             {
                 try
                 {
-                    var parsedBody = JoseHelper.ExtractJosePart(jwt, 1);
-                    var parsedCertificates = parsedBody["aas-policyCertificates"]["keys"].ToArray();
-                    certificates = parsedCertificates.Select(c => c.ToString()).ToArray();
+                    parsedPolicy = JoseHelper.ExtractJosePartField(jwt, 1, "AttestationPolicy").ToString();
+
+                    // Policy is optionally double base64 URL encoded.  We will attempt
+                    // to base64 URL decode a second time -- if this throws an exception,
+                    // that's OK -- we should just use value as it stands now.
+                    var doubleDecodedPolicy = Base64Url.DecodeString(parsedPolicy);
+                    parsedPolicy = doubleDecodedPolicy;
                 }
                 catch (Exception)
                 {
@@ -78,7 +76,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 }
             }
 
-            return certificates;
+            return parsedPolicy;
         }
     }
 }
