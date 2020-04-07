@@ -114,7 +114,7 @@ The name of the server.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ServerName
+Aliases: ReplicaServerName
 
 Required: True
 Position: Named

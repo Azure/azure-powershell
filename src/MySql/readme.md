@@ -89,6 +89,11 @@ directive:
       subject: Configuration
     hide: true
   - where:
+      parameter-name: VirtualNetworkSubnetId
+      subject: VirtualNetwork
+    set:
+      parameter-name: SubnetId
+  - where:
       model-name: Server
     set:
       format-table:
@@ -102,6 +107,21 @@ directive:
           - SkuSize
           - SkuTier
           - SslEnforcement
+  - where:
+      model-name: Configuration
+    set:
+      format-table:
+        properties:
+          - Name
+          - Value
+  - where:
+      model-name: FirewallRule
+    set:
+      format-table:
+        properties:
+          - Name
+          - StartIPAddress
+          - EndIPAddress
   - where:
       parameter-name: StorageProfileBackupRetentionDay
       subject: Server

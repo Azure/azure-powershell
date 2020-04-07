@@ -15,10 +15,10 @@ Creates a new server.
 ```
 New-AzMySqlServer -Name <String> -ResourceGroupName <String> -AdministratorLoginPassword <SecureString>
  -AdministratorUserName <String> -Location <String> -Sku <String> [-SubscriptionId <String>]
- [-SslEnforcement <SslEnforcementEnum>] [-StorageProfileBackupRetentionDay <Int32>]
- [-StorageProfileGeoRedundantBackup <GeoRedundantBackup>] [-StorageProfileStorageAutogrow <StorageAutogrow>]
- [-StorageProfileStorageInMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <GeoRedundantBackup>]
+ [-SslEnforcement <SslEnforcementEnum>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>]
+ [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,6 +94,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -BackupRetentionDay
+Backup retention days for the server.
+Day count is between 7 and 35.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -101,6 +118,22 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -GeoRedundantBackup
+Enable Geo-redundant or not for server backup.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.GeoRedundantBackup
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -207,40 +240,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -StorageProfileBackupRetentionDay
-Backup retention days for the server.
-Day count is between 7 and 35.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -StorageProfileGeoRedundantBackup
-Enable Geo-redundant or not for server backup.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.GeoRedundantBackup
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -StorageProfileStorageAutogrow
+### -StorageAutogrow
 Enable Storage Auto Grow.
 
 ```yaml
@@ -256,7 +256,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -StorageProfileStorageInMb
+### -StorageInMb
 Max storage allowed for a server.
 
 ```yaml
