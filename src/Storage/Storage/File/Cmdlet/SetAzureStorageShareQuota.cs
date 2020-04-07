@@ -17,10 +17,12 @@ using Microsoft.Azure.Storage.File;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareQuota"), OutputType(typeof(FileShareProperties))]
+    [CmdletOutputBreakingChange(typeof(CloudFile), ChangeDescription = "The output type will change from FileShareProperties to AzureStorageFileShare, and AzureStorageFileShare will have FileShareProperties in child property.")]
     public class SetAzureStorageShareQuota : AzureStorageFileCmdletBase
     {
         [Alias("N", "Name")]

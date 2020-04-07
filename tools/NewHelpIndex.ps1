@@ -68,7 +68,9 @@ $HelpFolders = @()
 
 $resourceManagerPath = "$PSScriptRoot/../artifacts/$BuildConfig/"
 
-$RMpsd1s += Get-ChildItem -Path $resourceManagerPath -Depth 2 | Where-Object { $_.Name -like "*.psd1" -and $_.FullName -notlike "*dll-Help*" }
+$RMpsd1s += Get-ChildItem -Path $resourceManagerPath -Depth 2 | Where-Object { 
+    $_.Name -like "*.psd1" -and $_.FullName -notlike "*dll-Help*" -and $_.Name -ne "SecretManagementExtension.psd1"
+}
 
 $HelpFolders += Get-ChildItem -Path "$PSScriptRoot/../src" -Recurse -Directory | where { $_.Name -eq "help" -and $_.FullName -notlike "*\Stack\*" -and $_.FullName -notlike "*\bin\*"}
 

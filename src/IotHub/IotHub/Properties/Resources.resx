@@ -225,4 +225,7 @@
   <data name="InvokeIotHubDeviceMethod" xml:space="preserve">
     <value>Invoke Direct Method on a device</value>
   </data>
+  <data name="UpdateIotHubModuleTwin" xml:space="preserve">
+    <value>Update Device Module Twin</value>
+  </data>
 </root>

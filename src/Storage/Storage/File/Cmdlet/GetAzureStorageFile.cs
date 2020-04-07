@@ -16,12 +16,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.File;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System.Globalization;
     using System.Management.Automation;
     using System.Net;
 
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFile", DefaultParameterSetName = Constants.ShareNameParameterSetName)]
     [OutputType(typeof(CloudFile))]
+    [CmdletOutputBreakingChange(typeof(CloudFile), ChangeDescription = "The output type will change from CloudFile to AzureStorageFile, and AzureStorageFile will have CloudFile as a child property.")]
     public class GetAzureStorageFile : AzureStorageFileCmdletBase
     {
         [Parameter(
