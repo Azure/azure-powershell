@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public PSMatchProcessingBehavior MatchProcessingBehavior { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.")]
-        public PSRulesEngineMatchCondition[] MatchConditions { get; set; }
+        public PSRulesEngineMatchCondition[] MatchCondition { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -57,12 +57,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             if (this.IsParameterBound(c => c.MatchProcessingBehavior))
             {
                 rule.MatchProcessingBehavior = MatchProcessingBehavior;
-                //(PSMatchProcessingBehavior)Enum.Parse(typeof(PSMatchProcessingBehavior), MatchProcessingBehavior);
             }
 
-            if (this.IsParameterBound(c => c.MatchConditions))
+            if (this.IsParameterBound(c => c.MatchCondition))
             {
-                rule.MatchConditions = MatchConditions.ToList();
+                rule.MatchConditions = MatchCondition.ToList();
             }
 
             WriteObject(rule);

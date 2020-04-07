@@ -27,23 +27,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine"), OutputType(typeof(PSRulesEngine))]
     public class GetFrontDoorRulesEngine : AzureFrontDoorCmdletBase
     {
-        /// <summary>
-        /// The resource group name of the Front Door.
-        /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The resource group name that the Front Door will be created in.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        /// <summary>
-        /// The Front Door name.
-        /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Front Door name.")]
         [ValidateNotNullOrEmpty]
         public string FrontDoorName { get; set; }
 
-        /// <summary>
-        /// The rules engine name.
-        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Rules engine name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -62,9 +53,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 {
                     if (e.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                     {
-                        throw new PSArgumentException(string.Format(Resources.Error_FrontDoorNotFound,
+                        throw new PSArgumentException(string.Format(Resources.Error_RulesEngineNotFound,
                             Name,
-                            ResourceGroupName));
+                            FrontDoorName));
                     }
                 }
             }
@@ -88,9 +79,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
                     WriteObject(allRulesEngines);
                 }
-                catch (Microsoft.Azure.Management.FrontDoor.Models.ErrorResponseException)
+                catch (Microsoft.Azure.Management.FrontDoor.Models.ErrorResponseException e)
                 {
-                    // Think about a bit more
+                    if (e.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                    {
+                        throw new PSArgumentException(string.Format(Resources.Error_RulesEngineNotFound,
+                            Name,
+                            FrontDoorName));
+                    }
                 }
             }
         }

@@ -11,66 +11,82 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     public class NewFrontDoorRulesEngineActionObject : AzureFrontDoorCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "A list of header actions to apply from the request from AFD to the origin.")]
-        public List<PSHeaderAction> RequestHeaderActions { get; set; }
+        public List<PSHeaderAction> RequestHeaderAction { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "A list of header actions to apply from the response from AFD to the client.")]
-        public List<PSHeaderAction> ResponseHeaderActions { get; set; }
+        public List<PSHeaderAction> ResponseHeaderAction { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "The custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet,
+            HelpMessage = "The custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.")]
         public string CustomForwardingPath { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "The protocol this rule will use when forwarding traffic to backends. Default value is MatchRequest")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet,
+            HelpMessage = "The protocol this rule will use when forwarding traffic to backends. Default value is MatchRequest")]
         [PSArgumentCompleter("HttpOnly", "HttpsOnly", "MatchRequest")]
         public string ForwardingProtocol { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "The resource group name that the RoutingRule will be created in.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsWithForwardingParameterSet,
+            HelpMessage = "The resource group name that the RoutingRule will be created in.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "The name of the Front Door to which this routing rule belongs.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsWithForwardingParameterSet,
+            HelpMessage = "The name of the Front Door to which this routing rule belongs.")]
         [ValidateNotNullOrEmpty]
         public string FrontDoorName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "The name of the BackendPool which this rule routes to")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsWithForwardingParameterSet,
+            HelpMessage = "The name of the BackendPool which this rule routes to")]
         [ValidateNotNullOrEmpty]
         public string BackendPoolName { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "Whether to enable caching for this route. Default value is false")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet,
+            HelpMessage = "Whether to enable caching for this route. Default value is false")]
         public bool EnableCaching { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "The treatment of URL query terms when forming the cache key. Default value is StripAll")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet,
+            HelpMessage = "The treatment of URL query terms when forming the cache key. Default value is StripAll")]
         [PSArgumentCompleter("StripNone", "StripAll")]
         public string QueryParameterStripDirective { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "Whether to enable dynamic compression for cached content. Default value is Enabled")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet,
+            HelpMessage = "Whether to enable dynamic compression for cached content. Default value is Enabled")]
         public PSEnabledState DynamicCompression { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "The redirect type the rule will use when redirecting traffic. Default Value is Moved")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet,
+            HelpMessage = "The redirect type the rule will use when redirecting traffic. Default Value is Moved")]
         [PSArgumentCompleter("Moved", "Found", "TemporaryRedirect", "PermanentRedirect")]
         public string RedirectType { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "The protocol of the destination to where the traffic is redirected. Default value is MatchRequest")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet,
+            HelpMessage = "The protocol of the destination to where the traffic is redirected. Default value is MatchRequest")]
         [PSArgumentCompleter("HttpOnly", "HttpsOnly", "MatchRequest")]
         public string RedirectProtocol { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "Host to redirect. Leave empty to use the incoming host as the destination host.")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet,
+            HelpMessage = "Host to redirect. Leave empty to use the incoming host as the destination host.")]
         public string CustomHost { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet,
+            HelpMessage = "The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.")]
         public string CustomPath { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet,
+            HelpMessage = "Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.")]
         public string CustomFragment { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet,
+            HelpMessage = @"The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string;
+                                leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & 
+                                will be added automatically so do not include them in the front, but do separate multiple query strings with &.")]
         public string CustomQueryString { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var action = new PSRulesEngineAction
             {
-                RequestHeaderActions = this.IsParameterBound(c => c.RequestHeaderActions) ? RequestHeaderActions : new List<PSHeaderAction>(),
-                ResponseHeaderActions = this.IsParameterBound(c => c.ResponseHeaderActions) ? ResponseHeaderActions : new List<PSHeaderAction>(),
+                RequestHeaderActions = this.IsParameterBound(c => c.RequestHeaderAction) ? RequestHeaderAction : new List<PSHeaderAction>(),
+                ResponseHeaderActions = this.IsParameterBound(c => c.ResponseHeaderAction) ? ResponseHeaderAction : new List<PSHeaderAction>(),
             };
 
             if (ParameterSetName == FieldsWithForwardingParameterSet)

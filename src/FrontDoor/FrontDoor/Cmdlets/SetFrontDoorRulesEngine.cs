@@ -17,62 +17,102 @@ using Microsoft.Azure.Commands.FrontDoor.Helpers;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.FrontDoor.Properties;
 using Microsoft.Azure.Management.FrontDoor;
+using Microsoft.Azure.Management.FrontDoor.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Linq;
 using System.Management.Automation;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine"), OutputType(typeof(PSRulesEngine))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet),
+        OutputType(typeof(PSRulesEngine))]
     public class SetFrontDoorRulesEngine : AzureFrontDoorCmdletBase
     {
-        /// <summary>
-        /// The resource group name of the Front Door.
-        /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The resource group name that the Front Door will be created in.")]
+        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The Rules Engine object to update.")]
+        [ValidateNotNullOrEmpty]
+        public PSRulesEngine InputObject { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Id of the RulesEngine to update")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group name that the Front Door will be created in.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        /// <summary>
-        /// The Front Door name.
-        /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Front Door name.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Front Door name.")]
         [ValidateNotNullOrEmpty]
-        public string FrontDoor { get; set; }
+        public string FrontDoorName { get; set; }
 
-        /// <summary>
-        /// The rules engine name.
-        /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Rules engine name.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Rules engine name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        /// <summary>
-        /// A list of rules that define a particular Rules Engine Configuration.
-        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "A list of rules that define a particular Rules Engine Configuration.")]
-        public PSRulesEngineRule[] Rules { get; set; }
+        public PSRulesEngineRule[] Rule { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var updateParameter = new Management.FrontDoor.Models.RulesEngine(
-                name: Name,
-                rules: Rules?.Select(x => x.ToSdkRulesEngineRule()).ToList()
-                );
+            if (ParameterSetName == ObjectParameterSet)
+            {
+                ResourceIdentifier identifier = new ResourceIdentifier(InputObject.Id);
+                ResourceGroupName = identifier.ResourceGroupName;
+                FrontDoorName = identifier.ParentResource.Substring(identifier.ParentResource.IndexOf("/") + 1);
+                Name = InputObject.Name;
+            }
+            else if (ParameterSetName == ResourceIdParameterSet)
+            {
+                ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = identifier.ResourceGroupName;
+                FrontDoorName = identifier.ParentResource.Substring(identifier.ParentResource.IndexOf("/") + 1);
+                Name = InputObject.Name;
+            }
 
+            // Retrieve existing Rules Engine
             try
             {
-                var rulesEngine = FrontDoorManagementClient.RulesEngines.CreateOrUpdate(
-                        resourceGroupName: ResourceGroupName,
-                        frontDoorName: FrontDoor,
-                        rulesEngineName: Name,
-                        rulesEngineParameters: updateParameter
-                        );
-                WriteObject(rulesEngine.ToPSRulesEngine());
+                var rulesEngine = FrontDoorManagementClient.RulesEngines.Get(ResourceGroupName, FrontDoorName, Name);
             }
             catch (Microsoft.Azure.Management.FrontDoor.Models.ErrorResponseException e)
             {
-                throw new PSArgumentException(string.Format(Resources.Error_ErrorResponseFromServer,
-                                     e.Response.Content));
+                if (e.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                {
+                    throw new PSArgumentException(string.Format(Resources.Error_RulesEngineNotFound,
+                        Name,
+                        FrontDoorName));
+                }
+            }
+
+            RulesEngine updateParameter;
+            if (ParameterSetName == ObjectParameterSet)
+            {
+                updateParameter = InputObject.ToSdkRulesEngine();
+            }
+            else
+            {
+                updateParameter = new Management.FrontDoor.Models.RulesEngine(
+                    rules: Rule?.Select(x => x.ToSdkRulesEngineRule()).ToList()
+                );
+            }
+
+            if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.RulesEngineChangeWarning, Name, FrontDoorName)))
+            {
+                try
+                {
+                    var rulesEngine = FrontDoorManagementClient.RulesEngines.CreateOrUpdate(
+                            resourceGroupName: ResourceGroupName,
+                            frontDoorName: FrontDoorName,
+                            rulesEngineName: Name,
+                            rulesEngineParameters: updateParameter
+                            );
+                    WriteObject(rulesEngine.ToPSRulesEngine());
+                }
+                catch (Microsoft.Azure.Management.FrontDoor.Models.ErrorResponseException e)
+                {
+                    throw new PSArgumentException(string.Format(Resources.Error_ErrorResponseFromServer,
+                                         e.Response.Content));
+                }
             }
         }
     }

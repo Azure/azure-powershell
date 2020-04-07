@@ -16,10 +16,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
-    public class PSRulesEngine
+    public class PSRulesEngine : PSTrackedResource
     {
-        public string Name { get; set; }
-
         public List<PSRulesEngineRule> RulesEngineRules { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.FrontDoor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rules Engine with name &apos;{0}&apos; in Front Door &apos;{1}&apos; in the resource group &apos;{2}&apos; does not exist..
+        /// </summary>
+        internal static string Error_DeleteNonExistingRulesEngine {
+            get {
+                return ResourceManager.GetString("Error_DeleteNonExistingRulesEngine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WebApplicationFirewallPolicy with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
         /// </summary>
         internal static string Error_DeleteNonExistingWebApplicationFirewallPolicy {
@@ -156,6 +165,15 @@ namespace Microsoft.Azure.Commands.FrontDoor.Properties {
         internal static string Error_InvalidResourceId {
             get {
                 return ResourceManager.GetString("Error_InvalidResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rules Engine with name &apos;{0}&apos; in Front Door &apos;{1}&apos; is not found..
+        /// </summary>
+        internal static string Error_RulesEngineNotFound {
+            get {
+                return ResourceManager.GetString("Error_RulesEngineNotFound", resourceCulture);
             }
         }
         
@@ -205,11 +223,29 @@ namespace Microsoft.Azure.Commands.FrontDoor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Rules Engine?.
+        /// </summary>
+        internal static string RemoveRulesEngine {
+            get {
+                return ResourceManager.GetString("RemoveRulesEngine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove WebApplicationFirewallPolicy?.
         /// </summary>
         internal static string RemoveWebApplicationFirewallPolicy {
             get {
                 return ResourceManager.GetString("RemoveWebApplicationFirewallPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating RulesEngine &apos;{0}&apos; in FrontDoor &apos;{1}&apos;.
+        /// </summary>
+        internal static string RulesEngineChangeWarning {
+            get {
+                return ResourceManager.GetString("RulesEngineChangeWarning", resourceCulture);
             }
         }
         

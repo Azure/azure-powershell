@@ -25,38 +25,26 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine"), OutputType(typeof(PSRulesEngine))]
     public class NewFrontDoorRulesEngine : AzureFrontDoorCmdletBase
     {
-        /// <summary>
-        /// The resource group name of the Front Door.
-        /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The resource group name that the Front Door will be created in.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        /// <summary>
-        /// The Front Door name.
-        /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Front Door name.")]
         [ValidateNotNullOrEmpty]
         public string FrontDoorName { get; set; }
 
-        /// <summary>
-        /// The rules engine name.
-        /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Rules engine name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        /// <summary>
-        /// A list of rules that define a particular Rules Engine Configuration.
-        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "A list of rules that define a particular Rules Engine Configuration.")]
-        public PSRulesEngineRule[] Rules { get; set; }
+        public PSRulesEngineRule[] Rule { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var updateParameter = new Management.FrontDoor.Models.RulesEngine(
                 name: Name,
-                rules: Rules?.Select(x => x.ToSdkRulesEngineRule()).ToList()
+                rules: Rule?.Select(x => x.ToSdkRulesEngineRule()).ToList()
                 );
 
             try

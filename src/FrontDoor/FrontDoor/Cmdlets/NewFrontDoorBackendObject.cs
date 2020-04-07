@@ -78,6 +78,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "The Alias of the Private Link resource. Populating this optional field indicates that this backend is 'Private'")]
         public string PrivateLinkAlias { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "A custom message to be included in the approval request to connect to the Private Link")]
+        public string PrivateLinkApprovalMessage { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var Backend = new PSBackend
@@ -89,7 +92,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 Priority = !this.IsParameterBound(c => c.Priority) ? 1 : Priority,
                 Weight = !this.IsParameterBound(c => c.Weight) ? 50 : Weight,
                 BackendHostHeader = !this.IsParameterBound(c => c.BackendHostHeader) ? Address : BackendHostHeader,
-                PrivateLinkAlias = !this.IsParameterBound(c => c.PrivateLinkAlias) ? null : PrivateLinkAlias
+                PrivateLinkAlias = !this.IsParameterBound(c => c.PrivateLinkAlias) ? null : PrivateLinkAlias,
+                PrivateLinkApprovalMessage = PrivateLinkApprovalMessage
             };
             WriteObject(Backend);
         }

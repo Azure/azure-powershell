@@ -300,6 +300,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
         {
             return new PSRulesEngine
             {
+                Id = sdkRulesEngine.Id,
                 Name = sdkRulesEngine.Name,
                 RulesEngineRules = sdkRulesEngine.Rules?.Select(x => ToPSRulesEngineRule(x)).ToList()
             };

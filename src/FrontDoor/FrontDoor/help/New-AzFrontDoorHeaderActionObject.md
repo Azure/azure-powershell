@@ -1,34 +1,34 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleexclusionobject
+online version:
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorWafManagedRuleExclusionObject
+# New-AzFrontDoorHeaderActionObject
 
 ## SYNOPSIS
-Create managed rule exclusion object for WAF managed rule sets, groups, or rules.
+Create PSHeaderAction object.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafManagedRuleExclusionObject -Variable <String> -Operator <String> [-Selector <String>]
+New-AzFrontDoorHeaderActionObject -HeaderName <String> -HeaderActionType <PSHeaderActionType> [-Value <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create managed rule exclusion object for WAF managed rule sets, groups, or rules.
+Creates PSHeaderAction object for the creation of PSRulesEngineAction object.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:> New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ParameterName"
+PS C:\> New-AzFrontDoorHeaderActionObject -HeaderName headername -HeaderActionType Append
 
-MatchVariable       SelectorMatchOperator Selector
--------------       --------------------- --------
-QueryStringArgNames Equals                ParameterName
+HeaderName HeaderActionType Value
+---------- ---------------- -----
+headername           Append
 ```
 
 ## PARAMETERS
@@ -48,8 +48,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Operator
-Operator to use when matching the selector, EqualsAny means no selector (all match variables of the specified type)
+### -HeaderActionType
+Which type of manipulation to apply to the header.
+
+```yaml
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderActionType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Append, Delete, Overwrite
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HeaderName
+The name of the header this action will apply to.
 
 ```yaml
 Type: System.String
@@ -63,8 +79,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Selector
-Selector pattern to match using the operator (if the operator is not EqualsAny)
+### -Value
+The value to update the given header name with.
+This value is not used if the actionType is Delete.
 
 ```yaml
 Type: System.String
@@ -72,22 +89,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Variable
-Match variable. Possible values are RequestHeaderNames, RequestCookieNames, QueryStringArgNames, RequestBodyPostArgNames.
-For example, QueryStringArgNames is an exclusion of GET parameters matching the selector with the given operator.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -103,12 +104,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion
+### Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderAction
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFrontDoorWafManagedRuleOverrideObject](./New-AzFrontDoorWafManagedRuleOverrideObject.md)
-[New-AzFrontDoorWafRuleGroupOverrideObject](./New-AzFrontDoorWafRuleGroupOverrideObject.md)
-[New-AzFrontDoorWafManagedRuleObject](./New-AzFrontDoorWafManagedRuleObject.md)
