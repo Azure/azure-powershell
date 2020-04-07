@@ -32,32 +32,28 @@ https://docs.microsoft.com/en-us/powershell/module/az.kusto/update-azkustodataba
 #>
 function Update-AzKustoDatabase {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase])]
-    [CmdletBinding(DefaultParameterSetName = 'UpdateExpandedReadWrite', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
-        [Parameter(ParameterSetName = 'UpdateExpandedReadWrite', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpandedReadOnlyFollowing', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
         [System.String]
         # The name of the Kusto cluster.
         ${ClusterName},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedReadWrite', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpandedReadOnlyFollowing', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
         [Alias('DatabaseName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
         [System.String]
         # The name of the database in the Kusto cluster.
         ${Name},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedReadWrite', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpandedReadOnlyFollowing', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
         [System.String]
         # The name of the resource group containing the Kusto cluster.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedReadWrite')]
-        [Parameter(ParameterSetName = 'UpdateExpandedReadOnlyFollowing')]
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -65,8 +61,7 @@ function Update-AzKustoDatabase {
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedReadWrite', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedReadOnlyFollowing', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
         # Identity Parameter
@@ -86,8 +81,8 @@ function Update-AzKustoDatabase {
         # The time the data should be kept in cache for fast queries in TimeSpan.
         ${HotCachePeriod},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedReadWrite')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedReadWrite')]
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.TimeSpan]
         # The time the data should be kept before it stops being accessible to queries in TimeSpan.
@@ -163,11 +158,6 @@ function Update-AzKustoDatabase {
         try {
             if ($PSBoundParameters['Kind'] -eq 'ReadWrite') {
                 $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadWriteDatabase]::new()
-
-                if ($PSBoundParameters.ContainsKey('SoftDeletePeriod')) {
-                    $Parameter.SoftDeletePeriod = $PSBoundParameters['SoftDeletePeriod']
-                    $null = $PSBoundParameters.Remove('SoftDeletePeriod')
-                } 
             }
             else {
                 $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadOnlyFollowingDatabase]::new()
@@ -176,6 +166,11 @@ function Update-AzKustoDatabase {
             $Parameter.Kind = $PSBoundParameters['Kind']
             $null = $PSBoundParameters.Remove('Kind')
 
+            if ($PSBoundParameters.ContainsKey('SoftDeletePeriod')) {
+                $Parameter.SoftDeletePeriod = $PSBoundParameters['SoftDeletePeriod']
+                $null = $PSBoundParameters.Remove('SoftDeletePeriod')
+            } 
+            
             if ($PSBoundParameters.ContainsKey('HotCachePeriod')) {
                 $Parameter.HotCachePeriod = $PSBoundParameters['HotCachePeriod']
                 $null = $PSBoundParameters.Remove('HotCachePeriod')
