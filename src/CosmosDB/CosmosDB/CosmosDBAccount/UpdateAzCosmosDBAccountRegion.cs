@@ -76,9 +76,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 if (Location != null && Location.Length > 0)
                 {
+                    int failoverPriority = 0;
                     foreach (string location in Location)
                     {
-                        locations.Add(new Location(locationName: location));
+                        locations.Add(new Location(locationName: location, failoverPriority: failoverPriority));
+                        failoverPriority++;
                     }
                 }
                 if (LocationObject != null && LocationObject.Length > 0)
