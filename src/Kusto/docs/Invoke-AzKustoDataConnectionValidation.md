@@ -15,66 +15,54 @@ Checks that the data connection parameters are valid.
 ### DataExpandedEventHub (Default)
 ```
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> -ConsumerGroup <String> -EventHubResourceId <String> -Kind <Kind>
- [-SubscriptionId <String>] [-Compression <Compression>] [-DataFormat <EventGridDataFormat>]
- [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DataExpanded
-```
-Invoke-AzKustoDataConnectionValidation -ConsumerGroup <String> -Kind <Kind> [-DataConnectionName <String>]
- [-Location <String>] [-MappingRuleName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ResourceGroupName <String> -ConsumerGroup <String> -DataConnectionName <String> -EventHubResourceId <String>
+ -Kind <Kind> -Location <String> [-SubscriptionId <String>] [-Compression <Compression>]
+ [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
+ [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DataExpandedEventGrid
 ```
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> -ConsumerGroup <String> -DataFormat <EventGridDataFormat>
- -EventHubResourceId <String> -Kind <Kind> -StorageAccountResourceId <String> -TableName <String>
- [-SubscriptionId <String>] [-MappingRuleName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ResourceGroupName <String> -ConsumerGroup <String> -DataConnectionName <String>
+ -DataFormat <EventGridDataFormat> -EventHubResourceId <String> -Kind <Kind> -Location <String>
+ -StorageAccountResourceId <String> -TableName <String> [-SubscriptionId <String>] [-MappingRuleName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DataExpandedIotHub
 ```
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> -ConsumerGroup <String> -IotHubResourceId <String> -Kind <Kind>
- -SharedAccessPolicyName <String> [-SubscriptionId <String>] [-DataFormat <EventGridDataFormat>]
- [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DataViaIdentityExpanded
-```
-Invoke-AzKustoDataConnectionValidation -ConsumerGroup <String> -Kind <Kind> [-DataConnectionName <String>]
- [-Location <String>] [-MappingRuleName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ResourceGroupName <String> -ConsumerGroup <String> -DataConnectionName <String> -IotHubResourceId <String>
+ -Kind <Kind> -Location <String> -SharedAccessPolicyName <String> [-SubscriptionId <String>]
+ [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
+ [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DataViaIdentityExpandedEventGrid
 ```
 Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
- -DataFormat <EventGridDataFormat> -EventHubResourceId <String> -Kind <Kind>
- -StorageAccountResourceId <String> -TableName <String> [-MappingRuleName <String>]
+ -DataConnectionName <String> -DataFormat <EventGridDataFormat> -EventHubResourceId <String> -Kind <Kind>
+ -Location <String> -StorageAccountResourceId <String> -TableName <String> [-MappingRuleName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DataViaIdentityExpandedEventHub
 ```
 Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
- -EventHubResourceId <String> -Kind <Kind> [-Compression <Compression>] [-DataFormat <EventGridDataFormat>]
- [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -DataConnectionName <String> -EventHubResourceId <String> -Kind <Kind> -Location <String>
+ [-Compression <Compression>] [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>]
+ [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DataViaIdentityExpandedIotHub
 ```
 Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
- -IotHubResourceId <String> -Kind <Kind> -SharedAccessPolicyName <String> [-DataFormat <EventGridDataFormat>]
- [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -DataConnectionName <String> -IotHubResourceId <String> -Kind <Kind> -Location <String>
+ -SharedAccessPolicyName <String> [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>]
+ [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,10 +154,10 @@ The name of the data connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: DataExpanded, DataViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -183,7 +171,7 @@ Optionally the data format can be added to each message.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat
-Parameter Sets: DataExpandedEventGrid, DataExpandedEventHub, DataExpandedIotHub, DataViaIdentityExpandedEventGrid, DataViaIdentityExpandedEventHub, DataViaIdentityExpandedIotHub
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -296,10 +284,10 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: DataExpanded, DataViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -395,7 +383,7 @@ Optionally the table information can be added to each message.
 
 ```yaml
 Type: System.String
-Parameter Sets: DataExpandedEventGrid, DataExpandedEventHub, DataExpandedIotHub, DataViaIdentityExpandedEventGrid, DataViaIdentityExpandedEventHub, DataViaIdentityExpandedIotHub
+Parameter Sets: (All)
 Aliases:
 
 Required: True

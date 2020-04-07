@@ -84,8 +84,7 @@ function Invoke-AzKustoDataConnectionValidation {
         # Kind of the endpoint for the data connection
         ${Kind},
 
-        [Parameter(ParameterSetName = 'DataExpanded')]
-        [Parameter(ParameterSetName = 'DataViaIdentityExpanded')]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.String]
         # The name of the data connection.
@@ -171,8 +170,7 @@ function Invoke-AzKustoDataConnectionValidation {
         # The name of the share access policy.
         ${SharedAccessPolicyName},
 
-        [Parameter(ParameterSetName = 'DataExpanded')]
-        [Parameter(ParameterSetName = 'DataViaIdentityExpanded')]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.String]
         # Resource location.
