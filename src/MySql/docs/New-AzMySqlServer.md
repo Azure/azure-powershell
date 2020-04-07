@@ -15,10 +15,10 @@ Creates a new server.
 ```
 New-AzMySqlServer -Name <String> -ResourceGroupName <String> -AdministratorLoginPassword <SecureString>
  -AdministratorUserName <String> -Location <String> -Sku <String> [-SubscriptionId <String>]
- [-SslEnforcement <SslEnforcementEnum>] [-StorageProfileBackupRetentionDay <Int32>]
- [-StorageProfileGeoRedundantBackup <GeoRedundantBackup>] [-StorageProfileStorageAutogrow <StorageAutogrow>]
- [-StorageProfileStorageInMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <GeoRedundantBackup>]
+ [-SslEnforcement <SslEnforcementEnum>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>]
+ [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,23 +26,17 @@ Creates a new server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new MySql server
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
+PS C:\> New-AzMySqlServer -Name mysql-test -ResourceGroupName mysql_test -Location eastus -AdministratorLogin mysql_test -AdministratorLoginPassword $password -SkuName GP_Gen5_4
 
-{{ Add output here }}
+Name        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----        -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mysql-test0 eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+These cmdlets create a new MySql server.
 
 ## PARAMETERS
 
@@ -94,6 +88,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -BackupRetentionDay
+Backup retention days for the server.
+Day count is between 7 and 35.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -101,6 +112,22 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -GeoRedundantBackup
+Enable Geo-redundant or not for server backup.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.GeoRedundantBackup
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -207,40 +234,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -StorageProfileBackupRetentionDay
-Backup retention days for the server.
-Day count is between 7 and 35.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -StorageProfileGeoRedundantBackup
-Enable Geo-redundant or not for server backup.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.GeoRedundantBackup
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -StorageProfileStorageAutogrow
+### -StorageAutogrow
 Enable Storage Auto Grow.
 
 ```yaml
@@ -256,7 +250,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -StorageProfileStorageInMb
+### -StorageInMb
 Max storage allowed for a server.
 
 ```yaml

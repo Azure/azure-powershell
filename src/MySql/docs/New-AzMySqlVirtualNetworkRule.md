@@ -14,7 +14,7 @@ Creates or updates an existing virtual network rule.
 
 ```
 New-AzMySqlVirtualNetworkRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- -VirtualNetworkSubnetId <String> [-SubscriptionId <String>] [-IgnoreMissingVnetServiceEndpoint]
+ -SubnetId <String> [-SubscriptionId <String>] [-IgnoreMissingVnetServiceEndpoint]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -172,6 +172,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -SubnetId
+The ARM resource id of the virtual network subnet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -183,22 +199,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VirtualNetworkSubnetId
-The ARM resource id of the virtual network subnet.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

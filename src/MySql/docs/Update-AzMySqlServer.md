@@ -16,20 +16,19 @@ The request body can contain one to many of the properties present in the normal
 ### UpdateExpanded (Default)
 ```
 Update-AzMySqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AdministratorLoginPassword <SecureString>] [-ReplicationRole <String>] [-Sku <String>]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
- [-SslEnforcement <SslEnforcementEnum>] [-StorageProfileBackupRetentionDay <Int32>]
- [-StorageProfileStorageAutogrow <StorageAutogrow>] [-StorageProfileStorageInMb <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AdministratorLoginPassword <SecureString>] [-BackupRetentionDay <Int32>] [-ReplicationRole <String>]
+ [-Sku <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
+ [-SslEnforcement <SslEnforcementEnum>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMySqlServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword <SecureString>]
- [-ReplicationRole <String>] [-Sku <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>]
- [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>] [-StorageProfileBackupRetentionDay <Int32>]
- [-StorageProfileStorageAutogrow <StorageAutogrow>] [-StorageProfileStorageInMb <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BackupRetentionDay <Int32>] [-ReplicationRole <String>] [-Sku <String>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
+ [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,23 +37,27 @@ The request body can contain one to many of the properties present in the normal
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update MySql server by resource group and server name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzMySqlServer -ResourceGroupName mysql_test -ServerName mysql-test -SslEnforcement Disabled
 
-{{ Add output here }}
+Name        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----        -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mysql-test  eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql server by resource group and server name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql server by mysql identity.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMySqlServer -ResourceGroupName mysql_test -ServerName mysql-test | Update-AzMySqlServer -StorageProfileBackupRetentionDay 23 -StorageProfileStorageMb 10240
 
-{{ Add output here }}
+Name        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----        -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mysql-test  eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Enabled
 ```
 
-{{ Add description here }}
+These cmdlets update MySql server by mysql identity.
 
 ## PARAMETERS
 
@@ -79,6 +82,23 @@ Run the command as a job.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -BackupRetentionDay
+Backup retention days for the server.
+Day count is between 7 and 35.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -286,24 +306,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -StorageProfileBackupRetentionDay
-Backup retention days for the server.
-Day count is between 7 and 35.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -StorageProfileStorageAutogrow
+### -StorageAutogrow
 Enable Storage Auto Grow.
 
 ```yaml
@@ -319,7 +322,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -StorageProfileStorageInMb
+### -StorageInMb
 Max storage allowed for a server.
 
 ```yaml

@@ -19,7 +19,7 @@ function New-AzMySqlServerReplica {
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Creates a new replica from an existing database.')]
     param(
         [Parameter(Mandatory, HelpMessage = 'The name of the server.')]
-        [Alias('ServerName')]
+        [Alias('ReplicaServerName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         ${Name},

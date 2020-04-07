@@ -85,18 +85,18 @@ function Update-AzMySqlServer {
         [Parameter(HelpMessage='Backup retention days for the server. Day count is between 7 and 35.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.Int32]
-        ${StorageProfileBackupRetentionDay},
+        ${BackupRetentionDay},
 
         [Parameter(HelpMessage='Enable Storage Auto Grow.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow])]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]
-        ${StorageProfileStorageAutogrow},
+        ${StorageAutogrow},
 
         [Parameter(HelpMessage='Max storage allowed for a server.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.Int32]
-        ${StorageProfileStorageInMb},
+        ${StorageInMb},
 
         [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
@@ -168,14 +168,24 @@ function Update-AzMySqlServer {
                 $PSBoundParameters.Add('AdministratorLoginPassword', [System.Runtime.InteropServices.marshal]::PtrToStringAuto($bStr))
             }
 
-            if ($PSBoundParameters.ContainsKey('StorageProfileStorageInMb')) {
-                $PSBoundParameters.Add('StorageProfileStorageMb', $PSBoundParameters['StorageProfileStorageInMb'])
-                $null = $PSBoundParameters.Remove('StorageProfileStorageInMb')
+            if ($PSBoundParameters.ContainsKey('StorageInMb')) {
+                $PSBoundParameters.Add('StorageProfileStorageMb', $PSBoundParameters['StorageInMb'])
+                $null = $PSBoundParameters.Remove('StorageInMb')
             }
 
             if ($PSBoundParameters.ContainsKey('Sku')) {
                 $PSBoundParameters.Add('SkuName', $PSBoundParameters['Sku'])
                 $null = $PSBoundParameters.Remove('Sku')
+            }
+
+            if ($PSBoundParameters.ContainsKey('BackupRetentionDay')) {
+                $PSBoundParameters.Add('StorageProfileBackupRetentionDay', $PSBoundParameters['BackupRetentionDay'])
+                $null = $PSBoundParameters.Remove('BackupRetentionDay')
+            }
+
+            if ($PSBoundParameters.ContainsKey('StorageAutogrow')) {
+                $PSBoundParameters.Add('StorageProfileStorageAutogrow', $PSBoundParameters['StorageAutogrow'])
+                $null = $PSBoundParameters.Remove('StorageAutogrow')
             }
 
             Az.MySql.internal\Update-AzMySqlServer @PSBoundParameters
