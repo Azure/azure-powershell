@@ -66,7 +66,10 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Storage.dll',
                'Microsoft.Azure.Storage.DataMovement.dll', 
                'Microsoft.Azure.DocumentDB.Core.dll', 'Microsoft.OData.Core.dll', 
                'Microsoft.OData.Edm.dll', 'Microsoft.Spatial.dll', 
-               'Microsoft.Azure.KeyVault.Core.dll'
+               'Microsoft.Azure.KeyVault.Core.dll','Azure.Storage.Blobs.dll',
+               'Azure.Storage.Common.dll', 'Azure.Storage.Files.DataLake.dll',
+               'Azure.Core.dll', 'Microsoft.Bcl.AsyncInterfaces.dll',
+               'System.Text.Json.dll', 'System.Threading.Tasks.Extensions.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -158,7 +161,12 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Revoke-AzStorageAccountUserDelegationKeys', 
                'Get-AzStorageFileHandle', 'Close-AzStorageFileHandle', 
                'New-AzRmStorageShare', 'Remove-AzRmStorageShare', 
-               'Get-AzRmStorageShare', 'Update-AzRmStorageShare'
+               'Get-AzRmStorageShare', 'Update-AzRmStorageShare', 
+               'Get-AzDataLakeGen2ChildItem', 'Get-AzDataLakeGen2Item', 
+               'New-AzDataLakeGen2Item', 'Move-AzDataLakeGen2Item', 
+               'Remove-AzDataLakeGen2Item', 'Update-AzDataLakeGen2Item', 
+               'Set-AzDataLakeGen2ItemAclObject', 'Get-AzDataLakeGen2ItemContent'
+               
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -166,7 +174,9 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzStorageContainerAcl', 'Start-CopyAzureStorageBlob', 
                'Stop-CopyAzureStorageBlob', 'Enable-AzStorageSoftDelete', 
-               'Disable-AzStorageSoftDelete'
+               'Disable-AzStorageSoftDelete', 
+               'New-AzDatalakeGen2FileSystem', 'Remove-AzDatalakeGen2FileSystem', 
+               'Get-AzDatalakeGen2FileSystem', 'New-AzDataLakeGen2ItemAclObject'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

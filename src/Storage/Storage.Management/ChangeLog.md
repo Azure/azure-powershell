@@ -22,6 +22,15 @@
 * Supported new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
+* Support DataLake Gen2 
+    -  New-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2ChildItem
+    -  Move-AzDataLakeGen2Item
+    -  Set-AzDataLakeGen2ItemAclObject
+    -  Update-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2ItemContent
+    -  Remove-AzDataLakeGen2Item
 
 ## Version 1.13.0
 * Supported AllowProtectedAppendWrite in ImmutabilityPolicy
