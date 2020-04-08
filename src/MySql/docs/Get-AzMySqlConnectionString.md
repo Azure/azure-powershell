@@ -29,23 +29,23 @@ Get the connection string according to client connection provider.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get MySql server connection string by resource group and server name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMySqlConnectionString -Client ADO.NET -Name mysql-test -ResourceGroupName PowershellMySqlTest
 
-{{ Add output here }}
+Server=mysql-test.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=mysql_test@mysql-test; Pwd={your_password};
 ```
 
-{{ Add description here }}
+This cmdlet gets MySql server connection string by resource group and server name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get MySql server connection string by identity
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Get-AzMySqlConnectionString -Client PHP
 
-{{ Add output here }}
+$con=mysqli_init(); mysqli_real_connect($con, "mysql-test.mysql.database.azure.com", "mysql_test@mysql-test", {your_password}, {your_database}, 3306);
 ```
 
-{{ Add description here }}
+This cmdlet gets MySql server connection string by identity.
 
 ## PARAMETERS
 
