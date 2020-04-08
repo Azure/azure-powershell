@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             Location = databaseAccountGetResults.Location;
             EnableCassandraConnector = databaseAccountGetResults.EnableCassandraConnector;
             FailoverPolicies = databaseAccountGetResults.FailoverPolicies;
+            Locations = databaseAccountGetResults.Locations;
             ReadLocations = databaseAccountGetResults.ReadLocations;
             WriteLocations = databaseAccountGetResults.WriteLocations;
             Capabilities = databaseAccountGetResults.Capabilities;

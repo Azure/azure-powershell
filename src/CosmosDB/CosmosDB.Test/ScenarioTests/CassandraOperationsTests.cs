@@ -40,5 +40,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CassandraOperationsCmdletsUsingInputObject");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCassandraThroughputCmdlets()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CassandraThroughputCmdlets");
+        }
     }
 }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -39,36 +40,45 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         public string[] Certificates { get; protected set; }
 
-        private static JObject ExtractJosePart(string jwt, int partIndex)
-        {
-            string[] joseParts = jwt.Split('.');
-            var decodedBody = Encoding.UTF8.GetString(Base64Url.Decode(joseParts[partIndex]));
-            JObject jsonBody = JObject.Parse(decodedBody);
-            return jsonBody;
-        }
-
         private static (string algorithm, string jku) ExtractHeaders(string jwt)
         {
             var algorithm = "";
             var jku = "";
             if (!string.IsNullOrEmpty(jwt))
             {
-                var parsedHeader = ExtractJosePart(jwt, 0);
-                algorithm = parsedHeader["alg"].ToString();
-                jku = parsedHeader["jku"].ToString();
+                try
+                {
+                    var parsedHeader = JoseHelper.ExtractJosePart(jwt, 0);
+                    algorithm = parsedHeader["alg"].ToString();
+                    jku = parsedHeader["jku"].ToString();
+                }
+                catch (Exception)
+                {
+                    // Ignore on purpose
+                }
             }
             return (algorithm, jku);
         }
+
         private static string[] ExtractCertificates(string jwt)
         {
-            if (string.IsNullOrEmpty(jwt))
+            string[] certificates = new string[0];
+
+            if (!string.IsNullOrEmpty(jwt))
             {
-                return new string[0];
+                try
+                {
+                    var parsedBody = JoseHelper.ExtractJosePart(jwt, 1);
+                    var parsedCertificates = parsedBody["aas-policyCertificates"]["keys"].ToArray();
+                    certificates = parsedCertificates.Select(c => c.ToString()).ToArray();
+                }
+                catch (Exception)
+                {
+                    // Ignore on purpose
+                }
             }
 
-            var parsedBody = ExtractJosePart(jwt, 1);
-            var parsedCertificates = parsedBody["aas-policyCertificates"]["keys"].ToArray();
-            return parsedCertificates.Select(c => c.ToString()).ToArray();
+            return certificates;
         }
     }
 }
