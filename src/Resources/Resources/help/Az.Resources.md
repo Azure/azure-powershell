@@ -49,6 +49,9 @@ Get deployment
 ### [Get-AzDeploymentOperation](Get-AzDeploymentOperation.md)
 Get deployment operation
 
+### [Get-AzDeploymentWhatIfResult](Get-AzDeploymentWhatIfResult.md)
+Gets the ARM template What-If result for a deployment at subscription scope. 
+
 ### [Get-AzLocation](Get-AzLocation.md)
 Gets all locations and the supported resource providers for each location.
 
@@ -62,7 +65,7 @@ Gets managed application definitions
 Gets Management Group(s)
 
 ### [Get-AzManagementGroupDeployment](Get-AzManagementGroupDeployment.md)
-Get deployment at a mangement group
+Get deployment at a management group
 
 ### [Get-AzManagementGroupDeploymentOperation](Get-AzManagementGroupDeploymentOperation.md)
 Get deployment operation for management group deployment
@@ -98,6 +101,9 @@ Gets the deployments in a resource group.
 
 ### [Get-AzResourceGroupDeploymentOperation](Get-AzResourceGroupDeploymentOperation.md)
 Gets the resource group deployment operation
+
+### [Get-AzResourceGroupDeploymentWhatIfResult](Get-AzResourceGroupDeploymentWhatIfResult.md)
+Gets the ARM template What-If result for a deployment at resource group scope. 
 
 ### [Get-AzResourceLock](Get-AzResourceLock.md)
 Gets a resource lock.

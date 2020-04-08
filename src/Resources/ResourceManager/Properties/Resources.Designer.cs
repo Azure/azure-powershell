@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to execute the deployment?.
+        /// </summary>
+        internal static string ConfirmDeploymentMessage {
+            get {
+                return ResourceManager.GetString("ConfirmDeploymentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to invoke the &apos;{0}&apos; action on the following resource: {1}.
         /// </summary>
         internal static string ConfirmInvokeAction {
@@ -336,6 +345,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string FileAlreadyExists1 {
             get {
                 return ResourceManager.GetString("FileAlreadyExists1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HTTP Status Code: {0}
+        ///Error Code: {1}
+        ///Error Message: {2}
+        ///Error Details: {3}
+        ///Request Id: {4}
+        ///Timestamp (UTC): {5}.
+        /// </summary>
+        internal static string FormattedCloudExceptionMessageTemplate {
+            get {
+                return ResourceManager.GetString("FormattedCloudExceptionMessageTemplate", resourceCulture);
             }
         }
         
@@ -1092,6 +1115,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string WarnOnDeploymentDebugSetting {
             get {
                 return ResourceManager.GetString("WarnOnDeploymentDebugSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note: As What-If is currently in preview, the result may contain false positive predictions (noise).
+        ///You can help us improve the accuracy of the result by opening an issue here: https://aka.ms/WhatIfIssues..
+        /// </summary>
+        internal static string WhatIfPreviewNotice {
+            get {
+                return ResourceManager.GetString("WhatIfPreviewNotice", resourceCulture);
             }
         }
     }

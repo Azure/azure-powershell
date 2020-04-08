@@ -26,13 +26,19 @@
 * Escaped single quote in parameter value of `Get-AzADUser` [#11317]
 * Added new cmdlets for Deployment Scripts (`Get-AzDeploymentScript`, `Get-AzDeploymentScriptLog`, `Save-AzDeploymentScriptLog`, `Remove-AzDeploymentScript`)
 
+## Version 1.12.1
+* Add Get-AzDeploymentWhatIfResult cmdlet for getting ARM template What-If at subscription scope.
+    - Alias: Get-AzSubscriptionDeploymentWhatIf.
+* Add Get-AzDeploymentResourceGroupWhatIfResult cmdlet for getting ARM template What-If at resource group scope.
+* Override -WhatIf and -Confirm parameters for New-AzDeployment and New-AzResourceGroupDeployment to use ARM template What-If output.
+
 ## Version 1.12.0
 * Fixed for null reference bug in `Get-AzRoleAssignment`
 * Marked switch `-Force` and `-PassThru` optional in `Remove-AzADGroup` [#10849]
 * Fixed issue that `MailNickname` doesn't return in `Remove-AzADGroup` [#11167]
 * Fixed issue that `Remove-AzADGroup` pipe operation doesn't work [#11171]
 * Fixed for null reference bug in GetAzureRoleAssignmentCommand
-* Added breaking change attributes for upcoming changes to policy cmdlets
+* Breaking changes for policy cmdlets to support typed pipeline objects
 * Updated `Get-AzResourceGroup` to perform resource group tag filtering on server-side
 * Extended Tag cmdlets to accept -ResourceId
     - Get-AzTag -ResourceId

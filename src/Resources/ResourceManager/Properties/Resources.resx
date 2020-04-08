@@ -462,4 +462,19 @@
   <data name="DeploymentScriptShouldProcessString" xml:space="preserve">
     <value>Save script execution log to disk.</value>
   </data>
+  <data name="WhatIfPreviewNotice" xml:space="preserve">
+    <value>Note: As What-If is currently in preview, the result may contain false positive predictions (noise).
+You can help us improve the accuracy of the result by opening an issue here: https://aka.ms/WhatIfIssues.</value>
+  </data>
+  <data name="FormattedCloudExceptionMessageTemplate" xml:space="preserve">
+    <value>HTTP Status Code: {0}
+Error Code: {1}
+Error Message: {2}
+Error Details: {3}
+Request Id: {4}
+Timestamp (UTC): {5}</value>
+  </data>
+  <data name="ConfirmDeploymentMessage" xml:space="preserve">
+    <value>Are you sure you want to execute the deployment?</value>
+  </data>
 </root>
