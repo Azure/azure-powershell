@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsights", SupportsShouldProcess = true), OutputType(typeof(PSApplicationInsightsComponent))]
     public class NewAzureApplicationInsights : ApplicationInsightsBaseCmdlet
     {
+        #region Cmdlet parameters
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -79,6 +81,24 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Alias(TagsAlias)]
         public Hashtable Tag { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "ResourceId of the log analytics workspace which the data will be ingested to.")]
+        [ValidateNotNull]
+        public string WorkspaceResourceId;
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "The network access type for accessing Application Insights ingestion. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForIngestion;
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "The network access type for accessing Application Insights query. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForQuery;
+
+        #endregion
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -110,6 +130,9 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                 ApplicationType = Kind,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
                 RequestSource = "AzurePowerShell",
+                WorkspaceResourceId = this.WorkspaceResourceId,
+                PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
+                PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery
             };
 
             if (this.ShouldProcess(this.ResourceGroupName, $"Create Application Insights Component {this.Name}"))
