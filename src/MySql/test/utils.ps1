@@ -36,11 +36,13 @@ function setupEnv() {
     $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
     $serverName = "mysql-test-100"
     $env.Add("serverName", $serverName)
+    $Sku = "GP_Gen5_4"
+    $env.Add("Sku", $Sku)
 
     write-host (Get-AzContext | Out-String)
 
-    write-host "New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4"
-    New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
+    write-host "New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku"
+    New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

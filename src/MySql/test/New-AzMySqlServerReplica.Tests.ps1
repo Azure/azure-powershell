@@ -12,9 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzMySqlServerReplica' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         $replica = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | New-AzMySqlServerReplica -Name $env.replicaName -ResourceGroupName $env.resourceGroup 
-        $replica.Count | Should -Be 1
+        $replica.Name | Should -Be $env.replicaName
+        $replica.SkuName | Should -Be $env.Sku
+        $replica.Location | Should -Be eastus
         Remove-AzMySqlServer -ResourceGroupName $env.resourceGroup -Name $env.replicaName
     }
 }

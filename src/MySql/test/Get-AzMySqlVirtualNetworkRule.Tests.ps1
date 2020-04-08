@@ -24,7 +24,7 @@ Describe 'Get-AzMySqlVirtualNetworkRule' {
         $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1"
         New-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -VirtualNetworkSubnetId $ID
         $rule = Get-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
-        $rule.Count | Should -Be 1
+        $rule.VirtualNetworkSubnetId | Should -Be $ID
         Remove-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup-ServerName $env.serverName
     }
 
@@ -33,7 +33,7 @@ Describe 'Get-AzMySqlVirtualNetworkRule' {
         New-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -VirtualNetworkSubnetId $VnetID
         $RuleID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/$($env.serverName)/virtualNetworkRules/$($env.VNetName)"
         $rule = Get-AzMySqlVirtualNetworkRule -InputObject $RuleID
-        $rule.Count | Should -Be 1
+        $rule.VirtualNetworkSubnetId | Should -Be $VnetID
         Remove-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup-ServerName $env.serverName
     }
 }
