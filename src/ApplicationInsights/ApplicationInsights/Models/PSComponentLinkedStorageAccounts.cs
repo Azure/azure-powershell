@@ -16,24 +16,20 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
 {
     public class PSComponentLinkedStorageAccounts
     {
-        public partial class ComponentLinkedStorageAccounts
+        public PSComponentLinkedStorageAccounts(string id = default(string), string name = default(string), string type = default(string), string linkedStorageAccount = default(string))
         {
-            public ComponentLinkedStorageAccounts(string id = default(string), string name = default(string), string type = default(string), string linkedStorageAccount = default(string))
-            {
-                this.Id = id;
-                this.Name = name;
-                this.Type = type;
-                this.LinkedStorageAccount = linkedStorageAccount;
-            }
-
-            public string Id { get; private set; }
-
-            public string Name { get; private set; }
-
-            public string Type { get; private set; }
-
-            public string LinkedStorageAccount { get; set; }
-
+            this.Id = id;
+            this.Name = name;
+            this.Type = type;
+            this.LinkedStorageAccount = linkedStorageAccount;
         }
+
+        public string Id { get; private set; }
+
+        public string Name { get; private set; }
+
+        public string Type { get; private set; }
+
+        public string LinkedStorageAccount { get; set; }
     }
 }
