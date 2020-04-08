@@ -1,12 +1,12 @@
 {
-  "Remove-AzMySqlServer+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2?api-version=2017-12-01+1": {
+  "Remove-AzMySqlServer+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2?api-version=2017-12-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2?api-version=2017-12-01",
       "Content": "{\n  \"properties\": {\n    \"createMode\": \"Default\",\n    \"administratorLogin\": \"pwsh\",\n    \"administratorLoginPassword\": \"Pa88word!\"\n  },\n  \"sku\": {\n    \"name\": \"GP_Gen5_4\"\n  },\n  \"location\": \"eastus\"\n}",
       "Headers": {
-        "x-ms-unique-id": [ "149" ],
-        "x-ms-client-request-id": [ "94cf9df8-1d2d-4cfd-8031-54ee14160806" ],
+        "x-ms-unique-id": [ "155" ],
+        "x-ms-client-request-id": [ "96723919-18a6-41a5-8817-d6f8d02bc2ad" ],
         "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer" ],
         "FullCommandName": [ "New-AzMySqlServer_Create" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,34 +23,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/8c28b107-7fd8-481a-83c8-aeca61822077?api-version=2017-12-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/4e48ddd7-c460-4974-b900-4486bad8b076?api-version=2017-12-01" ],
         "Retry-After": [ "60" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/8c28b107-7fd8-481a-83c8-aeca61822077?api-version=2017-12-01" ],
-        "x-ms-request-id": [ "8c28b107-7fd8-481a-83c8-aeca61822077" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/4e48ddd7-c460-4974-b900-4486bad8b076?api-version=2017-12-01" ],
+        "x-ms-request-id": [ "4e48ddd7-c460-4974-b900-4486bad8b076" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1185" ],
-        "x-ms-correlation-request-id": [ "cf67e7d5-2d7c-4b53-be0e-51699636574b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T090747Z:cf67e7d5-2d7c-4b53-be0e-51699636574b" ],
+        "x-ms-correlation-request-id": [ "383147ce-8c92-4555-a7ea-904e5274c2ae" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112531Z:383147ce-8c92-4555-a7ea-904e5274c2ae" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:07:47 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:25:31 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "74" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"operation\":\"UpsertElasticServer\",\"startTime\":\"2020-03-31T09:07:46.533Z\"}"
+      "Content": "{\"operation\":\"UpsertElasticServer\",\"startTime\":\"2020-04-08T11:25:30.433Z\"}"
     }
   },
-  "Remove-AzMySqlServer+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/8c28b107-7fd8-481a-83c8-aeca61822077?api-version=2017-12-01+2": {
+  "Remove-AzMySqlServer+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/4e48ddd7-c460-4974-b900-4486bad8b076?api-version=2017-12-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/8c28b107-7fd8-481a-83c8-aeca61822077?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/4e48ddd7-c460-4974-b900-4486bad8b076?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "149", "150" ],
-        "x-ms-client-request-id": [ "94cf9df8-1d2d-4cfd-8031-54ee14160806", "94cf9df8-1d2d-4cfd-8031-54ee14160806" ],
+        "x-ms-unique-id": [ "155", "156" ],
+        "x-ms-client-request-id": [ "96723919-18a6-41a5-8817-d6f8d02bc2ad", "96723919-18a6-41a5-8817-d6f8d02bc2ad" ],
         "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
         "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
@@ -66,31 +66,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "60" ],
-        "x-ms-request-id": [ "2b6cd919-6b7b-48d0-a38e-46bc3ba824ee" ],
+        "x-ms-request-id": [ "eb61de8b-6c2c-4aca-a8de-c84e003d52ed" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11883" ],
-        "x-ms-correlation-request-id": [ "088af871-cfb3-45fd-b1f4-6d4a78775dc3" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T090849Z:088af871-cfb3-45fd-b1f4-6d4a78775dc3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11873" ],
+        "x-ms-correlation-request-id": [ "3b82c4e9-6159-4e14-a89e-5083a9f35229" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112632Z:3b82c4e9-6159-4e14-a89e-5083a9f35229" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:08:48 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:26:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "108" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"8c28b107-7fd8-481a-83c8-aeca61822077\",\"status\":\"InProgress\",\"startTime\":\"2020-03-31T09:07:46.533Z\"}"
+      "Content": "{\"name\":\"4e48ddd7-c460-4974-b900-4486bad8b076\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:25:30.433Z\"}"
     }
   },
-  "Remove-AzMySqlServer+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/8c28b107-7fd8-481a-83c8-aeca61822077?api-version=2017-12-01+3": {
+  "Remove-AzMySqlServer+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/4e48ddd7-c460-4974-b900-4486bad8b076?api-version=2017-12-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/8c28b107-7fd8-481a-83c8-aeca61822077?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/4e48ddd7-c460-4974-b900-4486bad8b076?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "149", "150", "151" ],
-        "x-ms-client-request-id": [ "94cf9df8-1d2d-4cfd-8031-54ee14160806", "94cf9df8-1d2d-4cfd-8031-54ee14160806", "94cf9df8-1d2d-4cfd-8031-54ee14160806" ],
+        "x-ms-unique-id": [ "155", "156", "157" ],
+        "x-ms-client-request-id": [ "96723919-18a6-41a5-8817-d6f8d02bc2ad", "96723919-18a6-41a5-8817-d6f8d02bc2ad", "96723919-18a6-41a5-8817-d6f8d02bc2ad" ],
         "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
         "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -106,31 +106,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "60" ],
-        "x-ms-request-id": [ "1cc0af75-368e-4495-8884-9c3aacfb55c5" ],
+        "x-ms-request-id": [ "eec7a61d-888a-4ae7-b15f-a9e48c64d0e1" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11882" ],
-        "x-ms-correlation-request-id": [ "9793953d-8b65-4d6e-91c8-6c5c1ffe6a63" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T090950Z:9793953d-8b65-4d6e-91c8-6c5c1ffe6a63" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11872" ],
+        "x-ms-correlation-request-id": [ "591a9f3a-f2ca-4e71-9791-e70790e07722" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112733Z:591a9f3a-f2ca-4e71-9791-e70790e07722" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:09:49 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:27:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"8c28b107-7fd8-481a-83c8-aeca61822077\",\"status\":\"Succeeded\",\"startTime\":\"2020-03-31T09:07:46.533Z\"}"
+      "Content": "{\"name\":\"4e48ddd7-c460-4974-b900-4486bad8b076\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-08T11:25:30.433Z\"}"
     }
   },
-  "Remove-AzMySqlServer+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2?api-version=2017-12-01+4": {
+  "Remove-AzMySqlServer+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2?api-version=2017-12-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "149", "150", "151", "152" ],
-        "x-ms-client-request-id": [ "94cf9df8-1d2d-4cfd-8031-54ee14160806", "94cf9df8-1d2d-4cfd-8031-54ee14160806", "94cf9df8-1d2d-4cfd-8031-54ee14160806", "94cf9df8-1d2d-4cfd-8031-54ee14160806" ],
+        "x-ms-unique-id": [ "155", "156", "157", "158" ],
+        "x-ms-client-request-id": [ "96723919-18a6-41a5-8817-d6f8d02bc2ad", "96723919-18a6-41a5-8817-d6f8d02bc2ad", "96723919-18a6-41a5-8817-d6f8d02bc2ad", "96723919-18a6-41a5-8817-d6f8d02bc2ad" ],
         "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
         "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -145,31 +145,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "7030f436-0549-4764-851b-af22c59885ce" ],
+        "x-ms-request-id": [ "c2d366b0-df40-4e03-b251-e7b1959b5587" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11881" ],
-        "x-ms-correlation-request-id": [ "68e9208e-390e-42ef-976a-7e7a8d3fd73e" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T090950Z:68e9208e-390e-42ef-976a-7e7a8d3fd73e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11871" ],
+        "x-ms-correlation-request-id": [ "29ddc83d-8d3f-4691-a96c-37ed100f88ad" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112734Z:29ddc83d-8d3f-4691-a96c-37ed100f88ad" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:09:50 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:27:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "905" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"pwsh\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100-2.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-03-31T09:17:46.907+00:00\",\"replicationRole\":\"None\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2\",\"name\":\"mysql-test-100-2\",\"type\":\"Microsoft.DBforMySQL/servers\"}"
+      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"pwsh\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100-2.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-04-08T11:35:30.743+00:00\",\"replicationRole\":\"None\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2\",\"name\":\"mysql-test-100-2\",\"type\":\"Microsoft.DBforMySQL/servers\"}"
     }
   },
-  "Remove-AzMySqlServer+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2?api-version=2017-12-01+5": {
+  "Remove-AzMySqlServer+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2?api-version=2017-12-01+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test-100-2?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "153" ],
-        "x-ms-client-request-id": [ "75399dfb-0fe0-49c0-8f60-40f0096c82fb" ],
+        "x-ms-unique-id": [ "159" ],
+        "x-ms-client-request-id": [ "50aa4bf7-d33e-47c8-8c06-f618f23962ab" ],
         "CommandName": [ "Remove-AzMySqlServer" ],
         "FullCommandName": [ "Remove-AzMySqlServer_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -184,34 +184,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/43aee6f0-3911-427d-9953-dc13cbbc5238?api-version=2017-12-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/4a827cc5-02d5-4117-8dbd-432913e1e34d?api-version=2017-12-01" ],
         "Retry-After": [ "15" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/43aee6f0-3911-427d-9953-dc13cbbc5238?api-version=2017-12-01" ],
-        "x-ms-request-id": [ "43aee6f0-3911-427d-9953-dc13cbbc5238" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/4a827cc5-02d5-4117-8dbd-432913e1e34d?api-version=2017-12-01" ],
+        "x-ms-request-id": [ "4a827cc5-02d5-4117-8dbd-432913e1e34d" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14986" ],
-        "x-ms-correlation-request-id": [ "f4d2e6ce-2039-448d-8ee2-2dfac6a37890" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T090951Z:f4d2e6ce-2039-448d-8ee2-2dfac6a37890" ],
+        "x-ms-correlation-request-id": [ "9605537d-3fa3-42bf-9ee6-d45681e305ac" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112735Z:9605537d-3fa3-42bf-9ee6-d45681e305ac" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:09:51 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:27:35 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "72" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"operation\":\"DropElasticServer\",\"startTime\":\"2020-03-31T09:09:51.093Z\"}"
+      "Content": "{\"operation\":\"DropElasticServer\",\"startTime\":\"2020-04-08T11:27:35.483Z\"}"
     }
   },
-  "Remove-AzMySqlServer+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/43aee6f0-3911-427d-9953-dc13cbbc5238?api-version=2017-12-01+6": {
+  "Remove-AzMySqlServer+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/4a827cc5-02d5-4117-8dbd-432913e1e34d?api-version=2017-12-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/43aee6f0-3911-427d-9953-dc13cbbc5238?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/4a827cc5-02d5-4117-8dbd-432913e1e34d?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "153", "154" ],
-        "x-ms-client-request-id": [ "75399dfb-0fe0-49c0-8f60-40f0096c82fb", "75399dfb-0fe0-49c0-8f60-40f0096c82fb" ],
+        "x-ms-unique-id": [ "159", "160" ],
+        "x-ms-client-request-id": [ "50aa4bf7-d33e-47c8-8c06-f618f23962ab", "50aa4bf7-d33e-47c8-8c06-f618f23962ab" ],
         "CommandName": [ "Remove-AzMySqlServer", "Remove-AzMySqlServer" ],
         "FullCommandName": [ "Remove-AzMySqlServer_Delete", "Remove-AzMySqlServer_Delete" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
@@ -227,31 +227,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "x-ms-request-id": [ "97504139-2209-4929-896a-edf15a151c4c" ],
+        "x-ms-request-id": [ "9353ac9d-c793-4918-95f1-abd4453ac43d" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11880" ],
-        "x-ms-correlation-request-id": [ "ec9669b9-9e34-4d1e-aa7a-e006c618509b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T091006Z:ec9669b9-9e34-4d1e-aa7a-e006c618509b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11870" ],
+        "x-ms-correlation-request-id": [ "8a1f07a7-915b-4254-a226-1ee30cff45dc" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112750Z:8a1f07a7-915b-4254-a226-1ee30cff45dc" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:10:06 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:27:50 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"43aee6f0-3911-427d-9953-dc13cbbc5238\",\"status\":\"Succeeded\",\"startTime\":\"2020-03-31T09:09:51.093Z\"}"
+      "Content": "{\"name\":\"4a827cc5-02d5-4117-8dbd-432913e1e34d\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-08T11:27:35.483Z\"}"
     }
   },
-  "Remove-AzMySqlServer+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/43aee6f0-3911-427d-9953-dc13cbbc5238?api-version=2017-12-01+7": {
+  "Remove-AzMySqlServer+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/4a827cc5-02d5-4117-8dbd-432913e1e34d?api-version=2017-12-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/43aee6f0-3911-427d-9953-dc13cbbc5238?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/4a827cc5-02d5-4117-8dbd-432913e1e34d?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "153", "154", "155" ],
-        "x-ms-client-request-id": [ "75399dfb-0fe0-49c0-8f60-40f0096c82fb", "75399dfb-0fe0-49c0-8f60-40f0096c82fb", "75399dfb-0fe0-49c0-8f60-40f0096c82fb" ],
+        "x-ms-unique-id": [ "159", "160", "161" ],
+        "x-ms-client-request-id": [ "50aa4bf7-d33e-47c8-8c06-f618f23962ab", "50aa4bf7-d33e-47c8-8c06-f618f23962ab", "50aa4bf7-d33e-47c8-8c06-f618f23962ab" ],
         "CommandName": [ "Remove-AzMySqlServer", "Remove-AzMySqlServer", "Remove-AzMySqlServer" ],
         "FullCommandName": [ "Remove-AzMySqlServer_Delete", "Remove-AzMySqlServer_Delete", "Remove-AzMySqlServer_Delete" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -266,14 +266,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "62c85832-3507-41b1-aa4b-4d035b8a9396" ],
+        "x-ms-request-id": [ "73b9fac2-7cb5-4d08-849c-0d242267ca94" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11879" ],
-        "x-ms-correlation-request-id": [ "9512f229-015b-4676-a591-aa65cfa63e16" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T091007Z:9512f229-015b-4676-a591-aa65cfa63e16" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11869" ],
+        "x-ms-correlation-request-id": [ "b9c6cbf7-cea3-4128-bdc2-72d6aa43d118" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112751Z:b9c6cbf7-cea3-4128-bdc2-72d6aa43d118" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:10:06 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:27:51 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -282,14 +282,14 @@
       "Content": null
     }
   },
-  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete?api-version=2017-12-01+1": {
+  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete?api-version=2017-12-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete?api-version=2017-12-01",
       "Content": "{\n  \"properties\": {\n    \"createMode\": \"Default\",\n    \"administratorLogin\": \"pwsh\",\n    \"administratorLoginPassword\": \"Pa88word!\"\n  },\n  \"sku\": {\n    \"name\": \"GP_Gen5_4\"\n  },\n  \"location\": \"eastus\"\n}",
       "Headers": {
-        "x-ms-unique-id": [ "156" ],
-        "x-ms-client-request-id": [ "27d1de36-cd6a-43f8-8c5a-bbbb99b588f0" ],
+        "x-ms-unique-id": [ "162" ],
+        "x-ms-client-request-id": [ "59fe4076-cf74-42d8-bdf8-565639eec428" ],
         "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer" ],
         "FullCommandName": [ "New-AzMySqlServer_Create" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -306,34 +306,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/284785c5-58bd-46c7-9d03-bb91318f90f2?api-version=2017-12-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/6d96cc6b-b5ac-4454-94ed-d1a41007b636?api-version=2017-12-01" ],
         "Retry-After": [ "60" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/284785c5-58bd-46c7-9d03-bb91318f90f2?api-version=2017-12-01" ],
-        "x-ms-request-id": [ "284785c5-58bd-46c7-9d03-bb91318f90f2" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/6d96cc6b-b5ac-4454-94ed-d1a41007b636?api-version=2017-12-01" ],
+        "x-ms-request-id": [ "6d96cc6b-b5ac-4454-94ed-d1a41007b636" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
-        "x-ms-correlation-request-id": [ "be5c5cdc-565a-4f76-a661-1cd3e6739825" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T091012Z:be5c5cdc-565a-4f76-a661-1cd3e6739825" ],
+        "x-ms-correlation-request-id": [ "ba40ff2d-982b-43cb-aebb-dbaaf9590ed6" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112757Z:ba40ff2d-982b-43cb-aebb-dbaaf9590ed6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:10:12 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:27:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "73" ],
+        "Content-Length": [ "74" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"operation\":\"UpsertElasticServer\",\"startTime\":\"2020-03-31T09:10:11.75Z\"}"
+      "Content": "{\"operation\":\"UpsertElasticServer\",\"startTime\":\"2020-04-08T11:27:56.783Z\"}"
     }
   },
-  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/284785c5-58bd-46c7-9d03-bb91318f90f2?api-version=2017-12-01+2": {
+  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/6d96cc6b-b5ac-4454-94ed-d1a41007b636?api-version=2017-12-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/284785c5-58bd-46c7-9d03-bb91318f90f2?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/6d96cc6b-b5ac-4454-94ed-d1a41007b636?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "156", "157" ],
-        "x-ms-client-request-id": [ "27d1de36-cd6a-43f8-8c5a-bbbb99b588f0", "27d1de36-cd6a-43f8-8c5a-bbbb99b588f0" ],
+        "x-ms-unique-id": [ "162", "163" ],
+        "x-ms-client-request-id": [ "59fe4076-cf74-42d8-bdf8-565639eec428", "59fe4076-cf74-42d8-bdf8-565639eec428" ],
         "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
         "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
@@ -349,31 +349,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "60" ],
-        "x-ms-request-id": [ "12df9b35-3908-475c-909c-080e6ca86553" ],
+        "x-ms-request-id": [ "b99d0941-becc-4c58-8e0b-d9e4e2d48728" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11878" ],
-        "x-ms-correlation-request-id": [ "470bc70e-cc18-4913-a16e-a69206126a3d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T091113Z:470bc70e-cc18-4913-a16e-a69206126a3d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11868" ],
+        "x-ms-correlation-request-id": [ "8b21b393-8478-4093-a94b-bab9a1ebd28a" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112858Z:8b21b393-8478-4093-a94b-bab9a1ebd28a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:11:13 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:28:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "107" ],
+        "Content-Length": [ "108" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"284785c5-58bd-46c7-9d03-bb91318f90f2\",\"status\":\"InProgress\",\"startTime\":\"2020-03-31T09:10:11.75Z\"}"
+      "Content": "{\"name\":\"6d96cc6b-b5ac-4454-94ed-d1a41007b636\",\"status\":\"InProgress\",\"startTime\":\"2020-04-08T11:27:56.783Z\"}"
     }
   },
-  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/284785c5-58bd-46c7-9d03-bb91318f90f2?api-version=2017-12-01+3": {
+  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/6d96cc6b-b5ac-4454-94ed-d1a41007b636?api-version=2017-12-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/284785c5-58bd-46c7-9d03-bb91318f90f2?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/6d96cc6b-b5ac-4454-94ed-d1a41007b636?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "156", "157", "158" ],
-        "x-ms-client-request-id": [ "27d1de36-cd6a-43f8-8c5a-bbbb99b588f0", "27d1de36-cd6a-43f8-8c5a-bbbb99b588f0", "27d1de36-cd6a-43f8-8c5a-bbbb99b588f0" ],
+        "x-ms-unique-id": [ "162", "163", "164" ],
+        "x-ms-client-request-id": [ "59fe4076-cf74-42d8-bdf8-565639eec428", "59fe4076-cf74-42d8-bdf8-565639eec428", "59fe4076-cf74-42d8-bdf8-565639eec428" ],
         "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
         "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -389,31 +389,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "60" ],
-        "x-ms-request-id": [ "71eff4e1-8bb1-4fa3-b724-54a1df402b16" ],
+        "x-ms-request-id": [ "27b810aa-9bf2-4836-a6dc-dccb04c14676" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11877" ],
-        "x-ms-correlation-request-id": [ "088cea21-a106-45ee-8416-ac6e3a920632" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T091214Z:088cea21-a106-45ee-8416-ac6e3a920632" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11867" ],
+        "x-ms-correlation-request-id": [ "e2db54e8-2d97-4b8e-9afc-5321fc12db54" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T112959Z:e2db54e8-2d97-4b8e-9afc-5321fc12db54" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:12:13 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:29:59 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "106" ],
+        "Content-Length": [ "107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"284785c5-58bd-46c7-9d03-bb91318f90f2\",\"status\":\"Succeeded\",\"startTime\":\"2020-03-31T09:10:11.75Z\"}"
+      "Content": "{\"name\":\"6d96cc6b-b5ac-4454-94ed-d1a41007b636\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-08T11:27:56.783Z\"}"
     }
   },
-  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete?api-version=2017-12-01+4": {
+  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete?api-version=2017-12-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "156", "157", "158", "159" ],
-        "x-ms-client-request-id": [ "27d1de36-cd6a-43f8-8c5a-bbbb99b588f0", "27d1de36-cd6a-43f8-8c5a-bbbb99b588f0", "27d1de36-cd6a-43f8-8c5a-bbbb99b588f0", "27d1de36-cd6a-43f8-8c5a-bbbb99b588f0" ],
+        "x-ms-unique-id": [ "162", "163", "164", "165" ],
+        "x-ms-client-request-id": [ "59fe4076-cf74-42d8-bdf8-565639eec428", "59fe4076-cf74-42d8-bdf8-565639eec428", "59fe4076-cf74-42d8-bdf8-565639eec428", "59fe4076-cf74-42d8-bdf8-565639eec428" ],
         "CommandName": [ "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer", "Az.MySql.internal\\New-AzMySqlServer" ],
         "FullCommandName": [ "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create", "New-AzMySqlServer_Create" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -428,31 +428,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "47116337-d26e-4f4e-a044-21139b096ead" ],
+        "x-ms-request-id": [ "742ab58c-508a-46d5-97d6-060952c3a1d6" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11876" ],
-        "x-ms-correlation-request-id": [ "638186a2-7313-4025-8adf-75fdc33e8cdc" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T091214Z:638186a2-7313-4025-8adf-75fdc33e8cdc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11866" ],
+        "x-ms-correlation-request-id": [ "12a59e4e-7c12-457e-86c9-86ce59417225" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T113000Z:12a59e4e-7c12-457e-86c9-86ce59417225" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:12:14 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:30:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "890" ],
+        "Content-Length": [ "889" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"pwsh\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysqldelete.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-03-31T09:20:12.127+00:00\",\"replicationRole\":\"None\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete\",\"name\":\"mysqldelete\",\"type\":\"Microsoft.DBforMySQL/servers\"}"
+      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"pwsh\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysqldelete.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-04-08T11:37:57.11+00:00\",\"replicationRole\":\"None\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete\",\"name\":\"mysqldelete\",\"type\":\"Microsoft.DBforMySQL/servers\"}"
     }
   },
-  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete?api-version=2017-12-01+5": {
+  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete?api-version=2017-12-01+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/servers/mysqldelete?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "160" ],
-        "x-ms-client-request-id": [ "53396396-cafb-44f7-bf5c-486c9dd6b4eb" ],
+        "x-ms-unique-id": [ "166" ],
+        "x-ms-client-request-id": [ "401a9b21-79fd-41d9-96df-ff1b44e5edab" ],
         "CommandName": [ "Remove-AzMySqlServer" ],
         "FullCommandName": [ "Remove-AzMySqlServer_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -467,34 +467,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/ed07f66d-dbbf-456d-9fa0-c20ec7a63bfe?api-version=2017-12-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/a17c1e73-17b4-4686-ab6e-cab62cb1cdd0?api-version=2017-12-01" ],
         "Retry-After": [ "15" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/ed07f66d-dbbf-456d-9fa0-c20ec7a63bfe?api-version=2017-12-01" ],
-        "x-ms-request-id": [ "ed07f66d-dbbf-456d-9fa0-c20ec7a63bfe" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/a17c1e73-17b4-4686-ab6e-cab62cb1cdd0?api-version=2017-12-01" ],
+        "x-ms-request-id": [ "a17c1e73-17b4-4686-ab6e-cab62cb1cdd0" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14985" ],
-        "x-ms-correlation-request-id": [ "08a164fd-f8ef-4ccc-b05d-c1a1bf7ef8a2" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T091215Z:08a164fd-f8ef-4ccc-b05d-c1a1bf7ef8a2" ],
+        "x-ms-correlation-request-id": [ "3a483b0b-b0fc-4c3c-a76e-514db207faad" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T113001Z:3a483b0b-b0fc-4c3c-a76e-514db207faad" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:12:14 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:30:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "72" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"operation\":\"DropElasticServer\",\"startTime\":\"2020-03-31T09:12:15.143Z\"}"
+      "Content": "{\"operation\":\"DropElasticServer\",\"startTime\":\"2020-04-08T11:30:01.177Z\"}"
     }
   },
-  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/ed07f66d-dbbf-456d-9fa0-c20ec7a63bfe?api-version=2017-12-01+6": {
+  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/a17c1e73-17b4-4686-ab6e-cab62cb1cdd0?api-version=2017-12-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/ed07f66d-dbbf-456d-9fa0-c20ec7a63bfe?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/azureAsyncOperation/a17c1e73-17b4-4686-ab6e-cab62cb1cdd0?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "160", "161" ],
-        "x-ms-client-request-id": [ "53396396-cafb-44f7-bf5c-486c9dd6b4eb", "53396396-cafb-44f7-bf5c-486c9dd6b4eb" ],
+        "x-ms-unique-id": [ "166", "167" ],
+        "x-ms-client-request-id": [ "401a9b21-79fd-41d9-96df-ff1b44e5edab", "401a9b21-79fd-41d9-96df-ff1b44e5edab" ],
         "CommandName": [ "Remove-AzMySqlServer", "Remove-AzMySqlServer" ],
         "FullCommandName": [ "Remove-AzMySqlServer_DeleteViaIdentity", "Remove-AzMySqlServer_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
@@ -510,31 +510,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "x-ms-request-id": [ "abc7df96-b883-4842-90e3-a0d3e557fb76" ],
+        "x-ms-request-id": [ "b63f0ace-dcb3-4341-83f5-5b50db030274" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11875" ],
-        "x-ms-correlation-request-id": [ "25f88182-b481-4b36-92c7-68af3139fb02" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T091231Z:25f88182-b481-4b36-92c7-68af3139fb02" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11865" ],
+        "x-ms-correlation-request-id": [ "23d19d8f-6890-498c-9325-77696f2a26b1" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T113016Z:23d19d8f-6890-498c-9325-77696f2a26b1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:12:30 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:30:16 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"ed07f66d-dbbf-456d-9fa0-c20ec7a63bfe\",\"status\":\"Succeeded\",\"startTime\":\"2020-03-31T09:12:15.143Z\"}"
+      "Content": "{\"name\":\"a17c1e73-17b4-4686-ab6e-cab62cb1cdd0\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-08T11:30:01.177Z\"}"
     }
   },
-  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/ed07f66d-dbbf-456d-9fa0-c20ec7a63bfe?api-version=2017-12-01+7": {
+  "Remove-AzMySqlServer+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/a17c1e73-17b4-4686-ab6e-cab62cb1cdd0?api-version=2017-12-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/ed07f66d-dbbf-456d-9fa0-c20ec7a63bfe?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DBforMySQL/locations/eastus/operationResults/a17c1e73-17b4-4686-ab6e-cab62cb1cdd0?api-version=2017-12-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "160", "161", "162" ],
-        "x-ms-client-request-id": [ "53396396-cafb-44f7-bf5c-486c9dd6b4eb", "53396396-cafb-44f7-bf5c-486c9dd6b4eb", "53396396-cafb-44f7-bf5c-486c9dd6b4eb" ],
+        "x-ms-unique-id": [ "166", "167", "168" ],
+        "x-ms-client-request-id": [ "401a9b21-79fd-41d9-96df-ff1b44e5edab", "401a9b21-79fd-41d9-96df-ff1b44e5edab", "401a9b21-79fd-41d9-96df-ff1b44e5edab" ],
         "CommandName": [ "Remove-AzMySqlServer", "Remove-AzMySqlServer", "Remove-AzMySqlServer" ],
         "FullCommandName": [ "Remove-AzMySqlServer_DeleteViaIdentity", "Remove-AzMySqlServer_DeleteViaIdentity", "Remove-AzMySqlServer_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
@@ -549,14 +549,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "246e085f-6288-4f9f-89cf-50ad3fda6d8c" ],
+        "x-ms-request-id": [ "5bf13035-b811-49d3-8b18-fe47a5f1ecec" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11874" ],
-        "x-ms-correlation-request-id": [ "8775ebd7-cee0-4bf8-ba85-b4d3ba8aefec" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200331T091231Z:8775ebd7-cee0-4bf8-ba85-b4d3ba8aefec" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11864" ],
+        "x-ms-correlation-request-id": [ "1e762f31-b8de-4d91-b50a-cf57b61efb53" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200408T113017Z:1e762f31-b8de-4d91-b50a-cf57b61efb53" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 31 Mar 2020 09:12:30 GMT" ]
+        "Date": [ "Wed, 08 Apr 2020 11:30:16 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

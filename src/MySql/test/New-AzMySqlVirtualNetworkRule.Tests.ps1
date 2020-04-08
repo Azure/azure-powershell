@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzMySqlVirtualNetworkRule' {
     It 'CreateExpanded' {
         $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1"
-        $vnetRule = New-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -VirtualNetworkSubnetId $ID
+        $vnetRule = New-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -SubnetId $ID
         $vnetRule.VirtualNetworkSubnetId | Should -Be $ID
         $vnetRule.Name | Should -Be $env.VNetName
         Remove-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup-ServerName $env.serverName 

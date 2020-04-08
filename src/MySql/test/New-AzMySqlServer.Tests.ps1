@@ -15,13 +15,10 @@ Describe 'New-AzMySqlServer' {
     It 'CreateExpanded' -skip {
         $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
         {
-<<<<<<< Updated upstream
             $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
-            New-AzMySqlServer -Name "leijin-mysql-server" -ResourceGroupName $env.resourceGroup -Location $env.location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
-=======
             $server = New-AzMySqlServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Location $env.location -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku $env.Sku
->>>>>>> Stashed changes
+            Remove-AzMySqlServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
-        Remove-AzMySqlServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup
+        
     }
 }

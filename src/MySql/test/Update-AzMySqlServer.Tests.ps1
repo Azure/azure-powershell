@@ -19,7 +19,7 @@ Describe 'Update-AzMySqlServer' {
 
     It 'UpdateViaIdentityExpanded' {
         $server = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
-        $updated = Update-AzMySqlServer -StorageProfileBackupRetentionDay 23 -InputObject $server
+        $updated = Update-AzMySqlServer -BackupRetentionDay 23 -InputObject $server
         $updated.StorageProfileBackupRetentionDay | Should -Be 23
     }
 }

@@ -31,7 +31,7 @@ Describe 'Get-AzMySqlConnectionString' {
         $PythonExpect = 'cnx = mysql.connector.connect(user="mysql_test@'+ $env.serverName + '", password={your_password}, host="' + $env.serverName +'.mysql.database.azure.com", port=3306, database={your_database}, ssl_ca={ca-cert filename}, ssl_verify_cert=true)'
         $PythonConnectionString | Should -Be $PythonExpect
         $RubyConnectionString = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | Get-AzMySqlConnectionString -Client Ruby
-        $RubyExpect = 'client = Mysql2::Client.new(username: "mysql_test@' + $env.serverName + '", password: {your_password}, database: {your_database}, host: "' + $env.serverName + '.mysql.database.azure.com", port: 3306, sslca:{ca-cert filename}, sslverify:false, ' + "sslcipher:'AES256-SHA')"
+        $RubyExpect = 'client = Mysql2::Client.new(username: "mysql_test@' + $env.serverName + '", password: {your_password}, database: {your_database}, host: "' + $env.serverName + '.mysql.database.azure.com", port: 3306, sslca:{ca-cert filename}, sslverify:false, ' + 'sslcipher:"AES256-SHA")'
         $RubyConnectionString | Should -Be $RubyExpect
         $WebConnectionString = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | Get-AzMySqlConnectionString -Client WebApp
         $WebExpect = "Database={your_database}; Data Source=$($env.serverName).mysql.database.azure.com; User Id=mysql_test@$($env.serverName); Password={your_password}"
