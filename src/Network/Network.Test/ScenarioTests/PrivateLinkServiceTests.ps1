@@ -205,3 +205,57 @@ function Test-PrivateEndpointConnectionCRUD
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test operation for StoragePrivateEndpoint.
+#>
+function Test-StoragePrivateEndpoint
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "eastus";
+    $peName = "mype";
+    $storageAccount = "xdmsa1";
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location;
+        New-AzStorageAccount -ResourceGroupName $rgname -AccountName $storageAccount -Location $location -SkuName Standard_GRS
+
+        $resourceId = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.Storage/storageAccounts/$storageAccount";
+
+        $peSubnet = New-AzVirtualNetworkSubnetConfig -Name peSubnet -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPolicies "Disabled"
+        $vnetPE = New-AzVirtualNetwork -Name "vnetPE" -ResourceGroupName $rgname -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet
+        
+        $plsConnection= New-AzPrivateLinkServiceConnection -Name plsConnection -PrivateLinkServiceId  $resourceId -GroupId 'blob'
+        $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
+
+        $pecGet = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
+        Assert-NotNull $pecGet;
+        Assert-AreEqual "Pending" $pecGet.PrivateLinkServiceConnectionState.Status
+
+        # Approve Private Endpoint Connection
+        $pecApprove = Approve-AzPrivateEndpointConnection -ResourceId $pecGet.Id
+        Assert-NotNull $pecApprove;
+        Assert-AreEqual "Approved" $pecApprove.PrivateLinkServiceConnectionState.Status
+
+        Start-TestSleep 20000
+
+        # Remove Private Endpoint Connection
+        $pecRemove = Remove-AzPrivateEndpointConnection -ResourceId $pecGet.Id -PassThru -Force
+        Assert-AreEqual true $pecRemove
+
+        Start-TestSleep 15000
+
+        # Get Private Endpoint Connection again
+        $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $sqlResourceId
+        Assert-Null($pecGet2)
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
