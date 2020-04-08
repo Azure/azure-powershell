@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
     public class AzureInsightsPrivateLinkScopeScopedResourceCreateOrUpdateCmdletBase : ManagementCmdletBase
     {
-        internal const string ByRresourceNameParameterSet = "ByRresourceNameParameterSet";
+        internal const string ByResourceNameParameterSet = "ByResourceNameParameterSet";
         internal const string ByInputObjectParameterSet = "ByInputObjectParameterSet";
 
         #region Cmdlet parameters
 
         [Parameter(
-            ParameterSetName = ByRresourceNameParameterSet,
+            ParameterSetName = ByResourceNameParameterSet,
             Mandatory = true,
             HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = ByRresourceNameParameterSet,
+            ParameterSetName = ByResourceNameParameterSet,
             Mandatory = true,
             HelpMessage = "Private Link Scope Name")]
         [ValidateNotNullOrEmpty]
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
         public string ScopeName { get; set; }
 
         [Parameter(
-            ParameterSetName = ByRresourceNameParameterSet,
+            ParameterSetName = ByResourceNameParameterSet,
             Mandatory = true,
             HelpMessage = "Scoped resource Name")]
         [Parameter(
