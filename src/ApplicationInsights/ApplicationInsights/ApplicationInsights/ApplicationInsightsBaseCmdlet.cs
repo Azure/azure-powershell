@@ -198,6 +198,11 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
             }
         }
 
+        protected void WriteComponentLinkedStorageAccount(ComponentLinkedStorageAccounts linkedStorageAccount)
+        {
+            WriteObject(new PSComponentLinkedStorageAccounts(linkedStorageAccount.Id, linkedStorageAccount.Name, linkedStorageAccount.Type, linkedStorageAccount.LinkedStorageAccount));
+        }
+
         protected void WriteDailyCapStatus(ApplicationInsightsComponentQuotaStatus quotaStatus)
         {
             if (quotaStatus != null)
