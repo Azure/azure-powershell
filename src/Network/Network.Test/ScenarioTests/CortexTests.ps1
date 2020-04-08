@@ -119,8 +119,6 @@ function Test-CortexCRUD
 		$vpnSiteLink1 = New-AzVpnSiteLink -Name $vpnSiteLink1Name -IpAddress "5.5.5.5" -LinkProviderName "SomeTelecomProvider1" -LinkSpeedInMbps "10"
 		$vpnSiteLink2 = New-AzVpnSiteLink -Name $vpnSiteLink2Name -IpAddress "5.5.5.6" -LinkProviderName "SomeTelecomProvider2" -LinkSpeedInMbps "10"
 
-		$vpnSiteLink3Name = "vpnSiteLink3"
-		$vpnSiteLink3 = New-AzVpnSiteLink -Name $vpnSiteLink3Name -Fqdn "link3.contoso.com" -LinkProviderName "SomeTelecomProvider3" -LinkSpeedInMbps "10"
 		$createdVpnSite2 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name -Location $rglocation -VirtualWan $virtualWan -AddressSpace $vpnSite2AddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($vpnSiteLink1, $vpnSiteLink2)
 		$vpnSite2 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name
 		Assert-AreEqual $rgName $vpnSite2.ResourceGroupName
@@ -134,7 +132,7 @@ function Test-CortexCRUD
 		$updatedVpnSite2 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name
 		Assert-AreEqual 1 $updatedVpnSite2.VpnSiteLinks.Count
 		Assert-AreEqual "7.3.4.5" $updatedVpnSite2.VpnSiteLinks[0].IpAddress
-		Update-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name -VpnSiteLink @($vpnSiteLink1, $vpnSiteLink2, $vpnSiteLink3)
+		Update-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name -VpnSiteLink @($vpnSiteLink1, $vpnSiteLink2)
 
         $vpnSites = Get-AzureRmVpnSite -ResourceGroupName $rgName
         Assert-NotNull $vpnSites
