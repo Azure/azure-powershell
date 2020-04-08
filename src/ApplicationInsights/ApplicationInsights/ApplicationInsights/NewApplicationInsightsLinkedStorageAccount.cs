@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ApplicationInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ApplicationInsights.Management.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
@@ -98,7 +99,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
                                                    .GetResult()
                                                    .Body;
             }
-            catch (CloudException)
+            catch (RestException)
             {
                 existingLinkedStorageAccount = null;
             }
