@@ -20,5 +20,5 @@ Name       Type
 frname-001 Microsoft.DBforMariaDB/servers/firewallRules
 ```
 
-This command gets firewall rule under a MariaDB.
+This command gets a firewall rule under a MariaDB.
 

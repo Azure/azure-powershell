@@ -1,6 +1,6 @@
 ### Example 1: Update MariaDb configuration
 ```powershell
-PS C:\> Update-AzMariaDbConfiguration -Name delayed_insert_timeout -ServerName mariadb-test-h3pame -ResourceGroupName mariadb-test-qu5ov0 -Value 200
+PS C:\> Update-AzMariaDbConfiguration -Name delayed_insert_timeout -Value 200 -ServerName mariadb-test-h3pame -ResourceGroupName mariadb-test-qu5ov0 
 
 Name                   Type
 ----                   ----

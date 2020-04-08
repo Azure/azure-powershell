@@ -174,7 +174,7 @@ function Update-AzMariaDbServer
             }
 
             if ($PSBoundParameters.ContainsKey('Sku')) {
-                $Parameter.SkuName = $PSBoundParameters['Sku']
+                $PSBoundParameters.Add('SkuName', $PSBoundParameters['Sku'])
                 $null = $PSBoundParameters.Remove('Sku')
             }
 
@@ -194,7 +194,7 @@ function Update-AzMariaDbServer
             }
 
             if ($PSBoundParameters.ContainsKey('StorageInMb')) {
-                $PSBoundParameters.Add('StorageInMb', $PSBoundParameters['StorageInMb'])
+                $PSBoundParameters.Add('StorageProfileStorageMb', $PSBoundParameters['StorageInMb'])
                 $null = $PSBoundParameters.Remove('StorageInMb')
             }
     
