@@ -52,6 +52,25 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         public string Location { get; set; }
 
         [Parameter(
+            Position = 3,
+            Mandatory = true,
+            HelpMessage = "ResourceId of the log analytics workspace which the data will be ingested to.")]
+        [ValidateNotNull]
+        public string WorkspaceResourceId;
+
+        [Parameter(
+            Position = 4,
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing Application Insights ingestion. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForIngestion;
+
+        [Parameter(
+            Position = 5,
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing Application Insights query. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForQuery;
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Application kind.")]
         [Alias(ApplicationKindAlias)]
@@ -80,22 +99,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [ValidateNotNull]
         [Alias(TagsAlias)]
         public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "ResourceId of the log analytics workspace which the data will be ingested to.")]
-        [ValidateNotNull]
-        public string WorkspaceResourceId;
-
-        [Parameter(
-           Mandatory = false,
-           HelpMessage = "The network access type for accessing Application Insights ingestion. Value should be 'Enabled' or 'Disabled'")]
-        public string PublicNetworkAccessForIngestion;
-
-        [Parameter(
-           Mandatory = false,
-           HelpMessage = "The network access type for accessing Application Insights query. Value should be 'Enabled' or 'Disabled'")]
-        public string PublicNetworkAccessForQuery;
 
         #endregion
 

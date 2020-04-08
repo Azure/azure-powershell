@@ -85,7 +85,11 @@ CmdletsToExport = 'Get-AzApplicationInsights', 'New-AzApplicationInsights',
                'Remove-AzApplicationInsightsContinuousExport', 
                'Get-AzApplicationInsightsApiKey', 
                'New-AzApplicationInsightsApiKey', 
-               'Remove-AzApplicationInsightsApiKey'
+               'Remove-AzApplicationInsightsApiKey', 
+               'Get-AZApplicationInsightsLinkedStorageAccount', 
+               'New-AZApplicationInsightsLinkedStorageAccount', 
+               'Update-AZApplicationInsightsLinkedStorageAccount', 
+               'Remove-AZApplicationInsightsLinkedStorageAccount'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -170,6 +170,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                 apiKeys.ForEach(e => output.Add(new PSApiKeyTableView(e)));
                 WriteObject(output, true);
             }
+
         }
 
         protected void WriteComponentApiKey(ApplicationInsightsComponentAPIKey apiKey)
