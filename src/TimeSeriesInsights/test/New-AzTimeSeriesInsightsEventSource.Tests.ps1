@@ -15,33 +15,26 @@ while(-not $mockingPath) {
 
 Describe 'New-AzTimeSeriesInsightsEventSource' {
     It 'eventhub' {
-        $eventHubSpaceName  = $env.rstr31
-        $eventHubSpace = New-AzEventHubNamespace -Name $eventHubSpaceName -ResourceGroupName $env.resourceGroup -Location $env.location
-        
-        $eventHubName = $env.rstr32
-        $eventHub = New-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $eventHubSpace.Name -Name $eventHubName 
-        $eventHubKeys = Get-AzEventHubKey -ResourceGroupName $env.resourceGroup -NamespaceName $eventHubSpace.Name -AuthorizationRuleName RootManageSharedAccessKey
-        $eventHubKey  = $eventHubKeys.PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
-        
+        $eventHubSpaceName = $env.eventHubSpaceName02 
+        $eventHubName = $env.eventHubName02
+        $eventSourceResourceId = $env.eventHubName02_id
+        $eventSharedAccessKey = $env.eventHubName02_key | ConvertTo-SecureString -AsPlainText -Force
         $environmentName = $env.rstrenv01
         $tsiEevntSourceName = $env.rstres01
-        New-AzTimeSeriesInsightsEventSource -ResourceGroupName $env.resourceGroup -Name $tsiEevntSourceName -EnvironmentName $environmentName -Kind Microsoft.EventHub -ConsumerGroupName $env.resourceGroup -Location $env.location -KeyName RootManageSharedAccessKey -ServiceBusNameSpace $eventHubSpace.Name -EventHubName $eventHub.Name -EventSourceResourceId $eventHub.id -SharedAccessKey $eventHubKey
+        
+        New-AzTimeSeriesInsightsEventSource -ResourceGroupName $env.resourceGroup -Name $tsiEevntSourceName -EnvironmentName $environmentName -Kind Microsoft.EventHub -ConsumerGroupName $env.resourceGroup -Location $env.location -KeyName RootManageSharedAccessKey -ServiceBusNameSpace $eventHubSpaceName -EventHubName $eventHubName -EventSourceResourceId $eventSourceResourceId -SharedAccessKey $eventSharedAccessKey
         $tsiEevntSource = Get-AzTimeSeriesInsightsEventSource -ResourceGroupName $env.resourceGroup -EnvironmentName $environmentName -Name $tsiEevntSourceName
         $tsiEevntSource.Name | Should -Be $tsiEevntSourceName
     }
 
     It 'iothub' {
-        $iotHubName = $env.rstr33
-        $iotHubSkuName = 'S1'
-        $iotUnits = 100
-
-        $iotHub = New-AzIotHub -ResourceGroupName $env.resourceGroup -Location $env.location -Name $iotHubName -SkuName $iotHubSkuName -Units $iotUnits
-        $iotHubKeys = Get-AzIotHubKey -ResourceGroupName $env.resourceGroup -Name $iotHubName
-        $iotHubKey  = $iotHubKeys[0].PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
-
+        $ioTHubName = $env.iotHubName
+        $iotSourceResourceId = $env.iotHubName_id
+        $iotSharedAccessKey = $env.iotHubName_key | ConvertTo-SecureString -AsPlainText -Force
         $environmentName = $env.rstrenv02
         $tsiEevntSourceName = $env.rstres02
-        New-AzTimeSeriesInsightsEventSource -ResourceGroupName $env.resourceGroup -Name $tsiEevntSourceName -EnvironmentName $environmentName -Kind Microsoft.IoTHub -ConsumerGroupName $env.resourceGroup -Location $env.location -KeyName RootManageSharedAccessKey -IoTHubName $iotHub.Name -EventSourceResourceId $iotHub.id -SharedAccessKey $iotHubKey
+
+        New-AzTimeSeriesInsightsEventSource -ResourceGroupName $env.resourceGroup -Name $tsiEevntSourceName -EnvironmentName $environmentName -Kind Microsoft.IoTHub -ConsumerGroupName $env.resourceGroup -Location $env.location -KeyName RootManageSharedAccessKey -IoTHubName $ioTHubName -EventSourceResourceId $iotSourceResourceId -SharedAccessKey $iotSharedAccessKey
         $tsiEevntSource = Get-AzTimeSeriesInsightsEventSource -ResourceGroupName $env.resourceGroup -EnvironmentName $environmentName -Name $tsiEevntSourceName
         $tsiEevntSource.Name | Should -Be $tsiEevntSourceName
     }
