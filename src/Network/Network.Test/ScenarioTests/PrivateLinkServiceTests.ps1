@@ -216,7 +216,8 @@ function Test-StoragePrivateEndpoint
     $rgname = Get-ResourceGroupName;
     $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "eastus";
     $peName = "mype";
-    $storageAccount = "xdmsa1";
+    $storageAccount = "xdmsa2";
+    $subId = getSubscription
 
     try
     {
@@ -249,7 +250,7 @@ function Test-StoragePrivateEndpoint
         Start-TestSleep 15000
 
         # Get Private Endpoint Connection again
-        $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $sqlResourceId
+        $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
         Assert-Null($pecGet2)
 
     }
