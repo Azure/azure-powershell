@@ -1,10 +1,8 @@
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-$helperPath = Join-Path $PSScriptRoot 'helper.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-. ($helperPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzTimeSeriesInsightsEnvironment.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
@@ -35,10 +33,8 @@ Describe 'New-AzTimeSeriesInsightsEnvironment' {
         $sku = 'L1'
         $capacity = 2
         $timeSeriesIdProperty = @{name='cdc';type='string'}
-        $staAccountName = 'staaccount' + (RandomLetters -len 6 -lowerCase $true)
-        New-AzStorageAccount -ResourceGroupName $env.resourceGroup -AccountName $staAccountName -Location $env.location -Sku Standard_GRS
-        $staAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroup -Name $staAccountName
-        $staAccountKey  = $staAccountKeys[0].Value | ConvertTo-SecureString -AsPlainText -Force
+        $staAccountName = $env.staaccountName01
+        $staAccountKey  = $env.staaccountName01_key | ConvertTo-SecureString -AsPlainText -Force
 
         New-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.resourceGroup -Name $env.rstrenv04 -Kind $kind -Location $env.location -Sku $sku -StorageAccountName $staAccountName -StorageAccountKey $staAccountKey -TimeSeriesIdProperty $timeSeriesIdProperty
         $tsiEnv = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.resourceGroup -Name $env.rstrenv04

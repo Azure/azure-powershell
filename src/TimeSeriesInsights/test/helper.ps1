@@ -29,12 +29,12 @@ function RandomLetters([int32]$len,[bool]$lowerCase) {
 
 function CreateStaAccount([string]$resourceGroup, [string]$staAccountName,[string]$location, [string]$skuName)
 {
-        Write-Host -ForegroundColor Green 'Start creating storage account for test...'
-        New-AzStorageAccount -ResourceGroupName $resourceGroup -AccountName $staAccountName -Location $location -SkuName $skuName
-        Write-Host -ForegroundColor Green 'Created storage accountsuccessfully.'
-        $staAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroup -Name $staAccountName
-        $staAccountKey = $staAccountKeys[0].Value
-        return $staccountParam = @{accountName=$staAccountName; accountKey=$staAccountKey}
+    Write-Host -ForegroundColor Green 'Start creating storage account for test...'
+    New-AzStorageAccount -ResourceGroupName $resourceGroup -AccountName $staAccountName -Location $location -SkuName $skuName
+    Write-Host -ForegroundColor Green 'Created storage account successfully.'
+    $staAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroup -Name $staAccountName
+    $staAccountKey = $staAccountKeys[0].Value
+    return $staccountParam = @{accountName=$staAccountName; accountKey=$staAccountKey}
 }
 
 function GetOrCreateTsiEnv([bool]$forceCreate, [string]$resourceGroup, $tsiEnvParamObj, $staccountParamObj)
@@ -90,22 +90,45 @@ function GetOrCreateTsiEnv([bool]$forceCreate, [string]$resourceGroup, $tsiEnvPa
 
 function CreateEventHub ([string]$eventHubSpaceName,[string]$eventHubName,[string]$resourceGroup, [string]$location)
 {
-        Write-Host -ForegroundColor Green 'Start creating EventHub for test...'
-        $eventHubSpace = New-AzEventHubNamespace -Name $eventHubSpaceName -ResourceGroupName $resourceGroup -Location $location
-        $eventHub = New-AzEventHub -ResourceGroupName $resourceGroup -NamespaceName $eventHubSpace.Name -Name $eventHubName 
-        Write-Host -ForegroundColor Green 'Created EventHub successfully.'
-        $eventHubKeys = Get-AzEventHubKey -ResourceGroupName $resourceGroup -NamespaceName $eventHubSpace.Name -AuthorizationRuleName RootManageSharedAccessKey
-        $eventHubKey  = $eventHubKeys.PrimaryKey
-        $eventhubParam = @{eventHubSpace=$eventHubSpaceName;eventhub=$eventHub;eventHubKey=$eventHubKey}
-        return $eventhubParam
+    Write-Host -ForegroundColor Green 'Start creating EventHub for test...'
+    $eventHubSpace = New-AzEventHubNamespace -Name $eventHubSpaceName -ResourceGroupName $resourceGroup -Location $location
+    $eventHub = New-AzEventHub -ResourceGroupName $resourceGroup -NamespaceName $eventHubSpace.Name -Name $eventHubName 
+    Write-Host -ForegroundColor Green 'Created EventHub successfully.'
+    $eventHubKeys = Get-AzEventHubKey -ResourceGroupName $resourceGroup -NamespaceName $eventHubSpace.Name -AuthorizationRuleName RootManageSharedAccessKey
+    $eventHubKey  = $eventHubKeys.PrimaryKey
+    $eventhubParam = @{eventHubSpace=$eventHubSpaceName;eventhub=$eventHub;eventHubKey=$eventHubKey}
+    return $eventhubParam
+}
+
+function CreateIotHub($iotHubParamObj,[string]$resourceGroup, [string]$location)
+{
+    if(!$iotHubParamObj.iotHubName)
+    {
+        $iotHubParamObj.iotHubName = 'rstr-' + (RandomString -allChars $false -len 6)
+    }
+    if(!$iotHubParamObj.iotHubSkuName)
+    {
+        $iotHubParamObj.iotHubSkuName = 'S1'
+    }
+    if(!$iotHubParamObj.iotUnits)
+    {
+        $iotHubParamObj.iotUnits = 100
+    }
+    Write-Host -ForegroundColor Green 'Start creating IotHub for test...'
+    $iotHub = New-AzIotHub -ResourceGroupName $resourceGroup -Location $location -Name $iotHubParamObj.iotHubName -SkuName $iotHubParamObj.iotHubSkuName -Units $iotHubParamObj.iotUnits
+    $iotHubKeys = Get-AzIotHubKey -ResourceGroupName $resourceGroup -Name $iotHubParamObj.iotHubName
+    $iotHubKey  = $iotHubKeys[0].PrimaryKey
+    Write-Host -ForegroundColor Green 'Created IotHub successfully.'
+    $iothubParam = @{iotHubName=$iotHubParamObj.iotHubName;iotHub=$iotHub;iotHubKey=$iotHubKey}
+    return $iothubParam
 }
 
 function CreateTsiEventSource([string]$tsiEevntSourceName,[string]$resourceGroup,$tsiEnv,$eventhubParam)
 {
-        # eventhub need modify.
-        $eventHubKey  = $eventhubParam.eventHubKey | ConvertTo-SecureString -AsPlainText -Force
-        Write-Host -ForegroundColor Green 'Start creating TimeSeriesInsightsEventSource for test...'
-        $tsiEventSource = New-AzTimeSeriesInsightsEventSource -ResourceGroupName $resourceGroup -Name $tsiEevntSourceName -EnvironmentName $tsiEnv.Name.ToString() -Kind Microsoft.EventHub -ConsumerGroupName $resourceGroup -Location $tsiEnv.Location -KeyName RootManageSharedAccessKey -ServiceBusNameSpace $eventhubParam.eventHubSpace -EventHubName $eventhubParam.eventHub.Name -EventSourceResourceId $eventhubParam.eventHub.id -SharedAccessKey $eventHubKey
-        Write-Host -ForegroundColor Green 'Created TimeSeriesInsightsEventSource successfully.'
-        return $tsiEventSource
+    # eventhub need modify.
+    $eventHubKey  = $eventhubParam.eventHubKey | ConvertTo-SecureString -AsPlainText -Force
+    Write-Host -ForegroundColor Green 'Start creating TimeSeriesInsightsEventSource for test...'
+    $tsiEventSource = New-AzTimeSeriesInsightsEventSource -ResourceGroupName $resourceGroup -Name $tsiEevntSourceName -EnvironmentName $tsiEnv.Name.ToString() -Kind Microsoft.EventHub -ConsumerGroupName $resourceGroup -Location $tsiEnv.Location -KeyName RootManageSharedAccessKey -ServiceBusNameSpace $eventhubParam.eventHubSpace -EventHubName $eventhubParam.eventHub.Name -EventSourceResourceId $eventhubParam.eventHub.id -SharedAccessKey $eventHubKey
+    Write-Host -ForegroundColor Green 'Created TimeSeriesInsightsEventSource successfully.'
+    return $tsiEventSource
 }
