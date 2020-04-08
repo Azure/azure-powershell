@@ -4,7 +4,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 }
 . ($loadEnvPath)
 
-$TestRecordingFile = Join-Path $PSScriptRoot 'Restore-AzMariaDBServer.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Restore-AzMariaDbServer.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
