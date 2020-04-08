@@ -62,13 +62,17 @@ foreach($RMPath in $resourceManagerPaths)
             $acceptedDlls += $assembly.Split("\")[-1]
         }
 
-        Write-Verbose "Removing redundant dlls in $($RMFolder.Name)"
+        Write-Host "Removing redundant dlls in $($RMFolder.Name)"
         $removedDlls = Get-ChildItem -Path $RMFolder.FullName -Filter "*.dll" -Recurse | where { $acceptedDlls -notcontains $_.Name -and !$_.FullName.Contains("Assemblies") }
-        $removedDlls | % { Write-Verbose "Removing $($_.Name)"; Remove-Item $_.FullName -Force }
+        $removedDlls | % { Write-Host "Removing $($_.Name)"; Remove-Item $_.FullName -Force }
 
-        Write-Verbose "Removing scripts and psd1 in $($RMFolder.FullName)"
+        Write-Host "Removing scripts and psd1 in $($RMFolder.FullName)"
 
-        $removedPsd1 = Get-ChildItem -Path "$($RMFolder.FullName)" -Include "*.psd1" -Exclude "PsSwaggerUtility*.psd1" -Recurse | where { $_.FullName -ne "$($RMFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($RMFolder.Name).psd1" }
-        $removedPsd1 | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
+        $exludedPsd1 = @(
+            "PsSwaggerUtility*.psd1",
+            "SecretManagementExtension.psd1"
+            )
+        $removedPsd1 = Get-ChildItem -Path "$($RMFolder.FullName)" -Include "*.psd1" -Exclude $exludedPsd1 -Recurse | where { $_.FullName -ne "$($RMFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($RMFolder.Name).psd1" }
+        $removedPsd1 | % { Write-Host "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
     }
 }

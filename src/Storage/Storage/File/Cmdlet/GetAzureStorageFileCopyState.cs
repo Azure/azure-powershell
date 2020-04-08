@@ -22,11 +22,13 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopyState")]
     [OutputType(typeof(CloudFile))]
+    [CmdletOutputBreakingChange(typeof(CloudFile), ChangeDescription = "The output type will change from CloudFile to AzureStorageFile, and AzureStorageFile will have CloudFile as a child property.")]
     public class GetAzureStorageFileCopyStateCommand : AzureStorageFileCmdletBase
     {
         [Parameter(

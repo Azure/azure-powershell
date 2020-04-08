@@ -103,3 +103,53 @@ function Test-MongoOperationsCmdletsUsingInputObject
   $IsDatabaseRemoved = Remove-AzCosmosDBMongoDBDatabase -InputObject $NewDatabase -PassThru
   Assert-AreEqual $IsDatabaseRemoved true
 }
+
+function Test-MongoThroughputCmdlets
+{
+  $AccountName = "db001"
+  $rgName = "CosmosDBResourceGroup3668"
+  $DatabaseName = "dbName3"
+  $CollectionName = "collectionName"
+
+  $ThroughputValue = 1200
+  $UpdatedThroughputValue = 1100
+  $UpdatedThroughputValue2 = 1000
+  $UpdatedThroughputValue3 = 900
+
+  $CollectionThroughputValue = 800
+  $UpdatedCollectionThroughputValue = 700
+  $UpdatedCollectionThroughputValue2 = 600
+  $UpdatedCollectionThroughputValue3 = 500
+
+  $ShardKey = "shardKeyPath"
+
+  $NewDatabase =  Set-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
+  $Throughput = Get-AzCosmosDBMongoDBDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  Assert-AreEqual $Throughput.Throughput $ThroughputValue
+
+  $UpdatedThroughput = Update-AzCosmosDBMongoDBDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedThroughputValue
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue
+
+  $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
+  $UpdatedThroughput = Update-AzCosmosDBMongoDBDatabaseThroughput -ParentObject $CosmosDBAccount -Name $DatabaseName -Throughput $UpdatedThroughputValue2
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue2
+
+  $UpdatedThroughput = Update-AzCosmosDBMongoDBDatabaseThroughput -InputObject $NewDatabase -Throughput $UpdatedThroughputValue3
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue3
+
+  $NewCollection =  Set-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $CollectionThroughputValue -Name $CollectionName -Shard $ShardKey
+  $CollectionThroughput = Get-AzCosmosDBMongoDBCollectionThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+  Assert-AreEqual $CollectionThroughput.Throughput $CollectionThroughputValue
+
+  $UpdatedCollectionThroughput = Update-AzCosmosDBMongoDBCollectionThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -Throughput $UpdatedCollectionThroughputValue
+  Assert-AreEqual $UpdatedCollectionThroughput.Throughput $UpdatedCollectionThroughputValue
+
+  $UpdatedCollectionThroughput = Update-AzCosmosDBMongoDBCollectionThroughput -InputObject $NewCollection -Throughput $UpdatedCollectionThroughputValue2
+  Assert-AreEqual $UpdatedCollectionThroughput.Throughput $UpdatedCollectionThroughputValue2
+
+  $UpdatedCollectionThroughput = Update-AzCosmosDBMongoDBCollectionThroughput -ParentObject $NewDatabase -Name $CollectionName -Throughput $UpdatedCollectionThroughputValue3
+  Assert-AreEqual $UpdatedCollectionThroughput.Throughput $UpdatedCollectionThroughputValue3
+
+  Remove-AzCosmosDBMongoDBCollection -InputObject $NewCollection 
+  Remove-AzCosmosDBMongoDBDatabase -InputObject $NewDatabase 
+}
