@@ -15,14 +15,14 @@ while(-not $mockingPath) {
 Describe 'Update-AzMariaDbServer' {
     It 'UpdateExpanded' {
         $mariadb = Get-AzMariaDbServer -Name $env.rstrbc02 -ResourceGroupName $env.ResourceGroup
-        $newStorageProfileStorageMb = $mariadb.StorageProfileStorageMb + 1024
-        $updatedMariadb = Update-AzMariaDbServer -Name $env.rstrbc02 -ResourceGroupName $env.ResourceGroup -StorageProfileStorageInMb $newStorageProfileStorageMb 
-        $updatedMariadb.StorageProfileStorageMb | Should -Be $newStorageProfileStorageMb
+        $newStorageInMb = $mariadb.StorageProfileStorageMb + 1024
+        $updatedMariadb = Update-AzMariaDbServer -Name $env.rstrbc02 -ResourceGroupName $env.ResourceGroup -StorageInMb $newStorageInMb 
+        $updatedMariadb.StorageProfileStorageMb | Should -Be $newStorageInMb
     }
     It 'UpdateViaIdentity' {
         $mariadb = Get-AzMariaDbServer -Name $env.rstrbc02 -ResourceGroupName $env.ResourceGroup
-        $newStorageProfileStorageMb = $mariadb.StorageProfileStorageMb + 1024
-        $updatedMariadb = Update-AzMariaDbServer -InputObject $mariadb -StorageProfileStorageInMb $newStorageProfileStorageMb 
-        $updatedMariadb.StorageProfileStorageMb | Should -Be $newStorageProfileStorageMb
+        $newStorageInMb = $mariadb.StorageProfileStorageMb + 1024
+        $updatedMariadb = Update-AzMariaDbServer -InputObject $mariadb -StorageInMb $newStorageInMb 
+        $updatedMariadb.StorageProfileStorageMb | Should -Be $newStorageInMb
     }
 }

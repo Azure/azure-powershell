@@ -14,6 +14,7 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     $env.Location = 'eastus'
+    $env.RepLocation = 'eastus2'
     $env.AdminLogin = 'adminuser'
     $env.AdminLoginPassword = 'Passw0rd01!!'
     #Generate some strings for use in the test.
@@ -21,10 +22,18 @@ function setupEnv() {
     $rstr02 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
     $rstr03 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
     $rstr04 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
+    $rstr05 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
+    $rstr06 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
+    $rstr07 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
+    $rstr08 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
     $null = $env.add('rstr01', $rstr01)
     $null = $env.add('rstr02', $rstr02)
     $null = $env.add('rstr03', $rstr03)
     $null = $env.add('rstr04', $rstr04)
+    $null = $env.add('rstr05', $rstr05)
+    $null = $env.add('rstr06', $rstr06)
+    $null = $env.add('rstr07', $rstr07)
+    $null = $env.add('rstr08', $rstr08)
     
     # Create test resource group.
     $resourceGroup = 'mariadb-test-' + (RandomString -allChars $false -len 6)
@@ -43,12 +52,12 @@ function setupEnv() {
     $rstrdel01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
     $rstrdel02 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
 
-    $mariaDbParam01 = @{Name=$rstrbc01; SkuName='B_Gen5_1'}
-    $mariaDbParam02 = @{Name=$rstrbc02; SkuName='B_Gen5_1'}
-    $mariaDbParam03 = @{Name=$rstrgp01; SkuName='GP_Gen5_4'}
-    $mariaDbParam04 = @{Name=$rstrgp02; SkuName='GP_Gen5_4'}
-    $mariaDbParam05 = @{Name=$rstrdel01; SkuName='B_Gen5_1'}
-    $mariaDbParam06 = @{Name=$rstrdel02; SkuName='B_Gen5_1'}
+    $mariaDbParam01 = @{Name=$rstrbc01; SkuName='B_Gen5_1'; AdminLogin=$env.AdminLogin; AdminLoginPassword=$env.AdminLoginPassword}
+    $mariaDbParam02 = @{Name=$rstrbc02; SkuName='B_Gen5_1'; AdminLogin=$env.AdminLogin; AdminLoginPassword=$env.AdminLoginPassword}
+    $mariaDbParam03 = @{Name=$rstrgp01; SkuName='GP_Gen5_4'; AdminLogin=$env.AdminLogin; AdminLoginPassword=$env.AdminLoginPassword}
+    $mariaDbParam04 = @{Name=$rstrgp02; SkuName='GP_Gen5_4'; AdminLogin=$env.AdminLogin; AdminLoginPassword=$env.AdminLoginPassword}
+    $mariaDbParam05 = @{Name=$rstrdel01; SkuName='B_Gen5_1'; AdminLogin=$env.AdminLogin; AdminLoginPassword=$env.AdminLoginPassword}
+    $mariaDbParam06 = @{Name=$rstrdel02; SkuName='B_Gen5_1'; AdminLogin=$env.AdminLogin; AdminLoginPassword=$env.AdminLoginPassword}
 
     GetOrCreateMariaDb -forceCreate $true -mariaDb $mariaDbParam01 -ResourceGroup $resourceGroup
     GetOrCreateMariaDb -forceCreate $true -mariaDb $mariaDbParam02 -ResourceGroup $resourceGroup

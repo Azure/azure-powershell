@@ -16,7 +16,8 @@ Describe 'Restore-AzMariaDbServer' {
     It 'PointInTimeRestore' {
         $restoreMariaDbName = $env.rstrgp02 + '-rst01' 
         $restorePointInTime = [datetime]::parse($env.restorePointInTime)
-        Restore-AzMariaDBServer -Name $restoreMariaDbName -ServerName $env.rstrgp02 -ResourceGroupName $env.ResourceGroup -UsePointInTimeRestore -RestorePointInTime $restorePointInTime -Location $env.Location
+        #-UsePointInTimeRestore
+        Restore-AzMariaDBServer -Name $restoreMariaDbName -ServerName $env.rstrgp02 -ResourceGroupName $env.ResourceGroup -RestorePointInTime $restorePointInTime -Location $env.Location
         $restoreMariaDb = Get-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup
         $restoreMariaDb.Name | Should -Be $restoreMariaDbName
     }
@@ -24,7 +25,8 @@ Describe 'Restore-AzMariaDbServer' {
         $restoreMariaDbName = $env.rstrgp02 +'-rst02'
         $restorePointInTime = [datetime]::parse($env.restorePointInTime)
         $mariadb = Get-AzMariaDbServer -ResourceGroupName $env.ResourceGroup -Name $env.rstrgp02
-        Restore-AzMariaDBServer -Name $restoreMariaDbName -InputObject $mariadb -UsePointInTimeRestore -RestorePointInTime $restorePointInTime -Location $env.Location
+        #-UsePointInTimeRestore
+        Restore-AzMariaDBServer -Name $restoreMariaDbName -InputObject $mariadb -RestorePointInTime $restorePointInTime -Location $env.Location
         $restoreMariaDb = Get-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup
         $restoreMariaDb.Name | Should -Be $restoreMariaDbName
     }
