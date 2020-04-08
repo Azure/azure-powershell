@@ -51,7 +51,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
-module-version: 0.1.0
+module-version: 0.0.1
 title: MySQL
 subject-prefix: 'MySQL'
 
@@ -59,13 +59,13 @@ directive:
   - from: mysql.json
     where: $.definitions.VirtualNetworkRule
     transform: $['required'] = ['properties']
-  - select: command
-    where:
+  - where:
       verb: Set
+      subject: Configuration$|FirewallRule$|VirtualNetworkRule$
     set:
       verb: Update
   - where:
-      verb: New$|^Set$|^Remove$|^Get|^Update$|^Invoke$
+      verb: ^New$|^Set$|^Remove$|^Get|^Update$|^Invoke$
       subject: Database$|SecurityAlertPolicy$|Administrator$|LocationBasedPerformanceTier$|LogFile$|ExecuteCheckNameAvailability$
     hide: true
   - where:
@@ -127,12 +127,12 @@ directive:
       subject: Server
     set:
       parameter-description: Backup retention days for the server. Day count is between 7 and 35.
-  - from: ServerForCreate.cs
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/OperationOrigin System/, 'OperationOrigin System1');
+  - from: source-file-csharp
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesForCreate Property', 'public Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesForCreate Property');
-  - from: OperationOrigin.cs
-    where: $
-    transform: $ = $.replace('(System.Convert.ToString(value))', '(global::System.Convert.ToString(value))');
-  - from: (.*)AzMySqlServer_(.*).cs
+  - from: source-file-csharp
     where: $
     transform: $ = $.replace('public int StorageProfileBackupRetentionDay', '[System.Management.Automation.ValidateRangeAttribute(7,35)]\n        public int StorageProfileBackupRetentionDay');

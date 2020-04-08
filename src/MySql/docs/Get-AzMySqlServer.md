@@ -39,23 +39,27 @@ Gets information about a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get MySql server by ResourceGroup and ServerName
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMySqlServer -ResourceGroupName mysql_test -ServerName mysql-test
 
-{{ Add output here }}
+Name        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----        -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mysql-test  eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
 ```
 
-{{ Add description here }}
+The cmdlet gets MySql server by ResourceGroup and ServerName.
 
-### Example 2: {{ Add title here }}
+### Example 2: Lists all the MySql servers in specified resource group
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMySqlServer -ResourceGroupName mysql_test
 
-{{ Add output here }}
+Name        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----        -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mysql-test  eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
 ```
 
-{{ Add description here }}
+The cmdlet lists all the MySql servers in specified resource group.
 
 ## PARAMETERS
 

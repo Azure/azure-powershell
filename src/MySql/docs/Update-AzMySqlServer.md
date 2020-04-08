@@ -37,23 +37,27 @@ The request body can contain one to many of the properties present in the normal
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update MySql server by resource group and server name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzMySqlServer -ResourceGroupName mysql_test -ServerName mysql-test -SslEnforcement Disabled
 
-{{ Add output here }}
+Name        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----        -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mysql-test  eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Disabled
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql server by resource group and server name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql server by mysql identity.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMySqlServer -ResourceGroupName mysql_test -ServerName mysql-test | Update-AzMySqlServer -StorageProfileBackupRetentionDay 23 -StorageProfileStorageMb 10240
 
-{{ Add output here }}
+Name        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
+----        -------- ------------------ ------- ----------------------- -------   ------- -------        --------------
+mysql-test  eastus   mysql_test         5.7     10240                   GP_Gen5_4         GeneralPurpose Enabled
 ```
 
-{{ Add description here }}
+These cmdlets update MySql server by mysql identity.
 
 ## PARAMETERS
 
