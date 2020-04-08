@@ -12,12 +12,12 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzMySqlConnectionString' {
-    It 'Get' {
+    It 'Get' -skip {
         $connectionString = Get-AzMySqlConnectionString -Client ADO.NET -Name $env.serverName -ResourceGroupName $env.resourceGroup
         $connectionString.Count | Should -Be 1
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip {
         $connectionString = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | Get-AzMySqlConnectionString -Client PHP
         $connectionString.Count | Should -Be 1
     }

@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzMySqlServer' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
         {
             $server = New-AzMySqlServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Location $env.location -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku GP_Gen5_4
