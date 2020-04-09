@@ -53,7 +53,7 @@ input-file:
   - $(repo)/specification/mariadb/resource-manager/Microsoft.DBforMariaDB/preview/2018-06-01-preview/mariadb.json
 
 title: MariaDB
-module-version: 0.0.1
+module-version: 0.1.0
 
 directive:
   - where:
