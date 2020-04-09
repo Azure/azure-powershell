@@ -15,20 +15,21 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Text;
-using System.Linq;
 using Microsoft.Azure.Commands.CosmosDB.Models;
-using System.Reflection;
-using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using Microsoft.Azure.Commands.CosmosDB.Exceptions;
+using Microsoft.Rest.Azure;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
+using Microsoft.Azure.Management.CosmosDB;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCassandraTable", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCassandraTableGetResults))]
-    public class SetAzCosmosDBCassandraTable : AzureCosmosDBCmdletBase
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCassandraTable", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCassandraTableGetResults), typeof(ResourceNotFoundException))]
+    public class UpdateAzCosmosDBCassandraTable : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ResourceGroupCompleter]
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string KeyspaceName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.CassandraTableNameHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.CassandraTableNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -53,23 +54,63 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.TtlInSecondsHelpMessage)]
         public int? TtlInSeconds { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = Constants.CassandraSchemaHelpMessage)]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.CassandraSchemaHelpMessage)]
         [ValidateNotNull]
         public PSCassandraSchema Schema { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.CassandraKeyspaceObjectHelpMessage)]
         [ValidateNotNull]
-        public PSCassandraKeyspaceGetResults InputObject { get; set; }
+        public PSCassandraKeyspaceGetResults ParentObject { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.CassandraTableObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSCassandraTableGetResults InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if(ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 KeyspaceName = resourceIdentifier.ResourceName;
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
             }
+            else if (ParameterSetName.Equals(ObjectParameterSet, StringComparison.Ordinal))
+            {
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                Name = resourceIdentifier.ResourceName;
+                KeyspaceName = ResourceIdentifierExtensions.GetCassandraKeyspaceName(resourceIdentifier);
+                AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
+            }
+
+            CassandraTableGetResults readCassandraTableGetResults = null;
+            try
+            {
+                readCassandraTableGetResults = CosmosDBManagementClient.CassandraResources.GetCassandraTable(ResourceGroupName, AccountName, KeyspaceName, Name);
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(message: string.Format(ExceptionMessage.NotFound, Name), innerException: e);
+                }
+            }
+
+            if(TtlInSeconds == null)
+            {
+                TtlInSeconds = readCassandraTableGetResults.Resource.DefaultTtl;
+            }
+
+            CassandraSchema cassandraSchema = null;
+            if (Schema == null)
+            {
+                cassandraSchema = readCassandraTableGetResults.Resource.Schema;
+            }
+            else
+            {
+                cassandraSchema = PSCassandraSchema.ConvertPSCassandraSchemaToCassandraSchema(Schema);
+            }            
 
             CreateUpdateOptions options = new CreateUpdateOptions();
             if (Throughput != null)
@@ -80,17 +121,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
             CassandraTableResource cassandraTableResource = new CassandraTableResource
             {
                 Id = Name,
-                DefaultTtl = TtlInSeconds
+                DefaultTtl = TtlInSeconds,
+                Schema = cassandraSchema
             };
-            cassandraTableResource.Schema = PSCassandraSchema.ConvertPSCassandraSchemaToCassandraSchema(Schema);
 
             CassandraTableCreateUpdateParameters cassandraTableCreateUpdateParameters = new CassandraTableCreateUpdateParameters
             {
                 Resource = cassandraTableResource,
-                Options = options
+                Options = options,
             };
 
-            if (ShouldProcess(Name, "Setting CosmosDB Cassandra Table"))
+            if (ShouldProcess(Name, "Updating an existing CosmosDB Cassandra Table"))
             {
                 CassandraTableGetResults cassandraTableGetResults = CosmosDBManagementClient.CassandraResources.CreateUpdateCassandraTableWithHttpMessagesAsync(ResourceGroupName, AccountName, KeyspaceName, Name, cassandraTableCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSCassandraTableGetResults(cassandraTableGetResults));

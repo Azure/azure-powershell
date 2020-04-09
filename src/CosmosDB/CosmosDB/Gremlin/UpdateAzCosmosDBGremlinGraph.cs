@@ -20,11 +20,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlContainer" , DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSqlDatabaseGetResults))]
-    public class SetAzCosmosDBSqlContainer : AzureCosmosDBCmdletBase
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinGraph", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSGremlinGraphGetResults), typeof(ResourceNotFoundException))]
+    public class UpdateAzCosmosDBGremlinGraph : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ResourceGroupCompleter]
@@ -39,60 +40,65 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.ContainerNameHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.GraphNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.SqlIndexingPolicyHelpMessage)]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.IndexingPolicyHelpMessage)]
         [ValidateNotNull]
-        public PSSqlIndexingPolicy IndexingPolicy { get; set; }
+        public PSIndexingPolicy IndexingPolicy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.PartitionKeyVersionHelpMessage)]
         public int? PartitionKeyVersion { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.PartitionKeyKindHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.PartitionKeyKindHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string PartitionKeyKind { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.PartitionKeyPathHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.PartitionKeyPathHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string[] PartitionKeyPath { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.SqlContainerThroughputHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.GremlinGraphThroughputHelpMessage)]
         public int? Throughput { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.TtlInSecondsHelpMessage)]
         public int? TtlInSeconds { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.SqlUniqueKeyPolciyHelpMessage)]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.UniqueKeyPolciyHelpMessage)]
         [ValidateNotNull]
-        public PSSqlUniqueKeyPolicy UniqueKeyPolicy { get; set; }
+        public PSUniqueKeyPolicy UniqueKeyPolicy { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.SqlConflictResolutionPolicyModeHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyModeHelpMessage)]
         [PSArgumentCompleter("Custom", "LastWriterWins", "Manual")]
         [ValidateNotNullOrEmpty]
         public string ConflictResolutionPolicyMode { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.SqlConflictResolutionPolicyPathHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyPathHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ConflictResolutionPolicyPath { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.SqlConflictResolutionPolicyProcedureHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyProcedureHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ConflictResolutionPolicyProcedure { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.SqlConflictResolutionPolicyHelpMessage)]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.ConflictResolutionPolicyHelpMessage)]
         [ValidateNotNull]
-        public PSSqlConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
+        public PSConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.GremlinDatabaseObjectHelpMessage)]
         [ValidateNotNull]
-        public PSSqlDatabaseGetResults InputObject { get; set; }
+        public PSGremlinDatabaseGetResults ParentObject { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.GremlinGraphObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSGremlinGraphGetResults InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if(ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 DatabaseName = resourceIdentifier.ResourceName;
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
@@ -103,7 +109,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             foreach (string path in PartitionKeyPath)
                 Paths.Add(path);
 
-            SqlContainerResource sqlContainerResource = new SqlContainerResource
+            GremlinGraphResource gremlinGraphResource = new GremlinGraphResource
             {
                 Id = Name,
                 PartitionKey = new ContainerPartitionKey
@@ -127,8 +133,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     {
                         Paths = new List<string>()
                     };
-                    
-                    foreach(string path in uniqueKey.Paths)
+
+                    foreach (string path in uniqueKey.Paths)
                     {
                         key.Paths.Add(path);
                     }
@@ -136,15 +142,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     uniqueKeyPolicy.UniqueKeys.Add(key);
                 }
 
-                sqlContainerResource.UniqueKeyPolicy = uniqueKeyPolicy;
+                gremlinGraphResource.UniqueKeyPolicy = uniqueKeyPolicy;
             }
 
             if (TtlInSeconds != null)
             {
-                sqlContainerResource.DefaultTtl = TtlInSeconds;
+                gremlinGraphResource.DefaultTtl = TtlInSeconds;
             }
 
-            if(ConflictResolutionPolicy != null)
+            if (ConflictResolutionPolicy != null)
             {
                 ConflictResolutionPolicyMode = ConflictResolutionPolicy.Mode;
 
@@ -175,7 +181,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     conflictResolutionPolicy.ConflictResolutionProcedure = ConflictResolutionPolicyProcedure;
                 }
 
-                sqlContainerResource.ConflictResolutionPolicy = conflictResolutionPolicy;
+                gremlinGraphResource.ConflictResolutionPolicy = conflictResolutionPolicy;
             }
 
             if (IndexingPolicy != null)
@@ -241,25 +247,26 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     indexingPolicy.SpatialIndexes = new List<SpatialSpec>(spatialIndexes);
                 }
 
-                sqlContainerResource.IndexingPolicy = indexingPolicy;
+                gremlinGraphResource.IndexingPolicy = indexingPolicy;
             }
 
             CreateUpdateOptions options = new CreateUpdateOptions();
+
             if (Throughput != null)
             {
                 options.Throughput = Throughput.ToString();
             }
 
-            SqlContainerCreateUpdateParameters sqlContainerCreateUpdateParameters = new SqlContainerCreateUpdateParameters
+            GremlinGraphCreateUpdateParameters gremlinGraphCreateUpdateParameters = new GremlinGraphCreateUpdateParameters
             {
-                Resource = sqlContainerResource,
+                Resource = gremlinGraphResource,
                 Options = options
             };
 
-            if (ShouldProcess(Name, "Setting CosmosDB Sql Container"))
+            if (ShouldProcess(Name, "Setting CosmosDB Gremlin Graph"))
             {
-                SqlContainerGetResults sqlContainerGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlContainerWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, sqlContainerCreateUpdateParameters).GetAwaiter().GetResult().Body;
-                WriteObject(new PSSqlContainerGetResults(sqlContainerGetResults));
+                GremlinGraphGetResults gremlinGraphGetResults = CosmosDBManagementClient.GremlinResources.CreateUpdateGremlinGraphWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, gremlinGraphCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                WriteObject(new PSGremlinGraphGetResults(gremlinGraphGetResults));
             }
 
             return;
