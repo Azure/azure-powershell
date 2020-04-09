@@ -22,7 +22,7 @@
 * Changes in New-AzCosmosDBAccount and Update-AzCosmosDBAccount
     - Allows empty string as a value for IpRangeFilter
     - Renamed ApiKind value GlobalDocumentDB to Sql.
-    - Added parameter DisableKeyBasedMetadataWriteAccess
+    - Added parameter DisableKeyBasedMetadataWriteAccess, PublicNetworkAccess
 * Introduces cmdlets to update throughput for Sql Database and Container, Cassandra Keyspace and Table, MongoDB Database and Collection, Gremlin Database and Graph and Table.
     - Update-AzCosmosDBSqlContainerThroughput, Update-AzCosmosDBSqlDatabaseThroughput,
         Update-AzCosmosDBMongoDBCollectionThroughput, Update-AzCosmosDBMongoDBDatabaseThroughput,

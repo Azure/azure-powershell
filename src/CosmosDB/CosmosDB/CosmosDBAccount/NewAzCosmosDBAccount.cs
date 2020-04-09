@@ -85,6 +85,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [PSArgumentCompleter("Sql", "MongoDB", "Gremlin", "Cassandra", "Table")]
         public string ApiKind { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.PublicNetworkAccessHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string PublicNetworkAccess { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
         public SwitchParameter DisableKeyBasedMetadataWriteAccess { get; set; }
 
@@ -205,6 +209,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
             databaseAccountCreateUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
             databaseAccountCreateUpdateParameters.IpRangeFilter = IpRangeFilterAsString;
+            databaseAccountCreateUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
 
             if (!string.IsNullOrEmpty(ApiKind))
             {

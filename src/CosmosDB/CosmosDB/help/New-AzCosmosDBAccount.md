@@ -17,8 +17,8 @@ New-AzCosmosDBAccount -ResourceGroupName <String> -Name <String> [-DefaultConsis
  [-EnableAutomaticFailover] [-EnableMultipleWriteLocations] [-EnableVirtualNetwork] [-IpRangeFilter <String[]>]
  [-Location <String[]>] [-LocationObject <PSLocation[]>] [-MaxStalenessIntervalInSeconds <Int32>]
  [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
- [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-ApiKind <String>] [-DisableKeyBasedMetadataWriteAccess]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-PublicNetworkAccess <String>] [-ApiKind <String>] 
+ [-DisableKeyBasedMetadataWriteAccess] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -290,6 +290,21 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -PublicNetworkAccess
+Whether or not public endpoint access is allowed for this server. 
+Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 
 ### -ResourceGroupName
 Name of resource group.

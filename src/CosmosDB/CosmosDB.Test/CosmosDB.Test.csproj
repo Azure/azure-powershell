@@ -4,6 +4,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.CosmosDB" Version="1.0.1" />
+    <PackageReference Include="Microsoft.Azure.Management.CosmosDB" Version="1.1.0" />
 </ItemGroup>
 </Project>
