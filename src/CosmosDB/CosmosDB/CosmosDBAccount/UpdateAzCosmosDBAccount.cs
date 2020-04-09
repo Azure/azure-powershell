@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
             }
-            if (DisableKeyBasedMetadataWriteAccess != null)
+            if (PublicNetworkAccess != null)
             {
                 databaseAccountUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
             }
