@@ -219,12 +219,12 @@ namespace StaticAnalysis.HelpAnalyzer
             var parentDirectory = Directory.GetParent(psd1).FullName;
             var psd1FileName = Path.GetFileName(psd1);
             var powershell = PowerShell.Create();
-            powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory +
-                                 " -FileName " + psd1FileName +
-                                 " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };");
+            var script = $"Import-LocalizedData -BaseDirectory {parentDirectory} -FileName {psd1FileName}" +
+                          " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };";
+            powershell.AddScript(script);
             var cmdletResult = powershell.Invoke();
-            var nestedModules = cmdletResult.Where(c => c.ToString().StartsWith(".")).Select(c => c.ToString().Substring(2));
-            var requiredModules = cmdletResult.Where(c => !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
+            var nestedModules = cmdletResult.Where(c => c!= null && c.ToString().StartsWith(".")).Select(c => c.ToString().Substring(2));
+            var requiredModules = cmdletResult.Where(c => c != null && !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
             if (nestedModules.Any())
             {
                 Directory.SetCurrentDirectory(directory);

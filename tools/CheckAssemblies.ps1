@@ -61,6 +61,7 @@ foreach ($ModuleManifest in $ModuleManifestFiles) {
         }
     }
 
+    $LoadedAssemblies = $LoadedAssemblies | Where-Object { $_ }
     $LoadedAssemblies = $LoadedAssemblies | ForEach-Object { $_.Replace(".dll", "") }
 
     $Found = @()
