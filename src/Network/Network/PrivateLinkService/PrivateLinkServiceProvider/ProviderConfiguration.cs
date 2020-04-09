@@ -11,18 +11,13 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         static ProviderConfiguration()
         {
-            registerConfiguration("Microsoft.Sql/servers", "2018-06-01-preview");
-            registerConfiguration("Microsoft.Insights/privateLinkScopes", "2019-10-17-preview");
-            registerConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false);
-            registerConfiguration("Microsoft.KeyVault/vaults", "2019-09-01", false);
+            RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview");
+            RegisterConfiguration("Microsoft.Insights/privateLinkScopes", "2019-10-17-preview");
+            RegisterConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false);
+            RegisterConfiguration("Microsoft.KeyVault/vaults", "2019-09-01", false);
         }
 
-        private static void registerConfiguration(string type, string apiVersion)
-        {
-            registerConfiguration(type, apiVersion, true);
-        }
-
-        private static void registerConfiguration(string type, string apiVersion, bool hasConnectionsURI)
+        private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = true)
         {
             ProviderConfiguration configuration = new ProviderConfiguration();
             configuration.Type = type;
