@@ -11,37 +11,37 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-function New-AzMariaDbServerReplica {
+function Restore-AzMariaDbServer
+{
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
-    [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='PointInTimeRestore', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory, HelpMessage='Replica name.')]
-        [Alias('ReplicaServerName')]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
-        # Replica name
+        # The dest server name to restore from.
         ${Name},
 
-        [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline, HelpMessage='The source server object to restore from.')]
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+        [System.String]
+        # The source server name to restore from.
+        ${ServerName},
+
+        [Parameter(ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
         # The source server object to restore from.
         ${InputObject},
     
-        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='MariaDb server name.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-        [System.String]
-        # MariaDb server name.
-        ${ServerName},
-    
-        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='You can obtain this value from the Azure Resource Manager API or the portal.')]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
         # The name of the resource group that contains the resource.
         # You can obtain this value from the Azure Resource Manager API or the portal.
         ${ResourceGroupName},
     
-        [Parameter(HelpMessage='The subscription ID is part of the URI for every service call.')]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -56,20 +56,35 @@ function New-AzMariaDbServerReplica {
         # The location the resource resides in.
         ${Location},
 
-        [Parameter(HelpMessage='The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-        [System.String]
-        # The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-        ${Sku},
-
-        [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerUpdateParametersTags]))]
         [System.Collections.Hashtable]
         # Application-specific metadata in the form of key-value pairs.
         ${Tag},
-        #endregion ServerForCreate
-    
+
+        #region PointInTimeRestore
+        [Parameter(ParameterSetName='PointInTimeRestore', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        [System.DateTime]
+        # The location the resource resides in.
+        ${RestorePointInTime},
+
+        # [Parameter(ParameterSetName='PointInTimeRestore', Mandatory)]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        # [Switch]
+        # # Use PointInTimeRestore mode.
+        # ${UsePointInTimeRestore},
+        #endregion PointInTimeRestore
+
+        #region Geo
+        # [Parameter(ParameterSetName='GeoRestore', Mandatory)]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+        # [Switch]
+        # # Use GeoRestore mode.
+        # ${UseGeoRestore},
+        #endregion Geo
+
         #region DefaultParameters
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -78,39 +93,39 @@ function New-AzMariaDbServerReplica {
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command as a job
         ${AsJob},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
         [System.Uri]
@@ -135,12 +150,27 @@ function New-AzMariaDbServerReplica {
     process {
         try {
             $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerForCreate]::new()
-            $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForReplica]::new()
-    
-            #region ServerForCreate
+            
+            $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForRestore]::new()
+            $Parameter.Property.RestorePointInTime = $RestorePointInTime
+            $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::PointInTimeRestore
+            $Null = $PSBoundParameters.Remove('RestorePointInTime')
+            # if ($PSBoundParameters.ContainsKey('UsePointInTimeRestore')) {
+            #     $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForRestore]::new()
+            #     $Parameter.Property.RestorePointInTime = $RestorePointInTime
+            #     $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::PointInTimeRestore
+            #     $Null = $PSBoundParameters.Remove('RestorePointInTime')
+            #     $Null = $PSBoundParameters.Remove('UsePointInTimeRestore')
+            # } elseif ($PSBoundParameters.ContainsKey('UseGeoRestore')) {
+            #     $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForGeoRestore]::new()
+            #     $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::GeoRestore
+            #     $Null = $PSBoundParameters.Remove('UseGeoRestore')
+            # }
+
             $ServerObject = $InputObject
             if (-not $PSBoundParameters.ContainsKey('InputObject')) {
-                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId
+                
                 $Null = $PSBoundParameters.Remove('ServerName')
             } else {
                 $Fields = $InputObject.Id.Split('/')
@@ -157,26 +187,15 @@ function New-AzMariaDbServerReplica {
                 $Parameter.Location = $ServerObject.Location
             }
 
-            if ($PSBoundParameters.ContainsKey('Sku')) {
-                $Parameter.SkuName = $PSBoundParameters['Sku']
-                $Null = $PSBoundParameters.Remove('Sku')
-            }
-
             if ($PSBoundParameters.ContainsKey('Tag')) {
                 $PSBoundParameters.Tag = $PSBoundParameters['Tag']
                 $Null = $PSBoundParameters.Remove('Tag')
             }
-            #endregion ServerForCreate
-
-            $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::Replica
-
 
             $PSBoundParameters.Add('Parameter', $Parameter)
-    
             Az.MariaDb.internal\New-AzMariaDbServer @PSBoundParameters
           } catch {
               throw
           }
     }
 }
-    
