@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added a new cmdlet `Update-AzKeyVault` that can enable soft delete and purge protection on a vault
 * Added support to Microsoft.PowerShell.SecretManagement [#11178]
 * Added support to private endpoint
 
