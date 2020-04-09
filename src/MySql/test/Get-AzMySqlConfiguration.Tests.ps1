@@ -19,12 +19,12 @@ Describe 'Get-AzMySqlConfiguration' {
 
     It 'Get' {
         $config = Get-AzMySqlConfiguration -Name time_zone -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
-        $config.Count | Should -Be 1
+        $config.Name | Should -Be time_zone
     }
 
     It 'GetViaIdentity' {
         $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/$($env.serverName)/configurations/server_id"
         $config = Get-AzMySqlConfiguration -InputObject $ID 
-        $config.Count | Should -Be 1
+        $config.Name | Should -Be server_id
     }
 }

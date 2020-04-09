@@ -12,14 +12,14 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzMySqlServer' {
-    It 'UpdateExpanded' -skip {
+    It 'UpdateExpanded' {
         $server = Update-AzMySqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -SslEnforcement Disabled 
-        $server.Count | Should -Be 1
+        $server.SslEnforcement | Should -Be Disabled
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
+    It 'UpdateViaIdentityExpanded' {
         $server = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
-        $updated = Update-AzMySqlServer -StorageProfileBackupRetentionDay 23 -InputObject $server
-        $updated.Count | Should -Be 1
+        $updated = Update-AzMySqlServer -BackupRetentionDay 23 -InputObject $server
+        $updated.StorageProfileBackupRetentionDay | Should -Be 23
     }
 }

@@ -13,15 +13,15 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzMySqlFirewallRule' {
     It 'Delete' {
-        New-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
         { 
+            New-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
             Remove-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName 
         } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
-        New-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
         { 
+            New-AzMySqlFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/$($env.serverName)/firewallRules/$($env.firewallRuleName)"
             Remove-AzMySqlFirewallRule -InputObject $ID 
         } | Should -Not -Throw
