@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
         Mandatory = false,
         ValueFromPipelineByPropertyName = true,
-        HelpMessage = "Dead Peer Decetion Timeout of the connection in seconds.")]
+        HelpMessage = "Dead Peer Detection Timeout of the connection in seconds.")]
         public int? DpdTimeoutInSeconds { get; set; }
 
         [Parameter(
