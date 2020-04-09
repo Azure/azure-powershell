@@ -14,7 +14,7 @@
 
 #------------------------------New-AzKeyVault--------------------------------------
 
-function Get-AllSecretPermissions 
+function Get-AllSecretPermissions
 {
     return @(
         "get",
@@ -39,11 +39,11 @@ function Get-AllKeyPermissions
         "backup",
         "restore",
         "recover",
-        "sign", 
-        "verify", 
+        "sign",
+        "verify",
         "wrapKey",
-        "unwrapKey", 
-        "encrypt", 
+        "unwrapKey",
+        "encrypt",
         "decrypt"
     )
 }
@@ -60,8 +60,8 @@ function Get-AllCertPermissions
         "deleteissuers",
         "getissuers",
         "listissuers",
-        "managecontacts", 
-        "manageissuers", 
+        "managecontacts",
+        "manageissuers",
         "setissuers",
         "recover"
     )
@@ -143,6 +143,12 @@ function Test-CreateNewVault
 
 		# Test throws for resourcegroup nonexistent
 		Assert-Throws { New-AzKeyVault -VaultName $vault5Name -ResourceGroupName $unknownRGName -Location $vaultLocation }
+
+        # # Test create with retention (TODO: uncomment this in S169)
+        # $actual = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -EnableSoftDelete
+        # Assert-AreEqual 90 $actual.SoftDeleteRetentionInDays
+        # $actual = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -EnableSoftDelete -SoftDeleteRetentionInDays 88
+        # Assert-AreEqual 88 $actual.SoftDeleteRetentionInDays
 	}
 
 	finally
@@ -200,7 +206,7 @@ function Test-RecoverDeletedVault
 
     $recoveredVault = Undo-AzKeyVaultRemoval -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Tag @{"m"= "n"}
     Compare-Vaults $vault $recoveredVault
-    
+
     Assert-AreEqual $recoveredVault.Tags.Count 1
     Assert-True { $recoveredVault.Tags.ContainsKey("m") }
     Assert-True { $recoveredVault.Tags.ContainsValue("n") }
@@ -297,7 +303,7 @@ function Test-ListVaults
 	$tag = @{"abcdefg"="bcdefgh"}
 
 	New-AzResourceGroup -Name $rgName -Location $rgLocation
-	
+
 	try
 	{
 		New-AzKeyVault -Name $vault1Name -ResourceGroupName $rgName -Location $vaultLocation
@@ -369,7 +375,7 @@ function Test-ListVaults
 		$unknownRg = getAssetName
 		Assert-Throws { Get-AzKeyVault -ResourceGroupName $unknownRg }
 	}
-    
+
 	finally
 	{
 		Remove-AzResourceGroup -Name $rgName -Force
@@ -400,7 +406,7 @@ function Test-DeleteVaultByName
 
 		# Test piping
 		New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $vaultLocation
-		
+
 		Get-AzKeyVault -VaultName $vaultName | Remove-AzKeyVault -Force
 
 		$deletedVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
@@ -412,7 +418,7 @@ function Test-DeleteVaultByName
 
 		Assert-Throws { $job | Receive-Job }
 	}
-	
+
 	finally
 	{
 		Remove-AzResourceGroup -Name $rgName -Force
@@ -432,7 +438,7 @@ function Test-SetRemoveAccessPolicyByUPN
     $PermToCertificates = @("get", "list", "create", "delete")
     $PermToStorage = @("get", "list", "delete")
     $vault = Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PermissionsToCertificates $PermToCertificates -PermissionsToStorage $PermToStorage -PassThru
-    
+
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage
     if (-not $global:noADCmdLetMode) {
         Assert-AreEqual $upn (Get-AzADUser -ObjectId $vault.AccessPolicies[0].ObjectId)[0].UserPrincipalName
@@ -470,9 +476,9 @@ function Test-SetRemoveAccessPolicyBySPN
     $PermToSecrets = @("get", "set", "list")
     $PermToCertificates = @("get", "import")
     $PermToStorage = @("get", "list")
-    
+
     $setAccessPolicyFunc = { Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ServicePrincipalName $spn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PermissionsToCertificates $PermToCertificates -PermissionsToStorage $PermToStorage -PassThru }
-    
+
     if ($global:noADCmdLetMode) {
         Assert-Throws { &$setAccessPolicyFunc }
     }
@@ -508,7 +514,7 @@ function Test-SetRemoveAccessPolicyByObjectId
     }
 
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage
-    
+
     Assert-AreEqual $objId $vault.AccessPolicies[0].ObjectId
 
     $vault = Remove-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PassThru
@@ -528,7 +534,7 @@ function Test-SetRemoveAccessPolicyByCompoundId
     $vault = Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId -PermissionsToKeys $PermToKeys -PermissionsToCertificates $PermToCertificates -PermissionsToStorage $PermToStorage -PassThru
 
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage
-    
+
     Assert-AreEqual $objId $vault.AccessPolicies[0].ObjectId
     Assert-AreEqual $appId $vault.AccessPolicies[0].ApplicationId
 
@@ -577,7 +583,7 @@ function Test-SetCompoundIdAccessPolicy
     $vault = Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId -PermissionsToKeys $PermToKeys -PermissionsToCertificates $PermToCertificates -PermissionsToStorage $PermToStorage -PassThru
 
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage
-    
+
     Assert-AreEqual $objId $vault.AccessPolicies[0].ObjectId
     Assert-AreEqual $appId $vault.AccessPolicies[0].ApplicationId
 
@@ -624,28 +630,28 @@ function Test-ModifyAccessPolicy
     $vault.AccessPolicies[0].PermissionsToKeys.Remove("unwrapKey")
     $vault = $vault.AccessPolicies[0] | Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -PassThru
 
-    $PermToKeys = @("encrypt", "decrypt", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")    
-    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage 
+    $PermToKeys = @("encrypt", "decrypt", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
+    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage
 
     # Change just the secrets perms
     $PermToSecrets = Get-AllSecretPermissions
     $vault = Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToSecrets $PermToSecrets -PassThru
-    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage 
+    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage
 
     # Remove just the keys perms
     $PermToKeys = @()
     $vault = Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PassThru
-    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage 
-    
+    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage
+
     # Remove secret perms too
     $PermToSecrets = @()
     $vault = Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
-    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage 
+    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage
 
     # Remove certificates perms
     $PermToCertificates = @()
     $vault = Set-AzKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToCertificates $PermToCertificates -PassThru
-    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage 
+    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage
 
     # Finally remove certificates perms
     $PermToStorage = @()
@@ -807,7 +813,7 @@ function Test-NetworkRuleSet
 		$rg = New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
 		$vault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $vaultLocation
 
-		$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" -ServiceEndpoint Microsoft.KeyVault 
+		$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" -ServiceEndpoint Microsoft.KeyVault
 		$virtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName -Location $virtualNetworkLocation -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
 
 		$myNetworkResId = (Get-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName).Subnets[0].Id
@@ -836,4 +842,46 @@ function Test-NetworkRuleSet
 	{
 		Remove-AzResourceGroup -Name $resourceGroupName -Force
 	}
+}
+
+function Test-UpdateKeyVault {
+    $resourceGroupName = getAssetName
+    $resourceGroupLocation = Get-Location "Microsoft.Resources" "resourceGroups" "westus"
+    $vaultLocation = Get-Location "Microsoft.KeyVault" "vaults" "westus"
+
+    try {
+        $rg = New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
+        $vault = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $resourceGroupName -Location $vaultLocation
+        Assert-True { $vault.EnableSoftDelete -ne $true } "1. EnableSoftDelete should not be true"
+        Assert-True { $vault.EnablePurgeProtection -ne $true } "1. EnablePurgeProtection should not be true"
+
+        # Enable soft delete first
+        $vault = $vault | Update-AzKeyVault -EnableSoftDelete
+        Assert-True { $vault.EnableSoftDelete } "2. EnableSoftDelete should be true"
+        Assert-True { $vault.EnablePurgeProtection -ne $true } "2. EnablePurgeProtection should not be true"
+        # Assert-AreEqual 90 $vault.SoftDeleteRetentionInDays "2. SoftDeleteRetentionInDays should default to 90"
+
+        # Enable again
+        $vault = $vault | Update-AzKeyVault -EnableSoftDelete
+        Assert-True { $vault.EnableSoftDelete } "2.5. EnableSoftDelete should be true"
+        Assert-True { $vault.EnablePurgeProtection -ne $true } "2.5. EnablePurgeProtection should not be true"
+        
+        # Then enable purge protection
+        $vault = $vault | Update-AzKeyVault -EnablePurgeProtection
+        Assert-True { $vault.EnableSoftDelete } "3. EnableSoftDelete should be true"
+        Assert-True { $vault.EnablePurgeProtection } "3. EnablePurgeProtection should be true"
+
+        # Enable both together
+        $vault = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $resourceGroupName -Location $vaultLocation
+        $vault = $vault | Update-AzKeyVault -EnableSoftDelete -EnablePurgeProtection
+        Assert-True { $vault.EnableSoftDelete } "4. EnableSoftDelete should be true"
+        Assert-True { $vault.EnablePurgeProtection } "4. EnablePurgeProtection should be true"
+        
+        # # Only enable purge protection (TODO: uncomment this assert after keyvault team deploys their fix)
+        # $vault = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $resourceGroupName -Location $vaultLocation
+        # Assert-Throws { $vault = $vault | Update-AzKeyVault -EnablePurgeProtection }
+    }
+    finally {
+        $rg | Remove-AzResourceGroup -Force
+    }
 }
