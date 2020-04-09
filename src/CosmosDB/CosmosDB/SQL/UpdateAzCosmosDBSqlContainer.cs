@@ -127,7 +127,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            ContainerPartitionKey containerPartitionKey = null;
+            SqlContainerResource sqlContainerResource = UpdateAzCosmosDBSqlContainer.PopulateSqlContainerResource(readSqlContainerGetResults.Resource);
+
             if (PartitionKeyPath != null)
             {
                 List<string> Paths = new List<string>();
@@ -135,75 +136,27 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     Paths.Add(path);
                 }
-                containerPartitionKey = new ContainerPartitionKey
+                sqlContainerResource.PartitionKey = new ContainerPartitionKey
                 {
                     Kind = PartitionKeyKind,
                     Paths = Paths,
                     Version = PartitionKeyVersion
                 };
             }
-            else
-            {
-                containerPartitionKey = readSqlContainerGetResults.Resource.PartitionKey;
-            }
-
-            SqlContainerResource sqlContainerResource = new SqlContainerResource
-            {
-                Id = Name,
-                PartitionKey = containerPartitionKey
-            };
 
             if (UniqueKeyPolicy != null)
             {
-                UniqueKeyPolicy uniqueKeyPolicy = new UniqueKeyPolicy
-                {
-                    UniqueKeys = new List<UniqueKey>()
-                };
-
-                foreach (PSUniqueKey uniqueKey in UniqueKeyPolicy.UniqueKeys)
-                {
-                    UniqueKey key = new UniqueKey
-                    {
-                        Paths = new List<string>()
-                    };
-                    
-                    foreach(string path in uniqueKey.Paths)
-                    {
-                        key.Paths.Add(path);
-                    }
-
-                    uniqueKeyPolicy.UniqueKeys.Add(key);
-                }
-
-                sqlContainerResource.UniqueKeyPolicy = uniqueKeyPolicy;
-            }
-            else
-            {
-                sqlContainerResource.UniqueKeyPolicy = readSqlContainerGetResults.Resource.UniqueKeyPolicy;
+                sqlContainerResource.UniqueKeyPolicy = PSUniqueKey.ConvertPSUniqueKeyPolicyToUniqueKeyPolicy(UniqueKeyPolicy);
             }
 
             if (TtlInSeconds != null)
             {
                 sqlContainerResource.DefaultTtl = TtlInSeconds;
             }
-            else
-            {
-                sqlContainerResource.DefaultTtl = readSqlContainerGetResults.Resource.DefaultTtl;
-            }
 
             if (ConflictResolutionPolicy != null)
             {
-                ConflictResolutionPolicyMode = ConflictResolutionPolicy.Mode;
-
-                if (ConflictResolutionPolicy.ConflictResolutionPath != null)
-                {
-                    ConflictResolutionPolicyPath = ConflictResolutionPolicy.ConflictResolutionPath;
-                }
-
-                if (ConflictResolutionPolicy.ConflictResolutionProcedure != null)
-                {
-                    ConflictResolutionPolicyProcedure = ConflictResolutionPolicy.ConflictResolutionProcedure;
-                }
+                sqlContainerResource.ConflictResolutionPolicy = PSConflictResolutionPolicy.ConvertPSConflictResolutionPolicyToConflictResolutionPolicy(ConflictResolutionPolicy);
             }
             else if (ConflictResolutionPolicyMode != null)
             {
@@ -223,79 +176,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                 sqlContainerResource.ConflictResolutionPolicy = conflictResolutionPolicy;
             }
-            else
-            {
-                sqlContainerResource.ConflictResolutionPolicy = readSqlContainerGetResults.Resource.ConflictResolutionPolicy;
-            }
 
             if (IndexingPolicy != null)
             {
-                IndexingPolicy indexingPolicy = new IndexingPolicy
-                {
-                    Automatic = IndexingPolicy.Automatic,
-                    IndexingMode = IndexingPolicy.IndexingMode,
-                };
-
-                if (IndexingPolicy.IncludedPaths != null)
-                {
-                    IList<IncludedPath> includedPaths = new List<IncludedPath>();
-                    foreach (PSIncludedPath pSIncludedPath in IndexingPolicy.IncludedPaths)
-                    {
-                        includedPaths.Add(new IncludedPath
-                        {
-                            Path = pSIncludedPath.Path,
-                            Indexes = PSIncludedPath.ConvertPSIndexesToIndexes(pSIncludedPath.Indexes)
-                        });
-                    }
-
-                    indexingPolicy.IncludedPaths = new List<IncludedPath>(includedPaths);
-                }
-
-                if (IndexingPolicy.ExcludedPaths != null && IndexingPolicy.ExcludedPaths.Count > 0)
-                {
-                    IList<ExcludedPath> excludedPaths = new List<ExcludedPath>();
-                    foreach (PSExcludedPath pSExcludedPath in IndexingPolicy.ExcludedPaths)
-                    {
-                        excludedPaths.Add(new ExcludedPath { Path = pSExcludedPath.Path });
-                    }
-
-                    indexingPolicy.ExcludedPaths = new List<ExcludedPath>(excludedPaths);
-                }
-
-                if (IndexingPolicy.CompositeIndexes != null)
-                {
-                    IList<IList<CompositePath>> compositeIndexes = new List<IList<CompositePath>>();
-                    foreach (IList<PSCompositePath> pSCompositePathList in IndexingPolicy.CompositeIndexes)
-                    {
-                        IList<CompositePath> compositePathList = new List<CompositePath>();
-                        foreach (PSCompositePath pSCompositePath in pSCompositePathList)
-                        {
-                            compositePathList.Add(new CompositePath { Order = pSCompositePath.Order, Path = pSCompositePath.Path });
-                        }
-
-                        compositeIndexes.Add(compositePathList);
-                    }
-
-                    indexingPolicy.CompositeIndexes = new List<IList<CompositePath>>(compositeIndexes);
-                }
-
-                if (IndexingPolicy.SpatialIndexes != null && IndexingPolicy.SpatialIndexes.Count > 0)
-                {
-                    IList<SpatialSpec> spatialIndexes = new List<SpatialSpec>();
-
-                    foreach (PSSpatialSpec pSSpatialSpec in IndexingPolicy.SpatialIndexes)
-                    {
-                        spatialIndexes.Add(new SpatialSpec { Path = pSSpatialSpec.Path, Types = pSSpatialSpec.Types });
-                    }
-
-                    indexingPolicy.SpatialIndexes = new List<SpatialSpec>(spatialIndexes);
-                }
-
-                sqlContainerResource.IndexingPolicy = indexingPolicy;
-            }
-            else
-            {
-                sqlContainerResource.IndexingPolicy = readSqlContainerGetResults.Resource.IndexingPolicy;
+                sqlContainerResource.IndexingPolicy = PSIndexingPolicy.ConvertPSIndexingToIndexingPolicy(IndexingPolicy);
             }
 
             CreateUpdateOptions options = new CreateUpdateOptions();
@@ -310,13 +194,26 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = options
             };
 
-            if (ShouldProcess(Name, "Updating an CosmosDB Sql Container"))
+            if (ShouldProcess(Name, "Updating an existing CosmosDB Sql Container"))
             {
                 SqlContainerGetResults sqlContainerGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlContainer(ResourceGroupName, AccountName, DatabaseName, Name, sqlContainerCreateUpdateParameters);
                 WriteObject(new PSSqlContainerGetResults(sqlContainerGetResults));
             }
 
             return;
+        }
+
+        private static SqlContainerResource PopulateSqlContainerResource(SqlContainerGetPropertiesResource sqlContainerGetPropertiesResource)
+        {
+            return new SqlContainerResource
+            {
+                ConflictResolutionPolicy = sqlContainerGetPropertiesResource.ConflictResolutionPolicy,
+                UniqueKeyPolicy = sqlContainerGetPropertiesResource.UniqueKeyPolicy,
+                DefaultTtl = sqlContainerGetPropertiesResource.DefaultTtl,
+                Id = sqlContainerGetPropertiesResource.Id,
+                IndexingPolicy = sqlContainerGetPropertiesResource.IndexingPolicy,
+                PartitionKey = sqlContainerGetPropertiesResource.PartitionKey
+            };
         }
     }
 }
