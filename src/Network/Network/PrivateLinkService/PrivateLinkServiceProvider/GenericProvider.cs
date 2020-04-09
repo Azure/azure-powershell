@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             {
                 string url = BuildPrivateEndpointConnectionsOwnerURL(resourceGroupName, serviceName);
                 TrackedResource resource = ServiceClient.Operations.GetResouce<TrackedResource>(url, _configuration.ApiVersion);
-                if(resource.PrivateEndpointConnections != null)
+                if(resource?.PrivateEndpointConnections != null)
                 {
                     foreach (var pec in resource.PrivateEndpointConnections)
                     {
