@@ -61,15 +61,12 @@ directive:
   - from: swagger-document
     where: $
     transform: return $.replace(/Microsoft.IotHub/g, "Microsoft.IoTHub")
-<<<<<<< HEAD
-=======
   - from: swagger-document
     where: $
     transform: return $.replace(/\/eventSources\//g, "/eventsources/")
   - from: swagger-document
     where: $
     transform: return $.replace(/\/accessPolicies\//g, "/accesspolicies/")
->>>>>>> upstream/generation
   # Remove the unneeded parameter set
   - where:
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
