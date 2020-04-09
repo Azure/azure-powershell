@@ -19,11 +19,15 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Commands.CosmosDB.Exceptions;
+using Microsoft.Azure.Management.CosmosDB;
+using Microsoft.Rest.Azure;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlStoredProcedure", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSqlStoredProcedureGetResults))]
-    public class SetAzCosmosDBSqlStoredProcedure : AzureCosmosDBCmdletBase
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlStoredProcedure", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSqlStoredProcedureGetResults), typeof(ResourceNotFoundException))]
+    public class UpdateAzCosmosDBSqlStoredProcedure : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ResourceGroupCompleter]
@@ -42,27 +46,58 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string ContainerName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.StoredProcedureNameHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.StoredProcedureNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.StoredProcedureBodyHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.StoredProcedureBodyHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Body { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlContainerObjectHelpMessage)]
         [ValidateNotNull]
-        public PSSqlContainerGetResults InputObject { get; set; }
+        public PSSqlContainerGetResults ParentObject { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.SqlStoredProcedureObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSSqlStoredProcedureGetResults InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet))
             {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 ContainerName = resourceIdentifier.ResourceName;
                 DatabaseName = ResourceIdentifierExtensions.GetSqlDatabaseName(resourceIdentifier);
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
+            }
+            else if (ParameterSetName.Equals(ObjectParameterSet))
+            {
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                ContainerName = ResourceIdentifierExtensions.GetSqlContainerName(resourceIdentifier);
+                DatabaseName = ResourceIdentifierExtensions.GetSqlDatabaseName(resourceIdentifier);
+                AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
+                Name = ResourceIdentifierExtensions.GetSqlStoredProcedureName(resourceIdentifier);
+            }
+
+            SqlStoredProcedureGetResults readSqlStoredProcedureGetResults = null;
+            try
+            {
+                readSqlStoredProcedureGetResults = CosmosDBManagementClient.SqlResources.GetSqlStoredProcedure(ResourceGroupName, AccountName, DatabaseName, ContainerName, Name);
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(message: string.Format(ExceptionMessage.NotFound, Name), innerException: e);
+                }
+            }
+
+            if (string.IsNullOrEmpty(Body))
+            {
+                Body = readSqlStoredProcedureGetResults.Resource.Body;
             }
 
             SqlStoredProcedureCreateUpdateParameters sqlStoredProcedureCreateUpdateParameters = new SqlStoredProcedureCreateUpdateParameters
@@ -71,11 +106,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     Id = Name,
                     Body = Body
-                },
-                Options = new Dictionary<string, string>() { }
+                }
             };
 
-            if (ShouldProcess(Name, "Setting CosmosDB Sql Stored Procedure"))
+            if (ShouldProcess(Name, "Updating an existing CosmosDB Sql Stored Procedure"))
             {
                 SqlStoredProcedureGetResults sqlStoredProcedureGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlStoredProcedureWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, ContainerName, Name, sqlStoredProcedureCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSqlStoredProcedureGetResults(sqlStoredProcedureGetResults));

@@ -12,23 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Text;
-using System.Linq;
 using Microsoft.Azure.Commands.CosmosDB.Models;
-using System.Reflection;
-using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using Microsoft.Azure.Commands.CosmosDB.Exceptions;
+using Microsoft.Azure.Management.CosmosDB;
+using Microsoft.Rest.Azure;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlTrigger", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSqlTriggerGetResults))]
-    public class SetAzCosmosDBSqlTrigger : AzureCosmosDBCmdletBase
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlTrigger", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSqlTriggerGetResults), typeof(ResourceNotFoundException))]
+    public class UpdateAzCosmosDBSqlTrigger : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ResourceGroupCompleter]
@@ -47,11 +46,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string ContainerName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.TriggerNameHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.TriggerNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.TriggerBodyHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.TriggerBodyHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Body { get; set; }
 
@@ -63,27 +62,58 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlContainerObjectHelpMessage)]
         [ValidateNotNull]
-        public PSSqlContainerGetResults InputObject { get; set; }
+        public PSSqlContainerGetResults ParentObject { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.SqlTriggerObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSSqlTriggerGetResults InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet))
             {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 ContainerName = resourceIdentifier.ResourceName;
                 DatabaseName = ResourceIdentifierExtensions.GetSqlDatabaseName(resourceIdentifier);
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
             }
-
-            if(string.IsNullOrEmpty(TriggerOperation))
+            else if (ParameterSetName.Equals(ObjectParameterSet))
             {
-                TriggerOperation = "All";
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                ContainerName = ResourceIdentifierExtensions.GetSqlContainerName(resourceIdentifier);
+                DatabaseName = ResourceIdentifierExtensions.GetSqlDatabaseName(resourceIdentifier);
+                AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
+                Name = ResourceIdentifierExtensions.GetSqlTriggerFunctionName(resourceIdentifier);
+            }
+
+            SqlTriggerGetResults readSqlTriggerGetResults = null;
+            try
+            {
+                readSqlTriggerGetResults = CosmosDBManagementClient.SqlResources.GetSqlTrigger(ResourceGroupName, AccountName, DatabaseName, ContainerName, Name);
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(message: string.Format(ExceptionMessage.NotFound, Name), innerException: e);
+                }
+            }
+
+            if (string.IsNullOrEmpty(TriggerOperation))
+            {
+                TriggerOperation = readSqlTriggerGetResults.Resource.TriggerOperation;
             }
 
             if(string.IsNullOrEmpty(TriggerType))
             {
-                TriggerType = "Pre";
+                TriggerType = readSqlTriggerGetResults.Resource.TriggerType;
+            }
+
+            if (string.IsNullOrEmpty(Body))
+            {
+                Body = readSqlTriggerGetResults.Resource.Body;
             }
 
             SqlTriggerCreateUpdateParameters sqlTriggerCreateUpdateParameters = new SqlTriggerCreateUpdateParameters
@@ -94,11 +124,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     TriggerOperation = TriggerOperation,
                     TriggerType = TriggerType,
                     Body = Body
-                },
-                Options = new Dictionary<string, string>() { }
+                }
             };
 
-            if (ShouldProcess(Name, "Setting CosmosDB Sql Trigger"))
+            if (ShouldProcess(Name, "Updating an existing CosmosDB Sql Trigger"))
             {
                 SqlTriggerGetResults sqlTriggerGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlTriggerWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, ContainerName, Name, sqlTriggerCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSqlTriggerGetResults(sqlTriggerGetResults));
