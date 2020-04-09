@@ -15,7 +15,7 @@ Get the connection string according to client connection provider.
 ### Get (Default)
 ```
 Get-AzMySqlConnectionString -Client <String> -Name <String> -ResourceGroupName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -125,6 +125,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SubscriptionId
+The subscription ID that identifies an Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
