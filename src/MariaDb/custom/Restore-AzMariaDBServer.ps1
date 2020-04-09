@@ -169,7 +169,7 @@ function Restore-AzMariaDbServer
 
             $ServerObject = $InputObject
             if (-not $PSBoundParameters.ContainsKey('InputObject')) {
-                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId
                 
                 $Null = $PSBoundParameters.Remove('ServerName')
             } else {
