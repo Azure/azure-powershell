@@ -549,6 +549,10 @@
 	  "file": "src\\IotHub\\IotHub.Test\\SessionRecords\\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubDPTracingTests\\TestAzureIotHubTracing.json",
 	  "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
 	},
+	{
+	  "file": "src\\IotHub\\IotHub.Test\\SessionRecords\\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubDPConfigurationTests\\TestAzureIotHubConfigurationLifecycle.json",
+	  "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+	},
     {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinux.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."

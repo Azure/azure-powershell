@@ -211,3 +211,34 @@ function Get-AzureRmPolicyState-AllResourceGroupLevelPolicyAssignmentScope
     $policyStates = Get-AzPolicyState -All -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10
 	Validate-PolicyStates $policyStates 10
 }
+
+<#
+.SYNOPSIS
+Trigger a policy compliance scan at subscription scope
+#>
+function Start-AzPolicyComplianceScan-SubscriptionScope
+{
+    Assert-True { Start-AzPolicyComplianceScan -PassThru }
+}
+
+<#
+.SYNOPSIS
+Trigger a policy compliance scan at subscription scope
+#>
+function Start-AzPolicyComplianceScan-SubscriptionScope-AsJob
+{
+    $job = Start-AzPolicyComplianceScan -PassThru -AsJob
+    $job | Wait-Job
+    Assert-AreEqual "Completed" $job.State
+    Assert-True { $job | Receive-Job }
+}
+
+<#
+.SYNOPSIS
+Trigger a policy compliance scan at resource group scope
+#>
+function Start-AzPolicyComplianceScan-ResourceGroupScope
+{
+    $resourceGroupName = Get-TestResourceGroupNameForPolicyAssignmentStates
+    Assert-True { Start-AzPolicyComplianceScan -ResourceGroupName $resourceGroupName -PassThru }
+}
