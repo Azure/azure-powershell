@@ -90,7 +90,7 @@ directive:
     hide: true
   - where:
       parameter-name: VirtualNetworkSubnetId
-      subject: VirtualNetwork
+      subject: VirtualNetworkRule
     set:
       parameter-name: SubnetId
   - where:
