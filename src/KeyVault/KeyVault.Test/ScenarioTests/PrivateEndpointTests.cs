@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAbc()
+        public void TestPrivateEndpoint()
         {
-            TestRunner.RunTestScript("Test-Abc");
+            TestRunner.RunTestScript("Test-PrivateEndpoint");
         }
     }
 }

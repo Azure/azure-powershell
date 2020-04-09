@@ -1,4 +1,4 @@
-function Test-Abc {
+function Test-PrivateEndpoint {
     $rg = Get-ResourceGroupName
     $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
@@ -18,11 +18,24 @@ function Test-Abc {
         $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name (GetAssetName) -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPolicies "Disabled"
         $vnet = New-AzVirtualNetwork -ResourceGroupName $rg -Name (GetAssetName) -Location $vnetLocation -AddressPrefix "11.0.0.0/16" -Subnet $subnetConfig
         $privateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name (GetAssetName) -PrivateLinkServiceId $vault.ResourceId -GroupId $privateLinkResource.GroupId
-        $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rg -Name (GetAssetName) -Location $peLocation -Subnet $vnet.subnets[0] -PrivateLinkServiceConnection $privateLinkServiceConnection -ByManualRequest
+        New-AzPrivateEndpoint -ResourceGroupName $rg -Name (GetAssetName) -Location $peLocation -Subnet $vnet.subnets[0] -PrivateLinkServiceConnection $privateLinkServiceConnection -ByManualRequest
         $privateEndpointConnection = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $vault.ResourceId
-
         Assert-NotNull $privateEndpointConnection
         Assert-AreEqual "Pending" $privateEndpointConnection.PrivateLinkServiceConnectionState.Status
+
+        # approve connection
+        $connectionApprove = Approve-AzPrivateEndpointConnection -ResourceId $privateEndpointConnection.Id
+        Assert-NotNull $connectionApprove
+        Assert-AreEqual "Approved" $connectionApprove.PrivateLinkServiceConnectionState.Status
+
+        Start-TestSleep 20000
+
+        # remove connection
+        $connectionRemove = Remove-AzPrivateEndpointConnection -ResourceId $privateEndpointConnection.Id -PassThru -Force
+        Assert-True { $connectionRemove }
+        Start-TestSleep 15000
+        Assert-Null (Get-AzPrivateEndpointConnection -PrivateLinkResourceId $vault.ResourceId)
+
 
     }
     finally {

@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added support to Microsoft.PowerShell.SecretManagement [#11178]
+* Added support to private endpoint
 
 ## Version 1.5.2
 * Added breaking change attributes to `New-AzKeyVault`
