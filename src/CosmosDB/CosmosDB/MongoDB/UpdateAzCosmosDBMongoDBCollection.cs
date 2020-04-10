@@ -97,18 +97,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            MongoDBCollectionResource mongoDBCollectionResource = new MongoDBCollectionResource
-            {
-                Id = Name
-            };
+            MongoDBCollectionResource mongoDBCollectionResource = PopulateMongoDBResource(readMongoDBCollectionGetResults.Resource);
 
             if(Shard != null)
             {
                 mongoDBCollectionResource.ShardKey = new Dictionary<string, string> { { Shard, "Hash" } };
-            }
-            else
-            {
-                mongoDBCollectionResource.ShardKey = readMongoDBCollectionGetResults.Resource.ShardKey;
             }
 
             if(Index != null)
@@ -120,10 +113,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
 
                 mongoDBCollectionResource.Indexes = Indexes;
-            }
-            else
-            {
-                mongoDBCollectionResource.Indexes = readMongoDBCollectionGetResults.Resource.Indexes;
             }
 
             CreateUpdateOptions options = new CreateUpdateOptions();
@@ -146,6 +135,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             return;
+        }
+
+        private MongoDBCollectionResource PopulateMongoDBResource(MongoDBCollectionGetPropertiesResource resource)
+        {
+            return new MongoDBCollectionResource
+            {
+                Id = resource.Id,
+                Indexes = resource.Indexes,
+                ShardKey = resource.ShardKey
+            };
         }
     }
 }
