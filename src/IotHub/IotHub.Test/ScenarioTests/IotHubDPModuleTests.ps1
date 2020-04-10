@@ -104,7 +104,11 @@ function Test-AzureRmIotHubModuleLifecycle
 	Assert-True { $module.DeviceId -eq $device1 }
 	Assert-True { $module.Authentication.Type -eq 'SelfSigned' }
 
-	# Update Device
+	# Invoke direct method on device module
+	$errorMessage = 'Timed out waiting for device to connect.'
+	Assert-ThrowsContains { Invoke-AzIotHubModuleMethod -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module1 -Name "SetTelemetryInterval" } $errorMessage
+
+	# Update Module
 	$updatedModule1 = Set-AzIoTHubModule -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module1 -AuthMethod 'x509_ca'
 	Assert-True { $updatedModule1.Id -eq $module1 }
 	Assert-True { $updatedModule1.DeviceId -eq $device1 }

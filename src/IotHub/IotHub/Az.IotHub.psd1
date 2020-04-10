@@ -104,7 +104,8 @@ CmdletsToExport = 'Add-AzIotHubKey', 'Get-AzIotHubEventHubConsumerGroup',
                'Get-AzIotHubDeviceTwin', 'Update-AzIotHubDeviceTwin', 'Invoke-AzIotHubDeviceMethod',
                'Get-AzIotHubModuleTwin', 'Update-AzIotHubModuleTwin',
                'Add-AzIotHubConfiguration', 'Get-AzIotHubConfiguration',
-               'Remove-AzIotHubConfiguration', 'Set-AzIotHubConfiguration'
+               'Remove-AzIotHubConfiguration', 'Set-AzIotHubConfiguration',
+               'Invoke-AzIotHubModuleMethod'
 # Variables to export from this module
 # VariablesToExport = @()
 
