@@ -131,7 +131,7 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/OperationOrigin System/, 'OperationOrigin System1');
-  - from: ServerForCreate.cs
+  - from: source-file-csharp
     where: $
     transform: $ = $.replace(/internal partial interface IServerForCreateInternal/, 'public partial interface IServerForCreateInternal');
   - from: (.*)AzMariaDbServer_(.*).cs
