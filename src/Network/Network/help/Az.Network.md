@@ -401,6 +401,9 @@ Returns connection monitor with specified name or the list of connection monitor
 ### [Get-AzNetworkWatcherConnectionMonitorReport](Get-AzNetworkWatcherConnectionMonitorReport.md)
 Query a snapshot of the most recent connection states.
 
+### [Get-AzNetworkWatcherFlowLog](Get-AzNetworkWatcherFlowLog.md)
+Gets a flow log resource or a list of flow log resources in the specified subscription and region.
+
 ### [Get-AzNetworkWatcherFlowLogStatus](Get-AzNetworkWatcherFlowLogStatus.md)
 Gets the status of flow logging on a resource.
 
@@ -845,6 +848,30 @@ Creates a new Network Watcher resource.
 ### [New-AzNetworkWatcherConnectionMonitor](New-AzNetworkWatcherConnectionMonitor.md)
 Creates a connection monitor.
 
+### [New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject](New-AzNetworkWatcherConnectionMonitorEndpointFilterItemObject.md)
+Creates a connection monitor endpoint filter item.
+
+### [New-AzNetworkWatcherConnectionMonitorEndpointObject](New-AzNetworkWatcherConnectionMonitorEndpointObject.md)
+Creates a connection monitor endpoint.
+
+### [New-AzNetworkWatcherConnectionMonitorObject](New-AzNetworkWatcherConnectionMonitorObject.md)
+Create a connection monitor V2 object.
+
+### [New-AzNetworkWatcherConnectionMonitorOutputObject](New-AzNetworkWatcherConnectionMonitorOutputObject.md)
+Create connection monitor output destination object.
+
+### [New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject](New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject.md)
+Create protocol configuration used to perform test evaluation over TCP, HTTP or ICMP.
+
+### [New-AzNetworkWatcherConnectionMonitorTestConfigurationObject](New-AzNetworkWatcherConnectionMonitorTestConfigurationObject.md)
+Create a connection monitor test configuration.
+
+### [New-AzNetworkWatcherConnectionMonitorTestGroupObject](New-AzNetworkWatcherConnectionMonitorTestGroupObject.md)
+Create a connection monitor test group.
+
+### [New-AzNetworkWatcherFlowLog](New-AzNetworkWatcherFlowLog.md)
+Create or update a flow log resource for the specified network security group.
+
 ### [New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile](New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile.md)
 Creates a new network configuration diagnostic profile object. 
 This object is used to restrict the network configuration during a diagnostic session using the specified criteria.
@@ -1139,7 +1166,10 @@ Removes a network security rule from a network security group.
 Removes a Network Watcher.
 
 ### [Remove-AzNetworkWatcherConnectionMonitor](Remove-AzNetworkWatcherConnectionMonitor.md)
-Remove connection monitor.
+Removes a connection monitor.
+
+### [Remove-AzNetworkWatcherFlowLog](Remove-AzNetworkWatcherFlowLog.md)
+Removes a flow log resource.
 
 ### [Remove-AzNetworkWatcherPacketCapture](Remove-AzNetworkWatcherPacketCapture.md)
 Removes a packet capture resource.
@@ -1407,6 +1437,9 @@ Configures flow logging for a target resource.
 
 ### [Set-AzNetworkWatcherConnectionMonitor](Set-AzNetworkWatcherConnectionMonitor.md)
 Update a connection monitor.
+
+### [Set-AzNetworkWatcherFlowLog](Set-AzNetworkWatcherFlowLog.md)
+Update a flow log resource.
 
 ### [Set-AzPrivateEndpoint](Set-AzPrivateEndpoint.md)
 Updates a private endpoint.
