@@ -127,7 +127,7 @@ function Test-PrivateEndpointConnectionCRUD
     # Setup
     $rgname = Get-ResourceGroupName;
     $rname = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "eastus";
+    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "eastus2";
     # Dependency parameters
     $IpConfigurationName = "IpConfigurationName";
     $vnetName = Get-ResourceName;
