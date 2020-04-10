@@ -137,12 +137,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                 string subId = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
                 RestTestFramework.TestEnvironment environment = new RestTestFramework.TestEnvironment(connectionString: subId);
                 this.MonitorManagementClient = this.GetInsightsManagementClient(context: context, env: environment);
-                ResourceManagementClient = this.GetResourceManagementClient(context: context, env: environment);
-                StorageManagementClient = this.GetStorageManagementClient(context: context, env: environment);
-                ApplicationInsightsClient = this.GetApplicationInsightsManagementClient(context: context, env: environment);
-                NetworkManagementClient = this.GetNetworkManagementClient(context: context, env: environment);
-                AzureRestClient = this.GetAzureRestClient(context: context, env: environment);
-                OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context: context, env: environment);
+                this.ResourceManagementClient = this.GetResourceManagementClient(context: context, env: environment);
+                this.StorageManagementClient = this.GetStorageManagementClient(context: context, env: environment);
+                this.ApplicationInsightsClient = this.GetApplicationInsightsManagementClient(context: context, env: environment);
+                this.NetworkManagementClient = this.GetNetworkManagementClient(context: context, env: environment);
+                this.AzureRestClient = this.GetAzureRestClient(context: context, env: environment);
+                this.OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context: context, env: environment);
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
