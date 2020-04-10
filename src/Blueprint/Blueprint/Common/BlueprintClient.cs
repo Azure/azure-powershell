@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return latest;
         }
 
-        public IEnumerable<PSBlueprintAssignment> ListBlueprintAssignments(string subscriptionId)
+        public IEnumerable<PSBlueprintAssignment> ListBlueprintAssignments(string scope)
         {
-            var assignments = blueprintManagementClient.Assignments.List(subscriptionId);
+            var assignments = blueprintManagementClient.Assignments.List(scope);
 
-            foreach (var assignment in assignments.Select(assignment => PSBlueprintAssignment.FromAssignment(assignment, subscriptionId)))
+            foreach (var assignment in assignments.Select(assignment => PSBlueprintAssignment.FromAssignment(assignment, scope)))
             {
                 yield return assignment;
             }
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             while (!string.IsNullOrEmpty(assignments.NextPageLink))
             {
                 assignments = blueprintManagementClient.Assignments.ListNext(assignments.NextPageLink);
-                foreach (var assignment in assignments.Select(assignment => PSBlueprintAssignment.FromAssignment(assignment, subscriptionId)))
+                foreach (var assignment in assignments.Select(assignment => PSBlueprintAssignment.FromAssignment(assignment, scope)))
                 {
                     yield return assignment;
                 }
