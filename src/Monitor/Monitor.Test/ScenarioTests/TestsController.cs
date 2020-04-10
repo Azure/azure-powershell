@@ -149,10 +149,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                 this.MonitorManagementClient = this.GetInsightsManagementClient(context: context, env: null);
                 ResourceManagementClient = this.GetResourceManagementClient(context: context, env: null);
                 StorageManagementClient = this.GetStorageManagementClient(context: context, env: null);
-                this.ApplicationInsightsClient = this.GetApplicationInsightsManagementClient(context: context, env: environment);
-                this.NetworkManagementClient = this.GetNetworkManagementClient(context: context, env: environment);
-                this.AzureRestClient = this.GetAzureRestClient(context: context, env: environment);
-                this.OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context: context, env: environment);
+                this.ApplicationInsightsClient = this.GetApplicationInsightsManagementClient(context: context, env: null);
+                this.NetworkManagementClient = this.GetNetworkManagementClient(context: context, env: null);
+                this.AzureRestClient = this.GetAzureRestClient(context: context, env: null);
+                this.OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context: context, env: null);
             }
 
             _helper.SetupManagementClients(
