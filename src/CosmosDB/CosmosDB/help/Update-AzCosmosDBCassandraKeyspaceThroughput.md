@@ -32,8 +32,6 @@ Update-AzCosmosDBCassandraKeyspaceThroughput [-Name <String>] -Throughput <Int32
  [<CommonParameters>]
 ```
 
-## DESCRIPTION
-
 ## EXAMPLES
 
 ### Example 1

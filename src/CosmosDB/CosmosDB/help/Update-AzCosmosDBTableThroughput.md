@@ -30,8 +30,6 @@ Update-AzCosmosDBTableThroughput [-Name <String>] -Throughput <Int32> -InputObje
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-## DESCRIPTION
-
 ## EXAMPLES
 
 ### Example 1
