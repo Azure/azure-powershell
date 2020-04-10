@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add breaking change notice for Azure File cmdlets output change in a future release
+* Add breaking change notice for Azure File cmdlets output change in a future   release
 * Support new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
     - New-AzStorageAccount
     - Set-AzStorageAccount
@@ -51,12 +51,12 @@
     - Revoke-AzStorageAccountUserDelegationKeys
 * Upgrade to Microsoft.Azure.Management.Storage 14.2.0, to support new API version 2019-06-01.
 * Support Share QuotaGiB more than 5120 in Management plane File Share cmdlets, and add parameter alias "Quota" to parameter "QuotaGiB" 
-	- New-AzRmStorageShare
-	- Update-AzRmStorageShare
+  - New-AzRmStorageShare
+  - Update-AzRmStorageShare
 * Add parameter alias "QuotaGiB" to parameter "Quota"
-	- Set-AzStorageShareQuota
+  - Set-AzStorageShareQuota
 * Fix the issue that Set-AzStorageContainerAcl can clean up the stored Access Policy
-	- Set-AzStorageContainerAcl
+  - Set-AzStorageContainerAcl
 
 ## Version 1.9.0
 * Support enable Large File share when create or update Storage account
