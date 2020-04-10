@@ -19,6 +19,14 @@
 -->
 
 ## Upcoming Release
+* Added cmdlets for private link scope
+    - "Get-AzInsightsPrivateLinkScope"
+    - "Remove-AzInsightsPrivateLinkScope"
+    - "New-AzInsightsPrivateLinkScope"
+    - "Update-AzInsightsPrivateLinkScope"
+    - "Get-AzInsightsPrivateLinkScopeScopedResource"
+    - "New-AzInsightsPrivateLinkScopeScopedResource"
+    - "Remove-AzInsightsPrivateLinkScopeScopedResource"
 
 ## Version 1.6.2
 * Updated documentation for `New-AzScheduledQueryRuleLogMetricTrigger`
