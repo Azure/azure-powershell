@@ -450,6 +450,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"f4WegVRukBKDFaeHe+fEKbfnGkdNSss5DLjQ9a+nlszFEy4P/yHUzKkf7EBq25jBskYp9VBsORaXDVbROwppNQ==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"ug771BK3tZz3jgnyE8zlxD0Z5WruNX+bRCrOwso3/CGqupmYPkpyutQ9rD/kqPR3xk8QOar6H8NmfZGFXeqMxQ==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
@@ -8739,6 +8740,7 @@
       "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps5388/providers/Microsoft.Network/virtualNetworkGateways/ps5970/stopPacketCapture?api-version=2020-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNTM4OC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtHYXRld2F5cy9wczU5NzAvc3RvcFBhY2tldENhcHR1cmU/YXBpLXZlcnNpb249MjAyMC0wMy0wMQ==",
       "RequestMethod": "POST",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"sasUrl\": \"https://stops5388.blob.core.windows.net/testcontainer?sv=2019-02-02&sr=c&sig=VnCmTlpEaumzDMv1OCW0z5m2NkWueqeU90lDPlByxVI%3D&st=2020-04-08T16%3A46%3A54Z&se=2020-04-09T17%3A46%3A54Z&sp=rwd\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -8818,6 +8820,7 @@
       "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps5388/providers/Microsoft.Network/virtualNetworkGateways/ps5970/stopPacketCapture?api-version=2020-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNTM4OC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtHYXRld2F5cy9wczU5NzAvc3RvcFBhY2tldENhcHR1cmU/YXBpLXZlcnNpb249MjAyMC0wMy0wMQ==",
       "RequestMethod": "POST",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"sasUrl\": \"https://stops5388.blob.core.windows.net/testcontainer?sv=2019-02-02&sr=c&sig=VnCmTlpEaumzDMv1OCW0z5m2NkWueqeU90lDPlByxVI%3D&st=2020-04-08T16%3A46%3A54Z&se=2020-04-09T17%3A46%3A54Z&sp=rwd\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
