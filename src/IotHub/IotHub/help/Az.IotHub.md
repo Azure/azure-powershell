@@ -14,6 +14,9 @@ Commands for Managing Azure IotHubs
 ### [Add-AzIotHubCertificate](Add-AzIotHubCertificate.md)
 Create/update an Azure IoT Hub certificate.
 
+### [Add-AzIotHubConfiguration](Add-AzIotHubConfiguration.md)
+Add an IoT automatic device management configuration in a target IoT Hub.
+
 ### [Add-AzIotHubDevice](Add-AzIotHubDevice.md)
 Create a device in an IoT Hub.
 
@@ -46,6 +49,9 @@ Lists all certificates or a particular certificate contained within an Azure IoT
 
 ### [Get-AzIotHubCertificateVerificationCode](Get-AzIotHubCertificateVerificationCode.md)
 Generates a verification code for an Azure IoT Hub certificate. 
+
+### [Get-AzIotHubConfiguration](Get-AzIotHubConfiguration.md)
+Lists all or a particular IoT automatic device management configuration.
 
 ### [Get-AzIotHubConnectionString](Get-AzIotHubConnectionString.md)
 Gets the IotHub connectionstrings.
@@ -86,6 +92,9 @@ Get the details of an IoT device module or list modules located on an IoT device
 ### [Get-AzIotHubModuleConnectionString](Get-AzIotHubModuleConnectionString.md)
 Get the connection string of a target IoT device module in an Iot Hub.
 
+### [Get-AzIotHubModuleTwin](Get-AzIotHubModuleTwin.md)
+Gets an IoT device module twin.
+
 ### [Get-AzIotHubQuotaMetric](Get-AzIotHubQuotaMetric.md)
 Gets the Quota Metrics for an IotHub.
 
@@ -100,6 +109,9 @@ Get information on all the endpoints for your IoT Hub
 
 ### [Get-AzIotHubValidSku](Get-AzIotHubValidSku.md)
 Gets all valid skus that this IotHub can transition to.
+
+### [Invoke-AzIotHubDeviceMethod](Invoke-AzIotHubDeviceMethod.md)
+Invoke a direct method on a device.
 
 ### [Invoke-AzIotHubManualFailover](Invoke-AzIotHubManualFailover.md)
 Invoke failover process for the IoT Hub to the geo-paired disaster recovery region.
@@ -121,6 +133,9 @@ Deletes an IotHub.
 
 ### [Remove-AzIotHubCertificate](Remove-AzIotHubCertificate.md)
 Deletes an Azure IoT Hub certificate.
+
+### [Remove-AzIotHubConfiguration](Remove-AzIotHubConfiguration.md)
+Delete an IoT device configuration.
 
 ### [Remove-AzIotHubDevice](Remove-AzIotHubDevice.md)
 Delete an IoT Hub device.
@@ -148,6 +163,9 @@ Delete an endpoint for your IoT Hub
 
 ### [Set-AzIotHub](Set-AzIotHub.md)
 Updates the properties of an IotHub.
+
+### [Set-AzIotHubConfiguration](Set-AzIotHubConfiguration.md)
+Update the mutable fields of the configuration registration.
 
 ### [Set-AzIotHubDevice](Set-AzIotHubDevice.md)
 Update an IoT Hub device.
@@ -178,4 +196,7 @@ Update an Azure IoT Hub.
 
 ### [Update-AzIotHubDeviceTwin](Update-AzIotHubDeviceTwin.md)
 Updates tags and desired properties of a device twin.
+
+### [Update-AzIotHubModuleTwin](Update-AzIotHubModuleTwin.md)
+Updates tags and desired properties of an IoT device module twin.
 

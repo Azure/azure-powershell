@@ -17,13 +17,8 @@ using Microsoft.Azure.Commands.WebApps.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.WebSites.Models;
-using System;
 using Microsoft.Azure.Commands.WebApps.Utilities;
-using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -53,9 +48,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string WebAppName { get; set; }
 
-        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = true, HelpMessage = "Access Restriction rule name. E.g.: DeveloperWorkstation.")]
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = true, HelpMessage = "Access Restriction rule name. E.g.: DeveloperWorkstation.")]
-        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = true, HelpMessage = "Access Restriction rule name. E.g.: DeveloperWorkstation.")]
+        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = "Access Restriction rule name. E.g.: DeveloperWorkstation.")]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = "Access Restriction rule name. E.g.: DeveloperWorkstation.")]
+        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = "Access Restriction rule name. E.g.: DeveloperWorkstation.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -68,15 +63,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = true, HelpMessage = "Access Restriction priority. E.g.: 500.")]
         [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = true, HelpMessage = "Access Restriction priority. E.g.: 500.")]
         [ValidateNotNullOrEmpty]
-        [ValidateRange(100, 65000)]
         public uint Priority { get; set; }
 
-        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = true, HelpMessage = "Allow or Deny rule.")]
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = true, HelpMessage = "Allow or Deny rule.")]
-        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = true, HelpMessage = "Allow or Deny rule.")]
+        [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = "Allow or Deny rule.")]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = "Allow or Deny rule.")]
+        [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = "Allow or Deny rule.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Allow", "Deny")]
-        public string Action { get; set; }
+        public string Action { get; set; } = "Allow";
 
         [Parameter(ParameterSetName = IpAddressParameterSet, Mandatory = false, HelpMessage = "Deployment Slot name.")]
         [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = "Deployment Slot name.")]
@@ -121,29 +115,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 SiteConfig siteConfig = webApp.SiteConfig;
                 var accessRestrictionList = TargetScmSite ? siteConfig.ScmIpSecurityRestrictions : siteConfig.IpSecurityRestrictions;
                 IpSecurityRestriction ipSecurityRestriction = null;
-                bool accessRestrictionExists = false;
                 int intPriority = checked((int)Priority);
                 switch (ParameterSetName)
                 {
-                    case IpAddressParameterSet:                        
-                        foreach (var accessRestriction in accessRestrictionList)
-                        {
-                            if (accessRestriction.IpAddress != null && 
-                                accessRestriction.IpAddress == IpAddress && 
-                                accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
-                            {
-                                accessRestrictionExists = true;
-                                accessRestriction.Name = Name;
-                                accessRestriction.Priority = intPriority;
-                                accessRestriction.Description = Description;
-                                break;
-                            }
-                        }
-                        if (!accessRestrictionExists)
-                        {
-                            ipSecurityRestriction = new IpSecurityRestriction(IpAddress, null, null, null, null, Action, null, intPriority, Name, Description);
-                            accessRestrictionList.Add(ipSecurityRestriction);
-                        }
+                    case IpAddressParameterSet:                    
+                        ipSecurityRestriction = new IpSecurityRestriction(IpAddress, null, null, null, null, Action, null, intPriority, Name, Description);
+                        accessRestrictionList.Add(ipSecurityRestriction);                        
                         break;
 
                     case SubnetNameParameterSet:
@@ -158,29 +135,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         {
                             CmdletHelpers.VerifySubnetDelegation(subnetResourceId);
                         }
-                        foreach (var accessRestriction in accessRestrictionList)
-                        {
-                            if (accessRestriction.VnetSubnetResourceId != null &&
-                                accessRestriction.VnetSubnetResourceId.ToLowerInvariant() == subnetResourceId.ToLowerInvariant() && 
-                                accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
-                            {
-                                accessRestrictionExists = true;
-                                accessRestriction.Name = Name;
-                                accessRestriction.Priority = intPriority;
-                                accessRestriction.Description = Description;
-                                break;
-                            }
-                        }
-                        if (!accessRestrictionExists)
-                        {
-                            ipSecurityRestriction = new IpSecurityRestriction(null, null, subnetResourceId, null, null, Action, null, intPriority, Name, Description);
-                            accessRestrictionList.Add(ipSecurityRestriction);
-                        }                   
+                        
+                        ipSecurityRestriction = new IpSecurityRestriction(null, null, subnetResourceId, null, null, Action, null, intPriority, Name, Description);
+                        accessRestrictionList.Add(ipSecurityRestriction);                                           
                         break;
                 }
 
-                string updateAction = accessRestrictionExists ? "Updating" : "Adding";
-                if (ShouldProcess(WebAppName, $"{updateAction} Access Restriction Rule '{Name}' for Web App '{WebAppName}'"))
+                if (ShouldProcess(WebAppName, $"Adding Access Restriction Rule for Web App '{WebAppName}'"))
                 {
                     // Update web app configuration
                     WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, webApp.Location, WebAppName, SlotName, siteConfig);

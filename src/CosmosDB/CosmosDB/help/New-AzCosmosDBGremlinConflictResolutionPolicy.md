@@ -30,13 +30,14 @@ Mode           ConflictResolutionPath ConflictResolutionProcedure
 ----           ---------------------- ---------------------------
 LastWriterWins /myPath
 ```
+
 ## PARAMETERS
 
 ### -ConflictResolutionProcedure
 To be provided when the type is custom.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -51,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -66,7 +67,7 @@ Accept wildcard characters: False
 To be provided when the type is LastWriterWins.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +82,7 @@ Accept wildcard characters: False
 Can have the values: LastWriterWins, Custom, Manual.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

@@ -33,7 +33,10 @@ Update-AzCosmosDBAccountRegion [-Location <String[]>] [-LocationObject <PSLocati
 ```
 
 ## DESCRIPTION
-Update Regions of a CosmosDB Account.
+Update Regions of a CosmosDB Account. Location can be provided either as an object of type PSLocation or as strings of Location Name ordered by failover priority.
+LocationObject parameter expects the list of current locations (failover prioritiies included) appended by the new LocationObjects corresponding to new locations to be added.
+Location parameter expects the list of current location(ordered by failover priority) and the new locations. 
+Please note, we only support Addition of Regions. Please provide either Location or LocationObject.
 
 ## EXAMPLES
 

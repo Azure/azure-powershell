@@ -19,6 +19,17 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to enable FQDN based LocalNetworkGateways and VpnSites
+    - `New-AzLocalNetworkGateway`
+    - `New-AzVpnSiteLink`
+
+*  Add Support for IPv6 address family in ExpressRouteCircuitConnectionConfig (Global Reach)
+    - Added Cmdlet
+        - Set-AzExpressRouteCircuitConnectionConfig 
+            - allows setting of all the existing properties including the IPv6CircuitConnectionProperties
+    -Updated Cmdlet
+        - Add-AzExpressRouteCircuitConnectionConfig 
+            - Added another optional parameter AddressPrefixType to specify the address family of address prefix
 
 ## Version 2.4.0
 * Updated cmdlets to allow cross-tenant VirtualHubVnetConnections
@@ -27,6 +38,8 @@
     - `New-AzVirtualHub`
     - `Update-AzVirtualHub`
 * Removed Sql Management SDK dependency
+* Added 'New-AzIpConfigurationBgpPeeringAddressObject'
+* Updated 'Set-AzVirtualNetworkGateway' and 'New-AzVirtualNetworkGateway'
 
 ## Version 2.3.2
 * Updated Sql Management SDK.
