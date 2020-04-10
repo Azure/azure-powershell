@@ -106,6 +106,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1",
                     _helper.GetRMModulePath("AzureRM.ApplicationInsights.psd1"),
+                    _helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"));
 
                 try
