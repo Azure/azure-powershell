@@ -190,6 +190,21 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
+            HelpMessage = "P2S External multiple radius servers.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByRadiusAuthentication,
+            HelpMessage = "P2S External multiple radius servers.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByRadiusAuthentication,
+            HelpMessage = "P2S External multiple radius servers.")]
+        [ValidateNotNullOrEmpty]
+        public PSRadiusServer[] RadiusServers { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         [Parameter(
             Mandatory = false,
@@ -374,10 +389,7 @@ namespace Microsoft.Azure.Commands.Network
                     vpnServerConfigurationToUpdate.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
 
-                if (vpnServerConfigurationToUpdate.RadiusServerAddress == null || vpnServerConfigurationToUpdate.RadiusServerSecret == null)
-                {
-                    throw new ArgumentException("Both radius server address and secret must be specified if VpnAuthenticationType is being configured as Radius.");
-                }
+                vpnServerConfigurationToUpdate.RadiusServers = this.RadiusServers?.ToList();
 
                 // Read the RadiusServerRootCertificates if present
                 if (this.RadiusServerRootCertificateFilesList != null)
