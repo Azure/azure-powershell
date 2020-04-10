@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 Location = bpLocation,
                 BlueprintId = blueprintId,
                 Locks = new AssignmentLockSettings { Mode = lockMode == null ? PSLockMode.None.ToString() : lockMode.ToString() },
-                Parameters = new Dictionary<string, ParameterValueBase>(),
+                Parameters = new Dictionary<string, ParameterValue>(),
                 ResourceGroups = new Dictionary<string, ResourceGroupValue>()
             };
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         }
                     }
 
-                    var secretValue = new SecretReferenceParameterValue(new SecretValueReference(new KeyVaultReference(keyVaultId), secretName, secretVersion));
+                    var secretValue = new ParameterValue(reference: new SecretValueReference(new KeyVaultReference(keyVaultId), secretName, secretVersion));
                     localAssignment.Parameters.Add(key.ToString(), secretValue);
                 }
             }
