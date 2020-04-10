@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added support to Microsoft.PowerShell.SecretManagement [#11178]
+* Fixed error in the examples of `Remove-AzKeyVaultManagedStorageSasDefinition` [#11479]
 
 ## Version 1.5.2
 * Added breaking change attributes to `New-AzKeyVault`
