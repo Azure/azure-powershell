@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add cmdlets Get-AzSqlInstanceOperation and Stop-AzSqlInstanceOperation
+* Support auditing to a storage account in VNet.
 
 ## Version 2.5.0
 * Added readable secondary parameter to `Invoke-AzSqlDatabaseFailover`

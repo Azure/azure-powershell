@@ -101,7 +101,11 @@ CmdletsToExport = 'Add-AzIotHubKey', 'Get-AzIotHubEventHubConsumerGroup',
                'Set-AzIotHubDeviceParent', 'Add-AzIotHubDeviceChildren', 
                'Remove-AzIotHubDeviceChildren', 'Get-AzIotHubDeviceChildren',
                'Get-AzIotHubDistributedTracing', 'Set-AzIotHubDistributedTracing',
-               'Get-AzIotHubDeviceTwin', 'Update-AzIotHubDeviceTwin'
+               'Get-AzIotHubDeviceTwin', 'Update-AzIotHubDeviceTwin', 'Invoke-AzIotHubDeviceMethod',
+               'Get-AzIotHubModuleTwin', 'Update-AzIotHubModuleTwin',
+               'Add-AzIotHubConfiguration', 'Get-AzIotHubConfiguration',
+               'Remove-AzIotHubConfiguration', 'Set-AzIotHubConfiguration',
+               'Invoke-AzIotHubModuleMethod'
 # Variables to export from this module
 # VariablesToExport = @()
 

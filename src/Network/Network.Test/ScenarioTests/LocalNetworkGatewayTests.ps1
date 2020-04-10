@@ -29,6 +29,17 @@ function Test-LocalNetworkGatewayCRUD
      {
       # Create the resource group
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }             
+      
+      # Create and Get LocalNetworkGateway with Fqdn
+      $rnameFqdn = $rname + "Fqdn"
+      $job = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rnameFqdn -location $location -AddressPrefix 192.168.0.0/16 -Fqdn "lng.ontoso.com" -AsJob
+      $job | Wait-Job
+	  $actual = $job | Receive-Job	  
+	  $expected = Get-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rnameFqdn
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $expected.Name $actual.Name	
+      Assert-AreEqual $expected.Fqdn $actual.Fqdn
+      Assert-AreEqual "192.168.0.0/16" $expected.LocalNetworkAddressSpace.AddressPrefixes[0]
 
       # Create & Get LocalNetworkGateway      
       $job = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.4 -AsJob
@@ -43,12 +54,13 @@ function Test-LocalNetworkGatewayCRUD
 
       # List LocalNetworkGateways
       $list = Get-AzLocalNetworkGateway -ResourceGroupName $rgname
-      Assert-AreEqual 1 @($list).Count
+      Assert-AreEqual 2 @($list).Count
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $list[0].Name $actual.Name	
       Assert-AreEqual $list[0].Location $actual.Location
       Assert-AreEqual "192.168.3.4" $list[0].GatewayIpAddress
-      
+
+     
       # Set/Update LocalNetworkGateway
       $job = Set-AzLocalNetworkGateway -LocalNetworkGateway $expected -AddressPrefix "200.168.0.0/16" -AsJob
 	  $job | Wait-Job
@@ -86,15 +98,21 @@ function Test-LocalNetworkGatewayCRUD
 	  $job | Wait-Job
 	  $delete = $job | Receive-Job
       Assert-AreEqual true $delete
+
+      # Delete LocalNetworkGateway
+      $job = Remove-AzLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rnameFqdn -PassThru -Force -AsJob
+	  $job | Wait-Job
+	  $delete = $job | Receive-Job
+      Assert-AreEqual true $delete
       
       $list = Get-AzLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
 
         # Test error handling
         Assert-ThrowsContains { Set-AzLocalNetworkGateway -LocalNetworkGateway $actual } "not found"
-        Assert-Throws { New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -PeerWeight -1 } "PeerWeight cannot be negative"
-        Assert-ThrowsContains { New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -Asn 64 } "ASN and BgpPeeringAddress must both be specified"
-        Assert-ThrowsContains { New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -BgpPeeringAddress "1.2.3.4" } "ASN and BgpPeeringAddress must both be specified"
+        Assert-Throws { New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname -GatewayIpAddress 192.168.3.4 -location $location -PeerWeight -1 } "PeerWeight cannot be negative"
+        Assert-ThrowsContains { New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname -GatewayIpAddress 192.168.3.4 -location $location -Asn 64 } "ASN and BgpPeeringAddress must both be specified"
+        Assert-ThrowsContains { New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $rname -GatewayIpAddress 192.168.3.4 -location $location -BgpPeeringAddress "1.2.3.4" } "ASN and BgpPeeringAddress must both be specified"
      }
      finally
      {

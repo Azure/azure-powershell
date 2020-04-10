@@ -68,21 +68,32 @@ namespace Microsoft.Azure.Commands.Attestation
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage =
-                "Specifies a type of Trusted Execution Environment. We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VBSEnclave."
+                "Specifies a type of Trusted Execution Environment. Four types of environment are supported: SgxEnclave, OpenEnclave, CyResComponent and VBSEnclave."
         )]
         [PSArgumentCompleter("SgxEnclave", "OpenEnclave", "CyResComponent", "VBSEnclave")]
         [ValidateNotNullOrEmpty]
         public string Tee { get; set; }
         
         /// <summary>
-        /// JSON Web Token
+        /// Policy document
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage =
-                "Specifies the JSON Web Token describing the policy document to set."
+                "Specifies the policy document to set.  The policy format can be either Text or JSON Web Token (JWT)."
         )]
         [ValidateNotNullOrEmpty]
         public string Policy { get; set; }
+
+        /// <summary>
+        /// Format of the policy document
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage =
+                "Specifies the format for the policy, either Text or JWT (JSON Web Token).  The default policy format is Text."
+        )]
+        [PSArgumentCompleter(TextPolicyFormat, JwtPolicyFormat)]
+        [PSDefaultValue(Value = TextPolicyFormat)]
+        public string PolicyFormat { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.")]
@@ -94,12 +105,15 @@ namespace Microsoft.Azure.Commands.Attestation
         {
             if (ShouldProcess(Name, "SetAttestationPolicy"))
             {
-                AttestationDataPlaneClient.SetPolicy(Name, ResourceGroupName, ResourceId, Tee, Policy);
+                AttestationDataPlaneClient.SetPolicy(Name, ResourceGroupName, ResourceId, Tee, Policy, PolicyFormat);
                 if (PassThru)
                 {
                     WriteObject(true);
                 }
             }
         }
+
+        internal const string JwtPolicyFormat = "JWT";
+        internal const string TextPolicyFormat = "Text";
     }
 }

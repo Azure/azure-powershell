@@ -27,7 +27,7 @@ Gets test resource group group name
 #>
 function Get-TestResourceGroupName
 {
-   "cleanupservice"
+   "cheggpolicy"
 }
 
 <#
@@ -36,7 +36,7 @@ Gets test resource id
 #>
 function Get-TestResourceId
 {
-   "/subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8/resourcegroups/cleanupservice/providers/Microsoft.KeyVault/vaults/kv12-cleanupservice"
+   "/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/microsoft.keyvault/vaults/cheggkv"
 }
 
 <#
@@ -45,7 +45,7 @@ Gets test policy set definition name
 #>
 function Get-TestPolicySetDefinitionName
 {
-   "716ef2c9-4404-4673-8609-f984d58c417d"
+   "81811175-958c-478d-936a-d96e158a8c66"
 }
 
 <#
@@ -54,7 +54,7 @@ Gets test policy definition name
 #>
 function Get-TestPolicyDefinitionName
 {
-   "policy2"
+   "3520924f-7a65-4cbf-83e6-e2ed67bbf0da"
 }
 
 <#
@@ -63,7 +63,7 @@ Gets test policy assignment name
 #>
 function Get-TestPolicyAssignmentName
 {
-   "SecurityCenterBuiltIn"
+   "1e4e70f9cd4846268b6998ee"
 }
 
 <#
@@ -72,7 +72,7 @@ Gets test resource group group name for resource group level policy assignment (
 #>
 function Get-TestResourceGroupNameForPolicyAssignmentEvents
 {
-   "cleanupservice"
+   "cheggpolicy"
 }
 
 <#
@@ -81,7 +81,7 @@ Gets test policy assignment name (resource group level) (for event tests)
 #>
 function Get-TestPolicyAssignmentNameResourceGroupLevelEvents
 {
-   "568e500984414fbe8a4f10d0"
+   "8a4555d353ed46bb856e9890"
 }
 
 <#
@@ -90,7 +90,7 @@ Gets test policy definition name for events
 #>
 function Get-TestPolicyDefinitionNameForEvents
 {
-   "d994a92a-7669-4735-9950-bdcc326f32e4"
+   "926d9eb2-ac1e-4408-b27a-9c61a70f8ff8"
 }
 
 <#
@@ -99,7 +99,7 @@ Gets test resource group group name for resource group level policy assignment (
 #>
 function Get-TestResourceGroupNameForPolicyAssignmentStates
 {
-   "cleanupservice"
+   "cheggpolicy"
 }
 
 <#
@@ -108,7 +108,7 @@ Gets test policy assignment name (resource group level) (for state tests)
 #>
 function Get-TestPolicyAssignmentNameResourceGroupLevelStates
 {
-   "147b065f2a0f409ca31325c7"
+   "8a4555d353ed46bb856e9890"
 }
 
 <#
@@ -117,7 +117,7 @@ Gets test query interval start
 #>
 function Get-TestQueryIntervalStart
 {
-   "2019-12-01 00:00:00Z"
+   "2020-03-24 00:00:00Z"
 }
 
 <#
@@ -126,7 +126,7 @@ Gets test query interval end
 #>
 function Get-TestQueryIntervalEnd
 {
-   "2019-12-06 00:00:00Z"
+   "2020-03-30 00:00:00Z"
 }
 
 <#

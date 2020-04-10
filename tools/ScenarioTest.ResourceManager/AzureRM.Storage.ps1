@@ -34,7 +34,8 @@ function New-AzureRmStorageAccount
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)][alias("StorageAccountName")] $Name,
     [string] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $Location,
     [string] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $typeString,
-    [string] [Parameter(Position=4, ValueFromPipelineByPropertyName=$true)] $Kind)
+    [string] [Parameter(Position=4, ValueFromPipelineByPropertyName=$true)] $Kind,
+	[bool]   [Parameter(Position=5, ValueFromPipelineByPropertyName=$true)] $DenyAsNetworkRuleDefaultAction)
   BEGIN { 
     $context = Get-Context
     $client = Get-StorageClient $context
@@ -56,6 +57,11 @@ function New-AzureRmStorageAccount
     $createParms.Kind = $Kind
 	$createParms.Sku = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku $Type
     $createParms.Location = $Location
+	if ($DenyAsNetworkRuleDefaultAction)
+	{
+		$createParms.NetworkRuleSet = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.NetworkRuleSet -Property @{DefaultAction="Deny"}
+	}
+	
     $getTask = $client.StorageAccounts.CreateWithHttpMessagesAsync($ResourceGroupName, $name, $createParms)
     $sa = $getTask.Result.Body
     Write-Output $sa

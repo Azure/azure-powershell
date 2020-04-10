@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -554,7 +554,41 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ExpressRouteGatewayRequiredToCreateExpressRouteConnection", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
+        /// </summary>
+        internal static string ExpressRoutePrivatePeeringNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("ExpressRoutePrivatePeeringNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
+        /// </summary>
+        internal static string ExpressRouteCircuitConnectionNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("ExpressRouteCircuitConnectionNotFound", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection..
+        /// </summary>
+        internal static string ExpressRouteCircuitConnectionAlreadyAdded
+        {
+            get
+            {
+                return ResourceManager.GetString("ExpressRouteCircuitConnectionAlreadyAdded", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to The hub virtual network connection to modify could not be found..
         /// </summary>
@@ -624,6 +658,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string InvalidFlowLogResourceId {
             get {
                 return ResourceManager.GetString("InvalidFlowLogResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Fqdn specified is invalid..
+        /// </summary>
+        internal static string InvalidFqdn {
+            get {
+                return ResourceManager.GetString("InvalidFqdn", resourceCulture);
             }
         }
         

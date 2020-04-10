@@ -73,6 +73,7 @@ PS C:\> $galleryImageReference = @{Id = '/subscriptions/0296790d-427c-48ca-b204-
 PS C:\> $diskConfig = New-AzDiskConfig -Location 'West US' -CreateOption 'FromImage' -GalleryImageReference $galleryImageReference;
 PS C:\> New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskConfig
 ```
+
 Create a disk from a Shared Gallery Image Version.  Id is the id of the shared gallery image version. Lun is needed only if the source is a data disk.
 
 ## PARAMETERS
