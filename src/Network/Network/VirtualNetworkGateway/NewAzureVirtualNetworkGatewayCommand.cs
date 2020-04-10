@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter Force { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server address.")]
@@ -238,12 +238,19 @@ namespace Microsoft.Azure.Commands.Network
         public string RadiusServerAddress { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server secret.")]
         [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            HelpMessage = "P2S multiple external Radius server servers.")]
+        public PSRadiusServer[] RadiusServers { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -433,6 +440,11 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
                 
+                if (this.RadiusServers != null && this.RadiusServers.Any())
+                {
+                    vnetGateway.VpnClientConfiguration.RadiusServers = this.RadiusServers?.ToList();
+                }
+
                 if (this.AadTenantUri != null)
                 {
                     if (this.AadIssuerUri == null || this.AadAudienceId == null)

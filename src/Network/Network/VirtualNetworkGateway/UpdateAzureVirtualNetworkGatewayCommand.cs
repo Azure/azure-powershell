@@ -139,12 +139,12 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter DisableActiveActiveFeature { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server address.")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration + VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "P2S External Radius server address.")]
@@ -152,17 +152,30 @@ namespace Microsoft.Azure.Commands.Network
         public string RadiusServerAddress { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server secret.")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration + VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "P2S External Radius server secret.")]
         [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            HelpMessage = "P2S multiple external Radius servers.")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration + VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
+            HelpMessage = "P2S multiple external Radius servers.")]
+        [ValidateNotNullOrEmpty]
+        public PSRadiusServer[] RadiusServers { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -265,6 +278,7 @@ namespace Microsoft.Azure.Commands.Network
                  this.VpnClientRevokedCertificates != null ||
                  this.RadiusServerAddress != null ||
                  this.RadiusServerSecret != null ||
+                 this.RadiusServers != null ||
                  (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0) ||
                  this.AadTenantUri != null) &&
                 this.VirtualNetworkGateway.VpnClientConfiguration == null)
@@ -300,13 +314,19 @@ namespace Microsoft.Azure.Commands.Network
 
             if (ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.RadiusServerConfiguration))
             {
-                if (this.RadiusServerSecret == null || this.RadiusServerAddress == null)
+                if ((this.RadiusServerSecret == null || this.RadiusServerAddress == null) && (this.RadiusServers == null || !this.RadiusServers.Any()))
                 {
                     throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
                 }
 
                 this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
-                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
+
+                if (this.RadiusServerSecret != null)
+                {
+                    this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
+                }
+
+                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers = this.RadiusServers?.ToList();
             }
 
             if (ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration))
