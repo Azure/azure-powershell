@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.13.4
 * Support create/update/get/list EncryptionScope of a Storage account
     -  New-AzStorageEncryptionScope
     -  Update-AzStorageEncryptionScope
