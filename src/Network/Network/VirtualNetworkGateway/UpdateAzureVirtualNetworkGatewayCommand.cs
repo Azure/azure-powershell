@@ -314,12 +314,10 @@ namespace Microsoft.Azure.Commands.Network
 
             if (ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.RadiusServerConfiguration))
             {
-                if ((this.RadiusServerSecret == null || this.RadiusServerAddress == null) && (this.RadiusServers == null || !this.RadiusServers.Any()))
+                if (this.RadiusServerAddress != null)
                 {
-                    throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
+                    this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
                 }
-
-                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
 
                 if (this.RadiusServerSecret != null)
                 {
