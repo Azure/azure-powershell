@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to enable FQDN based LocalNetworkGateways and VpnSites
+    - `New-AzLocalNetworkGateway`
+    - `New-AzVpnSiteLink`
 
 *  Add Support for IPv6 address family in ExpressRouteCircuitConnectionConfig (Global Reach)
     - Added Cmdlet

@@ -89,7 +89,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "If specified, 'soft delete' functionality is enabled for this key vault.")]
         public SwitchParameter EnableSoftDelete { get; set; }
 
-        [CmdletParameterBreakingChange(nameof(EnablePurgeProtection), ChangeDescription = "Purge protection will be enabled by default. We will add an option `-DisablePurgeProtection` to disable it.")]
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well.")]
