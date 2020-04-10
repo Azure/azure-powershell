@@ -97,33 +97,23 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
+            CassandraTableResource cassandraTableResource = PopulateCassandraTableResource(readCassandraTableGetResults.Resource);
+
             if(TtlInSeconds == null)
             {
                 TtlInSeconds = readCassandraTableGetResults.Resource.DefaultTtl;
             }
 
-            CassandraSchema cassandraSchema = null;
-            if (Schema == null)
+            if (Schema != null)
             {
-                cassandraSchema = readCassandraTableGetResults.Resource.Schema;
-            }
-            else
-            {
-                cassandraSchema = PSCassandraSchema.ConvertPSCassandraSchemaToCassandraSchema(Schema);
-            }            
+                cassandraTableResource.Schema = PSCassandraSchema.ConvertPSCassandraSchemaToCassandraSchema(Schema);
+            }          
 
             IDictionary<string, string> options = new Dictionary<string, string>();
             if (Throughput != null)
             {
                 options.Add("Throughput", Throughput.ToString());
             }
-
-            CassandraTableResource cassandraTableResource = new CassandraTableResource
-            {
-                Id = Name,
-                DefaultTtl = TtlInSeconds,
-                Schema = cassandraSchema
-            };
 
             CassandraTableCreateUpdateParameters cassandraTableCreateUpdateParameters = new CassandraTableCreateUpdateParameters
             {
@@ -138,6 +128,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             return;
+        }
+
+        private CassandraTableResource PopulateCassandraTableResource(CassandraTableGetPropertiesResource resource)
+        {
+            return new CassandraTableResource
+            {
+                DefaultTtl = resource.DefaultTtl,
+                Id = resource.Id,
+                Schema = resource.Schema
+            };
         }
     }
 }
