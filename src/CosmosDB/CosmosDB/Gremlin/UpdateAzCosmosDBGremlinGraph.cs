@@ -21,6 +21,9 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
+using Microsoft.Rest.Azure;
+using Microsoft.Azure.Management.CosmosDB;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -70,7 +73,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public PSUniqueKeyPolicy UniqueKeyPolicy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ConflictResolutionPolicyModeHelpMessage)]
-        [PSArgumentCompleter("Custom", "LastWriterWins", "Manual")]
+        [PSArgumentCompleter(ConflictResolutionMode.Custom, ConflictResolutionMode.LastWriterWins)]
         [ValidateNotNullOrEmpty]
         public string ConflictResolutionPolicyMode { get; set; }
 
@@ -104,45 +107,36 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
             }
 
-            List<string> Paths = new List<string>();
-
-            foreach (string path in PartitionKeyPath)
-                Paths.Add(path);
-
-            GremlinGraphResource gremlinGraphResource = new GremlinGraphResource
+            GremlinGraphGetResults readGremlinGraphGetResults = null;
+            try
             {
-                Id = Name,
-                PartitionKey = new ContainerPartitionKey
+                readGremlinGraphGetResults = CosmosDBManagementClient.GremlinResources.GetGremlinGraph(ResourceGroupName, AccountName, DatabaseName, Name);
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(message: string.Format(ExceptionMessage.NotFound, Name), innerException: e);
+                }
+            }
+
+            GremlinGraphResource gremlinGraphResource = UpdateAzCosmosDBGremlinGraph.PopulateGremlinGraphResourceResource(readGremlinGraphGetResults.Resource);
+
+            if (PartitionKeyPath != null)
+            {
+                List<string> Paths = new List<string>(PartitionKeyPath);
+
+                gremlinGraphResource.PartitionKey = new ContainerPartitionKey
                 {
                     Kind = PartitionKeyKind,
                     Paths = Paths,
                     Version = PartitionKeyVersion
-                }
-            };
+                };
+            }
 
             if (UniqueKeyPolicy != null)
             {
-                UniqueKeyPolicy uniqueKeyPolicy = new UniqueKeyPolicy
-                {
-                    UniqueKeys = new List<UniqueKey>()
-                };
-
-                foreach (PSUniqueKey uniqueKey in UniqueKeyPolicy.UniqueKeys)
-                {
-                    UniqueKey key = new UniqueKey
-                    {
-                        Paths = new List<string>()
-                    };
-
-                    foreach (string path in uniqueKey.Paths)
-                    {
-                        key.Paths.Add(path);
-                    }
-
-                    uniqueKeyPolicy.UniqueKeys.Add(key);
-                }
-
-                gremlinGraphResource.UniqueKeyPolicy = uniqueKeyPolicy;
+               gremlinGraphResource.UniqueKeyPolicy = PSUniqueKeyPolicy.ConvertPSUniqueKeyPolicyToUniqueKeyPolicy(UniqueKeyPolicy);
             }
 
             if (TtlInSeconds != null)
@@ -152,17 +146,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ConflictResolutionPolicy != null)
             {
-                ConflictResolutionPolicyMode = ConflictResolutionPolicy.Mode;
-
-                if (ConflictResolutionPolicy.ConflictResolutionPath != null)
-                {
-                    ConflictResolutionPolicyPath = ConflictResolutionPolicy.ConflictResolutionPath;
-                }
-
-                if (ConflictResolutionPolicy.ConflictResolutionProcedure != null)
-                {
-                    ConflictResolutionPolicyProcedure = ConflictResolutionPolicy.ConflictResolutionProcedure;
-                }
+                gremlinGraphResource.ConflictResolutionPolicy = PSConflictResolutionPolicy.ConvertPSConflictResolutionPolicyToConflictResolutionPolicy(ConflictResolutionPolicy);
             }
 
             if (ConflictResolutionPolicyMode != null)
@@ -172,11 +156,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     Mode = ConflictResolutionPolicyMode
                 };
 
-                if (ConflictResolutionPolicyMode.Equals("LastWriterWins", StringComparison.OrdinalIgnoreCase))
+                if (ConflictResolutionPolicyMode.Equals(ConflictResolutionMode.LastWriterWins, StringComparison.OrdinalIgnoreCase))
                 {
                     conflictResolutionPolicy.ConflictResolutionPath = ConflictResolutionPolicyPath;
                 }
-                else if (ConflictResolutionPolicyMode.Equals("Custom", StringComparison.OrdinalIgnoreCase))
+                else if (ConflictResolutionPolicyMode.Equals(ConflictResolutionMode.Custom, StringComparison.OrdinalIgnoreCase))
                 {
                     conflictResolutionPolicy.ConflictResolutionProcedure = ConflictResolutionPolicyProcedure;
                 }
@@ -186,68 +170,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (IndexingPolicy != null)
             {
-                IndexingPolicy indexingPolicy = new IndexingPolicy
-                {
-                    Automatic = IndexingPolicy.Automatic,
-                    IndexingMode = IndexingPolicy.IndexingMode,
-                };
-
-                if (IndexingPolicy.IncludedPaths != null)
-                {
-                    IList<IncludedPath> includedPaths = new List<IncludedPath>();
-                    foreach (PSIncludedPath pSIncludedPath in IndexingPolicy.IncludedPaths)
-                    {
-                        includedPaths.Add(new IncludedPath
-                        {
-                            Path = pSIncludedPath.Path,
-                            Indexes = PSIncludedPath.ConvertPSIndexesToIndexes(pSIncludedPath.Indexes)
-                        });
-                    }
-
-                    indexingPolicy.IncludedPaths = new List<IncludedPath>(includedPaths);
-                }
-
-                if (IndexingPolicy.ExcludedPaths != null && IndexingPolicy.ExcludedPaths.Count > 0)
-                {
-                    IList<ExcludedPath> excludedPaths = new List<ExcludedPath>();
-                    foreach (PSExcludedPath pSExcludedPath in IndexingPolicy.ExcludedPaths)
-                    {
-                        excludedPaths.Add(new ExcludedPath { Path = pSExcludedPath.Path });
-                    }
-
-                    indexingPolicy.ExcludedPaths = new List<ExcludedPath>(excludedPaths);
-                }
-
-                if (IndexingPolicy.CompositeIndexes != null)
-                {
-                    IList<IList<CompositePath>> compositeIndexes = new List<IList<CompositePath>>();
-                    foreach (IList<PSCompositePath> pSCompositePathList in IndexingPolicy.CompositeIndexes)
-                    {
-                        IList<CompositePath> compositePathList = new List<CompositePath>();
-                        foreach (PSCompositePath pSCompositePath in pSCompositePathList)
-                        {
-                            compositePathList.Add(new CompositePath { Order = pSCompositePath.Order, Path = pSCompositePath.Path });
-                        }
-
-                        compositeIndexes.Add(compositePathList);
-                    }
-
-                    indexingPolicy.CompositeIndexes = new List<IList<CompositePath>>(compositeIndexes);
-                }
-
-                if (IndexingPolicy.SpatialIndexes != null && IndexingPolicy.SpatialIndexes.Count > 0)
-                {
-                    IList<SpatialSpec> spatialIndexes = new List<SpatialSpec>();
-
-                    foreach (PSSpatialSpec pSSpatialSpec in IndexingPolicy.SpatialIndexes)
-                    {
-                        spatialIndexes.Add(new SpatialSpec { Path = pSSpatialSpec.Path, Types = pSSpatialSpec.Types });
-                    }
-
-                    indexingPolicy.SpatialIndexes = new List<SpatialSpec>(spatialIndexes);
-                }
-
-                gremlinGraphResource.IndexingPolicy = indexingPolicy;
+                gremlinGraphResource.IndexingPolicy = PSIndexingPolicy.ConvertPSIndexingToIndexingPolicy(IndexingPolicy);
             }
 
             IDictionary<string, string> options = new Dictionary<string, string>();
@@ -269,6 +192,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             return;
+        }
+
+        private static GremlinGraphResource PopulateGremlinGraphResourceResource(GremlinGraphGetPropertiesResource resource)
+        {
+            return new GremlinGraphResource
+            {
+                ConflictResolutionPolicy = resource.ConflictResolutionPolicy,
+                UniqueKeyPolicy = resource.UniqueKeyPolicy,
+                DefaultTtl = resource.DefaultTtl,
+                Id = resource.Id,
+                IndexingPolicy = resource.IndexingPolicy,
+                PartitionKey = resource.PartitionKey
+            };
         }
     }
 }

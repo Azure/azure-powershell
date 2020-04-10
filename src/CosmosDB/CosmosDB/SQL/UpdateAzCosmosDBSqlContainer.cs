@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public PSSqlUniqueKeyPolicy UniqueKeyPolicy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.SqlConflictResolutionPolicyModeHelpMessage)]
-        [PSArgumentCompleter("Custom", "LastWriterWins", "Manual")]
+        [PSArgumentCompleter(ConflictResolutionMode.Custom, ConflictResolutionMode.LastWriterWins)]
         [ValidateNotNullOrEmpty]
         public string ConflictResolutionPolicyMode { get; set; }
 
@@ -131,11 +131,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (PartitionKeyPath != null)
             {
-                List<string> Paths = new List<string>();
-                foreach (string path in PartitionKeyPath)
-                {
-                    Paths.Add(path);
-                }
+                List<string> Paths = new List<string>(PartitionKeyPath);
+
                 sqlContainerResource.PartitionKey = new ContainerPartitionKey
                 {
                     Kind = PartitionKeyKind,
@@ -146,7 +143,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (UniqueKeyPolicy != null)
             {
-                sqlContainerResource.UniqueKeyPolicy = PSUniqueKey.ConvertPSUniqueKeyPolicyToUniqueKeyPolicy(UniqueKeyPolicy);
+                sqlContainerResource.UniqueKeyPolicy = PSUniqueKeyPolicy.ConvertPSUniqueKeyPolicyToUniqueKeyPolicy(UniqueKeyPolicy);
             }
 
             if (TtlInSeconds != null)
@@ -165,11 +162,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     Mode = ConflictResolutionPolicyMode
                 };
 
-                if (ConflictResolutionPolicyMode.Equals("LastWriterWins", StringComparison.OrdinalIgnoreCase))
+                if (ConflictResolutionPolicyMode.Equals(ConflictResolutionMode.LastWriterWins, StringComparison.OrdinalIgnoreCase))
                 {
                     conflictResolutionPolicy.ConflictResolutionPath = ConflictResolutionPolicyPath;
                 }
-                else if (ConflictResolutionPolicyMode.Equals("Custom", StringComparison.OrdinalIgnoreCase))
+                else if (ConflictResolutionPolicyMode.Equals(ConflictResolutionMode.Custom, StringComparison.OrdinalIgnoreCase))
                 {
                     conflictResolutionPolicy.ConflictResolutionProcedure = ConflictResolutionPolicyProcedure;
                 }
