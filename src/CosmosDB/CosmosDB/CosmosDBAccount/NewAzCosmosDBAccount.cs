@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string ApiKind { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.PublicNetworkAccessHelpMessage)]
-        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Disabled", "Enabled")]
         public string PublicNetworkAccess { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
