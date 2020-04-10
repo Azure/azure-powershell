@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public PSSqlUniqueKeyPolicy UniqueKeyPolicy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.SqlConflictResolutionPolicyModeHelpMessage)]
-        [PSArgumentCompleter("Custom", "LastWriterWins", "Manual")]
+        [PSArgumentCompleter(ConflictResolutionMode.Custom, ConflictResolutionMode.LastWriterWins)]
         [ValidateNotNullOrEmpty]
         public string ConflictResolutionPolicyMode { get; set; }
 
