@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.ApplicationInsights.Management;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -46,6 +47,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         public NetworkManagementClient NetworkManagementClient { get; private set; }
 
         public AzureRestClient AzureRestClient { get; private set; }
+
+        public OperationalInsightsManagementClient OperationalInsightsManagementClient { get; private set; }
 
         public static TestsController NewInstance => new TestsController();
 
@@ -138,6 +141,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                 ApplicationInsightsClient = this.GetApplicationInsightsManagementClient(context: context, env: environment);
                 NetworkManagementClient = this.GetNetworkManagementClient(context: context, env: environment);
                 AzureRestClient = this.GetAzureRestClient(context: context, env: environment);
+                OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context: context, env: environment);
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
@@ -153,7 +157,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                  StorageManagementClient,
                 this.ApplicationInsightsClient,
                 this.NetworkManagementClient,
-                this.AzureRestClient);
+                this.AzureRestClient,
+                this.OperationalInsightsManagementClient);
         }
 
         private ResourceManagementClient GetResourceManagementClient(RestTestFramework.MockContext context, RestTestFramework.TestEnvironment env)
@@ -196,6 +201,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             return env != null
                 ? context.GetServiceClient<AzureRestClient>(currentEnvironment: env)
                 : context.GetServiceClient<AzureRestClient>();
+        }
+
+        private OperationalInsightsManagementClient GetOperationalInsightsManagementClient(RestTestFramework.MockContext context, RestTestFramework.TestEnvironment env)
+        {
+            return env != null
+                ? context.GetServiceClient<OperationalInsightsManagementClient>(currentEnvironment: env)
+                : context.GetServiceClient<OperationalInsightsManagementClient>();
         }
     }
 }

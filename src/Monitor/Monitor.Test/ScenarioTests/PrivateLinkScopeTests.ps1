@@ -92,7 +92,7 @@ function Test-PrivateLinkScopeCRUD
         $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name $config_name -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPolicies "Disabled"
         New-AzVirtualNetwork -ResourceGroupName $rg_name -Name $vnet_name -Location "eastus2euap" -AddressPrefix "11.0.0.0/16" -Subnet $subnetConfig
         $vnet=Get-AzVirtualNetwork -Name $vnet_name -ResourceGroupName $rg_name
-        $plsConnection = New-AzPrivateLinkServiceConnection -Name $connection_name -PrivateLinkServiceId $scope1.Id -GroupId 'azuremonitor'
+        $plsConnection = New-AzPrivateLinkServiceConnection -Name $connection_name -PrivateLinkServiceId $scope1.Id -GroupId $private_link_resource[0].GroupId
         New-AzPrivateEndpoint -ResourceGroupName $rg_name -Name $endpoint_name -Location "eastus2euap" -Subnet $vnet.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
 
         $connection = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $scope1.Id
