@@ -20,7 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationInsights", "..\ApplicationInsights\ApplicationInsights\ApplicationInsights.csproj", "{1390E45D-BF3A-4ACD-BEBC-88007B3E75E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights", "..\ApplicationInsights\OperationalInsights\OperationalInsights.csproj", "{F9305976-EF6B-4502-BC38-ACFA47CB6DF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights", "..\OperationalInsights\OperationalInsights\OperationalInsights.csproj", "{F9305976-EF6B-4502-BC38-ACFA47CB6DF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
