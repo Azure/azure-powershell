@@ -12,24 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SecurityCenter.Models.SqlInformationProtectionPolicy
 {
-    public class PSSqlInformationProtectionPolicySensitivityLabel
+    public class PSSqlInformationProtectionInformationType
     {
-        public Guid Id { get; set; }
-
+        [JsonProperty(Required = Required.Always)]
         public string DisplayName { get; set; }
 
+        [JsonProperty(Required = Required.Always)]
         public string Description { get; set; }
 
-        public PSSensitivityRank? Rank { get; set; }
+        [JsonProperty(Required = Required.Always)]
+        public int Order { get; set; }
 
-        public int? Order { get; set; }
+        [JsonProperty(Required = Required.AllowNull)]
+        public Guid? RecommendedLabelId { get; set; }
 
-        public bool? Enabled { get; set; }
+        [JsonProperty(Required = Required.Always)]
+        public bool Enabled { get; set; }
 
-        public PSSqlInformationProtectionPolicyInformationType[] InformationTypes { get; set; }
+        [JsonProperty(Required = Required.Always)]
+        public bool Custom { get; set; }
+
+        [JsonProperty(Required = Required.Always)]
+        public IList<PSSqlInformationProtectionKeyword> Keywords { get; set; }
     }
 }

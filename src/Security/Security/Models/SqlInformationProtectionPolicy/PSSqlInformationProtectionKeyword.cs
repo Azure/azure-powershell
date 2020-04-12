@@ -12,18 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
+
 namespace Microsoft.Azure.Commands.SecurityCenter.Models.SqlInformationProtectionPolicy
 {
     public class PSSqlInformationProtectionKeyword
     {
+        [JsonProperty(Required = Required.Always)]
         public string Pattern { get; set; }
 
-        public PSSqlSensitivityObjectState State { get; set; }
+        [JsonProperty(Required = Required.Always)]
+        public bool Custom { get; set; }
 
-        public PSSqlSensitivityObjectType Type { get; set; }
+        [JsonProperty(Required = Required.Always)]
+        public bool CanBeNumeric { get; set; }
 
-        public bool AllowNumeric { get; set; }
-
-        public override string ToString() => this.PrintObject();
+        [JsonProperty(Required = Required.Always)]
+        public bool Excluded { get; set; }
     }
 }

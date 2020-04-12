@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.SecurityCenter.Models.SqlInformationProtectionPolicy;
+using Microsoft.Azure.Management.Security.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.SqlInformationProtectionPolicy
@@ -25,12 +27,26 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.SqlInformationProtecti
     {
         public override void ExecuteCmdlet()
         {
-            WriteObject(RetrievePSSqlInformationProtectionPolicy().ToString());
+            WriteObject(RetrieveSqlInformationProtectionPolicy());
         }
 
-        private PSSqlInformationProtectionPolicy RetrievePSSqlInformationProtectionPolicy()
+        protected PSSqlInformationProtectionPolicy RetrieveSqlInformationProtectionPolicy()
         {
-            return RetrieveSqlInformationProtectionPolicy().ToPSSqlInformationProtectionPolicy();
+            var azureOperationResponse = SecurityCenterClient.InformationProtectionPolicies.GetWithHttpMessagesAsync(Scope, SqlInformationProtectionPolicyName).Result;
+            if (!azureOperationResponse.Response.IsSuccessStatusCode)
+            {
+                throw new Exception($"{Resources.SqlInformationProtectionPolicyNotRetrievedError} Status Code: {azureOperationResponse.Response.StatusCode}");
+            }
+
+            var policy = azureOperationResponse.Body;
+            if (policy == null)
+            {
+                throw new Exception(Resources.SqlInformationProtectionPolicyNotRetrievedError);
+            }
+
+            return policy.ConverToPSType();
         }
+
+        private const string SqlInformationProtectionPolicyName = "effective";
     }
 }

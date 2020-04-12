@@ -14,46 +14,25 @@
 
 using Commands.Security;
 using Microsoft.Azure.Commands.Security.Common;
-using System;
+using Microsoft.Azure.Commands.SecurityCenter.Models.SqlInformationProtectionPolicy;
+using Newtonsoft.Json;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.SqlInformationProtectionPolicy
 {
-    public class SqlInformationProtectionPolicyCmdlet : SecurityCenterCmdletBase
+    public abstract class SqlInformationProtectionPolicyCmdlet : SecurityCenterCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
-        protected Management.Security.Models.InformationProtectionPolicy RetrieveSqlInformationProtectionPolicy()
+        protected void WriteObject(PSSqlInformationProtectionPolicy policy)
         {
-            var azureOperationResponse = SecurityCenterClient.InformationProtectionPolicies.GetWithHttpMessagesAsync(Scope, SqlInformationProtectionPolicyName).Result;
-            if (!azureOperationResponse.Response.IsSuccessStatusCode)
-            {
-                throw new Exception($"{Resources.SqlInformationProtectionPolicyNotRetrievedError} Status Code: {azureOperationResponse.Response.StatusCode}");
-            }
-
-            var policy = azureOperationResponse.Body;
-            if (policy == null)
-            {
-                throw new Exception(Resources.SqlInformationProtectionPolicyNotRetrievedError);
-            }
-
-            return policy;
-        }
-
-        protected void SetInformationProtectionPolicy(Management.Security.Models.InformationProtectionPolicy policy)
-        {
-            var response = SecurityCenterClient.InformationProtectionPolicies.CreateOrUpdateWithHttpMessagesAsync(Scope, SqlInformationProtectionPolicyName).Result.Response;
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new Exception(string.Format(Resources.SqlInformationProtectionPolicyUpdateError, response.StatusCode));
-            }
+            WriteObject(JsonConvert.SerializeObject(policy, Formatting.Indented));
         }
 
         protected const string SqlInformationProtectionPolicyCmdletSuffix = "SqlInformationProtectionPolicy";
         protected const string SqlInformationProtectionPolicyParameterSet = "SQL Information Protection Policy";
 
-        private string Scope => $"providers/Microsoft.Management/managementGroups/{DefaultContext.Tenant.Id}";
-        private const string SqlInformationProtectionPolicyName = "effective";
+        protected string Scope => $"providers/Microsoft.Management/managementGroups/{DefaultContext.Tenant.Id}";
     }
 }

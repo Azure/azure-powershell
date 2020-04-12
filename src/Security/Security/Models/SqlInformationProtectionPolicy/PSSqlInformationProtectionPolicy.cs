@@ -13,13 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SecurityCenter.Models.SqlInformationProtectionPolicy
 {
     public class PSSqlInformationProtectionPolicy
     {
-        public PSSqlInformationProtectionPolicySensitivityLabel[] Labels { get; set; }
+        [JsonProperty(Required = Required.Always)]
+        public IDictionary<string, PSSqlInformationProtectionSensitivityLabel> Labels { get; set; }
 
-        public override string ToString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+        [JsonProperty(Required = Required.Always)]
+        public IDictionary<string, PSSqlInformationProtectionInformationType> InformationTypes { get; set; }
     }
 }

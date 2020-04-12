@@ -61,11 +61,38 @@ namespace Microsoft.Azure.Commands.SecurityCenter {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SQL Information Protection Policy is invalid. Information type &apos;{0}&apos; is associated with no existent sensitivity label id &apos;{1}&apos;.
+        ///   Looks up a localized string similar to Failed to deserialize SQL inforamtion protection policy..
         /// </summary>
-        internal static string SqlInformationProtectionPolicyAssociatedLabelIdNotFoundError {
+        internal static string SqlInformationProtectionPolicyDeserializationError {
             get {
-                return ResourceManager.GetString("SqlInformationProtectionPolicyAssociatedLabelIdNotFoundError", resourceCulture);
+                return ResourceManager.GetString("SqlInformationProtectionPolicyDeserializationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ids should not be duplicated. Please eliminate duplication of these ids: {0}..
+        /// </summary>
+        internal static string SqlInformationProtectionPolicyDuplicatedIdsError {
+            get {
+                return ResourceManager.GetString("SqlInformationProtectionPolicyDuplicatedIdsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided policy definition is empty..
+        /// </summary>
+        internal static string SqlInformationProtectionPolicyEmptyError {
+            get {
+                return ResourceManager.GetString("SqlInformationProtectionPolicyEmptyError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided file {0} does not exist..
+        /// </summary>
+        internal static string SqlInformationProtectionPolicyFileDoesNotExistError {
+            get {
+                return ResourceManager.GetString("SqlInformationProtectionPolicyFileDoesNotExistError", resourceCulture);
             }
         }
         
@@ -84,51 +111,6 @@ namespace Microsoft.Azure.Commands.SecurityCenter {
         internal static string SqlInformationProtectionPolicyUpdateError {
             get {
                 return ResourceManager.GetString("SqlInformationProtectionPolicyUpdateError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Information type &apos;{0}&apos; was not found..
-        /// </summary>
-        internal static string SqlInformationTypeNotFoundError {
-            get {
-                return ResourceManager.GetString("SqlInformationTypeNotFoundError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to remove information type &apos;{0}&apos;.
-        /// </summary>
-        internal static string SqlInformationTypeRemovalFailureError {
-            get {
-                return ResourceManager.GetString("SqlInformationTypeRemovalFailureError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removal of built-in information types is forbidden..
-        /// </summary>
-        internal static string SqlInformationTypeRemovalForbiddenError {
-            get {
-                return ResourceManager.GetString("SqlInformationTypeRemovalForbiddenError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sensitivity label &apos;{0}&apos; was not found..
-        /// </summary>
-        internal static string SqlSensitivityLabelNotFoundError {
-            get {
-                return ResourceManager.GetString("SqlSensitivityLabelNotFoundError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to remove sensitivity label &apos;{0}&apos;.
-        /// </summary>
-        internal static string SqlSensitivityRemovalFailureError {
-            get {
-                return ResourceManager.GetString("SqlSensitivityRemovalFailureError", resourceCulture);
             }
         }
     }

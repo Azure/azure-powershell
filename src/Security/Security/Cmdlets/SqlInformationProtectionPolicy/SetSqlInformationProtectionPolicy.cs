@@ -13,7 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.SecurityCenter.Models.SqlInformationProtectionPolicy;
+using Newtonsoft.Json;
 using System.Management.Automation;
+using System.IO;
+using System;
+using Newtonsoft.Json.Linq;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.SqlInformationProtectionPolicy
 {
@@ -29,8 +35,72 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.SqlInformationProtecti
             ParameterSetName = SqlInformationProtectionPolicyParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = PolicyHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string Policy { get; set; }
 
-        private const string PolicyHelpMessage = "Specifies a SQL information protection policy definition. You can specify a path of a .json file or a JSON format string that defines the policy.";
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = SqlInformationProtectionPolicyFilePathParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = FilePathHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string FilePath { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            if (ParameterSetName == SqlInformationProtectionPolicyFilePathParameterSet)
+            {
+                string filePath = ResolveUserPath(FilePath);
+                if (!File.Exists(filePath))
+                {
+                    throw new PSArgumentException(
+                        string.Format(Resources.SqlInformationProtectionPolicyFileDoesNotExistError, FilePath),
+                        FilePathParameterName);
+                }
+
+                Policy = File.ReadAllText(filePath);
+            }
+
+            if (string.IsNullOrEmpty(Policy))
+            {
+                throw new Exception(Resources.SqlInformationProtectionPolicyEmptyError);
+            }
+
+            PSSqlInformationProtectionPolicy policy = JsonConvert.DeserializeObject<PSSqlInformationProtectionPolicy>(Policy,
+                new JsonSerializerSettings
+                {
+                    MissingMemberHandling = MissingMemberHandling.Error,
+                });
+            if (policy == null)
+            {
+                throw new Exception (Resources.SqlInformationProtectionPolicyDeserializationError);
+            }
+
+            IEnumerable<string> mutualGuids = policy.Labels.Keys.Intersect(policy.InformationTypes.Keys);
+            if (mutualGuids.Any())
+            {
+                throw new Exception(string.Format(
+                    Resources.SqlInformationProtectionPolicyDuplicatedIdsError,
+                    string.Join(",", mutualGuids)));
+            }
+        }
+
+        private void SetInformationProtectionPolicy(PSSqlInformationProtectionPolicy policy)
+        {
+            var sdkPolicy = policy.ConverToSDKType();
+            var response = SecurityCenterClient.InformationProtectionPolicies.CreateOrUpdateWithHttpMessagesAsync(
+                Scope, SqlInformationProtectionPolicyName,
+                sdkPolicy.Labels, sdkPolicy.InformationTypes).Result.Response;
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(string.Format(Resources.SqlInformationProtectionPolicyUpdateError, response.StatusCode));
+            }
+        }
+
+        private const string FilePathParameterName = "FilePath";
+        private const string FilePathHelpMessage = "Specifies a path of a .json file containing SQL Information Protection Policy definition.";
+        private const string PolicyHelpMessage = "Specifies a JSON format string that defines the SQL Information Protection Policy.";
+        private const string SqlInformationProtectionPolicyFilePathParameterSet = "SQL Information Protection Policy File Path";
+        private const string SqlInformationProtectionPolicyName = "custom";
     }
 }

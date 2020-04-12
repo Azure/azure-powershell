@@ -22,88 +22,120 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.SqlInformationProtectio
 {
     public static class SqlInformationProtectionExtensions
     {
-        public static PSSqlInformationProtectionPolicy ToPSSqlInformationProtectionPolicy(this InformationProtectionPolicy policy)
+        public static PSSqlInformationProtectionPolicy ConverToPSType(this InformationProtectionPolicy policy) => new PSSqlInformationProtectionPolicy
         {
-            Dictionary<Guid, List<PSSqlInformationProtectionPolicyInformationType>> infoTypesPerLabelId =
-                policy.Labels.Keys.Select(id => Guid.Parse(id)).ToDictionary(id => id, id => new List<PSSqlInformationProtectionPolicyInformationType>());
+            InformationTypes = policy.InformationTypes.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ConvertToPSType()),
+            Labels = policy.Labels.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ConverToPSType())
+        };
 
-            foreach (var idInformationTypePair in policy.InformationTypes)
+        public static InformationProtectionPolicy ConverToSDKType(this PSSqlInformationProtectionPolicy policy) => new InformationProtectionPolicy
+        {
+            InformationTypes = policy.InformationTypes.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ConvertToSDKType()),
+            Labels = policy.Labels.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ConvertToSDKType())
+        };
+
+        public static PSSqlInformationProtectionSensitivityLabel ConverToPSType(this SensitivityLabel sensitivityLabel) => new PSSqlInformationProtectionSensitivityLabel
+        {
+            DisplayName = sensitivityLabel.DisplayName,
+            Description = sensitivityLabel.Description,
+            Enabled = sensitivityLabel.Enabled.HasValue ? sensitivityLabel.Enabled.Value : false,
+            Order = Convert.ToInt32(sensitivityLabel.Order),
+            Rank = sensitivityLabel.Rank.ConvertToPSType()
+        };
+
+        public static SensitivityLabel ConvertToSDKType(this PSSqlInformationProtectionSensitivityLabel sensitivityLabel) => new SensitivityLabel
+        {
+            DisplayName = sensitivityLabel.DisplayName,
+            Description = sensitivityLabel.Description,
+            Enabled = sensitivityLabel.Enabled,
+            Order = Convert.ToInt32(sensitivityLabel.Order),
+            Rank = sensitivityLabel.Rank.ConvertToSDKType()
+        };
+
+        public static PSSqlInformationProtectionRank? ConvertToPSType(this Rank? rank)
+        {
+            if (rank.HasValue)
             {
-                if (idInformationTypePair.Value.RecommendedLabelId.HasValue)
+                switch (rank.Value)
                 {
-                    Guid sensitivityLabelId = idInformationTypePair.Value.RecommendedLabelId.Value;
-                    if (!infoTypesPerLabelId.ContainsKey(sensitivityLabelId))
-                    {
-                        throw new Exception(string.Format(
-                            Resources.SqlInformationProtectionPolicyAssociatedLabelIdNotFoundError,
-                            idInformationTypePair.Value.DisplayName, sensitivityLabelId));
-                    }
-
-                    infoTypesPerLabelId[sensitivityLabelId].Add(idInformationTypePair.ToPSSqlInformationProtectionPolicyInformationType());
+                    case Rank.Critical:
+                        return PSSqlInformationProtectionRank.Critical;
+                    case Rank.High:
+                        return PSSqlInformationProtectionRank.High;
+                    case Rank.Low:
+                        return PSSqlInformationProtectionRank.Low;
+                    case Rank.Medium:
+                        return PSSqlInformationProtectionRank.Medium;
+                    case Rank.None:
+                        return PSSqlInformationProtectionRank.None;
+                    default:
+                        break;
                 }
             }
 
-            return new PSSqlInformationProtectionPolicy
-            {
-                Labels = policy.Labels.Select(idSensitivityLabelPair => idSensitivityLabelPair.ToPSSqlInformationProtectionPolicySensitivityLabel(infoTypesPerLabelId[Guid.Parse(idSensitivityLabelPair.Key)])).ToArray()
-            };
+            return null;
         }
 
-        public static PSSqlInformationProtectionPolicySensitivityLabel ToPSSqlInformationProtectionPolicySensitivityLabel(this KeyValuePair<string, SensitivityLabel> idSensitivityLabelPair,
-            List<PSSqlInformationProtectionPolicyInformationType> informationTypes) => new PSSqlInformationProtectionPolicySensitivityLabel
+        public static Rank? ConvertToSDKType(this PSSqlInformationProtectionRank? rank)
+        {
+            if (rank.HasValue)
             {
-                Id = Guid.Parse(idSensitivityLabelPair.Key),
-                DisplayName = idSensitivityLabelPair.Value.DisplayName,
-                Order = idSensitivityLabelPair.Value.Order.HasValue ? Convert.ToInt32(idSensitivityLabelPair.Value.Order.Value) : (int?)null,
-                Enabled = idSensitivityLabelPair.Value.Enabled.HasValue ? idSensitivityLabelPair.Value.Enabled.Value : false,
-                InformationTypes = informationTypes.ToArray(),
-            };
+                switch (rank.Value)
+                {
+                    case PSSqlInformationProtectionRank.Critical:
+                        return Rank.Critical;
+                    case PSSqlInformationProtectionRank.High:
+                        return Rank.High;
+                    case PSSqlInformationProtectionRank.Low:
+                        return Rank.Low;
+                    case PSSqlInformationProtectionRank.Medium:
+                        return Rank.Medium;
+                    case PSSqlInformationProtectionRank.None:
+                        return Rank.None;
+                    default:
+                        break;
+                }
+            }
 
-        public static PSSqlSensitivityLabel ToPSSqlSensitivityLabel(this KeyValuePair<string, SensitivityLabel> idLabelPair, InformationProtectionPolicy policy) => new PSSqlSensitivityLabel
-        {
-            DisplayName = idLabelPair.Value.DisplayName,
-            Order = idLabelPair.Value.Order,
-            State = idLabelPair.Value.Enabled == true ? PSSqlSensitivityObjectState.Enabled : PSSqlSensitivityObjectState.Disabled,
-            InformationTypes = policy.InformationTypes.Values
-                .Where(iT => iT.RecommendedLabelId.HasValue && iT.RecommendedLabelId.Value.ToString().Equals(idLabelPair.Key))
-                .Select(it => it.DisplayName)
-                .ToArray()
-        };
+            return null;
+        }
 
-        public static PSSqlInformationProtectionPolicyInformationType ToPSSqlInformationProtectionPolicyInformationType(this KeyValuePair<string, InformationType> idInformationTypePair) => new PSSqlInformationProtectionPolicyInformationType
+        public static PSSqlInformationProtectionInformationType ConvertToPSType(this InformationType informationType) => new PSSqlInformationProtectionInformationType
         {
-            Id = Guid.Parse(idInformationTypePair.Key),
-            DisplayName = idInformationTypePair.Value.DisplayName,
-            Enabled = idInformationTypePair.Value.Enabled,
-            Order = idInformationTypePair.Value.Order.HasValue ? Convert.ToInt32(idInformationTypePair.Value.Order.Value) : (int?)null,
-            Custom = idInformationTypePair.Value.Custom,
-            Keywords = idInformationTypePair.Value.Keywords.Select(k => k.ToPSSqlInformationProtectionPolicyKeyword()).ToArray()
-        };
-
-        public static PSSqlInformationType ToPSSqlInformationType(this InformationType informationType, Management.Security.Models.InformationProtectionPolicy policy) => new PSSqlInformationType
-        {
+            Custom = ToBool(informationType.Custom),
             DisplayName = informationType.DisplayName,
-            State = informationType.Enabled == true ? PSSqlSensitivityObjectState.Enabled : PSSqlSensitivityObjectState.Disabled,
-            Order = informationType.Order,
-            AssociatedLabel = informationType.GetAssociatedLabelName(policy),
-            Type = informationType.Custom == true ? PSSqlSensitivityObjectType.Custom : PSSqlSensitivityObjectType.BuiltIn,
-            Keywords = informationType.Keywords.Select(k => k.ToPSSqlInformationProtectionKeyword()).ToList()
+            Description = informationType.Description,
+            Enabled = ToBool(informationType.Enabled),
+            Keywords = informationType.Keywords.Select(k => k.ConvertToPSType()).ToList(),
+            Order = Convert.ToInt32(informationType.Order),
+            RecommendedLabelId = informationType.RecommendedLabelId
         };
 
-        public static PSSqlInformationProtectionPolicyKeyword ToPSSqlInformationProtectionPolicyKeyword(this InformationProtectionKeyword keyword) => new PSSqlInformationProtectionPolicyKeyword
+        public static InformationType ConvertToSDKType(this PSSqlInformationProtectionInformationType informationType) => new InformationType
         {
+            Custom = informationType.Custom,
+            DisplayName = informationType.DisplayName,
+            Description = informationType.Description,
+            Enabled = informationType.Enabled,
+            Keywords = informationType.Keywords.Select(k => k.ConvertToSDKType()).ToList(),
+            Order = Convert.ToInt32(informationType.Order),
+            RecommendedLabelId = informationType.RecommendedLabelId
+        };
+
+        public static PSSqlInformationProtectionKeyword ConvertToPSType(this InformationProtectionKeyword keyword) => new PSSqlInformationProtectionKeyword
+        {
+            CanBeNumeric = ToBool(keyword.CanBeNumeric),
+            Custom = ToBool(keyword.Custom),
+            Excluded = ToBool(keyword.Excluded),
             Pattern = keyword.Pattern,
-            CanBeNumeric = keyword.CanBeNumeric.HasValue ? keyword.CanBeNumeric.Value : false,
+        };
+
+        public static InformationProtectionKeyword ConvertToSDKType(this PSSqlInformationProtectionKeyword keyword) => new InformationProtectionKeyword
+        {
+            CanBeNumeric = keyword.CanBeNumeric,
             Custom = keyword.Custom,
             Excluded = keyword.Excluded,
-        };
-
-        public static PSSqlInformationProtectionKeyword ToPSSqlInformationProtectionKeyword(this InformationProtectionKeyword keyword) => new PSSqlInformationProtectionKeyword
-        {
             Pattern = keyword.Pattern,
-            State = keyword.Excluded == true ? PSSqlSensitivityObjectState.Disabled : PSSqlSensitivityObjectState.Enabled,
-            Type = keyword.Custom == true ? PSSqlSensitivityObjectType.Custom : PSSqlSensitivityObjectType.BuiltIn,
-            AllowNumeric = keyword.CanBeNumeric == true
         };
 
         public static string PrintObject(this object o)
@@ -124,11 +156,9 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.SqlInformationProtectio
             return builder.ToString();
         }
 
-        private static string GetAssociatedLabelName(this InformationType informationType, InformationProtectionPolicy policy)
+        private static bool ToBool(bool? b)
         {
-            Guid? recommendedLabelId = informationType.RecommendedLabelId;
-            return (!recommendedLabelId.HasValue || recommendedLabelId.Value == Guid.Empty) ? null :
-                policy.Labels[recommendedLabelId.Value.ToString()].DisplayName;
+            return b.HasValue ? b.Value : false;
         }
     }
 }

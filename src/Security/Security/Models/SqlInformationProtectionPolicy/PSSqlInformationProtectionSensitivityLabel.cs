@@ -12,22 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Microsoft.Azure.Commands.SecurityCenter.Models.SqlInformationProtectionPolicy
 {
-    public class PSSqlSensitivityLabel
+    public class PSSqlInformationProtectionSensitivityLabel
     {
+        [JsonProperty(Required = Required.Always)]
         public string DisplayName { get; set; }
 
+        [JsonProperty(Required = Required.Always)]
         public string Description { get; set; }
 
-        public PSSensitivityRank? Rank { get; set; }
+        [JsonProperty(Required = Required.Always)]
+        public PSSqlInformationProtectionRank? Rank { get; set; }
 
-        public double? Order { get; set; }
+        [JsonProperty(Required = Required.Always)]
+        public int Order { get; set; }
 
-        public PSSqlSensitivityObjectState State { get; set; }
+        [JsonProperty(Required = Required.Always)]
+        public bool Enabled { get; set; }
+    }
 
-        public string[] InformationTypes { get; set; }
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PSSqlInformationProtectionRank
+    {
+        None = 0,
+        Low = 1,
+        Medium = 2,
+        High = 3,
+        Critical = 4
     }
 }
