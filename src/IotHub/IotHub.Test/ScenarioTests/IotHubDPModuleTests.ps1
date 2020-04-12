@@ -61,6 +61,10 @@ function Test-AzureRmIotHubModuleLifecycle
 	Assert-True { $newModule2.DeviceId -eq $device1 }
 	Assert-True { $newModule2.Authentication.Type -eq 'SelfSigned' }
 	
+	# Count device modules
+	$totalModules = Invoke-AzIotHubQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Query "select * from devices.modules where devices.Id='$device1'"
+	Assert-True { $totalModules.Count -eq 2}
+
 	# Get module twin
 	$module1twin = Get-AzIotHubModuleTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module1
 	Assert-True { $module1twin.DeviceId -eq $device1}
