@@ -12,8 +12,15 @@ Sets the effective tenant SQL information protection policy.
 
 ## SYNTAX
 
+### SQL Information Protection Policy (Default)
 ```
 Set-AzSqlInformationProtectionPolicy -Policy <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SQL Information Protection Policy File Path
+```
+Set-AzSqlInformationProtectionPolicy -FilePath <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -59,12 +66,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FilePath
+Specifies a path of a .json file containing SQL Information Protection Policy definition.
+
+```yaml
+Type: System.String
+Parameter Sets: SQL Information Protection Policy File Path
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Policy
 Specifies a SQL information protection policy definition. You can specify a path of a .json file or a JSON format string that defines the policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SQL Information Protection Policy
 Aliases:
 
 Required: True
