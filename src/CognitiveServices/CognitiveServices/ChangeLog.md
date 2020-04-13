@@ -18,8 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-* Support Identity, Encryption, UserOwnedStorage 
+* Supported Identity, Encryption, UserOwnedStorage 
 
 ## Version 1.2.3
 * Updated SDK to 7.0

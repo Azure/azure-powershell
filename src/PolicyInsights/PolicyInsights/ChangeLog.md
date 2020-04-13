@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add Start-AzPolicyComplianceScan cmdlet for triggering policy compliance scans
-* Add policy definition, set definition, and assignment versions to Get-AzPolicyState output
+* Added `Start-AzPolicyComplianceScan` cmdlet for triggering policy compliance scans
+* Added policy definition, set definition, and assignment versions to `Get-AzPolicyState` output
 
 ## Version 1.2.1
 * Improved error messages
