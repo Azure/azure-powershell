@@ -1,11 +1,15 @@
 ## `Prerequisite`
 API for `Get` private link resource and private endpoint connection need to be ready at:
+
+#### Private Link Resource API
 ```
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateLinkResources"
 ```
 ```
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateLinkResources/{PrivateLinkResource-Name}"
 ```
+
+#### Private Endpoint Connection API
 ```
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateEndpointConnections/{PrivateEndpointConnection-Name}"
 ```
@@ -14,17 +18,18 @@ API for `Get` private link resource and private endpoint connection need to be r
 ```
 
 ## `Code Changes Needed`
-Add corresponding {Provider}, {Top-Level-Resource} and {API-Version} into [GenericProvider.cs](https://github.com/VeryEarly/azure-powershell/blob/guide-for-general-private-link-resource/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/GenericProvider.cs#L28)
+Add corresponding {Provider}, {Top-Level-Resource} and {API-Version} into [ProviderConfiguration.cs](https://github.com/Azure/azure-powershell/blob/master/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/ProviderConfiguration.cs#L12)
 in following pattern:
 ```
-{"{Provider}/{Top-Level-Resource}", "{API-Version}"}
+RegisterConfiguration("{Provider}/{Top-Level-Resource}", "{API-Version}")
 ```
 For example:
 ```
-{"microsoft.sql/servers", "2018-06-01-preview"}
+RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview")
 ```
+if "Private Endpoint Connection API" is not available, provide extra bool parameter 'false'
 ```
-{"microsoft.insights/privatelinkscopes", "2019-10-17-preview"}
+RegisterConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false)
 ```
 
 ## `End-To-End Test`
@@ -93,4 +98,4 @@ Deny-AzPrivateEndpointConnection -ResourceId $ConnectionId
 
 5. Connection cannot be approved after rejection
 
-6. One top level resource can maximum 3 private end point connection
+6. One top level resource can have maximum 3 private end point connection
