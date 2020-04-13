@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
+    - New-AzVirtualNetworkGateway
+    - Set-AzVirtualNetworkGateway
+    - New-AzVirtualNetworkGatewayConnection
+    - Set-AzVirtualNetworkGatewayConnection
 * Updated cmdlets to enable FQDN based LocalNetworkGateways and VpnSites
     - `New-AzLocalNetworkGateway`
     - `New-AzVpnSiteLink`
@@ -27,6 +32,11 @@
         - allows setting of all the existing properties including the IPv6CircuitConnectionProperties
     - Updated `Add-AzExpressRouteCircuitConnectionConfig`
         - Added another optional parameter AddressPrefixType to specify the address family of address prefix
+* Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
+    - New-AzVirtualNetworkGateway
+    - Set-AzVirtualNetworkGateway
+    - New-AzVirtualNetworkGatewayConnection
+    - Set-AzVirtualNetworkGatewayConnection
 
 ## Version 2.4.0
 * Updated cmdlets to allow cross-tenant VirtualHubVnetConnections
