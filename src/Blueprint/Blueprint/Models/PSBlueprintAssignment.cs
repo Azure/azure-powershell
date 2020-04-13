@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         /// <param name="assignment">Assignment object from which to create the PSBlueprintAssignment.</param>
         /// <param name="subscriptionId">ID of the subscription the assignment is associated with.</param>
         /// <returns>A new PSBlueprintAssignment object.</returns>
-        internal static PSBlueprintAssignment FromAssignment(Assignment assignment, string scope)
+        internal static PSBlueprintAssignment FromAssignment(Assignment assignment)
         {
             var psAssignment = new PSBlueprintAssignment
             {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 Id = assignment.Id,
                 Type = assignment.Type,
                 Location = assignment.Location,
-                Scope = scope,
+                Scope = assignment.Scope,
                 Identity = new PSManagedServiceIdentity
                 {
                     PrincipalId = assignment.Identity.PrincipalId,

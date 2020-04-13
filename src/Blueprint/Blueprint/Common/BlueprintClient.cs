@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         {
             var result = blueprintManagementClient.Assignments.GetWithHttpMessagesAsync(subscriptionId, blueprintAssignmentName).GetAwaiter().GetResult();
 
-            return PSBlueprintAssignment.FromAssignment(result.Body, subscriptionId);
+            return PSBlueprintAssignment.FromAssignment(result.Body);
         }
 
         public PSBlueprint DeleteBlueprint(string scope, string blueprintName)
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         {
             var assignments = blueprintManagementClient.Assignments.List(scope);
 
-            foreach (var assignment in assignments.Select(assignment => PSBlueprintAssignment.FromAssignment(assignment, scope)))
+            foreach (var assignment in assignments.Select(assignment => PSBlueprintAssignment.FromAssignment(assignment)))
             {
                 yield return assignment;
             }
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             while (!string.IsNullOrEmpty(assignments.NextPageLink))
             {
                 assignments = blueprintManagementClient.Assignments.ListNext(assignments.NextPageLink);
-                foreach (var assignment in assignments.Select(assignment => PSBlueprintAssignment.FromAssignment(assignment, scope)))
+                foreach (var assignment in assignments.Select(assignment => PSBlueprintAssignment.FromAssignment(assignment)))
                 {
                     yield return assignment;
                 }
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             if (result.Body == null)
                 return null;
 
-            return PSBlueprintAssignment.FromAssignment(result.Body, subscriptionId);
+            return PSBlueprintAssignment.FromAssignment(result.Body);
         }
 
         public PSBlueprintAssignment CreateOrUpdateBlueprintAssignment(string subscriptionId, string assignmentName, Assignment assignment)
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
             if (result.Body != null)
             {
-                return PSBlueprintAssignment.FromAssignment(result.Body, subscriptionId);
+                return PSBlueprintAssignment.FromAssignment(result.Body);
             }
 
             return null;
