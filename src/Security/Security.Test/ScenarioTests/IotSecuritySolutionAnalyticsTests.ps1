@@ -14,21 +14,21 @@
 
 <#
 .SYNOPSIS
-Get Iot security analytics
+Get the defualt Iot security analytics
 #>
-function Get-AzureRmIotSecurityAnalytics-SolutionScope
+function Get-AzureRmIotSecurityAnalytics-SolutionScope-Single
 {
 	$ResourceGroupName = "MichalResourceGroup"
 	$SolutionName = "MichalDemoHub"
-	$analytics = Get-AzIotSecurityAnalytics -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName
+	$analytics = Get-AzIotSecurityAnalytics -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Defualt
 	Validate-Analytics $analytics
 }
 
 <#
 .SYNOPSIS
-Get Iot security analytics
+Get list of all Iot security analytics
 #>
-function Get-AzureRmIotSecurityAnalytics-SolutionLevelResource
+function Get-AzureRmIotSecurityAnalytics-SolutionScope-List
 {
 	$ResourceGroupName = "MichalResourceGroup"
 	$SolutionName = "MichalDemoHub"
@@ -38,25 +38,51 @@ function Get-AzureRmIotSecurityAnalytics-SolutionLevelResource
 
 <#
 .SYNOPSIS
-Set Iot aggregated security alerts (dismiss)
+Disable Iot aggregated security alert (dismiss)
 #>
-function Set-AzureRmIotSecurityAnalyticsAggregatedAlerts-SolutionLevelResource
+function Disable-AzureRmIotSecurityAnalyticsAggregatedAlert-SolutionLevelResource
 {
 	$ResourceGroupName = "MichalResourceGroup"
 	$SolutionName = "MichalDemoHub"
 	$Name = "IoT_SucessfulLocalLogin/2020-03-15"
-	Set-AzIotSecurityAnalyticsAggregatedAlerts -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Name $Name
+	Disable-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Name $Name
+}
+
+<#
+.SYNOPSIS
+Disable Iot aggregated security alert (dismiss)
+#>
+function Disable-AzureRmIotSecurityAnalyticsAggregatedAlert-InputObject
+{
+	$ResourceGroupName = "MichalResourceGroup"
+	$SolutionName = "MichalDemoHub"
+	$Name = "IoT_SucessfulLocalLogin/2020-03-15"
+	$analytic = Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Name $Name
+	Disable-AzIotSecurityAnalyticsAggregatedAlert -InputObject $analytic
+}
+
+<#
+.SYNOPSIS
+Disable Iot aggregated security alert (dismiss)
+#>
+function Disable-AzureRmIotSecurityAnalyticsAggregatedAlert-ResourceId
+{
+	$ResourceGroupName = "MichalResourceGroup"
+	$SolutionName = "MichalDemoHub"
+	$Name = "IoT_SucessfulLocalLogin/2020-03-15"
+	$analytic = Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Name $Name
+	Disable-AzIotSecurityAnalyticsAggregatedAlert -ResourceId $analytic.Id
 }
 
 <#
 .SYNOPSIS
 Get Iot aggregated security alerts
 #>
-function Get-AzureRmIotSecurityAnalyticsAggregatedAlerts-SolutionScope
+function Get-AzureRmIotSecurityAnalyticsAggregatedAlert-SolutionScope
 {
 	$ResourceGroupName = "MichalResourceGroup"
 	$SolutionName = "MichalDemoHub"
-	$analytics = Get-AzIotSecurityAnalyticsAggregatedAlerts -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName
+	$analytics = Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName
 	Validate-Analytics $analytics
 }
 
@@ -64,13 +90,12 @@ function Get-AzureRmIotSecurityAnalyticsAggregatedAlerts-SolutionScope
 .SYNOPSIS
 Get Iot aggregated security alert
 #>
-function Get-AzureRmIotSecurityAnalyticsAggregatedAlerts-SolutionLevelResource
+function Get-AzureRmIotSecurityAnalyticsAggregatedAlert-SolutionLevelResource
 {
     $ResourceGroupName = "MichalResourceGroup"
 	$SolutionName = "MichalDemoHub"
 	$Name = "IoT_CryptoMiner/2020-03-15"
-	$analytic = Get-AzIotSecurityAnalyticsAggregatedAlerts -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Name $Name
-	Write-Debug $analytic
+	$analytic = Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Name $Name
 	Validate-Analytic $analytic
 }
 
@@ -78,11 +103,11 @@ function Get-AzureRmIotSecurityAnalyticsAggregatedAlerts-SolutionLevelResource
 .SYNOPSIS
 Get Iot aggregated security recommendations
 #>
-function Get-AzureRmIotSecurityAnalyticsAggregatedRecommendations-SolutionScope
+function Get-AzureRmIotSecurityAnalyticsAggregatedRecommendation-SolutionScope
 {
     $ResourceGroupName = "MichalResourceGroup"
 	$SolutionName = "MichalDemoHub"
-	$analytics = Get-AzIotSecurityAnalyticsAggregatedRecommendations -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName
+	$analytics = Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName
 	Validate-Analytics $analytics
 }
 
@@ -90,12 +115,12 @@ function Get-AzureRmIotSecurityAnalyticsAggregatedRecommendations-SolutionScope
 .SYNOPSIS
 Get Iot aggregated security recommendation
 #>
-function Get-AzureRmIotSecurityAnalyticsAggregatedRecommendations-SolutionLevelResource
+function Get-AzureRmIotSecurityAnalyticsAggregatedRecommendation-SolutionLevelResource
 {
 	$ResourceGroupName = "MichalResourceGroup"
 	$SolutionName = "MichalDemoHub"
 	$Name = "iot_openports"
-	$analytic = Get-AzIotSecurityAnalyticsAggregatedRecommendations -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Name $Name
+	$analytic = Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Name $Name
 	Validate-Analytic $analytic
 }
 

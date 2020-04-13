@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzIotSecuritySolutionUserDefinedResourcesObject -Query <String> -QuerySubscriptions <String[]>
+New-AzIotSecuritySolutionUserDefinedResourcesObject -Query <String> -QuerySubscriptionList <String[]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -61,7 +61,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -QuerySubscriptions
+### -QuerySubscriptionList
 Query subscriptions.
 
 ```yaml

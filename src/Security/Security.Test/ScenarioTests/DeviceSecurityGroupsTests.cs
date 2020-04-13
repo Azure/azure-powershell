@@ -34,28 +34,28 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceIdScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmDeviceSecurityGroups-ResourceIdScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmDeviceSecurityGroup-ResourceIdScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceIdLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmDeviceSecurityGroups-ResourceIdLevelResource");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmDeviceSecurityGroup-ResourceIdLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetResourceIdLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmDeviceSecurityGroups-ResourceIdLevelResource");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmDeviceSecurityGroup-ResourceIdLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveDeviceSecurityGroups()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzureRmDeviceSecurityGroups-ResourceIdLevelResource");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzureRmDeviceSecurityGroup-ResourceIdLevelResource");
         }
     }
 }

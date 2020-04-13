@@ -28,6 +28,14 @@ Update-AzIotSecuritySolution -ResourceId <String> [-Tag <Hashtable>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### InputObject
+```
+Update-AzIotSecuritySolution -InputObject <PSIotSecuritySolution> [-Tag <Hashtable>]
+ [-UserDefinedResource <PSUserDefinedResources>]
+ [-RecommendationsConfiguration <PSRecommendationConfiguration[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 {{ Fill in the Description }}
 
@@ -57,6 +65,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Input Object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions.PSIotSecuritySolution
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Resource name.
 
@@ -77,7 +100,19 @@ Recommendations configuration.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions.PSRecommendationConfiguration[]
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupLevelResource, ResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions.PSRecommendationConfiguration[]
+Parameter Sets: InputObject
 Aliases:
 
 Required: False
@@ -122,7 +157,19 @@ Tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupLevelResource, ResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: InputObject
 Aliases:
 
 Required: False
@@ -137,7 +184,19 @@ User defined resources.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions.PSUserDefinedResources
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupLevelResource, ResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions.PSUserDefinedResources
+Parameter Sets: InputObject
 Aliases:
 
 Required: False
@@ -184,6 +243,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions.PSIotSecuritySolution
+
+### System.Collections.Hashtable
+
+### Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions.PSUserDefinedResources
+
+### Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions.PSRecommendationConfiguration[]
 
 ## OUTPUTS
 

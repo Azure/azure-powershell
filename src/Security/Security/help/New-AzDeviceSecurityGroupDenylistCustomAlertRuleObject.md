@@ -13,9 +13,9 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject -DisplayName <String> -Description <String>
- -Enabled <Boolean> -Type <String> -ValueType <String> -DenylistValues <String[]>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject -Name <String> -Description <String> -Enabled <Boolean>
+ -Type <String> -ValueType <String> -DenylistValue <String[]> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DenylistValues
+### -DenylistValue
 Deny list values.
 
 ```yaml
@@ -77,11 +77,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisplayName
-Display name.
+### -Enabled
+Is rule enabled.
 
 ```yaml
-Type: System.String
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -92,11 +92,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Enabled
-Is rule enabled.
+### -Name
+Display name.
 
 ```yaml
-Type: System.Boolean
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

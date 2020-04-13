@@ -2078,7 +2078,7 @@
     "Set-AzSecurityWorkspaceSetting": "Set-AzureRmSecurityWorkspaceSetting",
     "Remove-AzSecurityWorkspaceSetting": "Remove-AzureRmSecurityWorkspaceSetting",
     "Get-AzSecurityAnalytics": "Get-AzureRmIotSecurityAnalytics",
-    "Set-AzIotSecurityAnalyticsAggregatedAlert": "Set-AzureRmIotSecurityAnalyticsAggregatedAlert",
+    "Disable-AzIotSecurityAnalyticsAggregatedAlert": "Disable-AzureRmIotSecurityAnalyticsAggregatedAlert",
     "Get-AzIotSecurityAnalyticsAggregatedAlert": "Get-AzureRmIotSecurityAnalyticsAggregatedAlert",
     "Get-AzIotSecurityAnalyticsAggregatedRecommendation": "Get-AzureRmIotSecurityAnalyticsAggregatedRecommendation",
     "Get-AzDeviceSecurityGroup": "Get-AzureRmDeviceSecurityGroup",
