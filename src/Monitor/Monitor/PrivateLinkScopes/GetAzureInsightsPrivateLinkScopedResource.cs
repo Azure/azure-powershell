@@ -22,7 +22,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScopeScopedResource", DefaultParameterSetName = ByScopeParameterSet), OutputType(typeof(PSMonitorPrivateLinkScopedResource))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScopedResource", DefaultParameterSetName = ByScopeParameterSet), OutputType(typeof(PSMonitorPrivateLinkScopedResource))]
     public class GetAzureInsightsPrivateLinkScopedResource : ManagementCmdletBase
     {
         const string ByScopeParameterSet = "ByScopeParameterSet";

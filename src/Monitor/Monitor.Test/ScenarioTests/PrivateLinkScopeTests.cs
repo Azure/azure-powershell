@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPrivateLinkScopeScopedResourceCRUD()
+        public void TestPrivateLinkScopedResourceCRUD()
         {
             TestsController.NewInstance.RunPsTest(_logger, "Test-PrivateLinkScopedResourceCRUD");
         }
