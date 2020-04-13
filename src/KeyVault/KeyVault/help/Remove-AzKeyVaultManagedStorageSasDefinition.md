@@ -61,6 +61,12 @@ Tags        :
 
 Removes a Key Vault managed Storage SAS definition 'mysasdef' associated with the account 'mystorageaccount' in vault 'myvault'.
 
+### Example 3
+
+```powershell <!-- Aladdin Generated Example --> 
+Remove-AzKeyVaultManagedStorageSasDefinition -AccountName $sa.StorageAccountName -Name "TestCert01" -PassThru  -VaultName "ContosoKV01"
+```
+
 ## PARAMETERS
 
 ### -AccountName
