@@ -245,10 +245,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 gremlinGraphResource.IndexingPolicy = indexingPolicy;
             }
 
-            IDictionary<string, string> options = new Dictionary<string, string>();
+            CreateUpdateOptions options = new CreateUpdateOptions();
+
             if (Throughput != null)
             {
-                options.Add("Throughput", Throughput.ToString());
+                options.Throughput = Throughput.ToString();
             }
 
             GremlinGraphCreateUpdateParameters gremlinGraphCreateUpdateParameters = new GremlinGraphCreateUpdateParameters
