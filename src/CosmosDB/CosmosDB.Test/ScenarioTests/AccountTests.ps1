@@ -167,3 +167,22 @@ function Test-AccountRelatedCmdletsUsingObject
   $IsAccountDeleted = Remove-AzCosmosDBAccount -InputObject $cosmosDBAccount -PassThru
   Assert-AreEqual $IsAccountDeleted true
 }
+
+function Test-AddRegionOperation
+{
+  $rgName = "CosmosDBResourceGroup2"
+  $location = "East US"
+  $locationlist = "East US", "West US"
+  $cosmosDBAccountName = "testupdateregion"
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location $location
+
+    $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
+    do 
+    {
+       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+    } while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
+
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $locationlist
+  $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+  Assert-AreEqual $cosmosDBAccount.Locations.Count $updatedCosmosDBAccount.Locations.Count - 1 
+}

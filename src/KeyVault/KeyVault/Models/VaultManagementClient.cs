@@ -84,8 +84,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.EnabledForDeployment = parameters.EnabledForDeployment;
                 properties.EnabledForTemplateDeployment = parameters.EnabledForTemplateDeployment;
                 properties.EnabledForDiskEncryption = parameters.EnabledForDiskEncryption;
-                properties.EnableSoftDelete = parameters.EnableSoftDelete.HasValue && parameters.EnableSoftDelete.Value ? true : (bool?) null;
+                properties.EnableSoftDelete = parameters.EnableSoftDelete.HasValue && parameters.EnableSoftDelete.Value ? true : (bool?)null;
                 properties.EnablePurgeProtection = parameters.EnablePurgeProtection.HasValue && parameters.EnablePurgeProtection.Value ? true : (bool?)null;
+                // properties.SoftDeleteRetentionInDays = parameters.SoftDeleteRetentionInDays;
                 properties.TenantId = parameters.TenantId;
                 properties.VaultUri = "";
                 properties.AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } : new AccessPolicyEntry[] { };
@@ -151,13 +152,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="adClient">the active directory client</param>
         /// <returns>the updated vault</returns>
         public PSKeyVault UpdateVault(
-            PSKeyVault existingVault, 
-            PSKeyVaultAccessPolicy[] updatedPolicies, 
+            PSKeyVault existingVault,
+            PSKeyVaultAccessPolicy[] updatedPolicies,
             bool? updatedEnabledForDeployment,
-            bool? updatedEnabledForTemplateDeployment, 
-            bool? updatedEnabledForDiskEncryption, 
+            bool? updatedEnabledForTemplateDeployment,
+            bool? updatedEnabledForDiskEncryption,
             bool? updatedSoftDeleteSwitch,
             bool? updatedPurgeProtectionSwitch,
+            // int? softDeleteRetentionInDays,
             PSKeyVaultNetworkRuleSet updatedNetworkAcls,
             ActiveDirectoryClient adClient = null)
         {
@@ -172,16 +174,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             properties.EnabledForDeployment = updatedEnabledForDeployment;
             properties.EnabledForTemplateDeployment = updatedEnabledForTemplateDeployment;
             properties.EnabledForDiskEncryption = updatedEnabledForDiskEncryption;
+            // properties.SoftDeleteRetentionInDays = softDeleteRetentionInDays;
 
             // soft delete flags can only be applied if they enable their respective behaviors
             // and if different from the current corresponding properties on the vault.
             if (!(properties.EnableSoftDelete.HasValue && properties.EnableSoftDelete.Value)
-                && updatedSoftDeleteSwitch.HasValue 
+                && updatedSoftDeleteSwitch.HasValue
                 && updatedSoftDeleteSwitch.Value)
                 properties.EnableSoftDelete = updatedSoftDeleteSwitch;
 
             if (!(properties.EnablePurgeProtection.HasValue && properties.EnablePurgeProtection.Value)
-                && updatedPurgeProtectionSwitch.HasValue 
+                && updatedPurgeProtectionSwitch.HasValue
                 && updatedPurgeProtectionSwitch.Value)
                 properties.EnablePurgeProtection = updatedPurgeProtectionSwitch;
 
@@ -189,17 +192,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 new List<AccessPolicyEntry>() :
                 updatedPolicies.Select(a => new AccessPolicyEntry
                 {
-                            TenantId = a.TenantId,
-                            ObjectId = a.ObjectId,
-                            ApplicationId = a.ApplicationId,
-                            Permissions = new Permissions
-                            {
-                                Keys = a.PermissionsToKeys.ToArray(),
-                                Secrets = a.PermissionsToSecrets.ToArray(),
-                                Certificates = a.PermissionsToCertificates.ToArray(),
-                                Storage = a.PermissionsToStorage.ToArray(),
-                            }
-                        }).ToList();
+                    TenantId = a.TenantId,
+                    ObjectId = a.ObjectId,
+                    ApplicationId = a.ApplicationId,
+                    Permissions = new Permissions
+                    {
+                        Keys = a.PermissionsToKeys.ToArray(),
+                        Secrets = a.PermissionsToSecrets.ToArray(),
+                        Certificates = a.PermissionsToCertificates.ToArray(),
+                        Storage = a.PermissionsToStorage.ToArray(),
+                    }
+                }).ToList();
 
             UpdateVaultNetworkRuleSetProperties(properties, updatedNetworkAcls);
 

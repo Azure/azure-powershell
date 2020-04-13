@@ -22,7 +22,9 @@ namespace Microsoft.Azure.Commands.Profile.Common
 
         public const string AzureSurveyUrl = "https://aka.ms/azpssurvey?Q_CHL=FEEDBACK";
 
-        public static readonly string AzurePowerShellFeedbackMessage = string.Format(Resources.AzurePowerShellFeedback, AzureProfileConstants.AzureSurveyUrl);
+        public const string AzureSurveyUrlForError = "https://aka.ms/azpssurvey?Q_CHL=ERROR";
+
+        public static readonly string AzurePowerShellFeedbackMessage = string.Format(Resources.AzurePowerShellFeedback, AzureProfileConstants.AzureSurveyUrlForError);
 
         public static readonly string AzurePowerShellFeedbackQuestion = string.Format(Resources.SendFeedbackOpenLinkAutomatically, AzureProfileConstants.AzureSurveyUrl);
 

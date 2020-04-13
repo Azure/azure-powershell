@@ -394,6 +394,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to add Role Assignment for Storage Account &apos;{0}&apos;.
+        /// </summary>
+        internal static string FailedToAddRoleAssignmentForStorageAccount {
+            get {
+                return ResourceManager.GetString("FailedToAddRoleAssignmentForStorageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failing over Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;..
         /// </summary>
         internal static string FailoverAzureSqlDatabaseDescription {
@@ -1056,6 +1065,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RetrievingStorageAccountKeysFailed {
             get {
                 return ResourceManager.GetString("RetrievingStorageAccountKeysFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to retrieve properties of storage account &apos;{0}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountPropertiesFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountPropertiesFailed", resourceCulture);
             }
         }
         
