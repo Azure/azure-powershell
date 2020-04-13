@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.Alerts;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
 using Microsoft.Rest.Azure;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
@@ -80,8 +81,8 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                         case "dismissed":
                             actionType = "Dismiss";
                             break;
-                        case "active":
-                            actionType = "Activate";
+                        case "reactivate":
+                            actionType = "Reactivate";
                             break;
                         default:
                             break;
@@ -101,14 +102,28 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
             {
                 if (ShouldProcess(name, VerbsCommon.Set))
                 {
-                    SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateWithHttpMessagesAsync(name, actionType).GetAwaiter().GetResult();
+                    if (actionType.Equals("Reactivate", StringComparison.OrdinalIgnoreCase))
+                    {
+                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateToReactivateWithHttpMessagesAsync(name).GetAwaiter().GetResult();
+                    }
+                    else
+                    {
+                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateToDismissWithHttpMessagesAsync(name).GetAwaiter().GetResult();
+                    }
                 }
             }
             else
             {
                 if (ShouldProcess(name, VerbsCommon.Set))
                 {
-                    SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateWithHttpMessagesAsync(name, actionType, rg).GetAwaiter().GetResult();
+                    if (actionType.Equals("Reactivate", StringComparison.OrdinalIgnoreCase))
+                    {
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateToReactivateWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                    }
+                    else
+                    {
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateToDismissWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                    }
                 }
             }
 
