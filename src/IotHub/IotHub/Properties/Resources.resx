@@ -237,4 +237,7 @@
   <data name="SetIotHubConfiguration" xml:space="preserve">
     <value>Set Configuration</value>
   </data>
+  <data name="InvokeIotHubQuery" xml:space="preserve">
+    <value>Query an Iot Hub</value>
+  </data>
 </root>

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubQuery", DefaultParameterSetName = ResourceParameterSet)]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubQuery", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class InvokeAzIotHubQuery : IotHubBaseCmdlet
     {
@@ -61,40 +61,43 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
-            IotHubDescription iotHubDescription;
-            if (ParameterSetName.Equals(InputObjectParameterSet))
+            if (ShouldProcess(this.IotHubName, Properties.Resources.InvokeIotHubQuery))
             {
-                this.ResourceGroupName = this.InputObject.Resourcegroup;
-                this.IotHubName = this.InputObject.Name;
-                iotHubDescription = IotHubUtils.ConvertObject<PSIotHub, IotHubDescription>(this.InputObject);
-            }
-            else
-            {
-                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                IotHubDescription iotHubDescription;
+                if (ParameterSetName.Equals(InputObjectParameterSet))
                 {
-                    this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
-                    this.IotHubName = IotHubUtils.GetIotHubName(this.ResourceId);
+                    this.ResourceGroupName = this.InputObject.Resourcegroup;
+                    this.IotHubName = this.InputObject.Name;
+                    iotHubDescription = IotHubUtils.ConvertObject<PSIotHub, IotHubDescription>(this.InputObject);
+                }
+                else
+                {
+                    if (ParameterSetName.Equals(ResourceIdParameterSet))
+                    {
+                        this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
+                        this.IotHubName = IotHubUtils.GetIotHubName(this.ResourceId);
+                    }
+
+                    iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.IotHubName);
                 }
 
-                iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.IotHubName);
-            }
+                IEnumerable<SharedAccessSignatureAuthorizationRule> authPolicies = this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.IotHubName);
+                SharedAccessSignatureAuthorizationRule policy = IotHubUtils.GetPolicy(authPolicies, PSAccessRights.RegistryRead);
+                PSIotHubConnectionString psIotHubConnectionString = IotHubUtils.ToPSIotHubConnectionString(policy, iotHubDescription.Properties.HostName);
+                RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);
 
-            IEnumerable<SharedAccessSignatureAuthorizationRule> authPolicies = this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.IotHubName);
-            SharedAccessSignatureAuthorizationRule policy = IotHubUtils.GetPolicy(authPolicies, PSAccessRights.RegistryRead);
-            PSIotHubConnectionString psIotHubConnectionString = IotHubUtils.ToPSIotHubConnectionString(policy, iotHubDescription.Properties.HostName);
-            RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);
+                IQuery query;
+                if (this.IsParameterBound(c => c.Top))
+                {
+                    query = registryManager.CreateQuery(this.Query, this.Top);
+                }
+                else
+                {
+                    query = registryManager.CreateQuery(this.Query);
+                }
 
-            IQuery query;
-            if (this.IsParameterBound(c => c.Top))
-            {
-                query = registryManager.CreateQuery(this.Query, this.Top);
+                this.WriteObject(query.GetNextAsJsonAsync().GetAwaiter().GetResult(), true);
             }
-            else
-            {
-                query = registryManager.CreateQuery(this.Query);
-            }
-
-            this.WriteObject(query.GetNextAsJsonAsync().GetAwaiter().GetResult(), true);
         }
     }
 }
