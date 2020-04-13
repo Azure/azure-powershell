@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.Location = location;
             this.Tags = tags;
             this.ProvisioningState = provisioningState;
-            this.PrivateEndpointConnections = privateEndpointConnections;
         }
 
         /// <summary>
@@ -73,11 +72,5 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
-
-        /// <summary>
-        /// Gets list of private endpoint connections.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
-        public IList<PSPrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
     }
 }
