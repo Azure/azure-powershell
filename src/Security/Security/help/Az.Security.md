@@ -53,6 +53,9 @@ Gets the security tasks that Azure Security Center recommends you to do in order
 ### [Get-AzSecurityWorkspaceSetting](Get-AzSecurityWorkspaceSetting.md)
 Gets the configured security workspace settings on a subscription.
 
+### [Get-AzSqlInformationProtectionPolicy](Get-AzSqlInformationProtectionPolicy.md)
+Gets the SQL information protection policy.
+
 ### [Remove-AzJitNetworkAccessPolicy](Remove-AzJitNetworkAccessPolicy.md)
 Deletes a JIT network access policy.
 
@@ -79,6 +82,9 @@ Sets the pricing of Azure Security Center tier for a scope.
 
 ### [Set-AzSecurityWorkspaceSetting](Set-AzSecurityWorkspaceSetting.md)
 Updates the workspace settings for the subscription.
+
+### [Set-AzSqlInformationProtectionPolicy](Set-AzSqlInformationProtectionPolicy.md)
+Sets the SQL information protection policy.
 
 ### [Start-AzJitNetworkAccessPolicy](Start-AzJitNetworkAccessPolicy.md)
 Invokes a temporary network access request.

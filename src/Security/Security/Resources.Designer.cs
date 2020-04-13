@@ -70,7 +70,16 @@ namespace Microsoft.Azure.Commands.SecurityCenter {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ids should not be duplicated. Please eliminate duplication of these ids: {0}..
+        ///   Looks up a localized string similar to Display names should be unique. Please eliminate duplication of these names: {0}..
+        /// </summary>
+        internal static string SqlInformationProtectionPolicyDuplicatedDisplayNamesError {
+            get {
+                return ResourceManager.GetString("SqlInformationProtectionPolicyDuplicatedDisplayNamesError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ids should be unique. Please eliminate duplication of these ids: {0}..
         /// </summary>
         internal static string SqlInformationProtectionPolicyDuplicatedIdsError {
             get {

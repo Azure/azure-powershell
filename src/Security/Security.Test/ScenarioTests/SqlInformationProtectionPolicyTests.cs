@@ -32,40 +32,50 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenInformationTypeAndSensitivityLabelShareSameId()
         {
-            RunPowerShellTest("Test-ErrorWhenInformationTypeAndSensitivityLabelShareSameId");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenInformationTypeAndSensitivityLabelShareSameId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestErrorWhenInformationTypeAndSensitivityLabelShareSameDisplayName()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenInformationTypeAndSensitivityLabelShareSameDisplayName");
+
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenInformationTypesShareSameDisplayName()
         {
-            RunPowerShellTest("Test-ErrorWhenInformationTypesShareSameDisplayName");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenInformationTypesShareSameDisplayName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenSensitivityLabelsShareSameDisplayName()
         {
-            RunPowerShellTest("Test-ErrorWhenSensitivityLabelsShareSameDisplayName");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenSensitivityLabelsShareSameDisplayName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenRankIsInvalid()
         {
-            RunPowerShellTest("Test-ErrorWhenRankIsInvalid");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenRankIsInvalid");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenRankIsMissing()
         {
-            RunPowerShellTest("Test-ErrorWhenRankIsMissing");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenRankIsMissing");
         }
 
-        private void RunPowerShellTest(string testName)
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestErrorWhenSettingAnEmptyPolicy()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, testName);
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenSettingAnEmptyPolicy");
         }
 
         private readonly XunitTracingInterceptor _logger;

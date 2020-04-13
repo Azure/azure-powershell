@@ -120,8 +120,11 @@
   <data name="SqlInformationProtectionPolicyDeserializationError" xml:space="preserve">
     <value>Failed to deserialize SQL inforamtion protection policy.</value>
   </data>
+  <data name="SqlInformationProtectionPolicyDuplicatedDisplayNamesError" xml:space="preserve">
+    <value>Display names should be unique. Please eliminate duplication of these names: {0}.</value>
+  </data>
   <data name="SqlInformationProtectionPolicyDuplicatedIdsError" xml:space="preserve">
-    <value>Ids should not be duplicated. Please eliminate duplication of these ids: {0}.</value>
+    <value>Ids should be unique. Please eliminate duplication of these ids: {0}.</value>
   </data>
   <data name="SqlInformationProtectionPolicyEmptyError" xml:space="preserve">
     <value>The provided policy definition is empty.</value>

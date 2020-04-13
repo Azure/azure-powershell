@@ -19,7 +19,7 @@ Tests an error is raised when setting an empty policy
 function Test-ErrorWhenSettingAnEmptyPolicy
 {
 	$message = "The provided policy definition is empty."
-	Assert-Throws {Set-SqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\Empty.json" } $message
+	Assert-Throws {Set-AzSqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\Empty.json" } $message
 }
 
 <#
@@ -28,8 +28,8 @@ Tests an error is raised when setting a policy containing a label and an informa
 #>
 function Test-ErrorWhenInformationTypeAndSensitivityLabelShareSameId
 {
-	$message = "Ids should not be duplicated. Please eliminate duplication of these ids: 50e58766-ab53-4846-be8a-35e0bb87723e."
-	Assert-Throws {Set-SqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\InformationTypeAndSensitivityLabelSharingSameId.json" } $message
+	$message = "Ids should be unique. Please eliminate duplication of these ids: '50e58766-ab53-4846-be8a-35e0bb87723e'."
+	Assert-Throws {Set-AzSqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\InformationTypeAndSensitivityLabelSharingSameId.json" } $message
 }
 
 <#
@@ -38,8 +38,8 @@ Tests an error is raised when setting a policy containing information types shar
 #>
 function Test-ErrorWhenInformationTypesShareSameDisplayName
 {
-	$message = "Ids should not be duplicated. Please eliminate duplication of these ids: 50e58766-ab53-4846-be8a-35e0bb87723e."
-	Assert-Throws {Set-SqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\InformationTypesSharingSameDisplayName.json" } $message
+	$message = "Display names should be unique. Please eliminate duplication of these names: 'Health'."
+	Assert-Throws {Set-AzSqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\InformationTypesSharingSameDisplayName.json" } $message
 }
 
 <#
@@ -48,8 +48,18 @@ Tests an error is raised when setting a policy containing sensitivity labels sha
 #>
 function Test-ErrorWhenSensitivityLabelsShareSameDisplayName
 {
-	$message = "Ids should not be duplicated. Please eliminate duplication of these ids: 50e58766-ab53-4846-be8a-35e0bb87723e."
-	Assert-Throws {Set-SqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\SensitivityLabelsSharingSameDisplayName.json" } $message
+	$message = "Display names should be unique. Please eliminate duplication of these names: 'Public'."
+	Assert-Throws {Set-AzSqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\SensitivityLabelsSharingSameDisplayName.json" } $message
+}
+
+<#
+.SYNOPSIS
+Tests an error is raised when setting a policy containing information type and sensitivity label sharing same display name.
+#>
+function Test-ErrorWhenInformationTypeAndSensitivityLabelShareSameDisplayName
+{
+	$message = "Display names should be unique. Please eliminate duplication of these names: 'Public'."
+	Assert-Throws {Set-AzSqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\SensitivityLabelsSharingSameDisplayName.json" } $message
 }
 
 <#
@@ -58,8 +68,8 @@ Tests an error is raised when setting a policy containing an invalid rank.
 #>
 function Test-ErrorWhenRankIsInvalid
 {
-	$message = "Error converting value "Non" to type 'System.Nullable`1[Microsoft.Azure.Commands.SecurityCenter.Models.SqlInformationProtectionPolicy.PSSqlInformationProtectionRank]'. Path 'Labels.50e58766-ab53-4846-be8a-35e0bb87723e.Rank', line 6, position 19."
-	Assert-Throws {Set-SqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\InvalidRank.json" } $message
+	$message = "Error converting value ""Non"" to type 'System.Nullable``1[Microsoft.Azure.Commands.SecurityCenter.Models.SqlInformationProtectionPolicy.PSSqlInformationProtectionRank]'. Path 'Labels.50e58766-ab53-4846-be8a-35e0bb87723e.Rank', line 6, position 19."
+	Assert-Throws {Set-AzSqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\InvalidRank.json" } $message
 }
 
 <#
@@ -69,5 +79,5 @@ Tests an error is raised when setting a policy containing missing rank.
 function Test-ErrorWhenRankIsMissing
 {
 	$message = "Required property 'Rank' not found in JSON. Path 'Labels.50e58766-ab53-4846-be8a-35e0bb87723e', line 8, position 5."
-	Assert-Throws {Set-SqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\MissingRank.json" } $message
+	Assert-Throws {Set-AzSqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\MissingRank.json" } $message
 }

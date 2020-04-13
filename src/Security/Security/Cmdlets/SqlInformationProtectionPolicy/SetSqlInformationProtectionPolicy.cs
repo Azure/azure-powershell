@@ -17,7 +17,6 @@ using Newtonsoft.Json;
 using System.Management.Automation;
 using System.IO;
 using System;
-using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -73,15 +72,40 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.SqlInformationProtecti
                 });
             if (policy == null)
             {
-                throw new Exception (Resources.SqlInformationProtectionPolicyDeserializationError);
+                throw new Exception(Resources.SqlInformationProtectionPolicyDeserializationError);
             }
 
-            IEnumerable<string> mutualGuids = policy.Labels.Keys.Intersect(policy.InformationTypes.Keys);
-            if (mutualGuids.Any())
+            VerifyElementsAreUnique(policy,
+                kvp => kvp.Key,
+                kvp => kvp.Key,
+                Resources.SqlInformationProtectionPolicyDuplicatedIdsError);
+
+            VerifyElementsAreUnique(policy,
+                kvp => kvp.Value.DisplayName,
+                kvp => kvp.Value.DisplayName,
+                Resources.SqlInformationProtectionPolicyDuplicatedDisplayNamesError);
+
+            SetInformationProtectionPolicy(policy);
+            WriteObject(policy);
+        }
+
+        private static void VerifyElementsAreUnique(
+            PSSqlInformationProtectionPolicy policy,
+            Func<KeyValuePair<string, PSSqlInformationProtectionSensitivityLabel>, string> sensitivityLabelSelector,
+            Func<KeyValuePair<string, PSSqlInformationProtectionInformationType>, string> informationTypeSelector,
+            string exceptionMessage)
+        {
+            IEnumerable<string> elementsAppearingMoreThanOnce =
+                policy.Labels.Select(sensitivityLabelSelector).
+                Concat(policy.InformationTypes.Select(informationTypeSelector)).
+                GroupBy(s => s).
+                Where(group => group.Count() > 1).
+                Select(group => group.Key);
+            if (elementsAppearingMoreThanOnce.Any())
             {
                 throw new Exception(string.Format(
-                    Resources.SqlInformationProtectionPolicyDuplicatedIdsError,
-                    string.Join(",", mutualGuids)));
+                    exceptionMessage,
+                    string.Join(",", elementsAppearingMoreThanOnce.Select(e => $"'{e}'"))));
             }
         }
 
@@ -91,10 +115,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.SqlInformationProtecti
             var response = SecurityCenterClient.InformationProtectionPolicies.CreateOrUpdateWithHttpMessagesAsync(
                 Scope, SqlInformationProtectionPolicyName,
                 sdkPolicy.Labels, sdkPolicy.InformationTypes).Result.Response;
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new Exception(string.Format(Resources.SqlInformationProtectionPolicyUpdateError, response.StatusCode));
-            }
+            response.EnsureSuccessStatusCode();
         }
 
         private const string FilePathParameterName = "FilePath";

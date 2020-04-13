@@ -30,6 +30,9 @@
     <None Include="SqlInformationProtectionPolicies\MissingRank.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SqlInformationProtectionPolicies\InformationTypesSharingSameDisplayName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   
 </Project>
