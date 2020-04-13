@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add breaking change notice for Azure File cmdlets output change in a future release
-* Support new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
-    - New-AzStorageAccount
-    - Set-AzStorageAccount
+* Added breaking change notice for Azure File cmdlets output change in a future release
+* Supported new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
 
 ## Version 1.13.0
 * Supported AllowProtectedAppendWrite in ImmutabilityPolicy
