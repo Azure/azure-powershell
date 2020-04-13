@@ -134,7 +134,7 @@ function Test-PrivateLinkScopeCRUD
     }
 }
 
-function Test-PrivateLinkScopeScopedResourceCRUD
+function Test-PrivateLinkScopedResourceCRUD
 {
     # setup
     $rg_name = Get-ResourceGroupName
@@ -164,12 +164,12 @@ function Test-PrivateLinkScopeScopedResourceCRUD
         $ai = New-AzApplicationInsights -ResourceGroupName $rg_name -Name $ai_name -Location "eastus"
 
         #create scoped resource for AI/LA
-        New-AzInsightsPrivateLinkScopeScopedResource -LinkedResourceId $ai.Id -ResourceGroupName $rg_name -ScopeName $scope_name1 -Name $scoped_resource_name1
-        New-AzInsightsPrivateLinkScopeScopedResource -LinkedResourceId $la.ResourceId -ResourceGroupName $rg_name -ScopeName $scope_name2 -Name $scoped_resource_name2
+        New-AzInsightsPrivateLinkScopedResource -LinkedResourceId $ai.Id -ResourceGroupName $rg_name -ScopeName $scope_name1 -Name $scoped_resource_name1
+        New-AzInsightsPrivateLinkScopedResource -LinkedResourceId $la.ResourceId -ResourceGroupName $rg_name -ScopeName $scope_name2 -Name $scoped_resource_name2
 
         #get scoped resource
-        $scoped_resource1 = Get-AzInsightsPrivateLinkScopeScopedResource -ResourceGroupName $rg_name -ScopeName $scope_name1 -Name $scoped_resource_name1
-        $scoped_resource2 = Get-AzInsightsPrivateLinkScopeScopedResource -ResourceGroupName $rg_name -ScopeName $scope_name2 -Name $scoped_resource_name2
+        $scoped_resource1 = Get-AzInsightsPrivateLinkScopedResource -ResourceGroupName $rg_name -ScopeName $scope_name1 -Name $scoped_resource_name1
+        $scoped_resource2 = Get-AzInsightsPrivateLinkScopedResource -ResourceGroupName $rg_name -ScopeName $scope_name2 -Name $scoped_resource_name2
         
         Assert-NotNull $scoped_resource1
         Assert-NotNull $scoped_resource2
@@ -177,8 +177,8 @@ function Test-PrivateLinkScopeScopedResourceCRUD
         Assert-AreEqual $la.ResourceId $scoped_resource2.LinkedResourceId
 
         #delete scoped resource
-        $delete1 = Remove-AzInsightsPrivateLinkScopeScopedResource -ResourceGroupName $rg_name -ScopeName $scope_name1 -Name $scoped_resource_name1
-        $delete2 = Remove-AzInsightsPrivateLinkScopeScopedResource -ResourceGroupName $rg_name -ScopeName $scope_name2 -Name $scoped_resource_name2
+        $delete1 = Remove-AzInsightsPrivateLinkScopedResource -ResourceGroupName $rg_name -ScopeName $scope_name1 -Name $scoped_resource_name1
+        $delete2 = Remove-AzInsightsPrivateLinkScopedResource -ResourceGroupName $rg_name -ScopeName $scope_name2 -Name $scoped_resource_name2
 
         Assert-AreEqual true $delete1
         Assert-AreEqual true $delete2

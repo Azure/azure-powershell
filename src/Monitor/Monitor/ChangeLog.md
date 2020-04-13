@@ -24,9 +24,9 @@
     - "Remove-AzInsightsPrivateLinkScope"
     - "New-AzInsightsPrivateLinkScope"
     - "Update-AzInsightsPrivateLinkScope"
-    - "Get-AzInsightsPrivateLinkScopeScopedResource"
-    - "New-AzInsightsPrivateLinkScopeScopedResource"
-    - "Remove-AzInsightsPrivateLinkScopeScopedResource"
+    - "Get-AzInsightsPrivateLinkScopedResource"
+    - "New-AzInsightsPrivateLinkScopedResource"
+    - "Remove-AzInsightsPrivateLinkScopedResource"
 
 ## Version 1.6.2
 * Updated documentation for `New-AzScheduledQueryRuleLogMetricTrigger`

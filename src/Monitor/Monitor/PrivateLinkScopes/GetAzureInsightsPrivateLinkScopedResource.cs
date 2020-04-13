@@ -22,8 +22,8 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScopeScopedResource", DefaultParameterSetName = ByScopeParameterSet), OutputType(typeof(PSMonitorPrivateLinkScope))]
-    public class GetAzureInsightsPrivateLinkScopeScopedResource : ManagementCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScopeScopedResource", DefaultParameterSetName = ByScopeParameterSet), OutputType(typeof(PSMonitorPrivateLinkScopedResource))]
+    public class GetAzureInsightsPrivateLinkScopedResource : ManagementCmdletBase
     {
         const string ByScopeParameterSet = "ByScopeParameterSet";
         const string ByResourceIdParameterSet = "ByResourceIdParameterSet";
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                                        .PrivateLinkScopedResources
                                        .ListByPrivateLinkScopeWithHttpMessagesAsync(this.ResourceGroupName, this.ScopeName)
                                        .Result;
-                WriteObject(response.Body.Select(scope => PSMapper.Instance.Map<PSMonitorPrivateLinkScopeScopedResource>(scope)).ToList(), true);
+                WriteObject(response.Body.Select(scope => PSMapper.Instance.Map<PSMonitorPrivateLinkScopedResource>(scope)).ToList(), true);
             }
             else if (this.IsParameterBound(c => c.Name))
             {
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                                        .PrivateLinkScopedResources
                                        .GetWithHttpMessagesAsync(this.ResourceGroupName, this.ScopeName, this.Name)
                                        .Result;
-                WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScopeScopedResource>(response.Body));
+                WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScopedResource>(response.Body));
             }
         }
     }

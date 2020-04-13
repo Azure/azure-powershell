@@ -1,50 +1,50 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azinsightsprivatelinkscopescopedresource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azinsightsprivatelinkscopedresource
 schema: 2.0.0
 ---
 
-# Get-AzInsightsPrivateLinkScopeScopedResource
+# Get-AzInsightsPrivateLinkScopedResource
 
 ## SYNOPSIS
-Get for private link scope scoped resource
+Get for private link scoped resource
 
 ## SYNTAX
 
 ### ByScopeParameterSet (Default)
 ```
-Get-AzInsightsPrivateLinkScopeScopedResource -ResourceGroupName <String> -ScopeName <String> [-Name <String>]
+Get-AzInsightsPrivateLinkScopedResource -ResourceGroupName <String> -ScopeName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectParameterSet
 ```
-Get-AzInsightsPrivateLinkScopeScopedResource [-Name <String>] -InputObject <PSMonitorPrivateLinkScope>
+Get-AzInsightsPrivateLinkScopedResource [-Name <String>] -InputObject <PSMonitorPrivateLinkScope>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzInsightsPrivateLinkScopeScopedResource -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzInsightsPrivateLinkScopedResource -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get or list for private link scope scoped resource, scoped resource could be Log Analytics workspace or Application Insights component
+Get or list for private link scoped resource, scoped resource could be Log Analytics workspace or Application Insights component
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Get-AzInsightsPrivateLinkScopeScopedResource -ResourceGroupName "rg_name" -ScopeName "scope_name"
+Get-AzInsightsPrivateLinkScopedResource -ResourceGroupName "rg_name" -ScopeName "scope_name"
 ```
 
 List scoped resource under private link scope "scope_name"
 
 ### Example 2
 ```powershell
-Get-AzInsightsPrivateLinkScopeScopedResource -ResourceGroupName "rg_name" -ScopeName "scope_name" -Name "scoped_resource_name"
+Get-AzInsightsPrivateLinkScopedResource -ResourceGroupName "rg_name" -ScopeName "scope_name" -Name "scoped_resource_name"
 ```
 
 Get scoped resource under private link scope "scope_name" with name "scoped_resource_name"
@@ -150,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope
+### icrosoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScopedResource
 
 ## NOTES
 

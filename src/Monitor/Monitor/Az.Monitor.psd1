@@ -106,9 +106,9 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'Get-AzInsightsPrivateLinkScope', 
                'Update-AzInsightsPrivateLinkScope', 
                'Remove-AzInsightsPrivateLinkScope', 
-               'New-AzInsightsPrivateLinkScopeScopedResource', 
-               'Get-AzInsightsPrivateLinkScopeScopedResource', 
-               'Remove-AzInsightsPrivateLinkScopeScopedResource'
+               'New-AzInsightsPrivateLinkScopedResource', 
+               'Get-AzInsightsPrivateLinkScopedResource', 
+               'Remove-AzInsightsPrivateLinkScopedResource'
 
 # Variables to export from this module
 # VariablesToExport = @()

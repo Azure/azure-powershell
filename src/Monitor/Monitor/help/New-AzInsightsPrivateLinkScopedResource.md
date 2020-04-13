@@ -1,46 +1,44 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azinsightsprivatelinkscopescopedresource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azinsightsprivatelinkscopedresource
 schema: 2.0.0
 ---
 
-# Remove-AzInsightsPrivateLinkScopeScopedResource
+# New-AzInsightsPrivateLinkScopedResource
 
 ## SYNOPSIS
-delete for private link scope scoped resource
+create for private link scoped resource
 
 ## SYNTAX
 
-### ByScopeParameterSet (Default)
+### ByResourceNameParameterSet (Default)
 ```
-Remove-AzInsightsPrivateLinkScopeScopedResource -ResourceGroupName <String> -ScopeName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzInsightsPrivateLinkScopedResource -LinkedResourceId <String> -ResourceGroupName <String>
+ -ScopeName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObjectParameterSet
 ```
-Remove-AzInsightsPrivateLinkScopeScopedResource -Name <String> -InputObject <PSMonitorPrivateLinkScope>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceIdParameterSet
-```
-Remove-AzInsightsPrivateLinkScopeScopedResource -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzInsightsPrivateLinkScopedResource -LinkedResourceId <String> -Name <String>
+ -InputObject <PSMonitorPrivateLinkScope> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-delete for private link scope scoped resource
+create for private link scoped resource, scoped resource could be Log Analytics workspace or Application Insights component
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Remove-AzInsightsPrivateLinkScopeScopedResource -ResourceGroupName "rg_name" -ScopeName "scope_name" -Name "scoped_resource_name"
+$ai = Get-AzApplicationInsights -ResourceGroupName "rg_name" -Name "ai_name"
+
+New-AzInsightsPrivateLinkScopedResource -LinkedResourceId $ai.Id -ResourceGroupName "rg_name" -ScopeName "scope_name" -Name "scoped_resource_name"
 ```
 
-delete private link scope scoped resource
+create scoped resource "scoped_resource_name" linked to application insights component "ai_name"
 
 ## PARAMETERS
 
@@ -74,12 +72,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -LinkedResourceId
+LA/AI Resource Id to Link
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Scoped resource Name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByScopeParameterSet, ByInputObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -94,22 +107,7 @@ Resource Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByScopeParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Resource Id
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceIdParameterSet
+Parameter Sets: ByResourceNameParameterSet
 Aliases:
 
 Required: True
@@ -124,7 +122,7 @@ Private Link Scope Name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByScopeParameterSet
+Parameter Sets: ByResourceNameParameterSet
 Aliases:
 
 Required: True
@@ -176,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScopedResource
 
 ## NOTES
 

@@ -20,8 +20,8 @@ using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScopeScopedResource", DefaultParameterSetName = ByResourceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScopeScopedResource))]
-    public class NewAzureInsightsPrivateLinkScopeScopedResource : AzureInsightsPrivateLinkScopeScopedResourceCreateOrUpdateCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InsightsPrivateLinkScopeScopedResource", DefaultParameterSetName = ByResourceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSMonitorPrivateLinkScopedResource))]
+    public class NewAzureInsightsPrivateLinkScopedResource : AzureInsightsPrivateLinkScopedResourceCreateOrUpdateCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                                        .PrivateLinkScopedResources
                                        .CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ScopeName, this.Name, this.LinkedResourceId)
                                        .Result;
-                WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScopeScopedResource>(response.Body));
+                WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScopedResource>(response.Body));
             }
         }
 
