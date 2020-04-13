@@ -692,10 +692,8 @@ function Test-VirtualNetworkGatewayRadius
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
         Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers.Count 2 
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[0].RadiusServerAddress $radiusServer1.RadiusServerAddress
-		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[0].RadiusServerSecret $radiusServer1.RadiusServerSecret
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[0].RadiusServerScore $radiusServer1.RadiusServerScore
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerAddress $radiusServer2.RadiusServerAddress
-		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerSecret $radiusServer2.RadiusServerSecret
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerScore $radiusServer2.RadiusServerScore
 
 		# Update gateway radius settings
@@ -704,10 +702,8 @@ function Test-VirtualNetworkGatewayRadius
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
         Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers.Count 2 
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[0].RadiusServerAddress $radiusServer3.RadiusServerAddress
-		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[0].RadiusServerSecret $radiusServer3.RadiusServerSecret
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[0].RadiusServerScore $radiusServer3.RadiusServerScore
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerAddress $radiusServer1.RadiusServerAddress
-		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerSecret $radiusServer1.RadiusServerSecret
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerScore $radiusServer1.RadiusServerScore
 		 
 		# Update gateway to singular radius
@@ -715,7 +711,6 @@ function Test-VirtualNetworkGatewayRadius
         $actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
         Assert-Null  $actual.VpnClientConfiguration.RadiusServers
         Assert-AreEqual $actual.VpnClientConfiguration.RadiusServerAddress 10.1.0.2
-        Assert-AreEqual $actual.VpnClientConfiguration.RadiusServerSecret "radiuspd"
 	}
 	finally
     {
