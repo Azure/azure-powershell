@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.SecurityCenter.Common;
 using Microsoft.Azure.Management.Security.Models;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
@@ -39,16 +40,23 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
+        [ValidateNotNullOrEmpty]
+        public PSIotSecuritySolution InputObject { get; set; }
+
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.Tags)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.Tags)]
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Tags)]
         public System.Collections.Hashtable Tag { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.UserDefinedResources)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.UserDefinedResources)]
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.UserDefinedResources)]
         public PSUserDefinedResources UserDefinedResource { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.RecommendationsConfiguration)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.RecommendationsConfiguration)]
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.RecommendationsConfiguration)]
         public PSRecommendationConfiguration[] RecommendationsConfiguration { get; set; }
 
         public override void ExecuteCmdlet()
@@ -61,8 +69,15 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
                 case ParameterSetNames.ResourceGroupLevelResource:
                     break;
                 case ParameterSetNames.ResourceId:
-                    name = AzureIdUtilities.GetResourceName(ResourceId);
-                    resourceGroupName = AzureIdUtilities.GetResourceGroup(ResourceId);
+                    Name = AzureIdUtilities.GetResourceName(ResourceId);
+                    ResourceGroupName = AzureIdUtilities.GetResourceGroup(ResourceId);
+                    break;
+                case ParameterSetNames.InputObject:
+                    Name = AzureIdUtilities.GetResourceName(InputObject.Id);
+                    ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
+                    RecommendationsConfiguration = RecommendationsConfiguration ?? ((List<PSRecommendationConfiguration>)InputObject.RecommendationsConfiguration).ToArray();
+                    Tag = Tag ?? (Hashtable)InputObject.Tags;
+                    UserDefinedResource = UserDefinedResource ?? InputObject.UserDefinedResources;
                     break;
                 default:
                     throw new PSInvalidOperationException();
@@ -74,7 +89,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
 
             if (ShouldProcess(Name, "Update"))
             {
-                var outputSolution = SecurityCenterClient.IotSecuritySolution.UpdateWithHttpMessagesAsync(resourceGroupName, name, solutionData).GetAwaiter().GetResult().Body;
+                var outputSolution = SecurityCenterClient.IotSecuritySolution.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, solutionData).GetAwaiter().GetResult().Body;
                 WriteObject(outputSolution.ConvertToPSType(), enumerateCollection: false);
             }
         }

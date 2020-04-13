@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutionAnalytics
         [ValidateNotNullOrEmpty]
         public string SolutionName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.SolutionScope, Mandatory = true, HelpMessage = ParameterHelpMessages.IsDefualt)]
+        [Parameter(ParameterSetName = ParameterSetNames.SolutionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.IsDefualt)]
         [ValidateNotNullOrEmpty]
-        public bool Defualt { get; set; }
+        public SwitchParameter Default { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (Defualt)
+            if (Default.IsPresent)
             {
                 var analytic = SecurityCenterClient.IotSecuritySolutionAnalytics.GetWithHttpMessagesAsync(ResourceGroupName, SolutionName).GetAwaiter().GetResult().Body;
                 WriteObject(analytic.ConvertToPSType(), enumerateCollection: false);

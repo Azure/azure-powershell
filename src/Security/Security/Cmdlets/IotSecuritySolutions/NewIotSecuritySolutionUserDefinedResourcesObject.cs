@@ -26,14 +26,14 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.IotSecuritySolutions
         public string Query { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.QuerySubscriptions)]
-        public string[] QuerySubscriptions { get; set; }
+        public string[] QuerySubscriptionList { get; set; }
 
         public override void ExecuteCmdlet()
         {
             PSUserDefinedResources userDefinedRes = new PSUserDefinedResources
             {
                 Query = Query,
-                QuerySubscriptions = QuerySubscriptions
+                QuerySubscriptions = QuerySubscriptionList
             };
 
             WriteObject(userDefinedRes, enumerateCollection: false);

@@ -23,8 +23,8 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutionAnalytics
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotSecurityAnalyticsAggregatedAlert", DefaultParameterSetName = ParameterSetNames.SolutionLevelResource, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class SetIoTSecurityAggregatedAlert : SecurityCenterCmdletBase
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotSecurityAnalyticsAggregatedAlert", DefaultParameterSetName = ParameterSetNames.SolutionLevelResource, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class DisableIoTSecurityAggregatedAlert : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.SolutionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
@@ -45,6 +45,9 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutionAnalytics
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.PassThru)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -77,6 +80,10 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutionAnalytics
             if (ShouldProcess(Name, VerbsCommon.Set))
             {
                 SecurityCenterClient.IotSecuritySolutionsAnalyticsAggregatedAlert.DismissWithHttpMessagesAsync(ResourceGroupName, SolutionName, Name).GetAwaiter().GetResult();
+            }
+
+            if (PassThru.IsPresent)
+            {
                 WriteObject(true);
             }
         }

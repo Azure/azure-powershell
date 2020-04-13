@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.DeviceSecurityGroups
     public class NewDeviceSecurityGroupAllowlistCustomAlertRuleObject : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.DisplayName)]
-        public string DisplayName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.Description)]
         public string Description { get; set; }
@@ -41,17 +41,17 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.DeviceSecurityGroups
         public string ValueType { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.AllowlistValues)]
-        public string[] AllowlistValues { get; set; }
+        public string[] AllowlistValue { get; set; }
 
         public override void ExecuteCmdlet()
         {
             PSAllowlistCustomAlertRule rule = new PSAllowlistCustomAlertRule
             {
                 Description = Description,
-                DisplayName = DisplayName,
+                DisplayName = Name,
                 IsEnabled = Enabled,
                 ValueType = ValueType,
-                AllowlistValues = AllowlistValues,
+                AllowlistValues = AllowlistValue,
                 RuleType = Type
             };
 

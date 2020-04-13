@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string RecommendationsConfiguration = "Recommendations configuration.";
         public const string UnmaskedIpLoggingStatus = "Unmasked ip logging status.";
         public const string HubResourceId = "IoT Hub resource Id.";
-        public const string IsDefualt = "Get the default analytics set or the list of all analytics sets.";
+        public const string IsDefualt = "If present, get the default analytics set, otherwise, get the list of all analytics sets.";
         public const string RecommendationType = "Recommendation type.";
         public const string Query = "Query.";
         public const string QuerySubscriptions = "Query subscriptions.";

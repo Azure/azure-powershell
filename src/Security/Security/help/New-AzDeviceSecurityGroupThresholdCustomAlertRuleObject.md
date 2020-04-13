@@ -14,7 +14,7 @@ schema: 2.0.0
 
 ```
 New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject -MinThreshold <Int32> -MaxThreshold <Int32>
- -DisplayName <String> -Description <String> -Enabled <Boolean> -Type <String>
+ -Name <String> -Description <String> -Enabled <Boolean> -Type <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -49,21 +49,6 @@ Accept wildcard characters: False
 
 ### -Description
 Description.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Display name.
 
 ```yaml
 Type: System.String
@@ -112,6 +97,21 @@ Minimum threshold.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Display name.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

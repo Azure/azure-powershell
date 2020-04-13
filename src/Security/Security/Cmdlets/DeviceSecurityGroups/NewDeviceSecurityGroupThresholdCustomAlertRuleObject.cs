@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.DeviceSecurityGroups
         public int MaxThreshold { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.DisplayName)]
-        public string DisplayName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.Description)]
         public string Description { get; set; }
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.DeviceSecurityGroups
             PSThresholdCustomAlertRule rule = new PSThresholdCustomAlertRule
             {
                 Description = Description,
-                DisplayName = DisplayName,
+                DisplayName = Name,
                 IsEnabled = Enabled,
                 MaxThreshold = MaxThreshold,
                 MinThreshold = MinThreshold,

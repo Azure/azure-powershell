@@ -23,10 +23,10 @@ Set-AzIotSecuritySolution -Name <String> -ResourceGroupName <String> [-Tag <Hash
 
 ### InputObject
 ```
-Set-AzIotSecuritySolution -InputObject <PSIotSecuritySolution> -Tag <Hashtable> -Location <String>
- -Workspace <String> -DisplayName <String> -Status <String> -Export <String[]> -DisabledDataSource <String[]>
- -IotHub <String[]> -UserDefinedResource <PSUserDefinedResources>
- -RecommendationsConfiguration <PSRecommendationConfiguration[]> -UnmaskedIpLoggingStatus <String>
+Set-AzIotSecuritySolution -InputObject <PSIotSecuritySolution> [-Tag <Hashtable>] -Location <String>
+ -Workspace <String> -DisplayName <String> [-Status <String>] [-Export <String[]>]
+ [-DisabledDataSource <String[]>] -IotHub <String[]> [-UserDefinedResource <PSUserDefinedResources>]
+ [-RecommendationsConfiguration <PSRecommendationConfiguration[]>] [-UnmaskedIpLoggingStatus <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -88,7 +88,7 @@ Type: System.String[]
 Parameter Sets: InputObject
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -142,7 +142,7 @@ Type: System.String[]
 Parameter Sets: InputObject
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -253,7 +253,7 @@ Type: Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions.PSRecommenda
 Parameter Sets: InputObject
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -310,7 +310,7 @@ Type: System.String
 Parameter Sets: InputObject
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -337,7 +337,7 @@ Type: System.Collections.Hashtable
 Parameter Sets: InputObject
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -364,7 +364,7 @@ Type: System.String
 Parameter Sets: InputObject
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -391,7 +391,7 @@ Type: Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions.PSUserDefine
 Parameter Sets: InputObject
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

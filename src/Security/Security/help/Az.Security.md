@@ -11,6 +11,9 @@ Locale: en-US
 {{ Fill in the Description }}
 
 ## Az.Security Cmdlets
+### [Disable-AzIotSecurityAnalyticsAggregatedAlert](Disable-AzIotSecurityAnalyticsAggregatedAlert.md)
+{{ Fill in the Description }}
+
 ### [Disable-AzSecurityAdvancedThreatProtection](Disable-AzSecurityAdvancedThreatProtection.md)
 {{ Fill in the Description }}
 
@@ -102,9 +105,6 @@ Locale: en-US
 {{ Fill in the Description }}
 
 ### [Set-AzDeviceSecurityGroup](Set-AzDeviceSecurityGroup.md)
-{{ Fill in the Description }}
-
-### [Set-AzIotSecurityAnalyticsAggregatedAlert](Set-AzIotSecurityAnalyticsAggregatedAlert.md)
 {{ Fill in the Description }}
 
 ### [Set-AzIotSecuritySolution](Set-AzIotSecuritySolution.md)
