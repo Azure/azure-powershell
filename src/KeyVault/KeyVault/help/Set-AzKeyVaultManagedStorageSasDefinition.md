@@ -35,7 +35,7 @@ Storage Account.
 
 ## EXAMPLES
 
-### Example 1 : Set an account-type SAS definition, and obtain a current SAS token based on it
+### Example 1: Set an account-type SAS definition, and obtain a current SAS token based on it
 ```powershell
 PS C:\> $sa = Get-AzStorageAccount -Name mysa -ResourceGroupName myrg
 PS C:\> $kv = Get-AzKeyVault -VaultName mykv
