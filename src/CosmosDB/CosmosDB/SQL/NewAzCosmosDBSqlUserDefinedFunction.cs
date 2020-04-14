@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     Id = Name,
                     Body = Body
                 },
-                Options = new Dictionary<string, string>() { }
+                Options = new Dictionary<string, string>() { } //passing empty object as options cannot be null
             };
 
             if (ShouldProcess(Name, "Creating a new CosmosDB Sql User Defined Function"))

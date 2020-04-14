@@ -21,49 +21,97 @@ function Test-TableOperationsCmdlets
   $AccountName = "db2527"
   $rgName = "CosmosDBResourceGroup2510"
   $TableName = "table1"
+  $TableName2 = "table2"
+  $ThroughputValue = 500
+  $UpdatedThroughputValue = 600
 
-  $NewTable =  Set-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
-  Assert-AreEqual $NewTable.Name $TableName
+  Try{
+      # create a new table
+      $NewTable = New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput $ThroughputValue
+      Assert-AreEqual $NewTable.Name $TableName
 
-  $Table = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
-  Assert-AreEqual $NewTable.Id $Table.Id
-  Assert-AreEqual $NewTable.Name $Table.Name
-  Assert-AreEqual $NewTable.Resource.Id $Table.Resource.Id
-  Assert-AreEqual $NewTable.Resource._rid $Table.Resource._rid
-  Assert-AreEqual $NewTable.Resource._ts $Table.Resource._ts
-  Assert-AreEqual $NewTable.Resource._etag $Table.Resource._etag
+      $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
+      Assert-AreEqual $Throughput.Throughput $ThroughputValue
 
-  $ListTables = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName
-  Assert-NotNull($ListTables)
+      # create an existing database
+      Try {
+          $NewDuplicateTable = New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName 
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $TableName + " already exists.")
+      }
+
+      # get an existing table
+      $Table = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
+      Assert-AreEqual $NewTable.Id $Table.Id
+      Assert-AreEqual $NewTable.Name $Table.Name
+      Assert-AreEqual $NewTable.Resource.Id $Table.Resource.Id
+
+      # update existing table
+      $UpdatedTable =  Update-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput $UpdatedThroughputValue
+      $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
+      Assert-AreEqual $Throughput.Throughput $UpdatedThroughputValue
+
+      # try updating non existant table
+      Try {
+          $UpdatedTable = Update-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName2 
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $TableName2 + " does not exist.")
+      }
+
+      # list tables 
+      $ListTables = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($ListTables)
   
-  $IsTableRemoved = Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -PassThru
-  Assert-AreEqual $IsTableRemoved true
+      # delete table
+      $IsTableRemoved = Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -PassThru
+      Assert-AreEqual $IsTableRemoved true
+  }
+  Finally {
+      Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
+  }
 }
 
 function Test-TableOperationsCmdletsUsingInputObject
 {
   $AccountName = "db2527"
   $rgName = "CosmosDBResourceGroup2510"
-  $TableName = "tableName2"
+  $TableName = "table1"
+  $TableName2 = "table2"
+  $ThroughputValue = 500
+  $UpdatedThroughputValue = 600
 
-  $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
+  Try{
+      # create a new table
+      $NewTable = New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput $ThroughputValue
+      Assert-AreEqual $NewTable.Name $TableName
 
-  $NewTable =  Set-AzCosmosDBTable -InputObject $cosmosDBAccount -Name $TableName
-  Assert-AreEqual $NewTable.Name $TableName
+      $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
+      Assert-AreEqual $Throughput.Throughput $ThroughputValue
 
-  $Table = Get-AzCosmosDBTable -InputObject $cosmosDBAccount -Name $TableName
-  Assert-AreEqual $NewTable.Id $Table.Id
-  Assert-AreEqual $NewTable.Name $Table.Name
-  Assert-AreEqual $NewTable.Resource.Id $Table.Resource.Id
-  Assert-AreEqual $NewTable.Resource._rid $Table.Resource._rid
-  Assert-AreEqual $NewTable.Resource._ts $Table.Resource._ts
-  Assert-AreEqual $NewTable.Resource._etag $Table.Resource._etag
+      # get an existing table
+      $Table = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
+      Assert-AreEqual $NewTable.Id $Table.Id
+      Assert-AreEqual $NewTable.Name $Table.Name
+      Assert-AreEqual $NewTable.Resource.Id $Table.Resource.Id
 
-  $ListTables = Get-AzCosmosDBTable -InputObject $cosmosDBAccount
-  Assert-NotNull($ListTables)
- 
-  $IsTableRemoved = Remove-AzCosmosDBTable -InputObject $Table -PassThru
-  Assert-AreEqual $IsTableRemoved true
+      # update existing table
+      $UpdatedTable =  Update-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput $UpdatedThroughputValue
+      $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
+      Assert-AreEqual $Throughput.Throughput $UpdatedThroughputValue
+
+      # list tables 
+      $ListTables = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($ListTables)
+  
+      # delete table
+      $IsTableRemoved = Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -PassThru
+      Assert-AreEqual $IsTableRemoved true
+  }
+  Finally {
+      Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
+  }
 }
 
 function Test-TableThroughputCmdlets

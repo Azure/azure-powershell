@@ -99,9 +99,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             CassandraTableResource cassandraTableResource = PopulateCassandraTableResource(readCassandraTableGetResults.Resource);
 
-            if(TtlInSeconds == null)
+            if(TtlInSeconds != null)
             {
-                TtlInSeconds = readCassandraTableGetResults.Resource.DefaultTtl;
+                cassandraTableResource.DefaultTtl = TtlInSeconds;
             }
 
             if (Schema != null)

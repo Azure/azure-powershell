@@ -107,8 +107,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     Id = Name,
                     Body = Body
                 },
-                Options = new CreateUpdateOptions() { }
-                }
+                Options = new CreateUpdateOptions() { } //passing empty object as options cannot be null
             };
 
             if (ShouldProcess(Name, "Updating an existing CosmosDB Sql Stored Procedure"))
