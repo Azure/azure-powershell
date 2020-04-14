@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.EnabledForDiskEncryption = parameters.EnabledForDiskEncryption;
                 properties.EnableSoftDelete = parameters.EnableSoftDelete;
                 properties.EnablePurgeProtection = parameters.EnablePurgeProtection;
-                // properties.SoftDeleteRetentionInDays = parameters.SoftDeleteRetentionInDays;
+                properties.SoftDeleteRetentionInDays = parameters.SoftDeleteRetentionInDays;
                 properties.TenantId = parameters.TenantId;
                 properties.VaultUri = "";
                 properties.AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } : new AccessPolicyEntry[] { };
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             bool? updatedEnabledForDiskEncryption,
             bool? updatedSoftDeleteSwitch,
             bool? updatedPurgeProtectionSwitch,
-            // int? softDeleteRetentionInDays,
+            int? softDeleteRetentionInDays,
             PSKeyVaultNetworkRuleSet updatedNetworkAcls,
             ActiveDirectoryClient adClient = null)
         {
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             properties.EnabledForDeployment = updatedEnabledForDeployment;
             properties.EnabledForTemplateDeployment = updatedEnabledForTemplateDeployment;
             properties.EnabledForDiskEncryption = updatedEnabledForDiskEncryption;
-            // properties.SoftDeleteRetentionInDays = softDeleteRetentionInDays;
+            properties.SoftDeleteRetentionInDays = softDeleteRetentionInDays;
 
             // soft delete flags can only be applied if they enable their respective behaviors
             // and if different from the current corresponding properties on the vault.

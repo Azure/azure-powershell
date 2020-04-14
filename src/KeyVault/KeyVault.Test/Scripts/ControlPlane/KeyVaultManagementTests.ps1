@@ -113,6 +113,8 @@ function Test-CreateNewVault {
         # Soft delete and purge protection defaults to true
         Assert-True { $actual.EnableSoftDelete } "By default EnableSoftDelete should be true"
         Assert-Null $actual.EnablePurgeProtection "By default EnablePurgeProtection should be null"
+        # Default retention days
+        Assert-AreEqual 90 $actual.SoftDeleteRetentionInDays "By default SoftDeleteRetentionInDays should be 90"
 
         # Test premium vault
         $actual = New-AzKeyVault -VaultName $vault2Name -ResourceGroupName $rgName -Location $vaultLocation -Sku premium -EnabledForDeployment
@@ -127,14 +129,16 @@ function Test-CreateNewVault {
         $actual = New-AzKeyVault -VaultName $vault3Name -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -DisableSoftDelete
         Assert-False { $actual.EnableSoftDelete }
         Assert-Null $actual.EnablePurgeProtection "If -DisableSoftDelete, EnablePurgeProtection should be null"
+        Assert-Null $actual.SoftDeleteRetentionInDays "If -DisableSoftDelete, SoftDeleteRetentionInDays should be null"
 
-        # Test enable purge protection
-        $actual = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -EnablePurgeProtection
+        # Test enable purge protection & customize retention days
+        $actual = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -EnablePurgeProtection -SoftDeleteRetentionInDays 10
         Assert-True { $actual.EnableSoftDelete } "By default EnableSoftDelete should be true"
         Assert-True { $actual.EnablePurgeProtection } "If -EnablePurgeProtection, EnablePurgeProtection should be null"
+        Assert-AreEqual 10 $actual.SoftDeleteRetentionInDays "SoftDeleteRetentionInDays should be the same value as set"
 
-        # Test use  -DisableSoftDelete -EnablePurgeProtection together
-        Assert-Throws { New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -DisableSoftDelete -EnablePurgeProtection }
+        # # Test use -DisableSoftDelete -EnablePurgeProtection together (TODO: uncomment this assert after keyvault team deploys their fix)
+        # Assert-Throws { New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -DisableSoftDelete -EnablePurgeProtection }
 
         # Test positional parameters
         $actual = New-AzKeyVault $vault4Name $rgName $vaultLocation
@@ -145,12 +149,6 @@ function Test-CreateNewVault {
 
         # Test throws for resourcegroup nonexistent
         Assert-Throws { New-AzKeyVault -VaultName $vault5Name -ResourceGroupName $unknownRGName -Location $vaultLocation }
-
-        # # Test create with retention (TODO: uncomment this in S169)
-        # $actual = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -EnableSoftDelete
-        # Assert-AreEqual 90 $actual.SoftDeleteRetentionInDays
-        # $actual = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -EnableSoftDelete -SoftDeleteRetentionInDays 88
-        # Assert-AreEqual 88 $actual.SoftDeleteRetentionInDays
     }
 
     finally {
@@ -828,7 +826,7 @@ function Test-UpdateKeyVault {
         $vault = $vault | Update-AzKeyVault -EnableSoftDelete
         Assert-True { $vault.EnableSoftDelete } "2. EnableSoftDelete should be true"
         Assert-True { $vault.EnablePurgeProtection -ne $true } "2. EnablePurgeProtection should not be true"
-        # Assert-AreEqual 90 $vault.SoftDeleteRetentionInDays "2. SoftDeleteRetentionInDays should default to 90"
+        Assert-AreEqual 90 $vault.SoftDeleteRetentionInDays "2. SoftDeleteRetentionInDays should default to 90"
 
         # Enable again
         $vault = $vault | Update-AzKeyVault -EnableSoftDelete
@@ -840,11 +838,12 @@ function Test-UpdateKeyVault {
         Assert-True { $vault.EnableSoftDelete } "3. EnableSoftDelete should be true"
         Assert-True { $vault.EnablePurgeProtection } "3. EnablePurgeProtection should be true"
 
-        # Enable both together
+        # Enable both together (& custom retention days)
         $vault = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $resourceGroupName -Location $vaultLocation -DisableSoftDelete
-        $vault = $vault | Update-AzKeyVault -EnableSoftDelete -EnablePurgeProtection
+        $vault = $vault | Update-AzKeyVault -EnableSoftDelete -EnablePurgeProtection -SoftDeleteRetentionInDays 77
         Assert-True { $vault.EnableSoftDelete } "4. EnableSoftDelete should be true"
         Assert-True { $vault.EnablePurgeProtection } "4. EnablePurgeProtection should be true"
+        Assert-AreEqual 77 $vault.SoftDeleteRetentionInDays "4. SoftDeleteRetentionInDays should be updated"
 
         # # Only enable purge protection (TODO: uncomment this assert after keyvault team deploys their fix)
         # $vault = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $resourceGroupName -Location $vaultLocation

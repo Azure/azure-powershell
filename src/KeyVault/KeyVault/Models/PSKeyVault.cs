@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             EnabledForDiskEncryption = vault.Properties.EnabledForDiskEncryption;
             EnableSoftDelete = vault.Properties.EnableSoftDelete;
             EnablePurgeProtection = vault.Properties.EnablePurgeProtection;
-            // SoftDeleteRetentionInDays = vault.Properties.SoftDeleteRetentionInDays;
+            SoftDeleteRetentionInDays = vault.Properties.SoftDeleteRetentionInDays;
             AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, adClient)).ToArray();
             NetworkAcls = InitNetworkRuleSet(vault.Properties);
             OriginalVault = vault;
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public bool? EnablePurgeProtection { get; private set; }
 
-        // public int? SoftDeleteRetentionInDays { get; private set; }
+        public int? SoftDeleteRetentionInDays { get; private set; }
 
         public PSKeyVaultAccessPolicy[] AccessPolicies { get; private set; }
 
