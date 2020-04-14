@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Create a new key vault.
     /// </summary>
-    [GenericBreakingChange("Soft delete and purge protection will be enabled by default.", "2.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault", SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
@@ -83,15 +82,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
-        [CmdletParameterBreakingChange(nameof(EnableSoftDelete), ChangeDescription = "Soft delete will be enabled by default. We will add an option `-DisableSoftDelete` to disable it.")]
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
-            HelpMessage = "If specified, 'soft delete' functionality is enabled for this key vault.")]
-        public SwitchParameter EnableSoftDelete { get; set; }
+            HelpMessage = "If specified, 'soft delete' functionality is disabled for this key vault.")]
+        public SwitchParameter DisableSoftDelete { get; set; }
 
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
-            HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well.")]
+            HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well. Enabling 'purge protection' on a key vault is an irreversible action. Once enabled, it cannot be changed or removed.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
 
         [Parameter(Mandatory = false,
@@ -154,8 +150,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                     EnabledForDeployment = this.EnabledForDeployment.IsPresent,
                     EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
                     EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
-                    EnableSoftDelete = EnableSoftDelete.IsPresent,
-                    EnablePurgeProtection = EnablePurgeProtection.IsPresent,
+                    EnableSoftDelete = !DisableSoftDelete.IsPresent,
+                    EnablePurgeProtection = EnablePurgeProtection.IsPresent ? true : (bool?)null, // false is not accepted
                     SkuFamilyName = DefaultSkuFamily,
                     SkuName = this.Sku,
                     TenantId = GetTenantId(),

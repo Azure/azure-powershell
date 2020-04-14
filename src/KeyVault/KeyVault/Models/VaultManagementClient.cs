@@ -84,8 +84,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.EnabledForDeployment = parameters.EnabledForDeployment;
                 properties.EnabledForTemplateDeployment = parameters.EnabledForTemplateDeployment;
                 properties.EnabledForDiskEncryption = parameters.EnabledForDiskEncryption;
-                properties.EnableSoftDelete = parameters.EnableSoftDelete.HasValue && parameters.EnableSoftDelete.Value ? true : (bool?)null;
-                properties.EnablePurgeProtection = parameters.EnablePurgeProtection.HasValue && parameters.EnablePurgeProtection.Value ? true : (bool?)null;
+                properties.EnableSoftDelete = parameters.EnableSoftDelete;
+                properties.EnablePurgeProtection = parameters.EnablePurgeProtection;
                 // properties.SoftDeleteRetentionInDays = parameters.SoftDeleteRetentionInDays;
                 properties.TenantId = parameters.TenantId;
                 properties.VaultUri = "";

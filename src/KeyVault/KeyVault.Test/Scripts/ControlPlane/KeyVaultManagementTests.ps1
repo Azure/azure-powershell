@@ -98,6 +98,7 @@ function Test-CreateNewVault {
     New-AzResourceGroup -Name $rgName -Location $rgLocation
 
     try {
+        # Test default vault
         $actual = New-AzKeyVault -VaultName $vault1Name -ResourceGroupName $rgName -Location $vaultLocation -Tag @{$tagKey = $tagValue }
         Assert-AreEqual $vault1Name $actual.VaultName
         Assert-AreEqual $rgName $actual.ResourceGroupName
@@ -109,6 +110,9 @@ function Test-CreateNewVault {
         Assert-AreEqual $false $actual.EnabledForDeployment
         # Default Access Policy is not set by Service Principal
         Assert-AreEqual 0 @($actual.AccessPolicies).Count
+        # Soft delete and purge protection defaults to true
+        Assert-True { $actual.EnableSoftDelete } "By default EnableSoftDelete should be true"
+        Assert-Null $actual.EnablePurgeProtection "By default EnablePurgeProtection should be null"
 
         # Test premium vault
         $actual = New-AzKeyVault -VaultName $vault2Name -ResourceGroupName $rgName -Location $vaultLocation -Sku premium -EnabledForDeployment
@@ -119,14 +123,18 @@ function Test-CreateNewVault {
         Assert-AreEqual $true $actual.EnabledForDeployment
         Assert-AreEqual 0 @($actual.AccessPolicies).Count
 
-        # Test soft delete
-        $actual = New-AzKeyVault -VaultName $vault3Name -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -EnableSoftDelete
-        Assert-AreEqual $vault3Name $actual.VaultName
-        Assert-AreEqual $rgName $actual.ResourceGroupName
-        Assert-AreEqual $vaultLocation $actual.Location
-        Assert-AreEqual "Standard" $actual.Sku
-        Assert-AreEqual $true $actual.EnableSoftDelete
-        Assert-AreEqual 0 @($actual.AccessPolicies).Count
+        # Test disable soft delete
+        $actual = New-AzKeyVault -VaultName $vault3Name -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -DisableSoftDelete
+        Assert-False { $actual.EnableSoftDelete }
+        Assert-Null $actual.EnablePurgeProtection "If -DisableSoftDelete, EnablePurgeProtection should be null"
+
+        # Test enable purge protection
+        $actual = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -EnablePurgeProtection
+        Assert-True { $actual.EnableSoftDelete } "By default EnableSoftDelete should be true"
+        Assert-True { $actual.EnablePurgeProtection } "If -EnablePurgeProtection, EnablePurgeProtection should be null"
+
+        # Test use  -DisableSoftDelete -EnablePurgeProtection together
+        Assert-Throws { New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -DisableSoftDelete -EnablePurgeProtection }
 
         # Test positional parameters
         $actual = New-AzKeyVault $vault4Name $rgName $vaultLocation
@@ -165,7 +173,7 @@ function Test-RecoverDeletedVault {
     $vaultname = Get-VaultName
 
     # Test
-    $vault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Sku standard -EnableSoftDelete -Tag @{"x" = "y" }
+    $vault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Sku standard -Tag @{"x" = "y" }
 
     # Assert
     Assert-AreEqual $vaultName $vault.VaultName
@@ -224,7 +232,7 @@ function Test-PurgeDeletedVault {
     $vaultname = Get-VaultName
 
     # Test
-    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Sku standard -EnableSoftDelete -Tag @{"x" = "y" }
+    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Sku standard -Tag @{"x" = "y" }
     Remove-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Force -Confirm:$false
     Remove-AzKeyVault -VaultName $vaultName -Location $location -Force -Confirm:$false -InRemovedState
 
@@ -360,6 +368,16 @@ function Test-ListVaults {
     }
 }
 
+#-------------------------------------------------------------------------------------
+
+#------------------------------Update-AzKeyVault-----------------------------------
+function Test-UpdateKeyVault {
+    $rgName = getAssetName
+    $vaultName = getAssetName
+    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
+    $tag = @{"abcdefg" = "bcdefgh" }
+}
 #-------------------------------------------------------------------------------------
 
 #------------------------------Remove-AzKeyVault-----------------------------------
@@ -802,7 +820,7 @@ function Test-UpdateKeyVault {
 
     try {
         $rg = New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
-        $vault = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $resourceGroupName -Location $vaultLocation
+        $vault = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $resourceGroupName -Location $vaultLocation -DisableSoftDelete
         Assert-True { $vault.EnableSoftDelete -ne $true } "1. EnableSoftDelete should not be true"
         Assert-True { $vault.EnablePurgeProtection -ne $true } "1. EnablePurgeProtection should not be true"
 
@@ -823,7 +841,7 @@ function Test-UpdateKeyVault {
         Assert-True { $vault.EnablePurgeProtection } "3. EnablePurgeProtection should be true"
 
         # Enable both together
-        $vault = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $resourceGroupName -Location $vaultLocation
+        $vault = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $resourceGroupName -Location $vaultLocation -DisableSoftDelete
         $vault = $vault | Update-AzKeyVault -EnableSoftDelete -EnablePurgeProtection
         Assert-True { $vault.EnableSoftDelete } "4. EnableSoftDelete should be true"
         Assert-True { $vault.EnablePurgeProtection } "4. EnablePurgeProtection should be true"
