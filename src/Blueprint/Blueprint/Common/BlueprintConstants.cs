@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string BlueprintAssignmentByName = "BlueprintAssignmentByName";
             public const string CreateBlueprintAssignment = "CreateBlueprintAssignment";
             public const string CreateBlueprintAssignmentByFile = "CreateBlueprintAssignmentByFile";
-            public const string DeleteBlueprintAssignmentByName = "DeleteBlueprintAssignmentByName";
             public const string DeleteBlueprintAssignmentByObject = "DeleteBlueprintAssignmentByObject";
 
             public const string UpdateBlueprintAssignment = "UpdateBlueprintAssignment";
@@ -77,6 +76,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         {
             public const string DefinitionSubscriptionId = "Subscription Id where the blueprint definition is or will be saved.";
             public const string AssignmentSubscriptionId = "Subscription Id the blueprint assignment is deployed to.";
+            public const string AssignmentManagementGroupId = "The ID of the management group where the Blueprint assignment is saved.";
             public const string BlueprintAssignmentName = "Blueprint assignment name.";
             public const string BlueprintAssignmentObject = "Blueprint assignment object.";
             public const string BlueprintObject = "Blueprint object.";
@@ -85,7 +85,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string BlueprintDefinitionVersion = "Published blueprint definition version.";
             public const string BlueprintDefinitionVersionToPublish = "Version for the blueprint definition.";
             public const string LatestPublishedFlag = "The latest published blueprint definition flag. When set, execution returns the latest published version of the blueprint definition.";
-            public const string SubscriptionIdToAssign = "SubscriptionId to assign the Blueprint. Can be a comma delimited list of subscriptionId strings.";
+            public const string ManagementGroupIdToAssign = "The ID of the management group where the Blueprint assignment(s) will be saved.";
+            public const string SubscriptionIdToAssign = "SubscriptionId to assign the Blueprint. Can be a comma delimited list of subscriptionId strings. For management group level assignment, make sure the subscriptions are direct children of the management group specified with -ManagementGroupId.";
             public const string Location = "Region for managed identity to be created in. Learn more at aka.ms/blueprintmsi";
             public const string Parameters = "Collection of key/value pairs for parameters and their corresponding values.";
             public const string LockFlag = "Lock resources. Learn more at aka.ms/blueprintlocks";

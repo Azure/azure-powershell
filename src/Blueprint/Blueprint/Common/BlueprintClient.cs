@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return PSBlueprint.FromBlueprintModel(result.Body, scope);
         }
 
-        public PSBlueprintAssignment GetBlueprintAssignment(string subscriptionId, string blueprintAssignmentName)
+        public PSBlueprintAssignment GetBlueprintAssignment(string scope, string blueprintAssignmentName)
         {
-            var result = blueprintManagementClient.Assignments.GetWithHttpMessagesAsync(subscriptionId, blueprintAssignmentName).GetAwaiter().GetResult();
+            var result = blueprintManagementClient.Assignments.GetWithHttpMessagesAsync(scope, blueprintAssignmentName).GetAwaiter().GetResult();
 
             return PSBlueprintAssignment.FromAssignment(result.Body);
         }
@@ -189,9 +189,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return list;
         }
 
-        public PSBlueprintAssignment DeleteBlueprintAssignment(string subscriptionId, string blueprintAssignmentName)
+        public PSBlueprintAssignment DeleteBlueprintAssignment(string scope, string blueprintAssignmentName)
         {
-            var result = blueprintManagementClient.Assignments.DeleteWithHttpMessagesAsync(subscriptionId, blueprintAssignmentName).GetAwaiter().GetResult();
+            var result = blueprintManagementClient.Assignments.DeleteWithHttpMessagesAsync(scope, blueprintAssignmentName).GetAwaiter().GetResult();
 
             if (result.Body == null)
                 return null;
@@ -199,9 +199,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return PSBlueprintAssignment.FromAssignment(result.Body);
         }
 
-        public PSBlueprintAssignment CreateOrUpdateBlueprintAssignment(string subscriptionId, string assignmentName, Assignment assignment)
+        public PSBlueprintAssignment CreateOrUpdateBlueprintAssignment(string scope, string assignmentName, Assignment assignment)
         {
-            var result = blueprintManagementClient.Assignments.CreateOrUpdateWithHttpMessagesAsync(subscriptionId, assignmentName, assignment).GetAwaiter().GetResult();
+            var result = blueprintManagementClient.Assignments.CreateOrUpdateWithHttpMessagesAsync(scope, assignmentName, assignment).GetAwaiter().GetResult();
 
             if (result.Body != null)
             {
