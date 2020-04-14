@@ -31,10 +31,28 @@ The Get-AzAttestationPolicy cmdlet gets the policy from a tenant in Azure Attest
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAttestationPolicy -Name "example" -Tee "SgxEnclave"
+PS C:\> Get-AzAttestationPolicy -Name pshtest -ResourceGroupName psh-test-rg -Tee SgxEnclave                                                                                                                                                                                                                    
+Text       : version= 1.0;
+             authorizationrules{
+                 c:[type=="$is-debuggable"] => permit();
+             };
+             issuancerules{
+                 c:[type=="$is-debuggable"] => issue(type="is-debuggable", value=c.value);
+                 c:[type=="$sgx-mrsigner"] => issue(type="sgx-mrsigner", value=c.value);
+                 c:[type=="$sgx-mrenclave"] => issue(type="sgx-mrenclave", value=c.value);
+                 c:[type=="$product-id"] => issue(type="product-id", value=c.value);
+                 c:[type=="$svn"] => issue(type="svn", value=c.value);
+                 c:[type=="$tee"] => issue(type="tee", value=c.value);
+                 c:[type=="$tee-future"] => issue(type="tee-future", value=c.value);
+             };
+
+TextLength : 604
+Jwt        : eyJhbGciOiJub25lIn0.eyJBdHRlc3RhdGlvblBvbGljeSI6ICJkbVZ5YzJsdmJqMGdNUzR3T3cwS1lYVjBhRzl5YVhwaGRHbHZibkoxYkdWemV3MEtJQ0FnSUdNNlczUjVjR1U5UFNJa2FYTXRaR1ZpZFdkbllXSnNaU0pkSUQwLUlIQmxjbTFwZENncE93MEtmVHNOQ21semMzVmhibU5sY25Wc1pYTjdEUW9nSUNBZ1l6cGJkSGx3WlQwOUlpUnBjeTFrWldKMVoyZGhZbXhsSWwwZ1BUNGdhWE56ZFdVb2RIbHdaVDBpYVhNdFpHVmlkV2RuWVdKc1pTSXNJSFpoYkhWbFBXTXVkbUZzZFdVcE93MEtJQ0FnSUdNNlczUjVjR1U5UFNJa2MyZDRMVzF5YzJsbmJtVnlJbDBnUFQ0Z2FYTnpkV1VvZEhsd1pUMGljMmQ0TFcxeWMybG5ibVZ5SWl3Z2RtRnNkV1U5WXk1MllXeDFaU2s3RFFvZ0lDQWdZenBiZEhsd1pUMDlJaVJ6WjNndGJYSmxibU5zWVhabElsMGdQVDRnYVhOemRXVW9kSGx3WlQwaWMyZDRMVzF5Wlc1amJHRjJaU0lzSUhaaGJIVmxQV011ZG1Gc2RXVXBPdzBLSUNBZ0lHTTZXM1I1Y0dVOVBTSWtjSEp2WkhWamRDMXBaQ0pkSUQwLUlHbHpjM1ZsS0hSNWNHVTlJbkJ5YjJSMVkzUXRhV1FpTENCMllXeDFaVDFqTG5aaGJIVmxLVHNOQ2lBZ0lDQmpPbHQwZVhCbFBUMGlKSE4yYmlKZElEMC1JR2x6YzNWbEtIUjVjR1U5SW5OMmJpSXNJSFpoYkhWbFBXTXVkbUZzZFdVcE93MEtJQ0FnSUdNNlczUjVjR1U5UFNJa2RHVmxJbDBnUFQ0Z2FYTnpkV1VvZEhsd1pUMGlkR1ZsSWl3Z2RtRnNkV1U5WXk1MllXeDFaU2s3RFFvZ0lDQWdZenBiZEhsd1pUMDlJaVIwWldVdFpuVjBkWEpsSWwwZ1BUNGdhWE56ZFdVb2RIbHdaVDBpZEdWbExXWjFkSFZ5WlNJc0lIWmhiSFZsUFdNdWRtRnNkV1VwT3cwS2ZUc05DZyJ9.
+JwtLength  : 1129
+Algorithm  : none
 ```
 
-Gets the policy for tenant "example" in Tee "SgxEnclave".
+Gets the policy for Attestation Provider *pshtest* for Tee type *SgxEnclave*.
 
 ## PARAMETERS
 
@@ -101,7 +119,7 @@ Accept wildcard characters: False
 
 ### -Tee
 Specifies a type of Trusted Execution Environment.
-We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VSMEnclave.
+We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VBSEnclave.
 
 ```yaml
 Type: System.String
@@ -154,7 +172,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Attestation.Models.PSPolicy
 
 ## NOTES
 

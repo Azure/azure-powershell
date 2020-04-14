@@ -27,15 +27,21 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
             this.ResourceGroupName = ParseResourceGroupFromId(cognitiveServicesAccount.Id);
             this.AccountName = cognitiveServicesAccount.Name;
             this.Id = cognitiveServicesAccount.Id;
-            this.Endpoint = cognitiveServicesAccount.Properties.Endpoint;
             this.Location = cognitiveServicesAccount.Location;
             this.Sku = cognitiveServicesAccount.Sku;
             this.AccountType = cognitiveServicesAccount.Kind;
             this.Etag = cognitiveServicesAccount.Etag;
             this.ResourceType = cognitiveServicesAccount.Type;
-            this.ProvisioningState = cognitiveServicesAccount.Properties.ProvisioningState;
             this.Tags = cognitiveServicesAccount.Tags;
+
+            this.Endpoint = cognitiveServicesAccount.Properties.Endpoint;
+            this.ProvisioningState = cognitiveServicesAccount.Properties.ProvisioningState;
             this.CustomSubDomainName = cognitiveServicesAccount.Properties.CustomSubDomainName;
+
+            this.Identity = cognitiveServicesAccount.Identity;
+            this.UserOwnedStorage = cognitiveServicesAccount.Properties.UserOwnedStorage;
+            this.Encryption = cognitiveServicesAccount.Properties.Encryption;
+            this.ApiProperties = cognitiveServicesAccount.Properties.ApiProperties;
 
             if (cognitiveServicesAccount.Properties.NetworkAcls != null)
             {
@@ -64,6 +70,14 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
         public string ProvisioningState { get; private set; }
 
         public string CustomSubDomainName { get; private set; }
+
+        public Identity Identity { get; private set; }
+
+        public Encryption Encryption { get; private set; }
+
+        public IList<UserOwnedStorage> UserOwnedStorage { get; private set; }
+
+        public CognitiveServicesAccountApiProperties ApiProperties { get; private set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; private set; }
 

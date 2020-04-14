@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.Attestation;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Attestation.Models
 {
@@ -47,26 +48,29 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             _attestationControlPlaneClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Attestation.AttestationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
-        public void SetPolicy(string name, string resourceGroupName, string resourceId, string tee, string policyJwt)
+        public void SetPolicy(string name, string resourceGroupName, string resourceId, string tee, string userSpecifiedPolicy, string policyFormat)
         {
             ValidateCommonParameters(ref name, ref resourceGroupName, resourceId);
             if (string.IsNullOrEmpty(tee))
                 throw new ArgumentNullException(nameof(tee));
-            if (string.IsNullOrEmpty(policyJwt))
-                throw new ArgumentNullException(nameof(policyJwt));
+            if (string.IsNullOrEmpty(userSpecifiedPolicy))
+                throw new ArgumentNullException(nameof(userSpecifiedPolicy));
 
-            // Step #1 - Ask service to prepare to set policy
+            // Step #1 - Convert text policy to JWT if necessary
+            var processedPolicy = GenerateJwtPolicyIfNeeded(policyFormat, userSpecifiedPolicy);
+
+            // Step #2 - Ask service to prepare to set policy
             AzureOperationResponse<object> serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) => 
-                _attestationDataPlaneClient.Policy.PrepareToSetWithHttpMessagesAsync(tenantUri, tee, policyJwt).Result);
+                _attestationDataPlaneClient.Policy.PrepareToSetWithHttpMessagesAsync(tenantUri, tee, processedPolicy).Result);
             ThrowOn4xxErrors(serviceCallResult);
 
-            // Step #2 - Validate service response locally
+            // Step #3 - Validate service response locally
             string policyUpdateJwt = serviceCallResult.Body.ToString();
             var validatedToken = PolicyValidationHelper.ValidateAttestationServiceToken(name, DataPlaneUriLookup[(name, resourceGroupName)], policyUpdateJwt);
             if (!validatedToken.IsValid)
                 throw new ArgumentException("policyJwt is not valid");
 
-            // Step #3 - Ask service to set policy
+            // Step #4 - Ask service to set policy
             serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) => 
                 _attestationDataPlaneClient.Policy.SetWithHttpMessagesAsync(tenantUri, tee, policyUpdateJwt).Result);
             ThrowOn4xxErrors(serviceCallResult);
@@ -132,6 +136,36 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         #region Private helper methods
 
+        private string GenerateJwtPolicyIfNeeded(string policyFormat, string userSpecifiedPolicy)
+        {
+            var processedPolicy = string.Empty;
+            if (string.IsNullOrEmpty(policyFormat) || 
+                SetAzureAttestationPolicy.TextPolicyFormat.Equals(policyFormat, StringComparison.InvariantCultureIgnoreCase))
+            {
+                processedPolicy = this.GenerateJwtPolicy(userSpecifiedPolicy);
+            }
+            else if (SetAzureAttestationPolicy.JwtPolicyFormat.Equals(policyFormat, StringComparison.InvariantCultureIgnoreCase))
+            {
+                processedPolicy = userSpecifiedPolicy;
+            }
+            else
+            {
+                throw new ArgumentException(nameof(policyFormat));
+            }
+
+            return processedPolicy;
+        }
+
+        private string GenerateJwtPolicy(string textPolicy)
+        {
+            var header = Base64Url.EncodeString("{\"alg\":\"none\"}");
+            var encodedPolicy = Base64Url.EncodeString(textPolicy);
+            var bodyText = "{\"AttestationPolicy\": \"" + encodedPolicy + "\"}";
+            var body = Base64Url.EncodeString(bodyText);
+
+            return $"{header}.{body}.";
+        }
+
         private void ValidateCommonParameters(ref string name, ref string resourceGroupName, string resourceId)
         {
             if (!string.IsNullOrEmpty(resourceId))
@@ -163,10 +197,28 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         private void ThrowOn4xxErrors(AzureOperationResponse<object> result)
         {
-            if (result.Response.StatusCode == HttpStatusCode.BadRequest)
-                throw new ArgumentException($"Operation returns BadRequest");
-            if (result.Response.StatusCode == HttpStatusCode.Unauthorized)
-                throw new ArgumentException("Operation is unauthorized");
+            int statusCode = (int) result.Response.StatusCode;
+
+            if (statusCode >= 400 && statusCode <= 499)
+            {
+                var responseBody = result.Response.Content.ReadAsStringAsync().Result;
+                var errorDetails = $"Operation returned HTTP Status Code {statusCode}";
+
+                // Include response body as either parsed ServerError or string
+                if (!string.IsNullOrEmpty(responseBody))
+                {
+                    try
+                    {
+                        var error = JsonConvert.DeserializeObject<ServerError>(responseBody).Error;
+                        errorDetails += $"\n\rCode: {error.Code}\n\rMessage: {error.Message}\n\r";
+                    }
+                    catch (Exception)
+                    {
+                        errorDetails += $"\n\rResponse Body: {responseBody}\n\r";
+                    }
+                }
+                throw new RestException(errorDetails);
+            }
         }
 
         /// <summary>

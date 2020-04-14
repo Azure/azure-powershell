@@ -31,7 +31,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public int? DiskSizeGB { get; set; }
         public EncryptionSettingsCollection EncryptionSettingsCollection { get; set; }
         public long? DiskIOPSReadWrite { get; set; }
-        public int? DiskMBpsReadWrite { get; set; }
+        public long? DiskMBpsReadWrite { get; set; }
+        public long? DiskIOPSReadOnly { get; set; }
+        public long? DiskMBpsReadOnly { get; set; }
+        public int? MaxShares { get; set; }
         public Encryption Encryption { get; set; }
         public IDictionary<string, string> Tags { get; set; }
         public DiskSku Sku { get; set; }

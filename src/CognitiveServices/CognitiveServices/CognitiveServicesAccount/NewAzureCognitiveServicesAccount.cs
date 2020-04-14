@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.CognitiveServices.Models;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
 using CognitiveServicesModels = Microsoft.Azure.Commands.Management.CognitiveServices.Models;
@@ -33,6 +34,16 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccount", SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesAccount))]
     public class NewAzureCognitiveServicesAccountCommand : CognitiveServicesAccountBaseCmdlet
     {
+        /// <summary>
+        /// CognitiveServices Encryption parameter set name
+        /// </summary>
+        private const string CognitiveServicesEncryptionParameterSet = "CognitiveServicesEncryption";
+
+        /// <summary>
+        /// KeyVault Encryption parameter set name
+        /// </summary>
+        private const string KeyVaultEncryptionParameterSet = "KeyVaultEncryption";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -96,6 +107,49 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Generate and assign a new Cognitive Services Account Identity for this storage account for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(
+            HelpMessage = "List of User Owned Storage Accounts.",
+            Mandatory = false)]
+        [ValidateNotNull]
+        [AllowEmptyCollection]
+        public string[] StorageAccountId { get; set; }
+
+        [Parameter(HelpMessage = "Whether to set Cognitive Services Account Encryption KeySource to Microsoft.CognitiveServices or not.",
+            Mandatory = false,
+            ParameterSetName = CognitiveServicesEncryptionParameterSet)]
+        public SwitchParameter CognitiveServicesEncryption { get; set; }
+
+        [Parameter(HelpMessage = "Whether to set Cognitive Services Account encryption keySource to Microsoft.KeyVault or not.",
+            Mandatory = false,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        public SwitchParameter KeyVaultEncryption { get; set; }
+
+        [Parameter(HelpMessage = "Cognitive Services Account encryption keySource KeyVault KeyName",
+                    Mandatory = true,
+                    ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyName { get; set; }
+
+        [Parameter(HelpMessage = "Cognitive Services Account encryption keySource KeyVault KeyVersion",
+            Mandatory = true,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVersion { get; set; }
+
+        [Parameter(HelpMessage = "Cognitive Services Account encryption keySource KeyVault KeyVaultUri",
+            Mandatory = true,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultUri
+        {
+            get; set;
+        }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "NetworkRuleSet is used to define a set of configuration rules for firewalls and virtual networks, as well as to set values for network properties such as how to handle requests that don't match any of the defined rules")]
         [ValidateNotNull]
         [AllowEmptyCollection]
@@ -115,6 +169,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 {
                     properties.CustomSubDomainName = CustomSubdomainName;
                 }
+
                 if (NetworkRuleSet != null)
                 {
                     properties.NetworkAcls = NetworkRuleSet.ToNetworkRuleSet();
@@ -128,6 +183,38 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag),
                     Properties = properties
                 };
+
+                if (AssignIdentity.IsPresent)
+                {
+                    createParameters.Identity = new Identity(IdentityType.SystemAssigned);
+                }
+
+                if (CognitiveServicesEncryption.IsPresent)
+                {
+                    createParameters.Properties.Encryption = new Encryption(null, KeySource.MicrosoftCognitiveServices);
+                }
+
+                if (ParameterSetName == KeyVaultEncryptionParameterSet)
+                {
+                    createParameters.Properties.Encryption = new Encryption(
+                        new KeyVaultProperties()
+                        {
+                            KeyName = KeyName,
+                            KeyVersion = KeyVersion,
+                            KeyVaultUri = KeyVaultUri
+                        }, 
+                        KeySource.MicrosoftKeyVault);
+                }
+
+
+                if (StorageAccountId != null && StorageAccountId.Length > 0)
+                {
+                    createParameters.Properties.UserOwnedStorage = new List<UserOwnedStorage>();
+                    foreach(var storageAccountId in StorageAccountId)
+                    {
+                        createParameters.Properties.UserOwnedStorage.Add(new UserOwnedStorage(storageAccountId));
+                    }
+                }
 
                 if (ShouldProcess(
                     Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccount_ProcessMessage, Name, Type, SkuName, Location)))

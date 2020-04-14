@@ -522,7 +522,7 @@
     <value>WorkspaceResourceId must be provided in connection monitor output.</value>
   </data>
   <data name="InvalidWorkspaceResourceId" xml:space="preserve">
-    <value>WorkspaceResourceId specified in connection monitor output is not a valid resource Id of Log analytics workspace.</value>
+    <value>TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LocAnalytics workspace.</value>
   </data>
   <data name="UnsupportedEndpointFilterItemType" xml:space="preserve">
     <value>Specified EndpointFilterItemType is not supported. Supported type is 'AgentAddress'.</value>
@@ -631,5 +631,41 @@
   </data>
   <data name="ConnectionMonitorNotFound" xml:space="preserve">
     <value>Connection monitor is not found.</value>
+  </data>
+  <data name="InvalidTargetResourceId" xml:space="preserve">
+    <value>TargetResourceId specified in flow log is not a valid resource ID of Network security group.</value>
+  </data>
+  <data name="InvalidStorageId" xml:space="preserve">
+    <value>StorageId specified in flow log is not a valid ID of storage account.</value>
+  </data>
+  <data name="InvalidFlowLogFormatVersion" xml:space="preserve">
+    <value>Invalid format version. Supported values are 0, 1 and 2.</value>
+  </data>
+  <data name="InvalidFlowLogFormatType" xml:space="preserve">
+    <value>Invalid format type. Supported value is 'JSON'.</value>
+  </data>
+  <data name="TrafficAnalyticsWorkspaceResourceIdIsMissing" xml:space="preserve">
+    <value>Workspace resourceID should be provided if traffic analytics is enabled.</value>
+  </data>
+  <data name="InvalidTrafficAnalyticsInterval" xml:space="preserve">
+    <value>TrafficAnalyticsInterval is invalid. Supported values are 10 and 60.</value>
+  </data>
+  <data name="InvalidRetentionPolicyDaysValue" xml:space="preserve">
+    <value>Number of days in retention policy should be greater than 0.</value>
+  </data>
+  <data name="InvalidFlowLogResourceId" xml:space="preserve">
+    <value>Provided flowLog resourceId is invalid.</value>
+  </data>
+  <data name="InvalidFqdn" xml:space="preserve">
+    <value>The Fqdn specified is invalid.</value>
+  </data>
+  <data name="ExpressRoutePrivatePeeringNotFound" xml:space="preserve">
+    <value>Private Peering needs to be configured on the Express Route Circuit.</value>
+  </data>
+  <data name="ExpressRouteCircuitConnectionNotFound" xml:space="preserve">
+    <value>Circuit Connection with Name '{0}' was not added to the private peering.</value>
+  </data>
+  <data name="ExpressRouteCircuitConnectionAlreadyAdded" xml:space="preserve">
+    <value>Circuit Connection with Name '{0}' is already added.</value>
   </data>
 </root>

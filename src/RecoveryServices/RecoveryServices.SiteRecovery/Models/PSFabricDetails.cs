@@ -117,6 +117,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.SystemLoadStatus = processServer.SystemLoadStatus;
             this.TotalMemoryInBytes = processServer.TotalMemoryInBytes;
             this.TotalSpaceInBytes = processServer.TotalSpaceInBytes;
+            this.Health = processServer.Health;
+            this.PSStatsRefreshTime = processServer.PsStatsRefreshTime;
+            this.ThroughputUploadPendingDataInBytes = processServer.ThroughputUploadPendingDataInBytes;
+            this.ThroughputInMBps = processServer.ThroughputInMBps;
+            this.ThroughputInBytes = processServer.ThroughputInBytes;
+            this.ThroughputStatus = processServer.ThroughputStatus;
+            this.MarsCommunicationStatus = processServer.MarsCommunicationStatus;
+            this.MarsRegistrationStatus = processServer.MarsRegistrationStatus;
             this.Updates =
                 this.TranslateMobilityServiceUpdate(processServer.MobilityServiceUpdates);
         }
@@ -231,6 +239,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets version status
         /// </summary>
         public string VersionStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health of Process Server.
+        /// </summary>
+        public string Health { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the process server stats refresh time.
+        /// </summary>
+        public DateTime? PSStatsRefreshTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the uploading pending data in bytes.
+        /// </summary>
+        public long? ThroughputUploadPendingDataInBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the throughput in MBps.
+        /// </summary>
+        public long? ThroughputInMBps { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the throughput in bytes.
+        /// </summary>
+        public long? ThroughputInBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the throughput status.
+        /// </summary>
+        public string ThroughputStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the MARS communication status.
+        /// </summary>
+        public string MarsCommunicationStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the MARS registration status.
+        /// </summary>
+        public string MarsRegistrationStatus { get; set; }
 
         /// <summary>
         ///     Translate Mobility updates into Powershell object.
@@ -827,6 +875,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.OSDiskId = details.OsDiskId;
             this.OSType = details.OsType;
             this.ProcessServerId = details.ProcessServerId;
+            this.ProcessServerName = details.ProcessServerName;
             this.ProtectionStage = details.ProtectionStage;
             this.RecoveryAzureLogStorageAccountId = details.RecoveryAzureLogStorageAccountId;
             this.VHDName = details.VhdName;
@@ -925,6 +974,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Process Server Id.
         /// </summary>
         public string ProcessServerId { get; set; }
+
+        /// <summary>
+        ///     Process Server Name.
+        /// </summary>
+        public string ProcessServerName { get; set; }
 
         /// <summary>
         ///     Gets or sets Protected Disk Details of the Virtual machine.

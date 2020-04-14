@@ -137,7 +137,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("AzureFileSourceFileTypeMissingException", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Both source file path and multiple source file paths provided. Please give only one option
+        /// </summary>
+        public static string AzureFileSourceFilePathRedundantException
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileSourceFilePathRedundantException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Provide TargetFileShareName for Alternate Location restore or remove TargetStorageAccountName for Original Location restore.
         /// </summary>
@@ -429,7 +440,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("DiscoveryFailureErrorMessage", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Multiple Parameters Provided. Please specify only one of the parameters from InclusionDisksList, ExclusionDisksList, ResetExclusionSetting and ExcludeAllDataDisks..
+        /// </summary>
+        public static string DiskExclusionParametersRedundant
+        {
+            get
+            {
+                return ResourceManager.GetString("DiskExclusionParametersRedundant", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Both Inclusion and Exclusion lists provided. Please provide only one of them.
+        /// </summary>
+        public static string InclusionListRedundantError
+        {
+            get
+            {
+                return ResourceManager.GetString("InclusionListRedundantError", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Empty response received from Service Client.
         /// </summary>
@@ -1379,7 +1412,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("URIValueNotFound", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to The disks of the managed VM will be restored as unmanaged since TargetResourceGroupName parameter is not provided. This will NOT leverage the instant restore functionality and hence can be significantly slow based on given storage account. To leverage instant restore, provide the TargetResourceGroupName parameter. Otherwise, provide the intent next time by passing the RestoreAsUnmanagedDisks parameter
+        /// </summary>
+        public static string UnmanagedVMRestoreWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("UnmanagedVMRestoreWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be spceified. Please give Only one parameter and retry.
+        /// </summary>
+        public static string TargetRGUnmanagedRestoreDuplicateParamsException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetRGUnmanagedRestoreDuplicateParamsException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to VirtualMachineId is NULL or Empty. Please enter valid VirtualMachineId.
         /// </summary>

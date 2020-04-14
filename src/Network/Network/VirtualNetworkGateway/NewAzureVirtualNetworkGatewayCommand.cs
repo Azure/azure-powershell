@@ -129,6 +129,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Flag to enable private IPAddress on virtual network gateway")]
+        public SwitchParameter EnablePrivateIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Gateway Sku Tier")]
         [ValidateSet(
@@ -205,6 +210,13 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The weight added to routes learned over BGP from this virtual network gateway")]
         public int PeerWeight { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The BgpPeeringAddresses for Virtual network gateway bgpsettings.")]
+        [ValidateNotNullOrEmpty]
+        public PSIpConfigurationBgpPeeringAddress[] IpConfigurationBgpPeeringAddresses { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -356,6 +368,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;
             vnetGateway.ActiveActive = this.EnableActiveActiveFeature.IsPresent;
+            vnetGateway.EnablePrivateIpAddress = this.EnablePrivateIpAddress.IsPresent;
 
             if (this.GatewayDefaultSite != null)
             {
@@ -463,6 +476,26 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     throw new ArgumentException("PeerWeight must be a positive integer");
                 }
+            }
+
+            if (this.IpConfigurationBgpPeeringAddresses != null)
+            {
+                if(vnetGateway.BgpSettings == null)
+                {
+                    vnetGateway.BgpSettings = new PSBgpSettings();
+                }
+
+                vnetGateway.BgpSettings.BgpPeeringAddresses = new List<PSIpConfigurationBgpPeeringAddress>();
+
+                foreach (var address in this.IpConfigurationBgpPeeringAddresses)
+                {
+                    address.IpconfigurationId = FormatIdBgpPeeringAddresses(address.IpconfigurationId, this.ResourceGroupName, this.Name);
+                    vnetGateway.BgpSettings.BgpPeeringAddresses.Add(address);
+                }
+            }
+            else if(vnetGateway.BgpSettings != null)
+            {
+                vnetGateway.BgpSettings.BgpPeeringAddresses = null;
             }
 
             if (this.CustomRoute != null && this.CustomRoute.Any())

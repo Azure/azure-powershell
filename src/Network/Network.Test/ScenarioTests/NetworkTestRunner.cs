@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null},
                         {"Microsoft.Storage", null},
+                        {"Microsoft.Sql", null},
                         {"Microsoft.ManagedServiceIdentity", null},
                     }
                 )

@@ -19,6 +19,34 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
+    - New-AzVirtualNetworkGateway
+    - Set-AzVirtualNetworkGateway
+    - New-AzVirtualNetworkGatewayConnection
+    - Set-AzVirtualNetworkGatewayConnection
+* Updated cmdlets to enable FQDN based LocalNetworkGateways and VpnSites
+    - `New-AzLocalNetworkGateway`
+    - `New-AzVpnSiteLink`
+* Added support for IPv6 address family in ExpressRouteCircuitConnectionConfig (Global Reach)
+    - Added `Set-AzExpressRouteCircuitConnectionConfig`
+        - allows setting of all the existing properties including the IPv6CircuitConnectionProperties
+    - Updated `Add-AzExpressRouteCircuitConnectionConfig`
+        - Added another optional parameter AddressPrefixType to specify the address family of address prefix
+* Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
+    - New-AzVirtualNetworkGateway
+    - Set-AzVirtualNetworkGateway
+    - New-AzVirtualNetworkGatewayConnection
+    - Set-AzVirtualNetworkGatewayConnection
+
+## Version 2.4.0
+* Updated cmdlets to allow cross-tenant VirtualHubVnetConnections
+    - `New-AzVirtualHubVnetConnection`
+    - `Update-AzVirtualHubVnetConnection`
+    - `New-AzVirtualHub`
+    - `Update-AzVirtualHub`
+* Removed Sql Management SDK dependency
+* Added 'New-AzIpConfigurationBgpPeeringAddressObject'
+* Updated 'Set-AzVirtualNetworkGateway' and 'New-AzVirtualNetworkGateway'
 
 ## Version 2.3.2
 * Updated Sql Management SDK.
@@ -32,6 +60,10 @@
 * Added Packet Capture example for capture all inner and outer packets in Start-AzVirtualNetworkGatewayConnectionPacketCapture.md and Start-AzVirtualnetworkGatewayPacketCapture.md.
 * Supported Azure Firewall Policy on VNet Firewalls
     - No new cmdlets are added. Relaxing the restriction for firewall policy on VNet firewalls
+* Added support to disconnect vpn connection in virtual network gateway and p2s vpn gateway
+    - New cmdlets added:
+        - Disconnect-AzVirtualNetworkGatewayVpnConnection
+        - Disconnect-AzP2sVpnGatewayVpnConnection
 
 ## Version 2.3.0
 * New example added to Set-AzNetworkWatcherConfigFlowLog.md to demonstrate Traffic Analytics disable scenario.

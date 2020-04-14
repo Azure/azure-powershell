@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
         public PSDatabaseAccount InputObject { get; set; }
 
@@ -72,18 +72,23 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             List<Location> locations = new List<Location>();
-
-            if( (Location != null && Location.Length > 0) ||
-                (LocationObject != null && LocationObject.Length > 0))
+            if (Location != null || LocationObject != null)
             {
-                foreach (string location in Location)
+                if (Location != null && Location.Length > 0)
                 {
-                    locations.Add(new Location(location));
+                    int failoverPriority = 0;
+                    foreach (string location in Location)
+                    {
+                        locations.Add(new Location(locationName: location, failoverPriority: failoverPriority));
+                        failoverPriority++;
+                    }
                 }
-
-                foreach (PSLocation psLocation in LocationObject)
+                if (LocationObject != null && LocationObject.Length > 0)
                 {
-                    locations.Add(PSLocation.ConvertPSLocationToLocation(psLocation));
+                    foreach (PSLocation psLocation in LocationObject)
+                    {
+                        locations.Add(PSLocation.ConvertPSLocationToLocation(psLocation));
+                    }
                 }
             }
             else

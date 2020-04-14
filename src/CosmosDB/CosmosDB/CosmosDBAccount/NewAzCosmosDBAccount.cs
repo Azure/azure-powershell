@@ -16,6 +16,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public SwitchParameter EnableVirtualNetwork { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IpRangeFilterHelpMessage)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string[] IpRangeFilter { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
@@ -81,8 +82,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public PSVirtualNetworkRule[] VirtualNetworkRuleObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ApiKindHelpMessage)]
-        [PSArgumentCompleter("GlobalDocumentDB", "MongoDB", "Others")]
+        [PSArgumentCompleter("Sql", "MongoDB", "Gremlin", "Cassandra", "Table")]
         public string ApiKind { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.PublicNetworkAccessHelpMessage)]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        public string PublicNetworkAccess { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
+        public SwitchParameter DisableKeyBasedMetadataWriteAccess { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
@@ -120,18 +128,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         break;
                 }
             }
-
-            if(!string.IsNullOrEmpty(ApiKind))
-            {
-                if (!ApiKind.Equals("GlobalDocumentDB", StringComparison.OrdinalIgnoreCase) && !ApiKind.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
-                {
-                    WriteWarning("Gremlin, Cassandra and Table account creation not supported" +
-                        "in Azure Powershell");
-                    return;
-                }
-            }
-            else
-                ApiKind = "GlobalDocumentDB";
 
             string writeLocation = null;
             Collection<Location> LocationCollection = new Collection<Location>();
@@ -185,15 +181,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             Collection<VirtualNetworkRule> virtualNetworkRule = new Collection<VirtualNetworkRule>();
-            if ((VirtualNetworkRule != null && VirtualNetworkRule.Length > 0) ||
-                (VirtualNetworkRuleObject != null && VirtualNetworkRuleObject.Length > 0))
+            if (VirtualNetworkRule != null && VirtualNetworkRule.Length > 0)
             {
-
                 foreach (string id in VirtualNetworkRule)
                 {
                     virtualNetworkRule.Add(new VirtualNetworkRule(id: id));
                 }
-
+            }
+            if(VirtualNetworkRuleObject != null && VirtualNetworkRuleObject.Length > 0) 
+            { 
                 foreach (PSVirtualNetworkRule psVirtualNetworkRule in VirtualNetworkRuleObject)
                 {
                     virtualNetworkRule.Add(PSVirtualNetworkRule.ConvertPSVirtualNetworkRuleToVirtualNetworkRule(psVirtualNetworkRule));
@@ -203,22 +199,45 @@ namespace Microsoft.Azure.Commands.CosmosDB
             string IpRangeFilterAsString = null;
             if (IpRangeFilter != null && IpRangeFilter.Length > 0)
             {
-                for (int i = 0; i < IpRangeFilter.Length; i++)
-                {
-                    if (i == 0)
-                    {
-                        IpRangeFilterAsString = IpRangeFilter[0];
-                    }
-                    else
-                        IpRangeFilterAsString = string.Concat(IpRangeFilterAsString, ",", IpRangeFilter[i]);
-                }
+                IpRangeFilterAsString = IpRangeFilter?.Aggregate(string.Empty, (output, next) => string.Concat(output, (!string.IsNullOrWhiteSpace(output) && !string.IsNullOrWhiteSpace(next) ? "," : string.Empty), next)) ?? string.Empty;
             }
 
-            DatabaseAccountCreateUpdateParameters databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParameters(locations:LocationCollection, location: writeLocation, name:Name, kind:ApiKind, consistencyPolicy:consistencyPolicy, tags:tags, ipRangeFilter:IpRangeFilterAsString);
+            DatabaseAccountCreateUpdateParameters databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParameters(locations:LocationCollection, location: writeLocation, name:Name, consistencyPolicy:consistencyPolicy, tags:tags, ipRangeFilter:IpRangeFilterAsString);
             databaseAccountCreateUpdateParameters.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
             databaseAccountCreateUpdateParameters.IsVirtualNetworkFilterEnabled = EnableVirtualNetwork;
             databaseAccountCreateUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
             databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
+            databaseAccountCreateUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
+            databaseAccountCreateUpdateParameters.IpRangeFilter = IpRangeFilterAsString;
+            databaseAccountCreateUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
+
+            if (!string.IsNullOrEmpty(ApiKind))
+            {
+                if (!ApiKind.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
+                {
+                    switch (ApiKind)
+                    {
+                        case "Cassandra":
+                            databaseAccountCreateUpdateParameters.Capabilities = new List<Capability> { new Capability { Name = "EnableCassandra" } };
+                            break;
+                        case "Gremlin":
+                            databaseAccountCreateUpdateParameters.Capabilities = new List<Capability> { new Capability { Name = "EnableGremlin" } };
+                            break;
+                        case "Table":
+                            databaseAccountCreateUpdateParameters.Capabilities = new List<Capability> { new Capability { Name = "EnableTable" } };
+                            break;
+                        case "Sql":
+                            break;
+                    }
+
+                    ApiKind = null;
+                }
+            }
+            else
+            {
+                ApiKind = "GlobalDocumentDB";
+            }
+            databaseAccountCreateUpdateParameters.Kind = ApiKind;
 
             if (ShouldProcess(Name, "Creating Database Account"))
             {

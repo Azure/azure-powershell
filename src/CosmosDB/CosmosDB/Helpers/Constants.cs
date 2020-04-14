@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string AccountKeyKindHelpMessage = "The access key to regenerate. Accepted values: primary, primaryReadonly, secondary, secondaryReadonly ";
         public const string AccountFailoverPolicyHelpMessage = "Array of strings having region names, ordered by failover priority. E.g eastus, westus";
         public const string AccountObjectHelpMessage = "CosmosDB Account object";
-        public const string AccountUpdateLocationHelpMessage = "Name of the location to be added.";
+        public const string AccountUpdateLocationHelpMessage = "The georeplication location to be enabled for the Cosmos DB account, can be a single string or an array of strings.";
         public const string DefaultConsistencyLevelHelpMessage = "Default consistency level of the Cosmos DB database account. Accepted values: BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong. Default is Session.";
         public const string EnableAutomaticFailoverHelpMessage = "Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result" +
                " in a new write region for the account and is chosen based on the failover priorities configured for the account. Accepted values: false, true ";
@@ -45,9 +45,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string VirtualNetworkRuleObjectHelpMessage = "Array of PSVirtualNetworkRuleObjects for virtual network.";
         public const string VirtualNetworkRuleIdHelpMessage = "Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}";
         public const string IgnoreMissingVNetServiceEndpointHelpMessage = "Boolean to indicate if to create firewall rule before the virtual network has vnet service endpoint enabled.";
-        public const string ApiKindHelpMessage = "The type of Cosmos DB database account to create. Accepted values: GlobalDocumentDB, Sql, MongoDB, Gremlin, Table, Cassandra. Default value: GlobalDocumentDB ";
+        public const string ApiKindHelpMessage = "The type of Cosmos DB database account to create. Accepted values: Sql, MongoDB, Gremlin, Table, Cassandra. Default value: Sql ";
         public const string AccountKeyTypeHelpMessage = "Value from: {ConnectionStrings, Keys, ReadOnlyKeys}. Default is Keys.";
-        
+        public const string DisableKeyBasedMetadataWriteAccessHelpMessage = "Disable write operations on metadata resources (databases, containers, throughput) via account keys";
+        public const string PublicNetworkAccessHelpMessage = "Whether or not public endpoint access is allowed for this server. Possible values include: 'Enabled', 'Disabled'";
+
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";
         public const string ContainerNameHelpMessage = "Container name.";
@@ -104,7 +106,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         //MongoDB cmdlets help messages
         public const string CollectionNameHelpMessage = "Collection name.";
         public const string MongoDatabaseObjectHelpMessage = "Mongo Database object.";
-        public const string MongoCollectionObjectHelpMessage = "Sql Container object.";
+        public const string MongoCollectionObjectHelpMessage = "Mongo Collection object.";
         public const string MongoCollectionDetailedParamHelpMessage = "If provided then, the cmdlet returns the collection with the corresponding throughput value.";
         public const string MongoDatabaseDetailedParamHelpMessage = "If provided then, the cmdlet returns the database with the corresponding throughput value.";
         public const string MongoShardKeyHelpMessage = "Sharding key path.";

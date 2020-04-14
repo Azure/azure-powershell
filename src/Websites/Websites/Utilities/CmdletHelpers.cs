@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.WebApps.Utilities
@@ -615,5 +616,36 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
             return null;
         }
+
+        //To set a Value to Property of a Generic Type object
+        internal static void SetObjectProperty(object inputObject, string propertyName, object propertyVal)
+        {
+            //find out the type
+            Type type = inputObject.GetType();
+
+            //get the property information based on the type
+            PropertyInfo propertyInfo = type.GetProperty(propertyName);
+
+            //find the property type
+            Type propertyType = propertyInfo.PropertyType;
+
+            //Convert.ChangeType does not handle conversion to nullable types
+            //if the property type is nullable, we need to get the underlying type of the property
+            var targetType = IsNullableType(propertyType) ? Nullable.GetUnderlyingType(propertyType) : propertyType;
+
+            //Returns an System.Object with the specified System.Type and whose value is
+            //equivalent to the specified object.
+            propertyVal = Convert.ChangeType(propertyVal, targetType);
+
+            //Set the value of the property
+            propertyInfo.SetValue(inputObject, propertyVal, null);
+        }
+
+        //To check the property IsNullableType
+        private static bool IsNullableType(Type type)
+        {
+            return type.IsGenericType && type.GetGenericTypeDefinition().Equals(typeof(Nullable<>));
+        }
+
     }
 }

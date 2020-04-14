@@ -132,3 +132,54 @@ function Test-GremlinOperationsCmdletsUsingInputObject
   $IsDatabaseRemoved = Remove-AzCosmosDBGremlinDatabase -InputObject $NewDatabase -PassThru
   Assert-AreEqual $IsDatabaseRemoved true
 }
+
+function Test-GremlinThroughputCmdlets
+{
+  $AccountName = "db1002"
+  $rgName = "CosmosDBResourceGroup2510"
+  $DatabaseName = "dbName3"
+  $GraphName = "graphName"
+
+  $PartitionKeyPathValue = "/foo"
+  $PartitionKeyKindValue = "Hash"
+
+  $ThroughputValue = 1200
+  $UpdatedThroughputValue = 1100
+  $UpdatedThroughputValue2 = 1000
+  $UpdatedThroughputValue3 = 900
+
+  $GraphThroughputValue = 800
+  $UpdatedGraphThroughputValue = 700
+  $UpdatedGraphThroughputValue2 = 600
+  $UpdatedGraphThroughputValue3 = 500
+
+  $NewDatabase =  Set-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
+  $Throughput = Get-AzCosmosDBGremlinDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  Assert-AreEqual $Throughput.Throughput $ThroughputValue
+
+  $UpdatedThroughput = Update-AzCosmosDBGremlinDatabaseThroughput  -InputObject $NewDatabase -Throughput $UpdatedThroughputValue
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue
+
+  $UpdatedThroughput = Update-AzCosmosDBGremlinDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedThroughputValue2
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue2
+
+  $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
+  $UpdatedThroughput = Update-AzCosmosDBGremlinDatabaseThroughput  -ParentObject $CosmosDBAccount -Name $DatabaseName -Throughput $UpdatedThroughputValue3
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue3
+
+  $NewGraph =  Set-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $GraphThroughputValue -Name $GraphName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+  $GraphThroughput = Get-AzCosmosDBGremlinGraphThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName
+  Assert-AreEqual $GraphThroughput.Throughput $GraphThroughputValue
+
+  $UpdatedGraphThroughput = Update-AzCosmosDBGremlinGraphThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName -Throughput $UpdatedGraphThroughputValue
+  Assert-AreEqual $UpdatedGraphThroughput.Throughput $UpdatedGraphThroughputValue
+
+  $UpdatedGraphThroughput = Update-AzCosmosDBGremlinGraphThroughput  -InputObject $NewGraph -Throughput $UpdatedGraphThroughputValue2
+  Assert-AreEqual $UpdatedGraphThroughput.Throughput $UpdatedGraphThroughputValue2
+
+  $UpdatedGraphThroughput = Update-AzCosmosDBGremlinGraphThroughput -ParentObject $NewDatabase -Name $GraphName -Throughput $UpdatedGraphThroughputValue3
+  Assert-AreEqual $UpdatedGraphThroughput.Throughput $UpdatedGraphThroughputValue3
+
+  Remove-AzCosmosDBGremlinGraph -InputObject $NewGraph 
+  Remove-AzCosmosDBGremlinDatabase -InputObject $NewDatabase 
+}

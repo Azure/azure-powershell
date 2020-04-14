@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved code formatting and usability of `New-AzServiceFabricCluster` examples
 
 ## Version 2.0.1
 * Update references in .psd1 to use relative path

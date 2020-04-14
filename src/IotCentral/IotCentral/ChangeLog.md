@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 0.7.4
+
+* Updated SDK version to throw Cloud Exception with error details. Update default SKU to be ST2.
+
 ## Version 0.7.3
 
 * This release adds new skus: ST0, ST1, ST2 for IotCentral.

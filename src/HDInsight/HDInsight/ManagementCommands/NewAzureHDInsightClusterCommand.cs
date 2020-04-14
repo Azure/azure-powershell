@@ -136,7 +136,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                     CertificateFilePath = CertificateFilePath,
                     CertificatePassword = CertificatePassword,
                     SecurityProfile = SecurityProfile,
-                    DisksPerWorkerNode = DisksPerWorkerNode
+                    DisksPerWorkerNode = DisksPerWorkerNode,
+                    MinSupportedTlsVersion = MinSupportedTlsVersion
                 };
                 foreach (
                     var storageAccount in
@@ -190,6 +191,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 CertificatePassword = value.CertificatePassword;
                 SecurityProfile = value.SecurityProfile;
                 DisksPerWorkerNode = value.DisksPerWorkerNode;
+                MinSupportedTlsVersion = value.MinSupportedTlsVersion;
 
                 foreach (
                     var storageAccount in
@@ -353,6 +355,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the number of disks for worker node role in the cluster.")]
         public int DisksPerWorkerNode { get; set; }
 
+        [Parameter(HelpMessage = "Gets or sets the minimal supported TLS version.")]
+        public string MinSupportedTlsVersion { get; set; }
+
         #endregion
 
 
@@ -473,7 +478,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 };
             }
 
-            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, OSType, parameters);
+            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, OSType, parameters, MinSupportedTlsVersion);
 
             if (cluster != null)
             {

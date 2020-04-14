@@ -25,6 +25,23 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSCassandraSchema(CassandraSchema cassandraSchema)
         {
+            Columns = new List<PSColumn>();
+            foreach (Column column in cassandraSchema.Columns)
+            {
+                Columns.Add(new PSColumn(column));
+            }
+
+            PartitionKeys = new List<PSCassandraPartitionKey>();
+            foreach (CassandraPartitionKey cassandraPartitionKey in cassandraSchema.PartitionKeys)
+            {
+                PartitionKeys.Add(new PSCassandraPartitionKey(cassandraPartitionKey));
+            }
+
+            ClusterKeys = new List<PSClusterKey>();
+            foreach (ClusterKey clusterKey in cassandraSchema.ClusterKeys)
+            {
+                ClusterKeys.Add(new PSClusterKey(clusterKey));
+            }
         }
 
         //

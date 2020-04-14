@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     Id = Name,
                     Body = Body
                 },
-                Options = new Dictionary<string, string>() { }
+                Options = new CreateUpdateOptions() { }
             };
 
             if (ShouldProcess(Name, "Setting CosmosDB Sql Stored Procedure"))

@@ -54,8 +54,8 @@ function Test-VolumeCrud
         UnixReadOnly = $false
         UnixReadWrite = $true
         Cifs = $false
-        Nfsv3 = $false
-        Nfsv41 = $true
+        Nfsv3 = $true
+        Nfsv41 = $false
         AllowedClients = '1.2.3.0/24'
     }
     $rule3 = @{
