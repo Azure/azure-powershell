@@ -74,12 +74,12 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzApplyUpdate', 'Get-AzConfigurationAssignment', 
-               'Get-AzMaintenanceConfiguration', 'Get-AzMaintenanceUpdate', 
-               'New-AzApplyUpdate', 'New-AzConfigurationAssignment', 
-               'New-AzMaintenanceConfiguration', 
-               'Remove-AzConfigurationAssignment', 
-               'Remove-AzMaintenanceConfiguration', 
+CmdletsToExport = 'Get-AzApplyUpdate', 'Get-AzConfigurationAssignment',
+               'Get-AzMaintenanceConfiguration', 'Get-AzMaintenanceUpdate',
+               'New-AzApplyUpdate', 'New-AzConfigurationAssignment',
+               'New-AzMaintenanceConfiguration',
+               'Remove-AzConfigurationAssignment',
+               'Remove-AzMaintenanceConfiguration',
                'Update-AzMaintenanceConfiguration'
 
 # Variables to export from this module
@@ -115,10 +115,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Got ''Az-MaintenanceConfiguration'' will honor filters while listing maintenance configurations'
+        ReleaseNotes = '* Publishing release version of Maintenance cmdlets for GA'
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
