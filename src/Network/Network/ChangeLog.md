@@ -32,6 +32,9 @@
         - allows setting of all the existing properties including the IPv6CircuitConnectionProperties
     - Updated `Add-AzExpressRouteCircuitConnectionConfig`
         - Added another optional parameter AddressPrefixType to specify the address family of address prefix
+* Updated cmdlets to enable setting of DPD Timeout on Virtual Network Gateway Connections.
+    - New-AzVirtualNetworkGatewayConnection
+    - Set-AzVirtualNetworkGatewayConnection
 
 ## Version 2.4.0
 * Updated cmdlets to allow cross-tenant VirtualHubVnetConnections
