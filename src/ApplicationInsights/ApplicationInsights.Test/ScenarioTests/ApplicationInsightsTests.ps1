@@ -14,6 +14,70 @@
 
 <#
 .SYNOPSIS
+Test ApplicationInsightsCRUD
+#>
+function Test-ApplicationInsightsCRUD
+{
+    # setup
+    $rgname = "azps-test-group-mock"
+    $appName = "azps-test-ai-mock";
+    $loc = Get-ProviderLocation ResourceManagement;
+    $kind = "web";
+    $workspaceName1 = "azps-test-la1-mock";
+    $workspaceName2 = "azps-test-la2-mock";
+    $key = "key"
+    $val = "val"
+    $tag = @{$key=$val}
+
+    try
+    {
+        # Test
+		
+        New-AzResourceGroup -Name $rgname -Location $loc;
+
+        $workspace1 = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $workspaceName1 -Location $loc
+        $workspace2 = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $workspaceName2 -Location $loc
+
+        New-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Location $loc -Kind $kind -WorkspaceResourceId $workspace1.ResourceId
+
+        $app = Get-AzApplicationInsights -ResourceGroupName $rgname -Name $appName
+
+        Assert-AreEqual $app.Name $appName
+        Assert-AreEqual $app.Kind $kind
+        Assert-NotNull $app.InstrumentationKey
+        Assert-AreEqual $workspace1.ResourceId $app.WorkspaceResourceId
+        Assert-AreEqual "Enabled" $app.PublicNetworkAccessForIngestion
+        Assert-AreEqual "Enabled" $app.PublicNetworkAccessForQuery
+
+        $apps = Get-AzApplicationInsights -ResourceGroupName $rgname;
+
+		Assert-AreEqual $apps.count 1
+        Assert-AreEqual $apps[0].Name $appName
+        Assert-AreEqual $apps[0].Kind $kind
+        Assert-NotNull $apps[0].InstrumentationKey
+
+        $app = Update-AzApplicationInsights -ResourceGroupName $rgname -Name $appName -Tags $tag -WorkspaceResourceId $workspace2.ResourceId -PublicNetworkAccessForIngestion "Disabled" -PublicNetworkAccessForQuery "Disabled"
+
+        Assert-AreEqual $workspace2.ResourceId $app.WorkspaceResourceId
+        Assert-AreEqual "Disabled" $app.PublicNetworkAccessForIngestion
+        Assert-AreEqual "Disabled" $app.PublicNetworkAccessForQuery
+        Assert-AreEqual $val $app.Tags[$key]
+
+        Remove-AzApplicationInsights -ResourceGroupName $rgname -Name $appName;
+        Remove-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $workspaceName1 -force
+        Remove-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $workspaceName2 -force
+
+        Remove-AzResourceGroup -Name $rgname
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Get-AzApplicationInsights
 #>
 function Test-GetApplicationInsights
