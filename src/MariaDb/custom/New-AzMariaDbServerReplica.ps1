@@ -140,7 +140,11 @@ function New-AzMariaDbServerReplica {
             #region ServerForCreate
             $ServerObject = $InputObject
             if (-not $PSBoundParameters.ContainsKey('InputObject')) {
-                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId
+                if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
+                    $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId -HttpPipelineAppend $HttpPipelineAppend
+                } else {
+                    $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId
+                }
                 $Null = $PSBoundParameters.Remove('ServerName')
             } else {
                 $Fields = $InputObject.Id.Split('/')
