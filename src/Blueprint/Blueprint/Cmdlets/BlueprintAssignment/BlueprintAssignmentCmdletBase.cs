@@ -161,10 +161,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// </summary>
         /// <param name="subscriptionId"></param>
         /// <param name="spnObjectId"></param>
-        protected void AssignOwnerPermission(string subscriptionId, string spnObjectId)
+        protected void AssignOwnerPermission(string scope, string spnObjectId)
         {
-            string scope = string.Format(BlueprintConstants.SubscriptionScope, subscriptionId);
-
             var filter = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>();
             filter.SetFilter(a => a.AssignedTo(spnObjectId));
 

@@ -36,14 +36,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string ByManagementGroupNameAndVersion = "ByManagementGroupNameAndVersion";
             public const string ByManagementGroupNameAndLatestPublished = "ByManagementGroupNameAndLatestPublished";
 
-            public const string BlueprintAssignmentsBySubscription = "BlueprintAssignmentsBySubscription";
-            public const string BlueprintAssignmentByName = "BlueprintAssignmentByName";
             public const string CreateBlueprintAssignment = "CreateBlueprintAssignment";
             public const string CreateBlueprintAssignmentByFile = "CreateBlueprintAssignmentByFile";
-            public const string DeleteBlueprintAssignmentByObject = "DeleteBlueprintAssignmentByObject";
-
             public const string UpdateBlueprintAssignment = "UpdateBlueprintAssignment";
             public const string UpdateBlueprintAssignmentByFile = "UpdateBlueprintAssignmentByFile";
+            public const string DeleteBlueprintAssignmentByObject = "DeleteBlueprintAssignmentByObject";
 
             public const string PublishBlueprint = "PublishBlueprint";
 
