@@ -48,6 +48,7 @@ AutoscaleConfiguration              :
 CustomErrorConfigurations           : {}
 EnableHttp2                         :
 EnableFips                          :
+ForceFirewallPolicyAssociation      :
 Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
@@ -105,6 +106,7 @@ AutoscaleConfiguration              :
 CustomErrorConfigurations           : {}
 EnableHttp2                         :
 EnableFips                          :
+ForceFirewallPolicyAssociation      :
 Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
@@ -162,6 +164,7 @@ AutoscaleConfiguration              :
 CustomErrorConfigurations           : {}
 EnableHttp2                         :
 EnableFips                          :
+ForceFirewallPolicyAssociation      :
 Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
@@ -219,6 +222,7 @@ AutoscaleConfiguration              :
 CustomErrorConfigurations           : {}
 EnableHttp2                         :
 EnableFips                          :
+ForceFirewallPolicyAssociation      :
 Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
