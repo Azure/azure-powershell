@@ -45,6 +45,8 @@
     - 'New-AzVirtualHub'
     - 'Update-AzVirtualHub'
 * Removed Sql Management SDK dependency
+* Updated cmdlets to allow force firewallPolicy association
+    - 'New-AzApplicationGateway'
 
 #### Az.PolicyInsights
 * Improved error messages
