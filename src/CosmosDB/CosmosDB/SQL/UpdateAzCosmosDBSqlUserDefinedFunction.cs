@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     Id = Name,
                     Body = Body
                 },
-                Options = new Dictionary<string, string>() { } //passing empty object as options cannot be null
+                Options = new CreateUpdateOptions() //passing empty object as options cannot be null
             };
 
             if (ShouldProcess(Name, "Updating an existing CosmosDB Sql User Defined Function"))

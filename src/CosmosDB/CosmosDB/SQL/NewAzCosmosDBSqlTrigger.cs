@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     TriggerType = TriggerType,
                     Body = Body
                 },
-                Options = new Dictionary<string, string>() { } //passing empty object as options cannot be null
+                Options = new CreateUpdateOptions() //passing empty object as options cannot be null
             };
 
             if (ShouldProcess(Name, "Creating a new CosmosDB Sql Trigger"))

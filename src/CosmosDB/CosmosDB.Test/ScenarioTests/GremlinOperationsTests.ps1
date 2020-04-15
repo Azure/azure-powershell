@@ -270,33 +270,39 @@ function Test-GremlinThroughputCmdlets
   $UpdatedGraphThroughputValue2 = 600
   $UpdatedGraphThroughputValue3 = 500
 
-  $NewDatabase =  Set-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
-  $Throughput = Get-AzCosmosDBGremlinDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-  Assert-AreEqual $Throughput.Throughput $ThroughputValue
+  Try{
+      $NewDatabase =  New-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
+      $Throughput = Get-AzCosmosDBGremlinDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $Throughput.Throughput $ThroughputValue
 
-  $UpdatedThroughput = Update-AzCosmosDBGremlinDatabaseThroughput  -InputObject $NewDatabase -Throughput $UpdatedThroughputValue
-  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue
+      $UpdatedThroughput = Update-AzCosmosDBGremlinDatabaseThroughput  -InputObject $NewDatabase -Throughput $UpdatedThroughputValue
+      Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue
 
-  $UpdatedThroughput = Update-AzCosmosDBGremlinDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedThroughputValue2
-  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue2
+      $UpdatedThroughput = Update-AzCosmosDBGremlinDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedThroughputValue2
+      Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue2
 
-  $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
-  $UpdatedThroughput = Update-AzCosmosDBGremlinDatabaseThroughput  -ParentObject $CosmosDBAccount -Name $DatabaseName -Throughput $UpdatedThroughputValue3
-  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue3
+      $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
+      $UpdatedThroughput = Update-AzCosmosDBGremlinDatabaseThroughput  -ParentObject $CosmosDBAccount -Name $DatabaseName -Throughput $UpdatedThroughputValue3
+      Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue3
 
-  $NewGraph =  Set-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $GraphThroughputValue -Name $GraphName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
-  $GraphThroughput = Get-AzCosmosDBGremlinGraphThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName
-  Assert-AreEqual $GraphThroughput.Throughput $GraphThroughputValue
+      $NewGraph =  New-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $GraphThroughputValue -Name $GraphName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+      $GraphThroughput = Get-AzCosmosDBGremlinGraphThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName
+      Assert-AreEqual $GraphThroughput.Throughput $GraphThroughputValue
 
-  $UpdatedGraphThroughput = Update-AzCosmosDBGremlinGraphThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName -Throughput $UpdatedGraphThroughputValue
-  Assert-AreEqual $UpdatedGraphThroughput.Throughput $UpdatedGraphThroughputValue
+      $UpdatedGraphThroughput = Update-AzCosmosDBGremlinGraphThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName -Throughput $UpdatedGraphThroughputValue
+      Assert-AreEqual $UpdatedGraphThroughput.Throughput $UpdatedGraphThroughputValue
 
-  $UpdatedGraphThroughput = Update-AzCosmosDBGremlinGraphThroughput  -InputObject $NewGraph -Throughput $UpdatedGraphThroughputValue2
-  Assert-AreEqual $UpdatedGraphThroughput.Throughput $UpdatedGraphThroughputValue2
+      $UpdatedGraphThroughput = Update-AzCosmosDBGremlinGraphThroughput  -InputObject $NewGraph -Throughput $UpdatedGraphThroughputValue2
+      Assert-AreEqual $UpdatedGraphThroughput.Throughput $UpdatedGraphThroughputValue2
 
-  $UpdatedGraphThroughput = Update-AzCosmosDBGremlinGraphThroughput -ParentObject $NewDatabase -Name $GraphName -Throughput $UpdatedGraphThroughputValue3
-  Assert-AreEqual $UpdatedGraphThroughput.Throughput $UpdatedGraphThroughputValue3
+      $UpdatedGraphThroughput = Update-AzCosmosDBGremlinGraphThroughput -ParentObject $NewDatabase -Name $GraphName -Throughput $UpdatedGraphThroughputValue3
+      Assert-AreEqual $UpdatedGraphThroughput.Throughput $UpdatedGraphThroughputValue3
 
-  Remove-AzCosmosDBGremlinGraph -InputObject $NewGraph 
-  Remove-AzCosmosDBGremlinDatabase -InputObject $NewDatabase 
+      Remove-AzCosmosDBGremlinGraph -InputObject $NewGraph 
+      Remove-AzCosmosDBGremlinDatabase -InputObject $NewDatabase 
+  }
+  Finally{
+      Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName
+      Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+  }
 }

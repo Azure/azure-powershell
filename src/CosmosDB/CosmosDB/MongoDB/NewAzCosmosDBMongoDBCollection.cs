@@ -111,10 +111,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 mongoDBCollectionResource.Indexes = Indexes;
             }
 
-            IDictionary<string, string> options = new Dictionary<string, string>();
+            CreateUpdateOptions options = new CreateUpdateOptions();
             if (Throughput != null)
             {
-                options.Add("Throughput", Throughput.ToString());
+                options.Throughput = Throughput.ToString();
             }
 
             MongoDBCollectionCreateUpdateParameters mongoDBCollectionCreateUpdateParameters = new MongoDBCollectionCreateUpdateParameters

@@ -141,7 +141,8 @@ function Test-TableThroughputCmdlets
   $UpdatedThroughputValue2 = 1000
   $UpdatedThroughputValue3 = 900
 
-  $NewTable =  Set-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput  $ThroughputValue
+  Try{
+  $NewTable =  New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput  $ThroughputValue
   $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
   Assert-AreEqual $Throughput.Throughput $ThroughputValue
 
@@ -156,4 +157,8 @@ function Test-TableThroughputCmdlets
   Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue3
 
   Remove-AzCosmosDBTable -InputObject $NewTable 
+  }
+  Finally{
+      Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
+  }
 }

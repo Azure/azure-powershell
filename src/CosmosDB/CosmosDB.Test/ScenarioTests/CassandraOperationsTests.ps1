@@ -240,6 +240,7 @@ function Test-CassandraThroughputCmdlets
   $KeyspaceName = "KeyspaceName"
   $TableName = "tableName"
 
+  Try{
   $Column1 = New-AzCosmosDBCassandraColumn -Name "ColumnA" -Type "int"
   $Column2 = New-AzCosmosDBCassandraColumn -Name "ColumnB" -Type "ascii"
   $clusterkey1 = New-AzCosmosDBCassandraClusterKey -Name "ColumnB" -OrderBy "Asc"
@@ -255,7 +256,7 @@ function Test-CassandraThroughputCmdlets
   $UpdatedTableThroughputValue2 = 600
   $UpdatedTableThroughputValue3 = 500
 
-  $NewKeyspace =  Set-AzCosmosDBCassandraKeyspace -AccountName $AccountName -ResourceGroupName $rgName -Name $KeyspaceName -Throughput  $ThroughputValue
+  $NewKeyspace =  New-AzCosmosDBCassandraKeyspace -AccountName $AccountName -ResourceGroupName $rgName -Name $KeyspaceName -Throughput  $ThroughputValue
   $Throughput = Get-AzCosmosDBCassandraKeyspaceThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $KeyspaceName
   Assert-AreEqual $Throughput.Throughput $ThroughputValue
 
@@ -269,7 +270,7 @@ function Test-CassandraThroughputCmdlets
   $UpdatedThroughput = Update-AzCosmosDBCassandraKeyspaceThroughput -InputObject $NewKeyspace -Throughput $UpdatedThroughputValue3
   Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue3
 
-  $NewTable = Set-AzCosmosDBCassandraTable -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName -Schema $schema -Throughput $TableThroughputValue
+  $NewTable = New-AzCosmosDBCassandraTable -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName -Schema $schema -Throughput $TableThroughputValue
   $TableThroughput = Get-AzCosmosDBCassandraTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName
   Assert-AreEqual $TableThroughput.Throughput $TableThroughputValue
 
@@ -284,6 +285,11 @@ function Test-CassandraThroughputCmdlets
 
   Remove-AzCosmosDBCassandraTable -InputObject $NewTable 
   Remove-AzCosmosDBCassandraKeyspace -InputObject $NewKeyspace 
+  }
+  Finally{
+      Remove-AzCosmosDBCassandraTable -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName
+      Remove-AzCosmosDBCassandraKeyspace -AccountName $AccountName -ResourceGroupName $rgName -Name $KeyspaceName
+  }
 }
 
 function Validate-EqualColumns($Column1, $Column2)

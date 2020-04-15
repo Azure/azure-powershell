@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            IDictionary<string, string> options = new Dictionary<string, string>();
+            CreateUpdateOptions options = new CreateUpdateOptions();
             if (Throughput != null)
             {
                 options.Throughput = Throughput.ToString();

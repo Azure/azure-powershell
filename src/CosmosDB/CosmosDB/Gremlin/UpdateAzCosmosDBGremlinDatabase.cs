@@ -68,7 +68,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             CreateUpdateOptions options = new CreateUpdateOptions();
-
             if (Throughput != null)
             {
                 options.Throughput = Throughput.ToString();
