@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         
         [Parameter(Mandatory = false,
             HelpMessage = "Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.")]
-        [CmdletParameterBreakingChange("Param1", ChangeDescription = "The AssignIdentity parameter will be renamed as SystemAssignedIdentity. Also new parameter will be added: UserAssignedIdentity.")]
+        [CmdletParameterBreakingChange("AssignIdentity", ChangeDescription = "The AssignIdentity parameter will be renamed as SystemAssignedIdentity. Also new parameter will be added: UserAssignedIdentity.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
