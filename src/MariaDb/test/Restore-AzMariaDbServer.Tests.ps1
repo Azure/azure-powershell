@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 
 Describe 'Restore-AzMariaDbServer' {
     It 'PointInTimeRestore' {
-        $restoreMariaDbName = $env.rstrgp02 + '-rst01' 
+        $restoreMariaDbName = $env.rstrgp02 + 'rst01'
         $restorePointInTime = [datetime]::parse($env.restorePointInTime)
         #-UsePointInTimeRestore
         Restore-AzMariaDBServer -Name $restoreMariaDbName -ServerName $env.rstrgp02 -ResourceGroupName $env.ResourceGroup -RestorePointInTime $restorePointInTime -Location $env.Location
@@ -22,7 +22,7 @@ Describe 'Restore-AzMariaDbServer' {
         $restoreMariaDb.Name | Should -Be $restoreMariaDbName
     }
     It 'PointInTimeRestoreServerObject' {
-        $restoreMariaDbName = $env.rstrgp02 +'-rst02'
+        $restoreMariaDbName = $env.rstrgp02 +'rst12'
         $restorePointInTime = [datetime]::parse($env.restorePointInTime)
         $mariadb = Get-AzMariaDbServer -ResourceGroupName $env.ResourceGroup -Name $env.rstrgp02
         #-UsePointInTimeRestore
