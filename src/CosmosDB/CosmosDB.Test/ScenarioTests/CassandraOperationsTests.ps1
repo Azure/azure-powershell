@@ -12,6 +12,10 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.SYNOPSIS
+Test Cassandra CRUD cmdlets using Name paramter set
+#>
 function Test-CassandraCreateUpdateGetCmdlets
 {
   # using a pre-created CosmosDB Account, since account provisioning takes some time

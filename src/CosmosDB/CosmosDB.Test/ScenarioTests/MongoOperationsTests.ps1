@@ -11,11 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .SYNOPSIS
-Gets and removes custom domain with running endpoint.
+Test MongoDB CRUD cmdlets using Name paramter set
 #>
-
 function Test-MongoOperationsCmdlets
 {
   $AccountName = "db001"
@@ -135,6 +135,10 @@ Try {
 	}
 }
 
+<#
+.SYNOPSIS
+Test MongoDB CRUD cmdlets using Parent Object and InputObject paramter set
+#>
 function Test-MongoOperationsCmdletsUsingInputObject
 {
   $AccountName = "db001"
@@ -267,6 +271,10 @@ Try {
 	}
 }
 
+<#
+.SYNOPSIS
+Test MongoDB Throughput cmdlets using all paramter sets
+#>
 function Test-MongoThroughputCmdlets
 {
   $AccountName = "db001"

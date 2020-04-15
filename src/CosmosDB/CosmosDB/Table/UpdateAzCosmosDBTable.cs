@@ -62,12 +62,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 AccountName = resourceIdentifier.ResourceName;
             }
-            else if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
+            else if (ParameterSetName.Equals(ObjectParameterSet, StringComparison.Ordinal))
             {
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
-                Name = ResourceIdentifierExtensions.GetTableName(resourceIdentifier);
+                Name = resourceIdentifier.ResourceName;
             }
 
             TableGetResults readTableGetResults = null;

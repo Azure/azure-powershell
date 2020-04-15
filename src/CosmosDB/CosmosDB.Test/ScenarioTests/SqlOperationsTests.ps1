@@ -11,11 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .SYNOPSIS
-Gets and removes custom domain with running endpoint.
+Test SQL CRUD operations using Name parameter set
 #>
-
 function Test-SqlOperationsCmdlets
 {
   $AccountName = "cosmosdb9921232812"
@@ -268,6 +268,10 @@ function Test-SqlOperationsCmdlets
   }
 }
 
+<#
+.SYNOPSIS
+Test SQL CRUD operations using input object and parent object set
+#>
 function Test-SqlOperationsCmdletsUsingInputObject
 {
   $AccountName = "cosmosdb9921232812"
@@ -400,7 +404,7 @@ function Test-SqlOperationsCmdletsUsingInputObject
       Assert-AreEqual $UpdatedStoredProcedure.Resource.Body $Body2
 
       # update trigger using parent object
-      $UpdatedTrigger = Update-AzCosmosDBSqlTrigger -ParentObject $NewContainer $TriggerName -Body $Body2 
+      $UpdatedTrigger = Update-AzCosmosDBSqlTrigger -ParentObject $NewContainer -Name $TriggerName -Body $Body2 
       Assert-AreEqual $UpdatedTrigger.Name $TriggerName
       Assert-AreEqual $UpdatedTrigger.Resource.Body $Body2
       Assert-AreEqual $UpdatedTrigger.Resource.TriggerOperation $TriggerOperation
@@ -451,15 +455,15 @@ function Test-SqlOperationsCmdletsUsingInputObject
       Assert-NotNull($ListDatabases)
 
       # list stored procedures
-      $ListStoredProcedures = Get-AzCosmosDBSqlStoredProcedure -ParentObject $NewContainer -ContainerName $ContainerName
+      $ListStoredProcedures = Get-AzCosmosDBSqlStoredProcedure -ParentObject $NewContainer 
       Assert-NotNull($ListStoredProcedures)
 
       # list udfs
-      $ListUDFs = Get-AzCosmosDBSqlUserDefinedFunction  -ParentObject $NewContainer -ContainerName $ContainerName
+      $ListUDFs = Get-AzCosmosDBSqlUserDefinedFunction  -ParentObject $NewContainer 
       Assert-NotNull($ListUDFs)
 
       # list triggers
-      $ListTriggers = Get-AzCosmosDBSqlTrigger  -ParentObject $NewContainer -ContainerName $ContainerName
+      $ListTriggers = Get-AzCosmosDBSqlTrigger  -ParentObject $NewContainer
       Assert-NotNull($ListTriggers)
 
       Remove-AzCosmosDBSqlStoredProcedure -InputObject $NewStoredProcedure
@@ -479,6 +483,10 @@ function Test-SqlOperationsCmdletsUsingInputObject
   }
 }
 
+<#
+.SYNOPSIS
+Test SQL throughput cmdlets using all parameter sets
+#>
 function Test-SqlThroughputCmdlets
 {
   $AccountName = "cosmosdb9921232812"

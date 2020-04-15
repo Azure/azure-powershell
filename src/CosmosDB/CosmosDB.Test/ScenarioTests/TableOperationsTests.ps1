@@ -11,11 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .SYNOPSIS
-Gets and removes custom domain with running endpoint.
+Test Table CRUD operations
 #>
-
 function Test-TableOperationsCmdlets
 {
   $AccountName = "db2527"
@@ -73,6 +73,10 @@ function Test-TableOperationsCmdlets
   }
 }
 
+<#
+.SYNOPSIS
+Test Table CRUD operations using InputObject and ParentObject parameter set
+#>
 function Test-TableOperationsCmdletsUsingInputObject
 {
   $AccountName = "db2527"
@@ -83,30 +87,38 @@ function Test-TableOperationsCmdletsUsingInputObject
   $UpdatedThroughputValue = 600
 
   Try{
+      # get the cosmosDBAccount object
+      $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
+
       # create a new table
-      $NewTable = New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput $ThroughputValue
+      $NewTable = New-AzCosmosDBTable -ParentObject $cosmosDBAccount -Name $TableName -Throughput $ThroughputValue
       Assert-AreEqual $NewTable.Name $TableName
 
       $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
       Assert-AreEqual $Throughput.Throughput $ThroughputValue
 
       # get an existing table
-      $Table = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
+      $Table = Get-AzCosmosDBTable -ParentObject $cosmosDBAccount -Name $TableName
       Assert-AreEqual $NewTable.Id $Table.Id
       Assert-AreEqual $NewTable.Name $Table.Name
       Assert-AreEqual $NewTable.Resource.Id $Table.Resource.Id
 
-      # update existing table
-      $UpdatedTable =  Update-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput $UpdatedThroughputValue
+      # update existing table using parent object
+      $UpdatedTable =  Update-AzCosmosDBTable -ParentObject $cosmosDBAccount -Name $TableName -Throughput $UpdatedThroughputValue
       $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
       Assert-AreEqual $Throughput.Throughput $UpdatedThroughputValue
 
+      # update existing table using input object
+      $UpdatedTable2 =  Update-AzCosmosDBTable -InputObject $UpdatedTable -Throughput $ThroughputValue
+      $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
+      Assert-AreEqual $Throughput.Throughput $ThroughputValue
+
       # list tables 
-      $ListTables = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName
+      $ListTables = Get-AzCosmosDBTable -ParentObject $cosmosDBAccount
       Assert-NotNull($ListTables)
   
       # delete table
-      $IsTableRemoved = Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -PassThru
+      $IsTableRemoved = Remove-AzCosmosDBTable -InputObject $UpdatedTable -PassThru
       Assert-AreEqual $IsTableRemoved true
   }
   Finally {
@@ -114,6 +126,10 @@ function Test-TableOperationsCmdletsUsingInputObject
   }
 }
 
+<#
+.SYNOPSIS
+Test Table throughput cmdlets using all parameter sets
+#>
 function Test-TableThroughputCmdlets
 {
   $AccountName = "db2527"

@@ -11,11 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .SYNOPSIS
-Gets and removes custom domain with running endpoint.
+Test Gremlin CRUD cmdlets using Name paramter set
 #>
-
 function Test-GremlinOperationsCmdlets
 {
   $AccountName = "db1002"
@@ -137,6 +137,10 @@ function Test-GremlinOperationsCmdlets
   }
 }
 
+<#
+.SYNOPSIS
+Test Gremlin CRUD cmdlets using Parent Object and InputObject paramter set
+#>
 function Test-GremlinOperationsCmdletsUsingInputObject
 {
   $AccountName = "db1002"
@@ -237,11 +241,15 @@ function Test-GremlinOperationsCmdletsUsingInputObject
       Remove-AzCosmosDBGremlinDatabase -InputObject $NewDatabase
   }
   Finally {
-    Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName 
-    Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+    Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName 
+    Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
   }
 }
 
+<#
+.SYNOPSIS
+Test Gremlin throughput cmdlets using all paramter sets
+#>
 function Test-GremlinThroughputCmdlets
 {
   $AccountName = "db1002"

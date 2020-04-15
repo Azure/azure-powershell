@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ContainerName = ResourceIdentifierExtensions.GetSqlContainerName(resourceIdentifier);
                 DatabaseName = ResourceIdentifierExtensions.GetSqlDatabaseName(resourceIdentifier);
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
-                Name = ResourceIdentifierExtensions.GetSqlStoredProcedureName(resourceIdentifier);
+                Name = resourceIdentifier.ResourceName;
             }
 
             SqlStoredProcedureGetResults readSqlStoredProcedureGetResults = null;
