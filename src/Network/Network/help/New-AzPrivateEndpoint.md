@@ -24,13 +24,17 @@ The **New-AzPrivateEndpoint** cmdlet creates a private endpoint.
 ## EXAMPLES
 
 ### 1: Create a private endpoint
-```
-$virtualNetwork = Get-AzVirtualNetwork -ResourceName MyVirtualNetwork -ResourceGroupName TestResourceGroup
-$plsConnection= New-AzPrivateLinkServiceConnection -Name MyPLSConnections -PrivateLinkServiceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Network/privateLinkServices/privateLinkService" -RequestMessage "Please Approve my request"
-New-AzPrivateEndpoint -Name MyPrivateEndpoint -ResourceGroup TestResourceGroup -Location centralus -PrivateLinkServiceConnection $plsConnection -Subnet $virtualNetwork.Subnets[0]
-```
 
-This example creates a private endpoint with specific private link service id in a specific subnet in a virtual network.
+The following example creates a private endpoint with a specific private link service ID in the
+specified subnet in a virtual network.
+
+```powershell
+$virtualNetwork = Get-AzVirtualNetwork -ResourceName MyVirtualNetwork -ResourceGroupName TestResourceGroup
+# View the results of $virtualNetwork and change 'mysubnet' in the following line to the appropriate subnet name.
+$subnet = $virtualNetwork | Select-Object -ExpandProperty subnets | Where-Object Name -eq 'mysubnet'
+$plsConnection= New-AzPrivateLinkServiceConnection -Name MyPLSConnections -PrivateLinkServiceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Network/privateLinkServices/privateLinkService' -RequestMessage 'Please Approve my request'
+New-AzPrivateEndpoint -Name MyPrivateEndpoint -ResourceGroup TestResourceGroup -Location centralus -PrivateLinkServiceConnection $plsConnection -Subnet $subnet
+```
 
 ## PARAMETERS
 
