@@ -1,68 +1,56 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/invoke-aziothubmodulemethod
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/invoke-aziothubquery
 schema: 2.0.0
 ---
 
-# Invoke-AzIotHubModuleMethod
+# Invoke-AzIotHubQuery
 
 ## SYNOPSIS
-Invoke an Edge module method.
+Query an IoT Hub using a powerful SQL-like language.
 
 ## SYNTAX
 
 ### ResourceSet (Default)
 ```
-Invoke-AzIotHubModuleMethod [-ResourceGroupName] <String> [-IotHubName] <String> [-DeviceId] <String>
- [-ModuleId] <String> -Name <String> [-Payload <String>] [-ResponseTimeOut <Int32>]
- [-ConnectionTimeOut <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-AzIotHubQuery [-ResourceGroupName] <String> [-IotHubName] <String> [-Query] <String> [-Top <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Invoke-AzIotHubModuleMethod [-InputObject] <PSIotHub> [-DeviceId] <String> [-ModuleId] <String> -Name <String>
- [-Payload <String>] [-ResponseTimeOut <Int32>] [-ConnectionTimeOut <Int32>]
+Invoke-AzIotHubQuery [-InputObject] <PSIotHub> [-Query] <String> [-Top <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Invoke-AzIotHubModuleMethod [-ResourceId] <String> [-DeviceId] <String> [-ModuleId] <String> -Name <String>
- [-Payload <String>] [-ResponseTimeOut <Int32>] [-ConnectionTimeOut <Int32>]
+Invoke-AzIotHubQuery [-ResourceId] <String> [-Query] <String> [-Top <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Invoke an Edge module method. See https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods for more information.
+Query an IoT Hub using a powerful SQL-like language to retrieve information regarding device and module twins, jobs and message routing.
+See https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language for more information.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzIotHubModuleMethod -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1" -Name "methodName" -Payload "method-input" -ResponseTimeOut 20 -ConnectionTimeOut 15
+PS C:\> Invoke-AzIotHubQuery -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Query "select * from devices"
 ```
 
-Invoke an Edge module method.
+Query all device twin data in an Azure IoT Hub.
+
+### Example 2
+```powershell
+PS C:\> Invoke-AzIotHubQuery -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Query "select * from devices.modules where devices.deviceId = 'myDevice1'" -Top 2
+```
+
+Query top 2 module twin data on a target device.
 
 ## PARAMETERS
-
-### -ConnectionTimeOut
-Number of seconds to wait until a connection is successfully made.
-Default is 10.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -74,21 +62,6 @@ Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeviceId
-Target Device Id.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -124,8 +97,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ModuleId
-Target device's module id.
+### -Query
+User query to be executed.
 
 ```yaml
 Type: System.String
@@ -133,37 +106,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the method to invoke on this device module.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Payload
-The payload for the method to invoke on this device module.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -199,9 +142,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResponseTimeOut
-Number of seconds to wait until a result is received from the direct method.
-Default is 10.
+### -Top
+Maximum number of elements to return.
+By default query has no cap.
 
 ```yaml
 Type: System.Int32
@@ -231,8 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -257,7 +199,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceMethodResult
+### System.String
 
 ## NOTES
 
