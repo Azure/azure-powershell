@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbsqlcontainer
 schema: 2.0.0
 ---
 
 # New-AzCosmosDBSqlContainer
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new CosmosDB Sql Container.
 
 ## SYNTAX
 
@@ -34,16 +34,21 @@ New-AzCosmosDBSqlContainer -Name <String> [-IndexingPolicy <PSSqlIndexingPolicy>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a new CosmosDB Sql Container.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> New-AzCosmosDBSqlContainer -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myContainerName -PartitionKeyPath /a/b/c -PartitionKeyKind Hash
 
-{{ Add example description here }}
+Name     : myContainerName
+Id       : /subscriptions/mySubscriptionId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/sqlDatabases/myDatabaseName/contain
+           ers/myContainerName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetPropertiesResource
+```
 
 ## PARAMETERS
 

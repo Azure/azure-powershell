@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbsqlstoredprocedure
 schema: 2.0.0
 ---
 
 # New-AzCosmosDBSqlStoredProcedure
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new CosmosDB Sql StoredProcedure.
 
 ## SYNTAX
 
@@ -26,13 +26,19 @@ New-AzCosmosDBSqlStoredProcedure -Name <String> -Body <String> -ParentObject <PS
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a new CosmosDB Sql StoredProcedure.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzCosmosDBSqlStoredProcedure -AccountName MyAccountName -ResourceGroupName MyRgName -DatabaseName MyDatabaseName -ContainerName MyContainerName -Name mySprocrName -Body myBody 
+Name     : myTriggerName
+Id       : /subscriptions/mySubId/resourceGroups/MyRgName/providers/Microsoft.DocumentDB/databaseAccounts/MyAccountName/sqlDatabases/MyDatabaseName/contain
+           ers/MyContainerName/storedProcedures/mySprocName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlStoredProcedureGetPropertiesResource
 ```
 
 {{ Add example description here }}

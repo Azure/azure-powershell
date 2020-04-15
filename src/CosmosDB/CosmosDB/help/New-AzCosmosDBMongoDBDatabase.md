@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbmongodbdatabase
 schema: 2.0.0
 ---
 
 # New-AzCosmosDBMongoDBDatabase
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new CosmosDB MongoDB Database.
 
 ## SYNTAX
 
@@ -25,16 +25,20 @@ New-AzCosmosDBMongoDBDatabase -Name <String> [-Throughput <Int32>] -ParentObject
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a new CosmosDB MongoDB Database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> New-AzCosmosDBMongoDBDatabase -AccountName myAccountName -Name myDatabaseName -ResourceGroupName myResourcegroupName
 
-{{ Add example description here }}
+Name     : myDatabaseName
+Id       : /subscriptions/mySubscriptionId/resourceGroups/myResourcegroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/mongodbDatabases/myDatabaseName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBDatabaseGetPropertiesResource
+```
 
 ## PARAMETERS
 

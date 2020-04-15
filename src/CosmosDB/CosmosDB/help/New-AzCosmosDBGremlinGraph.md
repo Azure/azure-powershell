@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbgremlingraph
 schema: 2.0.0
 ---
 
 # New-AzCosmosDBGremlinGraph
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new CosmosDB Gremlin Graph.
 
 ## SYNTAX
 
@@ -34,17 +34,20 @@ New-AzCosmosDBGremlinGraph -Name <String> [-IndexingPolicy <PSIndexingPolicy>] [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a new CosmosDB Gremlin Graph.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzCosmosDBGremlinGraph -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myContainerName -PartitionKeyPath /a -PartitionKeyKind Hash
+
+Name     : myContainerName
+Id       : /subscriptions/mySubscriptionId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/gremlinDatabases/myDatabaseName/graphs/myGraphName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinGraphGetPropertiesResource
 ```
-
-{{ Add example description here }}
-
 ## PARAMETERS
 
 ### -AccountName

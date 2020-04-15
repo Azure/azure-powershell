@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection
 schema: 2.0.0
 ---
 
 # New-AzCosmosDBMongoDBCollection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new CosmosDB MongoDB Collection.
 
 ## SYNTAX
 
@@ -27,16 +27,27 @@ New-AzCosmosDBMongoDBCollection -Name <String> [-Throughput <Int32>] [-Shard <St
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a new CosmosDB MongoDB Collection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> 
+        $ttlInSeconds = 604800
+        $index1 = New-AzCosmosDBMongoDBIndex -Key @("partitionkey1", "partitionkey2") -Unique 1
+>>      $index2 = New-AzCosmosDBMongoDBIndex -Key @("_ts") -TtlInSeconds $ttlInSeconds
 
-{{ Add example description here }}
+New-AzCosmosDBMongoDBCollection -AccountName myAccountName -ResourceGroupName myRgName -DatabaseName myDatabaseName -Name myCollectionName -Index $index1,$index2 -Shard myShardKey
+
+Name     : collection1
+Id       : /subscriptions/mySubId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/mongodbDatabases/myDatabaseName/collect
+           ions/myCollectionName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBCollectionGetPropertiesResource
+
+```
 
 ## PARAMETERS
 
