@@ -34,6 +34,7 @@ Update-AzCosmosDBGremlinGraphThroughput [-Name <String>] -Throughput <Int32>
 ```
 
 ## DESCRIPTION
+Updates the throughput value of a CosmosDB Gremlin Graph.
 
 ## EXAMPLES
 

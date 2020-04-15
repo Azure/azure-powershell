@@ -32,6 +32,7 @@ Update-AzCosmosDBSqlDatabaseThroughput [-Name <String>] -Throughput <Int32>
 ```
 
 ## DESCRIPTION
+Updates the throughput value of a CosmosDB Sql Database.
 
 ## EXAMPLES
 

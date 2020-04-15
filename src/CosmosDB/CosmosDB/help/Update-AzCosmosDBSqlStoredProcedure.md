@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/update-azcosmosdbsqlstoredprocedure
 schema: 2.0.0
 ---
 
 # Update-AzCosmosDBSqlStoredProcedure
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the CosmosDB Sql StoredProcedure. Performs a client side patch operation by reading the existing StoredProcedure.
 
 ## SYNTAX
 
@@ -33,17 +33,20 @@ Update-AzCosmosDBSqlStoredProcedure [-Name <String>] [-Body <String>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates the CosmosDB Sql StoredProcedure. Performs a client side patch operation by reading the existing StoredProcedure.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzCosmosDBSqlStoredProcedure -AccountName MyAccountName -ResourceGroupName MyRgName -DatabaseName MyDatabaseName -ContainerName MyContainerName -Name mySprocrName -Body myBody 
+Name     : mySprocName
+Id       : /subscriptions/mySubId/resourceGroups/MyRgName/providers/Microsoft.DocumentDB/databaseAccounts/MyAccountName/sqlDatabases/MyDatabaseName/contain
+           ers/MyContainerName/storedProcedures/mySprocName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlStoredProcedureGetPropertiesResource
 ```
-
-{{ Add example description here }}
-
 ## PARAMETERS
 
 ### -AccountName

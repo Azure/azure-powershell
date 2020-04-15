@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/update-azcosmosdbsqluserdefinedfunction
 schema: 2.0.0
 ---
 
 # Update-AzCosmosDBSqlUserDefinedFunction
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the CosmosDB Sql UserDefinedFunction. Performs a client side patch operation by reading the existing UserDefinedFunction.
 
 ## SYNTAX
 
@@ -34,16 +34,20 @@ Update-AzCosmosDBSqlUserDefinedFunction [-Name <String>] [-Body <String>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates the CosmosDB Sql UserDefinedFunction. Performs a client side patch operation by reading the existing UserDefinedFunction.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzCosmosDBSqlUserDefinedFunction -AccountName MyAccountName -ResourceGroupName MyRgName -DatabaseName MyDatabaseName -ContainerName MyContainerName -Name myUDFName -Body myBody 
+Name     : myTriggerName
+Id       : /subscriptions/mySubId/resourceGroups/MyRgName/providers/Microsoft.DocumentDB/databaseAccounts/MyAccountName/sqlDatabases/MyDatabaseName/contain
+           ers/MyContainerName/userDefinedFunctions/myUDFName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUserDefinedPropertiesGetPropertiesResource
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 

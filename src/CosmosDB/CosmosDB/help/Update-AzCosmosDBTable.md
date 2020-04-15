@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/update-azcosmosdbtable
 schema: 2.0.0
 ---
 
 # Update-AzCosmosDBTable
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the CosmosDB Table. Performs a client side patch operation by reading the existing Table.
 
 ## SYNTAX
 
@@ -31,17 +31,20 @@ Update-AzCosmosDBTable [-Name <String>] [-Throughput <Int32>] -InputObject <PSTa
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates the CosmosDB Table. Performs a client side patch operation by reading the existing Table.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzCosmosDBTable -AccountName myAcccountName -Name myTableName -ResourceGroupName myRgName Throughput 800
+
+Name     : myTableName
+Id       : /subscriptions/mySubscriptionId/resourceGroups/myResourcegroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/Tables/myTableName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSTableGetPropertiesResource
 ```
-
-{{ Add example description here }}
-
 ## PARAMETERS
 
 ### -AccountName

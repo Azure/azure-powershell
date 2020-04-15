@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/update-azcosmosdbgremlingraph
 schema: 2.0.0
 ---
 
 # Update-AzCosmosDBGremlinGraph
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the CosmosDB Gremlin Graph. Performs a client side patch operation by reading the existing Graph.
 
 ## SYNTAX
 
@@ -46,17 +46,20 @@ Update-AzCosmosDBGremlinGraph [-Name <String>] [-IndexingPolicy <PSIndexingPolic
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates the CosmosDB Gremlin Graph. Performs a client side patch operation by reading the existing Graph.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzCosmosDBGremlinGraph -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName -Name myContainerName -Throughput updatedThroughputValue
+
+Name     : myContainerName
+Id       : /subscriptions/mySubscriptionId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/gremlinDatabases/myDatabaseName/graphs/myGraphName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinGraphGetPropertiesResource
 ```
-
-{{ Add example description here }}
-
 ## PARAMETERS
 
 ### -AccountName

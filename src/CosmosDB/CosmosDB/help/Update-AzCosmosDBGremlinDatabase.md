@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/update-azcosmosdbgremlindatabase
 schema: 2.0.0
 ---
 
 # Update-AzCosmosDBGremlinDatabase
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the CosmosDB Gremlin Database. Performs a client side patch operation by reading the existing Database.
 
 ## SYNTAX
 
@@ -32,16 +32,20 @@ Update-AzCosmosDBGremlinDatabase [-Name <String>] [-Throughput <Int32>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates the CosmosDB Gremlin Database. Performs a client side patch operation by reading the existing Database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> Update-AzCosmosDBGremlinDatabase -AccountName myAccountName -Name myDatabaseName -ResourceGroupName myResourcegroupName -throughput updatedThroughputValueAsInteger
 
-{{ Add example description here }}
+Name     : myDatabaseName
+Id       : /subscriptions/mySubscriptionId/resourceGroups/myResourcegroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/gremlinDatabases/myDatabaseName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinDatabaseGetPropertiesResource
+```
 
 ## PARAMETERS
 

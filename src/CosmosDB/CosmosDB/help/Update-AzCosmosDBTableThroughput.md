@@ -31,6 +31,7 @@ Update-AzCosmosDBTableThroughput [-Name <String>] -Throughput <Int32> -InputObje
 ```
 
 ## DESCRIPTION
+Updates the throughput value of a CosmosDB Table.
 
 ## EXAMPLES
 

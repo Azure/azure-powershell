@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/update-azcosmosdbsqltrigger
 schema: 2.0.0
 ---
 
 # Update-AzCosmosDBSqlTrigger
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the CosmosDB Sql Trigger. Performs a client side patch operation by reading the existing Trigger.
 
 ## SYNTAX
 
@@ -34,16 +34,21 @@ Update-AzCosmosDBSqlTrigger [-Name <String>] [-Body <String>] [-TriggerOperation
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates the CosmosDB Sql Trigger. Performs a client side patch operation by reading the existing Trigger.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> Update-AzCosmosDBSqlTrigger -AccountName MyAccountName -ResourceGroupName MyRgName -DatabaseName MyDatabaseName -ContainerName MyContainerName -Name myTriggerName -Body myTriggerBody -TriggerOperation All -TriggerType Pre
 
-{{ Add example description here }}
+Name     : myTriggerName
+Id       : /subscriptions/mySubId/resourceGroups/MyRgName/providers/Microsoft.DocumentDB/databaseAccounts/MyAccountName/sqlDatabases/MyDatabaseName/contain
+           ers/MyContainerName/triggers/myTriggerName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlTriggerGetPropertiesResource
+```
 
 ## PARAMETERS
 

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/update-azcosmosdbcassandrakeyspace
 schema: 2.0.0
 ---
 
 # Update-AzCosmosDBCassandraKeyspace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the CosmosDB Cassandra Keyspace. Performs a client side patch operation by reading the existing Keyspace.
 
 ## SYNTAX
 
@@ -32,16 +32,20 @@ Update-AzCosmosDBCassandraKeyspace [-Name <String>] [-Throughput <Int32>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates the CosmosDB Cassandra Keyspace. Performs a client side patch operation by reading the existing Keyspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> Update-AzCosmosDBCassandraKeyspace -AccountName myAccountName -ResourceGroupName myRgName -Name myKeyspaceName -Throughput 600
 
-{{ Add example description here }}
+Name     : myKeyspace
+Id       : /subscriptions/mySubId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/cassandraKeyspaces/myKeyspaceName
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSCassandraKeyspaceGetPropertiesResource
+```
 
 ## PARAMETERS
 

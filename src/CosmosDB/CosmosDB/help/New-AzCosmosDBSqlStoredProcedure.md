@@ -33,15 +33,13 @@ Creates a new CosmosDB Sql StoredProcedure.
 ### Example 1
 ```powershell
 PS C:\> New-AzCosmosDBSqlStoredProcedure -AccountName MyAccountName -ResourceGroupName MyRgName -DatabaseName MyDatabaseName -ContainerName MyContainerName -Name mySprocrName -Body myBody 
-Name     : myTriggerName
+Name     : mySprocName
 Id       : /subscriptions/mySubId/resourceGroups/MyRgName/providers/Microsoft.DocumentDB/databaseAccounts/MyAccountName/sqlDatabases/MyDatabaseName/contain
            ers/MyContainerName/storedProcedures/mySprocName
 Location :
 Tags     :
 Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlStoredProcedureGetPropertiesResource
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 

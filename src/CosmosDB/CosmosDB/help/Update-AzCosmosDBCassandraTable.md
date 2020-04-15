@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/update-azcosmosdbcassandratable
 schema: 2.0.0
 ---
 
 # Update-AzCosmosDBCassandraTable
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the CosmosDB Cassandra Table. Performs a client side patch operation by reading the existing Table.
 
 ## SYNTAX
 
@@ -34,13 +34,19 @@ Update-AzCosmosDBCassandraTable [-Name <String>] [-Throughput <Int32>] [-TtlInSe
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates the CosmosDB Cassandra Table. Performs a client side patch operation by reading the existing Table.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzCosmosDBCassandraTable -AccountName myAccountName -ResourceGroupName myRgName -KeyspaceName myKeyspaceName -Name myTableName -Schema updatedSchema
+        Name     : myTable
+        Id       : /subscriptions/mySubId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/cassandraKeyspaces/myKeyspaceName/t
+                ables/myTableName
+        Location :
+        Tags     :
+        Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSCassandraTableGetPropertiesResource
 ```
 
 {{ Add example description here }}
