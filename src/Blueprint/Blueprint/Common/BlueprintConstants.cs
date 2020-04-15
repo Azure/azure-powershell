@@ -91,6 +91,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string SystemAssignedIdentity = "System assigned identity(MSI) to deploy the artifacts.";
             public const string UserAssignedIdentity = "User assigned identity(MSI) to deploy the artifacts.";
             public const string SecureString = "Secure string parameter for KeyVault resource id, name and version.";
+            public const string ResourceGroupParameters = "Hashtable of parameters to pass to the resource group artifact.";
+            public const string AssignmentFile = "Location of the assignment file in JSON format on disk.";
             public const string ArtifactName = "Name of the artifact";
             public const string ArtifactType = "Type of the artifact. There are 3 types supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact.";
             public const string ArtifactDescription = "Description of the artifact.";

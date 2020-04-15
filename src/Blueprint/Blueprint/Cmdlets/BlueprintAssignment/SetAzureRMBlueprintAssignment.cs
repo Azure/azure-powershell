@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNullOrEmpty]
         public Hashtable SecureStringParameter { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceGroupParameters)]
         [ValidateNotNullOrEmpty]
         public Hashtable ResourceGroupParameter { get; set; }
 
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNull]
         public Hashtable Parameter { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignmentByFile, Mandatory = false, HelpMessage = ParameterHelpMessages.SecureString)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignmentByFile, Mandatory = false, HelpMessage = ParameterHelpMessages.AssignmentFile)]
         [ValidateNotNullOrEmpty]
         public string AssignmentFile { get; set; }
 
