@@ -15,6 +15,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Insights/privateLinkScopes", "2019-10-17-preview");
             RegisterConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false);
             RegisterConfiguration("Microsoft.KeyVault/vaults", "2019-09-01", false);
+            RegisterConfiguration("Microsoft.DocumentDB/databaseAccounts", "2019-08-01-preview");
         }
 
         private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = true)
