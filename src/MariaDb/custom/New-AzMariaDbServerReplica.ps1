@@ -140,11 +140,20 @@ function New-AzMariaDbServerReplica {
             #region ServerForCreate
             $ServerObject = $InputObject
             if (-not $PSBoundParameters.ContainsKey('InputObject')) {
+                $GetMariadbDbPSBoundParameters = @{}
                 if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
-                    $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId -HttpPipelineAppend $HttpPipelineAppend
-                } else {
-                    $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId
+                    $GetMariadbDbPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
                 }
+                if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
+                    $GetMariadbDbPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
+                }
+                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId @GetMariadbDbPSBoundParameters
+                
+                # if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
+                #     $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId -HttpPipelineAppend $HttpPipelineAppend
+                # } else {
+                #     $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId
+                # }
                 $Null = $PSBoundParameters.Remove('ServerName')
             } else {
                 $Fields = $InputObject.Id.Split('/')

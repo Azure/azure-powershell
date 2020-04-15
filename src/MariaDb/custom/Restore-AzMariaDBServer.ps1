@@ -169,11 +169,24 @@ function Restore-AzMariaDbServer
 
             $ServerObject = $InputObject
             if (-not $PSBoundParameters.ContainsKey('InputObject')) {
+
+                $GetMariadbDbPSBoundParameters = @{}
                 if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
-                    $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId -HttpPipelineAppend $HttpPipelineAppend
-                } else {
-                    $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId
+                    $GetMariadbDbPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
                 }
+                if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
+                    $GetMariadbDbPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
+                }
+                if ($PSBoundParameters.ContainsKey('Proxy')) {
+                    $GetMariadbDbPSBoundParameters['Proxy'] = $Proxy
+                }
+                if ($PSBoundParameters.ContainsKey('ProxyCredential')) {
+                    $GetMariadbDbPSBoundParameters['ProxyCredential'] = $ProxyCredential
+                }
+                if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) {
+                    $GetMariadbDbPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
+                }
+                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId @GetMariadbDbPSBoundParameters
                 
                 $Null = $PSBoundParameters.Remove('ServerName')
             } else {
