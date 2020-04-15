@@ -368,16 +368,6 @@ function Test-ListVaults {
 
 #-------------------------------------------------------------------------------------
 
-#------------------------------Update-AzKeyVault-----------------------------------
-function Test-UpdateKeyVault {
-    $rgName = getAssetName
-    $vaultName = getAssetName
-    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
-    $tag = @{"abcdefg" = "bcdefgh" }
-}
-#-------------------------------------------------------------------------------------
-
 #------------------------------Remove-AzKeyVault-----------------------------------
 function Test-DeleteVaultByName {
     $rgName = getAssetName
@@ -848,6 +838,8 @@ function Test-UpdateKeyVault {
         # # Only enable purge protection (TODO: uncomment this assert after keyvault team deploys their fix)
         # $vault = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $resourceGroupName -Location $vaultLocation
         # Assert-Throws { $vault = $vault | Update-AzKeyVault -EnablePurgeProtection }
+        # # Retention cannot be updated once set
+        # Assert-Throws { $vault = $vault | Update-AzKeyVault -SoftDeleteRetentionInDays 80}
     }
     finally {
         $rg | Remove-AzResourceGroup -Force
