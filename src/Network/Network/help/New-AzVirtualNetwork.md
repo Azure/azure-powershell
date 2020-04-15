@@ -16,7 +16,7 @@ Creates a virtual network.
 ```
 New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String> -AddressPrefix <String[]>
  [-DnsServer <String[]>] [-Subnet <PSSubnet[]>] [-BgpCommunity <String>] [-Tag <Hashtable>]
- [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-Force] [-AsJob]
+ [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-IpAllocations <PSIpAllocation[]>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -190,6 +190,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IpAllocations
+IpAllocations
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSIpAllocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
