@@ -1,3 +1,25 @@
+## 0.10.0-preview - April 2020
+### General
+* Az modules is now available in preview on Azure Stack Hub. This allows for cross-platform compatibility with Linux and macOs. Azure Stack Hub now supports PowerShell core with the Az modules, more information [here](https://aka.ms/az4AzureStack)
+* Az modules support profile 2019-03-01-hybrid:
+  - Az.Billing
+  - Az.Compute
+  - Az.DataBoxEdge
+  - Az.EventHub
+  - Az.IotHub
+  - Az.KeyVault
+  - Az.Monitor
+  - Az.Network
+  - Az.Resources
+  - Az.Storage
+  - Az.Websites
+* Three new PowerShell modules for az have been introduced that work with Azure Stack Hub, which are Az.Databox, Az.IotHub, and Az.EventHub
+* Commands remain relatively the same, with minor changes such as changing AzureRM to Az
+* Updated link to PowerShell documentation for Azure Stack Hub can be found [here](aka.ms/InstallASHPowerShell)
+
+#### Az.Accounts
+* Upgrade from ADAL to MSAL
+
 ## 3.7.0 - March 2020
 #### Az.Accounts
 * Fixed 'Get-AzTenant'/'Get-AzDefault'/'Set-AzDefault' throw NullReferenceException when not login [#10292]
@@ -76,10 +98,10 @@
 
 #### Az.Websites
 * Added support for working with webapp Traffic Routing Rules via below new cmdlets
-	- 'Get-AzWebAppTrafficRouting'
-	- 'Update-AzWebAppTrafficRouting'
-	- 'Add-AzWebAppTrafficRouting'
-	- 'Remove-AzWebAppTrafficRouting'
+  - 'Get-AzWebAppTrafficRouting'
+  - 'Update-AzWebAppTrafficRouting'
+  - 'Add-AzWebAppTrafficRouting'
+  - 'Remove-AzWebAppTrafficRouting'
 
 ## 3.6.1 - March 2020
 #### Az.Accounts
@@ -98,15 +120,15 @@
 
 #### Az.IotHub
 * Added support to manage devices in an Iot Hub. New Cmdlets are:
-	- 'Add-AzIotHubDevice'
-	- 'Get-AzIotHubDevice'
-	- 'Remove-AzIotHubDevice'
-	- 'Set-AzIotHubDevice'
+  - 'Add-AzIotHubDevice'
+  - 'Get-AzIotHubDevice'
+  - 'Remove-AzIotHubDevice'
+  - 'Set-AzIotHubDevice'
 * Added support to manage modules on a target Iot device in an Iot Hub. New Cmdlets are:
-	- 'Add-AzIotHubModule'
-	- 'Get-AzIotHubModule'
-	- 'Remove-AzIotHubModule'
-	- 'Set-AzIotHubModule'
+  - 'Add-AzIotHubModule'
+  - 'Get-AzIotHubModule'
+  - 'Remove-AzIotHubModule'
+  - 'Set-AzIotHubModule'
 * Added cmdlet to get the connection string of a target IoT device in an Iot Hub.
 * Added cmdlet to get the connection string of a module on a target IoT device in an Iot Hub.
 * Added support to get/set parent device of an IoT device. New Cmdlets are:
@@ -192,10 +214,10 @@
 
 #### Az.IotHub
 * Added support to manage devices in an Iot Hub. New Cmdlets are:
-	- 'Add-AzIotHubDevice'
-	- 'Get-AzIotHubDevice'
-	- 'Remove-AzIotHubDevice'
-	- 'Set-AzIotHubDevice'
+  - 'Add-AzIotHubDevice'
+  - 'Get-AzIotHubDevice'
+  - 'Remove-AzIotHubDevice'
+  - 'Set-AzIotHubDevice'
 
 #### Az.KeyVault
 * Fixed duplicated text for Add-AzKeyVaultKey.md
@@ -203,7 +225,7 @@
 #### Az.Monitor
 * Fixed description of the Get-AzLog cmdlet.
 * A new parameter called ActionGroupId was added to 'New-AzMetricAlertRuleV2' command.
-	- The user can provide either ActionGroupId(string) or ActionGorup(ActivityLogAlertActionGroup).
+  - The user can provide either ActionGroupId(string) or ActionGorup(ActivityLogAlertActionGroup).
 
 #### Az.Network
 * Added one extra parameter note for parameter '-EnableProxyProtocol' for 'New-AzPrivateLinkService' cmdlet.
@@ -453,12 +475,12 @@ to enable create Azure-SSIS IR with static public IP addresses.
     - Revoke-AzStorageAccountUserDelegationKeys
 * Upgrade to Microsoft.Azure.Management.Storage 14.2.0, to support new API version 2019-06-01.
 * Support Share QuotaGiB more than 5120 in Management plane File Share cmdlets, and add parameter alias 'Quota' to parameter 'QuotaGiB' 
-	- New-AzRmStorageShare
-	- Update-AzRmStorageShare
+  - New-AzRmStorageShare
+  - Update-AzRmStorageShare
 * Add parameter alias 'QuotaGiB' to parameter 'Quota'
-	- Set-AzStorageShareQuota
+  - Set-AzStorageShareQuota
 * Fix the issue that Set-AzStorageContainerAcl can clean up the stored Access Policy
-	- Set-AzStorageContainerAcl
+  - Set-AzStorageContainerAcl
 
 ## 3.1.0 - November 2019
 ### Highlights since the last major release
@@ -809,13 +831,13 @@ to enable create Azure-SSIS IR with static public IP addresses.
 
 #### Az.Monitor
 * New action group receivers added for action group
-	-ItsmReceiver
-	-VoiceReceiver
-	-ArmRoleReceiver
-	-AzureFunctionReceiver
-	-LogicAppReceiver
-	-AutomationRunbookReceiver
-	-AzureAppPushReceiver
+  -ItsmReceiver
+  -VoiceReceiver
+  -ArmRoleReceiver
+  -AzureFunctionReceiver
+  -LogicAppReceiver
+  -AutomationRunbookReceiver
+  -AzureAppPushReceiver
 * Use common alert schema enabled for the receivers. This is not applicable for SMS, Azure App push , ITSM and Voice recievers
 * Webhooks now supports Azure active directory authentication .
 
@@ -887,10 +909,10 @@ to enable create Azure-SSIS IR with static public IP addresses.
 #### Az.IotHub
 * Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.
 * Add support to manage message enrichment for an IotHub. New cmdlets are:
-	- Add-AzIotHubMessageEnrichment
-	- Get-AzIotHubMessageEnrichment
-	- Remove-AzIotHubMessageEnrichment
-	- Set-AzIotHubMessageEnrichment
+  - Add-AzIotHubMessageEnrichment
+  - Get-AzIotHubMessageEnrichment
+  - Remove-AzIotHubMessageEnrichment
+  - Set-AzIotHubMessageEnrichment
 
 #### Az.Monitor
 * Pointing to the most recent Monitor SDK, i.e. 0.24.1-preview
@@ -900,8 +922,8 @@ to enable create Azure-SSIS IR with static public IP addresses.
    - The order of the arguments for the constructor of the class **Source** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
    - The order of the arguments for the constructor of the class **AlertingAction** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
 * Support Dynamic Threshold criteria for metric alert V2
-	- New-AzMetricAlertRuleV2Criteria: now creats dynamic threshold criteria also
-	- Add-AzMetricAlertRuleV2: now accept dynamic threshold criteria also
+  - New-AzMetricAlertRuleV2Criteria: now creats dynamic threshold criteria also
+  - Add-AzMetricAlertRuleV2: now accept dynamic threshold criteria also
 * Improvements in Scheduled Query Rule cmdlets (SQR)
  - Cmdlets will accept 'Location' paramater in both formats, either the location (e.g. eastus) or the location display name (e.g. East US)
  - Illustrated 'Enabled' parameter in help files properly
@@ -1126,7 +1148,7 @@ to enable create Azure-SSIS IR with static public IP addresses.
 
 #### Az.LogicApp
 * Fix for Get-AzIntegrationAccountMap to list all map types
-	- Added new MapType parameter for filtering
+  - Added new MapType parameter for filtering
 
 #### Az.ManagedServices
 * Added support for api version 2019-06-01 (GA)
@@ -1602,13 +1624,13 @@ to enable create Azure-SSIS IR with static public IP addresses.
 #### Az.Compute
 * Proximity placement group feature.
     - The following new cmdlets are added:
-	    New-AzProximityPlacementGroup
-		Get-AzProximityPlacementGroup
-		Remove-AzProximityPlacementGroup
-	- The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
-	    New-AzAvailabilitySet
-		New-AzVMConfig
-		New-AzVmssConfig
+      New-AzProximityPlacementGroup
+    Get-AzProximityPlacementGroup
+    Remove-AzProximityPlacementGroup
+  - The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
+      New-AzAvailabilitySet
+    New-AzVMConfig
+    New-AzVmssConfig
 * StorageAccountType parameter is added to New-AzGalleryImageVersion.
 * TargetRegion of New-AzGalleryImageVersion can contain StorageAccountType.
 * SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss
@@ -1643,23 +1665,23 @@ to enable create Azure-SSIS IR with static public IP addresses.
 * Added a new cmdlet Set-AzHDInsightGatewayCredential to replace Grant-AzHDInsightHttpServicesAccess
 * Update cmdlet Get-AzHDInsightJobOutput to distinguish reader role and hdinsight operator role:
     - Users with reader role need to specify 'DefaultStorageAccountKey' parameter explicitly, otherwise error occurs.
-	- Users with hdinsight operator role will not be affected.
+  - Users with hdinsight operator role will not be affected.
 
 #### Az.Monitor
 * New cmdlets for SQR API (Scheduled Query Rule)
     - New-AzScheduledQueryRuleAlertingAction
-	- New-AzScheduledQueryRuleAznsActionGroup
-	- New-AzScheduledQueryRuleLogMetricTrigger
-	- New-AzScheduledQueryRuleSchedule
-	- New-AzScheduledQueryRuleSource
-	- New-AzScheduledQueryRuleTriggerCondition
-	- New-AzScheduledQueryRule
-	- Get-AzScheduledQueryRule
-	- Set-AzScheduledQueryRule
-	- Update-AzScheduledQueryRule
-	- Remove-AzScheduledQueryRule
-	- [More](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) information about SQR API
-	- Updated Az.Monitor.md to include cmdlets for GenV2(non classic) metric-based alert rule
+  - New-AzScheduledQueryRuleAznsActionGroup
+  - New-AzScheduledQueryRuleLogMetricTrigger
+  - New-AzScheduledQueryRuleSchedule
+  - New-AzScheduledQueryRuleSource
+  - New-AzScheduledQueryRuleTriggerCondition
+  - New-AzScheduledQueryRule
+  - Get-AzScheduledQueryRule
+  - Set-AzScheduledQueryRule
+  - Update-AzScheduledQueryRule
+  - Remove-AzScheduledQueryRule
+  - [More](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) information about SQR API
+  - Updated Az.Monitor.md to include cmdlets for GenV2(non classic) metric-based alert rule
 
 #### Az.Network
 * Add support for Nat Gateway Resource
@@ -2019,15 +2041,15 @@ to enable create Azure-SSIS IR with static public IP addresses.
 * Add in Basic sku for Integration Accounts
 * Add in XSLT 2.0, XSLT 3.0 and Liquid Map Types
 * New cmdlets for Integration Account Assemblies
-	- Get-AzIntegrationAccountAssembly
-	- New-AzIntegrationAccountAssembly
-	- Remove-AzIntegrationAccountAssembly
-	- Set-AzIntegrationAccountAssembly
+  - Get-AzIntegrationAccountAssembly
+  - New-AzIntegrationAccountAssembly
+  - Remove-AzIntegrationAccountAssembly
+  - Set-AzIntegrationAccountAssembly
 * New cmdlets for Integration Account Batch Configuration
-	- Get-AzIntegrationAccountBatchConfiguration
-	- New-AzIntegrationAccountBatchConfiguration
-	- Remove-AzIntegrationAccountBatchConfiguration
-	- Set-AzIntegrationAccountBatchConfiguration
+  - Get-AzIntegrationAccountBatchConfiguration
+  - New-AzIntegrationAccountBatchConfiguration
+  - Remove-AzIntegrationAccountBatchConfiguration
+  - Set-AzIntegrationAccountBatchConfiguration
 * Update Logic App SDK to version 4.1.0
 
 #### Az.Monitor
