@@ -67,11 +67,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return PSBlueprint.FromBlueprintModel(result.Body, scope);
         }
 
-        public PSBlueprintAssignment GetBlueprintAssignment(string subscriptionId, string blueprintAssignmentName)
+        public PSBlueprintAssignment GetBlueprintAssignment(string scope, string blueprintAssignmentName)
         {
-            var result = blueprintManagementClient.Assignments.GetWithHttpMessagesAsync(subscriptionId, blueprintAssignmentName).GetAwaiter().GetResult();
+            var result = blueprintManagementClient.Assignments.GetWithHttpMessagesAsync(scope, blueprintAssignmentName).GetAwaiter().GetResult();
 
-            return PSBlueprintAssignment.FromAssignment(result.Body, subscriptionId);
+            return PSBlueprintAssignment.FromAssignment(result.Body);
         }
 
         public PSBlueprint DeleteBlueprint(string scope, string blueprintName)
@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return latest;
         }
 
-        public IEnumerable<PSBlueprintAssignment> ListBlueprintAssignments(string subscriptionId)
+        public IEnumerable<PSBlueprintAssignment> ListBlueprintAssignments(string scope)
         {
-            var assignments = blueprintManagementClient.Assignments.List(subscriptionId);
+            var assignments = blueprintManagementClient.Assignments.List(scope);
 
-            foreach (var assignment in assignments.Select(assignment => PSBlueprintAssignment.FromAssignment(assignment, subscriptionId)))
+            foreach (var assignment in assignments.Select(assignment => PSBlueprintAssignment.FromAssignment(assignment)))
             {
                 yield return assignment;
             }
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             while (!string.IsNullOrEmpty(assignments.NextPageLink))
             {
                 assignments = blueprintManagementClient.Assignments.ListNext(assignments.NextPageLink);
-                foreach (var assignment in assignments.Select(assignment => PSBlueprintAssignment.FromAssignment(assignment, subscriptionId)))
+                foreach (var assignment in assignments.Select(assignment => PSBlueprintAssignment.FromAssignment(assignment)))
                 {
                     yield return assignment;
                 }
@@ -189,23 +189,23 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return list;
         }
 
-        public PSBlueprintAssignment DeleteBlueprintAssignment(string subscriptionId, string blueprintAssignmentName)
+        public PSBlueprintAssignment DeleteBlueprintAssignment(string scope, string blueprintAssignmentName)
         {
-            var result = blueprintManagementClient.Assignments.DeleteWithHttpMessagesAsync(subscriptionId, blueprintAssignmentName).GetAwaiter().GetResult();
+            var result = blueprintManagementClient.Assignments.DeleteWithHttpMessagesAsync(scope, blueprintAssignmentName).GetAwaiter().GetResult();
 
             if (result.Body == null)
                 return null;
 
-            return PSBlueprintAssignment.FromAssignment(result.Body, subscriptionId);
+            return PSBlueprintAssignment.FromAssignment(result.Body);
         }
 
-        public PSBlueprintAssignment CreateOrUpdateBlueprintAssignment(string subscriptionId, string assignmentName, Assignment assignment)
+        public PSBlueprintAssignment CreateOrUpdateBlueprintAssignment(string scope, string assignmentName, Assignment assignment)
         {
-            var result = blueprintManagementClient.Assignments.CreateOrUpdateWithHttpMessagesAsync(subscriptionId, assignmentName, assignment).GetAwaiter().GetResult();
+            var result = blueprintManagementClient.Assignments.CreateOrUpdateWithHttpMessagesAsync(scope, assignmentName, assignment).GetAwaiter().GetResult();
 
             if (result.Body != null)
             {
-                return PSBlueprintAssignment.FromAssignment(result.Body, subscriptionId);
+                return PSBlueprintAssignment.FromAssignment(result.Body);
             }
 
             return null;

@@ -63,6 +63,10 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-True { $newDevice3.Authentication.Type -eq 'CertificateAuthority' }
 	Assert-False { $newDevice3.Capabilities.IotEdge }
 
+	# Count devices
+	$totalDevices = Invoke-AzIotHubQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Query "select * from devices"
+	Assert-True { $totalDevices.Count -eq 3}
+
 	# Get device twin
 	$device1twin = Get-AzIotHubDeviceTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
 	Assert-True { $device1twin.DeviceId -eq $device1}

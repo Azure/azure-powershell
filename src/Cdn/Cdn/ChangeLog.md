@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Fix ChinaCDN related pricing SKU display
+* Fixed ChinaCDN related pricing SKU display
 
 ## Version 1.4.2
 * Display error response detail in New-AzCdnEndpoint cmdlet

@@ -54,5 +54,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AddRegionOperation");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPrivateEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-PrivateEndpoint");
+        }
     }
 }

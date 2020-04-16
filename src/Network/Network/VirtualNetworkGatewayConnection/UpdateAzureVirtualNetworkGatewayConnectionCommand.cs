@@ -48,6 +48,11 @@ namespace Microsoft.Azure.Commands.Network
         public bool? UsePolicyBasedTrafficSelectors { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Whether to use PrivateIP for a S2S connection")]
+        public bool? UseLocalAzureIpAddress { get; set; }
+
+        [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of IPSec policies.")]
@@ -97,6 +102,11 @@ namespace Microsoft.Azure.Commands.Network
                     if (this.UsePolicyBasedTrafficSelectors.HasValue)
                     {
                         this.VirtualNetworkGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.Value;
+                    }
+
+                    if (this.UseLocalAzureIpAddress.HasValue)
+                    {
+                        this.VirtualNetworkGatewayConnection.UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.Value;
                     }
 
                     if (this.IpsecPolicies != null)

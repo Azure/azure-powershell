@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     TriggerType = TriggerType,
                     Body = Body
                 },
-                Options = new Dictionary<string, string>() { }
+                Options = new CreateUpdateOptions() { }
             };
 
             if (ShouldProcess(Name, "Setting CosmosDB Sql Trigger"))
