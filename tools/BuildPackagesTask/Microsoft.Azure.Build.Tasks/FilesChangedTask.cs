@@ -44,6 +44,11 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         public string PullRequestNumber { get; set; }
 
         /// <summary>
+        /// Gets or set the TargetModule, e.g. Az.Storage
+        /// </summary>
+        public string TargetModule { get; set; }
+
+        /// <summary>
         /// Gets or sets the files changed produced by the task.
         /// </summary>
         [Output]
@@ -131,6 +136,11 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 }
 
                 FilesChanged = filesChanged.ToArray();
+            }
+            else if(!string.IsNullOrEmpty(TargetModule))
+            {
+                //Add one FAKE changed file for TargetModule, so TargetModule will be included for FilterTask
+                FilesChanged = new string[] { $"src/{TargetModule}/changeLog.md" };
             }
             else
             {
