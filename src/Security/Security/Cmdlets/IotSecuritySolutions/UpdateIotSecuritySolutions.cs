@@ -76,22 +76,31 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
                     Name = AzureIdUtilities.GetResourceName(InputObject.Id);
                     ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
                     RecommendationsConfiguration = RecommendationsConfiguration ?? ((List<PSRecommendationConfiguration>)InputObject.RecommendationsConfiguration).ToArray();
-                    Tag = Tag ?? (Hashtable)InputObject.Tags;
-                    UserDefinedResource = UserDefinedResource ?? InputObject.UserDefinedResources;
+                    Tag = Tag ?? new Hashtable((IDictionary)(InputObject.Tags));
+                    UserDefinedResource = UserDefinedResource ?? GetValidUserDefinedResources(InputObject.UserDefinedResources);
                     break;
                 default:
                     throw new PSInvalidOperationException();
             }
 
-            UpdateIotSecuritySolutionData solutionData = new UpdateIotSecuritySolutionData(Tag.Cast<DictionaryEntry>().ToDictionary(t => (string)t.Key, t => (string)t.Value), 
+            UpdateIotSecuritySolutionData solutionData = new UpdateIotSecuritySolutionData(Tag?.Cast<DictionaryEntry>().ToDictionary(t => (string)t.Key, t => (string)t.Value), 
                 UserDefinedResource?.CreatePSType(), 
                 RecommendationsConfiguration?.CreatePSType());
 
             if (ShouldProcess(Name, "Update"))
             {
                 var outputSolution = SecurityCenterClient.IotSecuritySolution.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, solutionData).GetAwaiter().GetResult().Body;
-                WriteObject(outputSolution.ConvertToPSType(), enumerateCollection: false);
+                WriteObject(outputSolution?.ConvertToPSType(), enumerateCollection: false);
             }
+        }
+
+        private PSUserDefinedResources GetValidUserDefinedResources(PSUserDefinedResources userDefinedResources)
+        {
+            if (userDefinedResources != null && userDefinedResources.Validate())
+            {
+                return userDefinedResources;
+            }
+            return null;
         }
     }
 }

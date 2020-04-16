@@ -20,7 +20,14 @@ function Get-AzureRmIotSecurityAnalytics-SolutionScope-Single
 {
 	$ResourceGroupName = "MichalResourceGroup"
 	$SolutionName = "MichalDemoHub"
-	$analytics = Get-AzIotSecurityAnalytics -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Defualt
+	$Location = "West US"
+	$Workspace = "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace"
+	$DisplayName = "MichalDemoHub"
+	$Status = "Enabled"
+	$IotHubs = @("/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub");
+
+	Set-AzIotSecuritySolution -Name $SolutionName -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Status $Status -IotHub $IotHubs
+	$analytics = Get-AzIotSecurityAnalytics -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Default
 	Validate-Analytics $analytics
 }
 
@@ -32,46 +39,15 @@ function Get-AzureRmIotSecurityAnalytics-SolutionScope-List
 {
 	$ResourceGroupName = "MichalResourceGroup"
 	$SolutionName = "MichalDemoHub"
+	$Location = "West US"
+	$Workspace = "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace"
+	$DisplayName = "MichalDemoHub"
+	$Status = "Enabled"
+	$IotHubs = @("/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub");
+
+	Set-AzIotSecuritySolution -Name $SolutionName -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Status $Status -IotHub $IotHubs
 	$analytic = Get-AzIotSecurityAnalytics -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName
 	Validate-Analytic $analytic
-}
-
-<#
-.SYNOPSIS
-Disable Iot aggregated security alert (dismiss)
-#>
-function Disable-AzureRmIotSecurityAnalyticsAggregatedAlert-SolutionLevelResource
-{
-	$ResourceGroupName = "MichalResourceGroup"
-	$SolutionName = "MichalDemoHub"
-	$Name = "IoT_SucessfulLocalLogin/2020-03-15"
-	Disable-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Name $Name
-}
-
-<#
-.SYNOPSIS
-Disable Iot aggregated security alert (dismiss)
-#>
-function Disable-AzureRmIotSecurityAnalyticsAggregatedAlert-InputObject
-{
-	$ResourceGroupName = "MichalResourceGroup"
-	$SolutionName = "MichalDemoHub"
-	$Name = "IoT_SucessfulLocalLogin/2020-03-15"
-	$analytic = Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Name $Name
-	Disable-AzIotSecurityAnalyticsAggregatedAlert -InputObject $analytic
-}
-
-<#
-.SYNOPSIS
-Disable Iot aggregated security alert (dismiss)
-#>
-function Disable-AzureRmIotSecurityAnalyticsAggregatedAlert-ResourceId
-{
-	$ResourceGroupName = "MichalResourceGroup"
-	$SolutionName = "MichalDemoHub"
-	$Name = "IoT_SucessfulLocalLogin/2020-03-15"
-	$analytic = Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Name $Name
-	Disable-AzIotSecurityAnalyticsAggregatedAlert -ResourceId $analytic.Id
 }
 
 <#
@@ -82,21 +58,15 @@ function Get-AzureRmIotSecurityAnalyticsAggregatedAlert-SolutionScope
 {
 	$ResourceGroupName = "MichalResourceGroup"
 	$SolutionName = "MichalDemoHub"
+	$Location = "West US"
+	$Workspace = "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace"
+	$DisplayName = "MichalDemoHub"
+	$Status = "Enabled"
+	$IotHubs = @("/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub");
+
+	Set-AzIotSecuritySolution -Name $SolutionName -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Status $Status -IotHub $IotHubs
 	$analytics = Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName
 	Validate-Analytics $analytics
-}
-
-<#
-.SYNOPSIS
-Get Iot aggregated security alert
-#>
-function Get-AzureRmIotSecurityAnalyticsAggregatedAlert-SolutionLevelResource
-{
-    $ResourceGroupName = "MichalResourceGroup"
-	$SolutionName = "MichalDemoHub"
-	$Name = "IoT_CryptoMiner/2020-03-15"
-	$analytic = Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Name $Name
-	Validate-Analytic $analytic
 }
 
 <#
@@ -107,21 +77,15 @@ function Get-AzureRmIotSecurityAnalyticsAggregatedRecommendation-SolutionScope
 {
     $ResourceGroupName = "MichalResourceGroup"
 	$SolutionName = "MichalDemoHub"
+	$Location = "West US"
+	$Workspace = "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace"
+	$DisplayName = "MichalDemoHub"
+	$Status = "Enabled"
+	$IotHubs = @("/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub");
+
+	Set-AzIotSecuritySolution -Name $SolutionName -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Status $Status -IotHub $IotHubs
 	$analytics = Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName
 	Validate-Analytics $analytics
-}
-
-<#
-.SYNOPSIS
-Get Iot aggregated security recommendation
-#>
-function Get-AzureRmIotSecurityAnalyticsAggregatedRecommendation-SolutionLevelResource
-{
-	$ResourceGroupName = "MichalResourceGroup"
-	$SolutionName = "MichalDemoHub"
-	$Name = "iot_openports"
-	$analytic = Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Name $Name
-	Validate-Analytic $analytic
 }
 
 <#
@@ -131,12 +95,13 @@ Validates a list of iot security solutions
 function Validate-Analytics
 {
 	param($analytics)
-
-    Assert-NotNull $analytics
-
-	Foreach($analytic in $analytics)
+	
+    if ($analytics -ne $null)
 	{
-		Validate-Analytic $analytic
+		Foreach($analytic in $analytics)
+		{
+			Validate-Analytic $analytic
+		}
 	}
 }
 

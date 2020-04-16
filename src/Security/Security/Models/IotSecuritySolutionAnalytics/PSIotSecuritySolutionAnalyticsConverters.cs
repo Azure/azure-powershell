@@ -25,12 +25,12 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
         {
             return new PSIotSecuritySolutionAnalytics()
             {
-                Metrics = value.Metrics.ConvertToPSType(),
+                Metrics = value.Metrics?.ConvertToPSType(),
                 UnhealthyDeviceCount = value.UnhealthyDeviceCount,
-                DevicesMetrics = value.DevicesMetrics.ConvertToPSType(),
-                TopAlertedDevices = value.TopAlertedDevices.ConvertToPSType(),
-                MostPrevalentDeviceAlerts = value.MostPrevalentDeviceAlerts.ConvertToPSType(),
-                MostPrevalentDeviceRecommendations = value.MostPrevalentDeviceRecommendations.ConvertToPSType(),
+                DevicesMetrics = value.DevicesMetrics?.ConvertToPSType(),
+                TopAlertedDevices = value.TopAlertedDevices?.ConvertToPSType(),
+                MostPrevalentDeviceAlerts = value.MostPrevalentDeviceAlerts?.ConvertToPSType(),
+                MostPrevalentDeviceRecommendations = value.MostPrevalentDeviceRecommendations?.ConvertToPSType(),
             };
         }
 
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
             return new PSDevicesMetrics()
             {
                 Date = value.Date,
-                DevicesMetrics = value.DevicesMetrics.ConvertToPSType()
+                DevicesMetrics = value.DevicesMetrics?.ConvertToPSType()
             };
         }
 

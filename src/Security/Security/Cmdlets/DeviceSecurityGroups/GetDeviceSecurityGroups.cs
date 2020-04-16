@@ -44,14 +44,14 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.DeviceSecurityGroups
             {
                 case ParameterSetNames.ResourceIdScope:
                     var groups = SecurityCenterClient.DeviceSecurityGroups.ListWithHttpMessagesAsync(HubResourceId).GetAwaiter().GetResult().Body;
-                    var PSTypeGroups = groups.ConvertToPSType();
+                    var PSTypeGroups = groups?.ConvertToPSType();
                     WriteObject(PSTypeGroups, enumerateCollection: true);
                     numberOfFetchedGroups += PSTypeGroups.Count;
                     nextLink = groups?.NextPageLink;
                     while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedGroups < MaxGroupsToFetch)
                     {
                         groups = SecurityCenterClient.DeviceSecurityGroups.ListNextWithHttpMessagesAsync(groups.NextPageLink).GetAwaiter().GetResult().Body;
-                        PSTypeGroups = groups.ConvertToPSType();
+                        PSTypeGroups = groups?.ConvertToPSType();
                         WriteObject(PSTypeGroups, enumerateCollection: true);
                         numberOfFetchedGroups += PSTypeGroups.Count;
                         nextLink = groups?.NextPageLink;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.DeviceSecurityGroups
                     break;
                 case ParameterSetNames.ResourceIdLevelResource:
                     var group = SecurityCenterClient.DeviceSecurityGroups.GetWithHttpMessagesAsync(HubResourceId, Name).GetAwaiter().GetResult().Body;
-                    WriteObject(group.ConvertToPSType(), enumerateCollection: false);
+                    WriteObject(group?.ConvertToPSType(), enumerateCollection: false);
                     break;
                 default:
                     throw new PSInvalidOperationException();

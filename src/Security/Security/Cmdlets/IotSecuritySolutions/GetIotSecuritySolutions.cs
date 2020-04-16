@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
             {
                 case ParameterSetNames.SubscriptionScope:
                     var securitySolutions = SecurityCenterClient.IotSecuritySolution.ListBySubscriptionWithHttpMessagesAsync().GetAwaiter().GetResult().Body;
-                    var PSTypeIotSecuritySolutions = securitySolutions.ConvertToPSType();
+                    var PSTypeIotSecuritySolutions = securitySolutions?.ConvertToPSType();
                     WriteObject(PSTypeIotSecuritySolutions, enumerateCollection: true);
                     numberOfFetchedSolutions += PSTypeIotSecuritySolutions.Count;
                     nextLink = securitySolutions?.NextPageLink;
                     while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedSolutions < MaxSolutionssToFetch)
                     {
                         securitySolutions = SecurityCenterClient.IotSecuritySolution.ListBySubscriptionNextWithHttpMessagesAsync(securitySolutions.NextPageLink).GetAwaiter().GetResult().Body;
-                        PSTypeIotSecuritySolutions = securitySolutions.ConvertToPSType();
+                        PSTypeIotSecuritySolutions = securitySolutions?.ConvertToPSType();
                         WriteObject(PSTypeIotSecuritySolutions, enumerateCollection: true);
                         numberOfFetchedSolutions += PSTypeIotSecuritySolutions.Count;
                         nextLink = securitySolutions?.NextPageLink;
@@ -63,14 +63,14 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
                     break;
                 case ParameterSetNames.ResourceGroupScope:
                     securitySolutions = SecurityCenterClient.IotSecuritySolution.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).GetAwaiter().GetResult().Body;
-                    PSTypeIotSecuritySolutions = securitySolutions.ConvertToPSType();
+                    PSTypeIotSecuritySolutions = securitySolutions?.ConvertToPSType();
                     WriteObject(PSTypeIotSecuritySolutions, enumerateCollection: true);
                     numberOfFetchedSolutions += PSTypeIotSecuritySolutions.Count;
                     nextLink = securitySolutions?.NextPageLink;
                     while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedSolutions < MaxSolutionssToFetch)
                     {
                         securitySolutions = SecurityCenterClient.IotSecuritySolution.ListByResourceGroupNextWithHttpMessagesAsync(securitySolutions.NextPageLink).GetAwaiter().GetResult().Body;
-                        PSTypeIotSecuritySolutions = securitySolutions.ConvertToPSType();
+                        PSTypeIotSecuritySolutions = securitySolutions?.ConvertToPSType();
                         WriteObject(PSTypeIotSecuritySolutions, enumerateCollection: true);
                         numberOfFetchedSolutions += PSTypeIotSecuritySolutions.Count;
                         nextLink = securitySolutions?.NextPageLink;
@@ -78,11 +78,11 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
                     break;
                 case ParameterSetNames.ResourceGroupLevelResource:
                     var securitySolution = SecurityCenterClient.IotSecuritySolution.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
-                    WriteObject(securitySolution.ConvertToPSType(), enumerateCollection: false);
+                    WriteObject(securitySolution?.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceId:
                     securitySolution = SecurityCenterClient.IotSecuritySolution.GetWithHttpMessagesAsync(AzureIdUtilities.GetResourceGroup(ResourceId), AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
-                    WriteObject(securitySolution.ConvertToPSType(), enumerateCollection: false);
+                    WriteObject(securitySolution?.ConvertToPSType(), enumerateCollection: false);
                     break;
                 default:
                     throw new PSInvalidOperationException();

@@ -46,27 +46,6 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DisableAggregatedAlertSolutionLevelResource()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmIotSecurityAnalyticsAggregatedAlert-SolutionLevelResource");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DisableAggregatedAlertInputObject()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmIotSecurityAnalyticsAggregatedAlert-InputObject");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DisableAggregatedAlertResourceId()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmIotSecurityAnalyticsAggregatedAlert-ResourceId");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAggregatedAlertSolutionScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmIotSecurityAnalyticsAggregatedAlert-SolutionScope");
@@ -74,23 +53,9 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAggregatedAlertSolutionLevelResource()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmIotSecurityAnalyticsAggregatedAlert-SolutionLevelResource");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAggregatedRecommendationSolutionScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmIotSecurityAnalyticsAggregatedRecommendation-SolutionScope");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAggregatedRecommendationSolutionLevelResource()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmIotSecurityAnalyticsAggregatedRecommendation-SolutionLevelResource");
         }
     }
 }

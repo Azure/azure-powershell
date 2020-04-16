@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"workspace\": \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace\",\r\n    \"displayName\": \"MichalDemoHub\",\r\n    \"status\": \"Enabled\",\r\n    \"iotHubs\": [\r\n      \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub\"\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "58de4be1-b938-4ad4-b575-f6418e454fa1"
+          "9d8d35a0-1718-4217-a54d-a6bed82d013e"
         ],
         "Accept-Language": [
           "en-US"
@@ -39,13 +39,13 @@
           "249"
         ],
         "x-ms-request-id": [
-          "32362b32-295c-40d6-a4de-e3923f7b7410"
+          "9a5737cf-3cd7-433f-ae93-08e129771501"
         ],
         "x-ms-correlation-request-id": [
-          "32362b32-295c-40d6-a4de-e3923f7b7410"
+          "9a5737cf-3cd7-433f-ae93-08e129771501"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20200416T094600Z:32362b32-295c-40d6-a4de-e3923f7b7410"
+          "WESTEUROPE:20200416T094444Z:9a5737cf-3cd7-433f-ae93-08e129771501"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -54,7 +54,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 16 Apr 2020 09:45:59 GMT"
+          "Thu, 16 Apr 2020 09:44:43 GMT"
         ],
         "Content-Length": [
           "3299"
@@ -72,11 +72,11 @@
     {
       "RequestUri": "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Security/iotSecuritySolutions/MichalDemoHub?api-version=2019-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDc1NDIzZTktN2QzMy00MTY2LThiZGYtMzkyMGIwNGUzNzM1L3Jlc291cmNlR3JvdXBzL01pY2hhbFJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TZWN1cml0eS9pb3RTZWN1cml0eVNvbHV0aW9ucy9NaWNoYWxEZW1vSHViP2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"tags\": {},\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"workspace\": \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace\",\r\n    \"displayName\": \"MichalDemoHub\",\r\n    \"status\": \"Enabled\",\r\n    \"export\": [],\r\n    \"disabledDataSources\": [],\r\n    \"iotHubs\": [\r\n      \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub\"\r\n    ],\r\n    \"userDefinedResources\": {\r\n      \"query\": \"where type != \\\"microsoft.devices/iothubs\\\" | where (subscriptionId == \\\"075423e9-7d33-4166-8bdf-3920b04e3735\\\" and resourceGroup in~ (\\\"MichalResourceGroup\\\")) | project id, name, type\",\r\n      \"querySubscriptions\": [\r\n        \"075423e9-7d33-4166-8bdf-3920b04e3735\"\r\n      ]\r\n    },\r\n    \"recommendationsConfiguration\": [\r\n      {\r\n        \"recommendationType\": \"IoT_ACRAuthentication\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_AgentSendsUnutilizedMessages\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_Baseline\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_EdgeHubMemOptimize\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_EdgeLoggingOptions\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_InconsistentModuleSettings\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_InstallAgent\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_IPFilter_DenyAll\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_IPFilter_PermissiveRule\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_OpenPorts\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_PermissiveFirewallPolicy\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_PermissiveInputFirewallRules\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_PermissiveOutputFirewallRules\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_PrivilegedDockerOptions\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_RecommendedIpRulesByBaseLine\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_SharedCredentials\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_VulnerableTLSCipherSuite\",\r\n        \"status\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"unmaskedIpLoggingStatus\": \"Disabled\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "790d1c67-6091-4947-90aa-1b520b5a965e"
+          "d84c8d5e-99a7-4637-bc9c-344274cf9e2b"
         ],
         "Accept-Language": [
           "en-US"
@@ -86,6 +86,12 @@
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.Security.SecurityCenterClient/1.1.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "2778"
         ]
       },
       "ResponseHeaders": {
@@ -99,16 +105,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "749"
+          "248"
         ],
         "x-ms-request-id": [
-          "7f67a52f-d794-4918-9676-7a8f6eef5f90"
+          "94530ae0-2320-4745-a51f-b73ed86f4560"
         ],
         "x-ms-correlation-request-id": [
-          "7f67a52f-d794-4918-9676-7a8f6eef5f90"
+          "94530ae0-2320-4745-a51f-b73ed86f4560"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20200416T094600Z:7f67a52f-d794-4918-9676-7a8f6eef5f90"
+          "WESTEUROPE:20200416T094446Z:94530ae0-2320-4745-a51f-b73ed86f4560"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -117,7 +123,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 16 Apr 2020 09:45:59 GMT"
+          "Thu, 16 Apr 2020 09:44:46 GMT"
         ],
         "Content-Length": [
           "3299"

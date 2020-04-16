@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"timeWindowRules\": [\r\n      {\r\n        \"timeWindowSize\": \"PT5M\",\r\n        \"minThreshold\": 0,\r\n        \"maxThreshold\": 30,\r\n        \"isEnabled\": true,\r\n        \"ruleType\": \"ActiveConnectionsNotInAllowedRange\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9611b9f9-76fd-4e4b-ab17-5f547f8e1f8e"
+          "c8f6ee4f-136f-4512-a9c8-8f357a4ebbe3"
         ],
         "Accept-Language": [
           "en-US"
@@ -39,13 +39,13 @@
           "249"
         ],
         "x-ms-request-id": [
-          "67b3352d-4639-441e-997d-e023df25eb7c"
+          "24c2e09c-ded2-452f-be5f-92e79ff2decb"
         ],
         "x-ms-correlation-request-id": [
-          "67b3352d-4639-441e-997d-e023df25eb7c"
+          "24c2e09c-ded2-452f-be5f-92e79ff2decb"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20200315T184606Z:67b3352d-4639-441e-997d-e023df25eb7c"
+          "WESTEUROPE:20200416T094241Z:24c2e09c-ded2-452f-be5f-92e79ff2decb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -54,7 +54,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sun, 15 Mar 2020 18:46:05 GMT"
+          "Thu, 16 Apr 2020 09:42:40 GMT"
         ],
         "Content-Length": [
           "6809"
@@ -76,7 +76,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a163c3bc-377c-461c-97f4-6c61ce053448"
+          "1e94b1a0-db81-465a-89aa-7213e417062e"
         ],
         "Accept-Language": [
           "en-US"
@@ -102,13 +102,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "8fb4e759-a437-4d69-9bc8-9310692d44dc"
+          "dafa0226-79fd-4d7d-9d45-bd137dababcc"
         ],
         "x-ms-correlation-request-id": [
-          "8fb4e759-a437-4d69-9bc8-9310692d44dc"
+          "dafa0226-79fd-4d7d-9d45-bd137dababcc"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20200315T184606Z:8fb4e759-a437-4d69-9bc8-9310692d44dc"
+          "WESTEUROPE:20200416T094241Z:dafa0226-79fd-4d7d-9d45-bd137dababcc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -117,7 +117,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sun, 15 Mar 2020 18:46:05 GMT"
+          "Thu, 16 Apr 2020 09:42:41 GMT"
         ],
         "Expires": [
           "-1"

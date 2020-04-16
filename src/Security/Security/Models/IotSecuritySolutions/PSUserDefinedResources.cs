@@ -22,5 +22,10 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions
         public string Query { get; set; }
 
         public IList<string> QuerySubscriptions { get; set; }
+
+        public bool Validate()
+        {
+            return (Query != null && QuerySubscriptions != null);
+        }
     }
 }

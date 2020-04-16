@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
                     IotHub = IotHub ?? ((List<string>)InputObject.IotHubs).ToArray();
                     RecommendationsConfiguration = RecommendationsConfiguration ?? ((List<PSRecommendationConfiguration>)InputObject.RecommendationsConfiguration).ToArray();
                     Status = Status ?? InputObject.Status;
-                    Tag = Tag ?? (Hashtable)InputObject.Tags;
+                    Tag = Tag ?? new Hashtable((IDictionary)(InputObject.Tags));
                     UnmaskedIpLoggingStatus = UnmaskedIpLoggingStatus ?? InputObject.UnmaskedIpLoggingStatus;
                     UserDefinedResource = UserDefinedResource ?? InputObject.UserDefinedResources;
                     Workspace = Workspace ?? InputObject.Workspace;
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
                 IotHubs = IotHub,
                 RecommendationsConfiguration = RecommendationsConfiguration?.CreatePSType(),
                 Status = Status,
-                Tags = Tag.Cast<DictionaryEntry>().ToDictionary(t => (string)t.Key, t => (string)t.Value),
+                Tags = Tag?.Cast<DictionaryEntry>().ToDictionary(t => (string)t.Key, t => (string)t.Value),
                 UnmaskedIpLoggingStatus = UnmaskedIpLoggingStatus,
                 UserDefinedResources = UserDefinedResource?.CreatePSType(),
                 Workspace = Workspace
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
             if (ShouldProcess(Name, VerbsCommon.Set))
             {
                 var outputSolution = SecurityCenterClient.IotSecuritySolution.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, solutionModel).GetAwaiter().GetResult().Body;
-                WriteObject(outputSolution.ConvertToPSType(), enumerateCollection: false);
+                WriteObject(outputSolution?.ConvertToPSType(), enumerateCollection: false);
             }
         }
     }

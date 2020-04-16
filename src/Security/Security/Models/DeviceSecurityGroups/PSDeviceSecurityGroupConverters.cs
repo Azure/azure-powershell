@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
-                AllowlistRules = value.AllowlistRules.ConvertToPSType(),
-                DenylistRules = value.DenylistRules.ConvertToPSType(),
-                ThresholdRules = value.ThresholdRules.ConvertToPSType(),
-                TimeWindowRules = value.TimeWindowRules.ConvertToPSType()
+                AllowlistRules = value.AllowlistRules?.ConvertToPSType(),
+                DenylistRules = value.DenylistRules?.ConvertToPSType(),
+                ThresholdRules = value.ThresholdRules?.ConvertToPSType(),
+                TimeWindowRules = value.TimeWindowRules?.ConvertToPSType()
             };
         }
 

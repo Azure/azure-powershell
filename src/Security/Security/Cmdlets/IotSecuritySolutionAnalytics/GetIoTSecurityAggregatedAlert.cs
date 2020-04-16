@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutionAnalytics
             {
                 case ParameterSetNames.SolutionScope:
                     var alerts = SecurityCenterClient.IotSecuritySolutionsAnalyticsAggregatedAlert.ListWithHttpMessagesAsync(ResourceGroupName, SolutionName).GetAwaiter().GetResult().Body;
-                    var PSTypeAlerts = alerts.ConvertToPSType();
+                    var PSTypeAlerts = alerts?.ConvertToPSType();
                     WriteObject(PSTypeAlerts, enumerateCollection: true);
                     numberOfFetchedAlerts += PSTypeAlerts.Count;
                     nextLink = alerts?.NextPageLink;
                     while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedAlerts < MaxAlertsToFetch)
                     {
                         alerts = SecurityCenterClient.IotSecuritySolutionsAnalyticsAggregatedAlert.ListNextWithHttpMessagesAsync(alerts.NextPageLink).GetAwaiter().GetResult().Body;
-                        PSTypeAlerts = alerts.ConvertToPSType();
+                        PSTypeAlerts = alerts?.ConvertToPSType();
                         WriteObject(PSTypeAlerts, enumerateCollection: true);
                         numberOfFetchedAlerts += PSTypeAlerts.Count;
                         nextLink = alerts?.NextPageLink;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutionAnalytics
                     break;
                 case ParameterSetNames.SolutionLevelResource:
                     var alert = SecurityCenterClient.IotSecuritySolutionsAnalyticsAggregatedAlert.GetWithHttpMessagesAsync(ResourceGroupName, SolutionName, Name).GetAwaiter().GetResult().Body;
-                    WriteObject(alert.ConvertToPSType(), enumerateCollection: false);
+                    WriteObject(alert?.ConvertToPSType(), enumerateCollection: false);
                     break;
                 default:
                     throw new PSInvalidOperationException();

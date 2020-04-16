@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"workspace\": \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace\",\r\n    \"displayName\": \"MichalDemoHub\",\r\n    \"status\": \"Enabled\",\r\n    \"iotHubs\": [\r\n      \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub\"\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "02216537-afc4-42f5-a104-45a9958c0268"
+          "eae5f149-c763-4de5-928a-829bce6e8170"
         ],
         "Accept-Language": [
           "en-US"
@@ -39,13 +39,13 @@
           "249"
         ],
         "x-ms-request-id": [
-          "efd7fab3-16df-451f-aaba-343bc9c00596"
+          "5d66d079-e710-4aa0-9e9f-c4970a359229"
         ],
         "x-ms-correlation-request-id": [
-          "efd7fab3-16df-451f-aaba-343bc9c00596"
+          "5d66d079-e710-4aa0-9e9f-c4970a359229"
         ],
         "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20200315T175416Z:efd7fab3-16df-451f-aaba-343bc9c00596"
+          "WESTEUROPE:20200416T094529Z:5d66d079-e710-4aa0-9e9f-c4970a359229"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -54,7 +54,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sun, 15 Mar 2020 17:54:15 GMT"
+          "Thu, 16 Apr 2020 09:45:29 GMT"
         ],
         "Content-Length": [
           "3080"

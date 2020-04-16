@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"workspace\": \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace\",\r\n    \"displayName\": \"MichalDemoHub\",\r\n    \"status\": \"Enabled\",\r\n    \"iotHubs\": [\r\n      \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub\"\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2eabb8f4-2abe-48fd-a960-0bf0dc3b9d50"
+          "abb08de9-774f-4098-9f35-e87306cd7c11"
         ],
         "Accept-Language": [
           "en-US"
@@ -39,13 +39,13 @@
           "249"
         ],
         "x-ms-request-id": [
-          "1c6a0f9f-69f3-43a8-8ac1-23ff862fc50c"
+          "8e62157c-81c6-4de2-8782-e8a28fafede6"
         ],
         "x-ms-correlation-request-id": [
-          "1c6a0f9f-69f3-43a8-8ac1-23ff862fc50c"
+          "8e62157c-81c6-4de2-8782-e8a28fafede6"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20200315T175318Z:1c6a0f9f-69f3-43a8-8ac1-23ff862fc50c"
+          "WESTEUROPE:20200416T094433Z:8e62157c-81c6-4de2-8782-e8a28fafede6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -54,7 +54,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sun, 15 Mar 2020 17:53:18 GMT"
+          "Thu, 16 Apr 2020 09:44:33 GMT"
         ],
         "Content-Length": [
           "3081"
@@ -76,7 +76,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a65c7485-51cc-4cf0-bb69-521f90294a80"
+          "0e597594-f469-4ce1-9d81-339dcd636a4d"
         ],
         "Accept-Language": [
           "en-US"
@@ -102,13 +102,13 @@
           "249"
         ],
         "x-ms-request-id": [
-          "1dda6f51-2d27-4f6f-9647-58bc1bd36c58"
+          "78660981-61f5-448e-838e-7f3d1775bd10"
         ],
         "x-ms-correlation-request-id": [
-          "1dda6f51-2d27-4f6f-9647-58bc1bd36c58"
+          "78660981-61f5-448e-838e-7f3d1775bd10"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20200315T175321Z:1dda6f51-2d27-4f6f-9647-58bc1bd36c58"
+          "WESTEUROPE:20200416T094437Z:78660981-61f5-448e-838e-7f3d1775bd10"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -117,7 +117,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sun, 15 Mar 2020 17:53:21 GMT"
+          "Thu, 16 Apr 2020 09:44:36 GMT"
         ],
         "Expires": [
           "-1"

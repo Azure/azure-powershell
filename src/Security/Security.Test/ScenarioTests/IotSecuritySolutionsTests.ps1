@@ -200,7 +200,7 @@ function Update-AzureRmIotSecuritySolution-ResourceGroupLevelResource
 
 	Set-AzIotSecuritySolution -Name $Name -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Status $Status -IotHub $IotHubs
 
-	$RecConfig = New -AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType "IoT_OpenPorts" -Status "Disabled"
+	$RecConfig = New-AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType "IoT_OpenPorts" -Status "Disabled"
 	$RecommendationsConfiguration = @($RecConfig)
 
 	$Query = 'where type != "microsoft.devices/iothubs" | where name contains "v2"'
@@ -227,7 +227,7 @@ function Update-AzureRmIotSecuritySolution-ResourceId
 
 	$solution = Set-AzIotSecuritySolution -Name $Name -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Status $Status -IotHub $IotHubs
 
-	$RecConfig = New -AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType "IoT_OpenPorts" -Status "Disabled"
+	$RecConfig = New-AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType "IoT_OpenPorts" -Status "Disabled"
 	$RecommendationsConfiguration = @($RecConfig)
 
 	$Query = 'where type != "microsoft.devices/iothubs" | where name contains "v2"'
@@ -254,7 +254,7 @@ function Update-AzureRmIotSecuritySolution-InputObject
 
 	$solution = Set-AzIotSecuritySolution -Name $Name -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Status $Status -IotHub $IotHubs
 
-	$RecConfig = New -AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType "IoT_OpenPorts" -Status "Disabled"
+	$RecConfig = New-AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType "IoT_OpenPorts" -Status "Disabled"
 	$RecommendationsConfiguration = @($RecConfig)
 
 	$Query = 'where type != "microsoft.devices/iothubs" | where name contains "v2"'

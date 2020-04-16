@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions
                 Export = value.Export,
                 DisabledDataSources = value.DisabledDataSources,
                 IotHubs = value.IotHubs,
-                UserDefinedResources = value.UserDefinedResources.ConvertToPSType(),
+                UserDefinedResources = value.UserDefinedResources?.ConvertToPSType(),
                 AutoDiscoveredResources = value.AutoDiscoveredResources,
-                RecommendationsConfiguration = value.RecommendationsConfiguration.ConvertToPSType(),
+                RecommendationsConfiguration = value.RecommendationsConfiguration?.ConvertToPSType(),
                 UnmaskedIpLoggingStatus = value.UnmaskedIpLoggingStatus
             };
         }

@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutionAnalytics
             {
                 case ParameterSetNames.SolutionScope:
                     var recommendations = SecurityCenterClient.IotSecuritySolutionsAnalyticsRecommendation.ListWithHttpMessagesAsync(ResourceGroupName, SolutionName).GetAwaiter().GetResult().Body;
-                    var PSTypeRecommendations = recommendations.ConvertToPSType();
+                    var PSTypeRecommendations = recommendations?.ConvertToPSType();
                     WriteObject(PSTypeRecommendations, enumerateCollection: true);
                     numberOfFetchedRecommendations += PSTypeRecommendations.Count;
                     nextLink = recommendations?.NextPageLink;
                     while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedRecommendations < MaxAlertsToFetch)
                     {
                         recommendations = SecurityCenterClient.IotSecuritySolutionsAnalyticsRecommendation.ListNextWithHttpMessagesAsync(recommendations.NextPageLink).GetAwaiter().GetResult().Body;
-                        PSTypeRecommendations = recommendations.ConvertToPSType();
+                        PSTypeRecommendations = recommendations?.ConvertToPSType();
                         WriteObject(PSTypeRecommendations, enumerateCollection: true);
                         numberOfFetchedRecommendations += PSTypeRecommendations.Count;
                         nextLink = recommendations?.NextPageLink;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutionAnalytics
                     break;
                 case ParameterSetNames.SolutionLevelResource:
                     var recommendation = SecurityCenterClient.IotSecuritySolutionsAnalyticsRecommendation.GetWithHttpMessagesAsync(ResourceGroupName, SolutionName, Name).GetAwaiter().GetResult().Body;
-                    WriteObject(recommendation.ConvertToPSType(), enumerateCollection: false);
+                    WriteObject(recommendation?.ConvertToPSType(), enumerateCollection: false);
                     break;
                 default:
                     throw new PSInvalidOperationException();

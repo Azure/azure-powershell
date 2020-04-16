@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"workspace\": \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace\",\r\n    \"displayName\": \"MichalDemoHub\",\r\n    \"status\": \"Enabled\",\r\n    \"iotHubs\": [\r\n      \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub\"\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d5d824b0-6d88-4056-94b5-c86d2036acf3"
+          "ce7bd6d0-ef55-4819-8e90-eae3a8861606"
         ],
         "Accept-Language": [
           "en-US"
@@ -39,13 +39,13 @@
           "249"
         ],
         "x-ms-request-id": [
-          "64d4e1c1-22ca-4175-906f-4d79b177190f"
+          "1b1d1be3-ef79-483a-9acd-f60a498728de"
         ],
         "x-ms-correlation-request-id": [
-          "64d4e1c1-22ca-4175-906f-4d79b177190f"
+          "1b1d1be3-ef79-483a-9acd-f60a498728de"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20200416T094426Z:64d4e1c1-22ca-4175-906f-4d79b177190f"
+          "WESTEUROPE:20200416T094542Z:1b1d1be3-ef79-483a-9acd-f60a498728de"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -54,10 +54,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 16 Apr 2020 09:44:26 GMT"
+          "Thu, 16 Apr 2020 09:45:42 GMT"
         ],
         "Content-Length": [
-          "3080"
+          "3081"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -66,17 +66,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Security/IoTSecuritySolutions/MichalDemoHub\",\r\n  \"name\": \"MichalDemoHub\",\r\n  \"type\": \"Microsoft.Security/IoTSecuritySolutions\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"displayName\": \"MichalDemoHub\",\r\n    \"status\": \"Enabled\",\r\n    \"export\": [],\r\n    \"disabledDataSources\": [],\r\n    \"workspace\": \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourcegroups/michalresourcegroup/providers/microsoft.operationalinsights/workspaces/iothubworkspace\",\r\n    \"additionalWorkspaces\": null,\r\n    \"iotHubs\": [\r\n      \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourcegroups/michalresourcegroup/providers/microsoft.devices/iothubs/michaldemohub\"\r\n    ],\r\n    \"userDefinedResources\": {\r\n      \"query\": null,\r\n      \"querySubscriptions\": null\r\n    },\r\n    \"recommendationsConfiguration\": [\r\n      {\r\n        \"recommendationType\": \"IoT_ACRAuthentication\",\r\n        \"name\": \"Service prinicpal not used with ACR repository\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_AgentSendsUnutilizedMessages\",\r\n        \"name\": \"Agent sending underutilized messages\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_Baseline\",\r\n        \"name\": \"Operating system (OS) baseline validation failure\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_EdgeHubMemOptimize\",\r\n        \"name\": \"IoT Edge Hub memory can be optimized\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_EdgeLoggingOptions\",\r\n        \"name\": \"No logging configured for IoT Edge module\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_InconsistentModuleSettings\",\r\n        \"name\": \"SecurityGroup has inconsistent module settings\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_InstallAgent\",\r\n        \"name\": \"Install the Azure IoT Security agent\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_IPFilter_DenyAll\",\r\n        \"name\": \"Default IP filter policy should be deny\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_IPFilter_PermissiveRule\",\r\n        \"name\": \"IP filter rule includes a large IP range\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_OpenPorts\",\r\n        \"name\": \"Device has open ports\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_PermissiveFirewallPolicy\",\r\n        \"name\": \"Permissive firewall policy in one of the chains\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_PermissiveInputFirewallRules\",\r\n        \"name\": \"Permissive firewall rule in the input chain\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_PermissiveOutputFirewallRules\",\r\n        \"name\": \"Permissive firewall rule in the output chain\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_PrivilegedDockerOptions\",\r\n        \"name\": \"High level permissions configured in IoT Edge model twin for IoT Edge module\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_RecommendedIpRulesByBaseLine\",\r\n        \"name\": \"Recommended Rules for ip filter\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_SharedCredentials\",\r\n        \"name\": \"Same authentication credentials used by multiple devices\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_VulnerableTLSCipherSuite\",\r\n        \"name\": \"TLS cipher suite upgrade needed\",\r\n        \"status\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"autoDiscoveredResources\": [\r\n      \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourcegroups/michalresourcegroup/providers/microsoft.devices/iothubs/michaldemohub\"\r\n    ],\r\n    \"unmaskedIpLoggingStatus\": \"Disabled\"\r\n  },\r\n  \"tags\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Security/IoTSecuritySolutions/MichalDemoHub\",\r\n  \"name\": \"MichalDemoHub\",\r\n  \"type\": \"Microsoft.Security/IoTSecuritySolutions\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"displayName\": \"MichalDemoHub\",\r\n    \"status\": \"Enabled\",\r\n    \"export\": [],\r\n    \"disabledDataSources\": [],\r\n    \"workspace\": \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourcegroups/michalresourcegroup/providers/microsoft.operationalinsights/workspaces/iothubworkspace\",\r\n    \"additionalWorkspaces\": null,\r\n    \"iotHubs\": [\r\n      \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourcegroups/michalresourcegroup/providers/microsoft.devices/iothubs/michaldemohub\"\r\n    ],\r\n    \"userDefinedResources\": {\r\n      \"query\": null,\r\n      \"querySubscriptions\": null\r\n    },\r\n    \"recommendationsConfiguration\": [\r\n      {\r\n        \"recommendationType\": \"IoT_ACRAuthentication\",\r\n        \"name\": \"Service prinicpal not used with ACR repository\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_AgentSendsUnutilizedMessages\",\r\n        \"name\": \"Agent sending underutilized messages\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_Baseline\",\r\n        \"name\": \"Operating system (OS) baseline validation failure\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_EdgeHubMemOptimize\",\r\n        \"name\": \"IoT Edge Hub memory can be optimized\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_EdgeLoggingOptions\",\r\n        \"name\": \"No logging configured for IoT Edge module\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_InconsistentModuleSettings\",\r\n        \"name\": \"SecurityGroup has inconsistent module settings\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_InstallAgent\",\r\n        \"name\": \"Install the Azure IoT Security agent\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_IPFilter_DenyAll\",\r\n        \"name\": \"Default IP filter policy should be deny\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_IPFilter_PermissiveRule\",\r\n        \"name\": \"IP filter rule includes a large IP range\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_OpenPorts\",\r\n        \"name\": \"Device has open ports\",\r\n        \"status\": \"Disabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_PermissiveFirewallPolicy\",\r\n        \"name\": \"Permissive firewall policy in one of the chains\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_PermissiveInputFirewallRules\",\r\n        \"name\": \"Permissive firewall rule in the input chain\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_PermissiveOutputFirewallRules\",\r\n        \"name\": \"Permissive firewall rule in the output chain\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_PrivilegedDockerOptions\",\r\n        \"name\": \"High level permissions configured in IoT Edge model twin for IoT Edge module\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_RecommendedIpRulesByBaseLine\",\r\n        \"name\": \"Recommended Rules for ip filter\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_SharedCredentials\",\r\n        \"name\": \"Same authentication credentials used by multiple devices\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"recommendationType\": \"IoT_VulnerableTLSCipherSuite\",\r\n        \"name\": \"TLS cipher suite upgrade needed\",\r\n        \"status\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"autoDiscoveredResources\": [\r\n      \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourcegroups/michalresourcegroup/providers/microsoft.devices/iothubs/michaldemohub\"\r\n    ],\r\n    \"unmaskedIpLoggingStatus\": \"Disabled\"\r\n  },\r\n  \"tags\": {}\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Security/iotSecuritySolutions/MichalDemoHub?api-version=2019-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDc1NDIzZTktN2QzMy00MTY2LThiZGYtMzkyMGIwNGUzNzM1L3Jlc291cmNlR3JvdXBzL01pY2hhbFJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TZWN1cml0eS9pb3RTZWN1cml0eVNvbHV0aW9ucy9NaWNoYWxEZW1vSHViP2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"recommendationsConfiguration\": [\r\n      {\r\n        \"recommendationType\": \"IoT_OpenPorts\",\r\n        \"status\": \"Disabled\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"recommendationsConfiguration\": [\r\n      {\r\n        \"recommendationType\": \"IoT_OpenPorts\",\r\n        \"status\": \"Disabled\"\r\n      }\r\n    ]\r\n  },\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bc82afaa-1e42-40d9-84b4-a410f23af06b"
+          "e0f9c840-5c3f-490a-8bd7-45de06f5e384"
         ],
         "Accept-Language": [
           "en-US"
@@ -91,7 +91,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "170"
+          "185"
         ]
       },
       "ResponseHeaders": {
@@ -108,13 +108,13 @@
           "248"
         ],
         "x-ms-request-id": [
-          "b5d53284-6323-46ce-b9be-1469e0d3d5b5"
+          "20d70368-042a-4773-ae91-821962535e61"
         ],
         "x-ms-correlation-request-id": [
-          "b5d53284-6323-46ce-b9be-1469e0d3d5b5"
+          "20d70368-042a-4773-ae91-821962535e61"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20200416T094427Z:b5d53284-6323-46ce-b9be-1469e0d3d5b5"
+          "WESTEUROPE:20200416T094543Z:20d70368-042a-4773-ae91-821962535e61"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -123,7 +123,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 16 Apr 2020 09:44:27 GMT"
+          "Thu, 16 Apr 2020 09:45:43 GMT"
         ],
         "Content-Length": [
           "3081"

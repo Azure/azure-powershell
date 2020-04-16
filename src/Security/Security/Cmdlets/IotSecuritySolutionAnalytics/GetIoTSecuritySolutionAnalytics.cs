@@ -41,12 +41,12 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutionAnalytics
             if (Default.IsPresent)
             {
                 var analytic = SecurityCenterClient.IotSecuritySolutionAnalytics.GetWithHttpMessagesAsync(ResourceGroupName, SolutionName).GetAwaiter().GetResult().Body;
-                WriteObject(analytic.ConvertToPSType(), enumerateCollection: false);
+                WriteObject(analytic?.ConvertToPSType(), enumerateCollection: false);
             }
             else
             {
                 var analytics = SecurityCenterClient.IotSecuritySolutionAnalytics.ListWithHttpMessagesAsync(ResourceGroupName, SolutionName).GetAwaiter().GetResult().Body;
-                WriteObject(analytics.ConvertToPSType(), enumerateCollection: true);
+                WriteObject(analytics?.ConvertToPSType(), enumerateCollection: true);
             }
         }
     }
