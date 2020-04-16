@@ -19,12 +19,6 @@ Remove-AzNetAppFilesReplication -ResourceGroupName <String> -AccountName <String
  [<CommonParameters>]
 ```
 
-### ByParentObjectParameterSet
-```
-Remove-AzNetAppFilesReplication -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
 ### ByResourceIdParameterSet
 ```
 Remove-AzNetAppFilesReplication -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
@@ -41,6 +35,7 @@ Remove-AzNetAppFilesReplication -InputObject <PSNetAppFilesVolume> [-PassThru]
 Remove/Delete the replication connection on the destination volume, and send release to the source replication
 
 ## EXAMPLES
+
 ### Example 1
 ```powershell
 PS C:\> Remove-AnfReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
@@ -100,7 +95,7 @@ The name of the ANF replication destination volume
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
+Parameter Sets: ByFieldsParameterSet
 Aliases: VolumeName
 
 Required: True

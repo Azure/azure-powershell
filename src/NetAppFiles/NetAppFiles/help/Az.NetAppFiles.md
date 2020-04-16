@@ -48,7 +48,7 @@ Deletes an Azure NetApp Files (ANF) account.
 Deletes an Azure NetApp Files (ANF) pool.
 
 ### [Remove-AzNetAppFilesReplication](Remove-AzNetAppFilesReplication.md)
-Remove the replication connection on the destination volume, and send release to the source replication
+Remove/Delete the replication connection on the destination volume, and send release to the source replication
 
 ### [Remove-AzNetAppFilesSnapshot](Remove-AzNetAppFilesSnapshot.md)
 Deletes an Azure NetApp Files (ANF) snapshot.
@@ -63,7 +63,7 @@ Resume/Resync the connection on the destination volume. If the operation is ran 
 Updates an Azure NetApp Files (ANF) account with the new data set. Useful for deletion of associated active directories.
 
 ### [Suspend-AzNetAppFilesReplication](Suspend-AzNetAppFilesReplication.md)
-Suspends/breaks the replication connection on the destination volume
+Suspend/break the replication connection on the destination volume
 
 ### [Update-AzNetAppFilesAccount](Update-AzNetAppFilesAccount.md)
 Updates an Azure NetApp Files (ANF) account according to the optional modifiers provided.

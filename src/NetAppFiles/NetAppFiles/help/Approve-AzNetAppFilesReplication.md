@@ -19,12 +19,6 @@ Approve-AzNetAppFilesReplication -ResourceGroupName <String> -AccountName <Strin
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByParentObjectParameterSet
-```
-Approve-AzNetAppFilesReplication -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ByResourceIdParameterSet
 ```
 Approve-AzNetAppFilesReplication -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
@@ -119,7 +113,7 @@ The name of the ANF replication source volume
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
+Parameter Sets: ByFieldsParameterSet
 Aliases: VolumeName
 
 Required: True

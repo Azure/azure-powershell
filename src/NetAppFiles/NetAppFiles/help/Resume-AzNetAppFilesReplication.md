@@ -19,12 +19,6 @@ Resume-AzNetAppFilesReplication -ResourceGroupName <String> -AccountName <String
  [<CommonParameters>]
 ```
 
-### ByParentObjectParameterSet
-```
-Resume-AzNetAppFilesReplication -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
 ### ByResourceIdParameterSet
 ```
 Resume-AzNetAppFilesReplication -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
@@ -101,7 +95,7 @@ The name of the ANF replication destination volume
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
+Parameter Sets: ByFieldsParameterSet
 Aliases: VolumeName
 
 Required: True

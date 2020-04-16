@@ -19,12 +19,6 @@ Suspend-AzNetAppFilesReplication -ResourceGroupName <String> -AccountName <Strin
  [<CommonParameters>]
 ```
 
-### ByParentObjectParameterSet
-```
-Suspend-AzNetAppFilesReplication -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ByResourceIdParameterSet
 ```
 Suspend-AzNetAppFilesReplication -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
@@ -101,7 +95,7 @@ The name of the ANF replication destination volume
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
+Parameter Sets: ByFieldsParameterSet
 Aliases: VolumeName
 
 Required: True

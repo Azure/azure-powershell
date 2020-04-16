@@ -63,10 +63,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
             Mandatory = true,
             ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF replication source volume")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ParentObjectParameterSet,
-            HelpMessage = "The name of the ANF replication source volume")]
         [ValidateNotNullOrEmpty]
         [Alias("VolumeName")]
         [ResourceNameCompleter(

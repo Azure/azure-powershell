@@ -41,6 +41,7 @@ MirrorState        : Mirrored
 TotalProgress      : 1024
 ErrorMessage       :
 ```
+
 This command gets the status of replication on MyVol
 
 ## PARAMETERS

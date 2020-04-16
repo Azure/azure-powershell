@@ -62,10 +62,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
             Mandatory = true,
             HelpMessage = "The name of the ANF replication destination volume",
             ParameterSetName = FieldsParameterSet)]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the ANF replication destination volume",
-            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("VolumeName")]
         [ResourceNameCompleter(
@@ -73,7 +69,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
             nameof(ResourceGroupName),
             nameof(AccountName),
             nameof(PoolName))]
-        public string DestinationVolumeName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -107,7 +103,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
                 var parentResources = resourceIdentifier.ParentResource.Split('/');
                 AccountName = parentResources[1];
                 PoolName = parentResources[3];
-                DestinationVolumeName = resourceIdentifier.ResourceName;
+                Name = resourceIdentifier.ResourceName;
             }
             else if (ParameterSetName == ObjectParameterSet)
             {
@@ -115,15 +111,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
                 var NameParts = InputObject.Name.Split('/');
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
-                DestinationVolumeName = NameParts[2];
-            }
-            else if (ParameterSetName == ParentObjectParameterSet)
-            {
-                ResourceGroupName = VolumeObject.ResourceGroupName;
-                var NameParts = VolumeObject.Name.Split('/');
-                AccountName = NameParts[0];
-                PoolName = NameParts[1];
-                DestinationVolumeName = NameParts[2];
+                Name = NameParts[2];
             }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
