@@ -70,9 +70,9 @@ Accept wildcard characters: False
 
 ### -DisableJobOption
 Specifies what to do with active tasks associated with the job that this cmdlet disables.
-Valid values are: 
-- Requeue 
-- Terminate 
+Valid values are:
+- Requeue
+- Terminate
 - Wait
 
 ```yaml
@@ -132,6 +132,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Stop-AzBatchJob](./Stop-AzBatchJob.md)
 
-[Azure Batch Cmdlets](./Az.Batch.md)
-
-
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)
