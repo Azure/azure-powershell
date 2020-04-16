@@ -78,7 +78,7 @@ The IpAllocation
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSIpAllocation
 Parameter Sets: SetByInputObjectParameterSet
-Aliases: NatGateway
+Aliases: IpAllocation
 
 Required: True
 Position: Named
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Nat Gateway Id
+IpAllocation Id
 
 ```yaml
 Type: System.String

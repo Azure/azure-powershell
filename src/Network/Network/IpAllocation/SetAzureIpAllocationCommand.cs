@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Nat Gateway Id",
+            HelpMessage = "IpAllocation Id",
             ParameterSetName = SetByResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             ParameterSetName = SetByInputObjectParameterSet,
             HelpMessage = "The IpAllocation")]
-        [Alias("NatGateway")]
+        [Alias("IpAllocation")]
         public PSIpAllocation InputObject { get; set; }
 
         [Parameter(
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name = resourceIdentifier.ResourceName;
             }
 
-            if (!this.IsIpAllocationPresent(this.InputObject.ResourceGroupName, this.InputObject.Name))
+            if (!this.IsIpAllocationPresent(this.ResourceGroupName, this.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
