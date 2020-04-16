@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
@@ -36,7 +35,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
         [Parameter(Mandatory = false,
             HelpMessage = "If this rule is a match should the rules engine continue running the remaining rules or stop. Possible values are Continue and Stop. If not present, defaults to Continue.")]
-        [PSArgumentCompleter("Continue", "Stop")]
         public PSMatchProcessingBehavior MatchProcessingBehavior { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.")]

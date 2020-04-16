@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
@@ -27,7 +26,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public string HeaderName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Which type of manipulation to apply to the header. Possible values include 'Append', 'Delete', or 'Overwrite'")]
-        [PSArgumentCompleter("Append", "Delete", "Overwrite")]
         public PSHeaderActionType HeaderActionType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The value to update the given header name with. This value is not used if the actionType is Delete.")]

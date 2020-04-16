@@ -27,8 +27,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     {
         [Parameter(Mandatory = true,
             HelpMessage = "Match Variable. Possible values are IsMobile, RemoteAddr, RequestMethod, QueryString, PostArg, RequestUri, RequestPath, RequestFileName, RequestfilenameExtension, RequestHeader, RequestBody, RequestScheme")]
-        [PSArgumentCompleter("IsMobile", "RemoteAddr", "RequestMethod", "QueryString", "PostArg", "RequestUri",
-            "RequestPath", "RequestFilename", "RequestFilenameExtension", "RequestHeader", "RequestBody", "RequestScheme")]
         public PSRulesEngineMatchVariable MatchVariable { get; set; }
 
         [Parameter(Mandatory = true,
@@ -40,8 +38,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
         [Parameter(Mandatory = false,
             HelpMessage = "Describes operator to apply to the match condition. Possible values are Any, IPMatch, GeoMatch, Equal, Contains, LessThan, GreaterThan, LessThanOrEqual, GreaterThanOrEqual, BeginsWith, EndsWith.")]
-        [PSArgumentCompleter("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan",
-            "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith")]
         public PSRulesEngineOperator Operator { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Describes if this is negate condition or not")]
