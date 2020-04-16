@@ -27,6 +27,8 @@
     - `Get-AzInsightsPrivateLinkScopedResource`
     - `New-AzInsightsPrivateLinkScopedResource`
     - `Remove-AzInsightsPrivateLinkScopedResource`
+* Removed redundant definition for RetentionPolicy in PSLogProfile. Issue: https://github.com/Azure/azure-powershell/issues/7608
+* Removed redundant properties difined in PSEventData. Issue: https://github.com/Azure/azure-powershell/issues/11353
 
 ## Version 1.6.2
 * Updated documentation for `New-AzScheduledQueryRuleLogMetricTrigger`
