@@ -230,6 +230,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate Sas Token.
+        /// </summary>
+        internal static string NewIotHubSasToken {
+            get {
+                return ResourceManager.GetString("NewIotHubSasToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Event Hub Consumer Group.
         /// </summary>
         internal static string RemoveEventHubConsumerGroup {

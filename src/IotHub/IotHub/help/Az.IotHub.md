@@ -134,6 +134,9 @@ Creates a new import devices job.
 ### [New-AzIotHubKey](New-AzIotHubKey.md)
 Generate an Azure IoT Hub key.
 
+### [New-AzIotHubSasToken](New-AzIotHubSasToken.md)
+Generate a SAS token for a target IoT Hub, device or module.
+
 ### [Remove-AzIotHub](Remove-AzIotHub.md)
 Deletes an IotHub.
 
