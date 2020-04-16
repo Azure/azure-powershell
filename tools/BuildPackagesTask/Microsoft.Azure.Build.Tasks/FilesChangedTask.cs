@@ -14,11 +14,12 @@
 //
 namespace Microsoft.WindowsAzure.Build.Tasks
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.InteropServices;
     using Microsoft.Build.Framework;
     using Microsoft.Build.Utilities;
     using Octokit;
-    using System.Collections.Generic;
-    using System;
 
     /// <summary>
     /// Build task to get all of the files changed in a given PR.
@@ -87,7 +88,13 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 List<string> filesChanged = new List<string>();
                 try
                 {
+                    //The variable is set in pipeline: "azure-powershell - powershell-core"
+                    var token = Environment.GetEnvironmentVariable("NOSCOPEPAT_ADXSDKPS");
                     var client = new GitHubClient(new ProductHeaderValue("Azure"));
+                    if(RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && !string.IsNullOrEmpty(token))
+                    {
+                        client.Credentials = new Credentials(token);
+                    }
                     var files = client.PullRequest.Files(RepositoryOwner, RepositoryName, int.Parse(PullRequestNumber))
                                     .ConfigureAwait(false).GetAwaiter().GetResult();
                     if (files == null)
