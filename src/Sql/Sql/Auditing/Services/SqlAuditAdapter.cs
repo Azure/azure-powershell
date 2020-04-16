@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 return isSecondary.Value ? StorageKeyKind.Secondary : StorageKeyKind.Primary;
             }
 
-            return StorageKeyKind.Primary;
+            return StorageKeyKind.None;
         }
 
         private static string GetStorageAccountName(string storageEndpoint)
@@ -440,7 +440,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             else
             {
                 policy.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
-                policy.StorageAccountAccessKey = AzureCommunicator.RetrieveStorageKeysAsync(model.StorageAccountResourceId).GetAwaiter().GetResult()[model.StorageKeyType];
+                policy.StorageAccountAccessKey = AzureCommunicator.RetrieveStorageKeysAsync(
+                    model.StorageAccountResourceId).GetAwaiter().GetResult()[model.StorageKeyType == StorageKeyKind.Secondary ? StorageKeyKind.Secondary : StorageKeyKind.Primary];
             }
 
             if (model.RetentionInDays != null)
