@@ -1,3 +1,99 @@
+## 3.8.0 - April 2020
+#### Az.Accounts
+* Updated Azure PowerShell survey URL in 'Resolve-AzError' [#11507]
+
+#### Az.ApiManagement
+* Added breaking change notice for Azure File cmdlets output change in a future release
+* 'Set-AzApiManagementGroup' Updated documentation to specify the GroupId parameter
+
+#### Az.Cdn
+* Fixed ChinaCDN related pricing SKU display
+
+#### Az.CognitiveServices
+* Supported Identity, Encryption, UserOwnedStorage 
+
+#### Az.Compute
+* Added 'Set-AzVmssOrchestrationServiceState' cmdlet.
+* 'Get-AzVmss' with -InstanceView shows OrchestrationService states.
+
+#### Az.IotHub
+* Manage IoT device twin configuration, New cmdlets are:
+    - 'Get-AzIotHubDeviceTwin'
+    - 'Update-AzIotHubDeviceTwin'
+* Added cmdlet to invoke direct method on a device in an Iot Hub.
+* Manage IoT device module twin configuration, New cmdlets are:
+    - 'Get-AzIotHubModuleTwin'
+    - 'Update-AzIotHubModuleTwin'
+* Manage IoT automatic device management configuration at scale. New cmdlets are:
+    - 'Add-AzIotHubConfiguration'
+    - 'Get-AzIotHubConfiguration'
+    - 'Remove-AzIotHubConfiguration'
+    - 'Set-AzIotHubConfiguration'
+* Added cmdlet to invoke an edge module method in an Iot Hub.
+
+#### Az.KeyVault
+* Added a new cmdlet 'Update-AzKeyVault' that can enable soft delete and purge protection on a vault
+* Added support to Microsoft.PowerShell.SecretManagement [#11178]
+* Fixed error in the examples of 'Remove-AzKeyVaultManagedStorageSasDefinition' [#11479]
+* Added support to private endpoint
+
+#### Az.Maintenance
+* Publishing release version of Maintenance cmdlets for GA
+
+#### Az.Monitor
+* Added cmdlets for private link scope
+    - 'Get-AzInsightsPrivateLinkScope'
+    - 'Remove-AzInsightsPrivateLinkScope'
+    - 'New-AzInsightsPrivateLinkScope'
+    - 'Update-AzInsightsPrivateLinkScope'
+    - 'Get-AzInsightsPrivateLinkScopedResource'
+    - 'New-AzInsightsPrivateLinkScopedResource'
+    - 'Remove-AzInsightsPrivateLinkScopedResource'
+
+#### Az.Network
+* Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
+    - 'New-AzVirtualNetworkGateway'
+    - 'Set-AzVirtualNetworkGateway'
+    - 'New-AzVirtualNetworkGatewayConnection'
+    - 'Set-AzVirtualNetworkGatewayConnection'
+* Updated cmdlets to enable FQDN based LocalNetworkGateways and VpnSites
+    - 'New-AzLocalNetworkGateway'
+    - 'New-AzVpnSiteLink'
+* Added support for IPv6 address family in ExpressRouteCircuitConnectionConfig (Global Reach)
+    - Added 'Set-AzExpressRouteCircuitConnectionConfig'
+        - allows setting of all the existing properties including the IPv6CircuitConnectionProperties
+    - Updated 'Add-AzExpressRouteCircuitConnectionConfig'
+        - Added another optional parameter AddressPrefixType to specify the address family of address prefix
+* Updated cmdlets to enable setting of DPD Timeout on Virtual Network Gateway Connections.
+    - New-AzVirtualNetworkGatewayConnection
+    - Set-AzVirtualNetworkGatewayConnection
+
+#### Az.PolicyInsights
+* Added 'Start-AzPolicyComplianceScan' cmdlet for triggering policy compliance scans
+* Added policy definition, set definition, and assignment versions to 'Get-AzPolicyState' output
+
+#### Az.ServiceFabric
+* Improved code formatting and usability of 'New-AzServiceFabricCluster' examples
+
+#### Az.Sql
+* Added cmdlets 'Get-AzSqlInstanceOperation' and 'Stop-AzSqlInstanceOperation'
+* Supported auditing to a storage account in VNet.
+
+#### Az.Storage
+* Added breaking change notice for Azure File cmdlets output change in a future release
+* Supported new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported DataLake Gen2 
+    - 'New-AzDataLakeGen2Item'
+    - 'Get-AzDataLakeGen2Item'
+    - 'Get-AzDataLakeGen2ChildItem'
+    - 'Move-AzDataLakeGen2Item'
+    - 'Set-AzDataLakeGen2ItemAclObject'
+    - 'Update-AzDataLakeGen2Item'
+    - 'Get-AzDataLakeGen2ItemContent'
+    - 'Remove-AzDataLakeGen2Item'
+
 ## 0.10.0-preview - April 2020
 ### General
 * Az modules is now available in preview on Azure Stack Hub. This allows for cross-platform compatibility with Linux and macOs. Azure Stack Hub now supports PowerShell core with the Az modules, more information [here](https://aka.ms/az4AzureStack)
