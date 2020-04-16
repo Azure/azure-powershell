@@ -25,7 +25,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "Resource under whitelisting")]
+        [Fact(Skip = "IpAllocation need manually onboard.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.ipam)]
         public void TestIpAllocayionBasicOperations()
