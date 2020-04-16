@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "IpAllocations")]
-        public PSIpAllocation[] IpAllocations { get; set; }
+            HelpMessage = "IpAllocation")]
+        public PSIpAllocation[] IpAllocation { get; set; }
     }
 }

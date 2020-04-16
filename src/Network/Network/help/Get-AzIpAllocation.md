@@ -12,16 +12,21 @@ Gets a Azure IpAllocation.
 
 ## SYNTAX
 
-### NoExpand (Default)
+### GetByNameParameterSet
 ```
-Get-AzIpAllocation -Name <String> -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIpAllocation [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### Expand
+### ListParameterSet
 ```
-Get-AzIpAllocation -Name <String> -ResourceGroupName <String> [-ExpandResource] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIpAllocation [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### GetByResourceIdParameterSet
+```
+Get-AzIpAllocation [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,45 +56,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandResource
-The resource reference to be expanded.
-
-```yaml
-Type: System.String
-Parameter Sets: Expand
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: NoExpand
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Expand
+Parameter Sets: GetByNameParameterSet
 Aliases: ResourceName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -98,19 +76,34 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: NoExpand
+Parameter Sets: GetByNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ```yaml
 Type: System.String
-Parameter Sets: Expand
+Parameter Sets: ListParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+IpAllocation Id
+
+```yaml
+Type: System.String
+Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
 Required: True

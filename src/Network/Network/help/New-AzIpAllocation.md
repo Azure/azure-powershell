@@ -15,7 +15,7 @@ Creates an Azure IpAllocation.
 ```
 New-AzIpAllocation -Name <String> -ResourceGroupName <String> -Location <String>
  -IpAllocationType <String> [-Prefix <String>] [-PrefixLength <Int32>] [-PrefixType <String>]
- [-IpamAllocationId <String>] [-IpAllocationTags <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-IpamAllocationId <String>] [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,12 +26,12 @@ The **New-AzIpAllocation** cmdlet creates an Azure IpAllocation
 
 ### Example 1
 ```powershell
-New-AzIpAllocation -ResourceName 'TestIpAllocation'  -ResourceGroupName 'TestResourcegroupName' -Location 'eastus' -IpAllocationType 'Hypernet' -Prefix '1.2.3.4/32' -IpAllocationTags @{"VnetId"="vnet1"}
+New-AzIpAllocation -ResourceName 'TestIpAllocation'  -ResourceGroupName 'TestResourcegroupName' -Location 'eastus' -IpAllocationType 'Hypernet' -Prefix '1.2.3.4/32' -IpAllocationTag @{"VnetId"="vnet1"}
 ```
 
 ### Example 2
 ```powershell
-New-AzIpAllocation -ResourceName 'TestIpAllocation'  -ResourceGroupName 'TestResourcegroupName' -Location 'eastus' -IpAllocationType 'Hypernet' -PrefixLength 32 -PrefixType 'ipv4' -IpAllocationTags @{"VnetId"="vnet1"}
+New-AzIpAllocation -ResourceName 'TestIpAllocation'  -ResourceGroupName 'TestResourcegroupName' -Location 'eastus' -IpAllocationType 'Hypernet' -PrefixLength 32 -PrefixType 'ipv4' -IpAllocationTag @{"VnetId"="vnet1"}
 ```
 
 ## PARAMETERS
@@ -81,7 +81,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IpAllocationTags
+### -IpAllocationTag
 The allocation tags of the IP allocation
 
 ```yaml
@@ -103,6 +103,7 @@ The type of the IP allocation
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Hypernet, Undefined
 
 Required: True
 Position: Named
@@ -193,6 +194,7 @@ The prefix type of the IP allocation
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: IPV4, IPV6
 
 Required: False
 Position: Named

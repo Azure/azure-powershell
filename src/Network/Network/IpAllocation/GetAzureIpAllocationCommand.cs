@@ -12,66 +12,75 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.Rest.Azure;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+using AutoMapper;
+using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IpAllocation"), OutputType(typeof(PSIpAllocation))]
     public class GetAzureIpAllocationCommand : IpAllocationBaseCmdlet
     {
-        [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.",
-            ParameterSetName = "NoExpand")]
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource name.",
-           ParameterSetName = "Expand")]
-        [ResourceNameCompleter("Microsoft.Network/ipAllocation", "ResourceGroupName")]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public virtual string Name { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.",
-            ParameterSetName = "NoExpand")]
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.",
-           ParameterSetName = "Expand")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public virtual string ResourceGroupName { get; set; }
+        private const string ListParameterSet = "ListParameterSet";
+        private const string GetByNameParameterSet = "GetByNameParameterSet";
+        private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource reference to be expanded.",
-            ParameterSetName = "Expand")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = GetByNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The resource group name.",
+            ParameterSetName = ListParameterSet)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public string ExpandResource { get; set; }
+        public string ResourceGroupName { get; set; }
+
+        [Alias("ResourceName")]
+        [Parameter(
+            Mandatory = true,
+           HelpMessage = "The resource name.",
+            ParameterSetName = GetByNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.Network/ipAllocation", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "IpAllocation Id",
+            ParameterSetName = GetByResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         public override void Execute()
         {
 
             base.Execute();
+
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
             if (ShouldGetByName(ResourceGroupName, Name))
             {
-                var allocation = this.GetIpAllocation(this.ResourceGroupName, this.Name, this.ExpandResource);
+                var allocation = this.GetIpAllocation(this.ResourceGroupName, this.Name);
 
                 WriteObject(allocation);
             }

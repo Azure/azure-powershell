@@ -98,8 +98,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "IpAllocations")]
-        public PSIpAllocation[] IpAllocations { get; set; }
+            HelpMessage = "IpAllocation")]
+        public PSIpAllocation[] IpAllocation { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -158,9 +158,9 @@ namespace Microsoft.Azure.Commands.Network
             var vnetModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetwork>(vnet);
             vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
-            if (this.IpAllocations != null)
+            if (this.IpAllocation != null)
             {
-                foreach (var ipAllocation in this.IpAllocations)
+                foreach (var ipAllocation in this.IpAllocation)
                 {
                     var ipAllocationReference = new MNM.SubResource(ipAllocation.Id);
                     vnetModel.IpAllocations.Add(ipAllocationReference);

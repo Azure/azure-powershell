@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type of the IP allocation")]
+        [ValidateSet("Hypernet", "Undefined", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string IpAllocationType { get; set; }
 
@@ -76,6 +77,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
             HelpMessage = "The prefix type of the IP allocation")]
+        [ValidateSet("IPV4", "IPV6", IgnoreCase = true)]
         public string PrefixType { get; set; }
 
         [Parameter(
@@ -88,7 +90,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The allocation tags of the IP allocation")]
-        public Hashtable IpAllocationTags { get; set; }
+        public Hashtable IpAllocationTag { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -137,9 +139,9 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var allocationModel = NetworkResourceManagerProfile.Mapper.Map<MNM.IpAllocation>(allocation);
-            allocationModel.AllocationTags = TagsConversionHelper.CreateTagDictionary(IpAllocationTags, validate: true);
+            allocationModel.AllocationTags = TagsConversionHelper.CreateTagDictionary(this.IpAllocationTag, validate: true);
 
-            allocationModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+            allocationModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create IpALlocation call
             IpAllocationClient.CreateOrUpdate(ResourceGroupName, Name, allocationModel);
