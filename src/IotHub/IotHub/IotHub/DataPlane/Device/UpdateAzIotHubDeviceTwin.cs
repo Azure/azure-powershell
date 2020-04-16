@@ -121,11 +121,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
                 if (this.Partial.IsPresent)
                 {
-                    this.WriteObject(registryManager.UpdateTwinAsync(this.DeviceId, deviceTwin, deviceTwin.ETag).GetAwaiter().GetResult());
+                    this.WriteObject(IotHubDataPlaneUtils.ToPSDeviceTwin(registryManager.UpdateTwinAsync(this.DeviceId, deviceTwin, deviceTwin.ETag).GetAwaiter().GetResult()));
                 }
                 else
                 {
-                    this.WriteObject(registryManager.ReplaceTwinAsync(this.DeviceId, deviceTwin, deviceTwin.ETag).GetAwaiter().GetResult());
+                    this.WriteObject(IotHubDataPlaneUtils.ToPSDeviceTwin(registryManager.ReplaceTwinAsync(this.DeviceId, deviceTwin, deviceTwin.ETag).GetAwaiter().GetResult()));
                 }
             }
         }

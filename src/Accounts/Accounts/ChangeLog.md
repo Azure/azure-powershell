@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed alias of `Resolve-AzError`
+* Updated Azure PowerShell survey URL in `Resolve-AzError` [#11507]
 
 ## Version 1.7.4
 * Fixed `Get-AzTenant`/`Get-AzDefault`/`Set-AzDefault` throw NullReferenceException when not login [#10292]

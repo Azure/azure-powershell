@@ -12,10 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Blueprint.Models
+using Newtonsoft.Json;
+using System.Linq;
+
+namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
-    public class PSSecretReferenceParameterValue: PSParameterValueBase
+    /// <summary>
+    /// Private endpoint which the connection belongs to.
+    /// </summary>
+    public class PSPrivateEndpointProperty
     {
-        public PSSecretValueReference Reference { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the PrivateEndpointProperty class.
+        /// </summary>
+        /// <param name="id">Resource id of the private endpoint.</param>
+        public PSPrivateEndpointProperty(string id = default(string))
+        {
+            Id = id;
+        }
+
+        /// <summary>
+        /// Gets or sets resource id of the private endpoint.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
     }
 }

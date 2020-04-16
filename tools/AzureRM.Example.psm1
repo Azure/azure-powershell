@@ -55,7 +55,13 @@ if($PSEdition -eq 'Desktop' -and (Test-Path $preloadPath -ErrorAction Ignore))
     try
     {
         Get-ChildItem -ErrorAction Stop -Path $preloadPath -Filter "*.dll" | ForEach-Object {
-            Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
+            try
+            {
+                Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
+            }
+            catch {
+                Write-Warning $_
+            }
         }
     }
     catch {}
@@ -72,7 +78,13 @@ if($PSEdition -eq 'Core' -and (Test-Path $netCorePath -ErrorAction Ignore))
             $matches = ($loadedAssemblies | Where-Object {$_.Name -eq $assemblyName.Name})
             if (-not $matches)
             {
-                Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
+                try
+                {
+                    Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
+                }
+                catch {
+                    Write-Warning $_
+                }
             }
         }
     }

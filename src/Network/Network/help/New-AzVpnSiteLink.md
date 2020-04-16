@@ -12,8 +12,16 @@ Creates an Azure VpnSiteLink object.
 
 ## SYNTAX
 
+### ByVpnSiteLinkIpAddress
 ```
 New-AzVpnSiteLink -Name <String> -IPAddress <String> [-LinkProviderName <String>] [-LinkSpeedInMbps <UInt32>]
+ [-BGPAsn <UInt32>] [-BGPPeeringAddress <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByVpnSiteLinkFqdn
+```
+New-AzVpnSiteLink -Name <String> -Fqdn <String> [-LinkProviderName <String>] [-LinkSpeedInMbps <UInt32>]
  [-BGPAsn <UInt32>] [-BGPPeeringAddress <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -84,12 +92,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Fqdn
+The Next Hop Fqdn.
+
+```yaml
+Type: System.String
+Parameter Sets: ByVpnSiteLinkFqdn
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IPAddress
 The Next Hop IpAddress.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByVpnSiteLinkIpAddress
 Aliases:
 
 Required: True

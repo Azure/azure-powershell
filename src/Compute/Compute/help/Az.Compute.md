@@ -533,6 +533,9 @@ Sets the virtual machine scale set boot diagnostics profile.
 ### [Set-AzVmssDiskEncryptionExtension](Set-AzVmssDiskEncryptionExtension.md)
 Enables disk encryption on a VM scale set.
 
+### [Set-AzVmssOrchestrationServiceState](Set-AzVmssOrchestrationServiceState.md)
+Sets the orchestration service state for the VMSS.
+
 ### [Set-AzVmssOsProfile](Set-AzVmssOsProfile.md)
 Sets the VMSS operating system profile properties.
 

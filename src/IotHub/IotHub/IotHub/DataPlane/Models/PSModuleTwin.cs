@@ -12,11 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Blueprint.Models
+namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    public class PSParameterValueBase
+    /// <summary>
+    /// Device's Module Twin Representation.
+    /// </summary>
+    public class PSModuleTwin : PSDeviceTwin
     {
-        public string Description { get; set; }
-
+        /// <summary>
+        /// Module ID
+        /// </summary>
+        public string ModuleId { get; set; }
     }
 }

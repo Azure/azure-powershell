@@ -28,8 +28,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using System.Runtime.InteropServices;
     using Microsoft.Azure.Storage.DataMovement;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName), OutputType(typeof(CloudFile))]
+    [CmdletOutputBreakingChange(typeof(CloudFile), ChangeDescription = "The output type will change from CloudFile to AzureStorageFile, and AzureStorageFile will have CloudFile as a child property.")]
     public class SetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
     {
         [Parameter(

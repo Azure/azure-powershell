@@ -61,6 +61,38 @@ function Test-AzureRmIotHubModuleLifecycle
 	Assert-True { $newModule2.DeviceId -eq $device1 }
 	Assert-True { $newModule2.Authentication.Type -eq 'SelfSigned' }
 	
+	# Count device modules
+	$totalModules = Invoke-AzIotHubQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Query "select * from devices.modules where devices.Id='$device1'"
+	Assert-True { $totalModules.Count -eq 2}
+
+	# Get module twin
+	$module1twin = Get-AzIotHubModuleTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module1
+	Assert-True { $module1twin.DeviceId -eq $device1}
+	Assert-True { $module1twin.ModuleId -eq $module1}
+
+	# Partial update module twin
+	$tags1 = @{}
+	$tags1.Add('Test1', '1')
+	$updatedmodule1twin1 = Update-AzIotHubModuleTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module1 -tag $tags1 -Partial
+	Assert-True { $updatedmodule1twin1.DeviceId -eq $device1}
+	Assert-True { $updatedmodule1twin1.ModuleId -eq $module1}
+	Assert-True { $updatedmodule1twin1.tags.Count -eq 1}
+
+	$tags2 = @{}
+	$tags2.Add('Test2', '2')
+	$updatedmodule1twin2 = Update-AzIotHubModuleTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module1 -tag $tags2 -Partial
+	Assert-True { $updatedmodule1twin2.DeviceId -eq $device1}
+	Assert-True { $updatedmodule1twin2.ModuleId -eq $module1}
+	Assert-True { $updatedmodule1twin2.tags.Count -eq 2}
+
+	# Update module twin
+	$tags3 = @{}
+	$tags3.Add('Test3', '3')
+	$updatedmodule1twin3 = Update-AzIotHubModuleTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module1 -tag $tags3
+	Assert-True { $updatedmodule1twin3.DeviceId -eq $device1}
+	Assert-True { $updatedmodule1twin3.ModuleId -eq $module1}
+	Assert-True { $updatedmodule1twin3.tags.Count -eq 1}
+
 	# Get all modules
 	$modules = Get-AzIotHubModule -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
 	Assert-True { $modules.Count -eq 2}
@@ -76,7 +108,11 @@ function Test-AzureRmIotHubModuleLifecycle
 	Assert-True { $module.DeviceId -eq $device1 }
 	Assert-True { $module.Authentication.Type -eq 'SelfSigned' }
 
-	# Update Device
+	# Invoke direct method on device module
+	$errorMessage = 'Timed out waiting for device to connect.'
+	Assert-ThrowsContains { Invoke-AzIotHubModuleMethod -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module1 -Name "SetTelemetryInterval" } $errorMessage
+
+	# Update Module
 	$updatedModule1 = Set-AzIoTHubModule -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module1 -AuthMethod 'x509_ca'
 	Assert-True { $updatedModule1.Id -eq $module1 }
 	Assert-True { $updatedModule1.DeviceId -eq $device1 }

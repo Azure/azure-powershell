@@ -15,13 +15,14 @@ Sets the policy from a tenant in Azure Attestationn.
 ### NameParameterSet
 ```
 Set-AzAttestationPolicy [-Name] <String> [-ResourceGroupName] <String> -Tee <String> -Policy <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PolicyFormat <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Set-AzAttestationPolicy [-ResourceId] <String> -Tee <String> -Policy <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzAttestationPolicy [-ResourceId] <String> -Tee <String> -Policy <String> [-PolicyFormat <String>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +36,15 @@ PS C:\> $policy = Get-Content -Path .\custom.sgx.policy.txt
 PS C:\> Set-AzAttestationPolicy -Name pshtest -ResourceGroupName psh-test-rg -Tee SgxEnclave -Policy $policy
 ```
 
-Sets the user defined policy for TEE type *SgxEnclave* for Attestation Provider *pshtest*.
+Sets the user defined policy for TEE type *SgxEnclave* for Attestation Provider *pshtest* using a text policy format (default).
+
+### Example 2
+```powershell
+PS C:\> $policyjwt = Get-Content -Path .\custom.sgx.policy.jwt.format.txt
+PS C:\> Set-AzAttestationPolicy -Name pshtest -ResourceGroupName psh-test-rg -Tee SgxEnclave -Policy $policyjwt -PolicyFormat JWT
+```
+
+Sets the user defined policy for TEE type *SgxEnclave* for Attestation Provider *pshtest* using a JWT policy format.
 
 ## PARAMETERS
 
@@ -87,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies the JSON Web Token describing the policy document to set.
+Specifies the policy document to set.  The policy format can be either Text or JSON Web Token (JWT).
 
 ```yaml
 Type: System.String
@@ -95,6 +104,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicyFormat
+Specifies the format for the policy, either Text or JWT (JSON Web Token).  The default policy format is Text.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -133,7 +157,7 @@ Accept wildcard characters: False
 
 ### -Tee
 Specifies a type of Trusted Execution Environment.
-We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VBSEnclave.
+Four types of environment are supported: SgxEnclave, OpenEnclave, CyResComponent and VBSEnclave.
 
 ```yaml
 Type: System.String
