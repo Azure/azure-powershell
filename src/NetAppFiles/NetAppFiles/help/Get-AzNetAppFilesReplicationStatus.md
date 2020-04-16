@@ -1,50 +1,64 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/get-aznetappfilesaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/get-aznetappfilesreplicationstatus
 schema: 2.0.0
 ---
 
-# Get-AzNetAppFilesAccount
+# Get-AzNetAppFilesReplicationStatus
 
 ## SYNOPSIS
-Gets details of an Azure NetApp Files (ANF) account.
+Get the status of the replication
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzNetAppFilesAccount -ResourceGroupName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetAppFilesReplicationStatus -ResourceGroupName <String> -AccountName <String> -PoolName <String>
+ -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzNetAppFilesAccount -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetAppFilesReplicationStatus -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzNetAppFilesAccount** cmdlet gets details of an ANF account.
+Get the status of the replication
 
 ## EXAMPLES
 
-### Example 1: Get an ANF account
-```
-PS C:\>Get-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount"
+### Example 1
+```powershell
+PS C:\> Get-AnfReplicationStatus -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -PoolName "MyDestinationPool" -VolumeName "MyVol"
 
 Output:
 
-Location          : westus2
-Id                : /subscriptions/mySubs/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount
-Name              : MyAnfAccount
-Type              : Microsoft.NetApp/netAppAccounts
-Tags              :
-ProvisioningState : Succeeded
+Healthy            : true
+RelationshipStatus : Idle
+MirrorState        : Mirrored
+TotalProgress      : 1024
+ErrorMessage       :
 ```
-
-This command gets the account named MyAnfAccount.
+This command gets the status of replication on MyVol
 
 ## PARAMETERS
+
+### -AccountName
+The name of the ANF account of the replication destination volume
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -62,14 +76,29 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the ANF account
+The name of the ANF replication destination volume
 
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet
-Aliases: AccountName
+Aliases: VolumeName
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PoolName
+The name of the ANF pool of the replication destination volume
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -77,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group of the ANF account
+The resource group of the ANF replication destination volume
 
 ```yaml
 Type: System.String
@@ -92,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ANF account
+The resource id of the ANF replication destination volume
 
 ```yaml
 Type: System.String
@@ -115,7 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesReplicationStatus
 
 ## NOTES
 
