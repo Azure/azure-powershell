@@ -188,7 +188,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* ''Set-AzApiManagementGroup'' Updated documentation to specify the GroupId parameter'
+        ReleaseNotes = '* ''Set-AzApiManagementGroup'' Updated documentation to specify the GroupId parameter
+* Add breaking change notice for Azure File cmdlets output change in a future release'
 
         # Prerelease string of this module
         # Prerelease = ''

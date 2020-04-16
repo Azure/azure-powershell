@@ -4,6 +4,7 @@
 
 #### Az.ApiManagement
 * 'Set-AzApiManagementGroup' Updated documentation to specify the GroupId parameter
+* Add breaking change notice for Azure File cmdlets output change in a future release
 
 #### Az.Cdn
 * Fixed ChinaCDN related pricing SKU display
