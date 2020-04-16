@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.5
 * Updated Azure PowerShell survey URL in `Resolve-AzError` [#11507]
 
 ## Version 1.7.4

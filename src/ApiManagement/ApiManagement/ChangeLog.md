@@ -18,8 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add breaking change notice for Azure File cmdlets output change in a future release
+
+## Version 1.4.1
 * `Set-AzApiManagementGroup` Updated documentation to specify the GroupId parameter
+* Add breaking change notice for Azure File cmdlets output change in a future release
 
 ## Version 1.4.0
 * Added support for retrieving and configuring Custom Domain on the DeveloperPortal Endpoint [#11007]

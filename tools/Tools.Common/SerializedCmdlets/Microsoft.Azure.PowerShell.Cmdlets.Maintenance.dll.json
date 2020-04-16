@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LastUpdateTime": "System.Nullable`1[System.DateTime]",
               "Status": "System.String",
@@ -524,7 +524,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LastUpdateTime": "System.Nullable`1[System.DateTime]",
               "Status": "System.String",
@@ -1010,7 +1010,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Location": "System.String",
               "MaintenanceConfigurationId": "System.String",
@@ -2309,7 +2309,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Location": "System.String",
               "MaintenanceConfigurationId": "System.String",
@@ -2753,7 +2753,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ExtensionProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3748,7 +3748,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ExtensionProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -4026,7 +4026,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ExtensionProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -4122,7 +4122,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ExtensionProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -4286,7 +4286,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
                   "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ExtensionProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
