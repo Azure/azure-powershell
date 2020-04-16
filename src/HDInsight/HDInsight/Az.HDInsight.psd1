@@ -97,7 +97,7 @@ CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition',
                'Submit-AzHDInsightScriptAction', 'Get-AzHDInsightCluster', 
                'New-AzHDInsightCluster', 'Add-AzHDInsightClusterIdentity', 
                'Enable-AzHDInsightMonitoring', 'Disable-AzHDInsightMonitoring', 
-               'Get-AzHDInsightMonitoring'
+               'Get-AzHDInsightMonitoring', 'Set-AzHDInsightClusterDiskEncryptionKey'
 
 # Variables to export from this module
 # VariablesToExport = @()
