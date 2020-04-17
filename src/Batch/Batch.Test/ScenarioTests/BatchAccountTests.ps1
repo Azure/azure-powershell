@@ -47,8 +47,6 @@ function Test-BatchAccountEndToEnd
         Assert-AreEqual $location $createdAccount.Location
         Assert-AreEqual 1 $createdAccount.Tags.Count
         Assert-AreEqual $tagValue $createdAccount.Tags[$tagName]
-        Assert-True { $createdAccount.DedicatedCoreQuota -gt 0 }
-        Assert-True { $createdAccount.LowPriorityCoreQuota -gt 0 }
         Assert-True { $createdAccount.PoolQuota -gt 0 }
         Assert-True { $createdAccount.ActiveJobAndJobScheduleQuota -gt 0 }
 
