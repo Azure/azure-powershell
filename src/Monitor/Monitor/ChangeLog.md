@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.7.0
 * Added cmdlets for private link scope
     - `Get-AzInsightsPrivateLinkScope`
     - `Remove-AzInsightsPrivateLinkScope`
