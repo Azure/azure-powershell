@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed two aliases: `New-AzKeyVaultCertificateAdministratorDetails` and `New-AzKeyVaultCertificateOrganizationDetails`
+* When creating a key vault, soft delete is now enabled by default
 * Added a new cmdlet `Update-AzKeyVault` that can enable soft delete and purge protection on a vault
 * Added support to Microsoft.PowerShell.SecretManagement [#11178]
 * Fixed error in the examples of `Remove-AzKeyVaultManagedStorageSasDefinition` [#11479]
