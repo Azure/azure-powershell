@@ -100,7 +100,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(MSBuildThisFileDirectory) -Recurse -Include 'bin','obj','TestResults' | Remove-Item -Recurse -Force -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
   </Target>
 
-  <Target Name="FilterBuild" Condition="$(PullRequestNumber) != ''">
+  <Target Name="FilterBuild" Condition="$(PullRequestNumber) != '' OR $(TargetModule) != ''">
     <Message Importance="high" Text="Filtering projects and modules..." />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CreateFilterMappings.ps1&quot;" />
 
@@ -108,7 +108,7 @@
     <Exec Command="dotnet publish $(RepoTools)BuildPackagesTask/Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.csproj -c $(Configuration) -f netstandard2.0" />
 
     <!-- Get all of the files changed in the given pull request -->
-    <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)">
+    <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)" TargetModule="$(TargetModule)">
       <Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
     </FilesChangedTask>
 
@@ -143,7 +143,7 @@
     <!-- Build and create package content -->
     <Exec Command="dotnet --version" />
     <Exec Command="dotnet new sln -n Azure.PowerShell -o $(RepoArtifacts) --force" />
-    <ItemGroup Condition="$(PullRequestNumber) == ''">
+    <ItemGroup Condition="$(PullRequestNumber) == '' AND $(TargetModule) == ''">
       <CsprojFiles Include="$(RepoRoot)src/**/*.csproj" Exclude="$(RepoRoot)src/**/*.Test.csproj;$(RepoRoot)src/**/Authenticators.csproj" />
       <CsprojFiles Include="$(RepoRoot)src/**/*.Test.csproj" Exclude="$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'All'" />
       <CsprojFiles Include="$(RepoRoot)src/**/*.Test.csproj" Exclude="$(CoreTests)$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'NonCore'" />
@@ -154,6 +154,14 @@
       <!-- Always build and test common code -->
       <CsprojFiles Include="$(LibraryRoot)src/Accounts/**/*.csproj;$(LibraryRoot)tools/TestFx/TestFx.csproj" Exclude="$(LibraryRoot)src/**/Authenticators.csproj" />
       <CsprojFiles Include="%(ProjectsToBuild.Identity)" />
+      <CsprojFiles Include="$(LibraryRoot)src/**/Authenticators.csproj" Condition="'$([MSBuild]::IsOsPlatform(&quot;Windows&quot;))' == 'true'" />
+    </ItemGroup>
+    <ItemGroup Condition="$(TargetModule) != ''">
+      <!-- Add test projects only if Configuration is not Release -->
+      <CsprojFiles Include="$(LibraryRoot)src/Accounts/**/*.csproj;$(LibraryRoot)tools/TestFx/TestFx.csproj" Exclude="$(LibraryRoot)src/**/Authenticators.csproj" Condition="'$(Configuration)' != 'Release'" />
+      <CsprojFiles Include="$(LibraryRoot)src/Accounts/**/*.csproj" Exclude="$(RepoRoot)src/**/*.Test.csproj;$(LibraryRoot)src/**/Authenticators.csproj" Condition="'$(Configuration)' == 'Release'"/>
+      <CsprojFiles Include="%(ProjectsToBuild.Identity)" Condition="'$(Configuration)' != 'Release'" />
+      <CsprojFiles Include="%(ProjectsToBuild.Identity)" Exclude="$(RepoRoot)src/**/*.Test.csproj" Condition="'$(Configuration)' == 'Release'" />
       <CsprojFiles Include="$(LibraryRoot)src/**/Authenticators.csproj" Condition="'$([MSBuild]::IsOsPlatform(&quot;Windows&quot;))' == 'true'" />
     </ItemGroup>
     <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->

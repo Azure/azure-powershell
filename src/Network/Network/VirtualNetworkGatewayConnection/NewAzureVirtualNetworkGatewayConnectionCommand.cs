@@ -95,6 +95,12 @@ namespace Microsoft.Azure.Commands.Network
         ValueFromPipelineByPropertyName = true,
         HelpMessage = "RoutingWeight.")]
         public int RoutingWeight { get; set; }
+        
+        [Parameter(
+        Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+        HelpMessage = "Dead Peer Detection Timeout of the connection in seconds.")]
+        public int DpdTimeoutInSeconds { get; set; }
 
         [Parameter(
         Mandatory = false,
@@ -202,6 +208,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.LocalNetworkGateway2 = this.LocalNetworkGateway2;
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
+            vnetGatewayConnection.DpdTimeoutSeconds = this.DpdTimeoutInSeconds;
             vnetGatewayConnection.SharedKey = this.SharedKey;
             vnetGatewayConnection.EnableBgp = this.EnableBgp;
             vnetGatewayConnection.UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent;
