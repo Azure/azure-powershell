@@ -223,6 +223,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error Code: {0}
+        ///Error Message: {1}
+        ///Error Details: {2}
+        ///Request Id: {3}
+        ///Timestamp (UTC): {5}.
+        /// </summary>
+        internal static string DeploymentOperationErrorMessage {
+            get {
+                return ResourceManager.GetString("DeploymentOperationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deployment script &apos;{0}&apos; doesn&apos;t exist in resource group &apos;{1}&apos;..
         /// </summary>
         internal static string DeploymentScriptDoesntExist {

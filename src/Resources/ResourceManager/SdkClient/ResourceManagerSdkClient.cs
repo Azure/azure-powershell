@@ -252,20 +252,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             operations = new List<DeploymentOperation>();
 
             var getDeploymentFunc = this.GetDeploymentAction(parameters);
-            Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deployment);
+            var deploymentOperationError = new DeploymentOperationErrorInfo();
+            Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deployment, deploymentOperationError);
 
-            return this.WaitDeploymentStatus(
+            var deploymentExtended =  this.WaitDeploymentStatus(
                 getDeploymentFunc,
                 writeProgressAction,
                 ProvisioningState.Canceled,
                 ProvisioningState.Succeeded,
                 ProvisioningState.Failed);
+
+            if (deploymentOperationError.ErrorMessages.Count > 0)
+            {
+                deploymentOperationError.ErrorMessages.ForEach(WriteError);
+            }
+
+            return deploymentExtended;
         }
 
-        private void WriteDeploymentProgress(PSDeploymentCmdletParameters parameters, Deployment deployment)
+        private void WriteDeploymentProgress(PSDeploymentCmdletParameters parameters, Deployment deployment, DeploymentOperationErrorInfo deploymentOperationError)
         {
             const string normalStatusFormat = "Resource {0} '{1}' provisioning status is {2}";
-            const string failureStatusFormat = "Resource {0} '{1}' failed with message '{2}'";
+            //const string failureStatusFormat = "Resource {0} '{1}' failed with message '{2}'";
             List<DeploymentOperation> newOperations;
 
             var result = this.ListDeploymentOperations(parameters);
@@ -298,7 +306,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
                 else
                 {
-                    string errorMessage = operation.Properties.StatusMessage.ToString();
+                    deploymentOperationError.ProcessError(operation);
+
+                    /*string errorMessage = operation.Properties.StatusMessage.ToString();
 
                     if (operation.Properties.TargetResource != null)
                     {
@@ -319,37 +329,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     if (detailedMessage != null && detailedMessage.Count > 0)
                     {
                         detailedMessage.ForEach(s => WriteError(s));
-                    }
+                    }*/
                 }
             }
         }
-
-        public static List<string> ParseDetailErrorMessage(string statusMessage)
-        {
-            if (!string.IsNullOrEmpty(statusMessage))
-            {
-                List<string> detailedMessage = new List<string>();
-                try
-                {
-                    dynamic errorMessage = JsonConvert.DeserializeObject(statusMessage);
-                    if (errorMessage.error != null && errorMessage.error.details != null)
-                    {
-                        foreach (var detail in errorMessage.error.details)
-                        {
-                            detailedMessage.Add(detail.message.ToString());
-                        }
-                    }
-                }
-                catch
-                {
-                    //statusMessage is not always a valid JSON. It can sometimes be a string, which can result is DeserializeObject exception above in try
-                    detailedMessage.Add(statusMessage);
-                }
-                return detailedMessage;
-            }
-            return null;
-        }
-
+        
         private DeploymentExtended WaitDeploymentStatus(
             Func<Task<AzureOperationResponse<DeploymentExtended>>> getDeployment,
             Action listDeploymentOperations,

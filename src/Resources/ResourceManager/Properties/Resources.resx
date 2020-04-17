@@ -462,4 +462,11 @@
   <data name="DeploymentScriptShouldProcessString" xml:space="preserve">
     <value>Save script execution log to disk.</value>
   </data>
+  <data name="DeploymentOperationErrorMessage" xml:space="preserve">
+    <value>Error Code: {0}
+Error Message: {1}
+Error Details: {2}
+Request Id: {3}
+Timestamp (UTC): {5}</value>
+  </data>
 </root>
