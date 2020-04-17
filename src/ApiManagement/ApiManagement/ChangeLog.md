@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.1
+* Added breaking change notice for Azure File cmdlets output change in a future release
 * `Set-AzApiManagementGroup` Updated documentation to specify the GroupId parameter
 
 ## Version 1.4.0
