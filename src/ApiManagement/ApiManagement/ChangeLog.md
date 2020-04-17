@@ -18,10 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.4.1
-* Added breaking change notice for Azure File cmdlets output change in a future release
-* `Set-AzApiManagementGroup` Updated documentation to specify the GroupId parameter
 * `New-AzApiManagement` and `Set-AzApiManagement`: [-AssignIdentity] parameter renamed as [-SystemAssignedIdentity]
 * `New-AzApiManagement` and `Set-AzApiManagement`: New parameter added: [-UserAssignedIdentity <String[]>]
 * `Get-AzApiManagementProperty`: renamed as `Get-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId.
@@ -34,6 +30,10 @@
 * new `Get-AzApiManagementSubscriptionKey` cmdlet added. `Get-AzApiManagementSubscription` will not return subscription keys anymore.
 * new `Get-AzApiManagementTenantAccessSecret` cmdlet added. `Get-AzApiManagementTenantAccess` will not return keys anymore.
 * new `Get-AzApiManagementTenantGitAccessSecret` cmdlet added. `Get-AzApiManagementTenantGitAccess` will not return keys anymore.
+
+## Version 1.4.1
+* Added breaking change notice for Azure File cmdlets output change in a future release
+* `Set-AzApiManagementGroup` Updated documentation to specify the GroupId parameter
 
 ## Version 1.4.0
 * Added support for retrieving and configuring Custom Domain on the DeveloperPortal Endpoint [#11007]

@@ -15,9 +15,7 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementNamedValue", DefaultParameterSetName = GetAll)]
