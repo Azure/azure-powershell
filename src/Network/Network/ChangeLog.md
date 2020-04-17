@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
     - `New-AzVirtualNetworkGateway`
     - `Set-AzVirtualNetworkGateway`

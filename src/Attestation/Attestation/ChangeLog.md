@@ -20,6 +20,8 @@
 
 
 ## Upcoming Release
+
+## Version 0.1.7
 * Added text based policy support to policy cmdlets
 
 ## Version 0.1.6
