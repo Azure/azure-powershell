@@ -15,9 +15,11 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
     using System.Management.Automation;
 
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzureApiManagementNamedValue")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProperty")]
     [OutputType(typeof(PsApiManagementProperty))]
     public class NewAzureApiManagementProperty : AzureApiManagementCmdletBase
