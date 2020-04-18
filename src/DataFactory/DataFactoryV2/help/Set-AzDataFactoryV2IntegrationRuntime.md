@@ -263,6 +263,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
 
 ### -DataProxyIntegrationRuntimeName
 The Self-Hosted Integration Runtime name which is used as a proxy
