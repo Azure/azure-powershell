@@ -22,6 +22,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int? ChecksFailedPercent { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public int? RoundTripTimeMs { get; set; }
+        public double? RoundTripTimeMs { get; set; }
     }
 }
