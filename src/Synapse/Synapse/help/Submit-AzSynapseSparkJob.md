@@ -8,7 +8,7 @@ schema: 2.0.0
 # Submit-AzSynapseSparkJob
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Submits a Synapse Analytics Spark job.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ schema: 2.0.0
 Submit-AzSynapseSparkJob -WorkspaceName <String> -SparkPoolName <String> -Language <String> -Name <String>
  -MainDefinitionFile <String> [-MainClassName <String>] [-CommandLineArguments <String[]>]
  [-ReferenceFiles <String[]>] -ExecutorCount <Int32> -ExecutorSize <String> [-Configuration <Hashtable>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RunSparkJobByParentObjectParameterSet
@@ -25,11 +25,11 @@ Submit-AzSynapseSparkJob -WorkspaceName <String> -SparkPoolName <String> -Langua
 Submit-AzSynapseSparkJob -SparkPoolObject <PSSynapseSparkPool> -Language <String> -Name <String>
  -MainDefinitionFile <String> [-MainClassName <String>] [-CommandLineArguments <String[]>]
  [-ReferenceFiles <String[]>] -ExecutorCount <Int32> -ExecutorSize <String> [-Configuration <Hashtable>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Submit-AzSynapseSparkJob** cmdlet submits a Synapse Analytics Spark job.
 
 ## EXAMPLES
 
@@ -38,38 +38,23 @@ Submit-AzSynapseSparkJob -SparkPoolObject <PSSynapseSparkPool> -Language <String
 PS C:\> Submit-AzSynapseSparkJob -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -Language Spark -Name WordCount_Java -MainDefinitionFile abfss://ContosoFileSystem@ContosoGen2Storage.dfs.core.windows.net/samples/java/wordcount/wordcount.jar -MainClassName WordCount -CommandLineArguments abfss://ContosoFileSystem@ContosoGen2Storage.dfs.core.windows.net/samples/java/wordcount/shakespeare.txt,abfss://ContosoFileSystem@ContosoGen2Storage.dfs.core.windows.net/samples/java/wordcount/result/ -ExecutorCount 2 -ExecutorSize Small
 ```
 
-{{ Add example description here }}
+This command submits a Synapse Analytics Spark job.
 
 ### Example 2
 ```powershell
 PS C:\> Submit-AzSynapseSparkJob -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -Language SparkDotNet -Name WordCount_Dotnet -MainDefinitionFile abfss://ContosoFileSystem@ContosoGen2Storage.dfs.core.windows.net/samples/dotnet/wordcount/wordcount.zip -MainExecutableFile WordCount -CommandLineArguments abfss://ContosoFileSystem@ContosoGen2Storage.dfs.core.windows.net/samples/dotnet/wordcount/shakespeare.txt,abfss://ContosoFileSystem@ContosoGen2Storage.dfs.core.windows.net/samples/dotnet/wordcount/result -ExecutorCount 2 -ExecutorSize Small
 ```
 
-{{ Add example description here }}
+This command submits a Synapse Analytics Spark .NET job.
 
 ### Example 3
 ```powershell
 PS C:\> Submit-AzSynapseSparkJob -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -Language PySpark -Name WordCount_Python -MainDefinitionFile abfss://ContosoFileSystem@ContosoGen2Storage.blob.core.windows.net/samples/python/wordcount/wordcount.py -CommandLineArguments abfss://ContosoFileSystem@ContosoGen2Storage.blob.core.windows.net/samples/python/wordcount/shakespeare.txt,abfss://ContosoFileSystem@ContosoGen2Storage.blob.core.windows.net/samples/python/wordcount/result/ -ExecutorCount 2 -ExecutorSize Small
 ```
 
-{{ Add example description here }}
+This command submits a Synapse Analytics PySpark job.
 
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -CommandLineArguments
 Optional arguments to the job.

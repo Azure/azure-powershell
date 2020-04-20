@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzSynapseSparkStatement
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Invokes a Synapse Analytics Spark statement.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Invoke-AzSynapseSparkStatement -Language <String> -SessionObject <PSSynapseSpark
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Invoke-AzSynapseSparkStatement** cmdlet invokes a Synapse Analytics Spark statement.
 
 ## EXAMPLES
 
@@ -52,6 +52,8 @@ PS C:\> $session | Invoke-AzSynapseSparkStatement -Code '
 >> '
 ```
 
+These commands start a Spark session then invoke an inline Spark statement through pipeline.
+
 ### Example 2
 ```powershell
 PS C:\> Invoke-AzSynapseSparkStatement -SessionId 324 -Language 'Spark' -Code '
@@ -59,7 +61,7 @@ PS C:\> Invoke-AzSynapseSparkStatement -SessionId 324 -Language 'Spark' -Code '
 >> '
 ```
 
-{{ Add example description here }}
+These commands start a Spark session then invoke an inline Spark statement.
 
 ### Example 3
 ```powershell
@@ -68,7 +70,7 @@ PS C:\> $session.Language = 'Spark'
 PS C:\> $session | Invoke-AzSynapseSparkStatement -FilePath C:\path\to\code.sc
 ```
 
-{{ Add example description here }}
+These commands start a Spark session then invoke Spark statements in a file.
 
 ## PARAMETERS
 

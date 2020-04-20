@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSynapseSqlPool
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Synapse Analytics SQL pool.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzSynapseSqlPool -ResourceId <String> [-DefaultProfile <IAzureContextContain
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSynapseSqlPool** cmdlet gets information about an Azure Synapse Analytics SQL pool.
 
 ## EXAMPLES
 
@@ -39,22 +39,29 @@ Get-AzSynapseSqlPool -ResourceId <String> [-DefaultProfile <IAzureContextContain
 PS C:\> Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace
 ```
 
-{{ Add example description here }}
+This command gets all SQL pools under a workspace.
 
 ### Example 2
+```powershell
+PS C:\> Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+```
+
+This command gets the SQL pool under workspace ContosoWorkspace with name ContosoSqlPool.
+
+### Example 3
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Get-AzSynapseSqlPool
 ```
 
-{{ Add example description here }}
+This command gets all the SQL pools under a workspace through pipeline.
 
-### Example 3
+### Example 4
 ```powershell
 PS C:\> Get-AzSynapseSqlPool -ResourceId "/subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlPools/ContosoSqlPool"
 ```
 
-{{ Add example description here }}
+This command gets the SQL pool with the specified resource ID.
 
 ## PARAMETERS
 
@@ -104,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{ Fill ResourceId Description }}
+Resource identifier of Synapse SQL Pool.
 
 ```yaml
 Type: System.String
@@ -134,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceObject
-{{ Fill WorkspaceObject Description }}
+workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace

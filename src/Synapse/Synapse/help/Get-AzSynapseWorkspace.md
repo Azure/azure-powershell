@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSynapseWorkspace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Synapse Analytics workspace.
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ Get-AzSynapseWorkspace -ResourceId <String> [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSynapseWorkspace** cmdlet gets information about an Azure Synapse Analytics workspace.
 
 ## EXAMPLES
 
@@ -33,28 +33,28 @@ Get-AzSynapseWorkspace -ResourceId <String> [-DefaultProfile <IAzureContextConta
 PS C:\> Get-AzSynapseWorkspace
 ```
 
-{{ Add example description here }}
+This command gets all the Azure Synapse Analytics workspaces under the current subscription.
 
 ### Example 2
 ```powershell
 PS C:\> Get-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup
 ```
 
-{{ Add example description here }}
+This command gets all the Azure Synapse Analytics workspaces under the current subscription.
 
 ### Example 3
 ```powershell
 PS C:\> Get-AzSynapseWorkspace -Name ContosoWorkspace
 ```
 
-{{ Add example description here }}
+This command gets the Azure Synapse Analytics workspace with the specified name.
 
 ### Example 4
 ```powershell
 PS C:\> Get-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace
 ```
 
-{{ Add example description here }}
+This command gets the Azure Synapse Analytics workspace with the specified resource ID.
 
 ## PARAMETERS
 

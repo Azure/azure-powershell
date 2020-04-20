@@ -100,6 +100,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string Force = "Do not ask for confirmation.";
 
+        public const string PassThru = "This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.";
+
         public const string Response = "Indicates full response should be return.";
 
         public const string AsJob = "Run cmdlet in the background";

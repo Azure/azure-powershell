@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSynapseSqlPool
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates a Synapse Analytics SQL pool.
 
 ## SYNTAX
 
@@ -87,7 +87,7 @@ Update-AzSynapseSqlPool -ResourceId <String> [-Tag <Hashtable>] [-PerformanceLev
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzSynapseSqlPool** cmdlet updates an Azure Synapse Analytics SQL pool.
 
 ## EXAMPLES
 
@@ -96,7 +96,7 @@ Update-AzSynapseSqlPool -ResourceId <String> [-Tag <Hashtable>] [-PerformanceLev
 PS C:\> Update-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -Tag @{'key'='value'} -PerformanceLevel DW300c
 ```
 
-{{ Add example description here }}
+This command updates an Azure Synapse Analytics SQL pool.
 
 ### Example 2
 ```powershell
@@ -104,7 +104,7 @@ PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Update-AzSynapseSqlPool -Name ContosoSqlPool -Tag @{'key'='value1'}
 ```
 
-{{ Add example description here }}
+This command updates an Azure Synapse Analytics SQL pool through pipeline.
 
 ### Example 3
 ```powershell
@@ -112,42 +112,14 @@ PS C:\> $pool = Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name Conto
 PS C:\> $pool | Update-AzSynapseSqlPool -Tag @{'key'='value2'}
 ```
 
-{{ Add example description here }}
+This command updates an Azure Synapse Analytics SQL pool through pipeline.
 
 ### Example 4
 ```powershell
 PS C:\> Update-AzSynapseSqlPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd3/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlPools/ContosoSqlPool -Tag @{'key'='value3'}
 ```
 
-{{ Add example description here }}
-
-### Example 5
-```powershell
-PS C:\> Update-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoScale -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 7
-```
-
-{{ Add example description here }}
-
-### Example 6
-```powershell
-PS C:\> Update-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -DisableAutoScale
-```
-
-{{ Add example description here }}
-
-### Example 7
-```powershell
-PS C:\> Update-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoPause -AutoPauseDelayInMinutes 15
-```
-
-{{ Add example description here }}
-
-### Example 8
-```powershell
-PS C:\> Update-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -DisableAutoPause
-```
-
-{{ Add example description here }}
+This command updates an Azure Synapse Analytics SQL pool with resource ID.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzSynapseSparkPool
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Checks for the existence of a Synapse Analytics Spark pool.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Test-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Test-AzSynapseSparkPool** cmdlet checks for the existence of a Synapse Analytics Spark pool.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Test-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
 ```
 
-{{ Add example description here }}
+This command checks the existence of the specified Spark pool.
 
 ## PARAMETERS
 

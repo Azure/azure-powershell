@@ -19,7 +19,8 @@ namespace Microsoft.Azure.Commands.Synapse
         private const string CreateByNameParameterSet = "CreateByNameParameterSet";
         private const string CreateByParentObjectParameterSet = "CreateByParentObjectParameterSet";
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = CreateByParentObjectParameterSet)]
+        [Parameter(ValueFromPipeline = true, ParameterSetName = CreateByParentObjectParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.SparkPoolObject)]
         [ValidateNotNull]
         public PSSynapseSparkPool SparkPoolObject { get; set; }
 

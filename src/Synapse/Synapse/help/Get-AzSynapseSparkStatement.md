@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSynapseSparkStatement
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Synapse Analytics Spark statement.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzSynapseSparkStatement -SessionObject <PSSynapseSparkSession> [-LivyId <Int
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSynapseSparkStatement** cmdlet gets information about an Azure Synapse Analytics Spark statement.
 
 ## EXAMPLES
 
@@ -34,20 +34,22 @@ Get-AzSynapseSparkStatement -SessionObject <PSSynapseSparkSession> [-LivyId <Int
 PS C:\> Get-AzSynapseSparkStatement -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -SessionId 120
 ```
 
-{{ Add example description here }}
+This command gets all the Spark statements under a Spark session.
 
 ### Example 2
 ```powershell
 PS C:\> Get-AzSynapseSparkStatement -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -SessionId 120 -LivyId 0
 ```
 
-{{ Add example description here }}
+This command gets the Spark statement with the specified livy ID.
 
 ### Example 3
 ```powershell
 PS C:\> $session = Get-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 107
 PS C:\> $session | Get-AzSynapseSparkStatement
 ```
+
+This command gets all the Spark statements under a Spark session through pipeline.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSynapseSqlPool
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes a Synapse Analytics SQL pool.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Remove-AzSynapseSqlPool -ResourceId <String> [-PassThru] [-AsJob] [-DefaultProfi
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzSynapseSqlPool** cmdlet permanently deletes an Azure Synapse Analytics SQL pool.
 
 ## EXAMPLES
 
@@ -46,7 +46,7 @@ Remove-AzSynapseSqlPool -ResourceId <String> [-PassThru] [-AsJob] [-DefaultProfi
 PS C:\> Remove-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
-{{ Add example description here }}
+This command deletes an Azure Synapse Analytics SQL pool.
 
 ### Example 2
 ```powershell
@@ -54,7 +54,7 @@ PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Remove-AzSynapseSqlPool -Name ContosoSqlPool
 ```
 
-{{ Add example description here }}
+This command deletes an Azure Synapse Analytics SQL pool through pipeline.
 
 ### Example 3
 ```powershell
@@ -62,14 +62,14 @@ PS C:\> $pool = Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name Conto
 PS C:\> $pool | Remove-AzSynapseSqlPool
 ```
 
-{{ Add example description here }}
+This command deletes an Azure Synapse Analytics SQL pool through pipeline.
 
 ### Example 4
 ```powershell
 PS C:\> Remove-AzSynapseSqlPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlPools/ContosoSqlPool
 ```
 
-{{ Add example description here }}
+This command deletes an Azure Synapse Analytics SQL pool with the specified resource ID.
 
 ## PARAMETERS
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

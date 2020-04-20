@@ -8,7 +8,7 @@ schema: 2.0.0
 # Reset-AzSynapseSparkSessionTimeout
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Resets timeout of a Synapse Analytics Spark session.
 
 ## SYNTAX
 
@@ -31,32 +31,32 @@ Reset-AzSynapseSparkSessionTimeout -InputObject <PSSynapseSparkSession> [-PassTh
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzSynapseSparkSessionTimeout** cmdlet resets timeout of a Synapse Analytics Spark session.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzSynapseSparkSessionTimeout -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -Id 125
+PS C:\> Reset-AzSynapseSparkSessionTimeout -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 125
 ```
 
-{{ Add example description here }}
+This command resets timeout of the Synapse Analytics Spark session with the specified livy ID.
 
 ### Example 2
 ```powershell
 PS C:\> $pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool
-PS C:\> $pool | Reset-AzSynapseSparkSessionTimeout -Id 125
+PS C:\> $pool | Reset-AzSynapseSparkSessionTimeout -LivyId 125
 ```
 
-{{ Add example description here }}
+This command resets timeout of the Synapse Analytics Spark session with the specified livy ID through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $session = Get-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -Id 125
+PS C:\> $session = Get-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 125
 PS C:\> $session | Reset-AzSynapseSparkSessionTimeout
 ```
 
-{{ Add example description here }}
+This command resets timeout of the Synapse Analytics Spark session with the specified livy ID through pipeline.
 
 ## PARAMETERS
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

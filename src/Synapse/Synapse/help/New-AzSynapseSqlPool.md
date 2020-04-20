@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSynapseSqlPool
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a Synapse Analytics SQL pool.
 
 ## SYNTAX
 
@@ -100,7 +100,7 @@ New-AzSynapseSqlPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzSynapseSqlPool** cmdlet creates an Azure Synapse Analytics SQL pool.
 
 ## EXAMPLES
 
@@ -109,28 +109,28 @@ New-AzSynapseSqlPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag 
 PS C:\> New-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name dwsql0644 -PerformanceLevel DW200c
 ```
 
-{{ Add example description here }}
+This command creates an Azure Synapse Analytics SQL pool.
 
 ### Example 2
 ```powershell
 PS C:\> New-AzSynapseSqlPool -FromBackup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -BackupWorkspaceName ContosoWorkspace -BackupSqlPoolName ExistingContosoSqlPool
 ```
 
-{{ Add example description here }}
+This command creates an Azure Synapse Analytics SQL pool by restoring from the most recent backup of any SQL pool in this subscription.
 
 ### Example 3
 ```powershell
 PS C:\> New-AzSynapseSqlPool -FromRestorePoint -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -PerformanceLevel DW200c -SourceWorkspaceName ContosoWorkspace -SourceSqlPoolName ExistingContosoSqlPool
 ```
 
-{{ Add example description here }}
+This command creates an Azure Synapse Analytics SQL pool by leveraging a restore point from any SQL pool in this subscription to recover or copy from a previous state.
 
 ### Example 4
 ```powershell
 PS C:\> New-AzSynapseSqlPool -FromBackup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -BackupResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/recoverableSqlPools/ExistingContosoSqlPool
 ```
 
-{{ Add example description here }}
+This command creates an Azure Synapse Analytics SQL pool by restoring from the most recent backup of any SQL pool in this subscription with resource ID.
 
 ### Example 5
 ```powershell
@@ -138,7 +138,7 @@ PS C:\> $ws = Get-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Wo
 $ws |  New-AzSynapseSqlPool -FromRestorePoint -Name dwsql0554 -SourceResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/mandywtest/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlpools/ExistingContosoSqlPool -PerformanceLevel DW300c
 ```
 
-{{ Add example description here }}
+This command creates an Azure Synapse Analytics SQL pool by leveraging a restore point from any SQL pool in this subscription to recover or copy from a previous state with resource ID.
 
 ## PARAMETERS
 

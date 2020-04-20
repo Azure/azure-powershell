@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzSynapseWorkspace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Checks for the existence of a Synapse Analytics workspace.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ Test-AzSynapseWorkspace [-Name] <String> [[-ResourceGroupName] <String>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Test-AzSynapseWorkspace** cmdlet checks for the existence of a Synapse Analytics workspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Test-AzSynapseWorkspace -Name ContosoWorkspace
 ```
 
-{{ Add example description here }}
+This command checks for the existence of a Synapse Analytics workspace.
 
 ## PARAMETERS
 

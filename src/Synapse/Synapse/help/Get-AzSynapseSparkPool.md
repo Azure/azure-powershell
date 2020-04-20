@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSynapseSparkPool
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Synapse Analytics Spark pool.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzSynapseSparkPool -ResourceId <String> [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSynapseSparkPool** cmdlet gets information about an Azure Synapse Analytics Spark pool.
 
 ## EXAMPLES
 
@@ -39,22 +39,29 @@ Get-AzSynapseSparkPool -ResourceId <String> [-DefaultProfile <IAzureContextConta
 PS C:\> Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace
 ```
 
-{{ Add example description here }}
+This command gets all Spark pools under a workspace.
 
 ### Example 2
+```powershell
+PS C:\> Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
+```
+
+This command gets the Spark pool under workspace ContosoWorkspace with name ContosoSparkPool.
+
+### Example 3
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Get-AzSynapseSparkPool
 ```
 
-{{ Add example description here }}
+This command gets all Spark pools under a workspace through pipeline.
 
-### Example 3
+### Example 4
 ```powershell
 PS C:\> Get-AzSynapseSparkPool -ResourceId "/subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/bigDataPools/ContosoSparkPool"
 ```
 
-{{ Add example description here }}
+This command gets the Spark pool with the specified resource ID.
 
 ## PARAMETERS
 

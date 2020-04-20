@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSynapseWorkspace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes a Synapse Analytics workspace.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Remove-AzSynapseWorkspace -ResourceId <String> [-PassThru] [-AsJob] [-DefaultPro
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzSynapseWorkspace** cmdlet permanently deletes an Azure Synapse Analytics workspace.
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ Remove-AzSynapseWorkspace -ResourceId <String> [-PassThru] [-AsJob] [-DefaultPro
 PS C:\> Remove-AzSynapseWorkspace -Name ContosoWorkspace
 ```
 
-{{ Add example description here }}
+This command deletes an Azure Synapse Analytics workspace.
 
 ### Example 2
 ```powershell
@@ -48,14 +48,14 @@ PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Remove-AzSynapseWorkspace
 ```
 
-{{ Add example description here }}
+This command deletes an Azure Synapse Analytics workspace through pipeline.
 
 ### Example 3
 ```powershell
 PS C:\> Remove-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace
 ```
 
-{{ Add example description here }}
+This command deletes an Azure Synapse Analytics workspace through pipeline with the specified resource ID.
 
 ## PARAMETERS
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

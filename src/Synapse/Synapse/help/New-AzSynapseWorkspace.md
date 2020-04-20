@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSynapseWorkspace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a Synapse Analytics workspace.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzSynapseWorkspace -ResourceGroupName <String> -Name <String> -Location <Str
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzSynapseWorkspace** cmdlet creates an Azure Synapse Analytics workspace.
 
 ## EXAMPLES
 

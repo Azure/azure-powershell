@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzSynapseSparkJob
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Cancels a Synapse Analytics Spark job.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Stop-AzSynapseSparkJob -SparkJobObject <PSSynapseSparkJob> [-LivyId <Int32>] [-F
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Stop-AzSynapseSparkJob** cmdlet cancels a Synapse Analytics Spark job.
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ Stop-AzSynapseSparkJob -SparkJobObject <PSSynapseSparkJob> [-LivyId <Int32>] [-F
 PS C:\> Stop-AzSynapseSparkJob -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 130
 ```
 
-{{ Add example description here }}
+This command cancels a Synapse Analytics Spark job.
 
 ### Example 2
 ```powershell
@@ -48,7 +48,7 @@ PS C:\> $pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name Con
 PS C:\> $pool | Stop-AzSynapseSparkJob -LivyId 130
 ```
 
-{{ Add example description here }}
+This command cancels a Synapse Analytics Spark job through pipeline.
 
 ### Example 3
 ```powershell
@@ -56,7 +56,7 @@ PS C:\> $job = Get-AzSynapseSparkJob -WorkspaceName ContosoWorkspace -SparkPoolN
 PS C:\> $job | Stop-AzSynapseSparkJob
 ```
 
-{{ Add example description here }}
+This command cancels a Synapse Analytics Spark job through pipeline.
 
 ## PARAMETERS
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

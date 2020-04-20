@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSynapseWorkspace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates a Synapse Analytics workspace.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Update-AzSynapseWorkspace -ResourceId <String> [-Tag <Hashtable>] [-AsJob]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzSynapseWorkspace** cmdlet updates an Azure Synapse Analytics workspace.
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ Update-AzSynapseWorkspace -ResourceId <String> [-Tag <Hashtable>] [-AsJob]
 PS C:\> Update-AzSynapseWorkspace -Name ContosoWorkspace -Tag @{'key'='value'}
 ```
 
-{{ Add example description here }}
+This commands updates tags for the specififed Azure Synapse Analytics workspace.
 
 ### Example 2
 ```powershell
@@ -48,12 +48,14 @@ PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Update-AzSynapseWorkspace -Tag @{'key'='value1'}
 ```
 
-{{ Add example description here }}
+This commands updates tags for the specififed Azure Synapse Analytics workspace through pipeline.
 
 ### Example 3
 ```powershell
 PS C:\> Update-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace -Tag @{'key'='value2'}
 ```
+
+This commands updates tags for the specififed Azure Synapse Analytics workspace through pipeline with resource ID.
 
 ## PARAMETERS
 

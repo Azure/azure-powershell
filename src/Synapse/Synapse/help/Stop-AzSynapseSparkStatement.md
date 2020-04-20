@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzSynapseSparkStatement
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Cancels a Synapse Analytics Spark statement.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Stop-AzSynapseSparkStatement -SessionObject <PSSynapseSparkSession> -LivyId <Int
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Stop-AzSynapseSparkStatement** cmdlet cancels a Synapse Analytics Spark statement.
 
 ## EXAMPLES
 
@@ -34,7 +34,7 @@ Stop-AzSynapseSparkStatement -SessionObject <PSSynapseSparkSession> -LivyId <Int
 PS C:\> Stop-AzSynapseStatement -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -SessionId 130 -LivyId 1
 ```
 
-{{ Add example description here }}
+This command cancels the Spark statement with the specified livy ID.
 
 ### Example 2
 ```powershell
@@ -42,7 +42,7 @@ PS C:\> $session = Get-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -Sp
 PS C:\> $session | Stop-AzSynapseStatement -LivyId 3
 ```
 
-{{ Add example description here }}
+This command cancels the Spark statement with the specified livy ID through pipeline.
 
 ## PARAMETERS
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

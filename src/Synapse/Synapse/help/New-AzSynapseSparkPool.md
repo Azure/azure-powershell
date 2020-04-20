@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSynapseSparkPool
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a Synapse Analytics Spark pool.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Ta
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzSynapseSparkPool** cmdlet creates an Azure Synapse Analytics Spark pool.
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Ta
 PS C:\> New-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -NodeCount 3 -SparkVersion 2.4 -NodeSize Small
 ```
 
-{{ Add example description here }}
+This command creates an Azure Synapse Analytics Spark pool.
 
 ### Example 2
 ```powershell
@@ -48,7 +48,7 @@ PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | New-AzSynapseSparkPool -Name ContosoSparkPool -NodeCount 3 -SparkVersion 2.4 -NodeSize Small
 ```
 
-{{ Add example description here }}
+This command creates an Azure Synapse Analytics Spark pool through pipeline.
 
 ## PARAMETERS
 

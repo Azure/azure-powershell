@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSynapseSparkPool
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates a Synapse Analytics Spark pool.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ Update-AzSynapseSparkPool -ResourceId <String> [-Tag <Hashtable>] [-EnableAutoSc
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzSynapseSparkPool** cmdlet updates an Azure Synapse Analytics Spark pool.
 
 ## EXAMPLES
 
@@ -58,7 +58,7 @@ Update-AzSynapseSparkPool -ResourceId <String> [-Tag <Hashtable>] [-EnableAutoSc
 PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -Tag @{"key" = "value"} -NodeCount 5 -NodeSize Medium
 ```
 
-{{ Add example description here }}
+This command updates an Azure Synapse Analytics Spark pool.
 
 ### Example 2
 ```powershell
@@ -66,7 +66,7 @@ PS C:\> $pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name Con
 $pool | Update-AzSynapseSparkPool -Tag @{"key" = "value1"}
 ```
 
-{{ Add example description here }}
+This command updates an Azure Synapse Analytics Spark pool through pipeline.
 
 ### Example 3
 ```powershell
@@ -74,14 +74,42 @@ PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Update-AzSynapseSparkPool -Name ContosoSparkPool -Tag @{"key" = "value2"}
 ```
 
-{{ Add example description here }}
+This command updates an Azure Synapse Analytics Spark pool through pipeline.
 
 ### Example 4
 ```powershell
 PS C:\> Update-AzSynapseSparkPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/bigDataPools/ContosoSparkPool -Tag @{"key" = "value3"}
 ```
 
-{{ Add example description here }}
+This command updates an Azure Synapse Analytics Spark pool with resource ID.
+
+### Example 5
+```powershell
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoScale -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 7
+```
+
+This command enables auto-scale for an Azure Synapse Analytics Spark pool.
+
+### Example 6
+```powershell
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -DisableAutoScale
+```
+
+This command disables auto-scale for an Azure Synapse Analytics Spark pool.
+
+### Example 7
+```powershell
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoPause -AutoPauseDelayInMinutes 15
+```
+
+This command enables auto-pause for an Azure Synapse Analytics Spark pool.
+
+### Example 8
+```powershell
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -DisableAutoPause
+```
+
+This command disables auto-pause for an Azure Synapse Analytics Spark pool.
 
 ## PARAMETERS
 

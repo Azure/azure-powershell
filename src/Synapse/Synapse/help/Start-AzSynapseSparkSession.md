@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzSynapseSparkSession
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Starts a Synapse Analytics Spark session.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Start-AzSynapseSparkSession -WorkspaceName <String> -SparkPoolName <String> [-La
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Start-AzSynapseSparkSession** cmdlet starts a Synapse Analytics Spark session.
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ Start-AzSynapseSparkSession -WorkspaceName <String> -SparkPoolName <String> [-La
 PS C:\> Start-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -Name ContosoSessionName -ExecutorCount 3 -ExecutorSize Small
 ```
 
-{{ Add example description here }}
+This command starts an Azure Synapse Analytics Spark session.
 
 ### Example 2
 ```powershell
@@ -44,7 +44,7 @@ PS C:\> $pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name Con
 PS C:\> $pool | Start-AzSynapseSparkSession -Name ContosoSessionName -ExecutorCount 3 -ExecutorSize Small
 ```
 
-{{ Add example description here }}
+This command starts an Azure Synapse Analytics Spark session through pipeline.
 
 ## PARAMETERS
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -SparkPoolObject
-{{ Fill SparkPoolObject Description }}
+Spark pool input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSparkPool

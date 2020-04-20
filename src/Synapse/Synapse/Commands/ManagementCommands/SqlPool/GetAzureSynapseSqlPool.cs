@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = GetByParentObjectParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = GetByParentObjectParameterSet, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = false, ParameterSetName = GetByResourceIdParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = false, ParameterSetName = GetByResourceIdParameterSet, HelpMessage = HelpMessages.SqlPoolResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

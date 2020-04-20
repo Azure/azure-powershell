@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSynapseSparkJob
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Synapse Analytics Spark job.
 
 ## SYNTAX
 
@@ -25,7 +25,8 @@ Get-AzSynapseSparkJob -SparkPoolObject <PSSynapseSparkPool> [-LivyId <Int32>] [-
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSynapseSparkJob** cmdlet gets an Azure Synapse Analytics Spark job.
+If you do not specify a job, this cmdlet gets all jobs.
 
 ## EXAMPLES
 
@@ -34,21 +35,21 @@ Get-AzSynapseSparkJob -SparkPoolObject <PSSynapseSparkPool> [-LivyId <Int32>] [-
 PS C:\> Get-AzSynapseSparkJob -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool
 ```
 
-{{ Add example description here }}
+This command gets all jobs under a Spark pool.
 
 ### Example 2
 ```powershell
 PS C:\> Get-AzSynapseSparkJob -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 119
 ```
 
-{{ Add example description here }}
+This command gets the job with the specified ID.
 
 ### Example 3
 ```powershell
 PS C:\> Get-AzSynapseSparkJob -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -ApplicationId application_1585023543211_0004
 ```
 
-{{ Add example description here }}
+This command gets the job with the specified application ID.
 
 ### Example 4
 ```powershell
@@ -56,7 +57,7 @@ PS C:\> $pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -SparkPoo
 PS C:\> $pool | Get-AzSynapseSparkJob
 ```
 
-{{ Add example description here }}
+This command gets all jobs under a Spark pool through pipeline.
 
 ## PARAMETERS
 

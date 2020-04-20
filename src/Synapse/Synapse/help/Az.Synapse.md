@@ -1,91 +1,91 @@
 ---
 Module Name: Az.Synapse
 Module Guid: 89eceb4f-9916-4ec5-8499-d5cca97a9cae
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Please enter version of help manually (X.X.X.X) format }}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.synapse
+Help Version: 0.0.1.0
 Locale: en-US
 ---
 
 # Az.Synapse Module
 ## Description
-{{ Fill in the Description }}
+The topics in this section document the Azure PowerShell cmdlets for Azure Synapse Analytics.
 
 ## Az.Synapse Cmdlets
 ### [Get-AzSynapseSparkJob](Get-AzSynapseSparkJob.md)
-{{ Fill in the Synopsis }}
+Gets a Synapse Analytics Spark job.
 
 ### [Get-AzSynapseSparkPool](Get-AzSynapseSparkPool.md)
-{{ Fill in the Synopsis }}
+Gets a Synapse Analytics Spark pool.
 
 ### [Get-AzSynapseSparkSession](Get-AzSynapseSparkSession.md)
-{{ Fill in the Synopsis }}
+Gets a Synapse Analytics Spark session.
 
 ### [Get-AzSynapseSparkStatement](Get-AzSynapseSparkStatement.md)
-{{ Fill in the Synopsis }}
+Gets a Synapse Analytics Spark statement.
 
 ### [Get-AzSynapseSqlPool](Get-AzSynapseSqlPool.md)
-{{ Fill in the Synopsis }}
+Gets a Synapse Analytics SQL pool.
 
 ### [Get-AzSynapseWorkspace](Get-AzSynapseWorkspace.md)
-{{ Fill in the Synopsis }}
+Gets a Synapse Analytics workspace.
 
 ### [Invoke-AzSynapseSparkStatement](Invoke-AzSynapseSparkStatement.md)
-{{ Fill in the Synopsis }}
+Invokes a Synapse Analytics Spark statement.
 
 ### [New-AzSynapseSparkPool](New-AzSynapseSparkPool.md)
-{{ Fill in the Synopsis }}
+Creates a Synapse Analytics Spark pool.
 
 ### [New-AzSynapseSqlPool](New-AzSynapseSqlPool.md)
-{{ Fill in the Synopsis }}
+Creates a Synapse Analytics SQL pool.
 
 ### [New-AzSynapseWorkspace](New-AzSynapseWorkspace.md)
-{{ Fill in the Synopsis }}
+Creates a Synapse Analytics workspace.
 
 ### [Remove-AzSynapseSparkPool](Remove-AzSynapseSparkPool.md)
-{{ Fill in the Synopsis }}
+Deletes a Synapse Analytics Spark pool.
 
 ### [Remove-AzSynapseSqlPool](Remove-AzSynapseSqlPool.md)
-{{ Fill in the Synopsis }}
+Deletes a Synapse Analytics SQL pool.
 
 ### [Remove-AzSynapseWorkspace](Remove-AzSynapseWorkspace.md)
-{{ Fill in the Synopsis }}
+Deletes a Synapse Analytics workspace.
 
 ### [Reset-AzSynapseSparkSessionTimeout](Reset-AzSynapseSparkSessionTimeout.md)
-{{ Fill in the Synopsis }}
+Resets timeout of a Synapse Analytics Spark session.
 
 ### [Start-AzSynapseSparkSession](Start-AzSynapseSparkSession.md)
-{{ Fill in the Synopsis }}
+Starts a Synapse Analytics Spark session.
 
 ### [Stop-AzSynapseSparkJob](Stop-AzSynapseSparkJob.md)
-{{ Fill in the Synopsis }}
+Cancels a Synapse Analytics Spark job.
 
 ### [Stop-AzSynapseSparkSession](Stop-AzSynapseSparkSession.md)
-{{ Fill in the Synopsis }}
+Stops a Synapse Analytics Spark session.
 
 ### [Stop-AzSynapseSparkStatement](Stop-AzSynapseSparkStatement.md)
-{{ Fill in the Synopsis }}
+Cancels a Synapse Analytics Spark statement.
 
 ### [Submit-AzSynapseSparkJob](Submit-AzSynapseSparkJob.md)
-{{ Fill in the Synopsis }}
+Submits a Synapse Analytics Spark job.
 
 ### [Test-AzSynapseSparkPool](Test-AzSynapseSparkPool.md)
-{{ Fill in the Synopsis }}
+Checks for the existence of a Synapse Analytics Spark pool.
 
 ### [Test-AzSynapseSqlPool](Test-AzSynapseSqlPool.md)
-{{ Fill in the Synopsis }}
+Checks for the existence of a Synapse Analytics SQL pool.
 
 ### [Test-AzSynapseWorkspace](Test-AzSynapseWorkspace.md)
-{{ Fill in the Synopsis }}
+Checks for the existence of a Synapse Analytics workspace.
 
 ### [Update-AzSynapseSparkPool](Update-AzSynapseSparkPool.md)
-{{ Fill in the Synopsis }}
+Updates a Synapse Analytics Spark pool.
 
 ### [Update-AzSynapseSqlPool](Update-AzSynapseSqlPool.md)
-{{ Fill in the Synopsis }}
+Updates a Synapse Analytics SQL pool.
 
 ### [Update-AzSynapseWorkspace](Update-AzSynapseWorkspace.md)
-{{ Fill in the Synopsis }}
+Updates a Synapse Analytics workspace.
 
 ### [Wait-AzSynapseSparkJob](Wait-AzSynapseSparkJob.md)
-{{ Fill in the Synopsis }}
+Waits for a Synapse Analytics Spark job to complete.
 

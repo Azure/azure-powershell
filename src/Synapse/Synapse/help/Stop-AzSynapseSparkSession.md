@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzSynapseSparkSession
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Stops a Synapse Analytics Spark session.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Stop-AzSynapseSparkSession -InputObject <PSSynapseSparkSession> [-PassThru] [-As
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Stop-AzSynapseSparkSession** cmdlet stops a Synapse Analytics Spark session.
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ Stop-AzSynapseSparkSession -InputObject <PSSynapseSparkSession> [-PassThru] [-As
 PS C:\> Stop-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 324
 ```
 
-{{ Add example description here }}
+This command stops a Synapse Analytics Spark session.
 
 ### Example 2
 ```powershell
@@ -48,7 +48,7 @@ PS C:\> $pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -SparkPoo
 PS C:\> $pool | Stop-AzSynapseSparkSession -LivyId 324
 ```
 
-{{ Add example description here }}
+This command stops a Synapse Analytics Spark session through pipeline.
 
 ### Example 3
 ```powershell
@@ -56,7 +56,7 @@ PS C:\> $session = Get-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -Sp
 PS C:\> $session | Stop-AzSynapseSparkSession
 ```
 
-{{ Add example description here }}
+This command stops a Synapse Analytics Spark session through pipeline.
 
 ## PARAMETERS
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

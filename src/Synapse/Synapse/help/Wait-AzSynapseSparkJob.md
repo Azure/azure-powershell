@@ -8,7 +8,7 @@ schema: 2.0.0
 # Wait-AzSynapseSparkJob
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Waits for a Synapse Analytics Spark job to complete.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Wait-AzSynapseSparkJob -SparkJobObject <PSSynapseSparkJob> [-LivyId <Int32>] [-W
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Wait-AzSynapseSparkJob** cmdlet waits for an Azure Synapse Analytics job to complete.
 
 ## EXAMPLES
 
@@ -41,7 +41,7 @@ Wait-AzSynapseSparkJob -SparkJobObject <PSSynapseSparkJob> [-LivyId <Int32>] [-W
 PS C:\> Wait-AzSynapseSparkJob -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 324
 ```
 
-{{ Add example description here }}
+This command waits for the job with the specified ID to complete.
 
 ## PARAMETERS
 
