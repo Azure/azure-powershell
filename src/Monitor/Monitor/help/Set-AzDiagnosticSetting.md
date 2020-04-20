@@ -358,7 +358,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceId
-The Id of the workspace
+The Resource Id of the workspace
 
 ```yaml
 Type: System.String
