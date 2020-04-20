@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Enhance performance of:
+    - Set-AzSqlDatabaseSensitivityClassification.
+    - Set-AzSqlInstanceDatabaseSensitivityClassification.
+    - Remove-AzSqlDatabaseSensitivityClassification.
+    - Remove-AzSqlInstanceDatabaseSensitivityClassification.
+    - Enable-AzSqlDatabaseSensitivityRecommendation.
+    - Enable-AzSqlInstanceDatabaseSensitivityRecommendation.
+    - Disable-AzSqlDatabaseSensitivityRecommendation.
+    - Disable-AzSqlInstanceDatabaseSensitivityRecommendation.
 
 ## Version 2.6.0
 * Added cmdlets `Get-AzSqlInstanceOperation` and `Stop-AzSqlInstanceOperation`

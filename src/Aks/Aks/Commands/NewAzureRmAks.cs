@@ -14,15 +14,16 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Management.ContainerService;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSKubernetesCluster))]
-    public class NewAzureRmAks : CreateOrUpdateKubeBase
+    public class NewAzureRmAks : NewKubeBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Create cluster even if it already exists")]
         public SwitchParameter Force { get; set; }
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.Aks
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            PreValidate();
 
             Action action = () =>
             {
@@ -60,6 +62,13 @@ namespace Microsoft.Azure.Commands.Aks
                     RunCmdLet(action);
                 }
             }
+        }
+
+        private void PreValidate()
+        {
+            if ((this.IsParameterBound(c => c.NodeMinCount) || this.IsParameterBound(c => c.NodeMaxCount) || this.EnableNodeAutoScaling.IsPresent) &&
+                !(this.IsParameterBound(c => c.NodeMinCount) && this.IsParameterBound(c => c.NodeMaxCount) && this.EnableNodeAutoScaling.IsPresent))
+                throw new PSInvalidCastException(Resources.AksNodePoolAutoScalingParametersMustAppearTogether);
         }
     }
 }

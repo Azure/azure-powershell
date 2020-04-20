@@ -27,6 +27,7 @@ function Test-AzureRmIotHubDeviceLifecycle
 	$IotHubName = getAssetName
 	$ResourceGroupName = getAssetName
 	$Sku = "S1"
+	$SasTokenPrefix = 'SharedAccessSignature'
 	$device1 = getAssetName
 	$device2 = getAssetName
 	$device3 = getAssetName
@@ -41,6 +42,10 @@ function Test-AzureRmIotHubDeviceLifecycle
 
 	# Create Iot Hub
 	$iothub = New-AzIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1
+
+	# Generate SAS token for IotHub
+	$token = New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
+	Assert-StartsWith $SasTokenPrefix $token
 
 	# Get all devices
 	$devices = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
@@ -69,6 +74,18 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-True { $newDevice6.Id -eq $device6 }
 	Assert-True { $newDevice6.Authentication.Type -eq 'Sas' }
 	Assert-True { $newDevice6.Capabilities.IotEdge }
+
+	# Generate SAS token for device
+	$deviceToken = New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
+	Assert-StartsWith $SasTokenPrefix $deviceToken
+
+	# Expected error while generating SAS token for device
+	$errorMessage = "This device does not support SAS auth."
+	Assert-ThrowsContains { New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3 } $errorMessage
+
+	# Invoke direct method on device
+	$errorMessage = "The entered device ""fakeDevice"" doesn't exist."
+	Assert-ThrowsContains { New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId "fakeDevice" } $errorMessage
 
 	# Count devices
 	$totalDevices = Invoke-AzIotHubQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Query "select * from devices"
