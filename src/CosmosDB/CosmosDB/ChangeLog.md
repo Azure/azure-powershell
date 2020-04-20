@@ -20,8 +20,9 @@
 
 ## Upcoming Release
 Replaces Set-AzCosmosDB* cmdlets with New-AzCosmosDB* and Update-AzComsosDB* cmdlets.
+
 The following cmdlets are added: 
-      - New-AzCosmosDBSqlStoredProcedure, New-AzCosmosDBSqlTrigger, 
+        New-AzCosmosDBSqlStoredProcedure, New-AzCosmosDBSqlTrigger, 
         New-AzCosmosDBSqlUserDefinedFunction, 
         Update-AzCosmosDBSqlStoredProcedure, Update-AzCosmosDBSqlTrigger, 
         Update-AzCosmosDBSqlUserDefinedFunction, New-AzCosmosDBSqlContainer,
@@ -33,7 +34,8 @@ The following cmdlets are added:
         Update-AzCosmosDBCassandraKeyspace, Update-AzCosmosDBCassandraTable,
         New-AzCosmosDBCassandraKeyspace, New-AzCosmosDBCassandraTable,
         Update-AzCosmosDBMongoDBCollection, Update-AzCosmosDBMongoDBDatabase, 
-        New-AzCosmosDBMongoDBCollection, New-AzCosmosDBMongoDBDatabase      
+        New-AzCosmosDBMongoDBCollection, New-AzCosmosDBMongoDBDatabase  
+        
 The following cmdlets are deprecated and would no longer be maintained: 
         Set-AzCosmosDBSqlStoredProcedure, Set-AzCosmosDBSqlTrigger,
         Set-AzCosmosDBSqlUserDefinedFunction, Set-AzCosmosDBSqlContainer,
