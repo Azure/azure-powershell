@@ -688,7 +688,7 @@ function Test-VirtualNetworkGatewayRadius
 		$vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
 
 		# Create & Get virtualnetworkgateway
-		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnClientProtocol "IkeV2" -RadiusServers $radiusServers
+		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnClientProtocol "IkeV2" -RadiusServerList $radiusServers
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
         Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers.Count 2 
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[0].RadiusServerAddress $radiusServer1.RadiusServerAddress
@@ -698,7 +698,7 @@ function Test-VirtualNetworkGatewayRadius
 
 		# Update gateway radius settings
         $radiusServers = @($radiusServer3, $radiusServer1)
-		Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientAddressPool 201.169.0.0/16 -VpnClientProtocol "IkeV2" -RadiusServers $radiusServers
+		Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientAddressPool 201.169.0.0/16 -VpnClientProtocol "IkeV2" -RadiusServerList $radiusServers
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
         Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers.Count 2 
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[0].RadiusServerAddress $radiusServer3.RadiusServerAddress

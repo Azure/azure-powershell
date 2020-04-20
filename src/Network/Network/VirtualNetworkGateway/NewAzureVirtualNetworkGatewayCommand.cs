@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S multiple external Radius server servers.")]
-        public PSRadiusServer[] RadiusServers { get; set; }
+        public PSRadiusServer[] RadiusServerList { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -440,9 +440,9 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
                 
-                if (this.RadiusServers != null && this.RadiusServers.Any())
+                if (this.RadiusServerList != null && this.RadiusServerList.Any())
                 {
-                    vnetGateway.VpnClientConfiguration.RadiusServers = this.RadiusServers?.ToList();
+                    vnetGateway.VpnClientConfiguration.RadiusServers = this.RadiusServerList?.ToList();
                 }
 
                 if (this.AadTenantUri != null)

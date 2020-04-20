@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External multiple radius servers.")]
         [ValidateNotNullOrEmpty]
-        public PSRadiusServer[] RadiusServers { get; set; }
+        public PSRadiusServer[] RadiusServerList { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Commands.Network
                     vpnServerConfigurationToUpdate.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
 
-                vpnServerConfigurationToUpdate.RadiusServers = this.RadiusServers?.ToList();
+                vpnServerConfigurationToUpdate.RadiusServers = this.RadiusServerList?.ToList();
 
                 // Read the RadiusServerRootCertificates if present
                 if (this.RadiusServerRootCertificateFilesList != null)
