@@ -35,6 +35,9 @@ Enables an activity log alert and sets its Tags.
 ### [Get-AzActionGroup](Get-AzActionGroup.md)
 Gets action group(s).
 
+### [Get-AzActivityLog](Get-AzActivityLog.md)
+Retrieve Activity Log events.
+
 ### [Get-AzActivityLogAlert](Get-AzActivityLogAlert.md)
 Gets one or more activity log alert resources.
 
@@ -53,8 +56,11 @@ Gets Autoscale settings.
 ### [Get-AzDiagnosticSetting](Get-AzDiagnosticSetting.md)
 Gets the logged categories and time grains.
 
-### [Get-AzLog](Get-AzLog.md)
-Gets a log of events.
+### [Get-AzInsightsPrivateLinkScope](Get-AzInsightsPrivateLinkScope.md)
+Get private link scope
+
+### [Get-AzInsightsPrivateLinkScopedResource](Get-AzInsightsPrivateLinkScopedResource.md)
+Get for private link scoped resource
 
 ### [Get-AzLogProfile](Get-AzLogProfile.md)
 Gets a log profile.
@@ -98,6 +104,12 @@ Creates an Autoscale rule.
 ### [New-AzAutoscaleWebhook](New-AzAutoscaleWebhook.md)
 Creates an Autoscale webhook.
 
+### [New-AzInsightsPrivateLinkScope](New-AzInsightsPrivateLinkScope.md)
+create private link scope
+
+### [New-AzInsightsPrivateLinkScopedResource](New-AzInsightsPrivateLinkScopedResource.md)
+create for private link scoped resource
+
 ### [New-AzMetricAlertRuleV2Criteria](New-AzMetricAlertRuleV2Criteria.md)
 Creates a local criteria object that can be used to create a new metric alert
 
@@ -117,7 +129,7 @@ Creates an object of type Alerting Action
 Creates an object of type Azns Action Group
 
 ### [New-AzScheduledQueryRuleLogMetricTrigger](New-AzScheduledQueryRuleLogMetricTrigger.md)
-Creates an object of type Log Metric Trigger
+Creates an object of type Log Metric Trigger.
 
 ### [New-AzScheduledQueryRuleSchedule](New-AzScheduledQueryRuleSchedule.md)
 Creates an object of type Schedule
@@ -143,6 +155,12 @@ Removes an Autoscale setting.
 ### [Remove-AzDiagnosticSetting](Remove-AzDiagnosticSetting.md)
 Remove a diagnostic setting for the a resource.
 
+### [Remove-AzInsightsPrivateLinkScope](Remove-AzInsightsPrivateLinkScope.md)
+delete private link scope
+
+### [Remove-AzInsightsPrivateLinkScopedResource](Remove-AzInsightsPrivateLinkScopedResource.md)
+delete for private link scoped resource
+
 ### [Remove-AzLogProfile](Remove-AzLogProfile.md)
 Removes a log profile.
 
@@ -163,6 +181,9 @@ Sets the logs and metrics settings for the resource.
 
 ### [Set-AzScheduledQueryRule](Set-AzScheduledQueryRule.md)
 Updates a Log Alert Rule
+
+### [Update-AzInsightsPrivateLinkScope](Update-AzInsightsPrivateLinkScope.md)
+Update for private link scope
 
 ### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
 Updates a Log Alert rule
