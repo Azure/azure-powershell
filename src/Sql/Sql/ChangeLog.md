@@ -18,8 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.6.0
 * Added cmdlets `Get-AzSqlInstanceOperation` and `Stop-AzSqlInstanceOperation`
 * Supported auditing to a storage account in VNet.
+* Assign 'None' value as StorageKeyKind when a storage account under VNet is a target for the audit records. 
 
 ## Version 2.5.0
 * Added readable secondary parameter to `Invoke-AzSqlDatabaseFailover`
