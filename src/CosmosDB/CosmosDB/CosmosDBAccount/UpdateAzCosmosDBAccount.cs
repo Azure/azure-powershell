@@ -51,16 +51,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string DefaultConsistencyLevel { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableAutomaticFailoverHelpMessage)]
-        public bool EnableAutomaticFailover { get; set; }
+        public bool? EnableAutomaticFailover { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableMultipleWriteLocationsHelpMessage)]
-        public bool EnableMultipleWriteLocations { get; set; }
+        public bool? EnableMultipleWriteLocations { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableVirtualNetworkHelpMessage)]
-        public bool EnableVirtualNetwork { get; set; }
+        public bool? EnableVirtualNetwork { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.IpRangeFilterHelpMessage)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string[] IpRangeFilter { get; set; }
         
         [Parameter(Mandatory = false, HelpMessage = Constants.MaxStalenessIntervalInSecondsHelpMessage)]
@@ -80,6 +80,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.VirtualNetworkRuleObjectHelpMessage)]
         [ValidateNotNullOrEmpty]
         public PSVirtualNetworkRule[] VirtualNetworkRuleObject { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
+        public bool? DisableKeyBasedMetadataWriteAccess { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.PublicNetworkAccessHelpMessage)]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        public string PublicNetworkAccess { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
@@ -103,10 +110,27 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             DatabaseAccountGetResults readDatabase = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
 
-            DatabaseAccountUpdateParameters databaseAccountUpdateParameters = new DatabaseAccountUpdateParameters(locations: readDatabase.ReadLocations, location: readDatabase.WriteLocations.ElementAt(0).LocationName);
-            databaseAccountUpdateParameters.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
-            databaseAccountUpdateParameters.IsVirtualNetworkFilterEnabled = EnableVirtualNetwork;
-            databaseAccountUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
+            DatabaseAccountUpdateParameters databaseAccountUpdateParameters = new DatabaseAccountUpdateParameters(locations: readDatabase.Locations, location: readDatabase.WriteLocations.ElementAt(0).LocationName);
+            if (EnableMultipleWriteLocations != null)
+            {
+                databaseAccountUpdateParameters.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
+            }
+            if (EnableVirtualNetwork != null)
+            {
+                databaseAccountUpdateParameters.IsVirtualNetworkFilterEnabled = EnableVirtualNetwork;
+            }
+            if (EnableAutomaticFailover != null)
+            {
+                databaseAccountUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
+            }
+            if (DisableKeyBasedMetadataWriteAccess != null)
+            {
+                databaseAccountUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
+            }
+            if (PublicNetworkAccess != null)
+            {
+                databaseAccountUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
+            }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
             {
@@ -172,20 +196,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
             }
 
-            if (IpRangeFilter != null && IpRangeFilter.Length > 0)
+            if (IpRangeFilter != null)
             {
-                string IpRangeFilterAsString = null;
-
-                for (int i = 0; i < IpRangeFilter.Length; i++)
-                {
-                    if(i==0)
-                    {
-                        IpRangeFilterAsString = IpRangeFilter[0];
-                    }
-                    else
-                    IpRangeFilterAsString = string.Concat(IpRangeFilterAsString, ",", IpRangeFilter[i]);
-                }
-
+                string IpRangeFilterAsString = IpRangeFilter?.Aggregate(string.Empty, (output, next) => string.Concat(output, (!string.IsNullOrWhiteSpace(output) && !string.IsNullOrWhiteSpace(next) ? "," : string.Empty), next)) ?? string.Empty;
                 databaseAccountUpdateParameters.IpRangeFilter = IpRangeFilterAsString;
             }
 

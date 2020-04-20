@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string GatewayIpAddress { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string Fqdn { get; set; }
+
         public PSAddressSpace LocalNetworkAddressSpace { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]

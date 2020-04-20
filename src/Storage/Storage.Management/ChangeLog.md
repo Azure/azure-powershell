@@ -18,10 +18,21 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add breaking change notice for Azure File cmdlets output change in a future release
-* Support new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
-    - New-AzStorageAccount
-    - Set-AzStorageAccount
+
+## Version 1.14.0
+* Added breaking change notice for Azure File cmdlets output change in a future release
+* Supported new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported DataLake Gen2 
+    - `New-AzDataLakeGen2Item`
+    - `Get-AzDataLakeGen2Item`
+    - `Get-AzDataLakeGen2ChildItem`
+    - `Move-AzDataLakeGen2Item`
+    - `Set-AzDataLakeGen2ItemAclObject`
+    - `Update-AzDataLakeGen2Item`
+    - `Get-AzDataLakeGen2ItemContent`
+    - `Remove-AzDataLakeGen2Item`
 
 ## Version 1.13.0
 * Supported AllowProtectedAppendWrite in ImmutabilityPolicy

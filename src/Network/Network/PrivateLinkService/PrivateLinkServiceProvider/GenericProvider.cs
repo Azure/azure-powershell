@@ -24,18 +24,12 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 {
     internal class GenericProvider : IPrivateLinkProvider
     {
-
-        private static IDictionary<string, string> _apiVersions = new Dictionary<string, string>{
-            {"microsoft.sql/servers", "2018-06-01-preview"}
-        };
-
         #region Constructor
         public GenericProvider(NetworkBaseCmdlet baseCmdlet, string subscription, string privateLinkResourceType)
         {
             this.BaseCmdlet = baseCmdlet;
             this._subscription = subscription;
-            this._privateLinkResourceType = privateLinkResourceType;
-            this._apiVersion = _apiVersions[privateLinkResourceType?.ToLower()];
+            this._configuration = ProviderConfiguration.GetProviderConfiguration(privateLinkResourceType);
         }
         #endregion
 
@@ -43,13 +37,13 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         public static bool SupportsPrivateLinkResourceType(string privateLinkResourceType)
         {
-            return _apiVersions.ContainsKey(privateLinkResourceType?.ToLower());
+            ProviderConfiguration configuration = ProviderConfiguration.GetProviderConfiguration(privateLinkResourceType);
+            return (configuration != null);
         }
 
         public NetworkBaseCmdlet BaseCmdlet { get; set; }
         private string _subscription;
-        private string _privateLinkResourceType;
-        private string _apiVersion;
+        private ProviderConfiguration _configuration;
 
         private IAzureRestClient _client;
         private IAzureRestClient ServiceClient
@@ -70,36 +64,53 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         public PSPrivateEndpointConnection GetPrivateEndpointConnection(string resourceGroupName, string serviceName, string name)
         {
             string url = BuildPrivateEndpointConnectionURL(resourceGroupName, serviceName, name);
-            PrivateEndpointConnection connnection = ServiceClient.Operations.GetResouce<PrivateEndpointConnection>(url, _apiVersion);
+            PrivateEndpointConnection connnection = ServiceClient.Operations.GetResouce<PrivateEndpointConnection>(url, _configuration.ApiVersion);
             return ToPsPrivateEndpointConnection(connnection);
         }
 
         public List<PSPrivateEndpointConnection> ListPrivateEndpointConnections(string resourceGroupName, string serviceName)
         {
             var psPECs = new List<PSPrivateEndpointConnection>();
-            string url = BuildPrivateEndpointConnectionsURL(resourceGroupName, serviceName);
-            IPage<PrivateEndpointConnection> list = ServiceClient.Operations.GetResoucePage<Page<PrivateEndpointConnection>, PrivateEndpointConnection>(url, _apiVersion);
-            foreach (var pec in list)
+            if(_configuration.HasConnectionsURI)
             {
-                var psPec = ToPsPrivateEndpointConnection(pec);
-                psPECs.Add(psPec);
-            }
-            while (list.NextPageLink != null)
-            {
-                list = ServiceClient.Operations.GetResoucePage<Page<PrivateEndpointConnection>, PrivateEndpointConnection>(list.NextPageLink, null);
+                string url = BuildPrivateEndpointConnectionsURL(resourceGroupName, serviceName);
+                IPage<PrivateEndpointConnection> list = ServiceClient.Operations.GetResoucePage<Page<PrivateEndpointConnection>, PrivateEndpointConnection>(url, _configuration.ApiVersion);
                 foreach (var pec in list)
                 {
                     var psPec = ToPsPrivateEndpointConnection(pec);
                     psPECs.Add(psPec);
                 }
+                while (list.NextPageLink != null)
+                {
+                    list = ServiceClient.Operations.GetResoucePage<Page<PrivateEndpointConnection>, PrivateEndpointConnection>(list.NextPageLink, null);
+                    foreach (var pec in list)
+                    {
+                        var psPec = ToPsPrivateEndpointConnection(pec);
+                        psPECs.Add(psPec);
+                    }
+                }
+            } 
+            else
+            {
+                string url = BuildPrivateEndpointConnectionsOwnerURL(resourceGroupName, serviceName);
+                TrackedResource resource = ServiceClient.Operations.GetResouce<TrackedResource>(url, _configuration.ApiVersion);
+                if(resource?.PrivateEndpointConnections != null)
+                {
+                    foreach (var pec in resource.PrivateEndpointConnections)
+                    {
+                        var psPec = ToPsPrivateEndpointConnection(pec);
+                        psPECs.Add(psPec);
+                    }
+                }
             }
+
             return psPECs;
         }
 
         public PSPrivateEndpointConnection UpdatePrivateEndpointConnectionStatus(string resourceGroupName, string serviceName, string name, string status, string description = null)
         {
             string url = BuildPrivateEndpointConnectionURL(resourceGroupName, serviceName, name);
-            PrivateEndpointConnection privateEndpointConnection = ServiceClient.Operations.GetResouce<PrivateEndpointConnection>(url, _apiVersion);
+            PrivateEndpointConnection privateEndpointConnection = ServiceClient.Operations.GetResouce<PrivateEndpointConnection>(url, _configuration.ApiVersion);
 
             privateEndpointConnection.PrivateLinkServiceConnectionState.Status = status;
 
@@ -108,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                 privateEndpointConnection.PrivateLinkServiceConnectionState.Description = description;
             }
 
-            ServiceClient.Operations.PutResouce<PrivateEndpointConnection>(url, _apiVersion, privateEndpointConnection);
+            ServiceClient.Operations.PutResouce<PrivateEndpointConnection>(url, _configuration.ApiVersion, privateEndpointConnection);
 
             return GetPrivateEndpointConnection(resourceGroupName, serviceName, name);
         }
@@ -116,13 +127,13 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         public void DeletePrivateEndpointConnection(string resourceGroupName, string serviceName, string name)
         {
             string url = BuildPrivateEndpointConnectionURL(resourceGroupName, serviceName, name);
-            ServiceClient.Operations.DeleteResouce(url, _apiVersion);
+            ServiceClient.Operations.DeleteResouce(url, _configuration.ApiVersion);
         }
 
         public PSPrivateLinkResource GetPrivateLinkResource(string resourceGroupName, string serviceName, string name)
         {
             string url = BuildPrivateLinkResourceURL(resourceGroupName, serviceName, name);
-            PrivateLinkResource resource = ServiceClient.Operations.GetResouce<PrivateLinkResource>(url, _apiVersion);
+            PrivateLinkResource resource = ServiceClient.Operations.GetResouce<PrivateLinkResource>(url, _configuration.ApiVersion);
             return ToPsPrivateLinkResource(resource);
         }
 
@@ -130,7 +141,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         {
             var psPLRs = new List<PSPrivateLinkResource>();
             string url = BuildPrivateLinkResourcesURL(resourceGroupName, serviceName);
-            IPage<PrivateLinkResource> list = ServiceClient.Operations.GetResoucePage<Page<PrivateLinkResource>, PrivateLinkResource>(url, _apiVersion);
+            IPage<PrivateLinkResource> list = ServiceClient.Operations.GetResoucePage<Page<PrivateLinkResource>, PrivateLinkResource>(url, _configuration.ApiVersion);
             foreach (var plr in list)
             {
                 var psPlr = ToPsPrivateLinkResource(plr);
@@ -156,7 +167,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         /// </summary>
         private string BuildPrivateLinkResourcesURL(string resourceGroupName, string serviceName)
         {
-            return $"/subscriptions/{_subscription}/resourceGroups/{resourceGroupName}/providers/{_privateLinkResourceType}/{serviceName}/privateLinkResources";
+            return $"/subscriptions/{_subscription}/resourceGroups/{resourceGroupName}/providers/{_configuration.Type}/{serviceName}/privateLinkResources";
         }
 
         /// <summary>
@@ -164,7 +175,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         /// </summary>
         private string BuildPrivateLinkResourceURL(string resourceGroupName, string serviceName, string name)
         {
-            return $"/subscriptions/{_subscription}/resourceGroups/{resourceGroupName}/providers/{_privateLinkResourceType}/{serviceName}/privateLinkResources/{name}";
+            return $"/subscriptions/{_subscription}/resourceGroups/{resourceGroupName}/providers/{_configuration.Type}/{serviceName}/privateLinkResources/{name}";
         }
 
         /// <summary>
@@ -172,15 +183,21 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         /// </summary>
         private string BuildPrivateEndpointConnectionsURL(string resourceGroupName, string serviceName)
         {
-            return $"/subscriptions/{_subscription}/resourceGroups/{resourceGroupName}/providers/{_privateLinkResourceType}/{serviceName}/privateEndpointConnections";
+            return $"/subscriptions/{_subscription}/resourceGroups/{resourceGroupName}/providers/{_configuration.Type}/{serviceName}/privateEndpointConnections";
         }
+
+        private string BuildPrivateEndpointConnectionsOwnerURL(string resourceGroupName, string serviceName)
+        {
+            return $"/subscriptions/{_subscription}/resourceGroups/{resourceGroupName}/providers/{_configuration.Type}/{serviceName}";
+        }
+
 
         /// <summary>
         /// /subscriptions/{_subscription}/resourceGroups/{resourceGroupName}/providers/{_privateLinkResourceType}/{serviceName}/privateEndpointConnections/{name}
         /// </summary>
         private string BuildPrivateEndpointConnectionURL(string resourceGroupName, string serviceName, string name)
         {
-            return $"/subscriptions/{_subscription}/resourceGroups/{resourceGroupName}/providers/{_privateLinkResourceType}/{serviceName}/privateEndpointConnections/{name}";
+            return $"/subscriptions/{_subscription}/resourceGroups/{resourceGroupName}/providers/{_configuration.Type}/{serviceName}/privateEndpointConnections/{name}";
         }
 
         private PSPrivateEndpointConnection ToPsPrivateEndpointConnection(PrivateEndpointConnection privateEndpointConnection)

@@ -18,12 +18,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 .WithCommonPsScripts(new[]
                 {
                     @"Common.ps1",
-                    @"../AzureRM.Resources.ps1",
+                    @"../AzureRM.Resources.ps1"
                 })
                 .WithNewRmModules(helper => new[]
                {
                     helper.RMProfileModule,
                     helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
+                    helper.GetRMModulePath("AzureRM.Network.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>

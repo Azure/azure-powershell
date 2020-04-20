@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 if (Detailed)
                 {
                     ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.SqlResources.GetSqlContainerThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult().Body;
-                    WriteObject(throughputSettingsGetResults);
+                    WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
                 }
             }
             else
