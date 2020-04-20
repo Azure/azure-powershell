@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (deploymentOperationError.ErrorMessages.Count > 0)
             {
-                WriteError(deploymentOperationError.GetErrorMessagesWithOperationId());
+                WriteError(deploymentOperationError.GetErrorMessagesWithOperationId(parameters.DeploymentName));
             }
 
             return deploymentExtended;
