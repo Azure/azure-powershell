@@ -12,19 +12,18 @@ Update an artifact in a blueprint definition.
 
 ## SYNTAX
 
-
 ### UpdateTemplateArtifact (Default)
 ```
 Set-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlueprintBase>
  [-Description <String>] [-DependsOn <System.Collections.Generic.List`1[System.String]>]
  -TemplateParameterFile <String> -TemplateFile <String> [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateArtifactByInputFile
 ```
 Set-AzBlueprintArtifact -Name <String> -Blueprint <PSBlueprintBase> -ArtifactFile <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateRoleAssignmentArtifact
@@ -32,7 +31,7 @@ Set-AzBlueprintArtifact -Name <String> -Blueprint <PSBlueprintBase> -ArtifactFil
 Set-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlueprintBase>
  [-Description <String>] [-DependsOn <System.Collections.Generic.List`1[System.String]>]
  -RoleDefinitionId <String> -RoleDefinitionPrincipalId <String[]> [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdatePolicyAssignmentArtifact
@@ -40,7 +39,7 @@ Set-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlue
 Set-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlueprintBase>
  [-Description <String>] [-DependsOn <System.Collections.Generic.List`1[System.String]>]
  -PolicyDefinitionId <String> -PolicyDefinitionParameter <Hashtable> [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,11 +82,9 @@ Id                 : /subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/provide
                      artifacts/ApplyTag-RG
 Type               : Microsoft.Blueprint/blueprints/artifacts
 Name               : ApplyTag-RG
-
 ```
 
 Update an artifact through inline parameters.
-
 
 ### Example 3
 ```powershell
@@ -103,7 +100,6 @@ ResourceGroup : storageRG
 Id            : /subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprints/AppNetwork/artifacts/storage-account
 Type          : Microsoft.Blueprint/blueprints/artifacts
 Name          : storage-account
-
 ```
 
 Update an artifact through an ARM template file.
@@ -114,8 +110,8 @@ Update an artifact through an ARM template file.
 Location of the artifact file in JSON format on disk.
 
 ```yaml
-Type: String
-Parameter Sets: CreateArtifactByInputFile
+Type: System.String
+Parameter Sets: UpdateArtifactByInputFile
 Aliases:
 
 Required: True
@@ -129,8 +125,8 @@ Accept wildcard characters: False
 Blueprint object.
 
 ```yaml
-Type: PSBlueprintBase
-Parameter Sets: UpdateTemplateArtifact, ArtifactsByBlueprint, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Type: Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase
+Parameter Sets: UpdateTemplateArtifact, UpdateRoleAssignmentArtifact, UpdatePolicyAssignmentArtifact
 Aliases:
 
 Required: True
@@ -141,8 +137,8 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSBlueprintBase
-Parameter Sets: CreateArtifactByInputFile
+Type: Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase
+Parameter Sets: UpdateArtifactByInputFile
 Aliases:
 
 Required: True
@@ -156,7 +152,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -172,7 +168,7 @@ List of the names of artifacts that needs to be created before current artifact 
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Parameter Sets: UpdateTemplateArtifact, UpdateRoleAssignmentArtifact, UpdatePolicyAssignmentArtifact
 Aliases:
 
 Required: False
@@ -186,8 +182,8 @@ Accept wildcard characters: False
 Description of the artifact.
 
 ```yaml
-Type: String
-Parameter Sets: UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Type: System.String
+Parameter Sets: UpdateTemplateArtifact, UpdateRoleAssignmentArtifact, UpdatePolicyAssignmentArtifact
 Aliases:
 
 Required: False
@@ -201,23 +197,11 @@ Accept wildcard characters: False
 Name of the artifact
 
 ```yaml
-Type: String
-Parameter Sets: UpdateTemplateArtifact, CreateArtifactByInputFile, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: ArtifactsByBlueprint
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -228,8 +212,8 @@ Accept wildcard characters: False
 Definition Id of the policy definition.
 
 ```yaml
-Type: String
-Parameter Sets: CreatePolicyArtifact
+Type: System.String
+Parameter Sets: UpdatePolicyAssignmentArtifact
 Aliases:
 
 Required: True
@@ -243,8 +227,8 @@ Accept wildcard characters: False
 Hashtable of parameters to pass to the policy definition artifact.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: CreatePolicyArtifact
+Type: System.Collections.Hashtable
+Parameter Sets: UpdatePolicyAssignmentArtifact
 Aliases:
 
 Required: True
@@ -258,8 +242,8 @@ Accept wildcard characters: False
 Name of the resource group the artifact is going to be under.
 
 ```yaml
-Type: String
-Parameter Sets: UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Type: System.String
+Parameter Sets: UpdateTemplateArtifact, UpdateRoleAssignmentArtifact, UpdatePolicyAssignmentArtifact
 Aliases:
 
 Required: False
@@ -273,8 +257,8 @@ Accept wildcard characters: False
 List of role definition
 
 ```yaml
-Type: String
-Parameter Sets: CreateRoleAssignmentArtifact
+Type: System.String
+Parameter Sets: UpdateRoleAssignmentArtifact
 Aliases:
 
 Required: True
@@ -288,8 +272,8 @@ Accept wildcard characters: False
 List of role definition principal ids.
 
 ```yaml
-Type: String[]
-Parameter Sets: CreateRoleAssignmentArtifact
+Type: System.String[]
+Parameter Sets: UpdateRoleAssignmentArtifact
 Aliases:
 
 Required: True
@@ -303,7 +287,7 @@ Accept wildcard characters: False
 Location of the ARM template file on disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateTemplateArtifact
 Aliases:
 
@@ -318,7 +302,7 @@ Accept wildcard characters: False
 Location of the ARM template parameter file on disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateTemplateArtifact
 Aliases:
 
@@ -334,8 +318,8 @@ Type of the artifact.
 There are 3 types supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact.
 
 ```yaml
-Type: PSArtifactKind
-Parameter Sets: UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Type: Microsoft.Azure.Commands.Blueprint.Models.PSArtifactKind
+Parameter Sets: UpdateTemplateArtifact, UpdateRoleAssignmentArtifact, UpdatePolicyAssignmentArtifact
 Aliases:
 Accepted values: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact
 
@@ -346,9 +330,38 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

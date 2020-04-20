@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,10 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Blueprint.Models
+using System.Collections.Generic;
+
+namespace Microsoft.Azure.Commands.Aks.Models
 {
-    public class PSSecretReferenceParameterValue: PSParameterValueBase
+    /// <summary>
+    /// Desired outbound IP resources for the cluster load balancer.
+    /// </summary>
+    public partial class PSManagedClusterLoadBalancerProfileOutboundIPs
     {
-        public PSSecretValueReference Reference { get; set; }
+        /// <summary>
+        /// Gets or sets a list of public IP resources.
+        /// </summary>
+        public IList<PSResourceReference> PublicIPs { get; set; }
+
     }
 }
