@@ -299,7 +299,7 @@
           "5e0b1602-4445-4a87-901e-dac08f0c632d"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.Network/locations/eastus/operations/5e0b1602-4445-4a87-901e-dac08f0c632d?api-version=2019-12-01"
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.Network/locations/eastus/operations/5e0b1602-4445-4a87-901e-dac08f0c632d?api-version=2020-03-01"
         ],
         "x-ms-correlation-request-id": [
           "b8419665-a4b1-48a4-b6ec-d484a3441a2b"
