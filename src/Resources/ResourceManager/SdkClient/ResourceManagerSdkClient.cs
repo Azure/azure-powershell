@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             var getDeploymentFunc = this.GetDeploymentAction(parameters);
 
-            var deploymentOperationError = new DeploymentOperationErrorInfo(parameters.DeploymentName);
+            var deploymentOperationError = new DeploymentOperationErrorInfo();
 
             Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deployment, deploymentOperationError);
 

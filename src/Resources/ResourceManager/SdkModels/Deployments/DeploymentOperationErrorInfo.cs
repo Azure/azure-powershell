@@ -16,6 +16,7 @@ using Microsoft.Azure.Management.ResourceManager.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
@@ -30,18 +31,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     {
         private const int MaxErrorsToShow = 3;
 
-        public DeploymentOperationErrorInfo(string deploymentName)
+        public DeploymentOperationErrorInfo()
         {
             ErrorMessages = new List<string>();
-            DeploymentName = deploymentName ?? String.Empty;
             RequestId = string.Empty;
         }
 
         public List<string> ErrorMessages { get; private set; }
 
         public string RequestId { get; private set; }
-
-        public string DeploymentName { get; private set; }
 
         #region Public Methods
 
@@ -65,7 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             }            
         }
 
-        public string GetErrorMessagesWithOperationId()
+        public string GetErrorMessagesWithOperationId(string deploymentName = null)
         {
             if (ErrorMessages.Count == 0)
                 return String.Empty;
@@ -76,12 +74,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                ? MaxErrorsToShow
                : ErrorMessages.Count;
 
-            sb.AppendFormat(ProjectResources.DeploymentOperationOuterError, DeploymentName, maxErrors, ErrorMessages.Count);
-            sb.Append(JoinErrorMessages());
+            sb.AppendFormat(ProjectResources.DeploymentOperationOuterError, deploymentName, maxErrors, ErrorMessages.Count);
+            sb.Append(string.Join(Environment.NewLine, ErrorMessages.Take(maxErrors)));
             sb.AppendLine().AppendFormat(ProjectResources.DeploymentOperationId, this.RequestId);
             
             return sb.ToString();
         }
+
 
         public void SetRequestIdFromResponseHeaders(HttpResponseMessage response)
         {
@@ -91,14 +90,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             {
                 RequestId = string.Join(";", requestIdValues);
             }
-        }
-        #endregion
-
-        #region Private Methods
-
-        private string JoinErrorMessages()
-        {
-            return string.Join(Environment.NewLine, ErrorMessages);
         }
         #endregion
 
