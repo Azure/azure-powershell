@@ -28,7 +28,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact(Skip = "IpAllocation need manually onboard.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.ipam)]
-        public void TestIpAllocayionBasicOperations()
+        public void TestIpAllocationBasicOperations()
         {
             TestRunner.RunTestScript(string.Format("Test-IpAllocation"));
         }

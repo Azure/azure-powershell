@@ -41,18 +41,13 @@ function Test-IpAllocation
         # IpAllocation resource need manually onboard by subscription
         $subId = Get-SubscriptionIdFromResourceGroup $rgname;
         $vnetId = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Network/virtualNetworks/HypernetVnet1';
-        try
-        {
-            $ipAllocationName = 'testIpAllocation'
-            New-AzIpAllocation -ResourceName $ipAllocationName -ResourceGroupName $rgname -Location $rglocation -IpAllocationType Hypernet -PrefixLength 29 -PrefixType IPV4 -IpAllocationTag @{"VNetID"=$vnetId;"SubnetName"="HypernetSubnet1"}
+		
+		$ipAllocationName = 'testIpAllocation'
+		New-AzIpAllocation -ResourceName $ipAllocationName -ResourceGroupName $rgname -Location $rglocation -IpAllocationType Hypernet -PrefixLength 29 -PrefixType IPV4 -IpAllocationTag @{"VNetID"=$vnetId;"SubnetName"="HypernetSubnet1"}
 
-            Set-AzIpAllocation -Name $ipAllocationName -ResourceGroupName $rgname -Tag @{'testtag'='tetsvalue'}
+		Set-AzIpAllocation -Name $ipAllocationName -ResourceGroupName $rgname -Tag @{'testtag'='tetsvalue'}
 
-            Remove-AzIpAllocation -Name $ipAllocationName -ResourceGroupName $rgname
-        }
-        catch
-        {
-        }
+		Remove-AzIpAllocation -Name $ipAllocationName -ResourceGroupName $rgname
     }
     finally
     {
