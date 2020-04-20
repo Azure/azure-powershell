@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 
         protected override ManagedDatabaseSensitivityClassificationModel PersistChanges(ManagedDatabaseSensitivityClassificationModel entity)
         {
-            ModelAdapter.DisableManagedDatabaseSensitivityRecommendations(entity);
+            ModelAdapter.DisableSensitivityRecommendations(entity);
             return null;
         }
     }
