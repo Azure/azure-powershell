@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1150?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMTUwP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7717?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM3NzE3P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"path\": \"soapapifromFile\",\r\n    \"value\": \"<?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?>\\r\\n<wsdl:definitions xmlns:s=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:soap12=\\\"http://schemas.xmlsoap.org/wsdl/soap12/\\\" xmlns:mime=\\\"http://schemas.xmlsoap.org/wsdl/mime/\\\" xmlns:tns=\\\"http://ws.cdyne.com/WeatherWS/\\\" xmlns:soap=\\\"http://schemas.xmlsoap.org/wsdl/soap/\\\" xmlns:tm=\\\"http://microsoft.com/wsdl/mime/textMatching/\\\" xmlns:http=\\\"http://schemas.xmlsoap.org/wsdl/http/\\\" xmlns:soapenc=\\\"http://schemas.xmlsoap.org/soap/encoding/\\\" \\r\\n                  targetNamespace=\\\"http://ws.cdyne.com/WeatherWS/\\\" xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\">\\r\\n  <wsdl:types>\\r\\n    <s:schema elementFormDefault=\\\"qualified\\\" targetNamespace=\\\"http://ws.cdyne.com/WeatherWS/\\\">\\r\\n      <s:element name=\\\"GetWeatherInformation\\\">\\r\\n        <s:complexType />\\r\\n      </s:element>\\r\\n      <s:element name=\\\"GetWeatherInformationResponse\\\">\\r\\n        <s:complexType>\\r\\n          <s:sequence>\\r\\n            <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"GetWeatherInformationResult\\\" type=\\\"tns:ArrayOfWeatherDescription\\\" />\\r\\n          </s:sequence>\\r\\n        </s:complexType>\\r\\n      </s:element>\\r\\n      <s:complexType name=\\\"ArrayOfWeatherDescription\\\">\\r\\n        <s:sequence>\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"unbounded\\\" name=\\\"WeatherDescription\\\" type=\\\"tns:WeatherDescription\\\" />\\r\\n        </s:sequence>\\r\\n      </s:complexType>\\r\\n      <s:complexType name=\\\"WeatherDescription\\\">\\r\\n        <s:sequence>\\r\\n          <s:element minOccurs=\\\"1\\\" maxOccurs=\\\"1\\\" name=\\\"WeatherID\\\" type=\\\"s:short\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"Description\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"PictureURL\\\" type=\\\"s:string\\\" />\\r\\n        </s:sequence>\\r\\n      </s:complexType>\\r\\n      <s:element name=\\\"GetCityForecastByZIP\\\">\\r\\n        <s:complexType>\\r\\n          <s:sequence>\\r\\n            <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"ZIP\\\" type=\\\"s:string\\\" />\\r\\n          </s:sequence>\\r\\n        </s:complexType>\\r\\n      </s:element>\\r\\n      <s:element name=\\\"GetCityForecastByZIPResponse\\\">\\r\\n        <s:complexType>\\r\\n          <s:sequence>\\r\\n            <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"GetCityForecastByZIPResult\\\" type=\\\"tns:ForecastReturn\\\" />\\r\\n          </s:sequence>\\r\\n        </s:complexType>\\r\\n      </s:element>\\r\\n      <s:complexType name=\\\"ForecastReturn\\\">\\r\\n        <s:sequence>\\r\\n          <s:element minOccurs=\\\"1\\\" maxOccurs=\\\"1\\\" name=\\\"Success\\\" type=\\\"s:boolean\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"ResponseText\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"State\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"City\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"WeatherStationCity\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"ForecastResult\\\" type=\\\"tns:ArrayOfForecast\\\" />\\r\\n        </s:sequence>\\r\\n      </s:complexType>\\r\\n      <s:complexType name=\\\"ArrayOfForecast\\\">\\r\\n        <s:sequence>\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"unbounded\\\" name=\\\"Forecast\\\" nillable=\\\"true\\\" type=\\\"tns:Forecast\\\" />\\r\\n        </s:sequence>\\r\\n      </s:complexType>\\r\\n      <s:complexType name=\\\"Forecast\\\">\\r\\n        <s:sequence>\\r\\n          <s:element minOccurs=\\\"1\\\" maxOccurs=\\\"1\\\" name=\\\"Date\\\" type=\\\"s:dateTime\\\" />\\r\\n          <s:element minOccurs=\\\"1\\\" maxOccurs=\\\"1\\\" name=\\\"WeatherID\\\" type=\\\"s:short\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"Desciption\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"1\\\" maxOccurs=\\\"1\\\" name=\\\"Temperatures\\\" type=\\\"tns:temp\\\" />\\r\\n          <s:element minOccurs=\\\"1\\\" maxOccurs=\\\"1\\\" name=\\\"ProbabilityOfPrecipiation\\\" type=\\\"tns:POP\\\" />\\r\\n        </s:sequence>\\r\\n      </s:complexType>\\r\\n      <s:complexType name=\\\"temp\\\">\\r\\n        <s:sequence>\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"MorningLow\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"DaytimeHigh\\\" type=\\\"s:string\\\" />\\r\\n        </s:sequence>\\r\\n      </s:complexType>\\r\\n      <s:complexType name=\\\"POP\\\">\\r\\n        <s:sequence>\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"Nighttime\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"Daytime\\\" type=\\\"s:string\\\" />\\r\\n        </s:sequence>\\r\\n      </s:complexType>\\r\\n      <s:element name=\\\"GetCityWeatherByZIP\\\">\\r\\n        <s:complexType>\\r\\n          <s:sequence>\\r\\n            <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"ZIP\\\" type=\\\"s:string\\\" />\\r\\n          </s:sequence>\\r\\n        </s:complexType>\\r\\n      </s:element>\\r\\n      <s:element name=\\\"GetCityWeatherByZIPResponse\\\">\\r\\n        <s:complexType>\\r\\n          <s:sequence>\\r\\n            <s:element minOccurs=\\\"1\\\" maxOccurs=\\\"1\\\" name=\\\"GetCityWeatherByZIPResult\\\" type=\\\"tns:WeatherReturn\\\" />\\r\\n          </s:sequence>\\r\\n        </s:complexType>\\r\\n      </s:element>\\r\\n      <s:complexType name=\\\"WeatherReturn\\\">\\r\\n        <s:sequence>\\r\\n          <s:element minOccurs=\\\"1\\\" maxOccurs=\\\"1\\\" name=\\\"Success\\\" type=\\\"s:boolean\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"ResponseText\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"State\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"City\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"WeatherStationCity\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"1\\\" maxOccurs=\\\"1\\\" name=\\\"WeatherID\\\" type=\\\"s:short\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"Description\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"Temperature\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"RelativeHumidity\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"Wind\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"Pressure\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"Visibility\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"WindChill\\\" type=\\\"s:string\\\" />\\r\\n          <s:element minOccurs=\\\"0\\\" maxOccurs=\\\"1\\\" name=\\\"Remarks\\\" type=\\\"s:string\\\" />\\r\\n        </s:sequence>\\r\\n      </s:complexType>\\r\\n      <s:element name=\\\"ArrayOfWeatherDescription\\\" nillable=\\\"true\\\" type=\\\"tns:ArrayOfWeatherDescription\\\" />\\r\\n      <s:element name=\\\"ForecastReturn\\\" nillable=\\\"true\\\" type=\\\"tns:ForecastReturn\\\" />\\r\\n      <s:element name=\\\"WeatherReturn\\\" type=\\\"tns:WeatherReturn\\\" />\\r\\n    </s:schema>\\r\\n  </wsdl:types>\\r\\n  <wsdl:message name=\\\"GetWeatherInformationSoapIn\\\">\\r\\n    <wsdl:part name=\\\"parameters\\\" element=\\\"tns:GetWeatherInformation\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetWeatherInformationSoapOut\\\">\\r\\n    <wsdl:part name=\\\"parameters\\\" element=\\\"tns:GetWeatherInformationResponse\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetCityForecastByZIPSoapIn\\\">\\r\\n    <wsdl:part name=\\\"parameters\\\" element=\\\"tns:GetCityForecastByZIP\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetCityForecastByZIPSoapOut\\\">\\r\\n    <wsdl:part name=\\\"parameters\\\" element=\\\"tns:GetCityForecastByZIPResponse\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetCityWeatherByZIPSoapIn\\\">\\r\\n    <wsdl:part name=\\\"parameters\\\" element=\\\"tns:GetCityWeatherByZIP\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetCityWeatherByZIPSoapOut\\\">\\r\\n    <wsdl:part name=\\\"parameters\\\" element=\\\"tns:GetCityWeatherByZIPResponse\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetWeatherInformationHttpGetIn\\\" />\\r\\n  <wsdl:message name=\\\"GetWeatherInformationHttpGetOut\\\">\\r\\n    <wsdl:part name=\\\"Body\\\" element=\\\"tns:ArrayOfWeatherDescription\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetCityForecastByZIPHttpGetIn\\\">\\r\\n    <wsdl:part name=\\\"ZIP\\\" type=\\\"s:string\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetCityForecastByZIPHttpGetOut\\\">\\r\\n    <wsdl:part name=\\\"Body\\\" element=\\\"tns:ForecastReturn\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetCityWeatherByZIPHttpGetIn\\\">\\r\\n    <wsdl:part name=\\\"ZIP\\\" type=\\\"s:string\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetCityWeatherByZIPHttpGetOut\\\">\\r\\n    <wsdl:part name=\\\"Body\\\" element=\\\"tns:WeatherReturn\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetWeatherInformationHttpPostIn\\\" />\\r\\n  <wsdl:message name=\\\"GetWeatherInformationHttpPostOut\\\">\\r\\n    <wsdl:part name=\\\"Body\\\" element=\\\"tns:ArrayOfWeatherDescription\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetCityForecastByZIPHttpPostIn\\\">\\r\\n    <wsdl:part name=\\\"ZIP\\\" type=\\\"s:string\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetCityForecastByZIPHttpPostOut\\\">\\r\\n    <wsdl:part name=\\\"Body\\\" element=\\\"tns:ForecastReturn\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetCityWeatherByZIPHttpPostIn\\\">\\r\\n    <wsdl:part name=\\\"ZIP\\\" type=\\\"s:string\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:message name=\\\"GetCityWeatherByZIPHttpPostOut\\\">\\r\\n    <wsdl:part name=\\\"Body\\\" element=\\\"tns:WeatherReturn\\\" />\\r\\n  </wsdl:message>\\r\\n  <wsdl:portType name=\\\"WeatherSoap\\\">\\r\\n    <wsdl:operation name=\\\"GetWeatherInformation\\\">\\r\\n      <wsdl:documentation xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\">Gets Information for each WeatherID</wsdl:documentation>\\r\\n      <wsdl:input message=\\\"tns:GetWeatherInformationSoapIn\\\" />\\r\\n      <wsdl:output message=\\\"tns:GetWeatherInformationSoapOut\\\" />\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityForecastByZIP\\\">\\r\\n      <wsdl:documentation xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\">Allows you to get your City Forecast Over the Next 7 Days, which is updated hourly. U.S. Only</wsdl:documentation>\\r\\n      <wsdl:input message=\\\"tns:GetCityForecastByZIPSoapIn\\\" />\\r\\n      <wsdl:output message=\\\"tns:GetCityForecastByZIPSoapOut\\\" />\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityWeatherByZIP\\\">\\r\\n      <wsdl:documentation xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\">Allows you to get your City's Weather, which is updated hourly. U.S. Only</wsdl:documentation>\\r\\n      <wsdl:input message=\\\"tns:GetCityWeatherByZIPSoapIn\\\" />\\r\\n      <wsdl:output message=\\\"tns:GetCityWeatherByZIPSoapOut\\\" />\\r\\n    </wsdl:operation>\\r\\n  </wsdl:portType>\\r\\n  <wsdl:portType name=\\\"WeatherHttpGet\\\">\\r\\n    <wsdl:operation name=\\\"GetWeatherInformation\\\">\\r\\n      <wsdl:documentation xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\">Gets Information for each WeatherID</wsdl:documentation>\\r\\n      <wsdl:input message=\\\"tns:GetWeatherInformationHttpGetIn\\\" />\\r\\n      <wsdl:output message=\\\"tns:GetWeatherInformationHttpGetOut\\\" />\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityForecastByZIP\\\">\\r\\n      <wsdl:documentation xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\">Allows you to get your City Forecast Over the Next 7 Days, which is updated hourly. U.S. Only</wsdl:documentation>\\r\\n      <wsdl:input message=\\\"tns:GetCityForecastByZIPHttpGetIn\\\" />\\r\\n      <wsdl:output message=\\\"tns:GetCityForecastByZIPHttpGetOut\\\" />\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityWeatherByZIP\\\">\\r\\n      <wsdl:documentation xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\">Allows you to get your City's Weather, which is updated hourly. U.S. Only</wsdl:documentation>\\r\\n      <wsdl:input message=\\\"tns:GetCityWeatherByZIPHttpGetIn\\\" />\\r\\n      <wsdl:output message=\\\"tns:GetCityWeatherByZIPHttpGetOut\\\" />\\r\\n    </wsdl:operation>\\r\\n  </wsdl:portType>\\r\\n  <wsdl:portType name=\\\"WeatherHttpPost\\\">\\r\\n    <wsdl:operation name=\\\"GetWeatherInformation\\\">\\r\\n      <wsdl:documentation xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\">Gets Information for each WeatherID</wsdl:documentation>\\r\\n      <wsdl:input message=\\\"tns:GetWeatherInformationHttpPostIn\\\" />\\r\\n      <wsdl:output message=\\\"tns:GetWeatherInformationHttpPostOut\\\" />\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityForecastByZIP\\\">\\r\\n      <wsdl:documentation xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\">Allows you to get your City Forecast Over the Next 7 Days, which is updated hourly. U.S. Only</wsdl:documentation>\\r\\n      <wsdl:input message=\\\"tns:GetCityForecastByZIPHttpPostIn\\\" />\\r\\n      <wsdl:output message=\\\"tns:GetCityForecastByZIPHttpPostOut\\\" />\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityWeatherByZIP\\\">\\r\\n      <wsdl:documentation xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\">Allows you to get your City's Weather, which is updated hourly. U.S. Only</wsdl:documentation>\\r\\n      <wsdl:input message=\\\"tns:GetCityWeatherByZIPHttpPostIn\\\" />\\r\\n      <wsdl:output message=\\\"tns:GetCityWeatherByZIPHttpPostOut\\\" />\\r\\n    </wsdl:operation>\\r\\n  </wsdl:portType>\\r\\n  <wsdl:binding name=\\\"WeatherSoap\\\" type=\\\"tns:WeatherSoap\\\">\\r\\n    <soap:binding transport=\\\"http://schemas.xmlsoap.org/soap/http\\\" />\\r\\n    <wsdl:operation name=\\\"GetWeatherInformation\\\">\\r\\n      <soap:operation soapAction=\\\"http://ws.cdyne.com/WeatherWS/GetWeatherInformation\\\" style=\\\"document\\\" />\\r\\n      <wsdl:input>\\r\\n        <soap:body use=\\\"literal\\\" />\\r\\n      </wsdl:input>\\r\\n      <wsdl:output>\\r\\n        <soap:body use=\\\"literal\\\" />\\r\\n      </wsdl:output>\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityForecastByZIP\\\">\\r\\n      <soap:operation soapAction=\\\"http://ws.cdyne.com/WeatherWS/GetCityForecastByZIP\\\" style=\\\"document\\\" />\\r\\n      <wsdl:input>\\r\\n        <soap:body use=\\\"literal\\\" />\\r\\n      </wsdl:input>\\r\\n      <wsdl:output>\\r\\n        <soap:body use=\\\"literal\\\" />\\r\\n      </wsdl:output>\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityWeatherByZIP\\\">\\r\\n      <soap:operation soapAction=\\\"http://ws.cdyne.com/WeatherWS/GetCityWeatherByZIP\\\" style=\\\"document\\\" />\\r\\n      <wsdl:input>\\r\\n        <soap:body use=\\\"literal\\\" />\\r\\n      </wsdl:input>\\r\\n      <wsdl:output>\\r\\n        <soap:body use=\\\"literal\\\" />\\r\\n      </wsdl:output>\\r\\n    </wsdl:operation>\\r\\n  </wsdl:binding>\\r\\n  <wsdl:binding name=\\\"WeatherSoap12\\\" type=\\\"tns:WeatherSoap\\\">\\r\\n    <soap12:binding transport=\\\"http://schemas.xmlsoap.org/soap/http\\\" />\\r\\n    <wsdl:operation name=\\\"GetWeatherInformation\\\">\\r\\n      <soap12:operation soapAction=\\\"http://ws.cdyne.com/WeatherWS/GetWeatherInformation\\\" style=\\\"document\\\" />\\r\\n      <wsdl:input>\\r\\n        <soap12:body use=\\\"literal\\\" />\\r\\n      </wsdl:input>\\r\\n      <wsdl:output>\\r\\n        <soap12:body use=\\\"literal\\\" />\\r\\n      </wsdl:output>\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityForecastByZIP\\\">\\r\\n      <soap12:operation soapAction=\\\"http://ws.cdyne.com/WeatherWS/GetCityForecastByZIP\\\" style=\\\"document\\\" />\\r\\n      <wsdl:input>\\r\\n        <soap12:body use=\\\"literal\\\" />\\r\\n      </wsdl:input>\\r\\n      <wsdl:output>\\r\\n        <soap12:body use=\\\"literal\\\" />\\r\\n      </wsdl:output>\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityWeatherByZIP\\\">\\r\\n      <soap12:operation soapAction=\\\"http://ws.cdyne.com/WeatherWS/GetCityWeatherByZIP\\\" style=\\\"document\\\" />\\r\\n      <wsdl:input>\\r\\n        <soap12:body use=\\\"literal\\\" />\\r\\n      </wsdl:input>\\r\\n      <wsdl:output>\\r\\n        <soap12:body use=\\\"literal\\\" />\\r\\n      </wsdl:output>\\r\\n    </wsdl:operation>\\r\\n  </wsdl:binding>\\r\\n  <wsdl:binding name=\\\"WeatherHttpGet\\\" type=\\\"tns:WeatherHttpGet\\\">\\r\\n    <http:binding verb=\\\"GET\\\" />\\r\\n    <wsdl:operation name=\\\"GetWeatherInformation\\\">\\r\\n      <http:operation location=\\\"/GetWeatherInformation\\\" />\\r\\n      <wsdl:input>\\r\\n        <http:urlEncoded />\\r\\n      </wsdl:input>\\r\\n      <wsdl:output>\\r\\n        <mime:mimeXml part=\\\"Body\\\" />\\r\\n      </wsdl:output>\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityForecastByZIP\\\">\\r\\n      <http:operation location=\\\"/GetCityForecastByZIP\\\" />\\r\\n      <wsdl:input>\\r\\n        <http:urlEncoded />\\r\\n      </wsdl:input>\\r\\n      <wsdl:output>\\r\\n        <mime:mimeXml part=\\\"Body\\\" />\\r\\n      </wsdl:output>\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityWeatherByZIP\\\">\\r\\n      <http:operation location=\\\"/GetCityWeatherByZIP\\\" />\\r\\n      <wsdl:input>\\r\\n        <http:urlEncoded />\\r\\n      </wsdl:input>\\r\\n      <wsdl:output>\\r\\n        <mime:mimeXml part=\\\"Body\\\" />\\r\\n      </wsdl:output>\\r\\n    </wsdl:operation>\\r\\n  </wsdl:binding>\\r\\n  <wsdl:binding name=\\\"WeatherHttpPost\\\" type=\\\"tns:WeatherHttpPost\\\">\\r\\n    <http:binding verb=\\\"POST\\\" />\\r\\n    <wsdl:operation name=\\\"GetWeatherInformation\\\">\\r\\n      <http:operation location=\\\"/GetWeatherInformation\\\" />\\r\\n      <wsdl:input>\\r\\n        <mime:content type=\\\"application/x-www-form-urlencoded\\\" />\\r\\n      </wsdl:input>\\r\\n      <wsdl:output>\\r\\n        <mime:mimeXml part=\\\"Body\\\" />\\r\\n      </wsdl:output>\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityForecastByZIP\\\">\\r\\n      <http:operation location=\\\"/GetCityForecastByZIP\\\" />\\r\\n      <wsdl:input>\\r\\n        <mime:content type=\\\"application/x-www-form-urlencoded\\\" />\\r\\n      </wsdl:input>\\r\\n      <wsdl:output>\\r\\n        <mime:mimeXml part=\\\"Body\\\" />\\r\\n      </wsdl:output>\\r\\n    </wsdl:operation>\\r\\n    <wsdl:operation name=\\\"GetCityWeatherByZIP\\\">\\r\\n      <http:operation location=\\\"/GetCityWeatherByZIP\\\" />\\r\\n      <wsdl:input>\\r\\n        <mime:content type=\\\"application/x-www-form-urlencoded\\\" />\\r\\n      </wsdl:input>\\r\\n      <wsdl:output>\\r\\n        <mime:mimeXml part=\\\"Body\\\" />\\r\\n      </wsdl:output>\\r\\n    </wsdl:operation>\\r\\n  </wsdl:binding>\\r\\n  <wsdl:service name=\\\"Weather\\\">\\r\\n    <wsdl:port name=\\\"WeatherSoap\\\" binding=\\\"tns:WeatherSoap\\\">\\r\\n      <soap:address location=\\\"http://wsf.cdyne.com/WeatherWS/Weather.asmx\\\" />\\r\\n    </wsdl:port>\\r\\n    <wsdl:port name=\\\"WeatherSoap12\\\" binding=\\\"tns:WeatherSoap12\\\">\\r\\n      <soap12:address location=\\\"http://wsf.cdyne.com/WeatherWS/Weather.asmx\\\" />\\r\\n    </wsdl:port>\\r\\n    <wsdl:port name=\\\"WeatherHttpGet\\\" binding=\\\"tns:WeatherHttpGet\\\">\\r\\n      <http:address location=\\\"http://wsf.cdyne.com/WeatherWS/Weather.asmx\\\" />\\r\\n    </wsdl:port>\\r\\n    <wsdl:port name=\\\"WeatherHttpPost\\\" binding=\\\"tns:WeatherHttpPost\\\">\\r\\n      <http:address location=\\\"http://wsf.cdyne.com/WeatherWS/Weather.asmx\\\" />\\r\\n    </wsdl:port>\\r\\n  </wsdl:service>\\r\\n</wsdl:definitions>\",\r\n    \"format\": \"wsdl\",\r\n    \"wsdlSelector\": {\r\n      \"wsdlServiceName\": \"Weather\",\r\n      \"wsdlEndpointName\": \"WeatherSoap\"\r\n    },\r\n    \"apiType\": \"soap\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3c43d227-1b36-451a-8def-5f98a94371ff"
+          "d3257d3b-324c-4872-91f6-59c5341d2ab9"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,31 +33,31 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1150?api-version=2019-12-01&asyncId=5e8e40956f56470da8ba3de7&asyncCode=201"
+          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7717?api-version=2019-12-01&asyncId=5e9dd3b26f564710e092efab&asyncCode=201"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "90896468-7a0a-4df0-b32b-2c84801ff115"
+          "44e1876e-99c3-4244-97c5-be1b1bfadcdc"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "89e542ef-572f-4aed-aaf8-0fe15bcde0a2"
+          "8b26eb56-c4c2-4321-bc7d-d7b6a585766e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212229Z:89e542ef-572f-4aed-aaf8-0fe15bcde0a2"
+          "WESTUS:20200420T165411Z:8b26eb56-c4c2-4321-bc7d-d7b6a585766e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:22:29 GMT"
+          "Mon, 20 Apr 2020 16:54:11 GMT"
         ],
         "Expires": [
           "-1"
@@ -70,8 +70,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1150?api-version=2019-12-01&asyncId=5e8e40956f56470da8ba3de7&asyncCode=201",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMTUwP2FwaS12ZXJzaW9uPTIwMTktMTItMDEmYXN5bmNJZD01ZThlNDA5NTZmNTY0NzBkYThiYTNkZTcmYXN5bmNDb2RlPTIwMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7717?api-version=2019-12-01&asyncId=5e9dd3b26f564710e092efab&asyncCode=201",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM3NzE3P2FwaS12ZXJzaW9uPTIwMTktMTItMDEmYXN5bmNJZD01ZTlkZDNiMjZmNTY0NzEwZTA5MmVmYWImYXN5bmNDb2RlPTIwMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -90,31 +90,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAKls=\""
+          "\"AAAAAAAAONw=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "4d0461d6-d268-4225-9769-200c24661de4"
+          "ae18f1ba-ae59-4a16-99ce-2400ef2cf1de"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "939c8df0-feb9-4879-8e1b-211478762dc3"
+          "165748a9-73d8-4a43-8a42-5c547cae409f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212300Z:939c8df0-feb9-4879-8e1b-211478762dc3"
+          "WESTUS:20200420T165441Z:165748a9-73d8-4a43-8a42-5c547cae409f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:22:59 GMT"
+          "Mon, 20 Apr 2020 16:54:41 GMT"
         ],
         "Content-Length": [
           "786"
@@ -126,17 +126,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1150\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps1150\",\r\n  \"properties\": {\r\n    \"displayName\": \"Weather\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": null,\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://wsf.cdyne.com/WeatherWS/Weather.asmx\",\r\n    \"path\": \"soapapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"soap\",\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7717\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps7717\",\r\n  \"properties\": {\r\n    \"displayName\": \"Weather\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": null,\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://wsf.cdyne.com/WeatherWS/Weather.asmx\",\r\n    \"path\": \"soapapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"soap\",\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1150?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMTUwP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7717?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM3NzE3P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c133755a-04e0-431f-b5e5-eb06d35c9f1c"
+          "bbbea789-43ad-45fe-bad8-50b3fcfb8767"
         ],
         "Accept-Language": [
           "en-US"
@@ -156,31 +156,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAKls=\""
+          "\"AAAAAAAAONw=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9fd558e7-86f6-4815-878a-1bfb110b2ab8"
+          "c23d8d23-f554-450f-9fea-fa1c03e4d9b7"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "33628d21-a346-4489-9a5f-0fe7c8756946"
+          "a93dca69-673d-4a9b-87d2-c5a85bf4d5e6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212300Z:33628d21-a346-4489-9a5f-0fe7c8756946"
+          "WESTUS:20200420T165441Z:a93dca69-673d-4a9b-87d2-c5a85bf4d5e6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:22:59 GMT"
+          "Mon, 20 Apr 2020 16:54:41 GMT"
         ],
         "Content-Length": [
           "786"
@@ -192,17 +192,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1150\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps1150\",\r\n  \"properties\": {\r\n    \"displayName\": \"Weather\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": null,\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://wsf.cdyne.com/WeatherWS/Weather.asmx\",\r\n    \"path\": \"soapapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"soap\",\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7717\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps7717\",\r\n  \"properties\": {\r\n    \"displayName\": \"Weather\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": null,\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://wsf.cdyne.com/WeatherWS/Weather.asmx\",\r\n    \"path\": \"soapapifromFile\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"soap\",\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMzYwP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM1Nzg5P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"path\": \"soapapifromUrl\",\r\n    \"value\": \"http://fazioapisoap.azurewebsites.net/fazioService.svc?singleWSDL\",\r\n    \"format\": \"wsdl-link\",\r\n    \"wsdlSelector\": {\r\n      \"wsdlServiceName\": \"OrdersAPI\",\r\n      \"wsdlEndpointName\": \"basic\"\r\n    },\r\n    \"apiType\": \"soap\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c218c011-86db-451a-99f2-1baea31ea421"
+          "d9e31c69-e715-4c8a-846e-8c587a8e4539"
         ],
         "Accept-Language": [
           "en-US"
@@ -228,31 +228,31 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360?api-version=2019-12-01&asyncId=5e8e40b46f56470da8ba3dee&asyncCode=201"
+          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789?api-version=2019-12-01&asyncId=5e9dd3d26f564710e092efb2&asyncCode=201"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d59f992a-141c-4f3f-bd54-d52a735823ad"
+          "421a397b-d0b6-46fa-87de-694c632d034a"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "6d877be3-4e1d-4236-8ee0-d86dc24781e5"
+          "cc0c7a20-53c1-428b-adcb-0785fdff16a2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212301Z:6d877be3-4e1d-4236-8ee0-d86dc24781e5"
+          "WESTUS:20200420T165442Z:cc0c7a20-53c1-428b-adcb-0785fdff16a2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:23:00 GMT"
+          "Mon, 20 Apr 2020 16:54:41 GMT"
         ],
         "Expires": [
           "-1"
@@ -265,8 +265,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360?api-version=2019-12-01&asyncId=5e8e40b46f56470da8ba3dee&asyncCode=201",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMzYwP2FwaS12ZXJzaW9uPTIwMTktMTItMDEmYXN5bmNJZD01ZThlNDBiNDZmNTY0NzBkYThiYTNkZWUmYXN5bmNDb2RlPTIwMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789?api-version=2019-12-01&asyncId=5e9dd3d26f564710e092efb2&asyncCode=201",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM1Nzg5P2FwaS12ZXJzaW9uPTIwMTktMTItMDEmYXN5bmNJZD01ZTlkZDNkMjZmNTY0NzEwZTA5MmVmYjImYXN5bmNDb2RlPTIwMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -285,31 +285,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAKmk=\""
+          "\"AAAAAAAAOOw=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "6e2d98ec-e1d8-4990-9836-ea001d019f3d"
+          "ab23678a-7337-4b71-af5f-a3a5e305eab8"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
-        ],
         "x-ms-correlation-request-id": [
-          "ce05ad27-087d-4957-9cd3-7ed67c79d607"
+          "8bf66e03-9943-438f-9bf6-6166bb9aef95"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212331Z:ce05ad27-087d-4957-9cd3-7ed67c79d607"
+          "WESTUS:20200420T165512Z:8bf66e03-9943-438f-9bf6-6166bb9aef95"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:23:30 GMT"
+          "Mon, 20 Apr 2020 16:55:11 GMT"
         ],
         "Content-Length": [
           "798"
@@ -321,17 +321,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps1360\",\r\n  \"properties\": {\r\n    \"displayName\": \"OrdersAPI\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": null,\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://fazioapisoap.azurewebsites.net/FazioService.svc\",\r\n    \"path\": \"soapapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"soap\",\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps5789\",\r\n  \"properties\": {\r\n    \"displayName\": \"OrdersAPI\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": null,\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://fazioapisoap.azurewebsites.net/FazioService.svc\",\r\n    \"path\": \"soapapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"soap\",\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMzYwP2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM1Nzg5P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8a30ed4c-aa48-45fb-94cc-df9ea3d6eb73"
+          "96ce7d1e-60d0-41e4-aa14-a0eb86c973c4"
         ],
         "Accept-Language": [
           "en-US"
@@ -351,31 +351,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAKmk=\""
+          "\"AAAAAAAAOOw=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "311428de-d64a-4b37-a747-44610095c024"
+          "5ca193c7-d844-4ab6-91f5-f06e23180a9a"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "a2fde500-b19a-4148-a64d-f433f3e8deb4"
+          "64857d3f-406b-4a3f-ad2f-af0eaa6c3489"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212331Z:a2fde500-b19a-4148-a64d-f433f3e8deb4"
+          "WESTUS:20200420T165512Z:64857d3f-406b-4a3f-ad2f-af0eaa6c3489"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:23:30 GMT"
+          "Mon, 20 Apr 2020 16:55:11 GMT"
         ],
         "Content-Length": [
           "798"
@@ -387,17 +387,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps1360\",\r\n  \"properties\": {\r\n    \"displayName\": \"OrdersAPI\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": null,\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://fazioapisoap.azurewebsites.net/FazioService.svc\",\r\n    \"path\": \"soapapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"soap\",\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps5789\",\r\n  \"properties\": {\r\n    \"displayName\": \"OrdersAPI\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": null,\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://fazioapisoap.azurewebsites.net/FazioService.svc\",\r\n    \"path\": \"soapapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"soap\",\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360/schemas?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMzYwL3NjaGVtYXM/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789/schemas?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM1Nzg5L3NjaGVtYXM/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c1dcf805-21a5-4d14-8450-2a480da28fa2"
+          "cee19ee7-7323-48dd-8e8c-48d421bdf723"
         ],
         "Accept-Language": [
           "en-US"
@@ -420,25 +420,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d750a791-2fbb-4687-9b47-d68ae5483bef"
+          "9cfad04e-9e11-46ee-92ef-3e0c339a9d26"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "c93fbcff-d305-4895-b64c-25489f6fbdd5"
+          "0391b154-8338-429f-b23f-ad6d2b8d909a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212331Z:c93fbcff-d305-4895-b64c-25489f6fbdd5"
+          "WESTUS:20200420T165512Z:0391b154-8338-429f-b23f-ad6d2b8d909a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:23:30 GMT"
+          "Mon, 20 Apr 2020 16:55:11 GMT"
         ],
         "Content-Length": [
           "15328"
@@ -450,17 +450,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360/schemas/7a1ed8e6-e740-4411-b7fe-5a808daed119\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/schemas\",\r\n      \"name\": \"7a1ed8e6-e740-4411-b7fe-5a808daed119\",\r\n      \"properties\": {\r\n        \"contentType\": \"application/vnd.ms-azure-apim.xsd+xml\",\r\n        \"document\": {\r\n          \"value\": \"<xsd:schema elementFormDefault=\\\"qualified\\\" targetNamespace=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:tns=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" xmlns:q1=\\\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\\\" xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\" xmlns:wsap=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing/policy\\\" xmlns:wsa10=\\\"http://www.w3.org/2005/08/addressing\\\" xmlns:msc=\\\"http://schemas.microsoft.com/ws/2005/12/wsdl/contract\\\" xmlns:soapenc=\\\"http://schemas.xmlsoap.org/soap/encoding/\\\" xmlns:wsx=\\\"http://schemas.xmlsoap.org/ws/2004/09/mex\\\" xmlns:soap=\\\"http://schemas.xmlsoap.org/wsdl/soap/\\\" xmlns:wsam=\\\"http://www.w3.org/2007/05/addressing/metadata\\\" xmlns:wsa=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing\\\" xmlns:wsp=\\\"http://schemas.xmlsoap.org/ws/2004/09/policy\\\" xmlns:wsaw=\\\"http://www.w3.org/2006/05/addressing/wsdl\\\" xmlns:soap12=\\\"http://schemas.xmlsoap.org/wsdl/soap12/\\\" xmlns:wsu=\\\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\\\" xmlns:xsd=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:apim-wsdltns=\\\"http://tempuri.org/\\\">\\r\\n  <xsd:import namespace=\\\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\\\" />\\r\\n  <xsd:complexType name=\\\"Order\\\">\\r\\n    <xsd:sequence>\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"customer_id\\\" type=\\\"xs:int\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"line_items\\\" nillable=\\\"true\\\" type=\\\"q1:ArrayOfint\\\" xmlns:q1=\\\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"order_header_data\\\" nillable=\\\"true\\\" type=\\\"tns:OrderHeaderData\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"order_id\\\" type=\\\"xs:int\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"shipping_address\\\" nillable=\\\"true\\\" type=\\\"tns:ShippingAddress\\\" />\\r\\n    </xsd:sequence>\\r\\n  </xsd:complexType>\\r\\n  <xsd:element name=\\\"Order\\\" nillable=\\\"true\\\" type=\\\"tns:Order\\\" />\\r\\n  <xsd:complexType name=\\\"OrderHeaderData\\\">\\r\\n    <xsd:sequence>\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"Bar\\\" type=\\\"xs:boolean\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"Foo\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n    </xsd:sequence>\\r\\n  </xsd:complexType>\\r\\n  <xsd:element name=\\\"OrderHeaderData\\\" nillable=\\\"true\\\" type=\\\"tns:OrderHeaderData\\\" />\\r\\n  <xsd:complexType name=\\\"ShippingAddress\\\">\\r\\n    <xsd:sequence>\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"Address1\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"Address2\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"City\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"Country\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"StateCounty\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"ZipPostcode\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n    </xsd:sequence>\\r\\n  </xsd:complexType>\\r\\n  <xsd:element name=\\\"ShippingAddress\\\" nillable=\\\"true\\\" type=\\\"tns:ShippingAddress\\\" />\\r\\n  <xsd:complexType name=\\\"ArrayOfOrderSummary\\\">\\r\\n    <xsd:sequence>\\r\\n      <xsd:element minOccurs=\\\"0\\\" maxOccurs=\\\"unbounded\\\" name=\\\"OrderSummary\\\" nillable=\\\"true\\\" type=\\\"tns:OrderSummary\\\" />\\r\\n    </xsd:sequence>\\r\\n  </xsd:complexType>\\r\\n  <xsd:element name=\\\"ArrayOfOrderSummary\\\" nillable=\\\"true\\\" type=\\\"tns:ArrayOfOrderSummary\\\" />\\r\\n  <xsd:complexType name=\\\"OrderSummary\\\">\\r\\n    <xsd:sequence>\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"order_header_data\\\" nillable=\\\"true\\\" type=\\\"tns:OrderHeaderData\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"order_id\\\" type=\\\"xs:int\\\" />\\r\\n    </xsd:sequence>\\r\\n  </xsd:complexType>\\r\\n  <xsd:element name=\\\"OrderSummary\\\" nillable=\\\"true\\\" type=\\\"tns:OrderSummary\\\" />\\r\\n</xsd:schema>\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360/schemas/ad4ba16d-0494-4bbb-9338-f7287aa723f6\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/schemas\",\r\n      \"name\": \"ad4ba16d-0494-4bbb-9338-f7287aa723f6\",\r\n      \"properties\": {\r\n        \"contentType\": \"application/vnd.ms-azure-apim.xsd+xml\",\r\n        \"document\": {\r\n          \"value\": \"<xsd:schema elementFormDefault=\\\"qualified\\\" targetNamespace=\\\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:tns=\\\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\\\" xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\" xmlns:wsap=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing/policy\\\" xmlns:wsa10=\\\"http://www.w3.org/2005/08/addressing\\\" xmlns:msc=\\\"http://schemas.microsoft.com/ws/2005/12/wsdl/contract\\\" xmlns:soapenc=\\\"http://schemas.xmlsoap.org/soap/encoding/\\\" xmlns:wsx=\\\"http://schemas.xmlsoap.org/ws/2004/09/mex\\\" xmlns:soap=\\\"http://schemas.xmlsoap.org/wsdl/soap/\\\" xmlns:wsam=\\\"http://www.w3.org/2007/05/addressing/metadata\\\" xmlns:wsa=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing\\\" xmlns:wsp=\\\"http://schemas.xmlsoap.org/ws/2004/09/policy\\\" xmlns:wsaw=\\\"http://www.w3.org/2006/05/addressing/wsdl\\\" xmlns:soap12=\\\"http://schemas.xmlsoap.org/wsdl/soap12/\\\" xmlns:wsu=\\\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\\\" xmlns:xsd=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:apim-wsdltns=\\\"http://tempuri.org/\\\">\\r\\n  <xsd:complexType name=\\\"ArrayOfint\\\">\\r\\n    <xsd:sequence>\\r\\n      <xsd:element minOccurs=\\\"0\\\" maxOccurs=\\\"unbounded\\\" name=\\\"int\\\" type=\\\"xs:int\\\" />\\r\\n    </xsd:sequence>\\r\\n  </xsd:complexType>\\r\\n  <xsd:element name=\\\"ArrayOfint\\\" nillable=\\\"true\\\" type=\\\"tns:ArrayOfint\\\" />\\r\\n</xsd:schema>\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360/schemas/b9297b47-c910-4206-a417-55432179d698\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/schemas\",\r\n      \"name\": \"b9297b47-c910-4206-a417-55432179d698\",\r\n      \"properties\": {\r\n        \"contentType\": \"application/vnd.ms-azure-apim.xsd+xml\",\r\n        \"document\": {\r\n          \"value\": \"<xsd:schema attributeFormDefault=\\\"qualified\\\" elementFormDefault=\\\"qualified\\\" targetNamespace=\\\"http://schemas.microsoft.com/2003/10/Serialization/\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:tns=\\\"http://schemas.microsoft.com/2003/10/Serialization/\\\" xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\" xmlns:wsap=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing/policy\\\" xmlns:wsa10=\\\"http://www.w3.org/2005/08/addressing\\\" xmlns:msc=\\\"http://schemas.microsoft.com/ws/2005/12/wsdl/contract\\\" xmlns:soapenc=\\\"http://schemas.xmlsoap.org/soap/encoding/\\\" xmlns:wsx=\\\"http://schemas.xmlsoap.org/ws/2004/09/mex\\\" xmlns:soap=\\\"http://schemas.xmlsoap.org/wsdl/soap/\\\" xmlns:wsam=\\\"http://www.w3.org/2007/05/addressing/metadata\\\" xmlns:wsa=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing\\\" xmlns:wsp=\\\"http://schemas.xmlsoap.org/ws/2004/09/policy\\\" xmlns:wsaw=\\\"http://www.w3.org/2006/05/addressing/wsdl\\\" xmlns:soap12=\\\"http://schemas.xmlsoap.org/wsdl/soap12/\\\" xmlns:wsu=\\\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\\\" xmlns:xsd=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:apim-wsdltns=\\\"http://tempuri.org/\\\">\\r\\n  <xsd:element name=\\\"anyType\\\" nillable=\\\"true\\\" type=\\\"xs:anyType\\\" />\\r\\n  <xsd:element name=\\\"anyURI\\\" nillable=\\\"true\\\" type=\\\"xs:anyURI\\\" />\\r\\n  <xsd:element name=\\\"base64Binary\\\" nillable=\\\"true\\\" type=\\\"xs:base64Binary\\\" />\\r\\n  <xsd:element name=\\\"boolean\\\" nillable=\\\"true\\\" type=\\\"xs:boolean\\\" />\\r\\n  <xsd:element name=\\\"byte\\\" nillable=\\\"true\\\" type=\\\"xs:byte\\\" />\\r\\n  <xsd:element name=\\\"dateTime\\\" nillable=\\\"true\\\" type=\\\"xs:dateTime\\\" />\\r\\n  <xsd:element name=\\\"decimal\\\" nillable=\\\"true\\\" type=\\\"xs:decimal\\\" />\\r\\n  <xsd:element name=\\\"double\\\" nillable=\\\"true\\\" type=\\\"xs:double\\\" />\\r\\n  <xsd:element name=\\\"float\\\" nillable=\\\"true\\\" type=\\\"xs:float\\\" />\\r\\n  <xsd:element name=\\\"int\\\" nillable=\\\"true\\\" type=\\\"xs:int\\\" />\\r\\n  <xsd:element name=\\\"long\\\" nillable=\\\"true\\\" type=\\\"xs:long\\\" />\\r\\n  <xsd:element name=\\\"QName\\\" nillable=\\\"true\\\" type=\\\"xs:QName\\\" />\\r\\n  <xsd:element name=\\\"short\\\" nillable=\\\"true\\\" type=\\\"xs:short\\\" />\\r\\n  <xsd:element name=\\\"string\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n  <xsd:element name=\\\"unsignedByte\\\" nillable=\\\"true\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n  <xsd:element name=\\\"unsignedInt\\\" nillable=\\\"true\\\" type=\\\"xs:unsignedInt\\\" />\\r\\n  <xsd:element name=\\\"unsignedLong\\\" nillable=\\\"true\\\" type=\\\"xs:unsignedLong\\\" />\\r\\n  <xsd:element name=\\\"unsignedShort\\\" nillable=\\\"true\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n  <xsd:element name=\\\"char\\\" nillable=\\\"true\\\" type=\\\"tns:char\\\" />\\r\\n  <xsd:simpleType name=\\\"char\\\">\\r\\n    <xsd:restriction base=\\\"xs:int\\\" />\\r\\n  </xsd:simpleType>\\r\\n  <xsd:element name=\\\"duration\\\" nillable=\\\"true\\\" type=\\\"tns:duration\\\" />\\r\\n  <xsd:simpleType name=\\\"duration\\\">\\r\\n    <xsd:restriction base=\\\"xs:duration\\\">\\r\\n      <xsd:pattern value=\\\"\\\\-?P(\\\\d*D)?(T(\\\\d*H)?(\\\\d*M)?(\\\\d*(\\\\.\\\\d*)?S)?)?\\\" />\\r\\n      <xsd:minInclusive value=\\\"-P10675199DT2H48M5.4775808S\\\" />\\r\\n      <xsd:maxInclusive value=\\\"P10675199DT2H48M5.4775807S\\\" />\\r\\n    </xsd:restriction>\\r\\n  </xsd:simpleType>\\r\\n  <xsd:element name=\\\"guid\\\" nillable=\\\"true\\\" type=\\\"tns:guid\\\" />\\r\\n  <xsd:simpleType name=\\\"guid\\\">\\r\\n    <xsd:restriction base=\\\"xs:string\\\">\\r\\n      <xsd:pattern value=\\\"[\\\\da-fA-F]{8}-[\\\\da-fA-F]{4}-[\\\\da-fA-F]{4}-[\\\\da-fA-F]{4}-[\\\\da-fA-F]{12}\\\" />\\r\\n    </xsd:restriction>\\r\\n  </xsd:simpleType>\\r\\n  <xsd:attribute name=\\\"FactoryType\\\" type=\\\"xs:QName\\\" />\\r\\n  <xsd:attribute name=\\\"Id\\\" type=\\\"xs:ID\\\" />\\r\\n  <xsd:attribute name=\\\"Ref\\\" type=\\\"xs:IDREF\\\" />\\r\\n</xsd:schema>\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360/schemas/c3e5ab93-ccd5-4e9c-8add-25bc2009b2f2\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/schemas\",\r\n      \"name\": \"c3e5ab93-ccd5-4e9c-8add-25bc2009b2f2\",\r\n      \"properties\": {\r\n        \"contentType\": \"application/vnd.ms-azure-apim.xsd+xml\",\r\n        \"document\": {\r\n          \"value\": \"<xsd:schema elementFormDefault=\\\"qualified\\\" targetNamespace=\\\"http://tempuri.org/\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:q1=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" xmlns:q2=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" xmlns:q3=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" xmlns:q4=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\" xmlns:wsap=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing/policy\\\" xmlns:wsa10=\\\"http://www.w3.org/2005/08/addressing\\\" xmlns:tns=\\\"http://tempuri.org/\\\" xmlns:msc=\\\"http://schemas.microsoft.com/ws/2005/12/wsdl/contract\\\" xmlns:soapenc=\\\"http://schemas.xmlsoap.org/soap/encoding/\\\" xmlns:wsx=\\\"http://schemas.xmlsoap.org/ws/2004/09/mex\\\" xmlns:soap=\\\"http://schemas.xmlsoap.org/wsdl/soap/\\\" xmlns:wsam=\\\"http://www.w3.org/2007/05/addressing/metadata\\\" xmlns:wsa=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing\\\" xmlns:wsp=\\\"http://schemas.xmlsoap.org/ws/2004/09/policy\\\" xmlns:wsaw=\\\"http://www.w3.org/2006/05/addressing/wsdl\\\" xmlns:soap12=\\\"http://schemas.xmlsoap.org/wsdl/soap12/\\\" xmlns:wsu=\\\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\\\" xmlns:xsd=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:apim-wsdltns=\\\"http://tempuri.org/\\\">\\r\\n  <xsd:import namespace=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" />\\r\\n  <xsd:element name=\\\"submitOrder\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"order\\\" nillable=\\\"true\\\" type=\\\"q1:Order\\\" xmlns:q1=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"submitOrderResponse\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"submitOrderResult\\\" type=\\\"xs:int\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"GetOpenOrders\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"cust\\\" type=\\\"xs:int\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"GetOpenOrdersResponse\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"GetOpenOrdersResult\\\" nillable=\\\"true\\\" type=\\\"q2:ArrayOfOrderSummary\\\" xmlns:q2=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"GetMostRecentOrder\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"cust\\\" type=\\\"xs:int\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"GetMostRecentOrderResponse\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"GetMostRecentOrderResult\\\" nillable=\\\"true\\\" type=\\\"q3:Order\\\" xmlns:q3=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"GetOrder\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"orderId\\\" type=\\\"xs:int\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"GetOrderResponse\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"GetOrderResult\\\" nillable=\\\"true\\\" type=\\\"q4:Order\\\" xmlns:q4=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"CancelOrder\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"orderId\\\" type=\\\"xs:int\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"CancelOrderResponse\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"CancelOrderResult\\\" type=\\\"xs:int\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n</xsd:schema>\"\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 4\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789/schemas/3814161e-e459-48c5-ab34-d4e729ba9976\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/schemas\",\r\n      \"name\": \"3814161e-e459-48c5-ab34-d4e729ba9976\",\r\n      \"properties\": {\r\n        \"contentType\": \"application/vnd.ms-azure-apim.xsd+xml\",\r\n        \"document\": {\r\n          \"value\": \"<xsd:schema elementFormDefault=\\\"qualified\\\" targetNamespace=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:tns=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" xmlns:q1=\\\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\\\" xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\" xmlns:wsap=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing/policy\\\" xmlns:wsa10=\\\"http://www.w3.org/2005/08/addressing\\\" xmlns:msc=\\\"http://schemas.microsoft.com/ws/2005/12/wsdl/contract\\\" xmlns:soapenc=\\\"http://schemas.xmlsoap.org/soap/encoding/\\\" xmlns:wsx=\\\"http://schemas.xmlsoap.org/ws/2004/09/mex\\\" xmlns:soap=\\\"http://schemas.xmlsoap.org/wsdl/soap/\\\" xmlns:wsam=\\\"http://www.w3.org/2007/05/addressing/metadata\\\" xmlns:wsa=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing\\\" xmlns:wsp=\\\"http://schemas.xmlsoap.org/ws/2004/09/policy\\\" xmlns:wsaw=\\\"http://www.w3.org/2006/05/addressing/wsdl\\\" xmlns:soap12=\\\"http://schemas.xmlsoap.org/wsdl/soap12/\\\" xmlns:wsu=\\\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\\\" xmlns:xsd=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:apim-wsdltns=\\\"http://tempuri.org/\\\">\\r\\n  <xsd:import namespace=\\\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\\\" />\\r\\n  <xsd:complexType name=\\\"Order\\\">\\r\\n    <xsd:sequence>\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"customer_id\\\" type=\\\"xs:int\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"line_items\\\" nillable=\\\"true\\\" type=\\\"q1:ArrayOfint\\\" xmlns:q1=\\\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"order_header_data\\\" nillable=\\\"true\\\" type=\\\"tns:OrderHeaderData\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"order_id\\\" type=\\\"xs:int\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"shipping_address\\\" nillable=\\\"true\\\" type=\\\"tns:ShippingAddress\\\" />\\r\\n    </xsd:sequence>\\r\\n  </xsd:complexType>\\r\\n  <xsd:element name=\\\"Order\\\" nillable=\\\"true\\\" type=\\\"tns:Order\\\" />\\r\\n  <xsd:complexType name=\\\"OrderHeaderData\\\">\\r\\n    <xsd:sequence>\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"Bar\\\" type=\\\"xs:boolean\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"Foo\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n    </xsd:sequence>\\r\\n  </xsd:complexType>\\r\\n  <xsd:element name=\\\"OrderHeaderData\\\" nillable=\\\"true\\\" type=\\\"tns:OrderHeaderData\\\" />\\r\\n  <xsd:complexType name=\\\"ShippingAddress\\\">\\r\\n    <xsd:sequence>\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"Address1\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"Address2\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"City\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"Country\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"StateCounty\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"ZipPostcode\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n    </xsd:sequence>\\r\\n  </xsd:complexType>\\r\\n  <xsd:element name=\\\"ShippingAddress\\\" nillable=\\\"true\\\" type=\\\"tns:ShippingAddress\\\" />\\r\\n  <xsd:complexType name=\\\"ArrayOfOrderSummary\\\">\\r\\n    <xsd:sequence>\\r\\n      <xsd:element minOccurs=\\\"0\\\" maxOccurs=\\\"unbounded\\\" name=\\\"OrderSummary\\\" nillable=\\\"true\\\" type=\\\"tns:OrderSummary\\\" />\\r\\n    </xsd:sequence>\\r\\n  </xsd:complexType>\\r\\n  <xsd:element name=\\\"ArrayOfOrderSummary\\\" nillable=\\\"true\\\" type=\\\"tns:ArrayOfOrderSummary\\\" />\\r\\n  <xsd:complexType name=\\\"OrderSummary\\\">\\r\\n    <xsd:sequence>\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"order_header_data\\\" nillable=\\\"true\\\" type=\\\"tns:OrderHeaderData\\\" />\\r\\n      <xsd:element minOccurs=\\\"0\\\" name=\\\"order_id\\\" type=\\\"xs:int\\\" />\\r\\n    </xsd:sequence>\\r\\n  </xsd:complexType>\\r\\n  <xsd:element name=\\\"OrderSummary\\\" nillable=\\\"true\\\" type=\\\"tns:OrderSummary\\\" />\\r\\n</xsd:schema>\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789/schemas/6a3e88b0-dbef-4d51-b466-a4f1751df711\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/schemas\",\r\n      \"name\": \"6a3e88b0-dbef-4d51-b466-a4f1751df711\",\r\n      \"properties\": {\r\n        \"contentType\": \"application/vnd.ms-azure-apim.xsd+xml\",\r\n        \"document\": {\r\n          \"value\": \"<xsd:schema attributeFormDefault=\\\"qualified\\\" elementFormDefault=\\\"qualified\\\" targetNamespace=\\\"http://schemas.microsoft.com/2003/10/Serialization/\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:tns=\\\"http://schemas.microsoft.com/2003/10/Serialization/\\\" xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\" xmlns:wsap=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing/policy\\\" xmlns:wsa10=\\\"http://www.w3.org/2005/08/addressing\\\" xmlns:msc=\\\"http://schemas.microsoft.com/ws/2005/12/wsdl/contract\\\" xmlns:soapenc=\\\"http://schemas.xmlsoap.org/soap/encoding/\\\" xmlns:wsx=\\\"http://schemas.xmlsoap.org/ws/2004/09/mex\\\" xmlns:soap=\\\"http://schemas.xmlsoap.org/wsdl/soap/\\\" xmlns:wsam=\\\"http://www.w3.org/2007/05/addressing/metadata\\\" xmlns:wsa=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing\\\" xmlns:wsp=\\\"http://schemas.xmlsoap.org/ws/2004/09/policy\\\" xmlns:wsaw=\\\"http://www.w3.org/2006/05/addressing/wsdl\\\" xmlns:soap12=\\\"http://schemas.xmlsoap.org/wsdl/soap12/\\\" xmlns:wsu=\\\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\\\" xmlns:xsd=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:apim-wsdltns=\\\"http://tempuri.org/\\\">\\r\\n  <xsd:element name=\\\"anyType\\\" nillable=\\\"true\\\" type=\\\"xs:anyType\\\" />\\r\\n  <xsd:element name=\\\"anyURI\\\" nillable=\\\"true\\\" type=\\\"xs:anyURI\\\" />\\r\\n  <xsd:element name=\\\"base64Binary\\\" nillable=\\\"true\\\" type=\\\"xs:base64Binary\\\" />\\r\\n  <xsd:element name=\\\"boolean\\\" nillable=\\\"true\\\" type=\\\"xs:boolean\\\" />\\r\\n  <xsd:element name=\\\"byte\\\" nillable=\\\"true\\\" type=\\\"xs:byte\\\" />\\r\\n  <xsd:element name=\\\"dateTime\\\" nillable=\\\"true\\\" type=\\\"xs:dateTime\\\" />\\r\\n  <xsd:element name=\\\"decimal\\\" nillable=\\\"true\\\" type=\\\"xs:decimal\\\" />\\r\\n  <xsd:element name=\\\"double\\\" nillable=\\\"true\\\" type=\\\"xs:double\\\" />\\r\\n  <xsd:element name=\\\"float\\\" nillable=\\\"true\\\" type=\\\"xs:float\\\" />\\r\\n  <xsd:element name=\\\"int\\\" nillable=\\\"true\\\" type=\\\"xs:int\\\" />\\r\\n  <xsd:element name=\\\"long\\\" nillable=\\\"true\\\" type=\\\"xs:long\\\" />\\r\\n  <xsd:element name=\\\"QName\\\" nillable=\\\"true\\\" type=\\\"xs:QName\\\" />\\r\\n  <xsd:element name=\\\"short\\\" nillable=\\\"true\\\" type=\\\"xs:short\\\" />\\r\\n  <xsd:element name=\\\"string\\\" nillable=\\\"true\\\" type=\\\"xs:string\\\" />\\r\\n  <xsd:element name=\\\"unsignedByte\\\" nillable=\\\"true\\\" type=\\\"xs:unsignedByte\\\" />\\r\\n  <xsd:element name=\\\"unsignedInt\\\" nillable=\\\"true\\\" type=\\\"xs:unsignedInt\\\" />\\r\\n  <xsd:element name=\\\"unsignedLong\\\" nillable=\\\"true\\\" type=\\\"xs:unsignedLong\\\" />\\r\\n  <xsd:element name=\\\"unsignedShort\\\" nillable=\\\"true\\\" type=\\\"xs:unsignedShort\\\" />\\r\\n  <xsd:element name=\\\"char\\\" nillable=\\\"true\\\" type=\\\"tns:char\\\" />\\r\\n  <xsd:simpleType name=\\\"char\\\">\\r\\n    <xsd:restriction base=\\\"xs:int\\\" />\\r\\n  </xsd:simpleType>\\r\\n  <xsd:element name=\\\"duration\\\" nillable=\\\"true\\\" type=\\\"tns:duration\\\" />\\r\\n  <xsd:simpleType name=\\\"duration\\\">\\r\\n    <xsd:restriction base=\\\"xs:duration\\\">\\r\\n      <xsd:pattern value=\\\"\\\\-?P(\\\\d*D)?(T(\\\\d*H)?(\\\\d*M)?(\\\\d*(\\\\.\\\\d*)?S)?)?\\\" />\\r\\n      <xsd:minInclusive value=\\\"-P10675199DT2H48M5.4775808S\\\" />\\r\\n      <xsd:maxInclusive value=\\\"P10675199DT2H48M5.4775807S\\\" />\\r\\n    </xsd:restriction>\\r\\n  </xsd:simpleType>\\r\\n  <xsd:element name=\\\"guid\\\" nillable=\\\"true\\\" type=\\\"tns:guid\\\" />\\r\\n  <xsd:simpleType name=\\\"guid\\\">\\r\\n    <xsd:restriction base=\\\"xs:string\\\">\\r\\n      <xsd:pattern value=\\\"[\\\\da-fA-F]{8}-[\\\\da-fA-F]{4}-[\\\\da-fA-F]{4}-[\\\\da-fA-F]{4}-[\\\\da-fA-F]{12}\\\" />\\r\\n    </xsd:restriction>\\r\\n  </xsd:simpleType>\\r\\n  <xsd:attribute name=\\\"FactoryType\\\" type=\\\"xs:QName\\\" />\\r\\n  <xsd:attribute name=\\\"Id\\\" type=\\\"xs:ID\\\" />\\r\\n  <xsd:attribute name=\\\"Ref\\\" type=\\\"xs:IDREF\\\" />\\r\\n</xsd:schema>\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789/schemas/7e9662dd-287f-4011-8353-345ce967c9cc\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/schemas\",\r\n      \"name\": \"7e9662dd-287f-4011-8353-345ce967c9cc\",\r\n      \"properties\": {\r\n        \"contentType\": \"application/vnd.ms-azure-apim.xsd+xml\",\r\n        \"document\": {\r\n          \"value\": \"<xsd:schema elementFormDefault=\\\"qualified\\\" targetNamespace=\\\"http://tempuri.org/\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:q1=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" xmlns:q2=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" xmlns:q3=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" xmlns:q4=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\" xmlns:wsap=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing/policy\\\" xmlns:wsa10=\\\"http://www.w3.org/2005/08/addressing\\\" xmlns:tns=\\\"http://tempuri.org/\\\" xmlns:msc=\\\"http://schemas.microsoft.com/ws/2005/12/wsdl/contract\\\" xmlns:soapenc=\\\"http://schemas.xmlsoap.org/soap/encoding/\\\" xmlns:wsx=\\\"http://schemas.xmlsoap.org/ws/2004/09/mex\\\" xmlns:soap=\\\"http://schemas.xmlsoap.org/wsdl/soap/\\\" xmlns:wsam=\\\"http://www.w3.org/2007/05/addressing/metadata\\\" xmlns:wsa=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing\\\" xmlns:wsp=\\\"http://schemas.xmlsoap.org/ws/2004/09/policy\\\" xmlns:wsaw=\\\"http://www.w3.org/2006/05/addressing/wsdl\\\" xmlns:soap12=\\\"http://schemas.xmlsoap.org/wsdl/soap12/\\\" xmlns:wsu=\\\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\\\" xmlns:xsd=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:apim-wsdltns=\\\"http://tempuri.org/\\\">\\r\\n  <xsd:import namespace=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" />\\r\\n  <xsd:element name=\\\"submitOrder\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"order\\\" nillable=\\\"true\\\" type=\\\"q1:Order\\\" xmlns:q1=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"submitOrderResponse\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"submitOrderResult\\\" type=\\\"xs:int\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"GetOpenOrders\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"cust\\\" type=\\\"xs:int\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"GetOpenOrdersResponse\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"GetOpenOrdersResult\\\" nillable=\\\"true\\\" type=\\\"q2:ArrayOfOrderSummary\\\" xmlns:q2=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"GetMostRecentOrder\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"cust\\\" type=\\\"xs:int\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"GetMostRecentOrderResponse\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"GetMostRecentOrderResult\\\" nillable=\\\"true\\\" type=\\\"q3:Order\\\" xmlns:q3=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"GetOrder\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"orderId\\\" type=\\\"xs:int\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"GetOrderResponse\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"GetOrderResult\\\" nillable=\\\"true\\\" type=\\\"q4:Order\\\" xmlns:q4=\\\"http://schemas.datacontract.org/2004/07/FazioAPISoap\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"CancelOrder\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"orderId\\\" type=\\\"xs:int\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n  <xsd:element name=\\\"CancelOrderResponse\\\">\\r\\n    <xsd:complexType>\\r\\n      <xsd:sequence>\\r\\n        <xsd:element minOccurs=\\\"0\\\" name=\\\"CancelOrderResult\\\" type=\\\"xs:int\\\" />\\r\\n      </xsd:sequence>\\r\\n    </xsd:complexType>\\r\\n  </xsd:element>\\r\\n</xsd:schema>\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789/schemas/e24dfa17-86d1-4a14-beb6-4215c743a971\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/schemas\",\r\n      \"name\": \"e24dfa17-86d1-4a14-beb6-4215c743a971\",\r\n      \"properties\": {\r\n        \"contentType\": \"application/vnd.ms-azure-apim.xsd+xml\",\r\n        \"document\": {\r\n          \"value\": \"<xsd:schema elementFormDefault=\\\"qualified\\\" targetNamespace=\\\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\\\" xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:tns=\\\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\\\" xmlns:wsdl=\\\"http://schemas.xmlsoap.org/wsdl/\\\" xmlns:wsap=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing/policy\\\" xmlns:wsa10=\\\"http://www.w3.org/2005/08/addressing\\\" xmlns:msc=\\\"http://schemas.microsoft.com/ws/2005/12/wsdl/contract\\\" xmlns:soapenc=\\\"http://schemas.xmlsoap.org/soap/encoding/\\\" xmlns:wsx=\\\"http://schemas.xmlsoap.org/ws/2004/09/mex\\\" xmlns:soap=\\\"http://schemas.xmlsoap.org/wsdl/soap/\\\" xmlns:wsam=\\\"http://www.w3.org/2007/05/addressing/metadata\\\" xmlns:wsa=\\\"http://schemas.xmlsoap.org/ws/2004/08/addressing\\\" xmlns:wsp=\\\"http://schemas.xmlsoap.org/ws/2004/09/policy\\\" xmlns:wsaw=\\\"http://www.w3.org/2006/05/addressing/wsdl\\\" xmlns:soap12=\\\"http://schemas.xmlsoap.org/wsdl/soap12/\\\" xmlns:wsu=\\\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\\\" xmlns:xsd=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:apim-wsdltns=\\\"http://tempuri.org/\\\">\\r\\n  <xsd:complexType name=\\\"ArrayOfint\\\">\\r\\n    <xsd:sequence>\\r\\n      <xsd:element minOccurs=\\\"0\\\" maxOccurs=\\\"unbounded\\\" name=\\\"int\\\" type=\\\"xs:int\\\" />\\r\\n    </xsd:sequence>\\r\\n  </xsd:complexType>\\r\\n  <xsd:element name=\\\"ArrayOfint\\\" nillable=\\\"true\\\" type=\\\"tns:ArrayOfint\\\" />\\r\\n</xsd:schema>\"\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 4\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360%3Brev%3D1?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMzYwJTNCcmV2JTNEMT9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789%3Brev%3D1?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM1Nzg5JTNCcmV2JTNEMT9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Soap api via Apim\",\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"soap\",\r\n    \"apiRevision\": \"1\",\r\n    \"apiVersion\": \"\",\r\n    \"isCurrent\": true,\r\n    \"subscriptionRequired\": true,\r\n    \"displayName\": \"apimSoap\",\r\n    \"serviceUrl\": \"http://fazioapisoap.azurewebsites.net/FazioService.svc\",\r\n    \"path\": \"soapapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8963c070-02ec-49cc-ac6e-0a081ab6b6a2"
+          "6fda2687-fc99-414f-8869-c0262f366add"
         ],
         "If-Match": [
           "*"
@@ -489,31 +489,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAKoA=\""
+          "\"AAAAAAAAOQQ=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "5ea26b5a-d11e-4bbd-86f7-5a97b3f56c6e"
+          "543a3bee-5aa0-4473-a94b-6b8f4d9ce6f7"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "8193a7e0-fe6e-4ef6-92d3-67cb137a68f3"
+          "eed41e05-649c-4eac-80e5-fd6bc14a783a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212331Z:8193a7e0-fe6e-4ef6-92d3-67cb137a68f3"
+          "WESTUS:20200420T165513Z:eed41e05-649c-4eac-80e5-fd6bc14a783a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:23:31 GMT"
+          "Mon, 20 Apr 2020 16:55:12 GMT"
         ],
         "Content-Length": [
           "835"
@@ -525,17 +525,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps1360\",\r\n  \"properties\": {\r\n    \"displayName\": \"apimSoap\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"Soap api via Apim\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://fazioapisoap.azurewebsites.net/FazioService.svc\",\r\n    \"path\": \"soapapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"soap\",\r\n    \"isCurrent\": true,\r\n    \"apiVersion\": \"\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps5789\",\r\n  \"properties\": {\r\n    \"displayName\": \"apimSoap\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"Soap api via Apim\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://fazioapisoap.azurewebsites.net/FazioService.svc\",\r\n    \"path\": \"soapapifromUrl\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"type\": \"soap\",\r\n    \"isCurrent\": true,\r\n    \"apiVersion\": \"\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1150?deleteRevisions=true&api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMTUwP2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps7717?deleteRevisions=true&api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM3NzE3P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "30cb8eee-8f93-46bb-bad9-a44055cf7812"
+          "7b3737ef-bb4a-4c60-bbba-eba58a613f75"
         ],
         "If-Match": [
           "*"
@@ -561,25 +561,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d11465a7-8dfa-40af-ad6a-7474575143f8"
+          "e35ba6c5-2bb5-4c68-b3dd-b9d07e011fe4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14995"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "a31c7753-10f2-4962-b3d5-8497c5238696"
+          "c36c0f51-e985-4f36-903d-9147901e99b0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212332Z:a31c7753-10f2-4962-b3d5-8497c5238696"
+          "WESTUS:20200420T165513Z:c36c0f51-e985-4f36-903d-9147901e99b0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:23:31 GMT"
+          "Mon, 20 Apr 2020 16:55:12 GMT"
         ],
         "Expires": [
           "-1"
@@ -592,13 +592,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps1360?deleteRevisions=true&api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMxMzYwP2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5789?deleteRevisions=true&api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM1Nzg5P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "27c11db7-a5e0-40c8-86aa-e3cc3ed31a58"
+          "fe3c7d50-83cd-47f9-a1be-add159504fd9"
         ],
         "If-Match": [
           "*"
@@ -624,25 +624,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "91192b1d-b540-4310-9b7b-589927797249"
+          "531fdf34-166c-42e2-a543-8ad8aee735fe"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14994"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "27877cd5-b5b8-4c43-9c24-0dcd73f5c57a"
+          "718887ff-0ce2-41a6-b3f7-e915dc0a239a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212332Z:27877cd5-b5b8-4c43-9c24-0dcd73f5c57a"
+          "WESTUS:20200420T165513Z:718887ff-0ce2-41a6-b3f7-e915dc0a239a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:23:31 GMT"
+          "Mon, 20 Apr 2020 16:55:12 GMT"
         ],
         "Expires": [
           "-1"
@@ -657,8 +657,8 @@
   ],
   "Names": {
     "": [
-      "ps1150",
-      "ps1360"
+      "ps7717",
+      "ps5789"
     ]
   },
   "Variables": {

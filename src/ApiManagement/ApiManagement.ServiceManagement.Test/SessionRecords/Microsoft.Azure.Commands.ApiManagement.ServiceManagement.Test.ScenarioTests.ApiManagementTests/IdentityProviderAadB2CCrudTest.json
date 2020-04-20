@@ -4,10 +4,10 @@
       "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/AadB2C?api-version=2019-12-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2lkZW50aXR5UHJvdmlkZXJzL0FhZEIyQz9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"allowedTenants\": [\r\n      \"alzaslon.onmicrosoft.com\"\r\n    ],\r\n    \"signupPolicyName\": \"B2C_1_signuppolicy\",\r\n    \"signinPolicyName\": \"B2C_1_signinpolicy\",\r\n    \"clientId\": \"ps1105\",\r\n    \"clientSecret\": \"ps1028\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"allowedTenants\": [\r\n      \"alzaslon.onmicrosoft.com\"\r\n    ],\r\n    \"signupPolicyName\": \"B2C_1_signuppolicy\",\r\n    \"signinPolicyName\": \"B2C_1_signinpolicy\",\r\n    \"clientId\": \"ps8382\",\r\n    \"clientSecret\": \"ps4775\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3c898a79-2475-44b9-9da3-4c41135718c2"
+          "2e32fa01-e1ba-43b4-9b08-9bcc062ff583"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,31 +33,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAKcw=\""
+          "\"AAAAAAAAOE0=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "6d28fc70-ddd8-4aa5-b95e-cbc892aaa435"
+          "61721bb7-ff5c-4523-b1a7-28e5aadbb808"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "f861c86c-fe49-4d6b-8c41-f697d10cf569"
+          "d3fd948d-3f1c-463c-920a-ef221e9fd9aa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212118Z:f861c86c-fe49-4d6b-8c41-f697d10cf569"
+          "WESTUS:20200420T165238Z:d3fd948d-3f1c-463c-920a-ef221e9fd9aa"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:21:17 GMT"
+          "Mon, 20 Apr 2020 16:52:37 GMT"
         ],
         "Content-Length": [
           "583"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/AadB2C\",\r\n  \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n  \"name\": \"AadB2C\",\r\n  \"properties\": {\r\n    \"clientId\": \"ps1105\",\r\n    \"clientSecret\": \"ps1028\",\r\n    \"type\": \"aadB2C\",\r\n    \"authority\": \"login.microsoftonline.com\",\r\n    \"allowedTenants\": [\r\n      \"alzaslon.onmicrosoft.com\"\r\n    ],\r\n    \"signupPolicyName\": \"B2C_1_signuppolicy\",\r\n    \"signinPolicyName\": \"B2C_1_signinpolicy\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/AadB2C\",\r\n  \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n  \"name\": \"AadB2C\",\r\n  \"properties\": {\r\n    \"clientId\": \"ps8382\",\r\n    \"clientSecret\": \"ps4775\",\r\n    \"type\": \"aadB2C\",\r\n    \"authority\": \"login.microsoftonline.com\",\r\n    \"allowedTenants\": [\r\n      \"alzaslon.onmicrosoft.com\"\r\n    ],\r\n    \"signupPolicyName\": \"B2C_1_signuppolicy\",\r\n    \"signinPolicyName\": \"B2C_1_signinpolicy\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -79,7 +79,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fdf34ca2-c80b-4142-840c-f71597136eb8"
+          "e9191d16-69f2-485c-b30b-1bc0d6f572fa"
         ],
         "Accept-Language": [
           "en-US"
@@ -99,31 +99,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAKcw=\""
+          "\"AAAAAAAAOE0=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "65dd1d4f-e147-4695-ae00-1c344d5c995e"
+          "3e34276a-68bc-486c-ab89-63c10212f0cb"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11994"
         ],
         "x-ms-correlation-request-id": [
-          "7684784e-417d-44ee-939b-20bee40e8f62"
+          "3878809d-6a4e-48b4-844f-107fb237a713"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212118Z:7684784e-417d-44ee-939b-20bee40e8f62"
+          "WESTUS:20200420T165238Z:3878809d-6a4e-48b4-844f-107fb237a713"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:21:17 GMT"
+          "Mon, 20 Apr 2020 16:52:38 GMT"
         ],
         "Content-Length": [
           "552"
@@ -135,7 +135,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/AadB2C\",\r\n  \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n  \"name\": \"AadB2C\",\r\n  \"properties\": {\r\n    \"clientId\": \"ps1105\",\r\n    \"type\": \"aadB2C\",\r\n    \"authority\": \"login.microsoftonline.com\",\r\n    \"allowedTenants\": [\r\n      \"alzaslon.onmicrosoft.com\"\r\n    ],\r\n    \"signupPolicyName\": \"B2C_1_signuppolicy\",\r\n    \"signinPolicyName\": \"B2C_1_signinpolicy\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/AadB2C\",\r\n  \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n  \"name\": \"AadB2C\",\r\n  \"properties\": {\r\n    \"clientId\": \"ps8382\",\r\n    \"type\": \"aadB2C\",\r\n    \"authority\": \"login.microsoftonline.com\",\r\n    \"allowedTenants\": [\r\n      \"alzaslon.onmicrosoft.com\"\r\n    ],\r\n    \"signupPolicyName\": \"B2C_1_signuppolicy\",\r\n    \"signinPolicyName\": \"B2C_1_signinpolicy\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -145,7 +145,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3b629174-f1cb-4648-825f-07607182648d"
+          "937d81fd-876b-4241-9b89-c773c78ec883"
         ],
         "Accept-Language": [
           "en-US"
@@ -165,31 +165,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAKc0=\""
+          "\"AAAAAAAAOE4=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e6c598bf-9bf3-4558-9956-2a11dba71fe1"
+          "ac2de3fd-aba5-4260-8c76-f3c150c97450"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11992"
         ],
         "x-ms-correlation-request-id": [
-          "d0f92084-9892-4d2f-857b-120cc9822ca5"
+          "9c2104ea-b895-4898-8acf-d0f130f10eb1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212119Z:d0f92084-9892-4d2f-857b-120cc9822ca5"
+          "WESTUS:20200420T165239Z:9c2104ea-b895-4898-8acf-d0f130f10eb1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:21:18 GMT"
+          "Mon, 20 Apr 2020 16:52:38 GMT"
         ],
         "Content-Length": [
           "609"
@@ -201,7 +201,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/AadB2C\",\r\n  \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n  \"name\": \"AadB2C\",\r\n  \"properties\": {\r\n    \"clientId\": \"ps1105\",\r\n    \"type\": \"aadB2C\",\r\n    \"authority\": \"login.microsoftonline.com\",\r\n    \"allowedTenants\": [\r\n      \"alzaslon.onmicrosoft.com\"\r\n    ],\r\n    \"signupPolicyName\": \"B2C_1_signuppolicy\",\r\n    \"signinPolicyName\": \"B2C_1_signinpolicy\",\r\n    \"profileEditingPolicyName\": \"B2C_1_profileediting\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/AadB2C\",\r\n  \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n  \"name\": \"AadB2C\",\r\n  \"properties\": {\r\n    \"clientId\": \"ps8382\",\r\n    \"type\": \"aadB2C\",\r\n    \"authority\": \"login.microsoftonline.com\",\r\n    \"allowedTenants\": [\r\n      \"alzaslon.onmicrosoft.com\"\r\n    ],\r\n    \"signupPolicyName\": \"B2C_1_signuppolicy\",\r\n    \"signinPolicyName\": \"B2C_1_signinpolicy\",\r\n    \"profileEditingPolicyName\": \"B2C_1_profileediting\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -211,7 +211,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0452761a-55f5-4f78-b017-1bb219fbac86"
+          "32847c65-10e0-4965-bf85-e07d14466d10"
         ],
         "Accept-Language": [
           "en-US"
@@ -234,25 +234,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "1d88c074-983a-49b5-b8d4-0f07739d5ed0"
+          "eca75409-fb7b-4e78-962a-f24a631f2320"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11991"
         ],
         "x-ms-correlation-request-id": [
-          "3d4a7250-e784-43a0-9477-b9093f4a2cac"
+          "2c2c3cb1-7cb7-4bbb-9d9f-7d0e4ee80f67"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212119Z:3d4a7250-e784-43a0-9477-b9093f4a2cac"
+          "WESTUS:20200420T165239Z:2c2c3cb1-7cb7-4bbb-9d9f-7d0e4ee80f67"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:21:18 GMT"
+          "Mon, 20 Apr 2020 16:52:39 GMT"
         ],
         "Content-Length": [
           "92"
@@ -274,7 +274,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "565a8428-4ac8-4d13-ab46-17fd56e9b353"
+          "2d738945-781b-49cc-ac80-c14c10c3e2dd"
         ],
         "Accept-Language": [
           "en-US"
@@ -297,25 +297,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d7062dd5-a2ea-4b9b-a53e-0f527dd8edb1"
+          "9d7ca598-42ea-4858-af98-388557e51c71"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
+          "11990"
         ],
         "x-ms-correlation-request-id": [
-          "d09ae8b4-5cfa-4b93-a0d6-3981a2dea8d3"
+          "735e4819-906d-46bd-87ea-7602d33831a9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212120Z:d09ae8b4-5cfa-4b93-a0d6-3981a2dea8d3"
+          "WESTUS:20200420T165239Z:735e4819-906d-46bd-87ea-7602d33831a9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:21:19 GMT"
+          "Mon, 20 Apr 2020 16:52:39 GMT"
         ],
         "Content-Length": [
           "92"
@@ -337,7 +337,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0eed4b96-4e2b-4454-9843-5bac2afae005"
+          "3148d2af-b2eb-4eb4-9984-f37c41fef02e"
         ],
         "Accept-Language": [
           "en-US"
@@ -357,13 +357,79 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAKcw=\""
+          "\"AAAAAAAAOE0=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9dce43cc-09fc-445c-a878-85ad2fb7e457"
+          "25ec9503-e056-4022-bfc3-a66e36a17c0c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "504e99ae-953f-430e-8c06-e66cf510b0d2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200420T165238Z:504e99ae-953f-430e-8c06-e66cf510b0d2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 20 Apr 2020 16:52:38 GMT"
+        ],
+        "Content-Length": [
+          "25"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"clientSecret\": \"ps4775\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/AadB2C/listSecrets?api-version=2019-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2lkZW50aXR5UHJvdmlkZXJzL0FhZEIyQy9saXN0U2VjcmV0cz9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2ce60729-eac4-431d-b4a2-aaee8fb4fe48"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAAOE4=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "4f034664-956d-4998-ad8d-474fffc9e711"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -372,16 +438,16 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "1b124764-8ca1-4bc3-85b9-61ca3ee296d9"
+          "bce7ccad-e113-4813-a073-447978d473e6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212118Z:1b124764-8ca1-4bc3-85b9-61ca3ee296d9"
+          "WESTUS:20200420T165239Z:bce7ccad-e113-4813-a073-447978d473e6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:21:17 GMT"
+          "Mon, 20 Apr 2020 16:52:38 GMT"
         ],
         "Content-Length": [
           "25"
@@ -393,73 +459,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"clientSecret\": \"ps1028\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/AadB2C/listSecrets?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2lkZW50aXR5UHJvdmlkZXJzL0FhZEIyQy9saXN0U2VjcmV0cz9hcGktdmVyc2lvbj0yMDE5LTEyLTAx",
-      "RequestMethod": "POST",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3a8f37b2-5554-4042-b48a-ed2e9aca98fd"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/5.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"AAAAAAAAKc0=\""
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "b4afd326-490a-40b2-901b-7bfd135c1320"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
-        ],
-        "x-ms-correlation-request-id": [
-          "231e1b14-20ce-41f3-9c5b-c0890284532a"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200408T212119Z:231e1b14-20ce-41f3-9c5b-c0890284532a"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Wed, 08 Apr 2020 21:21:18 GMT"
-        ],
-        "Content-Length": [
-          "25"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"clientSecret\": \"ps1028\"\r\n}",
+      "ResponseBody": "{\r\n  \"clientSecret\": \"ps4775\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -469,7 +469,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1c378a39-d845-4e02-ab0f-e8c6f8944341"
+          "197b3c77-ec8f-438c-8378-f06a1efde60c"
         ],
         "Accept-Language": [
           "en-US"
@@ -492,25 +492,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c93768dd-c23e-4d4c-886a-35ef2e0b71c4"
+          "f38908e2-609e-4f97-9ef4-e5cba0e98b65"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "82cd3cd6-ddf8-4f4f-82e8-90069aa6decd"
+          "0b751c51-5eae-45a1-979b-d6af38fe4930"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212118Z:82cd3cd6-ddf8-4f4f-82e8-90069aa6decd"
+          "WESTUS:20200420T165238Z:0b751c51-5eae-45a1-979b-d6af38fe4930"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:21:18 GMT"
+          "Mon, 20 Apr 2020 16:52:38 GMT"
         ],
         "Content-Length": [
           "652"
@@ -522,7 +522,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/AadB2C\",\r\n      \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n      \"name\": \"AadB2C\",\r\n      \"properties\": {\r\n        \"clientId\": \"ps1105\",\r\n        \"type\": \"aadB2C\",\r\n        \"authority\": \"login.microsoftonline.com\",\r\n        \"allowedTenants\": [\r\n          \"alzaslon.onmicrosoft.com\"\r\n        ],\r\n        \"signupPolicyName\": \"B2C_1_signuppolicy\",\r\n        \"signinPolicyName\": \"B2C_1_signinpolicy\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/AadB2C\",\r\n      \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n      \"name\": \"AadB2C\",\r\n      \"properties\": {\r\n        \"clientId\": \"ps8382\",\r\n        \"type\": \"aadB2C\",\r\n        \"authority\": \"login.microsoftonline.com\",\r\n        \"allowedTenants\": [\r\n          \"alzaslon.onmicrosoft.com\"\r\n        ],\r\n        \"signupPolicyName\": \"B2C_1_signuppolicy\",\r\n        \"signinPolicyName\": \"B2C_1_signinpolicy\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
       "StatusCode": 200
     },
     {
@@ -532,7 +532,7 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"profileEditingPolicyName\": \"B2C_1_profileediting\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ffd0ec29-75c9-4402-800a-1fa5337bd09a"
+          "bf82717a-de91-484f-a14a-3d650449b6f4"
         ],
         "If-Match": [
           "*"
@@ -564,25 +564,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7c55047a-2e09-4d3b-a752-5d35b42211ae"
+          "2e339a68-9066-46b5-84ab-cd6fac0fe88f"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
-          "ae0619d1-ebcd-4a31-89f4-be9fd4003167"
+          "58b94b01-52b0-4add-9a68-c61bf15a021d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212119Z:ae0619d1-ebcd-4a31-89f4-be9fd4003167"
+          "WESTUS:20200420T165239Z:58b94b01-52b0-4add-9a68-c61bf15a021d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:21:18 GMT"
+          "Mon, 20 Apr 2020 16:52:38 GMT"
         ],
         "Expires": [
           "-1"
@@ -598,7 +598,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b33743e0-2356-4757-b6b7-7a1b153ab98f"
+          "44cdb0e8-93b3-4098-bd1c-6e7ce9572687"
         ],
         "If-Match": [
           "*"
@@ -624,25 +624,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b1909bdc-12ac-4ad4-8e9a-002f35fa6a88"
+          "6fe74f79-9766-49dd-ba4a-e2afb5898b4f"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14997"
         ],
         "x-ms-correlation-request-id": [
-          "6cc50c09-2ac0-4108-abb2-c3aa42a03a4c"
+          "b6d112d7-4e45-40c0-91b5-6d30c501bdec"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212119Z:6cc50c09-2ac0-4108-abb2-c3aa42a03a4c"
+          "WESTUS:20200420T165239Z:b6d112d7-4e45-40c0-91b5-6d30c501bdec"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:21:18 GMT"
+          "Mon, 20 Apr 2020 16:52:39 GMT"
         ],
         "Expires": [
           "-1"
@@ -661,7 +661,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d8e50e95-d428-4f55-bedd-21b5c15e3025"
+          "66d5b68e-2022-455c-9392-cac63c0f2f74"
         ],
         "If-Match": [
           "*"
@@ -687,25 +687,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "5cdd0696-b0d8-4514-9bf7-f134309288d5"
+          "36d2d023-b43a-47f5-aa3b-be356ed3c7e0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "5d974fde-03ed-4761-8e7b-b59615e5f484"
+          "8e069ef5-08a3-4a1c-b6ac-20b1f7733fc5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200408T212119Z:5d974fde-03ed-4761-8e7b-b59615e5f484"
+          "WESTUS:20200420T165239Z:8e069ef5-08a3-4a1c-b6ac-20b1f7733fc5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Apr 2020 21:21:19 GMT"
+          "Mon, 20 Apr 2020 16:52:39 GMT"
         ],
         "Expires": [
           "-1"
@@ -717,8 +717,8 @@
   ],
   "Names": {
     "": [
-      "ps1105",
-      "ps1028"
+      "ps8382",
+      "ps4775"
     ]
   },
   "Variables": {
