@@ -38,14 +38,14 @@ PS C:\>Get-AzBatchCertificate -ThumbprintAlgorithm "sha1" - Thumbprint "C1E494A4
 Thumbprint                  : c1e494a415149c5f211c4778b52f2e834a07247c
 ThumbprintAlgorithm         : sha1
 Url                         : https://pstests.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=C1E494A415149C5F211C4778B52F2E834A07247
-C) 
+C)
 State                       : Active
 StateTransitionTime         : 10/6/2015 6:21:16 PM
-PreviousState               : 
-PreviousStateTransitionTime : 
-Data                        : 
-CertificateFormat           : 
-Password                    : 
+PreviousState               :
+PreviousStateTransitionTime :
+Data                        :
+CertificateFormat           :
+Password                    :
 PublicData                  : MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk
 1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5
 ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjS
@@ -63,32 +63,32 @@ The certificate thumbprint algorithm is sha1.
 PS C:\>Get-AzBatchCertificate -Filter "state eq 'active'" -BatchContext $Context
 Thumbprint                  : 025b351b087a084c5067f5e71eff8591970323f9
 ThumbprintAlgorithm         : sha1
-Url                         : https://pstests.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=025b351b087a084c5067f5e71eff8591970323f9) 
+Url                         : https://pstests.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=025b351b087a084c5067f5e71eff8591970323f9)
 State                       : Active
 StateTransitionTime         : 10/6/2015 6:21:17 PM
-PreviousState               : 
-PreviousStateTransitionTime : 
-Data                        : 
-CertificateFormat           : 
-Password                    : 
+PreviousState               :
+PreviousStateTransitionTime :
+Data                        :
+CertificateFormat           :
+Password                    :
 PublicData                  : MIIB9DCCAWGgAwIBAgIQy9W5y8iwhppGhtAG06dHKTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAyMB4XDTE1MTAwMjE2MjkxNFoXDTM5MTIzMTIzNTk
 1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDIwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJxagvVrlnKfv6hfzSiFJUkdGkPjC3tFiKebK6IaeHzesFdFfupXUE
 wT0xOWh9xwa3OVkPECEc/u1sw3iVX/J4AODiwzmOWutoVRpWjxGFpgw9+dPvXMjs/Ue7JL7ag3siHs5EcarW91qKbgtko6i/r4emaRyk60U93TrbWQAWJ9AgMBAAGjS
 zBJMEcGA1UdAQRAMD6AEAdqsOpyeXF/uDe7ZGKeez+hGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMoIQy9W5y8iwhppGhtAG06dHKTAJBgUrDgMCHQUAA4GBAC0MaAem
 6ByyURFvGnFZyjEepjXC5wcaGq+gguDFe8rG88ceig1ZqewdcmC1y4p05uBhbmETbYVWzJarNsHYq2LTihi4t2J4jt2YVYz/IRdUB82iaFFbJRSPrN+6xD3KM2lve5N
 4OjtlZAdiXiSUYFf3I6ypberUsAdba3QQajCN
-DeleteCertificateError      : 
+DeleteCertificateError      :
 
 Thumbprint                  : c1e494a415149c5f211c4778b52f2e834a07247c
 ThumbprintAlgorithm         : sha1
-Url                         : https://pstests.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c) 
+Url                         : https://pstests.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)
 State                       : Active
 StateTransitionTime         : 10/6/2015 6:21:16 PM
-PreviousState               : 
-PreviousStateTransitionTime : 
-Data                        : 
-CertificateFormat           : 
-Password                    : 
+PreviousState               :
+PreviousStateTransitionTime :
+Data                        :
+CertificateFormat           :
+Password                    :
 PublicData                  : MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk
 1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5
 ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjS
@@ -237,6 +237,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzBatchCertificate](./Remove-AzBatchCertificate.md)
 
-[Azure Batch Cmdlets](./Az.Batch.md)
-
-
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)

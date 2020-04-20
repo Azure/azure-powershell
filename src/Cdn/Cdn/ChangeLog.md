@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.4.3
 * Fixed ChinaCDN related pricing SKU display
 
 ## Version 1.4.2

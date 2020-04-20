@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using ResourceManager.Common.ArgumentCompleters;
     using System.Collections.Generic;
     using System.Management.Automation;
@@ -119,6 +120,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         [Parameter(Mandatory = false,
             HelpMessage = "Generate and assign an Azure Active Directory Identity for this service for use with key management services like Azure KeyVault.")]
+        [CmdletParameterBreakingChange("AssignIdentity", ChangeDescription = "The AssignIdentity parameter will be renamed as SystemAssignedIdentity. Also new parameter will be added: UserAssignedIdentity.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(Mandatory = false,
