@@ -69,9 +69,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 
             foreach (var property in jobject.Properties())
             {
+                dynamic propertyObj = null;
+
+                propertyObj = propertyObj + JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: property.Value);
+
                 psObject.Properties.Add(new PSNoteProperty(
                     name: property.Name,
-                    value: JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: property.Value)));
+                    value: propertyObj));
             }
 
             return psObject;
