@@ -43,6 +43,12 @@ namespace Microsoft.Azure.Commands.Network
         public bool? EnableBgp { get; set; }
 
         [Parameter(
+        Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+        HelpMessage = "Dead Peer Detection Timeout of the connection in seconds.")]
+        public int? DpdTimeoutInSeconds { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Whether to use policy-based traffic selectors for a S2S connection")]
         public bool? UsePolicyBasedTrafficSelectors { get; set; }
@@ -97,6 +103,11 @@ namespace Microsoft.Azure.Commands.Network
                     if (this.EnableBgp.HasValue)
                     {
                         this.VirtualNetworkGatewayConnection.EnableBgp = this.EnableBgp.Value;
+                    }
+
+                    if (this.DpdTimeoutInSeconds.HasValue)
+                    {
+                        this.VirtualNetworkGatewayConnection.DpdTimeoutSeconds = this.DpdTimeoutInSeconds.Value;
                     }
 
                     if (this.UsePolicyBasedTrafficSelectors.HasValue)

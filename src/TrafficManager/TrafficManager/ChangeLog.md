@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed incorrect profile name in `DisableAzureTrafficManagerEndpoint` verbose output
 
 ## Version 1.0.3
 * Update references in .psd1 to use relative path

@@ -28,28 +28,28 @@ The **New-AzStorageAccount** cmdlet creates an Azure Storage account.
 ## EXAMPLES
 
 ### Example 1: Create a Storage account
-```
+```powershell
 PS C:\>New-AzStorageAccount -ResourceGroupName MyResourceGroup -AccountName mystorageaccount -Location westus -SkuName Standard_GRS
 ```
 
 This command creates a Storage account for the resource group name MyResourceGroup.
 
 ### Example 2: Create a Blob Storage account with BlobStorage Kind and hot AccessTier
-```
+```powershell
 PS C:\>New-AzStorageAccount -ResourceGroupName MyResourceGroup -AccountName mystorageaccount -Location westus -SkuName Standard_GRS -Kind BlobStorage -AccessTier Hot
 ```
 
 This command creates a Blob Storage account that with BlobStorage Kind and hot AccessTier
 
 ### Example 3: Create a Storage account with Kind StorageV2, and Generate and Assign an Identity for Azure KeyVault.
-```
+```powershell
 PS C:\>New-AzStorageAccount -ResourceGroupName MyResourceGroup -AccountName mystorageaccount -Location westus -SkuName Standard_GRS -Kind StorageV2 -AssignIdentity
 ```
 
 This command creates a Storage account with Kind StorageV2.  It also generates and assigns an identity that can be used to manage account keys through Azure KeyVault.
 
 ### Example 4: Create a Storage account with NetworkRuleSet from JSON
-```
+```powershell
 PS C:\>New-AzStorageAccount -ResourceGroupName MyResourceGroup -AccountName mystorageaccount -Location westus -Type Standard_LRS -NetworkRuleSet (@{bypass="Logging,Metrics";
     ipRules=(@{IPAddressOrRange="20.11.0.0/16";Action="allow"},
             @{IPAddressOrRange="10.0.0.0/7";Action="allow"});
@@ -61,21 +61,21 @@ PS C:\>New-AzStorageAccount -ResourceGroupName MyResourceGroup -AccountName myst
 This command creates a Storage account that has NetworkRuleSet property from JSON
 
 ### Example 5: Create a Storage account with Hierarchical Namespace enabled.
-```
+```powershell
 PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "US West" -SkuName "Standard_GRS" -Kind StorageV2  -EnableHierarchicalNamespace $true
 ```
 
 This command creates a Storage account with Hierarchical Namespace enabled.
 
 ### Example 6: Create a Storage account with Azure Files AAD DS Authentication, and enable large file share.
-```
+```powershell
 PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryDomainServicesForFile $true -EnableLargeFileShare
 ```
 
 This command creates a Storage account with Azure Files AAD DS Authentication, and enable large file share..
 
-### Example 8: Create a Storage account with Queue and Table Service use account-scoped encryption key.
-```
+### Example 7: Create a Storage account with Queue and Table Service use account-scoped encryption key.
+```powershell
 PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EncryptionKeyTypeForTable Account -EncryptionKeyTypeForQueue Account
 
 PS C:\>$account = get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountName

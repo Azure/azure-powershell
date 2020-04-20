@@ -16,10 +16,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
     using System.Globalization;
     using System.Management.Automation;
 
+    [CmdletDeprecation(ReplacementCmdletName = "Remove-AzureApiManagementNamedValue")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProperty", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementProperty : AzureApiManagementCmdletBase
