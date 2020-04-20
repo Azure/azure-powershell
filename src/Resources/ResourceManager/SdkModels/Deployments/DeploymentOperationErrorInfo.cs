@@ -1,79 +1,151 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
 using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    internal class DeploymentOperationErrorInfo
+    /// <summary>
+    /// This class processes failed deployment operations and formats the resulting errors to be outputed
+    /// at the end of a deployment.
+    /// </summary>
+    public class DeploymentOperationErrorInfo
     {
-        public DeploymentOperationErrorInfo()
+        private const int MaxErrorsToShow = 3;
+
+        public DeploymentOperationErrorInfo(string deploymentName)
         {
             ErrorMessages = new List<string>();
+            DeploymentName = deploymentName ?? String.Empty;
+            RequestId = string.Empty;
         }
 
-        public List<string> ErrorMessages { get; set; }
+        public List<string> ErrorMessages { get; private set; }
 
-        public List<Provider> RequiredProviders { get; set; }
+        public string RequestId { get; private set; }
+
+        public string DeploymentName { get; private set; }
+
+        #region Public Methods
 
         public void ProcessError(DeploymentOperation operation)
         {
-            if (operation.Properties.StatusMessage != null)
+            ErrorResponse error = DeserializeDeploymentOperationError(operation.Properties?.StatusMessage?.ToString());
+
+            if (error != null)
             {
-               ErrorResponse error = DeserializeError(operation.Properties.StatusMessage.ToString());
+                var sb = new StringBuilder();
 
-                if (error != null)
+                sb.AppendLine().Append(GetErrorMessageWithDetails(error));
+
+                // if there is target information let's add that to the error string
+                if (operation.Properties.TargetResource?.ResourceType != null && operation.Properties.TargetResource?.ResourceName != null)
                 {
-                    string outerError = "";
-                    // if there is target information let's add that to the error record
-                    if (operation.Properties.TargetResource.ResourceType != null && operation.Properties.TargetResource.ResourceName != null)
-                    {
-                        outerError = $"Resource {operation.Properties.TargetResource.ResourceType} with name '{operation.Properties.TargetResource.ResourceName}' failed to deploy.";
-                    }
-
-                    ErrorMessages.Add($"{outerError} Code: {error.Code}. Message: {error.Message}");
-
-                    if (error.Details != null)
-                    {
-                        foreach (var detail in error.Details)
-                        {
-                            ErrorMessages.Add($"InnerError: Code: {error.Code}. Message: {error.Message}");
-                        }
-                    }
+                    sb.AppendLine().AppendFormat(ProjectResources.DeploymentOperationTargetInfoInErrror, operation.Properties.TargetResource.ResourceType,operation.Properties.TargetResource.ResourceName);                    
                 }
-            }
+                
+                ErrorMessages.Add(sb.ToString());
+            }            
         }
 
-        private ErrorResponse DeserializeError(string statusMessage)
+        public string GetErrorMessagesWithOperationId()
         {
-            if (statusMessage == null) return null;
+            if (ErrorMessages.Count == 0)
+                return String.Empty;
 
-            ErrorResponse errorObj = null;
-            dynamic statusMessageObj;
+            var sb = new StringBuilder();
+
+            int maxErrors = ErrorMessages.Count > MaxErrorsToShow
+               ? MaxErrorsToShow
+               : ErrorMessages.Count;
+
+            sb.AppendFormat(ProjectResources.DeploymentOperationOuterError, DeploymentName, maxErrors, ErrorMessages.Count);
+            sb.Append(JoinErrorMessages());
+            sb.AppendLine().AppendFormat(ProjectResources.DeploymentOperationId, this.RequestId);
+            
+            return sb.ToString();
+        }
+
+        public void SetRequestIdFromResponseHeaders(HttpResponseMessage response)
+        {
+            RequestId = string.Empty;
+
+            if (response?.Headers != null && response.Headers.TryGetValues("x-ms-request-id", out IEnumerable<string> requestIdValues))
+            {
+                RequestId = string.Join(";", requestIdValues);
+            }
+        }
+        #endregion
+
+        #region Private Methods
+
+        private string JoinErrorMessages()
+        {
+            return string.Join(Environment.NewLine, ErrorMessages);
+        }
+        #endregion
+
+        #region Static Methods
+        public static string GetErrorMessageWithDetails(ErrorResponse error)
+        {
+            if (error == null) return null;
+
+            if (error.Details == null)
+            {
+                return string.Format(ProjectResources.DeploymentOperationErrorMessageNoDetails, error.Code, error.Message);
+            }
+
+            string errorDetail = null;
+
+            foreach (ErrorResponse detail in error.Details)
+            {
+                errorDetail += GetErrorMessageWithDetails(detail);
+            }
+
+            return string.Format(ProjectResources.DeploymentOperationErrorMessage, error.Code, error.Message, errorDetail);            
+        }
+
+        public static ErrorResponse DeserializeDeploymentOperationError(string statusMessage)
+        {
+            if (statusMessage == null)
+            {
+                return null;
+            }
+
+            ErrorResponse error = null;
+            dynamic dynamicStatusMessage;
 
             try
             {
-                statusMessageObj = JsonConvert.DeserializeObject(statusMessage);
-
-                if (statusMessageObj.error != null)
-                {
-                    var temp = statusMessageObj.error.ToString();
-                    errorObj = JsonConvert.DeserializeObject<ErrorResponse>(statusMessageObj.error.ToString());
-                }
+                dynamicStatusMessage = JsonConvert.DeserializeObject(statusMessage);
+                error = JsonConvert.DeserializeObject<ErrorResponse>(dynamicStatusMessage?.error?.ToString());
             }
             catch
             {
-                // There could be two known reasons why we got here:
-                // 1- statusMessage is not always a valid JSON(it can sometimes be a string when it's the outer generic error message) which can result is DeserializeObject exception.
-                // 2- if error is not properly modeled as ErrorResponse
-                // We'll ignore all.
+                // We'll ignore the exception if we can't properly deserialize the JSON.
+                // The reason for that can be 1- statusMessage is not a valid JSON(it can be a string when it's the outer generic error message)
+                // which will result is DeserializeObject exception. 2- If error is not properly modeled as ErrorResponse.
             }
 
-            return errorObj;
+            return error;
         }
+        #endregion
     }
 }

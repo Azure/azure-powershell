@@ -252,19 +252,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             operations = new List<DeploymentOperation>();
 
             var getDeploymentFunc = this.GetDeploymentAction(parameters);
-            var deploymentOperationError = new DeploymentOperationErrorInfo();
+
+            var deploymentOperationError = new DeploymentOperationErrorInfo(parameters.DeploymentName);
+
             Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deployment, deploymentOperationError);
 
             var deploymentExtended =  this.WaitDeploymentStatus(
                 getDeploymentFunc,
                 writeProgressAction,
+                deploymentOperationError,
                 ProvisioningState.Canceled,
                 ProvisioningState.Succeeded,
                 ProvisioningState.Failed);
 
             if (deploymentOperationError.ErrorMessages.Count > 0)
             {
-                deploymentOperationError.ErrorMessages.ForEach(WriteError);
+                WriteError(deploymentOperationError.GetErrorMessagesWithOperationId());
             }
 
             return deploymentExtended;
@@ -273,7 +276,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         private void WriteDeploymentProgress(PSDeploymentCmdletParameters parameters, Deployment deployment, DeploymentOperationErrorInfo deploymentOperationError)
         {
             const string normalStatusFormat = "Resource {0} '{1}' provisioning status is {2}";
-            //const string failureStatusFormat = "Resource {0} '{1}' failed with message '{2}'";
             List<DeploymentOperation> newOperations;
 
             var result = this.ListDeploymentOperations(parameters);
@@ -306,30 +308,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
                 else
                 {
-                    deploymentOperationError.ProcessError(operation);
-
-                    /*string errorMessage = operation.Properties.StatusMessage.ToString();
-
-                    if (operation.Properties.TargetResource != null)
-                    {
-                        statusMessage = string.Format(failureStatusFormat,
-                            operation.Properties.TargetResource.ResourceType,
-                            operation.Properties.TargetResource.ResourceName,
-                            errorMessage);
-
-                        WriteError(statusMessage);
-                    }
-                    else
-                    {
-                        WriteError(errorMessage);
-                    }
-
-                    List<string> detailedMessage = ParseDetailErrorMessage(operation.Properties.StatusMessage.ToString());
-
-                    if (detailedMessage != null && detailedMessage.Count > 0)
-                    {
-                        detailedMessage.ForEach(s => WriteError(s));
-                    }*/
+                    deploymentOperationError.ProcessError(operation);                   
                 }
             }
         }
@@ -337,6 +316,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         private DeploymentExtended WaitDeploymentStatus(
             Func<Task<AzureOperationResponse<DeploymentExtended>>> getDeployment,
             Action listDeploymentOperations,
+            DeploymentOperationErrorInfo deploymentOperationError,
             params ProvisioningState[] status)
         {
             DeploymentExtended deployment;
@@ -367,6 +347,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 using (var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult())
                 {
+                    deploymentOperationError.SetRequestIdFromResponseHeaders(getResult.Response);
+
                     deployment = getResult.Body;
                     var response = getResult.Response;
                     if (response != null && response.Headers.RetryAfter != null && response.Headers.RetryAfter.Delta.HasValue)
@@ -1374,6 +1356,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             this.BeginDeployment(parameters, deployment);
 
             WriteVerbose(string.Format(ProjectResources.CreatedDeployment, parameters.DeploymentName));
+
             return ProvisionDeploymentStatus(parameters, deployment);
         }
 
