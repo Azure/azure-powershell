@@ -19,6 +19,8 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.SqlInformationProtectio
 {
     public class PSSqlInformationProtectionPolicy
     {
+        public string Version { get; set; }
+
         [JsonProperty(Required = Required.Always)]
         public IDictionary<string, PSSqlInformationProtectionSensitivityLabel> Labels { get; set; }
 
