@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     if (disabled)
                     {
                         this.WriteVerbose(ProjectResources.Success);
-                        this.WriteVerbose(string.Format(ProjectResources.Success_DisableEndpoint, endpointToDisable.Name, endpointToDisable.Name, endpointToDisable.ResourceGroupName));
+                        this.WriteVerbose(string.Format(ProjectResources.Success_DisableEndpoint, endpointToDisable.Name, endpointToDisable.ProfileName, endpointToDisable.ResourceGroupName));
                     }
 
                     this.WriteObject(disabled);

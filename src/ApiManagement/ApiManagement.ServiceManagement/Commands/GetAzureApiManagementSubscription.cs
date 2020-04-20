@@ -15,9 +15,11 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
     using System.Management.Automation;
 
+    [GenericBreakingChange("Output changed: Subscription keys will not be returned anymore. Additional cmdlet will be added to retrieve subscription keys.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementSubscription", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementSubscription), ParameterSetName = new[] { GetAll, GetBySubscriptionId, GetByUserId, GetByScope, GetByProductIdAndUser, GetByProductId })]
     public class GetAzureApiManagementSubscription : AzureApiManagementCmdletBase

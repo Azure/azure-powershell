@@ -186,6 +186,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzApiManagementCache](./Get-AzApiManagementCache)
 
-[Set-AzApiManagementCache](./Set-AzApiManagementCache.md)
-
 [Remove-AzApiManagementCache](./Remove-AzApiManagementCache.md)
+
+[Update-AzApiManagementCache](./Update-AzApiManagementCache.md)

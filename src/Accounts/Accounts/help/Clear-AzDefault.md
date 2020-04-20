@@ -24,14 +24,14 @@ the user depending on the switch parameters specified by the user.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Clear-AzDefault
 ```
 
 This command removes all the defaults set by the user in the current context.
 
-### Example 1
-```
+### Example 2
+```powershell
 PS C:\> Clear-AzDefault -ResourceGroup
 ```
 
