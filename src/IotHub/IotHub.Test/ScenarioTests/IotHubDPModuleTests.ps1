@@ -27,6 +27,7 @@ function Test-AzureRmIotHubModuleLifecycle
 	$IotHubName = getAssetName
 	$ResourceGroupName = getAssetName
 	$Sku = "S1"
+	$SasTokenPrefix = 'SharedAccessSignature'
 	$device1 = getAssetName
 	$module1 = getAssetName
 	$module2 = getAssetName
@@ -38,6 +39,10 @@ function Test-AzureRmIotHubModuleLifecycle
 
 	# Create Iot Hub
 	$iothub = New-AzIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1
+
+	# Generate SAS token for IotHub
+	$token = New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
+	Assert-StartsWith $SasTokenPrefix $token
 
 	# Add iot device with symmetric authentication
 	$newDevice1 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -AuthMethod 'shared_private_key'
@@ -61,6 +66,22 @@ function Test-AzureRmIotHubModuleLifecycle
 	Assert-True { $newModule2.DeviceId -eq $device1 }
 	Assert-True { $newModule2.Authentication.Type -eq 'SelfSigned' }
 	
+	# Generate SAS token for module
+	$moduleToken = New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module1
+	Assert-StartsWith $SasTokenPrefix $moduleToken
+
+	# Expected error while generating SAS token for module
+	$errorMessage = "You are unable to get sas token for module without device information."
+	Assert-ThrowsContains { New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -ModuleId $module1 } $errorMessage
+
+	# Expected error while generating SAS token for module
+	$errorMessage = "This module does not support SAS auth."
+	Assert-ThrowsContains { New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module2 } $errorMessage
+
+	# Expected error while generating SAS token for module
+	$errorMessage = "The entered module ""fakeModule"" doesn't exist."
+	Assert-ThrowsContains { New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId "fakeModule" } $errorMessage
+
 	# Count device modules
 	$totalModules = Invoke-AzIotHubQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Query "select * from devices.modules where devices.Id='$device1'"
 	Assert-True { $totalModules.Count -eq 2}
