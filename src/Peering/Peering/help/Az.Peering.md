@@ -23,8 +23,17 @@ Gets the Peering Resources for a subscription
 ### [Get-AzPeeringLocation](Get-AzPeeringLocation.md)
 Gets the Peering locations offered by Microsoft
 
+### [Get-AzPeeringRegisteredAsn](Get-AzPeeringRegisteredAsn.md)
+{{ Fill in the Synopsis }}
+
+### [Get-AzPeeringRegisteredPrefix](Get-AzPeeringRegisteredPrefix.md)
+{{ Fill in the Synopsis }}
+
 ### [Get-AzPeeringService](Get-AzPeeringService.md)
 Get a list of peering service objects of a single object.
+
+### [Get-AzPeeringServiceCountry](Get-AzPeeringServiceCountry.md)
+{{ Fill in the Synopsis }}
 
 ### [Get-AzPeeringServiceLocation](Get-AzPeeringServiceLocation.md)
 Gets a list of peering service locations offered by Microsoft.
@@ -38,6 +47,9 @@ Gets a list of peering service providers partnered with Microsoft.
 ### [New-AzPeerAsn](New-AzPeerAsn.md)
 Creates a new Peer ASN 
 
+### [New-AzPeerAsnContactDetail](New-AzPeerAsnContactDetail.md)
+{{ Fill in the Synopsis }}
+
 ### [New-AzPeering](New-AzPeering.md)
 Creates a new Peering ARM Resource
 
@@ -47,6 +59,12 @@ Creates a in memory PSObject to be used for creating or modifying a Peering.
 ### [New-AzPeeringExchangeConnectionObject](New-AzPeeringExchangeConnectionObject.md)
 Creates a in memory PSObject to be used for creating or modifying a Peering.
 
+### [New-AzPeeringRegisteredAsn](New-AzPeeringRegisteredAsn.md)
+{{ Fill in the Synopsis }}
+
+### [New-AzPeeringRegisteredPrefix](New-AzPeeringRegisteredPrefix.md)
+{{ Fill in the Synopsis }}
+
 ### [New-AzPeeringService](New-AzPeeringService.md)
 Creates a new peering service.
 
@@ -55,6 +73,15 @@ Creates a new peering service prefix
 
 ### [Remove-AzPeerAsn](Remove-AzPeerAsn.md)
 Remove Peer Asn
+
+### [Remove-AzPeering](Remove-AzPeering.md)
+{{ Fill in the Synopsis }}
+
+### [Remove-AzPeeringRegisteredAsn](Remove-AzPeeringRegisteredAsn.md)
+{{ Fill in the Synopsis }}
+
+### [Remove-AzPeeringRegisteredPrefix](Remove-AzPeeringRegisteredPrefix.md)
+{{ Fill in the Synopsis }}
 
 ### [Remove-AzPeeringServicePrefix](Remove-AzPeeringServicePrefix.md)
 Removes a new peering service prefix
@@ -67,6 +94,12 @@ Sets or updates the Direct Connection information.
 
 ### [Set-AzPeeringExchangeConnectionObject](Set-AzPeeringExchangeConnectionObject.md)
 Sets or updates the Exchange Connection information. 
+
+### [Set-AzPeeringRegisteredAsn](Set-AzPeeringRegisteredAsn.md)
+{{ Fill in the Synopsis }}
+
+### [Set-AzPeeringRegisteredPrefix](Set-AzPeeringRegisteredPrefix.md)
+{{ Fill in the Synopsis }}
 
 ### [Update-AzPeering](Update-AzPeering.md)
 Sets the Peering. Use this Command in conjunction with `Set-AzDirectPeeringConnectionObject` or `Set-AzExchangePeeringConnectionObject`.

@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
@@ -27,8 +28,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     /// </summary>
     [Cmdlet(
         VerbsCommon.Set,
-        "AzPeerAsn",
-        DefaultParameterSetName = Constants.ParameterSetNameByName,
+        Constants.AzPeerAsn,
+        DefaultParameterSetName = Constants.ParameterSetNameDefault,
         SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeerAsn))]
     public class SetAzurePeerAsn : PeeringBaseCmdlet
@@ -44,36 +45,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             ParameterSetName = Constants.ParameterSetNameDefault)]
         public PSPeerAsn InputObject { get; set; }
 
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.ParameterSetNameByName)]
-        public string Name { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the Email
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = Constants.EmailsHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = Constants.EmailsHelp,
-            ParameterSetName = Constants.ParameterSetNameByName)]
-        public string[] Email { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = Constants.PhoneHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = Constants.PhoneHelp,
-            ParameterSetName = Constants.ParameterSetNameByName)]
-        public string[] Phone { get; set; }
-
         /// <summary>
         ///     The AsJob parameter to run in the background.
         /// </summary>
@@ -88,10 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             try
             {
                 base.Execute();
-                this.WriteObject(
-                    this.ParameterSetName.Equals(Constants.ParameterSetNameByName)
-                        ? this.ToPeeringAsnPs(this.GetAndSetContactInformation())
-                        : this.ToPeeringAsnPs(this.UpdatePeerContactInfo()));
+                this.WriteObject(UpdatePeerContactInfo());
             }
             catch (InvalidOperationException mapException)
             {
@@ -112,65 +80,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </returns>
         private object UpdatePeerContactInfo()
         {
-            // Get old and verify its the same
-            var oldPeerAsn = this.PeeringManagementClient.PeerAsns.Get(this.InputObject.Name);
-            if (oldPeerAsn.Name == this.InputObject.Name
-                && oldPeerAsn.PeerAsnProperty == this.InputObject.PeerAsnProperty
-                && oldPeerAsn.PeerName == this.InputObject.PeerName)
+            try
             {
-                var update = this.InputObject;
-                if (this.Email != null)
-                {
-                    foreach (var email in this.Email)
-                    {
-                        if (HelperExtensionMethods.IsValidEmail(email))
-                            update.PeerContactInfo.Emails.Add(email);
-                    }
-                }
-
-                if (this.Phone == null)
-                    return this.PeeringManagementClient.PeerAsns.CreateOrUpdate(
-                        oldPeerAsn.Name,
-                        this.ToPeeringAsn(update));
-                foreach (var s in this.Phone)
-                {
-                    update.PeerContactInfo.Phone.Add(s);
-                }
-
-                return this.PeeringManagementClient.PeerAsns.CreateOrUpdate(oldPeerAsn.Name, this.ToPeeringAsn(update));
+                var peerAsn = this.PeerAsnClient.CreateOrUpdate(this.InputObject.Name, PeeringResourceManagerProfile.Mapper.Map<PeerAsn>(this.InputObject));
+                return PeeringResourceManagerProfile.Mapper.Map<PSPeerAsn>(peerAsn);
             }
-
-            throw new Exception($"Only contact information can be changed");
-        }
-
-        private object GetAndSetContactInformation()
-        {
-            // Get old and verify its the same
-            var oldPeerAsn = this.PeeringManagementClient.PeerAsns.Get(this.Name);
-            if (oldPeerAsn != null)
+            catch (InvalidOperationException mapException)
             {
-                var update = (PSPeerAsn)this.ToPeeringAsnPs(oldPeerAsn);
-                if (this.Email != null)
-                {
-                    foreach (var email in this.Email)
-                    {
-                        update.PeerContactInfo.Emails.Add(email);
-                    }
-                }
-
-                if (this.Phone == null)
-                    return this.PeeringManagementClient.PeerAsns.CreateOrUpdate(
-                        oldPeerAsn.Name,
-                        this.ToPeeringAsn(update));
-                foreach (var s in this.Phone)
-                {
-                    update.PeerContactInfo.Phone.Add(s);
-                }
-
-                return this.PeeringManagementClient.PeerAsns.CreateOrUpdate(oldPeerAsn.Name, this.ToPeeringAsn(update));
+                throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
-
-            throw new Exception($"Only contact information can be changed");
+            catch (ErrorResponseException ex)
+            {
+                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
+            }
         }
     }
 }

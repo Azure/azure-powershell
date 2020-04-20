@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
-        "AzPeeringDirectConnectionObject",
+        Constants.AzPeeringDirectConnectionObject,
         DefaultParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix, SupportsShouldProcess = false)]
     [OutputType(typeof(PSDirectConnection))]
     public class NewAzureDirectPeeringConnectionCommand : PeeringBaseCmdlet

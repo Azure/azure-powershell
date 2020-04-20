@@ -29,16 +29,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
-        "AzPeeringServicePrefix",
-        DefaultParameterSetName = Constants.ParameterSetNameByName,
+        Constants.AzPeeringServicePrefix,
+        DefaultParameterSetName = Constants.ParameterSetNameDefault,
         SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class DeleteAzurePeeringServicePrefixCommand : PeeringBaseCmdlet
+    public class RemovezurePeeringServicePrefixCommand : PeeringBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the input object.
         /// </summary>
         [Parameter(
+            Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = Constants.ParameterSetNameDefault,
@@ -75,10 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Position = 2,
             Mandatory = true,
-            HelpMessage = Constants.PeeringNameHelp,
+            HelpMessage = Constants.PrefixNameHelp,
             ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
-        public string PeeringServiceName { get; set; }
+        public string PrefixName { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id.
@@ -117,54 +118,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         {
             try
             {
+                ResourceIdentifier resourceId = null;
+                if (this.ParameterSetName.Equals(Constants.ParameterSetNameDefault, StringComparison.OrdinalIgnoreCase))
+                {
+                    resourceId = new ResourceIdentifier(this.InputObject.Id);
+                }
+                else if (this.ParameterSetName.Equals(Constants.ParameterSetNameByResourceId, StringComparison.OrdinalIgnoreCase))
+                {
+                    resourceId = new ResourceIdentifier(this.ResourceId);
+                }
+
+                if (resourceId != null)
+                {
+                    this.ResourceGroupName = resourceId.ResourceGroupName;
+                    this.PrefixName = resourceId.ResourceName;
+                    this.Name = resourceId?.ParentResource?.Split('/')?[1];
+                }
+
                 this.ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Resources.ProcessMessage, this.Name),
+                    string.Format(Resources.ProcessMessage, this.PrefixName),
                     Resources.ContinueMessage,
-                    this.Name,
-                    () =>
-                        {
-                            if (this.ResourceId != null)
-                            {
-                                this.WriteVerbose($"ResourceId:{this.ResourceId}");
-                                var resourceId = new ResourceIdentifier(this.ResourceId);
-                                this.ResourceGroupName = resourceId.ResourceGroupName;
-                                this.Name = resourceId.ResourceName;
-                                this.PeeringServiceName = resourceId.ParentResource.Split('/')?[1];
-                            }
-
-                            if (this.InputObject != null)
-                            {
-                                var resourceId = new ResourceIdentifier(this.InputObject.Id);
-                                this.ResourceGroupName = resourceId.ResourceGroupName;
-                                this.Name = resourceId.ResourceName;
-                                this.PeeringServiceName = resourceId.ParentResource.Split('/')?[1];
-                            }
-
-                            try
-                            {
-                                if (this.ShouldProcess(
-                                    string.Format(
-                                        Resources.ShouldProcessMessage,
-                                        "null. Unless the -PassThru is present which it will return a boolean, true for success of false for failure.")))
-                                {
-                                    this.PeeringServicePrefixesClient.Delete(
-                                        this.ResourceGroupName,
-                                        this.PeeringServiceName,
-                                        this.Name);
-                                    if (this.PassThru.IsPresent)
-                                    {
-                                        this.WriteObject(true);
-                                    }
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                this.WriteVerbose(ex.Message);
-                                this.WriteObject(false);
-                                throw ex;
-                            }
-                        });
+                    this.PrefixName,
+                    () => DeletePrefix());
             }
             catch (InvalidOperationException mapException)
             {
@@ -174,6 +150,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 var error = GetErrorCodeAndMessageFromArmOrErm(ex);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
+            }
+        }
+
+        private void DeletePrefix()
+        {
+            {
+                try
+                {
+                    if (this.ShouldProcess(
+                        string.Format(
+                            Resources.ShouldProcessMessage,
+                            "null. Unless the -PassThru is present which it will return a boolean, true for success of false for failure.")))
+                    {
+                        this.PeeringServicePrefixesClient.Delete(
+                            this.ResourceGroupName,
+                            this.Name,
+                            this.PrefixName);
+                        if (this.PassThru.IsPresent)
+                        {
+                            this.WriteObject(true);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this.WriteVerbose(ex.Message);
+                    this.WriteObject(false);
+                    throw ex;
+                }
             }
         }
     }

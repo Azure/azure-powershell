@@ -27,7 +27,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     /// The new azure peering service prefix command.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzPeeringServicePrefix", DefaultParameterSetName = Constants.ParameterSetNameDefault, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, Constants.AzPeeringServicePrefix,
+        DefaultParameterSetName = Constants.ParameterSetNameDefault,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeeringServicePrefix))]
     public class NewAzurePeeringServicePrefixCommand : PeeringBaseCmdlet
     {
@@ -106,6 +108,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string Prefix { get; set; }
 
         /// <summary>
+        /// Gets or sets the prefix.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = Constants.HelpServiceKey,
+            ParameterSetName = Constants.ParameterSetNameDefault)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = Constants.HelpServiceKey,
+            ParameterSetName = Constants.ParameterSetNameByResourceGroupName)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = Constants.HelpServiceKey,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ServiceKey { get; set; }
+
+        /// <summary>
         /// Gets or sets the peering service id.
         /// </summary>
         [Parameter(
@@ -174,7 +194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             this.PeeringServiceName = peeringService.Name;
             if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"peering service prefix for the resource group name:{this.ResourceGroupName} peering service name:{this.PeeringServiceName} and resource name:{this.Name}.")))
             {
-                this.PeeringServicePrefixesClient.CreateOrUpdate(this.ResourceGroupName, this.PeeringServiceName, this.Name, prefix.Prefix);
+                this.PeeringServicePrefixesClient.CreateOrUpdate(this.ResourceGroupName, this.PeeringServiceName, this.Name, prefix.Prefix, this.ServiceKey);
                 return this.ToPeeringServicePrefixPS(this.PeeringServicePrefixesClient.Get(this.ResourceGroupName, this.PeeringServiceName, this.Name));
             }
             return new PSPeeringServicePrefix { Prefix = this.Prefix };

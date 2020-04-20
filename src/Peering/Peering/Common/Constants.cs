@@ -21,6 +21,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     /// </summary>
     public static class Constants
     {
+        #region suffix
+
+        public const string AzPeeringRegisteredPrefix = "AzPeeringRegisteredPrefix";
+        public const string AzPeeringRegisteredAsn = "AzPeeringRegisteredAsn";
+        public const string AzPeerAsn = "AzPeerAsn";
+        public const string AzPeerAsnContactDetail = "AzPeerAsnContactDetail";
+        public const string AzLegacyPeering = "AzLegacyPeering";
+        public const string AzPeeringLocation = "AzPeeringLocation";
+        public const string AzPeeringServicePrefix = "AzPeeringServicePrefix";
+        public const string AzPeeringService = "AzPeeringService";
+        public const string AzPeeringDirectConnectionObject = "AzPeeringDirectConnectionObject";
+        public const string AzPeeringExchangeConnectionObject = "AzPeeringExchangeConnectionObject";
+        public const string AzPeering = "AzPeering";
+        public const string AzPeeringServiceLocation = "AzPeeringServiceLocation";
+        public const string AzPeeringServiceProvider = "AzPeeringServiceProvider";
+        public const string AzPeeringServiceCountry = "AzPeeringServiceCountry";
+        #endregion
+
         #region Kind
 
         /// <summary>
@@ -42,6 +60,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The CDN Parameter set name.
         /// </summary>
         public const string Edge = "Edge";
+
+        /// <summary>
+        /// The edge 8069
+        /// </summary>
+        public const string CDN8069 = "AS8069";
+
+        /// <summary>
+        /// The edge 8075
+        /// </summary>
+        public const string Edge8075 = "AS8075";
+
+        /// <summary>
+        /// The exchange with switch
+        /// </summary>
+        public const string Ix = "AS8075Ix";
+        
+        /// <summary>
+        /// the exchange with route server
+        /// </summary>
+        public const string IxRs = "AS8075IxRs";
 
         /// <summary>
         /// The Direct InputObject Parameter set name.
@@ -221,6 +259,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string PeeringNameHelp = "The unique name of the PSPeering.";
 
         /// <summary>
+        /// The unique name of the registered prefix.
+        /// </summary>
+        public const string RegisteredPrefixNameHelp = "The unique name of the registered prefix.";
+
+        /// <summary>
         /// The peer asn help.
         /// </summary>
         public const string PeerAsnHelp = "The PeerAsn object.";
@@ -234,6 +277,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// PeeringNameHelp
         /// </summary>
         public const string PhoneHelp = "Phone used to contact if issues arrise typically a Network Operations Center";
+
+        /// <summary>
+        /// The role for the contact details
+        /// </summary>
+        public const string RoleHelp = "Choose the role that best suits the contact information. NOC Contact is required.";
 
         /// <summary>
         /// The location help.
@@ -346,6 +394,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
         public const string PeeringDirectSkuHelp = "Select Basic_Direct_Free or Premium_Direct_Free unless explicitly told to select another option.";
 
+        public const string MicrosoftNetworkHelp = "Select the Microsoft network you want to peer with.";
+
         /// <summary>
         /// The peering direct connection index help.
         /// </summary>
@@ -361,6 +411,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The help session i pv 4 prefix.
         /// </summary>
         public const string HelpSessionIPv4Prefix = "The session IPv4 prefix";
+
+        /// <summary>
+        /// The service key
+        /// </summary>
+        public const string HelpServiceKey = "This is a unique GUID provided by your service provider";
 
         /// <summary>
         /// The help session i pv 6 prefix.
@@ -406,6 +461,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The peering service prefix event expand flag
         /// </summary>
         public const string PeeringServicePrefixEventHelp = "View the events for a peering service prefix";
+
+        /// <summary>
+        /// The ASN to be registered
+        /// </summary>
+        public const string AsnHelp = "The ASN to be registered";
+
+        /// <summary>
+        /// The name of the registered ASN
+        /// </summary>
+        public const string AsnNameHelp = "The name of the registered ASN";
 
         #endregion Help
 

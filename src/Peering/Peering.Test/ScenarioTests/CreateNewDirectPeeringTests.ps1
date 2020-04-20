@@ -11,35 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-<#
-.SYNOPSIS
-NewExchangeConnectionV4V6 
-#>
-function NewDirectConnectionV4V6($facilityId,$bandwidth)
-{
-	Write-Debug "Creating Connection at $facilityId"
-	$md5 = getHash
-	$md5 = $md5.ToString()
-	Write-Debug "Created Hash $md5"
-	$rand1 = Get-Random -Maximum 20 -Minimum 3
-	$rand2 = Get-Random -Maximum 200 -Minimum 1
-	$sessionv4 = newIpV4Address $true $true 0 $rand2
-	$sessionv6 = newIpV6Address $true $true 0 $rand2
-	Write-Debug "Created IPs $sessionv4 $SessionPrefixV6"
-	$maxv4 = maxAdvertisedIpv4
-	$maxv6 = maxAdvertisedIpv6
-	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
 
-    $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv4 $maxv4 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
-	Write-Debug "Created Connection $createdConnection"
-#	Assert-NotNull $createdConnection
-#	Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
-#	Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
-#    Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps
-#	Assert-AreEqual $sessionv4 $createdConnection.BgpSession.SessionPrefixV4
-#    Assert-AreEqual $sessionv6 $createdConnection.BgpSession.SessionPrefixV6
-	return $createdConnection
-}
 <#
 .SYNOPSIS
 Tests new Direct Peering 
@@ -59,7 +31,7 @@ function Test-NewDirectPeering
 	$randNum = getRandomNumber
 	Write-Debug "Random Number $randNum";
 	$peerAsn = makePeerAsn $randNum
-	$asn = $peerAsn
+	$asn = Get-AzPeerAsn -Name $peerAsn.Name
 	$facilityId = $peeringLocation[0].PeeringDBFacilityId
 	#create Connection
 	$bandwidth = getBandwidth
@@ -69,7 +41,7 @@ function Test-NewDirectPeering
 	$sessionv4 = getPeeringVariable "sessionv4" $directConnection.BgpSession.SessionPrefixV4
 	$sessionv6 = getPeeringVariable "sessionv6" $directConnection.BgpSession.SessionPrefixV6
 	Write-Debug "Creating New Peering: $resourceName."
-    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -Sku "Basic_Direct_Free" -PeerAsnResourceId $asn.Id -DirectConnection $directConnection -Tag $tags
+    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -MicrosoftNetwork AS8075 -Sku "Basic_Direct_Free" -PeerAsnResourceId $asn.Id -DirectConnection $directConnection -Tag $tags
 	Write-Debug "Created New Peering: $createdPeering$Name"
 	Assert-NotNull $createdPeering
 	Assert-AreEqual $kind $createdPeering.Kind
@@ -111,7 +83,7 @@ function Test-NewDirectPeeringWithPipe
 	$sessionv4 = getPeeringVariable "sessionv4" $directConnection.BgpSession.SessionPrefixV4
 	$sessionv6 = getPeeringVariable "sessionv6" $directConnection.BgpSession.SessionPrefixV6
 	Write-Debug "Creating New Peering: $resourceName."
-    $createdPeering =  New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -Sku "Basic_Direct_Free" -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection ($directConnection) 
+    $createdPeering =  New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -MicrosoftNetwork AS8075 -Sku "Basic_Direct_Free" -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection ($directConnection) 
 	Assert-NotNull $createdPeering
 	Assert-AreEqual "Direct" $createdPeering.Kind
 	Assert-AreEqual $resourceName $createdPeering.Name
@@ -130,7 +102,7 @@ function Test-NewDirectPeeringPipeTwoConnections
 {
 	#Hard Coded locations becuase of limitations in locations
 	$kind = isDirect $true;
-	$loc = "Ashburn"
+	$loc = "Seattle"
 	$resourceGroup = "testCarrier";
 	Write-Debug $resourceGroup
 		#Create Asn
@@ -157,7 +129,7 @@ function Test-NewDirectPeeringPipeTwoConnections
 	#connection2
 	$connection2 = NewDirectConnectionV4V6 $facilityId $bandwidth2
 	#create peering
-    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -Sku "Basic_Direct_Free" -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2
+    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -MicrosoftNetwork AS8075 -Sku "Basic_Direct_Free" -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2
 	Assert-NotNull $createdPeering
 	Assert-AreEqual $kind $createdPeering.Kind
 	Assert-AreEqual $resourceName $createdPeering.Name
@@ -178,7 +150,7 @@ function Test-NewDirectPeeringPremiumDirectFree
 {
 	#Hard Coded locations becuase of limitations in locations
 	$kind = isDirect $true;
-	$loc = "Ashburn"
+	$loc = "Chicago"
 	$resourceGroup = "testCarrier";
 	Write-Debug $resourceGroup
 	#Create Asn
@@ -205,7 +177,8 @@ function Test-NewDirectPeeringPremiumDirectFree
 	$connection2 = NewDirectConnectionV4V6 $facilityId $bandwidth2
 	#create peering
 	$connection2.UseForPeeringService = $true
-    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -Sku "Basic_Direct_Free" -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2
+	Write-Output "New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -MicrosoftNetwork AS8075 -Sku Premium_Direct_Free -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2"
+    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -MicrosoftNetwork AS8075 -Sku "Premium_Direct_Free" -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2
 	Assert-NotNull $createdPeering
 	Assert-AreEqual $kind $createdPeering.Kind
 	Assert-AreEqual $resourceName $createdPeering.Name
@@ -227,7 +200,7 @@ function Test-NewDirectPeeringPremiumDirectUnlimited
 {
 	#Hard Coded locations becuase of limitations in locations
 	$kind = isDirect $true;
-	$loc = "Ashburn"
+	$loc = "Amsterdam"
 	$resourceGroup = "testCarrier";
 	Write-Debug $resourceGroup
 	#Create Asn
@@ -254,5 +227,5 @@ function Test-NewDirectPeeringPremiumDirectUnlimited
 	$connection2 = NewDirectConnectionV4V6 $facilityId $bandwidth2
 	#create peering
 	$connection2.UseForPeeringService = $true
-    Assert-ThrowsContains { $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -Sku "Premium_Direct_Unlimited" -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2 } "Peering SKU is invalid for Direct"
+    Assert-ThrowsContains { $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -MicrosoftNetwork AS8069 -Sku "Premium_Direct_Unlimited" -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2 } "Internal error during provisioning"
 }

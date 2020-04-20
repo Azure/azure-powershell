@@ -1,0 +1,182 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerings?api-version=2020-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyaW5ncz9hcGktdmVyc2lvbj0yMDIwLTAxLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "41ef6ca6-3877-4c55-b2a8-182191f68ab2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/2.0.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.azure-test.net/,certificate-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/certificate,issued-token-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/2012/IDstsDiscoveryService,service-dns-name=secrets.wanrr-test.radar.core.azure-test.net,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "x-ms-request-id": [
+          "ac9a8160-66dc-46ea-93e0-bf107550c91c"
+        ],
+        "Date": [
+          "Tue, 14 Apr 2020 21:31:29 GMT"
+        ],
+        "Content-Length": [
+          "17692"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Premium_Direct_Free\",\r\n        \"tier\": \"Premium\",\r\n        \"family\": \"Direct\",\r\n        \"size\": \"Free\"\r\n      },\r\n      \"kind\": \"Direct\",\r\n      \"properties\": {\r\n        \"direct\": {\r\n          \"connections\": [\r\n            {\r\n              \"bandwidthInMbps\": 50000,\r\n              \"provisionedBandwidthInMbps\": 0,\r\n              \"sessionAddressProvider\": \"Peer\",\r\n              \"useForPeeringService\": true,\r\n              \"peeringDBFacilityId\": 7,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"83.175.148.0/31\",\r\n                \"sessionPrefixV6\": \"53af:94e4:da6c:89cd:8c14:15f7:f961:3a00/127\",\r\n                \"microsoftSessionIPv4Address\": \"83.175.148.1\",\r\n                \"microsoftSessionIPv6Address\": \"53af:94e4:da6c:89cd:8c14:15f7:f961:3a01\",\r\n                \"peerSessionIPv4Address\": \"83.175.148.0\",\r\n                \"peerSessionIPv6Address\": \"53af:94e4:da6c:89cd:8c14:15f7:f961:3a00\",\r\n                \"sessionStateV4\": \"None\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 7427,\r\n                \"maxPrefixesAdvertisedV6\": 1726,\r\n                \"md5AuthenticationKey\": \"6dcdc9c6725c3da0cf013daef8fe563d\"\r\n              },\r\n              \"connectionIdentifier\": \"f9d745c2-f5b0-43fb-a871-2fe92fa0c1f6\"\r\n            },\r\n            {\r\n              \"bandwidthInMbps\": 50000,\r\n              \"provisionedBandwidthInMbps\": 0,\r\n              \"sessionAddressProvider\": \"Peer\",\r\n              \"useForPeeringService\": false,\r\n              \"peeringDBFacilityId\": 7,\r\n              \"connectionState\": \"PendingApproval\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"131.189.112.0/31\",\r\n                \"sessionPrefixV6\": \"83bd:70ea:391e:bce0:962a:3cfe:f29a:1e00/127\",\r\n                \"microsoftSessionIPv4Address\": \"131.189.112.1\",\r\n                \"microsoftSessionIPv6Address\": \"83bd:70ea:391e:bce0:962a:3cfe:f29a:1e01\",\r\n                \"peerSessionIPv4Address\": \"131.189.112.0\",\r\n                \"peerSessionIPv6Address\": \"83bd:70ea:391e:bce0:962a:3cfe:f29a:1e00\",\r\n                \"sessionStateV4\": \"None\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 7427,\r\n                \"maxPrefixesAdvertisedV6\": 1726,\r\n                \"md5AuthenticationKey\": \"6dcdc9c6725c3da0cf013daef8fe563d\"\r\n              },\r\n              \"connectionIdentifier\": \"72b02a8d-a53c-4c8f-8965-47532bed0288\"\r\n            }\r\n          ],\r\n          \"useForPeeringService\": true,\r\n          \"peerAsn\": {\r\n            \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/518-Global684\"\r\n          },\r\n          \"directPeeringType\": \"Edge\"\r\n        },\r\n        \"peeringLocation\": \"Chicago\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"local\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\"\r\n      },\r\n      \"eTag\": \"119b430f-12dc-49fc-9de5-df6a0e3e42b2\",\r\n      \"name\": \"Direct_UseForPeeringService21\",\r\n      \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/2660-Global6777/providers/Microsoft.Peering/peerings/Direct_UseForPeeringService21\",\r\n      \"type\": \"Microsoft.Peering/peerings\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Premium_Direct_Free\",\r\n        \"tier\": \"Premium\",\r\n        \"family\": \"Direct\",\r\n        \"size\": \"Free\"\r\n      },\r\n      \"kind\": \"Direct\",\r\n      \"properties\": {\r\n        \"direct\": {\r\n          \"connections\": [\r\n            {\r\n              \"bandwidthInMbps\": 40000,\r\n              \"provisionedBandwidthInMbps\": 0,\r\n              \"sessionAddressProvider\": \"Peer\",\r\n              \"useForPeeringService\": true,\r\n              \"peeringDBFacilityId\": 7,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"22.11.140.0/31\",\r\n                \"sessionPrefixV6\": \"160b:8cfe:ba21:790f:d37e:e64c:a0c4:d100/127\",\r\n                \"microsoftSessionIPv4Address\": \"22.11.140.1\",\r\n                \"microsoftSessionIPv6Address\": \"160b:8cfe:ba21:790f:d37e:e64c:a0c4:d101\",\r\n                \"peerSessionIPv4Address\": \"22.11.140.0\",\r\n                \"peerSessionIPv6Address\": \"160b:8cfe:ba21:790f:d37e:e64c:a0c4:d100\",\r\n                \"sessionStateV4\": \"None\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 18985,\r\n                \"maxPrefixesAdvertisedV6\": 1967,\r\n                \"md5AuthenticationKey\": \"3a216e1c704214c0017d838878e8889b\"\r\n              },\r\n              \"connectionIdentifier\": \"8a25fd08-ea4b-4ec4-bb2a-22421c3b7bff\"\r\n            },\r\n            {\r\n              \"bandwidthInMbps\": 40000,\r\n              \"provisionedBandwidthInMbps\": 0,\r\n              \"sessionAddressProvider\": \"Peer\",\r\n              \"useForPeeringService\": false,\r\n              \"peeringDBFacilityId\": 7,\r\n              \"connectionState\": \"PendingApproval\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"121.149.116.0/31\",\r\n                \"sessionPrefixV6\": \"7995:7403:8f87:c356:c045:7b5:8670:100/127\",\r\n                \"microsoftSessionIPv4Address\": \"121.149.116.1\",\r\n                \"microsoftSessionIPv6Address\": \"7995:7403:8f87:c356:c045:7b5:8670:101\",\r\n                \"peerSessionIPv4Address\": \"121.149.116.0\",\r\n                \"peerSessionIPv6Address\": \"7995:7403:8f87:c356:c045:7b5:8670:100\",\r\n                \"sessionStateV4\": \"None\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 18985,\r\n                \"maxPrefixesAdvertisedV6\": 1967,\r\n                \"md5AuthenticationKey\": \"3a216e1c704214c0017d838878e8889b\"\r\n              },\r\n              \"connectionIdentifier\": \"2333a9d2-f739-4dbe-9461-eead8957f226\"\r\n            }\r\n          ],\r\n          \"useForPeeringService\": true,\r\n          \"peerAsn\": {\r\n            \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/47073-Global796\"\r\n          },\r\n          \"directPeeringType\": \"Edge\"\r\n        },\r\n        \"peeringLocation\": \"Chicago\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"local\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\"\r\n      },\r\n      \"eTag\": \"672b02d0-16e2-4f4b-956c-f3bedfb3b029\",\r\n      \"name\": \"Direct_UseForPeeringService7966\",\r\n      \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/rg41299/providers/Microsoft.Peering/peerings/Direct_UseForPeeringService7966\",\r\n      \"type\": \"Microsoft.Peering/peerings\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Premium_Direct_Free\",\r\n        \"tier\": \"Premium\",\r\n        \"family\": \"Direct\",\r\n        \"size\": \"Free\"\r\n      },\r\n      \"kind\": \"Direct\",\r\n      \"properties\": {\r\n        \"direct\": {\r\n          \"connections\": [\r\n            {\r\n              \"bandwidthInMbps\": 30000,\r\n              \"provisionedBandwidthInMbps\": 0,\r\n              \"sessionAddressProvider\": \"Peer\",\r\n              \"useForPeeringService\": true,\r\n              \"peeringDBFacilityId\": 7,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"44.54.241.0/31\",\r\n                \"sessionPrefixV6\": \"2c36:f1c3:72da:bd49:c759:81c:b93:ee00/127\",\r\n                \"microsoftSessionIPv4Address\": \"44.54.241.1\",\r\n                \"microsoftSessionIPv6Address\": \"2c36:f1c3:72da:bd49:c759:81c:b93:ee01\",\r\n                \"peerSessionIPv4Address\": \"44.54.241.0\",\r\n                \"peerSessionIPv6Address\": \"2c36:f1c3:72da:bd49:c759:81c:b93:ee00\",\r\n                \"sessionStateV4\": \"None\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 6128,\r\n                \"maxPrefixesAdvertisedV6\": 153,\r\n                \"md5AuthenticationKey\": \"ff2399e106605b0488eec8f2c174c3be\"\r\n              },\r\n              \"connectionIdentifier\": \"4f79e1fd-3456-4192-8189-d0d7fd521cb8\"\r\n            },\r\n            {\r\n              \"bandwidthInMbps\": 30000,\r\n              \"provisionedBandwidthInMbps\": 0,\r\n              \"sessionAddressProvider\": \"Peer\",\r\n              \"useForPeeringService\": false,\r\n              \"peeringDBFacilityId\": 7,\r\n              \"connectionState\": \"PendingApproval\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"88.249.49.0/31\",\r\n                \"sessionPrefixV6\": \"58f9:31d6:55fc:bd14:aec1:a28d:7f16:8600/127\",\r\n                \"microsoftSessionIPv4Address\": \"88.249.49.1\",\r\n                \"microsoftSessionIPv6Address\": \"58f9:31d6:55fc:bd14:aec1:a28d:7f16:8601\",\r\n                \"peerSessionIPv4Address\": \"88.249.49.0\",\r\n                \"peerSessionIPv6Address\": \"58f9:31d6:55fc:bd14:aec1:a28d:7f16:8600\",\r\n                \"sessionStateV4\": \"None\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 6128,\r\n                \"maxPrefixesAdvertisedV6\": 153,\r\n                \"md5AuthenticationKey\": \"ff2399e106605b0488eec8f2c174c3be\"\r\n              },\r\n              \"connectionIdentifier\": \"67d95130-2d6a-404b-a506-07c0de262765\"\r\n            }\r\n          ],\r\n          \"useForPeeringService\": true,\r\n          \"peerAsn\": {\r\n            \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/26487-Global222\"\r\n          },\r\n          \"directPeeringType\": \"Edge\"\r\n        },\r\n        \"peeringLocation\": \"Chicago\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"local\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\"\r\n      },\r\n      \"eTag\": \"e78927dd-ec42-4cf5-a550-ab8369ea5c7c\",\r\n      \"name\": \"Direct_UseForPeeringService7066\",\r\n      \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/rg60806/providers/Microsoft.Peering/peerings/Direct_UseForPeeringService7066\",\r\n      \"type\": \"Microsoft.Peering/peerings\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Premium_Direct_Free\",\r\n        \"tier\": \"Premium\",\r\n        \"family\": \"Direct\",\r\n        \"size\": \"Free\"\r\n      },\r\n      \"kind\": \"Direct\",\r\n      \"properties\": {\r\n        \"direct\": {\r\n          \"connections\": [\r\n            {\r\n              \"bandwidthInMbps\": 10000,\r\n              \"provisionedBandwidthInMbps\": 0,\r\n              \"sessionAddressProvider\": \"Peer\",\r\n              \"useForPeeringService\": true,\r\n              \"peeringDBFacilityId\": 7,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"75.173.230.0/31\",\r\n                \"sessionPrefixV6\": \"4bad:e677:6e9e:a9e7:4806:a7f9:5012:4300/127\",\r\n                \"microsoftSessionIPv4Address\": \"75.173.230.1\",\r\n                \"microsoftSessionIPv6Address\": \"4bad:e677:6e9e:a9e7:4806:a7f9:5012:4301\",\r\n                \"peerSessionIPv4Address\": \"75.173.230.0\",\r\n                \"peerSessionIPv6Address\": \"4bad:e677:6e9e:a9e7:4806:a7f9:5012:4300\",\r\n                \"sessionStateV4\": \"None\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 11830,\r\n                \"maxPrefixesAdvertisedV6\": 74,\r\n                \"md5AuthenticationKey\": \"87dde58aca769e59f07c7a84efc2a5d2\"\r\n              },\r\n              \"connectionIdentifier\": \"f19d1c67-9b4f-408a-a226-8314ce60cf8b\"\r\n            },\r\n            {\r\n              \"bandwidthInMbps\": 10000,\r\n              \"provisionedBandwidthInMbps\": 0,\r\n              \"sessionAddressProvider\": \"Peer\",\r\n              \"useForPeeringService\": false,\r\n              \"peeringDBFacilityId\": 7,\r\n              \"connectionState\": \"PendingApproval\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"154.49.183.0/31\",\r\n                \"sessionPrefixV6\": \"9a31:b730:c913:c997:d2c9:6cdc:8ec9:7c00/127\",\r\n                \"microsoftSessionIPv4Address\": \"154.49.183.1\",\r\n                \"microsoftSessionIPv6Address\": \"9a31:b730:c913:c997:d2c9:6cdc:8ec9:7c01\",\r\n                \"peerSessionIPv4Address\": \"154.49.183.0\",\r\n                \"peerSessionIPv6Address\": \"9a31:b730:c913:c997:d2c9:6cdc:8ec9:7c00\",\r\n                \"sessionStateV4\": \"None\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 11830,\r\n                \"maxPrefixesAdvertisedV6\": 74,\r\n                \"md5AuthenticationKey\": \"87dde58aca769e59f07c7a84efc2a5d2\"\r\n              },\r\n              \"connectionIdentifier\": \"8698428d-c338-442d-95c9-fb939e76a24c\"\r\n            }\r\n          ],\r\n          \"useForPeeringService\": true,\r\n          \"peerAsn\": {\r\n            \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/51679-Global9423\"\r\n          },\r\n          \"directPeeringType\": \"Edge\"\r\n        },\r\n        \"peeringLocation\": \"Chicago\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"local\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\"\r\n      },\r\n      \"eTag\": \"52a827ab-f227-4097-9b74-82e4b259e588\",\r\n      \"name\": \"Direct_UseForPeeringService7867\",\r\n      \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/rg63657/providers/Microsoft.Peering/peerings/Direct_UseForPeeringService7867\",\r\n      \"type\": \"Microsoft.Peering/peerings\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Basic_Exchange_Free\",\r\n        \"tier\": \"Basic\",\r\n        \"family\": \"Exchange\",\r\n        \"size\": \"Free\"\r\n      },\r\n      \"kind\": \"Exchange\",\r\n      \"properties\": {\r\n        \"exchange\": {\r\n          \"connections\": [\r\n            {\r\n              \"peeringDBFacilityId\": 99999,\r\n              \"connectionState\": \"PendingApproval\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"10.12.97.128/26\",\r\n                \"microsoftSessionIPv4Address\": \"10.12.97.129\",\r\n                \"peerSessionIPv4Address\": \"10.12.97.156\",\r\n                \"sessionStateV4\": \"None\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 1407,\r\n                \"maxPrefixesAdvertisedV6\": 0,\r\n                \"md5AuthenticationKey\": \"493c3d9cc3d804029912482ee739a75d\"\r\n              },\r\n              \"connectionIdentifier\": \"eb4e8fd7-9856-47bb-9a93-efc7276800c8\"\r\n            },\r\n            {\r\n              \"peeringDBFacilityId\": 99999,\r\n              \"connectionState\": \"PendingApproval\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"10.12.97.128/26\",\r\n                \"microsoftSessionIPv4Address\": \"10.12.97.129\",\r\n                \"peerSessionIPv4Address\": \"10.12.97.152\",\r\n                \"sessionStateV4\": \"None\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 1407,\r\n                \"maxPrefixesAdvertisedV6\": 0,\r\n                \"md5AuthenticationKey\": \"493c3d9cc3d804029912482ee739a75d\"\r\n              },\r\n              \"connectionIdentifier\": \"504826fd-22cf-4d9b-8a79-85258a1083e4\"\r\n            }\r\n          ],\r\n          \"peerAsn\": {\r\n            \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/32703-Global3373\"\r\n          }\r\n        },\r\n        \"peeringLocation\": \"Seattle\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"local\",\r\n      \"tags\": {\r\n        \"tag2\": \"value2\",\r\n        \"tfs_40715\": \"Active\"\r\n      },\r\n      \"eTag\": \"8057fe5d-10ee-488a-a406-4e0a0acba194\",\r\n      \"name\": \"ps3275\",\r\n      \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/rg3165/providers/Microsoft.Peering/peerings/ps3275\",\r\n      \"type\": \"Microsoft.Peering/peerings\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Basic_Exchange_Free\",\r\n        \"tier\": \"Basic\",\r\n        \"family\": \"Exchange\",\r\n        \"size\": \"Free\"\r\n      },\r\n      \"kind\": \"Exchange\",\r\n      \"properties\": {\r\n        \"exchange\": {\r\n          \"connections\": [\r\n            {\r\n              \"peeringDBFacilityId\": 99999,\r\n              \"connectionState\": \"PendingApproval\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"10.12.97.128/26\",\r\n                \"microsoftSessionIPv4Address\": \"10.12.97.129\",\r\n                \"peerSessionIPv4Address\": \"10.12.97.158\",\r\n                \"sessionStateV4\": \"None\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 1819,\r\n                \"maxPrefixesAdvertisedV6\": 0,\r\n                \"md5AuthenticationKey\": \"9d6d9d1843382713df8579b988d3aee1\"\r\n              },\r\n              \"connectionIdentifier\": \"19bf26c6-4ab4-45d3-bec6-724ef0665772\"\r\n            },\r\n            {\r\n              \"peeringDBFacilityId\": 99999,\r\n              \"connectionState\": \"PendingApproval\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"10.12.97.128/26\",\r\n                \"microsoftSessionIPv4Address\": \"10.12.97.129\",\r\n                \"peerSessionIPv4Address\": \"10.12.97.184\",\r\n                \"sessionStateV4\": \"None\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 1819,\r\n                \"maxPrefixesAdvertisedV6\": 0,\r\n                \"md5AuthenticationKey\": \"9d6d9d1843382713df8579b988d3aee1\"\r\n              },\r\n              \"connectionIdentifier\": \"68d257ba-0c74-43e1-82d1-37bd5b703285\"\r\n            }\r\n          ],\r\n          \"peerAsn\": {\r\n            \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/61952-Global2817\"\r\n          }\r\n        },\r\n        \"peeringLocation\": \"Seattle\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"local\",\r\n      \"tags\": {\r\n        \"tag2\": \"value2\",\r\n        \"tfs_40129\": \"Active\"\r\n      },\r\n      \"eTag\": \"9bb483aa-82bb-408b-a251-3189b14a69e1\",\r\n      \"name\": \"ps2107\",\r\n      \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/rg5489/providers/Microsoft.Peering/peerings/ps2107\",\r\n      \"type\": \"Microsoft.Peering/peerings\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/2660-Global6777/providers/Microsoft.Peering/peerings/Direct_UseForPeeringService21/registeredPrefixes/ps5969?api-version=2020-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzLzI2NjAtR2xvYmFsNjc3Ny9wcm92aWRlcnMvTWljcm9zb2Z0LlBlZXJpbmcvcGVlcmluZ3MvRGlyZWN0X1VzZUZvclBlZXJpbmdTZXJ2aWNlMjEvcmVnaXN0ZXJlZFByZWZpeGVzL3BzNTk2OT9hcGktdmVyc2lvbj0yMDIwLTAxLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "81b2c529-0f02-4793-b934-a82e9f274af0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/2.0.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.azure-test.net/,certificate-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/certificate,issued-token-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/2012/IDstsDiscoveryService,service-dns-name=secrets.wanrr-test.radar.core.azure-test.net,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "x-ms-request-id": [
+          "8d58d943-9e5a-4551-9b3a-190eb423acaf"
+        ],
+        "Date": [
+          "Tue, 14 Apr 2020 21:31:29 GMT"
+        ],
+        "Content-Length": [
+          "68"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Resource does not exist.\"\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/rg5219/providers/Microsoft.Peering/peerings/peering8083/registeredPrefixes?api-version=2020-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL3JnNTIxOS9wcm92aWRlcnMvTWljcm9zb2Z0LlBlZXJpbmcvcGVlcmluZ3MvcGVlcmluZzgwODMvcmVnaXN0ZXJlZFByZWZpeGVzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "126c2e38-6d89-4dd7-a9ad-62cd7783ac26"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/2.0.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.azure-test.net/,certificate-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/certificate,issued-token-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/2012/IDstsDiscoveryService,service-dns-name=secrets.wanrr-test.radar.core.azure-test.net,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "x-ms-request-id": [
+          "c258c49c-c98c-4b8e-9dfd-499778c2d8d3"
+        ],
+        "Date": [
+          "Tue, 14 Apr 2020 21:31:29 GMT"
+        ],
+        "Content-Length": [
+          "19"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/rg5219/providers/Microsoft.Peering/peerings/peering8083/registeredPrefixes/ps5969?api-version=2020-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL3JnNTIxOS9wcm92aWRlcnMvTWljcm9zb2Z0LlBlZXJpbmcvcGVlcmluZ3MvcGVlcmluZzgwODMvcmVnaXN0ZXJlZFByZWZpeGVzL3BzNTk2OT9hcGktdmVyc2lvbj0yMDIwLTAxLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5cf09680-8bc7-4a43-b8ee-f5017f698a7b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/2.0.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.azure-test.net/,certificate-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/certificate,issued-token-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/2012/IDstsDiscoveryService,service-dns-name=secrets.wanrr-test.radar.core.azure-test.net,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "x-ms-request-id": [
+          "76e722c2-738f-488d-a36e-0f15bc5a6815"
+        ],
+        "Date": [
+          "Tue, 14 Apr 2020 21:31:29 GMT"
+        ],
+        "Content-Length": [
+          "68"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Resource does not exist.\"\r\n}",
+      "StatusCode": 404
+    }
+  ],
+  "Names": {
+    "Test-GetRegisteredPrefix": [
+      "ps5969",
+      "peering8083",
+      "rg5219"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "3e919f9a-4e26-4736-aa8d-d596d9a49239"
+  }
+}

@@ -13,7 +13,7 @@ Creates a new Peer ASN
 ## SYNTAX
 
 ```
-New-AzPeerAsn [-Name] <String> [-PeerName] <String> [-PeerAsn] <Int32> -Email <String[]> -Phone <String[]>
+New-AzPeerAsn [-Name] <String> [-PeerName] <String> [-PeerAsn] <Int32> -ContactDetail <PSContactDetail[]>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -54,6 +54,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ContactDetail
+Email Addresses used to contact if issues arrise typically a Network Operations Center
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactDetail[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -63,21 +78,6 @@ Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Email
-Email
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -125,21 +125,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Phone
-Phone
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

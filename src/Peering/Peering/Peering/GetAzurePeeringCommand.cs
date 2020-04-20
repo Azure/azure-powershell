@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     ///     The Get Az InputObject cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeering", DefaultParameterSetName = Constants.ParameterSetNameBySubscription)]
+    [Cmdlet(VerbsCommon.Get, Constants.AzPeering,
+        DefaultParameterSetName = Constants.ParameterSetNameBySubscription)]
     [OutputType(typeof(PSPeering))]
     public class GetAzurePeeringCommand : PeeringBaseCmdlet
     {
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        ///     Gets or sets the InputObject name.
+        ///     Gets or sets the name.
         /// </summary>
         [Parameter(
             Mandatory = false,
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Kind of InputObject
+        ///     Gets or sets the Kind
         /// </summary>
         [Parameter(
             Mandatory = false,
