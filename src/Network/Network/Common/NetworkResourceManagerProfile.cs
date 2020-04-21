@@ -1323,6 +1323,10 @@ namespace Microsoft.Azure.Commands.Network
                 // IpGroup
                 cfg.CreateMap<CNM.PSIpGroup, MNM.IpGroup>();
                 cfg.CreateMap<MNM.IpGroup, CNM.PSIpGroup>();
+
+                // IpAllocation
+                cfg.CreateMap<CNM.PSIpAllocation, MNM.IpAllocation>();
+                cfg.CreateMap<MNM.IpAllocation, CNM.PSIpAllocation>();
             });
 
             _mapper = config.CreateMapper();

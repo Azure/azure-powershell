@@ -26,8 +26,8 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetwork", SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetwork))]
-    public class NewAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IpAllocation", SupportsShouldProcess = true), OutputType(typeof(PSIpAllocation))]
+    public class NewAzureIpAllocationCommand : IpAllocationBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -49,57 +49,54 @@ namespace Microsoft.Azure.Commands.Network
          Mandatory = true,
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "location.")]
-        [LocationCompleter("Microsoft.Network/virtualNetworks")]
+        [LocationCompleter("Microsoft.Network/ipAllocation")]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The address prefixes of the virtual network")]
+            HelpMessage = "The type of the IP allocation")]
+        [ValidateSet("Hypernet", "Undefined", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string[] AddressPrefix { get; set; }
+        public string IpAllocationType { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The list of Dns Servers")]
-        public string[] DnsServer { get; set; }
+            HelpMessage = "The prefix of the IP allocation")]
+        public string Prefix { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of subnets")]
-        public PSSubnet[] Subnet { get; set; }
+            HelpMessage = "The prefix length of the IP allocation")]
+        public int? PrefixLength { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The BGP Community advertised over ExpressRoute.")]
-        public string BgpCommunity { get; set; }
+            HelpMessage = "The prefix type of the IP allocation")]
+        [ValidateSet("IPV4", "IPV6", IgnoreCase = true)]
+        public string PrefixType { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The ipam allocation ID of the IP allocation")]
+        public string IpamAllocationId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The allocation tags of the IP allocation")]
+        public Hashtable IpAllocationTag { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "A switch parameter which represents whether DDoS protection is enabled or not. It can only be turned on if a DDoS Protection Plan is associated with the virtual network.")]
-        public SwitchParameter EnableDdosProtection { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Reference to the DDoS protection plan resource associated with the virtual network.")]
-        public string DdosProtectionPlanId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "IpAllocation")]
-        public PSIpAllocation[] IpAllocation { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -112,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var present = IsVirtualNetworkPresent(ResourceGroupName, Name);
+            var present = IsIpAllocationPresent(ResourceGroupName, Name);
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -120,59 +117,38 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    var virtualNetwork = CreateVirtualNetwork();
-                    WriteObject(virtualNetwork);
+                    var allocation = CreateIpAllocation();
+                    WriteObject(allocation);
                 },
                 () => present);
         }
 
-        private PSVirtualNetwork CreateVirtualNetwork()
+        private PSIpAllocation CreateIpAllocation()
         {
-            var vnet = new PSVirtualNetwork
+            var allocation = new PSIpAllocation
             {
                 Name = Name,
                 ResourceGroupName = ResourceGroupName,
                 Location = Location,
-                AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix?.ToList()}
+                IpAllocationType = IpAllocationType,
+                Prefix = Prefix,
+                PrefixLength = PrefixLength,
+                PrefixType = PrefixType,
+                IpamAllocationId = IpamAllocationId
             };
 
-            if (DnsServer != null)
-            {
-                vnet.DhcpOptions = new PSDhcpOptions {DnsServers = DnsServer?.ToList()};
-            }
-
-            vnet.Subnets = this.Subnet?.ToList();
-            vnet.EnableDdosProtection = EnableDdosProtection;
-            
-            if (!string.IsNullOrEmpty(DdosProtectionPlanId))
-            {
-                vnet.DdosProtectionPlan = new PSResourceId {Id = DdosProtectionPlanId};
-            }
-
-            if (!string.IsNullOrWhiteSpace(BgpCommunity))
-            {
-                vnet.BgpCommunities = new PSVirtualNetworkBgpCommunities {VirtualNetworkCommunity = this.BgpCommunity};
-            }
-
             // Map to the sdk object
-            var vnetModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetwork>(vnet);
-            vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+            var allocationModel = NetworkResourceManagerProfile.Mapper.Map<MNM.IpAllocation>(allocation);
+            allocationModel.AllocationTags = TagsConversionHelper.CreateTagDictionary(this.IpAllocationTag, validate: true);
 
-            if (this.IpAllocation != null)
-            {
-                foreach (var ipAllocation in this.IpAllocation)
-                {
-                    var ipAllocationReference = new MNM.SubResource(ipAllocation.Id);
-                    vnetModel.IpAllocations.Add(ipAllocationReference);
-                }
-            }
+            allocationModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-            // Execute the Create VirtualNetwork call
-            VirtualNetworkClient.CreateOrUpdate(ResourceGroupName, Name, vnetModel);
+            // Execute the Create IpALlocation call
+            IpAllocationClient.CreateOrUpdate(ResourceGroupName, Name, allocationModel);
 
-            var getVirtualNetwork = GetVirtualNetwork(ResourceGroupName, Name);
+            var getIpAllocation = GetIpAllocation(ResourceGroupName, Name);
 
-            return getVirtualNetwork;
+            return getIpAllocation;
         }
     }
 }
