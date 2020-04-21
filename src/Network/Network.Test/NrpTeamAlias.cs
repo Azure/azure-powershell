@@ -59,5 +59,8 @@ namespace Commands.Network.Test
 
         // Azure NRP bastion dev team
         public const string bastion = "bastion";
+
+        // Azure Network IPAM dev team
+        public const string ipam = "ipamdev";
     }
 }
