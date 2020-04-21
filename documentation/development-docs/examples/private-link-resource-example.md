@@ -9,15 +9,16 @@ API for `Get` private link resource and private endpoint connection need to be r
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateLinkResources/{PrivateLinkResource-Name}"
 ```
 
-#### Private Endpoint Connection API
+#### Get Private Endpoint Connection API
 ```
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateEndpointConnections/{PrivateEndpointConnection-Name}"
 ```
+#### List Private Endpoint Connection API
 ```
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateEndpointConnections"
 ```
 
-if "Private Endpoint Connection API" is not available, `Private Endpoint Connection` will be retrieved from top resource
+if "List Private Endpoint Connection API" is not available, `Private Endpoint Connection` will be retrieved from top resource
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}"
 `privateEndpointConnections` need to be defined under this API
 
@@ -28,10 +29,12 @@ in following pattern:
 RegisterConfiguration("{Provider}/{Top-Level-Resource}", "{API-Version}")
 ```
 For example:
+
+if "List Private Endpoint Connection API" is [available](https://github.com/Azure/azure-powershell/blob/master/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/GenericProvider.cs#L74),
 ```
 RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview")
 ```
-if "Private Endpoint Connection API" is not available, provide extra bool parameter 'false'
+if "List Private Endpoint Connection API" is [not available](https://github.com/Azure/azure-powershell/blob/master/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/GenericProvider.cs#L93), provide extra bool parameter 'false'
 ```
 RegisterConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false)
 ```
@@ -75,16 +78,16 @@ New-AzPrivateEndpoint -ResourceGroupName {rg_name} -Name {endpoint_name} -Locati
 ```
 
 ### step-by-step
-0. Add `Network.csproj` to {Module}.sln, and `Microsoft.Azure.Management.Network` to {Module}.Test.csproj
+* Add `Network.csproj` to {Module}.sln, and `Microsoft.Azure.Management.Network` to {Module}.Test.csproj
 
-1. Create listed items above
+* Create listed items above
 
-2. To get the connection, if `list` for private endpoint connection was supported,
+* To get the connection, if `list` for private endpoint connection was supported,
 ```
 $connection = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $TopLevelResource.Id
 ```
 
-3. To get the connection, if `list` for private endpoint connection was not supported,
+* To get the connection, if `list` for private endpoint connection was not supported,
 ```
 $TopLevelResource = Get-Az{Top-Level-Resource} -ResourceGroupName {rg_name} -Name {top_level_resource_name}
 
@@ -93,7 +96,7 @@ $ConnectionId = $TopLevelResource.PrivateEndpointConnection[0].Id
 $Connection = Get-AzPrivateEndpointConnection -ResourceId $ConnectionId
 ```
 
-4. Approve/Deny the connection
+* Approve/Deny the connection
 ```
 Approve-AzPrivateEndpointConnection -ResourceId $ConnectionId
 
@@ -102,6 +105,6 @@ or
 Deny-AzPrivateEndpointConnection -ResourceId $ConnectionId
 ```
 
-5. Connection cannot be approved after rejection
+* Connection cannot be approved after rejection
 
-6. One top level resource can have maximum 3 private end point connection
+* One top level resource can have maximum 3 private end point connection
