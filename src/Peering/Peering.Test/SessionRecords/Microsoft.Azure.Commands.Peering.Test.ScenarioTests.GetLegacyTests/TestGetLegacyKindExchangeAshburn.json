@@ -1,19 +1,19 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15224-Global5132?api-version=2020-01-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xNTIyNC1HbG9iYWw1MTMyP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15224-Global4825?api-version=2020-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xNTIyNC1HbG9iYWw0ODI1P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS15224-Global6763.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS15224-Global6763.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS15224-Global6763\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS15224-Global4699.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS15224-Global4699.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS15224-Global4699\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f09987f4-e0d1-4c64-b0fc-5df79c97352d"
+          "be1de6d6-f1c0-4a6f-8117-4ac37b805cd0"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28516.03",
+          "FxVersion/4.6.28619.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.Peering.PeeringManagementClient/2.0.0.1"
@@ -26,42 +26,60 @@
         ]
       },
       "ResponseHeaders": {
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+        "Cache-Control": [
+          "no-cache"
         ],
-        "WWW-Authenticate-dSTS": [
-          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.azure-test.net/,certificate-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/certificate,issued-token-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/2012/IDstsDiscoveryService,service-dns-name=secrets.wanrr-test.radar.core.azure-test.net,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        "Pragma": [
+          "no-cache"
         ],
         "x-ms-request-id": [
-          "113ddaaf-9dbc-4b78-9df1-3f327d9e1810"
+          "7e32ab2f-3457-464a-b3c3-43ebbca2ebd7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "59"
+        ],
+        "x-ms-correlation-request-id": [
+          "0cb3371c-19e5-4ed0-92f2-7430bbef83ed"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200421T015648Z:0cb3371c-19e5-4ed0-92f2-7430bbef83ed"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Date": [
-          "Tue, 14 Apr 2020 21:30:32 GMT"
+          "Tue, 21 Apr 2020 01:56:47 GMT"
         ],
         "Content-Length": [
           "611"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS15224-Global6763.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS15224-Global6763.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS15224-Global6763\",\r\n    \"validationState\": \"Pending\"\r\n  },\r\n  \"name\": \"15224-Global5132\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15224-Global5132\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS15224-Global4699.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS15224-Global4699.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS15224-Global4699\",\r\n    \"validationState\": \"Pending\"\r\n  },\r\n  \"name\": \"15224-Global4825\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15224-Global4825\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15224-Global5132?api-version=2020-01-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xNTIyNC1HbG9iYWw1MTMyP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15224-Global4825?api-version=2020-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xNTIyNC1HbG9iYWw0ODI1P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS15224-Global6763.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS15224-Global6763.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS15224-Global6763\",\r\n    \"validationState\": \"Approved\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS15224-Global4699.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS15224-Global4699.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS15224-Global4699\",\r\n    \"validationState\": \"Approved\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8143d18e-d7ca-45e8-a0d5-6c0754947dfa"
+          "b943802f-7b6a-4542-a4c4-b45fced57e0c"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28516.03",
+          "FxVersion/4.6.28619.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.Peering.PeeringManagementClient/2.0.0.1"
@@ -74,26 +92,44 @@
         ]
       },
       "ResponseHeaders": {
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+        "Cache-Control": [
+          "no-cache"
         ],
-        "WWW-Authenticate-dSTS": [
-          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.azure-test.net/,certificate-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/certificate,issued-token-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/2012/IDstsDiscoveryService,service-dns-name=secrets.wanrr-test.radar.core.azure-test.net,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        "Pragma": [
+          "no-cache"
         ],
         "x-ms-request-id": [
-          "6c907c80-50e4-4c2e-b932-b50eead5d42c"
+          "b358c4a9-1a8d-4a36-8c78-69bd8d9e3508"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "58"
+        ],
+        "x-ms-correlation-request-id": [
+          "4bea1b6a-e38b-48dd-acef-9c4406584c0a"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200421T015649Z:4bea1b6a-e38b-48dd-acef-9c4406584c0a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Date": [
-          "Tue, 14 Apr 2020 21:30:34 GMT"
+          "Tue, 21 Apr 2020 01:56:49 GMT"
         ],
         "Content-Length": [
-          "611"
+          "612"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS15224-Global6763.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS15224-Global6763.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS15224-Global6763\",\r\n    \"validationState\": \"Pending\"\r\n  },\r\n  \"name\": \"15224-Global5132\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15224-Global5132\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS15224-Global4699.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS15224-Global4699.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS15224-Global4699\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"15224-Global4825\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15224-Global4825\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -103,46 +139,121 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c9c3f1f2-8242-4d5a-aad6-39372755899a"
+          "0b80d609-bc99-4f5b-8055-ff8e0dfcdc64"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28516.03",
+          "FxVersion/4.6.28619.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.Peering.PeeringManagementClient/2.0.0.1"
         ]
       },
       "ResponseHeaders": {
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+        "Cache-Control": [
+          "no-cache"
         ],
-        "WWW-Authenticate-dSTS": [
-          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.azure-test.net/,certificate-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/certificate,issued-token-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://co2agg04-dsts.dsts.core.azure-test.net/2012/IDstsDiscoveryService,service-dns-name=secrets.wanrr-test.radar.core.azure-test.net,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        "Pragma": [
+          "no-cache"
         ],
         "x-ms-request-id": [
-          "8a0a7e07-3c77-450c-90bc-f4ccc762eba5"
+          "1faf0663-c697-42bd-b2d4-e8d80edc4697"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "59"
+        ],
+        "x-ms-correlation-request-id": [
+          "a177c161-3755-40e6-92c0-b68c11e257e6"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200421T015652Z:a177c161-3755-40e6-92c0-b68c11e257e6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Date": [
-          "Tue, 14 Apr 2020 21:30:34 GMT"
+          "Tue, 21 Apr 2020 01:56:52 GMT"
         ],
         "Content-Length": [
-          "75"
+          "3768"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"code\": \"BadArgument\",\r\n  \"message\": \"Peering location is invalid.\"\r\n}",
-      "StatusCode": 400
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Basic_Exchange_Free\",\r\n        \"tier\": \"Basic\",\r\n        \"family\": \"Exchange\",\r\n        \"size\": \"Free\"\r\n      },\r\n      \"kind\": \"Exchange\",\r\n      \"properties\": {\r\n        \"exchange\": {\r\n          \"connections\": [\r\n            {\r\n              \"peeringDBFacilityId\": 1,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"206.126.236.0/22\",\r\n                \"sessionPrefixV6\": \"2001:504:0:2::/64\",\r\n                \"microsoftSessionIPv4Address\": \"206.126.236.17\",\r\n                \"microsoftSessionIPv6Address\": \"2001:504:0:2::8075:1\",\r\n                \"peerSessionIPv4Address\": \"206.126.237.50\",\r\n                \"peerSessionIPv6Address\": \"2001:504:0:2:0:1:5224:1\",\r\n                \"sessionStateV4\": \"Established\",\r\n                \"sessionStateV6\": \"Established\",\r\n                \"maxPrefixesAdvertisedV4\": 20000,\r\n                \"maxPrefixesAdvertisedV6\": 2000\r\n              },\r\n              \"connectionIdentifier\": \"dc599a7b-83f7-48cc-b755-70e715ddaff1\"\r\n            },\r\n            {\r\n              \"peeringDBFacilityId\": 1,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"206.126.236.0/22\",\r\n                \"sessionPrefixV6\": \"2001:504:0:2::/64\",\r\n                \"microsoftSessionIPv4Address\": \"206.126.236.17\",\r\n                \"microsoftSessionIPv6Address\": \"2001:504:0:2::8075:1\",\r\n                \"peerSessionIPv4Address\": \"206.126.237.150\",\r\n                \"peerSessionIPv6Address\": \"2001:504:0:2:0:1:5224:2\",\r\n                \"sessionStateV4\": \"Established\",\r\n                \"sessionStateV6\": \"Established\",\r\n                \"maxPrefixesAdvertisedV4\": 20000,\r\n                \"maxPrefixesAdvertisedV6\": 2000\r\n              },\r\n              \"connectionIdentifier\": \"60defac3-9938-4806-bb31-2a50cecabae8\"\r\n            },\r\n            {\r\n              \"peeringDBFacilityId\": 1,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"206.126.236.0/22\",\r\n                \"sessionPrefixV6\": \"2001:504:0:2::/64\",\r\n                \"microsoftSessionIPv4Address\": \"206.126.236.148\",\r\n                \"microsoftSessionIPv6Address\": \"2001:504:0:2::8075:2\",\r\n                \"peerSessionIPv4Address\": \"206.126.237.50\",\r\n                \"peerSessionIPv6Address\": \"2001:504:0:2:0:1:5224:1\",\r\n                \"sessionStateV4\": \"Established\",\r\n                \"sessionStateV6\": \"Established\",\r\n                \"maxPrefixesAdvertisedV4\": 20000,\r\n                \"maxPrefixesAdvertisedV6\": 2000\r\n              },\r\n              \"connectionIdentifier\": \"9d61972e-3fd6-40eb-b07d-abd1f266c26c\"\r\n            },\r\n            {\r\n              \"peeringDBFacilityId\": 1,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"206.126.236.0/22\",\r\n                \"sessionPrefixV6\": \"2001:504:0:2::/64\",\r\n                \"microsoftSessionIPv4Address\": \"206.126.236.148\",\r\n                \"microsoftSessionIPv6Address\": \"2001:504:0:2::8075:2\",\r\n                \"peerSessionIPv4Address\": \"206.126.237.150\",\r\n                \"peerSessionIPv6Address\": \"2001:504:0:2:0:1:5224:2\",\r\n                \"sessionStateV4\": \"Established\",\r\n                \"sessionStateV6\": \"Established\",\r\n                \"maxPrefixesAdvertisedV4\": 20000,\r\n                \"maxPrefixesAdvertisedV6\": 2000\r\n              },\r\n              \"connectionIdentifier\": \"00869ae3-1a3a-4105-86b3-4a680b9792ba\"\r\n            }\r\n          ],\r\n          \"peerAsn\": {\r\n            \"id\": \"15224\"\r\n          }\r\n        },\r\n        \"peeringLocation\": \"Ashburn\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15224-Global4825?api-version=2020-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xNTIyNC1HbG9iYWw0ODI1P2FwaS12ZXJzaW9uPTIwMjAtMDEtMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "be4773fb-a966-40f7-86d9-14891dee1362"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28619.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/2.0.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "81fb0784-ce03-451b-b00e-0c55cf96b01a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "762954f4-ccbc-4f0d-a372-88fa12a9af0b"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200421T015652Z:762954f4-ccbc-4f0d-a372-88fa12a9af0b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 21 Apr 2020 01:56:52 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
     }
   ],
   "Names": {
     "Test-GetLegacyKindExchangeAshburn": [
-      "15224-Global5132",
-      "AS15224-Global6763"
+      "15224-Global4825",
+      "AS15224-Global4699"
     ]
   },
   "Variables": {
