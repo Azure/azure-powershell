@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Blueprint.Models
+namespace Microsoft.Azure.Commands.Aks.Models
 {
-    public class PSParameterValueBase
+    /// <summary>
+    /// Profile for Windows VMs in the container service cluster.
+    /// </summary>
+    public partial class PSManagedClusterWindowsProfile
     {
-        public string Description { get; set; }
+        /// <summary>
+        /// Gets or sets the administrator username to use for Windows VMs.
+        /// </summary>
+        public string AdminUsername { get; set; }
 
+        /// <summary>
+        /// Gets or sets the administrator password to use for Windows VMs.
+        /// </summary>
+        public string AdminPassword { get; set; }
     }
 }

@@ -116,6 +116,12 @@ Invoke a direct method on a device.
 ### [Invoke-AzIotHubManualFailover](Invoke-AzIotHubManualFailover.md)
 Invoke failover process for the IoT Hub to the geo-paired disaster recovery region.
 
+### [Invoke-AzIotHubModuleMethod](Invoke-AzIotHubModuleMethod.md)
+Invoke an Edge module method.
+
+### [Invoke-AzIotHubQuery](Invoke-AzIotHubQuery.md)
+Query an IoT Hub using a powerful SQL-like language.
+
 ### [New-AzIotHub](New-AzIotHub.md)
 Creates a new IotHub.
 
@@ -127,6 +133,9 @@ Creates a new import devices job.
 
 ### [New-AzIotHubKey](New-AzIotHubKey.md)
 Generate an Azure IoT Hub key.
+
+### [New-AzIotHubSasToken](New-AzIotHubSasToken.md)
+Generate a SAS token for a target IoT Hub, device or module.
 
 ### [Remove-AzIotHub](Remove-AzIotHub.md)
 Deletes an IotHub.

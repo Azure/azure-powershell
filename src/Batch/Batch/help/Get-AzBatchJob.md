@@ -44,25 +44,25 @@ If you supply a job schedule ID or **PSCloudJobSchedule** instance, this cmdlet 
 ### Example 1: Get a Batch job by ID
 ```
 PS C:\>Get-AzBatchJob -Id "Job01" -BatchContext $Context
-CommonEnvironmentSettings   : 
+CommonEnvironmentSettings   :
 Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
 CreationTime                : 7/25/2015 9:12:07 PM
-DisplayName                 : 
+DisplayName                 :
 ETag                        : 0x8D29535B2941439
 ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSJobExecutionInformation
 Id                          : Job01
-JobManagerTask              : 
-JobPreparationTask          : 
-JobReleaseTask              : 
+JobManagerTask              :
+JobPreparationTask          :
+JobReleaseTask              :
 LastModified                : 7/25/2015 9:12:07 PM
-Metadata                    : 
+Metadata                    :
 PoolInformation             : Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
-PreviousState               : 
-PreviousStateTransitionTime : 
+PreviousState               :
+PreviousStateTransitionTime :
 Priority                    : 0
 State                       : Active
 StateTransitionTime         : 7/25/2015 9:12:07 PM
-Statistics                  : 
+Statistics                  :
 Url                         : https://pfuller.westus.batch.azure.com/jobs/Job01
 ```
 
@@ -72,25 +72,25 @@ Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variabl
 ### Example 2: Get all active jobs for a job schedule
 ```
 PS C:\>Get-AzBatchJob -JobScheduleId "JobSchedule27" -Filter "state eq 'active'" -BatchContext $Context
-CommonEnvironmentSettings   : 
+CommonEnvironmentSettings   :
 Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
 CreationTime                : 7/25/2015 9:15:44 PM
-DisplayName                 : 
+DisplayName                 :
 ETag                        : 0x8D2953633DD13E1
 ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSJobExecutionInformation
 Id                          : JobSchedule27:job-1
-JobManagerTask              : 
-JobPreparationTask          : 
-JobReleaseTask              : 
+JobManagerTask              :
+JobPreparationTask          :
+JobReleaseTask              :
 LastModified                : 7/25/2015 9:15:44 PM
-Metadata                    : 
+Metadata                    :
 PoolInformation             : Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
-PreviousState               : 
-PreviousStateTransitionTime : 
+PreviousState               :
+PreviousStateTransitionTime :
 Priority                    : 0
 State                       : Active
 StateTransitionTime         : 7/25/2015 9:15:44 PM
-Statistics                  : 
+Statistics                  :
 Url                         : https://pfuller.westus.batch.azure.com/jobs/JobSchedule27:job-1
 ```
 
@@ -99,25 +99,25 @@ This command gets the active jobs for the job schedule that has the ID JobSchedu
 ### Example 3: Gets all jobs under a job schedule by using the pipeline
 ```
 PS C:\>Get-AzBatchJobSchedule -Id "JobSchedule27" -BatchContext $Context | Get-AzBatchJob -BatchContext $Context
-CommonEnvironmentSettings   : 
+CommonEnvironmentSettings   :
 Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
 CreationTime                : 7/25/2015 9:15:44 PM
-DisplayName                 : 
+DisplayName                 :
 ETag                        : 0x8D2953633DD13E1
 ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSJobExecutionInformation
 Id                          : JobSchedule27:job-1
-JobManagerTask              : 
-JobPreparationTask          : 
-JobReleaseTask              : 
+JobManagerTask              :
+JobPreparationTask          :
+JobReleaseTask              :
 LastModified                : 7/25/2015 9:15:44 PM
-Metadata                    : 
+Metadata                    :
 PoolInformation             : Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
-PreviousState               : 
-PreviousStateTransitionTime : 
+PreviousState               :
+PreviousStateTransitionTime :
 Priority                    : 0
 State                       : Active
 StateTransitionTime         : 7/25/2015 9:15:44 PM
-Statistics                  : 
+Statistics                  :
 Url                         : https://pfuller.westus.batch.azure.com/jobs/JobSchedule27:job-1
 ```
 
@@ -303,6 +303,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Stop-AzBatchJob](./Stop-AzBatchJob.md)
 
-[Azure Batch Cmdlets](./Az.Batch.md)
-
-
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)

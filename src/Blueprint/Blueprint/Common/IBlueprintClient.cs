@@ -30,13 +30,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
         PSPublishedBlueprint GetLatestPublishedBlueprint(string scope, string blueprintName);
 
-        IEnumerable<PSBlueprintAssignment> ListBlueprintAssignments(string subscriptionId);
+        IEnumerable<PSBlueprintAssignment> ListBlueprintAssignments(string scope);
 
-        PSBlueprintAssignment GetBlueprintAssignment(string subscriptionId, string blueprintAssignmentName);
+        PSBlueprintAssignment GetBlueprintAssignment(string scope, string blueprintAssignmentName);
 
-        PSBlueprintAssignment DeleteBlueprintAssignment(string subscriptionId, string blueprintAssignmentName);
+        PSBlueprintAssignment DeleteBlueprintAssignment(string scope, string blueprintAssignmentName);
 
-        PSBlueprintAssignment CreateOrUpdateBlueprintAssignment(string subscriptionId, string assignmentName, Assignment assignment);
+        PSBlueprintAssignment CreateOrUpdateBlueprintAssignment(string scope, string assignmentName, Assignment assignment);
 
         PSBlueprint CreateOrUpdateBlueprint(string scope, string name, BlueprintModel bp);
 

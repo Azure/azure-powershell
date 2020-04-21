@@ -22,8 +22,8 @@ Remove all Azure Credentials, account, and subscription information.
 
 ## EXAMPLES
 
-### Clear global context
-```
+### Example 1: Clear global context
+```powershell
 PS C:\> Clear-AzContext -Scope CurrentUser
 ```
 

@@ -15,10 +15,12 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
 
+    [CmdletDeprecation(ReplacementCmdletName = "Get-AzureApiManagementNamedValue")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProperty", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementProperty))]
     public class GetAzureApiManagementProperty : AzureApiManagementCmdletBase
