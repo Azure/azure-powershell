@@ -1,34 +1,40 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzSecurityWorkspaceSetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject
 schema: 2.0.0
 ---
 
 # New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create new deny list custom alert rule for device security group (IoT Security)
 
 ## SYNTAX
 
 ```
-New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject -Name <String> -Description <String> -Enabled <Boolean>
- -Type <String> -ValueType <String> -DenylistValue <String[]> [-DefaultProfile <IAzureContextContainer>]
+New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject -Enabled <Boolean> -Type <String> -DenylistValue <String[]> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject cmdlet creates a new list of denyed custom alert rules for device security group in IoT security solution.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject -Enabled $false -Type "SomeRuleType" -DenylistValue @()
+
+RuleType: "SomeRuleType"
+DisplayName: "Display name for some rule type"
+Description: "Description for some rule type"
+IsEnabled: false
+ValueType: "String"
+DenylistValues: []
 ```
 
-{{ Add example description here }}
+Create new deny list custom alert rule with rull type "SomeRuleType" and status set to desable
 
 ## PARAMETERS
 
@@ -62,41 +68,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-Description.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Enabled
 Is rule enabled.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Display name.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -122,20 +98,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ValueType
-Value type.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

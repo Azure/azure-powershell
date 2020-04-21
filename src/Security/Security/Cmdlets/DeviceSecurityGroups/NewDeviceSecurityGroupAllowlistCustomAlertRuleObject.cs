@@ -25,20 +25,11 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.DeviceSecurityGroups
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeviceSecurityGroupAllowlistCustomAlertRuleObject", DefaultParameterSetName = ParameterSetNames.GeneralScope), OutputType(typeof(PSAllowlistCustomAlertRule))]
     public class NewDeviceSecurityGroupAllowlistCustomAlertRuleObject : SecurityCenterCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.DisplayName)]
-        public string Name { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.Description)]
-        public string Description { get; set; }
-
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.IsEnabled)]
         public bool Enabled { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.RuleType)]
         public string Type { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.ValueType)]
-        public string ValueType { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.AllowlistValues)]
         public string[] AllowlistValue { get; set; }
@@ -47,11 +38,8 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.DeviceSecurityGroups
         {
             PSAllowlistCustomAlertRule rule = new PSAllowlistCustomAlertRule
             {
-                Description = Description,
-                DisplayName = Name,
                 IsEnabled = Enabled,
-                ValueType = ValueType,
-                AllowlistValues = AllowlistValue,
+               AllowlistValues = AllowlistValue,
                 RuleType = Type
             };
 

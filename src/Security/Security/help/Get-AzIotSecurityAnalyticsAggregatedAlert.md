@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzExternalSecuritySolution
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzIotSecurityAnalyticsAggregatedAlert
 schema: 2.0.0
 ---
 
 # Get-AzIotSecurityAnalyticsAggregatedAlert
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get IoT security aggregated alert
 
 ## SYNTAX
 
@@ -25,16 +25,54 @@ Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName <String> -SolutionN
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzIotSecurityAnalyticsAggregatedAlert cmdlet returns one or more aggregated alerts on devices of iot hub.
+The name of the aggregated alerts is a combination of the alert type and the alert aggragted date, separated by '/'.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution" -Name "IoT_Bruteforce_Fail/2019-02-02"
+
+Id: "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/iotSecuritySolutions/MySolution/analyticsModels/default/aggregatedAlerts/IoT_Bruteforce_Fail/2019-02-02"
+Name: "IoT_Bruteforce_Fail/2019-02-02"
+Type: "Microsoft.Security/IoTSecurityAggregatedAlert"
+AlertType: "IoT_Bruteforce_Fail"
+AlertDisplayName: "Failed Bruteforce"
+AggregatedDateUtc: "2019-02-02"
+VendorName: "Microsoft"
+ReportedSeverity: "Low"
+RemediationSteps: ""
+Description: "Multiple unsuccsseful login attempts identified. A Bruteforce attack on the device failed."
+Count: 50
+EffectedResourceType: "IoT Device"
+SystemSource: "Devices"
+ActionTaken: "Detected"
+LogAnalyticsQuery: "SecurityAlert | where tolower(ResourceId) == tolower('/subscriptions/b77ec8a9-04ed-48d2-a87a-e5887b978ba6/resourceGroups/IoT-Solution-DemoEnv/providers/Microsoft.Devices/IotHubs/rtogm-hub') and tolower(AlertName) == tolower('Custom Alert - number of device to cloud messages in MQTT protocol is not in the allowed range') | extend DeviceId=parse_json(ExtendedProperties)['DeviceId'] | project DeviceId, TimeGenerated, DisplayName, AlertSeverity, Description, RemediationSteps, ExtendedProperties"
+TopDevicesList: [
+                {
+                  DeviceId: "testDevice1"
+                  AlertsCount: 45
+                  LastOccurrence: "10:42"
+                }
+                {
+                  DeviceId: "testDevice2"
+                  AlertsCount: 30
+                  LastOccurrence: "15:42"
+                }
+              ]
 ```
 
-{{ Add example description here }}
+Get the aggregated alert "IoT_Bruteforce_Fail/2019-02-02" (the name combined from the alert type and its aggregated date) in solution "MySolution" and resource group "MyResourceGroup"
+
+### Example 2
+```powershell
+PS C:\> Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution"
+
+Array of aggregated alert items as shown in example 1
+```
+
+Get a list of all aggregated alerts in solution "MySolution" and resource group "MyResourceGroup"
 
 ## PARAMETERS
 

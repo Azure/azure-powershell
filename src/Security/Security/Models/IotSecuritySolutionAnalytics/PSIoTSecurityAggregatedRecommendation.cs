@@ -17,7 +17,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
 {
-    public class PSIoTSecurityAggregatedRecommendation
+    public class PSIoTSecurityAggregatedRecommendation : PSResource
     {
         public string RecommendationName { get; set; }
 
@@ -38,12 +38,6 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
         public long? UnhealthyDeviceCount { get; set; }
 
         public string LogAnalyticsQuery { get; set; }
-
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string Type { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
     }

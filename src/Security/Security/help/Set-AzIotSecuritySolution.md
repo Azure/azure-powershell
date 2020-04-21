@@ -1,21 +1,21 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Remove-AzSecurityWorkspaceSetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Set-AzIotSecuritySolution
 schema: 2.0.0
 ---
 
 # Set-AzIotSecuritySolution
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create or update IoT security solution
 
 ## SYNTAX
 
 ### ResourceGroupLevelResource (Default)
 ```
 Set-AzIotSecuritySolution -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>] -Location <String>
- -Workspace <String> -DisplayName <String> [-Status <String>] [-Export <String[]>]
+ -Workspace <String> -DisplayName <String> [-Enabled <Boolean>] [-Export <String[]>]
  [-DisabledDataSource <String[]>] -IotHub <String[]> [-UserDefinedResource <PSUserDefinedResources>]
  [-RecommendationsConfiguration <PSRecommendationConfiguration[]>] [-UnmaskedIpLoggingStatus <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -24,7 +24,7 @@ Set-AzIotSecuritySolution -Name <String> -ResourceGroupName <String> [-Tag <Hash
 ### InputObject
 ```
 Set-AzIotSecuritySolution -InputObject <PSIotSecuritySolution> [-Tag <Hashtable>] -Location <String>
- -Workspace <String> -DisplayName <String> [-Status <String>] [-Export <String[]>]
+ -Workspace <String> -DisplayName <String> [-Enabled <Boolean>] [-Export <String[]>]
  [-DisabledDataSource <String[]>] -IotHub <String[]> [-UserDefinedResource <PSUserDefinedResources>]
  [-RecommendationsConfiguration <PSRecommendationConfiguration[]>] [-UnmaskedIpLoggingStatus <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -33,23 +33,59 @@ Set-AzIotSecuritySolution -InputObject <PSIotSecuritySolution> [-Tag <Hashtable>
 ### ResourceId
 ```
 Set-AzIotSecuritySolution -ResourceId <String> [-Tag <Hashtable>] -Location <String> -Workspace <String>
- -DisplayName <String> [-Status <String>] [-Export <String[]>] [-DisabledDataSource <String[]>]
+ -DisplayName <String> [-Enabled <Boolean>] [-Export <String[]>] [-DisabledDataSource <String[]>]
  -IotHub <String[]> [-UserDefinedResource <PSUserDefinedResources>]
  [-RecommendationsConfiguration <PSRecommendationConfiguration[]>] [-UnmaskedIpLoggingStatus <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Set-AzIotSecuritySolution cmdlet creates or updates a specific iot security solution. 
+The IoT security solution collects security data and events from iot devices and iot hub to help prevent and detect threats.
+The name of iot security solution should be identical to the name of the iot hub.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $Workspace = "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace"
+PS C:\> $IotHubs = @("/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MySample")
+PS C:\> Set-AzIotSecuritySolution -Name "MySample" -ResourceGroupName "MyResourceGroup" -Location "West US" 
+-Workspace $Workspace -DisplayName "MySample" -Enabled $true -IotHub $IotHubs
+
+Id: "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/IoTSecuritySolutions/MySample"
+Name: "MySample"
+Type: "Microsoft.Security/IoTSecuritySolutions"
+Location: "westus"
+DisplayName: "MySample"
+status: "Enabled"
+Export: ["RawEvents"]
+DisabledDataSources: ["TwinData"]
+Workspace: "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcegroups/MyResourceGroup/providers/microsoft.operationalinsights/workspaces/MyLA"
+AdditionalWorkspaces: null
+IotHubs: ["/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcegroups/MyResourceGroup/providers/microsoft.devices/iothubs/MySample"]
+UserDefinedResources: {
+	Query: "" 
+	QuerySubscriptions: []
+}
+RecommendationsConfiguration: [
+{
+	RecommendationType: "IoT_ACRAuthentication"
+	Name: "Service prinicpal not used with ACR repository"
+	Status: "Enabled"
+}
+{
+	RecommendationType: "IoT_AgentSendsUnutilizedMessages"
+	Name: "Agent sending underutilized messages"
+	Status: "Enabled"
+	}]
+AutoDiscoveredResources: ["/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcegroups/MyResourceGroup/providers/microsoft.devices/iothubs/MySample"]
+UnmaskedIpLoggingStatus: "Enabled"
+Tags: {}
 ```
 
-{{ Add example description here }}
+Create new iot security solution "MySample" for IoT hub with resource id "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MySample"
+(the name of the solution should be identical to the name of the IoT hub)
 
 ## PARAMETERS
 
@@ -290,11 +326,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Status
+### -Enabled
 Status .
 
 ```yaml
-Type: System.String
+Type: System.Boolean
 Parameter Sets: ResourceGroupLevelResource, ResourceId
 Aliases:
 

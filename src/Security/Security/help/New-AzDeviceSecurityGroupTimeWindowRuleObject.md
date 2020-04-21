@@ -1,34 +1,42 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzSecurityWorkspaceSetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/New-AzDeviceSecurityGroupTimeWindowRuleObject
 schema: 2.0.0
 ---
 
 # New-AzDeviceSecurityGroupTimeWindowRuleObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create new time window rule for device security group (IoT Security)
 
 ## SYNTAX
 
 ```
-New-AzDeviceSecurityGroupTimeWindowRuleObject -TimeWindowSize <TimeSpan> -MinThreshold <Int32>
- -MaxThreshold <Int32> -Name <String> -Description <String> -Enabled <Boolean> -Type <String>
+New-AzDeviceSecurityGroupTimeWindowRuleObject -TimeWindowSize <TimeSpan> -MinThreshold <Int32> -MaxThreshold <Int32> -Enabled <Boolean> -Type <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-AzDeviceSecurityGroupTimeWindowRuleObject cmdlet creates a new list of time window alert rules for device security group in IoT security solution.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $TimeWindowSize = New-TimeSpan -Minutes 5
+PS C:\> New-AzDeviceSecurityGroupTimeWindowRuleObject -TimeWindowSize $TimeWindowSize -MinThreshold 0 -MaxThreshold 30 -Enabled $true -Type "ActiveConnectionsNotInAllowedRange"
+
+RuleType: "ActiveConnectionsNotInAllowedRange"
+DisplayName: "Number of active connections is not in allowed range"
+Description: "Get an alert when the number of active connections of a device in the time window is not in the allowed range"
+IsEnabled: false
+MinThreshold: 0
+MaxThreshold: 30
+TimeWindowSize: "PT5M"
 ```
 
-{{ Add example description here }}
+Create new time window rule from "ActiveConnectionsNotInAllowedRange" type
 
 ## PARAMETERS
 
@@ -41,21 +49,6 @@ Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-Description.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -97,21 +90,6 @@ Minimum threshold.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Display name.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -23,10 +23,9 @@ function Get-AzureRmIotSecurityAnalytics-SolutionScope-Single
 	$Location = "West US"
 	$Workspace = "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace"
 	$DisplayName = "MichalDemoHub"
-	$Status = "Enabled"
 	$IotHubs = @("/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub");
 
-	Set-AzIotSecuritySolution -Name $SolutionName -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Status $Status -IotHub $IotHubs
+	Set-AzIotSecuritySolution -Name $SolutionName -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Enabled $true -IotHub $IotHubs
 	$analytics = Get-AzIotSecurityAnalytics -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName -Default
 	Validate-Analytics $analytics
 }
@@ -42,10 +41,9 @@ function Get-AzureRmIotSecurityAnalytics-SolutionScope-List
 	$Location = "West US"
 	$Workspace = "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace"
 	$DisplayName = "MichalDemoHub"
-	$Status = "Enabled"
 	$IotHubs = @("/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub");
 
-	Set-AzIotSecuritySolution -Name $SolutionName -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Status $Status -IotHub $IotHubs
+	Set-AzIotSecuritySolution -Name $SolutionName -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Enabled $true -IotHub $IotHubs
 	$analytic = Get-AzIotSecurityAnalytics -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName
 	Validate-Analytic $analytic
 }
@@ -61,10 +59,9 @@ function Get-AzureRmIotSecurityAnalyticsAggregatedAlert-SolutionScope
 	$Location = "West US"
 	$Workspace = "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace"
 	$DisplayName = "MichalDemoHub"
-	$Status = "Enabled"
 	$IotHubs = @("/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub");
 
-	Set-AzIotSecuritySolution -Name $SolutionName -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Status $Status -IotHub $IotHubs
+	Set-AzIotSecuritySolution -Name $SolutionName -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Enabled $true -IotHub $IotHubs
 	$analytics = Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName
 	Validate-Analytics $analytics
 }
@@ -80,10 +77,9 @@ function Get-AzureRmIotSecurityAnalyticsAggregatedRecommendation-SolutionScope
 	$Location = "West US"
 	$Workspace = "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.OperationalInsights/workspaces/IoTHubWorkspace"
 	$DisplayName = "MichalDemoHub"
-	$Status = "Enabled"
 	$IotHubs = @("/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub");
 
-	Set-AzIotSecuritySolution -Name $SolutionName -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Status $Status -IotHub $IotHubs
+	Set-AzIotSecuritySolution -Name $SolutionName -ResourceGroupName $ResourceGroupName -Location $Location -Workspace $Workspace -DisplayName $DisplayName -Enabled $true -IotHub $IotHubs
 	$analytics = Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName $ResourceGroupName -SolutionName $SolutionName
 	Validate-Analytics $analytics
 }

@@ -1,34 +1,40 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzSecurityWorkspaceSetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject
 schema: 2.0.0
 ---
 
 # New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create new threshold custom alert rule for device security group (IoT Security)
 
 ## SYNTAX
 
 ```
-New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject -MinThreshold <Int32> -MaxThreshold <Int32>
- -Name <String> -Description <String> -Enabled <Boolean> -Type <String>
+New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject -MinThreshold <Int32> -MaxThreshold <Int32> -Enabled <Boolean> -Type <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject cmdlet creates a new list of threshold custom alert rules for device security group in IoT security solution.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject -MinThreshold 0 -MaxThreshold 10 -Enabled $true -Type "SomeRuleType"
+
+RuleType: "SomeRuleType"
+DisplayName: "Display name for some rule type"
+Description: "Description for some rule type"
+IsEnabled: false
+MinThreshold: 0
+MaxThreshold: 10
 ```
 
-{{ Add example description here }}
+Create new threshold custom alert rule from type "SomeRuleType" with status enabled ant values for minimum and maximum threshold
 
 ## PARAMETERS
 
@@ -41,21 +47,6 @@ Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-Description.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -97,21 +88,6 @@ Minimum threshold.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Display name.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

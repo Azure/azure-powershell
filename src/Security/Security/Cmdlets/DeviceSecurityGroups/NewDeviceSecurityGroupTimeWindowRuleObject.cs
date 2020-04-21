@@ -34,12 +34,6 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.DeviceSecurityGroups
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.MaxThreshold)]
         public int MaxThreshold { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.DisplayName)]
-        public string Name { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.Description)]
-        public string Description { get; set; }
-
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.IsEnabled)]
         public bool Enabled { get; set; }
 
@@ -50,8 +44,6 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.DeviceSecurityGroups
         {
             PSTimeWindowCustomAlertRule rule = new PSTimeWindowCustomAlertRule
             {
-                Description = Description,
-                DisplayName = Name,
                 IsEnabled = Enabled,
                 MaxThreshold = MaxThreshold,
                 MinThreshold = MinThreshold,

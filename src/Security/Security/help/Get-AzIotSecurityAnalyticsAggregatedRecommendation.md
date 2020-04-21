@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzExternalSecuritySolution
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzIotSecurityAnalyticsAggregatedRecommendation
 schema: 2.0.0
 ---
 
 # Get-AzIotSecurityAnalyticsAggregatedRecommendation
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get IoT security aggregated recommendation
 
 ## SYNTAX
 
@@ -25,16 +25,40 @@ Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName <String> -
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzIotSecurityAnalyticsAggregatedAlert cmdlet returns one or more aggregated recommendations on devices of iot hub. 
+The name of an aggregated recommendation is its type
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution" -Name IoT_OpenPorts
+
+Id: "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/iotSecuritySolutions/MySolution/analyticsModels/default/aggregatedRecommendations/IoT_OpenPorts"
+Name: "IoT_OpenPorts"
+Type: "Microsoft.Security/IoTSecurityAggregatedRecommendation"
+RecommendationName: "IoT_OpenPorts"
+RecommendationDisplayName: "Device has open ports"
+RecommendationTypeId: ""
+DetectedBy: "IoTSecurity"
+HealthyDevices: -1
+UnhealthyDeviceCount: 5
+RemediationSteps: "Review open ports on the device and make sure they belong to legitimate and necessary processes for the device to function correctly."
+ReportedSeverity: "Medium"
+Description: "Found a listening endpoint on the device."
+LogAnalyticsQuery: "SecurityRecommendation | where tolower(AssessedResourceId) == tolower('/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourcegroups/iot-hub-demo/providers/microsoft.devices/iothubs/ascforiot-demo') and tolower(RecommendationName) == tolower('IoT_OpenPorts') and TimeGenerated  < now()"
 ```
 
-{{ Add example description here }}
+Get the aggregated recommendation "IoT_OpenPorts" in security solution "MySolution" and resource group "MyResourceGroup"
+
+### Example 2
+```powershell
+PS C:\> Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution"
+
+Array of aggregated recommendation items as shown in example 1
+```
+
+Get a list of aggregated recommendations in security solution "MySolution" and resource group "MyResourceGroup"
 
 ## PARAMETERS
 

@@ -1,34 +1,40 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzSecurityWorkspaceSetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject
 schema: 2.0.0
 ---
 
 # New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create new allow list custom alert rule for device security group (IoT Security)
 
 ## SYNTAX
 
 ```
-New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject -Name <String> -Description <String> -Enabled <Boolean>
- -Type <String> -ValueType <String> -AllowlistValue <String[]> [-DefaultProfile <IAzureContextContainer>]
+New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject -Enabled <Boolean> -Type <String> -AllowlistValue <String[]> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject cmdlet creates a new list of allowed custom alert rules for device security group in IoT security solution.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject -Enabled $false -Type "LocalUserNotAllowed" -AllowlistValue @()
+
+RuleType: "LocalUserNotAllowed"
+DisplayName: "Login by a local user that isn't allowed"
+Description: "Get an alert when a local user that isn't allowed logins to the device"
+IsEnabled: false
+ValueType: "String"
+AllowlistValues: []
 ```
 
-{{ Add example description here }}
+Create new allow list custom alert rull from type "LocalUserNotAllowed" with status set to disable
 
 ## PARAMETERS
 
@@ -62,21 +68,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-Description.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Enabled
 Is rule enabled.
 
@@ -92,38 +83,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Display name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Type
 Rule type.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ValueType
-Value type.
 
 ```yaml
 Type: System.String

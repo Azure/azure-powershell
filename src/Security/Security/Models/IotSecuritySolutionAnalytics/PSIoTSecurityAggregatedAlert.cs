@@ -16,7 +16,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
 {
-    public class PSIoTSecurityAggregatedAlert
+    public class PSIoTSecurityAggregatedAlert : PSResource
     {
         public string AlertType { get; set; }
 
@@ -45,11 +45,5 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
         public IList<PSTopDevice> TopDevicesList { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
-        
-        public string Type { get; set; }
-        
-        public string Name { get; set; }
-       
-        public string Id { get; set; }
     }
 }

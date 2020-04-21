@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/enable-azsecurityadvancedthreatprotection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzDeviceSecurityGroup
 schema: 2.0.0
 ---
 
 # Get-AzDeviceSecurityGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get device security group (IoT Hub security)
 
 ## SYNTAX
 
@@ -25,16 +25,67 @@ Get-AzDeviceSecurityGroup -HubResourceId <String> -Name <String> [-DefaultProfil
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzDeviceSecurityGroup cmdlet returns a device security group defined in iot security solution
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDeviceSecurityGroup -HubResourceId "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub" -Name "MySecurityGroup" 
+
+Id: "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub/providers/Microsoft.Security/deviceSecurityGroups/MySecurityGroup"
+Name: "MySecurityGroup"
+Type: "Microsoft.Security/deviceSecurityGroups"
+ThresholdRules: []
+TimeWindowRules: [
+			{
+              RuleType: "ActiveConnectionsNotInAllowedRange"
+              DisplayName: "Number of active connections is not in allowed range"
+              Description: "Get an alert when the number of active connections of a device in the time window is not in the allowed range"
+              IsEnabled: false
+              MinThreshold: 0
+              MaxThreshold: 0
+              TimeWindowSize: "PT15M"
+            }
+            {
+              RuleType: "AmqpC2DMessagesNotInAllowedRange"
+              DisplayName: "Number of cloud to device messages (AMQP protocol) is not in allowed range"
+              Description: "Get an alert when the number of cloud to device messages (AMQP protocol) in the time window is not in the allowed range"
+              IsEnabled: false
+              MinThreshold: 0
+              MaxThreshold: 0
+              TimeWindowSize: "PT15M"
+            }]
+AllowlistRules: [
+			{
+              RuleType": "ConnectionToIpNotAllowed",
+              DisplayName: "Outbound connection to an ip that isn't allowed"
+              Description: "Get an alert when an outbound connection is created between your device and an ip that isn't allowed"
+              IsEnabled: false
+              ValueType: "IpCidr"
+              AllowlistValues: []
+            },
+            {
+              RuleType: "LocalUserNotAllowed"
+              DisplayName: "Login by a local user that isn't allowed"
+              Description: "Get an alert when a local user that isn't allowed logins to the device"
+              IsEnabled: false
+              ValueType: "String"
+              AllowlistValues: []
+            }]
+DenylistRules: []
 ```
 
-{{ Add example description here }}
+Get device security group "MySecurityGroup" in IoT Hub with reasource Id "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub"
+
+### Example 2
+```powershell
+PS C:\> Get-AzDeviceSecurityGroup -HubResourceId "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub" 
+
+Array of security group items like the item returned in example 1
+```
+
+Get list of device security group in IoT Hub with reasource Id "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub"
 
 ## PARAMETERS
 

@@ -1,33 +1,38 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzSecurityWorkspaceSetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/New-AzIotSecuritySolutionRecommendationConfigurationObject
 schema: 2.0.0
 ---
 
 # New-AzIotSecuritySolutionRecommendationConfigurationObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create new recommendation configuration for iot security solution
 
 ## SYNTAX
 
 ```
-New-AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType <String> -Status <String>
+New-AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType <String> -Enabled <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The AzIotSecuritySolutionRecommendationConfigurationObject creates a new recommendation configuration object for iot security solution.
+This way the status of a recommendation is configured, whether it is enabled or disabled.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType "IoT_ACRAuthentication" -Enabled $false
+
+RecommendationType: "IoT_ACRAuthentication"
+Name: "Service prinicpal not used with ACR repository"
+Status: "Disabled"
 ```
 
-{{ Add example description here }}
+Create new recommendation configuration for recommendation type "IoT_ACRAuthentication" with status set to disable
 
 ## PARAMETERS
 
@@ -61,11 +66,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Status
+### -Enabled
 Status .
 
 ```yaml
-Type: System.String
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 

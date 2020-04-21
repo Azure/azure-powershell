@@ -26,14 +26,14 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.IotSecuritySolutions
         public string RecommendationType { get; set; }
         
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.Status)]
-        public string Status { get; set; }
+        public bool Enabled { get; set; }
 
         public override void ExecuteCmdlet()
         {
             PSRecommendationConfiguration recConfig = new PSRecommendationConfiguration
             {
                 RecommendationType = RecommendationType,
-                Status = Status
+                Status = Enabled ? "Enabled" : "Disabled"
             };
 
             WriteObject(recConfig, enumerateCollection: false);

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzSecurityWorkspaceSetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Remove-AzDeviceSecurityGroup
 schema: 2.0.0
 ---
 
 # Remove-AzDeviceSecurityGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Delete device security group
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Remove-AzDeviceSecurityGroup -ResourceId <String> [-PassThru] [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Remove-AzDeviceSecurityGroup cmdlet deletes a device security group defined in iot security solution.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzDeviceSecurityGroup -Name "MySecurityGroup" -HubResourceId "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub"
 ```
 
-{{ Add example description here }}
+Delete the device security group "MySecurityGroup" of iot hub with resource id "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub"
 
 ## PARAMETERS
 

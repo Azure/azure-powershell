@@ -17,14 +17,8 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions
 {
-    public class PSIotSecuritySolution
+    public class PSIotSecuritySolution : PSResource
     {
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string Type { get; set; }
-
         public IDictionary<string, string> Tags { get; set; }
 
         public string Location { get; set; }

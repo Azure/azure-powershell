@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzExternalSecuritySolution
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzIotSecuritySolution
 schema: 2.0.0
 ---
 
 # Get-AzIotSecuritySolution
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get IoT security solution
 
 ## SYNTAX
 
@@ -35,16 +35,56 @@ Get-AzIotSecuritySolution -ResourceId <String> [-DefaultProfile <IAzureContextCo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzIotSecuritySolution cmdlet returns one or more iot security solutions. 
+The IoT security solution collects security data and events from iot devices and iot hub to help prevent and detect threats.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzIotSecuritySolution -Name "MySample" -ResourceGroupName "MyResourceGroup"
+
+Id: "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/IoTSecuritySolutions/MySample"
+Name: "MySample"
+Type: "Microsoft.Security/IoTSecuritySolutions"
+Location: "centraluseuap"
+DisplayName: "MySample"
+status: "Enabled"
+Export: ["RawEvents"]
+DisabledDataSources: ["TwinData"]
+Workspace: "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcegroups/MyResourceGroup/providers/microsoft.operationalinsights/workspaces/MyLA"
+AdditionalWorkspaces: null
+IotHubs: ["/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcegroups/MyResourceGroup/providers/microsoft.devices/iothubs/MySample"]
+UserDefinedResources: {
+	Query: "" 
+	QuerySubscriptions: []
+}
+RecommendationsConfiguration: [
+{
+	RecommendationType: "IoT_ACRAuthentication"
+	Name: "Service prinicpal not used with ACR repository"
+	Status: "Enabled"
+}
+{
+	RecommendationType: "IoT_AgentSendsUnutilizedMessages"
+	Name: "Agent sending underutilized messages"
+	Status: "Enabled"
+	}]
+AutoDiscoveredResources: ["/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcegroups/MyResourceGroup/providers/microsoft.devices/iothubs/MySample"]
+UnmaskedIpLoggingStatus: "Enabled"
+Tags: {}
 ```
 
-{{ Add example description here }}
+Get the solution "MySample" in resource group "MyResourceGroup"
+
+### Example 2
+```powershell
+PS C:\> Get-AzIotSecuritySolution -ResourceGroupName "MyResourceGroup"
+
+Array of security solution items as shown is example 1
+```
+
+Get list of all security solutions in resource group "MyResourceGroup"
 
 ## PARAMETERS
 

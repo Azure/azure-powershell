@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Start-AzJitNetworkAccessPolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Update-AzIotSecuritySolution
 schema: 2.0.0
 ---
 
 # Update-AzIotSecuritySolution
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update one or more of the following properties in IoT security solution: tags, recommendation configuration, user defined resources
 
 ## SYNTAX
 
@@ -37,16 +37,55 @@ Update-AzIotSecuritySolution -InputObject <PSIotSecuritySolution> [-Tag <Hashtab
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Update-AzIotSecuritySolution cmdlet updayes one or more of the following properties in a specific IoT security solution: tags, recommendation configuration, user defined resources.
+Only the specified properties will be updated inside the iot security solution.
+The IoT security solution collects security data and events from iot devices and iot hub to help prevent and detect threats.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $RecConfig = New-AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType "IoT_OpenPorts" -Enabled $false
+PS C:\> $UserDefinedResource = New-AzIotSecuritySolutionUserDefinedResourcesObject -Query 'where type != "microsoft.devices/iothubs" | where name contains "v2"' 
+-QuerySubscriptionList @("XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX")	
+PS C:\> Update-AzIotSecuritySolution -Name "MySample" -ResourceGroupName "MyResourceGroup" -RecommendationsConfiguration @($RecConfig) -UserDefinedResource $UserDefinedResource
+
+Id: "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/IoTSecuritySolutions/MySample"
+Name: "MySample"
+Type: "Microsoft.Security/IoTSecuritySolutions"
+Location: "westus"
+DisplayName: "MySample"
+status: "Enabled"
+Export: ["RawEvents"]
+DisabledDataSources: ["TwinData"]
+Workspace: "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcegroups/MyResourceGroup/providers/microsoft.operationalinsights/workspaces/MyLA"
+AdditionalWorkspaces: null
+IotHubs: ["/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcegroups/MyResourceGroup/providers/microsoft.devices/iothubs/MySample"]
+UserDefinedResources: {
+	Query: 'where type != "microsoft.devices/iothubs" | where name contains "v2"' 
+	QuerySubscriptions: ["XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"]
+}
+RecommendationsConfiguration: [
+{
+	RecommendationType: "IoT_ACRAuthentication"
+	Name: "Service prinicpal not used with ACR repository"
+	Status: "Enabled"
+}
+{
+	RecommendationType: "IoT_OpenPorts"
+	Name: "Device has open port"
+	Status: "Disabled"
+}
+{
+	RecommendationType: "IoT_AgentSendsUnutilizedMessages"
+	Name: "Agent sending underutilized messages"
+	Status: "Enabled"
+}]
+AutoDiscoveredResources: ["/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcegroups/MyResourceGroup/providers/microsoft.devices/iothubs/MySample"]
+UnmaskedIpLoggingStatus: "Enabled"
 ```
 
-{{ Add example description here }}
+Update iot security solution "MySample" from resource group "MyResourceGroup" with recommendation configuration and user defined resources
 
 ## PARAMETERS
 

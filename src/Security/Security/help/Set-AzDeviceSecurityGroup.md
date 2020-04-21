@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Remove-AzSecurityWorkspaceSetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Set-AzDeviceSecurityGroup
 schema: 2.0.0
 ---
 
 # Set-AzDeviceSecurityGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create or update device security group
 
 ## SYNTAX
 
@@ -37,16 +37,54 @@ Set-AzDeviceSecurityGroup [-ThresholdRule <PSThresholdCustomAlertRule[]>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Set-AzDeviceSecurityGroup cmdlet creates or updates a device security group defined in iot security solution.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $TimeWindowSize = New-TimeSpan -Minutes 5
+PS C:\> $TimeWindowRule = New-AzDeviceSecurityGroupTimeWindowRuleObject -Type "ActiveConnectionsNotInAllowedRange" -Enabled $true 
+-MaxThreshold 30 -MinThreshold 0 -TimeWindowSize $TimeWindowSize
+PS C:\> Set-AzDeviceSecurityGroup -Name "MySecurityGroup" 
+-HubResourceId "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub" 
+-TimeWindowRule $TimeWindowRules
+
+Id: "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub/providers/Microsoft.Security/deviceSecurityGroups/MySecurityGroup"
+Name: "MySecurityGroup"
+Type: "Microsoft.Security/deviceSecurityGroups"
+ThresholdRules: []
+TimeWindowRules: [
+			{
+              RuleType: "ActiveConnectionsNotInAllowedRange"
+              DisplayName: "Number of active connections is not in allowed range"
+              Description: "Get an alert when the number of active connections of a device in the time window is not in the allowed range"
+              IsEnabled: true
+              MinThreshold: 0
+              MaxThreshold: 0
+              TimeWindowSize: "PT5M"
+            }]
+AllowlistRules: [
+			{
+              RuleType": "ConnectionToIpNotAllowed",
+              DisplayName: "Outbound connection to an ip that isn't allowed"
+              Description: "Get an alert when an outbound connection is created between your device and an ip that isn't allowed"
+              IsEnabled: false
+              ValueType: "IpCidr"
+              AllowlistValues: []
+            },
+            {
+              RuleType: "LocalUserNotAllowed"
+              DisplayName: "Login by a local user that isn't allowed"
+              Description: "Get an alert when a local user that isn't allowed logins to the device"
+              IsEnabled: false
+              ValueType: "String"
+              AllowlistValues: []
+            }]
+DenylistRules: []
 ```
 
-{{ Add example description here }}
+Update existing device security group from IoT Hub "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub" with rule type "ActiveConnectionsNotInAllowedRange"
 
 ## PARAMETERS
 

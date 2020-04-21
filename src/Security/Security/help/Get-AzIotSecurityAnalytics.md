@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzExternalSecuritySolution
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzIotSecurityAnalytics
 schema: 2.0.0
 ---
 
 # Get-AzIotSecurityAnalytics
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get IoT security analytics
 
 ## SYNTAX
 
@@ -18,16 +18,94 @@ Get-AzIotSecurityAnalytics -ResourceGroupName <String> -SolutionName <String> [-
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzIotSecurityAnalytics cmdlet returns a set of security analytics of a specific iot security solution
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzIotSecurityAnalytics -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution" -Default
+
+Id: "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/iotSecuritySolutions/MySolution/analyticsModels/default"
+Name: "default"
+Type: "Microsoft.Security/IoTSecuritySolutionAnalyticsModel"
+Metrics: {
+            High": 5
+            Medium: 200
+            Low: 102
+          }
+UnhealthyDeviceCount: 1200
+DevicesMetrics: [
+            {
+              Date: "2019-02-01T00:00:00Z"
+              DevicesMetrics: {
+                High: 3
+                Medium: 15
+                Low: 70
+              }
+            }
+            {
+              Date: "2019-02-02T00:00:00Z"
+              DevicesMetrics: {
+                High: 3
+                Medium: 45
+                Low: 65
+              }
+            }
+          ]
+TopAlertedDevices: [
+            {
+              DeviceId: "id1"
+              AlertsCount: 200
+            }
+            {
+              DeviceId": "id2"
+              AlertsCount": 170
+            }
+            {
+              DeviceId": "id3"
+              AlertsCount": 150
+            }
+          ]
+MostPrevalentDeviceAlerts: [
+            {
+              AlertDisplayName: "Custom Alert - number of device to cloud messages in AMQP protocol is not in the allowed range"
+              ReportedSeverity: "Low"
+              AlertsCount: 200
+            }
+            {
+              AlertDisplayName: "Custom Alert - execution of a process that is not allowed"
+              ReportedSeverity: "Medium"
+              AlertsCount: 170
+            }
+            {
+              AlertDisplayName": "Successful Bruteforce"
+              ReportedSeverity": "Low"
+              AlertsCount": 150
+            }
+          ]
+MostPrevalentDeviceRecommendations: [
+            {
+              RecommendationDisplayName: "Install the Azure Security of Things Agent"
+              ReportedSeverity: "Low"
+              DevicesCount: 200
+            }
+            {
+              RecommendationDisplayName: "High level permissions configured in Edge model twin for Edge module"
+              ReportedSeverity: "Low"
+              DevicesCount: 170
+            }
+            {
+              RrecommendationDisplayName: "Same Authentication Credentials used by multiple devices"
+              ReportedSeverity: "Medium"
+              DevicesCount: 150
+            }
+          ]
+        }
+      }
 ```
 
-{{ Add example description here }}
+Get the deafult IoT Security Analytics for Security Solution "MySolution" in reasource group "MyResourceGroup"
 
 ## PARAMETERS
 

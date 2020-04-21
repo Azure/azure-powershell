@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.Status)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.Status)]
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Status)]
-        public string Status { get; set; }
+        public bool Enabled { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.Export)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceId, Mandatory = false, HelpMessage = ParameterHelpMessages.Export)]
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
                     Export = Export ?? ((List<string>)InputObject.Export).ToArray();
                     IotHub = IotHub ?? ((List<string>)InputObject.IotHubs).ToArray();
                     RecommendationsConfiguration = RecommendationsConfiguration ?? ((List<PSRecommendationConfiguration>)InputObject.RecommendationsConfiguration).ToArray();
-                    Status = Status ?? InputObject.Status;
+                    Enabled = InputObject.Status.ToLower().Equals("enabled") ;
                     Tag = Tag ?? new Hashtable((IDictionary)(InputObject.Tags));
                     UnmaskedIpLoggingStatus = UnmaskedIpLoggingStatus ?? InputObject.UnmaskedIpLoggingStatus;
                     UserDefinedResource = UserDefinedResource ?? InputObject.UserDefinedResources;
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
                 Export = Export,
                 IotHubs = IotHub,
                 RecommendationsConfiguration = RecommendationsConfiguration?.CreatePSType(),
-                Status = Status,
+                Status = Enabled? "Enabled" : "Disabled",
                 Tags = Tag?.Cast<DictionaryEntry>().ToDictionary(t => (string)t.Key, t => (string)t.Value),
                 UnmaskedIpLoggingStatus = UnmaskedIpLoggingStatus,
                 UserDefinedResources = UserDefinedResource?.CreatePSType(),

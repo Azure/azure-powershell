@@ -19,10 +19,8 @@ Get device security groups by the IoT hub resource Id
 function Get-AzureRmDeviceSecurityGroup-ResourceIdScope
 {
 	$RuleType = "ActiveConnectionsNotInAllowedRange"
-	$Description = "Get an alert when the number of active connections of a device in the time window is not in the allowed range"
-	$DisplayName = "Number of active connections is not in allowed range"
 	$TimeWindowSize = New-TimeSpan -Minutes 5
-	$TimeWindowRule = New-AzDeviceSecurityGroupTimeWindowRuleObject -Type $RuleType -Enabled $true -Description $Description -Name $DisplayName -MaxThreshold 30 -MinThreshold 0 -TimeWindowSize $TimeWindowSize
+	$TimeWindowRule = New-AzDeviceSecurityGroupTimeWindowRuleObject -Type $RuleType -Enabled $true -MaxThreshold 30 -MinThreshold 0 -TimeWindowSize $TimeWindowSize
 	$TimeWindowRules = @($TimeWindowRule);
 
 	$HubResourceId = "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub"
@@ -41,10 +39,8 @@ function Get-AzureRmDeviceSecurityGroup-ResourceIdLevelResource
 {
 	
 	$RuleType = "ActiveConnectionsNotInAllowedRange"
-	$Description = "Get an alert when the number of active connections of a device in the time window is not in the allowed range"
-	$DisplayName = "Number of active connections is not in allowed range"
 	$TimeWindowSize = New-TimeSpan -Minutes 5
-	$TimeWindowRule = New-AzDeviceSecurityGroupTimeWindowRuleObject -Type $RuleType -Enabled $true -Description $Description -Name $DisplayName -MaxThreshold 30 -MinThreshold 0 -TimeWindowSize $TimeWindowSize
+	$TimeWindowRule = New-AzDeviceSecurityGroupTimeWindowRuleObject -Type $RuleType -Enabled $true -MaxThreshold 30 -MinThreshold 0 -TimeWindowSize $TimeWindowSize
 	$TimeWindowRules = @($TimeWindowRule);
 
 	$HubResourceId = "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub"
@@ -62,10 +58,8 @@ Set device security group
 function Set-AzureRmDeviceSecurityGroup-ResourceIdLevelResource
 {
     $RuleType = "ActiveConnectionsNotInAllowedRange"
-	$Description = "Get an alert when the number of active connections of a device in the time window is not in the allowed range"
-	$DisplayName = "Number of active connections is not in allowed range"
 	$TimeWindowSize = New-TimeSpan -Minutes 5
-	$TimeWindowRule = New-AzDeviceSecurityGroupTimeWindowRuleObject -Type $RuleType -Enabled $true -Description $Description -Name $DisplayName -MaxThreshold 30 -MinThreshold 0 -TimeWindowSize $TimeWindowSize
+	$TimeWindowRule = New-AzDeviceSecurityGroupTimeWindowRuleObject -Type $RuleType -Enabled $true -MaxThreshold 30 -MinThreshold 0 -TimeWindowSize $TimeWindowSize
 	$TimeWindowRules = @($TimeWindowRule);
 
 	$HubResourceId = "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub"
@@ -81,10 +75,8 @@ Delete device security group
 function Remove-AzureRmDeviceSecurityGroup-ResourceIdLevelResource
 {
 	$RuleType = "ActiveConnectionsNotInAllowedRange"
-	$Description = "Get an alert when the number of active connections of a device in the time window is not in the allowed range"
-	$DisplayName = "Number of active connections is not in allowed range"
 	$TimeWindowSize = New-TimeSpan -Minutes 5
-	$TimeWindowRule = New-AzDeviceSecurityGroupTimeWindowRuleObject -Type $RuleType -Enabled $true -Description $Description -Name $DisplayName -MaxThreshold 30 -MinThreshold 0 -TimeWindowSize $TimeWindowSize
+	$TimeWindowRule = New-AzDeviceSecurityGroupTimeWindowRuleObject -Type $RuleType -Enabled $true -MaxThreshold 30 -MinThreshold 0 -TimeWindowSize $TimeWindowSize
 	$TimeWindowRules = @($TimeWindowRule);
 
 	$HubResourceId = "/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/MichalResourceGroup/providers/Microsoft.Devices/IotHubs/MichalDemoHub"

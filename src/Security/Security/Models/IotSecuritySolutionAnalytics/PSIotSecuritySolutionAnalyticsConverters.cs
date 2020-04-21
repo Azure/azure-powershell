@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
         {
             return new PSIotSecuritySolutionAnalytics()
             {
+                Id = value.Id,
+                Name = value.Name,
+                Type = value.Type,
                 Metrics = value.Metrics?.ConvertToPSType(),
                 UnhealthyDeviceCount = value.UnhealthyDeviceCount,
                 DevicesMetrics = value.DevicesMetrics?.ConvertToPSType(),

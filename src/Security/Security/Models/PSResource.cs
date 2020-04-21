@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Security.Models.DeviceSecurityGroups
+namespace Microsoft.Azure.Commands.Security.Models
 {
     public class PSResource
     {

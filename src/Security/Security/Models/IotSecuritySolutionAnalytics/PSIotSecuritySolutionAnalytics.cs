@@ -17,7 +17,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
 {
-    public class PSIotSecuritySolutionAnalytics
+    public class PSIotSecuritySolutionAnalytics : PSResource
     {
         public PSIoTSeverityMetrics Metrics {get; set;}
 

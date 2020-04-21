@@ -26,20 +26,11 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.DeviceSecurityGroups
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeviceSecurityGroupDenylistCustomAlertRuleObject", DefaultParameterSetName = ParameterSetNames.GeneralScope), OutputType(typeof(PSDenylistCustomAlertRule))]
     public class NewDeviceSecurityGroupDenylistCustomAlertRuleObject : SecurityCenterCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.DisplayName)]
-        public string Name { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.Description)]
-        public string Description { get; set; }
-
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.IsEnabled)]
         public bool Enabled { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.RuleType)]
         public string Type { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.ValueType)]
-        public string ValueType { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.DenylistValues)]
         public string[] DenylistValue { get; set; }
@@ -48,10 +39,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.DeviceSecurityGroups
         {
             PSDenylistCustomAlertRule rule = new PSDenylistCustomAlertRule
             {
-                Description = Description,
-                DisplayName = Name,
                 IsEnabled = Enabled,
-                ValueType = ValueType,
                 DenylistValues = DenylistValue,
                 RuleType = Type
             };
