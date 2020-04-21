@@ -52,10 +52,10 @@ IPAddress             : 10.14.121.1
 AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
 VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 1
-StartTaskInformation  : 
+StartTaskInformation  :
 RecentTasks           : {}
-StartTask             : 
-CertificateReferences : 
+StartTask             :
+CertificateReferences :
 Errors                :
 ```
 
@@ -75,11 +75,11 @@ IPAddress             : 10.14.121.1
 AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
 VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 1
-StartTaskInformation  : 
+StartTaskInformation  :
 RecentTasks           : {}
-StartTask             : 
-CertificateReferences : 
-Errors                : 
+StartTask             :
+CertificateReferences :
+Errors                :
 
 Id                    : tvm-2316545714_2-20150726t172920z
 Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
@@ -91,10 +91,10 @@ IPAddress             : 10.14.121.38
 AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
 VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 0
-StartTaskInformation  : 
-RecentTasks           : 
-StartTask             : 
-CertificateReferences : 
+StartTaskInformation  :
+RecentTasks           :
+StartTask             :
+CertificateReferences :
 Errors                :
 ```
 
@@ -114,11 +114,11 @@ IPAddress             : 10.14.121.1
 AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
 VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 1
-StartTaskInformation  : 
+StartTaskInformation  :
 RecentTasks           : {}
-StartTask             : 
-CertificateReferences : 
-Errors                : 
+StartTask             :
+CertificateReferences :
+Errors                :
 
 
 Id                    : tvm-2316545714_2-20150726t172920z
@@ -132,10 +132,10 @@ IPAddress             : 10.14.121.38
 AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
 VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 0
-StartTaskInformation  : 
-RecentTasks           : 
-StartTask             : 
-CertificateReferences : 
+StartTaskInformation  :
+RecentTasks           :
+StartTask             :
+CertificateReferences :
 Errors                :
 ```
 
@@ -304,6 +304,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Restart-AzBatchComputeNode](./Restart-AzBatchComputeNode.md)
 
-[Azure Batch Cmdlets](./Az.Batch.md)
-
-
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)

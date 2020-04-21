@@ -34,6 +34,8 @@ if (%ISAZMODULE% -and ($PSEdition -eq 'Desktop'))
     Test-DotNet
 }
 
+%AZURECOREPREREQUISITE%
+
 if (Test-Path -Path "$PSScriptRoot\StartupScripts" -ErrorAction Ignore)
 {
     Get-ChildItem "$PSScriptRoot\StartupScripts" -ErrorAction Stop | ForEach-Object {
@@ -60,7 +62,7 @@ if($PSEdition -eq 'Desktop' -and (Test-Path $preloadPath -ErrorAction Ignore))
                 Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
             }
             catch {
-                Write-Warning $_
+                Write-Verbose $_
             }
         }
     }
@@ -83,7 +85,7 @@ if($PSEdition -eq 'Core' -and (Test-Path $netCorePath -ErrorAction Ignore))
                     Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
                 }
                 catch {
-                    Write-Warning $_
+                    Write-Verbose $_
                 }
             }
         }

@@ -17,23 +17,26 @@ Updates an integration runtime.
 Set-AzDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-Name] <String> [-Type <String>] [-Description <String>] [-Location <String>] [-NodeSize <String>]
  [-NodeCount <Int32>] [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>]
- [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>] 
- [-PublicIPs <String[]>] [-SetupScriptContainerSasUri <String>]
- [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>]
- [-DataProxyIntegrationRuntimeName <String>] [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
- [-ExpressCustomSetup <ArrayList>]
+ [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>] [-PublicIPs <String[]>]
+ [-DataFlowComputeType <String>] [-DataFlowCoreCount <Int32>] [-DataFlowTimeToLive <Int32>]
+ [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-ExpressCustomSetup <ArrayList>]
+ [-DataProxyIntegrationRuntimeName <String>] [-DataProxyStagingLinkedServiceName <String>]
+ [-DataProxyStagingPath <String>] [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>]
+ [-AuthKey <SecureString>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Set-AzDataFactoryV2IntegrationRuntime [-ResourceId] <String> [-Type <String>] [-Description <String>]
  [-Location <String>] [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
- [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>] [-PublicIPs <String[]>]
- [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
- [-DataProxyIntegrationRuntimeName <String>] [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
- [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>] [-ExpressCustomSetup <ArrayList>]
+ [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
+ [-PublicIPs <String[]>] [-DataFlowComputeType <String>] [-DataFlowCoreCount <Int32>]
+ [-DataFlowTimeToLive <Int32>] [-SetupScriptContainerSasUri <String>] [-Edition <String>]
+ [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
+ [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
+ [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByLinkedIntegrationRuntimeResourceId
@@ -55,12 +58,12 @@ Set-AzDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactor
 Set-AzDataFactoryV2IntegrationRuntime [-InputObject] <PSIntegrationRuntime> [-Type <String>]
  [-Description <String>] [-Location <String>] [-NodeSize <String>] [-NodeCount <Int32>]
  [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>]
- [-VNetId <String>] [-Subnet <String>] [-PublicIPs <String[]>]
- [-SetupScriptContainerSasUri <String>] [-Edition <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>]  [-DataProxyIntegrationRuntimeName <String>]
- [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>] [-AuthKey <SecureString>] [-Force]
+ [-VNetId <String>] [-Subnet <String>] [-PublicIPs <String[]>] [-DataFlowComputeType <String>]
+ [-DataFlowCoreCount <Int32>] [-DataFlowTimeToLive <Int32>] [-SetupScriptContainerSasUri <String>]
+ [-Edition <String>] [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
+ [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
+ [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
- [-ExpressCustomSetup <ArrayList>]
 ```
 
 ### ByLinkedIntegrationRuntimeObject
@@ -214,6 +217,51 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DataFlowComputeType
+Compute type of the data flow cluster which will execute data flow job.
+
+```yaml
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataFlowCoreCount
+Core count of the data flow cluster which will execute data flow job.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataFlowTimeToLive
+Time to live (in minutes) setting of the data flow cluster which will execute data flow job.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

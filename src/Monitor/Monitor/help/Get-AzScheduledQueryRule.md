@@ -34,7 +34,7 @@ Gets Scheduled Query Resources
 
 ## EXAMPLES
 
-### Example 1 - List by subscription or resource group
+### Example 1: List by subscription or resource group
 ```powershell
 PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "MyResourceGroup"
 
@@ -65,7 +65,7 @@ Location          : centralindia
 Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace, Resource]}
 ```
 
-### Example 2 - Get by rule name
+### Example 2: Get by rule name
 ```powershell
 PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "MyResourceGroup" -Name "LogAlertRule1"
 
@@ -83,7 +83,7 @@ Location          : centralindia
 Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace, Resource]}
 ```
 
-### Example 3 - Get by resource Id
+### Example 3: Get by resource Id
 ```powershell
 PS C:\> Get-AzScheduledQueryRule -ResourceId "/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule1"
 

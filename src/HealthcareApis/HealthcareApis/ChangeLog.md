@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Access policies are no longer defaulted to the current principal
 
 ## Version 1.0.1
 * Update references in .psd1 to use relative path

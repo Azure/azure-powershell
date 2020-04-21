@@ -167,6 +167,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Query an Iot Hub.
+        /// </summary>
+        internal static string InvokeIotHubQuery {
+            get {
+                return ResourceManager.GetString("InvokeIotHubQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failover Iot Hub to the secondary location..
         /// </summary>
         internal static string ManualFailoverIotHub {
@@ -217,6 +226,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string NewIotHubKey {
             get {
                 return ResourceManager.GetString("NewIotHubKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate Sas Token.
+        /// </summary>
+        internal static string NewIotHubSasToken {
+            get {
+                return ResourceManager.GetString("NewIotHubSasToken", resourceCulture);
             }
         }
         
