@@ -15,7 +15,9 @@
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
@@ -90,6 +92,48 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 PSIotHubConnectionString psIotHubConnectionString = IotHubUtils.ToPSIotHubConnectionString(policy, iotHubDescription.Properties.HostName);
                 RegistryManager registryManager = RegistryManager.CreateFromConnectionString(psIotHubConnectionString.PrimaryConnectionString);
 
+                PSConfiguration config = IotHubDataPlaneUtils.ToPSConfiguration(registryManager.GetConfigurationAsync(this.Name).GetAwaiter().GetResult());
+                if (config != null)
+                {
+                    Hashtable queries;
+                    string metricKey = this.MetricName;
+                    if (this.MetricType.Equals(PSConfigurationMetricType.System))
+                    {
+                        if (this.MetricName.Equals("targeted", StringComparison.OrdinalIgnoreCase))
+                        {
+                            metricKey = "targetedCount";
+                        }
+
+                        if (this.MetricName.Equals("applied", StringComparison.OrdinalIgnoreCase))
+                        {
+                            metricKey = "appliedCount";
+                        }
+
+                        queries = config.SystemMetrics.Queries;
+                    }
+                    else
+                    {
+                        queries = config.Metrics.Queries;
+                    }
+
+                    if (queries.ContainsKey(metricKey))
+                    {
+                        PSConfigurationMetricsResult psConfigurationMetricsResult = new PSConfigurationMetricsResult();
+                        psConfigurationMetricsResult.Name = this.MetricName;
+                        psConfigurationMetricsResult.Criteria = queries[metricKey].ToString();
+                        IQuery metricQuery = registryManager.CreateQuery(queries[metricKey].ToString());
+                        psConfigurationMetricsResult.Result = metricQuery.GetNextAsJsonAsync().GetAwaiter().GetResult().ToList();
+                        this.WriteObject(psConfigurationMetricsResult);
+                    }
+                    else
+                    {
+                        throw new ArgumentException(string.Format("The metric '{0}' is not defined in the configuration '{1}'", this.MetricName, this.Name));
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("The configuration doesn't exist.");
+                }
             }
         }
     }

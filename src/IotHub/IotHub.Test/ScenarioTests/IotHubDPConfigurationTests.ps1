@@ -42,6 +42,13 @@ function Test-AzureRmIotHubConfigurationLifecycle
 	Assert-True { $newDevice1.Id -eq $device1 }
 	Assert-False { $newDevice1.Capabilities.IotEdge }
 
+	# Update device twin
+	$tags = @{}
+	$tags.Add('location', 'US')
+	$deviceTwin = Update-AzIotHubDeviceTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -tag $tags
+	Assert-True { $deviceTwin.DeviceId -eq $device1}
+	Assert-True { $deviceTwin.tags.Count -eq 1}
+
 	# Assign device configuration parameters
 	$labels = @{}
 	$labels.add("key0","value0")
@@ -51,7 +58,7 @@ function Test-AzureRmIotHubConfigurationLifecycle
 	$prop.add("Location", "US")
 	$content = @{}
 	$content.add("properties.desired.Region", $prop)
-	$condition = "tags.location ='US'"
+	$condition = "tags.location='US'"
 	$priority = 10
 	$updatedPriority = 8
 
@@ -72,6 +79,23 @@ function Test-AzureRmIotHubConfigurationLifecycle
 	Assert-True { $updatedConfiguration.Id -eq $config1}
 	Assert-True { $updatedConfiguration.Priority -eq $updatedPriority}
 
+	# Invoke configuration metric query
+	$customMetricResult = Invoke-AzIotHubConfigurationMetricsQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Name $config1 -MetricName "query1"
+	Assert-True { $customMetricResult.Name -eq "query1"}
+	Assert-True { $customMetricResult.Criteria -eq "select deviceId from devices where tags.location='US'"}
+
+	$systemMetricResult = Invoke-AzIotHubConfigurationMetricsQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Name $config1 -MetricName "targeted" -MetricType "System"
+	Assert-True { $systemMetricResult.Name -eq "targeted"}
+	Assert-True { $systemMetricResult.Criteria -eq "select deviceId from devices where tags.location='US'"}
+
+	# Expected error while executing configuration metric query
+	$errorMessage = "The configuration doesn't exist."
+	Assert-ThrowsContains { Invoke-AzIotHubConfigurationMetricsQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Name "InvalidConfig" -MetricName "InvalidMetricName" } $errorMessage
+	
+	# Expected error while executing configuration metric query
+	$errorMessage = "The metric 'InvalidMetricName' is not defined in the configuration '$config1'"
+	Assert-ThrowsContains { Invoke-AzIotHubConfigurationMetricsQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Name $config1 -MetricName "InvalidMetricName" } $errorMessage
+	
 	# Delete all configuration
 	$result = Remove-AzIotHubConfiguration -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Passthru
 	Assert-True { $result }

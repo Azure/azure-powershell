@@ -1138,5 +1138,33 @@
         </TableRowEntries>
       </TableControl>
     </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSConfigurationMetricsResult
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSConfigurationMetricsResult</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Metric</Label>
+                <ScriptBlock>$_.Name</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Criteria</Label>
+                <ScriptBlock>$_.Criteria</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Result</Label>
+                <ScriptBlock>$_.Result</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

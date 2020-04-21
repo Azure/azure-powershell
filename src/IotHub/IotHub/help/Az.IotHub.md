@@ -110,6 +110,9 @@ Get information on all the endpoints for your IoT Hub
 ### [Get-AzIotHubValidSku](Get-AzIotHubValidSku.md)
 Gets all valid skus that this IotHub can transition to.
 
+### [Invoke-AzIotHubConfigurationMetricsQuery](Invoke-AzIotHubConfigurationMetricsQuery.md)
+Invoke an IoT device configuration metric query.
+
 ### [Invoke-AzIotHubDeviceMethod](Invoke-AzIotHubDeviceMethod.md)
 Invoke a direct method on a device.
 

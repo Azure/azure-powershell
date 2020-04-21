@@ -12,6 +12,8 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Distributed settings of the device.
     /// </summary>
@@ -30,6 +32,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// <summary>
         /// Indicates that desired distributed settings are sync with reported.
         /// </summary>
-        public string Result { get; set; }
+        public IList<string> Result { get; set; }
     }
 }
