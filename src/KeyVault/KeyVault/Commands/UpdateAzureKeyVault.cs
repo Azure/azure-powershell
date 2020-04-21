@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false, HelpMessage = "Enable the purge protection functionality for this key vault. Once enabled it cannot be disabled. It requires soft-delete to be turned on.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
 
-        // [Parameter(Mandatory = false, HelpMessage="")]
-        // [ValidateRange(7, 90)]
-        // [ValidateNotNullOrEmpty]
-        // public int SoftDeleteRetentionInDays { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
+        [ValidateRange(Constants.MinSoftDeleteRetentionDays, Constants.MaxSoftDeleteRetentionDays)]
+        [ValidateNotNullOrEmpty]
+        public int SoftDeleteRetentionInDays { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -99,7 +99,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                     existingResource.EnabledForDiskEncryption,
                     EnableSoftDelete.IsPresent ? (true as bool?) : null,
                     EnablePurgeProtection.IsPresent ? (true as bool?) : null,
-                    // this.IsParameterBound(c => c.SoftDeleteRetentionInDays) ? (SoftDeleteRetentionInDays as int?) : existingResource.SoftDeleteRetentionInDays,
+                    this.IsParameterBound(c => c.SoftDeleteRetentionInDays)
+                        ? (SoftDeleteRetentionInDays as int?)
+                        : (existingResource.SoftDeleteRetentionInDays ?? Constants.DefaultSoftDeleteRetentionDays),
                     existingResource.NetworkAcls
                 );
                 WriteObject(result);

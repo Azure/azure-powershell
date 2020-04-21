@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.1.4
 * Changes in New-AzCosmosDBAccount and Update-AzCosmosDBAccount
     - Allows empty string as a value for IpRangeFilter
     - Renamed ApiKind value GlobalDocumentDB to Sql.

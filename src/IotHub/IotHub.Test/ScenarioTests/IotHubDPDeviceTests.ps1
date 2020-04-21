@@ -32,6 +32,7 @@ function Test-AzureRmIotHubDeviceLifecycle
 	$device3 = getAssetName
 	$device4 = getAssetName
 	$device5 = getAssetName
+	$device6 = getAssetName
 	$primaryThumbprint = '38303FC7371EC78DDE3E18D732C8414EE50969C7'
 	$secondaryThumbprint = 'F54465586FBAF4AC269851424A592254C8861BE7'
 
@@ -63,9 +64,15 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-True { $newDevice3.Authentication.Type -eq 'CertificateAuthority' }
 	Assert-False { $newDevice3.Capabilities.IotEdge }
 
+	# Add edge device with symmetric authentication
+	$newDevice6 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device6 -AuthMethod 'shared_private_key' -EdgeEnabled
+	Assert-True { $newDevice6.Id -eq $device6 }
+	Assert-True { $newDevice6.Authentication.Type -eq 'Sas' }
+	Assert-True { $newDevice6.Capabilities.IotEdge }
+
 	# Count devices
 	$totalDevices = Invoke-AzIotHubQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Query "select * from devices"
-	Assert-True { $totalDevices.Count -eq 3}
+	Assert-True { $totalDevices.Count -eq 4}
 
 	# Get device twin
 	$device1twin = Get-AzIotHubDeviceTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
@@ -97,7 +104,7 @@ function Test-AzureRmIotHubDeviceLifecycle
 	
 	# Get all devices
 	$devices = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
-	Assert-True { $devices.Count -eq 3}
+	Assert-True { $devices.Count -eq 4}
 
 	# Get device connection string
 	$deviceCS = Get-AzIotHubDCS -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3
@@ -150,7 +157,7 @@ function Test-AzureRmIotHubDeviceLifecycle
 
 	# Get all device children
 	$devices = Get-AzIotHubDCL -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
-	Assert-True { $devices.Count -eq 2}
+	Assert-True { $devices.Count -eq 3}
 
 	# Get device children
 	$deviceChildren1 = Get-AzIotHubDCL -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device4

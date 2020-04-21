@@ -15,10 +15,12 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
 
+    [GenericBreakingChange("Output changed: ClientSecret will not be returned anymore. Additional cmdlet will be added to retrieve ClientSecret.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementOpenIdConnectProvider", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementOpenIdConnectProvider))]
     public class GetAzureApiManagementOpenIdConnectProvider : AzureApiManagementCmdletBase
