@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Skip duplicated rules when add NetworkRules, to avoid server failure
+* Fixed #9880: Change NetWorkRule DefaultAction value defination to align with swagger.
+	- Update-AzStorageAccountNetworkRuleSet
+	- Get-AzStorageAccountNetworkRuleSet
+* Fixed #11624: Skip duplicated rules when add NetworkRules, to avoid server failure
     - `Add-AzStorageAccountNetworkRule`
 
 ## Version 1.14.0
