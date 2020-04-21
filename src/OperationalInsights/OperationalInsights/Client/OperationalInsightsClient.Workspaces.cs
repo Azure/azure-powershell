@@ -28,19 +28,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
     public partial class OperationalInsightsClient
     {
-        public virtual List<PSAccount> GetLinkTargets()
-        {
-            List<PSAccount> accounts = new List<PSAccount>();
-
-            var response = OperationalInsightsManagementClient.Workspaces.ListLinkTargets();
-            if (response != null)
-            {
-                response.ForEach(account => accounts.Add(new PSAccount(account)));
-            }
-
-            return accounts;
-        }
-
         public virtual PSWorkspaceKeys GetWorkspaceKeys(string resourceGroupName, string workspaceName)
         {
             var response = OperationalInsightsManagementClient.Workspaces.GetSharedKeys(resourceGroupName, workspaceName);
