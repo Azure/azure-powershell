@@ -358,7 +358,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceId
-The Id of the workspace
+The resource Id of the Log Analytics workspace to send logs/metrics to
 
 ```yaml
 Type: System.String
