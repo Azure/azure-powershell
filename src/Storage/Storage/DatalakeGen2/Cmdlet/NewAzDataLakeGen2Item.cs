@@ -31,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using global::Azure.Storage.Files.DataLake;
     using global::Azure.Storage.Files.DataLake.Models;
     using DataLakeModels = global::Azure.Storage.Files.DataLake.Models;
+    using System.Globalization;
 
     /// <summary>
     /// create a new DataLakeGen2 Item
@@ -173,11 +174,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (this.Directory.IsPresent)
             {
                 DataLakeDirectoryClient dirClient = fileSystem.GetDirectoryClient(this.Path);
-                if (ShouldProcess(dirClient.Uri.ToString(), "Create Directory: "))
+                if (ShouldProcess(GetDataLakeItemUriWithoutSas(dirClient), "Create Directory: "))
                 {
                     if (dirClient.Exists())
                     {
-                        throw new ResourceAlreadyExistException(String.Format("Folder '{0}' already exists.", dirClient.Uri));
+                        throw new ResourceAlreadyExistException(String.Format("Folder '{0}' already exists.", GetDataLakeItemUriWithoutSas(dirClient)));
                     }
                     DataLakeModels.PathPermissions pathPermissions = null;
                     if (this.Permission != null)
@@ -199,13 +200,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
             else //create File
             {
-                CloudBlobContainer container = Channel.GetContainerReference(this.FileSystem);
-                CloudBlockBlob blob = container.GetBlockBlobReference(this.Path);
-
-                if (ShouldProcess(blob.Uri.ToString(), "Create File: "))
+                DataLakeFileClient fileClient = fileSystem.GetFileClient(this.Path);
+                if (ShouldProcess(GetDataLakeItemUriWithoutSas(fileClient), "Create File: "))
                 {
-                    Func<long, Task> taskGenerator = (taskId) => Upload2Blob(taskId, Channel, ResolvedFileName, blob);
-                    RunTask(taskGenerator);
+                    // Use SDK to upload directly when use SAS credential, and need set permission, since set permission after upload will fail with SAS
+                    if (Channel.StorageContext.StorageAccount.Credentials.IsSAS
+                        && (!string.IsNullOrEmpty(this.Permission) || !string.IsNullOrEmpty(this.Umask)))
+                    {
+                        Func<long, Task> taskGenerator = (taskId) => UploadDataLakeFile(taskId, fileClient, ResolvedFileName);
+                        RunTask(taskGenerator);
+                    }
+                    else
+                    {
+                        CloudBlobContainer container = Channel.GetContainerReference(this.FileSystem);
+                        CloudBlockBlob blob = container.GetBlockBlobReference(this.Path);
+
+                        Func<long, Task> taskGenerator = (taskId) => Upload2Blob(taskId, Channel, ResolvedFileName, blob);
+                        RunTask(taskGenerator);
+                    }
                 }
             }
 
@@ -214,6 +226,47 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 DoEndProcessing();
             }
+        }
+
+        /// <summary>
+        /// Upload File with Datalake API
+        /// </summary>
+        internal virtual async Task UploadDataLakeFile(long taskId, DataLakeFileClient fileClient, string filePath)
+        {
+            if (this.Force.IsPresent || !fileClient.Exists() || ShouldContinue(string.Format(Resources.OverwriteConfirmation, GetDataLakeItemUriWithoutSas(fileClient)), null))
+            {
+
+                // Set Item Properties and MetaData
+                PathHttpHeaders pathHttpHeaders = SetDatalakegen2ItemProperties(fileClient, BlobProperties, setToServer: false);
+                IDictionary<string, string> metadata = SetDatalakegen2ItemMetaData(fileClient, BlobMetadata, setToServer: false);
+
+                fileClient.Create(pathHttpHeaders,
+                    metadata,
+                    this.Permission,
+                    this.Umask != null ? DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Umask).ToOctalPermissions() : null);
+
+                long fileSize = new FileInfo(ResolvedFileName).Length;
+                string activity = String.Format(Resources.SendAzureBlobActivity, this.Source, this.Path, this.FileSystem);
+                string status = Resources.PrepareUploadingBlob;
+                ProgressRecord pr = new ProgressRecord(OutputStream.GetProgressId(taskId), activity, status);
+                IProgress<long> progressHandler = new Progress<long>((finishedBytes) =>
+                {
+                    if (pr != null)
+                    {
+                        // Size of the source file might be 0, when it is, directly treat the progress as 100 percent.
+                        pr.PercentComplete = 0 == fileSize ? 100 : (int)(finishedBytes * 100 / fileSize);
+                        pr.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, pr.PercentComplete);
+                        this.OutputStream.WriteProgress(pr);
+                    }
+                });
+
+                using (FileStream stream = File.OpenRead(ResolvedFileName))
+                {
+                    await fileClient.AppendAsync(stream, 0, progressHandler: progressHandler, cancellationToken: CmdletCancellationToken).ConfigureAwait(false);
+                }
+                WriteDataLakeGen2Item(Channel, fileClient, taskId: taskId);
+            }
+
         }
 
         /// <summary>
@@ -283,7 +336,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             // Set blob permission with umask, since create Blob API still not support them
             SetBlobPermissionWithUMask((CloudBlockBlob)blob, this.Permission, this.Umask);
 
-            //blob.FetchAttributes();
             WriteDataLakeGen2Item(localChannel, fileSystem.GetFileClient(blob.Name), taskId: data.TaskId);
         }
 

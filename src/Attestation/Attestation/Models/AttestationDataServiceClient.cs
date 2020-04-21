@@ -48,26 +48,29 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             _attestationControlPlaneClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Attestation.AttestationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
-        public void SetPolicy(string name, string resourceGroupName, string resourceId, string tee, string policyJwt)
+        public void SetPolicy(string name, string resourceGroupName, string resourceId, string tee, string userSpecifiedPolicy, string policyFormat)
         {
             ValidateCommonParameters(ref name, ref resourceGroupName, resourceId);
             if (string.IsNullOrEmpty(tee))
                 throw new ArgumentNullException(nameof(tee));
-            if (string.IsNullOrEmpty(policyJwt))
-                throw new ArgumentNullException(nameof(policyJwt));
+            if (string.IsNullOrEmpty(userSpecifiedPolicy))
+                throw new ArgumentNullException(nameof(userSpecifiedPolicy));
 
-            // Step #1 - Ask service to prepare to set policy
+            // Step #1 - Convert text policy to JWT if necessary
+            var processedPolicy = GenerateJwtPolicyIfNeeded(policyFormat, userSpecifiedPolicy);
+
+            // Step #2 - Ask service to prepare to set policy
             AzureOperationResponse<object> serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) => 
-                _attestationDataPlaneClient.Policy.PrepareToSetWithHttpMessagesAsync(tenantUri, tee, policyJwt).Result);
+                _attestationDataPlaneClient.Policy.PrepareToSetWithHttpMessagesAsync(tenantUri, tee, processedPolicy).Result);
             ThrowOn4xxErrors(serviceCallResult);
 
-            // Step #2 - Validate service response locally
+            // Step #3 - Validate service response locally
             string policyUpdateJwt = serviceCallResult.Body.ToString();
             var validatedToken = PolicyValidationHelper.ValidateAttestationServiceToken(name, DataPlaneUriLookup[(name, resourceGroupName)], policyUpdateJwt);
             if (!validatedToken.IsValid)
                 throw new ArgumentException("policyJwt is not valid");
 
-            // Step #3 - Ask service to set policy
+            // Step #4 - Ask service to set policy
             serviceCallResult = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, (tenantUri) => 
                 _attestationDataPlaneClient.Policy.SetWithHttpMessagesAsync(tenantUri, tee, policyUpdateJwt).Result);
             ThrowOn4xxErrors(serviceCallResult);
@@ -132,6 +135,36 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         }
 
         #region Private helper methods
+
+        private string GenerateJwtPolicyIfNeeded(string policyFormat, string userSpecifiedPolicy)
+        {
+            var processedPolicy = string.Empty;
+            if (string.IsNullOrEmpty(policyFormat) || 
+                SetAzureAttestationPolicy.TextPolicyFormat.Equals(policyFormat, StringComparison.InvariantCultureIgnoreCase))
+            {
+                processedPolicy = this.GenerateJwtPolicy(userSpecifiedPolicy);
+            }
+            else if (SetAzureAttestationPolicy.JwtPolicyFormat.Equals(policyFormat, StringComparison.InvariantCultureIgnoreCase))
+            {
+                processedPolicy = userSpecifiedPolicy;
+            }
+            else
+            {
+                throw new ArgumentException(nameof(policyFormat));
+            }
+
+            return processedPolicy;
+        }
+
+        private string GenerateJwtPolicy(string textPolicy)
+        {
+            var header = Base64Url.EncodeString("{\"alg\":\"none\"}");
+            var encodedPolicy = Base64Url.EncodeString(textPolicy);
+            var bodyText = "{\"AttestationPolicy\": \"" + encodedPolicy + "\"}";
+            var body = Base64Url.EncodeString(bodyText);
+
+            return $"{header}.{body}.";
+        }
 
         private void ValidateCommonParameters(ref string name, ref string resourceGroupName, string resourceId)
         {

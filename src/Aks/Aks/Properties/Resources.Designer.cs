@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,11 +61,74 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please add {0} to your search PATH so the {1} can be found..
+        /// </summary>
+        internal static string AddDirectoryToPath {
+            get {
+                return ResourceManager.GetString("AddDirectoryToPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Role Assignment.
         /// </summary>
         internal static string AddRoleAssignment {
             get {
                 return ResourceManager.GetString("AddRoleAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Node pool already exists, confirm action..
+        /// </summary>
+        internal static string AgentPoolAlreadyExistsConfirmAction {
+            get {
+                return ResourceManager.GetString("AgentPoolAlreadyExistsConfirmAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The node pool already exists. Please use Update-AzAksNodePool for update..
+        /// </summary>
+        internal static string AgentPoolAlreadyExistsError {
+            get {
+                return ResourceManager.GetString("AgentPoolAlreadyExistsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Node pool doesn&apos;t exist..
+        /// </summary>
+        internal static string AgentPoolDoesNotExist {
+            get {
+                return ResourceManager.GetString("AgentPoolDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Node pool exists: {0}..
+        /// </summary>
+        internal static string AgentPoolExists {
+            get {
+                return ResourceManager.GetString("AgentPoolExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Node pool is new..
+        /// </summary>
+        internal static string AgentPoolIsNew {
+            get {
+                return ResourceManager.GetString("AgentPoolIsNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The following three paramters must appear together if one of them appears: NodeMinCount, NodeMaxCount and EnableNodeAutoScaling..
+        /// </summary>
+        internal static string AksNodePoolAutoScalingParametersMustAppearTogether {
+            get {
+                return ResourceManager.GetString("AksNodePoolAutoScalingParametersMustAppearTogether", resourceCulture);
             }
         }
         
@@ -106,11 +169,38 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not add &apos;acrpull&apos; role assignment, please make sure you have right permission..
+        /// </summary>
+        internal static string CouldNotAddAcrRoleAssignment {
+            get {
+                return ResourceManager.GetString("CouldNotAddAcrRoleAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not create a service principal with the right permissions. Are you an Owner on this project?.
         /// </summary>
         internal static string CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner {
             get {
                 return ResourceManager.GetString("CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find object id of service principal : {0}, please make sure you have graph directory.read permission which is required for grant acrpull permission..
+        /// </summary>
+        internal static string CouldNotFindObjectIdForServicePrincipal {
+            get {
+                return ResourceManager.GetString("CouldNotFindObjectIdForServicePrincipal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find specified Acr &apos;{0}&apos; to attach..
+        /// </summary>
+        internal static string CouldNotFindSpecifiedAcr {
+            get {
+                return ResourceManager.GetString("CouldNotFindSpecifiedAcr", resourceCulture);
             }
         }
         
@@ -142,6 +232,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating a new cluster Node pool..
+        /// </summary>
+        internal static string CreatingClusterAgentPool {
+            get {
+                return ResourceManager.GetString("CreatingClusterAgentPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deploying your managed Kubernetes cluster..
         /// </summary>
         internal static string DeployingYourManagedKubeCluster {
@@ -160,11 +259,38 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Downloading kubectl from internet.
+        /// </summary>
+        internal static string DownloadingKubectlFromWeb {
+            get {
+                return ResourceManager.GetString("DownloadingKubectlFromWeb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want to create a new managed Kubernetes cluster?.
         /// </summary>
         internal static string DoYouWantToCreateANewManagedKubernetesCluster {
             get {
                 return ResourceManager.GetString("DoYouWantToCreateANewManagedKubernetesCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to craete a new Node pool?.
+        /// </summary>
+        internal static string DoYouWantToCreateClusterAgentPool {
+            get {
+                return ResourceManager.GetString("DoYouWantToCreateClusterAgentPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to delete the Node pool?.
+        /// </summary>
+        internal static string DoYouWantToDeleteTheAgentPool {
+            get {
+                return ResourceManager.GetString("DoYouWantToDeleteTheAgentPool", resourceCulture);
             }
         }
         
@@ -183,6 +309,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string DoYouWantToImportTheKubernetesConfig {
             get {
                 return ResourceManager.GetString("DoYouWantToImportTheKubernetesConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to overwrite the existing {0}?.
+        /// </summary>
+        internal static string DoYouWantToOverwriteExistingFile {
+            get {
+                return ResourceManager.GetString("DoYouWantToOverwriteExistingFile", resourceCulture);
             }
         }
         
@@ -232,6 +367,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified KubernetesVersion is not supported in this region. Please run &apos;Get-AzAksVersion&apos; to get supported version..
+        /// </summary>
+        internal static string K8sVersionNotSupported {
+            get {
+                return ResourceManager.GetString("K8sVersionNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to kubectl is required to be installed and on your path to execute this command. Kubectl is available here: https://kubernetes.io/docs/tasks/tools/install-kubectl/..
         /// </summary>
         internal static string KubectlIsRequriedToBeInstalledAndOnYourPathToExecute {
@@ -268,11 +412,38 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The following three paramters must appear together if one of them appears: MinCount, MaxCount and EnableAutoScaling..
+        /// </summary>
+        internal static string NodePoolAutoScalingParametersMustAppearTogether {
+            get {
+                return ResourceManager.GetString("NodePoolAutoScalingParametersMustAppearTogether", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There&apos;s no kubectl available in the mirror site for OSX..
+        /// </summary>
+        internal static string NoKubectlForOsxOnMirror {
+            get {
+                return ResourceManager.GetString("NoKubectlForOsxOnMirror", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Service Principal found in {0} for this subscription. Creating a new Service Principal..
         /// </summary>
         internal static string NoServicePrincipalFoundCreatingANewServicePrincipal {
             get {
                 return ResourceManager.GetString("NoServicePrincipalFoundCreatingANewServicePrincipal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, this cmdlet is not supported in current OS..
+        /// </summary>
+        internal static string NotSupportOnThisOs {
+            get {
+                return ResourceManager.GetString("NotSupportOnThisOs", resourceCulture);
             }
         }
         
@@ -318,6 +489,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string ProcessStartedWithId {
             get {
                 return ResourceManager.GetString("ProcessStartedWithId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing the Node pool..
+        /// </summary>
+        internal static string RemovingTheAgentPool {
+            get {
+                return ResourceManager.GetString("RemovingTheAgentPool", resourceCulture);
             }
         }
         
@@ -372,6 +552,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string SettingUpBrowserPop {
             get {
                 return ResourceManager.GetString("SettingUpBrowserPop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must specify one existing Node pool name to &apos;NodeName&apos; for updating Node pool properties..
+        /// </summary>
+        internal static string SpecifiedAgentPoolDoesNotExist {
+            get {
+                return ResourceManager.GetString("SpecifiedAgentPoolDoesNotExist", resourceCulture);
             }
         }
         
@@ -444,6 +633,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string StoppingProcessWithId {
             get {
                 return ResourceManager.GetString("StoppingProcessWithId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update the Node pool..
+        /// </summary>
+        internal static string UpdateAgentPool {
+            get {
+                return ResourceManager.GetString("UpdateAgentPool", resourceCulture);
             }
         }
         
@@ -547,6 +745,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Using Node pool from pipeline..
+        /// </summary>
+        internal static string UsingAgentPoolFromPipeline {
+            get {
+                return ResourceManager.GetString("UsingAgentPoolFromPipeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Using cluster from pipeline..
         /// </summary>
         internal static string UsingClusterFromPipeline {
@@ -588,6 +795,24 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string UsingSshPublicKeyDataAsCommandLineString {
             get {
                 return ResourceManager.GetString("UsingSshPublicKeyDataAsCommandLineString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must set VmSetType as &apos;VirtualMachineScaleSets&apos; for Windows node pool..
+        /// </summary>
+        internal static string VmSetTypeIsIncorrectForWindowsPool {
+            get {
+                return ResourceManager.GetString("VmSetTypeIsIncorrectForWindowsPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows agent pool name can not be longer than 6 characters..
+        /// </summary>
+        internal static string WindowsNodePoolNameLengthLimitation {
+            get {
+                return ResourceManager.GetString("WindowsNodePoolNameLengthLimitation", resourceCulture);
             }
         }
     }

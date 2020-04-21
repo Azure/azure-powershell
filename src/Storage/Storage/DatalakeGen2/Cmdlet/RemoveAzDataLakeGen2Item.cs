@@ -129,14 +129,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (foundAFolder)
             {
-                if (force || ShouldContinue(string.Format("Remove Directory: {0}", dirClient.Uri.ToString()), ""))
+                if (force || ShouldContinue(string.Format("Remove Directory: {0}", GetDataLakeItemUriWithoutSas(dirClient)), ""))
                 {
                     dirClient.Delete(true);
                 }
             }
             else
             {
-                if (force || ShouldContinue(string.Format("Remove File: {0}", fileClient.Uri.ToString()), ""))
+                if (force || ShouldContinue(string.Format("Remove File: {0}", GetDataLakeItemUriWithoutSas(fileClient)), ""))
                 {
                     fileClient.Delete();
                 }

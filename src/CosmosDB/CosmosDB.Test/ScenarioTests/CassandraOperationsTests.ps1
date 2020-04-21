@@ -112,3 +112,56 @@ function Test-CassandraOperationsCmdletsUsingInputObject
   $IsKeyspaceRemoved = Remove-AzCosmosDBCassandraKeyspace -InputObject $NewKeyspace -PassThru
   Assert-AreEqual $IsKeyspaceRemoved true
 }
+
+function Test-CassandraThroughputCmdlets
+{
+  $AccountName = "db2725"
+  $rgName = "CosmosDBResourceGroup2510"
+  $KeyspaceName = "KeyspaceName"
+  $TableName = "tableName"
+
+  $Column1 = New-AzCosmosDBCassandraColumn -Name "ColumnA" -Type "int"
+  $Column2 = New-AzCosmosDBCassandraColumn -Name "ColumnB" -Type "ascii"
+  $clusterkey1 = New-AzCosmosDBCassandraClusterKey -Name "ColumnB" -OrderBy "Asc"
+  $schema = New-AzCosmosDBCassandraSchema -Column $Column1,$Column2 -ClusterKey $clusterkey1 -PartitionKey "ColumnA"
+
+  $ThroughputValue = 1200
+  $UpdatedThroughputValue = 1100
+  $UpdatedThroughputValue2 = 1000
+  $UpdatedThroughputValue3 = 900
+
+  $TableThroughputValue = 800
+  $UpdatedTableThroughputValue = 700
+  $UpdatedTableThroughputValue2 = 600
+  $UpdatedTableThroughputValue3 = 500
+
+  $NewKeyspace =  Set-AzCosmosDBCassandraKeyspace -AccountName $AccountName -ResourceGroupName $rgName -Name $KeyspaceName -Throughput  $ThroughputValue
+  $Throughput = Get-AzCosmosDBCassandraKeyspaceThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $KeyspaceName
+  Assert-AreEqual $Throughput.Throughput $ThroughputValue
+
+  $UpdatedThroughput = Update-AzCosmosDBCassandraKeyspaceThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $KeyspaceName -Throughput $UpdatedThroughputValue
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue
+
+  $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
+  $UpdatedThroughput = Update-AzCosmosDBCassandraKeyspaceThroughput -ParentObject $CosmosDBAccount -Name $KeyspaceName -Throughput $UpdatedThroughputValue2
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue2
+
+  $UpdatedThroughput = Update-AzCosmosDBCassandraKeyspaceThroughput -InputObject $NewKeyspace -Throughput $UpdatedThroughputValue3
+  Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue3
+
+  $NewTable = Set-AzCosmosDBCassandraTable -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName -Schema $schema -Throughput $TableThroughputValue
+  $TableThroughput = Get-AzCosmosDBCassandraTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName
+  Assert-AreEqual $TableThroughput.Throughput $TableThroughputValue
+
+  $UpdatedTableThroughput = Update-AzCosmosDBCassandraTableThroughput -InputObject $NewTable -Throughput $UpdatedTableThroughputValue
+  Assert-AreEqual $UpdatedTableThroughput.Throughput $UpdatedTableThroughputValue
+
+  $UpdatedTableThroughput = Update-AzCosmosDBCassandraTableThroughput -ParentObject $NewKeyspace -Name $TableName -Throughput $UpdatedTableThroughputValue2
+  Assert-AreEqual $UpdatedTableThroughput.Throughput $UpdatedTableThroughputValue2
+
+  $UpdatedTableThroughput = Update-AzCosmosDBCassandraTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -KeyspaceName $KeyspaceName -Name $TableName -Throughput $UpdatedTableThroughputValue3
+  Assert-AreEqual $UpdatedTableThroughput.Throughput $UpdatedTableThroughputValue3
+
+  Remove-AzCosmosDBCassandraTable -InputObject $NewTable 
+  Remove-AzCosmosDBCassandraKeyspace -InputObject $NewKeyspace 
+}

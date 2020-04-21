@@ -522,6 +522,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         }
 
         /// <summary>
+        /// Get Item string without SAS for confirmation string.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        protected static string GetDataLakeItemUriWithoutSas(DataLakePathClient item)
+        {
+            string uriString = item.Uri.ToString();
+            int length = uriString.IndexOf("?");
+            if (length < 0) // Not container "?"
+            {
+                return uriString;
+            }
+            else
+            {
+                return uriString.Substring(0, uriString.IndexOf("?"));
+            }
+        }
+
+        /// <summary>
         /// get the DataLakeFileSystemClient object by name if DataLakeFileSystem exists
         /// </summary>
         /// <param name="fileSystemName">DataLakeFileSystem name</param>

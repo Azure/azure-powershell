@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -13,10 +12,12 @@ using System.Reflection;
 using System.IO;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Management.ContainerService;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 
 namespace Commands.Aks.Test.ScenarioTests
 {
-    public class TestController : RMTestBase
+    public class TestController
     {
         private readonly EnvironmentSetupHelper _helper;
 
@@ -30,6 +31,8 @@ namespace Commands.Aks.Test.ScenarioTests
         public static TestController NewInstance => new TestController();
 
         public ResourceManagementClient InternalResourceManagementClient { get; private set; }
+
+        public AuthorizationManagementClient InternalAuthorizationManagementClient { get; private set; }
 
         public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {

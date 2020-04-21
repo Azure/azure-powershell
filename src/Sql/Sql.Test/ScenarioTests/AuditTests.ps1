@@ -869,7 +869,7 @@ function Test-AuditOnDatabase
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-Null $policy.PredicateExpression
 		Assert-Null $policy.StorageAccountResourceId
-		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is disabled.
@@ -966,7 +966,7 @@ function Test-AuditOnDatabase
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
 		Assert-Null $policy.StorageAccountResourceId
-		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
@@ -995,7 +995,7 @@ function Test-AuditOnDatabase
 		# Verify storage auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
 		Assert-Null $policy.StorageAccountResourceId
-		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
@@ -1021,7 +1021,7 @@ function Test-AuditOnDatabase
 		# Verify storage auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
 		Assert-Null $policy.StorageAccountResourceId
-		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
 		
 		# Verify log analytics auditing policy is disabled.
@@ -1065,7 +1065,7 @@ function Test-RemoveAuditOnDatabase
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-Null $policy.PredicateExpression
 		Assert-Null $policy.StorageAccountResourceId
-		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is disabled.
@@ -1162,7 +1162,7 @@ function Test-RemoveAuditOnDatabase
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
 		Assert-Null $policy.StorageAccountResourceId
-		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is disabled.
@@ -1176,6 +1176,105 @@ function Test-RemoveAuditOnDatabase
 		
 		# Verify Diagnostic Settings do not exist.
 		Assert-AreEqual 0 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Test Server Auditing to storage acount in VNet
+#>
+function Test-ServerAuditingToStorageInVNet
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix "West Central US" "12.0" $True
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+	$subscriptionId = (Get-AzContext).Subscription.Id
+
+	try
+	{
+		# Enable Server Auditing to storage in VNet, and verify.
+	    $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+		$cmdlet = New-Object -TypeName Microsoft.Azure.Commands.Sql.Auditing.Cmdlet.SetAzSqlServerAudit
+		$cmdlet.DefaultProfile = $profile
+		$cmdlet.CommandRuntime = $PSCmdlet.CommandRuntime
+		$cmdlet.ResourceGroupName = $params.rgname
+		$cmdlet.ServerName = $params.serverName
+		$cmdlet.BlobStorageTargetState = "Enabled"
+		$cmdlet.StorageAccountResourceId = $params.storageAccountResourceId
+        $cmdlet.RoleAssignmentId = "B6C2E345-234A-421A-ADB2-4E81DD4470D6"
+		$cmdlet.ExecuteCmdlet()
+
+		$policy = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
+		Assert-AreEqual 0 $policy.RetentionInDays
+		
+		# Disable Server Auditing and verify.
+		Get-AzSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName | Set-AzSqlServerAudit -BlobStorageTargetState Disabled
+		$policy = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-Null $policy.StorageAccountResourceId
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-Null $policy.RetentionInDays
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Test Database Auditing to storage acount in VNet
+#>
+function Test-DatabaseAuditingToStorageInVNet
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix "West Central US" "12.0" $True
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+	$subscriptionId = (Get-AzContext).Subscription.Id
+
+	try
+	{
+		# Enable Database Auditing to storage in VNet, and verify.
+	    $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+		$cmdlet = New-Object -TypeName Microsoft.Azure.Commands.Sql.Auditing.Cmdlet.SetAzSqlDatabaseAudit
+		$cmdlet.DefaultProfile = $profile
+		$cmdlet.CommandRuntime = $PSCmdlet.CommandRuntime
+		$cmdlet.ResourceGroupName = $params.rgname
+		$cmdlet.ServerName = $params.serverName
+		$cmdlet.DatabaseName = $params.databaseName
+		$cmdlet.BlobStorageTargetState = "Enabled"
+		$cmdlet.StorageAccountResourceId = $params.storageAccountResourceId
+        $cmdlet.RoleAssignmentId = "F9CFE83C-552B-4ED1-BC58-741EF3A620AE"
+		$cmdlet.ExecuteCmdlet()
+
+		$policy = Get-AzSqlDatabaseAudit -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
+		Assert-AreEqual 0 $policy.RetentionInDays
+
+		# Disable Database Auditing and verify.
+		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Set-AzSqlDatabaseAudit -BlobStorageTargetState Disabled
+		$policy = Get-AzSqlDatabaseAudit -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-Null $policy.StorageAccountResourceId
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-Null $policy.RetentionInDays
 	}
 	finally
 	{
@@ -1210,7 +1309,7 @@ function Test-AuditOnServer
 		Assert-AreEqual 0 $policy.AuditActionGroup.Length
 		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "" $policy.PredicateExpression
-		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is disabled.
@@ -1303,7 +1402,7 @@ function Test-AuditOnServer
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-AreEqual "" $policy.PredicateExpression
 		Assert-Null $policy.StorageAccountResourceId
-		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
@@ -1331,7 +1430,7 @@ function Test-AuditOnServer
 		# Verify storage auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
 		Assert-Null $policy.StorageAccountResourceId
-		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
@@ -1356,7 +1455,7 @@ function Test-AuditOnServer
 		# Verify storage auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
 		Assert-Null $policy.StorageAccountResourceId
-		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
 		
 		# Verify log analytics auditing policy is disabled.
@@ -1400,7 +1499,7 @@ function Test-RemoveAuditOnServer
 		Assert-AreEqual 0 $policy.AuditActionGroup.Length
 		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "" $policy.PredicateExpression
-		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is disabled.
@@ -1493,7 +1592,7 @@ function Test-RemoveAuditOnServer
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-AreEqual "" $policy.PredicateExpression
 		Assert-Null $policy.StorageAccountResourceId
-		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is disabled.

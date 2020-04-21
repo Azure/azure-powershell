@@ -22,7 +22,7 @@ The **New-AzMetricAlertRuleV2DimensionSelection** cmdlet creates a local dimensi
 
 ## EXAMPLES
 
-### Example 1 : Create a dimension selection object
+### Example 1: Create a dimension selection object
 
 ```powershell
 PS C:\> New-AzMetricAlertRuleV2DimensionSelection -DimensionName LUN -ValuesToInclude 1,3,4
