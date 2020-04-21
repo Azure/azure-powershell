@@ -28,6 +28,12 @@ function Get-AzMySqlConnectionString {
         [System.String]
         ${ResourceGroupName},
 
+        [Parameter(ParameterSetName='Get', HelpMessage='The subscription ID that identifies an Azure subscription.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [System.String]
+        ${SubscriptionId},
+
         [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline, HelpMessage = 'The source server object to create replica from.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer]

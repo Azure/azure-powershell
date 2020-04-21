@@ -51,7 +51,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
-module-version: 0.0.1
+module-version: 0.1.0
 title: MySQL
 subject-prefix: 'MySQL'
 
@@ -90,7 +90,7 @@ directive:
     hide: true
   - where:
       parameter-name: VirtualNetworkSubnetId
-      subject: VirtualNetwork
+      subject: VirtualNetworkRule
     set:
       parameter-name: SubnetId
   - where:

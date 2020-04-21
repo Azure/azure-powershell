@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the MariaDb service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.2 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -53,7 +53,7 @@ input-file:
   - $(repo)/specification/mariadb/resource-manager/Microsoft.DBforMariaDB/preview/2018-06-01-preview/mariadb.json
 
 title: MariaDB
-module-version: 0.0.1
+module-version: 0.1.0
 
 directive:
   - where:
@@ -134,7 +134,7 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/internal partial interface IServerForCreateInternal/, 'public partial interface IServerForCreateInternal');
-  - from: (.*)AzMariaDbServer_(.*).cs
+  - from: source-file-csharp
     where: $
     transform: $ = $.replace('public int StorageProfileBackupRetentionDay', '[System.Management.Automation.ValidateRangeAttribute(7,35)]\n        public int StorageProfileBackupRetentionDay');
 ```

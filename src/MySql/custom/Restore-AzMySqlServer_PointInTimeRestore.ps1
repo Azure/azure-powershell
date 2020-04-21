@@ -29,6 +29,12 @@ function Restore-AzMySqlServer_PointInTimeRestore {
         [System.String]
         ${ResourceGroupName},
 
+        [Parameter(HelpMessage='The subscription ID that identifies an Azure subscription.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [System.String]
+        ${SubscriptionId},
+
         [Parameter(Mandatory, HelpMessage = 'The location the resource resides in.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.DateTime]
