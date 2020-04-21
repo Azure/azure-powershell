@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Skip duplicated rules when add NetworkRules, to avoid server failure
+    - `Add-AzStorageAccountNetworkRule`
 
 ## Version 1.14.0
 * Added breaking change notice for Azure File cmdlets output change in a future release
