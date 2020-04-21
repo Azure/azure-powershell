@@ -102,6 +102,29 @@ namespace Microsoft.Azure.Commands.Management.Storage
             IgnoreCase = true)]
         public string RootSquash { get; set; }
 
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Access tier for specific share. StorageV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium.")]
+        [ValidateSet(ShareAccessTier.TransactionOptimized,
+            ShareAccessTier.Premium,
+            ShareAccessTier.Hot,
+            ShareAccessTier.Cool,
+           IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string AccessTier
+        {
+            get
+            {
+                return accessTier;
+            }
+            set
+            {
+                accessTier = value;
+            }
+        }
+        private string accessTier = null;
+        
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -136,7 +159,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 metadata: MetadataDictionary,
                                 shareQuota: shareQuota,
                                 enabledProtocols: this.EnabledProtocol,
-                                rootSquash: this.RootSquash));
+                                rootSquash: this.RootSquash,
+                                accessTier: accessTier));
 
                 WriteObject(new PSShare(share));
             }
