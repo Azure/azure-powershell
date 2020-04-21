@@ -114,6 +114,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
             AzureAttestationServiceEndpointResourceId =
                 other.GetProperty<string>(nameof(AzureAttestationServiceEndpointResourceId));
             AzureAttestationServiceEndpointSuffix = other.GetProperty<string>(nameof(AzureAttestationServiceEndpointSuffix));
+            AzureSynapseAnalyticsEndpointResourceId =
+                other.GetProperty<string>(nameof(AzureSynapseAnalyticsEndpointResourceId));
+            AzureSynapseAnalyticsEndpointSuffix = other.GetProperty<string>(nameof(AzureSynapseAnalyticsEndpointSuffix));
             VersionProfiles.Populate(nameof(VersionProfiles), other);
             this.PopulateExtensions(other);
         }
@@ -321,6 +324,36 @@ namespace Microsoft.Azure.Commands.Profile.Models
             set
             {
                 this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, value);
+            }
+        }
+
+        /// <summary>
+        /// The domain name suffix for Azure Synapse Analyticss
+        /// </summary>
+        public string AzureSynapseAnalyticsEndpointSuffix
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the resource Id to use for contacting the Synapse Analyticss endpoint
+        /// </summary>
+        public string AzureSynapseAnalyticsEndpointResourceId
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId, value);
             }
         }
 
