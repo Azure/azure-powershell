@@ -134,9 +134,9 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.Tag = this.IsParameterBound(c => c.Tag) ? this.Tag : this.InputObject.Tags;
                 this.NodeCount = this.IsParameterBound(c => c.NodeCount) ? this.NodeCount : this.InputObject.NodeCount.Value;
                 this.NodeSize = this.IsParameterBound(c => c.NodeSize) ? this.NodeSize : this.InputObject.NodeSize;
-                this.AutoScaleMinNodeCount = this.IsParameterBound(c => c.AutoScaleMinNodeCount) ? this.AutoScaleMinNodeCount : (this.InputObject.AutoScale?.MinNodeCount ?? default);
-                this.AutoScaleMaxNodeCount = this.IsParameterBound(c => c.AutoScaleMaxNodeCount) ? this.AutoScaleMaxNodeCount : (this.InputObject.AutoScale?.MaxNodeCount ?? default);
-                this.AutoPauseDelayInMinutes = this.IsParameterBound(c => c.AutoPauseDelayInMinutes) ? this.AutoPauseDelayInMinutes : (this.InputObject.AutoPause?.DelayInMinutes ?? default);
+                this.AutoScaleMinNodeCount = this.IsParameterBound(c => c.AutoScaleMinNodeCount) ? this.AutoScaleMinNodeCount : (this.InputObject.AutoScale?.MinNodeCount ?? 0);
+                this.AutoScaleMaxNodeCount = this.IsParameterBound(c => c.AutoScaleMaxNodeCount) ? this.AutoScaleMaxNodeCount : (this.InputObject.AutoScale?.MaxNodeCount ?? 0);
+                this.AutoPauseDelayInMinutes = this.IsParameterBound(c => c.AutoPauseDelayInMinutes) ? this.AutoPauseDelayInMinutes : (this.InputObject.AutoPause?.DelayInMinutes ?? 0);
                 libraryRequirements = this.IsParameterBound(c => c.LibraryRequirementsFilePath)
                     ? CreateLibraryRequirements()
                     : (this.InputObject.LibraryRequirements == null ? null :
@@ -189,8 +189,8 @@ namespace Microsoft.Azure.Commands.Synapse
                 existingSparkPool.AutoScale = new AutoScaleProperties
                 {
                     Enabled = this.EnableAutoScale.IsPresent ? true : existingSparkPool.AutoScale?.Enabled ?? false,
-                    MinNodeCount = this.IsParameterBound(c => c.AutoScaleMinNodeCount) ? AutoScaleMinNodeCount : existingSparkPool.AutoScale?.MinNodeCount ?? default,
-                    MaxNodeCount = this.IsParameterBound(c => c.AutoScaleMaxNodeCount) ? AutoScaleMaxNodeCount : existingSparkPool.AutoScale?.MaxNodeCount ?? default
+                    MinNodeCount = this.IsParameterBound(c => c.AutoScaleMinNodeCount) ? AutoScaleMinNodeCount : existingSparkPool.AutoScale?.MinNodeCount ?? 0,
+                    MaxNodeCount = this.IsParameterBound(c => c.AutoScaleMaxNodeCount) ? AutoScaleMaxNodeCount : existingSparkPool.AutoScale?.MaxNodeCount ?? 0
                 };
             }
 
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     Enabled = this.EnableAutoPause.IsPresent ? true : existingSparkPool.AutoPause?.Enabled ?? false,
                     DelayInMinutes = this.IsParameterBound(c => c.AutoPauseDelayInMinutes)
                         ? this.AutoPauseDelayInMinutes
-                        : existingSparkPool.AutoPause?.DelayInMinutes ?? default
+                        : existingSparkPool.AutoPause?.DelayInMinutes ?? 0
                 };
             }
 

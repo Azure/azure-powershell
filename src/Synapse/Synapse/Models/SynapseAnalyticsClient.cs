@@ -501,8 +501,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             string workspaceName,
             string sparkPoolName,
             ExtendedLivyBatchResponse batch,
-            int pollingIntervalInSeconds = default,
-            int timeoutInSeconds = default,
+            int pollingIntervalInSeconds = 0,
+            int timeoutInSeconds = 0,
             Action<string> writeLog = null)
         {
             return Poll(
@@ -721,12 +721,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             Func<T, T> refresh,
             IList<string> livyReadyStates,
             bool isFinalState = true,
-            int pollingInMilliseconds = default,
-            int timeoutInMilliseconds = default,
+            int pollingInMilliseconds = 0,
+            int timeoutInMilliseconds = 0,
             Action<T> writeLog = null)
         {
             var timeWaitedInMilliSeconds = 0;
-            if (pollingInMilliseconds == default)
+            if (pollingInMilliseconds == 0)
             {
                 pollingInMilliseconds = SynapseConstants.DefaultPollingInterval;
             }

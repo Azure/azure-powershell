@@ -21,7 +21,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
-//using StorageManagementClient = Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
 using Microsoft.Azure.ServiceManagement.Common.Models;
@@ -51,11 +50,11 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 
         public static SynapseTestBase NewInstance => new SynapseTestBase();
 
-        protected static string TestResourceGroupName = "zzy-test-rg";
+        protected static string TestResourceGroupName;
 
-        protected static string TestWorkspaceName = "testsynapseworkspace";
+        protected static string TestWorkspaceName;
 
-        protected static string TestSparkPoolName = "testsparkpool";
+        protected static string TestSparkPoolName;
 
         protected SynapseTestBase()
         {

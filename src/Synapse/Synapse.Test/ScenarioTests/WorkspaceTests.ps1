@@ -22,7 +22,8 @@ function Test-SynapseWorkspace
         Assert-False {Test-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName}
 
         New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageGen2AccountName -Location $location -SkuName Standard_GRS -Kind StorageV2 -EnableHierarchicalNamespace $true
-        $password = ConvertTo-SecureString "Synapse123!" -AsPlainText -Force
+        $password = "Syn" + (getAssetName) + "!"
+        $password = ConvertTo-SecureString $password -AsPlainText -Force
         $creds = New-Object System.Management.Automation.PSCredential ("psuser", $password)
         $workspaceCreated = New-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -Location $location -DefaultDataLakeStorageAccountName $storageGen2AccountName -DefaultDataLakeStorageFilesystem $storageFileSystemName -SqlAdministratorLoginCredential $creds
     
