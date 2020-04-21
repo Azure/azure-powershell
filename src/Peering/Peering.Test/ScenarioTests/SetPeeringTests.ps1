@@ -19,7 +19,9 @@ SetNewIP
 function Test-SetNewIP {
     try {
         $peerAsn = makePeerAsn (getRandomNumber)
-        $peering = CreateExchangePeering $peerAsn.Name
+        $resourceGroups = TestSetup-CreateResourceGroup
+        $resourceGroup = $resourceGroups.ResourceGroupName
+        $peering = CreateExchangePeering $resourceGroup $peerAsn.Name
         $peer = Get-AzPeering -ResourceId $peering.Id
         $peerIpAddress = $peer.Connections[0].BgpSession.PeerSessionIPv4Address
         $offset = getPeeringVariable "offSet" (Get-Random -Maximum 100 -Minimum 1 | % { $_ * 2 } )
@@ -28,7 +30,9 @@ function Test-SetNewIP {
         Assert-ThrowsContains { $peer | Update-AzPeering } "BadArgument"
     }
     finally {
-        Get-AzPeerAsn | Where-Object { $_.Name -match $peerAsn.Name  } | Remove-AzPeerAsn -Force
+        Clean-Peering $peering.Id
+        Clean-ASN $peerAsn.Name
+        Clean-ResourceGroup $resourceGroup
     }
 }
 <#
@@ -38,14 +42,18 @@ function Test-SetNewIP {
 function Test-SetNewIPv6 {
     try {
         $peerAsn = makePeerAsn (getRandomNumber)
-        $peering = CreateExchangePeering $peerAsn.Name
+        $resourceGroups = TestSetup-CreateResourceGroup
+        $resourceGroup = $resourceGroups.ResourceGroupName
+        $peering = CreateExchangePeering $resourceGroup $peerAsn.Name
         $peer = Get-AzPeering -ResourceId $peering.Id
         $peerIpAddress = getPeeringVariable "IpAddress" (newIpV6Address $false $false 0 0)
         $peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringExchangeConnectionObject -PeerSessionIPv6Address $peerIpAddress
         Assert-ThrowsContains { $peer | Update-AzPeering } "BadArgument"
     }
     finally {
-        Get-AzPeerAsn | Where-Object { $_.Name -match $peerAsn.Name  } | Remove-AzPeerAsn -Force
+        Clean-Peering $peering.Id
+        Clean-ASN $peerAsn.Name
+        Clean-ResourceGroup $resourceGroup
     }
 }
 <#
@@ -54,19 +62,17 @@ function Test-SetNewIPv6 {
     #>
 function Test-SetNewBandwidth {
     try {
-        $resourceGroup = getAssetName "rg"
-        $randomNum = getRandomNumber
-        $peerAsn = makePeerAsn $randomNum
-        $peering = CreateDirectPeeringForUseWithPeering $resourceGroup $randomNum
-        $peer = Get-AzPeering -ResourceId $peering.Id
-        $bandwidth = $peer.Connections[0].BandwidthInMbps
-        $bandwidth = getPeeringVariable "newBandwidth" (Get-Random -Maximum 2 -Minimum 1 | % { $_ * 10000 } | % { $_ + $bandwidth })
-        $peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -BandwidthInMbps $bandwidth 
-        $setPeer = $peer | Update-AzPeering 
-        Assert-NotNull $setPeer
-    }
-    finally {
-        Get-AzPeerAsn | Where-Object { $_.Name -match $peerAsn.Name  } | Remove-AzPeerAsn -Force
+    $peering = (Get-AzPeering -Kind Direct)[0];
+    $resourceGroup = (Get-AzResource -ResourceId $peering.Id).ResourceGroupName
+    $peer = Get-AzPeering -ResourceId $peering.Id
+    $bandwidth = $peer.Connections[0].BandwidthInMbps
+    $bandwidth = getPeeringVariable "newBandwidth" (Get-Random -Maximum 2 -Minimum 1 | % { $_ * 10000 } | % { $_ + $bandwidth })
+    $peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -BandwidthInMbps $bandwidth 
+    $setPeer = $peer | Update-AzPeering 
+
+    Assert-NotNull $setPeer
+        }
+    catch {
     }
 }
     
@@ -77,13 +83,16 @@ function Test-SetNewBandwidth {
 function Test-SetNewMd5Hash {
     try {
         $peerAsn = makePeerAsn (getRandomNumber)
-        $peers = Get-AzPeering -Kind Exchange 
-        $peer = $peers | Select-Object -First 1
+        $resourceGroups = TestSetup-CreateResourceGroup
+        $resourceGroup = $resourceGroups.ResourceGroupName
+        $peering = CreateExchangePeering $resourceGroup $peerAsn.Name
         $hash = getHash
-        $connection = $peer.Connections[0] | Set-AzPeeringExchangeConnectionObject -MD5AuthenticationKey $hash
-        Assert-ThrowsContains { $setPeer = Update-AzPeering -ResourceId $peer.Id -ExchangeConnection $connection } "ErrorCode"
+        $connection = $peering.Connections[0] | Set-AzPeeringExchangeConnectionObject -MD5AuthenticationKey $hash
+        Assert-ThrowsContains { $setPeer = Update-AzPeering -ResourceId $peering.Id -ExchangeConnection $connection } "ErrorCode"
     }
     finally {
-        Get-AzPeerAsn | Where-Object { $_.Name -match $peerAsn.Name } | Remove-AzPeerAsn -Force
+        Clean-Peering $peering.Id
+        Clean-ASN $peerAsn.Name
+        Clean-ResourceGroup $resourceGroup
     }
 }

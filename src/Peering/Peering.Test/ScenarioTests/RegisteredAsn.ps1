@@ -16,12 +16,9 @@
 GetPeeringServiceProviders 
 #>
 function Test-CreateRegisteredAsn {
-    $randNum = getRandomNumber
-    $assetName = getAssetName "peering"
-    $resourceGroup = getAssetName "rg"
-    $peering = CreateDirectPeeringForUseWithPeering $resourceGroup $randNum
+    $peering = (Get-AzPeering -Kind Direct)[0];
+    $resourceGroup = (Get-AzResource -ResourceId $peering.Id).ResourceGroupName
     Assert-NotNull $peering
-    $peering = Get-AzPeering -ResourceGroupName $resourceGroup -Name $peering.Name
     $name = getAssetName "name"
     $Asn = getRandomNumber
     Assert-ThrowsContains { $peering | New-AzPeeringRegisteredAsn -Name $name -Asn $Asn} "OperationNotSupported"
@@ -33,10 +30,10 @@ function Test-GetRegisteredAsn {
     $peering = (Get-AzPeering -Kind Direct)[0];
     $name = getAssetName
     $assetName = getAssetName "peering"
-    $resourceGroup = getAssetName "rg"
+    $resourceGroup = (Get-AzResource -ResourceId $peering.Id).ResourceGroupName
     Assert-ThrowsContains { $peering | Get-AzPeeringRegisteredAsn -Name $name } "NotFound"
     Assert-ThrowsContains { Get-AzPeeringRegisteredAsn -ResourceId $peering.Id } "peeringName"
-    Assert-Null (Get-AzPeeringRegisteredAsn -ResourceGroupName $resourceGroup -PeeringName $assetName)
+    Assert-ThrowsContains {Get-AzPeeringRegisteredAsn -ResourceGroupName $resourceGroup -PeeringName $assetName} "peering"
     Assert-ThrowsContains { Get-AzPeeringRegisteredAsn -ResourceGroupName $resourceGroup -PeeringName $assetName -Name $name } "NotFound"
     Assert-ThrowsContains { Get-AzPeeringRegisteredAsn -ResourceGroupName $resourceGroup -PeeringName $assetName -Name $name -ResourceId "asdfa" } "Parameter set cannot be resolved using the specified named parameters"
 }

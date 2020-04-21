@@ -13,7 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 #cd ..
-$dll = dir | Where-Object { $_.Name -match "Peering.Test.dll" } | % { $_.FullName };
+$dll = Get-ChildItem | Where-Object { $_.Name -match "Peering.Test.dll" } | ForEach-Object { $_.FullName };
 [Reflection.Assembly]::LoadFile($dll);
 $ipGenerator = New-Object Microsoft.Azure.Commands.Peering.Test.ScenarioTests.IPGenerator;
 $serviceClient = New-Object Microsoft.Azure.Commands.Peering.Test.ScenarioTests.InternalServiceClient;
@@ -157,12 +157,11 @@ function NewExchangeConnectionV4($facilityId, $v4) {
 
 function getPeeringVariable {
     param([string]$variableName, $value)
-    $testName = getTestName
     if ($value) {
         $result = $value
     }
     else {
-        $reult = $null
+        $result = $null
     }
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables.ContainsKey($variableName)) {
         $result = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables[$variableName]
@@ -190,6 +189,19 @@ function Assert-Tags($tags1, $tags2) {
     }
 }
 
+function Clean-ASN($name){
+try{
+    Remove-AzPeerAsn -Name $name -Force -PassThru
+    }catch{}
+}
+
+function Clean-Peering($id){
+try{
+    Remove-AzPeering -ResourceId $id -Force -PassThru
+    }catch{
+    }
+}
+
 <#
 .SYNOPSIS
 Cleans the created resource groups
@@ -199,7 +211,9 @@ function Clean-ResourceGroup($rgname) {
     if ($assemblies -notcontains 'Microsoft.Azure.Test.HttpRecorder.HttpMockServer' `
             -or $assemblies -notcontains 'Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode' `
             -or [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzResourceGroup -Name $rgname -Force
+        try{
+            Remove-AzResourceGroup -Name $rgname -Force
+        }catch{ }
     }
 }
 
@@ -208,7 +222,6 @@ function NewDirectConnectionV4V6($facilityId, $bandwidth) {
     $md5 = getHash
     $md5 = $md5.ToString()
     Write-Debug "Created Hash $md5"
-    $rand1 = Get-Random -Maximum 20 -Minimum 3
     $rand2 = Get-Random -Maximum 200 -Minimum 1
     $sessionv4 = newIpV4Address $true $true 0 $rand2
     $sessionv6 = newIpV6Address $true $true 0 $rand2
@@ -253,7 +266,7 @@ function CreateDirectPeeringForUseWithPeering($rgname, $randNum = $null) {
     Write-Debug $resourceGroup
     #Create Asn
     Write-Debug "Getting the Asn Information"
-    if ($randNum -ne $null) {
+    if ($null -ne $randNum) {
         $randNum = getRandomNumber
         Write-Debug "Random Number $randNum";
         $peerAsn = makePeerAsn $randNum
@@ -272,10 +285,6 @@ function CreateDirectPeeringForUseWithPeering($rgname, $randNum = $null) {
     $bandwidth2 = getBandwidth
     $tags = @{"tag1" = "value1" }
     $connection1 = NewDirectConnectionV4V6 $facilityId $bandwidth
-    # variables to save for playback
-    $sessionv4 = getPeeringVariable "sessionv4" $connection1.BgpSession.SessionPrefixV4
-    $sessionv6 = getPeeringVariable "sessionv6" $connection1.BgpSession.SessionPrefixV6
-    $md5 = $connection1.BgpSession.Md5AuthenticationKey
     #connection2
     $connection2 = NewDirectConnectionV4V6 $facilityId $bandwidth2
     #create peering
@@ -289,14 +298,12 @@ function CreateDirectPeeringForUseWithPeering($rgname, $randNum = $null) {
     return $createdPeering
 }
 
-function CreateExchangePeering($as) {
+function CreateExchangePeering($resourceGroup, $as) {
     #Hard Coded locations becuase of limitations in locations
     Write-Debug "Getting the Asn Information"
     $peerAsn = Get-AzPeerAsn -Name $as
     $asn = $peerAsn.Id
-    $asnName = $peerAsn.Name
     $resourceName = getAssetName 
-    $resourceGroup = getAssetName "rg"
     $peeringLocation = "Seattle"
     $kind = "Exchange"
     Write-Debug "Getting the Facility Information"

@@ -21,9 +21,8 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     using System.Linq;
 
     using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Internal.Subscriptions;
-    using Microsoft.Azure.Management.Internal.Resources;
     using Microsoft.Azure.Management.Peering;
+    using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -51,13 +50,13 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 
         protected void SetupManagementClients(MockContext context)
         {
-            this.ResourceManagementClient = this.GetResourceManagementClient(context);
+            this.ResourceManagementClient = GetResourceManagementClient(context);
             this.PeeringManagementClient = GetEdgeManagementClient(context);
             this.SubscriptionClient = GetSubscriptionManagementClient(context);
 
             this._helper.SetupManagementClients(
                 this.ResourceManagementClient,
-                this.PeeringManagementClient, 
+                this.PeeringManagementClient,
                 this.SubscriptionClient);
         }
 
@@ -128,22 +127,19 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
             }
         }
 
-        protected ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            var environment = TestEnvironmentFactory.GetTestEnvironment();
-             return context.GetServiceClient<ResourceManagementClient>(environment);
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static PeeringManagementClient GetEdgeManagementClient(MockContext context)
         {
-            var environment = TestEnvironmentFactory.GetTestEnvironment();
-            return context.GetServiceClient<PeeringManagementClient>(environment);
+            return context.GetServiceClient<PeeringManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static SubscriptionClient GetSubscriptionManagementClient(MockContext context)
         {
-            var environment = TestEnvironmentFactory.GetTestEnvironment();
-            var subContext = context.GetServiceClient<SubscriptionClient>(environment);
+            var subContext = context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
             return subContext;
         }
     }

@@ -29,7 +29,7 @@ Gets the PeerAsn for a subscription.
 
 ### Example 1
 ```powershell
-PS C:> Get-AzPeerAsn -PeerName Contoso
+PS C:> Get-AzPeerAsn -Name Contoso
 
 PeerContactInfo : Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo
 PeerName        : Contoso

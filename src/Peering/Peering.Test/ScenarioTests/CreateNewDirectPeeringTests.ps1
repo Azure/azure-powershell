@@ -178,18 +178,7 @@ function Test-NewDirectPeeringPremiumDirectFree
 	#create peering
 	$connection2.UseForPeeringService = $true
 	Write-Output "New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -MicrosoftNetwork AS8075 -Sku Premium_Direct_Free -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2"
-    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -MicrosoftNetwork AS8075 -Sku "Premium_Direct_Free" -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2
-	Assert-NotNull $createdPeering
-	Assert-AreEqual $kind $createdPeering.Kind
-	Assert-AreEqual $resourceName $createdPeering.Name
-	Assert-AreEqual $peeringLocation[0].PeeringLocation $createdPeering.PeeringLocation
-	Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
-	Assert-AreEqual $facilityId $createdPeering.Connections[0].PeeringDBFacilityId 
-    Assert-AreEqual $bandwidth $createdPeering.Connections[0].BandwidthInMbps
-	Assert-AreEqual $sessionv4 $createdPeering.Connections[0].BgpSession.SessionPrefixV4
-    Assert-AreEqual $sessionv6 $createdPeering.Connections[0].BgpSession.SessionPrefixV6
-	Assert-AreEqual "Premium_Direct_Free" $createdPeering.Sku.Name
-	Assert-NotNull $createdPeering.Connections[1].BgpSession
+    Assert-ThrowsContains {$createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -MicrosoftNetwork AS8075 -Sku "Premium_Direct_Free" -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2} "Internal"
 }
 
 <#

@@ -17,15 +17,14 @@ GetPeeringServiceProviders
 #>
 function Test-CreateRegisteredPrefix {
     $randNum = getRandomNumber
-    $assetName = getAssetName "peering"
-    $resourceGroup = getAssetName "rg"
     $peering = (Get-AzPeering -Kind Direct)[0];
+    $resourceGroup = (Get-AzResource -ResourceId $peering.Id).ResourceGroupName
+    Assert-NotNull $peering
     $name = getAssetName "name"
     $prefix = newIpV4Address $true $false 0 $randNum
-    $peeringPrefix = $peering | New-AzPeeringRegisteredPrefix -Name $name -Prefix $prefix
-    Assert-NotNull $peeringPrefix 
-    Assert-ThrowsContains { New-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroup -PeeringName $peering.Name -Name $name -Prefix $prefix } "NotFound"
-    Assert-NotNull (New-AzPeeringRegisteredPrefix -ResourceId $peering.Id -Name $name -Prefix $prefix)
+    Assert-ThrowsContains { $peeringPrefix = $peering | New-AzPeeringRegisteredPrefix -Name $name -Prefix $prefix } "Operation is not supported for this peering type"
+    Assert-ThrowsContains { New-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroup -PeeringName $peering.Name -Name $name -Prefix $prefix } "OperationNotSupported"
+    Assert-ThrowsContains { New-AzPeeringRegisteredPrefix -ResourceId $peering.Id -Name $name -Prefix $prefix} "OperationNotSupported"
     Assert-ThrowsContains { $peering | New-AzPeeringRegisteredPrefix -Name $name -Prefix "prefix" } "Unrecognized routePrefix prefix"
 }
 
@@ -33,10 +32,10 @@ function Test-GetRegisteredPrefix {
     $peering = (Get-AzPeering -Kind Direct)[0];
     $name = getAssetName
     $assetName = getAssetName "peering"
-    $resourceGroup = getAssetName "rg"
+    $resourceGroup = (Get-AzResource -ResourceId $peering.Id).ResourceGroupName
     Assert-ThrowsContains { $peering | Get-AzPeeringRegisteredPrefix -Name $name } "NotFound"
     Assert-ThrowsContains { Get-AzPeeringRegisteredPrefix -ResourceId $peering.Id } "peeringName"
-    Assert-Null (Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroup -PeeringName $assetName)
+   Assert-ThrowsContains {Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroup -PeeringName $assetName} "NotFound"
     Assert-ThrowsContains { Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroup -PeeringName $assetName -Name $name } "NotFound"
     Assert-ThrowsContains { Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroup -PeeringName $assetName -Name $name -ResourceId "asdfa" } "Parameter set cannot be resolved using the specified named parameters"
 }

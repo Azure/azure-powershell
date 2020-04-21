@@ -20,7 +20,9 @@ function Test-UpdateExchangeIPv4OnInputObject {
     $randNum = getRandomNumber
     Write-Debug "Random Number $randNum";
     $peerAsn = makePeerAsn $randNum
-    $peering = CreateExchangePeering $peerAsn.Name
+    $resourceGroups = TestSetup-CreateResourceGroup
+    $resourceGroup = $resourceGroups.ResourceGroupName
+    $peering = CreateExchangePeering $resourceGroup $peerAsn.Name
     Assert-NotNull $peering
     $ipv4 = $peering.Connections[0].BgpSession.PeerSessionIPv4Address
     $newipv4 = getPeeringVariable "newIpv4" (changeIp "$ipv4/32" $false 15 $false)
@@ -41,7 +43,9 @@ function Test-UpdateExchangeIPv6OnResourceId {
     $randNum = getRandomNumber
     Write-Debug "Random Number $randNum";
     $peerAsn = makePeerAsn $randNum
-    $peering = CreateExchangePeering $peerAsn.Name
+    $resourceGroups = TestSetup-CreateResourceGroup
+    $resourceGroup = $resourceGroups.ResourceGroupName
+    $peering = CreateExchangePeering $resourceGroup $peerAsn.Name
     Assert-NotNull $peering
     $newipv6 = getPeeringVariable "newIpv6" (newIpV6Address $true $false 0 (getRandomNumber))
     $oldpeering = $peering
@@ -59,7 +63,9 @@ function Test-UpdateExchangeMd5OnNameAndResourceGroup {
     $randNum = getRandomNumber
     Write-Debug "Random Number $randNum";
     $peerAsn = makePeerAsn $randNum
-    $peering = CreateExchangePeering $peerAsn.Name
+    $resourceGroups = TestSetup-CreateResourceGroup
+    $resourceGroup = $resourceGroups.ResourceGroupName
+    $peering = CreateExchangePeering $resourceGroup $peerAsn.Name
     Assert-NotNull $peering
     $resourceName = $peering.Name
     $oldpeering = $peering
