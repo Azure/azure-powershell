@@ -65,7 +65,6 @@ function Test-GetPeerAsn
 	Assert-True {$asn.PeerContactDetail | % {$_.Email -like "*@*.com"}}
 	}
 	finally{
-		Write "Failed to get peer asn"
 	}
 }
 <#
