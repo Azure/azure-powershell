@@ -59,7 +59,12 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 BlueprintId = assignment.BlueprintId,
                 ProvisioningState = PSAssignmentProvisioningState.Unknown,
                 Status = new PSAssignmentStatus(),
-                Locks = new PSAssignmentLockSettings {Mode = PSLockMode.None},
+                Locks = new PSAssignmentLockSettings
+                {
+                    Mode = PSLockMode.None,
+                    ExcludedActions = (List<string>)assignment.Locks.ExcludedActions,
+                    ExcludedPrincipals = (List<string>)assignment.Locks.ExcludedPrincipals
+                },
                 Parameters = new Dictionary<string, PSParameterValue>(),
                 ResourceGroups = new Dictionary<string, PSResourceGroupValue>()
             };
