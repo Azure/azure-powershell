@@ -23,6 +23,23 @@ This means there are issues with your help files.
 
 Regenerate MD help files [this way](development-docs/help-generation.md) and update "{{\*}}" placeholders
 
+## Help generation failure (online version url)
+
+### Message
+
+> Online version in the header of the file is incorrect.
+
+### Reasons
+
+This means the online version url in the header of the help document is either incorrect or missing.
+
+### Solution
+
+The url should exactly match the schema `https://docs.microsoft.com/en-us/powershell/module/az.{modulename}/{cmdlet-name}`, all in lower case.
+
+### Example
+> https://docs.microsoft.com/en-us/powershell/module/az.keyvault/new-azkeyvault
+
 ## Code analysis failures
 
 ### Message
