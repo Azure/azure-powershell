@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 routeConfiguration: ToSdkRouteConfiguration(psRoutingRule.RouteConfiguration),
                 name: psRoutingRule.Name,
                 enabledState: psRoutingRule.EnabledState.ToString(),
-                rulesEngine: new SdkRefId(psRoutingRule.RulesEngineId)
+                rulesEngine: string.IsNullOrWhiteSpace(psRoutingRule.RulesEngineId) ? null : new SdkRefId(psRoutingRule.RulesEngineId)
             );
         }
 
@@ -335,9 +335,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
         public static SdkBackend ToSdkBackend(this PSBackend psBackend)
         {
             return new SdkBackend(
-                psBackend.Address,
-                psBackend.PrivateLinkAlias,
-                (PrivateEndpointStatus)Enum.Parse(typeof(PrivateEndpointStatus), psBackend.PrivateEndpointStatus.ToString()),
+                address: psBackend.Address,
+                privateLinkAlias: psBackend.PrivateLinkAlias,
+                privateEndpointStatus: psBackend.PrivateEndpointStatus == null ? (PrivateEndpointStatus?)null : (PrivateEndpointStatus)Enum.Parse(typeof(PrivateEndpointStatus), psBackend.PrivateEndpointStatus.ToString()),
                 psBackend.PrivateLinkApprovalMessage,
                 psBackend.HttpPort,
                 psBackend.HttpsPort,

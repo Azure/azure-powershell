@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.FrontDoor" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.7.7" />
   </ItemGroup>
 
   <ItemGroup>

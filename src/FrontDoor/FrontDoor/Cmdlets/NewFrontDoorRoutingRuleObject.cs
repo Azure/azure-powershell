@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 subid, ResourceGroupName, FrontDoorName, x)).ToList();
             string BackendPoolId = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/frontDoors/{2}/BackendPools/{3}",
                 subid, ResourceGroupName, FrontDoorName, BackendPoolName);
-            string RulesEngineId = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/frontDoors/{2}/BackendPools/{3}",
+            string RulesEngineId = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/frontDoors/{2}/RulesEngines/{3}",
                 subid, ResourceGroupName, FrontDoorName, RulesEngineName);
 
             var RoutingRule = new PSRoutingRule
