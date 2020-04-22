@@ -13,7 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 function New-AzImageBuilderCustomizer {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IImageTemplateCustomizer')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     Param(
         #region CustomizerCommon
@@ -118,7 +118,7 @@ function New-AzImageBuilderCustomizer {
     
     process {
         if ($PSBoundParameters.ContainsKey('PowerShellCustomizer')) {
-            $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplatePowerShellCustomizer]::New()
+            $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplatePowerShellCustomizer]::New()
             $Customizer.Type = "PowerShell"
             $Customizer.Inline = $Inline
             $Customizer.RunElevated = $RunElevated
@@ -126,25 +126,25 @@ function New-AzImageBuilderCustomizer {
             $Customizer.Sha256Checksum = $Sha256Checksum
             $Customizer.ValidExitCode = $ValidExitCode
         } elseif ($PSBoundParameters.ContainsKey('WindowsRestartCustomizer')) {
-            $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateRestartCustomizer]::New()
+            $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplateRestartCustomizer]::New()
             $Customizer.Type = "WindowsRestart"
             $Customizer.RestartCheckCommand = $RestartCheckCommand
             $Customizer.RestartCommand = $RestartCommand
             $Customizer.RestartTimeout = $RestartTimeout
-        } elseif ($PSBoundParameters.ContainsKey('WindowsUpdateCustomizer')) {
-            $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateWindowsUpdateCustomizer]::New()
-            $Customizer.Type = "WindowsUpdate"
-            $Customizer.Filter = $Filter
-            $Customizer.SearchCriterion = $SearchCriterion
-            $Customizer.UpdateLimit = $UpdateLimit
+        # } elseif ($PSBoundParameters.ContainsKey('WindowsUpdateCustomizer')) {
+        #     $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplateWindowsUpdateCustomizer]::New()
+        #     $Customizer.Type = "WindowsUpdate"
+        #     $Customizer.Filter = $Filter
+        #     $Customizer.SearchCriterion = $SearchCriterion
+        #     $Customizer.UpdateLimit = $UpdateLimit
         } elseif ($PSBoundParameters.ContainsKey('ShellCustomizer')) {
-            $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateShellCustomizer]::New()
+            $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplateShellCustomizer]::New()
             $Customizer.Type = "Shell"
             $Customizer.Inline = $Inline
             $Customizer.ScriptUri = $ScriptUri
             $Customizer.Sha256Checksum = $Sha256Checksum
         } elseif ($PSBoundParameters.ContainsKey('FileCustomizer')) {
-            $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateFileCustomizer]::New()
+            $Customizer = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplateFileCustomizer]::New()
             $Customizer.Type = "File"
             $Customizer.Destination = $Destination
             $Customizer.Sha256Checksum = $Sha256Checksum

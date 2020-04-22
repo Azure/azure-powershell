@@ -14,7 +14,7 @@
 # ----------------------------------------------------------------------------------
 
 function New-AzImageBuilderTemplate {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplate])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IImageTemplate])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -50,20 +50,21 @@ function New-AzImageBuilderTemplate {
         ${BuildTimeoutInMinute},
 
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IImageTemplateCustomizer[]]
         # Specifies the properties used to describe the customization steps of the image, like Image source etc
         # To construct, see NOTES section for CUSTOMIZE properties and create a hash table.
         ${Customize},
 
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IImageTemplateDistributor[]]
         # The distribution targets where the image output needs to go to.
         # To construct, see NOTES section for DISTRIBUTE properties and create a hash table.
         ${Distribute},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSource]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IImageTemplateSource]
         ${Source},
 
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType])]
@@ -74,7 +75,7 @@ function New-AzImageBuilderTemplate {
         ${IdentityType},
     
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateIdentityUserAssignedIdentities]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IImageTemplateIdentityUserAssignedIdentities]))]
         [System.Collections.Hashtable]
         # The list of user identities associated with the image template.
         # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -120,7 +121,7 @@ function New-AzImageBuilderTemplate {
 
     
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},
@@ -206,7 +207,7 @@ function New-AzImageBuilderTemplate {
     
     process {
         try {
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplate]::New()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplate]::New()
 
             $Parameter.Source = $Source
             $Null = $PSBoundParameters.Remove('Source')

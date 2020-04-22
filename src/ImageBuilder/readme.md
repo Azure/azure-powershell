@@ -50,7 +50,8 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2020-02-14/imagebuilder.json
+  # - $(repo)/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2020-02-14/imagebuilder.json
+  - $(repo)/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/preview/2019-05-01-preview/imagebuilder.json
 
 title: ImageBuilder
 module-version: 0.1.0
@@ -90,4 +91,34 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/internal partial interface IResourceInternal/, 'public partial interface IResourceInternal');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/internal partial interface IImageTemplateSharedImageDistributorInternal/, 'public partial interface IImageTemplateSharedImageDistributorInternal');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/internal partial interface IImageTemplateManagedImageDistributorInternal/, 'public partial interface IImageTemplateManagedImageDistributorInternal');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/internal partial interface IImageTemplateDistributorInternal/, 'public partial interface IImageTemplateDistributorInternal');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/internal partial interface IImageTemplateVhdDistributorInternal/, 'public partial interface IImageTemplateVhdDistributorInternal');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/internal partial interface IImageTemplateCustomizerInternal/, 'public partial interface IImageTemplateCustomizerInternal');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/internal partial interface IImageTemplatePowerShellCustomizerInternal/, 'public partial interface IImageTemplatePowerShellCustomizerInternal');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/internal partial interface IImageTemplateRestartCustomizerInternal/, 'public partial interface IImageTemplateRestartCustomizerInternal');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/internal partial interface IImageTemplateWindowsUpdateCustomizerInternal/, 'public partial interface IImageTemplateWindowsUpdateCustomizerInternal');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/internal partial interface IImageTemplateShellCustomizerInternal/, 'public partial interface IImageTemplateShellCustomizerInternal');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/internal partial interface IImageTemplateFileCustomizerInternal/, 'public partial interface IImageTemplateFileCustomizerInternal');
 ```
