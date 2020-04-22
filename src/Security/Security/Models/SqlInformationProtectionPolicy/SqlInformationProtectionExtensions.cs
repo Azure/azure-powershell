@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.SqlInformationProtectio
     {
         public static PSSqlInformationProtectionPolicy ConverToPSType(this InformationProtectionPolicy policy) => new PSSqlInformationProtectionPolicy
         {
+            Version = policy.Version,
             InformationTypes = policy.InformationTypes.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ConvertToPSType()),
             Labels = policy.Labels.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ConverToPSType())
         };
