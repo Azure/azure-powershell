@@ -64,6 +64,36 @@ function Test-SynapseSparkPool
         Assert-NotNull $sparkPoolUpdated.Tags "Tags do not exists"
         Assert-NotNull $sparkPoolUpdated.Tags["TestTag"] "The updated tag 'TestTag' does not exist"
 
+        # Enable Auto-scale and Auto-pause
+        $sparkPoolUpdated = Update-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -EnableAutoScale $true -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 10 -EnableAutoPause $true -AutoPauseDelayInMinute 15
+
+        Assert-AreEqual $sparkPoolName $sparkPoolUpdated.Name
+        Assert-AreEqual $location $sparkPoolUpdated.Location
+        Assert-AreEqual "Microsoft.Synapse/workspaces/bigDataPools" $sparkPoolUpdated.Type
+        Assert-True {$sparkPoolUpdated.Id -like "*$resourceGroupName*"}
+
+        Assert-True {$sparkPoolUpdated.AutoScale.Enabled}
+        Assert-AreEqual 3 $sparkPoolUpdated.AutoScale.MinNodeCount
+        Assert-AreEqual 10 $sparkPoolUpdated.AutoScale.MaxNodeCount
+
+        Assert-True {$sparkPoolUpdated.AutoPause.Enabled}
+        Assert-AreEqual 15 $sparkPoolUpdated.AutoPause.DelayInMinutes
+
+        # Disable Auto-scale and Auto-pause
+        $sparkPoolUpdated = Update-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -EnableAutoScale $false -EnableAutoPause $false
+
+        Assert-AreEqual $sparkPoolName $sparkPoolUpdated.Name
+        Assert-AreEqual $location $sparkPoolUpdated.Location
+        Assert-AreEqual "Microsoft.Synapse/workspaces/bigDataPools" $sparkPoolUpdated.Type
+        Assert-True {$sparkPoolUpdated.Id -like "*$resourceGroupName*"}
+
+        Assert-False {$sparkPoolUpdated.AutoScale.Enabled}
+        Assert-AreEqual 3 $sparkPoolUpdated.AutoScale.MinNodeCount
+        Assert-AreEqual 10 $sparkPoolUpdated.AutoScale.MaxNodeCount
+
+        Assert-False {$sparkPoolUpdated.AutoPause.Enabled}
+        Assert-AreEqual 15 $sparkPoolUpdated.AutoPause.DelayInMinutes
+
         # List all SparkPools in workspace
         [array]$sparkPoolsInWorkspace = Get-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
         Assert-True {$sparkPoolsInWorkspace.Count -ge 1}
