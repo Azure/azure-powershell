@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.MySql.private.dll'
   FormatsToProcess = './Az.MySql.format.ps1xml'
-  FunctionsToExport = 'Get-AzMySqlConfiguration', 'Get-AzMySqlConnectionString', 'Get-AzMySqlFirewallRule', 'Get-AzMySqlReplica', 'Get-AzMySqlServer', 'Get-AzMySqlVirtualNetworkRule', 'New-AzMySqlFirewallRule', 'New-AzMySqlServer', 'New-AzMySqlServerReplica', 'New-AzMySqlVirtualNetworkRule', 'Remove-AzMySqlFirewallRule', 'Remove-AzMySqlServer', 'Remove-AzMySqlVirtualNetworkRule', 'Restart-AzMySqlServer', 'Restore-AzMySqlServer', 'Update-AzMySqlConfiguration', 'Update-AzMySqlFirewallRule', 'Update-AzMySqlServer', 'Update-AzMySqlVirtualNetworkRule', '*'
+  FunctionsToExport = 'Get-AzMySqlConfiguration', 'Get-AzMySqlConnectionString', 'Get-AzMySqlFirewallRule', 'Get-AzMySqlReplica', 'Get-AzMySqlServer', 'Get-AzMySqlVirtualNetworkRule', 'New-AzMySqlFirewallRule', 'New-AzMySqlServer', 'New-AzMySqlServerReplica', 'New-AzMySqlVirtualNetworkRule', 'Remove-AzMySqlFirewallRule', 'Remove-AzMySqlServer', 'Remove-AzMySqlVirtualNetworkRule', 'Restart-AzMySqlServer', 'Restore-AzMySqlServer', 'Update-AzMySqlConfiguration', 'Update-AzMySqlFirewallRule', 'Update-AzMySqlServer', 'Update-AzMySqlVirtualNetworkRule'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

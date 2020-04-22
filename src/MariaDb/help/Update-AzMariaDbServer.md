@@ -8,7 +8,8 @@ schema: 2.0.0
 # Update-AzMariaDbServer
 
 ## SYNOPSIS
-
+Updates an existing server.
+The request body can contain one to many of the properties present in the normal server definition.
 
 ## SYNTAX
 
@@ -31,7 +32,8 @@ Update-AzMariaDbServer -InputObject <IMariaDbIdentity> [-AdministratorLoginPassw
 ```
 
 ## DESCRIPTION
-
+Updates an existing server.
+The request body can contain one to many of the properties present in the normal server definition.
 
 ## EXAMPLES
 
@@ -76,7 +78,7 @@ Dynamic: False
 ```
 
 ### -AsJob
-
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -108,7 +110,8 @@ Dynamic: False
 ```
 
 ### -DefaultProfile
-
+region DefaultParameters
+ The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -173,7 +176,7 @@ Dynamic: False
 ```
 
 ### -NoWait
-
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

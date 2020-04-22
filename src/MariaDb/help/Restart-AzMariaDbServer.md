@@ -8,7 +8,7 @@ schema: 2.0.0
 # Restart-AzMariaDbServer
 
 ## SYNOPSIS
-
+Restarts a server.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Restart-AzMariaDbServer -InputObject <IMariaDbIdentity> [-DefaultProfile <PSObje
 ```
 
 ## DESCRIPTION
-
+Restarts a server.
 
 ## EXAMPLES
 
@@ -48,7 +48,7 @@ This command restart a MariaDB.
 ## PARAMETERS
 
 ### -AsJob
-
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -64,7 +64,7 @@ Dynamic: False
 ```
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -80,6 +80,7 @@ Dynamic: False
 ```
 
 ### -InputObject
+Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -96,7 +97,7 @@ Dynamic: False
 ```
 
 ### -Name
-
+The name of the server.
 
 ```yaml
 Type: System.String
@@ -112,7 +113,7 @@ Dynamic: False
 ```
 
 ### -NoWait
-
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -128,7 +129,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -144,7 +145,8 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
@@ -160,7 +162,7 @@ Dynamic: False
 ```
 
 ### -SubscriptionId
-
+The subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
@@ -226,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IMariaDbIdentity>: 
+#### INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

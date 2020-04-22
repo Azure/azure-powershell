@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.MariaDb.private.dll'
   FormatsToProcess = './Az.MariaDb.format.ps1xml'
-  FunctionsToExport = 'Get-AzMariaDbConfiguration', 'Get-AzMariaDbConnectionString', 'Get-AzMariaDbFirewallRule', 'Get-AzMariaDbReplica', 'Get-AzMariaDbServer', 'Get-AzMariaDbVirtualNetworkRule', 'New-AzMariaDbFirewallRule', 'New-AzMariaDbServer', 'New-AzMariaDbServerReplica', 'New-AzMariaDbVirtualNetworkRule', 'Remove-AzMariaDbFirewallRule', 'Remove-AzMariaDbServer', 'Remove-AzMariaDbVirtualNetworkRule', 'Restart-AzMariaDbServer', 'Restore-AzMariaDbServer', 'Update-AzMariaDbConfiguration', 'Update-AzMariaDbFirewallRule', 'Update-AzMariaDbServer', 'Update-AzMariaDbVirtualNetworkRule', '*'
+  FunctionsToExport = 'Get-AzMariaDbConfiguration', 'Get-AzMariaDbConnectionString', 'Get-AzMariaDbFirewallRule', 'Get-AzMariaDbReplica', 'Get-AzMariaDbServer', 'Get-AzMariaDbVirtualNetworkRule', 'New-AzMariaDbFirewallRule', 'New-AzMariaDbServer', 'New-AzMariaDbServerReplica', 'New-AzMariaDbVirtualNetworkRule', 'Remove-AzMariaDbFirewallRule', 'Remove-AzMariaDbServer', 'Remove-AzMariaDbVirtualNetworkRule', 'Restart-AzMariaDbServer', 'Restore-AzMariaDbServer', 'Update-AzMariaDbConfiguration', 'Update-AzMariaDbFirewallRule', 'Update-AzMariaDbServer', 'Update-AzMariaDbVirtualNetworkRule'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

@@ -11,6 +11,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+Creates a replica of a MariaDb server.
+.Description
+Creates a replica of a MariaDb server.
+.Example
+To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserverreplica
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+.Link
+https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserverreplica
+#>
 function New-AzMariaDbServerReplica {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
     [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
@@ -140,20 +156,7 @@ function New-AzMariaDbServerReplica {
             #region ServerForCreate
             $ServerObject = $InputObject
             if (-not $PSBoundParameters.ContainsKey('InputObject')) {
-                $GetMariadbDbPSBoundParameters = @{}
-                if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
-                    $GetMariadbDbPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
-                }
-                if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
-                    $GetMariadbDbPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
-                }
-                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId @GetMariadbDbPSBoundParameters
-                
-                # if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
-                #     $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId -HttpPipelineAppend $HttpPipelineAppend
-                # } else {
-                #     $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId
-                # }
+                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId
                 $Null = $PSBoundParameters.Remove('ServerName')
             } else {
                 $Fields = $InputObject.Id.Split('/')

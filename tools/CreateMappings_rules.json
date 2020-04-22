@@ -164,5 +164,7 @@
     { "regex": "CosmosDB", "alias": "Cosmos DB" },
     { "regex": "Support", "alias": "Support" },
     { "regex": "Databricks", "alias": "Databricks" },
+    { "regex": "MariaDb", "alias": "MariaDb" },
+    { "regex": "MySql", "alias": "MySql" },
     { "regex": "StackEdge", "alias": "Stack Edge" }
 ]
