@@ -90,21 +90,18 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server address.")]
-        [ValidateNotNullOrEmpty]
         public string RadiusServerAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server secret.")]
-        [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
 
         [Parameter(
             Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External multiple radius servers.")]
-        [ValidateNotNullOrEmpty]
         public PSRadiusServer[] RadiusServerList { get; set; }
 
         [Parameter(
