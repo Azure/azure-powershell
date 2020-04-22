@@ -14,10 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    public enum PSAuthenticationType
+    public enum PSConfigurationMetricType
     {
-        Sas = 0,
-        SelfSigned = 1,
-        CertificateAuthority = 2
+        Custom,
+        System
     }
 }

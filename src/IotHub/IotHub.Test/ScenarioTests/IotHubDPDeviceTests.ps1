@@ -63,7 +63,7 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-True { $newDevice2.Authentication.Type -eq 'SelfSigned' }
 	Assert-False { $newDevice2.Capabilities.IotEdge }
 
-	# Add iot device with certifictae authority authentication
+	# Add iot device with certificate authority authentication
 	$newDevice3 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3 -AuthMethod 'x509_ca'
 	Assert-True { $newDevice3.Id -eq $device3 }
 	Assert-True { $newDevice3.Authentication.Type -eq 'CertificateAuthority' }

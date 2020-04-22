@@ -1,6 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
-//
-// Copyright Microsoft Corporation
+﻿// Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -14,10 +12,26 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    public enum PSAuthenticationType
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Distributed settings of the device.
+    /// </summary>
+    public class PSConfigurationMetricsResult
     {
-        Sas = 0,
-        SelfSigned = 1,
-        CertificateAuthority = 2
+        /// <summary>
+        /// Device ID.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Distributed tracing option.
+        /// </summary>
+        public string Criteria { get; set; }
+
+        /// <summary>
+        /// Indicates that desired distributed settings are sync with reported.
+        /// </summary>
+        public IList<string> Result { get; set; }
     }
 }
