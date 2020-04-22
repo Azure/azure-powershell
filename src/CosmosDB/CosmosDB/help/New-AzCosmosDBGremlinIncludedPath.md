@@ -30,13 +30,14 @@ Path Indexes
 ---- -------
 /*   {Microsoft.Azure.Commands.CosmosDB.Models.PSIndexes}
 ```
+
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -51,7 +52,7 @@ Accept wildcard characters: False
 List of indexes for this path
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSIndexes[]
+Type: PSIndexes[]
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +68,7 @@ The path for which the indexing behavior applies to.
 Index paths typically start with root and end with wildcard (/path/*)
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

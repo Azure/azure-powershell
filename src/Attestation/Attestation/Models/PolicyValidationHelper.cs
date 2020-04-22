@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         {
             // Parse attestation service trusted signing key discovery endpoint from JWT header jku field
             var jwt = new JsonWebToken(policyJwt);
-            var jsonHeaderBytes = Base64Url.Decode(jwt.EncodedHeader);
+            var jsonHeaderBytes = Base64Url.DecodeBytes(jwt.EncodedHeader);
             var jsonHeaderString = Encoding.UTF8.GetString(jsonHeaderBytes);
             var jsonHeader = JObject.Parse(jsonHeaderString);
             var jkuUri = jsonHeader.SelectToken("jku");

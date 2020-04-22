@@ -122,7 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (foundAFolder)
             {
-                if (ShouldProcess(srcBlobDir.Uri.ToString(), "Move Directory: "))
+                if (ShouldProcess(GetDataLakeItemUriWithoutSas(srcBlobDir), "Move Directory: "))
                 {
                     // check dest exist
                     bool destExist = true;
@@ -137,7 +137,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         destExist = false;
                     }
 
-                    if (this.Force || !destExist || ShouldContinue(string.Format("Overwrite destination {0}", destBlobDir.Uri), ""))
+                    if (this.Force || !destExist || ShouldContinue(string.Format("Overwrite destination {0}", GetDataLakeItemUriWithoutSas(destBlobDir)), ""))
                     {
                         destBlobDir = srcBlobDir.Rename(this.DestPath, this.DestFileSystem).Value;
                         WriteDataLakeGen2Item(localChannel, destBlobDir);
@@ -146,25 +146,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
             else
             {
-                if (ShouldProcess(srcBlob.Uri.ToString(), "Move File: "))
+                if (ShouldProcess(GetDataLakeItemUriWithoutSas(srcBlob), "Move File: "))
                 {
                     // check dest exist
                     bool destExist = true;
                     DataLakeFileSystemClient destFileSystem = GetFileSystemClientByName(localChannel, this.DestFileSystem != null ? this.DestFileSystem : this.FileSystem);
-                    DataLakeFileClient destBlob = destFileSystem.GetFileClient(this.DestPath);
+                    DataLakeFileClient destFile = destFileSystem.GetFileClient(this.DestPath);
                     try
                     {
-                        destBlob.GetProperties();
+                        destFile.GetProperties();
                     }
                     catch (RequestFailedException e) when (e.Status == 404)
                     {
                         destExist = false;
                     }
 
-                    if (this.Force || !destExist || ShouldContinue(string.Format("Overwrite destination {0}", destBlob.Uri), ""))
+                    if (this.Force || !destExist || ShouldContinue(string.Format("Overwrite destination {0}", GetDataLakeItemUriWithoutSas(destFile)), ""))
                     {
-                        destBlob = srcBlob.Rename(this.DestPath, this.DestFileSystem).Value;
-                        WriteDataLakeGen2Item(localChannel, destBlob);
+                        destFile = srcBlob.Rename(this.DestPath, this.DestFileSystem).Value;
+                        WriteDataLakeGen2Item(localChannel, destFile);
                     }
                 }
             }

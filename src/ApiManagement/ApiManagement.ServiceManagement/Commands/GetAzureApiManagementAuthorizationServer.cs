@@ -17,7 +17,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
+    [GenericBreakingChange("Output changed: ClientSecret will not be returned anymore. Additional cmdlet will be added to retrieve ClientSecret.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementAuthorizationServer", DefaultParameterSetName = ContextParameterSet)]
     [OutputType(typeof(PsApiManagementOAuth2AuthorizationServer))]
     public class GetAzureApiManagementAuthorizationServer : AzureApiManagementCmdletBase

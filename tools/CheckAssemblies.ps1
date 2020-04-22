@@ -11,6 +11,22 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+
+function Get-PreloadAssemblies{
+    param(
+        [Parameter(Mandatory=$True)]
+        [string] $ModuleFolder
+    )
+
+    $preloadAssemblies = @()
+    $preloadFolderName =  $PSEdition -eq 'Core' ? "NetCoreAssemblies" : "PreloadAssemblies"
+    $preloadFolder = [System.IO.Path]::Combine($ModuleFolder, $preloadFolderName)
+    if(Test-Path $preloadFolder){
+        $preloadAssemblies = (Get-ChildItem $preloadFolder -Filter "*.dll").Name | ForEach-Object { $_ -replace ".dll", ""}
+    }
+    $preloadAssemblies
+}
+
 param(
     [ValidateNotNullOrEmpty()]
     [ValidateSet('Debug', 'Release')]
@@ -38,6 +54,7 @@ foreach ($ModuleManifest in $ModuleManifestFiles) {
         $LoadedAssemblies += $ModuleMetadata.RequiredAssemblies
     }
 
+    $LoadedAssemblies += Get-PreloadAssemblies $ModuleManifest.Directory
     $LoadedAssemblies += $ModuleMetadata.NestedModules
 
     if ($ModuleMetadata.RequiredModules) {
@@ -58,9 +75,11 @@ foreach ($ModuleManifest in $ModuleManifestFiles) {
                 }
                 $LoadedAssemblies += $ModuleMetadata.NestedModules
             }
+            $LoadedAssemblies += Get-PreloadAssemblies $RequiredModuleManifest.Directory
         }
     }
 
+    $LoadedAssemblies = $LoadedAssemblies | Where-Object { $_ }
     $LoadedAssemblies = $LoadedAssemblies | ForEach-Object { $_.Replace(".dll", "") }
 
     $Found = @()

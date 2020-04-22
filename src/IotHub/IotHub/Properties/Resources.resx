@@ -222,4 +222,25 @@
   <data name="UpdateIotHubDeviceTwin" xml:space="preserve">
     <value>Update Device Twin</value>
   </data>
+  <data name="InvokeIotHubDeviceMethod" xml:space="preserve">
+    <value>Invoke Direct Method on a device</value>
+  </data>
+  <data name="UpdateIotHubModuleTwin" xml:space="preserve">
+    <value>Update Device Module Twin</value>
+  </data>
+  <data name="AddIotHubConfiguration" xml:space="preserve">
+    <value>Add Configuration</value>
+  </data>
+  <data name="RemoveIotHubConfiguration" xml:space="preserve">
+    <value>Remove Configuration</value>
+  </data>
+  <data name="SetIotHubConfiguration" xml:space="preserve">
+    <value>Set Configuration</value>
+  </data>
+  <data name="InvokeIotHubQuery" xml:space="preserve">
+    <value>Query an Iot Hub</value>
+  </data>
+  <data name="NewIotHubSasToken" xml:space="preserve">
+    <value>Generate Sas Token</value>
+  </data>
 </root>

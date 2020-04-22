@@ -89,3 +89,15 @@ function Clean-ResourceGroup($rgname)
         Remove-AzResourceGroup -Name $rgname -Force
     }
 }
+
+<#
+.SYNOPSIS
+Sleeps but only during recording.
+#>
+function Start-TestSleep($milliseconds)
+{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        Start-Sleep -Milliseconds $milliseconds
+    }
+}

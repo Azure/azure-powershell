@@ -107,12 +107,12 @@ namespace StaticAnalysis.SignatureVerifier
                     IEnumerable<string> nestedModules = null;
                     List<string> requiredModules = null;
                     var powershell = PowerShell.Create(RunspaceMode.NewRunspace);
-                    powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory +
-                                         " -FileName " + psd1FileName +
-                                         " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };");
+                    var script = $"Import-LocalizedData -BaseDirectory {parentDirectory} -FileName {psd1FileName}" +
+                                 " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };";
+                    powershell.AddScript(script);
                     var cmdletResult = powershell.Invoke();
-                    nestedModules = cmdletResult.Where(c => c.ToString().StartsWith(".")).Select(c => c.ToString().Substring(2));
-                    requiredModules = cmdletResult.Where(c => !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
+                    nestedModules = cmdletResult.Where(c => c != null && c.ToString().StartsWith(".")).Select(c => c.ToString().Substring(2));
+                    requiredModules = cmdletResult.Where(c => c != null && !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
 
                     if (!nestedModules.Any()) continue;
 

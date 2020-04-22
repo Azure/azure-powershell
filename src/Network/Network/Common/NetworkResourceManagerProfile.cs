@@ -769,6 +769,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSPeering, MNM.ExpressRouteCircuitPeering>();
                 cfg.CreateMap<CNM.PSExpressRouteCircuitAuthorization, MNM.ExpressRouteCircuitAuthorization>();
                 cfg.CreateMap<CNM.PSExpressRouteCircuitConnection, MNM.ExpressRouteCircuitConnection>();
+                cfg.CreateMap<CNM.PSExpressRouteCircuitConnectionIPv6ConnectionConfig, MNM.Ipv6CircuitConnectionConfig>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ExpressRouteCircuit, CNM.PSExpressRouteCircuit>();
@@ -781,6 +782,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSExpressRouteCircuitRoutesTable, MNM.ExpressRouteCircuitRoutesTable>();
                 cfg.CreateMap<CNM.PSExpressRouteCircuitRoutesTableSummary, MNM.ExpressRouteCircuitRoutesTableSummary>();
                 cfg.CreateMap<MNM.ExpressRouteCircuitConnection, CNM.PSExpressRouteCircuitConnection>();
+                cfg.CreateMap<MNM.Ipv6CircuitConnectionConfig, CNM.PSExpressRouteCircuitConnectionIPv6ConnectionConfig>();
 
                 // ExpressRouteCircuitPeering
                 // CNM to MNM
@@ -796,10 +798,10 @@ namespace Microsoft.Azure.Commands.Network
                 // Express Route Circuit Connection 
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRouteCircuitConnection, MNM.ExpressRouteCircuitConnection>();
-
+                
                 // MNM to CNM 
                 cfg.CreateMap<MNM.ExpressRouteCircuitConnection, CNM.PSExpressRouteCircuitConnection>();
-
+                
                 // Peer Express Route Circuit Connection 
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSPeerExpressRouteCircuitConnection, MNM.PeerExpressRouteCircuitConnection>();
@@ -1321,6 +1323,10 @@ namespace Microsoft.Azure.Commands.Network
                 // IpGroup
                 cfg.CreateMap<CNM.PSIpGroup, MNM.IpGroup>();
                 cfg.CreateMap<MNM.IpGroup, CNM.PSIpGroup>();
+
+                // IpAllocation
+                cfg.CreateMap<CNM.PSIpAllocation, MNM.IpAllocation>();
+                cfg.CreateMap<MNM.IpAllocation, CNM.PSIpAllocation>();
             });
 
             _mapper = config.CreateMapper();

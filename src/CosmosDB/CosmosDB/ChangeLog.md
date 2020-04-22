@@ -20,6 +20,17 @@
 
 ## Upcoming Release
 
+## Version 0.1.4
+* Changes in New-AzCosmosDBAccount and Update-AzCosmosDBAccount
+    - Allows empty string as a value for IpRangeFilter
+    - Renamed ApiKind value GlobalDocumentDB to Sql.
+    - Added parameter DisableKeyBasedMetadataWriteAccess, PublicNetworkAccess
+* Introduces cmdlets to update throughput for Sql Database and Container, Cassandra Keyspace and Table, MongoDB Database and Collection, Gremlin Database and Graph and Table.
+    - Update-AzCosmosDBSqlContainerThroughput, Update-AzCosmosDBSqlDatabaseThroughput,
+        Update-AzCosmosDBMongoDBCollectionThroughput, Update-AzCosmosDBMongoDBDatabaseThroughput,
+        Update-AzCosmosDBGremlinGraphThroughput, Update-AzCosmosDBGremlinDatabaseThroughput,
+        Update-AzCosmosDBCassandraTableThroughput, Update-AzCosmosDBCassandraKeyspaceThroughput,
+        Update-AzCosmosDBTableThroughput
 ## Version 0.1.3
 * Allowing Account Creation for API Types: Gremlin, Cassandra and Table.
 * Bug Fixes

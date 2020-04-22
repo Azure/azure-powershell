@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSIndexingPolicy(IndexingPolicy indexingPolicy)
         {
-            Automatic = indexingPolicy.Automatic;
-            IndexingMode = indexingPolicy.IndexingMode;
+            Automatic = indexingPolicy?.Automatic;
+            IndexingMode = indexingPolicy?.IndexingMode;
 
-            if (indexingPolicy.IncludedPaths != null)
+            if (indexingPolicy?.IncludedPaths != null)
             {
                 IncludedPaths = new List<PSIncludedPath>();
                 foreach (IncludedPath includedPath in indexingPolicy.IncludedPaths)
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 }
             }
 
-            if (indexingPolicy.ExcludedPaths != null)
+            if (indexingPolicy?.ExcludedPaths != null)
             {
                 ExcludedPaths = new List<PSExcludedPath>();
                 foreach (ExcludedPath excludedPath in indexingPolicy.ExcludedPaths)
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 }
             }
 
-            if (indexingPolicy.CompositeIndexes != null)
+            if (indexingPolicy?.CompositeIndexes != null)
             {
                 CompositeIndexes = new List<IList<PSCompositePath>>();
                 foreach (IList<CompositePath> compositePathList in indexingPolicy.CompositeIndexes)
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 }
             }
 
-            if (indexingPolicy.SpatialIndexes != null)
+            if (indexingPolicy?.SpatialIndexes != null)
             {
                 SpatialIndexes = new List<PSSpatialSpec>();
                 foreach (SpatialSpec spatialSpec in indexingPolicy.SpatialIndexes)
