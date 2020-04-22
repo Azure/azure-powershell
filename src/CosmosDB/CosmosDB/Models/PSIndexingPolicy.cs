@@ -95,5 +95,65 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets list of spatial specifics
         public IList<PSSpatialSpec> SpatialIndexes { get; set; }
+
+        public static IndexingPolicy ConvertPSIndexingToIndexingPolicy(PSIndexingPolicy pSIndexingPolicy)
+        {
+            IndexingPolicy indexingPolicy = new IndexingPolicy
+            {
+                Automatic = pSIndexingPolicy.Automatic,
+                IndexingMode = pSIndexingPolicy.IndexingMode,
+            };
+
+            if (pSIndexingPolicy.IncludedPaths != null)
+            {
+                IList<IncludedPath> includedPaths = new List<IncludedPath>();
+                foreach (PSIncludedPath pSIncludedPath in pSIndexingPolicy.IncludedPaths)
+                {
+                    includedPaths.Add(PSIncludedPath.ConvertPSIncludedPathToIncludedPath(pSIncludedPath));
+                }
+                indexingPolicy.IncludedPaths = includedPaths;
+            }
+
+            if (pSIndexingPolicy.ExcludedPaths != null && pSIndexingPolicy.ExcludedPaths.Count > 0)
+            {
+                IList<ExcludedPath> excludedPaths = new List<ExcludedPath>();
+                foreach (PSExcludedPath pSExcludedPath in pSIndexingPolicy.ExcludedPaths)
+                {
+                    excludedPaths.Add(PSExcludedPath.ConvertPSExcludedPathToExcludedPath(pSExcludedPath));
+                }
+                indexingPolicy.ExcludedPaths = excludedPaths;
+            }
+
+            if (pSIndexingPolicy.CompositeIndexes != null)
+            {
+                IList<IList<CompositePath>> compositeIndexes = new List<IList<CompositePath>>();
+
+                foreach (IList<PSCompositePath> pSCompositePathList in pSIndexingPolicy.CompositeIndexes)
+                {
+                    IList<CompositePath> compositePathList = new List<CompositePath>();
+                    foreach (PSCompositePath pSCompositePath in pSCompositePathList)
+                    {
+                        compositePathList.Add(PSCompositePath.ConvertPSCompositePathToCompositePath(pSCompositePath));
+                    }
+                    compositeIndexes.Add(compositePathList);
+                }
+
+                indexingPolicy.CompositeIndexes = compositeIndexes;
+            }
+
+            if (pSIndexingPolicy.SpatialIndexes != null && pSIndexingPolicy.SpatialIndexes.Count > 0)
+            {
+                IList<SpatialSpec> spatialIndexes = new List<SpatialSpec>();
+
+                foreach (PSSpatialSpec pSSpatialSpec in pSIndexingPolicy.SpatialIndexes)
+                {
+                    spatialIndexes.Add(PSSpatialSpec.ConvertPSSpatialSpecToSpatialSpec(pSSpatialSpec));
+                }
+
+                indexingPolicy.SpatialIndexes = new List<SpatialSpec>(spatialIndexes);
+            }
+
+            return indexingPolicy;
+        }
     }
 }
