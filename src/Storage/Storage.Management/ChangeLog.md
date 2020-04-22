@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix remove Azure File Directory fail with pipeline
+    - `Remove-AzStorageDirectory`
 * Fixed #9880: Change NetWorkRule DefaultAction value defination to align with swagger.
 	- Update-AzStorageAccountNetworkRuleSet
 	- Get-AzStorageAccountNetworkRuleSet
