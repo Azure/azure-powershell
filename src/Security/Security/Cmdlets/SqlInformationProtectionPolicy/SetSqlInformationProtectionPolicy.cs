@@ -75,29 +75,79 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.SqlInformationProtecti
                 throw new Exception(Resources.SqlInformationProtectionPolicyDeserializationError);
             }
 
-            VerifyElementsAreUnique(policy,
-                kvp => kvp.Key,
-                kvp => kvp.Key,
-                Resources.SqlInformationProtectionPolicyDuplicatedIdsError);
+            JsonTextReader reader = new JsonTextReader(new StringReader(Policy));
+            List<string> allIds = ExtractDictionaryIds(reader);
+            allIds.AddRange(ExtractDictionaryIds(reader));
+            VerifyElementsAreUnique(allIds, Resources.SqlInformationProtectionPolicyDuplicatedIdsError);
 
-            VerifyElementsAreUnique(policy,
-                kvp => kvp.Value.DisplayName,
-                kvp => kvp.Value.DisplayName,
-                Resources.SqlInformationProtectionPolicyDuplicatedDisplayNamesError);
+            IEnumerable<string> allDisplayNames =
+                policy.Labels.Select(kvp => kvp.Value.DisplayName).
+                Concat(policy.InformationTypes.Select(kvp => kvp.Value.DisplayName));
+            VerifyElementsAreUnique(allDisplayNames, Resources.SqlInformationProtectionPolicyDuplicatedDisplayNamesError);
 
             SetInformationProtectionPolicy(policy);
             WriteObject(policy);
         }
 
-        private static void VerifyElementsAreUnique(
-            PSSqlInformationProtectionPolicy policy,
-            Func<KeyValuePair<string, PSSqlInformationProtectionSensitivityLabel>, string> sensitivityLabelSelector,
-            Func<KeyValuePair<string, PSSqlInformationProtectionInformationType>, string> informationTypeSelector,
-            string exceptionMessage)
+        private static List<string> ExtractDictionaryIds(JsonTextReader reader)
+        {
+            // Search for an instance of "Labels" or "InformationTypes".
+            //
+            while (reader.Read())
+            {
+                if (reader.Value != null &&
+                    (reader.Value.ToString().Equals("Labels") || reader.Value.ToString().Equals("InformationTypes")))
+                {
+                    break;
+                }
+            }
+
+            // We found a desired instance, read the '{' Token.
+            //
+            reader.Read();
+
+            List<string> dictionaryIds = new List<string>();
+
+            // Iterate the dictionary, and collect the ids.
+            //
+            while (reader.Read())
+            {
+                // Break if '}' token was read.
+                //
+                if (reader.TokenType == JsonToken.EndObject)
+                {
+                    break;
+                }
+
+                // The value should hold an id.
+                //
+                if (reader.Value == null)
+                {
+                    throw new Exception(Resources.SqlInformationProtectionPolicyDeserializationError);
+                }
+
+                dictionaryIds.Add(reader.Value.ToString());
+
+                // Search for the next entry in the Labels or InformationTypes dictionary.
+                //
+                while (reader.Read() && reader.TokenType != JsonToken.EndObject)
+                {
+                    // If '[' token appears, search for ']' token.
+                    //
+                    if (reader.TokenType == JsonToken.StartArray)
+                    {
+                        while (reader.Read() && reader.TokenType != JsonToken.EndArray) ;
+                    }
+                }
+            }
+
+            return dictionaryIds;
+        }
+
+        private static void VerifyElementsAreUnique(IEnumerable<string> allElements, string exceptionMessage)
         {
             IEnumerable<string> elementsAppearingMoreThanOnce =
-                policy.Labels.Select(sensitivityLabelSelector).
-                Concat(policy.InformationTypes.Select(informationTypeSelector)).
+                allElements.
                 GroupBy(s => s).
                 Where(group => group.Count() > 1).
                 Select(group => group.Key);
