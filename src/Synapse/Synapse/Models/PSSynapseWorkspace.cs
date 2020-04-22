@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Management.Synapse.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -15,6 +16,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.VirtualNetworkProfile = workspace?.VirtualNetworkProfile != null ? new PSVirtualNetworkProfile(workspace?.VirtualNetworkProfile) : null;
             this.Identity = workspace?.Identity != null ? new PSManagedIdentity(workspace?.Identity) : null;
             this.ConnectivityEndpoints = workspace?.ConnectivityEndpoints;
+            this.ManagedVirtualNetwork = workspace?.ManagedVirtualNetwork;
+            this.PrivateEndpointConnections = workspace?.PrivateEndpointConnections != null
+                ? workspace.PrivateEndpointConnections.Select(e => new PSPrivateEndpointConnection(e)).ToList()
+                : null;
         }
 
         /// <summary>
@@ -51,5 +56,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets identity of the workspace connectivity endpoints
         /// </summary>
         public IDictionary<string, string> ConnectivityEndpoints { get; }
+
+        /// <summary>
+        /// Gets workspace managed virtual network
+        /// </summary>
+        public string ManagedVirtualNetwork { get; set; }
+
+        /// <summary>
+        /// Gets the private endpoint connections to the workspace
+        /// </summary>
+        public IList<PSPrivateEndpointConnection> PrivateEndpointConnections { get; set; }
     }
 }

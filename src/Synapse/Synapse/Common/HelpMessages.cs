@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string DefaultDataLakeStorageFilesystem = "The default ADLS Gen2 file system.";
 
+        public const string ManagedVirtualNetwork = "Name of a Synapse-managed virtual network dedicated for the Azure Synapse workspace.";
+
         public const string DisallowAllConnections = "Azure Synapse Studio and other client tools will only be able to connect to the workspace endpoints if this parameter is not present. Connections from specific IP addresses or all Azure services can be allowed/disallowed after the workspace is provisioned.";
 
         public const string SqlAdministratorLoginCredential = "SQL administrator credentials.";

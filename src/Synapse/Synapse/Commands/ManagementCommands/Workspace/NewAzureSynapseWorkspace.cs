@@ -53,6 +53,10 @@ namespace Microsoft.Azure.Commands.Synaspe
         [ValidateNotNull]
         public PSCredential SqlAdministratorLoginCredential { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.ManagedVirtualNetwork)]
+        [ValidateSet("default")]
+        public string ManagedVirtualNetwork { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.DisallowAllConnections)]
         public SwitchParameter DisallowAllConnections { get; set; }
 
@@ -104,6 +108,7 @@ namespace Microsoft.Azure.Commands.Synaspe
                 },
                 SqlAdministratorLogin = this.SqlAdministratorLoginCredential.UserName,
                 SqlAdministratorLoginPassword = this.SqlAdministratorLoginCredential.GetNetworkCredential().Password,
+                ManagedVirtualNetwork = this.ManagedVirtualNetwork,
                 Location = this.Location
             };
 
