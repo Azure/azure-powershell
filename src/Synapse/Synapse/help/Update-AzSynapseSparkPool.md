@@ -15,8 +15,8 @@ Updates a Synapse Analytics Spark pool.
 ### SetByNameParameterSet
 ```
 Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
- [-Tag <Hashtable>] [-EnableAutoScale] [-DisableAutoScale] [-AutoScaleMinNodeCount <Int32>]
- [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause] [-DisableAutoPause] [-AutoPauseDelayInMinutes <Int32>]
+ [-Tag <Hashtable>] [-EnableAutoScale <Boolean>] [-AutoScaleMinNodeCount <Int32>]
+ [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>] [-AutoPauseDelayInMinute <Int32>]
  [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -24,26 +24,26 @@ Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> 
 ### SetByParentObjectParameterSet
 ```
 Update-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [-Tag <Hashtable>]
- [-EnableAutoScale] [-DisableAutoScale] [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>]
- [-EnableAutoPause] [-DisableAutoPause] [-AutoPauseDelayInMinutes <Int32>] [-NodeCount <Int32>]
- [-NodeSize <String>] [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-AsJob]
+ [-EnableAutoScale <Boolean>] [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>]
+ [-EnableAutoPause <Boolean>] [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>]
+ [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [-EnableAutoScale]
- [-DisableAutoScale] [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause]
- [-DisableAutoPause] [-AutoPauseDelayInMinutes <Int32>] [-NodeCount <Int32>] [-NodeSize <String>]
- [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [-EnableAutoScale <Boolean>]
+ [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>]
+ [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>]
+ [-LibraryRequirementsFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Update-AzSynapseSparkPool -ResourceId <String> [-Tag <Hashtable>] [-EnableAutoScale] [-DisableAutoScale]
- [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause] [-DisableAutoPause]
- [-AutoPauseDelayInMinutes <Int32>] [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>]
+Update-AzSynapseSparkPool -ResourceId <String> [-Tag <Hashtable>] [-EnableAutoScale <Boolean>]
+ [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>]
+ [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>]
  [-LibraryRequirementsFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -128,9 +128,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutoPauseDelayInMinutes
-Number of minutes idle.
-This parameter must be specified when Auto-pause is enabled.
+### -AutoPauseDelayInMinute
+Number of minutes idle. This parameter must be specified when Auto-pause is enabled.
 
 ```yaml
 Type: System.Int32
@@ -191,41 +190,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisableAutoPause
-Indicates whether Auto-pause should be disabled.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisableAutoScale
-Indicates whether Auto-scale should be disabled
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnableAutoPause
 Indicates whether Auto-pause should be enabled.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -240,7 +209,7 @@ Accept wildcard characters: False
 Indicates whether Auto-scale should be enabled
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

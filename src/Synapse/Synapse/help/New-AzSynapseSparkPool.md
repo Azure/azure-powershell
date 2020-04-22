@@ -16,7 +16,7 @@ Creates a Synapse Analytics Spark pool.
 ```
 New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
  -NodeCount <Int32> -NodeSize <String> [-EnableAutoScale] [-AutoScaleMinNodeCount <Int32>]
- [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause] [-AutoPauseDelayInMinutes <Int32>] -SparkVersion <String>
+ [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>] -SparkVersion <String>
  [-LibraryRequirementsFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Na
 ```
 New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
  -NodeCount <Int32> -NodeSize <String> [-EnableAutoScale] [-AutoScaleMinNodeCount <Int32>]
- [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause] [-AutoPauseDelayInMinutes <Int32>] -SparkVersion <String>
+ [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>] -SparkVersion <String>
  [-LibraryRequirementsFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -67,9 +67,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutoPauseDelayInMinutes
-Number of minutes idle.
-This parameter must be specified when Auto-pause is enabled.
+### -AutoPauseDelayInMinute
+Number of minutes idle. This parameter must be specified when Auto-pause is enabled.
 
 ```yaml
 Type: System.Int32
