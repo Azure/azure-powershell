@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Synapse
             HelpMessage = HelpMessages.AutoPauseDelayInMinutes)]
         [ValidateNotNullOrEmpty]
         [ValidateRange(5, 10080)]
-        public int AutoPauseDelayInMinutes { get; set; }
+        public int AutoPauseDelayInMinute { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true,
             HelpMessage = HelpMessages.SparkVersion)]
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 AutoPause = !EnableAutoPause ? null : new AutoPauseProperties
                 {
                     Enabled = EnableAutoPause.IsPresent,
-                    DelayInMinutes = AutoPauseDelayInMinutes
+                    DelayInMinutes = AutoPauseDelayInMinute
                 },
                 SparkVersion = this.SparkVersion,
                 LibraryRequirements = libraryRequirements

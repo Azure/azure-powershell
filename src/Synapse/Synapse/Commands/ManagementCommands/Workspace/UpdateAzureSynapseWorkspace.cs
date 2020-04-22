@@ -56,7 +56,6 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 this.ResourceGroupName = new ResourceIdentifier(this.InputObject.Id).ResourceGroupName;
                 this.Name = this.InputObject.Name;
-                this.Tag = this.IsParameterBound(c => c.Tag) ? this.Tag : this.InputObject.Tags;
             }
 
             if (this.IsParameterBound(c => c.ResourceId))

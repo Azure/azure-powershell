@@ -85,28 +85,28 @@ This command updates an Azure Synapse Analytics Spark pool with resource ID.
 
 ### Example 5
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoScale -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 7
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoScale $true -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 7
 ```
 
 This command enables auto-scale for an Azure Synapse Analytics Spark pool.
 
 ### Example 6
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -DisableAutoScale
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoScale $false
 ```
 
 This command disables auto-scale for an Azure Synapse Analytics Spark pool.
 
 ### Example 7
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoPause -AutoPauseDelayInMinutes 15
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoPause $true -AutoPauseDelayInMinute 15
 ```
 
 This command enables auto-pause for an Azure Synapse Analytics Spark pool.
 
 ### Example 8
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -DisableAutoPause
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoPause $false
 ```
 
 This command disables auto-pause for an Azure Synapse Analytics Spark pool.

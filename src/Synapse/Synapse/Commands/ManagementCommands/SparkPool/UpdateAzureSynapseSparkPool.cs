@@ -67,10 +67,7 @@ namespace Microsoft.Azure.Commands.Synapse
         public Hashtable Tag { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.EnableAutoScale)]
-        public SwitchParameter EnableAutoScale { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.DisableAutoScale)]
-        public SwitchParameter DisableAutoScale { get; set; }
+        public bool? EnableAutoScale { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.AutoScaleMinNodeCount)]
         [ValidateRange(3, 200)]
@@ -81,16 +78,13 @@ namespace Microsoft.Azure.Commands.Synapse
         public int AutoScaleMaxNodeCount { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.EnableAutoPause)]
-        public SwitchParameter EnableAutoPause { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.DisableAutoPause)]
-        public SwitchParameter DisableAutoPause { get; set; }
+        public bool? EnableAutoPause { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.AutoPauseDelayInMinutes)]
         [ValidateNotNullOrEmpty]
         [ValidateRange(5, 10080)]
-        public int AutoPauseDelayInMinutes { get; set; }
+        public int AutoPauseDelayInMinute { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.NodeCount)]
@@ -123,7 +117,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            LibraryRequirements libraryRequirements = null;
             if (this.IsParameterBound(c => c.InputObject))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.InputObject.Id);
@@ -131,20 +124,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = resourceIdentifier.ParentResource;
                 this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
                 this.Name = this.InputObject.Name;
-                this.Tag = this.IsParameterBound(c => c.Tag) ? this.Tag : this.InputObject.Tags;
-                this.NodeCount = this.IsParameterBound(c => c.NodeCount) ? this.NodeCount : this.InputObject.NodeCount.Value;
-                this.NodeSize = this.IsParameterBound(c => c.NodeSize) ? this.NodeSize : this.InputObject.NodeSize;
-                this.AutoScaleMinNodeCount = this.IsParameterBound(c => c.AutoScaleMinNodeCount) ? this.AutoScaleMinNodeCount : (this.InputObject.AutoScale?.MinNodeCount ?? 0);
-                this.AutoScaleMaxNodeCount = this.IsParameterBound(c => c.AutoScaleMaxNodeCount) ? this.AutoScaleMaxNodeCount : (this.InputObject.AutoScale?.MaxNodeCount ?? 0);
-                this.AutoPauseDelayInMinutes = this.IsParameterBound(c => c.AutoPauseDelayInMinutes) ? this.AutoPauseDelayInMinutes : (this.InputObject.AutoPause?.DelayInMinutes ?? 0);
-                libraryRequirements = this.IsParameterBound(c => c.LibraryRequirementsFilePath)
-                    ? CreateLibraryRequirements()
-                    : (this.InputObject.LibraryRequirements == null ? null :
-                        new LibraryRequirements
-                        {
-                            Filename = this.InputObject.LibraryRequirements.Filename,
-                            Content = this.InputObject.LibraryRequirements.Content
-                        });
             }
 
             if (this.IsParameterBound(c => c.ResourceId))
@@ -180,7 +159,7 @@ namespace Microsoft.Azure.Commands.Synapse
             existingSparkPool.NodeCount = this.IsParameterBound(c => c.NodeCount) ? this.NodeCount : existingSparkPool.NodeCount;
             existingSparkPool.NodeSizeFamily = NodeSizeFamily.MemoryOptimized;
             existingSparkPool.NodeSize = this.IsParameterBound(c => c.NodeSize) ? this.NodeSize : existingSparkPool.NodeSize;
-            existingSparkPool.LibraryRequirements = libraryRequirements ?? existingSparkPool.LibraryRequirements;
+            existingSparkPool.LibraryRequirements = this.IsParameterBound(c => c.LibraryRequirementsFilePath) ? CreateLibraryRequirements() : existingSparkPool.LibraryRequirements;
 
             if (this.IsParameterBound(c => c.EnableAutoScale)
                 || this.IsParameterBound(c => c.AutoScaleMinNodeCount)
@@ -188,38 +167,22 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 existingSparkPool.AutoScale = new AutoScaleProperties
                 {
-                    Enabled = this.EnableAutoScale.IsPresent ? true : existingSparkPool.AutoScale?.Enabled ?? false,
+                    Enabled = this.EnableAutoScale != null ? this.EnableAutoScale : existingSparkPool.AutoScale?.Enabled ?? false,
                     MinNodeCount = this.IsParameterBound(c => c.AutoScaleMinNodeCount) ? AutoScaleMinNodeCount : existingSparkPool.AutoScale?.MinNodeCount ?? 0,
                     MaxNodeCount = this.IsParameterBound(c => c.AutoScaleMaxNodeCount) ? AutoScaleMaxNodeCount : existingSparkPool.AutoScale?.MaxNodeCount ?? 0
                 };
             }
 
-            if (this.IsParameterBound(c => c.DisableAutoScale))
-            {
-                if (existingSparkPool.AutoScale != null)
-                {
-                    existingSparkPool.AutoScale.Enabled = false;
-                }
-            }
-
             if (this.IsParameterBound(c => c.EnableAutoPause)
-                || this.IsParameterBound(c => c.AutoPauseDelayInMinutes))
+                || this.IsParameterBound(c => c.AutoPauseDelayInMinute))
             {
                 existingSparkPool.AutoPause = new AutoPauseProperties
                 {
-                    Enabled = this.EnableAutoPause.IsPresent ? true : existingSparkPool.AutoPause?.Enabled ?? false,
-                    DelayInMinutes = this.IsParameterBound(c => c.AutoPauseDelayInMinutes)
-                        ? this.AutoPauseDelayInMinutes
+                    Enabled = this.EnableAutoPause != null ? this.EnableAutoPause : existingSparkPool.AutoPause?.Enabled ?? false,
+                    DelayInMinutes = this.IsParameterBound(c => c.AutoPauseDelayInMinute)
+                        ? this.AutoPauseDelayInMinute
                         : existingSparkPool.AutoPause?.DelayInMinutes ?? 0
                 };
-            }
-
-            if (this.IsParameterBound(c => c.DisableAutoPause))
-            {
-                if (existingSparkPool.AutoPause != null)
-                {
-                    existingSparkPool.AutoPause.Enabled = false;
-                }
             }
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseSparkPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
