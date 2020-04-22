@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     public class PSSynapseSqlPool : PSSynapseTrackedResource
     {
         public PSSynapseSqlPool(SqlPool sqlPool)
-            : base(sqlPool.Location, sqlPool.Id, sqlPool.Name, sqlPool.Type, sqlPool.Tags)
+            : base(sqlPool?.Location, sqlPool?.Id, sqlPool?.Name, sqlPool?.Type, sqlPool?.Tags)
         {
             this.Sku = sqlPool?.Sku != null ? new PSSynapseSku(sqlPool.Sku) : null;
             this.MaxSizeBytes = sqlPool?.MaxSizeBytes;

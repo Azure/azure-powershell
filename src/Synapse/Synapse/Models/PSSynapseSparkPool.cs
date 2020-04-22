@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     public class PSSynapseSparkPool : PSSynapseTrackedResource
     {
         public PSSynapseSparkPool(BigDataPoolResourceInfo sparkPool)
-            : base(sparkPool.Location, sparkPool.Id, sparkPool.Name, sparkPool.Type, sparkPool.Tags)
+            : base(sparkPool?.Location, sparkPool?.Id, sparkPool?.Name, sparkPool?.Type, sparkPool?.Tags)
         {
             this.ProvisioningState = sparkPool.ProvisioningState;
             this.AutoScale = sparkPool?.AutoScale != null ? new PSAutoScaleProperties(sparkPool.AutoScale) : null;

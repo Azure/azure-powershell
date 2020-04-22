@@ -53,7 +53,7 @@ function Test-SynapseSqlPool
         # Updating SqlPool
         $tagsToUpdate = @{"TestTag" = "TestUpdate"}
         Update-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Tag $tagsToUpdate
-    
+ 
 		# Wait for 3 minutes for the update completion
 		# Without this, the test will pass non-deterministically
 		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(180000)

@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public SqlPool UpdateSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolPatchInfo updateParams)
+        public void UpdateSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolPatchInfo updateParams)
         {
             try
             {
@@ -251,19 +251,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
 
-                return _synapseManagementClient.SqlPools.Update(resourceGroupName, workspaceName, sqlPoolName, updateParams);
+                _synapseManagementClient.SqlPools.Update(resourceGroupName, workspaceName, sqlPoolName, updateParams);
             }
             catch (CloudException ex)
             {
-                if (ex.Response.StatusCode == HttpStatusCode.Accepted)
-                {
-                    // TODO: Move this block since the issue is fixed in SDK.
-                    return GetSqlPool(resourceGroupName, workspaceName, sqlPoolName);
-                }
-                else
-                {
-                    throw GetSynapseException(ex);
-                }
+                throw GetSynapseException(ex);
             }
         }
 

@@ -127,6 +127,9 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string NewName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
+        public SwitchParameter PassThru { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -224,8 +227,12 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
             {
-                var result = new PSSynapseSqlPool(this.SynapseAnalyticsClient.UpdateSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name, sqlPoolPatchInfo));
-                WriteObject(result);
+                this.SynapseAnalyticsClient.UpdateSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name, sqlPoolPatchInfo);
+                if (this.PassThru.IsPresent)
+                {
+                    var result = this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                    WriteObject(result);
+                }
             }
         }
 

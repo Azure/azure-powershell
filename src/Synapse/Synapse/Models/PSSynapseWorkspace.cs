@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     public class PSSynapseWorkspace : PSSynapseTrackedResource
     {
         public PSSynapseWorkspace(Workspace workspace)
-            : base(workspace.Location, workspace.Id, workspace.Name, workspace.Type, workspace.Tags)
+            : base(workspace?.Location, workspace?.Id, workspace?.Name, workspace?.Type, workspace?.Tags)
         {
             this.DefaultDataLakeStorage = workspace?.DefaultDataLakeStorage != null ? new PSDataLakeStorageAccountDetails(workspace?.DefaultDataLakeStorage) : null;
             this.SqlAdministratorLogin = workspace?.SqlAdministratorLogin;
