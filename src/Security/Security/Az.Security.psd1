@@ -88,7 +88,9 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Remove-AzSecurityWorkspaceSetting', 
                'Get-AzSecurityAdvancedThreatProtection', 
                'Enable-AzSecurityAdvancedThreatProtection', 
-               'Disable-AzSecurityAdvancedThreatProtection'
+               'Disable-AzSecurityAdvancedThreatProtection',
+               'Set-AzSqlInformationProtectionPolicy',
+               'Get-AzSqlInformationProtectionPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()
