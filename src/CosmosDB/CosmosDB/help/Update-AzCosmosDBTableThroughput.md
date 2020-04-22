@@ -30,6 +30,9 @@ Update-AzCosmosDBTableThroughput [-Name <String>] -Throughput <Int32> -InputObje
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+## DESCRIPTION
+Updates the throughput value of a CosmosDB Table.
+
 ## EXAMPLES
 
 ### Example 1

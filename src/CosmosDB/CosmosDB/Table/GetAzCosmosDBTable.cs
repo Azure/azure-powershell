@@ -39,18 +39,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
+        [Parameter(Mandatory = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
-        public PSDatabaseAccount InputObject { get; set; }
+        public PSDatabaseAccount ParentObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.TableDetailedParamHelpMessage)]
         public SwitchParameter Detailed { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if(ParameterSetName.Equals(ObjectParameterSet, StringComparison.Ordinal))
+            if(ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
                 AccountName = resourceIdentifier.ResourceName;
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }

@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConfirmToRemoveSynapseWorkspace" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse workspace '{0}'?</value>
+  </data>
+  <data name="ConfirmToStopSparkJob" xml:space="preserve">
+    <value>Are you sure you want to stop Spark job with Id: '{0}'?</value>
+  </data>
+  <data name="ConfirmToStopSparkStatement" xml:space="preserve">
+    <value>Are you sure you want to stop Spark statement with Id: '{0}'?</value>
+  </data>
+  <data name="CreatingSynapseSparkPool" xml:space="preserve">
+    <value>Creating a new Spark pool in resource group '{0}' under parent Workspace '{1}' with name '{2}'.</value>
+  </data>
+  <data name="CreatingSynapseSqlPool" xml:space="preserve">
+    <value>Creating a new SQL pool in resource group '{0}' under parent Workspace '{1}' with name '{2}'.</value>
+  </data>
+  <data name="CreatingSynapseWorkspace" xml:space="preserve">
+    <value>Creating a new workspace in resource group '{0}' with name '{1}'.</value>
+  </data>
+  <data name="DisablingSynapseSparkPoolAutoPause" xml:space="preserve">
+    <value>Disabling Auto-pause for spark pool '{0}' in resource group '{1}' under parent workspace '{2}'.</value>
+  </data>
+  <data name="DisablingSynapseSparkPoolAutoScale" xml:space="preserve">
+    <value>Disabling Auto-scale for spark pool '{0}' in resource group '{1}' under parent workspace '{2}'.</value>
+  </data>
+  <data name="EnablingSynapseSparkPoolAutoPause" xml:space="preserve">
+    <value>Enabling Auto-pause for spark pool '{0}' in resource group '{1}' under parent workspace '{2}'.</value>
+  </data>
+  <data name="EnablingSynapseSparkPoolAutoScale" xml:space="preserve">
+    <value>Enabling Auto-scale for spark pool '{0}' in resource group '{1}' under parent workspace '{2}'.</value>
+  </data>
+  <data name="FailedToAssignWorkspaceAccess" xml:space="preserve">
+    <value>Failed to assign MSI for {0} to the {1} role on {2}. Error message: {3}.</value>
+  </data>
+  <data name="FailedToDisableSparkPoolAutoPause" xml:space="preserve">
+    <value>Cannot perform the requested operation because Auto-pause for spark pool '{0}' in resource group '{1}' under workspace '{2}' is not enabled.</value>
+  </data>
+  <data name="FailedToDisableSparkPoolAutoScale" xml:space="preserve">
+    <value>Cannot perform the requested operation because Auto-scale for spark pool '{0}' in resource group '{1}' under workspace '{2}' is not enabled.</value>
+  </data>
+  <data name="FailedToDiscoverResourceGroup" xml:space="preserve">
+    <value>Could not find workspace: '{0}' in any resource group in the currently selected subscription: {1}. Please ensure this workspace exists and that the current user has access to it.</value>
+  </data>
+  <data name="FailedToDiscoverResourceGroupBySqlServer" xml:space="preserve">
+    <value>Could not find SQL server: '{0}' in any resource group in the currently selected subscription: {1}. Please ensure this server exists and that the current user has access to it.</value>
+  </data>
+  <data name="FailedToDiscoverSparkPool" xml:space="preserve">
+    <value>Spark pool with name '{0}' in resource group '{1}' under parent workspace '{2}' does not exist. Please use New-AzSynapseSparkPool to create a Spark pool with these properties.</value>
+  </data>
+  <data name="FailedToDiscoverSparkStatement" xml:space="preserve">
+    <value>Could not find Spark statement: '{0}' in any resource group in the currently selected workspace: '{1}' Spark pool: '{2}'. Please specifiy the session identifier explicitly.</value>
+  </data>
+  <data name="FailedToDiscoverSqlDatabaseRestorePoints" xml:space="preserve">
+    <value>Failed to discover restore points for SQL database with name '{0}' in resource group '{1}' under workspace '{2}' does not exist.</value>
+  </data>
+  <data name="FailedToDiscoverSqlPool" xml:space="preserve">
+    <value>A SQL pool with name '{0}' in resource group '{1}' under workspace '{2}' does not exist. Please use New-AzSynapseSqlPool to create a SQL pool with these properties.</value>
+  </data>
+  <data name="FailedToDiscoverSqlPoolRestorePoints" xml:space="preserve">
+    <value>Failed to discover restore points for SQL pool with name '{0}' in resource group '{1}' under workspace '{2}' does not exist.</value>
+  </data>
+  <data name="FailedToDiscoverWorkspace" xml:space="preserve">
+    <value>A workspace with name '{0}' in resource group '{1}' does not exist. Please use New-AzSynapseWorkspace to create a workspace with these properties.</value>
+  </data>
+  <data name="FailedToStartSession" xml:space="preserve">
+    <value>Failed to start session.</value>
+  </data>
+  <data name="FailedToSubmitSparkJob" xml:space="preserve">
+    <value>Failed to submit Spark job.</value>
+  </data>
+  <data name="FilePathDoesNotExist" xml:space="preserve">
+    <value>The file at path '{0}' does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible.</value>
+  </data>
+  <data name="InteractiveSparkSessionTips" xml:space="preserve">
+    <value>InteractiveSparkSessionTips</value>
+  </data>
+  <data name="InvalidDefaultSubscription" xml:space="preserve">
+    <value>No default subscription has been designated. Use Select-AzSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
+  </data>
+  <data name="InvalidJobType" xml:space="preserve">
+    <value>Invalid job type selected.</value>
+  </data>
+  <data name="InvalidParameterSet" xml:space="preserve">
+    <value>Invalid parameter set {0} selected. Please contact support.</value>
+  </data>
+  <data name="InvalidStorageUri" xml:space="preserve">
+    <value>Invalid storage URI: {0}. Allowed URI example: abfss://fileSystem@storageAccountName.dfs.core.windows.net/samples/java/wordcount/wordcount.jar</value>
+  </data>
+  <data name="MissingMainClassName" xml:space="preserve">
+    <value>Cannot perform the requested operation because main class name or main executable file is not provided. Please specify -MainClassName for Spark job or -MainExecutableFile for .NET Spark job.</value>
+  </data>
+  <data name="NoSubscriptionInContext" xml:space="preserve">
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login.</value>
+  </data>
+  <data name="PrincipalNotFound" xml:space="preserve">
+    <value>Cannot find principal using the specified object id</value>
+  </data>
+  <data name="RemovingSynapseSparkPool" xml:space="preserve">
+    <value>Deleting Spark pool '{0}' in resource group '{1}' under workspace '{2}'.</value>
+  </data>
+  <data name="RemovingSynapseSqlPool" xml:space="preserve">
+    <value>Deleting SQL pool '{0}' in resource group '{1}' under workspace '{2}'.</value>
+  </data>
+  <data name="RemovingSynapseWorkspace" xml:space="preserve">
+    <value>Deleting workspace '{0}' in resource group '{1}'</value>
+  </data>
+  <data name="ResettingSynapseSparkSessionTimeout" xml:space="preserve">
+    <value>Resetting timeout for Spark session with Id: '{0}' ...</value>
+  </data>
+  <data name="ResumingSynapseSqlPool" xml:space="preserve">
+    <value>Resuming SQL pool '{0}' in resource group '{1}' under workspace '{2}'.</value>
+  </data>
+  <data name="SparkPoolDoesNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified Spark pool '{0}' does not exist.</value>
+  </data>
+  <data name="SqlDatabaseDoesNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified SQL database '{0}' does not exist.</value>
+  </data>
+  <data name="SqlPoolDoesNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified SQL pool '{0}' does not exist.</value>
+  </data>
+  <data name="StartSparkSessionNonInteractiveMessage" xml:space="preserve">
+    <value>{0} must be issued in interactive mode.</value>
+  </data>
+  <data name="StoppingSparkJob" xml:space="preserve">
+    <value>Stopping Spark job with Id: '{0}' ...</value>
+  </data>
+  <data name="StoppingSparkStatement" xml:space="preserve">
+    <value>Stopping Spark statement with Id: '{0}' ...</value>
+  </data>
+  <data name="StoppingSynapseSparkSession" xml:space="preserve">
+    <value>Stopping Spark session with Id: '{0}' ...</value>
+  </data>
+  <data name="SuspendingSynapseSqlPool" xml:space="preserve">
+    <value>Pausing SQL pool '{0}' in resource group '{1}' under workspace '{2}'.</value>
+  </data>
+  <data name="SynapseSparkPoolExists" xml:space="preserve">
+    <value>A Spark pool with name '{0}' in resource group '{1}' under workspace '{2}' already exists. Please use Set-AzSynapseSparkPool to update an existing Spark pool.</value>
+  </data>
+  <data name="SynapseSqlPoolExists" xml:space="preserve">
+    <value>A SQL pool with name '{0}' in resource group '{1}' under workspace '{2}' already exists. Please use Set-AzSynapseSqlPool to update an existing SQL pool.</value>
+  </data>
+  <data name="SynapseWorkspaceExists" xml:space="preserve">
+    <value>A workspace with name '{0}' in resource group '{1}' already exists. Please use Set-AzSynapseWorkspace to update an existing workspace.</value>
+  </data>
+  <data name="UpdatingSynapseSparkPool" xml:space="preserve">
+    <value>Updating Spark pool '{0}' in resource group '{1}' under workspace '{2}'.</value>
+  </data>
+  <data name="UpdatingSynapseSqlPool" xml:space="preserve">
+    <value>Updating SQL pool '{0}' in resource group '{1}' under Workspace '{2}'.</value>
+  </data>
+  <data name="UpdatingSynapseWorkspace" xml:space="preserve">
+    <value>Updating workspace '{0}' in resource group '{1}'</value>
+  </data>
+  <data name="WaitJobState" xml:space="preserve">
+    <value>Job is not yet done. Current job state: '{0}'</value>
+  </data>
+  <data name="WaitJobTimeoutExceeded" xml:space="preserve">
+    <value>Spark Job with id '{0}' has not completed in {1} seconds. Check job runtime or increase the value of -TimeoutInSeconds</value>
+  </data>
+  <data name="WorkspaceDoesNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified workspace '{0}' does not exist.</value>
+  </data>
+</root>

@@ -101,14 +101,28 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
             {
                 if (ShouldProcess(name, VerbsCommon.Set))
                 {
-                    SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateWithHttpMessagesAsync(name, actionType).GetAwaiter().GetResult();
+                    if (actionType == "Dismiss")
+                    {
+                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateToDismissWithHttpMessagesAsync(name).GetAwaiter().GetResult();
+                    }
+                    else if (actionType == "Activate")
+                    {
+                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateToReactivateWithHttpMessagesAsync(name).GetAwaiter().GetResult();
+                    }
                 }
             }
             else
             {
                 if (ShouldProcess(name, VerbsCommon.Set))
                 {
-                    SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateWithHttpMessagesAsync(name, actionType, rg).GetAwaiter().GetResult();
+                    if (actionType == "Dismiss")
+                    {
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateToDismissWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                    }
+                    else if (actionType == "Activate")
+                    {
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateToReactivateWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                    }
                 }
             }
 
