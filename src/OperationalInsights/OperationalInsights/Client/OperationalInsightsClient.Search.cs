@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
         public virtual PSSearchGetSchemaResponse GetSchema(string resourceGroupName, string workspaceName)
         {
-            SearchGetSchemaResponse response = OperationalInsightsManagementClient.Workspaces.GetSchema(resourceGroupName, workspaceName);
+            SearchGetSchemaResponse response = OperationalInsightsManagementClient.Schema.Get(resourceGroupName, workspaceName);
             PSSearchGetSchemaResponse schemaResponse = new PSSearchGetSchemaResponse(response);
             return schemaResponse;
         }
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 {
                     if (ETag != null && ETag != "")
                     {
-                        properties.Etag = ETag;
+                        properties.ETag = ETag;
                     }
                     Rest.Azure.AzureOperationResponse<SavedSearch> result = OperationalInsightsManagementClient.SavedSearches.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, savedSearchId, properties).GetAwaiter().GetResult();
                     status = result.Response.StatusCode;

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
     {
         public virtual PSWorkspaceKeys GetWorkspaceKeys(string resourceGroupName, string workspaceName)
         {
-            var response = OperationalInsightsManagementClient.Workspaces.GetSharedKeys(resourceGroupName, workspaceName);
+            var response = OperationalInsightsManagementClient.SharedKeys.GetSharedKeys(resourceGroupName, workspaceName);
 
             return new PSWorkspaceKeys(response);
         }
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             List<PSManagementGroup> managementGroups = new List<PSManagementGroup>();
 
-            var response = OperationalInsightsManagementClient.Workspaces.ListManagementGroups(resourceGroupName, workspaceName);
+            var response = OperationalInsightsManagementClient.ManagementGroups.List(resourceGroupName, workspaceName);
             if (response != null)
             {
                 response.ForEach(mg => managementGroups.Add(new PSManagementGroup(mg)));
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             List<PSUsageMetric> usageMetrics = new List<PSUsageMetric>();
 
-            var response = OperationalInsightsManagementClient.Workspaces.ListUsages(resourceGroupName, workspaceName);
+            var response = OperationalInsightsManagementClient.Usages.List(resourceGroupName, workspaceName);
             if (response != null)
             {
                 response.ForEach(um => usageMetrics.Add(new PSUsageMetric(um)));
@@ -112,20 +112,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             IDictionary<string, string> tags, 
             int? retentionInDays)
         {
-            Workspace properties = new Workspace()
-            {
-                Location = location,
-                Tags = tags
-            };
+            Workspace properties = new Workspace(location:location, tags:tags, customerId:customerId.HasValue?customerId.Value.ToString():null);
 
             if (!string.IsNullOrWhiteSpace(sku))
             {
-                properties.Sku = new Sku(sku);
-            }
-
-            if (customerId.HasValue)
-            {
-                properties.CustomerId = customerId.Value.ToString();
+                properties.Sku = new WorkspaceSku(sku);
             }
 
             if (retentionInDays.HasValue)
@@ -237,7 +228,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             List<PSIntelligencePack> intelligencePacks = new List<PSIntelligencePack>();
 
-            var listResponse = OperationalInsightsManagementClient.Workspaces.ListIntelligencePacks(resourceGroupName, workspaceName);
+            var listResponse = OperationalInsightsManagementClient.IntelligencePacks.List(resourceGroupName, workspaceName);
             if (listResponse != null)
             {
                 listResponse.ForEach(ip => intelligencePacks.Add(new PSIntelligencePack(ip.Name, ip.Enabled.Value)));
@@ -250,12 +241,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             if (enabled)
             {
-                OperationalInsightsManagementClient.Workspaces.EnableIntelligencePack(resourceGroupName, workspaceName, intelligencePackName);
+                OperationalInsightsManagementClient.IntelligencePacks.Enable(resourceGroupName, workspaceName, intelligencePackName);
                 return new PSIntelligencePack(intelligencePackName, enabled); 
             }
             else
             {
-                OperationalInsightsManagementClient.Workspaces.DisableIntelligencePack(resourceGroupName, workspaceName, intelligencePackName);
+                OperationalInsightsManagementClient.IntelligencePacks.Disable(resourceGroupName, workspaceName, intelligencePackName);
                 return new PSIntelligencePack(intelligencePackName, enabled);
             }
         }
