@@ -285,6 +285,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryAvailabilityZone { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource ID of proximity placement group to failover this virtual machine to.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the proximity placement group Id to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the proximity placement group Id to used by the failover Vm in target recovery region.")]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryProximityPlacementGroupId { get; set; }
+
+        /// <summary>
         /// Gets or sets ID of the AvailabilitySet to recover the machine to in the event of a failover.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
@@ -684,7 +692,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId,
                 RecoveryAzureNetworkId = this.RecoveryAzureNetworkId,
                 RecoverySubnetName = this.RecoveryAzureSubnetName,
-                RecoveryAvailabilityZone = this.RecoveryAvailabilityZone
+                RecoveryAvailabilityZone = this.RecoveryAvailabilityZone,
+                RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId
             };
 
             if (!string.IsNullOrEmpty(this.ReplicationGroupName))
