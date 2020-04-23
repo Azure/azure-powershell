@@ -81,8 +81,8 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                         case "dismissed":
                             actionType = "Dismiss";
                             break;
-                        case "reactivate":
-                            actionType = "Reactivate";
+                        case "active":
+                            actionType = "Activate";
                             break;
                         default:
                             break;
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
             {
                 if (ShouldProcess(name, VerbsCommon.Set))
                 {
-                    if (actionType.Equals("Reactivate", StringComparison.OrdinalIgnoreCase))
+                    if (actionType.Equals("Activate", StringComparison.OrdinalIgnoreCase))
                     {
                         SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateToReactivateWithHttpMessagesAsync(name).GetAwaiter().GetResult();
                     }
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
             {
                 if (ShouldProcess(name, VerbsCommon.Set))
                 {
-                    if (actionType.Equals("Reactivate", StringComparison.OrdinalIgnoreCase))
+                    if (actionType.Equals("Activate", StringComparison.OrdinalIgnoreCase))
                     {
                         SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateToReactivateWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
                     }
