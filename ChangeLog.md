@@ -1,3 +1,7 @@
+## 0.2.12-preview - April 2020
+#### Az.Blueprint
+* Added support for management group level Blueprint assignment
+
 ## 3.8.0 - April 2020
 #### Az.Accounts
 * Updated Azure PowerShell survey URL in 'Resolve-AzError' [#11507]
