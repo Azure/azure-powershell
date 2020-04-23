@@ -27,6 +27,9 @@
     <None Include="SqlInformationProtectionPolicies\InformationTypesSharingSameDisplayName.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SqlInformationProtectionPolicies\InformationTypesSharingSameId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SqlInformationProtectionPolicies\InvalidRank.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -34,6 +37,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SqlInformationProtectionPolicies\SensitivityLabelsSharingSameDisplayName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\SensitivityLabelsSharingSameId.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

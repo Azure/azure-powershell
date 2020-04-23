@@ -44,12 +44,32 @@ function Test-ErrorWhenInformationTypesShareSameDisplayName
 
 <#
 .SYNOPSIS
+Tests an error is raised when setting a policy containing information types sharing same id.
+#>
+function Test-ErrorWhenInformationTypesShareSameId
+{
+	$message = "Ids should be unique. Please eliminate duplication of these ids: '5c503e21-22c6-81fa-620b-f369b8ec38d1'."
+	Assert-Throws {Set-AzSqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\InformationTypesSharingSameId.json" } $message
+}
+
+<#
+.SYNOPSIS
 Tests an error is raised when setting a policy containing sensitivity labels sharing same display name.
 #>
 function Test-ErrorWhenSensitivityLabelsShareSameDisplayName
 {
 	$message = "Display names should be unique. Please eliminate duplication of these names: 'Public'."
 	Assert-Throws {Set-AzSqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\SensitivityLabelsSharingSameDisplayName.json" } $message
+}
+
+<#
+.SYNOPSIS
+Tests an error is raised when setting a policy containing sensitivity labels sharing same id.
+#>
+function Test-ErrorWhenSensitivityLabelsShareSameId
+{
+	$message = "Ids should be unique. Please eliminate duplication of these ids: '50e58766-ab53-4846-be8a-35e0bb87723e'."
+	Assert-Throws {Set-AzSqlInformationProtectionPolicy -FilePath "SqlInformationProtectionPolicies\SensitivityLabelsSharingSameId.json" } $message
 }
 
 <#
