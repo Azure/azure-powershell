@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added private endpoint for Vault credential file for site recovery service.
 
 ## Version 2.8.0
 * Azure Site Recovery added support for doing reprotect and updated vm properties for Azure disk encrypted Virtual Machines.
