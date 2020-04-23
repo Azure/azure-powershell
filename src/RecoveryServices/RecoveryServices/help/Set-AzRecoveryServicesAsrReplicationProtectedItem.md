@@ -80,7 +80,7 @@ PS C:\> $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -In
 
 Start the update operation for the specified encrypted replication protected item to use supplied encryption details for failover VM.
 
-### Example 6
+### Example 7
 ```
 PS C:\> $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -InputObject $ rpi -RecoveryProximityPlacementGroupId $ppg
 ```
