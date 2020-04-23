@@ -24,6 +24,12 @@ Get-AzNetAppFilesReplicationStatus -ResourceId <String> [-DefaultProfile <IAzure
  [<CommonParameters>]
 ```
 
+### ByObjectParameterSet
+```
+Get-AzNetAppFilesReplicationStatus -InputObject <PSNetAppFilesVolume>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get the status of the replication
 
@@ -73,6 +79,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The ANF replication destination volume object to get replication status
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

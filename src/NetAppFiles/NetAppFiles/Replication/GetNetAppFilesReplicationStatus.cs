@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(
+            ParameterSetName = ObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The ANF replication destination volume object to get replication status")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesVolume InputObject { get; set; }
+
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ResourceIdParameterSet)
@@ -89,6 +98,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
                 AccountName = parentResources[1];
                 PoolName = parentResources[3];
                 Name = resourceIdentifier.ResourceName;
+            }
+            else if (ParameterSetName == ObjectParameterSet)
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                var NameParts = InputObject.Name.Split('/');
+                AccountName = NameParts[0];
+                PoolName = NameParts[1];
+                Name = NameParts[2];
             }
 
             var anfReplicationStatus = AzureNetAppFilesManagementClient.Volumes.ReplicationStatusMethod(ResourceGroupName, AccountName, PoolName, Name);
