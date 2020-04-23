@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
                 cancellationToken: this.CancellationToken,
                 action: resources => this.WriteObject(sendToPipeline: resources.CoalesceEnumerable().SelectArray(resource => 
-                    resource.ToDeepConvertedPsObject("System.Management.Automation.PSCustomObject#DeploymentOperation")), enumerateCollection: true));
+                    resource.ToPsObjectByDeepConvert("System.Management.Automation.PSCustomObject#DeploymentOperation")), enumerateCollection: true));
         }
 
         /// <summary>
