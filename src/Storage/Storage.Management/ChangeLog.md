@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create container and upload blob with Encryption Scope setting
+    - `New-AzStorageContainer`
+    - `Set-AzStorageBlobContent`
 * Fixed #9880: Change NetWorkRule DefaultAction value defination to align with swagger.
 	- Update-AzStorageAccountNetworkRuleSet
 	- Get-AzStorageAccountNetworkRuleSet
