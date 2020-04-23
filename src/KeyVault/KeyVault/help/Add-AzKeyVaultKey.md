@@ -282,7 +282,7 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
 Aliases:
-Accepted values: HSM, Software, HSM, Software
+Accepted values: HSM, Software
 
 Required: False
 Position: Named

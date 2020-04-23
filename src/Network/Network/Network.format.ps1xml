@@ -1174,6 +1174,10 @@
                 <PropertyName>GatewayIpAddress</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Fqdn</Label>
+                <PropertyName>Fqdn</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>LocalNetworkAddressSpace</Label>
                 <PropertyName>AddressSpaceText</PropertyName>
               </ListItem>
@@ -3731,6 +3735,32 @@
               <ListItem>
                 <Label>FirewallPolicy</Label>
                 <PropertyName>FirewallPolicy</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IPv6CircuitConnectionConfig</Label>
+                <PropertyName>IPv6CircuitConnectionConfigText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitConnectionIPv6Prefix</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitConnectionIPv6Prefix</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>AddressPrefix</Label>
+                <PropertyName>AddressPrefix</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CircuitConnectionStatus</Label>
+                <PropertyName>CircuitConnectionStatus</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

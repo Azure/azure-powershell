@@ -10,6 +10,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Ip Address", Target = ViewControl.Table)]
         public string IpAddress { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string Fqdn { get; set; }
+
         public PSVpnLinkProviderProperties LinkProperties { get; set; }
 
         public PSVpnLinkBgpSettings BgpProperties { get; set; }

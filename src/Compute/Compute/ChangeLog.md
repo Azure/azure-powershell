@@ -19,6 +19,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.7.0
+* Added `Set-AzVmssOrchestrationServiceState` cmdlet.
+* `Get-AzVmss` with -InstanceView shows OrchestrationService states.
+
+## Version 3.6.0
 * Added the following parameters to `New-AzDiskConfig` cmdlet: 
     - DiskIOPSReadOnly, DiskMBpsReadOnly, MaxSharesCount, GalleryImageReference
 * Allowed Encryption property to Target parameter of `New-AzGalleryImageVersion` cmdlet.

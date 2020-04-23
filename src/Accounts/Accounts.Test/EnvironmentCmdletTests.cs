@@ -382,6 +382,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 AzureOperationalInsightsEndpoint = "https://AzureOperationalInsights",
                 AzureAttestationServiceEndpointResourceId = "AzureAttestationServiceEndpointResourceId",
                 AzureAttestationServiceEndpointSuffix = "https://AzureAttestationService",
+                AzureSynapseAnalyticsEndpointResourceId = "AzureSynapseAnalyticsEndpointResourceId",
+                AzureSynapseAnalyticsEndpointSuffix = "https://AzureSynapseAnalytics",
             };
 
             var dict = new Dictionary<string, object>();
@@ -407,6 +409,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             dict["AzureOperationalInsightsEndpoint"] = "https://AzureOperationalInsights";
             dict["AzureAttestationServiceEndpointResourceId"] = "AzureAttestationServiceEndpointResourceId";
             dict["AzureAttestationServiceEndpointSuffix"] = "https://AzureAttestationService";
+            dict["AzureSynapseAnalyticsEndpointResourceId"] = "AzureSynapseAnalyticsEndpointResourceId";
+            dict["AzureSynapseAnalyticsEndpointSuffix"] = "https://AzureSynapseAnalytics";
             cmdlet.SetBoundParameters(dict);
 
             cmdlet.InvokeBeginProcessing();
@@ -436,6 +440,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(cmdlet.AzureOperationalInsightsEndpoint, actual.AzureOperationalInsightsEndpoint);
             Assert.Equal(cmdlet.AzureAttestationServiceEndpointResourceId, actual.AzureAttestationServiceEndpointResourceId);
             Assert.Equal(cmdlet.AzureAttestationServiceEndpointSuffix, actual.AzureAttestationServiceEndpointSuffix);
+            Assert.Equal(cmdlet.AzureSynapseAnalyticsEndpointResourceId, actual.AzureSynapseAnalyticsEndpointResourceId);
+            Assert.Equal(cmdlet.AzureSynapseAnalyticsEndpointSuffix, actual.AzureSynapseAnalyticsEndpointSuffix);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.GetEnvironment("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);

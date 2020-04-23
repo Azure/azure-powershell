@@ -2319,7 +2319,9 @@
     "Set-AzSqlDatabaseServerAuditingPolicy": "Set-AzureRmSqlDatabaseServerAuditingPolicy",
     "Use-AzSqlDatabaseServerAuditingPolicy": "Use-AzureRmSqlDatabaseServerAuditingPolicy",
     "Get-AzSqlDatabaseLongTermRetentionPolicy": "Get-AzureRmSqlDatabaseLongTermRetentionPolicy",
-    "Set-AzSqlDatabaseLongTermRetentionPolicy": "Set-AzureRmSqlDatabaseLongTermRetentionPolicy"
+    "Set-AzSqlDatabaseLongTermRetentionPolicy": "Set-AzureRmSqlDatabaseLongTermRetentionPolicy",
+    "Get-AzSqlInstanceOperation": "Get-AzureRmSqlInstanceOperation",
+    "Stop-AzSqlInstanceOperation": "Stop-AzureRmSqlInstanceOperation"
   },
   "Az.Storage": {
     "Get-AzStorageAccount": "Get-AzureRmStorageAccount",

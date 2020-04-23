@@ -36,15 +36,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string ByManagementGroupNameAndVersion = "ByManagementGroupNameAndVersion";
             public const string ByManagementGroupNameAndLatestPublished = "ByManagementGroupNameAndLatestPublished";
 
-            public const string BlueprintAssignmentsBySubscription = "BlueprintAssignmentsBySubscription";
-            public const string BlueprintAssignmentByName = "BlueprintAssignmentByName";
             public const string CreateBlueprintAssignment = "CreateBlueprintAssignment";
             public const string CreateBlueprintAssignmentByFile = "CreateBlueprintAssignmentByFile";
-            public const string DeleteBlueprintAssignmentByName = "DeleteBlueprintAssignmentByName";
-            public const string DeleteBlueprintAssignmentByObject = "DeleteBlueprintAssignmentByObject";
-
             public const string UpdateBlueprintAssignment = "UpdateBlueprintAssignment";
             public const string UpdateBlueprintAssignmentByFile = "UpdateBlueprintAssignmentByFile";
+            public const string DeleteBlueprintAssignmentByObject = "DeleteBlueprintAssignmentByObject";
 
             public const string PublishBlueprint = "PublishBlueprint";
 
@@ -77,6 +73,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         {
             public const string DefinitionSubscriptionId = "Subscription Id where the blueprint definition is or will be saved.";
             public const string AssignmentSubscriptionId = "Subscription Id the blueprint assignment is deployed to.";
+            public const string AssignmentManagementGroupId = "The ID of the management group where the Blueprint assignment is saved.";
             public const string BlueprintAssignmentName = "Blueprint assignment name.";
             public const string BlueprintAssignmentObject = "Blueprint assignment object.";
             public const string BlueprintObject = "Blueprint object.";
@@ -85,7 +82,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string BlueprintDefinitionVersion = "Published blueprint definition version.";
             public const string BlueprintDefinitionVersionToPublish = "Version for the blueprint definition.";
             public const string LatestPublishedFlag = "The latest published blueprint definition flag. When set, execution returns the latest published version of the blueprint definition.";
-            public const string SubscriptionIdToAssign = "SubscriptionId to assign the Blueprint. Can be a comma delimited list of subscriptionId strings.";
+            public const string ManagementGroupIdToAssign = "The ID of the management group where the Blueprint assignment(s) will be saved.";
+            public const string SubscriptionIdToAssign = "SubscriptionId to assign the Blueprint. Can be a comma delimited list of subscriptionId strings. For management group level assignment, make sure the subscriptions are direct children of the management group specified with -ManagementGroupId.";
             public const string Location = "Region for managed identity to be created in. Learn more at aka.ms/blueprintmsi";
             public const string Parameters = "Collection of key/value pairs for parameters and their corresponding values.";
             public const string LockFlag = "Lock resources. Learn more at aka.ms/blueprintlocks";
@@ -93,6 +91,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string SystemAssignedIdentity = "System assigned identity(MSI) to deploy the artifacts.";
             public const string UserAssignedIdentity = "User assigned identity(MSI) to deploy the artifacts.";
             public const string SecureString = "Secure string parameter for KeyVault resource id, name and version.";
+            public const string ResourceGroupParameters = "Hashtable of parameters to pass to the resource group artifact.";
+            public const string AssignmentFile = "Location of the assignment file in JSON format on disk.";
             public const string ArtifactName = "Name of the artifact";
             public const string ArtifactType = "Type of the artifact. There are 3 types supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact.";
             public const string ArtifactDescription = "Description of the artifact.";

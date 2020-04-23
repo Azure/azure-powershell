@@ -19,12 +19,53 @@
 --->
 
 ## Upcoming Release
+
+## Version 2.5.0
+* Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
+    - `New-AzVirtualNetworkGateway`
+    - `Set-AzVirtualNetworkGateway`
+    - `New-AzVirtualNetworkGatewayConnection`
+    - `Set-AzVirtualNetworkGatewayConnection`
+* Updated cmdlets to enable FQDN based LocalNetworkGateways and VpnSites
+    - `New-AzLocalNetworkGateway`
+    - `New-AzVpnSiteLink`
+* Added support for IPv6 address family in ExpressRouteCircuitConnectionConfig (Global Reach)
+    - Added `Set-AzExpressRouteCircuitConnectionConfig`
+        - allows setting of all the existing properties including the IPv6CircuitConnectionProperties
+    - Updated `Add-AzExpressRouteCircuitConnectionConfig`
+        - Added another optional parameter AddressPrefixType to specify the address family of address prefix
+* Updated cmdlets to enable setting of DPD Timeout on Virtual Network Gateway Connections.
+    - New-AzVirtualNetworkGatewayConnection
+    - Set-AzVirtualNetworkGatewayConnection
+* Added resource type IpAllocation 
+* Added properties to Subnet
+    - Added property 'IpAllocations' as type of PSResourceId to PSIpAllocation
+* Added properties to Virtual Network
+    - Added property 'IpAllocations' as type of PSResourceId to PSIpAllocation
+* Added support for IpAllocation resource
+    - New cmdlet added:
+        - Get-AzIpAllocation
+        - New-AzIpAllocation
+        - Remove-AzIpAllocation
+        - Get-AzIpAllocation
+    - Updated `New-AzVirtualNetwork`
+        - Added another optional parameter IpAllocations to specify the IpAllocation
+    - Updated `New-AzVirtualNetworkSubnetConfig`
+        - Added another optional parameter IpAllocations to specify the IpAllocation
+    - Updated `Set-AzVirtualNetworkSubnetConfig`
+        - Added another optional parameter IpAllocations to specify the IpAllocation
+    - Updated `Add-AzVirtualNetworkSubnetConfig`
+        - Added another optional parameter IpAllocations to specify the IpAllocation
+
+## Version 2.4.0
 * Updated cmdlets to allow cross-tenant VirtualHubVnetConnections
     - `New-AzVirtualHubVnetConnection`
     - `Update-AzVirtualHubVnetConnection`
     - `New-AzVirtualHub`
     - `Update-AzVirtualHub`
 * Removed Sql Management SDK dependency
+* Added 'New-AzIpConfigurationBgpPeeringAddressObject'
+* Updated 'Set-AzVirtualNetworkGateway' and 'New-AzVirtualNetworkGateway'
 
 ## Version 2.3.2
 * Updated Sql Management SDK.
