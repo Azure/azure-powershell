@@ -1,6 +1,5 @@
 ### Example 1: Create a new PostgreSql server
 ```powershell
-PS C:\> $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
 PS C:\> New-AzPostgreSqlServer -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG -Location eastus -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku GP_Gen5_4
 
 Name                 Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
