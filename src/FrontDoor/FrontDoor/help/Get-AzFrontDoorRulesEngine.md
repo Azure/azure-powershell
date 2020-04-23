@@ -46,6 +46,8 @@ rulesEngine3 {rules1}
 ```
 Get all rules engine configurations in a front door.
 
+### Example 3
+
 ```powershell
 PS C:\> Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name nonexistent
 Get-AzFrontDoorRulesEngine : Rules Engine with name 'nonexistent' in Front Door 'frontDoorName' is not found.

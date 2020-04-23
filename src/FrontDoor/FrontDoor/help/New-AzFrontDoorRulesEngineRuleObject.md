@@ -57,7 +57,6 @@ Create new PSRulesEngineRule object and demonstrate how to see the subfields.
 
 ### Example 2
 ```powershell
-PS C:\>
 PS C:\> New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority -1
 New-AzFrontDoorRulesEngineRuleObject : Cannot validate argument on parameter 'Priority'. The -1 argument is less than the minimum allowed range of 0. Supply an argument that is greater than or equal to 0 and then try the command again.
 At line:1 char:81
