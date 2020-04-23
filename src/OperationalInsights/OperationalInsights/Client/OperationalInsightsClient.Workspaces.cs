@@ -22,6 +22,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Management.Automation;
 using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
@@ -228,6 +229,101 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return workspaces;
         }
 
+        public virtual PSLinkedStorageAccountsResource GetLinkedStorageAccount(string resourceGroupName, string workspaceName, string dataSourceType)
+        {
+            LinkedStorageAccountsResource resource = this.OperationalInsightsManagementClient.LinkedStorageAccounts.Get(resourceGroupName, workspaceName,getDataSourceType(dataSourceType));
+
+            return new PSLinkedStorageAccountsResource(resource);
+        }
+
+        public virtual IList<PSLinkedStorageAccountsResource> ListLinkedStorageAccountsByWorkspace(string resourceGroupName, string workspaceName)
+        {
+            IList<PSLinkedStorageAccountsResource> resources = new List<PSLinkedStorageAccountsResource>();
+
+            IEnumerable<LinkedStorageAccountsResource> response =  this.OperationalInsightsManagementClient.LinkedStorageAccounts.ListByWorkspace(resourceGroupName, workspaceName);
+
+            if (response != null)
+            {
+                resources = response.Select(resource => new PSLinkedStorageAccountsResource(resource)).ToList();
+            }
+
+            return resources;
+        }
+
+        public virtual List<PSLinkedStorageAccountsResource> FilterPSLinkedStorageAccounts(string resourceGroupName, string workspaceName, string dataSourceType)
+        {
+            List<PSLinkedStorageAccountsResource> resources = new List<PSLinkedStorageAccountsResource>();
+
+            if (!string.IsNullOrWhiteSpace(dataSourceType))
+            {
+                resources.Add(GetLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType));
+            }
+            else
+            {
+                resources.AddRange(ListLinkedStorageAccountsByWorkspace(resourceGroupName, workspaceName));
+            }
+
+            return resources;
+        }
+
+        public virtual HttpStatusCode DeleteLinkedStorageAccount(string resourceGroupName, string workspaceName, string dataSourceType)
+        {
+            return this.OperationalInsightsManagementClient
+                .LinkedStorageAccounts
+                .DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, getDataSourceType(dataSourceType))
+                .GetAwaiter()
+                .GetResult()
+                .Response
+                .StatusCode;
+        }
+
+        public virtual LinkedStorageAccountsResource CreateOrUpdateLinkedStorageAccount(string resourceGroupName, string workspaceName, string dataSourceType, IList<string> storageAccountIds)
+        {
+            return this.OperationalInsightsManagementClient.LinkedStorageAccounts.CreateOrUpdate(resourceGroupName, workspaceName, getDataSourceType(dataSourceType), storageAccountIds);
+        }
+
+        public virtual PSLinkedStorageAccountsResource CreateLinkedStorageAccount(string resourceGroupName, string workspaceName, string dataSourceType, IList<string> storageAccountIds)
+        {
+            PSLinkedStorageAccountsResource existingResource;
+            try
+            {
+                existingResource = GetLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType);
+            }
+            catch
+            {
+                existingResource = null;
+            }
+
+            if (existingResource != null)
+            {
+                throw new PSInvalidOperationException(string.Format("Linked Storage Accounts for workpsace: '{0}' under resource group: '{1}' already exists. Please use Update-AzOperationalInsightsLinkedStorageAccount for updating.", workspaceName, resourceGroupName));
+            }
+
+            return new PSLinkedStorageAccountsResource(CreateOrUpdateLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType, storageAccountIds)); ;
+        }
+
+        public virtual PSLinkedStorageAccountsResource UpdateLinkedStorageAccount(string resourceGroupName, string workspaceName, string dataSourceType, IList<string> storageAccountIds)
+        {
+            PSLinkedStorageAccountsResource existingResource;
+            try
+            {
+                existingResource = GetLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType);
+            }
+            catch
+            {
+                throw new System.ArgumentException($"Linked Storage Accounts type {dataSourceType} for workspace {workspaceName} is not existed in Resource Group {resourceGroupName}");
+            }
+            
+            storageAccountIds.ForEach(Id =>
+            {
+                if (!existingResource.StorageAccountIds.Contains(Id))
+                {
+                    existingResource.StorageAccountIds.Add(Id);
+                }
+            });
+
+            return new PSLinkedStorageAccountsResource(CreateOrUpdateLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType, existingResource.StorageAccountIds));
+        }
 
         public virtual List<PSIntelligencePack> GetIntelligencePackList(string resourceGroupName, string workspaceName)
         {
@@ -277,6 +373,20 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         private static Dictionary<string, string> ToDictionary(Hashtable hashTable)
         {
             return hashTable.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
+        }
+
+        private DataSourceType getDataSourceType(string type)
+        {
+            return "CustomLogs".Equals(type)
+                ? DataSourceType.CustomLogs
+                : DataSourceType.AzureWatson;
+        }
+
+        private PSDataSourceType getPSDataSourceType(string type)
+        {
+            return "CustomLogs".Equals(type)
+                ? PSDataSourceType.CustomLogs
+                : PSDataSourceType.AzureWatson;
         }
     }
 }
