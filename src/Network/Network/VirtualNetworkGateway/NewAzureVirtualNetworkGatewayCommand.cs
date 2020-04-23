@@ -36,6 +36,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
+            HelpMessage = "The resource name.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "The resource name.")]
         [Parameter(
@@ -51,6 +56,11 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
+            HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -70,6 +80,11 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
+            HelpMessage = "location.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -230,23 +245,25 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter Force { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server address.")]
+        [ValidateNotNullOrEmpty]
         public string RadiusServerAddress { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server secret.")]
+        [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
             HelpMessage = "P2S multiple external Radius server servers.")]
         public PSRadiusServer[] RadiusServerList { get; set; }
 
