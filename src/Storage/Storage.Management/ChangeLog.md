@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add RestorePolicy.LastEnabledTime to cmdlet output
+    - `Get-AzStorageBlobServiceProperty`
+    - `Enable-AzStorageBlobRestorePolicy`
 * Fixed #9880: Change NetWorkRule DefaultAction value defination to align with swagger.
 	- Update-AzStorageAccountNetworkRuleSet
 	- Get-AzStorageAccountNetworkRuleSet
