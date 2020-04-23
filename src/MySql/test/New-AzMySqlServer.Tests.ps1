@@ -13,7 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'New-AzMySqlServer' {
     It 'CreateExpanded' {
-        $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
         {
             $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
             $server = New-AzMySqlServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Location $env.location -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku $env.Sku

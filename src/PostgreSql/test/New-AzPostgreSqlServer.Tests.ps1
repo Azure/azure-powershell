@@ -13,7 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'New-AzPostgreSqlServer' {
     It 'CreateExpanded' {
-        $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
         {
             $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
             $server = New-AzPostgreSqlServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Location $env.location -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku $env.Sku
