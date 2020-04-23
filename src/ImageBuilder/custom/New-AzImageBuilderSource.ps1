@@ -28,15 +28,15 @@ function New-AzImageBuilderSource {
         [Parameter(ParameterSetName='PlatformImage')]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
-        ${PlanInfoPlanName},
+        ${PlanName},
         [Parameter(ParameterSetName='PlatformImage')]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
-        ${PlanInfoPlanProduct},
+        ${PlanProduct},
         [Parameter(ParameterSetName='PlatformImage')]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
-        ${PlanInfoPlanPublisher},
+        ${PlanPublisher},
         [Parameter(ParameterSetName='PlatformImage')]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
@@ -80,9 +80,9 @@ function New-AzImageBuilderSource {
             $Source = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20190501Preview.ImageTemplatePlatformImageSource]::New()
             $Source.Type = "PlatformImage"
             $Source.Offer = $Offer
-            $Source.PlanInfoPlanName = $PlanInfoPlanName
-            $Source.PlanInfoPlanProduct = $PlanInfoPlanProduct
-            $Source.PlanInfoPlanPublisher = $PlanInfoPlanPublisher
+            $Source.PlanInfoPlanName = $PlanName
+            $Source.PlanInfoPlanProduct = $PlanProduct
+            $Source.PlanInfoPlanPublisher = $PlanPublisher
             $Source.Publisher = $Publisher
             $Source.Sku = $Sku
             $Source.Version = $Version

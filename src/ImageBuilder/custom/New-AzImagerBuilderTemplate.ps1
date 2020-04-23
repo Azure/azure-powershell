@@ -79,7 +79,7 @@ function New-AzImageBuilderTemplate {
         [System.Collections.Hashtable]
         # The list of user identities associated with the image template.
         # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-        ${IdentityUserAssignedIdentity},
+        ${UserAssignedIdentity},
     
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [System.DateTime]
@@ -236,9 +236,9 @@ function New-AzImageBuilderTemplate {
                 $Parameter.IdentityType = $IdentityType
                 $Null = $PSBoundParameters.Remove('IdentityType')
             }
-            if ($PSBoundParameters.ContainsKey('IdentityUserAssignedIdentity')) {
-                $Parameter.IdentityUserAssignedIdentity = $IdentityUserAssignedIdentity
-                $Null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
+            if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+                $Parameter.IdentityUserAssignedIdentity = $UserAssignedIdentity
+                $Null = $PSBoundParameters.Remove('UserAssignedIdentity')
             }
             if ($PSBoundParameters.ContainsKey('LastRunStatus')) {
                 $Parameter.LastRunStatus = $LastRunStatus
