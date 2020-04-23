@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.Internal.Network.Common;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSWorkspace: IOperationalInsightWorkspace
+    public class PSWorkspace
     {
         public PSWorkspace()
         {
@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.CustomerId = new Guid(workspace.CustomerId);
             this.ProvisioningState = workspace.ProvisioningState;
 
-            PublicNetworkAccessForIngestion = workspace.PublicNetworkAccessForIngestion;
-            PublicNetworkAccessForQuery = workspace.PublicNetworkAccessForQuery;
-            PrivateLinkScopedResources = workspace.PrivateLinkScopedResources;
+            this.PublicNetworkAccessForIngestion = workspace.PublicNetworkAccessForIngestion;
+            this.PublicNetworkAccessForQuery = workspace.PublicNetworkAccessForQuery;
+            this.PrivateLinkScopedResources = workspace.PrivateLinkScopedResources;
 
         }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public int? retentionInDays { get; set; }
 
-        public Guid? CustomerId { get; set; }
+        public Guid? CustomerId { get; private set; }
 
         public string ProvisioningState { get; set; }
 

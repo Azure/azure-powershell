@@ -108,11 +108,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             string workspaceName,
             string location,
             string sku,
-            Guid? customerId,
             IDictionary<string, string> tags, 
-            int? retentionInDays)
+            string publicNetworkAccessForIngestion,
+            string publicNetworkAccessForQuery,
+            int? retentionInDays,
+            Guid? customerId = null)
         {
-            Workspace properties = new Workspace(location:location, tags:tags, customerId:customerId.HasValue?customerId.Value.ToString():null);
+            Workspace properties = new Workspace(location:location, tags:tags, customerId:customerId.HasValue?customerId.Value.ToString():null, publicNetworkAccessForIngestion:publicNetworkAccessForIngestion, publicNetworkAccessForQuery:publicNetworkAccessForQuery);
 
             if (!string.IsNullOrWhiteSpace(sku))
             {
@@ -143,9 +145,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 parameters.WorkspaceName,
                 workspace.Location,
                 string.IsNullOrWhiteSpace(parameters.Sku) ? workspace.Sku : parameters.Sku,
-                workspace.CustomerId,
                 parameters.Tags == null ? workspace.Tags : ToDictionary(parameters.Tags),
-                parameters.RetentionInDays);
+                string.IsNullOrWhiteSpace(parameters.PublicNetworkAccessForIngestion) ? workspace.PublicNetworkAccessForIngestion : parameters.PublicNetworkAccessForIngestion,
+                string.IsNullOrWhiteSpace(parameters.PublicNetworkAccessForQuery) ? workspace.PublicNetworkAccessForQuery : parameters.PublicNetworkAccessForQuery,
+                parameters.RetentionInDays,
+                workspace.CustomerId);
 
             return new PSWorkspace(updatedWorkspace, parameters.ResourceGroupName);
         }
@@ -168,8 +172,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                             parameters.WorkspaceName,
                             parameters.Location,
                             parameters.Sku,
-                            parameters.CustomerId,
                             tags,
+                            parameters.PublicNetworkAccessForIngestion,
+                            parameters.PublicNetworkAccessForQuery,
                             parameters.RetentionInDays),
                         parameters.ResourceGroupName);
                 if (!string.Equals(workspace.ProvisioningState, OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
