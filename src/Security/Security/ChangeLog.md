@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Add new API for IoTSecuritySolution, IoTSecuritySolutionAnalytics and DeviceSecurityGroups services
+* Support management of SQL Information Protection Policy.
 
 ## Version 0.7.7
 * Update references in .psd1 to use relative path

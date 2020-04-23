@@ -95,6 +95,9 @@ Locale: en-US
 ### [Remove-AzIotSecuritySolution](Remove-AzIotSecuritySolution.md)
 {{ Fill in the Description }}
 
+### [Get-AzSqlInformationProtectionPolicy](Get-AzSqlInformationProtectionPolicy.md)
+Gets the SQL information protection policy.
+
 ### [Remove-AzJitNetworkAccessPolicy](Remove-AzJitNetworkAccessPolicy.md)
 {{ Fill in the Description }}
 
@@ -127,6 +130,9 @@ Locale: en-US
 
 ### [Set-AzSecurityWorkspaceSetting](Set-AzSecurityWorkspaceSetting.md)
 {{ Fill in the Description }}
+
+### [Set-AzSqlInformationProtectionPolicy](Set-AzSqlInformationProtectionPolicy.md)
+Sets the SQL information protection policy.
 
 ### [Start-AzJitNetworkAccessPolicy](Start-AzJitNetworkAccessPolicy.md)
 {{ Fill in the Description }}

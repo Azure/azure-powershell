@@ -240,4 +240,10 @@
   <data name="InvokeIotHubQuery" xml:space="preserve">
     <value>Query an Iot Hub</value>
   </data>
+  <data name="NewIotHubSasToken" xml:space="preserve">
+    <value>Generate Sas Token</value>
+  </data>
+  <data name="InvokeIotHubConfigurationMetricsQuery" xml:space="preserve">
+    <value>Execute Metrics Query</value>
+  </data>
 </root>

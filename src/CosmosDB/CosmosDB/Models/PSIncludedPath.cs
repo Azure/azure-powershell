@@ -46,7 +46,16 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets list of indexes for this path
         public IList<PSIndexes> Indexes { get; set; }
 
-        static public List<Indexes> ConvertPSIndexesToIndexes(IList<PSIndexes> pSIndexes)
+        static public IncludedPath ConvertPSIncludedPathToIncludedPath(PSIncludedPath pSIncludedPath)
+        {
+            return new IncludedPath
+            {
+                Path = pSIncludedPath.Path,
+                Indexes = PSIncludedPath.ConvertPSIndexesToIndexes(pSIncludedPath.Indexes)
+            };
+        }
+
+        static private List<Indexes> ConvertPSIndexesToIndexes(IList<PSIndexes> pSIndexes)
         {
             List<Indexes> indexes = new List<Indexes>();
             foreach(PSIndexes pSIndex in pSIndexes)

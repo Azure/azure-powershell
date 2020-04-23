@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string RecommendationType = "Recommendation type.";
         public const string Query = "Query.";
         public const string QuerySubscriptions = "Query subscriptions.";
+        public const string AsJob = "Run cmdlet in the background";
+
         #endregion
 
         #region Workspace Settings

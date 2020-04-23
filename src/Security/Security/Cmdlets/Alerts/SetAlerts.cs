@@ -102,13 +102,13 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
             {
                 if (ShouldProcess(name, VerbsCommon.Set))
                 {
-                    if (actionType.Equals("Activate", StringComparison.OrdinalIgnoreCase))
-                    {
-                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateToReactivateWithHttpMessagesAsync(name).GetAwaiter().GetResult();
-                    }
-                    else
+                    if (actionType == "Dismiss")
                     {
                         SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateToDismissWithHttpMessagesAsync(name).GetAwaiter().GetResult();
+                    }
+                    else if (actionType == "Activate")
+                    {
+                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateToReactivateWithHttpMessagesAsync(name).GetAwaiter().GetResult();
                     }
                 }
             }
@@ -116,13 +116,13 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
             {
                 if (ShouldProcess(name, VerbsCommon.Set))
                 {
-                    if (actionType.Equals("Activate", StringComparison.OrdinalIgnoreCase))
-                    {
-                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateToReactivateWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
-                    }
-                    else
+                    if (actionType == "Dismiss")
                     {
                         SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateToDismissWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                    }
+                    else if (actionType == "Activate")
+                    {
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateToReactivateWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
                     }
                 }
             }

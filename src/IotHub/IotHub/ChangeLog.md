@@ -35,6 +35,8 @@
 * Added cmdlet to invoke an edge module method in an Iot Hub.
 * Added cmdlet to invoke a query in an IoT hub to retrieve information using a SQL-like language.
 * Fix #11597: Add-AzIotHubDevice fails to create Edge Enabled Device without child devices.
+* Added cmdlet to generate SAS token for Iot Hub, device or module.
+* Added cmdlet to invoke configuration metrics query.
 
 ## Version 2.3.0
 * Added support to manage distributed settings per-device. New Cmdlets are:

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         [ValidateNotNull]
-        public PSDatabaseAccount InputObject { get; set; }
+        public PSDatabaseAccount ParentObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.MongoDatabaseDetailedParamHelpMessage)]
         public SwitchParameter Detailed { get; set; }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             if(ParameterSetName.Equals(ObjectParameterSet, StringComparison.Ordinal))
             {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
                 AccountName = resourceIdentifier.ResourceName;
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }

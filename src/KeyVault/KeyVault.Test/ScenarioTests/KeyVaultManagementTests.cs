@@ -421,19 +421,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
-        [Fact(Skip = "Fails in playback")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNetworkSet()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                 _logger,
-                () => { return new[] { "Test-NetworkRuleSet" }; },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
-
         #region Helper Methods
         private string GetUserObjectId(KeyVaultManagementController controllerAdmin, string upn)
         {
