@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 {
                     Mode = PSLockMode.None,
                     ExcludedActions = new List<string>(),
-                    ExcludedPrincipals = new List<string>(),
+                    ExcludedPrincipals = new List<string>()
                 },
                 Parameters = new Dictionary<string, PSParameterValue>(),
                 ResourceGroups = new Dictionary<string, PSResourceGroupValue>()
