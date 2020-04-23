@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for management group level Blueprint assignment
 
 ## Version 0.2.11
 * Showed DependsOn property value in the table view
