@@ -33,6 +33,9 @@ Update-AzCosmosDBMongoDBCollectionThroughput [-Name <String>] -Throughput <Int32
  [<CommonParameters>]
 ```
 
+## DESCRIPTION
+Updates the throughput value of a CosmosDB MongoDB Collection.
+
 ## EXAMPLES
 
 ### Example 1

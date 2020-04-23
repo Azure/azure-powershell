@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Fixed bug for `Set-AzDiagnosticSettings`, retention policy won't apply to all categories; issue: https://github.com/Azure/azure-powershell/issues/11589
+
+## Version 1.7.0
 * Added cmdlets for private link scope
     - `Get-AzInsightsPrivateLinkScope`
     - `Remove-AzInsightsPrivateLinkScope`

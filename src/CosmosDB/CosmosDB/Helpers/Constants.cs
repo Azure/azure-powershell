@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string GremlinGraphDetailedParamHelpMessage = "If provided then, the cmdlet returns the Gremlin Graph with the corresponding throughput value.";
         public const string GremlinDatabaseThroughputHelpMessage = "The throughput of Gremlin Database (RU/s). Default value is 400.";
         public const string GremlinGraphThroughputHelpMessage = "The throughput of Gremlin Graph (RU/s). Default value is 400.";
-        public const string ConflictResolutionPolicyModeHelpMessage = "Can have the values: LastWriterWins, Custom, Manual.";
+        public const string ConflictResolutionPolicyModeHelpMessage = "Can have the values: LastWriterWins, Custom";
         public const string ConflictResolutionPolicyPathHelpMessage = "To be provided when the type is LastWriterWins.";
         public const string ConflictResolutionPolicyProcedureHelpMessage = "To be provided when the type is custom.";
         public const string UniqueKeysHelpMessage = "Array of objects of type PSUniqueKey.";

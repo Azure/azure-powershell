@@ -20,7 +20,7 @@ Get-AzCosmosDBGremlinDatabase -ResourceGroupName <String> -AccountName <String> 
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBGremlinDatabase [-Name <String>] -InputObject <PSDatabaseAccount> [-Detailed]
+Get-AzCosmosDBGremlinDatabase [-Name <String>] -ParentObject <PSDatabaseAccount> [-Detailed]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -86,21 +86,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-CosmosDB Account object
-
-```yaml
-Type: PSDatabaseAccount
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Database name.
 
@@ -113,6 +98,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+CosmosDB Account object
+
+```yaml
+Type: PSDatabaseAccount
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

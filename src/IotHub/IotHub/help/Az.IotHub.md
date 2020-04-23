@@ -110,6 +110,9 @@ Get information on all the endpoints for your IoT Hub
 ### [Get-AzIotHubValidSku](Get-AzIotHubValidSku.md)
 Gets all valid skus that this IotHub can transition to.
 
+### [Invoke-AzIotHubConfigurationMetricsQuery](Invoke-AzIotHubConfigurationMetricsQuery.md)
+Invoke an IoT device configuration metric query.
+
 ### [Invoke-AzIotHubDeviceMethod](Invoke-AzIotHubDeviceMethod.md)
 Invoke a direct method on a device.
 
@@ -133,6 +136,9 @@ Creates a new import devices job.
 
 ### [New-AzIotHubKey](New-AzIotHubKey.md)
 Generate an Azure IoT Hub key.
+
+### [New-AzIotHubSasToken](New-AzIotHubSasToken.md)
+Generate a SAS token for a target IoT Hub, device or module.
 
 ### [Remove-AzIotHub](Remove-AzIotHub.md)
 Deletes an IotHub.

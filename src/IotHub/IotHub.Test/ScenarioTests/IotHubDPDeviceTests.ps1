@@ -27,11 +27,13 @@ function Test-AzureRmIotHubDeviceLifecycle
 	$IotHubName = getAssetName
 	$ResourceGroupName = getAssetName
 	$Sku = "S1"
+	$SasTokenPrefix = 'SharedAccessSignature'
 	$device1 = getAssetName
 	$device2 = getAssetName
 	$device3 = getAssetName
 	$device4 = getAssetName
 	$device5 = getAssetName
+	$device6 = getAssetName
 	$primaryThumbprint = '38303FC7371EC78DDE3E18D732C8414EE50969C7'
 	$secondaryThumbprint = 'F54465586FBAF4AC269851424A592254C8861BE7'
 
@@ -40,6 +42,10 @@ function Test-AzureRmIotHubDeviceLifecycle
 
 	# Create Iot Hub
 	$iothub = New-AzIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1
+
+	# Generate SAS token for IotHub
+	$token = New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
+	Assert-StartsWith $SasTokenPrefix $token
 
 	# Get all devices
 	$devices = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
@@ -57,15 +63,33 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-True { $newDevice2.Authentication.Type -eq 'SelfSigned' }
 	Assert-False { $newDevice2.Capabilities.IotEdge }
 
-	# Add iot device with certifictae authority authentication
+	# Add iot device with certificate authority authentication
 	$newDevice3 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3 -AuthMethod 'x509_ca'
 	Assert-True { $newDevice3.Id -eq $device3 }
 	Assert-True { $newDevice3.Authentication.Type -eq 'CertificateAuthority' }
 	Assert-False { $newDevice3.Capabilities.IotEdge }
 
+	# Add edge device with symmetric authentication
+	$newDevice6 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device6 -AuthMethod 'shared_private_key' -EdgeEnabled
+	Assert-True { $newDevice6.Id -eq $device6 }
+	Assert-True { $newDevice6.Authentication.Type -eq 'Sas' }
+	Assert-True { $newDevice6.Capabilities.IotEdge }
+
+	# Generate SAS token for device
+	$deviceToken = New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
+	Assert-StartsWith $SasTokenPrefix $deviceToken
+
+	# Expected error while generating SAS token for device
+	$errorMessage = "This device does not support SAS auth."
+	Assert-ThrowsContains { New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3 } $errorMessage
+
+	# Invoke direct method on device
+	$errorMessage = "The entered device ""fakeDevice"" doesn't exist."
+	Assert-ThrowsContains { New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId "fakeDevice" } $errorMessage
+
 	# Count devices
 	$totalDevices = Invoke-AzIotHubQuery -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -Query "select * from devices"
-	Assert-True { $totalDevices.Count -eq 3}
+	Assert-True { $totalDevices.Count -eq 4}
 
 	# Get device twin
 	$device1twin = Get-AzIotHubDeviceTwin -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
@@ -97,7 +121,7 @@ function Test-AzureRmIotHubDeviceLifecycle
 	
 	# Get all devices
 	$devices = Get-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
-	Assert-True { $devices.Count -eq 3}
+	Assert-True { $devices.Count -eq 4}
 
 	# Get device connection string
 	$deviceCS = Get-AzIotHubDCS -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3
@@ -150,7 +174,7 @@ function Test-AzureRmIotHubDeviceLifecycle
 
 	# Get all device children
 	$devices = Get-AzIotHubDCL -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName
-	Assert-True { $devices.Count -eq 2}
+	Assert-True { $devices.Count -eq 3}
 
 	# Get device children
 	$deviceChildren1 = Get-AzIotHubDCL -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device4

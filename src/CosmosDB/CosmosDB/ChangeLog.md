@@ -19,6 +19,30 @@
 -->
 
 ## Upcoming Release
+* Replaces Set-AzCosmosDB* cmdlets with New-AzCosmosDB* and Update-AzComsosDB* cmdlets.
+The following cmdlets are added: 
+    New-AzCosmosDBSqlStoredProcedure, New-AzCosmosDBSqlTrigger, 
+    New-AzCosmosDBSqlUserDefinedFunction, 
+    Update-AzCosmosDBSqlStoredProcedure, Update-AzCosmosDBSqlTrigger, 
+    Update-AzCosmosDBSqlUserDefinedFunction, New-AzCosmosDBSqlContainer,
+    New-AzCosmosDBSqlDatabase, Update-AzCosmosDBSqlContainer,
+    Update-AzCosmosDBSqlDatabase,
+    New-AzCosmosDBGremlinDatabase, New-AzCosmosDBGremlinGraph,
+    Update-AzCosmosDBGremlinDatabase, Update-AzCosmosDBGremlinGraph,
+    New-AzCosmosDBTable, Update-AzCosmosDBTable,
+    Update-AzCosmosDBCassandraKeyspace, Update-AzCosmosDBCassandraTable,
+    New-AzCosmosDBCassandraKeyspace, New-AzCosmosDBCassandraTable,
+    Update-AzCosmosDBMongoDBCollection, Update-AzCosmosDBMongoDBDatabase, 
+    New-AzCosmosDBMongoDBCollection, New-AzCosmosDBMongoDBDatabase  
+The following cmdlets are deprecated and would no longer be maintained: 
+    Set-AzCosmosDBSqlStoredProcedure, Set-AzCosmosDBSqlTrigger,
+    Set-AzCosmosDBSqlUserDefinedFunction, Set-AzCosmosDBSqlContainer,
+    Set-AzCosmosDBSqlDatabase, Set-AzCosmosDBGremlinDatabase,
+    Set-AzCosmosDBGremlinGraph, Set-AzCosmosDBTable,
+    Set-AzCosmosDBCassandraKeyspace, Set-AzCosmosDBCassandraTable,
+    Set-AzCosmosDBMongoDBCollection, Set-AzCosmosDBMongoDBDatabase
+
+## Version 0.1.4
 * Changes in New-AzCosmosDBAccount and Update-AzCosmosDBAccount
     - Allows empty string as a value for IpRangeFilter
     - Renamed ApiKind value GlobalDocumentDB to Sql.
