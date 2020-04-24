@@ -1,48 +1,71 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/remove-aznetappfilesaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/get-aznetappfilesreplicationstatus
 schema: 2.0.0
 ---
 
-# Remove-AzNetAppFilesAccount
+# Get-AzNetAppFilesReplicationStatus
 
 ## SYNOPSIS
-Deletes an Azure NetApp Files (ANF) account.
+Get the status of the replication
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzNetAppFilesAccount -ResourceGroupName <String> -Name <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzNetAppFilesReplicationStatus -ResourceGroupName <String> -AccountName <String> -PoolName <String>
+ -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Remove-AzNetAppFilesAccount -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzNetAppFilesReplicationStatus -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzNetAppFilesAccount -InputObject <PSNetAppFilesAccount> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzNetAppFilesReplicationStatus -InputObject <PSNetAppFilesVolume>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzNetAppFilesAccount** cmdlet deletes an ANF account.
+Get the status of the replication
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Remove-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount"
+```powershell
+PS C:\> Get-AnfReplicationStatus -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -PoolName "MyDestinationPool" -VolumeName "MyVol"
+
+Output:
+
+Healthy            : true
+RelationshipStatus : Idle
+MirrorState        : Mirrored
+TotalProgress      : 1024
+ErrorMessage       :
 ```
 
-This command deletes the ANF account "MyAnfAccount".
+This command gets the status of replication on MyVol
 
 ## PARAMETERS
+
+### -AccountName
+The name of the ANF account of the replication destination volume
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -60,10 +83,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The account object to remove
+The ANF replication destination volume object to get replication status
 
 ```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -75,12 +98,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the ANF account
+The name of the ANF replication destination volume
 
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet
-Aliases: AccountName
+Aliases: VolumeName
 
 Required: True
 Position: Named
@@ -89,15 +112,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Return whether the specified account was successfully removed
+### -PoolName
+The name of the ANF pool of the replication destination volume
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -105,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group of the ANF account
+The resource group of the ANF replication destination volume
 
 ```yaml
 Type: System.String
@@ -120,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ANF account
+The resource id of the ANF replication destination volume
 
 ```yaml
 Type: System.String
@@ -134,37 +157,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -172,11 +164,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesReplicationStatus
 
 ## NOTES
 
