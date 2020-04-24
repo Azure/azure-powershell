@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsWorkspaceLinkedStorageAccount", SupportsShouldProcess = true), OutputType(typeof(PSLinkedStorageAccountsResource))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkedStorageAccount", SupportsShouldProcess = true), OutputType(typeof(PSLinkedStorageAccountsResource))]
     public class UpdateAzureOperationalInsightsLinkedStorageAccountCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0,
@@ -37,20 +37,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string WorkspaceName { get; set; }
 
         [Parameter(Position = 2,
-                   Mandatory = true,
-                   HelpMessage = "The geographic region that the workspace will be created in.")]
-        [LocationCompleter("Microsoft.OperationalInsights/workspaces")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        [Parameter(Position = 3,
             Mandatory = true,
             HelpMessage = "Data Source Type should be one of 'CustomLogs', 'AzureWatson'.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("CustomLogs", "AzureWatson")]
         public string DataSourceType { get; set; }
 
-        [Parameter(Position = 4,
+        [Parameter(Position = 3,
             Mandatory = true,
             HelpMessage = "list of storage account Id.")]
         [ValidateNotNullOrEmpty]
@@ -64,7 +57,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             if (ShouldProcess(this.WorkspaceName,
                 string.Format("update linked storage accounts type: {0} for workspace: {1}", this.DataSourceType, this.WorkspaceName)))
             {
-                WriteObject(this.OperationalInsightsClient.UpdateLinkedStorageAccount(this.ResourceGroupName, this.WorkspaceName, this.DataSourceType, this.StorageAccountIds));
+                PSLinkedStorageAccountsResource resource = this.OperationalInsightsClient.UpdateLinkedStorageAccount(this.ResourceGroupName, this.WorkspaceName, this.DataSourceType, this.StorageAccountIds);
+                WriteObject(resource);
             }
         }
     }

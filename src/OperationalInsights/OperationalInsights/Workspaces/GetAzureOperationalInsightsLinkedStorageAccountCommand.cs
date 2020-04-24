@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsWorkspaceLinkedStorageAccount"), OutputType(typeof(PSLinkedStorageAccountsResource))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkedStorageAccount"), OutputType(typeof(PSLinkedStorageAccountsResource))]
     public class GetAzureOperationalInsightsLinkedStorageAccountCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, 

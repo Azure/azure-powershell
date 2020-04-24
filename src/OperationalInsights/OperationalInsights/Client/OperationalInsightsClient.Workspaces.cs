@@ -24,6 +24,9 @@ using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
@@ -289,7 +292,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 existingResource = GetLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType);
             }
-            catch
+            catch (CloudException)
             {
                 existingResource = null;
             }
@@ -309,7 +312,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 existingResource = GetLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType);
             }
-            catch
+            catch (RestException)
             {
                 throw new System.ArgumentException($"Linked Storage Accounts type {dataSourceType} for workspace {workspaceName} is not existed in Resource Group {resourceGroupName}");
             }
@@ -322,7 +325,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 }
             });
 
-            return new PSLinkedStorageAccountsResource(CreateOrUpdateLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType, existingResource.StorageAccountIds));
+            LinkedStorageAccountsResource resource = CreateOrUpdateLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType, existingResource.StorageAccountIds);
+            return new PSLinkedStorageAccountsResource(resource);
         }
 
         public virtual List<PSIntelligencePack> GetIntelligencePackList(string resourceGroupName, string workspaceName)

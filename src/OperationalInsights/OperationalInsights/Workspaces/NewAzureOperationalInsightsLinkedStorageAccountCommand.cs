@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsWorkspaceLinkedStorageAccount", SupportsShouldProcess = true), OutputType(typeof(PSLinkedStorageAccountsResource))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkedStorageAccount", SupportsShouldProcess = true), OutputType(typeof(PSLinkedStorageAccountsResource))]
     public class NewAzureOperationalInsightsLinkedStorageAccountCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, 
@@ -36,21 +36,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(Position = 2, 
-                   Mandatory = true, 
-                   HelpMessage = "The geographic region that the workspace will be created in.")]
-        [LocationCompleter("Microsoft.OperationalInsights/workspaces")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        [Parameter(Position = 3,
+        [Parameter(Position = 2,
             Mandatory = true,
             HelpMessage = "Data Source Type should be one of 'CustomLogs', 'AzureWatson'.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("CustomLogs", "AzureWatson")]
         public string DataSourceType { get; set; }
 
-        [Parameter(Position = 4,
+        [Parameter(Position = 3,
             Mandatory = true,
             HelpMessage = "list of storage account Id.")]
         [ValidateNotNullOrEmpty]

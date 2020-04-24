@@ -13,26 +13,51 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSLinkedStorageAccountsResource
     {
-        public PSLinkedStorageAccountsResource(PSDataSourceType? dataSourceType = default(PSDataSourceType?), IList<string> storageAccountIds = default(IList<string>))
+        public PSLinkedStorageAccountsResource(string id, string name, string type = default(string), PSDataSourceType? dataSourceType = default(PSDataSourceType?), IList<string> storageAccountIds = default(IList<string>))
         {
-            DataSourceType = dataSourceType;
-            StorageAccountIds = storageAccountIds;
+            this.Id = id;
+            this.Name = name;
+            this.Type = type;
+            this.DataSourceType = dataSourceType;
+            this.StorageAccountIds = storageAccountIds;
         }
 
         public PSLinkedStorageAccountsResource(LinkedStorageAccountsResource resource)
         {
-            DataSourceType = "CustomLogs".Equals(resource.DataSourceType.Value)
-                ? PSDataSourceType.CustomLogs
-                : PSDataSourceType.AzureWatson;
+            this.Id = resource.Id;
+            this.Name = resource.Name;
+            this.Type = resource.Type;
 
-            StorageAccountIds = resource.StorageAccountIds;
+            if (resource.DataSourceType == null)
+            {
+                string sourceType = Id.Split('/').Last();
+                this.DataSourceType = "CustomLogs".Equals(sourceType)
+                    ? PSDataSourceType.CustomLogs
+                    : PSDataSourceType.AzureWatson;
+            }
+            else
+            {
+                this.DataSourceType = "CustomLogs".Equals(resource.DataSourceType.Value.ToString())
+                    ? PSDataSourceType.CustomLogs
+                    : PSDataSourceType.AzureWatson;
+            }
+            
+
+            this.StorageAccountIds = resource.StorageAccountIds;
         }
+
+        public string Id { get; private set; }
+
+        public string Name { get; private set; }
+
+        public string Type { get; private set; }
 
         public PSDataSourceType? DataSourceType { get; private set; }
 
