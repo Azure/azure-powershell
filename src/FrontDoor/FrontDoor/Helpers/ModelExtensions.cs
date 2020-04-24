@@ -335,18 +335,18 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
         public static SdkBackend ToSdkBackend(this PSBackend psBackend)
         {
             return new SdkBackend(
-                address: psBackend.Address,
-                privateLinkAlias: psBackend.PrivateLinkAlias,
-                privateEndpointStatus: psBackend.PrivateEndpointStatus == null
+                psBackend.Address,
+                psBackend.PrivateLinkAlias,
+                psBackend.PrivateEndpointStatus == null
                         ? (PrivateEndpointStatus?)null
                         : (PrivateEndpointStatus)Enum.Parse(typeof(PrivateEndpointStatus), psBackend.PrivateEndpointStatus.ToString()),
-                privateLinkApprovalMessage: psBackend.PrivateLinkApprovalMessage,
-                httpPort: psBackend.HttpPort,
-                httpsPort: psBackend.HttpsPort,
-                enabledState: psBackend.EnabledState.ToString(),
-                priority: psBackend.Priority,
-                weight: psBackend.Weight,
-                backendHostHeader: psBackend.BackendHostHeader
+                psBackend.PrivateLinkApprovalMessage,
+                psBackend.HttpPort,
+                psBackend.HttpsPort,
+                psBackend.EnabledState.ToString(),
+                psBackend.Priority,
+                psBackend.Weight,
+                psBackend.BackendHostHeader
                 );
         }
         public static PSBackendPool ToPSBackendPool(this SdkBackendPool sdkBackendPool)
